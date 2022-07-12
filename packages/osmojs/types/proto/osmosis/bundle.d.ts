@@ -1309,10 +1309,10 @@ export declare namespace osmosis {
             "/osmosis.incentives.MsgCreateGauge": {
                 aminoType: string;
                 toAmino: ({ isPerpetual, owner, distributeTo, coins, startTime, numEpochsPaidOver }: _147.MsgCreateGauge) => {
-                    isPerpetual: boolean;
+                    is_perpetual: boolean;
                     owner: string;
-                    distributeTo: {
-                        lockQueryType: number;
+                    distribute_to: {
+                        lock_query_type: number;
                         denom: string;
                         duration: {
                             seconds: string;
@@ -1327,17 +1327,17 @@ export declare namespace osmosis {
                         denom: string;
                         amount: string;
                     }[];
-                    startTime: {
+                    start_time: {
                         seconds: string;
                         nanos: number;
                     };
-                    numEpochsPaidOver: string;
+                    num_epochs_paid_over: string;
                 };
-                fromAmino: ({ isPerpetual, owner, distributeTo, coins, startTime, numEpochsPaidOver }: {
-                    isPerpetual: boolean;
+                fromAmino: ({ is_perpetual, owner, distribute_to, coins, start_time, num_epochs_paid_over }: {
+                    is_perpetual: boolean;
                     owner: string;
-                    distributeTo: {
-                        lockQueryType: number;
+                    distribute_to: {
+                        lock_query_type: number;
                         denom: string;
                         duration: {
                             seconds: string;
@@ -1352,26 +1352,26 @@ export declare namespace osmosis {
                         denom: string;
                         amount: string;
                     }[];
-                    startTime: {
+                    start_time: {
                         seconds: string;
                         nanos: number;
                     };
-                    numEpochsPaidOver: string;
+                    num_epochs_paid_over: string;
                 }) => _147.MsgCreateGauge;
             };
             "/osmosis.incentives.MsgAddToGauge": {
                 aminoType: string;
                 toAmino: ({ owner, gaugeId, rewards }: _147.MsgAddToGauge) => {
                     owner: string;
-                    gaugeId: string;
+                    gauge_id: string;
                     rewards: {
                         denom: string;
                         amount: string;
                     }[];
                 };
-                fromAmino: ({ owner, gaugeId, rewards }: {
+                fromAmino: ({ owner, gauge_id, rewards }: {
                     owner: string;
-                    gaugeId: string;
+                    gauge_id: string;
                     rewards: {
                         denom: string;
                         amount: string;
@@ -1931,15 +1931,15 @@ export declare namespace osmosis {
                 aminoType: string;
                 toAmino: ({ owner, ID, coins }: _151.MsgBeginUnlocking) => {
                     owner: string;
-                    id: string;
+                    ID: string;
                     coins: {
                         denom: string;
                         amount: string;
                     }[];
                 };
-                fromAmino: ({ owner, id, coins }: {
+                fromAmino: ({ owner, ID, coins }: {
                     owner: string;
-                    id: string;
+                    ID: string;
                     coins: {
                         denom: string;
                         amount: string;
@@ -2979,35 +2979,35 @@ export declare namespace osmosis {
                 aminoType: string;
                 toAmino: ({ sender, lockId, valAddr }: _164.MsgSuperfluidDelegate) => {
                     sender: string;
-                    lockId: string;
-                    valAddr: string;
+                    lock_id: string;
+                    val_addr: string;
                 };
-                fromAmino: ({ sender, lockId, valAddr }: {
+                fromAmino: ({ sender, lock_id, val_addr }: {
                     sender: string;
-                    lockId: string;
-                    valAddr: string;
+                    lock_id: string;
+                    val_addr: string;
                 }) => _164.MsgSuperfluidDelegate;
             };
             "/osmosis.superfluid.MsgSuperfluidUndelegate": {
                 aminoType: string;
                 toAmino: ({ sender, lockId }: _164.MsgSuperfluidUndelegate) => {
                     sender: string;
-                    lockId: string;
+                    lock_id: string;
                 };
-                fromAmino: ({ sender, lockId }: {
+                fromAmino: ({ sender, lock_id }: {
                     sender: string;
-                    lockId: string;
+                    lock_id: string;
                 }) => _164.MsgSuperfluidUndelegate;
             };
             "/osmosis.superfluid.MsgSuperfluidUnbondLock": {
                 aminoType: string;
                 toAmino: ({ sender, lockId }: _164.MsgSuperfluidUnbondLock) => {
                     sender: string;
-                    lockId: string;
+                    lock_id: string;
                 };
-                fromAmino: ({ sender, lockId }: {
+                fromAmino: ({ sender, lock_id }: {
                     sender: string;
-                    lockId: string;
+                    lock_id: string;
                 }) => _164.MsgSuperfluidUnbondLock;
             };
             "/osmosis.superfluid.MsgLockAndSuperfluidDelegate": {
@@ -3018,15 +3018,15 @@ export declare namespace osmosis {
                         denom: string;
                         amount: string;
                     }[];
-                    valAddr: string;
+                    val_addr: string;
                 };
-                fromAmino: ({ sender, coins, valAddr }: {
+                fromAmino: ({ sender, coins, val_addr }: {
                     sender: string;
                     coins: {
                         denom: string;
                         amount: string;
                     }[];
-                    valAddr: string;
+                    val_addr: string;
                 }) => _164.MsgLockAndSuperfluidDelegate;
             };
         };

@@ -1,13 +1,60 @@
-# OsmoJS 🔭
+# OsmoJS 
 ## usage
 
 ```sh
 npm install osmojs
 ```
 
-### Osmosis Stargate Client
+### Composing Messages
 
-Use `getSigningOsmosisClient` to get your `SigningStargateClient`, with the Osmosis protobuf messages full-loaded:
+Import the `osmosis` object from `osmojs`. In this case, we're show the messages available from the `osmosis.gamm.v1beta1` module:
+
+```js
+import { coin, coins } from '@cosmjs/amino';
+import { osmosis, FEE_VALUES } from 'osmojs';
+
+const {
+    joinPool,
+    exitPool,
+    exitSwapExternAmountOut,
+    exitSwapShareAmountIn,
+    joinSwapExternAmountIn,
+    joinSwapShareAmountOut,
+    swapExactAmountIn,
+    swapExactAmountOut
+} = osmosis.gamm.v1beta1.MessageComposer.withTypeUrl;
+```
+
+Now you can construct messages. If you use vscode or another typescript-enabled IDE, you should also be able to use `ctrl+space` to see auto-completion of the fields required for the message.
+
+```js
+const msg = swapExactAmountIn({
+  sender,
+  routes,
+  tokenIn: coin(amount, denom),
+  tokenOutMinAmount
+});
+```
+
+Make sure to create a `fee` object in addition to your message.
+
+```ts
+const fee = FEE_VALUES.osmosis.swapExactAmountIn;
+```
+
+Or you can construct manually if you wish:
+
+```js
+const fee = {
+    amount: coins(0, 'uosmo'),
+    gas: '250000'
+}
+```
+
+or you can also use our helper
+### Initializing the Stargate Client
+
+Use `getSigningOsmosisClient` to get your `SigningStargateClient`, with the Osmosis proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
 
 ```js
 import { getSigningOsmosisClient } from 'osmojs';
@@ -18,21 +65,20 @@ const client: SigningStargateClient = await getSigningOsmosisClient({
   signer // OfflineSigner
 });
 ```
+### Broadcasting messages
 
-### Composing Messages
-
-NOTE: this API is in alpha, and will be rapidly changing over the coming weeks. Please send us feedback!
+Now that you have your `client`, you can broadcast messages:
 
 ```js
-import * as gamm from 'osmojs/main/proto/osmosis/gamm/v1beta1/tx.registry';
-import { coin } from '@cosmjs/amino';
-const { swapExactAmountIn } = gamm.MessageComposer.withTypeUrl;
+import { signAndBroadcast } from 'osmojs';
 
-const msg = swapExactAmountIn({
-  sender,
-  routes,
-  tokenIn: coin(amount, denom),
-  tokenOutMinAmount
+const res = await signAndBroadcast({
+  client,
+  chainId: 'osmosis-1',
+  address,
+  msgs: [msg],
+  fee,
+  memo: ''
 });
 ```
 
