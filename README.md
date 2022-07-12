@@ -63,8 +63,6 @@ const fee = {
     gas: '250000'
 }
 ```
-
-or you can also use our helper
 ### Initializing the Stargate Client
 
 Use `getSigningOsmosisClient` to get your `SigningStargateClient`, with the Osmosis proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
