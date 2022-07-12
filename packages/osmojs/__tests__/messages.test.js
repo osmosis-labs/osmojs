@@ -1,10 +1,10 @@
 import { coin } from '@cosmjs/amino';
-import { messages } from '../src/proto/osmosis/gamm/v1beta1/tx.messages';
+import { MessageComposer } from '../src/proto/osmosis/gamm/v1beta1/tx.registry';
 import { osmosis } from '../src/proto';
 
 it('messages', async () => {
   expect(
-    messages.joinPool({
+    MessageComposer.withTypeUrl.joinPool({
       poolId: '606',
       sender: 'osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc',
       shareOutAmount: '101010101',
@@ -24,7 +24,7 @@ it('messages', async () => {
 
 it('messages.scoped', async () => {
   expect(
-    osmosis.gamm.v1beta1.messages.joinPool({
+    osmosis.gamm.v1beta1.MessageComposer.withTypeUrl.joinPool({
       poolId: '606',
       sender: 'osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc',
       shareOutAmount: '101010101',

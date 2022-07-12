@@ -12,7 +12,7 @@ import {
   AminoMsgSubmitProposal,
   AminoMsgVote,
   AminoConverter,
-} from '../../../../src/proto/cosmos/gov/v1beta1/tx.aminos';
+} from '../../../../src/proto/cosmos/gov/v1beta1/tx.amino';
 
 describe("AminoTypes", () => {
   describe("toAmino", () => {
@@ -22,7 +22,7 @@ describe("AminoTypes", () => {
         depositor: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
         proposalId: Long.fromNumber(5),
       };
-      const aminoTypes = new AminoTypes({ additions: AminoConverter })
+      const aminoTypes = new AminoTypes({ ...AminoConverter })
       const aminoMsg = aminoTypes.toAmino({
         typeUrl: "/cosmos.gov.v1beta1.MsgDeposit",
         value: msg,
@@ -50,7 +50,7 @@ describe("AminoTypes", () => {
     //       }).finish(),
     //     },
     //   };
-    //   const aminoTypes = new AminoTypes({ additions: AminoConverter })
+    //   const aminoTypes = new AminoTypes({ ...AminoConverter })
     //   const aminoMsg = aminoTypes.toAmino({
     //     typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal",
     //     value: msg,
@@ -78,7 +78,7 @@ describe("AminoTypes", () => {
         proposalId: Long.fromNumber(5),
         voter: "cosmos1xy4yqngt0nlkdcenxymg8tenrghmek4nmqm28k",
       };
-      const aminoTypes = new AminoTypes({ additions: AminoConverter })
+      const aminoTypes = new AminoTypes({ ...AminoConverter })
       const aminoMsg = aminoTypes.toAmino({
         typeUrl: "/cosmos.gov.v1beta1.MsgVote",
         value: msg,
@@ -106,7 +106,7 @@ describe("AminoTypes", () => {
         },
       };
 
-      const msg = new AminoTypes({ additions: AminoConverter }).fromAmino(aminoMsg);
+      const msg = new AminoTypes({ ...AminoConverter }).fromAmino(aminoMsg);
       const expectedValue: MsgDeposit = {
         amount: [{ amount: "12300000", denom: "ustake" }],
         depositor: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
@@ -133,7 +133,7 @@ describe("AminoTypes", () => {
     //       },
     //     },
     //   };
-    //   const msg = new AminoTypes({ additions: AminoConverter }).fromAmino(aminoMsg);
+    //   const msg = new AminoTypes({ ...AminoConverter }).fromAmino(aminoMsg);
     //   const expectedValue: MsgSubmitProposal = {
     //     initialDeposit: [{ amount: "12300000", denom: "ustake" }],
     //     proposer: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
@@ -160,7 +160,7 @@ describe("AminoTypes", () => {
           voter: "cosmos1xy4yqngt0nlkdcenxymg8tenrghmek4nmqm28k",
         },
       };
-      const msg = new AminoTypes({ additions: AminoConverter }).fromAmino(aminoMsg);
+      const msg = new AminoTypes({ ...AminoConverter }).fromAmino(aminoMsg);
       const expectedValue: MsgVote = {
         option: VoteOption.VOTE_OPTION_NO_WITH_VETO,
         proposalId: Long.fromNumber(5),

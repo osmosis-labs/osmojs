@@ -1,11 +1,11 @@
 import { coin } from '@cosmjs/amino';
 import Long from 'long';
 import { MsgJoinPool } from '../src/proto/osmosis/gamm/v1beta1/tx';
-import { encoded } from '../src/proto/osmosis/gamm/v1beta1/tx.encoded';
+import { MessageComposer  } from '../src/proto/osmosis/gamm/v1beta1/tx.registry';
 import { osmosis } from '../src/proto';
 
 it('encoded', async () => {
-  const msg = encoded.joinPool({
+  const msg = MessageComposer.encoded.joinPool({
     poolId: Long.fromString('606'),
     sender: 'osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc',
     shareOutAmount: '101010101',
@@ -28,7 +28,7 @@ it('encoded', async () => {
 });
 
 it('encoded.scoped', async () => {
-  const msg =  osmosis.gamm.v1beta1.encoded.joinPool({
+  const msg =  osmosis.gamm.v1beta1.MessageComposer.encoded.joinPool({
     poolId: Long.fromString('606'),
     sender: 'osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc',
     shareOutAmount: '101010101',

@@ -38,3 +38,29 @@ Object {
   "owner": "osmo1RedactedAddress",
 }
 `;
+
+exports[`fromJSON 1`] = `
+Object {
+  "coins": Array [
+    Object {
+      "amount": "10236850525923652977",
+      "denom": "gamm/pool/3",
+    },
+  ],
+  "duration": "1209600",
+  "owner": "osmo1RedactedAddress",
+}
+`;
+
+exports[`toJSON 1`] = `
+Object {
+  "coins": Array [
+    Object {
+      "amount": "10236850525923652977",
+      "denom": "gamm/pool/3",
+    },
+  ],
+  "duration": "1209600",
+  "owner": "osmo1RedactedAddress",
+}
+`;

@@ -1,5 +1,5 @@
 import { coin } from '@cosmjs/amino';
-import { AminoConverter } from '../../src/proto/osmosis/lockup/tx.aminos';
+import { AminoConverter } from '../../src/proto/osmosis/lockup/tx.amino';
 import { osmosis } from '../../src/proto';
 import Long from 'long';
 
@@ -14,7 +14,8 @@ it('toJSON', () => {
       }
     ]
   });
-  console.log(JSON.stringify(msg, null, 2));
+  // console.log(JSON.stringify(msg, null, 2));
+  expect(msg).toMatchSnapshot();
 });
 
 it('fromJSON', () => {
@@ -28,10 +29,11 @@ it('fromJSON', () => {
       }
     ]
   });
-  console.log(JSON.stringify(msg, null, 2));
+  // console.log(JSON.stringify(msg, null, 2));
+  expect(msg).toMatchSnapshot();
 });
 
-it('AminoConverter.MsgLockTokens', async () => {
+xit('AminoConverter.MsgLockTokens', async () => {
   const msg = AminoConverter['/osmosis.lockup.MsgLockTokens'].toAmino({
     owner: 'osmo1RedactedAddress',
     duration: '1209600',

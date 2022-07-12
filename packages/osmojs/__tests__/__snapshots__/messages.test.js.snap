@@ -4,11 +4,7 @@ exports[`messages 1`] = `
 Object {
   "typeUrl": "/osmosis.gamm.v1beta1.MsgJoinPool",
   "value": Object {
-    "poolId": Long {
-      "high": 0,
-      "low": 606,
-      "unsigned": false,
-    },
+    "poolId": "606",
     "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
     "shareOutAmount": "101010101",
     "tokenInMaxs": Array [
@@ -29,11 +25,7 @@ exports[`messages.scoped 1`] = `
 Object {
   "typeUrl": "/osmosis.gamm.v1beta1.MsgJoinPool",
   "value": Object {
-    "poolId": Long {
-      "high": 0,
-      "low": 606,
-      "unsigned": false,
-    },
+    "poolId": "606",
     "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
     "shareOutAmount": "101010101",
     "tokenInMaxs": Array [

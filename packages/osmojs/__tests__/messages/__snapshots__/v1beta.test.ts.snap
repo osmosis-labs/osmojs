@@ -26,32 +26,6 @@ Array [
 ]
 `;
 
-exports[`json 1`] = `
-Array [
-  "joinPool",
-  "exitPool",
-  "swapExactAmountIn",
-  "swapExactAmountOut",
-  "joinSwapExternAmountIn",
-  "joinSwapShareAmountOut",
-  "exitSwapExternAmountOut",
-  "exitSwapShareAmountIn",
-]
-`;
-
-exports[`messages 1`] = `
-Array [
-  "joinPool",
-  "exitPool",
-  "swapExactAmountIn",
-  "swapExactAmountOut",
-  "joinSwapExternAmountIn",
-  "joinSwapShareAmountOut",
-  "exitSwapExternAmountOut",
-  "exitSwapShareAmountIn",
-]
-`;
-
 exports[`toJSON 1`] = `
 Array [
   "joinPool",

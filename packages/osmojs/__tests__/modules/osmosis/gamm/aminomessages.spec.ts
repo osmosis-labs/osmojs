@@ -5,7 +5,7 @@ import {
   AminoTypes,
 } from '@cosmjs/stargate';
 
-import { AminoMsgJoinPool, AminoMsgSwapExactAmountIn, AminoConverter } from "../../../../src/proto/osmosis/gamm/v1beta1/tx.aminos";
+import { AminoMsgJoinPool, AminoMsgSwapExactAmountIn, AminoConverter } from "../../../../src/proto/osmosis/gamm/v1beta1/tx.amino";
 
 describe("AminoTypes", () => {
   describe("toAmino", () => {
@@ -18,7 +18,7 @@ describe("AminoTypes", () => {
           coin(1234, "uosmo")
         ]
       };
-      const aminoTypes = new AminoTypes({ additions: AminoConverter });
+      const aminoTypes = new AminoTypes({ ...AminoConverter });
       const aminoMsg = aminoTypes.toAmino({
         typeUrl: "/osmosis.gamm.v1beta1.MsgJoinPool",
         value: msg,
@@ -52,7 +52,7 @@ describe("AminoTypes", () => {
         },
         tokenOutMinAmount: '6036'
       };
-      const aminoTypes = new AminoTypes({ additions: AminoConverter });
+      const aminoTypes = new AminoTypes({ ...AminoConverter });
       const aminoMsg = aminoTypes.toAmino({
         typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountIn",
         value: msg,
@@ -91,7 +91,7 @@ describe("AminoTypes", () => {
           ]
         },
       };
-      const msg = new AminoTypes({ additions: AminoConverter }).fromAmino(aminoMsg);
+      const msg = new AminoTypes({ ...AminoConverter }).fromAmino(aminoMsg);
       const expectedValue: MsgJoinPool = {
         sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
         poolId: Long.fromNumber(3),
@@ -123,7 +123,7 @@ describe("AminoTypes", () => {
           tokenOutMinAmount: '6036'
         },
       };
-      const msg = new AminoTypes({ additions: AminoConverter }).fromAmino(aminoMsg);
+      const msg = new AminoTypes({ ...AminoConverter }).fromAmino(aminoMsg);
       const expectedValue: MsgSwapExactAmountIn = {
         sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
         routes: [

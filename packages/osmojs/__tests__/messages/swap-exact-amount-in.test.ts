@@ -1,5 +1,5 @@
 import { coin } from '@cosmjs/amino';
-import { AminoConverter } from '../../src/proto/osmosis/gamm/v1beta1/tx.aminos';
+import { AminoConverter } from '../../src/proto/osmosis/gamm/v1beta1/tx.amino';
 import { osmosis } from '../../src/proto';
 
 it('AminoConverter.MsgSwapExactAmountIn', async () => {
