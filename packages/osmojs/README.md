@@ -71,7 +71,7 @@ Use `getSigningOsmosisClient` to get your `SigningStargateClient`, with the Osmo
 import { getSigningOsmosisClient } from 'osmojs';
 
 const client = await getSigningOsmosisClient({
-  rpcEndpoint: rpcEndpoint,
+  rpcEndpoint,
   signer // OfflineSigner
 });
 ```
