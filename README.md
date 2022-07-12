@@ -1,4 +1,17 @@
 # OsmoJS 
+
+<p align="center">
+  <img width="150" src="https://user-images.githubusercontent.com/545047/178600364-accb0c63-1935-4756-a457-e38b45e3289d.png">
+</p>
+
+<p align="center" width="100%">
+  <a href="https://github.com/osmosis-labs/osmojs/actions/workflows/run-tests.yaml">
+    <img height="20" src="https://github.com/osmosis-labs/osmojs/actions/workflows/run-tests.yaml/badge.svg" />
+  </a>
+   <a href="https://github.com/osmosis-labs/osmojs/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+   <a href="https://www.npmjs.com/package/osmojs"><img height="20" src="https://img.shields.io/github/package-json/v/osmosis-labs/osmojs?filename=packages%osmojs%2Fpackage.json"></a>
+</p>
+
 ## usage
 
 ```sh
