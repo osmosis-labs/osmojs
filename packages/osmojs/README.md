@@ -59,8 +59,11 @@ const msg = swapExactAmountIn({
 
 (If you want to see an example of calculating `routes` and `tokenOutMinAmount` cosmology uses osmojs and has an [example here](https://github.com/cosmology-finance/cosmology/tree/master/packages/core#lookuproutesfortrade).)
 
+### Calculating Fees
+
 Make sure to create a `fee` object in addition to your message.
 
+For most messages, you can use the predefined fee objects.
 
 ```ts
 import { FEE_VALUES } from 'osmojs';
@@ -78,6 +81,22 @@ const fee = {
     gas: '250000'
 }
 ```
+
+if you are broadcasting multiple messages in a batch, you should `simulate` your tx and estimate the fee
+
+```js
+import { Dec, IntPretty } from '@keplr-wallet/unit';
+
+const gasEstimated = await stargateClient.simulate(address, msgs, memo);
+const fee = {
+  amount: coins(0, 'uosmo'),
+  gas: new IntPretty(new Dec(gasEstimated).mul(new Dec(1.3)))
+    .maxDecimals(0)
+    .locale(false)
+    .toString()
+};
+```
+
 ### Initializing the Stargate Client
 
 Use `getSigningOsmosisClient` to get your `SigningStargateClient`, with the Osmosis proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
@@ -181,10 +200,10 @@ const {
 ```
 ### Advanced Usage
 
-[documentation](https://github.com/osmosis-labs/telescope/tree/master/packages/osmojs/docs)
+[documentation](https://github.com/osmosis-labs/osmosjs/tree/main/packages/osmojs/docs)
 
 ## Disclaimer
 
 AS DESCRIBED IN THE OSMOSIS LICENSES, THE SOFTWARE IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
 
-No developer or entity involved in creating Telescope will be liable for any claims or damages whatsoever associated with your use, inability to use, or your interaction with other users of the Telescope code or Telescope CLI, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
+No developer or entity involved in creating OsmoJS will be liable for any claims or damages whatsoever associated with your use, inability to use, or your interaction with other users of the OsmoJS code, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
