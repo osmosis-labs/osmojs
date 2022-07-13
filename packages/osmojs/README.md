@@ -1,7 +1,9 @@
 # OsmoJS 
 
 <p align="center">
-  <img width="150" src="https://user-images.githubusercontent.com/545047/178600364-accb0c63-1935-4756-a457-e38b45e3289d.png">
+  <a href="https://github.com/osmosis-labs/osmojs">
+    <img width="150" src="https://user-images.githubusercontent.com/545047/178600364-accb0c63-1935-4756-a457-e38b45e3289d.png">
+  </a>
 </p>
 
 <p align="center" width="100%">
@@ -9,9 +11,12 @@
     <img height="20" src="https://github.com/osmosis-labs/osmojs/actions/workflows/run-tests.yaml/badge.svg" />
   </a>
    <a href="https://github.com/osmosis-labs/osmojs/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
-   <a href="https://www.npmjs.com/package/osmojs"><img height="20" src="https://img.shields.io/github/package-json/v/osmosis-labs/osmojs?filename=packages%osmojs%2Fpackage.json"></a>
+   <a href="https://www.npmjs.com/package/osmojs"><img height="20" src="https://img.shields.io/github/package-json/v/osmosis-labs/osmojs?filename=packages%2Fosmojs%2Fpackage.json"></a>
 </p>
 
+[OsmosJS](https://github.com/osmosis-labs/osmojs) makes it easy to compose and broadcast Osmosis and Cosmos messages, with all of the proto and amino encoding handled for you.
+
+---
 ## usage
 
 ```sh
@@ -51,6 +56,8 @@ const msg = swapExactAmountIn({
   tokenOutMinAmount
 });
 ```
+
+(If you want to see an example of calculating `routes` and `tokenOutMinAmount` cosmology uses osmojs and has an [example here](https://github.com/cosmology-finance/cosmology/tree/master/packages/core#lookuproutesfortrade).)
 
 Make sure to create a `fee` object in addition to your message.
 
