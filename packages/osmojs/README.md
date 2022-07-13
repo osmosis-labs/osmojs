@@ -23,8 +23,7 @@ npm install osmojs
 Import the `osmosis` object from `osmojs`. In this case, we're show the messages available from the `osmosis.gamm.v1beta1` module:
 
 ```js
-import { coin, coins } from '@cosmjs/amino';
-import { osmosis, FEE_VALUES } from 'osmojs';
+import { osmosis } from 'osmojs';
 
 const {
     joinPool,
@@ -38,9 +37,13 @@ const {
 } = osmosis.gamm.v1beta1.MessageComposer.withTypeUrl;
 ```
 
+To see a complete list of messages, [see the section below](#osmosis-messages).
+
 Now you can construct messages. If you use vscode or another typescript-enabled IDE, you should also be able to use `ctrl+space` to see auto-completion of the fields required for the message.
 
 ```js
+import { coin } from '@cosmjs/amino';
+
 const msg = swapExactAmountIn({
   sender,
   routes,
@@ -51,13 +54,18 @@ const msg = swapExactAmountIn({
 
 Make sure to create a `fee` object in addition to your message.
 
+
 ```ts
+import { FEE_VALUES } from 'osmojs';
+
 const fee = FEE_VALUES.osmosis.swapExactAmountIn;
 ```
 
 Or you can construct manually if you wish:
 
 ```js
+import { coins } from '@cosmjs/amino';
+
 const fee = {
     amount: coins(0, 'uosmo'),
     gas: '250000'
@@ -84,6 +92,7 @@ import { signAndBroadcast } from 'osmojs';
 
 const res = await signAndBroadcast({
   client,
+  // use 'osmo-test-4' for testnet
   chainId: 'osmosis-1',
   address,
   msgs: [msg],
@@ -92,6 +101,77 @@ const res = await signAndBroadcast({
 });
 ```
 
+### Osmosis Messages
+
+```js
+import { osmosis } from 'osmojs';
+
+const {
+    beginUnlocking,
+    beginUnlockingAll,
+    lockTokens
+} = osmosis.lockup.MessageComposer.withTypeUrl;
+
+const {
+    lockAndSuperfluidDelegate,
+    superfluidDelegate,
+    superfluidUnbondLock,
+    superfluidUndelegate
+} = osmosis.superfluid.MessageComposer.withTypeUrl;
+
+const {
+    addToGauge,
+    createGauge
+} = osmosis.incentives.MessageComposer.withTypeUrl;
+
+const {
+    joinPool,
+    exitPool,
+    exitSwapExternAmountOut,
+    exitSwapShareAmountIn,
+    joinSwapExternAmountIn,
+    joinSwapShareAmountOut,
+    swapExactAmountIn,
+    swapExactAmountOut
+} = osmosis.gamm.v1beta1.MessageComposer.withTypeUrl;
+```
+
+### Cosmos and other Messages
+
+```js
+import { ibc, cosmos } from 'osmojs';
+
+const {
+    transfer
+} = ibc.applications.transfer.v1.MessageComposer.withTypeUrl
+
+const {
+    fundCommunityPool,
+    setWithdrawAddress,
+    withdrawDelegatorReward,
+    withdrawValidatorCommission
+} = cosmos.distribution.v1beta1.MessageComposer.fromPartial;
+
+const {
+    multiSend,
+    send
+} = cosmos.bank.v1beta1.MessageComposer.fromPartial;
+
+const {
+    beginRedelegate,
+    createValidator,
+    delegate,
+    editValidator,
+    undelegate
+} = cosmos.staking.v1beta1.MessageComposer.fromPartial;
+
+const {
+    deposit,
+    submitProposal,
+    vote,
+    voteWeighted
+} = cosmos.gov.v1beta1.MessageComposer.fromPartial;
+```
 ### Advanced Usage
 
 [documentation](https://github.com/osmosis-labs/telescope/tree/master/packages/osmojs/docs)
