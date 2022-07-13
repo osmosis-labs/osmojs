@@ -162,14 +162,20 @@ const {
 } = osmosis.gamm.v1beta1.MessageComposer.withTypeUrl;
 ```
 
-### Cosmos and other Messages
+### IBC Messages
 
 ```js
-import { ibc, cosmos } from 'osmojs';
+import { ibc } from 'osmojs';
 
 const {
     transfer
 } = ibc.applications.transfer.v1.MessageComposer.withTypeUrl
+```
+
+### Cosmos Messages
+
+```js
+import { cosmos } from 'osmojs';
 
 const {
     fundCommunityPool,
@@ -198,9 +204,25 @@ const {
     voteWeighted
 } = cosmos.gov.v1beta1.MessageComposer.fromPartial;
 ```
+
+### CosmWasm Messages
+
+```js
+import { cosmwasm } from "osmojs";
+
+const {
+    clearAdmin,
+    executeContract,
+    instantiateContract,
+    migrateContract,
+    storeCode,
+    updateAdmin
+} = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
+```
+
 ### Advanced Usage
 
-[documentation](https://github.com/osmosis-labs/osmosjs/tree/main/packages/osmojs/docs)
+[documentation](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs)
 
 ## Disclaimer
 

@@ -42,3 +42,46 @@ export const getSigningOsmosisClient = async ({ rpcEndpoint, signer }: { rpcEndp
   return client;
 };
 ```
+
+### using mnemonics
+
+```js
+import { Secp256k1HdWallet } from '@cosmjs/amino';
+import { Slip10RawIndex } from '@cosmjs/crypto';
+import { chains } from 'chain-registry';
+
+export function makeHdPath(coinType = 118, account = 0) {
+    return [
+        Slip10RawIndex.hardened(44),
+        Slip10RawIndex.hardened(coinType),
+        Slip10RawIndex.hardened(0),
+        Slip10RawIndex.normal(0),
+        Slip10RawIndex.normal(account)
+    ];
+}
+
+export const getWalletFromMnemonicForChain = async ({ mnemonic, chain }): Promise<Secp256k1HdWallet> => {
+    try {
+        const { bech32_prefix, slip44 } = chain;
+        const wallet = await Secp256k1HdWallet.fromMnemonic(mnemonic, {
+            prefix: bech32_prefix,
+            hdPaths: [makeHdPath(slip44, 0)]
+        });
+        return wallet;
+    } catch (e) {
+        console.log('bad mnemonic');
+    }
+};
+
+// now you can create a signer
+// NOT RECOMMENDED TO USE PLAIN-TEXT MNEMONICS
+
+const mnemonic =
+  'unfold client turtle either pilot stock floor glow toward bullet car science';
+  const chain = chains.find(({ chain_name }) => chain_name === 'osmosis');
+  const signer = await getWalletFromMnemonicForChain({
+    mnemonic,
+    chain
+  });
+
+```
