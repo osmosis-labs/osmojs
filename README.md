@@ -57,7 +57,7 @@ const msg = swapExactAmountIn({
 });
 ```
 
-(If you want to see an example of calculating `routes` and `tokenOutMinAmount` cosmology uses osmojs and has an [example here](https://github.com/cosmology-finance/cosmology/tree/master/packages/core#lookuproutesfortrade).)
+(If you want to see an example of calculating `routes` and `tokenOutMinAmount` cosmology uses osmojs and has an [example here](https://github.com/cosmology-tech/cosmology/tree/master/packages/core#lookuproutesfortrade).)
 
 ### Calculating Fees
 
