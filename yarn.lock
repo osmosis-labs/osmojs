@@ -3339,10 +3339,10 @@
   dependencies:
     "@octokit/openapi-types" "^12.7.0"
 
-"@osmonauts/ast@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.4.1.tgz#044814cd867d87755f3c4aff94073a802dc07abe"
-  integrity sha512-RFewyeFbZVYOhTyw0ymAL810zx6UEGxnstHnb/mwEq6Zrx7vJ7t7KfqyuL9CTl7q8Y/HdWX0idophIAen1/Nbw==
+"@osmonauts/ast@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.4.2.tgz#51c44387e842bb1a555270d93ab95bb451fef091"
+  integrity sha512-iR0W059bqRJxlz6o3kV7yUkZF2xVqX0KGuWX/ekC15JmTRh4ZGQgMbCWg9KEXCnZ7mf21EfXbC3Nkiukd44uYA==
   dependencies:
     "@babel/runtime" "^7.18.3"
     "@babel/types" "7.18.4"
@@ -3379,10 +3379,10 @@
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.6.1.tgz#e105af6a485b725272dbc54b7c0d5bd8286038a1"
-  integrity sha512-nv7UJ9SKuNiHRpPfdlRx7d1mCAJezNEs2gkYjxoXyGfUDfThSgKKd1TGH0V2OgaXYJthaX4RObCvk3FbC3C1GA==
+"@osmonauts/telescope@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.6.2.tgz#1b7e9a70af74f6fda05d8f78e1df5b86b343a6dc"
+  integrity sha512-G33Tu8NnpXNedQFpyUmVqbDLRadYxrC1FsvfnoRAvuMOlRpz/IJuF23rA5YkJQurch6tFryIOraKo5ryHYE/qg==
   dependencies:
     "@babel/core" "7.18.5"
     "@babel/generator" "7.18.2"
@@ -3396,7 +3396,7 @@
     "@babel/runtime" "^7.18.3"
     "@babel/traverse" "7.18.5"
     "@babel/types" "7.18.4"
-    "@osmonauts/ast" "^0.4.1"
+    "@osmonauts/ast" "^0.4.2"
     "@osmonauts/proto-parser" "^0.5.1"
     "@osmonauts/types" "^0.4.1"
     "@types/parse-package-name" "0.1.0"
