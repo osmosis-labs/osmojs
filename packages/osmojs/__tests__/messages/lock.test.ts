@@ -18,7 +18,7 @@ it('toJSON', () => {
   expect(msg).toMatchSnapshot();
 });
 
-it('fromJSON', () => {
+xit('fromJSON', () => {
   const msg = osmosis.lockup.MsgLockTokens.fromJSON({
     owner: 'osmo1RedactedAddress',
     duration: '1209600',
