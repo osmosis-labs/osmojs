@@ -1,7 +1,6 @@
-import { OfflineSigner, GeneratedType } from "@cosmjs/proto-signing";
+import { OfflineSigner } from "@cosmjs/proto-signing";
 import { SigningStargateClient } from "@cosmjs/stargate";
-export declare const getSigningCosmosClient: ({ rpcEndpoint, signer, defaultTypes }: {
+export declare const getSigningCosmosClient: ({ rpcEndpoint, signer }: {
     rpcEndpoint: string;
     signer: OfflineSigner;
-    defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => Promise<SigningStargateClient>;

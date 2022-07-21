@@ -1,3 +1,4 @@
+import { Duration } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
@@ -31,7 +32,7 @@ export interface ValidatorSigningInfo {
 export interface Params {
     signedBlocksWindow: Long;
     minSignedPerWindow: Uint8Array;
-    downtimeJailDuration: string;
+    downtimeJailDuration: Duration;
     slashFractionDoubleSign: Uint8Array;
     slashFractionDowntime: Uint8Array;
 }

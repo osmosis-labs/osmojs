@@ -1,3 +1,4 @@
+import { Duration } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface Params {
@@ -10,7 +11,7 @@ export interface Params {
     mintedDenom: string;
 }
 export interface LockableDurationsInfo {
-    lockableDurations: string[];
+    lockableDurations: Duration[];
 }
 export interface DistrInfo {
     totalWeight: string;

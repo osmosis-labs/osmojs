@@ -5,11 +5,11 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         createGauge(value: MsgCreateGauge): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         addToGauge(value: MsgAddToGauge): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

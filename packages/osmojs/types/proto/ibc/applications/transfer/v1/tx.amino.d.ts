@@ -1,4 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
+import { AminoHeight } from "@osmonauts/helpers";
 import { MsgTransfer } from "./tx";
 export interface AminoMsgTransfer extends AminoMsg {
     type: "cosmos-sdk/MsgTransfer";
@@ -11,10 +12,7 @@ export interface AminoMsgTransfer extends AminoMsg {
         };
         sender: string;
         receiver: string;
-        timeout_height: {
-            revision_number: string;
-            revision_height: string;
-        };
+        timeout_height: AminoHeight;
         timeout_timestamp: string;
     };
 }

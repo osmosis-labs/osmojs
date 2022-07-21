@@ -403,15 +403,15 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     grant(value: _12.MsgGrant): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     exec(value: _12.MsgExec): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     revoke(value: _12.MsgRevoke): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -804,11 +804,11 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     send(value: _17.MsgSend): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     multiSend(value: _17.MsgMultiSend): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -2912,7 +2912,7 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     verifyInvariant(value: _31.MsgVerifyInvariant): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -3166,19 +3166,19 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     setWithdrawAddress(value: _41.MsgSetWithdrawAddress): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     withdrawDelegatorReward(value: _41.MsgWithdrawDelegatorReward): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     withdrawValidatorCommission(value: _41.MsgWithdrawValidatorCommission): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     fundCommunityPool(value: _41.MsgFundCommunityPool): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -3929,7 +3929,7 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     submitEvidence(value: _45.MsgSubmitEvidence): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -4084,11 +4084,11 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     grantAllowance(value: _49.MsgGrantAllowance): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     revokeAllowance(value: _49.MsgRevokeAllowance): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -4343,7 +4343,10 @@ export declare namespace cosmos {
                         }[];
                         expiration?: Date;
                     };
-                    period?: string;
+                    period?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                     periodSpendLimit?: {
                         denom?: string;
                         amount?: string;
@@ -4404,23 +4407,23 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     submitProposal(value: _54.MsgSubmitProposal): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     execLegacyContent(value: _54.MsgExecLegacyContent): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     vote(value: _54.MsgVote): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     voteWeighted(value: _54.MsgVoteWeighted): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     deposit(value: _54.MsgDeposit): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -4896,14 +4899,20 @@ export declare namespace cosmos {
                 toJSON(message: _53.QueryParamsResponse): unknown;
                 fromPartial(object: {
                     votingParams?: {
-                        votingPeriod?: string;
+                        votingPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                     depositParams?: {
                         minDeposit?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                        maxDepositPeriod?: string;
+                        maxDepositPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                     tallyParams?: {
                         quorum?: string;
@@ -5093,7 +5102,10 @@ export declare namespace cosmos {
                         denom?: string;
                         amount?: string;
                     }[];
-                    maxDepositPeriod?: string;
+                    maxDepositPeriod?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                 }): _52.DepositParams;
             };
             VotingParams: {
@@ -5102,7 +5114,10 @@ export declare namespace cosmos {
                 fromJSON(object: any): _52.VotingParams;
                 toJSON(message: _52.VotingParams): unknown;
                 fromPartial(object: {
-                    votingPeriod?: string;
+                    votingPeriod?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                 }): _52.VotingParams;
             };
             TallyParams: {
@@ -5168,10 +5183,16 @@ export declare namespace cosmos {
                             denom?: string;
                             amount?: string;
                         }[];
-                        maxDepositPeriod?: string;
+                        maxDepositPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                     votingParams?: {
-                        votingPeriod?: string;
+                        votingPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                     tallyParams?: {
                         quorum?: string;
@@ -5187,19 +5208,19 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     submitProposal(value: _58.MsgSubmitProposal): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     vote(value: _58.MsgVote): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     voteWeighted(value: _58.MsgVoteWeighted): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     deposit(value: _58.MsgDeposit): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -5611,14 +5632,20 @@ export declare namespace cosmos {
                 toJSON(message: _57.QueryParamsResponse): unknown;
                 fromPartial(object: {
                     votingParams?: {
-                        votingPeriod?: string;
+                        votingPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                     depositParams?: {
                         minDeposit?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                        maxDepositPeriod?: string;
+                        maxDepositPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                     tallyParams?: {
                         quorum?: Uint8Array;
@@ -5817,7 +5844,10 @@ export declare namespace cosmos {
                         denom?: string;
                         amount?: string;
                     }[];
-                    maxDepositPeriod?: string;
+                    maxDepositPeriod?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                 }): _56.DepositParams;
             };
             VotingParams: {
@@ -5826,7 +5856,10 @@ export declare namespace cosmos {
                 fromJSON(object: any): _56.VotingParams;
                 toJSON(message: _56.VotingParams): unknown;
                 fromPartial(object: {
-                    votingPeriod?: string;
+                    votingPeriod?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                 }): _56.VotingParams;
             };
             TallyParams: {
@@ -5891,10 +5924,16 @@ export declare namespace cosmos {
                             denom?: string;
                             amount?: string;
                         }[];
-                        maxDepositPeriod?: string;
+                        maxDepositPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                     votingParams?: {
-                        votingPeriod?: string;
+                        votingPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                     tallyParams?: {
                         quorum?: Uint8Array;
@@ -5912,59 +5951,59 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     createGroup(value: _62.MsgCreateGroup): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     updateGroupMembers(value: _62.MsgUpdateGroupMembers): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     updateGroupAdmin(value: _62.MsgUpdateGroupAdmin): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     updateGroupMetadata(value: _62.MsgUpdateGroupMetadata): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     createGroupPolicy(value: _62.MsgCreateGroupPolicy): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     createGroupWithPolicy(value: _62.MsgCreateGroupWithPolicy): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     updateGroupPolicyAdmin(value: _62.MsgUpdateGroupPolicyAdmin): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     updateGroupPolicyDecisionPolicy(value: _62.MsgUpdateGroupPolicyDecisionPolicy): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     updateGroupPolicyMetadata(value: _62.MsgUpdateGroupPolicyMetadata): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     submitProposal(value: _62.MsgSubmitProposal): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     withdrawProposal(value: _62.MsgWithdrawProposal): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     vote(value: _62.MsgVote): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     exec(value: _62.MsgExec): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     leaveGroup(value: _62.MsgLeaveGroup): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -6513,8 +6552,14 @@ export declare namespace cosmos {
                 fromPartial(object: {
                     threshold?: string;
                     windows?: {
-                        votingPeriod?: string;
-                        minExecutionPeriod?: string;
+                        votingPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
+                        minExecutionPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                 }): _63.ThresholdDecisionPolicy;
             };
@@ -6526,8 +6571,14 @@ export declare namespace cosmos {
                 fromPartial(object: {
                     percentage?: string;
                     windows?: {
-                        votingPeriod?: string;
-                        minExecutionPeriod?: string;
+                        votingPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
+                        minExecutionPeriod?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                     };
                 }): _63.PercentageDecisionPolicy;
             };
@@ -6537,8 +6588,14 @@ export declare namespace cosmos {
                 fromJSON(object: any): _63.DecisionPolicyWindows;
                 toJSON(message: _63.DecisionPolicyWindows): unknown;
                 fromPartial(object: {
-                    votingPeriod?: string;
-                    minExecutionPeriod?: string;
+                    votingPeriod?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
+                    minExecutionPeriod?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                 }): _63.DecisionPolicyWindows;
             };
             GroupInfo: {
@@ -7658,7 +7715,7 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     send(value: _72.MsgSend): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -8207,7 +8264,7 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     unjail(value: _80.MsgUnjail): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -8285,7 +8342,10 @@ export declare namespace cosmos {
                 fromPartial(object: {
                     signedBlocksWindow?: any;
                     minSignedPerWindow?: Uint8Array;
-                    downtimeJailDuration?: string;
+                    downtimeJailDuration?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                     slashFractionDoubleSign?: Uint8Array;
                     slashFractionDowntime?: Uint8Array;
                 }): _79.Params;
@@ -8306,7 +8366,10 @@ export declare namespace cosmos {
                     params?: {
                         signedBlocksWindow?: any;
                         minSignedPerWindow?: Uint8Array;
-                        downtimeJailDuration?: string;
+                        downtimeJailDuration?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                         slashFractionDoubleSign?: Uint8Array;
                         slashFractionDowntime?: Uint8Array;
                     };
@@ -8381,7 +8444,10 @@ export declare namespace cosmos {
                     params?: {
                         signedBlocksWindow?: any;
                         minSignedPerWindow?: Uint8Array;
-                        downtimeJailDuration?: string;
+                        downtimeJailDuration?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                         slashFractionDoubleSign?: Uint8Array;
                         slashFractionDowntime?: Uint8Array;
                     };
@@ -8454,23 +8520,23 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     createValidator(value: _85.MsgCreateValidator): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     editValidator(value: _85.MsgEditValidator): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     delegate(value: _85.MsgDelegate): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     beginRedelegate(value: _85.MsgBeginRedelegate): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     undelegate(value: _85.MsgUndelegate): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -9102,7 +9168,10 @@ export declare namespace cosmos {
                 fromJSON(object: any): _84.Params;
                 toJSON(message: _84.Params): unknown;
                 fromPartial(object: {
-                    unbondingTime?: string;
+                    unbondingTime?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                     maxValidators?: number;
                     maxEntries?: number;
                     historicalEntries?: number;
@@ -9756,7 +9825,10 @@ export declare namespace cosmos {
                 toJSON(message: _83.QueryParamsResponse): unknown;
                 fromPartial(object: {
                     params?: {
-                        unbondingTime?: string;
+                        unbondingTime?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                         maxValidators?: number;
                         maxEntries?: number;
                         historicalEntries?: number;
@@ -9772,7 +9844,10 @@ export declare namespace cosmos {
                 toJSON(message: _82.GenesisState): unknown;
                 fromPartial(object: {
                     params?: {
-                        unbondingTime?: string;
+                        unbondingTime?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                         maxValidators?: number;
                         maxEntries?: number;
                         historicalEntries?: number;
@@ -10933,11 +11008,11 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     softwareUpgrade(value: _90.MsgSoftwareUpgrade): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     cancelUpgrade(value: _90.MsgCancelUpgrade): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };
@@ -11233,15 +11308,15 @@ export declare namespace cosmos {
             MessageComposer: {
                 encoded: {
                     createVestingAccount(value: _92.MsgCreateVestingAccount): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     createPermanentLockedAccount(value: _92.MsgCreatePermanentLockedAccount): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     createPeriodicVestingAccount(value: _92.MsgCreatePeriodicVestingAccount): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };

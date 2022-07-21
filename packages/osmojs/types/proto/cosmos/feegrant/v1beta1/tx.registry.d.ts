@@ -5,11 +5,11 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         grantAllowance(value: MsgGrantAllowance): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         revokeAllowance(value: MsgRevokeAllowance): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

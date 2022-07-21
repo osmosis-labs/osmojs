@@ -5,11 +5,11 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         send(value: MsgSend): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         multiSend(value: MsgMultiSend): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

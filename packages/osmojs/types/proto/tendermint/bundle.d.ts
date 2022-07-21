@@ -52,7 +52,10 @@ export declare namespace tendermint {
                         };
                         evidence?: {
                             maxAgeNumBlocks?: any;
-                            maxAgeDuration?: string;
+                            maxAgeDuration?: {
+                                seconds?: any;
+                                nanos?: number;
+                            };
                             maxBytes?: any;
                         };
                         validator?: {
@@ -212,7 +215,10 @@ export declare namespace tendermint {
                     };
                     evidence?: {
                         maxAgeNumBlocks?: any;
-                        maxAgeDuration?: string;
+                        maxAgeDuration?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                         maxBytes?: any;
                     };
                     validator?: {
@@ -412,7 +418,10 @@ export declare namespace tendermint {
                         };
                         evidence?: {
                             maxAgeNumBlocks?: any;
-                            maxAgeDuration?: string;
+                            maxAgeDuration?: {
+                                seconds?: any;
+                                nanos?: number;
+                            };
                             maxBytes?: any;
                         };
                         validator?: {
@@ -507,7 +516,10 @@ export declare namespace tendermint {
                         };
                         evidence?: {
                             maxAgeNumBlocks?: any;
-                            maxAgeDuration?: string;
+                            maxAgeDuration?: {
+                                seconds?: any;
+                                nanos?: number;
+                            };
                             maxBytes?: any;
                         };
                         validator?: {
@@ -614,7 +626,10 @@ export declare namespace tendermint {
                     };
                     evidence?: {
                         maxAgeNumBlocks?: any;
-                        maxAgeDuration?: string;
+                        maxAgeDuration?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                         maxBytes?: any;
                     };
                     validator?: {
@@ -739,7 +754,10 @@ export declare namespace tendermint {
                     };
                     evidence?: {
                         maxAgeNumBlocks?: any;
-                        maxAgeDuration?: string;
+                        maxAgeDuration?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
                         maxBytes?: any;
                     };
                     validator?: {
@@ -825,7 +843,10 @@ export declare namespace tendermint {
                 };
                 evidence?: {
                     maxAgeNumBlocks?: any;
-                    maxAgeDuration?: string;
+                    maxAgeDuration?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                     maxBytes?: any;
                 };
                 validator?: {
@@ -1556,7 +1577,10 @@ export declare namespace tendermint {
                 };
                 evidence?: {
                     maxAgeNumBlocks?: any;
-                    maxAgeDuration?: string;
+                    maxAgeDuration?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
                     maxBytes?: any;
                 };
                 validator?: {
@@ -1585,7 +1609,10 @@ export declare namespace tendermint {
             toJSON(message: _176.EvidenceParams): unknown;
             fromPartial(object: {
                 maxAgeNumBlocks?: any;
-                maxAgeDuration?: string;
+                maxAgeDuration?: {
+                    seconds?: any;
+                    nanos?: number;
+                };
                 maxBytes?: any;
             }): _176.EvidenceParams;
         };

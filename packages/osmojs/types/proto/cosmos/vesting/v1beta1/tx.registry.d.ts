@@ -5,15 +5,15 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         createVestingAccount(value: MsgCreateVestingAccount): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         createPermanentLockedAccount(value: MsgCreatePermanentLockedAccount): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         createPeriodicVestingAccount(value: MsgCreatePeriodicVestingAccount): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

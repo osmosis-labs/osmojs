@@ -5,19 +5,19 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         createClient(value: MsgCreateClient): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         updateClient(value: MsgUpdateClient): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         upgradeClient(value: MsgUpgradeClient): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         submitMisbehaviour(value: MsgSubmitMisbehaviour): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

@@ -5,7 +5,7 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         submitEvidence(value: MsgSubmitEvidence): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

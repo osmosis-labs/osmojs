@@ -39,7 +39,7 @@ export interface Gauge {
   distributedCoins: Coin[];
 }
 export interface LockableDurationsInfo {
-  lockableDurations: string[];
+  lockableDurations: Duration[];
 }
 
 function createBaseGauge(): Gauge {

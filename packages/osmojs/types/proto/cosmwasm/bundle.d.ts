@@ -12,27 +12,27 @@ export declare namespace cosmwasm {
             MessageComposer: {
                 encoded: {
                     storeCode(value: _98.MsgStoreCode): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     instantiateContract(value: _98.MsgInstantiateContract): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     executeContract(value: _98.MsgExecuteContract): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     migrateContract(value: _98.MsgMigrateContract): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     updateAdmin(value: _98.MsgUpdateAdmin): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                     clearAdmin(value: _98.MsgClearAdmin): {
-                        type_url: string;
+                        typeUrl: string;
                         value: Uint8Array;
                     };
                 };

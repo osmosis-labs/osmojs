@@ -1,3 +1,4 @@
+import { Duration } from "../../google/protobuf/duration";
 import { Coin } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
@@ -18,7 +19,7 @@ export declare function lockQueryTypeToJSON(object: LockQueryType): string;
 export interface PeriodLock {
     ID: Long;
     owner: string;
-    duration: string;
+    duration: Duration;
     endTime: Date;
     coins: Coin[];
 }
@@ -28,7 +29,7 @@ export interface QueryCondition {
     /** What token denomination are we looking for lockups of */
     denom: string;
     /** valid when query condition is ByDuration */
-    duration: string;
+    duration: Duration;
     /** valid when query condition is ByTime */
     timestamp: Date;
 }
@@ -57,7 +58,7 @@ export interface SyntheticLock {
      * value is set to uninitialized value
      */
     endTime: Date;
-    duration: string;
+    duration: Duration;
 }
 export declare const PeriodLock: {
     encode(message: PeriodLock, writer?: _m0.Writer): _m0.Writer;

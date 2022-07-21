@@ -1,4 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
+import { AminoHeight } from "@osmonauts/helpers";
 import { MsgConnectionOpenInit, MsgConnectionOpenTry, MsgConnectionOpenAck, MsgConnectionOpenConfirm } from "./tx";
 export interface AminoMsgConnectionOpenInit extends AminoMsg {
     type: "cosmos-sdk/MsgConnectionOpenInit";
@@ -40,17 +41,11 @@ export interface AminoMsgConnectionOpenTry extends AminoMsg {
             identifier: string;
             features: string[];
         }[];
-        proof_height: {
-            revision_number: string;
-            revision_height: string;
-        };
+        proof_height: AminoHeight;
         proof_init: Uint8Array;
         proof_client: Uint8Array;
         proof_consensus: Uint8Array;
-        consensus_height: {
-            revision_number: string;
-            revision_height: string;
-        };
+        consensus_height: AminoHeight;
         signer: string;
     };
 }
@@ -67,17 +62,11 @@ export interface AminoMsgConnectionOpenAck extends AminoMsg {
             type_url: string;
             value: Uint8Array;
         };
-        proof_height: {
-            revision_number: string;
-            revision_height: string;
-        };
+        proof_height: AminoHeight;
         proof_try: Uint8Array;
         proof_client: Uint8Array;
         proof_consensus: Uint8Array;
-        consensus_height: {
-            revision_number: string;
-            revision_height: string;
-        };
+        consensus_height: AminoHeight;
         signer: string;
     };
 }
@@ -86,10 +75,7 @@ export interface AminoMsgConnectionOpenConfirm extends AminoMsg {
     value: {
         connection_id: string;
         proof_ack: Uint8Array;
-        proof_height: {
-            revision_number: string;
-            revision_height: string;
-        };
+        proof_height: AminoHeight;
         signer: string;
     };
 }

@@ -5,11 +5,11 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         softwareUpgrade(value: MsgSoftwareUpgrade): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         cancelUpgrade(value: MsgCancelUpgrade): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

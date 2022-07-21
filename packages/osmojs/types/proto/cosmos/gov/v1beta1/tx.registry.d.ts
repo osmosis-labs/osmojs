@@ -5,19 +5,19 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         submitProposal(value: MsgSubmitProposal): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         vote(value: MsgVote): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         voteWeighted(value: MsgVoteWeighted): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         deposit(value: MsgDeposit): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

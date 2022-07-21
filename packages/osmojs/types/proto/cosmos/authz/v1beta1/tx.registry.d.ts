@@ -5,15 +5,15 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         grant(value: MsgGrant): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         exec(value: MsgExec): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         revoke(value: MsgRevoke): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

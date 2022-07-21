@@ -5,7 +5,7 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         transfer(value: MsgTransfer): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

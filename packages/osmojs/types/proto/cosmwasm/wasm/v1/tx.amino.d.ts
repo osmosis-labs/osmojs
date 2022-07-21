@@ -1,7 +1,7 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgStoreCode, MsgInstantiateContract, MsgExecuteContract, MsgMigrateContract, MsgUpdateAdmin, MsgClearAdmin } from "./tx";
 export interface AminoMsgStoreCode extends AminoMsg {
-    type: "/cosmwasm.wasm.v1.MsgStoreCode";
+    type: "wasm/MsgStoreCode";
     value: {
         sender: string;
         wasm_byte_code: Uint8Array;
@@ -12,7 +12,7 @@ export interface AminoMsgStoreCode extends AminoMsg {
     };
 }
 export interface AminoMsgInstantiateContract extends AminoMsg {
-    type: "/cosmwasm.wasm.v1.MsgInstantiateContract";
+    type: "wasm/MsgInstantiateContract";
     value: {
         sender: string;
         admin: string;
@@ -26,7 +26,7 @@ export interface AminoMsgInstantiateContract extends AminoMsg {
     };
 }
 export interface AminoMsgExecuteContract extends AminoMsg {
-    type: "/cosmwasm.wasm.v1.MsgExecuteContract";
+    type: "wasm/MsgExecuteContract";
     value: {
         sender: string;
         contract: string;
@@ -38,7 +38,7 @@ export interface AminoMsgExecuteContract extends AminoMsg {
     };
 }
 export interface AminoMsgMigrateContract extends AminoMsg {
-    type: "/cosmwasm.wasm.v1.MsgMigrateContract";
+    type: "wasm/MsgMigrateContract";
     value: {
         sender: string;
         contract: string;
@@ -47,7 +47,7 @@ export interface AminoMsgMigrateContract extends AminoMsg {
     };
 }
 export interface AminoMsgUpdateAdmin extends AminoMsg {
-    type: "/cosmwasm.wasm.v1.MsgUpdateAdmin";
+    type: "wasm/MsgUpdateAdmin";
     value: {
         sender: string;
         new_admin: string;
@@ -55,7 +55,7 @@ export interface AminoMsgUpdateAdmin extends AminoMsg {
     };
 }
 export interface AminoMsgClearAdmin extends AminoMsg {
-    type: "/cosmwasm.wasm.v1.MsgClearAdmin";
+    type: "wasm/MsgClearAdmin";
     value: {
         sender: string;
         contract: string;

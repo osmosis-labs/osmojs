@@ -1,3 +1,4 @@
+import { Duration } from "../../../../google/protobuf/duration";
 import { Coin } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
@@ -22,7 +23,7 @@ export interface SmoothWeightChangeParams {
      */
     startTime: Date;
     /** Duration for the weights to change over */
-    duration: string;
+    duration: Duration;
     /**
      * The initial pool weights. These are copied from the pool's settings
      * at the time of weight change instantiation.

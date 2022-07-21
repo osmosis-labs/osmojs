@@ -5,19 +5,19 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         superfluidDelegate(value: MsgSuperfluidDelegate): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         superfluidUndelegate(value: MsgSuperfluidUndelegate): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         superfluidUnbondLock(value: MsgSuperfluidUnbondLock): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

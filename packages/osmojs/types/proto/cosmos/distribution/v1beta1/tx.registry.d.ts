@@ -5,19 +5,19 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         setWithdrawAddress(value: MsgSetWithdrawAddress): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         withdrawDelegatorReward(value: MsgWithdrawDelegatorReward): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         withdrawValidatorCommission(value: MsgWithdrawValidatorCommission): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         fundCommunityPool(value: MsgFundCommunityPool): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

@@ -7,7 +7,7 @@ import { isSet, DeepPartial } from "@osmonauts/helpers";
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
   params: Params;
-  lockableDurations: string[];
+  lockableDurations: Duration[];
   distrInfo?: DistrInfo;
 }
 

@@ -5,15 +5,15 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         lockTokens(value: MsgLockTokens): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         beginUnlockingAll(value: MsgBeginUnlockingAll): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
         beginUnlocking(value: MsgBeginUnlocking): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };

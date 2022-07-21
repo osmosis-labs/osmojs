@@ -5,7 +5,7 @@ export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
     encoded: {
         unjail(value: MsgUnjail): {
-            type_url: string;
+            typeUrl: string;
             value: Uint8Array;
         };
     };
