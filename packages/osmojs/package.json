@@ -1,6 +1,6 @@
 {
   "name": "osmojs",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Typescript Protobuf Messages for Osmosis",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
