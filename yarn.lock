@@ -3350,10 +3350,10 @@
     "@osmonauts/types" "^0.5.0"
     case "1.6.3"
 
-"@osmonauts/helpers@^0.3.10":
-  version "0.3.10"
-  resolved "https://registry.npmjs.org/@osmonauts/helpers/-/helpers-0.3.10.tgz#c4d064249655e6da91efbf42ef984050eff26db0"
-  integrity sha512-MFRaqbXDHQqI48KPyThswwa4RZiansiSNbQcNiz8gIQxWHb3Rz3sq1XZ/GBBAHsToUTJdhSxAPv2j5vgHx6kCA==
+"@osmonauts/helpers@^0.3.11":
+  version "0.3.11"
+  resolved "https://registry.npmjs.org/@osmonauts/helpers/-/helpers-0.3.11.tgz#fac3dc23c03d9bf7fdd9d9f989d9bd8c78ee2dde"
+  integrity sha512-waPw+rs67xO4al3wObFnpj0kdbHFNFzJyutHHmNkE8gQDb4jp/YRdXTZsbJANVOeFrROgaZIcJMzd0zLy4ZBfg==
   dependencies:
     "@babel/runtime" "^7.18.3"
     long "^5.2.0"
