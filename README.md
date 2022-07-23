@@ -220,6 +220,12 @@ const {
 } = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
 ```
 
+### Clients
+
+[RPC Clients](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs/rpc.md)
+
+[LCD Clients](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs/lcd.md)
+
 ### Advanced Usage
 
 [documentation](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs)
