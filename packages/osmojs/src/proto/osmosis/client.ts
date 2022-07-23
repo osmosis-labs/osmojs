@@ -1,14 +1,14 @@
 import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
-import * as osmosisGammPool-modelsBalancerTxRegistry from "./gamm/pool-models/balancer/tx.registry";
-import * as osmosisGammPool-modelsStableswapTxRegistry from "./gamm/pool-models/stableswap/tx.registry";
+import * as osmosisGammPoolmodelsBalancerTxRegistry from "./gamm/pool-models/balancer/tx.registry";
+import * as osmosisGammPoolmodelsStableswapTxRegistry from "./gamm/pool-models/stableswap/tx.registry";
 import * as osmosisGammV1beta1TxRegistry from "./gamm/v1beta1/tx.registry";
 import * as osmosisIncentivesTxRegistry from "./incentives/tx.registry";
 import * as osmosisLockupTxRegistry from "./lockup/tx.registry";
 import * as osmosisSuperfluidTxRegistry from "./superfluid/tx.registry";
 import * as osmosisTokenfactoryV1beta1TxRegistry from "./tokenfactory/v1beta1/tx.registry";
-import * as osmosisGammPool-modelsBalancerTxAmino from "./gamm/pool-models/balancer/tx.amino";
-import * as osmosisGammPool-modelsStableswapTxAmino from "./gamm/pool-models/stableswap/tx.amino";
+import * as osmosisGammPoolmodelsBalancerTxAmino from "./gamm/pool-models/balancer/tx.amino";
+import * as osmosisGammPoolmodelsStableswapTxAmino from "./gamm/pool-models/stableswap/tx.amino";
 import * as osmosisGammV1beta1TxAmino from "./gamm/v1beta1/tx.amino";
 import * as osmosisIncentivesTxAmino from "./incentives/tx.amino";
 import * as osmosisLockupTxAmino from "./lockup/tx.amino";
@@ -23,9 +23,9 @@ export const getSigningOsmosisClient = async ({
   signer: OfflineSigner;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
-  const registry = new Registry([...defaultTypes, ...osmosisGammPool-modelsBalancerTxRegistry.registry, ...osmosisGammPool-modelsStableswapTxRegistry.registry, ...osmosisGammV1beta1TxRegistry.registry, ...osmosisIncentivesTxRegistry.registry, ...osmosisLockupTxRegistry.registry, ...osmosisSuperfluidTxRegistry.registry, ...osmosisTokenfactoryV1beta1TxRegistry.registry]);
-  const aminoTypes = new AminoTypes({ ...osmosisGammPool-modelsBalancerTxAmino.AminoConverter,
-    ...osmosisGammPool-modelsStableswapTxAmino.AminoConverter,
+  const registry = new Registry([...defaultTypes, ...osmosisGammPoolmodelsBalancerTxRegistry.registry, ...osmosisGammPoolmodelsStableswapTxRegistry.registry, ...osmosisGammV1beta1TxRegistry.registry, ...osmosisIncentivesTxRegistry.registry, ...osmosisLockupTxRegistry.registry, ...osmosisSuperfluidTxRegistry.registry, ...osmosisTokenfactoryV1beta1TxRegistry.registry]);
+  const aminoTypes = new AminoTypes({ ...osmosisGammPoolmodelsBalancerTxAmino.AminoConverter,
+    ...osmosisGammPoolmodelsStableswapTxAmino.AminoConverter,
     ...osmosisGammV1beta1TxAmino.AminoConverter,
     ...osmosisIncentivesTxAmino.AminoConverter,
     ...osmosisLockupTxAmino.AminoConverter,
