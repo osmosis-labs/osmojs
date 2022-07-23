@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking } from "./tx";
+import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -13,6 +13,10 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         beginUnlocking(value: MsgBeginUnlocking): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        extendLockup(value: MsgExtendLockup): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -30,6 +34,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgBeginUnlocking;
         };
+        extendLockup(value: MsgExtendLockup): {
+            typeUrl: string;
+            value: MsgExtendLockup;
+        };
     };
     toJSON: {
         lockTokens(value: MsgLockTokens): {
@@ -41,6 +49,10 @@ export declare const MessageComposer: {
             value: unknown;
         };
         beginUnlocking(value: MsgBeginUnlocking): {
+            typeUrl: string;
+            value: unknown;
+        };
+        extendLockup(value: MsgExtendLockup): {
             typeUrl: string;
             value: unknown;
         };
@@ -58,6 +70,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgBeginUnlocking;
         };
+        extendLockup(value: any): {
+            typeUrl: string;
+            value: MsgExtendLockup;
+        };
     };
     fromPartial: {
         lockTokens(value: MsgLockTokens): {
@@ -71,6 +87,10 @@ export declare const MessageComposer: {
         beginUnlocking(value: MsgBeginUnlocking): {
             typeUrl: string;
             value: MsgBeginUnlocking;
+        };
+        extendLockup(value: MsgExtendLockup): {
+            typeUrl: string;
+            value: MsgExtendLockup;
         };
     };
 };

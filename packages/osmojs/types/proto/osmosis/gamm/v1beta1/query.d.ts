@@ -48,12 +48,19 @@ export interface QueryTotalSharesRequest {
 export interface QueryTotalSharesResponse {
     totalShares: Coin;
 }
-/** =============================== SpotPrice */
+/**
+ * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
+ * query.
+ */
 export interface QuerySpotPriceRequest {
     poolId: Long;
-    tokenInDenom: string;
-    tokenOutDenom: string;
+    baseAssetDenom: string;
+    quoteAssetDenom: string;
 }
+/**
+ * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
+ * query.
+ */
 export interface QuerySpotPriceResponse {
     /** String of the Dec. Ex) 10.203uatom */
     spotPrice: string;

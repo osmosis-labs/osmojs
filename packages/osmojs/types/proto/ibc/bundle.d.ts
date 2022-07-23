@@ -22,26 +22,26 @@ import * as _128 from "./lightclients/localhost/v1/localhost";
 import * as _129 from "./lightclients/solomachine/v1/solomachine";
 import * as _130 from "./lightclients/solomachine/v2/solomachine";
 import * as _131 from "./lightclients/tendermint/v1/tendermint";
-import * as _268 from "./applications/transfer/v1/query.lcd";
-import * as _269 from "./core/channel/v1/query.lcd";
-import * as _270 from "./core/client/v1/query.lcd";
-import * as _271 from "./core/connection/v1/query.lcd";
-import * as _272 from "./applications/transfer/v1/query.rpc.query";
-import * as _273 from "./core/channel/v1/query.rpc.query";
-import * as _274 from "./core/client/v1/query.rpc.query";
-import * as _275 from "./core/connection/v1/query.rpc.query";
-import * as _276 from "./core/port/v1/query.rpc.query";
-import * as _277 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _278 from "./core/channel/v1/tx.rpc.msg";
-import * as _279 from "./core/client/v1/tx.rpc.msg";
-import * as _280 from "./core/connection/v1/tx.rpc.msg";
+import * as _271 from "./applications/transfer/v1/query.lcd";
+import * as _272 from "./core/channel/v1/query.lcd";
+import * as _273 from "./core/client/v1/query.lcd";
+import * as _274 from "./core/connection/v1/query.lcd";
+import * as _275 from "./applications/transfer/v1/query.rpc.query";
+import * as _276 from "./core/channel/v1/query.rpc.query";
+import * as _277 from "./core/client/v1/query.rpc.query";
+import * as _278 from "./core/connection/v1/query.rpc.query";
+import * as _279 from "./core/port/v1/query.rpc.query";
+import * as _280 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _281 from "./core/channel/v1/tx.rpc.msg";
+import * as _282 from "./core/client/v1/tx.rpc.msg";
+import * as _283 from "./core/connection/v1/tx.rpc.msg";
 export declare namespace ibc {
     namespace applications {
         namespace transfer {
             const v1: {
-                MsgClientImpl: typeof _277.MsgClientImpl;
-                QueryClientImpl: typeof _272.QueryClientImpl;
-                LCDQueryClient: typeof _268.LCDQueryClient;
+                MsgClientImpl: typeof _280.MsgClientImpl;
+                QueryClientImpl: typeof _275.QueryClientImpl;
+                LCDQueryClient: typeof _271.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -261,9 +261,9 @@ export declare namespace ibc {
     namespace core {
         namespace channel {
             const v1: {
-                MsgClientImpl: typeof _278.MsgClientImpl;
-                QueryClientImpl: typeof _273.QueryClientImpl;
-                LCDQueryClient: typeof _269.LCDQueryClient;
+                MsgClientImpl: typeof _281.MsgClientImpl;
+                QueryClientImpl: typeof _276.QueryClientImpl;
+                LCDQueryClient: typeof _272.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -1614,9 +1614,9 @@ export declare namespace ibc {
         }
         namespace client {
             const v1: {
-                MsgClientImpl: typeof _279.MsgClientImpl;
-                QueryClientImpl: typeof _274.QueryClientImpl;
-                LCDQueryClient: typeof _270.LCDQueryClient;
+                MsgClientImpl: typeof _282.MsgClientImpl;
+                QueryClientImpl: typeof _277.QueryClientImpl;
+                LCDQueryClient: typeof _273.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -2466,9 +2466,9 @@ export declare namespace ibc {
         }
         namespace connection {
             const v1: {
-                MsgClientImpl: typeof _280.MsgClientImpl;
-                QueryClientImpl: typeof _275.QueryClientImpl;
-                LCDQueryClient: typeof _271.LCDQueryClient;
+                MsgClientImpl: typeof _283.MsgClientImpl;
+                QueryClientImpl: typeof _278.QueryClientImpl;
+                LCDQueryClient: typeof _274.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -3145,7 +3145,7 @@ export declare namespace ibc {
         }
         namespace port {
             const v1: {
-                QueryClientImpl: typeof _276.QueryClientImpl;
+                QueryClientImpl: typeof _279.QueryClientImpl;
                 QueryAppVersionRequest: {
                     encode(message: _126.QueryAppVersionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.QueryAppVersionRequest;

@@ -26,6 +26,22 @@ export interface MsgBeginUnlocking {
 export interface MsgBeginUnlockingResponse {
     success: boolean;
 }
+/**
+ * MsgExtendLockup extends the existing lockup's duration.
+ * The new duration is longer than the original.
+ */
+export interface MsgExtendLockup {
+    owner: string;
+    ID: Long;
+    /**
+     * duration to be set. fails if lower than the current duration, or is
+     * unlocking
+     */
+    duration: Duration;
+}
+export interface MsgExtendLockupResponse {
+    success: boolean;
+}
 export declare const MsgLockTokens: {
     encode(message: MsgLockTokens, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokens;
@@ -67,4 +83,18 @@ export declare const MsgBeginUnlockingResponse: {
     fromJSON(object: any): MsgBeginUnlockingResponse;
     toJSON(message: MsgBeginUnlockingResponse): unknown;
     fromPartial(object: DeepPartial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse;
+};
+export declare const MsgExtendLockup: {
+    encode(message: MsgExtendLockup, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockup;
+    fromJSON(object: any): MsgExtendLockup;
+    toJSON(message: MsgExtendLockup): unknown;
+    fromPartial(object: DeepPartial<MsgExtendLockup>): MsgExtendLockup;
+};
+export declare const MsgExtendLockupResponse: {
+    encode(message: MsgExtendLockupResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse;
+    fromJSON(object: any): MsgExtendLockupResponse;
+    toJSON(message: MsgExtendLockupResponse): unknown;
+    fromPartial(object: DeepPartial<MsgExtendLockupResponse>): MsgExtendLockupResponse;
 };

@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgLockAndSuperfluidDelegate } from "./tx";
+import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -17,6 +17,10 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -38,6 +42,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgLockAndSuperfluidDelegate;
         };
+        unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool): {
+            typeUrl: string;
+            value: MsgUnPoolWhitelistedPool;
+        };
     };
     toJSON: {
         superfluidDelegate(value: MsgSuperfluidDelegate): {
@@ -53,6 +61,10 @@ export declare const MessageComposer: {
             value: unknown;
         };
         lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate): {
+            typeUrl: string;
+            value: unknown;
+        };
+        unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool): {
             typeUrl: string;
             value: unknown;
         };
@@ -74,6 +86,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgLockAndSuperfluidDelegate;
         };
+        unPoolWhitelistedPool(value: any): {
+            typeUrl: string;
+            value: MsgUnPoolWhitelistedPool;
+        };
     };
     fromPartial: {
         superfluidDelegate(value: MsgSuperfluidDelegate): {
@@ -91,6 +107,10 @@ export declare const MessageComposer: {
         lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate): {
             typeUrl: string;
             value: MsgLockAndSuperfluidDelegate;
+        };
+        unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool): {
+            typeUrl: string;
+            value: MsgUnPoolWhitelistedPool;
         };
     };
 };

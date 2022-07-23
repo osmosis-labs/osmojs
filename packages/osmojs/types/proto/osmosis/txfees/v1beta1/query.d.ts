@@ -6,6 +6,21 @@ export interface QueryFeeTokensRequest {
 export interface QueryFeeTokensResponse {
     feeTokens: FeeToken[];
 }
+/**
+ * QueryDenomSpotPriceRequest defines grpc request structure for querying spot
+ * price for the specified tx fee denom
+ */
+export interface QueryDenomSpotPriceRequest {
+    denom: string;
+}
+/**
+ * QueryDenomSpotPriceRequest defines grpc response structure for querying spot
+ * price for the specified tx fee denom
+ */
+export interface QueryDenomSpotPriceResponse {
+    poolID: Long;
+    spotPrice: string;
+}
 export interface QueryDenomPoolIdRequest {
     denom: string;
 }
@@ -30,6 +45,20 @@ export declare const QueryFeeTokensResponse: {
     fromJSON(object: any): QueryFeeTokensResponse;
     toJSON(message: QueryFeeTokensResponse): unknown;
     fromPartial(object: DeepPartial<QueryFeeTokensResponse>): QueryFeeTokensResponse;
+};
+export declare const QueryDenomSpotPriceRequest: {
+    encode(message: QueryDenomSpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceRequest;
+    fromJSON(object: any): QueryDenomSpotPriceRequest;
+    toJSON(message: QueryDenomSpotPriceRequest): unknown;
+    fromPartial(object: DeepPartial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest;
+};
+export declare const QueryDenomSpotPriceResponse: {
+    encode(message: QueryDenomSpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceResponse;
+    fromJSON(object: any): QueryDenomSpotPriceResponse;
+    toJSON(message: QueryDenomSpotPriceResponse): unknown;
+    fromPartial(object: DeepPartial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse;
 };
 export declare const QueryDenomPoolIdRequest: {
     encode(message: QueryDenomPoolIdRequest, writer?: _m0.Writer): _m0.Writer;

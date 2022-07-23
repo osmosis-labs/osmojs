@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking } from "./tx";
+import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup } from "./tx";
 export interface AminoMsgLockTokens extends AminoMsg {
     type: "osmosis/lockup/lock-tokens";
     value: {
@@ -31,6 +31,17 @@ export interface AminoMsgBeginUnlocking extends AminoMsg {
         }[];
     };
 }
+export interface AminoMsgExtendLockup extends AminoMsg {
+    type: "osmosis/lockup/extend-lockup";
+    value: {
+        owner: string;
+        ID: string;
+        duration: {
+            seconds: string;
+            nanos: number;
+        };
+    };
+}
 export declare const AminoConverter: {
     "/osmosis.lockup.MsgLockTokens": {
         aminoType: string;
@@ -46,5 +57,10 @@ export declare const AminoConverter: {
         aminoType: string;
         toAmino: ({ owner, ID, coins }: MsgBeginUnlocking) => AminoMsgBeginUnlocking["value"];
         fromAmino: ({ owner, ID, coins }: AminoMsgBeginUnlocking["value"]) => MsgBeginUnlocking;
+    };
+    "/osmosis.lockup.MsgExtendLockup": {
+        aminoType: string;
+        toAmino: ({ owner, ID, duration }: MsgExtendLockup) => AminoMsgExtendLockup["value"];
+        fromAmino: ({ owner, ID, duration }: AminoMsgExtendLockup["value"]) => MsgExtendLockup;
     };
 };

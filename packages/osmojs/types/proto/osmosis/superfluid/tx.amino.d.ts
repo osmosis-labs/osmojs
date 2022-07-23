@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgLockAndSuperfluidDelegate } from "./tx";
+import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool } from "./tx";
 export interface AminoMsgSuperfluidDelegate extends AminoMsg {
     type: "osmosis/superfluid/superfluid-delegate";
     value: {
@@ -33,6 +33,13 @@ export interface AminoMsgLockAndSuperfluidDelegate extends AminoMsg {
         val_addr: string;
     };
 }
+export interface AminoMsgUnPoolWhitelistedPool extends AminoMsg {
+    type: "osmosis/superfluid/un-pool-whitelisted-pool";
+    value: {
+        sender: string;
+        pool_id: string;
+    };
+}
 export declare const AminoConverter: {
     "/osmosis.superfluid.MsgSuperfluidDelegate": {
         aminoType: string;
@@ -53,5 +60,10 @@ export declare const AminoConverter: {
         aminoType: string;
         toAmino: ({ sender, coins, valAddr }: MsgLockAndSuperfluidDelegate) => AminoMsgLockAndSuperfluidDelegate["value"];
         fromAmino: ({ sender, coins, val_addr }: AminoMsgLockAndSuperfluidDelegate["value"]) => MsgLockAndSuperfluidDelegate;
+    };
+    "/osmosis.superfluid.MsgUnPoolWhitelistedPool": {
+        aminoType: string;
+        toAmino: ({ sender, poolId }: MsgUnPoolWhitelistedPool) => AminoMsgUnPoolWhitelistedPool["value"];
+        fromAmino: ({ sender, pool_id }: AminoMsgUnPoolWhitelistedPool["value"]) => MsgUnPoolWhitelistedPool;
     };
 };

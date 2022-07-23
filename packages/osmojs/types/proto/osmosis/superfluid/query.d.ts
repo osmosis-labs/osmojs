@@ -66,6 +66,7 @@ export interface SuperfluidDelegationsByDelegatorRequest {
 export interface SuperfluidDelegationsByDelegatorResponse {
     superfluidDelegationRecords: SuperfluidDelegationRecord[];
     totalDelegatedCoins: Coin[];
+    totalEquivalentStakedAmount: Coin;
 }
 export interface SuperfluidUndelegationsByDelegatorRequest {
     delegatorAddress: string;

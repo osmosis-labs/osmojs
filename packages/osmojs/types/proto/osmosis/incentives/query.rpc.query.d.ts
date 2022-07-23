@@ -1,5 +1,5 @@
 import { Rpc } from "@osmonauts/helpers";
-import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
+import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
 /** Query defines the RPC service */
 export interface Query {
     moduleToDistributeCoins(request: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponse>;
@@ -9,6 +9,7 @@ export interface Query {
     activeGauges(request: ActiveGaugesRequest): Promise<ActiveGaugesResponse>;
     activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponse>;
     upcomingGauges(request: UpcomingGaugesRequest): Promise<UpcomingGaugesResponse>;
+    upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse>;
     rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponse>;
     lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse>;
 }
@@ -22,6 +23,7 @@ export declare class QueryClientImpl implements Query {
     activeGauges(request: ActiveGaugesRequest): Promise<ActiveGaugesResponse>;
     activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponse>;
     upcomingGauges(request: UpcomingGaugesRequest): Promise<UpcomingGaugesResponse>;
+    upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse>;
     rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponse>;
     lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse>;
 }

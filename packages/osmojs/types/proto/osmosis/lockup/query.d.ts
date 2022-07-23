@@ -86,6 +86,13 @@ export interface AccountLockedLongerDurationRequest {
 export interface AccountLockedLongerDurationResponse {
     locks: PeriodLock[];
 }
+export interface AccountLockedDurationRequest {
+    owner: string;
+    duration: Duration;
+}
+export interface AccountLockedDurationResponse {
+    locks: PeriodLock[];
+}
 export interface AccountLockedLongerDurationNotUnlockingOnlyRequest {
     owner: string;
     duration: Duration;
@@ -282,6 +289,20 @@ export declare const AccountLockedLongerDurationResponse: {
     fromJSON(object: any): AccountLockedLongerDurationResponse;
     toJSON(message: AccountLockedLongerDurationResponse): unknown;
     fromPartial(object: DeepPartial<AccountLockedLongerDurationResponse>): AccountLockedLongerDurationResponse;
+};
+export declare const AccountLockedDurationRequest: {
+    encode(message: AccountLockedDurationRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedDurationRequest;
+    fromJSON(object: any): AccountLockedDurationRequest;
+    toJSON(message: AccountLockedDurationRequest): unknown;
+    fromPartial(object: DeepPartial<AccountLockedDurationRequest>): AccountLockedDurationRequest;
+};
+export declare const AccountLockedDurationResponse: {
+    encode(message: AccountLockedDurationResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedDurationResponse;
+    fromJSON(object: any): AccountLockedDurationResponse;
+    toJSON(message: AccountLockedDurationResponse): unknown;
+    fromPartial(object: DeepPartial<AccountLockedDurationResponse>): AccountLockedDurationResponse;
 };
 export declare const AccountLockedLongerDurationNotUnlockingOnlyRequest: {
     encode(message: AccountLockedLongerDurationNotUnlockingOnlyRequest, writer?: _m0.Writer): _m0.Writer;
