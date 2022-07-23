@@ -4,7 +4,7 @@ import { Coin } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, SyntheticLock } from "./lock";
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
-import { ModuleBalanceRequest, ModuleBalanceResponse, ModuleLockedAmountRequest, ModuleLockedAmountResponse, AccountUnlockableCoinsRequest, AccountUnlockableCoinsResponse, AccountUnlockingCoinsRequest, AccountUnlockingCoinsResponse, AccountLockedCoinsRequest, AccountLockedCoinsResponse, AccountLockedPastTimeRequest, AccountLockedPastTimeResponse, AccountLockedPastTimeNotUnlockingOnlyRequest, AccountLockedPastTimeNotUnlockingOnlyResponse, AccountUnlockedBeforeTimeRequest, AccountUnlockedBeforeTimeResponse, AccountLockedPastTimeDenomRequest, AccountLockedPastTimeDenomResponse, LockedDenomRequest, LockedDenomResponse, LockedRequest, LockedResponse, SyntheticLockupsByLockupIDRequest, SyntheticLockupsByLockupIDResponse, AccountLockedLongerDurationRequest, AccountLockedLongerDurationResponse, AccountLockedLongerDurationNotUnlockingOnlyRequest, AccountLockedLongerDurationNotUnlockingOnlyResponse, AccountLockedLongerDurationDenomRequest, AccountLockedLongerDurationDenomResponse } from "./query";
+import { ModuleBalanceRequest, ModuleBalanceResponse, ModuleLockedAmountRequest, ModuleLockedAmountResponse, AccountUnlockableCoinsRequest, AccountUnlockableCoinsResponse, AccountUnlockingCoinsRequest, AccountUnlockingCoinsResponse, AccountLockedCoinsRequest, AccountLockedCoinsResponse, AccountLockedPastTimeRequest, AccountLockedPastTimeResponse, AccountLockedPastTimeNotUnlockingOnlyRequest, AccountLockedPastTimeNotUnlockingOnlyResponse, AccountUnlockedBeforeTimeRequest, AccountUnlockedBeforeTimeResponse, AccountLockedPastTimeDenomRequest, AccountLockedPastTimeDenomResponse, LockedDenomRequest, LockedDenomResponse, LockedRequest, LockedResponse, SyntheticLockupsByLockupIDRequest, SyntheticLockupsByLockupIDResponse, AccountLockedLongerDurationRequest, AccountLockedLongerDurationResponse, AccountLockedDurationRequest, AccountLockedDurationResponse, AccountLockedLongerDurationNotUnlockingOnlyRequest, AccountLockedLongerDurationNotUnlockingOnlyResponse, AccountLockedLongerDurationDenomRequest, AccountLockedLongerDurationDenomResponse } from "./query";
 
 /** Query defines the RPC service */
 export interface Query {
@@ -48,6 +48,9 @@ export interface Query {
   accountLockedLongerDuration(request: AccountLockedLongerDurationRequest): Promise<AccountLockedLongerDurationResponse>;
   /*Returns account locked records with longer duration*/
 
+  accountLockedDuration(request: AccountLockedDurationRequest): Promise<AccountLockedDurationResponse>;
+  /*Returns account locked records with a specific duration*/
+
   accountLockedLongerDurationNotUnlockingOnly(request: AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<AccountLockedLongerDurationNotUnlockingOnlyResponse>;
   /*Returns account locked records with longer duration excluding tokens
   started unlocking*/
@@ -74,6 +77,7 @@ export class QueryClientImpl implements Query {
     this.lockedByID = this.lockedByID.bind(this);
     this.syntheticLockupsByLockupID = this.syntheticLockupsByLockupID.bind(this);
     this.accountLockedLongerDuration = this.accountLockedLongerDuration.bind(this);
+    this.accountLockedDuration = this.accountLockedDuration.bind(this);
     this.accountLockedLongerDurationNotUnlockingOnly = this.accountLockedLongerDurationNotUnlockingOnly.bind(this);
     this.accountLockedLongerDurationDenom = this.accountLockedLongerDurationDenom.bind(this);
   }
@@ -154,6 +158,12 @@ export class QueryClientImpl implements Query {
     const data = AccountLockedLongerDurationRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.lockup.Query", "AccountLockedLongerDuration", data);
     return promise.then(data => AccountLockedLongerDurationResponse.decode(new _m0.Reader(data)));
+  }
+
+  accountLockedDuration(request: AccountLockedDurationRequest): Promise<AccountLockedDurationResponse> {
+    const data = AccountLockedDurationRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.lockup.Query", "AccountLockedDuration", data);
+    return promise.then(data => AccountLockedDurationResponse.decode(new _m0.Reader(data)));
   }
 
   accountLockedLongerDurationNotUnlockingOnly(request: AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<AccountLockedLongerDurationNotUnlockingOnlyResponse> {

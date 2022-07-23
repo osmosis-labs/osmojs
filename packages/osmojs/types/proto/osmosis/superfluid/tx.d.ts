@@ -33,6 +33,23 @@ export interface MsgLockAndSuperfluidDelegate {
 export interface MsgLockAndSuperfluidDelegateResponse {
     ID: Long;
 }
+/**
+ * MsgUnPoolWhitelistedPool Unpools every lock the sender has, that is
+ * associated with pool pool_id. If pool_id is not approved for unpooling by
+ * governance, this is a no-op. Unpooling takes the locked gamm shares, and runs
+ * "ExitPool" on it, to get the constituent tokens. e.g. z gamm/pool/1 tokens
+ * ExitPools into constituent tokens x uatom, y uosmo. Then it creates a new
+ * lock for every constituent token, with the duration associated with the lock.
+ * If the lock was unbonding, the new lockup durations should be the time left
+ * until unbond completion.
+ */
+export interface MsgUnPoolWhitelistedPool {
+    sender: string;
+    poolId: Long;
+}
+export interface MsgUnPoolWhitelistedPoolResponse {
+    exitedLockIds: Long[];
+}
 export declare const MsgSuperfluidDelegate: {
     encode(message: MsgSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegate;
@@ -88,4 +105,18 @@ export declare const MsgLockAndSuperfluidDelegateResponse: {
     fromJSON(object: any): MsgLockAndSuperfluidDelegateResponse;
     toJSON(message: MsgLockAndSuperfluidDelegateResponse): unknown;
     fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse;
+};
+export declare const MsgUnPoolWhitelistedPool: {
+    encode(message: MsgUnPoolWhitelistedPool, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPool;
+    fromJSON(object: any): MsgUnPoolWhitelistedPool;
+    toJSON(message: MsgUnPoolWhitelistedPool): unknown;
+    fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool;
+};
+export declare const MsgUnPoolWhitelistedPoolResponse: {
+    encode(message: MsgUnPoolWhitelistedPoolResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponse;
+    fromJSON(object: any): MsgUnPoolWhitelistedPoolResponse;
+    toJSON(message: MsgUnPoolWhitelistedPoolResponse): unknown;
+    fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse;
 };

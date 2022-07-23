@@ -4,7 +4,7 @@ import { Gauge } from "./gauge";
 import { Duration } from "../../google/protobuf/duration";
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
-import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
+import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
 
 /** Query defines the RPC service */
 export interface Query {
@@ -24,10 +24,13 @@ export interface Query {
   /*returns active gauges*/
 
   activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponse>;
-  /*null*/
+  /*returns active gauges per denom*/
 
   upcomingGauges(request: UpcomingGaugesRequest): Promise<UpcomingGaugesResponse>;
   /*returns scheduled gauges*/
+
+  upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse>;
+  /*returns scheduled gauges per denom*/
 
   rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponse>;
   /*RewardsEst returns an estimate of the rewards at a future specific time.
@@ -50,6 +53,7 @@ export class QueryClientImpl implements Query {
     this.activeGauges = this.activeGauges.bind(this);
     this.activeGaugesPerDenom = this.activeGaugesPerDenom.bind(this);
     this.upcomingGauges = this.upcomingGauges.bind(this);
+    this.upcomingGaugesPerDenom = this.upcomingGaugesPerDenom.bind(this);
     this.rewardsEst = this.rewardsEst.bind(this);
     this.lockableDurations = this.lockableDurations.bind(this);
   }
@@ -94,6 +98,12 @@ export class QueryClientImpl implements Query {
     const data = UpcomingGaugesRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "UpcomingGauges", data);
     return promise.then(data => UpcomingGaugesResponse.decode(new _m0.Reader(data)));
+  }
+
+  upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse> {
+    const data = UpcomingGaugesPerDenomRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.incentives.Query", "UpcomingGaugesPerDenom", data);
+    return promise.then(data => UpcomingGaugesPerDenomResponse.decode(new _m0.Reader(data)));
   }
 
   rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponse> {

@@ -57,6 +57,14 @@ export interface UpcomingGaugesResponse {
     /** pagination defines an pagination for the response. */
     pagination: PageResponse;
 }
+export interface UpcomingGaugesPerDenomRequest {
+    denom: string;
+    pagination: PageRequest;
+}
+export interface UpcomingGaugesPerDenomResponse {
+    upcomingGauges: Gauge[];
+    pagination: PageResponse;
+}
 export interface RewardsEstRequest {
     owner: string;
     lockIds: Long[];
@@ -167,6 +175,20 @@ export declare const UpcomingGaugesResponse: {
     fromJSON(object: any): UpcomingGaugesResponse;
     toJSON(message: UpcomingGaugesResponse): unknown;
     fromPartial(object: DeepPartial<UpcomingGaugesResponse>): UpcomingGaugesResponse;
+};
+export declare const UpcomingGaugesPerDenomRequest: {
+    encode(message: UpcomingGaugesPerDenomRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomRequest;
+    fromJSON(object: any): UpcomingGaugesPerDenomRequest;
+    toJSON(message: UpcomingGaugesPerDenomRequest): unknown;
+    fromPartial(object: DeepPartial<UpcomingGaugesPerDenomRequest>): UpcomingGaugesPerDenomRequest;
+};
+export declare const UpcomingGaugesPerDenomResponse: {
+    encode(message: UpcomingGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse;
+    fromJSON(object: any): UpcomingGaugesPerDenomResponse;
+    toJSON(message: UpcomingGaugesPerDenomResponse): unknown;
+    fromPartial(object: DeepPartial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse;
 };
 export declare const RewardsEstRequest: {
     encode(message: RewardsEstRequest, writer?: _m0.Writer): _m0.Writer;

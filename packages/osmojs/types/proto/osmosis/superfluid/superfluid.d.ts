@@ -46,10 +46,14 @@ export interface SuperfluidDelegationRecord {
     delegatorAddress: string;
     validatorAddress: string;
     delegationAmount: Coin;
+    equivalentStakedAmount: Coin;
 }
 export interface LockIdIntermediaryAccountConnection {
     lockId: Long;
     intermediaryAccount: string;
+}
+export interface UnpoolWhitelistedPools {
+    ids: Long[];
 }
 export declare const SuperfluidAsset: {
     encode(message: SuperfluidAsset, writer?: _m0.Writer): _m0.Writer;
@@ -85,4 +89,11 @@ export declare const LockIdIntermediaryAccountConnection: {
     fromJSON(object: any): LockIdIntermediaryAccountConnection;
     toJSON(message: LockIdIntermediaryAccountConnection): unknown;
     fromPartial(object: DeepPartial<LockIdIntermediaryAccountConnection>): LockIdIntermediaryAccountConnection;
+};
+export declare const UnpoolWhitelistedPools: {
+    encode(message: UnpoolWhitelistedPools, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UnpoolWhitelistedPools;
+    fromJSON(object: any): UnpoolWhitelistedPools;
+    toJSON(message: UnpoolWhitelistedPools): unknown;
+    fromPartial(object: DeepPartial<UnpoolWhitelistedPools>): UnpoolWhitelistedPools;
 };

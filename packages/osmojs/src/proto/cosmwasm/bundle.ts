@@ -4,11 +4,11 @@ import * as _96 from "./wasm/v1/proposal";
 import * as _97 from "./wasm/v1/query";
 import * as _98 from "./wasm/v1/tx";
 import * as _99 from "./wasm/v1/types";
-import * as _255 from "./wasm/v1/tx.amino";
-import * as _256 from "./wasm/v1/tx.registry";
-import * as _257 from "./wasm/v1/query.lcd";
-import * as _258 from "./wasm/v1/query.rpc.query";
-import * as _259 from "./wasm/v1/tx.rpc.msg";
+import * as _258 from "./wasm/v1/tx.amino";
+import * as _259 from "./wasm/v1/tx.registry";
+import * as _260 from "./wasm/v1/query.lcd";
+import * as _261 from "./wasm/v1/query.rpc.query";
+import * as _262 from "./wasm/v1/tx.rpc.msg";
 export namespace cosmwasm {
   export namespace wasm {
     export const v1 = { ..._94,
@@ -17,11 +17,11 @@ export namespace cosmwasm {
       ..._97,
       ..._98,
       ..._99,
-      ..._255,
-      ..._256,
-      ..._257,
       ..._258,
-      ..._259
+      ..._259,
+      ..._260,
+      ..._261,
+      ..._262
     };
   }
 }

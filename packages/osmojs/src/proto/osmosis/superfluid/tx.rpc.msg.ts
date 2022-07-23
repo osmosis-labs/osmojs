@@ -1,7 +1,7 @@
 import { Coin } from "../../cosmos/base/v1beta1/coin";
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgSuperfluidDelegate, MsgSuperfluidDelegateResponse, MsgSuperfluidUndelegate, MsgSuperfluidUndelegateResponse, MsgSuperfluidUnbondLock, MsgSuperfluidUnbondLockResponse, MsgLockAndSuperfluidDelegate, MsgLockAndSuperfluidDelegateResponse } from "./tx";
+import { MsgSuperfluidDelegate, MsgSuperfluidDelegateResponse, MsgSuperfluidUndelegate, MsgSuperfluidUndelegateResponse, MsgSuperfluidUnbondLock, MsgSuperfluidUnbondLockResponse, MsgLockAndSuperfluidDelegate, MsgLockAndSuperfluidDelegateResponse, MsgUnPoolWhitelistedPool, MsgUnPoolWhitelistedPoolResponse } from "./tx";
 
 /** Msg defines the RPC service */
 export interface Msg {
@@ -18,6 +18,9 @@ export interface Msg {
   lockAndSuperfluidDelegate(request: MsgLockAndSuperfluidDelegate): Promise<MsgLockAndSuperfluidDelegateResponse>;
   /*Execute lockup lock and superfluid delegation in a single msg*/
 
+  unPoolWhitelistedPool(request: MsgUnPoolWhitelistedPool): Promise<MsgUnPoolWhitelistedPoolResponse>;
+  /*null*/
+
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -28,6 +31,7 @@ export class MsgClientImpl implements Msg {
     this.superfluidUndelegate = this.superfluidUndelegate.bind(this);
     this.superfluidUnbondLock = this.superfluidUnbondLock.bind(this);
     this.lockAndSuperfluidDelegate = this.lockAndSuperfluidDelegate.bind(this);
+    this.unPoolWhitelistedPool = this.unPoolWhitelistedPool.bind(this);
   }
 
   superfluidDelegate(request: MsgSuperfluidDelegate): Promise<MsgSuperfluidDelegateResponse> {
@@ -52,6 +56,12 @@ export class MsgClientImpl implements Msg {
     const data = MsgLockAndSuperfluidDelegate.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Msg", "LockAndSuperfluidDelegate", data);
     return promise.then(data => MsgLockAndSuperfluidDelegateResponse.decode(new _m0.Reader(data)));
+  }
+
+  unPoolWhitelistedPool(request: MsgUnPoolWhitelistedPool): Promise<MsgUnPoolWhitelistedPoolResponse> {
+    const data = MsgUnPoolWhitelistedPool.encode(request).finish();
+    const promise = this.rpc.request("osmosis.superfluid.Msg", "UnPoolWhitelistedPool", data);
+    return promise.then(data => MsgUnPoolWhitelistedPoolResponse.decode(new _m0.Reader(data)));
   }
 
 }
