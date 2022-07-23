@@ -9,7 +9,7 @@ telescope({
   outPath,
   options: {
     includeAminos: true,
-    includeLCDClient: true,
+    includeLCDClients: true,
     includeRpcClients: true,
     camelRpcMethods: true,
     includePackageVar: false,

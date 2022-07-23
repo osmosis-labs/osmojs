@@ -3339,15 +3339,15 @@
   dependencies:
     "@octokit/openapi-types" "^12.7.0"
 
-"@osmonauts/ast@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.6.0.tgz#7fcc70ad828c5c44895af5bdf36e8f0eeeed2495"
-  integrity sha512-e2jSZU5mzly01Lg2z5qClkC4BQAF/6c+zV1FikYiVDpTuV7VQ3mVaKedxt3IXaIFlvlXD/HWgjPkrco4MKAT1A==
+"@osmonauts/ast@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.6.1.tgz#4b2db6e2e5d054d370b1aeeb8e791fe8581f39bd"
+  integrity sha512-AtnU/CXDvHIM/63BdOGQgOKuRt2baGn8w6c728LIgyphTvnPTOyzwUcpXiC5KZK2bmJgWAH3cUaNW7p2gJQw8Q==
   dependencies:
     "@babel/runtime" "^7.18.3"
     "@babel/types" "7.18.4"
-    "@osmonauts/proto-parser" "^0.7.0"
-    "@osmonauts/types" "^0.5.1"
+    "@osmonauts/proto-parser" "^0.7.1"
+    "@osmonauts/types" "^0.5.2"
     "@osmonauts/utils" "^0.3.11"
     case "1.6.3"
 
@@ -3368,22 +3368,22 @@
     "@babel/runtime" "^7.18.3"
     axios "0.27.2"
 
-"@osmonauts/proto-parser@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.7.0.tgz#8ee69f87565e46bdae02fd1bbf6c915de2f1042b"
-  integrity sha512-qagBb+QmIfFnbNALy/58M9Yl3l9MXJv0qoqxfl9PKNysVQYyc0Bqkoglg5DeCOuIESJ6p6eyZtMRV5IiYmK1Qg==
+"@osmonauts/proto-parser@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.7.1.tgz#eb2c5c398282e0fe1c19f3aa8b22bc393104fe74"
+  integrity sha512-s1so51hCVWxvADsnpFxONabmzj0dZxFfZljdIfq4UHmwy9uxrNOpv7kSfCJ1LBfkS5sWovV4NhX2X1d5OPsYOQ==
   dependencies:
     "@babel/runtime" "^7.18.3"
-    "@osmonauts/types" "^0.5.1"
+    "@osmonauts/types" "^0.5.2"
     "@pyramation/protobufjs" "6.11.3"
     dotty "0.1.2"
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@0.8.0":
-  version "0.8.0"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.8.0.tgz#2f1c24a872b894e00f1c93c26066a26394307cd2"
-  integrity sha512-35cv5PUe/+Z+xh++G8cvuocrwrPxfjjl5MmgkhfUDnnREMrJ1n31GGAGzNNmeHm9I7GIa1DohLlmuxIk2/9mmQ==
+"@osmonauts/telescope@0.8.1":
+  version "0.8.1"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.8.1.tgz#5a6dd19a187b1b45b91e09097ae535cd9a5cee04"
+  integrity sha512-gBOvF73S9+Lqfz9ko9mrDx4YOJM/jXIxnL44mV42grOZXVekotoxkL3Yrc64vJggHkzpKsFoN7jbYcwMGXQafA==
   dependencies:
     "@babel/core" "7.18.5"
     "@babel/generator" "7.18.2"
@@ -3397,9 +3397,9 @@
     "@babel/runtime" "^7.18.3"
     "@babel/traverse" "7.18.5"
     "@babel/types" "7.18.4"
-    "@osmonauts/ast" "^0.6.0"
-    "@osmonauts/proto-parser" "^0.7.0"
-    "@osmonauts/types" "^0.5.1"
+    "@osmonauts/ast" "^0.6.1"
+    "@osmonauts/proto-parser" "^0.7.1"
+    "@osmonauts/types" "^0.5.2"
     "@osmonauts/utils" "^0.3.11"
     "@types/parse-package-name" "0.1.0"
     case "1.6.3"
@@ -3417,10 +3417,10 @@
     rimraf "3.0.2"
     shelljs "0.8.5"
 
-"@osmonauts/types@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.npmjs.org/@osmonauts/types/-/types-0.5.1.tgz#7588408968b0371750c68103a53467f6b990e144"
-  integrity sha512-AZOTiREOCV2l7vkKBU6wiSWjhyQej6U8ZE3xZX7ivmjJMGJt0G/0ksay5WliL3pGdYOr9vhU0ERponp5d9VKnA==
+"@osmonauts/types@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.npmjs.org/@osmonauts/types/-/types-0.5.2.tgz#8743931e3ab4990be1487ef770fb75bd28d72a8f"
+  integrity sha512-iT1/JCH9c+HelaXu7laOBCdGH49vUUGyxbpgaRDh+ABc9ngtqs7UPeK3BPcZ1q6OS1NOa4tg0B+hS/xRkB8SSA==
   dependencies:
     "@babel/runtime" "^7.18.3"
     "@osmonauts/utils" "^0.3.11"
@@ -3541,10 +3541,10 @@
     "@protobufs/google" "^0.0.10"
     "@protobufs/tendermint" "^0.0.10"
 
-"@protobufs/osmosis@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.npmjs.org/@protobufs/osmosis/-/osmosis-0.0.10.tgz#7069457c98e6cf73bb14e599a5eaa2da4469d26c"
-  integrity sha512-OOs0sm3zQGKkXTQ3InIZ/JbK7+efX6EtT74OkfTK8ujhQaseieUnwj/f5c2b8fAM54XT5PcTIzGb9JtAtRXXkQ==
+"@protobufs/osmosis@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.npmjs.org/@protobufs/osmosis/-/osmosis-0.0.11.tgz#72fe150d2c3476eb2095e92b5b45fc55e0147170"
+  integrity sha512-J103uvy6hfI8uihd+sTDifypfC48vYCc3m+qFsqb53NqGkg5mXoVQ+R81UZt+X8d5IGT1u8mLokWztTZeiNqTw==
   dependencies:
     "@protobufs/cosmos" "^0.0.10"
     "@protobufs/gogoproto" "^0.0.10"
