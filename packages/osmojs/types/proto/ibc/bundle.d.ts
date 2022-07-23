@@ -22,10 +22,21 @@ import * as _128 from "./lightclients/localhost/v1/localhost";
 import * as _129 from "./lightclients/solomachine/v1/solomachine";
 import * as _130 from "./lightclients/solomachine/v2/solomachine";
 import * as _131 from "./lightclients/tendermint/v1/tendermint";
+import * as _252 from "./applications/transfer/v1/query.rpc.query";
+import * as _253 from "./core/channel/v1/query.rpc.query";
+import * as _254 from "./core/client/v1/query.rpc.query";
+import * as _255 from "./core/connection/v1/query.rpc.query";
+import * as _256 from "./core/port/v1/query.rpc.query";
+import * as _257 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _258 from "./core/channel/v1/tx.rpc.msg";
+import * as _259 from "./core/client/v1/tx.rpc.msg";
+import * as _260 from "./core/connection/v1/tx.rpc.msg";
 export declare namespace ibc {
     namespace applications {
         namespace transfer {
             const v1: {
+                MsgClientImpl: typeof _257.MsgClientImpl;
+                QueryClientImpl: typeof _252.QueryClientImpl;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -245,6 +256,8 @@ export declare namespace ibc {
     namespace core {
         namespace channel {
             const v1: {
+                MsgClientImpl: typeof _258.MsgClientImpl;
+                QueryClientImpl: typeof _253.QueryClientImpl;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -1595,6 +1608,8 @@ export declare namespace ibc {
         }
         namespace client {
             const v1: {
+                MsgClientImpl: typeof _259.MsgClientImpl;
+                QueryClientImpl: typeof _254.QueryClientImpl;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -2444,6 +2459,8 @@ export declare namespace ibc {
         }
         namespace connection {
             const v1: {
+                MsgClientImpl: typeof _260.MsgClientImpl;
+                QueryClientImpl: typeof _255.QueryClientImpl;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -3120,6 +3137,7 @@ export declare namespace ibc {
         }
         namespace port {
             const v1: {
+                QueryClientImpl: typeof _256.QueryClientImpl;
                 QueryAppVersionRequest: {
                     encode(message: _126.QueryAppVersionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.QueryAppVersionRequest;

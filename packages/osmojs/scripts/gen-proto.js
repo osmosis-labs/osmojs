@@ -9,6 +9,12 @@ telescope({
   outPath,
   options: {
     includeAminos: true,
-    includeLCDClient: false
+    includeLCDClient: false,
+    includeRpcClients: true,
+    camelRpcMethods: true,
+    includePackageVar: false,
+    useDate: 'date',
+    useDuration: 'duration',
+    useExact: false
   }
 });

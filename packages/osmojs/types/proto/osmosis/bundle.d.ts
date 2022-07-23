@@ -35,9 +35,23 @@ import * as _165 from "./txfees/v1beta1/feetoken";
 import * as _166 from "./txfees/v1beta1/genesis";
 import * as _167 from "./txfees/v1beta1/gov";
 import * as _168 from "./txfees/v1beta1/query";
+import * as _269 from "./claim/v1beta1/query.rpc.query";
+import * as _270 from "./epochs/query.rpc.query";
+import * as _271 from "./gamm/v1beta1/query.rpc.query";
+import * as _272 from "./incentives/query.rpc.query";
+import * as _273 from "./lockup/query.rpc.query";
+import * as _274 from "./mint/v1beta1/query.rpc.query";
+import * as _275 from "./pool-incentives/v1beta1/query.rpc.query";
+import * as _276 from "./superfluid/query.rpc.query";
+import * as _277 from "./txfees/v1beta1/query.rpc.query";
+import * as _278 from "./gamm/v1beta1/tx.rpc.msg";
+import * as _279 from "./incentives/tx.rpc.msg";
+import * as _280 from "./lockup/tx.rpc.msg";
+import * as _281 from "./superfluid/tx.rpc.msg";
 export declare namespace osmosis {
     namespace claim {
         const v1beta1: {
+            QueryClientImpl: typeof _269.QueryClientImpl;
             QueryModuleAccountBalanceRequest: {
                 encode(_: _135.QueryModuleAccountBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.QueryModuleAccountBalanceRequest;
@@ -223,6 +237,7 @@ export declare namespace osmosis {
     }
     namespace epochs {
         const v1beta1: {
+            QueryClientImpl: typeof _270.QueryClientImpl;
             QueryEpochsInfoRequest: {
                 encode(_: _137.QueryEpochsInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryEpochsInfoRequest;
@@ -310,6 +325,8 @@ export declare namespace osmosis {
     }
     namespace gamm {
         const v1beta1: {
+            MsgClientImpl: typeof _278.MsgClientImpl;
+            QueryClientImpl: typeof _271.QueryClientImpl;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -1290,6 +1307,8 @@ export declare namespace osmosis {
         };
     }
     const incentives: {
+        MsgClientImpl: typeof _279.MsgClientImpl;
+        QueryClientImpl: typeof _272.QueryClientImpl;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -1890,6 +1909,8 @@ export declare namespace osmosis {
         };
     };
     const lockup: {
+        MsgClientImpl: typeof _280.MsgClientImpl;
+        QueryClientImpl: typeof _273.QueryClientImpl;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -2591,6 +2612,7 @@ export declare namespace osmosis {
     };
     namespace mint {
         const v1beta1: {
+            QueryClientImpl: typeof _274.QueryClientImpl;
             QueryParamsRequest: {
                 encode(_: _154.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryParamsRequest;
@@ -2729,6 +2751,7 @@ export declare namespace osmosis {
     }
     namespace poolincentives {
         const v1beta1: {
+            QueryClientImpl: typeof _275.QueryClientImpl;
             QueryGaugeIdsRequest: {
                 encode(message: _158.QueryGaugeIdsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryGaugeIdsRequest;
@@ -3036,6 +3059,8 @@ export declare namespace osmosis {
         };
     }
     const superfluid: {
+        MsgClientImpl: typeof _281.MsgClientImpl;
+        QueryClientImpl: typeof _276.QueryClientImpl;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -3661,6 +3686,7 @@ export declare namespace osmosis {
     };
     namespace txfees {
         const v1beta1: {
+            QueryClientImpl: typeof _277.QueryClientImpl;
             QueryFeeTokensRequest: {
                 encode(_: _168.QueryFeeTokensRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _168.QueryFeeTokensRequest;

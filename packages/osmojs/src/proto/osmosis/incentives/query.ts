@@ -4,11 +4,11 @@ import { Gauge } from "./gauge";
 import { Duration } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long, isSet } from "@osmonauts/helpers";
-export interface ModuleToDistributeCoinsRequest { }
+export interface ModuleToDistributeCoinsRequest {}
 export interface ModuleToDistributeCoinsResponse {
   coins: Coin[];
 }
-export interface ModuleDistributedCoinsRequest { }
+export interface ModuleDistributedCoinsRequest {}
 export interface ModuleDistributedCoinsResponse {
   coins: Coin[];
 }
@@ -68,7 +68,7 @@ export interface RewardsEstRequest {
 export interface RewardsEstResponse {
   coins: Coin[];
 }
-export interface QueryLockableDurationsRequest { }
+export interface QueryLockableDurationsRequest {}
 export interface QueryLockableDurationsResponse {
   lockableDurations: Duration[];
 }
