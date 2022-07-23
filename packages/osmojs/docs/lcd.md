@@ -1,6 +1,6 @@
 # LCD Clients
 
-You can generate RPC classes with the `includeLCDClient` option in [telescope](https://github.com/osmosis-labs/telescope).
+You can generate LCD classes with the `includeLCDClient` option in [telescope](https://github.com/osmosis-labs/telescope).
 
 For any module that has a `Query` type, there will be a `LCDQueryClient` object:
 

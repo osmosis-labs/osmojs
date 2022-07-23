@@ -1,7 +1,6 @@
 # RPC Clients
 
-You can generate RPC classes with the `includeLCDClient` option in [telescope](https://github.com/osmosis-labs/telescope).
-
+You can generate RPC classes with the `includeRpcClients` option in [telescope](https://github.com/osmosis-labs/telescope).
 
 For any module that has a `Msg`, `Query` or `Service` type, a 
 
