@@ -77,6 +77,9 @@ import * as _319 from "./incentives/tx.rpc.msg";
 import * as _320 from "./lockup/tx.rpc.msg";
 import * as _321 from "./superfluid/tx.rpc.msg";
 import * as _322 from "./tokenfactory/v1beta1/tx.rpc.msg";
+import * as _332 from "./lcd";
+import * as _333 from "./rpc.query";
+import * as _334 from "./rpc.tx";
 export namespace osmosis {
   export namespace epochs {
     export const v1beta1 = { ..._132,
@@ -189,4 +192,8 @@ export namespace osmosis {
       ..._315
     };
   }
+  export const ClientFactory = { ..._332,
+    ..._333,
+    ..._334
+  };
 }
