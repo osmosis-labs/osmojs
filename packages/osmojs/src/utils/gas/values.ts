@@ -11,8 +11,14 @@ export const GAS_VALUES = {
         lockTokens: '250000',
         beginUnlocking: '140000',
         unlockPeriodLock: '140000',
+        FEE_VALUES:{
+            low: '0',
+            medium: '6250',
+            high: '10000',
+        }
     }
 };
+
 
 export const FEE_VALUES = Object.keys(GAS_VALUES).reduce((m, chain) => {
     m[chain] = Object.keys(GAS_VALUES[chain]).reduce((m2, method) => {
