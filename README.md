@@ -66,9 +66,17 @@ Make sure to create a `fee` object in addition to your message.
 For most messages, you can use the predefined fee objects.
 
 ```ts
-import { FEE_VALUES } from 'osmojs';
+import { FEES } from 'osmojs';
 
-const fee = FEE_VALUES.osmosis.swapExactAmountIn;
+const fee = FEES.osmosis.swapExactAmountIn();
+```
+
+You can also specify `low`, `medium`, or `high` for fees:
+
+```ts
+const fee = FEES.osmosis.swapExactAmountIn('low');
+const fee = FEES.osmosis.swapExactAmountIn('medium');
+const fee = FEES.osmosis.swapExactAmountIn('high');
 ```
 
 Or you can construct manually if you wish:
@@ -220,18 +228,12 @@ const {
 } = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
 ```
 
-### Clients
-
-[RPC Clients](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs/rpc.md)
-
-[LCD Clients](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs/lcd.md)
-
 ### Advanced Usage
 
 [documentation](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs)
 
 ## Disclaimer
 
-AS DESCRIBED IN THE OSMOSIS LICENSES, THE SOFTWARE IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
+AS DESCRIBED IN THE OSMOJS LICENSES, THE SOFTWARE IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
 
 No developer or entity involved in creating OsmoJS will be liable for any claims or damages whatsoever associated with your use, inability to use, or your interaction with other users of the OsmoJS code, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
