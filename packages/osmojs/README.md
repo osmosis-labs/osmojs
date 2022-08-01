@@ -66,17 +66,17 @@ Make sure to create a `fee` object in addition to your message.
 For most messages, you can use the predefined fee objects.
 
 ```ts
-import { FEE_VALUES } from 'osmojs';
+import { FEES } from 'osmojs';
 
-const fee = FEE_VALUES.osmosis.swapExactAmountIn();
+const fee = FEES.osmosis.swapExactAmountIn();
 ```
 
 You can also specify `low`, `medium`, or `high` for fees:
 
 ```ts
-const fee = FEE_VALUES.osmosis.swapExactAmountIn('low');
-const fee = FEE_VALUES.osmosis.swapExactAmountIn('medium');
-const fee = FEE_VALUES.osmosis.swapExactAmountIn('high');
+const fee = FEES.osmosis.swapExactAmountIn('low');
+const fee = FEES.osmosis.swapExactAmountIn('medium');
+const fee = FEES.osmosis.swapExactAmountIn('high');
 ```
 
 Or you can construct manually if you wish:
