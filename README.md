@@ -117,6 +117,36 @@ const client = await getSigningOsmosisClient({
   signer // OfflineSigner
 });
 ```
+
+## Creating Signers
+
+To broadcast messages, you'll want to use either [keplr](https://docs.keplr.app/api/cosmjs.html) or an `OfflineSigner` from `cosmjs` using mnemonics.
+### Amino Signer
+
+Likely you'll want to use the Amino, so unless you need proto, you should use this one:
+
+```js
+import { getOfflineSigner as getOfflineSignerAmino } from 'osmojs';
+```
+### Proto Signer
+
+```js
+import { getOfflineSigner as getOfflineSignerProto } from 'osmojs';
+```
+
+WARNING: NOT RECOMMENDED TO USE PLAIN-TEXT MNEMONICS. Please take care of your security and use best practices such as AES encryption and/or methods from 12factor applications.
+
+```js
+import { chains } from 'chain-registry';
+
+const mnemonic =
+  'unfold client turtle either pilot stock floor glow toward bullet car science';
+  const chain = chains.find(({ chain_name }) => chain_name === 'osmosis');
+  const signer = await getOfflineSigner({
+    mnemonic,
+    chain
+  });
+```
 ### Broadcasting messages
 
 Now that you have your `client`, you can broadcast messages:
@@ -125,9 +155,8 @@ Now that you have your `client`, you can broadcast messages:
 import { signAndBroadcast } from 'osmojs';
 
 const res = await signAndBroadcast({
-  client,
-  // use 'osmo-test-4' for testnet
-  chainId: 'osmosis-1',
+  client, // SigningStargateClient
+  chainId: 'osmosis-1', // use 'osmo-test-4' for testnet
   address,
   msgs: [msg],
   fee,
