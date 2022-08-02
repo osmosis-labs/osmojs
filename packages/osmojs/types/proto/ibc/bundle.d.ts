@@ -4156,4 +4156,210 @@ export declare namespace ibc {
             };
         }
     }
+    const ClientFactory: {
+        createRPCMsgClient: ({ rpc }: {
+            rpc: import("@osmonauts/helpers").Rpc;
+        }) => Promise<{
+            cosmos: {
+                authz: {
+                    v1beta1: import("../cosmos/authz/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                bank: {
+                    v1beta1: import("../cosmos/bank/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                crisis: {
+                    v1beta1: import("../cosmos/crisis/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                distribution: {
+                    v1beta1: import("../cosmos/distribution/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                evidence: {
+                    v1beta1: import("../cosmos/evidence/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                feegrant: {
+                    v1beta1: import("../cosmos/feegrant/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                gov: {
+                    v1: import("../cosmos/gov/v1/tx.rpc.msg").MsgClientImpl;
+                    v1beta1: import("../cosmos/gov/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                group: {
+                    v1: import("../cosmos/group/v1/tx.rpc.msg").MsgClientImpl;
+                };
+                nft: {
+                    v1beta1: import("../cosmos/nft/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                slashing: {
+                    v1beta1: import("../cosmos/slashing/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                staking: {
+                    v1beta1: import("../cosmos/staking/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                upgrade: {
+                    v1beta1: import("../cosmos/upgrade/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+                vesting: {
+                    v1beta1: import("../cosmos/vesting/v1beta1/tx.rpc.msg").MsgClientImpl;
+                };
+            };
+            ibc: {
+                applications: {
+                    transfer: {
+                        v1: _280.MsgClientImpl;
+                    };
+                };
+                core: {
+                    channel: {
+                        v1: _281.MsgClientImpl;
+                    };
+                    client: {
+                        v1: _282.MsgClientImpl;
+                    };
+                    connection: {
+                        v1: _283.MsgClientImpl;
+                    };
+                };
+            };
+        }>;
+        createRPCQueryClient: ({ rpc }: {
+            rpc: import("@osmonauts/helpers").Rpc;
+        }) => Promise<{
+            cosmos: {
+                app: {
+                    v1alpha1: import("../cosmos/app/v1alpha1/query.rpc.query").QueryClientImpl;
+                };
+                auth: {
+                    v1beta1: import("../cosmos/auth/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                authz: {
+                    v1beta1: import("../cosmos/authz/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                bank: {
+                    v1beta1: import("../cosmos/bank/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                distribution: {
+                    v1beta1: import("../cosmos/distribution/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                evidence: {
+                    v1beta1: import("../cosmos/evidence/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                feegrant: {
+                    v1beta1: import("../cosmos/feegrant/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                gov: {
+                    v1: import("../cosmos/gov/v1/query.rpc.query").QueryClientImpl;
+                    v1beta1: import("../cosmos/gov/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                group: {
+                    v1: import("../cosmos/group/v1/query.rpc.query").QueryClientImpl;
+                };
+                mint: {
+                    v1beta1: import("../cosmos/mint/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                nft: {
+                    v1beta1: import("../cosmos/nft/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                params: {
+                    v1beta1: import("../cosmos/params/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                slashing: {
+                    v1beta1: import("../cosmos/slashing/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                staking: {
+                    v1beta1: import("../cosmos/staking/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+                upgrade: {
+                    v1beta1: import("../cosmos/upgrade/v1beta1/query.rpc.query").QueryClientImpl;
+                };
+            };
+            ibc: {
+                applications: {
+                    transfer: {
+                        v1: _275.QueryClientImpl;
+                    };
+                };
+                core: {
+                    channel: {
+                        v1: _276.QueryClientImpl;
+                    };
+                    client: {
+                        v1: _277.QueryClientImpl;
+                    };
+                    connection: {
+                        v1: _278.QueryClientImpl;
+                    };
+                    port: {
+                        v1: _279.QueryClientImpl;
+                    };
+                };
+            };
+        }>;
+        createLCDClient: ({ restEndpoint }: {
+            restEndpoint: any;
+        }) => Promise<{
+            cosmos: {
+                auth: {
+                    v1beta1: import("../cosmos/auth/v1beta1/query.lcd").LCDQueryClient;
+                };
+                authz: {
+                    v1beta1: import("../cosmos/authz/v1beta1/query.lcd").LCDQueryClient;
+                };
+                bank: {
+                    v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
+                };
+                distribution: {
+                    v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
+                };
+                evidence: {
+                    v1beta1: import("../cosmos/evidence/v1beta1/query.lcd").LCDQueryClient;
+                };
+                feegrant: {
+                    v1beta1: import("../cosmos/feegrant/v1beta1/query.lcd").LCDQueryClient;
+                };
+                gov: {
+                    v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
+                    v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
+                };
+                group: {
+                    v1: import("../cosmos/group/v1/query.lcd").LCDQueryClient;
+                };
+                mint: {
+                    v1beta1: import("../cosmos/mint/v1beta1/query.lcd").LCDQueryClient;
+                };
+                nft: {
+                    v1beta1: import("../cosmos/nft/v1beta1/query.lcd").LCDQueryClient;
+                };
+                params: {
+                    v1beta1: import("../cosmos/params/v1beta1/query.lcd").LCDQueryClient;
+                };
+                slashing: {
+                    v1beta1: import("../cosmos/slashing/v1beta1/query.lcd").LCDQueryClient;
+                };
+                staking: {
+                    v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
+                };
+                upgrade: {
+                    v1beta1: import("../cosmos/upgrade/v1beta1/query.lcd").LCDQueryClient;
+                };
+            };
+            ibc: {
+                applications: {
+                    transfer: {
+                        v1: _271.LCDQueryClient;
+                    };
+                };
+                core: {
+                    channel: {
+                        v1: _272.LCDQueryClient;
+                    };
+                    client: {
+                        v1: _273.LCDQueryClient;
+                    };
+                    connection: {
+                        v1: _274.LCDQueryClient;
+                    };
+                };
+            };
+        }>;
+    };
 }

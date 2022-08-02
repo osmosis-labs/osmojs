@@ -2,7 +2,7 @@ import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "@osmonauts/helpers";
 import { MsgCreateStableswapPool, MsgStableSwapAdjustScalingFactors } from "./tx";
 export interface AminoMsgCreateStableswapPool extends AminoMsg {
-    type: "osmosis/gamm/poolmodels/stableswap/create-stableswap-pool";
+    type: "osmosis/gamm/create-stableswap-pool";
     value: {
         sender: string;
         poolParams: {
@@ -17,7 +17,7 @@ export interface AminoMsgCreateStableswapPool extends AminoMsg {
     };
 }
 export interface AminoMsgStableSwapAdjustScalingFactors extends AminoMsg {
-    type: "osmosis/gamm/poolmodels/stableswap/stable-swap-adjust-scaling-factors";
+    type: "osmosis/gamm/stable-swap-adjust-scaling-factors";
     value: {
         sender: string;
         pool_id: string;

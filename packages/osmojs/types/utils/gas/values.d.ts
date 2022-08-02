@@ -11,4 +11,11 @@ export declare const GAS_VALUES: {
         unlockPeriodLock: string;
     };
 };
-export declare const FEE_VALUES: {};
+export declare const FEE_VALUES: {
+    osmosis: {
+        low: string;
+        medium: string;
+        high: string;
+    };
+};
+export declare const FEES: {};

@@ -11793,4 +11793,153 @@ export declare namespace cosmos {
             };
         };
     }
+    const ClientFactory: {
+        createRPCMsgClient: ({ rpc }: {
+            rpc: import("@osmonauts/helpers").Rpc;
+        }) => Promise<{
+            cosmos: {
+                authz: {
+                    v1beta1: _244.MsgClientImpl;
+                };
+                bank: {
+                    v1beta1: _245.MsgClientImpl;
+                };
+                crisis: {
+                    v1beta1: _246.MsgClientImpl;
+                };
+                distribution: {
+                    v1beta1: _247.MsgClientImpl;
+                };
+                evidence: {
+                    v1beta1: _248.MsgClientImpl;
+                };
+                feegrant: {
+                    v1beta1: _249.MsgClientImpl;
+                };
+                gov: {
+                    v1: _250.MsgClientImpl;
+                    v1beta1: _251.MsgClientImpl;
+                };
+                group: {
+                    v1: _252.MsgClientImpl;
+                };
+                nft: {
+                    v1beta1: _253.MsgClientImpl;
+                };
+                slashing: {
+                    v1beta1: _254.MsgClientImpl;
+                };
+                staking: {
+                    v1beta1: _255.MsgClientImpl;
+                };
+                upgrade: {
+                    v1beta1: _256.MsgClientImpl;
+                };
+                vesting: {
+                    v1beta1: _257.MsgClientImpl;
+                };
+            };
+        }>;
+        createRPCQueryClient: ({ rpc }: {
+            rpc: import("@osmonauts/helpers").Rpc;
+        }) => Promise<{
+            cosmos: {
+                app: {
+                    v1alpha1: _226.QueryClientImpl;
+                };
+                auth: {
+                    v1beta1: _227.QueryClientImpl;
+                };
+                authz: {
+                    v1beta1: _228.QueryClientImpl;
+                };
+                bank: {
+                    v1beta1: _229.QueryClientImpl;
+                };
+                distribution: {
+                    v1beta1: _231.QueryClientImpl;
+                };
+                evidence: {
+                    v1beta1: _232.QueryClientImpl;
+                };
+                feegrant: {
+                    v1beta1: _233.QueryClientImpl;
+                };
+                gov: {
+                    v1: _234.QueryClientImpl;
+                    v1beta1: _235.QueryClientImpl;
+                };
+                group: {
+                    v1: _236.QueryClientImpl;
+                };
+                mint: {
+                    v1beta1: _237.QueryClientImpl;
+                };
+                nft: {
+                    v1beta1: _238.QueryClientImpl;
+                };
+                params: {
+                    v1beta1: _239.QueryClientImpl;
+                };
+                slashing: {
+                    v1beta1: _240.QueryClientImpl;
+                };
+                staking: {
+                    v1beta1: _241.QueryClientImpl;
+                };
+                upgrade: {
+                    v1beta1: _243.QueryClientImpl;
+                };
+            };
+        }>;
+        createLCDClient: ({ restEndpoint }: {
+            restEndpoint: any;
+        }) => Promise<{
+            cosmos: {
+                auth: {
+                    v1beta1: _211.LCDQueryClient;
+                };
+                authz: {
+                    v1beta1: _212.LCDQueryClient;
+                };
+                bank: {
+                    v1beta1: _213.LCDQueryClient;
+                };
+                distribution: {
+                    v1beta1: _214.LCDQueryClient;
+                };
+                evidence: {
+                    v1beta1: _215.LCDQueryClient;
+                };
+                feegrant: {
+                    v1beta1: _216.LCDQueryClient;
+                };
+                gov: {
+                    v1: _217.LCDQueryClient;
+                    v1beta1: _218.LCDQueryClient;
+                };
+                group: {
+                    v1: _219.LCDQueryClient;
+                };
+                mint: {
+                    v1beta1: _220.LCDQueryClient;
+                };
+                nft: {
+                    v1beta1: _221.LCDQueryClient;
+                };
+                params: {
+                    v1beta1: _222.LCDQueryClient;
+                };
+                slashing: {
+                    v1beta1: _223.LCDQueryClient;
+                };
+                staking: {
+                    v1beta1: _224.LCDQueryClient;
+                };
+                upgrade: {
+                    v1beta1: _225.LCDQueryClient;
+                };
+            };
+        }>;
+    };
 }

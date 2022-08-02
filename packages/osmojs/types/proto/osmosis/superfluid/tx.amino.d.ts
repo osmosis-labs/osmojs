@@ -1,7 +1,7 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool } from "./tx";
 export interface AminoMsgSuperfluidDelegate extends AminoMsg {
-    type: "osmosis/superfluid/superfluid-delegate";
+    type: "osmosis/superfluid-delegate";
     value: {
         sender: string;
         lock_id: string;
@@ -9,21 +9,21 @@ export interface AminoMsgSuperfluidDelegate extends AminoMsg {
     };
 }
 export interface AminoMsgSuperfluidUndelegate extends AminoMsg {
-    type: "osmosis/superfluid/superfluid-undelegate";
+    type: "osmosis/superfluid-undelegate";
     value: {
         sender: string;
         lock_id: string;
     };
 }
 export interface AminoMsgSuperfluidUnbondLock extends AminoMsg {
-    type: "osmosis/superfluid/superfluid-unbond-lock";
+    type: "osmosis/superfluid-unbond-lock";
     value: {
         sender: string;
         lock_id: string;
     };
 }
 export interface AminoMsgLockAndSuperfluidDelegate extends AminoMsg {
-    type: "osmosis/superfluid/lock-and-superfluid-delegate";
+    type: "osmosis/lock-and-superfluid-delegate";
     value: {
         sender: string;
         coins: {
@@ -34,7 +34,7 @@ export interface AminoMsgLockAndSuperfluidDelegate extends AminoMsg {
     };
 }
 export interface AminoMsgUnPoolWhitelistedPool extends AminoMsg {
-    type: "osmosis/superfluid/un-pool-whitelisted-pool";
+    type: "osmosis/unpool-whitelisted-pool";
     value: {
         sender: string;
         pool_id: string;
