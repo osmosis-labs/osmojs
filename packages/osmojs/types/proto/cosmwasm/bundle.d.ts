@@ -152,7 +152,7 @@ export declare namespace cosmwasm {
                     aminoType: string;
                     toAmino: ({ sender, wasmByteCode, instantiatePermission }: _98.MsgStoreCode) => {
                         sender: string;
-                        wasm_byte_code: Uint8Array;
+                        wasm_byte_code: string;
                         instantiate_permission: {
                             permission: number;
                             address: string;
@@ -160,7 +160,7 @@ export declare namespace cosmwasm {
                     };
                     fromAmino: ({ sender, wasm_byte_code, instantiate_permission }: {
                         sender: string;
-                        wasm_byte_code: Uint8Array;
+                        wasm_byte_code: string;
                         instantiate_permission: {
                             permission: number;
                             address: string;
