@@ -25,4 +25,6 @@ telescope({
       useExact: false
     }
   }
+}).then(()=>{
+  console.log('✨ all done!');
 });
