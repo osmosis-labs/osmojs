@@ -8,6 +8,13 @@ telescope({
   protoDirs,
   outPath,
   options: {
+    prototypes: {
+      typingsFormat: {
+        duration: 'duration',
+        timestamp: 'date',
+        useExact: false
+      }
+    },
     aminoEncoding: {
       enabled: true
     },
@@ -17,11 +24,6 @@ telescope({
     rpcClients: {
       enabled: true,
       camelCase: true
-    },
-    typingsFormat: {
-      duration: 'duration',
-      timestamp: 'date',
-      useExact: false
     }
   }
 }).then(()=>{
