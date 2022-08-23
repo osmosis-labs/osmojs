@@ -4,15 +4,15 @@ import * as _96 from "./wasm/v1/proposal";
 import * as _97 from "./wasm/v1/query";
 import * as _98 from "./wasm/v1/tx";
 import * as _99 from "./wasm/v1/types";
-import * as _260 from "./wasm/v1/query.lcd";
-import * as _261 from "./wasm/v1/query.rpc.query";
-import * as _262 from "./wasm/v1/tx.rpc.msg";
+import * as _263 from "./wasm/v1/query.lcd";
+import * as _264 from "./wasm/v1/query.rpc.query";
+import * as _265 from "./wasm/v1/tx.rpc.msg";
 export declare namespace cosmwasm {
     namespace wasm {
         const v1: {
-            MsgClientImpl: typeof _262.MsgClientImpl;
-            QueryClientImpl: typeof _261.QueryClientImpl;
-            LCDQueryClient: typeof _260.LCDQueryClient;
+            MsgClientImpl: typeof _265.MsgClientImpl;
+            QueryClientImpl: typeof _264.QueryClientImpl;
+            LCDQueryClient: typeof _263.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -1126,7 +1126,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _262.MsgClientImpl;
+                    v1: _265.MsgClientImpl;
                 };
             };
         }>;
@@ -1183,7 +1183,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _261.QueryClientImpl;
+                    v1: _264.QueryClientImpl;
                 };
             };
         }>;
@@ -1237,7 +1237,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _260.LCDQueryClient;
+                    v1: _263.LCDQueryClient;
                 };
             };
         }>;

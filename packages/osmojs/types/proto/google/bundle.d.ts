@@ -4,6 +4,9 @@ import * as _104 from "./protobuf/descriptor";
 import * as _105 from "./protobuf/duration";
 import * as _106 from "./protobuf/empty";
 import * as _107 from "./protobuf/timestamp";
+import * as _108 from "./protobuf/struct";
+import * as _109 from "./protobuf/wrappers";
+import * as _110 from "./protobuf/field_mask";
 export declare namespace google {
     const api: {
         Http: {
@@ -63,6 +66,162 @@ export declare namespace google {
         };
     };
     const protobuf: {
+        FieldMask: {
+            encode(message: _110.FieldMask, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.FieldMask;
+            fromJSON(object: any): _110.FieldMask;
+            toJSON(message: _110.FieldMask): unknown;
+            fromPartial(object: {
+                paths?: string[];
+            }): _110.FieldMask;
+        };
+        DoubleValue: {
+            encode(message: _109.DoubleValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.DoubleValue;
+            fromJSON(object: any): _109.DoubleValue;
+            toJSON(message: _109.DoubleValue): unknown;
+            fromPartial(object: {
+                value?: number;
+            }): _109.DoubleValue;
+        };
+        FloatValue: {
+            encode(message: _109.FloatValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.FloatValue;
+            fromJSON(object: any): _109.FloatValue;
+            toJSON(message: _109.FloatValue): unknown;
+            fromPartial(object: {
+                value?: number;
+            }): _109.FloatValue;
+        };
+        Int64Value: {
+            encode(message: _109.Int64Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.Int64Value;
+            fromJSON(object: any): _109.Int64Value;
+            toJSON(message: _109.Int64Value): unknown;
+            fromPartial(object: {
+                value?: any;
+            }): _109.Int64Value;
+        };
+        UInt64Value: {
+            encode(message: _109.UInt64Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.UInt64Value;
+            fromJSON(object: any): _109.UInt64Value;
+            toJSON(message: _109.UInt64Value): unknown;
+            fromPartial(object: {
+                value?: any;
+            }): _109.UInt64Value;
+        };
+        Int32Value: {
+            encode(message: _109.Int32Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.Int32Value;
+            fromJSON(object: any): _109.Int32Value;
+            toJSON(message: _109.Int32Value): unknown;
+            fromPartial(object: {
+                value?: number;
+            }): _109.Int32Value;
+        };
+        UInt32Value: {
+            encode(message: _109.UInt32Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.UInt32Value;
+            fromJSON(object: any): _109.UInt32Value;
+            toJSON(message: _109.UInt32Value): unknown;
+            fromPartial(object: {
+                value?: number;
+            }): _109.UInt32Value;
+        };
+        BoolValue: {
+            encode(message: _109.BoolValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.BoolValue;
+            fromJSON(object: any): _109.BoolValue;
+            toJSON(message: _109.BoolValue): unknown;
+            fromPartial(object: {
+                value?: boolean;
+            }): _109.BoolValue;
+        };
+        StringValue: {
+            encode(message: _109.StringValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.StringValue;
+            fromJSON(object: any): _109.StringValue;
+            toJSON(message: _109.StringValue): unknown;
+            fromPartial(object: {
+                value?: string;
+            }): _109.StringValue;
+        };
+        BytesValue: {
+            encode(message: _109.BytesValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.BytesValue;
+            fromJSON(object: any): _109.BytesValue;
+            toJSON(message: _109.BytesValue): unknown;
+            fromPartial(object: {
+                value?: Uint8Array;
+            }): _109.BytesValue;
+        };
+        nullValueFromJSON(object: any): _108.NullValue;
+        nullValueToJSON(object: _108.NullValue): string;
+        NullValue: typeof _108.NullValue;
+        Struct_FieldsEntry: {
+            encode(message: _108.Struct_FieldsEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.Struct_FieldsEntry;
+            fromJSON(object: any): _108.Struct_FieldsEntry;
+            toJSON(message: _108.Struct_FieldsEntry): unknown;
+            fromPartial(object: {
+                key?: string;
+                value?: {
+                    nullValue?: _108.NullValue;
+                    numberValue?: number;
+                    stringValue?: string;
+                    boolValue?: boolean;
+                    structValue?: {
+                        fields?: {
+                            [x: string]: any;
+                        };
+                    };
+                    listValue?: {
+                        values?: any[];
+                    };
+                };
+            }): _108.Struct_FieldsEntry;
+        };
+        Struct: {
+            encode(message: _108.Struct, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.Struct;
+            fromJSON(object: any): _108.Struct;
+            toJSON(message: _108.Struct): unknown;
+            fromPartial(object: {
+                fields?: {
+                    [x: string]: any;
+                };
+            }): _108.Struct;
+        };
+        Value: {
+            encode(message: _108.Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.Value;
+            fromJSON(object: any): _108.Value;
+            toJSON(message: _108.Value): unknown;
+            fromPartial(object: {
+                nullValue?: _108.NullValue;
+                numberValue?: number;
+                stringValue?: string;
+                boolValue?: boolean;
+                structValue?: {
+                    fields?: {
+                        [x: string]: any;
+                    };
+                };
+                listValue?: {
+                    values?: any[];
+                };
+            }): _108.Value;
+        };
+        ListValue: {
+            encode(message: _108.ListValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.ListValue;
+            fromJSON(object: any): _108.ListValue;
+            toJSON(message: _108.ListValue): unknown;
+            fromPartial(object: {
+                values?: any[];
+            }): _108.ListValue;
+        };
         Timestamp: {
             encode(message: _107.Timestamp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.Timestamp;
