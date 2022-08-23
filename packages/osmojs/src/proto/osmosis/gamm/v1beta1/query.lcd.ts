@@ -14,7 +14,9 @@ export class LCDQueryClient extends LCDClient {
   }
 
   /* Pools */
-  async pools(params: QueryPoolsRequest): Promise<QueryPoolsResponse> {
+  async pools(params: QueryPoolsRequest = {
+    pagination: undefined
+  }): Promise<QueryPoolsResponse> {
     const options: any = {
       params: {}
     };
@@ -28,13 +30,13 @@ export class LCDQueryClient extends LCDClient {
   }
 
   /* NumPools */
-  async numPools(params: QueryNumPoolsRequest): Promise<QueryNumPoolsResponse> {
+  async numPools(_params: QueryNumPoolsRequest = {}): Promise<QueryNumPoolsResponse> {
     const endpoint = `osmosis/gamm/v1beta1/num_pools`;
     return await this.request<QueryNumPoolsResponse>(endpoint);
   }
 
   /* TotalLiquidity */
-  async totalLiquidity(params: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponse> {
+  async totalLiquidity(_params: QueryTotalLiquidityRequest = {}): Promise<QueryTotalLiquidityResponse> {
     const endpoint = `osmosis/gamm/v1beta1/total_liquidity`;
     return await this.request<QueryTotalLiquidityResponse>(endpoint);
   }
@@ -93,7 +95,7 @@ export class LCDQueryClient extends LCDClient {
     }
 
     if (typeof params?.tokenIn !== "undefined") {
-      options.params.token_in = params.tokenIn;
+      options.params.tokenIn = params.tokenIn;
     }
 
     if (typeof params?.routes !== "undefined") {
@@ -119,7 +121,7 @@ export class LCDQueryClient extends LCDClient {
     }
 
     if (typeof params?.tokenOut !== "undefined") {
-      options.params.token_out = params.tokenOut;
+      options.params.tokenOut = params.tokenOut;
     }
 
     const endpoint = `osmosis/gamm/v1beta1/${params.poolId}/estimate/swap_exact_amount_out`;

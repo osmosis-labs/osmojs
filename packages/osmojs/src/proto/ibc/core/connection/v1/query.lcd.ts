@@ -23,12 +23,14 @@ export class LCDQueryClient extends LCDClient {
       options.params.connection_id = params.connectionId;
     }
 
-    const endpoint = `ibc/core/connection/v1/connections/${params.connection_id}`;
+    const endpoint = `ibc/core/connection/v1/connections/${params.connectionId}`;
     return await this.request<QueryConnectionResponse>(endpoint, options);
   }
 
   /* Connections queries all the IBC connections of a chain. */
-  async connections(params: QueryConnectionsRequest): Promise<QueryConnectionsResponse> {
+  async connections(params: QueryConnectionsRequest = {
+    pagination: undefined
+  }): Promise<QueryConnectionsResponse> {
     const options: any = {
       params: {}
     };
@@ -52,7 +54,7 @@ export class LCDQueryClient extends LCDClient {
       options.params.client_id = params.clientId;
     }
 
-    const endpoint = `ibc/core/connection/v1/client_connections/${params.client_id}`;
+    const endpoint = `ibc/core/connection/v1/client_connections/${params.clientId}`;
     return await this.request<QueryClientConnectionsResponse>(endpoint, options);
   }
 
@@ -67,7 +69,7 @@ export class LCDQueryClient extends LCDClient {
       options.params.connection_id = params.connectionId;
     }
 
-    const endpoint = `ibc/core/connection/v1/connections/${params.connection_id}/client_state`;
+    const endpoint = `ibc/core/connection/v1/connections/${params.connectionId}/client_state`;
     return await this.request<QueryConnectionClientStateResponse>(endpoint, options);
   }
 
@@ -90,7 +92,7 @@ export class LCDQueryClient extends LCDClient {
       options.params.revision_height = params.revisionHeight;
     }
 
-    const endpoint = `ibc/core/connection/v1/connections/${params.connection_id}/consensus_state/revision/${params.revision_number}height/${params.revision_height}`;
+    const endpoint = `ibc/core/connection/v1/connections/${params.connectionId}/consensus_state/revision/${params.revisionNumber}height/${params.revisionHeight}`;
     return await this.request<QueryConnectionConsensusStateResponse>(endpoint, options);
   }
 

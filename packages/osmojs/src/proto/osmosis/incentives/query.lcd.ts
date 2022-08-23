@@ -14,13 +14,13 @@ export class LCDQueryClient extends LCDClient {
   }
 
   /* returns coins that is going to be distributed */
-  async moduleToDistributeCoins(params: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponse> {
+  async moduleToDistributeCoins(_params: ModuleToDistributeCoinsRequest = {}): Promise<ModuleToDistributeCoinsResponse> {
     const endpoint = `osmosis/incentives/v1beta1/module_to_distribute_coins`;
     return await this.request<ModuleToDistributeCoinsResponse>(endpoint);
   }
 
   /* returns coins that are distributed by module so far */
-  async moduleDistributedCoins(params: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponse> {
+  async moduleDistributedCoins(_params: ModuleDistributedCoinsRequest = {}): Promise<ModuleDistributedCoinsResponse> {
     const endpoint = `osmosis/incentives/v1beta1/module_distributed_coins`;
     return await this.request<ModuleDistributedCoinsResponse>(endpoint);
   }
@@ -32,7 +32,9 @@ export class LCDQueryClient extends LCDClient {
   }
 
   /* returns gauges both upcoming and active */
-  async gauges(params: GaugesRequest): Promise<GaugesResponse> {
+  async gauges(params: GaugesRequest = {
+    pagination: undefined
+  }): Promise<GaugesResponse> {
     const options: any = {
       params: {}
     };
@@ -46,7 +48,9 @@ export class LCDQueryClient extends LCDClient {
   }
 
   /* returns active gauges */
-  async activeGauges(params: ActiveGaugesRequest): Promise<ActiveGaugesResponse> {
+  async activeGauges(params: ActiveGaugesRequest = {
+    pagination: undefined
+  }): Promise<ActiveGaugesResponse> {
     const options: any = {
       params: {}
     };
@@ -78,7 +82,9 @@ export class LCDQueryClient extends LCDClient {
   }
 
   /* returns scheduled gauges */
-  async upcomingGauges(params: UpcomingGaugesRequest): Promise<UpcomingGaugesResponse> {
+  async upcomingGauges(params: UpcomingGaugesRequest = {
+    pagination: undefined
+  }): Promise<UpcomingGaugesResponse> {
     const options: any = {
       params: {}
     };
@@ -130,7 +136,7 @@ export class LCDQueryClient extends LCDClient {
   }
 
   /* returns lockable durations that are valid to give incentives */
-  async lockableDurations(params: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse> {
+  async lockableDurations(_params: QueryLockableDurationsRequest = {}): Promise<QueryLockableDurationsResponse> {
     const endpoint = `osmosis/incentives/v1beta1/lockable_durations`;
     return await this.request<QueryLockableDurationsResponse>(endpoint);
   }
