@@ -59,7 +59,7 @@
     "@babel/preset-typescript": "^7.17.12",
     "@babel/traverse": "7.18.13",
     "@babel/types": "7.18.13",
-    "@osmonauts/telescope": "0.17.0",
+    "@osmonauts/telescope": "0.18.0",
     "@protobufs/cosmos": "^0.0.11",
     "@protobufs/cosmwasm": "^0.0.11",
     "@protobufs/ibc": "^0.0.11",
