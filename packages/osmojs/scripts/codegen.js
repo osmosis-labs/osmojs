@@ -8,7 +8,6 @@ telescope({
   protoDirs,
   outPath,
   options: {
-    includePackageVar: false,
     aminoEncoding: {
       enabled: true
     },
@@ -27,4 +26,7 @@ telescope({
   }
 }).then(()=>{
   console.log('✨ all done!');
+}).catch(e=>{
+  console.error(e);
+  process.exit(1);
 });
