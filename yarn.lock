@@ -2952,10 +2952,10 @@
   dependencies:
     "@octokit/openapi-types" "^12.7.0"
 
-"@osmonauts/ast@^0.14.1":
-  version "0.14.1"
-  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.14.1.tgz#3e03ddfa2e51232307c9ad50f06d19659bb8ecf7"
-  integrity sha512-HW8QOx0+xh26IK+CzrHk2owlv3ALQoqiA8exXP8VIYaVGjaUg1pGaITuCdN0dvjQv33XYXAIBGnyEdsWVlj5eg==
+"@osmonauts/ast@^0.14.2":
+  version "0.14.2"
+  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.14.2.tgz#dd773a56e0f68a73113c82542f406c0c6fcfbd33"
+  integrity sha512-OeE/iOaJsN/Gnrg6s2l+aV0rcZlyRKugSQu3SEHaHd+624mC0+FBaSvzwdMaXif/aavY2idQSfVX5jLVlcUBsA==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@babel/types" "7.18.13"
@@ -2965,10 +2965,10 @@
     case "1.6.3"
     dotty "0.1.2"
 
-"@osmonauts/helpers@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.npmjs.org/@osmonauts/helpers/-/helpers-0.4.2.tgz#98e3fe1cb85ac11fb761909ec794c7d09a89b2f8"
-  integrity sha512-HZravI7G4BKF1E8AZX51+njaQH4+jwX0uP66sr4eBhgUrCQXy1L8XFh/DrQO+mHjhaIVFcw1gWIP0A/xRqw0Ww==
+"@osmonauts/helpers@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.npmjs.org/@osmonauts/helpers/-/helpers-0.4.3.tgz#f73cce20c2d05cc4ab056efdd1f16bb1e9eef76e"
+  integrity sha512-Dd6CXSKoAP4kLptE8Fx2vsEqc0Ai4kF07l4zPsfOYop9SH5ayOKkRTfAkrBjBr84FsMPyu5TEhJeqj1i//Q/jg==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@cosmjs/amino" "0.28.13"
@@ -2999,10 +2999,10 @@
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@0.18.1":
-  version "0.18.1"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.18.1.tgz#5f0d608319ae561ccf0235ca8bda1db445b43726"
-  integrity sha512-JTFQYAdPiyAeC18E2ED1Mj1yKbCtjot1lwYbl3iu8njoXTjdMKl3nMkSeNmFsOG2BXztJYsuciykQ3RPKAzFpQ==
+"@osmonauts/telescope@0.18.2":
+  version "0.18.2"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.18.2.tgz#b108262bf003b807b7436d969a4dcc69f39a06d8"
+  integrity sha512-piFgJcHzODZUWyszPGZxqiakvO0aE1bQrCGCqr5kfyu6P8nRM9SbcEN2cSiAgxfSgds2a/qQbvjy0NwR+EsLgA==
   dependencies:
     "@babel/core" "7.18.13"
     "@babel/generator" "7.18.13"
@@ -3017,7 +3017,7 @@
     "@babel/traverse" "7.18.13"
     "@babel/types" "7.18.13"
     "@cosmwasm/ts-codegen" "0.13.0"
-    "@osmonauts/ast" "^0.14.1"
+    "@osmonauts/ast" "^0.14.2"
     "@osmonauts/proto-parser" "^0.11.2"
     "@osmonauts/types" "^0.9.2"
     "@osmonauts/utils" "^0.3.13"
