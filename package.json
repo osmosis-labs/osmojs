@@ -9,7 +9,7 @@
     "build": "lerna run prepare --parallel",
     "buidl": "lerna run buidl --parallel",
     "bootstrap": "lerna bootstrap --use-workspaces",
-    "proto": "lerna run proto --stream --scope osmojs",
+    "codegen": "lerna run codegen --stream --scope osmojs",
     "lint": "lerna run lint",
     "format": "lerna run format",
     "test": "lerna run test --stream"
