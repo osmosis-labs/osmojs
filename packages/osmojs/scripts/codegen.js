@@ -2,7 +2,7 @@ import { join } from 'path';
 import telescope from '@osmonauts/telescope';
 
 const protoDirs = [join(__dirname, '/../proto')];
-const outPath = join(__dirname, '/../src/proto');
+const outPath = join(__dirname, '/../src/codegen');
 
 telescope({
   protoDirs,
