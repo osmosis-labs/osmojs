@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AminoConverter 1`] = `
-Object {
+{
   "poolId": "606",
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
-  "tokenInMaxs": Array [
-    Object {
+  "tokenInMaxs": [
+    {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
-    Object {
+    {
       "amount": "64837969",
       "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
     },
@@ -19,7 +19,7 @@ Object {
 `;
 
 exports[`AminoConverter 2`] = `
-Object {
+{
   "poolId": Long {
     "high": 0,
     "low": 606,
@@ -27,12 +27,12 @@ Object {
   },
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
-  "tokenInMaxs": Array [
-    Object {
+  "tokenInMaxs": [
+    {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
-    Object {
+    {
       "amount": "64837969",
       "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
     },
@@ -41,16 +41,16 @@ Object {
 `;
 
 exports[`AminoConverter 3`] = `
-Object {
+{
   "poolId": "606",
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
-  "tokenInMaxs": Array [
-    Object {
+  "tokenInMaxs": [
+    {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
-    Object {
+    {
       "amount": "64837969",
       "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
     },
@@ -59,15 +59,15 @@ Object {
 `;
 
 exports[`AminoConverter.MsgSwapExactAmountIn 1`] = `
-Object {
-  "routes": Array [
-    Object {
+{
+  "routes": [
+    {
       "poolId": "606",
       "tokenOutDenom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
   ],
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
-  "tokenIn": Object {
+  "tokenIn": {
     "amount": "10248",
     "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
   },
@@ -76,9 +76,9 @@ Object {
 `;
 
 exports[`AminoConverter.MsgSwapExactAmountIn 2`] = `
-Object {
-  "routes": Array [
-    Object {
+{
+  "routes": [
+    {
       "poolId": Long {
         "high": 0,
         "low": 606,
@@ -88,7 +88,7 @@ Object {
     },
   ],
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
-  "tokenIn": Object {
+  "tokenIn": {
     "amount": "10248",
     "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
   },
@@ -97,15 +97,15 @@ Object {
 `;
 
 exports[`AminoConverter.MsgSwapExactAmountIn 3`] = `
-Object {
-  "routes": Array [
-    Object {
+{
+  "routes": [
+    {
       "poolId": "606",
       "tokenOutDenom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
   ],
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
-  "tokenIn": Object {
+  "tokenIn": {
     "amount": "10248",
     "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
   },
@@ -114,16 +114,16 @@ Object {
 `;
 
 exports[`AminoConverter.scoped 1`] = `
-Object {
+{
   "poolId": "606",
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
-  "tokenInMaxs": Array [
-    Object {
+  "tokenInMaxs": [
+    {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
-    Object {
+    {
       "amount": "64837969",
       "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
     },
@@ -132,7 +132,7 @@ Object {
 `;
 
 exports[`AminoConverter.scoped 2`] = `
-Object {
+{
   "poolId": Long {
     "high": 0,
     "low": 606,
@@ -140,12 +140,12 @@ Object {
   },
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
-  "tokenInMaxs": Array [
-    Object {
+  "tokenInMaxs": [
+    {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
-    Object {
+    {
       "amount": "64837969",
       "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
     },
@@ -154,16 +154,16 @@ Object {
 `;
 
 exports[`AminoConverter.scoped 3`] = `
-Object {
+{
   "poolId": "606",
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
-  "tokenInMaxs": Array [
-    Object {
+  "tokenInMaxs": [
+    {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
-    Object {
+    {
       "amount": "64837969",
       "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
     },

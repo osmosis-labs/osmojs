@@ -1,8 +1,8 @@
 import { coin } from '@cosmjs/amino';
 import Long from 'long';
-import { MsgJoinPool } from '../src/proto/osmosis/gamm/v1beta1/tx';
-import { MessageComposer  } from '../src/proto/osmosis/gamm/v1beta1/tx.registry';
-import { osmosis } from '../src/proto';
+import { MsgJoinPool } from '../src/codegen/osmosis/gamm/v1beta1/tx';
+import { MessageComposer  } from '../src/codegen/osmosis/gamm/v1beta1/tx.registry';
+import { osmosis } from '../src/codegen';
 
 it('encoded', async () => {
   const msg = MessageComposer.encoded.joinPool({

@@ -53,9 +53,9 @@ Object {
 `;
 
 exports[`toJSON 1`] = `
-Object {
-  "coins": Array [
-    Object {
+{
+  "coins": [
+    {
       "amount": "10236850525923652977",
       "denom": "gamm/pool/3",
     },

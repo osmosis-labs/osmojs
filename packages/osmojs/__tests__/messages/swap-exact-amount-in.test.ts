@@ -1,6 +1,6 @@
 import { coin } from '@cosmjs/amino';
-import { AminoConverter } from '../../src/proto/osmosis/gamm/v1beta1/tx.amino';
-import { osmosis } from '../../src/proto';
+import { AminoConverter } from '../../src/codegen/osmosis/gamm/v1beta1/tx.amino';
+import { osmosis } from '../../src/codegen';
 
 it('AminoConverter.MsgSwapExactAmountIn', async () => {
   const msg = AminoConverter['/osmosis.gamm.v1beta1.MsgSwapExactAmountIn'].toAmino(

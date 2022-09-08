@@ -5,7 +5,7 @@ import {
     MsgSetWithdrawAddress,
     MsgWithdrawDelegatorReward,
     MsgWithdrawValidatorCommission,
-} from '../../../../src/proto/cosmos/distribution/v1beta1/tx';
+} from '../../../../src/codegen/cosmos/distribution/v1beta1/tx';
 
 import {
     AminoTypes,
@@ -17,7 +17,7 @@ import {
     AminoMsgWithdrawDelegatorReward,
     AminoMsgWithdrawValidatorCommission,
     AminoConverter,
-} from '../../../../src/proto/cosmos/distribution/v1beta1/tx.amino';
+} from '../../../../src/codegen/cosmos/distribution/v1beta1/tx.amino';
 
 describe("AminoTypes", () => {
     describe("toAmino", () => {

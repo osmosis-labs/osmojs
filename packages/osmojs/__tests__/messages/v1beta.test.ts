@@ -1,5 +1,5 @@
 
-import { osmosis } from '../../src/proto';
+import { osmosis } from '../../src/codegen';
 
 it('toJSON', () => {
     expect(Object.keys(osmosis.gamm.v1beta1.MessageComposer.toJSON)).toMatchSnapshot();

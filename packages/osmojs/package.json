@@ -25,7 +25,7 @@
     "prepare": "npm run build",
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "clean": "rimraf ./types && rimraf ./src/proto",
+    "clean": "rimraf ./types && rimraf ./src/codegen",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand"

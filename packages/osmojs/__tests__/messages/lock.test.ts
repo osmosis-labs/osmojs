@@ -1,6 +1,6 @@
 import { coin } from '@cosmjs/amino';
-import { AminoConverter } from '../../src/proto/osmosis/lockup/tx.amino';
-import { osmosis } from '../../src/proto';
+import { AminoConverter } from '../../src/codegen/osmosis/lockup/tx.amino';
+import { osmosis } from '../../src/codegen';
 import Long from 'long';
 
 it('toJSON', () => {
