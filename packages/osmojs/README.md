@@ -261,6 +261,14 @@ const {
 
 [documentation](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs)
 
+## Credits
+
+🛠 Built by Cosmology — if you like our tools, please consider delegating to [our validator ⚛️](https://cosmology.tech/validator)
+
+Code built with the help of these related projects:
+
+* [@osmonauts/telescope](https://github.com/osmosis-labs/telescope) a "babel for the Cosmos", Telescope is a TypeScript Transpiler for Cosmos Protobufs.
+
 ## Disclaimer
 
 AS DESCRIBED IN THE OSMOJS LICENSES, THE SOFTWARE IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
