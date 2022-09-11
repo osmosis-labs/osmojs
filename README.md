@@ -126,12 +126,12 @@ To broadcast messages, you'll want to use either [keplr](https://docs.keplr.app/
 Likely you'll want to use the Amino, so unless you need proto, you should use this one:
 
 ```js
-import { getOfflineSigner as getOfflineSignerAmino } from 'osmojs';
+import { getOfflineSignerAmino as getOfflineSigner } from 'osmojs';
 ```
 ### Proto Signer
 
 ```js
-import { getOfflineSigner as getOfflineSignerProto } from 'osmojs';
+import { getOfflineSignerProto as getOfflineSigner } from 'osmojs';
 ```
 
 WARNING: NOT RECOMMENDED TO USE PLAIN-TEXT MNEMONICS. Please take care of your security and use best practices such as AES encryption and/or methods from 12factor applications.
