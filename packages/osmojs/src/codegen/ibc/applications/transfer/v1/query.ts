@@ -27,7 +27,7 @@ export interface QueryDenomTraceResponse {
  */
 export interface QueryDenomTracesRequest {
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -39,7 +39,7 @@ export interface QueryDenomTracesResponse {
   denomTraces: DenomTrace[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */

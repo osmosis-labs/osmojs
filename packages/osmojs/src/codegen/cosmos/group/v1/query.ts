@@ -33,7 +33,7 @@ export interface QueryGroupMembersRequest {
   groupId: Long;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryGroupMembersResponse is the Query/GroupMembersResponse response type. */
@@ -42,7 +42,7 @@ export interface QueryGroupMembersResponse {
   members: GroupMember[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryGroupsByAdminRequest is the Query/GroupsByAdmin request type. */
@@ -51,7 +51,7 @@ export interface QueryGroupsByAdminRequest {
   admin: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryGroupsByAdminResponse is the Query/GroupsByAdminResponse response type. */
@@ -60,7 +60,7 @@ export interface QueryGroupsByAdminResponse {
   groups: GroupInfo[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryGroupPoliciesByGroupRequest is the Query/GroupPoliciesByGroup request type. */
@@ -69,7 +69,7 @@ export interface QueryGroupPoliciesByGroupRequest {
   groupId: Long;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryGroupPoliciesByGroupResponse is the Query/GroupPoliciesByGroup response type. */
@@ -78,7 +78,7 @@ export interface QueryGroupPoliciesByGroupResponse {
   groupPolicies: GroupPolicyInfo[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryGroupPoliciesByAdminRequest is the Query/GroupPoliciesByAdmin request type. */
@@ -87,7 +87,7 @@ export interface QueryGroupPoliciesByAdminRequest {
   admin: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryGroupPoliciesByAdminResponse is the Query/GroupPoliciesByAdmin response type. */
@@ -96,7 +96,7 @@ export interface QueryGroupPoliciesByAdminResponse {
   groupPolicies: GroupPolicyInfo[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryProposalRequest is the Query/Proposal request type. */
@@ -117,7 +117,7 @@ export interface QueryProposalsByGroupPolicyRequest {
   address: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryProposalsByGroupPolicyResponse is the Query/ProposalByGroupPolicy response type. */
@@ -126,7 +126,7 @@ export interface QueryProposalsByGroupPolicyResponse {
   proposals: Proposal[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryVoteByProposalVoterRequest is the Query/VoteByProposalVoter request type. */
@@ -150,7 +150,7 @@ export interface QueryVotesByProposalRequest {
   proposalId: Long;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryVotesByProposalResponse is the Query/VotesByProposal response type. */
@@ -159,7 +159,7 @@ export interface QueryVotesByProposalResponse {
   votes: Vote[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryVotesByVoterRequest is the Query/VotesByVoter request type. */
@@ -168,7 +168,7 @@ export interface QueryVotesByVoterRequest {
   voter: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryVotesByVoterResponse is the Query/VotesByVoter response type. */
@@ -177,7 +177,7 @@ export interface QueryVotesByVoterResponse {
   votes: Vote[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryGroupsByMemberRequest is the Query/GroupsByMember request type. */
@@ -186,7 +186,7 @@ export interface QueryGroupsByMemberRequest {
   address: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryGroupsByMemberResponse is the Query/GroupsByMember response type. */
@@ -195,7 +195,7 @@ export interface QueryGroupsByMemberResponse {
   groups: GroupInfo[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryTallyResultRequest is the Query/TallyResult request type. */

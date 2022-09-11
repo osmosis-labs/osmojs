@@ -35,7 +35,7 @@ export interface QueryClientStateResponse {
  */
 export interface QueryClientStatesRequest {
   /** pagination request */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -47,7 +47,7 @@ export interface QueryClientStatesResponse {
   clientStates: IdentifiedClientState[];
 
   /** pagination response */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**
@@ -96,7 +96,7 @@ export interface QueryConsensusStatesRequest {
   clientId: string;
 
   /** pagination request */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -108,7 +108,7 @@ export interface QueryConsensusStatesResponse {
   consensusStates: ConsensusStateWithHeight[];
 
   /** pagination response */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**

@@ -25,7 +25,7 @@ export interface QueryAllBalancesRequest {
   address: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -37,7 +37,7 @@ export interface QueryAllBalancesResponse {
   balances: Coin[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**
@@ -49,7 +49,7 @@ export interface QuerySpendableBalancesRequest {
   address: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -61,7 +61,7 @@ export interface QuerySpendableBalancesResponse {
   balances: Coin[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**
@@ -74,7 +74,7 @@ export interface QueryTotalSupplyRequest {
    * 
    * Since: cosmos-sdk 0.43
    */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -90,7 +90,7 @@ export interface QueryTotalSupplyResponse {
    * 
    * Since: cosmos-sdk 0.43
    */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QuerySupplyOfRequest is the request type for the Query/SupplyOf RPC method. */
@@ -116,7 +116,7 @@ export interface QueryParamsResponse {
 /** QueryDenomsMetadataRequest is the request type for the Query/DenomsMetadata RPC method. */
 export interface QueryDenomsMetadataRequest {
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -128,7 +128,7 @@ export interface QueryDenomsMetadataResponse {
   metadatas: Metadata[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryDenomMetadataRequest is the request type for the Query/DenomMetadata RPC method. */
@@ -156,7 +156,7 @@ export interface QueryDenomOwnersRequest {
   denom: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface QueryDenomOwnersResponse {
   denomOwners: DenomOwner[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 function createBaseQueryBalanceRequest(): QueryBalanceRequest {

@@ -26,7 +26,7 @@ export interface QueryProposalsRequest {
   depositor: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -37,7 +37,7 @@ export interface QueryProposalsResponse {
   proposals: Proposal[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryVoteRequest is the request type for the Query/Vote RPC method. */
@@ -61,7 +61,7 @@ export interface QueryVotesRequest {
   proposalId: Long;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
@@ -70,7 +70,7 @@ export interface QueryVotesResponse {
   votes: Vote[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -115,7 +115,7 @@ export interface QueryDepositsRequest {
   proposalId: Long;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
@@ -123,7 +123,7 @@ export interface QueryDepositsResponse {
   deposits: Deposit[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryTallyResultRequest is the request type for the Query/Tally RPC method. */

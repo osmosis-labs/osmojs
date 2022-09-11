@@ -23,7 +23,7 @@ export interface QueryAllowancesRequest {
   grantee: string;
 
   /** pagination defines an pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryAllowancesResponse is the response type for the Query/Allowances RPC method. */
@@ -32,7 +32,7 @@ export interface QueryAllowancesResponse {
   allowances: Grant[];
 
   /** pagination defines an pagination for the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method. */
@@ -40,7 +40,7 @@ export interface QueryAllowancesByGranterRequest {
   granter: string;
 
   /** pagination defines an pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method. */
@@ -49,7 +49,7 @@ export interface QueryAllowancesByGranterResponse {
   allowances: Grant[];
 
   /** pagination defines an pagination for the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 function createBaseQueryAllowanceRequest(): QueryAllowanceRequest {

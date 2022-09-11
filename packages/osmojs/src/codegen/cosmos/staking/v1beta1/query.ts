@@ -9,7 +9,7 @@ export interface QueryValidatorsRequest {
   status: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /** QueryValidatorsResponse is response type for the Query/Validators RPC method */
@@ -18,7 +18,7 @@ export interface QueryValidatorsResponse {
   validators: Validator[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryValidatorRequest is response type for the Query/Validator RPC method */
@@ -42,7 +42,7 @@ export interface QueryValidatorDelegationsRequest {
   validatorAddr: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -53,7 +53,7 @@ export interface QueryValidatorDelegationsResponse {
   delegationResponses: DelegationResponse[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**
@@ -65,7 +65,7 @@ export interface QueryValidatorUnbondingDelegationsRequest {
   validatorAddr: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -76,7 +76,7 @@ export interface QueryValidatorUnbondingDelegationsResponse {
   unbondingResponses: UnbondingDelegation[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /** QueryDelegationRequest is request type for the Query/Delegation RPC method. */
@@ -124,7 +124,7 @@ export interface QueryDelegatorDelegationsRequest {
   delegatorAddr: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -136,7 +136,7 @@ export interface QueryDelegatorDelegationsResponse {
   delegationResponses: DelegationResponse[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**
@@ -148,7 +148,7 @@ export interface QueryDelegatorUnbondingDelegationsRequest {
   delegatorAddr: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -159,7 +159,7 @@ export interface QueryDelegatorUnbondingDelegationsResponse {
   unbondingResponses: UnbondingDelegation[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface QueryRedelegationsRequest {
   dstValidatorAddr: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -188,7 +188,7 @@ export interface QueryRedelegationsResponse {
   redelegationResponses: RedelegationResponse[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface QueryDelegatorValidatorsRequest {
   delegatorAddr: string;
 
   /** pagination defines an optional pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -212,7 +212,7 @@ export interface QueryDelegatorValidatorsResponse {
   validators: Validator[];
 
   /** pagination defines the pagination in the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**

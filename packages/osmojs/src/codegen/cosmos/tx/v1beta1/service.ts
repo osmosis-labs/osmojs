@@ -130,7 +130,7 @@ export interface GetTxsEventRequest {
   events: string[];
 
   /** pagination defines a pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
   orderBy: OrderBy;
 }
 
@@ -146,7 +146,7 @@ export interface GetTxsEventResponse {
   txResponses: TxResponse[];
 
   /** pagination defines a pagination for the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 /**
@@ -230,7 +230,7 @@ export interface GetBlockWithTxsRequest {
   height: Long;
 
   /** pagination defines a pagination for the request. */
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -245,7 +245,7 @@ export interface GetBlockWithTxsResponse {
   block: Block;
 
   /** pagination defines a pagination for the response. */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 }
 
 function createBaseGetTxsEventRequest(): GetTxsEventRequest {

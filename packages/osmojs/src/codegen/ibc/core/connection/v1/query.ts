@@ -35,7 +35,7 @@ export interface QueryConnectionResponse {
  * method
  */
 export interface QueryConnectionsRequest {
-  pagination: PageRequest;
+  pagination?: PageRequest;
 }
 
 /**
@@ -47,7 +47,7 @@ export interface QueryConnectionsResponse {
   connections: IdentifiedConnection[];
 
   /** pagination response */
-  pagination: PageResponse;
+  pagination?: PageResponse;
 
   /** query block height */
   height: Height;
