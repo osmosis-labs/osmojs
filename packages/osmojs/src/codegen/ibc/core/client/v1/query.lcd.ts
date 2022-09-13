@@ -17,7 +17,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* ClientState queries an IBC light client. */
   async clientState(params: QueryClientStateRequest): Promise<QueryClientStateResponse> {
-    const endpoint = `ibc/core/client/v1/client_states/${params.clientId}`;
+    const endpoint = `ibc/core/client/v1/client_states/${params.client_id}`;
     return await this.request<QueryClientStateResponse>(endpoint);
   }
 
@@ -44,11 +44,11 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.latestHeight !== "undefined") {
-      options.params.latest_height = params.latestHeight;
+    if (typeof params?.latest_height !== "undefined") {
+      options.params.latest_height = params.latest_height;
     }
 
-    const endpoint = `ibc/core/client/v1/consensus_states/${params.clientId}/revision/${params.revisionNumber}height/${params.revisionHeight}`;
+    const endpoint = `ibc/core/client/v1/consensus_states/${params.client_id}/revision/${params.revision_number}height/${params.revision_height}`;
     return await this.request<QueryConsensusStateResponse>(endpoint, options);
   }
 
@@ -63,13 +63,13 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `ibc/core/client/v1/consensus_states/${params.clientId}`;
+    const endpoint = `ibc/core/client/v1/consensus_states/${params.client_id}`;
     return await this.request<QueryConsensusStatesResponse>(endpoint, options);
   }
 
   /* Status queries the status of an IBC client. */
   async clientStatus(params: QueryClientStatusRequest): Promise<QueryClientStatusResponse> {
-    const endpoint = `ibc/core/client/v1/client_status/${params.clientId}`;
+    const endpoint = `ibc/core/client/v1/client_status/${params.client_id}`;
     return await this.request<QueryClientStatusResponse>(endpoint);
   }
 

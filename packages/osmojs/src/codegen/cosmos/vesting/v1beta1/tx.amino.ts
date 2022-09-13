@@ -46,20 +46,20 @@ export const AminoConverter = {
   "/cosmos.vesting.v1beta1.MsgCreateVestingAccount": {
     aminoType: "cosmos-sdk/MsgCreateVestingAccount",
     toAmino: ({
-      fromAddress,
-      toAddress,
+      from_address,
+      to_address,
       amount,
-      endTime,
+      end_time,
       delayed
     }: MsgCreateVestingAccount): AminoMsgCreateVestingAccount["value"] => {
       return {
-        from_address: fromAddress,
-        to_address: toAddress,
+        from_address,
+        to_address,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         })),
-        end_time: endTime.toString(),
+        end_time: end_time.toString(),
         delayed
       };
     },
@@ -71,13 +71,13 @@ export const AminoConverter = {
       delayed
     }: AminoMsgCreateVestingAccount["value"]): MsgCreateVestingAccount => {
       return {
-        fromAddress: from_address,
-        toAddress: to_address,
+        from_address,
+        to_address,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         })),
-        endTime: Long.fromString(end_time),
+        end_time: Long.fromString(end_time),
         delayed
       };
     }
@@ -85,13 +85,13 @@ export const AminoConverter = {
   "/cosmos.vesting.v1beta1.MsgCreatePermanentLockedAccount": {
     aminoType: "cosmos-sdk/MsgCreatePermanentLockedAccount",
     toAmino: ({
-      fromAddress,
-      toAddress,
+      from_address,
+      to_address,
       amount
     }: MsgCreatePermanentLockedAccount): AminoMsgCreatePermanentLockedAccount["value"] => {
       return {
-        from_address: fromAddress,
-        to_address: toAddress,
+        from_address,
+        to_address,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
@@ -104,8 +104,8 @@ export const AminoConverter = {
       amount
     }: AminoMsgCreatePermanentLockedAccount["value"]): MsgCreatePermanentLockedAccount => {
       return {
-        fromAddress: from_address,
-        toAddress: to_address,
+        from_address,
+        to_address,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
@@ -116,16 +116,16 @@ export const AminoConverter = {
   "/cosmos.vesting.v1beta1.MsgCreatePeriodicVestingAccount": {
     aminoType: "cosmos-sdk/MsgCreatePeriodicVestingAccount",
     toAmino: ({
-      fromAddress,
-      toAddress,
-      startTime,
-      vestingPeriods
+      from_address,
+      to_address,
+      start_time,
+      vesting_periods
     }: MsgCreatePeriodicVestingAccount): AminoMsgCreatePeriodicVestingAccount["value"] => {
       return {
-        from_address: fromAddress,
-        to_address: toAddress,
-        start_time: startTime.toString(),
-        vesting_periods: vestingPeriods.map(el0 => ({
+        from_address,
+        to_address,
+        start_time: start_time.toString(),
+        vesting_periods: vesting_periods.map(el0 => ({
           length: el0.length.toString(),
           amount: el0.amount.map(el1 => ({
             denom: el1.denom,
@@ -141,10 +141,10 @@ export const AminoConverter = {
       vesting_periods
     }: AminoMsgCreatePeriodicVestingAccount["value"]): MsgCreatePeriodicVestingAccount => {
       return {
-        fromAddress: from_address,
-        toAddress: to_address,
-        startTime: Long.fromString(start_time),
-        vestingPeriods: vesting_periods.map(el0 => ({
+        from_address,
+        to_address,
+        start_time: Long.fromString(start_time),
+        vesting_periods: vesting_periods.map(el0 => ({
           length: Long.fromString(el0.length),
           amount: el0.amount.map(el1 => ({
             denom: el1.denom,

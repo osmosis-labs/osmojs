@@ -46,7 +46,7 @@ export interface QueryUpgradedConsensusStateRequest {
    * last height of the current chain must be sent in request
    * as this is the height under which next consensus state is stored
    */
-  lastHeight: Long;
+  last_height: Long;
 }
 
 /**
@@ -57,7 +57,7 @@ export interface QueryUpgradedConsensusStateRequest {
 /** @deprecated */
 export interface QueryUpgradedConsensusStateResponse {
   /** Since: cosmos-sdk 0.43 */
-  upgradedConsensusState: Uint8Array;
+  upgraded_consensus_state: Uint8Array;
 }
 
 /**
@@ -72,7 +72,7 @@ export interface QueryModuleVersionsRequest {
    * consensus version from state. Leaving this empty will
    * fetch the full list of module versions from state
    */
-  moduleName: string;
+  module_name: string;
 }
 
 /**
@@ -83,7 +83,7 @@ export interface QueryModuleVersionsRequest {
  */
 export interface QueryModuleVersionsResponse {
   /** module_versions is a list of module names with their consensus versions. */
-  moduleVersions: ModuleVersion[];
+  module_versions: ModuleVersion[];
 }
 
 /**
@@ -318,14 +318,14 @@ export const QueryAppliedPlanResponse = {
 
 function createBaseQueryUpgradedConsensusStateRequest(): QueryUpgradedConsensusStateRequest {
   return {
-    lastHeight: Long.ZERO
+    last_height: Long.ZERO
   };
 }
 
 export const QueryUpgradedConsensusStateRequest = {
   encode(message: QueryUpgradedConsensusStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.lastHeight.isZero()) {
-      writer.uint32(8).int64(message.lastHeight);
+    if (!message.last_height.isZero()) {
+      writer.uint32(8).int64(message.last_height);
     }
 
     return writer;
@@ -341,7 +341,7 @@ export const QueryUpgradedConsensusStateRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.lastHeight = (reader.int64() as Long);
+          message.last_height = (reader.int64() as Long);
           break;
 
         default:
@@ -355,19 +355,19 @@ export const QueryUpgradedConsensusStateRequest = {
 
   fromJSON(object: any): QueryUpgradedConsensusStateRequest {
     return {
-      lastHeight: isSet(object.lastHeight) ? Long.fromString(object.lastHeight) : Long.ZERO
+      last_height: isSet(object.last_height) ? Long.fromString(object.last_height) : Long.ZERO
     };
   },
 
   toJSON(message: QueryUpgradedConsensusStateRequest): unknown {
     const obj: any = {};
-    message.lastHeight !== undefined && (obj.lastHeight = (message.lastHeight || Long.ZERO).toString());
+    message.last_height !== undefined && (obj.last_height = (message.last_height || Long.ZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest {
     const message = createBaseQueryUpgradedConsensusStateRequest();
-    message.lastHeight = object.lastHeight !== undefined && object.lastHeight !== null ? Long.fromValue(object.lastHeight) : Long.ZERO;
+    message.last_height = object.last_height !== undefined && object.last_height !== null ? Long.fromValue(object.last_height) : Long.ZERO;
     return message;
   }
 
@@ -375,14 +375,14 @@ export const QueryUpgradedConsensusStateRequest = {
 
 function createBaseQueryUpgradedConsensusStateResponse(): QueryUpgradedConsensusStateResponse {
   return {
-    upgradedConsensusState: new Uint8Array()
+    upgraded_consensus_state: new Uint8Array()
   };
 }
 
 export const QueryUpgradedConsensusStateResponse = {
   encode(message: QueryUpgradedConsensusStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.upgradedConsensusState.length !== 0) {
-      writer.uint32(18).bytes(message.upgradedConsensusState);
+    if (message.upgraded_consensus_state.length !== 0) {
+      writer.uint32(18).bytes(message.upgraded_consensus_state);
     }
 
     return writer;
@@ -398,7 +398,7 @@ export const QueryUpgradedConsensusStateResponse = {
 
       switch (tag >>> 3) {
         case 2:
-          message.upgradedConsensusState = reader.bytes();
+          message.upgraded_consensus_state = reader.bytes();
           break;
 
         default:
@@ -412,19 +412,19 @@ export const QueryUpgradedConsensusStateResponse = {
 
   fromJSON(object: any): QueryUpgradedConsensusStateResponse {
     return {
-      upgradedConsensusState: isSet(object.upgradedConsensusState) ? bytesFromBase64(object.upgradedConsensusState) : new Uint8Array()
+      upgraded_consensus_state: isSet(object.upgraded_consensus_state) ? bytesFromBase64(object.upgraded_consensus_state) : new Uint8Array()
     };
   },
 
   toJSON(message: QueryUpgradedConsensusStateResponse): unknown {
     const obj: any = {};
-    message.upgradedConsensusState !== undefined && (obj.upgradedConsensusState = base64FromBytes(message.upgradedConsensusState !== undefined ? message.upgradedConsensusState : new Uint8Array()));
+    message.upgraded_consensus_state !== undefined && (obj.upgraded_consensus_state = base64FromBytes(message.upgraded_consensus_state !== undefined ? message.upgraded_consensus_state : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse {
     const message = createBaseQueryUpgradedConsensusStateResponse();
-    message.upgradedConsensusState = object.upgradedConsensusState ?? new Uint8Array();
+    message.upgraded_consensus_state = object.upgraded_consensus_state ?? new Uint8Array();
     return message;
   }
 
@@ -432,14 +432,14 @@ export const QueryUpgradedConsensusStateResponse = {
 
 function createBaseQueryModuleVersionsRequest(): QueryModuleVersionsRequest {
   return {
-    moduleName: ""
+    module_name: ""
   };
 }
 
 export const QueryModuleVersionsRequest = {
   encode(message: QueryModuleVersionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.moduleName !== "") {
-      writer.uint32(10).string(message.moduleName);
+    if (message.module_name !== "") {
+      writer.uint32(10).string(message.module_name);
     }
 
     return writer;
@@ -455,7 +455,7 @@ export const QueryModuleVersionsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.moduleName = reader.string();
+          message.module_name = reader.string();
           break;
 
         default:
@@ -469,19 +469,19 @@ export const QueryModuleVersionsRequest = {
 
   fromJSON(object: any): QueryModuleVersionsRequest {
     return {
-      moduleName: isSet(object.moduleName) ? String(object.moduleName) : ""
+      module_name: isSet(object.module_name) ? String(object.module_name) : ""
     };
   },
 
   toJSON(message: QueryModuleVersionsRequest): unknown {
     const obj: any = {};
-    message.moduleName !== undefined && (obj.moduleName = message.moduleName);
+    message.module_name !== undefined && (obj.module_name = message.module_name);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryModuleVersionsRequest>): QueryModuleVersionsRequest {
     const message = createBaseQueryModuleVersionsRequest();
-    message.moduleName = object.moduleName ?? "";
+    message.module_name = object.module_name ?? "";
     return message;
   }
 
@@ -489,13 +489,13 @@ export const QueryModuleVersionsRequest = {
 
 function createBaseQueryModuleVersionsResponse(): QueryModuleVersionsResponse {
   return {
-    moduleVersions: []
+    module_versions: []
   };
 }
 
 export const QueryModuleVersionsResponse = {
   encode(message: QueryModuleVersionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.moduleVersions) {
+    for (const v of message.module_versions) {
       ModuleVersion.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -512,7 +512,7 @@ export const QueryModuleVersionsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.moduleVersions.push(ModuleVersion.decode(reader, reader.uint32()));
+          message.module_versions.push(ModuleVersion.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -526,17 +526,17 @@ export const QueryModuleVersionsResponse = {
 
   fromJSON(object: any): QueryModuleVersionsResponse {
     return {
-      moduleVersions: Array.isArray(object?.moduleVersions) ? object.moduleVersions.map((e: any) => ModuleVersion.fromJSON(e)) : []
+      module_versions: Array.isArray(object?.module_versions) ? object.module_versions.map((e: any) => ModuleVersion.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryModuleVersionsResponse): unknown {
     const obj: any = {};
 
-    if (message.moduleVersions) {
-      obj.moduleVersions = message.moduleVersions.map(e => e ? ModuleVersion.toJSON(e) : undefined);
+    if (message.module_versions) {
+      obj.module_versions = message.module_versions.map(e => e ? ModuleVersion.toJSON(e) : undefined);
     } else {
-      obj.moduleVersions = [];
+      obj.module_versions = [];
     }
 
     return obj;
@@ -544,7 +544,7 @@ export const QueryModuleVersionsResponse = {
 
   fromPartial(object: DeepPartial<QueryModuleVersionsResponse>): QueryModuleVersionsResponse {
     const message = createBaseQueryModuleVersionsResponse();
-    message.moduleVersions = object.moduleVersions?.map(e => ModuleVersion.fromPartial(e)) || [];
+    message.module_versions = object.module_versions?.map(e => ModuleVersion.fromPartial(e)) || [];
     return message;
   }
 

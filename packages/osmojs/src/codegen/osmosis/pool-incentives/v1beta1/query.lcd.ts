@@ -16,7 +16,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* GaugeIds takes the pool id and returns the matching gauge ids and durations */
   async gaugeIds(params: QueryGaugeIdsRequest): Promise<QueryGaugeIdsResponse> {
-    const endpoint = `osmosis/pool-incentives/v1beta1/gauge-ids/${params.poolId}`;
+    const endpoint = `osmosis/pool-incentives/v1beta1/gauge-ids/${params.pool_id}`;
     return await this.request<QueryGaugeIdsResponse>(endpoint);
   }
 

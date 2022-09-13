@@ -34,7 +34,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* Validator queries validator info for given validator address. */
   async validator(params: QueryValidatorRequest): Promise<QueryValidatorResponse> {
-    const endpoint = `cosmos/staking/v1beta1/validators/${params.validatorAddr}`;
+    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}`;
     return await this.request<QueryValidatorResponse>(endpoint);
   }
 
@@ -48,7 +48,7 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/staking/v1beta1/validators/${params.validatorAddr}/delegations`;
+    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}/delegations`;
     return await this.request<QueryValidatorDelegationsResponse>(endpoint, options);
   }
 
@@ -62,20 +62,20 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/staking/v1beta1/validators/${params.validatorAddr}/unbonding_delegations`;
+    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}/unbonding_delegations`;
     return await this.request<QueryValidatorUnbondingDelegationsResponse>(endpoint, options);
   }
 
   /* Delegation queries delegate info for given validator delegator pair. */
   async delegation(params: QueryDelegationRequest): Promise<QueryDelegationResponse> {
-    const endpoint = `cosmos/staking/v1beta1/validators/${params.validatorAddr}delegations/${params.delegatorAddr}`;
+    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}delegations/${params.delegator_addr}`;
     return await this.request<QueryDelegationResponse>(endpoint);
   }
 
   /* UnbondingDelegation queries unbonding info for given validator delegator
   pair. */
   async unbondingDelegation(params: QueryUnbondingDelegationRequest): Promise<QueryUnbondingDelegationResponse> {
-    const endpoint = `cosmos/staking/v1beta1/validators/${params.validatorAddr}/delegations/${params.delegatorAddr}/unbonding_delegation`;
+    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}/delegations/${params.delegator_addr}/unbonding_delegation`;
     return await this.request<QueryUnbondingDelegationResponse>(endpoint);
   }
 
@@ -89,7 +89,7 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/staking/v1beta1/delegations/${params.delegatorAddr}`;
+    const endpoint = `cosmos/staking/v1beta1/delegations/${params.delegator_addr}`;
     return await this.request<QueryDelegatorDelegationsResponse>(endpoint, options);
   }
 
@@ -104,7 +104,7 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegatorAddr}/unbonding_delegations`;
+    const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegator_addr}/unbonding_delegations`;
     return await this.request<QueryDelegatorUnbondingDelegationsResponse>(endpoint, options);
   }
 
@@ -114,19 +114,19 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.srcValidatorAddr !== "undefined") {
-      options.params.src_validator_addr = params.srcValidatorAddr;
+    if (typeof params?.src_validator_addr !== "undefined") {
+      options.params.src_validator_addr = params.src_validator_addr;
     }
 
-    if (typeof params?.dstValidatorAddr !== "undefined") {
-      options.params.dst_validator_addr = params.dstValidatorAddr;
+    if (typeof params?.dst_validator_addr !== "undefined") {
+      options.params.dst_validator_addr = params.dst_validator_addr;
     }
 
     if (typeof params?.pagination !== "undefined") {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegatorAddr}/redelegations`;
+    const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegator_addr}/redelegations`;
     return await this.request<QueryRedelegationsResponse>(endpoint, options);
   }
 
@@ -141,14 +141,14 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegatorAddr}/validators`;
+    const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegator_addr}/validators`;
     return await this.request<QueryDelegatorValidatorsResponse>(endpoint, options);
   }
 
   /* DelegatorValidator queries validator info for given delegator validator
   pair. */
   async delegatorValidator(params: QueryDelegatorValidatorRequest): Promise<QueryDelegatorValidatorResponse> {
-    const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegatorAddr}validators/${params.validatorAddr}`;
+    const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegator_addr}validators/${params.validator_addr}`;
     return await this.request<QueryDelegatorValidatorResponse>(endpoint);
   }
 

@@ -18,7 +18,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* Connection queries an IBC connection end. */
   async connection(params: QueryConnectionRequest): Promise<QueryConnectionResponse> {
-    const endpoint = `ibc/core/connection/v1/connections/${params.connectionId}`;
+    const endpoint = `ibc/core/connection/v1/connections/${params.connection_id}`;
     return await this.request<QueryConnectionResponse>(endpoint);
   }
 
@@ -41,21 +41,21 @@ export class LCDQueryClient extends LCDClient {
   /* ClientConnections queries the connection paths associated with a client
   state. */
   async clientConnections(params: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponse> {
-    const endpoint = `ibc/core/connection/v1/client_connections/${params.clientId}`;
+    const endpoint = `ibc/core/connection/v1/client_connections/${params.client_id}`;
     return await this.request<QueryClientConnectionsResponse>(endpoint);
   }
 
   /* ConnectionClientState queries the client state associated with the
   connection. */
   async connectionClientState(params: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponse> {
-    const endpoint = `ibc/core/connection/v1/connections/${params.connectionId}/client_state`;
+    const endpoint = `ibc/core/connection/v1/connections/${params.connection_id}/client_state`;
     return await this.request<QueryConnectionClientStateResponse>(endpoint);
   }
 
   /* ConnectionConsensusState queries the consensus state associated with the
   connection. */
   async connectionConsensusState(params: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponse> {
-    const endpoint = `ibc/core/connection/v1/connections/${params.connectionId}/consensus_state/revision/${params.revisionNumber}height/${params.revisionHeight}`;
+    const endpoint = `ibc/core/connection/v1/connections/${params.connection_id}/consensus_state/revision/${params.revision_number}height/${params.revision_height}`;
     return await this.request<QueryConnectionConsensusStateResponse>(endpoint);
   }
 

@@ -3,7 +3,7 @@ import { isSet, DeepPartial } from "@osmonauts/helpers";
 
 /** MsgUnjail defines the Msg/Unjail request type */
 export interface MsgUnjail {
-  validatorAddr: string;
+  validator_addr: string;
 }
 
 /** MsgUnjailResponse defines the Msg/Unjail response type */
@@ -11,14 +11,14 @@ export interface MsgUnjailResponse {}
 
 function createBaseMsgUnjail(): MsgUnjail {
   return {
-    validatorAddr: ""
+    validator_addr: ""
   };
 }
 
 export const MsgUnjail = {
   encode(message: MsgUnjail, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validatorAddr !== "") {
-      writer.uint32(10).string(message.validatorAddr);
+    if (message.validator_addr !== "") {
+      writer.uint32(10).string(message.validator_addr);
     }
 
     return writer;
@@ -34,7 +34,7 @@ export const MsgUnjail = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validatorAddr = reader.string();
+          message.validator_addr = reader.string();
           break;
 
         default:
@@ -48,19 +48,19 @@ export const MsgUnjail = {
 
   fromJSON(object: any): MsgUnjail {
     return {
-      validatorAddr: isSet(object.validatorAddr) ? String(object.validatorAddr) : ""
+      validator_addr: isSet(object.validator_addr) ? String(object.validator_addr) : ""
     };
   },
 
   toJSON(message: MsgUnjail): unknown {
     const obj: any = {};
-    message.validatorAddr !== undefined && (obj.validatorAddr = message.validatorAddr);
+    message.validator_addr !== undefined && (obj.validator_addr = message.validator_addr);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgUnjail>): MsgUnjail {
     const message = createBaseMsgUnjail();
-    message.validatorAddr = object.validatorAddr ?? "";
+    message.validator_addr = object.validator_addr ?? "";
     return message;
   }
 

@@ -23,7 +23,7 @@ export interface QueryEpochProvisionsRequest {}
  */
 export interface QueryEpochProvisionsResponse {
   /** epoch_provisions is the current minting per epoch provisions value. */
-  epochProvisions: Uint8Array;
+  epoch_provisions: Uint8Array;
 }
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -171,14 +171,14 @@ export const QueryEpochProvisionsRequest = {
 
 function createBaseQueryEpochProvisionsResponse(): QueryEpochProvisionsResponse {
   return {
-    epochProvisions: new Uint8Array()
+    epoch_provisions: new Uint8Array()
   };
 }
 
 export const QueryEpochProvisionsResponse = {
   encode(message: QueryEpochProvisionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.epochProvisions.length !== 0) {
-      writer.uint32(10).bytes(message.epochProvisions);
+    if (message.epoch_provisions.length !== 0) {
+      writer.uint32(10).bytes(message.epoch_provisions);
     }
 
     return writer;
@@ -194,7 +194,7 @@ export const QueryEpochProvisionsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.epochProvisions = reader.bytes();
+          message.epoch_provisions = reader.bytes();
           break;
 
         default:
@@ -208,19 +208,19 @@ export const QueryEpochProvisionsResponse = {
 
   fromJSON(object: any): QueryEpochProvisionsResponse {
     return {
-      epochProvisions: isSet(object.epochProvisions) ? bytesFromBase64(object.epochProvisions) : new Uint8Array()
+      epoch_provisions: isSet(object.epoch_provisions) ? bytesFromBase64(object.epoch_provisions) : new Uint8Array()
     };
   },
 
   toJSON(message: QueryEpochProvisionsResponse): unknown {
     const obj: any = {};
-    message.epochProvisions !== undefined && (obj.epochProvisions = base64FromBytes(message.epochProvisions !== undefined ? message.epochProvisions : new Uint8Array()));
+    message.epoch_provisions !== undefined && (obj.epoch_provisions = base64FromBytes(message.epoch_provisions !== undefined ? message.epoch_provisions : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse {
     const message = createBaseQueryEpochProvisionsResponse();
-    message.epochProvisions = object.epochProvisions ?? new Uint8Array();
+    message.epoch_provisions = object.epoch_provisions ?? new Uint8Array();
     return message;
   }
 

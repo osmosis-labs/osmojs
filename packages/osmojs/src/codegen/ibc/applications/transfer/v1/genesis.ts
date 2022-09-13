@@ -4,26 +4,26 @@ import { isSet, DeepPartial } from "@osmonauts/helpers";
 
 /** GenesisState defines the ibc-transfer genesis state */
 export interface GenesisState {
-  portId: string;
-  denomTraces: DenomTrace[];
+  port_id: string;
+  denom_traces: DenomTrace[];
   params: Params;
 }
 
 function createBaseGenesisState(): GenesisState {
   return {
-    portId: "",
-    denomTraces: [],
+    port_id: "",
+    denom_traces: [],
     params: undefined
   };
 }
 
 export const GenesisState = {
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.portId !== "") {
-      writer.uint32(10).string(message.portId);
+    if (message.port_id !== "") {
+      writer.uint32(10).string(message.port_id);
     }
 
-    for (const v of message.denomTraces) {
+    for (const v of message.denom_traces) {
       DenomTrace.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -44,11 +44,11 @@ export const GenesisState = {
 
       switch (tag >>> 3) {
         case 1:
-          message.portId = reader.string();
+          message.port_id = reader.string();
           break;
 
         case 2:
-          message.denomTraces.push(DenomTrace.decode(reader, reader.uint32()));
+          message.denom_traces.push(DenomTrace.decode(reader, reader.uint32()));
           break;
 
         case 3:
@@ -66,20 +66,20 @@ export const GenesisState = {
 
   fromJSON(object: any): GenesisState {
     return {
-      portId: isSet(object.portId) ? String(object.portId) : "",
-      denomTraces: Array.isArray(object?.denomTraces) ? object.denomTraces.map((e: any) => DenomTrace.fromJSON(e)) : [],
+      port_id: isSet(object.port_id) ? String(object.port_id) : "",
+      denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e: any) => DenomTrace.fromJSON(e)) : [],
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
 
   toJSON(message: GenesisState): unknown {
     const obj: any = {};
-    message.portId !== undefined && (obj.portId = message.portId);
+    message.port_id !== undefined && (obj.port_id = message.port_id);
 
-    if (message.denomTraces) {
-      obj.denomTraces = message.denomTraces.map(e => e ? DenomTrace.toJSON(e) : undefined);
+    if (message.denom_traces) {
+      obj.denom_traces = message.denom_traces.map(e => e ? DenomTrace.toJSON(e) : undefined);
     } else {
-      obj.denomTraces = [];
+      obj.denom_traces = [];
     }
 
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
@@ -88,8 +88,8 @@ export const GenesisState = {
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.portId = object.portId ?? "";
-    message.denomTraces = object.denomTraces?.map(e => DenomTrace.fromPartial(e)) || [];
+    message.port_id = object.port_id ?? "";
+    message.denom_traces = object.denom_traces?.map(e => DenomTrace.fromPartial(e)) || [];
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   }

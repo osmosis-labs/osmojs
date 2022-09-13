@@ -15,7 +15,7 @@ export interface QueryDenomAuthorityMetadataRequest {
   denom: string;
 }
 export interface QueryDenomAuthorityMetadataResponse {
-  authorityMetadata: DenomAuthorityMetadata;
+  authority_metadata: DenomAuthorityMetadata;
 }
 export interface QueryDenomsFromCreatorRequest {
   creator: string;
@@ -183,14 +183,14 @@ export const QueryDenomAuthorityMetadataRequest = {
 
 function createBaseQueryDenomAuthorityMetadataResponse(): QueryDenomAuthorityMetadataResponse {
   return {
-    authorityMetadata: undefined
+    authority_metadata: undefined
   };
 }
 
 export const QueryDenomAuthorityMetadataResponse = {
   encode(message: QueryDenomAuthorityMetadataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.authorityMetadata !== undefined) {
-      DenomAuthorityMetadata.encode(message.authorityMetadata, writer.uint32(10).fork()).ldelim();
+    if (message.authority_metadata !== undefined) {
+      DenomAuthorityMetadata.encode(message.authority_metadata, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -206,7 +206,7 @@ export const QueryDenomAuthorityMetadataResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.authorityMetadata = DenomAuthorityMetadata.decode(reader, reader.uint32());
+          message.authority_metadata = DenomAuthorityMetadata.decode(reader, reader.uint32());
           break;
 
         default:
@@ -220,19 +220,19 @@ export const QueryDenomAuthorityMetadataResponse = {
 
   fromJSON(object: any): QueryDenomAuthorityMetadataResponse {
     return {
-      authorityMetadata: isSet(object.authorityMetadata) ? DenomAuthorityMetadata.fromJSON(object.authorityMetadata) : undefined
+      authority_metadata: isSet(object.authority_metadata) ? DenomAuthorityMetadata.fromJSON(object.authority_metadata) : undefined
     };
   },
 
   toJSON(message: QueryDenomAuthorityMetadataResponse): unknown {
     const obj: any = {};
-    message.authorityMetadata !== undefined && (obj.authorityMetadata = message.authorityMetadata ? DenomAuthorityMetadata.toJSON(message.authorityMetadata) : undefined);
+    message.authority_metadata !== undefined && (obj.authority_metadata = message.authority_metadata ? DenomAuthorityMetadata.toJSON(message.authority_metadata) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse {
     const message = createBaseQueryDenomAuthorityMetadataResponse();
-    message.authorityMetadata = object.authorityMetadata !== undefined && object.authorityMetadata !== null ? DenomAuthorityMetadata.fromPartial(object.authorityMetadata) : undefined;
+    message.authority_metadata = object.authority_metadata !== undefined && object.authority_metadata !== null ? DenomAuthorityMetadata.fromPartial(object.authority_metadata) : undefined;
     return message;
   }
 

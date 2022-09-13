@@ -61,8 +61,8 @@ export interface QueryTotalSharesResponse {
  */
 export interface QuerySpotPriceRequest {
   poolId: Long;
-  baseAssetDenom: string;
-  quoteAssetDenom: string;
+  base_asset_denom: string;
+  quote_asset_denom: string;
 }
 
 /**
@@ -797,8 +797,8 @@ export const QueryTotalSharesResponse = {
 function createBaseQuerySpotPriceRequest(): QuerySpotPriceRequest {
   return {
     poolId: Long.UZERO,
-    baseAssetDenom: "",
-    quoteAssetDenom: ""
+    base_asset_denom: "",
+    quote_asset_denom: ""
   };
 }
 
@@ -808,12 +808,12 @@ export const QuerySpotPriceRequest = {
       writer.uint32(8).uint64(message.poolId);
     }
 
-    if (message.baseAssetDenom !== "") {
-      writer.uint32(18).string(message.baseAssetDenom);
+    if (message.base_asset_denom !== "") {
+      writer.uint32(18).string(message.base_asset_denom);
     }
 
-    if (message.quoteAssetDenom !== "") {
-      writer.uint32(26).string(message.quoteAssetDenom);
+    if (message.quote_asset_denom !== "") {
+      writer.uint32(26).string(message.quote_asset_denom);
     }
 
     return writer;
@@ -833,11 +833,11 @@ export const QuerySpotPriceRequest = {
           break;
 
         case 2:
-          message.baseAssetDenom = reader.string();
+          message.base_asset_denom = reader.string();
           break;
 
         case 3:
-          message.quoteAssetDenom = reader.string();
+          message.quote_asset_denom = reader.string();
           break;
 
         default:
@@ -852,24 +852,24 @@ export const QuerySpotPriceRequest = {
   fromJSON(object: any): QuerySpotPriceRequest {
     return {
       poolId: isSet(object.poolId) ? Long.fromString(object.poolId) : Long.UZERO,
-      baseAssetDenom: isSet(object.baseAssetDenom) ? String(object.baseAssetDenom) : "",
-      quoteAssetDenom: isSet(object.quoteAssetDenom) ? String(object.quoteAssetDenom) : ""
+      base_asset_denom: isSet(object.base_asset_denom) ? String(object.base_asset_denom) : "",
+      quote_asset_denom: isSet(object.quote_asset_denom) ? String(object.quote_asset_denom) : ""
     };
   },
 
   toJSON(message: QuerySpotPriceRequest): unknown {
     const obj: any = {};
     message.poolId !== undefined && (obj.poolId = (message.poolId || Long.UZERO).toString());
-    message.baseAssetDenom !== undefined && (obj.baseAssetDenom = message.baseAssetDenom);
-    message.quoteAssetDenom !== undefined && (obj.quoteAssetDenom = message.quoteAssetDenom);
+    message.base_asset_denom !== undefined && (obj.base_asset_denom = message.base_asset_denom);
+    message.quote_asset_denom !== undefined && (obj.quote_asset_denom = message.quote_asset_denom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QuerySpotPriceRequest>): QuerySpotPriceRequest {
     const message = createBaseQuerySpotPriceRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
-    message.baseAssetDenom = object.baseAssetDenom ?? "";
-    message.quoteAssetDenom = object.quoteAssetDenom ?? "";
+    message.base_asset_denom = object.base_asset_denom ?? "";
+    message.quote_asset_denom = object.quote_asset_denom ?? "";
     return message;
   }
 

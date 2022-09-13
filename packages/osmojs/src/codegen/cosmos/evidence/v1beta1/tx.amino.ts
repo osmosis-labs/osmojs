@@ -21,7 +21,7 @@ export const AminoConverter = {
       return {
         submitter,
         evidence: {
-          type_url: evidence.typeUrl,
+          type_url: evidence.type_url,
           value: evidence.value
         }
       };
@@ -33,7 +33,7 @@ export const AminoConverter = {
       return {
         submitter,
         evidence: {
-          typeUrl: evidence.type_url,
+          type_url: evidence.type_url,
           value: evidence.value
         }
       };

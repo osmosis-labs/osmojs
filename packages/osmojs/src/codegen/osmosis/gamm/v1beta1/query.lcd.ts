@@ -75,12 +75,12 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.baseAssetDenom !== "undefined") {
-      options.params.base_asset_denom = params.baseAssetDenom;
+    if (typeof params?.base_asset_denom !== "undefined") {
+      options.params.base_asset_denom = params.base_asset_denom;
     }
 
-    if (typeof params?.quoteAssetDenom !== "undefined") {
-      options.params.quote_asset_denom = params.quoteAssetDenom;
+    if (typeof params?.quote_asset_denom !== "undefined") {
+      options.params.quote_asset_denom = params.quote_asset_denom;
     }
 
     const endpoint = `osmosis/gamm/v1beta1/pools/${params.poolId}/prices`;

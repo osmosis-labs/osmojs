@@ -126,13 +126,13 @@ export class LCDQueryClient extends LCDClient {
 
   /* Returns lock record by id */
   async lockedByID(params: LockedRequest): Promise<LockedResponse> {
-    const endpoint = `osmosis/lockup/v1beta1/locked_by_id/${params.lockId}`;
+    const endpoint = `osmosis/lockup/v1beta1/locked_by_id/${params.lock_id}`;
     return await this.request<LockedResponse>(endpoint);
   }
 
   /* Returns synthetic lockups by native lockup id */
   async syntheticLockupsByLockupID(params: SyntheticLockupsByLockupIDRequest): Promise<SyntheticLockupsByLockupIDResponse> {
-    const endpoint = `osmosis/lockup/v1beta1/synthetic_lockups_by_lock_id/${params.lockId}`;
+    const endpoint = `osmosis/lockup/v1beta1/synthetic_lockups_by_lock_id/${params.lock_id}`;
     return await this.request<SyntheticLockupsByLockupIDResponse>(endpoint);
   }
 

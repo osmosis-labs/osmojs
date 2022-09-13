@@ -114,7 +114,7 @@ export interface SignatureDescriptors {
  */
 export interface SignatureDescriptor {
   /** public_key is the public key of the signer */
-  publicKey: Any;
+  public_key: Any;
   data: SignatureDescriptor_Data;
 
   /**
@@ -217,7 +217,7 @@ export const SignatureDescriptors = {
 
 function createBaseSignatureDescriptor(): SignatureDescriptor {
   return {
-    publicKey: undefined,
+    public_key: undefined,
     data: undefined,
     sequence: Long.UZERO
   };
@@ -225,8 +225,8 @@ function createBaseSignatureDescriptor(): SignatureDescriptor {
 
 export const SignatureDescriptor = {
   encode(message: SignatureDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.publicKey !== undefined) {
-      Any.encode(message.publicKey, writer.uint32(10).fork()).ldelim();
+    if (message.public_key !== undefined) {
+      Any.encode(message.public_key, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.data !== undefined) {
@@ -250,7 +250,7 @@ export const SignatureDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.publicKey = Any.decode(reader, reader.uint32());
+          message.public_key = Any.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -272,7 +272,7 @@ export const SignatureDescriptor = {
 
   fromJSON(object: any): SignatureDescriptor {
     return {
-      publicKey: isSet(object.publicKey) ? Any.fromJSON(object.publicKey) : undefined,
+      public_key: isSet(object.public_key) ? Any.fromJSON(object.public_key) : undefined,
       data: isSet(object.data) ? SignatureDescriptor_Data.fromJSON(object.data) : undefined,
       sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO
     };
@@ -280,7 +280,7 @@ export const SignatureDescriptor = {
 
   toJSON(message: SignatureDescriptor): unknown {
     const obj: any = {};
-    message.publicKey !== undefined && (obj.publicKey = message.publicKey ? Any.toJSON(message.publicKey) : undefined);
+    message.public_key !== undefined && (obj.public_key = message.public_key ? Any.toJSON(message.public_key) : undefined);
     message.data !== undefined && (obj.data = message.data ? SignatureDescriptor_Data.toJSON(message.data) : undefined);
     message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
     return obj;
@@ -288,7 +288,7 @@ export const SignatureDescriptor = {
 
   fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor {
     const message = createBaseSignatureDescriptor();
-    message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
+    message.public_key = object.public_key !== undefined && object.public_key !== null ? Any.fromPartial(object.public_key) : undefined;
     message.data = object.data !== undefined && object.data !== null ? SignatureDescriptor_Data.fromPartial(object.data) : undefined;
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     return message;

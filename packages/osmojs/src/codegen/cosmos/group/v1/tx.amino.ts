@@ -171,7 +171,7 @@ export const AminoConverter = {
           address: el0.address,
           weight: el0.weight,
           metadata: el0.metadata,
-          added_at: el0.addedAt
+          added_at: el0.added_at
         })),
         metadata
       };
@@ -187,7 +187,7 @@ export const AminoConverter = {
           address: el0.address,
           weight: el0.weight,
           metadata: el0.metadata,
-          addedAt: el0.added_at
+          added_at: el0.added_at
         })),
         metadata
       };
@@ -197,17 +197,17 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgUpdateGroupMembers",
     toAmino: ({
       admin,
-      groupId,
-      memberUpdates
+      group_id,
+      member_updates
     }: MsgUpdateGroupMembers): AminoMsgUpdateGroupMembers["value"] => {
       return {
         admin,
-        group_id: groupId.toString(),
-        member_updates: memberUpdates.map(el0 => ({
+        group_id: group_id.toString(),
+        member_updates: member_updates.map(el0 => ({
           address: el0.address,
           weight: el0.weight,
           metadata: el0.metadata,
-          added_at: el0.addedAt
+          added_at: el0.added_at
         }))
       };
     },
@@ -218,12 +218,12 @@ export const AminoConverter = {
     }: AminoMsgUpdateGroupMembers["value"]): MsgUpdateGroupMembers => {
       return {
         admin,
-        groupId: Long.fromString(group_id),
-        memberUpdates: member_updates.map(el0 => ({
+        group_id: Long.fromString(group_id),
+        member_updates: member_updates.map(el0 => ({
           address: el0.address,
           weight: el0.weight,
           metadata: el0.metadata,
-          addedAt: el0.added_at
+          added_at: el0.added_at
         }))
       };
     }
@@ -232,13 +232,13 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgUpdateGroupAdmin",
     toAmino: ({
       admin,
-      groupId,
-      newAdmin
+      group_id,
+      new_admin
     }: MsgUpdateGroupAdmin): AminoMsgUpdateGroupAdmin["value"] => {
       return {
         admin,
-        group_id: groupId.toString(),
-        new_admin: newAdmin
+        group_id: group_id.toString(),
+        new_admin
       };
     },
     fromAmino: ({
@@ -248,8 +248,8 @@ export const AminoConverter = {
     }: AminoMsgUpdateGroupAdmin["value"]): MsgUpdateGroupAdmin => {
       return {
         admin,
-        groupId: Long.fromString(group_id),
-        newAdmin: new_admin
+        group_id: Long.fromString(group_id),
+        new_admin
       };
     }
   },
@@ -257,12 +257,12 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgUpdateGroupMetadata",
     toAmino: ({
       admin,
-      groupId,
+      group_id,
       metadata
     }: MsgUpdateGroupMetadata): AminoMsgUpdateGroupMetadata["value"] => {
       return {
         admin,
-        group_id: groupId.toString(),
+        group_id: group_id.toString(),
         metadata
       };
     },
@@ -273,7 +273,7 @@ export const AminoConverter = {
     }: AminoMsgUpdateGroupMetadata["value"]): MsgUpdateGroupMetadata => {
       return {
         admin,
-        groupId: Long.fromString(group_id),
+        group_id: Long.fromString(group_id),
         metadata
       };
     }
@@ -282,17 +282,17 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgCreateGroupPolicy",
     toAmino: ({
       admin,
-      groupId,
+      group_id,
       metadata,
-      decisionPolicy
+      decision_policy
     }: MsgCreateGroupPolicy): AminoMsgCreateGroupPolicy["value"] => {
       return {
         admin,
-        group_id: groupId.toString(),
+        group_id: group_id.toString(),
         metadata,
         decision_policy: {
-          type_url: decisionPolicy.typeUrl,
-          value: decisionPolicy.value
+          type_url: decision_policy.type_url,
+          value: decision_policy.value
         }
       };
     },
@@ -304,10 +304,10 @@ export const AminoConverter = {
     }: AminoMsgCreateGroupPolicy["value"]): MsgCreateGroupPolicy => {
       return {
         admin,
-        groupId: Long.fromString(group_id),
+        group_id: Long.fromString(group_id),
         metadata,
-        decisionPolicy: {
-          typeUrl: decision_policy.type_url,
+        decision_policy: {
+          type_url: decision_policy.type_url,
           value: decision_policy.value
         }
       };
@@ -318,10 +318,10 @@ export const AminoConverter = {
     toAmino: ({
       admin,
       members,
-      groupMetadata,
-      groupPolicyMetadata,
-      groupPolicyAsAdmin,
-      decisionPolicy
+      group_metadata,
+      group_policy_metadata,
+      group_policy_as_admin,
+      decision_policy
     }: MsgCreateGroupWithPolicy): AminoMsgCreateGroupWithPolicy["value"] => {
       return {
         admin,
@@ -329,14 +329,14 @@ export const AminoConverter = {
           address: el0.address,
           weight: el0.weight,
           metadata: el0.metadata,
-          added_at: el0.addedAt
+          added_at: el0.added_at
         })),
-        group_metadata: groupMetadata,
-        group_policy_metadata: groupPolicyMetadata,
-        group_policy_as_admin: groupPolicyAsAdmin,
+        group_metadata,
+        group_policy_metadata,
+        group_policy_as_admin,
         decision_policy: {
-          type_url: decisionPolicy.typeUrl,
-          value: decisionPolicy.value
+          type_url: decision_policy.type_url,
+          value: decision_policy.value
         }
       };
     },
@@ -354,13 +354,13 @@ export const AminoConverter = {
           address: el0.address,
           weight: el0.weight,
           metadata: el0.metadata,
-          addedAt: el0.added_at
+          added_at: el0.added_at
         })),
-        groupMetadata: group_metadata,
-        groupPolicyMetadata: group_policy_metadata,
-        groupPolicyAsAdmin: group_policy_as_admin,
-        decisionPolicy: {
-          typeUrl: decision_policy.type_url,
+        group_metadata,
+        group_policy_metadata,
+        group_policy_as_admin,
+        decision_policy: {
+          type_url: decision_policy.type_url,
           value: decision_policy.value
         }
       };
@@ -371,12 +371,12 @@ export const AminoConverter = {
     toAmino: ({
       admin,
       address,
-      newAdmin
+      new_admin
     }: MsgUpdateGroupPolicyAdmin): AminoMsgUpdateGroupPolicyAdmin["value"] => {
       return {
         admin,
         address,
-        new_admin: newAdmin
+        new_admin
       };
     },
     fromAmino: ({
@@ -387,7 +387,7 @@ export const AminoConverter = {
       return {
         admin,
         address,
-        newAdmin: new_admin
+        new_admin
       };
     }
   },
@@ -396,14 +396,14 @@ export const AminoConverter = {
     toAmino: ({
       admin,
       address,
-      decisionPolicy
+      decision_policy
     }: MsgUpdateGroupPolicyDecisionPolicy): AminoMsgUpdateGroupPolicyDecisionPolicy["value"] => {
       return {
         admin,
         address,
         decision_policy: {
-          type_url: decisionPolicy.typeUrl,
-          value: decisionPolicy.value
+          type_url: decision_policy.type_url,
+          value: decision_policy.value
         }
       };
     },
@@ -415,8 +415,8 @@ export const AminoConverter = {
       return {
         admin,
         address,
-        decisionPolicy: {
-          typeUrl: decision_policy.type_url,
+        decision_policy: {
+          type_url: decision_policy.type_url,
           value: decision_policy.value
         }
       };
@@ -461,7 +461,7 @@ export const AminoConverter = {
         proposers,
         metadata,
         messages: messages.map(el0 => ({
-          type_url: el0.typeUrl,
+          type_url: el0.type_url,
           value: el0.value
         })),
         exec
@@ -479,7 +479,7 @@ export const AminoConverter = {
         proposers,
         metadata,
         messages: messages.map(el0 => ({
-          typeUrl: el0.type_url,
+          type_url: el0.type_url,
           value: el0.value
         })),
         exec: execFromJSON(exec)
@@ -489,11 +489,11 @@ export const AminoConverter = {
   "/cosmos.group.v1.MsgWithdrawProposal": {
     aminoType: "cosmos-sdk/MsgWithdrawProposal",
     toAmino: ({
-      proposalId,
+      proposal_id,
       address
     }: MsgWithdrawProposal): AminoMsgWithdrawProposal["value"] => {
       return {
-        proposal_id: proposalId.toString(),
+        proposal_id: proposal_id.toString(),
         address
       };
     },
@@ -502,7 +502,7 @@ export const AminoConverter = {
       address
     }: AminoMsgWithdrawProposal["value"]): MsgWithdrawProposal => {
       return {
-        proposalId: Long.fromString(proposal_id),
+        proposal_id: Long.fromString(proposal_id),
         address
       };
     }
@@ -510,14 +510,14 @@ export const AminoConverter = {
   "/cosmos.group.v1.MsgVote": {
     aminoType: "cosmos-sdk/MsgVote",
     toAmino: ({
-      proposalId,
+      proposal_id,
       voter,
       option,
       metadata,
       exec
     }: MsgVote): AminoMsgVote["value"] => {
       return {
-        proposal_id: proposalId.toString(),
+        proposal_id: proposal_id.toString(),
         voter,
         option,
         metadata,
@@ -532,7 +532,7 @@ export const AminoConverter = {
       exec
     }: AminoMsgVote["value"]): MsgVote => {
       return {
-        proposalId: Long.fromString(proposal_id),
+        proposal_id: Long.fromString(proposal_id),
         voter,
         option: voteOptionFromJSON(option),
         metadata,
@@ -543,11 +543,11 @@ export const AminoConverter = {
   "/cosmos.group.v1.MsgExec": {
     aminoType: "cosmos-sdk/MsgExec",
     toAmino: ({
-      proposalId,
+      proposal_id,
       signer
     }: MsgExec): AminoMsgExec["value"] => {
       return {
-        proposal_id: proposalId.toString(),
+        proposal_id: proposal_id.toString(),
         signer
       };
     },
@@ -556,7 +556,7 @@ export const AminoConverter = {
       signer
     }: AminoMsgExec["value"]): MsgExec => {
       return {
-        proposalId: Long.fromString(proposal_id),
+        proposal_id: Long.fromString(proposal_id),
         signer
       };
     }
@@ -565,11 +565,11 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgLeaveGroup",
     toAmino: ({
       address,
-      groupId
+      group_id
     }: MsgLeaveGroup): AminoMsgLeaveGroup["value"] => {
       return {
         address,
-        group_id: groupId.toString()
+        group_id: group_id.toString()
       };
     },
     fromAmino: ({
@@ -578,7 +578,7 @@ export const AminoConverter = {
     }: AminoMsgLeaveGroup["value"]): MsgLeaveGroup => {
       return {
         address,
-        groupId: Long.fromString(group_id)
+        group_id: Long.fromString(group_id)
       };
     }
   }

@@ -126,12 +126,12 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.lockIds !== "undefined") {
-      options.params.lock_ids = params.lockIds;
+    if (typeof params?.lock_ids !== "undefined") {
+      options.params.lock_ids = params.lock_ids;
     }
 
-    if (typeof params?.endEpoch !== "undefined") {
-      options.params.end_epoch = params.endEpoch;
+    if (typeof params?.end_epoch !== "undefined") {
+      options.params.end_epoch = params.end_epoch;
     }
 
     const endpoint = `osmosis/incentives/v1beta1/rewards_est/${params.owner}`;

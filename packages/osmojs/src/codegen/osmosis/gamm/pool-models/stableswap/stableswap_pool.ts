@@ -29,7 +29,7 @@ export interface Pool {
    * a time specified as 0w,1w,2w, etc. which specifies how long the token
    * would need to be locked up to count in governance. 0w means no lockup.
    */
-  futurePoolGovernor: string;
+  future_pool_governor: string;
 
   /** sum of all LP shares */
   totalShares: Coin;
@@ -38,10 +38,10 @@ export interface Pool {
   poolLiquidity: Coin[];
 
   /** for calculation amognst assets with different precisions */
-  scalingFactor: Long[];
+  scaling_factor: Long[];
 
   /** scaling_factor_governor is the address can adjust pool scaling factors */
-  scalingFactorGovernor: string;
+  scaling_factor_governor: string;
 }
 
 function createBasePoolParams(): PoolParams {
@@ -118,11 +118,11 @@ function createBasePool(): Pool {
     address: "",
     id: Long.UZERO,
     poolParams: undefined,
-    futurePoolGovernor: "",
+    future_pool_governor: "",
     totalShares: undefined,
     poolLiquidity: [],
-    scalingFactor: [],
-    scalingFactorGovernor: ""
+    scaling_factor: [],
+    scaling_factor_governor: ""
   };
 }
 
@@ -140,8 +140,8 @@ export const Pool = {
       PoolParams.encode(message.poolParams, writer.uint32(26).fork()).ldelim();
     }
 
-    if (message.futurePoolGovernor !== "") {
-      writer.uint32(34).string(message.futurePoolGovernor);
+    if (message.future_pool_governor !== "") {
+      writer.uint32(34).string(message.future_pool_governor);
     }
 
     if (message.totalShares !== undefined) {
@@ -154,14 +154,14 @@ export const Pool = {
 
     writer.uint32(58).fork();
 
-    for (const v of message.scalingFactor) {
+    for (const v of message.scaling_factor) {
       writer.uint64(v);
     }
 
     writer.ldelim();
 
-    if (message.scalingFactorGovernor !== "") {
-      writer.uint32(66).string(message.scalingFactorGovernor);
+    if (message.scaling_factor_governor !== "") {
+      writer.uint32(66).string(message.scaling_factor_governor);
     }
 
     return writer;
@@ -189,7 +189,7 @@ export const Pool = {
           break;
 
         case 4:
-          message.futurePoolGovernor = reader.string();
+          message.future_pool_governor = reader.string();
           break;
 
         case 5:
@@ -205,16 +205,16 @@ export const Pool = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.scalingFactor.push((reader.uint64() as Long));
+              message.scaling_factor.push((reader.uint64() as Long));
             }
           } else {
-            message.scalingFactor.push((reader.uint64() as Long));
+            message.scaling_factor.push((reader.uint64() as Long));
           }
 
           break;
 
         case 8:
-          message.scalingFactorGovernor = reader.string();
+          message.scaling_factor_governor = reader.string();
           break;
 
         default:
@@ -231,11 +231,11 @@ export const Pool = {
       address: isSet(object.address) ? String(object.address) : "",
       id: isSet(object.id) ? Long.fromString(object.id) : Long.UZERO,
       poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
-      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      future_pool_governor: isSet(object.future_pool_governor) ? String(object.future_pool_governor) : "",
       totalShares: isSet(object.totalShares) ? Coin.fromJSON(object.totalShares) : undefined,
       poolLiquidity: Array.isArray(object?.poolLiquidity) ? object.poolLiquidity.map((e: any) => Coin.fromJSON(e)) : [],
-      scalingFactor: Array.isArray(object?.scalingFactor) ? object.scalingFactor.map((e: any) => Long.fromString(e)) : [],
-      scalingFactorGovernor: isSet(object.scalingFactorGovernor) ? String(object.scalingFactorGovernor) : ""
+      scaling_factor: Array.isArray(object?.scaling_factor) ? object.scaling_factor.map((e: any) => Long.fromString(e)) : [],
+      scaling_factor_governor: isSet(object.scaling_factor_governor) ? String(object.scaling_factor_governor) : ""
     };
   },
 
@@ -244,7 +244,7 @@ export const Pool = {
     message.address !== undefined && (obj.address = message.address);
     message.id !== undefined && (obj.id = (message.id || Long.UZERO).toString());
     message.poolParams !== undefined && (obj.poolParams = message.poolParams ? PoolParams.toJSON(message.poolParams) : undefined);
-    message.futurePoolGovernor !== undefined && (obj.futurePoolGovernor = message.futurePoolGovernor);
+    message.future_pool_governor !== undefined && (obj.future_pool_governor = message.future_pool_governor);
     message.totalShares !== undefined && (obj.totalShares = message.totalShares ? Coin.toJSON(message.totalShares) : undefined);
 
     if (message.poolLiquidity) {
@@ -253,13 +253,13 @@ export const Pool = {
       obj.poolLiquidity = [];
     }
 
-    if (message.scalingFactor) {
-      obj.scalingFactor = message.scalingFactor.map(e => (e || Long.UZERO).toString());
+    if (message.scaling_factor) {
+      obj.scaling_factor = message.scaling_factor.map(e => (e || Long.UZERO).toString());
     } else {
-      obj.scalingFactor = [];
+      obj.scaling_factor = [];
     }
 
-    message.scalingFactorGovernor !== undefined && (obj.scalingFactorGovernor = message.scalingFactorGovernor);
+    message.scaling_factor_governor !== undefined && (obj.scaling_factor_governor = message.scaling_factor_governor);
     return obj;
   },
 
@@ -268,11 +268,11 @@ export const Pool = {
     message.address = object.address ?? "";
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     message.poolParams = object.poolParams !== undefined && object.poolParams !== null ? PoolParams.fromPartial(object.poolParams) : undefined;
-    message.futurePoolGovernor = object.futurePoolGovernor ?? "";
+    message.future_pool_governor = object.future_pool_governor ?? "";
     message.totalShares = object.totalShares !== undefined && object.totalShares !== null ? Coin.fromPartial(object.totalShares) : undefined;
     message.poolLiquidity = object.poolLiquidity?.map(e => Coin.fromPartial(e)) || [];
-    message.scalingFactor = object.scalingFactor?.map(e => Long.fromValue(e)) || [];
-    message.scalingFactorGovernor = object.scalingFactorGovernor ?? "";
+    message.scaling_factor = object.scaling_factor?.map(e => Long.fromValue(e)) || [];
+    message.scaling_factor_governor = object.scaling_factor_governor ?? "";
     return message;
   }
 

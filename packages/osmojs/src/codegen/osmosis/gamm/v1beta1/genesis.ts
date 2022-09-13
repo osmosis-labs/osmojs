@@ -5,25 +5,25 @@ import { DeepPartial, Long, isSet } from "@osmonauts/helpers";
 
 /** Params holds parameters for the incentives module */
 export interface Params {
-  poolCreationFee: Coin[];
+  pool_creation_fee: Coin[];
 }
 
 /** GenesisState defines the gamm module's genesis state. */
 export interface GenesisState {
   pools: Any[];
-  nextPoolNumber: Long;
+  next_pool_number: Long;
   params: Params;
 }
 
 function createBaseParams(): Params {
   return {
-    poolCreationFee: []
+    pool_creation_fee: []
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.poolCreationFee) {
+    for (const v of message.pool_creation_fee) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -40,7 +40,7 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.poolCreationFee.push(Coin.decode(reader, reader.uint32()));
+          message.pool_creation_fee.push(Coin.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -54,17 +54,17 @@ export const Params = {
 
   fromJSON(object: any): Params {
     return {
-      poolCreationFee: Array.isArray(object?.poolCreationFee) ? object.poolCreationFee.map((e: any) => Coin.fromJSON(e)) : []
+      pool_creation_fee: Array.isArray(object?.pool_creation_fee) ? object.pool_creation_fee.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
 
-    if (message.poolCreationFee) {
-      obj.poolCreationFee = message.poolCreationFee.map(e => e ? Coin.toJSON(e) : undefined);
+    if (message.pool_creation_fee) {
+      obj.pool_creation_fee = message.pool_creation_fee.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
-      obj.poolCreationFee = [];
+      obj.pool_creation_fee = [];
     }
 
     return obj;
@@ -72,7 +72,7 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.poolCreationFee = object.poolCreationFee?.map(e => Coin.fromPartial(e)) || [];
+    message.pool_creation_fee = object.pool_creation_fee?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
 
@@ -81,7 +81,7 @@ export const Params = {
 function createBaseGenesisState(): GenesisState {
   return {
     pools: [],
-    nextPoolNumber: Long.UZERO,
+    next_pool_number: Long.UZERO,
     params: undefined
   };
 }
@@ -92,8 +92,8 @@ export const GenesisState = {
       Any.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    if (!message.nextPoolNumber.isZero()) {
-      writer.uint32(16).uint64(message.nextPoolNumber);
+    if (!message.next_pool_number.isZero()) {
+      writer.uint32(16).uint64(message.next_pool_number);
     }
 
     if (message.params !== undefined) {
@@ -117,7 +117,7 @@ export const GenesisState = {
           break;
 
         case 2:
-          message.nextPoolNumber = (reader.uint64() as Long);
+          message.next_pool_number = (reader.uint64() as Long);
           break;
 
         case 3:
@@ -136,7 +136,7 @@ export const GenesisState = {
   fromJSON(object: any): GenesisState {
     return {
       pools: Array.isArray(object?.pools) ? object.pools.map((e: any) => Any.fromJSON(e)) : [],
-      nextPoolNumber: isSet(object.nextPoolNumber) ? Long.fromString(object.nextPoolNumber) : Long.UZERO,
+      next_pool_number: isSet(object.next_pool_number) ? Long.fromString(object.next_pool_number) : Long.UZERO,
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
@@ -150,7 +150,7 @@ export const GenesisState = {
       obj.pools = [];
     }
 
-    message.nextPoolNumber !== undefined && (obj.nextPoolNumber = (message.nextPoolNumber || Long.UZERO).toString());
+    message.next_pool_number !== undefined && (obj.next_pool_number = (message.next_pool_number || Long.UZERO).toString());
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     return obj;
   },
@@ -158,7 +158,7 @@ export const GenesisState = {
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.pools = object.pools?.map(e => Any.fromPartial(e)) || [];
-    message.nextPoolNumber = object.nextPoolNumber !== undefined && object.nextPoolNumber !== null ? Long.fromValue(object.nextPoolNumber) : Long.UZERO;
+    message.next_pool_number = object.next_pool_number !== undefined && object.next_pool_number !== null ? Long.fromValue(object.next_pool_number) : Long.UZERO;
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   }

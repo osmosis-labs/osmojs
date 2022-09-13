@@ -8,30 +8,30 @@ export interface Params {
    * itself, but rather manages the distribution of coins that matches the
    * defined minted_denom.
    */
-  mintedDenom: string;
+  minted_denom: string;
 }
 export interface LockableDurationsInfo {
-  lockableDurations: Duration[];
+  lockable_durations: Duration[];
 }
 export interface DistrInfo {
-  totalWeight: string;
+  total_weight: string;
   records: DistrRecord[];
 }
 export interface DistrRecord {
-  gaugeId: Long;
+  gauge_id: Long;
   weight: string;
 }
 
 function createBaseParams(): Params {
   return {
-    mintedDenom: ""
+    minted_denom: ""
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.mintedDenom !== "") {
-      writer.uint32(10).string(message.mintedDenom);
+    if (message.minted_denom !== "") {
+      writer.uint32(10).string(message.minted_denom);
     }
 
     return writer;
@@ -47,7 +47,7 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.mintedDenom = reader.string();
+          message.minted_denom = reader.string();
           break;
 
         default:
@@ -61,19 +61,19 @@ export const Params = {
 
   fromJSON(object: any): Params {
     return {
-      mintedDenom: isSet(object.mintedDenom) ? String(object.mintedDenom) : ""
+      minted_denom: isSet(object.minted_denom) ? String(object.minted_denom) : ""
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    message.mintedDenom !== undefined && (obj.mintedDenom = message.mintedDenom);
+    message.minted_denom !== undefined && (obj.minted_denom = message.minted_denom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.mintedDenom = object.mintedDenom ?? "";
+    message.minted_denom = object.minted_denom ?? "";
     return message;
   }
 
@@ -81,13 +81,13 @@ export const Params = {
 
 function createBaseLockableDurationsInfo(): LockableDurationsInfo {
   return {
-    lockableDurations: []
+    lockable_durations: []
   };
 }
 
 export const LockableDurationsInfo = {
   encode(message: LockableDurationsInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.lockableDurations) {
+    for (const v of message.lockable_durations) {
       Duration.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -104,7 +104,7 @@ export const LockableDurationsInfo = {
 
       switch (tag >>> 3) {
         case 1:
-          message.lockableDurations.push(Duration.decode(reader, reader.uint32()));
+          message.lockable_durations.push(Duration.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -118,17 +118,17 @@ export const LockableDurationsInfo = {
 
   fromJSON(object: any): LockableDurationsInfo {
     return {
-      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : []
+      lockable_durations: Array.isArray(object?.lockable_durations) ? object.lockable_durations.map((e: any) => Duration.fromJSON(e)) : []
     };
   },
 
   toJSON(message: LockableDurationsInfo): unknown {
     const obj: any = {};
 
-    if (message.lockableDurations) {
-      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
+    if (message.lockable_durations) {
+      obj.lockable_durations = message.lockable_durations.map(e => e ? Duration.toJSON(e) : undefined);
     } else {
-      obj.lockableDurations = [];
+      obj.lockable_durations = [];
     }
 
     return obj;
@@ -136,7 +136,7 @@ export const LockableDurationsInfo = {
 
   fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo {
     const message = createBaseLockableDurationsInfo();
-    message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
+    message.lockable_durations = object.lockable_durations?.map(e => Duration.fromPartial(e)) || [];
     return message;
   }
 
@@ -144,15 +144,15 @@ export const LockableDurationsInfo = {
 
 function createBaseDistrInfo(): DistrInfo {
   return {
-    totalWeight: "",
+    total_weight: "",
     records: []
   };
 }
 
 export const DistrInfo = {
   encode(message: DistrInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.totalWeight !== "") {
-      writer.uint32(10).string(message.totalWeight);
+    if (message.total_weight !== "") {
+      writer.uint32(10).string(message.total_weight);
     }
 
     for (const v of message.records) {
@@ -172,7 +172,7 @@ export const DistrInfo = {
 
       switch (tag >>> 3) {
         case 1:
-          message.totalWeight = reader.string();
+          message.total_weight = reader.string();
           break;
 
         case 2:
@@ -190,14 +190,14 @@ export const DistrInfo = {
 
   fromJSON(object: any): DistrInfo {
     return {
-      totalWeight: isSet(object.totalWeight) ? String(object.totalWeight) : "",
+      total_weight: isSet(object.total_weight) ? String(object.total_weight) : "",
       records: Array.isArray(object?.records) ? object.records.map((e: any) => DistrRecord.fromJSON(e)) : []
     };
   },
 
   toJSON(message: DistrInfo): unknown {
     const obj: any = {};
-    message.totalWeight !== undefined && (obj.totalWeight = message.totalWeight);
+    message.total_weight !== undefined && (obj.total_weight = message.total_weight);
 
     if (message.records) {
       obj.records = message.records.map(e => e ? DistrRecord.toJSON(e) : undefined);
@@ -210,7 +210,7 @@ export const DistrInfo = {
 
   fromPartial(object: DeepPartial<DistrInfo>): DistrInfo {
     const message = createBaseDistrInfo();
-    message.totalWeight = object.totalWeight ?? "";
+    message.total_weight = object.total_weight ?? "";
     message.records = object.records?.map(e => DistrRecord.fromPartial(e)) || [];
     return message;
   }
@@ -219,15 +219,15 @@ export const DistrInfo = {
 
 function createBaseDistrRecord(): DistrRecord {
   return {
-    gaugeId: Long.UZERO,
+    gauge_id: Long.UZERO,
     weight: ""
   };
 }
 
 export const DistrRecord = {
   encode(message: DistrRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.gaugeId.isZero()) {
-      writer.uint32(8).uint64(message.gaugeId);
+    if (!message.gauge_id.isZero()) {
+      writer.uint32(8).uint64(message.gauge_id);
     }
 
     if (message.weight !== "") {
@@ -247,7 +247,7 @@ export const DistrRecord = {
 
       switch (tag >>> 3) {
         case 1:
-          message.gaugeId = (reader.uint64() as Long);
+          message.gauge_id = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -265,21 +265,21 @@ export const DistrRecord = {
 
   fromJSON(object: any): DistrRecord {
     return {
-      gaugeId: isSet(object.gaugeId) ? Long.fromString(object.gaugeId) : Long.UZERO,
+      gauge_id: isSet(object.gauge_id) ? Long.fromString(object.gauge_id) : Long.UZERO,
       weight: isSet(object.weight) ? String(object.weight) : ""
     };
   },
 
   toJSON(message: DistrRecord): unknown {
     const obj: any = {};
-    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || Long.UZERO).toString());
+    message.gauge_id !== undefined && (obj.gauge_id = (message.gauge_id || Long.UZERO).toString());
     message.weight !== undefined && (obj.weight = message.weight);
     return obj;
   },
 
   fromPartial(object: DeepPartial<DistrRecord>): DistrRecord {
     const message = createBaseDistrRecord();
-    message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
+    message.gauge_id = object.gauge_id !== undefined && object.gauge_id !== null ? Long.fromValue(object.gauge_id) : Long.UZERO;
     message.weight = object.weight ?? "";
     return message;
   }

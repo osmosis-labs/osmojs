@@ -4,7 +4,7 @@ import { isSet, DeepPartial } from "@osmonauts/helpers";
 /** MsgSend represents a message to send a nft from one account to another account. */
 export interface MsgSend {
   /** class_id defines the unique identifier of the nft classification, similar to the contract address of ERC721 */
-  classId: string;
+  class_id: string;
 
   /** id defines the unique identification of nft */
   id: string;
@@ -21,7 +21,7 @@ export interface MsgSendResponse {}
 
 function createBaseMsgSend(): MsgSend {
   return {
-    classId: "",
+    class_id: "",
     id: "",
     sender: "",
     receiver: ""
@@ -30,8 +30,8 @@ function createBaseMsgSend(): MsgSend {
 
 export const MsgSend = {
   encode(message: MsgSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.classId !== "") {
-      writer.uint32(10).string(message.classId);
+    if (message.class_id !== "") {
+      writer.uint32(10).string(message.class_id);
     }
 
     if (message.id !== "") {
@@ -59,7 +59,7 @@ export const MsgSend = {
 
       switch (tag >>> 3) {
         case 1:
-          message.classId = reader.string();
+          message.class_id = reader.string();
           break;
 
         case 2:
@@ -85,7 +85,7 @@ export const MsgSend = {
 
   fromJSON(object: any): MsgSend {
     return {
-      classId: isSet(object.classId) ? String(object.classId) : "",
+      class_id: isSet(object.class_id) ? String(object.class_id) : "",
       id: isSet(object.id) ? String(object.id) : "",
       sender: isSet(object.sender) ? String(object.sender) : "",
       receiver: isSet(object.receiver) ? String(object.receiver) : ""
@@ -94,7 +94,7 @@ export const MsgSend = {
 
   toJSON(message: MsgSend): unknown {
     const obj: any = {};
-    message.classId !== undefined && (obj.classId = message.classId);
+    message.class_id !== undefined && (obj.class_id = message.class_id);
     message.id !== undefined && (obj.id = message.id);
     message.sender !== undefined && (obj.sender = message.sender);
     message.receiver !== undefined && (obj.receiver = message.receiver);
@@ -103,7 +103,7 @@ export const MsgSend = {
 
   fromPartial(object: DeepPartial<MsgSend>): MsgSend {
     const message = createBaseMsgSend();
-    message.classId = object.classId ?? "";
+    message.class_id = object.class_id ?? "";
     message.id = object.id ?? "";
     message.sender = object.sender ?? "";
     message.receiver = object.receiver ?? "";

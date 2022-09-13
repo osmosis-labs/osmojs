@@ -65,20 +65,20 @@ export interface UpcomingGaugesPerDenomRequest {
   pagination?: PageRequest;
 }
 export interface UpcomingGaugesPerDenomResponse {
-  upcomingGauges: Gauge[];
+  upcoming_gauges: Gauge[];
   pagination?: PageResponse;
 }
 export interface RewardsEstRequest {
   owner: string;
-  lockIds: Long[];
-  endEpoch: Long;
+  lock_ids: Long[];
+  end_epoch: Long;
 }
 export interface RewardsEstResponse {
   coins: Coin[];
 }
 export interface QueryLockableDurationsRequest {}
 export interface QueryLockableDurationsResponse {
-  lockableDurations: Duration[];
+  lockable_durations: Duration[];
 }
 
 function createBaseModuleToDistributeCoinsRequest(): ModuleToDistributeCoinsRequest {
@@ -1018,14 +1018,14 @@ export const UpcomingGaugesPerDenomRequest = {
 
 function createBaseUpcomingGaugesPerDenomResponse(): UpcomingGaugesPerDenomResponse {
   return {
-    upcomingGauges: [],
+    upcoming_gauges: [],
     pagination: undefined
   };
 }
 
 export const UpcomingGaugesPerDenomResponse = {
   encode(message: UpcomingGaugesPerDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.upcomingGauges) {
+    for (const v of message.upcoming_gauges) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -1046,7 +1046,7 @@ export const UpcomingGaugesPerDenomResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.upcomingGauges.push(Gauge.decode(reader, reader.uint32()));
+          message.upcoming_gauges.push(Gauge.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -1064,7 +1064,7 @@ export const UpcomingGaugesPerDenomResponse = {
 
   fromJSON(object: any): UpcomingGaugesPerDenomResponse {
     return {
-      upcomingGauges: Array.isArray(object?.upcomingGauges) ? object.upcomingGauges.map((e: any) => Gauge.fromJSON(e)) : [],
+      upcoming_gauges: Array.isArray(object?.upcoming_gauges) ? object.upcoming_gauges.map((e: any) => Gauge.fromJSON(e)) : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
@@ -1072,10 +1072,10 @@ export const UpcomingGaugesPerDenomResponse = {
   toJSON(message: UpcomingGaugesPerDenomResponse): unknown {
     const obj: any = {};
 
-    if (message.upcomingGauges) {
-      obj.upcomingGauges = message.upcomingGauges.map(e => e ? Gauge.toJSON(e) : undefined);
+    if (message.upcoming_gauges) {
+      obj.upcoming_gauges = message.upcoming_gauges.map(e => e ? Gauge.toJSON(e) : undefined);
     } else {
-      obj.upcomingGauges = [];
+      obj.upcoming_gauges = [];
     }
 
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
@@ -1084,7 +1084,7 @@ export const UpcomingGaugesPerDenomResponse = {
 
   fromPartial(object: DeepPartial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse {
     const message = createBaseUpcomingGaugesPerDenomResponse();
-    message.upcomingGauges = object.upcomingGauges?.map(e => Gauge.fromPartial(e)) || [];
+    message.upcoming_gauges = object.upcoming_gauges?.map(e => Gauge.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -1094,8 +1094,8 @@ export const UpcomingGaugesPerDenomResponse = {
 function createBaseRewardsEstRequest(): RewardsEstRequest {
   return {
     owner: "",
-    lockIds: [],
-    endEpoch: Long.ZERO
+    lock_ids: [],
+    end_epoch: Long.ZERO
   };
 }
 
@@ -1107,14 +1107,14 @@ export const RewardsEstRequest = {
 
     writer.uint32(18).fork();
 
-    for (const v of message.lockIds) {
+    for (const v of message.lock_ids) {
       writer.uint64(v);
     }
 
     writer.ldelim();
 
-    if (!message.endEpoch.isZero()) {
-      writer.uint32(24).int64(message.endEpoch);
+    if (!message.end_epoch.isZero()) {
+      writer.uint32(24).int64(message.end_epoch);
     }
 
     return writer;
@@ -1138,16 +1138,16 @@ export const RewardsEstRequest = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.lockIds.push((reader.uint64() as Long));
+              message.lock_ids.push((reader.uint64() as Long));
             }
           } else {
-            message.lockIds.push((reader.uint64() as Long));
+            message.lock_ids.push((reader.uint64() as Long));
           }
 
           break;
 
         case 3:
-          message.endEpoch = (reader.int64() as Long);
+          message.end_epoch = (reader.int64() as Long);
           break;
 
         default:
@@ -1162,8 +1162,8 @@ export const RewardsEstRequest = {
   fromJSON(object: any): RewardsEstRequest {
     return {
       owner: isSet(object.owner) ? String(object.owner) : "",
-      lockIds: Array.isArray(object?.lockIds) ? object.lockIds.map((e: any) => Long.fromString(e)) : [],
-      endEpoch: isSet(object.endEpoch) ? Long.fromString(object.endEpoch) : Long.ZERO
+      lock_ids: Array.isArray(object?.lock_ids) ? object.lock_ids.map((e: any) => Long.fromString(e)) : [],
+      end_epoch: isSet(object.end_epoch) ? Long.fromString(object.end_epoch) : Long.ZERO
     };
   },
 
@@ -1171,21 +1171,21 @@ export const RewardsEstRequest = {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
 
-    if (message.lockIds) {
-      obj.lockIds = message.lockIds.map(e => (e || Long.UZERO).toString());
+    if (message.lock_ids) {
+      obj.lock_ids = message.lock_ids.map(e => (e || Long.UZERO).toString());
     } else {
-      obj.lockIds = [];
+      obj.lock_ids = [];
     }
 
-    message.endEpoch !== undefined && (obj.endEpoch = (message.endEpoch || Long.ZERO).toString());
+    message.end_epoch !== undefined && (obj.end_epoch = (message.end_epoch || Long.ZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<RewardsEstRequest>): RewardsEstRequest {
     const message = createBaseRewardsEstRequest();
     message.owner = object.owner ?? "";
-    message.lockIds = object.lockIds?.map(e => Long.fromValue(e)) || [];
-    message.endEpoch = object.endEpoch !== undefined && object.endEpoch !== null ? Long.fromValue(object.endEpoch) : Long.ZERO;
+    message.lock_ids = object.lock_ids?.map(e => Long.fromValue(e)) || [];
+    message.end_epoch = object.end_epoch !== undefined && object.end_epoch !== null ? Long.fromValue(object.end_epoch) : Long.ZERO;
     return message;
   }
 
@@ -1299,13 +1299,13 @@ export const QueryLockableDurationsRequest = {
 
 function createBaseQueryLockableDurationsResponse(): QueryLockableDurationsResponse {
   return {
-    lockableDurations: []
+    lockable_durations: []
   };
 }
 
 export const QueryLockableDurationsResponse = {
   encode(message: QueryLockableDurationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.lockableDurations) {
+    for (const v of message.lockable_durations) {
       Duration.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -1322,7 +1322,7 @@ export const QueryLockableDurationsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.lockableDurations.push(Duration.decode(reader, reader.uint32()));
+          message.lockable_durations.push(Duration.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1336,17 +1336,17 @@ export const QueryLockableDurationsResponse = {
 
   fromJSON(object: any): QueryLockableDurationsResponse {
     return {
-      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : []
+      lockable_durations: Array.isArray(object?.lockable_durations) ? object.lockable_durations.map((e: any) => Duration.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryLockableDurationsResponse): unknown {
     const obj: any = {};
 
-    if (message.lockableDurations) {
-      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
+    if (message.lockable_durations) {
+      obj.lockable_durations = message.lockable_durations.map(e => e ? Duration.toJSON(e) : undefined);
     } else {
-      obj.lockableDurations = [];
+      obj.lockable_durations = [];
     }
 
     return obj;
@@ -1354,7 +1354,7 @@ export const QueryLockableDurationsResponse = {
 
   fromPartial(object: DeepPartial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse {
     const message = createBaseQueryLockableDurationsResponse();
-    message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
+    message.lockable_durations = object.lockable_durations?.map(e => Duration.fromPartial(e)) || [];
     return message;
   }
 

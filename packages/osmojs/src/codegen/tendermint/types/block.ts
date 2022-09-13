@@ -6,7 +6,7 @@ export interface Block {
   header: Header;
   data: Data;
   evidence: EvidenceList;
-  lastCommit: Commit;
+  last_commit: Commit;
 }
 
 function createBaseBlock(): Block {
@@ -14,7 +14,7 @@ function createBaseBlock(): Block {
     header: undefined,
     data: undefined,
     evidence: undefined,
-    lastCommit: undefined
+    last_commit: undefined
   };
 }
 
@@ -32,8 +32,8 @@ export const Block = {
       EvidenceList.encode(message.evidence, writer.uint32(26).fork()).ldelim();
     }
 
-    if (message.lastCommit !== undefined) {
-      Commit.encode(message.lastCommit, writer.uint32(34).fork()).ldelim();
+    if (message.last_commit !== undefined) {
+      Commit.encode(message.last_commit, writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -61,7 +61,7 @@ export const Block = {
           break;
 
         case 4:
-          message.lastCommit = Commit.decode(reader, reader.uint32());
+          message.last_commit = Commit.decode(reader, reader.uint32());
           break;
 
         default:
@@ -78,7 +78,7 @@ export const Block = {
       header: isSet(object.header) ? Header.fromJSON(object.header) : undefined,
       data: isSet(object.data) ? Data.fromJSON(object.data) : undefined,
       evidence: isSet(object.evidence) ? EvidenceList.fromJSON(object.evidence) : undefined,
-      lastCommit: isSet(object.lastCommit) ? Commit.fromJSON(object.lastCommit) : undefined
+      last_commit: isSet(object.last_commit) ? Commit.fromJSON(object.last_commit) : undefined
     };
   },
 
@@ -87,7 +87,7 @@ export const Block = {
     message.header !== undefined && (obj.header = message.header ? Header.toJSON(message.header) : undefined);
     message.data !== undefined && (obj.data = message.data ? Data.toJSON(message.data) : undefined);
     message.evidence !== undefined && (obj.evidence = message.evidence ? EvidenceList.toJSON(message.evidence) : undefined);
-    message.lastCommit !== undefined && (obj.lastCommit = message.lastCommit ? Commit.toJSON(message.lastCommit) : undefined);
+    message.last_commit !== undefined && (obj.last_commit = message.last_commit ? Commit.toJSON(message.last_commit) : undefined);
     return obj;
   },
 
@@ -96,7 +96,7 @@ export const Block = {
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
     message.data = object.data !== undefined && object.data !== null ? Data.fromPartial(object.data) : undefined;
     message.evidence = object.evidence !== undefined && object.evidence !== null ? EvidenceList.fromPartial(object.evidence) : undefined;
-    message.lastCommit = object.lastCommit !== undefined && object.lastCommit !== null ? Commit.fromPartial(object.lastCommit) : undefined;
+    message.last_commit = object.last_commit !== undefined && object.last_commit !== null ? Commit.fromPartial(object.last_commit) : undefined;
     return message;
   }
 

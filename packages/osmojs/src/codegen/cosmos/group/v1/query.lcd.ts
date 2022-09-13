@@ -16,7 +16,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* GroupInfo queries group info based on group id. */
   async groupInfo(params: QueryGroupInfoRequest): Promise<QueryGroupInfoResponse> {
-    const endpoint = `cosmos/group/v1/group_info/${params.groupId}`;
+    const endpoint = `cosmos/group/v1/group_info/${params.group_id}`;
     return await this.request<QueryGroupInfoResponse>(endpoint);
   }
 
@@ -36,7 +36,7 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/group/v1/group_members/${params.groupId}`;
+    const endpoint = `cosmos/group/v1/group_members/${params.group_id}`;
     return await this.request<QueryGroupMembersResponse>(endpoint, options);
   }
 
@@ -64,7 +64,7 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/group/v1/group_policies_by_group/${params.groupId}`;
+    const endpoint = `cosmos/group/v1/group_policies_by_group/${params.group_id}`;
     return await this.request<QueryGroupPoliciesByGroupResponse>(endpoint, options);
   }
 
@@ -84,7 +84,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* Proposal queries a proposal based on proposal id. */
   async proposal(params: QueryProposalRequest): Promise<QueryProposalResponse> {
-    const endpoint = `cosmos/group/v1/proposal/${params.proposalId}`;
+    const endpoint = `cosmos/group/v1/proposal/${params.proposal_id}`;
     return await this.request<QueryProposalResponse>(endpoint);
   }
 
@@ -104,7 +104,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* VoteByProposalVoter queries a vote by proposal id and voter. */
   async voteByProposalVoter(params: QueryVoteByProposalVoterRequest): Promise<QueryVoteByProposalVoterResponse> {
-    const endpoint = `cosmos/group/v1/vote_by_proposal_voter/${params.proposalId}/${params.voter}`;
+    const endpoint = `cosmos/group/v1/vote_by_proposal_voter/${params.proposal_id}/${params.voter}`;
     return await this.request<QueryVoteByProposalVoterResponse>(endpoint);
   }
 
@@ -118,7 +118,7 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/group/v1/votes_by_proposal/${params.proposalId}`;
+    const endpoint = `cosmos/group/v1/votes_by_proposal/${params.proposal_id}`;
     return await this.request<QueryVotesByProposalResponse>(endpoint, options);
   }
 
@@ -152,7 +152,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* TallyResult queries the tally of a proposal votes. */
   async tallyResult(params: QueryTallyResultRequest): Promise<QueryTallyResultResponse> {
-    const endpoint = `cosmos/group/v1/proposals/${params.proposalId}/tally`;
+    const endpoint = `cosmos/group/v1/proposals/${params.proposal_id}/tally`;
     return await this.request<QueryTallyResultResponse>(endpoint);
   }
 

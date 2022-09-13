@@ -5,8 +5,8 @@ import { isSet, DeepPartial } from "@osmonauts/helpers";
 
 /** MsgSend represents a message to send coins from one account to another. */
 export interface MsgSend {
-  fromAddress: string;
-  toAddress: string;
+  from_address: string;
+  to_address: string;
   amount: Coin[];
 }
 
@@ -24,20 +24,20 @@ export interface MsgMultiSendResponse {}
 
 function createBaseMsgSend(): MsgSend {
   return {
-    fromAddress: "",
-    toAddress: "",
+    from_address: "",
+    to_address: "",
     amount: []
   };
 }
 
 export const MsgSend = {
   encode(message: MsgSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.fromAddress !== "") {
-      writer.uint32(10).string(message.fromAddress);
+    if (message.from_address !== "") {
+      writer.uint32(10).string(message.from_address);
     }
 
-    if (message.toAddress !== "") {
-      writer.uint32(18).string(message.toAddress);
+    if (message.to_address !== "") {
+      writer.uint32(18).string(message.to_address);
     }
 
     for (const v of message.amount) {
@@ -57,11 +57,11 @@ export const MsgSend = {
 
       switch (tag >>> 3) {
         case 1:
-          message.fromAddress = reader.string();
+          message.from_address = reader.string();
           break;
 
         case 2:
-          message.toAddress = reader.string();
+          message.to_address = reader.string();
           break;
 
         case 3:
@@ -79,16 +79,16 @@ export const MsgSend = {
 
   fromJSON(object: any): MsgSend {
     return {
-      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
-      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
+      from_address: isSet(object.from_address) ? String(object.from_address) : "",
+      to_address: isSet(object.to_address) ? String(object.to_address) : "",
       amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
 
   toJSON(message: MsgSend): unknown {
     const obj: any = {};
-    message.fromAddress !== undefined && (obj.fromAddress = message.fromAddress);
-    message.toAddress !== undefined && (obj.toAddress = message.toAddress);
+    message.from_address !== undefined && (obj.from_address = message.from_address);
+    message.to_address !== undefined && (obj.to_address = message.to_address);
 
     if (message.amount) {
       obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
@@ -101,8 +101,8 @@ export const MsgSend = {
 
   fromPartial(object: DeepPartial<MsgSend>): MsgSend {
     const message = createBaseMsgSend();
-    message.fromAddress = object.fromAddress ?? "";
-    message.toAddress = object.toAddress ?? "";
+    message.from_address = object.from_address ?? "";
+    message.to_address = object.to_address ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }

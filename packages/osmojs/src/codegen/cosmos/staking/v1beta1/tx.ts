@@ -9,9 +9,9 @@ import { isSet, DeepPartial, toTimestamp, fromTimestamp, fromJsonTimestamp } fro
 export interface MsgCreateValidator {
   description: Description;
   commission: CommissionRates;
-  minSelfDelegation: string;
-  delegatorAddress: string;
-  validatorAddress: string;
+  min_self_delegation: string;
+  delegator_address: string;
+  validator_address: string;
   pubkey: Any;
   value: Coin;
 }
@@ -22,7 +22,7 @@ export interface MsgCreateValidatorResponse {}
 /** MsgEditValidator defines a SDK message for editing an existing validator. */
 export interface MsgEditValidator {
   description: Description;
-  validatorAddress: string;
+  validator_address: string;
 
   /**
    * We pass a reference to the new commission rate and min self delegation as
@@ -30,8 +30,8 @@ export interface MsgEditValidator {
    * zero with no way to distinguish if an update was intended.
    * REF: #2373
    */
-  commissionRate: string;
-  minSelfDelegation: string;
+  commission_rate: string;
+  min_self_delegation: string;
 }
 
 /** MsgEditValidatorResponse defines the Msg/EditValidator response type. */
@@ -42,8 +42,8 @@ export interface MsgEditValidatorResponse {}
  * from a delegator to a validator.
  */
 export interface MsgDelegate {
-  delegatorAddress: string;
-  validatorAddress: string;
+  delegator_address: string;
+  validator_address: string;
   amount: Coin;
 }
 
@@ -55,15 +55,15 @@ export interface MsgDelegateResponse {}
  * of coins from a delegator and source validator to a destination validator.
  */
 export interface MsgBeginRedelegate {
-  delegatorAddress: string;
-  validatorSrcAddress: string;
-  validatorDstAddress: string;
+  delegator_address: string;
+  validator_src_address: string;
+  validator_dst_address: string;
   amount: Coin;
 }
 
 /** MsgBeginRedelegateResponse defines the Msg/BeginRedelegate response type. */
 export interface MsgBeginRedelegateResponse {
-  completionTime: Date;
+  completion_time: Date;
 }
 
 /**
@@ -71,23 +71,23 @@ export interface MsgBeginRedelegateResponse {
  * delegate and a validator.
  */
 export interface MsgUndelegate {
-  delegatorAddress: string;
-  validatorAddress: string;
+  delegator_address: string;
+  validator_address: string;
   amount: Coin;
 }
 
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponse {
-  completionTime: Date;
+  completion_time: Date;
 }
 
 function createBaseMsgCreateValidator(): MsgCreateValidator {
   return {
     description: undefined,
     commission: undefined,
-    minSelfDelegation: "",
-    delegatorAddress: "",
-    validatorAddress: "",
+    min_self_delegation: "",
+    delegator_address: "",
+    validator_address: "",
     pubkey: undefined,
     value: undefined
   };
@@ -103,16 +103,16 @@ export const MsgCreateValidator = {
       CommissionRates.encode(message.commission, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.minSelfDelegation !== "") {
-      writer.uint32(26).string(message.minSelfDelegation);
+    if (message.min_self_delegation !== "") {
+      writer.uint32(26).string(message.min_self_delegation);
     }
 
-    if (message.delegatorAddress !== "") {
-      writer.uint32(34).string(message.delegatorAddress);
+    if (message.delegator_address !== "") {
+      writer.uint32(34).string(message.delegator_address);
     }
 
-    if (message.validatorAddress !== "") {
-      writer.uint32(42).string(message.validatorAddress);
+    if (message.validator_address !== "") {
+      writer.uint32(42).string(message.validator_address);
     }
 
     if (message.pubkey !== undefined) {
@@ -144,15 +144,15 @@ export const MsgCreateValidator = {
           break;
 
         case 3:
-          message.minSelfDelegation = reader.string();
+          message.min_self_delegation = reader.string();
           break;
 
         case 4:
-          message.delegatorAddress = reader.string();
+          message.delegator_address = reader.string();
           break;
 
         case 5:
-          message.validatorAddress = reader.string();
+          message.validator_address = reader.string();
           break;
 
         case 6:
@@ -176,9 +176,9 @@ export const MsgCreateValidator = {
     return {
       description: isSet(object.description) ? Description.fromJSON(object.description) : undefined,
       commission: isSet(object.commission) ? CommissionRates.fromJSON(object.commission) : undefined,
-      minSelfDelegation: isSet(object.minSelfDelegation) ? String(object.minSelfDelegation) : "",
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      min_self_delegation: isSet(object.min_self_delegation) ? String(object.min_self_delegation) : "",
+      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
+      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
       pubkey: isSet(object.pubkey) ? Any.fromJSON(object.pubkey) : undefined,
       value: isSet(object.value) ? Coin.fromJSON(object.value) : undefined
     };
@@ -188,9 +188,9 @@ export const MsgCreateValidator = {
     const obj: any = {};
     message.description !== undefined && (obj.description = message.description ? Description.toJSON(message.description) : undefined);
     message.commission !== undefined && (obj.commission = message.commission ? CommissionRates.toJSON(message.commission) : undefined);
-    message.minSelfDelegation !== undefined && (obj.minSelfDelegation = message.minSelfDelegation);
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+    message.min_self_delegation !== undefined && (obj.min_self_delegation = message.min_self_delegation);
+    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
+    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
     message.pubkey !== undefined && (obj.pubkey = message.pubkey ? Any.toJSON(message.pubkey) : undefined);
     message.value !== undefined && (obj.value = message.value ? Coin.toJSON(message.value) : undefined);
     return obj;
@@ -200,9 +200,9 @@ export const MsgCreateValidator = {
     const message = createBaseMsgCreateValidator();
     message.description = object.description !== undefined && object.description !== null ? Description.fromPartial(object.description) : undefined;
     message.commission = object.commission !== undefined && object.commission !== null ? CommissionRates.fromPartial(object.commission) : undefined;
-    message.minSelfDelegation = object.minSelfDelegation ?? "";
-    message.delegatorAddress = object.delegatorAddress ?? "";
-    message.validatorAddress = object.validatorAddress ?? "";
+    message.min_self_delegation = object.min_self_delegation ?? "";
+    message.delegator_address = object.delegator_address ?? "";
+    message.validator_address = object.validator_address ?? "";
     message.pubkey = object.pubkey !== undefined && object.pubkey !== null ? Any.fromPartial(object.pubkey) : undefined;
     message.value = object.value !== undefined && object.value !== null ? Coin.fromPartial(object.value) : undefined;
     return message;
@@ -256,9 +256,9 @@ export const MsgCreateValidatorResponse = {
 function createBaseMsgEditValidator(): MsgEditValidator {
   return {
     description: undefined,
-    validatorAddress: "",
-    commissionRate: "",
-    minSelfDelegation: ""
+    validator_address: "",
+    commission_rate: "",
+    min_self_delegation: ""
   };
 }
 
@@ -268,16 +268,16 @@ export const MsgEditValidator = {
       Description.encode(message.description, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.validatorAddress !== "") {
-      writer.uint32(18).string(message.validatorAddress);
+    if (message.validator_address !== "") {
+      writer.uint32(18).string(message.validator_address);
     }
 
-    if (message.commissionRate !== "") {
-      writer.uint32(26).string(message.commissionRate);
+    if (message.commission_rate !== "") {
+      writer.uint32(26).string(message.commission_rate);
     }
 
-    if (message.minSelfDelegation !== "") {
-      writer.uint32(34).string(message.minSelfDelegation);
+    if (message.min_self_delegation !== "") {
+      writer.uint32(34).string(message.min_self_delegation);
     }
 
     return writer;
@@ -297,15 +297,15 @@ export const MsgEditValidator = {
           break;
 
         case 2:
-          message.validatorAddress = reader.string();
+          message.validator_address = reader.string();
           break;
 
         case 3:
-          message.commissionRate = reader.string();
+          message.commission_rate = reader.string();
           break;
 
         case 4:
-          message.minSelfDelegation = reader.string();
+          message.min_self_delegation = reader.string();
           break;
 
         default:
@@ -320,27 +320,27 @@ export const MsgEditValidator = {
   fromJSON(object: any): MsgEditValidator {
     return {
       description: isSet(object.description) ? Description.fromJSON(object.description) : undefined,
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      commissionRate: isSet(object.commissionRate) ? String(object.commissionRate) : "",
-      minSelfDelegation: isSet(object.minSelfDelegation) ? String(object.minSelfDelegation) : ""
+      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
+      commission_rate: isSet(object.commission_rate) ? String(object.commission_rate) : "",
+      min_self_delegation: isSet(object.min_self_delegation) ? String(object.min_self_delegation) : ""
     };
   },
 
   toJSON(message: MsgEditValidator): unknown {
     const obj: any = {};
     message.description !== undefined && (obj.description = message.description ? Description.toJSON(message.description) : undefined);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    message.commissionRate !== undefined && (obj.commissionRate = message.commissionRate);
-    message.minSelfDelegation !== undefined && (obj.minSelfDelegation = message.minSelfDelegation);
+    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
+    message.commission_rate !== undefined && (obj.commission_rate = message.commission_rate);
+    message.min_self_delegation !== undefined && (obj.min_self_delegation = message.min_self_delegation);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgEditValidator>): MsgEditValidator {
     const message = createBaseMsgEditValidator();
     message.description = object.description !== undefined && object.description !== null ? Description.fromPartial(object.description) : undefined;
-    message.validatorAddress = object.validatorAddress ?? "";
-    message.commissionRate = object.commissionRate ?? "";
-    message.minSelfDelegation = object.minSelfDelegation ?? "";
+    message.validator_address = object.validator_address ?? "";
+    message.commission_rate = object.commission_rate ?? "";
+    message.min_self_delegation = object.min_self_delegation ?? "";
     return message;
   }
 
@@ -391,20 +391,20 @@ export const MsgEditValidatorResponse = {
 
 function createBaseMsgDelegate(): MsgDelegate {
   return {
-    delegatorAddress: "",
-    validatorAddress: "",
+    delegator_address: "",
+    validator_address: "",
     amount: undefined
   };
 }
 
 export const MsgDelegate = {
   encode(message: MsgDelegate, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegatorAddress !== "") {
-      writer.uint32(10).string(message.delegatorAddress);
+    if (message.delegator_address !== "") {
+      writer.uint32(10).string(message.delegator_address);
     }
 
-    if (message.validatorAddress !== "") {
-      writer.uint32(18).string(message.validatorAddress);
+    if (message.validator_address !== "") {
+      writer.uint32(18).string(message.validator_address);
     }
 
     if (message.amount !== undefined) {
@@ -424,11 +424,11 @@ export const MsgDelegate = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegatorAddress = reader.string();
+          message.delegator_address = reader.string();
           break;
 
         case 2:
-          message.validatorAddress = reader.string();
+          message.validator_address = reader.string();
           break;
 
         case 3:
@@ -446,24 +446,24 @@ export const MsgDelegate = {
 
   fromJSON(object: any): MsgDelegate {
     return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
+      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
       amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
     };
   },
 
   toJSON(message: MsgDelegate): unknown {
     const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
+    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
     message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgDelegate>): MsgDelegate {
     const message = createBaseMsgDelegate();
-    message.delegatorAddress = object.delegatorAddress ?? "";
-    message.validatorAddress = object.validatorAddress ?? "";
+    message.delegator_address = object.delegator_address ?? "";
+    message.validator_address = object.validator_address ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   }
@@ -515,25 +515,25 @@ export const MsgDelegateResponse = {
 
 function createBaseMsgBeginRedelegate(): MsgBeginRedelegate {
   return {
-    delegatorAddress: "",
-    validatorSrcAddress: "",
-    validatorDstAddress: "",
+    delegator_address: "",
+    validator_src_address: "",
+    validator_dst_address: "",
     amount: undefined
   };
 }
 
 export const MsgBeginRedelegate = {
   encode(message: MsgBeginRedelegate, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegatorAddress !== "") {
-      writer.uint32(10).string(message.delegatorAddress);
+    if (message.delegator_address !== "") {
+      writer.uint32(10).string(message.delegator_address);
     }
 
-    if (message.validatorSrcAddress !== "") {
-      writer.uint32(18).string(message.validatorSrcAddress);
+    if (message.validator_src_address !== "") {
+      writer.uint32(18).string(message.validator_src_address);
     }
 
-    if (message.validatorDstAddress !== "") {
-      writer.uint32(26).string(message.validatorDstAddress);
+    if (message.validator_dst_address !== "") {
+      writer.uint32(26).string(message.validator_dst_address);
     }
 
     if (message.amount !== undefined) {
@@ -553,15 +553,15 @@ export const MsgBeginRedelegate = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegatorAddress = reader.string();
+          message.delegator_address = reader.string();
           break;
 
         case 2:
-          message.validatorSrcAddress = reader.string();
+          message.validator_src_address = reader.string();
           break;
 
         case 3:
-          message.validatorDstAddress = reader.string();
+          message.validator_dst_address = reader.string();
           break;
 
         case 4:
@@ -579,27 +579,27 @@ export const MsgBeginRedelegate = {
 
   fromJSON(object: any): MsgBeginRedelegate {
     return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorSrcAddress: isSet(object.validatorSrcAddress) ? String(object.validatorSrcAddress) : "",
-      validatorDstAddress: isSet(object.validatorDstAddress) ? String(object.validatorDstAddress) : "",
+      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
+      validator_src_address: isSet(object.validator_src_address) ? String(object.validator_src_address) : "",
+      validator_dst_address: isSet(object.validator_dst_address) ? String(object.validator_dst_address) : "",
       amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
     };
   },
 
   toJSON(message: MsgBeginRedelegate): unknown {
     const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorSrcAddress !== undefined && (obj.validatorSrcAddress = message.validatorSrcAddress);
-    message.validatorDstAddress !== undefined && (obj.validatorDstAddress = message.validatorDstAddress);
+    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
+    message.validator_src_address !== undefined && (obj.validator_src_address = message.validator_src_address);
+    message.validator_dst_address !== undefined && (obj.validator_dst_address = message.validator_dst_address);
     message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgBeginRedelegate>): MsgBeginRedelegate {
     const message = createBaseMsgBeginRedelegate();
-    message.delegatorAddress = object.delegatorAddress ?? "";
-    message.validatorSrcAddress = object.validatorSrcAddress ?? "";
-    message.validatorDstAddress = object.validatorDstAddress ?? "";
+    message.delegator_address = object.delegator_address ?? "";
+    message.validator_src_address = object.validator_src_address ?? "";
+    message.validator_dst_address = object.validator_dst_address ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   }
@@ -608,14 +608,14 @@ export const MsgBeginRedelegate = {
 
 function createBaseMsgBeginRedelegateResponse(): MsgBeginRedelegateResponse {
   return {
-    completionTime: undefined
+    completion_time: undefined
   };
 }
 
 export const MsgBeginRedelegateResponse = {
   encode(message: MsgBeginRedelegateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.completionTime !== undefined) {
-      Timestamp.encode(toTimestamp(message.completionTime), writer.uint32(10).fork()).ldelim();
+    if (message.completion_time !== undefined) {
+      Timestamp.encode(toTimestamp(message.completion_time), writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -631,7 +631,7 @@ export const MsgBeginRedelegateResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.completionTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.completion_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -645,19 +645,19 @@ export const MsgBeginRedelegateResponse = {
 
   fromJSON(object: any): MsgBeginRedelegateResponse {
     return {
-      completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined
+      completion_time: isSet(object.completion_time) ? fromJsonTimestamp(object.completion_time) : undefined
     };
   },
 
   toJSON(message: MsgBeginRedelegateResponse): unknown {
     const obj: any = {};
-    message.completionTime !== undefined && (obj.completionTime = message.completionTime.toISOString());
+    message.completion_time !== undefined && (obj.completion_time = message.completion_time.toISOString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse {
     const message = createBaseMsgBeginRedelegateResponse();
-    message.completionTime = object.completionTime ?? undefined;
+    message.completion_time = object.completion_time ?? undefined;
     return message;
   }
 
@@ -665,20 +665,20 @@ export const MsgBeginRedelegateResponse = {
 
 function createBaseMsgUndelegate(): MsgUndelegate {
   return {
-    delegatorAddress: "",
-    validatorAddress: "",
+    delegator_address: "",
+    validator_address: "",
     amount: undefined
   };
 }
 
 export const MsgUndelegate = {
   encode(message: MsgUndelegate, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegatorAddress !== "") {
-      writer.uint32(10).string(message.delegatorAddress);
+    if (message.delegator_address !== "") {
+      writer.uint32(10).string(message.delegator_address);
     }
 
-    if (message.validatorAddress !== "") {
-      writer.uint32(18).string(message.validatorAddress);
+    if (message.validator_address !== "") {
+      writer.uint32(18).string(message.validator_address);
     }
 
     if (message.amount !== undefined) {
@@ -698,11 +698,11 @@ export const MsgUndelegate = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegatorAddress = reader.string();
+          message.delegator_address = reader.string();
           break;
 
         case 2:
-          message.validatorAddress = reader.string();
+          message.validator_address = reader.string();
           break;
 
         case 3:
@@ -720,24 +720,24 @@ export const MsgUndelegate = {
 
   fromJSON(object: any): MsgUndelegate {
     return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
+      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
       amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
     };
   },
 
   toJSON(message: MsgUndelegate): unknown {
     const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
+    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
     message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgUndelegate>): MsgUndelegate {
     const message = createBaseMsgUndelegate();
-    message.delegatorAddress = object.delegatorAddress ?? "";
-    message.validatorAddress = object.validatorAddress ?? "";
+    message.delegator_address = object.delegator_address ?? "";
+    message.validator_address = object.validator_address ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   }
@@ -746,14 +746,14 @@ export const MsgUndelegate = {
 
 function createBaseMsgUndelegateResponse(): MsgUndelegateResponse {
   return {
-    completionTime: undefined
+    completion_time: undefined
   };
 }
 
 export const MsgUndelegateResponse = {
   encode(message: MsgUndelegateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.completionTime !== undefined) {
-      Timestamp.encode(toTimestamp(message.completionTime), writer.uint32(10).fork()).ldelim();
+    if (message.completion_time !== undefined) {
+      Timestamp.encode(toTimestamp(message.completion_time), writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -769,7 +769,7 @@ export const MsgUndelegateResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.completionTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.completion_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -783,19 +783,19 @@ export const MsgUndelegateResponse = {
 
   fromJSON(object: any): MsgUndelegateResponse {
     return {
-      completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined
+      completion_time: isSet(object.completion_time) ? fromJsonTimestamp(object.completion_time) : undefined
     };
   },
 
   toJSON(message: MsgUndelegateResponse): unknown {
     const obj: any = {};
-    message.completionTime !== undefined && (obj.completionTime = message.completionTime.toISOString());
+    message.completion_time !== undefined && (obj.completion_time = message.completion_time.toISOString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgUndelegateResponse>): MsgUndelegateResponse {
     const message = createBaseMsgUndelegateResponse();
-    message.completionTime = object.completionTime ?? undefined;
+    message.completion_time = object.completion_time ?? undefined;
     return message;
   }
 

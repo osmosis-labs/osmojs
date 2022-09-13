@@ -47,13 +47,13 @@ export const AminoConverter = {
     aminoType: "osmosis/superfluid-delegate",
     toAmino: ({
       sender,
-      lockId,
-      valAddr
+      lock_id,
+      val_addr
     }: MsgSuperfluidDelegate): AminoMsgSuperfluidDelegate["value"] => {
       return {
         sender,
-        lock_id: lockId.toString(),
-        val_addr: valAddr
+        lock_id: lock_id.toString(),
+        val_addr
       };
     },
     fromAmino: ({
@@ -63,8 +63,8 @@ export const AminoConverter = {
     }: AminoMsgSuperfluidDelegate["value"]): MsgSuperfluidDelegate => {
       return {
         sender,
-        lockId: Long.fromString(lock_id),
-        valAddr: val_addr
+        lock_id: Long.fromString(lock_id),
+        val_addr
       };
     }
   },
@@ -72,11 +72,11 @@ export const AminoConverter = {
     aminoType: "osmosis/superfluid-undelegate",
     toAmino: ({
       sender,
-      lockId
+      lock_id
     }: MsgSuperfluidUndelegate): AminoMsgSuperfluidUndelegate["value"] => {
       return {
         sender,
-        lock_id: lockId.toString()
+        lock_id: lock_id.toString()
       };
     },
     fromAmino: ({
@@ -85,7 +85,7 @@ export const AminoConverter = {
     }: AminoMsgSuperfluidUndelegate["value"]): MsgSuperfluidUndelegate => {
       return {
         sender,
-        lockId: Long.fromString(lock_id)
+        lock_id: Long.fromString(lock_id)
       };
     }
   },
@@ -93,11 +93,11 @@ export const AminoConverter = {
     aminoType: "osmosis/superfluid-unbond-lock",
     toAmino: ({
       sender,
-      lockId
+      lock_id
     }: MsgSuperfluidUnbondLock): AminoMsgSuperfluidUnbondLock["value"] => {
       return {
         sender,
-        lock_id: lockId.toString()
+        lock_id: lock_id.toString()
       };
     },
     fromAmino: ({
@@ -106,7 +106,7 @@ export const AminoConverter = {
     }: AminoMsgSuperfluidUnbondLock["value"]): MsgSuperfluidUnbondLock => {
       return {
         sender,
-        lockId: Long.fromString(lock_id)
+        lock_id: Long.fromString(lock_id)
       };
     }
   },
@@ -115,7 +115,7 @@ export const AminoConverter = {
     toAmino: ({
       sender,
       coins,
-      valAddr
+      val_addr
     }: MsgLockAndSuperfluidDelegate): AminoMsgLockAndSuperfluidDelegate["value"] => {
       return {
         sender,
@@ -123,7 +123,7 @@ export const AminoConverter = {
           denom: el0.denom,
           amount: el0.amount
         })),
-        val_addr: valAddr
+        val_addr
       };
     },
     fromAmino: ({
@@ -137,7 +137,7 @@ export const AminoConverter = {
           denom: el0.denom,
           amount: el0.amount
         })),
-        valAddr: val_addr
+        val_addr
       };
     }
   },
@@ -145,11 +145,11 @@ export const AminoConverter = {
     aminoType: "osmosis/unpool-whitelisted-pool",
     toAmino: ({
       sender,
-      poolId
+      pool_id
     }: MsgUnPoolWhitelistedPool): AminoMsgUnPoolWhitelistedPool["value"] => {
       return {
         sender,
-        pool_id: poolId.toString()
+        pool_id: pool_id.toString()
       };
     },
     fromAmino: ({
@@ -158,7 +158,7 @@ export const AminoConverter = {
     }: AminoMsgUnPoolWhitelistedPool["value"]): MsgUnPoolWhitelistedPool => {
       return {
         sender,
-        poolId: Long.fromString(pool_id)
+        pool_id: Long.fromString(pool_id)
       };
     }
   }

@@ -61,27 +61,27 @@ export interface Bech32PrefixRequest {}
 
 /** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
 export interface Bech32PrefixResponse {
-  bech32Prefix: string;
+  bech32_prefix: string;
 }
 
 /** AddressBytesToStringRequest is the request type for AddressString rpc method */
 export interface AddressBytesToStringRequest {
-  addressBytes: Uint8Array;
+  address_bytes: Uint8Array;
 }
 
 /** AddressBytesToStringResponse is the response type for AddressString rpc method */
 export interface AddressBytesToStringResponse {
-  addressString: string;
+  address_string: string;
 }
 
 /** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
 export interface AddressStringToBytesRequest {
-  addressString: string;
+  address_string: string;
 }
 
 /** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
 export interface AddressStringToBytesResponse {
-  addressBytes: Uint8Array;
+  address_bytes: Uint8Array;
 }
 
 function createBaseQueryAccountsRequest(): QueryAccountsRequest {
@@ -581,14 +581,14 @@ export const Bech32PrefixRequest = {
 
 function createBaseBech32PrefixResponse(): Bech32PrefixResponse {
   return {
-    bech32Prefix: ""
+    bech32_prefix: ""
   };
 }
 
 export const Bech32PrefixResponse = {
   encode(message: Bech32PrefixResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.bech32Prefix !== "") {
-      writer.uint32(10).string(message.bech32Prefix);
+    if (message.bech32_prefix !== "") {
+      writer.uint32(10).string(message.bech32_prefix);
     }
 
     return writer;
@@ -604,7 +604,7 @@ export const Bech32PrefixResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.bech32Prefix = reader.string();
+          message.bech32_prefix = reader.string();
           break;
 
         default:
@@ -618,19 +618,19 @@ export const Bech32PrefixResponse = {
 
   fromJSON(object: any): Bech32PrefixResponse {
     return {
-      bech32Prefix: isSet(object.bech32Prefix) ? String(object.bech32Prefix) : ""
+      bech32_prefix: isSet(object.bech32_prefix) ? String(object.bech32_prefix) : ""
     };
   },
 
   toJSON(message: Bech32PrefixResponse): unknown {
     const obj: any = {};
-    message.bech32Prefix !== undefined && (obj.bech32Prefix = message.bech32Prefix);
+    message.bech32_prefix !== undefined && (obj.bech32_prefix = message.bech32_prefix);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Bech32PrefixResponse>): Bech32PrefixResponse {
     const message = createBaseBech32PrefixResponse();
-    message.bech32Prefix = object.bech32Prefix ?? "";
+    message.bech32_prefix = object.bech32_prefix ?? "";
     return message;
   }
 
@@ -638,14 +638,14 @@ export const Bech32PrefixResponse = {
 
 function createBaseAddressBytesToStringRequest(): AddressBytesToStringRequest {
   return {
-    addressBytes: new Uint8Array()
+    address_bytes: new Uint8Array()
   };
 }
 
 export const AddressBytesToStringRequest = {
   encode(message: AddressBytesToStringRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.addressBytes.length !== 0) {
-      writer.uint32(10).bytes(message.addressBytes);
+    if (message.address_bytes.length !== 0) {
+      writer.uint32(10).bytes(message.address_bytes);
     }
 
     return writer;
@@ -661,7 +661,7 @@ export const AddressBytesToStringRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.addressBytes = reader.bytes();
+          message.address_bytes = reader.bytes();
           break;
 
         default:
@@ -675,19 +675,19 @@ export const AddressBytesToStringRequest = {
 
   fromJSON(object: any): AddressBytesToStringRequest {
     return {
-      addressBytes: isSet(object.addressBytes) ? bytesFromBase64(object.addressBytes) : new Uint8Array()
+      address_bytes: isSet(object.address_bytes) ? bytesFromBase64(object.address_bytes) : new Uint8Array()
     };
   },
 
   toJSON(message: AddressBytesToStringRequest): unknown {
     const obj: any = {};
-    message.addressBytes !== undefined && (obj.addressBytes = base64FromBytes(message.addressBytes !== undefined ? message.addressBytes : new Uint8Array()));
+    message.address_bytes !== undefined && (obj.address_bytes = base64FromBytes(message.address_bytes !== undefined ? message.address_bytes : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<AddressBytesToStringRequest>): AddressBytesToStringRequest {
     const message = createBaseAddressBytesToStringRequest();
-    message.addressBytes = object.addressBytes ?? new Uint8Array();
+    message.address_bytes = object.address_bytes ?? new Uint8Array();
     return message;
   }
 
@@ -695,14 +695,14 @@ export const AddressBytesToStringRequest = {
 
 function createBaseAddressBytesToStringResponse(): AddressBytesToStringResponse {
   return {
-    addressString: ""
+    address_string: ""
   };
 }
 
 export const AddressBytesToStringResponse = {
   encode(message: AddressBytesToStringResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.addressString !== "") {
-      writer.uint32(10).string(message.addressString);
+    if (message.address_string !== "") {
+      writer.uint32(10).string(message.address_string);
     }
 
     return writer;
@@ -718,7 +718,7 @@ export const AddressBytesToStringResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.addressString = reader.string();
+          message.address_string = reader.string();
           break;
 
         default:
@@ -732,19 +732,19 @@ export const AddressBytesToStringResponse = {
 
   fromJSON(object: any): AddressBytesToStringResponse {
     return {
-      addressString: isSet(object.addressString) ? String(object.addressString) : ""
+      address_string: isSet(object.address_string) ? String(object.address_string) : ""
     };
   },
 
   toJSON(message: AddressBytesToStringResponse): unknown {
     const obj: any = {};
-    message.addressString !== undefined && (obj.addressString = message.addressString);
+    message.address_string !== undefined && (obj.address_string = message.address_string);
     return obj;
   },
 
   fromPartial(object: DeepPartial<AddressBytesToStringResponse>): AddressBytesToStringResponse {
     const message = createBaseAddressBytesToStringResponse();
-    message.addressString = object.addressString ?? "";
+    message.address_string = object.address_string ?? "";
     return message;
   }
 
@@ -752,14 +752,14 @@ export const AddressBytesToStringResponse = {
 
 function createBaseAddressStringToBytesRequest(): AddressStringToBytesRequest {
   return {
-    addressString: ""
+    address_string: ""
   };
 }
 
 export const AddressStringToBytesRequest = {
   encode(message: AddressStringToBytesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.addressString !== "") {
-      writer.uint32(10).string(message.addressString);
+    if (message.address_string !== "") {
+      writer.uint32(10).string(message.address_string);
     }
 
     return writer;
@@ -775,7 +775,7 @@ export const AddressStringToBytesRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.addressString = reader.string();
+          message.address_string = reader.string();
           break;
 
         default:
@@ -789,19 +789,19 @@ export const AddressStringToBytesRequest = {
 
   fromJSON(object: any): AddressStringToBytesRequest {
     return {
-      addressString: isSet(object.addressString) ? String(object.addressString) : ""
+      address_string: isSet(object.address_string) ? String(object.address_string) : ""
     };
   },
 
   toJSON(message: AddressStringToBytesRequest): unknown {
     const obj: any = {};
-    message.addressString !== undefined && (obj.addressString = message.addressString);
+    message.address_string !== undefined && (obj.address_string = message.address_string);
     return obj;
   },
 
   fromPartial(object: DeepPartial<AddressStringToBytesRequest>): AddressStringToBytesRequest {
     const message = createBaseAddressStringToBytesRequest();
-    message.addressString = object.addressString ?? "";
+    message.address_string = object.address_string ?? "";
     return message;
   }
 
@@ -809,14 +809,14 @@ export const AddressStringToBytesRequest = {
 
 function createBaseAddressStringToBytesResponse(): AddressStringToBytesResponse {
   return {
-    addressBytes: new Uint8Array()
+    address_bytes: new Uint8Array()
   };
 }
 
 export const AddressStringToBytesResponse = {
   encode(message: AddressStringToBytesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.addressBytes.length !== 0) {
-      writer.uint32(10).bytes(message.addressBytes);
+    if (message.address_bytes.length !== 0) {
+      writer.uint32(10).bytes(message.address_bytes);
     }
 
     return writer;
@@ -832,7 +832,7 @@ export const AddressStringToBytesResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.addressBytes = reader.bytes();
+          message.address_bytes = reader.bytes();
           break;
 
         default:
@@ -846,19 +846,19 @@ export const AddressStringToBytesResponse = {
 
   fromJSON(object: any): AddressStringToBytesResponse {
     return {
-      addressBytes: isSet(object.addressBytes) ? bytesFromBase64(object.addressBytes) : new Uint8Array()
+      address_bytes: isSet(object.address_bytes) ? bytesFromBase64(object.address_bytes) : new Uint8Array()
     };
   },
 
   toJSON(message: AddressStringToBytesResponse): unknown {
     const obj: any = {};
-    message.addressBytes !== undefined && (obj.addressBytes = base64FromBytes(message.addressBytes !== undefined ? message.addressBytes : new Uint8Array()));
+    message.address_bytes !== undefined && (obj.address_bytes = base64FromBytes(message.address_bytes !== undefined ? message.address_bytes : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<AddressStringToBytesResponse>): AddressStringToBytesResponse {
     const message = createBaseAddressStringToBytesResponse();
-    message.addressBytes = object.addressBytes ?? new Uint8Array();
+    message.address_bytes = object.address_bytes ?? new Uint8Array();
     return message;
   }
 

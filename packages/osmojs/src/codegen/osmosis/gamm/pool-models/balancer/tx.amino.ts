@@ -54,7 +54,7 @@ export const AminoConverter = {
       sender,
       poolParams,
       poolAssets,
-      futurePoolGovernor
+      future_pool_governor
     }: MsgCreateBalancerPool): AminoMsgCreateBalancerPool["value"] => {
       return {
         sender,
@@ -62,7 +62,7 @@ export const AminoConverter = {
           swapFee: poolParams.swapFee,
           exitFee: poolParams.exitFee,
           smoothWeightChangeParams: {
-            start_time: poolParams.smoothWeightChangeParams.startTime,
+            start_time: poolParams.smoothWeightChangeParams.start_time,
             duration: (poolParams.smoothWeightChangeParams.duration * 1_000_000_000).toString(),
             initialPoolWeights: poolParams.smoothWeightChangeParams.initialPoolWeights.map(el0 => ({
               token: {
@@ -87,7 +87,7 @@ export const AminoConverter = {
           },
           weight: el0.weight
         })),
-        future_pool_governor: futurePoolGovernor
+        future_pool_governor
       };
     },
     fromAmino: ({
@@ -102,7 +102,7 @@ export const AminoConverter = {
           swapFee: poolParams.swapFee,
           exitFee: poolParams.exitFee,
           smoothWeightChangeParams: {
-            startTime: poolParams.smoothWeightChangeParams.start_time,
+            start_time: poolParams.smoothWeightChangeParams.start_time,
             duration: {
               seconds: Long.fromNumber(Math.floor(parseInt(poolParams.smoothWeightChangeParams.duration) / 1_000_000_000)),
               nanos: parseInt(poolParams.smoothWeightChangeParams.duration) % 1_000_000_000
@@ -130,7 +130,7 @@ export const AminoConverter = {
           },
           weight: el0.weight
         })),
-        futurePoolGovernor: future_pool_governor
+        future_pool_governor
       };
     }
   }

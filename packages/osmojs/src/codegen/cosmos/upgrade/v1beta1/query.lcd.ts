@@ -31,7 +31,7 @@ export class LCDQueryClient extends LCDClient {
   This rpc is deprecated now that IBC has its own replacement
   (https://github.com/cosmos/ibc-go/blob/2c880a22e9f9cc75f62b527ca94aa75ce1106001/proto/ibc/core/client/v1/query.proto#L54) */
   async upgradedConsensusState(params: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponse> {
-    const endpoint = `cosmos/upgrade/v1beta1/upgraded_consensus_state/${params.lastHeight}`;
+    const endpoint = `cosmos/upgrade/v1beta1/upgraded_consensus_state/${params.last_height}`;
     return await this.request<QueryUpgradedConsensusStateResponse>(endpoint);
   }
 
@@ -43,8 +43,8 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.moduleName !== "undefined") {
-      options.params.module_name = params.moduleName;
+    if (typeof params?.module_name !== "undefined") {
+      options.params.module_name = params.module_name;
     }
 
     const endpoint = `cosmos/upgrade/v1beta1/module_versions`;
