@@ -19,7 +19,7 @@ export interface SetSuperfluidAssetsProposal {
 export interface RemoveSuperfluidAssetsProposal {
   title: string;
   description: string;
-  superfluidAssetDenoms: string[];
+  superfluid_asset_denoms: string[];
 }
 
 function createBaseSetSuperfluidAssetsProposal(): SetSuperfluidAssetsProposal {
@@ -113,7 +113,7 @@ function createBaseRemoveSuperfluidAssetsProposal(): RemoveSuperfluidAssetsPropo
   return {
     title: "",
     description: "",
-    superfluidAssetDenoms: []
+    superfluid_asset_denoms: []
   };
 }
 
@@ -127,7 +127,7 @@ export const RemoveSuperfluidAssetsProposal = {
       writer.uint32(18).string(message.description);
     }
 
-    for (const v of message.superfluidAssetDenoms) {
+    for (const v of message.superfluid_asset_denoms) {
       writer.uint32(26).string(v!);
     }
 
@@ -152,7 +152,7 @@ export const RemoveSuperfluidAssetsProposal = {
           break;
 
         case 3:
-          message.superfluidAssetDenoms.push(reader.string());
+          message.superfluid_asset_denoms.push(reader.string());
           break;
 
         default:
@@ -168,7 +168,7 @@ export const RemoveSuperfluidAssetsProposal = {
     return {
       title: isSet(object.title) ? String(object.title) : "",
       description: isSet(object.description) ? String(object.description) : "",
-      superfluidAssetDenoms: Array.isArray(object?.superfluidAssetDenoms) ? object.superfluidAssetDenoms.map((e: any) => String(e)) : []
+      superfluid_asset_denoms: Array.isArray(object?.superfluid_asset_denoms) ? object.superfluid_asset_denoms.map((e: any) => String(e)) : []
     };
   },
 
@@ -177,10 +177,10 @@ export const RemoveSuperfluidAssetsProposal = {
     message.title !== undefined && (obj.title = message.title);
     message.description !== undefined && (obj.description = message.description);
 
-    if (message.superfluidAssetDenoms) {
-      obj.superfluidAssetDenoms = message.superfluidAssetDenoms.map(e => e);
+    if (message.superfluid_asset_denoms) {
+      obj.superfluid_asset_denoms = message.superfluid_asset_denoms.map(e => e);
     } else {
-      obj.superfluidAssetDenoms = [];
+      obj.superfluid_asset_denoms = [];
     }
 
     return obj;
@@ -190,7 +190,7 @@ export const RemoveSuperfluidAssetsProposal = {
     const message = createBaseRemoveSuperfluidAssetsProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.superfluidAssetDenoms = object.superfluidAssetDenoms?.map(e => e) || [];
+    message.superfluid_asset_denoms = object.superfluid_asset_denoms?.map(e => e) || [];
     return message;
   }
 

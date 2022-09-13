@@ -4,18 +4,18 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 /** Params holds parameters for the tokenfactory module */
 export interface Params {
-  denomCreationFee: Coin[];
+  denom_creation_fee: Coin[];
 }
 
 function createBaseParams(): Params {
   return {
-    denomCreationFee: []
+    denom_creation_fee: []
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.denomCreationFee) {
+    for (const v of message.denom_creation_fee) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -32,7 +32,7 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.denomCreationFee.push(Coin.decode(reader, reader.uint32()));
+          message.denom_creation_fee.push(Coin.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -46,17 +46,17 @@ export const Params = {
 
   fromJSON(object: any): Params {
     return {
-      denomCreationFee: Array.isArray(object?.denomCreationFee) ? object.denomCreationFee.map((e: any) => Coin.fromJSON(e)) : []
+      denom_creation_fee: Array.isArray(object?.denom_creation_fee) ? object.denom_creation_fee.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
 
-    if (message.denomCreationFee) {
-      obj.denomCreationFee = message.denomCreationFee.map(e => e ? Coin.toJSON(e) : undefined);
+    if (message.denom_creation_fee) {
+      obj.denom_creation_fee = message.denom_creation_fee.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
-      obj.denomCreationFee = [];
+      obj.denom_creation_fee = [];
     }
 
     return obj;
@@ -64,7 +64,7 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.denomCreationFee = object.denomCreationFee?.map(e => Coin.fromPartial(e)) || [];
+    message.denom_creation_fee = object.denom_creation_fee?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
 

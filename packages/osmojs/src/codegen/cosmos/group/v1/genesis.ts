@@ -8,28 +8,28 @@ export interface GenesisState {
    * group_seq is the group table orm.Sequence,
    * it is used to get the next group ID.
    */
-  groupSeq: Long;
+  group_seq: Long;
 
   /** groups is the list of groups info. */
   groups: GroupInfo[];
 
   /** group_members is the list of groups members. */
-  groupMembers: GroupMember[];
+  group_members: GroupMember[];
 
   /**
    * group_policy_seq is the group policy table orm.Sequence,
    * it is used to generate the next group policy account address.
    */
-  groupPolicySeq: Long;
+  group_policy_seq: Long;
 
   /** group_policies is the list of group policies info. */
-  groupPolicies: GroupPolicyInfo[];
+  group_policies: GroupPolicyInfo[];
 
   /**
    * proposal_seq is the proposal table orm.Sequence,
    * it is used to get the next proposal ID.
    */
-  proposalSeq: Long;
+  proposal_seq: Long;
 
   /** proposals is the list of proposals. */
   proposals: Proposal[];
@@ -40,12 +40,12 @@ export interface GenesisState {
 
 function createBaseGenesisState(): GenesisState {
   return {
-    groupSeq: Long.UZERO,
+    group_seq: Long.UZERO,
     groups: [],
-    groupMembers: [],
-    groupPolicySeq: Long.UZERO,
-    groupPolicies: [],
-    proposalSeq: Long.UZERO,
+    group_members: [],
+    group_policy_seq: Long.UZERO,
+    group_policies: [],
+    proposal_seq: Long.UZERO,
     proposals: [],
     votes: []
   };
@@ -53,28 +53,28 @@ function createBaseGenesisState(): GenesisState {
 
 export const GenesisState = {
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.groupSeq.isZero()) {
-      writer.uint32(8).uint64(message.groupSeq);
+    if (!message.group_seq.isZero()) {
+      writer.uint32(8).uint64(message.group_seq);
     }
 
     for (const v of message.groups) {
       GroupInfo.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.groupMembers) {
+    for (const v of message.group_members) {
       GroupMember.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    if (!message.groupPolicySeq.isZero()) {
-      writer.uint32(32).uint64(message.groupPolicySeq);
+    if (!message.group_policy_seq.isZero()) {
+      writer.uint32(32).uint64(message.group_policy_seq);
     }
 
-    for (const v of message.groupPolicies) {
+    for (const v of message.group_policies) {
       GroupPolicyInfo.encode(v!, writer.uint32(42).fork()).ldelim();
     }
 
-    if (!message.proposalSeq.isZero()) {
-      writer.uint32(48).uint64(message.proposalSeq);
+    if (!message.proposal_seq.isZero()) {
+      writer.uint32(48).uint64(message.proposal_seq);
     }
 
     for (const v of message.proposals) {
@@ -98,7 +98,7 @@ export const GenesisState = {
 
       switch (tag >>> 3) {
         case 1:
-          message.groupSeq = (reader.uint64() as Long);
+          message.group_seq = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -106,19 +106,19 @@ export const GenesisState = {
           break;
 
         case 3:
-          message.groupMembers.push(GroupMember.decode(reader, reader.uint32()));
+          message.group_members.push(GroupMember.decode(reader, reader.uint32()));
           break;
 
         case 4:
-          message.groupPolicySeq = (reader.uint64() as Long);
+          message.group_policy_seq = (reader.uint64() as Long);
           break;
 
         case 5:
-          message.groupPolicies.push(GroupPolicyInfo.decode(reader, reader.uint32()));
+          message.group_policies.push(GroupPolicyInfo.decode(reader, reader.uint32()));
           break;
 
         case 6:
-          message.proposalSeq = (reader.uint64() as Long);
+          message.proposal_seq = (reader.uint64() as Long);
           break;
 
         case 7:
@@ -140,12 +140,12 @@ export const GenesisState = {
 
   fromJSON(object: any): GenesisState {
     return {
-      groupSeq: isSet(object.groupSeq) ? Long.fromString(object.groupSeq) : Long.UZERO,
+      group_seq: isSet(object.group_seq) ? Long.fromString(object.group_seq) : Long.UZERO,
       groups: Array.isArray(object?.groups) ? object.groups.map((e: any) => GroupInfo.fromJSON(e)) : [],
-      groupMembers: Array.isArray(object?.groupMembers) ? object.groupMembers.map((e: any) => GroupMember.fromJSON(e)) : [],
-      groupPolicySeq: isSet(object.groupPolicySeq) ? Long.fromString(object.groupPolicySeq) : Long.UZERO,
-      groupPolicies: Array.isArray(object?.groupPolicies) ? object.groupPolicies.map((e: any) => GroupPolicyInfo.fromJSON(e)) : [],
-      proposalSeq: isSet(object.proposalSeq) ? Long.fromString(object.proposalSeq) : Long.UZERO,
+      group_members: Array.isArray(object?.group_members) ? object.group_members.map((e: any) => GroupMember.fromJSON(e)) : [],
+      group_policy_seq: isSet(object.group_policy_seq) ? Long.fromString(object.group_policy_seq) : Long.UZERO,
+      group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e: any) => GroupPolicyInfo.fromJSON(e)) : [],
+      proposal_seq: isSet(object.proposal_seq) ? Long.fromString(object.proposal_seq) : Long.UZERO,
       proposals: Array.isArray(object?.proposals) ? object.proposals.map((e: any) => Proposal.fromJSON(e)) : [],
       votes: Array.isArray(object?.votes) ? object.votes.map((e: any) => Vote.fromJSON(e)) : []
     };
@@ -153,7 +153,7 @@ export const GenesisState = {
 
   toJSON(message: GenesisState): unknown {
     const obj: any = {};
-    message.groupSeq !== undefined && (obj.groupSeq = (message.groupSeq || Long.UZERO).toString());
+    message.group_seq !== undefined && (obj.group_seq = (message.group_seq || Long.UZERO).toString());
 
     if (message.groups) {
       obj.groups = message.groups.map(e => e ? GroupInfo.toJSON(e) : undefined);
@@ -161,21 +161,21 @@ export const GenesisState = {
       obj.groups = [];
     }
 
-    if (message.groupMembers) {
-      obj.groupMembers = message.groupMembers.map(e => e ? GroupMember.toJSON(e) : undefined);
+    if (message.group_members) {
+      obj.group_members = message.group_members.map(e => e ? GroupMember.toJSON(e) : undefined);
     } else {
-      obj.groupMembers = [];
+      obj.group_members = [];
     }
 
-    message.groupPolicySeq !== undefined && (obj.groupPolicySeq = (message.groupPolicySeq || Long.UZERO).toString());
+    message.group_policy_seq !== undefined && (obj.group_policy_seq = (message.group_policy_seq || Long.UZERO).toString());
 
-    if (message.groupPolicies) {
-      obj.groupPolicies = message.groupPolicies.map(e => e ? GroupPolicyInfo.toJSON(e) : undefined);
+    if (message.group_policies) {
+      obj.group_policies = message.group_policies.map(e => e ? GroupPolicyInfo.toJSON(e) : undefined);
     } else {
-      obj.groupPolicies = [];
+      obj.group_policies = [];
     }
 
-    message.proposalSeq !== undefined && (obj.proposalSeq = (message.proposalSeq || Long.UZERO).toString());
+    message.proposal_seq !== undefined && (obj.proposal_seq = (message.proposal_seq || Long.UZERO).toString());
 
     if (message.proposals) {
       obj.proposals = message.proposals.map(e => e ? Proposal.toJSON(e) : undefined);
@@ -194,12 +194,12 @@ export const GenesisState = {
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.groupSeq = object.groupSeq !== undefined && object.groupSeq !== null ? Long.fromValue(object.groupSeq) : Long.UZERO;
+    message.group_seq = object.group_seq !== undefined && object.group_seq !== null ? Long.fromValue(object.group_seq) : Long.UZERO;
     message.groups = object.groups?.map(e => GroupInfo.fromPartial(e)) || [];
-    message.groupMembers = object.groupMembers?.map(e => GroupMember.fromPartial(e)) || [];
-    message.groupPolicySeq = object.groupPolicySeq !== undefined && object.groupPolicySeq !== null ? Long.fromValue(object.groupPolicySeq) : Long.UZERO;
-    message.groupPolicies = object.groupPolicies?.map(e => GroupPolicyInfo.fromPartial(e)) || [];
-    message.proposalSeq = object.proposalSeq !== undefined && object.proposalSeq !== null ? Long.fromValue(object.proposalSeq) : Long.UZERO;
+    message.group_members = object.group_members?.map(e => GroupMember.fromPartial(e)) || [];
+    message.group_policy_seq = object.group_policy_seq !== undefined && object.group_policy_seq !== null ? Long.fromValue(object.group_policy_seq) : Long.UZERO;
+    message.group_policies = object.group_policies?.map(e => GroupPolicyInfo.fromPartial(e)) || [];
+    message.proposal_seq = object.proposal_seq !== undefined && object.proposal_seq !== null ? Long.fromValue(object.proposal_seq) : Long.UZERO;
     message.proposals = object.proposals?.map(e => Proposal.fromPartial(e)) || [];
     message.votes = object.votes?.map(e => Vote.fromPartial(e)) || [];
     return message;

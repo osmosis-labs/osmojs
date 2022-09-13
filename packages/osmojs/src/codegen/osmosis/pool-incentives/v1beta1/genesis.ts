@@ -7,15 +7,15 @@ import { isSet, DeepPartial } from "@osmonauts/helpers";
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
   params: Params;
-  lockableDurations: Duration[];
-  distrInfo?: DistrInfo;
+  lockable_durations: Duration[];
+  distr_info?: DistrInfo;
 }
 
 function createBaseGenesisState(): GenesisState {
   return {
     params: undefined,
-    lockableDurations: [],
-    distrInfo: undefined
+    lockable_durations: [],
+    distr_info: undefined
   };
 }
 
@@ -25,12 +25,12 @@ export const GenesisState = {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.lockableDurations) {
+    for (const v of message.lockable_durations) {
       Duration.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.distrInfo !== undefined) {
-      DistrInfo.encode(message.distrInfo, writer.uint32(26).fork()).ldelim();
+    if (message.distr_info !== undefined) {
+      DistrInfo.encode(message.distr_info, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -50,11 +50,11 @@ export const GenesisState = {
           break;
 
         case 2:
-          message.lockableDurations.push(Duration.decode(reader, reader.uint32()));
+          message.lockable_durations.push(Duration.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.distrInfo = DistrInfo.decode(reader, reader.uint32());
+          message.distr_info = DistrInfo.decode(reader, reader.uint32());
           break;
 
         default:
@@ -69,8 +69,8 @@ export const GenesisState = {
   fromJSON(object: any): GenesisState {
     return {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : [],
-      distrInfo: isSet(object.distrInfo) ? DistrInfo.fromJSON(object.distrInfo) : undefined
+      lockable_durations: Array.isArray(object?.lockable_durations) ? object.lockable_durations.map((e: any) => Duration.fromJSON(e)) : [],
+      distr_info: isSet(object.distr_info) ? DistrInfo.fromJSON(object.distr_info) : undefined
     };
   },
 
@@ -78,21 +78,21 @@ export const GenesisState = {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
 
-    if (message.lockableDurations) {
-      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
+    if (message.lockable_durations) {
+      obj.lockable_durations = message.lockable_durations.map(e => e ? Duration.toJSON(e) : undefined);
     } else {
-      obj.lockableDurations = [];
+      obj.lockable_durations = [];
     }
 
-    message.distrInfo !== undefined && (obj.distrInfo = message.distrInfo ? DistrInfo.toJSON(message.distrInfo) : undefined);
+    message.distr_info !== undefined && (obj.distr_info = message.distr_info ? DistrInfo.toJSON(message.distr_info) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
-    message.distrInfo = object.distrInfo !== undefined && object.distrInfo !== null ? DistrInfo.fromPartial(object.distrInfo) : undefined;
+    message.lockable_durations = object.lockable_durations?.map(e => Duration.fromPartial(e)) || [];
+    message.distr_info = object.distr_info !== undefined && object.distr_info !== null ? DistrInfo.fromPartial(object.distr_info) : undefined;
     return message;
   }
 

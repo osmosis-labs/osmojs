@@ -51,7 +51,7 @@ export const AminoConverter = {
         grantee,
         grant: {
           authorization: {
-            type_url: grant.authorization.typeUrl,
+            type_url: grant.authorization.type_url,
             value: grant.authorization.value
           },
           expiration: grant.expiration
@@ -68,7 +68,7 @@ export const AminoConverter = {
         grantee,
         grant: {
           authorization: {
-            typeUrl: grant.authorization.type_url,
+            type_url: grant.authorization.type_url,
             value: grant.authorization.value
           },
           expiration: grant.expiration
@@ -85,7 +85,7 @@ export const AminoConverter = {
       return {
         grantee,
         msgs: msgs.map(el0 => ({
-          type_url: el0.typeUrl,
+          type_url: el0.type_url,
           value: el0.value
         }))
       };
@@ -97,7 +97,7 @@ export const AminoConverter = {
       return {
         grantee,
         msgs: msgs.map(el0 => ({
-          typeUrl: el0.type_url,
+          type_url: el0.type_url,
           value: el0.value
         }))
       };
@@ -108,12 +108,12 @@ export const AminoConverter = {
     toAmino: ({
       granter,
       grantee,
-      msgTypeUrl
+      msg_type_url
     }: MsgRevoke): AminoMsgRevoke["value"] => {
       return {
         granter,
         grantee,
-        msg_type_url: msgTypeUrl
+        msg_type_url
       };
     },
     fromAmino: ({
@@ -124,7 +124,7 @@ export const AminoConverter = {
       return {
         granter,
         grantee,
-        msgTypeUrl: msg_type_url
+        msg_type_url
       };
     }
   }

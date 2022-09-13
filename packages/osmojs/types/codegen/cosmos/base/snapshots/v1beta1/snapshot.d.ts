@@ -11,14 +11,14 @@ export interface Snapshot {
 /** Metadata contains SDK-specific snapshot metadata. */
 export interface Metadata {
     /** SHA-256 chunk hashes */
-    chunkHashes: Uint8Array[];
+    chunk_hashes: Uint8Array[];
 }
 /** SnapshotItem is an item contained in a rootmulti.Store snapshot. */
 export interface SnapshotItem {
     store?: SnapshotStoreItem;
     iavl?: SnapshotIAVLItem;
     extension?: SnapshotExtensionMeta;
-    extensionPayload?: SnapshotExtensionPayload;
+    extension_payload?: SnapshotExtensionPayload;
     kv?: SnapshotKVItem;
     schema?: SnapshotSchema;
 }

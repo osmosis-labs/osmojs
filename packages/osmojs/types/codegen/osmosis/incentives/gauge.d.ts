@@ -10,28 +10,28 @@ export interface Gauge {
      * flag to show if it's perpetual or multi-epoch
      * distribution incentives by third party
      */
-    isPerpetual: boolean;
+    is_perpetual: boolean;
     /**
      * Rewards are distributed to lockups that are are returned by at least one of
      * these queries
      */
-    distributeTo: QueryCondition;
+    distribute_to: QueryCondition;
     /**
      * total amount of Coins that has been in the gauge.
      * can distribute multiple coins
      */
     coins: Coin[];
     /** distribution start time */
-    startTime: Date;
+    start_time: Date;
     /** number of epochs distribution will be done */
-    numEpochsPaidOver: Long;
+    num_epochs_paid_over: Long;
     /** number of epochs distributed already */
-    filledEpochs: Long;
+    filled_epochs: Long;
     /** already distributed coins */
-    distributedCoins: Coin[];
+    distributed_coins: Coin[];
 }
 export interface LockableDurationsInfo {
-    lockableDurations: Duration[];
+    lockable_durations: Duration[];
 }
 export declare const Gauge: {
     encode(message: Gauge, writer?: _m0.Writer): _m0.Writer;

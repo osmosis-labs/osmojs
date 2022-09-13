@@ -33,17 +33,17 @@ export interface AminoMsgFundCommunityPool extends AminoMsg {
 export declare const AminoConverter: {
     "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress": {
         aminoType: string;
-        toAmino: ({ delegatorAddress, withdrawAddress }: MsgSetWithdrawAddress) => AminoMsgSetWithdrawAddress["value"];
+        toAmino: ({ delegator_address, withdraw_address }: MsgSetWithdrawAddress) => AminoMsgSetWithdrawAddress["value"];
         fromAmino: ({ delegator_address, withdraw_address }: AminoMsgSetWithdrawAddress["value"]) => MsgSetWithdrawAddress;
     };
     "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward": {
         aminoType: string;
-        toAmino: ({ delegatorAddress, validatorAddress }: MsgWithdrawDelegatorReward) => AminoMsgWithdrawDelegatorReward["value"];
+        toAmino: ({ delegator_address, validator_address }: MsgWithdrawDelegatorReward) => AminoMsgWithdrawDelegatorReward["value"];
         fromAmino: ({ delegator_address, validator_address }: AminoMsgWithdrawDelegatorReward["value"]) => MsgWithdrawDelegatorReward;
     };
     "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission": {
         aminoType: string;
-        toAmino: ({ validatorAddress }: MsgWithdrawValidatorCommission) => AminoMsgWithdrawValidatorCommission["value"];
+        toAmino: ({ validator_address }: MsgWithdrawValidatorCommission) => AminoMsgWithdrawValidatorCommission["value"];
         fromAmino: ({ validator_address }: AminoMsgWithdrawValidatorCommission["value"]) => MsgWithdrawValidatorCommission;
     };
     "/cosmos.distribution.v1beta1.MsgFundCommunityPool": {

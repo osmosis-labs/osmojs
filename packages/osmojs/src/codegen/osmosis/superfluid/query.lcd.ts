@@ -75,7 +75,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* Returns intermediary account connected to a superfluid staked lock by id */
   async connectedIntermediaryAccount(params: ConnectedIntermediaryAccountRequest): Promise<ConnectedIntermediaryAccountResponse> {
-    const endpoint = `osmosis/superfluid/v1beta1/connected_intermediary_account/${params.lockId}`;
+    const endpoint = `osmosis/superfluid/v1beta1/connected_intermediary_account/${params.lock_id}`;
     return await this.request<ConnectedIntermediaryAccountResponse>(endpoint);
   }
 
@@ -93,12 +93,12 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.delegatorAddress !== "undefined") {
-      options.params.delegator_address = params.delegatorAddress;
+    if (typeof params?.delegator_address !== "undefined") {
+      options.params.delegator_address = params.delegator_address;
     }
 
-    if (typeof params?.validatorAddress !== "undefined") {
-      options.params.validator_address = params.validatorAddress;
+    if (typeof params?.validator_address !== "undefined") {
+      options.params.validator_address = params.validator_address;
     }
 
     if (typeof params?.denom !== "undefined") {
@@ -111,7 +111,7 @@ export class LCDQueryClient extends LCDClient {
 
   /* Returns all the superfluid poistions for a specific delegator */
   async superfluidDelegationsByDelegator(params: SuperfluidDelegationsByDelegatorRequest): Promise<SuperfluidDelegationsByDelegatorResponse> {
-    const endpoint = `osmosis/superfluid/v1beta1/superfluid_delegations/${params.delegatorAddress}`;
+    const endpoint = `osmosis/superfluid/v1beta1/superfluid_delegations/${params.delegator_address}`;
     return await this.request<SuperfluidDelegationsByDelegatorResponse>(endpoint);
   }
 
@@ -125,7 +125,7 @@ export class LCDQueryClient extends LCDClient {
       options.params.denom = params.denom;
     }
 
-    const endpoint = `osmosis/superfluid/v1beta1/superfluid_undelegations_by_delegator/${params.delegatorAddress}`;
+    const endpoint = `osmosis/superfluid/v1beta1/superfluid_undelegations_by_delegator/${params.delegator_address}`;
     return await this.request<SuperfluidUndelegationsByDelegatorResponse>(endpoint, options);
   }
 
@@ -136,8 +136,8 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.validatorAddress !== "undefined") {
-      options.params.validator_address = params.validatorAddress;
+    if (typeof params?.validator_address !== "undefined") {
+      options.params.validator_address = params.validator_address;
     }
 
     if (typeof params?.denom !== "undefined") {
@@ -156,8 +156,8 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.validatorAddress !== "undefined") {
-      options.params.validator_address = params.validatorAddress;
+    if (typeof params?.validator_address !== "undefined") {
+      options.params.validator_address = params.validator_address;
     }
 
     if (typeof params?.denom !== "undefined") {

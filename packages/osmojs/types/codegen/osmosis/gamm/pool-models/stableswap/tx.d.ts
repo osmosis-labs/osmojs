@@ -5,11 +5,11 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface MsgCreateStableswapPool {
     sender: string;
     poolParams: PoolParams;
-    initialPoolLiquidity: Coin[];
-    futurePoolGovernor: string;
+    initial_pool_liquidity: Coin[];
+    future_pool_governor: string;
 }
 export interface MsgCreateStableswapPoolResponse {
-    poolId: Long;
+    pool_id: Long;
 }
 export interface MsgStableSwapAdjustScalingFactors {
     /**
@@ -17,8 +17,8 @@ export interface MsgStableSwapAdjustScalingFactors {
      * succeed
      */
     sender: string;
-    poolId: Long;
-    scalingFactors: Long[];
+    pool_id: Long;
+    scaling_factors: Long[];
 }
 export interface MsgStableSwapAdjustScalingFactorsResponse {
 }

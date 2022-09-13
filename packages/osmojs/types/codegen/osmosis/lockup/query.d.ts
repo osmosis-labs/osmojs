@@ -68,16 +68,16 @@ export interface LockedDenomResponse {
     amount: string;
 }
 export interface LockedRequest {
-    lockId: Long;
+    lock_id: Long;
 }
 export interface LockedResponse {
     lock: PeriodLock;
 }
 export interface SyntheticLockupsByLockupIDRequest {
-    lockId: Long;
+    lock_id: Long;
 }
 export interface SyntheticLockupsByLockupIDResponse {
-    syntheticLocks: SyntheticLock[];
+    synthetic_locks: SyntheticLock[];
 }
 export interface AccountLockedLongerDurationRequest {
     owner: string;

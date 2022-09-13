@@ -21,7 +21,7 @@ export interface QueryEpochProvisionsRequest {
  */
 export interface QueryEpochProvisionsResponse {
     /** epoch_provisions is the current minting per epoch provisions value. */
-    epochProvisions: Uint8Array;
+    epoch_provisions: Uint8Array;
 }
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;

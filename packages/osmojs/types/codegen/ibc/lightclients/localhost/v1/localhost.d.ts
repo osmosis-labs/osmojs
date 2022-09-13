@@ -7,7 +7,7 @@ import { DeepPartial } from "@osmonauts/helpers";
  */
 export interface ClientState {
     /** self chain ID */
-    chainId: string;
+    chain_id: string;
     /** self latest block height */
     height: Height;
 }

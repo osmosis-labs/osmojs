@@ -6,11 +6,11 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the ibc module's genesis state. */
 export interface GenesisState {
     /** ICS002 - Clients genesis state */
-    clientGenesis: GenesisState1;
+    client_genesis: GenesisState1;
     /** ICS003 - Connections genesis state */
-    connectionGenesis: GenesisState2;
+    connection_genesis: GenesisState2;
     /** ICS004 - Channel genesis state */
-    channelGenesis: GenesisState3;
+    channel_genesis: GenesisState3;
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

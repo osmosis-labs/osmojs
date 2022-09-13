@@ -9,6 +9,9 @@ telescope({
   outPath,
   options: {
     prototypes: {
+      parser: {
+        keepCase: true
+      },
       typingsFormat: {
         duration: 'duration',
         timestamp: 'date',

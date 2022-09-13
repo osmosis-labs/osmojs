@@ -44,7 +44,7 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmwasm/wasm/v1/code/${params.codeId}/contracts`;
+    const endpoint = `cosmwasm/wasm/v1/code/${params.code_id}/contracts`;
     return await this.request<QueryContractsByCodeResponse>(endpoint, options);
   }
 
@@ -64,19 +64,19 @@ export class LCDQueryClient extends LCDClient {
 
   /* RawContractState gets single key from the raw store data of a contract */
   async rawContractState(params: QueryRawContractStateRequest): Promise<QueryRawContractStateResponse> {
-    const endpoint = `wasm/v1/contract/${params.address}raw/${params.queryData}`;
+    const endpoint = `wasm/v1/contract/${params.address}raw/${params.query_data}`;
     return await this.request<QueryRawContractStateResponse>(endpoint);
   }
 
   /* SmartContractState get smart query result from the contract */
   async smartContractState(params: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponse> {
-    const endpoint = `wasm/v1/contract/${params.address}smart/${params.queryData}`;
+    const endpoint = `wasm/v1/contract/${params.address}smart/${params.query_data}`;
     return await this.request<QuerySmartContractStateResponse>(endpoint);
   }
 
   /* Code gets the binary code and metadata for a singe wasm code */
   async code(params: QueryCodeRequest): Promise<QueryCodeResponse> {
-    const endpoint = `cosmwasm/wasm/v1/code/${params.codeId}`;
+    const endpoint = `cosmwasm/wasm/v1/code/${params.code_id}`;
     return await this.request<QueryCodeResponse>(endpoint);
   }
 

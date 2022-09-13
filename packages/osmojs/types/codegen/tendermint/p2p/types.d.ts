@@ -6,9 +6,9 @@ export interface ProtocolVersion {
     app: Long;
 }
 export interface NodeInfo {
-    protocolVersion: ProtocolVersion;
-    nodeId: string;
-    listenAddr: string;
+    protocol_version: ProtocolVersion;
+    node_id: string;
+    listen_addr: string;
     network: string;
     version: string;
     channels: Uint8Array;
@@ -16,19 +16,19 @@ export interface NodeInfo {
     other: NodeInfoOther;
 }
 export interface NodeInfoOther {
-    txIndex: string;
-    rpcAddress: string;
+    tx_index: string;
+    rpc_address: string;
 }
 export interface PeerInfo {
     id: string;
-    addressInfo: PeerAddressInfo[];
-    lastConnected: Date;
+    address_info: PeerAddressInfo[];
+    last_connected: Date;
 }
 export interface PeerAddressInfo {
     address: string;
-    lastDialSuccess: Date;
-    lastDialFailure: Date;
-    dialFailures: number;
+    last_dial_success: Date;
+    last_dial_failure: Date;
+    dial_failures: number;
 }
 export declare const ProtocolVersion: {
     encode(message: ProtocolVersion, writer?: _m0.Writer): _m0.Writer;

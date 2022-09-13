@@ -12,8 +12,8 @@ describe("AminoTypes", () => {
   describe("toAmino", () => {
     it("works for MsgSend", () => {
       const msg: MsgSend = {
-        fromAddress: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
-        toAddress: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
+        from_address: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
+        to_address: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
         amount: coins(1234, "ucosm"),
       };
       const aminoTypes = new AminoTypes({ ...AminoConverter });
@@ -77,8 +77,8 @@ describe("AminoTypes", () => {
       };
       const msg = new AminoTypes({ ...AminoConverter }).fromAmino(aminoMsg);
       const expectedValue: MsgSend = {
-        fromAddress: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
-        toAddress: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
+        from_address: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
+        to_address: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
         amount: coins(1234, "ucosm"),
       };
       expect(msg).toEqual({

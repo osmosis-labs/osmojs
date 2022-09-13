@@ -35,7 +35,7 @@ export interface GrantAuthorization {
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 export interface GrantQueueItem {
     /** msg_type_urls contains the list of TypeURL of a sdk.Msg. */
-    msgTypeUrls: string[];
+    msg_type_urls: string[];
 }
 export declare const GenericAuthorization: {
     encode(message: GenericAuthorization, writer?: _m0.Writer): _m0.Writer;

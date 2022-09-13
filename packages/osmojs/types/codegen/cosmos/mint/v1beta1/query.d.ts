@@ -32,7 +32,7 @@ export interface QueryAnnualProvisionsRequest {
  */
 export interface QueryAnnualProvisionsResponse {
     /** annual_provisions is the current minting annual provisions value. */
-    annualProvisions: Uint8Array;
+    annual_provisions: Uint8Array;
 }
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;

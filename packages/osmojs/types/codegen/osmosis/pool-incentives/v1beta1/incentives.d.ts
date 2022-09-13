@@ -8,17 +8,17 @@ export interface Params {
      * itself, but rather manages the distribution of coins that matches the
      * defined minted_denom.
      */
-    mintedDenom: string;
+    minted_denom: string;
 }
 export interface LockableDurationsInfo {
-    lockableDurations: Duration[];
+    lockable_durations: Duration[];
 }
 export interface DistrInfo {
-    totalWeight: string;
+    total_weight: string;
     records: DistrRecord[];
 }
 export interface DistrRecord {
-    gaugeId: Long;
+    gauge_id: Long;
     weight: string;
 }
 export declare const Params: {

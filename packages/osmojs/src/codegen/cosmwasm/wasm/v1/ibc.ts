@@ -10,13 +10,13 @@ export interface MsgIBCSend {
    * Timeout height relative to the current block height.
    * The timeout is disabled when set to 0.
    */
-  timeoutHeight: Long;
+  timeout_height: Long;
 
   /**
    * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
    * The timeout is disabled when set to 0.
    */
-  timeoutTimestamp: Long;
+  timeout_timestamp: Long;
 
   /**
    * Data is the payload to transfer. We must not make assumption what format or
@@ -33,8 +33,8 @@ export interface MsgIBCCloseChannel {
 function createBaseMsgIBCSend(): MsgIBCSend {
   return {
     channel: "",
-    timeoutHeight: Long.UZERO,
-    timeoutTimestamp: Long.UZERO,
+    timeout_height: Long.UZERO,
+    timeout_timestamp: Long.UZERO,
     data: new Uint8Array()
   };
 }
@@ -45,12 +45,12 @@ export const MsgIBCSend = {
       writer.uint32(18).string(message.channel);
     }
 
-    if (!message.timeoutHeight.isZero()) {
-      writer.uint32(32).uint64(message.timeoutHeight);
+    if (!message.timeout_height.isZero()) {
+      writer.uint32(32).uint64(message.timeout_height);
     }
 
-    if (!message.timeoutTimestamp.isZero()) {
-      writer.uint32(40).uint64(message.timeoutTimestamp);
+    if (!message.timeout_timestamp.isZero()) {
+      writer.uint32(40).uint64(message.timeout_timestamp);
     }
 
     if (message.data.length !== 0) {
@@ -74,11 +74,11 @@ export const MsgIBCSend = {
           break;
 
         case 4:
-          message.timeoutHeight = (reader.uint64() as Long);
+          message.timeout_height = (reader.uint64() as Long);
           break;
 
         case 5:
-          message.timeoutTimestamp = (reader.uint64() as Long);
+          message.timeout_timestamp = (reader.uint64() as Long);
           break;
 
         case 6:
@@ -97,8 +97,8 @@ export const MsgIBCSend = {
   fromJSON(object: any): MsgIBCSend {
     return {
       channel: isSet(object.channel) ? String(object.channel) : "",
-      timeoutHeight: isSet(object.timeoutHeight) ? Long.fromString(object.timeoutHeight) : Long.UZERO,
-      timeoutTimestamp: isSet(object.timeoutTimestamp) ? Long.fromString(object.timeoutTimestamp) : Long.UZERO,
+      timeout_height: isSet(object.timeout_height) ? Long.fromString(object.timeout_height) : Long.UZERO,
+      timeout_timestamp: isSet(object.timeout_timestamp) ? Long.fromString(object.timeout_timestamp) : Long.UZERO,
       data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
     };
   },
@@ -106,8 +106,8 @@ export const MsgIBCSend = {
   toJSON(message: MsgIBCSend): unknown {
     const obj: any = {};
     message.channel !== undefined && (obj.channel = message.channel);
-    message.timeoutHeight !== undefined && (obj.timeoutHeight = (message.timeoutHeight || Long.UZERO).toString());
-    message.timeoutTimestamp !== undefined && (obj.timeoutTimestamp = (message.timeoutTimestamp || Long.UZERO).toString());
+    message.timeout_height !== undefined && (obj.timeout_height = (message.timeout_height || Long.UZERO).toString());
+    message.timeout_timestamp !== undefined && (obj.timeout_timestamp = (message.timeout_timestamp || Long.UZERO).toString());
     message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
     return obj;
   },
@@ -115,8 +115,8 @@ export const MsgIBCSend = {
   fromPartial(object: DeepPartial<MsgIBCSend>): MsgIBCSend {
     const message = createBaseMsgIBCSend();
     message.channel = object.channel ?? "";
-    message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? Long.fromValue(object.timeoutHeight) : Long.UZERO;
-    message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO;
+    message.timeout_height = object.timeout_height !== undefined && object.timeout_height !== null ? Long.fromValue(object.timeout_height) : Long.UZERO;
+    message.timeout_timestamp = object.timeout_timestamp !== undefined && object.timeout_timestamp !== null ? Long.fromValue(object.timeout_timestamp) : Long.UZERO;
     message.data = object.data ?? new Uint8Array();
     return message;
   }

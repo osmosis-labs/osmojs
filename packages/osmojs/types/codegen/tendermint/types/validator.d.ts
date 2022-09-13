@@ -4,17 +4,17 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface ValidatorSet {
     validators: Validator[];
     proposer: Validator;
-    totalVotingPower: Long;
+    total_voting_power: Long;
 }
 export interface Validator {
     address: Uint8Array;
-    pubKey: PublicKey;
-    votingPower: Long;
-    proposerPriority: Long;
+    pub_key: PublicKey;
+    voting_power: Long;
+    proposer_priority: Long;
 }
 export interface SimpleValidator {
-    pubKey: PublicKey;
-    votingPower: Long;
+    pub_key: PublicKey;
+    voting_power: Long;
 }
 export declare const ValidatorSet: {
     encode(message: ValidatorSet, writer?: _m0.Writer): _m0.Writer;

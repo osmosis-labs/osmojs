@@ -8,64 +8,64 @@ export interface MsgCreateGauge {
    * flag to show if it's perpetual or multi-epoch
    * distribution incentives by third party
    */
-  isPerpetual: boolean;
+  is_perpetual: boolean;
   owner: string;
 
   /** distribute condition of a lock which meet one of these conditions */
-  distributeTo: QueryCondition;
+  distribute_to: QueryCondition;
 
   /** can distribute multiple coins */
   coins: Coin[];
 
   /** distribution start time */
-  startTime: Date;
+  start_time: Date;
 
   /** number of epochs distribution will be done */
-  numEpochsPaidOver: Long;
+  num_epochs_paid_over: Long;
 }
 export interface MsgCreateGaugeResponse {}
 export interface MsgAddToGauge {
   owner: string;
-  gaugeId: Long;
+  gauge_id: Long;
   rewards: Coin[];
 }
 export interface MsgAddToGaugeResponse {}
 
 function createBaseMsgCreateGauge(): MsgCreateGauge {
   return {
-    isPerpetual: false,
+    is_perpetual: false,
     owner: "",
-    distributeTo: undefined,
+    distribute_to: undefined,
     coins: [],
-    startTime: undefined,
-    numEpochsPaidOver: Long.UZERO
+    start_time: undefined,
+    num_epochs_paid_over: Long.UZERO
   };
 }
 
 export const MsgCreateGauge = {
   encode(message: MsgCreateGauge, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.isPerpetual === true) {
-      writer.uint32(8).bool(message.isPerpetual);
+    if (message.is_perpetual === true) {
+      writer.uint32(8).bool(message.is_perpetual);
     }
 
     if (message.owner !== "") {
       writer.uint32(18).string(message.owner);
     }
 
-    if (message.distributeTo !== undefined) {
-      QueryCondition.encode(message.distributeTo, writer.uint32(26).fork()).ldelim();
+    if (message.distribute_to !== undefined) {
+      QueryCondition.encode(message.distribute_to, writer.uint32(26).fork()).ldelim();
     }
 
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.startTime !== undefined) {
-      Timestamp.encode(toTimestamp(message.startTime), writer.uint32(42).fork()).ldelim();
+    if (message.start_time !== undefined) {
+      Timestamp.encode(toTimestamp(message.start_time), writer.uint32(42).fork()).ldelim();
     }
 
-    if (!message.numEpochsPaidOver.isZero()) {
-      writer.uint32(48).uint64(message.numEpochsPaidOver);
+    if (!message.num_epochs_paid_over.isZero()) {
+      writer.uint32(48).uint64(message.num_epochs_paid_over);
     }
 
     return writer;
@@ -81,7 +81,7 @@ export const MsgCreateGauge = {
 
       switch (tag >>> 3) {
         case 1:
-          message.isPerpetual = reader.bool();
+          message.is_perpetual = reader.bool();
           break;
 
         case 2:
@@ -89,7 +89,7 @@ export const MsgCreateGauge = {
           break;
 
         case 3:
-          message.distributeTo = QueryCondition.decode(reader, reader.uint32());
+          message.distribute_to = QueryCondition.decode(reader, reader.uint32());
           break;
 
         case 4:
@@ -97,11 +97,11 @@ export const MsgCreateGauge = {
           break;
 
         case 5:
-          message.startTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.start_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         case 6:
-          message.numEpochsPaidOver = (reader.uint64() as Long);
+          message.num_epochs_paid_over = (reader.uint64() as Long);
           break;
 
         default:
@@ -115,20 +115,20 @@ export const MsgCreateGauge = {
 
   fromJSON(object: any): MsgCreateGauge {
     return {
-      isPerpetual: isSet(object.isPerpetual) ? Boolean(object.isPerpetual) : false,
+      is_perpetual: isSet(object.is_perpetual) ? Boolean(object.is_perpetual) : false,
       owner: isSet(object.owner) ? String(object.owner) : "",
-      distributeTo: isSet(object.distributeTo) ? QueryCondition.fromJSON(object.distributeTo) : undefined,
+      distribute_to: isSet(object.distribute_to) ? QueryCondition.fromJSON(object.distribute_to) : undefined,
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
-      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
-      numEpochsPaidOver: isSet(object.numEpochsPaidOver) ? Long.fromString(object.numEpochsPaidOver) : Long.UZERO
+      start_time: isSet(object.start_time) ? fromJsonTimestamp(object.start_time) : undefined,
+      num_epochs_paid_over: isSet(object.num_epochs_paid_over) ? Long.fromString(object.num_epochs_paid_over) : Long.UZERO
     };
   },
 
   toJSON(message: MsgCreateGauge): unknown {
     const obj: any = {};
-    message.isPerpetual !== undefined && (obj.isPerpetual = message.isPerpetual);
+    message.is_perpetual !== undefined && (obj.is_perpetual = message.is_perpetual);
     message.owner !== undefined && (obj.owner = message.owner);
-    message.distributeTo !== undefined && (obj.distributeTo = message.distributeTo ? QueryCondition.toJSON(message.distributeTo) : undefined);
+    message.distribute_to !== undefined && (obj.distribute_to = message.distribute_to ? QueryCondition.toJSON(message.distribute_to) : undefined);
 
     if (message.coins) {
       obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
@@ -136,19 +136,19 @@ export const MsgCreateGauge = {
       obj.coins = [];
     }
 
-    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
-    message.numEpochsPaidOver !== undefined && (obj.numEpochsPaidOver = (message.numEpochsPaidOver || Long.UZERO).toString());
+    message.start_time !== undefined && (obj.start_time = message.start_time.toISOString());
+    message.num_epochs_paid_over !== undefined && (obj.num_epochs_paid_over = (message.num_epochs_paid_over || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgCreateGauge>): MsgCreateGauge {
     const message = createBaseMsgCreateGauge();
-    message.isPerpetual = object.isPerpetual ?? false;
+    message.is_perpetual = object.is_perpetual ?? false;
     message.owner = object.owner ?? "";
-    message.distributeTo = object.distributeTo !== undefined && object.distributeTo !== null ? QueryCondition.fromPartial(object.distributeTo) : undefined;
+    message.distribute_to = object.distribute_to !== undefined && object.distribute_to !== null ? QueryCondition.fromPartial(object.distribute_to) : undefined;
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
-    message.startTime = object.startTime ?? undefined;
-    message.numEpochsPaidOver = object.numEpochsPaidOver !== undefined && object.numEpochsPaidOver !== null ? Long.fromValue(object.numEpochsPaidOver) : Long.UZERO;
+    message.start_time = object.start_time ?? undefined;
+    message.num_epochs_paid_over = object.num_epochs_paid_over !== undefined && object.num_epochs_paid_over !== null ? Long.fromValue(object.num_epochs_paid_over) : Long.UZERO;
     return message;
   }
 
@@ -200,7 +200,7 @@ export const MsgCreateGaugeResponse = {
 function createBaseMsgAddToGauge(): MsgAddToGauge {
   return {
     owner: "",
-    gaugeId: Long.UZERO,
+    gauge_id: Long.UZERO,
     rewards: []
   };
 }
@@ -211,8 +211,8 @@ export const MsgAddToGauge = {
       writer.uint32(10).string(message.owner);
     }
 
-    if (!message.gaugeId.isZero()) {
-      writer.uint32(16).uint64(message.gaugeId);
+    if (!message.gauge_id.isZero()) {
+      writer.uint32(16).uint64(message.gauge_id);
     }
 
     for (const v of message.rewards) {
@@ -236,7 +236,7 @@ export const MsgAddToGauge = {
           break;
 
         case 2:
-          message.gaugeId = (reader.uint64() as Long);
+          message.gauge_id = (reader.uint64() as Long);
           break;
 
         case 3:
@@ -255,7 +255,7 @@ export const MsgAddToGauge = {
   fromJSON(object: any): MsgAddToGauge {
     return {
       owner: isSet(object.owner) ? String(object.owner) : "",
-      gaugeId: isSet(object.gaugeId) ? Long.fromString(object.gaugeId) : Long.UZERO,
+      gauge_id: isSet(object.gauge_id) ? Long.fromString(object.gauge_id) : Long.UZERO,
       rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
@@ -263,7 +263,7 @@ export const MsgAddToGauge = {
   toJSON(message: MsgAddToGauge): unknown {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
-    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || Long.UZERO).toString());
+    message.gauge_id !== undefined && (obj.gauge_id = (message.gauge_id || Long.UZERO).toString());
 
     if (message.rewards) {
       obj.rewards = message.rewards.map(e => e ? Coin.toJSON(e) : undefined);
@@ -277,7 +277,7 @@ export const MsgAddToGauge = {
   fromPartial(object: DeepPartial<MsgAddToGauge>): MsgAddToGauge {
     const message = createBaseMsgAddToGauge();
     message.owner = object.owner ?? "";
-    message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
+    message.gauge_id = object.gauge_id !== undefined && object.gauge_id !== null ? Long.fromValue(object.gauge_id) : Long.UZERO;
     message.rewards = object.rewards?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }

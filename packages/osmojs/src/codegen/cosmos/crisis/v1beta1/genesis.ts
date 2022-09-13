@@ -8,19 +8,19 @@ export interface GenesisState {
    * constant_fee is the fee used to verify the invariant in the crisis
    * module.
    */
-  constantFee: Coin;
+  constant_fee: Coin;
 }
 
 function createBaseGenesisState(): GenesisState {
   return {
-    constantFee: undefined
+    constant_fee: undefined
   };
 }
 
 export const GenesisState = {
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.constantFee !== undefined) {
-      Coin.encode(message.constantFee, writer.uint32(26).fork()).ldelim();
+    if (message.constant_fee !== undefined) {
+      Coin.encode(message.constant_fee, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -36,7 +36,7 @@ export const GenesisState = {
 
       switch (tag >>> 3) {
         case 3:
-          message.constantFee = Coin.decode(reader, reader.uint32());
+          message.constant_fee = Coin.decode(reader, reader.uint32());
           break;
 
         default:
@@ -50,19 +50,19 @@ export const GenesisState = {
 
   fromJSON(object: any): GenesisState {
     return {
-      constantFee: isSet(object.constantFee) ? Coin.fromJSON(object.constantFee) : undefined
+      constant_fee: isSet(object.constant_fee) ? Coin.fromJSON(object.constant_fee) : undefined
     };
   },
 
   toJSON(message: GenesisState): unknown {
     const obj: any = {};
-    message.constantFee !== undefined && (obj.constantFee = message.constantFee ? Coin.toJSON(message.constantFee) : undefined);
+    message.constant_fee !== undefined && (obj.constant_fee = message.constant_fee ? Coin.toJSON(message.constant_fee) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.constantFee = object.constantFee !== undefined && object.constantFee !== null ? Coin.fromPartial(object.constantFee) : undefined;
+    message.constant_fee = object.constant_fee !== undefined && object.constant_fee !== null ? Coin.fromPartial(object.constant_fee) : undefined;
     return message;
   }
 

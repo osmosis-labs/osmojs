@@ -58,18 +58,18 @@ export const AminoConverter = {
   "/ibc.core.client.v1.MsgCreateClient": {
     aminoType: "cosmos-sdk/MsgCreateClient",
     toAmino: ({
-      clientState,
-      consensusState,
+      client_state,
+      consensus_state,
       signer
     }: MsgCreateClient): AminoMsgCreateClient["value"] => {
       return {
         client_state: {
-          type_url: clientState.typeUrl,
-          value: clientState.value
+          type_url: client_state.type_url,
+          value: client_state.value
         },
         consensus_state: {
-          type_url: consensusState.typeUrl,
-          value: consensusState.value
+          type_url: consensus_state.type_url,
+          value: consensus_state.value
         },
         signer
       };
@@ -80,12 +80,12 @@ export const AminoConverter = {
       signer
     }: AminoMsgCreateClient["value"]): MsgCreateClient => {
       return {
-        clientState: {
-          typeUrl: client_state.type_url,
+        client_state: {
+          type_url: client_state.type_url,
           value: client_state.value
         },
-        consensusState: {
-          typeUrl: consensus_state.type_url,
+        consensus_state: {
+          type_url: consensus_state.type_url,
           value: consensus_state.value
         },
         signer
@@ -95,14 +95,14 @@ export const AminoConverter = {
   "/ibc.core.client.v1.MsgUpdateClient": {
     aminoType: "cosmos-sdk/MsgUpdateClient",
     toAmino: ({
-      clientId,
+      client_id,
       header,
       signer
     }: MsgUpdateClient): AminoMsgUpdateClient["value"] => {
       return {
-        client_id: clientId,
+        client_id,
         header: {
-          type_url: header.typeUrl,
+          type_url: header.type_url,
           value: header.value
         },
         signer
@@ -114,9 +114,9 @@ export const AminoConverter = {
       signer
     }: AminoMsgUpdateClient["value"]): MsgUpdateClient => {
       return {
-        clientId: client_id,
+        client_id,
         header: {
-          typeUrl: header.type_url,
+          type_url: header.type_url,
           value: header.value
         },
         signer
@@ -126,25 +126,25 @@ export const AminoConverter = {
   "/ibc.core.client.v1.MsgUpgradeClient": {
     aminoType: "cosmos-sdk/MsgUpgradeClient",
     toAmino: ({
-      clientId,
-      clientState,
-      consensusState,
-      proofUpgradeClient,
-      proofUpgradeConsensusState,
+      client_id,
+      client_state,
+      consensus_state,
+      proof_upgrade_client,
+      proof_upgrade_consensus_state,
       signer
     }: MsgUpgradeClient): AminoMsgUpgradeClient["value"] => {
       return {
-        client_id: clientId,
+        client_id,
         client_state: {
-          type_url: clientState.typeUrl,
-          value: clientState.value
+          type_url: client_state.type_url,
+          value: client_state.value
         },
         consensus_state: {
-          type_url: consensusState.typeUrl,
-          value: consensusState.value
+          type_url: consensus_state.type_url,
+          value: consensus_state.value
         },
-        proof_upgrade_client: proofUpgradeClient,
-        proof_upgrade_consensus_state: proofUpgradeConsensusState,
+        proof_upgrade_client,
+        proof_upgrade_consensus_state,
         signer
       };
     },
@@ -157,17 +157,17 @@ export const AminoConverter = {
       signer
     }: AminoMsgUpgradeClient["value"]): MsgUpgradeClient => {
       return {
-        clientId: client_id,
-        clientState: {
-          typeUrl: client_state.type_url,
+        client_id,
+        client_state: {
+          type_url: client_state.type_url,
           value: client_state.value
         },
-        consensusState: {
-          typeUrl: consensus_state.type_url,
+        consensus_state: {
+          type_url: consensus_state.type_url,
           value: consensus_state.value
         },
-        proofUpgradeClient: proof_upgrade_client,
-        proofUpgradeConsensusState: proof_upgrade_consensus_state,
+        proof_upgrade_client,
+        proof_upgrade_consensus_state,
         signer
       };
     }
@@ -175,14 +175,14 @@ export const AminoConverter = {
   "/ibc.core.client.v1.MsgSubmitMisbehaviour": {
     aminoType: "cosmos-sdk/MsgSubmitMisbehaviour",
     toAmino: ({
-      clientId,
+      client_id,
       misbehaviour,
       signer
     }: MsgSubmitMisbehaviour): AminoMsgSubmitMisbehaviour["value"] => {
       return {
-        client_id: clientId,
+        client_id,
         misbehaviour: {
-          type_url: misbehaviour.typeUrl,
+          type_url: misbehaviour.type_url,
           value: misbehaviour.value
         },
         signer
@@ -194,9 +194,9 @@ export const AminoConverter = {
       signer
     }: AminoMsgSubmitMisbehaviour["value"]): MsgSubmitMisbehaviour => {
       return {
-        clientId: client_id,
+        client_id,
         misbehaviour: {
-          typeUrl: misbehaviour.type_url,
+          type_url: misbehaviour.type_url,
           value: misbehaviour.value
         },
         signer

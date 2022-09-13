@@ -19,7 +19,7 @@ export interface AppDescriptor {
   configuration: ConfigurationDescriptor;
 
   /** query_services provides metadata information regarding the available queriable endpoints */
-  queryServices: QueryServicesDescriptor;
+  query_services: QueryServicesDescriptor;
 
   /** tx provides metadata information regarding how to send transactions to the given application */
   tx: TxDescriptor;
@@ -44,7 +44,7 @@ export interface TxDescriptor {
  */
 export interface AuthnDescriptor {
   /** sign_modes defines the supported signature algorithm */
-  signModes: SigningModeDescriptor[];
+  sign_modes: SigningModeDescriptor[];
 }
 
 /**
@@ -64,7 +64,7 @@ export interface SigningModeDescriptor {
    * authn_info_provider_method_fullname defines the fullname of the method to call to get
    * the metadata required to authenticate using the provided sign_modes
    */
-  authnInfoProviderMethodFullname: string;
+  authn_info_provider_method_fullname: string;
 }
 
 /** ChainDescriptor describes chain information of the application */
@@ -88,10 +88,10 @@ export interface InterfaceDescriptor {
    * interface_accepting_messages contains information regarding the proto messages which contain the interface as
    * google.protobuf.Any field
    */
-  interfaceAcceptingMessages: InterfaceAcceptingMessageDescriptor[];
+  interface_accepting_messages: InterfaceAcceptingMessageDescriptor[];
 
   /** interface_implementers is a list of the descriptors of the interface implementers */
-  interfaceImplementers: InterfaceImplementerDescriptor[];
+  interface_implementers: InterfaceImplementerDescriptor[];
 }
 
 /** InterfaceImplementerDescriptor describes an interface implementer */
@@ -105,7 +105,7 @@ export interface InterfaceImplementerDescriptor {
    * unmarshalling, making sure that we don't accept just 'any' type
    * in our interface fields
    */
-  typeUrl: string;
+  type_url: string;
 }
 
 /**
@@ -121,19 +121,19 @@ export interface InterfaceAcceptingMessageDescriptor {
    * which contains the interface as google.protobuf.Any (the interface is the same, but
    * it can be in multiple fields of the same proto message)
    */
-  fieldDescriptorNames: string[];
+  field_descriptor_names: string[];
 }
 
 /** ConfigurationDescriptor contains metadata information on the sdk.Config */
 export interface ConfigurationDescriptor {
   /** bech32_account_address_prefix is the account address prefix */
-  bech32AccountAddressPrefix: string;
+  bech32_account_address_prefix: string;
 }
 
 /** MsgDescriptor describes a cosmos-sdk message that can be delivered with a transaction */
 export interface MsgDescriptor {
   /** msg_type_url contains the TypeURL of a sdk.Msg. */
-  msgTypeUrl: string;
+  msg_type_url: string;
 }
 
 /** GetAuthnDescriptorRequest is the request used for the GetAuthnDescriptor RPC */
@@ -196,7 +196,7 @@ export interface GetTxDescriptorResponse {
 /** QueryServicesDescriptor contains the list of cosmos-sdk queriable services */
 export interface QueryServicesDescriptor {
   /** query_services is a list of cosmos-sdk QueryServiceDescriptor */
-  queryServices: QueryServiceDescriptor[];
+  query_services: QueryServiceDescriptor[];
 }
 
 /** QueryServiceDescriptor describes a cosmos-sdk queryable service */
@@ -205,7 +205,7 @@ export interface QueryServiceDescriptor {
   fullname: string;
 
   /** is_module describes if this service is actually exposed by an application's module */
-  isModule: boolean;
+  is_module: boolean;
 
   /** methods provides a list of query service methods */
   methods: QueryMethodDescriptor[];
@@ -224,7 +224,7 @@ export interface QueryMethodDescriptor {
    * full_query_path is the path that can be used to query
    * this method via tendermint abci.Query
    */
-  fullQueryPath: string;
+  full_query_path: string;
 }
 
 function createBaseAppDescriptor(): AppDescriptor {
@@ -233,7 +233,7 @@ function createBaseAppDescriptor(): AppDescriptor {
     chain: undefined,
     codec: undefined,
     configuration: undefined,
-    queryServices: undefined,
+    query_services: undefined,
     tx: undefined
   };
 }
@@ -256,8 +256,8 @@ export const AppDescriptor = {
       ConfigurationDescriptor.encode(message.configuration, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.queryServices !== undefined) {
-      QueryServicesDescriptor.encode(message.queryServices, writer.uint32(42).fork()).ldelim();
+    if (message.query_services !== undefined) {
+      QueryServicesDescriptor.encode(message.query_services, writer.uint32(42).fork()).ldelim();
     }
 
     if (message.tx !== undefined) {
@@ -293,7 +293,7 @@ export const AppDescriptor = {
           break;
 
         case 5:
-          message.queryServices = QueryServicesDescriptor.decode(reader, reader.uint32());
+          message.query_services = QueryServicesDescriptor.decode(reader, reader.uint32());
           break;
 
         case 6:
@@ -315,7 +315,7 @@ export const AppDescriptor = {
       chain: isSet(object.chain) ? ChainDescriptor.fromJSON(object.chain) : undefined,
       codec: isSet(object.codec) ? CodecDescriptor.fromJSON(object.codec) : undefined,
       configuration: isSet(object.configuration) ? ConfigurationDescriptor.fromJSON(object.configuration) : undefined,
-      queryServices: isSet(object.queryServices) ? QueryServicesDescriptor.fromJSON(object.queryServices) : undefined,
+      query_services: isSet(object.query_services) ? QueryServicesDescriptor.fromJSON(object.query_services) : undefined,
       tx: isSet(object.tx) ? TxDescriptor.fromJSON(object.tx) : undefined
     };
   },
@@ -326,7 +326,7 @@ export const AppDescriptor = {
     message.chain !== undefined && (obj.chain = message.chain ? ChainDescriptor.toJSON(message.chain) : undefined);
     message.codec !== undefined && (obj.codec = message.codec ? CodecDescriptor.toJSON(message.codec) : undefined);
     message.configuration !== undefined && (obj.configuration = message.configuration ? ConfigurationDescriptor.toJSON(message.configuration) : undefined);
-    message.queryServices !== undefined && (obj.queryServices = message.queryServices ? QueryServicesDescriptor.toJSON(message.queryServices) : undefined);
+    message.query_services !== undefined && (obj.query_services = message.query_services ? QueryServicesDescriptor.toJSON(message.query_services) : undefined);
     message.tx !== undefined && (obj.tx = message.tx ? TxDescriptor.toJSON(message.tx) : undefined);
     return obj;
   },
@@ -337,7 +337,7 @@ export const AppDescriptor = {
     message.chain = object.chain !== undefined && object.chain !== null ? ChainDescriptor.fromPartial(object.chain) : undefined;
     message.codec = object.codec !== undefined && object.codec !== null ? CodecDescriptor.fromPartial(object.codec) : undefined;
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ConfigurationDescriptor.fromPartial(object.configuration) : undefined;
-    message.queryServices = object.queryServices !== undefined && object.queryServices !== null ? QueryServicesDescriptor.fromPartial(object.queryServices) : undefined;
+    message.query_services = object.query_services !== undefined && object.query_services !== null ? QueryServicesDescriptor.fromPartial(object.query_services) : undefined;
     message.tx = object.tx !== undefined && object.tx !== null ? TxDescriptor.fromPartial(object.tx) : undefined;
     return message;
   }
@@ -421,13 +421,13 @@ export const TxDescriptor = {
 
 function createBaseAuthnDescriptor(): AuthnDescriptor {
   return {
-    signModes: []
+    sign_modes: []
   };
 }
 
 export const AuthnDescriptor = {
   encode(message: AuthnDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.signModes) {
+    for (const v of message.sign_modes) {
       SigningModeDescriptor.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -444,7 +444,7 @@ export const AuthnDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.signModes.push(SigningModeDescriptor.decode(reader, reader.uint32()));
+          message.sign_modes.push(SigningModeDescriptor.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -458,17 +458,17 @@ export const AuthnDescriptor = {
 
   fromJSON(object: any): AuthnDescriptor {
     return {
-      signModes: Array.isArray(object?.signModes) ? object.signModes.map((e: any) => SigningModeDescriptor.fromJSON(e)) : []
+      sign_modes: Array.isArray(object?.sign_modes) ? object.sign_modes.map((e: any) => SigningModeDescriptor.fromJSON(e)) : []
     };
   },
 
   toJSON(message: AuthnDescriptor): unknown {
     const obj: any = {};
 
-    if (message.signModes) {
-      obj.signModes = message.signModes.map(e => e ? SigningModeDescriptor.toJSON(e) : undefined);
+    if (message.sign_modes) {
+      obj.sign_modes = message.sign_modes.map(e => e ? SigningModeDescriptor.toJSON(e) : undefined);
     } else {
-      obj.signModes = [];
+      obj.sign_modes = [];
     }
 
     return obj;
@@ -476,7 +476,7 @@ export const AuthnDescriptor = {
 
   fromPartial(object: DeepPartial<AuthnDescriptor>): AuthnDescriptor {
     const message = createBaseAuthnDescriptor();
-    message.signModes = object.signModes?.map(e => SigningModeDescriptor.fromPartial(e)) || [];
+    message.sign_modes = object.sign_modes?.map(e => SigningModeDescriptor.fromPartial(e)) || [];
     return message;
   }
 
@@ -486,7 +486,7 @@ function createBaseSigningModeDescriptor(): SigningModeDescriptor {
   return {
     name: "",
     number: 0,
-    authnInfoProviderMethodFullname: ""
+    authn_info_provider_method_fullname: ""
   };
 }
 
@@ -500,8 +500,8 @@ export const SigningModeDescriptor = {
       writer.uint32(16).int32(message.number);
     }
 
-    if (message.authnInfoProviderMethodFullname !== "") {
-      writer.uint32(26).string(message.authnInfoProviderMethodFullname);
+    if (message.authn_info_provider_method_fullname !== "") {
+      writer.uint32(26).string(message.authn_info_provider_method_fullname);
     }
 
     return writer;
@@ -525,7 +525,7 @@ export const SigningModeDescriptor = {
           break;
 
         case 3:
-          message.authnInfoProviderMethodFullname = reader.string();
+          message.authn_info_provider_method_fullname = reader.string();
           break;
 
         default:
@@ -541,7 +541,7 @@ export const SigningModeDescriptor = {
     return {
       name: isSet(object.name) ? String(object.name) : "",
       number: isSet(object.number) ? Number(object.number) : 0,
-      authnInfoProviderMethodFullname: isSet(object.authnInfoProviderMethodFullname) ? String(object.authnInfoProviderMethodFullname) : ""
+      authn_info_provider_method_fullname: isSet(object.authn_info_provider_method_fullname) ? String(object.authn_info_provider_method_fullname) : ""
     };
   },
 
@@ -549,7 +549,7 @@ export const SigningModeDescriptor = {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     message.number !== undefined && (obj.number = Math.round(message.number));
-    message.authnInfoProviderMethodFullname !== undefined && (obj.authnInfoProviderMethodFullname = message.authnInfoProviderMethodFullname);
+    message.authn_info_provider_method_fullname !== undefined && (obj.authn_info_provider_method_fullname = message.authn_info_provider_method_fullname);
     return obj;
   },
 
@@ -557,7 +557,7 @@ export const SigningModeDescriptor = {
     const message = createBaseSigningModeDescriptor();
     message.name = object.name ?? "";
     message.number = object.number ?? 0;
-    message.authnInfoProviderMethodFullname = object.authnInfoProviderMethodFullname ?? "";
+    message.authn_info_provider_method_fullname = object.authn_info_provider_method_fullname ?? "";
     return message;
   }
 
@@ -686,8 +686,8 @@ export const CodecDescriptor = {
 function createBaseInterfaceDescriptor(): InterfaceDescriptor {
   return {
     fullname: "",
-    interfaceAcceptingMessages: [],
-    interfaceImplementers: []
+    interface_accepting_messages: [],
+    interface_implementers: []
   };
 }
 
@@ -697,11 +697,11 @@ export const InterfaceDescriptor = {
       writer.uint32(10).string(message.fullname);
     }
 
-    for (const v of message.interfaceAcceptingMessages) {
+    for (const v of message.interface_accepting_messages) {
       InterfaceAcceptingMessageDescriptor.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.interfaceImplementers) {
+    for (const v of message.interface_implementers) {
       InterfaceImplementerDescriptor.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
@@ -722,11 +722,11 @@ export const InterfaceDescriptor = {
           break;
 
         case 2:
-          message.interfaceAcceptingMessages.push(InterfaceAcceptingMessageDescriptor.decode(reader, reader.uint32()));
+          message.interface_accepting_messages.push(InterfaceAcceptingMessageDescriptor.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.interfaceImplementers.push(InterfaceImplementerDescriptor.decode(reader, reader.uint32()));
+          message.interface_implementers.push(InterfaceImplementerDescriptor.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -741,8 +741,8 @@ export const InterfaceDescriptor = {
   fromJSON(object: any): InterfaceDescriptor {
     return {
       fullname: isSet(object.fullname) ? String(object.fullname) : "",
-      interfaceAcceptingMessages: Array.isArray(object?.interfaceAcceptingMessages) ? object.interfaceAcceptingMessages.map((e: any) => InterfaceAcceptingMessageDescriptor.fromJSON(e)) : [],
-      interfaceImplementers: Array.isArray(object?.interfaceImplementers) ? object.interfaceImplementers.map((e: any) => InterfaceImplementerDescriptor.fromJSON(e)) : []
+      interface_accepting_messages: Array.isArray(object?.interface_accepting_messages) ? object.interface_accepting_messages.map((e: any) => InterfaceAcceptingMessageDescriptor.fromJSON(e)) : [],
+      interface_implementers: Array.isArray(object?.interface_implementers) ? object.interface_implementers.map((e: any) => InterfaceImplementerDescriptor.fromJSON(e)) : []
     };
   },
 
@@ -750,16 +750,16 @@ export const InterfaceDescriptor = {
     const obj: any = {};
     message.fullname !== undefined && (obj.fullname = message.fullname);
 
-    if (message.interfaceAcceptingMessages) {
-      obj.interfaceAcceptingMessages = message.interfaceAcceptingMessages.map(e => e ? InterfaceAcceptingMessageDescriptor.toJSON(e) : undefined);
+    if (message.interface_accepting_messages) {
+      obj.interface_accepting_messages = message.interface_accepting_messages.map(e => e ? InterfaceAcceptingMessageDescriptor.toJSON(e) : undefined);
     } else {
-      obj.interfaceAcceptingMessages = [];
+      obj.interface_accepting_messages = [];
     }
 
-    if (message.interfaceImplementers) {
-      obj.interfaceImplementers = message.interfaceImplementers.map(e => e ? InterfaceImplementerDescriptor.toJSON(e) : undefined);
+    if (message.interface_implementers) {
+      obj.interface_implementers = message.interface_implementers.map(e => e ? InterfaceImplementerDescriptor.toJSON(e) : undefined);
     } else {
-      obj.interfaceImplementers = [];
+      obj.interface_implementers = [];
     }
 
     return obj;
@@ -768,8 +768,8 @@ export const InterfaceDescriptor = {
   fromPartial(object: DeepPartial<InterfaceDescriptor>): InterfaceDescriptor {
     const message = createBaseInterfaceDescriptor();
     message.fullname = object.fullname ?? "";
-    message.interfaceAcceptingMessages = object.interfaceAcceptingMessages?.map(e => InterfaceAcceptingMessageDescriptor.fromPartial(e)) || [];
-    message.interfaceImplementers = object.interfaceImplementers?.map(e => InterfaceImplementerDescriptor.fromPartial(e)) || [];
+    message.interface_accepting_messages = object.interface_accepting_messages?.map(e => InterfaceAcceptingMessageDescriptor.fromPartial(e)) || [];
+    message.interface_implementers = object.interface_implementers?.map(e => InterfaceImplementerDescriptor.fromPartial(e)) || [];
     return message;
   }
 
@@ -778,7 +778,7 @@ export const InterfaceDescriptor = {
 function createBaseInterfaceImplementerDescriptor(): InterfaceImplementerDescriptor {
   return {
     fullname: "",
-    typeUrl: ""
+    type_url: ""
   };
 }
 
@@ -788,8 +788,8 @@ export const InterfaceImplementerDescriptor = {
       writer.uint32(10).string(message.fullname);
     }
 
-    if (message.typeUrl !== "") {
-      writer.uint32(18).string(message.typeUrl);
+    if (message.type_url !== "") {
+      writer.uint32(18).string(message.type_url);
     }
 
     return writer;
@@ -809,7 +809,7 @@ export const InterfaceImplementerDescriptor = {
           break;
 
         case 2:
-          message.typeUrl = reader.string();
+          message.type_url = reader.string();
           break;
 
         default:
@@ -824,21 +824,21 @@ export const InterfaceImplementerDescriptor = {
   fromJSON(object: any): InterfaceImplementerDescriptor {
     return {
       fullname: isSet(object.fullname) ? String(object.fullname) : "",
-      typeUrl: isSet(object.typeUrl) ? String(object.typeUrl) : ""
+      type_url: isSet(object.type_url) ? String(object.type_url) : ""
     };
   },
 
   toJSON(message: InterfaceImplementerDescriptor): unknown {
     const obj: any = {};
     message.fullname !== undefined && (obj.fullname = message.fullname);
-    message.typeUrl !== undefined && (obj.typeUrl = message.typeUrl);
+    message.type_url !== undefined && (obj.type_url = message.type_url);
     return obj;
   },
 
   fromPartial(object: DeepPartial<InterfaceImplementerDescriptor>): InterfaceImplementerDescriptor {
     const message = createBaseInterfaceImplementerDescriptor();
     message.fullname = object.fullname ?? "";
-    message.typeUrl = object.typeUrl ?? "";
+    message.type_url = object.type_url ?? "";
     return message;
   }
 
@@ -847,7 +847,7 @@ export const InterfaceImplementerDescriptor = {
 function createBaseInterfaceAcceptingMessageDescriptor(): InterfaceAcceptingMessageDescriptor {
   return {
     fullname: "",
-    fieldDescriptorNames: []
+    field_descriptor_names: []
   };
 }
 
@@ -857,7 +857,7 @@ export const InterfaceAcceptingMessageDescriptor = {
       writer.uint32(10).string(message.fullname);
     }
 
-    for (const v of message.fieldDescriptorNames) {
+    for (const v of message.field_descriptor_names) {
       writer.uint32(18).string(v!);
     }
 
@@ -878,7 +878,7 @@ export const InterfaceAcceptingMessageDescriptor = {
           break;
 
         case 2:
-          message.fieldDescriptorNames.push(reader.string());
+          message.field_descriptor_names.push(reader.string());
           break;
 
         default:
@@ -893,7 +893,7 @@ export const InterfaceAcceptingMessageDescriptor = {
   fromJSON(object: any): InterfaceAcceptingMessageDescriptor {
     return {
       fullname: isSet(object.fullname) ? String(object.fullname) : "",
-      fieldDescriptorNames: Array.isArray(object?.fieldDescriptorNames) ? object.fieldDescriptorNames.map((e: any) => String(e)) : []
+      field_descriptor_names: Array.isArray(object?.field_descriptor_names) ? object.field_descriptor_names.map((e: any) => String(e)) : []
     };
   },
 
@@ -901,10 +901,10 @@ export const InterfaceAcceptingMessageDescriptor = {
     const obj: any = {};
     message.fullname !== undefined && (obj.fullname = message.fullname);
 
-    if (message.fieldDescriptorNames) {
-      obj.fieldDescriptorNames = message.fieldDescriptorNames.map(e => e);
+    if (message.field_descriptor_names) {
+      obj.field_descriptor_names = message.field_descriptor_names.map(e => e);
     } else {
-      obj.fieldDescriptorNames = [];
+      obj.field_descriptor_names = [];
     }
 
     return obj;
@@ -913,7 +913,7 @@ export const InterfaceAcceptingMessageDescriptor = {
   fromPartial(object: DeepPartial<InterfaceAcceptingMessageDescriptor>): InterfaceAcceptingMessageDescriptor {
     const message = createBaseInterfaceAcceptingMessageDescriptor();
     message.fullname = object.fullname ?? "";
-    message.fieldDescriptorNames = object.fieldDescriptorNames?.map(e => e) || [];
+    message.field_descriptor_names = object.field_descriptor_names?.map(e => e) || [];
     return message;
   }
 
@@ -921,14 +921,14 @@ export const InterfaceAcceptingMessageDescriptor = {
 
 function createBaseConfigurationDescriptor(): ConfigurationDescriptor {
   return {
-    bech32AccountAddressPrefix: ""
+    bech32_account_address_prefix: ""
   };
 }
 
 export const ConfigurationDescriptor = {
   encode(message: ConfigurationDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.bech32AccountAddressPrefix !== "") {
-      writer.uint32(10).string(message.bech32AccountAddressPrefix);
+    if (message.bech32_account_address_prefix !== "") {
+      writer.uint32(10).string(message.bech32_account_address_prefix);
     }
 
     return writer;
@@ -944,7 +944,7 @@ export const ConfigurationDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.bech32AccountAddressPrefix = reader.string();
+          message.bech32_account_address_prefix = reader.string();
           break;
 
         default:
@@ -958,19 +958,19 @@ export const ConfigurationDescriptor = {
 
   fromJSON(object: any): ConfigurationDescriptor {
     return {
-      bech32AccountAddressPrefix: isSet(object.bech32AccountAddressPrefix) ? String(object.bech32AccountAddressPrefix) : ""
+      bech32_account_address_prefix: isSet(object.bech32_account_address_prefix) ? String(object.bech32_account_address_prefix) : ""
     };
   },
 
   toJSON(message: ConfigurationDescriptor): unknown {
     const obj: any = {};
-    message.bech32AccountAddressPrefix !== undefined && (obj.bech32AccountAddressPrefix = message.bech32AccountAddressPrefix);
+    message.bech32_account_address_prefix !== undefined && (obj.bech32_account_address_prefix = message.bech32_account_address_prefix);
     return obj;
   },
 
   fromPartial(object: DeepPartial<ConfigurationDescriptor>): ConfigurationDescriptor {
     const message = createBaseConfigurationDescriptor();
-    message.bech32AccountAddressPrefix = object.bech32AccountAddressPrefix ?? "";
+    message.bech32_account_address_prefix = object.bech32_account_address_prefix ?? "";
     return message;
   }
 
@@ -978,14 +978,14 @@ export const ConfigurationDescriptor = {
 
 function createBaseMsgDescriptor(): MsgDescriptor {
   return {
-    msgTypeUrl: ""
+    msg_type_url: ""
   };
 }
 
 export const MsgDescriptor = {
   encode(message: MsgDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.msgTypeUrl !== "") {
-      writer.uint32(10).string(message.msgTypeUrl);
+    if (message.msg_type_url !== "") {
+      writer.uint32(10).string(message.msg_type_url);
     }
 
     return writer;
@@ -1001,7 +1001,7 @@ export const MsgDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.msgTypeUrl = reader.string();
+          message.msg_type_url = reader.string();
           break;
 
         default:
@@ -1015,19 +1015,19 @@ export const MsgDescriptor = {
 
   fromJSON(object: any): MsgDescriptor {
     return {
-      msgTypeUrl: isSet(object.msgTypeUrl) ? String(object.msgTypeUrl) : ""
+      msg_type_url: isSet(object.msg_type_url) ? String(object.msg_type_url) : ""
     };
   },
 
   toJSON(message: MsgDescriptor): unknown {
     const obj: any = {};
-    message.msgTypeUrl !== undefined && (obj.msgTypeUrl = message.msgTypeUrl);
+    message.msg_type_url !== undefined && (obj.msg_type_url = message.msg_type_url);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgDescriptor>): MsgDescriptor {
     const message = createBaseMsgDescriptor();
-    message.msgTypeUrl = object.msgTypeUrl ?? "";
+    message.msg_type_url = object.msg_type_url ?? "";
     return message;
   }
 
@@ -1635,13 +1635,13 @@ export const GetTxDescriptorResponse = {
 
 function createBaseQueryServicesDescriptor(): QueryServicesDescriptor {
   return {
-    queryServices: []
+    query_services: []
   };
 }
 
 export const QueryServicesDescriptor = {
   encode(message: QueryServicesDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.queryServices) {
+    for (const v of message.query_services) {
       QueryServiceDescriptor.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -1658,7 +1658,7 @@ export const QueryServicesDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.queryServices.push(QueryServiceDescriptor.decode(reader, reader.uint32()));
+          message.query_services.push(QueryServiceDescriptor.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1672,17 +1672,17 @@ export const QueryServicesDescriptor = {
 
   fromJSON(object: any): QueryServicesDescriptor {
     return {
-      queryServices: Array.isArray(object?.queryServices) ? object.queryServices.map((e: any) => QueryServiceDescriptor.fromJSON(e)) : []
+      query_services: Array.isArray(object?.query_services) ? object.query_services.map((e: any) => QueryServiceDescriptor.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryServicesDescriptor): unknown {
     const obj: any = {};
 
-    if (message.queryServices) {
-      obj.queryServices = message.queryServices.map(e => e ? QueryServiceDescriptor.toJSON(e) : undefined);
+    if (message.query_services) {
+      obj.query_services = message.query_services.map(e => e ? QueryServiceDescriptor.toJSON(e) : undefined);
     } else {
-      obj.queryServices = [];
+      obj.query_services = [];
     }
 
     return obj;
@@ -1690,7 +1690,7 @@ export const QueryServicesDescriptor = {
 
   fromPartial(object: DeepPartial<QueryServicesDescriptor>): QueryServicesDescriptor {
     const message = createBaseQueryServicesDescriptor();
-    message.queryServices = object.queryServices?.map(e => QueryServiceDescriptor.fromPartial(e)) || [];
+    message.query_services = object.query_services?.map(e => QueryServiceDescriptor.fromPartial(e)) || [];
     return message;
   }
 
@@ -1699,7 +1699,7 @@ export const QueryServicesDescriptor = {
 function createBaseQueryServiceDescriptor(): QueryServiceDescriptor {
   return {
     fullname: "",
-    isModule: false,
+    is_module: false,
     methods: []
   };
 }
@@ -1710,8 +1710,8 @@ export const QueryServiceDescriptor = {
       writer.uint32(10).string(message.fullname);
     }
 
-    if (message.isModule === true) {
-      writer.uint32(16).bool(message.isModule);
+    if (message.is_module === true) {
+      writer.uint32(16).bool(message.is_module);
     }
 
     for (const v of message.methods) {
@@ -1735,7 +1735,7 @@ export const QueryServiceDescriptor = {
           break;
 
         case 2:
-          message.isModule = reader.bool();
+          message.is_module = reader.bool();
           break;
 
         case 3:
@@ -1754,7 +1754,7 @@ export const QueryServiceDescriptor = {
   fromJSON(object: any): QueryServiceDescriptor {
     return {
       fullname: isSet(object.fullname) ? String(object.fullname) : "",
-      isModule: isSet(object.isModule) ? Boolean(object.isModule) : false,
+      is_module: isSet(object.is_module) ? Boolean(object.is_module) : false,
       methods: Array.isArray(object?.methods) ? object.methods.map((e: any) => QueryMethodDescriptor.fromJSON(e)) : []
     };
   },
@@ -1762,7 +1762,7 @@ export const QueryServiceDescriptor = {
   toJSON(message: QueryServiceDescriptor): unknown {
     const obj: any = {};
     message.fullname !== undefined && (obj.fullname = message.fullname);
-    message.isModule !== undefined && (obj.isModule = message.isModule);
+    message.is_module !== undefined && (obj.is_module = message.is_module);
 
     if (message.methods) {
       obj.methods = message.methods.map(e => e ? QueryMethodDescriptor.toJSON(e) : undefined);
@@ -1776,7 +1776,7 @@ export const QueryServiceDescriptor = {
   fromPartial(object: DeepPartial<QueryServiceDescriptor>): QueryServiceDescriptor {
     const message = createBaseQueryServiceDescriptor();
     message.fullname = object.fullname ?? "";
-    message.isModule = object.isModule ?? false;
+    message.is_module = object.is_module ?? false;
     message.methods = object.methods?.map(e => QueryMethodDescriptor.fromPartial(e)) || [];
     return message;
   }
@@ -1786,7 +1786,7 @@ export const QueryServiceDescriptor = {
 function createBaseQueryMethodDescriptor(): QueryMethodDescriptor {
   return {
     name: "",
-    fullQueryPath: ""
+    full_query_path: ""
   };
 }
 
@@ -1796,8 +1796,8 @@ export const QueryMethodDescriptor = {
       writer.uint32(10).string(message.name);
     }
 
-    if (message.fullQueryPath !== "") {
-      writer.uint32(18).string(message.fullQueryPath);
+    if (message.full_query_path !== "") {
+      writer.uint32(18).string(message.full_query_path);
     }
 
     return writer;
@@ -1817,7 +1817,7 @@ export const QueryMethodDescriptor = {
           break;
 
         case 2:
-          message.fullQueryPath = reader.string();
+          message.full_query_path = reader.string();
           break;
 
         default:
@@ -1832,21 +1832,21 @@ export const QueryMethodDescriptor = {
   fromJSON(object: any): QueryMethodDescriptor {
     return {
       name: isSet(object.name) ? String(object.name) : "",
-      fullQueryPath: isSet(object.fullQueryPath) ? String(object.fullQueryPath) : ""
+      full_query_path: isSet(object.full_query_path) ? String(object.full_query_path) : ""
     };
   },
 
   toJSON(message: QueryMethodDescriptor): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.fullQueryPath !== undefined && (obj.fullQueryPath = message.fullQueryPath);
+    message.full_query_path !== undefined && (obj.full_query_path = message.full_query_path);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryMethodDescriptor>): QueryMethodDescriptor {
     const message = createBaseQueryMethodDescriptor();
     message.name = object.name ?? "";
-    message.fullQueryPath = object.fullQueryPath ?? "";
+    message.full_query_path = object.full_query_path ?? "";
     return message;
   }
 

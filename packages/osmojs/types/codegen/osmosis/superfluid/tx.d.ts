@@ -3,20 +3,20 @@ import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface MsgSuperfluidDelegate {
     sender: string;
-    lockId: Long;
-    valAddr: string;
+    lock_id: Long;
+    val_addr: string;
 }
 export interface MsgSuperfluidDelegateResponse {
 }
 export interface MsgSuperfluidUndelegate {
     sender: string;
-    lockId: Long;
+    lock_id: Long;
 }
 export interface MsgSuperfluidUndelegateResponse {
 }
 export interface MsgSuperfluidUnbondLock {
     sender: string;
-    lockId: Long;
+    lock_id: Long;
 }
 export interface MsgSuperfluidUnbondLockResponse {
 }
@@ -28,7 +28,7 @@ export interface MsgSuperfluidUnbondLockResponse {
 export interface MsgLockAndSuperfluidDelegate {
     sender: string;
     coins: Coin[];
-    valAddr: string;
+    val_addr: string;
 }
 export interface MsgLockAndSuperfluidDelegateResponse {
     ID: Long;
@@ -45,7 +45,7 @@ export interface MsgLockAndSuperfluidDelegateResponse {
  */
 export interface MsgUnPoolWhitelistedPool {
     sender: string;
-    poolId: Long;
+    pool_id: Long;
 }
 export interface MsgUnPoolWhitelistedPoolResponse {
     exitedLockIds: Long[];

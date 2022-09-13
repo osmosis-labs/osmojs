@@ -43,17 +43,17 @@ export interface Struct {
  */
 export interface Value {
     /** Represents a null value. */
-    nullValue?: NullValue;
+    null_value?: NullValue;
     /** Represents a double value. */
-    numberValue?: number;
+    number_value?: number;
     /** Represents a string value. */
-    stringValue?: string;
+    string_value?: string;
     /** Represents a boolean value. */
-    boolValue?: boolean;
+    bool_value?: boolean;
     /** Represents a structured value. */
-    structValue?: Struct;
+    struct_value?: Struct;
     /** Represents a repeated `Value`. */
-    listValue?: ListValue;
+    list_value?: ListValue;
 }
 /**
  * `ListValue` is a wrapper around a repeated field of values.

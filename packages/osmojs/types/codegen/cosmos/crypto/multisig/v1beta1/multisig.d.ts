@@ -15,7 +15,7 @@ export interface MultiSignature {
  * This is not thread safe, and is not intended for concurrent usage.
  */
 export interface CompactBitArray {
-    extraBitsStored: number;
+    extra_bits_stored: number;
     elems: Uint8Array;
 }
 export declare const MultiSignature: {

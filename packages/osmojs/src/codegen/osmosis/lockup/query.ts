@@ -67,16 +67,16 @@ export interface LockedDenomResponse {
   amount: string;
 }
 export interface LockedRequest {
-  lockId: Long;
+  lock_id: Long;
 }
 export interface LockedResponse {
   lock: PeriodLock;
 }
 export interface SyntheticLockupsByLockupIDRequest {
-  lockId: Long;
+  lock_id: Long;
 }
 export interface SyntheticLockupsByLockupIDResponse {
-  syntheticLocks: SyntheticLock[];
+  synthetic_locks: SyntheticLock[];
 }
 export interface AccountLockedLongerDurationRequest {
   owner: string;
@@ -1348,14 +1348,14 @@ export const LockedDenomResponse = {
 
 function createBaseLockedRequest(): LockedRequest {
   return {
-    lockId: Long.UZERO
+    lock_id: Long.UZERO
   };
 }
 
 export const LockedRequest = {
   encode(message: LockedRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.lockId.isZero()) {
-      writer.uint32(8).uint64(message.lockId);
+    if (!message.lock_id.isZero()) {
+      writer.uint32(8).uint64(message.lock_id);
     }
 
     return writer;
@@ -1371,7 +1371,7 @@ export const LockedRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.lockId = (reader.uint64() as Long);
+          message.lock_id = (reader.uint64() as Long);
           break;
 
         default:
@@ -1385,19 +1385,19 @@ export const LockedRequest = {
 
   fromJSON(object: any): LockedRequest {
     return {
-      lockId: isSet(object.lockId) ? Long.fromString(object.lockId) : Long.UZERO
+      lock_id: isSet(object.lock_id) ? Long.fromString(object.lock_id) : Long.UZERO
     };
   },
 
   toJSON(message: LockedRequest): unknown {
     const obj: any = {};
-    message.lockId !== undefined && (obj.lockId = (message.lockId || Long.UZERO).toString());
+    message.lock_id !== undefined && (obj.lock_id = (message.lock_id || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<LockedRequest>): LockedRequest {
     const message = createBaseLockedRequest();
-    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.lock_id = object.lock_id !== undefined && object.lock_id !== null ? Long.fromValue(object.lock_id) : Long.UZERO;
     return message;
   }
 
@@ -1462,14 +1462,14 @@ export const LockedResponse = {
 
 function createBaseSyntheticLockupsByLockupIDRequest(): SyntheticLockupsByLockupIDRequest {
   return {
-    lockId: Long.UZERO
+    lock_id: Long.UZERO
   };
 }
 
 export const SyntheticLockupsByLockupIDRequest = {
   encode(message: SyntheticLockupsByLockupIDRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.lockId.isZero()) {
-      writer.uint32(8).uint64(message.lockId);
+    if (!message.lock_id.isZero()) {
+      writer.uint32(8).uint64(message.lock_id);
     }
 
     return writer;
@@ -1485,7 +1485,7 @@ export const SyntheticLockupsByLockupIDRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.lockId = (reader.uint64() as Long);
+          message.lock_id = (reader.uint64() as Long);
           break;
 
         default:
@@ -1499,19 +1499,19 @@ export const SyntheticLockupsByLockupIDRequest = {
 
   fromJSON(object: any): SyntheticLockupsByLockupIDRequest {
     return {
-      lockId: isSet(object.lockId) ? Long.fromString(object.lockId) : Long.UZERO
+      lock_id: isSet(object.lock_id) ? Long.fromString(object.lock_id) : Long.UZERO
     };
   },
 
   toJSON(message: SyntheticLockupsByLockupIDRequest): unknown {
     const obj: any = {};
-    message.lockId !== undefined && (obj.lockId = (message.lockId || Long.UZERO).toString());
+    message.lock_id !== undefined && (obj.lock_id = (message.lock_id || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<SyntheticLockupsByLockupIDRequest>): SyntheticLockupsByLockupIDRequest {
     const message = createBaseSyntheticLockupsByLockupIDRequest();
-    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.lock_id = object.lock_id !== undefined && object.lock_id !== null ? Long.fromValue(object.lock_id) : Long.UZERO;
     return message;
   }
 
@@ -1519,13 +1519,13 @@ export const SyntheticLockupsByLockupIDRequest = {
 
 function createBaseSyntheticLockupsByLockupIDResponse(): SyntheticLockupsByLockupIDResponse {
   return {
-    syntheticLocks: []
+    synthetic_locks: []
   };
 }
 
 export const SyntheticLockupsByLockupIDResponse = {
   encode(message: SyntheticLockupsByLockupIDResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.syntheticLocks) {
+    for (const v of message.synthetic_locks) {
       SyntheticLock.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -1542,7 +1542,7 @@ export const SyntheticLockupsByLockupIDResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.syntheticLocks.push(SyntheticLock.decode(reader, reader.uint32()));
+          message.synthetic_locks.push(SyntheticLock.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1556,17 +1556,17 @@ export const SyntheticLockupsByLockupIDResponse = {
 
   fromJSON(object: any): SyntheticLockupsByLockupIDResponse {
     return {
-      syntheticLocks: Array.isArray(object?.syntheticLocks) ? object.syntheticLocks.map((e: any) => SyntheticLock.fromJSON(e)) : []
+      synthetic_locks: Array.isArray(object?.synthetic_locks) ? object.synthetic_locks.map((e: any) => SyntheticLock.fromJSON(e)) : []
     };
   },
 
   toJSON(message: SyntheticLockupsByLockupIDResponse): unknown {
     const obj: any = {};
 
-    if (message.syntheticLocks) {
-      obj.syntheticLocks = message.syntheticLocks.map(e => e ? SyntheticLock.toJSON(e) : undefined);
+    if (message.synthetic_locks) {
+      obj.synthetic_locks = message.synthetic_locks.map(e => e ? SyntheticLock.toJSON(e) : undefined);
     } else {
-      obj.syntheticLocks = [];
+      obj.synthetic_locks = [];
     }
 
     return obj;
@@ -1574,7 +1574,7 @@ export const SyntheticLockupsByLockupIDResponse = {
 
   fromPartial(object: DeepPartial<SyntheticLockupsByLockupIDResponse>): SyntheticLockupsByLockupIDResponse {
     const message = createBaseSyntheticLockupsByLockupIDResponse();
-    message.syntheticLocks = object.syntheticLocks?.map(e => SyntheticLock.fromPartial(e)) || [];
+    message.synthetic_locks = object.synthetic_locks?.map(e => SyntheticLock.fromPartial(e)) || [];
     return message;
   }
 

@@ -7,9 +7,9 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 /** QueryChannelRequest is the request type for the Query/Channel RPC method */
 export interface QueryChannelRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
 }
 /**
  * QueryChannelResponse is the response type for the Query/Channel RPC method.
@@ -22,19 +22,19 @@ export interface QueryChannelResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 /** QueryChannelsRequest is the request type for the Query/Channels RPC method */
 export interface QueryChannelsRequest {
     /** pagination request */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /** QueryChannelsResponse is the response type for the Query/Channels RPC method. */
 export interface QueryChannelsResponse {
     /** list of stored channels of the chain. */
     channels: IdentifiedChannel[];
     /** pagination response */
-    pagination: PageResponse;
+    pagination?: PageResponse;
     /** query block height */
     height: Height;
 }
@@ -46,7 +46,7 @@ export interface QueryConnectionChannelsRequest {
     /** connection unique identifier */
     connection: string;
     /** pagination request */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QueryConnectionChannelsResponse is the Response type for the
@@ -56,7 +56,7 @@ export interface QueryConnectionChannelsResponse {
     /** list of channels associated with a connection. */
     channels: IdentifiedChannel[];
     /** pagination response */
-    pagination: PageResponse;
+    pagination?: PageResponse;
     /** query block height */
     height: Height;
 }
@@ -66,9 +66,9 @@ export interface QueryConnectionChannelsResponse {
  */
 export interface QueryChannelClientStateRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
 }
 /**
  * QueryChannelClientStateResponse is the Response type for the
@@ -76,11 +76,11 @@ export interface QueryChannelClientStateRequest {
  */
 export interface QueryChannelClientStateResponse {
     /** client state associated with the channel */
-    identifiedClientState: IdentifiedClientState;
+    identified_client_state: IdentifiedClientState;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 /**
  * QueryChannelConsensusStateRequest is the request type for the
@@ -88,13 +88,13 @@ export interface QueryChannelClientStateResponse {
  */
 export interface QueryChannelConsensusStateRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
     /** revision number of the consensus state */
-    revisionNumber: Long;
+    revision_number: Long;
     /** revision height of the consensus state */
-    revisionHeight: Long;
+    revision_height: Long;
 }
 /**
  * QueryChannelClientStateResponse is the Response type for the
@@ -102,13 +102,13 @@ export interface QueryChannelConsensusStateRequest {
  */
 export interface QueryChannelConsensusStateResponse {
     /** consensus state associated with the channel */
-    consensusState: Any;
+    consensus_state: Any;
     /** client ID associated with the consensus state */
-    clientId: string;
+    client_id: string;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 /**
  * QueryPacketCommitmentRequest is the request type for the
@@ -116,9 +116,9 @@ export interface QueryChannelConsensusStateResponse {
  */
 export interface QueryPacketCommitmentRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
     /** packet sequence */
     sequence: Long;
 }
@@ -133,7 +133,7 @@ export interface QueryPacketCommitmentResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 /**
  * QueryPacketCommitmentsRequest is the request type for the
@@ -141,11 +141,11 @@ export interface QueryPacketCommitmentResponse {
  */
 export interface QueryPacketCommitmentsRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
     /** pagination request */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QueryPacketCommitmentsResponse is the request type for the
@@ -154,7 +154,7 @@ export interface QueryPacketCommitmentsRequest {
 export interface QueryPacketCommitmentsResponse {
     commitments: PacketState[];
     /** pagination response */
-    pagination: PageResponse;
+    pagination?: PageResponse;
     /** query block height */
     height: Height;
 }
@@ -164,9 +164,9 @@ export interface QueryPacketCommitmentsResponse {
  */
 export interface QueryPacketReceiptRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
     /** packet sequence */
     sequence: Long;
 }
@@ -181,7 +181,7 @@ export interface QueryPacketReceiptResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 /**
  * QueryPacketAcknowledgementRequest is the request type for the
@@ -189,9 +189,9 @@ export interface QueryPacketReceiptResponse {
  */
 export interface QueryPacketAcknowledgementRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
     /** packet sequence */
     sequence: Long;
 }
@@ -206,7 +206,7 @@ export interface QueryPacketAcknowledgementResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 /**
  * QueryPacketAcknowledgementsRequest is the request type for the
@@ -214,13 +214,13 @@ export interface QueryPacketAcknowledgementResponse {
  */
 export interface QueryPacketAcknowledgementsRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
     /** pagination request */
-    pagination: PageRequest;
+    pagination?: PageRequest;
     /** list of packet sequences */
-    packetCommitmentSequences: Long[];
+    packet_commitment_sequences: Long[];
 }
 /**
  * QueryPacketAcknowledgemetsResponse is the request type for the
@@ -229,7 +229,7 @@ export interface QueryPacketAcknowledgementsRequest {
 export interface QueryPacketAcknowledgementsResponse {
     acknowledgements: PacketState[];
     /** pagination response */
-    pagination: PageResponse;
+    pagination?: PageResponse;
     /** query block height */
     height: Height;
 }
@@ -239,11 +239,11 @@ export interface QueryPacketAcknowledgementsResponse {
  */
 export interface QueryUnreceivedPacketsRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
     /** list of packet sequences */
-    packetCommitmentSequences: Long[];
+    packet_commitment_sequences: Long[];
 }
 /**
  * QueryUnreceivedPacketsResponse is the response type for the
@@ -261,11 +261,11 @@ export interface QueryUnreceivedPacketsResponse {
  */
 export interface QueryUnreceivedAcksRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
     /** list of acknowledgement sequences */
-    packetAckSequences: Long[];
+    packet_ack_sequences: Long[];
 }
 /**
  * QueryUnreceivedAcksResponse is the response type for the
@@ -283,9 +283,9 @@ export interface QueryUnreceivedAcksResponse {
  */
 export interface QueryNextSequenceReceiveRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** channel unique identifier */
-    channelId: string;
+    channel_id: string;
 }
 /**
  * QuerySequenceResponse is the request type for the
@@ -293,11 +293,11 @@ export interface QueryNextSequenceReceiveRequest {
  */
 export interface QueryNextSequenceReceiveResponse {
     /** next sequence receive number */
-    nextSequenceReceive: Long;
+    next_sequence_receive: Long;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 export declare const QueryChannelRequest: {
     encode(message: QueryChannelRequest, writer?: _m0.Writer): _m0.Writer;

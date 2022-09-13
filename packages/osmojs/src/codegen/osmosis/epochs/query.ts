@@ -9,7 +9,7 @@ export interface QueryCurrentEpochRequest {
   identifier: string;
 }
 export interface QueryCurrentEpochResponse {
-  currentEpoch: Long;
+  current_epoch: Long;
 }
 
 function createBaseQueryEpochsInfoRequest(): QueryEpochsInfoRequest {
@@ -177,14 +177,14 @@ export const QueryCurrentEpochRequest = {
 
 function createBaseQueryCurrentEpochResponse(): QueryCurrentEpochResponse {
   return {
-    currentEpoch: Long.ZERO
+    current_epoch: Long.ZERO
   };
 }
 
 export const QueryCurrentEpochResponse = {
   encode(message: QueryCurrentEpochResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.currentEpoch.isZero()) {
-      writer.uint32(8).int64(message.currentEpoch);
+    if (!message.current_epoch.isZero()) {
+      writer.uint32(8).int64(message.current_epoch);
     }
 
     return writer;
@@ -200,7 +200,7 @@ export const QueryCurrentEpochResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.currentEpoch = (reader.int64() as Long);
+          message.current_epoch = (reader.int64() as Long);
           break;
 
         default:
@@ -214,19 +214,19 @@ export const QueryCurrentEpochResponse = {
 
   fromJSON(object: any): QueryCurrentEpochResponse {
     return {
-      currentEpoch: isSet(object.currentEpoch) ? Long.fromString(object.currentEpoch) : Long.ZERO
+      current_epoch: isSet(object.current_epoch) ? Long.fromString(object.current_epoch) : Long.ZERO
     };
   },
 
   toJSON(message: QueryCurrentEpochResponse): unknown {
     const obj: any = {};
-    message.currentEpoch !== undefined && (obj.currentEpoch = (message.currentEpoch || Long.ZERO).toString());
+    message.current_epoch !== undefined && (obj.current_epoch = (message.current_epoch || Long.ZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse {
     const message = createBaseQueryCurrentEpochResponse();
-    message.currentEpoch = object.currentEpoch !== undefined && object.currentEpoch !== null ? Long.fromValue(object.currentEpoch) : Long.ZERO;
+    message.current_epoch = object.current_epoch !== undefined && object.current_epoch !== null ? Long.fromValue(object.current_epoch) : Long.ZERO;
     return message;
   }
 

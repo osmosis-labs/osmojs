@@ -3,9 +3,9 @@ import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the lockup module's genesis state. */
 export interface GenesisState {
-    lastLockId: Long;
+    last_lock_id: Long;
     locks: PeriodLock[];
-    syntheticLocks: SyntheticLock[];
+    synthetic_locks: SyntheticLock[];
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

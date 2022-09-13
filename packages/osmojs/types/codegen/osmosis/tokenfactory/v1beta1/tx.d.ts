@@ -20,7 +20,7 @@ export interface MsgCreateDenom {
  * It returns the full string of the newly created denom
  */
 export interface MsgCreateDenomResponse {
-    newTokenDenom: string;
+    new_token_denom: string;
 }
 /**
  * MsgMint is the sdk.Msg type for allowing an admin account to mint

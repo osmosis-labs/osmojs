@@ -9,14 +9,14 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  */
 export interface MsgSubmitProposal {
     messages: Any[];
-    initialDeposit: Coin[];
+    initial_deposit: Coin[];
     proposer: string;
     /** metadata is any arbitrary metadata attached to the proposal. */
     metadata: string;
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponse {
-    proposalId: Long;
+    proposal_id: Long;
 }
 /**
  * MsgExecLegacyContent is used to wrap the legacy content field into a message.
@@ -33,7 +33,7 @@ export interface MsgExecLegacyContentResponse {
 }
 /** MsgVote defines a message to cast a vote. */
 export interface MsgVote {
-    proposalId: Long;
+    proposal_id: Long;
     voter: string;
     option: VoteOption;
     metadata: string;
@@ -43,7 +43,7 @@ export interface MsgVoteResponse {
 }
 /** MsgVoteWeighted defines a message to cast a vote. */
 export interface MsgVoteWeighted {
-    proposalId: Long;
+    proposal_id: Long;
     voter: string;
     options: WeightedVoteOption[];
     metadata: string;
@@ -53,7 +53,7 @@ export interface MsgVoteWeightedResponse {
 }
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 export interface MsgDeposit {
-    proposalId: Long;
+    proposal_id: Long;
     depositor: string;
     amount: Coin[];
 }

@@ -3,12 +3,12 @@ import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface EpochInfo {
     identifier: string;
-    startTime: Date;
+    start_time: Date;
     duration: Duration;
-    currentEpoch: Long;
-    currentEpochStartTime: Date;
-    epochCountingStarted: boolean;
-    currentEpochStartHeight: Long;
+    current_epoch: Long;
+    current_epoch_start_time: Date;
+    epoch_counting_started: boolean;
+    current_epoch_start_height: Long;
 }
 /** GenesisState defines the epochs module's genesis state. */
 export interface GenesisState {

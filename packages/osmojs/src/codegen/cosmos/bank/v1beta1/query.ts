@@ -174,7 +174,7 @@ export interface DenomOwner {
 
 /** QueryDenomOwnersResponse defines the RPC response of a DenomOwners RPC query. */
 export interface QueryDenomOwnersResponse {
-  denomOwners: DenomOwner[];
+  denom_owners: DenomOwner[];
 
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
@@ -1326,14 +1326,14 @@ export const DenomOwner = {
 
 function createBaseQueryDenomOwnersResponse(): QueryDenomOwnersResponse {
   return {
-    denomOwners: [],
+    denom_owners: [],
     pagination: undefined
   };
 }
 
 export const QueryDenomOwnersResponse = {
   encode(message: QueryDenomOwnersResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.denomOwners) {
+    for (const v of message.denom_owners) {
       DenomOwner.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -1354,7 +1354,7 @@ export const QueryDenomOwnersResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.denomOwners.push(DenomOwner.decode(reader, reader.uint32()));
+          message.denom_owners.push(DenomOwner.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -1372,7 +1372,7 @@ export const QueryDenomOwnersResponse = {
 
   fromJSON(object: any): QueryDenomOwnersResponse {
     return {
-      denomOwners: Array.isArray(object?.denomOwners) ? object.denomOwners.map((e: any) => DenomOwner.fromJSON(e)) : [],
+      denom_owners: Array.isArray(object?.denom_owners) ? object.denom_owners.map((e: any) => DenomOwner.fromJSON(e)) : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
@@ -1380,10 +1380,10 @@ export const QueryDenomOwnersResponse = {
   toJSON(message: QueryDenomOwnersResponse): unknown {
     const obj: any = {};
 
-    if (message.denomOwners) {
-      obj.denomOwners = message.denomOwners.map(e => e ? DenomOwner.toJSON(e) : undefined);
+    if (message.denom_owners) {
+      obj.denom_owners = message.denom_owners.map(e => e ? DenomOwner.toJSON(e) : undefined);
     } else {
-      obj.denomOwners = [];
+      obj.denom_owners = [];
     }
 
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
@@ -1392,7 +1392,7 @@ export const QueryDenomOwnersResponse = {
 
   fromPartial(object: DeepPartial<QueryDenomOwnersResponse>): QueryDenomOwnersResponse {
     const message = createBaseQueryDenomOwnersResponse();
-    message.denomOwners = object.denomOwners?.map(e => DenomOwner.fromPartial(e)) || [];
+    message.denom_owners = object.denom_owners?.map(e => DenomOwner.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   }

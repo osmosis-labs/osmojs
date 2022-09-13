@@ -6,7 +6,7 @@ export interface Params {
      * the risk_factor is to be cut on OSMO equivalent value of lp tokens for
      * superfluid staking, default: 5%
      */
-    minimumRiskFactor: string;
+    minimum_risk_factor: string;
 }
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;

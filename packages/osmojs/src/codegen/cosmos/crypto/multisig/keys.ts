@@ -9,13 +9,13 @@ import { isSet, DeepPartial } from "@osmonauts/helpers";
  */
 export interface LegacyAminoPubKey {
   threshold: number;
-  publicKeys: Any[];
+  public_keys: Any[];
 }
 
 function createBaseLegacyAminoPubKey(): LegacyAminoPubKey {
   return {
     threshold: 0,
-    publicKeys: []
+    public_keys: []
   };
 }
 
@@ -25,7 +25,7 @@ export const LegacyAminoPubKey = {
       writer.uint32(8).uint32(message.threshold);
     }
 
-    for (const v of message.publicKeys) {
+    for (const v of message.public_keys) {
       Any.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -46,7 +46,7 @@ export const LegacyAminoPubKey = {
           break;
 
         case 2:
-          message.publicKeys.push(Any.decode(reader, reader.uint32()));
+          message.public_keys.push(Any.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -61,7 +61,7 @@ export const LegacyAminoPubKey = {
   fromJSON(object: any): LegacyAminoPubKey {
     return {
       threshold: isSet(object.threshold) ? Number(object.threshold) : 0,
-      publicKeys: Array.isArray(object?.publicKeys) ? object.publicKeys.map((e: any) => Any.fromJSON(e)) : []
+      public_keys: Array.isArray(object?.public_keys) ? object.public_keys.map((e: any) => Any.fromJSON(e)) : []
     };
   },
 
@@ -69,10 +69,10 @@ export const LegacyAminoPubKey = {
     const obj: any = {};
     message.threshold !== undefined && (obj.threshold = Math.round(message.threshold));
 
-    if (message.publicKeys) {
-      obj.publicKeys = message.publicKeys.map(e => e ? Any.toJSON(e) : undefined);
+    if (message.public_keys) {
+      obj.public_keys = message.public_keys.map(e => e ? Any.toJSON(e) : undefined);
     } else {
-      obj.publicKeys = [];
+      obj.public_keys = [];
     }
 
     return obj;
@@ -81,7 +81,7 @@ export const LegacyAminoPubKey = {
   fromPartial(object: DeepPartial<LegacyAminoPubKey>): LegacyAminoPubKey {
     const message = createBaseLegacyAminoPubKey();
     message.threshold = object.threshold ?? 0;
-    message.publicKeys = object.publicKeys?.map(e => Any.fromPartial(e)) || [];
+    message.public_keys = object.public_keys?.map(e => Any.fromPartial(e)) || [];
     return message;
   }
 

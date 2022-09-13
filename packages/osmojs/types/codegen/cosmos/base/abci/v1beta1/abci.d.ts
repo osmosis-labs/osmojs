@@ -21,15 +21,15 @@ export interface TxResponse {
      * The output of the application's logger (raw string). May be
      * non-deterministic.
      */
-    rawLog: string;
+    raw_log: string;
     /** The output of the application's logger (typed). May be non-deterministic. */
     logs: ABCIMessageLog[];
     /** Additional information. May be non-deterministic. */
     info: string;
     /** Amount of gas requested for transaction. */
-    gasWanted: Long;
+    gas_wanted: Long;
     /** Amount of gas consumed by transaction. */
-    gasUsed: Long;
+    gas_used: Long;
     /** The request transaction bytes. */
     tx: Any;
     /**
@@ -50,7 +50,7 @@ export interface TxResponse {
 }
 /** ABCIMessageLog defines a structure containing an indexed tx ABCI message log. */
 export interface ABCIMessageLog {
-    msgIndex: number;
+    msg_index: number;
     log: string;
     /**
      * Events contains a slice of Event objects that were emitted during some
@@ -77,9 +77,9 @@ export interface Attribute {
 /** GasInfo defines tx execution gas context. */
 export interface GasInfo {
     /** GasWanted is the maximum units of work we allow this tx to perform. */
-    gasWanted: Long;
+    gas_wanted: Long;
     /** GasUsed is the amount of gas actually consumed. */
-    gasUsed: Long;
+    gas_used: Long;
 }
 /** Result is the union of ResponseFormat and ResponseCheckTx. */
 export interface Result {
@@ -103,14 +103,14 @@ export interface Result {
      *
      * Since: cosmos-sdk 0.46
      */
-    msgResponses: Any[];
+    msg_responses: Any[];
 }
 /**
  * SimulationResponse defines the response generated when a transaction is
  * successfully simulated.
  */
 export interface SimulationResponse {
-    gasInfo: GasInfo;
+    gas_info: GasInfo;
     result: Result;
 }
 /**
@@ -119,7 +119,7 @@ export interface SimulationResponse {
  */
 /** @deprecated */
 export interface MsgData {
-    msgType: string;
+    msg_type: string;
     data: Uint8Array;
 }
 /**
@@ -135,18 +135,18 @@ export interface TxMsgData {
      *
      * Since: cosmos-sdk 0.46
      */
-    msgResponses: Any[];
+    msg_responses: Any[];
 }
 /** SearchTxsResult defines a structure for querying txs pageable */
 export interface SearchTxsResult {
     /** Count of all txs */
-    totalCount: Long;
+    total_count: Long;
     /** Count of txs in current page */
     count: Long;
     /** Index of current page, start from 1 */
-    pageNumber: Long;
+    page_number: Long;
     /** Count of total pages */
-    pageTotal: Long;
+    page_total: Long;
     /** Max count txs per page */
     limit: Long;
     /** List of txs in current page */

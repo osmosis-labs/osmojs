@@ -3,7 +3,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the raw genesis transaction in JSON. */
 export interface GenesisState {
     /** gen_txs defines the genesis transactions. */
-    genTxs: Uint8Array[];
+    gen_txs: Uint8Array[];
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

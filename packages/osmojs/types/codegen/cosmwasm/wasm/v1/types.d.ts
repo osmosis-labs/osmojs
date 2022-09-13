@@ -40,23 +40,23 @@ export interface AccessConfig {
 }
 /** Params defines the set of wasm parameters. */
 export interface Params {
-    codeUploadAccess: AccessConfig;
-    instantiateDefaultPermission: AccessType;
-    maxWasmCodeSize: Long;
+    code_upload_access: AccessConfig;
+    instantiate_default_permission: AccessType;
+    max_wasm_code_size: Long;
 }
 /** CodeInfo is data for the uploaded contract WASM code */
 export interface CodeInfo {
     /** CodeHash is the unique identifier created by wasmvm */
-    codeHash: Uint8Array;
+    code_hash: Uint8Array;
     /** Creator address who initially stored the code */
     creator: string;
     /** InstantiateConfig access control to apply on contract creation, optional */
-    instantiateConfig: AccessConfig;
+    instantiate_config: AccessConfig;
 }
 /** ContractInfo stores a WASM contract instance */
 export interface ContractInfo {
     /** CodeID is the reference to the stored Wasm code */
-    codeId: Long;
+    code_id: Long;
     /** Creator address who initially instantiated the contract */
     creator: string;
     /** Admin is an optional address that can execute migrations */
@@ -69,7 +69,7 @@ export interface ContractInfo {
      * use for sorting
      */
     created: AbsoluteTxPosition;
-    ibcPortId: string;
+    ibc_port_id: string;
     /**
      * Extension is an extension point to store custom metadata within the
      * persistence model.
@@ -80,7 +80,7 @@ export interface ContractInfo {
 export interface ContractCodeHistoryEntry {
     operation: ContractCodeHistoryOperationType;
     /** CodeID is the reference to the stored WASM code */
-    codeId: Long;
+    code_id: Long;
     /** Updated Tx position when the operation was executed. */
     updated: AbsoluteTxPosition;
     msg: Uint8Array;
@@ -91,12 +91,12 @@ export interface ContractCodeHistoryEntry {
  */
 export interface AbsoluteTxPosition {
     /** BlockHeight is the block the contract was created at */
-    blockHeight: Long;
+    block_height: Long;
     /**
      * TxIndex is a monotonic counter within the block (actual transaction index,
      * or gas consumed)
      */
-    txIndex: Long;
+    tx_index: Long;
 }
 /** Model is a struct that holds a KV pair */
 export interface Model {

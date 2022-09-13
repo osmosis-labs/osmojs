@@ -7,19 +7,19 @@ export interface GenesisState {
     acknowledgements: PacketState[];
     commitments: PacketState[];
     receipts: PacketState[];
-    sendSequences: PacketSequence[];
-    recvSequences: PacketSequence[];
-    ackSequences: PacketSequence[];
+    send_sequences: PacketSequence[];
+    recv_sequences: PacketSequence[];
+    ack_sequences: PacketSequence[];
     /** the sequence for the next generated channel identifier */
-    nextChannelSequence: Long;
+    next_channel_sequence: Long;
 }
 /**
  * PacketSequence defines the genesis type necessary to retrieve and store
  * next send and receive sequences.
  */
 export interface PacketSequence {
-    portId: string;
-    channelId: string;
+    port_id: string;
+    channel_id: string;
     sequence: Long;
 }
 export declare const GenesisState: {

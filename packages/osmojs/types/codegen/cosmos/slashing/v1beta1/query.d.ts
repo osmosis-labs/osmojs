@@ -15,7 +15,7 @@ export interface QueryParamsResponse {
  */
 export interface QuerySigningInfoRequest {
     /** cons_address is the address to query signing info of */
-    consAddress: string;
+    cons_address: string;
 }
 /**
  * QuerySigningInfoResponse is the response type for the Query/SigningInfo RPC
@@ -23,14 +23,14 @@ export interface QuerySigningInfoRequest {
  */
 export interface QuerySigningInfoResponse {
     /** val_signing_info is the signing info of requested val cons address */
-    valSigningInfo: ValidatorSigningInfo;
+    val_signing_info: ValidatorSigningInfo;
 }
 /**
  * QuerySigningInfosRequest is the request type for the Query/SigningInfos RPC
  * method
  */
 export interface QuerySigningInfosRequest {
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QuerySigningInfosResponse is the response type for the Query/SigningInfos RPC
@@ -39,7 +39,7 @@ export interface QuerySigningInfosRequest {
 export interface QuerySigningInfosResponse {
     /** info is the signing info of all validators */
     info: ValidatorSigningInfo[];
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;

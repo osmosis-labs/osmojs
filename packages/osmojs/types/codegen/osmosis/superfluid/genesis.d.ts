@@ -5,10 +5,10 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the module's genesis state. */
 export interface GenesisState {
     params: Params;
-    superfluidAssets: SuperfluidAsset[];
-    osmoEquivalentMultipliers: OsmoEquivalentMultiplierRecord[];
-    intermediaryAccounts: SuperfluidIntermediaryAccount[];
-    intemediaryAccountConnections: LockIdIntermediaryAccountConnection[];
+    superfluid_assets: SuperfluidAsset[];
+    osmo_equivalent_multipliers: OsmoEquivalentMultiplierRecord[];
+    intermediary_accounts: SuperfluidIntermediaryAccount[];
+    intemediary_account_connections: LockIdIntermediaryAccountConnection[];
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

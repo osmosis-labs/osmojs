@@ -47,7 +47,7 @@ export declare function storageTypeFromJSON(object: any): StorageType;
 export declare function storageTypeToJSON(object: StorageType): string;
 /** ModuleSchemaDescriptor describe's a module's ORM schema. */
 export interface ModuleSchemaDescriptor {
-    schemaFile: ModuleSchemaDescriptor_FileEntry[];
+    schema_file: ModuleSchemaDescriptor_FileEntry[];
     /**
      * prefix is an optional prefix that precedes all keys in this module's
      * store.
@@ -66,13 +66,13 @@ export interface ModuleSchemaDescriptor_FileEntry {
      * table definitions. The .proto file must be in a package that the
      * module has referenced using cosmos.app.v1.ModuleDescriptor.use_package.
      */
-    protoFileName: string;
+    proto_file_name: string;
     /**
      * storage_type optionally indicates the type of storage this file's
      * tables should used. If it is left unspecified, the default KV-storage
      * of the app will be used.
      */
-    storageType: StorageType;
+    storage_type: StorageType;
 }
 export declare const ModuleSchemaDescriptor: {
     encode(message: ModuleSchemaDescriptor, writer?: _m0.Writer): _m0.Writer;

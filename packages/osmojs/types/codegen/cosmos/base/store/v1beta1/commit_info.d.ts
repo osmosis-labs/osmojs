@@ -6,7 +6,7 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  */
 export interface CommitInfo {
     version: Long;
-    storeInfos: StoreInfo[];
+    store_infos: StoreInfo[];
 }
 /**
  * StoreInfo defines store-specific commit information. It contains a reference
@@ -14,7 +14,7 @@ export interface CommitInfo {
  */
 export interface StoreInfo {
     name: string;
-    commitId: CommitID;
+    commit_id: CommitID;
 }
 /**
  * CommitID defines the committment information when a specific store is

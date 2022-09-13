@@ -17,7 +17,7 @@ export interface SetSuperfluidAssetsProposal {
 export interface RemoveSuperfluidAssetsProposal {
     title: string;
     description: string;
-    superfluidAssetDenoms: string[];
+    superfluid_asset_denoms: string[];
 }
 export declare const SetSuperfluidAssetsProposal: {
     encode(message: SetSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;

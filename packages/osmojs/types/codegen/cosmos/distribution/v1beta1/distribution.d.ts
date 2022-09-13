@@ -3,10 +3,10 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
-    communityTax: string;
-    baseProposerReward: string;
-    bonusProposerReward: string;
-    withdrawAddrEnabled: boolean;
+    community_tax: string;
+    base_proposer_reward: string;
+    bonus_proposer_reward: string;
+    withdraw_addr_enabled: boolean;
 }
 /**
  * ValidatorHistoricalRewards represents historical rewards for a validator.
@@ -23,8 +23,8 @@ export interface Params {
  * + one per validator for the zeroeth period, set on initialization
  */
 export interface ValidatorHistoricalRewards {
-    cumulativeRewardRatio: DecCoin[];
-    referenceCount: number;
+    cumulative_reward_ratio: DecCoin[];
+    reference_count: number;
 }
 /**
  * ValidatorCurrentRewards represents current rewards and current
@@ -56,16 +56,16 @@ export interface ValidatorOutstandingRewards {
  * for delegations which are withdrawn after a slash has occurred.
  */
 export interface ValidatorSlashEvent {
-    validatorPeriod: Long;
+    validator_period: Long;
     fraction: string;
 }
 /** ValidatorSlashEvents is a collection of ValidatorSlashEvent messages. */
 export interface ValidatorSlashEvents {
-    validatorSlashEvents: ValidatorSlashEvent[];
+    validator_slash_events: ValidatorSlashEvent[];
 }
 /** FeePool is the global fee pool for distribution. */
 export interface FeePool {
-    communityPool: DecCoin[];
+    community_pool: DecCoin[];
 }
 /**
  * CommunityPoolSpendProposal details a proposal for use of community funds,
@@ -87,7 +87,7 @@ export interface CommunityPoolSpendProposal {
  * thus sdk.Dec is used.
  */
 export interface DelegatorStartingInfo {
-    previousPeriod: Long;
+    previous_period: Long;
     stake: string;
     height: Long;
 }
@@ -96,7 +96,7 @@ export interface DelegatorStartingInfo {
  * of a delegator's delegation reward.
  */
 export interface DelegationDelegatorReward {
-    validatorAddress: string;
+    validator_address: string;
     reward: DecCoin[];
 }
 /**

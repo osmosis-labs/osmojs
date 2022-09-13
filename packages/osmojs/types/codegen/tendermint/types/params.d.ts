@@ -17,19 +17,19 @@ export interface BlockParams {
      * Max block size, in bytes.
      * Note: must be greater than 0
      */
-    maxBytes: Long;
+    max_bytes: Long;
     /**
      * Max gas per block.
      * Note: must be greater or equal to -1
      */
-    maxGas: Long;
+    max_gas: Long;
     /**
      * Minimum time increment between consecutive blocks (in milliseconds) If the
      * block header timestamp is ahead of the system clock, decrease this value.
      *
      * Not exposed to the application.
      */
-    timeIotaMs: Long;
+    time_iota_ms: Long;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
 export interface EvidenceParams {
@@ -39,7 +39,7 @@ export interface EvidenceParams {
      * The basic formula for calculating this is: MaxAgeDuration / {average block
      * time}.
      */
-    maxAgeNumBlocks: Long;
+    max_age_num_blocks: Long;
     /**
      * Max age of evidence, in time.
      *
@@ -47,24 +47,24 @@ export interface EvidenceParams {
      * mechanism for handling [Nothing-At-Stake
      * attacks](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed).
      */
-    maxAgeDuration: Duration;
+    max_age_duration: Duration;
     /**
      * This sets the maximum size of total evidence in bytes that can be committed in a single block.
      * and should fall comfortably under the max block bytes.
      * Default is 1048576 or 1MB
      */
-    maxBytes: Long;
+    max_bytes: Long;
 }
 /**
  * ValidatorParams restrict the public key types validators can use.
  * NOTE: uses ABCI pubkey naming, not Amino names.
  */
 export interface ValidatorParams {
-    pubKeyTypes: string[];
+    pub_key_types: string[];
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParams {
-    appVersion: Long;
+    app_version: Long;
 }
 /**
  * HashedParams is a subset of ConsensusParams.
@@ -72,8 +72,8 @@ export interface VersionParams {
  * It is hashed into the Header.ConsensusHash.
  */
 export interface HashedParams {
-    blockMaxBytes: Long;
-    blockMaxGas: Long;
+    block_max_bytes: Long;
+    block_max_gas: Long;
 }
 export declare const ConsensusParams: {
     encode(message: ConsensusParams, writer?: _m0.Writer): _m0.Writer;

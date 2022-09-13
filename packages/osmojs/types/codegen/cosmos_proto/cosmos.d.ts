@@ -55,7 +55,7 @@ export interface ScalarDescriptor {
      * encoding standards and simple and clear. Currently only string and
      * bytes fields are supported for scalars.
      */
-    fieldType: ScalarType[];
+    field_type: ScalarType[];
 }
 export declare const InterfaceDescriptor: {
     encode(message: InterfaceDescriptor, writer?: _m0.Writer): _m0.Writer;

@@ -5,7 +5,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
 export interface QueryEvidenceRequest {
     /** evidence_hash defines the hash of the requested evidence. */
-    evidenceHash: Uint8Array;
+    evidence_hash: Uint8Array;
 }
 /** QueryEvidenceResponse is the response type for the Query/Evidence RPC method. */
 export interface QueryEvidenceResponse {
@@ -18,7 +18,7 @@ export interface QueryEvidenceResponse {
  */
 export interface QueryAllEvidenceRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QueryAllEvidenceResponse is the response type for the Query/AllEvidence RPC
@@ -28,7 +28,7 @@ export interface QueryAllEvidenceResponse {
     /** evidence returns all evidences. */
     evidence: Any[];
     /** pagination defines the pagination in the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 export declare const QueryEvidenceRequest: {
     encode(message: QueryEvidenceRequest, writer?: _m0.Writer): _m0.Writer;

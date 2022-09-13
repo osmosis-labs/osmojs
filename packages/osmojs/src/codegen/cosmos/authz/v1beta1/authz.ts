@@ -41,7 +41,7 @@ export interface GrantAuthorization {
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 export interface GrantQueueItem {
   /** msg_type_urls contains the list of TypeURL of a sdk.Msg. */
-  msgTypeUrls: string[];
+  msg_type_urls: string[];
 }
 
 function createBaseGenericAuthorization(): GenericAuthorization {
@@ -265,13 +265,13 @@ export const GrantAuthorization = {
 
 function createBaseGrantQueueItem(): GrantQueueItem {
   return {
-    msgTypeUrls: []
+    msg_type_urls: []
   };
 }
 
 export const GrantQueueItem = {
   encode(message: GrantQueueItem, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.msgTypeUrls) {
+    for (const v of message.msg_type_urls) {
       writer.uint32(10).string(v!);
     }
 
@@ -288,7 +288,7 @@ export const GrantQueueItem = {
 
       switch (tag >>> 3) {
         case 1:
-          message.msgTypeUrls.push(reader.string());
+          message.msg_type_urls.push(reader.string());
           break;
 
         default:
@@ -302,17 +302,17 @@ export const GrantQueueItem = {
 
   fromJSON(object: any): GrantQueueItem {
     return {
-      msgTypeUrls: Array.isArray(object?.msgTypeUrls) ? object.msgTypeUrls.map((e: any) => String(e)) : []
+      msg_type_urls: Array.isArray(object?.msg_type_urls) ? object.msg_type_urls.map((e: any) => String(e)) : []
     };
   },
 
   toJSON(message: GrantQueueItem): unknown {
     const obj: any = {};
 
-    if (message.msgTypeUrls) {
-      obj.msgTypeUrls = message.msgTypeUrls.map(e => e);
+    if (message.msg_type_urls) {
+      obj.msg_type_urls = message.msg_type_urls.map(e => e);
     } else {
-      obj.msgTypeUrls = [];
+      obj.msg_type_urls = [];
     }
 
     return obj;
@@ -320,7 +320,7 @@ export const GrantQueueItem = {
 
   fromPartial(object: DeepPartial<GrantQueueItem>): GrantQueueItem {
     const message = createBaseGrantQueueItem();
-    message.msgTypeUrls = object.msgTypeUrls?.map(e => e) || [];
+    message.msg_type_urls = object.msg_type_urls?.map(e => e) || [];
     return message;
   }
 

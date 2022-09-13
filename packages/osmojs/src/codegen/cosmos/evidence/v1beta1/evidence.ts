@@ -10,7 +10,7 @@ export interface Equivocation {
   height: Long;
   time: Date;
   power: Long;
-  consensusAddress: string;
+  consensus_address: string;
 }
 
 function createBaseEquivocation(): Equivocation {
@@ -18,7 +18,7 @@ function createBaseEquivocation(): Equivocation {
     height: Long.ZERO,
     time: undefined,
     power: Long.ZERO,
-    consensusAddress: ""
+    consensus_address: ""
   };
 }
 
@@ -36,8 +36,8 @@ export const Equivocation = {
       writer.uint32(24).int64(message.power);
     }
 
-    if (message.consensusAddress !== "") {
-      writer.uint32(34).string(message.consensusAddress);
+    if (message.consensus_address !== "") {
+      writer.uint32(34).string(message.consensus_address);
     }
 
     return writer;
@@ -65,7 +65,7 @@ export const Equivocation = {
           break;
 
         case 4:
-          message.consensusAddress = reader.string();
+          message.consensus_address = reader.string();
           break;
 
         default:
@@ -82,7 +82,7 @@ export const Equivocation = {
       height: isSet(object.height) ? Long.fromString(object.height) : Long.ZERO,
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
       power: isSet(object.power) ? Long.fromString(object.power) : Long.ZERO,
-      consensusAddress: isSet(object.consensusAddress) ? String(object.consensusAddress) : ""
+      consensus_address: isSet(object.consensus_address) ? String(object.consensus_address) : ""
     };
   },
 
@@ -91,7 +91,7 @@ export const Equivocation = {
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
     message.time !== undefined && (obj.time = message.time.toISOString());
     message.power !== undefined && (obj.power = (message.power || Long.ZERO).toString());
-    message.consensusAddress !== undefined && (obj.consensusAddress = message.consensusAddress);
+    message.consensus_address !== undefined && (obj.consensus_address = message.consensus_address);
     return obj;
   },
 
@@ -100,7 +100,7 @@ export const Equivocation = {
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.time = object.time ?? undefined;
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
-    message.consensusAddress = object.consensusAddress ?? "";
+    message.consensus_address = object.consensus_address ?? "";
     return message;
   }
 

@@ -7,10 +7,10 @@ export interface MsgCreateBalancerPool {
   sender: string;
   poolParams: PoolParams;
   poolAssets: PoolAsset[];
-  futurePoolGovernor: string;
+  future_pool_governor: string;
 }
 export interface MsgCreateBalancerPoolResponse {
-  poolId: Long;
+  pool_id: Long;
 }
 
 function createBaseMsgCreateBalancerPool(): MsgCreateBalancerPool {
@@ -18,7 +18,7 @@ function createBaseMsgCreateBalancerPool(): MsgCreateBalancerPool {
     sender: "",
     poolParams: undefined,
     poolAssets: [],
-    futurePoolGovernor: ""
+    future_pool_governor: ""
   };
 }
 
@@ -36,8 +36,8 @@ export const MsgCreateBalancerPool = {
       PoolAsset.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    if (message.futurePoolGovernor !== "") {
-      writer.uint32(34).string(message.futurePoolGovernor);
+    if (message.future_pool_governor !== "") {
+      writer.uint32(34).string(message.future_pool_governor);
     }
 
     return writer;
@@ -65,7 +65,7 @@ export const MsgCreateBalancerPool = {
           break;
 
         case 4:
-          message.futurePoolGovernor = reader.string();
+          message.future_pool_governor = reader.string();
           break;
 
         default:
@@ -82,7 +82,7 @@ export const MsgCreateBalancerPool = {
       sender: isSet(object.sender) ? String(object.sender) : "",
       poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
       poolAssets: Array.isArray(object?.poolAssets) ? object.poolAssets.map((e: any) => PoolAsset.fromJSON(e)) : [],
-      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : ""
+      future_pool_governor: isSet(object.future_pool_governor) ? String(object.future_pool_governor) : ""
     };
   },
 
@@ -97,7 +97,7 @@ export const MsgCreateBalancerPool = {
       obj.poolAssets = [];
     }
 
-    message.futurePoolGovernor !== undefined && (obj.futurePoolGovernor = message.futurePoolGovernor);
+    message.future_pool_governor !== undefined && (obj.future_pool_governor = message.future_pool_governor);
     return obj;
   },
 
@@ -106,7 +106,7 @@ export const MsgCreateBalancerPool = {
     message.sender = object.sender ?? "";
     message.poolParams = object.poolParams !== undefined && object.poolParams !== null ? PoolParams.fromPartial(object.poolParams) : undefined;
     message.poolAssets = object.poolAssets?.map(e => PoolAsset.fromPartial(e)) || [];
-    message.futurePoolGovernor = object.futurePoolGovernor ?? "";
+    message.future_pool_governor = object.future_pool_governor ?? "";
     return message;
   }
 
@@ -114,14 +114,14 @@ export const MsgCreateBalancerPool = {
 
 function createBaseMsgCreateBalancerPoolResponse(): MsgCreateBalancerPoolResponse {
   return {
-    poolId: Long.UZERO
+    pool_id: Long.UZERO
   };
 }
 
 export const MsgCreateBalancerPoolResponse = {
   encode(message: MsgCreateBalancerPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
-      writer.uint32(8).uint64(message.poolId);
+    if (!message.pool_id.isZero()) {
+      writer.uint32(8).uint64(message.pool_id);
     }
 
     return writer;
@@ -137,7 +137,7 @@ export const MsgCreateBalancerPoolResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.pool_id = (reader.uint64() as Long);
           break;
 
         default:
@@ -151,19 +151,19 @@ export const MsgCreateBalancerPoolResponse = {
 
   fromJSON(object: any): MsgCreateBalancerPoolResponse {
     return {
-      poolId: isSet(object.poolId) ? Long.fromString(object.poolId) : Long.UZERO
+      pool_id: isSet(object.pool_id) ? Long.fromString(object.pool_id) : Long.UZERO
     };
   },
 
   toJSON(message: MsgCreateBalancerPoolResponse): unknown {
     const obj: any = {};
-    message.poolId !== undefined && (obj.poolId = (message.poolId || Long.UZERO).toString());
+    message.pool_id !== undefined && (obj.pool_id = (message.pool_id || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse {
     const message = createBaseMsgCreateBalancerPoolResponse();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.pool_id = object.pool_id !== undefined && object.pool_id !== null ? Long.fromValue(object.pool_id) : Long.UZERO;
     return message;
   }
 

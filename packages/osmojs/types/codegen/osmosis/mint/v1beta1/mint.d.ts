@@ -3,7 +3,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 /** Minter represents the minting state. */
 export interface Minter {
     /** current epoch provisions */
-    epochProvisions: string;
+    epoch_provisions: string;
 }
 export interface WeightedAddress {
     address: string;
@@ -19,36 +19,36 @@ export interface DistributionProportions {
      * pool_incentives defines the proportion of the minted minted_denom that is
      * to be allocated as pool incentives.
      */
-    poolIncentives: string;
+    pool_incentives: string;
     /**
      * developer_rewards defines the proportion of the minted minted_denom that is
      * to be allocated to developer rewards address.
      */
-    developerRewards: string;
+    developer_rewards: string;
     /**
      * community_pool defines the proportion of the minted minted_denom that is
      * to be allocated to the community pool.
      */
-    communityPool: string;
+    community_pool: string;
 }
 /** Params holds parameters for the mint module. */
 export interface Params {
     /** type of coin to mint */
-    mintDenom: string;
+    mint_denom: string;
     /** epoch provisions from the first epoch */
-    genesisEpochProvisions: string;
+    genesis_epoch_provisions: string;
     /** mint epoch identifier */
-    epochIdentifier: string;
+    epoch_identifier: string;
     /** number of epochs take to reduce rewards */
-    reductionPeriodInEpochs: Long;
+    reduction_period_in_epochs: Long;
     /** reduction multiplier to execute on each period */
-    reductionFactor: string;
+    reduction_factor: string;
     /** distribution_proportions defines the proportion of the minted denom */
-    distributionProportions: DistributionProportions;
+    distribution_proportions: DistributionProportions;
     /** address to receive developer rewards */
-    weightedDeveloperRewardsReceivers: WeightedAddress[];
+    weighted_developer_rewards_receivers: WeightedAddress[];
     /** start epoch to distribute minting rewards */
-    mintingRewardsDistributionStartEpoch: Long;
+    minting_rewards_distribution_start_epoch: Long;
 }
 export declare const Minter: {
     encode(message: Minter, writer?: _m0.Writer): _m0.Writer;

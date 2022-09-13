@@ -35,7 +35,7 @@ export interface QueryAnnualProvisionsRequest {}
  */
 export interface QueryAnnualProvisionsResponse {
   /** annual_provisions is the current minting annual provisions value. */
-  annualProvisions: Uint8Array;
+  annual_provisions: Uint8Array;
 }
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -283,14 +283,14 @@ export const QueryAnnualProvisionsRequest = {
 
 function createBaseQueryAnnualProvisionsResponse(): QueryAnnualProvisionsResponse {
   return {
-    annualProvisions: new Uint8Array()
+    annual_provisions: new Uint8Array()
   };
 }
 
 export const QueryAnnualProvisionsResponse = {
   encode(message: QueryAnnualProvisionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.annualProvisions.length !== 0) {
-      writer.uint32(10).bytes(message.annualProvisions);
+    if (message.annual_provisions.length !== 0) {
+      writer.uint32(10).bytes(message.annual_provisions);
     }
 
     return writer;
@@ -306,7 +306,7 @@ export const QueryAnnualProvisionsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.annualProvisions = reader.bytes();
+          message.annual_provisions = reader.bytes();
           break;
 
         default:
@@ -320,19 +320,19 @@ export const QueryAnnualProvisionsResponse = {
 
   fromJSON(object: any): QueryAnnualProvisionsResponse {
     return {
-      annualProvisions: isSet(object.annualProvisions) ? bytesFromBase64(object.annualProvisions) : new Uint8Array()
+      annual_provisions: isSet(object.annual_provisions) ? bytesFromBase64(object.annual_provisions) : new Uint8Array()
     };
   },
 
   toJSON(message: QueryAnnualProvisionsResponse): unknown {
     const obj: any = {};
-    message.annualProvisions !== undefined && (obj.annualProvisions = base64FromBytes(message.annualProvisions !== undefined ? message.annualProvisions : new Uint8Array()));
+    message.annual_provisions !== undefined && (obj.annual_provisions = base64FromBytes(message.annual_provisions !== undefined ? message.annual_provisions : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryAnnualProvisionsResponse>): QueryAnnualProvisionsResponse {
     const message = createBaseQueryAnnualProvisionsResponse();
-    message.annualProvisions = object.annualProvisions ?? new Uint8Array();
+    message.annual_provisions = object.annual_provisions ?? new Uint8Array();
     return message;
   }
 

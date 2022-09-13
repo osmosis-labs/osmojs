@@ -3,23 +3,23 @@ import { Validator } from "./validator";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface Evidence {
-    duplicateVoteEvidence?: DuplicateVoteEvidence;
-    lightClientAttackEvidence?: LightClientAttackEvidence;
+    duplicate_vote_evidence?: DuplicateVoteEvidence;
+    light_client_attack_evidence?: LightClientAttackEvidence;
 }
 /** DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes. */
 export interface DuplicateVoteEvidence {
-    voteA: Vote;
-    voteB: Vote;
-    totalVotingPower: Long;
-    validatorPower: Long;
+    vote_a: Vote;
+    vote_b: Vote;
+    total_voting_power: Long;
+    validator_power: Long;
     timestamp: Date;
 }
 /** LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client. */
 export interface LightClientAttackEvidence {
-    conflictingBlock: LightBlock;
-    commonHeight: Long;
-    byzantineValidators: Validator[];
-    totalVotingPower: Long;
+    conflicting_block: LightBlock;
+    common_height: Long;
+    byzantine_validators: Validator[];
+    total_voting_power: Long;
     timestamp: Date;
 }
 export interface EvidenceList {

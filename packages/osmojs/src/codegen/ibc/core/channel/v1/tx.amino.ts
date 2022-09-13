@@ -161,20 +161,20 @@ export const AminoConverter = {
   "/ibc.core.channel.v1.MsgChannelOpenInit": {
     aminoType: "cosmos-sdk/MsgChannelOpenInit",
     toAmino: ({
-      portId,
+      port_id,
       channel,
       signer
     }: MsgChannelOpenInit): AminoMsgChannelOpenInit["value"] => {
       return {
-        port_id: portId,
+        port_id,
         channel: {
           state: channel.state,
           ordering: channel.ordering,
           counterparty: {
-            port_id: channel.counterparty.portId,
-            channel_id: channel.counterparty.channelId
+            port_id: channel.counterparty.port_id,
+            channel_id: channel.counterparty.channel_id
           },
-          connection_hops: channel.connectionHops,
+          connection_hops: channel.connection_hops,
           version: channel.version
         },
         signer
@@ -186,15 +186,15 @@ export const AminoConverter = {
       signer
     }: AminoMsgChannelOpenInit["value"]): MsgChannelOpenInit => {
       return {
-        portId: port_id,
+        port_id,
         channel: {
           state: stateFromJSON(channel.state),
           ordering: orderFromJSON(channel.ordering),
           counterparty: {
-            portId: channel.counterparty.port_id,
-            channelId: channel.counterparty.channel_id
+            port_id: channel.counterparty.port_id,
+            channel_id: channel.counterparty.channel_id
           },
-          connectionHops: channel.connection_hops,
+          connection_hops: channel.connection_hops,
           version: channel.version
         },
         signer
@@ -204,32 +204,32 @@ export const AminoConverter = {
   "/ibc.core.channel.v1.MsgChannelOpenTry": {
     aminoType: "cosmos-sdk/MsgChannelOpenTry",
     toAmino: ({
-      portId,
-      previousChannelId,
+      port_id,
+      previous_channel_id,
       channel,
-      counterpartyVersion,
-      proofInit,
-      proofHeight,
+      counterparty_version,
+      proof_init,
+      proof_height,
       signer
     }: MsgChannelOpenTry): AminoMsgChannelOpenTry["value"] => {
       return {
-        port_id: portId,
-        previous_channel_id: previousChannelId,
+        port_id,
+        previous_channel_id,
         channel: {
           state: channel.state,
           ordering: channel.ordering,
           counterparty: {
-            port_id: channel.counterparty.portId,
-            channel_id: channel.counterparty.channelId
+            port_id: channel.counterparty.port_id,
+            channel_id: channel.counterparty.channel_id
           },
-          connection_hops: channel.connectionHops,
+          connection_hops: channel.connection_hops,
           version: channel.version
         },
-        counterparty_version: counterpartyVersion,
-        proof_init: proofInit,
-        proof_height: proofHeight ? {
-          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
-          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
+        counterparty_version,
+        proof_init,
+        proof_height: proof_height ? {
+          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
+          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
         } : {},
         signer
       };
@@ -244,21 +244,21 @@ export const AminoConverter = {
       signer
     }: AminoMsgChannelOpenTry["value"]): MsgChannelOpenTry => {
       return {
-        portId: port_id,
-        previousChannelId: previous_channel_id,
+        port_id,
+        previous_channel_id,
         channel: {
           state: stateFromJSON(channel.state),
           ordering: orderFromJSON(channel.ordering),
           counterparty: {
-            portId: channel.counterparty.port_id,
-            channelId: channel.counterparty.channel_id
+            port_id: channel.counterparty.port_id,
+            channel_id: channel.counterparty.channel_id
           },
-          connectionHops: channel.connection_hops,
+          connection_hops: channel.connection_hops,
           version: channel.version
         },
-        counterpartyVersion: counterparty_version,
-        proofInit: proof_init,
-        proofHeight: proof_height ? {
+        counterparty_version,
+        proof_init,
+        proof_height: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,
@@ -269,23 +269,23 @@ export const AminoConverter = {
   "/ibc.core.channel.v1.MsgChannelOpenAck": {
     aminoType: "cosmos-sdk/MsgChannelOpenAck",
     toAmino: ({
-      portId,
-      channelId,
-      counterpartyChannelId,
-      counterpartyVersion,
-      proofTry,
-      proofHeight,
+      port_id,
+      channel_id,
+      counterparty_channel_id,
+      counterparty_version,
+      proof_try,
+      proof_height,
       signer
     }: MsgChannelOpenAck): AminoMsgChannelOpenAck["value"] => {
       return {
-        port_id: portId,
-        channel_id: channelId,
-        counterparty_channel_id: counterpartyChannelId,
-        counterparty_version: counterpartyVersion,
-        proof_try: proofTry,
-        proof_height: proofHeight ? {
-          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
-          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
+        port_id,
+        channel_id,
+        counterparty_channel_id,
+        counterparty_version,
+        proof_try,
+        proof_height: proof_height ? {
+          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
+          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
         } : {},
         signer
       };
@@ -300,12 +300,12 @@ export const AminoConverter = {
       signer
     }: AminoMsgChannelOpenAck["value"]): MsgChannelOpenAck => {
       return {
-        portId: port_id,
-        channelId: channel_id,
-        counterpartyChannelId: counterparty_channel_id,
-        counterpartyVersion: counterparty_version,
-        proofTry: proof_try,
-        proofHeight: proof_height ? {
+        port_id,
+        channel_id,
+        counterparty_channel_id,
+        counterparty_version,
+        proof_try,
+        proof_height: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,
@@ -316,19 +316,19 @@ export const AminoConverter = {
   "/ibc.core.channel.v1.MsgChannelOpenConfirm": {
     aminoType: "cosmos-sdk/MsgChannelOpenConfirm",
     toAmino: ({
-      portId,
-      channelId,
-      proofAck,
-      proofHeight,
+      port_id,
+      channel_id,
+      proof_ack,
+      proof_height,
       signer
     }: MsgChannelOpenConfirm): AminoMsgChannelOpenConfirm["value"] => {
       return {
-        port_id: portId,
-        channel_id: channelId,
-        proof_ack: proofAck,
-        proof_height: proofHeight ? {
-          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
-          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
+        port_id,
+        channel_id,
+        proof_ack,
+        proof_height: proof_height ? {
+          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
+          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
         } : {},
         signer
       };
@@ -341,10 +341,10 @@ export const AminoConverter = {
       signer
     }: AminoMsgChannelOpenConfirm["value"]): MsgChannelOpenConfirm => {
       return {
-        portId: port_id,
-        channelId: channel_id,
-        proofAck: proof_ack,
-        proofHeight: proof_height ? {
+        port_id,
+        channel_id,
+        proof_ack,
+        proof_height: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,
@@ -355,13 +355,13 @@ export const AminoConverter = {
   "/ibc.core.channel.v1.MsgChannelCloseInit": {
     aminoType: "cosmos-sdk/MsgChannelCloseInit",
     toAmino: ({
-      portId,
-      channelId,
+      port_id,
+      channel_id,
       signer
     }: MsgChannelCloseInit): AminoMsgChannelCloseInit["value"] => {
       return {
-        port_id: portId,
-        channel_id: channelId,
+        port_id,
+        channel_id,
         signer
       };
     },
@@ -371,8 +371,8 @@ export const AminoConverter = {
       signer
     }: AminoMsgChannelCloseInit["value"]): MsgChannelCloseInit => {
       return {
-        portId: port_id,
-        channelId: channel_id,
+        port_id,
+        channel_id,
         signer
       };
     }
@@ -380,19 +380,19 @@ export const AminoConverter = {
   "/ibc.core.channel.v1.MsgChannelCloseConfirm": {
     aminoType: "cosmos-sdk/MsgChannelCloseConfirm",
     toAmino: ({
-      portId,
-      channelId,
-      proofInit,
-      proofHeight,
+      port_id,
+      channel_id,
+      proof_init,
+      proof_height,
       signer
     }: MsgChannelCloseConfirm): AminoMsgChannelCloseConfirm["value"] => {
       return {
-        port_id: portId,
-        channel_id: channelId,
-        proof_init: proofInit,
-        proof_height: proofHeight ? {
-          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
-          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
+        port_id,
+        channel_id,
+        proof_init,
+        proof_height: proof_height ? {
+          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
+          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
         } : {},
         signer
       };
@@ -405,10 +405,10 @@ export const AminoConverter = {
       signer
     }: AminoMsgChannelCloseConfirm["value"]): MsgChannelCloseConfirm => {
       return {
-        portId: port_id,
-        channelId: channel_id,
-        proofInit: proof_init,
-        proofHeight: proof_height ? {
+        port_id,
+        channel_id,
+        proof_init,
+        proof_height: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,
@@ -420,28 +420,28 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgRecvPacket",
     toAmino: ({
       packet,
-      proofCommitment,
-      proofHeight,
+      proof_commitment,
+      proof_height,
       signer
     }: MsgRecvPacket): AminoMsgRecvPacket["value"] => {
       return {
         packet: {
           sequence: packet.sequence.toString(),
-          source_port: packet.sourcePort,
-          source_channel: packet.sourceChannel,
-          destination_port: packet.destinationPort,
-          destination_channel: packet.destinationChannel,
+          source_port: packet.source_port,
+          source_channel: packet.source_channel,
+          destination_port: packet.destination_port,
+          destination_channel: packet.destination_channel,
           data: packet.data,
-          timeout_height: packet.timeoutHeight ? {
-            revision_height: omitDefault(packet.timeoutHeight.revisionHeight)?.toString(),
-            revision_number: omitDefault(packet.timeoutHeight.revisionNumber)?.toString()
+          timeout_height: packet.timeout_height ? {
+            revision_height: omitDefault(packet.timeout_height.revisionHeight)?.toString(),
+            revision_number: omitDefault(packet.timeout_height.revisionNumber)?.toString()
           } : {},
-          timeout_timestamp: packet.timeoutTimestamp.toString()
+          timeout_timestamp: packet.timeout_timestamp.toString()
         },
-        proof_commitment: proofCommitment,
-        proof_height: proofHeight ? {
-          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
-          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
+        proof_commitment,
+        proof_height: proof_height ? {
+          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
+          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
         } : {},
         signer
       };
@@ -455,19 +455,19 @@ export const AminoConverter = {
       return {
         packet: {
           sequence: Long.fromString(packet.sequence),
-          sourcePort: packet.source_port,
-          sourceChannel: packet.source_channel,
-          destinationPort: packet.destination_port,
-          destinationChannel: packet.destination_channel,
+          source_port: packet.source_port,
+          source_channel: packet.source_channel,
+          destination_port: packet.destination_port,
+          destination_channel: packet.destination_channel,
           data: packet.data,
-          timeoutHeight: packet.timeout_height ? {
+          timeout_height: packet.timeout_height ? {
             revisionHeight: Long.fromString(packet.timeout_height.revision_height || "0", true),
             revisionNumber: Long.fromString(packet.timeout_height.revision_number || "0", true)
           } : undefined,
-          timeoutTimestamp: Long.fromString(packet.timeout_timestamp)
+          timeout_timestamp: Long.fromString(packet.timeout_timestamp)
         },
-        proofCommitment: proof_commitment,
-        proofHeight: proof_height ? {
+        proof_commitment,
+        proof_height: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,
@@ -479,31 +479,31 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgTimeout",
     toAmino: ({
       packet,
-      proofUnreceived,
-      proofHeight,
-      nextSequenceRecv,
+      proof_unreceived,
+      proof_height,
+      next_sequence_recv,
       signer
     }: MsgTimeout): AminoMsgTimeout["value"] => {
       return {
         packet: {
           sequence: packet.sequence.toString(),
-          source_port: packet.sourcePort,
-          source_channel: packet.sourceChannel,
-          destination_port: packet.destinationPort,
-          destination_channel: packet.destinationChannel,
+          source_port: packet.source_port,
+          source_channel: packet.source_channel,
+          destination_port: packet.destination_port,
+          destination_channel: packet.destination_channel,
           data: packet.data,
-          timeout_height: packet.timeoutHeight ? {
-            revision_height: omitDefault(packet.timeoutHeight.revisionHeight)?.toString(),
-            revision_number: omitDefault(packet.timeoutHeight.revisionNumber)?.toString()
+          timeout_height: packet.timeout_height ? {
+            revision_height: omitDefault(packet.timeout_height.revisionHeight)?.toString(),
+            revision_number: omitDefault(packet.timeout_height.revisionNumber)?.toString()
           } : {},
-          timeout_timestamp: packet.timeoutTimestamp.toString()
+          timeout_timestamp: packet.timeout_timestamp.toString()
         },
-        proof_unreceived: proofUnreceived,
-        proof_height: proofHeight ? {
-          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
-          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
+        proof_unreceived,
+        proof_height: proof_height ? {
+          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
+          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
         } : {},
-        next_sequence_recv: nextSequenceRecv.toString(),
+        next_sequence_recv: next_sequence_recv.toString(),
         signer
       };
     },
@@ -517,23 +517,23 @@ export const AminoConverter = {
       return {
         packet: {
           sequence: Long.fromString(packet.sequence),
-          sourcePort: packet.source_port,
-          sourceChannel: packet.source_channel,
-          destinationPort: packet.destination_port,
-          destinationChannel: packet.destination_channel,
+          source_port: packet.source_port,
+          source_channel: packet.source_channel,
+          destination_port: packet.destination_port,
+          destination_channel: packet.destination_channel,
           data: packet.data,
-          timeoutHeight: packet.timeout_height ? {
+          timeout_height: packet.timeout_height ? {
             revisionHeight: Long.fromString(packet.timeout_height.revision_height || "0", true),
             revisionNumber: Long.fromString(packet.timeout_height.revision_number || "0", true)
           } : undefined,
-          timeoutTimestamp: Long.fromString(packet.timeout_timestamp)
+          timeout_timestamp: Long.fromString(packet.timeout_timestamp)
         },
-        proofUnreceived: proof_unreceived,
-        proofHeight: proof_height ? {
+        proof_unreceived,
+        proof_height: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,
-        nextSequenceRecv: Long.fromString(next_sequence_recv),
+        next_sequence_recv: Long.fromString(next_sequence_recv),
         signer
       };
     }
@@ -542,33 +542,33 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgTimeoutOnClose",
     toAmino: ({
       packet,
-      proofUnreceived,
-      proofClose,
-      proofHeight,
-      nextSequenceRecv,
+      proof_unreceived,
+      proof_close,
+      proof_height,
+      next_sequence_recv,
       signer
     }: MsgTimeoutOnClose): AminoMsgTimeoutOnClose["value"] => {
       return {
         packet: {
           sequence: packet.sequence.toString(),
-          source_port: packet.sourcePort,
-          source_channel: packet.sourceChannel,
-          destination_port: packet.destinationPort,
-          destination_channel: packet.destinationChannel,
+          source_port: packet.source_port,
+          source_channel: packet.source_channel,
+          destination_port: packet.destination_port,
+          destination_channel: packet.destination_channel,
           data: packet.data,
-          timeout_height: packet.timeoutHeight ? {
-            revision_height: omitDefault(packet.timeoutHeight.revisionHeight)?.toString(),
-            revision_number: omitDefault(packet.timeoutHeight.revisionNumber)?.toString()
+          timeout_height: packet.timeout_height ? {
+            revision_height: omitDefault(packet.timeout_height.revisionHeight)?.toString(),
+            revision_number: omitDefault(packet.timeout_height.revisionNumber)?.toString()
           } : {},
-          timeout_timestamp: packet.timeoutTimestamp.toString()
+          timeout_timestamp: packet.timeout_timestamp.toString()
         },
-        proof_unreceived: proofUnreceived,
-        proof_close: proofClose,
-        proof_height: proofHeight ? {
-          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
-          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
+        proof_unreceived,
+        proof_close,
+        proof_height: proof_height ? {
+          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
+          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
         } : {},
-        next_sequence_recv: nextSequenceRecv.toString(),
+        next_sequence_recv: next_sequence_recv.toString(),
         signer
       };
     },
@@ -583,24 +583,24 @@ export const AminoConverter = {
       return {
         packet: {
           sequence: Long.fromString(packet.sequence),
-          sourcePort: packet.source_port,
-          sourceChannel: packet.source_channel,
-          destinationPort: packet.destination_port,
-          destinationChannel: packet.destination_channel,
+          source_port: packet.source_port,
+          source_channel: packet.source_channel,
+          destination_port: packet.destination_port,
+          destination_channel: packet.destination_channel,
           data: packet.data,
-          timeoutHeight: packet.timeout_height ? {
+          timeout_height: packet.timeout_height ? {
             revisionHeight: Long.fromString(packet.timeout_height.revision_height || "0", true),
             revisionNumber: Long.fromString(packet.timeout_height.revision_number || "0", true)
           } : undefined,
-          timeoutTimestamp: Long.fromString(packet.timeout_timestamp)
+          timeout_timestamp: Long.fromString(packet.timeout_timestamp)
         },
-        proofUnreceived: proof_unreceived,
-        proofClose: proof_close,
-        proofHeight: proof_height ? {
+        proof_unreceived,
+        proof_close,
+        proof_height: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,
-        nextSequenceRecv: Long.fromString(next_sequence_recv),
+        next_sequence_recv: Long.fromString(next_sequence_recv),
         signer
       };
     }
@@ -610,29 +610,29 @@ export const AminoConverter = {
     toAmino: ({
       packet,
       acknowledgement,
-      proofAcked,
-      proofHeight,
+      proof_acked,
+      proof_height,
       signer
     }: MsgAcknowledgement): AminoMsgAcknowledgement["value"] => {
       return {
         packet: {
           sequence: packet.sequence.toString(),
-          source_port: packet.sourcePort,
-          source_channel: packet.sourceChannel,
-          destination_port: packet.destinationPort,
-          destination_channel: packet.destinationChannel,
+          source_port: packet.source_port,
+          source_channel: packet.source_channel,
+          destination_port: packet.destination_port,
+          destination_channel: packet.destination_channel,
           data: packet.data,
-          timeout_height: packet.timeoutHeight ? {
-            revision_height: omitDefault(packet.timeoutHeight.revisionHeight)?.toString(),
-            revision_number: omitDefault(packet.timeoutHeight.revisionNumber)?.toString()
+          timeout_height: packet.timeout_height ? {
+            revision_height: omitDefault(packet.timeout_height.revisionHeight)?.toString(),
+            revision_number: omitDefault(packet.timeout_height.revisionNumber)?.toString()
           } : {},
-          timeout_timestamp: packet.timeoutTimestamp.toString()
+          timeout_timestamp: packet.timeout_timestamp.toString()
         },
         acknowledgement,
-        proof_acked: proofAcked,
-        proof_height: proofHeight ? {
-          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
-          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
+        proof_acked,
+        proof_height: proof_height ? {
+          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
+          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
         } : {},
         signer
       };
@@ -647,20 +647,20 @@ export const AminoConverter = {
       return {
         packet: {
           sequence: Long.fromString(packet.sequence),
-          sourcePort: packet.source_port,
-          sourceChannel: packet.source_channel,
-          destinationPort: packet.destination_port,
-          destinationChannel: packet.destination_channel,
+          source_port: packet.source_port,
+          source_channel: packet.source_channel,
+          destination_port: packet.destination_port,
+          destination_channel: packet.destination_channel,
           data: packet.data,
-          timeoutHeight: packet.timeout_height ? {
+          timeout_height: packet.timeout_height ? {
             revisionHeight: Long.fromString(packet.timeout_height.revision_height || "0", true),
             revisionNumber: Long.fromString(packet.timeout_height.revision_number || "0", true)
           } : undefined,
-          timeoutTimestamp: Long.fromString(packet.timeout_timestamp)
+          timeout_timestamp: Long.fromString(packet.timeout_timestamp)
         },
         acknowledgement,
-        proofAcked: proof_acked,
-        proofHeight: proof_height ? {
+        proof_acked,
+        proof_height: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,

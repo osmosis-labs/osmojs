@@ -11,7 +11,7 @@ export interface AminoMsgVerifyInvariant extends AminoMsg {
 export declare const AminoConverter: {
     "/cosmos.crisis.v1beta1.MsgVerifyInvariant": {
         aminoType: string;
-        toAmino: ({ sender, invariantModuleName, invariantRoute }: MsgVerifyInvariant) => AminoMsgVerifyInvariant["value"];
+        toAmino: ({ sender, invariant_module_name, invariant_route }: MsgVerifyInvariant) => AminoMsgVerifyInvariant["value"];
         fromAmino: ({ sender, invariant_module_name, invariant_route }: AminoMsgVerifyInvariant["value"]) => MsgVerifyInvariant;
     };
 };

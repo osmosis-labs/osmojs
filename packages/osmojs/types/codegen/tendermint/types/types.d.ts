@@ -38,33 +38,33 @@ export interface Part {
 /** BlockID */
 export interface BlockID {
     hash: Uint8Array;
-    partSetHeader: PartSetHeader;
+    part_set_header: PartSetHeader;
 }
 /** Header defines the structure of a Tendermint block header. */
 export interface Header {
     /** basic block info */
     version: Consensus;
-    chainId: string;
+    chain_id: string;
     height: Long;
     time: Date;
     /** prev block info */
-    lastBlockId: BlockID;
+    last_block_id: BlockID;
     /** hashes of block data */
-    lastCommitHash: Uint8Array;
-    dataHash: Uint8Array;
+    last_commit_hash: Uint8Array;
+    data_hash: Uint8Array;
     /** hashes from the app output from the prev block */
-    validatorsHash: Uint8Array;
+    validators_hash: Uint8Array;
     /** validators for the next block */
-    nextValidatorsHash: Uint8Array;
+    next_validators_hash: Uint8Array;
     /** consensus params for current block */
-    consensusHash: Uint8Array;
+    consensus_hash: Uint8Array;
     /** state after txs from the previous block */
-    appHash: Uint8Array;
-    lastResultsHash: Uint8Array;
+    app_hash: Uint8Array;
+    last_results_hash: Uint8Array;
     /** consensus info */
-    evidenceHash: Uint8Array;
+    evidence_hash: Uint8Array;
     /** original proposer of the block */
-    proposerAddress: Uint8Array;
+    proposer_address: Uint8Array;
 }
 /** Data contains the set of transactions included in the block */
 export interface Data {
@@ -84,23 +84,23 @@ export interface Vote {
     height: Long;
     round: number;
     /** zero if vote is nil. */
-    blockId: BlockID;
+    block_id: BlockID;
     timestamp: Date;
-    validatorAddress: Uint8Array;
-    validatorIndex: number;
+    validator_address: Uint8Array;
+    validator_index: number;
     signature: Uint8Array;
 }
 /** Commit contains the evidence that a block was committed by a set of validators. */
 export interface Commit {
     height: Long;
     round: number;
-    blockId: BlockID;
+    block_id: BlockID;
     signatures: CommitSig[];
 }
 /** CommitSig is a part of the Vote included in a Commit. */
 export interface CommitSig {
-    blockIdFlag: BlockIDFlag;
-    validatorAddress: Uint8Array;
+    block_id_flag: BlockIDFlag;
+    validator_address: Uint8Array;
     timestamp: Date;
     signature: Uint8Array;
 }
@@ -108,8 +108,8 @@ export interface Proposal {
     type: SignedMsgType;
     height: Long;
     round: number;
-    polRound: number;
-    blockId: BlockID;
+    pol_round: number;
+    block_id: BlockID;
     timestamp: Date;
     signature: Uint8Array;
 }
@@ -118,18 +118,18 @@ export interface SignedHeader {
     commit: Commit;
 }
 export interface LightBlock {
-    signedHeader: SignedHeader;
-    validatorSet: ValidatorSet;
+    signed_header: SignedHeader;
+    validator_set: ValidatorSet;
 }
 export interface BlockMeta {
-    blockId: BlockID;
-    blockSize: Long;
+    block_id: BlockID;
+    block_size: Long;
     header: Header;
-    numTxs: Long;
+    num_txs: Long;
 }
 /** TxProof represents a Merkle proof of the presence of a transaction in the Merkle tree. */
 export interface TxProof {
-    rootHash: Uint8Array;
+    root_hash: Uint8Array;
     data: Uint8Array;
     proof: Proof;
 }

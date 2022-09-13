@@ -7,22 +7,22 @@ export interface MsgCreateGauge {
      * flag to show if it's perpetual or multi-epoch
      * distribution incentives by third party
      */
-    isPerpetual: boolean;
+    is_perpetual: boolean;
     owner: string;
     /** distribute condition of a lock which meet one of these conditions */
-    distributeTo: QueryCondition;
+    distribute_to: QueryCondition;
     /** can distribute multiple coins */
     coins: Coin[];
     /** distribution start time */
-    startTime: Date;
+    start_time: Date;
     /** number of epochs distribution will be done */
-    numEpochsPaidOver: Long;
+    num_epochs_paid_over: Long;
 }
 export interface MsgCreateGaugeResponse {
 }
 export interface MsgAddToGauge {
     owner: string;
-    gaugeId: Long;
+    gauge_id: Long;
     rewards: Coin[];
 }
 export interface MsgAddToGaugeResponse {

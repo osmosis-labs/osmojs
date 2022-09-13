@@ -16,7 +16,7 @@ export interface QueryDenomTraceRequest {
  */
 export interface QueryDenomTraceResponse {
     /** denom_trace returns the requested denomination trace information. */
-    denomTrace: DenomTrace;
+    denom_trace: DenomTrace;
 }
 /**
  * QueryConnectionsRequest is the request type for the Query/DenomTraces RPC
@@ -24,7 +24,7 @@ export interface QueryDenomTraceResponse {
  */
 export interface QueryDenomTracesRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QueryConnectionsResponse is the response type for the Query/DenomTraces RPC
@@ -32,9 +32,9 @@ export interface QueryDenomTracesRequest {
  */
 export interface QueryDenomTracesResponse {
     /** denom_traces returns all denominations trace information. */
-    denomTraces: DenomTrace[];
+    denom_traces: DenomTrace[];
     /** pagination defines the pagination in the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {

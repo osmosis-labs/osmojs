@@ -6,10 +6,10 @@ export interface MsgCreateBalancerPool {
     sender: string;
     poolParams: PoolParams;
     poolAssets: PoolAsset[];
-    futurePoolGovernor: string;
+    future_pool_governor: string;
 }
 export interface MsgCreateBalancerPoolResponse {
-    poolId: Long;
+    pool_id: Long;
 }
 export declare const MsgCreateBalancerPool: {
     encode(message: MsgCreateBalancerPool, writer?: _m0.Writer): _m0.Writer;

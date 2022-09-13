@@ -7,19 +7,19 @@ export interface Params {
    * the risk_factor is to be cut on OSMO equivalent value of lp tokens for
    * superfluid staking, default: 5%
    */
-  minimumRiskFactor: string;
+  minimum_risk_factor: string;
 }
 
 function createBaseParams(): Params {
   return {
-    minimumRiskFactor: ""
+    minimum_risk_factor: ""
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.minimumRiskFactor !== "") {
-      writer.uint32(10).string(message.minimumRiskFactor);
+    if (message.minimum_risk_factor !== "") {
+      writer.uint32(10).string(message.minimum_risk_factor);
     }
 
     return writer;
@@ -35,7 +35,7 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.minimumRiskFactor = reader.string();
+          message.minimum_risk_factor = reader.string();
           break;
 
         default:
@@ -49,19 +49,19 @@ export const Params = {
 
   fromJSON(object: any): Params {
     return {
-      minimumRiskFactor: isSet(object.minimumRiskFactor) ? String(object.minimumRiskFactor) : ""
+      minimum_risk_factor: isSet(object.minimum_risk_factor) ? String(object.minimum_risk_factor) : ""
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    message.minimumRiskFactor !== undefined && (obj.minimumRiskFactor = message.minimumRiskFactor);
+    message.minimum_risk_factor !== undefined && (obj.minimum_risk_factor = message.minimum_risk_factor);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.minimumRiskFactor = object.minimumRiskFactor ?? "";
+    message.minimum_risk_factor = object.minimum_risk_factor ?? "";
     return message;
   }
 

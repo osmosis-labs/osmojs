@@ -3,7 +3,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** Params holds parameters for the incentives module */
 export interface Params {
     /** distribution epoch identifier */
-    distrEpochIdentifier: string;
+    distr_epoch_identifier: string;
 }
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;

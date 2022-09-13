@@ -4,12 +4,12 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 /** Params holds parameters for the incentives module */
 export interface Params {
-    poolCreationFee: Coin[];
+    pool_creation_fee: Coin[];
 }
 /** GenesisState defines the gamm module's genesis state. */
 export interface GenesisState {
     pools: Any[];
-    nextPoolNumber: Long;
+    next_pool_number: Long;
     params: Params;
 }
 export declare const Params: {

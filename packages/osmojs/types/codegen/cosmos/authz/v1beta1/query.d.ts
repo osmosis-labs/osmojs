@@ -7,42 +7,42 @@ export interface QueryGrantsRequest {
     granter: string;
     grantee: string;
     /** Optional, msg_type_url, when set, will query only grants matching given msg type. */
-    msgTypeUrl: string;
+    msg_type_url: string;
     /** pagination defines an pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /** QueryGrantsResponse is the response type for the Query/Authorizations RPC method. */
 export interface QueryGrantsResponse {
     /** authorizations is a list of grants granted for grantee by granter. */
     grants: Grant[];
     /** pagination defines an pagination for the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /** QueryGranterGrantsRequest is the request type for the Query/GranterGrants RPC method. */
 export interface QueryGranterGrantsRequest {
     granter: string;
     /** pagination defines an pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /** QueryGranterGrantsResponse is the response type for the Query/GranterGrants RPC method. */
 export interface QueryGranterGrantsResponse {
     /** grants is a list of grants granted by the granter. */
     grants: GrantAuthorization[];
     /** pagination defines an pagination for the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /** QueryGranteeGrantsRequest is the request type for the Query/IssuedGrants RPC method. */
 export interface QueryGranteeGrantsRequest {
     grantee: string;
     /** pagination defines an pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /** QueryGranteeGrantsResponse is the response type for the Query/GranteeGrants RPC method. */
 export interface QueryGranteeGrantsResponse {
     /** grants is a list of grants granted to the grantee. */
     grants: GrantAuthorization[];
     /** pagination defines an pagination for the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 export declare const QueryGrantsRequest: {
     encode(message: QueryGrantsRequest, writer?: _m0.Writer): _m0.Writer;

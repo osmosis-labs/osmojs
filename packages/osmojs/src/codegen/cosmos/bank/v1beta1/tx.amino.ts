@@ -36,13 +36,13 @@ export const AminoConverter = {
   "/cosmos.bank.v1beta1.MsgSend": {
     aminoType: "cosmos-sdk/MsgSend",
     toAmino: ({
-      fromAddress,
-      toAddress,
+      from_address,
+      to_address,
       amount
     }: MsgSend): AminoMsgSend["value"] => {
       return {
-        from_address: fromAddress,
-        to_address: toAddress,
+        from_address,
+        to_address,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
@@ -55,8 +55,8 @@ export const AminoConverter = {
       amount
     }: AminoMsgSend["value"]): MsgSend => {
       return {
-        fromAddress: from_address,
-        toAddress: to_address,
+        from_address,
+        to_address,
         amount: amount.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount

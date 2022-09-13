@@ -6,7 +6,7 @@ export interface GenesisOwners {
     /** index is the index of the capability owner. */
     index: Long;
     /** index_owners are the owners at the given index. */
-    indexOwners: CapabilityOwners;
+    index_owners: CapabilityOwners;
 }
 /** GenesisState defines the capability module's genesis state. */
 export interface GenesisState {

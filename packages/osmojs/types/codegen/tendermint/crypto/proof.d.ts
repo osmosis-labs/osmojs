@@ -3,7 +3,7 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface Proof {
     total: Long;
     index: Long;
-    leafHash: Uint8Array;
+    leaf_hash: Uint8Array;
     aunts: Uint8Array[];
 }
 export interface ValueOp {

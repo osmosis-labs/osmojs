@@ -9,11 +9,11 @@ export interface StoreCodeProposal {
     /** Description is a human readable text */
     description: string;
     /** RunAs is the address that is passed to the contract's environment as sender */
-    runAs: string;
+    run_as: string;
     /** WASMByteCode can be raw or gzip compressed */
-    wasmByteCode: Uint8Array;
+    wasm_byte_code: Uint8Array;
     /** InstantiatePermission to apply on contract creation, optional */
-    instantiatePermission: AccessConfig;
+    instantiate_permission: AccessConfig;
 }
 /**
  * InstantiateContractProposal gov proposal content type to instantiate a
@@ -25,11 +25,11 @@ export interface InstantiateContractProposal {
     /** Description is a human readable text */
     description: string;
     /** RunAs is the address that is passed to the contract's environment as sender */
-    runAs: string;
+    run_as: string;
     /** Admin is an optional address that can execute migrations */
     admin: string;
     /** CodeID is the reference to the stored WASM code */
-    codeId: Long;
+    code_id: Long;
     /** Label is optional metadata to be stored with a constract instance. */
     label: string;
     /** Msg json encoded message to be passed to the contract on instantiation */
@@ -46,7 +46,7 @@ export interface MigrateContractProposal {
     /** Contract is the address of the smart contract */
     contract: string;
     /** CodeID references the new WASM codesudo */
-    codeId: Long;
+    code_id: Long;
     /** Msg json encoded message to be passed to the contract on migration */
     msg: Uint8Array;
 }
@@ -71,7 +71,7 @@ export interface ExecuteContractProposal {
     /** Description is a human readable text */
     description: string;
     /** RunAs is the address that is passed to the contract's environment as sender */
-    runAs: string;
+    run_as: string;
     /** Contract is the address of the smart contract */
     contract: string;
     /** Msg json encoded message to be passed to the contract as execute */
@@ -86,7 +86,7 @@ export interface UpdateAdminProposal {
     /** Description is a human readable text */
     description: string;
     /** NewAdmin address to be set */
-    newAdmin: string;
+    new_admin: string;
     /** Contract is the address of the smart contract */
     contract: string;
 }
@@ -112,7 +112,7 @@ export interface PinCodesProposal {
     /** Description is a human readable text */
     description: string;
     /** CodeIDs references the new WASM codes */
-    codeIds: Long[];
+    code_ids: Long[];
 }
 /**
  * UnpinCodesProposal gov proposal content type to unpin a set of code ids in
@@ -124,7 +124,7 @@ export interface UnpinCodesProposal {
     /** Description is a human readable text */
     description: string;
     /** CodeIDs references the WASM codes */
-    codeIds: Long[];
+    code_ids: Long[];
 }
 export declare const StoreCodeProposal: {
     encode(message: StoreCodeProposal, writer?: _m0.Writer): _m0.Writer;

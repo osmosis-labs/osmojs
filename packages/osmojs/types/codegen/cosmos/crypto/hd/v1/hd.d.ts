@@ -5,7 +5,7 @@ export interface BIP44Params {
     /** purpose is a constant set to 44' (or 0x8000002C) following the BIP43 recommendation */
     purpose: number;
     /** coin_type is a constant that improves privacy */
-    coinType: number;
+    coin_type: number;
     /** account splits the key space into independent user identities */
     account: number;
     /**
@@ -14,7 +14,7 @@ export interface BIP44Params {
      */
     change: boolean;
     /** address_index is used as child index in BIP32 derivation */
-    addressIndex: number;
+    address_index: number;
 }
 export declare const BIP44Params: {
     encode(message: BIP44Params, writer?: _m0.Writer): _m0.Writer;

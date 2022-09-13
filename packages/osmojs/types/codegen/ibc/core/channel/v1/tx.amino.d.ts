@@ -158,52 +158,52 @@ export interface AminoMsgAcknowledgement extends AminoMsg {
 export declare const AminoConverter: {
     "/ibc.core.channel.v1.MsgChannelOpenInit": {
         aminoType: string;
-        toAmino: ({ portId, channel, signer }: MsgChannelOpenInit) => AminoMsgChannelOpenInit["value"];
+        toAmino: ({ port_id, channel, signer }: MsgChannelOpenInit) => AminoMsgChannelOpenInit["value"];
         fromAmino: ({ port_id, channel, signer }: AminoMsgChannelOpenInit["value"]) => MsgChannelOpenInit;
     };
     "/ibc.core.channel.v1.MsgChannelOpenTry": {
         aminoType: string;
-        toAmino: ({ portId, previousChannelId, channel, counterpartyVersion, proofInit, proofHeight, signer }: MsgChannelOpenTry) => AminoMsgChannelOpenTry["value"];
+        toAmino: ({ port_id, previous_channel_id, channel, counterparty_version, proof_init, proof_height, signer }: MsgChannelOpenTry) => AminoMsgChannelOpenTry["value"];
         fromAmino: ({ port_id, previous_channel_id, channel, counterparty_version, proof_init, proof_height, signer }: AminoMsgChannelOpenTry["value"]) => MsgChannelOpenTry;
     };
     "/ibc.core.channel.v1.MsgChannelOpenAck": {
         aminoType: string;
-        toAmino: ({ portId, channelId, counterpartyChannelId, counterpartyVersion, proofTry, proofHeight, signer }: MsgChannelOpenAck) => AminoMsgChannelOpenAck["value"];
+        toAmino: ({ port_id, channel_id, counterparty_channel_id, counterparty_version, proof_try, proof_height, signer }: MsgChannelOpenAck) => AminoMsgChannelOpenAck["value"];
         fromAmino: ({ port_id, channel_id, counterparty_channel_id, counterparty_version, proof_try, proof_height, signer }: AminoMsgChannelOpenAck["value"]) => MsgChannelOpenAck;
     };
     "/ibc.core.channel.v1.MsgChannelOpenConfirm": {
         aminoType: string;
-        toAmino: ({ portId, channelId, proofAck, proofHeight, signer }: MsgChannelOpenConfirm) => AminoMsgChannelOpenConfirm["value"];
+        toAmino: ({ port_id, channel_id, proof_ack, proof_height, signer }: MsgChannelOpenConfirm) => AminoMsgChannelOpenConfirm["value"];
         fromAmino: ({ port_id, channel_id, proof_ack, proof_height, signer }: AminoMsgChannelOpenConfirm["value"]) => MsgChannelOpenConfirm;
     };
     "/ibc.core.channel.v1.MsgChannelCloseInit": {
         aminoType: string;
-        toAmino: ({ portId, channelId, signer }: MsgChannelCloseInit) => AminoMsgChannelCloseInit["value"];
+        toAmino: ({ port_id, channel_id, signer }: MsgChannelCloseInit) => AminoMsgChannelCloseInit["value"];
         fromAmino: ({ port_id, channel_id, signer }: AminoMsgChannelCloseInit["value"]) => MsgChannelCloseInit;
     };
     "/ibc.core.channel.v1.MsgChannelCloseConfirm": {
         aminoType: string;
-        toAmino: ({ portId, channelId, proofInit, proofHeight, signer }: MsgChannelCloseConfirm) => AminoMsgChannelCloseConfirm["value"];
+        toAmino: ({ port_id, channel_id, proof_init, proof_height, signer }: MsgChannelCloseConfirm) => AminoMsgChannelCloseConfirm["value"];
         fromAmino: ({ port_id, channel_id, proof_init, proof_height, signer }: AminoMsgChannelCloseConfirm["value"]) => MsgChannelCloseConfirm;
     };
     "/ibc.core.channel.v1.MsgRecvPacket": {
         aminoType: string;
-        toAmino: ({ packet, proofCommitment, proofHeight, signer }: MsgRecvPacket) => AminoMsgRecvPacket["value"];
+        toAmino: ({ packet, proof_commitment, proof_height, signer }: MsgRecvPacket) => AminoMsgRecvPacket["value"];
         fromAmino: ({ packet, proof_commitment, proof_height, signer }: AminoMsgRecvPacket["value"]) => MsgRecvPacket;
     };
     "/ibc.core.channel.v1.MsgTimeout": {
         aminoType: string;
-        toAmino: ({ packet, proofUnreceived, proofHeight, nextSequenceRecv, signer }: MsgTimeout) => AminoMsgTimeout["value"];
+        toAmino: ({ packet, proof_unreceived, proof_height, next_sequence_recv, signer }: MsgTimeout) => AminoMsgTimeout["value"];
         fromAmino: ({ packet, proof_unreceived, proof_height, next_sequence_recv, signer }: AminoMsgTimeout["value"]) => MsgTimeout;
     };
     "/ibc.core.channel.v1.MsgTimeoutOnClose": {
         aminoType: string;
-        toAmino: ({ packet, proofUnreceived, proofClose, proofHeight, nextSequenceRecv, signer }: MsgTimeoutOnClose) => AminoMsgTimeoutOnClose["value"];
+        toAmino: ({ packet, proof_unreceived, proof_close, proof_height, next_sequence_recv, signer }: MsgTimeoutOnClose) => AminoMsgTimeoutOnClose["value"];
         fromAmino: ({ packet, proof_unreceived, proof_close, proof_height, next_sequence_recv, signer }: AminoMsgTimeoutOnClose["value"]) => MsgTimeoutOnClose;
     };
     "/ibc.core.channel.v1.MsgAcknowledgement": {
         aminoType: string;
-        toAmino: ({ packet, acknowledgement, proofAcked, proofHeight, signer }: MsgAcknowledgement) => AminoMsgAcknowledgement["value"];
+        toAmino: ({ packet, acknowledgement, proof_acked, proof_height, signer }: MsgAcknowledgement) => AminoMsgAcknowledgement["value"];
         fromAmino: ({ packet, acknowledgement, proof_acked, proof_height, signer }: AminoMsgAcknowledgement["value"]) => MsgAcknowledgement;
     };
 };

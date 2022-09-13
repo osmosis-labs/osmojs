@@ -14,7 +14,7 @@ export interface QueryDenomAuthorityMetadataRequest {
     denom: string;
 }
 export interface QueryDenomAuthorityMetadataResponse {
-    authorityMetadata: DenomAuthorityMetadata;
+    authority_metadata: DenomAuthorityMetadata;
 }
 export interface QueryDenomsFromCreatorRequest {
     creator: string;

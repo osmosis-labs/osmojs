@@ -60,7 +60,7 @@ export interface AminoMsgDeposit extends AminoMsg {
 export declare const AminoConverter: {
     "/cosmos.gov.v1.MsgSubmitProposal": {
         aminoType: string;
-        toAmino: ({ messages, initialDeposit, proposer, metadata }: MsgSubmitProposal) => AminoMsgSubmitProposal["value"];
+        toAmino: ({ messages, initial_deposit, proposer, metadata }: MsgSubmitProposal) => AminoMsgSubmitProposal["value"];
         fromAmino: ({ messages, initial_deposit, proposer, metadata }: AminoMsgSubmitProposal["value"]) => MsgSubmitProposal;
     };
     "/cosmos.gov.v1.MsgExecLegacyContent": {
@@ -70,17 +70,17 @@ export declare const AminoConverter: {
     };
     "/cosmos.gov.v1.MsgVote": {
         aminoType: string;
-        toAmino: ({ proposalId, voter, option, metadata }: MsgVote) => AminoMsgVote["value"];
+        toAmino: ({ proposal_id, voter, option, metadata }: MsgVote) => AminoMsgVote["value"];
         fromAmino: ({ proposal_id, voter, option, metadata }: AminoMsgVote["value"]) => MsgVote;
     };
     "/cosmos.gov.v1.MsgVoteWeighted": {
         aminoType: string;
-        toAmino: ({ proposalId, voter, options, metadata }: MsgVoteWeighted) => AminoMsgVoteWeighted["value"];
+        toAmino: ({ proposal_id, voter, options, metadata }: MsgVoteWeighted) => AminoMsgVoteWeighted["value"];
         fromAmino: ({ proposal_id, voter, options, metadata }: AminoMsgVoteWeighted["value"]) => MsgVoteWeighted;
     };
     "/cosmos.gov.v1.MsgDeposit": {
         aminoType: string;
-        toAmino: ({ proposalId, depositor, amount }: MsgDeposit) => AminoMsgDeposit["value"];
+        toAmino: ({ proposal_id, depositor, amount }: MsgDeposit) => AminoMsgDeposit["value"];
         fromAmino: ({ proposal_id, depositor, amount }: AminoMsgDeposit["value"]) => MsgDeposit;
     };
 };

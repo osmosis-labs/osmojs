@@ -8,7 +8,7 @@ import { DeepPartial } from "@osmonauts/helpers";
  * Since: cosmos-sdk 0.43
  */
 export interface SendAuthorization {
-    spendLimit: Coin[];
+    spend_limit: Coin[];
 }
 export declare const SendAuthorization: {
     encode(message: SendAuthorization, writer?: _m0.Writer): _m0.Writer;

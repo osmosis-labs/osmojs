@@ -23,7 +23,7 @@ export interface MsgCreateDenom {
  * It returns the full string of the newly created denom
  */
 export interface MsgCreateDenomResponse {
-  newTokenDenom: string;
+  new_token_denom: string;
 }
 
 /**
@@ -128,14 +128,14 @@ export const MsgCreateDenom = {
 
 function createBaseMsgCreateDenomResponse(): MsgCreateDenomResponse {
   return {
-    newTokenDenom: ""
+    new_token_denom: ""
   };
 }
 
 export const MsgCreateDenomResponse = {
   encode(message: MsgCreateDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.newTokenDenom !== "") {
-      writer.uint32(10).string(message.newTokenDenom);
+    if (message.new_token_denom !== "") {
+      writer.uint32(10).string(message.new_token_denom);
     }
 
     return writer;
@@ -151,7 +151,7 @@ export const MsgCreateDenomResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.newTokenDenom = reader.string();
+          message.new_token_denom = reader.string();
           break;
 
         default:
@@ -165,19 +165,19 @@ export const MsgCreateDenomResponse = {
 
   fromJSON(object: any): MsgCreateDenomResponse {
     return {
-      newTokenDenom: isSet(object.newTokenDenom) ? String(object.newTokenDenom) : ""
+      new_token_denom: isSet(object.new_token_denom) ? String(object.new_token_denom) : ""
     };
   },
 
   toJSON(message: MsgCreateDenomResponse): unknown {
     const obj: any = {};
-    message.newTokenDenom !== undefined && (obj.newTokenDenom = message.newTokenDenom);
+    message.new_token_denom !== undefined && (obj.new_token_denom = message.new_token_denom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgCreateDenomResponse>): MsgCreateDenomResponse {
     const message = createBaseMsgCreateDenomResponse();
-    message.newTokenDenom = object.newTokenDenom ?? "";
+    message.new_token_denom = object.new_token_denom ?? "";
     return message;
   }
 

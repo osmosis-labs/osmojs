@@ -32,8 +32,8 @@ export const AminoConverter = {
     toAmino: ({
       sender,
       poolParams,
-      initialPoolLiquidity,
-      futurePoolGovernor
+      initial_pool_liquidity,
+      future_pool_governor
     }: MsgCreateStableswapPool): AminoMsgCreateStableswapPool["value"] => {
       return {
         sender,
@@ -41,11 +41,11 @@ export const AminoConverter = {
           swapFee: poolParams.swapFee,
           exitFee: poolParams.exitFee
         },
-        initial_pool_liquidity: initialPoolLiquidity.map(el0 => ({
+        initial_pool_liquidity: initial_pool_liquidity.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         })),
-        future_pool_governor: futurePoolGovernor
+        future_pool_governor
       };
     },
     fromAmino: ({
@@ -60,11 +60,11 @@ export const AminoConverter = {
           swapFee: poolParams.swapFee,
           exitFee: poolParams.exitFee
         },
-        initialPoolLiquidity: initial_pool_liquidity.map(el0 => ({
+        initial_pool_liquidity: initial_pool_liquidity.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         })),
-        futurePoolGovernor: future_pool_governor
+        future_pool_governor
       };
     }
   },
@@ -72,13 +72,13 @@ export const AminoConverter = {
     aminoType: "osmosis/gamm/stable-swap-adjust-scaling-factors",
     toAmino: ({
       sender,
-      poolId,
-      scalingFactors
+      pool_id,
+      scaling_factors
     }: MsgStableSwapAdjustScalingFactors): AminoMsgStableSwapAdjustScalingFactors["value"] => {
       return {
         sender,
-        pool_id: poolId.toString(),
-        scaling_factors: scalingFactors.map(el0 => el0.toString())
+        pool_id: pool_id.toString(),
+        scaling_factors: scaling_factors.map(el0 => el0.toString())
       };
     },
     fromAmino: ({
@@ -88,8 +88,8 @@ export const AminoConverter = {
     }: AminoMsgStableSwapAdjustScalingFactors["value"]): MsgStableSwapAdjustScalingFactors => {
       return {
         sender,
-        poolId: Long.fromString(pool_id),
-        scalingFactors: scaling_factors.map(el0 => Long.fromString(el0))
+        pool_id: Long.fromString(pool_id),
+        scaling_factors: scaling_factors.map(el0 => Long.fromString(el0))
       };
     }
   }
