@@ -43,8 +43,8 @@ describe("AminoTypes", () => {
 
         it("works for MsgSetWithdrawAddress", async () => {
             const msg: MsgSetWithdrawAddress = {
-                delegatorAddress: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
-                withdrawAddress: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
+                delegator_address: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
+                withdraw_address: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
             };
             const aminoTypes = new AminoTypes({ ...AminoConverter });
             const aminoMsg = aminoTypes.toAmino({
@@ -63,8 +63,8 @@ describe("AminoTypes", () => {
 
         it("works for MsgWithdrawDelegatorReward", async () => {
             const msg: MsgWithdrawDelegatorReward = {
-                delegatorAddress: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
-                validatorAddress: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
+                delegator_address: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
+                validator_address: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
             };
             const aminoTypes = new AminoTypes({ ...AminoConverter });
             const aminoMsg = aminoTypes.toAmino({
@@ -83,7 +83,7 @@ describe("AminoTypes", () => {
 
         it("works for MsgWithdrawValidatorCommission", async () => {
             const msg: MsgWithdrawValidatorCommission = {
-                validatorAddress: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
+                validator_address: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
             };
             const aminoTypes = new AminoTypes({ ...AminoConverter });
             const aminoMsg = aminoTypes.toAmino({
