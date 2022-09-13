@@ -43,27 +43,27 @@ export interface AminoMsgUnPoolWhitelistedPool extends AminoMsg {
 export declare const AminoConverter: {
     "/osmosis.superfluid.MsgSuperfluidDelegate": {
         aminoType: string;
-        toAmino: ({ sender, lockId, valAddr }: MsgSuperfluidDelegate) => AminoMsgSuperfluidDelegate["value"];
+        toAmino: ({ sender, lock_id, val_addr }: MsgSuperfluidDelegate) => AminoMsgSuperfluidDelegate["value"];
         fromAmino: ({ sender, lock_id, val_addr }: AminoMsgSuperfluidDelegate["value"]) => MsgSuperfluidDelegate;
     };
     "/osmosis.superfluid.MsgSuperfluidUndelegate": {
         aminoType: string;
-        toAmino: ({ sender, lockId }: MsgSuperfluidUndelegate) => AminoMsgSuperfluidUndelegate["value"];
+        toAmino: ({ sender, lock_id }: MsgSuperfluidUndelegate) => AminoMsgSuperfluidUndelegate["value"];
         fromAmino: ({ sender, lock_id }: AminoMsgSuperfluidUndelegate["value"]) => MsgSuperfluidUndelegate;
     };
     "/osmosis.superfluid.MsgSuperfluidUnbondLock": {
         aminoType: string;
-        toAmino: ({ sender, lockId }: MsgSuperfluidUnbondLock) => AminoMsgSuperfluidUnbondLock["value"];
+        toAmino: ({ sender, lock_id }: MsgSuperfluidUnbondLock) => AminoMsgSuperfluidUnbondLock["value"];
         fromAmino: ({ sender, lock_id }: AminoMsgSuperfluidUnbondLock["value"]) => MsgSuperfluidUnbondLock;
     };
     "/osmosis.superfluid.MsgLockAndSuperfluidDelegate": {
         aminoType: string;
-        toAmino: ({ sender, coins, valAddr }: MsgLockAndSuperfluidDelegate) => AminoMsgLockAndSuperfluidDelegate["value"];
+        toAmino: ({ sender, coins, val_addr }: MsgLockAndSuperfluidDelegate) => AminoMsgLockAndSuperfluidDelegate["value"];
         fromAmino: ({ sender, coins, val_addr }: AminoMsgLockAndSuperfluidDelegate["value"]) => MsgLockAndSuperfluidDelegate;
     };
     "/osmosis.superfluid.MsgUnPoolWhitelistedPool": {
         aminoType: string;
-        toAmino: ({ sender, poolId }: MsgUnPoolWhitelistedPool) => AminoMsgUnPoolWhitelistedPool["value"];
+        toAmino: ({ sender, pool_id }: MsgUnPoolWhitelistedPool) => AminoMsgUnPoolWhitelistedPool["value"];
         fromAmino: ({ sender, pool_id }: AminoMsgUnPoolWhitelistedPool["value"]) => MsgUnPoolWhitelistedPool;
     };
 };

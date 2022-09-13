@@ -4,20 +4,20 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** QueryAppVersionRequest is the request type for the Query/AppVersion RPC method */
 export interface QueryAppVersionRequest {
     /** port unique identifier */
-    portId: string;
+    port_id: string;
     /** connection unique identifier */
-    connectionId: string;
+    connection_id: string;
     /** whether the channel is ordered or unordered */
     ordering: Order;
     /** counterparty channel end */
     counterparty: Counterparty;
     /** proposed version */
-    proposedVersion: string;
+    proposed_version: string;
 }
 /** QueryAppVersionResponse is the response type for the Query/AppVersion RPC method. */
 export interface QueryAppVersionResponse {
     /** port id associated with the request identifiers */
-    portId: string;
+    port_id: string;
     /** supported app version */
     version: string;
 }

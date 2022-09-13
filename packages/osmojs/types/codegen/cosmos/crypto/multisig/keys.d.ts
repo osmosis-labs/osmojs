@@ -8,7 +8,7 @@ import { DeepPartial } from "@osmonauts/helpers";
  */
 export interface LegacyAminoPubKey {
     threshold: number;
-    publicKeys: Any[];
+    public_keys: Any[];
 }
 export declare const LegacyAminoPubKey: {
     encode(message: LegacyAminoPubKey, writer?: _m0.Writer): _m0.Writer;

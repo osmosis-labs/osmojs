@@ -21,7 +21,7 @@ export declare const cosmos_proto: {
         fromPartial(object: {
             name?: string;
             description?: string;
-            fieldType?: _1.ScalarType[];
+            field_type?: _1.ScalarType[];
         }): _1.ScalarDescriptor;
     };
 };

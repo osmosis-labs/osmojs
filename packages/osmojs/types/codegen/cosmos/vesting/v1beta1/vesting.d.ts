@@ -7,19 +7,19 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  * the necessary fields needed for any vesting account implementation.
  */
 export interface BaseVestingAccount {
-    baseAccount: BaseAccount;
-    originalVesting: Coin[];
-    delegatedFree: Coin[];
-    delegatedVesting: Coin[];
-    endTime: Long;
+    base_account: BaseAccount;
+    original_vesting: Coin[];
+    delegated_free: Coin[];
+    delegated_vesting: Coin[];
+    end_time: Long;
 }
 /**
  * ContinuousVestingAccount implements the VestingAccount interface. It
  * continuously vests by unlocking coins linearly with respect to time.
  */
 export interface ContinuousVestingAccount {
-    baseVestingAccount: BaseVestingAccount;
-    startTime: Long;
+    base_vesting_account: BaseVestingAccount;
+    start_time: Long;
 }
 /**
  * DelayedVestingAccount implements the VestingAccount interface. It vests all
@@ -27,7 +27,7 @@ export interface ContinuousVestingAccount {
  * locked until a specified time.
  */
 export interface DelayedVestingAccount {
-    baseVestingAccount: BaseVestingAccount;
+    base_vesting_account: BaseVestingAccount;
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface Period {
@@ -39,9 +39,9 @@ export interface Period {
  * periodically vests by unlocking coins during each specified period.
  */
 export interface PeriodicVestingAccount {
-    baseVestingAccount: BaseVestingAccount;
-    startTime: Long;
-    vestingPeriods: Period[];
+    base_vesting_account: BaseVestingAccount;
+    start_time: Long;
+    vesting_periods: Period[];
 }
 /**
  * PermanentLockedAccount implements the VestingAccount interface. It does
@@ -51,7 +51,7 @@ export interface PeriodicVestingAccount {
  * Since: cosmos-sdk 0.43
  */
 export interface PermanentLockedAccount {
-    baseVestingAccount: BaseVestingAccount;
+    base_vesting_account: BaseVestingAccount;
 }
 export declare const BaseVestingAccount: {
     encode(message: BaseVestingAccount, writer?: _m0.Writer): _m0.Writer;

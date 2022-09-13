@@ -9,9 +9,9 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  */
 export interface MsgTransfer {
     /** the port on which the packet will be sent */
-    sourcePort: string;
+    source_port: string;
     /** the channel by which the packet will be sent */
-    sourceChannel: string;
+    source_channel: string;
     /** the tokens to be transferred */
     token: Coin;
     /** the sender address */
@@ -22,12 +22,12 @@ export interface MsgTransfer {
      * Timeout height relative to the current block height.
      * The timeout is disabled when set to 0.
      */
-    timeoutHeight: Height;
+    timeout_height: Height;
     /**
      * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
      * The timeout is disabled when set to 0.
      */
-    timeoutTimestamp: Long;
+    timeout_timestamp: Long;
 }
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 export interface MsgTransferResponse {

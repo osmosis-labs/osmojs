@@ -6,11 +6,11 @@ import { DeepPartial } from "@osmonauts/helpers";
 export interface GenesisState {
     /** params defines the paramaters of the module. */
     params: Params;
-    factoryDenoms: GenesisDenom[];
+    factory_denoms: GenesisDenom[];
 }
 export interface GenesisDenom {
     denom: string;
-    authorityMetadata: DenomAuthorityMetadata;
+    authority_metadata: DenomAuthorityMetadata;
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

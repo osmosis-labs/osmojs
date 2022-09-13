@@ -6,14 +6,14 @@ export interface GenesisState {
     /** client states with their corresponding identifiers */
     clients: IdentifiedClientState[];
     /** consensus states from each client */
-    clientsConsensus: ClientConsensusStates[];
+    clients_consensus: ClientConsensusStates[];
     /** metadata from each client */
-    clientsMetadata: IdentifiedGenesisMetadata[];
+    clients_metadata: IdentifiedGenesisMetadata[];
     params: Params;
     /** create localhost on initialization */
-    createLocalhost: boolean;
+    create_localhost: boolean;
     /** the sequence for the next generated client identifier */
-    nextClientSequence: Long;
+    next_client_sequence: Long;
 }
 /**
  * GenesisMetadata defines the genesis type for metadata that clients may return
@@ -30,8 +30,8 @@ export interface GenesisMetadata {
  * client id.
  */
 export interface IdentifiedGenesisMetadata {
-    clientId: string;
-    clientMetadata: GenesisMetadata[];
+    client_id: string;
+    client_metadata: GenesisMetadata[];
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

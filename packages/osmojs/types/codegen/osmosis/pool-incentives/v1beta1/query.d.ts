@@ -4,19 +4,19 @@ import { Gauge } from "../../incentives/gauge";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface QueryGaugeIdsRequest {
-    poolId: Long;
+    pool_id: Long;
 }
 export interface QueryGaugeIdsResponse {
-    gaugeIdsWithDuration: QueryGaugeIdsResponse_GaugeIdWithDuration[];
+    gauge_ids_with_duration: QueryGaugeIdsResponse_GaugeIdWithDuration[];
 }
 export interface QueryGaugeIdsResponse_GaugeIdWithDuration {
-    gaugeId: Long;
+    gauge_id: Long;
     duration: Duration;
 }
 export interface QueryDistrInfoRequest {
 }
 export interface QueryDistrInfoResponse {
-    distrInfo: DistrInfo;
+    distr_info: DistrInfo;
 }
 export interface QueryParamsRequest {
 }
@@ -26,17 +26,17 @@ export interface QueryParamsResponse {
 export interface QueryLockableDurationsRequest {
 }
 export interface QueryLockableDurationsResponse {
-    lockableDurations: Duration[];
+    lockable_durations: Duration[];
 }
 export interface QueryIncentivizedPoolsRequest {
 }
 export interface IncentivizedPool {
-    poolId: Long;
-    lockableDuration: Duration;
-    gaugeId: Long;
+    pool_id: Long;
+    lockable_duration: Duration;
+    gauge_id: Long;
 }
 export interface QueryIncentivizedPoolsResponse {
-    incentivizedPools: IncentivizedPool[];
+    incentivized_pools: IncentivizedPool[];
 }
 export interface QueryExternalIncentiveGaugesRequest {
 }

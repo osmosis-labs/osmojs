@@ -9,7 +9,7 @@ import { DeepPartial } from "@osmonauts/helpers";
  */
 export interface StoreKVPair {
     /** the store key for the KVStore this pair originates from */
-    storeKey: string;
+    store_key: string;
     /** true indicates a delete operation, false indicates a set operation */
     delete: boolean;
     key: Uint8Array;

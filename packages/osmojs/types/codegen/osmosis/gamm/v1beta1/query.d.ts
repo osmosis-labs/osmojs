@@ -14,12 +14,12 @@ export interface QueryPoolResponse {
 /** =============================== Pools */
 export interface QueryPoolsRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 export interface QueryPoolsResponse {
     pools: Any[];
     /** pagination defines the pagination in the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /** =============================== NumPools */
 export interface QueryNumPoolsRequest {
@@ -54,8 +54,8 @@ export interface QueryTotalSharesResponse {
  */
 export interface QuerySpotPriceRequest {
     poolId: Long;
-    baseAssetDenom: string;
-    quoteAssetDenom: string;
+    base_asset_denom: string;
+    quote_asset_denom: string;
 }
 /**
  * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice

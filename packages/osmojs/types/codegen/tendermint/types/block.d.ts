@@ -6,7 +6,7 @@ export interface Block {
     header: Header;
     data: Data;
     evidence: EvidenceList;
-    lastCommit: Commit;
+    last_commit: Commit;
 }
 export declare const Block: {
     encode(message: Block, writer?: _m0.Writer): _m0.Writer;

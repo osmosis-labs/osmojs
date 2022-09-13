@@ -4,7 +4,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface QueryFeeTokensRequest {
 }
 export interface QueryFeeTokensResponse {
-    feeTokens: FeeToken[];
+    fee_tokens: FeeToken[];
 }
 /**
  * QueryDenomSpotPriceRequest defines grpc request structure for querying spot
@@ -19,7 +19,7 @@ export interface QueryDenomSpotPriceRequest {
  */
 export interface QueryDenomSpotPriceResponse {
     poolID: Long;
-    spotPrice: string;
+    spot_price: string;
 }
 export interface QueryDenomPoolIdRequest {
     denom: string;
@@ -30,7 +30,7 @@ export interface QueryDenomPoolIdResponse {
 export interface QueryBaseDenomRequest {
 }
 export interface QueryBaseDenomResponse {
-    baseDenom: string;
+    base_denom: string;
 }
 export declare const QueryFeeTokensRequest: {
     encode(_: QueryFeeTokensRequest, writer?: _m0.Writer): _m0.Writer;

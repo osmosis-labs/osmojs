@@ -111,7 +111,7 @@ export interface Any {
      * Schemes other than `http`, `https` (or the empty scheme) might be
      * used with implementation specific semantics.
      */
-    typeUrl: string;
+    type_url: string;
     /** Must be a valid serialized protocol buffer of the above specified type. */
     value: Uint8Array;
 }

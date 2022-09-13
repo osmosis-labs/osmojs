@@ -4,9 +4,9 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the ibc connection submodule's genesis state. */
 export interface GenesisState {
     connections: IdentifiedConnection[];
-    clientConnectionPaths: ConnectionPaths[];
+    client_connection_paths: ConnectionPaths[];
     /** the sequence for the next generated connection identifier */
-    nextConnectionSequence: Long;
+    next_connection_sequence: Long;
     params: Params;
 }
 export declare const GenesisState: {

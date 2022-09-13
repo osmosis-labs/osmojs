@@ -7,10 +7,10 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  * account.
  */
 export interface MsgCreateVestingAccount {
-    fromAddress: string;
-    toAddress: string;
+    from_address: string;
+    to_address: string;
     amount: Coin[];
-    endTime: Long;
+    end_time: Long;
     delayed: boolean;
 }
 /** MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount response type. */
@@ -21,8 +21,8 @@ export interface MsgCreateVestingAccountResponse {
  * locked account.
  */
 export interface MsgCreatePermanentLockedAccount {
-    fromAddress: string;
-    toAddress: string;
+    from_address: string;
+    to_address: string;
     amount: Coin[];
 }
 /** MsgCreatePermanentLockedAccountResponse defines the Msg/CreatePermanentLockedAccount response type. */
@@ -33,10 +33,10 @@ export interface MsgCreatePermanentLockedAccountResponse {
  * account.
  */
 export interface MsgCreatePeriodicVestingAccount {
-    fromAddress: string;
-    toAddress: string;
-    startTime: Long;
-    vestingPeriods: Period[];
+    from_address: string;
+    to_address: string;
+    start_time: Long;
+    vesting_periods: Period[];
 }
 /**
  * MsgCreateVestingAccountResponse defines the Msg/CreatePeriodicVestingAccount

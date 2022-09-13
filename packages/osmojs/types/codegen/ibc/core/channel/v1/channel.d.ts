@@ -57,7 +57,7 @@ export interface Channel {
      * list of connection identifiers, in order, along which packets sent on
      * this channel will travel
      */
-    connectionHops: string[];
+    connection_hops: string[];
     /** opaque channel version, which is agreed upon during the handshake */
     version: string;
 }
@@ -76,20 +76,20 @@ export interface IdentifiedChannel {
      * list of connection identifiers, in order, along which packets sent on
      * this channel will travel
      */
-    connectionHops: string[];
+    connection_hops: string[];
     /** opaque channel version, which is agreed upon during the handshake */
     version: string;
     /** port identifier */
-    portId: string;
+    port_id: string;
     /** channel identifier */
-    channelId: string;
+    channel_id: string;
 }
 /** Counterparty defines a channel end counterparty */
 export interface Counterparty {
     /** port on the counterparty chain which owns the other end of the channel. */
-    portId: string;
+    port_id: string;
     /** channel end on the counterparty chain */
-    channelId: string;
+    channel_id: string;
 }
 /** Packet defines a type that carries data across different chains through IBC */
 export interface Packet {
@@ -100,19 +100,19 @@ export interface Packet {
      */
     sequence: Long;
     /** identifies the port on the sending chain. */
-    sourcePort: string;
+    source_port: string;
     /** identifies the channel end on the sending chain. */
-    sourceChannel: string;
+    source_channel: string;
     /** identifies the port on the receiving chain. */
-    destinationPort: string;
+    destination_port: string;
     /** identifies the channel end on the receiving chain. */
-    destinationChannel: string;
+    destination_channel: string;
     /** actual opaque bytes transferred directly to the application module */
     data: Uint8Array;
     /** block height after which the packet times out */
-    timeoutHeight: Height;
+    timeout_height: Height;
     /** block timestamp (in nanoseconds) after which the packet times out */
-    timeoutTimestamp: Long;
+    timeout_timestamp: Long;
 }
 /**
  * PacketState defines the generic type necessary to retrieve and store
@@ -122,9 +122,9 @@ export interface Packet {
  */
 export interface PacketState {
     /** channel port identifier. */
-    portId: string;
+    port_id: string;
     /** channel unique identifier. */
-    channelId: string;
+    channel_id: string;
     /** packet sequence. */
     sequence: Long;
     /** embedded data that represents packet state. */

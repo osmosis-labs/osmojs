@@ -4,12 +4,12 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** MsgCreateClient defines a message to create an IBC client */
 export interface MsgCreateClient {
     /** light client state */
-    clientState: Any;
+    client_state: Any;
     /**
      * consensus state associated with the client that corresponds to a given
      * height.
      */
-    consensusState: Any;
+    consensus_state: Any;
     /** signer address */
     signer: string;
 }
@@ -22,7 +22,7 @@ export interface MsgCreateClientResponse {
  */
 export interface MsgUpdateClient {
     /** client unique identifier */
-    clientId: string;
+    client_id: string;
     /** header to update the light client */
     header: Any;
     /** signer address */
@@ -37,18 +37,18 @@ export interface MsgUpdateClientResponse {
  */
 export interface MsgUpgradeClient {
     /** client unique identifier */
-    clientId: string;
+    client_id: string;
     /** upgraded client state */
-    clientState: Any;
+    client_state: Any;
     /**
      * upgraded consensus state, only contains enough information to serve as a
      * basis of trust in update logic
      */
-    consensusState: Any;
+    consensus_state: Any;
     /** proof that old chain committed to new client */
-    proofUpgradeClient: Uint8Array;
+    proof_upgrade_client: Uint8Array;
     /** proof that old chain committed to new consensus state */
-    proofUpgradeConsensusState: Uint8Array;
+    proof_upgrade_consensus_state: Uint8Array;
     /** signer address */
     signer: string;
 }
@@ -61,7 +61,7 @@ export interface MsgUpgradeClientResponse {
  */
 export interface MsgSubmitMisbehaviour {
     /** client unique identifier */
-    clientId: string;
+    client_id: string;
     /** misbehaviour used for freezing the light client */
     misbehaviour: Any;
     /** signer address */

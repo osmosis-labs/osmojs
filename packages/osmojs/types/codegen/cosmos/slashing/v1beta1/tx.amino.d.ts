@@ -9,7 +9,7 @@ export interface AminoMsgUnjail extends AminoMsg {
 export declare const AminoConverter: {
     "/cosmos.slashing.v1beta1.MsgUnjail": {
         aminoType: string;
-        toAmino: ({ validatorAddr }: MsgUnjail) => AminoMsgUnjail["value"];
+        toAmino: ({ validator_addr }: MsgUnjail) => AminoMsgUnjail["value"];
         fromAmino: ({ validator_addr }: AminoMsgUnjail["value"]) => MsgUnjail;
     };
 };

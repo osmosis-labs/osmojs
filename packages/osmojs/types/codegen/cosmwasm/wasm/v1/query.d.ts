@@ -17,7 +17,7 @@ export interface QueryContractInfoRequest {
 export interface QueryContractInfoResponse {
     /** address is the address of the contract */
     address: string;
-    contractInfo: ContractInfo;
+    contract_info: ContractInfo;
 }
 /**
  * QueryContractHistoryRequest is the request type for the Query/ContractHistory
@@ -27,7 +27,7 @@ export interface QueryContractHistoryRequest {
     /** address is the address of the contract to query */
     address: string;
     /** pagination defines an optional pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QueryContractHistoryResponse is the response type for the
@@ -36,7 +36,7 @@ export interface QueryContractHistoryRequest {
 export interface QueryContractHistoryResponse {
     entries: ContractCodeHistoryEntry[];
     /** pagination defines the pagination in the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /**
  * QueryContractsByCodeRequest is the request type for the Query/ContractsByCode
@@ -47,8 +47,8 @@ export interface QueryContractsByCodeRequest {
      * grpc-gateway_out does not support Go style CodID
      * pagination defines an optional pagination for the request.
      */
-    codeId: Long;
-    pagination: PageRequest;
+    code_id: Long;
+    pagination?: PageRequest;
 }
 /**
  * QueryContractsByCodeResponse is the response type for the
@@ -58,7 +58,7 @@ export interface QueryContractsByCodeResponse {
     /** contracts are a set of contract addresses */
     contracts: string[];
     /** pagination defines the pagination in the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /**
  * QueryAllContractStateRequest is the request type for the
@@ -68,7 +68,7 @@ export interface QueryAllContractStateRequest {
     /** address is the address of the contract */
     address: string;
     /** pagination defines an optional pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QueryAllContractStateResponse is the response type for the
@@ -77,7 +77,7 @@ export interface QueryAllContractStateRequest {
 export interface QueryAllContractStateResponse {
     models: Model[];
     /** pagination defines the pagination in the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /**
  * QueryRawContractStateRequest is the request type for the
@@ -86,7 +86,7 @@ export interface QueryAllContractStateResponse {
 export interface QueryRawContractStateRequest {
     /** address is the address of the contract */
     address: string;
-    queryData: Uint8Array;
+    query_data: Uint8Array;
 }
 /**
  * QueryRawContractStateResponse is the response type for the
@@ -104,7 +104,7 @@ export interface QuerySmartContractStateRequest {
     /** address is the address of the contract */
     address: string;
     /** QueryData contains the query data passed to the contract */
-    queryData: Uint8Array;
+    query_data: Uint8Array;
 }
 /**
  * QuerySmartContractStateResponse is the response type for the
@@ -117,29 +117,29 @@ export interface QuerySmartContractStateResponse {
 /** QueryCodeRequest is the request type for the Query/Code RPC method */
 export interface QueryCodeRequest {
     /** grpc-gateway_out does not support Go style CodID */
-    codeId: Long;
+    code_id: Long;
 }
 /** CodeInfoResponse contains code meta data from CodeInfo */
 export interface CodeInfoResponse {
-    codeId: Long;
+    code_id: Long;
     creator: string;
-    dataHash: Uint8Array;
+    data_hash: Uint8Array;
 }
 /** QueryCodeResponse is the response type for the Query/Code RPC method */
 export interface QueryCodeResponse {
-    codeInfo: CodeInfoResponse;
+    code_info: CodeInfoResponse;
     data: Uint8Array;
 }
 /** QueryCodesRequest is the request type for the Query/Codes RPC method */
 export interface QueryCodesRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /** QueryCodesResponse is the response type for the Query/Codes RPC method */
 export interface QueryCodesResponse {
-    codeInfos: CodeInfoResponse[];
+    code_infos: CodeInfoResponse[];
     /** pagination defines the pagination in the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /**
  * QueryPinnedCodesRequest is the request type for the Query/PinnedCodes
@@ -147,16 +147,16 @@ export interface QueryCodesResponse {
  */
 export interface QueryPinnedCodesRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QueryPinnedCodesResponse is the response type for the
  * Query/PinnedCodes RPC method
  */
 export interface QueryPinnedCodesResponse {
-    codeIds: Long[];
+    code_ids: Long[];
     /** pagination defines the pagination in the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 export declare const QueryContractInfoRequest: {
     encode(message: QueryContractInfoRequest, writer?: _m0.Writer): _m0.Writer;

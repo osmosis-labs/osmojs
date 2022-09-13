@@ -3,7 +3,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** TableDescriptor describes an ORM table. */
 export interface TableDescriptor {
     /** primary_key defines the primary key for the table. */
-    primaryKey: PrimaryKeyDescriptor;
+    primary_key: PrimaryKeyDescriptor;
     /** index defines one or more secondary indexes. */
     index: SecondaryIndexDescriptor[];
     /**
@@ -53,7 +53,7 @@ export interface PrimaryKeyDescriptor {
      * auto-incrementing integer. If this is set to true fields must only
      * contain one field of that is of type uint64.
      */
-    autoIncrement: boolean;
+    auto_increment: boolean;
 }
 /** PrimaryKeyDescriptor describes a table secondary index. */
 export interface SecondaryIndexDescriptor {

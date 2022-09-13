@@ -9,33 +9,33 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface GetValidatorSetByHeightRequest {
     height: Long;
     /** pagination defines an pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /** GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetValidatorSetByHeightResponse {
-    blockHeight: Long;
+    block_height: Long;
     validators: Validator[];
     /** pagination defines an pagination for the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /** GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetLatestValidatorSetRequest {
     /** pagination defines an pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /** GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetLatestValidatorSetResponse {
-    blockHeight: Long;
+    block_height: Long;
     validators: Validator[];
     /** pagination defines an pagination for the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /** Validator is the type for the validator-set. */
 export interface Validator {
     address: string;
-    pubKey: Any;
-    votingPower: Long;
-    proposerPriority: Long;
+    pub_key: Any;
+    voting_power: Long;
+    proposer_priority: Long;
 }
 /** GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightRequest {
@@ -43,7 +43,7 @@ export interface GetBlockByHeightRequest {
 }
 /** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightResponse {
-    blockId: BlockID;
+    block_id: BlockID;
     block: Block;
 }
 /** GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method. */
@@ -51,7 +51,7 @@ export interface GetLatestBlockRequest {
 }
 /** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockResponse {
-    blockId: BlockID;
+    block_id: BlockID;
     block: Block;
 }
 /** GetSyncingRequest is the request type for the Query/GetSyncing RPC method. */
@@ -66,20 +66,20 @@ export interface GetNodeInfoRequest {
 }
 /** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 export interface GetNodeInfoResponse {
-    nodeInfo: NodeInfo;
-    applicationVersion: VersionInfo;
+    node_info: NodeInfo;
+    application_version: VersionInfo;
 }
 /** VersionInfo is the type for the GetNodeInfoResponse message. */
 export interface VersionInfo {
     name: string;
-    appName: string;
+    app_name: string;
     version: string;
-    gitCommit: string;
-    buildTags: string;
-    goVersion: string;
-    buildDeps: Module[];
+    git_commit: string;
+    build_tags: string;
+    go_version: string;
+    build_deps: Module[];
     /** Since: cosmos-sdk 0.43 */
-    cosmosSdkVersion: string;
+    cosmos_sdk_version: string;
 }
 /** Module is the type for VersionInfo */
 export interface Module {

@@ -6,7 +6,7 @@ export interface ListAllInterfacesRequest {
 /** ListAllInterfacesResponse is the response type of the ListAllInterfaces RPC. */
 export interface ListAllInterfacesResponse {
     /** interface_names is an array of all the registered interfaces. */
-    interfaceNames: string[];
+    interface_names: string[];
 }
 /**
  * ListImplementationsRequest is the request type of the ListImplementations
@@ -14,14 +14,14 @@ export interface ListAllInterfacesResponse {
  */
 export interface ListImplementationsRequest {
     /** interface_name defines the interface to query the implementations for. */
-    interfaceName: string;
+    interface_name: string;
 }
 /**
  * ListImplementationsResponse is the response type of the ListImplementations
  * RPC.
  */
 export interface ListImplementationsResponse {
-    implementationMessageNames: string[];
+    implementation_message_names: string[];
 }
 export declare const ListAllInterfacesRequest: {
     encode(_: ListAllInterfacesRequest, writer?: _m0.Writer): _m0.Writer;

@@ -8,34 +8,34 @@ export interface GenesisState {
     codes: Code[];
     contracts: Contract[];
     sequences: Sequence[];
-    genMsgs: GenesisState_GenMsgs[];
+    gen_msgs: GenesisState_GenMsgs[];
 }
 /**
  * GenMsgs define the messages that can be executed during genesis phase in
  * order. The intention is to have more human readable data that is auditable.
  */
 export interface GenesisState_GenMsgs {
-    storeCode?: MsgStoreCode;
-    instantiateContract?: MsgInstantiateContract;
-    executeContract?: MsgExecuteContract;
+    store_code?: MsgStoreCode;
+    instantiate_contract?: MsgInstantiateContract;
+    execute_contract?: MsgExecuteContract;
 }
 /** Code struct encompasses CodeInfo and CodeBytes */
 export interface Code {
-    codeId: Long;
-    codeInfo: CodeInfo;
-    codeBytes: Uint8Array;
+    code_id: Long;
+    code_info: CodeInfo;
+    code_bytes: Uint8Array;
     /** Pinned to wasmvm cache */
     pinned: boolean;
 }
 /** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
 export interface Contract {
-    contractAddress: string;
-    contractInfo: ContractInfo;
-    contractState: Model[];
+    contract_address: string;
+    contract_info: ContractInfo;
+    contract_state: Model[];
 }
 /** Sequence key and value of an id generation counter */
 export interface Sequence {
-    idKey: Uint8Array;
+    id_key: Uint8Array;
     value: Long;
 }
 export declare const GenesisState: {

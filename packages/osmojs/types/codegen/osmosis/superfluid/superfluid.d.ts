@@ -11,7 +11,7 @@ export declare function superfluidAssetTypeToJSON(object: SuperfluidAssetType): 
 /** SuperfluidAsset stores the pair of superfluid asset type and denom pair */
 export interface SuperfluidAsset {
     denom: string;
-    assetType: SuperfluidAssetType;
+    asset_type: SuperfluidAssetType;
 }
 /**
  * SuperfluidIntermediaryAccount takes the role of intermediary between LP token
@@ -19,9 +19,9 @@ export interface SuperfluidAsset {
  */
 export interface SuperfluidIntermediaryAccount {
     denom: string;
-    valAddr: string;
+    val_addr: string;
     /** perpetual gauge for rewards distribution */
-    gaugeId: Long;
+    gauge_id: Long;
 }
 /**
  * The Osmo-Equivalent-Multiplier Record for epoch N refers to the osmo worth we
@@ -33,7 +33,7 @@ export interface SuperfluidIntermediaryAccount {
  * change.
  */
 export interface OsmoEquivalentMultiplierRecord {
-    epochNumber: Long;
+    epoch_number: Long;
     /** superfluid asset denom, can be LP token or native token */
     denom: string;
     multiplier: string;
@@ -43,14 +43,14 @@ export interface OsmoEquivalentMultiplierRecord {
  * and OSMO tokens for superfluid staking
  */
 export interface SuperfluidDelegationRecord {
-    delegatorAddress: string;
-    validatorAddress: string;
-    delegationAmount: Coin;
-    equivalentStakedAmount: Coin;
+    delegator_address: string;
+    validator_address: string;
+    delegation_amount: Coin;
+    equivalent_staked_amount: Coin;
 }
 export interface LockIdIntermediaryAccountConnection {
-    lockId: Long;
-    intermediaryAccount: string;
+    lock_id: Long;
+    intermediary_account: string;
 }
 export interface UnpoolWhitelistedPools {
     ids: Long[];

@@ -9,14 +9,14 @@ export interface ModuleDescriptor {
      * to users where to location the module implementation. go_import takes
      * precedence over go_package when both are defined.
      */
-    goImport: string;
+    go_import: string;
     /**
      * use_package refers to a protobuf package that this module
      * uses and exposes to the world. In an app, only one module should "use"
      * or own a single protobuf package. It is assumed that the module uses
      * all of the .proto files in a single package.
      */
-    usePackage: PackageReference[];
+    use_package: PackageReference[];
     /**
      * can_migrate_from defines which module versions this module can migrate
      * state from. The framework will check that one module version is able to
@@ -26,7 +26,7 @@ export interface ModuleDescriptor {
      * declares it can migrate from v1, the framework knows how to migrate
      * from v1 to v3, assuming all 3 module versions are registered at runtime.
      */
-    canMigrateFrom: MigrateFromInfo[];
+    can_migrate_from: MigrateFromInfo[];
 }
 /** PackageReference is a reference to a protobuf package used by a module. */
 export interface PackageReference {

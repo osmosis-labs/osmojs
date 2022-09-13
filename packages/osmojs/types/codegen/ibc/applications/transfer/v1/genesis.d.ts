@@ -3,8 +3,8 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the ibc-transfer genesis state */
 export interface GenesisState {
-    portId: string;
-    denomTraces: DenomTrace[];
+    port_id: string;
+    denom_traces: DenomTrace[];
     params: Params;
 }
 export declare const GenesisState: {

@@ -10,7 +10,7 @@ export interface QueryCurrentEpochRequest {
     identifier: string;
 }
 export interface QueryCurrentEpochResponse {
-    currentEpoch: Long;
+    current_epoch: Long;
 }
 export declare const QueryEpochsInfoRequest: {
     encode(_: QueryEpochsInfoRequest, writer?: _m0.Writer): _m0.Writer;

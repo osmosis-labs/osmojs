@@ -9,19 +9,19 @@ export interface GenesisState {
      * signing_infos represents a map between validator addresses and their
      * signing infos.
      */
-    signingInfos: SigningInfo[];
+    signing_infos: SigningInfo[];
     /**
      * missed_blocks represents a map between validator addresses and their
      * missed blocks.
      */
-    missedBlocks: ValidatorMissedBlocks[];
+    missed_blocks: ValidatorMissedBlocks[];
 }
 /** SigningInfo stores validator signing info of corresponding address. */
 export interface SigningInfo {
     /** address is the validator address. */
     address: string;
     /** validator_signing_info represents the signing info of this validator. */
-    validatorSigningInfo: ValidatorSigningInfo;
+    validator_signing_info: ValidatorSigningInfo;
 }
 /**
  * ValidatorMissedBlocks contains array of missed blocks of corresponding
@@ -31,7 +31,7 @@ export interface ValidatorMissedBlocks {
     /** address is the validator address. */
     address: string;
     /** missed_blocks is an array of missed blocks by the validator. */
-    missedBlocks: MissedBlock[];
+    missed_blocks: MissedBlock[];
 }
 /** MissedBlock contains height and missed status as boolean. */
 export interface MissedBlock {

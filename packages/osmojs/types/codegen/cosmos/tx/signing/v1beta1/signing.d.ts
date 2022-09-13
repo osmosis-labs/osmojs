@@ -60,7 +60,7 @@ export interface SignatureDescriptors {
  */
 export interface SignatureDescriptor {
     /** public_key is the public key of the signer */
-    publicKey: Any;
+    public_key: Any;
     data: SignatureDescriptor_Data;
     /**
      * sequence is the sequence of the account, which describes the

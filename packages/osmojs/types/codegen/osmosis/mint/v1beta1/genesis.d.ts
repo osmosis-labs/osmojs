@@ -8,7 +8,7 @@ export interface GenesisState {
     /** params defines all the paramaters of the module. */
     params: Params;
     /** current halven period start epoch */
-    halvenStartedEpoch: Long;
+    halven_started_epoch: Long;
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

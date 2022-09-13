@@ -11,7 +11,7 @@ export interface DenomTrace {
      */
     path: string;
     /** base denomination of the relayed fungible token. */
-    baseDenom: string;
+    base_denom: string;
 }
 /**
  * Params defines the set of IBC transfer parameters.
@@ -24,12 +24,12 @@ export interface Params {
      * send_enabled enables or disables all cross-chain token transfers from this
      * chain.
      */
-    sendEnabled: boolean;
+    send_enabled: boolean;
     /**
      * receive_enabled enables or disables all cross-chain token transfers to this
      * chain.
      */
-    receiveEnabled: boolean;
+    receive_enabled: boolean;
 }
 export declare const DenomTrace: {
     encode(message: DenomTrace, writer?: _m0.Writer): _m0.Writer;

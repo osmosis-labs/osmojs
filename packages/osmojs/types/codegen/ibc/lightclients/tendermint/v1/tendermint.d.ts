@@ -11,23 +11,23 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  * and a possible frozen height.
  */
 export interface ClientState {
-    chainId: string;
-    trustLevel: Fraction;
+    chain_id: string;
+    trust_level: Fraction;
     /**
      * duration of the period since the LastestTimestamp during which the
      * submitted headers are valid for upgrade
      */
-    trustingPeriod: Duration;
+    trusting_period: Duration;
     /** duration of the staking unbonding period */
-    unbondingPeriod: Duration;
+    unbonding_period: Duration;
     /** defines how much new (untrusted) header's Time can drift into the future. */
-    maxClockDrift: Duration;
+    max_clock_drift: Duration;
     /** Block height when the client was frozen due to a misbehaviour */
-    frozenHeight: Height;
+    frozen_height: Height;
     /** Latest height the client was updated to */
-    latestHeight: Height;
+    latest_height: Height;
     /** Proof specifications used in verifying counterparty state */
-    proofSpecs: ProofSpec[];
+    proof_specs: ProofSpec[];
     /**
      * Path at which next upgraded client will be committed.
      * Each element corresponds to the key for a single CommitmentProof in the
@@ -37,17 +37,17 @@ export interface ClientState {
      * the default upgrade module, upgrade_path should be []string{"upgrade",
      * "upgradedIBCState"}`
      */
-    upgradePath: string[];
+    upgrade_path: string[];
     /**
      * This flag, when set to true, will allow governance to recover a client
      * which has expired
      */
-    allowUpdateAfterExpiry: boolean;
+    allow_update_after_expiry: boolean;
     /**
      * This flag, when set to true, will allow governance to unfreeze a client
      * whose chain has experienced a misbehaviour event
      */
-    allowUpdateAfterMisbehaviour: boolean;
+    allow_update_after_misbehaviour: boolean;
 }
 /** ConsensusState defines the consensus state from Tendermint. */
 export interface ConsensusState {
@@ -58,14 +58,14 @@ export interface ConsensusState {
     timestamp: Date;
     /** commitment root (i.e app hash) */
     root: MerkleRoot;
-    nextValidatorsHash: Uint8Array;
+    next_validators_hash: Uint8Array;
 }
 /**
  * Misbehaviour is a wrapper over two conflicting Headers
  * that implements Misbehaviour interface expected by ICS-02
  */
 export interface Misbehaviour {
-    clientId: string;
+    client_id: string;
     header_1: Header;
     header_2: Header;
 }
@@ -84,10 +84,10 @@ export interface Misbehaviour {
  * trusted validator set at the TrustedHeight.
  */
 export interface Header {
-    signedHeader: SignedHeader;
-    validatorSet: ValidatorSet;
-    trustedHeight: Height;
-    trustedValidators: ValidatorSet;
+    signed_header: SignedHeader;
+    validator_set: ValidatorSet;
+    trusted_height: Height;
+    trusted_validators: ValidatorSet;
 }
 /**
  * Fraction defines the protobuf message type for tmmath.Fraction that only

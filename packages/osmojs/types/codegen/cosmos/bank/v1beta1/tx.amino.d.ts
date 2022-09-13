@@ -33,7 +33,7 @@ export interface AminoMsgMultiSend extends AminoMsg {
 export declare const AminoConverter: {
     "/cosmos.bank.v1beta1.MsgSend": {
         aminoType: string;
-        toAmino: ({ fromAddress, toAddress, amount }: MsgSend) => AminoMsgSend["value"];
+        toAmino: ({ from_address, to_address, amount }: MsgSend) => AminoMsgSend["value"];
         fromAmino: ({ from_address, to_address, amount }: AminoMsgSend["value"]) => MsgSend;
     };
     "/cosmos.bank.v1beta1.MsgMultiSend": {

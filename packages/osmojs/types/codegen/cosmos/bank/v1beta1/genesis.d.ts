@@ -14,7 +14,7 @@ export interface GenesisState {
      */
     supply: Coin[];
     /** denom_metadata defines the metadata of the differents coins. */
-    denomMetadata: Metadata[];
+    denom_metadata: Metadata[];
 }
 /**
  * Balance defines an account address and balance pair used in the bank module's

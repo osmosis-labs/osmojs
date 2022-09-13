@@ -83,15 +83,15 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     epochs?: {
                         identifier?: string;
-                        startTime?: Date;
+                        start_time?: Date;
                         duration?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        currentEpoch?: any;
-                        currentEpochStartTime?: Date;
-                        epochCountingStarted?: boolean;
-                        currentEpochStartHeight?: any;
+                        current_epoch?: any;
+                        current_epoch_start_time?: Date;
+                        epoch_counting_started?: boolean;
+                        current_epoch_start_height?: any;
                     }[];
                 }): _136.QueryEpochsInfoResponse;
             };
@@ -110,7 +110,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _136.QueryCurrentEpochResponse;
                 toJSON(message: _136.QueryCurrentEpochResponse): unknown;
                 fromPartial(object: {
-                    currentEpoch?: any;
+                    current_epoch?: any;
                 }): _136.QueryCurrentEpochResponse;
             };
             EpochInfo: {
@@ -120,15 +120,15 @@ export declare namespace osmosis {
                 toJSON(message: _135.EpochInfo): unknown;
                 fromPartial(object: {
                     identifier?: string;
-                    startTime?: Date;
+                    start_time?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
                     };
-                    currentEpoch?: any;
-                    currentEpochStartTime?: Date;
-                    epochCountingStarted?: boolean;
-                    currentEpochStartHeight?: any;
+                    current_epoch?: any;
+                    current_epoch_start_time?: Date;
+                    epoch_counting_started?: boolean;
+                    current_epoch_start_height?: any;
                 }): _135.EpochInfo;
             };
             GenesisState: {
@@ -139,15 +139,15 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     epochs?: {
                         identifier?: string;
-                        startTime?: Date;
+                        start_time?: Date;
                         duration?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        currentEpoch?: any;
-                        currentEpochStartTime?: Date;
-                        epochCountingStarted?: boolean;
-                        currentEpochStartHeight?: any;
+                        current_epoch?: any;
+                        current_epoch_start_time?: Date;
+                        epoch_counting_started?: boolean;
+                        current_epoch_start_height?: any;
                     }[];
                 }): _135.GenesisState;
             };
@@ -732,7 +732,7 @@ export declare namespace osmosis {
                 toJSON(message: _139.QueryPoolResponse): unknown;
                 fromPartial(object: {
                     pool?: {
-                        typeUrl?: string;
+                        type_url?: string;
                         value?: Uint8Array;
                     };
                 }): _139.QueryPoolResponse;
@@ -747,7 +747,7 @@ export declare namespace osmosis {
                         key?: Uint8Array;
                         offset?: any;
                         limit?: any;
-                        countTotal?: boolean;
+                        count_total?: boolean;
                         reverse?: boolean;
                     };
                 }): _139.QueryPoolsRequest;
@@ -759,11 +759,11 @@ export declare namespace osmosis {
                 toJSON(message: _139.QueryPoolsResponse): unknown;
                 fromPartial(object: {
                     pools?: {
-                        typeUrl?: string;
+                        type_url?: string;
                         value?: Uint8Array;
                     }[];
                     pagination?: {
-                        nextKey?: Uint8Array;
+                        next_key?: Uint8Array;
                         total?: any;
                     };
                 }): _139.QueryPoolsResponse;
@@ -800,7 +800,7 @@ export declare namespace osmosis {
                 toJSON(message: _139.QueryPoolParamsResponse): unknown;
                 fromPartial(object: {
                     params?: {
-                        typeUrl?: string;
+                        type_url?: string;
                         value?: Uint8Array;
                     };
                 }): _139.QueryPoolParamsResponse;
@@ -854,8 +854,8 @@ export declare namespace osmosis {
                 toJSON(message: _139.QuerySpotPriceRequest): unknown;
                 fromPartial(object: {
                     poolId?: any;
-                    baseAssetDenom?: string;
-                    quoteAssetDenom?: string;
+                    base_asset_denom?: string;
+                    quote_asset_denom?: string;
                 }): _139.QuerySpotPriceRequest;
             };
             QuerySpotPriceResponse: {
@@ -940,7 +940,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _138.Params;
                 toJSON(message: _138.Params): unknown;
                 fromPartial(object: {
-                    poolCreationFee?: {
+                    pool_creation_fee?: {
                         denom?: string;
                         amount?: string;
                     }[];
@@ -953,12 +953,12 @@ export declare namespace osmosis {
                 toJSON(message: _138.GenesisState): unknown;
                 fromPartial(object: {
                     pools?: {
-                        typeUrl?: string;
+                        type_url?: string;
                         value?: Uint8Array;
                     }[];
-                    nextPoolNumber?: any;
+                    next_pool_number?: any;
                     params?: {
-                        poolCreationFee?: {
+                        pool_creation_fee?: {
                             denom?: string;
                             amount?: string;
                         }[];
@@ -971,7 +971,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _137.SmoothWeightChangeParams;
                 toJSON(message: _137.SmoothWeightChangeParams): unknown;
                 fromPartial(object: {
-                    startTime?: Date;
+                    start_time?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
@@ -1001,7 +1001,7 @@ export declare namespace osmosis {
                     swapFee?: string;
                     exitFee?: string;
                     smoothWeightChangeParams?: {
-                        startTime?: Date;
+                        start_time?: Date;
                         duration?: {
                             seconds?: any;
                             nanos?: number;
@@ -1048,7 +1048,7 @@ export declare namespace osmosis {
                         swapFee?: string;
                         exitFee?: string;
                         smoothWeightChangeParams?: {
-                            startTime?: Date;
+                            start_time?: Date;
                             duration?: {
                                 seconds?: any;
                                 nanos?: number;
@@ -1069,7 +1069,7 @@ export declare namespace osmosis {
                             }[];
                         };
                     };
-                    futurePoolGovernor?: string;
+                    future_pool_governor?: string;
                     totalShares?: {
                         denom?: string;
                         amount?: string;
@@ -1126,7 +1126,7 @@ export declare namespace osmosis {
                     AminoConverter: {
                         "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPool": {
                             aminoType: string;
-                            toAmino: ({ sender, poolParams, poolAssets, futurePoolGovernor }: _141.MsgCreateBalancerPool) => {
+                            toAmino: ({ sender, poolParams, poolAssets, future_pool_governor }: _141.MsgCreateBalancerPool) => {
                                 sender: string;
                                 poolParams: {
                                     swapFee: string;
@@ -1217,7 +1217,7 @@ export declare namespace osmosis {
                                 swapFee?: string;
                                 exitFee?: string;
                                 smoothWeightChangeParams?: {
-                                    startTime?: Date;
+                                    start_time?: Date;
                                     duration?: {
                                         seconds?: any;
                                         nanos?: number;
@@ -1245,7 +1245,7 @@ export declare namespace osmosis {
                                 };
                                 weight?: string;
                             }[];
-                            futurePoolGovernor?: string;
+                            future_pool_governor?: string;
                         }): _141.MsgCreateBalancerPool;
                     };
                     MsgCreateBalancerPoolResponse: {
@@ -1254,7 +1254,7 @@ export declare namespace osmosis {
                         fromJSON(object: any): _141.MsgCreateBalancerPoolResponse;
                         toJSON(message: _141.MsgCreateBalancerPoolResponse): unknown;
                         fromPartial(object: {
-                            poolId?: any;
+                            pool_id?: any;
                         }): _141.MsgCreateBalancerPoolResponse;
                     };
                 };
@@ -1319,7 +1319,7 @@ export declare namespace osmosis {
                     AminoConverter: {
                         "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgCreateStableswapPool": {
                             aminoType: string;
-                            toAmino: ({ sender, poolParams, initialPoolLiquidity, futurePoolGovernor }: _143.MsgCreateStableswapPool) => {
+                            toAmino: ({ sender, poolParams, initial_pool_liquidity, future_pool_governor }: _143.MsgCreateStableswapPool) => {
                                 sender: string;
                                 poolParams: {
                                     swapFee: string;
@@ -1346,7 +1346,7 @@ export declare namespace osmosis {
                         };
                         "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgStableSwapAdjustScalingFactors": {
                             aminoType: string;
-                            toAmino: ({ sender, poolId, scalingFactors }: _143.MsgStableSwapAdjustScalingFactors) => {
+                            toAmino: ({ sender, pool_id, scaling_factors }: _143.MsgStableSwapAdjustScalingFactors) => {
                                 sender: string;
                                 pool_id: string;
                                 scaling_factors: Long[];
@@ -1369,11 +1369,11 @@ export declare namespace osmosis {
                                 swapFee?: string;
                                 exitFee?: string;
                             };
-                            initialPoolLiquidity?: {
+                            initial_pool_liquidity?: {
                                 denom?: string;
                                 amount?: string;
                             }[];
-                            futurePoolGovernor?: string;
+                            future_pool_governor?: string;
                         }): _143.MsgCreateStableswapPool;
                     };
                     MsgCreateStableswapPoolResponse: {
@@ -1382,7 +1382,7 @@ export declare namespace osmosis {
                         fromJSON(object: any): _143.MsgCreateStableswapPoolResponse;
                         toJSON(message: _143.MsgCreateStableswapPoolResponse): unknown;
                         fromPartial(object: {
-                            poolId?: any;
+                            pool_id?: any;
                         }): _143.MsgCreateStableswapPoolResponse;
                     };
                     MsgStableSwapAdjustScalingFactors: {
@@ -1392,8 +1392,8 @@ export declare namespace osmosis {
                         toJSON(message: _143.MsgStableSwapAdjustScalingFactors): unknown;
                         fromPartial(object: {
                             sender?: string;
-                            poolId?: any;
-                            scalingFactors?: any[];
+                            pool_id?: any;
+                            scaling_factors?: any[];
                         }): _143.MsgStableSwapAdjustScalingFactors;
                     };
                     MsgStableSwapAdjustScalingFactorsResponse: {
@@ -1425,7 +1425,7 @@ export declare namespace osmosis {
                                 swapFee?: string;
                                 exitFee?: string;
                             };
-                            futurePoolGovernor?: string;
+                            future_pool_governor?: string;
                             totalShares?: {
                                 denom?: string;
                                 amount?: string;
@@ -1434,8 +1434,8 @@ export declare namespace osmosis {
                                 denom?: string;
                                 amount?: string;
                             }[];
-                            scalingFactor?: any[];
-                            scalingFactorGovernor?: string;
+                            scaling_factor?: any[];
+                            scaling_factor_governor?: string;
                         }): _142.Pool;
                     };
                 };
@@ -1503,7 +1503,7 @@ export declare namespace osmosis {
         AminoConverter: {
             "/osmosis.incentives.MsgCreateGauge": {
                 aminoType: string;
-                toAmino: ({ isPerpetual, owner, distributeTo, coins, startTime, numEpochsPaidOver }: _148.MsgCreateGauge) => {
+                toAmino: ({ is_perpetual, owner, distribute_to, coins, start_time, num_epochs_paid_over }: _148.MsgCreateGauge) => {
                     is_perpetual: boolean;
                     owner: string;
                     distribute_to: {
@@ -1556,7 +1556,7 @@ export declare namespace osmosis {
             };
             "/osmosis.incentives.MsgAddToGauge": {
                 aminoType: string;
-                toAmino: ({ owner, gaugeId, rewards }: _148.MsgAddToGauge) => {
+                toAmino: ({ owner, gauge_id, rewards }: _148.MsgAddToGauge) => {
                     owner: string;
                     gauge_id: string;
                     rewards: {
@@ -1580,10 +1580,10 @@ export declare namespace osmosis {
             fromJSON(object: any): _148.MsgCreateGauge;
             toJSON(message: _148.MsgCreateGauge): unknown;
             fromPartial(object: {
-                isPerpetual?: boolean;
+                is_perpetual?: boolean;
                 owner?: string;
-                distributeTo?: {
-                    lockQueryType?: _150.LockQueryType;
+                distribute_to?: {
+                    lock_query_type?: _150.LockQueryType;
                     denom?: string;
                     duration?: {
                         seconds?: any;
@@ -1595,8 +1595,8 @@ export declare namespace osmosis {
                     denom?: string;
                     amount?: string;
                 }[];
-                startTime?: Date;
-                numEpochsPaidOver?: any;
+                start_time?: Date;
+                num_epochs_paid_over?: any;
             }): _148.MsgCreateGauge;
         };
         MsgCreateGaugeResponse: {
@@ -1613,7 +1613,7 @@ export declare namespace osmosis {
             toJSON(message: _148.MsgAddToGauge): unknown;
             fromPartial(object: {
                 owner?: string;
-                gaugeId?: any;
+                gauge_id?: any;
                 rewards?: {
                     denom?: string;
                     amount?: string;
@@ -1682,9 +1682,9 @@ export declare namespace osmosis {
             fromPartial(object: {
                 gauge?: {
                     id?: any;
-                    isPerpetual?: boolean;
-                    distributeTo?: {
-                        lockQueryType?: _150.LockQueryType;
+                    is_perpetual?: boolean;
+                    distribute_to?: {
+                        lock_query_type?: _150.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1696,10 +1696,10 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    startTime?: Date;
-                    numEpochsPaidOver?: any;
-                    filledEpochs?: any;
-                    distributedCoins?: {
+                    start_time?: Date;
+                    num_epochs_paid_over?: any;
+                    filled_epochs?: any;
+                    distributed_coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
@@ -1716,7 +1716,7 @@ export declare namespace osmosis {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    countTotal?: boolean;
+                    count_total?: boolean;
                     reverse?: boolean;
                 };
             }): _147.GaugesRequest;
@@ -1729,9 +1729,9 @@ export declare namespace osmosis {
             fromPartial(object: {
                 data?: {
                     id?: any;
-                    isPerpetual?: boolean;
-                    distributeTo?: {
-                        lockQueryType?: _150.LockQueryType;
+                    is_perpetual?: boolean;
+                    distribute_to?: {
+                        lock_query_type?: _150.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1743,16 +1743,16 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    startTime?: Date;
-                    numEpochsPaidOver?: any;
-                    filledEpochs?: any;
-                    distributedCoins?: {
+                    start_time?: Date;
+                    num_epochs_paid_over?: any;
+                    filled_epochs?: any;
+                    distributed_coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    nextKey?: Uint8Array;
+                    next_key?: Uint8Array;
                     total?: any;
                 };
             }): _147.GaugesResponse;
@@ -1767,7 +1767,7 @@ export declare namespace osmosis {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    countTotal?: boolean;
+                    count_total?: boolean;
                     reverse?: boolean;
                 };
             }): _147.ActiveGaugesRequest;
@@ -1780,9 +1780,9 @@ export declare namespace osmosis {
             fromPartial(object: {
                 data?: {
                     id?: any;
-                    isPerpetual?: boolean;
-                    distributeTo?: {
-                        lockQueryType?: _150.LockQueryType;
+                    is_perpetual?: boolean;
+                    distribute_to?: {
+                        lock_query_type?: _150.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1794,16 +1794,16 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    startTime?: Date;
-                    numEpochsPaidOver?: any;
-                    filledEpochs?: any;
-                    distributedCoins?: {
+                    start_time?: Date;
+                    num_epochs_paid_over?: any;
+                    filled_epochs?: any;
+                    distributed_coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    nextKey?: Uint8Array;
+                    next_key?: Uint8Array;
                     total?: any;
                 };
             }): _147.ActiveGaugesResponse;
@@ -1819,7 +1819,7 @@ export declare namespace osmosis {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    countTotal?: boolean;
+                    count_total?: boolean;
                     reverse?: boolean;
                 };
             }): _147.ActiveGaugesPerDenomRequest;
@@ -1832,9 +1832,9 @@ export declare namespace osmosis {
             fromPartial(object: {
                 data?: {
                     id?: any;
-                    isPerpetual?: boolean;
-                    distributeTo?: {
-                        lockQueryType?: _150.LockQueryType;
+                    is_perpetual?: boolean;
+                    distribute_to?: {
+                        lock_query_type?: _150.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1846,16 +1846,16 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    startTime?: Date;
-                    numEpochsPaidOver?: any;
-                    filledEpochs?: any;
-                    distributedCoins?: {
+                    start_time?: Date;
+                    num_epochs_paid_over?: any;
+                    filled_epochs?: any;
+                    distributed_coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    nextKey?: Uint8Array;
+                    next_key?: Uint8Array;
                     total?: any;
                 };
             }): _147.ActiveGaugesPerDenomResponse;
@@ -1870,7 +1870,7 @@ export declare namespace osmosis {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    countTotal?: boolean;
+                    count_total?: boolean;
                     reverse?: boolean;
                 };
             }): _147.UpcomingGaugesRequest;
@@ -1883,9 +1883,9 @@ export declare namespace osmosis {
             fromPartial(object: {
                 data?: {
                     id?: any;
-                    isPerpetual?: boolean;
-                    distributeTo?: {
-                        lockQueryType?: _150.LockQueryType;
+                    is_perpetual?: boolean;
+                    distribute_to?: {
+                        lock_query_type?: _150.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1897,16 +1897,16 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    startTime?: Date;
-                    numEpochsPaidOver?: any;
-                    filledEpochs?: any;
-                    distributedCoins?: {
+                    start_time?: Date;
+                    num_epochs_paid_over?: any;
+                    filled_epochs?: any;
+                    distributed_coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    nextKey?: Uint8Array;
+                    next_key?: Uint8Array;
                     total?: any;
                 };
             }): _147.UpcomingGaugesResponse;
@@ -1922,7 +1922,7 @@ export declare namespace osmosis {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    countTotal?: boolean;
+                    count_total?: boolean;
                     reverse?: boolean;
                 };
             }): _147.UpcomingGaugesPerDenomRequest;
@@ -1933,11 +1933,11 @@ export declare namespace osmosis {
             fromJSON(object: any): _147.UpcomingGaugesPerDenomResponse;
             toJSON(message: _147.UpcomingGaugesPerDenomResponse): unknown;
             fromPartial(object: {
-                upcomingGauges?: {
+                upcoming_gauges?: {
                     id?: any;
-                    isPerpetual?: boolean;
-                    distributeTo?: {
-                        lockQueryType?: _150.LockQueryType;
+                    is_perpetual?: boolean;
+                    distribute_to?: {
+                        lock_query_type?: _150.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1949,16 +1949,16 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    startTime?: Date;
-                    numEpochsPaidOver?: any;
-                    filledEpochs?: any;
-                    distributedCoins?: {
+                    start_time?: Date;
+                    num_epochs_paid_over?: any;
+                    filled_epochs?: any;
+                    distributed_coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    nextKey?: Uint8Array;
+                    next_key?: Uint8Array;
                     total?: any;
                 };
             }): _147.UpcomingGaugesPerDenomResponse;
@@ -1970,8 +1970,8 @@ export declare namespace osmosis {
             toJSON(message: _147.RewardsEstRequest): unknown;
             fromPartial(object: {
                 owner?: string;
-                lockIds?: any[];
-                endEpoch?: any;
+                lock_ids?: any[];
+                end_epoch?: any;
             }): _147.RewardsEstRequest;
         };
         RewardsEstResponse: {
@@ -1999,7 +1999,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _147.QueryLockableDurationsResponse;
             toJSON(message: _147.QueryLockableDurationsResponse): unknown;
             fromPartial(object: {
-                lockableDurations?: {
+                lockable_durations?: {
                     seconds?: any;
                     nanos?: number;
                 }[];
@@ -2011,7 +2011,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _146.Params;
             toJSON(message: _146.Params): unknown;
             fromPartial(object: {
-                distrEpochIdentifier?: string;
+                distr_epoch_identifier?: string;
             }): _146.Params;
         };
         GenesisState: {
@@ -2021,13 +2021,13 @@ export declare namespace osmosis {
             toJSON(message: _145.GenesisState): unknown;
             fromPartial(object: {
                 params?: {
-                    distrEpochIdentifier?: string;
+                    distr_epoch_identifier?: string;
                 };
                 gauges?: {
                     id?: any;
-                    isPerpetual?: boolean;
-                    distributeTo?: {
-                        lockQueryType?: _150.LockQueryType;
+                    is_perpetual?: boolean;
+                    distribute_to?: {
+                        lock_query_type?: _150.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -2039,19 +2039,19 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    startTime?: Date;
-                    numEpochsPaidOver?: any;
-                    filledEpochs?: any;
-                    distributedCoins?: {
+                    start_time?: Date;
+                    num_epochs_paid_over?: any;
+                    filled_epochs?: any;
+                    distributed_coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-                lockableDurations?: {
+                lockable_durations?: {
                     seconds?: any;
                     nanos?: number;
                 }[];
-                lastGaugeId?: any;
+                last_gauge_id?: any;
             }): _145.GenesisState;
         };
         Gauge: {
@@ -2061,9 +2061,9 @@ export declare namespace osmosis {
             toJSON(message: _144.Gauge): unknown;
             fromPartial(object: {
                 id?: any;
-                isPerpetual?: boolean;
-                distributeTo?: {
-                    lockQueryType?: _150.LockQueryType;
+                is_perpetual?: boolean;
+                distribute_to?: {
+                    lock_query_type?: _150.LockQueryType;
                     denom?: string;
                     duration?: {
                         seconds?: any;
@@ -2075,10 +2075,10 @@ export declare namespace osmosis {
                     denom?: string;
                     amount?: string;
                 }[];
-                startTime?: Date;
-                numEpochsPaidOver?: any;
-                filledEpochs?: any;
-                distributedCoins?: {
+                start_time?: Date;
+                num_epochs_paid_over?: any;
+                filled_epochs?: any;
+                distributed_coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
@@ -2090,7 +2090,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _144.LockableDurationsInfo;
             toJSON(message: _144.LockableDurationsInfo): unknown;
             fromPartial(object: {
-                lockableDurations?: {
+                lockable_durations?: {
                     seconds?: any;
                     nanos?: number;
                 }[];
@@ -2317,7 +2317,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2495,7 +2495,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2526,7 +2526,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2557,7 +2557,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2589,7 +2589,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2625,7 +2625,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _151.LockedRequest;
             toJSON(message: _151.LockedRequest): unknown;
             fromPartial(object: {
-                lockId?: any;
+                lock_id?: any;
             }): _151.LockedRequest;
         };
         LockedResponse: {
@@ -2641,7 +2641,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2655,7 +2655,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _151.SyntheticLockupsByLockupIDRequest;
             toJSON(message: _151.SyntheticLockupsByLockupIDRequest): unknown;
             fromPartial(object: {
-                lockId?: any;
+                lock_id?: any;
             }): _151.SyntheticLockupsByLockupIDRequest;
         };
         SyntheticLockupsByLockupIDResponse: {
@@ -2664,10 +2664,10 @@ export declare namespace osmosis {
             fromJSON(object: any): _151.SyntheticLockupsByLockupIDResponse;
             toJSON(message: _151.SyntheticLockupsByLockupIDResponse): unknown;
             fromPartial(object: {
-                syntheticLocks?: {
-                    underlyingLockId?: any;
-                    synthDenom?: string;
-                    endTime?: Date;
+                synthetic_locks?: {
+                    underlying_lock_id?: any;
+                    synth_denom?: string;
+                    end_time?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
@@ -2701,7 +2701,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2735,7 +2735,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2769,7 +2769,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2804,7 +2804,7 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
@@ -2827,7 +2827,7 @@ export declare namespace osmosis {
                     seconds?: any;
                     nanos?: number;
                 };
-                endTime?: Date;
+                end_time?: Date;
                 coins?: {
                     denom?: string;
                     amount?: string;
@@ -2840,7 +2840,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _150.QueryCondition;
             toJSON(message: _150.QueryCondition): unknown;
             fromPartial(object: {
-                lockQueryType?: _150.LockQueryType;
+                lock_query_type?: _150.LockQueryType;
                 denom?: string;
                 duration?: {
                     seconds?: any;
@@ -2855,9 +2855,9 @@ export declare namespace osmosis {
             fromJSON(object: any): _150.SyntheticLock;
             toJSON(message: _150.SyntheticLock): unknown;
             fromPartial(object: {
-                underlyingLockId?: any;
-                synthDenom?: string;
-                endTime?: Date;
+                underlying_lock_id?: any;
+                synth_denom?: string;
+                end_time?: Date;
                 duration?: {
                     seconds?: any;
                     nanos?: number;
@@ -2870,7 +2870,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _149.GenesisState;
             toJSON(message: _149.GenesisState): unknown;
             fromPartial(object: {
-                lastLockId?: any;
+                last_lock_id?: any;
                 locks?: {
                     ID?: any;
                     owner?: string;
@@ -2878,16 +2878,16 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    endTime?: Date;
+                    end_time?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-                syntheticLocks?: {
-                    underlyingLockId?: any;
-                    synthDenom?: string;
-                    endTime?: Date;
+                synthetic_locks?: {
+                    underlying_lock_id?: any;
+                    synth_denom?: string;
+                    end_time?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
@@ -2914,22 +2914,22 @@ export declare namespace osmosis {
                 toJSON(message: _155.QueryParamsResponse): unknown;
                 fromPartial(object: {
                     params?: {
-                        mintDenom?: string;
-                        genesisEpochProvisions?: string;
-                        epochIdentifier?: string;
-                        reductionPeriodInEpochs?: any;
-                        reductionFactor?: string;
-                        distributionProportions?: {
+                        mint_denom?: string;
+                        genesis_epoch_provisions?: string;
+                        epoch_identifier?: string;
+                        reduction_period_in_epochs?: any;
+                        reduction_factor?: string;
+                        distribution_proportions?: {
                             staking?: string;
-                            poolIncentives?: string;
-                            developerRewards?: string;
-                            communityPool?: string;
+                            pool_incentives?: string;
+                            developer_rewards?: string;
+                            community_pool?: string;
                         };
-                        weightedDeveloperRewardsReceivers?: {
+                        weighted_developer_rewards_receivers?: {
                             address?: string;
                             weight?: string;
                         }[];
-                        mintingRewardsDistributionStartEpoch?: any;
+                        minting_rewards_distribution_start_epoch?: any;
                     };
                 }): _155.QueryParamsResponse;
             };
@@ -2946,7 +2946,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _155.QueryEpochProvisionsResponse;
                 toJSON(message: _155.QueryEpochProvisionsResponse): unknown;
                 fromPartial(object: {
-                    epochProvisions?: Uint8Array;
+                    epoch_provisions?: Uint8Array;
                 }): _155.QueryEpochProvisionsResponse;
             };
             Minter: {
@@ -2955,7 +2955,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _154.Minter;
                 toJSON(message: _154.Minter): unknown;
                 fromPartial(object: {
-                    epochProvisions?: string;
+                    epoch_provisions?: string;
                 }): _154.Minter;
             };
             WeightedAddress: {
@@ -2975,9 +2975,9 @@ export declare namespace osmosis {
                 toJSON(message: _154.DistributionProportions): unknown;
                 fromPartial(object: {
                     staking?: string;
-                    poolIncentives?: string;
-                    developerRewards?: string;
-                    communityPool?: string;
+                    pool_incentives?: string;
+                    developer_rewards?: string;
+                    community_pool?: string;
                 }): _154.DistributionProportions;
             };
             Params: {
@@ -2986,22 +2986,22 @@ export declare namespace osmosis {
                 fromJSON(object: any): _154.Params;
                 toJSON(message: _154.Params): unknown;
                 fromPartial(object: {
-                    mintDenom?: string;
-                    genesisEpochProvisions?: string;
-                    epochIdentifier?: string;
-                    reductionPeriodInEpochs?: any;
-                    reductionFactor?: string;
-                    distributionProportions?: {
+                    mint_denom?: string;
+                    genesis_epoch_provisions?: string;
+                    epoch_identifier?: string;
+                    reduction_period_in_epochs?: any;
+                    reduction_factor?: string;
+                    distribution_proportions?: {
                         staking?: string;
-                        poolIncentives?: string;
-                        developerRewards?: string;
-                        communityPool?: string;
+                        pool_incentives?: string;
+                        developer_rewards?: string;
+                        community_pool?: string;
                     };
-                    weightedDeveloperRewardsReceivers?: {
+                    weighted_developer_rewards_receivers?: {
                         address?: string;
                         weight?: string;
                     }[];
-                    mintingRewardsDistributionStartEpoch?: any;
+                    minting_rewards_distribution_start_epoch?: any;
                 }): _154.Params;
             };
             GenesisState: {
@@ -3011,27 +3011,27 @@ export declare namespace osmosis {
                 toJSON(message: _153.GenesisState): unknown;
                 fromPartial(object: {
                     minter?: {
-                        epochProvisions?: string;
+                        epoch_provisions?: string;
                     };
                     params?: {
-                        mintDenom?: string;
-                        genesisEpochProvisions?: string;
-                        epochIdentifier?: string;
-                        reductionPeriodInEpochs?: any;
-                        reductionFactor?: string;
-                        distributionProportions?: {
+                        mint_denom?: string;
+                        genesis_epoch_provisions?: string;
+                        epoch_identifier?: string;
+                        reduction_period_in_epochs?: any;
+                        reduction_factor?: string;
+                        distribution_proportions?: {
                             staking?: string;
-                            poolIncentives?: string;
-                            developerRewards?: string;
-                            communityPool?: string;
+                            pool_incentives?: string;
+                            developer_rewards?: string;
+                            community_pool?: string;
                         };
-                        weightedDeveloperRewardsReceivers?: {
+                        weighted_developer_rewards_receivers?: {
                             address?: string;
                             weight?: string;
                         }[];
-                        mintingRewardsDistributionStartEpoch?: any;
+                        minting_rewards_distribution_start_epoch?: any;
                     };
-                    halvenStartedEpoch?: any;
+                    halven_started_epoch?: any;
                 }): _153.GenesisState;
             };
         };
@@ -3046,7 +3046,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _159.QueryGaugeIdsRequest;
                 toJSON(message: _159.QueryGaugeIdsRequest): unknown;
                 fromPartial(object: {
-                    poolId?: any;
+                    pool_id?: any;
                 }): _159.QueryGaugeIdsRequest;
             };
             QueryGaugeIdsResponse: {
@@ -3055,8 +3055,8 @@ export declare namespace osmosis {
                 fromJSON(object: any): _159.QueryGaugeIdsResponse;
                 toJSON(message: _159.QueryGaugeIdsResponse): unknown;
                 fromPartial(object: {
-                    gaugeIdsWithDuration?: {
-                        gaugeId?: any;
+                    gauge_ids_with_duration?: {
+                        gauge_id?: any;
                         duration?: {
                             seconds?: any;
                             nanos?: number;
@@ -3070,7 +3070,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _159.QueryGaugeIdsResponse_GaugeIdWithDuration;
                 toJSON(message: _159.QueryGaugeIdsResponse_GaugeIdWithDuration): unknown;
                 fromPartial(object: {
-                    gaugeId?: any;
+                    gauge_id?: any;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
@@ -3090,10 +3090,10 @@ export declare namespace osmosis {
                 fromJSON(object: any): _159.QueryDistrInfoResponse;
                 toJSON(message: _159.QueryDistrInfoResponse): unknown;
                 fromPartial(object: {
-                    distrInfo?: {
-                        totalWeight?: string;
+                    distr_info?: {
+                        total_weight?: string;
                         records?: {
-                            gaugeId?: any;
+                            gauge_id?: any;
                             weight?: string;
                         }[];
                     };
@@ -3113,7 +3113,7 @@ export declare namespace osmosis {
                 toJSON(message: _159.QueryParamsResponse): unknown;
                 fromPartial(object: {
                     params?: {
-                        mintedDenom?: string;
+                        minted_denom?: string;
                     };
                 }): _159.QueryParamsResponse;
             };
@@ -3130,7 +3130,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _159.QueryLockableDurationsResponse;
                 toJSON(message: _159.QueryLockableDurationsResponse): unknown;
                 fromPartial(object: {
-                    lockableDurations?: {
+                    lockable_durations?: {
                         seconds?: any;
                         nanos?: number;
                     }[];
@@ -3149,12 +3149,12 @@ export declare namespace osmosis {
                 fromJSON(object: any): _159.IncentivizedPool;
                 toJSON(message: _159.IncentivizedPool): unknown;
                 fromPartial(object: {
-                    poolId?: any;
-                    lockableDuration?: {
+                    pool_id?: any;
+                    lockable_duration?: {
                         seconds?: any;
                         nanos?: number;
                     };
-                    gaugeId?: any;
+                    gauge_id?: any;
                 }): _159.IncentivizedPool;
             };
             QueryIncentivizedPoolsResponse: {
@@ -3163,13 +3163,13 @@ export declare namespace osmosis {
                 fromJSON(object: any): _159.QueryIncentivizedPoolsResponse;
                 toJSON(message: _159.QueryIncentivizedPoolsResponse): unknown;
                 fromPartial(object: {
-                    incentivizedPools?: {
-                        poolId?: any;
-                        lockableDuration?: {
+                    incentivized_pools?: {
+                        pool_id?: any;
+                        lockable_duration?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        gaugeId?: any;
+                        gauge_id?: any;
                     }[];
                 }): _159.QueryIncentivizedPoolsResponse;
             };
@@ -3188,9 +3188,9 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     data?: {
                         id?: any;
-                        isPerpetual?: boolean;
-                        distributeTo?: {
-                            lockQueryType?: _150.LockQueryType;
+                        is_perpetual?: boolean;
+                        distribute_to?: {
+                            lock_query_type?: _150.LockQueryType;
                             denom?: string;
                             duration?: {
                                 seconds?: any;
@@ -3202,10 +3202,10 @@ export declare namespace osmosis {
                             denom?: string;
                             amount?: string;
                         }[];
-                        startTime?: Date;
-                        numEpochsPaidOver?: any;
-                        filledEpochs?: any;
-                        distributedCoins?: {
+                        start_time?: Date;
+                        num_epochs_paid_over?: any;
+                        filled_epochs?: any;
+                        distributed_coins?: {
                             denom?: string;
                             amount?: string;
                         }[];
@@ -3218,7 +3218,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _158.Params;
                 toJSON(message: _158.Params): unknown;
                 fromPartial(object: {
-                    mintedDenom?: string;
+                    minted_denom?: string;
                 }): _158.Params;
             };
             LockableDurationsInfo: {
@@ -3227,7 +3227,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _158.LockableDurationsInfo;
                 toJSON(message: _158.LockableDurationsInfo): unknown;
                 fromPartial(object: {
-                    lockableDurations?: {
+                    lockable_durations?: {
                         seconds?: any;
                         nanos?: number;
                     }[];
@@ -3239,9 +3239,9 @@ export declare namespace osmosis {
                 fromJSON(object: any): _158.DistrInfo;
                 toJSON(message: _158.DistrInfo): unknown;
                 fromPartial(object: {
-                    totalWeight?: string;
+                    total_weight?: string;
                     records?: {
-                        gaugeId?: any;
+                        gauge_id?: any;
                         weight?: string;
                     }[];
                 }): _158.DistrInfo;
@@ -3252,7 +3252,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _158.DistrRecord;
                 toJSON(message: _158.DistrRecord): unknown;
                 fromPartial(object: {
-                    gaugeId?: any;
+                    gauge_id?: any;
                     weight?: string;
                 }): _158.DistrRecord;
             };
@@ -3265,7 +3265,7 @@ export declare namespace osmosis {
                     title?: string;
                     description?: string;
                     records?: {
-                        gaugeId?: any;
+                        gauge_id?: any;
                         weight?: string;
                     }[];
                 }): _157.ReplacePoolIncentivesProposal;
@@ -3279,7 +3279,7 @@ export declare namespace osmosis {
                     title?: string;
                     description?: string;
                     records?: {
-                        gaugeId?: any;
+                        gauge_id?: any;
                         weight?: string;
                     }[];
                 }): _157.UpdatePoolIncentivesProposal;
@@ -3291,16 +3291,16 @@ export declare namespace osmosis {
                 toJSON(message: _156.GenesisState): unknown;
                 fromPartial(object: {
                     params?: {
-                        mintedDenom?: string;
+                        minted_denom?: string;
                     };
-                    lockableDurations?: {
+                    lockable_durations?: {
                         seconds?: any;
                         nanos?: number;
                     }[];
-                    distrInfo?: {
-                        totalWeight?: string;
+                    distr_info?: {
+                        total_weight?: string;
                         records?: {
-                            gaugeId?: any;
+                            gauge_id?: any;
                             weight?: string;
                         }[];
                     };
@@ -3467,7 +3467,7 @@ export declare namespace osmosis {
         AminoConverter: {
             "/osmosis.superfluid.MsgSuperfluidDelegate": {
                 aminoType: string;
-                toAmino: ({ sender, lockId, valAddr }: _165.MsgSuperfluidDelegate) => {
+                toAmino: ({ sender, lock_id, val_addr }: _165.MsgSuperfluidDelegate) => {
                     sender: string;
                     lock_id: string;
                     val_addr: string;
@@ -3480,7 +3480,7 @@ export declare namespace osmosis {
             };
             "/osmosis.superfluid.MsgSuperfluidUndelegate": {
                 aminoType: string;
-                toAmino: ({ sender, lockId }: _165.MsgSuperfluidUndelegate) => {
+                toAmino: ({ sender, lock_id }: _165.MsgSuperfluidUndelegate) => {
                     sender: string;
                     lock_id: string;
                 };
@@ -3491,7 +3491,7 @@ export declare namespace osmosis {
             };
             "/osmosis.superfluid.MsgSuperfluidUnbondLock": {
                 aminoType: string;
-                toAmino: ({ sender, lockId }: _165.MsgSuperfluidUnbondLock) => {
+                toAmino: ({ sender, lock_id }: _165.MsgSuperfluidUnbondLock) => {
                     sender: string;
                     lock_id: string;
                 };
@@ -3502,7 +3502,7 @@ export declare namespace osmosis {
             };
             "/osmosis.superfluid.MsgLockAndSuperfluidDelegate": {
                 aminoType: string;
-                toAmino: ({ sender, coins, valAddr }: _165.MsgLockAndSuperfluidDelegate) => {
+                toAmino: ({ sender, coins, val_addr }: _165.MsgLockAndSuperfluidDelegate) => {
                     sender: string;
                     coins: {
                         denom: string;
@@ -3521,7 +3521,7 @@ export declare namespace osmosis {
             };
             "/osmosis.superfluid.MsgUnPoolWhitelistedPool": {
                 aminoType: string;
-                toAmino: ({ sender, poolId }: _165.MsgUnPoolWhitelistedPool) => {
+                toAmino: ({ sender, pool_id }: _165.MsgUnPoolWhitelistedPool) => {
                     sender: string;
                     pool_id: string;
                 };
@@ -3538,8 +3538,8 @@ export declare namespace osmosis {
             toJSON(message: _165.MsgSuperfluidDelegate): unknown;
             fromPartial(object: {
                 sender?: string;
-                lockId?: any;
-                valAddr?: string;
+                lock_id?: any;
+                val_addr?: string;
             }): _165.MsgSuperfluidDelegate;
         };
         MsgSuperfluidDelegateResponse: {
@@ -3556,7 +3556,7 @@ export declare namespace osmosis {
             toJSON(message: _165.MsgSuperfluidUndelegate): unknown;
             fromPartial(object: {
                 sender?: string;
-                lockId?: any;
+                lock_id?: any;
             }): _165.MsgSuperfluidUndelegate;
         };
         MsgSuperfluidUndelegateResponse: {
@@ -3573,7 +3573,7 @@ export declare namespace osmosis {
             toJSON(message: _165.MsgSuperfluidUnbondLock): unknown;
             fromPartial(object: {
                 sender?: string;
-                lockId?: any;
+                lock_id?: any;
             }): _165.MsgSuperfluidUnbondLock;
         };
         MsgSuperfluidUnbondLockResponse: {
@@ -3594,7 +3594,7 @@ export declare namespace osmosis {
                     denom?: string;
                     amount?: string;
                 }[];
-                valAddr?: string;
+                val_addr?: string;
             }): _165.MsgLockAndSuperfluidDelegate;
         };
         MsgLockAndSuperfluidDelegateResponse: {
@@ -3613,7 +3613,7 @@ export declare namespace osmosis {
             toJSON(message: _165.MsgUnPoolWhitelistedPool): unknown;
             fromPartial(object: {
                 sender?: string;
-                poolId?: any;
+                pool_id?: any;
             }): _165.MsgUnPoolWhitelistedPool;
         };
         MsgUnPoolWhitelistedPoolResponse: {
@@ -3635,7 +3635,7 @@ export declare namespace osmosis {
             toJSON(message: _164.SuperfluidAsset): unknown;
             fromPartial(object: {
                 denom?: string;
-                assetType?: _164.SuperfluidAssetType;
+                asset_type?: _164.SuperfluidAssetType;
             }): _164.SuperfluidAsset;
         };
         SuperfluidIntermediaryAccount: {
@@ -3645,8 +3645,8 @@ export declare namespace osmosis {
             toJSON(message: _164.SuperfluidIntermediaryAccount): unknown;
             fromPartial(object: {
                 denom?: string;
-                valAddr?: string;
-                gaugeId?: any;
+                val_addr?: string;
+                gauge_id?: any;
             }): _164.SuperfluidIntermediaryAccount;
         };
         OsmoEquivalentMultiplierRecord: {
@@ -3655,7 +3655,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _164.OsmoEquivalentMultiplierRecord;
             toJSON(message: _164.OsmoEquivalentMultiplierRecord): unknown;
             fromPartial(object: {
-                epochNumber?: any;
+                epoch_number?: any;
                 denom?: string;
                 multiplier?: string;
             }): _164.OsmoEquivalentMultiplierRecord;
@@ -3666,13 +3666,13 @@ export declare namespace osmosis {
             fromJSON(object: any): _164.SuperfluidDelegationRecord;
             toJSON(message: _164.SuperfluidDelegationRecord): unknown;
             fromPartial(object: {
-                delegatorAddress?: string;
-                validatorAddress?: string;
-                delegationAmount?: {
+                delegator_address?: string;
+                validator_address?: string;
+                delegation_amount?: {
                     denom?: string;
                     amount?: string;
                 };
-                equivalentStakedAmount?: {
+                equivalent_staked_amount?: {
                     denom?: string;
                     amount?: string;
                 };
@@ -3684,8 +3684,8 @@ export declare namespace osmosis {
             fromJSON(object: any): _164.LockIdIntermediaryAccountConnection;
             toJSON(message: _164.LockIdIntermediaryAccountConnection): unknown;
             fromPartial(object: {
-                lockId?: any;
-                intermediaryAccount?: string;
+                lock_id?: any;
+                intermediary_account?: string;
             }): _164.LockIdIntermediaryAccountConnection;
         };
         UnpoolWhitelistedPools: {
@@ -3711,7 +3711,7 @@ export declare namespace osmosis {
             toJSON(message: _163.QueryParamsResponse): unknown;
             fromPartial(object: {
                 params?: {
-                    minimumRiskFactor?: string;
+                    minimum_risk_factor?: string;
                 };
             }): _163.QueryParamsResponse;
         };
@@ -3730,7 +3730,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.AssetTypeResponse;
             toJSON(message: _163.AssetTypeResponse): unknown;
             fromPartial(object: {
-                assetType?: _164.SuperfluidAssetType;
+                asset_type?: _164.SuperfluidAssetType;
             }): _163.AssetTypeResponse;
         };
         AllAssetsRequest: {
@@ -3748,7 +3748,7 @@ export declare namespace osmosis {
             fromPartial(object: {
                 assets?: {
                     denom?: string;
-                    assetType?: _164.SuperfluidAssetType;
+                    asset_type?: _164.SuperfluidAssetType;
                 }[];
             }): _163.AllAssetsResponse;
         };
@@ -3767,8 +3767,8 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.AssetMultiplierResponse;
             toJSON(message: _163.AssetMultiplierResponse): unknown;
             fromPartial(object: {
-                osmoEquivalentMultiplier?: {
-                    epochNumber?: any;
+                osmo_equivalent_multiplier?: {
+                    epoch_number?: any;
                     denom?: string;
                     multiplier?: string;
                 };
@@ -3781,8 +3781,8 @@ export declare namespace osmosis {
             toJSON(message: _163.SuperfluidIntermediaryAccountInfo): unknown;
             fromPartial(object: {
                 denom?: string;
-                valAddr?: string;
-                gaugeId?: any;
+                val_addr?: string;
+                gauge_id?: any;
                 address?: string;
             }): _163.SuperfluidIntermediaryAccountInfo;
         };
@@ -3796,7 +3796,7 @@ export declare namespace osmosis {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    countTotal?: boolean;
+                    count_total?: boolean;
                     reverse?: boolean;
                 };
             }): _163.AllIntermediaryAccountsRequest;
@@ -3809,12 +3809,12 @@ export declare namespace osmosis {
             fromPartial(object: {
                 accounts?: {
                     denom?: string;
-                    valAddr?: string;
-                    gaugeId?: any;
+                    val_addr?: string;
+                    gauge_id?: any;
                     address?: string;
                 }[];
                 pagination?: {
-                    nextKey?: Uint8Array;
+                    next_key?: Uint8Array;
                     total?: any;
                 };
             }): _163.AllIntermediaryAccountsResponse;
@@ -3825,7 +3825,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.ConnectedIntermediaryAccountRequest;
             toJSON(message: _163.ConnectedIntermediaryAccountRequest): unknown;
             fromPartial(object: {
-                lockId?: any;
+                lock_id?: any;
             }): _163.ConnectedIntermediaryAccountRequest;
         };
         ConnectedIntermediaryAccountResponse: {
@@ -3836,8 +3836,8 @@ export declare namespace osmosis {
             fromPartial(object: {
                 account?: {
                     denom?: string;
-                    valAddr?: string;
-                    gaugeId?: any;
+                    val_addr?: string;
+                    gauge_id?: any;
                     address?: string;
                 };
             }): _163.ConnectedIntermediaryAccountResponse;
@@ -3864,8 +3864,8 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.SuperfluidDelegationAmountRequest;
             toJSON(message: _163.SuperfluidDelegationAmountRequest): unknown;
             fromPartial(object: {
-                delegatorAddress?: string;
-                validatorAddress?: string;
+                delegator_address?: string;
+                validator_address?: string;
                 denom?: string;
             }): _163.SuperfluidDelegationAmountRequest;
         };
@@ -3887,7 +3887,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.SuperfluidDelegationsByDelegatorRequest;
             toJSON(message: _163.SuperfluidDelegationsByDelegatorRequest): unknown;
             fromPartial(object: {
-                delegatorAddress?: string;
+                delegator_address?: string;
             }): _163.SuperfluidDelegationsByDelegatorRequest;
         };
         SuperfluidDelegationsByDelegatorResponse: {
@@ -3896,23 +3896,23 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.SuperfluidDelegationsByDelegatorResponse;
             toJSON(message: _163.SuperfluidDelegationsByDelegatorResponse): unknown;
             fromPartial(object: {
-                superfluidDelegationRecords?: {
-                    delegatorAddress?: string;
-                    validatorAddress?: string;
-                    delegationAmount?: {
+                superfluid_delegation_records?: {
+                    delegator_address?: string;
+                    validator_address?: string;
+                    delegation_amount?: {
                         denom?: string;
                         amount?: string;
                     };
-                    equivalentStakedAmount?: {
+                    equivalent_staked_amount?: {
                         denom?: string;
                         amount?: string;
                     };
                 }[];
-                totalDelegatedCoins?: {
+                total_delegated_coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-                totalEquivalentStakedAmount?: {
+                total_equivalent_staked_amount?: {
                     denom?: string;
                     amount?: string;
                 };
@@ -3924,7 +3924,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.SuperfluidUndelegationsByDelegatorRequest;
             toJSON(message: _163.SuperfluidUndelegationsByDelegatorRequest): unknown;
             fromPartial(object: {
-                delegatorAddress?: string;
+                delegator_address?: string;
                 denom?: string;
             }): _163.SuperfluidUndelegationsByDelegatorRequest;
         };
@@ -3934,26 +3934,26 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.SuperfluidUndelegationsByDelegatorResponse;
             toJSON(message: _163.SuperfluidUndelegationsByDelegatorResponse): unknown;
             fromPartial(object: {
-                superfluidDelegationRecords?: {
-                    delegatorAddress?: string;
-                    validatorAddress?: string;
-                    delegationAmount?: {
+                superfluid_delegation_records?: {
+                    delegator_address?: string;
+                    validator_address?: string;
+                    delegation_amount?: {
                         denom?: string;
                         amount?: string;
                     };
-                    equivalentStakedAmount?: {
+                    equivalent_staked_amount?: {
                         denom?: string;
                         amount?: string;
                     };
                 }[];
-                totalUndelegatedCoins?: {
+                total_undelegated_coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-                syntheticLocks?: {
-                    underlyingLockId?: any;
-                    synthDenom?: string;
-                    endTime?: Date;
+                synthetic_locks?: {
+                    underlying_lock_id?: any;
+                    synth_denom?: string;
+                    end_time?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
@@ -3967,7 +3967,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.SuperfluidDelegationsByValidatorDenomRequest;
             toJSON(message: _163.SuperfluidDelegationsByValidatorDenomRequest): unknown;
             fromPartial(object: {
-                validatorAddress?: string;
+                validator_address?: string;
                 denom?: string;
             }): _163.SuperfluidDelegationsByValidatorDenomRequest;
         };
@@ -3977,14 +3977,14 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.SuperfluidDelegationsByValidatorDenomResponse;
             toJSON(message: _163.SuperfluidDelegationsByValidatorDenomResponse): unknown;
             fromPartial(object: {
-                superfluidDelegationRecords?: {
-                    delegatorAddress?: string;
-                    validatorAddress?: string;
-                    delegationAmount?: {
+                superfluid_delegation_records?: {
+                    delegator_address?: string;
+                    validator_address?: string;
+                    delegation_amount?: {
                         denom?: string;
                         amount?: string;
                     };
-                    equivalentStakedAmount?: {
+                    equivalent_staked_amount?: {
                         denom?: string;
                         amount?: string;
                     };
@@ -3997,7 +3997,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
             toJSON(message: _163.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): unknown;
             fromPartial(object: {
-                validatorAddress?: string;
+                validator_address?: string;
                 denom?: string;
             }): _163.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
         };
@@ -4007,7 +4007,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _163.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
             toJSON(message: _163.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): unknown;
             fromPartial(object: {
-                totalDelegatedCoins?: {
+                total_delegated_coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
@@ -4019,7 +4019,7 @@ export declare namespace osmosis {
             fromJSON(object: any): _162.Params;
             toJSON(message: _162.Params): unknown;
             fromPartial(object: {
-                minimumRiskFactor?: string;
+                minimum_risk_factor?: string;
             }): _162.Params;
         };
         GenesisState: {
@@ -4029,25 +4029,25 @@ export declare namespace osmosis {
             toJSON(message: _161.GenesisState): unknown;
             fromPartial(object: {
                 params?: {
-                    minimumRiskFactor?: string;
+                    minimum_risk_factor?: string;
                 };
-                superfluidAssets?: {
+                superfluid_assets?: {
                     denom?: string;
-                    assetType?: _164.SuperfluidAssetType;
+                    asset_type?: _164.SuperfluidAssetType;
                 }[];
-                osmoEquivalentMultipliers?: {
-                    epochNumber?: any;
+                osmo_equivalent_multipliers?: {
+                    epoch_number?: any;
                     denom?: string;
                     multiplier?: string;
                 }[];
-                intermediaryAccounts?: {
+                intermediary_accounts?: {
                     denom?: string;
-                    valAddr?: string;
-                    gaugeId?: any;
+                    val_addr?: string;
+                    gauge_id?: any;
                 }[];
-                intemediaryAccountConnections?: {
-                    lockId?: any;
-                    intermediaryAccount?: string;
+                intemediary_account_connections?: {
+                    lock_id?: any;
+                    intermediary_account?: string;
                 }[];
             }): _161.GenesisState;
         };
@@ -4227,7 +4227,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _170.MsgCreateDenomResponse;
                 toJSON(message: _170.MsgCreateDenomResponse): unknown;
                 fromPartial(object: {
-                    newTokenDenom?: string;
+                    new_token_denom?: string;
                 }): _170.MsgCreateDenomResponse;
             };
             MsgMint: {
@@ -4302,7 +4302,7 @@ export declare namespace osmosis {
                 toJSON(message: _169.QueryParamsResponse): unknown;
                 fromPartial(object: {
                     params?: {
-                        denomCreationFee?: {
+                        denom_creation_fee?: {
                             denom?: string;
                             amount?: string;
                         }[];
@@ -4324,7 +4324,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _169.QueryDenomAuthorityMetadataResponse;
                 toJSON(message: _169.QueryDenomAuthorityMetadataResponse): unknown;
                 fromPartial(object: {
-                    authorityMetadata?: {
+                    authority_metadata?: {
                         Admin?: string;
                     };
                 }): _169.QueryDenomAuthorityMetadataResponse;
@@ -4353,7 +4353,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _168.Params;
                 toJSON(message: _168.Params): unknown;
                 fromPartial(object: {
-                    denomCreationFee?: {
+                    denom_creation_fee?: {
                         denom?: string;
                         amount?: string;
                     }[];
@@ -4366,14 +4366,14 @@ export declare namespace osmosis {
                 toJSON(message: _167.GenesisState): unknown;
                 fromPartial(object: {
                     params?: {
-                        denomCreationFee?: {
+                        denom_creation_fee?: {
                             denom?: string;
                             amount?: string;
                         }[];
                     };
-                    factoryDenoms?: {
+                    factory_denoms?: {
                         denom?: string;
-                        authorityMetadata?: {
+                        authority_metadata?: {
                             Admin?: string;
                         };
                     }[];
@@ -4386,7 +4386,7 @@ export declare namespace osmosis {
                 toJSON(message: _167.GenesisDenom): unknown;
                 fromPartial(object: {
                     denom?: string;
-                    authorityMetadata?: {
+                    authority_metadata?: {
                         Admin?: string;
                     };
                 }): _167.GenesisDenom;
@@ -4419,7 +4419,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _174.QueryFeeTokensResponse;
                 toJSON(message: _174.QueryFeeTokensResponse): unknown;
                 fromPartial(object: {
-                    feeTokens?: {
+                    fee_tokens?: {
                         denom?: string;
                         poolID?: any;
                     }[];
@@ -4441,7 +4441,7 @@ export declare namespace osmosis {
                 toJSON(message: _174.QueryDenomSpotPriceResponse): unknown;
                 fromPartial(object: {
                     poolID?: any;
-                    spotPrice?: string;
+                    spot_price?: string;
                 }): _174.QueryDenomSpotPriceResponse;
             };
             QueryDenomPoolIdRequest: {
@@ -4475,7 +4475,7 @@ export declare namespace osmosis {
                 fromJSON(object: any): _174.QueryBaseDenomResponse;
                 toJSON(message: _174.QueryBaseDenomResponse): unknown;
                 fromPartial(object: {
-                    baseDenom?: string;
+                    base_denom?: string;
                 }): _174.QueryBaseDenomResponse;
             };
             UpdateFeeTokenProposal: {

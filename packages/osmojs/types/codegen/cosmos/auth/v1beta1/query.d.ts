@@ -10,7 +10,7 @@ import { DeepPartial } from "@osmonauts/helpers";
  */
 export interface QueryAccountsRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QueryAccountsResponse is the response type for the Query/Accounts RPC method.
@@ -21,7 +21,7 @@ export interface QueryAccountsResponse {
     /** accounts are the existing accounts */
     accounts: Any[];
     /** pagination defines the pagination in the response. */
-    pagination: PageResponse;
+    pagination?: PageResponse;
 }
 /** QueryAccountRequest is the request type for the Query/Account RPC method. */
 export interface QueryAccountRequest {
@@ -53,23 +53,23 @@ export interface Bech32PrefixRequest {
 }
 /** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
 export interface Bech32PrefixResponse {
-    bech32Prefix: string;
+    bech32_prefix: string;
 }
 /** AddressBytesToStringRequest is the request type for AddressString rpc method */
 export interface AddressBytesToStringRequest {
-    addressBytes: Uint8Array;
+    address_bytes: Uint8Array;
 }
 /** AddressBytesToStringResponse is the response type for AddressString rpc method */
 export interface AddressBytesToStringResponse {
-    addressString: string;
+    address_string: string;
 }
 /** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
 export interface AddressStringToBytesRequest {
-    addressString: string;
+    address_string: string;
 }
 /** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
 export interface AddressStringToBytesResponse {
-    addressBytes: Uint8Array;
+    address_bytes: Uint8Array;
 }
 export declare const QueryAccountsRequest: {
     encode(message: QueryAccountsRequest, writer?: _m0.Writer): _m0.Writer;

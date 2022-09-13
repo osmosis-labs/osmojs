@@ -20,12 +20,12 @@ export interface PeriodLock {
     ID: Long;
     owner: string;
     duration: Duration;
-    endTime: Date;
+    end_time: Date;
     coins: Coin[];
 }
 export interface QueryCondition {
     /** type of lock query, ByLockDuration | ByLockTime */
-    lockQueryType: LockQueryType;
+    lock_query_type: LockQueryType;
     /** What token denomination are we looking for lockups of */
     denom: string;
     /** valid when query condition is ByDuration */
@@ -51,13 +51,13 @@ export interface QueryCondition {
  */
 export interface SyntheticLock {
     /** underlying native lockup id for this synthetic lockup */
-    underlyingLockId: Long;
-    synthDenom: string;
+    underlying_lock_id: Long;
+    synth_denom: string;
     /**
      * used for unbonding synthetic lockups, for active synthetic lockups, this
      * value is set to uninitialized value
      */
-    endTime: Date;
+    end_time: Date;
     duration: Duration;
 }
 export declare const PeriodLock: {

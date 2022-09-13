@@ -6,8 +6,8 @@ import { DeepPartial } from "@osmonauts/helpers";
 export interface GenesisState {
     /** params defines all the paramaters of the module. */
     params: Params;
-    lockableDurations: Duration[];
-    distrInfo?: DistrInfo;
+    lockable_durations: Duration[];
+    distr_info?: DistrInfo;
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

@@ -4,12 +4,12 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 /** EventCreateGroup is an event emitted when a group is created. */
 export interface EventCreateGroup {
     /** group_id is the unique ID of the group. */
-    groupId: Long;
+    group_id: Long;
 }
 /** EventUpdateGroup is an event emitted when a group is updated. */
 export interface EventUpdateGroup {
     /** group_id is the unique ID of the group. */
-    groupId: Long;
+    group_id: Long;
 }
 /** EventCreateGroupPolicy is an event emitted when a group policy is created. */
 export interface EventCreateGroupPolicy {
@@ -24,29 +24,29 @@ export interface EventUpdateGroupPolicy {
 /** EventSubmitProposal is an event emitted when a proposal is created. */
 export interface EventSubmitProposal {
     /** proposal_id is the unique ID of the proposal. */
-    proposalId: Long;
+    proposal_id: Long;
 }
 /** EventWithdrawProposal is an event emitted when a proposal is withdrawn. */
 export interface EventWithdrawProposal {
     /** proposal_id is the unique ID of the proposal. */
-    proposalId: Long;
+    proposal_id: Long;
 }
 /** EventVote is an event emitted when a voter votes on a proposal. */
 export interface EventVote {
     /** proposal_id is the unique ID of the proposal. */
-    proposalId: Long;
+    proposal_id: Long;
 }
 /** EventExec is an event emitted when a proposal is executed. */
 export interface EventExec {
     /** proposal_id is the unique ID of the proposal. */
-    proposalId: Long;
+    proposal_id: Long;
     /** result is the proposal execution result. */
     result: ProposalExecutorResult;
 }
 /** EventLeaveGroup is an event emitted when group member leaves the group. */
 export interface EventLeaveGroup {
     /** group_id is the unique ID of the group. */
-    groupId: Long;
+    group_id: Long;
     /** address is the account address of the group member. */
     address: string;
 }

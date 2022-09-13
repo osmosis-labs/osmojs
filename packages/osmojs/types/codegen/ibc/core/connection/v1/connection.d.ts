@@ -29,7 +29,7 @@ export declare function stateToJSON(object: State): string;
  */
 export interface ConnectionEnd {
     /** client associated with this connection. */
-    clientId: string;
+    client_id: string;
     /**
      * IBC version which can be utilised to determine encodings or protocols for
      * channels or packets utilising this connection.
@@ -44,7 +44,7 @@ export interface ConnectionEnd {
      * packet-verification NOTE: delay period logic is only implemented by some
      * clients.
      */
-    delayPeriod: Long;
+    delay_period: Long;
 }
 /**
  * IdentifiedConnection defines a connection with additional connection
@@ -54,7 +54,7 @@ export interface IdentifiedConnection {
     /** connection identifier. */
     id: string;
     /** client associated with this connection. */
-    clientId: string;
+    client_id: string;
     /**
      * IBC version which can be utilised to determine encodings or protocols for
      * channels or packets utilising this connection
@@ -65,7 +65,7 @@ export interface IdentifiedConnection {
     /** counterparty chain associated with this connection. */
     counterparty: Counterparty;
     /** delay period associated with this connection. */
-    delayPeriod: Long;
+    delay_period: Long;
 }
 /** Counterparty defines the counterparty chain associated with a connection end. */
 export interface Counterparty {
@@ -73,12 +73,12 @@ export interface Counterparty {
      * identifies the client on the counterparty chain associated with a given
      * connection.
      */
-    clientId: string;
+    client_id: string;
     /**
      * identifies the connection end on the counterparty chain associated with a
      * given connection.
      */
-    connectionId: string;
+    connection_id: string;
     /** commitment merkle prefix of the counterparty chain. */
     prefix: MerklePrefix;
 }
@@ -90,7 +90,7 @@ export interface ClientPaths {
 /** ConnectionPaths define all the connection paths for a given client state. */
 export interface ConnectionPaths {
     /** client state unique identifier */
-    clientId: string;
+    client_id: string;
     /** list of connection paths */
     paths: string[];
 }
@@ -111,7 +111,7 @@ export interface Params {
      * largest amount of time that the chain might reasonably take to produce the next block under normal operating
      * conditions. A safe choice is 3-5x the expected time per block.
      */
-    maxExpectedTimePerBlock: Long;
+    max_expected_time_per_block: Long;
 }
 export declare const ConnectionEnd: {
     encode(message: ConnectionEnd, writer?: _m0.Writer): _m0.Writer;

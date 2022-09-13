@@ -26,15 +26,15 @@ export interface Pool {
      * a time specified as 0w,1w,2w, etc. which specifies how long the token
      * would need to be locked up to count in governance. 0w means no lockup.
      */
-    futurePoolGovernor: string;
+    future_pool_governor: string;
     /** sum of all LP shares */
     totalShares: Coin;
     /** assets in the pool */
     poolLiquidity: Coin[];
     /** for calculation amognst assets with different precisions */
-    scalingFactor: Long[];
+    scaling_factor: Long[];
     /** scaling_factor_governor is the address can adjust pool scaling factors */
-    scalingFactorGovernor: string;
+    scaling_factor_governor: string;
 }
 export declare const PoolParams: {
     encode(message: PoolParams, writer?: _m0.Writer): _m0.Writer;

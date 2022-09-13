@@ -56,22 +56,22 @@ export interface AminoMsgSubmitMisbehaviour extends AminoMsg {
 export declare const AminoConverter: {
     "/ibc.core.client.v1.MsgCreateClient": {
         aminoType: string;
-        toAmino: ({ clientState, consensusState, signer }: MsgCreateClient) => AminoMsgCreateClient["value"];
+        toAmino: ({ client_state, consensus_state, signer }: MsgCreateClient) => AminoMsgCreateClient["value"];
         fromAmino: ({ client_state, consensus_state, signer }: AminoMsgCreateClient["value"]) => MsgCreateClient;
     };
     "/ibc.core.client.v1.MsgUpdateClient": {
         aminoType: string;
-        toAmino: ({ clientId, header, signer }: MsgUpdateClient) => AminoMsgUpdateClient["value"];
+        toAmino: ({ client_id, header, signer }: MsgUpdateClient) => AminoMsgUpdateClient["value"];
         fromAmino: ({ client_id, header, signer }: AminoMsgUpdateClient["value"]) => MsgUpdateClient;
     };
     "/ibc.core.client.v1.MsgUpgradeClient": {
         aminoType: string;
-        toAmino: ({ clientId, clientState, consensusState, proofUpgradeClient, proofUpgradeConsensusState, signer }: MsgUpgradeClient) => AminoMsgUpgradeClient["value"];
+        toAmino: ({ client_id, client_state, consensus_state, proof_upgrade_client, proof_upgrade_consensus_state, signer }: MsgUpgradeClient) => AminoMsgUpgradeClient["value"];
         fromAmino: ({ client_id, client_state, consensus_state, proof_upgrade_client, proof_upgrade_consensus_state, signer }: AminoMsgUpgradeClient["value"]) => MsgUpgradeClient;
     };
     "/ibc.core.client.v1.MsgSubmitMisbehaviour": {
         aminoType: string;
-        toAmino: ({ clientId, misbehaviour, signer }: MsgSubmitMisbehaviour) => AminoMsgSubmitMisbehaviour["value"];
+        toAmino: ({ client_id, misbehaviour, signer }: MsgSubmitMisbehaviour) => AminoMsgSubmitMisbehaviour["value"];
         fromAmino: ({ client_id, misbehaviour, signer }: AminoMsgSubmitMisbehaviour["value"]) => MsgSubmitMisbehaviour;
     };
 };

@@ -10,7 +10,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  */
 export interface QueryConnectionRequest {
     /** connection unique identifier */
-    connectionId: string;
+    connection_id: string;
 }
 /**
  * QueryConnectionResponse is the response type for the Query/Connection RPC
@@ -23,14 +23,14 @@ export interface QueryConnectionResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 /**
  * QueryConnectionsRequest is the request type for the Query/Connections RPC
  * method
  */
 export interface QueryConnectionsRequest {
-    pagination: PageRequest;
+    pagination?: PageRequest;
 }
 /**
  * QueryConnectionsResponse is the response type for the Query/Connections RPC
@@ -40,7 +40,7 @@ export interface QueryConnectionsResponse {
     /** list of stored connections of the chain. */
     connections: IdentifiedConnection[];
     /** pagination response */
-    pagination: PageResponse;
+    pagination?: PageResponse;
     /** query block height */
     height: Height;
 }
@@ -50,7 +50,7 @@ export interface QueryConnectionsResponse {
  */
 export interface QueryClientConnectionsRequest {
     /** client identifier associated with a connection */
-    clientId: string;
+    client_id: string;
 }
 /**
  * QueryClientConnectionsResponse is the response type for the
@@ -58,11 +58,11 @@ export interface QueryClientConnectionsRequest {
  */
 export interface QueryClientConnectionsResponse {
     /** slice of all the connection paths associated with a client. */
-    connectionPaths: string[];
+    connection_paths: string[];
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was generated */
-    proofHeight: Height;
+    proof_height: Height;
 }
 /**
  * QueryConnectionClientStateRequest is the request type for the
@@ -70,7 +70,7 @@ export interface QueryClientConnectionsResponse {
  */
 export interface QueryConnectionClientStateRequest {
     /** connection identifier */
-    connectionId: string;
+    connection_id: string;
 }
 /**
  * QueryConnectionClientStateResponse is the response type for the
@@ -78,11 +78,11 @@ export interface QueryConnectionClientStateRequest {
  */
 export interface QueryConnectionClientStateResponse {
     /** client state associated with the channel */
-    identifiedClientState: IdentifiedClientState;
+    identified_client_state: IdentifiedClientState;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 /**
  * QueryConnectionConsensusStateRequest is the request type for the
@@ -90,9 +90,9 @@ export interface QueryConnectionClientStateResponse {
  */
 export interface QueryConnectionConsensusStateRequest {
     /** connection identifier */
-    connectionId: string;
-    revisionNumber: Long;
-    revisionHeight: Long;
+    connection_id: string;
+    revision_number: Long;
+    revision_height: Long;
 }
 /**
  * QueryConnectionConsensusStateResponse is the response type for the
@@ -100,13 +100,13 @@ export interface QueryConnectionConsensusStateRequest {
  */
 export interface QueryConnectionConsensusStateResponse {
     /** consensus state associated with the channel */
-    consensusState: Any;
+    consensus_state: Any;
     /** client ID associated with the consensus state */
-    clientId: string;
+    client_id: string;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proof_height: Height;
 }
 export declare const QueryConnectionRequest: {
     encode(message: QueryConnectionRequest, writer?: _m0.Writer): _m0.Writer;

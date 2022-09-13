@@ -14,7 +14,7 @@ export interface MerkleRoot {
  * append(Path.KeyPrefix, key...))
  */
 export interface MerklePrefix {
-    keyPrefix: Uint8Array;
+    key_prefix: Uint8Array;
 }
 /**
  * MerklePath is the path used to verify commitment proofs, which can be an
@@ -22,7 +22,7 @@ export interface MerklePrefix {
  * MerklePath is represented from root-to-leaf
  */
 export interface MerklePath {
-    keyPath: string[];
+    key_path: string[];
 }
 /**
  * MerkleProof is a wrapper type over a chain of CommitmentProofs.

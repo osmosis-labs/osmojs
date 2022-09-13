@@ -7,7 +7,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  * is called by a relayer on Chain A.
  */
 export interface MsgChannelOpenInit {
-    portId: string;
+    port_id: string;
     channel: Channel;
     signer: string;
 }
@@ -19,16 +19,16 @@ export interface MsgChannelOpenInitResponse {
  * on Chain B.
  */
 export interface MsgChannelOpenTry {
-    portId: string;
+    port_id: string;
     /**
      * in the case of crossing hello's, when both chains call OpenInit, we need
      * the channel identifier of the previous channel in state INIT
      */
-    previousChannelId: string;
+    previous_channel_id: string;
     channel: Channel;
-    counterpartyVersion: string;
-    proofInit: Uint8Array;
-    proofHeight: Height;
+    counterparty_version: string;
+    proof_init: Uint8Array;
+    proof_height: Height;
     signer: string;
 }
 /** MsgChannelOpenTryResponse defines the Msg/ChannelOpenTry response type. */
@@ -39,12 +39,12 @@ export interface MsgChannelOpenTryResponse {
  * the change of channel state to TRYOPEN on Chain B.
  */
 export interface MsgChannelOpenAck {
-    portId: string;
-    channelId: string;
-    counterpartyChannelId: string;
-    counterpartyVersion: string;
-    proofTry: Uint8Array;
-    proofHeight: Height;
+    port_id: string;
+    channel_id: string;
+    counterparty_channel_id: string;
+    counterparty_version: string;
+    proof_try: Uint8Array;
+    proof_height: Height;
     signer: string;
 }
 /** MsgChannelOpenAckResponse defines the Msg/ChannelOpenAck response type. */
@@ -55,10 +55,10 @@ export interface MsgChannelOpenAckResponse {
  * acknowledge the change of channel state to OPEN on Chain A.
  */
 export interface MsgChannelOpenConfirm {
-    portId: string;
-    channelId: string;
-    proofAck: Uint8Array;
-    proofHeight: Height;
+    port_id: string;
+    channel_id: string;
+    proof_ack: Uint8Array;
+    proof_height: Height;
     signer: string;
 }
 /**
@@ -72,8 +72,8 @@ export interface MsgChannelOpenConfirmResponse {
  * to close a channel with Chain B.
  */
 export interface MsgChannelCloseInit {
-    portId: string;
-    channelId: string;
+    port_id: string;
+    channel_id: string;
     signer: string;
 }
 /** MsgChannelCloseInitResponse defines the Msg/ChannelCloseInit response type. */
@@ -84,10 +84,10 @@ export interface MsgChannelCloseInitResponse {
  * to acknowledge the change of channel state to CLOSED on Chain A.
  */
 export interface MsgChannelCloseConfirm {
-    portId: string;
-    channelId: string;
-    proofInit: Uint8Array;
-    proofHeight: Height;
+    port_id: string;
+    channel_id: string;
+    proof_init: Uint8Array;
+    proof_height: Height;
     signer: string;
 }
 /**
@@ -99,8 +99,8 @@ export interface MsgChannelCloseConfirmResponse {
 /** MsgRecvPacket receives incoming IBC packet */
 export interface MsgRecvPacket {
     packet: Packet;
-    proofCommitment: Uint8Array;
-    proofHeight: Height;
+    proof_commitment: Uint8Array;
+    proof_height: Height;
     signer: string;
 }
 /** MsgRecvPacketResponse defines the Msg/RecvPacket response type. */
@@ -109,9 +109,9 @@ export interface MsgRecvPacketResponse {
 /** MsgTimeout receives timed-out packet */
 export interface MsgTimeout {
     packet: Packet;
-    proofUnreceived: Uint8Array;
-    proofHeight: Height;
-    nextSequenceRecv: Long;
+    proof_unreceived: Uint8Array;
+    proof_height: Height;
+    next_sequence_recv: Long;
     signer: string;
 }
 /** MsgTimeoutResponse defines the Msg/Timeout response type. */
@@ -120,10 +120,10 @@ export interface MsgTimeoutResponse {
 /** MsgTimeoutOnClose timed-out packet upon counterparty channel closure. */
 export interface MsgTimeoutOnClose {
     packet: Packet;
-    proofUnreceived: Uint8Array;
-    proofClose: Uint8Array;
-    proofHeight: Height;
-    nextSequenceRecv: Long;
+    proof_unreceived: Uint8Array;
+    proof_close: Uint8Array;
+    proof_height: Height;
+    next_sequence_recv: Long;
     signer: string;
 }
 /** MsgTimeoutOnCloseResponse defines the Msg/TimeoutOnClose response type. */
@@ -133,8 +133,8 @@ export interface MsgTimeoutOnCloseResponse {
 export interface MsgAcknowledgement {
     packet: Packet;
     acknowledgement: Uint8Array;
-    proofAcked: Uint8Array;
-    proofHeight: Height;
+    proof_acked: Uint8Array;
+    proof_height: Height;
     signer: string;
 }
 /** MsgAcknowledgementResponse defines the Msg/Acknowledgement response type. */

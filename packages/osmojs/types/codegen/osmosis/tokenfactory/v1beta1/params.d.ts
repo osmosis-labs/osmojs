@@ -3,7 +3,7 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** Params holds parameters for the tokenfactory module */
 export interface Params {
-    denomCreationFee: Coin[];
+    denom_creation_fee: Coin[];
 }
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
