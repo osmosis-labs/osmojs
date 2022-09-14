@@ -3271,15 +3271,15 @@
   dependencies:
     "@octokit/openapi-types" "^12.7.0"
 
-"@osmonauts/ast@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.17.0.tgz#ff7026a0e0aff47f17bd4bf7f8ef1656ccab2def"
-  integrity sha512-pswaRcJjha/V+5ntdKj07+1GB3+AxXx8N4yp1TRx1D9cCGe8tHhNxMxkhTxDkeY9HC5v5VKSF7mCtx0jl9BBdQ==
+"@osmonauts/ast@^0.17.2":
+  version "0.17.2"
+  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.17.2.tgz#dd9e98c415de35cec638b1598239a640641f88c4"
+  integrity sha512-pwiOJXsmgz1SWJ3rfc7a+jCH18tGKIR1bfTIwHoVSshc6/5mFAMOg7g7l+7NOhVCPvnhU9E3C9aUyATAoL7Lxg==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@babel/types" "7.18.13"
-    "@osmonauts/proto-parser" "^0.14.0"
-    "@osmonauts/types" "^0.11.0"
+    "@osmonauts/proto-parser" "^0.14.2"
+    "@osmonauts/types" "^0.11.2"
     "@osmonauts/utils" "^0.3.13"
     case "1.6.3"
     dotty "0.1.2"
@@ -3298,30 +3298,30 @@
     long "^5.2.0"
     protobufjs "^6.11.3"
 
-"@osmonauts/lcd@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.npmjs.org/@osmonauts/lcd/-/lcd-0.4.0.tgz#94c14df420559530e5fbaec2b64e6e0603629605"
-  integrity sha512-DjzU2ZqJ6DHkRpNfIfut1LIVYxdqo5IQf9sgYPiDF2hmTCxvYeAZ6uvCuiUiKJO0QdjBs3criv0/CH+Ytl5dsA==
+"@osmonauts/lcd@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.npmjs.org/@osmonauts/lcd/-/lcd-0.4.1.tgz#78df03e256796c43de8291efb6aab4fab1c1b3df"
+  integrity sha512-N8QzBk2VopBlism9P1y/aoly2G32U/9NJuls/yL6eubVtAZ61OWb+wV7pzaT+zQmDkylehFPCmdGD4JiTJxQig==
   dependencies:
     "@babel/runtime" "^7.18.9"
     axios "0.27.2"
 
-"@osmonauts/proto-parser@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.14.0.tgz#7236247fdc7ededbb75e2532a53b6ee82b6d493e"
-  integrity sha512-Wuxj6DuEFsWyDyAakumTri645s1XrvlnivAiy7FsRkKuCR+FiH7LRoeqx1Si5RPn1LhjPgsGrLJNgZUhroFbEg==
+"@osmonauts/proto-parser@^0.14.2":
+  version "0.14.2"
+  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.14.2.tgz#3dba991602d759da1bcdf5db54ccb7cef8961b0f"
+  integrity sha512-ixpDEpCCt7Cr6O4hQjSRIUzvwjdU9cE21LtLxI9NmWiPBwm50qk9yPfqtRDPfqXTrKw7IH0kCC2CjjeSF80tYQ==
   dependencies:
     "@babel/runtime" "^7.18.9"
-    "@osmonauts/types" "^0.11.0"
+    "@osmonauts/types" "^0.11.2"
     "@pyramation/protobufjs" "6.11.3"
     dotty "0.1.2"
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@0.21.2":
-  version "0.21.2"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.21.2.tgz#8cc189c1ce2737ce39de1568a012a25d705a8afa"
-  integrity sha512-r/gL35EVXgyOYW2g8vTMyoa/jpQ9YKoV/bqaX1bs9bJ6T6m9cGQaOCAu5Bn3FmnExaJlZoOMHJuVeWnmPHvL9g==
+"@osmonauts/telescope@0.21.4":
+  version "0.21.4"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.21.4.tgz#bc6265b7cc1f0b544131bf451ee8c8d767a843f6"
+  integrity sha512-w8PsIQrAy93GmWF9Hsa1UhzBW5QBddZl/Cj33QXzVT7UYKKzsB1OYNnO2seb2fd8zLaAUfYwPcbhyfRxdN4szA==
   dependencies:
     "@babel/core" "7.18.13"
     "@babel/generator" "7.18.13"
@@ -3336,9 +3336,9 @@
     "@babel/traverse" "7.18.13"
     "@babel/types" "7.18.13"
     "@cosmwasm/ts-codegen" "0.16.1"
-    "@osmonauts/ast" "^0.17.0"
-    "@osmonauts/proto-parser" "^0.14.0"
-    "@osmonauts/types" "^0.11.0"
+    "@osmonauts/ast" "^0.17.2"
+    "@osmonauts/proto-parser" "^0.14.2"
+    "@osmonauts/types" "^0.11.2"
     "@osmonauts/utils" "^0.3.13"
     "@types/parse-package-name" "0.1.0"
     case "1.6.3"
@@ -3356,10 +3356,10 @@
     rimraf "3.0.2"
     shelljs "0.8.5"
 
-"@osmonauts/types@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.npmjs.org/@osmonauts/types/-/types-0.11.0.tgz#b782c189851c6750aef548c1af6245b7321c9199"
-  integrity sha512-4FiAHQ7g2gzF8LPyyc3uQjm218WKmtAVrZ6WFJKP4gRTzr4kfFaVY6ohHX744f7Rd7mUXVFJHJZOPJ1HrNGpyQ==
+"@osmonauts/types@^0.11.2":
+  version "0.11.2"
+  resolved "https://registry.npmjs.org/@osmonauts/types/-/types-0.11.2.tgz#2268c4eb6b12a4aeba500dca235fecde91d91a02"
+  integrity sha512-PPwB/o50TSy3ApJrTOD5jA8eNwhiSAj2TKfwW9EcHITu1Bt5ypu5Zje/ar/xKyOQ5M4mz0JLuK8I03lpbka94g==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@osmonauts/utils" "^0.3.13"
