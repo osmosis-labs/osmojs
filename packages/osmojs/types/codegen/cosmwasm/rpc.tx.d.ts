@@ -22,11 +22,7 @@ export declare const createRPCMsgClient: ({ rpc }: {
             v1beta1: import("../cosmos/feegrant/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
         gov: {
-            v1: import("../cosmos/gov/v1/tx.rpc.msg").MsgClientImpl;
             v1beta1: import("../cosmos/gov/v1beta1/tx.rpc.msg").MsgClientImpl;
-        };
-        group: {
-            v1: import("../cosmos/group/v1/tx.rpc.msg").MsgClientImpl;
         };
         nft: {
             v1beta1: import("../cosmos/nft/v1beta1/tx.rpc.msg").MsgClientImpl;

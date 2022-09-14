@@ -38,36 +38,36 @@ import * as _171 from "./txfees/v1beta1/feetoken";
 import * as _172 from "./txfees/v1beta1/genesis";
 import * as _173 from "./txfees/v1beta1/gov";
 import * as _174 from "./txfees/v1beta1/query";
-import * as _301 from "./epochs/query.lcd";
-import * as _302 from "./gamm/v1beta1/query.lcd";
-import * as _303 from "./incentives/query.lcd";
-import * as _304 from "./lockup/query.lcd";
-import * as _305 from "./mint/v1beta1/query.lcd";
-import * as _306 from "./pool-incentives/v1beta1/query.lcd";
-import * as _307 from "./superfluid/query.lcd";
-import * as _308 from "./tokenfactory/v1beta1/query.lcd";
-import * as _309 from "./txfees/v1beta1/query.lcd";
-import * as _310 from "./epochs/query.rpc.query";
-import * as _311 from "./gamm/v1beta1/query.rpc.query";
-import * as _312 from "./incentives/query.rpc.query";
-import * as _313 from "./lockup/query.rpc.query";
-import * as _314 from "./mint/v1beta1/query.rpc.query";
-import * as _315 from "./pool-incentives/v1beta1/query.rpc.query";
-import * as _316 from "./superfluid/query.rpc.query";
-import * as _317 from "./tokenfactory/v1beta1/query.rpc.query";
-import * as _318 from "./txfees/v1beta1/query.rpc.query";
-import * as _319 from "./gamm/pool-models/balancer/tx.rpc.msg";
-import * as _320 from "./gamm/pool-models/stableswap/tx.rpc.msg";
-import * as _321 from "./gamm/v1beta1/tx.rpc.msg";
-import * as _322 from "./incentives/tx.rpc.msg";
-import * as _323 from "./lockup/tx.rpc.msg";
-import * as _324 from "./superfluid/tx.rpc.msg";
-import * as _325 from "./tokenfactory/v1beta1/tx.rpc.msg";
+import * as _291 from "./epochs/query.lcd";
+import * as _292 from "./gamm/v1beta1/query.lcd";
+import * as _293 from "./incentives/query.lcd";
+import * as _294 from "./lockup/query.lcd";
+import * as _295 from "./mint/v1beta1/query.lcd";
+import * as _296 from "./pool-incentives/v1beta1/query.lcd";
+import * as _297 from "./superfluid/query.lcd";
+import * as _298 from "./tokenfactory/v1beta1/query.lcd";
+import * as _299 from "./txfees/v1beta1/query.lcd";
+import * as _300 from "./epochs/query.rpc.query";
+import * as _301 from "./gamm/v1beta1/query.rpc.query";
+import * as _302 from "./incentives/query.rpc.query";
+import * as _303 from "./lockup/query.rpc.query";
+import * as _304 from "./mint/v1beta1/query.rpc.query";
+import * as _305 from "./pool-incentives/v1beta1/query.rpc.query";
+import * as _306 from "./superfluid/query.rpc.query";
+import * as _307 from "./tokenfactory/v1beta1/query.rpc.query";
+import * as _308 from "./txfees/v1beta1/query.rpc.query";
+import * as _309 from "./gamm/pool-models/balancer/tx.rpc.msg";
+import * as _310 from "./gamm/pool-models/stableswap/tx.rpc.msg";
+import * as _311 from "./gamm/v1beta1/tx.rpc.msg";
+import * as _312 from "./incentives/tx.rpc.msg";
+import * as _313 from "./lockup/tx.rpc.msg";
+import * as _314 from "./superfluid/tx.rpc.msg";
+import * as _315 from "./tokenfactory/v1beta1/tx.rpc.msg";
 export declare namespace osmosis {
     namespace epochs {
         const v1beta1: {
-            QueryClientImpl: typeof _310.QueryClientImpl;
-            LCDQueryClient: typeof _301.LCDQueryClient;
+            QueryClientImpl: typeof _300.QueryClientImpl;
+            LCDQueryClient: typeof _291.LCDQueryClient;
             QueryEpochsInfoRequest: {
                 encode(_: _136.QueryEpochsInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.QueryEpochsInfoRequest;
@@ -155,9 +155,9 @@ export declare namespace osmosis {
     }
     namespace gamm {
         const v1beta1: {
-            MsgClientImpl: typeof _321.MsgClientImpl;
-            QueryClientImpl: typeof _311.QueryClientImpl;
-            LCDQueryClient: typeof _302.LCDQueryClient;
+            MsgClientImpl: typeof _311.MsgClientImpl;
+            QueryClientImpl: typeof _301.QueryClientImpl;
+            LCDQueryClient: typeof _292.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -1088,7 +1088,7 @@ export declare namespace osmosis {
         namespace poolmodels {
             namespace balancer {
                 const v1beta1: {
-                    MsgClientImpl: typeof _319.MsgClientImpl;
+                    MsgClientImpl: typeof _309.MsgClientImpl;
                     registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                     load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                     MessageComposer: {
@@ -1261,7 +1261,7 @@ export declare namespace osmosis {
             }
             namespace stableswap {
                 const v1beta1: {
-                    MsgClientImpl: typeof _320.MsgClientImpl;
+                    MsgClientImpl: typeof _310.MsgClientImpl;
                     registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                     load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                     MessageComposer: {
@@ -1443,9 +1443,9 @@ export declare namespace osmosis {
         }
     }
     const incentives: {
-        MsgClientImpl: typeof _322.MsgClientImpl;
-        QueryClientImpl: typeof _312.QueryClientImpl;
-        LCDQueryClient: typeof _303.LCDQueryClient;
+        MsgClientImpl: typeof _312.MsgClientImpl;
+        QueryClientImpl: typeof _302.QueryClientImpl;
+        LCDQueryClient: typeof _293.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -2098,9 +2098,9 @@ export declare namespace osmosis {
         };
     };
     const lockup: {
-        MsgClientImpl: typeof _323.MsgClientImpl;
-        QueryClientImpl: typeof _313.QueryClientImpl;
-        LCDQueryClient: typeof _304.LCDQueryClient;
+        MsgClientImpl: typeof _313.MsgClientImpl;
+        QueryClientImpl: typeof _303.QueryClientImpl;
+        LCDQueryClient: typeof _294.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -2898,8 +2898,8 @@ export declare namespace osmosis {
     };
     namespace mint {
         const v1beta1: {
-            QueryClientImpl: typeof _314.QueryClientImpl;
-            LCDQueryClient: typeof _305.LCDQueryClient;
+            QueryClientImpl: typeof _304.QueryClientImpl;
+            LCDQueryClient: typeof _295.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _155.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.QueryParamsRequest;
@@ -3038,8 +3038,8 @@ export declare namespace osmosis {
     }
     namespace poolincentives {
         const v1beta1: {
-            QueryClientImpl: typeof _315.QueryClientImpl;
-            LCDQueryClient: typeof _306.LCDQueryClient;
+            QueryClientImpl: typeof _305.QueryClientImpl;
+            LCDQueryClient: typeof _296.LCDQueryClient;
             QueryGaugeIdsRequest: {
                 encode(message: _159.QueryGaugeIdsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.QueryGaugeIdsRequest;
@@ -3347,9 +3347,9 @@ export declare namespace osmosis {
         };
     }
     const superfluid: {
-        MsgClientImpl: typeof _324.MsgClientImpl;
-        QueryClientImpl: typeof _316.QueryClientImpl;
-        LCDQueryClient: typeof _307.LCDQueryClient;
+        MsgClientImpl: typeof _314.MsgClientImpl;
+        QueryClientImpl: typeof _306.QueryClientImpl;
+        LCDQueryClient: typeof _297.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -4054,9 +4054,9 @@ export declare namespace osmosis {
     };
     namespace tokenfactory {
         const v1beta1: {
-            MsgClientImpl: typeof _325.MsgClientImpl;
-            QueryClientImpl: typeof _317.QueryClientImpl;
-            LCDQueryClient: typeof _308.LCDQueryClient;
+            MsgClientImpl: typeof _315.MsgClientImpl;
+            QueryClientImpl: typeof _307.QueryClientImpl;
+            LCDQueryClient: typeof _298.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -4404,8 +4404,8 @@ export declare namespace osmosis {
     }
     namespace txfees {
         const v1beta1: {
-            QueryClientImpl: typeof _318.QueryClientImpl;
-            LCDQueryClient: typeof _309.LCDQueryClient;
+            QueryClientImpl: typeof _308.QueryClientImpl;
+            LCDQueryClient: typeof _299.LCDQueryClient;
             QueryFeeTokensRequest: {
                 encode(_: _174.QueryFeeTokensRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _174.QueryFeeTokensRequest;
@@ -4541,11 +4541,7 @@ export declare namespace osmosis {
                     v1beta1: import("../cosmos/feegrant/v1beta1/tx.rpc.msg").MsgClientImpl;
                 };
                 gov: {
-                    v1: import("../cosmos/gov/v1/tx.rpc.msg").MsgClientImpl;
                     v1beta1: import("../cosmos/gov/v1beta1/tx.rpc.msg").MsgClientImpl;
-                };
-                group: {
-                    v1: import("../cosmos/group/v1/tx.rpc.msg").MsgClientImpl;
                 };
                 nft: {
                     v1beta1: import("../cosmos/nft/v1beta1/tx.rpc.msg").MsgClientImpl;
@@ -4567,19 +4563,19 @@ export declare namespace osmosis {
                 gamm: {
                     poolmodels: {
                         balancer: {
-                            v1beta1: _319.MsgClientImpl;
+                            v1beta1: _309.MsgClientImpl;
                         };
                         stableswap: {
-                            v1beta1: _320.MsgClientImpl;
+                            v1beta1: _310.MsgClientImpl;
                         };
                     };
-                    v1beta1: _321.MsgClientImpl;
+                    v1beta1: _311.MsgClientImpl;
                 };
-                incentives: _322.MsgClientImpl;
-                lockup: _323.MsgClientImpl;
-                superfluid: _324.MsgClientImpl;
+                incentives: _312.MsgClientImpl;
+                lockup: _313.MsgClientImpl;
+                superfluid: _314.MsgClientImpl;
                 tokenfactory: {
-                    v1beta1: _325.MsgClientImpl;
+                    v1beta1: _315.MsgClientImpl;
                 };
             };
         }>;
@@ -4609,11 +4605,7 @@ export declare namespace osmosis {
                     v1beta1: import("../cosmos/feegrant/v1beta1/query.rpc.query").QueryClientImpl;
                 };
                 gov: {
-                    v1: import("../cosmos/gov/v1/query.rpc.query").QueryClientImpl;
                     v1beta1: import("../cosmos/gov/v1beta1/query.rpc.query").QueryClientImpl;
-                };
-                group: {
-                    v1: import("../cosmos/group/v1/query.rpc.query").QueryClientImpl;
                 };
                 mint: {
                     v1beta1: import("../cosmos/mint/v1beta1/query.rpc.query").QueryClientImpl;
@@ -4636,25 +4628,25 @@ export declare namespace osmosis {
             };
             osmosis: {
                 epochs: {
-                    v1beta1: _310.QueryClientImpl;
+                    v1beta1: _300.QueryClientImpl;
                 };
                 gamm: {
-                    v1beta1: _311.QueryClientImpl;
+                    v1beta1: _301.QueryClientImpl;
                 };
-                incentives: _312.QueryClientImpl;
-                lockup: _313.QueryClientImpl;
+                incentives: _302.QueryClientImpl;
+                lockup: _303.QueryClientImpl;
                 mint: {
-                    v1beta1: _314.QueryClientImpl;
+                    v1beta1: _304.QueryClientImpl;
                 };
                 poolincentives: {
-                    v1beta1: _315.QueryClientImpl;
+                    v1beta1: _305.QueryClientImpl;
                 };
-                superfluid: _316.QueryClientImpl;
+                superfluid: _306.QueryClientImpl;
                 tokenfactory: {
-                    v1beta1: _317.QueryClientImpl;
+                    v1beta1: _307.QueryClientImpl;
                 };
                 txfees: {
-                    v1beta1: _318.QueryClientImpl;
+                    v1beta1: _308.QueryClientImpl;
                 };
             };
         }>;
@@ -4681,11 +4673,7 @@ export declare namespace osmosis {
                     v1beta1: import("../cosmos/feegrant/v1beta1/query.lcd").LCDQueryClient;
                 };
                 gov: {
-                    v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
                     v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
-                };
-                group: {
-                    v1: import("../cosmos/group/v1/query.lcd").LCDQueryClient;
                 };
                 mint: {
                     v1beta1: import("../cosmos/mint/v1beta1/query.lcd").LCDQueryClient;
@@ -4708,25 +4696,25 @@ export declare namespace osmosis {
             };
             osmosis: {
                 epochs: {
-                    v1beta1: _301.LCDQueryClient;
+                    v1beta1: _291.LCDQueryClient;
                 };
                 gamm: {
-                    v1beta1: _302.LCDQueryClient;
+                    v1beta1: _292.LCDQueryClient;
                 };
-                incentives: _303.LCDQueryClient;
-                lockup: _304.LCDQueryClient;
+                incentives: _293.LCDQueryClient;
+                lockup: _294.LCDQueryClient;
                 mint: {
-                    v1beta1: _305.LCDQueryClient;
+                    v1beta1: _295.LCDQueryClient;
                 };
                 poolincentives: {
-                    v1beta1: _306.LCDQueryClient;
+                    v1beta1: _296.LCDQueryClient;
                 };
-                superfluid: _307.LCDQueryClient;
+                superfluid: _297.LCDQueryClient;
                 tokenfactory: {
-                    v1beta1: _308.LCDQueryClient;
+                    v1beta1: _298.LCDQueryClient;
                 };
                 txfees: {
-                    v1beta1: _309.LCDQueryClient;
+                    v1beta1: _299.LCDQueryClient;
                 };
             };
         }>;

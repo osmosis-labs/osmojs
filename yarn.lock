@@ -3318,10 +3318,10 @@
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@0.21.0":
-  version "0.21.0"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.21.0.tgz#3592814d6178fc56f6d43e01a5a1e788a131f928"
-  integrity sha512-5tq+J/k4ckq9PnlcO1QUJU22rTLM+Tk13fH5zWFfHUsALuVMiUBz06zJ9sKyVJzYWVCNvjddtaoexq7iI1b9HQ==
+"@osmonauts/telescope@0.21.2":
+  version "0.21.2"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.21.2.tgz#8cc189c1ce2737ce39de1568a012a25d705a8afa"
+  integrity sha512-r/gL35EVXgyOYW2g8vTMyoa/jpQ9YKoV/bqaX1bs9bJ6T6m9cGQaOCAu5Bn3FmnExaJlZoOMHJuVeWnmPHvL9g==
   dependencies:
     "@babel/core" "7.18.13"
     "@babel/generator" "7.18.13"

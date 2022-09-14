@@ -47,19 +47,10 @@ import * as _47 from "./feegrant/v1beta1/genesis";
 import * as _48 from "./feegrant/v1beta1/query";
 import * as _49 from "./feegrant/v1beta1/tx";
 import * as _50 from "./genutil/v1beta1/genesis";
-import * as _51 from "./gov/v1/genesis";
-import * as _52 from "./gov/v1/gov";
-import * as _53 from "./gov/v1/query";
-import * as _54 from "./gov/v1/tx";
 import * as _55 from "./gov/v1beta1/genesis";
 import * as _56 from "./gov/v1beta1/gov";
 import * as _57 from "./gov/v1beta1/query";
 import * as _58 from "./gov/v1beta1/tx";
-import * as _59 from "./group/v1/events";
-import * as _60 from "./group/v1/genesis";
-import * as _61 from "./group/v1/query";
-import * as _62 from "./group/v1/tx";
-import * as _63 from "./group/v1/types";
 import * as _64 from "./mint/v1beta1/genesis";
 import * as _65 from "./mint/v1beta1/mint";
 import * as _66 from "./mint/v1beta1/query";
@@ -89,57 +80,51 @@ import * as _90 from "./upgrade/v1beta1/tx";
 import * as _91 from "./upgrade/v1beta1/upgrade";
 import * as _92 from "./vesting/v1beta1/tx";
 import * as _93 from "./vesting/v1beta1/vesting";
-import * as _214 from "./auth/v1beta1/query.lcd";
-import * as _215 from "./authz/v1beta1/query.lcd";
-import * as _216 from "./bank/v1beta1/query.lcd";
-import * as _217 from "./distribution/v1beta1/query.lcd";
-import * as _218 from "./evidence/v1beta1/query.lcd";
-import * as _219 from "./feegrant/v1beta1/query.lcd";
-import * as _220 from "./gov/v1/query.lcd";
-import * as _221 from "./gov/v1beta1/query.lcd";
-import * as _222 from "./group/v1/query.lcd";
-import * as _223 from "./mint/v1beta1/query.lcd";
-import * as _224 from "./nft/v1beta1/query.lcd";
-import * as _225 from "./params/v1beta1/query.lcd";
-import * as _226 from "./slashing/v1beta1/query.lcd";
-import * as _227 from "./staking/v1beta1/query.lcd";
-import * as _228 from "./upgrade/v1beta1/query.lcd";
-import * as _229 from "./app/v1alpha1/query.rpc.query";
-import * as _230 from "./auth/v1beta1/query.rpc.query";
-import * as _231 from "./authz/v1beta1/query.rpc.query";
-import * as _232 from "./bank/v1beta1/query.rpc.query";
-import * as _233 from "./base/tendermint/v1beta1/query.rpc.svc";
-import * as _234 from "./distribution/v1beta1/query.rpc.query";
-import * as _235 from "./evidence/v1beta1/query.rpc.query";
-import * as _236 from "./feegrant/v1beta1/query.rpc.query";
-import * as _237 from "./gov/v1/query.rpc.query";
-import * as _238 from "./gov/v1beta1/query.rpc.query";
-import * as _239 from "./group/v1/query.rpc.query";
-import * as _240 from "./mint/v1beta1/query.rpc.query";
-import * as _241 from "./nft/v1beta1/query.rpc.query";
-import * as _242 from "./params/v1beta1/query.rpc.query";
-import * as _243 from "./slashing/v1beta1/query.rpc.query";
-import * as _244 from "./staking/v1beta1/query.rpc.query";
-import * as _245 from "./tx/v1beta1/service.rpc.svc";
-import * as _246 from "./upgrade/v1beta1/query.rpc.query";
-import * as _247 from "./authz/v1beta1/tx.rpc.msg";
-import * as _248 from "./bank/v1beta1/tx.rpc.msg";
-import * as _249 from "./crisis/v1beta1/tx.rpc.msg";
-import * as _250 from "./distribution/v1beta1/tx.rpc.msg";
-import * as _251 from "./evidence/v1beta1/tx.rpc.msg";
-import * as _252 from "./feegrant/v1beta1/tx.rpc.msg";
-import * as _253 from "./gov/v1/tx.rpc.msg";
-import * as _254 from "./gov/v1beta1/tx.rpc.msg";
-import * as _255 from "./group/v1/tx.rpc.msg";
-import * as _256 from "./nft/v1beta1/tx.rpc.msg";
-import * as _257 from "./slashing/v1beta1/tx.rpc.msg";
-import * as _258 from "./staking/v1beta1/tx.rpc.msg";
-import * as _259 from "./upgrade/v1beta1/tx.rpc.msg";
-import * as _260 from "./vesting/v1beta1/tx.rpc.msg";
+import * as _210 from "./auth/v1beta1/query.lcd";
+import * as _211 from "./authz/v1beta1/query.lcd";
+import * as _212 from "./bank/v1beta1/query.lcd";
+import * as _213 from "./distribution/v1beta1/query.lcd";
+import * as _214 from "./evidence/v1beta1/query.lcd";
+import * as _215 from "./feegrant/v1beta1/query.lcd";
+import * as _216 from "./gov/v1beta1/query.lcd";
+import * as _217 from "./mint/v1beta1/query.lcd";
+import * as _218 from "./nft/v1beta1/query.lcd";
+import * as _219 from "./params/v1beta1/query.lcd";
+import * as _220 from "./slashing/v1beta1/query.lcd";
+import * as _221 from "./staking/v1beta1/query.lcd";
+import * as _222 from "./upgrade/v1beta1/query.lcd";
+import * as _223 from "./app/v1alpha1/query.rpc.query";
+import * as _224 from "./auth/v1beta1/query.rpc.query";
+import * as _225 from "./authz/v1beta1/query.rpc.query";
+import * as _226 from "./bank/v1beta1/query.rpc.query";
+import * as _227 from "./base/tendermint/v1beta1/query.rpc.svc";
+import * as _228 from "./distribution/v1beta1/query.rpc.query";
+import * as _229 from "./evidence/v1beta1/query.rpc.query";
+import * as _230 from "./feegrant/v1beta1/query.rpc.query";
+import * as _231 from "./gov/v1beta1/query.rpc.query";
+import * as _232 from "./mint/v1beta1/query.rpc.query";
+import * as _233 from "./nft/v1beta1/query.rpc.query";
+import * as _234 from "./params/v1beta1/query.rpc.query";
+import * as _235 from "./slashing/v1beta1/query.rpc.query";
+import * as _236 from "./staking/v1beta1/query.rpc.query";
+import * as _237 from "./tx/v1beta1/service.rpc.svc";
+import * as _238 from "./upgrade/v1beta1/query.rpc.query";
+import * as _239 from "./authz/v1beta1/tx.rpc.msg";
+import * as _240 from "./bank/v1beta1/tx.rpc.msg";
+import * as _241 from "./crisis/v1beta1/tx.rpc.msg";
+import * as _242 from "./distribution/v1beta1/tx.rpc.msg";
+import * as _243 from "./evidence/v1beta1/tx.rpc.msg";
+import * as _244 from "./feegrant/v1beta1/tx.rpc.msg";
+import * as _245 from "./gov/v1beta1/tx.rpc.msg";
+import * as _246 from "./nft/v1beta1/tx.rpc.msg";
+import * as _247 from "./slashing/v1beta1/tx.rpc.msg";
+import * as _248 from "./staking/v1beta1/tx.rpc.msg";
+import * as _249 from "./upgrade/v1beta1/tx.rpc.msg";
+import * as _250 from "./vesting/v1beta1/tx.rpc.msg";
 export declare namespace cosmos {
     namespace app {
         const v1alpha1: {
-            QueryClientImpl: typeof _229.QueryClientImpl;
+            QueryClientImpl: typeof _223.QueryClientImpl;
             QueryConfigRequest: {
                 encode(_: _4.QueryConfigRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _4.QueryConfigRequest;
@@ -231,8 +216,8 @@ export declare namespace cosmos {
     }
     namespace auth {
         const v1beta1: {
-            QueryClientImpl: typeof _230.QueryClientImpl;
-            LCDQueryClient: typeof _214.LCDQueryClient;
+            QueryClientImpl: typeof _224.QueryClientImpl;
+            LCDQueryClient: typeof _210.LCDQueryClient;
             QueryAccountsRequest: {
                 encode(message: _7.QueryAccountsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _7.QueryAccountsRequest;
@@ -448,9 +433,9 @@ export declare namespace cosmos {
     }
     namespace authz {
         const v1beta1: {
-            MsgClientImpl: typeof _247.MsgClientImpl;
-            QueryClientImpl: typeof _231.QueryClientImpl;
-            LCDQueryClient: typeof _215.LCDQueryClient;
+            MsgClientImpl: typeof _239.MsgClientImpl;
+            QueryClientImpl: typeof _225.QueryClientImpl;
+            LCDQueryClient: typeof _211.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -852,9 +837,9 @@ export declare namespace cosmos {
     }
     namespace bank {
         const v1beta1: {
-            MsgClientImpl: typeof _248.MsgClientImpl;
-            QueryClientImpl: typeof _232.QueryClientImpl;
-            LCDQueryClient: typeof _216.LCDQueryClient;
+            MsgClientImpl: typeof _240.MsgClientImpl;
+            QueryClientImpl: typeof _226.QueryClientImpl;
+            LCDQueryClient: typeof _212.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -2283,7 +2268,7 @@ export declare namespace cosmos {
         }
         namespace tendermint {
             const v1beta1: {
-                ServiceClientImpl: typeof _233.ServiceClientImpl;
+                ServiceClientImpl: typeof _227.ServiceClientImpl;
                 GetValidatorSetByHeightRequest: {
                     encode(message: _26.GetValidatorSetByHeightRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _26.GetValidatorSetByHeightRequest;
@@ -2964,7 +2949,7 @@ export declare namespace cosmos {
     }
     namespace crisis {
         const v1beta1: {
-            MsgClientImpl: typeof _249.MsgClientImpl;
+            MsgClientImpl: typeof _241.MsgClientImpl;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -3219,9 +3204,9 @@ export declare namespace cosmos {
     }
     namespace distribution {
         const v1beta1: {
-            MsgClientImpl: typeof _250.MsgClientImpl;
-            QueryClientImpl: typeof _234.QueryClientImpl;
-            LCDQueryClient: typeof _217.LCDQueryClient;
+            MsgClientImpl: typeof _242.MsgClientImpl;
+            QueryClientImpl: typeof _228.QueryClientImpl;
+            LCDQueryClient: typeof _213.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -3985,9 +3970,9 @@ export declare namespace cosmos {
     }
     namespace evidence {
         const v1beta1: {
-            MsgClientImpl: typeof _251.MsgClientImpl;
-            QueryClientImpl: typeof _235.QueryClientImpl;
-            LCDQueryClient: typeof _218.LCDQueryClient;
+            MsgClientImpl: typeof _243.MsgClientImpl;
+            QueryClientImpl: typeof _229.QueryClientImpl;
+            LCDQueryClient: typeof _214.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -4143,9 +4128,9 @@ export declare namespace cosmos {
     }
     namespace feegrant {
         const v1beta1: {
-            MsgClientImpl: typeof _252.MsgClientImpl;
-            QueryClientImpl: typeof _236.QueryClientImpl;
-            LCDQueryClient: typeof _219.LCDQueryClient;
+            MsgClientImpl: typeof _244.MsgClientImpl;
+            QueryClientImpl: typeof _230.QueryClientImpl;
+            LCDQueryClient: typeof _215.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -4468,814 +4453,11 @@ export declare namespace cosmos {
         };
     }
     namespace gov {
-        const v1: {
-            MsgClientImpl: typeof _253.MsgClientImpl;
-            QueryClientImpl: typeof _237.QueryClientImpl;
-            LCDQueryClient: typeof _220.LCDQueryClient;
-            registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
-            load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
-            MessageComposer: {
-                encoded: {
-                    submitProposal(value: _54.MsgSubmitProposal): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    execLegacyContent(value: _54.MsgExecLegacyContent): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    vote(value: _54.MsgVote): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    voteWeighted(value: _54.MsgVoteWeighted): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    deposit(value: _54.MsgDeposit): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                };
-                withTypeUrl: {
-                    submitProposal(value: _54.MsgSubmitProposal): {
-                        typeUrl: string;
-                        value: _54.MsgSubmitProposal;
-                    };
-                    execLegacyContent(value: _54.MsgExecLegacyContent): {
-                        typeUrl: string;
-                        value: _54.MsgExecLegacyContent;
-                    };
-                    vote(value: _54.MsgVote): {
-                        typeUrl: string;
-                        value: _54.MsgVote;
-                    };
-                    voteWeighted(value: _54.MsgVoteWeighted): {
-                        typeUrl: string;
-                        value: _54.MsgVoteWeighted;
-                    };
-                    deposit(value: _54.MsgDeposit): {
-                        typeUrl: string;
-                        value: _54.MsgDeposit;
-                    };
-                };
-                toJSON: {
-                    submitProposal(value: _54.MsgSubmitProposal): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    execLegacyContent(value: _54.MsgExecLegacyContent): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    vote(value: _54.MsgVote): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    voteWeighted(value: _54.MsgVoteWeighted): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    deposit(value: _54.MsgDeposit): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                };
-                fromJSON: {
-                    submitProposal(value: any): {
-                        typeUrl: string;
-                        value: _54.MsgSubmitProposal;
-                    };
-                    execLegacyContent(value: any): {
-                        typeUrl: string;
-                        value: _54.MsgExecLegacyContent;
-                    };
-                    vote(value: any): {
-                        typeUrl: string;
-                        value: _54.MsgVote;
-                    };
-                    voteWeighted(value: any): {
-                        typeUrl: string;
-                        value: _54.MsgVoteWeighted;
-                    };
-                    deposit(value: any): {
-                        typeUrl: string;
-                        value: _54.MsgDeposit;
-                    };
-                };
-                fromPartial: {
-                    submitProposal(value: _54.MsgSubmitProposal): {
-                        typeUrl: string;
-                        value: _54.MsgSubmitProposal;
-                    };
-                    execLegacyContent(value: _54.MsgExecLegacyContent): {
-                        typeUrl: string;
-                        value: _54.MsgExecLegacyContent;
-                    };
-                    vote(value: _54.MsgVote): {
-                        typeUrl: string;
-                        value: _54.MsgVote;
-                    };
-                    voteWeighted(value: _54.MsgVoteWeighted): {
-                        typeUrl: string;
-                        value: _54.MsgVoteWeighted;
-                    };
-                    deposit(value: _54.MsgDeposit): {
-                        typeUrl: string;
-                        value: _54.MsgDeposit;
-                    };
-                };
-            };
-            AminoConverter: {
-                "/cosmos.gov.v1.MsgSubmitProposal": {
-                    aminoType: string;
-                    toAmino: ({ messages, initial_deposit, proposer, metadata }: _54.MsgSubmitProposal) => {
-                        messages: {
-                            type_url: string;
-                            value: Uint8Array;
-                        }[];
-                        initial_deposit: {
-                            denom: string;
-                            amount: string;
-                        }[];
-                        proposer: string;
-                        metadata: string;
-                    };
-                    fromAmino: ({ messages, initial_deposit, proposer, metadata }: {
-                        messages: {
-                            type_url: string;
-                            value: Uint8Array;
-                        }[];
-                        initial_deposit: {
-                            denom: string;
-                            amount: string;
-                        }[];
-                        proposer: string;
-                        metadata: string;
-                    }) => _54.MsgSubmitProposal;
-                };
-                "/cosmos.gov.v1.MsgExecLegacyContent": {
-                    aminoType: string;
-                    toAmino: ({ content, authority }: _54.MsgExecLegacyContent) => {
-                        content: {
-                            type_url: string;
-                            value: Uint8Array;
-                        };
-                        authority: string;
-                    };
-                    fromAmino: ({ content, authority }: {
-                        content: {
-                            type_url: string;
-                            value: Uint8Array;
-                        };
-                        authority: string;
-                    }) => _54.MsgExecLegacyContent;
-                };
-                "/cosmos.gov.v1.MsgVote": {
-                    aminoType: string;
-                    toAmino: ({ proposal_id, voter, option, metadata }: _54.MsgVote) => {
-                        proposal_id: string;
-                        voter: string;
-                        option: number;
-                        metadata: string;
-                    };
-                    fromAmino: ({ proposal_id, voter, option, metadata }: {
-                        proposal_id: string;
-                        voter: string;
-                        option: number;
-                        metadata: string;
-                    }) => _54.MsgVote;
-                };
-                "/cosmos.gov.v1.MsgVoteWeighted": {
-                    aminoType: string;
-                    toAmino: ({ proposal_id, voter, options, metadata }: _54.MsgVoteWeighted) => {
-                        proposal_id: string;
-                        voter: string;
-                        options: {
-                            option: number;
-                            weight: string;
-                        }[];
-                        metadata: string;
-                    };
-                    fromAmino: ({ proposal_id, voter, options, metadata }: {
-                        proposal_id: string;
-                        voter: string;
-                        options: {
-                            option: number;
-                            weight: string;
-                        }[];
-                        metadata: string;
-                    }) => _54.MsgVoteWeighted;
-                };
-                "/cosmos.gov.v1.MsgDeposit": {
-                    aminoType: string;
-                    toAmino: ({ proposal_id, depositor, amount }: _54.MsgDeposit) => {
-                        proposal_id: string;
-                        depositor: string;
-                        amount: {
-                            denom: string;
-                            amount: string;
-                        }[];
-                    };
-                    fromAmino: ({ proposal_id, depositor, amount }: {
-                        proposal_id: string;
-                        depositor: string;
-                        amount: {
-                            denom: string;
-                            amount: string;
-                        }[];
-                    }) => _54.MsgDeposit;
-                };
-            };
-            MsgSubmitProposal: {
-                encode(message: _54.MsgSubmitProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgSubmitProposal;
-                fromJSON(object: any): _54.MsgSubmitProposal;
-                toJSON(message: _54.MsgSubmitProposal): unknown;
-                fromPartial(object: {
-                    messages?: {
-                        type_url?: string;
-                        value?: Uint8Array;
-                    }[];
-                    initial_deposit?: {
-                        denom?: string;
-                        amount?: string;
-                    }[];
-                    proposer?: string;
-                    metadata?: string;
-                }): _54.MsgSubmitProposal;
-            };
-            MsgSubmitProposalResponse: {
-                encode(message: _54.MsgSubmitProposalResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgSubmitProposalResponse;
-                fromJSON(object: any): _54.MsgSubmitProposalResponse;
-                toJSON(message: _54.MsgSubmitProposalResponse): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                }): _54.MsgSubmitProposalResponse;
-            };
-            MsgExecLegacyContent: {
-                encode(message: _54.MsgExecLegacyContent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgExecLegacyContent;
-                fromJSON(object: any): _54.MsgExecLegacyContent;
-                toJSON(message: _54.MsgExecLegacyContent): unknown;
-                fromPartial(object: {
-                    content?: {
-                        type_url?: string;
-                        value?: Uint8Array;
-                    };
-                    authority?: string;
-                }): _54.MsgExecLegacyContent;
-            };
-            MsgExecLegacyContentResponse: {
-                encode(_: _54.MsgExecLegacyContentResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgExecLegacyContentResponse;
-                fromJSON(_: any): _54.MsgExecLegacyContentResponse;
-                toJSON(_: _54.MsgExecLegacyContentResponse): unknown;
-                fromPartial(_: {}): _54.MsgExecLegacyContentResponse;
-            };
-            MsgVote: {
-                encode(message: _54.MsgVote, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgVote;
-                fromJSON(object: any): _54.MsgVote;
-                toJSON(message: _54.MsgVote): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    voter?: string;
-                    option?: _52.VoteOption;
-                    metadata?: string;
-                }): _54.MsgVote;
-            };
-            MsgVoteResponse: {
-                encode(_: _54.MsgVoteResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgVoteResponse;
-                fromJSON(_: any): _54.MsgVoteResponse;
-                toJSON(_: _54.MsgVoteResponse): unknown;
-                fromPartial(_: {}): _54.MsgVoteResponse;
-            };
-            MsgVoteWeighted: {
-                encode(message: _54.MsgVoteWeighted, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgVoteWeighted;
-                fromJSON(object: any): _54.MsgVoteWeighted;
-                toJSON(message: _54.MsgVoteWeighted): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    voter?: string;
-                    options?: {
-                        option?: _52.VoteOption;
-                        weight?: string;
-                    }[];
-                    metadata?: string;
-                }): _54.MsgVoteWeighted;
-            };
-            MsgVoteWeightedResponse: {
-                encode(_: _54.MsgVoteWeightedResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgVoteWeightedResponse;
-                fromJSON(_: any): _54.MsgVoteWeightedResponse;
-                toJSON(_: _54.MsgVoteWeightedResponse): unknown;
-                fromPartial(_: {}): _54.MsgVoteWeightedResponse;
-            };
-            MsgDeposit: {
-                encode(message: _54.MsgDeposit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgDeposit;
-                fromJSON(object: any): _54.MsgDeposit;
-                toJSON(message: _54.MsgDeposit): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    depositor?: string;
-                    amount?: {
-                        denom?: string;
-                        amount?: string;
-                    }[];
-                }): _54.MsgDeposit;
-            };
-            MsgDepositResponse: {
-                encode(_: _54.MsgDepositResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _54.MsgDepositResponse;
-                fromJSON(_: any): _54.MsgDepositResponse;
-                toJSON(_: _54.MsgDepositResponse): unknown;
-                fromPartial(_: {}): _54.MsgDepositResponse;
-            };
-            QueryProposalRequest: {
-                encode(message: _53.QueryProposalRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryProposalRequest;
-                fromJSON(object: any): _53.QueryProposalRequest;
-                toJSON(message: _53.QueryProposalRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                }): _53.QueryProposalRequest;
-            };
-            QueryProposalResponse: {
-                encode(message: _53.QueryProposalResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryProposalResponse;
-                fromJSON(object: any): _53.QueryProposalResponse;
-                toJSON(message: _53.QueryProposalResponse): unknown;
-                fromPartial(object: {
-                    proposal?: {
-                        id?: any;
-                        messages?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        }[];
-                        status?: _52.ProposalStatus;
-                        final_tally_result?: {
-                            yes_count?: string;
-                            abstain_count?: string;
-                            no_count?: string;
-                            no_with_veto_count?: string;
-                        };
-                        submit_time?: Date;
-                        deposit_end_time?: Date;
-                        total_deposit?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                        voting_start_time?: Date;
-                        voting_end_time?: Date;
-                        metadata?: string;
-                    };
-                }): _53.QueryProposalResponse;
-            };
-            QueryProposalsRequest: {
-                encode(message: _53.QueryProposalsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryProposalsRequest;
-                fromJSON(object: any): _53.QueryProposalsRequest;
-                toJSON(message: _53.QueryProposalsRequest): unknown;
-                fromPartial(object: {
-                    proposal_status?: _52.ProposalStatus;
-                    voter?: string;
-                    depositor?: string;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _53.QueryProposalsRequest;
-            };
-            QueryProposalsResponse: {
-                encode(message: _53.QueryProposalsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryProposalsResponse;
-                fromJSON(object: any): _53.QueryProposalsResponse;
-                toJSON(message: _53.QueryProposalsResponse): unknown;
-                fromPartial(object: {
-                    proposals?: {
-                        id?: any;
-                        messages?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        }[];
-                        status?: _52.ProposalStatus;
-                        final_tally_result?: {
-                            yes_count?: string;
-                            abstain_count?: string;
-                            no_count?: string;
-                            no_with_veto_count?: string;
-                        };
-                        submit_time?: Date;
-                        deposit_end_time?: Date;
-                        total_deposit?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                        voting_start_time?: Date;
-                        voting_end_time?: Date;
-                        metadata?: string;
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _53.QueryProposalsResponse;
-            };
-            QueryVoteRequest: {
-                encode(message: _53.QueryVoteRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryVoteRequest;
-                fromJSON(object: any): _53.QueryVoteRequest;
-                toJSON(message: _53.QueryVoteRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    voter?: string;
-                }): _53.QueryVoteRequest;
-            };
-            QueryVoteResponse: {
-                encode(message: _53.QueryVoteResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryVoteResponse;
-                fromJSON(object: any): _53.QueryVoteResponse;
-                toJSON(message: _53.QueryVoteResponse): unknown;
-                fromPartial(object: {
-                    vote?: {
-                        proposal_id?: any;
-                        voter?: string;
-                        options?: {
-                            option?: _52.VoteOption;
-                            weight?: string;
-                        }[];
-                        metadata?: string;
-                    };
-                }): _53.QueryVoteResponse;
-            };
-            QueryVotesRequest: {
-                encode(message: _53.QueryVotesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryVotesRequest;
-                fromJSON(object: any): _53.QueryVotesRequest;
-                toJSON(message: _53.QueryVotesRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _53.QueryVotesRequest;
-            };
-            QueryVotesResponse: {
-                encode(message: _53.QueryVotesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryVotesResponse;
-                fromJSON(object: any): _53.QueryVotesResponse;
-                toJSON(message: _53.QueryVotesResponse): unknown;
-                fromPartial(object: {
-                    votes?: {
-                        proposal_id?: any;
-                        voter?: string;
-                        options?: {
-                            option?: _52.VoteOption;
-                            weight?: string;
-                        }[];
-                        metadata?: string;
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _53.QueryVotesResponse;
-            };
-            QueryParamsRequest: {
-                encode(message: _53.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryParamsRequest;
-                fromJSON(object: any): _53.QueryParamsRequest;
-                toJSON(message: _53.QueryParamsRequest): unknown;
-                fromPartial(object: {
-                    params_type?: string;
-                }): _53.QueryParamsRequest;
-            };
-            QueryParamsResponse: {
-                encode(message: _53.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryParamsResponse;
-                fromJSON(object: any): _53.QueryParamsResponse;
-                toJSON(message: _53.QueryParamsResponse): unknown;
-                fromPartial(object: {
-                    voting_params?: {
-                        voting_period?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                    };
-                    deposit_params?: {
-                        min_deposit?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                        max_deposit_period?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                    };
-                    tally_params?: {
-                        quorum?: string;
-                        threshold?: string;
-                        veto_threshold?: string;
-                    };
-                }): _53.QueryParamsResponse;
-            };
-            QueryDepositRequest: {
-                encode(message: _53.QueryDepositRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryDepositRequest;
-                fromJSON(object: any): _53.QueryDepositRequest;
-                toJSON(message: _53.QueryDepositRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    depositor?: string;
-                }): _53.QueryDepositRequest;
-            };
-            QueryDepositResponse: {
-                encode(message: _53.QueryDepositResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryDepositResponse;
-                fromJSON(object: any): _53.QueryDepositResponse;
-                toJSON(message: _53.QueryDepositResponse): unknown;
-                fromPartial(object: {
-                    deposit?: {
-                        proposal_id?: any;
-                        depositor?: string;
-                        amount?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                    };
-                }): _53.QueryDepositResponse;
-            };
-            QueryDepositsRequest: {
-                encode(message: _53.QueryDepositsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryDepositsRequest;
-                fromJSON(object: any): _53.QueryDepositsRequest;
-                toJSON(message: _53.QueryDepositsRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _53.QueryDepositsRequest;
-            };
-            QueryDepositsResponse: {
-                encode(message: _53.QueryDepositsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryDepositsResponse;
-                fromJSON(object: any): _53.QueryDepositsResponse;
-                toJSON(message: _53.QueryDepositsResponse): unknown;
-                fromPartial(object: {
-                    deposits?: {
-                        proposal_id?: any;
-                        depositor?: string;
-                        amount?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _53.QueryDepositsResponse;
-            };
-            QueryTallyResultRequest: {
-                encode(message: _53.QueryTallyResultRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryTallyResultRequest;
-                fromJSON(object: any): _53.QueryTallyResultRequest;
-                toJSON(message: _53.QueryTallyResultRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                }): _53.QueryTallyResultRequest;
-            };
-            QueryTallyResultResponse: {
-                encode(message: _53.QueryTallyResultResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _53.QueryTallyResultResponse;
-                fromJSON(object: any): _53.QueryTallyResultResponse;
-                toJSON(message: _53.QueryTallyResultResponse): unknown;
-                fromPartial(object: {
-                    tally?: {
-                        yes_count?: string;
-                        abstain_count?: string;
-                        no_count?: string;
-                        no_with_veto_count?: string;
-                    };
-                }): _53.QueryTallyResultResponse;
-            };
-            voteOptionFromJSON(object: any): _52.VoteOption;
-            voteOptionToJSON(object: _52.VoteOption): string;
-            proposalStatusFromJSON(object: any): _52.ProposalStatus;
-            proposalStatusToJSON(object: _52.ProposalStatus): string;
-            VoteOption: typeof _52.VoteOption;
-            ProposalStatus: typeof _52.ProposalStatus;
-            WeightedVoteOption: {
-                encode(message: _52.WeightedVoteOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _52.WeightedVoteOption;
-                fromJSON(object: any): _52.WeightedVoteOption;
-                toJSON(message: _52.WeightedVoteOption): unknown;
-                fromPartial(object: {
-                    option?: _52.VoteOption;
-                    weight?: string;
-                }): _52.WeightedVoteOption;
-            };
-            Deposit: {
-                encode(message: _52.Deposit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _52.Deposit;
-                fromJSON(object: any): _52.Deposit;
-                toJSON(message: _52.Deposit): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    depositor?: string;
-                    amount?: {
-                        denom?: string;
-                        amount?: string;
-                    }[];
-                }): _52.Deposit;
-            };
-            Proposal: {
-                encode(message: _52.Proposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _52.Proposal;
-                fromJSON(object: any): _52.Proposal;
-                toJSON(message: _52.Proposal): unknown;
-                fromPartial(object: {
-                    id?: any;
-                    messages?: {
-                        type_url?: string;
-                        value?: Uint8Array;
-                    }[];
-                    status?: _52.ProposalStatus;
-                    final_tally_result?: {
-                        yes_count?: string;
-                        abstain_count?: string;
-                        no_count?: string;
-                        no_with_veto_count?: string;
-                    };
-                    submit_time?: Date;
-                    deposit_end_time?: Date;
-                    total_deposit?: {
-                        denom?: string;
-                        amount?: string;
-                    }[];
-                    voting_start_time?: Date;
-                    voting_end_time?: Date;
-                    metadata?: string;
-                }): _52.Proposal;
-            };
-            TallyResult: {
-                encode(message: _52.TallyResult, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _52.TallyResult;
-                fromJSON(object: any): _52.TallyResult;
-                toJSON(message: _52.TallyResult): unknown;
-                fromPartial(object: {
-                    yes_count?: string;
-                    abstain_count?: string;
-                    no_count?: string;
-                    no_with_veto_count?: string;
-                }): _52.TallyResult;
-            };
-            Vote: {
-                encode(message: _52.Vote, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _52.Vote;
-                fromJSON(object: any): _52.Vote;
-                toJSON(message: _52.Vote): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    voter?: string;
-                    options?: {
-                        option?: _52.VoteOption;
-                        weight?: string;
-                    }[];
-                    metadata?: string;
-                }): _52.Vote;
-            };
-            DepositParams: {
-                encode(message: _52.DepositParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _52.DepositParams;
-                fromJSON(object: any): _52.DepositParams;
-                toJSON(message: _52.DepositParams): unknown;
-                fromPartial(object: {
-                    min_deposit?: {
-                        denom?: string;
-                        amount?: string;
-                    }[];
-                    max_deposit_period?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
-                }): _52.DepositParams;
-            };
-            VotingParams: {
-                encode(message: _52.VotingParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _52.VotingParams;
-                fromJSON(object: any): _52.VotingParams;
-                toJSON(message: _52.VotingParams): unknown;
-                fromPartial(object: {
-                    voting_period?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
-                }): _52.VotingParams;
-            };
-            TallyParams: {
-                encode(message: _52.TallyParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _52.TallyParams;
-                fromJSON(object: any): _52.TallyParams;
-                toJSON(message: _52.TallyParams): unknown;
-                fromPartial(object: {
-                    quorum?: string;
-                    threshold?: string;
-                    veto_threshold?: string;
-                }): _52.TallyParams;
-            };
-            GenesisState: {
-                encode(message: _51.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _51.GenesisState;
-                fromJSON(object: any): _51.GenesisState;
-                toJSON(message: _51.GenesisState): unknown;
-                fromPartial(object: {
-                    starting_proposal_id?: any;
-                    deposits?: {
-                        proposal_id?: any;
-                        depositor?: string;
-                        amount?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                    }[];
-                    votes?: {
-                        proposal_id?: any;
-                        voter?: string;
-                        options?: {
-                            option?: _52.VoteOption;
-                            weight?: string;
-                        }[];
-                        metadata?: string;
-                    }[];
-                    proposals?: {
-                        id?: any;
-                        messages?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        }[];
-                        status?: _52.ProposalStatus;
-                        final_tally_result?: {
-                            yes_count?: string;
-                            abstain_count?: string;
-                            no_count?: string;
-                            no_with_veto_count?: string;
-                        };
-                        submit_time?: Date;
-                        deposit_end_time?: Date;
-                        total_deposit?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                        voting_start_time?: Date;
-                        voting_end_time?: Date;
-                        metadata?: string;
-                    }[];
-                    deposit_params?: {
-                        min_deposit?: {
-                            denom?: string;
-                            amount?: string;
-                        }[];
-                        max_deposit_period?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                    };
-                    voting_params?: {
-                        voting_period?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                    };
-                    tally_params?: {
-                        quorum?: string;
-                        threshold?: string;
-                        veto_threshold?: string;
-                    };
-                }): _51.GenesisState;
-            };
-        };
+        const v1: any;
         const v1beta1: {
-            MsgClientImpl: typeof _254.MsgClientImpl;
-            QueryClientImpl: typeof _238.QueryClientImpl;
-            LCDQueryClient: typeof _221.LCDQueryClient;
+            MsgClientImpl: typeof _245.MsgClientImpl;
+            QueryClientImpl: typeof _231.QueryClientImpl;
+            LCDQueryClient: typeof _216.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -6018,1670 +5200,12 @@ export declare namespace cosmos {
         };
     }
     namespace group {
-        const v1: {
-            MsgClientImpl: typeof _255.MsgClientImpl;
-            QueryClientImpl: typeof _239.QueryClientImpl;
-            LCDQueryClient: typeof _222.LCDQueryClient;
-            registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
-            load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
-            MessageComposer: {
-                encoded: {
-                    createGroup(value: _62.MsgCreateGroup): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    updateGroupMembers(value: _62.MsgUpdateGroupMembers): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    updateGroupAdmin(value: _62.MsgUpdateGroupAdmin): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    updateGroupMetadata(value: _62.MsgUpdateGroupMetadata): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    createGroupPolicy(value: _62.MsgCreateGroupPolicy): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    createGroupWithPolicy(value: _62.MsgCreateGroupWithPolicy): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    updateGroupPolicyAdmin(value: _62.MsgUpdateGroupPolicyAdmin): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    updateGroupPolicyDecisionPolicy(value: _62.MsgUpdateGroupPolicyDecisionPolicy): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    updateGroupPolicyMetadata(value: _62.MsgUpdateGroupPolicyMetadata): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    submitProposal(value: _62.MsgSubmitProposal): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    withdrawProposal(value: _62.MsgWithdrawProposal): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    vote(value: _62.MsgVote): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    exec(value: _62.MsgExec): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                    leaveGroup(value: _62.MsgLeaveGroup): {
-                        typeUrl: string;
-                        value: Uint8Array;
-                    };
-                };
-                withTypeUrl: {
-                    createGroup(value: _62.MsgCreateGroup): {
-                        typeUrl: string;
-                        value: _62.MsgCreateGroup;
-                    };
-                    updateGroupMembers(value: _62.MsgUpdateGroupMembers): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupMembers;
-                    };
-                    updateGroupAdmin(value: _62.MsgUpdateGroupAdmin): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupAdmin;
-                    };
-                    updateGroupMetadata(value: _62.MsgUpdateGroupMetadata): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupMetadata;
-                    };
-                    createGroupPolicy(value: _62.MsgCreateGroupPolicy): {
-                        typeUrl: string;
-                        value: _62.MsgCreateGroupPolicy;
-                    };
-                    createGroupWithPolicy(value: _62.MsgCreateGroupWithPolicy): {
-                        typeUrl: string;
-                        value: _62.MsgCreateGroupWithPolicy;
-                    };
-                    updateGroupPolicyAdmin(value: _62.MsgUpdateGroupPolicyAdmin): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupPolicyAdmin;
-                    };
-                    updateGroupPolicyDecisionPolicy(value: _62.MsgUpdateGroupPolicyDecisionPolicy): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupPolicyDecisionPolicy;
-                    };
-                    updateGroupPolicyMetadata(value: _62.MsgUpdateGroupPolicyMetadata): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupPolicyMetadata;
-                    };
-                    submitProposal(value: _62.MsgSubmitProposal): {
-                        typeUrl: string;
-                        value: _62.MsgSubmitProposal;
-                    };
-                    withdrawProposal(value: _62.MsgWithdrawProposal): {
-                        typeUrl: string;
-                        value: _62.MsgWithdrawProposal;
-                    };
-                    vote(value: _62.MsgVote): {
-                        typeUrl: string;
-                        value: _62.MsgVote;
-                    };
-                    exec(value: _62.MsgExec): {
-                        typeUrl: string;
-                        value: _62.MsgExec;
-                    };
-                    leaveGroup(value: _62.MsgLeaveGroup): {
-                        typeUrl: string;
-                        value: _62.MsgLeaveGroup;
-                    };
-                };
-                toJSON: {
-                    createGroup(value: _62.MsgCreateGroup): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    updateGroupMembers(value: _62.MsgUpdateGroupMembers): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    updateGroupAdmin(value: _62.MsgUpdateGroupAdmin): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    updateGroupMetadata(value: _62.MsgUpdateGroupMetadata): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    createGroupPolicy(value: _62.MsgCreateGroupPolicy): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    createGroupWithPolicy(value: _62.MsgCreateGroupWithPolicy): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    updateGroupPolicyAdmin(value: _62.MsgUpdateGroupPolicyAdmin): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    updateGroupPolicyDecisionPolicy(value: _62.MsgUpdateGroupPolicyDecisionPolicy): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    updateGroupPolicyMetadata(value: _62.MsgUpdateGroupPolicyMetadata): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    submitProposal(value: _62.MsgSubmitProposal): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    withdrawProposal(value: _62.MsgWithdrawProposal): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    vote(value: _62.MsgVote): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    exec(value: _62.MsgExec): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                    leaveGroup(value: _62.MsgLeaveGroup): {
-                        typeUrl: string;
-                        value: unknown;
-                    };
-                };
-                fromJSON: {
-                    createGroup(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgCreateGroup;
-                    };
-                    updateGroupMembers(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupMembers;
-                    };
-                    updateGroupAdmin(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupAdmin;
-                    };
-                    updateGroupMetadata(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupMetadata;
-                    };
-                    createGroupPolicy(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgCreateGroupPolicy;
-                    };
-                    createGroupWithPolicy(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgCreateGroupWithPolicy;
-                    };
-                    updateGroupPolicyAdmin(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupPolicyAdmin;
-                    };
-                    updateGroupPolicyDecisionPolicy(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupPolicyDecisionPolicy;
-                    };
-                    updateGroupPolicyMetadata(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupPolicyMetadata;
-                    };
-                    submitProposal(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgSubmitProposal;
-                    };
-                    withdrawProposal(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgWithdrawProposal;
-                    };
-                    vote(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgVote;
-                    };
-                    exec(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgExec;
-                    };
-                    leaveGroup(value: any): {
-                        typeUrl: string;
-                        value: _62.MsgLeaveGroup;
-                    };
-                };
-                fromPartial: {
-                    createGroup(value: _62.MsgCreateGroup): {
-                        typeUrl: string;
-                        value: _62.MsgCreateGroup;
-                    };
-                    updateGroupMembers(value: _62.MsgUpdateGroupMembers): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupMembers;
-                    };
-                    updateGroupAdmin(value: _62.MsgUpdateGroupAdmin): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupAdmin;
-                    };
-                    updateGroupMetadata(value: _62.MsgUpdateGroupMetadata): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupMetadata;
-                    };
-                    createGroupPolicy(value: _62.MsgCreateGroupPolicy): {
-                        typeUrl: string;
-                        value: _62.MsgCreateGroupPolicy;
-                    };
-                    createGroupWithPolicy(value: _62.MsgCreateGroupWithPolicy): {
-                        typeUrl: string;
-                        value: _62.MsgCreateGroupWithPolicy;
-                    };
-                    updateGroupPolicyAdmin(value: _62.MsgUpdateGroupPolicyAdmin): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupPolicyAdmin;
-                    };
-                    updateGroupPolicyDecisionPolicy(value: _62.MsgUpdateGroupPolicyDecisionPolicy): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupPolicyDecisionPolicy;
-                    };
-                    updateGroupPolicyMetadata(value: _62.MsgUpdateGroupPolicyMetadata): {
-                        typeUrl: string;
-                        value: _62.MsgUpdateGroupPolicyMetadata;
-                    };
-                    submitProposal(value: _62.MsgSubmitProposal): {
-                        typeUrl: string;
-                        value: _62.MsgSubmitProposal;
-                    };
-                    withdrawProposal(value: _62.MsgWithdrawProposal): {
-                        typeUrl: string;
-                        value: _62.MsgWithdrawProposal;
-                    };
-                    vote(value: _62.MsgVote): {
-                        typeUrl: string;
-                        value: _62.MsgVote;
-                    };
-                    exec(value: _62.MsgExec): {
-                        typeUrl: string;
-                        value: _62.MsgExec;
-                    };
-                    leaveGroup(value: _62.MsgLeaveGroup): {
-                        typeUrl: string;
-                        value: _62.MsgLeaveGroup;
-                    };
-                };
-            };
-            AminoConverter: {
-                "/cosmos.group.v1.MsgCreateGroup": {
-                    aminoType: string;
-                    toAmino: ({ admin, members, metadata }: _62.MsgCreateGroup) => {
-                        admin: string;
-                        members: {
-                            address: string;
-                            weight: string;
-                            metadata: string;
-                            added_at: {
-                                seconds: string;
-                                nanos: number;
-                            };
-                        }[];
-                        metadata: string;
-                    };
-                    fromAmino: ({ admin, members, metadata }: {
-                        admin: string;
-                        members: {
-                            address: string;
-                            weight: string;
-                            metadata: string;
-                            added_at: {
-                                seconds: string;
-                                nanos: number;
-                            };
-                        }[];
-                        metadata: string;
-                    }) => _62.MsgCreateGroup;
-                };
-                "/cosmos.group.v1.MsgUpdateGroupMembers": {
-                    aminoType: string;
-                    toAmino: ({ admin, group_id, member_updates }: _62.MsgUpdateGroupMembers) => {
-                        admin: string;
-                        group_id: string;
-                        member_updates: {
-                            address: string;
-                            weight: string;
-                            metadata: string;
-                            added_at: {
-                                seconds: string;
-                                nanos: number;
-                            };
-                        }[];
-                    };
-                    fromAmino: ({ admin, group_id, member_updates }: {
-                        admin: string;
-                        group_id: string;
-                        member_updates: {
-                            address: string;
-                            weight: string;
-                            metadata: string;
-                            added_at: {
-                                seconds: string;
-                                nanos: number;
-                            };
-                        }[];
-                    }) => _62.MsgUpdateGroupMembers;
-                };
-                "/cosmos.group.v1.MsgUpdateGroupAdmin": {
-                    aminoType: string;
-                    toAmino: ({ admin, group_id, new_admin }: _62.MsgUpdateGroupAdmin) => {
-                        admin: string;
-                        group_id: string;
-                        new_admin: string;
-                    };
-                    fromAmino: ({ admin, group_id, new_admin }: {
-                        admin: string;
-                        group_id: string;
-                        new_admin: string;
-                    }) => _62.MsgUpdateGroupAdmin;
-                };
-                "/cosmos.group.v1.MsgUpdateGroupMetadata": {
-                    aminoType: string;
-                    toAmino: ({ admin, group_id, metadata }: _62.MsgUpdateGroupMetadata) => {
-                        admin: string;
-                        group_id: string;
-                        metadata: string;
-                    };
-                    fromAmino: ({ admin, group_id, metadata }: {
-                        admin: string;
-                        group_id: string;
-                        metadata: string;
-                    }) => _62.MsgUpdateGroupMetadata;
-                };
-                "/cosmos.group.v1.MsgCreateGroupPolicy": {
-                    aminoType: string;
-                    toAmino: ({ admin, group_id, metadata, decision_policy }: _62.MsgCreateGroupPolicy) => {
-                        admin: string;
-                        group_id: string;
-                        metadata: string;
-                        decision_policy: {
-                            type_url: string;
-                            value: Uint8Array;
-                        };
-                    };
-                    fromAmino: ({ admin, group_id, metadata, decision_policy }: {
-                        admin: string;
-                        group_id: string;
-                        metadata: string;
-                        decision_policy: {
-                            type_url: string;
-                            value: Uint8Array;
-                        };
-                    }) => _62.MsgCreateGroupPolicy;
-                };
-                "/cosmos.group.v1.MsgCreateGroupWithPolicy": {
-                    aminoType: string;
-                    toAmino: ({ admin, members, group_metadata, group_policy_metadata, group_policy_as_admin, decision_policy }: _62.MsgCreateGroupWithPolicy) => {
-                        admin: string;
-                        members: {
-                            address: string;
-                            weight: string;
-                            metadata: string;
-                            added_at: {
-                                seconds: string;
-                                nanos: number;
-                            };
-                        }[];
-                        group_metadata: string;
-                        group_policy_metadata: string;
-                        group_policy_as_admin: boolean;
-                        decision_policy: {
-                            type_url: string;
-                            value: Uint8Array;
-                        };
-                    };
-                    fromAmino: ({ admin, members, group_metadata, group_policy_metadata, group_policy_as_admin, decision_policy }: {
-                        admin: string;
-                        members: {
-                            address: string;
-                            weight: string;
-                            metadata: string;
-                            added_at: {
-                                seconds: string;
-                                nanos: number;
-                            };
-                        }[];
-                        group_metadata: string;
-                        group_policy_metadata: string;
-                        group_policy_as_admin: boolean;
-                        decision_policy: {
-                            type_url: string;
-                            value: Uint8Array;
-                        };
-                    }) => _62.MsgCreateGroupWithPolicy;
-                };
-                "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin": {
-                    aminoType: string;
-                    toAmino: ({ admin, address, new_admin }: _62.MsgUpdateGroupPolicyAdmin) => {
-                        admin: string;
-                        address: string;
-                        new_admin: string;
-                    };
-                    fromAmino: ({ admin, address, new_admin }: {
-                        admin: string;
-                        address: string;
-                        new_admin: string;
-                    }) => _62.MsgUpdateGroupPolicyAdmin;
-                };
-                "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy": {
-                    aminoType: string;
-                    toAmino: ({ admin, address, decision_policy }: _62.MsgUpdateGroupPolicyDecisionPolicy) => {
-                        admin: string;
-                        address: string;
-                        decision_policy: {
-                            type_url: string;
-                            value: Uint8Array;
-                        };
-                    };
-                    fromAmino: ({ admin, address, decision_policy }: {
-                        admin: string;
-                        address: string;
-                        decision_policy: {
-                            type_url: string;
-                            value: Uint8Array;
-                        };
-                    }) => _62.MsgUpdateGroupPolicyDecisionPolicy;
-                };
-                "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata": {
-                    aminoType: string;
-                    toAmino: ({ admin, address, metadata }: _62.MsgUpdateGroupPolicyMetadata) => {
-                        admin: string;
-                        address: string;
-                        metadata: string;
-                    };
-                    fromAmino: ({ admin, address, metadata }: {
-                        admin: string;
-                        address: string;
-                        metadata: string;
-                    }) => _62.MsgUpdateGroupPolicyMetadata;
-                };
-                "/cosmos.group.v1.MsgSubmitProposal": {
-                    aminoType: string;
-                    toAmino: ({ address, proposers, metadata, messages, exec }: _62.MsgSubmitProposal) => {
-                        address: string;
-                        proposers: string[];
-                        metadata: string;
-                        messages: {
-                            type_url: string;
-                            value: Uint8Array;
-                        }[];
-                        exec: number;
-                    };
-                    fromAmino: ({ address, proposers, metadata, messages, exec }: {
-                        address: string;
-                        proposers: string[];
-                        metadata: string;
-                        messages: {
-                            type_url: string;
-                            value: Uint8Array;
-                        }[];
-                        exec: number;
-                    }) => _62.MsgSubmitProposal;
-                };
-                "/cosmos.group.v1.MsgWithdrawProposal": {
-                    aminoType: string;
-                    toAmino: ({ proposal_id, address }: _62.MsgWithdrawProposal) => {
-                        proposal_id: string;
-                        address: string;
-                    };
-                    fromAmino: ({ proposal_id, address }: {
-                        proposal_id: string;
-                        address: string;
-                    }) => _62.MsgWithdrawProposal;
-                };
-                "/cosmos.group.v1.MsgVote": {
-                    aminoType: string;
-                    toAmino: ({ proposal_id, voter, option, metadata, exec }: _62.MsgVote) => {
-                        proposal_id: string;
-                        voter: string;
-                        option: number;
-                        metadata: string;
-                        exec: number;
-                    };
-                    fromAmino: ({ proposal_id, voter, option, metadata, exec }: {
-                        proposal_id: string;
-                        voter: string;
-                        option: number;
-                        metadata: string;
-                        exec: number;
-                    }) => _62.MsgVote;
-                };
-                "/cosmos.group.v1.MsgExec": {
-                    aminoType: string;
-                    toAmino: ({ proposal_id, signer }: _62.MsgExec) => {
-                        proposal_id: string;
-                        signer: string;
-                    };
-                    fromAmino: ({ proposal_id, signer }: {
-                        proposal_id: string;
-                        signer: string;
-                    }) => _62.MsgExec;
-                };
-                "/cosmos.group.v1.MsgLeaveGroup": {
-                    aminoType: string;
-                    toAmino: ({ address, group_id }: _62.MsgLeaveGroup) => {
-                        address: string;
-                        group_id: string;
-                    };
-                    fromAmino: ({ address, group_id }: {
-                        address: string;
-                        group_id: string;
-                    }) => _62.MsgLeaveGroup;
-                };
-            };
-            voteOptionFromJSON(object: any): _63.VoteOption;
-            voteOptionToJSON(object: _63.VoteOption): string;
-            proposalStatusFromJSON(object: any): _63.ProposalStatus;
-            proposalStatusToJSON(object: _63.ProposalStatus): string;
-            proposalResultFromJSON(object: any): _63.ProposalResult;
-            proposalResultToJSON(object: _63.ProposalResult): string;
-            proposalExecutorResultFromJSON(object: any): _63.ProposalExecutorResult;
-            proposalExecutorResultToJSON(object: _63.ProposalExecutorResult): string;
-            VoteOption: typeof _63.VoteOption;
-            ProposalStatus: typeof _63.ProposalStatus;
-            ProposalResult: typeof _63.ProposalResult;
-            ProposalExecutorResult: typeof _63.ProposalExecutorResult;
-            Member: {
-                encode(message: _63.Member, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.Member;
-                fromJSON(object: any): _63.Member;
-                toJSON(message: _63.Member): unknown;
-                fromPartial(object: {
-                    address?: string;
-                    weight?: string;
-                    metadata?: string;
-                    added_at?: Date;
-                }): _63.Member;
-            };
-            Members: {
-                encode(message: _63.Members, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.Members;
-                fromJSON(object: any): _63.Members;
-                toJSON(message: _63.Members): unknown;
-                fromPartial(object: {
-                    members?: {
-                        address?: string;
-                        weight?: string;
-                        metadata?: string;
-                        added_at?: Date;
-                    }[];
-                }): _63.Members;
-            };
-            ThresholdDecisionPolicy: {
-                encode(message: _63.ThresholdDecisionPolicy, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.ThresholdDecisionPolicy;
-                fromJSON(object: any): _63.ThresholdDecisionPolicy;
-                toJSON(message: _63.ThresholdDecisionPolicy): unknown;
-                fromPartial(object: {
-                    threshold?: string;
-                    windows?: {
-                        voting_period?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        min_execution_period?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                    };
-                }): _63.ThresholdDecisionPolicy;
-            };
-            PercentageDecisionPolicy: {
-                encode(message: _63.PercentageDecisionPolicy, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.PercentageDecisionPolicy;
-                fromJSON(object: any): _63.PercentageDecisionPolicy;
-                toJSON(message: _63.PercentageDecisionPolicy): unknown;
-                fromPartial(object: {
-                    percentage?: string;
-                    windows?: {
-                        voting_period?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        min_execution_period?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                    };
-                }): _63.PercentageDecisionPolicy;
-            };
-            DecisionPolicyWindows: {
-                encode(message: _63.DecisionPolicyWindows, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.DecisionPolicyWindows;
-                fromJSON(object: any): _63.DecisionPolicyWindows;
-                toJSON(message: _63.DecisionPolicyWindows): unknown;
-                fromPartial(object: {
-                    voting_period?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
-                    min_execution_period?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
-                }): _63.DecisionPolicyWindows;
-            };
-            GroupInfo: {
-                encode(message: _63.GroupInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.GroupInfo;
-                fromJSON(object: any): _63.GroupInfo;
-                toJSON(message: _63.GroupInfo): unknown;
-                fromPartial(object: {
-                    id?: any;
-                    admin?: string;
-                    metadata?: string;
-                    version?: any;
-                    total_weight?: string;
-                    created_at?: Date;
-                }): _63.GroupInfo;
-            };
-            GroupMember: {
-                encode(message: _63.GroupMember, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.GroupMember;
-                fromJSON(object: any): _63.GroupMember;
-                toJSON(message: _63.GroupMember): unknown;
-                fromPartial(object: {
-                    group_id?: any;
-                    member?: {
-                        address?: string;
-                        weight?: string;
-                        metadata?: string;
-                        added_at?: Date;
-                    };
-                }): _63.GroupMember;
-            };
-            GroupPolicyInfo: {
-                encode(message: _63.GroupPolicyInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.GroupPolicyInfo;
-                fromJSON(object: any): _63.GroupPolicyInfo;
-                toJSON(message: _63.GroupPolicyInfo): unknown;
-                fromPartial(object: {
-                    address?: string;
-                    group_id?: any;
-                    admin?: string;
-                    metadata?: string;
-                    version?: any;
-                    decision_policy?: {
-                        type_url?: string;
-                        value?: Uint8Array;
-                    };
-                    created_at?: Date;
-                }): _63.GroupPolicyInfo;
-            };
-            Proposal: {
-                encode(message: _63.Proposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.Proposal;
-                fromJSON(object: any): _63.Proposal;
-                toJSON(message: _63.Proposal): unknown;
-                fromPartial(object: {
-                    id?: any;
-                    address?: string;
-                    metadata?: string;
-                    proposers?: string[];
-                    submit_time?: Date;
-                    group_version?: any;
-                    group_policy_version?: any;
-                    status?: _63.ProposalStatus;
-                    result?: _63.ProposalResult;
-                    final_tally_result?: {
-                        yes_count?: string;
-                        abstain_count?: string;
-                        no_count?: string;
-                        no_with_veto_count?: string;
-                    };
-                    voting_period_end?: Date;
-                    executor_result?: _63.ProposalExecutorResult;
-                    messages?: {
-                        type_url?: string;
-                        value?: Uint8Array;
-                    }[];
-                }): _63.Proposal;
-            };
-            TallyResult: {
-                encode(message: _63.TallyResult, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.TallyResult;
-                fromJSON(object: any): _63.TallyResult;
-                toJSON(message: _63.TallyResult): unknown;
-                fromPartial(object: {
-                    yes_count?: string;
-                    abstain_count?: string;
-                    no_count?: string;
-                    no_with_veto_count?: string;
-                }): _63.TallyResult;
-            };
-            Vote: {
-                encode(message: _63.Vote, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _63.Vote;
-                fromJSON(object: any): _63.Vote;
-                toJSON(message: _63.Vote): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    voter?: string;
-                    option?: _63.VoteOption;
-                    metadata?: string;
-                    submit_time?: Date;
-                }): _63.Vote;
-            };
-            execFromJSON(object: any): _62.Exec;
-            execToJSON(object: _62.Exec): string;
-            Exec: typeof _62.Exec;
-            MsgCreateGroup: {
-                encode(message: _62.MsgCreateGroup, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgCreateGroup;
-                fromJSON(object: any): _62.MsgCreateGroup;
-                toJSON(message: _62.MsgCreateGroup): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    members?: {
-                        address?: string;
-                        weight?: string;
-                        metadata?: string;
-                        added_at?: Date;
-                    }[];
-                    metadata?: string;
-                }): _62.MsgCreateGroup;
-            };
-            MsgCreateGroupResponse: {
-                encode(message: _62.MsgCreateGroupResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgCreateGroupResponse;
-                fromJSON(object: any): _62.MsgCreateGroupResponse;
-                toJSON(message: _62.MsgCreateGroupResponse): unknown;
-                fromPartial(object: {
-                    group_id?: any;
-                }): _62.MsgCreateGroupResponse;
-            };
-            MsgUpdateGroupMembers: {
-                encode(message: _62.MsgUpdateGroupMembers, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupMembers;
-                fromJSON(object: any): _62.MsgUpdateGroupMembers;
-                toJSON(message: _62.MsgUpdateGroupMembers): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    group_id?: any;
-                    member_updates?: {
-                        address?: string;
-                        weight?: string;
-                        metadata?: string;
-                        added_at?: Date;
-                    }[];
-                }): _62.MsgUpdateGroupMembers;
-            };
-            MsgUpdateGroupMembersResponse: {
-                encode(_: _62.MsgUpdateGroupMembersResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupMembersResponse;
-                fromJSON(_: any): _62.MsgUpdateGroupMembersResponse;
-                toJSON(_: _62.MsgUpdateGroupMembersResponse): unknown;
-                fromPartial(_: {}): _62.MsgUpdateGroupMembersResponse;
-            };
-            MsgUpdateGroupAdmin: {
-                encode(message: _62.MsgUpdateGroupAdmin, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupAdmin;
-                fromJSON(object: any): _62.MsgUpdateGroupAdmin;
-                toJSON(message: _62.MsgUpdateGroupAdmin): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    group_id?: any;
-                    new_admin?: string;
-                }): _62.MsgUpdateGroupAdmin;
-            };
-            MsgUpdateGroupAdminResponse: {
-                encode(_: _62.MsgUpdateGroupAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupAdminResponse;
-                fromJSON(_: any): _62.MsgUpdateGroupAdminResponse;
-                toJSON(_: _62.MsgUpdateGroupAdminResponse): unknown;
-                fromPartial(_: {}): _62.MsgUpdateGroupAdminResponse;
-            };
-            MsgUpdateGroupMetadata: {
-                encode(message: _62.MsgUpdateGroupMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupMetadata;
-                fromJSON(object: any): _62.MsgUpdateGroupMetadata;
-                toJSON(message: _62.MsgUpdateGroupMetadata): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    group_id?: any;
-                    metadata?: string;
-                }): _62.MsgUpdateGroupMetadata;
-            };
-            MsgUpdateGroupMetadataResponse: {
-                encode(_: _62.MsgUpdateGroupMetadataResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupMetadataResponse;
-                fromJSON(_: any): _62.MsgUpdateGroupMetadataResponse;
-                toJSON(_: _62.MsgUpdateGroupMetadataResponse): unknown;
-                fromPartial(_: {}): _62.MsgUpdateGroupMetadataResponse;
-            };
-            MsgCreateGroupPolicy: {
-                encode(message: _62.MsgCreateGroupPolicy, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgCreateGroupPolicy;
-                fromJSON(object: any): _62.MsgCreateGroupPolicy;
-                toJSON(message: _62.MsgCreateGroupPolicy): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    group_id?: any;
-                    metadata?: string;
-                    decision_policy?: {
-                        type_url?: string;
-                        value?: Uint8Array;
-                    };
-                }): _62.MsgCreateGroupPolicy;
-            };
-            MsgCreateGroupPolicyResponse: {
-                encode(message: _62.MsgCreateGroupPolicyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgCreateGroupPolicyResponse;
-                fromJSON(object: any): _62.MsgCreateGroupPolicyResponse;
-                toJSON(message: _62.MsgCreateGroupPolicyResponse): unknown;
-                fromPartial(object: {
-                    address?: string;
-                }): _62.MsgCreateGroupPolicyResponse;
-            };
-            MsgUpdateGroupPolicyAdmin: {
-                encode(message: _62.MsgUpdateGroupPolicyAdmin, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupPolicyAdmin;
-                fromJSON(object: any): _62.MsgUpdateGroupPolicyAdmin;
-                toJSON(message: _62.MsgUpdateGroupPolicyAdmin): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    address?: string;
-                    new_admin?: string;
-                }): _62.MsgUpdateGroupPolicyAdmin;
-            };
-            MsgCreateGroupWithPolicy: {
-                encode(message: _62.MsgCreateGroupWithPolicy, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgCreateGroupWithPolicy;
-                fromJSON(object: any): _62.MsgCreateGroupWithPolicy;
-                toJSON(message: _62.MsgCreateGroupWithPolicy): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    members?: {
-                        address?: string;
-                        weight?: string;
-                        metadata?: string;
-                        added_at?: Date;
-                    }[];
-                    group_metadata?: string;
-                    group_policy_metadata?: string;
-                    group_policy_as_admin?: boolean;
-                    decision_policy?: {
-                        type_url?: string;
-                        value?: Uint8Array;
-                    };
-                }): _62.MsgCreateGroupWithPolicy;
-            };
-            MsgCreateGroupWithPolicyResponse: {
-                encode(message: _62.MsgCreateGroupWithPolicyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgCreateGroupWithPolicyResponse;
-                fromJSON(object: any): _62.MsgCreateGroupWithPolicyResponse;
-                toJSON(message: _62.MsgCreateGroupWithPolicyResponse): unknown;
-                fromPartial(object: {
-                    group_id?: any;
-                    group_policy_address?: string;
-                }): _62.MsgCreateGroupWithPolicyResponse;
-            };
-            MsgUpdateGroupPolicyAdminResponse: {
-                encode(_: _62.MsgUpdateGroupPolicyAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupPolicyAdminResponse;
-                fromJSON(_: any): _62.MsgUpdateGroupPolicyAdminResponse;
-                toJSON(_: _62.MsgUpdateGroupPolicyAdminResponse): unknown;
-                fromPartial(_: {}): _62.MsgUpdateGroupPolicyAdminResponse;
-            };
-            MsgUpdateGroupPolicyDecisionPolicy: {
-                encode(message: _62.MsgUpdateGroupPolicyDecisionPolicy, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupPolicyDecisionPolicy;
-                fromJSON(object: any): _62.MsgUpdateGroupPolicyDecisionPolicy;
-                toJSON(message: _62.MsgUpdateGroupPolicyDecisionPolicy): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    address?: string;
-                    decision_policy?: {
-                        type_url?: string;
-                        value?: Uint8Array;
-                    };
-                }): _62.MsgUpdateGroupPolicyDecisionPolicy;
-            };
-            MsgUpdateGroupPolicyDecisionPolicyResponse: {
-                encode(_: _62.MsgUpdateGroupPolicyDecisionPolicyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupPolicyDecisionPolicyResponse;
-                fromJSON(_: any): _62.MsgUpdateGroupPolicyDecisionPolicyResponse;
-                toJSON(_: _62.MsgUpdateGroupPolicyDecisionPolicyResponse): unknown;
-                fromPartial(_: {}): _62.MsgUpdateGroupPolicyDecisionPolicyResponse;
-            };
-            MsgUpdateGroupPolicyMetadata: {
-                encode(message: _62.MsgUpdateGroupPolicyMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupPolicyMetadata;
-                fromJSON(object: any): _62.MsgUpdateGroupPolicyMetadata;
-                toJSON(message: _62.MsgUpdateGroupPolicyMetadata): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    address?: string;
-                    metadata?: string;
-                }): _62.MsgUpdateGroupPolicyMetadata;
-            };
-            MsgUpdateGroupPolicyMetadataResponse: {
-                encode(_: _62.MsgUpdateGroupPolicyMetadataResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgUpdateGroupPolicyMetadataResponse;
-                fromJSON(_: any): _62.MsgUpdateGroupPolicyMetadataResponse;
-                toJSON(_: _62.MsgUpdateGroupPolicyMetadataResponse): unknown;
-                fromPartial(_: {}): _62.MsgUpdateGroupPolicyMetadataResponse;
-            };
-            MsgSubmitProposal: {
-                encode(message: _62.MsgSubmitProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgSubmitProposal;
-                fromJSON(object: any): _62.MsgSubmitProposal;
-                toJSON(message: _62.MsgSubmitProposal): unknown;
-                fromPartial(object: {
-                    address?: string;
-                    proposers?: string[];
-                    metadata?: string;
-                    messages?: {
-                        type_url?: string;
-                        value?: Uint8Array;
-                    }[];
-                    exec?: _62.Exec;
-                }): _62.MsgSubmitProposal;
-            };
-            MsgSubmitProposalResponse: {
-                encode(message: _62.MsgSubmitProposalResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgSubmitProposalResponse;
-                fromJSON(object: any): _62.MsgSubmitProposalResponse;
-                toJSON(message: _62.MsgSubmitProposalResponse): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                }): _62.MsgSubmitProposalResponse;
-            };
-            MsgWithdrawProposal: {
-                encode(message: _62.MsgWithdrawProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgWithdrawProposal;
-                fromJSON(object: any): _62.MsgWithdrawProposal;
-                toJSON(message: _62.MsgWithdrawProposal): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    address?: string;
-                }): _62.MsgWithdrawProposal;
-            };
-            MsgWithdrawProposalResponse: {
-                encode(_: _62.MsgWithdrawProposalResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgWithdrawProposalResponse;
-                fromJSON(_: any): _62.MsgWithdrawProposalResponse;
-                toJSON(_: _62.MsgWithdrawProposalResponse): unknown;
-                fromPartial(_: {}): _62.MsgWithdrawProposalResponse;
-            };
-            MsgVote: {
-                encode(message: _62.MsgVote, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgVote;
-                fromJSON(object: any): _62.MsgVote;
-                toJSON(message: _62.MsgVote): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    voter?: string;
-                    option?: _63.VoteOption;
-                    metadata?: string;
-                    exec?: _62.Exec;
-                }): _62.MsgVote;
-            };
-            MsgVoteResponse: {
-                encode(_: _62.MsgVoteResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgVoteResponse;
-                fromJSON(_: any): _62.MsgVoteResponse;
-                toJSON(_: _62.MsgVoteResponse): unknown;
-                fromPartial(_: {}): _62.MsgVoteResponse;
-            };
-            MsgExec: {
-                encode(message: _62.MsgExec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgExec;
-                fromJSON(object: any): _62.MsgExec;
-                toJSON(message: _62.MsgExec): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    signer?: string;
-                }): _62.MsgExec;
-            };
-            MsgExecResponse: {
-                encode(_: _62.MsgExecResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgExecResponse;
-                fromJSON(_: any): _62.MsgExecResponse;
-                toJSON(_: _62.MsgExecResponse): unknown;
-                fromPartial(_: {}): _62.MsgExecResponse;
-            };
-            MsgLeaveGroup: {
-                encode(message: _62.MsgLeaveGroup, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgLeaveGroup;
-                fromJSON(object: any): _62.MsgLeaveGroup;
-                toJSON(message: _62.MsgLeaveGroup): unknown;
-                fromPartial(object: {
-                    address?: string;
-                    group_id?: any;
-                }): _62.MsgLeaveGroup;
-            };
-            MsgLeaveGroupResponse: {
-                encode(_: _62.MsgLeaveGroupResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.MsgLeaveGroupResponse;
-                fromJSON(_: any): _62.MsgLeaveGroupResponse;
-                toJSON(_: _62.MsgLeaveGroupResponse): unknown;
-                fromPartial(_: {}): _62.MsgLeaveGroupResponse;
-            };
-            QueryGroupInfoRequest: {
-                encode(message: _61.QueryGroupInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupInfoRequest;
-                fromJSON(object: any): _61.QueryGroupInfoRequest;
-                toJSON(message: _61.QueryGroupInfoRequest): unknown;
-                fromPartial(object: {
-                    group_id?: any;
-                }): _61.QueryGroupInfoRequest;
-            };
-            QueryGroupInfoResponse: {
-                encode(message: _61.QueryGroupInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupInfoResponse;
-                fromJSON(object: any): _61.QueryGroupInfoResponse;
-                toJSON(message: _61.QueryGroupInfoResponse): unknown;
-                fromPartial(object: {
-                    info?: {
-                        id?: any;
-                        admin?: string;
-                        metadata?: string;
-                        version?: any;
-                        total_weight?: string;
-                        created_at?: Date;
-                    };
-                }): _61.QueryGroupInfoResponse;
-            };
-            QueryGroupPolicyInfoRequest: {
-                encode(message: _61.QueryGroupPolicyInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupPolicyInfoRequest;
-                fromJSON(object: any): _61.QueryGroupPolicyInfoRequest;
-                toJSON(message: _61.QueryGroupPolicyInfoRequest): unknown;
-                fromPartial(object: {
-                    address?: string;
-                }): _61.QueryGroupPolicyInfoRequest;
-            };
-            QueryGroupPolicyInfoResponse: {
-                encode(message: _61.QueryGroupPolicyInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupPolicyInfoResponse;
-                fromJSON(object: any): _61.QueryGroupPolicyInfoResponse;
-                toJSON(message: _61.QueryGroupPolicyInfoResponse): unknown;
-                fromPartial(object: {
-                    info?: {
-                        address?: string;
-                        group_id?: any;
-                        admin?: string;
-                        metadata?: string;
-                        version?: any;
-                        decision_policy?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        };
-                        created_at?: Date;
-                    };
-                }): _61.QueryGroupPolicyInfoResponse;
-            };
-            QueryGroupMembersRequest: {
-                encode(message: _61.QueryGroupMembersRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupMembersRequest;
-                fromJSON(object: any): _61.QueryGroupMembersRequest;
-                toJSON(message: _61.QueryGroupMembersRequest): unknown;
-                fromPartial(object: {
-                    group_id?: any;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _61.QueryGroupMembersRequest;
-            };
-            QueryGroupMembersResponse: {
-                encode(message: _61.QueryGroupMembersResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupMembersResponse;
-                fromJSON(object: any): _61.QueryGroupMembersResponse;
-                toJSON(message: _61.QueryGroupMembersResponse): unknown;
-                fromPartial(object: {
-                    members?: {
-                        group_id?: any;
-                        member?: {
-                            address?: string;
-                            weight?: string;
-                            metadata?: string;
-                            added_at?: Date;
-                        };
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _61.QueryGroupMembersResponse;
-            };
-            QueryGroupsByAdminRequest: {
-                encode(message: _61.QueryGroupsByAdminRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupsByAdminRequest;
-                fromJSON(object: any): _61.QueryGroupsByAdminRequest;
-                toJSON(message: _61.QueryGroupsByAdminRequest): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _61.QueryGroupsByAdminRequest;
-            };
-            QueryGroupsByAdminResponse: {
-                encode(message: _61.QueryGroupsByAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupsByAdminResponse;
-                fromJSON(object: any): _61.QueryGroupsByAdminResponse;
-                toJSON(message: _61.QueryGroupsByAdminResponse): unknown;
-                fromPartial(object: {
-                    groups?: {
-                        id?: any;
-                        admin?: string;
-                        metadata?: string;
-                        version?: any;
-                        total_weight?: string;
-                        created_at?: Date;
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _61.QueryGroupsByAdminResponse;
-            };
-            QueryGroupPoliciesByGroupRequest: {
-                encode(message: _61.QueryGroupPoliciesByGroupRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupPoliciesByGroupRequest;
-                fromJSON(object: any): _61.QueryGroupPoliciesByGroupRequest;
-                toJSON(message: _61.QueryGroupPoliciesByGroupRequest): unknown;
-                fromPartial(object: {
-                    group_id?: any;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _61.QueryGroupPoliciesByGroupRequest;
-            };
-            QueryGroupPoliciesByGroupResponse: {
-                encode(message: _61.QueryGroupPoliciesByGroupResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupPoliciesByGroupResponse;
-                fromJSON(object: any): _61.QueryGroupPoliciesByGroupResponse;
-                toJSON(message: _61.QueryGroupPoliciesByGroupResponse): unknown;
-                fromPartial(object: {
-                    group_policies?: {
-                        address?: string;
-                        group_id?: any;
-                        admin?: string;
-                        metadata?: string;
-                        version?: any;
-                        decision_policy?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        };
-                        created_at?: Date;
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _61.QueryGroupPoliciesByGroupResponse;
-            };
-            QueryGroupPoliciesByAdminRequest: {
-                encode(message: _61.QueryGroupPoliciesByAdminRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupPoliciesByAdminRequest;
-                fromJSON(object: any): _61.QueryGroupPoliciesByAdminRequest;
-                toJSON(message: _61.QueryGroupPoliciesByAdminRequest): unknown;
-                fromPartial(object: {
-                    admin?: string;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _61.QueryGroupPoliciesByAdminRequest;
-            };
-            QueryGroupPoliciesByAdminResponse: {
-                encode(message: _61.QueryGroupPoliciesByAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupPoliciesByAdminResponse;
-                fromJSON(object: any): _61.QueryGroupPoliciesByAdminResponse;
-                toJSON(message: _61.QueryGroupPoliciesByAdminResponse): unknown;
-                fromPartial(object: {
-                    group_policies?: {
-                        address?: string;
-                        group_id?: any;
-                        admin?: string;
-                        metadata?: string;
-                        version?: any;
-                        decision_policy?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        };
-                        created_at?: Date;
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _61.QueryGroupPoliciesByAdminResponse;
-            };
-            QueryProposalRequest: {
-                encode(message: _61.QueryProposalRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryProposalRequest;
-                fromJSON(object: any): _61.QueryProposalRequest;
-                toJSON(message: _61.QueryProposalRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                }): _61.QueryProposalRequest;
-            };
-            QueryProposalResponse: {
-                encode(message: _61.QueryProposalResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryProposalResponse;
-                fromJSON(object: any): _61.QueryProposalResponse;
-                toJSON(message: _61.QueryProposalResponse): unknown;
-                fromPartial(object: {
-                    proposal?: {
-                        id?: any;
-                        address?: string;
-                        metadata?: string;
-                        proposers?: string[];
-                        submit_time?: Date;
-                        group_version?: any;
-                        group_policy_version?: any;
-                        status?: _63.ProposalStatus;
-                        result?: _63.ProposalResult;
-                        final_tally_result?: {
-                            yes_count?: string;
-                            abstain_count?: string;
-                            no_count?: string;
-                            no_with_veto_count?: string;
-                        };
-                        voting_period_end?: Date;
-                        executor_result?: _63.ProposalExecutorResult;
-                        messages?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        }[];
-                    };
-                }): _61.QueryProposalResponse;
-            };
-            QueryProposalsByGroupPolicyRequest: {
-                encode(message: _61.QueryProposalsByGroupPolicyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryProposalsByGroupPolicyRequest;
-                fromJSON(object: any): _61.QueryProposalsByGroupPolicyRequest;
-                toJSON(message: _61.QueryProposalsByGroupPolicyRequest): unknown;
-                fromPartial(object: {
-                    address?: string;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _61.QueryProposalsByGroupPolicyRequest;
-            };
-            QueryProposalsByGroupPolicyResponse: {
-                encode(message: _61.QueryProposalsByGroupPolicyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryProposalsByGroupPolicyResponse;
-                fromJSON(object: any): _61.QueryProposalsByGroupPolicyResponse;
-                toJSON(message: _61.QueryProposalsByGroupPolicyResponse): unknown;
-                fromPartial(object: {
-                    proposals?: {
-                        id?: any;
-                        address?: string;
-                        metadata?: string;
-                        proposers?: string[];
-                        submit_time?: Date;
-                        group_version?: any;
-                        group_policy_version?: any;
-                        status?: _63.ProposalStatus;
-                        result?: _63.ProposalResult;
-                        final_tally_result?: {
-                            yes_count?: string;
-                            abstain_count?: string;
-                            no_count?: string;
-                            no_with_veto_count?: string;
-                        };
-                        voting_period_end?: Date;
-                        executor_result?: _63.ProposalExecutorResult;
-                        messages?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        }[];
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _61.QueryProposalsByGroupPolicyResponse;
-            };
-            QueryVoteByProposalVoterRequest: {
-                encode(message: _61.QueryVoteByProposalVoterRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryVoteByProposalVoterRequest;
-                fromJSON(object: any): _61.QueryVoteByProposalVoterRequest;
-                toJSON(message: _61.QueryVoteByProposalVoterRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    voter?: string;
-                }): _61.QueryVoteByProposalVoterRequest;
-            };
-            QueryVoteByProposalVoterResponse: {
-                encode(message: _61.QueryVoteByProposalVoterResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryVoteByProposalVoterResponse;
-                fromJSON(object: any): _61.QueryVoteByProposalVoterResponse;
-                toJSON(message: _61.QueryVoteByProposalVoterResponse): unknown;
-                fromPartial(object: {
-                    vote?: {
-                        proposal_id?: any;
-                        voter?: string;
-                        option?: _63.VoteOption;
-                        metadata?: string;
-                        submit_time?: Date;
-                    };
-                }): _61.QueryVoteByProposalVoterResponse;
-            };
-            QueryVotesByProposalRequest: {
-                encode(message: _61.QueryVotesByProposalRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryVotesByProposalRequest;
-                fromJSON(object: any): _61.QueryVotesByProposalRequest;
-                toJSON(message: _61.QueryVotesByProposalRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _61.QueryVotesByProposalRequest;
-            };
-            QueryVotesByProposalResponse: {
-                encode(message: _61.QueryVotesByProposalResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryVotesByProposalResponse;
-                fromJSON(object: any): _61.QueryVotesByProposalResponse;
-                toJSON(message: _61.QueryVotesByProposalResponse): unknown;
-                fromPartial(object: {
-                    votes?: {
-                        proposal_id?: any;
-                        voter?: string;
-                        option?: _63.VoteOption;
-                        metadata?: string;
-                        submit_time?: Date;
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _61.QueryVotesByProposalResponse;
-            };
-            QueryVotesByVoterRequest: {
-                encode(message: _61.QueryVotesByVoterRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryVotesByVoterRequest;
-                fromJSON(object: any): _61.QueryVotesByVoterRequest;
-                toJSON(message: _61.QueryVotesByVoterRequest): unknown;
-                fromPartial(object: {
-                    voter?: string;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _61.QueryVotesByVoterRequest;
-            };
-            QueryVotesByVoterResponse: {
-                encode(message: _61.QueryVotesByVoterResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryVotesByVoterResponse;
-                fromJSON(object: any): _61.QueryVotesByVoterResponse;
-                toJSON(message: _61.QueryVotesByVoterResponse): unknown;
-                fromPartial(object: {
-                    votes?: {
-                        proposal_id?: any;
-                        voter?: string;
-                        option?: _63.VoteOption;
-                        metadata?: string;
-                        submit_time?: Date;
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _61.QueryVotesByVoterResponse;
-            };
-            QueryGroupsByMemberRequest: {
-                encode(message: _61.QueryGroupsByMemberRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupsByMemberRequest;
-                fromJSON(object: any): _61.QueryGroupsByMemberRequest;
-                toJSON(message: _61.QueryGroupsByMemberRequest): unknown;
-                fromPartial(object: {
-                    address?: string;
-                    pagination?: {
-                        key?: Uint8Array;
-                        offset?: any;
-                        limit?: any;
-                        count_total?: boolean;
-                        reverse?: boolean;
-                    };
-                }): _61.QueryGroupsByMemberRequest;
-            };
-            QueryGroupsByMemberResponse: {
-                encode(message: _61.QueryGroupsByMemberResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryGroupsByMemberResponse;
-                fromJSON(object: any): _61.QueryGroupsByMemberResponse;
-                toJSON(message: _61.QueryGroupsByMemberResponse): unknown;
-                fromPartial(object: {
-                    groups?: {
-                        id?: any;
-                        admin?: string;
-                        metadata?: string;
-                        version?: any;
-                        total_weight?: string;
-                        created_at?: Date;
-                    }[];
-                    pagination?: {
-                        next_key?: Uint8Array;
-                        total?: any;
-                    };
-                }): _61.QueryGroupsByMemberResponse;
-            };
-            QueryTallyResultRequest: {
-                encode(message: _61.QueryTallyResultRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryTallyResultRequest;
-                fromJSON(object: any): _61.QueryTallyResultRequest;
-                toJSON(message: _61.QueryTallyResultRequest): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                }): _61.QueryTallyResultRequest;
-            };
-            QueryTallyResultResponse: {
-                encode(message: _61.QueryTallyResultResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.QueryTallyResultResponse;
-                fromJSON(object: any): _61.QueryTallyResultResponse;
-                toJSON(message: _61.QueryTallyResultResponse): unknown;
-                fromPartial(object: {
-                    tally?: {
-                        yes_count?: string;
-                        abstain_count?: string;
-                        no_count?: string;
-                        no_with_veto_count?: string;
-                    };
-                }): _61.QueryTallyResultResponse;
-            };
-            GenesisState: {
-                encode(message: _60.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _60.GenesisState;
-                fromJSON(object: any): _60.GenesisState;
-                toJSON(message: _60.GenesisState): unknown;
-                fromPartial(object: {
-                    group_seq?: any;
-                    groups?: {
-                        id?: any;
-                        admin?: string;
-                        metadata?: string;
-                        version?: any;
-                        total_weight?: string;
-                        created_at?: Date;
-                    }[];
-                    group_members?: {
-                        group_id?: any;
-                        member?: {
-                            address?: string;
-                            weight?: string;
-                            metadata?: string;
-                            added_at?: Date;
-                        };
-                    }[];
-                    group_policy_seq?: any;
-                    group_policies?: {
-                        address?: string;
-                        group_id?: any;
-                        admin?: string;
-                        metadata?: string;
-                        version?: any;
-                        decision_policy?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        };
-                        created_at?: Date;
-                    }[];
-                    proposal_seq?: any;
-                    proposals?: {
-                        id?: any;
-                        address?: string;
-                        metadata?: string;
-                        proposers?: string[];
-                        submit_time?: Date;
-                        group_version?: any;
-                        group_policy_version?: any;
-                        status?: _63.ProposalStatus;
-                        result?: _63.ProposalResult;
-                        final_tally_result?: {
-                            yes_count?: string;
-                            abstain_count?: string;
-                            no_count?: string;
-                            no_with_veto_count?: string;
-                        };
-                        voting_period_end?: Date;
-                        executor_result?: _63.ProposalExecutorResult;
-                        messages?: {
-                            type_url?: string;
-                            value?: Uint8Array;
-                        }[];
-                    }[];
-                    votes?: {
-                        proposal_id?: any;
-                        voter?: string;
-                        option?: _63.VoteOption;
-                        metadata?: string;
-                        submit_time?: Date;
-                    }[];
-                }): _60.GenesisState;
-            };
-            EventCreateGroup: {
-                encode(message: _59.EventCreateGroup, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.EventCreateGroup;
-                fromJSON(object: any): _59.EventCreateGroup;
-                toJSON(message: _59.EventCreateGroup): unknown;
-                fromPartial(object: {
-                    group_id?: any;
-                }): _59.EventCreateGroup;
-            };
-            EventUpdateGroup: {
-                encode(message: _59.EventUpdateGroup, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.EventUpdateGroup;
-                fromJSON(object: any): _59.EventUpdateGroup;
-                toJSON(message: _59.EventUpdateGroup): unknown;
-                fromPartial(object: {
-                    group_id?: any;
-                }): _59.EventUpdateGroup;
-            };
-            EventCreateGroupPolicy: {
-                encode(message: _59.EventCreateGroupPolicy, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.EventCreateGroupPolicy;
-                fromJSON(object: any): _59.EventCreateGroupPolicy;
-                toJSON(message: _59.EventCreateGroupPolicy): unknown;
-                fromPartial(object: {
-                    address?: string;
-                }): _59.EventCreateGroupPolicy;
-            };
-            EventUpdateGroupPolicy: {
-                encode(message: _59.EventUpdateGroupPolicy, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.EventUpdateGroupPolicy;
-                fromJSON(object: any): _59.EventUpdateGroupPolicy;
-                toJSON(message: _59.EventUpdateGroupPolicy): unknown;
-                fromPartial(object: {
-                    address?: string;
-                }): _59.EventUpdateGroupPolicy;
-            };
-            EventSubmitProposal: {
-                encode(message: _59.EventSubmitProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.EventSubmitProposal;
-                fromJSON(object: any): _59.EventSubmitProposal;
-                toJSON(message: _59.EventSubmitProposal): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                }): _59.EventSubmitProposal;
-            };
-            EventWithdrawProposal: {
-                encode(message: _59.EventWithdrawProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.EventWithdrawProposal;
-                fromJSON(object: any): _59.EventWithdrawProposal;
-                toJSON(message: _59.EventWithdrawProposal): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                }): _59.EventWithdrawProposal;
-            };
-            EventVote: {
-                encode(message: _59.EventVote, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.EventVote;
-                fromJSON(object: any): _59.EventVote;
-                toJSON(message: _59.EventVote): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                }): _59.EventVote;
-            };
-            EventExec: {
-                encode(message: _59.EventExec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.EventExec;
-                fromJSON(object: any): _59.EventExec;
-                toJSON(message: _59.EventExec): unknown;
-                fromPartial(object: {
-                    proposal_id?: any;
-                    result?: _63.ProposalExecutorResult;
-                }): _59.EventExec;
-            };
-            EventLeaveGroup: {
-                encode(message: _59.EventLeaveGroup, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _59.EventLeaveGroup;
-                fromJSON(object: any): _59.EventLeaveGroup;
-                toJSON(message: _59.EventLeaveGroup): unknown;
-                fromPartial(object: {
-                    group_id?: any;
-                    address?: string;
-                }): _59.EventLeaveGroup;
-            };
-        };
+        const v1: any;
     }
     namespace mint {
         const v1beta1: {
-            QueryClientImpl: typeof _240.QueryClientImpl;
-            LCDQueryClient: typeof _223.LCDQueryClient;
+            QueryClientImpl: typeof _232.QueryClientImpl;
+            LCDQueryClient: typeof _217.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _66.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _66.QueryParamsRequest;
@@ -7788,9 +5312,9 @@ export declare namespace cosmos {
     }
     namespace nft {
         const v1beta1: {
-            MsgClientImpl: typeof _256.MsgClientImpl;
-            QueryClientImpl: typeof _241.QueryClientImpl;
-            LCDQueryClient: typeof _224.LCDQueryClient;
+            MsgClientImpl: typeof _246.MsgClientImpl;
+            QueryClientImpl: typeof _233.QueryClientImpl;
+            LCDQueryClient: typeof _218.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -8258,8 +5782,8 @@ export declare namespace cosmos {
     }
     namespace params {
         const v1beta1: {
-            QueryClientImpl: typeof _242.QueryClientImpl;
-            LCDQueryClient: typeof _225.LCDQueryClient;
+            QueryClientImpl: typeof _234.QueryClientImpl;
+            LCDQueryClient: typeof _219.LCDQueryClient;
             QueryParamsRequest: {
                 encode(message: _76.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _76.QueryParamsRequest;
@@ -8342,9 +5866,9 @@ export declare namespace cosmos {
     }
     namespace slashing {
         const v1beta1: {
-            MsgClientImpl: typeof _257.MsgClientImpl;
-            QueryClientImpl: typeof _243.QueryClientImpl;
-            LCDQueryClient: typeof _226.LCDQueryClient;
+            MsgClientImpl: typeof _247.MsgClientImpl;
+            QueryClientImpl: typeof _235.QueryClientImpl;
+            LCDQueryClient: typeof _220.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -8601,9 +6125,9 @@ export declare namespace cosmos {
     }
     namespace staking {
         const v1beta1: {
-            MsgClientImpl: typeof _258.MsgClientImpl;
-            QueryClientImpl: typeof _244.QueryClientImpl;
-            LCDQueryClient: typeof _227.LCDQueryClient;
+            MsgClientImpl: typeof _248.MsgClientImpl;
+            QueryClientImpl: typeof _236.QueryClientImpl;
+            LCDQueryClient: typeof _221.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -10154,7 +7678,7 @@ export declare namespace cosmos {
             };
         }
         const v1beta1: {
-            ServiceClientImpl: typeof _245.ServiceClientImpl;
+            ServiceClientImpl: typeof _237.ServiceClientImpl;
             Tx: {
                 encode(message: _88.Tx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.Tx;
@@ -11093,9 +8617,9 @@ export declare namespace cosmos {
     }
     namespace upgrade {
         const v1beta1: {
-            MsgClientImpl: typeof _259.MsgClientImpl;
-            QueryClientImpl: typeof _246.QueryClientImpl;
-            LCDQueryClient: typeof _228.LCDQueryClient;
+            MsgClientImpl: typeof _249.MsgClientImpl;
+            QueryClientImpl: typeof _238.QueryClientImpl;
+            LCDQueryClient: typeof _222.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -11396,7 +8920,7 @@ export declare namespace cosmos {
     }
     namespace vesting {
         const v1beta1: {
-            MsgClientImpl: typeof _260.MsgClientImpl;
+            MsgClientImpl: typeof _250.MsgClientImpl;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -11799,44 +9323,40 @@ export declare namespace cosmos {
         }) => Promise<{
             cosmos: {
                 authz: {
-                    v1beta1: _247.MsgClientImpl;
+                    v1beta1: _239.MsgClientImpl;
                 };
                 bank: {
-                    v1beta1: _248.MsgClientImpl;
+                    v1beta1: _240.MsgClientImpl;
                 };
                 crisis: {
-                    v1beta1: _249.MsgClientImpl;
+                    v1beta1: _241.MsgClientImpl;
                 };
                 distribution: {
-                    v1beta1: _250.MsgClientImpl;
+                    v1beta1: _242.MsgClientImpl;
                 };
                 evidence: {
-                    v1beta1: _251.MsgClientImpl;
+                    v1beta1: _243.MsgClientImpl;
                 };
                 feegrant: {
-                    v1beta1: _252.MsgClientImpl;
+                    v1beta1: _244.MsgClientImpl;
                 };
                 gov: {
-                    v1: _253.MsgClientImpl;
-                    v1beta1: _254.MsgClientImpl;
-                };
-                group: {
-                    v1: _255.MsgClientImpl;
+                    v1beta1: _245.MsgClientImpl;
                 };
                 nft: {
-                    v1beta1: _256.MsgClientImpl;
+                    v1beta1: _246.MsgClientImpl;
                 };
                 slashing: {
-                    v1beta1: _257.MsgClientImpl;
+                    v1beta1: _247.MsgClientImpl;
                 };
                 staking: {
-                    v1beta1: _258.MsgClientImpl;
+                    v1beta1: _248.MsgClientImpl;
                 };
                 upgrade: {
-                    v1beta1: _259.MsgClientImpl;
+                    v1beta1: _249.MsgClientImpl;
                 };
                 vesting: {
-                    v1beta1: _260.MsgClientImpl;
+                    v1beta1: _250.MsgClientImpl;
                 };
             };
         }>;
@@ -11845,50 +9365,46 @@ export declare namespace cosmos {
         }) => Promise<{
             cosmos: {
                 app: {
-                    v1alpha1: _229.QueryClientImpl;
+                    v1alpha1: _223.QueryClientImpl;
                 };
                 auth: {
-                    v1beta1: _230.QueryClientImpl;
+                    v1beta1: _224.QueryClientImpl;
                 };
                 authz: {
-                    v1beta1: _231.QueryClientImpl;
+                    v1beta1: _225.QueryClientImpl;
                 };
                 bank: {
-                    v1beta1: _232.QueryClientImpl;
+                    v1beta1: _226.QueryClientImpl;
                 };
                 distribution: {
-                    v1beta1: _234.QueryClientImpl;
+                    v1beta1: _228.QueryClientImpl;
                 };
                 evidence: {
-                    v1beta1: _235.QueryClientImpl;
+                    v1beta1: _229.QueryClientImpl;
                 };
                 feegrant: {
-                    v1beta1: _236.QueryClientImpl;
+                    v1beta1: _230.QueryClientImpl;
                 };
                 gov: {
-                    v1: _237.QueryClientImpl;
-                    v1beta1: _238.QueryClientImpl;
-                };
-                group: {
-                    v1: _239.QueryClientImpl;
+                    v1beta1: _231.QueryClientImpl;
                 };
                 mint: {
-                    v1beta1: _240.QueryClientImpl;
+                    v1beta1: _232.QueryClientImpl;
                 };
                 nft: {
-                    v1beta1: _241.QueryClientImpl;
+                    v1beta1: _233.QueryClientImpl;
                 };
                 params: {
-                    v1beta1: _242.QueryClientImpl;
+                    v1beta1: _234.QueryClientImpl;
                 };
                 slashing: {
-                    v1beta1: _243.QueryClientImpl;
+                    v1beta1: _235.QueryClientImpl;
                 };
                 staking: {
-                    v1beta1: _244.QueryClientImpl;
+                    v1beta1: _236.QueryClientImpl;
                 };
                 upgrade: {
-                    v1beta1: _246.QueryClientImpl;
+                    v1beta1: _238.QueryClientImpl;
                 };
             };
         }>;
@@ -11897,47 +9413,43 @@ export declare namespace cosmos {
         }) => Promise<{
             cosmos: {
                 auth: {
-                    v1beta1: _214.LCDQueryClient;
+                    v1beta1: _210.LCDQueryClient;
                 };
                 authz: {
-                    v1beta1: _215.LCDQueryClient;
+                    v1beta1: _211.LCDQueryClient;
                 };
                 bank: {
-                    v1beta1: _216.LCDQueryClient;
+                    v1beta1: _212.LCDQueryClient;
                 };
                 distribution: {
-                    v1beta1: _217.LCDQueryClient;
+                    v1beta1: _213.LCDQueryClient;
                 };
                 evidence: {
-                    v1beta1: _218.LCDQueryClient;
+                    v1beta1: _214.LCDQueryClient;
                 };
                 feegrant: {
-                    v1beta1: _219.LCDQueryClient;
+                    v1beta1: _215.LCDQueryClient;
                 };
                 gov: {
-                    v1: _220.LCDQueryClient;
-                    v1beta1: _221.LCDQueryClient;
-                };
-                group: {
-                    v1: _222.LCDQueryClient;
+                    v1beta1: _216.LCDQueryClient;
                 };
                 mint: {
-                    v1beta1: _223.LCDQueryClient;
+                    v1beta1: _217.LCDQueryClient;
                 };
                 nft: {
-                    v1beta1: _224.LCDQueryClient;
+                    v1beta1: _218.LCDQueryClient;
                 };
                 params: {
-                    v1beta1: _225.LCDQueryClient;
+                    v1beta1: _219.LCDQueryClient;
                 };
                 slashing: {
-                    v1beta1: _226.LCDQueryClient;
+                    v1beta1: _220.LCDQueryClient;
                 };
                 staking: {
-                    v1beta1: _227.LCDQueryClient;
+                    v1beta1: _221.LCDQueryClient;
                 };
                 upgrade: {
-                    v1beta1: _228.LCDQueryClient;
+                    v1beta1: _222.LCDQueryClient;
                 };
             };
         }>;

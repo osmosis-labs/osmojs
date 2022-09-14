@@ -4,15 +4,15 @@ import * as _96 from "./wasm/v1/proposal";
 import * as _97 from "./wasm/v1/query";
 import * as _98 from "./wasm/v1/tx";
 import * as _99 from "./wasm/v1/types";
-import * as _263 from "./wasm/v1/query.lcd";
-import * as _264 from "./wasm/v1/query.rpc.query";
-import * as _265 from "./wasm/v1/tx.rpc.msg";
+import * as _253 from "./wasm/v1/query.lcd";
+import * as _254 from "./wasm/v1/query.rpc.query";
+import * as _255 from "./wasm/v1/tx.rpc.msg";
 export declare namespace cosmwasm {
     namespace wasm {
         const v1: {
-            MsgClientImpl: typeof _265.MsgClientImpl;
-            QueryClientImpl: typeof _264.QueryClientImpl;
-            LCDQueryClient: typeof _263.LCDQueryClient;
+            MsgClientImpl: typeof _255.MsgClientImpl;
+            QueryClientImpl: typeof _254.QueryClientImpl;
+            LCDQueryClient: typeof _253.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -1102,11 +1102,7 @@ export declare namespace cosmwasm {
                     v1beta1: import("../cosmos/feegrant/v1beta1/tx.rpc.msg").MsgClientImpl;
                 };
                 gov: {
-                    v1: import("../cosmos/gov/v1/tx.rpc.msg").MsgClientImpl;
                     v1beta1: import("../cosmos/gov/v1beta1/tx.rpc.msg").MsgClientImpl;
-                };
-                group: {
-                    v1: import("../cosmos/group/v1/tx.rpc.msg").MsgClientImpl;
                 };
                 nft: {
                     v1beta1: import("../cosmos/nft/v1beta1/tx.rpc.msg").MsgClientImpl;
@@ -1126,7 +1122,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _265.MsgClientImpl;
+                    v1: _255.MsgClientImpl;
                 };
             };
         }>;
@@ -1156,11 +1152,7 @@ export declare namespace cosmwasm {
                     v1beta1: import("../cosmos/feegrant/v1beta1/query.rpc.query").QueryClientImpl;
                 };
                 gov: {
-                    v1: import("../cosmos/gov/v1/query.rpc.query").QueryClientImpl;
                     v1beta1: import("../cosmos/gov/v1beta1/query.rpc.query").QueryClientImpl;
-                };
-                group: {
-                    v1: import("../cosmos/group/v1/query.rpc.query").QueryClientImpl;
                 };
                 mint: {
                     v1beta1: import("../cosmos/mint/v1beta1/query.rpc.query").QueryClientImpl;
@@ -1183,7 +1175,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _264.QueryClientImpl;
+                    v1: _254.QueryClientImpl;
                 };
             };
         }>;
@@ -1210,11 +1202,7 @@ export declare namespace cosmwasm {
                     v1beta1: import("../cosmos/feegrant/v1beta1/query.lcd").LCDQueryClient;
                 };
                 gov: {
-                    v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
                     v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
-                };
-                group: {
-                    v1: import("../cosmos/group/v1/query.lcd").LCDQueryClient;
                 };
                 mint: {
                     v1beta1: import("../cosmos/mint/v1beta1/query.lcd").LCDQueryClient;
@@ -1237,7 +1225,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _263.LCDQueryClient;
+                    v1: _253.LCDQueryClient;
                 };
             };
         }>;
