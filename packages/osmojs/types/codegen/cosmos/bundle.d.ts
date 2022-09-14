@@ -2271,7 +2271,7 @@ export declare namespace cosmos {
         namespace tendermint {
             const v1beta1: {
                 ServiceClientImpl: typeof _220.ServiceClientImpl;
-                LCDServiceClient: typeof _204.LCDServiceClient;
+                LCDQueryClient: typeof _204.LCDQueryClient;
                 GetValidatorSetByHeightRequest: {
                     encode(message: _26.GetValidatorSetByHeightRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _26.GetValidatorSetByHeightRequest;
@@ -7678,7 +7678,7 @@ export declare namespace cosmos {
         }
         const v1beta1: {
             ServiceClientImpl: typeof _230.ServiceClientImpl;
-            LCDServiceClient: typeof _214.LCDServiceClient;
+            LCDQueryClient: typeof _214.LCDQueryClient;
             Tx: {
                 encode(message: _79.Tx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _79.Tx;
@@ -9431,7 +9431,7 @@ export declare namespace cosmos {
                 };
                 base: {
                     tendermint: {
-                        v1beta1: any;
+                        v1beta1: _204.LCDQueryClient;
                     };
                 };
                 distribution: {
@@ -9462,7 +9462,7 @@ export declare namespace cosmos {
                     v1beta1: _213.LCDQueryClient;
                 };
                 tx: {
-                    v1beta1: any;
+                    v1beta1: _214.LCDQueryClient;
                 };
                 upgrade: {
                     v1beta1: _215.LCDQueryClient;

@@ -4673,7 +4673,7 @@ export declare namespace osmosis {
                 };
                 base: {
                     tendermint: {
-                        v1beta1: any;
+                        v1beta1: import("../cosmos/base/tendermint/v1beta1/query.lcd").LCDQueryClient;
                     };
                 };
                 distribution: {
@@ -4704,7 +4704,7 @@ export declare namespace osmosis {
                     v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
                 };
                 tx: {
-                    v1beta1: any;
+                    v1beta1: import("../cosmos/tx/v1beta1/service.lcd").LCDQueryClient;
                 };
                 upgrade: {
                     v1beta1: import("../cosmos/upgrade/v1beta1/query.lcd").LCDQueryClient;
