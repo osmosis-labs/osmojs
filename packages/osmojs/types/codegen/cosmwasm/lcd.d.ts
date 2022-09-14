@@ -11,6 +11,11 @@ export declare const createLCDClient: ({ restEndpoint }: {
         bank: {
             v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
         };
+        base: {
+            tendermint: {
+                v1beta1: any;
+            };
+        };
         distribution: {
             v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
         };
@@ -37,6 +42,9 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
         staking: {
             v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
+        };
+        tx: {
+            v1beta1: any;
         };
         upgrade: {
             v1beta1: import("../cosmos/upgrade/v1beta1/query.lcd").LCDQueryClient;

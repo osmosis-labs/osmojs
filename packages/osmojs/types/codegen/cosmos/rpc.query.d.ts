@@ -15,6 +15,11 @@ export declare const createRPCQueryClient: ({ rpc }: {
         bank: {
             v1beta1: import("./bank/v1beta1/query.rpc.query").QueryClientImpl;
         };
+        base: {
+            tendermint: {
+                v1beta1: any;
+            };
+        };
         distribution: {
             v1beta1: import("./distribution/v1beta1/query.rpc.query").QueryClientImpl;
         };
@@ -41,6 +46,9 @@ export declare const createRPCQueryClient: ({ rpc }: {
         };
         staking: {
             v1beta1: import("./staking/v1beta1/query.rpc.query").QueryClientImpl;
+        };
+        tx: {
+            v1beta1: any;
         };
         upgrade: {
             v1beta1: import("./upgrade/v1beta1/query.rpc.query").QueryClientImpl;
