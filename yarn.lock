@@ -3271,23 +3271,23 @@
   dependencies:
     "@octokit/openapi-types" "^12.7.0"
 
-"@osmonauts/ast@^0.18.1":
-  version "0.18.1"
-  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.18.1.tgz#e0d5408ce4259b2b061a5d2544e80f68d21a2293"
-  integrity sha512-m+Xw7PAWXdj9lQXVEdz39KlKtEXV9tdHxAbCQnoCcPtN7uxznjKvRShlrS3CqWVE7SDhli1fU61d4QhvbwrJ5g==
+"@osmonauts/ast@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.19.0.tgz#512d186e0d0221194ad069541d73cb16092aeebf"
+  integrity sha512-WzBMtX5vNgHy7zgIgDh2jKItttKjZp5t1KS0i37x2Jhh/V27lz7QjXvnJFTKg3PRuy166ft5h2Ipx2Jvz4P90A==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@babel/types" "7.18.13"
-    "@osmonauts/proto-parser" "^0.15.1"
-    "@osmonauts/types" "^0.11.3"
-    "@osmonauts/utils" "^0.3.13"
+    "@osmonauts/proto-parser" "^0.16.0"
+    "@osmonauts/types" "^0.12.0"
+    "@osmonauts/utils" "^0.4.0"
     case "1.6.3"
     dotty "0.1.2"
 
-"@osmonauts/helpers@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.npmjs.org/@osmonauts/helpers/-/helpers-0.4.3.tgz#f73cce20c2d05cc4ab056efdd1f16bb1e9eef76e"
-  integrity sha512-Dd6CXSKoAP4kLptE8Fx2vsEqc0Ai4kF07l4zPsfOYop9SH5ayOKkRTfAkrBjBr84FsMPyu5TEhJeqj1i//Q/jg==
+"@osmonauts/helpers@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/@osmonauts/helpers/-/helpers-0.5.0.tgz#afc4c3d43e991af5bbd48a5274ea6b501dc7ef48"
+  integrity sha512-GMr7DSLs8z97Ql4fO1Z/MP3tqIdmFLcaE4rJMzP7pbdLvf8f3IzRj6hYhfrAxrR/dYIJKabxhrJ9OuE36Jnrpg==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@cosmjs/amino" "0.28.13"
@@ -3298,30 +3298,30 @@
     long "^5.2.0"
     protobufjs "^6.11.3"
 
-"@osmonauts/lcd@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.npmjs.org/@osmonauts/lcd/-/lcd-0.4.1.tgz#78df03e256796c43de8291efb6aab4fab1c1b3df"
-  integrity sha512-N8QzBk2VopBlism9P1y/aoly2G32U/9NJuls/yL6eubVtAZ61OWb+wV7pzaT+zQmDkylehFPCmdGD4JiTJxQig==
+"@osmonauts/lcd@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/@osmonauts/lcd/-/lcd-0.5.0.tgz#a5a2fba15458ddd933c5cdfa9f34068c10216734"
+  integrity sha512-RDyAinstXDXbls4sd1ESInAWMtdbSeCh6IEcE1INczY+7dy8qr8e3BE4y8Tqu+EOgVux662y1zTj6ieBiEMu6Q==
   dependencies:
     "@babel/runtime" "^7.18.9"
     axios "0.27.2"
 
-"@osmonauts/proto-parser@^0.15.1":
-  version "0.15.1"
-  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.15.1.tgz#ee6bb37c7a4e7d10b2c6aae1e2a19ea688df62b6"
-  integrity sha512-nuiZiuzALpzLKVfPKWHP7VCyOVPPvWOmqn+kWZTvKwTce2e+KEK5wCyHDWjXH2R6rTV8gCvuL7t7jFD0697yvQ==
+"@osmonauts/proto-parser@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.16.0.tgz#f810d694aa5ee853b613d8d5f592944957fbd57c"
+  integrity sha512-y2JHbvzf5gYj7DDPwyHmeJiciAcHG3lBTFZphMMQuoGnceW3Ul8OUfrrxVvxiPF5M8O8FQVA1UqfPz88+gVIbA==
   dependencies:
     "@babel/runtime" "^7.18.9"
-    "@osmonauts/types" "^0.11.3"
+    "@osmonauts/types" "^0.12.0"
     "@pyramation/protobufjs" "6.11.3"
     dotty "0.1.2"
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@0.22.1":
-  version "0.22.1"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.22.1.tgz#f929261ff200c9f46f485691f30ca621123e2c2d"
-  integrity sha512-W7UtN11v40Ed0IkJ5rDGv308lV1q30Q7dNC8L0uCe7A/nl0h2DOYBBY9nVJiDvQFFrLEusWek7lcRe5pXbLSJg==
+"@osmonauts/telescope@0.23.0":
+  version "0.23.0"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.23.0.tgz#1c11352dc38beb6de5a5d34132a5f47ca80cae10"
+  integrity sha512-sJdpbt0ya0hklhfzKO/8kGLpTn7TlnyP93ixYPWmTonrL4qH/wraKLMayyLZzr7CUDussLxOVfYCVxtZy7ci+g==
   dependencies:
     "@babel/core" "7.18.13"
     "@babel/generator" "7.18.13"
@@ -3336,10 +3336,10 @@
     "@babel/traverse" "7.18.13"
     "@babel/types" "7.18.13"
     "@cosmwasm/ts-codegen" "0.16.1"
-    "@osmonauts/ast" "^0.18.1"
-    "@osmonauts/proto-parser" "^0.15.1"
-    "@osmonauts/types" "^0.11.3"
-    "@osmonauts/utils" "^0.3.13"
+    "@osmonauts/ast" "^0.19.0"
+    "@osmonauts/proto-parser" "^0.16.0"
+    "@osmonauts/types" "^0.12.0"
+    "@osmonauts/utils" "^0.4.0"
     "@types/parse-package-name" "0.1.0"
     case "1.6.3"
     dargs "7.0.0"
@@ -3356,19 +3356,19 @@
     rimraf "3.0.2"
     shelljs "0.8.5"
 
-"@osmonauts/types@^0.11.3":
-  version "0.11.3"
-  resolved "https://registry.npmjs.org/@osmonauts/types/-/types-0.11.3.tgz#b8fefa697b38169b1f504226d6268bf19f4ba8dc"
-  integrity sha512-+Uxx1SWaUc3xFXYbInx7HuycE13lNrgt6BRbuRia+yyzagNX5ELiauUiiIE4E+tRKRxtspGFiBEYnx0Yj7yWCA==
+"@osmonauts/types@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.npmjs.org/@osmonauts/types/-/types-0.12.0.tgz#8fb3b805bdb33a01b0eecfafe143f3695603f6d5"
+  integrity sha512-+WpXarwzrTtgX/25HvDavCeCMdqoThFIR4hDMJ8iwat8tpvaCdZD/qAipfQDL4hlOI/FsWUfEum2YUyVO81s+A==
   dependencies:
     "@babel/runtime" "^7.18.9"
-    "@osmonauts/utils" "^0.3.13"
+    "@osmonauts/utils" "^0.4.0"
     case "1.6.3"
 
-"@osmonauts/utils@^0.3.13":
-  version "0.3.13"
-  resolved "https://registry.npmjs.org/@osmonauts/utils/-/utils-0.3.13.tgz#ec520833aefcd3eb7487f2b045772bb12ed8939b"
-  integrity sha512-mVQH7yRY8gidRC/OBzMvYuaeHd7mYHq4CMyVmcvqTFZZi7ZWlcKplR81r+GsDTInW1EN/acuBKmpOw8gG2PeKQ==
+"@osmonauts/utils@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.npmjs.org/@osmonauts/utils/-/utils-0.4.0.tgz#817c17a91803b2e74446e9356c0c2ad024d26145"
+  integrity sha512-+4ThyiTxyiQiC+lK3aji1zXYnSmHy3DxvMYInEPFwHRWbsvixbq99TGP8jxhhBovtGsnSzPCE/296iuVGEA4MQ==
   dependencies:
     "@babel/runtime" "^7.18.9"
 
