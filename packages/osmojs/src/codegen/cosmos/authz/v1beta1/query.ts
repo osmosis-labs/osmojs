@@ -5,11 +5,11 @@ import { isSet, DeepPartial } from "@osmonauts/helpers";
 
 /** QueryGrantsRequest is the request type for the Query/Grants RPC method. */
 export interface QueryGrantsRequest {
-  granter: string;
-  grantee: string;
+  granter?: string;
+  grantee?: string;
 
   /** Optional, msg_type_url, when set, will query only grants matching given msg type. */
-  msg_type_url: string;
+  msg_type_url?: string;
 
   /** pagination defines an pagination for the request. */
   pagination?: PageRequest;

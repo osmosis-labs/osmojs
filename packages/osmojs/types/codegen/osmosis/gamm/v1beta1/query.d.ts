@@ -54,8 +54,8 @@ export interface QueryTotalSharesResponse {
  */
 export interface QuerySpotPriceRequest {
     poolId: Long;
-    base_asset_denom: string;
-    quote_asset_denom: string;
+    base_asset_denom?: string;
+    quote_asset_denom?: string;
 }
 /**
  * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
@@ -67,20 +67,20 @@ export interface QuerySpotPriceResponse {
 }
 /** =============================== EstimateSwapExactAmountIn */
 export interface QuerySwapExactAmountInRequest {
-    sender: string;
+    sender?: string;
     poolId: Long;
-    tokenIn: string;
-    routes: SwapAmountInRoute[];
+    tokenIn?: string;
+    routes?: SwapAmountInRoute[];
 }
 export interface QuerySwapExactAmountInResponse {
     tokenOutAmount: string;
 }
 /** =============================== EstimateSwapExactAmountOut */
 export interface QuerySwapExactAmountOutRequest {
-    sender: string;
+    sender?: string;
     poolId: Long;
-    routes: SwapAmountOutRoute[];
-    tokenOut: string;
+    routes?: SwapAmountOutRoute[];
+    tokenOut?: string;
 }
 export interface QuerySwapExactAmountOutResponse {
     tokenInAmount: string;

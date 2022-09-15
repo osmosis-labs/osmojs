@@ -11,7 +11,7 @@ export interface QueryFeeTokensResponse {
  * price for the specified tx fee denom
  */
 export interface QueryDenomSpotPriceRequest {
-  denom: string;
+  denom?: string;
 }
 
 /**

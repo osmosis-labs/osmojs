@@ -11,7 +11,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface AssetTypeRequest {
-  denom: string;
+  denom?: string;
 }
 export interface AssetTypeResponse {
   asset_type: SuperfluidAssetType;
@@ -21,7 +21,7 @@ export interface AllAssetsResponse {
   assets: SuperfluidAsset[];
 }
 export interface AssetMultiplierRequest {
-  denom: string;
+  denom?: string;
 }
 export interface AssetMultiplierResponse {
   osmo_equivalent_multiplier: OsmoEquivalentMultiplierRecord;
@@ -50,9 +50,9 @@ export interface TotalSuperfluidDelegationsResponse {
   totalDelegations: string;
 }
 export interface SuperfluidDelegationAmountRequest {
-  delegator_address: string;
-  validator_address: string;
-  denom: string;
+  delegator_address?: string;
+  validator_address?: string;
+  denom?: string;
 }
 export interface SuperfluidDelegationAmountResponse {
   amount: Coin[];
@@ -67,7 +67,7 @@ export interface SuperfluidDelegationsByDelegatorResponse {
 }
 export interface SuperfluidUndelegationsByDelegatorRequest {
   delegator_address: string;
-  denom: string;
+  denom?: string;
 }
 export interface SuperfluidUndelegationsByDelegatorResponse {
   superfluid_delegation_records: SuperfluidDelegationRecord[];
@@ -75,15 +75,15 @@ export interface SuperfluidUndelegationsByDelegatorResponse {
   synthetic_locks: SyntheticLock[];
 }
 export interface SuperfluidDelegationsByValidatorDenomRequest {
-  validator_address: string;
-  denom: string;
+  validator_address?: string;
+  denom?: string;
 }
 export interface SuperfluidDelegationsByValidatorDenomResponse {
   superfluid_delegation_records: SuperfluidDelegationRecord[];
 }
 export interface EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
-  validator_address: string;
-  denom: string;
+  validator_address?: string;
+  denom?: string;
 }
 export interface EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
   total_delegated_coins: Coin[];

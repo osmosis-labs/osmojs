@@ -6,7 +6,7 @@ export interface QueryEpochsInfoResponse {
   epochs: EpochInfo[];
 }
 export interface QueryCurrentEpochRequest {
-  identifier: string;
+  identifier?: string;
 }
 export interface QueryCurrentEpochResponse {
   current_epoch: Long;

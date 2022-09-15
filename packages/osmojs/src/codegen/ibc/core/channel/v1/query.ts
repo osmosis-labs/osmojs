@@ -275,7 +275,7 @@ export interface QueryPacketAcknowledgementsRequest {
   pagination?: PageRequest;
 
   /** list of packet sequences */
-  packet_commitment_sequences: Long[];
+  packet_commitment_sequences?: Long[];
 }
 
 /**

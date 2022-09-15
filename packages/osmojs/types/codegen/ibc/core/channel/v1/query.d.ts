@@ -220,7 +220,7 @@ export interface QueryPacketAcknowledgementsRequest {
     /** pagination request */
     pagination?: PageRequest;
     /** list of packet sequences */
-    packet_commitment_sequences: Long[];
+    packet_commitment_sequences?: Long[];
 }
 /**
  * QueryPacketAcknowledgemetsResponse is the request type for the

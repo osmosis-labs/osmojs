@@ -127,11 +127,11 @@ export function broadcastModeToJSON(object: BroadcastMode): string {
  */
 export interface GetTxsEventRequest {
   /** events is the list of transaction event type. */
-  events: string[];
+  events?: string[];
 
   /** pagination defines a pagination for the request. */
   pagination?: PageRequest;
-  order_by: OrderBy;
+  order_by?: OrderBy;
 }
 
 /**

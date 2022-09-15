@@ -5,7 +5,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 /** QueryValidatorsRequest is request type for Query/Validators RPC method. */
 export interface QueryValidatorsRequest {
     /** status enables to query for validators matching a given status. */
-    status: string;
+    status?: string;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequest;
 }
@@ -141,9 +141,9 @@ export interface QueryRedelegationsRequest {
     /** delegator_addr defines the delegator address to query for. */
     delegator_addr: string;
     /** src_validator_addr defines the validator address to redelegate from. */
-    src_validator_addr: string;
+    src_validator_addr?: string;
     /** dst_validator_addr defines the validator address to redelegate to. */
-    dst_validator_addr: string;
+    dst_validator_addr?: string;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequest;
 }
