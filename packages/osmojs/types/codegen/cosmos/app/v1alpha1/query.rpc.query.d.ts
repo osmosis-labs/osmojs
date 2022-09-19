@@ -8,7 +8,7 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    config(request: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;
+    config(request?: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     config(request: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;

@@ -66,7 +66,7 @@ export class QueryClientImpl implements Query {
     this.estimateSuperfluidDelegatedAmountByValidatorDenom = this.estimateSuperfluidDelegatedAmountByValidatorDenom.bind(this);
   }
 
-  params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
+  params(request: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
@@ -78,7 +78,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => AssetTypeResponse.decode(new _m0.Reader(data)));
   }
 
-  allAssets(request: AllAssetsRequest): Promise<AllAssetsResponseSDKType> {
+  allAssets(request: AllAssetsRequest = {}): Promise<AllAssetsResponseSDKType> {
     const data = AllAssetsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "AllAssets", data);
     return promise.then(data => AllAssetsResponse.decode(new _m0.Reader(data)));
@@ -90,7 +90,9 @@ export class QueryClientImpl implements Query {
     return promise.then(data => AssetMultiplierResponse.decode(new _m0.Reader(data)));
   }
 
-  allIntermediaryAccounts(request: AllIntermediaryAccountsRequest): Promise<AllIntermediaryAccountsResponseSDKType> {
+  allIntermediaryAccounts(request: AllIntermediaryAccountsRequest = {
+    pagination: undefined
+  }): Promise<AllIntermediaryAccountsResponseSDKType> {
     const data = AllIntermediaryAccountsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "AllIntermediaryAccounts", data);
     return promise.then(data => AllIntermediaryAccountsResponse.decode(new _m0.Reader(data)));
@@ -102,7 +104,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => ConnectedIntermediaryAccountResponse.decode(new _m0.Reader(data)));
   }
 
-  totalSuperfluidDelegations(request: TotalSuperfluidDelegationsRequest): Promise<TotalSuperfluidDelegationsResponseSDKType> {
+  totalSuperfluidDelegations(request: TotalSuperfluidDelegationsRequest = {}): Promise<TotalSuperfluidDelegationsResponseSDKType> {
     const data = TotalSuperfluidDelegationsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "TotalSuperfluidDelegations", data);
     return promise.then(data => TotalSuperfluidDelegationsResponse.decode(new _m0.Reader(data)));

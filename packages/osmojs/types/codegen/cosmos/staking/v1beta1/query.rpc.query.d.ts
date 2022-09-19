@@ -33,8 +33,8 @@ export declare class QueryClientImpl implements Query {
     delegatorValidators(request: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponseSDKType>;
     delegatorValidator(request: QueryDelegatorValidatorRequest): Promise<QueryDelegatorValidatorResponseSDKType>;
     historicalInfo(request: QueryHistoricalInfoRequest): Promise<QueryHistoricalInfoResponseSDKType>;
-    pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType>;
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    pool(request?: QueryPoolRequest): Promise<QueryPoolResponseSDKType>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     validators(request: QueryValidatorsRequest): Promise<QueryValidatorsResponseSDKType>;

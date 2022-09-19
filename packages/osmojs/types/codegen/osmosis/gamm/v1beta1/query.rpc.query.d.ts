@@ -17,9 +17,9 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    pools(request: QueryPoolsRequest): Promise<QueryPoolsResponseSDKType>;
-    numPools(request: QueryNumPoolsRequest): Promise<QueryNumPoolsResponseSDKType>;
-    totalLiquidity(request: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponseSDKType>;
+    pools(request?: QueryPoolsRequest): Promise<QueryPoolsResponseSDKType>;
+    numPools(request?: QueryNumPoolsRequest): Promise<QueryNumPoolsResponseSDKType>;
+    totalLiquidity(request?: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponseSDKType>;
     pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType>;
     poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponseSDKType>;
     totalPoolLiquidity(request: QueryTotalPoolLiquidityRequest): Promise<QueryTotalPoolLiquidityResponseSDKType>;

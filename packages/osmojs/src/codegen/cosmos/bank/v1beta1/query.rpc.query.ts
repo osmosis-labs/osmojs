@@ -70,7 +70,9 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QuerySpendableBalancesResponse.decode(new _m0.Reader(data)));
   }
 
-  totalSupply(request: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponseSDKType> {
+  totalSupply(request: QueryTotalSupplyRequest = {
+    pagination: undefined
+  }): Promise<QueryTotalSupplyResponseSDKType> {
     const data = QueryTotalSupplyRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.bank.v1beta1.Query", "TotalSupply", data);
     return promise.then(data => QueryTotalSupplyResponse.decode(new _m0.Reader(data)));
@@ -82,7 +84,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QuerySupplyOfResponse.decode(new _m0.Reader(data)));
   }
 
-  params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
+  params(request: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.bank.v1beta1.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
@@ -94,7 +96,9 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryDenomMetadataResponse.decode(new _m0.Reader(data)));
   }
 
-  denomsMetadata(request: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponseSDKType> {
+  denomsMetadata(request: QueryDenomsMetadataRequest = {
+    pagination: undefined
+  }): Promise<QueryDenomsMetadataResponseSDKType> {
     const data = QueryDenomsMetadataRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.bank.v1beta1.Query", "DenomsMetadata", data);
     return promise.then(data => QueryDenomsMetadataResponse.decode(new _m0.Reader(data)));

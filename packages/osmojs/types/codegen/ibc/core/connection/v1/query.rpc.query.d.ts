@@ -13,7 +13,7 @@ export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
     connection(request: QueryConnectionRequest): Promise<QueryConnectionResponseSDKType>;
-    connections(request: QueryConnectionsRequest): Promise<QueryConnectionsResponseSDKType>;
+    connections(request?: QueryConnectionsRequest): Promise<QueryConnectionsResponseSDKType>;
     clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponseSDKType>;
     connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponseSDKType>;
     connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType>;

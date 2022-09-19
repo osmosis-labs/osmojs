@@ -23,8 +23,8 @@ export declare class QueryClientImpl implements Query {
     rawContractState(request: QueryRawContractStateRequest): Promise<QueryRawContractStateResponseSDKType>;
     smartContractState(request: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponseSDKType>;
     code(request: QueryCodeRequest): Promise<QueryCodeResponseSDKType>;
-    codes(request: QueryCodesRequest): Promise<QueryCodesResponseSDKType>;
-    pinnedCodes(request: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponseSDKType>;
+    codes(request?: QueryCodesRequest): Promise<QueryCodesResponseSDKType>;
+    pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponseSDKType>;

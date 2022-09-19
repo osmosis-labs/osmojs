@@ -31,7 +31,7 @@ export class QueryClientImpl implements Query {
     this.baseDenom = this.baseDenom.bind(this);
   }
 
-  feeTokens(request: QueryFeeTokensRequest): Promise<QueryFeeTokensResponseSDKType> {
+  feeTokens(request: QueryFeeTokensRequest = {}): Promise<QueryFeeTokensResponseSDKType> {
     const data = QueryFeeTokensRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.txfees.v1beta1.Query", "FeeTokens", data);
     return promise.then(data => QueryFeeTokensResponse.decode(new _m0.Reader(data)));
@@ -49,7 +49,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryDenomPoolIdResponse.decode(new _m0.Reader(data)));
   }
 
-  baseDenom(request: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType> {
+  baseDenom(request: QueryBaseDenomRequest = {}): Promise<QueryBaseDenomResponseSDKType> {
     const data = QueryBaseDenomRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.txfees.v1beta1.Query", "BaseDenom", data);
     return promise.then(data => QueryBaseDenomResponse.decode(new _m0.Reader(data)));

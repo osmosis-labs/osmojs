@@ -9,7 +9,7 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    epochInfos(request: QueryEpochsInfoRequest): Promise<QueryEpochsInfoResponseSDKType>;
+    epochInfos(request?: QueryEpochsInfoRequest): Promise<QueryEpochsInfoResponseSDKType>;
     currentEpoch(request: QueryCurrentEpochRequest): Promise<QueryCurrentEpochResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
