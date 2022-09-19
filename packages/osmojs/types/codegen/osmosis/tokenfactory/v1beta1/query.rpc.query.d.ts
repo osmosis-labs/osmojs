@@ -1,4 +1,5 @@
 import { Rpc } from "@osmonauts/helpers";
+import { QueryClient } from "@cosmjs/stargate";
 import { QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponseSDKType, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponseSDKType } from "./query";
 /** Query defines the RPC service */
 export interface Query {
@@ -13,3 +14,8 @@ export declare class QueryClientImpl implements Query {
     denomAuthorityMetadata(request: QueryDenomAuthorityMetadataRequest): Promise<QueryDenomAuthorityMetadataResponseSDKType>;
     denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponseSDKType>;
 }
+export declare const createRpcQueryExtension: (base: QueryClient) => {
+    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    denomAuthorityMetadata(request: QueryDenomAuthorityMetadataRequest): Promise<QueryDenomAuthorityMetadataResponseSDKType>;
+    denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponseSDKType>;
+};

@@ -31,13 +31,9 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
 };
 export declare const Entry: {
     encode(message: Entry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Entry;
     fromPartial(object: DeepPartial<Entry>): Entry;
-    fromSDK(object: EntrySDKType): Entry;
-    toSDK(message: Entry): EntrySDKType;
 };

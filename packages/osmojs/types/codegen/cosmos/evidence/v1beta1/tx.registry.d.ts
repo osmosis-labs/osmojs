@@ -15,18 +15,6 @@ export declare const MessageComposer: {
             value: MsgSubmitEvidence;
         };
     };
-    toJSON: {
-        submitEvidence(value: MsgSubmitEvidence): {
-            typeUrl: string;
-            value: any;
-        };
-    };
-    fromJSON: {
-        submitEvidence(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-    };
     fromPartial: {
         submitEvidence(value: MsgSubmitEvidence): {
             typeUrl: string;

@@ -55,20 +55,14 @@ export declare const BaseAccount: {
     encode(message: BaseAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BaseAccount;
     fromPartial(object: DeepPartial<BaseAccount>): BaseAccount;
-    fromSDK(object: BaseAccountSDKType): BaseAccount;
-    toSDK(message: BaseAccount): BaseAccountSDKType;
 };
 export declare const ModuleAccount: {
     encode(message: ModuleAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleAccount;
     fromPartial(object: DeepPartial<ModuleAccount>): ModuleAccount;
-    fromSDK(object: ModuleAccountSDKType): ModuleAccount;
-    toSDK(message: ModuleAccount): ModuleAccountSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: DeepPartial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
 };

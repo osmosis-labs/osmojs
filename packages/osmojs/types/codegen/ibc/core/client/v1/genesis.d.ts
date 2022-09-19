@@ -69,20 +69,14 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
 };
 export declare const GenesisMetadata: {
     encode(message: GenesisMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisMetadata;
     fromPartial(object: DeepPartial<GenesisMetadata>): GenesisMetadata;
-    fromSDK(object: GenesisMetadataSDKType): GenesisMetadata;
-    toSDK(message: GenesisMetadata): GenesisMetadataSDKType;
 };
 export declare const IdentifiedGenesisMetadata: {
     encode(message: IdentifiedGenesisMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedGenesisMetadata;
     fromPartial(object: DeepPartial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata;
-    fromSDK(object: IdentifiedGenesisMetadataSDKType): IdentifiedGenesisMetadata;
-    toSDK(message: IdentifiedGenesisMetadata): IdentifiedGenesisMetadataSDKType;
 };

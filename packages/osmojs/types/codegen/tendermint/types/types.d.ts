@@ -263,90 +263,64 @@ export declare const PartSetHeader: {
     encode(message: PartSetHeader, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PartSetHeader;
     fromPartial(object: DeepPartial<PartSetHeader>): PartSetHeader;
-    fromSDK(object: PartSetHeaderSDKType): PartSetHeader;
-    toSDK(message: PartSetHeader): PartSetHeaderSDKType;
 };
 export declare const Part: {
     encode(message: Part, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Part;
     fromPartial(object: DeepPartial<Part>): Part;
-    fromSDK(object: PartSDKType): Part;
-    toSDK(message: Part): PartSDKType;
 };
 export declare const BlockID: {
     encode(message: BlockID, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockID;
     fromPartial(object: DeepPartial<BlockID>): BlockID;
-    fromSDK(object: BlockIDSDKType): BlockID;
-    toSDK(message: BlockID): BlockIDSDKType;
 };
 export declare const Header: {
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
     fromPartial(object: DeepPartial<Header>): Header;
-    fromSDK(object: HeaderSDKType): Header;
-    toSDK(message: Header): HeaderSDKType;
 };
 export declare const Data: {
     encode(message: Data, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Data;
     fromPartial(object: DeepPartial<Data>): Data;
-    fromSDK(object: DataSDKType): Data;
-    toSDK(message: Data): DataSDKType;
 };
 export declare const Vote: {
     encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
     fromPartial(object: DeepPartial<Vote>): Vote;
-    fromSDK(object: VoteSDKType): Vote;
-    toSDK(message: Vote): VoteSDKType;
 };
 export declare const Commit: {
     encode(message: Commit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Commit;
     fromPartial(object: DeepPartial<Commit>): Commit;
-    fromSDK(object: CommitSDKType): Commit;
-    toSDK(message: Commit): CommitSDKType;
 };
 export declare const CommitSig: {
     encode(message: CommitSig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitSig;
     fromPartial(object: DeepPartial<CommitSig>): CommitSig;
-    fromSDK(object: CommitSigSDKType): CommitSig;
-    toSDK(message: CommitSig): CommitSigSDKType;
 };
 export declare const Proposal: {
     encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
     fromPartial(object: DeepPartial<Proposal>): Proposal;
-    fromSDK(object: ProposalSDKType): Proposal;
-    toSDK(message: Proposal): ProposalSDKType;
 };
 export declare const SignedHeader: {
     encode(message: SignedHeader, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignedHeader;
     fromPartial(object: DeepPartial<SignedHeader>): SignedHeader;
-    fromSDK(object: SignedHeaderSDKType): SignedHeader;
-    toSDK(message: SignedHeader): SignedHeaderSDKType;
 };
 export declare const LightBlock: {
     encode(message: LightBlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LightBlock;
     fromPartial(object: DeepPartial<LightBlock>): LightBlock;
-    fromSDK(object: LightBlockSDKType): LightBlock;
-    toSDK(message: LightBlock): LightBlockSDKType;
 };
 export declare const BlockMeta: {
     encode(message: BlockMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockMeta;
     fromPartial(object: DeepPartial<BlockMeta>): BlockMeta;
-    fromSDK(object: BlockMetaSDKType): BlockMeta;
-    toSDK(message: BlockMeta): BlockMetaSDKType;
 };
 export declare const TxProof: {
     encode(message: TxProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxProof;
     fromPartial(object: DeepPartial<TxProof>): TxProof;
-    fromSDK(object: TxProofSDKType): TxProof;
-    toSDK(message: TxProof): TxProofSDKType;
 };

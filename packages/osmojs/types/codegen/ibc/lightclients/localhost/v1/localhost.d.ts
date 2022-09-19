@@ -25,6 +25,4 @@ export declare const ClientState: {
     encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientState;
     fromPartial(object: DeepPartial<ClientState>): ClientState;
-    fromSDK(object: ClientStateSDKType): ClientState;
-    toSDK(message: ClientState): ClientStateSDKType;
 };

@@ -39,42 +39,6 @@ export declare const MessageComposer: {
             value: MsgChangeAdmin;
         };
     };
-    toJSON: {
-        createDenom(value: MsgCreateDenom): {
-            typeUrl: string;
-            value: any;
-        };
-        mint(value: MsgMint): {
-            typeUrl: string;
-            value: any;
-        };
-        burn(value: MsgBurn): {
-            typeUrl: string;
-            value: any;
-        };
-        changeAdmin(value: MsgChangeAdmin): {
-            typeUrl: string;
-            value: any;
-        };
-    };
-    fromJSON: {
-        createDenom(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        mint(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        burn(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        changeAdmin(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-    };
     fromPartial: {
         createDenom(value: MsgCreateDenom): {
             typeUrl: string;

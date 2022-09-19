@@ -186,27 +186,19 @@ export declare const SmoothWeightChangeParams: {
     encode(message: SmoothWeightChangeParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SmoothWeightChangeParams;
     fromPartial(object: DeepPartial<SmoothWeightChangeParams>): SmoothWeightChangeParams;
-    fromSDK(object: SmoothWeightChangeParamsSDKType): SmoothWeightChangeParams;
-    toSDK(message: SmoothWeightChangeParams): SmoothWeightChangeParamsSDKType;
 };
 export declare const PoolParams: {
     encode(message: PoolParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolParams;
     fromPartial(object: DeepPartial<PoolParams>): PoolParams;
-    fromSDK(object: PoolParamsSDKType): PoolParams;
-    toSDK(message: PoolParams): PoolParamsSDKType;
 };
 export declare const PoolAsset: {
     encode(message: PoolAsset, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolAsset;
     fromPartial(object: DeepPartial<PoolAsset>): PoolAsset;
-    fromSDK(object: PoolAssetSDKType): PoolAsset;
-    toSDK(message: PoolAsset): PoolAssetSDKType;
 };
 export declare const Pool: {
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
     fromPartial(object: DeepPartial<Pool>): Pool;
-    fromSDK(object: PoolSDKType): Pool;
-    toSDK(message: Pool): PoolSDKType;
 };

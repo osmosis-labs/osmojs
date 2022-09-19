@@ -34,13 +34,9 @@ export declare const ParameterChangeProposal: {
     encode(message: ParameterChangeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParameterChangeProposal;
     fromPartial(object: DeepPartial<ParameterChangeProposal>): ParameterChangeProposal;
-    fromSDK(object: ParameterChangeProposalSDKType): ParameterChangeProposal;
-    toSDK(message: ParameterChangeProposal): ParameterChangeProposalSDKType;
 };
 export declare const ParamChange: {
     encode(message: ParamChange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamChange;
     fromPartial(object: DeepPartial<ParamChange>): ParamChange;
-    fromSDK(object: ParamChangeSDKType): ParamChange;
-    toSDK(message: ParamChange): ParamChangeSDKType;
 };

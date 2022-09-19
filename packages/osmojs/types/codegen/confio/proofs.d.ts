@@ -432,90 +432,64 @@ export declare const ExistenceProof: {
     encode(message: ExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ExistenceProof;
     fromPartial(object: DeepPartial<ExistenceProof>): ExistenceProof;
-    fromSDK(object: ExistenceProofSDKType): ExistenceProof;
-    toSDK(message: ExistenceProof): ExistenceProofSDKType;
 };
 export declare const NonExistenceProof: {
     encode(message: NonExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NonExistenceProof;
     fromPartial(object: DeepPartial<NonExistenceProof>): NonExistenceProof;
-    fromSDK(object: NonExistenceProofSDKType): NonExistenceProof;
-    toSDK(message: NonExistenceProof): NonExistenceProofSDKType;
 };
 export declare const CommitmentProof: {
     encode(message: CommitmentProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitmentProof;
     fromPartial(object: DeepPartial<CommitmentProof>): CommitmentProof;
-    fromSDK(object: CommitmentProofSDKType): CommitmentProof;
-    toSDK(message: CommitmentProof): CommitmentProofSDKType;
 };
 export declare const LeafOp: {
     encode(message: LeafOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LeafOp;
     fromPartial(object: DeepPartial<LeafOp>): LeafOp;
-    fromSDK(object: LeafOpSDKType): LeafOp;
-    toSDK(message: LeafOp): LeafOpSDKType;
 };
 export declare const InnerOp: {
     encode(message: InnerOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InnerOp;
     fromPartial(object: DeepPartial<InnerOp>): InnerOp;
-    fromSDK(object: InnerOpSDKType): InnerOp;
-    toSDK(message: InnerOp): InnerOpSDKType;
 };
 export declare const ProofSpec: {
     encode(message: ProofSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofSpec;
     fromPartial(object: DeepPartial<ProofSpec>): ProofSpec;
-    fromSDK(object: ProofSpecSDKType): ProofSpec;
-    toSDK(message: ProofSpec): ProofSpecSDKType;
 };
 export declare const InnerSpec: {
     encode(message: InnerSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InnerSpec;
     fromPartial(object: DeepPartial<InnerSpec>): InnerSpec;
-    fromSDK(object: InnerSpecSDKType): InnerSpec;
-    toSDK(message: InnerSpec): InnerSpecSDKType;
 };
 export declare const BatchProof: {
     encode(message: BatchProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BatchProof;
     fromPartial(object: DeepPartial<BatchProof>): BatchProof;
-    fromSDK(object: BatchProofSDKType): BatchProof;
-    toSDK(message: BatchProof): BatchProofSDKType;
 };
 export declare const BatchEntry: {
     encode(message: BatchEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BatchEntry;
     fromPartial(object: DeepPartial<BatchEntry>): BatchEntry;
-    fromSDK(object: BatchEntrySDKType): BatchEntry;
-    toSDK(message: BatchEntry): BatchEntrySDKType;
 };
 export declare const CompressedBatchProof: {
     encode(message: CompressedBatchProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedBatchProof;
     fromPartial(object: DeepPartial<CompressedBatchProof>): CompressedBatchProof;
-    fromSDK(object: CompressedBatchProofSDKType): CompressedBatchProof;
-    toSDK(message: CompressedBatchProof): CompressedBatchProofSDKType;
 };
 export declare const CompressedBatchEntry: {
     encode(message: CompressedBatchEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedBatchEntry;
     fromPartial(object: DeepPartial<CompressedBatchEntry>): CompressedBatchEntry;
-    fromSDK(object: CompressedBatchEntrySDKType): CompressedBatchEntry;
-    toSDK(message: CompressedBatchEntry): CompressedBatchEntrySDKType;
 };
 export declare const CompressedExistenceProof: {
     encode(message: CompressedExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedExistenceProof;
     fromPartial(object: DeepPartial<CompressedExistenceProof>): CompressedExistenceProof;
-    fromSDK(object: CompressedExistenceProofSDKType): CompressedExistenceProof;
-    toSDK(message: CompressedExistenceProof): CompressedExistenceProofSDKType;
 };
 export declare const CompressedNonExistenceProof: {
     encode(message: CompressedNonExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedNonExistenceProof;
     fromPartial(object: DeepPartial<CompressedNonExistenceProof>): CompressedNonExistenceProof;
-    fromSDK(object: CompressedNonExistenceProofSDKType): CompressedNonExistenceProof;
-    toSDK(message: CompressedNonExistenceProof): CompressedNonExistenceProofSDKType;
 };

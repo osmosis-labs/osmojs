@@ -103,69 +103,49 @@ export declare const MsgSuperfluidDelegate: {
     encode(message: MsgSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegate;
     fromPartial(object: DeepPartial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate;
-    fromSDK(object: MsgSuperfluidDelegateSDKType): MsgSuperfluidDelegate;
-    toSDK(message: MsgSuperfluidDelegate): MsgSuperfluidDelegateSDKType;
 };
 export declare const MsgSuperfluidDelegateResponse: {
     encode(_: MsgSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegateResponseSDKType;
     fromPartial(_: DeepPartial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse;
-    fromSDK(_: MsgSuperfluidDelegateResponseSDKType): MsgSuperfluidDelegateResponse;
-    toSDK(_: MsgSuperfluidDelegateResponse): MsgSuperfluidDelegateResponseSDKType;
 };
 export declare const MsgSuperfluidUndelegate: {
     encode(message: MsgSuperfluidUndelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegate;
     fromPartial(object: DeepPartial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate;
-    fromSDK(object: MsgSuperfluidUndelegateSDKType): MsgSuperfluidUndelegate;
-    toSDK(message: MsgSuperfluidUndelegate): MsgSuperfluidUndelegateSDKType;
 };
 export declare const MsgSuperfluidUndelegateResponse: {
     encode(_: MsgSuperfluidUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateResponseSDKType;
     fromPartial(_: DeepPartial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse;
-    fromSDK(_: MsgSuperfluidUndelegateResponseSDKType): MsgSuperfluidUndelegateResponse;
-    toSDK(_: MsgSuperfluidUndelegateResponse): MsgSuperfluidUndelegateResponseSDKType;
 };
 export declare const MsgSuperfluidUnbondLock: {
     encode(message: MsgSuperfluidUnbondLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLock;
     fromPartial(object: DeepPartial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock;
-    fromSDK(object: MsgSuperfluidUnbondLockSDKType): MsgSuperfluidUnbondLock;
-    toSDK(message: MsgSuperfluidUnbondLock): MsgSuperfluidUnbondLockSDKType;
 };
 export declare const MsgSuperfluidUnbondLockResponse: {
     encode(_: MsgSuperfluidUnbondLockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponseSDKType;
     fromPartial(_: DeepPartial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse;
-    fromSDK(_: MsgSuperfluidUnbondLockResponseSDKType): MsgSuperfluidUnbondLockResponse;
-    toSDK(_: MsgSuperfluidUnbondLockResponse): MsgSuperfluidUnbondLockResponseSDKType;
 };
 export declare const MsgLockAndSuperfluidDelegate: {
     encode(message: MsgLockAndSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegate;
     fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegate>): MsgLockAndSuperfluidDelegate;
-    fromSDK(object: MsgLockAndSuperfluidDelegateSDKType): MsgLockAndSuperfluidDelegate;
-    toSDK(message: MsgLockAndSuperfluidDelegate): MsgLockAndSuperfluidDelegateSDKType;
 };
 export declare const MsgLockAndSuperfluidDelegateResponse: {
     encode(message: MsgLockAndSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegateResponseSDKType;
     fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse;
-    fromSDK(object: MsgLockAndSuperfluidDelegateResponseSDKType): MsgLockAndSuperfluidDelegateResponse;
-    toSDK(message: MsgLockAndSuperfluidDelegateResponse): MsgLockAndSuperfluidDelegateResponseSDKType;
 };
 export declare const MsgUnPoolWhitelistedPool: {
     encode(message: MsgUnPoolWhitelistedPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPool;
     fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool;
-    fromSDK(object: MsgUnPoolWhitelistedPoolSDKType): MsgUnPoolWhitelistedPool;
-    toSDK(message: MsgUnPoolWhitelistedPool): MsgUnPoolWhitelistedPoolSDKType;
 };
 export declare const MsgUnPoolWhitelistedPoolResponse: {
     encode(message: MsgUnPoolWhitelistedPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponseSDKType;
     fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse;
-    fromSDK(object: MsgUnPoolWhitelistedPoolResponseSDKType): MsgUnPoolWhitelistedPoolResponse;
-    toSDK(message: MsgUnPoolWhitelistedPoolResponse): MsgUnPoolWhitelistedPoolResponseSDKType;
 };

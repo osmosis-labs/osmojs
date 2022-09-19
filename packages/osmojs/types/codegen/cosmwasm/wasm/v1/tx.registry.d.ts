@@ -55,58 +55,6 @@ export declare const MessageComposer: {
             value: MsgClearAdmin;
         };
     };
-    toJSON: {
-        storeCode(value: MsgStoreCode): {
-            typeUrl: string;
-            value: any;
-        };
-        instantiateContract(value: MsgInstantiateContract): {
-            typeUrl: string;
-            value: any;
-        };
-        executeContract(value: MsgExecuteContract): {
-            typeUrl: string;
-            value: any;
-        };
-        migrateContract(value: MsgMigrateContract): {
-            typeUrl: string;
-            value: any;
-        };
-        updateAdmin(value: MsgUpdateAdmin): {
-            typeUrl: string;
-            value: any;
-        };
-        clearAdmin(value: MsgClearAdmin): {
-            typeUrl: string;
-            value: any;
-        };
-    };
-    fromJSON: {
-        storeCode(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        instantiateContract(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        executeContract(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        migrateContract(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        updateAdmin(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        clearAdmin(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-    };
     fromPartial: {
         storeCode(value: MsgStoreCode): {
             typeUrl: string;

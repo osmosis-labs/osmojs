@@ -22,6 +22,4 @@ export declare const DenomAuthorityMetadata: {
     encode(message: DenomAuthorityMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomAuthorityMetadata;
     fromPartial(object: DeepPartial<DenomAuthorityMetadata>): DenomAuthorityMetadata;
-    fromSDK(object: DenomAuthorityMetadataSDKType): DenomAuthorityMetadata;
-    toSDK(message: DenomAuthorityMetadata): DenomAuthorityMetadataSDKType;
 };

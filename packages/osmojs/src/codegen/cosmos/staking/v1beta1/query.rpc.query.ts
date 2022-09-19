@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryValidatorsRequest, QueryValidatorsResponse, QueryValidatorsResponseSDKType, QueryValidatorRequest, QueryValidatorResponse, QueryValidatorResponseSDKType, QueryValidatorDelegationsRequest, QueryValidatorDelegationsResponse, QueryValidatorDelegationsResponseSDKType, QueryValidatorUnbondingDelegationsRequest, QueryValidatorUnbondingDelegationsResponse, QueryValidatorUnbondingDelegationsResponseSDKType, QueryDelegationRequest, QueryDelegationResponse, QueryDelegationResponseSDKType, QueryUnbondingDelegationRequest, QueryUnbondingDelegationResponse, QueryUnbondingDelegationResponseSDKType, QueryDelegatorDelegationsRequest, QueryDelegatorDelegationsResponse, QueryDelegatorDelegationsResponseSDKType, QueryDelegatorUnbondingDelegationsRequest, QueryDelegatorUnbondingDelegationsResponse, QueryDelegatorUnbondingDelegationsResponseSDKType, QueryRedelegationsRequest, QueryRedelegationsResponse, QueryRedelegationsResponseSDKType, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorValidatorsResponseSDKType, QueryDelegatorValidatorRequest, QueryDelegatorValidatorResponse, QueryDelegatorValidatorResponseSDKType, QueryHistoricalInfoRequest, QueryHistoricalInfoResponse, QueryHistoricalInfoResponseSDKType, QueryPoolRequest, QueryPoolResponse, QueryPoolResponseSDKType, QueryParamsRequest, QueryParamsResponse, QueryParamsResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -157,3 +158,65 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    validators(request: QueryValidatorsRequest): Promise<QueryValidatorsResponseSDKType> {
+      return queryService.validators(request);
+    },
+
+    validator(request: QueryValidatorRequest): Promise<QueryValidatorResponseSDKType> {
+      return queryService.validator(request);
+    },
+
+    validatorDelegations(request: QueryValidatorDelegationsRequest): Promise<QueryValidatorDelegationsResponseSDKType> {
+      return queryService.validatorDelegations(request);
+    },
+
+    validatorUnbondingDelegations(request: QueryValidatorUnbondingDelegationsRequest): Promise<QueryValidatorUnbondingDelegationsResponseSDKType> {
+      return queryService.validatorUnbondingDelegations(request);
+    },
+
+    delegation(request: QueryDelegationRequest): Promise<QueryDelegationResponseSDKType> {
+      return queryService.delegation(request);
+    },
+
+    unbondingDelegation(request: QueryUnbondingDelegationRequest): Promise<QueryUnbondingDelegationResponseSDKType> {
+      return queryService.unbondingDelegation(request);
+    },
+
+    delegatorDelegations(request: QueryDelegatorDelegationsRequest): Promise<QueryDelegatorDelegationsResponseSDKType> {
+      return queryService.delegatorDelegations(request);
+    },
+
+    delegatorUnbondingDelegations(request: QueryDelegatorUnbondingDelegationsRequest): Promise<QueryDelegatorUnbondingDelegationsResponseSDKType> {
+      return queryService.delegatorUnbondingDelegations(request);
+    },
+
+    redelegations(request: QueryRedelegationsRequest): Promise<QueryRedelegationsResponseSDKType> {
+      return queryService.redelegations(request);
+    },
+
+    delegatorValidators(request: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponseSDKType> {
+      return queryService.delegatorValidators(request);
+    },
+
+    delegatorValidator(request: QueryDelegatorValidatorRequest): Promise<QueryDelegatorValidatorResponseSDKType> {
+      return queryService.delegatorValidator(request);
+    },
+
+    historicalInfo(request: QueryHistoricalInfoRequest): Promise<QueryHistoricalInfoResponseSDKType> {
+      return queryService.historicalInfo(request);
+    },
+
+    pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType> {
+      return queryService.pool(request);
+    },
+
+    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
+      return queryService.params(request);
+    }
+
+  };
+};

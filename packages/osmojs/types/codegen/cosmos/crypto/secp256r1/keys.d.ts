@@ -30,13 +30,9 @@ export declare const PubKey: {
     encode(message: PubKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PubKey;
     fromPartial(object: DeepPartial<PubKey>): PubKey;
-    fromSDK(object: PubKeySDKType): PubKey;
-    toSDK(message: PubKey): PubKeySDKType;
 };
 export declare const PrivKey: {
     encode(message: PrivKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PrivKey;
     fromPartial(object: DeepPartial<PrivKey>): PrivKey;
-    fromSDK(object: PrivKeySDKType): PrivKey;
-    toSDK(message: PrivKey): PrivKeySDKType;
 };

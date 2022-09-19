@@ -66,13 +66,9 @@ export declare const MsgTransfer: {
     encode(message: MsgTransfer, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransfer;
     fromPartial(object: DeepPartial<MsgTransfer>): MsgTransfer;
-    fromSDK(object: MsgTransferSDKType): MsgTransfer;
-    toSDK(message: MsgTransfer): MsgTransferSDKType;
 };
 export declare const MsgTransferResponse: {
     encode(_: MsgTransferResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponseSDKType;
     fromPartial(_: DeepPartial<MsgTransferResponse>): MsgTransferResponse;
-    fromSDK(_: MsgTransferResponseSDKType): MsgTransferResponse;
-    toSDK(_: MsgTransferResponse): MsgTransferResponseSDKType;
 };

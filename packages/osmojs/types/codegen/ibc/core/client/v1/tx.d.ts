@@ -149,55 +149,39 @@ export declare const MsgCreateClient: {
     encode(message: MsgCreateClient, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateClient;
     fromPartial(object: DeepPartial<MsgCreateClient>): MsgCreateClient;
-    fromSDK(object: MsgCreateClientSDKType): MsgCreateClient;
-    toSDK(message: MsgCreateClient): MsgCreateClientSDKType;
 };
 export declare const MsgCreateClientResponse: {
     encode(_: MsgCreateClientResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateClientResponseSDKType;
     fromPartial(_: DeepPartial<MsgCreateClientResponse>): MsgCreateClientResponse;
-    fromSDK(_: MsgCreateClientResponseSDKType): MsgCreateClientResponse;
-    toSDK(_: MsgCreateClientResponse): MsgCreateClientResponseSDKType;
 };
 export declare const MsgUpdateClient: {
     encode(message: MsgUpdateClient, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateClient;
     fromPartial(object: DeepPartial<MsgUpdateClient>): MsgUpdateClient;
-    fromSDK(object: MsgUpdateClientSDKType): MsgUpdateClient;
-    toSDK(message: MsgUpdateClient): MsgUpdateClientSDKType;
 };
 export declare const MsgUpdateClientResponse: {
     encode(_: MsgUpdateClientResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateClientResponseSDKType;
     fromPartial(_: DeepPartial<MsgUpdateClientResponse>): MsgUpdateClientResponse;
-    fromSDK(_: MsgUpdateClientResponseSDKType): MsgUpdateClientResponse;
-    toSDK(_: MsgUpdateClientResponse): MsgUpdateClientResponseSDKType;
 };
 export declare const MsgUpgradeClient: {
     encode(message: MsgUpgradeClient, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpgradeClient;
     fromPartial(object: DeepPartial<MsgUpgradeClient>): MsgUpgradeClient;
-    fromSDK(object: MsgUpgradeClientSDKType): MsgUpgradeClient;
-    toSDK(message: MsgUpgradeClient): MsgUpgradeClientSDKType;
 };
 export declare const MsgUpgradeClientResponse: {
     encode(_: MsgUpgradeClientResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpgradeClientResponseSDKType;
     fromPartial(_: DeepPartial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse;
-    fromSDK(_: MsgUpgradeClientResponseSDKType): MsgUpgradeClientResponse;
-    toSDK(_: MsgUpgradeClientResponse): MsgUpgradeClientResponseSDKType;
 };
 export declare const MsgSubmitMisbehaviour: {
     encode(message: MsgSubmitMisbehaviour, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitMisbehaviour;
     fromPartial(object: DeepPartial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour;
-    fromSDK(object: MsgSubmitMisbehaviourSDKType): MsgSubmitMisbehaviour;
-    toSDK(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourSDKType;
 };
 export declare const MsgSubmitMisbehaviourResponse: {
     encode(_: MsgSubmitMisbehaviourResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponseSDKType;
     fromPartial(_: DeepPartial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse;
-    fromSDK(_: MsgSubmitMisbehaviourResponseSDKType): MsgSubmitMisbehaviourResponse;
-    toSDK(_: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseSDKType;
 };

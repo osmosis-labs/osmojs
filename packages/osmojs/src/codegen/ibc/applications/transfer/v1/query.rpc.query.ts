@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryDenomTraceRequest, QueryDenomTraceResponse, QueryDenomTraceResponseSDKType, QueryDenomTracesRequest, QueryDenomTracesResponse, QueryDenomTracesResponseSDKType, QueryParamsRequest, QueryParamsResponse, QueryParamsResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -43,3 +44,21 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    denomTrace(request: QueryDenomTraceRequest): Promise<QueryDenomTraceResponseSDKType> {
+      return queryService.denomTrace(request);
+    },
+
+    denomTraces(request: QueryDenomTracesRequest): Promise<QueryDenomTracesResponseSDKType> {
+      return queryService.denomTraces(request);
+    },
+
+    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
+      return queryService.params(request);
+    }
+
+  };
+};

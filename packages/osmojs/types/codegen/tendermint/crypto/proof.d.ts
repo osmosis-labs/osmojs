@@ -66,34 +66,24 @@ export declare const Proof: {
     encode(message: Proof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proof;
     fromPartial(object: DeepPartial<Proof>): Proof;
-    fromSDK(object: ProofSDKType): Proof;
-    toSDK(message: Proof): ProofSDKType;
 };
 export declare const ValueOp: {
     encode(message: ValueOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValueOp;
     fromPartial(object: DeepPartial<ValueOp>): ValueOp;
-    fromSDK(object: ValueOpSDKType): ValueOp;
-    toSDK(message: ValueOp): ValueOpSDKType;
 };
 export declare const DominoOp: {
     encode(message: DominoOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DominoOp;
     fromPartial(object: DeepPartial<DominoOp>): DominoOp;
-    fromSDK(object: DominoOpSDKType): DominoOp;
-    toSDK(message: DominoOp): DominoOpSDKType;
 };
 export declare const ProofOp: {
     encode(message: ProofOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOp;
     fromPartial(object: DeepPartial<ProofOp>): ProofOp;
-    fromSDK(object: ProofOpSDKType): ProofOp;
-    toSDK(message: ProofOp): ProofOpSDKType;
 };
 export declare const ProofOps: {
     encode(message: ProofOps, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOps;
     fromPartial(object: DeepPartial<ProofOps>): ProofOps;
-    fromSDK(object: ProofOpsSDKType): ProofOps;
-    toSDK(message: ProofOps): ProofOpsSDKType;
 };

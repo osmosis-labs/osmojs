@@ -67,13 +67,9 @@ export declare const Gauge: {
     encode(message: Gauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Gauge;
     fromPartial(object: DeepPartial<Gauge>): Gauge;
-    fromSDK(object: GaugeSDKType): Gauge;
-    toSDK(message: Gauge): GaugeSDKType;
 };
 export declare const LockableDurationsInfo: {
     encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
     fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo;
-    fromSDK(object: LockableDurationsInfoSDKType): LockableDurationsInfo;
-    toSDK(message: LockableDurationsInfo): LockableDurationsInfoSDKType;
 };

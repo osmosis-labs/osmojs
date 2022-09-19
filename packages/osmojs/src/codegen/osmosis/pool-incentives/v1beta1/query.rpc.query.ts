@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryGaugeIdsRequest, QueryGaugeIdsResponse, QueryGaugeIdsResponseSDKType, QueryDistrInfoRequest, QueryDistrInfoResponse, QueryDistrInfoResponseSDKType, QueryParamsRequest, QueryParamsResponse, QueryParamsResponseSDKType, QueryLockableDurationsRequest, QueryLockableDurationsResponse, QueryLockableDurationsResponseSDKType, QueryIncentivizedPoolsRequest, QueryIncentivizedPoolsResponse, QueryIncentivizedPoolsResponseSDKType, QueryExternalIncentiveGaugesRequest, QueryExternalIncentiveGaugesResponse, QueryExternalIncentiveGaugesResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -73,3 +74,33 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    gaugeIds(request: QueryGaugeIdsRequest): Promise<QueryGaugeIdsResponseSDKType> {
+      return queryService.gaugeIds(request);
+    },
+
+    distrInfo(request: QueryDistrInfoRequest): Promise<QueryDistrInfoResponseSDKType> {
+      return queryService.distrInfo(request);
+    },
+
+    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
+      return queryService.params(request);
+    },
+
+    lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType> {
+      return queryService.lockableDurations(request);
+    },
+
+    incentivizedPools(request: QueryIncentivizedPoolsRequest): Promise<QueryIncentivizedPoolsResponseSDKType> {
+      return queryService.incentivizedPools(request);
+    },
+
+    externalIncentiveGauges(request: QueryExternalIncentiveGaugesRequest): Promise<QueryExternalIncentiveGaugesResponseSDKType> {
+      return queryService.externalIncentiveGauges(request);
+    }
+
+  };
+};

@@ -187,55 +187,39 @@ export declare const MsgConnectionOpenInit: {
     encode(message: MsgConnectionOpenInit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInit;
     fromPartial(object: DeepPartial<MsgConnectionOpenInit>): MsgConnectionOpenInit;
-    fromSDK(object: MsgConnectionOpenInitSDKType): MsgConnectionOpenInit;
-    toSDK(message: MsgConnectionOpenInit): MsgConnectionOpenInitSDKType;
 };
 export declare const MsgConnectionOpenInitResponse: {
     encode(_: MsgConnectionOpenInitResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInitResponseSDKType;
     fromPartial(_: DeepPartial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse;
-    fromSDK(_: MsgConnectionOpenInitResponseSDKType): MsgConnectionOpenInitResponse;
-    toSDK(_: MsgConnectionOpenInitResponse): MsgConnectionOpenInitResponseSDKType;
 };
 export declare const MsgConnectionOpenTry: {
     encode(message: MsgConnectionOpenTry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTry;
     fromPartial(object: DeepPartial<MsgConnectionOpenTry>): MsgConnectionOpenTry;
-    fromSDK(object: MsgConnectionOpenTrySDKType): MsgConnectionOpenTry;
-    toSDK(message: MsgConnectionOpenTry): MsgConnectionOpenTrySDKType;
 };
 export declare const MsgConnectionOpenTryResponse: {
     encode(_: MsgConnectionOpenTryResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTryResponseSDKType;
     fromPartial(_: DeepPartial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse;
-    fromSDK(_: MsgConnectionOpenTryResponseSDKType): MsgConnectionOpenTryResponse;
-    toSDK(_: MsgConnectionOpenTryResponse): MsgConnectionOpenTryResponseSDKType;
 };
 export declare const MsgConnectionOpenAck: {
     encode(message: MsgConnectionOpenAck, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAck;
     fromPartial(object: DeepPartial<MsgConnectionOpenAck>): MsgConnectionOpenAck;
-    fromSDK(object: MsgConnectionOpenAckSDKType): MsgConnectionOpenAck;
-    toSDK(message: MsgConnectionOpenAck): MsgConnectionOpenAckSDKType;
 };
 export declare const MsgConnectionOpenAckResponse: {
     encode(_: MsgConnectionOpenAckResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAckResponseSDKType;
     fromPartial(_: DeepPartial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse;
-    fromSDK(_: MsgConnectionOpenAckResponseSDKType): MsgConnectionOpenAckResponse;
-    toSDK(_: MsgConnectionOpenAckResponse): MsgConnectionOpenAckResponseSDKType;
 };
 export declare const MsgConnectionOpenConfirm: {
     encode(message: MsgConnectionOpenConfirm, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirm;
     fromPartial(object: DeepPartial<MsgConnectionOpenConfirm>): MsgConnectionOpenConfirm;
-    fromSDK(object: MsgConnectionOpenConfirmSDKType): MsgConnectionOpenConfirm;
-    toSDK(message: MsgConnectionOpenConfirm): MsgConnectionOpenConfirmSDKType;
 };
 export declare const MsgConnectionOpenConfirmResponse: {
     encode(_: MsgConnectionOpenConfirmResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponseSDKType;
     fromPartial(_: DeepPartial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse;
-    fromSDK(_: MsgConnectionOpenConfirmResponseSDKType): MsgConnectionOpenConfirmResponse;
-    toSDK(_: MsgConnectionOpenConfirmResponse): MsgConnectionOpenConfirmResponseSDKType;
 };

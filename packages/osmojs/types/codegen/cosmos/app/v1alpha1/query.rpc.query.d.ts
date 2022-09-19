@@ -1,4 +1,5 @@
 import { Rpc } from "@osmonauts/helpers";
+import { QueryClient } from "@cosmjs/stargate";
 import { QueryConfigRequest, QueryConfigResponseSDKType } from "./query";
 /** Query defines the RPC service */
 export interface Query {
@@ -9,3 +10,6 @@ export declare class QueryClientImpl implements Query {
     constructor(rpc: Rpc);
     config(request: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;
 }
+export declare const createRpcQueryExtension: (base: QueryClient) => {
+    config(request: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;
+};

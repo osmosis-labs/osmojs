@@ -90,41 +90,29 @@ export declare const MsgGrant: {
     encode(message: MsgGrant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrant;
     fromPartial(object: DeepPartial<MsgGrant>): MsgGrant;
-    fromSDK(object: MsgGrantSDKType): MsgGrant;
-    toSDK(message: MsgGrant): MsgGrantSDKType;
 };
 export declare const MsgExecResponse: {
     encode(message: MsgExecResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecResponseSDKType;
     fromPartial(object: DeepPartial<MsgExecResponse>): MsgExecResponse;
-    fromSDK(object: MsgExecResponseSDKType): MsgExecResponse;
-    toSDK(message: MsgExecResponse): MsgExecResponseSDKType;
 };
 export declare const MsgExec: {
     encode(message: MsgExec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExec;
     fromPartial(object: DeepPartial<MsgExec>): MsgExec;
-    fromSDK(object: MsgExecSDKType): MsgExec;
-    toSDK(message: MsgExec): MsgExecSDKType;
 };
 export declare const MsgGrantResponse: {
     encode(_: MsgGrantResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantResponseSDKType;
     fromPartial(_: DeepPartial<MsgGrantResponse>): MsgGrantResponse;
-    fromSDK(_: MsgGrantResponseSDKType): MsgGrantResponse;
-    toSDK(_: MsgGrantResponse): MsgGrantResponseSDKType;
 };
 export declare const MsgRevoke: {
     encode(message: MsgRevoke, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevoke;
     fromPartial(object: DeepPartial<MsgRevoke>): MsgRevoke;
-    fromSDK(object: MsgRevokeSDKType): MsgRevoke;
-    toSDK(message: MsgRevoke): MsgRevokeSDKType;
 };
 export declare const MsgRevokeResponse: {
     encode(_: MsgRevokeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeResponseSDKType;
     fromPartial(_: DeepPartial<MsgRevokeResponse>): MsgRevokeResponse;
-    fromSDK(_: MsgRevokeResponseSDKType): MsgRevokeResponse;
-    toSDK(_: MsgRevokeResponse): MsgRevokeResponseSDKType;
 };

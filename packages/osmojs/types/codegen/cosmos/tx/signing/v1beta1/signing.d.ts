@@ -180,34 +180,24 @@ export declare const SignatureDescriptors: {
     encode(message: SignatureDescriptors, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptors;
     fromPartial(object: DeepPartial<SignatureDescriptors>): SignatureDescriptors;
-    fromSDK(object: SignatureDescriptorsSDKType): SignatureDescriptors;
-    toSDK(message: SignatureDescriptors): SignatureDescriptorsSDKType;
 };
 export declare const SignatureDescriptor: {
     encode(message: SignatureDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor;
     fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor;
-    fromSDK(object: SignatureDescriptorSDKType): SignatureDescriptor;
-    toSDK(message: SignatureDescriptor): SignatureDescriptorSDKType;
 };
 export declare const SignatureDescriptor_Data: {
     encode(message: SignatureDescriptor_Data, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data;
     fromPartial(object: DeepPartial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
-    fromSDK(object: SignatureDescriptor_DataSDKType): SignatureDescriptor_Data;
-    toSDK(message: SignatureDescriptor_Data): SignatureDescriptor_DataSDKType;
 };
 export declare const SignatureDescriptor_Data_Single: {
     encode(message: SignatureDescriptor_Data_Single, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Single;
     fromPartial(object: DeepPartial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
-    fromSDK(object: SignatureDescriptor_Data_SingleSDKType): SignatureDescriptor_Data_Single;
-    toSDK(message: SignatureDescriptor_Data_Single): SignatureDescriptor_Data_SingleSDKType;
 };
 export declare const SignatureDescriptor_Data_Multi: {
     encode(message: SignatureDescriptor_Data_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi;
     fromPartial(object: DeepPartial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;
-    fromSDK(object: SignatureDescriptor_Data_MultiSDKType): SignatureDescriptor_Data_Multi;
-    toSDK(message: SignatureDescriptor_Data_Multi): SignatureDescriptor_Data_MultiSDKType;
 };

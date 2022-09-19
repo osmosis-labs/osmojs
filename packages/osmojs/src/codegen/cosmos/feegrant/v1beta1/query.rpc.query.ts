@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryAllowanceRequest, QueryAllowanceResponse, QueryAllowanceResponseSDKType, QueryAllowancesRequest, QueryAllowancesResponse, QueryAllowancesResponseSDKType, QueryAllowancesByGranterRequest, QueryAllowancesByGranterResponse, QueryAllowancesByGranterResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -44,3 +45,21 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    allowance(request: QueryAllowanceRequest): Promise<QueryAllowanceResponseSDKType> {
+      return queryService.allowance(request);
+    },
+
+    allowances(request: QueryAllowancesRequest): Promise<QueryAllowancesResponseSDKType> {
+      return queryService.allowances(request);
+    },
+
+    allowancesByGranter(request: QueryAllowancesByGranterRequest): Promise<QueryAllowancesByGranterResponseSDKType> {
+      return queryService.allowancesByGranter(request);
+    }
+
+  };
+};

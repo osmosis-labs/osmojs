@@ -60,27 +60,19 @@ export declare const Coin: {
     encode(message: Coin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Coin;
     fromPartial(object: DeepPartial<Coin>): Coin;
-    fromSDK(object: CoinSDKType): Coin;
-    toSDK(message: Coin): CoinSDKType;
 };
 export declare const DecCoin: {
     encode(message: DecCoin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DecCoin;
     fromPartial(object: DeepPartial<DecCoin>): DecCoin;
-    fromSDK(object: DecCoinSDKType): DecCoin;
-    toSDK(message: DecCoin): DecCoinSDKType;
 };
 export declare const IntProto: {
     encode(message: IntProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IntProto;
     fromPartial(object: DeepPartial<IntProto>): IntProto;
-    fromSDK(object: IntProtoSDKType): IntProto;
-    toSDK(message: IntProto): IntProtoSDKType;
 };
 export declare const DecProto: {
     encode(message: DecProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DecProto;
     fromPartial(object: DeepPartial<DecProto>): DecProto;
-    fromSDK(object: DecProtoSDKType): DecProto;
-    toSDK(message: DecProto): DecProtoSDKType;
 };

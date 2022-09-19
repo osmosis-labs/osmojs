@@ -40,13 +40,9 @@ export declare const EventGrant: {
     encode(message: EventGrant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventGrant;
     fromPartial(object: DeepPartial<EventGrant>): EventGrant;
-    fromSDK(object: EventGrantSDKType): EventGrant;
-    toSDK(message: EventGrant): EventGrantSDKType;
 };
 export declare const EventRevoke: {
     encode(message: EventRevoke, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventRevoke;
     fromPartial(object: DeepPartial<EventRevoke>): EventRevoke;
-    fromSDK(object: EventRevokeSDKType): EventRevoke;
-    toSDK(message: EventRevoke): EventRevokeSDKType;
 };

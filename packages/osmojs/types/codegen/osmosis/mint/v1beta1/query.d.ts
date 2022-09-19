@@ -49,27 +49,19 @@ export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };
 export declare const QueryEpochProvisionsRequest: {
     encode(_: QueryEpochProvisionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsRequest;
     fromPartial(_: DeepPartial<QueryEpochProvisionsRequest>): QueryEpochProvisionsRequest;
-    fromSDK(_: QueryEpochProvisionsRequestSDKType): QueryEpochProvisionsRequest;
-    toSDK(_: QueryEpochProvisionsRequest): QueryEpochProvisionsRequestSDKType;
 };
 export declare const QueryEpochProvisionsResponse: {
     encode(message: QueryEpochProvisionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsResponseSDKType;
     fromPartial(object: DeepPartial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse;
-    fromSDK(object: QueryEpochProvisionsResponseSDKType): QueryEpochProvisionsResponse;
-    toSDK(message: QueryEpochProvisionsResponse): QueryEpochProvisionsResponseSDKType;
 };

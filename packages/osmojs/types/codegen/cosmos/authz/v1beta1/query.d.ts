@@ -90,41 +90,29 @@ export declare const QueryGrantsRequest: {
     encode(message: QueryGrantsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsRequest;
     fromPartial(object: DeepPartial<QueryGrantsRequest>): QueryGrantsRequest;
-    fromSDK(object: QueryGrantsRequestSDKType): QueryGrantsRequest;
-    toSDK(message: QueryGrantsRequest): QueryGrantsRequestSDKType;
 };
 export declare const QueryGrantsResponse: {
     encode(message: QueryGrantsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsResponseSDKType;
     fromPartial(object: DeepPartial<QueryGrantsResponse>): QueryGrantsResponse;
-    fromSDK(object: QueryGrantsResponseSDKType): QueryGrantsResponse;
-    toSDK(message: QueryGrantsResponse): QueryGrantsResponseSDKType;
 };
 export declare const QueryGranterGrantsRequest: {
     encode(message: QueryGranterGrantsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsRequest;
     fromPartial(object: DeepPartial<QueryGranterGrantsRequest>): QueryGranterGrantsRequest;
-    fromSDK(object: QueryGranterGrantsRequestSDKType): QueryGranterGrantsRequest;
-    toSDK(message: QueryGranterGrantsRequest): QueryGranterGrantsRequestSDKType;
 };
 export declare const QueryGranterGrantsResponse: {
     encode(message: QueryGranterGrantsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsResponseSDKType;
     fromPartial(object: DeepPartial<QueryGranterGrantsResponse>): QueryGranterGrantsResponse;
-    fromSDK(object: QueryGranterGrantsResponseSDKType): QueryGranterGrantsResponse;
-    toSDK(message: QueryGranterGrantsResponse): QueryGranterGrantsResponseSDKType;
 };
 export declare const QueryGranteeGrantsRequest: {
     encode(message: QueryGranteeGrantsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsRequest;
     fromPartial(object: DeepPartial<QueryGranteeGrantsRequest>): QueryGranteeGrantsRequest;
-    fromSDK(object: QueryGranteeGrantsRequestSDKType): QueryGranteeGrantsRequest;
-    toSDK(message: QueryGranteeGrantsRequest): QueryGranteeGrantsRequestSDKType;
 };
 export declare const QueryGranteeGrantsResponse: {
     encode(message: QueryGranteeGrantsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsResponseSDKType;
     fromPartial(object: DeepPartial<QueryGranteeGrantsResponse>): QueryGranteeGrantsResponse;
-    fromSDK(object: QueryGranteeGrantsResponseSDKType): QueryGranteeGrantsResponse;
-    toSDK(message: QueryGranteeGrantsResponse): QueryGranteeGrantsResponseSDKType;
 };

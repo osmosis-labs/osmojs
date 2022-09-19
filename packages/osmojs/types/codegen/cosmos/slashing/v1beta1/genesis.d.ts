@@ -83,27 +83,19 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
 };
 export declare const SigningInfo: {
     encode(message: SigningInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SigningInfo;
     fromPartial(object: DeepPartial<SigningInfo>): SigningInfo;
-    fromSDK(object: SigningInfoSDKType): SigningInfo;
-    toSDK(message: SigningInfo): SigningInfoSDKType;
 };
 export declare const ValidatorMissedBlocks: {
     encode(message: ValidatorMissedBlocks, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorMissedBlocks;
     fromPartial(object: DeepPartial<ValidatorMissedBlocks>): ValidatorMissedBlocks;
-    fromSDK(object: ValidatorMissedBlocksSDKType): ValidatorMissedBlocks;
-    toSDK(message: ValidatorMissedBlocks): ValidatorMissedBlocksSDKType;
 };
 export declare const MissedBlock: {
     encode(message: MissedBlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MissedBlock;
     fromPartial(object: DeepPartial<MissedBlock>): MissedBlock;
-    fromSDK(object: MissedBlockSDKType): MissedBlock;
-    toSDK(message: MissedBlock): MissedBlockSDKType;
 };

@@ -209,55 +209,39 @@ export declare const AccessTypeParam: {
     encode(message: AccessTypeParam, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccessTypeParam;
     fromPartial(object: DeepPartial<AccessTypeParam>): AccessTypeParam;
-    fromSDK(object: AccessTypeParamSDKType): AccessTypeParam;
-    toSDK(message: AccessTypeParam): AccessTypeParamSDKType;
 };
 export declare const AccessConfig: {
     encode(message: AccessConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccessConfig;
     fromPartial(object: DeepPartial<AccessConfig>): AccessConfig;
-    fromSDK(object: AccessConfigSDKType): AccessConfig;
-    toSDK(message: AccessConfig): AccessConfigSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: DeepPartial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
 };
 export declare const CodeInfo: {
     encode(message: CodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CodeInfo;
     fromPartial(object: DeepPartial<CodeInfo>): CodeInfo;
-    fromSDK(object: CodeInfoSDKType): CodeInfo;
-    toSDK(message: CodeInfo): CodeInfoSDKType;
 };
 export declare const ContractInfo: {
     encode(message: ContractInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ContractInfo;
     fromPartial(object: DeepPartial<ContractInfo>): ContractInfo;
-    fromSDK(object: ContractInfoSDKType): ContractInfo;
-    toSDK(message: ContractInfo): ContractInfoSDKType;
 };
 export declare const ContractCodeHistoryEntry: {
     encode(message: ContractCodeHistoryEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ContractCodeHistoryEntry;
     fromPartial(object: DeepPartial<ContractCodeHistoryEntry>): ContractCodeHistoryEntry;
-    fromSDK(object: ContractCodeHistoryEntrySDKType): ContractCodeHistoryEntry;
-    toSDK(message: ContractCodeHistoryEntry): ContractCodeHistoryEntrySDKType;
 };
 export declare const AbsoluteTxPosition: {
     encode(message: AbsoluteTxPosition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AbsoluteTxPosition;
     fromPartial(object: DeepPartial<AbsoluteTxPosition>): AbsoluteTxPosition;
-    fromSDK(object: AbsoluteTxPositionSDKType): AbsoluteTxPosition;
-    toSDK(message: AbsoluteTxPosition): AbsoluteTxPositionSDKType;
 };
 export declare const Model: {
     encode(message: Model, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Model;
     fromPartial(object: DeepPartial<Model>): Model;
-    fromSDK(object: ModelSDKType): Model;
-    toSDK(message: Model): ModelSDKType;
 };

@@ -285,41 +285,29 @@ export declare const Channel: {
     encode(message: Channel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Channel;
     fromPartial(object: DeepPartial<Channel>): Channel;
-    fromSDK(object: ChannelSDKType): Channel;
-    toSDK(message: Channel): ChannelSDKType;
 };
 export declare const IdentifiedChannel: {
     encode(message: IdentifiedChannel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedChannel;
     fromPartial(object: DeepPartial<IdentifiedChannel>): IdentifiedChannel;
-    fromSDK(object: IdentifiedChannelSDKType): IdentifiedChannel;
-    toSDK(message: IdentifiedChannel): IdentifiedChannelSDKType;
 };
 export declare const Counterparty: {
     encode(message: Counterparty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Counterparty;
     fromPartial(object: DeepPartial<Counterparty>): Counterparty;
-    fromSDK(object: CounterpartySDKType): Counterparty;
-    toSDK(message: Counterparty): CounterpartySDKType;
 };
 export declare const Packet: {
     encode(message: Packet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Packet;
     fromPartial(object: DeepPartial<Packet>): Packet;
-    fromSDK(object: PacketSDKType): Packet;
-    toSDK(message: Packet): PacketSDKType;
 };
 export declare const PacketState: {
     encode(message: PacketState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketState;
     fromPartial(object: DeepPartial<PacketState>): PacketState;
-    fromSDK(object: PacketStateSDKType): PacketState;
-    toSDK(message: PacketState): PacketStateSDKType;
 };
 export declare const Acknowledgement: {
     encode(message: Acknowledgement, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Acknowledgement;
     fromPartial(object: DeepPartial<Acknowledgement>): Acknowledgement;
-    fromSDK(object: AcknowledgementSDKType): Acknowledgement;
-    toSDK(message: Acknowledgement): AcknowledgementSDKType;
 };

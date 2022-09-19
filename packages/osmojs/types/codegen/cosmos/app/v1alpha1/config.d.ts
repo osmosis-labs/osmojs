@@ -73,13 +73,9 @@ export declare const Config: {
     encode(message: Config, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Config;
     fromPartial(object: DeepPartial<Config>): Config;
-    fromSDK(object: ConfigSDKType): Config;
-    toSDK(message: Config): ConfigSDKType;
 };
 export declare const ModuleConfig: {
     encode(message: ModuleConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleConfig;
     fromPartial(object: DeepPartial<ModuleConfig>): ModuleConfig;
-    fromSDK(object: ModuleConfigSDKType): ModuleConfig;
-    toSDK(message: ModuleConfig): ModuleConfigSDKType;
 };

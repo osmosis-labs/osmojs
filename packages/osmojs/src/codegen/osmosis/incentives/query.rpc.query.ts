@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleToDistributeCoinsResponseSDKType, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, ModuleDistributedCoinsResponseSDKType, GaugeByIDRequest, GaugeByIDResponse, GaugeByIDResponseSDKType, GaugesRequest, GaugesResponse, GaugesResponseSDKType, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesResponseSDKType, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, ActiveGaugesPerDenomResponseSDKType, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesResponseSDKType, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, UpcomingGaugesPerDenomResponseSDKType, RewardsEstRequest, RewardsEstResponse, RewardsEstResponseSDKType, QueryLockableDurationsRequest, QueryLockableDurationsResponse, QueryLockableDurationsResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -115,3 +116,49 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    moduleToDistributeCoins(request: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponseSDKType> {
+      return queryService.moduleToDistributeCoins(request);
+    },
+
+    moduleDistributedCoins(request: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponseSDKType> {
+      return queryService.moduleDistributedCoins(request);
+    },
+
+    gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponseSDKType> {
+      return queryService.gaugeByID(request);
+    },
+
+    gauges(request: GaugesRequest): Promise<GaugesResponseSDKType> {
+      return queryService.gauges(request);
+    },
+
+    activeGauges(request: ActiveGaugesRequest): Promise<ActiveGaugesResponseSDKType> {
+      return queryService.activeGauges(request);
+    },
+
+    activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponseSDKType> {
+      return queryService.activeGaugesPerDenom(request);
+    },
+
+    upcomingGauges(request: UpcomingGaugesRequest): Promise<UpcomingGaugesResponseSDKType> {
+      return queryService.upcomingGauges(request);
+    },
+
+    upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponseSDKType> {
+      return queryService.upcomingGaugesPerDenom(request);
+    },
+
+    rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponseSDKType> {
+      return queryService.rewardsEst(request);
+    },
+
+    lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType> {
+      return queryService.lockableDurations(request);
+    }
+
+  };
+};

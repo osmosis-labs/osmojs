@@ -186,48 +186,34 @@ export declare const IdentifiedClientState: {
     encode(message: IdentifiedClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedClientState;
     fromPartial(object: DeepPartial<IdentifiedClientState>): IdentifiedClientState;
-    fromSDK(object: IdentifiedClientStateSDKType): IdentifiedClientState;
-    toSDK(message: IdentifiedClientState): IdentifiedClientStateSDKType;
 };
 export declare const ConsensusStateWithHeight: {
     encode(message: ConsensusStateWithHeight, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusStateWithHeight;
     fromPartial(object: DeepPartial<ConsensusStateWithHeight>): ConsensusStateWithHeight;
-    fromSDK(object: ConsensusStateWithHeightSDKType): ConsensusStateWithHeight;
-    toSDK(message: ConsensusStateWithHeight): ConsensusStateWithHeightSDKType;
 };
 export declare const ClientConsensusStates: {
     encode(message: ClientConsensusStates, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientConsensusStates;
     fromPartial(object: DeepPartial<ClientConsensusStates>): ClientConsensusStates;
-    fromSDK(object: ClientConsensusStatesSDKType): ClientConsensusStates;
-    toSDK(message: ClientConsensusStates): ClientConsensusStatesSDKType;
 };
 export declare const ClientUpdateProposal: {
     encode(message: ClientUpdateProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientUpdateProposal;
     fromPartial(object: DeepPartial<ClientUpdateProposal>): ClientUpdateProposal;
-    fromSDK(object: ClientUpdateProposalSDKType): ClientUpdateProposal;
-    toSDK(message: ClientUpdateProposal): ClientUpdateProposalSDKType;
 };
 export declare const UpgradeProposal: {
     encode(message: UpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpgradeProposal;
     fromPartial(object: DeepPartial<UpgradeProposal>): UpgradeProposal;
-    fromSDK(object: UpgradeProposalSDKType): UpgradeProposal;
-    toSDK(message: UpgradeProposal): UpgradeProposalSDKType;
 };
 export declare const Height: {
     encode(message: Height, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Height;
     fromPartial(object: DeepPartial<Height>): Height;
-    fromSDK(object: HeightSDKType): Height;
-    toSDK(message: Height): HeightSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: DeepPartial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
 };

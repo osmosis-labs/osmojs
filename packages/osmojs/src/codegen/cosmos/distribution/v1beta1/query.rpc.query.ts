@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryParamsRequest, QueryParamsResponse, QueryParamsResponseSDKType, QueryValidatorOutstandingRewardsRequest, QueryValidatorOutstandingRewardsResponse, QueryValidatorOutstandingRewardsResponseSDKType, QueryValidatorCommissionRequest, QueryValidatorCommissionResponse, QueryValidatorCommissionResponseSDKType, QueryValidatorSlashesRequest, QueryValidatorSlashesResponse, QueryValidatorSlashesResponseSDKType, QueryDelegationRewardsRequest, QueryDelegationRewardsResponse, QueryDelegationRewardsResponseSDKType, QueryDelegationTotalRewardsRequest, QueryDelegationTotalRewardsResponse, QueryDelegationTotalRewardsResponseSDKType, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorValidatorsResponseSDKType, QueryDelegatorWithdrawAddressRequest, QueryDelegatorWithdrawAddressResponse, QueryDelegatorWithdrawAddressResponseSDKType, QueryCommunityPoolRequest, QueryCommunityPoolResponse, QueryCommunityPoolResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -104,3 +105,45 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
+      return queryService.params(request);
+    },
+
+    validatorOutstandingRewards(request: QueryValidatorOutstandingRewardsRequest): Promise<QueryValidatorOutstandingRewardsResponseSDKType> {
+      return queryService.validatorOutstandingRewards(request);
+    },
+
+    validatorCommission(request: QueryValidatorCommissionRequest): Promise<QueryValidatorCommissionResponseSDKType> {
+      return queryService.validatorCommission(request);
+    },
+
+    validatorSlashes(request: QueryValidatorSlashesRequest): Promise<QueryValidatorSlashesResponseSDKType> {
+      return queryService.validatorSlashes(request);
+    },
+
+    delegationRewards(request: QueryDelegationRewardsRequest): Promise<QueryDelegationRewardsResponseSDKType> {
+      return queryService.delegationRewards(request);
+    },
+
+    delegationTotalRewards(request: QueryDelegationTotalRewardsRequest): Promise<QueryDelegationTotalRewardsResponseSDKType> {
+      return queryService.delegationTotalRewards(request);
+    },
+
+    delegatorValidators(request: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponseSDKType> {
+      return queryService.delegatorValidators(request);
+    },
+
+    delegatorWithdrawAddress(request: QueryDelegatorWithdrawAddressRequest): Promise<QueryDelegatorWithdrawAddressResponseSDKType> {
+      return queryService.delegatorWithdrawAddress(request);
+    },
+
+    communityPool(request: QueryCommunityPoolRequest): Promise<QueryCommunityPoolResponseSDKType> {
+      return queryService.communityPool(request);
+    }
+
+  };
+};

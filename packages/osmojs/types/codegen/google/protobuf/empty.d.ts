@@ -30,6 +30,4 @@ export declare const Empty: {
     encode(_: Empty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Empty;
     fromPartial(_: DeepPartial<Empty>): Empty;
-    fromSDK(_: EmptySDKType): Empty;
-    toSDK(_: Empty): EmptySDKType;
 };

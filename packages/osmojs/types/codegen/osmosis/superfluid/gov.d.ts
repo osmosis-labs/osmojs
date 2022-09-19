@@ -41,13 +41,9 @@ export declare const SetSuperfluidAssetsProposal: {
     encode(message: SetSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SetSuperfluidAssetsProposal;
     fromPartial(object: DeepPartial<SetSuperfluidAssetsProposal>): SetSuperfluidAssetsProposal;
-    fromSDK(object: SetSuperfluidAssetsProposalSDKType): SetSuperfluidAssetsProposal;
-    toSDK(message: SetSuperfluidAssetsProposal): SetSuperfluidAssetsProposalSDKType;
 };
 export declare const RemoveSuperfluidAssetsProposal: {
     encode(message: RemoveSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RemoveSuperfluidAssetsProposal;
     fromPartial(object: DeepPartial<RemoveSuperfluidAssetsProposal>): RemoveSuperfluidAssetsProposal;
-    fromSDK(object: RemoveSuperfluidAssetsProposalSDKType): RemoveSuperfluidAssetsProposal;
-    toSDK(message: RemoveSuperfluidAssetsProposal): RemoveSuperfluidAssetsProposalSDKType;
 };

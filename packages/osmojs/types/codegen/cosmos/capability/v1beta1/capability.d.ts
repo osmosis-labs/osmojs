@@ -48,20 +48,14 @@ export declare const Capability: {
     encode(message: Capability, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Capability;
     fromPartial(object: DeepPartial<Capability>): Capability;
-    fromSDK(object: CapabilitySDKType): Capability;
-    toSDK(message: Capability): CapabilitySDKType;
 };
 export declare const Owner: {
     encode(message: Owner, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Owner;
     fromPartial(object: DeepPartial<Owner>): Owner;
-    fromSDK(object: OwnerSDKType): Owner;
-    toSDK(message: Owner): OwnerSDKType;
 };
 export declare const CapabilityOwners: {
     encode(message: CapabilityOwners, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CapabilityOwners;
     fromPartial(object: DeepPartial<CapabilityOwners>): CapabilityOwners;
-    fromSDK(object: CapabilityOwnersSDKType): CapabilityOwners;
-    toSDK(message: CapabilityOwners): CapabilityOwnersSDKType;
 };

@@ -18,13 +18,9 @@ export declare const MsgUnjail: {
     encode(message: MsgUnjail, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnjail;
     fromPartial(object: DeepPartial<MsgUnjail>): MsgUnjail;
-    fromSDK(object: MsgUnjailSDKType): MsgUnjail;
-    toSDK(message: MsgUnjail): MsgUnjailSDKType;
 };
 export declare const MsgUnjailResponse: {
     encode(_: MsgUnjailResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnjailResponseSDKType;
     fromPartial(_: DeepPartial<MsgUnjailResponse>): MsgUnjailResponse;
-    fromSDK(_: MsgUnjailResponseSDKType): MsgUnjailResponse;
-    toSDK(_: MsgUnjailResponse): MsgUnjailResponseSDKType;
 };

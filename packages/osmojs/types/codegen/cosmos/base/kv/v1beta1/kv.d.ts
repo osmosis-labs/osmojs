@@ -22,13 +22,9 @@ export declare const Pairs: {
     encode(message: Pairs, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pairs;
     fromPartial(object: DeepPartial<Pairs>): Pairs;
-    fromSDK(object: PairsSDKType): Pairs;
-    toSDK(message: Pairs): PairsSDKType;
 };
 export declare const Pair: {
     encode(message: Pair, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pair;
     fromPartial(object: DeepPartial<Pair>): Pair;
-    fromSDK(object: PairSDKType): Pair;
-    toSDK(message: Pair): PairSDKType;
 };

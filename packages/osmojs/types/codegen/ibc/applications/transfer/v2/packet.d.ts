@@ -34,6 +34,4 @@ export declare const FungibleTokenPacketData: {
     encode(message: FungibleTokenPacketData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FungibleTokenPacketData;
     fromPartial(object: DeepPartial<FungibleTokenPacketData>): FungibleTokenPacketData;
-    fromSDK(object: FungibleTokenPacketDataSDKType): FungibleTokenPacketData;
-    toSDK(message: FungibleTokenPacketData): FungibleTokenPacketDataSDKType;
 };

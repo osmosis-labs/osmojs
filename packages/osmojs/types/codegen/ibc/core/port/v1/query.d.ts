@@ -45,13 +45,9 @@ export declare const QueryAppVersionRequest: {
     encode(message: QueryAppVersionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppVersionRequest;
     fromPartial(object: DeepPartial<QueryAppVersionRequest>): QueryAppVersionRequest;
-    fromSDK(object: QueryAppVersionRequestSDKType): QueryAppVersionRequest;
-    toSDK(message: QueryAppVersionRequest): QueryAppVersionRequestSDKType;
 };
 export declare const QueryAppVersionResponse: {
     encode(message: QueryAppVersionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppVersionResponseSDKType;
     fromPartial(object: DeepPartial<QueryAppVersionResponse>): QueryAppVersionResponse;
-    fromSDK(object: QueryAppVersionResponseSDKType): QueryAppVersionResponse;
-    toSDK(message: QueryAppVersionResponse): QueryAppVersionResponseSDKType;
 };

@@ -204,83 +204,59 @@ export declare const MsgStoreCode: {
     encode(message: MsgStoreCode, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCode;
     fromPartial(object: DeepPartial<MsgStoreCode>): MsgStoreCode;
-    fromSDK(object: MsgStoreCodeSDKType): MsgStoreCode;
-    toSDK(message: MsgStoreCode): MsgStoreCodeSDKType;
 };
 export declare const MsgStoreCodeResponse: {
     encode(message: MsgStoreCodeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCodeResponseSDKType;
     fromPartial(object: DeepPartial<MsgStoreCodeResponse>): MsgStoreCodeResponse;
-    fromSDK(object: MsgStoreCodeResponseSDKType): MsgStoreCodeResponse;
-    toSDK(message: MsgStoreCodeResponse): MsgStoreCodeResponseSDKType;
 };
 export declare const MsgInstantiateContract: {
     encode(message: MsgInstantiateContract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContract;
     fromPartial(object: DeepPartial<MsgInstantiateContract>): MsgInstantiateContract;
-    fromSDK(object: MsgInstantiateContractSDKType): MsgInstantiateContract;
-    toSDK(message: MsgInstantiateContract): MsgInstantiateContractSDKType;
 };
 export declare const MsgInstantiateContractResponse: {
     encode(message: MsgInstantiateContractResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContractResponseSDKType;
     fromPartial(object: DeepPartial<MsgInstantiateContractResponse>): MsgInstantiateContractResponse;
-    fromSDK(object: MsgInstantiateContractResponseSDKType): MsgInstantiateContractResponse;
-    toSDK(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseSDKType;
 };
 export declare const MsgExecuteContract: {
     encode(message: MsgExecuteContract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContract;
     fromPartial(object: DeepPartial<MsgExecuteContract>): MsgExecuteContract;
-    fromSDK(object: MsgExecuteContractSDKType): MsgExecuteContract;
-    toSDK(message: MsgExecuteContract): MsgExecuteContractSDKType;
 };
 export declare const MsgExecuteContractResponse: {
     encode(message: MsgExecuteContractResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContractResponseSDKType;
     fromPartial(object: DeepPartial<MsgExecuteContractResponse>): MsgExecuteContractResponse;
-    fromSDK(object: MsgExecuteContractResponseSDKType): MsgExecuteContractResponse;
-    toSDK(message: MsgExecuteContractResponse): MsgExecuteContractResponseSDKType;
 };
 export declare const MsgMigrateContract: {
     encode(message: MsgMigrateContract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContract;
     fromPartial(object: DeepPartial<MsgMigrateContract>): MsgMigrateContract;
-    fromSDK(object: MsgMigrateContractSDKType): MsgMigrateContract;
-    toSDK(message: MsgMigrateContract): MsgMigrateContractSDKType;
 };
 export declare const MsgMigrateContractResponse: {
     encode(message: MsgMigrateContractResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContractResponseSDKType;
     fromPartial(object: DeepPartial<MsgMigrateContractResponse>): MsgMigrateContractResponse;
-    fromSDK(object: MsgMigrateContractResponseSDKType): MsgMigrateContractResponse;
-    toSDK(message: MsgMigrateContractResponse): MsgMigrateContractResponseSDKType;
 };
 export declare const MsgUpdateAdmin: {
     encode(message: MsgUpdateAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdmin;
     fromPartial(object: DeepPartial<MsgUpdateAdmin>): MsgUpdateAdmin;
-    fromSDK(object: MsgUpdateAdminSDKType): MsgUpdateAdmin;
-    toSDK(message: MsgUpdateAdmin): MsgUpdateAdminSDKType;
 };
 export declare const MsgUpdateAdminResponse: {
     encode(_: MsgUpdateAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdminResponseSDKType;
     fromPartial(_: DeepPartial<MsgUpdateAdminResponse>): MsgUpdateAdminResponse;
-    fromSDK(_: MsgUpdateAdminResponseSDKType): MsgUpdateAdminResponse;
-    toSDK(_: MsgUpdateAdminResponse): MsgUpdateAdminResponseSDKType;
 };
 export declare const MsgClearAdmin: {
     encode(message: MsgClearAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdmin;
     fromPartial(object: DeepPartial<MsgClearAdmin>): MsgClearAdmin;
-    fromSDK(object: MsgClearAdminSDKType): MsgClearAdmin;
-    toSDK(message: MsgClearAdmin): MsgClearAdminSDKType;
 };
 export declare const MsgClearAdminResponse: {
     encode(_: MsgClearAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdminResponseSDKType;
     fromPartial(_: DeepPartial<MsgClearAdminResponse>): MsgClearAdminResponse;
-    fromSDK(_: MsgClearAdminResponseSDKType): MsgClearAdminResponse;
-    toSDK(_: MsgClearAdminResponse): MsgClearAdminResponseSDKType;
 };

@@ -103,55 +103,39 @@ export declare const MsgSubmitProposal: {
     encode(message: MsgSubmitProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposal;
     fromPartial(object: DeepPartial<MsgSubmitProposal>): MsgSubmitProposal;
-    fromSDK(object: MsgSubmitProposalSDKType): MsgSubmitProposal;
-    toSDK(message: MsgSubmitProposal): MsgSubmitProposalSDKType;
 };
 export declare const MsgSubmitProposalResponse: {
     encode(message: MsgSubmitProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponseSDKType;
     fromPartial(object: DeepPartial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
-    fromSDK(object: MsgSubmitProposalResponseSDKType): MsgSubmitProposalResponse;
-    toSDK(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseSDKType;
 };
 export declare const MsgVote: {
     encode(message: MsgVote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVote;
     fromPartial(object: DeepPartial<MsgVote>): MsgVote;
-    fromSDK(object: MsgVoteSDKType): MsgVote;
-    toSDK(message: MsgVote): MsgVoteSDKType;
 };
 export declare const MsgVoteResponse: {
     encode(_: MsgVoteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponseSDKType;
     fromPartial(_: DeepPartial<MsgVoteResponse>): MsgVoteResponse;
-    fromSDK(_: MsgVoteResponseSDKType): MsgVoteResponse;
-    toSDK(_: MsgVoteResponse): MsgVoteResponseSDKType;
 };
 export declare const MsgVoteWeighted: {
     encode(message: MsgVoteWeighted, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeighted;
     fromPartial(object: DeepPartial<MsgVoteWeighted>): MsgVoteWeighted;
-    fromSDK(object: MsgVoteWeightedSDKType): MsgVoteWeighted;
-    toSDK(message: MsgVoteWeighted): MsgVoteWeightedSDKType;
 };
 export declare const MsgVoteWeightedResponse: {
     encode(_: MsgVoteWeightedResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeightedResponseSDKType;
     fromPartial(_: DeepPartial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse;
-    fromSDK(_: MsgVoteWeightedResponseSDKType): MsgVoteWeightedResponse;
-    toSDK(_: MsgVoteWeightedResponse): MsgVoteWeightedResponseSDKType;
 };
 export declare const MsgDeposit: {
     encode(message: MsgDeposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeposit;
     fromPartial(object: DeepPartial<MsgDeposit>): MsgDeposit;
-    fromSDK(object: MsgDepositSDKType): MsgDeposit;
-    toSDK(message: MsgDeposit): MsgDepositSDKType;
 };
 export declare const MsgDepositResponse: {
     encode(_: MsgDepositResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDepositResponseSDKType;
     fromPartial(_: DeepPartial<MsgDepositResponse>): MsgDepositResponse;
-    fromSDK(_: MsgDepositResponseSDKType): MsgDepositResponse;
-    toSDK(_: MsgDepositResponse): MsgDepositResponseSDKType;
 };

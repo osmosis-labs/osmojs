@@ -31,13 +31,9 @@ export declare const EpochInfo: {
     encode(message: EpochInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EpochInfo;
     fromPartial(object: DeepPartial<EpochInfo>): EpochInfo;
-    fromSDK(object: EpochInfoSDKType): EpochInfo;
-    toSDK(message: EpochInfo): EpochInfoSDKType;
 };
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
 };

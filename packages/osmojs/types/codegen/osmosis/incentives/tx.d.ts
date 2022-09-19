@@ -56,27 +56,19 @@ export declare const MsgCreateGauge: {
     encode(message: MsgCreateGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGauge;
     fromPartial(object: DeepPartial<MsgCreateGauge>): MsgCreateGauge;
-    fromSDK(object: MsgCreateGaugeSDKType): MsgCreateGauge;
-    toSDK(message: MsgCreateGauge): MsgCreateGaugeSDKType;
 };
 export declare const MsgCreateGaugeResponse: {
     encode(_: MsgCreateGaugeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGaugeResponseSDKType;
     fromPartial(_: DeepPartial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse;
-    fromSDK(_: MsgCreateGaugeResponseSDKType): MsgCreateGaugeResponse;
-    toSDK(_: MsgCreateGaugeResponse): MsgCreateGaugeResponseSDKType;
 };
 export declare const MsgAddToGauge: {
     encode(message: MsgAddToGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGauge;
     fromPartial(object: DeepPartial<MsgAddToGauge>): MsgAddToGauge;
-    fromSDK(object: MsgAddToGaugeSDKType): MsgAddToGauge;
-    toSDK(message: MsgAddToGauge): MsgAddToGaugeSDKType;
 };
 export declare const MsgAddToGaugeResponse: {
     encode(_: MsgAddToGaugeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGaugeResponseSDKType;
     fromPartial(_: DeepPartial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse;
-    fromSDK(_: MsgAddToGaugeResponseSDKType): MsgAddToGaugeResponse;
-    toSDK(_: MsgAddToGaugeResponse): MsgAddToGaugeResponseSDKType;
 };

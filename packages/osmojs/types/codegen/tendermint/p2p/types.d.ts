@@ -64,34 +64,24 @@ export declare const ProtocolVersion: {
     encode(message: ProtocolVersion, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProtocolVersion;
     fromPartial(object: DeepPartial<ProtocolVersion>): ProtocolVersion;
-    fromSDK(object: ProtocolVersionSDKType): ProtocolVersion;
-    toSDK(message: ProtocolVersion): ProtocolVersionSDKType;
 };
 export declare const NodeInfo: {
     encode(message: NodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NodeInfo;
     fromPartial(object: DeepPartial<NodeInfo>): NodeInfo;
-    fromSDK(object: NodeInfoSDKType): NodeInfo;
-    toSDK(message: NodeInfo): NodeInfoSDKType;
 };
 export declare const NodeInfoOther: {
     encode(message: NodeInfoOther, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NodeInfoOther;
     fromPartial(object: DeepPartial<NodeInfoOther>): NodeInfoOther;
-    fromSDK(object: NodeInfoOtherSDKType): NodeInfoOther;
-    toSDK(message: NodeInfoOther): NodeInfoOtherSDKType;
 };
 export declare const PeerInfo: {
     encode(message: PeerInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeerInfo;
     fromPartial(object: DeepPartial<PeerInfo>): PeerInfo;
-    fromSDK(object: PeerInfoSDKType): PeerInfo;
-    toSDK(message: PeerInfo): PeerInfoSDKType;
 };
 export declare const PeerAddressInfo: {
     encode(message: PeerAddressInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeerAddressInfo;
     fromPartial(object: DeepPartial<PeerAddressInfo>): PeerAddressInfo;
-    fromSDK(object: PeerAddressInfoSDKType): PeerAddressInfo;
-    toSDK(message: PeerAddressInfo): PeerAddressInfoSDKType;
 };

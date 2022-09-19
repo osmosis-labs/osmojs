@@ -82,41 +82,29 @@ export declare const QueryAllowanceRequest: {
     encode(message: QueryAllowanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowanceRequest;
     fromPartial(object: DeepPartial<QueryAllowanceRequest>): QueryAllowanceRequest;
-    fromSDK(object: QueryAllowanceRequestSDKType): QueryAllowanceRequest;
-    toSDK(message: QueryAllowanceRequest): QueryAllowanceRequestSDKType;
 };
 export declare const QueryAllowanceResponse: {
     encode(message: QueryAllowanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowanceResponseSDKType;
     fromPartial(object: DeepPartial<QueryAllowanceResponse>): QueryAllowanceResponse;
-    fromSDK(object: QueryAllowanceResponseSDKType): QueryAllowanceResponse;
-    toSDK(message: QueryAllowanceResponse): QueryAllowanceResponseSDKType;
 };
 export declare const QueryAllowancesRequest: {
     encode(message: QueryAllowancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesRequest;
     fromPartial(object: DeepPartial<QueryAllowancesRequest>): QueryAllowancesRequest;
-    fromSDK(object: QueryAllowancesRequestSDKType): QueryAllowancesRequest;
-    toSDK(message: QueryAllowancesRequest): QueryAllowancesRequestSDKType;
 };
 export declare const QueryAllowancesResponse: {
     encode(message: QueryAllowancesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesResponseSDKType;
     fromPartial(object: DeepPartial<QueryAllowancesResponse>): QueryAllowancesResponse;
-    fromSDK(object: QueryAllowancesResponseSDKType): QueryAllowancesResponse;
-    toSDK(message: QueryAllowancesResponse): QueryAllowancesResponseSDKType;
 };
 export declare const QueryAllowancesByGranterRequest: {
     encode(message: QueryAllowancesByGranterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesByGranterRequest;
     fromPartial(object: DeepPartial<QueryAllowancesByGranterRequest>): QueryAllowancesByGranterRequest;
-    fromSDK(object: QueryAllowancesByGranterRequestSDKType): QueryAllowancesByGranterRequest;
-    toSDK(message: QueryAllowancesByGranterRequest): QueryAllowancesByGranterRequestSDKType;
 };
 export declare const QueryAllowancesByGranterResponse: {
     encode(message: QueryAllowancesByGranterResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesByGranterResponseSDKType;
     fromPartial(object: DeepPartial<QueryAllowancesByGranterResponse>): QueryAllowancesByGranterResponse;
-    fromSDK(object: QueryAllowancesByGranterResponseSDKType): QueryAllowancesByGranterResponse;
-    toSDK(message: QueryAllowancesByGranterResponse): QueryAllowancesByGranterResponseSDKType;
 };

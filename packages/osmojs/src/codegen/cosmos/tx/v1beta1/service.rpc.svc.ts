@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { SimulateRequest, SimulateResponse, SimulateResponseSDKType, GetTxRequest, GetTxResponse, GetTxResponseSDKType, BroadcastTxRequest, BroadcastTxResponse, BroadcastTxResponseSDKType, GetTxsEventRequest, GetTxsEventResponse, GetTxsEventResponseSDKType, GetBlockWithTxsRequest, GetBlockWithTxsResponse, GetBlockWithTxsResponseSDKType } from "./service";
 /** Service defines the RPC service */
 
@@ -65,3 +66,29 @@ export class ServiceClientImpl implements Service {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    simulate(request: SimulateRequest): Promise<SimulateResponseSDKType> {
+      return queryService.simulate(request);
+    },
+
+    getTx(request: GetTxRequest): Promise<GetTxResponseSDKType> {
+      return queryService.getTx(request);
+    },
+
+    broadcastTx(request: BroadcastTxRequest): Promise<BroadcastTxResponseSDKType> {
+      return queryService.broadcastTx(request);
+    },
+
+    getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponseSDKType> {
+      return queryService.getTxsEvent(request);
+    },
+
+    getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponseSDKType> {
+      return queryService.getBlockWithTxs(request);
+    }
+
+  };
+};

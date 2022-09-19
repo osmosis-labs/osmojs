@@ -85,55 +85,39 @@ export declare const MsgLockTokens: {
     encode(message: MsgLockTokens, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokens;
     fromPartial(object: DeepPartial<MsgLockTokens>): MsgLockTokens;
-    fromSDK(object: MsgLockTokensSDKType): MsgLockTokens;
-    toSDK(message: MsgLockTokens): MsgLockTokensSDKType;
 };
 export declare const MsgLockTokensResponse: {
     encode(message: MsgLockTokensResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponseSDKType;
     fromPartial(object: DeepPartial<MsgLockTokensResponse>): MsgLockTokensResponse;
-    fromSDK(object: MsgLockTokensResponseSDKType): MsgLockTokensResponse;
-    toSDK(message: MsgLockTokensResponse): MsgLockTokensResponseSDKType;
 };
 export declare const MsgBeginUnlockingAll: {
     encode(message: MsgBeginUnlockingAll, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAll;
     fromPartial(object: DeepPartial<MsgBeginUnlockingAll>): MsgBeginUnlockingAll;
-    fromSDK(object: MsgBeginUnlockingAllSDKType): MsgBeginUnlockingAll;
-    toSDK(message: MsgBeginUnlockingAll): MsgBeginUnlockingAllSDKType;
 };
 export declare const MsgBeginUnlockingAllResponse: {
     encode(message: MsgBeginUnlockingAllResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponseSDKType;
     fromPartial(object: DeepPartial<MsgBeginUnlockingAllResponse>): MsgBeginUnlockingAllResponse;
-    fromSDK(object: MsgBeginUnlockingAllResponseSDKType): MsgBeginUnlockingAllResponse;
-    toSDK(message: MsgBeginUnlockingAllResponse): MsgBeginUnlockingAllResponseSDKType;
 };
 export declare const MsgBeginUnlocking: {
     encode(message: MsgBeginUnlocking, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlocking;
     fromPartial(object: DeepPartial<MsgBeginUnlocking>): MsgBeginUnlocking;
-    fromSDK(object: MsgBeginUnlockingSDKType): MsgBeginUnlocking;
-    toSDK(message: MsgBeginUnlocking): MsgBeginUnlockingSDKType;
 };
 export declare const MsgBeginUnlockingResponse: {
     encode(message: MsgBeginUnlockingResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponseSDKType;
     fromPartial(object: DeepPartial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse;
-    fromSDK(object: MsgBeginUnlockingResponseSDKType): MsgBeginUnlockingResponse;
-    toSDK(message: MsgBeginUnlockingResponse): MsgBeginUnlockingResponseSDKType;
 };
 export declare const MsgExtendLockup: {
     encode(message: MsgExtendLockup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockup;
     fromPartial(object: DeepPartial<MsgExtendLockup>): MsgExtendLockup;
-    fromSDK(object: MsgExtendLockupSDKType): MsgExtendLockup;
-    toSDK(message: MsgExtendLockup): MsgExtendLockupSDKType;
 };
 export declare const MsgExtendLockupResponse: {
     encode(message: MsgExtendLockupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponseSDKType;
     fromPartial(object: DeepPartial<MsgExtendLockupResponse>): MsgExtendLockupResponse;
-    fromSDK(object: MsgExtendLockupResponseSDKType): MsgExtendLockupResponse;
-    toSDK(message: MsgExtendLockupResponse): MsgExtendLockupResponseSDKType;
 };

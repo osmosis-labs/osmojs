@@ -291,69 +291,49 @@ export declare const GetTxsEventRequest: {
     encode(message: GetTxsEventRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventRequest;
     fromPartial(object: DeepPartial<GetTxsEventRequest>): GetTxsEventRequest;
-    fromSDK(object: GetTxsEventRequestSDKType): GetTxsEventRequest;
-    toSDK(message: GetTxsEventRequest): GetTxsEventRequestSDKType;
 };
 export declare const GetTxsEventResponse: {
     encode(message: GetTxsEventResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponseSDKType;
     fromPartial(object: DeepPartial<GetTxsEventResponse>): GetTxsEventResponse;
-    fromSDK(object: GetTxsEventResponseSDKType): GetTxsEventResponse;
-    toSDK(message: GetTxsEventResponse): GetTxsEventResponseSDKType;
 };
 export declare const BroadcastTxRequest: {
     encode(message: BroadcastTxRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxRequest;
     fromPartial(object: DeepPartial<BroadcastTxRequest>): BroadcastTxRequest;
-    fromSDK(object: BroadcastTxRequestSDKType): BroadcastTxRequest;
-    toSDK(message: BroadcastTxRequest): BroadcastTxRequestSDKType;
 };
 export declare const BroadcastTxResponse: {
     encode(message: BroadcastTxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponseSDKType;
     fromPartial(object: DeepPartial<BroadcastTxResponse>): BroadcastTxResponse;
-    fromSDK(object: BroadcastTxResponseSDKType): BroadcastTxResponse;
-    toSDK(message: BroadcastTxResponse): BroadcastTxResponseSDKType;
 };
 export declare const SimulateRequest: {
     encode(message: SimulateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulateRequest;
     fromPartial(object: DeepPartial<SimulateRequest>): SimulateRequest;
-    fromSDK(object: SimulateRequestSDKType): SimulateRequest;
-    toSDK(message: SimulateRequest): SimulateRequestSDKType;
 };
 export declare const SimulateResponse: {
     encode(message: SimulateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponseSDKType;
     fromPartial(object: DeepPartial<SimulateResponse>): SimulateResponse;
-    fromSDK(object: SimulateResponseSDKType): SimulateResponse;
-    toSDK(message: SimulateResponse): SimulateResponseSDKType;
 };
 export declare const GetTxRequest: {
     encode(message: GetTxRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxRequest;
     fromPartial(object: DeepPartial<GetTxRequest>): GetTxRequest;
-    fromSDK(object: GetTxRequestSDKType): GetTxRequest;
-    toSDK(message: GetTxRequest): GetTxRequestSDKType;
 };
 export declare const GetTxResponse: {
     encode(message: GetTxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponseSDKType;
     fromPartial(object: DeepPartial<GetTxResponse>): GetTxResponse;
-    fromSDK(object: GetTxResponseSDKType): GetTxResponse;
-    toSDK(message: GetTxResponse): GetTxResponseSDKType;
 };
 export declare const GetBlockWithTxsRequest: {
     encode(message: GetBlockWithTxsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsRequest;
     fromPartial(object: DeepPartial<GetBlockWithTxsRequest>): GetBlockWithTxsRequest;
-    fromSDK(object: GetBlockWithTxsRequestSDKType): GetBlockWithTxsRequest;
-    toSDK(message: GetBlockWithTxsRequest): GetBlockWithTxsRequestSDKType;
 };
 export declare const GetBlockWithTxsResponse: {
     encode(message: GetBlockWithTxsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponseSDKType;
     fromPartial(object: DeepPartial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse;
-    fromSDK(object: GetBlockWithTxsResponseSDKType): GetBlockWithTxsResponse;
-    toSDK(message: GetBlockWithTxsResponse): GetBlockWithTxsResponseSDKType;
 };

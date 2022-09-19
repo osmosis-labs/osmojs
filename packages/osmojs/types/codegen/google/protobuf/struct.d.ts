@@ -130,27 +130,19 @@ export declare const Struct_FieldsEntry: {
     encode(message: Struct_FieldsEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Struct_FieldsEntry;
     fromPartial(object: DeepPartial<Struct_FieldsEntry>): Struct_FieldsEntry;
-    fromSDK(object: Struct_FieldsEntrySDKType): Struct_FieldsEntry;
-    toSDK(message: Struct_FieldsEntry): Struct_FieldsEntrySDKType;
 };
 export declare const Struct: {
     encode(message: Struct, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Struct;
     fromPartial(object: DeepPartial<Struct>): Struct;
-    fromSDK(object: StructSDKType): Struct;
-    toSDK(message: Struct): StructSDKType;
 };
 export declare const Value: {
     encode(message: Value, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Value;
     fromPartial(object: DeepPartial<Value>): Value;
-    fromSDK(object: ValueSDKType): Value;
-    toSDK(message: Value): ValueSDKType;
 };
 export declare const ListValue: {
     encode(message: ListValue, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ListValue;
     fromPartial(object: DeepPartial<ListValue>): ListValue;
-    fromSDK(object: ListValueSDKType): ListValue;
-    toSDK(message: ListValue): ListValueSDKType;
 };

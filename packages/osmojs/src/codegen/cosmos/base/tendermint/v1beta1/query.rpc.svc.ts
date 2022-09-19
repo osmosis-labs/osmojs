@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { GetNodeInfoRequest, GetNodeInfoResponse, GetNodeInfoResponseSDKType, GetSyncingRequest, GetSyncingResponse, GetSyncingResponseSDKType, GetLatestBlockRequest, GetLatestBlockResponse, GetLatestBlockResponseSDKType, GetBlockByHeightRequest, GetBlockByHeightResponse, GetBlockByHeightResponseSDKType, GetLatestValidatorSetRequest, GetLatestValidatorSetResponse, GetLatestValidatorSetResponseSDKType, GetValidatorSetByHeightRequest, GetValidatorSetByHeightResponse, GetValidatorSetByHeightResponseSDKType } from "./query";
 /** Service defines the RPC service */
 
@@ -73,3 +74,33 @@ export class ServiceClientImpl implements Service {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    getNodeInfo(request: GetNodeInfoRequest): Promise<GetNodeInfoResponseSDKType> {
+      return queryService.getNodeInfo(request);
+    },
+
+    getSyncing(request: GetSyncingRequest): Promise<GetSyncingResponseSDKType> {
+      return queryService.getSyncing(request);
+    },
+
+    getLatestBlock(request: GetLatestBlockRequest): Promise<GetLatestBlockResponseSDKType> {
+      return queryService.getLatestBlock(request);
+    },
+
+    getBlockByHeight(request: GetBlockByHeightRequest): Promise<GetBlockByHeightResponseSDKType> {
+      return queryService.getBlockByHeight(request);
+    },
+
+    getLatestValidatorSet(request: GetLatestValidatorSetRequest): Promise<GetLatestValidatorSetResponseSDKType> {
+      return queryService.getLatestValidatorSet(request);
+    },
+
+    getValidatorSetByHeight(request: GetValidatorSetByHeightRequest): Promise<GetValidatorSetByHeightResponseSDKType> {
+      return queryService.getValidatorSetByHeight(request);
+    }
+
+  };
+};

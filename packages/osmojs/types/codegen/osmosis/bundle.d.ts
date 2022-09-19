@@ -67,13 +67,15 @@ export declare namespace osmosis {
     namespace epochs {
         const v1beta1: {
             QueryClientImpl: typeof _302.QueryClientImpl;
+            createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+                epochInfos(request: _131.QueryEpochsInfoRequest): Promise<_131.QueryEpochsInfoResponseSDKType>;
+                currentEpoch(request: _131.QueryCurrentEpochRequest): Promise<_131.QueryCurrentEpochResponseSDKType>;
+            };
             LCDQueryClient: typeof _293.LCDQueryClient;
             QueryEpochsInfoRequest: {
                 encode(_: _131.QueryEpochsInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.QueryEpochsInfoRequest;
                 fromPartial(_: {}): _131.QueryEpochsInfoRequest;
-                fromSDK(_: _131.QueryEpochsInfoRequestSDKType): _131.QueryEpochsInfoRequest;
-                toSDK(_: _131.QueryEpochsInfoRequest): _131.QueryEpochsInfoRequestSDKType;
             };
             QueryEpochsInfoResponse: {
                 encode(message: _131.QueryEpochsInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -92,8 +94,6 @@ export declare namespace osmosis {
                         currentEpochStartHeight?: any;
                     }[];
                 }): _131.QueryEpochsInfoResponse;
-                fromSDK(object: _131.QueryEpochsInfoResponseSDKType): _131.QueryEpochsInfoResponse;
-                toSDK(message: _131.QueryEpochsInfoResponse): _131.QueryEpochsInfoResponseSDKType;
             };
             QueryCurrentEpochRequest: {
                 encode(message: _131.QueryCurrentEpochRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -101,8 +101,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     identifier?: string;
                 }): _131.QueryCurrentEpochRequest;
-                fromSDK(object: _131.QueryCurrentEpochRequestSDKType): _131.QueryCurrentEpochRequest;
-                toSDK(message: _131.QueryCurrentEpochRequest): _131.QueryCurrentEpochRequestSDKType;
             };
             QueryCurrentEpochResponse: {
                 encode(message: _131.QueryCurrentEpochResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -110,8 +108,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     currentEpoch?: any;
                 }): _131.QueryCurrentEpochResponse;
-                fromSDK(object: _131.QueryCurrentEpochResponseSDKType): _131.QueryCurrentEpochResponse;
-                toSDK(message: _131.QueryCurrentEpochResponse): _131.QueryCurrentEpochResponseSDKType;
             };
             EpochInfo: {
                 encode(message: _130.EpochInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -128,8 +124,6 @@ export declare namespace osmosis {
                     epochCountingStarted?: boolean;
                     currentEpochStartHeight?: any;
                 }): _130.EpochInfo;
-                fromSDK(object: _130.EpochInfoSDKType): _130.EpochInfo;
-                toSDK(message: _130.EpochInfo): _130.EpochInfoSDKType;
             };
             GenesisState: {
                 encode(message: _130.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -148,8 +142,6 @@ export declare namespace osmosis {
                         currentEpochStartHeight?: any;
                     }[];
                 }): _130.GenesisState;
-                fromSDK(object: _130.GenesisStateSDKType): _130.GenesisState;
-                toSDK(message: _130.GenesisState): _130.GenesisStateSDKType;
             };
         };
     }
@@ -157,6 +149,18 @@ export declare namespace osmosis {
         const v1beta1: {
             MsgClientImpl: typeof _313.MsgClientImpl;
             QueryClientImpl: typeof _303.QueryClientImpl;
+            createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+                pools(request: _134.QueryPoolsRequest): Promise<_134.QueryPoolsResponseSDKType>;
+                numPools(request: _134.QueryNumPoolsRequest): Promise<_134.QueryNumPoolsResponseSDKType>;
+                totalLiquidity(request: _134.QueryTotalLiquidityRequest): Promise<_134.QueryTotalLiquidityResponseSDKType>;
+                pool(request: _134.QueryPoolRequest): Promise<_134.QueryPoolResponseSDKType>;
+                poolParams(request: _134.QueryPoolParamsRequest): Promise<_134.QueryPoolParamsResponseSDKType>;
+                totalPoolLiquidity(request: _134.QueryTotalPoolLiquidityRequest): Promise<_134.QueryTotalPoolLiquidityResponseSDKType>;
+                totalShares(request: _134.QueryTotalSharesRequest): Promise<_134.QueryTotalSharesResponseSDKType>;
+                spotPrice(request: _134.QuerySpotPriceRequest): Promise<_134.QuerySpotPriceResponseSDKType>;
+                estimateSwapExactAmountIn(request: _134.QuerySwapExactAmountInRequest): Promise<_134.QuerySwapExactAmountInResponseSDKType>;
+                estimateSwapExactAmountOut(request: _134.QuerySwapExactAmountOutRequest): Promise<_134.QuerySwapExactAmountOutResponseSDKType>;
+            };
             LCDQueryClient: typeof _294.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
@@ -227,74 +231,6 @@ export declare namespace osmosis {
                     exitSwapShareAmountIn(value: _135.MsgExitSwapShareAmountIn): {
                         typeUrl: string;
                         value: _135.MsgExitSwapShareAmountIn;
-                    };
-                };
-                toJSON: {
-                    joinPool(value: _135.MsgJoinPool): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    exitPool(value: _135.MsgExitPool): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    swapExactAmountIn(value: _135.MsgSwapExactAmountIn): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    swapExactAmountOut(value: _135.MsgSwapExactAmountOut): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    joinSwapExternAmountIn(value: _135.MsgJoinSwapExternAmountIn): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    joinSwapShareAmountOut(value: _135.MsgJoinSwapShareAmountOut): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    exitSwapExternAmountOut(value: _135.MsgExitSwapExternAmountOut): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    exitSwapShareAmountIn(value: _135.MsgExitSwapShareAmountIn): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                };
-                fromJSON: {
-                    joinPool(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    exitPool(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    swapExactAmountIn(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    swapExactAmountOut(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    joinSwapExternAmountIn(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    joinSwapShareAmountOut(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    exitSwapExternAmountOut(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    exitSwapShareAmountIn(value: any): {
-                        typeUrl: string;
-                        value: any;
                     };
                 };
                 fromPartial: {
@@ -518,15 +454,11 @@ export declare namespace osmosis {
                         amount?: string;
                     }[];
                 }): _135.MsgJoinPool;
-                fromSDK(object: _135.MsgJoinPoolSDKType): _135.MsgJoinPool;
-                toSDK(message: _135.MsgJoinPool): _135.MsgJoinPoolSDKType;
             };
             MsgJoinPoolResponse: {
                 encode(_: _135.MsgJoinPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgJoinPoolResponseSDKType;
                 fromPartial(_: {}): _135.MsgJoinPoolResponse;
-                fromSDK(_: _135.MsgJoinPoolResponseSDKType): _135.MsgJoinPoolResponse;
-                toSDK(_: _135.MsgJoinPoolResponse): _135.MsgJoinPoolResponseSDKType;
             };
             MsgExitPool: {
                 encode(message: _135.MsgExitPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -540,15 +472,11 @@ export declare namespace osmosis {
                         amount?: string;
                     }[];
                 }): _135.MsgExitPool;
-                fromSDK(object: _135.MsgExitPoolSDKType): _135.MsgExitPool;
-                toSDK(message: _135.MsgExitPool): _135.MsgExitPoolSDKType;
             };
             MsgExitPoolResponse: {
                 encode(_: _135.MsgExitPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgExitPoolResponseSDKType;
                 fromPartial(_: {}): _135.MsgExitPoolResponse;
-                fromSDK(_: _135.MsgExitPoolResponseSDKType): _135.MsgExitPoolResponse;
-                toSDK(_: _135.MsgExitPoolResponse): _135.MsgExitPoolResponseSDKType;
             };
             SwapAmountInRoute: {
                 encode(message: _135.SwapAmountInRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -557,8 +485,6 @@ export declare namespace osmosis {
                     poolId?: any;
                     tokenOutDenom?: string;
                 }): _135.SwapAmountInRoute;
-                fromSDK(object: _135.SwapAmountInRouteSDKType): _135.SwapAmountInRoute;
-                toSDK(message: _135.SwapAmountInRoute): _135.SwapAmountInRouteSDKType;
             };
             MsgSwapExactAmountIn: {
                 encode(message: _135.MsgSwapExactAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -575,8 +501,6 @@ export declare namespace osmosis {
                     };
                     tokenOutMinAmount?: string;
                 }): _135.MsgSwapExactAmountIn;
-                fromSDK(object: _135.MsgSwapExactAmountInSDKType): _135.MsgSwapExactAmountIn;
-                toSDK(message: _135.MsgSwapExactAmountIn): _135.MsgSwapExactAmountInSDKType;
             };
             MsgSwapExactAmountInResponse: {
                 encode(message: _135.MsgSwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -584,8 +508,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     tokenOutAmount?: string;
                 }): _135.MsgSwapExactAmountInResponse;
-                fromSDK(object: _135.MsgSwapExactAmountInResponseSDKType): _135.MsgSwapExactAmountInResponse;
-                toSDK(message: _135.MsgSwapExactAmountInResponse): _135.MsgSwapExactAmountInResponseSDKType;
             };
             SwapAmountOutRoute: {
                 encode(message: _135.SwapAmountOutRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -594,8 +516,6 @@ export declare namespace osmosis {
                     poolId?: any;
                     tokenInDenom?: string;
                 }): _135.SwapAmountOutRoute;
-                fromSDK(object: _135.SwapAmountOutRouteSDKType): _135.SwapAmountOutRoute;
-                toSDK(message: _135.SwapAmountOutRoute): _135.SwapAmountOutRouteSDKType;
             };
             MsgSwapExactAmountOut: {
                 encode(message: _135.MsgSwapExactAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -612,8 +532,6 @@ export declare namespace osmosis {
                         amount?: string;
                     };
                 }): _135.MsgSwapExactAmountOut;
-                fromSDK(object: _135.MsgSwapExactAmountOutSDKType): _135.MsgSwapExactAmountOut;
-                toSDK(message: _135.MsgSwapExactAmountOut): _135.MsgSwapExactAmountOutSDKType;
             };
             MsgSwapExactAmountOutResponse: {
                 encode(message: _135.MsgSwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -621,8 +539,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     tokenInAmount?: string;
                 }): _135.MsgSwapExactAmountOutResponse;
-                fromSDK(object: _135.MsgSwapExactAmountOutResponseSDKType): _135.MsgSwapExactAmountOutResponse;
-                toSDK(message: _135.MsgSwapExactAmountOutResponse): _135.MsgSwapExactAmountOutResponseSDKType;
             };
             MsgJoinSwapExternAmountIn: {
                 encode(message: _135.MsgJoinSwapExternAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -636,8 +552,6 @@ export declare namespace osmosis {
                     };
                     shareOutMinAmount?: string;
                 }): _135.MsgJoinSwapExternAmountIn;
-                fromSDK(object: _135.MsgJoinSwapExternAmountInSDKType): _135.MsgJoinSwapExternAmountIn;
-                toSDK(message: _135.MsgJoinSwapExternAmountIn): _135.MsgJoinSwapExternAmountInSDKType;
             };
             MsgJoinSwapExternAmountInResponse: {
                 encode(message: _135.MsgJoinSwapExternAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -645,8 +559,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     shareOutAmount?: string;
                 }): _135.MsgJoinSwapExternAmountInResponse;
-                fromSDK(object: _135.MsgJoinSwapExternAmountInResponseSDKType): _135.MsgJoinSwapExternAmountInResponse;
-                toSDK(message: _135.MsgJoinSwapExternAmountInResponse): _135.MsgJoinSwapExternAmountInResponseSDKType;
             };
             MsgJoinSwapShareAmountOut: {
                 encode(message: _135.MsgJoinSwapShareAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -658,8 +570,6 @@ export declare namespace osmosis {
                     shareOutAmount?: string;
                     tokenInMaxAmount?: string;
                 }): _135.MsgJoinSwapShareAmountOut;
-                fromSDK(object: _135.MsgJoinSwapShareAmountOutSDKType): _135.MsgJoinSwapShareAmountOut;
-                toSDK(message: _135.MsgJoinSwapShareAmountOut): _135.MsgJoinSwapShareAmountOutSDKType;
             };
             MsgJoinSwapShareAmountOutResponse: {
                 encode(message: _135.MsgJoinSwapShareAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -667,8 +577,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     tokenInAmount?: string;
                 }): _135.MsgJoinSwapShareAmountOutResponse;
-                fromSDK(object: _135.MsgJoinSwapShareAmountOutResponseSDKType): _135.MsgJoinSwapShareAmountOutResponse;
-                toSDK(message: _135.MsgJoinSwapShareAmountOutResponse): _135.MsgJoinSwapShareAmountOutResponseSDKType;
             };
             MsgExitSwapShareAmountIn: {
                 encode(message: _135.MsgExitSwapShareAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -680,8 +588,6 @@ export declare namespace osmosis {
                     shareInAmount?: string;
                     tokenOutMinAmount?: string;
                 }): _135.MsgExitSwapShareAmountIn;
-                fromSDK(object: _135.MsgExitSwapShareAmountInSDKType): _135.MsgExitSwapShareAmountIn;
-                toSDK(message: _135.MsgExitSwapShareAmountIn): _135.MsgExitSwapShareAmountInSDKType;
             };
             MsgExitSwapShareAmountInResponse: {
                 encode(message: _135.MsgExitSwapShareAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -689,8 +595,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     tokenOutAmount?: string;
                 }): _135.MsgExitSwapShareAmountInResponse;
-                fromSDK(object: _135.MsgExitSwapShareAmountInResponseSDKType): _135.MsgExitSwapShareAmountInResponse;
-                toSDK(message: _135.MsgExitSwapShareAmountInResponse): _135.MsgExitSwapShareAmountInResponseSDKType;
             };
             MsgExitSwapExternAmountOut: {
                 encode(message: _135.MsgExitSwapExternAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -704,8 +608,6 @@ export declare namespace osmosis {
                     };
                     shareInMaxAmount?: string;
                 }): _135.MsgExitSwapExternAmountOut;
-                fromSDK(object: _135.MsgExitSwapExternAmountOutSDKType): _135.MsgExitSwapExternAmountOut;
-                toSDK(message: _135.MsgExitSwapExternAmountOut): _135.MsgExitSwapExternAmountOutSDKType;
             };
             MsgExitSwapExternAmountOutResponse: {
                 encode(message: _135.MsgExitSwapExternAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -713,8 +615,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     shareInAmount?: string;
                 }): _135.MsgExitSwapExternAmountOutResponse;
-                fromSDK(object: _135.MsgExitSwapExternAmountOutResponseSDKType): _135.MsgExitSwapExternAmountOutResponse;
-                toSDK(message: _135.MsgExitSwapExternAmountOutResponse): _135.MsgExitSwapExternAmountOutResponseSDKType;
             };
             QueryPoolRequest: {
                 encode(message: _134.QueryPoolRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -722,8 +622,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     poolId?: any;
                 }): _134.QueryPoolRequest;
-                fromSDK(object: _134.QueryPoolRequestSDKType): _134.QueryPoolRequest;
-                toSDK(message: _134.QueryPoolRequest): _134.QueryPoolRequestSDKType;
             };
             QueryPoolResponse: {
                 encode(message: _134.QueryPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -734,8 +632,6 @@ export declare namespace osmosis {
                         value?: Uint8Array;
                     };
                 }): _134.QueryPoolResponse;
-                fromSDK(object: _134.QueryPoolResponseSDKType): _134.QueryPoolResponse;
-                toSDK(message: _134.QueryPoolResponse): _134.QueryPoolResponseSDKType;
             };
             QueryPoolsRequest: {
                 encode(message: _134.QueryPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -749,8 +645,6 @@ export declare namespace osmosis {
                         reverse?: boolean;
                     };
                 }): _134.QueryPoolsRequest;
-                fromSDK(object: _134.QueryPoolsRequestSDKType): _134.QueryPoolsRequest;
-                toSDK(message: _134.QueryPoolsRequest): _134.QueryPoolsRequestSDKType;
             };
             QueryPoolsResponse: {
                 encode(message: _134.QueryPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -765,15 +659,11 @@ export declare namespace osmosis {
                         total?: any;
                     };
                 }): _134.QueryPoolsResponse;
-                fromSDK(object: _134.QueryPoolsResponseSDKType): _134.QueryPoolsResponse;
-                toSDK(message: _134.QueryPoolsResponse): _134.QueryPoolsResponseSDKType;
             };
             QueryNumPoolsRequest: {
                 encode(_: _134.QueryNumPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryNumPoolsRequest;
                 fromPartial(_: {}): _134.QueryNumPoolsRequest;
-                fromSDK(_: _134.QueryNumPoolsRequestSDKType): _134.QueryNumPoolsRequest;
-                toSDK(_: _134.QueryNumPoolsRequest): _134.QueryNumPoolsRequestSDKType;
             };
             QueryNumPoolsResponse: {
                 encode(message: _134.QueryNumPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -781,8 +671,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     numPools?: any;
                 }): _134.QueryNumPoolsResponse;
-                fromSDK(object: _134.QueryNumPoolsResponseSDKType): _134.QueryNumPoolsResponse;
-                toSDK(message: _134.QueryNumPoolsResponse): _134.QueryNumPoolsResponseSDKType;
             };
             QueryPoolParamsRequest: {
                 encode(message: _134.QueryPoolParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -790,8 +678,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     poolId?: any;
                 }): _134.QueryPoolParamsRequest;
-                fromSDK(object: _134.QueryPoolParamsRequestSDKType): _134.QueryPoolParamsRequest;
-                toSDK(message: _134.QueryPoolParamsRequest): _134.QueryPoolParamsRequestSDKType;
             };
             QueryPoolParamsResponse: {
                 encode(message: _134.QueryPoolParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -802,8 +688,6 @@ export declare namespace osmosis {
                         value?: Uint8Array;
                     };
                 }): _134.QueryPoolParamsResponse;
-                fromSDK(object: _134.QueryPoolParamsResponseSDKType): _134.QueryPoolParamsResponse;
-                toSDK(message: _134.QueryPoolParamsResponse): _134.QueryPoolParamsResponseSDKType;
             };
             QueryTotalPoolLiquidityRequest: {
                 encode(message: _134.QueryTotalPoolLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -811,8 +695,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     poolId?: any;
                 }): _134.QueryTotalPoolLiquidityRequest;
-                fromSDK(object: _134.QueryTotalPoolLiquidityRequestSDKType): _134.QueryTotalPoolLiquidityRequest;
-                toSDK(message: _134.QueryTotalPoolLiquidityRequest): _134.QueryTotalPoolLiquidityRequestSDKType;
             };
             QueryTotalPoolLiquidityResponse: {
                 encode(message: _134.QueryTotalPoolLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -823,8 +705,6 @@ export declare namespace osmosis {
                         amount?: string;
                     }[];
                 }): _134.QueryTotalPoolLiquidityResponse;
-                fromSDK(object: _134.QueryTotalPoolLiquidityResponseSDKType): _134.QueryTotalPoolLiquidityResponse;
-                toSDK(message: _134.QueryTotalPoolLiquidityResponse): _134.QueryTotalPoolLiquidityResponseSDKType;
             };
             QueryTotalSharesRequest: {
                 encode(message: _134.QueryTotalSharesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -832,8 +712,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     poolId?: any;
                 }): _134.QueryTotalSharesRequest;
-                fromSDK(object: _134.QueryTotalSharesRequestSDKType): _134.QueryTotalSharesRequest;
-                toSDK(message: _134.QueryTotalSharesRequest): _134.QueryTotalSharesRequestSDKType;
             };
             QueryTotalSharesResponse: {
                 encode(message: _134.QueryTotalSharesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -844,8 +722,6 @@ export declare namespace osmosis {
                         amount?: string;
                     };
                 }): _134.QueryTotalSharesResponse;
-                fromSDK(object: _134.QueryTotalSharesResponseSDKType): _134.QueryTotalSharesResponse;
-                toSDK(message: _134.QueryTotalSharesResponse): _134.QueryTotalSharesResponseSDKType;
             };
             QuerySpotPriceRequest: {
                 encode(message: _134.QuerySpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -855,8 +731,6 @@ export declare namespace osmosis {
                     baseAssetDenom?: string;
                     quoteAssetDenom?: string;
                 }): _134.QuerySpotPriceRequest;
-                fromSDK(object: _134.QuerySpotPriceRequestSDKType): _134.QuerySpotPriceRequest;
-                toSDK(message: _134.QuerySpotPriceRequest): _134.QuerySpotPriceRequestSDKType;
             };
             QuerySpotPriceResponse: {
                 encode(message: _134.QuerySpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -864,8 +738,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     spotPrice?: string;
                 }): _134.QuerySpotPriceResponse;
-                fromSDK(object: _134.QuerySpotPriceResponseSDKType): _134.QuerySpotPriceResponse;
-                toSDK(message: _134.QuerySpotPriceResponse): _134.QuerySpotPriceResponseSDKType;
             };
             QuerySwapExactAmountInRequest: {
                 encode(message: _134.QuerySwapExactAmountInRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -879,8 +751,6 @@ export declare namespace osmosis {
                         tokenOutDenom?: string;
                     }[];
                 }): _134.QuerySwapExactAmountInRequest;
-                fromSDK(object: _134.QuerySwapExactAmountInRequestSDKType): _134.QuerySwapExactAmountInRequest;
-                toSDK(message: _134.QuerySwapExactAmountInRequest): _134.QuerySwapExactAmountInRequestSDKType;
             };
             QuerySwapExactAmountInResponse: {
                 encode(message: _134.QuerySwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -888,8 +758,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     tokenOutAmount?: string;
                 }): _134.QuerySwapExactAmountInResponse;
-                fromSDK(object: _134.QuerySwapExactAmountInResponseSDKType): _134.QuerySwapExactAmountInResponse;
-                toSDK(message: _134.QuerySwapExactAmountInResponse): _134.QuerySwapExactAmountInResponseSDKType;
             };
             QuerySwapExactAmountOutRequest: {
                 encode(message: _134.QuerySwapExactAmountOutRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -903,8 +771,6 @@ export declare namespace osmosis {
                     }[];
                     tokenOut?: string;
                 }): _134.QuerySwapExactAmountOutRequest;
-                fromSDK(object: _134.QuerySwapExactAmountOutRequestSDKType): _134.QuerySwapExactAmountOutRequest;
-                toSDK(message: _134.QuerySwapExactAmountOutRequest): _134.QuerySwapExactAmountOutRequestSDKType;
             };
             QuerySwapExactAmountOutResponse: {
                 encode(message: _134.QuerySwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -912,15 +778,11 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     tokenInAmount?: string;
                 }): _134.QuerySwapExactAmountOutResponse;
-                fromSDK(object: _134.QuerySwapExactAmountOutResponseSDKType): _134.QuerySwapExactAmountOutResponse;
-                toSDK(message: _134.QuerySwapExactAmountOutResponse): _134.QuerySwapExactAmountOutResponseSDKType;
             };
             QueryTotalLiquidityRequest: {
                 encode(_: _134.QueryTotalLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryTotalLiquidityRequest;
                 fromPartial(_: {}): _134.QueryTotalLiquidityRequest;
-                fromSDK(_: _134.QueryTotalLiquidityRequestSDKType): _134.QueryTotalLiquidityRequest;
-                toSDK(_: _134.QueryTotalLiquidityRequest): _134.QueryTotalLiquidityRequestSDKType;
             };
             QueryTotalLiquidityResponse: {
                 encode(message: _134.QueryTotalLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -931,8 +793,6 @@ export declare namespace osmosis {
                         amount?: string;
                     }[];
                 }): _134.QueryTotalLiquidityResponse;
-                fromSDK(object: _134.QueryTotalLiquidityResponseSDKType): _134.QueryTotalLiquidityResponse;
-                toSDK(message: _134.QueryTotalLiquidityResponse): _134.QueryTotalLiquidityResponseSDKType;
             };
             Params: {
                 encode(message: _133.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -943,8 +803,6 @@ export declare namespace osmosis {
                         amount?: string;
                     }[];
                 }): _133.Params;
-                fromSDK(object: _133.ParamsSDKType): _133.Params;
-                toSDK(message: _133.Params): _133.ParamsSDKType;
             };
             GenesisState: {
                 encode(message: _133.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -962,8 +820,6 @@ export declare namespace osmosis {
                         }[];
                     };
                 }): _133.GenesisState;
-                fromSDK(object: _133.GenesisStateSDKType): _133.GenesisState;
-                toSDK(message: _133.GenesisState): _133.GenesisStateSDKType;
             };
             SmoothWeightChangeParams: {
                 encode(message: _132.SmoothWeightChangeParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -989,8 +845,6 @@ export declare namespace osmosis {
                         weight?: string;
                     }[];
                 }): _132.SmoothWeightChangeParams;
-                fromSDK(object: _132.SmoothWeightChangeParamsSDKType): _132.SmoothWeightChangeParams;
-                toSDK(message: _132.SmoothWeightChangeParams): _132.SmoothWeightChangeParamsSDKType;
             };
             PoolParams: {
                 encode(message: _132.PoolParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1020,8 +874,6 @@ export declare namespace osmosis {
                         }[];
                     };
                 }): _132.PoolParams;
-                fromSDK(object: _132.PoolParamsSDKType): _132.PoolParams;
-                toSDK(message: _132.PoolParams): _132.PoolParamsSDKType;
             };
             PoolAsset: {
                 encode(message: _132.PoolAsset, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1033,8 +885,6 @@ export declare namespace osmosis {
                     };
                     weight?: string;
                 }): _132.PoolAsset;
-                fromSDK(object: _132.PoolAssetSDKType): _132.PoolAsset;
-                toSDK(message: _132.PoolAsset): _132.PoolAssetSDKType;
             };
             Pool: {
                 encode(message: _132.Pool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1081,8 +931,6 @@ export declare namespace osmosis {
                     }[];
                     totalWeight?: string;
                 }): _132.Pool;
-                fromSDK(object: _132.PoolSDKType): _132.Pool;
-                toSDK(message: _132.Pool): _132.PoolSDKType;
             };
         };
         namespace poolmodels {
@@ -1102,18 +950,6 @@ export declare namespace osmosis {
                             createBalancerPool(value: _136.MsgCreateBalancerPool): {
                                 typeUrl: string;
                                 value: _136.MsgCreateBalancerPool;
-                            };
-                        };
-                        toJSON: {
-                            createBalancerPool(value: _136.MsgCreateBalancerPool): {
-                                typeUrl: string;
-                                value: any;
-                            };
-                        };
-                        fromJSON: {
-                            createBalancerPool(value: any): {
-                                typeUrl: string;
-                                value: any;
                             };
                         };
                         fromPartial: {
@@ -1245,8 +1081,6 @@ export declare namespace osmosis {
                             }[];
                             futurePoolGovernor?: string;
                         }): _136.MsgCreateBalancerPool;
-                        fromSDK(object: _136.MsgCreateBalancerPoolSDKType): _136.MsgCreateBalancerPool;
-                        toSDK(message: _136.MsgCreateBalancerPool): _136.MsgCreateBalancerPoolSDKType;
                     };
                     MsgCreateBalancerPoolResponse: {
                         encode(message: _136.MsgCreateBalancerPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1254,8 +1088,6 @@ export declare namespace osmosis {
                         fromPartial(object: {
                             poolId?: any;
                         }): _136.MsgCreateBalancerPoolResponse;
-                        fromSDK(object: _136.MsgCreateBalancerPoolResponseSDKType): _136.MsgCreateBalancerPoolResponse;
-                        toSDK(message: _136.MsgCreateBalancerPoolResponse): _136.MsgCreateBalancerPoolResponseSDKType;
                     };
                 };
             }
@@ -1283,26 +1115,6 @@ export declare namespace osmosis {
                             stableSwapAdjustScalingFactors(value: _138.MsgStableSwapAdjustScalingFactors): {
                                 typeUrl: string;
                                 value: _138.MsgStableSwapAdjustScalingFactors;
-                            };
-                        };
-                        toJSON: {
-                            createStableswapPool(value: _138.MsgCreateStableswapPool): {
-                                typeUrl: string;
-                                value: any;
-                            };
-                            stableSwapAdjustScalingFactors(value: _138.MsgStableSwapAdjustScalingFactors): {
-                                typeUrl: string;
-                                value: any;
-                            };
-                        };
-                        fromJSON: {
-                            createStableswapPool(value: any): {
-                                typeUrl: string;
-                                value: any;
-                            };
-                            stableSwapAdjustScalingFactors(value: any): {
-                                typeUrl: string;
-                                value: any;
                             };
                         };
                         fromPartial: {
@@ -1373,8 +1185,6 @@ export declare namespace osmosis {
                             }[];
                             futurePoolGovernor?: string;
                         }): _138.MsgCreateStableswapPool;
-                        fromSDK(object: _138.MsgCreateStableswapPoolSDKType): _138.MsgCreateStableswapPool;
-                        toSDK(message: _138.MsgCreateStableswapPool): _138.MsgCreateStableswapPoolSDKType;
                     };
                     MsgCreateStableswapPoolResponse: {
                         encode(message: _138.MsgCreateStableswapPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1382,8 +1192,6 @@ export declare namespace osmosis {
                         fromPartial(object: {
                             poolId?: any;
                         }): _138.MsgCreateStableswapPoolResponse;
-                        fromSDK(object: _138.MsgCreateStableswapPoolResponseSDKType): _138.MsgCreateStableswapPoolResponse;
-                        toSDK(message: _138.MsgCreateStableswapPoolResponse): _138.MsgCreateStableswapPoolResponseSDKType;
                     };
                     MsgStableSwapAdjustScalingFactors: {
                         encode(message: _138.MsgStableSwapAdjustScalingFactors, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1393,15 +1201,11 @@ export declare namespace osmosis {
                             poolId?: any;
                             scalingFactors?: any[];
                         }): _138.MsgStableSwapAdjustScalingFactors;
-                        fromSDK(object: _138.MsgStableSwapAdjustScalingFactorsSDKType): _138.MsgStableSwapAdjustScalingFactors;
-                        toSDK(message: _138.MsgStableSwapAdjustScalingFactors): _138.MsgStableSwapAdjustScalingFactorsSDKType;
                     };
                     MsgStableSwapAdjustScalingFactorsResponse: {
                         encode(_: _138.MsgStableSwapAdjustScalingFactorsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                         decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.MsgStableSwapAdjustScalingFactorsResponseSDKType;
                         fromPartial(_: {}): _138.MsgStableSwapAdjustScalingFactorsResponse;
-                        fromSDK(_: _138.MsgStableSwapAdjustScalingFactorsResponseSDKType): _138.MsgStableSwapAdjustScalingFactorsResponse;
-                        toSDK(_: _138.MsgStableSwapAdjustScalingFactorsResponse): _138.MsgStableSwapAdjustScalingFactorsResponseSDKType;
                     };
                     PoolParams: {
                         encode(message: _137.PoolParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1410,8 +1214,6 @@ export declare namespace osmosis {
                             swapFee?: string;
                             exitFee?: string;
                         }): _137.PoolParams;
-                        fromSDK(object: _137.PoolParamsSDKType): _137.PoolParams;
-                        toSDK(message: _137.PoolParams): _137.PoolParamsSDKType;
                     };
                     Pool: {
                         encode(message: _137.Pool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1435,8 +1237,6 @@ export declare namespace osmosis {
                             scalingFactor?: any[];
                             scalingFactorGovernor?: string;
                         }): _137.Pool;
-                        fromSDK(object: _137.PoolSDKType): _137.Pool;
-                        toSDK(message: _137.Pool): _137.PoolSDKType;
                     };
                 };
             }
@@ -1445,6 +1245,18 @@ export declare namespace osmosis {
     const incentives: {
         MsgClientImpl: typeof _314.MsgClientImpl;
         QueryClientImpl: typeof _304.QueryClientImpl;
+        createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+            moduleToDistributeCoins(request: _142.ModuleToDistributeCoinsRequest): Promise<_142.ModuleToDistributeCoinsResponseSDKType>;
+            moduleDistributedCoins(request: _142.ModuleDistributedCoinsRequest): Promise<_142.ModuleDistributedCoinsResponseSDKType>;
+            gaugeByID(request: _142.GaugeByIDRequest): Promise<_142.GaugeByIDResponseSDKType>;
+            gauges(request: _142.GaugesRequest): Promise<_142.GaugesResponseSDKType>;
+            activeGauges(request: _142.ActiveGaugesRequest): Promise<_142.ActiveGaugesResponseSDKType>;
+            activeGaugesPerDenom(request: _142.ActiveGaugesPerDenomRequest): Promise<_142.ActiveGaugesPerDenomResponseSDKType>;
+            upcomingGauges(request: _142.UpcomingGaugesRequest): Promise<_142.UpcomingGaugesResponseSDKType>;
+            upcomingGaugesPerDenom(request: _142.UpcomingGaugesPerDenomRequest): Promise<_142.UpcomingGaugesPerDenomResponseSDKType>;
+            rewardsEst(request: _142.RewardsEstRequest): Promise<_142.RewardsEstResponseSDKType>;
+            lockableDurations(request: _142.QueryLockableDurationsRequest): Promise<_142.QueryLockableDurationsResponseSDKType>;
+        };
         LCDQueryClient: typeof _295.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
@@ -1467,26 +1279,6 @@ export declare namespace osmosis {
                 addToGauge(value: _143.MsgAddToGauge): {
                     typeUrl: string;
                     value: _143.MsgAddToGauge;
-                };
-            };
-            toJSON: {
-                createGauge(value: _143.MsgCreateGauge): {
-                    typeUrl: string;
-                    value: any;
-                };
-                addToGauge(value: _143.MsgAddToGauge): {
-                    typeUrl: string;
-                    value: any;
-                };
-            };
-            fromJSON: {
-                createGauge(value: any): {
-                    typeUrl: string;
-                    value: any;
-                };
-                addToGauge(value: any): {
-                    typeUrl: string;
-                    value: any;
                 };
             };
             fromPartial: {
@@ -1596,15 +1388,11 @@ export declare namespace osmosis {
                 startTime?: Date;
                 numEpochsPaidOver?: any;
             }): _143.MsgCreateGauge;
-            fromSDK(object: _143.MsgCreateGaugeSDKType): _143.MsgCreateGauge;
-            toSDK(message: _143.MsgCreateGauge): _143.MsgCreateGaugeSDKType;
         };
         MsgCreateGaugeResponse: {
             encode(_: _143.MsgCreateGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgCreateGaugeResponseSDKType;
             fromPartial(_: {}): _143.MsgCreateGaugeResponse;
-            fromSDK(_: _143.MsgCreateGaugeResponseSDKType): _143.MsgCreateGaugeResponse;
-            toSDK(_: _143.MsgCreateGaugeResponse): _143.MsgCreateGaugeResponseSDKType;
         };
         MsgAddToGauge: {
             encode(message: _143.MsgAddToGauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1617,22 +1405,16 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _143.MsgAddToGauge;
-            fromSDK(object: _143.MsgAddToGaugeSDKType): _143.MsgAddToGauge;
-            toSDK(message: _143.MsgAddToGauge): _143.MsgAddToGaugeSDKType;
         };
         MsgAddToGaugeResponse: {
             encode(_: _143.MsgAddToGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgAddToGaugeResponseSDKType;
             fromPartial(_: {}): _143.MsgAddToGaugeResponse;
-            fromSDK(_: _143.MsgAddToGaugeResponseSDKType): _143.MsgAddToGaugeResponse;
-            toSDK(_: _143.MsgAddToGaugeResponse): _143.MsgAddToGaugeResponseSDKType;
         };
         ModuleToDistributeCoinsRequest: {
             encode(_: _142.ModuleToDistributeCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleToDistributeCoinsRequest;
             fromPartial(_: {}): _142.ModuleToDistributeCoinsRequest;
-            fromSDK(_: _142.ModuleToDistributeCoinsRequestSDKType): _142.ModuleToDistributeCoinsRequest;
-            toSDK(_: _142.ModuleToDistributeCoinsRequest): _142.ModuleToDistributeCoinsRequestSDKType;
         };
         ModuleToDistributeCoinsResponse: {
             encode(message: _142.ModuleToDistributeCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1643,15 +1425,11 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _142.ModuleToDistributeCoinsResponse;
-            fromSDK(object: _142.ModuleToDistributeCoinsResponseSDKType): _142.ModuleToDistributeCoinsResponse;
-            toSDK(message: _142.ModuleToDistributeCoinsResponse): _142.ModuleToDistributeCoinsResponseSDKType;
         };
         ModuleDistributedCoinsRequest: {
             encode(_: _142.ModuleDistributedCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleDistributedCoinsRequest;
             fromPartial(_: {}): _142.ModuleDistributedCoinsRequest;
-            fromSDK(_: _142.ModuleDistributedCoinsRequestSDKType): _142.ModuleDistributedCoinsRequest;
-            toSDK(_: _142.ModuleDistributedCoinsRequest): _142.ModuleDistributedCoinsRequestSDKType;
         };
         ModuleDistributedCoinsResponse: {
             encode(message: _142.ModuleDistributedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1662,8 +1440,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _142.ModuleDistributedCoinsResponse;
-            fromSDK(object: _142.ModuleDistributedCoinsResponseSDKType): _142.ModuleDistributedCoinsResponse;
-            toSDK(message: _142.ModuleDistributedCoinsResponse): _142.ModuleDistributedCoinsResponseSDKType;
         };
         GaugeByIDRequest: {
             encode(message: _142.GaugeByIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1671,8 +1447,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 id?: any;
             }): _142.GaugeByIDRequest;
-            fromSDK(object: _142.GaugeByIDRequestSDKType): _142.GaugeByIDRequest;
-            toSDK(message: _142.GaugeByIDRequest): _142.GaugeByIDRequestSDKType;
         };
         GaugeByIDResponse: {
             encode(message: _142.GaugeByIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1703,8 +1477,6 @@ export declare namespace osmosis {
                     }[];
                 };
             }): _142.GaugeByIDResponse;
-            fromSDK(object: _142.GaugeByIDResponseSDKType): _142.GaugeByIDResponse;
-            toSDK(message: _142.GaugeByIDResponse): _142.GaugeByIDResponseSDKType;
         };
         GaugesRequest: {
             encode(message: _142.GaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1718,8 +1490,6 @@ export declare namespace osmosis {
                     reverse?: boolean;
                 };
             }): _142.GaugesRequest;
-            fromSDK(object: _142.GaugesRequestSDKType): _142.GaugesRequest;
-            toSDK(message: _142.GaugesRequest): _142.GaugesRequestSDKType;
         };
         GaugesResponse: {
             encode(message: _142.GaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1754,8 +1524,6 @@ export declare namespace osmosis {
                     total?: any;
                 };
             }): _142.GaugesResponse;
-            fromSDK(object: _142.GaugesResponseSDKType): _142.GaugesResponse;
-            toSDK(message: _142.GaugesResponse): _142.GaugesResponseSDKType;
         };
         ActiveGaugesRequest: {
             encode(message: _142.ActiveGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1769,8 +1537,6 @@ export declare namespace osmosis {
                     reverse?: boolean;
                 };
             }): _142.ActiveGaugesRequest;
-            fromSDK(object: _142.ActiveGaugesRequestSDKType): _142.ActiveGaugesRequest;
-            toSDK(message: _142.ActiveGaugesRequest): _142.ActiveGaugesRequestSDKType;
         };
         ActiveGaugesResponse: {
             encode(message: _142.ActiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1805,8 +1571,6 @@ export declare namespace osmosis {
                     total?: any;
                 };
             }): _142.ActiveGaugesResponse;
-            fromSDK(object: _142.ActiveGaugesResponseSDKType): _142.ActiveGaugesResponse;
-            toSDK(message: _142.ActiveGaugesResponse): _142.ActiveGaugesResponseSDKType;
         };
         ActiveGaugesPerDenomRequest: {
             encode(message: _142.ActiveGaugesPerDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1821,8 +1585,6 @@ export declare namespace osmosis {
                     reverse?: boolean;
                 };
             }): _142.ActiveGaugesPerDenomRequest;
-            fromSDK(object: _142.ActiveGaugesPerDenomRequestSDKType): _142.ActiveGaugesPerDenomRequest;
-            toSDK(message: _142.ActiveGaugesPerDenomRequest): _142.ActiveGaugesPerDenomRequestSDKType;
         };
         ActiveGaugesPerDenomResponse: {
             encode(message: _142.ActiveGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1857,8 +1619,6 @@ export declare namespace osmosis {
                     total?: any;
                 };
             }): _142.ActiveGaugesPerDenomResponse;
-            fromSDK(object: _142.ActiveGaugesPerDenomResponseSDKType): _142.ActiveGaugesPerDenomResponse;
-            toSDK(message: _142.ActiveGaugesPerDenomResponse): _142.ActiveGaugesPerDenomResponseSDKType;
         };
         UpcomingGaugesRequest: {
             encode(message: _142.UpcomingGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1872,8 +1632,6 @@ export declare namespace osmosis {
                     reverse?: boolean;
                 };
             }): _142.UpcomingGaugesRequest;
-            fromSDK(object: _142.UpcomingGaugesRequestSDKType): _142.UpcomingGaugesRequest;
-            toSDK(message: _142.UpcomingGaugesRequest): _142.UpcomingGaugesRequestSDKType;
         };
         UpcomingGaugesResponse: {
             encode(message: _142.UpcomingGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1908,8 +1666,6 @@ export declare namespace osmosis {
                     total?: any;
                 };
             }): _142.UpcomingGaugesResponse;
-            fromSDK(object: _142.UpcomingGaugesResponseSDKType): _142.UpcomingGaugesResponse;
-            toSDK(message: _142.UpcomingGaugesResponse): _142.UpcomingGaugesResponseSDKType;
         };
         UpcomingGaugesPerDenomRequest: {
             encode(message: _142.UpcomingGaugesPerDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1924,8 +1680,6 @@ export declare namespace osmosis {
                     reverse?: boolean;
                 };
             }): _142.UpcomingGaugesPerDenomRequest;
-            fromSDK(object: _142.UpcomingGaugesPerDenomRequestSDKType): _142.UpcomingGaugesPerDenomRequest;
-            toSDK(message: _142.UpcomingGaugesPerDenomRequest): _142.UpcomingGaugesPerDenomRequestSDKType;
         };
         UpcomingGaugesPerDenomResponse: {
             encode(message: _142.UpcomingGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1960,8 +1714,6 @@ export declare namespace osmosis {
                     total?: any;
                 };
             }): _142.UpcomingGaugesPerDenomResponse;
-            fromSDK(object: _142.UpcomingGaugesPerDenomResponseSDKType): _142.UpcomingGaugesPerDenomResponse;
-            toSDK(message: _142.UpcomingGaugesPerDenomResponse): _142.UpcomingGaugesPerDenomResponseSDKType;
         };
         RewardsEstRequest: {
             encode(message: _142.RewardsEstRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1971,8 +1723,6 @@ export declare namespace osmosis {
                 lockIds?: any[];
                 endEpoch?: any;
             }): _142.RewardsEstRequest;
-            fromSDK(object: _142.RewardsEstRequestSDKType): _142.RewardsEstRequest;
-            toSDK(message: _142.RewardsEstRequest): _142.RewardsEstRequestSDKType;
         };
         RewardsEstResponse: {
             encode(message: _142.RewardsEstResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -1983,15 +1733,11 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _142.RewardsEstResponse;
-            fromSDK(object: _142.RewardsEstResponseSDKType): _142.RewardsEstResponse;
-            toSDK(message: _142.RewardsEstResponse): _142.RewardsEstResponseSDKType;
         };
         QueryLockableDurationsRequest: {
             encode(_: _142.QueryLockableDurationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.QueryLockableDurationsRequest;
             fromPartial(_: {}): _142.QueryLockableDurationsRequest;
-            fromSDK(_: _142.QueryLockableDurationsRequestSDKType): _142.QueryLockableDurationsRequest;
-            toSDK(_: _142.QueryLockableDurationsRequest): _142.QueryLockableDurationsRequestSDKType;
         };
         QueryLockableDurationsResponse: {
             encode(message: _142.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2002,8 +1748,6 @@ export declare namespace osmosis {
                     nanos?: number;
                 }[];
             }): _142.QueryLockableDurationsResponse;
-            fromSDK(object: _142.QueryLockableDurationsResponseSDKType): _142.QueryLockableDurationsResponse;
-            toSDK(message: _142.QueryLockableDurationsResponse): _142.QueryLockableDurationsResponseSDKType;
         };
         Params: {
             encode(message: _141.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2011,8 +1755,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 distrEpochIdentifier?: string;
             }): _141.Params;
-            fromSDK(object: _141.ParamsSDKType): _141.Params;
-            toSDK(message: _141.Params): _141.ParamsSDKType;
         };
         GenesisState: {
             encode(message: _140.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2051,8 +1793,6 @@ export declare namespace osmosis {
                 }[];
                 lastGaugeId?: any;
             }): _140.GenesisState;
-            fromSDK(object: _140.GenesisStateSDKType): _140.GenesisState;
-            toSDK(message: _140.GenesisState): _140.GenesisStateSDKType;
         };
         Gauge: {
             encode(message: _139.Gauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2081,8 +1821,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _139.Gauge;
-            fromSDK(object: _139.GaugeSDKType): _139.Gauge;
-            toSDK(message: _139.Gauge): _139.GaugeSDKType;
         };
         LockableDurationsInfo: {
             encode(message: _139.LockableDurationsInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2093,13 +1831,29 @@ export declare namespace osmosis {
                     nanos?: number;
                 }[];
             }): _139.LockableDurationsInfo;
-            fromSDK(object: _139.LockableDurationsInfoSDKType): _139.LockableDurationsInfo;
-            toSDK(message: _139.LockableDurationsInfo): _139.LockableDurationsInfoSDKType;
         };
     };
     const lockup: {
         MsgClientImpl: typeof _315.MsgClientImpl;
         QueryClientImpl: typeof _305.QueryClientImpl;
+        createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+            moduleBalance(request: _146.ModuleBalanceRequest): Promise<_146.ModuleBalanceResponseSDKType>;
+            moduleLockedAmount(request: _146.ModuleLockedAmountRequest): Promise<_146.ModuleLockedAmountResponseSDKType>;
+            accountUnlockableCoins(request: _146.AccountUnlockableCoinsRequest): Promise<_146.AccountUnlockableCoinsResponseSDKType>;
+            accountUnlockingCoins(request: _146.AccountUnlockingCoinsRequest): Promise<_146.AccountUnlockingCoinsResponseSDKType>;
+            accountLockedCoins(request: _146.AccountLockedCoinsRequest): Promise<_146.AccountLockedCoinsResponseSDKType>;
+            accountLockedPastTime(request: _146.AccountLockedPastTimeRequest): Promise<_146.AccountLockedPastTimeResponseSDKType>;
+            accountLockedPastTimeNotUnlockingOnly(request: _146.AccountLockedPastTimeNotUnlockingOnlyRequest): Promise<_146.AccountLockedPastTimeNotUnlockingOnlyResponseSDKType>;
+            accountUnlockedBeforeTime(request: _146.AccountUnlockedBeforeTimeRequest): Promise<_146.AccountUnlockedBeforeTimeResponseSDKType>;
+            accountLockedPastTimeDenom(request: _146.AccountLockedPastTimeDenomRequest): Promise<_146.AccountLockedPastTimeDenomResponseSDKType>;
+            lockedDenom(request: _146.LockedDenomRequest): Promise<_146.LockedDenomResponseSDKType>;
+            lockedByID(request: _146.LockedRequest): Promise<_146.LockedResponseSDKType>;
+            syntheticLockupsByLockupID(request: _146.SyntheticLockupsByLockupIDRequest): Promise<_146.SyntheticLockupsByLockupIDResponseSDKType>;
+            accountLockedLongerDuration(request: _146.AccountLockedLongerDurationRequest): Promise<_146.AccountLockedLongerDurationResponseSDKType>;
+            accountLockedDuration(request: _146.AccountLockedDurationRequest): Promise<_146.AccountLockedDurationResponseSDKType>;
+            accountLockedLongerDurationNotUnlockingOnly(request: _146.AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<_146.AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType>;
+            accountLockedLongerDurationDenom(request: _146.AccountLockedLongerDurationDenomRequest): Promise<_146.AccountLockedLongerDurationDenomResponseSDKType>;
+        };
         LCDQueryClient: typeof _296.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
@@ -2138,42 +1892,6 @@ export declare namespace osmosis {
                 extendLockup(value: _147.MsgExtendLockup): {
                     typeUrl: string;
                     value: _147.MsgExtendLockup;
-                };
-            };
-            toJSON: {
-                lockTokens(value: _147.MsgLockTokens): {
-                    typeUrl: string;
-                    value: any;
-                };
-                beginUnlockingAll(value: _147.MsgBeginUnlockingAll): {
-                    typeUrl: string;
-                    value: any;
-                };
-                beginUnlocking(value: _147.MsgBeginUnlocking): {
-                    typeUrl: string;
-                    value: any;
-                };
-                extendLockup(value: _147.MsgExtendLockup): {
-                    typeUrl: string;
-                    value: any;
-                };
-            };
-            fromJSON: {
-                lockTokens(value: any): {
-                    typeUrl: string;
-                    value: any;
-                };
-                beginUnlockingAll(value: any): {
-                    typeUrl: string;
-                    value: any;
-                };
-                beginUnlocking(value: any): {
-                    typeUrl: string;
-                    value: any;
-                };
-                extendLockup(value: any): {
-                    typeUrl: string;
-                    value: any;
                 };
             };
             fromPartial: {
@@ -2283,8 +2001,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _147.MsgLockTokens;
-            fromSDK(object: _147.MsgLockTokensSDKType): _147.MsgLockTokens;
-            toSDK(message: _147.MsgLockTokens): _147.MsgLockTokensSDKType;
         };
         MsgLockTokensResponse: {
             encode(message: _147.MsgLockTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2292,8 +2008,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 ID?: any;
             }): _147.MsgLockTokensResponse;
-            fromSDK(object: _147.MsgLockTokensResponseSDKType): _147.MsgLockTokensResponse;
-            toSDK(message: _147.MsgLockTokensResponse): _147.MsgLockTokensResponseSDKType;
         };
         MsgBeginUnlockingAll: {
             encode(message: _147.MsgBeginUnlockingAll, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2301,8 +2015,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 owner?: string;
             }): _147.MsgBeginUnlockingAll;
-            fromSDK(object: _147.MsgBeginUnlockingAllSDKType): _147.MsgBeginUnlockingAll;
-            toSDK(message: _147.MsgBeginUnlockingAll): _147.MsgBeginUnlockingAllSDKType;
         };
         MsgBeginUnlockingAllResponse: {
             encode(message: _147.MsgBeginUnlockingAllResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2322,8 +2034,6 @@ export declare namespace osmosis {
                     }[];
                 }[];
             }): _147.MsgBeginUnlockingAllResponse;
-            fromSDK(object: _147.MsgBeginUnlockingAllResponseSDKType): _147.MsgBeginUnlockingAllResponse;
-            toSDK(message: _147.MsgBeginUnlockingAllResponse): _147.MsgBeginUnlockingAllResponseSDKType;
         };
         MsgBeginUnlocking: {
             encode(message: _147.MsgBeginUnlocking, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2336,8 +2046,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _147.MsgBeginUnlocking;
-            fromSDK(object: _147.MsgBeginUnlockingSDKType): _147.MsgBeginUnlocking;
-            toSDK(message: _147.MsgBeginUnlocking): _147.MsgBeginUnlockingSDKType;
         };
         MsgBeginUnlockingResponse: {
             encode(message: _147.MsgBeginUnlockingResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2345,8 +2053,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 success?: boolean;
             }): _147.MsgBeginUnlockingResponse;
-            fromSDK(object: _147.MsgBeginUnlockingResponseSDKType): _147.MsgBeginUnlockingResponse;
-            toSDK(message: _147.MsgBeginUnlockingResponse): _147.MsgBeginUnlockingResponseSDKType;
         };
         MsgExtendLockup: {
             encode(message: _147.MsgExtendLockup, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2359,8 +2065,6 @@ export declare namespace osmosis {
                     nanos?: number;
                 };
             }): _147.MsgExtendLockup;
-            fromSDK(object: _147.MsgExtendLockupSDKType): _147.MsgExtendLockup;
-            toSDK(message: _147.MsgExtendLockup): _147.MsgExtendLockupSDKType;
         };
         MsgExtendLockupResponse: {
             encode(message: _147.MsgExtendLockupResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2368,15 +2072,11 @@ export declare namespace osmosis {
             fromPartial(object: {
                 success?: boolean;
             }): _147.MsgExtendLockupResponse;
-            fromSDK(object: _147.MsgExtendLockupResponseSDKType): _147.MsgExtendLockupResponse;
-            toSDK(message: _147.MsgExtendLockupResponse): _147.MsgExtendLockupResponseSDKType;
         };
         ModuleBalanceRequest: {
             encode(_: _146.ModuleBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.ModuleBalanceRequest;
             fromPartial(_: {}): _146.ModuleBalanceRequest;
-            fromSDK(_: _146.ModuleBalanceRequestSDKType): _146.ModuleBalanceRequest;
-            toSDK(_: _146.ModuleBalanceRequest): _146.ModuleBalanceRequestSDKType;
         };
         ModuleBalanceResponse: {
             encode(message: _146.ModuleBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2387,15 +2087,11 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _146.ModuleBalanceResponse;
-            fromSDK(object: _146.ModuleBalanceResponseSDKType): _146.ModuleBalanceResponse;
-            toSDK(message: _146.ModuleBalanceResponse): _146.ModuleBalanceResponseSDKType;
         };
         ModuleLockedAmountRequest: {
             encode(_: _146.ModuleLockedAmountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.ModuleLockedAmountRequest;
             fromPartial(_: {}): _146.ModuleLockedAmountRequest;
-            fromSDK(_: _146.ModuleLockedAmountRequestSDKType): _146.ModuleLockedAmountRequest;
-            toSDK(_: _146.ModuleLockedAmountRequest): _146.ModuleLockedAmountRequestSDKType;
         };
         ModuleLockedAmountResponse: {
             encode(message: _146.ModuleLockedAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2406,8 +2102,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _146.ModuleLockedAmountResponse;
-            fromSDK(object: _146.ModuleLockedAmountResponseSDKType): _146.ModuleLockedAmountResponse;
-            toSDK(message: _146.ModuleLockedAmountResponse): _146.ModuleLockedAmountResponseSDKType;
         };
         AccountUnlockableCoinsRequest: {
             encode(message: _146.AccountUnlockableCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2415,8 +2109,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 owner?: string;
             }): _146.AccountUnlockableCoinsRequest;
-            fromSDK(object: _146.AccountUnlockableCoinsRequestSDKType): _146.AccountUnlockableCoinsRequest;
-            toSDK(message: _146.AccountUnlockableCoinsRequest): _146.AccountUnlockableCoinsRequestSDKType;
         };
         AccountUnlockableCoinsResponse: {
             encode(message: _146.AccountUnlockableCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2427,8 +2119,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _146.AccountUnlockableCoinsResponse;
-            fromSDK(object: _146.AccountUnlockableCoinsResponseSDKType): _146.AccountUnlockableCoinsResponse;
-            toSDK(message: _146.AccountUnlockableCoinsResponse): _146.AccountUnlockableCoinsResponseSDKType;
         };
         AccountUnlockingCoinsRequest: {
             encode(message: _146.AccountUnlockingCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2436,8 +2126,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 owner?: string;
             }): _146.AccountUnlockingCoinsRequest;
-            fromSDK(object: _146.AccountUnlockingCoinsRequestSDKType): _146.AccountUnlockingCoinsRequest;
-            toSDK(message: _146.AccountUnlockingCoinsRequest): _146.AccountUnlockingCoinsRequestSDKType;
         };
         AccountUnlockingCoinsResponse: {
             encode(message: _146.AccountUnlockingCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2448,8 +2136,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _146.AccountUnlockingCoinsResponse;
-            fromSDK(object: _146.AccountUnlockingCoinsResponseSDKType): _146.AccountUnlockingCoinsResponse;
-            toSDK(message: _146.AccountUnlockingCoinsResponse): _146.AccountUnlockingCoinsResponseSDKType;
         };
         AccountLockedCoinsRequest: {
             encode(message: _146.AccountLockedCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2457,8 +2143,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 owner?: string;
             }): _146.AccountLockedCoinsRequest;
-            fromSDK(object: _146.AccountLockedCoinsRequestSDKType): _146.AccountLockedCoinsRequest;
-            toSDK(message: _146.AccountLockedCoinsRequest): _146.AccountLockedCoinsRequestSDKType;
         };
         AccountLockedCoinsResponse: {
             encode(message: _146.AccountLockedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2469,8 +2153,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _146.AccountLockedCoinsResponse;
-            fromSDK(object: _146.AccountLockedCoinsResponseSDKType): _146.AccountLockedCoinsResponse;
-            toSDK(message: _146.AccountLockedCoinsResponse): _146.AccountLockedCoinsResponseSDKType;
         };
         AccountLockedPastTimeRequest: {
             encode(message: _146.AccountLockedPastTimeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2479,8 +2161,6 @@ export declare namespace osmosis {
                 owner?: string;
                 timestamp?: Date;
             }): _146.AccountLockedPastTimeRequest;
-            fromSDK(object: _146.AccountLockedPastTimeRequestSDKType): _146.AccountLockedPastTimeRequest;
-            toSDK(message: _146.AccountLockedPastTimeRequest): _146.AccountLockedPastTimeRequestSDKType;
         };
         AccountLockedPastTimeResponse: {
             encode(message: _146.AccountLockedPastTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2500,8 +2180,6 @@ export declare namespace osmosis {
                     }[];
                 }[];
             }): _146.AccountLockedPastTimeResponse;
-            fromSDK(object: _146.AccountLockedPastTimeResponseSDKType): _146.AccountLockedPastTimeResponse;
-            toSDK(message: _146.AccountLockedPastTimeResponse): _146.AccountLockedPastTimeResponseSDKType;
         };
         AccountLockedPastTimeNotUnlockingOnlyRequest: {
             encode(message: _146.AccountLockedPastTimeNotUnlockingOnlyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2510,8 +2188,6 @@ export declare namespace osmosis {
                 owner?: string;
                 timestamp?: Date;
             }): _146.AccountLockedPastTimeNotUnlockingOnlyRequest;
-            fromSDK(object: _146.AccountLockedPastTimeNotUnlockingOnlyRequestSDKType): _146.AccountLockedPastTimeNotUnlockingOnlyRequest;
-            toSDK(message: _146.AccountLockedPastTimeNotUnlockingOnlyRequest): _146.AccountLockedPastTimeNotUnlockingOnlyRequestSDKType;
         };
         AccountLockedPastTimeNotUnlockingOnlyResponse: {
             encode(message: _146.AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2531,8 +2207,6 @@ export declare namespace osmosis {
                     }[];
                 }[];
             }): _146.AccountLockedPastTimeNotUnlockingOnlyResponse;
-            fromSDK(object: _146.AccountLockedPastTimeNotUnlockingOnlyResponseSDKType): _146.AccountLockedPastTimeNotUnlockingOnlyResponse;
-            toSDK(message: _146.AccountLockedPastTimeNotUnlockingOnlyResponse): _146.AccountLockedPastTimeNotUnlockingOnlyResponseSDKType;
         };
         AccountUnlockedBeforeTimeRequest: {
             encode(message: _146.AccountUnlockedBeforeTimeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2541,8 +2215,6 @@ export declare namespace osmosis {
                 owner?: string;
                 timestamp?: Date;
             }): _146.AccountUnlockedBeforeTimeRequest;
-            fromSDK(object: _146.AccountUnlockedBeforeTimeRequestSDKType): _146.AccountUnlockedBeforeTimeRequest;
-            toSDK(message: _146.AccountUnlockedBeforeTimeRequest): _146.AccountUnlockedBeforeTimeRequestSDKType;
         };
         AccountUnlockedBeforeTimeResponse: {
             encode(message: _146.AccountUnlockedBeforeTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2562,8 +2234,6 @@ export declare namespace osmosis {
                     }[];
                 }[];
             }): _146.AccountUnlockedBeforeTimeResponse;
-            fromSDK(object: _146.AccountUnlockedBeforeTimeResponseSDKType): _146.AccountUnlockedBeforeTimeResponse;
-            toSDK(message: _146.AccountUnlockedBeforeTimeResponse): _146.AccountUnlockedBeforeTimeResponseSDKType;
         };
         AccountLockedPastTimeDenomRequest: {
             encode(message: _146.AccountLockedPastTimeDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2573,8 +2243,6 @@ export declare namespace osmosis {
                 timestamp?: Date;
                 denom?: string;
             }): _146.AccountLockedPastTimeDenomRequest;
-            fromSDK(object: _146.AccountLockedPastTimeDenomRequestSDKType): _146.AccountLockedPastTimeDenomRequest;
-            toSDK(message: _146.AccountLockedPastTimeDenomRequest): _146.AccountLockedPastTimeDenomRequestSDKType;
         };
         AccountLockedPastTimeDenomResponse: {
             encode(message: _146.AccountLockedPastTimeDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2594,8 +2262,6 @@ export declare namespace osmosis {
                     }[];
                 }[];
             }): _146.AccountLockedPastTimeDenomResponse;
-            fromSDK(object: _146.AccountLockedPastTimeDenomResponseSDKType): _146.AccountLockedPastTimeDenomResponse;
-            toSDK(message: _146.AccountLockedPastTimeDenomResponse): _146.AccountLockedPastTimeDenomResponseSDKType;
         };
         LockedDenomRequest: {
             encode(message: _146.LockedDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2607,8 +2273,6 @@ export declare namespace osmosis {
                     nanos?: number;
                 };
             }): _146.LockedDenomRequest;
-            fromSDK(object: _146.LockedDenomRequestSDKType): _146.LockedDenomRequest;
-            toSDK(message: _146.LockedDenomRequest): _146.LockedDenomRequestSDKType;
         };
         LockedDenomResponse: {
             encode(message: _146.LockedDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2616,8 +2280,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 amount?: string;
             }): _146.LockedDenomResponse;
-            fromSDK(object: _146.LockedDenomResponseSDKType): _146.LockedDenomResponse;
-            toSDK(message: _146.LockedDenomResponse): _146.LockedDenomResponseSDKType;
         };
         LockedRequest: {
             encode(message: _146.LockedRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2625,8 +2287,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 lockId?: any;
             }): _146.LockedRequest;
-            fromSDK(object: _146.LockedRequestSDKType): _146.LockedRequest;
-            toSDK(message: _146.LockedRequest): _146.LockedRequestSDKType;
         };
         LockedResponse: {
             encode(message: _146.LockedResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2646,8 +2306,6 @@ export declare namespace osmosis {
                     }[];
                 };
             }): _146.LockedResponse;
-            fromSDK(object: _146.LockedResponseSDKType): _146.LockedResponse;
-            toSDK(message: _146.LockedResponse): _146.LockedResponseSDKType;
         };
         SyntheticLockupsByLockupIDRequest: {
             encode(message: _146.SyntheticLockupsByLockupIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2655,8 +2313,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 lockId?: any;
             }): _146.SyntheticLockupsByLockupIDRequest;
-            fromSDK(object: _146.SyntheticLockupsByLockupIDRequestSDKType): _146.SyntheticLockupsByLockupIDRequest;
-            toSDK(message: _146.SyntheticLockupsByLockupIDRequest): _146.SyntheticLockupsByLockupIDRequestSDKType;
         };
         SyntheticLockupsByLockupIDResponse: {
             encode(message: _146.SyntheticLockupsByLockupIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2672,8 +2328,6 @@ export declare namespace osmosis {
                     };
                 }[];
             }): _146.SyntheticLockupsByLockupIDResponse;
-            fromSDK(object: _146.SyntheticLockupsByLockupIDResponseSDKType): _146.SyntheticLockupsByLockupIDResponse;
-            toSDK(message: _146.SyntheticLockupsByLockupIDResponse): _146.SyntheticLockupsByLockupIDResponseSDKType;
         };
         AccountLockedLongerDurationRequest: {
             encode(message: _146.AccountLockedLongerDurationRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2685,8 +2339,6 @@ export declare namespace osmosis {
                     nanos?: number;
                 };
             }): _146.AccountLockedLongerDurationRequest;
-            fromSDK(object: _146.AccountLockedLongerDurationRequestSDKType): _146.AccountLockedLongerDurationRequest;
-            toSDK(message: _146.AccountLockedLongerDurationRequest): _146.AccountLockedLongerDurationRequestSDKType;
         };
         AccountLockedLongerDurationResponse: {
             encode(message: _146.AccountLockedLongerDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2706,8 +2358,6 @@ export declare namespace osmosis {
                     }[];
                 }[];
             }): _146.AccountLockedLongerDurationResponse;
-            fromSDK(object: _146.AccountLockedLongerDurationResponseSDKType): _146.AccountLockedLongerDurationResponse;
-            toSDK(message: _146.AccountLockedLongerDurationResponse): _146.AccountLockedLongerDurationResponseSDKType;
         };
         AccountLockedDurationRequest: {
             encode(message: _146.AccountLockedDurationRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2719,8 +2369,6 @@ export declare namespace osmosis {
                     nanos?: number;
                 };
             }): _146.AccountLockedDurationRequest;
-            fromSDK(object: _146.AccountLockedDurationRequestSDKType): _146.AccountLockedDurationRequest;
-            toSDK(message: _146.AccountLockedDurationRequest): _146.AccountLockedDurationRequestSDKType;
         };
         AccountLockedDurationResponse: {
             encode(message: _146.AccountLockedDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2740,8 +2388,6 @@ export declare namespace osmosis {
                     }[];
                 }[];
             }): _146.AccountLockedDurationResponse;
-            fromSDK(object: _146.AccountLockedDurationResponseSDKType): _146.AccountLockedDurationResponse;
-            toSDK(message: _146.AccountLockedDurationResponse): _146.AccountLockedDurationResponseSDKType;
         };
         AccountLockedLongerDurationNotUnlockingOnlyRequest: {
             encode(message: _146.AccountLockedLongerDurationNotUnlockingOnlyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2753,8 +2399,6 @@ export declare namespace osmosis {
                     nanos?: number;
                 };
             }): _146.AccountLockedLongerDurationNotUnlockingOnlyRequest;
-            fromSDK(object: _146.AccountLockedLongerDurationNotUnlockingOnlyRequestSDKType): _146.AccountLockedLongerDurationNotUnlockingOnlyRequest;
-            toSDK(message: _146.AccountLockedLongerDurationNotUnlockingOnlyRequest): _146.AccountLockedLongerDurationNotUnlockingOnlyRequestSDKType;
         };
         AccountLockedLongerDurationNotUnlockingOnlyResponse: {
             encode(message: _146.AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2774,8 +2418,6 @@ export declare namespace osmosis {
                     }[];
                 }[];
             }): _146.AccountLockedLongerDurationNotUnlockingOnlyResponse;
-            fromSDK(object: _146.AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType): _146.AccountLockedLongerDurationNotUnlockingOnlyResponse;
-            toSDK(message: _146.AccountLockedLongerDurationNotUnlockingOnlyResponse): _146.AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType;
         };
         AccountLockedLongerDurationDenomRequest: {
             encode(message: _146.AccountLockedLongerDurationDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2788,8 +2430,6 @@ export declare namespace osmosis {
                 };
                 denom?: string;
             }): _146.AccountLockedLongerDurationDenomRequest;
-            fromSDK(object: _146.AccountLockedLongerDurationDenomRequestSDKType): _146.AccountLockedLongerDurationDenomRequest;
-            toSDK(message: _146.AccountLockedLongerDurationDenomRequest): _146.AccountLockedLongerDurationDenomRequestSDKType;
         };
         AccountLockedLongerDurationDenomResponse: {
             encode(message: _146.AccountLockedLongerDurationDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2809,8 +2449,6 @@ export declare namespace osmosis {
                     }[];
                 }[];
             }): _146.AccountLockedLongerDurationDenomResponse;
-            fromSDK(object: _146.AccountLockedLongerDurationDenomResponseSDKType): _146.AccountLockedLongerDurationDenomResponse;
-            toSDK(message: _146.AccountLockedLongerDurationDenomResponse): _146.AccountLockedLongerDurationDenomResponseSDKType;
         };
         lockQueryTypeFromJSON(object: any): _145.LockQueryType;
         lockQueryTypeToJSON(object: _145.LockQueryType): string;
@@ -2832,8 +2470,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _145.PeriodLock;
-            fromSDK(object: _145.PeriodLockSDKType): _145.PeriodLock;
-            toSDK(message: _145.PeriodLock): _145.PeriodLockSDKType;
         };
         QueryCondition: {
             encode(message: _145.QueryCondition, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2847,8 +2483,6 @@ export declare namespace osmosis {
                 };
                 timestamp?: Date;
             }): _145.QueryCondition;
-            fromSDK(object: _145.QueryConditionSDKType): _145.QueryCondition;
-            toSDK(message: _145.QueryCondition): _145.QueryConditionSDKType;
         };
         SyntheticLock: {
             encode(message: _145.SyntheticLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2862,8 +2496,6 @@ export declare namespace osmosis {
                     nanos?: number;
                 };
             }): _145.SyntheticLock;
-            fromSDK(object: _145.SyntheticLockSDKType): _145.SyntheticLock;
-            toSDK(message: _145.SyntheticLock): _145.SyntheticLockSDKType;
         };
         GenesisState: {
             encode(message: _144.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2893,20 +2525,20 @@ export declare namespace osmosis {
                     };
                 }[];
             }): _144.GenesisState;
-            fromSDK(object: _144.GenesisStateSDKType): _144.GenesisState;
-            toSDK(message: _144.GenesisState): _144.GenesisStateSDKType;
         };
     };
     namespace mint {
         const v1beta1: {
             QueryClientImpl: typeof _306.QueryClientImpl;
+            createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+                params(request: _150.QueryParamsRequest): Promise<_150.QueryParamsResponseSDKType>;
+                epochProvisions(request: _150.QueryEpochProvisionsRequest): Promise<_150.QueryEpochProvisionsResponseSDKType>;
+            };
             LCDQueryClient: typeof _297.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _150.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryParamsRequest;
                 fromPartial(_: {}): _150.QueryParamsRequest;
-                fromSDK(_: _150.QueryParamsRequestSDKType): _150.QueryParamsRequest;
-                toSDK(_: _150.QueryParamsRequest): _150.QueryParamsRequestSDKType;
             };
             QueryParamsResponse: {
                 encode(message: _150.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2931,15 +2563,11 @@ export declare namespace osmosis {
                         mintingRewardsDistributionStartEpoch?: any;
                     };
                 }): _150.QueryParamsResponse;
-                fromSDK(object: _150.QueryParamsResponseSDKType): _150.QueryParamsResponse;
-                toSDK(message: _150.QueryParamsResponse): _150.QueryParamsResponseSDKType;
             };
             QueryEpochProvisionsRequest: {
                 encode(_: _150.QueryEpochProvisionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryEpochProvisionsRequest;
                 fromPartial(_: {}): _150.QueryEpochProvisionsRequest;
-                fromSDK(_: _150.QueryEpochProvisionsRequestSDKType): _150.QueryEpochProvisionsRequest;
-                toSDK(_: _150.QueryEpochProvisionsRequest): _150.QueryEpochProvisionsRequestSDKType;
             };
             QueryEpochProvisionsResponse: {
                 encode(message: _150.QueryEpochProvisionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2947,8 +2575,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     epochProvisions?: Uint8Array;
                 }): _150.QueryEpochProvisionsResponse;
-                fromSDK(object: _150.QueryEpochProvisionsResponseSDKType): _150.QueryEpochProvisionsResponse;
-                toSDK(message: _150.QueryEpochProvisionsResponse): _150.QueryEpochProvisionsResponseSDKType;
             };
             Minter: {
                 encode(message: _149.Minter, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2956,8 +2582,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     epochProvisions?: string;
                 }): _149.Minter;
-                fromSDK(object: _149.MinterSDKType): _149.Minter;
-                toSDK(message: _149.Minter): _149.MinterSDKType;
             };
             WeightedAddress: {
                 encode(message: _149.WeightedAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2966,8 +2590,6 @@ export declare namespace osmosis {
                     address?: string;
                     weight?: string;
                 }): _149.WeightedAddress;
-                fromSDK(object: _149.WeightedAddressSDKType): _149.WeightedAddress;
-                toSDK(message: _149.WeightedAddress): _149.WeightedAddressSDKType;
             };
             DistributionProportions: {
                 encode(message: _149.DistributionProportions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -2978,8 +2600,6 @@ export declare namespace osmosis {
                     developerRewards?: string;
                     communityPool?: string;
                 }): _149.DistributionProportions;
-                fromSDK(object: _149.DistributionProportionsSDKType): _149.DistributionProportions;
-                toSDK(message: _149.DistributionProportions): _149.DistributionProportionsSDKType;
             };
             Params: {
                 encode(message: _149.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3002,8 +2622,6 @@ export declare namespace osmosis {
                     }[];
                     mintingRewardsDistributionStartEpoch?: any;
                 }): _149.Params;
-                fromSDK(object: _149.ParamsSDKType): _149.Params;
-                toSDK(message: _149.Params): _149.ParamsSDKType;
             };
             GenesisState: {
                 encode(message: _148.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3032,14 +2650,20 @@ export declare namespace osmosis {
                     };
                     halvenStartedEpoch?: any;
                 }): _148.GenesisState;
-                fromSDK(object: _148.GenesisStateSDKType): _148.GenesisState;
-                toSDK(message: _148.GenesisState): _148.GenesisStateSDKType;
             };
         };
     }
     namespace poolincentives {
         const v1beta1: {
             QueryClientImpl: typeof _307.QueryClientImpl;
+            createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+                gaugeIds(request: _154.QueryGaugeIdsRequest): Promise<_154.QueryGaugeIdsResponseSDKType>;
+                distrInfo(request: _154.QueryDistrInfoRequest): Promise<_154.QueryDistrInfoResponseSDKType>;
+                params(request: _154.QueryParamsRequest): Promise<_154.QueryParamsResponseSDKType>;
+                lockableDurations(request: _154.QueryLockableDurationsRequest): Promise<_154.QueryLockableDurationsResponseSDKType>;
+                incentivizedPools(request: _154.QueryIncentivizedPoolsRequest): Promise<_154.QueryIncentivizedPoolsResponseSDKType>;
+                externalIncentiveGauges(request: _154.QueryExternalIncentiveGaugesRequest): Promise<_154.QueryExternalIncentiveGaugesResponseSDKType>;
+            };
             LCDQueryClient: typeof _298.LCDQueryClient;
             QueryGaugeIdsRequest: {
                 encode(message: _154.QueryGaugeIdsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3047,8 +2671,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     poolId?: any;
                 }): _154.QueryGaugeIdsRequest;
-                fromSDK(object: _154.QueryGaugeIdsRequestSDKType): _154.QueryGaugeIdsRequest;
-                toSDK(message: _154.QueryGaugeIdsRequest): _154.QueryGaugeIdsRequestSDKType;
             };
             QueryGaugeIdsResponse: {
                 encode(message: _154.QueryGaugeIdsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3062,8 +2684,6 @@ export declare namespace osmosis {
                         };
                     }[];
                 }): _154.QueryGaugeIdsResponse;
-                fromSDK(object: _154.QueryGaugeIdsResponseSDKType): _154.QueryGaugeIdsResponse;
-                toSDK(message: _154.QueryGaugeIdsResponse): _154.QueryGaugeIdsResponseSDKType;
             };
             QueryGaugeIdsResponse_GaugeIdWithDuration: {
                 encode(message: _154.QueryGaugeIdsResponse_GaugeIdWithDuration, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3075,15 +2695,11 @@ export declare namespace osmosis {
                         nanos?: number;
                     };
                 }): _154.QueryGaugeIdsResponse_GaugeIdWithDuration;
-                fromSDK(object: _154.QueryGaugeIdsResponse_GaugeIdWithDurationSDKType): _154.QueryGaugeIdsResponse_GaugeIdWithDuration;
-                toSDK(message: _154.QueryGaugeIdsResponse_GaugeIdWithDuration): _154.QueryGaugeIdsResponse_GaugeIdWithDurationSDKType;
             };
             QueryDistrInfoRequest: {
                 encode(_: _154.QueryDistrInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryDistrInfoRequest;
                 fromPartial(_: {}): _154.QueryDistrInfoRequest;
-                fromSDK(_: _154.QueryDistrInfoRequestSDKType): _154.QueryDistrInfoRequest;
-                toSDK(_: _154.QueryDistrInfoRequest): _154.QueryDistrInfoRequestSDKType;
             };
             QueryDistrInfoResponse: {
                 encode(message: _154.QueryDistrInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3097,15 +2713,11 @@ export declare namespace osmosis {
                         }[];
                     };
                 }): _154.QueryDistrInfoResponse;
-                fromSDK(object: _154.QueryDistrInfoResponseSDKType): _154.QueryDistrInfoResponse;
-                toSDK(message: _154.QueryDistrInfoResponse): _154.QueryDistrInfoResponseSDKType;
             };
             QueryParamsRequest: {
                 encode(_: _154.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryParamsRequest;
                 fromPartial(_: {}): _154.QueryParamsRequest;
-                fromSDK(_: _154.QueryParamsRequestSDKType): _154.QueryParamsRequest;
-                toSDK(_: _154.QueryParamsRequest): _154.QueryParamsRequestSDKType;
             };
             QueryParamsResponse: {
                 encode(message: _154.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3115,15 +2727,11 @@ export declare namespace osmosis {
                         mintedDenom?: string;
                     };
                 }): _154.QueryParamsResponse;
-                fromSDK(object: _154.QueryParamsResponseSDKType): _154.QueryParamsResponse;
-                toSDK(message: _154.QueryParamsResponse): _154.QueryParamsResponseSDKType;
             };
             QueryLockableDurationsRequest: {
                 encode(_: _154.QueryLockableDurationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryLockableDurationsRequest;
                 fromPartial(_: {}): _154.QueryLockableDurationsRequest;
-                fromSDK(_: _154.QueryLockableDurationsRequestSDKType): _154.QueryLockableDurationsRequest;
-                toSDK(_: _154.QueryLockableDurationsRequest): _154.QueryLockableDurationsRequestSDKType;
             };
             QueryLockableDurationsResponse: {
                 encode(message: _154.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3134,15 +2742,11 @@ export declare namespace osmosis {
                         nanos?: number;
                     }[];
                 }): _154.QueryLockableDurationsResponse;
-                fromSDK(object: _154.QueryLockableDurationsResponseSDKType): _154.QueryLockableDurationsResponse;
-                toSDK(message: _154.QueryLockableDurationsResponse): _154.QueryLockableDurationsResponseSDKType;
             };
             QueryIncentivizedPoolsRequest: {
                 encode(_: _154.QueryIncentivizedPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryIncentivizedPoolsRequest;
                 fromPartial(_: {}): _154.QueryIncentivizedPoolsRequest;
-                fromSDK(_: _154.QueryIncentivizedPoolsRequestSDKType): _154.QueryIncentivizedPoolsRequest;
-                toSDK(_: _154.QueryIncentivizedPoolsRequest): _154.QueryIncentivizedPoolsRequestSDKType;
             };
             IncentivizedPool: {
                 encode(message: _154.IncentivizedPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3155,8 +2759,6 @@ export declare namespace osmosis {
                     };
                     gaugeId?: any;
                 }): _154.IncentivizedPool;
-                fromSDK(object: _154.IncentivizedPoolSDKType): _154.IncentivizedPool;
-                toSDK(message: _154.IncentivizedPool): _154.IncentivizedPoolSDKType;
             };
             QueryIncentivizedPoolsResponse: {
                 encode(message: _154.QueryIncentivizedPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3171,15 +2773,11 @@ export declare namespace osmosis {
                         gaugeId?: any;
                     }[];
                 }): _154.QueryIncentivizedPoolsResponse;
-                fromSDK(object: _154.QueryIncentivizedPoolsResponseSDKType): _154.QueryIncentivizedPoolsResponse;
-                toSDK(message: _154.QueryIncentivizedPoolsResponse): _154.QueryIncentivizedPoolsResponseSDKType;
             };
             QueryExternalIncentiveGaugesRequest: {
                 encode(_: _154.QueryExternalIncentiveGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryExternalIncentiveGaugesRequest;
                 fromPartial(_: {}): _154.QueryExternalIncentiveGaugesRequest;
-                fromSDK(_: _154.QueryExternalIncentiveGaugesRequestSDKType): _154.QueryExternalIncentiveGaugesRequest;
-                toSDK(_: _154.QueryExternalIncentiveGaugesRequest): _154.QueryExternalIncentiveGaugesRequestSDKType;
             };
             QueryExternalIncentiveGaugesResponse: {
                 encode(message: _154.QueryExternalIncentiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3210,8 +2808,6 @@ export declare namespace osmosis {
                         }[];
                     }[];
                 }): _154.QueryExternalIncentiveGaugesResponse;
-                fromSDK(object: _154.QueryExternalIncentiveGaugesResponseSDKType): _154.QueryExternalIncentiveGaugesResponse;
-                toSDK(message: _154.QueryExternalIncentiveGaugesResponse): _154.QueryExternalIncentiveGaugesResponseSDKType;
             };
             Params: {
                 encode(message: _153.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3219,8 +2815,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     mintedDenom?: string;
                 }): _153.Params;
-                fromSDK(object: _153.ParamsSDKType): _153.Params;
-                toSDK(message: _153.Params): _153.ParamsSDKType;
             };
             LockableDurationsInfo: {
                 encode(message: _153.LockableDurationsInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3231,8 +2825,6 @@ export declare namespace osmosis {
                         nanos?: number;
                     }[];
                 }): _153.LockableDurationsInfo;
-                fromSDK(object: _153.LockableDurationsInfoSDKType): _153.LockableDurationsInfo;
-                toSDK(message: _153.LockableDurationsInfo): _153.LockableDurationsInfoSDKType;
             };
             DistrInfo: {
                 encode(message: _153.DistrInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3244,8 +2836,6 @@ export declare namespace osmosis {
                         weight?: string;
                     }[];
                 }): _153.DistrInfo;
-                fromSDK(object: _153.DistrInfoSDKType): _153.DistrInfo;
-                toSDK(message: _153.DistrInfo): _153.DistrInfoSDKType;
             };
             DistrRecord: {
                 encode(message: _153.DistrRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3254,8 +2844,6 @@ export declare namespace osmosis {
                     gaugeId?: any;
                     weight?: string;
                 }): _153.DistrRecord;
-                fromSDK(object: _153.DistrRecordSDKType): _153.DistrRecord;
-                toSDK(message: _153.DistrRecord): _153.DistrRecordSDKType;
             };
             ReplacePoolIncentivesProposal: {
                 encode(message: _152.ReplacePoolIncentivesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3268,8 +2856,6 @@ export declare namespace osmosis {
                         weight?: string;
                     }[];
                 }): _152.ReplacePoolIncentivesProposal;
-                fromSDK(object: _152.ReplacePoolIncentivesProposalSDKType): _152.ReplacePoolIncentivesProposal;
-                toSDK(message: _152.ReplacePoolIncentivesProposal): _152.ReplacePoolIncentivesProposalSDKType;
             };
             UpdatePoolIncentivesProposal: {
                 encode(message: _152.UpdatePoolIncentivesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3282,8 +2868,6 @@ export declare namespace osmosis {
                         weight?: string;
                     }[];
                 }): _152.UpdatePoolIncentivesProposal;
-                fromSDK(object: _152.UpdatePoolIncentivesProposalSDKType): _152.UpdatePoolIncentivesProposal;
-                toSDK(message: _152.UpdatePoolIncentivesProposal): _152.UpdatePoolIncentivesProposalSDKType;
             };
             GenesisState: {
                 encode(message: _151.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3304,8 +2888,6 @@ export declare namespace osmosis {
                         }[];
                     };
                 }): _151.GenesisState;
-                fromSDK(object: _151.GenesisStateSDKType): _151.GenesisState;
-                toSDK(message: _151.GenesisState): _151.GenesisStateSDKType;
             };
         };
     }
@@ -3320,8 +2902,6 @@ export declare namespace osmosis {
                         accumulation?: string;
                     }[];
                 }): _155.Node;
-                fromSDK(object: _155.NodeSDKType): _155.Node;
-                toSDK(message: _155.Node): _155.NodeSDKType;
             };
             Child: {
                 encode(message: _155.Child, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3330,8 +2910,6 @@ export declare namespace osmosis {
                     index?: Uint8Array;
                     accumulation?: string;
                 }): _155.Child;
-                fromSDK(object: _155.ChildSDKType): _155.Child;
-                toSDK(message: _155.Child): _155.ChildSDKType;
             };
             Leaf: {
                 encode(message: _155.Leaf, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3342,14 +2920,26 @@ export declare namespace osmosis {
                         accumulation?: string;
                     };
                 }): _155.Leaf;
-                fromSDK(object: _155.LeafSDKType): _155.Leaf;
-                toSDK(message: _155.Leaf): _155.LeafSDKType;
             };
         };
     }
     const superfluid: {
         MsgClientImpl: typeof _316.MsgClientImpl;
         QueryClientImpl: typeof _308.QueryClientImpl;
+        createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+            params(request: _158.QueryParamsRequest): Promise<_158.QueryParamsResponseSDKType>;
+            assetType(request: _158.AssetTypeRequest): Promise<_158.AssetTypeResponseSDKType>;
+            allAssets(request: _158.AllAssetsRequest): Promise<_158.AllAssetsResponseSDKType>;
+            assetMultiplier(request: _158.AssetMultiplierRequest): Promise<_158.AssetMultiplierResponseSDKType>;
+            allIntermediaryAccounts(request: _158.AllIntermediaryAccountsRequest): Promise<_158.AllIntermediaryAccountsResponseSDKType>;
+            connectedIntermediaryAccount(request: _158.ConnectedIntermediaryAccountRequest): Promise<_158.ConnectedIntermediaryAccountResponseSDKType>;
+            totalSuperfluidDelegations(request: _158.TotalSuperfluidDelegationsRequest): Promise<_158.TotalSuperfluidDelegationsResponseSDKType>;
+            superfluidDelegationAmount(request: _158.SuperfluidDelegationAmountRequest): Promise<_158.SuperfluidDelegationAmountResponseSDKType>;
+            superfluidDelegationsByDelegator(request: _158.SuperfluidDelegationsByDelegatorRequest): Promise<_158.SuperfluidDelegationsByDelegatorResponseSDKType>;
+            superfluidUndelegationsByDelegator(request: _158.SuperfluidUndelegationsByDelegatorRequest): Promise<_158.SuperfluidUndelegationsByDelegatorResponseSDKType>;
+            superfluidDelegationsByValidatorDenom(request: _158.SuperfluidDelegationsByValidatorDenomRequest): Promise<_158.SuperfluidDelegationsByValidatorDenomResponseSDKType>;
+            estimateSuperfluidDelegatedAmountByValidatorDenom(request: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<_158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType>;
+        };
         LCDQueryClient: typeof _299.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
@@ -3396,50 +2986,6 @@ export declare namespace osmosis {
                 unPoolWhitelistedPool(value: _160.MsgUnPoolWhitelistedPool): {
                     typeUrl: string;
                     value: _160.MsgUnPoolWhitelistedPool;
-                };
-            };
-            toJSON: {
-                superfluidDelegate(value: _160.MsgSuperfluidDelegate): {
-                    typeUrl: string;
-                    value: any;
-                };
-                superfluidUndelegate(value: _160.MsgSuperfluidUndelegate): {
-                    typeUrl: string;
-                    value: any;
-                };
-                superfluidUnbondLock(value: _160.MsgSuperfluidUnbondLock): {
-                    typeUrl: string;
-                    value: any;
-                };
-                lockAndSuperfluidDelegate(value: _160.MsgLockAndSuperfluidDelegate): {
-                    typeUrl: string;
-                    value: any;
-                };
-                unPoolWhitelistedPool(value: _160.MsgUnPoolWhitelistedPool): {
-                    typeUrl: string;
-                    value: any;
-                };
-            };
-            fromJSON: {
-                superfluidDelegate(value: any): {
-                    typeUrl: string;
-                    value: any;
-                };
-                superfluidUndelegate(value: any): {
-                    typeUrl: string;
-                    value: any;
-                };
-                superfluidUnbondLock(value: any): {
-                    typeUrl: string;
-                    value: any;
-                };
-                lockAndSuperfluidDelegate(value: any): {
-                    typeUrl: string;
-                    value: any;
-                };
-                unPoolWhitelistedPool(value: any): {
-                    typeUrl: string;
-                    value: any;
                 };
             };
             fromPartial: {
@@ -3540,15 +3086,11 @@ export declare namespace osmosis {
                 lockId?: any;
                 valAddr?: string;
             }): _160.MsgSuperfluidDelegate;
-            fromSDK(object: _160.MsgSuperfluidDelegateSDKType): _160.MsgSuperfluidDelegate;
-            toSDK(message: _160.MsgSuperfluidDelegate): _160.MsgSuperfluidDelegateSDKType;
         };
         MsgSuperfluidDelegateResponse: {
             encode(_: _160.MsgSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSuperfluidDelegateResponseSDKType;
             fromPartial(_: {}): _160.MsgSuperfluidDelegateResponse;
-            fromSDK(_: _160.MsgSuperfluidDelegateResponseSDKType): _160.MsgSuperfluidDelegateResponse;
-            toSDK(_: _160.MsgSuperfluidDelegateResponse): _160.MsgSuperfluidDelegateResponseSDKType;
         };
         MsgSuperfluidUndelegate: {
             encode(message: _160.MsgSuperfluidUndelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3557,15 +3099,11 @@ export declare namespace osmosis {
                 sender?: string;
                 lockId?: any;
             }): _160.MsgSuperfluidUndelegate;
-            fromSDK(object: _160.MsgSuperfluidUndelegateSDKType): _160.MsgSuperfluidUndelegate;
-            toSDK(message: _160.MsgSuperfluidUndelegate): _160.MsgSuperfluidUndelegateSDKType;
         };
         MsgSuperfluidUndelegateResponse: {
             encode(_: _160.MsgSuperfluidUndelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSuperfluidUndelegateResponseSDKType;
             fromPartial(_: {}): _160.MsgSuperfluidUndelegateResponse;
-            fromSDK(_: _160.MsgSuperfluidUndelegateResponseSDKType): _160.MsgSuperfluidUndelegateResponse;
-            toSDK(_: _160.MsgSuperfluidUndelegateResponse): _160.MsgSuperfluidUndelegateResponseSDKType;
         };
         MsgSuperfluidUnbondLock: {
             encode(message: _160.MsgSuperfluidUnbondLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3574,15 +3112,11 @@ export declare namespace osmosis {
                 sender?: string;
                 lockId?: any;
             }): _160.MsgSuperfluidUnbondLock;
-            fromSDK(object: _160.MsgSuperfluidUnbondLockSDKType): _160.MsgSuperfluidUnbondLock;
-            toSDK(message: _160.MsgSuperfluidUnbondLock): _160.MsgSuperfluidUnbondLockSDKType;
         };
         MsgSuperfluidUnbondLockResponse: {
             encode(_: _160.MsgSuperfluidUnbondLockResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSuperfluidUnbondLockResponseSDKType;
             fromPartial(_: {}): _160.MsgSuperfluidUnbondLockResponse;
-            fromSDK(_: _160.MsgSuperfluidUnbondLockResponseSDKType): _160.MsgSuperfluidUnbondLockResponse;
-            toSDK(_: _160.MsgSuperfluidUnbondLockResponse): _160.MsgSuperfluidUnbondLockResponseSDKType;
         };
         MsgLockAndSuperfluidDelegate: {
             encode(message: _160.MsgLockAndSuperfluidDelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3595,8 +3129,6 @@ export declare namespace osmosis {
                 }[];
                 valAddr?: string;
             }): _160.MsgLockAndSuperfluidDelegate;
-            fromSDK(object: _160.MsgLockAndSuperfluidDelegateSDKType): _160.MsgLockAndSuperfluidDelegate;
-            toSDK(message: _160.MsgLockAndSuperfluidDelegate): _160.MsgLockAndSuperfluidDelegateSDKType;
         };
         MsgLockAndSuperfluidDelegateResponse: {
             encode(message: _160.MsgLockAndSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3604,8 +3136,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 ID?: any;
             }): _160.MsgLockAndSuperfluidDelegateResponse;
-            fromSDK(object: _160.MsgLockAndSuperfluidDelegateResponseSDKType): _160.MsgLockAndSuperfluidDelegateResponse;
-            toSDK(message: _160.MsgLockAndSuperfluidDelegateResponse): _160.MsgLockAndSuperfluidDelegateResponseSDKType;
         };
         MsgUnPoolWhitelistedPool: {
             encode(message: _160.MsgUnPoolWhitelistedPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3614,8 +3144,6 @@ export declare namespace osmosis {
                 sender?: string;
                 poolId?: any;
             }): _160.MsgUnPoolWhitelistedPool;
-            fromSDK(object: _160.MsgUnPoolWhitelistedPoolSDKType): _160.MsgUnPoolWhitelistedPool;
-            toSDK(message: _160.MsgUnPoolWhitelistedPool): _160.MsgUnPoolWhitelistedPoolSDKType;
         };
         MsgUnPoolWhitelistedPoolResponse: {
             encode(message: _160.MsgUnPoolWhitelistedPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3623,8 +3151,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 exitedLockIds?: any[];
             }): _160.MsgUnPoolWhitelistedPoolResponse;
-            fromSDK(object: _160.MsgUnPoolWhitelistedPoolResponseSDKType): _160.MsgUnPoolWhitelistedPoolResponse;
-            toSDK(message: _160.MsgUnPoolWhitelistedPoolResponse): _160.MsgUnPoolWhitelistedPoolResponseSDKType;
         };
         superfluidAssetTypeFromJSON(object: any): _159.SuperfluidAssetType;
         superfluidAssetTypeToJSON(object: _159.SuperfluidAssetType): string;
@@ -3637,8 +3163,6 @@ export declare namespace osmosis {
                 denom?: string;
                 assetType?: _159.SuperfluidAssetType;
             }): _159.SuperfluidAsset;
-            fromSDK(object: _159.SuperfluidAssetSDKType): _159.SuperfluidAsset;
-            toSDK(message: _159.SuperfluidAsset): _159.SuperfluidAssetSDKType;
         };
         SuperfluidIntermediaryAccount: {
             encode(message: _159.SuperfluidIntermediaryAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3648,8 +3172,6 @@ export declare namespace osmosis {
                 valAddr?: string;
                 gaugeId?: any;
             }): _159.SuperfluidIntermediaryAccount;
-            fromSDK(object: _159.SuperfluidIntermediaryAccountSDKType): _159.SuperfluidIntermediaryAccount;
-            toSDK(message: _159.SuperfluidIntermediaryAccount): _159.SuperfluidIntermediaryAccountSDKType;
         };
         OsmoEquivalentMultiplierRecord: {
             encode(message: _159.OsmoEquivalentMultiplierRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3659,8 +3181,6 @@ export declare namespace osmosis {
                 denom?: string;
                 multiplier?: string;
             }): _159.OsmoEquivalentMultiplierRecord;
-            fromSDK(object: _159.OsmoEquivalentMultiplierRecordSDKType): _159.OsmoEquivalentMultiplierRecord;
-            toSDK(message: _159.OsmoEquivalentMultiplierRecord): _159.OsmoEquivalentMultiplierRecordSDKType;
         };
         SuperfluidDelegationRecord: {
             encode(message: _159.SuperfluidDelegationRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3677,8 +3197,6 @@ export declare namespace osmosis {
                     amount?: string;
                 };
             }): _159.SuperfluidDelegationRecord;
-            fromSDK(object: _159.SuperfluidDelegationRecordSDKType): _159.SuperfluidDelegationRecord;
-            toSDK(message: _159.SuperfluidDelegationRecord): _159.SuperfluidDelegationRecordSDKType;
         };
         LockIdIntermediaryAccountConnection: {
             encode(message: _159.LockIdIntermediaryAccountConnection, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3687,8 +3205,6 @@ export declare namespace osmosis {
                 lockId?: any;
                 intermediaryAccount?: string;
             }): _159.LockIdIntermediaryAccountConnection;
-            fromSDK(object: _159.LockIdIntermediaryAccountConnectionSDKType): _159.LockIdIntermediaryAccountConnection;
-            toSDK(message: _159.LockIdIntermediaryAccountConnection): _159.LockIdIntermediaryAccountConnectionSDKType;
         };
         UnpoolWhitelistedPools: {
             encode(message: _159.UnpoolWhitelistedPools, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3696,15 +3212,11 @@ export declare namespace osmosis {
             fromPartial(object: {
                 ids?: any[];
             }): _159.UnpoolWhitelistedPools;
-            fromSDK(object: _159.UnpoolWhitelistedPoolsSDKType): _159.UnpoolWhitelistedPools;
-            toSDK(message: _159.UnpoolWhitelistedPools): _159.UnpoolWhitelistedPoolsSDKType;
         };
         QueryParamsRequest: {
             encode(_: _158.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryParamsRequest;
             fromPartial(_: {}): _158.QueryParamsRequest;
-            fromSDK(_: _158.QueryParamsRequestSDKType): _158.QueryParamsRequest;
-            toSDK(_: _158.QueryParamsRequest): _158.QueryParamsRequestSDKType;
         };
         QueryParamsResponse: {
             encode(message: _158.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3714,8 +3226,6 @@ export declare namespace osmosis {
                     minimumRiskFactor?: string;
                 };
             }): _158.QueryParamsResponse;
-            fromSDK(object: _158.QueryParamsResponseSDKType): _158.QueryParamsResponse;
-            toSDK(message: _158.QueryParamsResponse): _158.QueryParamsResponseSDKType;
         };
         AssetTypeRequest: {
             encode(message: _158.AssetTypeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3723,8 +3233,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 denom?: string;
             }): _158.AssetTypeRequest;
-            fromSDK(object: _158.AssetTypeRequestSDKType): _158.AssetTypeRequest;
-            toSDK(message: _158.AssetTypeRequest): _158.AssetTypeRequestSDKType;
         };
         AssetTypeResponse: {
             encode(message: _158.AssetTypeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3732,15 +3240,11 @@ export declare namespace osmosis {
             fromPartial(object: {
                 assetType?: _159.SuperfluidAssetType;
             }): _158.AssetTypeResponse;
-            fromSDK(object: _158.AssetTypeResponseSDKType): _158.AssetTypeResponse;
-            toSDK(message: _158.AssetTypeResponse): _158.AssetTypeResponseSDKType;
         };
         AllAssetsRequest: {
             encode(_: _158.AllAssetsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.AllAssetsRequest;
             fromPartial(_: {}): _158.AllAssetsRequest;
-            fromSDK(_: _158.AllAssetsRequestSDKType): _158.AllAssetsRequest;
-            toSDK(_: _158.AllAssetsRequest): _158.AllAssetsRequestSDKType;
         };
         AllAssetsResponse: {
             encode(message: _158.AllAssetsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3751,8 +3255,6 @@ export declare namespace osmosis {
                     assetType?: _159.SuperfluidAssetType;
                 }[];
             }): _158.AllAssetsResponse;
-            fromSDK(object: _158.AllAssetsResponseSDKType): _158.AllAssetsResponse;
-            toSDK(message: _158.AllAssetsResponse): _158.AllAssetsResponseSDKType;
         };
         AssetMultiplierRequest: {
             encode(message: _158.AssetMultiplierRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3760,8 +3262,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 denom?: string;
             }): _158.AssetMultiplierRequest;
-            fromSDK(object: _158.AssetMultiplierRequestSDKType): _158.AssetMultiplierRequest;
-            toSDK(message: _158.AssetMultiplierRequest): _158.AssetMultiplierRequestSDKType;
         };
         AssetMultiplierResponse: {
             encode(message: _158.AssetMultiplierResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3773,8 +3273,6 @@ export declare namespace osmosis {
                     multiplier?: string;
                 };
             }): _158.AssetMultiplierResponse;
-            fromSDK(object: _158.AssetMultiplierResponseSDKType): _158.AssetMultiplierResponse;
-            toSDK(message: _158.AssetMultiplierResponse): _158.AssetMultiplierResponseSDKType;
         };
         SuperfluidIntermediaryAccountInfo: {
             encode(message: _158.SuperfluidIntermediaryAccountInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3785,8 +3283,6 @@ export declare namespace osmosis {
                 gaugeId?: any;
                 address?: string;
             }): _158.SuperfluidIntermediaryAccountInfo;
-            fromSDK(object: _158.SuperfluidIntermediaryAccountInfoSDKType): _158.SuperfluidIntermediaryAccountInfo;
-            toSDK(message: _158.SuperfluidIntermediaryAccountInfo): _158.SuperfluidIntermediaryAccountInfoSDKType;
         };
         AllIntermediaryAccountsRequest: {
             encode(message: _158.AllIntermediaryAccountsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3800,8 +3296,6 @@ export declare namespace osmosis {
                     reverse?: boolean;
                 };
             }): _158.AllIntermediaryAccountsRequest;
-            fromSDK(object: _158.AllIntermediaryAccountsRequestSDKType): _158.AllIntermediaryAccountsRequest;
-            toSDK(message: _158.AllIntermediaryAccountsRequest): _158.AllIntermediaryAccountsRequestSDKType;
         };
         AllIntermediaryAccountsResponse: {
             encode(message: _158.AllIntermediaryAccountsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3818,8 +3312,6 @@ export declare namespace osmosis {
                     total?: any;
                 };
             }): _158.AllIntermediaryAccountsResponse;
-            fromSDK(object: _158.AllIntermediaryAccountsResponseSDKType): _158.AllIntermediaryAccountsResponse;
-            toSDK(message: _158.AllIntermediaryAccountsResponse): _158.AllIntermediaryAccountsResponseSDKType;
         };
         ConnectedIntermediaryAccountRequest: {
             encode(message: _158.ConnectedIntermediaryAccountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3827,8 +3319,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 lockId?: any;
             }): _158.ConnectedIntermediaryAccountRequest;
-            fromSDK(object: _158.ConnectedIntermediaryAccountRequestSDKType): _158.ConnectedIntermediaryAccountRequest;
-            toSDK(message: _158.ConnectedIntermediaryAccountRequest): _158.ConnectedIntermediaryAccountRequestSDKType;
         };
         ConnectedIntermediaryAccountResponse: {
             encode(message: _158.ConnectedIntermediaryAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3841,15 +3331,11 @@ export declare namespace osmosis {
                     address?: string;
                 };
             }): _158.ConnectedIntermediaryAccountResponse;
-            fromSDK(object: _158.ConnectedIntermediaryAccountResponseSDKType): _158.ConnectedIntermediaryAccountResponse;
-            toSDK(message: _158.ConnectedIntermediaryAccountResponse): _158.ConnectedIntermediaryAccountResponseSDKType;
         };
         TotalSuperfluidDelegationsRequest: {
             encode(_: _158.TotalSuperfluidDelegationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.TotalSuperfluidDelegationsRequest;
             fromPartial(_: {}): _158.TotalSuperfluidDelegationsRequest;
-            fromSDK(_: _158.TotalSuperfluidDelegationsRequestSDKType): _158.TotalSuperfluidDelegationsRequest;
-            toSDK(_: _158.TotalSuperfluidDelegationsRequest): _158.TotalSuperfluidDelegationsRequestSDKType;
         };
         TotalSuperfluidDelegationsResponse: {
             encode(message: _158.TotalSuperfluidDelegationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3857,8 +3343,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 totalDelegations?: string;
             }): _158.TotalSuperfluidDelegationsResponse;
-            fromSDK(object: _158.TotalSuperfluidDelegationsResponseSDKType): _158.TotalSuperfluidDelegationsResponse;
-            toSDK(message: _158.TotalSuperfluidDelegationsResponse): _158.TotalSuperfluidDelegationsResponseSDKType;
         };
         SuperfluidDelegationAmountRequest: {
             encode(message: _158.SuperfluidDelegationAmountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3868,8 +3352,6 @@ export declare namespace osmosis {
                 validatorAddress?: string;
                 denom?: string;
             }): _158.SuperfluidDelegationAmountRequest;
-            fromSDK(object: _158.SuperfluidDelegationAmountRequestSDKType): _158.SuperfluidDelegationAmountRequest;
-            toSDK(message: _158.SuperfluidDelegationAmountRequest): _158.SuperfluidDelegationAmountRequestSDKType;
         };
         SuperfluidDelegationAmountResponse: {
             encode(message: _158.SuperfluidDelegationAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3880,8 +3362,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _158.SuperfluidDelegationAmountResponse;
-            fromSDK(object: _158.SuperfluidDelegationAmountResponseSDKType): _158.SuperfluidDelegationAmountResponse;
-            toSDK(message: _158.SuperfluidDelegationAmountResponse): _158.SuperfluidDelegationAmountResponseSDKType;
         };
         SuperfluidDelegationsByDelegatorRequest: {
             encode(message: _158.SuperfluidDelegationsByDelegatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3889,8 +3369,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 delegatorAddress?: string;
             }): _158.SuperfluidDelegationsByDelegatorRequest;
-            fromSDK(object: _158.SuperfluidDelegationsByDelegatorRequestSDKType): _158.SuperfluidDelegationsByDelegatorRequest;
-            toSDK(message: _158.SuperfluidDelegationsByDelegatorRequest): _158.SuperfluidDelegationsByDelegatorRequestSDKType;
         };
         SuperfluidDelegationsByDelegatorResponse: {
             encode(message: _158.SuperfluidDelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3917,8 +3395,6 @@ export declare namespace osmosis {
                     amount?: string;
                 };
             }): _158.SuperfluidDelegationsByDelegatorResponse;
-            fromSDK(object: _158.SuperfluidDelegationsByDelegatorResponseSDKType): _158.SuperfluidDelegationsByDelegatorResponse;
-            toSDK(message: _158.SuperfluidDelegationsByDelegatorResponse): _158.SuperfluidDelegationsByDelegatorResponseSDKType;
         };
         SuperfluidUndelegationsByDelegatorRequest: {
             encode(message: _158.SuperfluidUndelegationsByDelegatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3927,8 +3403,6 @@ export declare namespace osmosis {
                 delegatorAddress?: string;
                 denom?: string;
             }): _158.SuperfluidUndelegationsByDelegatorRequest;
-            fromSDK(object: _158.SuperfluidUndelegationsByDelegatorRequestSDKType): _158.SuperfluidUndelegationsByDelegatorRequest;
-            toSDK(message: _158.SuperfluidUndelegationsByDelegatorRequest): _158.SuperfluidUndelegationsByDelegatorRequestSDKType;
         };
         SuperfluidUndelegationsByDelegatorResponse: {
             encode(message: _158.SuperfluidUndelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3960,8 +3434,6 @@ export declare namespace osmosis {
                     };
                 }[];
             }): _158.SuperfluidUndelegationsByDelegatorResponse;
-            fromSDK(object: _158.SuperfluidUndelegationsByDelegatorResponseSDKType): _158.SuperfluidUndelegationsByDelegatorResponse;
-            toSDK(message: _158.SuperfluidUndelegationsByDelegatorResponse): _158.SuperfluidUndelegationsByDelegatorResponseSDKType;
         };
         SuperfluidDelegationsByValidatorDenomRequest: {
             encode(message: _158.SuperfluidDelegationsByValidatorDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3970,8 +3442,6 @@ export declare namespace osmosis {
                 validatorAddress?: string;
                 denom?: string;
             }): _158.SuperfluidDelegationsByValidatorDenomRequest;
-            fromSDK(object: _158.SuperfluidDelegationsByValidatorDenomRequestSDKType): _158.SuperfluidDelegationsByValidatorDenomRequest;
-            toSDK(message: _158.SuperfluidDelegationsByValidatorDenomRequest): _158.SuperfluidDelegationsByValidatorDenomRequestSDKType;
         };
         SuperfluidDelegationsByValidatorDenomResponse: {
             encode(message: _158.SuperfluidDelegationsByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -3990,8 +3460,6 @@ export declare namespace osmosis {
                     };
                 }[];
             }): _158.SuperfluidDelegationsByValidatorDenomResponse;
-            fromSDK(object: _158.SuperfluidDelegationsByValidatorDenomResponseSDKType): _158.SuperfluidDelegationsByValidatorDenomResponse;
-            toSDK(message: _158.SuperfluidDelegationsByValidatorDenomResponse): _158.SuperfluidDelegationsByValidatorDenomResponseSDKType;
         };
         EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
             encode(message: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4000,8 +3468,6 @@ export declare namespace osmosis {
                 validatorAddress?: string;
                 denom?: string;
             }): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
-            fromSDK(object: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequestSDKType): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
-            toSDK(message: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequestSDKType;
         };
         EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: {
             encode(message: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4012,8 +3478,6 @@ export declare namespace osmosis {
                     amount?: string;
                 }[];
             }): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
-            fromSDK(object: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
-            toSDK(message: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType;
         };
         Params: {
             encode(message: _157.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4021,8 +3485,6 @@ export declare namespace osmosis {
             fromPartial(object: {
                 minimumRiskFactor?: string;
             }): _157.Params;
-            fromSDK(object: _157.ParamsSDKType): _157.Params;
-            toSDK(message: _157.Params): _157.ParamsSDKType;
         };
         GenesisState: {
             encode(message: _156.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4050,14 +3512,17 @@ export declare namespace osmosis {
                     intermediaryAccount?: string;
                 }[];
             }): _156.GenesisState;
-            fromSDK(object: _156.GenesisStateSDKType): _156.GenesisState;
-            toSDK(message: _156.GenesisState): _156.GenesisStateSDKType;
         };
     };
     namespace tokenfactory {
         const v1beta1: {
             MsgClientImpl: typeof _317.MsgClientImpl;
             QueryClientImpl: typeof _309.QueryClientImpl;
+            createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+                params(request: _164.QueryParamsRequest): Promise<_164.QueryParamsResponseSDKType>;
+                denomAuthorityMetadata(request: _164.QueryDenomAuthorityMetadataRequest): Promise<_164.QueryDenomAuthorityMetadataResponseSDKType>;
+                denomsFromCreator(request: _164.QueryDenomsFromCreatorRequest): Promise<_164.QueryDenomsFromCreatorResponseSDKType>;
+            };
             LCDQueryClient: typeof _300.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
@@ -4096,42 +3561,6 @@ export declare namespace osmosis {
                     changeAdmin(value: _165.MsgChangeAdmin): {
                         typeUrl: string;
                         value: _165.MsgChangeAdmin;
-                    };
-                };
-                toJSON: {
-                    createDenom(value: _165.MsgCreateDenom): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    mint(value: _165.MsgMint): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    burn(value: _165.MsgBurn): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    changeAdmin(value: _165.MsgChangeAdmin): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                };
-                fromJSON: {
-                    createDenom(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    mint(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    burn(value: any): {
-                        typeUrl: string;
-                        value: any;
-                    };
-                    changeAdmin(value: any): {
-                        typeUrl: string;
-                        value: any;
                     };
                 };
                 fromPartial: {
@@ -4220,8 +3649,6 @@ export declare namespace osmosis {
                     sender?: string;
                     subdenom?: string;
                 }): _165.MsgCreateDenom;
-                fromSDK(object: _165.MsgCreateDenomSDKType): _165.MsgCreateDenom;
-                toSDK(message: _165.MsgCreateDenom): _165.MsgCreateDenomSDKType;
             };
             MsgCreateDenomResponse: {
                 encode(message: _165.MsgCreateDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4229,8 +3656,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     newTokenDenom?: string;
                 }): _165.MsgCreateDenomResponse;
-                fromSDK(object: _165.MsgCreateDenomResponseSDKType): _165.MsgCreateDenomResponse;
-                toSDK(message: _165.MsgCreateDenomResponse): _165.MsgCreateDenomResponseSDKType;
             };
             MsgMint: {
                 encode(message: _165.MsgMint, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4242,15 +3667,11 @@ export declare namespace osmosis {
                         amount?: string;
                     };
                 }): _165.MsgMint;
-                fromSDK(object: _165.MsgMintSDKType): _165.MsgMint;
-                toSDK(message: _165.MsgMint): _165.MsgMintSDKType;
             };
             MsgMintResponse: {
                 encode(_: _165.MsgMintResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgMintResponseSDKType;
                 fromPartial(_: {}): _165.MsgMintResponse;
-                fromSDK(_: _165.MsgMintResponseSDKType): _165.MsgMintResponse;
-                toSDK(_: _165.MsgMintResponse): _165.MsgMintResponseSDKType;
             };
             MsgBurn: {
                 encode(message: _165.MsgBurn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4262,15 +3683,11 @@ export declare namespace osmosis {
                         amount?: string;
                     };
                 }): _165.MsgBurn;
-                fromSDK(object: _165.MsgBurnSDKType): _165.MsgBurn;
-                toSDK(message: _165.MsgBurn): _165.MsgBurnSDKType;
             };
             MsgBurnResponse: {
                 encode(_: _165.MsgBurnResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgBurnResponseSDKType;
                 fromPartial(_: {}): _165.MsgBurnResponse;
-                fromSDK(_: _165.MsgBurnResponseSDKType): _165.MsgBurnResponse;
-                toSDK(_: _165.MsgBurnResponse): _165.MsgBurnResponseSDKType;
             };
             MsgChangeAdmin: {
                 encode(message: _165.MsgChangeAdmin, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4280,22 +3697,16 @@ export declare namespace osmosis {
                     denom?: string;
                     newAdmin?: string;
                 }): _165.MsgChangeAdmin;
-                fromSDK(object: _165.MsgChangeAdminSDKType): _165.MsgChangeAdmin;
-                toSDK(message: _165.MsgChangeAdmin): _165.MsgChangeAdminSDKType;
             };
             MsgChangeAdminResponse: {
                 encode(_: _165.MsgChangeAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgChangeAdminResponseSDKType;
                 fromPartial(_: {}): _165.MsgChangeAdminResponse;
-                fromSDK(_: _165.MsgChangeAdminResponseSDKType): _165.MsgChangeAdminResponse;
-                toSDK(_: _165.MsgChangeAdminResponse): _165.MsgChangeAdminResponseSDKType;
             };
             QueryParamsRequest: {
                 encode(_: _164.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.QueryParamsRequest;
                 fromPartial(_: {}): _164.QueryParamsRequest;
-                fromSDK(_: _164.QueryParamsRequestSDKType): _164.QueryParamsRequest;
-                toSDK(_: _164.QueryParamsRequest): _164.QueryParamsRequestSDKType;
             };
             QueryParamsResponse: {
                 encode(message: _164.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4308,8 +3719,6 @@ export declare namespace osmosis {
                         }[];
                     };
                 }): _164.QueryParamsResponse;
-                fromSDK(object: _164.QueryParamsResponseSDKType): _164.QueryParamsResponse;
-                toSDK(message: _164.QueryParamsResponse): _164.QueryParamsResponseSDKType;
             };
             QueryDenomAuthorityMetadataRequest: {
                 encode(message: _164.QueryDenomAuthorityMetadataRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4317,8 +3726,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     denom?: string;
                 }): _164.QueryDenomAuthorityMetadataRequest;
-                fromSDK(object: _164.QueryDenomAuthorityMetadataRequestSDKType): _164.QueryDenomAuthorityMetadataRequest;
-                toSDK(message: _164.QueryDenomAuthorityMetadataRequest): _164.QueryDenomAuthorityMetadataRequestSDKType;
             };
             QueryDenomAuthorityMetadataResponse: {
                 encode(message: _164.QueryDenomAuthorityMetadataResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4328,8 +3735,6 @@ export declare namespace osmosis {
                         Admin?: string;
                     };
                 }): _164.QueryDenomAuthorityMetadataResponse;
-                fromSDK(object: _164.QueryDenomAuthorityMetadataResponseSDKType): _164.QueryDenomAuthorityMetadataResponse;
-                toSDK(message: _164.QueryDenomAuthorityMetadataResponse): _164.QueryDenomAuthorityMetadataResponseSDKType;
             };
             QueryDenomsFromCreatorRequest: {
                 encode(message: _164.QueryDenomsFromCreatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4337,8 +3742,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     creator?: string;
                 }): _164.QueryDenomsFromCreatorRequest;
-                fromSDK(object: _164.QueryDenomsFromCreatorRequestSDKType): _164.QueryDenomsFromCreatorRequest;
-                toSDK(message: _164.QueryDenomsFromCreatorRequest): _164.QueryDenomsFromCreatorRequestSDKType;
             };
             QueryDenomsFromCreatorResponse: {
                 encode(message: _164.QueryDenomsFromCreatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4346,8 +3749,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     denoms?: string[];
                 }): _164.QueryDenomsFromCreatorResponse;
-                fromSDK(object: _164.QueryDenomsFromCreatorResponseSDKType): _164.QueryDenomsFromCreatorResponse;
-                toSDK(message: _164.QueryDenomsFromCreatorResponse): _164.QueryDenomsFromCreatorResponseSDKType;
             };
             Params: {
                 encode(message: _163.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4358,8 +3759,6 @@ export declare namespace osmosis {
                         amount?: string;
                     }[];
                 }): _163.Params;
-                fromSDK(object: _163.ParamsSDKType): _163.Params;
-                toSDK(message: _163.Params): _163.ParamsSDKType;
             };
             GenesisState: {
                 encode(message: _162.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4378,8 +3777,6 @@ export declare namespace osmosis {
                         };
                     }[];
                 }): _162.GenesisState;
-                fromSDK(object: _162.GenesisStateSDKType): _162.GenesisState;
-                toSDK(message: _162.GenesisState): _162.GenesisStateSDKType;
             };
             GenesisDenom: {
                 encode(message: _162.GenesisDenom, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4390,8 +3787,6 @@ export declare namespace osmosis {
                         Admin?: string;
                     };
                 }): _162.GenesisDenom;
-                fromSDK(object: _162.GenesisDenomSDKType): _162.GenesisDenom;
-                toSDK(message: _162.GenesisDenom): _162.GenesisDenomSDKType;
             };
             DenomAuthorityMetadata: {
                 encode(message: _161.DenomAuthorityMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4399,21 +3794,23 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     Admin?: string;
                 }): _161.DenomAuthorityMetadata;
-                fromSDK(object: _161.DenomAuthorityMetadataSDKType): _161.DenomAuthorityMetadata;
-                toSDK(message: _161.DenomAuthorityMetadata): _161.DenomAuthorityMetadataSDKType;
             };
         };
     }
     namespace txfees {
         const v1beta1: {
             QueryClientImpl: typeof _310.QueryClientImpl;
+            createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+                feeTokens(request: _169.QueryFeeTokensRequest): Promise<_169.QueryFeeTokensResponseSDKType>;
+                denomSpotPrice(request: _169.QueryDenomSpotPriceRequest): Promise<_169.QueryDenomSpotPriceResponseSDKType>;
+                denomPoolId(request: _169.QueryDenomPoolIdRequest): Promise<_169.QueryDenomPoolIdResponseSDKType>;
+                baseDenom(request: _169.QueryBaseDenomRequest): Promise<_169.QueryBaseDenomResponseSDKType>;
+            };
             LCDQueryClient: typeof _301.LCDQueryClient;
             QueryFeeTokensRequest: {
                 encode(_: _169.QueryFeeTokensRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryFeeTokensRequest;
                 fromPartial(_: {}): _169.QueryFeeTokensRequest;
-                fromSDK(_: _169.QueryFeeTokensRequestSDKType): _169.QueryFeeTokensRequest;
-                toSDK(_: _169.QueryFeeTokensRequest): _169.QueryFeeTokensRequestSDKType;
             };
             QueryFeeTokensResponse: {
                 encode(message: _169.QueryFeeTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4424,8 +3821,6 @@ export declare namespace osmosis {
                         poolID?: any;
                     }[];
                 }): _169.QueryFeeTokensResponse;
-                fromSDK(object: _169.QueryFeeTokensResponseSDKType): _169.QueryFeeTokensResponse;
-                toSDK(message: _169.QueryFeeTokensResponse): _169.QueryFeeTokensResponseSDKType;
             };
             QueryDenomSpotPriceRequest: {
                 encode(message: _169.QueryDenomSpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4433,8 +3828,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     denom?: string;
                 }): _169.QueryDenomSpotPriceRequest;
-                fromSDK(object: _169.QueryDenomSpotPriceRequestSDKType): _169.QueryDenomSpotPriceRequest;
-                toSDK(message: _169.QueryDenomSpotPriceRequest): _169.QueryDenomSpotPriceRequestSDKType;
             };
             QueryDenomSpotPriceResponse: {
                 encode(message: _169.QueryDenomSpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4443,8 +3836,6 @@ export declare namespace osmosis {
                     poolID?: any;
                     spotPrice?: string;
                 }): _169.QueryDenomSpotPriceResponse;
-                fromSDK(object: _169.QueryDenomSpotPriceResponseSDKType): _169.QueryDenomSpotPriceResponse;
-                toSDK(message: _169.QueryDenomSpotPriceResponse): _169.QueryDenomSpotPriceResponseSDKType;
             };
             QueryDenomPoolIdRequest: {
                 encode(message: _169.QueryDenomPoolIdRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4452,8 +3843,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     denom?: string;
                 }): _169.QueryDenomPoolIdRequest;
-                fromSDK(object: _169.QueryDenomPoolIdRequestSDKType): _169.QueryDenomPoolIdRequest;
-                toSDK(message: _169.QueryDenomPoolIdRequest): _169.QueryDenomPoolIdRequestSDKType;
             };
             QueryDenomPoolIdResponse: {
                 encode(message: _169.QueryDenomPoolIdResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4461,15 +3850,11 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     poolID?: any;
                 }): _169.QueryDenomPoolIdResponse;
-                fromSDK(object: _169.QueryDenomPoolIdResponseSDKType): _169.QueryDenomPoolIdResponse;
-                toSDK(message: _169.QueryDenomPoolIdResponse): _169.QueryDenomPoolIdResponseSDKType;
             };
             QueryBaseDenomRequest: {
                 encode(_: _169.QueryBaseDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryBaseDenomRequest;
                 fromPartial(_: {}): _169.QueryBaseDenomRequest;
-                fromSDK(_: _169.QueryBaseDenomRequestSDKType): _169.QueryBaseDenomRequest;
-                toSDK(_: _169.QueryBaseDenomRequest): _169.QueryBaseDenomRequestSDKType;
             };
             QueryBaseDenomResponse: {
                 encode(message: _169.QueryBaseDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4477,8 +3862,6 @@ export declare namespace osmosis {
                 fromPartial(object: {
                     baseDenom?: string;
                 }): _169.QueryBaseDenomResponse;
-                fromSDK(object: _169.QueryBaseDenomResponseSDKType): _169.QueryBaseDenomResponse;
-                toSDK(message: _169.QueryBaseDenomResponse): _169.QueryBaseDenomResponseSDKType;
             };
             UpdateFeeTokenProposal: {
                 encode(message: _168.UpdateFeeTokenProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4491,8 +3874,6 @@ export declare namespace osmosis {
                         poolID?: any;
                     };
                 }): _168.UpdateFeeTokenProposal;
-                fromSDK(object: _168.UpdateFeeTokenProposalSDKType): _168.UpdateFeeTokenProposal;
-                toSDK(message: _168.UpdateFeeTokenProposal): _168.UpdateFeeTokenProposalSDKType;
             };
             GenesisState: {
                 encode(message: _167.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4504,8 +3885,6 @@ export declare namespace osmosis {
                         poolID?: any;
                     }[];
                 }): _167.GenesisState;
-                fromSDK(object: _167.GenesisStateSDKType): _167.GenesisState;
-                toSDK(message: _167.GenesisState): _167.GenesisStateSDKType;
             };
             FeeToken: {
                 encode(message: _166.FeeToken, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -4514,8 +3893,6 @@ export declare namespace osmosis {
                     denom?: string;
                     poolID?: any;
                 }): _166.FeeToken;
-                fromSDK(object: _166.FeeTokenSDKType): _166.FeeToken;
-                toSDK(message: _166.FeeToken): _166.FeeTokenSDKType;
             };
         };
     }
@@ -4582,83 +3959,269 @@ export declare namespace osmosis {
                 };
             };
         }>;
-        createRPCQueryClient: ({ rpc }: {
-            rpc: import("@osmonauts/helpers").Rpc;
+        createRPCQueryClient: ({ rpcEndpoint }: {
+            rpcEndpoint: string;
         }) => Promise<{
             cosmos: {
                 app: {
-                    v1alpha1: import("../cosmos/app/v1alpha1/query.rpc.query").QueryClientImpl;
+                    v1alpha1: {
+                        config(request: import("../cosmos/app/v1alpha1/query").QueryConfigRequest): Promise<import("../cosmos/app/v1alpha1/query").QueryConfigResponseSDKType>;
+                    };
                 };
                 auth: {
-                    v1beta1: import("../cosmos/auth/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        accounts(request: import("../cosmos/auth/v1beta1/query").QueryAccountsRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryAccountsResponseSDKType>;
+                        account(request: import("../cosmos/auth/v1beta1/query").QueryAccountRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryAccountResponseSDKType>;
+                        params(request: import("../cosmos/auth/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryParamsResponseSDKType>;
+                        moduleAccounts(request: import("../cosmos/auth/v1beta1/query").QueryModuleAccountsRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryModuleAccountsResponseSDKType>;
+                        bech32Prefix(request: import("../cosmos/auth/v1beta1/query").Bech32PrefixRequest): Promise<import("../cosmos/auth/v1beta1/query").Bech32PrefixResponseSDKType>;
+                        addressBytesToString(request: import("../cosmos/auth/v1beta1/query").AddressBytesToStringRequest): Promise<import("../cosmos/auth/v1beta1/query").AddressBytesToStringResponseSDKType>;
+                        addressStringToBytes(request: import("../cosmos/auth/v1beta1/query").AddressStringToBytesRequest): Promise<import("../cosmos/auth/v1beta1/query").AddressStringToBytesResponseSDKType>;
+                    };
                 };
                 authz: {
-                    v1beta1: import("../cosmos/authz/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        grants(request: import("../cosmos/authz/v1beta1/query").QueryGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGrantsResponseSDKType>;
+                        granterGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranterGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranterGrantsResponseSDKType>;
+                        granteeGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsResponseSDKType>;
+                    };
                 };
                 bank: {
-                    v1beta1: import("../cosmos/bank/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        balance(request: import("../cosmos/bank/v1beta1/query").QueryBalanceRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryBalanceResponseSDKType>;
+                        allBalances(request: import("../cosmos/bank/v1beta1/query").QueryAllBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryAllBalancesResponseSDKType>;
+                        spendableBalances(request: import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesResponseSDKType>;
+                        totalSupply(request: import("../cosmos/bank/v1beta1/query").QueryTotalSupplyRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryTotalSupplyResponseSDKType>;
+                        supplyOf(request: import("../cosmos/bank/v1beta1/query").QuerySupplyOfRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySupplyOfResponseSDKType>;
+                        params(request: import("../cosmos/bank/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryParamsResponseSDKType>;
+                        denomMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomMetadataResponseSDKType>;
+                        denomsMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponseSDKType>;
+                        denomOwners(request: import("../cosmos/bank/v1beta1/query").QueryDenomOwnersRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomOwnersResponseSDKType>;
+                    };
                 };
                 base: {
                     tendermint: {
-                        v1beta1: any;
+                        v1beta1: {
+                            getNodeInfo(request: import("../cosmos/base/tendermint/v1beta1/query").GetNodeInfoRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetNodeInfoResponseSDKType>;
+                            getSyncing(request: import("../cosmos/base/tendermint/v1beta1/query").GetSyncingRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetSyncingResponseSDKType>;
+                            getLatestBlock(request: import("../cosmos/base/tendermint/v1beta1/query").GetLatestBlockRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetLatestBlockResponseSDKType>;
+                            getBlockByHeight(request: import("../cosmos/base/tendermint/v1beta1/query").GetBlockByHeightRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetBlockByHeightResponseSDKType>;
+                            getLatestValidatorSet(request: import("../cosmos/base/tendermint/v1beta1/query").GetLatestValidatorSetRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetLatestValidatorSetResponseSDKType>;
+                            getValidatorSetByHeight(request: import("../cosmos/base/tendermint/v1beta1/query").GetValidatorSetByHeightRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetValidatorSetByHeightResponseSDKType>;
+                        };
                     };
                 };
                 distribution: {
-                    v1beta1: import("../cosmos/distribution/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        params(request: import("../cosmos/distribution/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryParamsResponseSDKType>;
+                        validatorOutstandingRewards(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsResponseSDKType>;
+                        validatorCommission(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionResponseSDKType>;
+                        validatorSlashes(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesResponseSDKType>;
+                        delegationRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsResponseSDKType>;
+                        delegationTotalRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsResponseSDKType>;
+                        delegatorValidators(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsResponseSDKType>;
+                        delegatorWithdrawAddress(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressResponseSDKType>;
+                        communityPool(request: import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolResponseSDKType>;
+                    };
                 };
                 evidence: {
-                    v1beta1: import("../cosmos/evidence/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        evidence(request: import("../cosmos/evidence/v1beta1/query").QueryEvidenceRequest): Promise<import("../cosmos/evidence/v1beta1/query").QueryEvidenceResponseSDKType>;
+                        allEvidence(request: import("../cosmos/evidence/v1beta1/query").QueryAllEvidenceRequest): Promise<import("../cosmos/evidence/v1beta1/query").QueryAllEvidenceResponseSDKType>;
+                    };
                 };
                 feegrant: {
-                    v1beta1: import("../cosmos/feegrant/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        allowance(request: import("../cosmos/feegrant/v1beta1/query").QueryAllowanceRequest): Promise<import("../cosmos/feegrant/v1beta1/query").QueryAllowanceResponseSDKType>;
+                        allowances(request: import("../cosmos/feegrant/v1beta1/query").QueryAllowancesRequest): Promise<import("../cosmos/feegrant/v1beta1/query").QueryAllowancesResponseSDKType>;
+                        allowancesByGranter(request: import("../cosmos/feegrant/v1beta1/query").QueryAllowancesByGranterRequest): Promise<import("../cosmos/feegrant/v1beta1/query").QueryAllowancesByGranterResponseSDKType>;
+                    };
                 };
                 gov: {
-                    v1: import("../cosmos/gov/v1/query.rpc.query").QueryClientImpl;
-                    v1beta1: import("../cosmos/gov/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1: {
+                        proposal(request: import("../cosmos/gov/v1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalResponseSDKType>;
+                        proposals(request: import("../cosmos/gov/v1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalsResponseSDKType>;
+                        vote(request: import("../cosmos/gov/v1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1/query").QueryVoteResponseSDKType>;
+                        votes(request: import("../cosmos/gov/v1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1/query").QueryVotesResponseSDKType>;
+                        params(request: import("../cosmos/gov/v1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1/query").QueryParamsResponseSDKType>;
+                        deposit(request: import("../cosmos/gov/v1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositResponseSDKType>;
+                        deposits(request: import("../cosmos/gov/v1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositsResponseSDKType>;
+                        tallyResult(request: import("../cosmos/gov/v1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1/query").QueryTallyResultResponseSDKType>;
+                    };
+                    v1beta1: {
+                        proposal(request: import("../cosmos/gov/v1beta1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalResponseSDKType>;
+                        proposals(request: import("../cosmos/gov/v1beta1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalsResponseSDKType>;
+                        vote(request: import("../cosmos/gov/v1beta1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVoteResponseSDKType>;
+                        votes(request: import("../cosmos/gov/v1beta1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVotesResponseSDKType>;
+                        params(request: import("../cosmos/gov/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryParamsResponseSDKType>;
+                        deposit(request: import("../cosmos/gov/v1beta1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositResponseSDKType>;
+                        deposits(request: import("../cosmos/gov/v1beta1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositsResponseSDKType>;
+                        tallyResult(request: import("../cosmos/gov/v1beta1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryTallyResultResponseSDKType>;
+                    };
                 };
                 mint: {
-                    v1beta1: import("../cosmos/mint/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        params(request: import("../cosmos/mint/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryParamsResponseSDKType>;
+                        inflation(request: import("../cosmos/mint/v1beta1/query").QueryInflationRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryInflationResponseSDKType>;
+                        annualProvisions(request: import("../cosmos/mint/v1beta1/query").QueryAnnualProvisionsRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryAnnualProvisionsResponseSDKType>;
+                    };
                 };
                 nft: {
-                    v1beta1: import("../cosmos/nft/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        balance(request: import("../cosmos/nft/v1beta1/query").QueryBalanceRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryBalanceResponseSDKType>;
+                        owner(request: import("../cosmos/nft/v1beta1/query").QueryOwnerRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryOwnerResponseSDKType>;
+                        supply(request: import("../cosmos/nft/v1beta1/query").QuerySupplyRequest): Promise<import("../cosmos/nft/v1beta1/query").QuerySupplyResponseSDKType>;
+                        nFTs(request: import("../cosmos/nft/v1beta1/query").QueryNFTsRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryNFTsResponseSDKType>;
+                        nFT(request: import("../cosmos/nft/v1beta1/query").QueryNFTRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryNFTResponseSDKType>;
+                        class(request: import("../cosmos/nft/v1beta1/query").QueryClassRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryClassResponseSDKType>;
+                        classes(request: import("../cosmos/nft/v1beta1/query").QueryClassesRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryClassesResponseSDKType>;
+                    };
                 };
                 params: {
-                    v1beta1: import("../cosmos/params/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        params(request: import("../cosmos/params/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/params/v1beta1/query").QueryParamsResponseSDKType>;
+                        subspaces(request: import("../cosmos/params/v1beta1/query").QuerySubspacesRequest): Promise<import("../cosmos/params/v1beta1/query").QuerySubspacesResponseSDKType>;
+                    };
                 };
                 slashing: {
-                    v1beta1: import("../cosmos/slashing/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        params(request: import("../cosmos/slashing/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/slashing/v1beta1/query").QueryParamsResponseSDKType>;
+                        signingInfo(request: import("../cosmos/slashing/v1beta1/query").QuerySigningInfoRequest): Promise<import("../cosmos/slashing/v1beta1/query").QuerySigningInfoResponseSDKType>;
+                        signingInfos(request: import("../cosmos/slashing/v1beta1/query").QuerySigningInfosRequest): Promise<import("../cosmos/slashing/v1beta1/query").QuerySigningInfosResponseSDKType>;
+                    };
                 };
                 staking: {
-                    v1beta1: import("../cosmos/staking/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        validators(request: import("../cosmos/staking/v1beta1/query").QueryValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorsResponseSDKType>;
+                        validator(request: import("../cosmos/staking/v1beta1/query").QueryValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorResponseSDKType>;
+                        validatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsResponseSDKType>;
+                        validatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsResponseSDKType>;
+                        delegation(request: import("../cosmos/staking/v1beta1/query").QueryDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegationResponseSDKType>;
+                        unbondingDelegation(request: import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationResponseSDKType>;
+                        delegatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsResponseSDKType>;
+                        delegatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsResponseSDKType>;
+                        redelegations(request: import("../cosmos/staking/v1beta1/query").QueryRedelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryRedelegationsResponseSDKType>;
+                        delegatorValidators(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsResponseSDKType>;
+                        delegatorValidator(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorResponseSDKType>;
+                        historicalInfo(request: import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoResponseSDKType>;
+                        pool(request: import("../cosmos/staking/v1beta1/query").QueryPoolRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryPoolResponseSDKType>;
+                        params(request: import("../cosmos/staking/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryParamsResponseSDKType>;
+                    };
                 };
                 tx: {
-                    v1beta1: any;
+                    v1beta1: {
+                        simulate(request: import("../cosmos/tx/v1beta1/service").SimulateRequest): Promise<import("../cosmos/tx/v1beta1/service").SimulateResponseSDKType>;
+                        getTx(request: import("../cosmos/tx/v1beta1/service").GetTxRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxResponseSDKType>;
+                        broadcastTx(request: import("../cosmos/tx/v1beta1/service").BroadcastTxRequest): Promise<import("../cosmos/tx/v1beta1/service").BroadcastTxResponseSDKType>;
+                        getTxsEvent(request: import("../cosmos/tx/v1beta1/service").GetTxsEventRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxsEventResponseSDKType>;
+                        getBlockWithTxs(request: import("../cosmos/tx/v1beta1/service").GetBlockWithTxsRequest): Promise<import("../cosmos/tx/v1beta1/service").GetBlockWithTxsResponseSDKType>;
+                    };
                 };
                 upgrade: {
-                    v1beta1: import("../cosmos/upgrade/v1beta1/query.rpc.query").QueryClientImpl;
+                    v1beta1: {
+                        currentPlan(request: import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanResponseSDKType>;
+                        appliedPlan(request: import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanResponseSDKType>;
+                        upgradedConsensusState(request: import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateResponseSDKType>;
+                        moduleVersions(request: import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsResponseSDKType>;
+                        authority(request: import("../cosmos/upgrade/v1beta1/query").QueryAuthorityRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAuthorityResponseSDKType>;
+                    };
                 };
             };
             osmosis: {
                 epochs: {
-                    v1beta1: _302.QueryClientImpl;
+                    v1beta1: {
+                        epochInfos(request: _131.QueryEpochsInfoRequest): Promise<_131.QueryEpochsInfoResponseSDKType>;
+                        currentEpoch(request: _131.QueryCurrentEpochRequest): Promise<_131.QueryCurrentEpochResponseSDKType>;
+                    };
                 };
                 gamm: {
-                    v1beta1: _303.QueryClientImpl;
+                    v1beta1: {
+                        pools(request: _134.QueryPoolsRequest): Promise<_134.QueryPoolsResponseSDKType>;
+                        numPools(request: _134.QueryNumPoolsRequest): Promise<_134.QueryNumPoolsResponseSDKType>;
+                        totalLiquidity(request: _134.QueryTotalLiquidityRequest): Promise<_134.QueryTotalLiquidityResponseSDKType>;
+                        pool(request: _134.QueryPoolRequest): Promise<_134.QueryPoolResponseSDKType>;
+                        poolParams(request: _134.QueryPoolParamsRequest): Promise<_134.QueryPoolParamsResponseSDKType>;
+                        totalPoolLiquidity(request: _134.QueryTotalPoolLiquidityRequest): Promise<_134.QueryTotalPoolLiquidityResponseSDKType>;
+                        totalShares(request: _134.QueryTotalSharesRequest): Promise<_134.QueryTotalSharesResponseSDKType>;
+                        spotPrice(request: _134.QuerySpotPriceRequest): Promise<_134.QuerySpotPriceResponseSDKType>;
+                        estimateSwapExactAmountIn(request: _134.QuerySwapExactAmountInRequest): Promise<_134.QuerySwapExactAmountInResponseSDKType>;
+                        estimateSwapExactAmountOut(request: _134.QuerySwapExactAmountOutRequest): Promise<_134.QuerySwapExactAmountOutResponseSDKType>;
+                    };
                 };
-                incentives: _304.QueryClientImpl;
-                lockup: _305.QueryClientImpl;
+                incentives: {
+                    moduleToDistributeCoins(request: _142.ModuleToDistributeCoinsRequest): Promise<_142.ModuleToDistributeCoinsResponseSDKType>;
+                    moduleDistributedCoins(request: _142.ModuleDistributedCoinsRequest): Promise<_142.ModuleDistributedCoinsResponseSDKType>;
+                    gaugeByID(request: _142.GaugeByIDRequest): Promise<_142.GaugeByIDResponseSDKType>;
+                    gauges(request: _142.GaugesRequest): Promise<_142.GaugesResponseSDKType>;
+                    activeGauges(request: _142.ActiveGaugesRequest): Promise<_142.ActiveGaugesResponseSDKType>;
+                    activeGaugesPerDenom(request: _142.ActiveGaugesPerDenomRequest): Promise<_142.ActiveGaugesPerDenomResponseSDKType>;
+                    upcomingGauges(request: _142.UpcomingGaugesRequest): Promise<_142.UpcomingGaugesResponseSDKType>;
+                    upcomingGaugesPerDenom(request: _142.UpcomingGaugesPerDenomRequest): Promise<_142.UpcomingGaugesPerDenomResponseSDKType>;
+                    rewardsEst(request: _142.RewardsEstRequest): Promise<_142.RewardsEstResponseSDKType>;
+                    lockableDurations(request: _142.QueryLockableDurationsRequest): Promise<_142.QueryLockableDurationsResponseSDKType>;
+                };
+                lockup: {
+                    moduleBalance(request: _146.ModuleBalanceRequest): Promise<_146.ModuleBalanceResponseSDKType>;
+                    moduleLockedAmount(request: _146.ModuleLockedAmountRequest): Promise<_146.ModuleLockedAmountResponseSDKType>;
+                    accountUnlockableCoins(request: _146.AccountUnlockableCoinsRequest): Promise<_146.AccountUnlockableCoinsResponseSDKType>;
+                    accountUnlockingCoins(request: _146.AccountUnlockingCoinsRequest): Promise<_146.AccountUnlockingCoinsResponseSDKType>;
+                    accountLockedCoins(request: _146.AccountLockedCoinsRequest): Promise<_146.AccountLockedCoinsResponseSDKType>;
+                    accountLockedPastTime(request: _146.AccountLockedPastTimeRequest): Promise<_146.AccountLockedPastTimeResponseSDKType>;
+                    accountLockedPastTimeNotUnlockingOnly(request: _146.AccountLockedPastTimeNotUnlockingOnlyRequest): Promise<_146.AccountLockedPastTimeNotUnlockingOnlyResponseSDKType>;
+                    accountUnlockedBeforeTime(request: _146.AccountUnlockedBeforeTimeRequest): Promise<_146.AccountUnlockedBeforeTimeResponseSDKType>;
+                    accountLockedPastTimeDenom(request: _146.AccountLockedPastTimeDenomRequest): Promise<_146.AccountLockedPastTimeDenomResponseSDKType>;
+                    lockedDenom(request: _146.LockedDenomRequest): Promise<_146.LockedDenomResponseSDKType>;
+                    lockedByID(request: _146.LockedRequest): Promise<_146.LockedResponseSDKType>;
+                    syntheticLockupsByLockupID(request: _146.SyntheticLockupsByLockupIDRequest): Promise<_146.SyntheticLockupsByLockupIDResponseSDKType>;
+                    accountLockedLongerDuration(request: _146.AccountLockedLongerDurationRequest): Promise<_146.AccountLockedLongerDurationResponseSDKType>;
+                    accountLockedDuration(request: _146.AccountLockedDurationRequest): Promise<_146.AccountLockedDurationResponseSDKType>;
+                    accountLockedLongerDurationNotUnlockingOnly(request: _146.AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<_146.AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType>;
+                    accountLockedLongerDurationDenom(request: _146.AccountLockedLongerDurationDenomRequest): Promise<_146.AccountLockedLongerDurationDenomResponseSDKType>;
+                };
                 mint: {
-                    v1beta1: _306.QueryClientImpl;
+                    v1beta1: {
+                        params(request: _150.QueryParamsRequest): Promise<_150.QueryParamsResponseSDKType>;
+                        epochProvisions(request: _150.QueryEpochProvisionsRequest): Promise<_150.QueryEpochProvisionsResponseSDKType>;
+                    };
                 };
                 poolincentives: {
-                    v1beta1: _307.QueryClientImpl;
+                    v1beta1: {
+                        gaugeIds(request: _154.QueryGaugeIdsRequest): Promise<_154.QueryGaugeIdsResponseSDKType>;
+                        distrInfo(request: _154.QueryDistrInfoRequest): Promise<_154.QueryDistrInfoResponseSDKType>;
+                        params(request: _154.QueryParamsRequest): Promise<_154.QueryParamsResponseSDKType>;
+                        lockableDurations(request: _154.QueryLockableDurationsRequest): Promise<_154.QueryLockableDurationsResponseSDKType>;
+                        incentivizedPools(request: _154.QueryIncentivizedPoolsRequest): Promise<_154.QueryIncentivizedPoolsResponseSDKType>;
+                        externalIncentiveGauges(request: _154.QueryExternalIncentiveGaugesRequest): Promise<_154.QueryExternalIncentiveGaugesResponseSDKType>;
+                    };
                 };
-                superfluid: _308.QueryClientImpl;
+                superfluid: {
+                    params(request: _158.QueryParamsRequest): Promise<_158.QueryParamsResponseSDKType>;
+                    assetType(request: _158.AssetTypeRequest): Promise<_158.AssetTypeResponseSDKType>;
+                    allAssets(request: _158.AllAssetsRequest): Promise<_158.AllAssetsResponseSDKType>;
+                    assetMultiplier(request: _158.AssetMultiplierRequest): Promise<_158.AssetMultiplierResponseSDKType>;
+                    allIntermediaryAccounts(request: _158.AllIntermediaryAccountsRequest): Promise<_158.AllIntermediaryAccountsResponseSDKType>;
+                    connectedIntermediaryAccount(request: _158.ConnectedIntermediaryAccountRequest): Promise<_158.ConnectedIntermediaryAccountResponseSDKType>;
+                    totalSuperfluidDelegations(request: _158.TotalSuperfluidDelegationsRequest): Promise<_158.TotalSuperfluidDelegationsResponseSDKType>;
+                    superfluidDelegationAmount(request: _158.SuperfluidDelegationAmountRequest): Promise<_158.SuperfluidDelegationAmountResponseSDKType>;
+                    superfluidDelegationsByDelegator(request: _158.SuperfluidDelegationsByDelegatorRequest): Promise<_158.SuperfluidDelegationsByDelegatorResponseSDKType>;
+                    superfluidUndelegationsByDelegator(request: _158.SuperfluidUndelegationsByDelegatorRequest): Promise<_158.SuperfluidUndelegationsByDelegatorResponseSDKType>;
+                    superfluidDelegationsByValidatorDenom(request: _158.SuperfluidDelegationsByValidatorDenomRequest): Promise<_158.SuperfluidDelegationsByValidatorDenomResponseSDKType>;
+                    estimateSuperfluidDelegatedAmountByValidatorDenom(request: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<_158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType>;
+                };
                 tokenfactory: {
-                    v1beta1: _309.QueryClientImpl;
+                    v1beta1: {
+                        params(request: _164.QueryParamsRequest): Promise<_164.QueryParamsResponseSDKType>;
+                        denomAuthorityMetadata(request: _164.QueryDenomAuthorityMetadataRequest): Promise<_164.QueryDenomAuthorityMetadataResponseSDKType>;
+                        denomsFromCreator(request: _164.QueryDenomsFromCreatorRequest): Promise<_164.QueryDenomsFromCreatorResponseSDKType>;
+                    };
                 };
                 txfees: {
-                    v1beta1: _310.QueryClientImpl;
+                    v1beta1: {
+                        feeTokens(request: _169.QueryFeeTokensRequest): Promise<_169.QueryFeeTokensResponseSDKType>;
+                        denomSpotPrice(request: _169.QueryDenomSpotPriceRequest): Promise<_169.QueryDenomSpotPriceResponseSDKType>;
+                        denomPoolId(request: _169.QueryDenomPoolIdRequest): Promise<_169.QueryDenomPoolIdResponseSDKType>;
+                        baseDenom(request: _169.QueryBaseDenomRequest): Promise<_169.QueryBaseDenomResponseSDKType>;
+                    };
                 };
             };
         }>;

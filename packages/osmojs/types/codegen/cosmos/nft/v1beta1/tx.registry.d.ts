@@ -15,18 +15,6 @@ export declare const MessageComposer: {
             value: MsgSend;
         };
     };
-    toJSON: {
-        send(value: MsgSend): {
-            typeUrl: string;
-            value: any;
-        };
-    };
-    fromJSON: {
-        send(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-    };
     fromPartial: {
         send(value: MsgSend): {
             typeUrl: string;

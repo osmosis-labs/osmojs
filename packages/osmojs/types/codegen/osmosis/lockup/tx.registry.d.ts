@@ -39,42 +39,6 @@ export declare const MessageComposer: {
             value: MsgExtendLockup;
         };
     };
-    toJSON: {
-        lockTokens(value: MsgLockTokens): {
-            typeUrl: string;
-            value: any;
-        };
-        beginUnlockingAll(value: MsgBeginUnlockingAll): {
-            typeUrl: string;
-            value: any;
-        };
-        beginUnlocking(value: MsgBeginUnlocking): {
-            typeUrl: string;
-            value: any;
-        };
-        extendLockup(value: MsgExtendLockup): {
-            typeUrl: string;
-            value: any;
-        };
-    };
-    fromJSON: {
-        lockTokens(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        beginUnlockingAll(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        beginUnlocking(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        extendLockup(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-    };
     fromPartial: {
         lockTokens(value: MsgLockTokens): {
             typeUrl: string;

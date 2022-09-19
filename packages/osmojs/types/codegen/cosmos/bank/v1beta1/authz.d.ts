@@ -23,6 +23,4 @@ export declare const SendAuthorization: {
     encode(message: SendAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SendAuthorization;
     fromPartial(object: DeepPartial<SendAuthorization>): SendAuthorization;
-    fromSDK(object: SendAuthorizationSDKType): SendAuthorization;
-    toSDK(message: SendAuthorization): SendAuthorizationSDKType;
 };

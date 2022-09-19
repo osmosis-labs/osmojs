@@ -45,27 +45,19 @@ export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: DeepPartial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
 };
 export declare const LockableDurationsInfo: {
     encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
     fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo;
-    fromSDK(object: LockableDurationsInfoSDKType): LockableDurationsInfo;
-    toSDK(message: LockableDurationsInfo): LockableDurationsInfoSDKType;
 };
 export declare const DistrInfo: {
     encode(message: DistrInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrInfo;
     fromPartial(object: DeepPartial<DistrInfo>): DistrInfo;
-    fromSDK(object: DistrInfoSDKType): DistrInfo;
-    toSDK(message: DistrInfo): DistrInfoSDKType;
 };
 export declare const DistrRecord: {
     encode(message: DistrRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrRecord;
     fromPartial(object: DeepPartial<DistrRecord>): DistrRecord;
-    fromSDK(object: DistrRecordSDKType): DistrRecord;
-    toSDK(message: DistrRecord): DistrRecordSDKType;
 };

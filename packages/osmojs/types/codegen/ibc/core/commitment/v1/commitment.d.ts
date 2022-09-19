@@ -71,27 +71,19 @@ export declare const MerkleRoot: {
     encode(message: MerkleRoot, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerkleRoot;
     fromPartial(object: DeepPartial<MerkleRoot>): MerkleRoot;
-    fromSDK(object: MerkleRootSDKType): MerkleRoot;
-    toSDK(message: MerkleRoot): MerkleRootSDKType;
 };
 export declare const MerklePrefix: {
     encode(message: MerklePrefix, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerklePrefix;
     fromPartial(object: DeepPartial<MerklePrefix>): MerklePrefix;
-    fromSDK(object: MerklePrefixSDKType): MerklePrefix;
-    toSDK(message: MerklePrefix): MerklePrefixSDKType;
 };
 export declare const MerklePath: {
     encode(message: MerklePath, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerklePath;
     fromPartial(object: DeepPartial<MerklePath>): MerklePath;
-    fromSDK(object: MerklePathSDKType): MerklePath;
-    toSDK(message: MerklePath): MerklePathSDKType;
 };
 export declare const MerkleProof: {
     encode(message: MerkleProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerkleProof;
     fromPartial(object: DeepPartial<MerkleProof>): MerkleProof;
-    fromSDK(object: MerkleProofSDKType): MerkleProof;
-    toSDK(message: MerkleProof): MerkleProofSDKType;
 };

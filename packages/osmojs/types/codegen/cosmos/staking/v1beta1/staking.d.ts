@@ -470,139 +470,99 @@ export declare const HistoricalInfo: {
     encode(message: HistoricalInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HistoricalInfo;
     fromPartial(object: DeepPartial<HistoricalInfo>): HistoricalInfo;
-    fromSDK(object: HistoricalInfoSDKType): HistoricalInfo;
-    toSDK(message: HistoricalInfo): HistoricalInfoSDKType;
 };
 export declare const CommissionRates: {
     encode(message: CommissionRates, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommissionRates;
     fromPartial(object: DeepPartial<CommissionRates>): CommissionRates;
-    fromSDK(object: CommissionRatesSDKType): CommissionRates;
-    toSDK(message: CommissionRates): CommissionRatesSDKType;
 };
 export declare const Commission: {
     encode(message: Commission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Commission;
     fromPartial(object: DeepPartial<Commission>): Commission;
-    fromSDK(object: CommissionSDKType): Commission;
-    toSDK(message: Commission): CommissionSDKType;
 };
 export declare const Description: {
     encode(message: Description, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Description;
     fromPartial(object: DeepPartial<Description>): Description;
-    fromSDK(object: DescriptionSDKType): Description;
-    toSDK(message: Description): DescriptionSDKType;
 };
 export declare const Validator: {
     encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
     fromPartial(object: DeepPartial<Validator>): Validator;
-    fromSDK(object: ValidatorSDKType): Validator;
-    toSDK(message: Validator): ValidatorSDKType;
 };
 export declare const ValAddresses: {
     encode(message: ValAddresses, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValAddresses;
     fromPartial(object: DeepPartial<ValAddresses>): ValAddresses;
-    fromSDK(object: ValAddressesSDKType): ValAddresses;
-    toSDK(message: ValAddresses): ValAddressesSDKType;
 };
 export declare const DVPair: {
     encode(message: DVPair, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVPair;
     fromPartial(object: DeepPartial<DVPair>): DVPair;
-    fromSDK(object: DVPairSDKType): DVPair;
-    toSDK(message: DVPair): DVPairSDKType;
 };
 export declare const DVPairs: {
     encode(message: DVPairs, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVPairs;
     fromPartial(object: DeepPartial<DVPairs>): DVPairs;
-    fromSDK(object: DVPairsSDKType): DVPairs;
-    toSDK(message: DVPairs): DVPairsSDKType;
 };
 export declare const DVVTriplet: {
     encode(message: DVVTriplet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplet;
     fromPartial(object: DeepPartial<DVVTriplet>): DVVTriplet;
-    fromSDK(object: DVVTripletSDKType): DVVTriplet;
-    toSDK(message: DVVTriplet): DVVTripletSDKType;
 };
 export declare const DVVTriplets: {
     encode(message: DVVTriplets, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplets;
     fromPartial(object: DeepPartial<DVVTriplets>): DVVTriplets;
-    fromSDK(object: DVVTripletsSDKType): DVVTriplets;
-    toSDK(message: DVVTriplets): DVVTripletsSDKType;
 };
 export declare const Delegation: {
     encode(message: Delegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Delegation;
     fromPartial(object: DeepPartial<Delegation>): Delegation;
-    fromSDK(object: DelegationSDKType): Delegation;
-    toSDK(message: Delegation): DelegationSDKType;
 };
 export declare const UnbondingDelegation: {
     encode(message: UnbondingDelegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegation;
     fromPartial(object: DeepPartial<UnbondingDelegation>): UnbondingDelegation;
-    fromSDK(object: UnbondingDelegationSDKType): UnbondingDelegation;
-    toSDK(message: UnbondingDelegation): UnbondingDelegationSDKType;
 };
 export declare const UnbondingDelegationEntry: {
     encode(message: UnbondingDelegationEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegationEntry;
     fromPartial(object: DeepPartial<UnbondingDelegationEntry>): UnbondingDelegationEntry;
-    fromSDK(object: UnbondingDelegationEntrySDKType): UnbondingDelegationEntry;
-    toSDK(message: UnbondingDelegationEntry): UnbondingDelegationEntrySDKType;
 };
 export declare const RedelegationEntry: {
     encode(message: RedelegationEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntry;
     fromPartial(object: DeepPartial<RedelegationEntry>): RedelegationEntry;
-    fromSDK(object: RedelegationEntrySDKType): RedelegationEntry;
-    toSDK(message: RedelegationEntry): RedelegationEntrySDKType;
 };
 export declare const Redelegation: {
     encode(message: Redelegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Redelegation;
     fromPartial(object: DeepPartial<Redelegation>): Redelegation;
-    fromSDK(object: RedelegationSDKType): Redelegation;
-    toSDK(message: Redelegation): RedelegationSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: DeepPartial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
 };
 export declare const DelegationResponse: {
     encode(message: DelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegationResponse;
     fromPartial(object: DeepPartial<DelegationResponse>): DelegationResponse;
-    fromSDK(object: DelegationResponseSDKType): DelegationResponse;
-    toSDK(message: DelegationResponse): DelegationResponseSDKType;
 };
 export declare const RedelegationEntryResponse: {
     encode(message: RedelegationEntryResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntryResponse;
     fromPartial(object: DeepPartial<RedelegationEntryResponse>): RedelegationEntryResponse;
-    fromSDK(object: RedelegationEntryResponseSDKType): RedelegationEntryResponse;
-    toSDK(message: RedelegationEntryResponse): RedelegationEntryResponseSDKType;
 };
 export declare const RedelegationResponse: {
     encode(message: RedelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationResponse;
     fromPartial(object: DeepPartial<RedelegationResponse>): RedelegationResponse;
-    fromSDK(object: RedelegationResponseSDKType): RedelegationResponse;
-    toSDK(message: RedelegationResponse): RedelegationResponseSDKType;
 };
 export declare const Pool: {
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
     fromPartial(object: DeepPartial<Pool>): Pool;
-    fromSDK(object: PoolSDKType): Pool;
-    toSDK(message: Pool): PoolSDKType;
 };

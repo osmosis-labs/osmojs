@@ -23,26 +23,6 @@ export declare const MessageComposer: {
             value: MsgStableSwapAdjustScalingFactors;
         };
     };
-    toJSON: {
-        createStableswapPool(value: MsgCreateStableswapPool): {
-            typeUrl: string;
-            value: any;
-        };
-        stableSwapAdjustScalingFactors(value: MsgStableSwapAdjustScalingFactors): {
-            typeUrl: string;
-            value: any;
-        };
-    };
-    fromJSON: {
-        createStableswapPool(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        stableSwapAdjustScalingFactors(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-    };
     fromPartial: {
         createStableswapPool(value: MsgCreateStableswapPool): {
             typeUrl: string;

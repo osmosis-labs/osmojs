@@ -192,34 +192,24 @@ export declare const ClientState: {
     encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientState;
     fromPartial(object: DeepPartial<ClientState>): ClientState;
-    fromSDK(object: ClientStateSDKType): ClientState;
-    toSDK(message: ClientState): ClientStateSDKType;
 };
 export declare const ConsensusState: {
     encode(message: ConsensusState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusState;
     fromPartial(object: DeepPartial<ConsensusState>): ConsensusState;
-    fromSDK(object: ConsensusStateSDKType): ConsensusState;
-    toSDK(message: ConsensusState): ConsensusStateSDKType;
 };
 export declare const Misbehaviour: {
     encode(message: Misbehaviour, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Misbehaviour;
     fromPartial(object: DeepPartial<Misbehaviour>): Misbehaviour;
-    fromSDK(object: MisbehaviourSDKType): Misbehaviour;
-    toSDK(message: Misbehaviour): MisbehaviourSDKType;
 };
 export declare const Header: {
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
     fromPartial(object: DeepPartial<Header>): Header;
-    fromSDK(object: HeaderSDKType): Header;
-    toSDK(message: Header): HeaderSDKType;
 };
 export declare const Fraction: {
     encode(message: Fraction, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Fraction;
     fromPartial(object: DeepPartial<Fraction>): Fraction;
-    fromSDK(object: FractionSDKType): Fraction;
-    toSDK(message: Fraction): FractionSDKType;
 };

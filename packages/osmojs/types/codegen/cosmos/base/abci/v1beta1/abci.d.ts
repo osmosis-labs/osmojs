@@ -306,69 +306,49 @@ export declare const TxResponse: {
     encode(message: TxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxResponse;
     fromPartial(object: DeepPartial<TxResponse>): TxResponse;
-    fromSDK(object: TxResponseSDKType): TxResponse;
-    toSDK(message: TxResponse): TxResponseSDKType;
 };
 export declare const ABCIMessageLog: {
     encode(message: ABCIMessageLog, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ABCIMessageLog;
     fromPartial(object: DeepPartial<ABCIMessageLog>): ABCIMessageLog;
-    fromSDK(object: ABCIMessageLogSDKType): ABCIMessageLog;
-    toSDK(message: ABCIMessageLog): ABCIMessageLogSDKType;
 };
 export declare const StringEvent: {
     encode(message: StringEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StringEvent;
     fromPartial(object: DeepPartial<StringEvent>): StringEvent;
-    fromSDK(object: StringEventSDKType): StringEvent;
-    toSDK(message: StringEvent): StringEventSDKType;
 };
 export declare const Attribute: {
     encode(message: Attribute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Attribute;
     fromPartial(object: DeepPartial<Attribute>): Attribute;
-    fromSDK(object: AttributeSDKType): Attribute;
-    toSDK(message: Attribute): AttributeSDKType;
 };
 export declare const GasInfo: {
     encode(message: GasInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GasInfo;
     fromPartial(object: DeepPartial<GasInfo>): GasInfo;
-    fromSDK(object: GasInfoSDKType): GasInfo;
-    toSDK(message: GasInfo): GasInfoSDKType;
 };
 export declare const Result: {
     encode(message: Result, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Result;
     fromPartial(object: DeepPartial<Result>): Result;
-    fromSDK(object: ResultSDKType): Result;
-    toSDK(message: Result): ResultSDKType;
 };
 export declare const SimulationResponse: {
     encode(message: SimulationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulationResponse;
     fromPartial(object: DeepPartial<SimulationResponse>): SimulationResponse;
-    fromSDK(object: SimulationResponseSDKType): SimulationResponse;
-    toSDK(message: SimulationResponse): SimulationResponseSDKType;
 };
 export declare const MsgData: {
     encode(message: MsgData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgData;
     fromPartial(object: DeepPartial<MsgData>): MsgData;
-    fromSDK(object: MsgDataSDKType): MsgData;
-    toSDK(message: MsgData): MsgDataSDKType;
 };
 export declare const TxMsgData: {
     encode(message: TxMsgData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxMsgData;
     fromPartial(object: DeepPartial<TxMsgData>): TxMsgData;
-    fromSDK(object: TxMsgDataSDKType): TxMsgData;
-    toSDK(message: TxMsgData): TxMsgDataSDKType;
 };
 export declare const SearchTxsResult: {
     encode(message: SearchTxsResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SearchTxsResult;
     fromPartial(object: DeepPartial<SearchTxsResult>): SearchTxsResult;
-    fromSDK(object: SearchTxsResultSDKType): SearchTxsResult;
-    toSDK(message: SearchTxsResult): SearchTxsResultSDKType;
 };

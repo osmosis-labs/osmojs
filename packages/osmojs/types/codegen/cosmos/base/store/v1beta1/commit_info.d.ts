@@ -52,20 +52,14 @@ export declare const CommitInfo: {
     encode(message: CommitInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitInfo;
     fromPartial(object: DeepPartial<CommitInfo>): CommitInfo;
-    fromSDK(object: CommitInfoSDKType): CommitInfo;
-    toSDK(message: CommitInfo): CommitInfoSDKType;
 };
 export declare const StoreInfo: {
     encode(message: StoreInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StoreInfo;
     fromPartial(object: DeepPartial<StoreInfo>): StoreInfo;
-    fromSDK(object: StoreInfoSDKType): StoreInfo;
-    toSDK(message: StoreInfo): StoreInfoSDKType;
 };
 export declare const CommitID: {
     encode(message: CommitID, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitID;
     fromPartial(object: DeepPartial<CommitID>): CommitID;
-    fromSDK(object: CommitIDSDKType): CommitID;
-    toSDK(message: CommitID): CommitIDSDKType;
 };

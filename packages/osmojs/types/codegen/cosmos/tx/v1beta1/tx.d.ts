@@ -540,90 +540,64 @@ export declare const Tx: {
     encode(message: Tx, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Tx;
     fromPartial(object: DeepPartial<Tx>): Tx;
-    fromSDK(object: TxSDKType): Tx;
-    toSDK(message: Tx): TxSDKType;
 };
 export declare const TxRaw: {
     encode(message: TxRaw, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxRaw;
     fromPartial(object: DeepPartial<TxRaw>): TxRaw;
-    fromSDK(object: TxRawSDKType): TxRaw;
-    toSDK(message: TxRaw): TxRawSDKType;
 };
 export declare const SignDoc: {
     encode(message: SignDoc, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignDoc;
     fromPartial(object: DeepPartial<SignDoc>): SignDoc;
-    fromSDK(object: SignDocSDKType): SignDoc;
-    toSDK(message: SignDoc): SignDocSDKType;
 };
 export declare const SignDocDirectAux: {
     encode(message: SignDocDirectAux, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignDocDirectAux;
     fromPartial(object: DeepPartial<SignDocDirectAux>): SignDocDirectAux;
-    fromSDK(object: SignDocDirectAuxSDKType): SignDocDirectAux;
-    toSDK(message: SignDocDirectAux): SignDocDirectAuxSDKType;
 };
 export declare const TxBody: {
     encode(message: TxBody, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxBody;
     fromPartial(object: DeepPartial<TxBody>): TxBody;
-    fromSDK(object: TxBodySDKType): TxBody;
-    toSDK(message: TxBody): TxBodySDKType;
 };
 export declare const AuthInfo: {
     encode(message: AuthInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AuthInfo;
     fromPartial(object: DeepPartial<AuthInfo>): AuthInfo;
-    fromSDK(object: AuthInfoSDKType): AuthInfo;
-    toSDK(message: AuthInfo): AuthInfoSDKType;
 };
 export declare const SignerInfo: {
     encode(message: SignerInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignerInfo;
     fromPartial(object: DeepPartial<SignerInfo>): SignerInfo;
-    fromSDK(object: SignerInfoSDKType): SignerInfo;
-    toSDK(message: SignerInfo): SignerInfoSDKType;
 };
 export declare const ModeInfo: {
     encode(message: ModeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModeInfo;
     fromPartial(object: DeepPartial<ModeInfo>): ModeInfo;
-    fromSDK(object: ModeInfoSDKType): ModeInfo;
-    toSDK(message: ModeInfo): ModeInfoSDKType;
 };
 export declare const ModeInfo_Single: {
     encode(message: ModeInfo_Single, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModeInfo_Single;
     fromPartial(object: DeepPartial<ModeInfo_Single>): ModeInfo_Single;
-    fromSDK(object: ModeInfo_SingleSDKType): ModeInfo_Single;
-    toSDK(message: ModeInfo_Single): ModeInfo_SingleSDKType;
 };
 export declare const ModeInfo_Multi: {
     encode(message: ModeInfo_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModeInfo_Multi;
     fromPartial(object: DeepPartial<ModeInfo_Multi>): ModeInfo_Multi;
-    fromSDK(object: ModeInfo_MultiSDKType): ModeInfo_Multi;
-    toSDK(message: ModeInfo_Multi): ModeInfo_MultiSDKType;
 };
 export declare const Fee: {
     encode(message: Fee, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Fee;
     fromPartial(object: DeepPartial<Fee>): Fee;
-    fromSDK(object: FeeSDKType): Fee;
-    toSDK(message: Fee): FeeSDKType;
 };
 export declare const Tip: {
     encode(message: Tip, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Tip;
     fromPartial(object: DeepPartial<Tip>): Tip;
-    fromSDK(object: TipSDKType): Tip;
-    toSDK(message: Tip): TipSDKType;
 };
 export declare const AuxSignerData: {
     encode(message: AuxSignerData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AuxSignerData;
     fromPartial(object: DeepPartial<AuxSignerData>): AuxSignerData;
-    fromSDK(object: AuxSignerDataSDKType): AuxSignerData;
-    toSDK(message: AuxSignerData): AuxSignerDataSDKType;
 };

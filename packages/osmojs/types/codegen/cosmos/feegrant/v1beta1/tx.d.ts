@@ -55,27 +55,19 @@ export declare const MsgGrantAllowance: {
     encode(message: MsgGrantAllowance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantAllowance;
     fromPartial(object: DeepPartial<MsgGrantAllowance>): MsgGrantAllowance;
-    fromSDK(object: MsgGrantAllowanceSDKType): MsgGrantAllowance;
-    toSDK(message: MsgGrantAllowance): MsgGrantAllowanceSDKType;
 };
 export declare const MsgGrantAllowanceResponse: {
     encode(_: MsgGrantAllowanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantAllowanceResponseSDKType;
     fromPartial(_: DeepPartial<MsgGrantAllowanceResponse>): MsgGrantAllowanceResponse;
-    fromSDK(_: MsgGrantAllowanceResponseSDKType): MsgGrantAllowanceResponse;
-    toSDK(_: MsgGrantAllowanceResponse): MsgGrantAllowanceResponseSDKType;
 };
 export declare const MsgRevokeAllowance: {
     encode(message: MsgRevokeAllowance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeAllowance;
     fromPartial(object: DeepPartial<MsgRevokeAllowance>): MsgRevokeAllowance;
-    fromSDK(object: MsgRevokeAllowanceSDKType): MsgRevokeAllowance;
-    toSDK(message: MsgRevokeAllowance): MsgRevokeAllowanceSDKType;
 };
 export declare const MsgRevokeAllowanceResponse: {
     encode(_: MsgRevokeAllowanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeAllowanceResponseSDKType;
     fromPartial(_: DeepPartial<MsgRevokeAllowanceResponse>): MsgRevokeAllowanceResponse;
-    fromSDK(_: MsgRevokeAllowanceResponseSDKType): MsgRevokeAllowanceResponse;
-    toSDK(_: MsgRevokeAllowanceResponse): MsgRevokeAllowanceResponseSDKType;
 };

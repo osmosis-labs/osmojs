@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryBalanceRequest, QueryBalanceResponse, QueryBalanceResponseSDKType, QueryAllBalancesRequest, QueryAllBalancesResponse, QueryAllBalancesResponseSDKType, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QuerySpendableBalancesResponseSDKType, QueryTotalSupplyRequest, QueryTotalSupplyResponse, QueryTotalSupplyResponseSDKType, QuerySupplyOfRequest, QuerySupplyOfResponse, QuerySupplyOfResponseSDKType, QueryParamsRequest, QueryParamsResponse, QueryParamsResponseSDKType, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomMetadataResponseSDKType, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryDenomsMetadataResponseSDKType, QueryDenomOwnersRequest, QueryDenomOwnersResponse, QueryDenomOwnersResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -106,3 +107,45 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    balance(request: QueryBalanceRequest): Promise<QueryBalanceResponseSDKType> {
+      return queryService.balance(request);
+    },
+
+    allBalances(request: QueryAllBalancesRequest): Promise<QueryAllBalancesResponseSDKType> {
+      return queryService.allBalances(request);
+    },
+
+    spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType> {
+      return queryService.spendableBalances(request);
+    },
+
+    totalSupply(request: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponseSDKType> {
+      return queryService.totalSupply(request);
+    },
+
+    supplyOf(request: QuerySupplyOfRequest): Promise<QuerySupplyOfResponseSDKType> {
+      return queryService.supplyOf(request);
+    },
+
+    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
+      return queryService.params(request);
+    },
+
+    denomMetadata(request: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponseSDKType> {
+      return queryService.denomMetadata(request);
+    },
+
+    denomsMetadata(request: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponseSDKType> {
+      return queryService.denomsMetadata(request);
+    },
+
+    denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType> {
+      return queryService.denomOwners(request);
+    }
+
+  };
+};

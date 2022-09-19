@@ -143,69 +143,49 @@ export declare const MsgCreateValidator: {
     encode(message: MsgCreateValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidator;
     fromPartial(object: DeepPartial<MsgCreateValidator>): MsgCreateValidator;
-    fromSDK(object: MsgCreateValidatorSDKType): MsgCreateValidator;
-    toSDK(message: MsgCreateValidator): MsgCreateValidatorSDKType;
 };
 export declare const MsgCreateValidatorResponse: {
     encode(_: MsgCreateValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidatorResponseSDKType;
     fromPartial(_: DeepPartial<MsgCreateValidatorResponse>): MsgCreateValidatorResponse;
-    fromSDK(_: MsgCreateValidatorResponseSDKType): MsgCreateValidatorResponse;
-    toSDK(_: MsgCreateValidatorResponse): MsgCreateValidatorResponseSDKType;
 };
 export declare const MsgEditValidator: {
     encode(message: MsgEditValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidator;
     fromPartial(object: DeepPartial<MsgEditValidator>): MsgEditValidator;
-    fromSDK(object: MsgEditValidatorSDKType): MsgEditValidator;
-    toSDK(message: MsgEditValidator): MsgEditValidatorSDKType;
 };
 export declare const MsgEditValidatorResponse: {
     encode(_: MsgEditValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidatorResponseSDKType;
     fromPartial(_: DeepPartial<MsgEditValidatorResponse>): MsgEditValidatorResponse;
-    fromSDK(_: MsgEditValidatorResponseSDKType): MsgEditValidatorResponse;
-    toSDK(_: MsgEditValidatorResponse): MsgEditValidatorResponseSDKType;
 };
 export declare const MsgDelegate: {
     encode(message: MsgDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegate;
     fromPartial(object: DeepPartial<MsgDelegate>): MsgDelegate;
-    fromSDK(object: MsgDelegateSDKType): MsgDelegate;
-    toSDK(message: MsgDelegate): MsgDelegateSDKType;
 };
 export declare const MsgDelegateResponse: {
     encode(_: MsgDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateResponseSDKType;
     fromPartial(_: DeepPartial<MsgDelegateResponse>): MsgDelegateResponse;
-    fromSDK(_: MsgDelegateResponseSDKType): MsgDelegateResponse;
-    toSDK(_: MsgDelegateResponse): MsgDelegateResponseSDKType;
 };
 export declare const MsgBeginRedelegate: {
     encode(message: MsgBeginRedelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegate;
     fromPartial(object: DeepPartial<MsgBeginRedelegate>): MsgBeginRedelegate;
-    fromSDK(object: MsgBeginRedelegateSDKType): MsgBeginRedelegate;
-    toSDK(message: MsgBeginRedelegate): MsgBeginRedelegateSDKType;
 };
 export declare const MsgBeginRedelegateResponse: {
     encode(message: MsgBeginRedelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegateResponseSDKType;
     fromPartial(object: DeepPartial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse;
-    fromSDK(object: MsgBeginRedelegateResponseSDKType): MsgBeginRedelegateResponse;
-    toSDK(message: MsgBeginRedelegateResponse): MsgBeginRedelegateResponseSDKType;
 };
 export declare const MsgUndelegate: {
     encode(message: MsgUndelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegate;
     fromPartial(object: DeepPartial<MsgUndelegate>): MsgUndelegate;
-    fromSDK(object: MsgUndelegateSDKType): MsgUndelegate;
-    toSDK(message: MsgUndelegate): MsgUndelegateSDKType;
 };
 export declare const MsgUndelegateResponse: {
     encode(message: MsgUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateResponseSDKType;
     fromPartial(object: DeepPartial<MsgUndelegateResponse>): MsgUndelegateResponse;
-    fromSDK(object: MsgUndelegateResponseSDKType): MsgUndelegateResponse;
-    toSDK(message: MsgUndelegateResponse): MsgUndelegateResponseSDKType;
 };

@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { ModuleBalanceRequest, ModuleBalanceResponse, ModuleBalanceResponseSDKType, ModuleLockedAmountRequest, ModuleLockedAmountResponse, ModuleLockedAmountResponseSDKType, AccountUnlockableCoinsRequest, AccountUnlockableCoinsResponse, AccountUnlockableCoinsResponseSDKType, AccountUnlockingCoinsRequest, AccountUnlockingCoinsResponse, AccountUnlockingCoinsResponseSDKType, AccountLockedCoinsRequest, AccountLockedCoinsResponse, AccountLockedCoinsResponseSDKType, AccountLockedPastTimeRequest, AccountLockedPastTimeResponse, AccountLockedPastTimeResponseSDKType, AccountLockedPastTimeNotUnlockingOnlyRequest, AccountLockedPastTimeNotUnlockingOnlyResponse, AccountLockedPastTimeNotUnlockingOnlyResponseSDKType, AccountUnlockedBeforeTimeRequest, AccountUnlockedBeforeTimeResponse, AccountUnlockedBeforeTimeResponseSDKType, AccountLockedPastTimeDenomRequest, AccountLockedPastTimeDenomResponse, AccountLockedPastTimeDenomResponseSDKType, LockedDenomRequest, LockedDenomResponse, LockedDenomResponseSDKType, LockedRequest, LockedResponse, LockedResponseSDKType, SyntheticLockupsByLockupIDRequest, SyntheticLockupsByLockupIDResponse, SyntheticLockupsByLockupIDResponseSDKType, AccountLockedLongerDurationRequest, AccountLockedLongerDurationResponse, AccountLockedLongerDurationResponseSDKType, AccountLockedDurationRequest, AccountLockedDurationResponse, AccountLockedDurationResponseSDKType, AccountLockedLongerDurationNotUnlockingOnlyRequest, AccountLockedLongerDurationNotUnlockingOnlyResponse, AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType, AccountLockedLongerDurationDenomRequest, AccountLockedLongerDurationDenomResponse, AccountLockedLongerDurationDenomResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -175,3 +176,73 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    moduleBalance(request: ModuleBalanceRequest): Promise<ModuleBalanceResponseSDKType> {
+      return queryService.moduleBalance(request);
+    },
+
+    moduleLockedAmount(request: ModuleLockedAmountRequest): Promise<ModuleLockedAmountResponseSDKType> {
+      return queryService.moduleLockedAmount(request);
+    },
+
+    accountUnlockableCoins(request: AccountUnlockableCoinsRequest): Promise<AccountUnlockableCoinsResponseSDKType> {
+      return queryService.accountUnlockableCoins(request);
+    },
+
+    accountUnlockingCoins(request: AccountUnlockingCoinsRequest): Promise<AccountUnlockingCoinsResponseSDKType> {
+      return queryService.accountUnlockingCoins(request);
+    },
+
+    accountLockedCoins(request: AccountLockedCoinsRequest): Promise<AccountLockedCoinsResponseSDKType> {
+      return queryService.accountLockedCoins(request);
+    },
+
+    accountLockedPastTime(request: AccountLockedPastTimeRequest): Promise<AccountLockedPastTimeResponseSDKType> {
+      return queryService.accountLockedPastTime(request);
+    },
+
+    accountLockedPastTimeNotUnlockingOnly(request: AccountLockedPastTimeNotUnlockingOnlyRequest): Promise<AccountLockedPastTimeNotUnlockingOnlyResponseSDKType> {
+      return queryService.accountLockedPastTimeNotUnlockingOnly(request);
+    },
+
+    accountUnlockedBeforeTime(request: AccountUnlockedBeforeTimeRequest): Promise<AccountUnlockedBeforeTimeResponseSDKType> {
+      return queryService.accountUnlockedBeforeTime(request);
+    },
+
+    accountLockedPastTimeDenom(request: AccountLockedPastTimeDenomRequest): Promise<AccountLockedPastTimeDenomResponseSDKType> {
+      return queryService.accountLockedPastTimeDenom(request);
+    },
+
+    lockedDenom(request: LockedDenomRequest): Promise<LockedDenomResponseSDKType> {
+      return queryService.lockedDenom(request);
+    },
+
+    lockedByID(request: LockedRequest): Promise<LockedResponseSDKType> {
+      return queryService.lockedByID(request);
+    },
+
+    syntheticLockupsByLockupID(request: SyntheticLockupsByLockupIDRequest): Promise<SyntheticLockupsByLockupIDResponseSDKType> {
+      return queryService.syntheticLockupsByLockupID(request);
+    },
+
+    accountLockedLongerDuration(request: AccountLockedLongerDurationRequest): Promise<AccountLockedLongerDurationResponseSDKType> {
+      return queryService.accountLockedLongerDuration(request);
+    },
+
+    accountLockedDuration(request: AccountLockedDurationRequest): Promise<AccountLockedDurationResponseSDKType> {
+      return queryService.accountLockedDuration(request);
+    },
+
+    accountLockedLongerDurationNotUnlockingOnly(request: AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType> {
+      return queryService.accountLockedLongerDurationNotUnlockingOnly(request);
+    },
+
+    accountLockedLongerDurationDenom(request: AccountLockedLongerDurationDenomRequest): Promise<AccountLockedLongerDurationDenomResponseSDKType> {
+      return queryService.accountLockedLongerDurationDenom(request);
+    }
+
+  };
+};

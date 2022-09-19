@@ -21,13 +21,9 @@ export declare const QueryConfigRequest: {
     encode(_: QueryConfigRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConfigRequest;
     fromPartial(_: DeepPartial<QueryConfigRequest>): QueryConfigRequest;
-    fromSDK(_: QueryConfigRequestSDKType): QueryConfigRequest;
-    toSDK(_: QueryConfigRequest): QueryConfigRequestSDKType;
 };
 export declare const QueryConfigResponse: {
     encode(message: QueryConfigResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConfigResponseSDKType;
     fromPartial(object: DeepPartial<QueryConfigResponse>): QueryConfigResponse;
-    fromSDK(object: QueryConfigResponseSDKType): QueryConfigResponse;
-    toSDK(message: QueryConfigResponse): QueryConfigResponseSDKType;
 };

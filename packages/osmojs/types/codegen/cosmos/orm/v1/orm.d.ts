@@ -178,27 +178,19 @@ export declare const TableDescriptor: {
     encode(message: TableDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TableDescriptor;
     fromPartial(object: DeepPartial<TableDescriptor>): TableDescriptor;
-    fromSDK(object: TableDescriptorSDKType): TableDescriptor;
-    toSDK(message: TableDescriptor): TableDescriptorSDKType;
 };
 export declare const PrimaryKeyDescriptor: {
     encode(message: PrimaryKeyDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PrimaryKeyDescriptor;
     fromPartial(object: DeepPartial<PrimaryKeyDescriptor>): PrimaryKeyDescriptor;
-    fromSDK(object: PrimaryKeyDescriptorSDKType): PrimaryKeyDescriptor;
-    toSDK(message: PrimaryKeyDescriptor): PrimaryKeyDescriptorSDKType;
 };
 export declare const SecondaryIndexDescriptor: {
     encode(message: SecondaryIndexDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SecondaryIndexDescriptor;
     fromPartial(object: DeepPartial<SecondaryIndexDescriptor>): SecondaryIndexDescriptor;
-    fromSDK(object: SecondaryIndexDescriptorSDKType): SecondaryIndexDescriptor;
-    toSDK(message: SecondaryIndexDescriptor): SecondaryIndexDescriptorSDKType;
 };
 export declare const SingletonDescriptor: {
     encode(message: SingletonDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SingletonDescriptor;
     fromPartial(object: DeepPartial<SingletonDescriptor>): SingletonDescriptor;
-    fromSDK(object: SingletonDescriptorSDKType): SingletonDescriptor;
-    toSDK(message: SingletonDescriptor): SingletonDescriptorSDKType;
 };

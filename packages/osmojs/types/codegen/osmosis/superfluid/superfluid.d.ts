@@ -111,41 +111,29 @@ export declare const SuperfluidAsset: {
     encode(message: SuperfluidAsset, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidAsset;
     fromPartial(object: DeepPartial<SuperfluidAsset>): SuperfluidAsset;
-    fromSDK(object: SuperfluidAssetSDKType): SuperfluidAsset;
-    toSDK(message: SuperfluidAsset): SuperfluidAssetSDKType;
 };
 export declare const SuperfluidIntermediaryAccount: {
     encode(message: SuperfluidIntermediaryAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidIntermediaryAccount;
     fromPartial(object: DeepPartial<SuperfluidIntermediaryAccount>): SuperfluidIntermediaryAccount;
-    fromSDK(object: SuperfluidIntermediaryAccountSDKType): SuperfluidIntermediaryAccount;
-    toSDK(message: SuperfluidIntermediaryAccount): SuperfluidIntermediaryAccountSDKType;
 };
 export declare const OsmoEquivalentMultiplierRecord: {
     encode(message: OsmoEquivalentMultiplierRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): OsmoEquivalentMultiplierRecord;
     fromPartial(object: DeepPartial<OsmoEquivalentMultiplierRecord>): OsmoEquivalentMultiplierRecord;
-    fromSDK(object: OsmoEquivalentMultiplierRecordSDKType): OsmoEquivalentMultiplierRecord;
-    toSDK(message: OsmoEquivalentMultiplierRecord): OsmoEquivalentMultiplierRecordSDKType;
 };
 export declare const SuperfluidDelegationRecord: {
     encode(message: SuperfluidDelegationRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationRecord;
     fromPartial(object: DeepPartial<SuperfluidDelegationRecord>): SuperfluidDelegationRecord;
-    fromSDK(object: SuperfluidDelegationRecordSDKType): SuperfluidDelegationRecord;
-    toSDK(message: SuperfluidDelegationRecord): SuperfluidDelegationRecordSDKType;
 };
 export declare const LockIdIntermediaryAccountConnection: {
     encode(message: LockIdIntermediaryAccountConnection, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockIdIntermediaryAccountConnection;
     fromPartial(object: DeepPartial<LockIdIntermediaryAccountConnection>): LockIdIntermediaryAccountConnection;
-    fromSDK(object: LockIdIntermediaryAccountConnectionSDKType): LockIdIntermediaryAccountConnection;
-    toSDK(message: LockIdIntermediaryAccountConnection): LockIdIntermediaryAccountConnectionSDKType;
 };
 export declare const UnpoolWhitelistedPools: {
     encode(message: UnpoolWhitelistedPools, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnpoolWhitelistedPools;
     fromPartial(object: DeepPartial<UnpoolWhitelistedPools>): UnpoolWhitelistedPools;
-    fromSDK(object: UnpoolWhitelistedPoolsSDKType): UnpoolWhitelistedPools;
-    toSDK(message: UnpoolWhitelistedPools): UnpoolWhitelistedPoolsSDKType;
 };

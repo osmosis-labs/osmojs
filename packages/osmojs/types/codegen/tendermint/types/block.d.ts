@@ -18,6 +18,4 @@ export declare const Block: {
     encode(message: Block, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Block;
     fromPartial(object: DeepPartial<Block>): Block;
-    fromSDK(object: BlockSDKType): Block;
-    toSDK(message: Block): BlockSDKType;
 };

@@ -1592,188 +1592,134 @@ export declare const FileDescriptorSet: {
     encode(message: FileDescriptorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FileDescriptorSet;
     fromPartial(object: DeepPartial<FileDescriptorSet>): FileDescriptorSet;
-    fromSDK(object: FileDescriptorSetSDKType): FileDescriptorSet;
-    toSDK(message: FileDescriptorSet): FileDescriptorSetSDKType;
 };
 export declare const FileDescriptorProto: {
     encode(message: FileDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FileDescriptorProto;
     fromPartial(object: DeepPartial<FileDescriptorProto>): FileDescriptorProto;
-    fromSDK(object: FileDescriptorProtoSDKType): FileDescriptorProto;
-    toSDK(message: FileDescriptorProto): FileDescriptorProtoSDKType;
 };
 export declare const DescriptorProto: {
     encode(message: DescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto;
     fromPartial(object: DeepPartial<DescriptorProto>): DescriptorProto;
-    fromSDK(object: DescriptorProtoSDKType): DescriptorProto;
-    toSDK(message: DescriptorProto): DescriptorProtoSDKType;
 };
 export declare const DescriptorProto_ExtensionRange: {
     encode(message: DescriptorProto_ExtensionRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto_ExtensionRange;
     fromPartial(object: DeepPartial<DescriptorProto_ExtensionRange>): DescriptorProto_ExtensionRange;
-    fromSDK(object: DescriptorProto_ExtensionRangeSDKType): DescriptorProto_ExtensionRange;
-    toSDK(message: DescriptorProto_ExtensionRange): DescriptorProto_ExtensionRangeSDKType;
 };
 export declare const DescriptorProto_ReservedRange: {
     encode(message: DescriptorProto_ReservedRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto_ReservedRange;
     fromPartial(object: DeepPartial<DescriptorProto_ReservedRange>): DescriptorProto_ReservedRange;
-    fromSDK(object: DescriptorProto_ReservedRangeSDKType): DescriptorProto_ReservedRange;
-    toSDK(message: DescriptorProto_ReservedRange): DescriptorProto_ReservedRangeSDKType;
 };
 export declare const ExtensionRangeOptions: {
     encode(message: ExtensionRangeOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ExtensionRangeOptions;
     fromPartial(object: DeepPartial<ExtensionRangeOptions>): ExtensionRangeOptions;
-    fromSDK(object: ExtensionRangeOptionsSDKType): ExtensionRangeOptions;
-    toSDK(message: ExtensionRangeOptions): ExtensionRangeOptionsSDKType;
 };
 export declare const FieldDescriptorProto: {
     encode(message: FieldDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FieldDescriptorProto;
     fromPartial(object: DeepPartial<FieldDescriptorProto>): FieldDescriptorProto;
-    fromSDK(object: FieldDescriptorProtoSDKType): FieldDescriptorProto;
-    toSDK(message: FieldDescriptorProto): FieldDescriptorProtoSDKType;
 };
 export declare const OneofDescriptorProto: {
     encode(message: OneofDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): OneofDescriptorProto;
     fromPartial(object: DeepPartial<OneofDescriptorProto>): OneofDescriptorProto;
-    fromSDK(object: OneofDescriptorProtoSDKType): OneofDescriptorProto;
-    toSDK(message: OneofDescriptorProto): OneofDescriptorProtoSDKType;
 };
 export declare const EnumDescriptorProto: {
     encode(message: EnumDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumDescriptorProto;
     fromPartial(object: DeepPartial<EnumDescriptorProto>): EnumDescriptorProto;
-    fromSDK(object: EnumDescriptorProtoSDKType): EnumDescriptorProto;
-    toSDK(message: EnumDescriptorProto): EnumDescriptorProtoSDKType;
 };
 export declare const EnumDescriptorProto_EnumReservedRange: {
     encode(message: EnumDescriptorProto_EnumReservedRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumDescriptorProto_EnumReservedRange;
     fromPartial(object: DeepPartial<EnumDescriptorProto_EnumReservedRange>): EnumDescriptorProto_EnumReservedRange;
-    fromSDK(object: EnumDescriptorProto_EnumReservedRangeSDKType): EnumDescriptorProto_EnumReservedRange;
-    toSDK(message: EnumDescriptorProto_EnumReservedRange): EnumDescriptorProto_EnumReservedRangeSDKType;
 };
 export declare const EnumValueDescriptorProto: {
     encode(message: EnumValueDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumValueDescriptorProto;
     fromPartial(object: DeepPartial<EnumValueDescriptorProto>): EnumValueDescriptorProto;
-    fromSDK(object: EnumValueDescriptorProtoSDKType): EnumValueDescriptorProto;
-    toSDK(message: EnumValueDescriptorProto): EnumValueDescriptorProtoSDKType;
 };
 export declare const ServiceDescriptorProto: {
     encode(message: ServiceDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ServiceDescriptorProto;
     fromPartial(object: DeepPartial<ServiceDescriptorProto>): ServiceDescriptorProto;
-    fromSDK(object: ServiceDescriptorProtoSDKType): ServiceDescriptorProto;
-    toSDK(message: ServiceDescriptorProto): ServiceDescriptorProtoSDKType;
 };
 export declare const MethodDescriptorProto: {
     encode(message: MethodDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MethodDescriptorProto;
     fromPartial(object: DeepPartial<MethodDescriptorProto>): MethodDescriptorProto;
-    fromSDK(object: MethodDescriptorProtoSDKType): MethodDescriptorProto;
-    toSDK(message: MethodDescriptorProto): MethodDescriptorProtoSDKType;
 };
 export declare const FileOptions: {
     encode(message: FileOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FileOptions;
     fromPartial(object: DeepPartial<FileOptions>): FileOptions;
-    fromSDK(object: FileOptionsSDKType): FileOptions;
-    toSDK(message: FileOptions): FileOptionsSDKType;
 };
 export declare const MessageOptions: {
     encode(message: MessageOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MessageOptions;
     fromPartial(object: DeepPartial<MessageOptions>): MessageOptions;
-    fromSDK(object: MessageOptionsSDKType): MessageOptions;
-    toSDK(message: MessageOptions): MessageOptionsSDKType;
 };
 export declare const FieldOptions: {
     encode(message: FieldOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FieldOptions;
     fromPartial(object: DeepPartial<FieldOptions>): FieldOptions;
-    fromSDK(object: FieldOptionsSDKType): FieldOptions;
-    toSDK(message: FieldOptions): FieldOptionsSDKType;
 };
 export declare const OneofOptions: {
     encode(message: OneofOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): OneofOptions;
     fromPartial(object: DeepPartial<OneofOptions>): OneofOptions;
-    fromSDK(object: OneofOptionsSDKType): OneofOptions;
-    toSDK(message: OneofOptions): OneofOptionsSDKType;
 };
 export declare const EnumOptions: {
     encode(message: EnumOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumOptions;
     fromPartial(object: DeepPartial<EnumOptions>): EnumOptions;
-    fromSDK(object: EnumOptionsSDKType): EnumOptions;
-    toSDK(message: EnumOptions): EnumOptionsSDKType;
 };
 export declare const EnumValueOptions: {
     encode(message: EnumValueOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumValueOptions;
     fromPartial(object: DeepPartial<EnumValueOptions>): EnumValueOptions;
-    fromSDK(object: EnumValueOptionsSDKType): EnumValueOptions;
-    toSDK(message: EnumValueOptions): EnumValueOptionsSDKType;
 };
 export declare const ServiceOptions: {
     encode(message: ServiceOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ServiceOptions;
     fromPartial(object: DeepPartial<ServiceOptions>): ServiceOptions;
-    fromSDK(object: ServiceOptionsSDKType): ServiceOptions;
-    toSDK(message: ServiceOptions): ServiceOptionsSDKType;
 };
 export declare const MethodOptions: {
     encode(message: MethodOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MethodOptions;
     fromPartial(object: DeepPartial<MethodOptions>): MethodOptions;
-    fromSDK(object: MethodOptionsSDKType): MethodOptions;
-    toSDK(message: MethodOptions): MethodOptionsSDKType;
 };
 export declare const UninterpretedOption: {
     encode(message: UninterpretedOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UninterpretedOption;
     fromPartial(object: DeepPartial<UninterpretedOption>): UninterpretedOption;
-    fromSDK(object: UninterpretedOptionSDKType): UninterpretedOption;
-    toSDK(message: UninterpretedOption): UninterpretedOptionSDKType;
 };
 export declare const UninterpretedOption_NamePart: {
     encode(message: UninterpretedOption_NamePart, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UninterpretedOption_NamePart;
     fromPartial(object: DeepPartial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart;
-    fromSDK(object: UninterpretedOption_NamePartSDKType): UninterpretedOption_NamePart;
-    toSDK(message: UninterpretedOption_NamePart): UninterpretedOption_NamePartSDKType;
 };
 export declare const SourceCodeInfo: {
     encode(message: SourceCodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SourceCodeInfo;
     fromPartial(object: DeepPartial<SourceCodeInfo>): SourceCodeInfo;
-    fromSDK(object: SourceCodeInfoSDKType): SourceCodeInfo;
-    toSDK(message: SourceCodeInfo): SourceCodeInfoSDKType;
 };
 export declare const SourceCodeInfo_Location: {
     encode(message: SourceCodeInfo_Location, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SourceCodeInfo_Location;
     fromPartial(object: DeepPartial<SourceCodeInfo_Location>): SourceCodeInfo_Location;
-    fromSDK(object: SourceCodeInfo_LocationSDKType): SourceCodeInfo_Location;
-    toSDK(message: SourceCodeInfo_Location): SourceCodeInfo_LocationSDKType;
 };
 export declare const GeneratedCodeInfo: {
     encode(message: GeneratedCodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeneratedCodeInfo;
     fromPartial(object: DeepPartial<GeneratedCodeInfo>): GeneratedCodeInfo;
-    fromSDK(object: GeneratedCodeInfoSDKType): GeneratedCodeInfo;
-    toSDK(message: GeneratedCodeInfo): GeneratedCodeInfoSDKType;
 };
 export declare const GeneratedCodeInfo_Annotation: {
     encode(message: GeneratedCodeInfo_Annotation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeneratedCodeInfo_Annotation;
     fromPartial(object: DeepPartial<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation;
-    fromSDK(object: GeneratedCodeInfo_AnnotationSDKType): GeneratedCodeInfo_Annotation;
-    toSDK(message: GeneratedCodeInfo_Annotation): GeneratedCodeInfo_AnnotationSDKType;
 };

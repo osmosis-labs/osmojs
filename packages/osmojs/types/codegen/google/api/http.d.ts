@@ -708,20 +708,14 @@ export declare const Http: {
     encode(message: Http, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Http;
     fromPartial(object: DeepPartial<Http>): Http;
-    fromSDK(object: HttpSDKType): Http;
-    toSDK(message: Http): HttpSDKType;
 };
 export declare const HttpRule: {
     encode(message: HttpRule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HttpRule;
     fromPartial(object: DeepPartial<HttpRule>): HttpRule;
-    fromSDK(object: HttpRuleSDKType): HttpRule;
-    toSDK(message: HttpRule): HttpRuleSDKType;
 };
 export declare const CustomHttpPattern: {
     encode(message: CustomHttpPattern, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CustomHttpPattern;
     fromPartial(object: DeepPartial<CustomHttpPattern>): CustomHttpPattern;
-    fromSDK(object: CustomHttpPatternSDKType): CustomHttpPattern;
-    toSDK(message: CustomHttpPattern): CustomHttpPatternSDKType;
 };

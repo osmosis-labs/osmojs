@@ -158,6 +158,4 @@ export declare const Duration: {
     encode(message: Duration, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Duration;
     fromPartial(object: DeepPartial<Duration>): Duration;
-    fromSDK(object: DurationSDKType): Duration;
-    toSDK(message: Duration): DurationSDKType;
 };

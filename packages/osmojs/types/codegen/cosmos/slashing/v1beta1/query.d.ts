@@ -84,41 +84,29 @@ export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };
 export declare const QuerySigningInfoRequest: {
     encode(message: QuerySigningInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfoRequest;
     fromPartial(object: DeepPartial<QuerySigningInfoRequest>): QuerySigningInfoRequest;
-    fromSDK(object: QuerySigningInfoRequestSDKType): QuerySigningInfoRequest;
-    toSDK(message: QuerySigningInfoRequest): QuerySigningInfoRequestSDKType;
 };
 export declare const QuerySigningInfoResponse: {
     encode(message: QuerySigningInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfoResponseSDKType;
     fromPartial(object: DeepPartial<QuerySigningInfoResponse>): QuerySigningInfoResponse;
-    fromSDK(object: QuerySigningInfoResponseSDKType): QuerySigningInfoResponse;
-    toSDK(message: QuerySigningInfoResponse): QuerySigningInfoResponseSDKType;
 };
 export declare const QuerySigningInfosRequest: {
     encode(message: QuerySigningInfosRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfosRequest;
     fromPartial(object: DeepPartial<QuerySigningInfosRequest>): QuerySigningInfosRequest;
-    fromSDK(object: QuerySigningInfosRequestSDKType): QuerySigningInfosRequest;
-    toSDK(message: QuerySigningInfosRequest): QuerySigningInfosRequestSDKType;
 };
 export declare const QuerySigningInfosResponse: {
     encode(message: QuerySigningInfosResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfosResponseSDKType;
     fromPartial(object: DeepPartial<QuerySigningInfosResponse>): QuerySigningInfosResponse;
-    fromSDK(object: QuerySigningInfosResponseSDKType): QuerySigningInfosResponse;
-    toSDK(message: QuerySigningInfosResponse): QuerySigningInfosResponseSDKType;
 };

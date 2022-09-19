@@ -108,41 +108,29 @@ export declare const BaseVestingAccount: {
     encode(message: BaseVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BaseVestingAccount;
     fromPartial(object: DeepPartial<BaseVestingAccount>): BaseVestingAccount;
-    fromSDK(object: BaseVestingAccountSDKType): BaseVestingAccount;
-    toSDK(message: BaseVestingAccount): BaseVestingAccountSDKType;
 };
 export declare const ContinuousVestingAccount: {
     encode(message: ContinuousVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ContinuousVestingAccount;
     fromPartial(object: DeepPartial<ContinuousVestingAccount>): ContinuousVestingAccount;
-    fromSDK(object: ContinuousVestingAccountSDKType): ContinuousVestingAccount;
-    toSDK(message: ContinuousVestingAccount): ContinuousVestingAccountSDKType;
 };
 export declare const DelayedVestingAccount: {
     encode(message: DelayedVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelayedVestingAccount;
     fromPartial(object: DeepPartial<DelayedVestingAccount>): DelayedVestingAccount;
-    fromSDK(object: DelayedVestingAccountSDKType): DelayedVestingAccount;
-    toSDK(message: DelayedVestingAccount): DelayedVestingAccountSDKType;
 };
 export declare const Period: {
     encode(message: Period, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Period;
     fromPartial(object: DeepPartial<Period>): Period;
-    fromSDK(object: PeriodSDKType): Period;
-    toSDK(message: Period): PeriodSDKType;
 };
 export declare const PeriodicVestingAccount: {
     encode(message: PeriodicVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeriodicVestingAccount;
     fromPartial(object: DeepPartial<PeriodicVestingAccount>): PeriodicVestingAccount;
-    fromSDK(object: PeriodicVestingAccountSDKType): PeriodicVestingAccount;
-    toSDK(message: PeriodicVestingAccount): PeriodicVestingAccountSDKType;
 };
 export declare const PermanentLockedAccount: {
     encode(message: PermanentLockedAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PermanentLockedAccount;
     fromPartial(object: DeepPartial<PermanentLockedAccount>): PermanentLockedAccount;
-    fromSDK(object: PermanentLockedAccountSDKType): PermanentLockedAccount;
-    toSDK(message: PermanentLockedAccount): PermanentLockedAccountSDKType;
 };

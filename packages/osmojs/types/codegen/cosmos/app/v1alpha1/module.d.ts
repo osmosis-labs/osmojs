@@ -168,20 +168,14 @@ export declare const ModuleDescriptor: {
     encode(message: ModuleDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDescriptor;
     fromPartial(object: DeepPartial<ModuleDescriptor>): ModuleDescriptor;
-    fromSDK(object: ModuleDescriptorSDKType): ModuleDescriptor;
-    toSDK(message: ModuleDescriptor): ModuleDescriptorSDKType;
 };
 export declare const PackageReference: {
     encode(message: PackageReference, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PackageReference;
     fromPartial(object: DeepPartial<PackageReference>): PackageReference;
-    fromSDK(object: PackageReferenceSDKType): PackageReference;
-    toSDK(message: PackageReference): PackageReferenceSDKType;
 };
 export declare const MigrateFromInfo: {
     encode(message: MigrateFromInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MigrateFromInfo;
     fromPartial(object: DeepPartial<MigrateFromInfo>): MigrateFromInfo;
-    fromSDK(object: MigrateFromInfoSDKType): MigrateFromInfo;
-    toSDK(message: MigrateFromInfo): MigrateFromInfoSDKType;
 };

@@ -11,8 +11,6 @@ export declare const cosmos_proto: {
             name?: string;
             description?: string;
         }): _1.InterfaceDescriptor;
-        fromSDK(object: _1.InterfaceDescriptorSDKType): _1.InterfaceDescriptor;
-        toSDK(message: _1.InterfaceDescriptor): _1.InterfaceDescriptorSDKType;
     };
     ScalarDescriptor: {
         encode(message: _1.ScalarDescriptor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -22,7 +20,5 @@ export declare const cosmos_proto: {
             description?: string;
             fieldType?: _1.ScalarType[];
         }): _1.ScalarDescriptor;
-        fromSDK(object: _1.ScalarDescriptorSDKType): _1.ScalarDescriptor;
-        toSDK(message: _1.ScalarDescriptor): _1.ScalarDescriptorSDKType;
     };
 };

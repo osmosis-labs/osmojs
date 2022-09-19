@@ -50,27 +50,19 @@ export declare const ListAllInterfacesRequest: {
     encode(_: ListAllInterfacesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ListAllInterfacesRequest;
     fromPartial(_: DeepPartial<ListAllInterfacesRequest>): ListAllInterfacesRequest;
-    fromSDK(_: ListAllInterfacesRequestSDKType): ListAllInterfacesRequest;
-    toSDK(_: ListAllInterfacesRequest): ListAllInterfacesRequestSDKType;
 };
 export declare const ListAllInterfacesResponse: {
     encode(message: ListAllInterfacesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ListAllInterfacesResponseSDKType;
     fromPartial(object: DeepPartial<ListAllInterfacesResponse>): ListAllInterfacesResponse;
-    fromSDK(object: ListAllInterfacesResponseSDKType): ListAllInterfacesResponse;
-    toSDK(message: ListAllInterfacesResponse): ListAllInterfacesResponseSDKType;
 };
 export declare const ListImplementationsRequest: {
     encode(message: ListImplementationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ListImplementationsRequest;
     fromPartial(object: DeepPartial<ListImplementationsRequest>): ListImplementationsRequest;
-    fromSDK(object: ListImplementationsRequestSDKType): ListImplementationsRequest;
-    toSDK(message: ListImplementationsRequest): ListImplementationsRequestSDKType;
 };
 export declare const ListImplementationsResponse: {
     encode(message: ListImplementationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ListImplementationsResponseSDKType;
     fromPartial(object: DeepPartial<ListImplementationsResponse>): ListImplementationsResponse;
-    fromSDK(object: ListImplementationsResponseSDKType): ListImplementationsResponse;
-    toSDK(message: ListImplementationsResponse): ListImplementationsResponseSDKType;
 };

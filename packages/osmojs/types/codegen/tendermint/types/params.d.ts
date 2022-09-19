@@ -153,41 +153,29 @@ export declare const ConsensusParams: {
     encode(message: ConsensusParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusParams;
     fromPartial(object: DeepPartial<ConsensusParams>): ConsensusParams;
-    fromSDK(object: ConsensusParamsSDKType): ConsensusParams;
-    toSDK(message: ConsensusParams): ConsensusParamsSDKType;
 };
 export declare const BlockParams: {
     encode(message: BlockParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockParams;
     fromPartial(object: DeepPartial<BlockParams>): BlockParams;
-    fromSDK(object: BlockParamsSDKType): BlockParams;
-    toSDK(message: BlockParams): BlockParamsSDKType;
 };
 export declare const EvidenceParams: {
     encode(message: EvidenceParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EvidenceParams;
     fromPartial(object: DeepPartial<EvidenceParams>): EvidenceParams;
-    fromSDK(object: EvidenceParamsSDKType): EvidenceParams;
-    toSDK(message: EvidenceParams): EvidenceParamsSDKType;
 };
 export declare const ValidatorParams: {
     encode(message: ValidatorParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorParams;
     fromPartial(object: DeepPartial<ValidatorParams>): ValidatorParams;
-    fromSDK(object: ValidatorParamsSDKType): ValidatorParams;
-    toSDK(message: ValidatorParams): ValidatorParamsSDKType;
 };
 export declare const VersionParams: {
     encode(message: VersionParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VersionParams;
     fromPartial(object: DeepPartial<VersionParams>): VersionParams;
-    fromSDK(object: VersionParamsSDKType): VersionParams;
-    toSDK(message: VersionParams): VersionParamsSDKType;
 };
 export declare const HashedParams: {
     encode(message: HashedParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HashedParams;
     fromPartial(object: DeepPartial<HashedParams>): HashedParams;
-    fromSDK(object: HashedParamsSDKType): HashedParams;
-    toSDK(message: HashedParams): HashedParamsSDKType;
 };

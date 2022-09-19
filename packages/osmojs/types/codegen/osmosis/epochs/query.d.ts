@@ -27,27 +27,19 @@ export declare const QueryEpochsInfoRequest: {
     encode(_: QueryEpochsInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoRequest;
     fromPartial(_: DeepPartial<QueryEpochsInfoRequest>): QueryEpochsInfoRequest;
-    fromSDK(_: QueryEpochsInfoRequestSDKType): QueryEpochsInfoRequest;
-    toSDK(_: QueryEpochsInfoRequest): QueryEpochsInfoRequestSDKType;
 };
 export declare const QueryEpochsInfoResponse: {
     encode(message: QueryEpochsInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoResponseSDKType;
     fromPartial(object: DeepPartial<QueryEpochsInfoResponse>): QueryEpochsInfoResponse;
-    fromSDK(object: QueryEpochsInfoResponseSDKType): QueryEpochsInfoResponse;
-    toSDK(message: QueryEpochsInfoResponse): QueryEpochsInfoResponseSDKType;
 };
 export declare const QueryCurrentEpochRequest: {
     encode(message: QueryCurrentEpochRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochRequest;
     fromPartial(object: DeepPartial<QueryCurrentEpochRequest>): QueryCurrentEpochRequest;
-    fromSDK(object: QueryCurrentEpochRequestSDKType): QueryCurrentEpochRequest;
-    toSDK(message: QueryCurrentEpochRequest): QueryCurrentEpochRequestSDKType;
 };
 export declare const QueryCurrentEpochResponse: {
     encode(message: QueryCurrentEpochResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochResponseSDKType;
     fromPartial(object: DeepPartial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse;
-    fromSDK(object: QueryCurrentEpochResponseSDKType): QueryCurrentEpochResponse;
-    toSDK(message: QueryCurrentEpochResponse): QueryCurrentEpochResponseSDKType;
 };

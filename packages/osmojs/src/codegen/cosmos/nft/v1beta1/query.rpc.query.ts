@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryBalanceRequest, QueryBalanceResponse, QueryBalanceResponseSDKType, QueryOwnerRequest, QueryOwnerResponse, QueryOwnerResponseSDKType, QuerySupplyRequest, QuerySupplyResponse, QuerySupplyResponseSDKType, QueryNFTsRequest, QueryNFTsResponse, QueryNFTsResponseSDKType, QueryNFTRequest, QueryNFTResponse, QueryNFTResponseSDKType, QueryClassRequest, QueryClassResponse, QueryClassResponseSDKType, QueryClassesRequest, QueryClassesResponse, QueryClassesResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -84,3 +85,37 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    balance(request: QueryBalanceRequest): Promise<QueryBalanceResponseSDKType> {
+      return queryService.balance(request);
+    },
+
+    owner(request: QueryOwnerRequest): Promise<QueryOwnerResponseSDKType> {
+      return queryService.owner(request);
+    },
+
+    supply(request: QuerySupplyRequest): Promise<QuerySupplyResponseSDKType> {
+      return queryService.supply(request);
+    },
+
+    nFTs(request: QueryNFTsRequest): Promise<QueryNFTsResponseSDKType> {
+      return queryService.nFTs(request);
+    },
+
+    nFT(request: QueryNFTRequest): Promise<QueryNFTResponseSDKType> {
+      return queryService.nFT(request);
+    },
+
+    class(request: QueryClassRequest): Promise<QueryClassResponseSDKType> {
+      return queryService.class(request);
+    },
+
+    classes(request: QueryClassesRequest): Promise<QueryClassesResponseSDKType> {
+      return queryService.classes(request);
+    }
+
+  };
+};

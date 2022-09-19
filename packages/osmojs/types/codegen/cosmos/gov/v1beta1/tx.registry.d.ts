@@ -39,42 +39,6 @@ export declare const MessageComposer: {
             value: MsgDeposit;
         };
     };
-    toJSON: {
-        submitProposal(value: MsgSubmitProposal): {
-            typeUrl: string;
-            value: any;
-        };
-        vote(value: MsgVote): {
-            typeUrl: string;
-            value: any;
-        };
-        voteWeighted(value: MsgVoteWeighted): {
-            typeUrl: string;
-            value: any;
-        };
-        deposit(value: MsgDeposit): {
-            typeUrl: string;
-            value: any;
-        };
-    };
-    fromJSON: {
-        submitProposal(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        vote(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        voteWeighted(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        deposit(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-    };
     fromPartial: {
         submitProposal(value: MsgSubmitProposal): {
             typeUrl: string;

@@ -227,48 +227,34 @@ export declare const ConnectionEnd: {
     encode(message: ConnectionEnd, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionEnd;
     fromPartial(object: DeepPartial<ConnectionEnd>): ConnectionEnd;
-    fromSDK(object: ConnectionEndSDKType): ConnectionEnd;
-    toSDK(message: ConnectionEnd): ConnectionEndSDKType;
 };
 export declare const IdentifiedConnection: {
     encode(message: IdentifiedConnection, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedConnection;
     fromPartial(object: DeepPartial<IdentifiedConnection>): IdentifiedConnection;
-    fromSDK(object: IdentifiedConnectionSDKType): IdentifiedConnection;
-    toSDK(message: IdentifiedConnection): IdentifiedConnectionSDKType;
 };
 export declare const Counterparty: {
     encode(message: Counterparty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Counterparty;
     fromPartial(object: DeepPartial<Counterparty>): Counterparty;
-    fromSDK(object: CounterpartySDKType): Counterparty;
-    toSDK(message: Counterparty): CounterpartySDKType;
 };
 export declare const ClientPaths: {
     encode(message: ClientPaths, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientPaths;
     fromPartial(object: DeepPartial<ClientPaths>): ClientPaths;
-    fromSDK(object: ClientPathsSDKType): ClientPaths;
-    toSDK(message: ClientPaths): ClientPathsSDKType;
 };
 export declare const ConnectionPaths: {
     encode(message: ConnectionPaths, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionPaths;
     fromPartial(object: DeepPartial<ConnectionPaths>): ConnectionPaths;
-    fromSDK(object: ConnectionPathsSDKType): ConnectionPaths;
-    toSDK(message: ConnectionPaths): ConnectionPathsSDKType;
 };
 export declare const Version: {
     encode(message: Version, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Version;
     fromPartial(object: DeepPartial<Version>): Version;
-    fromSDK(object: VersionSDKType): Version;
-    toSDK(message: Version): VersionSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: DeepPartial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
 };

@@ -220,111 +220,79 @@ export declare const QueryProposalRequest: {
     encode(message: QueryProposalRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalRequest;
     fromPartial(object: DeepPartial<QueryProposalRequest>): QueryProposalRequest;
-    fromSDK(object: QueryProposalRequestSDKType): QueryProposalRequest;
-    toSDK(message: QueryProposalRequest): QueryProposalRequestSDKType;
 };
 export declare const QueryProposalResponse: {
     encode(message: QueryProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalResponseSDKType;
     fromPartial(object: DeepPartial<QueryProposalResponse>): QueryProposalResponse;
-    fromSDK(object: QueryProposalResponseSDKType): QueryProposalResponse;
-    toSDK(message: QueryProposalResponse): QueryProposalResponseSDKType;
 };
 export declare const QueryProposalsRequest: {
     encode(message: QueryProposalsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsRequest;
     fromPartial(object: DeepPartial<QueryProposalsRequest>): QueryProposalsRequest;
-    fromSDK(object: QueryProposalsRequestSDKType): QueryProposalsRequest;
-    toSDK(message: QueryProposalsRequest): QueryProposalsRequestSDKType;
 };
 export declare const QueryProposalsResponse: {
     encode(message: QueryProposalsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsResponseSDKType;
     fromPartial(object: DeepPartial<QueryProposalsResponse>): QueryProposalsResponse;
-    fromSDK(object: QueryProposalsResponseSDKType): QueryProposalsResponse;
-    toSDK(message: QueryProposalsResponse): QueryProposalsResponseSDKType;
 };
 export declare const QueryVoteRequest: {
     encode(message: QueryVoteRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteRequest;
     fromPartial(object: DeepPartial<QueryVoteRequest>): QueryVoteRequest;
-    fromSDK(object: QueryVoteRequestSDKType): QueryVoteRequest;
-    toSDK(message: QueryVoteRequest): QueryVoteRequestSDKType;
 };
 export declare const QueryVoteResponse: {
     encode(message: QueryVoteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteResponseSDKType;
     fromPartial(object: DeepPartial<QueryVoteResponse>): QueryVoteResponse;
-    fromSDK(object: QueryVoteResponseSDKType): QueryVoteResponse;
-    toSDK(message: QueryVoteResponse): QueryVoteResponseSDKType;
 };
 export declare const QueryVotesRequest: {
     encode(message: QueryVotesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesRequest;
     fromPartial(object: DeepPartial<QueryVotesRequest>): QueryVotesRequest;
-    fromSDK(object: QueryVotesRequestSDKType): QueryVotesRequest;
-    toSDK(message: QueryVotesRequest): QueryVotesRequestSDKType;
 };
 export declare const QueryVotesResponse: {
     encode(message: QueryVotesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesResponseSDKType;
     fromPartial(object: DeepPartial<QueryVotesResponse>): QueryVotesResponse;
-    fromSDK(object: QueryVotesResponseSDKType): QueryVotesResponse;
-    toSDK(message: QueryVotesResponse): QueryVotesResponseSDKType;
 };
 export declare const QueryParamsRequest: {
     encode(message: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(object: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(object: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(message: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };
 export declare const QueryDepositRequest: {
     encode(message: QueryDepositRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositRequest;
     fromPartial(object: DeepPartial<QueryDepositRequest>): QueryDepositRequest;
-    fromSDK(object: QueryDepositRequestSDKType): QueryDepositRequest;
-    toSDK(message: QueryDepositRequest): QueryDepositRequestSDKType;
 };
 export declare const QueryDepositResponse: {
     encode(message: QueryDepositResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositResponseSDKType;
     fromPartial(object: DeepPartial<QueryDepositResponse>): QueryDepositResponse;
-    fromSDK(object: QueryDepositResponseSDKType): QueryDepositResponse;
-    toSDK(message: QueryDepositResponse): QueryDepositResponseSDKType;
 };
 export declare const QueryDepositsRequest: {
     encode(message: QueryDepositsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositsRequest;
     fromPartial(object: DeepPartial<QueryDepositsRequest>): QueryDepositsRequest;
-    fromSDK(object: QueryDepositsRequestSDKType): QueryDepositsRequest;
-    toSDK(message: QueryDepositsRequest): QueryDepositsRequestSDKType;
 };
 export declare const QueryDepositsResponse: {
     encode(message: QueryDepositsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositsResponseSDKType;
     fromPartial(object: DeepPartial<QueryDepositsResponse>): QueryDepositsResponse;
-    fromSDK(object: QueryDepositsResponseSDKType): QueryDepositsResponse;
-    toSDK(message: QueryDepositsResponse): QueryDepositsResponseSDKType;
 };
 export declare const QueryTallyResultRequest: {
     encode(message: QueryTallyResultRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultRequest;
     fromPartial(object: DeepPartial<QueryTallyResultRequest>): QueryTallyResultRequest;
-    fromSDK(object: QueryTallyResultRequestSDKType): QueryTallyResultRequest;
-    toSDK(message: QueryTallyResultRequest): QueryTallyResultRequestSDKType;
 };
 export declare const QueryTallyResultResponse: {
     encode(message: QueryTallyResultResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultResponseSDKType;
     fromPartial(object: DeepPartial<QueryTallyResultResponse>): QueryTallyResultResponse;
-    fromSDK(object: QueryTallyResultResponseSDKType): QueryTallyResultResponse;
-    toSDK(message: QueryTallyResultResponse): QueryTallyResultResponseSDKType;
 };

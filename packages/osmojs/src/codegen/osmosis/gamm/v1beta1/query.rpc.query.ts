@@ -1,5 +1,6 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryPoolsRequest, QueryPoolsResponse, QueryPoolsResponseSDKType, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryNumPoolsResponseSDKType, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryTotalLiquidityResponseSDKType, QueryPoolRequest, QueryPoolResponse, QueryPoolResponseSDKType, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryPoolParamsResponseSDKType, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalPoolLiquidityResponseSDKType, QueryTotalSharesRequest, QueryTotalSharesResponse, QueryTotalSharesResponseSDKType, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySpotPriceResponseSDKType, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountInResponseSDKType, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse, QuerySwapExactAmountOutResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
@@ -114,3 +115,49 @@ export class QueryClientImpl implements Query {
   }
 
 }
+export const createRpcQueryExtension = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    pools(request: QueryPoolsRequest): Promise<QueryPoolsResponseSDKType> {
+      return queryService.pools(request);
+    },
+
+    numPools(request: QueryNumPoolsRequest): Promise<QueryNumPoolsResponseSDKType> {
+      return queryService.numPools(request);
+    },
+
+    totalLiquidity(request: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponseSDKType> {
+      return queryService.totalLiquidity(request);
+    },
+
+    pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType> {
+      return queryService.pool(request);
+    },
+
+    poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponseSDKType> {
+      return queryService.poolParams(request);
+    },
+
+    totalPoolLiquidity(request: QueryTotalPoolLiquidityRequest): Promise<QueryTotalPoolLiquidityResponseSDKType> {
+      return queryService.totalPoolLiquidity(request);
+    },
+
+    totalShares(request: QueryTotalSharesRequest): Promise<QueryTotalSharesResponseSDKType> {
+      return queryService.totalShares(request);
+    },
+
+    spotPrice(request: QuerySpotPriceRequest): Promise<QuerySpotPriceResponseSDKType> {
+      return queryService.spotPrice(request);
+    },
+
+    estimateSwapExactAmountIn(request: QuerySwapExactAmountInRequest): Promise<QuerySwapExactAmountInResponseSDKType> {
+      return queryService.estimateSwapExactAmountIn(request);
+    },
+
+    estimateSwapExactAmountOut(request: QuerySwapExactAmountOutRequest): Promise<QuerySwapExactAmountOutResponseSDKType> {
+      return queryService.estimateSwapExactAmountOut(request);
+    }
+
+  };
+};

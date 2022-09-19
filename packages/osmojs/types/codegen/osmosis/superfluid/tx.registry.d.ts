@@ -47,50 +47,6 @@ export declare const MessageComposer: {
             value: MsgUnPoolWhitelistedPool;
         };
     };
-    toJSON: {
-        superfluidDelegate(value: MsgSuperfluidDelegate): {
-            typeUrl: string;
-            value: any;
-        };
-        superfluidUndelegate(value: MsgSuperfluidUndelegate): {
-            typeUrl: string;
-            value: any;
-        };
-        superfluidUnbondLock(value: MsgSuperfluidUnbondLock): {
-            typeUrl: string;
-            value: any;
-        };
-        lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate): {
-            typeUrl: string;
-            value: any;
-        };
-        unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool): {
-            typeUrl: string;
-            value: any;
-        };
-    };
-    fromJSON: {
-        superfluidDelegate(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        superfluidUndelegate(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        superfluidUnbondLock(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        lockAndSuperfluidDelegate(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        unPoolWhitelistedPool(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-    };
     fromPartial: {
         superfluidDelegate(value: MsgSuperfluidDelegate): {
             typeUrl: string;

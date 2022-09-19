@@ -40,13 +40,9 @@ export declare const App: {
     encode(message: App, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): App;
     fromPartial(object: DeepPartial<App>): App;
-    fromSDK(object: AppSDKType): App;
-    toSDK(message: App): AppSDKType;
 };
 export declare const Consensus: {
     encode(message: Consensus, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Consensus;
     fromPartial(object: DeepPartial<Consensus>): Consensus;
-    fromSDK(object: ConsensusSDKType): Consensus;
-    toSDK(message: Consensus): ConsensusSDKType;
 };

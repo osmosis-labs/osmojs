@@ -185,69 +185,49 @@ export declare const QueryCurrentPlanRequest: {
     encode(_: QueryCurrentPlanRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanRequest;
     fromPartial(_: DeepPartial<QueryCurrentPlanRequest>): QueryCurrentPlanRequest;
-    fromSDK(_: QueryCurrentPlanRequestSDKType): QueryCurrentPlanRequest;
-    toSDK(_: QueryCurrentPlanRequest): QueryCurrentPlanRequestSDKType;
 };
 export declare const QueryCurrentPlanResponse: {
     encode(message: QueryCurrentPlanResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanResponseSDKType;
     fromPartial(object: DeepPartial<QueryCurrentPlanResponse>): QueryCurrentPlanResponse;
-    fromSDK(object: QueryCurrentPlanResponseSDKType): QueryCurrentPlanResponse;
-    toSDK(message: QueryCurrentPlanResponse): QueryCurrentPlanResponseSDKType;
 };
 export declare const QueryAppliedPlanRequest: {
     encode(message: QueryAppliedPlanRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanRequest;
     fromPartial(object: DeepPartial<QueryAppliedPlanRequest>): QueryAppliedPlanRequest;
-    fromSDK(object: QueryAppliedPlanRequestSDKType): QueryAppliedPlanRequest;
-    toSDK(message: QueryAppliedPlanRequest): QueryAppliedPlanRequestSDKType;
 };
 export declare const QueryAppliedPlanResponse: {
     encode(message: QueryAppliedPlanResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanResponseSDKType;
     fromPartial(object: DeepPartial<QueryAppliedPlanResponse>): QueryAppliedPlanResponse;
-    fromSDK(object: QueryAppliedPlanResponseSDKType): QueryAppliedPlanResponse;
-    toSDK(message: QueryAppliedPlanResponse): QueryAppliedPlanResponseSDKType;
 };
 export declare const QueryUpgradedConsensusStateRequest: {
     encode(message: QueryUpgradedConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
     fromPartial(object: DeepPartial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest;
-    fromSDK(object: QueryUpgradedConsensusStateRequestSDKType): QueryUpgradedConsensusStateRequest;
-    toSDK(message: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestSDKType;
 };
 export declare const QueryUpgradedConsensusStateResponse: {
     encode(message: QueryUpgradedConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponseSDKType;
     fromPartial(object: DeepPartial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
-    fromSDK(object: QueryUpgradedConsensusStateResponseSDKType): QueryUpgradedConsensusStateResponse;
-    toSDK(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseSDKType;
 };
 export declare const QueryModuleVersionsRequest: {
     encode(message: QueryModuleVersionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsRequest;
     fromPartial(object: DeepPartial<QueryModuleVersionsRequest>): QueryModuleVersionsRequest;
-    fromSDK(object: QueryModuleVersionsRequestSDKType): QueryModuleVersionsRequest;
-    toSDK(message: QueryModuleVersionsRequest): QueryModuleVersionsRequestSDKType;
 };
 export declare const QueryModuleVersionsResponse: {
     encode(message: QueryModuleVersionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsResponseSDKType;
     fromPartial(object: DeepPartial<QueryModuleVersionsResponse>): QueryModuleVersionsResponse;
-    fromSDK(object: QueryModuleVersionsResponseSDKType): QueryModuleVersionsResponse;
-    toSDK(message: QueryModuleVersionsResponse): QueryModuleVersionsResponseSDKType;
 };
 export declare const QueryAuthorityRequest: {
     encode(_: QueryAuthorityRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAuthorityRequest;
     fromPartial(_: DeepPartial<QueryAuthorityRequest>): QueryAuthorityRequest;
-    fromSDK(_: QueryAuthorityRequestSDKType): QueryAuthorityRequest;
-    toSDK(_: QueryAuthorityRequest): QueryAuthorityRequestSDKType;
 };
 export declare const QueryAuthorityResponse: {
     encode(message: QueryAuthorityResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAuthorityResponseSDKType;
     fromPartial(object: DeepPartial<QueryAuthorityResponse>): QueryAuthorityResponse;
-    fromSDK(object: QueryAuthorityResponseSDKType): QueryAuthorityResponse;
-    toSDK(message: QueryAuthorityResponse): QueryAuthorityResponseSDKType;
 };

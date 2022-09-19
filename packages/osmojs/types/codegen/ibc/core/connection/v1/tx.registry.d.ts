@@ -39,42 +39,6 @@ export declare const MessageComposer: {
             value: MsgConnectionOpenConfirm;
         };
     };
-    toJSON: {
-        connectionOpenInit(value: MsgConnectionOpenInit): {
-            typeUrl: string;
-            value: any;
-        };
-        connectionOpenTry(value: MsgConnectionOpenTry): {
-            typeUrl: string;
-            value: any;
-        };
-        connectionOpenAck(value: MsgConnectionOpenAck): {
-            typeUrl: string;
-            value: any;
-        };
-        connectionOpenConfirm(value: MsgConnectionOpenConfirm): {
-            typeUrl: string;
-            value: any;
-        };
-    };
-    fromJSON: {
-        connectionOpenInit(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        connectionOpenTry(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        connectionOpenAck(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-        connectionOpenConfirm(value: any): {
-            typeUrl: string;
-            value: any;
-        };
-    };
     fromPartial: {
         connectionOpenInit(value: MsgConnectionOpenInit): {
             typeUrl: string;

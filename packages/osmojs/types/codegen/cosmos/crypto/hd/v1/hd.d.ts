@@ -36,6 +36,4 @@ export declare const BIP44Params: {
     encode(message: BIP44Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BIP44Params;
     fromPartial(object: DeepPartial<BIP44Params>): BIP44Params;
-    fromSDK(object: BIP44ParamsSDKType): BIP44Params;
-    toSDK(message: BIP44Params): BIP44ParamsSDKType;
 };

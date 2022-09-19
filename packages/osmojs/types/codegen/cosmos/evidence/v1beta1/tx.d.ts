@@ -31,13 +31,9 @@ export declare const MsgSubmitEvidence: {
     encode(message: MsgSubmitEvidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitEvidence;
     fromPartial(object: DeepPartial<MsgSubmitEvidence>): MsgSubmitEvidence;
-    fromSDK(object: MsgSubmitEvidenceSDKType): MsgSubmitEvidence;
-    toSDK(message: MsgSubmitEvidence): MsgSubmitEvidenceSDKType;
 };
 export declare const MsgSubmitEvidenceResponse: {
     encode(message: MsgSubmitEvidenceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitEvidenceResponseSDKType;
     fromPartial(object: DeepPartial<MsgSubmitEvidenceResponse>): MsgSubmitEvidenceResponse;
-    fromSDK(object: MsgSubmitEvidenceResponseSDKType): MsgSubmitEvidenceResponse;
-    toSDK(message: MsgSubmitEvidenceResponse): MsgSubmitEvidenceResponseSDKType;
 };

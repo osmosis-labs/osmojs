@@ -78,34 +78,24 @@ export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
 };
 export declare const GenesisState_GenMsgs: {
     encode(message: GenesisState_GenMsgs, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState_GenMsgs;
     fromPartial(object: DeepPartial<GenesisState_GenMsgs>): GenesisState_GenMsgs;
-    fromSDK(object: GenesisState_GenMsgsSDKType): GenesisState_GenMsgs;
-    toSDK(message: GenesisState_GenMsgs): GenesisState_GenMsgsSDKType;
 };
 export declare const Code: {
     encode(message: Code, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Code;
     fromPartial(object: DeepPartial<Code>): Code;
-    fromSDK(object: CodeSDKType): Code;
-    toSDK(message: Code): CodeSDKType;
 };
 export declare const Contract: {
     encode(message: Contract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Contract;
     fromPartial(object: DeepPartial<Contract>): Contract;
-    fromSDK(object: ContractSDKType): Contract;
-    toSDK(message: Contract): ContractSDKType;
 };
 export declare const Sequence: {
     encode(message: Sequence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Sequence;
     fromPartial(object: DeepPartial<Sequence>): Sequence;
-    fromSDK(object: SequenceSDKType): Sequence;
-    toSDK(message: Sequence): SequenceSDKType;
 };
