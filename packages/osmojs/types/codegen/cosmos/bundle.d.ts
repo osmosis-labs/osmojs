@@ -1989,7 +1989,7 @@ export declare namespace cosmos {
         }
         namespace tendermint {
             const v1beta1: {
-                ServiceClientImpl: typeof _227.ServiceClientImpl;
+                QueryClientImpl: typeof _227.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     getNodeInfo(request: _26.GetNodeInfoRequest): Promise<_26.GetNodeInfoResponseSDKType>;
                     getSyncing(request: _26.GetSyncingRequest): Promise<_26.GetSyncingResponseSDKType>;
@@ -7457,7 +7457,7 @@ export declare namespace cosmos {
             };
         }
         const v1beta1: {
-            ServiceClientImpl: typeof _238.ServiceClientImpl;
+            QueryClientImpl: typeof _238.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 simulate(request: _82.SimulateRequest): Promise<_82.SimulateResponseSDKType>;
                 getTx(request: _82.GetTxRequest): Promise<_82.GetTxResponseSDKType>;

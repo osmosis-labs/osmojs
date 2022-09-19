@@ -10,7 +10,7 @@ export interface Service {
     getLatestValidatorSet(request: GetLatestValidatorSetRequest): Promise<GetLatestValidatorSetResponseSDKType>;
     getValidatorSetByHeight(request: GetValidatorSetByHeightRequest): Promise<GetValidatorSetByHeightResponseSDKType>;
 }
-export declare class ServiceClientImpl implements Service {
+export declare class QueryClientImpl implements Service {
     private readonly rpc;
     constructor(rpc: Rpc);
     getNodeInfo(request: GetNodeInfoRequest): Promise<GetNodeInfoResponseSDKType>;

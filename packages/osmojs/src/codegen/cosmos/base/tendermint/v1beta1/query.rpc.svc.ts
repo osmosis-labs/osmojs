@@ -24,7 +24,7 @@ export interface Service {
   /*GetValidatorSetByHeight queries validator-set at a given height.*/
 
 }
-export class ServiceClientImpl implements Service {
+export class QueryClientImpl implements Service {
   private readonly rpc: Rpc;
 
   constructor(rpc: Rpc) {

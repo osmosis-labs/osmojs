@@ -9,7 +9,7 @@ export interface Service {
     getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponseSDKType>;
     getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponseSDKType>;
 }
-export declare class ServiceClientImpl implements Service {
+export declare class QueryClientImpl implements Service {
     private readonly rpc;
     constructor(rpc: Rpc);
     simulate(request: SimulateRequest): Promise<SimulateResponseSDKType>;
