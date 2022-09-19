@@ -67,66 +67,6 @@ export const MessageComposer = {
     }
 
   },
-  toJSON: {
-    createClient(value: MsgCreateClient) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgCreateClient",
-        value: MsgCreateClient.toJSON(value)
-      };
-    },
-
-    updateClient(value: MsgUpdateClient) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgUpdateClient",
-        value: MsgUpdateClient.toJSON(value)
-      };
-    },
-
-    upgradeClient(value: MsgUpgradeClient) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgUpgradeClient",
-        value: MsgUpgradeClient.toJSON(value)
-      };
-    },
-
-    submitMisbehaviour(value: MsgSubmitMisbehaviour) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
-        value: MsgSubmitMisbehaviour.toJSON(value)
-      };
-    }
-
-  },
-  fromJSON: {
-    createClient(value: any) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgCreateClient",
-        value: MsgCreateClient.fromJSON(value)
-      };
-    },
-
-    updateClient(value: any) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgUpdateClient",
-        value: MsgUpdateClient.fromJSON(value)
-      };
-    },
-
-    upgradeClient(value: any) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgUpgradeClient",
-        value: MsgUpgradeClient.fromJSON(value)
-      };
-    },
-
-    submitMisbehaviour(value: any) {
-      return {
-        typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
-        value: MsgSubmitMisbehaviour.fromJSON(value)
-      };
-    }
-
-  },
   fromPartial: {
     createClient(value: MsgCreateClient) {
       return {

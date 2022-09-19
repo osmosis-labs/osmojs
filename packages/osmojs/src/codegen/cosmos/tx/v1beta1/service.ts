@@ -4,7 +4,7 @@ import { TxResponse, TxResponseSDKType, GasInfo, GasInfoSDKType, Result, ResultS
 import { BlockID, BlockIDSDKType } from "../../../tendermint/types/types";
 import { Block, BlockSDKType } from "../../../tendermint/types/block";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /** OrderBy defines the sorting order */
 
 export enum OrderBy {
@@ -474,28 +474,6 @@ export const GetTxsEventRequest = {
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     message.orderBy = object.orderBy ?? 0;
     return message;
-  },
-
-  fromSDK(object: GetTxsEventRequestSDKType): GetTxsEventRequest {
-    return {
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => e) : [],
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined,
-      orderBy: isSet(object.order_by) ? orderByFromJSON(object.order_by) : 0
-    };
-  },
-
-  toSDK(message: GetTxsEventRequest): GetTxsEventRequestSDKType {
-    const obj: any = {};
-
-    if (message.events) {
-      obj.events = message.events.map(e => e);
-    } else {
-      obj.events = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    message.orderBy !== undefined && (obj.order_by = orderByToJSON(message.orderBy));
-    return obj;
   }
 
 };
@@ -561,33 +539,6 @@ export const GetTxsEventResponse = {
     message.txResponses = object.txResponses?.map(e => TxResponse.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: GetTxsEventResponseSDKType): GetTxsEventResponse {
-    return {
-      txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => Tx.fromSDK(e)) : [],
-      txResponses: Array.isArray(object?.tx_responses) ? object.tx_responses.map((e: any) => TxResponse.fromSDK(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: GetTxsEventResponse): GetTxsEventResponseSDKType {
-    const obj: any = {};
-
-    if (message.txs) {
-      obj.txs = message.txs.map(e => e ? Tx.toSDK(e) : undefined);
-    } else {
-      obj.txs = [];
-    }
-
-    if (message.txResponses) {
-      obj.tx_responses = message.txResponses.map(e => e ? TxResponse.toSDK(e) : undefined);
-    } else {
-      obj.tx_responses = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -643,20 +594,6 @@ export const BroadcastTxRequest = {
     message.txBytes = object.txBytes ?? new Uint8Array();
     message.mode = object.mode ?? 0;
     return message;
-  },
-
-  fromSDK(object: BroadcastTxRequestSDKType): BroadcastTxRequest {
-    return {
-      txBytes: isSet(object.tx_bytes) ? object.tx_bytes : undefined,
-      mode: isSet(object.mode) ? broadcastModeFromJSON(object.mode) : 0
-    };
-  },
-
-  toSDK(message: BroadcastTxRequest): BroadcastTxRequestSDKType {
-    const obj: any = {};
-    message.txBytes !== undefined && (obj.tx_bytes = message.txBytes);
-    message.mode !== undefined && (obj.mode = broadcastModeToJSON(message.mode));
-    return obj;
   }
 
 };
@@ -702,18 +639,6 @@ export const BroadcastTxResponse = {
     const message = createBaseBroadcastTxResponse();
     message.txResponse = object.txResponse !== undefined && object.txResponse !== null ? TxResponse.fromPartial(object.txResponse) : undefined;
     return message;
-  },
-
-  fromSDK(object: BroadcastTxResponseSDKType): BroadcastTxResponse {
-    return {
-      txResponse: isSet(object.tx_response) ? TxResponse.fromSDK(object.tx_response) : undefined
-    };
-  },
-
-  toSDK(message: BroadcastTxResponse): BroadcastTxResponseSDKType {
-    const obj: any = {};
-    message.txResponse !== undefined && (obj.tx_response = message.txResponse ? TxResponse.toSDK(message.txResponse) : undefined);
-    return obj;
   }
 
 };
@@ -769,20 +694,6 @@ export const SimulateRequest = {
     message.tx = object.tx !== undefined && object.tx !== null ? Tx.fromPartial(object.tx) : undefined;
     message.txBytes = object.txBytes ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: SimulateRequestSDKType): SimulateRequest {
-    return {
-      tx: isSet(object.tx) ? Tx.fromSDK(object.tx) : undefined,
-      txBytes: isSet(object.tx_bytes) ? object.tx_bytes : undefined
-    };
-  },
-
-  toSDK(message: SimulateRequest): SimulateRequestSDKType {
-    const obj: any = {};
-    message.tx !== undefined && (obj.tx = message.tx ? Tx.toSDK(message.tx) : undefined);
-    message.txBytes !== undefined && (obj.tx_bytes = message.txBytes);
-    return obj;
   }
 
 };
@@ -838,20 +749,6 @@ export const SimulateResponse = {
     message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? GasInfo.fromPartial(object.gasInfo) : undefined;
     message.result = object.result !== undefined && object.result !== null ? Result.fromPartial(object.result) : undefined;
     return message;
-  },
-
-  fromSDK(object: SimulateResponseSDKType): SimulateResponse {
-    return {
-      gasInfo: isSet(object.gas_info) ? GasInfo.fromSDK(object.gas_info) : undefined,
-      result: isSet(object.result) ? Result.fromSDK(object.result) : undefined
-    };
-  },
-
-  toSDK(message: SimulateResponse): SimulateResponseSDKType {
-    const obj: any = {};
-    message.gasInfo !== undefined && (obj.gas_info = message.gasInfo ? GasInfo.toSDK(message.gasInfo) : undefined);
-    message.result !== undefined && (obj.result = message.result ? Result.toSDK(message.result) : undefined);
-    return obj;
   }
 
 };
@@ -897,18 +794,6 @@ export const GetTxRequest = {
     const message = createBaseGetTxRequest();
     message.hash = object.hash ?? "";
     return message;
-  },
-
-  fromSDK(object: GetTxRequestSDKType): GetTxRequest {
-    return {
-      hash: isSet(object.hash) ? object.hash : undefined
-    };
-  },
-
-  toSDK(message: GetTxRequest): GetTxRequestSDKType {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = message.hash);
-    return obj;
   }
 
 };
@@ -964,20 +849,6 @@ export const GetTxResponse = {
     message.tx = object.tx !== undefined && object.tx !== null ? Tx.fromPartial(object.tx) : undefined;
     message.txResponse = object.txResponse !== undefined && object.txResponse !== null ? TxResponse.fromPartial(object.txResponse) : undefined;
     return message;
-  },
-
-  fromSDK(object: GetTxResponseSDKType): GetTxResponse {
-    return {
-      tx: isSet(object.tx) ? Tx.fromSDK(object.tx) : undefined,
-      txResponse: isSet(object.tx_response) ? TxResponse.fromSDK(object.tx_response) : undefined
-    };
-  },
-
-  toSDK(message: GetTxResponse): GetTxResponseSDKType {
-    const obj: any = {};
-    message.tx !== undefined && (obj.tx = message.tx ? Tx.toSDK(message.tx) : undefined);
-    message.txResponse !== undefined && (obj.tx_response = message.txResponse ? TxResponse.toSDK(message.txResponse) : undefined);
-    return obj;
   }
 
 };
@@ -1033,20 +904,6 @@ export const GetBlockWithTxsRequest = {
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: GetBlockWithTxsRequestSDKType): GetBlockWithTxsRequest {
-    return {
-      height: isSet(object.height) ? object.height : undefined,
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: GetBlockWithTxsRequest): GetBlockWithTxsRequestSDKType {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = message.height);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -1122,30 +979,6 @@ export const GetBlockWithTxsResponse = {
     message.block = object.block !== undefined && object.block !== null ? Block.fromPartial(object.block) : undefined;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: GetBlockWithTxsResponseSDKType): GetBlockWithTxsResponse {
-    return {
-      txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => Tx.fromSDK(e)) : [],
-      blockId: isSet(object.block_id) ? BlockID.fromSDK(object.block_id) : undefined,
-      block: isSet(object.block) ? Block.fromSDK(object.block) : undefined,
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: GetBlockWithTxsResponse): GetBlockWithTxsResponseSDKType {
-    const obj: any = {};
-
-    if (message.txs) {
-      obj.txs = message.txs.map(e => e ? Tx.toSDK(e) : undefined);
-    } else {
-      obj.txs = [];
-    }
-
-    message.blockId !== undefined && (obj.block_id = message.blockId ? BlockID.toSDK(message.blockId) : undefined);
-    message.block !== undefined && (obj.block = message.block ? Block.toSDK(message.block) : undefined);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };

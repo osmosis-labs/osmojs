@@ -67,66 +67,6 @@ export const MessageComposer = {
     }
 
   },
-  toJSON: {
-    connectionOpenInit(value: MsgConnectionOpenInit) {
-      return {
-        typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenInit",
-        value: MsgConnectionOpenInit.toJSON(value)
-      };
-    },
-
-    connectionOpenTry(value: MsgConnectionOpenTry) {
-      return {
-        typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTry",
-        value: MsgConnectionOpenTry.toJSON(value)
-      };
-    },
-
-    connectionOpenAck(value: MsgConnectionOpenAck) {
-      return {
-        typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAck",
-        value: MsgConnectionOpenAck.toJSON(value)
-      };
-    },
-
-    connectionOpenConfirm(value: MsgConnectionOpenConfirm) {
-      return {
-        typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenConfirm",
-        value: MsgConnectionOpenConfirm.toJSON(value)
-      };
-    }
-
-  },
-  fromJSON: {
-    connectionOpenInit(value: any) {
-      return {
-        typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenInit",
-        value: MsgConnectionOpenInit.fromJSON(value)
-      };
-    },
-
-    connectionOpenTry(value: any) {
-      return {
-        typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTry",
-        value: MsgConnectionOpenTry.fromJSON(value)
-      };
-    },
-
-    connectionOpenAck(value: any) {
-      return {
-        typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAck",
-        value: MsgConnectionOpenAck.fromJSON(value)
-      };
-    },
-
-    connectionOpenConfirm(value: any) {
-      return {
-        typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenConfirm",
-        value: MsgConnectionOpenConfirm.fromJSON(value)
-      };
-    }
-
-  },
   fromPartial: {
     connectionOpenInit(value: MsgConnectionOpenInit) {
       return {

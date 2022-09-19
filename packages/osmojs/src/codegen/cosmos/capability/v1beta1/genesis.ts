@@ -1,6 +1,6 @@
 import { CapabilityOwners, CapabilityOwnersSDKType } from "./capability";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisOwners defines the capability owners with their corresponding index. */
 
 export interface GenesisOwners {
@@ -95,20 +95,6 @@ export const GenesisOwners = {
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
     message.indexOwners = object.indexOwners !== undefined && object.indexOwners !== null ? CapabilityOwners.fromPartial(object.indexOwners) : undefined;
     return message;
-  },
-
-  fromSDK(object: GenesisOwnersSDKType): GenesisOwners {
-    return {
-      index: isSet(object.index) ? object.index : undefined,
-      indexOwners: isSet(object.index_owners) ? CapabilityOwners.fromSDK(object.index_owners) : undefined
-    };
-  },
-
-  toSDK(message: GenesisOwners): GenesisOwnersSDKType {
-    const obj: any = {};
-    message.index !== undefined && (obj.index = message.index);
-    message.indexOwners !== undefined && (obj.index_owners = message.indexOwners ? CapabilityOwners.toSDK(message.indexOwners) : undefined);
-    return obj;
   }
 
 };
@@ -164,26 +150,6 @@ export const GenesisState = {
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
     message.owners = object.owners?.map(e => GenesisOwners.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      index: isSet(object.index) ? object.index : undefined,
-      owners: Array.isArray(object?.owners) ? object.owners.map((e: any) => GenesisOwners.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    message.index !== undefined && (obj.index = message.index);
-
-    if (message.owners) {
-      obj.owners = message.owners.map(e => e ? GenesisOwners.toSDK(e) : undefined);
-    } else {
-      obj.owners = [];
-    }
-
-    return obj;
   }
 
 };

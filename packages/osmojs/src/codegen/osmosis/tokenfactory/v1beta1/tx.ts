@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * MsgCreateDenom is the sdk.Msg type for allowing an account to create
  * a new denom. It requires a sender address and a subdenomination.
@@ -163,20 +163,6 @@ export const MsgCreateDenom = {
     message.sender = object.sender ?? "";
     message.subdenom = object.subdenom ?? "";
     return message;
-  },
-
-  fromSDK(object: MsgCreateDenomSDKType): MsgCreateDenom {
-    return {
-      sender: isSet(object.sender) ? object.sender : undefined,
-      subdenom: isSet(object.subdenom) ? object.subdenom : undefined
-    };
-  },
-
-  toSDK(message: MsgCreateDenom): MsgCreateDenomSDKType {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.subdenom !== undefined && (obj.subdenom = message.subdenom);
-    return obj;
   }
 
 };
@@ -222,18 +208,6 @@ export const MsgCreateDenomResponse = {
     const message = createBaseMsgCreateDenomResponse();
     message.newTokenDenom = object.newTokenDenom ?? "";
     return message;
-  },
-
-  fromSDK(object: MsgCreateDenomResponseSDKType): MsgCreateDenomResponse {
-    return {
-      newTokenDenom: isSet(object.new_token_denom) ? object.new_token_denom : undefined
-    };
-  },
-
-  toSDK(message: MsgCreateDenomResponse): MsgCreateDenomResponseSDKType {
-    const obj: any = {};
-    message.newTokenDenom !== undefined && (obj.new_token_denom = message.newTokenDenom);
-    return obj;
   }
 
 };
@@ -289,20 +263,6 @@ export const MsgMint = {
     message.sender = object.sender ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
-  },
-
-  fromSDK(object: MsgMintSDKType): MsgMint {
-    return {
-      sender: isSet(object.sender) ? object.sender : undefined,
-      amount: isSet(object.amount) ? Coin.fromSDK(object.amount) : undefined
-    };
-  },
-
-  toSDK(message: MsgMint): MsgMintSDKType {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.amount !== undefined && (obj.amount = message.amount ? Coin.toSDK(message.amount) : undefined);
-    return obj;
   }
 
 };
@@ -337,15 +297,6 @@ export const MsgMintResponse = {
   fromPartial(_: DeepPartial<MsgMintResponse>): MsgMintResponse {
     const message = createBaseMsgMintResponse();
     return message;
-  },
-
-  fromSDK(_: MsgMintResponseSDKType): MsgMintResponse {
-    return {};
-  },
-
-  toSDK(_: MsgMintResponse): MsgMintResponseSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -401,20 +352,6 @@ export const MsgBurn = {
     message.sender = object.sender ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
-  },
-
-  fromSDK(object: MsgBurnSDKType): MsgBurn {
-    return {
-      sender: isSet(object.sender) ? object.sender : undefined,
-      amount: isSet(object.amount) ? Coin.fromSDK(object.amount) : undefined
-    };
-  },
-
-  toSDK(message: MsgBurn): MsgBurnSDKType {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.amount !== undefined && (obj.amount = message.amount ? Coin.toSDK(message.amount) : undefined);
-    return obj;
   }
 
 };
@@ -449,15 +386,6 @@ export const MsgBurnResponse = {
   fromPartial(_: DeepPartial<MsgBurnResponse>): MsgBurnResponse {
     const message = createBaseMsgBurnResponse();
     return message;
-  },
-
-  fromSDK(_: MsgBurnResponseSDKType): MsgBurnResponse {
-    return {};
-  },
-
-  toSDK(_: MsgBurnResponse): MsgBurnResponseSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -523,22 +451,6 @@ export const MsgChangeAdmin = {
     message.denom = object.denom ?? "";
     message.newAdmin = object.newAdmin ?? "";
     return message;
-  },
-
-  fromSDK(object: MsgChangeAdminSDKType): MsgChangeAdmin {
-    return {
-      sender: isSet(object.sender) ? object.sender : undefined,
-      denom: isSet(object.denom) ? object.denom : undefined,
-      newAdmin: isSet(object.newAdmin) ? object.newAdmin : undefined
-    };
-  },
-
-  toSDK(message: MsgChangeAdmin): MsgChangeAdminSDKType {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.newAdmin !== undefined && (obj.newAdmin = message.newAdmin);
-    return obj;
   }
 
 };
@@ -573,15 +485,6 @@ export const MsgChangeAdminResponse = {
   fromPartial(_: DeepPartial<MsgChangeAdminResponse>): MsgChangeAdminResponse {
     const message = createBaseMsgChangeAdminResponse();
     return message;
-  },
-
-  fromSDK(_: MsgChangeAdminResponseSDKType): MsgChangeAdminResponse {
-    return {};
-  },
-
-  toSDK(_: MsgChangeAdminResponse): MsgChangeAdminResponseSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };

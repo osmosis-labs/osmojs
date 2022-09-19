@@ -1,7 +1,7 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Plan, PlanSDKType } from "../../../../cosmos/upgrade/v1beta1/upgrade";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /**
  * IdentifiedClientState defines a client state with an additional client
  * identifier field.
@@ -264,20 +264,6 @@ export const IdentifiedClientState = {
     message.clientId = object.clientId ?? "";
     message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
     return message;
-  },
-
-  fromSDK(object: IdentifiedClientStateSDKType): IdentifiedClientState {
-    return {
-      clientId: isSet(object.client_id) ? object.client_id : undefined,
-      clientState: isSet(object.client_state) ? Any.fromSDK(object.client_state) : undefined
-    };
-  },
-
-  toSDK(message: IdentifiedClientState): IdentifiedClientStateSDKType {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.client_id = message.clientId);
-    message.clientState !== undefined && (obj.client_state = message.clientState ? Any.toSDK(message.clientState) : undefined);
-    return obj;
   }
 
 };
@@ -333,20 +319,6 @@ export const ConsensusStateWithHeight = {
     message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
     return message;
-  },
-
-  fromSDK(object: ConsensusStateWithHeightSDKType): ConsensusStateWithHeight {
-    return {
-      height: isSet(object.height) ? Height.fromSDK(object.height) : undefined,
-      consensusState: isSet(object.consensus_state) ? Any.fromSDK(object.consensus_state) : undefined
-    };
-  },
-
-  toSDK(message: ConsensusStateWithHeight): ConsensusStateWithHeightSDKType {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
-    message.consensusState !== undefined && (obj.consensus_state = message.consensusState ? Any.toSDK(message.consensusState) : undefined);
-    return obj;
   }
 
 };
@@ -402,26 +374,6 @@ export const ClientConsensusStates = {
     message.clientId = object.clientId ?? "";
     message.consensusStates = object.consensusStates?.map(e => ConsensusStateWithHeight.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ClientConsensusStatesSDKType): ClientConsensusStates {
-    return {
-      clientId: isSet(object.client_id) ? object.client_id : undefined,
-      consensusStates: Array.isArray(object?.consensus_states) ? object.consensus_states.map((e: any) => ConsensusStateWithHeight.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: ClientConsensusStates): ClientConsensusStatesSDKType {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.client_id = message.clientId);
-
-    if (message.consensusStates) {
-      obj.consensus_states = message.consensusStates.map(e => e ? ConsensusStateWithHeight.toSDK(e) : undefined);
-    } else {
-      obj.consensus_states = [];
-    }
-
-    return obj;
   }
 
 };
@@ -497,24 +449,6 @@ export const ClientUpdateProposal = {
     message.subjectClientId = object.subjectClientId ?? "";
     message.substituteClientId = object.substituteClientId ?? "";
     return message;
-  },
-
-  fromSDK(object: ClientUpdateProposalSDKType): ClientUpdateProposal {
-    return {
-      title: isSet(object.title) ? object.title : undefined,
-      description: isSet(object.description) ? object.description : undefined,
-      subjectClientId: isSet(object.subject_client_id) ? object.subject_client_id : undefined,
-      substituteClientId: isSet(object.substitute_client_id) ? object.substitute_client_id : undefined
-    };
-  },
-
-  toSDK(message: ClientUpdateProposal): ClientUpdateProposalSDKType {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.subjectClientId !== undefined && (obj.subject_client_id = message.subjectClientId);
-    message.substituteClientId !== undefined && (obj.substitute_client_id = message.substituteClientId);
-    return obj;
   }
 
 };
@@ -590,24 +524,6 @@ export const UpgradeProposal = {
     message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
     message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
     return message;
-  },
-
-  fromSDK(object: UpgradeProposalSDKType): UpgradeProposal {
-    return {
-      title: isSet(object.title) ? object.title : undefined,
-      description: isSet(object.description) ? object.description : undefined,
-      plan: isSet(object.plan) ? Plan.fromSDK(object.plan) : undefined,
-      upgradedClientState: isSet(object.upgraded_client_state) ? Any.fromSDK(object.upgraded_client_state) : undefined
-    };
-  },
-
-  toSDK(message: UpgradeProposal): UpgradeProposalSDKType {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.plan !== undefined && (obj.plan = message.plan ? Plan.toSDK(message.plan) : undefined);
-    message.upgradedClientState !== undefined && (obj.upgraded_client_state = message.upgradedClientState ? Any.toSDK(message.upgradedClientState) : undefined);
-    return obj;
   }
 
 };
@@ -663,20 +579,6 @@ export const Height = {
     message.revisionNumber = object.revisionNumber !== undefined && object.revisionNumber !== null ? Long.fromValue(object.revisionNumber) : Long.UZERO;
     message.revisionHeight = object.revisionHeight !== undefined && object.revisionHeight !== null ? Long.fromValue(object.revisionHeight) : Long.UZERO;
     return message;
-  },
-
-  fromSDK(object: HeightSDKType): Height {
-    return {
-      revisionNumber: isSet(object.revision_number) ? object.revision_number : undefined,
-      revisionHeight: isSet(object.revision_height) ? object.revision_height : undefined
-    };
-  },
-
-  toSDK(message: Height): HeightSDKType {
-    const obj: any = {};
-    message.revisionNumber !== undefined && (obj.revision_number = message.revisionNumber);
-    message.revisionHeight !== undefined && (obj.revision_height = message.revisionHeight);
-    return obj;
   }
 
 };
@@ -722,24 +624,6 @@ export const Params = {
     const message = createBaseParams();
     message.allowedClients = object.allowedClients?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: ParamsSDKType): Params {
-    return {
-      allowedClients: Array.isArray(object?.allowed_clients) ? object.allowed_clients.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: Params): ParamsSDKType {
-    const obj: any = {};
-
-    if (message.allowedClients) {
-      obj.allowed_clients = message.allowedClients.map(e => e);
-    } else {
-      obj.allowed_clients = [];
-    }
-
-    return obj;
   }
 
 };

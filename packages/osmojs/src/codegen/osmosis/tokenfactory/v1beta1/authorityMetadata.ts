@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * DenomAuthorityMetadata specifies metadata for addresses that have specific
  * capabilities over a token factory denom. Right now there is only one Admin
@@ -62,18 +62,6 @@ export const DenomAuthorityMetadata = {
     const message = createBaseDenomAuthorityMetadata();
     message.Admin = object.Admin ?? "";
     return message;
-  },
-
-  fromSDK(object: DenomAuthorityMetadataSDKType): DenomAuthorityMetadata {
-    return {
-      Admin: isSet(object.Admin) ? object.Admin : undefined
-    };
-  },
-
-  toSDK(message: DenomAuthorityMetadata): DenomAuthorityMetadataSDKType {
-    const obj: any = {};
-    message.Admin !== undefined && (obj.Admin = message.Admin);
-    return obj;
   }
 
 };

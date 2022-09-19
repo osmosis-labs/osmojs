@@ -6,7 +6,7 @@ import { MerkleRoot, MerkleRootSDKType } from "../../../core/commitment/v1/commi
 import { SignedHeader, SignedHeaderSDKType } from "../../../../tendermint/types/types";
 import { ValidatorSet, ValidatorSetSDKType } from "../../../../tendermint/types/validator";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, toTimestamp, fromTimestamp, Long } from "@osmonauts/helpers";
+import { DeepPartial, toTimestamp, fromTimestamp, Long } from "@osmonauts/helpers";
 /**
  * ClientState from Tendermint tracks the current validator set, latest height,
  * and a possible frozen height.
@@ -361,49 +361,6 @@ export const ClientState = {
     message.allowUpdateAfterExpiry = object.allowUpdateAfterExpiry ?? false;
     message.allowUpdateAfterMisbehaviour = object.allowUpdateAfterMisbehaviour ?? false;
     return message;
-  },
-
-  fromSDK(object: ClientStateSDKType): ClientState {
-    return {
-      chainId: isSet(object.chain_id) ? object.chain_id : undefined,
-      trustLevel: isSet(object.trust_level) ? Fraction.fromSDK(object.trust_level) : undefined,
-      trustingPeriod: isSet(object.trusting_period) ? Duration.fromSDK(object.trusting_period) : undefined,
-      unbondingPeriod: isSet(object.unbonding_period) ? Duration.fromSDK(object.unbonding_period) : undefined,
-      maxClockDrift: isSet(object.max_clock_drift) ? Duration.fromSDK(object.max_clock_drift) : undefined,
-      frozenHeight: isSet(object.frozen_height) ? Height.fromSDK(object.frozen_height) : undefined,
-      latestHeight: isSet(object.latest_height) ? Height.fromSDK(object.latest_height) : undefined,
-      proofSpecs: Array.isArray(object?.proof_specs) ? object.proof_specs.map((e: any) => ProofSpec.fromSDK(e)) : [],
-      upgradePath: Array.isArray(object?.upgrade_path) ? object.upgrade_path.map((e: any) => e) : [],
-      allowUpdateAfterExpiry: isSet(object.allow_update_after_expiry) ? object.allow_update_after_expiry : undefined,
-      allowUpdateAfterMisbehaviour: isSet(object.allow_update_after_misbehaviour) ? object.allow_update_after_misbehaviour : undefined
-    };
-  },
-
-  toSDK(message: ClientState): ClientStateSDKType {
-    const obj: any = {};
-    message.chainId !== undefined && (obj.chain_id = message.chainId);
-    message.trustLevel !== undefined && (obj.trust_level = message.trustLevel ? Fraction.toSDK(message.trustLevel) : undefined);
-    message.trustingPeriod !== undefined && (obj.trusting_period = message.trustingPeriod ? Duration.toSDK(message.trustingPeriod) : undefined);
-    message.unbondingPeriod !== undefined && (obj.unbonding_period = message.unbondingPeriod ? Duration.toSDK(message.unbondingPeriod) : undefined);
-    message.maxClockDrift !== undefined && (obj.max_clock_drift = message.maxClockDrift ? Duration.toSDK(message.maxClockDrift) : undefined);
-    message.frozenHeight !== undefined && (obj.frozen_height = message.frozenHeight ? Height.toSDK(message.frozenHeight) : undefined);
-    message.latestHeight !== undefined && (obj.latest_height = message.latestHeight ? Height.toSDK(message.latestHeight) : undefined);
-
-    if (message.proofSpecs) {
-      obj.proof_specs = message.proofSpecs.map(e => e ? ProofSpec.toSDK(e) : undefined);
-    } else {
-      obj.proof_specs = [];
-    }
-
-    if (message.upgradePath) {
-      obj.upgrade_path = message.upgradePath.map(e => e);
-    } else {
-      obj.upgrade_path = [];
-    }
-
-    message.allowUpdateAfterExpiry !== undefined && (obj.allow_update_after_expiry = message.allowUpdateAfterExpiry);
-    message.allowUpdateAfterMisbehaviour !== undefined && (obj.allow_update_after_misbehaviour = message.allowUpdateAfterMisbehaviour);
-    return obj;
   }
 
 };
@@ -469,22 +426,6 @@ export const ConsensusState = {
     message.root = object.root !== undefined && object.root !== null ? MerkleRoot.fromPartial(object.root) : undefined;
     message.nextValidatorsHash = object.nextValidatorsHash ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: ConsensusStateSDKType): ConsensusState {
-    return {
-      timestamp: isSet(object.timestamp) ? Timestamp.fromSDK(object.timestamp) : undefined,
-      root: isSet(object.root) ? MerkleRoot.fromSDK(object.root) : undefined,
-      nextValidatorsHash: isSet(object.next_validators_hash) ? object.next_validators_hash : undefined
-    };
-  },
-
-  toSDK(message: ConsensusState): ConsensusStateSDKType {
-    const obj: any = {};
-    message.timestamp !== undefined && (obj.timestamp = message.timestamp ? Timestamp.toSDK(message.timestamp) : undefined);
-    message.root !== undefined && (obj.root = message.root ? MerkleRoot.toSDK(message.root) : undefined);
-    message.nextValidatorsHash !== undefined && (obj.next_validators_hash = message.nextValidatorsHash);
-    return obj;
   }
 
 };
@@ -550,22 +491,6 @@ export const Misbehaviour = {
     message.header_1 = object.header_1 !== undefined && object.header_1 !== null ? Header.fromPartial(object.header_1) : undefined;
     message.header_2 = object.header_2 !== undefined && object.header_2 !== null ? Header.fromPartial(object.header_2) : undefined;
     return message;
-  },
-
-  fromSDK(object: MisbehaviourSDKType): Misbehaviour {
-    return {
-      clientId: isSet(object.client_id) ? object.client_id : undefined,
-      header_1: isSet(object.header_1) ? Header.fromSDK(object.header_1) : undefined,
-      header_2: isSet(object.header_2) ? Header.fromSDK(object.header_2) : undefined
-    };
-  },
-
-  toSDK(message: Misbehaviour): MisbehaviourSDKType {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.client_id = message.clientId);
-    message.header_1 !== undefined && (obj.header_1 = message.header_1 ? Header.toSDK(message.header_1) : undefined);
-    message.header_2 !== undefined && (obj.header_2 = message.header_2 ? Header.toSDK(message.header_2) : undefined);
-    return obj;
   }
 
 };
@@ -641,24 +566,6 @@ export const Header = {
     message.trustedHeight = object.trustedHeight !== undefined && object.trustedHeight !== null ? Height.fromPartial(object.trustedHeight) : undefined;
     message.trustedValidators = object.trustedValidators !== undefined && object.trustedValidators !== null ? ValidatorSet.fromPartial(object.trustedValidators) : undefined;
     return message;
-  },
-
-  fromSDK(object: HeaderSDKType): Header {
-    return {
-      signedHeader: isSet(object.signed_header) ? SignedHeader.fromSDK(object.signed_header) : undefined,
-      validatorSet: isSet(object.validator_set) ? ValidatorSet.fromSDK(object.validator_set) : undefined,
-      trustedHeight: isSet(object.trusted_height) ? Height.fromSDK(object.trusted_height) : undefined,
-      trustedValidators: isSet(object.trusted_validators) ? ValidatorSet.fromSDK(object.trusted_validators) : undefined
-    };
-  },
-
-  toSDK(message: Header): HeaderSDKType {
-    const obj: any = {};
-    message.signedHeader !== undefined && (obj.signed_header = message.signedHeader ? SignedHeader.toSDK(message.signedHeader) : undefined);
-    message.validatorSet !== undefined && (obj.validator_set = message.validatorSet ? ValidatorSet.toSDK(message.validatorSet) : undefined);
-    message.trustedHeight !== undefined && (obj.trusted_height = message.trustedHeight ? Height.toSDK(message.trustedHeight) : undefined);
-    message.trustedValidators !== undefined && (obj.trusted_validators = message.trustedValidators ? ValidatorSet.toSDK(message.trustedValidators) : undefined);
-    return obj;
   }
 
 };
@@ -714,20 +621,6 @@ export const Fraction = {
     message.numerator = object.numerator !== undefined && object.numerator !== null ? Long.fromValue(object.numerator) : Long.UZERO;
     message.denominator = object.denominator !== undefined && object.denominator !== null ? Long.fromValue(object.denominator) : Long.UZERO;
     return message;
-  },
-
-  fromSDK(object: FractionSDKType): Fraction {
-    return {
-      numerator: isSet(object.numerator) ? object.numerator : undefined,
-      denominator: isSet(object.denominator) ? object.denominator : undefined
-    };
-  },
-
-  toSDK(message: Fraction): FractionSDKType {
-    const obj: any = {};
-    message.numerator !== undefined && (obj.numerator = message.numerator);
-    message.denominator !== undefined && (obj.denominator = message.denominator);
-    return obj;
   }
 
 };

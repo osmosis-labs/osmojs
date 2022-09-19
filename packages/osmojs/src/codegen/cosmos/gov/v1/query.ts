@@ -1,7 +1,7 @@
-import { ProposalStatus, ProposalStatusSDKType, Proposal, ProposalSDKType, Vote, VoteSDKType, VotingParams, VotingParamsSDKType, DepositParams, DepositParamsSDKType, TallyParams, TallyParamsSDKType, Deposit, DepositSDKType, TallyResult, TallyResultSDKType, proposalStatusFromJSON, proposalStatusToJSON } from "./gov";
+import { ProposalStatus, ProposalStatusSDKType, Proposal, ProposalSDKType, Vote, VoteSDKType, VotingParams, VotingParamsSDKType, DepositParams, DepositParamsSDKType, TallyParams, TallyParamsSDKType, Deposit, DepositSDKType, TallyResult, TallyResultSDKType } from "./gov";
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 
 export interface QueryProposalRequest {
@@ -314,18 +314,6 @@ export const QueryProposalRequest = {
     const message = createBaseQueryProposalRequest();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     return message;
-  },
-
-  fromSDK(object: QueryProposalRequestSDKType): QueryProposalRequest {
-    return {
-      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined
-    };
-  },
-
-  toSDK(message: QueryProposalRequest): QueryProposalRequestSDKType {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
-    return obj;
   }
 
 };
@@ -371,18 +359,6 @@ export const QueryProposalResponse = {
     const message = createBaseQueryProposalResponse();
     message.proposal = object.proposal !== undefined && object.proposal !== null ? Proposal.fromPartial(object.proposal) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryProposalResponseSDKType): QueryProposalResponse {
-    return {
-      proposal: isSet(object.proposal) ? Proposal.fromSDK(object.proposal) : undefined
-    };
-  },
-
-  toSDK(message: QueryProposalResponse): QueryProposalResponseSDKType {
-    const obj: any = {};
-    message.proposal !== undefined && (obj.proposal = message.proposal ? Proposal.toSDK(message.proposal) : undefined);
-    return obj;
   }
 
 };
@@ -458,24 +434,6 @@ export const QueryProposalsRequest = {
     message.depositor = object.depositor ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryProposalsRequestSDKType): QueryProposalsRequest {
-    return {
-      proposalStatus: isSet(object.proposal_status) ? proposalStatusFromJSON(object.proposal_status) : 0,
-      voter: isSet(object.voter) ? object.voter : undefined,
-      depositor: isSet(object.depositor) ? object.depositor : undefined,
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryProposalsRequest): QueryProposalsRequestSDKType {
-    const obj: any = {};
-    message.proposalStatus !== undefined && (obj.proposal_status = proposalStatusToJSON(message.proposalStatus));
-    message.voter !== undefined && (obj.voter = message.voter);
-    message.depositor !== undefined && (obj.depositor = message.depositor);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -531,26 +489,6 @@ export const QueryProposalsResponse = {
     message.proposals = object.proposals?.map(e => Proposal.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryProposalsResponseSDKType): QueryProposalsResponse {
-    return {
-      proposals: Array.isArray(object?.proposals) ? object.proposals.map((e: any) => Proposal.fromSDK(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryProposalsResponse): QueryProposalsResponseSDKType {
-    const obj: any = {};
-
-    if (message.proposals) {
-      obj.proposals = message.proposals.map(e => e ? Proposal.toSDK(e) : undefined);
-    } else {
-      obj.proposals = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -606,20 +544,6 @@ export const QueryVoteRequest = {
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.voter = object.voter ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryVoteRequestSDKType): QueryVoteRequest {
-    return {
-      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
-      voter: isSet(object.voter) ? object.voter : undefined
-    };
-  },
-
-  toSDK(message: QueryVoteRequest): QueryVoteRequestSDKType {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
-    message.voter !== undefined && (obj.voter = message.voter);
-    return obj;
   }
 
 };
@@ -665,18 +589,6 @@ export const QueryVoteResponse = {
     const message = createBaseQueryVoteResponse();
     message.vote = object.vote !== undefined && object.vote !== null ? Vote.fromPartial(object.vote) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryVoteResponseSDKType): QueryVoteResponse {
-    return {
-      vote: isSet(object.vote) ? Vote.fromSDK(object.vote) : undefined
-    };
-  },
-
-  toSDK(message: QueryVoteResponse): QueryVoteResponseSDKType {
-    const obj: any = {};
-    message.vote !== undefined && (obj.vote = message.vote ? Vote.toSDK(message.vote) : undefined);
-    return obj;
   }
 
 };
@@ -732,20 +644,6 @@ export const QueryVotesRequest = {
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryVotesRequestSDKType): QueryVotesRequest {
-    return {
-      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryVotesRequest): QueryVotesRequestSDKType {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -801,26 +699,6 @@ export const QueryVotesResponse = {
     message.votes = object.votes?.map(e => Vote.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryVotesResponseSDKType): QueryVotesResponse {
-    return {
-      votes: Array.isArray(object?.votes) ? object.votes.map((e: any) => Vote.fromSDK(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryVotesResponse): QueryVotesResponseSDKType {
-    const obj: any = {};
-
-    if (message.votes) {
-      obj.votes = message.votes.map(e => e ? Vote.toSDK(e) : undefined);
-    } else {
-      obj.votes = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -866,18 +744,6 @@ export const QueryParamsRequest = {
     const message = createBaseQueryParamsRequest();
     message.paramsType = object.paramsType ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryParamsRequestSDKType): QueryParamsRequest {
-    return {
-      paramsType: isSet(object.params_type) ? object.params_type : undefined
-    };
-  },
-
-  toSDK(message: QueryParamsRequest): QueryParamsRequestSDKType {
-    const obj: any = {};
-    message.paramsType !== undefined && (obj.params_type = message.paramsType);
-    return obj;
   }
 
 };
@@ -943,22 +809,6 @@ export const QueryParamsResponse = {
     message.depositParams = object.depositParams !== undefined && object.depositParams !== null ? DepositParams.fromPartial(object.depositParams) : undefined;
     message.tallyParams = object.tallyParams !== undefined && object.tallyParams !== null ? TallyParams.fromPartial(object.tallyParams) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
-    return {
-      votingParams: isSet(object.voting_params) ? VotingParams.fromSDK(object.voting_params) : undefined,
-      depositParams: isSet(object.deposit_params) ? DepositParams.fromSDK(object.deposit_params) : undefined,
-      tallyParams: isSet(object.tally_params) ? TallyParams.fromSDK(object.tally_params) : undefined
-    };
-  },
-
-  toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
-    const obj: any = {};
-    message.votingParams !== undefined && (obj.voting_params = message.votingParams ? VotingParams.toSDK(message.votingParams) : undefined);
-    message.depositParams !== undefined && (obj.deposit_params = message.depositParams ? DepositParams.toSDK(message.depositParams) : undefined);
-    message.tallyParams !== undefined && (obj.tally_params = message.tallyParams ? TallyParams.toSDK(message.tallyParams) : undefined);
-    return obj;
   }
 
 };
@@ -1014,20 +864,6 @@ export const QueryDepositRequest = {
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.depositor = object.depositor ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryDepositRequestSDKType): QueryDepositRequest {
-    return {
-      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
-      depositor: isSet(object.depositor) ? object.depositor : undefined
-    };
-  },
-
-  toSDK(message: QueryDepositRequest): QueryDepositRequestSDKType {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
-    message.depositor !== undefined && (obj.depositor = message.depositor);
-    return obj;
   }
 
 };
@@ -1073,18 +909,6 @@ export const QueryDepositResponse = {
     const message = createBaseQueryDepositResponse();
     message.deposit = object.deposit !== undefined && object.deposit !== null ? Deposit.fromPartial(object.deposit) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryDepositResponseSDKType): QueryDepositResponse {
-    return {
-      deposit: isSet(object.deposit) ? Deposit.fromSDK(object.deposit) : undefined
-    };
-  },
-
-  toSDK(message: QueryDepositResponse): QueryDepositResponseSDKType {
-    const obj: any = {};
-    message.deposit !== undefined && (obj.deposit = message.deposit ? Deposit.toSDK(message.deposit) : undefined);
-    return obj;
   }
 
 };
@@ -1140,20 +964,6 @@ export const QueryDepositsRequest = {
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryDepositsRequestSDKType): QueryDepositsRequest {
-    return {
-      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryDepositsRequest): QueryDepositsRequestSDKType {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -1209,26 +1019,6 @@ export const QueryDepositsResponse = {
     message.deposits = object.deposits?.map(e => Deposit.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryDepositsResponseSDKType): QueryDepositsResponse {
-    return {
-      deposits: Array.isArray(object?.deposits) ? object.deposits.map((e: any) => Deposit.fromSDK(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryDepositsResponse): QueryDepositsResponseSDKType {
-    const obj: any = {};
-
-    if (message.deposits) {
-      obj.deposits = message.deposits.map(e => e ? Deposit.toSDK(e) : undefined);
-    } else {
-      obj.deposits = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -1274,18 +1064,6 @@ export const QueryTallyResultRequest = {
     const message = createBaseQueryTallyResultRequest();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     return message;
-  },
-
-  fromSDK(object: QueryTallyResultRequestSDKType): QueryTallyResultRequest {
-    return {
-      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined
-    };
-  },
-
-  toSDK(message: QueryTallyResultRequest): QueryTallyResultRequestSDKType {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
-    return obj;
   }
 
 };
@@ -1331,18 +1109,6 @@ export const QueryTallyResultResponse = {
     const message = createBaseQueryTallyResultResponse();
     message.tally = object.tally !== undefined && object.tally !== null ? TallyResult.fromPartial(object.tally) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryTallyResultResponseSDKType): QueryTallyResultResponse {
-    return {
-      tally: isSet(object.tally) ? TallyResult.fromSDK(object.tally) : undefined
-    };
-  },
-
-  toSDK(message: QueryTallyResultResponse): QueryTallyResultResponseSDKType {
-    const obj: any = {};
-    message.tally !== undefined && (obj.tally = message.tally ? TallyResult.toSDK(message.tally) : undefined);
-    return obj;
   }
 
 };

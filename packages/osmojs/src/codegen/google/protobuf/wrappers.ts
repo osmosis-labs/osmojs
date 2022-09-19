@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /**
  * Wrapper message for `double`.
  * 
@@ -222,18 +222,6 @@ export const DoubleValue = {
     const message = createBaseDoubleValue();
     message.value = object.value ?? 0;
     return message;
-  },
-
-  fromSDK(object: DoubleValueSDKType): DoubleValue {
-    return {
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: DoubleValue): DoubleValueSDKType {
-    const obj: any = {};
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -279,18 +267,6 @@ export const FloatValue = {
     const message = createBaseFloatValue();
     message.value = object.value ?? 0;
     return message;
-  },
-
-  fromSDK(object: FloatValueSDKType): FloatValue {
-    return {
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: FloatValue): FloatValueSDKType {
-    const obj: any = {};
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -336,18 +312,6 @@ export const Int64Value = {
     const message = createBaseInt64Value();
     message.value = object.value !== undefined && object.value !== null ? Long.fromValue(object.value) : Long.ZERO;
     return message;
-  },
-
-  fromSDK(object: Int64ValueSDKType): Int64Value {
-    return {
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: Int64Value): Int64ValueSDKType {
-    const obj: any = {};
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -393,18 +357,6 @@ export const UInt64Value = {
     const message = createBaseUInt64Value();
     message.value = object.value !== undefined && object.value !== null ? Long.fromValue(object.value) : Long.UZERO;
     return message;
-  },
-
-  fromSDK(object: UInt64ValueSDKType): UInt64Value {
-    return {
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: UInt64Value): UInt64ValueSDKType {
-    const obj: any = {};
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -450,18 +402,6 @@ export const Int32Value = {
     const message = createBaseInt32Value();
     message.value = object.value ?? 0;
     return message;
-  },
-
-  fromSDK(object: Int32ValueSDKType): Int32Value {
-    return {
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: Int32Value): Int32ValueSDKType {
-    const obj: any = {};
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -507,18 +447,6 @@ export const UInt32Value = {
     const message = createBaseUInt32Value();
     message.value = object.value ?? 0;
     return message;
-  },
-
-  fromSDK(object: UInt32ValueSDKType): UInt32Value {
-    return {
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: UInt32Value): UInt32ValueSDKType {
-    const obj: any = {};
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -564,18 +492,6 @@ export const BoolValue = {
     const message = createBaseBoolValue();
     message.value = object.value ?? false;
     return message;
-  },
-
-  fromSDK(object: BoolValueSDKType): BoolValue {
-    return {
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: BoolValue): BoolValueSDKType {
-    const obj: any = {};
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -621,18 +537,6 @@ export const StringValue = {
     const message = createBaseStringValue();
     message.value = object.value ?? "";
     return message;
-  },
-
-  fromSDK(object: StringValueSDKType): StringValue {
-    return {
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: StringValue): StringValueSDKType {
-    const obj: any = {};
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -678,18 +582,6 @@ export const BytesValue = {
     const message = createBaseBytesValue();
     message.value = object.value ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: BytesValueSDKType): BytesValue {
-    return {
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: BytesValue): BytesValueSDKType {
-    const obj: any = {};
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };

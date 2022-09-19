@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Grant, GrantSDKType } from "./feegrant";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** QueryAllowanceRequest is the request type for the Query/Allowance RPC method. */
 
 export interface QueryAllowanceRequest {
@@ -152,20 +152,6 @@ export const QueryAllowanceRequest = {
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryAllowanceRequestSDKType): QueryAllowanceRequest {
-    return {
-      granter: isSet(object.granter) ? object.granter : undefined,
-      grantee: isSet(object.grantee) ? object.grantee : undefined
-    };
-  },
-
-  toSDK(message: QueryAllowanceRequest): QueryAllowanceRequestSDKType {
-    const obj: any = {};
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    return obj;
   }
 
 };
@@ -211,18 +197,6 @@ export const QueryAllowanceResponse = {
     const message = createBaseQueryAllowanceResponse();
     message.allowance = object.allowance !== undefined && object.allowance !== null ? Grant.fromPartial(object.allowance) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAllowanceResponseSDKType): QueryAllowanceResponse {
-    return {
-      allowance: isSet(object.allowance) ? Grant.fromSDK(object.allowance) : undefined
-    };
-  },
-
-  toSDK(message: QueryAllowanceResponse): QueryAllowanceResponseSDKType {
-    const obj: any = {};
-    message.allowance !== undefined && (obj.allowance = message.allowance ? Grant.toSDK(message.allowance) : undefined);
-    return obj;
   }
 
 };
@@ -278,20 +252,6 @@ export const QueryAllowancesRequest = {
     message.grantee = object.grantee ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAllowancesRequestSDKType): QueryAllowancesRequest {
-    return {
-      grantee: isSet(object.grantee) ? object.grantee : undefined,
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryAllowancesRequest): QueryAllowancesRequestSDKType {
-    const obj: any = {};
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -347,26 +307,6 @@ export const QueryAllowancesResponse = {
     message.allowances = object.allowances?.map(e => Grant.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAllowancesResponseSDKType): QueryAllowancesResponse {
-    return {
-      allowances: Array.isArray(object?.allowances) ? object.allowances.map((e: any) => Grant.fromSDK(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryAllowancesResponse): QueryAllowancesResponseSDKType {
-    const obj: any = {};
-
-    if (message.allowances) {
-      obj.allowances = message.allowances.map(e => e ? Grant.toSDK(e) : undefined);
-    } else {
-      obj.allowances = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -422,20 +362,6 @@ export const QueryAllowancesByGranterRequest = {
     message.granter = object.granter ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAllowancesByGranterRequestSDKType): QueryAllowancesByGranterRequest {
-    return {
-      granter: isSet(object.granter) ? object.granter : undefined,
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryAllowancesByGranterRequest): QueryAllowancesByGranterRequestSDKType {
-    const obj: any = {};
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -491,26 +417,6 @@ export const QueryAllowancesByGranterResponse = {
     message.allowances = object.allowances?.map(e => Grant.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAllowancesByGranterResponseSDKType): QueryAllowancesByGranterResponse {
-    return {
-      allowances: Array.isArray(object?.allowances) ? object.allowances.map((e: any) => Grant.fromSDK(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryAllowancesByGranterResponse): QueryAllowancesByGranterResponseSDKType {
-    const obj: any = {};
-
-    if (message.allowances) {
-      obj.allowances = message.allowances.map(e => e ? Grant.toSDK(e) : undefined);
-    } else {
-      obj.allowances = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };

@@ -67,66 +67,6 @@ export const MessageComposer = {
     }
 
   },
-  toJSON: {
-    createDenom(value: MsgCreateDenom) {
-      return {
-        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgCreateDenom",
-        value: MsgCreateDenom.toJSON(value)
-      };
-    },
-
-    mint(value: MsgMint) {
-      return {
-        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgMint",
-        value: MsgMint.toJSON(value)
-      };
-    },
-
-    burn(value: MsgBurn) {
-      return {
-        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgBurn",
-        value: MsgBurn.toJSON(value)
-      };
-    },
-
-    changeAdmin(value: MsgChangeAdmin) {
-      return {
-        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin",
-        value: MsgChangeAdmin.toJSON(value)
-      };
-    }
-
-  },
-  fromJSON: {
-    createDenom(value: any) {
-      return {
-        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgCreateDenom",
-        value: MsgCreateDenom.fromJSON(value)
-      };
-    },
-
-    mint(value: any) {
-      return {
-        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgMint",
-        value: MsgMint.fromJSON(value)
-      };
-    },
-
-    burn(value: any) {
-      return {
-        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgBurn",
-        value: MsgBurn.fromJSON(value)
-      };
-    },
-
-    changeAdmin(value: any) {
-      return {
-        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin",
-        value: MsgChangeAdmin.fromJSON(value)
-      };
-    }
-
-  },
   fromPartial: {
     createDenom(value: MsgCreateDenom) {
       return {

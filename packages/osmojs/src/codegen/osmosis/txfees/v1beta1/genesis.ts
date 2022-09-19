@@ -1,6 +1,6 @@
 import { FeeToken, FeeTokenSDKType } from "./feetoken";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the txfees module's genesis state. */
 
 export interface GenesisState {
@@ -65,26 +65,6 @@ export const GenesisState = {
     message.basedenom = object.basedenom ?? "";
     message.feetokens = object.feetokens?.map(e => FeeToken.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      basedenom: isSet(object.basedenom) ? object.basedenom : undefined,
-      feetokens: Array.isArray(object?.feetokens) ? object.feetokens.map((e: any) => FeeToken.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    message.basedenom !== undefined && (obj.basedenom = message.basedenom);
-
-    if (message.feetokens) {
-      obj.feetokens = message.feetokens.map(e => e ? FeeToken.toSDK(e) : undefined);
-    } else {
-      obj.feetokens = [];
-    }
-
-    return obj;
   }
 
 };

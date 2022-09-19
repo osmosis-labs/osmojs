@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * PubKey defines a secp256k1 public key
  * Key is the compressed form of the pubkey. The first byte depends is a 0x02 byte
@@ -74,18 +74,6 @@ export const PubKey = {
     const message = createBasePubKey();
     message.key = object.key ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: PubKeySDKType): PubKey {
-    return {
-      key: isSet(object.key) ? object.key : undefined
-    };
-  },
-
-  toSDK(message: PubKey): PubKeySDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    return obj;
   }
 
 };
@@ -131,18 +119,6 @@ export const PrivKey = {
     const message = createBasePrivKey();
     message.key = object.key ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: PrivKeySDKType): PrivKey {
-    return {
-      key: isSet(object.key) ? object.key : undefined
-    };
-  },
-
-  toSDK(message: PrivKey): PrivKeySDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    return obj;
   }
 
 };

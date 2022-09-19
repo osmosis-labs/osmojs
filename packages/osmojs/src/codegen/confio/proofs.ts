@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 export enum HashOp {
   /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
   NO_HASH = 0,
@@ -681,30 +681,6 @@ export const ExistenceProof = {
     message.leaf = object.leaf !== undefined && object.leaf !== null ? LeafOp.fromPartial(object.leaf) : undefined;
     message.path = object.path?.map(e => InnerOp.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ExistenceProofSDKType): ExistenceProof {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      value: isSet(object.value) ? object.value : undefined,
-      leaf: isSet(object.leaf) ? LeafOp.fromSDK(object.leaf) : undefined,
-      path: Array.isArray(object?.path) ? object.path.map((e: any) => InnerOp.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: ExistenceProof): ExistenceProofSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    message.leaf !== undefined && (obj.leaf = message.leaf ? LeafOp.toSDK(message.leaf) : undefined);
-
-    if (message.path) {
-      obj.path = message.path.map(e => e ? InnerOp.toSDK(e) : undefined);
-    } else {
-      obj.path = [];
-    }
-
-    return obj;
   }
 
 };
@@ -770,22 +746,6 @@ export const NonExistenceProof = {
     message.left = object.left !== undefined && object.left !== null ? ExistenceProof.fromPartial(object.left) : undefined;
     message.right = object.right !== undefined && object.right !== null ? ExistenceProof.fromPartial(object.right) : undefined;
     return message;
-  },
-
-  fromSDK(object: NonExistenceProofSDKType): NonExistenceProof {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      left: isSet(object.left) ? ExistenceProof.fromSDK(object.left) : undefined,
-      right: isSet(object.right) ? ExistenceProof.fromSDK(object.right) : undefined
-    };
-  },
-
-  toSDK(message: NonExistenceProof): NonExistenceProofSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.left !== undefined && (obj.left = message.left ? ExistenceProof.toSDK(message.left) : undefined);
-    message.right !== undefined && (obj.right = message.right ? ExistenceProof.toSDK(message.right) : undefined);
-    return obj;
   }
 
 };
@@ -861,24 +821,6 @@ export const CommitmentProof = {
     message.batch = object.batch !== undefined && object.batch !== null ? BatchProof.fromPartial(object.batch) : undefined;
     message.compressed = object.compressed !== undefined && object.compressed !== null ? CompressedBatchProof.fromPartial(object.compressed) : undefined;
     return message;
-  },
-
-  fromSDK(object: CommitmentProofSDKType): CommitmentProof {
-    return {
-      exist: isSet(object.exist) ? ExistenceProof.fromSDK(object.exist) : undefined,
-      nonexist: isSet(object.nonexist) ? NonExistenceProof.fromSDK(object.nonexist) : undefined,
-      batch: isSet(object.batch) ? BatchProof.fromSDK(object.batch) : undefined,
-      compressed: isSet(object.compressed) ? CompressedBatchProof.fromSDK(object.compressed) : undefined
-    };
-  },
-
-  toSDK(message: CommitmentProof): CommitmentProofSDKType {
-    const obj: any = {};
-    message.exist !== undefined && (obj.exist = message.exist ? ExistenceProof.toSDK(message.exist) : undefined);
-    message.nonexist !== undefined && (obj.nonexist = message.nonexist ? NonExistenceProof.toSDK(message.nonexist) : undefined);
-    message.batch !== undefined && (obj.batch = message.batch ? BatchProof.toSDK(message.batch) : undefined);
-    message.compressed !== undefined && (obj.compressed = message.compressed ? CompressedBatchProof.toSDK(message.compressed) : undefined);
-    return obj;
   }
 
 };
@@ -964,26 +906,6 @@ export const LeafOp = {
     message.length = object.length ?? 0;
     message.prefix = object.prefix ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: LeafOpSDKType): LeafOp {
-    return {
-      hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : 0,
-      prehashKey: isSet(object.prehash_key) ? hashOpFromJSON(object.prehash_key) : 0,
-      prehashValue: isSet(object.prehash_value) ? hashOpFromJSON(object.prehash_value) : 0,
-      length: isSet(object.length) ? lengthOpFromJSON(object.length) : 0,
-      prefix: isSet(object.prefix) ? object.prefix : undefined
-    };
-  },
-
-  toSDK(message: LeafOp): LeafOpSDKType {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    message.prehashKey !== undefined && (obj.prehash_key = hashOpToJSON(message.prehashKey));
-    message.prehashValue !== undefined && (obj.prehash_value = hashOpToJSON(message.prehashValue));
-    message.length !== undefined && (obj.length = lengthOpToJSON(message.length));
-    message.prefix !== undefined && (obj.prefix = message.prefix);
-    return obj;
   }
 
 };
@@ -1049,22 +971,6 @@ export const InnerOp = {
     message.prefix = object.prefix ?? new Uint8Array();
     message.suffix = object.suffix ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: InnerOpSDKType): InnerOp {
-    return {
-      hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : 0,
-      prefix: isSet(object.prefix) ? object.prefix : undefined,
-      suffix: isSet(object.suffix) ? object.suffix : undefined
-    };
-  },
-
-  toSDK(message: InnerOp): InnerOpSDKType {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    message.prefix !== undefined && (obj.prefix = message.prefix);
-    message.suffix !== undefined && (obj.suffix = message.suffix);
-    return obj;
   }
 
 };
@@ -1140,24 +1046,6 @@ export const ProofSpec = {
     message.maxDepth = object.maxDepth ?? 0;
     message.minDepth = object.minDepth ?? 0;
     return message;
-  },
-
-  fromSDK(object: ProofSpecSDKType): ProofSpec {
-    return {
-      leafSpec: isSet(object.leaf_spec) ? LeafOp.fromSDK(object.leaf_spec) : undefined,
-      innerSpec: isSet(object.inner_spec) ? InnerSpec.fromSDK(object.inner_spec) : undefined,
-      maxDepth: isSet(object.max_depth) ? object.max_depth : undefined,
-      minDepth: isSet(object.min_depth) ? object.min_depth : undefined
-    };
-  },
-
-  toSDK(message: ProofSpec): ProofSpecSDKType {
-    const obj: any = {};
-    message.leafSpec !== undefined && (obj.leaf_spec = message.leafSpec ? LeafOp.toSDK(message.leafSpec) : undefined);
-    message.innerSpec !== undefined && (obj.inner_spec = message.innerSpec ? InnerSpec.toSDK(message.innerSpec) : undefined);
-    message.maxDepth !== undefined && (obj.max_depth = message.maxDepth);
-    message.minDepth !== undefined && (obj.min_depth = message.minDepth);
-    return obj;
   }
 
 };
@@ -1266,34 +1154,6 @@ export const InnerSpec = {
     message.emptyChild = object.emptyChild ?? new Uint8Array();
     message.hash = object.hash ?? 0;
     return message;
-  },
-
-  fromSDK(object: InnerSpecSDKType): InnerSpec {
-    return {
-      childOrder: Array.isArray(object?.child_order) ? object.child_order.map((e: any) => e) : [],
-      childSize: isSet(object.child_size) ? object.child_size : undefined,
-      minPrefixLength: isSet(object.min_prefix_length) ? object.min_prefix_length : undefined,
-      maxPrefixLength: isSet(object.max_prefix_length) ? object.max_prefix_length : undefined,
-      emptyChild: isSet(object.empty_child) ? object.empty_child : undefined,
-      hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : 0
-    };
-  },
-
-  toSDK(message: InnerSpec): InnerSpecSDKType {
-    const obj: any = {};
-
-    if (message.childOrder) {
-      obj.child_order = message.childOrder.map(e => e);
-    } else {
-      obj.child_order = [];
-    }
-
-    message.childSize !== undefined && (obj.child_size = message.childSize);
-    message.minPrefixLength !== undefined && (obj.min_prefix_length = message.minPrefixLength);
-    message.maxPrefixLength !== undefined && (obj.max_prefix_length = message.maxPrefixLength);
-    message.emptyChild !== undefined && (obj.empty_child = message.emptyChild);
-    message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    return obj;
   }
 
 };
@@ -1339,24 +1199,6 @@ export const BatchProof = {
     const message = createBaseBatchProof();
     message.entries = object.entries?.map(e => BatchEntry.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: BatchProofSDKType): BatchProof {
-    return {
-      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => BatchEntry.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: BatchProof): BatchProofSDKType {
-    const obj: any = {};
-
-    if (message.entries) {
-      obj.entries = message.entries.map(e => e ? BatchEntry.toSDK(e) : undefined);
-    } else {
-      obj.entries = [];
-    }
-
-    return obj;
   }
 
 };
@@ -1412,20 +1254,6 @@ export const BatchEntry = {
     message.exist = object.exist !== undefined && object.exist !== null ? ExistenceProof.fromPartial(object.exist) : undefined;
     message.nonexist = object.nonexist !== undefined && object.nonexist !== null ? NonExistenceProof.fromPartial(object.nonexist) : undefined;
     return message;
-  },
-
-  fromSDK(object: BatchEntrySDKType): BatchEntry {
-    return {
-      exist: isSet(object.exist) ? ExistenceProof.fromSDK(object.exist) : undefined,
-      nonexist: isSet(object.nonexist) ? NonExistenceProof.fromSDK(object.nonexist) : undefined
-    };
-  },
-
-  toSDK(message: BatchEntry): BatchEntrySDKType {
-    const obj: any = {};
-    message.exist !== undefined && (obj.exist = message.exist ? ExistenceProof.toSDK(message.exist) : undefined);
-    message.nonexist !== undefined && (obj.nonexist = message.nonexist ? NonExistenceProof.toSDK(message.nonexist) : undefined);
-    return obj;
   }
 
 };
@@ -1481,31 +1309,6 @@ export const CompressedBatchProof = {
     message.entries = object.entries?.map(e => CompressedBatchEntry.fromPartial(e)) || [];
     message.lookupInners = object.lookupInners?.map(e => InnerOp.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: CompressedBatchProofSDKType): CompressedBatchProof {
-    return {
-      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => CompressedBatchEntry.fromSDK(e)) : [],
-      lookupInners: Array.isArray(object?.lookup_inners) ? object.lookup_inners.map((e: any) => InnerOp.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: CompressedBatchProof): CompressedBatchProofSDKType {
-    const obj: any = {};
-
-    if (message.entries) {
-      obj.entries = message.entries.map(e => e ? CompressedBatchEntry.toSDK(e) : undefined);
-    } else {
-      obj.entries = [];
-    }
-
-    if (message.lookupInners) {
-      obj.lookup_inners = message.lookupInners.map(e => e ? InnerOp.toSDK(e) : undefined);
-    } else {
-      obj.lookup_inners = [];
-    }
-
-    return obj;
   }
 
 };
@@ -1561,20 +1364,6 @@ export const CompressedBatchEntry = {
     message.exist = object.exist !== undefined && object.exist !== null ? CompressedExistenceProof.fromPartial(object.exist) : undefined;
     message.nonexist = object.nonexist !== undefined && object.nonexist !== null ? CompressedNonExistenceProof.fromPartial(object.nonexist) : undefined;
     return message;
-  },
-
-  fromSDK(object: CompressedBatchEntrySDKType): CompressedBatchEntry {
-    return {
-      exist: isSet(object.exist) ? CompressedExistenceProof.fromSDK(object.exist) : undefined,
-      nonexist: isSet(object.nonexist) ? CompressedNonExistenceProof.fromSDK(object.nonexist) : undefined
-    };
-  },
-
-  toSDK(message: CompressedBatchEntry): CompressedBatchEntrySDKType {
-    const obj: any = {};
-    message.exist !== undefined && (obj.exist = message.exist ? CompressedExistenceProof.toSDK(message.exist) : undefined);
-    message.nonexist !== undefined && (obj.nonexist = message.nonexist ? CompressedNonExistenceProof.toSDK(message.nonexist) : undefined);
-    return obj;
   }
 
 };
@@ -1662,30 +1451,6 @@ export const CompressedExistenceProof = {
     message.leaf = object.leaf !== undefined && object.leaf !== null ? LeafOp.fromPartial(object.leaf) : undefined;
     message.path = object.path?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: CompressedExistenceProofSDKType): CompressedExistenceProof {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      value: isSet(object.value) ? object.value : undefined,
-      leaf: isSet(object.leaf) ? LeafOp.fromSDK(object.leaf) : undefined,
-      path: Array.isArray(object?.path) ? object.path.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: CompressedExistenceProof): CompressedExistenceProofSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    message.leaf !== undefined && (obj.leaf = message.leaf ? LeafOp.toSDK(message.leaf) : undefined);
-
-    if (message.path) {
-      obj.path = message.path.map(e => e);
-    } else {
-      obj.path = [];
-    }
-
-    return obj;
   }
 
 };
@@ -1751,22 +1516,6 @@ export const CompressedNonExistenceProof = {
     message.left = object.left !== undefined && object.left !== null ? CompressedExistenceProof.fromPartial(object.left) : undefined;
     message.right = object.right !== undefined && object.right !== null ? CompressedExistenceProof.fromPartial(object.right) : undefined;
     return message;
-  },
-
-  fromSDK(object: CompressedNonExistenceProofSDKType): CompressedNonExistenceProof {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      left: isSet(object.left) ? CompressedExistenceProof.fromSDK(object.left) : undefined,
-      right: isSet(object.right) ? CompressedExistenceProof.fromSDK(object.right) : undefined
-    };
-  },
-
-  toSDK(message: CompressedNonExistenceProof): CompressedNonExistenceProofSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.left !== undefined && (obj.left = message.left ? CompressedExistenceProof.toSDK(message.left) : undefined);
-    message.right !== undefined && (obj.right = message.right ? CompressedExistenceProof.toSDK(message.right) : undefined);
-    return obj;
   }
 
 };

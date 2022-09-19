@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** PubKey defines a secp256r1 ECDSA public key. */
 
 export interface PubKey {
@@ -72,18 +72,6 @@ export const PubKey = {
     const message = createBasePubKey();
     message.key = object.key ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: PubKeySDKType): PubKey {
-    return {
-      key: isSet(object.key) ? object.key : undefined
-    };
-  },
-
-  toSDK(message: PubKey): PubKeySDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    return obj;
   }
 
 };
@@ -129,18 +117,6 @@ export const PrivKey = {
     const message = createBasePrivKey();
     message.secret = object.secret ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: PrivKeySDKType): PrivKey {
-    return {
-      secret: isSet(object.secret) ? object.secret : undefined
-    };
-  },
-
-  toSDK(message: PrivKey): PrivKeySDKType {
-    const obj: any = {};
-    message.secret !== undefined && (obj.secret = message.secret);
-    return obj;
   }
 
 };

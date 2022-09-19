@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** StorageType */
 
 export enum StorageType {
@@ -265,26 +265,6 @@ export const ModuleSchemaDescriptor = {
     message.schemaFile = object.schemaFile?.map(e => ModuleSchemaDescriptor_FileEntry.fromPartial(e)) || [];
     message.prefix = object.prefix ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: ModuleSchemaDescriptorSDKType): ModuleSchemaDescriptor {
-    return {
-      schemaFile: Array.isArray(object?.schema_file) ? object.schema_file.map((e: any) => ModuleSchemaDescriptor_FileEntry.fromSDK(e)) : [],
-      prefix: isSet(object.prefix) ? object.prefix : undefined
-    };
-  },
-
-  toSDK(message: ModuleSchemaDescriptor): ModuleSchemaDescriptorSDKType {
-    const obj: any = {};
-
-    if (message.schemaFile) {
-      obj.schema_file = message.schemaFile.map(e => e ? ModuleSchemaDescriptor_FileEntry.toSDK(e) : undefined);
-    } else {
-      obj.schema_file = [];
-    }
-
-    message.prefix !== undefined && (obj.prefix = message.prefix);
-    return obj;
   }
 
 };
@@ -350,22 +330,6 @@ export const ModuleSchemaDescriptor_FileEntry = {
     message.protoFileName = object.protoFileName ?? "";
     message.storageType = object.storageType ?? 0;
     return message;
-  },
-
-  fromSDK(object: ModuleSchemaDescriptor_FileEntrySDKType): ModuleSchemaDescriptor_FileEntry {
-    return {
-      id: isSet(object.id) ? object.id : undefined,
-      protoFileName: isSet(object.proto_file_name) ? object.proto_file_name : undefined,
-      storageType: isSet(object.storage_type) ? storageTypeFromJSON(object.storage_type) : 0
-    };
-  },
-
-  toSDK(message: ModuleSchemaDescriptor_FileEntry): ModuleSchemaDescriptor_FileEntrySDKType {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.protoFileName !== undefined && (obj.proto_file_name = message.protoFileName);
-    message.storageType !== undefined && (obj.storage_type = storageTypeToJSON(message.storageType));
-    return obj;
   }
 
 };

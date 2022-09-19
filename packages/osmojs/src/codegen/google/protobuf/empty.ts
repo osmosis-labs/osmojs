@@ -57,15 +57,6 @@ export const Empty = {
   fromPartial(_: DeepPartial<Empty>): Empty {
     const message = createBaseEmpty();
     return message;
-  },
-
-  fromSDK(_: EmptySDKType): Empty {
-    return {};
-  },
-
-  toSDK(_: Empty): EmptySDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };

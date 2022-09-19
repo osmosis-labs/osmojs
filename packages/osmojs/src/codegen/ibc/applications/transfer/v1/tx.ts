@@ -1,7 +1,7 @@
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { Height, HeightSDKType } from "../../../core/client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
  * ICS20 enabled chains. See ICS Spec here:
@@ -178,30 +178,6 @@ export const MsgTransfer = {
     message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? Height.fromPartial(object.timeoutHeight) : undefined;
     message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO;
     return message;
-  },
-
-  fromSDK(object: MsgTransferSDKType): MsgTransfer {
-    return {
-      sourcePort: isSet(object.source_port) ? object.source_port : undefined,
-      sourceChannel: isSet(object.source_channel) ? object.source_channel : undefined,
-      token: isSet(object.token) ? Coin.fromSDK(object.token) : undefined,
-      sender: isSet(object.sender) ? object.sender : undefined,
-      receiver: isSet(object.receiver) ? object.receiver : undefined,
-      timeoutHeight: isSet(object.timeout_height) ? Height.fromSDK(object.timeout_height) : undefined,
-      timeoutTimestamp: isSet(object.timeout_timestamp) ? object.timeout_timestamp : undefined
-    };
-  },
-
-  toSDK(message: MsgTransfer): MsgTransferSDKType {
-    const obj: any = {};
-    message.sourcePort !== undefined && (obj.source_port = message.sourcePort);
-    message.sourceChannel !== undefined && (obj.source_channel = message.sourceChannel);
-    message.token !== undefined && (obj.token = message.token ? Coin.toSDK(message.token) : undefined);
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.receiver !== undefined && (obj.receiver = message.receiver);
-    message.timeoutHeight !== undefined && (obj.timeout_height = message.timeoutHeight ? Height.toSDK(message.timeoutHeight) : undefined);
-    message.timeoutTimestamp !== undefined && (obj.timeout_timestamp = message.timeoutTimestamp);
-    return obj;
   }
 
 };
@@ -236,15 +212,6 @@ export const MsgTransferResponse = {
   fromPartial(_: DeepPartial<MsgTransferResponse>): MsgTransferResponse {
     const message = createBaseMsgTransferResponse();
     return message;
-  },
-
-  fromSDK(_: MsgTransferResponseSDKType): MsgTransferResponse {
-    return {};
-  },
-
-  toSDK(_: MsgTransferResponse): MsgTransferResponseSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };

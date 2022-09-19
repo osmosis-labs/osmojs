@@ -1,6 +1,6 @@
-import { Order, OrderSDKType, Counterparty, CounterpartySDKType, orderFromJSON, orderToJSON } from "../../channel/v1/channel";
+import { Order, OrderSDKType, Counterparty, CounterpartySDKType } from "../../channel/v1/channel";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** QueryAppVersionRequest is the request type for the Query/AppVersion RPC method */
 
 export interface QueryAppVersionRequest {
@@ -137,26 +137,6 @@ export const QueryAppVersionRequest = {
     message.counterparty = object.counterparty !== undefined && object.counterparty !== null ? Counterparty.fromPartial(object.counterparty) : undefined;
     message.proposedVersion = object.proposedVersion ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryAppVersionRequestSDKType): QueryAppVersionRequest {
-    return {
-      portId: isSet(object.port_id) ? object.port_id : undefined,
-      connectionId: isSet(object.connection_id) ? object.connection_id : undefined,
-      ordering: isSet(object.ordering) ? orderFromJSON(object.ordering) : 0,
-      counterparty: isSet(object.counterparty) ? Counterparty.fromSDK(object.counterparty) : undefined,
-      proposedVersion: isSet(object.proposed_version) ? object.proposed_version : undefined
-    };
-  },
-
-  toSDK(message: QueryAppVersionRequest): QueryAppVersionRequestSDKType {
-    const obj: any = {};
-    message.portId !== undefined && (obj.port_id = message.portId);
-    message.connectionId !== undefined && (obj.connection_id = message.connectionId);
-    message.ordering !== undefined && (obj.ordering = orderToJSON(message.ordering));
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toSDK(message.counterparty) : undefined);
-    message.proposedVersion !== undefined && (obj.proposed_version = message.proposedVersion);
-    return obj;
   }
 
 };
@@ -212,20 +192,6 @@ export const QueryAppVersionResponse = {
     message.portId = object.portId ?? "";
     message.version = object.version ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryAppVersionResponseSDKType): QueryAppVersionResponse {
-    return {
-      portId: isSet(object.port_id) ? object.port_id : undefined,
-      version: isSet(object.version) ? object.version : undefined
-    };
-  },
-
-  toSDK(message: QueryAppVersionResponse): QueryAppVersionResponseSDKType {
-    const obj: any = {};
-    message.portId !== undefined && (obj.port_id = message.portId);
-    message.version !== undefined && (obj.version = message.version);
-    return obj;
   }
 
 };

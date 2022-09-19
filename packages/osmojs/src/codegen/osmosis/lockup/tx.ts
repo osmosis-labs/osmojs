@@ -2,7 +2,7 @@ import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockSDKType } from "./lock";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface MsgLockTokens {
   owner: string;
   duration: Duration;
@@ -149,28 +149,6 @@ export const MsgLockTokens = {
     message.duration = object.duration ?? undefined;
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: MsgLockTokensSDKType): MsgLockTokens {
-    return {
-      owner: isSet(object.owner) ? object.owner : undefined,
-      duration: isSet(object.duration) ? Duration.fromSDK(object.duration) : undefined,
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: MsgLockTokens): MsgLockTokensSDKType {
-    const obj: any = {};
-    message.owner !== undefined && (obj.owner = message.owner);
-    message.duration !== undefined && (obj.duration = message.duration ? Duration.toSDK(message.duration) : undefined);
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    return obj;
   }
 
 };
@@ -216,18 +194,6 @@ export const MsgLockTokensResponse = {
     const message = createBaseMsgLockTokensResponse();
     message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
     return message;
-  },
-
-  fromSDK(object: MsgLockTokensResponseSDKType): MsgLockTokensResponse {
-    return {
-      ID: isSet(object.ID) ? object.ID : undefined
-    };
-  },
-
-  toSDK(message: MsgLockTokensResponse): MsgLockTokensResponseSDKType {
-    const obj: any = {};
-    message.ID !== undefined && (obj.ID = message.ID);
-    return obj;
   }
 
 };
@@ -273,18 +239,6 @@ export const MsgBeginUnlockingAll = {
     const message = createBaseMsgBeginUnlockingAll();
     message.owner = object.owner ?? "";
     return message;
-  },
-
-  fromSDK(object: MsgBeginUnlockingAllSDKType): MsgBeginUnlockingAll {
-    return {
-      owner: isSet(object.owner) ? object.owner : undefined
-    };
-  },
-
-  toSDK(message: MsgBeginUnlockingAll): MsgBeginUnlockingAllSDKType {
-    const obj: any = {};
-    message.owner !== undefined && (obj.owner = message.owner);
-    return obj;
   }
 
 };
@@ -330,24 +284,6 @@ export const MsgBeginUnlockingAllResponse = {
     const message = createBaseMsgBeginUnlockingAllResponse();
     message.unlocks = object.unlocks?.map(e => PeriodLock.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: MsgBeginUnlockingAllResponseSDKType): MsgBeginUnlockingAllResponse {
-    return {
-      unlocks: Array.isArray(object?.unlocks) ? object.unlocks.map((e: any) => PeriodLock.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: MsgBeginUnlockingAllResponse): MsgBeginUnlockingAllResponseSDKType {
-    const obj: any = {};
-
-    if (message.unlocks) {
-      obj.unlocks = message.unlocks.map(e => e ? PeriodLock.toSDK(e) : undefined);
-    } else {
-      obj.unlocks = [];
-    }
-
-    return obj;
   }
 
 };
@@ -413,28 +349,6 @@ export const MsgBeginUnlocking = {
     message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: MsgBeginUnlockingSDKType): MsgBeginUnlocking {
-    return {
-      owner: isSet(object.owner) ? object.owner : undefined,
-      ID: isSet(object.ID) ? object.ID : undefined,
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: MsgBeginUnlocking): MsgBeginUnlockingSDKType {
-    const obj: any = {};
-    message.owner !== undefined && (obj.owner = message.owner);
-    message.ID !== undefined && (obj.ID = message.ID);
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    return obj;
   }
 
 };
@@ -480,18 +394,6 @@ export const MsgBeginUnlockingResponse = {
     const message = createBaseMsgBeginUnlockingResponse();
     message.success = object.success ?? false;
     return message;
-  },
-
-  fromSDK(object: MsgBeginUnlockingResponseSDKType): MsgBeginUnlockingResponse {
-    return {
-      success: isSet(object.success) ? object.success : undefined
-    };
-  },
-
-  toSDK(message: MsgBeginUnlockingResponse): MsgBeginUnlockingResponseSDKType {
-    const obj: any = {};
-    message.success !== undefined && (obj.success = message.success);
-    return obj;
   }
 
 };
@@ -557,22 +459,6 @@ export const MsgExtendLockup = {
     message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
     message.duration = object.duration ?? undefined;
     return message;
-  },
-
-  fromSDK(object: MsgExtendLockupSDKType): MsgExtendLockup {
-    return {
-      owner: isSet(object.owner) ? object.owner : undefined,
-      ID: isSet(object.ID) ? object.ID : undefined,
-      duration: isSet(object.duration) ? Duration.fromSDK(object.duration) : undefined
-    };
-  },
-
-  toSDK(message: MsgExtendLockup): MsgExtendLockupSDKType {
-    const obj: any = {};
-    message.owner !== undefined && (obj.owner = message.owner);
-    message.ID !== undefined && (obj.ID = message.ID);
-    message.duration !== undefined && (obj.duration = message.duration ? Duration.toSDK(message.duration) : undefined);
-    return obj;
   }
 
 };
@@ -618,18 +504,6 @@ export const MsgExtendLockupResponse = {
     const message = createBaseMsgExtendLockupResponse();
     message.success = object.success ?? false;
     return message;
-  },
-
-  fromSDK(object: MsgExtendLockupResponseSDKType): MsgExtendLockupResponse {
-    return {
-      success: isSet(object.success) ? object.success : undefined
-    };
-  },
-
-  toSDK(message: MsgExtendLockupResponse): MsgExtendLockupResponseSDKType {
-    const obj: any = {};
-    message.success !== undefined && (obj.success = message.success);
-    return obj;
   }
 
 };

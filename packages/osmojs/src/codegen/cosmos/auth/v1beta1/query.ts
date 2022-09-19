@@ -2,7 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Params, ParamsSDKType } from "./auth";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * QueryAccountsRequest is the request type for the Query/Accounts RPC method.
  * 
@@ -205,18 +205,6 @@ export const QueryAccountsRequest = {
     const message = createBaseQueryAccountsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAccountsRequestSDKType): QueryAccountsRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryAccountsRequest): QueryAccountsRequestSDKType {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -272,26 +260,6 @@ export const QueryAccountsResponse = {
     message.accounts = object.accounts?.map(e => Any.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAccountsResponseSDKType): QueryAccountsResponse {
-    return {
-      accounts: Array.isArray(object?.accounts) ? object.accounts.map((e: any) => Any.fromSDK(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryAccountsResponse): QueryAccountsResponseSDKType {
-    const obj: any = {};
-
-    if (message.accounts) {
-      obj.accounts = message.accounts.map(e => e ? Any.toSDK(e) : undefined);
-    } else {
-      obj.accounts = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -337,18 +305,6 @@ export const QueryAccountRequest = {
     const message = createBaseQueryAccountRequest();
     message.address = object.address ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryAccountRequestSDKType): QueryAccountRequest {
-    return {
-      address: isSet(object.address) ? object.address : undefined
-    };
-  },
-
-  toSDK(message: QueryAccountRequest): QueryAccountRequestSDKType {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    return obj;
   }
 
 };
@@ -383,15 +339,6 @@ export const QueryModuleAccountsRequest = {
   fromPartial(_: DeepPartial<QueryModuleAccountsRequest>): QueryModuleAccountsRequest {
     const message = createBaseQueryModuleAccountsRequest();
     return message;
-  },
-
-  fromSDK(_: QueryModuleAccountsRequestSDKType): QueryModuleAccountsRequest {
-    return {};
-  },
-
-  toSDK(_: QueryModuleAccountsRequest): QueryModuleAccountsRequestSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -437,18 +384,6 @@ export const QueryParamsResponse = {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromSDK(object.params) : undefined
-    };
-  },
-
-  toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
   }
 
 };
@@ -494,18 +429,6 @@ export const QueryAccountResponse = {
     const message = createBaseQueryAccountResponse();
     message.account = object.account !== undefined && object.account !== null ? Any.fromPartial(object.account) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAccountResponseSDKType): QueryAccountResponse {
-    return {
-      account: isSet(object.account) ? Any.fromSDK(object.account) : undefined
-    };
-  },
-
-  toSDK(message: QueryAccountResponse): QueryAccountResponseSDKType {
-    const obj: any = {};
-    message.account !== undefined && (obj.account = message.account ? Any.toSDK(message.account) : undefined);
-    return obj;
   }
 
 };
@@ -540,15 +463,6 @@ export const QueryParamsRequest = {
   fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
-  },
-
-  fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest {
-    return {};
-  },
-
-  toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -594,24 +508,6 @@ export const QueryModuleAccountsResponse = {
     const message = createBaseQueryModuleAccountsResponse();
     message.accounts = object.accounts?.map(e => Any.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: QueryModuleAccountsResponseSDKType): QueryModuleAccountsResponse {
-    return {
-      accounts: Array.isArray(object?.accounts) ? object.accounts.map((e: any) => Any.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: QueryModuleAccountsResponse): QueryModuleAccountsResponseSDKType {
-    const obj: any = {};
-
-    if (message.accounts) {
-      obj.accounts = message.accounts.map(e => e ? Any.toSDK(e) : undefined);
-    } else {
-      obj.accounts = [];
-    }
-
-    return obj;
   }
 
 };
@@ -646,15 +542,6 @@ export const Bech32PrefixRequest = {
   fromPartial(_: DeepPartial<Bech32PrefixRequest>): Bech32PrefixRequest {
     const message = createBaseBech32PrefixRequest();
     return message;
-  },
-
-  fromSDK(_: Bech32PrefixRequestSDKType): Bech32PrefixRequest {
-    return {};
-  },
-
-  toSDK(_: Bech32PrefixRequest): Bech32PrefixRequestSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -700,18 +587,6 @@ export const Bech32PrefixResponse = {
     const message = createBaseBech32PrefixResponse();
     message.bech32Prefix = object.bech32Prefix ?? "";
     return message;
-  },
-
-  fromSDK(object: Bech32PrefixResponseSDKType): Bech32PrefixResponse {
-    return {
-      bech32Prefix: isSet(object.bech32_prefix) ? object.bech32_prefix : undefined
-    };
-  },
-
-  toSDK(message: Bech32PrefixResponse): Bech32PrefixResponseSDKType {
-    const obj: any = {};
-    message.bech32Prefix !== undefined && (obj.bech32_prefix = message.bech32Prefix);
-    return obj;
   }
 
 };
@@ -757,18 +632,6 @@ export const AddressBytesToStringRequest = {
     const message = createBaseAddressBytesToStringRequest();
     message.addressBytes = object.addressBytes ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: AddressBytesToStringRequestSDKType): AddressBytesToStringRequest {
-    return {
-      addressBytes: isSet(object.address_bytes) ? object.address_bytes : undefined
-    };
-  },
-
-  toSDK(message: AddressBytesToStringRequest): AddressBytesToStringRequestSDKType {
-    const obj: any = {};
-    message.addressBytes !== undefined && (obj.address_bytes = message.addressBytes);
-    return obj;
   }
 
 };
@@ -814,18 +677,6 @@ export const AddressBytesToStringResponse = {
     const message = createBaseAddressBytesToStringResponse();
     message.addressString = object.addressString ?? "";
     return message;
-  },
-
-  fromSDK(object: AddressBytesToStringResponseSDKType): AddressBytesToStringResponse {
-    return {
-      addressString: isSet(object.address_string) ? object.address_string : undefined
-    };
-  },
-
-  toSDK(message: AddressBytesToStringResponse): AddressBytesToStringResponseSDKType {
-    const obj: any = {};
-    message.addressString !== undefined && (obj.address_string = message.addressString);
-    return obj;
   }
 
 };
@@ -871,18 +722,6 @@ export const AddressStringToBytesRequest = {
     const message = createBaseAddressStringToBytesRequest();
     message.addressString = object.addressString ?? "";
     return message;
-  },
-
-  fromSDK(object: AddressStringToBytesRequestSDKType): AddressStringToBytesRequest {
-    return {
-      addressString: isSet(object.address_string) ? object.address_string : undefined
-    };
-  },
-
-  toSDK(message: AddressStringToBytesRequest): AddressStringToBytesRequestSDKType {
-    const obj: any = {};
-    message.addressString !== undefined && (obj.address_string = message.addressString);
-    return obj;
   }
 
 };
@@ -928,18 +767,6 @@ export const AddressStringToBytesResponse = {
     const message = createBaseAddressStringToBytesResponse();
     message.addressBytes = object.addressBytes ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: AddressStringToBytesResponseSDKType): AddressStringToBytesResponse {
-    return {
-      addressBytes: isSet(object.address_bytes) ? object.address_bytes : undefined
-    };
-  },
-
-  toSDK(message: AddressStringToBytesResponse): AddressStringToBytesResponseSDKType {
-    const obj: any = {};
-    message.addressBytes !== undefined && (obj.address_bytes = message.addressBytes);
-    return obj;
   }
 
 };

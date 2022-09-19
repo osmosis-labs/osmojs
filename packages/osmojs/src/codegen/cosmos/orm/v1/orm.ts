@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** TableDescriptor describes an ORM table. */
 
 export interface TableDescriptor {
@@ -254,28 +254,6 @@ export const TableDescriptor = {
     message.index = object.index?.map(e => SecondaryIndexDescriptor.fromPartial(e)) || [];
     message.id = object.id ?? 0;
     return message;
-  },
-
-  fromSDK(object: TableDescriptorSDKType): TableDescriptor {
-    return {
-      primaryKey: isSet(object.primary_key) ? PrimaryKeyDescriptor.fromSDK(object.primary_key) : undefined,
-      index: Array.isArray(object?.index) ? object.index.map((e: any) => SecondaryIndexDescriptor.fromSDK(e)) : [],
-      id: isSet(object.id) ? object.id : undefined
-    };
-  },
-
-  toSDK(message: TableDescriptor): TableDescriptorSDKType {
-    const obj: any = {};
-    message.primaryKey !== undefined && (obj.primary_key = message.primaryKey ? PrimaryKeyDescriptor.toSDK(message.primaryKey) : undefined);
-
-    if (message.index) {
-      obj.index = message.index.map(e => e ? SecondaryIndexDescriptor.toSDK(e) : undefined);
-    } else {
-      obj.index = [];
-    }
-
-    message.id !== undefined && (obj.id = message.id);
-    return obj;
   }
 
 };
@@ -331,20 +309,6 @@ export const PrimaryKeyDescriptor = {
     message.fields = object.fields ?? "";
     message.autoIncrement = object.autoIncrement ?? false;
     return message;
-  },
-
-  fromSDK(object: PrimaryKeyDescriptorSDKType): PrimaryKeyDescriptor {
-    return {
-      fields: isSet(object.fields) ? object.fields : undefined,
-      autoIncrement: isSet(object.auto_increment) ? object.auto_increment : undefined
-    };
-  },
-
-  toSDK(message: PrimaryKeyDescriptor): PrimaryKeyDescriptorSDKType {
-    const obj: any = {};
-    message.fields !== undefined && (obj.fields = message.fields);
-    message.autoIncrement !== undefined && (obj.auto_increment = message.autoIncrement);
-    return obj;
   }
 
 };
@@ -410,22 +374,6 @@ export const SecondaryIndexDescriptor = {
     message.id = object.id ?? 0;
     message.unique = object.unique ?? false;
     return message;
-  },
-
-  fromSDK(object: SecondaryIndexDescriptorSDKType): SecondaryIndexDescriptor {
-    return {
-      fields: isSet(object.fields) ? object.fields : undefined,
-      id: isSet(object.id) ? object.id : undefined,
-      unique: isSet(object.unique) ? object.unique : undefined
-    };
-  },
-
-  toSDK(message: SecondaryIndexDescriptor): SecondaryIndexDescriptorSDKType {
-    const obj: any = {};
-    message.fields !== undefined && (obj.fields = message.fields);
-    message.id !== undefined && (obj.id = message.id);
-    message.unique !== undefined && (obj.unique = message.unique);
-    return obj;
   }
 
 };
@@ -471,18 +419,6 @@ export const SingletonDescriptor = {
     const message = createBaseSingletonDescriptor();
     message.id = object.id ?? 0;
     return message;
-  },
-
-  fromSDK(object: SingletonDescriptorSDKType): SingletonDescriptor {
-    return {
-      id: isSet(object.id) ? object.id : undefined
-    };
-  },
-
-  toSDK(message: SingletonDescriptor): SingletonDescriptorSDKType {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    return obj;
   }
 
 };

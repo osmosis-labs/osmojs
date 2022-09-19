@@ -2,7 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Params, ParamsSDKType, ValidatorOutstandingRewards, ValidatorOutstandingRewardsSDKType, ValidatorAccumulatedCommission, ValidatorAccumulatedCommissionSDKType, ValidatorSlashEvent, ValidatorSlashEventSDKType, DelegationDelegatorReward, DelegationDelegatorRewardSDKType } from "./distribution";
 import { DecCoin, DecCoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 
 export interface QueryParamsRequest {}
@@ -368,15 +368,6 @@ export const QueryParamsRequest = {
   fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
-  },
-
-  fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest {
-    return {};
-  },
-
-  toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -422,18 +413,6 @@ export const QueryParamsResponse = {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromSDK(object.params) : undefined
-    };
-  },
-
-  toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
   }
 
 };
@@ -479,18 +458,6 @@ export const QueryValidatorOutstandingRewardsRequest = {
     const message = createBaseQueryValidatorOutstandingRewardsRequest();
     message.validatorAddress = object.validatorAddress ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryValidatorOutstandingRewardsRequestSDKType): QueryValidatorOutstandingRewardsRequest {
-    return {
-      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined
-    };
-  },
-
-  toSDK(message: QueryValidatorOutstandingRewardsRequest): QueryValidatorOutstandingRewardsRequestSDKType {
-    const obj: any = {};
-    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
-    return obj;
   }
 
 };
@@ -536,18 +503,6 @@ export const QueryValidatorOutstandingRewardsResponse = {
     const message = createBaseQueryValidatorOutstandingRewardsResponse();
     message.rewards = object.rewards !== undefined && object.rewards !== null ? ValidatorOutstandingRewards.fromPartial(object.rewards) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryValidatorOutstandingRewardsResponseSDKType): QueryValidatorOutstandingRewardsResponse {
-    return {
-      rewards: isSet(object.rewards) ? ValidatorOutstandingRewards.fromSDK(object.rewards) : undefined
-    };
-  },
-
-  toSDK(message: QueryValidatorOutstandingRewardsResponse): QueryValidatorOutstandingRewardsResponseSDKType {
-    const obj: any = {};
-    message.rewards !== undefined && (obj.rewards = message.rewards ? ValidatorOutstandingRewards.toSDK(message.rewards) : undefined);
-    return obj;
   }
 
 };
@@ -593,18 +548,6 @@ export const QueryValidatorCommissionRequest = {
     const message = createBaseQueryValidatorCommissionRequest();
     message.validatorAddress = object.validatorAddress ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryValidatorCommissionRequestSDKType): QueryValidatorCommissionRequest {
-    return {
-      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined
-    };
-  },
-
-  toSDK(message: QueryValidatorCommissionRequest): QueryValidatorCommissionRequestSDKType {
-    const obj: any = {};
-    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
-    return obj;
   }
 
 };
@@ -650,18 +593,6 @@ export const QueryValidatorCommissionResponse = {
     const message = createBaseQueryValidatorCommissionResponse();
     message.commission = object.commission !== undefined && object.commission !== null ? ValidatorAccumulatedCommission.fromPartial(object.commission) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryValidatorCommissionResponseSDKType): QueryValidatorCommissionResponse {
-    return {
-      commission: isSet(object.commission) ? ValidatorAccumulatedCommission.fromSDK(object.commission) : undefined
-    };
-  },
-
-  toSDK(message: QueryValidatorCommissionResponse): QueryValidatorCommissionResponseSDKType {
-    const obj: any = {};
-    message.commission !== undefined && (obj.commission = message.commission ? ValidatorAccumulatedCommission.toSDK(message.commission) : undefined);
-    return obj;
   }
 
 };
@@ -737,24 +668,6 @@ export const QueryValidatorSlashesRequest = {
     message.endingHeight = object.endingHeight !== undefined && object.endingHeight !== null ? Long.fromValue(object.endingHeight) : Long.UZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryValidatorSlashesRequestSDKType): QueryValidatorSlashesRequest {
-    return {
-      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined,
-      startingHeight: isSet(object.starting_height) ? object.starting_height : undefined,
-      endingHeight: isSet(object.ending_height) ? object.ending_height : undefined,
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryValidatorSlashesRequest): QueryValidatorSlashesRequestSDKType {
-    const obj: any = {};
-    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
-    message.startingHeight !== undefined && (obj.starting_height = message.startingHeight);
-    message.endingHeight !== undefined && (obj.ending_height = message.endingHeight);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -810,26 +723,6 @@ export const QueryValidatorSlashesResponse = {
     message.slashes = object.slashes?.map(e => ValidatorSlashEvent.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryValidatorSlashesResponseSDKType): QueryValidatorSlashesResponse {
-    return {
-      slashes: Array.isArray(object?.slashes) ? object.slashes.map((e: any) => ValidatorSlashEvent.fromSDK(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryValidatorSlashesResponse): QueryValidatorSlashesResponseSDKType {
-    const obj: any = {};
-
-    if (message.slashes) {
-      obj.slashes = message.slashes.map(e => e ? ValidatorSlashEvent.toSDK(e) : undefined);
-    } else {
-      obj.slashes = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -885,20 +778,6 @@ export const QueryDelegationRewardsRequest = {
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryDelegationRewardsRequestSDKType): QueryDelegationRewardsRequest {
-    return {
-      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined,
-      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined
-    };
-  },
-
-  toSDK(message: QueryDelegationRewardsRequest): QueryDelegationRewardsRequestSDKType {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
-    return obj;
   }
 
 };
@@ -944,24 +823,6 @@ export const QueryDelegationRewardsResponse = {
     const message = createBaseQueryDelegationRewardsResponse();
     message.rewards = object.rewards?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: QueryDelegationRewardsResponseSDKType): QueryDelegationRewardsResponse {
-    return {
-      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DecCoin.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: QueryDelegationRewardsResponse): QueryDelegationRewardsResponseSDKType {
-    const obj: any = {};
-
-    if (message.rewards) {
-      obj.rewards = message.rewards.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.rewards = [];
-    }
-
-    return obj;
   }
 
 };
@@ -1007,18 +868,6 @@ export const QueryDelegationTotalRewardsRequest = {
     const message = createBaseQueryDelegationTotalRewardsRequest();
     message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryDelegationTotalRewardsRequestSDKType): QueryDelegationTotalRewardsRequest {
-    return {
-      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined
-    };
-  },
-
-  toSDK(message: QueryDelegationTotalRewardsRequest): QueryDelegationTotalRewardsRequestSDKType {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
-    return obj;
   }
 
 };
@@ -1074,31 +923,6 @@ export const QueryDelegationTotalRewardsResponse = {
     message.rewards = object.rewards?.map(e => DelegationDelegatorReward.fromPartial(e)) || [];
     message.total = object.total?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: QueryDelegationTotalRewardsResponseSDKType): QueryDelegationTotalRewardsResponse {
-    return {
-      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DelegationDelegatorReward.fromSDK(e)) : [],
-      total: Array.isArray(object?.total) ? object.total.map((e: any) => DecCoin.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: QueryDelegationTotalRewardsResponse): QueryDelegationTotalRewardsResponseSDKType {
-    const obj: any = {};
-
-    if (message.rewards) {
-      obj.rewards = message.rewards.map(e => e ? DelegationDelegatorReward.toSDK(e) : undefined);
-    } else {
-      obj.rewards = [];
-    }
-
-    if (message.total) {
-      obj.total = message.total.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.total = [];
-    }
-
-    return obj;
   }
 
 };
@@ -1144,18 +968,6 @@ export const QueryDelegatorValidatorsRequest = {
     const message = createBaseQueryDelegatorValidatorsRequest();
     message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryDelegatorValidatorsRequestSDKType): QueryDelegatorValidatorsRequest {
-    return {
-      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined
-    };
-  },
-
-  toSDK(message: QueryDelegatorValidatorsRequest): QueryDelegatorValidatorsRequestSDKType {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
-    return obj;
   }
 
 };
@@ -1201,24 +1013,6 @@ export const QueryDelegatorValidatorsResponse = {
     const message = createBaseQueryDelegatorValidatorsResponse();
     message.validators = object.validators?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: QueryDelegatorValidatorsResponseSDKType): QueryDelegatorValidatorsResponse {
-    return {
-      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: QueryDelegatorValidatorsResponse): QueryDelegatorValidatorsResponseSDKType {
-    const obj: any = {};
-
-    if (message.validators) {
-      obj.validators = message.validators.map(e => e);
-    } else {
-      obj.validators = [];
-    }
-
-    return obj;
   }
 
 };
@@ -1264,18 +1058,6 @@ export const QueryDelegatorWithdrawAddressRequest = {
     const message = createBaseQueryDelegatorWithdrawAddressRequest();
     message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryDelegatorWithdrawAddressRequestSDKType): QueryDelegatorWithdrawAddressRequest {
-    return {
-      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined
-    };
-  },
-
-  toSDK(message: QueryDelegatorWithdrawAddressRequest): QueryDelegatorWithdrawAddressRequestSDKType {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
-    return obj;
   }
 
 };
@@ -1321,18 +1103,6 @@ export const QueryDelegatorWithdrawAddressResponse = {
     const message = createBaseQueryDelegatorWithdrawAddressResponse();
     message.withdrawAddress = object.withdrawAddress ?? "";
     return message;
-  },
-
-  fromSDK(object: QueryDelegatorWithdrawAddressResponseSDKType): QueryDelegatorWithdrawAddressResponse {
-    return {
-      withdrawAddress: isSet(object.withdraw_address) ? object.withdraw_address : undefined
-    };
-  },
-
-  toSDK(message: QueryDelegatorWithdrawAddressResponse): QueryDelegatorWithdrawAddressResponseSDKType {
-    const obj: any = {};
-    message.withdrawAddress !== undefined && (obj.withdraw_address = message.withdrawAddress);
-    return obj;
   }
 
 };
@@ -1367,15 +1137,6 @@ export const QueryCommunityPoolRequest = {
   fromPartial(_: DeepPartial<QueryCommunityPoolRequest>): QueryCommunityPoolRequest {
     const message = createBaseQueryCommunityPoolRequest();
     return message;
-  },
-
-  fromSDK(_: QueryCommunityPoolRequestSDKType): QueryCommunityPoolRequest {
-    return {};
-  },
-
-  toSDK(_: QueryCommunityPoolRequest): QueryCommunityPoolRequestSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -1421,24 +1182,6 @@ export const QueryCommunityPoolResponse = {
     const message = createBaseQueryCommunityPoolResponse();
     message.pool = object.pool?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: QueryCommunityPoolResponseSDKType): QueryCommunityPoolResponse {
-    return {
-      pool: Array.isArray(object?.pool) ? object.pool.map((e: any) => DecCoin.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: QueryCommunityPoolResponse): QueryCommunityPoolResponseSDKType {
-    const obj: any = {};
-
-    if (message.pool) {
-      obj.pool = message.pool.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.pool = [];
-    }
-
-    return obj;
   }
 
 };

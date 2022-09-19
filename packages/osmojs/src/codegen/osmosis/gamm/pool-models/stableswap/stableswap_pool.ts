@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /**
  * PoolParams defined the parameters that will be managed by the pool
  * governance in the future. This params are not managed by the chain
@@ -137,20 +137,6 @@ export const PoolParams = {
     message.swapFee = object.swapFee ?? "";
     message.exitFee = object.exitFee ?? "";
     return message;
-  },
-
-  fromSDK(object: PoolParamsSDKType): PoolParams {
-    return {
-      swapFee: isSet(object.swapFee) ? object.swapFee : undefined,
-      exitFee: isSet(object.exitFee) ? object.exitFee : undefined
-    };
-  },
-
-  toSDK(message: PoolParams): PoolParamsSDKType {
-    const obj: any = {};
-    message.swapFee !== undefined && (obj.swapFee = message.swapFee);
-    message.exitFee !== undefined && (obj.exitFee = message.exitFee);
-    return obj;
   }
 
 };
@@ -279,43 +265,6 @@ export const Pool = {
     message.scalingFactor = object.scalingFactor?.map(e => Long.fromValue(e)) || [];
     message.scalingFactorGovernor = object.scalingFactorGovernor ?? "";
     return message;
-  },
-
-  fromSDK(object: PoolSDKType): Pool {
-    return {
-      address: isSet(object.address) ? object.address : undefined,
-      id: isSet(object.id) ? object.id : undefined,
-      poolParams: isSet(object.poolParams) ? PoolParams.fromSDK(object.poolParams) : undefined,
-      futurePoolGovernor: isSet(object.future_pool_governor) ? object.future_pool_governor : undefined,
-      totalShares: isSet(object.totalShares) ? Coin.fromSDK(object.totalShares) : undefined,
-      poolLiquidity: Array.isArray(object?.poolLiquidity) ? object.poolLiquidity.map((e: any) => Coin.fromSDK(e)) : [],
-      scalingFactor: Array.isArray(object?.scaling_factor) ? object.scaling_factor.map((e: any) => e) : [],
-      scalingFactorGovernor: isSet(object.scaling_factor_governor) ? object.scaling_factor_governor : undefined
-    };
-  },
-
-  toSDK(message: Pool): PoolSDKType {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.id !== undefined && (obj.id = message.id);
-    message.poolParams !== undefined && (obj.poolParams = message.poolParams ? PoolParams.toSDK(message.poolParams) : undefined);
-    message.futurePoolGovernor !== undefined && (obj.future_pool_governor = message.futurePoolGovernor);
-    message.totalShares !== undefined && (obj.totalShares = message.totalShares ? Coin.toSDK(message.totalShares) : undefined);
-
-    if (message.poolLiquidity) {
-      obj.poolLiquidity = message.poolLiquidity.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.poolLiquidity = [];
-    }
-
-    if (message.scalingFactor) {
-      obj.scaling_factor = message.scalingFactor.map(e => e);
-    } else {
-      obj.scaling_factor = [];
-    }
-
-    message.scalingFactorGovernor !== undefined && (obj.scaling_factor_governor = message.scalingFactorGovernor);
-    return obj;
   }
 
 };

@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * FeeToken is a struct that specifies a coin denom, and pool ID pair.
  * This marks the token as eligible for use as a tx fee asset in Osmosis.
@@ -74,20 +74,6 @@ export const FeeToken = {
     message.denom = object.denom ?? "";
     message.poolID = object.poolID !== undefined && object.poolID !== null ? Long.fromValue(object.poolID) : Long.UZERO;
     return message;
-  },
-
-  fromSDK(object: FeeTokenSDKType): FeeToken {
-    return {
-      denom: isSet(object.denom) ? object.denom : undefined,
-      poolID: isSet(object.poolID) ? object.poolID : undefined
-    };
-  },
-
-  toSDK(message: FeeToken): FeeTokenSDKType {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.poolID !== undefined && (obj.poolID = message.poolID);
-    return obj;
   }
 
 };

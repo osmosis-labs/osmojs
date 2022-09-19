@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * DenomTrace contains the base denomination for ICS20 fungible tokens and the
  * source tracing information path.
@@ -122,20 +122,6 @@ export const DenomTrace = {
     message.path = object.path ?? "";
     message.baseDenom = object.baseDenom ?? "";
     return message;
-  },
-
-  fromSDK(object: DenomTraceSDKType): DenomTrace {
-    return {
-      path: isSet(object.path) ? object.path : undefined,
-      baseDenom: isSet(object.base_denom) ? object.base_denom : undefined
-    };
-  },
-
-  toSDK(message: DenomTrace): DenomTraceSDKType {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = message.path);
-    message.baseDenom !== undefined && (obj.base_denom = message.baseDenom);
-    return obj;
   }
 
 };
@@ -191,20 +177,6 @@ export const Params = {
     message.sendEnabled = object.sendEnabled ?? false;
     message.receiveEnabled = object.receiveEnabled ?? false;
     return message;
-  },
-
-  fromSDK(object: ParamsSDKType): Params {
-    return {
-      sendEnabled: isSet(object.send_enabled) ? object.send_enabled : undefined,
-      receiveEnabled: isSet(object.receive_enabled) ? object.receive_enabled : undefined
-    };
-  },
-
-  toSDK(message: Params): ParamsSDKType {
-    const obj: any = {};
-    message.sendEnabled !== undefined && (obj.send_enabled = message.sendEnabled);
-    message.receiveEnabled !== undefined && (obj.receive_enabled = message.receiveEnabled);
-    return obj;
   }
 
 };

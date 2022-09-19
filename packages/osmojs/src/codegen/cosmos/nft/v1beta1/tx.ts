@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** MsgSend represents a message to send a nft from one account to another account. */
 
 export interface MsgSend {
@@ -108,24 +108,6 @@ export const MsgSend = {
     message.sender = object.sender ?? "";
     message.receiver = object.receiver ?? "";
     return message;
-  },
-
-  fromSDK(object: MsgSendSDKType): MsgSend {
-    return {
-      classId: isSet(object.class_id) ? object.class_id : undefined,
-      id: isSet(object.id) ? object.id : undefined,
-      sender: isSet(object.sender) ? object.sender : undefined,
-      receiver: isSet(object.receiver) ? object.receiver : undefined
-    };
-  },
-
-  toSDK(message: MsgSend): MsgSendSDKType {
-    const obj: any = {};
-    message.classId !== undefined && (obj.class_id = message.classId);
-    message.id !== undefined && (obj.id = message.id);
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.receiver !== undefined && (obj.receiver = message.receiver);
-    return obj;
   }
 
 };
@@ -160,15 +142,6 @@ export const MsgSendResponse = {
   fromPartial(_: DeepPartial<MsgSendResponse>): MsgSendResponse {
     const message = createBaseMsgSendResponse();
     return message;
-  },
-
-  fromSDK(_: MsgSendResponseSDKType): MsgSendResponse {
-    return {};
-  },
-
-  toSDK(_: MsgSendResponse): MsgSendResponseSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };

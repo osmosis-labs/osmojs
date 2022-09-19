@@ -5,7 +5,7 @@ import { GenesisStateSDKType as GenesisState2SDKType } from "../../connection/v1
 import { GenesisState as GenesisState3 } from "../../channel/v1/genesis";
 import { GenesisStateSDKType as GenesisState3SDKType } from "../../channel/v1/genesis";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the ibc module's genesis state. */
 
 export interface GenesisState {
@@ -92,22 +92,6 @@ export const GenesisState = {
     message.connectionGenesis = object.connectionGenesis !== undefined && object.connectionGenesis !== null ? GenesisState.fromPartial(object.connectionGenesis) : undefined;
     message.channelGenesis = object.channelGenesis !== undefined && object.channelGenesis !== null ? GenesisState.fromPartial(object.channelGenesis) : undefined;
     return message;
-  },
-
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      clientGenesis: isSet(object.client_genesis) ? GenesisState1.fromSDK(object.client_genesis) : undefined,
-      connectionGenesis: isSet(object.connection_genesis) ? GenesisState2.fromSDK(object.connection_genesis) : undefined,
-      channelGenesis: isSet(object.channel_genesis) ? GenesisState3.fromSDK(object.channel_genesis) : undefined
-    };
-  },
-
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    message.clientGenesis !== undefined && (obj.client_genesis = message.clientGenesis ? GenesisState1.toSDK(message.clientGenesis) : undefined);
-    message.connectionGenesis !== undefined && (obj.connection_genesis = message.connectionGenesis ? GenesisState2.toSDK(message.connectionGenesis) : undefined);
-    message.channelGenesis !== undefined && (obj.channel_genesis = message.channelGenesis ? GenesisState3.toSDK(message.channelGenesis) : undefined);
-    return obj;
   }
 
 };

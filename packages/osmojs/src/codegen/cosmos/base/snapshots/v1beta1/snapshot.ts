@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /** Snapshot contains Tendermint state sync snapshot info. */
 
 export interface Snapshot {
@@ -210,26 +210,6 @@ export const Snapshot = {
     message.hash = object.hash ?? new Uint8Array();
     message.metadata = object.metadata !== undefined && object.metadata !== null ? Metadata.fromPartial(object.metadata) : undefined;
     return message;
-  },
-
-  fromSDK(object: SnapshotSDKType): Snapshot {
-    return {
-      height: isSet(object.height) ? object.height : undefined,
-      format: isSet(object.format) ? object.format : undefined,
-      chunks: isSet(object.chunks) ? object.chunks : undefined,
-      hash: isSet(object.hash) ? object.hash : undefined,
-      metadata: isSet(object.metadata) ? Metadata.fromSDK(object.metadata) : undefined
-    };
-  },
-
-  toSDK(message: Snapshot): SnapshotSDKType {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = message.height);
-    message.format !== undefined && (obj.format = message.format);
-    message.chunks !== undefined && (obj.chunks = message.chunks);
-    message.hash !== undefined && (obj.hash = message.hash);
-    message.metadata !== undefined && (obj.metadata = message.metadata ? Metadata.toSDK(message.metadata) : undefined);
-    return obj;
   }
 
 };
@@ -275,24 +255,6 @@ export const Metadata = {
     const message = createBaseMetadata();
     message.chunkHashes = object.chunkHashes?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: MetadataSDKType): Metadata {
-    return {
-      chunkHashes: Array.isArray(object?.chunk_hashes) ? object.chunk_hashes.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: Metadata): MetadataSDKType {
-    const obj: any = {};
-
-    if (message.chunkHashes) {
-      obj.chunk_hashes = message.chunkHashes.map(e => e);
-    } else {
-      obj.chunk_hashes = [];
-    }
-
-    return obj;
   }
 
 };
@@ -388,28 +350,6 @@ export const SnapshotItem = {
     message.kv = object.kv !== undefined && object.kv !== null ? SnapshotKVItem.fromPartial(object.kv) : undefined;
     message.schema = object.schema !== undefined && object.schema !== null ? SnapshotSchema.fromPartial(object.schema) : undefined;
     return message;
-  },
-
-  fromSDK(object: SnapshotItemSDKType): SnapshotItem {
-    return {
-      store: isSet(object.store) ? SnapshotStoreItem.fromSDK(object.store) : undefined,
-      iavl: isSet(object.iavl) ? SnapshotIAVLItem.fromSDK(object.iavl) : undefined,
-      extension: isSet(object.extension) ? SnapshotExtensionMeta.fromSDK(object.extension) : undefined,
-      extensionPayload: isSet(object.extension_payload) ? SnapshotExtensionPayload.fromSDK(object.extension_payload) : undefined,
-      kv: isSet(object.kv) ? SnapshotKVItem.fromSDK(object.kv) : undefined,
-      schema: isSet(object.schema) ? SnapshotSchema.fromSDK(object.schema) : undefined
-    };
-  },
-
-  toSDK(message: SnapshotItem): SnapshotItemSDKType {
-    const obj: any = {};
-    message.store !== undefined && (obj.store = message.store ? SnapshotStoreItem.toSDK(message.store) : undefined);
-    message.iavl !== undefined && (obj.iavl = message.iavl ? SnapshotIAVLItem.toSDK(message.iavl) : undefined);
-    message.extension !== undefined && (obj.extension = message.extension ? SnapshotExtensionMeta.toSDK(message.extension) : undefined);
-    message.extensionPayload !== undefined && (obj.extension_payload = message.extensionPayload ? SnapshotExtensionPayload.toSDK(message.extensionPayload) : undefined);
-    message.kv !== undefined && (obj.kv = message.kv ? SnapshotKVItem.toSDK(message.kv) : undefined);
-    message.schema !== undefined && (obj.schema = message.schema ? SnapshotSchema.toSDK(message.schema) : undefined);
-    return obj;
   }
 
 };
@@ -455,18 +395,6 @@ export const SnapshotStoreItem = {
     const message = createBaseSnapshotStoreItem();
     message.name = object.name ?? "";
     return message;
-  },
-
-  fromSDK(object: SnapshotStoreItemSDKType): SnapshotStoreItem {
-    return {
-      name: isSet(object.name) ? object.name : undefined
-    };
-  },
-
-  toSDK(message: SnapshotStoreItem): SnapshotStoreItemSDKType {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    return obj;
   }
 
 };
@@ -542,24 +470,6 @@ export const SnapshotIAVLItem = {
     message.version = object.version !== undefined && object.version !== null ? Long.fromValue(object.version) : Long.ZERO;
     message.height = object.height ?? 0;
     return message;
-  },
-
-  fromSDK(object: SnapshotIAVLItemSDKType): SnapshotIAVLItem {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      value: isSet(object.value) ? object.value : undefined,
-      version: isSet(object.version) ? object.version : undefined,
-      height: isSet(object.height) ? object.height : undefined
-    };
-  },
-
-  toSDK(message: SnapshotIAVLItem): SnapshotIAVLItemSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    message.version !== undefined && (obj.version = message.version);
-    message.height !== undefined && (obj.height = message.height);
-    return obj;
   }
 
 };
@@ -615,20 +525,6 @@ export const SnapshotExtensionMeta = {
     message.name = object.name ?? "";
     message.format = object.format ?? 0;
     return message;
-  },
-
-  fromSDK(object: SnapshotExtensionMetaSDKType): SnapshotExtensionMeta {
-    return {
-      name: isSet(object.name) ? object.name : undefined,
-      format: isSet(object.format) ? object.format : undefined
-    };
-  },
-
-  toSDK(message: SnapshotExtensionMeta): SnapshotExtensionMetaSDKType {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.format !== undefined && (obj.format = message.format);
-    return obj;
   }
 
 };
@@ -674,18 +570,6 @@ export const SnapshotExtensionPayload = {
     const message = createBaseSnapshotExtensionPayload();
     message.payload = object.payload ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: SnapshotExtensionPayloadSDKType): SnapshotExtensionPayload {
-    return {
-      payload: isSet(object.payload) ? object.payload : undefined
-    };
-  },
-
-  toSDK(message: SnapshotExtensionPayload): SnapshotExtensionPayloadSDKType {
-    const obj: any = {};
-    message.payload !== undefined && (obj.payload = message.payload);
-    return obj;
   }
 
 };
@@ -741,20 +625,6 @@ export const SnapshotKVItem = {
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: SnapshotKVItemSDKType): SnapshotKVItem {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: SnapshotKVItem): SnapshotKVItemSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -800,24 +670,6 @@ export const SnapshotSchema = {
     const message = createBaseSnapshotSchema();
     message.keys = object.keys?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: SnapshotSchemaSDKType): SnapshotSchema {
-    return {
-      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: SnapshotSchema): SnapshotSchemaSDKType {
-    const obj: any = {};
-
-    if (message.keys) {
-      obj.keys = message.keys.map(e => e);
-    } else {
-      obj.keys = [];
-    }
-
-    return obj;
   }
 
 };

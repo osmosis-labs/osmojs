@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 export enum ScalarType {
   SCALAR_TYPE_UNSPECIFIED = 0,
   SCALAR_TYPE_STRING = 1,
@@ -207,20 +207,6 @@ export const InterfaceDescriptor = {
     message.name = object.name ?? "";
     message.description = object.description ?? "";
     return message;
-  },
-
-  fromSDK(object: InterfaceDescriptorSDKType): InterfaceDescriptor {
-    return {
-      name: isSet(object.name) ? object.name : undefined,
-      description: isSet(object.description) ? object.description : undefined
-    };
-  },
-
-  toSDK(message: InterfaceDescriptor): InterfaceDescriptorSDKType {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.description !== undefined && (obj.description = message.description);
-    return obj;
   }
 
 };
@@ -298,28 +284,6 @@ export const ScalarDescriptor = {
     message.description = object.description ?? "";
     message.fieldType = object.fieldType?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: ScalarDescriptorSDKType): ScalarDescriptor {
-    return {
-      name: isSet(object.name) ? object.name : undefined,
-      description: isSet(object.description) ? object.description : undefined,
-      fieldType: Array.isArray(object?.field_type) ? object.field_type.map((e: any) => scalarTypeFromJSON(e)) : []
-    };
-  },
-
-  toSDK(message: ScalarDescriptor): ScalarDescriptorSDKType {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.fieldType) {
-      obj.field_type = message.fieldType.map(e => scalarTypeToJSON(e));
-    } else {
-      obj.field_type = [];
-    }
-
-    return obj;
   }
 
 };

@@ -4,7 +4,7 @@ import { ProofOps, ProofOpsSDKType } from "../crypto/proof";
 import { EvidenceParams, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsSDKType, VersionParams, VersionParamsSDKType } from "../types/params";
 import { PublicKey, PublicKeySDKType } from "../crypto/keys";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, Long, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
+import { DeepPartial, Long, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
 export enum CheckTxType {
   NEW = 0,
   RECHECK = 1,
@@ -1114,46 +1114,6 @@ export const Request = {
     message.loadSnapshotChunk = object.loadSnapshotChunk !== undefined && object.loadSnapshotChunk !== null ? RequestLoadSnapshotChunk.fromPartial(object.loadSnapshotChunk) : undefined;
     message.applySnapshotChunk = object.applySnapshotChunk !== undefined && object.applySnapshotChunk !== null ? RequestApplySnapshotChunk.fromPartial(object.applySnapshotChunk) : undefined;
     return message;
-  },
-
-  fromSDK(object: RequestSDKType): Request {
-    return {
-      echo: isSet(object.echo) ? RequestEcho.fromSDK(object.echo) : undefined,
-      flush: isSet(object.flush) ? RequestFlush.fromSDK(object.flush) : undefined,
-      info: isSet(object.info) ? RequestInfo.fromSDK(object.info) : undefined,
-      setOption: isSet(object.set_option) ? RequestSetOption.fromSDK(object.set_option) : undefined,
-      initChain: isSet(object.init_chain) ? RequestInitChain.fromSDK(object.init_chain) : undefined,
-      query: isSet(object.query) ? RequestQuery.fromSDK(object.query) : undefined,
-      beginBlock: isSet(object.begin_block) ? RequestBeginBlock.fromSDK(object.begin_block) : undefined,
-      checkTx: isSet(object.check_tx) ? RequestCheckTx.fromSDK(object.check_tx) : undefined,
-      deliverTx: isSet(object.deliver_tx) ? RequestDeliverTx.fromSDK(object.deliver_tx) : undefined,
-      endBlock: isSet(object.end_block) ? RequestEndBlock.fromSDK(object.end_block) : undefined,
-      commit: isSet(object.commit) ? RequestCommit.fromSDK(object.commit) : undefined,
-      listSnapshots: isSet(object.list_snapshots) ? RequestListSnapshots.fromSDK(object.list_snapshots) : undefined,
-      offerSnapshot: isSet(object.offer_snapshot) ? RequestOfferSnapshot.fromSDK(object.offer_snapshot) : undefined,
-      loadSnapshotChunk: isSet(object.load_snapshot_chunk) ? RequestLoadSnapshotChunk.fromSDK(object.load_snapshot_chunk) : undefined,
-      applySnapshotChunk: isSet(object.apply_snapshot_chunk) ? RequestApplySnapshotChunk.fromSDK(object.apply_snapshot_chunk) : undefined
-    };
-  },
-
-  toSDK(message: Request): RequestSDKType {
-    const obj: any = {};
-    message.echo !== undefined && (obj.echo = message.echo ? RequestEcho.toSDK(message.echo) : undefined);
-    message.flush !== undefined && (obj.flush = message.flush ? RequestFlush.toSDK(message.flush) : undefined);
-    message.info !== undefined && (obj.info = message.info ? RequestInfo.toSDK(message.info) : undefined);
-    message.setOption !== undefined && (obj.set_option = message.setOption ? RequestSetOption.toSDK(message.setOption) : undefined);
-    message.initChain !== undefined && (obj.init_chain = message.initChain ? RequestInitChain.toSDK(message.initChain) : undefined);
-    message.query !== undefined && (obj.query = message.query ? RequestQuery.toSDK(message.query) : undefined);
-    message.beginBlock !== undefined && (obj.begin_block = message.beginBlock ? RequestBeginBlock.toSDK(message.beginBlock) : undefined);
-    message.checkTx !== undefined && (obj.check_tx = message.checkTx ? RequestCheckTx.toSDK(message.checkTx) : undefined);
-    message.deliverTx !== undefined && (obj.deliver_tx = message.deliverTx ? RequestDeliverTx.toSDK(message.deliverTx) : undefined);
-    message.endBlock !== undefined && (obj.end_block = message.endBlock ? RequestEndBlock.toSDK(message.endBlock) : undefined);
-    message.commit !== undefined && (obj.commit = message.commit ? RequestCommit.toSDK(message.commit) : undefined);
-    message.listSnapshots !== undefined && (obj.list_snapshots = message.listSnapshots ? RequestListSnapshots.toSDK(message.listSnapshots) : undefined);
-    message.offerSnapshot !== undefined && (obj.offer_snapshot = message.offerSnapshot ? RequestOfferSnapshot.toSDK(message.offerSnapshot) : undefined);
-    message.loadSnapshotChunk !== undefined && (obj.load_snapshot_chunk = message.loadSnapshotChunk ? RequestLoadSnapshotChunk.toSDK(message.loadSnapshotChunk) : undefined);
-    message.applySnapshotChunk !== undefined && (obj.apply_snapshot_chunk = message.applySnapshotChunk ? RequestApplySnapshotChunk.toSDK(message.applySnapshotChunk) : undefined);
-    return obj;
   }
 
 };
@@ -1199,18 +1159,6 @@ export const RequestEcho = {
     const message = createBaseRequestEcho();
     message.message = object.message ?? "";
     return message;
-  },
-
-  fromSDK(object: RequestEchoSDKType): RequestEcho {
-    return {
-      message: isSet(object.message) ? object.message : undefined
-    };
-  },
-
-  toSDK(message: RequestEcho): RequestEchoSDKType {
-    const obj: any = {};
-    message.message !== undefined && (obj.message = message.message);
-    return obj;
   }
 
 };
@@ -1245,15 +1193,6 @@ export const RequestFlush = {
   fromPartial(_: DeepPartial<RequestFlush>): RequestFlush {
     const message = createBaseRequestFlush();
     return message;
-  },
-
-  fromSDK(_: RequestFlushSDKType): RequestFlush {
-    return {};
-  },
-
-  toSDK(_: RequestFlush): RequestFlushSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -1319,22 +1258,6 @@ export const RequestInfo = {
     message.blockVersion = object.blockVersion !== undefined && object.blockVersion !== null ? Long.fromValue(object.blockVersion) : Long.UZERO;
     message.p2pVersion = object.p2pVersion !== undefined && object.p2pVersion !== null ? Long.fromValue(object.p2pVersion) : Long.UZERO;
     return message;
-  },
-
-  fromSDK(object: RequestInfoSDKType): RequestInfo {
-    return {
-      version: isSet(object.version) ? object.version : undefined,
-      blockVersion: isSet(object.block_version) ? object.block_version : undefined,
-      p2pVersion: isSet(object.p2p_version) ? object.p2p_version : undefined
-    };
-  },
-
-  toSDK(message: RequestInfo): RequestInfoSDKType {
-    const obj: any = {};
-    message.version !== undefined && (obj.version = message.version);
-    message.blockVersion !== undefined && (obj.block_version = message.blockVersion);
-    message.p2pVersion !== undefined && (obj.p2p_version = message.p2pVersion);
-    return obj;
   }
 
 };
@@ -1390,20 +1313,6 @@ export const RequestSetOption = {
     message.key = object.key ?? "";
     message.value = object.value ?? "";
     return message;
-  },
-
-  fromSDK(object: RequestSetOptionSDKType): RequestSetOption {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: RequestSetOption): RequestSetOptionSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };
@@ -1499,34 +1408,6 @@ export const RequestInitChain = {
     message.appStateBytes = object.appStateBytes ?? new Uint8Array();
     message.initialHeight = object.initialHeight !== undefined && object.initialHeight !== null ? Long.fromValue(object.initialHeight) : Long.ZERO;
     return message;
-  },
-
-  fromSDK(object: RequestInitChainSDKType): RequestInitChain {
-    return {
-      time: isSet(object.time) ? Timestamp.fromSDK(object.time) : undefined,
-      chainId: isSet(object.chain_id) ? object.chain_id : undefined,
-      consensusParams: isSet(object.consensus_params) ? ConsensusParams.fromSDK(object.consensus_params) : undefined,
-      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => ValidatorUpdate.fromSDK(e)) : [],
-      appStateBytes: isSet(object.app_state_bytes) ? object.app_state_bytes : undefined,
-      initialHeight: isSet(object.initial_height) ? object.initial_height : undefined
-    };
-  },
-
-  toSDK(message: RequestInitChain): RequestInitChainSDKType {
-    const obj: any = {};
-    message.time !== undefined && (obj.time = message.time ? Timestamp.toSDK(message.time) : undefined);
-    message.chainId !== undefined && (obj.chain_id = message.chainId);
-    message.consensusParams !== undefined && (obj.consensus_params = message.consensusParams ? ConsensusParams.toSDK(message.consensusParams) : undefined);
-
-    if (message.validators) {
-      obj.validators = message.validators.map(e => e ? ValidatorUpdate.toSDK(e) : undefined);
-    } else {
-      obj.validators = [];
-    }
-
-    message.appStateBytes !== undefined && (obj.app_state_bytes = message.appStateBytes);
-    message.initialHeight !== undefined && (obj.initial_height = message.initialHeight);
-    return obj;
   }
 
 };
@@ -1602,24 +1483,6 @@ export const RequestQuery = {
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.prove = object.prove ?? false;
     return message;
-  },
-
-  fromSDK(object: RequestQuerySDKType): RequestQuery {
-    return {
-      data: isSet(object.data) ? object.data : undefined,
-      path: isSet(object.path) ? object.path : undefined,
-      height: isSet(object.height) ? object.height : undefined,
-      prove: isSet(object.prove) ? object.prove : undefined
-    };
-  },
-
-  toSDK(message: RequestQuery): RequestQuerySDKType {
-    const obj: any = {};
-    message.data !== undefined && (obj.data = message.data);
-    message.path !== undefined && (obj.path = message.path);
-    message.height !== undefined && (obj.height = message.height);
-    message.prove !== undefined && (obj.prove = message.prove);
-    return obj;
   }
 
 };
@@ -1695,30 +1558,6 @@ export const RequestBeginBlock = {
     message.lastCommitInfo = object.lastCommitInfo !== undefined && object.lastCommitInfo !== null ? LastCommitInfo.fromPartial(object.lastCommitInfo) : undefined;
     message.byzantineValidators = object.byzantineValidators?.map(e => Evidence.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: RequestBeginBlockSDKType): RequestBeginBlock {
-    return {
-      hash: isSet(object.hash) ? object.hash : undefined,
-      header: isSet(object.header) ? Header.fromSDK(object.header) : undefined,
-      lastCommitInfo: isSet(object.last_commit_info) ? LastCommitInfo.fromSDK(object.last_commit_info) : undefined,
-      byzantineValidators: Array.isArray(object?.byzantine_validators) ? object.byzantine_validators.map((e: any) => Evidence.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: RequestBeginBlock): RequestBeginBlockSDKType {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = message.hash);
-    message.header !== undefined && (obj.header = message.header ? Header.toSDK(message.header) : undefined);
-    message.lastCommitInfo !== undefined && (obj.last_commit_info = message.lastCommitInfo ? LastCommitInfo.toSDK(message.lastCommitInfo) : undefined);
-
-    if (message.byzantineValidators) {
-      obj.byzantine_validators = message.byzantineValidators.map(e => e ? Evidence.toSDK(e) : undefined);
-    } else {
-      obj.byzantine_validators = [];
-    }
-
-    return obj;
   }
 
 };
@@ -1774,20 +1613,6 @@ export const RequestCheckTx = {
     message.tx = object.tx ?? new Uint8Array();
     message.type = object.type ?? 0;
     return message;
-  },
-
-  fromSDK(object: RequestCheckTxSDKType): RequestCheckTx {
-    return {
-      tx: isSet(object.tx) ? object.tx : undefined,
-      type: isSet(object.type) ? checkTxTypeFromJSON(object.type) : 0
-    };
-  },
-
-  toSDK(message: RequestCheckTx): RequestCheckTxSDKType {
-    const obj: any = {};
-    message.tx !== undefined && (obj.tx = message.tx);
-    message.type !== undefined && (obj.type = checkTxTypeToJSON(message.type));
-    return obj;
   }
 
 };
@@ -1833,18 +1658,6 @@ export const RequestDeliverTx = {
     const message = createBaseRequestDeliverTx();
     message.tx = object.tx ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: RequestDeliverTxSDKType): RequestDeliverTx {
-    return {
-      tx: isSet(object.tx) ? object.tx : undefined
-    };
-  },
-
-  toSDK(message: RequestDeliverTx): RequestDeliverTxSDKType {
-    const obj: any = {};
-    message.tx !== undefined && (obj.tx = message.tx);
-    return obj;
   }
 
 };
@@ -1890,18 +1703,6 @@ export const RequestEndBlock = {
     const message = createBaseRequestEndBlock();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     return message;
-  },
-
-  fromSDK(object: RequestEndBlockSDKType): RequestEndBlock {
-    return {
-      height: isSet(object.height) ? object.height : undefined
-    };
-  },
-
-  toSDK(message: RequestEndBlock): RequestEndBlockSDKType {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = message.height);
-    return obj;
   }
 
 };
@@ -1936,15 +1737,6 @@ export const RequestCommit = {
   fromPartial(_: DeepPartial<RequestCommit>): RequestCommit {
     const message = createBaseRequestCommit();
     return message;
-  },
-
-  fromSDK(_: RequestCommitSDKType): RequestCommit {
-    return {};
-  },
-
-  toSDK(_: RequestCommit): RequestCommitSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -1979,15 +1771,6 @@ export const RequestListSnapshots = {
   fromPartial(_: DeepPartial<RequestListSnapshots>): RequestListSnapshots {
     const message = createBaseRequestListSnapshots();
     return message;
-  },
-
-  fromSDK(_: RequestListSnapshotsSDKType): RequestListSnapshots {
-    return {};
-  },
-
-  toSDK(_: RequestListSnapshots): RequestListSnapshotsSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -2043,20 +1826,6 @@ export const RequestOfferSnapshot = {
     message.snapshot = object.snapshot !== undefined && object.snapshot !== null ? Snapshot.fromPartial(object.snapshot) : undefined;
     message.appHash = object.appHash ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: RequestOfferSnapshotSDKType): RequestOfferSnapshot {
-    return {
-      snapshot: isSet(object.snapshot) ? Snapshot.fromSDK(object.snapshot) : undefined,
-      appHash: isSet(object.app_hash) ? object.app_hash : undefined
-    };
-  },
-
-  toSDK(message: RequestOfferSnapshot): RequestOfferSnapshotSDKType {
-    const obj: any = {};
-    message.snapshot !== undefined && (obj.snapshot = message.snapshot ? Snapshot.toSDK(message.snapshot) : undefined);
-    message.appHash !== undefined && (obj.app_hash = message.appHash);
-    return obj;
   }
 
 };
@@ -2122,22 +1891,6 @@ export const RequestLoadSnapshotChunk = {
     message.format = object.format ?? 0;
     message.chunk = object.chunk ?? 0;
     return message;
-  },
-
-  fromSDK(object: RequestLoadSnapshotChunkSDKType): RequestLoadSnapshotChunk {
-    return {
-      height: isSet(object.height) ? object.height : undefined,
-      format: isSet(object.format) ? object.format : undefined,
-      chunk: isSet(object.chunk) ? object.chunk : undefined
-    };
-  },
-
-  toSDK(message: RequestLoadSnapshotChunk): RequestLoadSnapshotChunkSDKType {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = message.height);
-    message.format !== undefined && (obj.format = message.format);
-    message.chunk !== undefined && (obj.chunk = message.chunk);
-    return obj;
   }
 
 };
@@ -2203,22 +1956,6 @@ export const RequestApplySnapshotChunk = {
     message.chunk = object.chunk ?? new Uint8Array();
     message.sender = object.sender ?? "";
     return message;
-  },
-
-  fromSDK(object: RequestApplySnapshotChunkSDKType): RequestApplySnapshotChunk {
-    return {
-      index: isSet(object.index) ? object.index : undefined,
-      chunk: isSet(object.chunk) ? object.chunk : undefined,
-      sender: isSet(object.sender) ? object.sender : undefined
-    };
-  },
-
-  toSDK(message: RequestApplySnapshotChunk): RequestApplySnapshotChunkSDKType {
-    const obj: any = {};
-    message.index !== undefined && (obj.index = message.index);
-    message.chunk !== undefined && (obj.chunk = message.chunk);
-    message.sender !== undefined && (obj.sender = message.sender);
-    return obj;
   }
 
 };
@@ -2414,48 +2151,6 @@ export const Response = {
     message.loadSnapshotChunk = object.loadSnapshotChunk !== undefined && object.loadSnapshotChunk !== null ? ResponseLoadSnapshotChunk.fromPartial(object.loadSnapshotChunk) : undefined;
     message.applySnapshotChunk = object.applySnapshotChunk !== undefined && object.applySnapshotChunk !== null ? ResponseApplySnapshotChunk.fromPartial(object.applySnapshotChunk) : undefined;
     return message;
-  },
-
-  fromSDK(object: ResponseSDKType): Response {
-    return {
-      exception: isSet(object.exception) ? ResponseException.fromSDK(object.exception) : undefined,
-      echo: isSet(object.echo) ? ResponseEcho.fromSDK(object.echo) : undefined,
-      flush: isSet(object.flush) ? ResponseFlush.fromSDK(object.flush) : undefined,
-      info: isSet(object.info) ? ResponseInfo.fromSDK(object.info) : undefined,
-      setOption: isSet(object.set_option) ? ResponseSetOption.fromSDK(object.set_option) : undefined,
-      initChain: isSet(object.init_chain) ? ResponseInitChain.fromSDK(object.init_chain) : undefined,
-      query: isSet(object.query) ? ResponseQuery.fromSDK(object.query) : undefined,
-      beginBlock: isSet(object.begin_block) ? ResponseBeginBlock.fromSDK(object.begin_block) : undefined,
-      checkTx: isSet(object.check_tx) ? ResponseCheckTx.fromSDK(object.check_tx) : undefined,
-      deliverTx: isSet(object.deliver_tx) ? ResponseDeliverTx.fromSDK(object.deliver_tx) : undefined,
-      endBlock: isSet(object.end_block) ? ResponseEndBlock.fromSDK(object.end_block) : undefined,
-      commit: isSet(object.commit) ? ResponseCommit.fromSDK(object.commit) : undefined,
-      listSnapshots: isSet(object.list_snapshots) ? ResponseListSnapshots.fromSDK(object.list_snapshots) : undefined,
-      offerSnapshot: isSet(object.offer_snapshot) ? ResponseOfferSnapshot.fromSDK(object.offer_snapshot) : undefined,
-      loadSnapshotChunk: isSet(object.load_snapshot_chunk) ? ResponseLoadSnapshotChunk.fromSDK(object.load_snapshot_chunk) : undefined,
-      applySnapshotChunk: isSet(object.apply_snapshot_chunk) ? ResponseApplySnapshotChunk.fromSDK(object.apply_snapshot_chunk) : undefined
-    };
-  },
-
-  toSDK(message: Response): ResponseSDKType {
-    const obj: any = {};
-    message.exception !== undefined && (obj.exception = message.exception ? ResponseException.toSDK(message.exception) : undefined);
-    message.echo !== undefined && (obj.echo = message.echo ? ResponseEcho.toSDK(message.echo) : undefined);
-    message.flush !== undefined && (obj.flush = message.flush ? ResponseFlush.toSDK(message.flush) : undefined);
-    message.info !== undefined && (obj.info = message.info ? ResponseInfo.toSDK(message.info) : undefined);
-    message.setOption !== undefined && (obj.set_option = message.setOption ? ResponseSetOption.toSDK(message.setOption) : undefined);
-    message.initChain !== undefined && (obj.init_chain = message.initChain ? ResponseInitChain.toSDK(message.initChain) : undefined);
-    message.query !== undefined && (obj.query = message.query ? ResponseQuery.toSDK(message.query) : undefined);
-    message.beginBlock !== undefined && (obj.begin_block = message.beginBlock ? ResponseBeginBlock.toSDK(message.beginBlock) : undefined);
-    message.checkTx !== undefined && (obj.check_tx = message.checkTx ? ResponseCheckTx.toSDK(message.checkTx) : undefined);
-    message.deliverTx !== undefined && (obj.deliver_tx = message.deliverTx ? ResponseDeliverTx.toSDK(message.deliverTx) : undefined);
-    message.endBlock !== undefined && (obj.end_block = message.endBlock ? ResponseEndBlock.toSDK(message.endBlock) : undefined);
-    message.commit !== undefined && (obj.commit = message.commit ? ResponseCommit.toSDK(message.commit) : undefined);
-    message.listSnapshots !== undefined && (obj.list_snapshots = message.listSnapshots ? ResponseListSnapshots.toSDK(message.listSnapshots) : undefined);
-    message.offerSnapshot !== undefined && (obj.offer_snapshot = message.offerSnapshot ? ResponseOfferSnapshot.toSDK(message.offerSnapshot) : undefined);
-    message.loadSnapshotChunk !== undefined && (obj.load_snapshot_chunk = message.loadSnapshotChunk ? ResponseLoadSnapshotChunk.toSDK(message.loadSnapshotChunk) : undefined);
-    message.applySnapshotChunk !== undefined && (obj.apply_snapshot_chunk = message.applySnapshotChunk ? ResponseApplySnapshotChunk.toSDK(message.applySnapshotChunk) : undefined);
-    return obj;
   }
 
 };
@@ -2501,18 +2196,6 @@ export const ResponseException = {
     const message = createBaseResponseException();
     message.error = object.error ?? "";
     return message;
-  },
-
-  fromSDK(object: ResponseExceptionSDKType): ResponseException {
-    return {
-      error: isSet(object.error) ? object.error : undefined
-    };
-  },
-
-  toSDK(message: ResponseException): ResponseExceptionSDKType {
-    const obj: any = {};
-    message.error !== undefined && (obj.error = message.error);
-    return obj;
   }
 
 };
@@ -2558,18 +2241,6 @@ export const ResponseEcho = {
     const message = createBaseResponseEcho();
     message.message = object.message ?? "";
     return message;
-  },
-
-  fromSDK(object: ResponseEchoSDKType): ResponseEcho {
-    return {
-      message: isSet(object.message) ? object.message : undefined
-    };
-  },
-
-  toSDK(message: ResponseEcho): ResponseEchoSDKType {
-    const obj: any = {};
-    message.message !== undefined && (obj.message = message.message);
-    return obj;
   }
 
 };
@@ -2604,15 +2275,6 @@ export const ResponseFlush = {
   fromPartial(_: DeepPartial<ResponseFlush>): ResponseFlush {
     const message = createBaseResponseFlush();
     return message;
-  },
-
-  fromSDK(_: ResponseFlushSDKType): ResponseFlush {
-    return {};
-  },
-
-  toSDK(_: ResponseFlush): ResponseFlushSDKType {
-    const obj: any = {};
-    return obj;
   }
 
 };
@@ -2698,26 +2360,6 @@ export const ResponseInfo = {
     message.lastBlockHeight = object.lastBlockHeight !== undefined && object.lastBlockHeight !== null ? Long.fromValue(object.lastBlockHeight) : Long.ZERO;
     message.lastBlockAppHash = object.lastBlockAppHash ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: ResponseInfoSDKType): ResponseInfo {
-    return {
-      data: isSet(object.data) ? object.data : undefined,
-      version: isSet(object.version) ? object.version : undefined,
-      appVersion: isSet(object.app_version) ? object.app_version : undefined,
-      lastBlockHeight: isSet(object.last_block_height) ? object.last_block_height : undefined,
-      lastBlockAppHash: isSet(object.last_block_app_hash) ? object.last_block_app_hash : undefined
-    };
-  },
-
-  toSDK(message: ResponseInfo): ResponseInfoSDKType {
-    const obj: any = {};
-    message.data !== undefined && (obj.data = message.data);
-    message.version !== undefined && (obj.version = message.version);
-    message.appVersion !== undefined && (obj.app_version = message.appVersion);
-    message.lastBlockHeight !== undefined && (obj.last_block_height = message.lastBlockHeight);
-    message.lastBlockAppHash !== undefined && (obj.last_block_app_hash = message.lastBlockAppHash);
-    return obj;
   }
 
 };
@@ -2783,22 +2425,6 @@ export const ResponseSetOption = {
     message.log = object.log ?? "";
     message.info = object.info ?? "";
     return message;
-  },
-
-  fromSDK(object: ResponseSetOptionSDKType): ResponseSetOption {
-    return {
-      code: isSet(object.code) ? object.code : undefined,
-      log: isSet(object.log) ? object.log : undefined,
-      info: isSet(object.info) ? object.info : undefined
-    };
-  },
-
-  toSDK(message: ResponseSetOption): ResponseSetOptionSDKType {
-    const obj: any = {};
-    message.code !== undefined && (obj.code = message.code);
-    message.log !== undefined && (obj.log = message.log);
-    message.info !== undefined && (obj.info = message.info);
-    return obj;
   }
 
 };
@@ -2864,28 +2490,6 @@ export const ResponseInitChain = {
     message.validators = object.validators?.map(e => ValidatorUpdate.fromPartial(e)) || [];
     message.appHash = object.appHash ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: ResponseInitChainSDKType): ResponseInitChain {
-    return {
-      consensusParams: isSet(object.consensus_params) ? ConsensusParams.fromSDK(object.consensus_params) : undefined,
-      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => ValidatorUpdate.fromSDK(e)) : [],
-      appHash: isSet(object.app_hash) ? object.app_hash : undefined
-    };
-  },
-
-  toSDK(message: ResponseInitChain): ResponseInitChainSDKType {
-    const obj: any = {};
-    message.consensusParams !== undefined && (obj.consensus_params = message.consensusParams ? ConsensusParams.toSDK(message.consensusParams) : undefined);
-
-    if (message.validators) {
-      obj.validators = message.validators.map(e => e ? ValidatorUpdate.toSDK(e) : undefined);
-    } else {
-      obj.validators = [];
-    }
-
-    message.appHash !== undefined && (obj.app_hash = message.appHash);
-    return obj;
   }
 
 };
@@ -3011,34 +2615,6 @@ export const ResponseQuery = {
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.codespace = object.codespace ?? "";
     return message;
-  },
-
-  fromSDK(object: ResponseQuerySDKType): ResponseQuery {
-    return {
-      code: isSet(object.code) ? object.code : undefined,
-      log: isSet(object.log) ? object.log : undefined,
-      info: isSet(object.info) ? object.info : undefined,
-      index: isSet(object.index) ? object.index : undefined,
-      key: isSet(object.key) ? object.key : undefined,
-      value: isSet(object.value) ? object.value : undefined,
-      proofOps: isSet(object.proof_ops) ? ProofOps.fromSDK(object.proof_ops) : undefined,
-      height: isSet(object.height) ? object.height : undefined,
-      codespace: isSet(object.codespace) ? object.codespace : undefined
-    };
-  },
-
-  toSDK(message: ResponseQuery): ResponseQuerySDKType {
-    const obj: any = {};
-    message.code !== undefined && (obj.code = message.code);
-    message.log !== undefined && (obj.log = message.log);
-    message.info !== undefined && (obj.info = message.info);
-    message.index !== undefined && (obj.index = message.index);
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    message.proofOps !== undefined && (obj.proof_ops = message.proofOps ? ProofOps.toSDK(message.proofOps) : undefined);
-    message.height !== undefined && (obj.height = message.height);
-    message.codespace !== undefined && (obj.codespace = message.codespace);
-    return obj;
   }
 
 };
@@ -3084,24 +2660,6 @@ export const ResponseBeginBlock = {
     const message = createBaseResponseBeginBlock();
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ResponseBeginBlockSDKType): ResponseBeginBlock {
-    return {
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: ResponseBeginBlock): ResponseBeginBlockSDKType {
-    const obj: any = {};
-
-    if (message.events) {
-      obj.events = message.events.map(e => e ? Event.toSDK(e) : undefined);
-    } else {
-      obj.events = [];
-    }
-
-    return obj;
   }
 
 };
@@ -3217,38 +2775,6 @@ export const ResponseCheckTx = {
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
     message.codespace = object.codespace ?? "";
     return message;
-  },
-
-  fromSDK(object: ResponseCheckTxSDKType): ResponseCheckTx {
-    return {
-      code: isSet(object.code) ? object.code : undefined,
-      data: isSet(object.data) ? object.data : undefined,
-      log: isSet(object.log) ? object.log : undefined,
-      info: isSet(object.info) ? object.info : undefined,
-      gasWanted: isSet(object.gas_wanted) ? object.gas_wanted : undefined,
-      gasUsed: isSet(object.gas_used) ? object.gas_used : undefined,
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromSDK(e)) : [],
-      codespace: isSet(object.codespace) ? object.codespace : undefined
-    };
-  },
-
-  toSDK(message: ResponseCheckTx): ResponseCheckTxSDKType {
-    const obj: any = {};
-    message.code !== undefined && (obj.code = message.code);
-    message.data !== undefined && (obj.data = message.data);
-    message.log !== undefined && (obj.log = message.log);
-    message.info !== undefined && (obj.info = message.info);
-    message.gasWanted !== undefined && (obj.gas_wanted = message.gasWanted);
-    message.gasUsed !== undefined && (obj.gas_used = message.gasUsed);
-
-    if (message.events) {
-      obj.events = message.events.map(e => e ? Event.toSDK(e) : undefined);
-    } else {
-      obj.events = [];
-    }
-
-    message.codespace !== undefined && (obj.codespace = message.codespace);
-    return obj;
   }
 
 };
@@ -3364,38 +2890,6 @@ export const ResponseDeliverTx = {
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
     message.codespace = object.codespace ?? "";
     return message;
-  },
-
-  fromSDK(object: ResponseDeliverTxSDKType): ResponseDeliverTx {
-    return {
-      code: isSet(object.code) ? object.code : undefined,
-      data: isSet(object.data) ? object.data : undefined,
-      log: isSet(object.log) ? object.log : undefined,
-      info: isSet(object.info) ? object.info : undefined,
-      gasWanted: isSet(object.gas_wanted) ? object.gas_wanted : undefined,
-      gasUsed: isSet(object.gas_used) ? object.gas_used : undefined,
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromSDK(e)) : [],
-      codespace: isSet(object.codespace) ? object.codespace : undefined
-    };
-  },
-
-  toSDK(message: ResponseDeliverTx): ResponseDeliverTxSDKType {
-    const obj: any = {};
-    message.code !== undefined && (obj.code = message.code);
-    message.data !== undefined && (obj.data = message.data);
-    message.log !== undefined && (obj.log = message.log);
-    message.info !== undefined && (obj.info = message.info);
-    message.gasWanted !== undefined && (obj.gas_wanted = message.gasWanted);
-    message.gasUsed !== undefined && (obj.gas_used = message.gasUsed);
-
-    if (message.events) {
-      obj.events = message.events.map(e => e ? Event.toSDK(e) : undefined);
-    } else {
-      obj.events = [];
-    }
-
-    message.codespace !== undefined && (obj.codespace = message.codespace);
-    return obj;
   }
 
 };
@@ -3461,34 +2955,6 @@ export const ResponseEndBlock = {
     message.consensusParamUpdates = object.consensusParamUpdates !== undefined && object.consensusParamUpdates !== null ? ConsensusParams.fromPartial(object.consensusParamUpdates) : undefined;
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ResponseEndBlockSDKType): ResponseEndBlock {
-    return {
-      validatorUpdates: Array.isArray(object?.validator_updates) ? object.validator_updates.map((e: any) => ValidatorUpdate.fromSDK(e)) : [],
-      consensusParamUpdates: isSet(object.consensus_param_updates) ? ConsensusParams.fromSDK(object.consensus_param_updates) : undefined,
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: ResponseEndBlock): ResponseEndBlockSDKType {
-    const obj: any = {};
-
-    if (message.validatorUpdates) {
-      obj.validator_updates = message.validatorUpdates.map(e => e ? ValidatorUpdate.toSDK(e) : undefined);
-    } else {
-      obj.validator_updates = [];
-    }
-
-    message.consensusParamUpdates !== undefined && (obj.consensus_param_updates = message.consensusParamUpdates ? ConsensusParams.toSDK(message.consensusParamUpdates) : undefined);
-
-    if (message.events) {
-      obj.events = message.events.map(e => e ? Event.toSDK(e) : undefined);
-    } else {
-      obj.events = [];
-    }
-
-    return obj;
   }
 
 };
@@ -3544,20 +3010,6 @@ export const ResponseCommit = {
     message.data = object.data ?? new Uint8Array();
     message.retainHeight = object.retainHeight !== undefined && object.retainHeight !== null ? Long.fromValue(object.retainHeight) : Long.ZERO;
     return message;
-  },
-
-  fromSDK(object: ResponseCommitSDKType): ResponseCommit {
-    return {
-      data: isSet(object.data) ? object.data : undefined,
-      retainHeight: isSet(object.retain_height) ? object.retain_height : undefined
-    };
-  },
-
-  toSDK(message: ResponseCommit): ResponseCommitSDKType {
-    const obj: any = {};
-    message.data !== undefined && (obj.data = message.data);
-    message.retainHeight !== undefined && (obj.retain_height = message.retainHeight);
-    return obj;
   }
 
 };
@@ -3603,24 +3055,6 @@ export const ResponseListSnapshots = {
     const message = createBaseResponseListSnapshots();
     message.snapshots = object.snapshots?.map(e => Snapshot.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ResponseListSnapshotsSDKType): ResponseListSnapshots {
-    return {
-      snapshots: Array.isArray(object?.snapshots) ? object.snapshots.map((e: any) => Snapshot.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: ResponseListSnapshots): ResponseListSnapshotsSDKType {
-    const obj: any = {};
-
-    if (message.snapshots) {
-      obj.snapshots = message.snapshots.map(e => e ? Snapshot.toSDK(e) : undefined);
-    } else {
-      obj.snapshots = [];
-    }
-
-    return obj;
   }
 
 };
@@ -3666,18 +3100,6 @@ export const ResponseOfferSnapshot = {
     const message = createBaseResponseOfferSnapshot();
     message.result = object.result ?? 0;
     return message;
-  },
-
-  fromSDK(object: ResponseOfferSnapshotSDKType): ResponseOfferSnapshot {
-    return {
-      result: isSet(object.result) ? responseOfferSnapshot_ResultFromJSON(object.result) : 0
-    };
-  },
-
-  toSDK(message: ResponseOfferSnapshot): ResponseOfferSnapshotSDKType {
-    const obj: any = {};
-    message.result !== undefined && (obj.result = responseOfferSnapshot_ResultToJSON(message.result));
-    return obj;
   }
 
 };
@@ -3723,18 +3145,6 @@ export const ResponseLoadSnapshotChunk = {
     const message = createBaseResponseLoadSnapshotChunk();
     message.chunk = object.chunk ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: ResponseLoadSnapshotChunkSDKType): ResponseLoadSnapshotChunk {
-    return {
-      chunk: isSet(object.chunk) ? object.chunk : undefined
-    };
-  },
-
-  toSDK(message: ResponseLoadSnapshotChunk): ResponseLoadSnapshotChunkSDKType {
-    const obj: any = {};
-    message.chunk !== undefined && (obj.chunk = message.chunk);
-    return obj;
   }
 
 };
@@ -3813,33 +3223,6 @@ export const ResponseApplySnapshotChunk = {
     message.refetchChunks = object.refetchChunks?.map(e => e) || [];
     message.rejectSenders = object.rejectSenders?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: ResponseApplySnapshotChunkSDKType): ResponseApplySnapshotChunk {
-    return {
-      result: isSet(object.result) ? responseApplySnapshotChunk_ResultFromJSON(object.result) : 0,
-      refetchChunks: Array.isArray(object?.refetch_chunks) ? object.refetch_chunks.map((e: any) => e) : [],
-      rejectSenders: Array.isArray(object?.reject_senders) ? object.reject_senders.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: ResponseApplySnapshotChunk): ResponseApplySnapshotChunkSDKType {
-    const obj: any = {};
-    message.result !== undefined && (obj.result = responseApplySnapshotChunk_ResultToJSON(message.result));
-
-    if (message.refetchChunks) {
-      obj.refetch_chunks = message.refetchChunks.map(e => e);
-    } else {
-      obj.refetch_chunks = [];
-    }
-
-    if (message.rejectSenders) {
-      obj.reject_senders = message.rejectSenders.map(e => e);
-    } else {
-      obj.reject_senders = [];
-    }
-
-    return obj;
   }
 
 };
@@ -3915,24 +3298,6 @@ export const ConsensusParams = {
     message.validator = object.validator !== undefined && object.validator !== null ? ValidatorParams.fromPartial(object.validator) : undefined;
     message.version = object.version !== undefined && object.version !== null ? VersionParams.fromPartial(object.version) : undefined;
     return message;
-  },
-
-  fromSDK(object: ConsensusParamsSDKType): ConsensusParams {
-    return {
-      block: isSet(object.block) ? BlockParams.fromSDK(object.block) : undefined,
-      evidence: isSet(object.evidence) ? EvidenceParams.fromSDK(object.evidence) : undefined,
-      validator: isSet(object.validator) ? ValidatorParams.fromSDK(object.validator) : undefined,
-      version: isSet(object.version) ? VersionParams.fromSDK(object.version) : undefined
-    };
-  },
-
-  toSDK(message: ConsensusParams): ConsensusParamsSDKType {
-    const obj: any = {};
-    message.block !== undefined && (obj.block = message.block ? BlockParams.toSDK(message.block) : undefined);
-    message.evidence !== undefined && (obj.evidence = message.evidence ? EvidenceParams.toSDK(message.evidence) : undefined);
-    message.validator !== undefined && (obj.validator = message.validator ? ValidatorParams.toSDK(message.validator) : undefined);
-    message.version !== undefined && (obj.version = message.version ? VersionParams.toSDK(message.version) : undefined);
-    return obj;
   }
 
 };
@@ -3988,20 +3353,6 @@ export const BlockParams = {
     message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? Long.fromValue(object.maxBytes) : Long.ZERO;
     message.maxGas = object.maxGas !== undefined && object.maxGas !== null ? Long.fromValue(object.maxGas) : Long.ZERO;
     return message;
-  },
-
-  fromSDK(object: BlockParamsSDKType): BlockParams {
-    return {
-      maxBytes: isSet(object.max_bytes) ? object.max_bytes : undefined,
-      maxGas: isSet(object.max_gas) ? object.max_gas : undefined
-    };
-  },
-
-  toSDK(message: BlockParams): BlockParamsSDKType {
-    const obj: any = {};
-    message.maxBytes !== undefined && (obj.max_bytes = message.maxBytes);
-    message.maxGas !== undefined && (obj.max_gas = message.maxGas);
-    return obj;
   }
 
 };
@@ -4057,26 +3408,6 @@ export const LastCommitInfo = {
     message.round = object.round ?? 0;
     message.votes = object.votes?.map(e => VoteInfo.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: LastCommitInfoSDKType): LastCommitInfo {
-    return {
-      round: isSet(object.round) ? object.round : undefined,
-      votes: Array.isArray(object?.votes) ? object.votes.map((e: any) => VoteInfo.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: LastCommitInfo): LastCommitInfoSDKType {
-    const obj: any = {};
-    message.round !== undefined && (obj.round = message.round);
-
-    if (message.votes) {
-      obj.votes = message.votes.map(e => e ? VoteInfo.toSDK(e) : undefined);
-    } else {
-      obj.votes = [];
-    }
-
-    return obj;
   }
 
 };
@@ -4132,26 +3463,6 @@ export const Event = {
     message.type = object.type ?? "";
     message.attributes = object.attributes?.map(e => EventAttribute.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: EventSDKType): Event {
-    return {
-      type: isSet(object.type) ? object.type : undefined,
-      attributes: Array.isArray(object?.attributes) ? object.attributes.map((e: any) => EventAttribute.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: Event): EventSDKType {
-    const obj: any = {};
-    message.type !== undefined && (obj.type = message.type);
-
-    if (message.attributes) {
-      obj.attributes = message.attributes.map(e => e ? EventAttribute.toSDK(e) : undefined);
-    } else {
-      obj.attributes = [];
-    }
-
-    return obj;
   }
 
 };
@@ -4217,22 +3528,6 @@ export const EventAttribute = {
     message.value = object.value ?? new Uint8Array();
     message.index = object.index ?? false;
     return message;
-  },
-
-  fromSDK(object: EventAttributeSDKType): EventAttribute {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      value: isSet(object.value) ? object.value : undefined,
-      index: isSet(object.index) ? object.index : undefined
-    };
-  },
-
-  toSDK(message: EventAttribute): EventAttributeSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    message.index !== undefined && (obj.index = message.index);
-    return obj;
   }
 
 };
@@ -4308,24 +3603,6 @@ export const TxResult = {
     message.tx = object.tx ?? new Uint8Array();
     message.result = object.result !== undefined && object.result !== null ? ResponseDeliverTx.fromPartial(object.result) : undefined;
     return message;
-  },
-
-  fromSDK(object: TxResultSDKType): TxResult {
-    return {
-      height: isSet(object.height) ? object.height : undefined,
-      index: isSet(object.index) ? object.index : undefined,
-      tx: isSet(object.tx) ? object.tx : undefined,
-      result: isSet(object.result) ? ResponseDeliverTx.fromSDK(object.result) : undefined
-    };
-  },
-
-  toSDK(message: TxResult): TxResultSDKType {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = message.height);
-    message.index !== undefined && (obj.index = message.index);
-    message.tx !== undefined && (obj.tx = message.tx);
-    message.result !== undefined && (obj.result = message.result ? ResponseDeliverTx.toSDK(message.result) : undefined);
-    return obj;
   }
 
 };
@@ -4381,20 +3658,6 @@ export const Validator = {
     message.address = object.address ?? new Uint8Array();
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
     return message;
-  },
-
-  fromSDK(object: ValidatorSDKType): Validator {
-    return {
-      address: isSet(object.address) ? object.address : undefined,
-      power: isSet(object.power) ? object.power : undefined
-    };
-  },
-
-  toSDK(message: Validator): ValidatorSDKType {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.power !== undefined && (obj.power = message.power);
-    return obj;
   }
 
 };
@@ -4450,20 +3713,6 @@ export const ValidatorUpdate = {
     message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? PublicKey.fromPartial(object.pubKey) : undefined;
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
     return message;
-  },
-
-  fromSDK(object: ValidatorUpdateSDKType): ValidatorUpdate {
-    return {
-      pubKey: isSet(object.pub_key) ? PublicKey.fromSDK(object.pub_key) : undefined,
-      power: isSet(object.power) ? object.power : undefined
-    };
-  },
-
-  toSDK(message: ValidatorUpdate): ValidatorUpdateSDKType {
-    const obj: any = {};
-    message.pubKey !== undefined && (obj.pub_key = message.pubKey ? PublicKey.toSDK(message.pubKey) : undefined);
-    message.power !== undefined && (obj.power = message.power);
-    return obj;
   }
 
 };
@@ -4519,20 +3768,6 @@ export const VoteInfo = {
     message.validator = object.validator !== undefined && object.validator !== null ? Validator.fromPartial(object.validator) : undefined;
     message.signedLastBlock = object.signedLastBlock ?? false;
     return message;
-  },
-
-  fromSDK(object: VoteInfoSDKType): VoteInfo {
-    return {
-      validator: isSet(object.validator) ? Validator.fromSDK(object.validator) : undefined,
-      signedLastBlock: isSet(object.signed_last_block) ? object.signed_last_block : undefined
-    };
-  },
-
-  toSDK(message: VoteInfo): VoteInfoSDKType {
-    const obj: any = {};
-    message.validator !== undefined && (obj.validator = message.validator ? Validator.toSDK(message.validator) : undefined);
-    message.signedLastBlock !== undefined && (obj.signed_last_block = message.signedLastBlock);
-    return obj;
   }
 
 };
@@ -4618,26 +3853,6 @@ export const Evidence = {
     message.time = object.time ?? undefined;
     message.totalVotingPower = object.totalVotingPower !== undefined && object.totalVotingPower !== null ? Long.fromValue(object.totalVotingPower) : Long.ZERO;
     return message;
-  },
-
-  fromSDK(object: EvidenceSDKType): Evidence {
-    return {
-      type: isSet(object.type) ? evidenceTypeFromJSON(object.type) : 0,
-      validator: isSet(object.validator) ? Validator.fromSDK(object.validator) : undefined,
-      height: isSet(object.height) ? object.height : undefined,
-      time: isSet(object.time) ? Timestamp.fromSDK(object.time) : undefined,
-      totalVotingPower: isSet(object.total_voting_power) ? object.total_voting_power : undefined
-    };
-  },
-
-  toSDK(message: Evidence): EvidenceSDKType {
-    const obj: any = {};
-    message.type !== undefined && (obj.type = evidenceTypeToJSON(message.type));
-    message.validator !== undefined && (obj.validator = message.validator ? Validator.toSDK(message.validator) : undefined);
-    message.height !== undefined && (obj.height = message.height);
-    message.time !== undefined && (obj.time = message.time ? Timestamp.toSDK(message.time) : undefined);
-    message.totalVotingPower !== undefined && (obj.total_voting_power = message.totalVotingPower);
-    return obj;
   }
 
 };
@@ -4723,26 +3938,6 @@ export const Snapshot = {
     message.hash = object.hash ?? new Uint8Array();
     message.metadata = object.metadata ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: SnapshotSDKType): Snapshot {
-    return {
-      height: isSet(object.height) ? object.height : undefined,
-      format: isSet(object.format) ? object.format : undefined,
-      chunks: isSet(object.chunks) ? object.chunks : undefined,
-      hash: isSet(object.hash) ? object.hash : undefined,
-      metadata: isSet(object.metadata) ? object.metadata : undefined
-    };
-  },
-
-  toSDK(message: Snapshot): SnapshotSDKType {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = message.height);
-    message.format !== undefined && (obj.format = message.format);
-    message.chunks !== undefined && (obj.chunks = message.chunks);
-    message.hash !== undefined && (obj.hash = message.hash);
-    message.metadata !== undefined && (obj.metadata = message.metadata);
-    return obj;
   }
 
 };

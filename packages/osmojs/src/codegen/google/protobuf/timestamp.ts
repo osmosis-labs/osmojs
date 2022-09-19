@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * A Timestamp represents a point in time independent of any time zone or local
  * calendar, encoded as a count of seconds and fractions of seconds at
@@ -254,20 +254,6 @@ export const Timestamp = {
     message.seconds = object.seconds !== undefined && object.seconds !== null ? Long.fromValue(object.seconds) : Long.ZERO;
     message.nanos = object.nanos ?? 0;
     return message;
-  },
-
-  fromSDK(object: TimestampSDKType): Timestamp {
-    return {
-      seconds: isSet(object.seconds) ? object.seconds : undefined,
-      nanos: isSet(object.nanos) ? object.nanos : undefined
-    };
-  },
-
-  toSDK(message: Timestamp): TimestampSDKType {
-    const obj: any = {};
-    message.seconds !== undefined && (obj.seconds = message.seconds);
-    message.nanos !== undefined && (obj.nanos = message.nanos);
-    return obj;
   }
 
 };

@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
 
 export interface QueryEvidenceRequest {
@@ -110,18 +110,6 @@ export const QueryEvidenceRequest = {
     const message = createBaseQueryEvidenceRequest();
     message.evidenceHash = object.evidenceHash ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: QueryEvidenceRequestSDKType): QueryEvidenceRequest {
-    return {
-      evidenceHash: isSet(object.evidence_hash) ? object.evidence_hash : undefined
-    };
-  },
-
-  toSDK(message: QueryEvidenceRequest): QueryEvidenceRequestSDKType {
-    const obj: any = {};
-    message.evidenceHash !== undefined && (obj.evidence_hash = message.evidenceHash);
-    return obj;
   }
 
 };
@@ -167,18 +155,6 @@ export const QueryEvidenceResponse = {
     const message = createBaseQueryEvidenceResponse();
     message.evidence = object.evidence !== undefined && object.evidence !== null ? Any.fromPartial(object.evidence) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryEvidenceResponseSDKType): QueryEvidenceResponse {
-    return {
-      evidence: isSet(object.evidence) ? Any.fromSDK(object.evidence) : undefined
-    };
-  },
-
-  toSDK(message: QueryEvidenceResponse): QueryEvidenceResponseSDKType {
-    const obj: any = {};
-    message.evidence !== undefined && (obj.evidence = message.evidence ? Any.toSDK(message.evidence) : undefined);
-    return obj;
   }
 
 };
@@ -224,18 +200,6 @@ export const QueryAllEvidenceRequest = {
     const message = createBaseQueryAllEvidenceRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAllEvidenceRequestSDKType): QueryAllEvidenceRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryAllEvidenceRequest): QueryAllEvidenceRequestSDKType {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };
@@ -291,26 +255,6 @@ export const QueryAllEvidenceResponse = {
     message.evidence = object.evidence?.map(e => Any.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-
-  fromSDK(object: QueryAllEvidenceResponseSDKType): QueryAllEvidenceResponse {
-    return {
-      evidence: Array.isArray(object?.evidence) ? object.evidence.map((e: any) => Any.fromSDK(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-
-  toSDK(message: QueryAllEvidenceResponse): QueryAllEvidenceResponseSDKType {
-    const obj: any = {};
-
-    if (message.evidence) {
-      obj.evidence = message.evidence.map(e => e ? Any.toSDK(e) : undefined);
-    } else {
-      obj.evidence = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   }
 
 };

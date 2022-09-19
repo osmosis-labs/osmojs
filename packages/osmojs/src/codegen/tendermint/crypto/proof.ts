@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface Proof {
   total: Long;
   index: Long;
@@ -140,30 +140,6 @@ export const Proof = {
     message.leafHash = object.leafHash ?? new Uint8Array();
     message.aunts = object.aunts?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: ProofSDKType): Proof {
-    return {
-      total: isSet(object.total) ? object.total : undefined,
-      index: isSet(object.index) ? object.index : undefined,
-      leafHash: isSet(object.leaf_hash) ? object.leaf_hash : undefined,
-      aunts: Array.isArray(object?.aunts) ? object.aunts.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: Proof): ProofSDKType {
-    const obj: any = {};
-    message.total !== undefined && (obj.total = message.total);
-    message.index !== undefined && (obj.index = message.index);
-    message.leafHash !== undefined && (obj.leaf_hash = message.leafHash);
-
-    if (message.aunts) {
-      obj.aunts = message.aunts.map(e => e);
-    } else {
-      obj.aunts = [];
-    }
-
-    return obj;
   }
 
 };
@@ -219,20 +195,6 @@ export const ValueOp = {
     message.key = object.key ?? new Uint8Array();
     message.proof = object.proof !== undefined && object.proof !== null ? Proof.fromPartial(object.proof) : undefined;
     return message;
-  },
-
-  fromSDK(object: ValueOpSDKType): ValueOp {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      proof: isSet(object.proof) ? Proof.fromSDK(object.proof) : undefined
-    };
-  },
-
-  toSDK(message: ValueOp): ValueOpSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.proof !== undefined && (obj.proof = message.proof ? Proof.toSDK(message.proof) : undefined);
-    return obj;
   }
 
 };
@@ -298,22 +260,6 @@ export const DominoOp = {
     message.input = object.input ?? "";
     message.output = object.output ?? "";
     return message;
-  },
-
-  fromSDK(object: DominoOpSDKType): DominoOp {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      input: isSet(object.input) ? object.input : undefined,
-      output: isSet(object.output) ? object.output : undefined
-    };
-  },
-
-  toSDK(message: DominoOp): DominoOpSDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.input !== undefined && (obj.input = message.input);
-    message.output !== undefined && (obj.output = message.output);
-    return obj;
   }
 
 };
@@ -379,22 +325,6 @@ export const ProofOp = {
     message.key = object.key ?? new Uint8Array();
     message.data = object.data ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: ProofOpSDKType): ProofOp {
-    return {
-      type: isSet(object.type) ? object.type : undefined,
-      key: isSet(object.key) ? object.key : undefined,
-      data: isSet(object.data) ? object.data : undefined
-    };
-  },
-
-  toSDK(message: ProofOp): ProofOpSDKType {
-    const obj: any = {};
-    message.type !== undefined && (obj.type = message.type);
-    message.key !== undefined && (obj.key = message.key);
-    message.data !== undefined && (obj.data = message.data);
-    return obj;
   }
 
 };
@@ -440,24 +370,6 @@ export const ProofOps = {
     const message = createBaseProofOps();
     message.ops = object.ops?.map(e => ProofOp.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ProofOpsSDKType): ProofOps {
-    return {
-      ops: Array.isArray(object?.ops) ? object.ops.map((e: any) => ProofOp.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: ProofOps): ProofOpsSDKType {
-    const obj: any = {};
-
-    if (message.ops) {
-      obj.ops = message.ops.map(e => e ? ProofOp.toSDK(e) : undefined);
-    } else {
-      obj.ops = [];
-    }
-
-    return obj;
   }
 
 };

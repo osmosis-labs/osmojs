@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, isObject } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * `NullValue` is a singleton enumeration to represent the null value for the
  * `Value` type union.
@@ -215,20 +215,6 @@ export const Struct_FieldsEntry = {
     message.key = object.key ?? "";
     message.value = object.value !== undefined && object.value !== null ? Value.fromPartial(object.value) : undefined;
     return message;
-  },
-
-  fromSDK(object: Struct_FieldsEntrySDKType): Struct_FieldsEntry {
-    return {
-      key: isSet(object.key) ? object.key : undefined,
-      value: isSet(object.value) ? Value.fromSDK(object.value) : undefined
-    };
-  },
-
-  toSDK(message: Struct_FieldsEntry): Struct_FieldsEntrySDKType {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value ? Value.toSDK(message.value) : undefined);
-    return obj;
   }
 
 };
@@ -289,30 +275,6 @@ export const Struct = {
       return acc;
     }, {});
     return message;
-  },
-
-  fromSDK(object: StructSDKType): Struct {
-    return {
-      fields: isObject(object.fields) ? Object.entries(object.fields).reduce<{
-        [key: string]: Value;
-      }>((acc, [key, value]) => {
-        acc[key] = Value.fromSDK(value);
-        return acc;
-      }, {}) : {}
-    };
-  },
-
-  toSDK(message: Struct): StructSDKType {
-    const obj: any = {};
-    obj.fields = {};
-
-    if (message.fields) {
-      Object.entries(message.fields).forEach(([k, v]) => {
-        obj.fields[k] = Value.toSDK(v);
-      });
-    }
-
-    return obj;
   }
 
 };
@@ -408,28 +370,6 @@ export const Value = {
     message.structValue = object.structValue !== undefined && object.structValue !== null ? Struct.fromPartial(object.structValue) : undefined;
     message.listValue = object.listValue !== undefined && object.listValue !== null ? ListValue.fromPartial(object.listValue) : undefined;
     return message;
-  },
-
-  fromSDK(object: ValueSDKType): Value {
-    return {
-      nullValue: isSet(object.null_value) ? nullValueFromJSON(object.null_value) : undefined,
-      numberValue: isSet(object.number_value) ? object.number_value : undefined,
-      stringValue: isSet(object.string_value) ? object.string_value : undefined,
-      boolValue: isSet(object.bool_value) ? object.bool_value : undefined,
-      structValue: isSet(object.struct_value) ? Struct.fromSDK(object.struct_value) : undefined,
-      listValue: isSet(object.list_value) ? ListValue.fromSDK(object.list_value) : undefined
-    };
-  },
-
-  toSDK(message: Value): ValueSDKType {
-    const obj: any = {};
-    message.nullValue !== undefined && (obj.null_value = nullValueToJSON(message.nullValue));
-    message.numberValue !== undefined && (obj.number_value = message.numberValue);
-    message.stringValue !== undefined && (obj.string_value = message.stringValue);
-    message.boolValue !== undefined && (obj.bool_value = message.boolValue);
-    message.structValue !== undefined && (obj.struct_value = message.structValue ? Struct.toSDK(message.structValue) : undefined);
-    message.listValue !== undefined && (obj.list_value = message.listValue ? ListValue.toSDK(message.listValue) : undefined);
-    return obj;
   }
 
 };
@@ -475,24 +415,6 @@ export const ListValue = {
     const message = createBaseListValue();
     message.values = object.values?.map(e => Value.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ListValueSDKType): ListValue {
-    return {
-      values: Array.isArray(object?.values) ? object.values.map((e: any) => Value.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: ListValue): ListValueSDKType {
-    const obj: any = {};
-
-    if (message.values) {
-      obj.values = message.values.map(e => e ? Value.toSDK(e) : undefined);
-    } else {
-      obj.values = [];
-    }
-
-    return obj;
   }
 
 };

@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /** ModuleDescriptor describes an app module. */
 
 export interface ModuleDescriptor {
@@ -238,33 +238,6 @@ export const ModuleDescriptor = {
     message.usePackage = object.usePackage?.map(e => PackageReference.fromPartial(e)) || [];
     message.canMigrateFrom = object.canMigrateFrom?.map(e => MigrateFromInfo.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ModuleDescriptorSDKType): ModuleDescriptor {
-    return {
-      goImport: isSet(object.go_import) ? object.go_import : undefined,
-      usePackage: Array.isArray(object?.use_package) ? object.use_package.map((e: any) => PackageReference.fromSDK(e)) : [],
-      canMigrateFrom: Array.isArray(object?.can_migrate_from) ? object.can_migrate_from.map((e: any) => MigrateFromInfo.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: ModuleDescriptor): ModuleDescriptorSDKType {
-    const obj: any = {};
-    message.goImport !== undefined && (obj.go_import = message.goImport);
-
-    if (message.usePackage) {
-      obj.use_package = message.usePackage.map(e => e ? PackageReference.toSDK(e) : undefined);
-    } else {
-      obj.use_package = [];
-    }
-
-    if (message.canMigrateFrom) {
-      obj.can_migrate_from = message.canMigrateFrom.map(e => e ? MigrateFromInfo.toSDK(e) : undefined);
-    } else {
-      obj.can_migrate_from = [];
-    }
-
-    return obj;
   }
 
 };
@@ -320,20 +293,6 @@ export const PackageReference = {
     message.name = object.name ?? "";
     message.revision = object.revision ?? 0;
     return message;
-  },
-
-  fromSDK(object: PackageReferenceSDKType): PackageReference {
-    return {
-      name: isSet(object.name) ? object.name : undefined,
-      revision: isSet(object.revision) ? object.revision : undefined
-    };
-  },
-
-  toSDK(message: PackageReference): PackageReferenceSDKType {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.revision !== undefined && (obj.revision = message.revision);
-    return obj;
   }
 
 };
@@ -379,18 +338,6 @@ export const MigrateFromInfo = {
     const message = createBaseMigrateFromInfo();
     message.module = object.module ?? "";
     return message;
-  },
-
-  fromSDK(object: MigrateFromInfoSDKType): MigrateFromInfo {
-    return {
-      module: isSet(object.module) ? object.module : undefined
-    };
-  },
-
-  toSDK(message: MigrateFromInfo): MigrateFromInfoSDKType {
-    const obj: any = {};
-    message.module !== undefined && (obj.module = message.module);
-    return obj;
   }
 
 };

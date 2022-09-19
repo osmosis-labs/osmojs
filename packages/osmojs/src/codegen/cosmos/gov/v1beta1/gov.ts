@@ -3,7 +3,7 @@ import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, Long, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
+import { DeepPartial, Long, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 
 export enum VoteOption {
@@ -499,20 +499,6 @@ export const WeightedVoteOption = {
     message.option = object.option ?? 0;
     message.weight = object.weight ?? "";
     return message;
-  },
-
-  fromSDK(object: WeightedVoteOptionSDKType): WeightedVoteOption {
-    return {
-      option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0,
-      weight: isSet(object.weight) ? object.weight : undefined
-    };
-  },
-
-  toSDK(message: WeightedVoteOption): WeightedVoteOptionSDKType {
-    const obj: any = {};
-    message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
-    message.weight !== undefined && (obj.weight = message.weight);
-    return obj;
   }
 
 };
@@ -568,20 +554,6 @@ export const TextProposal = {
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     return message;
-  },
-
-  fromSDK(object: TextProposalSDKType): TextProposal {
-    return {
-      title: isSet(object.title) ? object.title : undefined,
-      description: isSet(object.description) ? object.description : undefined
-    };
-  },
-
-  toSDK(message: TextProposal): TextProposalSDKType {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    return obj;
   }
 
 };
@@ -647,28 +619,6 @@ export const Deposit = {
     message.depositor = object.depositor ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: DepositSDKType): Deposit {
-    return {
-      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
-      depositor: isSet(object.depositor) ? object.depositor : undefined,
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: Deposit): DepositSDKType {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
-    message.depositor !== undefined && (obj.depositor = message.depositor);
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    return obj;
   }
 
 };
@@ -794,40 +744,6 @@ export const Proposal = {
     message.votingStartTime = object.votingStartTime ?? undefined;
     message.votingEndTime = object.votingEndTime ?? undefined;
     return message;
-  },
-
-  fromSDK(object: ProposalSDKType): Proposal {
-    return {
-      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
-      content: isSet(object.content) ? Any.fromSDK(object.content) : undefined,
-      status: isSet(object.status) ? proposalStatusFromJSON(object.status) : 0,
-      finalTallyResult: isSet(object.final_tally_result) ? TallyResult.fromSDK(object.final_tally_result) : undefined,
-      submitTime: isSet(object.submit_time) ? Timestamp.fromSDK(object.submit_time) : undefined,
-      depositEndTime: isSet(object.deposit_end_time) ? Timestamp.fromSDK(object.deposit_end_time) : undefined,
-      totalDeposit: Array.isArray(object?.total_deposit) ? object.total_deposit.map((e: any) => Coin.fromSDK(e)) : [],
-      votingStartTime: isSet(object.voting_start_time) ? Timestamp.fromSDK(object.voting_start_time) : undefined,
-      votingEndTime: isSet(object.voting_end_time) ? Timestamp.fromSDK(object.voting_end_time) : undefined
-    };
-  },
-
-  toSDK(message: Proposal): ProposalSDKType {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
-    message.content !== undefined && (obj.content = message.content ? Any.toSDK(message.content) : undefined);
-    message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
-    message.finalTallyResult !== undefined && (obj.final_tally_result = message.finalTallyResult ? TallyResult.toSDK(message.finalTallyResult) : undefined);
-    message.submitTime !== undefined && (obj.submit_time = message.submitTime ? Timestamp.toSDK(message.submitTime) : undefined);
-    message.depositEndTime !== undefined && (obj.deposit_end_time = message.depositEndTime ? Timestamp.toSDK(message.depositEndTime) : undefined);
-
-    if (message.totalDeposit) {
-      obj.total_deposit = message.totalDeposit.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.total_deposit = [];
-    }
-
-    message.votingStartTime !== undefined && (obj.voting_start_time = message.votingStartTime ? Timestamp.toSDK(message.votingStartTime) : undefined);
-    message.votingEndTime !== undefined && (obj.voting_end_time = message.votingEndTime ? Timestamp.toSDK(message.votingEndTime) : undefined);
-    return obj;
   }
 
 };
@@ -903,24 +819,6 @@ export const TallyResult = {
     message.no = object.no ?? "";
     message.noWithVeto = object.noWithVeto ?? "";
     return message;
-  },
-
-  fromSDK(object: TallyResultSDKType): TallyResult {
-    return {
-      yes: isSet(object.yes) ? object.yes : undefined,
-      abstain: isSet(object.abstain) ? object.abstain : undefined,
-      no: isSet(object.no) ? object.no : undefined,
-      noWithVeto: isSet(object.no_with_veto) ? object.no_with_veto : undefined
-    };
-  },
-
-  toSDK(message: TallyResult): TallyResultSDKType {
-    const obj: any = {};
-    message.yes !== undefined && (obj.yes = message.yes);
-    message.abstain !== undefined && (obj.abstain = message.abstain);
-    message.no !== undefined && (obj.no = message.no);
-    message.noWithVeto !== undefined && (obj.no_with_veto = message.noWithVeto);
-    return obj;
   }
 
 };
@@ -996,30 +894,6 @@ export const Vote = {
     message.option = object.option ?? 0;
     message.options = object.options?.map(e => WeightedVoteOption.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: VoteSDKType): Vote {
-    return {
-      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
-      voter: isSet(object.voter) ? object.voter : undefined,
-      option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0,
-      options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: Vote): VoteSDKType {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
-    message.voter !== undefined && (obj.voter = message.voter);
-    message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
-
-    if (message.options) {
-      obj.options = message.options.map(e => e ? WeightedVoteOption.toSDK(e) : undefined);
-    } else {
-      obj.options = [];
-    }
-
-    return obj;
   }
 
 };
@@ -1075,26 +949,6 @@ export const DepositParams = {
     message.minDeposit = object.minDeposit?.map(e => Coin.fromPartial(e)) || [];
     message.maxDepositPeriod = object.maxDepositPeriod ?? undefined;
     return message;
-  },
-
-  fromSDK(object: DepositParamsSDKType): DepositParams {
-    return {
-      minDeposit: Array.isArray(object?.min_deposit) ? object.min_deposit.map((e: any) => Coin.fromSDK(e)) : [],
-      maxDepositPeriod: isSet(object.max_deposit_period) ? Duration.fromSDK(object.max_deposit_period) : undefined
-    };
-  },
-
-  toSDK(message: DepositParams): DepositParamsSDKType {
-    const obj: any = {};
-
-    if (message.minDeposit) {
-      obj.min_deposit = message.minDeposit.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.min_deposit = [];
-    }
-
-    message.maxDepositPeriod !== undefined && (obj.max_deposit_period = message.maxDepositPeriod ? Duration.toSDK(message.maxDepositPeriod) : undefined);
-    return obj;
   }
 
 };
@@ -1140,18 +994,6 @@ export const VotingParams = {
     const message = createBaseVotingParams();
     message.votingPeriod = object.votingPeriod ?? undefined;
     return message;
-  },
-
-  fromSDK(object: VotingParamsSDKType): VotingParams {
-    return {
-      votingPeriod: isSet(object.voting_period) ? Duration.fromSDK(object.voting_period) : undefined
-    };
-  },
-
-  toSDK(message: VotingParams): VotingParamsSDKType {
-    const obj: any = {};
-    message.votingPeriod !== undefined && (obj.voting_period = message.votingPeriod ? Duration.toSDK(message.votingPeriod) : undefined);
-    return obj;
   }
 
 };
@@ -1217,22 +1059,6 @@ export const TallyParams = {
     message.threshold = object.threshold ?? new Uint8Array();
     message.vetoThreshold = object.vetoThreshold ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: TallyParamsSDKType): TallyParams {
-    return {
-      quorum: isSet(object.quorum) ? object.quorum : undefined,
-      threshold: isSet(object.threshold) ? object.threshold : undefined,
-      vetoThreshold: isSet(object.veto_threshold) ? object.veto_threshold : undefined
-    };
-  },
-
-  toSDK(message: TallyParams): TallyParamsSDKType {
-    const obj: any = {};
-    message.quorum !== undefined && (obj.quorum = message.quorum);
-    message.threshold !== undefined && (obj.threshold = message.threshold);
-    message.vetoThreshold !== undefined && (obj.veto_threshold = message.vetoThreshold);
-    return obj;
   }
 
 };

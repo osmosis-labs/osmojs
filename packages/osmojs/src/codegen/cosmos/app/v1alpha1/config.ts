@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * Config represents the configuration for a Cosmos SDK ABCI app.
  * It is intended that all state machine logic including the version of
@@ -117,24 +117,6 @@ export const Config = {
     const message = createBaseConfig();
     message.modules = object.modules?.map(e => ModuleConfig.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ConfigSDKType): Config {
-    return {
-      modules: Array.isArray(object?.modules) ? object.modules.map((e: any) => ModuleConfig.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: Config): ConfigSDKType {
-    const obj: any = {};
-
-    if (message.modules) {
-      obj.modules = message.modules.map(e => e ? ModuleConfig.toSDK(e) : undefined);
-    } else {
-      obj.modules = [];
-    }
-
-    return obj;
   }
 
 };
@@ -190,20 +172,6 @@ export const ModuleConfig = {
     message.name = object.name ?? "";
     message.config = object.config !== undefined && object.config !== null ? Any.fromPartial(object.config) : undefined;
     return message;
-  },
-
-  fromSDK(object: ModuleConfigSDKType): ModuleConfig {
-    return {
-      name: isSet(object.name) ? object.name : undefined,
-      config: isSet(object.config) ? Any.fromSDK(object.config) : undefined
-    };
-  },
-
-  toSDK(message: ModuleConfig): ModuleConfigSDKType {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.config !== undefined && (obj.config = message.config ? Any.toSDK(message.config) : undefined);
-    return obj;
   }
 
 };

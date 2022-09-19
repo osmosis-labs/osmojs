@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a
  * URL that describes the type of the serialized message.
@@ -286,20 +286,6 @@ export const Any = {
     message.typeUrl = object.typeUrl ?? "";
     message.value = object.value ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: AnySDKType): Any {
-    return {
-      typeUrl: isSet(object.type_url) ? object.type_url : undefined,
-      value: isSet(object.value) ? object.value : undefined
-    };
-  },
-
-  toSDK(message: Any): AnySDKType {
-    const obj: any = {};
-    message.typeUrl !== undefined && (obj.type_url = message.typeUrl);
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   }
 
 };

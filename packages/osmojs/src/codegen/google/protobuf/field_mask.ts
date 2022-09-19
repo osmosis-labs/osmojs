@@ -454,24 +454,6 @@ export const FieldMask = {
     const message = createBaseFieldMask();
     message.paths = object.paths?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: FieldMaskSDKType): FieldMask {
-    return {
-      paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: FieldMask): FieldMaskSDKType {
-    const obj: any = {};
-
-    if (message.paths) {
-      obj.paths = message.paths.map(e => e);
-    } else {
-      obj.paths = [];
-    }
-
-    return obj;
   }
 
 };

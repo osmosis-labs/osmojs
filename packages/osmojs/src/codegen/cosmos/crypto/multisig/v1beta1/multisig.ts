@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * MultiSignature wraps the signatures from a multisig.LegacyAminoPubKey.
  * See cosmos.tx.v1betata1.ModeInfo.Multi for how to specify which signers
@@ -82,24 +82,6 @@ export const MultiSignature = {
     const message = createBaseMultiSignature();
     message.signatures = object.signatures?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: MultiSignatureSDKType): MultiSignature {
-    return {
-      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: MultiSignature): MultiSignatureSDKType {
-    const obj: any = {};
-
-    if (message.signatures) {
-      obj.signatures = message.signatures.map(e => e);
-    } else {
-      obj.signatures = [];
-    }
-
-    return obj;
   }
 
 };
@@ -155,20 +137,6 @@ export const CompactBitArray = {
     message.extraBitsStored = object.extraBitsStored ?? 0;
     message.elems = object.elems ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: CompactBitArraySDKType): CompactBitArray {
-    return {
-      extraBitsStored: isSet(object.extra_bits_stored) ? object.extra_bits_stored : undefined,
-      elems: isSet(object.elems) ? object.elems : undefined
-    };
-  },
-
-  toSDK(message: CompactBitArray): CompactBitArraySDKType {
-    const obj: any = {};
-    message.extraBitsStored !== undefined && (obj.extra_bits_stored = message.extraBitsStored);
-    message.elems !== undefined && (obj.elems = message.elems);
-    return obj;
   }
 
 };

@@ -1,7 +1,7 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long, isSet } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /** Params holds parameters for the incentives module */
 
 export interface Params {
@@ -68,24 +68,6 @@ export const Params = {
     const message = createBaseParams();
     message.poolCreationFee = object.poolCreationFee?.map(e => Coin.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: ParamsSDKType): Params {
-    return {
-      poolCreationFee: Array.isArray(object?.pool_creation_fee) ? object.pool_creation_fee.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: Params): ParamsSDKType {
-    const obj: any = {};
-
-    if (message.poolCreationFee) {
-      obj.pool_creation_fee = message.poolCreationFee.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.pool_creation_fee = [];
-    }
-
-    return obj;
   }
 
 };
@@ -151,28 +133,6 @@ export const GenesisState = {
     message.nextPoolNumber = object.nextPoolNumber !== undefined && object.nextPoolNumber !== null ? Long.fromValue(object.nextPoolNumber) : Long.UZERO;
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
-  },
-
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      pools: Array.isArray(object?.pools) ? object.pools.map((e: any) => Any.fromSDK(e)) : [],
-      nextPoolNumber: isSet(object.next_pool_number) ? object.next_pool_number : undefined,
-      params: isSet(object.params) ? Params.fromSDK(object.params) : undefined
-    };
-  },
-
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-
-    if (message.pools) {
-      obj.pools = message.pools.map(e => e ? Any.toSDK(e) : undefined);
-    } else {
-      obj.pools = [];
-    }
-
-    message.nextPoolNumber !== undefined && (obj.next_pool_number = message.nextPoolNumber);
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
   }
 
 };

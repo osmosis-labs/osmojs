@@ -1,6 +1,6 @@
 import { CommitmentProof, CommitmentProofSDKType } from "../../../../confio/proofs";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * MerkleRoot defines a merkle root hash.
  * In the Cosmos SDK, the AppHash of a block header becomes the root.
@@ -117,18 +117,6 @@ export const MerkleRoot = {
     const message = createBaseMerkleRoot();
     message.hash = object.hash ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: MerkleRootSDKType): MerkleRoot {
-    return {
-      hash: isSet(object.hash) ? object.hash : undefined
-    };
-  },
-
-  toSDK(message: MerkleRoot): MerkleRootSDKType {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = message.hash);
-    return obj;
   }
 
 };
@@ -174,18 +162,6 @@ export const MerklePrefix = {
     const message = createBaseMerklePrefix();
     message.keyPrefix = object.keyPrefix ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: MerklePrefixSDKType): MerklePrefix {
-    return {
-      keyPrefix: isSet(object.key_prefix) ? object.key_prefix : undefined
-    };
-  },
-
-  toSDK(message: MerklePrefix): MerklePrefixSDKType {
-    const obj: any = {};
-    message.keyPrefix !== undefined && (obj.key_prefix = message.keyPrefix);
-    return obj;
   }
 
 };
@@ -231,24 +207,6 @@ export const MerklePath = {
     const message = createBaseMerklePath();
     message.keyPath = object.keyPath?.map(e => e) || [];
     return message;
-  },
-
-  fromSDK(object: MerklePathSDKType): MerklePath {
-    return {
-      keyPath: Array.isArray(object?.key_path) ? object.key_path.map((e: any) => e) : []
-    };
-  },
-
-  toSDK(message: MerklePath): MerklePathSDKType {
-    const obj: any = {};
-
-    if (message.keyPath) {
-      obj.key_path = message.keyPath.map(e => e);
-    } else {
-      obj.key_path = [];
-    }
-
-    return obj;
   }
 
 };
@@ -294,24 +252,6 @@ export const MerkleProof = {
     const message = createBaseMerkleProof();
     message.proofs = object.proofs?.map(e => CommitmentProof.fromPartial(e)) || [];
     return message;
-  },
-
-  fromSDK(object: MerkleProofSDKType): MerkleProof {
-    return {
-      proofs: Array.isArray(object?.proofs) ? object.proofs.map((e: any) => CommitmentProof.fromSDK(e)) : []
-    };
-  },
-
-  toSDK(message: MerkleProof): MerkleProofSDKType {
-    const obj: any = {};
-
-    if (message.proofs) {
-      obj.proofs = message.proofs.map(e => e ? CommitmentProof.toSDK(e) : undefined);
-    } else {
-      obj.proofs = [];
-    }
-
-    return obj;
   }
 
 };

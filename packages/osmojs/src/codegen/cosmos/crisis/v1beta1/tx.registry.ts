@@ -25,24 +25,6 @@ export const MessageComposer = {
     }
 
   },
-  toJSON: {
-    verifyInvariant(value: MsgVerifyInvariant) {
-      return {
-        typeUrl: "/cosmos.crisis.v1beta1.MsgVerifyInvariant",
-        value: MsgVerifyInvariant.toJSON(value)
-      };
-    }
-
-  },
-  fromJSON: {
-    verifyInvariant(value: any) {
-      return {
-        typeUrl: "/cosmos.crisis.v1beta1.MsgVerifyInvariant",
-        value: MsgVerifyInvariant.fromJSON(value)
-      };
-    }
-
-  },
   fromPartial: {
     verifyInvariant(value: MsgVerifyInvariant) {
       return {

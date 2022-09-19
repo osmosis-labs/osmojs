@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /** MsgIBCSend */
 
 export interface MsgIBCSend {
@@ -130,24 +130,6 @@ export const MsgIBCSend = {
     message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO;
     message.data = object.data ?? new Uint8Array();
     return message;
-  },
-
-  fromSDK(object: MsgIBCSendSDKType): MsgIBCSend {
-    return {
-      channel: isSet(object.channel) ? object.channel : undefined,
-      timeoutHeight: isSet(object.timeout_height) ? object.timeout_height : undefined,
-      timeoutTimestamp: isSet(object.timeout_timestamp) ? object.timeout_timestamp : undefined,
-      data: isSet(object.data) ? object.data : undefined
-    };
-  },
-
-  toSDK(message: MsgIBCSend): MsgIBCSendSDKType {
-    const obj: any = {};
-    message.channel !== undefined && (obj.channel = message.channel);
-    message.timeoutHeight !== undefined && (obj.timeout_height = message.timeoutHeight);
-    message.timeoutTimestamp !== undefined && (obj.timeout_timestamp = message.timeoutTimestamp);
-    message.data !== undefined && (obj.data = message.data);
-    return obj;
   }
 
 };
@@ -193,18 +175,6 @@ export const MsgIBCCloseChannel = {
     const message = createBaseMsgIBCCloseChannel();
     message.channel = object.channel ?? "";
     return message;
-  },
-
-  fromSDK(object: MsgIBCCloseChannelSDKType): MsgIBCCloseChannel {
-    return {
-      channel: isSet(object.channel) ? object.channel : undefined
-    };
-  },
-
-  toSDK(message: MsgIBCCloseChannel): MsgIBCCloseChannelSDKType {
-    const obj: any = {};
-    message.channel !== undefined && (obj.channel = message.channel);
-    return obj;
   }
 
 };

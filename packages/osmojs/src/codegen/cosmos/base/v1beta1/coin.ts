@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * Coin defines a token with a denomination and an amount.
  * 
@@ -116,20 +116,6 @@ export const Coin = {
     message.denom = object.denom ?? "";
     message.amount = object.amount ?? "";
     return message;
-  },
-
-  fromSDK(object: CoinSDKType): Coin {
-    return {
-      denom: isSet(object.denom) ? object.denom : undefined,
-      amount: isSet(object.amount) ? object.amount : undefined
-    };
-  },
-
-  toSDK(message: Coin): CoinSDKType {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.amount !== undefined && (obj.amount = message.amount);
-    return obj;
   }
 
 };
@@ -185,20 +171,6 @@ export const DecCoin = {
     message.denom = object.denom ?? "";
     message.amount = object.amount ?? "";
     return message;
-  },
-
-  fromSDK(object: DecCoinSDKType): DecCoin {
-    return {
-      denom: isSet(object.denom) ? object.denom : undefined,
-      amount: isSet(object.amount) ? object.amount : undefined
-    };
-  },
-
-  toSDK(message: DecCoin): DecCoinSDKType {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.amount !== undefined && (obj.amount = message.amount);
-    return obj;
   }
 
 };
@@ -244,18 +216,6 @@ export const IntProto = {
     const message = createBaseIntProto();
     message.int = object.int ?? "";
     return message;
-  },
-
-  fromSDK(object: IntProtoSDKType): IntProto {
-    return {
-      int: isSet(object.int) ? object.int : undefined
-    };
-  },
-
-  toSDK(message: IntProto): IntProtoSDKType {
-    const obj: any = {};
-    message.int !== undefined && (obj.int = message.int);
-    return obj;
   }
 
 };
@@ -301,18 +261,6 @@ export const DecProto = {
     const message = createBaseDecProto();
     message.dec = object.dec ?? "";
     return message;
-  },
-
-  fromSDK(object: DecProtoSDKType): DecProto {
-    return {
-      dec: isSet(object.dec) ? object.dec : undefined
-    };
-  },
-
-  toSDK(message: DecProto): DecProtoSDKType {
-    const obj: any = {};
-    message.dec !== undefined && (obj.dec = message.dec);
-    return obj;
   }
 
 };
