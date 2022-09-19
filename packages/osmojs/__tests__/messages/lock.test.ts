@@ -3,7 +3,7 @@ import { AminoConverter } from '../../src/codegen/osmosis/lockup/tx.amino';
 import { osmosis } from '../../src/codegen';
 import Long from 'long';
 
-it('toJSON', () => {
+xit('toJSON', () => {
   const msg = osmosis.lockup.MsgLockTokens.toJSON({
     owner: 'osmo1RedactedAddress',
     duration: '1209600',

@@ -1,11 +1,11 @@
 
 import { osmosis } from '../../src/codegen';
 
-it('toJSON', () => {
+xit('toJSON', () => {
     expect(Object.keys(osmosis.gamm.v1beta1.MessageComposer.toJSON)).toMatchSnapshot();
 });
 
-it('fromJSON', () => {
+xit('fromJSON', () => {
     expect(Object.keys(osmosis.gamm.v1beta1.MessageComposer.fromJSON)).toMatchSnapshot();
 });
 
