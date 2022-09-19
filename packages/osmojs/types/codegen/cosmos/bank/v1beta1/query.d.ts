@@ -302,133 +302,133 @@ export interface QueryDenomOwnersResponseSDKType {
 export declare const QueryBalanceRequest: {
     encode(message: QueryBalanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceRequest;
-    fromJSON(object: any): QueryBalanceRequest;
-    toJSON(message: QueryBalanceRequest): unknown;
     fromPartial(object: DeepPartial<QueryBalanceRequest>): QueryBalanceRequest;
+    fromSDK(object: QueryBalanceRequestSDKType): QueryBalanceRequest;
+    toSDK(message: QueryBalanceRequest): QueryBalanceRequestSDKType;
 };
 export declare const QueryBalanceResponse: {
     encode(message: QueryBalanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceResponseSDKType;
-    fromJSON(object: any): QueryBalanceResponse;
-    toJSON(message: QueryBalanceResponse): unknown;
     fromPartial(object: DeepPartial<QueryBalanceResponse>): QueryBalanceResponse;
+    fromSDK(object: QueryBalanceResponseSDKType): QueryBalanceResponse;
+    toSDK(message: QueryBalanceResponse): QueryBalanceResponseSDKType;
 };
 export declare const QueryAllBalancesRequest: {
     encode(message: QueryAllBalancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBalancesRequest;
-    fromJSON(object: any): QueryAllBalancesRequest;
-    toJSON(message: QueryAllBalancesRequest): unknown;
     fromPartial(object: DeepPartial<QueryAllBalancesRequest>): QueryAllBalancesRequest;
+    fromSDK(object: QueryAllBalancesRequestSDKType): QueryAllBalancesRequest;
+    toSDK(message: QueryAllBalancesRequest): QueryAllBalancesRequestSDKType;
 };
 export declare const QueryAllBalancesResponse: {
     encode(message: QueryAllBalancesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBalancesResponseSDKType;
-    fromJSON(object: any): QueryAllBalancesResponse;
-    toJSON(message: QueryAllBalancesResponse): unknown;
     fromPartial(object: DeepPartial<QueryAllBalancesResponse>): QueryAllBalancesResponse;
+    fromSDK(object: QueryAllBalancesResponseSDKType): QueryAllBalancesResponse;
+    toSDK(message: QueryAllBalancesResponse): QueryAllBalancesResponseSDKType;
 };
 export declare const QuerySpendableBalancesRequest: {
     encode(message: QuerySpendableBalancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpendableBalancesRequest;
-    fromJSON(object: any): QuerySpendableBalancesRequest;
-    toJSON(message: QuerySpendableBalancesRequest): unknown;
     fromPartial(object: DeepPartial<QuerySpendableBalancesRequest>): QuerySpendableBalancesRequest;
+    fromSDK(object: QuerySpendableBalancesRequestSDKType): QuerySpendableBalancesRequest;
+    toSDK(message: QuerySpendableBalancesRequest): QuerySpendableBalancesRequestSDKType;
 };
 export declare const QuerySpendableBalancesResponse: {
     encode(message: QuerySpendableBalancesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpendableBalancesResponseSDKType;
-    fromJSON(object: any): QuerySpendableBalancesResponse;
-    toJSON(message: QuerySpendableBalancesResponse): unknown;
     fromPartial(object: DeepPartial<QuerySpendableBalancesResponse>): QuerySpendableBalancesResponse;
+    fromSDK(object: QuerySpendableBalancesResponseSDKType): QuerySpendableBalancesResponse;
+    toSDK(message: QuerySpendableBalancesResponse): QuerySpendableBalancesResponseSDKType;
 };
 export declare const QueryTotalSupplyRequest: {
     encode(message: QueryTotalSupplyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyRequest;
-    fromJSON(object: any): QueryTotalSupplyRequest;
-    toJSON(message: QueryTotalSupplyRequest): unknown;
     fromPartial(object: DeepPartial<QueryTotalSupplyRequest>): QueryTotalSupplyRequest;
+    fromSDK(object: QueryTotalSupplyRequestSDKType): QueryTotalSupplyRequest;
+    toSDK(message: QueryTotalSupplyRequest): QueryTotalSupplyRequestSDKType;
 };
 export declare const QueryTotalSupplyResponse: {
     encode(message: QueryTotalSupplyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyResponseSDKType;
-    fromJSON(object: any): QueryTotalSupplyResponse;
-    toJSON(message: QueryTotalSupplyResponse): unknown;
     fromPartial(object: DeepPartial<QueryTotalSupplyResponse>): QueryTotalSupplyResponse;
+    fromSDK(object: QueryTotalSupplyResponseSDKType): QueryTotalSupplyResponse;
+    toSDK(message: QueryTotalSupplyResponse): QueryTotalSupplyResponseSDKType;
 };
 export declare const QuerySupplyOfRequest: {
     encode(message: QuerySupplyOfRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfRequest;
-    fromJSON(object: any): QuerySupplyOfRequest;
-    toJSON(message: QuerySupplyOfRequest): unknown;
     fromPartial(object: DeepPartial<QuerySupplyOfRequest>): QuerySupplyOfRequest;
+    fromSDK(object: QuerySupplyOfRequestSDKType): QuerySupplyOfRequest;
+    toSDK(message: QuerySupplyOfRequest): QuerySupplyOfRequestSDKType;
 };
 export declare const QuerySupplyOfResponse: {
     encode(message: QuerySupplyOfResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfResponseSDKType;
-    fromJSON(object: any): QuerySupplyOfResponse;
-    toJSON(message: QuerySupplyOfResponse): unknown;
     fromPartial(object: DeepPartial<QuerySupplyOfResponse>): QuerySupplyOfResponse;
+    fromSDK(object: QuerySupplyOfResponseSDKType): QuerySupplyOfResponse;
+    toSDK(message: QuerySupplyOfResponse): QuerySupplyOfResponseSDKType;
 };
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
+    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
+    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };
 export declare const QueryDenomsMetadataRequest: {
     encode(message: QueryDenomsMetadataRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsMetadataRequest;
-    fromJSON(object: any): QueryDenomsMetadataRequest;
-    toJSON(message: QueryDenomsMetadataRequest): unknown;
     fromPartial(object: DeepPartial<QueryDenomsMetadataRequest>): QueryDenomsMetadataRequest;
+    fromSDK(object: QueryDenomsMetadataRequestSDKType): QueryDenomsMetadataRequest;
+    toSDK(message: QueryDenomsMetadataRequest): QueryDenomsMetadataRequestSDKType;
 };
 export declare const QueryDenomsMetadataResponse: {
     encode(message: QueryDenomsMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsMetadataResponseSDKType;
-    fromJSON(object: any): QueryDenomsMetadataResponse;
-    toJSON(message: QueryDenomsMetadataResponse): unknown;
     fromPartial(object: DeepPartial<QueryDenomsMetadataResponse>): QueryDenomsMetadataResponse;
+    fromSDK(object: QueryDenomsMetadataResponseSDKType): QueryDenomsMetadataResponse;
+    toSDK(message: QueryDenomsMetadataResponse): QueryDenomsMetadataResponseSDKType;
 };
 export declare const QueryDenomMetadataRequest: {
     encode(message: QueryDenomMetadataRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomMetadataRequest;
-    fromJSON(object: any): QueryDenomMetadataRequest;
-    toJSON(message: QueryDenomMetadataRequest): unknown;
     fromPartial(object: DeepPartial<QueryDenomMetadataRequest>): QueryDenomMetadataRequest;
+    fromSDK(object: QueryDenomMetadataRequestSDKType): QueryDenomMetadataRequest;
+    toSDK(message: QueryDenomMetadataRequest): QueryDenomMetadataRequestSDKType;
 };
 export declare const QueryDenomMetadataResponse: {
     encode(message: QueryDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomMetadataResponseSDKType;
-    fromJSON(object: any): QueryDenomMetadataResponse;
-    toJSON(message: QueryDenomMetadataResponse): unknown;
     fromPartial(object: DeepPartial<QueryDenomMetadataResponse>): QueryDenomMetadataResponse;
+    fromSDK(object: QueryDenomMetadataResponseSDKType): QueryDenomMetadataResponse;
+    toSDK(message: QueryDenomMetadataResponse): QueryDenomMetadataResponseSDKType;
 };
 export declare const QueryDenomOwnersRequest: {
     encode(message: QueryDenomOwnersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomOwnersRequest;
-    fromJSON(object: any): QueryDenomOwnersRequest;
-    toJSON(message: QueryDenomOwnersRequest): unknown;
     fromPartial(object: DeepPartial<QueryDenomOwnersRequest>): QueryDenomOwnersRequest;
+    fromSDK(object: QueryDenomOwnersRequestSDKType): QueryDenomOwnersRequest;
+    toSDK(message: QueryDenomOwnersRequest): QueryDenomOwnersRequestSDKType;
 };
 export declare const DenomOwner: {
     encode(message: DenomOwner, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomOwner;
-    fromJSON(object: any): DenomOwner;
-    toJSON(message: DenomOwner): unknown;
     fromPartial(object: DeepPartial<DenomOwner>): DenomOwner;
+    fromSDK(object: DenomOwnerSDKType): DenomOwner;
+    toSDK(message: DenomOwner): DenomOwnerSDKType;
 };
 export declare const QueryDenomOwnersResponse: {
     encode(message: QueryDenomOwnersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomOwnersResponseSDKType;
-    fromJSON(object: any): QueryDenomOwnersResponse;
-    toJSON(message: QueryDenomOwnersResponse): unknown;
     fromPartial(object: DeepPartial<QueryDenomOwnersResponse>): QueryDenomOwnersResponse;
+    fromSDK(object: QueryDenomOwnersResponseSDKType): QueryDenomOwnersResponse;
+    toSDK(message: QueryDenomOwnersResponse): QueryDenomOwnersResponseSDKType;
 };

@@ -37,14 +37,14 @@ export interface PrivKeySDKType {
 export declare const PubKey: {
     encode(message: PubKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PubKey;
-    fromJSON(object: any): PubKey;
-    toJSON(message: PubKey): unknown;
     fromPartial(object: DeepPartial<PubKey>): PubKey;
+    fromSDK(object: PubKeySDKType): PubKey;
+    toSDK(message: PubKey): PubKeySDKType;
 };
 export declare const PrivKey: {
     encode(message: PrivKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PrivKey;
-    fromJSON(object: any): PrivKey;
-    toJSON(message: PrivKey): unknown;
     fromPartial(object: DeepPartial<PrivKey>): PrivKey;
+    fromSDK(object: PrivKeySDKType): PrivKey;
+    toSDK(message: PrivKey): PrivKeySDKType;
 };

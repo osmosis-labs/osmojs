@@ -59,28 +59,28 @@ export const SendAuthorization = {
     return message;
   },
 
-  fromJSON(object: any): SendAuthorization {
-    return {
-      spendLimit: Array.isArray(object?.spendLimit) ? object.spendLimit.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: SendAuthorization): unknown {
-    const obj: any = {};
-
-    if (message.spendLimit) {
-      obj.spendLimit = message.spendLimit.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.spendLimit = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SendAuthorization>): SendAuthorization {
     const message = createBaseSendAuthorization();
     message.spendLimit = object.spendLimit?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: SendAuthorizationSDKType): SendAuthorization {
+    return {
+      spendLimit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: SendAuthorization): SendAuthorizationSDKType {
+    const obj: any = {};
+
+    if (message.spendLimit) {
+      obj.spend_limit = message.spendLimit.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.spend_limit = [];
+    }
+
+    return obj;
   }
 
 };

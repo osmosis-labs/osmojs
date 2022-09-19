@@ -22,7 +22,7 @@ export interface LegacyAminoPubKeySDKType {
 export declare const LegacyAminoPubKey: {
     encode(message: LegacyAminoPubKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LegacyAminoPubKey;
-    fromJSON(object: any): LegacyAminoPubKey;
-    toJSON(message: LegacyAminoPubKey): unknown;
     fromPartial(object: DeepPartial<LegacyAminoPubKey>): LegacyAminoPubKey;
+    fromSDK(object: LegacyAminoPubKeySDKType): LegacyAminoPubKey;
+    toSDK(message: LegacyAminoPubKey): LegacyAminoPubKeySDKType;
 };

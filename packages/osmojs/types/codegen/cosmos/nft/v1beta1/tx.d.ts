@@ -31,14 +31,14 @@ export interface MsgSendResponseSDKType {
 export declare const MsgSend: {
     encode(message: MsgSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSend;
-    fromJSON(object: any): MsgSend;
-    toJSON(message: MsgSend): unknown;
     fromPartial(object: DeepPartial<MsgSend>): MsgSend;
+    fromSDK(object: MsgSendSDKType): MsgSend;
+    toSDK(message: MsgSend): MsgSendSDKType;
 };
 export declare const MsgSendResponse: {
     encode(_: MsgSendResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponseSDKType;
-    fromJSON(_: any): MsgSendResponse;
-    toJSON(_: MsgSendResponse): unknown;
     fromPartial(_: DeepPartial<MsgSendResponse>): MsgSendResponse;
+    fromSDK(_: MsgSendResponseSDKType): MsgSendResponse;
+    toSDK(_: MsgSendResponse): MsgSendResponseSDKType;
 };

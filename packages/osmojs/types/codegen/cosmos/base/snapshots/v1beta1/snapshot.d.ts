@@ -109,63 +109,63 @@ export interface SnapshotSchemaSDKType {
 export declare const Snapshot: {
     encode(message: Snapshot, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Snapshot;
-    fromJSON(object: any): Snapshot;
-    toJSON(message: Snapshot): unknown;
     fromPartial(object: DeepPartial<Snapshot>): Snapshot;
+    fromSDK(object: SnapshotSDKType): Snapshot;
+    toSDK(message: Snapshot): SnapshotSDKType;
 };
 export declare const Metadata: {
     encode(message: Metadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Metadata;
-    fromJSON(object: any): Metadata;
-    toJSON(message: Metadata): unknown;
     fromPartial(object: DeepPartial<Metadata>): Metadata;
+    fromSDK(object: MetadataSDKType): Metadata;
+    toSDK(message: Metadata): MetadataSDKType;
 };
 export declare const SnapshotItem: {
     encode(message: SnapshotItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotItem;
-    fromJSON(object: any): SnapshotItem;
-    toJSON(message: SnapshotItem): unknown;
     fromPartial(object: DeepPartial<SnapshotItem>): SnapshotItem;
+    fromSDK(object: SnapshotItemSDKType): SnapshotItem;
+    toSDK(message: SnapshotItem): SnapshotItemSDKType;
 };
 export declare const SnapshotStoreItem: {
     encode(message: SnapshotStoreItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotStoreItem;
-    fromJSON(object: any): SnapshotStoreItem;
-    toJSON(message: SnapshotStoreItem): unknown;
     fromPartial(object: DeepPartial<SnapshotStoreItem>): SnapshotStoreItem;
+    fromSDK(object: SnapshotStoreItemSDKType): SnapshotStoreItem;
+    toSDK(message: SnapshotStoreItem): SnapshotStoreItemSDKType;
 };
 export declare const SnapshotIAVLItem: {
     encode(message: SnapshotIAVLItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotIAVLItem;
-    fromJSON(object: any): SnapshotIAVLItem;
-    toJSON(message: SnapshotIAVLItem): unknown;
     fromPartial(object: DeepPartial<SnapshotIAVLItem>): SnapshotIAVLItem;
+    fromSDK(object: SnapshotIAVLItemSDKType): SnapshotIAVLItem;
+    toSDK(message: SnapshotIAVLItem): SnapshotIAVLItemSDKType;
 };
 export declare const SnapshotExtensionMeta: {
     encode(message: SnapshotExtensionMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionMeta;
-    fromJSON(object: any): SnapshotExtensionMeta;
-    toJSON(message: SnapshotExtensionMeta): unknown;
     fromPartial(object: DeepPartial<SnapshotExtensionMeta>): SnapshotExtensionMeta;
+    fromSDK(object: SnapshotExtensionMetaSDKType): SnapshotExtensionMeta;
+    toSDK(message: SnapshotExtensionMeta): SnapshotExtensionMetaSDKType;
 };
 export declare const SnapshotExtensionPayload: {
     encode(message: SnapshotExtensionPayload, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionPayload;
-    fromJSON(object: any): SnapshotExtensionPayload;
-    toJSON(message: SnapshotExtensionPayload): unknown;
     fromPartial(object: DeepPartial<SnapshotExtensionPayload>): SnapshotExtensionPayload;
+    fromSDK(object: SnapshotExtensionPayloadSDKType): SnapshotExtensionPayload;
+    toSDK(message: SnapshotExtensionPayload): SnapshotExtensionPayloadSDKType;
 };
 export declare const SnapshotKVItem: {
     encode(message: SnapshotKVItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotKVItem;
-    fromJSON(object: any): SnapshotKVItem;
-    toJSON(message: SnapshotKVItem): unknown;
     fromPartial(object: DeepPartial<SnapshotKVItem>): SnapshotKVItem;
+    fromSDK(object: SnapshotKVItemSDKType): SnapshotKVItem;
+    toSDK(message: SnapshotKVItem): SnapshotKVItemSDKType;
 };
 export declare const SnapshotSchema: {
     encode(message: SnapshotSchema, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotSchema;
-    fromJSON(object: any): SnapshotSchema;
-    toJSON(message: SnapshotSchema): unknown;
     fromPartial(object: DeepPartial<SnapshotSchema>): SnapshotSchema;
+    fromSDK(object: SnapshotSchemaSDKType): SnapshotSchema;
+    toSDK(message: SnapshotSchema): SnapshotSchemaSDKType;
 };

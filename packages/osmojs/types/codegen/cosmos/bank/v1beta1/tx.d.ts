@@ -39,28 +39,28 @@ export interface MsgMultiSendResponseSDKType {
 export declare const MsgSend: {
     encode(message: MsgSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSend;
-    fromJSON(object: any): MsgSend;
-    toJSON(message: MsgSend): unknown;
     fromPartial(object: DeepPartial<MsgSend>): MsgSend;
+    fromSDK(object: MsgSendSDKType): MsgSend;
+    toSDK(message: MsgSend): MsgSendSDKType;
 };
 export declare const MsgSendResponse: {
     encode(_: MsgSendResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponseSDKType;
-    fromJSON(_: any): MsgSendResponse;
-    toJSON(_: MsgSendResponse): unknown;
     fromPartial(_: DeepPartial<MsgSendResponse>): MsgSendResponse;
+    fromSDK(_: MsgSendResponseSDKType): MsgSendResponse;
+    toSDK(_: MsgSendResponse): MsgSendResponseSDKType;
 };
 export declare const MsgMultiSend: {
     encode(message: MsgMultiSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSend;
-    fromJSON(object: any): MsgMultiSend;
-    toJSON(message: MsgMultiSend): unknown;
     fromPartial(object: DeepPartial<MsgMultiSend>): MsgMultiSend;
+    fromSDK(object: MsgMultiSendSDKType): MsgMultiSend;
+    toSDK(message: MsgMultiSend): MsgMultiSendSDKType;
 };
 export declare const MsgMultiSendResponse: {
     encode(_: MsgMultiSendResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSendResponseSDKType;
-    fromJSON(_: any): MsgMultiSendResponse;
-    toJSON(_: MsgMultiSendResponse): unknown;
     fromPartial(_: DeepPartial<MsgMultiSendResponse>): MsgMultiSendResponse;
+    fromSDK(_: MsgMultiSendResponseSDKType): MsgMultiSendResponse;
+    toSDK(_: MsgMultiSendResponse): MsgMultiSendResponseSDKType;
 };

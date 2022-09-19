@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 export interface Node {
   children: Child[];
 }
@@ -58,28 +58,28 @@ export const Node = {
     return message;
   },
 
-  fromJSON(object: any): Node {
+  fromPartial(object: DeepPartial<Node>): Node {
+    const message = createBaseNode();
+    message.children = object.children?.map(e => Child.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: NodeSDKType): Node {
     return {
-      children: Array.isArray(object?.children) ? object.children.map((e: any) => Child.fromJSON(e)) : []
+      children: Array.isArray(object?.children) ? object.children.map((e: any) => Child.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: Node): unknown {
+  toSDK(message: Node): NodeSDKType {
     const obj: any = {};
 
     if (message.children) {
-      obj.children = message.children.map(e => e ? Child.toJSON(e) : undefined);
+      obj.children = message.children.map(e => e ? Child.toSDK(e) : undefined);
     } else {
       obj.children = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<Node>): Node {
-    const message = createBaseNode();
-    message.children = object.children?.map(e => Child.fromPartial(e)) || [];
-    return message;
   }
 
 };
@@ -130,25 +130,25 @@ export const Child = {
     return message;
   },
 
-  fromJSON(object: any): Child {
-    return {
-      index: isSet(object.index) ? bytesFromBase64(object.index) : new Uint8Array(),
-      accumulation: isSet(object.accumulation) ? String(object.accumulation) : ""
-    };
-  },
-
-  toJSON(message: Child): unknown {
-    const obj: any = {};
-    message.index !== undefined && (obj.index = base64FromBytes(message.index !== undefined ? message.index : new Uint8Array()));
-    message.accumulation !== undefined && (obj.accumulation = message.accumulation);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Child>): Child {
     const message = createBaseChild();
     message.index = object.index ?? new Uint8Array();
     message.accumulation = object.accumulation ?? "";
     return message;
+  },
+
+  fromSDK(object: ChildSDKType): Child {
+    return {
+      index: isSet(object.index) ? object.index : undefined,
+      accumulation: isSet(object.accumulation) ? object.accumulation : undefined
+    };
+  },
+
+  toSDK(message: Child): ChildSDKType {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = message.index);
+    message.accumulation !== undefined && (obj.accumulation = message.accumulation);
+    return obj;
   }
 
 };
@@ -190,22 +190,22 @@ export const Leaf = {
     return message;
   },
 
-  fromJSON(object: any): Leaf {
-    return {
-      leaf: isSet(object.leaf) ? Child.fromJSON(object.leaf) : undefined
-    };
-  },
-
-  toJSON(message: Leaf): unknown {
-    const obj: any = {};
-    message.leaf !== undefined && (obj.leaf = message.leaf ? Child.toJSON(message.leaf) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Leaf>): Leaf {
     const message = createBaseLeaf();
     message.leaf = object.leaf !== undefined && object.leaf !== null ? Child.fromPartial(object.leaf) : undefined;
     return message;
+  },
+
+  fromSDK(object: LeafSDKType): Leaf {
+    return {
+      leaf: isSet(object.leaf) ? Child.fromSDK(object.leaf) : undefined
+    };
+  },
+
+  toSDK(message: Leaf): LeafSDKType {
+    const obj: any = {};
+    message.leaf !== undefined && (obj.leaf = message.leaf ? Child.toSDK(message.leaf) : undefined);
+    return obj;
   }
 
 };

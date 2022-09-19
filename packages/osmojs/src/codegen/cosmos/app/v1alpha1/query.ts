@@ -47,18 +47,18 @@ export const QueryConfigRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryConfigRequest {
-    return {};
-  },
-
-  toJSON(_: QueryConfigRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryConfigRequest>): QueryConfigRequest {
     const message = createBaseQueryConfigRequest();
     return message;
+  },
+
+  fromSDK(_: QueryConfigRequestSDKType): QueryConfigRequest {
+    return {};
+  },
+
+  toSDK(_: QueryConfigRequest): QueryConfigRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -100,22 +100,22 @@ export const QueryConfigResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryConfigResponse {
-    return {
-      config: isSet(object.config) ? Config.fromJSON(object.config) : undefined
-    };
-  },
-
-  toJSON(message: QueryConfigResponse): unknown {
-    const obj: any = {};
-    message.config !== undefined && (obj.config = message.config ? Config.toJSON(message.config) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConfigResponse>): QueryConfigResponse {
     const message = createBaseQueryConfigResponse();
     message.config = object.config !== undefined && object.config !== null ? Config.fromPartial(object.config) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryConfigResponseSDKType): QueryConfigResponse {
+    return {
+      config: isSet(object.config) ? Config.fromSDK(object.config) : undefined
+    };
+  },
+
+  toSDK(message: QueryConfigResponse): QueryConfigResponseSDKType {
+    const obj: any = {};
+    message.config !== undefined && (obj.config = message.config ? Config.toSDK(message.config) : undefined);
+    return obj;
   }
 
 };

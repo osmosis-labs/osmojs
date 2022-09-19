@@ -47,14 +47,14 @@ export interface ParamsSDKType {
 export declare const Minter: {
     encode(message: Minter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Minter;
-    fromJSON(object: any): Minter;
-    toJSON(message: Minter): unknown;
     fromPartial(object: DeepPartial<Minter>): Minter;
+    fromSDK(object: MinterSDKType): Minter;
+    toSDK(message: Minter): MinterSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
     fromPartial(object: DeepPartial<Params>): Params;
+    fromSDK(object: ParamsSDKType): Params;
+    toSDK(message: Params): ParamsSDKType;
 };

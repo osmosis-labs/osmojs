@@ -453,196 +453,196 @@ export interface QueryParamsResponseSDKType {
 export declare const QueryValidatorsRequest: {
     encode(message: QueryValidatorsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorsRequest;
-    fromJSON(object: any): QueryValidatorsRequest;
-    toJSON(message: QueryValidatorsRequest): unknown;
     fromPartial(object: DeepPartial<QueryValidatorsRequest>): QueryValidatorsRequest;
+    fromSDK(object: QueryValidatorsRequestSDKType): QueryValidatorsRequest;
+    toSDK(message: QueryValidatorsRequest): QueryValidatorsRequestSDKType;
 };
 export declare const QueryValidatorsResponse: {
     encode(message: QueryValidatorsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorsResponseSDKType;
-    fromJSON(object: any): QueryValidatorsResponse;
-    toJSON(message: QueryValidatorsResponse): unknown;
     fromPartial(object: DeepPartial<QueryValidatorsResponse>): QueryValidatorsResponse;
+    fromSDK(object: QueryValidatorsResponseSDKType): QueryValidatorsResponse;
+    toSDK(message: QueryValidatorsResponse): QueryValidatorsResponseSDKType;
 };
 export declare const QueryValidatorRequest: {
     encode(message: QueryValidatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorRequest;
-    fromJSON(object: any): QueryValidatorRequest;
-    toJSON(message: QueryValidatorRequest): unknown;
     fromPartial(object: DeepPartial<QueryValidatorRequest>): QueryValidatorRequest;
+    fromSDK(object: QueryValidatorRequestSDKType): QueryValidatorRequest;
+    toSDK(message: QueryValidatorRequest): QueryValidatorRequestSDKType;
 };
 export declare const QueryValidatorResponse: {
     encode(message: QueryValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorResponseSDKType;
-    fromJSON(object: any): QueryValidatorResponse;
-    toJSON(message: QueryValidatorResponse): unknown;
     fromPartial(object: DeepPartial<QueryValidatorResponse>): QueryValidatorResponse;
+    fromSDK(object: QueryValidatorResponseSDKType): QueryValidatorResponse;
+    toSDK(message: QueryValidatorResponse): QueryValidatorResponseSDKType;
 };
 export declare const QueryValidatorDelegationsRequest: {
     encode(message: QueryValidatorDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorDelegationsRequest;
-    fromJSON(object: any): QueryValidatorDelegationsRequest;
-    toJSON(message: QueryValidatorDelegationsRequest): unknown;
     fromPartial(object: DeepPartial<QueryValidatorDelegationsRequest>): QueryValidatorDelegationsRequest;
+    fromSDK(object: QueryValidatorDelegationsRequestSDKType): QueryValidatorDelegationsRequest;
+    toSDK(message: QueryValidatorDelegationsRequest): QueryValidatorDelegationsRequestSDKType;
 };
 export declare const QueryValidatorDelegationsResponse: {
     encode(message: QueryValidatorDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorDelegationsResponseSDKType;
-    fromJSON(object: any): QueryValidatorDelegationsResponse;
-    toJSON(message: QueryValidatorDelegationsResponse): unknown;
     fromPartial(object: DeepPartial<QueryValidatorDelegationsResponse>): QueryValidatorDelegationsResponse;
+    fromSDK(object: QueryValidatorDelegationsResponseSDKType): QueryValidatorDelegationsResponse;
+    toSDK(message: QueryValidatorDelegationsResponse): QueryValidatorDelegationsResponseSDKType;
 };
 export declare const QueryValidatorUnbondingDelegationsRequest: {
     encode(message: QueryValidatorUnbondingDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsRequest;
-    fromJSON(object: any): QueryValidatorUnbondingDelegationsRequest;
-    toJSON(message: QueryValidatorUnbondingDelegationsRequest): unknown;
     fromPartial(object: DeepPartial<QueryValidatorUnbondingDelegationsRequest>): QueryValidatorUnbondingDelegationsRequest;
+    fromSDK(object: QueryValidatorUnbondingDelegationsRequestSDKType): QueryValidatorUnbondingDelegationsRequest;
+    toSDK(message: QueryValidatorUnbondingDelegationsRequest): QueryValidatorUnbondingDelegationsRequestSDKType;
 };
 export declare const QueryValidatorUnbondingDelegationsResponse: {
     encode(message: QueryValidatorUnbondingDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsResponseSDKType;
-    fromJSON(object: any): QueryValidatorUnbondingDelegationsResponse;
-    toJSON(message: QueryValidatorUnbondingDelegationsResponse): unknown;
     fromPartial(object: DeepPartial<QueryValidatorUnbondingDelegationsResponse>): QueryValidatorUnbondingDelegationsResponse;
+    fromSDK(object: QueryValidatorUnbondingDelegationsResponseSDKType): QueryValidatorUnbondingDelegationsResponse;
+    toSDK(message: QueryValidatorUnbondingDelegationsResponse): QueryValidatorUnbondingDelegationsResponseSDKType;
 };
 export declare const QueryDelegationRequest: {
     encode(message: QueryDelegationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationRequest;
-    fromJSON(object: any): QueryDelegationRequest;
-    toJSON(message: QueryDelegationRequest): unknown;
     fromPartial(object: DeepPartial<QueryDelegationRequest>): QueryDelegationRequest;
+    fromSDK(object: QueryDelegationRequestSDKType): QueryDelegationRequest;
+    toSDK(message: QueryDelegationRequest): QueryDelegationRequestSDKType;
 };
 export declare const QueryDelegationResponse: {
     encode(message: QueryDelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationResponseSDKType;
-    fromJSON(object: any): QueryDelegationResponse;
-    toJSON(message: QueryDelegationResponse): unknown;
     fromPartial(object: DeepPartial<QueryDelegationResponse>): QueryDelegationResponse;
+    fromSDK(object: QueryDelegationResponseSDKType): QueryDelegationResponse;
+    toSDK(message: QueryDelegationResponse): QueryDelegationResponseSDKType;
 };
 export declare const QueryUnbondingDelegationRequest: {
     encode(message: QueryUnbondingDelegationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnbondingDelegationRequest;
-    fromJSON(object: any): QueryUnbondingDelegationRequest;
-    toJSON(message: QueryUnbondingDelegationRequest): unknown;
     fromPartial(object: DeepPartial<QueryUnbondingDelegationRequest>): QueryUnbondingDelegationRequest;
+    fromSDK(object: QueryUnbondingDelegationRequestSDKType): QueryUnbondingDelegationRequest;
+    toSDK(message: QueryUnbondingDelegationRequest): QueryUnbondingDelegationRequestSDKType;
 };
 export declare const QueryUnbondingDelegationResponse: {
     encode(message: QueryUnbondingDelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnbondingDelegationResponseSDKType;
-    fromJSON(object: any): QueryUnbondingDelegationResponse;
-    toJSON(message: QueryUnbondingDelegationResponse): unknown;
     fromPartial(object: DeepPartial<QueryUnbondingDelegationResponse>): QueryUnbondingDelegationResponse;
+    fromSDK(object: QueryUnbondingDelegationResponseSDKType): QueryUnbondingDelegationResponse;
+    toSDK(message: QueryUnbondingDelegationResponse): QueryUnbondingDelegationResponseSDKType;
 };
 export declare const QueryDelegatorDelegationsRequest: {
     encode(message: QueryDelegatorDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorDelegationsRequest;
-    fromJSON(object: any): QueryDelegatorDelegationsRequest;
-    toJSON(message: QueryDelegatorDelegationsRequest): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorDelegationsRequest>): QueryDelegatorDelegationsRequest;
+    fromSDK(object: QueryDelegatorDelegationsRequestSDKType): QueryDelegatorDelegationsRequest;
+    toSDK(message: QueryDelegatorDelegationsRequest): QueryDelegatorDelegationsRequestSDKType;
 };
 export declare const QueryDelegatorDelegationsResponse: {
     encode(message: QueryDelegatorDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorDelegationsResponseSDKType;
-    fromJSON(object: any): QueryDelegatorDelegationsResponse;
-    toJSON(message: QueryDelegatorDelegationsResponse): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorDelegationsResponse>): QueryDelegatorDelegationsResponse;
+    fromSDK(object: QueryDelegatorDelegationsResponseSDKType): QueryDelegatorDelegationsResponse;
+    toSDK(message: QueryDelegatorDelegationsResponse): QueryDelegatorDelegationsResponseSDKType;
 };
 export declare const QueryDelegatorUnbondingDelegationsRequest: {
     encode(message: QueryDelegatorUnbondingDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsRequest;
-    fromJSON(object: any): QueryDelegatorUnbondingDelegationsRequest;
-    toJSON(message: QueryDelegatorUnbondingDelegationsRequest): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorUnbondingDelegationsRequest>): QueryDelegatorUnbondingDelegationsRequest;
+    fromSDK(object: QueryDelegatorUnbondingDelegationsRequestSDKType): QueryDelegatorUnbondingDelegationsRequest;
+    toSDK(message: QueryDelegatorUnbondingDelegationsRequest): QueryDelegatorUnbondingDelegationsRequestSDKType;
 };
 export declare const QueryDelegatorUnbondingDelegationsResponse: {
     encode(message: QueryDelegatorUnbondingDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsResponseSDKType;
-    fromJSON(object: any): QueryDelegatorUnbondingDelegationsResponse;
-    toJSON(message: QueryDelegatorUnbondingDelegationsResponse): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorUnbondingDelegationsResponse>): QueryDelegatorUnbondingDelegationsResponse;
+    fromSDK(object: QueryDelegatorUnbondingDelegationsResponseSDKType): QueryDelegatorUnbondingDelegationsResponse;
+    toSDK(message: QueryDelegatorUnbondingDelegationsResponse): QueryDelegatorUnbondingDelegationsResponseSDKType;
 };
 export declare const QueryRedelegationsRequest: {
     encode(message: QueryRedelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryRedelegationsRequest;
-    fromJSON(object: any): QueryRedelegationsRequest;
-    toJSON(message: QueryRedelegationsRequest): unknown;
     fromPartial(object: DeepPartial<QueryRedelegationsRequest>): QueryRedelegationsRequest;
+    fromSDK(object: QueryRedelegationsRequestSDKType): QueryRedelegationsRequest;
+    toSDK(message: QueryRedelegationsRequest): QueryRedelegationsRequestSDKType;
 };
 export declare const QueryRedelegationsResponse: {
     encode(message: QueryRedelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryRedelegationsResponseSDKType;
-    fromJSON(object: any): QueryRedelegationsResponse;
-    toJSON(message: QueryRedelegationsResponse): unknown;
     fromPartial(object: DeepPartial<QueryRedelegationsResponse>): QueryRedelegationsResponse;
+    fromSDK(object: QueryRedelegationsResponseSDKType): QueryRedelegationsResponse;
+    toSDK(message: QueryRedelegationsResponse): QueryRedelegationsResponseSDKType;
 };
 export declare const QueryDelegatorValidatorsRequest: {
     encode(message: QueryDelegatorValidatorsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsRequest;
-    fromJSON(object: any): QueryDelegatorValidatorsRequest;
-    toJSON(message: QueryDelegatorValidatorsRequest): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest;
+    fromSDK(object: QueryDelegatorValidatorsRequestSDKType): QueryDelegatorValidatorsRequest;
+    toSDK(message: QueryDelegatorValidatorsRequest): QueryDelegatorValidatorsRequestSDKType;
 };
 export declare const QueryDelegatorValidatorsResponse: {
     encode(message: QueryDelegatorValidatorsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsResponseSDKType;
-    fromJSON(object: any): QueryDelegatorValidatorsResponse;
-    toJSON(message: QueryDelegatorValidatorsResponse): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse;
+    fromSDK(object: QueryDelegatorValidatorsResponseSDKType): QueryDelegatorValidatorsResponse;
+    toSDK(message: QueryDelegatorValidatorsResponse): QueryDelegatorValidatorsResponseSDKType;
 };
 export declare const QueryDelegatorValidatorRequest: {
     encode(message: QueryDelegatorValidatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorRequest;
-    fromJSON(object: any): QueryDelegatorValidatorRequest;
-    toJSON(message: QueryDelegatorValidatorRequest): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorValidatorRequest>): QueryDelegatorValidatorRequest;
+    fromSDK(object: QueryDelegatorValidatorRequestSDKType): QueryDelegatorValidatorRequest;
+    toSDK(message: QueryDelegatorValidatorRequest): QueryDelegatorValidatorRequestSDKType;
 };
 export declare const QueryDelegatorValidatorResponse: {
     encode(message: QueryDelegatorValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorResponseSDKType;
-    fromJSON(object: any): QueryDelegatorValidatorResponse;
-    toJSON(message: QueryDelegatorValidatorResponse): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorValidatorResponse>): QueryDelegatorValidatorResponse;
+    fromSDK(object: QueryDelegatorValidatorResponseSDKType): QueryDelegatorValidatorResponse;
+    toSDK(message: QueryDelegatorValidatorResponse): QueryDelegatorValidatorResponseSDKType;
 };
 export declare const QueryHistoricalInfoRequest: {
     encode(message: QueryHistoricalInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryHistoricalInfoRequest;
-    fromJSON(object: any): QueryHistoricalInfoRequest;
-    toJSON(message: QueryHistoricalInfoRequest): unknown;
     fromPartial(object: DeepPartial<QueryHistoricalInfoRequest>): QueryHistoricalInfoRequest;
+    fromSDK(object: QueryHistoricalInfoRequestSDKType): QueryHistoricalInfoRequest;
+    toSDK(message: QueryHistoricalInfoRequest): QueryHistoricalInfoRequestSDKType;
 };
 export declare const QueryHistoricalInfoResponse: {
     encode(message: QueryHistoricalInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryHistoricalInfoResponseSDKType;
-    fromJSON(object: any): QueryHistoricalInfoResponse;
-    toJSON(message: QueryHistoricalInfoResponse): unknown;
     fromPartial(object: DeepPartial<QueryHistoricalInfoResponse>): QueryHistoricalInfoResponse;
+    fromSDK(object: QueryHistoricalInfoResponseSDKType): QueryHistoricalInfoResponse;
+    toSDK(message: QueryHistoricalInfoResponse): QueryHistoricalInfoResponseSDKType;
 };
 export declare const QueryPoolRequest: {
     encode(_: QueryPoolRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolRequest;
-    fromJSON(_: any): QueryPoolRequest;
-    toJSON(_: QueryPoolRequest): unknown;
     fromPartial(_: DeepPartial<QueryPoolRequest>): QueryPoolRequest;
+    fromSDK(_: QueryPoolRequestSDKType): QueryPoolRequest;
+    toSDK(_: QueryPoolRequest): QueryPoolRequestSDKType;
 };
 export declare const QueryPoolResponse: {
     encode(message: QueryPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponseSDKType;
-    fromJSON(object: any): QueryPoolResponse;
-    toJSON(message: QueryPoolResponse): unknown;
     fromPartial(object: DeepPartial<QueryPoolResponse>): QueryPoolResponse;
+    fromSDK(object: QueryPoolResponseSDKType): QueryPoolResponse;
+    toSDK(message: QueryPoolResponse): QueryPoolResponseSDKType;
 };
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
+    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
+    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };

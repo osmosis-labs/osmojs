@@ -1,7 +1,7 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp, Long, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
+import { toTimestamp, fromTimestamp, Long, DeepPartial, isSet } from "@osmonauts/helpers";
 export interface EpochInfo {
   identifier: string;
   startTime: Date;
@@ -122,30 +122,6 @@ export const EpochInfo = {
     return message;
   },
 
-  fromJSON(object: any): EpochInfo {
-    return {
-      identifier: isSet(object.identifier) ? String(object.identifier) : "",
-      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
-      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
-      currentEpoch: isSet(object.currentEpoch) ? Long.fromString(object.currentEpoch) : Long.ZERO,
-      currentEpochStartTime: isSet(object.currentEpochStartTime) ? fromJsonTimestamp(object.currentEpochStartTime) : undefined,
-      epochCountingStarted: isSet(object.epochCountingStarted) ? Boolean(object.epochCountingStarted) : false,
-      currentEpochStartHeight: isSet(object.currentEpochStartHeight) ? Long.fromString(object.currentEpochStartHeight) : Long.ZERO
-    };
-  },
-
-  toJSON(message: EpochInfo): unknown {
-    const obj: any = {};
-    message.identifier !== undefined && (obj.identifier = message.identifier);
-    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
-    message.duration !== undefined && (obj.duration = message.duration);
-    message.currentEpoch !== undefined && (obj.currentEpoch = (message.currentEpoch || Long.ZERO).toString());
-    message.currentEpochStartTime !== undefined && (obj.currentEpochStartTime = message.currentEpochStartTime.toISOString());
-    message.epochCountingStarted !== undefined && (obj.epochCountingStarted = message.epochCountingStarted);
-    message.currentEpochStartHeight !== undefined && (obj.currentEpochStartHeight = (message.currentEpochStartHeight || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EpochInfo>): EpochInfo {
     const message = createBaseEpochInfo();
     message.identifier = object.identifier ?? "";
@@ -156,6 +132,30 @@ export const EpochInfo = {
     message.epochCountingStarted = object.epochCountingStarted ?? false;
     message.currentEpochStartHeight = object.currentEpochStartHeight !== undefined && object.currentEpochStartHeight !== null ? Long.fromValue(object.currentEpochStartHeight) : Long.ZERO;
     return message;
+  },
+
+  fromSDK(object: EpochInfoSDKType): EpochInfo {
+    return {
+      identifier: isSet(object.identifier) ? object.identifier : undefined,
+      startTime: isSet(object.start_time) ? Timestamp.fromSDK(object.start_time) : undefined,
+      duration: isSet(object.duration) ? Duration.fromSDK(object.duration) : undefined,
+      currentEpoch: isSet(object.current_epoch) ? object.current_epoch : undefined,
+      currentEpochStartTime: isSet(object.current_epoch_start_time) ? Timestamp.fromSDK(object.current_epoch_start_time) : undefined,
+      epochCountingStarted: isSet(object.epoch_counting_started) ? object.epoch_counting_started : undefined,
+      currentEpochStartHeight: isSet(object.current_epoch_start_height) ? object.current_epoch_start_height : undefined
+    };
+  },
+
+  toSDK(message: EpochInfo): EpochInfoSDKType {
+    const obj: any = {};
+    message.identifier !== undefined && (obj.identifier = message.identifier);
+    message.startTime !== undefined && (obj.start_time = message.startTime ? Timestamp.toSDK(message.startTime) : undefined);
+    message.duration !== undefined && (obj.duration = message.duration ? Duration.toSDK(message.duration) : undefined);
+    message.currentEpoch !== undefined && (obj.current_epoch = message.currentEpoch);
+    message.currentEpochStartTime !== undefined && (obj.current_epoch_start_time = message.currentEpochStartTime ? Timestamp.toSDK(message.currentEpochStartTime) : undefined);
+    message.epochCountingStarted !== undefined && (obj.epoch_counting_started = message.epochCountingStarted);
+    message.currentEpochStartHeight !== undefined && (obj.current_epoch_start_height = message.currentEpochStartHeight);
+    return obj;
   }
 
 };
@@ -197,28 +197,28 @@ export const GenesisState = {
     return message;
   },
 
-  fromJSON(object: any): GenesisState {
+  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+    const message = createBaseGenesisState();
+    message.epochs = object.epochs?.map(e => EpochInfo.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: GenesisStateSDKType): GenesisState {
     return {
-      epochs: Array.isArray(object?.epochs) ? object.epochs.map((e: any) => EpochInfo.fromJSON(e)) : []
+      epochs: Array.isArray(object?.epochs) ? object.epochs.map((e: any) => EpochInfo.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: GenesisState): unknown {
+  toSDK(message: GenesisState): GenesisStateSDKType {
     const obj: any = {};
 
     if (message.epochs) {
-      obj.epochs = message.epochs.map(e => e ? EpochInfo.toJSON(e) : undefined);
+      obj.epochs = message.epochs.map(e => e ? EpochInfo.toSDK(e) : undefined);
     } else {
       obj.epochs = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
-    const message = createBaseGenesisState();
-    message.epochs = object.epochs?.map(e => EpochInfo.fromPartial(e)) || [];
-    return message;
   }
 
 };

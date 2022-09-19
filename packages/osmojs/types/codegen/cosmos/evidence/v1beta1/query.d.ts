@@ -61,28 +61,28 @@ export interface QueryAllEvidenceResponseSDKType {
 export declare const QueryEvidenceRequest: {
     encode(message: QueryEvidenceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEvidenceRequest;
-    fromJSON(object: any): QueryEvidenceRequest;
-    toJSON(message: QueryEvidenceRequest): unknown;
     fromPartial(object: DeepPartial<QueryEvidenceRequest>): QueryEvidenceRequest;
+    fromSDK(object: QueryEvidenceRequestSDKType): QueryEvidenceRequest;
+    toSDK(message: QueryEvidenceRequest): QueryEvidenceRequestSDKType;
 };
 export declare const QueryEvidenceResponse: {
     encode(message: QueryEvidenceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEvidenceResponseSDKType;
-    fromJSON(object: any): QueryEvidenceResponse;
-    toJSON(message: QueryEvidenceResponse): unknown;
     fromPartial(object: DeepPartial<QueryEvidenceResponse>): QueryEvidenceResponse;
+    fromSDK(object: QueryEvidenceResponseSDKType): QueryEvidenceResponse;
+    toSDK(message: QueryEvidenceResponse): QueryEvidenceResponseSDKType;
 };
 export declare const QueryAllEvidenceRequest: {
     encode(message: QueryAllEvidenceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllEvidenceRequest;
-    fromJSON(object: any): QueryAllEvidenceRequest;
-    toJSON(message: QueryAllEvidenceRequest): unknown;
     fromPartial(object: DeepPartial<QueryAllEvidenceRequest>): QueryAllEvidenceRequest;
+    fromSDK(object: QueryAllEvidenceRequestSDKType): QueryAllEvidenceRequest;
+    toSDK(message: QueryAllEvidenceRequest): QueryAllEvidenceRequestSDKType;
 };
 export declare const QueryAllEvidenceResponse: {
     encode(message: QueryAllEvidenceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllEvidenceResponseSDKType;
-    fromJSON(object: any): QueryAllEvidenceResponse;
-    toJSON(message: QueryAllEvidenceResponse): unknown;
     fromPartial(object: DeepPartial<QueryAllEvidenceResponse>): QueryAllEvidenceResponse;
+    fromSDK(object: QueryAllEvidenceResponseSDKType): QueryAllEvidenceResponse;
+    toSDK(message: QueryAllEvidenceResponse): QueryAllEvidenceResponseSDKType;
 };

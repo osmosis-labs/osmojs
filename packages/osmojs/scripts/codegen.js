@@ -10,11 +10,16 @@ telescope({
   protoDirs,
   outPath,
   options: {
+    removeUnusedImports: true,
     prototypes: {
       excluded: {
         packages: [
           'cosmos.group.v1'
         ]
+      },
+      methods: {
+        fromJSON: false,
+        toJSON: false
       },
       parser: {
         keepCase: false

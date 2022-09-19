@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, bytesFromBase64, base64FromBytes, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:
@@ -214,26 +214,6 @@ export const PageRequest = {
     return message;
   },
 
-  fromJSON(object: any): PageRequest {
-    return {
-      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
-      offset: isSet(object.offset) ? Long.fromString(object.offset) : Long.UZERO,
-      limit: isSet(object.limit) ? Long.fromString(object.limit) : Long.UZERO,
-      countTotal: isSet(object.countTotal) ? Boolean(object.countTotal) : false,
-      reverse: isSet(object.reverse) ? Boolean(object.reverse) : false
-    };
-  },
-
-  toJSON(message: PageRequest): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
-    message.offset !== undefined && (obj.offset = (message.offset || Long.UZERO).toString());
-    message.limit !== undefined && (obj.limit = (message.limit || Long.UZERO).toString());
-    message.countTotal !== undefined && (obj.countTotal = message.countTotal);
-    message.reverse !== undefined && (obj.reverse = message.reverse);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PageRequest>): PageRequest {
     const message = createBasePageRequest();
     message.key = object.key ?? new Uint8Array();
@@ -242,6 +222,26 @@ export const PageRequest = {
     message.countTotal = object.countTotal ?? false;
     message.reverse = object.reverse ?? false;
     return message;
+  },
+
+  fromSDK(object: PageRequestSDKType): PageRequest {
+    return {
+      key: isSet(object.key) ? object.key : undefined,
+      offset: isSet(object.offset) ? object.offset : undefined,
+      limit: isSet(object.limit) ? object.limit : undefined,
+      countTotal: isSet(object.count_total) ? object.count_total : undefined,
+      reverse: isSet(object.reverse) ? object.reverse : undefined
+    };
+  },
+
+  toSDK(message: PageRequest): PageRequestSDKType {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.offset !== undefined && (obj.offset = message.offset);
+    message.limit !== undefined && (obj.limit = message.limit);
+    message.countTotal !== undefined && (obj.count_total = message.countTotal);
+    message.reverse !== undefined && (obj.reverse = message.reverse);
+    return obj;
   }
 
 };
@@ -292,25 +292,25 @@ export const PageResponse = {
     return message;
   },
 
-  fromJSON(object: any): PageResponse {
-    return {
-      nextKey: isSet(object.nextKey) ? bytesFromBase64(object.nextKey) : new Uint8Array(),
-      total: isSet(object.total) ? Long.fromString(object.total) : Long.UZERO
-    };
-  },
-
-  toJSON(message: PageResponse): unknown {
-    const obj: any = {};
-    message.nextKey !== undefined && (obj.nextKey = base64FromBytes(message.nextKey !== undefined ? message.nextKey : new Uint8Array()));
-    message.total !== undefined && (obj.total = (message.total || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PageResponse>): PageResponse {
     const message = createBasePageResponse();
     message.nextKey = object.nextKey ?? new Uint8Array();
     message.total = object.total !== undefined && object.total !== null ? Long.fromValue(object.total) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: PageResponseSDKType): PageResponse {
+    return {
+      nextKey: isSet(object.next_key) ? object.next_key : undefined,
+      total: isSet(object.total) ? object.total : undefined
+    };
+  },
+
+  toSDK(message: PageResponse): PageResponseSDKType {
+    const obj: any = {};
+    message.nextKey !== undefined && (obj.next_key = message.nextKey);
+    message.total !== undefined && (obj.total = message.total);
+    return obj;
   }
 
 };

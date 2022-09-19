@@ -6,7 +6,7 @@ import { MerkleRoot, MerkleRootSDKType } from "../../../core/commitment/v1/commi
 import { SignedHeader, SignedHeaderSDKType } from "../../../../tendermint/types/types";
 import { ValidatorSet, ValidatorSetSDKType } from "../../../../tendermint/types/validator";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64, base64FromBytes, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, toTimestamp, fromTimestamp, Long } from "@osmonauts/helpers";
 /**
  * ClientState from Tendermint tracks the current validator set, latest height,
  * and a possible frozen height.
@@ -347,49 +347,6 @@ export const ClientState = {
     return message;
   },
 
-  fromJSON(object: any): ClientState {
-    return {
-      chainId: isSet(object.chainId) ? String(object.chainId) : "",
-      trustLevel: isSet(object.trustLevel) ? Fraction.fromJSON(object.trustLevel) : undefined,
-      trustingPeriod: isSet(object.trustingPeriod) ? Duration.fromJSON(object.trustingPeriod) : undefined,
-      unbondingPeriod: isSet(object.unbondingPeriod) ? Duration.fromJSON(object.unbondingPeriod) : undefined,
-      maxClockDrift: isSet(object.maxClockDrift) ? Duration.fromJSON(object.maxClockDrift) : undefined,
-      frozenHeight: isSet(object.frozenHeight) ? Height.fromJSON(object.frozenHeight) : undefined,
-      latestHeight: isSet(object.latestHeight) ? Height.fromJSON(object.latestHeight) : undefined,
-      proofSpecs: Array.isArray(object?.proofSpecs) ? object.proofSpecs.map((e: any) => ProofSpec.fromJSON(e)) : [],
-      upgradePath: Array.isArray(object?.upgradePath) ? object.upgradePath.map((e: any) => String(e)) : [],
-      allowUpdateAfterExpiry: isSet(object.allowUpdateAfterExpiry) ? Boolean(object.allowUpdateAfterExpiry) : false,
-      allowUpdateAfterMisbehaviour: isSet(object.allowUpdateAfterMisbehaviour) ? Boolean(object.allowUpdateAfterMisbehaviour) : false
-    };
-  },
-
-  toJSON(message: ClientState): unknown {
-    const obj: any = {};
-    message.chainId !== undefined && (obj.chainId = message.chainId);
-    message.trustLevel !== undefined && (obj.trustLevel = message.trustLevel ? Fraction.toJSON(message.trustLevel) : undefined);
-    message.trustingPeriod !== undefined && (obj.trustingPeriod = message.trustingPeriod);
-    message.unbondingPeriod !== undefined && (obj.unbondingPeriod = message.unbondingPeriod);
-    message.maxClockDrift !== undefined && (obj.maxClockDrift = message.maxClockDrift);
-    message.frozenHeight !== undefined && (obj.frozenHeight = message.frozenHeight ? Height.toJSON(message.frozenHeight) : undefined);
-    message.latestHeight !== undefined && (obj.latestHeight = message.latestHeight ? Height.toJSON(message.latestHeight) : undefined);
-
-    if (message.proofSpecs) {
-      obj.proofSpecs = message.proofSpecs.map(e => e ? ProofSpec.toJSON(e) : undefined);
-    } else {
-      obj.proofSpecs = [];
-    }
-
-    if (message.upgradePath) {
-      obj.upgradePath = message.upgradePath.map(e => e);
-    } else {
-      obj.upgradePath = [];
-    }
-
-    message.allowUpdateAfterExpiry !== undefined && (obj.allowUpdateAfterExpiry = message.allowUpdateAfterExpiry);
-    message.allowUpdateAfterMisbehaviour !== undefined && (obj.allowUpdateAfterMisbehaviour = message.allowUpdateAfterMisbehaviour);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ClientState>): ClientState {
     const message = createBaseClientState();
     message.chainId = object.chainId ?? "";
@@ -404,6 +361,49 @@ export const ClientState = {
     message.allowUpdateAfterExpiry = object.allowUpdateAfterExpiry ?? false;
     message.allowUpdateAfterMisbehaviour = object.allowUpdateAfterMisbehaviour ?? false;
     return message;
+  },
+
+  fromSDK(object: ClientStateSDKType): ClientState {
+    return {
+      chainId: isSet(object.chain_id) ? object.chain_id : undefined,
+      trustLevel: isSet(object.trust_level) ? Fraction.fromSDK(object.trust_level) : undefined,
+      trustingPeriod: isSet(object.trusting_period) ? Duration.fromSDK(object.trusting_period) : undefined,
+      unbondingPeriod: isSet(object.unbonding_period) ? Duration.fromSDK(object.unbonding_period) : undefined,
+      maxClockDrift: isSet(object.max_clock_drift) ? Duration.fromSDK(object.max_clock_drift) : undefined,
+      frozenHeight: isSet(object.frozen_height) ? Height.fromSDK(object.frozen_height) : undefined,
+      latestHeight: isSet(object.latest_height) ? Height.fromSDK(object.latest_height) : undefined,
+      proofSpecs: Array.isArray(object?.proof_specs) ? object.proof_specs.map((e: any) => ProofSpec.fromSDK(e)) : [],
+      upgradePath: Array.isArray(object?.upgrade_path) ? object.upgrade_path.map((e: any) => e) : [],
+      allowUpdateAfterExpiry: isSet(object.allow_update_after_expiry) ? object.allow_update_after_expiry : undefined,
+      allowUpdateAfterMisbehaviour: isSet(object.allow_update_after_misbehaviour) ? object.allow_update_after_misbehaviour : undefined
+    };
+  },
+
+  toSDK(message: ClientState): ClientStateSDKType {
+    const obj: any = {};
+    message.chainId !== undefined && (obj.chain_id = message.chainId);
+    message.trustLevel !== undefined && (obj.trust_level = message.trustLevel ? Fraction.toSDK(message.trustLevel) : undefined);
+    message.trustingPeriod !== undefined && (obj.trusting_period = message.trustingPeriod ? Duration.toSDK(message.trustingPeriod) : undefined);
+    message.unbondingPeriod !== undefined && (obj.unbonding_period = message.unbondingPeriod ? Duration.toSDK(message.unbondingPeriod) : undefined);
+    message.maxClockDrift !== undefined && (obj.max_clock_drift = message.maxClockDrift ? Duration.toSDK(message.maxClockDrift) : undefined);
+    message.frozenHeight !== undefined && (obj.frozen_height = message.frozenHeight ? Height.toSDK(message.frozenHeight) : undefined);
+    message.latestHeight !== undefined && (obj.latest_height = message.latestHeight ? Height.toSDK(message.latestHeight) : undefined);
+
+    if (message.proofSpecs) {
+      obj.proof_specs = message.proofSpecs.map(e => e ? ProofSpec.toSDK(e) : undefined);
+    } else {
+      obj.proof_specs = [];
+    }
+
+    if (message.upgradePath) {
+      obj.upgrade_path = message.upgradePath.map(e => e);
+    } else {
+      obj.upgrade_path = [];
+    }
+
+    message.allowUpdateAfterExpiry !== undefined && (obj.allow_update_after_expiry = message.allowUpdateAfterExpiry);
+    message.allowUpdateAfterMisbehaviour !== undefined && (obj.allow_update_after_misbehaviour = message.allowUpdateAfterMisbehaviour);
+    return obj;
   }
 
 };
@@ -463,28 +463,28 @@ export const ConsensusState = {
     return message;
   },
 
-  fromJSON(object: any): ConsensusState {
-    return {
-      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined,
-      root: isSet(object.root) ? MerkleRoot.fromJSON(object.root) : undefined,
-      nextValidatorsHash: isSet(object.nextValidatorsHash) ? bytesFromBase64(object.nextValidatorsHash) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: ConsensusState): unknown {
-    const obj: any = {};
-    message.timestamp !== undefined && (obj.timestamp = message.timestamp.toISOString());
-    message.root !== undefined && (obj.root = message.root ? MerkleRoot.toJSON(message.root) : undefined);
-    message.nextValidatorsHash !== undefined && (obj.nextValidatorsHash = base64FromBytes(message.nextValidatorsHash !== undefined ? message.nextValidatorsHash : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ConsensusState>): ConsensusState {
     const message = createBaseConsensusState();
     message.timestamp = object.timestamp ?? undefined;
     message.root = object.root !== undefined && object.root !== null ? MerkleRoot.fromPartial(object.root) : undefined;
     message.nextValidatorsHash = object.nextValidatorsHash ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: ConsensusStateSDKType): ConsensusState {
+    return {
+      timestamp: isSet(object.timestamp) ? Timestamp.fromSDK(object.timestamp) : undefined,
+      root: isSet(object.root) ? MerkleRoot.fromSDK(object.root) : undefined,
+      nextValidatorsHash: isSet(object.next_validators_hash) ? object.next_validators_hash : undefined
+    };
+  },
+
+  toSDK(message: ConsensusState): ConsensusStateSDKType {
+    const obj: any = {};
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp ? Timestamp.toSDK(message.timestamp) : undefined);
+    message.root !== undefined && (obj.root = message.root ? MerkleRoot.toSDK(message.root) : undefined);
+    message.nextValidatorsHash !== undefined && (obj.next_validators_hash = message.nextValidatorsHash);
+    return obj;
   }
 
 };
@@ -544,28 +544,28 @@ export const Misbehaviour = {
     return message;
   },
 
-  fromJSON(object: any): Misbehaviour {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      header_1: isSet(object.header_1) ? Header.fromJSON(object.header_1) : undefined,
-      header_2: isSet(object.header_2) ? Header.fromJSON(object.header_2) : undefined
-    };
-  },
-
-  toJSON(message: Misbehaviour): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-    message.header_1 !== undefined && (obj.header_1 = message.header_1 ? Header.toJSON(message.header_1) : undefined);
-    message.header_2 !== undefined && (obj.header_2 = message.header_2 ? Header.toJSON(message.header_2) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Misbehaviour>): Misbehaviour {
     const message = createBaseMisbehaviour();
     message.clientId = object.clientId ?? "";
     message.header_1 = object.header_1 !== undefined && object.header_1 !== null ? Header.fromPartial(object.header_1) : undefined;
     message.header_2 = object.header_2 !== undefined && object.header_2 !== null ? Header.fromPartial(object.header_2) : undefined;
     return message;
+  },
+
+  fromSDK(object: MisbehaviourSDKType): Misbehaviour {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      header_1: isSet(object.header_1) ? Header.fromSDK(object.header_1) : undefined,
+      header_2: isSet(object.header_2) ? Header.fromSDK(object.header_2) : undefined
+    };
+  },
+
+  toSDK(message: Misbehaviour): MisbehaviourSDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+    message.header_1 !== undefined && (obj.header_1 = message.header_1 ? Header.toSDK(message.header_1) : undefined);
+    message.header_2 !== undefined && (obj.header_2 = message.header_2 ? Header.toSDK(message.header_2) : undefined);
+    return obj;
   }
 
 };
@@ -634,24 +634,6 @@ export const Header = {
     return message;
   },
 
-  fromJSON(object: any): Header {
-    return {
-      signedHeader: isSet(object.signedHeader) ? SignedHeader.fromJSON(object.signedHeader) : undefined,
-      validatorSet: isSet(object.validatorSet) ? ValidatorSet.fromJSON(object.validatorSet) : undefined,
-      trustedHeight: isSet(object.trustedHeight) ? Height.fromJSON(object.trustedHeight) : undefined,
-      trustedValidators: isSet(object.trustedValidators) ? ValidatorSet.fromJSON(object.trustedValidators) : undefined
-    };
-  },
-
-  toJSON(message: Header): unknown {
-    const obj: any = {};
-    message.signedHeader !== undefined && (obj.signedHeader = message.signedHeader ? SignedHeader.toJSON(message.signedHeader) : undefined);
-    message.validatorSet !== undefined && (obj.validatorSet = message.validatorSet ? ValidatorSet.toJSON(message.validatorSet) : undefined);
-    message.trustedHeight !== undefined && (obj.trustedHeight = message.trustedHeight ? Height.toJSON(message.trustedHeight) : undefined);
-    message.trustedValidators !== undefined && (obj.trustedValidators = message.trustedValidators ? ValidatorSet.toJSON(message.trustedValidators) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Header>): Header {
     const message = createBaseHeader();
     message.signedHeader = object.signedHeader !== undefined && object.signedHeader !== null ? SignedHeader.fromPartial(object.signedHeader) : undefined;
@@ -659,6 +641,24 @@ export const Header = {
     message.trustedHeight = object.trustedHeight !== undefined && object.trustedHeight !== null ? Height.fromPartial(object.trustedHeight) : undefined;
     message.trustedValidators = object.trustedValidators !== undefined && object.trustedValidators !== null ? ValidatorSet.fromPartial(object.trustedValidators) : undefined;
     return message;
+  },
+
+  fromSDK(object: HeaderSDKType): Header {
+    return {
+      signedHeader: isSet(object.signed_header) ? SignedHeader.fromSDK(object.signed_header) : undefined,
+      validatorSet: isSet(object.validator_set) ? ValidatorSet.fromSDK(object.validator_set) : undefined,
+      trustedHeight: isSet(object.trusted_height) ? Height.fromSDK(object.trusted_height) : undefined,
+      trustedValidators: isSet(object.trusted_validators) ? ValidatorSet.fromSDK(object.trusted_validators) : undefined
+    };
+  },
+
+  toSDK(message: Header): HeaderSDKType {
+    const obj: any = {};
+    message.signedHeader !== undefined && (obj.signed_header = message.signedHeader ? SignedHeader.toSDK(message.signedHeader) : undefined);
+    message.validatorSet !== undefined && (obj.validator_set = message.validatorSet ? ValidatorSet.toSDK(message.validatorSet) : undefined);
+    message.trustedHeight !== undefined && (obj.trusted_height = message.trustedHeight ? Height.toSDK(message.trustedHeight) : undefined);
+    message.trustedValidators !== undefined && (obj.trusted_validators = message.trustedValidators ? ValidatorSet.toSDK(message.trustedValidators) : undefined);
+    return obj;
   }
 
 };
@@ -709,25 +709,25 @@ export const Fraction = {
     return message;
   },
 
-  fromJSON(object: any): Fraction {
-    return {
-      numerator: isSet(object.numerator) ? Long.fromString(object.numerator) : Long.UZERO,
-      denominator: isSet(object.denominator) ? Long.fromString(object.denominator) : Long.UZERO
-    };
-  },
-
-  toJSON(message: Fraction): unknown {
-    const obj: any = {};
-    message.numerator !== undefined && (obj.numerator = (message.numerator || Long.UZERO).toString());
-    message.denominator !== undefined && (obj.denominator = (message.denominator || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Fraction>): Fraction {
     const message = createBaseFraction();
     message.numerator = object.numerator !== undefined && object.numerator !== null ? Long.fromValue(object.numerator) : Long.UZERO;
     message.denominator = object.denominator !== undefined && object.denominator !== null ? Long.fromValue(object.denominator) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: FractionSDKType): Fraction {
+    return {
+      numerator: isSet(object.numerator) ? object.numerator : undefined,
+      denominator: isSet(object.denominator) ? object.denominator : undefined
+    };
+  },
+
+  toSDK(message: Fraction): FractionSDKType {
+    const obj: any = {};
+    message.numerator !== undefined && (obj.numerator = message.numerator);
+    message.denominator !== undefined && (obj.denominator = message.denominator);
+    return obj;
   }
 
 };

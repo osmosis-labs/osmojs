@@ -4,7 +4,7 @@ import { BlockID, BlockIDSDKType } from "../../../../tendermint/types/types";
 import { Block, BlockSDKType } from "../../../../tendermint/types/block";
 import { NodeInfo, NodeInfoSDKType } from "../../../../tendermint/p2p/types";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 /** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 
 export interface GetValidatorSetByHeightRequest {
@@ -258,25 +258,25 @@ export const GetValidatorSetByHeightRequest = {
     return message;
   },
 
-  fromJSON(object: any): GetValidatorSetByHeightRequest {
-    return {
-      height: isSet(object.height) ? Long.fromString(object.height) : Long.ZERO,
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: GetValidatorSetByHeightRequest): unknown {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetValidatorSetByHeightRequest>): GetValidatorSetByHeightRequest {
     const message = createBaseGetValidatorSetByHeightRequest();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: GetValidatorSetByHeightRequestSDKType): GetValidatorSetByHeightRequest {
+    return {
+      height: isSet(object.height) ? object.height : undefined,
+      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: GetValidatorSetByHeightRequest): GetValidatorSetByHeightRequestSDKType {
+    const obj: any = {};
+    message.height !== undefined && (obj.height = message.height);
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -336,34 +336,34 @@ export const GetValidatorSetByHeightResponse = {
     return message;
   },
 
-  fromJSON(object: any): GetValidatorSetByHeightResponse {
-    return {
-      blockHeight: isSet(object.blockHeight) ? Long.fromString(object.blockHeight) : Long.ZERO,
-      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: GetValidatorSetByHeightResponse): unknown {
-    const obj: any = {};
-    message.blockHeight !== undefined && (obj.blockHeight = (message.blockHeight || Long.ZERO).toString());
-
-    if (message.validators) {
-      obj.validators = message.validators.map(e => e ? Validator.toJSON(e) : undefined);
-    } else {
-      obj.validators = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetValidatorSetByHeightResponse>): GetValidatorSetByHeightResponse {
     const message = createBaseGetValidatorSetByHeightResponse();
     message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? Long.fromValue(object.blockHeight) : Long.ZERO;
     message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: GetValidatorSetByHeightResponseSDKType): GetValidatorSetByHeightResponse {
+    return {
+      blockHeight: isSet(object.block_height) ? object.block_height : undefined,
+      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromSDK(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: GetValidatorSetByHeightResponse): GetValidatorSetByHeightResponseSDKType {
+    const obj: any = {};
+    message.blockHeight !== undefined && (obj.block_height = message.blockHeight);
+
+    if (message.validators) {
+      obj.validators = message.validators.map(e => e ? Validator.toSDK(e) : undefined);
+    } else {
+      obj.validators = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -405,22 +405,22 @@ export const GetLatestValidatorSetRequest = {
     return message;
   },
 
-  fromJSON(object: any): GetLatestValidatorSetRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: GetLatestValidatorSetRequest): unknown {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetLatestValidatorSetRequest>): GetLatestValidatorSetRequest {
     const message = createBaseGetLatestValidatorSetRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: GetLatestValidatorSetRequestSDKType): GetLatestValidatorSetRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: GetLatestValidatorSetRequest): GetLatestValidatorSetRequestSDKType {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -480,34 +480,34 @@ export const GetLatestValidatorSetResponse = {
     return message;
   },
 
-  fromJSON(object: any): GetLatestValidatorSetResponse {
-    return {
-      blockHeight: isSet(object.blockHeight) ? Long.fromString(object.blockHeight) : Long.ZERO,
-      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: GetLatestValidatorSetResponse): unknown {
-    const obj: any = {};
-    message.blockHeight !== undefined && (obj.blockHeight = (message.blockHeight || Long.ZERO).toString());
-
-    if (message.validators) {
-      obj.validators = message.validators.map(e => e ? Validator.toJSON(e) : undefined);
-    } else {
-      obj.validators = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetLatestValidatorSetResponse>): GetLatestValidatorSetResponse {
     const message = createBaseGetLatestValidatorSetResponse();
     message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? Long.fromValue(object.blockHeight) : Long.ZERO;
     message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: GetLatestValidatorSetResponseSDKType): GetLatestValidatorSetResponse {
+    return {
+      blockHeight: isSet(object.block_height) ? object.block_height : undefined,
+      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromSDK(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: GetLatestValidatorSetResponse): GetLatestValidatorSetResponseSDKType {
+    const obj: any = {};
+    message.blockHeight !== undefined && (obj.block_height = message.blockHeight);
+
+    if (message.validators) {
+      obj.validators = message.validators.map(e => e ? Validator.toSDK(e) : undefined);
+    } else {
+      obj.validators = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -576,24 +576,6 @@ export const Validator = {
     return message;
   },
 
-  fromJSON(object: any): Validator {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      pubKey: isSet(object.pubKey) ? Any.fromJSON(object.pubKey) : undefined,
-      votingPower: isSet(object.votingPower) ? Long.fromString(object.votingPower) : Long.ZERO,
-      proposerPriority: isSet(object.proposerPriority) ? Long.fromString(object.proposerPriority) : Long.ZERO
-    };
-  },
-
-  toJSON(message: Validator): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.pubKey !== undefined && (obj.pubKey = message.pubKey ? Any.toJSON(message.pubKey) : undefined);
-    message.votingPower !== undefined && (obj.votingPower = (message.votingPower || Long.ZERO).toString());
-    message.proposerPriority !== undefined && (obj.proposerPriority = (message.proposerPriority || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Validator>): Validator {
     const message = createBaseValidator();
     message.address = object.address ?? "";
@@ -601,6 +583,24 @@ export const Validator = {
     message.votingPower = object.votingPower !== undefined && object.votingPower !== null ? Long.fromValue(object.votingPower) : Long.ZERO;
     message.proposerPriority = object.proposerPriority !== undefined && object.proposerPriority !== null ? Long.fromValue(object.proposerPriority) : Long.ZERO;
     return message;
+  },
+
+  fromSDK(object: ValidatorSDKType): Validator {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      pubKey: isSet(object.pub_key) ? Any.fromSDK(object.pub_key) : undefined,
+      votingPower: isSet(object.voting_power) ? object.voting_power : undefined,
+      proposerPriority: isSet(object.proposer_priority) ? object.proposer_priority : undefined
+    };
+  },
+
+  toSDK(message: Validator): ValidatorSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.pubKey !== undefined && (obj.pub_key = message.pubKey ? Any.toSDK(message.pubKey) : undefined);
+    message.votingPower !== undefined && (obj.voting_power = message.votingPower);
+    message.proposerPriority !== undefined && (obj.proposer_priority = message.proposerPriority);
+    return obj;
   }
 
 };
@@ -642,22 +642,22 @@ export const GetBlockByHeightRequest = {
     return message;
   },
 
-  fromJSON(object: any): GetBlockByHeightRequest {
-    return {
-      height: isSet(object.height) ? Long.fromString(object.height) : Long.ZERO
-    };
-  },
-
-  toJSON(message: GetBlockByHeightRequest): unknown {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetBlockByHeightRequest>): GetBlockByHeightRequest {
     const message = createBaseGetBlockByHeightRequest();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     return message;
+  },
+
+  fromSDK(object: GetBlockByHeightRequestSDKType): GetBlockByHeightRequest {
+    return {
+      height: isSet(object.height) ? object.height : undefined
+    };
+  },
+
+  toSDK(message: GetBlockByHeightRequest): GetBlockByHeightRequestSDKType {
+    const obj: any = {};
+    message.height !== undefined && (obj.height = message.height);
+    return obj;
   }
 
 };
@@ -708,25 +708,25 @@ export const GetBlockByHeightResponse = {
     return message;
   },
 
-  fromJSON(object: any): GetBlockByHeightResponse {
-    return {
-      blockId: isSet(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
-      block: isSet(object.block) ? Block.fromJSON(object.block) : undefined
-    };
-  },
-
-  toJSON(message: GetBlockByHeightResponse): unknown {
-    const obj: any = {};
-    message.blockId !== undefined && (obj.blockId = message.blockId ? BlockID.toJSON(message.blockId) : undefined);
-    message.block !== undefined && (obj.block = message.block ? Block.toJSON(message.block) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetBlockByHeightResponse>): GetBlockByHeightResponse {
     const message = createBaseGetBlockByHeightResponse();
     message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
     message.block = object.block !== undefined && object.block !== null ? Block.fromPartial(object.block) : undefined;
     return message;
+  },
+
+  fromSDK(object: GetBlockByHeightResponseSDKType): GetBlockByHeightResponse {
+    return {
+      blockId: isSet(object.block_id) ? BlockID.fromSDK(object.block_id) : undefined,
+      block: isSet(object.block) ? Block.fromSDK(object.block) : undefined
+    };
+  },
+
+  toSDK(message: GetBlockByHeightResponse): GetBlockByHeightResponseSDKType {
+    const obj: any = {};
+    message.blockId !== undefined && (obj.block_id = message.blockId ? BlockID.toSDK(message.blockId) : undefined);
+    message.block !== undefined && (obj.block = message.block ? Block.toSDK(message.block) : undefined);
+    return obj;
   }
 
 };
@@ -758,18 +758,18 @@ export const GetLatestBlockRequest = {
     return message;
   },
 
-  fromJSON(_: any): GetLatestBlockRequest {
-    return {};
-  },
-
-  toJSON(_: GetLatestBlockRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<GetLatestBlockRequest>): GetLatestBlockRequest {
     const message = createBaseGetLatestBlockRequest();
     return message;
+  },
+
+  fromSDK(_: GetLatestBlockRequestSDKType): GetLatestBlockRequest {
+    return {};
+  },
+
+  toSDK(_: GetLatestBlockRequest): GetLatestBlockRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -820,25 +820,25 @@ export const GetLatestBlockResponse = {
     return message;
   },
 
-  fromJSON(object: any): GetLatestBlockResponse {
-    return {
-      blockId: isSet(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
-      block: isSet(object.block) ? Block.fromJSON(object.block) : undefined
-    };
-  },
-
-  toJSON(message: GetLatestBlockResponse): unknown {
-    const obj: any = {};
-    message.blockId !== undefined && (obj.blockId = message.blockId ? BlockID.toJSON(message.blockId) : undefined);
-    message.block !== undefined && (obj.block = message.block ? Block.toJSON(message.block) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetLatestBlockResponse>): GetLatestBlockResponse {
     const message = createBaseGetLatestBlockResponse();
     message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
     message.block = object.block !== undefined && object.block !== null ? Block.fromPartial(object.block) : undefined;
     return message;
+  },
+
+  fromSDK(object: GetLatestBlockResponseSDKType): GetLatestBlockResponse {
+    return {
+      blockId: isSet(object.block_id) ? BlockID.fromSDK(object.block_id) : undefined,
+      block: isSet(object.block) ? Block.fromSDK(object.block) : undefined
+    };
+  },
+
+  toSDK(message: GetLatestBlockResponse): GetLatestBlockResponseSDKType {
+    const obj: any = {};
+    message.blockId !== undefined && (obj.block_id = message.blockId ? BlockID.toSDK(message.blockId) : undefined);
+    message.block !== undefined && (obj.block = message.block ? Block.toSDK(message.block) : undefined);
+    return obj;
   }
 
 };
@@ -870,18 +870,18 @@ export const GetSyncingRequest = {
     return message;
   },
 
-  fromJSON(_: any): GetSyncingRequest {
-    return {};
-  },
-
-  toJSON(_: GetSyncingRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<GetSyncingRequest>): GetSyncingRequest {
     const message = createBaseGetSyncingRequest();
     return message;
+  },
+
+  fromSDK(_: GetSyncingRequestSDKType): GetSyncingRequest {
+    return {};
+  },
+
+  toSDK(_: GetSyncingRequest): GetSyncingRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -923,22 +923,22 @@ export const GetSyncingResponse = {
     return message;
   },
 
-  fromJSON(object: any): GetSyncingResponse {
-    return {
-      syncing: isSet(object.syncing) ? Boolean(object.syncing) : false
-    };
-  },
-
-  toJSON(message: GetSyncingResponse): unknown {
-    const obj: any = {};
-    message.syncing !== undefined && (obj.syncing = message.syncing);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetSyncingResponse>): GetSyncingResponse {
     const message = createBaseGetSyncingResponse();
     message.syncing = object.syncing ?? false;
     return message;
+  },
+
+  fromSDK(object: GetSyncingResponseSDKType): GetSyncingResponse {
+    return {
+      syncing: isSet(object.syncing) ? object.syncing : undefined
+    };
+  },
+
+  toSDK(message: GetSyncingResponse): GetSyncingResponseSDKType {
+    const obj: any = {};
+    message.syncing !== undefined && (obj.syncing = message.syncing);
+    return obj;
   }
 
 };
@@ -970,18 +970,18 @@ export const GetNodeInfoRequest = {
     return message;
   },
 
-  fromJSON(_: any): GetNodeInfoRequest {
-    return {};
-  },
-
-  toJSON(_: GetNodeInfoRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<GetNodeInfoRequest>): GetNodeInfoRequest {
     const message = createBaseGetNodeInfoRequest();
     return message;
+  },
+
+  fromSDK(_: GetNodeInfoRequestSDKType): GetNodeInfoRequest {
+    return {};
+  },
+
+  toSDK(_: GetNodeInfoRequest): GetNodeInfoRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -1032,25 +1032,25 @@ export const GetNodeInfoResponse = {
     return message;
   },
 
-  fromJSON(object: any): GetNodeInfoResponse {
-    return {
-      nodeInfo: isSet(object.nodeInfo) ? NodeInfo.fromJSON(object.nodeInfo) : undefined,
-      applicationVersion: isSet(object.applicationVersion) ? VersionInfo.fromJSON(object.applicationVersion) : undefined
-    };
-  },
-
-  toJSON(message: GetNodeInfoResponse): unknown {
-    const obj: any = {};
-    message.nodeInfo !== undefined && (obj.nodeInfo = message.nodeInfo ? NodeInfo.toJSON(message.nodeInfo) : undefined);
-    message.applicationVersion !== undefined && (obj.applicationVersion = message.applicationVersion ? VersionInfo.toJSON(message.applicationVersion) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetNodeInfoResponse>): GetNodeInfoResponse {
     const message = createBaseGetNodeInfoResponse();
     message.nodeInfo = object.nodeInfo !== undefined && object.nodeInfo !== null ? NodeInfo.fromPartial(object.nodeInfo) : undefined;
     message.applicationVersion = object.applicationVersion !== undefined && object.applicationVersion !== null ? VersionInfo.fromPartial(object.applicationVersion) : undefined;
     return message;
+  },
+
+  fromSDK(object: GetNodeInfoResponseSDKType): GetNodeInfoResponse {
+    return {
+      nodeInfo: isSet(object.node_info) ? NodeInfo.fromSDK(object.node_info) : undefined,
+      applicationVersion: isSet(object.application_version) ? VersionInfo.fromSDK(object.application_version) : undefined
+    };
+  },
+
+  toSDK(message: GetNodeInfoResponse): GetNodeInfoResponseSDKType {
+    const obj: any = {};
+    message.nodeInfo !== undefined && (obj.node_info = message.nodeInfo ? NodeInfo.toSDK(message.nodeInfo) : undefined);
+    message.applicationVersion !== undefined && (obj.application_version = message.applicationVersion ? VersionInfo.toSDK(message.applicationVersion) : undefined);
+    return obj;
   }
 
 };
@@ -1155,38 +1155,6 @@ export const VersionInfo = {
     return message;
   },
 
-  fromJSON(object: any): VersionInfo {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      appName: isSet(object.appName) ? String(object.appName) : "",
-      version: isSet(object.version) ? String(object.version) : "",
-      gitCommit: isSet(object.gitCommit) ? String(object.gitCommit) : "",
-      buildTags: isSet(object.buildTags) ? String(object.buildTags) : "",
-      goVersion: isSet(object.goVersion) ? String(object.goVersion) : "",
-      buildDeps: Array.isArray(object?.buildDeps) ? object.buildDeps.map((e: any) => Module.fromJSON(e)) : [],
-      cosmosSdkVersion: isSet(object.cosmosSdkVersion) ? String(object.cosmosSdkVersion) : ""
-    };
-  },
-
-  toJSON(message: VersionInfo): unknown {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.appName !== undefined && (obj.appName = message.appName);
-    message.version !== undefined && (obj.version = message.version);
-    message.gitCommit !== undefined && (obj.gitCommit = message.gitCommit);
-    message.buildTags !== undefined && (obj.buildTags = message.buildTags);
-    message.goVersion !== undefined && (obj.goVersion = message.goVersion);
-
-    if (message.buildDeps) {
-      obj.buildDeps = message.buildDeps.map(e => e ? Module.toJSON(e) : undefined);
-    } else {
-      obj.buildDeps = [];
-    }
-
-    message.cosmosSdkVersion !== undefined && (obj.cosmosSdkVersion = message.cosmosSdkVersion);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<VersionInfo>): VersionInfo {
     const message = createBaseVersionInfo();
     message.name = object.name ?? "";
@@ -1198,6 +1166,38 @@ export const VersionInfo = {
     message.buildDeps = object.buildDeps?.map(e => Module.fromPartial(e)) || [];
     message.cosmosSdkVersion = object.cosmosSdkVersion ?? "";
     return message;
+  },
+
+  fromSDK(object: VersionInfoSDKType): VersionInfo {
+    return {
+      name: isSet(object.name) ? object.name : undefined,
+      appName: isSet(object.app_name) ? object.app_name : undefined,
+      version: isSet(object.version) ? object.version : undefined,
+      gitCommit: isSet(object.git_commit) ? object.git_commit : undefined,
+      buildTags: isSet(object.build_tags) ? object.build_tags : undefined,
+      goVersion: isSet(object.go_version) ? object.go_version : undefined,
+      buildDeps: Array.isArray(object?.build_deps) ? object.build_deps.map((e: any) => Module.fromSDK(e)) : [],
+      cosmosSdkVersion: isSet(object.cosmos_sdk_version) ? object.cosmos_sdk_version : undefined
+    };
+  },
+
+  toSDK(message: VersionInfo): VersionInfoSDKType {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.appName !== undefined && (obj.app_name = message.appName);
+    message.version !== undefined && (obj.version = message.version);
+    message.gitCommit !== undefined && (obj.git_commit = message.gitCommit);
+    message.buildTags !== undefined && (obj.build_tags = message.buildTags);
+    message.goVersion !== undefined && (obj.go_version = message.goVersion);
+
+    if (message.buildDeps) {
+      obj.build_deps = message.buildDeps.map(e => e ? Module.toSDK(e) : undefined);
+    } else {
+      obj.build_deps = [];
+    }
+
+    message.cosmosSdkVersion !== undefined && (obj.cosmos_sdk_version = message.cosmosSdkVersion);
+    return obj;
   }
 
 };
@@ -1257,28 +1257,28 @@ export const Module = {
     return message;
   },
 
-  fromJSON(object: any): Module {
-    return {
-      path: isSet(object.path) ? String(object.path) : "",
-      version: isSet(object.version) ? String(object.version) : "",
-      sum: isSet(object.sum) ? String(object.sum) : ""
-    };
-  },
-
-  toJSON(message: Module): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = message.path);
-    message.version !== undefined && (obj.version = message.version);
-    message.sum !== undefined && (obj.sum = message.sum);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Module>): Module {
     const message = createBaseModule();
     message.path = object.path ?? "";
     message.version = object.version ?? "";
     message.sum = object.sum ?? "";
     return message;
+  },
+
+  fromSDK(object: ModuleSDKType): Module {
+    return {
+      path: isSet(object.path) ? object.path : undefined,
+      version: isSet(object.version) ? object.version : undefined,
+      sum: isSet(object.sum) ? object.sum : undefined
+    };
+  },
+
+  toSDK(message: Module): ModuleSDKType {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    message.version !== undefined && (obj.version = message.version);
+    message.sum !== undefined && (obj.sum = message.sum);
+    return obj;
   }
 
 };

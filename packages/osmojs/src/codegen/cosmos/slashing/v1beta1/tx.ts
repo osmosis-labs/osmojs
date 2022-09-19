@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** MsgUnjail defines the Msg/Unjail request type */
 
 export interface MsgUnjail {
@@ -54,22 +54,22 @@ export const MsgUnjail = {
     return message;
   },
 
-  fromJSON(object: any): MsgUnjail {
-    return {
-      validatorAddr: isSet(object.validatorAddr) ? String(object.validatorAddr) : ""
-    };
-  },
-
-  toJSON(message: MsgUnjail): unknown {
-    const obj: any = {};
-    message.validatorAddr !== undefined && (obj.validatorAddr = message.validatorAddr);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgUnjail>): MsgUnjail {
     const message = createBaseMsgUnjail();
     message.validatorAddr = object.validatorAddr ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgUnjailSDKType): MsgUnjail {
+    return {
+      validatorAddr: isSet(object.validator_addr) ? object.validator_addr : undefined
+    };
+  },
+
+  toSDK(message: MsgUnjail): MsgUnjailSDKType {
+    const obj: any = {};
+    message.validatorAddr !== undefined && (obj.validator_addr = message.validatorAddr);
+    return obj;
   }
 
 };
@@ -101,18 +101,18 @@ export const MsgUnjailResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgUnjailResponse {
-    return {};
-  },
-
-  toJSON(_: MsgUnjailResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgUnjailResponse>): MsgUnjailResponse {
     const message = createBaseMsgUnjailResponse();
     return message;
+  },
+
+  fromSDK(_: MsgUnjailResponseSDKType): MsgUnjailResponse {
+    return {};
+  },
+
+  toSDK(_: MsgUnjailResponse): MsgUnjailResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };

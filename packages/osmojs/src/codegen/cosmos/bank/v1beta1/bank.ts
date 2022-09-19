@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** Params defines the parameters for the bank module. */
 
 export interface Params {
@@ -266,31 +266,31 @@ export const Params = {
     return message;
   },
 
-  fromJSON(object: any): Params {
-    return {
-      sendEnabled: Array.isArray(object?.sendEnabled) ? object.sendEnabled.map((e: any) => SendEnabled.fromJSON(e)) : [],
-      defaultSendEnabled: isSet(object.defaultSendEnabled) ? Boolean(object.defaultSendEnabled) : false
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-
-    if (message.sendEnabled) {
-      obj.sendEnabled = message.sendEnabled.map(e => e ? SendEnabled.toJSON(e) : undefined);
-    } else {
-      obj.sendEnabled = [];
-    }
-
-    message.defaultSendEnabled !== undefined && (obj.defaultSendEnabled = message.defaultSendEnabled);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.sendEnabled = object.sendEnabled?.map(e => SendEnabled.fromPartial(e)) || [];
     message.defaultSendEnabled = object.defaultSendEnabled ?? false;
     return message;
+  },
+
+  fromSDK(object: ParamsSDKType): Params {
+    return {
+      sendEnabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e: any) => SendEnabled.fromSDK(e)) : [],
+      defaultSendEnabled: isSet(object.default_send_enabled) ? object.default_send_enabled : undefined
+    };
+  },
+
+  toSDK(message: Params): ParamsSDKType {
+    const obj: any = {};
+
+    if (message.sendEnabled) {
+      obj.send_enabled = message.sendEnabled.map(e => e ? SendEnabled.toSDK(e) : undefined);
+    } else {
+      obj.send_enabled = [];
+    }
+
+    message.defaultSendEnabled !== undefined && (obj.default_send_enabled = message.defaultSendEnabled);
+    return obj;
   }
 
 };
@@ -341,25 +341,25 @@ export const SendEnabled = {
     return message;
   },
 
-  fromJSON(object: any): SendEnabled {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : "",
-      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false
-    };
-  },
-
-  toJSON(message: SendEnabled): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.enabled !== undefined && (obj.enabled = message.enabled);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SendEnabled>): SendEnabled {
     const message = createBaseSendEnabled();
     message.denom = object.denom ?? "";
     message.enabled = object.enabled ?? false;
     return message;
+  },
+
+  fromSDK(object: SendEnabledSDKType): SendEnabled {
+    return {
+      denom: isSet(object.denom) ? object.denom : undefined,
+      enabled: isSet(object.enabled) ? object.enabled : undefined
+    };
+  },
+
+  toSDK(message: SendEnabled): SendEnabledSDKType {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    message.enabled !== undefined && (obj.enabled = message.enabled);
+    return obj;
   }
 
 };
@@ -410,31 +410,31 @@ export const Input = {
     return message;
   },
 
-  fromJSON(object: any): Input {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Input): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Input>): Input {
     const message = createBaseInput();
     message.address = object.address ?? "";
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: InputSDKType): Input {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: Input): InputSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+
+    return obj;
   }
 
 };
@@ -485,31 +485,31 @@ export const Output = {
     return message;
   },
 
-  fromJSON(object: any): Output {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Output): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Output>): Output {
     const message = createBaseOutput();
     message.address = object.address ?? "";
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: OutputSDKType): Output {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: Output): OutputSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+
+    return obj;
   }
 
 };
@@ -551,28 +551,28 @@ export const Supply = {
     return message;
   },
 
-  fromJSON(object: any): Supply {
+  fromPartial(object: DeepPartial<Supply>): Supply {
+    const message = createBaseSupply();
+    message.total = object.total?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: SupplySDKType): Supply {
     return {
-      total: Array.isArray(object?.total) ? object.total.map((e: any) => Coin.fromJSON(e)) : []
+      total: Array.isArray(object?.total) ? object.total.map((e: any) => Coin.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: Supply): unknown {
+  toSDK(message: Supply): SupplySDKType {
     const obj: any = {};
 
     if (message.total) {
-      obj.total = message.total.map(e => e ? Coin.toJSON(e) : undefined);
+      obj.total = message.total.map(e => e ? Coin.toSDK(e) : undefined);
     } else {
       obj.total = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<Supply>): Supply {
-    const message = createBaseSupply();
-    message.total = object.total?.map(e => Coin.fromPartial(e)) || [];
-    return message;
   }
 
 };
@@ -632,18 +632,26 @@ export const DenomUnit = {
     return message;
   },
 
-  fromJSON(object: any): DenomUnit {
+  fromPartial(object: DeepPartial<DenomUnit>): DenomUnit {
+    const message = createBaseDenomUnit();
+    message.denom = object.denom ?? "";
+    message.exponent = object.exponent ?? 0;
+    message.aliases = object.aliases?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: DenomUnitSDKType): DenomUnit {
     return {
-      denom: isSet(object.denom) ? String(object.denom) : "",
-      exponent: isSet(object.exponent) ? Number(object.exponent) : 0,
-      aliases: Array.isArray(object?.aliases) ? object.aliases.map((e: any) => String(e)) : []
+      denom: isSet(object.denom) ? object.denom : undefined,
+      exponent: isSet(object.exponent) ? object.exponent : undefined,
+      aliases: Array.isArray(object?.aliases) ? object.aliases.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: DenomUnit): unknown {
+  toSDK(message: DenomUnit): DenomUnitSDKType {
     const obj: any = {};
     message.denom !== undefined && (obj.denom = message.denom);
-    message.exponent !== undefined && (obj.exponent = Math.round(message.exponent));
+    message.exponent !== undefined && (obj.exponent = message.exponent);
 
     if (message.aliases) {
       obj.aliases = message.aliases.map(e => e);
@@ -652,14 +660,6 @@ export const DenomUnit = {
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<DenomUnit>): DenomUnit {
-    const message = createBaseDenomUnit();
-    message.denom = object.denom ?? "";
-    message.exponent = object.exponent ?? 0;
-    message.aliases = object.aliases?.map(e => e) || [];
-    return message;
   }
 
 };
@@ -764,38 +764,6 @@ export const Metadata = {
     return message;
   },
 
-  fromJSON(object: any): Metadata {
-    return {
-      description: isSet(object.description) ? String(object.description) : "",
-      denomUnits: Array.isArray(object?.denomUnits) ? object.denomUnits.map((e: any) => DenomUnit.fromJSON(e)) : [],
-      base: isSet(object.base) ? String(object.base) : "",
-      display: isSet(object.display) ? String(object.display) : "",
-      name: isSet(object.name) ? String(object.name) : "",
-      symbol: isSet(object.symbol) ? String(object.symbol) : "",
-      uri: isSet(object.uri) ? String(object.uri) : "",
-      uriHash: isSet(object.uriHash) ? String(object.uriHash) : ""
-    };
-  },
-
-  toJSON(message: Metadata): unknown {
-    const obj: any = {};
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.denomUnits) {
-      obj.denomUnits = message.denomUnits.map(e => e ? DenomUnit.toJSON(e) : undefined);
-    } else {
-      obj.denomUnits = [];
-    }
-
-    message.base !== undefined && (obj.base = message.base);
-    message.display !== undefined && (obj.display = message.display);
-    message.name !== undefined && (obj.name = message.name);
-    message.symbol !== undefined && (obj.symbol = message.symbol);
-    message.uri !== undefined && (obj.uri = message.uri);
-    message.uriHash !== undefined && (obj.uriHash = message.uriHash);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Metadata>): Metadata {
     const message = createBaseMetadata();
     message.description = object.description ?? "";
@@ -807,6 +775,38 @@ export const Metadata = {
     message.uri = object.uri ?? "";
     message.uriHash = object.uriHash ?? "";
     return message;
+  },
+
+  fromSDK(object: MetadataSDKType): Metadata {
+    return {
+      description: isSet(object.description) ? object.description : undefined,
+      denomUnits: Array.isArray(object?.denom_units) ? object.denom_units.map((e: any) => DenomUnit.fromSDK(e)) : [],
+      base: isSet(object.base) ? object.base : undefined,
+      display: isSet(object.display) ? object.display : undefined,
+      name: isSet(object.name) ? object.name : undefined,
+      symbol: isSet(object.symbol) ? object.symbol : undefined,
+      uri: isSet(object.uri) ? object.uri : undefined,
+      uriHash: isSet(object.uri_hash) ? object.uri_hash : undefined
+    };
+  },
+
+  toSDK(message: Metadata): MetadataSDKType {
+    const obj: any = {};
+    message.description !== undefined && (obj.description = message.description);
+
+    if (message.denomUnits) {
+      obj.denom_units = message.denomUnits.map(e => e ? DenomUnit.toSDK(e) : undefined);
+    } else {
+      obj.denom_units = [];
+    }
+
+    message.base !== undefined && (obj.base = message.base);
+    message.display !== undefined && (obj.display = message.display);
+    message.name !== undefined && (obj.name = message.name);
+    message.symbol !== undefined && (obj.symbol = message.symbol);
+    message.uri !== undefined && (obj.uri = message.uri);
+    message.uriHash !== undefined && (obj.uri_hash = message.uriHash);
+    return obj;
   }
 
 };

@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * Defines the HTTP configuration for an API service. It contains a list of
  * [HttpRule][google.api.HttpRule], each specifying the mapping of an RPC method
@@ -779,31 +779,31 @@ export const Http = {
     return message;
   },
 
-  fromJSON(object: any): Http {
-    return {
-      rules: Array.isArray(object?.rules) ? object.rules.map((e: any) => HttpRule.fromJSON(e)) : [],
-      fullyDecodeReservedExpansion: isSet(object.fullyDecodeReservedExpansion) ? Boolean(object.fullyDecodeReservedExpansion) : false
-    };
-  },
-
-  toJSON(message: Http): unknown {
-    const obj: any = {};
-
-    if (message.rules) {
-      obj.rules = message.rules.map(e => e ? HttpRule.toJSON(e) : undefined);
-    } else {
-      obj.rules = [];
-    }
-
-    message.fullyDecodeReservedExpansion !== undefined && (obj.fullyDecodeReservedExpansion = message.fullyDecodeReservedExpansion);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Http>): Http {
     const message = createBaseHttp();
     message.rules = object.rules?.map(e => HttpRule.fromPartial(e)) || [];
     message.fullyDecodeReservedExpansion = object.fullyDecodeReservedExpansion ?? false;
     return message;
+  },
+
+  fromSDK(object: HttpSDKType): Http {
+    return {
+      rules: Array.isArray(object?.rules) ? object.rules.map((e: any) => HttpRule.fromSDK(e)) : [],
+      fullyDecodeReservedExpansion: isSet(object.fully_decode_reserved_expansion) ? object.fully_decode_reserved_expansion : undefined
+    };
+  },
+
+  toSDK(message: Http): HttpSDKType {
+    const obj: any = {};
+
+    if (message.rules) {
+      obj.rules = message.rules.map(e => e ? HttpRule.toSDK(e) : undefined);
+    } else {
+      obj.rules = [];
+    }
+
+    message.fullyDecodeReservedExpansion !== undefined && (obj.fully_decode_reserved_expansion = message.fullyDecodeReservedExpansion);
+    return obj;
   }
 
 };
@@ -926,42 +926,6 @@ export const HttpRule = {
     return message;
   },
 
-  fromJSON(object: any): HttpRule {
-    return {
-      selector: isSet(object.selector) ? String(object.selector) : "",
-      get: isSet(object.get) ? String(object.get) : undefined,
-      put: isSet(object.put) ? String(object.put) : undefined,
-      post: isSet(object.post) ? String(object.post) : undefined,
-      delete: isSet(object.delete) ? String(object.delete) : undefined,
-      patch: isSet(object.patch) ? String(object.patch) : undefined,
-      custom: isSet(object.custom) ? CustomHttpPattern.fromJSON(object.custom) : undefined,
-      body: isSet(object.body) ? String(object.body) : "",
-      responseBody: isSet(object.responseBody) ? String(object.responseBody) : "",
-      additionalBindings: Array.isArray(object?.additionalBindings) ? object.additionalBindings.map((e: any) => HttpRule.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: HttpRule): unknown {
-    const obj: any = {};
-    message.selector !== undefined && (obj.selector = message.selector);
-    message.get !== undefined && (obj.get = message.get);
-    message.put !== undefined && (obj.put = message.put);
-    message.post !== undefined && (obj.post = message.post);
-    message.delete !== undefined && (obj.delete = message.delete);
-    message.patch !== undefined && (obj.patch = message.patch);
-    message.custom !== undefined && (obj.custom = message.custom ? CustomHttpPattern.toJSON(message.custom) : undefined);
-    message.body !== undefined && (obj.body = message.body);
-    message.responseBody !== undefined && (obj.responseBody = message.responseBody);
-
-    if (message.additionalBindings) {
-      obj.additionalBindings = message.additionalBindings.map(e => e ? HttpRule.toJSON(e) : undefined);
-    } else {
-      obj.additionalBindings = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<HttpRule>): HttpRule {
     const message = createBaseHttpRule();
     message.selector = object.selector ?? "";
@@ -975,6 +939,42 @@ export const HttpRule = {
     message.responseBody = object.responseBody ?? "";
     message.additionalBindings = object.additionalBindings?.map(e => HttpRule.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: HttpRuleSDKType): HttpRule {
+    return {
+      selector: isSet(object.selector) ? object.selector : undefined,
+      get: isSet(object.get) ? object.get : undefined,
+      put: isSet(object.put) ? object.put : undefined,
+      post: isSet(object.post) ? object.post : undefined,
+      delete: isSet(object.delete) ? object.delete : undefined,
+      patch: isSet(object.patch) ? object.patch : undefined,
+      custom: isSet(object.custom) ? CustomHttpPattern.fromSDK(object.custom) : undefined,
+      body: isSet(object.body) ? object.body : undefined,
+      responseBody: isSet(object.response_body) ? object.response_body : undefined,
+      additionalBindings: Array.isArray(object?.additional_bindings) ? object.additional_bindings.map((e: any) => HttpRule.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: HttpRule): HttpRuleSDKType {
+    const obj: any = {};
+    message.selector !== undefined && (obj.selector = message.selector);
+    message.get !== undefined && (obj.get = message.get);
+    message.put !== undefined && (obj.put = message.put);
+    message.post !== undefined && (obj.post = message.post);
+    message.delete !== undefined && (obj.delete = message.delete);
+    message.patch !== undefined && (obj.patch = message.patch);
+    message.custom !== undefined && (obj.custom = message.custom ? CustomHttpPattern.toSDK(message.custom) : undefined);
+    message.body !== undefined && (obj.body = message.body);
+    message.responseBody !== undefined && (obj.response_body = message.responseBody);
+
+    if (message.additionalBindings) {
+      obj.additional_bindings = message.additionalBindings.map(e => e ? HttpRule.toSDK(e) : undefined);
+    } else {
+      obj.additional_bindings = [];
+    }
+
+    return obj;
   }
 
 };
@@ -1025,25 +1025,25 @@ export const CustomHttpPattern = {
     return message;
   },
 
-  fromJSON(object: any): CustomHttpPattern {
-    return {
-      kind: isSet(object.kind) ? String(object.kind) : "",
-      path: isSet(object.path) ? String(object.path) : ""
-    };
-  },
-
-  toJSON(message: CustomHttpPattern): unknown {
-    const obj: any = {};
-    message.kind !== undefined && (obj.kind = message.kind);
-    message.path !== undefined && (obj.path = message.path);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<CustomHttpPattern>): CustomHttpPattern {
     const message = createBaseCustomHttpPattern();
     message.kind = object.kind ?? "";
     message.path = object.path ?? "";
     return message;
+  },
+
+  fromSDK(object: CustomHttpPatternSDKType): CustomHttpPattern {
+    return {
+      kind: isSet(object.kind) ? object.kind : undefined,
+      path: isSet(object.path) ? object.path : undefined
+    };
+  },
+
+  toSDK(message: CustomHttpPattern): CustomHttpPatternSDKType {
+    const obj: any = {};
+    message.kind !== undefined && (obj.kind = message.kind);
+    message.path !== undefined && (obj.path = message.path);
+    return obj;
   }
 
 };

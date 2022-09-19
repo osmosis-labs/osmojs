@@ -71,35 +71,35 @@ export interface Record_OfflineSDKType {
 export declare const Record: {
     encode(message: Record, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record;
-    fromJSON(object: any): Record;
-    toJSON(message: Record): unknown;
     fromPartial(object: DeepPartial<Record>): Record;
+    fromSDK(object: RecordSDKType): Record;
+    toSDK(message: Record): RecordSDKType;
 };
 export declare const Record_Local: {
     encode(message: Record_Local, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Local;
-    fromJSON(object: any): Record_Local;
-    toJSON(message: Record_Local): unknown;
     fromPartial(object: DeepPartial<Record_Local>): Record_Local;
+    fromSDK(object: Record_LocalSDKType): Record_Local;
+    toSDK(message: Record_Local): Record_LocalSDKType;
 };
 export declare const Record_Ledger: {
     encode(message: Record_Ledger, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Ledger;
-    fromJSON(object: any): Record_Ledger;
-    toJSON(message: Record_Ledger): unknown;
     fromPartial(object: DeepPartial<Record_Ledger>): Record_Ledger;
+    fromSDK(object: Record_LedgerSDKType): Record_Ledger;
+    toSDK(message: Record_Ledger): Record_LedgerSDKType;
 };
 export declare const Record_Multi: {
     encode(_: Record_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Multi;
-    fromJSON(_: any): Record_Multi;
-    toJSON(_: Record_Multi): unknown;
     fromPartial(_: DeepPartial<Record_Multi>): Record_Multi;
+    fromSDK(_: Record_MultiSDKType): Record_Multi;
+    toSDK(_: Record_Multi): Record_MultiSDKType;
 };
 export declare const Record_Offline: {
     encode(_: Record_Offline, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Offline;
-    fromJSON(_: any): Record_Offline;
-    toJSON(_: Record_Offline): unknown;
     fromPartial(_: DeepPartial<Record_Offline>): Record_Offline;
+    fromSDK(_: Record_OfflineSDKType): Record_Offline;
+    toSDK(_: Record_Offline): Record_OfflineSDKType;
 };

@@ -70,42 +70,42 @@ export interface QueryAnnualProvisionsResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
+    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
+    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };
 export declare const QueryInflationRequest: {
     encode(_: QueryInflationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryInflationRequest;
-    fromJSON(_: any): QueryInflationRequest;
-    toJSON(_: QueryInflationRequest): unknown;
     fromPartial(_: DeepPartial<QueryInflationRequest>): QueryInflationRequest;
+    fromSDK(_: QueryInflationRequestSDKType): QueryInflationRequest;
+    toSDK(_: QueryInflationRequest): QueryInflationRequestSDKType;
 };
 export declare const QueryInflationResponse: {
     encode(message: QueryInflationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryInflationResponseSDKType;
-    fromJSON(object: any): QueryInflationResponse;
-    toJSON(message: QueryInflationResponse): unknown;
     fromPartial(object: DeepPartial<QueryInflationResponse>): QueryInflationResponse;
+    fromSDK(object: QueryInflationResponseSDKType): QueryInflationResponse;
+    toSDK(message: QueryInflationResponse): QueryInflationResponseSDKType;
 };
 export declare const QueryAnnualProvisionsRequest: {
     encode(_: QueryAnnualProvisionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAnnualProvisionsRequest;
-    fromJSON(_: any): QueryAnnualProvisionsRequest;
-    toJSON(_: QueryAnnualProvisionsRequest): unknown;
     fromPartial(_: DeepPartial<QueryAnnualProvisionsRequest>): QueryAnnualProvisionsRequest;
+    fromSDK(_: QueryAnnualProvisionsRequestSDKType): QueryAnnualProvisionsRequest;
+    toSDK(_: QueryAnnualProvisionsRequest): QueryAnnualProvisionsRequestSDKType;
 };
 export declare const QueryAnnualProvisionsResponse: {
     encode(message: QueryAnnualProvisionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAnnualProvisionsResponseSDKType;
-    fromJSON(object: any): QueryAnnualProvisionsResponse;
-    toJSON(message: QueryAnnualProvisionsResponse): unknown;
     fromPartial(object: DeepPartial<QueryAnnualProvisionsResponse>): QueryAnnualProvisionsResponse;
+    fromSDK(object: QueryAnnualProvisionsResponseSDKType): QueryAnnualProvisionsResponse;
+    toSDK(message: QueryAnnualProvisionsResponse): QueryAnnualProvisionsResponseSDKType;
 };

@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 export interface MsgSuperfluidDelegate {
   sender: string;
   lockId: Long;
@@ -153,28 +153,28 @@ export const MsgSuperfluidDelegate = {
     return message;
   },
 
-  fromJSON(object: any): MsgSuperfluidDelegate {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      lockId: isSet(object.lockId) ? Long.fromString(object.lockId) : Long.UZERO,
-      valAddr: isSet(object.valAddr) ? String(object.valAddr) : ""
-    };
-  },
-
-  toJSON(message: MsgSuperfluidDelegate): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.lockId !== undefined && (obj.lockId = (message.lockId || Long.UZERO).toString());
-    message.valAddr !== undefined && (obj.valAddr = message.valAddr);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate {
     const message = createBaseMsgSuperfluidDelegate();
     message.sender = object.sender ?? "";
     message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
     message.valAddr = object.valAddr ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgSuperfluidDelegateSDKType): MsgSuperfluidDelegate {
+    return {
+      sender: isSet(object.sender) ? object.sender : undefined,
+      lockId: isSet(object.lock_id) ? object.lock_id : undefined,
+      valAddr: isSet(object.val_addr) ? object.val_addr : undefined
+    };
+  },
+
+  toSDK(message: MsgSuperfluidDelegate): MsgSuperfluidDelegateSDKType {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.lockId !== undefined && (obj.lock_id = message.lockId);
+    message.valAddr !== undefined && (obj.val_addr = message.valAddr);
+    return obj;
   }
 
 };
@@ -206,18 +206,18 @@ export const MsgSuperfluidDelegateResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgSuperfluidDelegateResponse {
-    return {};
-  },
-
-  toJSON(_: MsgSuperfluidDelegateResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse {
     const message = createBaseMsgSuperfluidDelegateResponse();
     return message;
+  },
+
+  fromSDK(_: MsgSuperfluidDelegateResponseSDKType): MsgSuperfluidDelegateResponse {
+    return {};
+  },
+
+  toSDK(_: MsgSuperfluidDelegateResponse): MsgSuperfluidDelegateResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -268,25 +268,25 @@ export const MsgSuperfluidUndelegate = {
     return message;
   },
 
-  fromJSON(object: any): MsgSuperfluidUndelegate {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      lockId: isSet(object.lockId) ? Long.fromString(object.lockId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: MsgSuperfluidUndelegate): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.lockId !== undefined && (obj.lockId = (message.lockId || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate {
     const message = createBaseMsgSuperfluidUndelegate();
     message.sender = object.sender ?? "";
     message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: MsgSuperfluidUndelegateSDKType): MsgSuperfluidUndelegate {
+    return {
+      sender: isSet(object.sender) ? object.sender : undefined,
+      lockId: isSet(object.lock_id) ? object.lock_id : undefined
+    };
+  },
+
+  toSDK(message: MsgSuperfluidUndelegate): MsgSuperfluidUndelegateSDKType {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.lockId !== undefined && (obj.lock_id = message.lockId);
+    return obj;
   }
 
 };
@@ -318,18 +318,18 @@ export const MsgSuperfluidUndelegateResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgSuperfluidUndelegateResponse {
-    return {};
-  },
-
-  toJSON(_: MsgSuperfluidUndelegateResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse {
     const message = createBaseMsgSuperfluidUndelegateResponse();
     return message;
+  },
+
+  fromSDK(_: MsgSuperfluidUndelegateResponseSDKType): MsgSuperfluidUndelegateResponse {
+    return {};
+  },
+
+  toSDK(_: MsgSuperfluidUndelegateResponse): MsgSuperfluidUndelegateResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -380,25 +380,25 @@ export const MsgSuperfluidUnbondLock = {
     return message;
   },
 
-  fromJSON(object: any): MsgSuperfluidUnbondLock {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      lockId: isSet(object.lockId) ? Long.fromString(object.lockId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: MsgSuperfluidUnbondLock): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.lockId !== undefined && (obj.lockId = (message.lockId || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock {
     const message = createBaseMsgSuperfluidUnbondLock();
     message.sender = object.sender ?? "";
     message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: MsgSuperfluidUnbondLockSDKType): MsgSuperfluidUnbondLock {
+    return {
+      sender: isSet(object.sender) ? object.sender : undefined,
+      lockId: isSet(object.lock_id) ? object.lock_id : undefined
+    };
+  },
+
+  toSDK(message: MsgSuperfluidUnbondLock): MsgSuperfluidUnbondLockSDKType {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.lockId !== undefined && (obj.lock_id = message.lockId);
+    return obj;
   }
 
 };
@@ -430,18 +430,18 @@ export const MsgSuperfluidUnbondLockResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgSuperfluidUnbondLockResponse {
-    return {};
-  },
-
-  toJSON(_: MsgSuperfluidUnbondLockResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse {
     const message = createBaseMsgSuperfluidUnbondLockResponse();
     return message;
+  },
+
+  fromSDK(_: MsgSuperfluidUnbondLockResponseSDKType): MsgSuperfluidUnbondLockResponse {
+    return {};
+  },
+
+  toSDK(_: MsgSuperfluidUnbondLockResponse): MsgSuperfluidUnbondLockResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -501,34 +501,34 @@ export const MsgLockAndSuperfluidDelegate = {
     return message;
   },
 
-  fromJSON(object: any): MsgLockAndSuperfluidDelegate {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
-      valAddr: isSet(object.valAddr) ? String(object.valAddr) : ""
-    };
-  },
-
-  toJSON(message: MsgLockAndSuperfluidDelegate): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    message.valAddr !== undefined && (obj.valAddr = message.valAddr);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegate>): MsgLockAndSuperfluidDelegate {
     const message = createBaseMsgLockAndSuperfluidDelegate();
     message.sender = object.sender ?? "";
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     message.valAddr = object.valAddr ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgLockAndSuperfluidDelegateSDKType): MsgLockAndSuperfluidDelegate {
+    return {
+      sender: isSet(object.sender) ? object.sender : undefined,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromSDK(e)) : [],
+      valAddr: isSet(object.val_addr) ? object.val_addr : undefined
+    };
+  },
+
+  toSDK(message: MsgLockAndSuperfluidDelegate): MsgLockAndSuperfluidDelegateSDKType {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+
+    message.valAddr !== undefined && (obj.val_addr = message.valAddr);
+    return obj;
   }
 
 };
@@ -570,22 +570,22 @@ export const MsgLockAndSuperfluidDelegateResponse = {
     return message;
   },
 
-  fromJSON(object: any): MsgLockAndSuperfluidDelegateResponse {
-    return {
-      ID: isSet(object.ID) ? Long.fromString(object.ID) : Long.UZERO
-    };
-  },
-
-  toJSON(message: MsgLockAndSuperfluidDelegateResponse): unknown {
-    const obj: any = {};
-    message.ID !== undefined && (obj.ID = (message.ID || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse {
     const message = createBaseMsgLockAndSuperfluidDelegateResponse();
     message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: MsgLockAndSuperfluidDelegateResponseSDKType): MsgLockAndSuperfluidDelegateResponse {
+    return {
+      ID: isSet(object.ID) ? object.ID : undefined
+    };
+  },
+
+  toSDK(message: MsgLockAndSuperfluidDelegateResponse): MsgLockAndSuperfluidDelegateResponseSDKType {
+    const obj: any = {};
+    message.ID !== undefined && (obj.ID = message.ID);
+    return obj;
   }
 
 };
@@ -636,25 +636,25 @@ export const MsgUnPoolWhitelistedPool = {
     return message;
   },
 
-  fromJSON(object: any): MsgUnPoolWhitelistedPool {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      poolId: isSet(object.poolId) ? Long.fromString(object.poolId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: MsgUnPoolWhitelistedPool): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.poolId !== undefined && (obj.poolId = (message.poolId || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool {
     const message = createBaseMsgUnPoolWhitelistedPool();
     message.sender = object.sender ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: MsgUnPoolWhitelistedPoolSDKType): MsgUnPoolWhitelistedPool {
+    return {
+      sender: isSet(object.sender) ? object.sender : undefined,
+      poolId: isSet(object.pool_id) ? object.pool_id : undefined
+    };
+  },
+
+  toSDK(message: MsgUnPoolWhitelistedPool): MsgUnPoolWhitelistedPoolSDKType {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.poolId !== undefined && (obj.pool_id = message.poolId);
+    return obj;
   }
 
 };
@@ -708,28 +708,28 @@ export const MsgUnPoolWhitelistedPoolResponse = {
     return message;
   },
 
-  fromJSON(object: any): MsgUnPoolWhitelistedPoolResponse {
+  fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse {
+    const message = createBaseMsgUnPoolWhitelistedPoolResponse();
+    message.exitedLockIds = object.exitedLockIds?.map(e => Long.fromValue(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: MsgUnPoolWhitelistedPoolResponseSDKType): MsgUnPoolWhitelistedPoolResponse {
     return {
-      exitedLockIds: Array.isArray(object?.exitedLockIds) ? object.exitedLockIds.map((e: any) => Long.fromString(e)) : []
+      exitedLockIds: Array.isArray(object?.exitedLockIds) ? object.exitedLockIds.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: MsgUnPoolWhitelistedPoolResponse): unknown {
+  toSDK(message: MsgUnPoolWhitelistedPoolResponse): MsgUnPoolWhitelistedPoolResponseSDKType {
     const obj: any = {};
 
     if (message.exitedLockIds) {
-      obj.exitedLockIds = message.exitedLockIds.map(e => (e || Long.UZERO).toString());
+      obj.exitedLockIds = message.exitedLockIds.map(e => e);
     } else {
       obj.exitedLockIds = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse {
-    const message = createBaseMsgUnPoolWhitelistedPoolResponse();
-    message.exitedLockIds = object.exitedLockIds?.map(e => Long.fromValue(e)) || [];
-    return message;
   }
 
 };

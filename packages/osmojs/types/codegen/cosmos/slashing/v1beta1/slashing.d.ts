@@ -74,14 +74,14 @@ export interface ParamsSDKType {
 export declare const ValidatorSigningInfo: {
     encode(message: ValidatorSigningInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSigningInfo;
-    fromJSON(object: any): ValidatorSigningInfo;
-    toJSON(message: ValidatorSigningInfo): unknown;
     fromPartial(object: DeepPartial<ValidatorSigningInfo>): ValidatorSigningInfo;
+    fromSDK(object: ValidatorSigningInfoSDKType): ValidatorSigningInfo;
+    toSDK(message: ValidatorSigningInfo): ValidatorSigningInfoSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
     fromPartial(object: DeepPartial<Params>): Params;
+    fromSDK(object: ParamsSDKType): Params;
+    toSDK(message: Params): ParamsSDKType;
 };

@@ -1,7 +1,7 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, toTimestamp, fromTimestamp, fromJsonTimestamp } from "@osmonauts/helpers";
+import { DeepPartial, isSet, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
  * the provided method on behalf of the granter's account.
@@ -122,22 +122,22 @@ export const GenericAuthorization = {
     return message;
   },
 
-  fromJSON(object: any): GenericAuthorization {
-    return {
-      msg: isSet(object.msg) ? String(object.msg) : ""
-    };
-  },
-
-  toJSON(message: GenericAuthorization): unknown {
-    const obj: any = {};
-    message.msg !== undefined && (obj.msg = message.msg);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GenericAuthorization>): GenericAuthorization {
     const message = createBaseGenericAuthorization();
     message.msg = object.msg ?? "";
     return message;
+  },
+
+  fromSDK(object: GenericAuthorizationSDKType): GenericAuthorization {
+    return {
+      msg: isSet(object.msg) ? object.msg : undefined
+    };
+  },
+
+  toSDK(message: GenericAuthorization): GenericAuthorizationSDKType {
+    const obj: any = {};
+    message.msg !== undefined && (obj.msg = message.msg);
+    return obj;
   }
 
 };
@@ -188,25 +188,25 @@ export const Grant = {
     return message;
   },
 
-  fromJSON(object: any): Grant {
-    return {
-      authorization: isSet(object.authorization) ? Any.fromJSON(object.authorization) : undefined,
-      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
-    };
-  },
-
-  toJSON(message: Grant): unknown {
-    const obj: any = {};
-    message.authorization !== undefined && (obj.authorization = message.authorization ? Any.toJSON(message.authorization) : undefined);
-    message.expiration !== undefined && (obj.expiration = message.expiration.toISOString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Grant>): Grant {
     const message = createBaseGrant();
     message.authorization = object.authorization !== undefined && object.authorization !== null ? Any.fromPartial(object.authorization) : undefined;
     message.expiration = object.expiration ?? undefined;
     return message;
+  },
+
+  fromSDK(object: GrantSDKType): Grant {
+    return {
+      authorization: isSet(object.authorization) ? Any.fromSDK(object.authorization) : undefined,
+      expiration: isSet(object.expiration) ? Timestamp.fromSDK(object.expiration) : undefined
+    };
+  },
+
+  toSDK(message: Grant): GrantSDKType {
+    const obj: any = {};
+    message.authorization !== undefined && (obj.authorization = message.authorization ? Any.toSDK(message.authorization) : undefined);
+    message.expiration !== undefined && (obj.expiration = message.expiration ? Timestamp.toSDK(message.expiration) : undefined);
+    return obj;
   }
 
 };
@@ -275,24 +275,6 @@ export const GrantAuthorization = {
     return message;
   },
 
-  fromJSON(object: any): GrantAuthorization {
-    return {
-      granter: isSet(object.granter) ? String(object.granter) : "",
-      grantee: isSet(object.grantee) ? String(object.grantee) : "",
-      authorization: isSet(object.authorization) ? Any.fromJSON(object.authorization) : undefined,
-      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
-    };
-  },
-
-  toJSON(message: GrantAuthorization): unknown {
-    const obj: any = {};
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    message.authorization !== undefined && (obj.authorization = message.authorization ? Any.toJSON(message.authorization) : undefined);
-    message.expiration !== undefined && (obj.expiration = message.expiration.toISOString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GrantAuthorization>): GrantAuthorization {
     const message = createBaseGrantAuthorization();
     message.granter = object.granter ?? "";
@@ -300,6 +282,24 @@ export const GrantAuthorization = {
     message.authorization = object.authorization !== undefined && object.authorization !== null ? Any.fromPartial(object.authorization) : undefined;
     message.expiration = object.expiration ?? undefined;
     return message;
+  },
+
+  fromSDK(object: GrantAuthorizationSDKType): GrantAuthorization {
+    return {
+      granter: isSet(object.granter) ? object.granter : undefined,
+      grantee: isSet(object.grantee) ? object.grantee : undefined,
+      authorization: isSet(object.authorization) ? Any.fromSDK(object.authorization) : undefined,
+      expiration: isSet(object.expiration) ? Timestamp.fromSDK(object.expiration) : undefined
+    };
+  },
+
+  toSDK(message: GrantAuthorization): GrantAuthorizationSDKType {
+    const obj: any = {};
+    message.granter !== undefined && (obj.granter = message.granter);
+    message.grantee !== undefined && (obj.grantee = message.grantee);
+    message.authorization !== undefined && (obj.authorization = message.authorization ? Any.toSDK(message.authorization) : undefined);
+    message.expiration !== undefined && (obj.expiration = message.expiration ? Timestamp.toSDK(message.expiration) : undefined);
+    return obj;
   }
 
 };
@@ -341,28 +341,28 @@ export const GrantQueueItem = {
     return message;
   },
 
-  fromJSON(object: any): GrantQueueItem {
-    return {
-      msgTypeUrls: Array.isArray(object?.msgTypeUrls) ? object.msgTypeUrls.map((e: any) => String(e)) : []
-    };
-  },
-
-  toJSON(message: GrantQueueItem): unknown {
-    const obj: any = {};
-
-    if (message.msgTypeUrls) {
-      obj.msgTypeUrls = message.msgTypeUrls.map(e => e);
-    } else {
-      obj.msgTypeUrls = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GrantQueueItem>): GrantQueueItem {
     const message = createBaseGrantQueueItem();
     message.msgTypeUrls = object.msgTypeUrls?.map(e => e) || [];
     return message;
+  },
+
+  fromSDK(object: GrantQueueItemSDKType): GrantQueueItem {
+    return {
+      msgTypeUrls: Array.isArray(object?.msg_type_urls) ? object.msg_type_urls.map((e: any) => e) : []
+    };
+  },
+
+  toSDK(message: GrantQueueItem): GrantQueueItemSDKType {
+    const obj: any = {};
+
+    if (message.msgTypeUrls) {
+      obj.msg_type_urls = message.msgTypeUrls.map(e => e);
+    } else {
+      obj.msg_type_urls = [];
+    }
+
+    return obj;
   }
 
 };

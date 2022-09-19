@@ -28,7 +28,7 @@ export interface UpdateFeeTokenProposalSDKType {
 export declare const UpdateFeeTokenProposal: {
     encode(message: UpdateFeeTokenProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdateFeeTokenProposal;
-    fromJSON(object: any): UpdateFeeTokenProposal;
-    toJSON(message: UpdateFeeTokenProposal): unknown;
     fromPartial(object: DeepPartial<UpdateFeeTokenProposal>): UpdateFeeTokenProposal;
+    fromSDK(object: UpdateFeeTokenProposalSDKType): UpdateFeeTokenProposal;
+    toSDK(message: UpdateFeeTokenProposal): UpdateFeeTokenProposalSDKType;
 };

@@ -18,13 +18,13 @@ export declare const MessageComposer: {
     toJSON: {
         createBalancerPool(value: MsgCreateBalancerPool): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         createBalancerPool(value: any): {
             typeUrl: string;
-            value: MsgCreateBalancerPool;
+            value: any;
         };
     };
     fromPartial: {

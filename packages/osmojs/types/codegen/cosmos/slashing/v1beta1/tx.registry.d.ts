@@ -18,13 +18,13 @@ export declare const MessageComposer: {
     toJSON: {
         unjail(value: MsgUnjail): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         unjail(value: any): {
             typeUrl: string;
-            value: MsgUnjail;
+            value: any;
         };
     };
     fromPartial: {

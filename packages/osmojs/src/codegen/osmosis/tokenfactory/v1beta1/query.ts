@@ -72,18 +72,18 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryParamsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryParamsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
+  },
+
+  fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest {
+    return {};
+  },
+
+  toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -125,22 +125,22 @@ export const QueryParamsResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: QueryParamsResponse): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromSDK(object.params) : undefined
+    };
+  },
+
+  toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
+    return obj;
   }
 
 };
@@ -182,22 +182,22 @@ export const QueryDenomAuthorityMetadataRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomAuthorityMetadataRequest {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : ""
-    };
-  },
-
-  toJSON(message: QueryDenomAuthorityMetadataRequest): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryDenomAuthorityMetadataRequest>): QueryDenomAuthorityMetadataRequest {
     const message = createBaseQueryDenomAuthorityMetadataRequest();
     message.denom = object.denom ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryDenomAuthorityMetadataRequestSDKType): QueryDenomAuthorityMetadataRequest {
+    return {
+      denom: isSet(object.denom) ? object.denom : undefined
+    };
+  },
+
+  toSDK(message: QueryDenomAuthorityMetadataRequest): QueryDenomAuthorityMetadataRequestSDKType {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   }
 
 };
@@ -239,22 +239,22 @@ export const QueryDenomAuthorityMetadataResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomAuthorityMetadataResponse {
-    return {
-      authorityMetadata: isSet(object.authorityMetadata) ? DenomAuthorityMetadata.fromJSON(object.authorityMetadata) : undefined
-    };
-  },
-
-  toJSON(message: QueryDenomAuthorityMetadataResponse): unknown {
-    const obj: any = {};
-    message.authorityMetadata !== undefined && (obj.authorityMetadata = message.authorityMetadata ? DenomAuthorityMetadata.toJSON(message.authorityMetadata) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse {
     const message = createBaseQueryDenomAuthorityMetadataResponse();
     message.authorityMetadata = object.authorityMetadata !== undefined && object.authorityMetadata !== null ? DenomAuthorityMetadata.fromPartial(object.authorityMetadata) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryDenomAuthorityMetadataResponseSDKType): QueryDenomAuthorityMetadataResponse {
+    return {
+      authorityMetadata: isSet(object.authority_metadata) ? DenomAuthorityMetadata.fromSDK(object.authority_metadata) : undefined
+    };
+  },
+
+  toSDK(message: QueryDenomAuthorityMetadataResponse): QueryDenomAuthorityMetadataResponseSDKType {
+    const obj: any = {};
+    message.authorityMetadata !== undefined && (obj.authority_metadata = message.authorityMetadata ? DenomAuthorityMetadata.toSDK(message.authorityMetadata) : undefined);
+    return obj;
   }
 
 };
@@ -296,22 +296,22 @@ export const QueryDenomsFromCreatorRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomsFromCreatorRequest {
-    return {
-      creator: isSet(object.creator) ? String(object.creator) : ""
-    };
-  },
-
-  toJSON(message: QueryDenomsFromCreatorRequest): unknown {
-    const obj: any = {};
-    message.creator !== undefined && (obj.creator = message.creator);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryDenomsFromCreatorRequest>): QueryDenomsFromCreatorRequest {
     const message = createBaseQueryDenomsFromCreatorRequest();
     message.creator = object.creator ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryDenomsFromCreatorRequestSDKType): QueryDenomsFromCreatorRequest {
+    return {
+      creator: isSet(object.creator) ? object.creator : undefined
+    };
+  },
+
+  toSDK(message: QueryDenomsFromCreatorRequest): QueryDenomsFromCreatorRequestSDKType {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    return obj;
   }
 
 };
@@ -353,13 +353,19 @@ export const QueryDenomsFromCreatorResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomsFromCreatorResponse {
+  fromPartial(object: DeepPartial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse {
+    const message = createBaseQueryDenomsFromCreatorResponse();
+    message.denoms = object.denoms?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: QueryDenomsFromCreatorResponseSDKType): QueryDenomsFromCreatorResponse {
     return {
-      denoms: Array.isArray(object?.denoms) ? object.denoms.map((e: any) => String(e)) : []
+      denoms: Array.isArray(object?.denoms) ? object.denoms.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: QueryDenomsFromCreatorResponse): unknown {
+  toSDK(message: QueryDenomsFromCreatorResponse): QueryDenomsFromCreatorResponseSDKType {
     const obj: any = {};
 
     if (message.denoms) {
@@ -369,12 +375,6 @@ export const QueryDenomsFromCreatorResponse = {
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse {
-    const message = createBaseQueryDenomsFromCreatorResponse();
-    message.denoms = object.denoms?.map(e => e) || [];
-    return message;
   }
 
 };

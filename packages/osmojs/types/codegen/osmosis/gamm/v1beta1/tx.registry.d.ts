@@ -74,69 +74,69 @@ export declare const MessageComposer: {
     toJSON: {
         joinPool(value: MsgJoinPool): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         exitPool(value: MsgExitPool): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         swapExactAmountIn(value: MsgSwapExactAmountIn): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         swapExactAmountOut(value: MsgSwapExactAmountOut): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         joinSwapExternAmountIn(value: MsgJoinSwapExternAmountIn): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         joinSwapShareAmountOut(value: MsgJoinSwapShareAmountOut): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         exitSwapExternAmountOut(value: MsgExitSwapExternAmountOut): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         exitSwapShareAmountIn(value: MsgExitSwapShareAmountIn): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         joinPool(value: any): {
             typeUrl: string;
-            value: MsgJoinPool;
+            value: any;
         };
         exitPool(value: any): {
             typeUrl: string;
-            value: MsgExitPool;
+            value: any;
         };
         swapExactAmountIn(value: any): {
             typeUrl: string;
-            value: MsgSwapExactAmountIn;
+            value: any;
         };
         swapExactAmountOut(value: any): {
             typeUrl: string;
-            value: MsgSwapExactAmountOut;
+            value: any;
         };
         joinSwapExternAmountIn(value: any): {
             typeUrl: string;
-            value: MsgJoinSwapExternAmountIn;
+            value: any;
         };
         joinSwapShareAmountOut(value: any): {
             typeUrl: string;
-            value: MsgJoinSwapShareAmountOut;
+            value: any;
         };
         exitSwapExternAmountOut(value: any): {
             typeUrl: string;
-            value: MsgExitSwapExternAmountOut;
+            value: any;
         };
         exitSwapShareAmountIn(value: any): {
             typeUrl: string;
-            value: MsgExitSwapShareAmountIn;
+            value: any;
         };
     };
     fromPartial: {

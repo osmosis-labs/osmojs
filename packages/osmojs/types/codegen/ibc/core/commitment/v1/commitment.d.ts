@@ -70,28 +70,28 @@ export interface MerkleProofSDKType {
 export declare const MerkleRoot: {
     encode(message: MerkleRoot, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerkleRoot;
-    fromJSON(object: any): MerkleRoot;
-    toJSON(message: MerkleRoot): unknown;
     fromPartial(object: DeepPartial<MerkleRoot>): MerkleRoot;
+    fromSDK(object: MerkleRootSDKType): MerkleRoot;
+    toSDK(message: MerkleRoot): MerkleRootSDKType;
 };
 export declare const MerklePrefix: {
     encode(message: MerklePrefix, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerklePrefix;
-    fromJSON(object: any): MerklePrefix;
-    toJSON(message: MerklePrefix): unknown;
     fromPartial(object: DeepPartial<MerklePrefix>): MerklePrefix;
+    fromSDK(object: MerklePrefixSDKType): MerklePrefix;
+    toSDK(message: MerklePrefix): MerklePrefixSDKType;
 };
 export declare const MerklePath: {
     encode(message: MerklePath, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerklePath;
-    fromJSON(object: any): MerklePath;
-    toJSON(message: MerklePath): unknown;
     fromPartial(object: DeepPartial<MerklePath>): MerklePath;
+    fromSDK(object: MerklePathSDKType): MerklePath;
+    toSDK(message: MerklePath): MerklePathSDKType;
 };
 export declare const MerkleProof: {
     encode(message: MerkleProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerkleProof;
-    fromJSON(object: any): MerkleProof;
-    toJSON(message: MerkleProof): unknown;
     fromPartial(object: DeepPartial<MerkleProof>): MerkleProof;
+    fromSDK(object: MerkleProofSDKType): MerkleProof;
+    toSDK(message: MerkleProof): MerkleProofSDKType;
 };

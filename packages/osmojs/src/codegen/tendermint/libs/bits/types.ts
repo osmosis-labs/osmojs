@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 export interface BitArray {
   bits: Long;
   elems: Long[];
@@ -67,31 +67,31 @@ export const BitArray = {
     return message;
   },
 
-  fromJSON(object: any): BitArray {
-    return {
-      bits: isSet(object.bits) ? Long.fromString(object.bits) : Long.ZERO,
-      elems: Array.isArray(object?.elems) ? object.elems.map((e: any) => Long.fromString(e)) : []
-    };
-  },
-
-  toJSON(message: BitArray): unknown {
-    const obj: any = {};
-    message.bits !== undefined && (obj.bits = (message.bits || Long.ZERO).toString());
-
-    if (message.elems) {
-      obj.elems = message.elems.map(e => (e || Long.UZERO).toString());
-    } else {
-      obj.elems = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<BitArray>): BitArray {
     const message = createBaseBitArray();
     message.bits = object.bits !== undefined && object.bits !== null ? Long.fromValue(object.bits) : Long.ZERO;
     message.elems = object.elems?.map(e => Long.fromValue(e)) || [];
     return message;
+  },
+
+  fromSDK(object: BitArraySDKType): BitArray {
+    return {
+      bits: isSet(object.bits) ? object.bits : undefined,
+      elems: Array.isArray(object?.elems) ? object.elems.map((e: any) => e) : []
+    };
+  },
+
+  toSDK(message: BitArray): BitArraySDKType {
+    const obj: any = {};
+    message.bits !== undefined && (obj.bits = message.bits);
+
+    if (message.elems) {
+      obj.elems = message.elems.map(e => e);
+    } else {
+      obj.elems = [];
+    }
+
+    return obj;
   }
 
 };

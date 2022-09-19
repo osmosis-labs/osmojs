@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** EventSend is emitted on Msg/Send */
 
 export interface EventSend {
@@ -109,24 +109,6 @@ export const EventSend = {
     return message;
   },
 
-  fromJSON(object: any): EventSend {
-    return {
-      classId: isSet(object.classId) ? String(object.classId) : "",
-      id: isSet(object.id) ? String(object.id) : "",
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : ""
-    };
-  },
-
-  toJSON(message: EventSend): unknown {
-    const obj: any = {};
-    message.classId !== undefined && (obj.classId = message.classId);
-    message.id !== undefined && (obj.id = message.id);
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.receiver !== undefined && (obj.receiver = message.receiver);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EventSend>): EventSend {
     const message = createBaseEventSend();
     message.classId = object.classId ?? "";
@@ -134,6 +116,24 @@ export const EventSend = {
     message.sender = object.sender ?? "";
     message.receiver = object.receiver ?? "";
     return message;
+  },
+
+  fromSDK(object: EventSendSDKType): EventSend {
+    return {
+      classId: isSet(object.class_id) ? object.class_id : undefined,
+      id: isSet(object.id) ? object.id : undefined,
+      sender: isSet(object.sender) ? object.sender : undefined,
+      receiver: isSet(object.receiver) ? object.receiver : undefined
+    };
+  },
+
+  toSDK(message: EventSend): EventSendSDKType {
+    const obj: any = {};
+    message.classId !== undefined && (obj.class_id = message.classId);
+    message.id !== undefined && (obj.id = message.id);
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.receiver !== undefined && (obj.receiver = message.receiver);
+    return obj;
   }
 
 };
@@ -193,28 +193,28 @@ export const EventMint = {
     return message;
   },
 
-  fromJSON(object: any): EventMint {
-    return {
-      classId: isSet(object.classId) ? String(object.classId) : "",
-      id: isSet(object.id) ? String(object.id) : "",
-      owner: isSet(object.owner) ? String(object.owner) : ""
-    };
-  },
-
-  toJSON(message: EventMint): unknown {
-    const obj: any = {};
-    message.classId !== undefined && (obj.classId = message.classId);
-    message.id !== undefined && (obj.id = message.id);
-    message.owner !== undefined && (obj.owner = message.owner);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EventMint>): EventMint {
     const message = createBaseEventMint();
     message.classId = object.classId ?? "";
     message.id = object.id ?? "";
     message.owner = object.owner ?? "";
     return message;
+  },
+
+  fromSDK(object: EventMintSDKType): EventMint {
+    return {
+      classId: isSet(object.class_id) ? object.class_id : undefined,
+      id: isSet(object.id) ? object.id : undefined,
+      owner: isSet(object.owner) ? object.owner : undefined
+    };
+  },
+
+  toSDK(message: EventMint): EventMintSDKType {
+    const obj: any = {};
+    message.classId !== undefined && (obj.class_id = message.classId);
+    message.id !== undefined && (obj.id = message.id);
+    message.owner !== undefined && (obj.owner = message.owner);
+    return obj;
   }
 
 };
@@ -274,28 +274,28 @@ export const EventBurn = {
     return message;
   },
 
-  fromJSON(object: any): EventBurn {
-    return {
-      classId: isSet(object.classId) ? String(object.classId) : "",
-      id: isSet(object.id) ? String(object.id) : "",
-      owner: isSet(object.owner) ? String(object.owner) : ""
-    };
-  },
-
-  toJSON(message: EventBurn): unknown {
-    const obj: any = {};
-    message.classId !== undefined && (obj.classId = message.classId);
-    message.id !== undefined && (obj.id = message.id);
-    message.owner !== undefined && (obj.owner = message.owner);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EventBurn>): EventBurn {
     const message = createBaseEventBurn();
     message.classId = object.classId ?? "";
     message.id = object.id ?? "";
     message.owner = object.owner ?? "";
     return message;
+  },
+
+  fromSDK(object: EventBurnSDKType): EventBurn {
+    return {
+      classId: isSet(object.class_id) ? object.class_id : undefined,
+      id: isSet(object.id) ? object.id : undefined,
+      owner: isSet(object.owner) ? object.owner : undefined
+    };
+  },
+
+  toSDK(message: EventBurn): EventBurnSDKType {
+    const obj: any = {};
+    message.classId !== undefined && (obj.class_id = message.classId);
+    message.id !== undefined && (obj.id = message.id);
+    message.owner !== undefined && (obj.owner = message.owner);
+    return obj;
   }
 
 };

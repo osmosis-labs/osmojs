@@ -41,21 +41,21 @@ export interface EventBurnSDKType {
 export declare const EventSend: {
     encode(message: EventSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventSend;
-    fromJSON(object: any): EventSend;
-    toJSON(message: EventSend): unknown;
     fromPartial(object: DeepPartial<EventSend>): EventSend;
+    fromSDK(object: EventSendSDKType): EventSend;
+    toSDK(message: EventSend): EventSendSDKType;
 };
 export declare const EventMint: {
     encode(message: EventMint, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventMint;
-    fromJSON(object: any): EventMint;
-    toJSON(message: EventMint): unknown;
     fromPartial(object: DeepPartial<EventMint>): EventMint;
+    fromSDK(object: EventMintSDKType): EventMint;
+    toSDK(message: EventMint): EventMintSDKType;
 };
 export declare const EventBurn: {
     encode(message: EventBurn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventBurn;
-    fromJSON(object: any): EventBurn;
-    toJSON(message: EventBurn): unknown;
     fromPartial(object: DeepPartial<EventBurn>): EventBurn;
+    fromSDK(object: EventBurnSDKType): EventBurn;
+    toSDK(message: EventBurn): EventBurnSDKType;
 };

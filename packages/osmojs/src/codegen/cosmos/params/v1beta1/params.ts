@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** ParameterChangeProposal defines a proposal to change one or more parameters. */
 
 export interface ParameterChangeProposal {
@@ -90,34 +90,34 @@ export const ParameterChangeProposal = {
     return message;
   },
 
-  fromJSON(object: any): ParameterChangeProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      changes: Array.isArray(object?.changes) ? object.changes.map((e: any) => ParamChange.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ParameterChangeProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.changes) {
-      obj.changes = message.changes.map(e => e ? ParamChange.toJSON(e) : undefined);
-    } else {
-      obj.changes = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ParameterChangeProposal>): ParameterChangeProposal {
     const message = createBaseParameterChangeProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.changes = object.changes?.map(e => ParamChange.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: ParameterChangeProposalSDKType): ParameterChangeProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      changes: Array.isArray(object?.changes) ? object.changes.map((e: any) => ParamChange.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: ParameterChangeProposal): ParameterChangeProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+
+    if (message.changes) {
+      obj.changes = message.changes.map(e => e ? ParamChange.toSDK(e) : undefined);
+    } else {
+      obj.changes = [];
+    }
+
+    return obj;
   }
 
 };
@@ -177,28 +177,28 @@ export const ParamChange = {
     return message;
   },
 
-  fromJSON(object: any): ParamChange {
-    return {
-      subspace: isSet(object.subspace) ? String(object.subspace) : "",
-      key: isSet(object.key) ? String(object.key) : "",
-      value: isSet(object.value) ? String(object.value) : ""
-    };
-  },
-
-  toJSON(message: ParamChange): unknown {
-    const obj: any = {};
-    message.subspace !== undefined && (obj.subspace = message.subspace);
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ParamChange>): ParamChange {
     const message = createBaseParamChange();
     message.subspace = object.subspace ?? "";
     message.key = object.key ?? "";
     message.value = object.value ?? "";
     return message;
+  },
+
+  fromSDK(object: ParamChangeSDKType): ParamChange {
+    return {
+      subspace: isSet(object.subspace) ? object.subspace : undefined,
+      key: isSet(object.key) ? object.key : undefined,
+      value: isSet(object.value) ? object.value : undefined
+    };
+  },
+
+  toSDK(message: ParamChange): ParamChangeSDKType {
+    const obj: any = {};
+    message.subspace !== undefined && (obj.subspace = message.subspace);
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   }
 
 };

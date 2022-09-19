@@ -25,14 +25,14 @@ export interface GenesisDenomSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+    fromSDK(object: GenesisStateSDKType): GenesisState;
+    toSDK(message: GenesisState): GenesisStateSDKType;
 };
 export declare const GenesisDenom: {
     encode(message: GenesisDenom, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisDenom;
-    fromJSON(object: any): GenesisDenom;
-    toJSON(message: GenesisDenom): unknown;
     fromPartial(object: DeepPartial<GenesisDenom>): GenesisDenom;
+    fromSDK(object: GenesisDenomSDKType): GenesisDenom;
+    toSDK(message: GenesisDenom): GenesisDenomSDKType;
 };

@@ -3,7 +3,7 @@ import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, Long, fromTimestamp, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
+import { toTimestamp, Long, fromTimestamp, DeepPartial, isSet } from "@osmonauts/helpers";
 export interface Gauge {
   /** unique ID of a Gauge */
   id: Long;
@@ -179,44 +179,6 @@ export const Gauge = {
     return message;
   },
 
-  fromJSON(object: any): Gauge {
-    return {
-      id: isSet(object.id) ? Long.fromString(object.id) : Long.UZERO,
-      isPerpetual: isSet(object.isPerpetual) ? Boolean(object.isPerpetual) : false,
-      distributeTo: isSet(object.distributeTo) ? QueryCondition.fromJSON(object.distributeTo) : undefined,
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
-      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
-      numEpochsPaidOver: isSet(object.numEpochsPaidOver) ? Long.fromString(object.numEpochsPaidOver) : Long.UZERO,
-      filledEpochs: isSet(object.filledEpochs) ? Long.fromString(object.filledEpochs) : Long.UZERO,
-      distributedCoins: Array.isArray(object?.distributedCoins) ? object.distributedCoins.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Gauge): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = (message.id || Long.UZERO).toString());
-    message.isPerpetual !== undefined && (obj.isPerpetual = message.isPerpetual);
-    message.distributeTo !== undefined && (obj.distributeTo = message.distributeTo ? QueryCondition.toJSON(message.distributeTo) : undefined);
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
-    message.numEpochsPaidOver !== undefined && (obj.numEpochsPaidOver = (message.numEpochsPaidOver || Long.UZERO).toString());
-    message.filledEpochs !== undefined && (obj.filledEpochs = (message.filledEpochs || Long.UZERO).toString());
-
-    if (message.distributedCoins) {
-      obj.distributedCoins = message.distributedCoins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.distributedCoins = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Gauge>): Gauge {
     const message = createBaseGauge();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
@@ -228,6 +190,44 @@ export const Gauge = {
     message.filledEpochs = object.filledEpochs !== undefined && object.filledEpochs !== null ? Long.fromValue(object.filledEpochs) : Long.UZERO;
     message.distributedCoins = object.distributedCoins?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: GaugeSDKType): Gauge {
+    return {
+      id: isSet(object.id) ? object.id : undefined,
+      isPerpetual: isSet(object.is_perpetual) ? object.is_perpetual : undefined,
+      distributeTo: isSet(object.distribute_to) ? QueryCondition.fromSDK(object.distribute_to) : undefined,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromSDK(e)) : [],
+      startTime: isSet(object.start_time) ? Timestamp.fromSDK(object.start_time) : undefined,
+      numEpochsPaidOver: isSet(object.num_epochs_paid_over) ? object.num_epochs_paid_over : undefined,
+      filledEpochs: isSet(object.filled_epochs) ? object.filled_epochs : undefined,
+      distributedCoins: Array.isArray(object?.distributed_coins) ? object.distributed_coins.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: Gauge): GaugeSDKType {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.isPerpetual !== undefined && (obj.is_perpetual = message.isPerpetual);
+    message.distributeTo !== undefined && (obj.distribute_to = message.distributeTo ? QueryCondition.toSDK(message.distributeTo) : undefined);
+
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+
+    message.startTime !== undefined && (obj.start_time = message.startTime ? Timestamp.toSDK(message.startTime) : undefined);
+    message.numEpochsPaidOver !== undefined && (obj.num_epochs_paid_over = message.numEpochsPaidOver);
+    message.filledEpochs !== undefined && (obj.filled_epochs = message.filledEpochs);
+
+    if (message.distributedCoins) {
+      obj.distributed_coins = message.distributedCoins.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.distributed_coins = [];
+    }
+
+    return obj;
   }
 
 };
@@ -269,28 +269,28 @@ export const LockableDurationsInfo = {
     return message;
   },
 
-  fromJSON(object: any): LockableDurationsInfo {
-    return {
-      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: LockableDurationsInfo): unknown {
-    const obj: any = {};
-
-    if (message.lockableDurations) {
-      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
-    } else {
-      obj.lockableDurations = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo {
     const message = createBaseLockableDurationsInfo();
     message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: LockableDurationsInfoSDKType): LockableDurationsInfo {
+    return {
+      lockableDurations: Array.isArray(object?.lockable_durations) ? object.lockable_durations.map((e: any) => Duration.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: LockableDurationsInfo): LockableDurationsInfoSDKType {
+    const obj: any = {};
+
+    if (message.lockableDurations) {
+      obj.lockable_durations = message.lockableDurations.map(e => e ? Duration.toSDK(e) : undefined);
+    } else {
+      obj.lockable_durations = [];
+    }
+
+    return obj;
   }
 
 };

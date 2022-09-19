@@ -1,6 +1,6 @@
 import { MerklePrefix, MerklePrefixSDKType } from "../../commitment/v1/commitment";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * State defines if a connection is in one of the following states:
  * INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -385,32 +385,6 @@ export const ConnectionEnd = {
     return message;
   },
 
-  fromJSON(object: any): ConnectionEnd {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      versions: Array.isArray(object?.versions) ? object.versions.map((e: any) => Version.fromJSON(e)) : [],
-      state: isSet(object.state) ? stateFromJSON(object.state) : 0,
-      counterparty: isSet(object.counterparty) ? Counterparty.fromJSON(object.counterparty) : undefined,
-      delayPeriod: isSet(object.delayPeriod) ? Long.fromString(object.delayPeriod) : Long.UZERO
-    };
-  },
-
-  toJSON(message: ConnectionEnd): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-
-    if (message.versions) {
-      obj.versions = message.versions.map(e => e ? Version.toJSON(e) : undefined);
-    } else {
-      obj.versions = [];
-    }
-
-    message.state !== undefined && (obj.state = stateToJSON(message.state));
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toJSON(message.counterparty) : undefined);
-    message.delayPeriod !== undefined && (obj.delayPeriod = (message.delayPeriod || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ConnectionEnd>): ConnectionEnd {
     const message = createBaseConnectionEnd();
     message.clientId = object.clientId ?? "";
@@ -419,6 +393,32 @@ export const ConnectionEnd = {
     message.counterparty = object.counterparty !== undefined && object.counterparty !== null ? Counterparty.fromPartial(object.counterparty) : undefined;
     message.delayPeriod = object.delayPeriod !== undefined && object.delayPeriod !== null ? Long.fromValue(object.delayPeriod) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: ConnectionEndSDKType): ConnectionEnd {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      versions: Array.isArray(object?.versions) ? object.versions.map((e: any) => Version.fromSDK(e)) : [],
+      state: isSet(object.state) ? stateFromJSON(object.state) : 0,
+      counterparty: isSet(object.counterparty) ? Counterparty.fromSDK(object.counterparty) : undefined,
+      delayPeriod: isSet(object.delay_period) ? object.delay_period : undefined
+    };
+  },
+
+  toSDK(message: ConnectionEnd): ConnectionEndSDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+
+    if (message.versions) {
+      obj.versions = message.versions.map(e => e ? Version.toSDK(e) : undefined);
+    } else {
+      obj.versions = [];
+    }
+
+    message.state !== undefined && (obj.state = stateToJSON(message.state));
+    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toSDK(message.counterparty) : undefined);
+    message.delayPeriod !== undefined && (obj.delay_period = message.delayPeriod);
+    return obj;
   }
 
 };
@@ -505,34 +505,6 @@ export const IdentifiedConnection = {
     return message;
   },
 
-  fromJSON(object: any): IdentifiedConnection {
-    return {
-      id: isSet(object.id) ? String(object.id) : "",
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      versions: Array.isArray(object?.versions) ? object.versions.map((e: any) => Version.fromJSON(e)) : [],
-      state: isSet(object.state) ? stateFromJSON(object.state) : 0,
-      counterparty: isSet(object.counterparty) ? Counterparty.fromJSON(object.counterparty) : undefined,
-      delayPeriod: isSet(object.delayPeriod) ? Long.fromString(object.delayPeriod) : Long.UZERO
-    };
-  },
-
-  toJSON(message: IdentifiedConnection): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-
-    if (message.versions) {
-      obj.versions = message.versions.map(e => e ? Version.toJSON(e) : undefined);
-    } else {
-      obj.versions = [];
-    }
-
-    message.state !== undefined && (obj.state = stateToJSON(message.state));
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toJSON(message.counterparty) : undefined);
-    message.delayPeriod !== undefined && (obj.delayPeriod = (message.delayPeriod || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<IdentifiedConnection>): IdentifiedConnection {
     const message = createBaseIdentifiedConnection();
     message.id = object.id ?? "";
@@ -542,6 +514,34 @@ export const IdentifiedConnection = {
     message.counterparty = object.counterparty !== undefined && object.counterparty !== null ? Counterparty.fromPartial(object.counterparty) : undefined;
     message.delayPeriod = object.delayPeriod !== undefined && object.delayPeriod !== null ? Long.fromValue(object.delayPeriod) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: IdentifiedConnectionSDKType): IdentifiedConnection {
+    return {
+      id: isSet(object.id) ? object.id : undefined,
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      versions: Array.isArray(object?.versions) ? object.versions.map((e: any) => Version.fromSDK(e)) : [],
+      state: isSet(object.state) ? stateFromJSON(object.state) : 0,
+      counterparty: isSet(object.counterparty) ? Counterparty.fromSDK(object.counterparty) : undefined,
+      delayPeriod: isSet(object.delay_period) ? object.delay_period : undefined
+    };
+  },
+
+  toSDK(message: IdentifiedConnection): IdentifiedConnectionSDKType {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+
+    if (message.versions) {
+      obj.versions = message.versions.map(e => e ? Version.toSDK(e) : undefined);
+    } else {
+      obj.versions = [];
+    }
+
+    message.state !== undefined && (obj.state = stateToJSON(message.state));
+    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toSDK(message.counterparty) : undefined);
+    message.delayPeriod !== undefined && (obj.delay_period = message.delayPeriod);
+    return obj;
   }
 
 };
@@ -601,28 +601,28 @@ export const Counterparty = {
     return message;
   },
 
-  fromJSON(object: any): Counterparty {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
-      prefix: isSet(object.prefix) ? MerklePrefix.fromJSON(object.prefix) : undefined
-    };
-  },
-
-  toJSON(message: Counterparty): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
-    message.prefix !== undefined && (obj.prefix = message.prefix ? MerklePrefix.toJSON(message.prefix) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Counterparty>): Counterparty {
     const message = createBaseCounterparty();
     message.clientId = object.clientId ?? "";
     message.connectionId = object.connectionId ?? "";
     message.prefix = object.prefix !== undefined && object.prefix !== null ? MerklePrefix.fromPartial(object.prefix) : undefined;
     return message;
+  },
+
+  fromSDK(object: CounterpartySDKType): Counterparty {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      connectionId: isSet(object.connection_id) ? object.connection_id : undefined,
+      prefix: isSet(object.prefix) ? MerklePrefix.fromSDK(object.prefix) : undefined
+    };
+  },
+
+  toSDK(message: Counterparty): CounterpartySDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+    message.connectionId !== undefined && (obj.connection_id = message.connectionId);
+    message.prefix !== undefined && (obj.prefix = message.prefix ? MerklePrefix.toSDK(message.prefix) : undefined);
+    return obj;
   }
 
 };
@@ -664,13 +664,19 @@ export const ClientPaths = {
     return message;
   },
 
-  fromJSON(object: any): ClientPaths {
+  fromPartial(object: DeepPartial<ClientPaths>): ClientPaths {
+    const message = createBaseClientPaths();
+    message.paths = object.paths?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: ClientPathsSDKType): ClientPaths {
     return {
-      paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => String(e)) : []
+      paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: ClientPaths): unknown {
+  toSDK(message: ClientPaths): ClientPathsSDKType {
     const obj: any = {};
 
     if (message.paths) {
@@ -680,12 +686,6 @@ export const ClientPaths = {
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<ClientPaths>): ClientPaths {
-    const message = createBaseClientPaths();
-    message.paths = object.paths?.map(e => e) || [];
-    return message;
   }
 
 };
@@ -736,16 +736,23 @@ export const ConnectionPaths = {
     return message;
   },
 
-  fromJSON(object: any): ConnectionPaths {
+  fromPartial(object: DeepPartial<ConnectionPaths>): ConnectionPaths {
+    const message = createBaseConnectionPaths();
+    message.clientId = object.clientId ?? "";
+    message.paths = object.paths?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: ConnectionPathsSDKType): ConnectionPaths {
     return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => String(e)) : []
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: ConnectionPaths): unknown {
+  toSDK(message: ConnectionPaths): ConnectionPathsSDKType {
     const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
+    message.clientId !== undefined && (obj.client_id = message.clientId);
 
     if (message.paths) {
       obj.paths = message.paths.map(e => e);
@@ -754,13 +761,6 @@ export const ConnectionPaths = {
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<ConnectionPaths>): ConnectionPaths {
-    const message = createBaseConnectionPaths();
-    message.clientId = object.clientId ?? "";
-    message.paths = object.paths?.map(e => e) || [];
-    return message;
   }
 
 };
@@ -811,14 +811,21 @@ export const Version = {
     return message;
   },
 
-  fromJSON(object: any): Version {
+  fromPartial(object: DeepPartial<Version>): Version {
+    const message = createBaseVersion();
+    message.identifier = object.identifier ?? "";
+    message.features = object.features?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: VersionSDKType): Version {
     return {
-      identifier: isSet(object.identifier) ? String(object.identifier) : "",
-      features: Array.isArray(object?.features) ? object.features.map((e: any) => String(e)) : []
+      identifier: isSet(object.identifier) ? object.identifier : undefined,
+      features: Array.isArray(object?.features) ? object.features.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: Version): unknown {
+  toSDK(message: Version): VersionSDKType {
     const obj: any = {};
     message.identifier !== undefined && (obj.identifier = message.identifier);
 
@@ -829,13 +836,6 @@ export const Version = {
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<Version>): Version {
-    const message = createBaseVersion();
-    message.identifier = object.identifier ?? "";
-    message.features = object.features?.map(e => e) || [];
-    return message;
   }
 
 };
@@ -877,22 +877,22 @@ export const Params = {
     return message;
   },
 
-  fromJSON(object: any): Params {
-    return {
-      maxExpectedTimePerBlock: isSet(object.maxExpectedTimePerBlock) ? Long.fromString(object.maxExpectedTimePerBlock) : Long.UZERO
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-    message.maxExpectedTimePerBlock !== undefined && (obj.maxExpectedTimePerBlock = (message.maxExpectedTimePerBlock || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.maxExpectedTimePerBlock = object.maxExpectedTimePerBlock !== undefined && object.maxExpectedTimePerBlock !== null ? Long.fromValue(object.maxExpectedTimePerBlock) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: ParamsSDKType): Params {
+    return {
+      maxExpectedTimePerBlock: isSet(object.max_expected_time_per_block) ? object.max_expected_time_per_block : undefined
+    };
+  },
+
+  toSDK(message: Params): ParamsSDKType {
+    const obj: any = {};
+    message.maxExpectedTimePerBlock !== undefined && (obj.max_expected_time_per_block = message.maxExpectedTimePerBlock);
+    return obj;
   }
 
 };

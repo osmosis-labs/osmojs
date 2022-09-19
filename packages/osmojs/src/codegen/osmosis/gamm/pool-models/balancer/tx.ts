@@ -1,6 +1,6 @@
 import { PoolParams, PoolParamsSDKType, PoolAsset, PoolAssetSDKType } from "./balancerPool";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 /** ===================== MsgCreatePool */
 
 export interface MsgCreateBalancerPool {
@@ -88,30 +88,6 @@ export const MsgCreateBalancerPool = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreateBalancerPool {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
-      poolAssets: Array.isArray(object?.poolAssets) ? object.poolAssets.map((e: any) => PoolAsset.fromJSON(e)) : [],
-      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : ""
-    };
-  },
-
-  toJSON(message: MsgCreateBalancerPool): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.poolParams !== undefined && (obj.poolParams = message.poolParams ? PoolParams.toJSON(message.poolParams) : undefined);
-
-    if (message.poolAssets) {
-      obj.poolAssets = message.poolAssets.map(e => e ? PoolAsset.toJSON(e) : undefined);
-    } else {
-      obj.poolAssets = [];
-    }
-
-    message.futurePoolGovernor !== undefined && (obj.futurePoolGovernor = message.futurePoolGovernor);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreateBalancerPool>): MsgCreateBalancerPool {
     const message = createBaseMsgCreateBalancerPool();
     message.sender = object.sender ?? "";
@@ -119,6 +95,30 @@ export const MsgCreateBalancerPool = {
     message.poolAssets = object.poolAssets?.map(e => PoolAsset.fromPartial(e)) || [];
     message.futurePoolGovernor = object.futurePoolGovernor ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgCreateBalancerPoolSDKType): MsgCreateBalancerPool {
+    return {
+      sender: isSet(object.sender) ? object.sender : undefined,
+      poolParams: isSet(object.poolParams) ? PoolParams.fromSDK(object.poolParams) : undefined,
+      poolAssets: Array.isArray(object?.poolAssets) ? object.poolAssets.map((e: any) => PoolAsset.fromSDK(e)) : [],
+      futurePoolGovernor: isSet(object.future_pool_governor) ? object.future_pool_governor : undefined
+    };
+  },
+
+  toSDK(message: MsgCreateBalancerPool): MsgCreateBalancerPoolSDKType {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.poolParams !== undefined && (obj.poolParams = message.poolParams ? PoolParams.toSDK(message.poolParams) : undefined);
+
+    if (message.poolAssets) {
+      obj.poolAssets = message.poolAssets.map(e => e ? PoolAsset.toSDK(e) : undefined);
+    } else {
+      obj.poolAssets = [];
+    }
+
+    message.futurePoolGovernor !== undefined && (obj.future_pool_governor = message.futurePoolGovernor);
+    return obj;
   }
 
 };
@@ -160,22 +160,22 @@ export const MsgCreateBalancerPoolResponse = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreateBalancerPoolResponse {
-    return {
-      poolId: isSet(object.poolId) ? Long.fromString(object.poolId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: MsgCreateBalancerPoolResponse): unknown {
-    const obj: any = {};
-    message.poolId !== undefined && (obj.poolId = (message.poolId || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse {
     const message = createBaseMsgCreateBalancerPoolResponse();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: MsgCreateBalancerPoolResponseSDKType): MsgCreateBalancerPoolResponse {
+    return {
+      poolId: isSet(object.pool_id) ? object.pool_id : undefined
+    };
+  },
+
+  toSDK(message: MsgCreateBalancerPoolResponse): MsgCreateBalancerPoolResponseSDKType {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.pool_id = message.poolId);
+    return obj;
   }
 
 };

@@ -178,105 +178,105 @@ export interface ModuleSDKType {
 export declare const GetValidatorSetByHeightRequest: {
     encode(message: GetValidatorSetByHeightRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetValidatorSetByHeightRequest;
-    fromJSON(object: any): GetValidatorSetByHeightRequest;
-    toJSON(message: GetValidatorSetByHeightRequest): unknown;
     fromPartial(object: DeepPartial<GetValidatorSetByHeightRequest>): GetValidatorSetByHeightRequest;
+    fromSDK(object: GetValidatorSetByHeightRequestSDKType): GetValidatorSetByHeightRequest;
+    toSDK(message: GetValidatorSetByHeightRequest): GetValidatorSetByHeightRequestSDKType;
 };
 export declare const GetValidatorSetByHeightResponse: {
     encode(message: GetValidatorSetByHeightResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetValidatorSetByHeightResponseSDKType;
-    fromJSON(object: any): GetValidatorSetByHeightResponse;
-    toJSON(message: GetValidatorSetByHeightResponse): unknown;
     fromPartial(object: DeepPartial<GetValidatorSetByHeightResponse>): GetValidatorSetByHeightResponse;
+    fromSDK(object: GetValidatorSetByHeightResponseSDKType): GetValidatorSetByHeightResponse;
+    toSDK(message: GetValidatorSetByHeightResponse): GetValidatorSetByHeightResponseSDKType;
 };
 export declare const GetLatestValidatorSetRequest: {
     encode(message: GetLatestValidatorSetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestValidatorSetRequest;
-    fromJSON(object: any): GetLatestValidatorSetRequest;
-    toJSON(message: GetLatestValidatorSetRequest): unknown;
     fromPartial(object: DeepPartial<GetLatestValidatorSetRequest>): GetLatestValidatorSetRequest;
+    fromSDK(object: GetLatestValidatorSetRequestSDKType): GetLatestValidatorSetRequest;
+    toSDK(message: GetLatestValidatorSetRequest): GetLatestValidatorSetRequestSDKType;
 };
 export declare const GetLatestValidatorSetResponse: {
     encode(message: GetLatestValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestValidatorSetResponseSDKType;
-    fromJSON(object: any): GetLatestValidatorSetResponse;
-    toJSON(message: GetLatestValidatorSetResponse): unknown;
     fromPartial(object: DeepPartial<GetLatestValidatorSetResponse>): GetLatestValidatorSetResponse;
+    fromSDK(object: GetLatestValidatorSetResponseSDKType): GetLatestValidatorSetResponse;
+    toSDK(message: GetLatestValidatorSetResponse): GetLatestValidatorSetResponseSDKType;
 };
 export declare const Validator: {
     encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
-    fromJSON(object: any): Validator;
-    toJSON(message: Validator): unknown;
     fromPartial(object: DeepPartial<Validator>): Validator;
+    fromSDK(object: ValidatorSDKType): Validator;
+    toSDK(message: Validator): ValidatorSDKType;
 };
 export declare const GetBlockByHeightRequest: {
     encode(message: GetBlockByHeightRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockByHeightRequest;
-    fromJSON(object: any): GetBlockByHeightRequest;
-    toJSON(message: GetBlockByHeightRequest): unknown;
     fromPartial(object: DeepPartial<GetBlockByHeightRequest>): GetBlockByHeightRequest;
+    fromSDK(object: GetBlockByHeightRequestSDKType): GetBlockByHeightRequest;
+    toSDK(message: GetBlockByHeightRequest): GetBlockByHeightRequestSDKType;
 };
 export declare const GetBlockByHeightResponse: {
     encode(message: GetBlockByHeightResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockByHeightResponseSDKType;
-    fromJSON(object: any): GetBlockByHeightResponse;
-    toJSON(message: GetBlockByHeightResponse): unknown;
     fromPartial(object: DeepPartial<GetBlockByHeightResponse>): GetBlockByHeightResponse;
+    fromSDK(object: GetBlockByHeightResponseSDKType): GetBlockByHeightResponse;
+    toSDK(message: GetBlockByHeightResponse): GetBlockByHeightResponseSDKType;
 };
 export declare const GetLatestBlockRequest: {
     encode(_: GetLatestBlockRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestBlockRequest;
-    fromJSON(_: any): GetLatestBlockRequest;
-    toJSON(_: GetLatestBlockRequest): unknown;
     fromPartial(_: DeepPartial<GetLatestBlockRequest>): GetLatestBlockRequest;
+    fromSDK(_: GetLatestBlockRequestSDKType): GetLatestBlockRequest;
+    toSDK(_: GetLatestBlockRequest): GetLatestBlockRequestSDKType;
 };
 export declare const GetLatestBlockResponse: {
     encode(message: GetLatestBlockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestBlockResponseSDKType;
-    fromJSON(object: any): GetLatestBlockResponse;
-    toJSON(message: GetLatestBlockResponse): unknown;
     fromPartial(object: DeepPartial<GetLatestBlockResponse>): GetLatestBlockResponse;
+    fromSDK(object: GetLatestBlockResponseSDKType): GetLatestBlockResponse;
+    toSDK(message: GetLatestBlockResponse): GetLatestBlockResponseSDKType;
 };
 export declare const GetSyncingRequest: {
     encode(_: GetSyncingRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetSyncingRequest;
-    fromJSON(_: any): GetSyncingRequest;
-    toJSON(_: GetSyncingRequest): unknown;
     fromPartial(_: DeepPartial<GetSyncingRequest>): GetSyncingRequest;
+    fromSDK(_: GetSyncingRequestSDKType): GetSyncingRequest;
+    toSDK(_: GetSyncingRequest): GetSyncingRequestSDKType;
 };
 export declare const GetSyncingResponse: {
     encode(message: GetSyncingResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetSyncingResponseSDKType;
-    fromJSON(object: any): GetSyncingResponse;
-    toJSON(message: GetSyncingResponse): unknown;
     fromPartial(object: DeepPartial<GetSyncingResponse>): GetSyncingResponse;
+    fromSDK(object: GetSyncingResponseSDKType): GetSyncingResponse;
+    toSDK(message: GetSyncingResponse): GetSyncingResponseSDKType;
 };
 export declare const GetNodeInfoRequest: {
     encode(_: GetNodeInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetNodeInfoRequest;
-    fromJSON(_: any): GetNodeInfoRequest;
-    toJSON(_: GetNodeInfoRequest): unknown;
     fromPartial(_: DeepPartial<GetNodeInfoRequest>): GetNodeInfoRequest;
+    fromSDK(_: GetNodeInfoRequestSDKType): GetNodeInfoRequest;
+    toSDK(_: GetNodeInfoRequest): GetNodeInfoRequestSDKType;
 };
 export declare const GetNodeInfoResponse: {
     encode(message: GetNodeInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetNodeInfoResponseSDKType;
-    fromJSON(object: any): GetNodeInfoResponse;
-    toJSON(message: GetNodeInfoResponse): unknown;
     fromPartial(object: DeepPartial<GetNodeInfoResponse>): GetNodeInfoResponse;
+    fromSDK(object: GetNodeInfoResponseSDKType): GetNodeInfoResponse;
+    toSDK(message: GetNodeInfoResponse): GetNodeInfoResponseSDKType;
 };
 export declare const VersionInfo: {
     encode(message: VersionInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VersionInfo;
-    fromJSON(object: any): VersionInfo;
-    toJSON(message: VersionInfo): unknown;
     fromPartial(object: DeepPartial<VersionInfo>): VersionInfo;
+    fromSDK(object: VersionInfoSDKType): VersionInfo;
+    toSDK(message: VersionInfo): VersionInfoSDKType;
 };
 export declare const Module: {
     encode(message: Module, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Module;
-    fromJSON(object: any): Module;
-    toJSON(message: Module): unknown;
     fromPartial(object: DeepPartial<Module>): Module;
+    fromSDK(object: ModuleSDKType): Module;
+    toSDK(message: Module): ModuleSDKType;
 };

@@ -50,45 +50,45 @@ export declare const MessageComposer: {
     toJSON: {
         createValidator(value: MsgCreateValidator): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         editValidator(value: MsgEditValidator): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         delegate(value: MsgDelegate): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         beginRedelegate(value: MsgBeginRedelegate): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         undelegate(value: MsgUndelegate): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         createValidator(value: any): {
             typeUrl: string;
-            value: MsgCreateValidator;
+            value: any;
         };
         editValidator(value: any): {
             typeUrl: string;
-            value: MsgEditValidator;
+            value: any;
         };
         delegate(value: any): {
             typeUrl: string;
-            value: MsgDelegate;
+            value: any;
         };
         beginRedelegate(value: any): {
             typeUrl: string;
-            value: MsgBeginRedelegate;
+            value: any;
         };
         undelegate(value: any): {
             typeUrl: string;
-            value: MsgUndelegate;
+            value: any;
         };
     };
     fromPartial: {

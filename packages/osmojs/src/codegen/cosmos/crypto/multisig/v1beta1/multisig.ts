@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { bytesFromBase64, base64FromBytes, DeepPartial, isSet } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * MultiSignature wraps the signatures from a multisig.LegacyAminoPubKey.
  * See cosmos.tx.v1betata1.ModeInfo.Multi for how to specify which signers
@@ -78,28 +78,28 @@ export const MultiSignature = {
     return message;
   },
 
-  fromJSON(object: any): MultiSignature {
+  fromPartial(object: DeepPartial<MultiSignature>): MultiSignature {
+    const message = createBaseMultiSignature();
+    message.signatures = object.signatures?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: MultiSignatureSDKType): MultiSignature {
     return {
-      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => bytesFromBase64(e)) : []
+      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: MultiSignature): unknown {
+  toSDK(message: MultiSignature): MultiSignatureSDKType {
     const obj: any = {};
 
     if (message.signatures) {
-      obj.signatures = message.signatures.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
+      obj.signatures = message.signatures.map(e => e);
     } else {
       obj.signatures = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<MultiSignature>): MultiSignature {
-    const message = createBaseMultiSignature();
-    message.signatures = object.signatures?.map(e => e) || [];
-    return message;
   }
 
 };
@@ -150,25 +150,25 @@ export const CompactBitArray = {
     return message;
   },
 
-  fromJSON(object: any): CompactBitArray {
-    return {
-      extraBitsStored: isSet(object.extraBitsStored) ? Number(object.extraBitsStored) : 0,
-      elems: isSet(object.elems) ? bytesFromBase64(object.elems) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: CompactBitArray): unknown {
-    const obj: any = {};
-    message.extraBitsStored !== undefined && (obj.extraBitsStored = Math.round(message.extraBitsStored));
-    message.elems !== undefined && (obj.elems = base64FromBytes(message.elems !== undefined ? message.elems : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<CompactBitArray>): CompactBitArray {
     const message = createBaseCompactBitArray();
     message.extraBitsStored = object.extraBitsStored ?? 0;
     message.elems = object.elems ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: CompactBitArraySDKType): CompactBitArray {
+    return {
+      extraBitsStored: isSet(object.extra_bits_stored) ? object.extra_bits_stored : undefined,
+      elems: isSet(object.elems) ? object.elems : undefined
+    };
+  },
+
+  toSDK(message: CompactBitArray): CompactBitArraySDKType {
+    const obj: any = {};
+    message.extraBitsStored !== undefined && (obj.extra_bits_stored = message.extraBitsStored);
+    message.elems !== undefined && (obj.elems = message.elems);
+    return obj;
   }
 
 };

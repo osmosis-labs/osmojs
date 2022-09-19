@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** MsgVerifyInvariant represents a message to verify a particular invariance. */
 
 export interface MsgVerifyInvariant {
@@ -76,28 +76,28 @@ export const MsgVerifyInvariant = {
     return message;
   },
 
-  fromJSON(object: any): MsgVerifyInvariant {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      invariantModuleName: isSet(object.invariantModuleName) ? String(object.invariantModuleName) : "",
-      invariantRoute: isSet(object.invariantRoute) ? String(object.invariantRoute) : ""
-    };
-  },
-
-  toJSON(message: MsgVerifyInvariant): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.invariantModuleName !== undefined && (obj.invariantModuleName = message.invariantModuleName);
-    message.invariantRoute !== undefined && (obj.invariantRoute = message.invariantRoute);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgVerifyInvariant>): MsgVerifyInvariant {
     const message = createBaseMsgVerifyInvariant();
     message.sender = object.sender ?? "";
     message.invariantModuleName = object.invariantModuleName ?? "";
     message.invariantRoute = object.invariantRoute ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgVerifyInvariantSDKType): MsgVerifyInvariant {
+    return {
+      sender: isSet(object.sender) ? object.sender : undefined,
+      invariantModuleName: isSet(object.invariant_module_name) ? object.invariant_module_name : undefined,
+      invariantRoute: isSet(object.invariant_route) ? object.invariant_route : undefined
+    };
+  },
+
+  toSDK(message: MsgVerifyInvariant): MsgVerifyInvariantSDKType {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.invariantModuleName !== undefined && (obj.invariant_module_name = message.invariantModuleName);
+    message.invariantRoute !== undefined && (obj.invariant_route = message.invariantRoute);
+    return obj;
   }
 
 };
@@ -129,18 +129,18 @@ export const MsgVerifyInvariantResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgVerifyInvariantResponse {
-    return {};
-  },
-
-  toJSON(_: MsgVerifyInvariantResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgVerifyInvariantResponse>): MsgVerifyInvariantResponse {
     const message = createBaseMsgVerifyInvariantResponse();
     return message;
+  },
+
+  fromSDK(_: MsgVerifyInvariantResponseSDKType): MsgVerifyInvariantResponse {
+    return {};
+  },
+
+  toSDK(_: MsgVerifyInvariantResponse): MsgVerifyInvariantResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };

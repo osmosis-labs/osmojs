@@ -1,6 +1,6 @@
 import { Minter, MinterSDKType, Params, ParamsSDKType } from "./mint";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 /** GenesisState defines the mint module's genesis state. */
 
 export interface GenesisState {
@@ -81,28 +81,28 @@ export const GenesisState = {
     return message;
   },
 
-  fromJSON(object: any): GenesisState {
-    return {
-      minter: isSet(object.minter) ? Minter.fromJSON(object.minter) : undefined,
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      halvenStartedEpoch: isSet(object.halvenStartedEpoch) ? Long.fromString(object.halvenStartedEpoch) : Long.ZERO
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.minter !== undefined && (obj.minter = message.minter ? Minter.toJSON(message.minter) : undefined);
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    message.halvenStartedEpoch !== undefined && (obj.halvenStartedEpoch = (message.halvenStartedEpoch || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.minter = object.minter !== undefined && object.minter !== null ? Minter.fromPartial(object.minter) : undefined;
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.halvenStartedEpoch = object.halvenStartedEpoch !== undefined && object.halvenStartedEpoch !== null ? Long.fromValue(object.halvenStartedEpoch) : Long.ZERO;
     return message;
+  },
+
+  fromSDK(object: GenesisStateSDKType): GenesisState {
+    return {
+      minter: isSet(object.minter) ? Minter.fromSDK(object.minter) : undefined,
+      params: isSet(object.params) ? Params.fromSDK(object.params) : undefined,
+      halvenStartedEpoch: isSet(object.halven_started_epoch) ? object.halven_started_epoch : undefined
+    };
+  },
+
+  toSDK(message: GenesisState): GenesisStateSDKType {
+    const obj: any = {};
+    message.minter !== undefined && (obj.minter = message.minter ? Minter.toSDK(message.minter) : undefined);
+    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
+    message.halvenStartedEpoch !== undefined && (obj.halven_started_epoch = message.halvenStartedEpoch);
+    return obj;
   }
 
 };

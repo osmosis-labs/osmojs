@@ -90,85 +90,85 @@ export declare const MessageComposer: {
     toJSON: {
         channelOpenInit(value: MsgChannelOpenInit): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         channelOpenTry(value: MsgChannelOpenTry): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         channelOpenAck(value: MsgChannelOpenAck): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         channelOpenConfirm(value: MsgChannelOpenConfirm): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         channelCloseInit(value: MsgChannelCloseInit): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         channelCloseConfirm(value: MsgChannelCloseConfirm): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         recvPacket(value: MsgRecvPacket): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         timeout(value: MsgTimeout): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         timeoutOnClose(value: MsgTimeoutOnClose): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         acknowledgement(value: MsgAcknowledgement): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         channelOpenInit(value: any): {
             typeUrl: string;
-            value: MsgChannelOpenInit;
+            value: any;
         };
         channelOpenTry(value: any): {
             typeUrl: string;
-            value: MsgChannelOpenTry;
+            value: any;
         };
         channelOpenAck(value: any): {
             typeUrl: string;
-            value: MsgChannelOpenAck;
+            value: any;
         };
         channelOpenConfirm(value: any): {
             typeUrl: string;
-            value: MsgChannelOpenConfirm;
+            value: any;
         };
         channelCloseInit(value: any): {
             typeUrl: string;
-            value: MsgChannelCloseInit;
+            value: any;
         };
         channelCloseConfirm(value: any): {
             typeUrl: string;
-            value: MsgChannelCloseConfirm;
+            value: any;
         };
         recvPacket(value: any): {
             typeUrl: string;
-            value: MsgRecvPacket;
+            value: any;
         };
         timeout(value: any): {
             typeUrl: string;
-            value: MsgTimeout;
+            value: any;
         };
         timeoutOnClose(value: any): {
             typeUrl: string;
-            value: MsgTimeoutOnClose;
+            value: any;
         };
         acknowledgement(value: any): {
             typeUrl: string;
-            value: MsgAcknowledgement;
+            value: any;
         };
     };
     fromPartial: {

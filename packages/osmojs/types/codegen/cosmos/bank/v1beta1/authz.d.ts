@@ -22,7 +22,7 @@ export interface SendAuthorizationSDKType {
 export declare const SendAuthorization: {
     encode(message: SendAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SendAuthorization;
-    fromJSON(object: any): SendAuthorization;
-    toJSON(message: SendAuthorization): unknown;
     fromPartial(object: DeepPartial<SendAuthorization>): SendAuthorization;
+    fromSDK(object: SendAuthorizationSDKType): SendAuthorization;
+    toSDK(message: SendAuthorization): SendAuthorizationSDKType;
 };

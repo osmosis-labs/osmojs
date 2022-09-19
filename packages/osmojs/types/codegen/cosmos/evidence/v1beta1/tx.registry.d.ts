@@ -18,13 +18,13 @@ export declare const MessageComposer: {
     toJSON: {
         submitEvidence(value: MsgSubmitEvidence): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         submitEvidence(value: any): {
             typeUrl: string;
-            value: MsgSubmitEvidence;
+            value: any;
         };
     };
     fromPartial: {

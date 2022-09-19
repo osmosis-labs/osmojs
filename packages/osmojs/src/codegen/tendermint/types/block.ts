@@ -1,7 +1,7 @@
 import { Header, HeaderSDKType, Data, DataSDKType, Commit, CommitSDKType } from "./types";
 import { EvidenceList, EvidenceListSDKType } from "./evidence";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 export interface Block {
   header: Header;
   data: Data;
@@ -79,24 +79,6 @@ export const Block = {
     return message;
   },
 
-  fromJSON(object: any): Block {
-    return {
-      header: isSet(object.header) ? Header.fromJSON(object.header) : undefined,
-      data: isSet(object.data) ? Data.fromJSON(object.data) : undefined,
-      evidence: isSet(object.evidence) ? EvidenceList.fromJSON(object.evidence) : undefined,
-      lastCommit: isSet(object.lastCommit) ? Commit.fromJSON(object.lastCommit) : undefined
-    };
-  },
-
-  toJSON(message: Block): unknown {
-    const obj: any = {};
-    message.header !== undefined && (obj.header = message.header ? Header.toJSON(message.header) : undefined);
-    message.data !== undefined && (obj.data = message.data ? Data.toJSON(message.data) : undefined);
-    message.evidence !== undefined && (obj.evidence = message.evidence ? EvidenceList.toJSON(message.evidence) : undefined);
-    message.lastCommit !== undefined && (obj.lastCommit = message.lastCommit ? Commit.toJSON(message.lastCommit) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Block>): Block {
     const message = createBaseBlock();
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
@@ -104,6 +86,24 @@ export const Block = {
     message.evidence = object.evidence !== undefined && object.evidence !== null ? EvidenceList.fromPartial(object.evidence) : undefined;
     message.lastCommit = object.lastCommit !== undefined && object.lastCommit !== null ? Commit.fromPartial(object.lastCommit) : undefined;
     return message;
+  },
+
+  fromSDK(object: BlockSDKType): Block {
+    return {
+      header: isSet(object.header) ? Header.fromSDK(object.header) : undefined,
+      data: isSet(object.data) ? Data.fromSDK(object.data) : undefined,
+      evidence: isSet(object.evidence) ? EvidenceList.fromSDK(object.evidence) : undefined,
+      lastCommit: isSet(object.last_commit) ? Commit.fromSDK(object.last_commit) : undefined
+    };
+  },
+
+  toSDK(message: Block): BlockSDKType {
+    const obj: any = {};
+    message.header !== undefined && (obj.header = message.header ? Header.toSDK(message.header) : undefined);
+    message.data !== undefined && (obj.data = message.data ? Data.toSDK(message.data) : undefined);
+    message.evidence !== undefined && (obj.evidence = message.evidence ? EvidenceList.toSDK(message.evidence) : undefined);
+    message.lastCommit !== undefined && (obj.last_commit = message.lastCommit ? Commit.toSDK(message.lastCommit) : undefined);
+    return obj;
   }
 
 };

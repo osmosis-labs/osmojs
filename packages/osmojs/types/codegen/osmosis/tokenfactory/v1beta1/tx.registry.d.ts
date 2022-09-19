@@ -42,37 +42,37 @@ export declare const MessageComposer: {
     toJSON: {
         createDenom(value: MsgCreateDenom): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         mint(value: MsgMint): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         burn(value: MsgBurn): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         changeAdmin(value: MsgChangeAdmin): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         createDenom(value: any): {
             typeUrl: string;
-            value: MsgCreateDenom;
+            value: any;
         };
         mint(value: any): {
             typeUrl: string;
-            value: MsgMint;
+            value: any;
         };
         burn(value: any): {
             typeUrl: string;
-            value: MsgBurn;
+            value: any;
         };
         changeAdmin(value: any): {
             typeUrl: string;
-            value: MsgChangeAdmin;
+            value: any;
         };
     };
     fromPartial: {

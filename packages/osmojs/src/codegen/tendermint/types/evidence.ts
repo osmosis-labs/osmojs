@@ -2,7 +2,7 @@ import { Vote, VoteSDKType, LightBlock, LightBlockSDKType } from "./types";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Validator, ValidatorSDKType } from "./validator";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, toTimestamp, Long, fromTimestamp, fromJsonTimestamp } from "@osmonauts/helpers";
+import { DeepPartial, isSet, toTimestamp, Long, fromTimestamp } from "@osmonauts/helpers";
 export interface Evidence {
   duplicateVoteEvidence?: DuplicateVoteEvidence;
   lightClientAttackEvidence?: LightClientAttackEvidence;
@@ -100,25 +100,25 @@ export const Evidence = {
     return message;
   },
 
-  fromJSON(object: any): Evidence {
-    return {
-      duplicateVoteEvidence: isSet(object.duplicateVoteEvidence) ? DuplicateVoteEvidence.fromJSON(object.duplicateVoteEvidence) : undefined,
-      lightClientAttackEvidence: isSet(object.lightClientAttackEvidence) ? LightClientAttackEvidence.fromJSON(object.lightClientAttackEvidence) : undefined
-    };
-  },
-
-  toJSON(message: Evidence): unknown {
-    const obj: any = {};
-    message.duplicateVoteEvidence !== undefined && (obj.duplicateVoteEvidence = message.duplicateVoteEvidence ? DuplicateVoteEvidence.toJSON(message.duplicateVoteEvidence) : undefined);
-    message.lightClientAttackEvidence !== undefined && (obj.lightClientAttackEvidence = message.lightClientAttackEvidence ? LightClientAttackEvidence.toJSON(message.lightClientAttackEvidence) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Evidence>): Evidence {
     const message = createBaseEvidence();
     message.duplicateVoteEvidence = object.duplicateVoteEvidence !== undefined && object.duplicateVoteEvidence !== null ? DuplicateVoteEvidence.fromPartial(object.duplicateVoteEvidence) : undefined;
     message.lightClientAttackEvidence = object.lightClientAttackEvidence !== undefined && object.lightClientAttackEvidence !== null ? LightClientAttackEvidence.fromPartial(object.lightClientAttackEvidence) : undefined;
     return message;
+  },
+
+  fromSDK(object: EvidenceSDKType): Evidence {
+    return {
+      duplicateVoteEvidence: isSet(object.duplicate_vote_evidence) ? DuplicateVoteEvidence.fromSDK(object.duplicate_vote_evidence) : undefined,
+      lightClientAttackEvidence: isSet(object.light_client_attack_evidence) ? LightClientAttackEvidence.fromSDK(object.light_client_attack_evidence) : undefined
+    };
+  },
+
+  toSDK(message: Evidence): EvidenceSDKType {
+    const obj: any = {};
+    message.duplicateVoteEvidence !== undefined && (obj.duplicate_vote_evidence = message.duplicateVoteEvidence ? DuplicateVoteEvidence.toSDK(message.duplicateVoteEvidence) : undefined);
+    message.lightClientAttackEvidence !== undefined && (obj.light_client_attack_evidence = message.lightClientAttackEvidence ? LightClientAttackEvidence.toSDK(message.lightClientAttackEvidence) : undefined);
+    return obj;
   }
 
 };
@@ -196,26 +196,6 @@ export const DuplicateVoteEvidence = {
     return message;
   },
 
-  fromJSON(object: any): DuplicateVoteEvidence {
-    return {
-      voteA: isSet(object.voteA) ? Vote.fromJSON(object.voteA) : undefined,
-      voteB: isSet(object.voteB) ? Vote.fromJSON(object.voteB) : undefined,
-      totalVotingPower: isSet(object.totalVotingPower) ? Long.fromString(object.totalVotingPower) : Long.ZERO,
-      validatorPower: isSet(object.validatorPower) ? Long.fromString(object.validatorPower) : Long.ZERO,
-      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
-    };
-  },
-
-  toJSON(message: DuplicateVoteEvidence): unknown {
-    const obj: any = {};
-    message.voteA !== undefined && (obj.voteA = message.voteA ? Vote.toJSON(message.voteA) : undefined);
-    message.voteB !== undefined && (obj.voteB = message.voteB ? Vote.toJSON(message.voteB) : undefined);
-    message.totalVotingPower !== undefined && (obj.totalVotingPower = (message.totalVotingPower || Long.ZERO).toString());
-    message.validatorPower !== undefined && (obj.validatorPower = (message.validatorPower || Long.ZERO).toString());
-    message.timestamp !== undefined && (obj.timestamp = message.timestamp.toISOString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DuplicateVoteEvidence>): DuplicateVoteEvidence {
     const message = createBaseDuplicateVoteEvidence();
     message.voteA = object.voteA !== undefined && object.voteA !== null ? Vote.fromPartial(object.voteA) : undefined;
@@ -224,6 +204,26 @@ export const DuplicateVoteEvidence = {
     message.validatorPower = object.validatorPower !== undefined && object.validatorPower !== null ? Long.fromValue(object.validatorPower) : Long.ZERO;
     message.timestamp = object.timestamp ?? undefined;
     return message;
+  },
+
+  fromSDK(object: DuplicateVoteEvidenceSDKType): DuplicateVoteEvidence {
+    return {
+      voteA: isSet(object.vote_a) ? Vote.fromSDK(object.vote_a) : undefined,
+      voteB: isSet(object.vote_b) ? Vote.fromSDK(object.vote_b) : undefined,
+      totalVotingPower: isSet(object.total_voting_power) ? object.total_voting_power : undefined,
+      validatorPower: isSet(object.validator_power) ? object.validator_power : undefined,
+      timestamp: isSet(object.timestamp) ? Timestamp.fromSDK(object.timestamp) : undefined
+    };
+  },
+
+  toSDK(message: DuplicateVoteEvidence): DuplicateVoteEvidenceSDKType {
+    const obj: any = {};
+    message.voteA !== undefined && (obj.vote_a = message.voteA ? Vote.toSDK(message.voteA) : undefined);
+    message.voteB !== undefined && (obj.vote_b = message.voteB ? Vote.toSDK(message.voteB) : undefined);
+    message.totalVotingPower !== undefined && (obj.total_voting_power = message.totalVotingPower);
+    message.validatorPower !== undefined && (obj.validator_power = message.validatorPower);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp ? Timestamp.toSDK(message.timestamp) : undefined);
+    return obj;
   }
 
 };
@@ -301,32 +301,6 @@ export const LightClientAttackEvidence = {
     return message;
   },
 
-  fromJSON(object: any): LightClientAttackEvidence {
-    return {
-      conflictingBlock: isSet(object.conflictingBlock) ? LightBlock.fromJSON(object.conflictingBlock) : undefined,
-      commonHeight: isSet(object.commonHeight) ? Long.fromString(object.commonHeight) : Long.ZERO,
-      byzantineValidators: Array.isArray(object?.byzantineValidators) ? object.byzantineValidators.map((e: any) => Validator.fromJSON(e)) : [],
-      totalVotingPower: isSet(object.totalVotingPower) ? Long.fromString(object.totalVotingPower) : Long.ZERO,
-      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
-    };
-  },
-
-  toJSON(message: LightClientAttackEvidence): unknown {
-    const obj: any = {};
-    message.conflictingBlock !== undefined && (obj.conflictingBlock = message.conflictingBlock ? LightBlock.toJSON(message.conflictingBlock) : undefined);
-    message.commonHeight !== undefined && (obj.commonHeight = (message.commonHeight || Long.ZERO).toString());
-
-    if (message.byzantineValidators) {
-      obj.byzantineValidators = message.byzantineValidators.map(e => e ? Validator.toJSON(e) : undefined);
-    } else {
-      obj.byzantineValidators = [];
-    }
-
-    message.totalVotingPower !== undefined && (obj.totalVotingPower = (message.totalVotingPower || Long.ZERO).toString());
-    message.timestamp !== undefined && (obj.timestamp = message.timestamp.toISOString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<LightClientAttackEvidence>): LightClientAttackEvidence {
     const message = createBaseLightClientAttackEvidence();
     message.conflictingBlock = object.conflictingBlock !== undefined && object.conflictingBlock !== null ? LightBlock.fromPartial(object.conflictingBlock) : undefined;
@@ -335,6 +309,32 @@ export const LightClientAttackEvidence = {
     message.totalVotingPower = object.totalVotingPower !== undefined && object.totalVotingPower !== null ? Long.fromValue(object.totalVotingPower) : Long.ZERO;
     message.timestamp = object.timestamp ?? undefined;
     return message;
+  },
+
+  fromSDK(object: LightClientAttackEvidenceSDKType): LightClientAttackEvidence {
+    return {
+      conflictingBlock: isSet(object.conflicting_block) ? LightBlock.fromSDK(object.conflicting_block) : undefined,
+      commonHeight: isSet(object.common_height) ? object.common_height : undefined,
+      byzantineValidators: Array.isArray(object?.byzantine_validators) ? object.byzantine_validators.map((e: any) => Validator.fromSDK(e)) : [],
+      totalVotingPower: isSet(object.total_voting_power) ? object.total_voting_power : undefined,
+      timestamp: isSet(object.timestamp) ? Timestamp.fromSDK(object.timestamp) : undefined
+    };
+  },
+
+  toSDK(message: LightClientAttackEvidence): LightClientAttackEvidenceSDKType {
+    const obj: any = {};
+    message.conflictingBlock !== undefined && (obj.conflicting_block = message.conflictingBlock ? LightBlock.toSDK(message.conflictingBlock) : undefined);
+    message.commonHeight !== undefined && (obj.common_height = message.commonHeight);
+
+    if (message.byzantineValidators) {
+      obj.byzantine_validators = message.byzantineValidators.map(e => e ? Validator.toSDK(e) : undefined);
+    } else {
+      obj.byzantine_validators = [];
+    }
+
+    message.totalVotingPower !== undefined && (obj.total_voting_power = message.totalVotingPower);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp ? Timestamp.toSDK(message.timestamp) : undefined);
+    return obj;
   }
 
 };
@@ -376,28 +376,28 @@ export const EvidenceList = {
     return message;
   },
 
-  fromJSON(object: any): EvidenceList {
+  fromPartial(object: DeepPartial<EvidenceList>): EvidenceList {
+    const message = createBaseEvidenceList();
+    message.evidence = object.evidence?.map(e => Evidence.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: EvidenceListSDKType): EvidenceList {
     return {
-      evidence: Array.isArray(object?.evidence) ? object.evidence.map((e: any) => Evidence.fromJSON(e)) : []
+      evidence: Array.isArray(object?.evidence) ? object.evidence.map((e: any) => Evidence.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: EvidenceList): unknown {
+  toSDK(message: EvidenceList): EvidenceListSDKType {
     const obj: any = {};
 
     if (message.evidence) {
-      obj.evidence = message.evidence.map(e => e ? Evidence.toJSON(e) : undefined);
+      obj.evidence = message.evidence.map(e => e ? Evidence.toSDK(e) : undefined);
     } else {
       obj.evidence = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<EvidenceList>): EvidenceList {
-    const message = createBaseEvidenceList();
-    message.evidence = object.evidence?.map(e => Evidence.fromPartial(e)) || [];
-    return message;
   }
 
 };

@@ -24,14 +24,14 @@ export interface MsgCreateBalancerPoolResponseSDKType {
 export declare const MsgCreateBalancerPool: {
     encode(message: MsgCreateBalancerPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPool;
-    fromJSON(object: any): MsgCreateBalancerPool;
-    toJSON(message: MsgCreateBalancerPool): unknown;
     fromPartial(object: DeepPartial<MsgCreateBalancerPool>): MsgCreateBalancerPool;
+    fromSDK(object: MsgCreateBalancerPoolSDKType): MsgCreateBalancerPool;
+    toSDK(message: MsgCreateBalancerPool): MsgCreateBalancerPoolSDKType;
 };
 export declare const MsgCreateBalancerPoolResponse: {
     encode(message: MsgCreateBalancerPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPoolResponseSDKType;
-    fromJSON(object: any): MsgCreateBalancerPoolResponse;
-    toJSON(message: MsgCreateBalancerPoolResponse): unknown;
     fromPartial(object: DeepPartial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse;
+    fromSDK(object: MsgCreateBalancerPoolResponseSDKType): MsgCreateBalancerPoolResponse;
+    toSDK(message: MsgCreateBalancerPoolResponse): MsgCreateBalancerPoolResponseSDKType;
 };

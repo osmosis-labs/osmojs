@@ -60,13 +60,13 @@ export declare namespace ibc {
                     toJSON: {
                         transfer(value: _109.MsgTransfer): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                     };
                     fromJSON: {
                         transfer(value: any): {
                             typeUrl: string;
-                            value: _109.MsgTransfer;
+                            value: any;
                         };
                     };
                     fromPartial: {
@@ -108,8 +108,6 @@ export declare namespace ibc {
                 MsgTransfer: {
                     encode(message: _109.MsgTransfer, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.MsgTransfer;
-                    fromJSON(object: any): _109.MsgTransfer;
-                    toJSON(message: _109.MsgTransfer): unknown;
                     fromPartial(object: {
                         sourcePort?: string;
                         sourceChannel?: string;
@@ -125,60 +123,60 @@ export declare namespace ibc {
                         };
                         timeoutTimestamp?: any;
                     }): _109.MsgTransfer;
+                    fromSDK(object: _109.MsgTransferSDKType): _109.MsgTransfer;
+                    toSDK(message: _109.MsgTransfer): _109.MsgTransferSDKType;
                 };
                 MsgTransferResponse: {
                     encode(_: _109.MsgTransferResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.MsgTransferResponseSDKType;
-                    fromJSON(_: any): _109.MsgTransferResponse;
-                    toJSON(_: _109.MsgTransferResponse): unknown;
                     fromPartial(_: {}): _109.MsgTransferResponse;
+                    fromSDK(_: _109.MsgTransferResponseSDKType): _109.MsgTransferResponse;
+                    toSDK(_: _109.MsgTransferResponse): _109.MsgTransferResponseSDKType;
                 };
                 DenomTrace: {
                     encode(message: _108.DenomTrace, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.DenomTrace;
-                    fromJSON(object: any): _108.DenomTrace;
-                    toJSON(message: _108.DenomTrace): unknown;
                     fromPartial(object: {
                         path?: string;
                         baseDenom?: string;
                     }): _108.DenomTrace;
+                    fromSDK(object: _108.DenomTraceSDKType): _108.DenomTrace;
+                    toSDK(message: _108.DenomTrace): _108.DenomTraceSDKType;
                 };
                 Params: {
                     encode(message: _108.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.Params;
-                    fromJSON(object: any): _108.Params;
-                    toJSON(message: _108.Params): unknown;
                     fromPartial(object: {
                         sendEnabled?: boolean;
                         receiveEnabled?: boolean;
                     }): _108.Params;
+                    fromSDK(object: _108.ParamsSDKType): _108.Params;
+                    toSDK(message: _108.Params): _108.ParamsSDKType;
                 };
                 QueryDenomTraceRequest: {
                     encode(message: _107.QueryDenomTraceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryDenomTraceRequest;
-                    fromJSON(object: any): _107.QueryDenomTraceRequest;
-                    toJSON(message: _107.QueryDenomTraceRequest): unknown;
                     fromPartial(object: {
                         hash?: string;
                     }): _107.QueryDenomTraceRequest;
+                    fromSDK(object: _107.QueryDenomTraceRequestSDKType): _107.QueryDenomTraceRequest;
+                    toSDK(message: _107.QueryDenomTraceRequest): _107.QueryDenomTraceRequestSDKType;
                 };
                 QueryDenomTraceResponse: {
                     encode(message: _107.QueryDenomTraceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryDenomTraceResponseSDKType;
-                    fromJSON(object: any): _107.QueryDenomTraceResponse;
-                    toJSON(message: _107.QueryDenomTraceResponse): unknown;
                     fromPartial(object: {
                         denomTrace?: {
                             path?: string;
                             baseDenom?: string;
                         };
                     }): _107.QueryDenomTraceResponse;
+                    fromSDK(object: _107.QueryDenomTraceResponseSDKType): _107.QueryDenomTraceResponse;
+                    toSDK(message: _107.QueryDenomTraceResponse): _107.QueryDenomTraceResponseSDKType;
                 };
                 QueryDenomTracesRequest: {
                     encode(message: _107.QueryDenomTracesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryDenomTracesRequest;
-                    fromJSON(object: any): _107.QueryDenomTracesRequest;
-                    toJSON(message: _107.QueryDenomTracesRequest): unknown;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -188,12 +186,12 @@ export declare namespace ibc {
                             reverse?: boolean;
                         };
                     }): _107.QueryDenomTracesRequest;
+                    fromSDK(object: _107.QueryDenomTracesRequestSDKType): _107.QueryDenomTracesRequest;
+                    toSDK(message: _107.QueryDenomTracesRequest): _107.QueryDenomTracesRequestSDKType;
                 };
                 QueryDenomTracesResponse: {
                     encode(message: _107.QueryDenomTracesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryDenomTracesResponseSDKType;
-                    fromJSON(object: any): _107.QueryDenomTracesResponse;
-                    toJSON(message: _107.QueryDenomTracesResponse): unknown;
                     fromPartial(object: {
                         denomTraces?: {
                             path?: string;
@@ -204,31 +202,31 @@ export declare namespace ibc {
                             total?: any;
                         };
                     }): _107.QueryDenomTracesResponse;
+                    fromSDK(object: _107.QueryDenomTracesResponseSDKType): _107.QueryDenomTracesResponse;
+                    toSDK(message: _107.QueryDenomTracesResponse): _107.QueryDenomTracesResponseSDKType;
                 };
                 QueryParamsRequest: {
                     encode(_: _107.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryParamsRequest;
-                    fromJSON(_: any): _107.QueryParamsRequest;
-                    toJSON(_: _107.QueryParamsRequest): unknown;
                     fromPartial(_: {}): _107.QueryParamsRequest;
+                    fromSDK(_: _107.QueryParamsRequestSDKType): _107.QueryParamsRequest;
+                    toSDK(_: _107.QueryParamsRequest): _107.QueryParamsRequestSDKType;
                 };
                 QueryParamsResponse: {
                     encode(message: _107.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryParamsResponseSDKType;
-                    fromJSON(object: any): _107.QueryParamsResponse;
-                    toJSON(message: _107.QueryParamsResponse): unknown;
                     fromPartial(object: {
                         params?: {
                             sendEnabled?: boolean;
                             receiveEnabled?: boolean;
                         };
                     }): _107.QueryParamsResponse;
+                    fromSDK(object: _107.QueryParamsResponseSDKType): _107.QueryParamsResponse;
+                    toSDK(message: _107.QueryParamsResponse): _107.QueryParamsResponseSDKType;
                 };
                 GenesisState: {
                     encode(message: _106.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.GenesisState;
-                    fromJSON(object: any): _106.GenesisState;
-                    toJSON(message: _106.GenesisState): unknown;
                     fromPartial(object: {
                         portId?: string;
                         denomTraces?: {
@@ -240,20 +238,22 @@ export declare namespace ibc {
                             receiveEnabled?: boolean;
                         };
                     }): _106.GenesisState;
+                    fromSDK(object: _106.GenesisStateSDKType): _106.GenesisState;
+                    toSDK(message: _106.GenesisState): _106.GenesisStateSDKType;
                 };
             };
             const v2: {
                 FungibleTokenPacketData: {
                     encode(message: _110.FungibleTokenPacketData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.FungibleTokenPacketData;
-                    fromJSON(object: any): _110.FungibleTokenPacketData;
-                    toJSON(message: _110.FungibleTokenPacketData): unknown;
                     fromPartial(object: {
                         denom?: string;
                         amount?: string;
                         sender?: string;
                         receiver?: string;
                     }): _110.FungibleTokenPacketData;
+                    fromSDK(object: _110.FungibleTokenPacketDataSDKType): _110.FungibleTokenPacketData;
+                    toSDK(message: _110.FungibleTokenPacketData): _110.FungibleTokenPacketDataSDKType;
                 };
             };
         }
@@ -354,85 +354,85 @@ export declare namespace ibc {
                     toJSON: {
                         channelOpenInit(value: _114.MsgChannelOpenInit): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         channelOpenTry(value: _114.MsgChannelOpenTry): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         channelOpenAck(value: _114.MsgChannelOpenAck): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         channelOpenConfirm(value: _114.MsgChannelOpenConfirm): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         channelCloseInit(value: _114.MsgChannelCloseInit): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         channelCloseConfirm(value: _114.MsgChannelCloseConfirm): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         recvPacket(value: _114.MsgRecvPacket): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         timeout(value: _114.MsgTimeout): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         timeoutOnClose(value: _114.MsgTimeoutOnClose): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         acknowledgement(value: _114.MsgAcknowledgement): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                     };
                     fromJSON: {
                         channelOpenInit(value: any): {
                             typeUrl: string;
-                            value: _114.MsgChannelOpenInit;
+                            value: any;
                         };
                         channelOpenTry(value: any): {
                             typeUrl: string;
-                            value: _114.MsgChannelOpenTry;
+                            value: any;
                         };
                         channelOpenAck(value: any): {
                             typeUrl: string;
-                            value: _114.MsgChannelOpenAck;
+                            value: any;
                         };
                         channelOpenConfirm(value: any): {
                             typeUrl: string;
-                            value: _114.MsgChannelOpenConfirm;
+                            value: any;
                         };
                         channelCloseInit(value: any): {
                             typeUrl: string;
-                            value: _114.MsgChannelCloseInit;
+                            value: any;
                         };
                         channelCloseConfirm(value: any): {
                             typeUrl: string;
-                            value: _114.MsgChannelCloseConfirm;
+                            value: any;
                         };
                         recvPacket(value: any): {
                             typeUrl: string;
-                            value: _114.MsgRecvPacket;
+                            value: any;
                         };
                         timeout(value: any): {
                             typeUrl: string;
-                            value: _114.MsgTimeout;
+                            value: any;
                         };
                         timeoutOnClose(value: any): {
                             typeUrl: string;
-                            value: _114.MsgTimeoutOnClose;
+                            value: any;
                         };
                         acknowledgement(value: any): {
                             typeUrl: string;
-                            value: _114.MsgAcknowledgement;
+                            value: any;
                         };
                     };
                     fromPartial: {
@@ -761,8 +761,6 @@ export declare namespace ibc {
                 MsgChannelOpenInit: {
                     encode(message: _114.MsgChannelOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelOpenInit;
-                    fromJSON(object: any): _114.MsgChannelOpenInit;
-                    toJSON(message: _114.MsgChannelOpenInit): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channel?: {
@@ -777,19 +775,19 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _114.MsgChannelOpenInit;
+                    fromSDK(object: _114.MsgChannelOpenInitSDKType): _114.MsgChannelOpenInit;
+                    toSDK(message: _114.MsgChannelOpenInit): _114.MsgChannelOpenInitSDKType;
                 };
                 MsgChannelOpenInitResponse: {
                     encode(_: _114.MsgChannelOpenInitResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelOpenInitResponseSDKType;
-                    fromJSON(_: any): _114.MsgChannelOpenInitResponse;
-                    toJSON(_: _114.MsgChannelOpenInitResponse): unknown;
                     fromPartial(_: {}): _114.MsgChannelOpenInitResponse;
+                    fromSDK(_: _114.MsgChannelOpenInitResponseSDKType): _114.MsgChannelOpenInitResponse;
+                    toSDK(_: _114.MsgChannelOpenInitResponse): _114.MsgChannelOpenInitResponseSDKType;
                 };
                 MsgChannelOpenTry: {
                     encode(message: _114.MsgChannelOpenTry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelOpenTry;
-                    fromJSON(object: any): _114.MsgChannelOpenTry;
-                    toJSON(message: _114.MsgChannelOpenTry): unknown;
                     fromPartial(object: {
                         portId?: string;
                         previousChannelId?: string;
@@ -811,19 +809,19 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _114.MsgChannelOpenTry;
+                    fromSDK(object: _114.MsgChannelOpenTrySDKType): _114.MsgChannelOpenTry;
+                    toSDK(message: _114.MsgChannelOpenTry): _114.MsgChannelOpenTrySDKType;
                 };
                 MsgChannelOpenTryResponse: {
                     encode(_: _114.MsgChannelOpenTryResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelOpenTryResponseSDKType;
-                    fromJSON(_: any): _114.MsgChannelOpenTryResponse;
-                    toJSON(_: _114.MsgChannelOpenTryResponse): unknown;
                     fromPartial(_: {}): _114.MsgChannelOpenTryResponse;
+                    fromSDK(_: _114.MsgChannelOpenTryResponseSDKType): _114.MsgChannelOpenTryResponse;
+                    toSDK(_: _114.MsgChannelOpenTryResponse): _114.MsgChannelOpenTryResponseSDKType;
                 };
                 MsgChannelOpenAck: {
                     encode(message: _114.MsgChannelOpenAck, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelOpenAck;
-                    fromJSON(object: any): _114.MsgChannelOpenAck;
-                    toJSON(message: _114.MsgChannelOpenAck): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -836,19 +834,19 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _114.MsgChannelOpenAck;
+                    fromSDK(object: _114.MsgChannelOpenAckSDKType): _114.MsgChannelOpenAck;
+                    toSDK(message: _114.MsgChannelOpenAck): _114.MsgChannelOpenAckSDKType;
                 };
                 MsgChannelOpenAckResponse: {
                     encode(_: _114.MsgChannelOpenAckResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelOpenAckResponseSDKType;
-                    fromJSON(_: any): _114.MsgChannelOpenAckResponse;
-                    toJSON(_: _114.MsgChannelOpenAckResponse): unknown;
                     fromPartial(_: {}): _114.MsgChannelOpenAckResponse;
+                    fromSDK(_: _114.MsgChannelOpenAckResponseSDKType): _114.MsgChannelOpenAckResponse;
+                    toSDK(_: _114.MsgChannelOpenAckResponse): _114.MsgChannelOpenAckResponseSDKType;
                 };
                 MsgChannelOpenConfirm: {
                     encode(message: _114.MsgChannelOpenConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelOpenConfirm;
-                    fromJSON(object: any): _114.MsgChannelOpenConfirm;
-                    toJSON(message: _114.MsgChannelOpenConfirm): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -859,37 +857,37 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _114.MsgChannelOpenConfirm;
+                    fromSDK(object: _114.MsgChannelOpenConfirmSDKType): _114.MsgChannelOpenConfirm;
+                    toSDK(message: _114.MsgChannelOpenConfirm): _114.MsgChannelOpenConfirmSDKType;
                 };
                 MsgChannelOpenConfirmResponse: {
                     encode(_: _114.MsgChannelOpenConfirmResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelOpenConfirmResponseSDKType;
-                    fromJSON(_: any): _114.MsgChannelOpenConfirmResponse;
-                    toJSON(_: _114.MsgChannelOpenConfirmResponse): unknown;
                     fromPartial(_: {}): _114.MsgChannelOpenConfirmResponse;
+                    fromSDK(_: _114.MsgChannelOpenConfirmResponseSDKType): _114.MsgChannelOpenConfirmResponse;
+                    toSDK(_: _114.MsgChannelOpenConfirmResponse): _114.MsgChannelOpenConfirmResponseSDKType;
                 };
                 MsgChannelCloseInit: {
                     encode(message: _114.MsgChannelCloseInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelCloseInit;
-                    fromJSON(object: any): _114.MsgChannelCloseInit;
-                    toJSON(message: _114.MsgChannelCloseInit): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         signer?: string;
                     }): _114.MsgChannelCloseInit;
+                    fromSDK(object: _114.MsgChannelCloseInitSDKType): _114.MsgChannelCloseInit;
+                    toSDK(message: _114.MsgChannelCloseInit): _114.MsgChannelCloseInitSDKType;
                 };
                 MsgChannelCloseInitResponse: {
                     encode(_: _114.MsgChannelCloseInitResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelCloseInitResponseSDKType;
-                    fromJSON(_: any): _114.MsgChannelCloseInitResponse;
-                    toJSON(_: _114.MsgChannelCloseInitResponse): unknown;
                     fromPartial(_: {}): _114.MsgChannelCloseInitResponse;
+                    fromSDK(_: _114.MsgChannelCloseInitResponseSDKType): _114.MsgChannelCloseInitResponse;
+                    toSDK(_: _114.MsgChannelCloseInitResponse): _114.MsgChannelCloseInitResponseSDKType;
                 };
                 MsgChannelCloseConfirm: {
                     encode(message: _114.MsgChannelCloseConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelCloseConfirm;
-                    fromJSON(object: any): _114.MsgChannelCloseConfirm;
-                    toJSON(message: _114.MsgChannelCloseConfirm): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -900,19 +898,19 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _114.MsgChannelCloseConfirm;
+                    fromSDK(object: _114.MsgChannelCloseConfirmSDKType): _114.MsgChannelCloseConfirm;
+                    toSDK(message: _114.MsgChannelCloseConfirm): _114.MsgChannelCloseConfirmSDKType;
                 };
                 MsgChannelCloseConfirmResponse: {
                     encode(_: _114.MsgChannelCloseConfirmResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgChannelCloseConfirmResponseSDKType;
-                    fromJSON(_: any): _114.MsgChannelCloseConfirmResponse;
-                    toJSON(_: _114.MsgChannelCloseConfirmResponse): unknown;
                     fromPartial(_: {}): _114.MsgChannelCloseConfirmResponse;
+                    fromSDK(_: _114.MsgChannelCloseConfirmResponseSDKType): _114.MsgChannelCloseConfirmResponse;
+                    toSDK(_: _114.MsgChannelCloseConfirmResponse): _114.MsgChannelCloseConfirmResponseSDKType;
                 };
                 MsgRecvPacket: {
                     encode(message: _114.MsgRecvPacket, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgRecvPacket;
-                    fromJSON(object: any): _114.MsgRecvPacket;
-                    toJSON(message: _114.MsgRecvPacket): unknown;
                     fromPartial(object: {
                         packet?: {
                             sequence?: any;
@@ -934,19 +932,19 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _114.MsgRecvPacket;
+                    fromSDK(object: _114.MsgRecvPacketSDKType): _114.MsgRecvPacket;
+                    toSDK(message: _114.MsgRecvPacket): _114.MsgRecvPacketSDKType;
                 };
                 MsgRecvPacketResponse: {
                     encode(_: _114.MsgRecvPacketResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgRecvPacketResponseSDKType;
-                    fromJSON(_: any): _114.MsgRecvPacketResponse;
-                    toJSON(_: _114.MsgRecvPacketResponse): unknown;
                     fromPartial(_: {}): _114.MsgRecvPacketResponse;
+                    fromSDK(_: _114.MsgRecvPacketResponseSDKType): _114.MsgRecvPacketResponse;
+                    toSDK(_: _114.MsgRecvPacketResponse): _114.MsgRecvPacketResponseSDKType;
                 };
                 MsgTimeout: {
                     encode(message: _114.MsgTimeout, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgTimeout;
-                    fromJSON(object: any): _114.MsgTimeout;
-                    toJSON(message: _114.MsgTimeout): unknown;
                     fromPartial(object: {
                         packet?: {
                             sequence?: any;
@@ -969,19 +967,19 @@ export declare namespace ibc {
                         nextSequenceRecv?: any;
                         signer?: string;
                     }): _114.MsgTimeout;
+                    fromSDK(object: _114.MsgTimeoutSDKType): _114.MsgTimeout;
+                    toSDK(message: _114.MsgTimeout): _114.MsgTimeoutSDKType;
                 };
                 MsgTimeoutResponse: {
                     encode(_: _114.MsgTimeoutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgTimeoutResponseSDKType;
-                    fromJSON(_: any): _114.MsgTimeoutResponse;
-                    toJSON(_: _114.MsgTimeoutResponse): unknown;
                     fromPartial(_: {}): _114.MsgTimeoutResponse;
+                    fromSDK(_: _114.MsgTimeoutResponseSDKType): _114.MsgTimeoutResponse;
+                    toSDK(_: _114.MsgTimeoutResponse): _114.MsgTimeoutResponseSDKType;
                 };
                 MsgTimeoutOnClose: {
                     encode(message: _114.MsgTimeoutOnClose, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgTimeoutOnClose;
-                    fromJSON(object: any): _114.MsgTimeoutOnClose;
-                    toJSON(message: _114.MsgTimeoutOnClose): unknown;
                     fromPartial(object: {
                         packet?: {
                             sequence?: any;
@@ -1005,19 +1003,19 @@ export declare namespace ibc {
                         nextSequenceRecv?: any;
                         signer?: string;
                     }): _114.MsgTimeoutOnClose;
+                    fromSDK(object: _114.MsgTimeoutOnCloseSDKType): _114.MsgTimeoutOnClose;
+                    toSDK(message: _114.MsgTimeoutOnClose): _114.MsgTimeoutOnCloseSDKType;
                 };
                 MsgTimeoutOnCloseResponse: {
                     encode(_: _114.MsgTimeoutOnCloseResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgTimeoutOnCloseResponseSDKType;
-                    fromJSON(_: any): _114.MsgTimeoutOnCloseResponse;
-                    toJSON(_: _114.MsgTimeoutOnCloseResponse): unknown;
                     fromPartial(_: {}): _114.MsgTimeoutOnCloseResponse;
+                    fromSDK(_: _114.MsgTimeoutOnCloseResponseSDKType): _114.MsgTimeoutOnCloseResponse;
+                    toSDK(_: _114.MsgTimeoutOnCloseResponse): _114.MsgTimeoutOnCloseResponseSDKType;
                 };
                 MsgAcknowledgement: {
                     encode(message: _114.MsgAcknowledgement, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgAcknowledgement;
-                    fromJSON(object: any): _114.MsgAcknowledgement;
-                    toJSON(message: _114.MsgAcknowledgement): unknown;
                     fromPartial(object: {
                         packet?: {
                             sequence?: any;
@@ -1040,29 +1038,29 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _114.MsgAcknowledgement;
+                    fromSDK(object: _114.MsgAcknowledgementSDKType): _114.MsgAcknowledgement;
+                    toSDK(message: _114.MsgAcknowledgement): _114.MsgAcknowledgementSDKType;
                 };
                 MsgAcknowledgementResponse: {
                     encode(_: _114.MsgAcknowledgementResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgAcknowledgementResponseSDKType;
-                    fromJSON(_: any): _114.MsgAcknowledgementResponse;
-                    toJSON(_: _114.MsgAcknowledgementResponse): unknown;
                     fromPartial(_: {}): _114.MsgAcknowledgementResponse;
+                    fromSDK(_: _114.MsgAcknowledgementResponseSDKType): _114.MsgAcknowledgementResponse;
+                    toSDK(_: _114.MsgAcknowledgementResponse): _114.MsgAcknowledgementResponseSDKType;
                 };
                 QueryChannelRequest: {
                     encode(message: _113.QueryChannelRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryChannelRequest;
-                    fromJSON(object: any): _113.QueryChannelRequest;
-                    toJSON(message: _113.QueryChannelRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                     }): _113.QueryChannelRequest;
+                    fromSDK(object: _113.QueryChannelRequestSDKType): _113.QueryChannelRequest;
+                    toSDK(message: _113.QueryChannelRequest): _113.QueryChannelRequestSDKType;
                 };
                 QueryChannelResponse: {
                     encode(message: _113.QueryChannelResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryChannelResponseSDKType;
-                    fromJSON(object: any): _113.QueryChannelResponse;
-                    toJSON(message: _113.QueryChannelResponse): unknown;
                     fromPartial(object: {
                         channel?: {
                             state?: _111.State;
@@ -1080,12 +1078,12 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryChannelResponse;
+                    fromSDK(object: _113.QueryChannelResponseSDKType): _113.QueryChannelResponse;
+                    toSDK(message: _113.QueryChannelResponse): _113.QueryChannelResponseSDKType;
                 };
                 QueryChannelsRequest: {
                     encode(message: _113.QueryChannelsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryChannelsRequest;
-                    fromJSON(object: any): _113.QueryChannelsRequest;
-                    toJSON(message: _113.QueryChannelsRequest): unknown;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -1095,12 +1093,12 @@ export declare namespace ibc {
                             reverse?: boolean;
                         };
                     }): _113.QueryChannelsRequest;
+                    fromSDK(object: _113.QueryChannelsRequestSDKType): _113.QueryChannelsRequest;
+                    toSDK(message: _113.QueryChannelsRequest): _113.QueryChannelsRequestSDKType;
                 };
                 QueryChannelsResponse: {
                     encode(message: _113.QueryChannelsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryChannelsResponseSDKType;
-                    fromJSON(object: any): _113.QueryChannelsResponse;
-                    toJSON(message: _113.QueryChannelsResponse): unknown;
                     fromPartial(object: {
                         channels?: {
                             state?: _111.State;
@@ -1123,12 +1121,12 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryChannelsResponse;
+                    fromSDK(object: _113.QueryChannelsResponseSDKType): _113.QueryChannelsResponse;
+                    toSDK(message: _113.QueryChannelsResponse): _113.QueryChannelsResponseSDKType;
                 };
                 QueryConnectionChannelsRequest: {
                     encode(message: _113.QueryConnectionChannelsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryConnectionChannelsRequest;
-                    fromJSON(object: any): _113.QueryConnectionChannelsRequest;
-                    toJSON(message: _113.QueryConnectionChannelsRequest): unknown;
                     fromPartial(object: {
                         connection?: string;
                         pagination?: {
@@ -1139,12 +1137,12 @@ export declare namespace ibc {
                             reverse?: boolean;
                         };
                     }): _113.QueryConnectionChannelsRequest;
+                    fromSDK(object: _113.QueryConnectionChannelsRequestSDKType): _113.QueryConnectionChannelsRequest;
+                    toSDK(message: _113.QueryConnectionChannelsRequest): _113.QueryConnectionChannelsRequestSDKType;
                 };
                 QueryConnectionChannelsResponse: {
                     encode(message: _113.QueryConnectionChannelsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryConnectionChannelsResponseSDKType;
-                    fromJSON(object: any): _113.QueryConnectionChannelsResponse;
-                    toJSON(message: _113.QueryConnectionChannelsResponse): unknown;
                     fromPartial(object: {
                         channels?: {
                             state?: _111.State;
@@ -1167,22 +1165,22 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryConnectionChannelsResponse;
+                    fromSDK(object: _113.QueryConnectionChannelsResponseSDKType): _113.QueryConnectionChannelsResponse;
+                    toSDK(message: _113.QueryConnectionChannelsResponse): _113.QueryConnectionChannelsResponseSDKType;
                 };
                 QueryChannelClientStateRequest: {
                     encode(message: _113.QueryChannelClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryChannelClientStateRequest;
-                    fromJSON(object: any): _113.QueryChannelClientStateRequest;
-                    toJSON(message: _113.QueryChannelClientStateRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                     }): _113.QueryChannelClientStateRequest;
+                    fromSDK(object: _113.QueryChannelClientStateRequestSDKType): _113.QueryChannelClientStateRequest;
+                    toSDK(message: _113.QueryChannelClientStateRequest): _113.QueryChannelClientStateRequestSDKType;
                 };
                 QueryChannelClientStateResponse: {
                     encode(message: _113.QueryChannelClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryChannelClientStateResponseSDKType;
-                    fromJSON(object: any): _113.QueryChannelClientStateResponse;
-                    toJSON(message: _113.QueryChannelClientStateResponse): unknown;
                     fromPartial(object: {
                         identifiedClientState?: {
                             clientId?: string;
@@ -1197,24 +1195,24 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryChannelClientStateResponse;
+                    fromSDK(object: _113.QueryChannelClientStateResponseSDKType): _113.QueryChannelClientStateResponse;
+                    toSDK(message: _113.QueryChannelClientStateResponse): _113.QueryChannelClientStateResponseSDKType;
                 };
                 QueryChannelConsensusStateRequest: {
                     encode(message: _113.QueryChannelConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryChannelConsensusStateRequest;
-                    fromJSON(object: any): _113.QueryChannelConsensusStateRequest;
-                    toJSON(message: _113.QueryChannelConsensusStateRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         revisionNumber?: any;
                         revisionHeight?: any;
                     }): _113.QueryChannelConsensusStateRequest;
+                    fromSDK(object: _113.QueryChannelConsensusStateRequestSDKType): _113.QueryChannelConsensusStateRequest;
+                    toSDK(message: _113.QueryChannelConsensusStateRequest): _113.QueryChannelConsensusStateRequestSDKType;
                 };
                 QueryChannelConsensusStateResponse: {
                     encode(message: _113.QueryChannelConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryChannelConsensusStateResponseSDKType;
-                    fromJSON(object: any): _113.QueryChannelConsensusStateResponse;
-                    toJSON(message: _113.QueryChannelConsensusStateResponse): unknown;
                     fromPartial(object: {
                         consensusState?: {
                             typeUrl?: string;
@@ -1227,23 +1225,23 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryChannelConsensusStateResponse;
+                    fromSDK(object: _113.QueryChannelConsensusStateResponseSDKType): _113.QueryChannelConsensusStateResponse;
+                    toSDK(message: _113.QueryChannelConsensusStateResponse): _113.QueryChannelConsensusStateResponseSDKType;
                 };
                 QueryPacketCommitmentRequest: {
                     encode(message: _113.QueryPacketCommitmentRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketCommitmentRequest;
-                    fromJSON(object: any): _113.QueryPacketCommitmentRequest;
-                    toJSON(message: _113.QueryPacketCommitmentRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: any;
                     }): _113.QueryPacketCommitmentRequest;
+                    fromSDK(object: _113.QueryPacketCommitmentRequestSDKType): _113.QueryPacketCommitmentRequest;
+                    toSDK(message: _113.QueryPacketCommitmentRequest): _113.QueryPacketCommitmentRequestSDKType;
                 };
                 QueryPacketCommitmentResponse: {
                     encode(message: _113.QueryPacketCommitmentResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketCommitmentResponseSDKType;
-                    fromJSON(object: any): _113.QueryPacketCommitmentResponse;
-                    toJSON(message: _113.QueryPacketCommitmentResponse): unknown;
                     fromPartial(object: {
                         commitment?: Uint8Array;
                         proof?: Uint8Array;
@@ -1252,12 +1250,12 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryPacketCommitmentResponse;
+                    fromSDK(object: _113.QueryPacketCommitmentResponseSDKType): _113.QueryPacketCommitmentResponse;
+                    toSDK(message: _113.QueryPacketCommitmentResponse): _113.QueryPacketCommitmentResponseSDKType;
                 };
                 QueryPacketCommitmentsRequest: {
                     encode(message: _113.QueryPacketCommitmentsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketCommitmentsRequest;
-                    fromJSON(object: any): _113.QueryPacketCommitmentsRequest;
-                    toJSON(message: _113.QueryPacketCommitmentsRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -1269,12 +1267,12 @@ export declare namespace ibc {
                             reverse?: boolean;
                         };
                     }): _113.QueryPacketCommitmentsRequest;
+                    fromSDK(object: _113.QueryPacketCommitmentsRequestSDKType): _113.QueryPacketCommitmentsRequest;
+                    toSDK(message: _113.QueryPacketCommitmentsRequest): _113.QueryPacketCommitmentsRequestSDKType;
                 };
                 QueryPacketCommitmentsResponse: {
                     encode(message: _113.QueryPacketCommitmentsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketCommitmentsResponseSDKType;
-                    fromJSON(object: any): _113.QueryPacketCommitmentsResponse;
-                    toJSON(message: _113.QueryPacketCommitmentsResponse): unknown;
                     fromPartial(object: {
                         commitments?: {
                             portId?: string;
@@ -1291,23 +1289,23 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryPacketCommitmentsResponse;
+                    fromSDK(object: _113.QueryPacketCommitmentsResponseSDKType): _113.QueryPacketCommitmentsResponse;
+                    toSDK(message: _113.QueryPacketCommitmentsResponse): _113.QueryPacketCommitmentsResponseSDKType;
                 };
                 QueryPacketReceiptRequest: {
                     encode(message: _113.QueryPacketReceiptRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketReceiptRequest;
-                    fromJSON(object: any): _113.QueryPacketReceiptRequest;
-                    toJSON(message: _113.QueryPacketReceiptRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: any;
                     }): _113.QueryPacketReceiptRequest;
+                    fromSDK(object: _113.QueryPacketReceiptRequestSDKType): _113.QueryPacketReceiptRequest;
+                    toSDK(message: _113.QueryPacketReceiptRequest): _113.QueryPacketReceiptRequestSDKType;
                 };
                 QueryPacketReceiptResponse: {
                     encode(message: _113.QueryPacketReceiptResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketReceiptResponseSDKType;
-                    fromJSON(object: any): _113.QueryPacketReceiptResponse;
-                    toJSON(message: _113.QueryPacketReceiptResponse): unknown;
                     fromPartial(object: {
                         received?: boolean;
                         proof?: Uint8Array;
@@ -1316,23 +1314,23 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryPacketReceiptResponse;
+                    fromSDK(object: _113.QueryPacketReceiptResponseSDKType): _113.QueryPacketReceiptResponse;
+                    toSDK(message: _113.QueryPacketReceiptResponse): _113.QueryPacketReceiptResponseSDKType;
                 };
                 QueryPacketAcknowledgementRequest: {
                     encode(message: _113.QueryPacketAcknowledgementRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketAcknowledgementRequest;
-                    fromJSON(object: any): _113.QueryPacketAcknowledgementRequest;
-                    toJSON(message: _113.QueryPacketAcknowledgementRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: any;
                     }): _113.QueryPacketAcknowledgementRequest;
+                    fromSDK(object: _113.QueryPacketAcknowledgementRequestSDKType): _113.QueryPacketAcknowledgementRequest;
+                    toSDK(message: _113.QueryPacketAcknowledgementRequest): _113.QueryPacketAcknowledgementRequestSDKType;
                 };
                 QueryPacketAcknowledgementResponse: {
                     encode(message: _113.QueryPacketAcknowledgementResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketAcknowledgementResponseSDKType;
-                    fromJSON(object: any): _113.QueryPacketAcknowledgementResponse;
-                    toJSON(message: _113.QueryPacketAcknowledgementResponse): unknown;
                     fromPartial(object: {
                         acknowledgement?: Uint8Array;
                         proof?: Uint8Array;
@@ -1341,12 +1339,12 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryPacketAcknowledgementResponse;
+                    fromSDK(object: _113.QueryPacketAcknowledgementResponseSDKType): _113.QueryPacketAcknowledgementResponse;
+                    toSDK(message: _113.QueryPacketAcknowledgementResponse): _113.QueryPacketAcknowledgementResponseSDKType;
                 };
                 QueryPacketAcknowledgementsRequest: {
                     encode(message: _113.QueryPacketAcknowledgementsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketAcknowledgementsRequest;
-                    fromJSON(object: any): _113.QueryPacketAcknowledgementsRequest;
-                    toJSON(message: _113.QueryPacketAcknowledgementsRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -1359,12 +1357,12 @@ export declare namespace ibc {
                         };
                         packetCommitmentSequences?: any[];
                     }): _113.QueryPacketAcknowledgementsRequest;
+                    fromSDK(object: _113.QueryPacketAcknowledgementsRequestSDKType): _113.QueryPacketAcknowledgementsRequest;
+                    toSDK(message: _113.QueryPacketAcknowledgementsRequest): _113.QueryPacketAcknowledgementsRequestSDKType;
                 };
                 QueryPacketAcknowledgementsResponse: {
                     encode(message: _113.QueryPacketAcknowledgementsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryPacketAcknowledgementsResponseSDKType;
-                    fromJSON(object: any): _113.QueryPacketAcknowledgementsResponse;
-                    toJSON(message: _113.QueryPacketAcknowledgementsResponse): unknown;
                     fromPartial(object: {
                         acknowledgements?: {
                             portId?: string;
@@ -1381,23 +1379,23 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryPacketAcknowledgementsResponse;
+                    fromSDK(object: _113.QueryPacketAcknowledgementsResponseSDKType): _113.QueryPacketAcknowledgementsResponse;
+                    toSDK(message: _113.QueryPacketAcknowledgementsResponse): _113.QueryPacketAcknowledgementsResponseSDKType;
                 };
                 QueryUnreceivedPacketsRequest: {
                     encode(message: _113.QueryUnreceivedPacketsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryUnreceivedPacketsRequest;
-                    fromJSON(object: any): _113.QueryUnreceivedPacketsRequest;
-                    toJSON(message: _113.QueryUnreceivedPacketsRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         packetCommitmentSequences?: any[];
                     }): _113.QueryUnreceivedPacketsRequest;
+                    fromSDK(object: _113.QueryUnreceivedPacketsRequestSDKType): _113.QueryUnreceivedPacketsRequest;
+                    toSDK(message: _113.QueryUnreceivedPacketsRequest): _113.QueryUnreceivedPacketsRequestSDKType;
                 };
                 QueryUnreceivedPacketsResponse: {
                     encode(message: _113.QueryUnreceivedPacketsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryUnreceivedPacketsResponseSDKType;
-                    fromJSON(object: any): _113.QueryUnreceivedPacketsResponse;
-                    toJSON(message: _113.QueryUnreceivedPacketsResponse): unknown;
                     fromPartial(object: {
                         sequences?: any[];
                         height?: {
@@ -1405,23 +1403,23 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryUnreceivedPacketsResponse;
+                    fromSDK(object: _113.QueryUnreceivedPacketsResponseSDKType): _113.QueryUnreceivedPacketsResponse;
+                    toSDK(message: _113.QueryUnreceivedPacketsResponse): _113.QueryUnreceivedPacketsResponseSDKType;
                 };
                 QueryUnreceivedAcksRequest: {
                     encode(message: _113.QueryUnreceivedAcksRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryUnreceivedAcksRequest;
-                    fromJSON(object: any): _113.QueryUnreceivedAcksRequest;
-                    toJSON(message: _113.QueryUnreceivedAcksRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         packetAckSequences?: any[];
                     }): _113.QueryUnreceivedAcksRequest;
+                    fromSDK(object: _113.QueryUnreceivedAcksRequestSDKType): _113.QueryUnreceivedAcksRequest;
+                    toSDK(message: _113.QueryUnreceivedAcksRequest): _113.QueryUnreceivedAcksRequestSDKType;
                 };
                 QueryUnreceivedAcksResponse: {
                     encode(message: _113.QueryUnreceivedAcksResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryUnreceivedAcksResponseSDKType;
-                    fromJSON(object: any): _113.QueryUnreceivedAcksResponse;
-                    toJSON(message: _113.QueryUnreceivedAcksResponse): unknown;
                     fromPartial(object: {
                         sequences?: any[];
                         height?: {
@@ -1429,22 +1427,22 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryUnreceivedAcksResponse;
+                    fromSDK(object: _113.QueryUnreceivedAcksResponseSDKType): _113.QueryUnreceivedAcksResponse;
+                    toSDK(message: _113.QueryUnreceivedAcksResponse): _113.QueryUnreceivedAcksResponseSDKType;
                 };
                 QueryNextSequenceReceiveRequest: {
                     encode(message: _113.QueryNextSequenceReceiveRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryNextSequenceReceiveRequest;
-                    fromJSON(object: any): _113.QueryNextSequenceReceiveRequest;
-                    toJSON(message: _113.QueryNextSequenceReceiveRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                     }): _113.QueryNextSequenceReceiveRequest;
+                    fromSDK(object: _113.QueryNextSequenceReceiveRequestSDKType): _113.QueryNextSequenceReceiveRequest;
+                    toSDK(message: _113.QueryNextSequenceReceiveRequest): _113.QueryNextSequenceReceiveRequestSDKType;
                 };
                 QueryNextSequenceReceiveResponse: {
                     encode(message: _113.QueryNextSequenceReceiveResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryNextSequenceReceiveResponseSDKType;
-                    fromJSON(object: any): _113.QueryNextSequenceReceiveResponse;
-                    toJSON(message: _113.QueryNextSequenceReceiveResponse): unknown;
                     fromPartial(object: {
                         nextSequenceReceive?: any;
                         proof?: Uint8Array;
@@ -1453,12 +1451,12 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _113.QueryNextSequenceReceiveResponse;
+                    fromSDK(object: _113.QueryNextSequenceReceiveResponseSDKType): _113.QueryNextSequenceReceiveResponse;
+                    toSDK(message: _113.QueryNextSequenceReceiveResponse): _113.QueryNextSequenceReceiveResponseSDKType;
                 };
                 GenesisState: {
                     encode(message: _112.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _112.GenesisState;
-                    fromJSON(object: any): _112.GenesisState;
-                    toJSON(message: _112.GenesisState): unknown;
                     fromPartial(object: {
                         channels?: {
                             state?: _111.State;
@@ -1507,17 +1505,19 @@ export declare namespace ibc {
                         }[];
                         nextChannelSequence?: any;
                     }): _112.GenesisState;
+                    fromSDK(object: _112.GenesisStateSDKType): _112.GenesisState;
+                    toSDK(message: _112.GenesisState): _112.GenesisStateSDKType;
                 };
                 PacketSequence: {
                     encode(message: _112.PacketSequence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _112.PacketSequence;
-                    fromJSON(object: any): _112.PacketSequence;
-                    toJSON(message: _112.PacketSequence): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: any;
                     }): _112.PacketSequence;
+                    fromSDK(object: _112.PacketSequenceSDKType): _112.PacketSequence;
+                    toSDK(message: _112.PacketSequence): _112.PacketSequenceSDKType;
                 };
                 stateFromJSON(object: any): _111.State;
                 stateToJSON(object: _111.State): string;
@@ -1530,8 +1530,6 @@ export declare namespace ibc {
                 Channel: {
                     encode(message: _111.Channel, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.Channel;
-                    fromJSON(object: any): _111.Channel;
-                    toJSON(message: _111.Channel): unknown;
                     fromPartial(object: {
                         state?: _111.State;
                         ordering?: _111.Order;
@@ -1542,12 +1540,12 @@ export declare namespace ibc {
                         connectionHops?: string[];
                         version?: string;
                     }): _111.Channel;
+                    fromSDK(object: _111.ChannelSDKType): _111.Channel;
+                    toSDK(message: _111.Channel): _111.ChannelSDKType;
                 };
                 IdentifiedChannel: {
                     encode(message: _111.IdentifiedChannel, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.IdentifiedChannel;
-                    fromJSON(object: any): _111.IdentifiedChannel;
-                    toJSON(message: _111.IdentifiedChannel): unknown;
                     fromPartial(object: {
                         state?: _111.State;
                         ordering?: _111.Order;
@@ -1560,22 +1558,22 @@ export declare namespace ibc {
                         portId?: string;
                         channelId?: string;
                     }): _111.IdentifiedChannel;
+                    fromSDK(object: _111.IdentifiedChannelSDKType): _111.IdentifiedChannel;
+                    toSDK(message: _111.IdentifiedChannel): _111.IdentifiedChannelSDKType;
                 };
                 Counterparty: {
                     encode(message: _111.Counterparty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.Counterparty;
-                    fromJSON(object: any): _111.Counterparty;
-                    toJSON(message: _111.Counterparty): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                     }): _111.Counterparty;
+                    fromSDK(object: _111.CounterpartySDKType): _111.Counterparty;
+                    toSDK(message: _111.Counterparty): _111.CounterpartySDKType;
                 };
                 Packet: {
                     encode(message: _111.Packet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.Packet;
-                    fromJSON(object: any): _111.Packet;
-                    toJSON(message: _111.Packet): unknown;
                     fromPartial(object: {
                         sequence?: any;
                         sourcePort?: string;
@@ -1589,28 +1587,30 @@ export declare namespace ibc {
                         };
                         timeoutTimestamp?: any;
                     }): _111.Packet;
+                    fromSDK(object: _111.PacketSDKType): _111.Packet;
+                    toSDK(message: _111.Packet): _111.PacketSDKType;
                 };
                 PacketState: {
                     encode(message: _111.PacketState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.PacketState;
-                    fromJSON(object: any): _111.PacketState;
-                    toJSON(message: _111.PacketState): unknown;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         sequence?: any;
                         data?: Uint8Array;
                     }): _111.PacketState;
+                    fromSDK(object: _111.PacketStateSDKType): _111.PacketState;
+                    toSDK(message: _111.PacketState): _111.PacketStateSDKType;
                 };
                 Acknowledgement: {
                     encode(message: _111.Acknowledgement, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.Acknowledgement;
-                    fromJSON(object: any): _111.Acknowledgement;
-                    toJSON(message: _111.Acknowledgement): unknown;
                     fromPartial(object: {
                         result?: Uint8Array;
                         error?: string;
                     }): _111.Acknowledgement;
+                    fromSDK(object: _111.AcknowledgementSDKType): _111.Acknowledgement;
+                    toSDK(message: _111.Acknowledgement): _111.AcknowledgementSDKType;
                 };
             };
         }
@@ -1661,37 +1661,37 @@ export declare namespace ibc {
                     toJSON: {
                         createClient(value: _118.MsgCreateClient): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         updateClient(value: _118.MsgUpdateClient): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         upgradeClient(value: _118.MsgUpgradeClient): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         submitMisbehaviour(value: _118.MsgSubmitMisbehaviour): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                     };
                     fromJSON: {
                         createClient(value: any): {
                             typeUrl: string;
-                            value: _118.MsgCreateClient;
+                            value: any;
                         };
                         updateClient(value: any): {
                             typeUrl: string;
-                            value: _118.MsgUpdateClient;
+                            value: any;
                         };
                         upgradeClient(value: any): {
                             typeUrl: string;
-                            value: _118.MsgUpgradeClient;
+                            value: any;
                         };
                         submitMisbehaviour(value: any): {
                             typeUrl: string;
-                            value: _118.MsgSubmitMisbehaviour;
+                            value: any;
                         };
                     };
                     fromPartial: {
@@ -1812,8 +1812,6 @@ export declare namespace ibc {
                 MsgCreateClient: {
                     encode(message: _118.MsgCreateClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgCreateClient;
-                    fromJSON(object: any): _118.MsgCreateClient;
-                    toJSON(message: _118.MsgCreateClient): unknown;
                     fromPartial(object: {
                         clientState?: {
                             typeUrl?: string;
@@ -1825,19 +1823,19 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _118.MsgCreateClient;
+                    fromSDK(object: _118.MsgCreateClientSDKType): _118.MsgCreateClient;
+                    toSDK(message: _118.MsgCreateClient): _118.MsgCreateClientSDKType;
                 };
                 MsgCreateClientResponse: {
                     encode(_: _118.MsgCreateClientResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgCreateClientResponseSDKType;
-                    fromJSON(_: any): _118.MsgCreateClientResponse;
-                    toJSON(_: _118.MsgCreateClientResponse): unknown;
                     fromPartial(_: {}): _118.MsgCreateClientResponse;
+                    fromSDK(_: _118.MsgCreateClientResponseSDKType): _118.MsgCreateClientResponse;
+                    toSDK(_: _118.MsgCreateClientResponse): _118.MsgCreateClientResponseSDKType;
                 };
                 MsgUpdateClient: {
                     encode(message: _118.MsgUpdateClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgUpdateClient;
-                    fromJSON(object: any): _118.MsgUpdateClient;
-                    toJSON(message: _118.MsgUpdateClient): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         header?: {
@@ -1846,19 +1844,19 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _118.MsgUpdateClient;
+                    fromSDK(object: _118.MsgUpdateClientSDKType): _118.MsgUpdateClient;
+                    toSDK(message: _118.MsgUpdateClient): _118.MsgUpdateClientSDKType;
                 };
                 MsgUpdateClientResponse: {
                     encode(_: _118.MsgUpdateClientResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgUpdateClientResponseSDKType;
-                    fromJSON(_: any): _118.MsgUpdateClientResponse;
-                    toJSON(_: _118.MsgUpdateClientResponse): unknown;
                     fromPartial(_: {}): _118.MsgUpdateClientResponse;
+                    fromSDK(_: _118.MsgUpdateClientResponseSDKType): _118.MsgUpdateClientResponse;
+                    toSDK(_: _118.MsgUpdateClientResponse): _118.MsgUpdateClientResponseSDKType;
                 };
                 MsgUpgradeClient: {
                     encode(message: _118.MsgUpgradeClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgUpgradeClient;
-                    fromJSON(object: any): _118.MsgUpgradeClient;
-                    toJSON(message: _118.MsgUpgradeClient): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         clientState?: {
@@ -1873,19 +1871,19 @@ export declare namespace ibc {
                         proofUpgradeConsensusState?: Uint8Array;
                         signer?: string;
                     }): _118.MsgUpgradeClient;
+                    fromSDK(object: _118.MsgUpgradeClientSDKType): _118.MsgUpgradeClient;
+                    toSDK(message: _118.MsgUpgradeClient): _118.MsgUpgradeClientSDKType;
                 };
                 MsgUpgradeClientResponse: {
                     encode(_: _118.MsgUpgradeClientResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgUpgradeClientResponseSDKType;
-                    fromJSON(_: any): _118.MsgUpgradeClientResponse;
-                    toJSON(_: _118.MsgUpgradeClientResponse): unknown;
                     fromPartial(_: {}): _118.MsgUpgradeClientResponse;
+                    fromSDK(_: _118.MsgUpgradeClientResponseSDKType): _118.MsgUpgradeClientResponse;
+                    toSDK(_: _118.MsgUpgradeClientResponse): _118.MsgUpgradeClientResponseSDKType;
                 };
                 MsgSubmitMisbehaviour: {
                     encode(message: _118.MsgSubmitMisbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgSubmitMisbehaviour;
-                    fromJSON(object: any): _118.MsgSubmitMisbehaviour;
-                    toJSON(message: _118.MsgSubmitMisbehaviour): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         misbehaviour?: {
@@ -1894,28 +1892,28 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _118.MsgSubmitMisbehaviour;
+                    fromSDK(object: _118.MsgSubmitMisbehaviourSDKType): _118.MsgSubmitMisbehaviour;
+                    toSDK(message: _118.MsgSubmitMisbehaviour): _118.MsgSubmitMisbehaviourSDKType;
                 };
                 MsgSubmitMisbehaviourResponse: {
                     encode(_: _118.MsgSubmitMisbehaviourResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgSubmitMisbehaviourResponseSDKType;
-                    fromJSON(_: any): _118.MsgSubmitMisbehaviourResponse;
-                    toJSON(_: _118.MsgSubmitMisbehaviourResponse): unknown;
                     fromPartial(_: {}): _118.MsgSubmitMisbehaviourResponse;
+                    fromSDK(_: _118.MsgSubmitMisbehaviourResponseSDKType): _118.MsgSubmitMisbehaviourResponse;
+                    toSDK(_: _118.MsgSubmitMisbehaviourResponse): _118.MsgSubmitMisbehaviourResponseSDKType;
                 };
                 QueryClientStateRequest: {
                     encode(message: _117.QueryClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryClientStateRequest;
-                    fromJSON(object: any): _117.QueryClientStateRequest;
-                    toJSON(message: _117.QueryClientStateRequest): unknown;
                     fromPartial(object: {
                         clientId?: string;
                     }): _117.QueryClientStateRequest;
+                    fromSDK(object: _117.QueryClientStateRequestSDKType): _117.QueryClientStateRequest;
+                    toSDK(message: _117.QueryClientStateRequest): _117.QueryClientStateRequestSDKType;
                 };
                 QueryClientStateResponse: {
                     encode(message: _117.QueryClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryClientStateResponseSDKType;
-                    fromJSON(object: any): _117.QueryClientStateResponse;
-                    toJSON(message: _117.QueryClientStateResponse): unknown;
                     fromPartial(object: {
                         clientState?: {
                             typeUrl?: string;
@@ -1927,12 +1925,12 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _117.QueryClientStateResponse;
+                    fromSDK(object: _117.QueryClientStateResponseSDKType): _117.QueryClientStateResponse;
+                    toSDK(message: _117.QueryClientStateResponse): _117.QueryClientStateResponseSDKType;
                 };
                 QueryClientStatesRequest: {
                     encode(message: _117.QueryClientStatesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryClientStatesRequest;
-                    fromJSON(object: any): _117.QueryClientStatesRequest;
-                    toJSON(message: _117.QueryClientStatesRequest): unknown;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -1942,12 +1940,12 @@ export declare namespace ibc {
                             reverse?: boolean;
                         };
                     }): _117.QueryClientStatesRequest;
+                    fromSDK(object: _117.QueryClientStatesRequestSDKType): _117.QueryClientStatesRequest;
+                    toSDK(message: _117.QueryClientStatesRequest): _117.QueryClientStatesRequestSDKType;
                 };
                 QueryClientStatesResponse: {
                     encode(message: _117.QueryClientStatesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryClientStatesResponseSDKType;
-                    fromJSON(object: any): _117.QueryClientStatesResponse;
-                    toJSON(message: _117.QueryClientStatesResponse): unknown;
                     fromPartial(object: {
                         clientStates?: {
                             clientId?: string;
@@ -1961,24 +1959,24 @@ export declare namespace ibc {
                             total?: any;
                         };
                     }): _117.QueryClientStatesResponse;
+                    fromSDK(object: _117.QueryClientStatesResponseSDKType): _117.QueryClientStatesResponse;
+                    toSDK(message: _117.QueryClientStatesResponse): _117.QueryClientStatesResponseSDKType;
                 };
                 QueryConsensusStateRequest: {
                     encode(message: _117.QueryConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryConsensusStateRequest;
-                    fromJSON(object: any): _117.QueryConsensusStateRequest;
-                    toJSON(message: _117.QueryConsensusStateRequest): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         revisionNumber?: any;
                         revisionHeight?: any;
                         latestHeight?: boolean;
                     }): _117.QueryConsensusStateRequest;
+                    fromSDK(object: _117.QueryConsensusStateRequestSDKType): _117.QueryConsensusStateRequest;
+                    toSDK(message: _117.QueryConsensusStateRequest): _117.QueryConsensusStateRequestSDKType;
                 };
                 QueryConsensusStateResponse: {
                     encode(message: _117.QueryConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryConsensusStateResponseSDKType;
-                    fromJSON(object: any): _117.QueryConsensusStateResponse;
-                    toJSON(message: _117.QueryConsensusStateResponse): unknown;
                     fromPartial(object: {
                         consensusState?: {
                             typeUrl?: string;
@@ -1990,12 +1988,12 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _117.QueryConsensusStateResponse;
+                    fromSDK(object: _117.QueryConsensusStateResponseSDKType): _117.QueryConsensusStateResponse;
+                    toSDK(message: _117.QueryConsensusStateResponse): _117.QueryConsensusStateResponseSDKType;
                 };
                 QueryConsensusStatesRequest: {
                     encode(message: _117.QueryConsensusStatesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryConsensusStatesRequest;
-                    fromJSON(object: any): _117.QueryConsensusStatesRequest;
-                    toJSON(message: _117.QueryConsensusStatesRequest): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         pagination?: {
@@ -2006,12 +2004,12 @@ export declare namespace ibc {
                             reverse?: boolean;
                         };
                     }): _117.QueryConsensusStatesRequest;
+                    fromSDK(object: _117.QueryConsensusStatesRequestSDKType): _117.QueryConsensusStatesRequest;
+                    toSDK(message: _117.QueryConsensusStatesRequest): _117.QueryConsensusStatesRequestSDKType;
                 };
                 QueryConsensusStatesResponse: {
                     encode(message: _117.QueryConsensusStatesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryConsensusStatesResponseSDKType;
-                    fromJSON(object: any): _117.QueryConsensusStatesResponse;
-                    toJSON(message: _117.QueryConsensusStatesResponse): unknown;
                     fromPartial(object: {
                         consensusStates?: {
                             height?: {
@@ -2028,86 +2026,86 @@ export declare namespace ibc {
                             total?: any;
                         };
                     }): _117.QueryConsensusStatesResponse;
+                    fromSDK(object: _117.QueryConsensusStatesResponseSDKType): _117.QueryConsensusStatesResponse;
+                    toSDK(message: _117.QueryConsensusStatesResponse): _117.QueryConsensusStatesResponseSDKType;
                 };
                 QueryClientStatusRequest: {
                     encode(message: _117.QueryClientStatusRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryClientStatusRequest;
-                    fromJSON(object: any): _117.QueryClientStatusRequest;
-                    toJSON(message: _117.QueryClientStatusRequest): unknown;
                     fromPartial(object: {
                         clientId?: string;
                     }): _117.QueryClientStatusRequest;
+                    fromSDK(object: _117.QueryClientStatusRequestSDKType): _117.QueryClientStatusRequest;
+                    toSDK(message: _117.QueryClientStatusRequest): _117.QueryClientStatusRequestSDKType;
                 };
                 QueryClientStatusResponse: {
                     encode(message: _117.QueryClientStatusResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryClientStatusResponseSDKType;
-                    fromJSON(object: any): _117.QueryClientStatusResponse;
-                    toJSON(message: _117.QueryClientStatusResponse): unknown;
                     fromPartial(object: {
                         status?: string;
                     }): _117.QueryClientStatusResponse;
+                    fromSDK(object: _117.QueryClientStatusResponseSDKType): _117.QueryClientStatusResponse;
+                    toSDK(message: _117.QueryClientStatusResponse): _117.QueryClientStatusResponseSDKType;
                 };
                 QueryClientParamsRequest: {
                     encode(_: _117.QueryClientParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryClientParamsRequest;
-                    fromJSON(_: any): _117.QueryClientParamsRequest;
-                    toJSON(_: _117.QueryClientParamsRequest): unknown;
                     fromPartial(_: {}): _117.QueryClientParamsRequest;
+                    fromSDK(_: _117.QueryClientParamsRequestSDKType): _117.QueryClientParamsRequest;
+                    toSDK(_: _117.QueryClientParamsRequest): _117.QueryClientParamsRequestSDKType;
                 };
                 QueryClientParamsResponse: {
                     encode(message: _117.QueryClientParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryClientParamsResponseSDKType;
-                    fromJSON(object: any): _117.QueryClientParamsResponse;
-                    toJSON(message: _117.QueryClientParamsResponse): unknown;
                     fromPartial(object: {
                         params?: {
                             allowedClients?: string[];
                         };
                     }): _117.QueryClientParamsResponse;
+                    fromSDK(object: _117.QueryClientParamsResponseSDKType): _117.QueryClientParamsResponse;
+                    toSDK(message: _117.QueryClientParamsResponse): _117.QueryClientParamsResponseSDKType;
                 };
                 QueryUpgradedClientStateRequest: {
                     encode(_: _117.QueryUpgradedClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryUpgradedClientStateRequest;
-                    fromJSON(_: any): _117.QueryUpgradedClientStateRequest;
-                    toJSON(_: _117.QueryUpgradedClientStateRequest): unknown;
                     fromPartial(_: {}): _117.QueryUpgradedClientStateRequest;
+                    fromSDK(_: _117.QueryUpgradedClientStateRequestSDKType): _117.QueryUpgradedClientStateRequest;
+                    toSDK(_: _117.QueryUpgradedClientStateRequest): _117.QueryUpgradedClientStateRequestSDKType;
                 };
                 QueryUpgradedClientStateResponse: {
                     encode(message: _117.QueryUpgradedClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryUpgradedClientStateResponseSDKType;
-                    fromJSON(object: any): _117.QueryUpgradedClientStateResponse;
-                    toJSON(message: _117.QueryUpgradedClientStateResponse): unknown;
                     fromPartial(object: {
                         upgradedClientState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _117.QueryUpgradedClientStateResponse;
+                    fromSDK(object: _117.QueryUpgradedClientStateResponseSDKType): _117.QueryUpgradedClientStateResponse;
+                    toSDK(message: _117.QueryUpgradedClientStateResponse): _117.QueryUpgradedClientStateResponseSDKType;
                 };
                 QueryUpgradedConsensusStateRequest: {
                     encode(_: _117.QueryUpgradedConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryUpgradedConsensusStateRequest;
-                    fromJSON(_: any): _117.QueryUpgradedConsensusStateRequest;
-                    toJSON(_: _117.QueryUpgradedConsensusStateRequest): unknown;
                     fromPartial(_: {}): _117.QueryUpgradedConsensusStateRequest;
+                    fromSDK(_: _117.QueryUpgradedConsensusStateRequestSDKType): _117.QueryUpgradedConsensusStateRequest;
+                    toSDK(_: _117.QueryUpgradedConsensusStateRequest): _117.QueryUpgradedConsensusStateRequestSDKType;
                 };
                 QueryUpgradedConsensusStateResponse: {
                     encode(message: _117.QueryUpgradedConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QueryUpgradedConsensusStateResponseSDKType;
-                    fromJSON(object: any): _117.QueryUpgradedConsensusStateResponse;
-                    toJSON(message: _117.QueryUpgradedConsensusStateResponse): unknown;
                     fromPartial(object: {
                         upgradedConsensusState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _117.QueryUpgradedConsensusStateResponse;
+                    fromSDK(object: _117.QueryUpgradedConsensusStateResponseSDKType): _117.QueryUpgradedConsensusStateResponse;
+                    toSDK(message: _117.QueryUpgradedConsensusStateResponse): _117.QueryUpgradedConsensusStateResponseSDKType;
                 };
                 GenesisState: {
                     encode(message: _116.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.GenesisState;
-                    fromJSON(object: any): _116.GenesisState;
-                    toJSON(message: _116.GenesisState): unknown;
                     fromPartial(object: {
                         clients?: {
                             clientId?: string;
@@ -2142,22 +2140,22 @@ export declare namespace ibc {
                         createLocalhost?: boolean;
                         nextClientSequence?: any;
                     }): _116.GenesisState;
+                    fromSDK(object: _116.GenesisStateSDKType): _116.GenesisState;
+                    toSDK(message: _116.GenesisState): _116.GenesisStateSDKType;
                 };
                 GenesisMetadata: {
                     encode(message: _116.GenesisMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.GenesisMetadata;
-                    fromJSON(object: any): _116.GenesisMetadata;
-                    toJSON(message: _116.GenesisMetadata): unknown;
                     fromPartial(object: {
                         key?: Uint8Array;
                         value?: Uint8Array;
                     }): _116.GenesisMetadata;
+                    fromSDK(object: _116.GenesisMetadataSDKType): _116.GenesisMetadata;
+                    toSDK(message: _116.GenesisMetadata): _116.GenesisMetadataSDKType;
                 };
                 IdentifiedGenesisMetadata: {
                     encode(message: _116.IdentifiedGenesisMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.IdentifiedGenesisMetadata;
-                    fromJSON(object: any): _116.IdentifiedGenesisMetadata;
-                    toJSON(message: _116.IdentifiedGenesisMetadata): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         clientMetadata?: {
@@ -2165,12 +2163,12 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         }[];
                     }): _116.IdentifiedGenesisMetadata;
+                    fromSDK(object: _116.IdentifiedGenesisMetadataSDKType): _116.IdentifiedGenesisMetadata;
+                    toSDK(message: _116.IdentifiedGenesisMetadata): _116.IdentifiedGenesisMetadataSDKType;
                 };
                 IdentifiedClientState: {
                     encode(message: _115.IdentifiedClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.IdentifiedClientState;
-                    fromJSON(object: any): _115.IdentifiedClientState;
-                    toJSON(message: _115.IdentifiedClientState): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         clientState?: {
@@ -2178,12 +2176,12 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                     }): _115.IdentifiedClientState;
+                    fromSDK(object: _115.IdentifiedClientStateSDKType): _115.IdentifiedClientState;
+                    toSDK(message: _115.IdentifiedClientState): _115.IdentifiedClientStateSDKType;
                 };
                 ConsensusStateWithHeight: {
                     encode(message: _115.ConsensusStateWithHeight, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.ConsensusStateWithHeight;
-                    fromJSON(object: any): _115.ConsensusStateWithHeight;
-                    toJSON(message: _115.ConsensusStateWithHeight): unknown;
                     fromPartial(object: {
                         height?: {
                             revisionNumber?: any;
@@ -2194,12 +2192,12 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                     }): _115.ConsensusStateWithHeight;
+                    fromSDK(object: _115.ConsensusStateWithHeightSDKType): _115.ConsensusStateWithHeight;
+                    toSDK(message: _115.ConsensusStateWithHeight): _115.ConsensusStateWithHeightSDKType;
                 };
                 ClientConsensusStates: {
                     encode(message: _115.ClientConsensusStates, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.ClientConsensusStates;
-                    fromJSON(object: any): _115.ClientConsensusStates;
-                    toJSON(message: _115.ClientConsensusStates): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         consensusStates?: {
@@ -2213,24 +2211,24 @@ export declare namespace ibc {
                             };
                         }[];
                     }): _115.ClientConsensusStates;
+                    fromSDK(object: _115.ClientConsensusStatesSDKType): _115.ClientConsensusStates;
+                    toSDK(message: _115.ClientConsensusStates): _115.ClientConsensusStatesSDKType;
                 };
                 ClientUpdateProposal: {
                     encode(message: _115.ClientUpdateProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.ClientUpdateProposal;
-                    fromJSON(object: any): _115.ClientUpdateProposal;
-                    toJSON(message: _115.ClientUpdateProposal): unknown;
                     fromPartial(object: {
                         title?: string;
                         description?: string;
                         subjectClientId?: string;
                         substituteClientId?: string;
                     }): _115.ClientUpdateProposal;
+                    fromSDK(object: _115.ClientUpdateProposalSDKType): _115.ClientUpdateProposal;
+                    toSDK(message: _115.ClientUpdateProposal): _115.ClientUpdateProposalSDKType;
                 };
                 UpgradeProposal: {
                     encode(message: _115.UpgradeProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.UpgradeProposal;
-                    fromJSON(object: any): _115.UpgradeProposal;
-                    toJSON(message: _115.UpgradeProposal): unknown;
                     fromPartial(object: {
                         title?: string;
                         description?: string;
@@ -2249,25 +2247,27 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                     }): _115.UpgradeProposal;
+                    fromSDK(object: _115.UpgradeProposalSDKType): _115.UpgradeProposal;
+                    toSDK(message: _115.UpgradeProposal): _115.UpgradeProposalSDKType;
                 };
                 Height: {
                     encode(message: _115.Height, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.Height;
-                    fromJSON(object: any): _115.Height;
-                    toJSON(message: _115.Height): unknown;
                     fromPartial(object: {
                         revisionNumber?: any;
                         revisionHeight?: any;
                     }): _115.Height;
+                    fromSDK(object: _115.HeightSDKType): _115.Height;
+                    toSDK(message: _115.Height): _115.HeightSDKType;
                 };
                 Params: {
                     encode(message: _115.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.Params;
-                    fromJSON(object: any): _115.Params;
-                    toJSON(message: _115.Params): unknown;
                     fromPartial(object: {
                         allowedClients?: string[];
                     }): _115.Params;
+                    fromSDK(object: _115.ParamsSDKType): _115.Params;
+                    toSDK(message: _115.Params): _115.ParamsSDKType;
                 };
             };
         }
@@ -2276,35 +2276,33 @@ export declare namespace ibc {
                 MerkleRoot: {
                     encode(message: _119.MerkleRoot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _119.MerkleRoot;
-                    fromJSON(object: any): _119.MerkleRoot;
-                    toJSON(message: _119.MerkleRoot): unknown;
                     fromPartial(object: {
                         hash?: Uint8Array;
                     }): _119.MerkleRoot;
+                    fromSDK(object: _119.MerkleRootSDKType): _119.MerkleRoot;
+                    toSDK(message: _119.MerkleRoot): _119.MerkleRootSDKType;
                 };
                 MerklePrefix: {
                     encode(message: _119.MerklePrefix, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _119.MerklePrefix;
-                    fromJSON(object: any): _119.MerklePrefix;
-                    toJSON(message: _119.MerklePrefix): unknown;
                     fromPartial(object: {
                         keyPrefix?: Uint8Array;
                     }): _119.MerklePrefix;
+                    fromSDK(object: _119.MerklePrefixSDKType): _119.MerklePrefix;
+                    toSDK(message: _119.MerklePrefix): _119.MerklePrefixSDKType;
                 };
                 MerklePath: {
                     encode(message: _119.MerklePath, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _119.MerklePath;
-                    fromJSON(object: any): _119.MerklePath;
-                    toJSON(message: _119.MerklePath): unknown;
                     fromPartial(object: {
                         keyPath?: string[];
                     }): _119.MerklePath;
+                    fromSDK(object: _119.MerklePathSDKType): _119.MerklePath;
+                    toSDK(message: _119.MerklePath): _119.MerklePathSDKType;
                 };
                 MerkleProof: {
                     encode(message: _119.MerkleProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _119.MerkleProof;
-                    fromJSON(object: any): _119.MerkleProof;
-                    toJSON(message: _119.MerkleProof): unknown;
                     fromPartial(object: {
                         proofs?: {
                             exist?: {
@@ -2463,6 +2461,8 @@ export declare namespace ibc {
                             };
                         }[];
                     }): _119.MerkleProof;
+                    fromSDK(object: _119.MerkleProofSDKType): _119.MerkleProof;
+                    toSDK(message: _119.MerkleProof): _119.MerkleProofSDKType;
                 };
             };
         }
@@ -2513,37 +2513,37 @@ export declare namespace ibc {
                     toJSON: {
                         connectionOpenInit(value: _123.MsgConnectionOpenInit): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         connectionOpenTry(value: _123.MsgConnectionOpenTry): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         connectionOpenAck(value: _123.MsgConnectionOpenAck): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                         connectionOpenConfirm(value: _123.MsgConnectionOpenConfirm): {
                             typeUrl: string;
-                            value: unknown;
+                            value: any;
                         };
                     };
                     fromJSON: {
                         connectionOpenInit(value: any): {
                             typeUrl: string;
-                            value: _123.MsgConnectionOpenInit;
+                            value: any;
                         };
                         connectionOpenTry(value: any): {
                             typeUrl: string;
-                            value: _123.MsgConnectionOpenTry;
+                            value: any;
                         };
                         connectionOpenAck(value: any): {
                             typeUrl: string;
-                            value: _123.MsgConnectionOpenAck;
+                            value: any;
                         };
                         connectionOpenConfirm(value: any): {
                             typeUrl: string;
-                            value: _123.MsgConnectionOpenConfirm;
+                            value: any;
                         };
                     };
                     fromPartial: {
@@ -2714,8 +2714,6 @@ export declare namespace ibc {
                 MsgConnectionOpenInit: {
                     encode(message: _123.MsgConnectionOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgConnectionOpenInit;
-                    fromJSON(object: any): _123.MsgConnectionOpenInit;
-                    toJSON(message: _123.MsgConnectionOpenInit): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         counterparty?: {
@@ -2732,19 +2730,19 @@ export declare namespace ibc {
                         delayPeriod?: any;
                         signer?: string;
                     }): _123.MsgConnectionOpenInit;
+                    fromSDK(object: _123.MsgConnectionOpenInitSDKType): _123.MsgConnectionOpenInit;
+                    toSDK(message: _123.MsgConnectionOpenInit): _123.MsgConnectionOpenInitSDKType;
                 };
                 MsgConnectionOpenInitResponse: {
                     encode(_: _123.MsgConnectionOpenInitResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgConnectionOpenInitResponseSDKType;
-                    fromJSON(_: any): _123.MsgConnectionOpenInitResponse;
-                    toJSON(_: _123.MsgConnectionOpenInitResponse): unknown;
                     fromPartial(_: {}): _123.MsgConnectionOpenInitResponse;
+                    fromSDK(_: _123.MsgConnectionOpenInitResponseSDKType): _123.MsgConnectionOpenInitResponse;
+                    toSDK(_: _123.MsgConnectionOpenInitResponse): _123.MsgConnectionOpenInitResponseSDKType;
                 };
                 MsgConnectionOpenTry: {
                     encode(message: _123.MsgConnectionOpenTry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgConnectionOpenTry;
-                    fromJSON(object: any): _123.MsgConnectionOpenTry;
-                    toJSON(message: _123.MsgConnectionOpenTry): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         previousConnectionId?: string;
@@ -2777,19 +2775,19 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _123.MsgConnectionOpenTry;
+                    fromSDK(object: _123.MsgConnectionOpenTrySDKType): _123.MsgConnectionOpenTry;
+                    toSDK(message: _123.MsgConnectionOpenTry): _123.MsgConnectionOpenTrySDKType;
                 };
                 MsgConnectionOpenTryResponse: {
                     encode(_: _123.MsgConnectionOpenTryResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgConnectionOpenTryResponseSDKType;
-                    fromJSON(_: any): _123.MsgConnectionOpenTryResponse;
-                    toJSON(_: _123.MsgConnectionOpenTryResponse): unknown;
                     fromPartial(_: {}): _123.MsgConnectionOpenTryResponse;
+                    fromSDK(_: _123.MsgConnectionOpenTryResponseSDKType): _123.MsgConnectionOpenTryResponse;
+                    toSDK(_: _123.MsgConnectionOpenTryResponse): _123.MsgConnectionOpenTryResponseSDKType;
                 };
                 MsgConnectionOpenAck: {
                     encode(message: _123.MsgConnectionOpenAck, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgConnectionOpenAck;
-                    fromJSON(object: any): _123.MsgConnectionOpenAck;
-                    toJSON(message: _123.MsgConnectionOpenAck): unknown;
                     fromPartial(object: {
                         connectionId?: string;
                         counterpartyConnectionId?: string;
@@ -2814,19 +2812,19 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _123.MsgConnectionOpenAck;
+                    fromSDK(object: _123.MsgConnectionOpenAckSDKType): _123.MsgConnectionOpenAck;
+                    toSDK(message: _123.MsgConnectionOpenAck): _123.MsgConnectionOpenAckSDKType;
                 };
                 MsgConnectionOpenAckResponse: {
                     encode(_: _123.MsgConnectionOpenAckResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgConnectionOpenAckResponseSDKType;
-                    fromJSON(_: any): _123.MsgConnectionOpenAckResponse;
-                    toJSON(_: _123.MsgConnectionOpenAckResponse): unknown;
                     fromPartial(_: {}): _123.MsgConnectionOpenAckResponse;
+                    fromSDK(_: _123.MsgConnectionOpenAckResponseSDKType): _123.MsgConnectionOpenAckResponse;
+                    toSDK(_: _123.MsgConnectionOpenAckResponse): _123.MsgConnectionOpenAckResponseSDKType;
                 };
                 MsgConnectionOpenConfirm: {
                     encode(message: _123.MsgConnectionOpenConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgConnectionOpenConfirm;
-                    fromJSON(object: any): _123.MsgConnectionOpenConfirm;
-                    toJSON(message: _123.MsgConnectionOpenConfirm): unknown;
                     fromPartial(object: {
                         connectionId?: string;
                         proofAck?: Uint8Array;
@@ -2836,28 +2834,28 @@ export declare namespace ibc {
                         };
                         signer?: string;
                     }): _123.MsgConnectionOpenConfirm;
+                    fromSDK(object: _123.MsgConnectionOpenConfirmSDKType): _123.MsgConnectionOpenConfirm;
+                    toSDK(message: _123.MsgConnectionOpenConfirm): _123.MsgConnectionOpenConfirmSDKType;
                 };
                 MsgConnectionOpenConfirmResponse: {
                     encode(_: _123.MsgConnectionOpenConfirmResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgConnectionOpenConfirmResponseSDKType;
-                    fromJSON(_: any): _123.MsgConnectionOpenConfirmResponse;
-                    toJSON(_: _123.MsgConnectionOpenConfirmResponse): unknown;
                     fromPartial(_: {}): _123.MsgConnectionOpenConfirmResponse;
+                    fromSDK(_: _123.MsgConnectionOpenConfirmResponseSDKType): _123.MsgConnectionOpenConfirmResponse;
+                    toSDK(_: _123.MsgConnectionOpenConfirmResponse): _123.MsgConnectionOpenConfirmResponseSDKType;
                 };
                 QueryConnectionRequest: {
                     encode(message: _122.QueryConnectionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryConnectionRequest;
-                    fromJSON(object: any): _122.QueryConnectionRequest;
-                    toJSON(message: _122.QueryConnectionRequest): unknown;
                     fromPartial(object: {
                         connectionId?: string;
                     }): _122.QueryConnectionRequest;
+                    fromSDK(object: _122.QueryConnectionRequestSDKType): _122.QueryConnectionRequest;
+                    toSDK(message: _122.QueryConnectionRequest): _122.QueryConnectionRequestSDKType;
                 };
                 QueryConnectionResponse: {
                     encode(message: _122.QueryConnectionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryConnectionResponseSDKType;
-                    fromJSON(object: any): _122.QueryConnectionResponse;
-                    toJSON(message: _122.QueryConnectionResponse): unknown;
                     fromPartial(object: {
                         connection?: {
                             clientId?: string;
@@ -2881,12 +2879,12 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _122.QueryConnectionResponse;
+                    fromSDK(object: _122.QueryConnectionResponseSDKType): _122.QueryConnectionResponse;
+                    toSDK(message: _122.QueryConnectionResponse): _122.QueryConnectionResponseSDKType;
                 };
                 QueryConnectionsRequest: {
                     encode(message: _122.QueryConnectionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryConnectionsRequest;
-                    fromJSON(object: any): _122.QueryConnectionsRequest;
-                    toJSON(message: _122.QueryConnectionsRequest): unknown;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -2896,12 +2894,12 @@ export declare namespace ibc {
                             reverse?: boolean;
                         };
                     }): _122.QueryConnectionsRequest;
+                    fromSDK(object: _122.QueryConnectionsRequestSDKType): _122.QueryConnectionsRequest;
+                    toSDK(message: _122.QueryConnectionsRequest): _122.QueryConnectionsRequestSDKType;
                 };
                 QueryConnectionsResponse: {
                     encode(message: _122.QueryConnectionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryConnectionsResponseSDKType;
-                    fromJSON(object: any): _122.QueryConnectionsResponse;
-                    toJSON(message: _122.QueryConnectionsResponse): unknown;
                     fromPartial(object: {
                         connections?: {
                             id?: string;
@@ -2929,21 +2927,21 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _122.QueryConnectionsResponse;
+                    fromSDK(object: _122.QueryConnectionsResponseSDKType): _122.QueryConnectionsResponse;
+                    toSDK(message: _122.QueryConnectionsResponse): _122.QueryConnectionsResponseSDKType;
                 };
                 QueryClientConnectionsRequest: {
                     encode(message: _122.QueryClientConnectionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryClientConnectionsRequest;
-                    fromJSON(object: any): _122.QueryClientConnectionsRequest;
-                    toJSON(message: _122.QueryClientConnectionsRequest): unknown;
                     fromPartial(object: {
                         clientId?: string;
                     }): _122.QueryClientConnectionsRequest;
+                    fromSDK(object: _122.QueryClientConnectionsRequestSDKType): _122.QueryClientConnectionsRequest;
+                    toSDK(message: _122.QueryClientConnectionsRequest): _122.QueryClientConnectionsRequestSDKType;
                 };
                 QueryClientConnectionsResponse: {
                     encode(message: _122.QueryClientConnectionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryClientConnectionsResponseSDKType;
-                    fromJSON(object: any): _122.QueryClientConnectionsResponse;
-                    toJSON(message: _122.QueryClientConnectionsResponse): unknown;
                     fromPartial(object: {
                         connectionPaths?: string[];
                         proof?: Uint8Array;
@@ -2952,21 +2950,21 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _122.QueryClientConnectionsResponse;
+                    fromSDK(object: _122.QueryClientConnectionsResponseSDKType): _122.QueryClientConnectionsResponse;
+                    toSDK(message: _122.QueryClientConnectionsResponse): _122.QueryClientConnectionsResponseSDKType;
                 };
                 QueryConnectionClientStateRequest: {
                     encode(message: _122.QueryConnectionClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryConnectionClientStateRequest;
-                    fromJSON(object: any): _122.QueryConnectionClientStateRequest;
-                    toJSON(message: _122.QueryConnectionClientStateRequest): unknown;
                     fromPartial(object: {
                         connectionId?: string;
                     }): _122.QueryConnectionClientStateRequest;
+                    fromSDK(object: _122.QueryConnectionClientStateRequestSDKType): _122.QueryConnectionClientStateRequest;
+                    toSDK(message: _122.QueryConnectionClientStateRequest): _122.QueryConnectionClientStateRequestSDKType;
                 };
                 QueryConnectionClientStateResponse: {
                     encode(message: _122.QueryConnectionClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryConnectionClientStateResponseSDKType;
-                    fromJSON(object: any): _122.QueryConnectionClientStateResponse;
-                    toJSON(message: _122.QueryConnectionClientStateResponse): unknown;
                     fromPartial(object: {
                         identifiedClientState?: {
                             clientId?: string;
@@ -2981,23 +2979,23 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _122.QueryConnectionClientStateResponse;
+                    fromSDK(object: _122.QueryConnectionClientStateResponseSDKType): _122.QueryConnectionClientStateResponse;
+                    toSDK(message: _122.QueryConnectionClientStateResponse): _122.QueryConnectionClientStateResponseSDKType;
                 };
                 QueryConnectionConsensusStateRequest: {
                     encode(message: _122.QueryConnectionConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryConnectionConsensusStateRequest;
-                    fromJSON(object: any): _122.QueryConnectionConsensusStateRequest;
-                    toJSON(message: _122.QueryConnectionConsensusStateRequest): unknown;
                     fromPartial(object: {
                         connectionId?: string;
                         revisionNumber?: any;
                         revisionHeight?: any;
                     }): _122.QueryConnectionConsensusStateRequest;
+                    fromSDK(object: _122.QueryConnectionConsensusStateRequestSDKType): _122.QueryConnectionConsensusStateRequest;
+                    toSDK(message: _122.QueryConnectionConsensusStateRequest): _122.QueryConnectionConsensusStateRequestSDKType;
                 };
                 QueryConnectionConsensusStateResponse: {
                     encode(message: _122.QueryConnectionConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryConnectionConsensusStateResponseSDKType;
-                    fromJSON(object: any): _122.QueryConnectionConsensusStateResponse;
-                    toJSON(message: _122.QueryConnectionConsensusStateResponse): unknown;
                     fromPartial(object: {
                         consensusState?: {
                             typeUrl?: string;
@@ -3010,12 +3008,12 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _122.QueryConnectionConsensusStateResponse;
+                    fromSDK(object: _122.QueryConnectionConsensusStateResponseSDKType): _122.QueryConnectionConsensusStateResponse;
+                    toSDK(message: _122.QueryConnectionConsensusStateResponse): _122.QueryConnectionConsensusStateResponseSDKType;
                 };
                 GenesisState: {
                     encode(message: _121.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _121.GenesisState;
-                    fromJSON(object: any): _121.GenesisState;
-                    toJSON(message: _121.GenesisState): unknown;
                     fromPartial(object: {
                         connections?: {
                             id?: string;
@@ -3043,6 +3041,8 @@ export declare namespace ibc {
                             maxExpectedTimePerBlock?: any;
                         };
                     }): _121.GenesisState;
+                    fromSDK(object: _121.GenesisStateSDKType): _121.GenesisState;
+                    toSDK(message: _121.GenesisState): _121.GenesisStateSDKType;
                 };
                 stateFromJSON(object: any): _120.State;
                 stateToJSON(object: _120.State): string;
@@ -3051,8 +3051,6 @@ export declare namespace ibc {
                 ConnectionEnd: {
                     encode(message: _120.ConnectionEnd, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.ConnectionEnd;
-                    fromJSON(object: any): _120.ConnectionEnd;
-                    toJSON(message: _120.ConnectionEnd): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         versions?: {
@@ -3069,12 +3067,12 @@ export declare namespace ibc {
                         };
                         delayPeriod?: any;
                     }): _120.ConnectionEnd;
+                    fromSDK(object: _120.ConnectionEndSDKType): _120.ConnectionEnd;
+                    toSDK(message: _120.ConnectionEnd): _120.ConnectionEndSDKType;
                 };
                 IdentifiedConnection: {
                     encode(message: _120.IdentifiedConnection, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.IdentifiedConnection;
-                    fromJSON(object: any): _120.IdentifiedConnection;
-                    toJSON(message: _120.IdentifiedConnection): unknown;
                     fromPartial(object: {
                         id?: string;
                         clientId?: string;
@@ -3092,12 +3090,12 @@ export declare namespace ibc {
                         };
                         delayPeriod?: any;
                     }): _120.IdentifiedConnection;
+                    fromSDK(object: _120.IdentifiedConnectionSDKType): _120.IdentifiedConnection;
+                    toSDK(message: _120.IdentifiedConnection): _120.IdentifiedConnectionSDKType;
                 };
                 Counterparty: {
                     encode(message: _120.Counterparty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.Counterparty;
-                    fromJSON(object: any): _120.Counterparty;
-                    toJSON(message: _120.Counterparty): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         connectionId?: string;
@@ -3105,44 +3103,46 @@ export declare namespace ibc {
                             keyPrefix?: Uint8Array;
                         };
                     }): _120.Counterparty;
+                    fromSDK(object: _120.CounterpartySDKType): _120.Counterparty;
+                    toSDK(message: _120.Counterparty): _120.CounterpartySDKType;
                 };
                 ClientPaths: {
                     encode(message: _120.ClientPaths, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.ClientPaths;
-                    fromJSON(object: any): _120.ClientPaths;
-                    toJSON(message: _120.ClientPaths): unknown;
                     fromPartial(object: {
                         paths?: string[];
                     }): _120.ClientPaths;
+                    fromSDK(object: _120.ClientPathsSDKType): _120.ClientPaths;
+                    toSDK(message: _120.ClientPaths): _120.ClientPathsSDKType;
                 };
                 ConnectionPaths: {
                     encode(message: _120.ConnectionPaths, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.ConnectionPaths;
-                    fromJSON(object: any): _120.ConnectionPaths;
-                    toJSON(message: _120.ConnectionPaths): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         paths?: string[];
                     }): _120.ConnectionPaths;
+                    fromSDK(object: _120.ConnectionPathsSDKType): _120.ConnectionPaths;
+                    toSDK(message: _120.ConnectionPaths): _120.ConnectionPathsSDKType;
                 };
                 Version: {
                     encode(message: _120.Version, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.Version;
-                    fromJSON(object: any): _120.Version;
-                    toJSON(message: _120.Version): unknown;
                     fromPartial(object: {
                         identifier?: string;
                         features?: string[];
                     }): _120.Version;
+                    fromSDK(object: _120.VersionSDKType): _120.Version;
+                    toSDK(message: _120.Version): _120.VersionSDKType;
                 };
                 Params: {
                     encode(message: _120.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.Params;
-                    fromJSON(object: any): _120.Params;
-                    toJSON(message: _120.Params): unknown;
                     fromPartial(object: {
                         maxExpectedTimePerBlock?: any;
                     }): _120.Params;
+                    fromSDK(object: _120.ParamsSDKType): _120.Params;
+                    toSDK(message: _120.Params): _120.ParamsSDKType;
                 };
             };
         }
@@ -3152,8 +3152,6 @@ export declare namespace ibc {
                 QueryAppVersionRequest: {
                     encode(message: _124.QueryAppVersionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.QueryAppVersionRequest;
-                    fromJSON(object: any): _124.QueryAppVersionRequest;
-                    toJSON(message: _124.QueryAppVersionRequest): unknown;
                     fromPartial(object: {
                         portId?: string;
                         connectionId?: string;
@@ -3164,16 +3162,18 @@ export declare namespace ibc {
                         };
                         proposedVersion?: string;
                     }): _124.QueryAppVersionRequest;
+                    fromSDK(object: _124.QueryAppVersionRequestSDKType): _124.QueryAppVersionRequest;
+                    toSDK(message: _124.QueryAppVersionRequest): _124.QueryAppVersionRequestSDKType;
                 };
                 QueryAppVersionResponse: {
                     encode(message: _124.QueryAppVersionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.QueryAppVersionResponseSDKType;
-                    fromJSON(object: any): _124.QueryAppVersionResponse;
-                    toJSON(message: _124.QueryAppVersionResponse): unknown;
                     fromPartial(object: {
                         portId?: string;
                         version?: string;
                     }): _124.QueryAppVersionResponse;
+                    fromSDK(object: _124.QueryAppVersionResponseSDKType): _124.QueryAppVersionResponse;
+                    toSDK(message: _124.QueryAppVersionResponse): _124.QueryAppVersionResponseSDKType;
                 };
             };
         }
@@ -3182,8 +3182,6 @@ export declare namespace ibc {
                 GenesisState: {
                     encode(message: _125.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.GenesisState;
-                    fromJSON(object: any): _125.GenesisState;
-                    toJSON(message: _125.GenesisState): unknown;
                     fromPartial(object: {
                         clientGenesis?: {
                             clients?: {
@@ -3295,6 +3293,8 @@ export declare namespace ibc {
                             nextChannelSequence?: any;
                         };
                     }): _125.GenesisState;
+                    fromSDK(object: _125.GenesisStateSDKType): _125.GenesisState;
+                    toSDK(message: _125.GenesisState): _125.GenesisStateSDKType;
                 };
             };
         }
@@ -3305,8 +3305,6 @@ export declare namespace ibc {
                 ClientState: {
                     encode(message: _126.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ClientState;
-                    fromJSON(object: any): _126.ClientState;
-                    toJSON(message: _126.ClientState): unknown;
                     fromPartial(object: {
                         chainId?: string;
                         height?: {
@@ -3314,6 +3312,8 @@ export declare namespace ibc {
                             revisionHeight?: any;
                         };
                     }): _126.ClientState;
+                    fromSDK(object: _126.ClientStateSDKType): _126.ClientState;
+                    toSDK(message: _126.ClientState): _126.ClientStateSDKType;
                 };
             };
         }
@@ -3326,8 +3326,6 @@ export declare namespace ibc {
                 ClientState: {
                     encode(message: _127.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.ClientState;
-                    fromJSON(object: any): _127.ClientState;
-                    toJSON(message: _127.ClientState): unknown;
                     fromPartial(object: {
                         sequence?: any;
                         frozenSequence?: any;
@@ -3341,12 +3339,12 @@ export declare namespace ibc {
                         };
                         allowUpdateAfterProposal?: boolean;
                     }): _127.ClientState;
+                    fromSDK(object: _127.ClientStateSDKType): _127.ClientState;
+                    toSDK(message: _127.ClientState): _127.ClientStateSDKType;
                 };
                 ConsensusState: {
                     encode(message: _127.ConsensusState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.ConsensusState;
-                    fromJSON(object: any): _127.ConsensusState;
-                    toJSON(message: _127.ConsensusState): unknown;
                     fromPartial(object: {
                         publicKey?: {
                             typeUrl?: string;
@@ -3355,12 +3353,12 @@ export declare namespace ibc {
                         diversifier?: string;
                         timestamp?: any;
                     }): _127.ConsensusState;
+                    fromSDK(object: _127.ConsensusStateSDKType): _127.ConsensusState;
+                    toSDK(message: _127.ConsensusState): _127.ConsensusStateSDKType;
                 };
                 Header: {
                     encode(message: _127.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.Header;
-                    fromJSON(object: any): _127.Header;
-                    toJSON(message: _127.Header): unknown;
                     fromPartial(object: {
                         sequence?: any;
                         timestamp?: any;
@@ -3371,12 +3369,12 @@ export declare namespace ibc {
                         };
                         newDiversifier?: string;
                     }): _127.Header;
+                    fromSDK(object: _127.HeaderSDKType): _127.Header;
+                    toSDK(message: _127.Header): _127.HeaderSDKType;
                 };
                 Misbehaviour: {
                     encode(message: _127.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.Misbehaviour;
-                    fromJSON(object: any): _127.Misbehaviour;
-                    toJSON(message: _127.Misbehaviour): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         sequence?: any;
@@ -3393,34 +3391,34 @@ export declare namespace ibc {
                             timestamp?: any;
                         };
                     }): _127.Misbehaviour;
+                    fromSDK(object: _127.MisbehaviourSDKType): _127.Misbehaviour;
+                    toSDK(message: _127.Misbehaviour): _127.MisbehaviourSDKType;
                 };
                 SignatureAndData: {
                     encode(message: _127.SignatureAndData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.SignatureAndData;
-                    fromJSON(object: any): _127.SignatureAndData;
-                    toJSON(message: _127.SignatureAndData): unknown;
                     fromPartial(object: {
                         signature?: Uint8Array;
                         dataType?: _127.DataType;
                         data?: Uint8Array;
                         timestamp?: any;
                     }): _127.SignatureAndData;
+                    fromSDK(object: _127.SignatureAndDataSDKType): _127.SignatureAndData;
+                    toSDK(message: _127.SignatureAndData): _127.SignatureAndDataSDKType;
                 };
                 TimestampedSignatureData: {
                     encode(message: _127.TimestampedSignatureData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.TimestampedSignatureData;
-                    fromJSON(object: any): _127.TimestampedSignatureData;
-                    toJSON(message: _127.TimestampedSignatureData): unknown;
                     fromPartial(object: {
                         signatureData?: Uint8Array;
                         timestamp?: any;
                     }): _127.TimestampedSignatureData;
+                    fromSDK(object: _127.TimestampedSignatureDataSDKType): _127.TimestampedSignatureData;
+                    toSDK(message: _127.TimestampedSignatureData): _127.TimestampedSignatureDataSDKType;
                 };
                 SignBytes: {
                     encode(message: _127.SignBytes, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.SignBytes;
-                    fromJSON(object: any): _127.SignBytes;
-                    toJSON(message: _127.SignBytes): unknown;
                     fromPartial(object: {
                         sequence?: any;
                         timestamp?: any;
@@ -3428,12 +3426,12 @@ export declare namespace ibc {
                         dataType?: _127.DataType;
                         data?: Uint8Array;
                     }): _127.SignBytes;
+                    fromSDK(object: _127.SignBytesSDKType): _127.SignBytes;
+                    toSDK(message: _127.SignBytes): _127.SignBytesSDKType;
                 };
                 HeaderData: {
                     encode(message: _127.HeaderData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.HeaderData;
-                    fromJSON(object: any): _127.HeaderData;
-                    toJSON(message: _127.HeaderData): unknown;
                     fromPartial(object: {
                         newPubKey?: {
                             typeUrl?: string;
@@ -3441,12 +3439,12 @@ export declare namespace ibc {
                         };
                         newDiversifier?: string;
                     }): _127.HeaderData;
+                    fromSDK(object: _127.HeaderDataSDKType): _127.HeaderData;
+                    toSDK(message: _127.HeaderData): _127.HeaderDataSDKType;
                 };
                 ClientStateData: {
                     encode(message: _127.ClientStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.ClientStateData;
-                    fromJSON(object: any): _127.ClientStateData;
-                    toJSON(message: _127.ClientStateData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         clientState?: {
@@ -3454,12 +3452,12 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                     }): _127.ClientStateData;
+                    fromSDK(object: _127.ClientStateDataSDKType): _127.ClientStateData;
+                    toSDK(message: _127.ClientStateData): _127.ClientStateDataSDKType;
                 };
                 ConsensusStateData: {
                     encode(message: _127.ConsensusStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.ConsensusStateData;
-                    fromJSON(object: any): _127.ConsensusStateData;
-                    toJSON(message: _127.ConsensusStateData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         consensusState?: {
@@ -3467,12 +3465,12 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                     }): _127.ConsensusStateData;
+                    fromSDK(object: _127.ConsensusStateDataSDKType): _127.ConsensusStateData;
+                    toSDK(message: _127.ConsensusStateData): _127.ConsensusStateDataSDKType;
                 };
                 ConnectionStateData: {
                     encode(message: _127.ConnectionStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.ConnectionStateData;
-                    fromJSON(object: any): _127.ConnectionStateData;
-                    toJSON(message: _127.ConnectionStateData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         connection?: {
@@ -3492,12 +3490,12 @@ export declare namespace ibc {
                             delayPeriod?: any;
                         };
                     }): _127.ConnectionStateData;
+                    fromSDK(object: _127.ConnectionStateDataSDKType): _127.ConnectionStateData;
+                    toSDK(message: _127.ConnectionStateData): _127.ConnectionStateDataSDKType;
                 };
                 ChannelStateData: {
                     encode(message: _127.ChannelStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.ChannelStateData;
-                    fromJSON(object: any): _127.ChannelStateData;
-                    toJSON(message: _127.ChannelStateData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         channel?: {
@@ -3511,45 +3509,47 @@ export declare namespace ibc {
                             version?: string;
                         };
                     }): _127.ChannelStateData;
+                    fromSDK(object: _127.ChannelStateDataSDKType): _127.ChannelStateData;
+                    toSDK(message: _127.ChannelStateData): _127.ChannelStateDataSDKType;
                 };
                 PacketCommitmentData: {
                     encode(message: _127.PacketCommitmentData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.PacketCommitmentData;
-                    fromJSON(object: any): _127.PacketCommitmentData;
-                    toJSON(message: _127.PacketCommitmentData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         commitment?: Uint8Array;
                     }): _127.PacketCommitmentData;
+                    fromSDK(object: _127.PacketCommitmentDataSDKType): _127.PacketCommitmentData;
+                    toSDK(message: _127.PacketCommitmentData): _127.PacketCommitmentDataSDKType;
                 };
                 PacketAcknowledgementData: {
                     encode(message: _127.PacketAcknowledgementData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.PacketAcknowledgementData;
-                    fromJSON(object: any): _127.PacketAcknowledgementData;
-                    toJSON(message: _127.PacketAcknowledgementData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         acknowledgement?: Uint8Array;
                     }): _127.PacketAcknowledgementData;
+                    fromSDK(object: _127.PacketAcknowledgementDataSDKType): _127.PacketAcknowledgementData;
+                    toSDK(message: _127.PacketAcknowledgementData): _127.PacketAcknowledgementDataSDKType;
                 };
                 PacketReceiptAbsenceData: {
                     encode(message: _127.PacketReceiptAbsenceData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.PacketReceiptAbsenceData;
-                    fromJSON(object: any): _127.PacketReceiptAbsenceData;
-                    toJSON(message: _127.PacketReceiptAbsenceData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                     }): _127.PacketReceiptAbsenceData;
+                    fromSDK(object: _127.PacketReceiptAbsenceDataSDKType): _127.PacketReceiptAbsenceData;
+                    toSDK(message: _127.PacketReceiptAbsenceData): _127.PacketReceiptAbsenceDataSDKType;
                 };
                 NextSequenceRecvData: {
                     encode(message: _127.NextSequenceRecvData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.NextSequenceRecvData;
-                    fromJSON(object: any): _127.NextSequenceRecvData;
-                    toJSON(message: _127.NextSequenceRecvData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         nextSeqRecv?: any;
                     }): _127.NextSequenceRecvData;
+                    fromSDK(object: _127.NextSequenceRecvDataSDKType): _127.NextSequenceRecvData;
+                    toSDK(message: _127.NextSequenceRecvData): _127.NextSequenceRecvDataSDKType;
                 };
             };
             const v2: {
@@ -3560,8 +3560,6 @@ export declare namespace ibc {
                 ClientState: {
                     encode(message: _128.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.ClientState;
-                    fromJSON(object: any): _128.ClientState;
-                    toJSON(message: _128.ClientState): unknown;
                     fromPartial(object: {
                         sequence?: any;
                         isFrozen?: boolean;
@@ -3575,12 +3573,12 @@ export declare namespace ibc {
                         };
                         allowUpdateAfterProposal?: boolean;
                     }): _128.ClientState;
+                    fromSDK(object: _128.ClientStateSDKType): _128.ClientState;
+                    toSDK(message: _128.ClientState): _128.ClientStateSDKType;
                 };
                 ConsensusState: {
                     encode(message: _128.ConsensusState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.ConsensusState;
-                    fromJSON(object: any): _128.ConsensusState;
-                    toJSON(message: _128.ConsensusState): unknown;
                     fromPartial(object: {
                         publicKey?: {
                             typeUrl?: string;
@@ -3589,12 +3587,12 @@ export declare namespace ibc {
                         diversifier?: string;
                         timestamp?: any;
                     }): _128.ConsensusState;
+                    fromSDK(object: _128.ConsensusStateSDKType): _128.ConsensusState;
+                    toSDK(message: _128.ConsensusState): _128.ConsensusStateSDKType;
                 };
                 Header: {
                     encode(message: _128.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.Header;
-                    fromJSON(object: any): _128.Header;
-                    toJSON(message: _128.Header): unknown;
                     fromPartial(object: {
                         sequence?: any;
                         timestamp?: any;
@@ -3605,12 +3603,12 @@ export declare namespace ibc {
                         };
                         newDiversifier?: string;
                     }): _128.Header;
+                    fromSDK(object: _128.HeaderSDKType): _128.Header;
+                    toSDK(message: _128.Header): _128.HeaderSDKType;
                 };
                 Misbehaviour: {
                     encode(message: _128.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.Misbehaviour;
-                    fromJSON(object: any): _128.Misbehaviour;
-                    toJSON(message: _128.Misbehaviour): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         sequence?: any;
@@ -3627,34 +3625,34 @@ export declare namespace ibc {
                             timestamp?: any;
                         };
                     }): _128.Misbehaviour;
+                    fromSDK(object: _128.MisbehaviourSDKType): _128.Misbehaviour;
+                    toSDK(message: _128.Misbehaviour): _128.MisbehaviourSDKType;
                 };
                 SignatureAndData: {
                     encode(message: _128.SignatureAndData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.SignatureAndData;
-                    fromJSON(object: any): _128.SignatureAndData;
-                    toJSON(message: _128.SignatureAndData): unknown;
                     fromPartial(object: {
                         signature?: Uint8Array;
                         dataType?: _128.DataType;
                         data?: Uint8Array;
                         timestamp?: any;
                     }): _128.SignatureAndData;
+                    fromSDK(object: _128.SignatureAndDataSDKType): _128.SignatureAndData;
+                    toSDK(message: _128.SignatureAndData): _128.SignatureAndDataSDKType;
                 };
                 TimestampedSignatureData: {
                     encode(message: _128.TimestampedSignatureData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.TimestampedSignatureData;
-                    fromJSON(object: any): _128.TimestampedSignatureData;
-                    toJSON(message: _128.TimestampedSignatureData): unknown;
                     fromPartial(object: {
                         signatureData?: Uint8Array;
                         timestamp?: any;
                     }): _128.TimestampedSignatureData;
+                    fromSDK(object: _128.TimestampedSignatureDataSDKType): _128.TimestampedSignatureData;
+                    toSDK(message: _128.TimestampedSignatureData): _128.TimestampedSignatureDataSDKType;
                 };
                 SignBytes: {
                     encode(message: _128.SignBytes, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.SignBytes;
-                    fromJSON(object: any): _128.SignBytes;
-                    toJSON(message: _128.SignBytes): unknown;
                     fromPartial(object: {
                         sequence?: any;
                         timestamp?: any;
@@ -3662,12 +3660,12 @@ export declare namespace ibc {
                         dataType?: _128.DataType;
                         data?: Uint8Array;
                     }): _128.SignBytes;
+                    fromSDK(object: _128.SignBytesSDKType): _128.SignBytes;
+                    toSDK(message: _128.SignBytes): _128.SignBytesSDKType;
                 };
                 HeaderData: {
                     encode(message: _128.HeaderData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.HeaderData;
-                    fromJSON(object: any): _128.HeaderData;
-                    toJSON(message: _128.HeaderData): unknown;
                     fromPartial(object: {
                         newPubKey?: {
                             typeUrl?: string;
@@ -3675,12 +3673,12 @@ export declare namespace ibc {
                         };
                         newDiversifier?: string;
                     }): _128.HeaderData;
+                    fromSDK(object: _128.HeaderDataSDKType): _128.HeaderData;
+                    toSDK(message: _128.HeaderData): _128.HeaderDataSDKType;
                 };
                 ClientStateData: {
                     encode(message: _128.ClientStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.ClientStateData;
-                    fromJSON(object: any): _128.ClientStateData;
-                    toJSON(message: _128.ClientStateData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         clientState?: {
@@ -3688,12 +3686,12 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                     }): _128.ClientStateData;
+                    fromSDK(object: _128.ClientStateDataSDKType): _128.ClientStateData;
+                    toSDK(message: _128.ClientStateData): _128.ClientStateDataSDKType;
                 };
                 ConsensusStateData: {
                     encode(message: _128.ConsensusStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.ConsensusStateData;
-                    fromJSON(object: any): _128.ConsensusStateData;
-                    toJSON(message: _128.ConsensusStateData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         consensusState?: {
@@ -3701,12 +3699,12 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                     }): _128.ConsensusStateData;
+                    fromSDK(object: _128.ConsensusStateDataSDKType): _128.ConsensusStateData;
+                    toSDK(message: _128.ConsensusStateData): _128.ConsensusStateDataSDKType;
                 };
                 ConnectionStateData: {
                     encode(message: _128.ConnectionStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.ConnectionStateData;
-                    fromJSON(object: any): _128.ConnectionStateData;
-                    toJSON(message: _128.ConnectionStateData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         connection?: {
@@ -3726,12 +3724,12 @@ export declare namespace ibc {
                             delayPeriod?: any;
                         };
                     }): _128.ConnectionStateData;
+                    fromSDK(object: _128.ConnectionStateDataSDKType): _128.ConnectionStateData;
+                    toSDK(message: _128.ConnectionStateData): _128.ConnectionStateDataSDKType;
                 };
                 ChannelStateData: {
                     encode(message: _128.ChannelStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.ChannelStateData;
-                    fromJSON(object: any): _128.ChannelStateData;
-                    toJSON(message: _128.ChannelStateData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         channel?: {
@@ -3745,45 +3743,47 @@ export declare namespace ibc {
                             version?: string;
                         };
                     }): _128.ChannelStateData;
+                    fromSDK(object: _128.ChannelStateDataSDKType): _128.ChannelStateData;
+                    toSDK(message: _128.ChannelStateData): _128.ChannelStateDataSDKType;
                 };
                 PacketCommitmentData: {
                     encode(message: _128.PacketCommitmentData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.PacketCommitmentData;
-                    fromJSON(object: any): _128.PacketCommitmentData;
-                    toJSON(message: _128.PacketCommitmentData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         commitment?: Uint8Array;
                     }): _128.PacketCommitmentData;
+                    fromSDK(object: _128.PacketCommitmentDataSDKType): _128.PacketCommitmentData;
+                    toSDK(message: _128.PacketCommitmentData): _128.PacketCommitmentDataSDKType;
                 };
                 PacketAcknowledgementData: {
                     encode(message: _128.PacketAcknowledgementData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.PacketAcknowledgementData;
-                    fromJSON(object: any): _128.PacketAcknowledgementData;
-                    toJSON(message: _128.PacketAcknowledgementData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         acknowledgement?: Uint8Array;
                     }): _128.PacketAcknowledgementData;
+                    fromSDK(object: _128.PacketAcknowledgementDataSDKType): _128.PacketAcknowledgementData;
+                    toSDK(message: _128.PacketAcknowledgementData): _128.PacketAcknowledgementDataSDKType;
                 };
                 PacketReceiptAbsenceData: {
                     encode(message: _128.PacketReceiptAbsenceData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.PacketReceiptAbsenceData;
-                    fromJSON(object: any): _128.PacketReceiptAbsenceData;
-                    toJSON(message: _128.PacketReceiptAbsenceData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                     }): _128.PacketReceiptAbsenceData;
+                    fromSDK(object: _128.PacketReceiptAbsenceDataSDKType): _128.PacketReceiptAbsenceData;
+                    toSDK(message: _128.PacketReceiptAbsenceData): _128.PacketReceiptAbsenceDataSDKType;
                 };
                 NextSequenceRecvData: {
                     encode(message: _128.NextSequenceRecvData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.NextSequenceRecvData;
-                    fromJSON(object: any): _128.NextSequenceRecvData;
-                    toJSON(message: _128.NextSequenceRecvData): unknown;
                     fromPartial(object: {
                         path?: Uint8Array;
                         nextSeqRecv?: any;
                     }): _128.NextSequenceRecvData;
+                    fromSDK(object: _128.NextSequenceRecvDataSDKType): _128.NextSequenceRecvData;
+                    toSDK(message: _128.NextSequenceRecvData): _128.NextSequenceRecvDataSDKType;
                 };
             };
         }
@@ -3792,8 +3792,6 @@ export declare namespace ibc {
                 ClientState: {
                     encode(message: _129.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.ClientState;
-                    fromJSON(object: any): _129.ClientState;
-                    toJSON(message: _129.ClientState): unknown;
                     fromPartial(object: {
                         chainId?: string;
                         trustLevel?: {
@@ -3843,12 +3841,12 @@ export declare namespace ibc {
                         allowUpdateAfterExpiry?: boolean;
                         allowUpdateAfterMisbehaviour?: boolean;
                     }): _129.ClientState;
+                    fromSDK(object: _129.ClientStateSDKType): _129.ClientState;
+                    toSDK(message: _129.ClientState): _129.ClientStateSDKType;
                 };
                 ConsensusState: {
                     encode(message: _129.ConsensusState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.ConsensusState;
-                    fromJSON(object: any): _129.ConsensusState;
-                    toJSON(message: _129.ConsensusState): unknown;
                     fromPartial(object: {
                         timestamp?: Date;
                         root?: {
@@ -3856,12 +3854,12 @@ export declare namespace ibc {
                         };
                         nextValidatorsHash?: Uint8Array;
                     }): _129.ConsensusState;
+                    fromSDK(object: _129.ConsensusStateSDKType): _129.ConsensusState;
+                    toSDK(message: _129.ConsensusState): _129.ConsensusStateSDKType;
                 };
                 Misbehaviour: {
                     encode(message: _129.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.Misbehaviour;
-                    fromJSON(object: any): _129.Misbehaviour;
-                    toJSON(message: _129.Misbehaviour): unknown;
                     fromPartial(object: {
                         clientId?: string;
                         header_1?: {
@@ -4049,12 +4047,12 @@ export declare namespace ibc {
                             };
                         };
                     }): _129.Misbehaviour;
+                    fromSDK(object: _129.MisbehaviourSDKType): _129.Misbehaviour;
+                    toSDK(message: _129.Misbehaviour): _129.MisbehaviourSDKType;
                 };
                 Header: {
                     encode(message: _129.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.Header;
-                    fromJSON(object: any): _129.Header;
-                    toJSON(message: _129.Header): unknown;
                     fromPartial(object: {
                         signedHeader?: {
                             header?: {
@@ -4147,16 +4145,18 @@ export declare namespace ibc {
                             totalVotingPower?: any;
                         };
                     }): _129.Header;
+                    fromSDK(object: _129.HeaderSDKType): _129.Header;
+                    toSDK(message: _129.Header): _129.HeaderSDKType;
                 };
                 Fraction: {
                     encode(message: _129.Fraction, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.Fraction;
-                    fromJSON(object: any): _129.Fraction;
-                    toJSON(message: _129.Fraction): unknown;
                     fromPartial(object: {
                         numerator?: any;
                         denominator?: any;
                     }): _129.Fraction;
+                    fromSDK(object: _129.FractionSDKType): _129.Fraction;
+                    toSDK(message: _129.Fraction): _129.FractionSDKType;
                 };
             };
         }

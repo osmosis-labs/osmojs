@@ -103,28 +103,28 @@ export interface ParamsSDKType {
 export declare const Minter: {
     encode(message: Minter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Minter;
-    fromJSON(object: any): Minter;
-    toJSON(message: Minter): unknown;
     fromPartial(object: DeepPartial<Minter>): Minter;
+    fromSDK(object: MinterSDKType): Minter;
+    toSDK(message: Minter): MinterSDKType;
 };
 export declare const WeightedAddress: {
     encode(message: WeightedAddress, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): WeightedAddress;
-    fromJSON(object: any): WeightedAddress;
-    toJSON(message: WeightedAddress): unknown;
     fromPartial(object: DeepPartial<WeightedAddress>): WeightedAddress;
+    fromSDK(object: WeightedAddressSDKType): WeightedAddress;
+    toSDK(message: WeightedAddress): WeightedAddressSDKType;
 };
 export declare const DistributionProportions: {
     encode(message: DistributionProportions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistributionProportions;
-    fromJSON(object: any): DistributionProportions;
-    toJSON(message: DistributionProportions): unknown;
     fromPartial(object: DeepPartial<DistributionProportions>): DistributionProportions;
+    fromSDK(object: DistributionProportionsSDKType): DistributionProportions;
+    toSDK(message: DistributionProportions): DistributionProportionsSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
     fromPartial(object: DeepPartial<Params>): Params;
+    fromSDK(object: ParamsSDKType): Params;
+    toSDK(message: Params): ParamsSDKType;
 };

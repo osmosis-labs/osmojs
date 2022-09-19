@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** ModuleDescriptor describes an app module. */
 
 export interface ModuleDescriptor {
@@ -232,39 +232,39 @@ export const ModuleDescriptor = {
     return message;
   },
 
-  fromJSON(object: any): ModuleDescriptor {
-    return {
-      goImport: isSet(object.goImport) ? String(object.goImport) : "",
-      usePackage: Array.isArray(object?.usePackage) ? object.usePackage.map((e: any) => PackageReference.fromJSON(e)) : [],
-      canMigrateFrom: Array.isArray(object?.canMigrateFrom) ? object.canMigrateFrom.map((e: any) => MigrateFromInfo.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ModuleDescriptor): unknown {
-    const obj: any = {};
-    message.goImport !== undefined && (obj.goImport = message.goImport);
-
-    if (message.usePackage) {
-      obj.usePackage = message.usePackage.map(e => e ? PackageReference.toJSON(e) : undefined);
-    } else {
-      obj.usePackage = [];
-    }
-
-    if (message.canMigrateFrom) {
-      obj.canMigrateFrom = message.canMigrateFrom.map(e => e ? MigrateFromInfo.toJSON(e) : undefined);
-    } else {
-      obj.canMigrateFrom = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ModuleDescriptor>): ModuleDescriptor {
     const message = createBaseModuleDescriptor();
     message.goImport = object.goImport ?? "";
     message.usePackage = object.usePackage?.map(e => PackageReference.fromPartial(e)) || [];
     message.canMigrateFrom = object.canMigrateFrom?.map(e => MigrateFromInfo.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: ModuleDescriptorSDKType): ModuleDescriptor {
+    return {
+      goImport: isSet(object.go_import) ? object.go_import : undefined,
+      usePackage: Array.isArray(object?.use_package) ? object.use_package.map((e: any) => PackageReference.fromSDK(e)) : [],
+      canMigrateFrom: Array.isArray(object?.can_migrate_from) ? object.can_migrate_from.map((e: any) => MigrateFromInfo.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: ModuleDescriptor): ModuleDescriptorSDKType {
+    const obj: any = {};
+    message.goImport !== undefined && (obj.go_import = message.goImport);
+
+    if (message.usePackage) {
+      obj.use_package = message.usePackage.map(e => e ? PackageReference.toSDK(e) : undefined);
+    } else {
+      obj.use_package = [];
+    }
+
+    if (message.canMigrateFrom) {
+      obj.can_migrate_from = message.canMigrateFrom.map(e => e ? MigrateFromInfo.toSDK(e) : undefined);
+    } else {
+      obj.can_migrate_from = [];
+    }
+
+    return obj;
   }
 
 };
@@ -315,25 +315,25 @@ export const PackageReference = {
     return message;
   },
 
-  fromJSON(object: any): PackageReference {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      revision: isSet(object.revision) ? Number(object.revision) : 0
-    };
-  },
-
-  toJSON(message: PackageReference): unknown {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.revision !== undefined && (obj.revision = Math.round(message.revision));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PackageReference>): PackageReference {
     const message = createBasePackageReference();
     message.name = object.name ?? "";
     message.revision = object.revision ?? 0;
     return message;
+  },
+
+  fromSDK(object: PackageReferenceSDKType): PackageReference {
+    return {
+      name: isSet(object.name) ? object.name : undefined,
+      revision: isSet(object.revision) ? object.revision : undefined
+    };
+  },
+
+  toSDK(message: PackageReference): PackageReferenceSDKType {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.revision !== undefined && (obj.revision = message.revision);
+    return obj;
   }
 
 };
@@ -375,22 +375,22 @@ export const MigrateFromInfo = {
     return message;
   },
 
-  fromJSON(object: any): MigrateFromInfo {
-    return {
-      module: isSet(object.module) ? String(object.module) : ""
-    };
-  },
-
-  toJSON(message: MigrateFromInfo): unknown {
-    const obj: any = {};
-    message.module !== undefined && (obj.module = message.module);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MigrateFromInfo>): MigrateFromInfo {
     const message = createBaseMigrateFromInfo();
     message.module = object.module ?? "";
     return message;
+  },
+
+  fromSDK(object: MigrateFromInfoSDKType): MigrateFromInfo {
+    return {
+      module: isSet(object.module) ? object.module : undefined
+    };
+  },
+
+  toSDK(message: MigrateFromInfo): MigrateFromInfoSDKType {
+    const obj: any = {};
+    message.module !== undefined && (obj.module = message.module);
+    return obj;
   }
 
 };

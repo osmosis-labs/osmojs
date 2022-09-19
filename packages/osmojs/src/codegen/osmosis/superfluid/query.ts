@@ -199,18 +199,18 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryParamsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryParamsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
+  },
+
+  fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest {
+    return {};
+  },
+
+  toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -252,22 +252,22 @@ export const QueryParamsResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: QueryParamsResponse): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromSDK(object.params) : undefined
+    };
+  },
+
+  toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
+    return obj;
   }
 
 };
@@ -309,22 +309,22 @@ export const AssetTypeRequest = {
     return message;
   },
 
-  fromJSON(object: any): AssetTypeRequest {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : ""
-    };
-  },
-
-  toJSON(message: AssetTypeRequest): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<AssetTypeRequest>): AssetTypeRequest {
     const message = createBaseAssetTypeRequest();
     message.denom = object.denom ?? "";
     return message;
+  },
+
+  fromSDK(object: AssetTypeRequestSDKType): AssetTypeRequest {
+    return {
+      denom: isSet(object.denom) ? object.denom : undefined
+    };
+  },
+
+  toSDK(message: AssetTypeRequest): AssetTypeRequestSDKType {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   }
 
 };
@@ -366,22 +366,22 @@ export const AssetTypeResponse = {
     return message;
   },
 
-  fromJSON(object: any): AssetTypeResponse {
-    return {
-      assetType: isSet(object.assetType) ? superfluidAssetTypeFromJSON(object.assetType) : 0
-    };
-  },
-
-  toJSON(message: AssetTypeResponse): unknown {
-    const obj: any = {};
-    message.assetType !== undefined && (obj.assetType = superfluidAssetTypeToJSON(message.assetType));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<AssetTypeResponse>): AssetTypeResponse {
     const message = createBaseAssetTypeResponse();
     message.assetType = object.assetType ?? 0;
     return message;
+  },
+
+  fromSDK(object: AssetTypeResponseSDKType): AssetTypeResponse {
+    return {
+      assetType: isSet(object.asset_type) ? superfluidAssetTypeFromJSON(object.asset_type) : 0
+    };
+  },
+
+  toSDK(message: AssetTypeResponse): AssetTypeResponseSDKType {
+    const obj: any = {};
+    message.assetType !== undefined && (obj.asset_type = superfluidAssetTypeToJSON(message.assetType));
+    return obj;
   }
 
 };
@@ -413,18 +413,18 @@ export const AllAssetsRequest = {
     return message;
   },
 
-  fromJSON(_: any): AllAssetsRequest {
-    return {};
-  },
-
-  toJSON(_: AllAssetsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<AllAssetsRequest>): AllAssetsRequest {
     const message = createBaseAllAssetsRequest();
     return message;
+  },
+
+  fromSDK(_: AllAssetsRequestSDKType): AllAssetsRequest {
+    return {};
+  },
+
+  toSDK(_: AllAssetsRequest): AllAssetsRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -466,28 +466,28 @@ export const AllAssetsResponse = {
     return message;
   },
 
-  fromJSON(object: any): AllAssetsResponse {
+  fromPartial(object: DeepPartial<AllAssetsResponse>): AllAssetsResponse {
+    const message = createBaseAllAssetsResponse();
+    message.assets = object.assets?.map(e => SuperfluidAsset.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: AllAssetsResponseSDKType): AllAssetsResponse {
     return {
-      assets: Array.isArray(object?.assets) ? object.assets.map((e: any) => SuperfluidAsset.fromJSON(e)) : []
+      assets: Array.isArray(object?.assets) ? object.assets.map((e: any) => SuperfluidAsset.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: AllAssetsResponse): unknown {
+  toSDK(message: AllAssetsResponse): AllAssetsResponseSDKType {
     const obj: any = {};
 
     if (message.assets) {
-      obj.assets = message.assets.map(e => e ? SuperfluidAsset.toJSON(e) : undefined);
+      obj.assets = message.assets.map(e => e ? SuperfluidAsset.toSDK(e) : undefined);
     } else {
       obj.assets = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<AllAssetsResponse>): AllAssetsResponse {
-    const message = createBaseAllAssetsResponse();
-    message.assets = object.assets?.map(e => SuperfluidAsset.fromPartial(e)) || [];
-    return message;
   }
 
 };
@@ -529,22 +529,22 @@ export const AssetMultiplierRequest = {
     return message;
   },
 
-  fromJSON(object: any): AssetMultiplierRequest {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : ""
-    };
-  },
-
-  toJSON(message: AssetMultiplierRequest): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<AssetMultiplierRequest>): AssetMultiplierRequest {
     const message = createBaseAssetMultiplierRequest();
     message.denom = object.denom ?? "";
     return message;
+  },
+
+  fromSDK(object: AssetMultiplierRequestSDKType): AssetMultiplierRequest {
+    return {
+      denom: isSet(object.denom) ? object.denom : undefined
+    };
+  },
+
+  toSDK(message: AssetMultiplierRequest): AssetMultiplierRequestSDKType {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   }
 
 };
@@ -586,22 +586,22 @@ export const AssetMultiplierResponse = {
     return message;
   },
 
-  fromJSON(object: any): AssetMultiplierResponse {
-    return {
-      osmoEquivalentMultiplier: isSet(object.osmoEquivalentMultiplier) ? OsmoEquivalentMultiplierRecord.fromJSON(object.osmoEquivalentMultiplier) : undefined
-    };
-  },
-
-  toJSON(message: AssetMultiplierResponse): unknown {
-    const obj: any = {};
-    message.osmoEquivalentMultiplier !== undefined && (obj.osmoEquivalentMultiplier = message.osmoEquivalentMultiplier ? OsmoEquivalentMultiplierRecord.toJSON(message.osmoEquivalentMultiplier) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<AssetMultiplierResponse>): AssetMultiplierResponse {
     const message = createBaseAssetMultiplierResponse();
     message.osmoEquivalentMultiplier = object.osmoEquivalentMultiplier !== undefined && object.osmoEquivalentMultiplier !== null ? OsmoEquivalentMultiplierRecord.fromPartial(object.osmoEquivalentMultiplier) : undefined;
     return message;
+  },
+
+  fromSDK(object: AssetMultiplierResponseSDKType): AssetMultiplierResponse {
+    return {
+      osmoEquivalentMultiplier: isSet(object.osmo_equivalent_multiplier) ? OsmoEquivalentMultiplierRecord.fromSDK(object.osmo_equivalent_multiplier) : undefined
+    };
+  },
+
+  toSDK(message: AssetMultiplierResponse): AssetMultiplierResponseSDKType {
+    const obj: any = {};
+    message.osmoEquivalentMultiplier !== undefined && (obj.osmo_equivalent_multiplier = message.osmoEquivalentMultiplier ? OsmoEquivalentMultiplierRecord.toSDK(message.osmoEquivalentMultiplier) : undefined);
+    return obj;
   }
 
 };
@@ -670,24 +670,6 @@ export const SuperfluidIntermediaryAccountInfo = {
     return message;
   },
 
-  fromJSON(object: any): SuperfluidIntermediaryAccountInfo {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : "",
-      valAddr: isSet(object.valAddr) ? String(object.valAddr) : "",
-      gaugeId: isSet(object.gaugeId) ? Long.fromString(object.gaugeId) : Long.UZERO,
-      address: isSet(object.address) ? String(object.address) : ""
-    };
-  },
-
-  toJSON(message: SuperfluidIntermediaryAccountInfo): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.valAddr !== undefined && (obj.valAddr = message.valAddr);
-    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || Long.UZERO).toString());
-    message.address !== undefined && (obj.address = message.address);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SuperfluidIntermediaryAccountInfo>): SuperfluidIntermediaryAccountInfo {
     const message = createBaseSuperfluidIntermediaryAccountInfo();
     message.denom = object.denom ?? "";
@@ -695,6 +677,24 @@ export const SuperfluidIntermediaryAccountInfo = {
     message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     message.address = object.address ?? "";
     return message;
+  },
+
+  fromSDK(object: SuperfluidIntermediaryAccountInfoSDKType): SuperfluidIntermediaryAccountInfo {
+    return {
+      denom: isSet(object.denom) ? object.denom : undefined,
+      valAddr: isSet(object.val_addr) ? object.val_addr : undefined,
+      gaugeId: isSet(object.gauge_id) ? object.gauge_id : undefined,
+      address: isSet(object.address) ? object.address : undefined
+    };
+  },
+
+  toSDK(message: SuperfluidIntermediaryAccountInfo): SuperfluidIntermediaryAccountInfoSDKType {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    message.valAddr !== undefined && (obj.val_addr = message.valAddr);
+    message.gaugeId !== undefined && (obj.gauge_id = message.gaugeId);
+    message.address !== undefined && (obj.address = message.address);
+    return obj;
   }
 
 };
@@ -736,22 +736,22 @@ export const AllIntermediaryAccountsRequest = {
     return message;
   },
 
-  fromJSON(object: any): AllIntermediaryAccountsRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: AllIntermediaryAccountsRequest): unknown {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<AllIntermediaryAccountsRequest>): AllIntermediaryAccountsRequest {
     const message = createBaseAllIntermediaryAccountsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: AllIntermediaryAccountsRequestSDKType): AllIntermediaryAccountsRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: AllIntermediaryAccountsRequest): AllIntermediaryAccountsRequestSDKType {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -802,31 +802,31 @@ export const AllIntermediaryAccountsResponse = {
     return message;
   },
 
-  fromJSON(object: any): AllIntermediaryAccountsResponse {
-    return {
-      accounts: Array.isArray(object?.accounts) ? object.accounts.map((e: any) => SuperfluidIntermediaryAccountInfo.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: AllIntermediaryAccountsResponse): unknown {
-    const obj: any = {};
-
-    if (message.accounts) {
-      obj.accounts = message.accounts.map(e => e ? SuperfluidIntermediaryAccountInfo.toJSON(e) : undefined);
-    } else {
-      obj.accounts = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<AllIntermediaryAccountsResponse>): AllIntermediaryAccountsResponse {
     const message = createBaseAllIntermediaryAccountsResponse();
     message.accounts = object.accounts?.map(e => SuperfluidIntermediaryAccountInfo.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: AllIntermediaryAccountsResponseSDKType): AllIntermediaryAccountsResponse {
+    return {
+      accounts: Array.isArray(object?.accounts) ? object.accounts.map((e: any) => SuperfluidIntermediaryAccountInfo.fromSDK(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: AllIntermediaryAccountsResponse): AllIntermediaryAccountsResponseSDKType {
+    const obj: any = {};
+
+    if (message.accounts) {
+      obj.accounts = message.accounts.map(e => e ? SuperfluidIntermediaryAccountInfo.toSDK(e) : undefined);
+    } else {
+      obj.accounts = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -868,22 +868,22 @@ export const ConnectedIntermediaryAccountRequest = {
     return message;
   },
 
-  fromJSON(object: any): ConnectedIntermediaryAccountRequest {
-    return {
-      lockId: isSet(object.lockId) ? Long.fromString(object.lockId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: ConnectedIntermediaryAccountRequest): unknown {
-    const obj: any = {};
-    message.lockId !== undefined && (obj.lockId = (message.lockId || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ConnectedIntermediaryAccountRequest>): ConnectedIntermediaryAccountRequest {
     const message = createBaseConnectedIntermediaryAccountRequest();
     message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: ConnectedIntermediaryAccountRequestSDKType): ConnectedIntermediaryAccountRequest {
+    return {
+      lockId: isSet(object.lock_id) ? object.lock_id : undefined
+    };
+  },
+
+  toSDK(message: ConnectedIntermediaryAccountRequest): ConnectedIntermediaryAccountRequestSDKType {
+    const obj: any = {};
+    message.lockId !== undefined && (obj.lock_id = message.lockId);
+    return obj;
   }
 
 };
@@ -925,22 +925,22 @@ export const ConnectedIntermediaryAccountResponse = {
     return message;
   },
 
-  fromJSON(object: any): ConnectedIntermediaryAccountResponse {
-    return {
-      account: isSet(object.account) ? SuperfluidIntermediaryAccountInfo.fromJSON(object.account) : undefined
-    };
-  },
-
-  toJSON(message: ConnectedIntermediaryAccountResponse): unknown {
-    const obj: any = {};
-    message.account !== undefined && (obj.account = message.account ? SuperfluidIntermediaryAccountInfo.toJSON(message.account) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ConnectedIntermediaryAccountResponse>): ConnectedIntermediaryAccountResponse {
     const message = createBaseConnectedIntermediaryAccountResponse();
     message.account = object.account !== undefined && object.account !== null ? SuperfluidIntermediaryAccountInfo.fromPartial(object.account) : undefined;
     return message;
+  },
+
+  fromSDK(object: ConnectedIntermediaryAccountResponseSDKType): ConnectedIntermediaryAccountResponse {
+    return {
+      account: isSet(object.account) ? SuperfluidIntermediaryAccountInfo.fromSDK(object.account) : undefined
+    };
+  },
+
+  toSDK(message: ConnectedIntermediaryAccountResponse): ConnectedIntermediaryAccountResponseSDKType {
+    const obj: any = {};
+    message.account !== undefined && (obj.account = message.account ? SuperfluidIntermediaryAccountInfo.toSDK(message.account) : undefined);
+    return obj;
   }
 
 };
@@ -972,18 +972,18 @@ export const TotalSuperfluidDelegationsRequest = {
     return message;
   },
 
-  fromJSON(_: any): TotalSuperfluidDelegationsRequest {
-    return {};
-  },
-
-  toJSON(_: TotalSuperfluidDelegationsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<TotalSuperfluidDelegationsRequest>): TotalSuperfluidDelegationsRequest {
     const message = createBaseTotalSuperfluidDelegationsRequest();
     return message;
+  },
+
+  fromSDK(_: TotalSuperfluidDelegationsRequestSDKType): TotalSuperfluidDelegationsRequest {
+    return {};
+  },
+
+  toSDK(_: TotalSuperfluidDelegationsRequest): TotalSuperfluidDelegationsRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -1025,22 +1025,22 @@ export const TotalSuperfluidDelegationsResponse = {
     return message;
   },
 
-  fromJSON(object: any): TotalSuperfluidDelegationsResponse {
-    return {
-      totalDelegations: isSet(object.totalDelegations) ? String(object.totalDelegations) : ""
-    };
-  },
-
-  toJSON(message: TotalSuperfluidDelegationsResponse): unknown {
-    const obj: any = {};
-    message.totalDelegations !== undefined && (obj.totalDelegations = message.totalDelegations);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<TotalSuperfluidDelegationsResponse>): TotalSuperfluidDelegationsResponse {
     const message = createBaseTotalSuperfluidDelegationsResponse();
     message.totalDelegations = object.totalDelegations ?? "";
     return message;
+  },
+
+  fromSDK(object: TotalSuperfluidDelegationsResponseSDKType): TotalSuperfluidDelegationsResponse {
+    return {
+      totalDelegations: isSet(object.totalDelegations) ? object.totalDelegations : undefined
+    };
+  },
+
+  toSDK(message: TotalSuperfluidDelegationsResponse): TotalSuperfluidDelegationsResponseSDKType {
+    const obj: any = {};
+    message.totalDelegations !== undefined && (obj.totalDelegations = message.totalDelegations);
+    return obj;
   }
 
 };
@@ -1100,28 +1100,28 @@ export const SuperfluidDelegationAmountRequest = {
     return message;
   },
 
-  fromJSON(object: any): SuperfluidDelegationAmountRequest {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      denom: isSet(object.denom) ? String(object.denom) : ""
-    };
-  },
-
-  toJSON(message: SuperfluidDelegationAmountRequest): unknown {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    message.denom !== undefined && (obj.denom = message.denom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SuperfluidDelegationAmountRequest>): SuperfluidDelegationAmountRequest {
     const message = createBaseSuperfluidDelegationAmountRequest();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
     message.denom = object.denom ?? "";
     return message;
+  },
+
+  fromSDK(object: SuperfluidDelegationAmountRequestSDKType): SuperfluidDelegationAmountRequest {
+    return {
+      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined,
+      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined,
+      denom: isSet(object.denom) ? object.denom : undefined
+    };
+  },
+
+  toSDK(message: SuperfluidDelegationAmountRequest): SuperfluidDelegationAmountRequestSDKType {
+    const obj: any = {};
+    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
+    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   }
 
 };
@@ -1163,28 +1163,28 @@ export const SuperfluidDelegationAmountResponse = {
     return message;
   },
 
-  fromJSON(object: any): SuperfluidDelegationAmountResponse {
+  fromPartial(object: DeepPartial<SuperfluidDelegationAmountResponse>): SuperfluidDelegationAmountResponse {
+    const message = createBaseSuperfluidDelegationAmountResponse();
+    message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: SuperfluidDelegationAmountResponseSDKType): SuperfluidDelegationAmountResponse {
     return {
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: SuperfluidDelegationAmountResponse): unknown {
+  toSDK(message: SuperfluidDelegationAmountResponse): SuperfluidDelegationAmountResponseSDKType {
     const obj: any = {};
 
     if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
+      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
     } else {
       obj.amount = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<SuperfluidDelegationAmountResponse>): SuperfluidDelegationAmountResponse {
-    const message = createBaseSuperfluidDelegationAmountResponse();
-    message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
-    return message;
   }
 
 };
@@ -1226,22 +1226,22 @@ export const SuperfluidDelegationsByDelegatorRequest = {
     return message;
   },
 
-  fromJSON(object: any): SuperfluidDelegationsByDelegatorRequest {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : ""
-    };
-  },
-
-  toJSON(message: SuperfluidDelegationsByDelegatorRequest): unknown {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SuperfluidDelegationsByDelegatorRequest>): SuperfluidDelegationsByDelegatorRequest {
     const message = createBaseSuperfluidDelegationsByDelegatorRequest();
     message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
+  },
+
+  fromSDK(object: SuperfluidDelegationsByDelegatorRequestSDKType): SuperfluidDelegationsByDelegatorRequest {
+    return {
+      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined
+    };
+  },
+
+  toSDK(message: SuperfluidDelegationsByDelegatorRequest): SuperfluidDelegationsByDelegatorRequestSDKType {
+    const obj: any = {};
+    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
+    return obj;
   }
 
 };
@@ -1301,39 +1301,39 @@ export const SuperfluidDelegationsByDelegatorResponse = {
     return message;
   },
 
-  fromJSON(object: any): SuperfluidDelegationsByDelegatorResponse {
-    return {
-      superfluidDelegationRecords: Array.isArray(object?.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map((e: any) => SuperfluidDelegationRecord.fromJSON(e)) : [],
-      totalDelegatedCoins: Array.isArray(object?.totalDelegatedCoins) ? object.totalDelegatedCoins.map((e: any) => Coin.fromJSON(e)) : [],
-      totalEquivalentStakedAmount: isSet(object.totalEquivalentStakedAmount) ? Coin.fromJSON(object.totalEquivalentStakedAmount) : undefined
-    };
-  },
-
-  toJSON(message: SuperfluidDelegationsByDelegatorResponse): unknown {
-    const obj: any = {};
-
-    if (message.superfluidDelegationRecords) {
-      obj.superfluidDelegationRecords = message.superfluidDelegationRecords.map(e => e ? SuperfluidDelegationRecord.toJSON(e) : undefined);
-    } else {
-      obj.superfluidDelegationRecords = [];
-    }
-
-    if (message.totalDelegatedCoins) {
-      obj.totalDelegatedCoins = message.totalDelegatedCoins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.totalDelegatedCoins = [];
-    }
-
-    message.totalEquivalentStakedAmount !== undefined && (obj.totalEquivalentStakedAmount = message.totalEquivalentStakedAmount ? Coin.toJSON(message.totalEquivalentStakedAmount) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SuperfluidDelegationsByDelegatorResponse>): SuperfluidDelegationsByDelegatorResponse {
     const message = createBaseSuperfluidDelegationsByDelegatorResponse();
     message.superfluidDelegationRecords = object.superfluidDelegationRecords?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
     message.totalDelegatedCoins = object.totalDelegatedCoins?.map(e => Coin.fromPartial(e)) || [];
     message.totalEquivalentStakedAmount = object.totalEquivalentStakedAmount !== undefined && object.totalEquivalentStakedAmount !== null ? Coin.fromPartial(object.totalEquivalentStakedAmount) : undefined;
     return message;
+  },
+
+  fromSDK(object: SuperfluidDelegationsByDelegatorResponseSDKType): SuperfluidDelegationsByDelegatorResponse {
+    return {
+      superfluidDelegationRecords: Array.isArray(object?.superfluid_delegation_records) ? object.superfluid_delegation_records.map((e: any) => SuperfluidDelegationRecord.fromSDK(e)) : [],
+      totalDelegatedCoins: Array.isArray(object?.total_delegated_coins) ? object.total_delegated_coins.map((e: any) => Coin.fromSDK(e)) : [],
+      totalEquivalentStakedAmount: isSet(object.total_equivalent_staked_amount) ? Coin.fromSDK(object.total_equivalent_staked_amount) : undefined
+    };
+  },
+
+  toSDK(message: SuperfluidDelegationsByDelegatorResponse): SuperfluidDelegationsByDelegatorResponseSDKType {
+    const obj: any = {};
+
+    if (message.superfluidDelegationRecords) {
+      obj.superfluid_delegation_records = message.superfluidDelegationRecords.map(e => e ? SuperfluidDelegationRecord.toSDK(e) : undefined);
+    } else {
+      obj.superfluid_delegation_records = [];
+    }
+
+    if (message.totalDelegatedCoins) {
+      obj.total_delegated_coins = message.totalDelegatedCoins.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.total_delegated_coins = [];
+    }
+
+    message.totalEquivalentStakedAmount !== undefined && (obj.total_equivalent_staked_amount = message.totalEquivalentStakedAmount ? Coin.toSDK(message.totalEquivalentStakedAmount) : undefined);
+    return obj;
   }
 
 };
@@ -1384,25 +1384,25 @@ export const SuperfluidUndelegationsByDelegatorRequest = {
     return message;
   },
 
-  fromJSON(object: any): SuperfluidUndelegationsByDelegatorRequest {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      denom: isSet(object.denom) ? String(object.denom) : ""
-    };
-  },
-
-  toJSON(message: SuperfluidUndelegationsByDelegatorRequest): unknown {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.denom !== undefined && (obj.denom = message.denom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SuperfluidUndelegationsByDelegatorRequest>): SuperfluidUndelegationsByDelegatorRequest {
     const message = createBaseSuperfluidUndelegationsByDelegatorRequest();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.denom = object.denom ?? "";
     return message;
+  },
+
+  fromSDK(object: SuperfluidUndelegationsByDelegatorRequestSDKType): SuperfluidUndelegationsByDelegatorRequest {
+    return {
+      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined,
+      denom: isSet(object.denom) ? object.denom : undefined
+    };
+  },
+
+  toSDK(message: SuperfluidUndelegationsByDelegatorRequest): SuperfluidUndelegationsByDelegatorRequestSDKType {
+    const obj: any = {};
+    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   }
 
 };
@@ -1462,44 +1462,44 @@ export const SuperfluidUndelegationsByDelegatorResponse = {
     return message;
   },
 
-  fromJSON(object: any): SuperfluidUndelegationsByDelegatorResponse {
-    return {
-      superfluidDelegationRecords: Array.isArray(object?.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map((e: any) => SuperfluidDelegationRecord.fromJSON(e)) : [],
-      totalUndelegatedCoins: Array.isArray(object?.totalUndelegatedCoins) ? object.totalUndelegatedCoins.map((e: any) => Coin.fromJSON(e)) : [],
-      syntheticLocks: Array.isArray(object?.syntheticLocks) ? object.syntheticLocks.map((e: any) => SyntheticLock.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: SuperfluidUndelegationsByDelegatorResponse): unknown {
-    const obj: any = {};
-
-    if (message.superfluidDelegationRecords) {
-      obj.superfluidDelegationRecords = message.superfluidDelegationRecords.map(e => e ? SuperfluidDelegationRecord.toJSON(e) : undefined);
-    } else {
-      obj.superfluidDelegationRecords = [];
-    }
-
-    if (message.totalUndelegatedCoins) {
-      obj.totalUndelegatedCoins = message.totalUndelegatedCoins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.totalUndelegatedCoins = [];
-    }
-
-    if (message.syntheticLocks) {
-      obj.syntheticLocks = message.syntheticLocks.map(e => e ? SyntheticLock.toJSON(e) : undefined);
-    } else {
-      obj.syntheticLocks = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SuperfluidUndelegationsByDelegatorResponse>): SuperfluidUndelegationsByDelegatorResponse {
     const message = createBaseSuperfluidUndelegationsByDelegatorResponse();
     message.superfluidDelegationRecords = object.superfluidDelegationRecords?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
     message.totalUndelegatedCoins = object.totalUndelegatedCoins?.map(e => Coin.fromPartial(e)) || [];
     message.syntheticLocks = object.syntheticLocks?.map(e => SyntheticLock.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: SuperfluidUndelegationsByDelegatorResponseSDKType): SuperfluidUndelegationsByDelegatorResponse {
+    return {
+      superfluidDelegationRecords: Array.isArray(object?.superfluid_delegation_records) ? object.superfluid_delegation_records.map((e: any) => SuperfluidDelegationRecord.fromSDK(e)) : [],
+      totalUndelegatedCoins: Array.isArray(object?.total_undelegated_coins) ? object.total_undelegated_coins.map((e: any) => Coin.fromSDK(e)) : [],
+      syntheticLocks: Array.isArray(object?.synthetic_locks) ? object.synthetic_locks.map((e: any) => SyntheticLock.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: SuperfluidUndelegationsByDelegatorResponse): SuperfluidUndelegationsByDelegatorResponseSDKType {
+    const obj: any = {};
+
+    if (message.superfluidDelegationRecords) {
+      obj.superfluid_delegation_records = message.superfluidDelegationRecords.map(e => e ? SuperfluidDelegationRecord.toSDK(e) : undefined);
+    } else {
+      obj.superfluid_delegation_records = [];
+    }
+
+    if (message.totalUndelegatedCoins) {
+      obj.total_undelegated_coins = message.totalUndelegatedCoins.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.total_undelegated_coins = [];
+    }
+
+    if (message.syntheticLocks) {
+      obj.synthetic_locks = message.syntheticLocks.map(e => e ? SyntheticLock.toSDK(e) : undefined);
+    } else {
+      obj.synthetic_locks = [];
+    }
+
+    return obj;
   }
 
 };
@@ -1550,25 +1550,25 @@ export const SuperfluidDelegationsByValidatorDenomRequest = {
     return message;
   },
 
-  fromJSON(object: any): SuperfluidDelegationsByValidatorDenomRequest {
-    return {
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      denom: isSet(object.denom) ? String(object.denom) : ""
-    };
-  },
-
-  toJSON(message: SuperfluidDelegationsByValidatorDenomRequest): unknown {
-    const obj: any = {};
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    message.denom !== undefined && (obj.denom = message.denom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SuperfluidDelegationsByValidatorDenomRequest>): SuperfluidDelegationsByValidatorDenomRequest {
     const message = createBaseSuperfluidDelegationsByValidatorDenomRequest();
     message.validatorAddress = object.validatorAddress ?? "";
     message.denom = object.denom ?? "";
     return message;
+  },
+
+  fromSDK(object: SuperfluidDelegationsByValidatorDenomRequestSDKType): SuperfluidDelegationsByValidatorDenomRequest {
+    return {
+      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined,
+      denom: isSet(object.denom) ? object.denom : undefined
+    };
+  },
+
+  toSDK(message: SuperfluidDelegationsByValidatorDenomRequest): SuperfluidDelegationsByValidatorDenomRequestSDKType {
+    const obj: any = {};
+    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   }
 
 };
@@ -1610,28 +1610,28 @@ export const SuperfluidDelegationsByValidatorDenomResponse = {
     return message;
   },
 
-  fromJSON(object: any): SuperfluidDelegationsByValidatorDenomResponse {
-    return {
-      superfluidDelegationRecords: Array.isArray(object?.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map((e: any) => SuperfluidDelegationRecord.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: SuperfluidDelegationsByValidatorDenomResponse): unknown {
-    const obj: any = {};
-
-    if (message.superfluidDelegationRecords) {
-      obj.superfluidDelegationRecords = message.superfluidDelegationRecords.map(e => e ? SuperfluidDelegationRecord.toJSON(e) : undefined);
-    } else {
-      obj.superfluidDelegationRecords = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SuperfluidDelegationsByValidatorDenomResponse>): SuperfluidDelegationsByValidatorDenomResponse {
     const message = createBaseSuperfluidDelegationsByValidatorDenomResponse();
     message.superfluidDelegationRecords = object.superfluidDelegationRecords?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: SuperfluidDelegationsByValidatorDenomResponseSDKType): SuperfluidDelegationsByValidatorDenomResponse {
+    return {
+      superfluidDelegationRecords: Array.isArray(object?.superfluid_delegation_records) ? object.superfluid_delegation_records.map((e: any) => SuperfluidDelegationRecord.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: SuperfluidDelegationsByValidatorDenomResponse): SuperfluidDelegationsByValidatorDenomResponseSDKType {
+    const obj: any = {};
+
+    if (message.superfluidDelegationRecords) {
+      obj.superfluid_delegation_records = message.superfluidDelegationRecords.map(e => e ? SuperfluidDelegationRecord.toSDK(e) : undefined);
+    } else {
+      obj.superfluid_delegation_records = [];
+    }
+
+    return obj;
   }
 
 };
@@ -1682,25 +1682,25 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest = {
     return message;
   },
 
-  fromJSON(object: any): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
-    return {
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      denom: isSet(object.denom) ? String(object.denom) : ""
-    };
-  },
-
-  toJSON(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): unknown {
-    const obj: any = {};
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    message.denom !== undefined && (obj.denom = message.denom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomRequest>): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
     const message = createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomRequest();
     message.validatorAddress = object.validatorAddress ?? "";
     message.denom = object.denom ?? "";
     return message;
+  },
+
+  fromSDK(object: EstimateSuperfluidDelegatedAmountByValidatorDenomRequestSDKType): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
+    return {
+      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined,
+      denom: isSet(object.denom) ? object.denom : undefined
+    };
+  },
+
+  toSDK(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): EstimateSuperfluidDelegatedAmountByValidatorDenomRequestSDKType {
+    const obj: any = {};
+    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   }
 
 };
@@ -1742,28 +1742,28 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse = {
     return message;
   },
 
-  fromJSON(object: any): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
-    return {
-      totalDelegatedCoins: Array.isArray(object?.totalDelegatedCoins) ? object.totalDelegatedCoins.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): unknown {
-    const obj: any = {};
-
-    if (message.totalDelegatedCoins) {
-      obj.totalDelegatedCoins = message.totalDelegatedCoins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.totalDelegatedCoins = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
     const message = createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomResponse();
     message.totalDelegatedCoins = object.totalDelegatedCoins?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
+    return {
+      totalDelegatedCoins: Array.isArray(object?.total_delegated_coins) ? object.total_delegated_coins.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType {
+    const obj: any = {};
+
+    if (message.totalDelegatedCoins) {
+      obj.total_delegated_coins = message.totalDelegatedCoins.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.total_delegated_coins = [];
+    }
+
+    return obj;
   }
 
 };

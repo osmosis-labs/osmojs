@@ -44,28 +44,28 @@ export interface DistrRecordSDKType {
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
     fromPartial(object: DeepPartial<Params>): Params;
+    fromSDK(object: ParamsSDKType): Params;
+    toSDK(message: Params): ParamsSDKType;
 };
 export declare const LockableDurationsInfo: {
     encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
-    fromJSON(object: any): LockableDurationsInfo;
-    toJSON(message: LockableDurationsInfo): unknown;
     fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo;
+    fromSDK(object: LockableDurationsInfoSDKType): LockableDurationsInfo;
+    toSDK(message: LockableDurationsInfo): LockableDurationsInfoSDKType;
 };
 export declare const DistrInfo: {
     encode(message: DistrInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrInfo;
-    fromJSON(object: any): DistrInfo;
-    toJSON(message: DistrInfo): unknown;
     fromPartial(object: DeepPartial<DistrInfo>): DistrInfo;
+    fromSDK(object: DistrInfoSDKType): DistrInfo;
+    toSDK(message: DistrInfo): DistrInfoSDKType;
 };
 export declare const DistrRecord: {
     encode(message: DistrRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrRecord;
-    fromJSON(object: any): DistrRecord;
-    toJSON(message: DistrRecord): unknown;
     fromPartial(object: DeepPartial<DistrRecord>): DistrRecord;
+    fromSDK(object: DistrRecordSDKType): DistrRecord;
+    toSDK(message: DistrRecord): DistrRecordSDKType;
 };

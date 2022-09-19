@@ -2,7 +2,7 @@ import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { ConnectionEnd, ConnectionEndSDKType } from "../../../core/connection/v1/connection";
 import { Channel, ChannelSDKType } from "../../../core/channel/v1/channel";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * DataType defines the type of solo machine proof being created. This is done
  * to preserve uniqueness of different data sign byte encodings.
@@ -562,24 +562,6 @@ export const ClientState = {
     return message;
   },
 
-  fromJSON(object: any): ClientState {
-    return {
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      frozenSequence: isSet(object.frozenSequence) ? Long.fromString(object.frozenSequence) : Long.UZERO,
-      consensusState: isSet(object.consensusState) ? ConsensusState.fromJSON(object.consensusState) : undefined,
-      allowUpdateAfterProposal: isSet(object.allowUpdateAfterProposal) ? Boolean(object.allowUpdateAfterProposal) : false
-    };
-  },
-
-  toJSON(message: ClientState): unknown {
-    const obj: any = {};
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.frozenSequence !== undefined && (obj.frozenSequence = (message.frozenSequence || Long.UZERO).toString());
-    message.consensusState !== undefined && (obj.consensusState = message.consensusState ? ConsensusState.toJSON(message.consensusState) : undefined);
-    message.allowUpdateAfterProposal !== undefined && (obj.allowUpdateAfterProposal = message.allowUpdateAfterProposal);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ClientState>): ClientState {
     const message = createBaseClientState();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
@@ -587,6 +569,24 @@ export const ClientState = {
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? ConsensusState.fromPartial(object.consensusState) : undefined;
     message.allowUpdateAfterProposal = object.allowUpdateAfterProposal ?? false;
     return message;
+  },
+
+  fromSDK(object: ClientStateSDKType): ClientState {
+    return {
+      sequence: isSet(object.sequence) ? object.sequence : undefined,
+      frozenSequence: isSet(object.frozen_sequence) ? object.frozen_sequence : undefined,
+      consensusState: isSet(object.consensus_state) ? ConsensusState.fromSDK(object.consensus_state) : undefined,
+      allowUpdateAfterProposal: isSet(object.allow_update_after_proposal) ? object.allow_update_after_proposal : undefined
+    };
+  },
+
+  toSDK(message: ClientState): ClientStateSDKType {
+    const obj: any = {};
+    message.sequence !== undefined && (obj.sequence = message.sequence);
+    message.frozenSequence !== undefined && (obj.frozen_sequence = message.frozenSequence);
+    message.consensusState !== undefined && (obj.consensus_state = message.consensusState ? ConsensusState.toSDK(message.consensusState) : undefined);
+    message.allowUpdateAfterProposal !== undefined && (obj.allow_update_after_proposal = message.allowUpdateAfterProposal);
+    return obj;
   }
 
 };
@@ -646,28 +646,28 @@ export const ConsensusState = {
     return message;
   },
 
-  fromJSON(object: any): ConsensusState {
-    return {
-      publicKey: isSet(object.publicKey) ? Any.fromJSON(object.publicKey) : undefined,
-      diversifier: isSet(object.diversifier) ? String(object.diversifier) : "",
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO
-    };
-  },
-
-  toJSON(message: ConsensusState): unknown {
-    const obj: any = {};
-    message.publicKey !== undefined && (obj.publicKey = message.publicKey ? Any.toJSON(message.publicKey) : undefined);
-    message.diversifier !== undefined && (obj.diversifier = message.diversifier);
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ConsensusState>): ConsensusState {
     const message = createBaseConsensusState();
     message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
     message.diversifier = object.diversifier ?? "";
     message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? Long.fromValue(object.timestamp) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: ConsensusStateSDKType): ConsensusState {
+    return {
+      publicKey: isSet(object.public_key) ? Any.fromSDK(object.public_key) : undefined,
+      diversifier: isSet(object.diversifier) ? object.diversifier : undefined,
+      timestamp: isSet(object.timestamp) ? object.timestamp : undefined
+    };
+  },
+
+  toSDK(message: ConsensusState): ConsensusStateSDKType {
+    const obj: any = {};
+    message.publicKey !== undefined && (obj.public_key = message.publicKey ? Any.toSDK(message.publicKey) : undefined);
+    message.diversifier !== undefined && (obj.diversifier = message.diversifier);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
+    return obj;
   }
 
 };
@@ -745,26 +745,6 @@ export const Header = {
     return message;
   },
 
-  fromJSON(object: any): Header {
-    return {
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO,
-      signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array(),
-      newPublicKey: isSet(object.newPublicKey) ? Any.fromJSON(object.newPublicKey) : undefined,
-      newDiversifier: isSet(object.newDiversifier) ? String(object.newDiversifier) : ""
-    };
-  },
-
-  toJSON(message: Header): unknown {
-    const obj: any = {};
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    message.signature !== undefined && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
-    message.newPublicKey !== undefined && (obj.newPublicKey = message.newPublicKey ? Any.toJSON(message.newPublicKey) : undefined);
-    message.newDiversifier !== undefined && (obj.newDiversifier = message.newDiversifier);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Header>): Header {
     const message = createBaseHeader();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
@@ -773,6 +753,26 @@ export const Header = {
     message.newPublicKey = object.newPublicKey !== undefined && object.newPublicKey !== null ? Any.fromPartial(object.newPublicKey) : undefined;
     message.newDiversifier = object.newDiversifier ?? "";
     return message;
+  },
+
+  fromSDK(object: HeaderSDKType): Header {
+    return {
+      sequence: isSet(object.sequence) ? object.sequence : undefined,
+      timestamp: isSet(object.timestamp) ? object.timestamp : undefined,
+      signature: isSet(object.signature) ? object.signature : undefined,
+      newPublicKey: isSet(object.new_public_key) ? Any.fromSDK(object.new_public_key) : undefined,
+      newDiversifier: isSet(object.new_diversifier) ? object.new_diversifier : undefined
+    };
+  },
+
+  toSDK(message: Header): HeaderSDKType {
+    const obj: any = {};
+    message.sequence !== undefined && (obj.sequence = message.sequence);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
+    message.signature !== undefined && (obj.signature = message.signature);
+    message.newPublicKey !== undefined && (obj.new_public_key = message.newPublicKey ? Any.toSDK(message.newPublicKey) : undefined);
+    message.newDiversifier !== undefined && (obj.new_diversifier = message.newDiversifier);
+    return obj;
   }
 
 };
@@ -841,24 +841,6 @@ export const Misbehaviour = {
     return message;
   },
 
-  fromJSON(object: any): Misbehaviour {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      signatureOne: isSet(object.signatureOne) ? SignatureAndData.fromJSON(object.signatureOne) : undefined,
-      signatureTwo: isSet(object.signatureTwo) ? SignatureAndData.fromJSON(object.signatureTwo) : undefined
-    };
-  },
-
-  toJSON(message: Misbehaviour): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.signatureOne !== undefined && (obj.signatureOne = message.signatureOne ? SignatureAndData.toJSON(message.signatureOne) : undefined);
-    message.signatureTwo !== undefined && (obj.signatureTwo = message.signatureTwo ? SignatureAndData.toJSON(message.signatureTwo) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Misbehaviour>): Misbehaviour {
     const message = createBaseMisbehaviour();
     message.clientId = object.clientId ?? "";
@@ -866,6 +848,24 @@ export const Misbehaviour = {
     message.signatureOne = object.signatureOne !== undefined && object.signatureOne !== null ? SignatureAndData.fromPartial(object.signatureOne) : undefined;
     message.signatureTwo = object.signatureTwo !== undefined && object.signatureTwo !== null ? SignatureAndData.fromPartial(object.signatureTwo) : undefined;
     return message;
+  },
+
+  fromSDK(object: MisbehaviourSDKType): Misbehaviour {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      sequence: isSet(object.sequence) ? object.sequence : undefined,
+      signatureOne: isSet(object.signature_one) ? SignatureAndData.fromSDK(object.signature_one) : undefined,
+      signatureTwo: isSet(object.signature_two) ? SignatureAndData.fromSDK(object.signature_two) : undefined
+    };
+  },
+
+  toSDK(message: Misbehaviour): MisbehaviourSDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+    message.sequence !== undefined && (obj.sequence = message.sequence);
+    message.signatureOne !== undefined && (obj.signature_one = message.signatureOne ? SignatureAndData.toSDK(message.signatureOne) : undefined);
+    message.signatureTwo !== undefined && (obj.signature_two = message.signatureTwo ? SignatureAndData.toSDK(message.signatureTwo) : undefined);
+    return obj;
   }
 
 };
@@ -934,24 +934,6 @@ export const SignatureAndData = {
     return message;
   },
 
-  fromJSON(object: any): SignatureAndData {
-    return {
-      signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array(),
-      dataType: isSet(object.dataType) ? dataTypeFromJSON(object.dataType) : 0,
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO
-    };
-  },
-
-  toJSON(message: SignatureAndData): unknown {
-    const obj: any = {};
-    message.signature !== undefined && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
-    message.dataType !== undefined && (obj.dataType = dataTypeToJSON(message.dataType));
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SignatureAndData>): SignatureAndData {
     const message = createBaseSignatureAndData();
     message.signature = object.signature ?? new Uint8Array();
@@ -959,6 +941,24 @@ export const SignatureAndData = {
     message.data = object.data ?? new Uint8Array();
     message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? Long.fromValue(object.timestamp) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: SignatureAndDataSDKType): SignatureAndData {
+    return {
+      signature: isSet(object.signature) ? object.signature : undefined,
+      dataType: isSet(object.data_type) ? dataTypeFromJSON(object.data_type) : 0,
+      data: isSet(object.data) ? object.data : undefined,
+      timestamp: isSet(object.timestamp) ? object.timestamp : undefined
+    };
+  },
+
+  toSDK(message: SignatureAndData): SignatureAndDataSDKType {
+    const obj: any = {};
+    message.signature !== undefined && (obj.signature = message.signature);
+    message.dataType !== undefined && (obj.data_type = dataTypeToJSON(message.dataType));
+    message.data !== undefined && (obj.data = message.data);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
+    return obj;
   }
 
 };
@@ -1009,25 +1009,25 @@ export const TimestampedSignatureData = {
     return message;
   },
 
-  fromJSON(object: any): TimestampedSignatureData {
-    return {
-      signatureData: isSet(object.signatureData) ? bytesFromBase64(object.signatureData) : new Uint8Array(),
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO
-    };
-  },
-
-  toJSON(message: TimestampedSignatureData): unknown {
-    const obj: any = {};
-    message.signatureData !== undefined && (obj.signatureData = base64FromBytes(message.signatureData !== undefined ? message.signatureData : new Uint8Array()));
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<TimestampedSignatureData>): TimestampedSignatureData {
     const message = createBaseTimestampedSignatureData();
     message.signatureData = object.signatureData ?? new Uint8Array();
     message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? Long.fromValue(object.timestamp) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: TimestampedSignatureDataSDKType): TimestampedSignatureData {
+    return {
+      signatureData: isSet(object.signature_data) ? object.signature_data : undefined,
+      timestamp: isSet(object.timestamp) ? object.timestamp : undefined
+    };
+  },
+
+  toSDK(message: TimestampedSignatureData): TimestampedSignatureDataSDKType {
+    const obj: any = {};
+    message.signatureData !== undefined && (obj.signature_data = message.signatureData);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
+    return obj;
   }
 
 };
@@ -1105,26 +1105,6 @@ export const SignBytes = {
     return message;
   },
 
-  fromJSON(object: any): SignBytes {
-    return {
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO,
-      diversifier: isSet(object.diversifier) ? String(object.diversifier) : "",
-      dataType: isSet(object.dataType) ? dataTypeFromJSON(object.dataType) : 0,
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: SignBytes): unknown {
-    const obj: any = {};
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    message.diversifier !== undefined && (obj.diversifier = message.diversifier);
-    message.dataType !== undefined && (obj.dataType = dataTypeToJSON(message.dataType));
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SignBytes>): SignBytes {
     const message = createBaseSignBytes();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
@@ -1133,6 +1113,26 @@ export const SignBytes = {
     message.dataType = object.dataType ?? 0;
     message.data = object.data ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: SignBytesSDKType): SignBytes {
+    return {
+      sequence: isSet(object.sequence) ? object.sequence : undefined,
+      timestamp: isSet(object.timestamp) ? object.timestamp : undefined,
+      diversifier: isSet(object.diversifier) ? object.diversifier : undefined,
+      dataType: isSet(object.data_type) ? dataTypeFromJSON(object.data_type) : 0,
+      data: isSet(object.data) ? object.data : undefined
+    };
+  },
+
+  toSDK(message: SignBytes): SignBytesSDKType {
+    const obj: any = {};
+    message.sequence !== undefined && (obj.sequence = message.sequence);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
+    message.diversifier !== undefined && (obj.diversifier = message.diversifier);
+    message.dataType !== undefined && (obj.data_type = dataTypeToJSON(message.dataType));
+    message.data !== undefined && (obj.data = message.data);
+    return obj;
   }
 
 };
@@ -1183,25 +1183,25 @@ export const HeaderData = {
     return message;
   },
 
-  fromJSON(object: any): HeaderData {
-    return {
-      newPubKey: isSet(object.newPubKey) ? Any.fromJSON(object.newPubKey) : undefined,
-      newDiversifier: isSet(object.newDiversifier) ? String(object.newDiversifier) : ""
-    };
-  },
-
-  toJSON(message: HeaderData): unknown {
-    const obj: any = {};
-    message.newPubKey !== undefined && (obj.newPubKey = message.newPubKey ? Any.toJSON(message.newPubKey) : undefined);
-    message.newDiversifier !== undefined && (obj.newDiversifier = message.newDiversifier);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<HeaderData>): HeaderData {
     const message = createBaseHeaderData();
     message.newPubKey = object.newPubKey !== undefined && object.newPubKey !== null ? Any.fromPartial(object.newPubKey) : undefined;
     message.newDiversifier = object.newDiversifier ?? "";
     return message;
+  },
+
+  fromSDK(object: HeaderDataSDKType): HeaderData {
+    return {
+      newPubKey: isSet(object.new_pub_key) ? Any.fromSDK(object.new_pub_key) : undefined,
+      newDiversifier: isSet(object.new_diversifier) ? object.new_diversifier : undefined
+    };
+  },
+
+  toSDK(message: HeaderData): HeaderDataSDKType {
+    const obj: any = {};
+    message.newPubKey !== undefined && (obj.new_pub_key = message.newPubKey ? Any.toSDK(message.newPubKey) : undefined);
+    message.newDiversifier !== undefined && (obj.new_diversifier = message.newDiversifier);
+    return obj;
   }
 
 };
@@ -1252,25 +1252,25 @@ export const ClientStateData = {
     return message;
   },
 
-  fromJSON(object: any): ClientStateData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      clientState: isSet(object.clientState) ? Any.fromJSON(object.clientState) : undefined
-    };
-  },
-
-  toJSON(message: ClientStateData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.clientState !== undefined && (obj.clientState = message.clientState ? Any.toJSON(message.clientState) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ClientStateData>): ClientStateData {
     const message = createBaseClientStateData();
     message.path = object.path ?? new Uint8Array();
     message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
     return message;
+  },
+
+  fromSDK(object: ClientStateDataSDKType): ClientStateData {
+    return {
+      path: isSet(object.path) ? object.path : undefined,
+      clientState: isSet(object.client_state) ? Any.fromSDK(object.client_state) : undefined
+    };
+  },
+
+  toSDK(message: ClientStateData): ClientStateDataSDKType {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    message.clientState !== undefined && (obj.client_state = message.clientState ? Any.toSDK(message.clientState) : undefined);
+    return obj;
   }
 
 };
@@ -1321,25 +1321,25 @@ export const ConsensusStateData = {
     return message;
   },
 
-  fromJSON(object: any): ConsensusStateData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      consensusState: isSet(object.consensusState) ? Any.fromJSON(object.consensusState) : undefined
-    };
-  },
-
-  toJSON(message: ConsensusStateData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.consensusState !== undefined && (obj.consensusState = message.consensusState ? Any.toJSON(message.consensusState) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ConsensusStateData>): ConsensusStateData {
     const message = createBaseConsensusStateData();
     message.path = object.path ?? new Uint8Array();
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
     return message;
+  },
+
+  fromSDK(object: ConsensusStateDataSDKType): ConsensusStateData {
+    return {
+      path: isSet(object.path) ? object.path : undefined,
+      consensusState: isSet(object.consensus_state) ? Any.fromSDK(object.consensus_state) : undefined
+    };
+  },
+
+  toSDK(message: ConsensusStateData): ConsensusStateDataSDKType {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    message.consensusState !== undefined && (obj.consensus_state = message.consensusState ? Any.toSDK(message.consensusState) : undefined);
+    return obj;
   }
 
 };
@@ -1390,25 +1390,25 @@ export const ConnectionStateData = {
     return message;
   },
 
-  fromJSON(object: any): ConnectionStateData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      connection: isSet(object.connection) ? ConnectionEnd.fromJSON(object.connection) : undefined
-    };
-  },
-
-  toJSON(message: ConnectionStateData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.connection !== undefined && (obj.connection = message.connection ? ConnectionEnd.toJSON(message.connection) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ConnectionStateData>): ConnectionStateData {
     const message = createBaseConnectionStateData();
     message.path = object.path ?? new Uint8Array();
     message.connection = object.connection !== undefined && object.connection !== null ? ConnectionEnd.fromPartial(object.connection) : undefined;
     return message;
+  },
+
+  fromSDK(object: ConnectionStateDataSDKType): ConnectionStateData {
+    return {
+      path: isSet(object.path) ? object.path : undefined,
+      connection: isSet(object.connection) ? ConnectionEnd.fromSDK(object.connection) : undefined
+    };
+  },
+
+  toSDK(message: ConnectionStateData): ConnectionStateDataSDKType {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    message.connection !== undefined && (obj.connection = message.connection ? ConnectionEnd.toSDK(message.connection) : undefined);
+    return obj;
   }
 
 };
@@ -1459,25 +1459,25 @@ export const ChannelStateData = {
     return message;
   },
 
-  fromJSON(object: any): ChannelStateData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      channel: isSet(object.channel) ? Channel.fromJSON(object.channel) : undefined
-    };
-  },
-
-  toJSON(message: ChannelStateData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.channel !== undefined && (obj.channel = message.channel ? Channel.toJSON(message.channel) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ChannelStateData>): ChannelStateData {
     const message = createBaseChannelStateData();
     message.path = object.path ?? new Uint8Array();
     message.channel = object.channel !== undefined && object.channel !== null ? Channel.fromPartial(object.channel) : undefined;
     return message;
+  },
+
+  fromSDK(object: ChannelStateDataSDKType): ChannelStateData {
+    return {
+      path: isSet(object.path) ? object.path : undefined,
+      channel: isSet(object.channel) ? Channel.fromSDK(object.channel) : undefined
+    };
+  },
+
+  toSDK(message: ChannelStateData): ChannelStateDataSDKType {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    message.channel !== undefined && (obj.channel = message.channel ? Channel.toSDK(message.channel) : undefined);
+    return obj;
   }
 
 };
@@ -1528,25 +1528,25 @@ export const PacketCommitmentData = {
     return message;
   },
 
-  fromJSON(object: any): PacketCommitmentData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      commitment: isSet(object.commitment) ? bytesFromBase64(object.commitment) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: PacketCommitmentData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.commitment !== undefined && (obj.commitment = base64FromBytes(message.commitment !== undefined ? message.commitment : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PacketCommitmentData>): PacketCommitmentData {
     const message = createBasePacketCommitmentData();
     message.path = object.path ?? new Uint8Array();
     message.commitment = object.commitment ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: PacketCommitmentDataSDKType): PacketCommitmentData {
+    return {
+      path: isSet(object.path) ? object.path : undefined,
+      commitment: isSet(object.commitment) ? object.commitment : undefined
+    };
+  },
+
+  toSDK(message: PacketCommitmentData): PacketCommitmentDataSDKType {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    message.commitment !== undefined && (obj.commitment = message.commitment);
+    return obj;
   }
 
 };
@@ -1597,25 +1597,25 @@ export const PacketAcknowledgementData = {
     return message;
   },
 
-  fromJSON(object: any): PacketAcknowledgementData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      acknowledgement: isSet(object.acknowledgement) ? bytesFromBase64(object.acknowledgement) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: PacketAcknowledgementData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.acknowledgement !== undefined && (obj.acknowledgement = base64FromBytes(message.acknowledgement !== undefined ? message.acknowledgement : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PacketAcknowledgementData>): PacketAcknowledgementData {
     const message = createBasePacketAcknowledgementData();
     message.path = object.path ?? new Uint8Array();
     message.acknowledgement = object.acknowledgement ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: PacketAcknowledgementDataSDKType): PacketAcknowledgementData {
+    return {
+      path: isSet(object.path) ? object.path : undefined,
+      acknowledgement: isSet(object.acknowledgement) ? object.acknowledgement : undefined
+    };
+  },
+
+  toSDK(message: PacketAcknowledgementData): PacketAcknowledgementDataSDKType {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    message.acknowledgement !== undefined && (obj.acknowledgement = message.acknowledgement);
+    return obj;
   }
 
 };
@@ -1657,22 +1657,22 @@ export const PacketReceiptAbsenceData = {
     return message;
   },
 
-  fromJSON(object: any): PacketReceiptAbsenceData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: PacketReceiptAbsenceData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PacketReceiptAbsenceData>): PacketReceiptAbsenceData {
     const message = createBasePacketReceiptAbsenceData();
     message.path = object.path ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: PacketReceiptAbsenceDataSDKType): PacketReceiptAbsenceData {
+    return {
+      path: isSet(object.path) ? object.path : undefined
+    };
+  },
+
+  toSDK(message: PacketReceiptAbsenceData): PacketReceiptAbsenceDataSDKType {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    return obj;
   }
 
 };
@@ -1723,25 +1723,25 @@ export const NextSequenceRecvData = {
     return message;
   },
 
-  fromJSON(object: any): NextSequenceRecvData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      nextSeqRecv: isSet(object.nextSeqRecv) ? Long.fromString(object.nextSeqRecv) : Long.UZERO
-    };
-  },
-
-  toJSON(message: NextSequenceRecvData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.nextSeqRecv !== undefined && (obj.nextSeqRecv = (message.nextSeqRecv || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<NextSequenceRecvData>): NextSequenceRecvData {
     const message = createBaseNextSequenceRecvData();
     message.path = object.path ?? new Uint8Array();
     message.nextSeqRecv = object.nextSeqRecv !== undefined && object.nextSeqRecv !== null ? Long.fromValue(object.nextSeqRecv) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: NextSequenceRecvDataSDKType): NextSequenceRecvData {
+    return {
+      path: isSet(object.path) ? object.path : undefined,
+      nextSeqRecv: isSet(object.next_seq_recv) ? object.next_seq_recv : undefined
+    };
+  },
+
+  toSDK(message: NextSequenceRecvData): NextSequenceRecvDataSDKType {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    message.nextSeqRecv !== undefined && (obj.next_seq_recv = message.nextSeqRecv);
+    return obj;
   }
 
 };

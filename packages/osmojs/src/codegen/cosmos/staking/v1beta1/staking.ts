@@ -4,7 +4,7 @@ import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, toTimestamp, fromTimestamp, fromJsonTimestamp, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, toTimestamp, fromTimestamp, Long } from "@osmonauts/helpers";
 /** BondStatus is the status of a validator. */
 
 export enum BondStatus {
@@ -672,31 +672,31 @@ export const HistoricalInfo = {
     return message;
   },
 
-  fromJSON(object: any): HistoricalInfo {
-    return {
-      header: isSet(object.header) ? Header.fromJSON(object.header) : undefined,
-      valset: Array.isArray(object?.valset) ? object.valset.map((e: any) => Validator.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: HistoricalInfo): unknown {
-    const obj: any = {};
-    message.header !== undefined && (obj.header = message.header ? Header.toJSON(message.header) : undefined);
-
-    if (message.valset) {
-      obj.valset = message.valset.map(e => e ? Validator.toJSON(e) : undefined);
-    } else {
-      obj.valset = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<HistoricalInfo>): HistoricalInfo {
     const message = createBaseHistoricalInfo();
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
     message.valset = object.valset?.map(e => Validator.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: HistoricalInfoSDKType): HistoricalInfo {
+    return {
+      header: isSet(object.header) ? Header.fromSDK(object.header) : undefined,
+      valset: Array.isArray(object?.valset) ? object.valset.map((e: any) => Validator.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: HistoricalInfo): HistoricalInfoSDKType {
+    const obj: any = {};
+    message.header !== undefined && (obj.header = message.header ? Header.toSDK(message.header) : undefined);
+
+    if (message.valset) {
+      obj.valset = message.valset.map(e => e ? Validator.toSDK(e) : undefined);
+    } else {
+      obj.valset = [];
+    }
+
+    return obj;
   }
 
 };
@@ -756,28 +756,28 @@ export const CommissionRates = {
     return message;
   },
 
-  fromJSON(object: any): CommissionRates {
-    return {
-      rate: isSet(object.rate) ? String(object.rate) : "",
-      maxRate: isSet(object.maxRate) ? String(object.maxRate) : "",
-      maxChangeRate: isSet(object.maxChangeRate) ? String(object.maxChangeRate) : ""
-    };
-  },
-
-  toJSON(message: CommissionRates): unknown {
-    const obj: any = {};
-    message.rate !== undefined && (obj.rate = message.rate);
-    message.maxRate !== undefined && (obj.maxRate = message.maxRate);
-    message.maxChangeRate !== undefined && (obj.maxChangeRate = message.maxChangeRate);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<CommissionRates>): CommissionRates {
     const message = createBaseCommissionRates();
     message.rate = object.rate ?? "";
     message.maxRate = object.maxRate ?? "";
     message.maxChangeRate = object.maxChangeRate ?? "";
     return message;
+  },
+
+  fromSDK(object: CommissionRatesSDKType): CommissionRates {
+    return {
+      rate: isSet(object.rate) ? object.rate : undefined,
+      maxRate: isSet(object.max_rate) ? object.max_rate : undefined,
+      maxChangeRate: isSet(object.max_change_rate) ? object.max_change_rate : undefined
+    };
+  },
+
+  toSDK(message: CommissionRates): CommissionRatesSDKType {
+    const obj: any = {};
+    message.rate !== undefined && (obj.rate = message.rate);
+    message.maxRate !== undefined && (obj.max_rate = message.maxRate);
+    message.maxChangeRate !== undefined && (obj.max_change_rate = message.maxChangeRate);
+    return obj;
   }
 
 };
@@ -828,25 +828,25 @@ export const Commission = {
     return message;
   },
 
-  fromJSON(object: any): Commission {
-    return {
-      commissionRates: isSet(object.commissionRates) ? CommissionRates.fromJSON(object.commissionRates) : undefined,
-      updateTime: isSet(object.updateTime) ? fromJsonTimestamp(object.updateTime) : undefined
-    };
-  },
-
-  toJSON(message: Commission): unknown {
-    const obj: any = {};
-    message.commissionRates !== undefined && (obj.commissionRates = message.commissionRates ? CommissionRates.toJSON(message.commissionRates) : undefined);
-    message.updateTime !== undefined && (obj.updateTime = message.updateTime.toISOString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Commission>): Commission {
     const message = createBaseCommission();
     message.commissionRates = object.commissionRates !== undefined && object.commissionRates !== null ? CommissionRates.fromPartial(object.commissionRates) : undefined;
     message.updateTime = object.updateTime ?? undefined;
     return message;
+  },
+
+  fromSDK(object: CommissionSDKType): Commission {
+    return {
+      commissionRates: isSet(object.commission_rates) ? CommissionRates.fromSDK(object.commission_rates) : undefined,
+      updateTime: isSet(object.update_time) ? Timestamp.fromSDK(object.update_time) : undefined
+    };
+  },
+
+  toSDK(message: Commission): CommissionSDKType {
+    const obj: any = {};
+    message.commissionRates !== undefined && (obj.commission_rates = message.commissionRates ? CommissionRates.toSDK(message.commissionRates) : undefined);
+    message.updateTime !== undefined && (obj.update_time = message.updateTime ? Timestamp.toSDK(message.updateTime) : undefined);
+    return obj;
   }
 
 };
@@ -924,26 +924,6 @@ export const Description = {
     return message;
   },
 
-  fromJSON(object: any): Description {
-    return {
-      moniker: isSet(object.moniker) ? String(object.moniker) : "",
-      identity: isSet(object.identity) ? String(object.identity) : "",
-      website: isSet(object.website) ? String(object.website) : "",
-      securityContact: isSet(object.securityContact) ? String(object.securityContact) : "",
-      details: isSet(object.details) ? String(object.details) : ""
-    };
-  },
-
-  toJSON(message: Description): unknown {
-    const obj: any = {};
-    message.moniker !== undefined && (obj.moniker = message.moniker);
-    message.identity !== undefined && (obj.identity = message.identity);
-    message.website !== undefined && (obj.website = message.website);
-    message.securityContact !== undefined && (obj.securityContact = message.securityContact);
-    message.details !== undefined && (obj.details = message.details);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Description>): Description {
     const message = createBaseDescription();
     message.moniker = object.moniker ?? "";
@@ -952,6 +932,26 @@ export const Description = {
     message.securityContact = object.securityContact ?? "";
     message.details = object.details ?? "";
     return message;
+  },
+
+  fromSDK(object: DescriptionSDKType): Description {
+    return {
+      moniker: isSet(object.moniker) ? object.moniker : undefined,
+      identity: isSet(object.identity) ? object.identity : undefined,
+      website: isSet(object.website) ? object.website : undefined,
+      securityContact: isSet(object.security_contact) ? object.security_contact : undefined,
+      details: isSet(object.details) ? object.details : undefined
+    };
+  },
+
+  toSDK(message: Description): DescriptionSDKType {
+    const obj: any = {};
+    message.moniker !== undefined && (obj.moniker = message.moniker);
+    message.identity !== undefined && (obj.identity = message.identity);
+    message.website !== undefined && (obj.website = message.website);
+    message.securityContact !== undefined && (obj.security_contact = message.securityContact);
+    message.details !== undefined && (obj.details = message.details);
+    return obj;
   }
 
 };
@@ -1083,38 +1083,6 @@ export const Validator = {
     return message;
   },
 
-  fromJSON(object: any): Validator {
-    return {
-      operatorAddress: isSet(object.operatorAddress) ? String(object.operatorAddress) : "",
-      consensusPubkey: isSet(object.consensusPubkey) ? Any.fromJSON(object.consensusPubkey) : undefined,
-      jailed: isSet(object.jailed) ? Boolean(object.jailed) : false,
-      status: isSet(object.status) ? bondStatusFromJSON(object.status) : 0,
-      tokens: isSet(object.tokens) ? String(object.tokens) : "",
-      delegatorShares: isSet(object.delegatorShares) ? String(object.delegatorShares) : "",
-      description: isSet(object.description) ? Description.fromJSON(object.description) : undefined,
-      unbondingHeight: isSet(object.unbondingHeight) ? Long.fromString(object.unbondingHeight) : Long.ZERO,
-      unbondingTime: isSet(object.unbondingTime) ? fromJsonTimestamp(object.unbondingTime) : undefined,
-      commission: isSet(object.commission) ? Commission.fromJSON(object.commission) : undefined,
-      minSelfDelegation: isSet(object.minSelfDelegation) ? String(object.minSelfDelegation) : ""
-    };
-  },
-
-  toJSON(message: Validator): unknown {
-    const obj: any = {};
-    message.operatorAddress !== undefined && (obj.operatorAddress = message.operatorAddress);
-    message.consensusPubkey !== undefined && (obj.consensusPubkey = message.consensusPubkey ? Any.toJSON(message.consensusPubkey) : undefined);
-    message.jailed !== undefined && (obj.jailed = message.jailed);
-    message.status !== undefined && (obj.status = bondStatusToJSON(message.status));
-    message.tokens !== undefined && (obj.tokens = message.tokens);
-    message.delegatorShares !== undefined && (obj.delegatorShares = message.delegatorShares);
-    message.description !== undefined && (obj.description = message.description ? Description.toJSON(message.description) : undefined);
-    message.unbondingHeight !== undefined && (obj.unbondingHeight = (message.unbondingHeight || Long.ZERO).toString());
-    message.unbondingTime !== undefined && (obj.unbondingTime = message.unbondingTime.toISOString());
-    message.commission !== undefined && (obj.commission = message.commission ? Commission.toJSON(message.commission) : undefined);
-    message.minSelfDelegation !== undefined && (obj.minSelfDelegation = message.minSelfDelegation);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Validator>): Validator {
     const message = createBaseValidator();
     message.operatorAddress = object.operatorAddress ?? "";
@@ -1129,6 +1097,38 @@ export const Validator = {
     message.commission = object.commission !== undefined && object.commission !== null ? Commission.fromPartial(object.commission) : undefined;
     message.minSelfDelegation = object.minSelfDelegation ?? "";
     return message;
+  },
+
+  fromSDK(object: ValidatorSDKType): Validator {
+    return {
+      operatorAddress: isSet(object.operator_address) ? object.operator_address : undefined,
+      consensusPubkey: isSet(object.consensus_pubkey) ? Any.fromSDK(object.consensus_pubkey) : undefined,
+      jailed: isSet(object.jailed) ? object.jailed : undefined,
+      status: isSet(object.status) ? bondStatusFromJSON(object.status) : 0,
+      tokens: isSet(object.tokens) ? object.tokens : undefined,
+      delegatorShares: isSet(object.delegator_shares) ? object.delegator_shares : undefined,
+      description: isSet(object.description) ? Description.fromSDK(object.description) : undefined,
+      unbondingHeight: isSet(object.unbonding_height) ? object.unbonding_height : undefined,
+      unbondingTime: isSet(object.unbonding_time) ? Timestamp.fromSDK(object.unbonding_time) : undefined,
+      commission: isSet(object.commission) ? Commission.fromSDK(object.commission) : undefined,
+      minSelfDelegation: isSet(object.min_self_delegation) ? object.min_self_delegation : undefined
+    };
+  },
+
+  toSDK(message: Validator): ValidatorSDKType {
+    const obj: any = {};
+    message.operatorAddress !== undefined && (obj.operator_address = message.operatorAddress);
+    message.consensusPubkey !== undefined && (obj.consensus_pubkey = message.consensusPubkey ? Any.toSDK(message.consensusPubkey) : undefined);
+    message.jailed !== undefined && (obj.jailed = message.jailed);
+    message.status !== undefined && (obj.status = bondStatusToJSON(message.status));
+    message.tokens !== undefined && (obj.tokens = message.tokens);
+    message.delegatorShares !== undefined && (obj.delegator_shares = message.delegatorShares);
+    message.description !== undefined && (obj.description = message.description ? Description.toSDK(message.description) : undefined);
+    message.unbondingHeight !== undefined && (obj.unbonding_height = message.unbondingHeight);
+    message.unbondingTime !== undefined && (obj.unbonding_time = message.unbondingTime ? Timestamp.toSDK(message.unbondingTime) : undefined);
+    message.commission !== undefined && (obj.commission = message.commission ? Commission.toSDK(message.commission) : undefined);
+    message.minSelfDelegation !== undefined && (obj.min_self_delegation = message.minSelfDelegation);
+    return obj;
   }
 
 };
@@ -1170,13 +1170,19 @@ export const ValAddresses = {
     return message;
   },
 
-  fromJSON(object: any): ValAddresses {
+  fromPartial(object: DeepPartial<ValAddresses>): ValAddresses {
+    const message = createBaseValAddresses();
+    message.addresses = object.addresses?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: ValAddressesSDKType): ValAddresses {
     return {
-      addresses: Array.isArray(object?.addresses) ? object.addresses.map((e: any) => String(e)) : []
+      addresses: Array.isArray(object?.addresses) ? object.addresses.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: ValAddresses): unknown {
+  toSDK(message: ValAddresses): ValAddressesSDKType {
     const obj: any = {};
 
     if (message.addresses) {
@@ -1186,12 +1192,6 @@ export const ValAddresses = {
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<ValAddresses>): ValAddresses {
-    const message = createBaseValAddresses();
-    message.addresses = object.addresses?.map(e => e) || [];
-    return message;
   }
 
 };
@@ -1242,25 +1242,25 @@ export const DVPair = {
     return message;
   },
 
-  fromJSON(object: any): DVPair {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : ""
-    };
-  },
-
-  toJSON(message: DVPair): unknown {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DVPair>): DVPair {
     const message = createBaseDVPair();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
     return message;
+  },
+
+  fromSDK(object: DVPairSDKType): DVPair {
+    return {
+      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined,
+      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined
+    };
+  },
+
+  toSDK(message: DVPair): DVPairSDKType {
+    const obj: any = {};
+    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
+    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
+    return obj;
   }
 
 };
@@ -1302,28 +1302,28 @@ export const DVPairs = {
     return message;
   },
 
-  fromJSON(object: any): DVPairs {
+  fromPartial(object: DeepPartial<DVPairs>): DVPairs {
+    const message = createBaseDVPairs();
+    message.pairs = object.pairs?.map(e => DVPair.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: DVPairsSDKType): DVPairs {
     return {
-      pairs: Array.isArray(object?.pairs) ? object.pairs.map((e: any) => DVPair.fromJSON(e)) : []
+      pairs: Array.isArray(object?.pairs) ? object.pairs.map((e: any) => DVPair.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: DVPairs): unknown {
+  toSDK(message: DVPairs): DVPairsSDKType {
     const obj: any = {};
 
     if (message.pairs) {
-      obj.pairs = message.pairs.map(e => e ? DVPair.toJSON(e) : undefined);
+      obj.pairs = message.pairs.map(e => e ? DVPair.toSDK(e) : undefined);
     } else {
       obj.pairs = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<DVPairs>): DVPairs {
-    const message = createBaseDVPairs();
-    message.pairs = object.pairs?.map(e => DVPair.fromPartial(e)) || [];
-    return message;
   }
 
 };
@@ -1383,28 +1383,28 @@ export const DVVTriplet = {
     return message;
   },
 
-  fromJSON(object: any): DVVTriplet {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorSrcAddress: isSet(object.validatorSrcAddress) ? String(object.validatorSrcAddress) : "",
-      validatorDstAddress: isSet(object.validatorDstAddress) ? String(object.validatorDstAddress) : ""
-    };
-  },
-
-  toJSON(message: DVVTriplet): unknown {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorSrcAddress !== undefined && (obj.validatorSrcAddress = message.validatorSrcAddress);
-    message.validatorDstAddress !== undefined && (obj.validatorDstAddress = message.validatorDstAddress);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DVVTriplet>): DVVTriplet {
     const message = createBaseDVVTriplet();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorSrcAddress = object.validatorSrcAddress ?? "";
     message.validatorDstAddress = object.validatorDstAddress ?? "";
     return message;
+  },
+
+  fromSDK(object: DVVTripletSDKType): DVVTriplet {
+    return {
+      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined,
+      validatorSrcAddress: isSet(object.validator_src_address) ? object.validator_src_address : undefined,
+      validatorDstAddress: isSet(object.validator_dst_address) ? object.validator_dst_address : undefined
+    };
+  },
+
+  toSDK(message: DVVTriplet): DVVTripletSDKType {
+    const obj: any = {};
+    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
+    message.validatorSrcAddress !== undefined && (obj.validator_src_address = message.validatorSrcAddress);
+    message.validatorDstAddress !== undefined && (obj.validator_dst_address = message.validatorDstAddress);
+    return obj;
   }
 
 };
@@ -1446,28 +1446,28 @@ export const DVVTriplets = {
     return message;
   },
 
-  fromJSON(object: any): DVVTriplets {
+  fromPartial(object: DeepPartial<DVVTriplets>): DVVTriplets {
+    const message = createBaseDVVTriplets();
+    message.triplets = object.triplets?.map(e => DVVTriplet.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: DVVTripletsSDKType): DVVTriplets {
     return {
-      triplets: Array.isArray(object?.triplets) ? object.triplets.map((e: any) => DVVTriplet.fromJSON(e)) : []
+      triplets: Array.isArray(object?.triplets) ? object.triplets.map((e: any) => DVVTriplet.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: DVVTriplets): unknown {
+  toSDK(message: DVVTriplets): DVVTripletsSDKType {
     const obj: any = {};
 
     if (message.triplets) {
-      obj.triplets = message.triplets.map(e => e ? DVVTriplet.toJSON(e) : undefined);
+      obj.triplets = message.triplets.map(e => e ? DVVTriplet.toSDK(e) : undefined);
     } else {
       obj.triplets = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<DVVTriplets>): DVVTriplets {
-    const message = createBaseDVVTriplets();
-    message.triplets = object.triplets?.map(e => DVVTriplet.fromPartial(e)) || [];
-    return message;
   }
 
 };
@@ -1527,28 +1527,28 @@ export const Delegation = {
     return message;
   },
 
-  fromJSON(object: any): Delegation {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      shares: isSet(object.shares) ? String(object.shares) : ""
-    };
-  },
-
-  toJSON(message: Delegation): unknown {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    message.shares !== undefined && (obj.shares = message.shares);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Delegation>): Delegation {
     const message = createBaseDelegation();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
     message.shares = object.shares ?? "";
     return message;
+  },
+
+  fromSDK(object: DelegationSDKType): Delegation {
+    return {
+      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined,
+      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined,
+      shares: isSet(object.shares) ? object.shares : undefined
+    };
+  },
+
+  toSDK(message: Delegation): DelegationSDKType {
+    const obj: any = {};
+    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
+    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
+    message.shares !== undefined && (obj.shares = message.shares);
+    return obj;
   }
 
 };
@@ -1608,34 +1608,34 @@ export const UnbondingDelegation = {
     return message;
   },
 
-  fromJSON(object: any): UnbondingDelegation {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => UnbondingDelegationEntry.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: UnbondingDelegation): unknown {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-
-    if (message.entries) {
-      obj.entries = message.entries.map(e => e ? UnbondingDelegationEntry.toJSON(e) : undefined);
-    } else {
-      obj.entries = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<UnbondingDelegation>): UnbondingDelegation {
     const message = createBaseUnbondingDelegation();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
     message.entries = object.entries?.map(e => UnbondingDelegationEntry.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: UnbondingDelegationSDKType): UnbondingDelegation {
+    return {
+      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined,
+      validatorAddress: isSet(object.validator_address) ? object.validator_address : undefined,
+      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => UnbondingDelegationEntry.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: UnbondingDelegation): UnbondingDelegationSDKType {
+    const obj: any = {};
+    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
+    message.validatorAddress !== undefined && (obj.validator_address = message.validatorAddress);
+
+    if (message.entries) {
+      obj.entries = message.entries.map(e => e ? UnbondingDelegationEntry.toSDK(e) : undefined);
+    } else {
+      obj.entries = [];
+    }
+
+    return obj;
   }
 
 };
@@ -1704,24 +1704,6 @@ export const UnbondingDelegationEntry = {
     return message;
   },
 
-  fromJSON(object: any): UnbondingDelegationEntry {
-    return {
-      creationHeight: isSet(object.creationHeight) ? Long.fromString(object.creationHeight) : Long.ZERO,
-      completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined,
-      initialBalance: isSet(object.initialBalance) ? String(object.initialBalance) : "",
-      balance: isSet(object.balance) ? String(object.balance) : ""
-    };
-  },
-
-  toJSON(message: UnbondingDelegationEntry): unknown {
-    const obj: any = {};
-    message.creationHeight !== undefined && (obj.creationHeight = (message.creationHeight || Long.ZERO).toString());
-    message.completionTime !== undefined && (obj.completionTime = message.completionTime.toISOString());
-    message.initialBalance !== undefined && (obj.initialBalance = message.initialBalance);
-    message.balance !== undefined && (obj.balance = message.balance);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<UnbondingDelegationEntry>): UnbondingDelegationEntry {
     const message = createBaseUnbondingDelegationEntry();
     message.creationHeight = object.creationHeight !== undefined && object.creationHeight !== null ? Long.fromValue(object.creationHeight) : Long.ZERO;
@@ -1729,6 +1711,24 @@ export const UnbondingDelegationEntry = {
     message.initialBalance = object.initialBalance ?? "";
     message.balance = object.balance ?? "";
     return message;
+  },
+
+  fromSDK(object: UnbondingDelegationEntrySDKType): UnbondingDelegationEntry {
+    return {
+      creationHeight: isSet(object.creation_height) ? object.creation_height : undefined,
+      completionTime: isSet(object.completion_time) ? Timestamp.fromSDK(object.completion_time) : undefined,
+      initialBalance: isSet(object.initial_balance) ? object.initial_balance : undefined,
+      balance: isSet(object.balance) ? object.balance : undefined
+    };
+  },
+
+  toSDK(message: UnbondingDelegationEntry): UnbondingDelegationEntrySDKType {
+    const obj: any = {};
+    message.creationHeight !== undefined && (obj.creation_height = message.creationHeight);
+    message.completionTime !== undefined && (obj.completion_time = message.completionTime ? Timestamp.toSDK(message.completionTime) : undefined);
+    message.initialBalance !== undefined && (obj.initial_balance = message.initialBalance);
+    message.balance !== undefined && (obj.balance = message.balance);
+    return obj;
   }
 
 };
@@ -1797,24 +1797,6 @@ export const RedelegationEntry = {
     return message;
   },
 
-  fromJSON(object: any): RedelegationEntry {
-    return {
-      creationHeight: isSet(object.creationHeight) ? Long.fromString(object.creationHeight) : Long.ZERO,
-      completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined,
-      initialBalance: isSet(object.initialBalance) ? String(object.initialBalance) : "",
-      sharesDst: isSet(object.sharesDst) ? String(object.sharesDst) : ""
-    };
-  },
-
-  toJSON(message: RedelegationEntry): unknown {
-    const obj: any = {};
-    message.creationHeight !== undefined && (obj.creationHeight = (message.creationHeight || Long.ZERO).toString());
-    message.completionTime !== undefined && (obj.completionTime = message.completionTime.toISOString());
-    message.initialBalance !== undefined && (obj.initialBalance = message.initialBalance);
-    message.sharesDst !== undefined && (obj.sharesDst = message.sharesDst);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<RedelegationEntry>): RedelegationEntry {
     const message = createBaseRedelegationEntry();
     message.creationHeight = object.creationHeight !== undefined && object.creationHeight !== null ? Long.fromValue(object.creationHeight) : Long.ZERO;
@@ -1822,6 +1804,24 @@ export const RedelegationEntry = {
     message.initialBalance = object.initialBalance ?? "";
     message.sharesDst = object.sharesDst ?? "";
     return message;
+  },
+
+  fromSDK(object: RedelegationEntrySDKType): RedelegationEntry {
+    return {
+      creationHeight: isSet(object.creation_height) ? object.creation_height : undefined,
+      completionTime: isSet(object.completion_time) ? Timestamp.fromSDK(object.completion_time) : undefined,
+      initialBalance: isSet(object.initial_balance) ? object.initial_balance : undefined,
+      sharesDst: isSet(object.shares_dst) ? object.shares_dst : undefined
+    };
+  },
+
+  toSDK(message: RedelegationEntry): RedelegationEntrySDKType {
+    const obj: any = {};
+    message.creationHeight !== undefined && (obj.creation_height = message.creationHeight);
+    message.completionTime !== undefined && (obj.completion_time = message.completionTime ? Timestamp.toSDK(message.completionTime) : undefined);
+    message.initialBalance !== undefined && (obj.initial_balance = message.initialBalance);
+    message.sharesDst !== undefined && (obj.shares_dst = message.sharesDst);
+    return obj;
   }
 
 };
@@ -1890,30 +1890,6 @@ export const Redelegation = {
     return message;
   },
 
-  fromJSON(object: any): Redelegation {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorSrcAddress: isSet(object.validatorSrcAddress) ? String(object.validatorSrcAddress) : "",
-      validatorDstAddress: isSet(object.validatorDstAddress) ? String(object.validatorDstAddress) : "",
-      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => RedelegationEntry.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Redelegation): unknown {
-    const obj: any = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorSrcAddress !== undefined && (obj.validatorSrcAddress = message.validatorSrcAddress);
-    message.validatorDstAddress !== undefined && (obj.validatorDstAddress = message.validatorDstAddress);
-
-    if (message.entries) {
-      obj.entries = message.entries.map(e => e ? RedelegationEntry.toJSON(e) : undefined);
-    } else {
-      obj.entries = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Redelegation>): Redelegation {
     const message = createBaseRedelegation();
     message.delegatorAddress = object.delegatorAddress ?? "";
@@ -1921,6 +1897,30 @@ export const Redelegation = {
     message.validatorDstAddress = object.validatorDstAddress ?? "";
     message.entries = object.entries?.map(e => RedelegationEntry.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: RedelegationSDKType): Redelegation {
+    return {
+      delegatorAddress: isSet(object.delegator_address) ? object.delegator_address : undefined,
+      validatorSrcAddress: isSet(object.validator_src_address) ? object.validator_src_address : undefined,
+      validatorDstAddress: isSet(object.validator_dst_address) ? object.validator_dst_address : undefined,
+      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => RedelegationEntry.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: Redelegation): RedelegationSDKType {
+    const obj: any = {};
+    message.delegatorAddress !== undefined && (obj.delegator_address = message.delegatorAddress);
+    message.validatorSrcAddress !== undefined && (obj.validator_src_address = message.validatorSrcAddress);
+    message.validatorDstAddress !== undefined && (obj.validator_dst_address = message.validatorDstAddress);
+
+    if (message.entries) {
+      obj.entries = message.entries.map(e => e ? RedelegationEntry.toSDK(e) : undefined);
+    } else {
+      obj.entries = [];
+    }
+
+    return obj;
   }
 
 };
@@ -2007,28 +2007,6 @@ export const Params = {
     return message;
   },
 
-  fromJSON(object: any): Params {
-    return {
-      unbondingTime: isSet(object.unbondingTime) ? Duration.fromJSON(object.unbondingTime) : undefined,
-      maxValidators: isSet(object.maxValidators) ? Number(object.maxValidators) : 0,
-      maxEntries: isSet(object.maxEntries) ? Number(object.maxEntries) : 0,
-      historicalEntries: isSet(object.historicalEntries) ? Number(object.historicalEntries) : 0,
-      bondDenom: isSet(object.bondDenom) ? String(object.bondDenom) : "",
-      minCommissionRate: isSet(object.minCommissionRate) ? String(object.minCommissionRate) : ""
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-    message.unbondingTime !== undefined && (obj.unbondingTime = message.unbondingTime);
-    message.maxValidators !== undefined && (obj.maxValidators = Math.round(message.maxValidators));
-    message.maxEntries !== undefined && (obj.maxEntries = Math.round(message.maxEntries));
-    message.historicalEntries !== undefined && (obj.historicalEntries = Math.round(message.historicalEntries));
-    message.bondDenom !== undefined && (obj.bondDenom = message.bondDenom);
-    message.minCommissionRate !== undefined && (obj.minCommissionRate = message.minCommissionRate);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.unbondingTime = object.unbondingTime ?? undefined;
@@ -2038,6 +2016,28 @@ export const Params = {
     message.bondDenom = object.bondDenom ?? "";
     message.minCommissionRate = object.minCommissionRate ?? "";
     return message;
+  },
+
+  fromSDK(object: ParamsSDKType): Params {
+    return {
+      unbondingTime: isSet(object.unbonding_time) ? Duration.fromSDK(object.unbonding_time) : undefined,
+      maxValidators: isSet(object.max_validators) ? object.max_validators : undefined,
+      maxEntries: isSet(object.max_entries) ? object.max_entries : undefined,
+      historicalEntries: isSet(object.historical_entries) ? object.historical_entries : undefined,
+      bondDenom: isSet(object.bond_denom) ? object.bond_denom : undefined,
+      minCommissionRate: isSet(object.min_commission_rate) ? object.min_commission_rate : undefined
+    };
+  },
+
+  toSDK(message: Params): ParamsSDKType {
+    const obj: any = {};
+    message.unbondingTime !== undefined && (obj.unbonding_time = message.unbondingTime ? Duration.toSDK(message.unbondingTime) : undefined);
+    message.maxValidators !== undefined && (obj.max_validators = message.maxValidators);
+    message.maxEntries !== undefined && (obj.max_entries = message.maxEntries);
+    message.historicalEntries !== undefined && (obj.historical_entries = message.historicalEntries);
+    message.bondDenom !== undefined && (obj.bond_denom = message.bondDenom);
+    message.minCommissionRate !== undefined && (obj.min_commission_rate = message.minCommissionRate);
+    return obj;
   }
 
 };
@@ -2088,25 +2088,25 @@ export const DelegationResponse = {
     return message;
   },
 
-  fromJSON(object: any): DelegationResponse {
-    return {
-      delegation: isSet(object.delegation) ? Delegation.fromJSON(object.delegation) : undefined,
-      balance: isSet(object.balance) ? Coin.fromJSON(object.balance) : undefined
-    };
-  },
-
-  toJSON(message: DelegationResponse): unknown {
-    const obj: any = {};
-    message.delegation !== undefined && (obj.delegation = message.delegation ? Delegation.toJSON(message.delegation) : undefined);
-    message.balance !== undefined && (obj.balance = message.balance ? Coin.toJSON(message.balance) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DelegationResponse>): DelegationResponse {
     const message = createBaseDelegationResponse();
     message.delegation = object.delegation !== undefined && object.delegation !== null ? Delegation.fromPartial(object.delegation) : undefined;
     message.balance = object.balance !== undefined && object.balance !== null ? Coin.fromPartial(object.balance) : undefined;
     return message;
+  },
+
+  fromSDK(object: DelegationResponseSDKType): DelegationResponse {
+    return {
+      delegation: isSet(object.delegation) ? Delegation.fromSDK(object.delegation) : undefined,
+      balance: isSet(object.balance) ? Coin.fromSDK(object.balance) : undefined
+    };
+  },
+
+  toSDK(message: DelegationResponse): DelegationResponseSDKType {
+    const obj: any = {};
+    message.delegation !== undefined && (obj.delegation = message.delegation ? Delegation.toSDK(message.delegation) : undefined);
+    message.balance !== undefined && (obj.balance = message.balance ? Coin.toSDK(message.balance) : undefined);
+    return obj;
   }
 
 };
@@ -2157,25 +2157,25 @@ export const RedelegationEntryResponse = {
     return message;
   },
 
-  fromJSON(object: any): RedelegationEntryResponse {
-    return {
-      redelegationEntry: isSet(object.redelegationEntry) ? RedelegationEntry.fromJSON(object.redelegationEntry) : undefined,
-      balance: isSet(object.balance) ? String(object.balance) : ""
-    };
-  },
-
-  toJSON(message: RedelegationEntryResponse): unknown {
-    const obj: any = {};
-    message.redelegationEntry !== undefined && (obj.redelegationEntry = message.redelegationEntry ? RedelegationEntry.toJSON(message.redelegationEntry) : undefined);
-    message.balance !== undefined && (obj.balance = message.balance);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<RedelegationEntryResponse>): RedelegationEntryResponse {
     const message = createBaseRedelegationEntryResponse();
     message.redelegationEntry = object.redelegationEntry !== undefined && object.redelegationEntry !== null ? RedelegationEntry.fromPartial(object.redelegationEntry) : undefined;
     message.balance = object.balance ?? "";
     return message;
+  },
+
+  fromSDK(object: RedelegationEntryResponseSDKType): RedelegationEntryResponse {
+    return {
+      redelegationEntry: isSet(object.redelegation_entry) ? RedelegationEntry.fromSDK(object.redelegation_entry) : undefined,
+      balance: isSet(object.balance) ? object.balance : undefined
+    };
+  },
+
+  toSDK(message: RedelegationEntryResponse): RedelegationEntryResponseSDKType {
+    const obj: any = {};
+    message.redelegationEntry !== undefined && (obj.redelegation_entry = message.redelegationEntry ? RedelegationEntry.toSDK(message.redelegationEntry) : undefined);
+    message.balance !== undefined && (obj.balance = message.balance);
+    return obj;
   }
 
 };
@@ -2226,31 +2226,31 @@ export const RedelegationResponse = {
     return message;
   },
 
-  fromJSON(object: any): RedelegationResponse {
-    return {
-      redelegation: isSet(object.redelegation) ? Redelegation.fromJSON(object.redelegation) : undefined,
-      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => RedelegationEntryResponse.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: RedelegationResponse): unknown {
-    const obj: any = {};
-    message.redelegation !== undefined && (obj.redelegation = message.redelegation ? Redelegation.toJSON(message.redelegation) : undefined);
-
-    if (message.entries) {
-      obj.entries = message.entries.map(e => e ? RedelegationEntryResponse.toJSON(e) : undefined);
-    } else {
-      obj.entries = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<RedelegationResponse>): RedelegationResponse {
     const message = createBaseRedelegationResponse();
     message.redelegation = object.redelegation !== undefined && object.redelegation !== null ? Redelegation.fromPartial(object.redelegation) : undefined;
     message.entries = object.entries?.map(e => RedelegationEntryResponse.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: RedelegationResponseSDKType): RedelegationResponse {
+    return {
+      redelegation: isSet(object.redelegation) ? Redelegation.fromSDK(object.redelegation) : undefined,
+      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => RedelegationEntryResponse.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: RedelegationResponse): RedelegationResponseSDKType {
+    const obj: any = {};
+    message.redelegation !== undefined && (obj.redelegation = message.redelegation ? Redelegation.toSDK(message.redelegation) : undefined);
+
+    if (message.entries) {
+      obj.entries = message.entries.map(e => e ? RedelegationEntryResponse.toSDK(e) : undefined);
+    } else {
+      obj.entries = [];
+    }
+
+    return obj;
   }
 
 };
@@ -2301,25 +2301,25 @@ export const Pool = {
     return message;
   },
 
-  fromJSON(object: any): Pool {
-    return {
-      notBondedTokens: isSet(object.notBondedTokens) ? String(object.notBondedTokens) : "",
-      bondedTokens: isSet(object.bondedTokens) ? String(object.bondedTokens) : ""
-    };
-  },
-
-  toJSON(message: Pool): unknown {
-    const obj: any = {};
-    message.notBondedTokens !== undefined && (obj.notBondedTokens = message.notBondedTokens);
-    message.bondedTokens !== undefined && (obj.bondedTokens = message.bondedTokens);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Pool>): Pool {
     const message = createBasePool();
     message.notBondedTokens = object.notBondedTokens ?? "";
     message.bondedTokens = object.bondedTokens ?? "";
     return message;
+  },
+
+  fromSDK(object: PoolSDKType): Pool {
+    return {
+      notBondedTokens: isSet(object.not_bonded_tokens) ? object.not_bonded_tokens : undefined,
+      bondedTokens: isSet(object.bonded_tokens) ? object.bonded_tokens : undefined
+    };
+  },
+
+  toSDK(message: Pool): PoolSDKType {
+    const obj: any = {};
+    message.notBondedTokens !== undefined && (obj.not_bonded_tokens = message.notBondedTokens);
+    message.bondedTokens !== undefined && (obj.bonded_tokens = message.bondedTokens);
+    return obj;
   }
 
 };

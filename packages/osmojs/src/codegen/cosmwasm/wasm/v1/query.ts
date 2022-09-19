@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
 import { ContractInfo, ContractInfoSDKType, ContractCodeHistoryEntry, ContractCodeHistoryEntrySDKType, Model, ModelSDKType } from "./types";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 /**
  * QueryContractInfoRequest is the request type for the Query/ContractInfo RPC
  * method
@@ -406,22 +406,22 @@ export const QueryContractInfoRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryContractInfoRequest {
-    return {
-      address: isSet(object.address) ? String(object.address) : ""
-    };
-  },
-
-  toJSON(message: QueryContractInfoRequest): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryContractInfoRequest>): QueryContractInfoRequest {
     const message = createBaseQueryContractInfoRequest();
     message.address = object.address ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryContractInfoRequestSDKType): QueryContractInfoRequest {
+    return {
+      address: isSet(object.address) ? object.address : undefined
+    };
+  },
+
+  toSDK(message: QueryContractInfoRequest): QueryContractInfoRequestSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    return obj;
   }
 
 };
@@ -472,25 +472,25 @@ export const QueryContractInfoResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryContractInfoResponse {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      contractInfo: isSet(object.contractInfo) ? ContractInfo.fromJSON(object.contractInfo) : undefined
-    };
-  },
-
-  toJSON(message: QueryContractInfoResponse): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.contractInfo !== undefined && (obj.contractInfo = message.contractInfo ? ContractInfo.toJSON(message.contractInfo) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryContractInfoResponse>): QueryContractInfoResponse {
     const message = createBaseQueryContractInfoResponse();
     message.address = object.address ?? "";
     message.contractInfo = object.contractInfo !== undefined && object.contractInfo !== null ? ContractInfo.fromPartial(object.contractInfo) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryContractInfoResponseSDKType): QueryContractInfoResponse {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      contractInfo: isSet(object.contract_info) ? ContractInfo.fromSDK(object.contract_info) : undefined
+    };
+  },
+
+  toSDK(message: QueryContractInfoResponse): QueryContractInfoResponseSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.contractInfo !== undefined && (obj.contract_info = message.contractInfo ? ContractInfo.toSDK(message.contractInfo) : undefined);
+    return obj;
   }
 
 };
@@ -541,25 +541,25 @@ export const QueryContractHistoryRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryContractHistoryRequest {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryContractHistoryRequest): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryContractHistoryRequest>): QueryContractHistoryRequest {
     const message = createBaseQueryContractHistoryRequest();
     message.address = object.address ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryContractHistoryRequestSDKType): QueryContractHistoryRequest {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryContractHistoryRequest): QueryContractHistoryRequestSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -610,31 +610,31 @@ export const QueryContractHistoryResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryContractHistoryResponse {
-    return {
-      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => ContractCodeHistoryEntry.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryContractHistoryResponse): unknown {
-    const obj: any = {};
-
-    if (message.entries) {
-      obj.entries = message.entries.map(e => e ? ContractCodeHistoryEntry.toJSON(e) : undefined);
-    } else {
-      obj.entries = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryContractHistoryResponse>): QueryContractHistoryResponse {
     const message = createBaseQueryContractHistoryResponse();
     message.entries = object.entries?.map(e => ContractCodeHistoryEntry.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryContractHistoryResponseSDKType): QueryContractHistoryResponse {
+    return {
+      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => ContractCodeHistoryEntry.fromSDK(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryContractHistoryResponse): QueryContractHistoryResponseSDKType {
+    const obj: any = {};
+
+    if (message.entries) {
+      obj.entries = message.entries.map(e => e ? ContractCodeHistoryEntry.toSDK(e) : undefined);
+    } else {
+      obj.entries = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -685,25 +685,25 @@ export const QueryContractsByCodeRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryContractsByCodeRequest {
-    return {
-      codeId: isSet(object.codeId) ? Long.fromString(object.codeId) : Long.UZERO,
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryContractsByCodeRequest): unknown {
-    const obj: any = {};
-    message.codeId !== undefined && (obj.codeId = (message.codeId || Long.UZERO).toString());
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryContractsByCodeRequest>): QueryContractsByCodeRequest {
     const message = createBaseQueryContractsByCodeRequest();
     message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryContractsByCodeRequestSDKType): QueryContractsByCodeRequest {
+    return {
+      codeId: isSet(object.code_id) ? object.code_id : undefined,
+      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryContractsByCodeRequest): QueryContractsByCodeRequestSDKType {
+    const obj: any = {};
+    message.codeId !== undefined && (obj.code_id = message.codeId);
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -754,14 +754,21 @@ export const QueryContractsByCodeResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryContractsByCodeResponse {
+  fromPartial(object: DeepPartial<QueryContractsByCodeResponse>): QueryContractsByCodeResponse {
+    const message = createBaseQueryContractsByCodeResponse();
+    message.contracts = object.contracts?.map(e => e) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+
+  fromSDK(object: QueryContractsByCodeResponseSDKType): QueryContractsByCodeResponse {
     return {
-      contracts: Array.isArray(object?.contracts) ? object.contracts.map((e: any) => String(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+      contracts: Array.isArray(object?.contracts) ? object.contracts.map((e: any) => e) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
     };
   },
 
-  toJSON(message: QueryContractsByCodeResponse): unknown {
+  toSDK(message: QueryContractsByCodeResponse): QueryContractsByCodeResponseSDKType {
     const obj: any = {};
 
     if (message.contracts) {
@@ -770,15 +777,8 @@ export const QueryContractsByCodeResponse = {
       obj.contracts = [];
     }
 
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<QueryContractsByCodeResponse>): QueryContractsByCodeResponse {
-    const message = createBaseQueryContractsByCodeResponse();
-    message.contracts = object.contracts?.map(e => e) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
-    return message;
   }
 
 };
@@ -829,25 +829,25 @@ export const QueryAllContractStateRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryAllContractStateRequest {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryAllContractStateRequest): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryAllContractStateRequest>): QueryAllContractStateRequest {
     const message = createBaseQueryAllContractStateRequest();
     message.address = object.address ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryAllContractStateRequestSDKType): QueryAllContractStateRequest {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryAllContractStateRequest): QueryAllContractStateRequestSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -898,31 +898,31 @@ export const QueryAllContractStateResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryAllContractStateResponse {
-    return {
-      models: Array.isArray(object?.models) ? object.models.map((e: any) => Model.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryAllContractStateResponse): unknown {
-    const obj: any = {};
-
-    if (message.models) {
-      obj.models = message.models.map(e => e ? Model.toJSON(e) : undefined);
-    } else {
-      obj.models = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryAllContractStateResponse>): QueryAllContractStateResponse {
     const message = createBaseQueryAllContractStateResponse();
     message.models = object.models?.map(e => Model.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryAllContractStateResponseSDKType): QueryAllContractStateResponse {
+    return {
+      models: Array.isArray(object?.models) ? object.models.map((e: any) => Model.fromSDK(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryAllContractStateResponse): QueryAllContractStateResponseSDKType {
+    const obj: any = {};
+
+    if (message.models) {
+      obj.models = message.models.map(e => e ? Model.toSDK(e) : undefined);
+    } else {
+      obj.models = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -973,25 +973,25 @@ export const QueryRawContractStateRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryRawContractStateRequest {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      queryData: isSet(object.queryData) ? bytesFromBase64(object.queryData) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: QueryRawContractStateRequest): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.queryData !== undefined && (obj.queryData = base64FromBytes(message.queryData !== undefined ? message.queryData : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryRawContractStateRequest>): QueryRawContractStateRequest {
     const message = createBaseQueryRawContractStateRequest();
     message.address = object.address ?? "";
     message.queryData = object.queryData ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: QueryRawContractStateRequestSDKType): QueryRawContractStateRequest {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      queryData: isSet(object.query_data) ? object.query_data : undefined
+    };
+  },
+
+  toSDK(message: QueryRawContractStateRequest): QueryRawContractStateRequestSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.queryData !== undefined && (obj.query_data = message.queryData);
+    return obj;
   }
 
 };
@@ -1033,22 +1033,22 @@ export const QueryRawContractStateResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryRawContractStateResponse {
-    return {
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: QueryRawContractStateResponse): unknown {
-    const obj: any = {};
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryRawContractStateResponse>): QueryRawContractStateResponse {
     const message = createBaseQueryRawContractStateResponse();
     message.data = object.data ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: QueryRawContractStateResponseSDKType): QueryRawContractStateResponse {
+    return {
+      data: isSet(object.data) ? object.data : undefined
+    };
+  },
+
+  toSDK(message: QueryRawContractStateResponse): QueryRawContractStateResponseSDKType {
+    const obj: any = {};
+    message.data !== undefined && (obj.data = message.data);
+    return obj;
   }
 
 };
@@ -1099,25 +1099,25 @@ export const QuerySmartContractStateRequest = {
     return message;
   },
 
-  fromJSON(object: any): QuerySmartContractStateRequest {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      queryData: isSet(object.queryData) ? bytesFromBase64(object.queryData) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: QuerySmartContractStateRequest): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.queryData !== undefined && (obj.queryData = base64FromBytes(message.queryData !== undefined ? message.queryData : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QuerySmartContractStateRequest>): QuerySmartContractStateRequest {
     const message = createBaseQuerySmartContractStateRequest();
     message.address = object.address ?? "";
     message.queryData = object.queryData ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: QuerySmartContractStateRequestSDKType): QuerySmartContractStateRequest {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      queryData: isSet(object.query_data) ? object.query_data : undefined
+    };
+  },
+
+  toSDK(message: QuerySmartContractStateRequest): QuerySmartContractStateRequestSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.queryData !== undefined && (obj.query_data = message.queryData);
+    return obj;
   }
 
 };
@@ -1159,22 +1159,22 @@ export const QuerySmartContractStateResponse = {
     return message;
   },
 
-  fromJSON(object: any): QuerySmartContractStateResponse {
-    return {
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: QuerySmartContractStateResponse): unknown {
-    const obj: any = {};
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QuerySmartContractStateResponse>): QuerySmartContractStateResponse {
     const message = createBaseQuerySmartContractStateResponse();
     message.data = object.data ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: QuerySmartContractStateResponseSDKType): QuerySmartContractStateResponse {
+    return {
+      data: isSet(object.data) ? object.data : undefined
+    };
+  },
+
+  toSDK(message: QuerySmartContractStateResponse): QuerySmartContractStateResponseSDKType {
+    const obj: any = {};
+    message.data !== undefined && (obj.data = message.data);
+    return obj;
   }
 
 };
@@ -1216,22 +1216,22 @@ export const QueryCodeRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryCodeRequest {
-    return {
-      codeId: isSet(object.codeId) ? Long.fromString(object.codeId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: QueryCodeRequest): unknown {
-    const obj: any = {};
-    message.codeId !== undefined && (obj.codeId = (message.codeId || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryCodeRequest>): QueryCodeRequest {
     const message = createBaseQueryCodeRequest();
     message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: QueryCodeRequestSDKType): QueryCodeRequest {
+    return {
+      codeId: isSet(object.code_id) ? object.code_id : undefined
+    };
+  },
+
+  toSDK(message: QueryCodeRequest): QueryCodeRequestSDKType {
+    const obj: any = {};
+    message.codeId !== undefined && (obj.code_id = message.codeId);
+    return obj;
   }
 
 };
@@ -1291,28 +1291,28 @@ export const CodeInfoResponse = {
     return message;
   },
 
-  fromJSON(object: any): CodeInfoResponse {
-    return {
-      codeId: isSet(object.codeId) ? Long.fromString(object.codeId) : Long.UZERO,
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      dataHash: isSet(object.dataHash) ? bytesFromBase64(object.dataHash) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: CodeInfoResponse): unknown {
-    const obj: any = {};
-    message.codeId !== undefined && (obj.codeId = (message.codeId || Long.UZERO).toString());
-    message.creator !== undefined && (obj.creator = message.creator);
-    message.dataHash !== undefined && (obj.dataHash = base64FromBytes(message.dataHash !== undefined ? message.dataHash : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<CodeInfoResponse>): CodeInfoResponse {
     const message = createBaseCodeInfoResponse();
     message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.creator = object.creator ?? "";
     message.dataHash = object.dataHash ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: CodeInfoResponseSDKType): CodeInfoResponse {
+    return {
+      codeId: isSet(object.code_id) ? object.code_id : undefined,
+      creator: isSet(object.creator) ? object.creator : undefined,
+      dataHash: isSet(object.data_hash) ? object.data_hash : undefined
+    };
+  },
+
+  toSDK(message: CodeInfoResponse): CodeInfoResponseSDKType {
+    const obj: any = {};
+    message.codeId !== undefined && (obj.code_id = message.codeId);
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.dataHash !== undefined && (obj.data_hash = message.dataHash);
+    return obj;
   }
 
 };
@@ -1363,25 +1363,25 @@ export const QueryCodeResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryCodeResponse {
-    return {
-      codeInfo: isSet(object.codeInfo) ? CodeInfoResponse.fromJSON(object.codeInfo) : undefined,
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: QueryCodeResponse): unknown {
-    const obj: any = {};
-    message.codeInfo !== undefined && (obj.codeInfo = message.codeInfo ? CodeInfoResponse.toJSON(message.codeInfo) : undefined);
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryCodeResponse>): QueryCodeResponse {
     const message = createBaseQueryCodeResponse();
     message.codeInfo = object.codeInfo !== undefined && object.codeInfo !== null ? CodeInfoResponse.fromPartial(object.codeInfo) : undefined;
     message.data = object.data ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: QueryCodeResponseSDKType): QueryCodeResponse {
+    return {
+      codeInfo: isSet(object.code_info) ? CodeInfoResponse.fromSDK(object.code_info) : undefined,
+      data: isSet(object.data) ? object.data : undefined
+    };
+  },
+
+  toSDK(message: QueryCodeResponse): QueryCodeResponseSDKType {
+    const obj: any = {};
+    message.codeInfo !== undefined && (obj.code_info = message.codeInfo ? CodeInfoResponse.toSDK(message.codeInfo) : undefined);
+    message.data !== undefined && (obj.data = message.data);
+    return obj;
   }
 
 };
@@ -1423,22 +1423,22 @@ export const QueryCodesRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryCodesRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryCodesRequest): unknown {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryCodesRequest>): QueryCodesRequest {
     const message = createBaseQueryCodesRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryCodesRequestSDKType): QueryCodesRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryCodesRequest): QueryCodesRequestSDKType {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -1489,31 +1489,31 @@ export const QueryCodesResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryCodesResponse {
-    return {
-      codeInfos: Array.isArray(object?.codeInfos) ? object.codeInfos.map((e: any) => CodeInfoResponse.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryCodesResponse): unknown {
-    const obj: any = {};
-
-    if (message.codeInfos) {
-      obj.codeInfos = message.codeInfos.map(e => e ? CodeInfoResponse.toJSON(e) : undefined);
-    } else {
-      obj.codeInfos = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryCodesResponse>): QueryCodesResponse {
     const message = createBaseQueryCodesResponse();
     message.codeInfos = object.codeInfos?.map(e => CodeInfoResponse.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryCodesResponseSDKType): QueryCodesResponse {
+    return {
+      codeInfos: Array.isArray(object?.code_infos) ? object.code_infos.map((e: any) => CodeInfoResponse.fromSDK(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryCodesResponse): QueryCodesResponseSDKType {
+    const obj: any = {};
+
+    if (message.codeInfos) {
+      obj.code_infos = message.codeInfos.map(e => e ? CodeInfoResponse.toSDK(e) : undefined);
+    } else {
+      obj.code_infos = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -1555,22 +1555,22 @@ export const QueryPinnedCodesRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryPinnedCodesRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryPinnedCodesRequest): unknown {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryPinnedCodesRequest>): QueryPinnedCodesRequest {
     const message = createBaseQueryPinnedCodesRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryPinnedCodesRequestSDKType): QueryPinnedCodesRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryPinnedCodesRequest): QueryPinnedCodesRequestSDKType {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -1634,31 +1634,31 @@ export const QueryPinnedCodesResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryPinnedCodesResponse {
-    return {
-      codeIds: Array.isArray(object?.codeIds) ? object.codeIds.map((e: any) => Long.fromString(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryPinnedCodesResponse): unknown {
-    const obj: any = {};
-
-    if (message.codeIds) {
-      obj.codeIds = message.codeIds.map(e => (e || Long.UZERO).toString());
-    } else {
-      obj.codeIds = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryPinnedCodesResponse>): QueryPinnedCodesResponse {
     const message = createBaseQueryPinnedCodesResponse();
     message.codeIds = object.codeIds?.map(e => Long.fromValue(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryPinnedCodesResponseSDKType): QueryPinnedCodesResponse {
+    return {
+      codeIds: Array.isArray(object?.code_ids) ? object.code_ids.map((e: any) => e) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryPinnedCodesResponse): QueryPinnedCodesResponseSDKType {
+    const obj: any = {};
+
+    if (message.codeIds) {
+      obj.code_ids = message.codeIds.map(e => e);
+    } else {
+      obj.code_ids = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };

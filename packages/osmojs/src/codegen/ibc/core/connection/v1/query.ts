@@ -3,7 +3,7 @@ import { ConnectionEnd, ConnectionEndSDKType, IdentifiedConnection, IdentifiedCo
 import { Height, HeightSDKType, IdentifiedClientState, IdentifiedClientStateSDKType } from "../../client/v1/client";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, bytesFromBase64, base64FromBytes, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 /**
  * QueryConnectionRequest is the request type for the Query/Connection RPC
  * method
@@ -292,22 +292,22 @@ export const QueryConnectionRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryConnectionRequest {
-    return {
-      connectionId: isSet(object.connectionId) ? String(object.connectionId) : ""
-    };
-  },
-
-  toJSON(message: QueryConnectionRequest): unknown {
-    const obj: any = {};
-    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConnectionRequest>): QueryConnectionRequest {
     const message = createBaseQueryConnectionRequest();
     message.connectionId = object.connectionId ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryConnectionRequestSDKType): QueryConnectionRequest {
+    return {
+      connectionId: isSet(object.connection_id) ? object.connection_id : undefined
+    };
+  },
+
+  toSDK(message: QueryConnectionRequest): QueryConnectionRequestSDKType {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connection_id = message.connectionId);
+    return obj;
   }
 
 };
@@ -367,28 +367,28 @@ export const QueryConnectionResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryConnectionResponse {
-    return {
-      connection: isSet(object.connection) ? ConnectionEnd.fromJSON(object.connection) : undefined,
-      proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined
-    };
-  },
-
-  toJSON(message: QueryConnectionResponse): unknown {
-    const obj: any = {};
-    message.connection !== undefined && (obj.connection = message.connection ? ConnectionEnd.toJSON(message.connection) : undefined);
-    message.proof !== undefined && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConnectionResponse>): QueryConnectionResponse {
     const message = createBaseQueryConnectionResponse();
     message.connection = object.connection !== undefined && object.connection !== null ? ConnectionEnd.fromPartial(object.connection) : undefined;
     message.proof = object.proof ?? new Uint8Array();
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryConnectionResponseSDKType): QueryConnectionResponse {
+    return {
+      connection: isSet(object.connection) ? ConnectionEnd.fromSDK(object.connection) : undefined,
+      proof: isSet(object.proof) ? object.proof : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined
+    };
+  },
+
+  toSDK(message: QueryConnectionResponse): QueryConnectionResponseSDKType {
+    const obj: any = {};
+    message.connection !== undefined && (obj.connection = message.connection ? ConnectionEnd.toSDK(message.connection) : undefined);
+    message.proof !== undefined && (obj.proof = message.proof);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    return obj;
   }
 
 };
@@ -430,22 +430,22 @@ export const QueryConnectionsRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryConnectionsRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryConnectionsRequest): unknown {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConnectionsRequest>): QueryConnectionsRequest {
     const message = createBaseQueryConnectionsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryConnectionsRequestSDKType): QueryConnectionsRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromSDK(object.pagination) : undefined
+    };
+  },
+
+  toSDK(message: QueryConnectionsRequest): QueryConnectionsRequestSDKType {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+    return obj;
   }
 
 };
@@ -505,34 +505,34 @@ export const QueryConnectionsResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryConnectionsResponse {
-    return {
-      connections: Array.isArray(object?.connections) ? object.connections.map((e: any) => IdentifiedConnection.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined,
-      height: isSet(object.height) ? Height.fromJSON(object.height) : undefined
-    };
-  },
-
-  toJSON(message: QueryConnectionsResponse): unknown {
-    const obj: any = {};
-
-    if (message.connections) {
-      obj.connections = message.connections.map(e => e ? IdentifiedConnection.toJSON(e) : undefined);
-    } else {
-      obj.connections = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    message.height !== undefined && (obj.height = message.height ? Height.toJSON(message.height) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConnectionsResponse>): QueryConnectionsResponse {
     const message = createBaseQueryConnectionsResponse();
     message.connections = object.connections?.map(e => IdentifiedConnection.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryConnectionsResponseSDKType): QueryConnectionsResponse {
+    return {
+      connections: Array.isArray(object?.connections) ? object.connections.map((e: any) => IdentifiedConnection.fromSDK(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromSDK(object.pagination) : undefined,
+      height: isSet(object.height) ? Height.fromSDK(object.height) : undefined
+    };
+  },
+
+  toSDK(message: QueryConnectionsResponse): QueryConnectionsResponseSDKType {
+    const obj: any = {};
+
+    if (message.connections) {
+      obj.connections = message.connections.map(e => e ? IdentifiedConnection.toSDK(e) : undefined);
+    } else {
+      obj.connections = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
+    message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
+    return obj;
   }
 
 };
@@ -574,22 +574,22 @@ export const QueryClientConnectionsRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryClientConnectionsRequest {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : ""
-    };
-  },
-
-  toJSON(message: QueryClientConnectionsRequest): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryClientConnectionsRequest>): QueryClientConnectionsRequest {
     const message = createBaseQueryClientConnectionsRequest();
     message.clientId = object.clientId ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryClientConnectionsRequestSDKType): QueryClientConnectionsRequest {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined
+    };
+  },
+
+  toSDK(message: QueryClientConnectionsRequest): QueryClientConnectionsRequestSDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+    return obj;
   }
 
 };
@@ -649,34 +649,34 @@ export const QueryClientConnectionsResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryClientConnectionsResponse {
-    return {
-      connectionPaths: Array.isArray(object?.connectionPaths) ? object.connectionPaths.map((e: any) => String(e)) : [],
-      proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined
-    };
-  },
-
-  toJSON(message: QueryClientConnectionsResponse): unknown {
-    const obj: any = {};
-
-    if (message.connectionPaths) {
-      obj.connectionPaths = message.connectionPaths.map(e => e);
-    } else {
-      obj.connectionPaths = [];
-    }
-
-    message.proof !== undefined && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse {
     const message = createBaseQueryClientConnectionsResponse();
     message.connectionPaths = object.connectionPaths?.map(e => e) || [];
     message.proof = object.proof ?? new Uint8Array();
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryClientConnectionsResponseSDKType): QueryClientConnectionsResponse {
+    return {
+      connectionPaths: Array.isArray(object?.connection_paths) ? object.connection_paths.map((e: any) => e) : [],
+      proof: isSet(object.proof) ? object.proof : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined
+    };
+  },
+
+  toSDK(message: QueryClientConnectionsResponse): QueryClientConnectionsResponseSDKType {
+    const obj: any = {};
+
+    if (message.connectionPaths) {
+      obj.connection_paths = message.connectionPaths.map(e => e);
+    } else {
+      obj.connection_paths = [];
+    }
+
+    message.proof !== undefined && (obj.proof = message.proof);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    return obj;
   }
 
 };
@@ -718,22 +718,22 @@ export const QueryConnectionClientStateRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryConnectionClientStateRequest {
-    return {
-      connectionId: isSet(object.connectionId) ? String(object.connectionId) : ""
-    };
-  },
-
-  toJSON(message: QueryConnectionClientStateRequest): unknown {
-    const obj: any = {};
-    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConnectionClientStateRequest>): QueryConnectionClientStateRequest {
     const message = createBaseQueryConnectionClientStateRequest();
     message.connectionId = object.connectionId ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryConnectionClientStateRequestSDKType): QueryConnectionClientStateRequest {
+    return {
+      connectionId: isSet(object.connection_id) ? object.connection_id : undefined
+    };
+  },
+
+  toSDK(message: QueryConnectionClientStateRequest): QueryConnectionClientStateRequestSDKType {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connection_id = message.connectionId);
+    return obj;
   }
 
 };
@@ -793,28 +793,28 @@ export const QueryConnectionClientStateResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryConnectionClientStateResponse {
-    return {
-      identifiedClientState: isSet(object.identifiedClientState) ? IdentifiedClientState.fromJSON(object.identifiedClientState) : undefined,
-      proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined
-    };
-  },
-
-  toJSON(message: QueryConnectionClientStateResponse): unknown {
-    const obj: any = {};
-    message.identifiedClientState !== undefined && (obj.identifiedClientState = message.identifiedClientState ? IdentifiedClientState.toJSON(message.identifiedClientState) : undefined);
-    message.proof !== undefined && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse {
     const message = createBaseQueryConnectionClientStateResponse();
     message.identifiedClientState = object.identifiedClientState !== undefined && object.identifiedClientState !== null ? IdentifiedClientState.fromPartial(object.identifiedClientState) : undefined;
     message.proof = object.proof ?? new Uint8Array();
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryConnectionClientStateResponseSDKType): QueryConnectionClientStateResponse {
+    return {
+      identifiedClientState: isSet(object.identified_client_state) ? IdentifiedClientState.fromSDK(object.identified_client_state) : undefined,
+      proof: isSet(object.proof) ? object.proof : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined
+    };
+  },
+
+  toSDK(message: QueryConnectionClientStateResponse): QueryConnectionClientStateResponseSDKType {
+    const obj: any = {};
+    message.identifiedClientState !== undefined && (obj.identified_client_state = message.identifiedClientState ? IdentifiedClientState.toSDK(message.identifiedClientState) : undefined);
+    message.proof !== undefined && (obj.proof = message.proof);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    return obj;
   }
 
 };
@@ -874,28 +874,28 @@ export const QueryConnectionConsensusStateRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryConnectionConsensusStateRequest {
-    return {
-      connectionId: isSet(object.connectionId) ? String(object.connectionId) : "",
-      revisionNumber: isSet(object.revisionNumber) ? Long.fromString(object.revisionNumber) : Long.UZERO,
-      revisionHeight: isSet(object.revisionHeight) ? Long.fromString(object.revisionHeight) : Long.UZERO
-    };
-  },
-
-  toJSON(message: QueryConnectionConsensusStateRequest): unknown {
-    const obj: any = {};
-    message.connectionId !== undefined && (obj.connectionId = message.connectionId);
-    message.revisionNumber !== undefined && (obj.revisionNumber = (message.revisionNumber || Long.UZERO).toString());
-    message.revisionHeight !== undefined && (obj.revisionHeight = (message.revisionHeight || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConnectionConsensusStateRequest>): QueryConnectionConsensusStateRequest {
     const message = createBaseQueryConnectionConsensusStateRequest();
     message.connectionId = object.connectionId ?? "";
     message.revisionNumber = object.revisionNumber !== undefined && object.revisionNumber !== null ? Long.fromValue(object.revisionNumber) : Long.UZERO;
     message.revisionHeight = object.revisionHeight !== undefined && object.revisionHeight !== null ? Long.fromValue(object.revisionHeight) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: QueryConnectionConsensusStateRequestSDKType): QueryConnectionConsensusStateRequest {
+    return {
+      connectionId: isSet(object.connection_id) ? object.connection_id : undefined,
+      revisionNumber: isSet(object.revision_number) ? object.revision_number : undefined,
+      revisionHeight: isSet(object.revision_height) ? object.revision_height : undefined
+    };
+  },
+
+  toSDK(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestSDKType {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connection_id = message.connectionId);
+    message.revisionNumber !== undefined && (obj.revision_number = message.revisionNumber);
+    message.revisionHeight !== undefined && (obj.revision_height = message.revisionHeight);
+    return obj;
   }
 
 };
@@ -964,24 +964,6 @@ export const QueryConnectionConsensusStateResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryConnectionConsensusStateResponse {
-    return {
-      consensusState: isSet(object.consensusState) ? Any.fromJSON(object.consensusState) : undefined,
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined
-    };
-  },
-
-  toJSON(message: QueryConnectionConsensusStateResponse): unknown {
-    const obj: any = {};
-    message.consensusState !== undefined && (obj.consensusState = message.consensusState ? Any.toJSON(message.consensusState) : undefined);
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-    message.proof !== undefined && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse {
     const message = createBaseQueryConnectionConsensusStateResponse();
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
@@ -989,6 +971,24 @@ export const QueryConnectionConsensusStateResponse = {
     message.proof = object.proof ?? new Uint8Array();
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryConnectionConsensusStateResponseSDKType): QueryConnectionConsensusStateResponse {
+    return {
+      consensusState: isSet(object.consensus_state) ? Any.fromSDK(object.consensus_state) : undefined,
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      proof: isSet(object.proof) ? object.proof : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined
+    };
+  },
+
+  toSDK(message: QueryConnectionConsensusStateResponse): QueryConnectionConsensusStateResponseSDKType {
+    const obj: any = {};
+    message.consensusState !== undefined && (obj.consensus_state = message.consensusState ? Any.toSDK(message.consensusState) : undefined);
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+    message.proof !== undefined && (obj.proof = message.proof);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    return obj;
   }
 
 };

@@ -1,7 +1,7 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Plan, PlanSDKType } from "../../../../cosmos/upgrade/v1beta1/upgrade";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 /**
  * IdentifiedClientState defines a client state with an additional client
  * identifier field.
@@ -259,25 +259,25 @@ export const IdentifiedClientState = {
     return message;
   },
 
-  fromJSON(object: any): IdentifiedClientState {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      clientState: isSet(object.clientState) ? Any.fromJSON(object.clientState) : undefined
-    };
-  },
-
-  toJSON(message: IdentifiedClientState): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-    message.clientState !== undefined && (obj.clientState = message.clientState ? Any.toJSON(message.clientState) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<IdentifiedClientState>): IdentifiedClientState {
     const message = createBaseIdentifiedClientState();
     message.clientId = object.clientId ?? "";
     message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
     return message;
+  },
+
+  fromSDK(object: IdentifiedClientStateSDKType): IdentifiedClientState {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      clientState: isSet(object.client_state) ? Any.fromSDK(object.client_state) : undefined
+    };
+  },
+
+  toSDK(message: IdentifiedClientState): IdentifiedClientStateSDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+    message.clientState !== undefined && (obj.client_state = message.clientState ? Any.toSDK(message.clientState) : undefined);
+    return obj;
   }
 
 };
@@ -328,25 +328,25 @@ export const ConsensusStateWithHeight = {
     return message;
   },
 
-  fromJSON(object: any): ConsensusStateWithHeight {
-    return {
-      height: isSet(object.height) ? Height.fromJSON(object.height) : undefined,
-      consensusState: isSet(object.consensusState) ? Any.fromJSON(object.consensusState) : undefined
-    };
-  },
-
-  toJSON(message: ConsensusStateWithHeight): unknown {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = message.height ? Height.toJSON(message.height) : undefined);
-    message.consensusState !== undefined && (obj.consensusState = message.consensusState ? Any.toJSON(message.consensusState) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ConsensusStateWithHeight>): ConsensusStateWithHeight {
     const message = createBaseConsensusStateWithHeight();
     message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
     return message;
+  },
+
+  fromSDK(object: ConsensusStateWithHeightSDKType): ConsensusStateWithHeight {
+    return {
+      height: isSet(object.height) ? Height.fromSDK(object.height) : undefined,
+      consensusState: isSet(object.consensus_state) ? Any.fromSDK(object.consensus_state) : undefined
+    };
+  },
+
+  toSDK(message: ConsensusStateWithHeight): ConsensusStateWithHeightSDKType {
+    const obj: any = {};
+    message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
+    message.consensusState !== undefined && (obj.consensus_state = message.consensusState ? Any.toSDK(message.consensusState) : undefined);
+    return obj;
   }
 
 };
@@ -397,31 +397,31 @@ export const ClientConsensusStates = {
     return message;
   },
 
-  fromJSON(object: any): ClientConsensusStates {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      consensusStates: Array.isArray(object?.consensusStates) ? object.consensusStates.map((e: any) => ConsensusStateWithHeight.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ClientConsensusStates): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-
-    if (message.consensusStates) {
-      obj.consensusStates = message.consensusStates.map(e => e ? ConsensusStateWithHeight.toJSON(e) : undefined);
-    } else {
-      obj.consensusStates = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ClientConsensusStates>): ClientConsensusStates {
     const message = createBaseClientConsensusStates();
     message.clientId = object.clientId ?? "";
     message.consensusStates = object.consensusStates?.map(e => ConsensusStateWithHeight.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: ClientConsensusStatesSDKType): ClientConsensusStates {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      consensusStates: Array.isArray(object?.consensus_states) ? object.consensus_states.map((e: any) => ConsensusStateWithHeight.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: ClientConsensusStates): ClientConsensusStatesSDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+
+    if (message.consensusStates) {
+      obj.consensus_states = message.consensusStates.map(e => e ? ConsensusStateWithHeight.toSDK(e) : undefined);
+    } else {
+      obj.consensus_states = [];
+    }
+
+    return obj;
   }
 
 };
@@ -490,24 +490,6 @@ export const ClientUpdateProposal = {
     return message;
   },
 
-  fromJSON(object: any): ClientUpdateProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      subjectClientId: isSet(object.subjectClientId) ? String(object.subjectClientId) : "",
-      substituteClientId: isSet(object.substituteClientId) ? String(object.substituteClientId) : ""
-    };
-  },
-
-  toJSON(message: ClientUpdateProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.subjectClientId !== undefined && (obj.subjectClientId = message.subjectClientId);
-    message.substituteClientId !== undefined && (obj.substituteClientId = message.substituteClientId);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ClientUpdateProposal>): ClientUpdateProposal {
     const message = createBaseClientUpdateProposal();
     message.title = object.title ?? "";
@@ -515,6 +497,24 @@ export const ClientUpdateProposal = {
     message.subjectClientId = object.subjectClientId ?? "";
     message.substituteClientId = object.substituteClientId ?? "";
     return message;
+  },
+
+  fromSDK(object: ClientUpdateProposalSDKType): ClientUpdateProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      subjectClientId: isSet(object.subject_client_id) ? object.subject_client_id : undefined,
+      substituteClientId: isSet(object.substitute_client_id) ? object.substitute_client_id : undefined
+    };
+  },
+
+  toSDK(message: ClientUpdateProposal): ClientUpdateProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.subjectClientId !== undefined && (obj.subject_client_id = message.subjectClientId);
+    message.substituteClientId !== undefined && (obj.substitute_client_id = message.substituteClientId);
+    return obj;
   }
 
 };
@@ -583,24 +583,6 @@ export const UpgradeProposal = {
     return message;
   },
 
-  fromJSON(object: any): UpgradeProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      plan: isSet(object.plan) ? Plan.fromJSON(object.plan) : undefined,
-      upgradedClientState: isSet(object.upgradedClientState) ? Any.fromJSON(object.upgradedClientState) : undefined
-    };
-  },
-
-  toJSON(message: UpgradeProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.plan !== undefined && (obj.plan = message.plan ? Plan.toJSON(message.plan) : undefined);
-    message.upgradedClientState !== undefined && (obj.upgradedClientState = message.upgradedClientState ? Any.toJSON(message.upgradedClientState) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<UpgradeProposal>): UpgradeProposal {
     const message = createBaseUpgradeProposal();
     message.title = object.title ?? "";
@@ -608,6 +590,24 @@ export const UpgradeProposal = {
     message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
     message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
     return message;
+  },
+
+  fromSDK(object: UpgradeProposalSDKType): UpgradeProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      plan: isSet(object.plan) ? Plan.fromSDK(object.plan) : undefined,
+      upgradedClientState: isSet(object.upgraded_client_state) ? Any.fromSDK(object.upgraded_client_state) : undefined
+    };
+  },
+
+  toSDK(message: UpgradeProposal): UpgradeProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.plan !== undefined && (obj.plan = message.plan ? Plan.toSDK(message.plan) : undefined);
+    message.upgradedClientState !== undefined && (obj.upgraded_client_state = message.upgradedClientState ? Any.toSDK(message.upgradedClientState) : undefined);
+    return obj;
   }
 
 };
@@ -658,25 +658,25 @@ export const Height = {
     return message;
   },
 
-  fromJSON(object: any): Height {
-    return {
-      revisionNumber: isSet(object.revisionNumber) ? Long.fromString(object.revisionNumber) : Long.UZERO,
-      revisionHeight: isSet(object.revisionHeight) ? Long.fromString(object.revisionHeight) : Long.UZERO
-    };
-  },
-
-  toJSON(message: Height): unknown {
-    const obj: any = {};
-    message.revisionNumber !== undefined && (obj.revisionNumber = (message.revisionNumber || Long.UZERO).toString());
-    message.revisionHeight !== undefined && (obj.revisionHeight = (message.revisionHeight || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Height>): Height {
     const message = createBaseHeight();
     message.revisionNumber = object.revisionNumber !== undefined && object.revisionNumber !== null ? Long.fromValue(object.revisionNumber) : Long.UZERO;
     message.revisionHeight = object.revisionHeight !== undefined && object.revisionHeight !== null ? Long.fromValue(object.revisionHeight) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: HeightSDKType): Height {
+    return {
+      revisionNumber: isSet(object.revision_number) ? object.revision_number : undefined,
+      revisionHeight: isSet(object.revision_height) ? object.revision_height : undefined
+    };
+  },
+
+  toSDK(message: Height): HeightSDKType {
+    const obj: any = {};
+    message.revisionNumber !== undefined && (obj.revision_number = message.revisionNumber);
+    message.revisionHeight !== undefined && (obj.revision_height = message.revisionHeight);
+    return obj;
   }
 
 };
@@ -718,28 +718,28 @@ export const Params = {
     return message;
   },
 
-  fromJSON(object: any): Params {
-    return {
-      allowedClients: Array.isArray(object?.allowedClients) ? object.allowedClients.map((e: any) => String(e)) : []
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-
-    if (message.allowedClients) {
-      obj.allowedClients = message.allowedClients.map(e => e);
-    } else {
-      obj.allowedClients = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.allowedClients = object.allowedClients?.map(e => e) || [];
     return message;
+  },
+
+  fromSDK(object: ParamsSDKType): Params {
+    return {
+      allowedClients: Array.isArray(object?.allowed_clients) ? object.allowed_clients.map((e: any) => e) : []
+    };
+  },
+
+  toSDK(message: Params): ParamsSDKType {
+    const obj: any = {};
+
+    if (message.allowedClients) {
+      obj.allowed_clients = message.allowedClients.map(e => e);
+    } else {
+      obj.allowed_clients = [];
+    }
+
+    return obj;
   }
 
 };

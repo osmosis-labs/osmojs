@@ -60,14 +60,14 @@ export interface UpdatePoolIncentivesProposalSDKType {
 export declare const ReplacePoolIncentivesProposal: {
     encode(message: ReplacePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ReplacePoolIncentivesProposal;
-    fromJSON(object: any): ReplacePoolIncentivesProposal;
-    toJSON(message: ReplacePoolIncentivesProposal): unknown;
     fromPartial(object: DeepPartial<ReplacePoolIncentivesProposal>): ReplacePoolIncentivesProposal;
+    fromSDK(object: ReplacePoolIncentivesProposalSDKType): ReplacePoolIncentivesProposal;
+    toSDK(message: ReplacePoolIncentivesProposal): ReplacePoolIncentivesProposalSDKType;
 };
 export declare const UpdatePoolIncentivesProposal: {
     encode(message: UpdatePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdatePoolIncentivesProposal;
-    fromJSON(object: any): UpdatePoolIncentivesProposal;
-    toJSON(message: UpdatePoolIncentivesProposal): unknown;
     fromPartial(object: DeepPartial<UpdatePoolIncentivesProposal>): UpdatePoolIncentivesProposal;
+    fromSDK(object: UpdatePoolIncentivesProposalSDKType): UpdatePoolIncentivesProposal;
+    toSDK(message: UpdatePoolIncentivesProposal): UpdatePoolIncentivesProposalSDKType;
 };

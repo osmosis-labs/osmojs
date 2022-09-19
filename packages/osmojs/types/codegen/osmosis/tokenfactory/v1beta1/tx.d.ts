@@ -108,56 +108,56 @@ export interface MsgChangeAdminResponseSDKType {
 export declare const MsgCreateDenom: {
     encode(message: MsgCreateDenom, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenom;
-    fromJSON(object: any): MsgCreateDenom;
-    toJSON(message: MsgCreateDenom): unknown;
     fromPartial(object: DeepPartial<MsgCreateDenom>): MsgCreateDenom;
+    fromSDK(object: MsgCreateDenomSDKType): MsgCreateDenom;
+    toSDK(message: MsgCreateDenom): MsgCreateDenomSDKType;
 };
 export declare const MsgCreateDenomResponse: {
     encode(message: MsgCreateDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponseSDKType;
-    fromJSON(object: any): MsgCreateDenomResponse;
-    toJSON(message: MsgCreateDenomResponse): unknown;
     fromPartial(object: DeepPartial<MsgCreateDenomResponse>): MsgCreateDenomResponse;
+    fromSDK(object: MsgCreateDenomResponseSDKType): MsgCreateDenomResponse;
+    toSDK(message: MsgCreateDenomResponse): MsgCreateDenomResponseSDKType;
 };
 export declare const MsgMint: {
     encode(message: MsgMint, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMint;
-    fromJSON(object: any): MsgMint;
-    toJSON(message: MsgMint): unknown;
     fromPartial(object: DeepPartial<MsgMint>): MsgMint;
+    fromSDK(object: MsgMintSDKType): MsgMint;
+    toSDK(message: MsgMint): MsgMintSDKType;
 };
 export declare const MsgMintResponse: {
     encode(_: MsgMintResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponseSDKType;
-    fromJSON(_: any): MsgMintResponse;
-    toJSON(_: MsgMintResponse): unknown;
     fromPartial(_: DeepPartial<MsgMintResponse>): MsgMintResponse;
+    fromSDK(_: MsgMintResponseSDKType): MsgMintResponse;
+    toSDK(_: MsgMintResponse): MsgMintResponseSDKType;
 };
 export declare const MsgBurn: {
     encode(message: MsgBurn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurn;
-    fromJSON(object: any): MsgBurn;
-    toJSON(message: MsgBurn): unknown;
     fromPartial(object: DeepPartial<MsgBurn>): MsgBurn;
+    fromSDK(object: MsgBurnSDKType): MsgBurn;
+    toSDK(message: MsgBurn): MsgBurnSDKType;
 };
 export declare const MsgBurnResponse: {
     encode(_: MsgBurnResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponseSDKType;
-    fromJSON(_: any): MsgBurnResponse;
-    toJSON(_: MsgBurnResponse): unknown;
     fromPartial(_: DeepPartial<MsgBurnResponse>): MsgBurnResponse;
+    fromSDK(_: MsgBurnResponseSDKType): MsgBurnResponse;
+    toSDK(_: MsgBurnResponse): MsgBurnResponseSDKType;
 };
 export declare const MsgChangeAdmin: {
     encode(message: MsgChangeAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdmin;
-    fromJSON(object: any): MsgChangeAdmin;
-    toJSON(message: MsgChangeAdmin): unknown;
     fromPartial(object: DeepPartial<MsgChangeAdmin>): MsgChangeAdmin;
+    fromSDK(object: MsgChangeAdminSDKType): MsgChangeAdmin;
+    toSDK(message: MsgChangeAdmin): MsgChangeAdminSDKType;
 };
 export declare const MsgChangeAdminResponse: {
     encode(_: MsgChangeAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponseSDKType;
-    fromJSON(_: any): MsgChangeAdminResponse;
-    toJSON(_: MsgChangeAdminResponse): unknown;
     fromPartial(_: DeepPartial<MsgChangeAdminResponse>): MsgChangeAdminResponse;
+    fromSDK(_: MsgChangeAdminResponseSDKType): MsgChangeAdminResponse;
+    toSDK(_: MsgChangeAdminResponse): MsgChangeAdminResponseSDKType;
 };

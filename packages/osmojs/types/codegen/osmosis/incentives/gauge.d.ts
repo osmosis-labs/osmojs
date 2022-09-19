@@ -66,14 +66,14 @@ export interface LockableDurationsInfoSDKType {
 export declare const Gauge: {
     encode(message: Gauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Gauge;
-    fromJSON(object: any): Gauge;
-    toJSON(message: Gauge): unknown;
     fromPartial(object: DeepPartial<Gauge>): Gauge;
+    fromSDK(object: GaugeSDKType): Gauge;
+    toSDK(message: Gauge): GaugeSDKType;
 };
 export declare const LockableDurationsInfo: {
     encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
-    fromJSON(object: any): LockableDurationsInfo;
-    toJSON(message: LockableDurationsInfo): unknown;
     fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo;
+    fromSDK(object: LockableDurationsInfoSDKType): LockableDurationsInfo;
+    toSDK(message: LockableDurationsInfo): LockableDurationsInfoSDKType;
 };

@@ -51,28 +51,28 @@ export const GenesisState = {
     return message;
   },
 
-  fromJSON(object: any): GenesisState {
+  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+    const message = createBaseGenesisState();
+    message.evidence = object.evidence?.map(e => Any.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: GenesisStateSDKType): GenesisState {
     return {
-      evidence: Array.isArray(object?.evidence) ? object.evidence.map((e: any) => Any.fromJSON(e)) : []
+      evidence: Array.isArray(object?.evidence) ? object.evidence.map((e: any) => Any.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: GenesisState): unknown {
+  toSDK(message: GenesisState): GenesisStateSDKType {
     const obj: any = {};
 
     if (message.evidence) {
-      obj.evidence = message.evidence.map(e => e ? Any.toJSON(e) : undefined);
+      obj.evidence = message.evidence.map(e => e ? Any.toSDK(e) : undefined);
     } else {
       obj.evidence = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
-    const message = createBaseGenesisState();
-    message.evidence = object.evidence?.map(e => Any.fromPartial(e)) || [];
-    return message;
   }
 
 };

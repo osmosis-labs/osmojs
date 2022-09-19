@@ -179,35 +179,35 @@ export interface SignatureDescriptor_Data_MultiSDKType {
 export declare const SignatureDescriptors: {
     encode(message: SignatureDescriptors, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptors;
-    fromJSON(object: any): SignatureDescriptors;
-    toJSON(message: SignatureDescriptors): unknown;
     fromPartial(object: DeepPartial<SignatureDescriptors>): SignatureDescriptors;
+    fromSDK(object: SignatureDescriptorsSDKType): SignatureDescriptors;
+    toSDK(message: SignatureDescriptors): SignatureDescriptorsSDKType;
 };
 export declare const SignatureDescriptor: {
     encode(message: SignatureDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor;
-    fromJSON(object: any): SignatureDescriptor;
-    toJSON(message: SignatureDescriptor): unknown;
     fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor;
+    fromSDK(object: SignatureDescriptorSDKType): SignatureDescriptor;
+    toSDK(message: SignatureDescriptor): SignatureDescriptorSDKType;
 };
 export declare const SignatureDescriptor_Data: {
     encode(message: SignatureDescriptor_Data, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data;
-    fromJSON(object: any): SignatureDescriptor_Data;
-    toJSON(message: SignatureDescriptor_Data): unknown;
     fromPartial(object: DeepPartial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
+    fromSDK(object: SignatureDescriptor_DataSDKType): SignatureDescriptor_Data;
+    toSDK(message: SignatureDescriptor_Data): SignatureDescriptor_DataSDKType;
 };
 export declare const SignatureDescriptor_Data_Single: {
     encode(message: SignatureDescriptor_Data_Single, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Single;
-    fromJSON(object: any): SignatureDescriptor_Data_Single;
-    toJSON(message: SignatureDescriptor_Data_Single): unknown;
     fromPartial(object: DeepPartial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
+    fromSDK(object: SignatureDescriptor_Data_SingleSDKType): SignatureDescriptor_Data_Single;
+    toSDK(message: SignatureDescriptor_Data_Single): SignatureDescriptor_Data_SingleSDKType;
 };
 export declare const SignatureDescriptor_Data_Multi: {
     encode(message: SignatureDescriptor_Data_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi;
-    fromJSON(object: any): SignatureDescriptor_Data_Multi;
-    toJSON(message: SignatureDescriptor_Data_Multi): unknown;
     fromPartial(object: DeepPartial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;
+    fromSDK(object: SignatureDescriptor_Data_MultiSDKType): SignatureDescriptor_Data_Multi;
+    toSDK(message: SignatureDescriptor_Data_Multi): SignatureDescriptor_Data_MultiSDKType;
 };

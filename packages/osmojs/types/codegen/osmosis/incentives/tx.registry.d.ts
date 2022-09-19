@@ -26,21 +26,21 @@ export declare const MessageComposer: {
     toJSON: {
         createGauge(value: MsgCreateGauge): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         addToGauge(value: MsgAddToGauge): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         createGauge(value: any): {
             typeUrl: string;
-            value: MsgCreateGauge;
+            value: any;
         };
         addToGauge(value: any): {
             typeUrl: string;
-            value: MsgAddToGauge;
+            value: any;
         };
     };
     fromPartial: {

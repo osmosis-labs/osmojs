@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * CommitInfo defines commit information used by the multi-store when committing
  * a version/height.
@@ -101,31 +101,31 @@ export const CommitInfo = {
     return message;
   },
 
-  fromJSON(object: any): CommitInfo {
-    return {
-      version: isSet(object.version) ? Long.fromString(object.version) : Long.ZERO,
-      storeInfos: Array.isArray(object?.storeInfos) ? object.storeInfos.map((e: any) => StoreInfo.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: CommitInfo): unknown {
-    const obj: any = {};
-    message.version !== undefined && (obj.version = (message.version || Long.ZERO).toString());
-
-    if (message.storeInfos) {
-      obj.storeInfos = message.storeInfos.map(e => e ? StoreInfo.toJSON(e) : undefined);
-    } else {
-      obj.storeInfos = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<CommitInfo>): CommitInfo {
     const message = createBaseCommitInfo();
     message.version = object.version !== undefined && object.version !== null ? Long.fromValue(object.version) : Long.ZERO;
     message.storeInfos = object.storeInfos?.map(e => StoreInfo.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: CommitInfoSDKType): CommitInfo {
+    return {
+      version: isSet(object.version) ? object.version : undefined,
+      storeInfos: Array.isArray(object?.store_infos) ? object.store_infos.map((e: any) => StoreInfo.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: CommitInfo): CommitInfoSDKType {
+    const obj: any = {};
+    message.version !== undefined && (obj.version = message.version);
+
+    if (message.storeInfos) {
+      obj.store_infos = message.storeInfos.map(e => e ? StoreInfo.toSDK(e) : undefined);
+    } else {
+      obj.store_infos = [];
+    }
+
+    return obj;
   }
 
 };
@@ -176,25 +176,25 @@ export const StoreInfo = {
     return message;
   },
 
-  fromJSON(object: any): StoreInfo {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      commitId: isSet(object.commitId) ? CommitID.fromJSON(object.commitId) : undefined
-    };
-  },
-
-  toJSON(message: StoreInfo): unknown {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.commitId !== undefined && (obj.commitId = message.commitId ? CommitID.toJSON(message.commitId) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<StoreInfo>): StoreInfo {
     const message = createBaseStoreInfo();
     message.name = object.name ?? "";
     message.commitId = object.commitId !== undefined && object.commitId !== null ? CommitID.fromPartial(object.commitId) : undefined;
     return message;
+  },
+
+  fromSDK(object: StoreInfoSDKType): StoreInfo {
+    return {
+      name: isSet(object.name) ? object.name : undefined,
+      commitId: isSet(object.commit_id) ? CommitID.fromSDK(object.commit_id) : undefined
+    };
+  },
+
+  toSDK(message: StoreInfo): StoreInfoSDKType {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.commitId !== undefined && (obj.commit_id = message.commitId ? CommitID.toSDK(message.commitId) : undefined);
+    return obj;
   }
 
 };
@@ -245,25 +245,25 @@ export const CommitID = {
     return message;
   },
 
-  fromJSON(object: any): CommitID {
-    return {
-      version: isSet(object.version) ? Long.fromString(object.version) : Long.ZERO,
-      hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: CommitID): unknown {
-    const obj: any = {};
-    message.version !== undefined && (obj.version = (message.version || Long.ZERO).toString());
-    message.hash !== undefined && (obj.hash = base64FromBytes(message.hash !== undefined ? message.hash : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<CommitID>): CommitID {
     const message = createBaseCommitID();
     message.version = object.version !== undefined && object.version !== null ? Long.fromValue(object.version) : Long.ZERO;
     message.hash = object.hash ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: CommitIDSDKType): CommitID {
+    return {
+      version: isSet(object.version) ? object.version : undefined,
+      hash: isSet(object.hash) ? object.hash : undefined
+    };
+  },
+
+  toSDK(message: CommitID): CommitIDSDKType {
+    const obj: any = {};
+    message.version !== undefined && (obj.version = message.version);
+    message.hash !== undefined && (obj.hash = message.hash);
+    return obj;
   }
 
 };

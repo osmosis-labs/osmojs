@@ -262,91 +262,91 @@ export interface TxProofSDKType {
 export declare const PartSetHeader: {
     encode(message: PartSetHeader, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PartSetHeader;
-    fromJSON(object: any): PartSetHeader;
-    toJSON(message: PartSetHeader): unknown;
     fromPartial(object: DeepPartial<PartSetHeader>): PartSetHeader;
+    fromSDK(object: PartSetHeaderSDKType): PartSetHeader;
+    toSDK(message: PartSetHeader): PartSetHeaderSDKType;
 };
 export declare const Part: {
     encode(message: Part, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Part;
-    fromJSON(object: any): Part;
-    toJSON(message: Part): unknown;
     fromPartial(object: DeepPartial<Part>): Part;
+    fromSDK(object: PartSDKType): Part;
+    toSDK(message: Part): PartSDKType;
 };
 export declare const BlockID: {
     encode(message: BlockID, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockID;
-    fromJSON(object: any): BlockID;
-    toJSON(message: BlockID): unknown;
     fromPartial(object: DeepPartial<BlockID>): BlockID;
+    fromSDK(object: BlockIDSDKType): BlockID;
+    toSDK(message: BlockID): BlockIDSDKType;
 };
 export declare const Header: {
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
-    fromJSON(object: any): Header;
-    toJSON(message: Header): unknown;
     fromPartial(object: DeepPartial<Header>): Header;
+    fromSDK(object: HeaderSDKType): Header;
+    toSDK(message: Header): HeaderSDKType;
 };
 export declare const Data: {
     encode(message: Data, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Data;
-    fromJSON(object: any): Data;
-    toJSON(message: Data): unknown;
     fromPartial(object: DeepPartial<Data>): Data;
+    fromSDK(object: DataSDKType): Data;
+    toSDK(message: Data): DataSDKType;
 };
 export declare const Vote: {
     encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
-    fromJSON(object: any): Vote;
-    toJSON(message: Vote): unknown;
     fromPartial(object: DeepPartial<Vote>): Vote;
+    fromSDK(object: VoteSDKType): Vote;
+    toSDK(message: Vote): VoteSDKType;
 };
 export declare const Commit: {
     encode(message: Commit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Commit;
-    fromJSON(object: any): Commit;
-    toJSON(message: Commit): unknown;
     fromPartial(object: DeepPartial<Commit>): Commit;
+    fromSDK(object: CommitSDKType): Commit;
+    toSDK(message: Commit): CommitSDKType;
 };
 export declare const CommitSig: {
     encode(message: CommitSig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitSig;
-    fromJSON(object: any): CommitSig;
-    toJSON(message: CommitSig): unknown;
     fromPartial(object: DeepPartial<CommitSig>): CommitSig;
+    fromSDK(object: CommitSigSDKType): CommitSig;
+    toSDK(message: CommitSig): CommitSigSDKType;
 };
 export declare const Proposal: {
     encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
-    fromJSON(object: any): Proposal;
-    toJSON(message: Proposal): unknown;
     fromPartial(object: DeepPartial<Proposal>): Proposal;
+    fromSDK(object: ProposalSDKType): Proposal;
+    toSDK(message: Proposal): ProposalSDKType;
 };
 export declare const SignedHeader: {
     encode(message: SignedHeader, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignedHeader;
-    fromJSON(object: any): SignedHeader;
-    toJSON(message: SignedHeader): unknown;
     fromPartial(object: DeepPartial<SignedHeader>): SignedHeader;
+    fromSDK(object: SignedHeaderSDKType): SignedHeader;
+    toSDK(message: SignedHeader): SignedHeaderSDKType;
 };
 export declare const LightBlock: {
     encode(message: LightBlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LightBlock;
-    fromJSON(object: any): LightBlock;
-    toJSON(message: LightBlock): unknown;
     fromPartial(object: DeepPartial<LightBlock>): LightBlock;
+    fromSDK(object: LightBlockSDKType): LightBlock;
+    toSDK(message: LightBlock): LightBlockSDKType;
 };
 export declare const BlockMeta: {
     encode(message: BlockMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockMeta;
-    fromJSON(object: any): BlockMeta;
-    toJSON(message: BlockMeta): unknown;
     fromPartial(object: DeepPartial<BlockMeta>): BlockMeta;
+    fromSDK(object: BlockMetaSDKType): BlockMeta;
+    toSDK(message: BlockMeta): BlockMetaSDKType;
 };
 export declare const TxProof: {
     encode(message: TxProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxProof;
-    fromJSON(object: any): TxProof;
-    toJSON(message: TxProof): unknown;
     fromPartial(object: DeepPartial<TxProof>): TxProof;
+    fromSDK(object: TxProofSDKType): TxProof;
+    toSDK(message: TxProof): TxProofSDKType;
 };

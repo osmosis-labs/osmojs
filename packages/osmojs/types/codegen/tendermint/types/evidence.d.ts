@@ -51,28 +51,28 @@ export interface EvidenceListSDKType {
 export declare const Evidence: {
     encode(message: Evidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Evidence;
-    fromJSON(object: any): Evidence;
-    toJSON(message: Evidence): unknown;
     fromPartial(object: DeepPartial<Evidence>): Evidence;
+    fromSDK(object: EvidenceSDKType): Evidence;
+    toSDK(message: Evidence): EvidenceSDKType;
 };
 export declare const DuplicateVoteEvidence: {
     encode(message: DuplicateVoteEvidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DuplicateVoteEvidence;
-    fromJSON(object: any): DuplicateVoteEvidence;
-    toJSON(message: DuplicateVoteEvidence): unknown;
     fromPartial(object: DeepPartial<DuplicateVoteEvidence>): DuplicateVoteEvidence;
+    fromSDK(object: DuplicateVoteEvidenceSDKType): DuplicateVoteEvidence;
+    toSDK(message: DuplicateVoteEvidence): DuplicateVoteEvidenceSDKType;
 };
 export declare const LightClientAttackEvidence: {
     encode(message: LightClientAttackEvidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LightClientAttackEvidence;
-    fromJSON(object: any): LightClientAttackEvidence;
-    toJSON(message: LightClientAttackEvidence): unknown;
     fromPartial(object: DeepPartial<LightClientAttackEvidence>): LightClientAttackEvidence;
+    fromSDK(object: LightClientAttackEvidenceSDKType): LightClientAttackEvidence;
+    toSDK(message: LightClientAttackEvidence): LightClientAttackEvidenceSDKType;
 };
 export declare const EvidenceList: {
     encode(message: EvidenceList, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EvidenceList;
-    fromJSON(object: any): EvidenceList;
-    toJSON(message: EvidenceList): unknown;
     fromPartial(object: DeepPartial<EvidenceList>): EvidenceList;
+    fromSDK(object: EvidenceListSDKType): EvidenceList;
+    toSDK(message: EvidenceList): EvidenceListSDKType;
 };

@@ -180,175 +180,175 @@ export interface EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKTyp
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
+    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
+    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };
 export declare const AssetTypeRequest: {
     encode(message: AssetTypeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeRequest;
-    fromJSON(object: any): AssetTypeRequest;
-    toJSON(message: AssetTypeRequest): unknown;
     fromPartial(object: DeepPartial<AssetTypeRequest>): AssetTypeRequest;
+    fromSDK(object: AssetTypeRequestSDKType): AssetTypeRequest;
+    toSDK(message: AssetTypeRequest): AssetTypeRequestSDKType;
 };
 export declare const AssetTypeResponse: {
     encode(message: AssetTypeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeResponseSDKType;
-    fromJSON(object: any): AssetTypeResponse;
-    toJSON(message: AssetTypeResponse): unknown;
     fromPartial(object: DeepPartial<AssetTypeResponse>): AssetTypeResponse;
+    fromSDK(object: AssetTypeResponseSDKType): AssetTypeResponse;
+    toSDK(message: AssetTypeResponse): AssetTypeResponseSDKType;
 };
 export declare const AllAssetsRequest: {
     encode(_: AllAssetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsRequest;
-    fromJSON(_: any): AllAssetsRequest;
-    toJSON(_: AllAssetsRequest): unknown;
     fromPartial(_: DeepPartial<AllAssetsRequest>): AllAssetsRequest;
+    fromSDK(_: AllAssetsRequestSDKType): AllAssetsRequest;
+    toSDK(_: AllAssetsRequest): AllAssetsRequestSDKType;
 };
 export declare const AllAssetsResponse: {
     encode(message: AllAssetsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsResponseSDKType;
-    fromJSON(object: any): AllAssetsResponse;
-    toJSON(message: AllAssetsResponse): unknown;
     fromPartial(object: DeepPartial<AllAssetsResponse>): AllAssetsResponse;
+    fromSDK(object: AllAssetsResponseSDKType): AllAssetsResponse;
+    toSDK(message: AllAssetsResponse): AllAssetsResponseSDKType;
 };
 export declare const AssetMultiplierRequest: {
     encode(message: AssetMultiplierRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierRequest;
-    fromJSON(object: any): AssetMultiplierRequest;
-    toJSON(message: AssetMultiplierRequest): unknown;
     fromPartial(object: DeepPartial<AssetMultiplierRequest>): AssetMultiplierRequest;
+    fromSDK(object: AssetMultiplierRequestSDKType): AssetMultiplierRequest;
+    toSDK(message: AssetMultiplierRequest): AssetMultiplierRequestSDKType;
 };
 export declare const AssetMultiplierResponse: {
     encode(message: AssetMultiplierResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierResponseSDKType;
-    fromJSON(object: any): AssetMultiplierResponse;
-    toJSON(message: AssetMultiplierResponse): unknown;
     fromPartial(object: DeepPartial<AssetMultiplierResponse>): AssetMultiplierResponse;
+    fromSDK(object: AssetMultiplierResponseSDKType): AssetMultiplierResponse;
+    toSDK(message: AssetMultiplierResponse): AssetMultiplierResponseSDKType;
 };
 export declare const SuperfluidIntermediaryAccountInfo: {
     encode(message: SuperfluidIntermediaryAccountInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidIntermediaryAccountInfo;
-    fromJSON(object: any): SuperfluidIntermediaryAccountInfo;
-    toJSON(message: SuperfluidIntermediaryAccountInfo): unknown;
     fromPartial(object: DeepPartial<SuperfluidIntermediaryAccountInfo>): SuperfluidIntermediaryAccountInfo;
+    fromSDK(object: SuperfluidIntermediaryAccountInfoSDKType): SuperfluidIntermediaryAccountInfo;
+    toSDK(message: SuperfluidIntermediaryAccountInfo): SuperfluidIntermediaryAccountInfoSDKType;
 };
 export declare const AllIntermediaryAccountsRequest: {
     encode(message: AllIntermediaryAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsRequest;
-    fromJSON(object: any): AllIntermediaryAccountsRequest;
-    toJSON(message: AllIntermediaryAccountsRequest): unknown;
     fromPartial(object: DeepPartial<AllIntermediaryAccountsRequest>): AllIntermediaryAccountsRequest;
+    fromSDK(object: AllIntermediaryAccountsRequestSDKType): AllIntermediaryAccountsRequest;
+    toSDK(message: AllIntermediaryAccountsRequest): AllIntermediaryAccountsRequestSDKType;
 };
 export declare const AllIntermediaryAccountsResponse: {
     encode(message: AllIntermediaryAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsResponseSDKType;
-    fromJSON(object: any): AllIntermediaryAccountsResponse;
-    toJSON(message: AllIntermediaryAccountsResponse): unknown;
     fromPartial(object: DeepPartial<AllIntermediaryAccountsResponse>): AllIntermediaryAccountsResponse;
+    fromSDK(object: AllIntermediaryAccountsResponseSDKType): AllIntermediaryAccountsResponse;
+    toSDK(message: AllIntermediaryAccountsResponse): AllIntermediaryAccountsResponseSDKType;
 };
 export declare const ConnectedIntermediaryAccountRequest: {
     encode(message: ConnectedIntermediaryAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountRequest;
-    fromJSON(object: any): ConnectedIntermediaryAccountRequest;
-    toJSON(message: ConnectedIntermediaryAccountRequest): unknown;
     fromPartial(object: DeepPartial<ConnectedIntermediaryAccountRequest>): ConnectedIntermediaryAccountRequest;
+    fromSDK(object: ConnectedIntermediaryAccountRequestSDKType): ConnectedIntermediaryAccountRequest;
+    toSDK(message: ConnectedIntermediaryAccountRequest): ConnectedIntermediaryAccountRequestSDKType;
 };
 export declare const ConnectedIntermediaryAccountResponse: {
     encode(message: ConnectedIntermediaryAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountResponseSDKType;
-    fromJSON(object: any): ConnectedIntermediaryAccountResponse;
-    toJSON(message: ConnectedIntermediaryAccountResponse): unknown;
     fromPartial(object: DeepPartial<ConnectedIntermediaryAccountResponse>): ConnectedIntermediaryAccountResponse;
+    fromSDK(object: ConnectedIntermediaryAccountResponseSDKType): ConnectedIntermediaryAccountResponse;
+    toSDK(message: ConnectedIntermediaryAccountResponse): ConnectedIntermediaryAccountResponseSDKType;
 };
 export declare const TotalSuperfluidDelegationsRequest: {
     encode(_: TotalSuperfluidDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsRequest;
-    fromJSON(_: any): TotalSuperfluidDelegationsRequest;
-    toJSON(_: TotalSuperfluidDelegationsRequest): unknown;
     fromPartial(_: DeepPartial<TotalSuperfluidDelegationsRequest>): TotalSuperfluidDelegationsRequest;
+    fromSDK(_: TotalSuperfluidDelegationsRequestSDKType): TotalSuperfluidDelegationsRequest;
+    toSDK(_: TotalSuperfluidDelegationsRequest): TotalSuperfluidDelegationsRequestSDKType;
 };
 export declare const TotalSuperfluidDelegationsResponse: {
     encode(message: TotalSuperfluidDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsResponseSDKType;
-    fromJSON(object: any): TotalSuperfluidDelegationsResponse;
-    toJSON(message: TotalSuperfluidDelegationsResponse): unknown;
     fromPartial(object: DeepPartial<TotalSuperfluidDelegationsResponse>): TotalSuperfluidDelegationsResponse;
+    fromSDK(object: TotalSuperfluidDelegationsResponseSDKType): TotalSuperfluidDelegationsResponse;
+    toSDK(message: TotalSuperfluidDelegationsResponse): TotalSuperfluidDelegationsResponseSDKType;
 };
 export declare const SuperfluidDelegationAmountRequest: {
     encode(message: SuperfluidDelegationAmountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountRequest;
-    fromJSON(object: any): SuperfluidDelegationAmountRequest;
-    toJSON(message: SuperfluidDelegationAmountRequest): unknown;
     fromPartial(object: DeepPartial<SuperfluidDelegationAmountRequest>): SuperfluidDelegationAmountRequest;
+    fromSDK(object: SuperfluidDelegationAmountRequestSDKType): SuperfluidDelegationAmountRequest;
+    toSDK(message: SuperfluidDelegationAmountRequest): SuperfluidDelegationAmountRequestSDKType;
 };
 export declare const SuperfluidDelegationAmountResponse: {
     encode(message: SuperfluidDelegationAmountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountResponseSDKType;
-    fromJSON(object: any): SuperfluidDelegationAmountResponse;
-    toJSON(message: SuperfluidDelegationAmountResponse): unknown;
     fromPartial(object: DeepPartial<SuperfluidDelegationAmountResponse>): SuperfluidDelegationAmountResponse;
+    fromSDK(object: SuperfluidDelegationAmountResponseSDKType): SuperfluidDelegationAmountResponse;
+    toSDK(message: SuperfluidDelegationAmountResponse): SuperfluidDelegationAmountResponseSDKType;
 };
 export declare const SuperfluidDelegationsByDelegatorRequest: {
     encode(message: SuperfluidDelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorRequest;
-    fromJSON(object: any): SuperfluidDelegationsByDelegatorRequest;
-    toJSON(message: SuperfluidDelegationsByDelegatorRequest): unknown;
     fromPartial(object: DeepPartial<SuperfluidDelegationsByDelegatorRequest>): SuperfluidDelegationsByDelegatorRequest;
+    fromSDK(object: SuperfluidDelegationsByDelegatorRequestSDKType): SuperfluidDelegationsByDelegatorRequest;
+    toSDK(message: SuperfluidDelegationsByDelegatorRequest): SuperfluidDelegationsByDelegatorRequestSDKType;
 };
 export declare const SuperfluidDelegationsByDelegatorResponse: {
     encode(message: SuperfluidDelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorResponseSDKType;
-    fromJSON(object: any): SuperfluidDelegationsByDelegatorResponse;
-    toJSON(message: SuperfluidDelegationsByDelegatorResponse): unknown;
     fromPartial(object: DeepPartial<SuperfluidDelegationsByDelegatorResponse>): SuperfluidDelegationsByDelegatorResponse;
+    fromSDK(object: SuperfluidDelegationsByDelegatorResponseSDKType): SuperfluidDelegationsByDelegatorResponse;
+    toSDK(message: SuperfluidDelegationsByDelegatorResponse): SuperfluidDelegationsByDelegatorResponseSDKType;
 };
 export declare const SuperfluidUndelegationsByDelegatorRequest: {
     encode(message: SuperfluidUndelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorRequest;
-    fromJSON(object: any): SuperfluidUndelegationsByDelegatorRequest;
-    toJSON(message: SuperfluidUndelegationsByDelegatorRequest): unknown;
     fromPartial(object: DeepPartial<SuperfluidUndelegationsByDelegatorRequest>): SuperfluidUndelegationsByDelegatorRequest;
+    fromSDK(object: SuperfluidUndelegationsByDelegatorRequestSDKType): SuperfluidUndelegationsByDelegatorRequest;
+    toSDK(message: SuperfluidUndelegationsByDelegatorRequest): SuperfluidUndelegationsByDelegatorRequestSDKType;
 };
 export declare const SuperfluidUndelegationsByDelegatorResponse: {
     encode(message: SuperfluidUndelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorResponseSDKType;
-    fromJSON(object: any): SuperfluidUndelegationsByDelegatorResponse;
-    toJSON(message: SuperfluidUndelegationsByDelegatorResponse): unknown;
     fromPartial(object: DeepPartial<SuperfluidUndelegationsByDelegatorResponse>): SuperfluidUndelegationsByDelegatorResponse;
+    fromSDK(object: SuperfluidUndelegationsByDelegatorResponseSDKType): SuperfluidUndelegationsByDelegatorResponse;
+    toSDK(message: SuperfluidUndelegationsByDelegatorResponse): SuperfluidUndelegationsByDelegatorResponseSDKType;
 };
 export declare const SuperfluidDelegationsByValidatorDenomRequest: {
     encode(message: SuperfluidDelegationsByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomRequest;
-    fromJSON(object: any): SuperfluidDelegationsByValidatorDenomRequest;
-    toJSON(message: SuperfluidDelegationsByValidatorDenomRequest): unknown;
     fromPartial(object: DeepPartial<SuperfluidDelegationsByValidatorDenomRequest>): SuperfluidDelegationsByValidatorDenomRequest;
+    fromSDK(object: SuperfluidDelegationsByValidatorDenomRequestSDKType): SuperfluidDelegationsByValidatorDenomRequest;
+    toSDK(message: SuperfluidDelegationsByValidatorDenomRequest): SuperfluidDelegationsByValidatorDenomRequestSDKType;
 };
 export declare const SuperfluidDelegationsByValidatorDenomResponse: {
     encode(message: SuperfluidDelegationsByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomResponseSDKType;
-    fromJSON(object: any): SuperfluidDelegationsByValidatorDenomResponse;
-    toJSON(message: SuperfluidDelegationsByValidatorDenomResponse): unknown;
     fromPartial(object: DeepPartial<SuperfluidDelegationsByValidatorDenomResponse>): SuperfluidDelegationsByValidatorDenomResponse;
+    fromSDK(object: SuperfluidDelegationsByValidatorDenomResponseSDKType): SuperfluidDelegationsByValidatorDenomResponse;
+    toSDK(message: SuperfluidDelegationsByValidatorDenomResponse): SuperfluidDelegationsByValidatorDenomResponseSDKType;
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
     encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
-    fromJSON(object: any): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
-    toJSON(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): unknown;
     fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomRequest>): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
+    fromSDK(object: EstimateSuperfluidDelegatedAmountByValidatorDenomRequestSDKType): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
+    toSDK(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): EstimateSuperfluidDelegatedAmountByValidatorDenomRequestSDKType;
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: {
     encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType;
-    fromJSON(object: any): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
-    toJSON(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): unknown;
     fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
+    fromSDK(object: EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
+    toSDK(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType;
 };

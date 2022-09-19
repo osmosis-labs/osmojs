@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 /** Minter represents the minting state. */
 
 export interface Minter {
@@ -162,22 +162,22 @@ export const Minter = {
     return message;
   },
 
-  fromJSON(object: any): Minter {
-    return {
-      epochProvisions: isSet(object.epochProvisions) ? String(object.epochProvisions) : ""
-    };
-  },
-
-  toJSON(message: Minter): unknown {
-    const obj: any = {};
-    message.epochProvisions !== undefined && (obj.epochProvisions = message.epochProvisions);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Minter>): Minter {
     const message = createBaseMinter();
     message.epochProvisions = object.epochProvisions ?? "";
     return message;
+  },
+
+  fromSDK(object: MinterSDKType): Minter {
+    return {
+      epochProvisions: isSet(object.epoch_provisions) ? object.epoch_provisions : undefined
+    };
+  },
+
+  toSDK(message: Minter): MinterSDKType {
+    const obj: any = {};
+    message.epochProvisions !== undefined && (obj.epoch_provisions = message.epochProvisions);
+    return obj;
   }
 
 };
@@ -228,25 +228,25 @@ export const WeightedAddress = {
     return message;
   },
 
-  fromJSON(object: any): WeightedAddress {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      weight: isSet(object.weight) ? String(object.weight) : ""
-    };
-  },
-
-  toJSON(message: WeightedAddress): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.weight !== undefined && (obj.weight = message.weight);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<WeightedAddress>): WeightedAddress {
     const message = createBaseWeightedAddress();
     message.address = object.address ?? "";
     message.weight = object.weight ?? "";
     return message;
+  },
+
+  fromSDK(object: WeightedAddressSDKType): WeightedAddress {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      weight: isSet(object.weight) ? object.weight : undefined
+    };
+  },
+
+  toSDK(message: WeightedAddress): WeightedAddressSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.weight !== undefined && (obj.weight = message.weight);
+    return obj;
   }
 
 };
@@ -315,24 +315,6 @@ export const DistributionProportions = {
     return message;
   },
 
-  fromJSON(object: any): DistributionProportions {
-    return {
-      staking: isSet(object.staking) ? String(object.staking) : "",
-      poolIncentives: isSet(object.poolIncentives) ? String(object.poolIncentives) : "",
-      developerRewards: isSet(object.developerRewards) ? String(object.developerRewards) : "",
-      communityPool: isSet(object.communityPool) ? String(object.communityPool) : ""
-    };
-  },
-
-  toJSON(message: DistributionProportions): unknown {
-    const obj: any = {};
-    message.staking !== undefined && (obj.staking = message.staking);
-    message.poolIncentives !== undefined && (obj.poolIncentives = message.poolIncentives);
-    message.developerRewards !== undefined && (obj.developerRewards = message.developerRewards);
-    message.communityPool !== undefined && (obj.communityPool = message.communityPool);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DistributionProportions>): DistributionProportions {
     const message = createBaseDistributionProportions();
     message.staking = object.staking ?? "";
@@ -340,6 +322,24 @@ export const DistributionProportions = {
     message.developerRewards = object.developerRewards ?? "";
     message.communityPool = object.communityPool ?? "";
     return message;
+  },
+
+  fromSDK(object: DistributionProportionsSDKType): DistributionProportions {
+    return {
+      staking: isSet(object.staking) ? object.staking : undefined,
+      poolIncentives: isSet(object.pool_incentives) ? object.pool_incentives : undefined,
+      developerRewards: isSet(object.developer_rewards) ? object.developer_rewards : undefined,
+      communityPool: isSet(object.community_pool) ? object.community_pool : undefined
+    };
+  },
+
+  toSDK(message: DistributionProportions): DistributionProportionsSDKType {
+    const obj: any = {};
+    message.staking !== undefined && (obj.staking = message.staking);
+    message.poolIncentives !== undefined && (obj.pool_incentives = message.poolIncentives);
+    message.developerRewards !== undefined && (obj.developer_rewards = message.developerRewards);
+    message.communityPool !== undefined && (obj.community_pool = message.communityPool);
+    return obj;
   }
 
 };
@@ -444,38 +444,6 @@ export const Params = {
     return message;
   },
 
-  fromJSON(object: any): Params {
-    return {
-      mintDenom: isSet(object.mintDenom) ? String(object.mintDenom) : "",
-      genesisEpochProvisions: isSet(object.genesisEpochProvisions) ? String(object.genesisEpochProvisions) : "",
-      epochIdentifier: isSet(object.epochIdentifier) ? String(object.epochIdentifier) : "",
-      reductionPeriodInEpochs: isSet(object.reductionPeriodInEpochs) ? Long.fromString(object.reductionPeriodInEpochs) : Long.ZERO,
-      reductionFactor: isSet(object.reductionFactor) ? String(object.reductionFactor) : "",
-      distributionProportions: isSet(object.distributionProportions) ? DistributionProportions.fromJSON(object.distributionProportions) : undefined,
-      weightedDeveloperRewardsReceivers: Array.isArray(object?.weightedDeveloperRewardsReceivers) ? object.weightedDeveloperRewardsReceivers.map((e: any) => WeightedAddress.fromJSON(e)) : [],
-      mintingRewardsDistributionStartEpoch: isSet(object.mintingRewardsDistributionStartEpoch) ? Long.fromString(object.mintingRewardsDistributionStartEpoch) : Long.ZERO
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-    message.mintDenom !== undefined && (obj.mintDenom = message.mintDenom);
-    message.genesisEpochProvisions !== undefined && (obj.genesisEpochProvisions = message.genesisEpochProvisions);
-    message.epochIdentifier !== undefined && (obj.epochIdentifier = message.epochIdentifier);
-    message.reductionPeriodInEpochs !== undefined && (obj.reductionPeriodInEpochs = (message.reductionPeriodInEpochs || Long.ZERO).toString());
-    message.reductionFactor !== undefined && (obj.reductionFactor = message.reductionFactor);
-    message.distributionProportions !== undefined && (obj.distributionProportions = message.distributionProportions ? DistributionProportions.toJSON(message.distributionProportions) : undefined);
-
-    if (message.weightedDeveloperRewardsReceivers) {
-      obj.weightedDeveloperRewardsReceivers = message.weightedDeveloperRewardsReceivers.map(e => e ? WeightedAddress.toJSON(e) : undefined);
-    } else {
-      obj.weightedDeveloperRewardsReceivers = [];
-    }
-
-    message.mintingRewardsDistributionStartEpoch !== undefined && (obj.mintingRewardsDistributionStartEpoch = (message.mintingRewardsDistributionStartEpoch || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.mintDenom = object.mintDenom ?? "";
@@ -487,6 +455,38 @@ export const Params = {
     message.weightedDeveloperRewardsReceivers = object.weightedDeveloperRewardsReceivers?.map(e => WeightedAddress.fromPartial(e)) || [];
     message.mintingRewardsDistributionStartEpoch = object.mintingRewardsDistributionStartEpoch !== undefined && object.mintingRewardsDistributionStartEpoch !== null ? Long.fromValue(object.mintingRewardsDistributionStartEpoch) : Long.ZERO;
     return message;
+  },
+
+  fromSDK(object: ParamsSDKType): Params {
+    return {
+      mintDenom: isSet(object.mint_denom) ? object.mint_denom : undefined,
+      genesisEpochProvisions: isSet(object.genesis_epoch_provisions) ? object.genesis_epoch_provisions : undefined,
+      epochIdentifier: isSet(object.epoch_identifier) ? object.epoch_identifier : undefined,
+      reductionPeriodInEpochs: isSet(object.reduction_period_in_epochs) ? object.reduction_period_in_epochs : undefined,
+      reductionFactor: isSet(object.reduction_factor) ? object.reduction_factor : undefined,
+      distributionProportions: isSet(object.distribution_proportions) ? DistributionProportions.fromSDK(object.distribution_proportions) : undefined,
+      weightedDeveloperRewardsReceivers: Array.isArray(object?.weighted_developer_rewards_receivers) ? object.weighted_developer_rewards_receivers.map((e: any) => WeightedAddress.fromSDK(e)) : [],
+      mintingRewardsDistributionStartEpoch: isSet(object.minting_rewards_distribution_start_epoch) ? object.minting_rewards_distribution_start_epoch : undefined
+    };
+  },
+
+  toSDK(message: Params): ParamsSDKType {
+    const obj: any = {};
+    message.mintDenom !== undefined && (obj.mint_denom = message.mintDenom);
+    message.genesisEpochProvisions !== undefined && (obj.genesis_epoch_provisions = message.genesisEpochProvisions);
+    message.epochIdentifier !== undefined && (obj.epoch_identifier = message.epochIdentifier);
+    message.reductionPeriodInEpochs !== undefined && (obj.reduction_period_in_epochs = message.reductionPeriodInEpochs);
+    message.reductionFactor !== undefined && (obj.reduction_factor = message.reductionFactor);
+    message.distributionProportions !== undefined && (obj.distribution_proportions = message.distributionProportions ? DistributionProportions.toSDK(message.distributionProportions) : undefined);
+
+    if (message.weightedDeveloperRewardsReceivers) {
+      obj.weighted_developer_rewards_receivers = message.weightedDeveloperRewardsReceivers.map(e => e ? WeightedAddress.toSDK(e) : undefined);
+    } else {
+      obj.weighted_developer_rewards_receivers = [];
+    }
+
+    message.mintingRewardsDistributionStartEpoch !== undefined && (obj.minting_rewards_distribution_start_epoch = message.mintingRewardsDistributionStartEpoch);
+    return obj;
   }
 
 };

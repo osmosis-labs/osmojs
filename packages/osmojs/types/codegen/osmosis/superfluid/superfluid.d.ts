@@ -110,42 +110,42 @@ export interface UnpoolWhitelistedPoolsSDKType {
 export declare const SuperfluidAsset: {
     encode(message: SuperfluidAsset, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidAsset;
-    fromJSON(object: any): SuperfluidAsset;
-    toJSON(message: SuperfluidAsset): unknown;
     fromPartial(object: DeepPartial<SuperfluidAsset>): SuperfluidAsset;
+    fromSDK(object: SuperfluidAssetSDKType): SuperfluidAsset;
+    toSDK(message: SuperfluidAsset): SuperfluidAssetSDKType;
 };
 export declare const SuperfluidIntermediaryAccount: {
     encode(message: SuperfluidIntermediaryAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidIntermediaryAccount;
-    fromJSON(object: any): SuperfluidIntermediaryAccount;
-    toJSON(message: SuperfluidIntermediaryAccount): unknown;
     fromPartial(object: DeepPartial<SuperfluidIntermediaryAccount>): SuperfluidIntermediaryAccount;
+    fromSDK(object: SuperfluidIntermediaryAccountSDKType): SuperfluidIntermediaryAccount;
+    toSDK(message: SuperfluidIntermediaryAccount): SuperfluidIntermediaryAccountSDKType;
 };
 export declare const OsmoEquivalentMultiplierRecord: {
     encode(message: OsmoEquivalentMultiplierRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): OsmoEquivalentMultiplierRecord;
-    fromJSON(object: any): OsmoEquivalentMultiplierRecord;
-    toJSON(message: OsmoEquivalentMultiplierRecord): unknown;
     fromPartial(object: DeepPartial<OsmoEquivalentMultiplierRecord>): OsmoEquivalentMultiplierRecord;
+    fromSDK(object: OsmoEquivalentMultiplierRecordSDKType): OsmoEquivalentMultiplierRecord;
+    toSDK(message: OsmoEquivalentMultiplierRecord): OsmoEquivalentMultiplierRecordSDKType;
 };
 export declare const SuperfluidDelegationRecord: {
     encode(message: SuperfluidDelegationRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationRecord;
-    fromJSON(object: any): SuperfluidDelegationRecord;
-    toJSON(message: SuperfluidDelegationRecord): unknown;
     fromPartial(object: DeepPartial<SuperfluidDelegationRecord>): SuperfluidDelegationRecord;
+    fromSDK(object: SuperfluidDelegationRecordSDKType): SuperfluidDelegationRecord;
+    toSDK(message: SuperfluidDelegationRecord): SuperfluidDelegationRecordSDKType;
 };
 export declare const LockIdIntermediaryAccountConnection: {
     encode(message: LockIdIntermediaryAccountConnection, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockIdIntermediaryAccountConnection;
-    fromJSON(object: any): LockIdIntermediaryAccountConnection;
-    toJSON(message: LockIdIntermediaryAccountConnection): unknown;
     fromPartial(object: DeepPartial<LockIdIntermediaryAccountConnection>): LockIdIntermediaryAccountConnection;
+    fromSDK(object: LockIdIntermediaryAccountConnectionSDKType): LockIdIntermediaryAccountConnection;
+    toSDK(message: LockIdIntermediaryAccountConnection): LockIdIntermediaryAccountConnectionSDKType;
 };
 export declare const UnpoolWhitelistedPools: {
     encode(message: UnpoolWhitelistedPools, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnpoolWhitelistedPools;
-    fromJSON(object: any): UnpoolWhitelistedPools;
-    toJSON(message: UnpoolWhitelistedPools): unknown;
     fromPartial(object: DeepPartial<UnpoolWhitelistedPools>): UnpoolWhitelistedPools;
+    fromSDK(object: UnpoolWhitelistedPoolsSDKType): UnpoolWhitelistedPools;
+    toSDK(message: UnpoolWhitelistedPools): UnpoolWhitelistedPoolsSDKType;
 };

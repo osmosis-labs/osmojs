@@ -2,7 +2,7 @@ import { QueryCondition, QueryConditionSDKType } from "../lockup/lock";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp, Long, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
+import { toTimestamp, fromTimestamp, Long, DeepPartial, isSet } from "@osmonauts/helpers";
 export interface MsgCreateGauge {
   /**
    * flag to show if it's perpetual or multi-epoch
@@ -140,34 +140,6 @@ export const MsgCreateGauge = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreateGauge {
-    return {
-      isPerpetual: isSet(object.isPerpetual) ? Boolean(object.isPerpetual) : false,
-      owner: isSet(object.owner) ? String(object.owner) : "",
-      distributeTo: isSet(object.distributeTo) ? QueryCondition.fromJSON(object.distributeTo) : undefined,
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
-      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
-      numEpochsPaidOver: isSet(object.numEpochsPaidOver) ? Long.fromString(object.numEpochsPaidOver) : Long.UZERO
-    };
-  },
-
-  toJSON(message: MsgCreateGauge): unknown {
-    const obj: any = {};
-    message.isPerpetual !== undefined && (obj.isPerpetual = message.isPerpetual);
-    message.owner !== undefined && (obj.owner = message.owner);
-    message.distributeTo !== undefined && (obj.distributeTo = message.distributeTo ? QueryCondition.toJSON(message.distributeTo) : undefined);
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
-    message.numEpochsPaidOver !== undefined && (obj.numEpochsPaidOver = (message.numEpochsPaidOver || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreateGauge>): MsgCreateGauge {
     const message = createBaseMsgCreateGauge();
     message.isPerpetual = object.isPerpetual ?? false;
@@ -177,6 +149,34 @@ export const MsgCreateGauge = {
     message.startTime = object.startTime ?? undefined;
     message.numEpochsPaidOver = object.numEpochsPaidOver !== undefined && object.numEpochsPaidOver !== null ? Long.fromValue(object.numEpochsPaidOver) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: MsgCreateGaugeSDKType): MsgCreateGauge {
+    return {
+      isPerpetual: isSet(object.is_perpetual) ? object.is_perpetual : undefined,
+      owner: isSet(object.owner) ? object.owner : undefined,
+      distributeTo: isSet(object.distribute_to) ? QueryCondition.fromSDK(object.distribute_to) : undefined,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromSDK(e)) : [],
+      startTime: isSet(object.start_time) ? Timestamp.fromSDK(object.start_time) : undefined,
+      numEpochsPaidOver: isSet(object.num_epochs_paid_over) ? object.num_epochs_paid_over : undefined
+    };
+  },
+
+  toSDK(message: MsgCreateGauge): MsgCreateGaugeSDKType {
+    const obj: any = {};
+    message.isPerpetual !== undefined && (obj.is_perpetual = message.isPerpetual);
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.distributeTo !== undefined && (obj.distribute_to = message.distributeTo ? QueryCondition.toSDK(message.distributeTo) : undefined);
+
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+
+    message.startTime !== undefined && (obj.start_time = message.startTime ? Timestamp.toSDK(message.startTime) : undefined);
+    message.numEpochsPaidOver !== undefined && (obj.num_epochs_paid_over = message.numEpochsPaidOver);
+    return obj;
   }
 
 };
@@ -208,18 +208,18 @@ export const MsgCreateGaugeResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgCreateGaugeResponse {
-    return {};
-  },
-
-  toJSON(_: MsgCreateGaugeResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse {
     const message = createBaseMsgCreateGaugeResponse();
     return message;
+  },
+
+  fromSDK(_: MsgCreateGaugeResponseSDKType): MsgCreateGaugeResponse {
+    return {};
+  },
+
+  toSDK(_: MsgCreateGaugeResponse): MsgCreateGaugeResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -279,34 +279,34 @@ export const MsgAddToGauge = {
     return message;
   },
 
-  fromJSON(object: any): MsgAddToGauge {
-    return {
-      owner: isSet(object.owner) ? String(object.owner) : "",
-      gaugeId: isSet(object.gaugeId) ? Long.fromString(object.gaugeId) : Long.UZERO,
-      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MsgAddToGauge): unknown {
-    const obj: any = {};
-    message.owner !== undefined && (obj.owner = message.owner);
-    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || Long.UZERO).toString());
-
-    if (message.rewards) {
-      obj.rewards = message.rewards.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.rewards = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgAddToGauge>): MsgAddToGauge {
     const message = createBaseMsgAddToGauge();
     message.owner = object.owner ?? "";
     message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     message.rewards = object.rewards?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: MsgAddToGaugeSDKType): MsgAddToGauge {
+    return {
+      owner: isSet(object.owner) ? object.owner : undefined,
+      gaugeId: isSet(object.gauge_id) ? object.gauge_id : undefined,
+      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: MsgAddToGauge): MsgAddToGaugeSDKType {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.gaugeId !== undefined && (obj.gauge_id = message.gaugeId);
+
+    if (message.rewards) {
+      obj.rewards = message.rewards.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.rewards = [];
+    }
+
+    return obj;
   }
 
 };
@@ -338,18 +338,18 @@ export const MsgAddToGaugeResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgAddToGaugeResponse {
-    return {};
-  },
-
-  toJSON(_: MsgAddToGaugeResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse {
     const message = createBaseMsgAddToGaugeResponse();
     return message;
+  },
+
+  fromSDK(_: MsgAddToGaugeResponseSDKType): MsgAddToGaugeResponse {
+    return {};
+  },
+
+  toSDK(_: MsgAddToGaugeResponse): MsgAddToGaugeResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };

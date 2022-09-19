@@ -70,35 +70,35 @@ export interface SubspaceSDKType {
 export declare const QueryParamsRequest: {
     encode(message: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(object: any): QueryParamsRequest;
-    toJSON(message: QueryParamsRequest): unknown;
     fromPartial(object: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromSDK(object: QueryParamsRequestSDKType): QueryParamsRequest;
+    toSDK(message: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
+    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };
 export declare const QuerySubspacesRequest: {
     encode(_: QuerySubspacesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySubspacesRequest;
-    fromJSON(_: any): QuerySubspacesRequest;
-    toJSON(_: QuerySubspacesRequest): unknown;
     fromPartial(_: DeepPartial<QuerySubspacesRequest>): QuerySubspacesRequest;
+    fromSDK(_: QuerySubspacesRequestSDKType): QuerySubspacesRequest;
+    toSDK(_: QuerySubspacesRequest): QuerySubspacesRequestSDKType;
 };
 export declare const QuerySubspacesResponse: {
     encode(message: QuerySubspacesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySubspacesResponseSDKType;
-    fromJSON(object: any): QuerySubspacesResponse;
-    toJSON(message: QuerySubspacesResponse): unknown;
     fromPartial(object: DeepPartial<QuerySubspacesResponse>): QuerySubspacesResponse;
+    fromSDK(object: QuerySubspacesResponseSDKType): QuerySubspacesResponse;
+    toSDK(message: QuerySubspacesResponse): QuerySubspacesResponseSDKType;
 };
 export declare const Subspace: {
     encode(message: Subspace, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Subspace;
-    fromJSON(object: any): Subspace;
-    toJSON(message: Subspace): unknown;
     fromPartial(object: DeepPartial<Subspace>): Subspace;
+    fromSDK(object: SubspaceSDKType): Subspace;
+    toSDK(message: Subspace): SubspaceSDKType;
 };

@@ -1,7 +1,7 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { Period, PeriodSDKType } from "./vesting";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
  * account.
@@ -166,32 +166,6 @@ export const MsgCreateVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreateVestingAccount {
-    return {
-      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
-      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : [],
-      endTime: isSet(object.endTime) ? Long.fromString(object.endTime) : Long.ZERO,
-      delayed: isSet(object.delayed) ? Boolean(object.delayed) : false
-    };
-  },
-
-  toJSON(message: MsgCreateVestingAccount): unknown {
-    const obj: any = {};
-    message.fromAddress !== undefined && (obj.fromAddress = message.fromAddress);
-    message.toAddress !== undefined && (obj.toAddress = message.toAddress);
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    message.endTime !== undefined && (obj.endTime = (message.endTime || Long.ZERO).toString());
-    message.delayed !== undefined && (obj.delayed = message.delayed);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreateVestingAccount>): MsgCreateVestingAccount {
     const message = createBaseMsgCreateVestingAccount();
     message.fromAddress = object.fromAddress ?? "";
@@ -200,6 +174,32 @@ export const MsgCreateVestingAccount = {
     message.endTime = object.endTime !== undefined && object.endTime !== null ? Long.fromValue(object.endTime) : Long.ZERO;
     message.delayed = object.delayed ?? false;
     return message;
+  },
+
+  fromSDK(object: MsgCreateVestingAccountSDKType): MsgCreateVestingAccount {
+    return {
+      fromAddress: isSet(object.from_address) ? object.from_address : undefined,
+      toAddress: isSet(object.to_address) ? object.to_address : undefined,
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : [],
+      endTime: isSet(object.end_time) ? object.end_time : undefined,
+      delayed: isSet(object.delayed) ? object.delayed : undefined
+    };
+  },
+
+  toSDK(message: MsgCreateVestingAccount): MsgCreateVestingAccountSDKType {
+    const obj: any = {};
+    message.fromAddress !== undefined && (obj.from_address = message.fromAddress);
+    message.toAddress !== undefined && (obj.to_address = message.toAddress);
+
+    if (message.amount) {
+      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.amount = [];
+    }
+
+    message.endTime !== undefined && (obj.end_time = message.endTime);
+    message.delayed !== undefined && (obj.delayed = message.delayed);
+    return obj;
   }
 
 };
@@ -231,18 +231,18 @@ export const MsgCreateVestingAccountResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgCreateVestingAccountResponse {
-    return {};
-  },
-
-  toJSON(_: MsgCreateVestingAccountResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse {
     const message = createBaseMsgCreateVestingAccountResponse();
     return message;
+  },
+
+  fromSDK(_: MsgCreateVestingAccountResponseSDKType): MsgCreateVestingAccountResponse {
+    return {};
+  },
+
+  toSDK(_: MsgCreateVestingAccountResponse): MsgCreateVestingAccountResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -302,34 +302,34 @@ export const MsgCreatePermanentLockedAccount = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreatePermanentLockedAccount {
-    return {
-      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
-      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MsgCreatePermanentLockedAccount): unknown {
-    const obj: any = {};
-    message.fromAddress !== undefined && (obj.fromAddress = message.fromAddress);
-    message.toAddress !== undefined && (obj.toAddress = message.toAddress);
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreatePermanentLockedAccount>): MsgCreatePermanentLockedAccount {
     const message = createBaseMsgCreatePermanentLockedAccount();
     message.fromAddress = object.fromAddress ?? "";
     message.toAddress = object.toAddress ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: MsgCreatePermanentLockedAccountSDKType): MsgCreatePermanentLockedAccount {
+    return {
+      fromAddress: isSet(object.from_address) ? object.from_address : undefined,
+      toAddress: isSet(object.to_address) ? object.to_address : undefined,
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: MsgCreatePermanentLockedAccount): MsgCreatePermanentLockedAccountSDKType {
+    const obj: any = {};
+    message.fromAddress !== undefined && (obj.from_address = message.fromAddress);
+    message.toAddress !== undefined && (obj.to_address = message.toAddress);
+
+    if (message.amount) {
+      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.amount = [];
+    }
+
+    return obj;
   }
 
 };
@@ -361,18 +361,18 @@ export const MsgCreatePermanentLockedAccountResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgCreatePermanentLockedAccountResponse {
-    return {};
-  },
-
-  toJSON(_: MsgCreatePermanentLockedAccountResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgCreatePermanentLockedAccountResponse>): MsgCreatePermanentLockedAccountResponse {
     const message = createBaseMsgCreatePermanentLockedAccountResponse();
     return message;
+  },
+
+  fromSDK(_: MsgCreatePermanentLockedAccountResponseSDKType): MsgCreatePermanentLockedAccountResponse {
+    return {};
+  },
+
+  toSDK(_: MsgCreatePermanentLockedAccountResponse): MsgCreatePermanentLockedAccountResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -441,30 +441,6 @@ export const MsgCreatePeriodicVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreatePeriodicVestingAccount {
-    return {
-      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
-      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
-      startTime: isSet(object.startTime) ? Long.fromString(object.startTime) : Long.ZERO,
-      vestingPeriods: Array.isArray(object?.vestingPeriods) ? object.vestingPeriods.map((e: any) => Period.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MsgCreatePeriodicVestingAccount): unknown {
-    const obj: any = {};
-    message.fromAddress !== undefined && (obj.fromAddress = message.fromAddress);
-    message.toAddress !== undefined && (obj.toAddress = message.toAddress);
-    message.startTime !== undefined && (obj.startTime = (message.startTime || Long.ZERO).toString());
-
-    if (message.vestingPeriods) {
-      obj.vestingPeriods = message.vestingPeriods.map(e => e ? Period.toJSON(e) : undefined);
-    } else {
-      obj.vestingPeriods = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreatePeriodicVestingAccount>): MsgCreatePeriodicVestingAccount {
     const message = createBaseMsgCreatePeriodicVestingAccount();
     message.fromAddress = object.fromAddress ?? "";
@@ -472,6 +448,30 @@ export const MsgCreatePeriodicVestingAccount = {
     message.startTime = object.startTime !== undefined && object.startTime !== null ? Long.fromValue(object.startTime) : Long.ZERO;
     message.vestingPeriods = object.vestingPeriods?.map(e => Period.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: MsgCreatePeriodicVestingAccountSDKType): MsgCreatePeriodicVestingAccount {
+    return {
+      fromAddress: isSet(object.from_address) ? object.from_address : undefined,
+      toAddress: isSet(object.to_address) ? object.to_address : undefined,
+      startTime: isSet(object.start_time) ? object.start_time : undefined,
+      vestingPeriods: Array.isArray(object?.vesting_periods) ? object.vesting_periods.map((e: any) => Period.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: MsgCreatePeriodicVestingAccount): MsgCreatePeriodicVestingAccountSDKType {
+    const obj: any = {};
+    message.fromAddress !== undefined && (obj.from_address = message.fromAddress);
+    message.toAddress !== undefined && (obj.to_address = message.toAddress);
+    message.startTime !== undefined && (obj.start_time = message.startTime);
+
+    if (message.vestingPeriods) {
+      obj.vesting_periods = message.vestingPeriods.map(e => e ? Period.toSDK(e) : undefined);
+    } else {
+      obj.vesting_periods = [];
+    }
+
+    return obj;
   }
 
 };
@@ -503,18 +503,18 @@ export const MsgCreatePeriodicVestingAccountResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgCreatePeriodicVestingAccountResponse {
-    return {};
-  },
-
-  toJSON(_: MsgCreatePeriodicVestingAccountResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgCreatePeriodicVestingAccountResponse>): MsgCreatePeriodicVestingAccountResponse {
     const message = createBaseMsgCreatePeriodicVestingAccountResponse();
     return message;
+  },
+
+  fromSDK(_: MsgCreatePeriodicVestingAccountResponseSDKType): MsgCreatePeriodicVestingAccountResponse {
+    return {};
+  },
+
+  toSDK(_: MsgCreatePeriodicVestingAccountResponse): MsgCreatePeriodicVestingAccountResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };

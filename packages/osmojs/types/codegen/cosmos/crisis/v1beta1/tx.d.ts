@@ -21,14 +21,14 @@ export interface MsgVerifyInvariantResponseSDKType {
 export declare const MsgVerifyInvariant: {
     encode(message: MsgVerifyInvariant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVerifyInvariant;
-    fromJSON(object: any): MsgVerifyInvariant;
-    toJSON(message: MsgVerifyInvariant): unknown;
     fromPartial(object: DeepPartial<MsgVerifyInvariant>): MsgVerifyInvariant;
+    fromSDK(object: MsgVerifyInvariantSDKType): MsgVerifyInvariant;
+    toSDK(message: MsgVerifyInvariant): MsgVerifyInvariantSDKType;
 };
 export declare const MsgVerifyInvariantResponse: {
     encode(_: MsgVerifyInvariantResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVerifyInvariantResponseSDKType;
-    fromJSON(_: any): MsgVerifyInvariantResponse;
-    toJSON(_: MsgVerifyInvariantResponse): unknown;
     fromPartial(_: DeepPartial<MsgVerifyInvariantResponse>): MsgVerifyInvariantResponse;
+    fromSDK(_: MsgVerifyInvariantResponseSDKType): MsgVerifyInvariantResponse;
+    toSDK(_: MsgVerifyInvariantResponse): MsgVerifyInvariantResponseSDKType;
 };

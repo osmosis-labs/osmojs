@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * MsgSubmitEvidence represents a message that supports submitting arbitrary
  * Evidence of misbehavior such as equivocation or counterfactual signing.
@@ -78,25 +78,25 @@ export const MsgSubmitEvidence = {
     return message;
   },
 
-  fromJSON(object: any): MsgSubmitEvidence {
-    return {
-      submitter: isSet(object.submitter) ? String(object.submitter) : "",
-      evidence: isSet(object.evidence) ? Any.fromJSON(object.evidence) : undefined
-    };
-  },
-
-  toJSON(message: MsgSubmitEvidence): unknown {
-    const obj: any = {};
-    message.submitter !== undefined && (obj.submitter = message.submitter);
-    message.evidence !== undefined && (obj.evidence = message.evidence ? Any.toJSON(message.evidence) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgSubmitEvidence>): MsgSubmitEvidence {
     const message = createBaseMsgSubmitEvidence();
     message.submitter = object.submitter ?? "";
     message.evidence = object.evidence !== undefined && object.evidence !== null ? Any.fromPartial(object.evidence) : undefined;
     return message;
+  },
+
+  fromSDK(object: MsgSubmitEvidenceSDKType): MsgSubmitEvidence {
+    return {
+      submitter: isSet(object.submitter) ? object.submitter : undefined,
+      evidence: isSet(object.evidence) ? Any.fromSDK(object.evidence) : undefined
+    };
+  },
+
+  toSDK(message: MsgSubmitEvidence): MsgSubmitEvidenceSDKType {
+    const obj: any = {};
+    message.submitter !== undefined && (obj.submitter = message.submitter);
+    message.evidence !== undefined && (obj.evidence = message.evidence ? Any.toSDK(message.evidence) : undefined);
+    return obj;
   }
 
 };
@@ -138,22 +138,22 @@ export const MsgSubmitEvidenceResponse = {
     return message;
   },
 
-  fromJSON(object: any): MsgSubmitEvidenceResponse {
-    return {
-      hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: MsgSubmitEvidenceResponse): unknown {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = base64FromBytes(message.hash !== undefined ? message.hash : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgSubmitEvidenceResponse>): MsgSubmitEvidenceResponse {
     const message = createBaseMsgSubmitEvidenceResponse();
     message.hash = object.hash ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: MsgSubmitEvidenceResponseSDKType): MsgSubmitEvidenceResponse {
+    return {
+      hash: isSet(object.hash) ? object.hash : undefined
+    };
+  },
+
+  toSDK(message: MsgSubmitEvidenceResponse): MsgSubmitEvidenceResponseSDKType {
+    const obj: any = {};
+    message.hash !== undefined && (obj.hash = message.hash);
+    return obj;
   }
 
 };

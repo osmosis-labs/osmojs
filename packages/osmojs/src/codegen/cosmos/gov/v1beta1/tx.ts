@@ -2,7 +2,7 @@ import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { VoteOption, VoteOptionSDKType, WeightedVoteOption, WeightedVoteOptionSDKType, voteOptionFromJSON, voteOptionToJSON } from "./gov";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
@@ -165,34 +165,34 @@ export const MsgSubmitProposal = {
     return message;
   },
 
-  fromJSON(object: any): MsgSubmitProposal {
-    return {
-      content: isSet(object.content) ? Any.fromJSON(object.content) : undefined,
-      initialDeposit: Array.isArray(object?.initialDeposit) ? object.initialDeposit.map((e: any) => Coin.fromJSON(e)) : [],
-      proposer: isSet(object.proposer) ? String(object.proposer) : ""
-    };
-  },
-
-  toJSON(message: MsgSubmitProposal): unknown {
-    const obj: any = {};
-    message.content !== undefined && (obj.content = message.content ? Any.toJSON(message.content) : undefined);
-
-    if (message.initialDeposit) {
-      obj.initialDeposit = message.initialDeposit.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.initialDeposit = [];
-    }
-
-    message.proposer !== undefined && (obj.proposer = message.proposer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgSubmitProposal>): MsgSubmitProposal {
     const message = createBaseMsgSubmitProposal();
     message.content = object.content !== undefined && object.content !== null ? Any.fromPartial(object.content) : undefined;
     message.initialDeposit = object.initialDeposit?.map(e => Coin.fromPartial(e)) || [];
     message.proposer = object.proposer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgSubmitProposalSDKType): MsgSubmitProposal {
+    return {
+      content: isSet(object.content) ? Any.fromSDK(object.content) : undefined,
+      initialDeposit: Array.isArray(object?.initial_deposit) ? object.initial_deposit.map((e: any) => Coin.fromSDK(e)) : [],
+      proposer: isSet(object.proposer) ? object.proposer : undefined
+    };
+  },
+
+  toSDK(message: MsgSubmitProposal): MsgSubmitProposalSDKType {
+    const obj: any = {};
+    message.content !== undefined && (obj.content = message.content ? Any.toSDK(message.content) : undefined);
+
+    if (message.initialDeposit) {
+      obj.initial_deposit = message.initialDeposit.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.initial_deposit = [];
+    }
+
+    message.proposer !== undefined && (obj.proposer = message.proposer);
+    return obj;
   }
 
 };
@@ -234,22 +234,22 @@ export const MsgSubmitProposalResponse = {
     return message;
   },
 
-  fromJSON(object: any): MsgSubmitProposalResponse {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromString(object.proposalId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: MsgSubmitProposalResponse): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse {
     const message = createBaseMsgSubmitProposalResponse();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: MsgSubmitProposalResponseSDKType): MsgSubmitProposalResponse {
+    return {
+      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined
+    };
+  },
+
+  toSDK(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseSDKType {
+    const obj: any = {};
+    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
+    return obj;
   }
 
 };
@@ -309,28 +309,28 @@ export const MsgVote = {
     return message;
   },
 
-  fromJSON(object: any): MsgVote {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromString(object.proposalId) : Long.UZERO,
-      voter: isSet(object.voter) ? String(object.voter) : "",
-      option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0
-    };
-  },
-
-  toJSON(message: MsgVote): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    message.voter !== undefined && (obj.voter = message.voter);
-    message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgVote>): MsgVote {
     const message = createBaseMsgVote();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.voter = object.voter ?? "";
     message.option = object.option ?? 0;
     return message;
+  },
+
+  fromSDK(object: MsgVoteSDKType): MsgVote {
+    return {
+      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
+      voter: isSet(object.voter) ? object.voter : undefined,
+      option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0
+    };
+  },
+
+  toSDK(message: MsgVote): MsgVoteSDKType {
+    const obj: any = {};
+    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
+    message.voter !== undefined && (obj.voter = message.voter);
+    message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
+    return obj;
   }
 
 };
@@ -362,18 +362,18 @@ export const MsgVoteResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgVoteResponse {
-    return {};
-  },
-
-  toJSON(_: MsgVoteResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgVoteResponse>): MsgVoteResponse {
     const message = createBaseMsgVoteResponse();
     return message;
+  },
+
+  fromSDK(_: MsgVoteResponseSDKType): MsgVoteResponse {
+    return {};
+  },
+
+  toSDK(_: MsgVoteResponse): MsgVoteResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -433,34 +433,34 @@ export const MsgVoteWeighted = {
     return message;
   },
 
-  fromJSON(object: any): MsgVoteWeighted {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromString(object.proposalId) : Long.UZERO,
-      voter: isSet(object.voter) ? String(object.voter) : "",
-      options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MsgVoteWeighted): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    message.voter !== undefined && (obj.voter = message.voter);
-
-    if (message.options) {
-      obj.options = message.options.map(e => e ? WeightedVoteOption.toJSON(e) : undefined);
-    } else {
-      obj.options = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgVoteWeighted>): MsgVoteWeighted {
     const message = createBaseMsgVoteWeighted();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.voter = object.voter ?? "";
     message.options = object.options?.map(e => WeightedVoteOption.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: MsgVoteWeightedSDKType): MsgVoteWeighted {
+    return {
+      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
+      voter: isSet(object.voter) ? object.voter : undefined,
+      options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: MsgVoteWeighted): MsgVoteWeightedSDKType {
+    const obj: any = {};
+    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
+    message.voter !== undefined && (obj.voter = message.voter);
+
+    if (message.options) {
+      obj.options = message.options.map(e => e ? WeightedVoteOption.toSDK(e) : undefined);
+    } else {
+      obj.options = [];
+    }
+
+    return obj;
   }
 
 };
@@ -492,18 +492,18 @@ export const MsgVoteWeightedResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgVoteWeightedResponse {
-    return {};
-  },
-
-  toJSON(_: MsgVoteWeightedResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse {
     const message = createBaseMsgVoteWeightedResponse();
     return message;
+  },
+
+  fromSDK(_: MsgVoteWeightedResponseSDKType): MsgVoteWeightedResponse {
+    return {};
+  },
+
+  toSDK(_: MsgVoteWeightedResponse): MsgVoteWeightedResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -563,34 +563,34 @@ export const MsgDeposit = {
     return message;
   },
 
-  fromJSON(object: any): MsgDeposit {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromString(object.proposalId) : Long.UZERO,
-      depositor: isSet(object.depositor) ? String(object.depositor) : "",
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MsgDeposit): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    message.depositor !== undefined && (obj.depositor = message.depositor);
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgDeposit>): MsgDeposit {
     const message = createBaseMsgDeposit();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.depositor = object.depositor ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: MsgDepositSDKType): MsgDeposit {
+    return {
+      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
+      depositor: isSet(object.depositor) ? object.depositor : undefined,
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: MsgDeposit): MsgDepositSDKType {
+    const obj: any = {};
+    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
+    message.depositor !== undefined && (obj.depositor = message.depositor);
+
+    if (message.amount) {
+      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.amount = [];
+    }
+
+    return obj;
   }
 
 };
@@ -622,18 +622,18 @@ export const MsgDepositResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgDepositResponse {
-    return {};
-  },
-
-  toJSON(_: MsgDepositResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgDepositResponse>): MsgDepositResponse {
     const message = createBaseMsgDepositResponse();
     return message;
+  },
+
+  fromSDK(_: MsgDepositResponseSDKType): MsgDepositResponse {
+    return {};
+  },
+
+  toSDK(_: MsgDepositResponse): MsgDepositResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };

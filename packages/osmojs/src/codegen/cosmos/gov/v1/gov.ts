@@ -3,7 +3,7 @@ import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long, toTimestamp, fromTimestamp, fromJsonTimestamp } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 
 export enum VoteOption {
@@ -458,25 +458,25 @@ export const WeightedVoteOption = {
     return message;
   },
 
-  fromJSON(object: any): WeightedVoteOption {
-    return {
-      option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0,
-      weight: isSet(object.weight) ? String(object.weight) : ""
-    };
-  },
-
-  toJSON(message: WeightedVoteOption): unknown {
-    const obj: any = {};
-    message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
-    message.weight !== undefined && (obj.weight = message.weight);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<WeightedVoteOption>): WeightedVoteOption {
     const message = createBaseWeightedVoteOption();
     message.option = object.option ?? 0;
     message.weight = object.weight ?? "";
     return message;
+  },
+
+  fromSDK(object: WeightedVoteOptionSDKType): WeightedVoteOption {
+    return {
+      option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0,
+      weight: isSet(object.weight) ? object.weight : undefined
+    };
+  },
+
+  toSDK(message: WeightedVoteOption): WeightedVoteOptionSDKType {
+    const obj: any = {};
+    message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
+    message.weight !== undefined && (obj.weight = message.weight);
+    return obj;
   }
 
 };
@@ -536,34 +536,34 @@ export const Deposit = {
     return message;
   },
 
-  fromJSON(object: any): Deposit {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromString(object.proposalId) : Long.UZERO,
-      depositor: isSet(object.depositor) ? String(object.depositor) : "",
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Deposit): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    message.depositor !== undefined && (obj.depositor = message.depositor);
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Deposit>): Deposit {
     const message = createBaseDeposit();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.depositor = object.depositor ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: DepositSDKType): Deposit {
+    return {
+      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
+      depositor: isSet(object.depositor) ? object.depositor : undefined,
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: Deposit): DepositSDKType {
+    const obj: any = {};
+    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
+    message.depositor !== undefined && (obj.depositor = message.depositor);
+
+    if (message.amount) {
+      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.amount = [];
+    }
+
+    return obj;
   }
 
 };
@@ -686,48 +686,6 @@ export const Proposal = {
     return message;
   },
 
-  fromJSON(object: any): Proposal {
-    return {
-      id: isSet(object.id) ? Long.fromString(object.id) : Long.UZERO,
-      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromJSON(e)) : [],
-      status: isSet(object.status) ? proposalStatusFromJSON(object.status) : 0,
-      finalTallyResult: isSet(object.finalTallyResult) ? TallyResult.fromJSON(object.finalTallyResult) : undefined,
-      submitTime: isSet(object.submitTime) ? fromJsonTimestamp(object.submitTime) : undefined,
-      depositEndTime: isSet(object.depositEndTime) ? fromJsonTimestamp(object.depositEndTime) : undefined,
-      totalDeposit: Array.isArray(object?.totalDeposit) ? object.totalDeposit.map((e: any) => Coin.fromJSON(e)) : [],
-      votingStartTime: isSet(object.votingStartTime) ? fromJsonTimestamp(object.votingStartTime) : undefined,
-      votingEndTime: isSet(object.votingEndTime) ? fromJsonTimestamp(object.votingEndTime) : undefined,
-      metadata: isSet(object.metadata) ? String(object.metadata) : ""
-    };
-  },
-
-  toJSON(message: Proposal): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = (message.id || Long.UZERO).toString());
-
-    if (message.messages) {
-      obj.messages = message.messages.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.messages = [];
-    }
-
-    message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
-    message.finalTallyResult !== undefined && (obj.finalTallyResult = message.finalTallyResult ? TallyResult.toJSON(message.finalTallyResult) : undefined);
-    message.submitTime !== undefined && (obj.submitTime = message.submitTime.toISOString());
-    message.depositEndTime !== undefined && (obj.depositEndTime = message.depositEndTime.toISOString());
-
-    if (message.totalDeposit) {
-      obj.totalDeposit = message.totalDeposit.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.totalDeposit = [];
-    }
-
-    message.votingStartTime !== undefined && (obj.votingStartTime = message.votingStartTime.toISOString());
-    message.votingEndTime !== undefined && (obj.votingEndTime = message.votingEndTime.toISOString());
-    message.metadata !== undefined && (obj.metadata = message.metadata);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Proposal>): Proposal {
     const message = createBaseProposal();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
@@ -741,6 +699,48 @@ export const Proposal = {
     message.votingEndTime = object.votingEndTime ?? undefined;
     message.metadata = object.metadata ?? "";
     return message;
+  },
+
+  fromSDK(object: ProposalSDKType): Proposal {
+    return {
+      id: isSet(object.id) ? object.id : undefined,
+      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromSDK(e)) : [],
+      status: isSet(object.status) ? proposalStatusFromJSON(object.status) : 0,
+      finalTallyResult: isSet(object.final_tally_result) ? TallyResult.fromSDK(object.final_tally_result) : undefined,
+      submitTime: isSet(object.submit_time) ? Timestamp.fromSDK(object.submit_time) : undefined,
+      depositEndTime: isSet(object.deposit_end_time) ? Timestamp.fromSDK(object.deposit_end_time) : undefined,
+      totalDeposit: Array.isArray(object?.total_deposit) ? object.total_deposit.map((e: any) => Coin.fromSDK(e)) : [],
+      votingStartTime: isSet(object.voting_start_time) ? Timestamp.fromSDK(object.voting_start_time) : undefined,
+      votingEndTime: isSet(object.voting_end_time) ? Timestamp.fromSDK(object.voting_end_time) : undefined,
+      metadata: isSet(object.metadata) ? object.metadata : undefined
+    };
+  },
+
+  toSDK(message: Proposal): ProposalSDKType {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+
+    if (message.messages) {
+      obj.messages = message.messages.map(e => e ? Any.toSDK(e) : undefined);
+    } else {
+      obj.messages = [];
+    }
+
+    message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
+    message.finalTallyResult !== undefined && (obj.final_tally_result = message.finalTallyResult ? TallyResult.toSDK(message.finalTallyResult) : undefined);
+    message.submitTime !== undefined && (obj.submit_time = message.submitTime ? Timestamp.toSDK(message.submitTime) : undefined);
+    message.depositEndTime !== undefined && (obj.deposit_end_time = message.depositEndTime ? Timestamp.toSDK(message.depositEndTime) : undefined);
+
+    if (message.totalDeposit) {
+      obj.total_deposit = message.totalDeposit.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.total_deposit = [];
+    }
+
+    message.votingStartTime !== undefined && (obj.voting_start_time = message.votingStartTime ? Timestamp.toSDK(message.votingStartTime) : undefined);
+    message.votingEndTime !== undefined && (obj.voting_end_time = message.votingEndTime ? Timestamp.toSDK(message.votingEndTime) : undefined);
+    message.metadata !== undefined && (obj.metadata = message.metadata);
+    return obj;
   }
 
 };
@@ -809,24 +809,6 @@ export const TallyResult = {
     return message;
   },
 
-  fromJSON(object: any): TallyResult {
-    return {
-      yesCount: isSet(object.yesCount) ? String(object.yesCount) : "",
-      abstainCount: isSet(object.abstainCount) ? String(object.abstainCount) : "",
-      noCount: isSet(object.noCount) ? String(object.noCount) : "",
-      noWithVetoCount: isSet(object.noWithVetoCount) ? String(object.noWithVetoCount) : ""
-    };
-  },
-
-  toJSON(message: TallyResult): unknown {
-    const obj: any = {};
-    message.yesCount !== undefined && (obj.yesCount = message.yesCount);
-    message.abstainCount !== undefined && (obj.abstainCount = message.abstainCount);
-    message.noCount !== undefined && (obj.noCount = message.noCount);
-    message.noWithVetoCount !== undefined && (obj.noWithVetoCount = message.noWithVetoCount);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<TallyResult>): TallyResult {
     const message = createBaseTallyResult();
     message.yesCount = object.yesCount ?? "";
@@ -834,6 +816,24 @@ export const TallyResult = {
     message.noCount = object.noCount ?? "";
     message.noWithVetoCount = object.noWithVetoCount ?? "";
     return message;
+  },
+
+  fromSDK(object: TallyResultSDKType): TallyResult {
+    return {
+      yesCount: isSet(object.yes_count) ? object.yes_count : undefined,
+      abstainCount: isSet(object.abstain_count) ? object.abstain_count : undefined,
+      noCount: isSet(object.no_count) ? object.no_count : undefined,
+      noWithVetoCount: isSet(object.no_with_veto_count) ? object.no_with_veto_count : undefined
+    };
+  },
+
+  toSDK(message: TallyResult): TallyResultSDKType {
+    const obj: any = {};
+    message.yesCount !== undefined && (obj.yes_count = message.yesCount);
+    message.abstainCount !== undefined && (obj.abstain_count = message.abstainCount);
+    message.noCount !== undefined && (obj.no_count = message.noCount);
+    message.noWithVetoCount !== undefined && (obj.no_with_veto_count = message.noWithVetoCount);
+    return obj;
   }
 
 };
@@ -902,30 +902,6 @@ export const Vote = {
     return message;
   },
 
-  fromJSON(object: any): Vote {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromString(object.proposalId) : Long.UZERO,
-      voter: isSet(object.voter) ? String(object.voter) : "",
-      options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromJSON(e)) : [],
-      metadata: isSet(object.metadata) ? String(object.metadata) : ""
-    };
-  },
-
-  toJSON(message: Vote): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    message.voter !== undefined && (obj.voter = message.voter);
-
-    if (message.options) {
-      obj.options = message.options.map(e => e ? WeightedVoteOption.toJSON(e) : undefined);
-    } else {
-      obj.options = [];
-    }
-
-    message.metadata !== undefined && (obj.metadata = message.metadata);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Vote>): Vote {
     const message = createBaseVote();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
@@ -933,6 +909,30 @@ export const Vote = {
     message.options = object.options?.map(e => WeightedVoteOption.fromPartial(e)) || [];
     message.metadata = object.metadata ?? "";
     return message;
+  },
+
+  fromSDK(object: VoteSDKType): Vote {
+    return {
+      proposalId: isSet(object.proposal_id) ? object.proposal_id : undefined,
+      voter: isSet(object.voter) ? object.voter : undefined,
+      options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromSDK(e)) : [],
+      metadata: isSet(object.metadata) ? object.metadata : undefined
+    };
+  },
+
+  toSDK(message: Vote): VoteSDKType {
+    const obj: any = {};
+    message.proposalId !== undefined && (obj.proposal_id = message.proposalId);
+    message.voter !== undefined && (obj.voter = message.voter);
+
+    if (message.options) {
+      obj.options = message.options.map(e => e ? WeightedVoteOption.toSDK(e) : undefined);
+    } else {
+      obj.options = [];
+    }
+
+    message.metadata !== undefined && (obj.metadata = message.metadata);
+    return obj;
   }
 
 };
@@ -983,31 +983,31 @@ export const DepositParams = {
     return message;
   },
 
-  fromJSON(object: any): DepositParams {
-    return {
-      minDeposit: Array.isArray(object?.minDeposit) ? object.minDeposit.map((e: any) => Coin.fromJSON(e)) : [],
-      maxDepositPeriod: isSet(object.maxDepositPeriod) ? Duration.fromJSON(object.maxDepositPeriod) : undefined
-    };
-  },
-
-  toJSON(message: DepositParams): unknown {
-    const obj: any = {};
-
-    if (message.minDeposit) {
-      obj.minDeposit = message.minDeposit.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.minDeposit = [];
-    }
-
-    message.maxDepositPeriod !== undefined && (obj.maxDepositPeriod = message.maxDepositPeriod);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DepositParams>): DepositParams {
     const message = createBaseDepositParams();
     message.minDeposit = object.minDeposit?.map(e => Coin.fromPartial(e)) || [];
     message.maxDepositPeriod = object.maxDepositPeriod ?? undefined;
     return message;
+  },
+
+  fromSDK(object: DepositParamsSDKType): DepositParams {
+    return {
+      minDeposit: Array.isArray(object?.min_deposit) ? object.min_deposit.map((e: any) => Coin.fromSDK(e)) : [],
+      maxDepositPeriod: isSet(object.max_deposit_period) ? Duration.fromSDK(object.max_deposit_period) : undefined
+    };
+  },
+
+  toSDK(message: DepositParams): DepositParamsSDKType {
+    const obj: any = {};
+
+    if (message.minDeposit) {
+      obj.min_deposit = message.minDeposit.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.min_deposit = [];
+    }
+
+    message.maxDepositPeriod !== undefined && (obj.max_deposit_period = message.maxDepositPeriod ? Duration.toSDK(message.maxDepositPeriod) : undefined);
+    return obj;
   }
 
 };
@@ -1049,22 +1049,22 @@ export const VotingParams = {
     return message;
   },
 
-  fromJSON(object: any): VotingParams {
-    return {
-      votingPeriod: isSet(object.votingPeriod) ? Duration.fromJSON(object.votingPeriod) : undefined
-    };
-  },
-
-  toJSON(message: VotingParams): unknown {
-    const obj: any = {};
-    message.votingPeriod !== undefined && (obj.votingPeriod = message.votingPeriod);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<VotingParams>): VotingParams {
     const message = createBaseVotingParams();
     message.votingPeriod = object.votingPeriod ?? undefined;
     return message;
+  },
+
+  fromSDK(object: VotingParamsSDKType): VotingParams {
+    return {
+      votingPeriod: isSet(object.voting_period) ? Duration.fromSDK(object.voting_period) : undefined
+    };
+  },
+
+  toSDK(message: VotingParams): VotingParamsSDKType {
+    const obj: any = {};
+    message.votingPeriod !== undefined && (obj.voting_period = message.votingPeriod ? Duration.toSDK(message.votingPeriod) : undefined);
+    return obj;
   }
 
 };
@@ -1124,28 +1124,28 @@ export const TallyParams = {
     return message;
   },
 
-  fromJSON(object: any): TallyParams {
-    return {
-      quorum: isSet(object.quorum) ? String(object.quorum) : "",
-      threshold: isSet(object.threshold) ? String(object.threshold) : "",
-      vetoThreshold: isSet(object.vetoThreshold) ? String(object.vetoThreshold) : ""
-    };
-  },
-
-  toJSON(message: TallyParams): unknown {
-    const obj: any = {};
-    message.quorum !== undefined && (obj.quorum = message.quorum);
-    message.threshold !== undefined && (obj.threshold = message.threshold);
-    message.vetoThreshold !== undefined && (obj.vetoThreshold = message.vetoThreshold);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<TallyParams>): TallyParams {
     const message = createBaseTallyParams();
     message.quorum = object.quorum ?? "";
     message.threshold = object.threshold ?? "";
     message.vetoThreshold = object.vetoThreshold ?? "";
     return message;
+  },
+
+  fromSDK(object: TallyParamsSDKType): TallyParams {
+    return {
+      quorum: isSet(object.quorum) ? object.quorum : undefined,
+      threshold: isSet(object.threshold) ? object.threshold : undefined,
+      vetoThreshold: isSet(object.veto_threshold) ? object.veto_threshold : undefined
+    };
+  },
+
+  toSDK(message: TallyParams): TallyParamsSDKType {
+    const obj: any = {};
+    message.quorum !== undefined && (obj.quorum = message.quorum);
+    message.threshold !== undefined && (obj.threshold = message.threshold);
+    message.vetoThreshold !== undefined && (obj.veto_threshold = message.vetoThreshold);
+    return obj;
   }
 
 };

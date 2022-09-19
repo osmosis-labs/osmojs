@@ -192,126 +192,126 @@ export interface MsgExitSwapExternAmountOutResponseSDKType {
 export declare const MsgJoinPool: {
     encode(message: MsgJoinPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPool;
-    fromJSON(object: any): MsgJoinPool;
-    toJSON(message: MsgJoinPool): unknown;
     fromPartial(object: DeepPartial<MsgJoinPool>): MsgJoinPool;
+    fromSDK(object: MsgJoinPoolSDKType): MsgJoinPool;
+    toSDK(message: MsgJoinPool): MsgJoinPoolSDKType;
 };
 export declare const MsgJoinPoolResponse: {
     encode(_: MsgJoinPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPoolResponseSDKType;
-    fromJSON(_: any): MsgJoinPoolResponse;
-    toJSON(_: MsgJoinPoolResponse): unknown;
     fromPartial(_: DeepPartial<MsgJoinPoolResponse>): MsgJoinPoolResponse;
+    fromSDK(_: MsgJoinPoolResponseSDKType): MsgJoinPoolResponse;
+    toSDK(_: MsgJoinPoolResponse): MsgJoinPoolResponseSDKType;
 };
 export declare const MsgExitPool: {
     encode(message: MsgExitPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPool;
-    fromJSON(object: any): MsgExitPool;
-    toJSON(message: MsgExitPool): unknown;
     fromPartial(object: DeepPartial<MsgExitPool>): MsgExitPool;
+    fromSDK(object: MsgExitPoolSDKType): MsgExitPool;
+    toSDK(message: MsgExitPool): MsgExitPoolSDKType;
 };
 export declare const MsgExitPoolResponse: {
     encode(_: MsgExitPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPoolResponseSDKType;
-    fromJSON(_: any): MsgExitPoolResponse;
-    toJSON(_: MsgExitPoolResponse): unknown;
     fromPartial(_: DeepPartial<MsgExitPoolResponse>): MsgExitPoolResponse;
+    fromSDK(_: MsgExitPoolResponseSDKType): MsgExitPoolResponse;
+    toSDK(_: MsgExitPoolResponse): MsgExitPoolResponseSDKType;
 };
 export declare const SwapAmountInRoute: {
     encode(message: SwapAmountInRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountInRoute;
-    fromJSON(object: any): SwapAmountInRoute;
-    toJSON(message: SwapAmountInRoute): unknown;
     fromPartial(object: DeepPartial<SwapAmountInRoute>): SwapAmountInRoute;
+    fromSDK(object: SwapAmountInRouteSDKType): SwapAmountInRoute;
+    toSDK(message: SwapAmountInRoute): SwapAmountInRouteSDKType;
 };
 export declare const MsgSwapExactAmountIn: {
     encode(message: MsgSwapExactAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountIn;
-    fromJSON(object: any): MsgSwapExactAmountIn;
-    toJSON(message: MsgSwapExactAmountIn): unknown;
     fromPartial(object: DeepPartial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn;
+    fromSDK(object: MsgSwapExactAmountInSDKType): MsgSwapExactAmountIn;
+    toSDK(message: MsgSwapExactAmountIn): MsgSwapExactAmountInSDKType;
 };
 export declare const MsgSwapExactAmountInResponse: {
     encode(message: MsgSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponseSDKType;
-    fromJSON(object: any): MsgSwapExactAmountInResponse;
-    toJSON(message: MsgSwapExactAmountInResponse): unknown;
     fromPartial(object: DeepPartial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse;
+    fromSDK(object: MsgSwapExactAmountInResponseSDKType): MsgSwapExactAmountInResponse;
+    toSDK(message: MsgSwapExactAmountInResponse): MsgSwapExactAmountInResponseSDKType;
 };
 export declare const SwapAmountOutRoute: {
     encode(message: SwapAmountOutRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountOutRoute;
-    fromJSON(object: any): SwapAmountOutRoute;
-    toJSON(message: SwapAmountOutRoute): unknown;
     fromPartial(object: DeepPartial<SwapAmountOutRoute>): SwapAmountOutRoute;
+    fromSDK(object: SwapAmountOutRouteSDKType): SwapAmountOutRoute;
+    toSDK(message: SwapAmountOutRoute): SwapAmountOutRouteSDKType;
 };
 export declare const MsgSwapExactAmountOut: {
     encode(message: MsgSwapExactAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOut;
-    fromJSON(object: any): MsgSwapExactAmountOut;
-    toJSON(message: MsgSwapExactAmountOut): unknown;
     fromPartial(object: DeepPartial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut;
+    fromSDK(object: MsgSwapExactAmountOutSDKType): MsgSwapExactAmountOut;
+    toSDK(message: MsgSwapExactAmountOut): MsgSwapExactAmountOutSDKType;
 };
 export declare const MsgSwapExactAmountOutResponse: {
     encode(message: MsgSwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOutResponseSDKType;
-    fromJSON(object: any): MsgSwapExactAmountOutResponse;
-    toJSON(message: MsgSwapExactAmountOutResponse): unknown;
     fromPartial(object: DeepPartial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse;
+    fromSDK(object: MsgSwapExactAmountOutResponseSDKType): MsgSwapExactAmountOutResponse;
+    toSDK(message: MsgSwapExactAmountOutResponse): MsgSwapExactAmountOutResponseSDKType;
 };
 export declare const MsgJoinSwapExternAmountIn: {
     encode(message: MsgJoinSwapExternAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountIn;
-    fromJSON(object: any): MsgJoinSwapExternAmountIn;
-    toJSON(message: MsgJoinSwapExternAmountIn): unknown;
     fromPartial(object: DeepPartial<MsgJoinSwapExternAmountIn>): MsgJoinSwapExternAmountIn;
+    fromSDK(object: MsgJoinSwapExternAmountInSDKType): MsgJoinSwapExternAmountIn;
+    toSDK(message: MsgJoinSwapExternAmountIn): MsgJoinSwapExternAmountInSDKType;
 };
 export declare const MsgJoinSwapExternAmountInResponse: {
     encode(message: MsgJoinSwapExternAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountInResponseSDKType;
-    fromJSON(object: any): MsgJoinSwapExternAmountInResponse;
-    toJSON(message: MsgJoinSwapExternAmountInResponse): unknown;
     fromPartial(object: DeepPartial<MsgJoinSwapExternAmountInResponse>): MsgJoinSwapExternAmountInResponse;
+    fromSDK(object: MsgJoinSwapExternAmountInResponseSDKType): MsgJoinSwapExternAmountInResponse;
+    toSDK(message: MsgJoinSwapExternAmountInResponse): MsgJoinSwapExternAmountInResponseSDKType;
 };
 export declare const MsgJoinSwapShareAmountOut: {
     encode(message: MsgJoinSwapShareAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOut;
-    fromJSON(object: any): MsgJoinSwapShareAmountOut;
-    toJSON(message: MsgJoinSwapShareAmountOut): unknown;
     fromPartial(object: DeepPartial<MsgJoinSwapShareAmountOut>): MsgJoinSwapShareAmountOut;
+    fromSDK(object: MsgJoinSwapShareAmountOutSDKType): MsgJoinSwapShareAmountOut;
+    toSDK(message: MsgJoinSwapShareAmountOut): MsgJoinSwapShareAmountOutSDKType;
 };
 export declare const MsgJoinSwapShareAmountOutResponse: {
     encode(message: MsgJoinSwapShareAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOutResponseSDKType;
-    fromJSON(object: any): MsgJoinSwapShareAmountOutResponse;
-    toJSON(message: MsgJoinSwapShareAmountOutResponse): unknown;
     fromPartial(object: DeepPartial<MsgJoinSwapShareAmountOutResponse>): MsgJoinSwapShareAmountOutResponse;
+    fromSDK(object: MsgJoinSwapShareAmountOutResponseSDKType): MsgJoinSwapShareAmountOutResponse;
+    toSDK(message: MsgJoinSwapShareAmountOutResponse): MsgJoinSwapShareAmountOutResponseSDKType;
 };
 export declare const MsgExitSwapShareAmountIn: {
     encode(message: MsgExitSwapShareAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountIn;
-    fromJSON(object: any): MsgExitSwapShareAmountIn;
-    toJSON(message: MsgExitSwapShareAmountIn): unknown;
     fromPartial(object: DeepPartial<MsgExitSwapShareAmountIn>): MsgExitSwapShareAmountIn;
+    fromSDK(object: MsgExitSwapShareAmountInSDKType): MsgExitSwapShareAmountIn;
+    toSDK(message: MsgExitSwapShareAmountIn): MsgExitSwapShareAmountInSDKType;
 };
 export declare const MsgExitSwapShareAmountInResponse: {
     encode(message: MsgExitSwapShareAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountInResponseSDKType;
-    fromJSON(object: any): MsgExitSwapShareAmountInResponse;
-    toJSON(message: MsgExitSwapShareAmountInResponse): unknown;
     fromPartial(object: DeepPartial<MsgExitSwapShareAmountInResponse>): MsgExitSwapShareAmountInResponse;
+    fromSDK(object: MsgExitSwapShareAmountInResponseSDKType): MsgExitSwapShareAmountInResponse;
+    toSDK(message: MsgExitSwapShareAmountInResponse): MsgExitSwapShareAmountInResponseSDKType;
 };
 export declare const MsgExitSwapExternAmountOut: {
     encode(message: MsgExitSwapExternAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOut;
-    fromJSON(object: any): MsgExitSwapExternAmountOut;
-    toJSON(message: MsgExitSwapExternAmountOut): unknown;
     fromPartial(object: DeepPartial<MsgExitSwapExternAmountOut>): MsgExitSwapExternAmountOut;
+    fromSDK(object: MsgExitSwapExternAmountOutSDKType): MsgExitSwapExternAmountOut;
+    toSDK(message: MsgExitSwapExternAmountOut): MsgExitSwapExternAmountOutSDKType;
 };
 export declare const MsgExitSwapExternAmountOutResponse: {
     encode(message: MsgExitSwapExternAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOutResponseSDKType;
-    fromJSON(object: any): MsgExitSwapExternAmountOutResponse;
-    toJSON(message: MsgExitSwapExternAmountOutResponse): unknown;
     fromPartial(object: DeepPartial<MsgExitSwapExternAmountOutResponse>): MsgExitSwapExternAmountOutResponse;
+    fromSDK(object: MsgExitSwapExternAmountOutResponseSDKType): MsgExitSwapExternAmountOutResponse;
+    toSDK(message: MsgExitSwapExternAmountOutResponse): MsgExitSwapExternAmountOutResponseSDKType;
 };

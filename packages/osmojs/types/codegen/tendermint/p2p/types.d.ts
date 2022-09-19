@@ -63,35 +63,35 @@ export interface PeerAddressInfoSDKType {
 export declare const ProtocolVersion: {
     encode(message: ProtocolVersion, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProtocolVersion;
-    fromJSON(object: any): ProtocolVersion;
-    toJSON(message: ProtocolVersion): unknown;
     fromPartial(object: DeepPartial<ProtocolVersion>): ProtocolVersion;
+    fromSDK(object: ProtocolVersionSDKType): ProtocolVersion;
+    toSDK(message: ProtocolVersion): ProtocolVersionSDKType;
 };
 export declare const NodeInfo: {
     encode(message: NodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NodeInfo;
-    fromJSON(object: any): NodeInfo;
-    toJSON(message: NodeInfo): unknown;
     fromPartial(object: DeepPartial<NodeInfo>): NodeInfo;
+    fromSDK(object: NodeInfoSDKType): NodeInfo;
+    toSDK(message: NodeInfo): NodeInfoSDKType;
 };
 export declare const NodeInfoOther: {
     encode(message: NodeInfoOther, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NodeInfoOther;
-    fromJSON(object: any): NodeInfoOther;
-    toJSON(message: NodeInfoOther): unknown;
     fromPartial(object: DeepPartial<NodeInfoOther>): NodeInfoOther;
+    fromSDK(object: NodeInfoOtherSDKType): NodeInfoOther;
+    toSDK(message: NodeInfoOther): NodeInfoOtherSDKType;
 };
 export declare const PeerInfo: {
     encode(message: PeerInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeerInfo;
-    fromJSON(object: any): PeerInfo;
-    toJSON(message: PeerInfo): unknown;
     fromPartial(object: DeepPartial<PeerInfo>): PeerInfo;
+    fromSDK(object: PeerInfoSDKType): PeerInfo;
+    toSDK(message: PeerInfo): PeerInfoSDKType;
 };
 export declare const PeerAddressInfo: {
     encode(message: PeerAddressInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeerAddressInfo;
-    fromJSON(object: any): PeerAddressInfo;
-    toJSON(message: PeerAddressInfo): unknown;
     fromPartial(object: DeepPartial<PeerAddressInfo>): PeerAddressInfo;
+    fromSDK(object: PeerAddressInfoSDKType): PeerAddressInfo;
+    toSDK(message: PeerAddressInfo): PeerAddressInfoSDKType;
 };

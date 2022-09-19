@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * Coin defines a token with a denomination and an amount.
  * 
@@ -111,25 +111,25 @@ export const Coin = {
     return message;
   },
 
-  fromJSON(object: any): Coin {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : "",
-      amount: isSet(object.amount) ? String(object.amount) : ""
-    };
-  },
-
-  toJSON(message: Coin): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.amount !== undefined && (obj.amount = message.amount);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Coin>): Coin {
     const message = createBaseCoin();
     message.denom = object.denom ?? "";
     message.amount = object.amount ?? "";
     return message;
+  },
+
+  fromSDK(object: CoinSDKType): Coin {
+    return {
+      denom: isSet(object.denom) ? object.denom : undefined,
+      amount: isSet(object.amount) ? object.amount : undefined
+    };
+  },
+
+  toSDK(message: Coin): CoinSDKType {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    message.amount !== undefined && (obj.amount = message.amount);
+    return obj;
   }
 
 };
@@ -180,25 +180,25 @@ export const DecCoin = {
     return message;
   },
 
-  fromJSON(object: any): DecCoin {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : "",
-      amount: isSet(object.amount) ? String(object.amount) : ""
-    };
-  },
-
-  toJSON(message: DecCoin): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.amount !== undefined && (obj.amount = message.amount);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DecCoin>): DecCoin {
     const message = createBaseDecCoin();
     message.denom = object.denom ?? "";
     message.amount = object.amount ?? "";
     return message;
+  },
+
+  fromSDK(object: DecCoinSDKType): DecCoin {
+    return {
+      denom: isSet(object.denom) ? object.denom : undefined,
+      amount: isSet(object.amount) ? object.amount : undefined
+    };
+  },
+
+  toSDK(message: DecCoin): DecCoinSDKType {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    message.amount !== undefined && (obj.amount = message.amount);
+    return obj;
   }
 
 };
@@ -240,22 +240,22 @@ export const IntProto = {
     return message;
   },
 
-  fromJSON(object: any): IntProto {
-    return {
-      int: isSet(object.int) ? String(object.int) : ""
-    };
-  },
-
-  toJSON(message: IntProto): unknown {
-    const obj: any = {};
-    message.int !== undefined && (obj.int = message.int);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<IntProto>): IntProto {
     const message = createBaseIntProto();
     message.int = object.int ?? "";
     return message;
+  },
+
+  fromSDK(object: IntProtoSDKType): IntProto {
+    return {
+      int: isSet(object.int) ? object.int : undefined
+    };
+  },
+
+  toSDK(message: IntProto): IntProtoSDKType {
+    const obj: any = {};
+    message.int !== undefined && (obj.int = message.int);
+    return obj;
   }
 
 };
@@ -297,22 +297,22 @@ export const DecProto = {
     return message;
   },
 
-  fromJSON(object: any): DecProto {
-    return {
-      dec: isSet(object.dec) ? String(object.dec) : ""
-    };
-  },
-
-  toJSON(message: DecProto): unknown {
-    const obj: any = {};
-    message.dec !== undefined && (obj.dec = message.dec);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DecProto>): DecProto {
     const message = createBaseDecProto();
     message.dec = object.dec ?? "";
     return message;
+  },
+
+  fromSDK(object: DecProtoSDKType): DecProto {
+    return {
+      dec: isSet(object.dec) ? object.dec : undefined
+    };
+  },
+
+  toSDK(message: DecProto): DecProtoSDKType {
+    const obj: any = {};
+    message.dec !== undefined && (obj.dec = message.dec);
+    return obj;
   }
 
 };

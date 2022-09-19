@@ -1,7 +1,7 @@
 import { CompactBitArray, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long, isSet, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
+import { DeepPartial, Long, isSet } from "@osmonauts/helpers";
 /**
  * SignMode represents a signing mode with its own security guarantees.
  * 
@@ -289,28 +289,28 @@ export const SignatureDescriptors = {
     return message;
   },
 
-  fromJSON(object: any): SignatureDescriptors {
+  fromPartial(object: DeepPartial<SignatureDescriptors>): SignatureDescriptors {
+    const message = createBaseSignatureDescriptors();
+    message.signatures = object.signatures?.map(e => SignatureDescriptor.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: SignatureDescriptorsSDKType): SignatureDescriptors {
     return {
-      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => SignatureDescriptor.fromJSON(e)) : []
+      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => SignatureDescriptor.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: SignatureDescriptors): unknown {
+  toSDK(message: SignatureDescriptors): SignatureDescriptorsSDKType {
     const obj: any = {};
 
     if (message.signatures) {
-      obj.signatures = message.signatures.map(e => e ? SignatureDescriptor.toJSON(e) : undefined);
+      obj.signatures = message.signatures.map(e => e ? SignatureDescriptor.toSDK(e) : undefined);
     } else {
       obj.signatures = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<SignatureDescriptors>): SignatureDescriptors {
-    const message = createBaseSignatureDescriptors();
-    message.signatures = object.signatures?.map(e => SignatureDescriptor.fromPartial(e)) || [];
-    return message;
   }
 
 };
@@ -370,28 +370,28 @@ export const SignatureDescriptor = {
     return message;
   },
 
-  fromJSON(object: any): SignatureDescriptor {
-    return {
-      publicKey: isSet(object.publicKey) ? Any.fromJSON(object.publicKey) : undefined,
-      data: isSet(object.data) ? SignatureDescriptor_Data.fromJSON(object.data) : undefined,
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO
-    };
-  },
-
-  toJSON(message: SignatureDescriptor): unknown {
-    const obj: any = {};
-    message.publicKey !== undefined && (obj.publicKey = message.publicKey ? Any.toJSON(message.publicKey) : undefined);
-    message.data !== undefined && (obj.data = message.data ? SignatureDescriptor_Data.toJSON(message.data) : undefined);
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor {
     const message = createBaseSignatureDescriptor();
     message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
     message.data = object.data !== undefined && object.data !== null ? SignatureDescriptor_Data.fromPartial(object.data) : undefined;
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: SignatureDescriptorSDKType): SignatureDescriptor {
+    return {
+      publicKey: isSet(object.public_key) ? Any.fromSDK(object.public_key) : undefined,
+      data: isSet(object.data) ? SignatureDescriptor_Data.fromSDK(object.data) : undefined,
+      sequence: isSet(object.sequence) ? object.sequence : undefined
+    };
+  },
+
+  toSDK(message: SignatureDescriptor): SignatureDescriptorSDKType {
+    const obj: any = {};
+    message.publicKey !== undefined && (obj.public_key = message.publicKey ? Any.toSDK(message.publicKey) : undefined);
+    message.data !== undefined && (obj.data = message.data ? SignatureDescriptor_Data.toSDK(message.data) : undefined);
+    message.sequence !== undefined && (obj.sequence = message.sequence);
+    return obj;
   }
 
 };
@@ -442,25 +442,25 @@ export const SignatureDescriptor_Data = {
     return message;
   },
 
-  fromJSON(object: any): SignatureDescriptor_Data {
-    return {
-      single: isSet(object.single) ? SignatureDescriptor_Data_Single.fromJSON(object.single) : undefined,
-      multi: isSet(object.multi) ? SignatureDescriptor_Data_Multi.fromJSON(object.multi) : undefined
-    };
-  },
-
-  toJSON(message: SignatureDescriptor_Data): unknown {
-    const obj: any = {};
-    message.single !== undefined && (obj.single = message.single ? SignatureDescriptor_Data_Single.toJSON(message.single) : undefined);
-    message.multi !== undefined && (obj.multi = message.multi ? SignatureDescriptor_Data_Multi.toJSON(message.multi) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SignatureDescriptor_Data>): SignatureDescriptor_Data {
     const message = createBaseSignatureDescriptor_Data();
     message.single = object.single !== undefined && object.single !== null ? SignatureDescriptor_Data_Single.fromPartial(object.single) : undefined;
     message.multi = object.multi !== undefined && object.multi !== null ? SignatureDescriptor_Data_Multi.fromPartial(object.multi) : undefined;
     return message;
+  },
+
+  fromSDK(object: SignatureDescriptor_DataSDKType): SignatureDescriptor_Data {
+    return {
+      single: isSet(object.single) ? SignatureDescriptor_Data_Single.fromSDK(object.single) : undefined,
+      multi: isSet(object.multi) ? SignatureDescriptor_Data_Multi.fromSDK(object.multi) : undefined
+    };
+  },
+
+  toSDK(message: SignatureDescriptor_Data): SignatureDescriptor_DataSDKType {
+    const obj: any = {};
+    message.single !== undefined && (obj.single = message.single ? SignatureDescriptor_Data_Single.toSDK(message.single) : undefined);
+    message.multi !== undefined && (obj.multi = message.multi ? SignatureDescriptor_Data_Multi.toSDK(message.multi) : undefined);
+    return obj;
   }
 
 };
@@ -511,25 +511,25 @@ export const SignatureDescriptor_Data_Single = {
     return message;
   },
 
-  fromJSON(object: any): SignatureDescriptor_Data_Single {
-    return {
-      mode: isSet(object.mode) ? signModeFromJSON(object.mode) : 0,
-      signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: SignatureDescriptor_Data_Single): unknown {
-    const obj: any = {};
-    message.mode !== undefined && (obj.mode = signModeToJSON(message.mode));
-    message.signature !== undefined && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single {
     const message = createBaseSignatureDescriptor_Data_Single();
     message.mode = object.mode ?? 0;
     message.signature = object.signature ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: SignatureDescriptor_Data_SingleSDKType): SignatureDescriptor_Data_Single {
+    return {
+      mode: isSet(object.mode) ? signModeFromJSON(object.mode) : 0,
+      signature: isSet(object.signature) ? object.signature : undefined
+    };
+  },
+
+  toSDK(message: SignatureDescriptor_Data_Single): SignatureDescriptor_Data_SingleSDKType {
+    const obj: any = {};
+    message.mode !== undefined && (obj.mode = signModeToJSON(message.mode));
+    message.signature !== undefined && (obj.signature = message.signature);
+    return obj;
   }
 
 };
@@ -580,31 +580,31 @@ export const SignatureDescriptor_Data_Multi = {
     return message;
   },
 
-  fromJSON(object: any): SignatureDescriptor_Data_Multi {
-    return {
-      bitarray: isSet(object.bitarray) ? CompactBitArray.fromJSON(object.bitarray) : undefined,
-      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => SignatureDescriptor_Data.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: SignatureDescriptor_Data_Multi): unknown {
-    const obj: any = {};
-    message.bitarray !== undefined && (obj.bitarray = message.bitarray ? CompactBitArray.toJSON(message.bitarray) : undefined);
-
-    if (message.signatures) {
-      obj.signatures = message.signatures.map(e => e ? SignatureDescriptor_Data.toJSON(e) : undefined);
-    } else {
-      obj.signatures = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi {
     const message = createBaseSignatureDescriptor_Data_Multi();
     message.bitarray = object.bitarray !== undefined && object.bitarray !== null ? CompactBitArray.fromPartial(object.bitarray) : undefined;
     message.signatures = object.signatures?.map(e => SignatureDescriptor_Data.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: SignatureDescriptor_Data_MultiSDKType): SignatureDescriptor_Data_Multi {
+    return {
+      bitarray: isSet(object.bitarray) ? CompactBitArray.fromSDK(object.bitarray) : undefined,
+      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => SignatureDescriptor_Data.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: SignatureDescriptor_Data_Multi): SignatureDescriptor_Data_MultiSDKType {
+    const obj: any = {};
+    message.bitarray !== undefined && (obj.bitarray = message.bitarray ? CompactBitArray.toSDK(message.bitarray) : undefined);
+
+    if (message.signatures) {
+      obj.signatures = message.signatures.map(e => e ? SignatureDescriptor_Data.toSDK(e) : undefined);
+    } else {
+      obj.signatures = [];
+    }
+
+    return obj;
   }
 
 };

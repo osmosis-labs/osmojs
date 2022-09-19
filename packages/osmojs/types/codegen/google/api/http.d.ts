@@ -707,21 +707,21 @@ export interface CustomHttpPatternSDKType {
 export declare const Http: {
     encode(message: Http, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Http;
-    fromJSON(object: any): Http;
-    toJSON(message: Http): unknown;
     fromPartial(object: DeepPartial<Http>): Http;
+    fromSDK(object: HttpSDKType): Http;
+    toSDK(message: Http): HttpSDKType;
 };
 export declare const HttpRule: {
     encode(message: HttpRule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HttpRule;
-    fromJSON(object: any): HttpRule;
-    toJSON(message: HttpRule): unknown;
     fromPartial(object: DeepPartial<HttpRule>): HttpRule;
+    fromSDK(object: HttpRuleSDKType): HttpRule;
+    toSDK(message: HttpRule): HttpRuleSDKType;
 };
 export declare const CustomHttpPattern: {
     encode(message: CustomHttpPattern, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CustomHttpPattern;
-    fromJSON(object: any): CustomHttpPattern;
-    toJSON(message: CustomHttpPattern): unknown;
     fromPartial(object: DeepPartial<CustomHttpPattern>): CustomHttpPattern;
+    fromSDK(object: CustomHttpPatternSDKType): CustomHttpPattern;
+    toSDK(message: CustomHttpPattern): CustomHttpPatternSDKType;
 };

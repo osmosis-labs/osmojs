@@ -34,29 +34,29 @@ export declare const MessageComposer: {
     toJSON: {
         grant(value: MsgGrant): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         exec(value: MsgExec): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         revoke(value: MsgRevoke): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         grant(value: any): {
             typeUrl: string;
-            value: MsgGrant;
+            value: any;
         };
         exec(value: any): {
             typeUrl: string;
-            value: MsgExec;
+            value: any;
         };
         revoke(value: any): {
             typeUrl: string;
-            value: MsgRevoke;
+            value: any;
         };
     };
     fromPartial: {

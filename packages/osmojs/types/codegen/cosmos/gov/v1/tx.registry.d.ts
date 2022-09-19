@@ -50,45 +50,45 @@ export declare const MessageComposer: {
     toJSON: {
         submitProposal(value: MsgSubmitProposal): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         execLegacyContent(value: MsgExecLegacyContent): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         vote(value: MsgVote): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         voteWeighted(value: MsgVoteWeighted): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         deposit(value: MsgDeposit): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         submitProposal(value: any): {
             typeUrl: string;
-            value: MsgSubmitProposal;
+            value: any;
         };
         execLegacyContent(value: any): {
             typeUrl: string;
-            value: MsgExecLegacyContent;
+            value: any;
         };
         vote(value: any): {
             typeUrl: string;
-            value: MsgVote;
+            value: any;
         };
         voteWeighted(value: any): {
             typeUrl: string;
-            value: MsgVoteWeighted;
+            value: any;
         };
         deposit(value: any): {
             typeUrl: string;
-            value: MsgDeposit;
+            value: any;
         };
     };
     fromPartial: {

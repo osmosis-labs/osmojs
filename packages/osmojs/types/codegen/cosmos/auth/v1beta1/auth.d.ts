@@ -54,21 +54,21 @@ export interface ParamsSDKType {
 export declare const BaseAccount: {
     encode(message: BaseAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BaseAccount;
-    fromJSON(object: any): BaseAccount;
-    toJSON(message: BaseAccount): unknown;
     fromPartial(object: DeepPartial<BaseAccount>): BaseAccount;
+    fromSDK(object: BaseAccountSDKType): BaseAccount;
+    toSDK(message: BaseAccount): BaseAccountSDKType;
 };
 export declare const ModuleAccount: {
     encode(message: ModuleAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleAccount;
-    fromJSON(object: any): ModuleAccount;
-    toJSON(message: ModuleAccount): unknown;
     fromPartial(object: DeepPartial<ModuleAccount>): ModuleAccount;
+    fromSDK(object: ModuleAccountSDKType): ModuleAccount;
+    toSDK(message: ModuleAccount): ModuleAccountSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
     fromPartial(object: DeepPartial<Params>): Params;
+    fromSDK(object: ParamsSDKType): Params;
+    toSDK(message: Params): ParamsSDKType;
 };

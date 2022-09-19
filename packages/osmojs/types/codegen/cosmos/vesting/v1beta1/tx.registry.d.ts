@@ -34,29 +34,29 @@ export declare const MessageComposer: {
     toJSON: {
         createVestingAccount(value: MsgCreateVestingAccount): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         createPermanentLockedAccount(value: MsgCreatePermanentLockedAccount): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         createPeriodicVestingAccount(value: MsgCreatePeriodicVestingAccount): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         createVestingAccount(value: any): {
             typeUrl: string;
-            value: MsgCreateVestingAccount;
+            value: any;
         };
         createPermanentLockedAccount(value: any): {
             typeUrl: string;
-            value: MsgCreatePermanentLockedAccount;
+            value: any;
         };
         createPeriodicVestingAccount(value: any): {
             typeUrl: string;
-            value: MsgCreatePeriodicVestingAccount;
+            value: any;
         };
     };
     fromPartial: {

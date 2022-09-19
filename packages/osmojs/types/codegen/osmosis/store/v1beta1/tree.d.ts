@@ -23,21 +23,21 @@ export interface LeafSDKType {
 export declare const Node: {
     encode(message: Node, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Node;
-    fromJSON(object: any): Node;
-    toJSON(message: Node): unknown;
     fromPartial(object: DeepPartial<Node>): Node;
+    fromSDK(object: NodeSDKType): Node;
+    toSDK(message: Node): NodeSDKType;
 };
 export declare const Child: {
     encode(message: Child, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Child;
-    fromJSON(object: any): Child;
-    toJSON(message: Child): unknown;
     fromPartial(object: DeepPartial<Child>): Child;
+    fromSDK(object: ChildSDKType): Child;
+    toSDK(message: Child): ChildSDKType;
 };
 export declare const Leaf: {
     encode(message: Leaf, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Leaf;
-    fromJSON(object: any): Leaf;
-    toJSON(message: Leaf): unknown;
     fromPartial(object: DeepPartial<Leaf>): Leaf;
+    fromSDK(object: LeafSDKType): Leaf;
+    toSDK(message: Leaf): LeafSDKType;
 };

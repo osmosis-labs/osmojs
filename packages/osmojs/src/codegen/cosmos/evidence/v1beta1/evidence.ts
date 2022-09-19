@@ -1,6 +1,6 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, Long, fromTimestamp, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
+import { toTimestamp, Long, fromTimestamp, DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * Equivocation implements the Evidence interface and defines evidence of double
  * signing misbehavior.
@@ -88,24 +88,6 @@ export const Equivocation = {
     return message;
   },
 
-  fromJSON(object: any): Equivocation {
-    return {
-      height: isSet(object.height) ? Long.fromString(object.height) : Long.ZERO,
-      time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
-      power: isSet(object.power) ? Long.fromString(object.power) : Long.ZERO,
-      consensusAddress: isSet(object.consensusAddress) ? String(object.consensusAddress) : ""
-    };
-  },
-
-  toJSON(message: Equivocation): unknown {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.time !== undefined && (obj.time = message.time.toISOString());
-    message.power !== undefined && (obj.power = (message.power || Long.ZERO).toString());
-    message.consensusAddress !== undefined && (obj.consensusAddress = message.consensusAddress);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Equivocation>): Equivocation {
     const message = createBaseEquivocation();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
@@ -113,6 +95,24 @@ export const Equivocation = {
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
     message.consensusAddress = object.consensusAddress ?? "";
     return message;
+  },
+
+  fromSDK(object: EquivocationSDKType): Equivocation {
+    return {
+      height: isSet(object.height) ? object.height : undefined,
+      time: isSet(object.time) ? Timestamp.fromSDK(object.time) : undefined,
+      power: isSet(object.power) ? object.power : undefined,
+      consensusAddress: isSet(object.consensus_address) ? object.consensus_address : undefined
+    };
+  },
+
+  toSDK(message: Equivocation): EquivocationSDKType {
+    const obj: any = {};
+    message.height !== undefined && (obj.height = message.height);
+    message.time !== undefined && (obj.time = message.time ? Timestamp.toSDK(message.time) : undefined);
+    message.power !== undefined && (obj.power = message.power);
+    message.consensusAddress !== undefined && (obj.consensus_address = message.consensusAddress);
+    return obj;
   }
 
 };

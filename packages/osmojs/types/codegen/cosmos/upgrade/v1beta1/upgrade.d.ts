@@ -146,28 +146,28 @@ export interface ModuleVersionSDKType {
 export declare const Plan: {
     encode(message: Plan, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Plan;
-    fromJSON(object: any): Plan;
-    toJSON(message: Plan): unknown;
     fromPartial(object: DeepPartial<Plan>): Plan;
+    fromSDK(object: PlanSDKType): Plan;
+    toSDK(message: Plan): PlanSDKType;
 };
 export declare const SoftwareUpgradeProposal: {
     encode(message: SoftwareUpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SoftwareUpgradeProposal;
-    fromJSON(object: any): SoftwareUpgradeProposal;
-    toJSON(message: SoftwareUpgradeProposal): unknown;
     fromPartial(object: DeepPartial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal;
+    fromSDK(object: SoftwareUpgradeProposalSDKType): SoftwareUpgradeProposal;
+    toSDK(message: SoftwareUpgradeProposal): SoftwareUpgradeProposalSDKType;
 };
 export declare const CancelSoftwareUpgradeProposal: {
     encode(message: CancelSoftwareUpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CancelSoftwareUpgradeProposal;
-    fromJSON(object: any): CancelSoftwareUpgradeProposal;
-    toJSON(message: CancelSoftwareUpgradeProposal): unknown;
     fromPartial(object: DeepPartial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal;
+    fromSDK(object: CancelSoftwareUpgradeProposalSDKType): CancelSoftwareUpgradeProposal;
+    toSDK(message: CancelSoftwareUpgradeProposal): CancelSoftwareUpgradeProposalSDKType;
 };
 export declare const ModuleVersion: {
     encode(message: ModuleVersion, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleVersion;
-    fromJSON(object: any): ModuleVersion;
-    toJSON(message: ModuleVersion): unknown;
     fromPartial(object: DeepPartial<ModuleVersion>): ModuleVersion;
+    fromSDK(object: ModuleVersionSDKType): ModuleVersion;
+    toSDK(message: ModuleVersion): ModuleVersionSDKType;
 };

@@ -1,6 +1,6 @@
 import { Params, ParamsSDKType } from "./mint";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, isSet, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 
 export interface QueryParamsRequest {}
@@ -77,18 +77,18 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryParamsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryParamsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
+  },
+
+  fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest {
+    return {};
+  },
+
+  toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -130,22 +130,22 @@ export const QueryParamsResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: QueryParamsResponse): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromSDK(object.params) : undefined
+    };
+  },
+
+  toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
+    return obj;
   }
 
 };
@@ -177,18 +177,18 @@ export const QueryEpochProvisionsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryEpochProvisionsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryEpochProvisionsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryEpochProvisionsRequest>): QueryEpochProvisionsRequest {
     const message = createBaseQueryEpochProvisionsRequest();
     return message;
+  },
+
+  fromSDK(_: QueryEpochProvisionsRequestSDKType): QueryEpochProvisionsRequest {
+    return {};
+  },
+
+  toSDK(_: QueryEpochProvisionsRequest): QueryEpochProvisionsRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -230,22 +230,22 @@ export const QueryEpochProvisionsResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryEpochProvisionsResponse {
-    return {
-      epochProvisions: isSet(object.epochProvisions) ? bytesFromBase64(object.epochProvisions) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: QueryEpochProvisionsResponse): unknown {
-    const obj: any = {};
-    message.epochProvisions !== undefined && (obj.epochProvisions = base64FromBytes(message.epochProvisions !== undefined ? message.epochProvisions : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse {
     const message = createBaseQueryEpochProvisionsResponse();
     message.epochProvisions = object.epochProvisions ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: QueryEpochProvisionsResponseSDKType): QueryEpochProvisionsResponse {
+    return {
+      epochProvisions: isSet(object.epoch_provisions) ? object.epoch_provisions : undefined
+    };
+  },
+
+  toSDK(message: QueryEpochProvisionsResponse): QueryEpochProvisionsResponseSDKType {
+    const obj: any = {};
+    message.epochProvisions !== undefined && (obj.epoch_provisions = message.epochProvisions);
+    return obj;
   }
 
 };

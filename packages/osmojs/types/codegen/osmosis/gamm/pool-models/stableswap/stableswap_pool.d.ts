@@ -74,14 +74,14 @@ export interface PoolSDKType {
 export declare const PoolParams: {
     encode(message: PoolParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolParams;
-    fromJSON(object: any): PoolParams;
-    toJSON(message: PoolParams): unknown;
     fromPartial(object: DeepPartial<PoolParams>): PoolParams;
+    fromSDK(object: PoolParamsSDKType): PoolParams;
+    toSDK(message: PoolParams): PoolParamsSDKType;
 };
 export declare const Pool: {
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
-    fromJSON(object: any): Pool;
-    toJSON(message: Pool): unknown;
     fromPartial(object: DeepPartial<Pool>): Pool;
+    fromSDK(object: PoolSDKType): Pool;
+    toSDK(message: Pool): PoolSDKType;
 };

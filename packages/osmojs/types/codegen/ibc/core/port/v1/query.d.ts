@@ -44,14 +44,14 @@ export interface QueryAppVersionResponseSDKType {
 export declare const QueryAppVersionRequest: {
     encode(message: QueryAppVersionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppVersionRequest;
-    fromJSON(object: any): QueryAppVersionRequest;
-    toJSON(message: QueryAppVersionRequest): unknown;
     fromPartial(object: DeepPartial<QueryAppVersionRequest>): QueryAppVersionRequest;
+    fromSDK(object: QueryAppVersionRequestSDKType): QueryAppVersionRequest;
+    toSDK(message: QueryAppVersionRequest): QueryAppVersionRequestSDKType;
 };
 export declare const QueryAppVersionResponse: {
     encode(message: QueryAppVersionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppVersionResponseSDKType;
-    fromJSON(object: any): QueryAppVersionResponse;
-    toJSON(message: QueryAppVersionResponse): unknown;
     fromPartial(object: DeepPartial<QueryAppVersionResponse>): QueryAppVersionResponse;
+    fromSDK(object: QueryAppVersionResponseSDKType): QueryAppVersionResponse;
+    toSDK(message: QueryAppVersionResponse): QueryAppVersionResponseSDKType;
 };

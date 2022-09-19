@@ -65,14 +65,14 @@ export interface ParamsSDKType {
 export declare const DenomTrace: {
     encode(message: DenomTrace, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomTrace;
-    fromJSON(object: any): DenomTrace;
-    toJSON(message: DenomTrace): unknown;
     fromPartial(object: DeepPartial<DenomTrace>): DenomTrace;
+    fromSDK(object: DenomTraceSDKType): DenomTrace;
+    toSDK(message: DenomTrace): DenomTraceSDKType;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
     fromPartial(object: DeepPartial<Params>): Params;
+    fromSDK(object: ParamsSDKType): Params;
+    toSDK(message: Params): ParamsSDKType;
 };

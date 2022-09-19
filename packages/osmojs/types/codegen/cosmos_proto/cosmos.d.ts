@@ -115,14 +115,14 @@ export interface ScalarDescriptorSDKType {
 export declare const InterfaceDescriptor: {
     encode(message: InterfaceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceDescriptor;
-    fromJSON(object: any): InterfaceDescriptor;
-    toJSON(message: InterfaceDescriptor): unknown;
     fromPartial(object: DeepPartial<InterfaceDescriptor>): InterfaceDescriptor;
+    fromSDK(object: InterfaceDescriptorSDKType): InterfaceDescriptor;
+    toSDK(message: InterfaceDescriptor): InterfaceDescriptorSDKType;
 };
 export declare const ScalarDescriptor: {
     encode(message: ScalarDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ScalarDescriptor;
-    fromJSON(object: any): ScalarDescriptor;
-    toJSON(message: ScalarDescriptor): unknown;
     fromPartial(object: DeepPartial<ScalarDescriptor>): ScalarDescriptor;
+    fromSDK(object: ScalarDescriptorSDKType): ScalarDescriptor;
+    toSDK(message: ScalarDescriptor): ScalarDescriptorSDKType;
 };

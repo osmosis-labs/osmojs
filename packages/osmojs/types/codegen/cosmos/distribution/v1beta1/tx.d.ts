@@ -94,56 +94,56 @@ export interface MsgFundCommunityPoolResponseSDKType {
 export declare const MsgSetWithdrawAddress: {
     encode(message: MsgSetWithdrawAddress, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddress;
-    fromJSON(object: any): MsgSetWithdrawAddress;
-    toJSON(message: MsgSetWithdrawAddress): unknown;
     fromPartial(object: DeepPartial<MsgSetWithdrawAddress>): MsgSetWithdrawAddress;
+    fromSDK(object: MsgSetWithdrawAddressSDKType): MsgSetWithdrawAddress;
+    toSDK(message: MsgSetWithdrawAddress): MsgSetWithdrawAddressSDKType;
 };
 export declare const MsgSetWithdrawAddressResponse: {
     encode(_: MsgSetWithdrawAddressResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddressResponseSDKType;
-    fromJSON(_: any): MsgSetWithdrawAddressResponse;
-    toJSON(_: MsgSetWithdrawAddressResponse): unknown;
     fromPartial(_: DeepPartial<MsgSetWithdrawAddressResponse>): MsgSetWithdrawAddressResponse;
+    fromSDK(_: MsgSetWithdrawAddressResponseSDKType): MsgSetWithdrawAddressResponse;
+    toSDK(_: MsgSetWithdrawAddressResponse): MsgSetWithdrawAddressResponseSDKType;
 };
 export declare const MsgWithdrawDelegatorReward: {
     encode(message: MsgWithdrawDelegatorReward, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorReward;
-    fromJSON(object: any): MsgWithdrawDelegatorReward;
-    toJSON(message: MsgWithdrawDelegatorReward): unknown;
     fromPartial(object: DeepPartial<MsgWithdrawDelegatorReward>): MsgWithdrawDelegatorReward;
+    fromSDK(object: MsgWithdrawDelegatorRewardSDKType): MsgWithdrawDelegatorReward;
+    toSDK(message: MsgWithdrawDelegatorReward): MsgWithdrawDelegatorRewardSDKType;
 };
 export declare const MsgWithdrawDelegatorRewardResponse: {
     encode(message: MsgWithdrawDelegatorRewardResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorRewardResponseSDKType;
-    fromJSON(object: any): MsgWithdrawDelegatorRewardResponse;
-    toJSON(message: MsgWithdrawDelegatorRewardResponse): unknown;
     fromPartial(object: DeepPartial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse;
+    fromSDK(object: MsgWithdrawDelegatorRewardResponseSDKType): MsgWithdrawDelegatorRewardResponse;
+    toSDK(message: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseSDKType;
 };
 export declare const MsgWithdrawValidatorCommission: {
     encode(message: MsgWithdrawValidatorCommission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommission;
-    fromJSON(object: any): MsgWithdrawValidatorCommission;
-    toJSON(message: MsgWithdrawValidatorCommission): unknown;
     fromPartial(object: DeepPartial<MsgWithdrawValidatorCommission>): MsgWithdrawValidatorCommission;
+    fromSDK(object: MsgWithdrawValidatorCommissionSDKType): MsgWithdrawValidatorCommission;
+    toSDK(message: MsgWithdrawValidatorCommission): MsgWithdrawValidatorCommissionSDKType;
 };
 export declare const MsgWithdrawValidatorCommissionResponse: {
     encode(message: MsgWithdrawValidatorCommissionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommissionResponseSDKType;
-    fromJSON(object: any): MsgWithdrawValidatorCommissionResponse;
-    toJSON(message: MsgWithdrawValidatorCommissionResponse): unknown;
     fromPartial(object: DeepPartial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse;
+    fromSDK(object: MsgWithdrawValidatorCommissionResponseSDKType): MsgWithdrawValidatorCommissionResponse;
+    toSDK(message: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseSDKType;
 };
 export declare const MsgFundCommunityPool: {
     encode(message: MsgFundCommunityPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPool;
-    fromJSON(object: any): MsgFundCommunityPool;
-    toJSON(message: MsgFundCommunityPool): unknown;
     fromPartial(object: DeepPartial<MsgFundCommunityPool>): MsgFundCommunityPool;
+    fromSDK(object: MsgFundCommunityPoolSDKType): MsgFundCommunityPool;
+    toSDK(message: MsgFundCommunityPool): MsgFundCommunityPoolSDKType;
 };
 export declare const MsgFundCommunityPoolResponse: {
     encode(_: MsgFundCommunityPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPoolResponseSDKType;
-    fromJSON(_: any): MsgFundCommunityPoolResponse;
-    toJSON(_: MsgFundCommunityPoolResponse): unknown;
     fromPartial(_: DeepPartial<MsgFundCommunityPoolResponse>): MsgFundCommunityPoolResponse;
+    fromSDK(_: MsgFundCommunityPoolResponseSDKType): MsgFundCommunityPoolResponse;
+    toSDK(_: MsgFundCommunityPoolResponse): MsgFundCommunityPoolResponseSDKType;
 };

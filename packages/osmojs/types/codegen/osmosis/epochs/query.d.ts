@@ -26,28 +26,28 @@ export interface QueryCurrentEpochResponseSDKType {
 export declare const QueryEpochsInfoRequest: {
     encode(_: QueryEpochsInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoRequest;
-    fromJSON(_: any): QueryEpochsInfoRequest;
-    toJSON(_: QueryEpochsInfoRequest): unknown;
     fromPartial(_: DeepPartial<QueryEpochsInfoRequest>): QueryEpochsInfoRequest;
+    fromSDK(_: QueryEpochsInfoRequestSDKType): QueryEpochsInfoRequest;
+    toSDK(_: QueryEpochsInfoRequest): QueryEpochsInfoRequestSDKType;
 };
 export declare const QueryEpochsInfoResponse: {
     encode(message: QueryEpochsInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoResponseSDKType;
-    fromJSON(object: any): QueryEpochsInfoResponse;
-    toJSON(message: QueryEpochsInfoResponse): unknown;
     fromPartial(object: DeepPartial<QueryEpochsInfoResponse>): QueryEpochsInfoResponse;
+    fromSDK(object: QueryEpochsInfoResponseSDKType): QueryEpochsInfoResponse;
+    toSDK(message: QueryEpochsInfoResponse): QueryEpochsInfoResponseSDKType;
 };
 export declare const QueryCurrentEpochRequest: {
     encode(message: QueryCurrentEpochRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochRequest;
-    fromJSON(object: any): QueryCurrentEpochRequest;
-    toJSON(message: QueryCurrentEpochRequest): unknown;
     fromPartial(object: DeepPartial<QueryCurrentEpochRequest>): QueryCurrentEpochRequest;
+    fromSDK(object: QueryCurrentEpochRequestSDKType): QueryCurrentEpochRequest;
+    toSDK(message: QueryCurrentEpochRequest): QueryCurrentEpochRequestSDKType;
 };
 export declare const QueryCurrentEpochResponse: {
     encode(message: QueryCurrentEpochResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochResponseSDKType;
-    fromJSON(object: any): QueryCurrentEpochResponse;
-    toJSON(message: QueryCurrentEpochResponse): unknown;
     fromPartial(object: DeepPartial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse;
+    fromSDK(object: QueryCurrentEpochResponseSDKType): QueryCurrentEpochResponse;
+    toSDK(message: QueryCurrentEpochResponse): QueryCurrentEpochResponseSDKType;
 };

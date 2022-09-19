@@ -1,7 +1,7 @@
 import { AccessConfig, AccessConfigSDKType } from "./types";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, bytesFromBase64, base64FromBytes, DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 /** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 
 export interface StoreCodeProposal {
@@ -406,26 +406,6 @@ export const StoreCodeProposal = {
     return message;
   },
 
-  fromJSON(object: any): StoreCodeProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      runAs: isSet(object.runAs) ? String(object.runAs) : "",
-      wasmByteCode: isSet(object.wasmByteCode) ? bytesFromBase64(object.wasmByteCode) : new Uint8Array(),
-      instantiatePermission: isSet(object.instantiatePermission) ? AccessConfig.fromJSON(object.instantiatePermission) : undefined
-    };
-  },
-
-  toJSON(message: StoreCodeProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.runAs !== undefined && (obj.runAs = message.runAs);
-    message.wasmByteCode !== undefined && (obj.wasmByteCode = base64FromBytes(message.wasmByteCode !== undefined ? message.wasmByteCode : new Uint8Array()));
-    message.instantiatePermission !== undefined && (obj.instantiatePermission = message.instantiatePermission ? AccessConfig.toJSON(message.instantiatePermission) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<StoreCodeProposal>): StoreCodeProposal {
     const message = createBaseStoreCodeProposal();
     message.title = object.title ?? "";
@@ -434,6 +414,26 @@ export const StoreCodeProposal = {
     message.wasmByteCode = object.wasmByteCode ?? new Uint8Array();
     message.instantiatePermission = object.instantiatePermission !== undefined && object.instantiatePermission !== null ? AccessConfig.fromPartial(object.instantiatePermission) : undefined;
     return message;
+  },
+
+  fromSDK(object: StoreCodeProposalSDKType): StoreCodeProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      runAs: isSet(object.run_as) ? object.run_as : undefined,
+      wasmByteCode: isSet(object.wasm_byte_code) ? object.wasm_byte_code : undefined,
+      instantiatePermission: isSet(object.instantiate_permission) ? AccessConfig.fromSDK(object.instantiate_permission) : undefined
+    };
+  },
+
+  toSDK(message: StoreCodeProposal): StoreCodeProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.runAs !== undefined && (obj.run_as = message.runAs);
+    message.wasmByteCode !== undefined && (obj.wasm_byte_code = message.wasmByteCode);
+    message.instantiatePermission !== undefined && (obj.instantiate_permission = message.instantiatePermission ? AccessConfig.toSDK(message.instantiatePermission) : undefined);
+    return obj;
   }
 
 };
@@ -538,38 +538,6 @@ export const InstantiateContractProposal = {
     return message;
   },
 
-  fromJSON(object: any): InstantiateContractProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      runAs: isSet(object.runAs) ? String(object.runAs) : "",
-      admin: isSet(object.admin) ? String(object.admin) : "",
-      codeId: isSet(object.codeId) ? Long.fromString(object.codeId) : Long.UZERO,
-      label: isSet(object.label) ? String(object.label) : "",
-      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(),
-      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: InstantiateContractProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.runAs !== undefined && (obj.runAs = message.runAs);
-    message.admin !== undefined && (obj.admin = message.admin);
-    message.codeId !== undefined && (obj.codeId = (message.codeId || Long.UZERO).toString());
-    message.label !== undefined && (obj.label = message.label);
-    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
-
-    if (message.funds) {
-      obj.funds = message.funds.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.funds = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<InstantiateContractProposal>): InstantiateContractProposal {
     const message = createBaseInstantiateContractProposal();
     message.title = object.title ?? "";
@@ -581,6 +549,38 @@ export const InstantiateContractProposal = {
     message.msg = object.msg ?? new Uint8Array();
     message.funds = object.funds?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: InstantiateContractProposalSDKType): InstantiateContractProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      runAs: isSet(object.run_as) ? object.run_as : undefined,
+      admin: isSet(object.admin) ? object.admin : undefined,
+      codeId: isSet(object.code_id) ? object.code_id : undefined,
+      label: isSet(object.label) ? object.label : undefined,
+      msg: isSet(object.msg) ? object.msg : undefined,
+      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: InstantiateContractProposal): InstantiateContractProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.runAs !== undefined && (obj.run_as = message.runAs);
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.codeId !== undefined && (obj.code_id = message.codeId);
+    message.label !== undefined && (obj.label = message.label);
+    message.msg !== undefined && (obj.msg = message.msg);
+
+    if (message.funds) {
+      obj.funds = message.funds.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.funds = [];
+    }
+
+    return obj;
   }
 
 };
@@ -658,26 +658,6 @@ export const MigrateContractProposal = {
     return message;
   },
 
-  fromJSON(object: any): MigrateContractProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      contract: isSet(object.contract) ? String(object.contract) : "",
-      codeId: isSet(object.codeId) ? Long.fromString(object.codeId) : Long.UZERO,
-      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: MigrateContractProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.contract !== undefined && (obj.contract = message.contract);
-    message.codeId !== undefined && (obj.codeId = (message.codeId || Long.UZERO).toString());
-    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MigrateContractProposal>): MigrateContractProposal {
     const message = createBaseMigrateContractProposal();
     message.title = object.title ?? "";
@@ -686,6 +666,26 @@ export const MigrateContractProposal = {
     message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.msg = object.msg ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: MigrateContractProposalSDKType): MigrateContractProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      contract: isSet(object.contract) ? object.contract : undefined,
+      codeId: isSet(object.code_id) ? object.code_id : undefined,
+      msg: isSet(object.msg) ? object.msg : undefined
+    };
+  },
+
+  toSDK(message: MigrateContractProposal): MigrateContractProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.contract !== undefined && (obj.contract = message.contract);
+    message.codeId !== undefined && (obj.code_id = message.codeId);
+    message.msg !== undefined && (obj.msg = message.msg);
+    return obj;
   }
 
 };
@@ -754,24 +754,6 @@ export const SudoContractProposal = {
     return message;
   },
 
-  fromJSON(object: any): SudoContractProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      contract: isSet(object.contract) ? String(object.contract) : "",
-      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: SudoContractProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.contract !== undefined && (obj.contract = message.contract);
-    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SudoContractProposal>): SudoContractProposal {
     const message = createBaseSudoContractProposal();
     message.title = object.title ?? "";
@@ -779,6 +761,24 @@ export const SudoContractProposal = {
     message.contract = object.contract ?? "";
     message.msg = object.msg ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: SudoContractProposalSDKType): SudoContractProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      contract: isSet(object.contract) ? object.contract : undefined,
+      msg: isSet(object.msg) ? object.msg : undefined
+    };
+  },
+
+  toSDK(message: SudoContractProposal): SudoContractProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.contract !== undefined && (obj.contract = message.contract);
+    message.msg !== undefined && (obj.msg = message.msg);
+    return obj;
   }
 
 };
@@ -865,34 +865,6 @@ export const ExecuteContractProposal = {
     return message;
   },
 
-  fromJSON(object: any): ExecuteContractProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      runAs: isSet(object.runAs) ? String(object.runAs) : "",
-      contract: isSet(object.contract) ? String(object.contract) : "",
-      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(),
-      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ExecuteContractProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.runAs !== undefined && (obj.runAs = message.runAs);
-    message.contract !== undefined && (obj.contract = message.contract);
-    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
-
-    if (message.funds) {
-      obj.funds = message.funds.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.funds = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ExecuteContractProposal>): ExecuteContractProposal {
     const message = createBaseExecuteContractProposal();
     message.title = object.title ?? "";
@@ -902,6 +874,34 @@ export const ExecuteContractProposal = {
     message.msg = object.msg ?? new Uint8Array();
     message.funds = object.funds?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: ExecuteContractProposalSDKType): ExecuteContractProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      runAs: isSet(object.run_as) ? object.run_as : undefined,
+      contract: isSet(object.contract) ? object.contract : undefined,
+      msg: isSet(object.msg) ? object.msg : undefined,
+      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: ExecuteContractProposal): ExecuteContractProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.runAs !== undefined && (obj.run_as = message.runAs);
+    message.contract !== undefined && (obj.contract = message.contract);
+    message.msg !== undefined && (obj.msg = message.msg);
+
+    if (message.funds) {
+      obj.funds = message.funds.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.funds = [];
+    }
+
+    return obj;
   }
 
 };
@@ -970,24 +970,6 @@ export const UpdateAdminProposal = {
     return message;
   },
 
-  fromJSON(object: any): UpdateAdminProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      newAdmin: isSet(object.newAdmin) ? String(object.newAdmin) : "",
-      contract: isSet(object.contract) ? String(object.contract) : ""
-    };
-  },
-
-  toJSON(message: UpdateAdminProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.newAdmin !== undefined && (obj.newAdmin = message.newAdmin);
-    message.contract !== undefined && (obj.contract = message.contract);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<UpdateAdminProposal>): UpdateAdminProposal {
     const message = createBaseUpdateAdminProposal();
     message.title = object.title ?? "";
@@ -995,6 +977,24 @@ export const UpdateAdminProposal = {
     message.newAdmin = object.newAdmin ?? "";
     message.contract = object.contract ?? "";
     return message;
+  },
+
+  fromSDK(object: UpdateAdminProposalSDKType): UpdateAdminProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      newAdmin: isSet(object.new_admin) ? object.new_admin : undefined,
+      contract: isSet(object.contract) ? object.contract : undefined
+    };
+  },
+
+  toSDK(message: UpdateAdminProposal): UpdateAdminProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.newAdmin !== undefined && (obj.new_admin = message.newAdmin);
+    message.contract !== undefined && (obj.contract = message.contract);
+    return obj;
   }
 
 };
@@ -1054,28 +1054,28 @@ export const ClearAdminProposal = {
     return message;
   },
 
-  fromJSON(object: any): ClearAdminProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      contract: isSet(object.contract) ? String(object.contract) : ""
-    };
-  },
-
-  toJSON(message: ClearAdminProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.contract !== undefined && (obj.contract = message.contract);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ClearAdminProposal>): ClearAdminProposal {
     const message = createBaseClearAdminProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.contract = object.contract ?? "";
     return message;
+  },
+
+  fromSDK(object: ClearAdminProposalSDKType): ClearAdminProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      contract: isSet(object.contract) ? object.contract : undefined
+    };
+  },
+
+  toSDK(message: ClearAdminProposal): ClearAdminProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.contract !== undefined && (obj.contract = message.contract);
+    return obj;
   }
 
 };
@@ -1147,34 +1147,34 @@ export const PinCodesProposal = {
     return message;
   },
 
-  fromJSON(object: any): PinCodesProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      codeIds: Array.isArray(object?.codeIds) ? object.codeIds.map((e: any) => Long.fromString(e)) : []
-    };
-  },
-
-  toJSON(message: PinCodesProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.codeIds) {
-      obj.codeIds = message.codeIds.map(e => (e || Long.UZERO).toString());
-    } else {
-      obj.codeIds = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PinCodesProposal>): PinCodesProposal {
     const message = createBasePinCodesProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.codeIds = object.codeIds?.map(e => Long.fromValue(e)) || [];
     return message;
+  },
+
+  fromSDK(object: PinCodesProposalSDKType): PinCodesProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      codeIds: Array.isArray(object?.code_ids) ? object.code_ids.map((e: any) => e) : []
+    };
+  },
+
+  toSDK(message: PinCodesProposal): PinCodesProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+
+    if (message.codeIds) {
+      obj.code_ids = message.codeIds.map(e => e);
+    } else {
+      obj.code_ids = [];
+    }
+
+    return obj;
   }
 
 };
@@ -1246,34 +1246,34 @@ export const UnpinCodesProposal = {
     return message;
   },
 
-  fromJSON(object: any): UnpinCodesProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      codeIds: Array.isArray(object?.codeIds) ? object.codeIds.map((e: any) => Long.fromString(e)) : []
-    };
-  },
-
-  toJSON(message: UnpinCodesProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.codeIds) {
-      obj.codeIds = message.codeIds.map(e => (e || Long.UZERO).toString());
-    } else {
-      obj.codeIds = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<UnpinCodesProposal>): UnpinCodesProposal {
     const message = createBaseUnpinCodesProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.codeIds = object.codeIds?.map(e => Long.fromValue(e)) || [];
     return message;
+  },
+
+  fromSDK(object: UnpinCodesProposalSDKType): UnpinCodesProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      codeIds: Array.isArray(object?.code_ids) ? object.code_ids.map((e: any) => e) : []
+    };
+  },
+
+  toSDK(message: UnpinCodesProposal): UnpinCodesProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+
+    if (message.codeIds) {
+      obj.code_ids = message.codeIds.map(e => e);
+    } else {
+      obj.code_ids = [];
+    }
+
+    return obj;
   }
 
 };

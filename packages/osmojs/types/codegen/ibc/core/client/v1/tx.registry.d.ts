@@ -42,37 +42,37 @@ export declare const MessageComposer: {
     toJSON: {
         createClient(value: MsgCreateClient): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         updateClient(value: MsgUpdateClient): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         upgradeClient(value: MsgUpgradeClient): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
         submitMisbehaviour(value: MsgSubmitMisbehaviour): {
             typeUrl: string;
-            value: unknown;
+            value: any;
         };
     };
     fromJSON: {
         createClient(value: any): {
             typeUrl: string;
-            value: MsgCreateClient;
+            value: any;
         };
         updateClient(value: any): {
             typeUrl: string;
-            value: MsgUpdateClient;
+            value: any;
         };
         upgradeClient(value: any): {
             typeUrl: string;
-            value: MsgUpgradeClient;
+            value: any;
         };
         submitMisbehaviour(value: any): {
             typeUrl: string;
-            value: MsgSubmitMisbehaviour;
+            value: any;
         };
     };
     fromPartial: {

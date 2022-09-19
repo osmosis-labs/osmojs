@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * MsgGrantAllowance adds permission for Grantee to spend up to Allowance
  * of fees from the account of Granter.
@@ -117,28 +117,28 @@ export const MsgGrantAllowance = {
     return message;
   },
 
-  fromJSON(object: any): MsgGrantAllowance {
-    return {
-      granter: isSet(object.granter) ? String(object.granter) : "",
-      grantee: isSet(object.grantee) ? String(object.grantee) : "",
-      allowance: isSet(object.allowance) ? Any.fromJSON(object.allowance) : undefined
-    };
-  },
-
-  toJSON(message: MsgGrantAllowance): unknown {
-    const obj: any = {};
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    message.allowance !== undefined && (obj.allowance = message.allowance ? Any.toJSON(message.allowance) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgGrantAllowance>): MsgGrantAllowance {
     const message = createBaseMsgGrantAllowance();
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
     message.allowance = object.allowance !== undefined && object.allowance !== null ? Any.fromPartial(object.allowance) : undefined;
     return message;
+  },
+
+  fromSDK(object: MsgGrantAllowanceSDKType): MsgGrantAllowance {
+    return {
+      granter: isSet(object.granter) ? object.granter : undefined,
+      grantee: isSet(object.grantee) ? object.grantee : undefined,
+      allowance: isSet(object.allowance) ? Any.fromSDK(object.allowance) : undefined
+    };
+  },
+
+  toSDK(message: MsgGrantAllowance): MsgGrantAllowanceSDKType {
+    const obj: any = {};
+    message.granter !== undefined && (obj.granter = message.granter);
+    message.grantee !== undefined && (obj.grantee = message.grantee);
+    message.allowance !== undefined && (obj.allowance = message.allowance ? Any.toSDK(message.allowance) : undefined);
+    return obj;
   }
 
 };
@@ -170,18 +170,18 @@ export const MsgGrantAllowanceResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgGrantAllowanceResponse {
-    return {};
-  },
-
-  toJSON(_: MsgGrantAllowanceResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgGrantAllowanceResponse>): MsgGrantAllowanceResponse {
     const message = createBaseMsgGrantAllowanceResponse();
     return message;
+  },
+
+  fromSDK(_: MsgGrantAllowanceResponseSDKType): MsgGrantAllowanceResponse {
+    return {};
+  },
+
+  toSDK(_: MsgGrantAllowanceResponse): MsgGrantAllowanceResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -232,25 +232,25 @@ export const MsgRevokeAllowance = {
     return message;
   },
 
-  fromJSON(object: any): MsgRevokeAllowance {
-    return {
-      granter: isSet(object.granter) ? String(object.granter) : "",
-      grantee: isSet(object.grantee) ? String(object.grantee) : ""
-    };
-  },
-
-  toJSON(message: MsgRevokeAllowance): unknown {
-    const obj: any = {};
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgRevokeAllowance>): MsgRevokeAllowance {
     const message = createBaseMsgRevokeAllowance();
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgRevokeAllowanceSDKType): MsgRevokeAllowance {
+    return {
+      granter: isSet(object.granter) ? object.granter : undefined,
+      grantee: isSet(object.grantee) ? object.grantee : undefined
+    };
+  },
+
+  toSDK(message: MsgRevokeAllowance): MsgRevokeAllowanceSDKType {
+    const obj: any = {};
+    message.granter !== undefined && (obj.granter = message.granter);
+    message.grantee !== undefined && (obj.grantee = message.grantee);
+    return obj;
   }
 
 };
@@ -282,18 +282,18 @@ export const MsgRevokeAllowanceResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgRevokeAllowanceResponse {
-    return {};
-  },
-
-  toJSON(_: MsgRevokeAllowanceResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgRevokeAllowanceResponse>): MsgRevokeAllowanceResponse {
     const message = createBaseMsgRevokeAllowanceResponse();
     return message;
+  },
+
+  fromSDK(_: MsgRevokeAllowanceResponseSDKType): MsgRevokeAllowanceResponse {
+    return {};
+  },
+
+  toSDK(_: MsgRevokeAllowanceResponse): MsgRevokeAllowanceResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };

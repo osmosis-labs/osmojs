@@ -64,14 +64,14 @@ export interface NFTSDKType {
 export declare const Class: {
     encode(message: Class, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Class;
-    fromJSON(object: any): Class;
-    toJSON(message: Class): unknown;
     fromPartial(object: DeepPartial<Class>): Class;
+    fromSDK(object: ClassSDKType): Class;
+    toSDK(message: Class): ClassSDKType;
 };
 export declare const NFT: {
     encode(message: NFT, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NFT;
-    fromJSON(object: any): NFT;
-    toJSON(message: NFT): unknown;
     fromPartial(object: DeepPartial<NFT>): NFT;
+    fromSDK(object: NFTSDKType): NFT;
+    toSDK(message: NFT): NFTSDKType;
 };

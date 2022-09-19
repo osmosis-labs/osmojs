@@ -253,63 +253,63 @@ export interface UnpinCodesProposalSDKType {
 export declare const StoreCodeProposal: {
     encode(message: StoreCodeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StoreCodeProposal;
-    fromJSON(object: any): StoreCodeProposal;
-    toJSON(message: StoreCodeProposal): unknown;
     fromPartial(object: DeepPartial<StoreCodeProposal>): StoreCodeProposal;
+    fromSDK(object: StoreCodeProposalSDKType): StoreCodeProposal;
+    toSDK(message: StoreCodeProposal): StoreCodeProposalSDKType;
 };
 export declare const InstantiateContractProposal: {
     encode(message: InstantiateContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateContractProposal;
-    fromJSON(object: any): InstantiateContractProposal;
-    toJSON(message: InstantiateContractProposal): unknown;
     fromPartial(object: DeepPartial<InstantiateContractProposal>): InstantiateContractProposal;
+    fromSDK(object: InstantiateContractProposalSDKType): InstantiateContractProposal;
+    toSDK(message: InstantiateContractProposal): InstantiateContractProposalSDKType;
 };
 export declare const MigrateContractProposal: {
     encode(message: MigrateContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MigrateContractProposal;
-    fromJSON(object: any): MigrateContractProposal;
-    toJSON(message: MigrateContractProposal): unknown;
     fromPartial(object: DeepPartial<MigrateContractProposal>): MigrateContractProposal;
+    fromSDK(object: MigrateContractProposalSDKType): MigrateContractProposal;
+    toSDK(message: MigrateContractProposal): MigrateContractProposalSDKType;
 };
 export declare const SudoContractProposal: {
     encode(message: SudoContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SudoContractProposal;
-    fromJSON(object: any): SudoContractProposal;
-    toJSON(message: SudoContractProposal): unknown;
     fromPartial(object: DeepPartial<SudoContractProposal>): SudoContractProposal;
+    fromSDK(object: SudoContractProposalSDKType): SudoContractProposal;
+    toSDK(message: SudoContractProposal): SudoContractProposalSDKType;
 };
 export declare const ExecuteContractProposal: {
     encode(message: ExecuteContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ExecuteContractProposal;
-    fromJSON(object: any): ExecuteContractProposal;
-    toJSON(message: ExecuteContractProposal): unknown;
     fromPartial(object: DeepPartial<ExecuteContractProposal>): ExecuteContractProposal;
+    fromSDK(object: ExecuteContractProposalSDKType): ExecuteContractProposal;
+    toSDK(message: ExecuteContractProposal): ExecuteContractProposalSDKType;
 };
 export declare const UpdateAdminProposal: {
     encode(message: UpdateAdminProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdateAdminProposal;
-    fromJSON(object: any): UpdateAdminProposal;
-    toJSON(message: UpdateAdminProposal): unknown;
     fromPartial(object: DeepPartial<UpdateAdminProposal>): UpdateAdminProposal;
+    fromSDK(object: UpdateAdminProposalSDKType): UpdateAdminProposal;
+    toSDK(message: UpdateAdminProposal): UpdateAdminProposalSDKType;
 };
 export declare const ClearAdminProposal: {
     encode(message: ClearAdminProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClearAdminProposal;
-    fromJSON(object: any): ClearAdminProposal;
-    toJSON(message: ClearAdminProposal): unknown;
     fromPartial(object: DeepPartial<ClearAdminProposal>): ClearAdminProposal;
+    fromSDK(object: ClearAdminProposalSDKType): ClearAdminProposal;
+    toSDK(message: ClearAdminProposal): ClearAdminProposalSDKType;
 };
 export declare const PinCodesProposal: {
     encode(message: PinCodesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PinCodesProposal;
-    fromJSON(object: any): PinCodesProposal;
-    toJSON(message: PinCodesProposal): unknown;
     fromPartial(object: DeepPartial<PinCodesProposal>): PinCodesProposal;
+    fromSDK(object: PinCodesProposalSDKType): PinCodesProposal;
+    toSDK(message: PinCodesProposal): PinCodesProposalSDKType;
 };
 export declare const UnpinCodesProposal: {
     encode(message: UnpinCodesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnpinCodesProposal;
-    fromJSON(object: any): UnpinCodesProposal;
-    toJSON(message: UnpinCodesProposal): unknown;
     fromPartial(object: DeepPartial<UnpinCodesProposal>): UnpinCodesProposal;
+    fromSDK(object: UnpinCodesProposalSDKType): UnpinCodesProposal;
+    toSDK(message: UnpinCodesProposal): UnpinCodesProposalSDKType;
 };

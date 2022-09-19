@@ -89,42 +89,42 @@ export interface MsgCreatePeriodicVestingAccountResponseSDKType {
 export declare const MsgCreateVestingAccount: {
     encode(message: MsgCreateVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccount;
-    fromJSON(object: any): MsgCreateVestingAccount;
-    toJSON(message: MsgCreateVestingAccount): unknown;
     fromPartial(object: DeepPartial<MsgCreateVestingAccount>): MsgCreateVestingAccount;
+    fromSDK(object: MsgCreateVestingAccountSDKType): MsgCreateVestingAccount;
+    toSDK(message: MsgCreateVestingAccount): MsgCreateVestingAccountSDKType;
 };
 export declare const MsgCreateVestingAccountResponse: {
     encode(_: MsgCreateVestingAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccountResponseSDKType;
-    fromJSON(_: any): MsgCreateVestingAccountResponse;
-    toJSON(_: MsgCreateVestingAccountResponse): unknown;
     fromPartial(_: DeepPartial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse;
+    fromSDK(_: MsgCreateVestingAccountResponseSDKType): MsgCreateVestingAccountResponse;
+    toSDK(_: MsgCreateVestingAccountResponse): MsgCreateVestingAccountResponseSDKType;
 };
 export declare const MsgCreatePermanentLockedAccount: {
     encode(message: MsgCreatePermanentLockedAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePermanentLockedAccount;
-    fromJSON(object: any): MsgCreatePermanentLockedAccount;
-    toJSON(message: MsgCreatePermanentLockedAccount): unknown;
     fromPartial(object: DeepPartial<MsgCreatePermanentLockedAccount>): MsgCreatePermanentLockedAccount;
+    fromSDK(object: MsgCreatePermanentLockedAccountSDKType): MsgCreatePermanentLockedAccount;
+    toSDK(message: MsgCreatePermanentLockedAccount): MsgCreatePermanentLockedAccountSDKType;
 };
 export declare const MsgCreatePermanentLockedAccountResponse: {
     encode(_: MsgCreatePermanentLockedAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePermanentLockedAccountResponseSDKType;
-    fromJSON(_: any): MsgCreatePermanentLockedAccountResponse;
-    toJSON(_: MsgCreatePermanentLockedAccountResponse): unknown;
     fromPartial(_: DeepPartial<MsgCreatePermanentLockedAccountResponse>): MsgCreatePermanentLockedAccountResponse;
+    fromSDK(_: MsgCreatePermanentLockedAccountResponseSDKType): MsgCreatePermanentLockedAccountResponse;
+    toSDK(_: MsgCreatePermanentLockedAccountResponse): MsgCreatePermanentLockedAccountResponseSDKType;
 };
 export declare const MsgCreatePeriodicVestingAccount: {
     encode(message: MsgCreatePeriodicVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccount;
-    fromJSON(object: any): MsgCreatePeriodicVestingAccount;
-    toJSON(message: MsgCreatePeriodicVestingAccount): unknown;
     fromPartial(object: DeepPartial<MsgCreatePeriodicVestingAccount>): MsgCreatePeriodicVestingAccount;
+    fromSDK(object: MsgCreatePeriodicVestingAccountSDKType): MsgCreatePeriodicVestingAccount;
+    toSDK(message: MsgCreatePeriodicVestingAccount): MsgCreatePeriodicVestingAccountSDKType;
 };
 export declare const MsgCreatePeriodicVestingAccountResponse: {
     encode(_: MsgCreatePeriodicVestingAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccountResponseSDKType;
-    fromJSON(_: any): MsgCreatePeriodicVestingAccountResponse;
-    toJSON(_: MsgCreatePeriodicVestingAccountResponse): unknown;
     fromPartial(_: DeepPartial<MsgCreatePeriodicVestingAccountResponse>): MsgCreatePeriodicVestingAccountResponse;
+    fromSDK(_: MsgCreatePeriodicVestingAccountResponseSDKType): MsgCreatePeriodicVestingAccountResponse;
+    toSDK(_: MsgCreatePeriodicVestingAccountResponse): MsgCreatePeriodicVestingAccountResponseSDKType;
 };

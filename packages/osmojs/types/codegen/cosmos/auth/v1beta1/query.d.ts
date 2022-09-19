@@ -142,98 +142,98 @@ export interface AddressStringToBytesResponseSDKType {
 export declare const QueryAccountsRequest: {
     encode(message: QueryAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountsRequest;
-    fromJSON(object: any): QueryAccountsRequest;
-    toJSON(message: QueryAccountsRequest): unknown;
     fromPartial(object: DeepPartial<QueryAccountsRequest>): QueryAccountsRequest;
+    fromSDK(object: QueryAccountsRequestSDKType): QueryAccountsRequest;
+    toSDK(message: QueryAccountsRequest): QueryAccountsRequestSDKType;
 };
 export declare const QueryAccountsResponse: {
     encode(message: QueryAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountsResponseSDKType;
-    fromJSON(object: any): QueryAccountsResponse;
-    toJSON(message: QueryAccountsResponse): unknown;
     fromPartial(object: DeepPartial<QueryAccountsResponse>): QueryAccountsResponse;
+    fromSDK(object: QueryAccountsResponseSDKType): QueryAccountsResponse;
+    toSDK(message: QueryAccountsResponse): QueryAccountsResponseSDKType;
 };
 export declare const QueryAccountRequest: {
     encode(message: QueryAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountRequest;
-    fromJSON(object: any): QueryAccountRequest;
-    toJSON(message: QueryAccountRequest): unknown;
     fromPartial(object: DeepPartial<QueryAccountRequest>): QueryAccountRequest;
+    fromSDK(object: QueryAccountRequestSDKType): QueryAccountRequest;
+    toSDK(message: QueryAccountRequest): QueryAccountRequestSDKType;
 };
 export declare const QueryModuleAccountsRequest: {
     encode(_: QueryModuleAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountsRequest;
-    fromJSON(_: any): QueryModuleAccountsRequest;
-    toJSON(_: QueryModuleAccountsRequest): unknown;
     fromPartial(_: DeepPartial<QueryModuleAccountsRequest>): QueryModuleAccountsRequest;
+    fromSDK(_: QueryModuleAccountsRequestSDKType): QueryModuleAccountsRequest;
+    toSDK(_: QueryModuleAccountsRequest): QueryModuleAccountsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
+    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };
 export declare const QueryAccountResponse: {
     encode(message: QueryAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountResponseSDKType;
-    fromJSON(object: any): QueryAccountResponse;
-    toJSON(message: QueryAccountResponse): unknown;
     fromPartial(object: DeepPartial<QueryAccountResponse>): QueryAccountResponse;
+    fromSDK(object: QueryAccountResponseSDKType): QueryAccountResponse;
+    toSDK(message: QueryAccountResponse): QueryAccountResponseSDKType;
 };
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
+    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryModuleAccountsResponse: {
     encode(message: QueryModuleAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountsResponseSDKType;
-    fromJSON(object: any): QueryModuleAccountsResponse;
-    toJSON(message: QueryModuleAccountsResponse): unknown;
     fromPartial(object: DeepPartial<QueryModuleAccountsResponse>): QueryModuleAccountsResponse;
+    fromSDK(object: QueryModuleAccountsResponseSDKType): QueryModuleAccountsResponse;
+    toSDK(message: QueryModuleAccountsResponse): QueryModuleAccountsResponseSDKType;
 };
 export declare const Bech32PrefixRequest: {
     encode(_: Bech32PrefixRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Bech32PrefixRequest;
-    fromJSON(_: any): Bech32PrefixRequest;
-    toJSON(_: Bech32PrefixRequest): unknown;
     fromPartial(_: DeepPartial<Bech32PrefixRequest>): Bech32PrefixRequest;
+    fromSDK(_: Bech32PrefixRequestSDKType): Bech32PrefixRequest;
+    toSDK(_: Bech32PrefixRequest): Bech32PrefixRequestSDKType;
 };
 export declare const Bech32PrefixResponse: {
     encode(message: Bech32PrefixResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Bech32PrefixResponseSDKType;
-    fromJSON(object: any): Bech32PrefixResponse;
-    toJSON(message: Bech32PrefixResponse): unknown;
     fromPartial(object: DeepPartial<Bech32PrefixResponse>): Bech32PrefixResponse;
+    fromSDK(object: Bech32PrefixResponseSDKType): Bech32PrefixResponse;
+    toSDK(message: Bech32PrefixResponse): Bech32PrefixResponseSDKType;
 };
 export declare const AddressBytesToStringRequest: {
     encode(message: AddressBytesToStringRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AddressBytesToStringRequest;
-    fromJSON(object: any): AddressBytesToStringRequest;
-    toJSON(message: AddressBytesToStringRequest): unknown;
     fromPartial(object: DeepPartial<AddressBytesToStringRequest>): AddressBytesToStringRequest;
+    fromSDK(object: AddressBytesToStringRequestSDKType): AddressBytesToStringRequest;
+    toSDK(message: AddressBytesToStringRequest): AddressBytesToStringRequestSDKType;
 };
 export declare const AddressBytesToStringResponse: {
     encode(message: AddressBytesToStringResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AddressBytesToStringResponseSDKType;
-    fromJSON(object: any): AddressBytesToStringResponse;
-    toJSON(message: AddressBytesToStringResponse): unknown;
     fromPartial(object: DeepPartial<AddressBytesToStringResponse>): AddressBytesToStringResponse;
+    fromSDK(object: AddressBytesToStringResponseSDKType): AddressBytesToStringResponse;
+    toSDK(message: AddressBytesToStringResponse): AddressBytesToStringResponseSDKType;
 };
 export declare const AddressStringToBytesRequest: {
     encode(message: AddressStringToBytesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AddressStringToBytesRequest;
-    fromJSON(object: any): AddressStringToBytesRequest;
-    toJSON(message: AddressStringToBytesRequest): unknown;
     fromPartial(object: DeepPartial<AddressStringToBytesRequest>): AddressStringToBytesRequest;
+    fromSDK(object: AddressStringToBytesRequestSDKType): AddressStringToBytesRequest;
+    toSDK(message: AddressStringToBytesRequest): AddressStringToBytesRequestSDKType;
 };
 export declare const AddressStringToBytesResponse: {
     encode(message: AddressStringToBytesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AddressStringToBytesResponseSDKType;
-    fromJSON(object: any): AddressStringToBytesResponse;
-    toJSON(message: AddressStringToBytesResponse): unknown;
     fromPartial(object: DeepPartial<AddressStringToBytesResponse>): AddressStringToBytesResponse;
+    fromSDK(object: AddressStringToBytesResponseSDKType): AddressStringToBytesResponse;
+    toSDK(message: AddressStringToBytesResponse): AddressStringToBytesResponseSDKType;
 };

@@ -53,14 +53,14 @@ export interface BalanceSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+    fromSDK(object: GenesisStateSDKType): GenesisState;
+    toSDK(message: GenesisState): GenesisStateSDKType;
 };
 export declare const Balance: {
     encode(message: Balance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Balance;
-    fromJSON(object: any): Balance;
-    toJSON(message: Balance): unknown;
     fromPartial(object: DeepPartial<Balance>): Balance;
+    fromSDK(object: BalanceSDKType): Balance;
+    toSDK(message: Balance): BalanceSDKType;
 };

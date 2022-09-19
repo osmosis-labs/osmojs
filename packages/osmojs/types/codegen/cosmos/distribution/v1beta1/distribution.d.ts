@@ -222,84 +222,84 @@ export interface CommunityPoolSpendProposalWithDepositSDKType {
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
     fromPartial(object: DeepPartial<Params>): Params;
+    fromSDK(object: ParamsSDKType): Params;
+    toSDK(message: Params): ParamsSDKType;
 };
 export declare const ValidatorHistoricalRewards: {
     encode(message: ValidatorHistoricalRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorHistoricalRewards;
-    fromJSON(object: any): ValidatorHistoricalRewards;
-    toJSON(message: ValidatorHistoricalRewards): unknown;
     fromPartial(object: DeepPartial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards;
+    fromSDK(object: ValidatorHistoricalRewardsSDKType): ValidatorHistoricalRewards;
+    toSDK(message: ValidatorHistoricalRewards): ValidatorHistoricalRewardsSDKType;
 };
 export declare const ValidatorCurrentRewards: {
     encode(message: ValidatorCurrentRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorCurrentRewards;
-    fromJSON(object: any): ValidatorCurrentRewards;
-    toJSON(message: ValidatorCurrentRewards): unknown;
     fromPartial(object: DeepPartial<ValidatorCurrentRewards>): ValidatorCurrentRewards;
+    fromSDK(object: ValidatorCurrentRewardsSDKType): ValidatorCurrentRewards;
+    toSDK(message: ValidatorCurrentRewards): ValidatorCurrentRewardsSDKType;
 };
 export declare const ValidatorAccumulatedCommission: {
     encode(message: ValidatorAccumulatedCommission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorAccumulatedCommission;
-    fromJSON(object: any): ValidatorAccumulatedCommission;
-    toJSON(message: ValidatorAccumulatedCommission): unknown;
     fromPartial(object: DeepPartial<ValidatorAccumulatedCommission>): ValidatorAccumulatedCommission;
+    fromSDK(object: ValidatorAccumulatedCommissionSDKType): ValidatorAccumulatedCommission;
+    toSDK(message: ValidatorAccumulatedCommission): ValidatorAccumulatedCommissionSDKType;
 };
 export declare const ValidatorOutstandingRewards: {
     encode(message: ValidatorOutstandingRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorOutstandingRewards;
-    fromJSON(object: any): ValidatorOutstandingRewards;
-    toJSON(message: ValidatorOutstandingRewards): unknown;
     fromPartial(object: DeepPartial<ValidatorOutstandingRewards>): ValidatorOutstandingRewards;
+    fromSDK(object: ValidatorOutstandingRewardsSDKType): ValidatorOutstandingRewards;
+    toSDK(message: ValidatorOutstandingRewards): ValidatorOutstandingRewardsSDKType;
 };
 export declare const ValidatorSlashEvent: {
     encode(message: ValidatorSlashEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEvent;
-    fromJSON(object: any): ValidatorSlashEvent;
-    toJSON(message: ValidatorSlashEvent): unknown;
     fromPartial(object: DeepPartial<ValidatorSlashEvent>): ValidatorSlashEvent;
+    fromSDK(object: ValidatorSlashEventSDKType): ValidatorSlashEvent;
+    toSDK(message: ValidatorSlashEvent): ValidatorSlashEventSDKType;
 };
 export declare const ValidatorSlashEvents: {
     encode(message: ValidatorSlashEvents, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEvents;
-    fromJSON(object: any): ValidatorSlashEvents;
-    toJSON(message: ValidatorSlashEvents): unknown;
     fromPartial(object: DeepPartial<ValidatorSlashEvents>): ValidatorSlashEvents;
+    fromSDK(object: ValidatorSlashEventsSDKType): ValidatorSlashEvents;
+    toSDK(message: ValidatorSlashEvents): ValidatorSlashEventsSDKType;
 };
 export declare const FeePool: {
     encode(message: FeePool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FeePool;
-    fromJSON(object: any): FeePool;
-    toJSON(message: FeePool): unknown;
     fromPartial(object: DeepPartial<FeePool>): FeePool;
+    fromSDK(object: FeePoolSDKType): FeePool;
+    toSDK(message: FeePool): FeePoolSDKType;
 };
 export declare const CommunityPoolSpendProposal: {
     encode(message: CommunityPoolSpendProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommunityPoolSpendProposal;
-    fromJSON(object: any): CommunityPoolSpendProposal;
-    toJSON(message: CommunityPoolSpendProposal): unknown;
     fromPartial(object: DeepPartial<CommunityPoolSpendProposal>): CommunityPoolSpendProposal;
+    fromSDK(object: CommunityPoolSpendProposalSDKType): CommunityPoolSpendProposal;
+    toSDK(message: CommunityPoolSpendProposal): CommunityPoolSpendProposalSDKType;
 };
 export declare const DelegatorStartingInfo: {
     encode(message: DelegatorStartingInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegatorStartingInfo;
-    fromJSON(object: any): DelegatorStartingInfo;
-    toJSON(message: DelegatorStartingInfo): unknown;
     fromPartial(object: DeepPartial<DelegatorStartingInfo>): DelegatorStartingInfo;
+    fromSDK(object: DelegatorStartingInfoSDKType): DelegatorStartingInfo;
+    toSDK(message: DelegatorStartingInfo): DelegatorStartingInfoSDKType;
 };
 export declare const DelegationDelegatorReward: {
     encode(message: DelegationDelegatorReward, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegationDelegatorReward;
-    fromJSON(object: any): DelegationDelegatorReward;
-    toJSON(message: DelegationDelegatorReward): unknown;
     fromPartial(object: DeepPartial<DelegationDelegatorReward>): DelegationDelegatorReward;
+    fromSDK(object: DelegationDelegatorRewardSDKType): DelegationDelegatorReward;
+    toSDK(message: DelegationDelegatorReward): DelegationDelegatorRewardSDKType;
 };
 export declare const CommunityPoolSpendProposalWithDeposit: {
     encode(message: CommunityPoolSpendProposalWithDeposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommunityPoolSpendProposalWithDeposit;
-    fromJSON(object: any): CommunityPoolSpendProposalWithDeposit;
-    toJSON(message: CommunityPoolSpendProposalWithDeposit): unknown;
     fromPartial(object: DeepPartial<CommunityPoolSpendProposalWithDeposit>): CommunityPoolSpendProposalWithDeposit;
+    fromSDK(object: CommunityPoolSpendProposalWithDepositSDKType): CommunityPoolSpendProposalWithDeposit;
+    toSDK(message: CommunityPoolSpendProposalWithDeposit): CommunityPoolSpendProposalWithDepositSDKType;
 };

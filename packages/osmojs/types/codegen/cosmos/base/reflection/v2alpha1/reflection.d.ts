@@ -385,182 +385,182 @@ export interface QueryMethodDescriptorSDKType {
 export declare const AppDescriptor: {
     encode(message: AppDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AppDescriptor;
-    fromJSON(object: any): AppDescriptor;
-    toJSON(message: AppDescriptor): unknown;
     fromPartial(object: DeepPartial<AppDescriptor>): AppDescriptor;
+    fromSDK(object: AppDescriptorSDKType): AppDescriptor;
+    toSDK(message: AppDescriptor): AppDescriptorSDKType;
 };
 export declare const TxDescriptor: {
     encode(message: TxDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxDescriptor;
-    fromJSON(object: any): TxDescriptor;
-    toJSON(message: TxDescriptor): unknown;
     fromPartial(object: DeepPartial<TxDescriptor>): TxDescriptor;
+    fromSDK(object: TxDescriptorSDKType): TxDescriptor;
+    toSDK(message: TxDescriptor): TxDescriptorSDKType;
 };
 export declare const AuthnDescriptor: {
     encode(message: AuthnDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AuthnDescriptor;
-    fromJSON(object: any): AuthnDescriptor;
-    toJSON(message: AuthnDescriptor): unknown;
     fromPartial(object: DeepPartial<AuthnDescriptor>): AuthnDescriptor;
+    fromSDK(object: AuthnDescriptorSDKType): AuthnDescriptor;
+    toSDK(message: AuthnDescriptor): AuthnDescriptorSDKType;
 };
 export declare const SigningModeDescriptor: {
     encode(message: SigningModeDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SigningModeDescriptor;
-    fromJSON(object: any): SigningModeDescriptor;
-    toJSON(message: SigningModeDescriptor): unknown;
     fromPartial(object: DeepPartial<SigningModeDescriptor>): SigningModeDescriptor;
+    fromSDK(object: SigningModeDescriptorSDKType): SigningModeDescriptor;
+    toSDK(message: SigningModeDescriptor): SigningModeDescriptorSDKType;
 };
 export declare const ChainDescriptor: {
     encode(message: ChainDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ChainDescriptor;
-    fromJSON(object: any): ChainDescriptor;
-    toJSON(message: ChainDescriptor): unknown;
     fromPartial(object: DeepPartial<ChainDescriptor>): ChainDescriptor;
+    fromSDK(object: ChainDescriptorSDKType): ChainDescriptor;
+    toSDK(message: ChainDescriptor): ChainDescriptorSDKType;
 };
 export declare const CodecDescriptor: {
     encode(message: CodecDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CodecDescriptor;
-    fromJSON(object: any): CodecDescriptor;
-    toJSON(message: CodecDescriptor): unknown;
     fromPartial(object: DeepPartial<CodecDescriptor>): CodecDescriptor;
+    fromSDK(object: CodecDescriptorSDKType): CodecDescriptor;
+    toSDK(message: CodecDescriptor): CodecDescriptorSDKType;
 };
 export declare const InterfaceDescriptor: {
     encode(message: InterfaceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceDescriptor;
-    fromJSON(object: any): InterfaceDescriptor;
-    toJSON(message: InterfaceDescriptor): unknown;
     fromPartial(object: DeepPartial<InterfaceDescriptor>): InterfaceDescriptor;
+    fromSDK(object: InterfaceDescriptorSDKType): InterfaceDescriptor;
+    toSDK(message: InterfaceDescriptor): InterfaceDescriptorSDKType;
 };
 export declare const InterfaceImplementerDescriptor: {
     encode(message: InterfaceImplementerDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceImplementerDescriptor;
-    fromJSON(object: any): InterfaceImplementerDescriptor;
-    toJSON(message: InterfaceImplementerDescriptor): unknown;
     fromPartial(object: DeepPartial<InterfaceImplementerDescriptor>): InterfaceImplementerDescriptor;
+    fromSDK(object: InterfaceImplementerDescriptorSDKType): InterfaceImplementerDescriptor;
+    toSDK(message: InterfaceImplementerDescriptor): InterfaceImplementerDescriptorSDKType;
 };
 export declare const InterfaceAcceptingMessageDescriptor: {
     encode(message: InterfaceAcceptingMessageDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceAcceptingMessageDescriptor;
-    fromJSON(object: any): InterfaceAcceptingMessageDescriptor;
-    toJSON(message: InterfaceAcceptingMessageDescriptor): unknown;
     fromPartial(object: DeepPartial<InterfaceAcceptingMessageDescriptor>): InterfaceAcceptingMessageDescriptor;
+    fromSDK(object: InterfaceAcceptingMessageDescriptorSDKType): InterfaceAcceptingMessageDescriptor;
+    toSDK(message: InterfaceAcceptingMessageDescriptor): InterfaceAcceptingMessageDescriptorSDKType;
 };
 export declare const ConfigurationDescriptor: {
     encode(message: ConfigurationDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConfigurationDescriptor;
-    fromJSON(object: any): ConfigurationDescriptor;
-    toJSON(message: ConfigurationDescriptor): unknown;
     fromPartial(object: DeepPartial<ConfigurationDescriptor>): ConfigurationDescriptor;
+    fromSDK(object: ConfigurationDescriptorSDKType): ConfigurationDescriptor;
+    toSDK(message: ConfigurationDescriptor): ConfigurationDescriptorSDKType;
 };
 export declare const MsgDescriptor: {
     encode(message: MsgDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDescriptor;
-    fromJSON(object: any): MsgDescriptor;
-    toJSON(message: MsgDescriptor): unknown;
     fromPartial(object: DeepPartial<MsgDescriptor>): MsgDescriptor;
+    fromSDK(object: MsgDescriptorSDKType): MsgDescriptor;
+    toSDK(message: MsgDescriptor): MsgDescriptorSDKType;
 };
 export declare const GetAuthnDescriptorRequest: {
     encode(_: GetAuthnDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorRequest;
-    fromJSON(_: any): GetAuthnDescriptorRequest;
-    toJSON(_: GetAuthnDescriptorRequest): unknown;
     fromPartial(_: DeepPartial<GetAuthnDescriptorRequest>): GetAuthnDescriptorRequest;
+    fromSDK(_: GetAuthnDescriptorRequestSDKType): GetAuthnDescriptorRequest;
+    toSDK(_: GetAuthnDescriptorRequest): GetAuthnDescriptorRequestSDKType;
 };
 export declare const GetAuthnDescriptorResponse: {
     encode(message: GetAuthnDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorResponseSDKType;
-    fromJSON(object: any): GetAuthnDescriptorResponse;
-    toJSON(message: GetAuthnDescriptorResponse): unknown;
     fromPartial(object: DeepPartial<GetAuthnDescriptorResponse>): GetAuthnDescriptorResponse;
+    fromSDK(object: GetAuthnDescriptorResponseSDKType): GetAuthnDescriptorResponse;
+    toSDK(message: GetAuthnDescriptorResponse): GetAuthnDescriptorResponseSDKType;
 };
 export declare const GetChainDescriptorRequest: {
     encode(_: GetChainDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorRequest;
-    fromJSON(_: any): GetChainDescriptorRequest;
-    toJSON(_: GetChainDescriptorRequest): unknown;
     fromPartial(_: DeepPartial<GetChainDescriptorRequest>): GetChainDescriptorRequest;
+    fromSDK(_: GetChainDescriptorRequestSDKType): GetChainDescriptorRequest;
+    toSDK(_: GetChainDescriptorRequest): GetChainDescriptorRequestSDKType;
 };
 export declare const GetChainDescriptorResponse: {
     encode(message: GetChainDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorResponseSDKType;
-    fromJSON(object: any): GetChainDescriptorResponse;
-    toJSON(message: GetChainDescriptorResponse): unknown;
     fromPartial(object: DeepPartial<GetChainDescriptorResponse>): GetChainDescriptorResponse;
+    fromSDK(object: GetChainDescriptorResponseSDKType): GetChainDescriptorResponse;
+    toSDK(message: GetChainDescriptorResponse): GetChainDescriptorResponseSDKType;
 };
 export declare const GetCodecDescriptorRequest: {
     encode(_: GetCodecDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorRequest;
-    fromJSON(_: any): GetCodecDescriptorRequest;
-    toJSON(_: GetCodecDescriptorRequest): unknown;
     fromPartial(_: DeepPartial<GetCodecDescriptorRequest>): GetCodecDescriptorRequest;
+    fromSDK(_: GetCodecDescriptorRequestSDKType): GetCodecDescriptorRequest;
+    toSDK(_: GetCodecDescriptorRequest): GetCodecDescriptorRequestSDKType;
 };
 export declare const GetCodecDescriptorResponse: {
     encode(message: GetCodecDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorResponseSDKType;
-    fromJSON(object: any): GetCodecDescriptorResponse;
-    toJSON(message: GetCodecDescriptorResponse): unknown;
     fromPartial(object: DeepPartial<GetCodecDescriptorResponse>): GetCodecDescriptorResponse;
+    fromSDK(object: GetCodecDescriptorResponseSDKType): GetCodecDescriptorResponse;
+    toSDK(message: GetCodecDescriptorResponse): GetCodecDescriptorResponseSDKType;
 };
 export declare const GetConfigurationDescriptorRequest: {
     encode(_: GetConfigurationDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorRequest;
-    fromJSON(_: any): GetConfigurationDescriptorRequest;
-    toJSON(_: GetConfigurationDescriptorRequest): unknown;
     fromPartial(_: DeepPartial<GetConfigurationDescriptorRequest>): GetConfigurationDescriptorRequest;
+    fromSDK(_: GetConfigurationDescriptorRequestSDKType): GetConfigurationDescriptorRequest;
+    toSDK(_: GetConfigurationDescriptorRequest): GetConfigurationDescriptorRequestSDKType;
 };
 export declare const GetConfigurationDescriptorResponse: {
     encode(message: GetConfigurationDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorResponseSDKType;
-    fromJSON(object: any): GetConfigurationDescriptorResponse;
-    toJSON(message: GetConfigurationDescriptorResponse): unknown;
     fromPartial(object: DeepPartial<GetConfigurationDescriptorResponse>): GetConfigurationDescriptorResponse;
+    fromSDK(object: GetConfigurationDescriptorResponseSDKType): GetConfigurationDescriptorResponse;
+    toSDK(message: GetConfigurationDescriptorResponse): GetConfigurationDescriptorResponseSDKType;
 };
 export declare const GetQueryServicesDescriptorRequest: {
     encode(_: GetQueryServicesDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorRequest;
-    fromJSON(_: any): GetQueryServicesDescriptorRequest;
-    toJSON(_: GetQueryServicesDescriptorRequest): unknown;
     fromPartial(_: DeepPartial<GetQueryServicesDescriptorRequest>): GetQueryServicesDescriptorRequest;
+    fromSDK(_: GetQueryServicesDescriptorRequestSDKType): GetQueryServicesDescriptorRequest;
+    toSDK(_: GetQueryServicesDescriptorRequest): GetQueryServicesDescriptorRequestSDKType;
 };
 export declare const GetQueryServicesDescriptorResponse: {
     encode(message: GetQueryServicesDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorResponseSDKType;
-    fromJSON(object: any): GetQueryServicesDescriptorResponse;
-    toJSON(message: GetQueryServicesDescriptorResponse): unknown;
     fromPartial(object: DeepPartial<GetQueryServicesDescriptorResponse>): GetQueryServicesDescriptorResponse;
+    fromSDK(object: GetQueryServicesDescriptorResponseSDKType): GetQueryServicesDescriptorResponse;
+    toSDK(message: GetQueryServicesDescriptorResponse): GetQueryServicesDescriptorResponseSDKType;
 };
 export declare const GetTxDescriptorRequest: {
     encode(_: GetTxDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorRequest;
-    fromJSON(_: any): GetTxDescriptorRequest;
-    toJSON(_: GetTxDescriptorRequest): unknown;
     fromPartial(_: DeepPartial<GetTxDescriptorRequest>): GetTxDescriptorRequest;
+    fromSDK(_: GetTxDescriptorRequestSDKType): GetTxDescriptorRequest;
+    toSDK(_: GetTxDescriptorRequest): GetTxDescriptorRequestSDKType;
 };
 export declare const GetTxDescriptorResponse: {
     encode(message: GetTxDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorResponseSDKType;
-    fromJSON(object: any): GetTxDescriptorResponse;
-    toJSON(message: GetTxDescriptorResponse): unknown;
     fromPartial(object: DeepPartial<GetTxDescriptorResponse>): GetTxDescriptorResponse;
+    fromSDK(object: GetTxDescriptorResponseSDKType): GetTxDescriptorResponse;
+    toSDK(message: GetTxDescriptorResponse): GetTxDescriptorResponseSDKType;
 };
 export declare const QueryServicesDescriptor: {
     encode(message: QueryServicesDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryServicesDescriptor;
-    fromJSON(object: any): QueryServicesDescriptor;
-    toJSON(message: QueryServicesDescriptor): unknown;
     fromPartial(object: DeepPartial<QueryServicesDescriptor>): QueryServicesDescriptor;
+    fromSDK(object: QueryServicesDescriptorSDKType): QueryServicesDescriptor;
+    toSDK(message: QueryServicesDescriptor): QueryServicesDescriptorSDKType;
 };
 export declare const QueryServiceDescriptor: {
     encode(message: QueryServiceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryServiceDescriptor;
-    fromJSON(object: any): QueryServiceDescriptor;
-    toJSON(message: QueryServiceDescriptor): unknown;
     fromPartial(object: DeepPartial<QueryServiceDescriptor>): QueryServiceDescriptor;
+    fromSDK(object: QueryServiceDescriptorSDKType): QueryServiceDescriptor;
+    toSDK(message: QueryServiceDescriptor): QueryServiceDescriptorSDKType;
 };
 export declare const QueryMethodDescriptor: {
     encode(message: QueryMethodDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryMethodDescriptor;
-    fromJSON(object: any): QueryMethodDescriptor;
-    toJSON(message: QueryMethodDescriptor): unknown;
     fromPartial(object: DeepPartial<QueryMethodDescriptor>): QueryMethodDescriptor;
+    fromSDK(object: QueryMethodDescriptorSDKType): QueryMethodDescriptor;
+    toSDK(message: QueryMethodDescriptor): QueryMethodDescriptorSDKType;
 };

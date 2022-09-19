@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** Class defines the class of the nft type. */
 
 export interface Class {
@@ -177,30 +177,6 @@ export const Class = {
     return message;
   },
 
-  fromJSON(object: any): Class {
-    return {
-      id: isSet(object.id) ? String(object.id) : "",
-      name: isSet(object.name) ? String(object.name) : "",
-      symbol: isSet(object.symbol) ? String(object.symbol) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      uri: isSet(object.uri) ? String(object.uri) : "",
-      uriHash: isSet(object.uriHash) ? String(object.uriHash) : "",
-      data: isSet(object.data) ? Any.fromJSON(object.data) : undefined
-    };
-  },
-
-  toJSON(message: Class): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.name !== undefined && (obj.name = message.name);
-    message.symbol !== undefined && (obj.symbol = message.symbol);
-    message.description !== undefined && (obj.description = message.description);
-    message.uri !== undefined && (obj.uri = message.uri);
-    message.uriHash !== undefined && (obj.uriHash = message.uriHash);
-    message.data !== undefined && (obj.data = message.data ? Any.toJSON(message.data) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Class>): Class {
     const message = createBaseClass();
     message.id = object.id ?? "";
@@ -211,6 +187,30 @@ export const Class = {
     message.uriHash = object.uriHash ?? "";
     message.data = object.data !== undefined && object.data !== null ? Any.fromPartial(object.data) : undefined;
     return message;
+  },
+
+  fromSDK(object: ClassSDKType): Class {
+    return {
+      id: isSet(object.id) ? object.id : undefined,
+      name: isSet(object.name) ? object.name : undefined,
+      symbol: isSet(object.symbol) ? object.symbol : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      uri: isSet(object.uri) ? object.uri : undefined,
+      uriHash: isSet(object.uri_hash) ? object.uri_hash : undefined,
+      data: isSet(object.data) ? Any.fromSDK(object.data) : undefined
+    };
+  },
+
+  toSDK(message: Class): ClassSDKType {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.name !== undefined && (obj.name = message.name);
+    message.symbol !== undefined && (obj.symbol = message.symbol);
+    message.description !== undefined && (obj.description = message.description);
+    message.uri !== undefined && (obj.uri = message.uri);
+    message.uriHash !== undefined && (obj.uri_hash = message.uriHash);
+    message.data !== undefined && (obj.data = message.data ? Any.toSDK(message.data) : undefined);
+    return obj;
   }
 
 };
@@ -288,26 +288,6 @@ export const NFT = {
     return message;
   },
 
-  fromJSON(object: any): NFT {
-    return {
-      classId: isSet(object.classId) ? String(object.classId) : "",
-      id: isSet(object.id) ? String(object.id) : "",
-      uri: isSet(object.uri) ? String(object.uri) : "",
-      uriHash: isSet(object.uriHash) ? String(object.uriHash) : "",
-      data: isSet(object.data) ? Any.fromJSON(object.data) : undefined
-    };
-  },
-
-  toJSON(message: NFT): unknown {
-    const obj: any = {};
-    message.classId !== undefined && (obj.classId = message.classId);
-    message.id !== undefined && (obj.id = message.id);
-    message.uri !== undefined && (obj.uri = message.uri);
-    message.uriHash !== undefined && (obj.uriHash = message.uriHash);
-    message.data !== undefined && (obj.data = message.data ? Any.toJSON(message.data) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<NFT>): NFT {
     const message = createBaseNFT();
     message.classId = object.classId ?? "";
@@ -316,6 +296,26 @@ export const NFT = {
     message.uriHash = object.uriHash ?? "";
     message.data = object.data !== undefined && object.data !== null ? Any.fromPartial(object.data) : undefined;
     return message;
+  },
+
+  fromSDK(object: NFTSDKType): NFT {
+    return {
+      classId: isSet(object.class_id) ? object.class_id : undefined,
+      id: isSet(object.id) ? object.id : undefined,
+      uri: isSet(object.uri) ? object.uri : undefined,
+      uriHash: isSet(object.uri_hash) ? object.uri_hash : undefined,
+      data: isSet(object.data) ? Any.fromSDK(object.data) : undefined
+    };
+  },
+
+  toSDK(message: NFT): NFTSDKType {
+    const obj: any = {};
+    message.classId !== undefined && (obj.class_id = message.classId);
+    message.id !== undefined && (obj.id = message.id);
+    message.uri !== undefined && (obj.uri = message.uri);
+    message.uriHash !== undefined && (obj.uri_hash = message.uriHash);
+    message.data !== undefined && (obj.data = message.data ? Any.toSDK(message.data) : undefined);
+    return obj;
   }
 
 };

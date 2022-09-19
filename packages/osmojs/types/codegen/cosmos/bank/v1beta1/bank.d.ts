@@ -188,49 +188,49 @@ export interface MetadataSDKType {
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
     fromPartial(object: DeepPartial<Params>): Params;
+    fromSDK(object: ParamsSDKType): Params;
+    toSDK(message: Params): ParamsSDKType;
 };
 export declare const SendEnabled: {
     encode(message: SendEnabled, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SendEnabled;
-    fromJSON(object: any): SendEnabled;
-    toJSON(message: SendEnabled): unknown;
     fromPartial(object: DeepPartial<SendEnabled>): SendEnabled;
+    fromSDK(object: SendEnabledSDKType): SendEnabled;
+    toSDK(message: SendEnabled): SendEnabledSDKType;
 };
 export declare const Input: {
     encode(message: Input, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Input;
-    fromJSON(object: any): Input;
-    toJSON(message: Input): unknown;
     fromPartial(object: DeepPartial<Input>): Input;
+    fromSDK(object: InputSDKType): Input;
+    toSDK(message: Input): InputSDKType;
 };
 export declare const Output: {
     encode(message: Output, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Output;
-    fromJSON(object: any): Output;
-    toJSON(message: Output): unknown;
     fromPartial(object: DeepPartial<Output>): Output;
+    fromSDK(object: OutputSDKType): Output;
+    toSDK(message: Output): OutputSDKType;
 };
 export declare const Supply: {
     encode(message: Supply, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Supply;
-    fromJSON(object: any): Supply;
-    toJSON(message: Supply): unknown;
     fromPartial(object: DeepPartial<Supply>): Supply;
+    fromSDK(object: SupplySDKType): Supply;
+    toSDK(message: Supply): SupplySDKType;
 };
 export declare const DenomUnit: {
     encode(message: DenomUnit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomUnit;
-    fromJSON(object: any): DenomUnit;
-    toJSON(message: DenomUnit): unknown;
     fromPartial(object: DeepPartial<DenomUnit>): DenomUnit;
+    fromSDK(object: DenomUnitSDKType): DenomUnit;
+    toSDK(message: DenomUnit): DenomUnitSDKType;
 };
 export declare const Metadata: {
     encode(message: Metadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Metadata;
-    fromJSON(object: any): Metadata;
-    toJSON(message: Metadata): unknown;
     fromPartial(object: DeepPartial<Metadata>): Metadata;
+    fromSDK(object: MetadataSDKType): Metadata;
+    toSDK(message: Metadata): MetadataSDKType;
 };

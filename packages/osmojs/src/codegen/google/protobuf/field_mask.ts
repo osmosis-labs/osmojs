@@ -450,13 +450,19 @@ export const FieldMask = {
     return message;
   },
 
-  fromJSON(object: any): FieldMask {
+  fromPartial(object: DeepPartial<FieldMask>): FieldMask {
+    const message = createBaseFieldMask();
+    message.paths = object.paths?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: FieldMaskSDKType): FieldMask {
     return {
-      paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => String(e)) : []
+      paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: FieldMask): unknown {
+  toSDK(message: FieldMask): FieldMaskSDKType {
     const obj: any = {};
 
     if (message.paths) {
@@ -466,12 +472,6 @@ export const FieldMask = {
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<FieldMask>): FieldMask {
-    const message = createBaseFieldMask();
-    message.paths = object.paths?.map(e => e) || [];
-    return message;
   }
 
 };

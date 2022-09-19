@@ -1,7 +1,7 @@
 import { Channel, ChannelSDKType, Packet, PacketSDKType } from "./channel";
 import { Height, HeightSDKType } from "../../client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, bytesFromBase64, base64FromBytes, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 /**
  * MsgChannelOpenInit defines an sdk.Msg to initialize a channel handshake. It
  * is called by a relayer on Chain A.
@@ -356,28 +356,28 @@ export const MsgChannelOpenInit = {
     return message;
   },
 
-  fromJSON(object: any): MsgChannelOpenInit {
-    return {
-      portId: isSet(object.portId) ? String(object.portId) : "",
-      channel: isSet(object.channel) ? Channel.fromJSON(object.channel) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgChannelOpenInit): unknown {
-    const obj: any = {};
-    message.portId !== undefined && (obj.portId = message.portId);
-    message.channel !== undefined && (obj.channel = message.channel ? Channel.toJSON(message.channel) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgChannelOpenInit>): MsgChannelOpenInit {
     const message = createBaseMsgChannelOpenInit();
     message.portId = object.portId ?? "";
     message.channel = object.channel !== undefined && object.channel !== null ? Channel.fromPartial(object.channel) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgChannelOpenInitSDKType): MsgChannelOpenInit {
+    return {
+      portId: isSet(object.port_id) ? object.port_id : undefined,
+      channel: isSet(object.channel) ? Channel.fromSDK(object.channel) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgChannelOpenInit): MsgChannelOpenInitSDKType {
+    const obj: any = {};
+    message.portId !== undefined && (obj.port_id = message.portId);
+    message.channel !== undefined && (obj.channel = message.channel ? Channel.toSDK(message.channel) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -409,18 +409,18 @@ export const MsgChannelOpenInitResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgChannelOpenInitResponse {
-    return {};
-  },
-
-  toJSON(_: MsgChannelOpenInitResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgChannelOpenInitResponse>): MsgChannelOpenInitResponse {
     const message = createBaseMsgChannelOpenInitResponse();
     return message;
+  },
+
+  fromSDK(_: MsgChannelOpenInitResponseSDKType): MsgChannelOpenInitResponse {
+    return {};
+  },
+
+  toSDK(_: MsgChannelOpenInitResponse): MsgChannelOpenInitResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -516,30 +516,6 @@ export const MsgChannelOpenTry = {
     return message;
   },
 
-  fromJSON(object: any): MsgChannelOpenTry {
-    return {
-      portId: isSet(object.portId) ? String(object.portId) : "",
-      previousChannelId: isSet(object.previousChannelId) ? String(object.previousChannelId) : "",
-      channel: isSet(object.channel) ? Channel.fromJSON(object.channel) : undefined,
-      counterpartyVersion: isSet(object.counterpartyVersion) ? String(object.counterpartyVersion) : "",
-      proofInit: isSet(object.proofInit) ? bytesFromBase64(object.proofInit) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgChannelOpenTry): unknown {
-    const obj: any = {};
-    message.portId !== undefined && (obj.portId = message.portId);
-    message.previousChannelId !== undefined && (obj.previousChannelId = message.previousChannelId);
-    message.channel !== undefined && (obj.channel = message.channel ? Channel.toJSON(message.channel) : undefined);
-    message.counterpartyVersion !== undefined && (obj.counterpartyVersion = message.counterpartyVersion);
-    message.proofInit !== undefined && (obj.proofInit = base64FromBytes(message.proofInit !== undefined ? message.proofInit : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgChannelOpenTry>): MsgChannelOpenTry {
     const message = createBaseMsgChannelOpenTry();
     message.portId = object.portId ?? "";
@@ -550,6 +526,30 @@ export const MsgChannelOpenTry = {
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgChannelOpenTrySDKType): MsgChannelOpenTry {
+    return {
+      portId: isSet(object.port_id) ? object.port_id : undefined,
+      previousChannelId: isSet(object.previous_channel_id) ? object.previous_channel_id : undefined,
+      channel: isSet(object.channel) ? Channel.fromSDK(object.channel) : undefined,
+      counterpartyVersion: isSet(object.counterparty_version) ? object.counterparty_version : undefined,
+      proofInit: isSet(object.proof_init) ? object.proof_init : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgChannelOpenTry): MsgChannelOpenTrySDKType {
+    const obj: any = {};
+    message.portId !== undefined && (obj.port_id = message.portId);
+    message.previousChannelId !== undefined && (obj.previous_channel_id = message.previousChannelId);
+    message.channel !== undefined && (obj.channel = message.channel ? Channel.toSDK(message.channel) : undefined);
+    message.counterpartyVersion !== undefined && (obj.counterparty_version = message.counterpartyVersion);
+    message.proofInit !== undefined && (obj.proof_init = message.proofInit);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -581,18 +581,18 @@ export const MsgChannelOpenTryResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgChannelOpenTryResponse {
-    return {};
-  },
-
-  toJSON(_: MsgChannelOpenTryResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgChannelOpenTryResponse>): MsgChannelOpenTryResponse {
     const message = createBaseMsgChannelOpenTryResponse();
     return message;
+  },
+
+  fromSDK(_: MsgChannelOpenTryResponseSDKType): MsgChannelOpenTryResponse {
+    return {};
+  },
+
+  toSDK(_: MsgChannelOpenTryResponse): MsgChannelOpenTryResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -688,30 +688,6 @@ export const MsgChannelOpenAck = {
     return message;
   },
 
-  fromJSON(object: any): MsgChannelOpenAck {
-    return {
-      portId: isSet(object.portId) ? String(object.portId) : "",
-      channelId: isSet(object.channelId) ? String(object.channelId) : "",
-      counterpartyChannelId: isSet(object.counterpartyChannelId) ? String(object.counterpartyChannelId) : "",
-      counterpartyVersion: isSet(object.counterpartyVersion) ? String(object.counterpartyVersion) : "",
-      proofTry: isSet(object.proofTry) ? bytesFromBase64(object.proofTry) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgChannelOpenAck): unknown {
-    const obj: any = {};
-    message.portId !== undefined && (obj.portId = message.portId);
-    message.channelId !== undefined && (obj.channelId = message.channelId);
-    message.counterpartyChannelId !== undefined && (obj.counterpartyChannelId = message.counterpartyChannelId);
-    message.counterpartyVersion !== undefined && (obj.counterpartyVersion = message.counterpartyVersion);
-    message.proofTry !== undefined && (obj.proofTry = base64FromBytes(message.proofTry !== undefined ? message.proofTry : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgChannelOpenAck>): MsgChannelOpenAck {
     const message = createBaseMsgChannelOpenAck();
     message.portId = object.portId ?? "";
@@ -722,6 +698,30 @@ export const MsgChannelOpenAck = {
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgChannelOpenAckSDKType): MsgChannelOpenAck {
+    return {
+      portId: isSet(object.port_id) ? object.port_id : undefined,
+      channelId: isSet(object.channel_id) ? object.channel_id : undefined,
+      counterpartyChannelId: isSet(object.counterparty_channel_id) ? object.counterparty_channel_id : undefined,
+      counterpartyVersion: isSet(object.counterparty_version) ? object.counterparty_version : undefined,
+      proofTry: isSet(object.proof_try) ? object.proof_try : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgChannelOpenAck): MsgChannelOpenAckSDKType {
+    const obj: any = {};
+    message.portId !== undefined && (obj.port_id = message.portId);
+    message.channelId !== undefined && (obj.channel_id = message.channelId);
+    message.counterpartyChannelId !== undefined && (obj.counterparty_channel_id = message.counterpartyChannelId);
+    message.counterpartyVersion !== undefined && (obj.counterparty_version = message.counterpartyVersion);
+    message.proofTry !== undefined && (obj.proof_try = message.proofTry);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -753,18 +753,18 @@ export const MsgChannelOpenAckResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgChannelOpenAckResponse {
-    return {};
-  },
-
-  toJSON(_: MsgChannelOpenAckResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgChannelOpenAckResponse>): MsgChannelOpenAckResponse {
     const message = createBaseMsgChannelOpenAckResponse();
     return message;
+  },
+
+  fromSDK(_: MsgChannelOpenAckResponseSDKType): MsgChannelOpenAckResponse {
+    return {};
+  },
+
+  toSDK(_: MsgChannelOpenAckResponse): MsgChannelOpenAckResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -842,26 +842,6 @@ export const MsgChannelOpenConfirm = {
     return message;
   },
 
-  fromJSON(object: any): MsgChannelOpenConfirm {
-    return {
-      portId: isSet(object.portId) ? String(object.portId) : "",
-      channelId: isSet(object.channelId) ? String(object.channelId) : "",
-      proofAck: isSet(object.proofAck) ? bytesFromBase64(object.proofAck) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgChannelOpenConfirm): unknown {
-    const obj: any = {};
-    message.portId !== undefined && (obj.portId = message.portId);
-    message.channelId !== undefined && (obj.channelId = message.channelId);
-    message.proofAck !== undefined && (obj.proofAck = base64FromBytes(message.proofAck !== undefined ? message.proofAck : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgChannelOpenConfirm>): MsgChannelOpenConfirm {
     const message = createBaseMsgChannelOpenConfirm();
     message.portId = object.portId ?? "";
@@ -870,6 +850,26 @@ export const MsgChannelOpenConfirm = {
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgChannelOpenConfirmSDKType): MsgChannelOpenConfirm {
+    return {
+      portId: isSet(object.port_id) ? object.port_id : undefined,
+      channelId: isSet(object.channel_id) ? object.channel_id : undefined,
+      proofAck: isSet(object.proof_ack) ? object.proof_ack : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgChannelOpenConfirm): MsgChannelOpenConfirmSDKType {
+    const obj: any = {};
+    message.portId !== undefined && (obj.port_id = message.portId);
+    message.channelId !== undefined && (obj.channel_id = message.channelId);
+    message.proofAck !== undefined && (obj.proof_ack = message.proofAck);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -901,18 +901,18 @@ export const MsgChannelOpenConfirmResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgChannelOpenConfirmResponse {
-    return {};
-  },
-
-  toJSON(_: MsgChannelOpenConfirmResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgChannelOpenConfirmResponse>): MsgChannelOpenConfirmResponse {
     const message = createBaseMsgChannelOpenConfirmResponse();
     return message;
+  },
+
+  fromSDK(_: MsgChannelOpenConfirmResponseSDKType): MsgChannelOpenConfirmResponse {
+    return {};
+  },
+
+  toSDK(_: MsgChannelOpenConfirmResponse): MsgChannelOpenConfirmResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -972,28 +972,28 @@ export const MsgChannelCloseInit = {
     return message;
   },
 
-  fromJSON(object: any): MsgChannelCloseInit {
-    return {
-      portId: isSet(object.portId) ? String(object.portId) : "",
-      channelId: isSet(object.channelId) ? String(object.channelId) : "",
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgChannelCloseInit): unknown {
-    const obj: any = {};
-    message.portId !== undefined && (obj.portId = message.portId);
-    message.channelId !== undefined && (obj.channelId = message.channelId);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgChannelCloseInit>): MsgChannelCloseInit {
     const message = createBaseMsgChannelCloseInit();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgChannelCloseInitSDKType): MsgChannelCloseInit {
+    return {
+      portId: isSet(object.port_id) ? object.port_id : undefined,
+      channelId: isSet(object.channel_id) ? object.channel_id : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgChannelCloseInit): MsgChannelCloseInitSDKType {
+    const obj: any = {};
+    message.portId !== undefined && (obj.port_id = message.portId);
+    message.channelId !== undefined && (obj.channel_id = message.channelId);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -1025,18 +1025,18 @@ export const MsgChannelCloseInitResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgChannelCloseInitResponse {
-    return {};
-  },
-
-  toJSON(_: MsgChannelCloseInitResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgChannelCloseInitResponse>): MsgChannelCloseInitResponse {
     const message = createBaseMsgChannelCloseInitResponse();
     return message;
+  },
+
+  fromSDK(_: MsgChannelCloseInitResponseSDKType): MsgChannelCloseInitResponse {
+    return {};
+  },
+
+  toSDK(_: MsgChannelCloseInitResponse): MsgChannelCloseInitResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -1114,26 +1114,6 @@ export const MsgChannelCloseConfirm = {
     return message;
   },
 
-  fromJSON(object: any): MsgChannelCloseConfirm {
-    return {
-      portId: isSet(object.portId) ? String(object.portId) : "",
-      channelId: isSet(object.channelId) ? String(object.channelId) : "",
-      proofInit: isSet(object.proofInit) ? bytesFromBase64(object.proofInit) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgChannelCloseConfirm): unknown {
-    const obj: any = {};
-    message.portId !== undefined && (obj.portId = message.portId);
-    message.channelId !== undefined && (obj.channelId = message.channelId);
-    message.proofInit !== undefined && (obj.proofInit = base64FromBytes(message.proofInit !== undefined ? message.proofInit : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgChannelCloseConfirm>): MsgChannelCloseConfirm {
     const message = createBaseMsgChannelCloseConfirm();
     message.portId = object.portId ?? "";
@@ -1142,6 +1122,26 @@ export const MsgChannelCloseConfirm = {
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgChannelCloseConfirmSDKType): MsgChannelCloseConfirm {
+    return {
+      portId: isSet(object.port_id) ? object.port_id : undefined,
+      channelId: isSet(object.channel_id) ? object.channel_id : undefined,
+      proofInit: isSet(object.proof_init) ? object.proof_init : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgChannelCloseConfirm): MsgChannelCloseConfirmSDKType {
+    const obj: any = {};
+    message.portId !== undefined && (obj.port_id = message.portId);
+    message.channelId !== undefined && (obj.channel_id = message.channelId);
+    message.proofInit !== undefined && (obj.proof_init = message.proofInit);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -1173,18 +1173,18 @@ export const MsgChannelCloseConfirmResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgChannelCloseConfirmResponse {
-    return {};
-  },
-
-  toJSON(_: MsgChannelCloseConfirmResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgChannelCloseConfirmResponse>): MsgChannelCloseConfirmResponse {
     const message = createBaseMsgChannelCloseConfirmResponse();
     return message;
+  },
+
+  fromSDK(_: MsgChannelCloseConfirmResponseSDKType): MsgChannelCloseConfirmResponse {
+    return {};
+  },
+
+  toSDK(_: MsgChannelCloseConfirmResponse): MsgChannelCloseConfirmResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -1253,24 +1253,6 @@ export const MsgRecvPacket = {
     return message;
   },
 
-  fromJSON(object: any): MsgRecvPacket {
-    return {
-      packet: isSet(object.packet) ? Packet.fromJSON(object.packet) : undefined,
-      proofCommitment: isSet(object.proofCommitment) ? bytesFromBase64(object.proofCommitment) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgRecvPacket): unknown {
-    const obj: any = {};
-    message.packet !== undefined && (obj.packet = message.packet ? Packet.toJSON(message.packet) : undefined);
-    message.proofCommitment !== undefined && (obj.proofCommitment = base64FromBytes(message.proofCommitment !== undefined ? message.proofCommitment : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgRecvPacket>): MsgRecvPacket {
     const message = createBaseMsgRecvPacket();
     message.packet = object.packet !== undefined && object.packet !== null ? Packet.fromPartial(object.packet) : undefined;
@@ -1278,6 +1260,24 @@ export const MsgRecvPacket = {
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgRecvPacketSDKType): MsgRecvPacket {
+    return {
+      packet: isSet(object.packet) ? Packet.fromSDK(object.packet) : undefined,
+      proofCommitment: isSet(object.proof_commitment) ? object.proof_commitment : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgRecvPacket): MsgRecvPacketSDKType {
+    const obj: any = {};
+    message.packet !== undefined && (obj.packet = message.packet ? Packet.toSDK(message.packet) : undefined);
+    message.proofCommitment !== undefined && (obj.proof_commitment = message.proofCommitment);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -1309,18 +1309,18 @@ export const MsgRecvPacketResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgRecvPacketResponse {
-    return {};
-  },
-
-  toJSON(_: MsgRecvPacketResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgRecvPacketResponse>): MsgRecvPacketResponse {
     const message = createBaseMsgRecvPacketResponse();
     return message;
+  },
+
+  fromSDK(_: MsgRecvPacketResponseSDKType): MsgRecvPacketResponse {
+    return {};
+  },
+
+  toSDK(_: MsgRecvPacketResponse): MsgRecvPacketResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -1398,26 +1398,6 @@ export const MsgTimeout = {
     return message;
   },
 
-  fromJSON(object: any): MsgTimeout {
-    return {
-      packet: isSet(object.packet) ? Packet.fromJSON(object.packet) : undefined,
-      proofUnreceived: isSet(object.proofUnreceived) ? bytesFromBase64(object.proofUnreceived) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
-      nextSequenceRecv: isSet(object.nextSequenceRecv) ? Long.fromString(object.nextSequenceRecv) : Long.UZERO,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgTimeout): unknown {
-    const obj: any = {};
-    message.packet !== undefined && (obj.packet = message.packet ? Packet.toJSON(message.packet) : undefined);
-    message.proofUnreceived !== undefined && (obj.proofUnreceived = base64FromBytes(message.proofUnreceived !== undefined ? message.proofUnreceived : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    message.nextSequenceRecv !== undefined && (obj.nextSequenceRecv = (message.nextSequenceRecv || Long.UZERO).toString());
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgTimeout>): MsgTimeout {
     const message = createBaseMsgTimeout();
     message.packet = object.packet !== undefined && object.packet !== null ? Packet.fromPartial(object.packet) : undefined;
@@ -1426,6 +1406,26 @@ export const MsgTimeout = {
     message.nextSequenceRecv = object.nextSequenceRecv !== undefined && object.nextSequenceRecv !== null ? Long.fromValue(object.nextSequenceRecv) : Long.UZERO;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgTimeoutSDKType): MsgTimeout {
+    return {
+      packet: isSet(object.packet) ? Packet.fromSDK(object.packet) : undefined,
+      proofUnreceived: isSet(object.proof_unreceived) ? object.proof_unreceived : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined,
+      nextSequenceRecv: isSet(object.next_sequence_recv) ? object.next_sequence_recv : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgTimeout): MsgTimeoutSDKType {
+    const obj: any = {};
+    message.packet !== undefined && (obj.packet = message.packet ? Packet.toSDK(message.packet) : undefined);
+    message.proofUnreceived !== undefined && (obj.proof_unreceived = message.proofUnreceived);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    message.nextSequenceRecv !== undefined && (obj.next_sequence_recv = message.nextSequenceRecv);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -1457,18 +1457,18 @@ export const MsgTimeoutResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgTimeoutResponse {
-    return {};
-  },
-
-  toJSON(_: MsgTimeoutResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgTimeoutResponse>): MsgTimeoutResponse {
     const message = createBaseMsgTimeoutResponse();
     return message;
+  },
+
+  fromSDK(_: MsgTimeoutResponseSDKType): MsgTimeoutResponse {
+    return {};
+  },
+
+  toSDK(_: MsgTimeoutResponse): MsgTimeoutResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -1555,28 +1555,6 @@ export const MsgTimeoutOnClose = {
     return message;
   },
 
-  fromJSON(object: any): MsgTimeoutOnClose {
-    return {
-      packet: isSet(object.packet) ? Packet.fromJSON(object.packet) : undefined,
-      proofUnreceived: isSet(object.proofUnreceived) ? bytesFromBase64(object.proofUnreceived) : new Uint8Array(),
-      proofClose: isSet(object.proofClose) ? bytesFromBase64(object.proofClose) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
-      nextSequenceRecv: isSet(object.nextSequenceRecv) ? Long.fromString(object.nextSequenceRecv) : Long.UZERO,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgTimeoutOnClose): unknown {
-    const obj: any = {};
-    message.packet !== undefined && (obj.packet = message.packet ? Packet.toJSON(message.packet) : undefined);
-    message.proofUnreceived !== undefined && (obj.proofUnreceived = base64FromBytes(message.proofUnreceived !== undefined ? message.proofUnreceived : new Uint8Array()));
-    message.proofClose !== undefined && (obj.proofClose = base64FromBytes(message.proofClose !== undefined ? message.proofClose : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    message.nextSequenceRecv !== undefined && (obj.nextSequenceRecv = (message.nextSequenceRecv || Long.UZERO).toString());
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgTimeoutOnClose>): MsgTimeoutOnClose {
     const message = createBaseMsgTimeoutOnClose();
     message.packet = object.packet !== undefined && object.packet !== null ? Packet.fromPartial(object.packet) : undefined;
@@ -1586,6 +1564,28 @@ export const MsgTimeoutOnClose = {
     message.nextSequenceRecv = object.nextSequenceRecv !== undefined && object.nextSequenceRecv !== null ? Long.fromValue(object.nextSequenceRecv) : Long.UZERO;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgTimeoutOnCloseSDKType): MsgTimeoutOnClose {
+    return {
+      packet: isSet(object.packet) ? Packet.fromSDK(object.packet) : undefined,
+      proofUnreceived: isSet(object.proof_unreceived) ? object.proof_unreceived : undefined,
+      proofClose: isSet(object.proof_close) ? object.proof_close : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined,
+      nextSequenceRecv: isSet(object.next_sequence_recv) ? object.next_sequence_recv : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgTimeoutOnClose): MsgTimeoutOnCloseSDKType {
+    const obj: any = {};
+    message.packet !== undefined && (obj.packet = message.packet ? Packet.toSDK(message.packet) : undefined);
+    message.proofUnreceived !== undefined && (obj.proof_unreceived = message.proofUnreceived);
+    message.proofClose !== undefined && (obj.proof_close = message.proofClose);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    message.nextSequenceRecv !== undefined && (obj.next_sequence_recv = message.nextSequenceRecv);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -1617,18 +1617,18 @@ export const MsgTimeoutOnCloseResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgTimeoutOnCloseResponse {
-    return {};
-  },
-
-  toJSON(_: MsgTimeoutOnCloseResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgTimeoutOnCloseResponse>): MsgTimeoutOnCloseResponse {
     const message = createBaseMsgTimeoutOnCloseResponse();
     return message;
+  },
+
+  fromSDK(_: MsgTimeoutOnCloseResponseSDKType): MsgTimeoutOnCloseResponse {
+    return {};
+  },
+
+  toSDK(_: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -1706,26 +1706,6 @@ export const MsgAcknowledgement = {
     return message;
   },
 
-  fromJSON(object: any): MsgAcknowledgement {
-    return {
-      packet: isSet(object.packet) ? Packet.fromJSON(object.packet) : undefined,
-      acknowledgement: isSet(object.acknowledgement) ? bytesFromBase64(object.acknowledgement) : new Uint8Array(),
-      proofAcked: isSet(object.proofAcked) ? bytesFromBase64(object.proofAcked) : new Uint8Array(),
-      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgAcknowledgement): unknown {
-    const obj: any = {};
-    message.packet !== undefined && (obj.packet = message.packet ? Packet.toJSON(message.packet) : undefined);
-    message.acknowledgement !== undefined && (obj.acknowledgement = base64FromBytes(message.acknowledgement !== undefined ? message.acknowledgement : new Uint8Array()));
-    message.proofAcked !== undefined && (obj.proofAcked = base64FromBytes(message.proofAcked !== undefined ? message.proofAcked : new Uint8Array()));
-    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgAcknowledgement>): MsgAcknowledgement {
     const message = createBaseMsgAcknowledgement();
     message.packet = object.packet !== undefined && object.packet !== null ? Packet.fromPartial(object.packet) : undefined;
@@ -1734,6 +1714,26 @@ export const MsgAcknowledgement = {
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgAcknowledgementSDKType): MsgAcknowledgement {
+    return {
+      packet: isSet(object.packet) ? Packet.fromSDK(object.packet) : undefined,
+      acknowledgement: isSet(object.acknowledgement) ? object.acknowledgement : undefined,
+      proofAcked: isSet(object.proof_acked) ? object.proof_acked : undefined,
+      proofHeight: isSet(object.proof_height) ? Height.fromSDK(object.proof_height) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgAcknowledgement): MsgAcknowledgementSDKType {
+    const obj: any = {};
+    message.packet !== undefined && (obj.packet = message.packet ? Packet.toSDK(message.packet) : undefined);
+    message.acknowledgement !== undefined && (obj.acknowledgement = message.acknowledgement);
+    message.proofAcked !== undefined && (obj.proof_acked = message.proofAcked);
+    message.proofHeight !== undefined && (obj.proof_height = message.proofHeight ? Height.toSDK(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -1765,18 +1765,18 @@ export const MsgAcknowledgementResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgAcknowledgementResponse {
-    return {};
-  },
-
-  toJSON(_: MsgAcknowledgementResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgAcknowledgementResponse>): MsgAcknowledgementResponse {
     const message = createBaseMsgAcknowledgementResponse();
     return message;
+  },
+
+  fromSDK(_: MsgAcknowledgementResponseSDKType): MsgAcknowledgementResponse {
+    return {};
+  },
+
+  toSDK(_: MsgAcknowledgementResponse): MsgAcknowledgementResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };

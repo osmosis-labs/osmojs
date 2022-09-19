@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** MsgCreateClient defines a message to create an IBC client */
 
 export interface MsgCreateClient {
@@ -231,28 +231,28 @@ export const MsgCreateClient = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreateClient {
-    return {
-      clientState: isSet(object.clientState) ? Any.fromJSON(object.clientState) : undefined,
-      consensusState: isSet(object.consensusState) ? Any.fromJSON(object.consensusState) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgCreateClient): unknown {
-    const obj: any = {};
-    message.clientState !== undefined && (obj.clientState = message.clientState ? Any.toJSON(message.clientState) : undefined);
-    message.consensusState !== undefined && (obj.consensusState = message.consensusState ? Any.toJSON(message.consensusState) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreateClient>): MsgCreateClient {
     const message = createBaseMsgCreateClient();
     message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgCreateClientSDKType): MsgCreateClient {
+    return {
+      clientState: isSet(object.client_state) ? Any.fromSDK(object.client_state) : undefined,
+      consensusState: isSet(object.consensus_state) ? Any.fromSDK(object.consensus_state) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgCreateClient): MsgCreateClientSDKType {
+    const obj: any = {};
+    message.clientState !== undefined && (obj.client_state = message.clientState ? Any.toSDK(message.clientState) : undefined);
+    message.consensusState !== undefined && (obj.consensus_state = message.consensusState ? Any.toSDK(message.consensusState) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -284,18 +284,18 @@ export const MsgCreateClientResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgCreateClientResponse {
-    return {};
-  },
-
-  toJSON(_: MsgCreateClientResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgCreateClientResponse>): MsgCreateClientResponse {
     const message = createBaseMsgCreateClientResponse();
     return message;
+  },
+
+  fromSDK(_: MsgCreateClientResponseSDKType): MsgCreateClientResponse {
+    return {};
+  },
+
+  toSDK(_: MsgCreateClientResponse): MsgCreateClientResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -355,28 +355,28 @@ export const MsgUpdateClient = {
     return message;
   },
 
-  fromJSON(object: any): MsgUpdateClient {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      header: isSet(object.header) ? Any.fromJSON(object.header) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgUpdateClient): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-    message.header !== undefined && (obj.header = message.header ? Any.toJSON(message.header) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgUpdateClient>): MsgUpdateClient {
     const message = createBaseMsgUpdateClient();
     message.clientId = object.clientId ?? "";
     message.header = object.header !== undefined && object.header !== null ? Any.fromPartial(object.header) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgUpdateClientSDKType): MsgUpdateClient {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      header: isSet(object.header) ? Any.fromSDK(object.header) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgUpdateClient): MsgUpdateClientSDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+    message.header !== undefined && (obj.header = message.header ? Any.toSDK(message.header) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -408,18 +408,18 @@ export const MsgUpdateClientResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgUpdateClientResponse {
-    return {};
-  },
-
-  toJSON(_: MsgUpdateClientResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgUpdateClientResponse>): MsgUpdateClientResponse {
     const message = createBaseMsgUpdateClientResponse();
     return message;
+  },
+
+  fromSDK(_: MsgUpdateClientResponseSDKType): MsgUpdateClientResponse {
+    return {};
+  },
+
+  toSDK(_: MsgUpdateClientResponse): MsgUpdateClientResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -506,28 +506,6 @@ export const MsgUpgradeClient = {
     return message;
   },
 
-  fromJSON(object: any): MsgUpgradeClient {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      clientState: isSet(object.clientState) ? Any.fromJSON(object.clientState) : undefined,
-      consensusState: isSet(object.consensusState) ? Any.fromJSON(object.consensusState) : undefined,
-      proofUpgradeClient: isSet(object.proofUpgradeClient) ? bytesFromBase64(object.proofUpgradeClient) : new Uint8Array(),
-      proofUpgradeConsensusState: isSet(object.proofUpgradeConsensusState) ? bytesFromBase64(object.proofUpgradeConsensusState) : new Uint8Array(),
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgUpgradeClient): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-    message.clientState !== undefined && (obj.clientState = message.clientState ? Any.toJSON(message.clientState) : undefined);
-    message.consensusState !== undefined && (obj.consensusState = message.consensusState ? Any.toJSON(message.consensusState) : undefined);
-    message.proofUpgradeClient !== undefined && (obj.proofUpgradeClient = base64FromBytes(message.proofUpgradeClient !== undefined ? message.proofUpgradeClient : new Uint8Array()));
-    message.proofUpgradeConsensusState !== undefined && (obj.proofUpgradeConsensusState = base64FromBytes(message.proofUpgradeConsensusState !== undefined ? message.proofUpgradeConsensusState : new Uint8Array()));
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgUpgradeClient>): MsgUpgradeClient {
     const message = createBaseMsgUpgradeClient();
     message.clientId = object.clientId ?? "";
@@ -537,6 +515,28 @@ export const MsgUpgradeClient = {
     message.proofUpgradeConsensusState = object.proofUpgradeConsensusState ?? new Uint8Array();
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgUpgradeClientSDKType): MsgUpgradeClient {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      clientState: isSet(object.client_state) ? Any.fromSDK(object.client_state) : undefined,
+      consensusState: isSet(object.consensus_state) ? Any.fromSDK(object.consensus_state) : undefined,
+      proofUpgradeClient: isSet(object.proof_upgrade_client) ? object.proof_upgrade_client : undefined,
+      proofUpgradeConsensusState: isSet(object.proof_upgrade_consensus_state) ? object.proof_upgrade_consensus_state : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgUpgradeClient): MsgUpgradeClientSDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+    message.clientState !== undefined && (obj.client_state = message.clientState ? Any.toSDK(message.clientState) : undefined);
+    message.consensusState !== undefined && (obj.consensus_state = message.consensusState ? Any.toSDK(message.consensusState) : undefined);
+    message.proofUpgradeClient !== undefined && (obj.proof_upgrade_client = message.proofUpgradeClient);
+    message.proofUpgradeConsensusState !== undefined && (obj.proof_upgrade_consensus_state = message.proofUpgradeConsensusState);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -568,18 +568,18 @@ export const MsgUpgradeClientResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgUpgradeClientResponse {
-    return {};
-  },
-
-  toJSON(_: MsgUpgradeClientResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse {
     const message = createBaseMsgUpgradeClientResponse();
     return message;
+  },
+
+  fromSDK(_: MsgUpgradeClientResponseSDKType): MsgUpgradeClientResponse {
+    return {};
+  },
+
+  toSDK(_: MsgUpgradeClientResponse): MsgUpgradeClientResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -639,28 +639,28 @@ export const MsgSubmitMisbehaviour = {
     return message;
   },
 
-  fromJSON(object: any): MsgSubmitMisbehaviour {
-    return {
-      clientId: isSet(object.clientId) ? String(object.clientId) : "",
-      misbehaviour: isSet(object.misbehaviour) ? Any.fromJSON(object.misbehaviour) : undefined,
-      signer: isSet(object.signer) ? String(object.signer) : ""
-    };
-  },
-
-  toJSON(message: MsgSubmitMisbehaviour): unknown {
-    const obj: any = {};
-    message.clientId !== undefined && (obj.clientId = message.clientId);
-    message.misbehaviour !== undefined && (obj.misbehaviour = message.misbehaviour ? Any.toJSON(message.misbehaviour) : undefined);
-    message.signer !== undefined && (obj.signer = message.signer);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour {
     const message = createBaseMsgSubmitMisbehaviour();
     message.clientId = object.clientId ?? "";
     message.misbehaviour = object.misbehaviour !== undefined && object.misbehaviour !== null ? Any.fromPartial(object.misbehaviour) : undefined;
     message.signer = object.signer ?? "";
     return message;
+  },
+
+  fromSDK(object: MsgSubmitMisbehaviourSDKType): MsgSubmitMisbehaviour {
+    return {
+      clientId: isSet(object.client_id) ? object.client_id : undefined,
+      misbehaviour: isSet(object.misbehaviour) ? Any.fromSDK(object.misbehaviour) : undefined,
+      signer: isSet(object.signer) ? object.signer : undefined
+    };
+  },
+
+  toSDK(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourSDKType {
+    const obj: any = {};
+    message.clientId !== undefined && (obj.client_id = message.clientId);
+    message.misbehaviour !== undefined && (obj.misbehaviour = message.misbehaviour ? Any.toSDK(message.misbehaviour) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   }
 
 };
@@ -692,18 +692,18 @@ export const MsgSubmitMisbehaviourResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgSubmitMisbehaviourResponse {
-    return {};
-  },
-
-  toJSON(_: MsgSubmitMisbehaviourResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse {
     const message = createBaseMsgSubmitMisbehaviourResponse();
     return message;
+  },
+
+  fromSDK(_: MsgSubmitMisbehaviourResponseSDKType): MsgSubmitMisbehaviourResponse {
+    return {};
+  },
+
+  toSDK(_: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };

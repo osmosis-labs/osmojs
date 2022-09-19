@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, bytesFromBase64, base64FromBytes, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
@@ -99,24 +99,6 @@ export const StoreKVPair = {
     return message;
   },
 
-  fromJSON(object: any): StoreKVPair {
-    return {
-      storeKey: isSet(object.storeKey) ? String(object.storeKey) : "",
-      delete: isSet(object.delete) ? Boolean(object.delete) : false,
-      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
-      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: StoreKVPair): unknown {
-    const obj: any = {};
-    message.storeKey !== undefined && (obj.storeKey = message.storeKey);
-    message.delete !== undefined && (obj.delete = message.delete);
-    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
-    message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<StoreKVPair>): StoreKVPair {
     const message = createBaseStoreKVPair();
     message.storeKey = object.storeKey ?? "";
@@ -124,6 +106,24 @@ export const StoreKVPair = {
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();
     return message;
+  },
+
+  fromSDK(object: StoreKVPairSDKType): StoreKVPair {
+    return {
+      storeKey: isSet(object.store_key) ? object.store_key : undefined,
+      delete: isSet(object.delete) ? object.delete : undefined,
+      key: isSet(object.key) ? object.key : undefined,
+      value: isSet(object.value) ? object.value : undefined
+    };
+  },
+
+  toSDK(message: StoreKVPair): StoreKVPairSDKType {
+    const obj: any = {};
+    message.storeKey !== undefined && (obj.store_key = message.storeKey);
+    message.delete !== undefined && (obj.delete = message.delete);
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   }
 
 };

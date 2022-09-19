@@ -46,14 +46,14 @@ export interface PacketSequenceSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+    fromSDK(object: GenesisStateSDKType): GenesisState;
+    toSDK(message: GenesisState): GenesisStateSDKType;
 };
 export declare const PacketSequence: {
     encode(message: PacketSequence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketSequence;
-    fromJSON(object: any): PacketSequence;
-    toJSON(message: PacketSequence): unknown;
     fromPartial(object: DeepPartial<PacketSequence>): PacketSequence;
+    fromSDK(object: PacketSequenceSDKType): PacketSequence;
+    toSDK(message: PacketSequence): PacketSequenceSDKType;
 };

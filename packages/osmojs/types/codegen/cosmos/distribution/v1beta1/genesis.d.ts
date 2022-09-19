@@ -185,56 +185,56 @@ export interface GenesisStateSDKType {
 export declare const DelegatorWithdrawInfo: {
     encode(message: DelegatorWithdrawInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegatorWithdrawInfo;
-    fromJSON(object: any): DelegatorWithdrawInfo;
-    toJSON(message: DelegatorWithdrawInfo): unknown;
     fromPartial(object: DeepPartial<DelegatorWithdrawInfo>): DelegatorWithdrawInfo;
+    fromSDK(object: DelegatorWithdrawInfoSDKType): DelegatorWithdrawInfo;
+    toSDK(message: DelegatorWithdrawInfo): DelegatorWithdrawInfoSDKType;
 };
 export declare const ValidatorOutstandingRewardsRecord: {
     encode(message: ValidatorOutstandingRewardsRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorOutstandingRewardsRecord;
-    fromJSON(object: any): ValidatorOutstandingRewardsRecord;
-    toJSON(message: ValidatorOutstandingRewardsRecord): unknown;
     fromPartial(object: DeepPartial<ValidatorOutstandingRewardsRecord>): ValidatorOutstandingRewardsRecord;
+    fromSDK(object: ValidatorOutstandingRewardsRecordSDKType): ValidatorOutstandingRewardsRecord;
+    toSDK(message: ValidatorOutstandingRewardsRecord): ValidatorOutstandingRewardsRecordSDKType;
 };
 export declare const ValidatorAccumulatedCommissionRecord: {
     encode(message: ValidatorAccumulatedCommissionRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorAccumulatedCommissionRecord;
-    fromJSON(object: any): ValidatorAccumulatedCommissionRecord;
-    toJSON(message: ValidatorAccumulatedCommissionRecord): unknown;
     fromPartial(object: DeepPartial<ValidatorAccumulatedCommissionRecord>): ValidatorAccumulatedCommissionRecord;
+    fromSDK(object: ValidatorAccumulatedCommissionRecordSDKType): ValidatorAccumulatedCommissionRecord;
+    toSDK(message: ValidatorAccumulatedCommissionRecord): ValidatorAccumulatedCommissionRecordSDKType;
 };
 export declare const ValidatorHistoricalRewardsRecord: {
     encode(message: ValidatorHistoricalRewardsRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorHistoricalRewardsRecord;
-    fromJSON(object: any): ValidatorHistoricalRewardsRecord;
-    toJSON(message: ValidatorHistoricalRewardsRecord): unknown;
     fromPartial(object: DeepPartial<ValidatorHistoricalRewardsRecord>): ValidatorHistoricalRewardsRecord;
+    fromSDK(object: ValidatorHistoricalRewardsRecordSDKType): ValidatorHistoricalRewardsRecord;
+    toSDK(message: ValidatorHistoricalRewardsRecord): ValidatorHistoricalRewardsRecordSDKType;
 };
 export declare const ValidatorCurrentRewardsRecord: {
     encode(message: ValidatorCurrentRewardsRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorCurrentRewardsRecord;
-    fromJSON(object: any): ValidatorCurrentRewardsRecord;
-    toJSON(message: ValidatorCurrentRewardsRecord): unknown;
     fromPartial(object: DeepPartial<ValidatorCurrentRewardsRecord>): ValidatorCurrentRewardsRecord;
+    fromSDK(object: ValidatorCurrentRewardsRecordSDKType): ValidatorCurrentRewardsRecord;
+    toSDK(message: ValidatorCurrentRewardsRecord): ValidatorCurrentRewardsRecordSDKType;
 };
 export declare const DelegatorStartingInfoRecord: {
     encode(message: DelegatorStartingInfoRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegatorStartingInfoRecord;
-    fromJSON(object: any): DelegatorStartingInfoRecord;
-    toJSON(message: DelegatorStartingInfoRecord): unknown;
     fromPartial(object: DeepPartial<DelegatorStartingInfoRecord>): DelegatorStartingInfoRecord;
+    fromSDK(object: DelegatorStartingInfoRecordSDKType): DelegatorStartingInfoRecord;
+    toSDK(message: DelegatorStartingInfoRecord): DelegatorStartingInfoRecordSDKType;
 };
 export declare const ValidatorSlashEventRecord: {
     encode(message: ValidatorSlashEventRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEventRecord;
-    fromJSON(object: any): ValidatorSlashEventRecord;
-    toJSON(message: ValidatorSlashEventRecord): unknown;
     fromPartial(object: DeepPartial<ValidatorSlashEventRecord>): ValidatorSlashEventRecord;
+    fromSDK(object: ValidatorSlashEventRecordSDKType): ValidatorSlashEventRecord;
+    toSDK(message: ValidatorSlashEventRecord): ValidatorSlashEventRecordSDKType;
 };
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+    fromSDK(object: GenesisStateSDKType): GenesisState;
+    toSDK(message: GenesisState): GenesisStateSDKType;
 };

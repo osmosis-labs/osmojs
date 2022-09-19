@@ -215,70 +215,70 @@ export interface QueryConnectionConsensusStateResponseSDKType {
 export declare const QueryConnectionRequest: {
     encode(message: QueryConnectionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionRequest;
-    fromJSON(object: any): QueryConnectionRequest;
-    toJSON(message: QueryConnectionRequest): unknown;
     fromPartial(object: DeepPartial<QueryConnectionRequest>): QueryConnectionRequest;
+    fromSDK(object: QueryConnectionRequestSDKType): QueryConnectionRequest;
+    toSDK(message: QueryConnectionRequest): QueryConnectionRequestSDKType;
 };
 export declare const QueryConnectionResponse: {
     encode(message: QueryConnectionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionResponseSDKType;
-    fromJSON(object: any): QueryConnectionResponse;
-    toJSON(message: QueryConnectionResponse): unknown;
     fromPartial(object: DeepPartial<QueryConnectionResponse>): QueryConnectionResponse;
+    fromSDK(object: QueryConnectionResponseSDKType): QueryConnectionResponse;
+    toSDK(message: QueryConnectionResponse): QueryConnectionResponseSDKType;
 };
 export declare const QueryConnectionsRequest: {
     encode(message: QueryConnectionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsRequest;
-    fromJSON(object: any): QueryConnectionsRequest;
-    toJSON(message: QueryConnectionsRequest): unknown;
     fromPartial(object: DeepPartial<QueryConnectionsRequest>): QueryConnectionsRequest;
+    fromSDK(object: QueryConnectionsRequestSDKType): QueryConnectionsRequest;
+    toSDK(message: QueryConnectionsRequest): QueryConnectionsRequestSDKType;
 };
 export declare const QueryConnectionsResponse: {
     encode(message: QueryConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsResponseSDKType;
-    fromJSON(object: any): QueryConnectionsResponse;
-    toJSON(message: QueryConnectionsResponse): unknown;
     fromPartial(object: DeepPartial<QueryConnectionsResponse>): QueryConnectionsResponse;
+    fromSDK(object: QueryConnectionsResponseSDKType): QueryConnectionsResponse;
+    toSDK(message: QueryConnectionsResponse): QueryConnectionsResponseSDKType;
 };
 export declare const QueryClientConnectionsRequest: {
     encode(message: QueryClientConnectionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsRequest;
-    fromJSON(object: any): QueryClientConnectionsRequest;
-    toJSON(message: QueryClientConnectionsRequest): unknown;
     fromPartial(object: DeepPartial<QueryClientConnectionsRequest>): QueryClientConnectionsRequest;
+    fromSDK(object: QueryClientConnectionsRequestSDKType): QueryClientConnectionsRequest;
+    toSDK(message: QueryClientConnectionsRequest): QueryClientConnectionsRequestSDKType;
 };
 export declare const QueryClientConnectionsResponse: {
     encode(message: QueryClientConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsResponseSDKType;
-    fromJSON(object: any): QueryClientConnectionsResponse;
-    toJSON(message: QueryClientConnectionsResponse): unknown;
     fromPartial(object: DeepPartial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse;
+    fromSDK(object: QueryClientConnectionsResponseSDKType): QueryClientConnectionsResponse;
+    toSDK(message: QueryClientConnectionsResponse): QueryClientConnectionsResponseSDKType;
 };
 export declare const QueryConnectionClientStateRequest: {
     encode(message: QueryConnectionClientStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateRequest;
-    fromJSON(object: any): QueryConnectionClientStateRequest;
-    toJSON(message: QueryConnectionClientStateRequest): unknown;
     fromPartial(object: DeepPartial<QueryConnectionClientStateRequest>): QueryConnectionClientStateRequest;
+    fromSDK(object: QueryConnectionClientStateRequestSDKType): QueryConnectionClientStateRequest;
+    toSDK(message: QueryConnectionClientStateRequest): QueryConnectionClientStateRequestSDKType;
 };
 export declare const QueryConnectionClientStateResponse: {
     encode(message: QueryConnectionClientStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateResponseSDKType;
-    fromJSON(object: any): QueryConnectionClientStateResponse;
-    toJSON(message: QueryConnectionClientStateResponse): unknown;
     fromPartial(object: DeepPartial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse;
+    fromSDK(object: QueryConnectionClientStateResponseSDKType): QueryConnectionClientStateResponse;
+    toSDK(message: QueryConnectionClientStateResponse): QueryConnectionClientStateResponseSDKType;
 };
 export declare const QueryConnectionConsensusStateRequest: {
     encode(message: QueryConnectionConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateRequest;
-    fromJSON(object: any): QueryConnectionConsensusStateRequest;
-    toJSON(message: QueryConnectionConsensusStateRequest): unknown;
     fromPartial(object: DeepPartial<QueryConnectionConsensusStateRequest>): QueryConnectionConsensusStateRequest;
+    fromSDK(object: QueryConnectionConsensusStateRequestSDKType): QueryConnectionConsensusStateRequest;
+    toSDK(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestSDKType;
 };
 export declare const QueryConnectionConsensusStateResponse: {
     encode(message: QueryConnectionConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateResponseSDKType;
-    fromJSON(object: any): QueryConnectionConsensusStateResponse;
-    toJSON(message: QueryConnectionConsensusStateResponse): unknown;
     fromPartial(object: DeepPartial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse;
+    fromSDK(object: QueryConnectionConsensusStateResponseSDKType): QueryConnectionConsensusStateResponse;
+    toSDK(message: QueryConnectionConsensusStateResponse): QueryConnectionConsensusStateResponseSDKType;
 };

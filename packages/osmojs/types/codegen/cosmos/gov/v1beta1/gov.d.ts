@@ -294,63 +294,63 @@ export interface TallyParamsSDKType {
 export declare const WeightedVoteOption: {
     encode(message: WeightedVoteOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): WeightedVoteOption;
-    fromJSON(object: any): WeightedVoteOption;
-    toJSON(message: WeightedVoteOption): unknown;
     fromPartial(object: DeepPartial<WeightedVoteOption>): WeightedVoteOption;
+    fromSDK(object: WeightedVoteOptionSDKType): WeightedVoteOption;
+    toSDK(message: WeightedVoteOption): WeightedVoteOptionSDKType;
 };
 export declare const TextProposal: {
     encode(message: TextProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TextProposal;
-    fromJSON(object: any): TextProposal;
-    toJSON(message: TextProposal): unknown;
     fromPartial(object: DeepPartial<TextProposal>): TextProposal;
+    fromSDK(object: TextProposalSDKType): TextProposal;
+    toSDK(message: TextProposal): TextProposalSDKType;
 };
 export declare const Deposit: {
     encode(message: Deposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Deposit;
-    fromJSON(object: any): Deposit;
-    toJSON(message: Deposit): unknown;
     fromPartial(object: DeepPartial<Deposit>): Deposit;
+    fromSDK(object: DepositSDKType): Deposit;
+    toSDK(message: Deposit): DepositSDKType;
 };
 export declare const Proposal: {
     encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
-    fromJSON(object: any): Proposal;
-    toJSON(message: Proposal): unknown;
     fromPartial(object: DeepPartial<Proposal>): Proposal;
+    fromSDK(object: ProposalSDKType): Proposal;
+    toSDK(message: Proposal): ProposalSDKType;
 };
 export declare const TallyResult: {
     encode(message: TallyResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TallyResult;
-    fromJSON(object: any): TallyResult;
-    toJSON(message: TallyResult): unknown;
     fromPartial(object: DeepPartial<TallyResult>): TallyResult;
+    fromSDK(object: TallyResultSDKType): TallyResult;
+    toSDK(message: TallyResult): TallyResultSDKType;
 };
 export declare const Vote: {
     encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
-    fromJSON(object: any): Vote;
-    toJSON(message: Vote): unknown;
     fromPartial(object: DeepPartial<Vote>): Vote;
+    fromSDK(object: VoteSDKType): Vote;
+    toSDK(message: Vote): VoteSDKType;
 };
 export declare const DepositParams: {
     encode(message: DepositParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DepositParams;
-    fromJSON(object: any): DepositParams;
-    toJSON(message: DepositParams): unknown;
     fromPartial(object: DeepPartial<DepositParams>): DepositParams;
+    fromSDK(object: DepositParamsSDKType): DepositParams;
+    toSDK(message: DepositParams): DepositParamsSDKType;
 };
 export declare const VotingParams: {
     encode(message: VotingParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VotingParams;
-    fromJSON(object: any): VotingParams;
-    toJSON(message: VotingParams): unknown;
     fromPartial(object: DeepPartial<VotingParams>): VotingParams;
+    fromSDK(object: VotingParamsSDKType): VotingParams;
+    toSDK(message: VotingParams): VotingParamsSDKType;
 };
 export declare const TallyParams: {
     encode(message: TallyParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TallyParams;
-    fromJSON(object: any): TallyParams;
-    toJSON(message: TallyParams): unknown;
     fromPartial(object: DeepPartial<TallyParams>): TallyParams;
+    fromSDK(object: TallyParamsSDKType): TallyParams;
+    toSDK(message: TallyParams): TallyParamsSDKType;
 };

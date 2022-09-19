@@ -119,21 +119,21 @@ export interface SyntheticLockSDKType {
 export declare const PeriodLock: {
     encode(message: PeriodLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeriodLock;
-    fromJSON(object: any): PeriodLock;
-    toJSON(message: PeriodLock): unknown;
     fromPartial(object: DeepPartial<PeriodLock>): PeriodLock;
+    fromSDK(object: PeriodLockSDKType): PeriodLock;
+    toSDK(message: PeriodLock): PeriodLockSDKType;
 };
 export declare const QueryCondition: {
     encode(message: QueryCondition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCondition;
-    fromJSON(object: any): QueryCondition;
-    toJSON(message: QueryCondition): unknown;
     fromPartial(object: DeepPartial<QueryCondition>): QueryCondition;
+    fromSDK(object: QueryConditionSDKType): QueryCondition;
+    toSDK(message: QueryCondition): QueryConditionSDKType;
 };
 export declare const SyntheticLock: {
     encode(message: SyntheticLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLock;
-    fromJSON(object: any): SyntheticLock;
-    toJSON(message: SyntheticLock): unknown;
     fromPartial(object: DeepPartial<SyntheticLock>): SyntheticLock;
+    fromSDK(object: SyntheticLockSDKType): SyntheticLock;
+    toSDK(message: SyntheticLock): SyntheticLockSDKType;
 };

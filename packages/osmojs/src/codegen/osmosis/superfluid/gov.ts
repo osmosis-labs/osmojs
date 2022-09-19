@@ -1,6 +1,6 @@
 import { SuperfluidAsset, SuperfluidAssetSDKType } from "./superfluid";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
  * assets
@@ -97,34 +97,34 @@ export const SetSuperfluidAssetsProposal = {
     return message;
   },
 
-  fromJSON(object: any): SetSuperfluidAssetsProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      assets: Array.isArray(object?.assets) ? object.assets.map((e: any) => SuperfluidAsset.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: SetSuperfluidAssetsProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.assets) {
-      obj.assets = message.assets.map(e => e ? SuperfluidAsset.toJSON(e) : undefined);
-    } else {
-      obj.assets = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SetSuperfluidAssetsProposal>): SetSuperfluidAssetsProposal {
     const message = createBaseSetSuperfluidAssetsProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.assets = object.assets?.map(e => SuperfluidAsset.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: SetSuperfluidAssetsProposalSDKType): SetSuperfluidAssetsProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      assets: Array.isArray(object?.assets) ? object.assets.map((e: any) => SuperfluidAsset.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: SetSuperfluidAssetsProposal): SetSuperfluidAssetsProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+
+    if (message.assets) {
+      obj.assets = message.assets.map(e => e ? SuperfluidAsset.toSDK(e) : undefined);
+    } else {
+      obj.assets = [];
+    }
+
+    return obj;
   }
 
 };
@@ -184,34 +184,34 @@ export const RemoveSuperfluidAssetsProposal = {
     return message;
   },
 
-  fromJSON(object: any): RemoveSuperfluidAssetsProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      superfluidAssetDenoms: Array.isArray(object?.superfluidAssetDenoms) ? object.superfluidAssetDenoms.map((e: any) => String(e)) : []
-    };
-  },
-
-  toJSON(message: RemoveSuperfluidAssetsProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.superfluidAssetDenoms) {
-      obj.superfluidAssetDenoms = message.superfluidAssetDenoms.map(e => e);
-    } else {
-      obj.superfluidAssetDenoms = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<RemoveSuperfluidAssetsProposal>): RemoveSuperfluidAssetsProposal {
     const message = createBaseRemoveSuperfluidAssetsProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.superfluidAssetDenoms = object.superfluidAssetDenoms?.map(e => e) || [];
     return message;
+  },
+
+  fromSDK(object: RemoveSuperfluidAssetsProposalSDKType): RemoveSuperfluidAssetsProposal {
+    return {
+      title: isSet(object.title) ? object.title : undefined,
+      description: isSet(object.description) ? object.description : undefined,
+      superfluidAssetDenoms: Array.isArray(object?.superfluid_asset_denoms) ? object.superfluid_asset_denoms.map((e: any) => e) : []
+    };
+  },
+
+  toSDK(message: RemoveSuperfluidAssetsProposal): RemoveSuperfluidAssetsProposalSDKType {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+
+    if (message.superfluidAssetDenoms) {
+      obj.superfluid_asset_denoms = message.superfluidAssetDenoms.map(e => e);
+    } else {
+      obj.superfluid_asset_denoms = [];
+    }
+
+    return obj;
   }
 
 };

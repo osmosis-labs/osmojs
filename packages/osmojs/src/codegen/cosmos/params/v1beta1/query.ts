@@ -1,6 +1,6 @@
 import { ParamChange, ParamChangeSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 
 export interface QueryParamsRequest {
@@ -124,25 +124,25 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryParamsRequest {
-    return {
-      subspace: isSet(object.subspace) ? String(object.subspace) : "",
-      key: isSet(object.key) ? String(object.key) : ""
-    };
-  },
-
-  toJSON(message: QueryParamsRequest): unknown {
-    const obj: any = {};
-    message.subspace !== undefined && (obj.subspace = message.subspace);
-    message.key !== undefined && (obj.key = message.key);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     message.subspace = object.subspace ?? "";
     message.key = object.key ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryParamsRequestSDKType): QueryParamsRequest {
+    return {
+      subspace: isSet(object.subspace) ? object.subspace : undefined,
+      key: isSet(object.key) ? object.key : undefined
+    };
+  },
+
+  toSDK(message: QueryParamsRequest): QueryParamsRequestSDKType {
+    const obj: any = {};
+    message.subspace !== undefined && (obj.subspace = message.subspace);
+    message.key !== undefined && (obj.key = message.key);
+    return obj;
   }
 
 };
@@ -184,22 +184,22 @@ export const QueryParamsResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryParamsResponse {
-    return {
-      param: isSet(object.param) ? ParamChange.fromJSON(object.param) : undefined
-    };
-  },
-
-  toJSON(message: QueryParamsResponse): unknown {
-    const obj: any = {};
-    message.param !== undefined && (obj.param = message.param ? ParamChange.toJSON(message.param) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.param = object.param !== undefined && object.param !== null ? ParamChange.fromPartial(object.param) : undefined;
     return message;
+  },
+
+  fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
+    return {
+      param: isSet(object.param) ? ParamChange.fromSDK(object.param) : undefined
+    };
+  },
+
+  toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
+    const obj: any = {};
+    message.param !== undefined && (obj.param = message.param ? ParamChange.toSDK(message.param) : undefined);
+    return obj;
   }
 
 };
@@ -231,18 +231,18 @@ export const QuerySubspacesRequest = {
     return message;
   },
 
-  fromJSON(_: any): QuerySubspacesRequest {
-    return {};
-  },
-
-  toJSON(_: QuerySubspacesRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QuerySubspacesRequest>): QuerySubspacesRequest {
     const message = createBaseQuerySubspacesRequest();
     return message;
+  },
+
+  fromSDK(_: QuerySubspacesRequestSDKType): QuerySubspacesRequest {
+    return {};
+  },
+
+  toSDK(_: QuerySubspacesRequest): QuerySubspacesRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -284,28 +284,28 @@ export const QuerySubspacesResponse = {
     return message;
   },
 
-  fromJSON(object: any): QuerySubspacesResponse {
+  fromPartial(object: DeepPartial<QuerySubspacesResponse>): QuerySubspacesResponse {
+    const message = createBaseQuerySubspacesResponse();
+    message.subspaces = object.subspaces?.map(e => Subspace.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: QuerySubspacesResponseSDKType): QuerySubspacesResponse {
     return {
-      subspaces: Array.isArray(object?.subspaces) ? object.subspaces.map((e: any) => Subspace.fromJSON(e)) : []
+      subspaces: Array.isArray(object?.subspaces) ? object.subspaces.map((e: any) => Subspace.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: QuerySubspacesResponse): unknown {
+  toSDK(message: QuerySubspacesResponse): QuerySubspacesResponseSDKType {
     const obj: any = {};
 
     if (message.subspaces) {
-      obj.subspaces = message.subspaces.map(e => e ? Subspace.toJSON(e) : undefined);
+      obj.subspaces = message.subspaces.map(e => e ? Subspace.toSDK(e) : undefined);
     } else {
       obj.subspaces = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<QuerySubspacesResponse>): QuerySubspacesResponse {
-    const message = createBaseQuerySubspacesResponse();
-    message.subspaces = object.subspaces?.map(e => Subspace.fromPartial(e)) || [];
-    return message;
   }
 
 };
@@ -356,14 +356,21 @@ export const Subspace = {
     return message;
   },
 
-  fromJSON(object: any): Subspace {
+  fromPartial(object: DeepPartial<Subspace>): Subspace {
+    const message = createBaseSubspace();
+    message.subspace = object.subspace ?? "";
+    message.keys = object.keys?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: SubspaceSDKType): Subspace {
     return {
-      subspace: isSet(object.subspace) ? String(object.subspace) : "",
-      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => String(e)) : []
+      subspace: isSet(object.subspace) ? object.subspace : undefined,
+      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: Subspace): unknown {
+  toSDK(message: Subspace): SubspaceSDKType {
     const obj: any = {};
     message.subspace !== undefined && (obj.subspace = message.subspace);
 
@@ -374,13 +381,6 @@ export const Subspace = {
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<Subspace>): Subspace {
-    const message = createBaseSubspace();
-    message.subspace = object.subspace ?? "";
-    message.keys = object.keys?.map(e => e) || [];
-    return message;
   }
 
 };

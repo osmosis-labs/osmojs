@@ -49,28 +49,28 @@ export const GenesisState = {
     return message;
   },
 
-  fromJSON(object: any): GenesisState {
+  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+    const message = createBaseGenesisState();
+    message.allowances = object.allowances?.map(e => Grant.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromSDK(object: GenesisStateSDKType): GenesisState {
     return {
-      allowances: Array.isArray(object?.allowances) ? object.allowances.map((e: any) => Grant.fromJSON(e)) : []
+      allowances: Array.isArray(object?.allowances) ? object.allowances.map((e: any) => Grant.fromSDK(e)) : []
     };
   },
 
-  toJSON(message: GenesisState): unknown {
+  toSDK(message: GenesisState): GenesisStateSDKType {
     const obj: any = {};
 
     if (message.allowances) {
-      obj.allowances = message.allowances.map(e => e ? Grant.toJSON(e) : undefined);
+      obj.allowances = message.allowances.map(e => e ? Grant.toSDK(e) : undefined);
     } else {
       obj.allowances = [];
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
-    const message = createBaseGenesisState();
-    message.allowances = object.allowances?.map(e => Grant.fromPartial(e)) || [];
-    return message;
   }
 
 };

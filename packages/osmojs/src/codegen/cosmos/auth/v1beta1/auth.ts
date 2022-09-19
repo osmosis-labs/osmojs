@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * BaseAccount defines a base account type. It contains all the necessary fields
  * for basic account functionality. Any custom account type should extend this
@@ -122,24 +122,6 @@ export const BaseAccount = {
     return message;
   },
 
-  fromJSON(object: any): BaseAccount {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      pubKey: isSet(object.pubKey) ? Any.fromJSON(object.pubKey) : undefined,
-      accountNumber: isSet(object.accountNumber) ? Long.fromString(object.accountNumber) : Long.UZERO,
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO
-    };
-  },
-
-  toJSON(message: BaseAccount): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.pubKey !== undefined && (obj.pubKey = message.pubKey ? Any.toJSON(message.pubKey) : undefined);
-    message.accountNumber !== undefined && (obj.accountNumber = (message.accountNumber || Long.UZERO).toString());
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<BaseAccount>): BaseAccount {
     const message = createBaseBaseAccount();
     message.address = object.address ?? "";
@@ -147,6 +129,24 @@ export const BaseAccount = {
     message.accountNumber = object.accountNumber !== undefined && object.accountNumber !== null ? Long.fromValue(object.accountNumber) : Long.UZERO;
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: BaseAccountSDKType): BaseAccount {
+    return {
+      address: isSet(object.address) ? object.address : undefined,
+      pubKey: isSet(object.pub_key) ? Any.fromSDK(object.pub_key) : undefined,
+      accountNumber: isSet(object.account_number) ? object.account_number : undefined,
+      sequence: isSet(object.sequence) ? object.sequence : undefined
+    };
+  },
+
+  toSDK(message: BaseAccount): BaseAccountSDKType {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.pubKey !== undefined && (obj.pub_key = message.pubKey ? Any.toSDK(message.pubKey) : undefined);
+    message.accountNumber !== undefined && (obj.account_number = message.accountNumber);
+    message.sequence !== undefined && (obj.sequence = message.sequence);
+    return obj;
   }
 
 };
@@ -206,17 +206,25 @@ export const ModuleAccount = {
     return message;
   },
 
-  fromJSON(object: any): ModuleAccount {
+  fromPartial(object: DeepPartial<ModuleAccount>): ModuleAccount {
+    const message = createBaseModuleAccount();
+    message.baseAccount = object.baseAccount !== undefined && object.baseAccount !== null ? BaseAccount.fromPartial(object.baseAccount) : undefined;
+    message.name = object.name ?? "";
+    message.permissions = object.permissions?.map(e => e) || [];
+    return message;
+  },
+
+  fromSDK(object: ModuleAccountSDKType): ModuleAccount {
     return {
-      baseAccount: isSet(object.baseAccount) ? BaseAccount.fromJSON(object.baseAccount) : undefined,
-      name: isSet(object.name) ? String(object.name) : "",
-      permissions: Array.isArray(object?.permissions) ? object.permissions.map((e: any) => String(e)) : []
+      baseAccount: isSet(object.base_account) ? BaseAccount.fromSDK(object.base_account) : undefined,
+      name: isSet(object.name) ? object.name : undefined,
+      permissions: Array.isArray(object?.permissions) ? object.permissions.map((e: any) => e) : []
     };
   },
 
-  toJSON(message: ModuleAccount): unknown {
+  toSDK(message: ModuleAccount): ModuleAccountSDKType {
     const obj: any = {};
-    message.baseAccount !== undefined && (obj.baseAccount = message.baseAccount ? BaseAccount.toJSON(message.baseAccount) : undefined);
+    message.baseAccount !== undefined && (obj.base_account = message.baseAccount ? BaseAccount.toSDK(message.baseAccount) : undefined);
     message.name !== undefined && (obj.name = message.name);
 
     if (message.permissions) {
@@ -226,14 +234,6 @@ export const ModuleAccount = {
     }
 
     return obj;
-  },
-
-  fromPartial(object: DeepPartial<ModuleAccount>): ModuleAccount {
-    const message = createBaseModuleAccount();
-    message.baseAccount = object.baseAccount !== undefined && object.baseAccount !== null ? BaseAccount.fromPartial(object.baseAccount) : undefined;
-    message.name = object.name ?? "";
-    message.permissions = object.permissions?.map(e => e) || [];
-    return message;
   }
 
 };
@@ -311,26 +311,6 @@ export const Params = {
     return message;
   },
 
-  fromJSON(object: any): Params {
-    return {
-      maxMemoCharacters: isSet(object.maxMemoCharacters) ? Long.fromString(object.maxMemoCharacters) : Long.UZERO,
-      txSigLimit: isSet(object.txSigLimit) ? Long.fromString(object.txSigLimit) : Long.UZERO,
-      txSizeCostPerByte: isSet(object.txSizeCostPerByte) ? Long.fromString(object.txSizeCostPerByte) : Long.UZERO,
-      sigVerifyCostEd25519: isSet(object.sigVerifyCostEd25519) ? Long.fromString(object.sigVerifyCostEd25519) : Long.UZERO,
-      sigVerifyCostSecp256k1: isSet(object.sigVerifyCostSecp256k1) ? Long.fromString(object.sigVerifyCostSecp256k1) : Long.UZERO
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-    message.maxMemoCharacters !== undefined && (obj.maxMemoCharacters = (message.maxMemoCharacters || Long.UZERO).toString());
-    message.txSigLimit !== undefined && (obj.txSigLimit = (message.txSigLimit || Long.UZERO).toString());
-    message.txSizeCostPerByte !== undefined && (obj.txSizeCostPerByte = (message.txSizeCostPerByte || Long.UZERO).toString());
-    message.sigVerifyCostEd25519 !== undefined && (obj.sigVerifyCostEd25519 = (message.sigVerifyCostEd25519 || Long.UZERO).toString());
-    message.sigVerifyCostSecp256k1 !== undefined && (obj.sigVerifyCostSecp256k1 = (message.sigVerifyCostSecp256k1 || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.maxMemoCharacters = object.maxMemoCharacters !== undefined && object.maxMemoCharacters !== null ? Long.fromValue(object.maxMemoCharacters) : Long.UZERO;
@@ -339,6 +319,26 @@ export const Params = {
     message.sigVerifyCostEd25519 = object.sigVerifyCostEd25519 !== undefined && object.sigVerifyCostEd25519 !== null ? Long.fromValue(object.sigVerifyCostEd25519) : Long.UZERO;
     message.sigVerifyCostSecp256k1 = object.sigVerifyCostSecp256k1 !== undefined && object.sigVerifyCostSecp256k1 !== null ? Long.fromValue(object.sigVerifyCostSecp256k1) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: ParamsSDKType): Params {
+    return {
+      maxMemoCharacters: isSet(object.max_memo_characters) ? object.max_memo_characters : undefined,
+      txSigLimit: isSet(object.tx_sig_limit) ? object.tx_sig_limit : undefined,
+      txSizeCostPerByte: isSet(object.tx_size_cost_per_byte) ? object.tx_size_cost_per_byte : undefined,
+      sigVerifyCostEd25519: isSet(object.sig_verify_cost_ed25519) ? object.sig_verify_cost_ed25519 : undefined,
+      sigVerifyCostSecp256k1: isSet(object.sig_verify_cost_secp256k1) ? object.sig_verify_cost_secp256k1 : undefined
+    };
+  },
+
+  toSDK(message: Params): ParamsSDKType {
+    const obj: any = {};
+    message.maxMemoCharacters !== undefined && (obj.max_memo_characters = message.maxMemoCharacters);
+    message.txSigLimit !== undefined && (obj.tx_sig_limit = message.txSigLimit);
+    message.txSizeCostPerByte !== undefined && (obj.tx_size_cost_per_byte = message.txSizeCostPerByte);
+    message.sigVerifyCostEd25519 !== undefined && (obj.sig_verify_cost_ed25519 = message.sigVerifyCostEd25519);
+    message.sigVerifyCostSecp256k1 !== undefined && (obj.sig_verify_cost_secp256k1 = message.sigVerifyCostSecp256k1);
+    return obj;
   }
 
 };

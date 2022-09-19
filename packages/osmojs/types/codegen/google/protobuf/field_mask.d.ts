@@ -413,7 +413,7 @@ export interface FieldMaskSDKType {
 export declare const FieldMask: {
     encode(message: FieldMask, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FieldMask;
-    fromJSON(object: any): FieldMask;
-    toJSON(message: FieldMask): unknown;
     fromPartial(object: DeepPartial<FieldMask>): FieldMask;
+    fromSDK(object: FieldMaskSDKType): FieldMask;
+    toSDK(message: FieldMask): FieldMaskSDKType;
 };

@@ -71,53 +71,53 @@ export declare namespace cosmwasm {
                 toJSON: {
                     storeCode(value: _93.MsgStoreCode): {
                         typeUrl: string;
-                        value: unknown;
+                        value: any;
                     };
                     instantiateContract(value: _93.MsgInstantiateContract): {
                         typeUrl: string;
-                        value: unknown;
+                        value: any;
                     };
                     executeContract(value: _93.MsgExecuteContract): {
                         typeUrl: string;
-                        value: unknown;
+                        value: any;
                     };
                     migrateContract(value: _93.MsgMigrateContract): {
                         typeUrl: string;
-                        value: unknown;
+                        value: any;
                     };
                     updateAdmin(value: _93.MsgUpdateAdmin): {
                         typeUrl: string;
-                        value: unknown;
+                        value: any;
                     };
                     clearAdmin(value: _93.MsgClearAdmin): {
                         typeUrl: string;
-                        value: unknown;
+                        value: any;
                     };
                 };
                 fromJSON: {
                     storeCode(value: any): {
                         typeUrl: string;
-                        value: _93.MsgStoreCode;
+                        value: any;
                     };
                     instantiateContract(value: any): {
                         typeUrl: string;
-                        value: _93.MsgInstantiateContract;
+                        value: any;
                     };
                     executeContract(value: any): {
                         typeUrl: string;
-                        value: _93.MsgExecuteContract;
+                        value: any;
                     };
                     migrateContract(value: any): {
                         typeUrl: string;
-                        value: _93.MsgMigrateContract;
+                        value: any;
                     };
                     updateAdmin(value: any): {
                         typeUrl: string;
-                        value: _93.MsgUpdateAdmin;
+                        value: any;
                     };
                     clearAdmin(value: any): {
                         typeUrl: string;
-                        value: _93.MsgClearAdmin;
+                        value: any;
                     };
                 };
                 fromPartial: {
@@ -264,27 +264,25 @@ export declare namespace cosmwasm {
             AccessTypeParam: {
                 encode(message: _94.AccessTypeParam, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.AccessTypeParam;
-                fromJSON(object: any): _94.AccessTypeParam;
-                toJSON(message: _94.AccessTypeParam): unknown;
                 fromPartial(object: {
                     value?: _94.AccessType;
                 }): _94.AccessTypeParam;
+                fromSDK(object: _94.AccessTypeParamSDKType): _94.AccessTypeParam;
+                toSDK(message: _94.AccessTypeParam): _94.AccessTypeParamSDKType;
             };
             AccessConfig: {
                 encode(message: _94.AccessConfig, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.AccessConfig;
-                fromJSON(object: any): _94.AccessConfig;
-                toJSON(message: _94.AccessConfig): unknown;
                 fromPartial(object: {
                     permission?: _94.AccessType;
                     address?: string;
                 }): _94.AccessConfig;
+                fromSDK(object: _94.AccessConfigSDKType): _94.AccessConfig;
+                toSDK(message: _94.AccessConfig): _94.AccessConfigSDKType;
             };
             Params: {
                 encode(message: _94.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.Params;
-                fromJSON(object: any): _94.Params;
-                toJSON(message: _94.Params): unknown;
                 fromPartial(object: {
                     codeUploadAccess?: {
                         permission?: _94.AccessType;
@@ -293,12 +291,12 @@ export declare namespace cosmwasm {
                     instantiateDefaultPermission?: _94.AccessType;
                     maxWasmCodeSize?: any;
                 }): _94.Params;
+                fromSDK(object: _94.ParamsSDKType): _94.Params;
+                toSDK(message: _94.Params): _94.ParamsSDKType;
             };
             CodeInfo: {
                 encode(message: _94.CodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.CodeInfo;
-                fromJSON(object: any): _94.CodeInfo;
-                toJSON(message: _94.CodeInfo): unknown;
                 fromPartial(object: {
                     codeHash?: Uint8Array;
                     creator?: string;
@@ -307,12 +305,12 @@ export declare namespace cosmwasm {
                         address?: string;
                     };
                 }): _94.CodeInfo;
+                fromSDK(object: _94.CodeInfoSDKType): _94.CodeInfo;
+                toSDK(message: _94.CodeInfo): _94.CodeInfoSDKType;
             };
             ContractInfo: {
                 encode(message: _94.ContractInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ContractInfo;
-                fromJSON(object: any): _94.ContractInfo;
-                toJSON(message: _94.ContractInfo): unknown;
                 fromPartial(object: {
                     codeId?: any;
                     creator?: string;
@@ -328,12 +326,12 @@ export declare namespace cosmwasm {
                         value?: Uint8Array;
                     };
                 }): _94.ContractInfo;
+                fromSDK(object: _94.ContractInfoSDKType): _94.ContractInfo;
+                toSDK(message: _94.ContractInfo): _94.ContractInfoSDKType;
             };
             ContractCodeHistoryEntry: {
                 encode(message: _94.ContractCodeHistoryEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ContractCodeHistoryEntry;
-                fromJSON(object: any): _94.ContractCodeHistoryEntry;
-                toJSON(message: _94.ContractCodeHistoryEntry): unknown;
                 fromPartial(object: {
                     operation?: _94.ContractCodeHistoryOperationType;
                     codeId?: any;
@@ -343,32 +341,32 @@ export declare namespace cosmwasm {
                     };
                     msg?: Uint8Array;
                 }): _94.ContractCodeHistoryEntry;
+                fromSDK(object: _94.ContractCodeHistoryEntrySDKType): _94.ContractCodeHistoryEntry;
+                toSDK(message: _94.ContractCodeHistoryEntry): _94.ContractCodeHistoryEntrySDKType;
             };
             AbsoluteTxPosition: {
                 encode(message: _94.AbsoluteTxPosition, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.AbsoluteTxPosition;
-                fromJSON(object: any): _94.AbsoluteTxPosition;
-                toJSON(message: _94.AbsoluteTxPosition): unknown;
                 fromPartial(object: {
                     blockHeight?: any;
                     txIndex?: any;
                 }): _94.AbsoluteTxPosition;
+                fromSDK(object: _94.AbsoluteTxPositionSDKType): _94.AbsoluteTxPosition;
+                toSDK(message: _94.AbsoluteTxPosition): _94.AbsoluteTxPositionSDKType;
             };
             Model: {
                 encode(message: _94.Model, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.Model;
-                fromJSON(object: any): _94.Model;
-                toJSON(message: _94.Model): unknown;
                 fromPartial(object: {
                     key?: Uint8Array;
                     value?: Uint8Array;
                 }): _94.Model;
+                fromSDK(object: _94.ModelSDKType): _94.Model;
+                toSDK(message: _94.Model): _94.ModelSDKType;
             };
             MsgStoreCode: {
                 encode(message: _93.MsgStoreCode, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgStoreCode;
-                fromJSON(object: any): _93.MsgStoreCode;
-                toJSON(message: _93.MsgStoreCode): unknown;
                 fromPartial(object: {
                     sender?: string;
                     wasmByteCode?: Uint8Array;
@@ -377,21 +375,21 @@ export declare namespace cosmwasm {
                         address?: string;
                     };
                 }): _93.MsgStoreCode;
+                fromSDK(object: _93.MsgStoreCodeSDKType): _93.MsgStoreCode;
+                toSDK(message: _93.MsgStoreCode): _93.MsgStoreCodeSDKType;
             };
             MsgStoreCodeResponse: {
                 encode(message: _93.MsgStoreCodeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgStoreCodeResponseSDKType;
-                fromJSON(object: any): _93.MsgStoreCodeResponse;
-                toJSON(message: _93.MsgStoreCodeResponse): unknown;
                 fromPartial(object: {
                     codeId?: any;
                 }): _93.MsgStoreCodeResponse;
+                fromSDK(object: _93.MsgStoreCodeResponseSDKType): _93.MsgStoreCodeResponse;
+                toSDK(message: _93.MsgStoreCodeResponse): _93.MsgStoreCodeResponseSDKType;
             };
             MsgInstantiateContract: {
                 encode(message: _93.MsgInstantiateContract, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgInstantiateContract;
-                fromJSON(object: any): _93.MsgInstantiateContract;
-                toJSON(message: _93.MsgInstantiateContract): unknown;
                 fromPartial(object: {
                     sender?: string;
                     admin?: string;
@@ -403,22 +401,22 @@ export declare namespace cosmwasm {
                         amount?: string;
                     }[];
                 }): _93.MsgInstantiateContract;
+                fromSDK(object: _93.MsgInstantiateContractSDKType): _93.MsgInstantiateContract;
+                toSDK(message: _93.MsgInstantiateContract): _93.MsgInstantiateContractSDKType;
             };
             MsgInstantiateContractResponse: {
                 encode(message: _93.MsgInstantiateContractResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgInstantiateContractResponseSDKType;
-                fromJSON(object: any): _93.MsgInstantiateContractResponse;
-                toJSON(message: _93.MsgInstantiateContractResponse): unknown;
                 fromPartial(object: {
                     address?: string;
                     data?: Uint8Array;
                 }): _93.MsgInstantiateContractResponse;
+                fromSDK(object: _93.MsgInstantiateContractResponseSDKType): _93.MsgInstantiateContractResponse;
+                toSDK(message: _93.MsgInstantiateContractResponse): _93.MsgInstantiateContractResponseSDKType;
             };
             MsgExecuteContract: {
                 encode(message: _93.MsgExecuteContract, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgExecuteContract;
-                fromJSON(object: any): _93.MsgExecuteContract;
-                toJSON(message: _93.MsgExecuteContract): unknown;
                 fromPartial(object: {
                     sender?: string;
                     contract?: string;
@@ -428,86 +426,86 @@ export declare namespace cosmwasm {
                         amount?: string;
                     }[];
                 }): _93.MsgExecuteContract;
+                fromSDK(object: _93.MsgExecuteContractSDKType): _93.MsgExecuteContract;
+                toSDK(message: _93.MsgExecuteContract): _93.MsgExecuteContractSDKType;
             };
             MsgExecuteContractResponse: {
                 encode(message: _93.MsgExecuteContractResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgExecuteContractResponseSDKType;
-                fromJSON(object: any): _93.MsgExecuteContractResponse;
-                toJSON(message: _93.MsgExecuteContractResponse): unknown;
                 fromPartial(object: {
                     data?: Uint8Array;
                 }): _93.MsgExecuteContractResponse;
+                fromSDK(object: _93.MsgExecuteContractResponseSDKType): _93.MsgExecuteContractResponse;
+                toSDK(message: _93.MsgExecuteContractResponse): _93.MsgExecuteContractResponseSDKType;
             };
             MsgMigrateContract: {
                 encode(message: _93.MsgMigrateContract, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgMigrateContract;
-                fromJSON(object: any): _93.MsgMigrateContract;
-                toJSON(message: _93.MsgMigrateContract): unknown;
                 fromPartial(object: {
                     sender?: string;
                     contract?: string;
                     codeId?: any;
                     msg?: Uint8Array;
                 }): _93.MsgMigrateContract;
+                fromSDK(object: _93.MsgMigrateContractSDKType): _93.MsgMigrateContract;
+                toSDK(message: _93.MsgMigrateContract): _93.MsgMigrateContractSDKType;
             };
             MsgMigrateContractResponse: {
                 encode(message: _93.MsgMigrateContractResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgMigrateContractResponseSDKType;
-                fromJSON(object: any): _93.MsgMigrateContractResponse;
-                toJSON(message: _93.MsgMigrateContractResponse): unknown;
                 fromPartial(object: {
                     data?: Uint8Array;
                 }): _93.MsgMigrateContractResponse;
+                fromSDK(object: _93.MsgMigrateContractResponseSDKType): _93.MsgMigrateContractResponse;
+                toSDK(message: _93.MsgMigrateContractResponse): _93.MsgMigrateContractResponseSDKType;
             };
             MsgUpdateAdmin: {
                 encode(message: _93.MsgUpdateAdmin, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgUpdateAdmin;
-                fromJSON(object: any): _93.MsgUpdateAdmin;
-                toJSON(message: _93.MsgUpdateAdmin): unknown;
                 fromPartial(object: {
                     sender?: string;
                     newAdmin?: string;
                     contract?: string;
                 }): _93.MsgUpdateAdmin;
+                fromSDK(object: _93.MsgUpdateAdminSDKType): _93.MsgUpdateAdmin;
+                toSDK(message: _93.MsgUpdateAdmin): _93.MsgUpdateAdminSDKType;
             };
             MsgUpdateAdminResponse: {
                 encode(_: _93.MsgUpdateAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgUpdateAdminResponseSDKType;
-                fromJSON(_: any): _93.MsgUpdateAdminResponse;
-                toJSON(_: _93.MsgUpdateAdminResponse): unknown;
                 fromPartial(_: {}): _93.MsgUpdateAdminResponse;
+                fromSDK(_: _93.MsgUpdateAdminResponseSDKType): _93.MsgUpdateAdminResponse;
+                toSDK(_: _93.MsgUpdateAdminResponse): _93.MsgUpdateAdminResponseSDKType;
             };
             MsgClearAdmin: {
                 encode(message: _93.MsgClearAdmin, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgClearAdmin;
-                fromJSON(object: any): _93.MsgClearAdmin;
-                toJSON(message: _93.MsgClearAdmin): unknown;
                 fromPartial(object: {
                     sender?: string;
                     contract?: string;
                 }): _93.MsgClearAdmin;
+                fromSDK(object: _93.MsgClearAdminSDKType): _93.MsgClearAdmin;
+                toSDK(message: _93.MsgClearAdmin): _93.MsgClearAdminSDKType;
             };
             MsgClearAdminResponse: {
                 encode(_: _93.MsgClearAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.MsgClearAdminResponseSDKType;
-                fromJSON(_: any): _93.MsgClearAdminResponse;
-                toJSON(_: _93.MsgClearAdminResponse): unknown;
                 fromPartial(_: {}): _93.MsgClearAdminResponse;
+                fromSDK(_: _93.MsgClearAdminResponseSDKType): _93.MsgClearAdminResponse;
+                toSDK(_: _93.MsgClearAdminResponse): _93.MsgClearAdminResponseSDKType;
             };
             QueryContractInfoRequest: {
                 encode(message: _92.QueryContractInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryContractInfoRequest;
-                fromJSON(object: any): _92.QueryContractInfoRequest;
-                toJSON(message: _92.QueryContractInfoRequest): unknown;
                 fromPartial(object: {
                     address?: string;
                 }): _92.QueryContractInfoRequest;
+                fromSDK(object: _92.QueryContractInfoRequestSDKType): _92.QueryContractInfoRequest;
+                toSDK(message: _92.QueryContractInfoRequest): _92.QueryContractInfoRequestSDKType;
             };
             QueryContractInfoResponse: {
                 encode(message: _92.QueryContractInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryContractInfoResponseSDKType;
-                fromJSON(object: any): _92.QueryContractInfoResponse;
-                toJSON(message: _92.QueryContractInfoResponse): unknown;
                 fromPartial(object: {
                     address?: string;
                     contractInfo?: {
@@ -526,12 +524,12 @@ export declare namespace cosmwasm {
                         };
                     };
                 }): _92.QueryContractInfoResponse;
+                fromSDK(object: _92.QueryContractInfoResponseSDKType): _92.QueryContractInfoResponse;
+                toSDK(message: _92.QueryContractInfoResponse): _92.QueryContractInfoResponseSDKType;
             };
             QueryContractHistoryRequest: {
                 encode(message: _92.QueryContractHistoryRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryContractHistoryRequest;
-                fromJSON(object: any): _92.QueryContractHistoryRequest;
-                toJSON(message: _92.QueryContractHistoryRequest): unknown;
                 fromPartial(object: {
                     address?: string;
                     pagination?: {
@@ -542,12 +540,12 @@ export declare namespace cosmwasm {
                         reverse?: boolean;
                     };
                 }): _92.QueryContractHistoryRequest;
+                fromSDK(object: _92.QueryContractHistoryRequestSDKType): _92.QueryContractHistoryRequest;
+                toSDK(message: _92.QueryContractHistoryRequest): _92.QueryContractHistoryRequestSDKType;
             };
             QueryContractHistoryResponse: {
                 encode(message: _92.QueryContractHistoryResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryContractHistoryResponseSDKType;
-                fromJSON(object: any): _92.QueryContractHistoryResponse;
-                toJSON(message: _92.QueryContractHistoryResponse): unknown;
                 fromPartial(object: {
                     entries?: {
                         operation?: _94.ContractCodeHistoryOperationType;
@@ -563,12 +561,12 @@ export declare namespace cosmwasm {
                         total?: any;
                     };
                 }): _92.QueryContractHistoryResponse;
+                fromSDK(object: _92.QueryContractHistoryResponseSDKType): _92.QueryContractHistoryResponse;
+                toSDK(message: _92.QueryContractHistoryResponse): _92.QueryContractHistoryResponseSDKType;
             };
             QueryContractsByCodeRequest: {
                 encode(message: _92.QueryContractsByCodeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryContractsByCodeRequest;
-                fromJSON(object: any): _92.QueryContractsByCodeRequest;
-                toJSON(message: _92.QueryContractsByCodeRequest): unknown;
                 fromPartial(object: {
                     codeId?: any;
                     pagination?: {
@@ -579,12 +577,12 @@ export declare namespace cosmwasm {
                         reverse?: boolean;
                     };
                 }): _92.QueryContractsByCodeRequest;
+                fromSDK(object: _92.QueryContractsByCodeRequestSDKType): _92.QueryContractsByCodeRequest;
+                toSDK(message: _92.QueryContractsByCodeRequest): _92.QueryContractsByCodeRequestSDKType;
             };
             QueryContractsByCodeResponse: {
                 encode(message: _92.QueryContractsByCodeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryContractsByCodeResponseSDKType;
-                fromJSON(object: any): _92.QueryContractsByCodeResponse;
-                toJSON(message: _92.QueryContractsByCodeResponse): unknown;
                 fromPartial(object: {
                     contracts?: string[];
                     pagination?: {
@@ -592,12 +590,12 @@ export declare namespace cosmwasm {
                         total?: any;
                     };
                 }): _92.QueryContractsByCodeResponse;
+                fromSDK(object: _92.QueryContractsByCodeResponseSDKType): _92.QueryContractsByCodeResponse;
+                toSDK(message: _92.QueryContractsByCodeResponse): _92.QueryContractsByCodeResponseSDKType;
             };
             QueryAllContractStateRequest: {
                 encode(message: _92.QueryAllContractStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryAllContractStateRequest;
-                fromJSON(object: any): _92.QueryAllContractStateRequest;
-                toJSON(message: _92.QueryAllContractStateRequest): unknown;
                 fromPartial(object: {
                     address?: string;
                     pagination?: {
@@ -608,12 +606,12 @@ export declare namespace cosmwasm {
                         reverse?: boolean;
                     };
                 }): _92.QueryAllContractStateRequest;
+                fromSDK(object: _92.QueryAllContractStateRequestSDKType): _92.QueryAllContractStateRequest;
+                toSDK(message: _92.QueryAllContractStateRequest): _92.QueryAllContractStateRequestSDKType;
             };
             QueryAllContractStateResponse: {
                 encode(message: _92.QueryAllContractStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryAllContractStateResponseSDKType;
-                fromJSON(object: any): _92.QueryAllContractStateResponse;
-                toJSON(message: _92.QueryAllContractStateResponse): unknown;
                 fromPartial(object: {
                     models?: {
                         key?: Uint8Array;
@@ -624,70 +622,70 @@ export declare namespace cosmwasm {
                         total?: any;
                     };
                 }): _92.QueryAllContractStateResponse;
+                fromSDK(object: _92.QueryAllContractStateResponseSDKType): _92.QueryAllContractStateResponse;
+                toSDK(message: _92.QueryAllContractStateResponse): _92.QueryAllContractStateResponseSDKType;
             };
             QueryRawContractStateRequest: {
                 encode(message: _92.QueryRawContractStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryRawContractStateRequest;
-                fromJSON(object: any): _92.QueryRawContractStateRequest;
-                toJSON(message: _92.QueryRawContractStateRequest): unknown;
                 fromPartial(object: {
                     address?: string;
                     queryData?: Uint8Array;
                 }): _92.QueryRawContractStateRequest;
+                fromSDK(object: _92.QueryRawContractStateRequestSDKType): _92.QueryRawContractStateRequest;
+                toSDK(message: _92.QueryRawContractStateRequest): _92.QueryRawContractStateRequestSDKType;
             };
             QueryRawContractStateResponse: {
                 encode(message: _92.QueryRawContractStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryRawContractStateResponseSDKType;
-                fromJSON(object: any): _92.QueryRawContractStateResponse;
-                toJSON(message: _92.QueryRawContractStateResponse): unknown;
                 fromPartial(object: {
                     data?: Uint8Array;
                 }): _92.QueryRawContractStateResponse;
+                fromSDK(object: _92.QueryRawContractStateResponseSDKType): _92.QueryRawContractStateResponse;
+                toSDK(message: _92.QueryRawContractStateResponse): _92.QueryRawContractStateResponseSDKType;
             };
             QuerySmartContractStateRequest: {
                 encode(message: _92.QuerySmartContractStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QuerySmartContractStateRequest;
-                fromJSON(object: any): _92.QuerySmartContractStateRequest;
-                toJSON(message: _92.QuerySmartContractStateRequest): unknown;
                 fromPartial(object: {
                     address?: string;
                     queryData?: Uint8Array;
                 }): _92.QuerySmartContractStateRequest;
+                fromSDK(object: _92.QuerySmartContractStateRequestSDKType): _92.QuerySmartContractStateRequest;
+                toSDK(message: _92.QuerySmartContractStateRequest): _92.QuerySmartContractStateRequestSDKType;
             };
             QuerySmartContractStateResponse: {
                 encode(message: _92.QuerySmartContractStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QuerySmartContractStateResponseSDKType;
-                fromJSON(object: any): _92.QuerySmartContractStateResponse;
-                toJSON(message: _92.QuerySmartContractStateResponse): unknown;
                 fromPartial(object: {
                     data?: Uint8Array;
                 }): _92.QuerySmartContractStateResponse;
+                fromSDK(object: _92.QuerySmartContractStateResponseSDKType): _92.QuerySmartContractStateResponse;
+                toSDK(message: _92.QuerySmartContractStateResponse): _92.QuerySmartContractStateResponseSDKType;
             };
             QueryCodeRequest: {
                 encode(message: _92.QueryCodeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryCodeRequest;
-                fromJSON(object: any): _92.QueryCodeRequest;
-                toJSON(message: _92.QueryCodeRequest): unknown;
                 fromPartial(object: {
                     codeId?: any;
                 }): _92.QueryCodeRequest;
+                fromSDK(object: _92.QueryCodeRequestSDKType): _92.QueryCodeRequest;
+                toSDK(message: _92.QueryCodeRequest): _92.QueryCodeRequestSDKType;
             };
             CodeInfoResponse: {
                 encode(message: _92.CodeInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.CodeInfoResponse;
-                fromJSON(object: any): _92.CodeInfoResponse;
-                toJSON(message: _92.CodeInfoResponse): unknown;
                 fromPartial(object: {
                     codeId?: any;
                     creator?: string;
                     dataHash?: Uint8Array;
                 }): _92.CodeInfoResponse;
+                fromSDK(object: _92.CodeInfoResponseSDKType): _92.CodeInfoResponse;
+                toSDK(message: _92.CodeInfoResponse): _92.CodeInfoResponseSDKType;
             };
             QueryCodeResponse: {
                 encode(message: _92.QueryCodeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryCodeResponseSDKType;
-                fromJSON(object: any): _92.QueryCodeResponse;
-                toJSON(message: _92.QueryCodeResponse): unknown;
                 fromPartial(object: {
                     codeInfo?: {
                         codeId?: any;
@@ -696,12 +694,12 @@ export declare namespace cosmwasm {
                     };
                     data?: Uint8Array;
                 }): _92.QueryCodeResponse;
+                fromSDK(object: _92.QueryCodeResponseSDKType): _92.QueryCodeResponse;
+                toSDK(message: _92.QueryCodeResponse): _92.QueryCodeResponseSDKType;
             };
             QueryCodesRequest: {
                 encode(message: _92.QueryCodesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryCodesRequest;
-                fromJSON(object: any): _92.QueryCodesRequest;
-                toJSON(message: _92.QueryCodesRequest): unknown;
                 fromPartial(object: {
                     pagination?: {
                         key?: Uint8Array;
@@ -711,12 +709,12 @@ export declare namespace cosmwasm {
                         reverse?: boolean;
                     };
                 }): _92.QueryCodesRequest;
+                fromSDK(object: _92.QueryCodesRequestSDKType): _92.QueryCodesRequest;
+                toSDK(message: _92.QueryCodesRequest): _92.QueryCodesRequestSDKType;
             };
             QueryCodesResponse: {
                 encode(message: _92.QueryCodesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryCodesResponseSDKType;
-                fromJSON(object: any): _92.QueryCodesResponse;
-                toJSON(message: _92.QueryCodesResponse): unknown;
                 fromPartial(object: {
                     codeInfos?: {
                         codeId?: any;
@@ -728,12 +726,12 @@ export declare namespace cosmwasm {
                         total?: any;
                     };
                 }): _92.QueryCodesResponse;
+                fromSDK(object: _92.QueryCodesResponseSDKType): _92.QueryCodesResponse;
+                toSDK(message: _92.QueryCodesResponse): _92.QueryCodesResponseSDKType;
             };
             QueryPinnedCodesRequest: {
                 encode(message: _92.QueryPinnedCodesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryPinnedCodesRequest;
-                fromJSON(object: any): _92.QueryPinnedCodesRequest;
-                toJSON(message: _92.QueryPinnedCodesRequest): unknown;
                 fromPartial(object: {
                     pagination?: {
                         key?: Uint8Array;
@@ -743,12 +741,12 @@ export declare namespace cosmwasm {
                         reverse?: boolean;
                     };
                 }): _92.QueryPinnedCodesRequest;
+                fromSDK(object: _92.QueryPinnedCodesRequestSDKType): _92.QueryPinnedCodesRequest;
+                toSDK(message: _92.QueryPinnedCodesRequest): _92.QueryPinnedCodesRequestSDKType;
             };
             QueryPinnedCodesResponse: {
                 encode(message: _92.QueryPinnedCodesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.QueryPinnedCodesResponseSDKType;
-                fromJSON(object: any): _92.QueryPinnedCodesResponse;
-                toJSON(message: _92.QueryPinnedCodesResponse): unknown;
                 fromPartial(object: {
                     codeIds?: any[];
                     pagination?: {
@@ -756,12 +754,12 @@ export declare namespace cosmwasm {
                         total?: any;
                     };
                 }): _92.QueryPinnedCodesResponse;
+                fromSDK(object: _92.QueryPinnedCodesResponseSDKType): _92.QueryPinnedCodesResponse;
+                toSDK(message: _92.QueryPinnedCodesResponse): _92.QueryPinnedCodesResponseSDKType;
             };
             StoreCodeProposal: {
                 encode(message: _91.StoreCodeProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.StoreCodeProposal;
-                fromJSON(object: any): _91.StoreCodeProposal;
-                toJSON(message: _91.StoreCodeProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
@@ -772,12 +770,12 @@ export declare namespace cosmwasm {
                         address?: string;
                     };
                 }): _91.StoreCodeProposal;
+                fromSDK(object: _91.StoreCodeProposalSDKType): _91.StoreCodeProposal;
+                toSDK(message: _91.StoreCodeProposal): _91.StoreCodeProposalSDKType;
             };
             InstantiateContractProposal: {
                 encode(message: _91.InstantiateContractProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.InstantiateContractProposal;
-                fromJSON(object: any): _91.InstantiateContractProposal;
-                toJSON(message: _91.InstantiateContractProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
@@ -791,12 +789,12 @@ export declare namespace cosmwasm {
                         amount?: string;
                     }[];
                 }): _91.InstantiateContractProposal;
+                fromSDK(object: _91.InstantiateContractProposalSDKType): _91.InstantiateContractProposal;
+                toSDK(message: _91.InstantiateContractProposal): _91.InstantiateContractProposalSDKType;
             };
             MigrateContractProposal: {
                 encode(message: _91.MigrateContractProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.MigrateContractProposal;
-                fromJSON(object: any): _91.MigrateContractProposal;
-                toJSON(message: _91.MigrateContractProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
@@ -804,24 +802,24 @@ export declare namespace cosmwasm {
                     codeId?: any;
                     msg?: Uint8Array;
                 }): _91.MigrateContractProposal;
+                fromSDK(object: _91.MigrateContractProposalSDKType): _91.MigrateContractProposal;
+                toSDK(message: _91.MigrateContractProposal): _91.MigrateContractProposalSDKType;
             };
             SudoContractProposal: {
                 encode(message: _91.SudoContractProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.SudoContractProposal;
-                fromJSON(object: any): _91.SudoContractProposal;
-                toJSON(message: _91.SudoContractProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
                     contract?: string;
                     msg?: Uint8Array;
                 }): _91.SudoContractProposal;
+                fromSDK(object: _91.SudoContractProposalSDKType): _91.SudoContractProposal;
+                toSDK(message: _91.SudoContractProposal): _91.SudoContractProposalSDKType;
             };
             ExecuteContractProposal: {
                 encode(message: _91.ExecuteContractProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.ExecuteContractProposal;
-                fromJSON(object: any): _91.ExecuteContractProposal;
-                toJSON(message: _91.ExecuteContractProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
@@ -833,78 +831,78 @@ export declare namespace cosmwasm {
                         amount?: string;
                     }[];
                 }): _91.ExecuteContractProposal;
+                fromSDK(object: _91.ExecuteContractProposalSDKType): _91.ExecuteContractProposal;
+                toSDK(message: _91.ExecuteContractProposal): _91.ExecuteContractProposalSDKType;
             };
             UpdateAdminProposal: {
                 encode(message: _91.UpdateAdminProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.UpdateAdminProposal;
-                fromJSON(object: any): _91.UpdateAdminProposal;
-                toJSON(message: _91.UpdateAdminProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
                     newAdmin?: string;
                     contract?: string;
                 }): _91.UpdateAdminProposal;
+                fromSDK(object: _91.UpdateAdminProposalSDKType): _91.UpdateAdminProposal;
+                toSDK(message: _91.UpdateAdminProposal): _91.UpdateAdminProposalSDKType;
             };
             ClearAdminProposal: {
                 encode(message: _91.ClearAdminProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.ClearAdminProposal;
-                fromJSON(object: any): _91.ClearAdminProposal;
-                toJSON(message: _91.ClearAdminProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
                     contract?: string;
                 }): _91.ClearAdminProposal;
+                fromSDK(object: _91.ClearAdminProposalSDKType): _91.ClearAdminProposal;
+                toSDK(message: _91.ClearAdminProposal): _91.ClearAdminProposalSDKType;
             };
             PinCodesProposal: {
                 encode(message: _91.PinCodesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.PinCodesProposal;
-                fromJSON(object: any): _91.PinCodesProposal;
-                toJSON(message: _91.PinCodesProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
                     codeIds?: any[];
                 }): _91.PinCodesProposal;
+                fromSDK(object: _91.PinCodesProposalSDKType): _91.PinCodesProposal;
+                toSDK(message: _91.PinCodesProposal): _91.PinCodesProposalSDKType;
             };
             UnpinCodesProposal: {
                 encode(message: _91.UnpinCodesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.UnpinCodesProposal;
-                fromJSON(object: any): _91.UnpinCodesProposal;
-                toJSON(message: _91.UnpinCodesProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
                     codeIds?: any[];
                 }): _91.UnpinCodesProposal;
+                fromSDK(object: _91.UnpinCodesProposalSDKType): _91.UnpinCodesProposal;
+                toSDK(message: _91.UnpinCodesProposal): _91.UnpinCodesProposalSDKType;
             };
             MsgIBCSend: {
                 encode(message: _90.MsgIBCSend, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgIBCSend;
-                fromJSON(object: any): _90.MsgIBCSend;
-                toJSON(message: _90.MsgIBCSend): unknown;
                 fromPartial(object: {
                     channel?: string;
                     timeoutHeight?: any;
                     timeoutTimestamp?: any;
                     data?: Uint8Array;
                 }): _90.MsgIBCSend;
+                fromSDK(object: _90.MsgIBCSendSDKType): _90.MsgIBCSend;
+                toSDK(message: _90.MsgIBCSend): _90.MsgIBCSendSDKType;
             };
             MsgIBCCloseChannel: {
                 encode(message: _90.MsgIBCCloseChannel, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgIBCCloseChannel;
-                fromJSON(object: any): _90.MsgIBCCloseChannel;
-                toJSON(message: _90.MsgIBCCloseChannel): unknown;
                 fromPartial(object: {
                     channel?: string;
                 }): _90.MsgIBCCloseChannel;
+                fromSDK(object: _90.MsgIBCCloseChannelSDKType): _90.MsgIBCCloseChannel;
+                toSDK(message: _90.MsgIBCCloseChannel): _90.MsgIBCCloseChannelSDKType;
             };
             GenesisState: {
                 encode(message: _89.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.GenesisState;
-                fromJSON(object: any): _89.GenesisState;
-                toJSON(message: _89.GenesisState): unknown;
                 fromPartial(object: {
                     params?: {
                         codeUploadAccess?: {
@@ -984,12 +982,12 @@ export declare namespace cosmwasm {
                         };
                     }[];
                 }): _89.GenesisState;
+                fromSDK(object: _89.GenesisStateSDKType): _89.GenesisState;
+                toSDK(message: _89.GenesisState): _89.GenesisStateSDKType;
             };
             GenesisState_GenMsgs: {
                 encode(message: _89.GenesisState_GenMsgs, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.GenesisState_GenMsgs;
-                fromJSON(object: any): _89.GenesisState_GenMsgs;
-                toJSON(message: _89.GenesisState_GenMsgs): unknown;
                 fromPartial(object: {
                     storeCode?: {
                         sender?: string;
@@ -1020,12 +1018,12 @@ export declare namespace cosmwasm {
                         }[];
                     };
                 }): _89.GenesisState_GenMsgs;
+                fromSDK(object: _89.GenesisState_GenMsgsSDKType): _89.GenesisState_GenMsgs;
+                toSDK(message: _89.GenesisState_GenMsgs): _89.GenesisState_GenMsgsSDKType;
             };
             Code: {
                 encode(message: _89.Code, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.Code;
-                fromJSON(object: any): _89.Code;
-                toJSON(message: _89.Code): unknown;
                 fromPartial(object: {
                     codeId?: any;
                     codeInfo?: {
@@ -1039,12 +1037,12 @@ export declare namespace cosmwasm {
                     codeBytes?: Uint8Array;
                     pinned?: boolean;
                 }): _89.Code;
+                fromSDK(object: _89.CodeSDKType): _89.Code;
+                toSDK(message: _89.Code): _89.CodeSDKType;
             };
             Contract: {
                 encode(message: _89.Contract, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.Contract;
-                fromJSON(object: any): _89.Contract;
-                toJSON(message: _89.Contract): unknown;
                 fromPartial(object: {
                     contractAddress?: string;
                     contractInfo?: {
@@ -1067,16 +1065,18 @@ export declare namespace cosmwasm {
                         value?: Uint8Array;
                     }[];
                 }): _89.Contract;
+                fromSDK(object: _89.ContractSDKType): _89.Contract;
+                toSDK(message: _89.Contract): _89.ContractSDKType;
             };
             Sequence: {
                 encode(message: _89.Sequence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.Sequence;
-                fromJSON(object: any): _89.Sequence;
-                toJSON(message: _89.Sequence): unknown;
                 fromPartial(object: {
                     idKey?: Uint8Array;
                     value?: any;
                 }): _89.Sequence;
+                fromSDK(object: _89.SequenceSDKType): _89.Sequence;
+                toSDK(message: _89.Sequence): _89.SequenceSDKType;
             };
         };
     }

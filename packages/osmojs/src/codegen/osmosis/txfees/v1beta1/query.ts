@@ -91,18 +91,18 @@ export const QueryFeeTokensRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryFeeTokensRequest {
-    return {};
-  },
-
-  toJSON(_: QueryFeeTokensRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryFeeTokensRequest>): QueryFeeTokensRequest {
     const message = createBaseQueryFeeTokensRequest();
     return message;
+  },
+
+  fromSDK(_: QueryFeeTokensRequestSDKType): QueryFeeTokensRequest {
+    return {};
+  },
+
+  toSDK(_: QueryFeeTokensRequest): QueryFeeTokensRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -144,28 +144,28 @@ export const QueryFeeTokensResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryFeeTokensResponse {
-    return {
-      feeTokens: Array.isArray(object?.feeTokens) ? object.feeTokens.map((e: any) => FeeToken.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: QueryFeeTokensResponse): unknown {
-    const obj: any = {};
-
-    if (message.feeTokens) {
-      obj.feeTokens = message.feeTokens.map(e => e ? FeeToken.toJSON(e) : undefined);
-    } else {
-      obj.feeTokens = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryFeeTokensResponse>): QueryFeeTokensResponse {
     const message = createBaseQueryFeeTokensResponse();
     message.feeTokens = object.feeTokens?.map(e => FeeToken.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: QueryFeeTokensResponseSDKType): QueryFeeTokensResponse {
+    return {
+      feeTokens: Array.isArray(object?.fee_tokens) ? object.fee_tokens.map((e: any) => FeeToken.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: QueryFeeTokensResponse): QueryFeeTokensResponseSDKType {
+    const obj: any = {};
+
+    if (message.feeTokens) {
+      obj.fee_tokens = message.feeTokens.map(e => e ? FeeToken.toSDK(e) : undefined);
+    } else {
+      obj.fee_tokens = [];
+    }
+
+    return obj;
   }
 
 };
@@ -207,22 +207,22 @@ export const QueryDenomSpotPriceRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomSpotPriceRequest {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : ""
-    };
-  },
-
-  toJSON(message: QueryDenomSpotPriceRequest): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest {
     const message = createBaseQueryDenomSpotPriceRequest();
     message.denom = object.denom ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryDenomSpotPriceRequestSDKType): QueryDenomSpotPriceRequest {
+    return {
+      denom: isSet(object.denom) ? object.denom : undefined
+    };
+  },
+
+  toSDK(message: QueryDenomSpotPriceRequest): QueryDenomSpotPriceRequestSDKType {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   }
 
 };
@@ -273,25 +273,25 @@ export const QueryDenomSpotPriceResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomSpotPriceResponse {
-    return {
-      poolID: isSet(object.poolID) ? Long.fromString(object.poolID) : Long.UZERO,
-      spotPrice: isSet(object.spotPrice) ? String(object.spotPrice) : ""
-    };
-  },
-
-  toJSON(message: QueryDenomSpotPriceResponse): unknown {
-    const obj: any = {};
-    message.poolID !== undefined && (obj.poolID = (message.poolID || Long.UZERO).toString());
-    message.spotPrice !== undefined && (obj.spotPrice = message.spotPrice);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse {
     const message = createBaseQueryDenomSpotPriceResponse();
     message.poolID = object.poolID !== undefined && object.poolID !== null ? Long.fromValue(object.poolID) : Long.UZERO;
     message.spotPrice = object.spotPrice ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryDenomSpotPriceResponseSDKType): QueryDenomSpotPriceResponse {
+    return {
+      poolID: isSet(object.poolID) ? object.poolID : undefined,
+      spotPrice: isSet(object.spot_price) ? object.spot_price : undefined
+    };
+  },
+
+  toSDK(message: QueryDenomSpotPriceResponse): QueryDenomSpotPriceResponseSDKType {
+    const obj: any = {};
+    message.poolID !== undefined && (obj.poolID = message.poolID);
+    message.spotPrice !== undefined && (obj.spot_price = message.spotPrice);
+    return obj;
   }
 
 };
@@ -333,22 +333,22 @@ export const QueryDenomPoolIdRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomPoolIdRequest {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : ""
-    };
-  },
-
-  toJSON(message: QueryDenomPoolIdRequest): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryDenomPoolIdRequest>): QueryDenomPoolIdRequest {
     const message = createBaseQueryDenomPoolIdRequest();
     message.denom = object.denom ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryDenomPoolIdRequestSDKType): QueryDenomPoolIdRequest {
+    return {
+      denom: isSet(object.denom) ? object.denom : undefined
+    };
+  },
+
+  toSDK(message: QueryDenomPoolIdRequest): QueryDenomPoolIdRequestSDKType {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   }
 
 };
@@ -390,22 +390,22 @@ export const QueryDenomPoolIdResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomPoolIdResponse {
-    return {
-      poolID: isSet(object.poolID) ? Long.fromString(object.poolID) : Long.UZERO
-    };
-  },
-
-  toJSON(message: QueryDenomPoolIdResponse): unknown {
-    const obj: any = {};
-    message.poolID !== undefined && (obj.poolID = (message.poolID || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse {
     const message = createBaseQueryDenomPoolIdResponse();
     message.poolID = object.poolID !== undefined && object.poolID !== null ? Long.fromValue(object.poolID) : Long.UZERO;
     return message;
+  },
+
+  fromSDK(object: QueryDenomPoolIdResponseSDKType): QueryDenomPoolIdResponse {
+    return {
+      poolID: isSet(object.poolID) ? object.poolID : undefined
+    };
+  },
+
+  toSDK(message: QueryDenomPoolIdResponse): QueryDenomPoolIdResponseSDKType {
+    const obj: any = {};
+    message.poolID !== undefined && (obj.poolID = message.poolID);
+    return obj;
   }
 
 };
@@ -437,18 +437,18 @@ export const QueryBaseDenomRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryBaseDenomRequest {
-    return {};
-  },
-
-  toJSON(_: QueryBaseDenomRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryBaseDenomRequest>): QueryBaseDenomRequest {
     const message = createBaseQueryBaseDenomRequest();
     return message;
+  },
+
+  fromSDK(_: QueryBaseDenomRequestSDKType): QueryBaseDenomRequest {
+    return {};
+  },
+
+  toSDK(_: QueryBaseDenomRequest): QueryBaseDenomRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -490,22 +490,22 @@ export const QueryBaseDenomResponse = {
     return message;
   },
 
-  fromJSON(object: any): QueryBaseDenomResponse {
-    return {
-      baseDenom: isSet(object.baseDenom) ? String(object.baseDenom) : ""
-    };
-  },
-
-  toJSON(message: QueryBaseDenomResponse): unknown {
-    const obj: any = {};
-    message.baseDenom !== undefined && (obj.baseDenom = message.baseDenom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryBaseDenomResponse>): QueryBaseDenomResponse {
     const message = createBaseQueryBaseDenomResponse();
     message.baseDenom = object.baseDenom ?? "";
     return message;
+  },
+
+  fromSDK(object: QueryBaseDenomResponseSDKType): QueryBaseDenomResponse {
+    return {
+      baseDenom: isSet(object.base_denom) ? object.base_denom : undefined
+    };
+  },
+
+  toSDK(message: QueryBaseDenomResponse): QueryBaseDenomResponseSDKType {
+    const obj: any = {};
+    message.baseDenom !== undefined && (obj.base_denom = message.baseDenom);
+    return obj;
   }
 
 };

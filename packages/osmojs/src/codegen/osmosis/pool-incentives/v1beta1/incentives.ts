@@ -1,6 +1,6 @@
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 export interface Params {
   /**
    * minted_denom is the denomination of the coin expected to be minted by the
@@ -79,22 +79,22 @@ export const Params = {
     return message;
   },
 
-  fromJSON(object: any): Params {
-    return {
-      mintedDenom: isSet(object.mintedDenom) ? String(object.mintedDenom) : ""
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-    message.mintedDenom !== undefined && (obj.mintedDenom = message.mintedDenom);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.mintedDenom = object.mintedDenom ?? "";
     return message;
+  },
+
+  fromSDK(object: ParamsSDKType): Params {
+    return {
+      mintedDenom: isSet(object.minted_denom) ? object.minted_denom : undefined
+    };
+  },
+
+  toSDK(message: Params): ParamsSDKType {
+    const obj: any = {};
+    message.mintedDenom !== undefined && (obj.minted_denom = message.mintedDenom);
+    return obj;
   }
 
 };
@@ -136,28 +136,28 @@ export const LockableDurationsInfo = {
     return message;
   },
 
-  fromJSON(object: any): LockableDurationsInfo {
-    return {
-      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: LockableDurationsInfo): unknown {
-    const obj: any = {};
-
-    if (message.lockableDurations) {
-      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
-    } else {
-      obj.lockableDurations = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo {
     const message = createBaseLockableDurationsInfo();
     message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: LockableDurationsInfoSDKType): LockableDurationsInfo {
+    return {
+      lockableDurations: Array.isArray(object?.lockable_durations) ? object.lockable_durations.map((e: any) => Duration.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: LockableDurationsInfo): LockableDurationsInfoSDKType {
+    const obj: any = {};
+
+    if (message.lockableDurations) {
+      obj.lockable_durations = message.lockableDurations.map(e => e ? Duration.toSDK(e) : undefined);
+    } else {
+      obj.lockable_durations = [];
+    }
+
+    return obj;
   }
 
 };
@@ -208,31 +208,31 @@ export const DistrInfo = {
     return message;
   },
 
-  fromJSON(object: any): DistrInfo {
-    return {
-      totalWeight: isSet(object.totalWeight) ? String(object.totalWeight) : "",
-      records: Array.isArray(object?.records) ? object.records.map((e: any) => DistrRecord.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: DistrInfo): unknown {
-    const obj: any = {};
-    message.totalWeight !== undefined && (obj.totalWeight = message.totalWeight);
-
-    if (message.records) {
-      obj.records = message.records.map(e => e ? DistrRecord.toJSON(e) : undefined);
-    } else {
-      obj.records = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DistrInfo>): DistrInfo {
     const message = createBaseDistrInfo();
     message.totalWeight = object.totalWeight ?? "";
     message.records = object.records?.map(e => DistrRecord.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: DistrInfoSDKType): DistrInfo {
+    return {
+      totalWeight: isSet(object.total_weight) ? object.total_weight : undefined,
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => DistrRecord.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: DistrInfo): DistrInfoSDKType {
+    const obj: any = {};
+    message.totalWeight !== undefined && (obj.total_weight = message.totalWeight);
+
+    if (message.records) {
+      obj.records = message.records.map(e => e ? DistrRecord.toSDK(e) : undefined);
+    } else {
+      obj.records = [];
+    }
+
+    return obj;
   }
 
 };
@@ -283,25 +283,25 @@ export const DistrRecord = {
     return message;
   },
 
-  fromJSON(object: any): DistrRecord {
-    return {
-      gaugeId: isSet(object.gaugeId) ? Long.fromString(object.gaugeId) : Long.UZERO,
-      weight: isSet(object.weight) ? String(object.weight) : ""
-    };
-  },
-
-  toJSON(message: DistrRecord): unknown {
-    const obj: any = {};
-    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || Long.UZERO).toString());
-    message.weight !== undefined && (obj.weight = message.weight);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DistrRecord>): DistrRecord {
     const message = createBaseDistrRecord();
     message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     message.weight = object.weight ?? "";
     return message;
+  },
+
+  fromSDK(object: DistrRecordSDKType): DistrRecord {
+    return {
+      gaugeId: isSet(object.gauge_id) ? object.gauge_id : undefined,
+      weight: isSet(object.weight) ? object.weight : undefined
+    };
+  },
+
+  toSDK(message: DistrRecord): DistrRecordSDKType {
+    const obj: any = {};
+    message.gaugeId !== undefined && (obj.gauge_id = message.gaugeId);
+    message.weight !== undefined && (obj.weight = message.weight);
+    return obj;
   }
 
 };

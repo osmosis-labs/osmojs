@@ -102,56 +102,56 @@ export interface MsgDepositResponseSDKType {
 export declare const MsgSubmitProposal: {
     encode(message: MsgSubmitProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposal;
-    fromJSON(object: any): MsgSubmitProposal;
-    toJSON(message: MsgSubmitProposal): unknown;
     fromPartial(object: DeepPartial<MsgSubmitProposal>): MsgSubmitProposal;
+    fromSDK(object: MsgSubmitProposalSDKType): MsgSubmitProposal;
+    toSDK(message: MsgSubmitProposal): MsgSubmitProposalSDKType;
 };
 export declare const MsgSubmitProposalResponse: {
     encode(message: MsgSubmitProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponseSDKType;
-    fromJSON(object: any): MsgSubmitProposalResponse;
-    toJSON(message: MsgSubmitProposalResponse): unknown;
     fromPartial(object: DeepPartial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
+    fromSDK(object: MsgSubmitProposalResponseSDKType): MsgSubmitProposalResponse;
+    toSDK(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseSDKType;
 };
 export declare const MsgVote: {
     encode(message: MsgVote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVote;
-    fromJSON(object: any): MsgVote;
-    toJSON(message: MsgVote): unknown;
     fromPartial(object: DeepPartial<MsgVote>): MsgVote;
+    fromSDK(object: MsgVoteSDKType): MsgVote;
+    toSDK(message: MsgVote): MsgVoteSDKType;
 };
 export declare const MsgVoteResponse: {
     encode(_: MsgVoteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponseSDKType;
-    fromJSON(_: any): MsgVoteResponse;
-    toJSON(_: MsgVoteResponse): unknown;
     fromPartial(_: DeepPartial<MsgVoteResponse>): MsgVoteResponse;
+    fromSDK(_: MsgVoteResponseSDKType): MsgVoteResponse;
+    toSDK(_: MsgVoteResponse): MsgVoteResponseSDKType;
 };
 export declare const MsgVoteWeighted: {
     encode(message: MsgVoteWeighted, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeighted;
-    fromJSON(object: any): MsgVoteWeighted;
-    toJSON(message: MsgVoteWeighted): unknown;
     fromPartial(object: DeepPartial<MsgVoteWeighted>): MsgVoteWeighted;
+    fromSDK(object: MsgVoteWeightedSDKType): MsgVoteWeighted;
+    toSDK(message: MsgVoteWeighted): MsgVoteWeightedSDKType;
 };
 export declare const MsgVoteWeightedResponse: {
     encode(_: MsgVoteWeightedResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeightedResponseSDKType;
-    fromJSON(_: any): MsgVoteWeightedResponse;
-    toJSON(_: MsgVoteWeightedResponse): unknown;
     fromPartial(_: DeepPartial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse;
+    fromSDK(_: MsgVoteWeightedResponseSDKType): MsgVoteWeightedResponse;
+    toSDK(_: MsgVoteWeightedResponse): MsgVoteWeightedResponseSDKType;
 };
 export declare const MsgDeposit: {
     encode(message: MsgDeposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeposit;
-    fromJSON(object: any): MsgDeposit;
-    toJSON(message: MsgDeposit): unknown;
     fromPartial(object: DeepPartial<MsgDeposit>): MsgDeposit;
+    fromSDK(object: MsgDepositSDKType): MsgDeposit;
+    toSDK(message: MsgDeposit): MsgDepositSDKType;
 };
 export declare const MsgDepositResponse: {
     encode(_: MsgDepositResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDepositResponseSDKType;
-    fromJSON(_: any): MsgDepositResponse;
-    toJSON(_: MsgDepositResponse): unknown;
     fromPartial(_: DeepPartial<MsgDepositResponse>): MsgDepositResponse;
+    fromSDK(_: MsgDepositResponseSDKType): MsgDepositResponse;
+    toSDK(_: MsgDepositResponse): MsgDepositResponseSDKType;
 };

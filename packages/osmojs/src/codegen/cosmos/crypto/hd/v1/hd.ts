@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** BIP44Params is used as path field in ledger item in Record. */
 
 export interface BIP44Params {
@@ -116,26 +116,6 @@ export const BIP44Params = {
     return message;
   },
 
-  fromJSON(object: any): BIP44Params {
-    return {
-      purpose: isSet(object.purpose) ? Number(object.purpose) : 0,
-      coinType: isSet(object.coinType) ? Number(object.coinType) : 0,
-      account: isSet(object.account) ? Number(object.account) : 0,
-      change: isSet(object.change) ? Boolean(object.change) : false,
-      addressIndex: isSet(object.addressIndex) ? Number(object.addressIndex) : 0
-    };
-  },
-
-  toJSON(message: BIP44Params): unknown {
-    const obj: any = {};
-    message.purpose !== undefined && (obj.purpose = Math.round(message.purpose));
-    message.coinType !== undefined && (obj.coinType = Math.round(message.coinType));
-    message.account !== undefined && (obj.account = Math.round(message.account));
-    message.change !== undefined && (obj.change = message.change);
-    message.addressIndex !== undefined && (obj.addressIndex = Math.round(message.addressIndex));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<BIP44Params>): BIP44Params {
     const message = createBaseBIP44Params();
     message.purpose = object.purpose ?? 0;
@@ -144,6 +124,26 @@ export const BIP44Params = {
     message.change = object.change ?? false;
     message.addressIndex = object.addressIndex ?? 0;
     return message;
+  },
+
+  fromSDK(object: BIP44ParamsSDKType): BIP44Params {
+    return {
+      purpose: isSet(object.purpose) ? object.purpose : undefined,
+      coinType: isSet(object.coin_type) ? object.coin_type : undefined,
+      account: isSet(object.account) ? object.account : undefined,
+      change: isSet(object.change) ? object.change : undefined,
+      addressIndex: isSet(object.address_index) ? object.address_index : undefined
+    };
+  },
+
+  toSDK(message: BIP44Params): BIP44ParamsSDKType {
+    const obj: any = {};
+    message.purpose !== undefined && (obj.purpose = message.purpose);
+    message.coinType !== undefined && (obj.coin_type = message.coinType);
+    message.account !== undefined && (obj.account = message.account);
+    message.change !== undefined && (obj.change = message.change);
+    message.addressIndex !== undefined && (obj.address_index = message.addressIndex);
+    return obj;
   }
 
 };

@@ -77,35 +77,35 @@ export interface SequenceSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+    fromSDK(object: GenesisStateSDKType): GenesisState;
+    toSDK(message: GenesisState): GenesisStateSDKType;
 };
 export declare const GenesisState_GenMsgs: {
     encode(message: GenesisState_GenMsgs, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState_GenMsgs;
-    fromJSON(object: any): GenesisState_GenMsgs;
-    toJSON(message: GenesisState_GenMsgs): unknown;
     fromPartial(object: DeepPartial<GenesisState_GenMsgs>): GenesisState_GenMsgs;
+    fromSDK(object: GenesisState_GenMsgsSDKType): GenesisState_GenMsgs;
+    toSDK(message: GenesisState_GenMsgs): GenesisState_GenMsgsSDKType;
 };
 export declare const Code: {
     encode(message: Code, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Code;
-    fromJSON(object: any): Code;
-    toJSON(message: Code): unknown;
     fromPartial(object: DeepPartial<Code>): Code;
+    fromSDK(object: CodeSDKType): Code;
+    toSDK(message: Code): CodeSDKType;
 };
 export declare const Contract: {
     encode(message: Contract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Contract;
-    fromJSON(object: any): Contract;
-    toJSON(message: Contract): unknown;
     fromPartial(object: DeepPartial<Contract>): Contract;
+    fromSDK(object: ContractSDKType): Contract;
+    toSDK(message: Contract): ContractSDKType;
 };
 export declare const Sequence: {
     encode(message: Sequence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Sequence;
-    fromJSON(object: any): Sequence;
-    toJSON(message: Sequence): unknown;
     fromPartial(object: DeepPartial<Sequence>): Sequence;
+    fromSDK(object: SequenceSDKType): Sequence;
+    toSDK(message: Sequence): SequenceSDKType;
 };

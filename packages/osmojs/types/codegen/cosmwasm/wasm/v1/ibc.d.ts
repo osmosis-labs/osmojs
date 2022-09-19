@@ -51,14 +51,14 @@ export interface MsgIBCCloseChannelSDKType {
 export declare const MsgIBCSend: {
     encode(message: MsgIBCSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgIBCSend;
-    fromJSON(object: any): MsgIBCSend;
-    toJSON(message: MsgIBCSend): unknown;
     fromPartial(object: DeepPartial<MsgIBCSend>): MsgIBCSend;
+    fromSDK(object: MsgIBCSendSDKType): MsgIBCSend;
+    toSDK(message: MsgIBCSend): MsgIBCSendSDKType;
 };
 export declare const MsgIBCCloseChannel: {
     encode(message: MsgIBCCloseChannel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgIBCCloseChannel;
-    fromJSON(object: any): MsgIBCCloseChannel;
-    toJSON(message: MsgIBCCloseChannel): unknown;
     fromPartial(object: DeepPartial<MsgIBCCloseChannel>): MsgIBCCloseChannel;
+    fromSDK(object: MsgIBCCloseChannelSDKType): MsgIBCCloseChannel;
+    toSDK(message: MsgIBCCloseChannel): MsgIBCCloseChannelSDKType;
 };

@@ -191,35 +191,35 @@ export interface FractionSDKType {
 export declare const ClientState: {
     encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientState;
-    fromJSON(object: any): ClientState;
-    toJSON(message: ClientState): unknown;
     fromPartial(object: DeepPartial<ClientState>): ClientState;
+    fromSDK(object: ClientStateSDKType): ClientState;
+    toSDK(message: ClientState): ClientStateSDKType;
 };
 export declare const ConsensusState: {
     encode(message: ConsensusState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusState;
-    fromJSON(object: any): ConsensusState;
-    toJSON(message: ConsensusState): unknown;
     fromPartial(object: DeepPartial<ConsensusState>): ConsensusState;
+    fromSDK(object: ConsensusStateSDKType): ConsensusState;
+    toSDK(message: ConsensusState): ConsensusStateSDKType;
 };
 export declare const Misbehaviour: {
     encode(message: Misbehaviour, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Misbehaviour;
-    fromJSON(object: any): Misbehaviour;
-    toJSON(message: Misbehaviour): unknown;
     fromPartial(object: DeepPartial<Misbehaviour>): Misbehaviour;
+    fromSDK(object: MisbehaviourSDKType): Misbehaviour;
+    toSDK(message: Misbehaviour): MisbehaviourSDKType;
 };
 export declare const Header: {
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
-    fromJSON(object: any): Header;
-    toJSON(message: Header): unknown;
     fromPartial(object: DeepPartial<Header>): Header;
+    fromSDK(object: HeaderSDKType): Header;
+    toSDK(message: Header): HeaderSDKType;
 };
 export declare const Fraction: {
     encode(message: Fraction, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Fraction;
-    fromJSON(object: any): Fraction;
-    toJSON(message: Fraction): unknown;
     fromPartial(object: DeepPartial<Fraction>): Fraction;
+    fromSDK(object: FractionSDKType): Fraction;
+    toSDK(message: Fraction): FractionSDKType;
 };

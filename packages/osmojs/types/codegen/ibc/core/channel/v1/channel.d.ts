@@ -284,42 +284,42 @@ export interface AcknowledgementSDKType {
 export declare const Channel: {
     encode(message: Channel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Channel;
-    fromJSON(object: any): Channel;
-    toJSON(message: Channel): unknown;
     fromPartial(object: DeepPartial<Channel>): Channel;
+    fromSDK(object: ChannelSDKType): Channel;
+    toSDK(message: Channel): ChannelSDKType;
 };
 export declare const IdentifiedChannel: {
     encode(message: IdentifiedChannel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedChannel;
-    fromJSON(object: any): IdentifiedChannel;
-    toJSON(message: IdentifiedChannel): unknown;
     fromPartial(object: DeepPartial<IdentifiedChannel>): IdentifiedChannel;
+    fromSDK(object: IdentifiedChannelSDKType): IdentifiedChannel;
+    toSDK(message: IdentifiedChannel): IdentifiedChannelSDKType;
 };
 export declare const Counterparty: {
     encode(message: Counterparty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Counterparty;
-    fromJSON(object: any): Counterparty;
-    toJSON(message: Counterparty): unknown;
     fromPartial(object: DeepPartial<Counterparty>): Counterparty;
+    fromSDK(object: CounterpartySDKType): Counterparty;
+    toSDK(message: Counterparty): CounterpartySDKType;
 };
 export declare const Packet: {
     encode(message: Packet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Packet;
-    fromJSON(object: any): Packet;
-    toJSON(message: Packet): unknown;
     fromPartial(object: DeepPartial<Packet>): Packet;
+    fromSDK(object: PacketSDKType): Packet;
+    toSDK(message: Packet): PacketSDKType;
 };
 export declare const PacketState: {
     encode(message: PacketState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketState;
-    fromJSON(object: any): PacketState;
-    toJSON(message: PacketState): unknown;
     fromPartial(object: DeepPartial<PacketState>): PacketState;
+    fromSDK(object: PacketStateSDKType): PacketState;
+    toSDK(message: PacketState): PacketStateSDKType;
 };
 export declare const Acknowledgement: {
     encode(message: Acknowledgement, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Acknowledgement;
-    fromJSON(object: any): Acknowledgement;
-    toJSON(message: Acknowledgement): unknown;
     fromPartial(object: DeepPartial<Acknowledgement>): Acknowledgement;
+    fromSDK(object: AcknowledgementSDKType): Acknowledgement;
+    toSDK(message: Acknowledgement): AcknowledgementSDKType;
 };

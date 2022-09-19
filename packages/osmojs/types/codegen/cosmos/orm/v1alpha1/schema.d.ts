@@ -149,14 +149,14 @@ export interface ModuleSchemaDescriptor_FileEntrySDKType {
 export declare const ModuleSchemaDescriptor: {
     encode(message: ModuleSchemaDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleSchemaDescriptor;
-    fromJSON(object: any): ModuleSchemaDescriptor;
-    toJSON(message: ModuleSchemaDescriptor): unknown;
     fromPartial(object: DeepPartial<ModuleSchemaDescriptor>): ModuleSchemaDescriptor;
+    fromSDK(object: ModuleSchemaDescriptorSDKType): ModuleSchemaDescriptor;
+    toSDK(message: ModuleSchemaDescriptor): ModuleSchemaDescriptorSDKType;
 };
 export declare const ModuleSchemaDescriptor_FileEntry: {
     encode(message: ModuleSchemaDescriptor_FileEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleSchemaDescriptor_FileEntry;
-    fromJSON(object: any): ModuleSchemaDescriptor_FileEntry;
-    toJSON(message: ModuleSchemaDescriptor_FileEntry): unknown;
     fromPartial(object: DeepPartial<ModuleSchemaDescriptor_FileEntry>): ModuleSchemaDescriptor_FileEntry;
+    fromSDK(object: ModuleSchemaDescriptor_FileEntrySDKType): ModuleSchemaDescriptor_FileEntry;
+    toSDK(message: ModuleSchemaDescriptor_FileEntry): ModuleSchemaDescriptor_FileEntrySDKType;
 };

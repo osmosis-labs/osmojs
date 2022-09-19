@@ -155,140 +155,140 @@ export interface QueryLockableDurationsResponseSDKType {
 export declare const ModuleToDistributeCoinsRequest: {
     encode(_: ModuleToDistributeCoinsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsRequest;
-    fromJSON(_: any): ModuleToDistributeCoinsRequest;
-    toJSON(_: ModuleToDistributeCoinsRequest): unknown;
     fromPartial(_: DeepPartial<ModuleToDistributeCoinsRequest>): ModuleToDistributeCoinsRequest;
+    fromSDK(_: ModuleToDistributeCoinsRequestSDKType): ModuleToDistributeCoinsRequest;
+    toSDK(_: ModuleToDistributeCoinsRequest): ModuleToDistributeCoinsRequestSDKType;
 };
 export declare const ModuleToDistributeCoinsResponse: {
     encode(message: ModuleToDistributeCoinsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponseSDKType;
-    fromJSON(object: any): ModuleToDistributeCoinsResponse;
-    toJSON(message: ModuleToDistributeCoinsResponse): unknown;
     fromPartial(object: DeepPartial<ModuleToDistributeCoinsResponse>): ModuleToDistributeCoinsResponse;
+    fromSDK(object: ModuleToDistributeCoinsResponseSDKType): ModuleToDistributeCoinsResponse;
+    toSDK(message: ModuleToDistributeCoinsResponse): ModuleToDistributeCoinsResponseSDKType;
 };
 export declare const ModuleDistributedCoinsRequest: {
     encode(_: ModuleDistributedCoinsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsRequest;
-    fromJSON(_: any): ModuleDistributedCoinsRequest;
-    toJSON(_: ModuleDistributedCoinsRequest): unknown;
     fromPartial(_: DeepPartial<ModuleDistributedCoinsRequest>): ModuleDistributedCoinsRequest;
+    fromSDK(_: ModuleDistributedCoinsRequestSDKType): ModuleDistributedCoinsRequest;
+    toSDK(_: ModuleDistributedCoinsRequest): ModuleDistributedCoinsRequestSDKType;
 };
 export declare const ModuleDistributedCoinsResponse: {
     encode(message: ModuleDistributedCoinsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsResponseSDKType;
-    fromJSON(object: any): ModuleDistributedCoinsResponse;
-    toJSON(message: ModuleDistributedCoinsResponse): unknown;
     fromPartial(object: DeepPartial<ModuleDistributedCoinsResponse>): ModuleDistributedCoinsResponse;
+    fromSDK(object: ModuleDistributedCoinsResponseSDKType): ModuleDistributedCoinsResponse;
+    toSDK(message: ModuleDistributedCoinsResponse): ModuleDistributedCoinsResponseSDKType;
 };
 export declare const GaugeByIDRequest: {
     encode(message: GaugeByIDRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDRequest;
-    fromJSON(object: any): GaugeByIDRequest;
-    toJSON(message: GaugeByIDRequest): unknown;
     fromPartial(object: DeepPartial<GaugeByIDRequest>): GaugeByIDRequest;
+    fromSDK(object: GaugeByIDRequestSDKType): GaugeByIDRequest;
+    toSDK(message: GaugeByIDRequest): GaugeByIDRequestSDKType;
 };
 export declare const GaugeByIDResponse: {
     encode(message: GaugeByIDResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponseSDKType;
-    fromJSON(object: any): GaugeByIDResponse;
-    toJSON(message: GaugeByIDResponse): unknown;
     fromPartial(object: DeepPartial<GaugeByIDResponse>): GaugeByIDResponse;
+    fromSDK(object: GaugeByIDResponseSDKType): GaugeByIDResponse;
+    toSDK(message: GaugeByIDResponse): GaugeByIDResponseSDKType;
 };
 export declare const GaugesRequest: {
     encode(message: GaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugesRequest;
-    fromJSON(object: any): GaugesRequest;
-    toJSON(message: GaugesRequest): unknown;
     fromPartial(object: DeepPartial<GaugesRequest>): GaugesRequest;
+    fromSDK(object: GaugesRequestSDKType): GaugesRequest;
+    toSDK(message: GaugesRequest): GaugesRequestSDKType;
 };
 export declare const GaugesResponse: {
     encode(message: GaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponseSDKType;
-    fromJSON(object: any): GaugesResponse;
-    toJSON(message: GaugesResponse): unknown;
     fromPartial(object: DeepPartial<GaugesResponse>): GaugesResponse;
+    fromSDK(object: GaugesResponseSDKType): GaugesResponse;
+    toSDK(message: GaugesResponse): GaugesResponseSDKType;
 };
 export declare const ActiveGaugesRequest: {
     encode(message: ActiveGaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesRequest;
-    fromJSON(object: any): ActiveGaugesRequest;
-    toJSON(message: ActiveGaugesRequest): unknown;
     fromPartial(object: DeepPartial<ActiveGaugesRequest>): ActiveGaugesRequest;
+    fromSDK(object: ActiveGaugesRequestSDKType): ActiveGaugesRequest;
+    toSDK(message: ActiveGaugesRequest): ActiveGaugesRequestSDKType;
 };
 export declare const ActiveGaugesResponse: {
     encode(message: ActiveGaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponseSDKType;
-    fromJSON(object: any): ActiveGaugesResponse;
-    toJSON(message: ActiveGaugesResponse): unknown;
     fromPartial(object: DeepPartial<ActiveGaugesResponse>): ActiveGaugesResponse;
+    fromSDK(object: ActiveGaugesResponseSDKType): ActiveGaugesResponse;
+    toSDK(message: ActiveGaugesResponse): ActiveGaugesResponseSDKType;
 };
 export declare const ActiveGaugesPerDenomRequest: {
     encode(message: ActiveGaugesPerDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomRequest;
-    fromJSON(object: any): ActiveGaugesPerDenomRequest;
-    toJSON(message: ActiveGaugesPerDenomRequest): unknown;
     fromPartial(object: DeepPartial<ActiveGaugesPerDenomRequest>): ActiveGaugesPerDenomRequest;
+    fromSDK(object: ActiveGaugesPerDenomRequestSDKType): ActiveGaugesPerDenomRequest;
+    toSDK(message: ActiveGaugesPerDenomRequest): ActiveGaugesPerDenomRequestSDKType;
 };
 export declare const ActiveGaugesPerDenomResponse: {
     encode(message: ActiveGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponseSDKType;
-    fromJSON(object: any): ActiveGaugesPerDenomResponse;
-    toJSON(message: ActiveGaugesPerDenomResponse): unknown;
     fromPartial(object: DeepPartial<ActiveGaugesPerDenomResponse>): ActiveGaugesPerDenomResponse;
+    fromSDK(object: ActiveGaugesPerDenomResponseSDKType): ActiveGaugesPerDenomResponse;
+    toSDK(message: ActiveGaugesPerDenomResponse): ActiveGaugesPerDenomResponseSDKType;
 };
 export declare const UpcomingGaugesRequest: {
     encode(message: UpcomingGaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesRequest;
-    fromJSON(object: any): UpcomingGaugesRequest;
-    toJSON(message: UpcomingGaugesRequest): unknown;
     fromPartial(object: DeepPartial<UpcomingGaugesRequest>): UpcomingGaugesRequest;
+    fromSDK(object: UpcomingGaugesRequestSDKType): UpcomingGaugesRequest;
+    toSDK(message: UpcomingGaugesRequest): UpcomingGaugesRequestSDKType;
 };
 export declare const UpcomingGaugesResponse: {
     encode(message: UpcomingGaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponseSDKType;
-    fromJSON(object: any): UpcomingGaugesResponse;
-    toJSON(message: UpcomingGaugesResponse): unknown;
     fromPartial(object: DeepPartial<UpcomingGaugesResponse>): UpcomingGaugesResponse;
+    fromSDK(object: UpcomingGaugesResponseSDKType): UpcomingGaugesResponse;
+    toSDK(message: UpcomingGaugesResponse): UpcomingGaugesResponseSDKType;
 };
 export declare const UpcomingGaugesPerDenomRequest: {
     encode(message: UpcomingGaugesPerDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomRequest;
-    fromJSON(object: any): UpcomingGaugesPerDenomRequest;
-    toJSON(message: UpcomingGaugesPerDenomRequest): unknown;
     fromPartial(object: DeepPartial<UpcomingGaugesPerDenomRequest>): UpcomingGaugesPerDenomRequest;
+    fromSDK(object: UpcomingGaugesPerDenomRequestSDKType): UpcomingGaugesPerDenomRequest;
+    toSDK(message: UpcomingGaugesPerDenomRequest): UpcomingGaugesPerDenomRequestSDKType;
 };
 export declare const UpcomingGaugesPerDenomResponse: {
     encode(message: UpcomingGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponseSDKType;
-    fromJSON(object: any): UpcomingGaugesPerDenomResponse;
-    toJSON(message: UpcomingGaugesPerDenomResponse): unknown;
     fromPartial(object: DeepPartial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse;
+    fromSDK(object: UpcomingGaugesPerDenomResponseSDKType): UpcomingGaugesPerDenomResponse;
+    toSDK(message: UpcomingGaugesPerDenomResponse): UpcomingGaugesPerDenomResponseSDKType;
 };
 export declare const RewardsEstRequest: {
     encode(message: RewardsEstRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstRequest;
-    fromJSON(object: any): RewardsEstRequest;
-    toJSON(message: RewardsEstRequest): unknown;
     fromPartial(object: DeepPartial<RewardsEstRequest>): RewardsEstRequest;
+    fromSDK(object: RewardsEstRequestSDKType): RewardsEstRequest;
+    toSDK(message: RewardsEstRequest): RewardsEstRequestSDKType;
 };
 export declare const RewardsEstResponse: {
     encode(message: RewardsEstResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponseSDKType;
-    fromJSON(object: any): RewardsEstResponse;
-    toJSON(message: RewardsEstResponse): unknown;
     fromPartial(object: DeepPartial<RewardsEstResponse>): RewardsEstResponse;
+    fromSDK(object: RewardsEstResponseSDKType): RewardsEstResponse;
+    toSDK(message: RewardsEstResponse): RewardsEstResponseSDKType;
 };
 export declare const QueryLockableDurationsRequest: {
     encode(_: QueryLockableDurationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsRequest;
-    fromJSON(_: any): QueryLockableDurationsRequest;
-    toJSON(_: QueryLockableDurationsRequest): unknown;
     fromPartial(_: DeepPartial<QueryLockableDurationsRequest>): QueryLockableDurationsRequest;
+    fromSDK(_: QueryLockableDurationsRequestSDKType): QueryLockableDurationsRequest;
+    toSDK(_: QueryLockableDurationsRequest): QueryLockableDurationsRequestSDKType;
 };
 export declare const QueryLockableDurationsResponse: {
     encode(message: QueryLockableDurationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponseSDKType;
-    fromJSON(object: any): QueryLockableDurationsResponse;
-    toJSON(message: QueryLockableDurationsResponse): unknown;
     fromPartial(object: DeepPartial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse;
+    fromSDK(object: QueryLockableDurationsResponseSDKType): QueryLockableDurationsResponse;
+    toSDK(message: QueryLockableDurationsResponse): QueryLockableDurationsResponseSDKType;
 };

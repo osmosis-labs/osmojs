@@ -86,98 +86,98 @@ export interface QueryExternalIncentiveGaugesResponseSDKType {
 export declare const QueryGaugeIdsRequest: {
     encode(message: QueryGaugeIdsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsRequest;
-    fromJSON(object: any): QueryGaugeIdsRequest;
-    toJSON(message: QueryGaugeIdsRequest): unknown;
     fromPartial(object: DeepPartial<QueryGaugeIdsRequest>): QueryGaugeIdsRequest;
+    fromSDK(object: QueryGaugeIdsRequestSDKType): QueryGaugeIdsRequest;
+    toSDK(message: QueryGaugeIdsRequest): QueryGaugeIdsRequestSDKType;
 };
 export declare const QueryGaugeIdsResponse: {
     encode(message: QueryGaugeIdsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponseSDKType;
-    fromJSON(object: any): QueryGaugeIdsResponse;
-    toJSON(message: QueryGaugeIdsResponse): unknown;
     fromPartial(object: DeepPartial<QueryGaugeIdsResponse>): QueryGaugeIdsResponse;
+    fromSDK(object: QueryGaugeIdsResponseSDKType): QueryGaugeIdsResponse;
+    toSDK(message: QueryGaugeIdsResponse): QueryGaugeIdsResponseSDKType;
 };
 export declare const QueryGaugeIdsResponse_GaugeIdWithDuration: {
     encode(message: QueryGaugeIdsResponse_GaugeIdWithDuration, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponse_GaugeIdWithDuration;
-    fromJSON(object: any): QueryGaugeIdsResponse_GaugeIdWithDuration;
-    toJSON(message: QueryGaugeIdsResponse_GaugeIdWithDuration): unknown;
     fromPartial(object: DeepPartial<QueryGaugeIdsResponse_GaugeIdWithDuration>): QueryGaugeIdsResponse_GaugeIdWithDuration;
+    fromSDK(object: QueryGaugeIdsResponse_GaugeIdWithDurationSDKType): QueryGaugeIdsResponse_GaugeIdWithDuration;
+    toSDK(message: QueryGaugeIdsResponse_GaugeIdWithDuration): QueryGaugeIdsResponse_GaugeIdWithDurationSDKType;
 };
 export declare const QueryDistrInfoRequest: {
     encode(_: QueryDistrInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoRequest;
-    fromJSON(_: any): QueryDistrInfoRequest;
-    toJSON(_: QueryDistrInfoRequest): unknown;
     fromPartial(_: DeepPartial<QueryDistrInfoRequest>): QueryDistrInfoRequest;
+    fromSDK(_: QueryDistrInfoRequestSDKType): QueryDistrInfoRequest;
+    toSDK(_: QueryDistrInfoRequest): QueryDistrInfoRequestSDKType;
 };
 export declare const QueryDistrInfoResponse: {
     encode(message: QueryDistrInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoResponseSDKType;
-    fromJSON(object: any): QueryDistrInfoResponse;
-    toJSON(message: QueryDistrInfoResponse): unknown;
     fromPartial(object: DeepPartial<QueryDistrInfoResponse>): QueryDistrInfoResponse;
+    fromSDK(object: QueryDistrInfoResponseSDKType): QueryDistrInfoResponse;
+    toSDK(message: QueryDistrInfoResponse): QueryDistrInfoResponseSDKType;
 };
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
+    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
+    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
 };
 export declare const QueryLockableDurationsRequest: {
     encode(_: QueryLockableDurationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsRequest;
-    fromJSON(_: any): QueryLockableDurationsRequest;
-    toJSON(_: QueryLockableDurationsRequest): unknown;
     fromPartial(_: DeepPartial<QueryLockableDurationsRequest>): QueryLockableDurationsRequest;
+    fromSDK(_: QueryLockableDurationsRequestSDKType): QueryLockableDurationsRequest;
+    toSDK(_: QueryLockableDurationsRequest): QueryLockableDurationsRequestSDKType;
 };
 export declare const QueryLockableDurationsResponse: {
     encode(message: QueryLockableDurationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponseSDKType;
-    fromJSON(object: any): QueryLockableDurationsResponse;
-    toJSON(message: QueryLockableDurationsResponse): unknown;
     fromPartial(object: DeepPartial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse;
+    fromSDK(object: QueryLockableDurationsResponseSDKType): QueryLockableDurationsResponse;
+    toSDK(message: QueryLockableDurationsResponse): QueryLockableDurationsResponseSDKType;
 };
 export declare const QueryIncentivizedPoolsRequest: {
     encode(_: QueryIncentivizedPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsRequest;
-    fromJSON(_: any): QueryIncentivizedPoolsRequest;
-    toJSON(_: QueryIncentivizedPoolsRequest): unknown;
     fromPartial(_: DeepPartial<QueryIncentivizedPoolsRequest>): QueryIncentivizedPoolsRequest;
+    fromSDK(_: QueryIncentivizedPoolsRequestSDKType): QueryIncentivizedPoolsRequest;
+    toSDK(_: QueryIncentivizedPoolsRequest): QueryIncentivizedPoolsRequestSDKType;
 };
 export declare const IncentivizedPool: {
     encode(message: IncentivizedPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IncentivizedPool;
-    fromJSON(object: any): IncentivizedPool;
-    toJSON(message: IncentivizedPool): unknown;
     fromPartial(object: DeepPartial<IncentivizedPool>): IncentivizedPool;
+    fromSDK(object: IncentivizedPoolSDKType): IncentivizedPool;
+    toSDK(message: IncentivizedPool): IncentivizedPoolSDKType;
 };
 export declare const QueryIncentivizedPoolsResponse: {
     encode(message: QueryIncentivizedPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsResponseSDKType;
-    fromJSON(object: any): QueryIncentivizedPoolsResponse;
-    toJSON(message: QueryIncentivizedPoolsResponse): unknown;
     fromPartial(object: DeepPartial<QueryIncentivizedPoolsResponse>): QueryIncentivizedPoolsResponse;
+    fromSDK(object: QueryIncentivizedPoolsResponseSDKType): QueryIncentivizedPoolsResponse;
+    toSDK(message: QueryIncentivizedPoolsResponse): QueryIncentivizedPoolsResponseSDKType;
 };
 export declare const QueryExternalIncentiveGaugesRequest: {
     encode(_: QueryExternalIncentiveGaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesRequest;
-    fromJSON(_: any): QueryExternalIncentiveGaugesRequest;
-    toJSON(_: QueryExternalIncentiveGaugesRequest): unknown;
     fromPartial(_: DeepPartial<QueryExternalIncentiveGaugesRequest>): QueryExternalIncentiveGaugesRequest;
+    fromSDK(_: QueryExternalIncentiveGaugesRequestSDKType): QueryExternalIncentiveGaugesRequest;
+    toSDK(_: QueryExternalIncentiveGaugesRequest): QueryExternalIncentiveGaugesRequestSDKType;
 };
 export declare const QueryExternalIncentiveGaugesResponse: {
     encode(message: QueryExternalIncentiveGaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesResponseSDKType;
-    fromJSON(object: any): QueryExternalIncentiveGaugesResponse;
-    toJSON(message: QueryExternalIncentiveGaugesResponse): unknown;
     fromPartial(object: DeepPartial<QueryExternalIncentiveGaugesResponse>): QueryExternalIncentiveGaugesResponse;
+    fromSDK(object: QueryExternalIncentiveGaugesResponseSDKType): QueryExternalIncentiveGaugesResponse;
+    toSDK(message: QueryExternalIncentiveGaugesResponse): QueryExternalIncentiveGaugesResponseSDKType;
 };

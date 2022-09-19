@@ -68,21 +68,21 @@ export interface IdentifiedGenesisMetadataSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
     fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+    fromSDK(object: GenesisStateSDKType): GenesisState;
+    toSDK(message: GenesisState): GenesisStateSDKType;
 };
 export declare const GenesisMetadata: {
     encode(message: GenesisMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisMetadata;
-    fromJSON(object: any): GenesisMetadata;
-    toJSON(message: GenesisMetadata): unknown;
     fromPartial(object: DeepPartial<GenesisMetadata>): GenesisMetadata;
+    fromSDK(object: GenesisMetadataSDKType): GenesisMetadata;
+    toSDK(message: GenesisMetadata): GenesisMetadataSDKType;
 };
 export declare const IdentifiedGenesisMetadata: {
     encode(message: IdentifiedGenesisMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedGenesisMetadata;
-    fromJSON(object: any): IdentifiedGenesisMetadata;
-    toJSON(message: IdentifiedGenesisMetadata): unknown;
     fromPartial(object: DeepPartial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata;
+    fromSDK(object: IdentifiedGenesisMetadataSDKType): IdentifiedGenesisMetadata;
+    toSDK(message: IdentifiedGenesisMetadata): IdentifiedGenesisMetadataSDKType;
 };

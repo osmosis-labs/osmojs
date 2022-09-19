@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial, isSet } from "@osmonauts/helpers";
 /** EventGrant is emitted on Msg/Grant */
 
 export interface EventGrant {
@@ -104,28 +104,28 @@ export const EventGrant = {
     return message;
   },
 
-  fromJSON(object: any): EventGrant {
-    return {
-      msgTypeUrl: isSet(object.msgTypeUrl) ? String(object.msgTypeUrl) : "",
-      granter: isSet(object.granter) ? String(object.granter) : "",
-      grantee: isSet(object.grantee) ? String(object.grantee) : ""
-    };
-  },
-
-  toJSON(message: EventGrant): unknown {
-    const obj: any = {};
-    message.msgTypeUrl !== undefined && (obj.msgTypeUrl = message.msgTypeUrl);
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EventGrant>): EventGrant {
     const message = createBaseEventGrant();
     message.msgTypeUrl = object.msgTypeUrl ?? "";
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
     return message;
+  },
+
+  fromSDK(object: EventGrantSDKType): EventGrant {
+    return {
+      msgTypeUrl: isSet(object.msg_type_url) ? object.msg_type_url : undefined,
+      granter: isSet(object.granter) ? object.granter : undefined,
+      grantee: isSet(object.grantee) ? object.grantee : undefined
+    };
+  },
+
+  toSDK(message: EventGrant): EventGrantSDKType {
+    const obj: any = {};
+    message.msgTypeUrl !== undefined && (obj.msg_type_url = message.msgTypeUrl);
+    message.granter !== undefined && (obj.granter = message.granter);
+    message.grantee !== undefined && (obj.grantee = message.grantee);
+    return obj;
   }
 
 };
@@ -185,28 +185,28 @@ export const EventRevoke = {
     return message;
   },
 
-  fromJSON(object: any): EventRevoke {
-    return {
-      msgTypeUrl: isSet(object.msgTypeUrl) ? String(object.msgTypeUrl) : "",
-      granter: isSet(object.granter) ? String(object.granter) : "",
-      grantee: isSet(object.grantee) ? String(object.grantee) : ""
-    };
-  },
-
-  toJSON(message: EventRevoke): unknown {
-    const obj: any = {};
-    message.msgTypeUrl !== undefined && (obj.msgTypeUrl = message.msgTypeUrl);
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EventRevoke>): EventRevoke {
     const message = createBaseEventRevoke();
     message.msgTypeUrl = object.msgTypeUrl ?? "";
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
     return message;
+  },
+
+  fromSDK(object: EventRevokeSDKType): EventRevoke {
+    return {
+      msgTypeUrl: isSet(object.msg_type_url) ? object.msg_type_url : undefined,
+      granter: isSet(object.granter) ? object.granter : undefined,
+      grantee: isSet(object.grantee) ? object.grantee : undefined
+    };
+  },
+
+  toSDK(message: EventRevoke): EventRevokeSDKType {
+    const obj: any = {};
+    message.msgTypeUrl !== undefined && (obj.msg_type_url = message.msgTypeUrl);
+    message.granter !== undefined && (obj.granter = message.granter);
+    message.grantee !== undefined && (obj.grantee = message.grantee);
+    return obj;
   }
 
 };

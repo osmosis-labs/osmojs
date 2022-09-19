@@ -1,7 +1,7 @@
 import { BaseAccount, BaseAccountSDKType } from "../../auth/v1beta1/auth";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial, isSet } from "@osmonauts/helpers";
 /**
  * BaseVestingAccount implements the VestingAccount interface. It contains all
  * the necessary fields needed for any vesting account implementation.
@@ -190,42 +190,6 @@ export const BaseVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): BaseVestingAccount {
-    return {
-      baseAccount: isSet(object.baseAccount) ? BaseAccount.fromJSON(object.baseAccount) : undefined,
-      originalVesting: Array.isArray(object?.originalVesting) ? object.originalVesting.map((e: any) => Coin.fromJSON(e)) : [],
-      delegatedFree: Array.isArray(object?.delegatedFree) ? object.delegatedFree.map((e: any) => Coin.fromJSON(e)) : [],
-      delegatedVesting: Array.isArray(object?.delegatedVesting) ? object.delegatedVesting.map((e: any) => Coin.fromJSON(e)) : [],
-      endTime: isSet(object.endTime) ? Long.fromString(object.endTime) : Long.ZERO
-    };
-  },
-
-  toJSON(message: BaseVestingAccount): unknown {
-    const obj: any = {};
-    message.baseAccount !== undefined && (obj.baseAccount = message.baseAccount ? BaseAccount.toJSON(message.baseAccount) : undefined);
-
-    if (message.originalVesting) {
-      obj.originalVesting = message.originalVesting.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.originalVesting = [];
-    }
-
-    if (message.delegatedFree) {
-      obj.delegatedFree = message.delegatedFree.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.delegatedFree = [];
-    }
-
-    if (message.delegatedVesting) {
-      obj.delegatedVesting = message.delegatedVesting.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.delegatedVesting = [];
-    }
-
-    message.endTime !== undefined && (obj.endTime = (message.endTime || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<BaseVestingAccount>): BaseVestingAccount {
     const message = createBaseBaseVestingAccount();
     message.baseAccount = object.baseAccount !== undefined && object.baseAccount !== null ? BaseAccount.fromPartial(object.baseAccount) : undefined;
@@ -234,6 +198,42 @@ export const BaseVestingAccount = {
     message.delegatedVesting = object.delegatedVesting?.map(e => Coin.fromPartial(e)) || [];
     message.endTime = object.endTime !== undefined && object.endTime !== null ? Long.fromValue(object.endTime) : Long.ZERO;
     return message;
+  },
+
+  fromSDK(object: BaseVestingAccountSDKType): BaseVestingAccount {
+    return {
+      baseAccount: isSet(object.base_account) ? BaseAccount.fromSDK(object.base_account) : undefined,
+      originalVesting: Array.isArray(object?.original_vesting) ? object.original_vesting.map((e: any) => Coin.fromSDK(e)) : [],
+      delegatedFree: Array.isArray(object?.delegated_free) ? object.delegated_free.map((e: any) => Coin.fromSDK(e)) : [],
+      delegatedVesting: Array.isArray(object?.delegated_vesting) ? object.delegated_vesting.map((e: any) => Coin.fromSDK(e)) : [],
+      endTime: isSet(object.end_time) ? object.end_time : undefined
+    };
+  },
+
+  toSDK(message: BaseVestingAccount): BaseVestingAccountSDKType {
+    const obj: any = {};
+    message.baseAccount !== undefined && (obj.base_account = message.baseAccount ? BaseAccount.toSDK(message.baseAccount) : undefined);
+
+    if (message.originalVesting) {
+      obj.original_vesting = message.originalVesting.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.original_vesting = [];
+    }
+
+    if (message.delegatedFree) {
+      obj.delegated_free = message.delegatedFree.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.delegated_free = [];
+    }
+
+    if (message.delegatedVesting) {
+      obj.delegated_vesting = message.delegatedVesting.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.delegated_vesting = [];
+    }
+
+    message.endTime !== undefined && (obj.end_time = message.endTime);
+    return obj;
   }
 
 };
@@ -284,25 +284,25 @@ export const ContinuousVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): ContinuousVestingAccount {
-    return {
-      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined,
-      startTime: isSet(object.startTime) ? Long.fromString(object.startTime) : Long.ZERO
-    };
-  },
-
-  toJSON(message: ContinuousVestingAccount): unknown {
-    const obj: any = {};
-    message.baseVestingAccount !== undefined && (obj.baseVestingAccount = message.baseVestingAccount ? BaseVestingAccount.toJSON(message.baseVestingAccount) : undefined);
-    message.startTime !== undefined && (obj.startTime = (message.startTime || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ContinuousVestingAccount>): ContinuousVestingAccount {
     const message = createBaseContinuousVestingAccount();
     message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
     message.startTime = object.startTime !== undefined && object.startTime !== null ? Long.fromValue(object.startTime) : Long.ZERO;
     return message;
+  },
+
+  fromSDK(object: ContinuousVestingAccountSDKType): ContinuousVestingAccount {
+    return {
+      baseVestingAccount: isSet(object.base_vesting_account) ? BaseVestingAccount.fromSDK(object.base_vesting_account) : undefined,
+      startTime: isSet(object.start_time) ? object.start_time : undefined
+    };
+  },
+
+  toSDK(message: ContinuousVestingAccount): ContinuousVestingAccountSDKType {
+    const obj: any = {};
+    message.baseVestingAccount !== undefined && (obj.base_vesting_account = message.baseVestingAccount ? BaseVestingAccount.toSDK(message.baseVestingAccount) : undefined);
+    message.startTime !== undefined && (obj.start_time = message.startTime);
+    return obj;
   }
 
 };
@@ -344,22 +344,22 @@ export const DelayedVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): DelayedVestingAccount {
-    return {
-      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined
-    };
-  },
-
-  toJSON(message: DelayedVestingAccount): unknown {
-    const obj: any = {};
-    message.baseVestingAccount !== undefined && (obj.baseVestingAccount = message.baseVestingAccount ? BaseVestingAccount.toJSON(message.baseVestingAccount) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DelayedVestingAccount>): DelayedVestingAccount {
     const message = createBaseDelayedVestingAccount();
     message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
     return message;
+  },
+
+  fromSDK(object: DelayedVestingAccountSDKType): DelayedVestingAccount {
+    return {
+      baseVestingAccount: isSet(object.base_vesting_account) ? BaseVestingAccount.fromSDK(object.base_vesting_account) : undefined
+    };
+  },
+
+  toSDK(message: DelayedVestingAccount): DelayedVestingAccountSDKType {
+    const obj: any = {};
+    message.baseVestingAccount !== undefined && (obj.base_vesting_account = message.baseVestingAccount ? BaseVestingAccount.toSDK(message.baseVestingAccount) : undefined);
+    return obj;
   }
 
 };
@@ -410,31 +410,31 @@ export const Period = {
     return message;
   },
 
-  fromJSON(object: any): Period {
-    return {
-      length: isSet(object.length) ? Long.fromString(object.length) : Long.ZERO,
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Period): unknown {
-    const obj: any = {};
-    message.length !== undefined && (obj.length = (message.length || Long.ZERO).toString());
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Period>): Period {
     const message = createBasePeriod();
     message.length = object.length !== undefined && object.length !== null ? Long.fromValue(object.length) : Long.ZERO;
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: PeriodSDKType): Period {
+    return {
+      length: isSet(object.length) ? object.length : undefined,
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: Period): PeriodSDKType {
+    const obj: any = {};
+    message.length !== undefined && (obj.length = message.length);
+
+    if (message.amount) {
+      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
+    } else {
+      obj.amount = [];
+    }
+
+    return obj;
   }
 
 };
@@ -494,34 +494,34 @@ export const PeriodicVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): PeriodicVestingAccount {
-    return {
-      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined,
-      startTime: isSet(object.startTime) ? Long.fromString(object.startTime) : Long.ZERO,
-      vestingPeriods: Array.isArray(object?.vestingPeriods) ? object.vestingPeriods.map((e: any) => Period.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: PeriodicVestingAccount): unknown {
-    const obj: any = {};
-    message.baseVestingAccount !== undefined && (obj.baseVestingAccount = message.baseVestingAccount ? BaseVestingAccount.toJSON(message.baseVestingAccount) : undefined);
-    message.startTime !== undefined && (obj.startTime = (message.startTime || Long.ZERO).toString());
-
-    if (message.vestingPeriods) {
-      obj.vestingPeriods = message.vestingPeriods.map(e => e ? Period.toJSON(e) : undefined);
-    } else {
-      obj.vestingPeriods = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PeriodicVestingAccount>): PeriodicVestingAccount {
     const message = createBasePeriodicVestingAccount();
     message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
     message.startTime = object.startTime !== undefined && object.startTime !== null ? Long.fromValue(object.startTime) : Long.ZERO;
     message.vestingPeriods = object.vestingPeriods?.map(e => Period.fromPartial(e)) || [];
     return message;
+  },
+
+  fromSDK(object: PeriodicVestingAccountSDKType): PeriodicVestingAccount {
+    return {
+      baseVestingAccount: isSet(object.base_vesting_account) ? BaseVestingAccount.fromSDK(object.base_vesting_account) : undefined,
+      startTime: isSet(object.start_time) ? object.start_time : undefined,
+      vestingPeriods: Array.isArray(object?.vesting_periods) ? object.vesting_periods.map((e: any) => Period.fromSDK(e)) : []
+    };
+  },
+
+  toSDK(message: PeriodicVestingAccount): PeriodicVestingAccountSDKType {
+    const obj: any = {};
+    message.baseVestingAccount !== undefined && (obj.base_vesting_account = message.baseVestingAccount ? BaseVestingAccount.toSDK(message.baseVestingAccount) : undefined);
+    message.startTime !== undefined && (obj.start_time = message.startTime);
+
+    if (message.vestingPeriods) {
+      obj.vesting_periods = message.vestingPeriods.map(e => e ? Period.toSDK(e) : undefined);
+    } else {
+      obj.vesting_periods = [];
+    }
+
+    return obj;
   }
 
 };
@@ -563,22 +563,22 @@ export const PermanentLockedAccount = {
     return message;
   },
 
-  fromJSON(object: any): PermanentLockedAccount {
-    return {
-      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined
-    };
-  },
-
-  toJSON(message: PermanentLockedAccount): unknown {
-    const obj: any = {};
-    message.baseVestingAccount !== undefined && (obj.baseVestingAccount = message.baseVestingAccount ? BaseVestingAccount.toJSON(message.baseVestingAccount) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PermanentLockedAccount>): PermanentLockedAccount {
     const message = createBasePermanentLockedAccount();
     message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
     return message;
+  },
+
+  fromSDK(object: PermanentLockedAccountSDKType): PermanentLockedAccount {
+    return {
+      baseVestingAccount: isSet(object.base_vesting_account) ? BaseVestingAccount.fromSDK(object.base_vesting_account) : undefined
+    };
+  },
+
+  toSDK(message: PermanentLockedAccount): PermanentLockedAccountSDKType {
+    const obj: any = {};
+    message.baseVestingAccount !== undefined && (obj.base_vesting_account = message.baseVestingAccount ? BaseVestingAccount.toSDK(message.baseVestingAccount) : undefined);
+    return obj;
   }
 
 };

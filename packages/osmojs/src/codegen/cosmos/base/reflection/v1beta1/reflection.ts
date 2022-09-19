@@ -80,18 +80,18 @@ export const ListAllInterfacesRequest = {
     return message;
   },
 
-  fromJSON(_: any): ListAllInterfacesRequest {
-    return {};
-  },
-
-  toJSON(_: ListAllInterfacesRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<ListAllInterfacesRequest>): ListAllInterfacesRequest {
     const message = createBaseListAllInterfacesRequest();
     return message;
+  },
+
+  fromSDK(_: ListAllInterfacesRequestSDKType): ListAllInterfacesRequest {
+    return {};
+  },
+
+  toSDK(_: ListAllInterfacesRequest): ListAllInterfacesRequestSDKType {
+    const obj: any = {};
+    return obj;
   }
 
 };
@@ -133,28 +133,28 @@ export const ListAllInterfacesResponse = {
     return message;
   },
 
-  fromJSON(object: any): ListAllInterfacesResponse {
-    return {
-      interfaceNames: Array.isArray(object?.interfaceNames) ? object.interfaceNames.map((e: any) => String(e)) : []
-    };
-  },
-
-  toJSON(message: ListAllInterfacesResponse): unknown {
-    const obj: any = {};
-
-    if (message.interfaceNames) {
-      obj.interfaceNames = message.interfaceNames.map(e => e);
-    } else {
-      obj.interfaceNames = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ListAllInterfacesResponse>): ListAllInterfacesResponse {
     const message = createBaseListAllInterfacesResponse();
     message.interfaceNames = object.interfaceNames?.map(e => e) || [];
     return message;
+  },
+
+  fromSDK(object: ListAllInterfacesResponseSDKType): ListAllInterfacesResponse {
+    return {
+      interfaceNames: Array.isArray(object?.interface_names) ? object.interface_names.map((e: any) => e) : []
+    };
+  },
+
+  toSDK(message: ListAllInterfacesResponse): ListAllInterfacesResponseSDKType {
+    const obj: any = {};
+
+    if (message.interfaceNames) {
+      obj.interface_names = message.interfaceNames.map(e => e);
+    } else {
+      obj.interface_names = [];
+    }
+
+    return obj;
   }
 
 };
@@ -196,22 +196,22 @@ export const ListImplementationsRequest = {
     return message;
   },
 
-  fromJSON(object: any): ListImplementationsRequest {
-    return {
-      interfaceName: isSet(object.interfaceName) ? String(object.interfaceName) : ""
-    };
-  },
-
-  toJSON(message: ListImplementationsRequest): unknown {
-    const obj: any = {};
-    message.interfaceName !== undefined && (obj.interfaceName = message.interfaceName);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ListImplementationsRequest>): ListImplementationsRequest {
     const message = createBaseListImplementationsRequest();
     message.interfaceName = object.interfaceName ?? "";
     return message;
+  },
+
+  fromSDK(object: ListImplementationsRequestSDKType): ListImplementationsRequest {
+    return {
+      interfaceName: isSet(object.interface_name) ? object.interface_name : undefined
+    };
+  },
+
+  toSDK(message: ListImplementationsRequest): ListImplementationsRequestSDKType {
+    const obj: any = {};
+    message.interfaceName !== undefined && (obj.interface_name = message.interfaceName);
+    return obj;
   }
 
 };
@@ -253,28 +253,28 @@ export const ListImplementationsResponse = {
     return message;
   },
 
-  fromJSON(object: any): ListImplementationsResponse {
-    return {
-      implementationMessageNames: Array.isArray(object?.implementationMessageNames) ? object.implementationMessageNames.map((e: any) => String(e)) : []
-    };
-  },
-
-  toJSON(message: ListImplementationsResponse): unknown {
-    const obj: any = {};
-
-    if (message.implementationMessageNames) {
-      obj.implementationMessageNames = message.implementationMessageNames.map(e => e);
-    } else {
-      obj.implementationMessageNames = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ListImplementationsResponse>): ListImplementationsResponse {
     const message = createBaseListImplementationsResponse();
     message.implementationMessageNames = object.implementationMessageNames?.map(e => e) || [];
     return message;
+  },
+
+  fromSDK(object: ListImplementationsResponseSDKType): ListImplementationsResponse {
+    return {
+      implementationMessageNames: Array.isArray(object?.implementation_message_names) ? object.implementation_message_names.map((e: any) => e) : []
+    };
+  },
+
+  toSDK(message: ListImplementationsResponse): ListImplementationsResponseSDKType {
+    const obj: any = {};
+
+    if (message.implementationMessageNames) {
+      obj.implementation_message_names = message.implementationMessageNames.map(e => e);
+    } else {
+      obj.implementation_message_names = [];
+    }
+
+    return obj;
   }
 
 };
