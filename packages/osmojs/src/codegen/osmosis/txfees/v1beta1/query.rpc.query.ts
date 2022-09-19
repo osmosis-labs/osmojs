@@ -5,7 +5,7 @@ import { QueryFeeTokensRequest, QueryFeeTokensResponse, QueryFeeTokensResponseSD
 /** Query defines the RPC service */
 
 export interface Query {
-  feeTokens(request: QueryFeeTokensRequest): Promise<QueryFeeTokensResponseSDKType>;
+  feeTokens(request?: QueryFeeTokensRequest): Promise<QueryFeeTokensResponseSDKType>;
   /*FeeTokens returns a list of all the whitelisted fee tokens and their
   corresponding pools It does not include the BaseDenom, which has its own
   query endpoint*/
@@ -16,7 +16,7 @@ export interface Query {
   denomPoolId(request: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponseSDKType>;
   /*null*/
 
-  baseDenom(request: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType>;
+  baseDenom(request?: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType>;
   /*null*/
 
 }

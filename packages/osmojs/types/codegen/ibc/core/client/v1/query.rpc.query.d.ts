@@ -4,13 +4,13 @@ import { QueryClientStateRequest, QueryClientStateResponseSDKType, QueryClientSt
 /** Query defines the RPC service */
 export interface Query {
     clientState(request: QueryClientStateRequest): Promise<QueryClientStateResponseSDKType>;
-    clientStates(request: QueryClientStatesRequest): Promise<QueryClientStatesResponseSDKType>;
+    clientStates(request?: QueryClientStatesRequest): Promise<QueryClientStatesResponseSDKType>;
     consensusState(request: QueryConsensusStateRequest): Promise<QueryConsensusStateResponseSDKType>;
     consensusStates(request: QueryConsensusStatesRequest): Promise<QueryConsensusStatesResponseSDKType>;
     clientStatus(request: QueryClientStatusRequest): Promise<QueryClientStatusResponseSDKType>;
-    clientParams(request: QueryClientParamsRequest): Promise<QueryClientParamsResponseSDKType>;
-    upgradedClientState(request: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponseSDKType>;
-    upgradedConsensusState(request: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType>;
+    clientParams(request?: QueryClientParamsRequest): Promise<QueryClientParamsResponseSDKType>;
+    upgradedClientState(request?: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponseSDKType>;
+    upgradedConsensusState(request?: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;

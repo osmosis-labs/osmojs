@@ -6,11 +6,11 @@ export interface Query {
     balance(request: QueryBalanceRequest): Promise<QueryBalanceResponseSDKType>;
     allBalances(request: QueryAllBalancesRequest): Promise<QueryAllBalancesResponseSDKType>;
     spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType>;
-    totalSupply(request: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponseSDKType>;
+    totalSupply(request?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponseSDKType>;
     supplyOf(request: QuerySupplyOfRequest): Promise<QuerySupplyOfResponseSDKType>;
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
     denomMetadata(request: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponseSDKType>;
-    denomsMetadata(request: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponseSDKType>;
+    denomsMetadata(request?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponseSDKType>;
     denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {

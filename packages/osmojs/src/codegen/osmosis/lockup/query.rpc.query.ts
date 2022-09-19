@@ -5,10 +5,10 @@ import { ModuleBalanceRequest, ModuleBalanceResponse, ModuleBalanceResponseSDKTy
 /** Query defines the RPC service */
 
 export interface Query {
-  moduleBalance(request: ModuleBalanceRequest): Promise<ModuleBalanceResponseSDKType>;
+  moduleBalance(request?: ModuleBalanceRequest): Promise<ModuleBalanceResponseSDKType>;
   /*Return full balance of the module*/
 
-  moduleLockedAmount(request: ModuleLockedAmountRequest): Promise<ModuleLockedAmountResponseSDKType>;
+  moduleLockedAmount(request?: ModuleLockedAmountRequest): Promise<ModuleLockedAmountResponseSDKType>;
   /*Return locked balance of the module*/
 
   accountUnlockableCoins(request: AccountUnlockableCoinsRequest): Promise<AccountUnlockableCoinsResponseSDKType>;

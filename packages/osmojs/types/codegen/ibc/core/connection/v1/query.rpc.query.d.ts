@@ -4,7 +4,7 @@ import { QueryConnectionRequest, QueryConnectionResponseSDKType, QueryConnection
 /** Query defines the RPC service */
 export interface Query {
     connection(request: QueryConnectionRequest): Promise<QueryConnectionResponseSDKType>;
-    connections(request: QueryConnectionsRequest): Promise<QueryConnectionsResponseSDKType>;
+    connections(request?: QueryConnectionsRequest): Promise<QueryConnectionsResponseSDKType>;
     clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponseSDKType>;
     connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponseSDKType>;
     connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType>;

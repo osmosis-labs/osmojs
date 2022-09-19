@@ -10,8 +10,8 @@ export interface Query {
     rawContractState(request: QueryRawContractStateRequest): Promise<QueryRawContractStateResponseSDKType>;
     smartContractState(request: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponseSDKType>;
     code(request: QueryCodeRequest): Promise<QueryCodeResponseSDKType>;
-    codes(request: QueryCodesRequest): Promise<QueryCodesResponseSDKType>;
-    pinnedCodes(request: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponseSDKType>;
+    codes(request?: QueryCodesRequest): Promise<QueryCodesResponseSDKType>;
+    pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;

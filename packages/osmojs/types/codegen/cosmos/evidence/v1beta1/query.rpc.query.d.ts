@@ -4,7 +4,7 @@ import { QueryEvidenceRequest, QueryEvidenceResponseSDKType, QueryAllEvidenceReq
 /** Query defines the RPC service */
 export interface Query {
     evidence(request: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType>;
-    allEvidence(request: QueryAllEvidenceRequest): Promise<QueryAllEvidenceResponseSDKType>;
+    allEvidence(request?: QueryAllEvidenceRequest): Promise<QueryAllEvidenceResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;

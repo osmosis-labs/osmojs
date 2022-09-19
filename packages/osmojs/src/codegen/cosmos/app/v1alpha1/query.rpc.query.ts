@@ -5,7 +5,7 @@ import { QueryConfigRequest, QueryConfigResponse, QueryConfigResponseSDKType } f
 /** Query defines the RPC service */
 
 export interface Query {
-  config(request: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;
+  config(request?: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;
   /*Config returns the current app config.*/
 
 }

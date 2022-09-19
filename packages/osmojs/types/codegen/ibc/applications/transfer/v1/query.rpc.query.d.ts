@@ -4,8 +4,8 @@ import { QueryDenomTraceRequest, QueryDenomTraceResponseSDKType, QueryDenomTrace
 /** Query defines the RPC service */
 export interface Query {
     denomTrace(request: QueryDenomTraceRequest): Promise<QueryDenomTraceResponseSDKType>;
-    denomTraces(request: QueryDenomTracesRequest): Promise<QueryDenomTracesResponseSDKType>;
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    denomTraces(request?: QueryDenomTracesRequest): Promise<QueryDenomTracesResponseSDKType>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;

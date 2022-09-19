@@ -5,7 +5,7 @@ import { QueryCurrentPlanRequest, QueryCurrentPlanResponse, QueryCurrentPlanResp
 /** Query defines the RPC service */
 
 export interface Query {
-  currentPlan(request: QueryCurrentPlanRequest): Promise<QueryCurrentPlanResponseSDKType>;
+  currentPlan(request?: QueryCurrentPlanRequest): Promise<QueryCurrentPlanResponseSDKType>;
   /*CurrentPlan queries the current upgrade plan.*/
 
   appliedPlan(request: QueryAppliedPlanRequest): Promise<QueryAppliedPlanResponseSDKType>;
@@ -24,7 +24,7 @@ export interface Query {
   
   Since: cosmos-sdk 0.43*/
 
-  authority(request: QueryAuthorityRequest): Promise<QueryAuthorityResponseSDKType>;
+  authority(request?: QueryAuthorityRequest): Promise<QueryAuthorityResponseSDKType>;
   /*Returns the account with authority to conduct upgrades*/
 
 }

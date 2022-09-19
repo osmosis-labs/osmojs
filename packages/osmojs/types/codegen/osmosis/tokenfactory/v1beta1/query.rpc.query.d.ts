@@ -3,7 +3,7 @@ import { QueryClient } from "@cosmjs/stargate";
 import { QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponseSDKType, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponseSDKType } from "./query";
 /** Query defines the RPC service */
 export interface Query {
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
     denomAuthorityMetadata(request: QueryDenomAuthorityMetadataRequest): Promise<QueryDenomAuthorityMetadataResponseSDKType>;
     denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponseSDKType>;
 }

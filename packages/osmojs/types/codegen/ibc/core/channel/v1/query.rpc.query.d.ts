@@ -4,7 +4,7 @@ import { QueryChannelRequest, QueryChannelResponseSDKType, QueryChannelsRequest,
 /** Query defines the RPC service */
 export interface Query {
     channel(request: QueryChannelRequest): Promise<QueryChannelResponseSDKType>;
-    channels(request: QueryChannelsRequest): Promise<QueryChannelsResponseSDKType>;
+    channels(request?: QueryChannelsRequest): Promise<QueryChannelsResponseSDKType>;
     connectionChannels(request: QueryConnectionChannelsRequest): Promise<QueryConnectionChannelsResponseSDKType>;
     channelClientState(request: QueryChannelClientStateRequest): Promise<QueryChannelClientStateResponseSDKType>;
     channelConsensusState(request: QueryChannelConsensusStateRequest): Promise<QueryChannelConsensusStateResponseSDKType>;

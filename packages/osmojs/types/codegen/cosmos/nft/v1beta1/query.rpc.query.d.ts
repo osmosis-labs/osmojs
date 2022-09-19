@@ -9,7 +9,7 @@ export interface Query {
     nFTs(request: QueryNFTsRequest): Promise<QueryNFTsResponseSDKType>;
     nFT(request: QueryNFTRequest): Promise<QueryNFTResponseSDKType>;
     class(request: QueryClassRequest): Promise<QueryClassResponseSDKType>;
-    classes(request: QueryClassesRequest): Promise<QueryClassesResponseSDKType>;
+    classes(request?: QueryClassesRequest): Promise<QueryClassesResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
