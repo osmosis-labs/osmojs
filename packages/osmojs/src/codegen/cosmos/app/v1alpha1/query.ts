@@ -1,14 +1,23 @@
-import { Config } from "./config";
+import { Config, ConfigSDKType } from "./config";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, isSet } from "@osmonauts/helpers";
-
 /** QueryConfigRequest is the Query/Config request type. */
-export interface QueryConfigRequest {}
 
+export interface QueryConfigRequest {}
+/** QueryConfigRequest is the Query/Config request type. */
+
+export interface QueryConfigRequestSDKType {}
 /** QueryConfigRequest is the Query/Config response type. */
+
 export interface QueryConfigResponse {
   /** config is the current app config. */
   config: Config;
+}
+/** QueryConfigRequest is the Query/Config response type. */
+
+export interface QueryConfigResponseSDKType {
+  /** config is the current app config. */
+  config: ConfigSDKType;
 }
 
 function createBaseQueryConfigRequest(): QueryConfigRequest {
@@ -69,7 +78,7 @@ export const QueryConfigResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConfigResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConfigResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConfigResponse();

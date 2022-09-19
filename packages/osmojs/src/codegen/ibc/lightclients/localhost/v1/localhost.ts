@@ -1,30 +1,42 @@
-import { Height } from "../../../core/client/v1/client";
+import { Height, HeightSDKType } from "../../../core/client/v1/client";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * ClientState defines a loopback (localhost) client. It requires (read-only)
  * access to keys outside the client prefix.
  */
+
 export interface ClientState {
   /** self chain ID */
-  chain_id: string;
-
+  chainId: string;
   /** self latest block height */
+
   height: Height;
+}
+/**
+ * ClientState defines a loopback (localhost) client. It requires (read-only)
+ * access to keys outside the client prefix.
+ */
+
+export interface ClientStateSDKType {
+  /** self chain ID */
+  chain_id: string;
+  /** self latest block height */
+
+  height: HeightSDKType;
 }
 
 function createBaseClientState(): ClientState {
   return {
-    chain_id: "",
+    chainId: "",
     height: undefined
   };
 }
 
 export const ClientState = {
   encode(message: ClientState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.chain_id !== "") {
-      writer.uint32(10).string(message.chain_id);
+    if (message.chainId !== "") {
+      writer.uint32(10).string(message.chainId);
     }
 
     if (message.height !== undefined) {
@@ -44,7 +56,7 @@ export const ClientState = {
 
       switch (tag >>> 3) {
         case 1:
-          message.chain_id = reader.string();
+          message.chainId = reader.string();
           break;
 
         case 2:
@@ -62,21 +74,21 @@ export const ClientState = {
 
   fromJSON(object: any): ClientState {
     return {
-      chain_id: isSet(object.chain_id) ? String(object.chain_id) : "",
+      chainId: isSet(object.chainId) ? String(object.chainId) : "",
       height: isSet(object.height) ? Height.fromJSON(object.height) : undefined
     };
   },
 
   toJSON(message: ClientState): unknown {
     const obj: any = {};
-    message.chain_id !== undefined && (obj.chain_id = message.chain_id);
+    message.chainId !== undefined && (obj.chainId = message.chainId);
     message.height !== undefined && (obj.height = message.height ? Height.toJSON(message.height) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<ClientState>): ClientState {
     const message = createBaseClientState();
-    message.chain_id = object.chain_id ?? "";
+    message.chainId = object.chainId ?? "";
     message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
     return message;
   }

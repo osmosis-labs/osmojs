@@ -1,14 +1,24 @@
-import { EpochInfo } from "./genesis";
+import { EpochInfo, EpochInfoSDKType } from "./genesis";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 export interface QueryEpochsInfoRequest {}
+export interface QueryEpochsInfoRequestSDKType {}
 export interface QueryEpochsInfoResponse {
   epochs: EpochInfo[];
+}
+export interface QueryEpochsInfoResponseSDKType {
+  epochs: EpochInfoSDKType[];
 }
 export interface QueryCurrentEpochRequest {
   identifier?: string;
 }
+export interface QueryCurrentEpochRequestSDKType {
+  identifier?: string;
+}
 export interface QueryCurrentEpochResponse {
+  currentEpoch: Long;
+}
+export interface QueryCurrentEpochResponseSDKType {
   current_epoch: Long;
 }
 
@@ -70,7 +80,7 @@ export const QueryEpochsInfoResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryEpochsInfoResponse();
@@ -177,20 +187,20 @@ export const QueryCurrentEpochRequest = {
 
 function createBaseQueryCurrentEpochResponse(): QueryCurrentEpochResponse {
   return {
-    current_epoch: Long.ZERO
+    currentEpoch: Long.ZERO
   };
 }
 
 export const QueryCurrentEpochResponse = {
   encode(message: QueryCurrentEpochResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.current_epoch.isZero()) {
-      writer.uint32(8).int64(message.current_epoch);
+    if (!message.currentEpoch.isZero()) {
+      writer.uint32(8).int64(message.currentEpoch);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCurrentEpochResponse();
@@ -200,7 +210,7 @@ export const QueryCurrentEpochResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.current_epoch = (reader.int64() as Long);
+          message.currentEpoch = (reader.int64() as Long);
           break;
 
         default:
@@ -214,19 +224,19 @@ export const QueryCurrentEpochResponse = {
 
   fromJSON(object: any): QueryCurrentEpochResponse {
     return {
-      current_epoch: isSet(object.current_epoch) ? Long.fromString(object.current_epoch) : Long.ZERO
+      currentEpoch: isSet(object.currentEpoch) ? Long.fromString(object.currentEpoch) : Long.ZERO
     };
   },
 
   toJSON(message: QueryCurrentEpochResponse): unknown {
     const obj: any = {};
-    message.current_epoch !== undefined && (obj.current_epoch = (message.current_epoch || Long.ZERO).toString());
+    message.currentEpoch !== undefined && (obj.currentEpoch = (message.currentEpoch || Long.ZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse {
     const message = createBaseQueryCurrentEpochResponse();
-    message.current_epoch = object.current_epoch !== undefined && object.current_epoch !== null ? Long.fromValue(object.current_epoch) : Long.ZERO;
+    message.currentEpoch = object.currentEpoch !== undefined && object.currentEpoch !== null ? Long.fromValue(object.currentEpoch) : Long.ZERO;
     return message;
   }
 

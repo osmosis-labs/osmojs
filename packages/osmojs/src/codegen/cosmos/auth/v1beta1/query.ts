@@ -1,86 +1,166 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Any } from "../../../google/protobuf/any";
-import { Params } from "./auth";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
+import { Params, ParamsSDKType } from "./auth";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
 /**
  * QueryAccountsRequest is the request type for the Query/Accounts RPC method.
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface QueryAccountsRequest {
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
 }
+/**
+ * QueryAccountsRequest is the request type for the Query/Accounts RPC method.
+ * 
+ * Since: cosmos-sdk 0.43
+ */
 
+export interface QueryAccountsRequestSDKType {
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequestSDKType;
+}
 /**
  * QueryAccountsResponse is the response type for the Query/Accounts RPC method.
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface QueryAccountsResponse {
   /** accounts are the existing accounts */
   accounts: Any[];
-
   /** pagination defines the pagination in the response. */
+
   pagination?: PageResponse;
 }
+/**
+ * QueryAccountsResponse is the response type for the Query/Accounts RPC method.
+ * 
+ * Since: cosmos-sdk 0.43
+ */
 
+export interface QueryAccountsResponseSDKType {
+  /** accounts are the existing accounts */
+  accounts: AnySDKType[];
+  /** pagination defines the pagination in the response. */
+
+  pagination?: PageResponseSDKType;
+}
 /** QueryAccountRequest is the request type for the Query/Account RPC method. */
+
 export interface QueryAccountRequest {
   /** address defines the address to query for. */
   address: string;
 }
+/** QueryAccountRequest is the request type for the Query/Account RPC method. */
 
+export interface QueryAccountRequestSDKType {
+  /** address defines the address to query for. */
+  address: string;
+}
 /** QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method. */
-export interface QueryModuleAccountsRequest {}
 
+export interface QueryModuleAccountsRequest {}
+/** QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method. */
+
+export interface QueryModuleAccountsRequestSDKType {}
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
 }
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
 
+export interface QueryParamsResponseSDKType {
+  /** params defines the parameters of the module. */
+  params: ParamsSDKType;
+}
 /** QueryAccountResponse is the response type for the Query/Account RPC method. */
+
 export interface QueryAccountResponse {
   /** account defines the account of the corresponding address. */
   account: Any;
 }
+/** QueryAccountResponse is the response type for the Query/Account RPC method. */
 
+export interface QueryAccountResponseSDKType {
+  /** account defines the account of the corresponding address. */
+  account: AnySDKType;
+}
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
-export interface QueryParamsRequest {}
 
+export interface QueryParamsRequest {}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+
+export interface QueryParamsRequestSDKType {}
 /** QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method. */
+
 export interface QueryModuleAccountsResponse {
   accounts: Any[];
 }
+/** QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method. */
 
+export interface QueryModuleAccountsResponseSDKType {
+  accounts: AnySDKType[];
+}
 /** Bech32PrefixRequest is the request type for Bech32Prefix rpc method */
-export interface Bech32PrefixRequest {}
 
+export interface Bech32PrefixRequest {}
+/** Bech32PrefixRequest is the request type for Bech32Prefix rpc method */
+
+export interface Bech32PrefixRequestSDKType {}
 /** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
+
 export interface Bech32PrefixResponse {
+  bech32Prefix: string;
+}
+/** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
+
+export interface Bech32PrefixResponseSDKType {
   bech32_prefix: string;
 }
-
 /** AddressBytesToStringRequest is the request type for AddressString rpc method */
+
 export interface AddressBytesToStringRequest {
+  addressBytes: Uint8Array;
+}
+/** AddressBytesToStringRequest is the request type for AddressString rpc method */
+
+export interface AddressBytesToStringRequestSDKType {
   address_bytes: Uint8Array;
 }
-
 /** AddressBytesToStringResponse is the response type for AddressString rpc method */
+
 export interface AddressBytesToStringResponse {
+  addressString: string;
+}
+/** AddressBytesToStringResponse is the response type for AddressString rpc method */
+
+export interface AddressBytesToStringResponseSDKType {
   address_string: string;
 }
-
 /** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
+
 export interface AddressStringToBytesRequest {
+  addressString: string;
+}
+/** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
+
+export interface AddressStringToBytesRequestSDKType {
   address_string: string;
 }
-
 /** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
+
 export interface AddressStringToBytesResponse {
+  addressBytes: Uint8Array;
+}
+/** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
+
+export interface AddressStringToBytesResponseSDKType {
   address_bytes: Uint8Array;
 }
 
@@ -161,7 +241,7 @@ export const QueryAccountsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAccountsResponse();
@@ -331,7 +411,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -388,7 +468,7 @@ export const QueryAccountResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAccountResponse();
@@ -488,7 +568,7 @@ export const QueryModuleAccountsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryModuleAccountsResponse();
@@ -581,20 +661,20 @@ export const Bech32PrefixRequest = {
 
 function createBaseBech32PrefixResponse(): Bech32PrefixResponse {
   return {
-    bech32_prefix: ""
+    bech32Prefix: ""
   };
 }
 
 export const Bech32PrefixResponse = {
   encode(message: Bech32PrefixResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.bech32_prefix !== "") {
-      writer.uint32(10).string(message.bech32_prefix);
+    if (message.bech32Prefix !== "") {
+      writer.uint32(10).string(message.bech32Prefix);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): Bech32PrefixResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): Bech32PrefixResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBech32PrefixResponse();
@@ -604,7 +684,7 @@ export const Bech32PrefixResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.bech32_prefix = reader.string();
+          message.bech32Prefix = reader.string();
           break;
 
         default:
@@ -618,19 +698,19 @@ export const Bech32PrefixResponse = {
 
   fromJSON(object: any): Bech32PrefixResponse {
     return {
-      bech32_prefix: isSet(object.bech32_prefix) ? String(object.bech32_prefix) : ""
+      bech32Prefix: isSet(object.bech32Prefix) ? String(object.bech32Prefix) : ""
     };
   },
 
   toJSON(message: Bech32PrefixResponse): unknown {
     const obj: any = {};
-    message.bech32_prefix !== undefined && (obj.bech32_prefix = message.bech32_prefix);
+    message.bech32Prefix !== undefined && (obj.bech32Prefix = message.bech32Prefix);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Bech32PrefixResponse>): Bech32PrefixResponse {
     const message = createBaseBech32PrefixResponse();
-    message.bech32_prefix = object.bech32_prefix ?? "";
+    message.bech32Prefix = object.bech32Prefix ?? "";
     return message;
   }
 
@@ -638,14 +718,14 @@ export const Bech32PrefixResponse = {
 
 function createBaseAddressBytesToStringRequest(): AddressBytesToStringRequest {
   return {
-    address_bytes: new Uint8Array()
+    addressBytes: new Uint8Array()
   };
 }
 
 export const AddressBytesToStringRequest = {
   encode(message: AddressBytesToStringRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address_bytes.length !== 0) {
-      writer.uint32(10).bytes(message.address_bytes);
+    if (message.addressBytes.length !== 0) {
+      writer.uint32(10).bytes(message.addressBytes);
     }
 
     return writer;
@@ -661,7 +741,7 @@ export const AddressBytesToStringRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.address_bytes = reader.bytes();
+          message.addressBytes = reader.bytes();
           break;
 
         default:
@@ -675,19 +755,19 @@ export const AddressBytesToStringRequest = {
 
   fromJSON(object: any): AddressBytesToStringRequest {
     return {
-      address_bytes: isSet(object.address_bytes) ? bytesFromBase64(object.address_bytes) : new Uint8Array()
+      addressBytes: isSet(object.addressBytes) ? bytesFromBase64(object.addressBytes) : new Uint8Array()
     };
   },
 
   toJSON(message: AddressBytesToStringRequest): unknown {
     const obj: any = {};
-    message.address_bytes !== undefined && (obj.address_bytes = base64FromBytes(message.address_bytes !== undefined ? message.address_bytes : new Uint8Array()));
+    message.addressBytes !== undefined && (obj.addressBytes = base64FromBytes(message.addressBytes !== undefined ? message.addressBytes : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<AddressBytesToStringRequest>): AddressBytesToStringRequest {
     const message = createBaseAddressBytesToStringRequest();
-    message.address_bytes = object.address_bytes ?? new Uint8Array();
+    message.addressBytes = object.addressBytes ?? new Uint8Array();
     return message;
   }
 
@@ -695,20 +775,20 @@ export const AddressBytesToStringRequest = {
 
 function createBaseAddressBytesToStringResponse(): AddressBytesToStringResponse {
   return {
-    address_string: ""
+    addressString: ""
   };
 }
 
 export const AddressBytesToStringResponse = {
   encode(message: AddressBytesToStringResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address_string !== "") {
-      writer.uint32(10).string(message.address_string);
+    if (message.addressString !== "") {
+      writer.uint32(10).string(message.addressString);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): AddressBytesToStringResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AddressBytesToStringResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddressBytesToStringResponse();
@@ -718,7 +798,7 @@ export const AddressBytesToStringResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.address_string = reader.string();
+          message.addressString = reader.string();
           break;
 
         default:
@@ -732,19 +812,19 @@ export const AddressBytesToStringResponse = {
 
   fromJSON(object: any): AddressBytesToStringResponse {
     return {
-      address_string: isSet(object.address_string) ? String(object.address_string) : ""
+      addressString: isSet(object.addressString) ? String(object.addressString) : ""
     };
   },
 
   toJSON(message: AddressBytesToStringResponse): unknown {
     const obj: any = {};
-    message.address_string !== undefined && (obj.address_string = message.address_string);
+    message.addressString !== undefined && (obj.addressString = message.addressString);
     return obj;
   },
 
   fromPartial(object: DeepPartial<AddressBytesToStringResponse>): AddressBytesToStringResponse {
     const message = createBaseAddressBytesToStringResponse();
-    message.address_string = object.address_string ?? "";
+    message.addressString = object.addressString ?? "";
     return message;
   }
 
@@ -752,14 +832,14 @@ export const AddressBytesToStringResponse = {
 
 function createBaseAddressStringToBytesRequest(): AddressStringToBytesRequest {
   return {
-    address_string: ""
+    addressString: ""
   };
 }
 
 export const AddressStringToBytesRequest = {
   encode(message: AddressStringToBytesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address_string !== "") {
-      writer.uint32(10).string(message.address_string);
+    if (message.addressString !== "") {
+      writer.uint32(10).string(message.addressString);
     }
 
     return writer;
@@ -775,7 +855,7 @@ export const AddressStringToBytesRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.address_string = reader.string();
+          message.addressString = reader.string();
           break;
 
         default:
@@ -789,19 +869,19 @@ export const AddressStringToBytesRequest = {
 
   fromJSON(object: any): AddressStringToBytesRequest {
     return {
-      address_string: isSet(object.address_string) ? String(object.address_string) : ""
+      addressString: isSet(object.addressString) ? String(object.addressString) : ""
     };
   },
 
   toJSON(message: AddressStringToBytesRequest): unknown {
     const obj: any = {};
-    message.address_string !== undefined && (obj.address_string = message.address_string);
+    message.addressString !== undefined && (obj.addressString = message.addressString);
     return obj;
   },
 
   fromPartial(object: DeepPartial<AddressStringToBytesRequest>): AddressStringToBytesRequest {
     const message = createBaseAddressStringToBytesRequest();
-    message.address_string = object.address_string ?? "";
+    message.addressString = object.addressString ?? "";
     return message;
   }
 
@@ -809,20 +889,20 @@ export const AddressStringToBytesRequest = {
 
 function createBaseAddressStringToBytesResponse(): AddressStringToBytesResponse {
   return {
-    address_bytes: new Uint8Array()
+    addressBytes: new Uint8Array()
   };
 }
 
 export const AddressStringToBytesResponse = {
   encode(message: AddressStringToBytesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address_bytes.length !== 0) {
-      writer.uint32(10).bytes(message.address_bytes);
+    if (message.addressBytes.length !== 0) {
+      writer.uint32(10).bytes(message.addressBytes);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): AddressStringToBytesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AddressStringToBytesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddressStringToBytesResponse();
@@ -832,7 +912,7 @@ export const AddressStringToBytesResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.address_bytes = reader.bytes();
+          message.addressBytes = reader.bytes();
           break;
 
         default:
@@ -846,19 +926,19 @@ export const AddressStringToBytesResponse = {
 
   fromJSON(object: any): AddressStringToBytesResponse {
     return {
-      address_bytes: isSet(object.address_bytes) ? bytesFromBase64(object.address_bytes) : new Uint8Array()
+      addressBytes: isSet(object.addressBytes) ? bytesFromBase64(object.addressBytes) : new Uint8Array()
     };
   },
 
   toJSON(message: AddressStringToBytesResponse): unknown {
     const obj: any = {};
-    message.address_bytes !== undefined && (obj.address_bytes = base64FromBytes(message.address_bytes !== undefined ? message.address_bytes : new Uint8Array()));
+    message.addressBytes !== undefined && (obj.addressBytes = base64FromBytes(message.addressBytes !== undefined ? message.addressBytes : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<AddressStringToBytesResponse>): AddressStringToBytesResponse {
     const message = createBaseAddressStringToBytesResponse();
-    message.address_bytes = object.address_bytes ?? new Uint8Array();
+    message.addressBytes = object.addressBytes ?? new Uint8Array();
     return message;
   }
 

@@ -1,4 +1,3 @@
-import { Any } from "../../../google/protobuf/any";
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgGrantAllowance, MsgRevokeAllowance } from "./tx";
 export interface AminoMsgGrantAllowance extends AminoMsg {
@@ -31,7 +30,7 @@ export const AminoConverter = {
         granter,
         grantee,
         allowance: {
-          type_url: allowance.type_url,
+          type_url: allowance.typeUrl,
           value: allowance.value
         }
       };
@@ -45,7 +44,7 @@ export const AminoConverter = {
         granter,
         grantee,
         allowance: {
-          type_url: allowance.type_url,
+          typeUrl: allowance.type_url,
           value: allowance.value
         }
       };

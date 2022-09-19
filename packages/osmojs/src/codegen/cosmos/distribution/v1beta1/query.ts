@@ -1,174 +1,341 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Params, ValidatorOutstandingRewards, ValidatorAccumulatedCommission, ValidatorSlashEvent, DelegationDelegatorReward } from "./distribution";
-import { DecCoin } from "../../base/v1beta1/coin";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { Params, ParamsSDKType, ValidatorOutstandingRewards, ValidatorOutstandingRewardsSDKType, ValidatorAccumulatedCommission, ValidatorAccumulatedCommissionSDKType, ValidatorSlashEvent, ValidatorSlashEventSDKType, DelegationDelegatorReward, DelegationDelegatorRewardSDKType } from "./distribution";
+import { DecCoin, DecCoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
-
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
-export interface QueryParamsRequest {}
 
+export interface QueryParamsRequest {}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+
+export interface QueryParamsRequestSDKType {}
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
 }
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
 
+export interface QueryParamsResponseSDKType {
+  /** params defines the parameters of the module. */
+  params: ParamsSDKType;
+}
 /**
  * QueryValidatorOutstandingRewardsRequest is the request type for the
  * Query/ValidatorOutstandingRewards RPC method.
  */
+
 export interface QueryValidatorOutstandingRewardsRequest {
+  /** validator_address defines the validator address to query for. */
+  validatorAddress: string;
+}
+/**
+ * QueryValidatorOutstandingRewardsRequest is the request type for the
+ * Query/ValidatorOutstandingRewards RPC method.
+ */
+
+export interface QueryValidatorOutstandingRewardsRequestSDKType {
   /** validator_address defines the validator address to query for. */
   validator_address: string;
 }
-
 /**
  * QueryValidatorOutstandingRewardsResponse is the response type for the
  * Query/ValidatorOutstandingRewards RPC method.
  */
+
 export interface QueryValidatorOutstandingRewardsResponse {
   rewards: ValidatorOutstandingRewards;
 }
+/**
+ * QueryValidatorOutstandingRewardsResponse is the response type for the
+ * Query/ValidatorOutstandingRewards RPC method.
+ */
 
+export interface QueryValidatorOutstandingRewardsResponseSDKType {
+  rewards: ValidatorOutstandingRewardsSDKType;
+}
 /**
  * QueryValidatorCommissionRequest is the request type for the
  * Query/ValidatorCommission RPC method
  */
+
 export interface QueryValidatorCommissionRequest {
+  /** validator_address defines the validator address to query for. */
+  validatorAddress: string;
+}
+/**
+ * QueryValidatorCommissionRequest is the request type for the
+ * Query/ValidatorCommission RPC method
+ */
+
+export interface QueryValidatorCommissionRequestSDKType {
   /** validator_address defines the validator address to query for. */
   validator_address: string;
 }
-
 /**
  * QueryValidatorCommissionResponse is the response type for the
  * Query/ValidatorCommission RPC method
  */
+
 export interface QueryValidatorCommissionResponse {
   /** commission defines the commision the validator received. */
   commission: ValidatorAccumulatedCommission;
 }
+/**
+ * QueryValidatorCommissionResponse is the response type for the
+ * Query/ValidatorCommission RPC method
+ */
 
+export interface QueryValidatorCommissionResponseSDKType {
+  /** commission defines the commision the validator received. */
+  commission: ValidatorAccumulatedCommissionSDKType;
+}
 /**
  * QueryValidatorSlashesRequest is the request type for the
  * Query/ValidatorSlashes RPC method
  */
+
 export interface QueryValidatorSlashesRequest {
   /** validator_address defines the validator address to query for. */
-  validator_address: string;
-
+  validatorAddress: string;
   /** starting_height defines the optional starting height to query the slashes. */
-  starting_height?: Long;
 
+  startingHeight?: Long;
   /** starting_height defines the optional ending height to query the slashes. */
-  ending_height?: Long;
 
+  endingHeight?: Long;
   /** pagination defines an optional pagination for the request. */
+
   pagination?: PageRequest;
 }
+/**
+ * QueryValidatorSlashesRequest is the request type for the
+ * Query/ValidatorSlashes RPC method
+ */
 
+export interface QueryValidatorSlashesRequestSDKType {
+  /** validator_address defines the validator address to query for. */
+  validator_address: string;
+  /** starting_height defines the optional starting height to query the slashes. */
+
+  starting_height?: Long;
+  /** starting_height defines the optional ending height to query the slashes. */
+
+  ending_height?: Long;
+  /** pagination defines an optional pagination for the request. */
+
+  pagination?: PageRequestSDKType;
+}
 /**
  * QueryValidatorSlashesResponse is the response type for the
  * Query/ValidatorSlashes RPC method.
  */
+
 export interface QueryValidatorSlashesResponse {
   /** slashes defines the slashes the validator received. */
   slashes: ValidatorSlashEvent[];
-
   /** pagination defines the pagination in the response. */
+
   pagination?: PageResponse;
 }
+/**
+ * QueryValidatorSlashesResponse is the response type for the
+ * Query/ValidatorSlashes RPC method.
+ */
 
+export interface QueryValidatorSlashesResponseSDKType {
+  /** slashes defines the slashes the validator received. */
+  slashes: ValidatorSlashEventSDKType[];
+  /** pagination defines the pagination in the response. */
+
+  pagination?: PageResponseSDKType;
+}
 /**
  * QueryDelegationRewardsRequest is the request type for the
  * Query/DelegationRewards RPC method.
  */
+
 export interface QueryDelegationRewardsRequest {
   /** delegator_address defines the delegator address to query for. */
-  delegator_address: string;
-
+  delegatorAddress: string;
   /** validator_address defines the validator address to query for. */
+
+  validatorAddress: string;
+}
+/**
+ * QueryDelegationRewardsRequest is the request type for the
+ * Query/DelegationRewards RPC method.
+ */
+
+export interface QueryDelegationRewardsRequestSDKType {
+  /** delegator_address defines the delegator address to query for. */
+  delegator_address: string;
+  /** validator_address defines the validator address to query for. */
+
   validator_address: string;
 }
-
 /**
  * QueryDelegationRewardsResponse is the response type for the
  * Query/DelegationRewards RPC method.
  */
+
 export interface QueryDelegationRewardsResponse {
   /** rewards defines the rewards accrued by a delegation. */
   rewards: DecCoin[];
 }
+/**
+ * QueryDelegationRewardsResponse is the response type for the
+ * Query/DelegationRewards RPC method.
+ */
 
+export interface QueryDelegationRewardsResponseSDKType {
+  /** rewards defines the rewards accrued by a delegation. */
+  rewards: DecCoinSDKType[];
+}
 /**
  * QueryDelegationTotalRewardsRequest is the request type for the
  * Query/DelegationTotalRewards RPC method.
  */
+
 export interface QueryDelegationTotalRewardsRequest {
+  /** delegator_address defines the delegator address to query for. */
+  delegatorAddress: string;
+}
+/**
+ * QueryDelegationTotalRewardsRequest is the request type for the
+ * Query/DelegationTotalRewards RPC method.
+ */
+
+export interface QueryDelegationTotalRewardsRequestSDKType {
   /** delegator_address defines the delegator address to query for. */
   delegator_address: string;
 }
-
 /**
  * QueryDelegationTotalRewardsResponse is the response type for the
  * Query/DelegationTotalRewards RPC method.
  */
+
 export interface QueryDelegationTotalRewardsResponse {
   /** rewards defines all the rewards accrued by a delegator. */
   rewards: DelegationDelegatorReward[];
-
   /** total defines the sum of all the rewards. */
+
   total: DecCoin[];
 }
+/**
+ * QueryDelegationTotalRewardsResponse is the response type for the
+ * Query/DelegationTotalRewards RPC method.
+ */
 
+export interface QueryDelegationTotalRewardsResponseSDKType {
+  /** rewards defines all the rewards accrued by a delegator. */
+  rewards: DelegationDelegatorRewardSDKType[];
+  /** total defines the sum of all the rewards. */
+
+  total: DecCoinSDKType[];
+}
 /**
  * QueryDelegatorValidatorsRequest is the request type for the
  * Query/DelegatorValidators RPC method.
  */
+
 export interface QueryDelegatorValidatorsRequest {
+  /** delegator_address defines the delegator address to query for. */
+  delegatorAddress: string;
+}
+/**
+ * QueryDelegatorValidatorsRequest is the request type for the
+ * Query/DelegatorValidators RPC method.
+ */
+
+export interface QueryDelegatorValidatorsRequestSDKType {
   /** delegator_address defines the delegator address to query for. */
   delegator_address: string;
 }
-
 /**
  * QueryDelegatorValidatorsResponse is the response type for the
  * Query/DelegatorValidators RPC method.
  */
+
 export interface QueryDelegatorValidatorsResponse {
   /** validators defines the validators a delegator is delegating for. */
   validators: string[];
 }
+/**
+ * QueryDelegatorValidatorsResponse is the response type for the
+ * Query/DelegatorValidators RPC method.
+ */
 
+export interface QueryDelegatorValidatorsResponseSDKType {
+  /** validators defines the validators a delegator is delegating for. */
+  validators: string[];
+}
 /**
  * QueryDelegatorWithdrawAddressRequest is the request type for the
  * Query/DelegatorWithdrawAddress RPC method.
  */
+
 export interface QueryDelegatorWithdrawAddressRequest {
+  /** delegator_address defines the delegator address to query for. */
+  delegatorAddress: string;
+}
+/**
+ * QueryDelegatorWithdrawAddressRequest is the request type for the
+ * Query/DelegatorWithdrawAddress RPC method.
+ */
+
+export interface QueryDelegatorWithdrawAddressRequestSDKType {
   /** delegator_address defines the delegator address to query for. */
   delegator_address: string;
 }
-
 /**
  * QueryDelegatorWithdrawAddressResponse is the response type for the
  * Query/DelegatorWithdrawAddress RPC method.
  */
+
 export interface QueryDelegatorWithdrawAddressResponse {
+  /** withdraw_address defines the delegator address to query for. */
+  withdrawAddress: string;
+}
+/**
+ * QueryDelegatorWithdrawAddressResponse is the response type for the
+ * Query/DelegatorWithdrawAddress RPC method.
+ */
+
+export interface QueryDelegatorWithdrawAddressResponseSDKType {
   /** withdraw_address defines the delegator address to query for. */
   withdraw_address: string;
 }
-
 /**
  * QueryCommunityPoolRequest is the request type for the Query/CommunityPool RPC
  * method.
  */
-export interface QueryCommunityPoolRequest {}
 
+export interface QueryCommunityPoolRequest {}
+/**
+ * QueryCommunityPoolRequest is the request type for the Query/CommunityPool RPC
+ * method.
+ */
+
+export interface QueryCommunityPoolRequestSDKType {}
 /**
  * QueryCommunityPoolResponse is the response type for the Query/CommunityPool
  * RPC method.
  */
+
 export interface QueryCommunityPoolResponse {
   /** pool defines community pool's coins. */
   pool: DecCoin[];
+}
+/**
+ * QueryCommunityPoolResponse is the response type for the Query/CommunityPool
+ * RPC method.
+ */
+
+export interface QueryCommunityPoolResponseSDKType {
+  /** pool defines community pool's coins. */
+  pool: DecCoinSDKType[];
 }
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -229,7 +396,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -273,14 +440,14 @@ export const QueryParamsResponse = {
 
 function createBaseQueryValidatorOutstandingRewardsRequest(): QueryValidatorOutstandingRewardsRequest {
   return {
-    validator_address: ""
+    validatorAddress: ""
   };
 }
 
 export const QueryValidatorOutstandingRewardsRequest = {
   encode(message: QueryValidatorOutstandingRewardsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     return writer;
@@ -296,7 +463,7 @@ export const QueryValidatorOutstandingRewardsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         default:
@@ -310,19 +477,19 @@ export const QueryValidatorOutstandingRewardsRequest = {
 
   fromJSON(object: any): QueryValidatorOutstandingRewardsRequest {
     return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : ""
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : ""
     };
   },
 
   toJSON(message: QueryValidatorOutstandingRewardsRequest): unknown {
     const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
+    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryValidatorOutstandingRewardsRequest>): QueryValidatorOutstandingRewardsRequest {
     const message = createBaseQueryValidatorOutstandingRewardsRequest();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     return message;
   }
 
@@ -343,7 +510,7 @@ export const QueryValidatorOutstandingRewardsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorOutstandingRewardsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorOutstandingRewardsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryValidatorOutstandingRewardsResponse();
@@ -387,14 +554,14 @@ export const QueryValidatorOutstandingRewardsResponse = {
 
 function createBaseQueryValidatorCommissionRequest(): QueryValidatorCommissionRequest {
   return {
-    validator_address: ""
+    validatorAddress: ""
   };
 }
 
 export const QueryValidatorCommissionRequest = {
   encode(message: QueryValidatorCommissionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     return writer;
@@ -410,7 +577,7 @@ export const QueryValidatorCommissionRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         default:
@@ -424,19 +591,19 @@ export const QueryValidatorCommissionRequest = {
 
   fromJSON(object: any): QueryValidatorCommissionRequest {
     return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : ""
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : ""
     };
   },
 
   toJSON(message: QueryValidatorCommissionRequest): unknown {
     const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
+    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryValidatorCommissionRequest>): QueryValidatorCommissionRequest {
     const message = createBaseQueryValidatorCommissionRequest();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     return message;
   }
 
@@ -457,7 +624,7 @@ export const QueryValidatorCommissionResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorCommissionResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorCommissionResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryValidatorCommissionResponse();
@@ -501,25 +668,25 @@ export const QueryValidatorCommissionResponse = {
 
 function createBaseQueryValidatorSlashesRequest(): QueryValidatorSlashesRequest {
   return {
-    validator_address: "",
-    starting_height: Long.UZERO,
-    ending_height: Long.UZERO,
+    validatorAddress: "",
+    startingHeight: Long.UZERO,
+    endingHeight: Long.UZERO,
     pagination: undefined
   };
 }
 
 export const QueryValidatorSlashesRequest = {
   encode(message: QueryValidatorSlashesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
-    if (!message.starting_height.isZero()) {
-      writer.uint32(16).uint64(message.starting_height);
+    if (!message.startingHeight.isZero()) {
+      writer.uint32(16).uint64(message.startingHeight);
     }
 
-    if (!message.ending_height.isZero()) {
-      writer.uint32(24).uint64(message.ending_height);
+    if (!message.endingHeight.isZero()) {
+      writer.uint32(24).uint64(message.endingHeight);
     }
 
     if (message.pagination !== undefined) {
@@ -539,15 +706,15 @@ export const QueryValidatorSlashesRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
-          message.starting_height = (reader.uint64() as Long);
+          message.startingHeight = (reader.uint64() as Long);
           break;
 
         case 3:
-          message.ending_height = (reader.uint64() as Long);
+          message.endingHeight = (reader.uint64() as Long);
           break;
 
         case 4:
@@ -565,27 +732,27 @@ export const QueryValidatorSlashesRequest = {
 
   fromJSON(object: any): QueryValidatorSlashesRequest {
     return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-      starting_height: isSet(object.starting_height) ? Long.fromString(object.starting_height) : Long.UZERO,
-      ending_height: isSet(object.ending_height) ? Long.fromString(object.ending_height) : Long.UZERO,
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      startingHeight: isSet(object.startingHeight) ? Long.fromString(object.startingHeight) : Long.UZERO,
+      endingHeight: isSet(object.endingHeight) ? Long.fromString(object.endingHeight) : Long.UZERO,
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
 
   toJSON(message: QueryValidatorSlashesRequest): unknown {
     const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-    message.starting_height !== undefined && (obj.starting_height = (message.starting_height || Long.UZERO).toString());
-    message.ending_height !== undefined && (obj.ending_height = (message.ending_height || Long.UZERO).toString());
+    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+    message.startingHeight !== undefined && (obj.startingHeight = (message.startingHeight || Long.UZERO).toString());
+    message.endingHeight !== undefined && (obj.endingHeight = (message.endingHeight || Long.UZERO).toString());
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryValidatorSlashesRequest>): QueryValidatorSlashesRequest {
     const message = createBaseQueryValidatorSlashesRequest();
-    message.validator_address = object.validator_address ?? "";
-    message.starting_height = object.starting_height !== undefined && object.starting_height !== null ? Long.fromValue(object.starting_height) : Long.UZERO;
-    message.ending_height = object.ending_height !== undefined && object.ending_height !== null ? Long.fromValue(object.ending_height) : Long.UZERO;
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.startingHeight = object.startingHeight !== undefined && object.startingHeight !== null ? Long.fromValue(object.startingHeight) : Long.UZERO;
+    message.endingHeight = object.endingHeight !== undefined && object.endingHeight !== null ? Long.fromValue(object.endingHeight) : Long.UZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -612,7 +779,7 @@ export const QueryValidatorSlashesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorSlashesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorSlashesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryValidatorSlashesResponse();
@@ -669,19 +836,19 @@ export const QueryValidatorSlashesResponse = {
 
 function createBaseQueryDelegationRewardsRequest(): QueryDelegationRewardsRequest {
   return {
-    delegator_address: "",
-    validator_address: ""
+    delegatorAddress: "",
+    validatorAddress: ""
   };
 }
 
 export const QueryDelegationRewardsRequest = {
   encode(message: QueryDelegationRewardsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
-    if (message.validator_address !== "") {
-      writer.uint32(18).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(18).string(message.validatorAddress);
     }
 
     return writer;
@@ -697,11 +864,11 @@ export const QueryDelegationRewardsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         case 2:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         default:
@@ -715,22 +882,22 @@ export const QueryDelegationRewardsRequest = {
 
   fromJSON(object: any): QueryDelegationRewardsRequest {
     return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : ""
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : ""
     };
   },
 
   toJSON(message: QueryDelegationRewardsRequest): unknown {
     const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
+    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
+    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDelegationRewardsRequest>): QueryDelegationRewardsRequest {
     const message = createBaseQueryDelegationRewardsRequest();
-    message.delegator_address = object.delegator_address ?? "";
-    message.validator_address = object.validator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     return message;
   }
 
@@ -751,7 +918,7 @@ export const QueryDelegationRewardsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationRewardsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationRewardsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDelegationRewardsResponse();
@@ -801,14 +968,14 @@ export const QueryDelegationRewardsResponse = {
 
 function createBaseQueryDelegationTotalRewardsRequest(): QueryDelegationTotalRewardsRequest {
   return {
-    delegator_address: ""
+    delegatorAddress: ""
   };
 }
 
 export const QueryDelegationTotalRewardsRequest = {
   encode(message: QueryDelegationTotalRewardsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
     return writer;
@@ -824,7 +991,7 @@ export const QueryDelegationTotalRewardsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         default:
@@ -838,19 +1005,19 @@ export const QueryDelegationTotalRewardsRequest = {
 
   fromJSON(object: any): QueryDelegationTotalRewardsRequest {
     return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : ""
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : ""
     };
   },
 
   toJSON(message: QueryDelegationTotalRewardsRequest): unknown {
     const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
+    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDelegationTotalRewardsRequest>): QueryDelegationTotalRewardsRequest {
     const message = createBaseQueryDelegationTotalRewardsRequest();
-    message.delegator_address = object.delegator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
   }
 
@@ -876,7 +1043,7 @@ export const QueryDelegationTotalRewardsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationTotalRewardsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationTotalRewardsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDelegationTotalRewardsResponse();
@@ -938,14 +1105,14 @@ export const QueryDelegationTotalRewardsResponse = {
 
 function createBaseQueryDelegatorValidatorsRequest(): QueryDelegatorValidatorsRequest {
   return {
-    delegator_address: ""
+    delegatorAddress: ""
   };
 }
 
 export const QueryDelegatorValidatorsRequest = {
   encode(message: QueryDelegatorValidatorsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
     return writer;
@@ -961,7 +1128,7 @@ export const QueryDelegatorValidatorsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         default:
@@ -975,19 +1142,19 @@ export const QueryDelegatorValidatorsRequest = {
 
   fromJSON(object: any): QueryDelegatorValidatorsRequest {
     return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : ""
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : ""
     };
   },
 
   toJSON(message: QueryDelegatorValidatorsRequest): unknown {
     const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
+    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest {
     const message = createBaseQueryDelegatorValidatorsRequest();
-    message.delegator_address = object.delegator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
   }
 
@@ -1008,7 +1175,7 @@ export const QueryDelegatorValidatorsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDelegatorValidatorsResponse();
@@ -1058,14 +1225,14 @@ export const QueryDelegatorValidatorsResponse = {
 
 function createBaseQueryDelegatorWithdrawAddressRequest(): QueryDelegatorWithdrawAddressRequest {
   return {
-    delegator_address: ""
+    delegatorAddress: ""
   };
 }
 
 export const QueryDelegatorWithdrawAddressRequest = {
   encode(message: QueryDelegatorWithdrawAddressRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
     return writer;
@@ -1081,7 +1248,7 @@ export const QueryDelegatorWithdrawAddressRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         default:
@@ -1095,19 +1262,19 @@ export const QueryDelegatorWithdrawAddressRequest = {
 
   fromJSON(object: any): QueryDelegatorWithdrawAddressRequest {
     return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : ""
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : ""
     };
   },
 
   toJSON(message: QueryDelegatorWithdrawAddressRequest): unknown {
     const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
+    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDelegatorWithdrawAddressRequest>): QueryDelegatorWithdrawAddressRequest {
     const message = createBaseQueryDelegatorWithdrawAddressRequest();
-    message.delegator_address = object.delegator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
   }
 
@@ -1115,20 +1282,20 @@ export const QueryDelegatorWithdrawAddressRequest = {
 
 function createBaseQueryDelegatorWithdrawAddressResponse(): QueryDelegatorWithdrawAddressResponse {
   return {
-    withdraw_address: ""
+    withdrawAddress: ""
   };
 }
 
 export const QueryDelegatorWithdrawAddressResponse = {
   encode(message: QueryDelegatorWithdrawAddressResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.withdraw_address !== "") {
-      writer.uint32(10).string(message.withdraw_address);
+    if (message.withdrawAddress !== "") {
+      writer.uint32(10).string(message.withdrawAddress);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorWithdrawAddressResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorWithdrawAddressResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDelegatorWithdrawAddressResponse();
@@ -1138,7 +1305,7 @@ export const QueryDelegatorWithdrawAddressResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.withdraw_address = reader.string();
+          message.withdrawAddress = reader.string();
           break;
 
         default:
@@ -1152,19 +1319,19 @@ export const QueryDelegatorWithdrawAddressResponse = {
 
   fromJSON(object: any): QueryDelegatorWithdrawAddressResponse {
     return {
-      withdraw_address: isSet(object.withdraw_address) ? String(object.withdraw_address) : ""
+      withdrawAddress: isSet(object.withdrawAddress) ? String(object.withdrawAddress) : ""
     };
   },
 
   toJSON(message: QueryDelegatorWithdrawAddressResponse): unknown {
     const obj: any = {};
-    message.withdraw_address !== undefined && (obj.withdraw_address = message.withdraw_address);
+    message.withdrawAddress !== undefined && (obj.withdrawAddress = message.withdrawAddress);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDelegatorWithdrawAddressResponse>): QueryDelegatorWithdrawAddressResponse {
     const message = createBaseQueryDelegatorWithdrawAddressResponse();
-    message.withdraw_address = object.withdraw_address ?? "";
+    message.withdrawAddress = object.withdrawAddress ?? "";
     return message;
   }
 
@@ -1228,7 +1395,7 @@ export const QueryCommunityPoolResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCommunityPoolResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCommunityPoolResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCommunityPoolResponse();

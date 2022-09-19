@@ -1,24 +1,33 @@
-import { Params } from "./params";
-import { SuperfluidAsset, OsmoEquivalentMultiplierRecord, SuperfluidIntermediaryAccount, LockIdIntermediaryAccountConnection } from "./superfluid";
+import { Params, ParamsSDKType } from "./params";
+import { SuperfluidAsset, SuperfluidAssetSDKType, OsmoEquivalentMultiplierRecord, OsmoEquivalentMultiplierRecordSDKType, SuperfluidIntermediaryAccount, SuperfluidIntermediaryAccountSDKType, LockIdIntermediaryAccountConnection, LockIdIntermediaryAccountConnectionSDKType } from "./superfluid";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** GenesisState defines the module's genesis state. */
+
 export interface GenesisState {
   params: Params;
-  superfluid_assets: SuperfluidAsset[];
-  osmo_equivalent_multipliers: OsmoEquivalentMultiplierRecord[];
-  intermediary_accounts: SuperfluidIntermediaryAccount[];
-  intemediary_account_connections: LockIdIntermediaryAccountConnection[];
+  superfluidAssets: SuperfluidAsset[];
+  osmoEquivalentMultipliers: OsmoEquivalentMultiplierRecord[];
+  intermediaryAccounts: SuperfluidIntermediaryAccount[];
+  intemediaryAccountConnections: LockIdIntermediaryAccountConnection[];
+}
+/** GenesisState defines the module's genesis state. */
+
+export interface GenesisStateSDKType {
+  params: ParamsSDKType;
+  superfluid_assets: SuperfluidAssetSDKType[];
+  osmo_equivalent_multipliers: OsmoEquivalentMultiplierRecordSDKType[];
+  intermediary_accounts: SuperfluidIntermediaryAccountSDKType[];
+  intemediary_account_connections: LockIdIntermediaryAccountConnectionSDKType[];
 }
 
 function createBaseGenesisState(): GenesisState {
   return {
     params: undefined,
-    superfluid_assets: [],
-    osmo_equivalent_multipliers: [],
-    intermediary_accounts: [],
-    intemediary_account_connections: []
+    superfluidAssets: [],
+    osmoEquivalentMultipliers: [],
+    intermediaryAccounts: [],
+    intemediaryAccountConnections: []
   };
 }
 
@@ -28,19 +37,19 @@ export const GenesisState = {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.superfluid_assets) {
+    for (const v of message.superfluidAssets) {
       SuperfluidAsset.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.osmo_equivalent_multipliers) {
+    for (const v of message.osmoEquivalentMultipliers) {
       OsmoEquivalentMultiplierRecord.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.intermediary_accounts) {
+    for (const v of message.intermediaryAccounts) {
       SuperfluidIntermediaryAccount.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
-    for (const v of message.intemediary_account_connections) {
+    for (const v of message.intemediaryAccountConnections) {
       LockIdIntermediaryAccountConnection.encode(v!, writer.uint32(42).fork()).ldelim();
     }
 
@@ -61,19 +70,19 @@ export const GenesisState = {
           break;
 
         case 2:
-          message.superfluid_assets.push(SuperfluidAsset.decode(reader, reader.uint32()));
+          message.superfluidAssets.push(SuperfluidAsset.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.osmo_equivalent_multipliers.push(OsmoEquivalentMultiplierRecord.decode(reader, reader.uint32()));
+          message.osmoEquivalentMultipliers.push(OsmoEquivalentMultiplierRecord.decode(reader, reader.uint32()));
           break;
 
         case 4:
-          message.intermediary_accounts.push(SuperfluidIntermediaryAccount.decode(reader, reader.uint32()));
+          message.intermediaryAccounts.push(SuperfluidIntermediaryAccount.decode(reader, reader.uint32()));
           break;
 
         case 5:
-          message.intemediary_account_connections.push(LockIdIntermediaryAccountConnection.decode(reader, reader.uint32()));
+          message.intemediaryAccountConnections.push(LockIdIntermediaryAccountConnection.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -88,10 +97,10 @@ export const GenesisState = {
   fromJSON(object: any): GenesisState {
     return {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      superfluid_assets: Array.isArray(object?.superfluid_assets) ? object.superfluid_assets.map((e: any) => SuperfluidAsset.fromJSON(e)) : [],
-      osmo_equivalent_multipliers: Array.isArray(object?.osmo_equivalent_multipliers) ? object.osmo_equivalent_multipliers.map((e: any) => OsmoEquivalentMultiplierRecord.fromJSON(e)) : [],
-      intermediary_accounts: Array.isArray(object?.intermediary_accounts) ? object.intermediary_accounts.map((e: any) => SuperfluidIntermediaryAccount.fromJSON(e)) : [],
-      intemediary_account_connections: Array.isArray(object?.intemediary_account_connections) ? object.intemediary_account_connections.map((e: any) => LockIdIntermediaryAccountConnection.fromJSON(e)) : []
+      superfluidAssets: Array.isArray(object?.superfluidAssets) ? object.superfluidAssets.map((e: any) => SuperfluidAsset.fromJSON(e)) : [],
+      osmoEquivalentMultipliers: Array.isArray(object?.osmoEquivalentMultipliers) ? object.osmoEquivalentMultipliers.map((e: any) => OsmoEquivalentMultiplierRecord.fromJSON(e)) : [],
+      intermediaryAccounts: Array.isArray(object?.intermediaryAccounts) ? object.intermediaryAccounts.map((e: any) => SuperfluidIntermediaryAccount.fromJSON(e)) : [],
+      intemediaryAccountConnections: Array.isArray(object?.intemediaryAccountConnections) ? object.intemediaryAccountConnections.map((e: any) => LockIdIntermediaryAccountConnection.fromJSON(e)) : []
     };
   },
 
@@ -99,28 +108,28 @@ export const GenesisState = {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
 
-    if (message.superfluid_assets) {
-      obj.superfluid_assets = message.superfluid_assets.map(e => e ? SuperfluidAsset.toJSON(e) : undefined);
+    if (message.superfluidAssets) {
+      obj.superfluidAssets = message.superfluidAssets.map(e => e ? SuperfluidAsset.toJSON(e) : undefined);
     } else {
-      obj.superfluid_assets = [];
+      obj.superfluidAssets = [];
     }
 
-    if (message.osmo_equivalent_multipliers) {
-      obj.osmo_equivalent_multipliers = message.osmo_equivalent_multipliers.map(e => e ? OsmoEquivalentMultiplierRecord.toJSON(e) : undefined);
+    if (message.osmoEquivalentMultipliers) {
+      obj.osmoEquivalentMultipliers = message.osmoEquivalentMultipliers.map(e => e ? OsmoEquivalentMultiplierRecord.toJSON(e) : undefined);
     } else {
-      obj.osmo_equivalent_multipliers = [];
+      obj.osmoEquivalentMultipliers = [];
     }
 
-    if (message.intermediary_accounts) {
-      obj.intermediary_accounts = message.intermediary_accounts.map(e => e ? SuperfluidIntermediaryAccount.toJSON(e) : undefined);
+    if (message.intermediaryAccounts) {
+      obj.intermediaryAccounts = message.intermediaryAccounts.map(e => e ? SuperfluidIntermediaryAccount.toJSON(e) : undefined);
     } else {
-      obj.intermediary_accounts = [];
+      obj.intermediaryAccounts = [];
     }
 
-    if (message.intemediary_account_connections) {
-      obj.intemediary_account_connections = message.intemediary_account_connections.map(e => e ? LockIdIntermediaryAccountConnection.toJSON(e) : undefined);
+    if (message.intemediaryAccountConnections) {
+      obj.intemediaryAccountConnections = message.intemediaryAccountConnections.map(e => e ? LockIdIntermediaryAccountConnection.toJSON(e) : undefined);
     } else {
-      obj.intemediary_account_connections = [];
+      obj.intemediaryAccountConnections = [];
     }
 
     return obj;
@@ -129,10 +138,10 @@ export const GenesisState = {
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.superfluid_assets = object.superfluid_assets?.map(e => SuperfluidAsset.fromPartial(e)) || [];
-    message.osmo_equivalent_multipliers = object.osmo_equivalent_multipliers?.map(e => OsmoEquivalentMultiplierRecord.fromPartial(e)) || [];
-    message.intermediary_accounts = object.intermediary_accounts?.map(e => SuperfluidIntermediaryAccount.fromPartial(e)) || [];
-    message.intemediary_account_connections = object.intemediary_account_connections?.map(e => LockIdIntermediaryAccountConnection.fromPartial(e)) || [];
+    message.superfluidAssets = object.superfluidAssets?.map(e => SuperfluidAsset.fromPartial(e)) || [];
+    message.osmoEquivalentMultipliers = object.osmoEquivalentMultipliers?.map(e => OsmoEquivalentMultiplierRecord.fromPartial(e)) || [];
+    message.intermediaryAccounts = object.intermediaryAccounts?.map(e => SuperfluidIntermediaryAccount.fromPartial(e)) || [];
+    message.intemediaryAccountConnections = object.intemediaryAccountConnections?.map(e => LockIdIntermediaryAccountConnection.fromPartial(e)) || [];
     return message;
   }
 

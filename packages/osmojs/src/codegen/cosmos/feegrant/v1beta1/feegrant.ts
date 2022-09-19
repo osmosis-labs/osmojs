@@ -1,88 +1,156 @@
-import { Coin } from "../../base/v1beta1/coin";
+import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import { Duration } from "../../../google/protobuf/duration";
-import { Any } from "../../../google/protobuf/any";
+import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * BasicAllowance implements Allowance with a one-time grant of tokens
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
+
 export interface BasicAllowance {
   /**
    * spend_limit specifies the maximum amount of tokens that can be spent
    * by this allowance and will be updated as tokens are spent. If it is
    * empty, there is no spend limit and any amount of coins can be spent.
    */
-  spend_limit: Coin[];
-
+  spendLimit: Coin[];
   /** expiration specifies an optional time when this allowance expires */
+
   expiration: Date;
 }
+/**
+ * BasicAllowance implements Allowance with a one-time grant of tokens
+ * that optionally expires. The grantee can use up to SpendLimit to cover fees.
+ */
 
+export interface BasicAllowanceSDKType {
+  /**
+   * spend_limit specifies the maximum amount of tokens that can be spent
+   * by this allowance and will be updated as tokens are spent. If it is
+   * empty, there is no spend limit and any amount of coins can be spent.
+   */
+  spend_limit: CoinSDKType[];
+  /** expiration specifies an optional time when this allowance expires */
+
+  expiration: Date;
+}
 /**
  * PeriodicAllowance extends Allowance to allow for both a maximum cap,
  * as well as a limit per time period.
  */
+
 export interface PeriodicAllowance {
   /** basic specifies a struct of `BasicAllowance` */
   basic: BasicAllowance;
-
   /**
    * period specifies the time duration in which period_spend_limit coins can
    * be spent before that allowance is reset
    */
-  period: Duration;
 
+  period: Duration;
   /**
    * period_spend_limit specifies the maximum number of coins that can be spent
    * in the period
    */
-  period_spend_limit: Coin[];
 
+  periodSpendLimit: Coin[];
   /** period_can_spend is the number of coins left to be spent before the period_reset time */
-  period_can_spend: Coin[];
 
+  periodCanSpend: Coin[];
   /**
    * period_reset is the time at which this period resets and a new one begins,
    * it is calculated from the start time of the first transaction after the
    * last period ended
    */
+
+  periodReset: Date;
+}
+/**
+ * PeriodicAllowance extends Allowance to allow for both a maximum cap,
+ * as well as a limit per time period.
+ */
+
+export interface PeriodicAllowanceSDKType {
+  /** basic specifies a struct of `BasicAllowance` */
+  basic: BasicAllowanceSDKType;
+  /**
+   * period specifies the time duration in which period_spend_limit coins can
+   * be spent before that allowance is reset
+   */
+
+  period: DurationSDKType;
+  /**
+   * period_spend_limit specifies the maximum number of coins that can be spent
+   * in the period
+   */
+
+  period_spend_limit: CoinSDKType[];
+  /** period_can_spend is the number of coins left to be spent before the period_reset time */
+
+  period_can_spend: CoinSDKType[];
+  /**
+   * period_reset is the time at which this period resets and a new one begins,
+   * it is calculated from the start time of the first transaction after the
+   * last period ended
+   */
+
   period_reset: Date;
 }
-
 /** AllowedMsgAllowance creates allowance only for specified message types. */
+
 export interface AllowedMsgAllowance {
   /** allowance can be any of basic and periodic fee allowance. */
   allowance: Any;
-
   /** allowed_messages are the messages for which the grantee has the access. */
+
+  allowedMessages: string[];
+}
+/** AllowedMsgAllowance creates allowance only for specified message types. */
+
+export interface AllowedMsgAllowanceSDKType {
+  /** allowance can be any of basic and periodic fee allowance. */
+  allowance: AnySDKType;
+  /** allowed_messages are the messages for which the grantee has the access. */
+
   allowed_messages: string[];
 }
-
 /** Grant is stored in the KVStore to record a grant with full context */
+
 export interface Grant {
   /** granter is the address of the user granting an allowance of their funds. */
   granter: string;
-
   /** grantee is the address of the user being granted an allowance of another user's funds. */
-  grantee: string;
 
+  grantee: string;
   /** allowance can be any of basic, periodic, allowed fee allowance. */
+
   allowance: Any;
+}
+/** Grant is stored in the KVStore to record a grant with full context */
+
+export interface GrantSDKType {
+  /** granter is the address of the user granting an allowance of their funds. */
+  granter: string;
+  /** grantee is the address of the user being granted an allowance of another user's funds. */
+
+  grantee: string;
+  /** allowance can be any of basic, periodic, allowed fee allowance. */
+
+  allowance: AnySDKType;
 }
 
 function createBaseBasicAllowance(): BasicAllowance {
   return {
-    spend_limit: [],
+    spendLimit: [],
     expiration: undefined
   };
 }
 
 export const BasicAllowance = {
   encode(message: BasicAllowance, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.spend_limit) {
+    for (const v of message.spendLimit) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -103,7 +171,7 @@ export const BasicAllowance = {
 
       switch (tag >>> 3) {
         case 1:
-          message.spend_limit.push(Coin.decode(reader, reader.uint32()));
+          message.spendLimit.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -121,7 +189,7 @@ export const BasicAllowance = {
 
   fromJSON(object: any): BasicAllowance {
     return {
-      spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e: any) => Coin.fromJSON(e)) : [],
+      spendLimit: Array.isArray(object?.spendLimit) ? object.spendLimit.map((e: any) => Coin.fromJSON(e)) : [],
       expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
     };
   },
@@ -129,10 +197,10 @@ export const BasicAllowance = {
   toJSON(message: BasicAllowance): unknown {
     const obj: any = {};
 
-    if (message.spend_limit) {
-      obj.spend_limit = message.spend_limit.map(e => e ? Coin.toJSON(e) : undefined);
+    if (message.spendLimit) {
+      obj.spendLimit = message.spendLimit.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
-      obj.spend_limit = [];
+      obj.spendLimit = [];
     }
 
     message.expiration !== undefined && (obj.expiration = message.expiration.toISOString());
@@ -141,7 +209,7 @@ export const BasicAllowance = {
 
   fromPartial(object: DeepPartial<BasicAllowance>): BasicAllowance {
     const message = createBaseBasicAllowance();
-    message.spend_limit = object.spend_limit?.map(e => Coin.fromPartial(e)) || [];
+    message.spendLimit = object.spendLimit?.map(e => Coin.fromPartial(e)) || [];
     message.expiration = object.expiration ?? undefined;
     return message;
   }
@@ -152,9 +220,9 @@ function createBasePeriodicAllowance(): PeriodicAllowance {
   return {
     basic: undefined,
     period: undefined,
-    period_spend_limit: [],
-    period_can_spend: [],
-    period_reset: undefined
+    periodSpendLimit: [],
+    periodCanSpend: [],
+    periodReset: undefined
   };
 }
 
@@ -168,16 +236,16 @@ export const PeriodicAllowance = {
       Duration.encode(message.period, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.period_spend_limit) {
+    for (const v of message.periodSpendLimit) {
       Coin.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.period_can_spend) {
+    for (const v of message.periodCanSpend) {
       Coin.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.period_reset !== undefined) {
-      Timestamp.encode(toTimestamp(message.period_reset), writer.uint32(42).fork()).ldelim();
+    if (message.periodReset !== undefined) {
+      Timestamp.encode(toTimestamp(message.periodReset), writer.uint32(42).fork()).ldelim();
     }
 
     return writer;
@@ -201,15 +269,15 @@ export const PeriodicAllowance = {
           break;
 
         case 3:
-          message.period_spend_limit.push(Coin.decode(reader, reader.uint32()));
+          message.periodSpendLimit.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 4:
-          message.period_can_spend.push(Coin.decode(reader, reader.uint32()));
+          message.periodCanSpend.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 5:
-          message.period_reset = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.periodReset = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -225,9 +293,9 @@ export const PeriodicAllowance = {
     return {
       basic: isSet(object.basic) ? BasicAllowance.fromJSON(object.basic) : undefined,
       period: isSet(object.period) ? Duration.fromJSON(object.period) : undefined,
-      period_spend_limit: Array.isArray(object?.period_spend_limit) ? object.period_spend_limit.map((e: any) => Coin.fromJSON(e)) : [],
-      period_can_spend: Array.isArray(object?.period_can_spend) ? object.period_can_spend.map((e: any) => Coin.fromJSON(e)) : [],
-      period_reset: isSet(object.period_reset) ? fromJsonTimestamp(object.period_reset) : undefined
+      periodSpendLimit: Array.isArray(object?.periodSpendLimit) ? object.periodSpendLimit.map((e: any) => Coin.fromJSON(e)) : [],
+      periodCanSpend: Array.isArray(object?.periodCanSpend) ? object.periodCanSpend.map((e: any) => Coin.fromJSON(e)) : [],
+      periodReset: isSet(object.periodReset) ? fromJsonTimestamp(object.periodReset) : undefined
     };
   },
 
@@ -236,19 +304,19 @@ export const PeriodicAllowance = {
     message.basic !== undefined && (obj.basic = message.basic ? BasicAllowance.toJSON(message.basic) : undefined);
     message.period !== undefined && (obj.period = message.period);
 
-    if (message.period_spend_limit) {
-      obj.period_spend_limit = message.period_spend_limit.map(e => e ? Coin.toJSON(e) : undefined);
+    if (message.periodSpendLimit) {
+      obj.periodSpendLimit = message.periodSpendLimit.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
-      obj.period_spend_limit = [];
+      obj.periodSpendLimit = [];
     }
 
-    if (message.period_can_spend) {
-      obj.period_can_spend = message.period_can_spend.map(e => e ? Coin.toJSON(e) : undefined);
+    if (message.periodCanSpend) {
+      obj.periodCanSpend = message.periodCanSpend.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
-      obj.period_can_spend = [];
+      obj.periodCanSpend = [];
     }
 
-    message.period_reset !== undefined && (obj.period_reset = message.period_reset.toISOString());
+    message.periodReset !== undefined && (obj.periodReset = message.periodReset.toISOString());
     return obj;
   },
 
@@ -256,9 +324,9 @@ export const PeriodicAllowance = {
     const message = createBasePeriodicAllowance();
     message.basic = object.basic !== undefined && object.basic !== null ? BasicAllowance.fromPartial(object.basic) : undefined;
     message.period = object.period ?? undefined;
-    message.period_spend_limit = object.period_spend_limit?.map(e => Coin.fromPartial(e)) || [];
-    message.period_can_spend = object.period_can_spend?.map(e => Coin.fromPartial(e)) || [];
-    message.period_reset = object.period_reset ?? undefined;
+    message.periodSpendLimit = object.periodSpendLimit?.map(e => Coin.fromPartial(e)) || [];
+    message.periodCanSpend = object.periodCanSpend?.map(e => Coin.fromPartial(e)) || [];
+    message.periodReset = object.periodReset ?? undefined;
     return message;
   }
 
@@ -267,7 +335,7 @@ export const PeriodicAllowance = {
 function createBaseAllowedMsgAllowance(): AllowedMsgAllowance {
   return {
     allowance: undefined,
-    allowed_messages: []
+    allowedMessages: []
   };
 }
 
@@ -277,7 +345,7 @@ export const AllowedMsgAllowance = {
       Any.encode(message.allowance, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.allowed_messages) {
+    for (const v of message.allowedMessages) {
       writer.uint32(18).string(v!);
     }
 
@@ -298,7 +366,7 @@ export const AllowedMsgAllowance = {
           break;
 
         case 2:
-          message.allowed_messages.push(reader.string());
+          message.allowedMessages.push(reader.string());
           break;
 
         default:
@@ -313,7 +381,7 @@ export const AllowedMsgAllowance = {
   fromJSON(object: any): AllowedMsgAllowance {
     return {
       allowance: isSet(object.allowance) ? Any.fromJSON(object.allowance) : undefined,
-      allowed_messages: Array.isArray(object?.allowed_messages) ? object.allowed_messages.map((e: any) => String(e)) : []
+      allowedMessages: Array.isArray(object?.allowedMessages) ? object.allowedMessages.map((e: any) => String(e)) : []
     };
   },
 
@@ -321,10 +389,10 @@ export const AllowedMsgAllowance = {
     const obj: any = {};
     message.allowance !== undefined && (obj.allowance = message.allowance ? Any.toJSON(message.allowance) : undefined);
 
-    if (message.allowed_messages) {
-      obj.allowed_messages = message.allowed_messages.map(e => e);
+    if (message.allowedMessages) {
+      obj.allowedMessages = message.allowedMessages.map(e => e);
     } else {
-      obj.allowed_messages = [];
+      obj.allowedMessages = [];
     }
 
     return obj;
@@ -333,7 +401,7 @@ export const AllowedMsgAllowance = {
   fromPartial(object: DeepPartial<AllowedMsgAllowance>): AllowedMsgAllowance {
     const message = createBaseAllowedMsgAllowance();
     message.allowance = object.allowance !== undefined && object.allowance !== null ? Any.fromPartial(object.allowance) : undefined;
-    message.allowed_messages = object.allowed_messages?.map(e => e) || [];
+    message.allowedMessages = object.allowedMessages?.map(e => e) || [];
     return message;
   }
 

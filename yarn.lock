@@ -3612,15 +3612,15 @@
   dependencies:
     "@octokit/openapi-types" "^12.7.0"
 
-"@osmonauts/ast@^0.19.0":
-  version "0.19.0"
-  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.19.0.tgz#512d186e0d0221194ad069541d73cb16092aeebf"
-  integrity sha512-WzBMtX5vNgHy7zgIgDh2jKItttKjZp5t1KS0i37x2Jhh/V27lz7QjXvnJFTKg3PRuy166ft5h2Ipx2Jvz4P90A==
+"@osmonauts/ast@^0.20.0":
+  version "0.20.0"
+  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.20.0.tgz#fdb7c064092b7b7d8e500481b055a3c278aedcf0"
+  integrity sha512-4NA0G0jbfnCxT62VOTCshcsx7p6gb2EFgIJHLOJX/hlWmxQxKK4U5EHGo5UCOmsUn/sQRoc5BUC3LMcW1GK6IQ==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@babel/types" "7.18.13"
-    "@osmonauts/proto-parser" "^0.16.0"
-    "@osmonauts/types" "^0.12.0"
+    "@osmonauts/proto-parser" "^0.17.0"
+    "@osmonauts/types" "^0.13.0"
     "@osmonauts/utils" "^0.4.0"
     case "1.6.3"
     dotty "0.1.2"
@@ -3647,22 +3647,22 @@
     "@babel/runtime" "^7.18.9"
     axios "0.27.2"
 
-"@osmonauts/proto-parser@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.16.0.tgz#f810d694aa5ee853b613d8d5f592944957fbd57c"
-  integrity sha512-y2JHbvzf5gYj7DDPwyHmeJiciAcHG3lBTFZphMMQuoGnceW3Ul8OUfrrxVvxiPF5M8O8FQVA1UqfPz88+gVIbA==
+"@osmonauts/proto-parser@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.17.0.tgz#e4849424a3e35c89737183a04246363837622190"
+  integrity sha512-mV7kO+sbr2QKoz6PECjgDcbX64uUEqX5UJKW1z1zKGB42rGjhBoW1EOeg6YAegcDHhUA2tlDixYlli4Cu87QIg==
   dependencies:
     "@babel/runtime" "^7.18.9"
-    "@osmonauts/types" "^0.12.0"
-    "@pyramation/protobufjs" "6.11.3"
+    "@osmonauts/types" "^0.13.0"
+    "@pyramation/protobufjs" "6.11.4"
     dotty "0.1.2"
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@0.23.0":
-  version "0.23.0"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.23.0.tgz#1c11352dc38beb6de5a5d34132a5f47ca80cae10"
-  integrity sha512-sJdpbt0ya0hklhfzKO/8kGLpTn7TlnyP93ixYPWmTonrL4qH/wraKLMayyLZzr7CUDussLxOVfYCVxtZy7ci+g==
+"@osmonauts/telescope@0.24.0":
+  version "0.24.0"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.24.0.tgz#0692dceb74b4f32737ec1bf9250402aead38d224"
+  integrity sha512-AKtVG5sku57dAnl5go3/hswAZpI5AW0Nq197YmJy5DJvNYLStobC08qxWirDWzyVRPMkwWn49jH8Xo0Cuy1oVA==
   dependencies:
     "@babel/core" "7.18.13"
     "@babel/generator" "7.18.13"
@@ -3677,9 +3677,9 @@
     "@babel/traverse" "7.18.13"
     "@babel/types" "7.18.13"
     "@cosmwasm/ts-codegen" "0.16.1"
-    "@osmonauts/ast" "^0.19.0"
-    "@osmonauts/proto-parser" "^0.16.0"
-    "@osmonauts/types" "^0.12.0"
+    "@osmonauts/ast" "^0.20.0"
+    "@osmonauts/proto-parser" "^0.17.0"
+    "@osmonauts/types" "^0.13.0"
     "@osmonauts/utils" "^0.4.0"
     "@types/parse-package-name" "0.1.0"
     case "1.6.3"
@@ -3697,10 +3697,10 @@
     rimraf "3.0.2"
     shelljs "0.8.5"
 
-"@osmonauts/types@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.npmjs.org/@osmonauts/types/-/types-0.12.0.tgz#8fb3b805bdb33a01b0eecfafe143f3695603f6d5"
-  integrity sha512-+WpXarwzrTtgX/25HvDavCeCMdqoThFIR4hDMJ8iwat8tpvaCdZD/qAipfQDL4hlOI/FsWUfEum2YUyVO81s+A==
+"@osmonauts/types@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.npmjs.org/@osmonauts/types/-/types-0.13.0.tgz#82f55b261e04153a6be4565f1c5921e2e383ae1f"
+  integrity sha512-LZnY01VgiY/QS6PXqMrYdPd4WiLlY9eOVenK0aEjkCie/5KO1bgil7s3FyA6aZdsaG74bu1xemwQmneA2/VZ6A==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@osmonauts/utils" "^0.4.0"
@@ -3881,10 +3881,10 @@
     mz "^2.7.0"
     prettier "^2.6.2"
 
-"@pyramation/protobufjs@6.11.3":
-  version "6.11.3"
-  resolved "https://registry.npmjs.org/@pyramation/protobufjs/-/protobufjs-6.11.3.tgz#208bd1ba985c915cb55e0c7d1e20a477683ec531"
-  integrity sha512-CxqX5IUZsrsZXidzCjw25iDcX0EghDk3I/riK3KXzgxguxHHwEPlFMOPUMnsnFtK95+PQ3WPzZFfslsvCcLveg==
+"@pyramation/protobufjs@6.11.4":
+  version "6.11.4"
+  resolved "https://registry.npmjs.org/@pyramation/protobufjs/-/protobufjs-6.11.4.tgz#3d7f39181e6d922597b23db96d88fbcda5d24a0b"
+  integrity sha512-SvWDkDSo3XOBCzLtjC36QYZOoeCw3/HGAi8wuVj6aM3HrFp6lKgYtxsQ0QymbnagDD582k/roGg3CcXfxeM2Hg==
   dependencies:
     "@protobufjs/aspromise" "^1.1.2"
     "@protobufjs/base64" "^1.1.2"

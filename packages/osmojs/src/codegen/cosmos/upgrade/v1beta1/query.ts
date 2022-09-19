@@ -1,72 +1,145 @@
-import { Plan, ModuleVersion } from "./upgrade";
+import { Plan, PlanSDKType, ModuleVersion, ModuleVersionSDKType } from "./upgrade";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, isSet, Long, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
 /**
  * QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
  * method.
  */
-export interface QueryCurrentPlanRequest {}
 
+export interface QueryCurrentPlanRequest {}
+/**
+ * QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
+ * method.
+ */
+
+export interface QueryCurrentPlanRequestSDKType {}
 /**
  * QueryCurrentPlanResponse is the response type for the Query/CurrentPlan RPC
  * method.
  */
+
 export interface QueryCurrentPlanResponse {
   /** plan is the current upgrade plan. */
   plan: Plan;
 }
+/**
+ * QueryCurrentPlanResponse is the response type for the Query/CurrentPlan RPC
+ * method.
+ */
 
+export interface QueryCurrentPlanResponseSDKType {
+  /** plan is the current upgrade plan. */
+  plan: PlanSDKType;
+}
 /**
  * QueryCurrentPlanRequest is the request type for the Query/AppliedPlan RPC
  * method.
  */
+
 export interface QueryAppliedPlanRequest {
   /** name is the name of the applied plan to query for. */
   name: string;
 }
+/**
+ * QueryCurrentPlanRequest is the request type for the Query/AppliedPlan RPC
+ * method.
+ */
 
+export interface QueryAppliedPlanRequestSDKType {
+  /** name is the name of the applied plan to query for. */
+  name: string;
+}
 /**
  * QueryAppliedPlanResponse is the response type for the Query/AppliedPlan RPC
  * method.
  */
+
 export interface QueryAppliedPlanResponse {
   /** height is the block height at which the plan was applied. */
   height: Long;
 }
+/**
+ * QueryAppliedPlanResponse is the response type for the Query/AppliedPlan RPC
+ * method.
+ */
 
+export interface QueryAppliedPlanResponseSDKType {
+  /** height is the block height at which the plan was applied. */
+  height: Long;
+}
 /**
  * QueryUpgradedConsensusStateRequest is the request type for the Query/UpgradedConsensusState
  * RPC method.
  */
 
 /** @deprecated */
+
 export interface QueryUpgradedConsensusStateRequest {
+  /**
+   * last height of the current chain must be sent in request
+   * as this is the height under which next consensus state is stored
+   */
+  lastHeight: Long;
+}
+/**
+ * QueryUpgradedConsensusStateRequest is the request type for the Query/UpgradedConsensusState
+ * RPC method.
+ */
+
+/** @deprecated */
+
+export interface QueryUpgradedConsensusStateRequestSDKType {
   /**
    * last height of the current chain must be sent in request
    * as this is the height under which next consensus state is stored
    */
   last_height: Long;
 }
-
 /**
  * QueryUpgradedConsensusStateResponse is the response type for the Query/UpgradedConsensusState
  * RPC method.
  */
 
 /** @deprecated */
+
 export interface QueryUpgradedConsensusStateResponse {
+  /** Since: cosmos-sdk 0.43 */
+  upgradedConsensusState: Uint8Array;
+}
+/**
+ * QueryUpgradedConsensusStateResponse is the response type for the Query/UpgradedConsensusState
+ * RPC method.
+ */
+
+/** @deprecated */
+
+export interface QueryUpgradedConsensusStateResponseSDKType {
   /** Since: cosmos-sdk 0.43 */
   upgraded_consensus_state: Uint8Array;
 }
-
 /**
  * QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
  * RPC method.
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface QueryModuleVersionsRequest {
+  /**
+   * module_name is a field to query a specific module
+   * consensus version from state. Leaving this empty will
+   * fetch the full list of module versions from state
+   */
+  moduleName?: string;
+}
+/**
+ * QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
+ * RPC method.
+ * 
+ * Since: cosmos-sdk 0.43
+ */
+
+export interface QueryModuleVersionsRequestSDKType {
   /**
    * module_name is a field to query a specific module
    * consensus version from state. Leaving this empty will
@@ -74,31 +147,58 @@ export interface QueryModuleVersionsRequest {
    */
   module_name?: string;
 }
-
 /**
  * QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
  * RPC method.
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface QueryModuleVersionsResponse {
   /** module_versions is a list of module names with their consensus versions. */
-  module_versions: ModuleVersion[];
+  moduleVersions: ModuleVersion[];
 }
+/**
+ * QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
+ * RPC method.
+ * 
+ * Since: cosmos-sdk 0.43
+ */
 
+export interface QueryModuleVersionsResponseSDKType {
+  /** module_versions is a list of module names with their consensus versions. */
+  module_versions: ModuleVersionSDKType[];
+}
 /**
  * QueryAuthorityRequest is the request type for Query/Authority
  * 
  * Since: cosmos-sdk 0.46
  */
-export interface QueryAuthorityRequest {}
 
+export interface QueryAuthorityRequest {}
+/**
+ * QueryAuthorityRequest is the request type for Query/Authority
+ * 
+ * Since: cosmos-sdk 0.46
+ */
+
+export interface QueryAuthorityRequestSDKType {}
 /**
  * QueryAuthorityResponse is the response type for Query/Authority
  * 
  * Since: cosmos-sdk 0.46
  */
+
 export interface QueryAuthorityResponse {
+  address: string;
+}
+/**
+ * QueryAuthorityResponse is the response type for Query/Authority
+ * 
+ * Since: cosmos-sdk 0.46
+ */
+
+export interface QueryAuthorityResponseSDKType {
   address: string;
 }
 
@@ -160,7 +260,7 @@ export const QueryCurrentPlanResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCurrentPlanResponse();
@@ -274,7 +374,7 @@ export const QueryAppliedPlanResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAppliedPlanResponse();
@@ -318,14 +418,14 @@ export const QueryAppliedPlanResponse = {
 
 function createBaseQueryUpgradedConsensusStateRequest(): QueryUpgradedConsensusStateRequest {
   return {
-    last_height: Long.ZERO
+    lastHeight: Long.ZERO
   };
 }
 
 export const QueryUpgradedConsensusStateRequest = {
   encode(message: QueryUpgradedConsensusStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.last_height.isZero()) {
-      writer.uint32(8).int64(message.last_height);
+    if (!message.lastHeight.isZero()) {
+      writer.uint32(8).int64(message.lastHeight);
     }
 
     return writer;
@@ -341,7 +441,7 @@ export const QueryUpgradedConsensusStateRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.last_height = (reader.int64() as Long);
+          message.lastHeight = (reader.int64() as Long);
           break;
 
         default:
@@ -355,19 +455,19 @@ export const QueryUpgradedConsensusStateRequest = {
 
   fromJSON(object: any): QueryUpgradedConsensusStateRequest {
     return {
-      last_height: isSet(object.last_height) ? Long.fromString(object.last_height) : Long.ZERO
+      lastHeight: isSet(object.lastHeight) ? Long.fromString(object.lastHeight) : Long.ZERO
     };
   },
 
   toJSON(message: QueryUpgradedConsensusStateRequest): unknown {
     const obj: any = {};
-    message.last_height !== undefined && (obj.last_height = (message.last_height || Long.ZERO).toString());
+    message.lastHeight !== undefined && (obj.lastHeight = (message.lastHeight || Long.ZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest {
     const message = createBaseQueryUpgradedConsensusStateRequest();
-    message.last_height = object.last_height !== undefined && object.last_height !== null ? Long.fromValue(object.last_height) : Long.ZERO;
+    message.lastHeight = object.lastHeight !== undefined && object.lastHeight !== null ? Long.fromValue(object.lastHeight) : Long.ZERO;
     return message;
   }
 
@@ -375,20 +475,20 @@ export const QueryUpgradedConsensusStateRequest = {
 
 function createBaseQueryUpgradedConsensusStateResponse(): QueryUpgradedConsensusStateResponse {
   return {
-    upgraded_consensus_state: new Uint8Array()
+    upgradedConsensusState: new Uint8Array()
   };
 }
 
 export const QueryUpgradedConsensusStateResponse = {
   encode(message: QueryUpgradedConsensusStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.upgraded_consensus_state.length !== 0) {
-      writer.uint32(18).bytes(message.upgraded_consensus_state);
+    if (message.upgradedConsensusState.length !== 0) {
+      writer.uint32(18).bytes(message.upgradedConsensusState);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryUpgradedConsensusStateResponse();
@@ -398,7 +498,7 @@ export const QueryUpgradedConsensusStateResponse = {
 
       switch (tag >>> 3) {
         case 2:
-          message.upgraded_consensus_state = reader.bytes();
+          message.upgradedConsensusState = reader.bytes();
           break;
 
         default:
@@ -412,19 +512,19 @@ export const QueryUpgradedConsensusStateResponse = {
 
   fromJSON(object: any): QueryUpgradedConsensusStateResponse {
     return {
-      upgraded_consensus_state: isSet(object.upgraded_consensus_state) ? bytesFromBase64(object.upgraded_consensus_state) : new Uint8Array()
+      upgradedConsensusState: isSet(object.upgradedConsensusState) ? bytesFromBase64(object.upgradedConsensusState) : new Uint8Array()
     };
   },
 
   toJSON(message: QueryUpgradedConsensusStateResponse): unknown {
     const obj: any = {};
-    message.upgraded_consensus_state !== undefined && (obj.upgraded_consensus_state = base64FromBytes(message.upgraded_consensus_state !== undefined ? message.upgraded_consensus_state : new Uint8Array()));
+    message.upgradedConsensusState !== undefined && (obj.upgradedConsensusState = base64FromBytes(message.upgradedConsensusState !== undefined ? message.upgradedConsensusState : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse {
     const message = createBaseQueryUpgradedConsensusStateResponse();
-    message.upgraded_consensus_state = object.upgraded_consensus_state ?? new Uint8Array();
+    message.upgradedConsensusState = object.upgradedConsensusState ?? new Uint8Array();
     return message;
   }
 
@@ -432,14 +532,14 @@ export const QueryUpgradedConsensusStateResponse = {
 
 function createBaseQueryModuleVersionsRequest(): QueryModuleVersionsRequest {
   return {
-    module_name: ""
+    moduleName: ""
   };
 }
 
 export const QueryModuleVersionsRequest = {
   encode(message: QueryModuleVersionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.module_name !== "") {
-      writer.uint32(10).string(message.module_name);
+    if (message.moduleName !== "") {
+      writer.uint32(10).string(message.moduleName);
     }
 
     return writer;
@@ -455,7 +555,7 @@ export const QueryModuleVersionsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.module_name = reader.string();
+          message.moduleName = reader.string();
           break;
 
         default:
@@ -469,19 +569,19 @@ export const QueryModuleVersionsRequest = {
 
   fromJSON(object: any): QueryModuleVersionsRequest {
     return {
-      module_name: isSet(object.module_name) ? String(object.module_name) : ""
+      moduleName: isSet(object.moduleName) ? String(object.moduleName) : ""
     };
   },
 
   toJSON(message: QueryModuleVersionsRequest): unknown {
     const obj: any = {};
-    message.module_name !== undefined && (obj.module_name = message.module_name);
+    message.moduleName !== undefined && (obj.moduleName = message.moduleName);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryModuleVersionsRequest>): QueryModuleVersionsRequest {
     const message = createBaseQueryModuleVersionsRequest();
-    message.module_name = object.module_name ?? "";
+    message.moduleName = object.moduleName ?? "";
     return message;
   }
 
@@ -489,20 +589,20 @@ export const QueryModuleVersionsRequest = {
 
 function createBaseQueryModuleVersionsResponse(): QueryModuleVersionsResponse {
   return {
-    module_versions: []
+    moduleVersions: []
   };
 }
 
 export const QueryModuleVersionsResponse = {
   encode(message: QueryModuleVersionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.module_versions) {
+    for (const v of message.moduleVersions) {
       ModuleVersion.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryModuleVersionsResponse();
@@ -512,7 +612,7 @@ export const QueryModuleVersionsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.module_versions.push(ModuleVersion.decode(reader, reader.uint32()));
+          message.moduleVersions.push(ModuleVersion.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -526,17 +626,17 @@ export const QueryModuleVersionsResponse = {
 
   fromJSON(object: any): QueryModuleVersionsResponse {
     return {
-      module_versions: Array.isArray(object?.module_versions) ? object.module_versions.map((e: any) => ModuleVersion.fromJSON(e)) : []
+      moduleVersions: Array.isArray(object?.moduleVersions) ? object.moduleVersions.map((e: any) => ModuleVersion.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryModuleVersionsResponse): unknown {
     const obj: any = {};
 
-    if (message.module_versions) {
-      obj.module_versions = message.module_versions.map(e => e ? ModuleVersion.toJSON(e) : undefined);
+    if (message.moduleVersions) {
+      obj.moduleVersions = message.moduleVersions.map(e => e ? ModuleVersion.toJSON(e) : undefined);
     } else {
-      obj.module_versions = [];
+      obj.moduleVersions = [];
     }
 
     return obj;
@@ -544,7 +644,7 @@ export const QueryModuleVersionsResponse = {
 
   fromPartial(object: DeepPartial<QueryModuleVersionsResponse>): QueryModuleVersionsResponse {
     const message = createBaseQueryModuleVersionsResponse();
-    message.module_versions = object.module_versions?.map(e => ModuleVersion.fromPartial(e)) || [];
+    message.moduleVersions = object.moduleVersions?.map(e => ModuleVersion.fromPartial(e)) || [];
     return message;
   }
 
@@ -608,7 +708,7 @@ export const QueryAuthorityResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAuthorityResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAuthorityResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAuthorityResponse();

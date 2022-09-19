@@ -1,12 +1,23 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
 import { toTimestamp, Long, fromTimestamp, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * Equivocation implements the Evidence interface and defines evidence of double
  * signing misbehavior.
  */
+
 export interface Equivocation {
+  height: Long;
+  time: Date;
+  power: Long;
+  consensusAddress: string;
+}
+/**
+ * Equivocation implements the Evidence interface and defines evidence of double
+ * signing misbehavior.
+ */
+
+export interface EquivocationSDKType {
   height: Long;
   time: Date;
   power: Long;
@@ -18,7 +29,7 @@ function createBaseEquivocation(): Equivocation {
     height: Long.ZERO,
     time: undefined,
     power: Long.ZERO,
-    consensus_address: ""
+    consensusAddress: ""
   };
 }
 
@@ -36,8 +47,8 @@ export const Equivocation = {
       writer.uint32(24).int64(message.power);
     }
 
-    if (message.consensus_address !== "") {
-      writer.uint32(34).string(message.consensus_address);
+    if (message.consensusAddress !== "") {
+      writer.uint32(34).string(message.consensusAddress);
     }
 
     return writer;
@@ -65,7 +76,7 @@ export const Equivocation = {
           break;
 
         case 4:
-          message.consensus_address = reader.string();
+          message.consensusAddress = reader.string();
           break;
 
         default:
@@ -82,7 +93,7 @@ export const Equivocation = {
       height: isSet(object.height) ? Long.fromString(object.height) : Long.ZERO,
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
       power: isSet(object.power) ? Long.fromString(object.power) : Long.ZERO,
-      consensus_address: isSet(object.consensus_address) ? String(object.consensus_address) : ""
+      consensusAddress: isSet(object.consensusAddress) ? String(object.consensusAddress) : ""
     };
   },
 
@@ -91,7 +102,7 @@ export const Equivocation = {
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
     message.time !== undefined && (obj.time = message.time.toISOString());
     message.power !== undefined && (obj.power = (message.power || Long.ZERO).toString());
-    message.consensus_address !== undefined && (obj.consensus_address = message.consensus_address);
+    message.consensusAddress !== undefined && (obj.consensusAddress = message.consensusAddress);
     return obj;
   },
 
@@ -100,7 +111,7 @@ export const Equivocation = {
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.time = object.time ?? undefined;
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
-    message.consensus_address = object.consensus_address ?? "";
+    message.consensusAddress = object.consensusAddress ?? "";
     return message;
   }
 

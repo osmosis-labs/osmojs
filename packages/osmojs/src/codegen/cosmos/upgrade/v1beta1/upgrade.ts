@@ -1,9 +1,9 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import { Any } from "../../../google/protobuf/any";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { toTimestamp, fromTimestamp, Long, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
-
 /** Plan specifies information about a planned upgrade and when it should occur. */
+
 export interface Plan {
   /**
    * Sets the name for the upgrade. This name will be used by the upgraded
@@ -15,7 +15,6 @@ export interface Plan {
    * reached and the software will exit.
    */
   name: string;
-
   /**
    * Deprecated: Time based upgrades have been deprecated. Time based upgrade logic
    * has been removed from the SDK.
@@ -23,20 +22,20 @@ export interface Plan {
    */
 
   /** @deprecated */
-  time: Date;
 
+  time: Date;
   /**
    * The height at which the upgrade must be performed.
    * Only used if Time is not set.
    */
-  height: Long;
 
+  height: Long;
   /**
    * Any application specific upgrade info to be included on-chain
    * such as a git commit that validators could automatically upgrade to
    */
-  info: string;
 
+  info: string;
   /**
    * Deprecated: UpgradedClientState field has been deprecated. IBC upgrade logic has been
    * moved to the IBC module in the sub module 02-client.
@@ -44,9 +43,53 @@ export interface Plan {
    */
 
   /** @deprecated */
-  upgraded_client_state: Any;
-}
 
+  upgradedClientState: Any;
+}
+/** Plan specifies information about a planned upgrade and when it should occur. */
+
+export interface PlanSDKType {
+  /**
+   * Sets the name for the upgrade. This name will be used by the upgraded
+   * version of the software to apply any special "on-upgrade" commands during
+   * the first BeginBlock method after the upgrade is applied. It is also used
+   * to detect whether a software version can handle a given upgrade. If no
+   * upgrade handler with this name has been set in the software, it will be
+   * assumed that the software is out-of-date when the upgrade Time or Height is
+   * reached and the software will exit.
+   */
+  name: string;
+  /**
+   * Deprecated: Time based upgrades have been deprecated. Time based upgrade logic
+   * has been removed from the SDK.
+   * If this field is not empty, an error will be thrown.
+   */
+
+  /** @deprecated */
+
+  time: Date;
+  /**
+   * The height at which the upgrade must be performed.
+   * Only used if Time is not set.
+   */
+
+  height: Long;
+  /**
+   * Any application specific upgrade info to be included on-chain
+   * such as a git commit that validators could automatically upgrade to
+   */
+
+  info: string;
+  /**
+   * Deprecated: UpgradedClientState field has been deprecated. IBC upgrade logic has been
+   * moved to the IBC module in the sub module 02-client.
+   * If this field is not empty, an error will be thrown.
+   */
+
+  /** @deprecated */
+
+  upgraded_client_state: AnySDKType;
+}
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
  * upgrade.
@@ -55,12 +98,26 @@ export interface Plan {
  */
 
 /** @deprecated */
+
 export interface SoftwareUpgradeProposal {
   title: string;
   description: string;
   plan: Plan;
 }
+/**
+ * SoftwareUpgradeProposal is a gov Content type for initiating a software
+ * upgrade.
+ * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
+ * proposals, see MsgSoftwareUpgrade.
+ */
 
+/** @deprecated */
+
+export interface SoftwareUpgradeProposalSDKType {
+  title: string;
+  description: string;
+  plan: PlanSDKType;
+}
 /**
  * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software
  * upgrade.
@@ -69,21 +126,48 @@ export interface SoftwareUpgradeProposal {
  */
 
 /** @deprecated */
+
 export interface CancelSoftwareUpgradeProposal {
   title: string;
   description: string;
 }
+/**
+ * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software
+ * upgrade.
+ * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
+ * proposals, see MsgCancelUpgrade.
+ */
 
+/** @deprecated */
+
+export interface CancelSoftwareUpgradeProposalSDKType {
+  title: string;
+  description: string;
+}
 /**
  * ModuleVersion specifies a module and its consensus version.
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface ModuleVersion {
   /** name of the app module */
   name: string;
-
   /** consensus version of the app module */
+
+  version: Long;
+}
+/**
+ * ModuleVersion specifies a module and its consensus version.
+ * 
+ * Since: cosmos-sdk 0.43
+ */
+
+export interface ModuleVersionSDKType {
+  /** name of the app module */
+  name: string;
+  /** consensus version of the app module */
+
   version: Long;
 }
 
@@ -93,7 +177,7 @@ function createBasePlan(): Plan {
     time: undefined,
     height: Long.ZERO,
     info: "",
-    upgraded_client_state: undefined
+    upgradedClientState: undefined
   };
 }
 
@@ -115,8 +199,8 @@ export const Plan = {
       writer.uint32(34).string(message.info);
     }
 
-    if (message.upgraded_client_state !== undefined) {
-      Any.encode(message.upgraded_client_state, writer.uint32(42).fork()).ldelim();
+    if (message.upgradedClientState !== undefined) {
+      Any.encode(message.upgradedClientState, writer.uint32(42).fork()).ldelim();
     }
 
     return writer;
@@ -148,7 +232,7 @@ export const Plan = {
           break;
 
         case 5:
-          message.upgraded_client_state = Any.decode(reader, reader.uint32());
+          message.upgradedClientState = Any.decode(reader, reader.uint32());
           break;
 
         default:
@@ -166,7 +250,7 @@ export const Plan = {
       time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
       height: isSet(object.height) ? Long.fromString(object.height) : Long.ZERO,
       info: isSet(object.info) ? String(object.info) : "",
-      upgraded_client_state: isSet(object.upgraded_client_state) ? Any.fromJSON(object.upgraded_client_state) : undefined
+      upgradedClientState: isSet(object.upgradedClientState) ? Any.fromJSON(object.upgradedClientState) : undefined
     };
   },
 
@@ -176,7 +260,7 @@ export const Plan = {
     message.time !== undefined && (obj.time = message.time.toISOString());
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
     message.info !== undefined && (obj.info = message.info);
-    message.upgraded_client_state !== undefined && (obj.upgraded_client_state = message.upgraded_client_state ? Any.toJSON(message.upgraded_client_state) : undefined);
+    message.upgradedClientState !== undefined && (obj.upgradedClientState = message.upgradedClientState ? Any.toJSON(message.upgradedClientState) : undefined);
     return obj;
   },
 
@@ -186,7 +270,7 @@ export const Plan = {
     message.time = object.time ?? undefined;
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.info = object.info ?? "";
-    message.upgraded_client_state = object.upgraded_client_state !== undefined && object.upgraded_client_state !== null ? Any.fromPartial(object.upgraded_client_state) : undefined;
+    message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
     return message;
   }
 

@@ -1,23 +1,34 @@
-import { Params } from "./params";
-import { DenomAuthorityMetadata } from "./authorityMetadata";
+import { Params, ParamsSDKType } from "./params";
+import { DenomAuthorityMetadata, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** GenesisState defines the tokenfactory module's genesis state. */
+
 export interface GenesisState {
   /** params defines the paramaters of the module. */
   params: Params;
-  factory_denoms: GenesisDenom[];
+  factoryDenoms: GenesisDenom[];
+}
+/** GenesisState defines the tokenfactory module's genesis state. */
+
+export interface GenesisStateSDKType {
+  /** params defines the paramaters of the module. */
+  params: ParamsSDKType;
+  factory_denoms: GenesisDenomSDKType[];
 }
 export interface GenesisDenom {
   denom: string;
-  authority_metadata: DenomAuthorityMetadata;
+  authorityMetadata: DenomAuthorityMetadata;
+}
+export interface GenesisDenomSDKType {
+  denom: string;
+  authority_metadata: DenomAuthorityMetadataSDKType;
 }
 
 function createBaseGenesisState(): GenesisState {
   return {
     params: undefined,
-    factory_denoms: []
+    factoryDenoms: []
   };
 }
 
@@ -27,7 +38,7 @@ export const GenesisState = {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.factory_denoms) {
+    for (const v of message.factoryDenoms) {
       GenesisDenom.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -48,7 +59,7 @@ export const GenesisState = {
           break;
 
         case 2:
-          message.factory_denoms.push(GenesisDenom.decode(reader, reader.uint32()));
+          message.factoryDenoms.push(GenesisDenom.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -63,7 +74,7 @@ export const GenesisState = {
   fromJSON(object: any): GenesisState {
     return {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      factory_denoms: Array.isArray(object?.factory_denoms) ? object.factory_denoms.map((e: any) => GenesisDenom.fromJSON(e)) : []
+      factoryDenoms: Array.isArray(object?.factoryDenoms) ? object.factoryDenoms.map((e: any) => GenesisDenom.fromJSON(e)) : []
     };
   },
 
@@ -71,10 +82,10 @@ export const GenesisState = {
     const obj: any = {};
     message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
 
-    if (message.factory_denoms) {
-      obj.factory_denoms = message.factory_denoms.map(e => e ? GenesisDenom.toJSON(e) : undefined);
+    if (message.factoryDenoms) {
+      obj.factoryDenoms = message.factoryDenoms.map(e => e ? GenesisDenom.toJSON(e) : undefined);
     } else {
-      obj.factory_denoms = [];
+      obj.factoryDenoms = [];
     }
 
     return obj;
@@ -83,7 +94,7 @@ export const GenesisState = {
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.factory_denoms = object.factory_denoms?.map(e => GenesisDenom.fromPartial(e)) || [];
+    message.factoryDenoms = object.factoryDenoms?.map(e => GenesisDenom.fromPartial(e)) || [];
     return message;
   }
 
@@ -92,7 +103,7 @@ export const GenesisState = {
 function createBaseGenesisDenom(): GenesisDenom {
   return {
     denom: "",
-    authority_metadata: undefined
+    authorityMetadata: undefined
   };
 }
 
@@ -102,8 +113,8 @@ export const GenesisDenom = {
       writer.uint32(10).string(message.denom);
     }
 
-    if (message.authority_metadata !== undefined) {
-      DenomAuthorityMetadata.encode(message.authority_metadata, writer.uint32(18).fork()).ldelim();
+    if (message.authorityMetadata !== undefined) {
+      DenomAuthorityMetadata.encode(message.authorityMetadata, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -123,7 +134,7 @@ export const GenesisDenom = {
           break;
 
         case 2:
-          message.authority_metadata = DenomAuthorityMetadata.decode(reader, reader.uint32());
+          message.authorityMetadata = DenomAuthorityMetadata.decode(reader, reader.uint32());
           break;
 
         default:
@@ -138,21 +149,21 @@ export const GenesisDenom = {
   fromJSON(object: any): GenesisDenom {
     return {
       denom: isSet(object.denom) ? String(object.denom) : "",
-      authority_metadata: isSet(object.authority_metadata) ? DenomAuthorityMetadata.fromJSON(object.authority_metadata) : undefined
+      authorityMetadata: isSet(object.authorityMetadata) ? DenomAuthorityMetadata.fromJSON(object.authorityMetadata) : undefined
     };
   },
 
   toJSON(message: GenesisDenom): unknown {
     const obj: any = {};
     message.denom !== undefined && (obj.denom = message.denom);
-    message.authority_metadata !== undefined && (obj.authority_metadata = message.authority_metadata ? DenomAuthorityMetadata.toJSON(message.authority_metadata) : undefined);
+    message.authorityMetadata !== undefined && (obj.authorityMetadata = message.authorityMetadata ? DenomAuthorityMetadata.toJSON(message.authorityMetadata) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisDenom>): GenesisDenom {
     const message = createBaseGenesisDenom();
     message.denom = object.denom ?? "";
-    message.authority_metadata = object.authority_metadata !== undefined && object.authority_metadata !== null ? DenomAuthorityMetadata.fromPartial(object.authority_metadata) : undefined;
+    message.authorityMetadata = object.authorityMetadata !== undefined && object.authorityMetadata !== null ? DenomAuthorityMetadata.fromPartial(object.authorityMetadata) : undefined;
     return message;
   }
 

@@ -1,99 +1,189 @@
-import { AccessConfig } from "./types";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { AccessConfig, AccessConfigSDKType } from "./types";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, bytesFromBase64, base64FromBytes, DeepPartial, Long } from "@osmonauts/helpers";
-
 /** MsgStoreCode submit Wasm code to the system */
+
 export interface MsgStoreCode {
   /** Sender is the that actor that signed the messages */
   sender: string;
-
   /** WASMByteCode can be raw or gzip compressed */
-  wasm_byte_code: Uint8Array;
 
+  wasmByteCode: Uint8Array;
   /**
    * InstantiatePermission access control to apply on contract creation,
    * optional
    */
-  instantiate_permission: AccessConfig;
-}
 
+  instantiatePermission: AccessConfig;
+}
+/** MsgStoreCode submit Wasm code to the system */
+
+export interface MsgStoreCodeSDKType {
+  /** Sender is the that actor that signed the messages */
+  sender: string;
+  /** WASMByteCode can be raw or gzip compressed */
+
+  wasm_byte_code: Uint8Array;
+  /**
+   * InstantiatePermission access control to apply on contract creation,
+   * optional
+   */
+
+  instantiate_permission: AccessConfigSDKType;
+}
 /** MsgStoreCodeResponse returns store result data. */
+
 export interface MsgStoreCodeResponse {
+  /** CodeID is the reference to the stored WASM code */
+  codeId: Long;
+}
+/** MsgStoreCodeResponse returns store result data. */
+
+export interface MsgStoreCodeResponseSDKType {
   /** CodeID is the reference to the stored WASM code */
   code_id: Long;
 }
-
 /**
  * MsgInstantiateContract create a new smart contract instance for the given
  * code id.
  */
+
 export interface MsgInstantiateContract {
   /** Sender is the that actor that signed the messages */
   sender: string;
-
   /** Admin is an optional address that can execute migrations */
+
   admin: string;
-
   /** CodeID is the reference to the stored WASM code */
-  code_id: Long;
 
+  codeId: Long;
   /** Label is optional metadata to be stored with a contract instance. */
+
   label: string;
-
   /** Msg json encoded message to be passed to the contract on instantiation */
-  msg: Uint8Array;
 
+  msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
+
   funds: Coin[];
 }
+/**
+ * MsgInstantiateContract create a new smart contract instance for the given
+ * code id.
+ */
 
+export interface MsgInstantiateContractSDKType {
+  /** Sender is the that actor that signed the messages */
+  sender: string;
+  /** Admin is an optional address that can execute migrations */
+
+  admin: string;
+  /** CodeID is the reference to the stored WASM code */
+
+  code_id: Long;
+  /** Label is optional metadata to be stored with a contract instance. */
+
+  label: string;
+  /** Msg json encoded message to be passed to the contract on instantiation */
+
+  msg: Uint8Array;
+  /** Funds coins that are transferred to the contract on instantiation */
+
+  funds: CoinSDKType[];
+}
 /** MsgInstantiateContractResponse return instantiation result data */
+
 export interface MsgInstantiateContractResponse {
   /** Address is the bech32 address of the new contract instance. */
   address: string;
-
   /** Data contains base64-encoded bytes to returned from the contract */
+
   data: Uint8Array;
 }
+/** MsgInstantiateContractResponse return instantiation result data */
 
+export interface MsgInstantiateContractResponseSDKType {
+  /** Address is the bech32 address of the new contract instance. */
+  address: string;
+  /** Data contains base64-encoded bytes to returned from the contract */
+
+  data: Uint8Array;
+}
 /** MsgExecuteContract submits the given message data to a smart contract */
+
 export interface MsgExecuteContract {
   /** Sender is the that actor that signed the messages */
   sender: string;
-
   /** Contract is the address of the smart contract */
+
   contract: string;
-
   /** Msg json encoded message to be passed to the contract */
-  msg: Uint8Array;
 
+  msg: Uint8Array;
   /** Funds coins that are transferred to the contract on execution */
+
   funds: Coin[];
 }
+/** MsgExecuteContract submits the given message data to a smart contract */
 
+export interface MsgExecuteContractSDKType {
+  /** Sender is the that actor that signed the messages */
+  sender: string;
+  /** Contract is the address of the smart contract */
+
+  contract: string;
+  /** Msg json encoded message to be passed to the contract */
+
+  msg: Uint8Array;
+  /** Funds coins that are transferred to the contract on execution */
+
+  funds: CoinSDKType[];
+}
 /** MsgExecuteContractResponse returns execution result data. */
+
 export interface MsgExecuteContractResponse {
   /** Data contains base64-encoded bytes to returned from the contract */
   data: Uint8Array;
 }
+/** MsgExecuteContractResponse returns execution result data. */
 
+export interface MsgExecuteContractResponseSDKType {
+  /** Data contains base64-encoded bytes to returned from the contract */
+  data: Uint8Array;
+}
 /** MsgMigrateContract runs a code upgrade/ downgrade for a smart contract */
+
 export interface MsgMigrateContract {
   /** Sender is the that actor that signed the messages */
   sender: string;
-
   /** Contract is the address of the smart contract */
+
   contract: string;
-
   /** CodeID references the new WASM code */
-  code_id: Long;
 
+  codeId: Long;
   /** Msg json encoded message to be passed to the contract on migration */
+
   msg: Uint8Array;
 }
+/** MsgMigrateContract runs a code upgrade/ downgrade for a smart contract */
 
+export interface MsgMigrateContractSDKType {
+  /** Sender is the that actor that signed the messages */
+  sender: string;
+  /** Contract is the address of the smart contract */
+
+  contract: string;
+  /** CodeID references the new WASM code */
+
+  code_id: Long;
+  /** Msg json encoded message to be passed to the contract on migration */
+
+  msg: Uint8Array;
+}
 /** MsgMigrateContractResponse returns contract migration result data. */
+
 export interface MsgMigrateContractResponse {
   /**
    * Data contains same raw bytes returned as data from the wasm contract.
@@ -101,39 +191,75 @@ export interface MsgMigrateContractResponse {
    */
   data: Uint8Array;
 }
+/** MsgMigrateContractResponse returns contract migration result data. */
 
+export interface MsgMigrateContractResponseSDKType {
+  /**
+   * Data contains same raw bytes returned as data from the wasm contract.
+   * (May be empty)
+   */
+  data: Uint8Array;
+}
 /** MsgUpdateAdmin sets a new admin for a smart contract */
+
 export interface MsgUpdateAdmin {
   /** Sender is the that actor that signed the messages */
   sender: string;
-
   /** NewAdmin address to be set */
-  new_admin: string;
 
+  newAdmin: string;
   /** Contract is the address of the smart contract */
+
   contract: string;
 }
+/** MsgUpdateAdmin sets a new admin for a smart contract */
 
+export interface MsgUpdateAdminSDKType {
+  /** Sender is the that actor that signed the messages */
+  sender: string;
+  /** NewAdmin address to be set */
+
+  new_admin: string;
+  /** Contract is the address of the smart contract */
+
+  contract: string;
+}
 /** MsgUpdateAdminResponse returns empty data */
-export interface MsgUpdateAdminResponse {}
 
+export interface MsgUpdateAdminResponse {}
+/** MsgUpdateAdminResponse returns empty data */
+
+export interface MsgUpdateAdminResponseSDKType {}
 /** MsgClearAdmin removes any admin stored for a smart contract */
+
 export interface MsgClearAdmin {
   /** Sender is the that actor that signed the messages */
   sender: string;
-
   /** Contract is the address of the smart contract */
+
   contract: string;
 }
+/** MsgClearAdmin removes any admin stored for a smart contract */
 
+export interface MsgClearAdminSDKType {
+  /** Sender is the that actor that signed the messages */
+  sender: string;
+  /** Contract is the address of the smart contract */
+
+  contract: string;
+}
 /** MsgClearAdminResponse returns empty data */
+
 export interface MsgClearAdminResponse {}
+/** MsgClearAdminResponse returns empty data */
+
+export interface MsgClearAdminResponseSDKType {}
 
 function createBaseMsgStoreCode(): MsgStoreCode {
   return {
     sender: "",
-    wasm_byte_code: new Uint8Array(),
-    instantiate_permission: undefined
+    wasmByteCode: new Uint8Array(),
+    instantiatePermission: undefined
   };
 }
 
@@ -143,12 +269,12 @@ export const MsgStoreCode = {
       writer.uint32(10).string(message.sender);
     }
 
-    if (message.wasm_byte_code.length !== 0) {
-      writer.uint32(18).bytes(message.wasm_byte_code);
+    if (message.wasmByteCode.length !== 0) {
+      writer.uint32(18).bytes(message.wasmByteCode);
     }
 
-    if (message.instantiate_permission !== undefined) {
-      AccessConfig.encode(message.instantiate_permission, writer.uint32(42).fork()).ldelim();
+    if (message.instantiatePermission !== undefined) {
+      AccessConfig.encode(message.instantiatePermission, writer.uint32(42).fork()).ldelim();
     }
 
     return writer;
@@ -168,11 +294,11 @@ export const MsgStoreCode = {
           break;
 
         case 2:
-          message.wasm_byte_code = reader.bytes();
+          message.wasmByteCode = reader.bytes();
           break;
 
         case 5:
-          message.instantiate_permission = AccessConfig.decode(reader, reader.uint32());
+          message.instantiatePermission = AccessConfig.decode(reader, reader.uint32());
           break;
 
         default:
@@ -187,24 +313,24 @@ export const MsgStoreCode = {
   fromJSON(object: any): MsgStoreCode {
     return {
       sender: isSet(object.sender) ? String(object.sender) : "",
-      wasm_byte_code: isSet(object.wasm_byte_code) ? bytesFromBase64(object.wasm_byte_code) : new Uint8Array(),
-      instantiate_permission: isSet(object.instantiate_permission) ? AccessConfig.fromJSON(object.instantiate_permission) : undefined
+      wasmByteCode: isSet(object.wasmByteCode) ? bytesFromBase64(object.wasmByteCode) : new Uint8Array(),
+      instantiatePermission: isSet(object.instantiatePermission) ? AccessConfig.fromJSON(object.instantiatePermission) : undefined
     };
   },
 
   toJSON(message: MsgStoreCode): unknown {
     const obj: any = {};
     message.sender !== undefined && (obj.sender = message.sender);
-    message.wasm_byte_code !== undefined && (obj.wasm_byte_code = base64FromBytes(message.wasm_byte_code !== undefined ? message.wasm_byte_code : new Uint8Array()));
-    message.instantiate_permission !== undefined && (obj.instantiate_permission = message.instantiate_permission ? AccessConfig.toJSON(message.instantiate_permission) : undefined);
+    message.wasmByteCode !== undefined && (obj.wasmByteCode = base64FromBytes(message.wasmByteCode !== undefined ? message.wasmByteCode : new Uint8Array()));
+    message.instantiatePermission !== undefined && (obj.instantiatePermission = message.instantiatePermission ? AccessConfig.toJSON(message.instantiatePermission) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgStoreCode>): MsgStoreCode {
     const message = createBaseMsgStoreCode();
     message.sender = object.sender ?? "";
-    message.wasm_byte_code = object.wasm_byte_code ?? new Uint8Array();
-    message.instantiate_permission = object.instantiate_permission !== undefined && object.instantiate_permission !== null ? AccessConfig.fromPartial(object.instantiate_permission) : undefined;
+    message.wasmByteCode = object.wasmByteCode ?? new Uint8Array();
+    message.instantiatePermission = object.instantiatePermission !== undefined && object.instantiatePermission !== null ? AccessConfig.fromPartial(object.instantiatePermission) : undefined;
     return message;
   }
 
@@ -212,20 +338,20 @@ export const MsgStoreCode = {
 
 function createBaseMsgStoreCodeResponse(): MsgStoreCodeResponse {
   return {
-    code_id: Long.UZERO
+    codeId: Long.UZERO
   };
 }
 
 export const MsgStoreCodeResponse = {
   encode(message: MsgStoreCodeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.code_id.isZero()) {
-      writer.uint32(8).uint64(message.code_id);
+    if (!message.codeId.isZero()) {
+      writer.uint32(8).uint64(message.codeId);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCodeResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCodeResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgStoreCodeResponse();
@@ -235,7 +361,7 @@ export const MsgStoreCodeResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.code_id = (reader.uint64() as Long);
+          message.codeId = (reader.uint64() as Long);
           break;
 
         default:
@@ -249,19 +375,19 @@ export const MsgStoreCodeResponse = {
 
   fromJSON(object: any): MsgStoreCodeResponse {
     return {
-      code_id: isSet(object.code_id) ? Long.fromString(object.code_id) : Long.UZERO
+      codeId: isSet(object.codeId) ? Long.fromString(object.codeId) : Long.UZERO
     };
   },
 
   toJSON(message: MsgStoreCodeResponse): unknown {
     const obj: any = {};
-    message.code_id !== undefined && (obj.code_id = (message.code_id || Long.UZERO).toString());
+    message.codeId !== undefined && (obj.codeId = (message.codeId || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgStoreCodeResponse>): MsgStoreCodeResponse {
     const message = createBaseMsgStoreCodeResponse();
-    message.code_id = object.code_id !== undefined && object.code_id !== null ? Long.fromValue(object.code_id) : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     return message;
   }
 
@@ -271,7 +397,7 @@ function createBaseMsgInstantiateContract(): MsgInstantiateContract {
   return {
     sender: "",
     admin: "",
-    code_id: Long.UZERO,
+    codeId: Long.UZERO,
     label: "",
     msg: new Uint8Array(),
     funds: []
@@ -288,8 +414,8 @@ export const MsgInstantiateContract = {
       writer.uint32(18).string(message.admin);
     }
 
-    if (!message.code_id.isZero()) {
-      writer.uint32(24).uint64(message.code_id);
+    if (!message.codeId.isZero()) {
+      writer.uint32(24).uint64(message.codeId);
     }
 
     if (message.label !== "") {
@@ -325,7 +451,7 @@ export const MsgInstantiateContract = {
           break;
 
         case 3:
-          message.code_id = (reader.uint64() as Long);
+          message.codeId = (reader.uint64() as Long);
           break;
 
         case 4:
@@ -353,7 +479,7 @@ export const MsgInstantiateContract = {
     return {
       sender: isSet(object.sender) ? String(object.sender) : "",
       admin: isSet(object.admin) ? String(object.admin) : "",
-      code_id: isSet(object.code_id) ? Long.fromString(object.code_id) : Long.UZERO,
+      codeId: isSet(object.codeId) ? Long.fromString(object.codeId) : Long.UZERO,
       label: isSet(object.label) ? String(object.label) : "",
       msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(),
       funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : []
@@ -364,7 +490,7 @@ export const MsgInstantiateContract = {
     const obj: any = {};
     message.sender !== undefined && (obj.sender = message.sender);
     message.admin !== undefined && (obj.admin = message.admin);
-    message.code_id !== undefined && (obj.code_id = (message.code_id || Long.UZERO).toString());
+    message.codeId !== undefined && (obj.codeId = (message.codeId || Long.UZERO).toString());
     message.label !== undefined && (obj.label = message.label);
     message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
 
@@ -381,7 +507,7 @@ export const MsgInstantiateContract = {
     const message = createBaseMsgInstantiateContract();
     message.sender = object.sender ?? "";
     message.admin = object.admin ?? "";
-    message.code_id = object.code_id !== undefined && object.code_id !== null ? Long.fromValue(object.code_id) : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.label = object.label ?? "";
     message.msg = object.msg ?? new Uint8Array();
     message.funds = object.funds?.map(e => Coin.fromPartial(e)) || [];
@@ -410,7 +536,7 @@ export const MsgInstantiateContractResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContractResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContractResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgInstantiateContractResponse();
@@ -573,7 +699,7 @@ export const MsgExecuteContractResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContractResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContractResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExecuteContractResponse();
@@ -619,7 +745,7 @@ function createBaseMsgMigrateContract(): MsgMigrateContract {
   return {
     sender: "",
     contract: "",
-    code_id: Long.UZERO,
+    codeId: Long.UZERO,
     msg: new Uint8Array()
   };
 }
@@ -634,8 +760,8 @@ export const MsgMigrateContract = {
       writer.uint32(18).string(message.contract);
     }
 
-    if (!message.code_id.isZero()) {
-      writer.uint32(24).uint64(message.code_id);
+    if (!message.codeId.isZero()) {
+      writer.uint32(24).uint64(message.codeId);
     }
 
     if (message.msg.length !== 0) {
@@ -663,7 +789,7 @@ export const MsgMigrateContract = {
           break;
 
         case 3:
-          message.code_id = (reader.uint64() as Long);
+          message.codeId = (reader.uint64() as Long);
           break;
 
         case 4:
@@ -683,7 +809,7 @@ export const MsgMigrateContract = {
     return {
       sender: isSet(object.sender) ? String(object.sender) : "",
       contract: isSet(object.contract) ? String(object.contract) : "",
-      code_id: isSet(object.code_id) ? Long.fromString(object.code_id) : Long.UZERO,
+      codeId: isSet(object.codeId) ? Long.fromString(object.codeId) : Long.UZERO,
       msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array()
     };
   },
@@ -692,7 +818,7 @@ export const MsgMigrateContract = {
     const obj: any = {};
     message.sender !== undefined && (obj.sender = message.sender);
     message.contract !== undefined && (obj.contract = message.contract);
-    message.code_id !== undefined && (obj.code_id = (message.code_id || Long.UZERO).toString());
+    message.codeId !== undefined && (obj.codeId = (message.codeId || Long.UZERO).toString());
     message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
     return obj;
   },
@@ -701,7 +827,7 @@ export const MsgMigrateContract = {
     const message = createBaseMsgMigrateContract();
     message.sender = object.sender ?? "";
     message.contract = object.contract ?? "";
-    message.code_id = object.code_id !== undefined && object.code_id !== null ? Long.fromValue(object.code_id) : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.msg = object.msg ?? new Uint8Array();
     return message;
   }
@@ -723,7 +849,7 @@ export const MsgMigrateContractResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContractResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContractResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgMigrateContractResponse();
@@ -768,7 +894,7 @@ export const MsgMigrateContractResponse = {
 function createBaseMsgUpdateAdmin(): MsgUpdateAdmin {
   return {
     sender: "",
-    new_admin: "",
+    newAdmin: "",
     contract: ""
   };
 }
@@ -779,8 +905,8 @@ export const MsgUpdateAdmin = {
       writer.uint32(10).string(message.sender);
     }
 
-    if (message.new_admin !== "") {
-      writer.uint32(18).string(message.new_admin);
+    if (message.newAdmin !== "") {
+      writer.uint32(18).string(message.newAdmin);
     }
 
     if (message.contract !== "") {
@@ -804,7 +930,7 @@ export const MsgUpdateAdmin = {
           break;
 
         case 2:
-          message.new_admin = reader.string();
+          message.newAdmin = reader.string();
           break;
 
         case 3:
@@ -823,7 +949,7 @@ export const MsgUpdateAdmin = {
   fromJSON(object: any): MsgUpdateAdmin {
     return {
       sender: isSet(object.sender) ? String(object.sender) : "",
-      new_admin: isSet(object.new_admin) ? String(object.new_admin) : "",
+      newAdmin: isSet(object.newAdmin) ? String(object.newAdmin) : "",
       contract: isSet(object.contract) ? String(object.contract) : ""
     };
   },
@@ -831,7 +957,7 @@ export const MsgUpdateAdmin = {
   toJSON(message: MsgUpdateAdmin): unknown {
     const obj: any = {};
     message.sender !== undefined && (obj.sender = message.sender);
-    message.new_admin !== undefined && (obj.new_admin = message.new_admin);
+    message.newAdmin !== undefined && (obj.newAdmin = message.newAdmin);
     message.contract !== undefined && (obj.contract = message.contract);
     return obj;
   },
@@ -839,7 +965,7 @@ export const MsgUpdateAdmin = {
   fromPartial(object: DeepPartial<MsgUpdateAdmin>): MsgUpdateAdmin {
     const message = createBaseMsgUpdateAdmin();
     message.sender = object.sender ?? "";
-    message.new_admin = object.new_admin ?? "";
+    message.newAdmin = object.newAdmin ?? "";
     message.contract = object.contract ?? "";
     return message;
   }
@@ -855,7 +981,7 @@ export const MsgUpdateAdminResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdminResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdminResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateAdminResponse();
@@ -967,7 +1093,7 @@ export const MsgClearAdminResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdminResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdminResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgClearAdminResponse();

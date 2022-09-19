@@ -1,53 +1,94 @@
-import { Any } from "../../../../google/protobuf/any";
-import { BIP44Params } from "../../hd/v1/hd";
+import { Any, AnySDKType } from "../../../../google/protobuf/any";
+import { BIP44Params, BIP44ParamsSDKType } from "../../hd/v1/hd";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** Record is used for representing a key in the keyring. */
+
 export interface Record {
   /** name represents a name of Record */
   name: string;
-
   /** pub_key represents a public key in any format */
-  pub_key: Any;
 
+  pubKey: Any;
   /** local stores the public information about a locally stored key */
+
   local?: Record_Local;
-
   /** ledger stores the public information about a Ledger key */
+
   ledger?: Record_Ledger;
-
   /** Multi does not store any information. */
-  multi?: Record_Multi;
 
+  multi?: Record_Multi;
   /** Offline does not store any information. */
+
   offline?: Record_Offline;
 }
+/** Record is used for representing a key in the keyring. */
 
+export interface RecordSDKType {
+  /** name represents a name of Record */
+  name: string;
+  /** pub_key represents a public key in any format */
+
+  pub_key: AnySDKType;
+  /** local stores the public information about a locally stored key */
+
+  local?: Record_LocalSDKType;
+  /** ledger stores the public information about a Ledger key */
+
+  ledger?: Record_LedgerSDKType;
+  /** Multi does not store any information. */
+
+  multi?: Record_MultiSDKType;
+  /** Offline does not store any information. */
+
+  offline?: Record_OfflineSDKType;
+}
 /**
  * Item is a keyring item stored in a keyring backend.
  * Local item
  */
+
 export interface Record_Local {
-  priv_key: Any;
+  privKey: Any;
+  privKeyType: string;
+}
+/**
+ * Item is a keyring item stored in a keyring backend.
+ * Local item
+ */
+
+export interface Record_LocalSDKType {
+  priv_key: AnySDKType;
   priv_key_type: string;
 }
-
 /** Ledger item */
+
 export interface Record_Ledger {
   path: BIP44Params;
 }
+/** Ledger item */
 
+export interface Record_LedgerSDKType {
+  path: BIP44ParamsSDKType;
+}
 /** Multi item */
-export interface Record_Multi {}
 
+export interface Record_Multi {}
+/** Multi item */
+
+export interface Record_MultiSDKType {}
 /** Offline item */
+
 export interface Record_Offline {}
+/** Offline item */
+
+export interface Record_OfflineSDKType {}
 
 function createBaseRecord(): Record {
   return {
     name: "",
-    pub_key: undefined,
+    pubKey: undefined,
     local: undefined,
     ledger: undefined,
     multi: undefined,
@@ -61,8 +102,8 @@ export const Record = {
       writer.uint32(10).string(message.name);
     }
 
-    if (message.pub_key !== undefined) {
-      Any.encode(message.pub_key, writer.uint32(18).fork()).ldelim();
+    if (message.pubKey !== undefined) {
+      Any.encode(message.pubKey, writer.uint32(18).fork()).ldelim();
     }
 
     if (message.local !== undefined) {
@@ -98,7 +139,7 @@ export const Record = {
           break;
 
         case 2:
-          message.pub_key = Any.decode(reader, reader.uint32());
+          message.pubKey = Any.decode(reader, reader.uint32());
           break;
 
         case 3:
@@ -129,7 +170,7 @@ export const Record = {
   fromJSON(object: any): Record {
     return {
       name: isSet(object.name) ? String(object.name) : "",
-      pub_key: isSet(object.pub_key) ? Any.fromJSON(object.pub_key) : undefined,
+      pubKey: isSet(object.pubKey) ? Any.fromJSON(object.pubKey) : undefined,
       local: isSet(object.local) ? Record_Local.fromJSON(object.local) : undefined,
       ledger: isSet(object.ledger) ? Record_Ledger.fromJSON(object.ledger) : undefined,
       multi: isSet(object.multi) ? Record_Multi.fromJSON(object.multi) : undefined,
@@ -140,7 +181,7 @@ export const Record = {
   toJSON(message: Record): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.pub_key !== undefined && (obj.pub_key = message.pub_key ? Any.toJSON(message.pub_key) : undefined);
+    message.pubKey !== undefined && (obj.pubKey = message.pubKey ? Any.toJSON(message.pubKey) : undefined);
     message.local !== undefined && (obj.local = message.local ? Record_Local.toJSON(message.local) : undefined);
     message.ledger !== undefined && (obj.ledger = message.ledger ? Record_Ledger.toJSON(message.ledger) : undefined);
     message.multi !== undefined && (obj.multi = message.multi ? Record_Multi.toJSON(message.multi) : undefined);
@@ -151,7 +192,7 @@ export const Record = {
   fromPartial(object: DeepPartial<Record>): Record {
     const message = createBaseRecord();
     message.name = object.name ?? "";
-    message.pub_key = object.pub_key !== undefined && object.pub_key !== null ? Any.fromPartial(object.pub_key) : undefined;
+    message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? Any.fromPartial(object.pubKey) : undefined;
     message.local = object.local !== undefined && object.local !== null ? Record_Local.fromPartial(object.local) : undefined;
     message.ledger = object.ledger !== undefined && object.ledger !== null ? Record_Ledger.fromPartial(object.ledger) : undefined;
     message.multi = object.multi !== undefined && object.multi !== null ? Record_Multi.fromPartial(object.multi) : undefined;
@@ -163,19 +204,19 @@ export const Record = {
 
 function createBaseRecord_Local(): Record_Local {
   return {
-    priv_key: undefined,
-    priv_key_type: ""
+    privKey: undefined,
+    privKeyType: ""
   };
 }
 
 export const Record_Local = {
   encode(message: Record_Local, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.priv_key !== undefined) {
-      Any.encode(message.priv_key, writer.uint32(10).fork()).ldelim();
+    if (message.privKey !== undefined) {
+      Any.encode(message.privKey, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.priv_key_type !== "") {
-      writer.uint32(18).string(message.priv_key_type);
+    if (message.privKeyType !== "") {
+      writer.uint32(18).string(message.privKeyType);
     }
 
     return writer;
@@ -191,11 +232,11 @@ export const Record_Local = {
 
       switch (tag >>> 3) {
         case 1:
-          message.priv_key = Any.decode(reader, reader.uint32());
+          message.privKey = Any.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.priv_key_type = reader.string();
+          message.privKeyType = reader.string();
           break;
 
         default:
@@ -209,22 +250,22 @@ export const Record_Local = {
 
   fromJSON(object: any): Record_Local {
     return {
-      priv_key: isSet(object.priv_key) ? Any.fromJSON(object.priv_key) : undefined,
-      priv_key_type: isSet(object.priv_key_type) ? String(object.priv_key_type) : ""
+      privKey: isSet(object.privKey) ? Any.fromJSON(object.privKey) : undefined,
+      privKeyType: isSet(object.privKeyType) ? String(object.privKeyType) : ""
     };
   },
 
   toJSON(message: Record_Local): unknown {
     const obj: any = {};
-    message.priv_key !== undefined && (obj.priv_key = message.priv_key ? Any.toJSON(message.priv_key) : undefined);
-    message.priv_key_type !== undefined && (obj.priv_key_type = message.priv_key_type);
+    message.privKey !== undefined && (obj.privKey = message.privKey ? Any.toJSON(message.privKey) : undefined);
+    message.privKeyType !== undefined && (obj.privKeyType = message.privKeyType);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Record_Local>): Record_Local {
     const message = createBaseRecord_Local();
-    message.priv_key = object.priv_key !== undefined && object.priv_key !== null ? Any.fromPartial(object.priv_key) : undefined;
-    message.priv_key_type = object.priv_key_type ?? "";
+    message.privKey = object.privKey !== undefined && object.privKey !== null ? Any.fromPartial(object.privKey) : undefined;
+    message.privKeyType = object.privKeyType ?? "";
     return message;
   }
 

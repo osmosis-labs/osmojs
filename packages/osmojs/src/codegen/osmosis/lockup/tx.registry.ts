@@ -1,6 +1,3 @@
-import { Duration } from "../../google/protobuf/duration";
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { PeriodLock } from "./lock";
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup } from "./tx";
 export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.lockup.MsgLockTokens", MsgLockTokens], ["/osmosis.lockup.MsgBeginUnlockingAll", MsgBeginUnlockingAll], ["/osmosis.lockup.MsgBeginUnlocking", MsgBeginUnlocking], ["/osmosis.lockup.MsgExtendLockup", MsgExtendLockup]];

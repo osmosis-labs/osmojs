@@ -1,29 +1,55 @@
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, isSet } from "@osmonauts/helpers";
-
 /** ListAllInterfacesRequest is the request type of the ListAllInterfaces RPC. */
-export interface ListAllInterfacesRequest {}
 
+export interface ListAllInterfacesRequest {}
+/** ListAllInterfacesRequest is the request type of the ListAllInterfaces RPC. */
+
+export interface ListAllInterfacesRequestSDKType {}
 /** ListAllInterfacesResponse is the response type of the ListAllInterfaces RPC. */
+
 export interface ListAllInterfacesResponse {
+  /** interface_names is an array of all the registered interfaces. */
+  interfaceNames: string[];
+}
+/** ListAllInterfacesResponse is the response type of the ListAllInterfaces RPC. */
+
+export interface ListAllInterfacesResponseSDKType {
   /** interface_names is an array of all the registered interfaces. */
   interface_names: string[];
 }
-
 /**
  * ListImplementationsRequest is the request type of the ListImplementations
  * RPC.
  */
+
 export interface ListImplementationsRequest {
+  /** interface_name defines the interface to query the implementations for. */
+  interfaceName: string;
+}
+/**
+ * ListImplementationsRequest is the request type of the ListImplementations
+ * RPC.
+ */
+
+export interface ListImplementationsRequestSDKType {
   /** interface_name defines the interface to query the implementations for. */
   interface_name: string;
 }
-
 /**
  * ListImplementationsResponse is the response type of the ListImplementations
  * RPC.
  */
+
 export interface ListImplementationsResponse {
+  implementationMessageNames: string[];
+}
+/**
+ * ListImplementationsResponse is the response type of the ListImplementations
+ * RPC.
+ */
+
+export interface ListImplementationsResponseSDKType {
   implementation_message_names: string[];
 }
 
@@ -72,20 +98,20 @@ export const ListAllInterfacesRequest = {
 
 function createBaseListAllInterfacesResponse(): ListAllInterfacesResponse {
   return {
-    interface_names: []
+    interfaceNames: []
   };
 }
 
 export const ListAllInterfacesResponse = {
   encode(message: ListAllInterfacesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.interface_names) {
+    for (const v of message.interfaceNames) {
       writer.uint32(10).string(v!);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ListAllInterfacesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListAllInterfacesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListAllInterfacesResponse();
@@ -95,7 +121,7 @@ export const ListAllInterfacesResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.interface_names.push(reader.string());
+          message.interfaceNames.push(reader.string());
           break;
 
         default:
@@ -109,17 +135,17 @@ export const ListAllInterfacesResponse = {
 
   fromJSON(object: any): ListAllInterfacesResponse {
     return {
-      interface_names: Array.isArray(object?.interface_names) ? object.interface_names.map((e: any) => String(e)) : []
+      interfaceNames: Array.isArray(object?.interfaceNames) ? object.interfaceNames.map((e: any) => String(e)) : []
     };
   },
 
   toJSON(message: ListAllInterfacesResponse): unknown {
     const obj: any = {};
 
-    if (message.interface_names) {
-      obj.interface_names = message.interface_names.map(e => e);
+    if (message.interfaceNames) {
+      obj.interfaceNames = message.interfaceNames.map(e => e);
     } else {
-      obj.interface_names = [];
+      obj.interfaceNames = [];
     }
 
     return obj;
@@ -127,7 +153,7 @@ export const ListAllInterfacesResponse = {
 
   fromPartial(object: DeepPartial<ListAllInterfacesResponse>): ListAllInterfacesResponse {
     const message = createBaseListAllInterfacesResponse();
-    message.interface_names = object.interface_names?.map(e => e) || [];
+    message.interfaceNames = object.interfaceNames?.map(e => e) || [];
     return message;
   }
 
@@ -135,14 +161,14 @@ export const ListAllInterfacesResponse = {
 
 function createBaseListImplementationsRequest(): ListImplementationsRequest {
   return {
-    interface_name: ""
+    interfaceName: ""
   };
 }
 
 export const ListImplementationsRequest = {
   encode(message: ListImplementationsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.interface_name !== "") {
-      writer.uint32(10).string(message.interface_name);
+    if (message.interfaceName !== "") {
+      writer.uint32(10).string(message.interfaceName);
     }
 
     return writer;
@@ -158,7 +184,7 @@ export const ListImplementationsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.interface_name = reader.string();
+          message.interfaceName = reader.string();
           break;
 
         default:
@@ -172,19 +198,19 @@ export const ListImplementationsRequest = {
 
   fromJSON(object: any): ListImplementationsRequest {
     return {
-      interface_name: isSet(object.interface_name) ? String(object.interface_name) : ""
+      interfaceName: isSet(object.interfaceName) ? String(object.interfaceName) : ""
     };
   },
 
   toJSON(message: ListImplementationsRequest): unknown {
     const obj: any = {};
-    message.interface_name !== undefined && (obj.interface_name = message.interface_name);
+    message.interfaceName !== undefined && (obj.interfaceName = message.interfaceName);
     return obj;
   },
 
   fromPartial(object: DeepPartial<ListImplementationsRequest>): ListImplementationsRequest {
     const message = createBaseListImplementationsRequest();
-    message.interface_name = object.interface_name ?? "";
+    message.interfaceName = object.interfaceName ?? "";
     return message;
   }
 
@@ -192,20 +218,20 @@ export const ListImplementationsRequest = {
 
 function createBaseListImplementationsResponse(): ListImplementationsResponse {
   return {
-    implementation_message_names: []
+    implementationMessageNames: []
   };
 }
 
 export const ListImplementationsResponse = {
   encode(message: ListImplementationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.implementation_message_names) {
+    for (const v of message.implementationMessageNames) {
       writer.uint32(10).string(v!);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ListImplementationsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListImplementationsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListImplementationsResponse();
@@ -215,7 +241,7 @@ export const ListImplementationsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.implementation_message_names.push(reader.string());
+          message.implementationMessageNames.push(reader.string());
           break;
 
         default:
@@ -229,17 +255,17 @@ export const ListImplementationsResponse = {
 
   fromJSON(object: any): ListImplementationsResponse {
     return {
-      implementation_message_names: Array.isArray(object?.implementation_message_names) ? object.implementation_message_names.map((e: any) => String(e)) : []
+      implementationMessageNames: Array.isArray(object?.implementationMessageNames) ? object.implementationMessageNames.map((e: any) => String(e)) : []
     };
   },
 
   toJSON(message: ListImplementationsResponse): unknown {
     const obj: any = {};
 
-    if (message.implementation_message_names) {
-      obj.implementation_message_names = message.implementation_message_names.map(e => e);
+    if (message.implementationMessageNames) {
+      obj.implementationMessageNames = message.implementationMessageNames.map(e => e);
     } else {
-      obj.implementation_message_names = [];
+      obj.implementationMessageNames = [];
     }
 
     return obj;
@@ -247,7 +273,7 @@ export const ListImplementationsResponse = {
 
   fromPartial(object: DeepPartial<ListImplementationsResponse>): ListImplementationsResponse {
     const message = createBaseListImplementationsResponse();
-    message.implementation_message_names = object.implementation_message_names?.map(e => e) || [];
+    message.implementationMessageNames = object.implementationMessageNames?.map(e => e) || [];
     return message;
   }
 

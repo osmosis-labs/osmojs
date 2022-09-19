@@ -1,8 +1,7 @@
-import { CompactBitArray } from "../../../crypto/multisig/v1beta1/multisig";
-import { Any } from "../../../../google/protobuf/any";
+import { CompactBitArray, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
+import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long, isSet, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
 /**
  * SignMode represents a signing mode with its own security guarantees.
  * 
@@ -13,7 +12,56 @@ import { DeepPartial, Long, isSet, bytesFromBase64, base64FromBytes } from "@osm
  * to this SignMode enum describing their sign mode so that different
  * apps have a consistent version of this enum.
  */
+
 export enum SignMode {
+  /**
+   * SIGN_MODE_UNSPECIFIED - SIGN_MODE_UNSPECIFIED specifies an unknown signing mode and will be
+   * rejected.
+   */
+  SIGN_MODE_UNSPECIFIED = 0,
+
+  /**
+   * SIGN_MODE_DIRECT - SIGN_MODE_DIRECT specifies a signing mode which uses SignDoc and is
+   * verified with raw bytes from Tx.
+   */
+  SIGN_MODE_DIRECT = 1,
+
+  /**
+   * SIGN_MODE_TEXTUAL - SIGN_MODE_TEXTUAL is a future signing mode that will verify some
+   * human-readable textual representation on top of the binary representation
+   * from SIGN_MODE_DIRECT. It is currently not supported.
+   */
+  SIGN_MODE_TEXTUAL = 2,
+
+  /**
+   * SIGN_MODE_DIRECT_AUX - SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
+   * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
+   * require signers signing over other signers' `signer_info`. It also allows
+   * for adding Tips in transactions.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  SIGN_MODE_DIRECT_AUX = 3,
+
+  /**
+   * SIGN_MODE_LEGACY_AMINO_JSON - SIGN_MODE_LEGACY_AMINO_JSON is a backwards compatibility mode which uses
+   * Amino JSON and will be removed in the future.
+   */
+  SIGN_MODE_LEGACY_AMINO_JSON = 127,
+  UNRECOGNIZED = -1,
+}
+/**
+ * SignMode represents a signing mode with its own security guarantees.
+ * 
+ * This enum should be considered a registry of all known sign modes
+ * in the Cosmos ecosystem. Apps are not expected to support all known
+ * sign modes. Apps that would like to support custom  sign modes are
+ * encouraged to open a small PR against this file to add a new case
+ * to this SignMode enum describing their sign mode so that different
+ * apps have a consistent version of this enum.
+ */
+
+export enum SignModeSDKType {
   /**
    * SIGN_MODE_UNSPECIFIED - SIGN_MODE_UNSPECIFIED specifies an unknown signing mode and will be
    * rejected.
@@ -99,57 +147,109 @@ export function signModeToJSON(object: SignMode): string {
       return "UNKNOWN";
   }
 }
-
 /** SignatureDescriptors wraps multiple SignatureDescriptor's. */
+
 export interface SignatureDescriptors {
   /** signatures are the signature descriptors */
   signatures: SignatureDescriptor[];
 }
+/** SignatureDescriptors wraps multiple SignatureDescriptor's. */
 
+export interface SignatureDescriptorsSDKType {
+  /** signatures are the signature descriptors */
+  signatures: SignatureDescriptorSDKType[];
+}
 /**
  * SignatureDescriptor is a convenience type which represents the full data for
  * a signature including the public key of the signer, signing modes and the
  * signature itself. It is primarily used for coordinating signatures between
  * clients.
  */
+
 export interface SignatureDescriptor {
   /** public_key is the public key of the signer */
-  public_key: Any;
+  publicKey: Any;
   data: SignatureDescriptor_Data;
-
   /**
    * sequence is the sequence of the account, which describes the
    * number of committed transactions signed by a given address. It is used to prevent
    * replay attacks.
    */
+
   sequence: Long;
 }
+/**
+ * SignatureDescriptor is a convenience type which represents the full data for
+ * a signature including the public key of the signer, signing modes and the
+ * signature itself. It is primarily used for coordinating signatures between
+ * clients.
+ */
 
+export interface SignatureDescriptorSDKType {
+  /** public_key is the public key of the signer */
+  public_key: AnySDKType;
+  data: SignatureDescriptor_DataSDKType;
+  /**
+   * sequence is the sequence of the account, which describes the
+   * number of committed transactions signed by a given address. It is used to prevent
+   * replay attacks.
+   */
+
+  sequence: Long;
+}
 /** Data represents signature data */
+
 export interface SignatureDescriptor_Data {
   /** single represents a single signer */
   single?: SignatureDescriptor_Data_Single;
-
   /** multi represents a multisig signer */
+
   multi?: SignatureDescriptor_Data_Multi;
 }
+/** Data represents signature data */
 
+export interface SignatureDescriptor_DataSDKType {
+  /** single represents a single signer */
+  single?: SignatureDescriptor_Data_SingleSDKType;
+  /** multi represents a multisig signer */
+
+  multi?: SignatureDescriptor_Data_MultiSDKType;
+}
 /** Single is the signature data for a single signer */
+
 export interface SignatureDescriptor_Data_Single {
   /** mode is the signing mode of the single signer */
   mode: SignMode;
-
   /** signature is the raw signature bytes */
+
   signature: Uint8Array;
 }
+/** Single is the signature data for a single signer */
 
+export interface SignatureDescriptor_Data_SingleSDKType {
+  /** mode is the signing mode of the single signer */
+  mode: SignModeSDKType;
+  /** signature is the raw signature bytes */
+
+  signature: Uint8Array;
+}
 /** Multi is the signature data for a multisig public key */
+
 export interface SignatureDescriptor_Data_Multi {
   /** bitarray specifies which keys within the multisig are signing */
   bitarray: CompactBitArray;
-
   /** signatures is the signatures of the multi-signature */
+
   signatures: SignatureDescriptor_Data[];
+}
+/** Multi is the signature data for a multisig public key */
+
+export interface SignatureDescriptor_Data_MultiSDKType {
+  /** bitarray specifies which keys within the multisig are signing */
+  bitarray: CompactBitArraySDKType;
+  /** signatures is the signatures of the multi-signature */
+
+  signatures: SignatureDescriptor_DataSDKType[];
 }
 
 function createBaseSignatureDescriptors(): SignatureDescriptors {
@@ -217,7 +317,7 @@ export const SignatureDescriptors = {
 
 function createBaseSignatureDescriptor(): SignatureDescriptor {
   return {
-    public_key: undefined,
+    publicKey: undefined,
     data: undefined,
     sequence: Long.UZERO
   };
@@ -225,8 +325,8 @@ function createBaseSignatureDescriptor(): SignatureDescriptor {
 
 export const SignatureDescriptor = {
   encode(message: SignatureDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.public_key !== undefined) {
-      Any.encode(message.public_key, writer.uint32(10).fork()).ldelim();
+    if (message.publicKey !== undefined) {
+      Any.encode(message.publicKey, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.data !== undefined) {
@@ -250,7 +350,7 @@ export const SignatureDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.public_key = Any.decode(reader, reader.uint32());
+          message.publicKey = Any.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -272,7 +372,7 @@ export const SignatureDescriptor = {
 
   fromJSON(object: any): SignatureDescriptor {
     return {
-      public_key: isSet(object.public_key) ? Any.fromJSON(object.public_key) : undefined,
+      publicKey: isSet(object.publicKey) ? Any.fromJSON(object.publicKey) : undefined,
       data: isSet(object.data) ? SignatureDescriptor_Data.fromJSON(object.data) : undefined,
       sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO
     };
@@ -280,7 +380,7 @@ export const SignatureDescriptor = {
 
   toJSON(message: SignatureDescriptor): unknown {
     const obj: any = {};
-    message.public_key !== undefined && (obj.public_key = message.public_key ? Any.toJSON(message.public_key) : undefined);
+    message.publicKey !== undefined && (obj.publicKey = message.publicKey ? Any.toJSON(message.publicKey) : undefined);
     message.data !== undefined && (obj.data = message.data ? SignatureDescriptor_Data.toJSON(message.data) : undefined);
     message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
     return obj;
@@ -288,7 +388,7 @@ export const SignatureDescriptor = {
 
   fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor {
     const message = createBaseSignatureDescriptor();
-    message.public_key = object.public_key !== undefined && object.public_key !== null ? Any.fromPartial(object.public_key) : undefined;
+    message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
     message.data = object.data !== undefined && object.data !== null ? SignatureDescriptor_Data.fromPartial(object.data) : undefined;
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     return message;

@@ -1,33 +1,58 @@
-import { CommitmentProof } from "../../../../confio/proofs";
+import { CommitmentProof, CommitmentProofSDKType } from "../../../../confio/proofs";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, bytesFromBase64, base64FromBytes, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * MerkleRoot defines a merkle root hash.
  * In the Cosmos SDK, the AppHash of a block header becomes the root.
  */
+
 export interface MerkleRoot {
   hash: Uint8Array;
 }
+/**
+ * MerkleRoot defines a merkle root hash.
+ * In the Cosmos SDK, the AppHash of a block header becomes the root.
+ */
 
+export interface MerkleRootSDKType {
+  hash: Uint8Array;
+}
 /**
  * MerklePrefix is merkle path prefixed to the key.
  * The constructed key from the Path and the key will be append(Path.KeyPath,
  * append(Path.KeyPrefix, key...))
  */
+
 export interface MerklePrefix {
+  keyPrefix: Uint8Array;
+}
+/**
+ * MerklePrefix is merkle path prefixed to the key.
+ * The constructed key from the Path and the key will be append(Path.KeyPath,
+ * append(Path.KeyPrefix, key...))
+ */
+
+export interface MerklePrefixSDKType {
   key_prefix: Uint8Array;
 }
-
 /**
  * MerklePath is the path used to verify commitment proofs, which can be an
  * arbitrary structured object (defined by a commitment type).
  * MerklePath is represented from root-to-leaf
  */
+
 export interface MerklePath {
+  keyPath: string[];
+}
+/**
+ * MerklePath is the path used to verify commitment proofs, which can be an
+ * arbitrary structured object (defined by a commitment type).
+ * MerklePath is represented from root-to-leaf
+ */
+
+export interface MerklePathSDKType {
   key_path: string[];
 }
-
 /**
  * MerkleProof is a wrapper type over a chain of CommitmentProofs.
  * It demonstrates membership or non-membership for an element or set of
@@ -35,8 +60,20 @@ export interface MerklePath {
  * should be succinct.
  * MerkleProofs are ordered from leaf-to-root
  */
+
 export interface MerkleProof {
   proofs: CommitmentProof[];
+}
+/**
+ * MerkleProof is a wrapper type over a chain of CommitmentProofs.
+ * It demonstrates membership or non-membership for an element or set of
+ * elements, verifiable in conjunction with a known commitment root. Proofs
+ * should be succinct.
+ * MerkleProofs are ordered from leaf-to-root
+ */
+
+export interface MerkleProofSDKType {
+  proofs: CommitmentProofSDKType[];
 }
 
 function createBaseMerkleRoot(): MerkleRoot {
@@ -98,14 +135,14 @@ export const MerkleRoot = {
 
 function createBaseMerklePrefix(): MerklePrefix {
   return {
-    key_prefix: new Uint8Array()
+    keyPrefix: new Uint8Array()
   };
 }
 
 export const MerklePrefix = {
   encode(message: MerklePrefix, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.key_prefix.length !== 0) {
-      writer.uint32(10).bytes(message.key_prefix);
+    if (message.keyPrefix.length !== 0) {
+      writer.uint32(10).bytes(message.keyPrefix);
     }
 
     return writer;
@@ -121,7 +158,7 @@ export const MerklePrefix = {
 
       switch (tag >>> 3) {
         case 1:
-          message.key_prefix = reader.bytes();
+          message.keyPrefix = reader.bytes();
           break;
 
         default:
@@ -135,19 +172,19 @@ export const MerklePrefix = {
 
   fromJSON(object: any): MerklePrefix {
     return {
-      key_prefix: isSet(object.key_prefix) ? bytesFromBase64(object.key_prefix) : new Uint8Array()
+      keyPrefix: isSet(object.keyPrefix) ? bytesFromBase64(object.keyPrefix) : new Uint8Array()
     };
   },
 
   toJSON(message: MerklePrefix): unknown {
     const obj: any = {};
-    message.key_prefix !== undefined && (obj.key_prefix = base64FromBytes(message.key_prefix !== undefined ? message.key_prefix : new Uint8Array()));
+    message.keyPrefix !== undefined && (obj.keyPrefix = base64FromBytes(message.keyPrefix !== undefined ? message.keyPrefix : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<MerklePrefix>): MerklePrefix {
     const message = createBaseMerklePrefix();
-    message.key_prefix = object.key_prefix ?? new Uint8Array();
+    message.keyPrefix = object.keyPrefix ?? new Uint8Array();
     return message;
   }
 
@@ -155,13 +192,13 @@ export const MerklePrefix = {
 
 function createBaseMerklePath(): MerklePath {
   return {
-    key_path: []
+    keyPath: []
   };
 }
 
 export const MerklePath = {
   encode(message: MerklePath, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.key_path) {
+    for (const v of message.keyPath) {
       writer.uint32(10).string(v!);
     }
 
@@ -178,7 +215,7 @@ export const MerklePath = {
 
       switch (tag >>> 3) {
         case 1:
-          message.key_path.push(reader.string());
+          message.keyPath.push(reader.string());
           break;
 
         default:
@@ -192,17 +229,17 @@ export const MerklePath = {
 
   fromJSON(object: any): MerklePath {
     return {
-      key_path: Array.isArray(object?.key_path) ? object.key_path.map((e: any) => String(e)) : []
+      keyPath: Array.isArray(object?.keyPath) ? object.keyPath.map((e: any) => String(e)) : []
     };
   },
 
   toJSON(message: MerklePath): unknown {
     const obj: any = {};
 
-    if (message.key_path) {
-      obj.key_path = message.key_path.map(e => e);
+    if (message.keyPath) {
+      obj.keyPath = message.keyPath.map(e => e);
     } else {
-      obj.key_path = [];
+      obj.keyPath = [];
     }
 
     return obj;
@@ -210,7 +247,7 @@ export const MerklePath = {
 
   fromPartial(object: DeepPartial<MerklePath>): MerklePath {
     const message = createBaseMerklePath();
-    message.key_path = object.key_path?.map(e => e) || [];
+    message.keyPath = object.keyPath?.map(e => e) || [];
     return message;
   }
 

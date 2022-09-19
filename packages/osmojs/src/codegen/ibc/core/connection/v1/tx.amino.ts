@@ -1,9 +1,5 @@
-import { Counterparty, Version } from "./connection";
-import { Any } from "../../../../google/protobuf/any";
-import { Height } from "../../client/v1/client";
 import { AminoMsg } from "@cosmjs/amino";
 import { AminoHeight, Long, omitDefault } from "@osmonauts/helpers";
-import { MerklePrefix } from "../../commitment/v1/commitment";
 import { MsgConnectionOpenInit, MsgConnectionOpenTry, MsgConnectionOpenAck, MsgConnectionOpenConfirm } from "./tx";
 export interface AminoMsgConnectionOpenInit extends AminoMsg {
   type: "cosmos-sdk/MsgConnectionOpenInit";
@@ -87,26 +83,26 @@ export const AminoConverter = {
   "/ibc.core.connection.v1.MsgConnectionOpenInit": {
     aminoType: "cosmos-sdk/MsgConnectionOpenInit",
     toAmino: ({
-      client_id,
+      clientId,
       counterparty,
       version,
-      delay_period,
+      delayPeriod,
       signer
     }: MsgConnectionOpenInit): AminoMsgConnectionOpenInit["value"] => {
       return {
-        client_id,
+        client_id: clientId,
         counterparty: {
-          client_id: counterparty.client_id,
-          connection_id: counterparty.connection_id,
+          client_id: counterparty.clientId,
+          connection_id: counterparty.connectionId,
           prefix: {
-            key_prefix: counterparty.prefix.key_prefix
+            key_prefix: counterparty.prefix.keyPrefix
           }
         },
         version: {
           identifier: version.identifier,
           features: version.features
         },
-        delay_period: delay_period.toString(),
+        delay_period: delayPeriod.toString(),
         signer
       };
     },
@@ -118,19 +114,19 @@ export const AminoConverter = {
       signer
     }: AminoMsgConnectionOpenInit["value"]): MsgConnectionOpenInit => {
       return {
-        client_id,
+        clientId: client_id,
         counterparty: {
-          client_id: counterparty.client_id,
-          connection_id: counterparty.connection_id,
+          clientId: counterparty.client_id,
+          connectionId: counterparty.connection_id,
           prefix: {
-            key_prefix: counterparty.prefix.key_prefix
+            keyPrefix: counterparty.prefix.key_prefix
           }
         },
         version: {
           identifier: version.identifier,
           features: version.features
         },
-        delay_period: Long.fromString(delay_period),
+        delayPeriod: Long.fromString(delay_period),
         signer
       };
     }
@@ -138,48 +134,48 @@ export const AminoConverter = {
   "/ibc.core.connection.v1.MsgConnectionOpenTry": {
     aminoType: "cosmos-sdk/MsgConnectionOpenTry",
     toAmino: ({
-      client_id,
-      previous_connection_id,
-      client_state,
+      clientId,
+      previousConnectionId,
+      clientState,
       counterparty,
-      delay_period,
-      counterparty_versions,
-      proof_height,
-      proof_init,
-      proof_client,
-      proof_consensus,
-      consensus_height,
+      delayPeriod,
+      counterpartyVersions,
+      proofHeight,
+      proofInit,
+      proofClient,
+      proofConsensus,
+      consensusHeight,
       signer
     }: MsgConnectionOpenTry): AminoMsgConnectionOpenTry["value"] => {
       return {
-        client_id,
-        previous_connection_id,
+        client_id: clientId,
+        previous_connection_id: previousConnectionId,
         client_state: {
-          type_url: client_state.type_url,
-          value: client_state.value
+          type_url: clientState.typeUrl,
+          value: clientState.value
         },
         counterparty: {
-          client_id: counterparty.client_id,
-          connection_id: counterparty.connection_id,
+          client_id: counterparty.clientId,
+          connection_id: counterparty.connectionId,
           prefix: {
-            key_prefix: counterparty.prefix.key_prefix
+            key_prefix: counterparty.prefix.keyPrefix
           }
         },
-        delay_period: delay_period.toString(),
-        counterparty_versions: counterparty_versions.map(el0 => ({
+        delay_period: delayPeriod.toString(),
+        counterparty_versions: counterpartyVersions.map(el0 => ({
           identifier: el0.identifier,
           features: el0.features
         })),
-        proof_height: proof_height ? {
-          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
-          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
+        proof_height: proofHeight ? {
+          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
+          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
         } : {},
-        proof_init,
-        proof_client,
-        proof_consensus,
-        consensus_height: consensus_height ? {
-          revision_height: omitDefault(consensus_height.revisionHeight)?.toString(),
-          revision_number: omitDefault(consensus_height.revisionNumber)?.toString()
+        proof_init: proofInit,
+        proof_client: proofClient,
+        proof_consensus: proofConsensus,
+        consensus_height: consensusHeight ? {
+          revision_height: omitDefault(consensusHeight.revisionHeight)?.toString(),
+          revision_number: omitDefault(consensusHeight.revisionNumber)?.toString()
         } : {},
         signer
       };
@@ -199,32 +195,32 @@ export const AminoConverter = {
       signer
     }: AminoMsgConnectionOpenTry["value"]): MsgConnectionOpenTry => {
       return {
-        client_id,
-        previous_connection_id,
-        client_state: {
-          type_url: client_state.type_url,
+        clientId: client_id,
+        previousConnectionId: previous_connection_id,
+        clientState: {
+          typeUrl: client_state.type_url,
           value: client_state.value
         },
         counterparty: {
-          client_id: counterparty.client_id,
-          connection_id: counterparty.connection_id,
+          clientId: counterparty.client_id,
+          connectionId: counterparty.connection_id,
           prefix: {
-            key_prefix: counterparty.prefix.key_prefix
+            keyPrefix: counterparty.prefix.key_prefix
           }
         },
-        delay_period: Long.fromString(delay_period),
-        counterparty_versions: counterparty_versions.map(el0 => ({
+        delayPeriod: Long.fromString(delay_period),
+        counterpartyVersions: counterparty_versions.map(el0 => ({
           identifier: el0.identifier,
           features: el0.features
         })),
-        proof_height: proof_height ? {
+        proofHeight: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,
-        proof_init,
-        proof_client,
-        proof_consensus,
-        consensus_height: consensus_height ? {
+        proofInit: proof_init,
+        proofClient: proof_client,
+        proofConsensus: proof_consensus,
+        consensusHeight: consensus_height ? {
           revisionHeight: Long.fromString(consensus_height.revision_height || "0", true),
           revisionNumber: Long.fromString(consensus_height.revision_number || "0", true)
         } : undefined,
@@ -235,38 +231,38 @@ export const AminoConverter = {
   "/ibc.core.connection.v1.MsgConnectionOpenAck": {
     aminoType: "cosmos-sdk/MsgConnectionOpenAck",
     toAmino: ({
-      connection_id,
-      counterparty_connection_id,
+      connectionId,
+      counterpartyConnectionId,
       version,
-      client_state,
-      proof_height,
-      proof_try,
-      proof_client,
-      proof_consensus,
-      consensus_height,
+      clientState,
+      proofHeight,
+      proofTry,
+      proofClient,
+      proofConsensus,
+      consensusHeight,
       signer
     }: MsgConnectionOpenAck): AminoMsgConnectionOpenAck["value"] => {
       return {
-        connection_id,
-        counterparty_connection_id,
+        connection_id: connectionId,
+        counterparty_connection_id: counterpartyConnectionId,
         version: {
           identifier: version.identifier,
           features: version.features
         },
         client_state: {
-          type_url: client_state.type_url,
-          value: client_state.value
+          type_url: clientState.typeUrl,
+          value: clientState.value
         },
-        proof_height: proof_height ? {
-          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
-          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
+        proof_height: proofHeight ? {
+          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
+          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
         } : {},
-        proof_try,
-        proof_client,
-        proof_consensus,
-        consensus_height: consensus_height ? {
-          revision_height: omitDefault(consensus_height.revisionHeight)?.toString(),
-          revision_number: omitDefault(consensus_height.revisionNumber)?.toString()
+        proof_try: proofTry,
+        proof_client: proofClient,
+        proof_consensus: proofConsensus,
+        consensus_height: consensusHeight ? {
+          revision_height: omitDefault(consensusHeight.revisionHeight)?.toString(),
+          revision_number: omitDefault(consensusHeight.revisionNumber)?.toString()
         } : {},
         signer
       };
@@ -284,24 +280,24 @@ export const AminoConverter = {
       signer
     }: AminoMsgConnectionOpenAck["value"]): MsgConnectionOpenAck => {
       return {
-        connection_id,
-        counterparty_connection_id,
+        connectionId: connection_id,
+        counterpartyConnectionId: counterparty_connection_id,
         version: {
           identifier: version.identifier,
           features: version.features
         },
-        client_state: {
-          type_url: client_state.type_url,
+        clientState: {
+          typeUrl: client_state.type_url,
           value: client_state.value
         },
-        proof_height: proof_height ? {
+        proofHeight: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,
-        proof_try,
-        proof_client,
-        proof_consensus,
-        consensus_height: consensus_height ? {
+        proofTry: proof_try,
+        proofClient: proof_client,
+        proofConsensus: proof_consensus,
+        consensusHeight: consensus_height ? {
           revisionHeight: Long.fromString(consensus_height.revision_height || "0", true),
           revisionNumber: Long.fromString(consensus_height.revision_number || "0", true)
         } : undefined,
@@ -312,17 +308,17 @@ export const AminoConverter = {
   "/ibc.core.connection.v1.MsgConnectionOpenConfirm": {
     aminoType: "cosmos-sdk/MsgConnectionOpenConfirm",
     toAmino: ({
-      connection_id,
-      proof_ack,
-      proof_height,
+      connectionId,
+      proofAck,
+      proofHeight,
       signer
     }: MsgConnectionOpenConfirm): AminoMsgConnectionOpenConfirm["value"] => {
       return {
-        connection_id,
-        proof_ack,
-        proof_height: proof_height ? {
-          revision_height: omitDefault(proof_height.revisionHeight)?.toString(),
-          revision_number: omitDefault(proof_height.revisionNumber)?.toString()
+        connection_id: connectionId,
+        proof_ack: proofAck,
+        proof_height: proofHeight ? {
+          revision_height: omitDefault(proofHeight.revisionHeight)?.toString(),
+          revision_number: omitDefault(proofHeight.revisionNumber)?.toString()
         } : {},
         signer
       };
@@ -334,9 +330,9 @@ export const AminoConverter = {
       signer
     }: AminoMsgConnectionOpenConfirm["value"]): MsgConnectionOpenConfirm => {
       return {
-        connection_id,
-        proof_ack,
-        proof_height: proof_height ? {
+        connectionId: connection_id,
+        proofAck: proof_ack,
+        proofHeight: proof_height ? {
           revisionHeight: Long.fromString(proof_height.revision_height || "0", true),
           revisionNumber: Long.fromString(proof_height.revision_number || "0", true)
         } : undefined,

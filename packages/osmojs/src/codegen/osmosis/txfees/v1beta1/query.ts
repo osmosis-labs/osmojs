@@ -1,35 +1,66 @@
-import { FeeToken } from "./feetoken";
+import { FeeToken, FeeTokenSDKType } from "./feetoken";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 export interface QueryFeeTokensRequest {}
+export interface QueryFeeTokensRequestSDKType {}
 export interface QueryFeeTokensResponse {
-  fee_tokens: FeeToken[];
+  feeTokens: FeeToken[];
 }
-
+export interface QueryFeeTokensResponseSDKType {
+  fee_tokens: FeeTokenSDKType[];
+}
 /**
  * QueryDenomSpotPriceRequest defines grpc request structure for querying spot
  * price for the specified tx fee denom
  */
+
 export interface QueryDenomSpotPriceRequest {
   denom?: string;
 }
+/**
+ * QueryDenomSpotPriceRequest defines grpc request structure for querying spot
+ * price for the specified tx fee denom
+ */
 
+export interface QueryDenomSpotPriceRequestSDKType {
+  denom?: string;
+}
 /**
  * QueryDenomSpotPriceRequest defines grpc response structure for querying spot
  * price for the specified tx fee denom
  */
+
 export interface QueryDenomSpotPriceResponse {
+  poolID: Long;
+  spotPrice: string;
+}
+/**
+ * QueryDenomSpotPriceRequest defines grpc response structure for querying spot
+ * price for the specified tx fee denom
+ */
+
+export interface QueryDenomSpotPriceResponseSDKType {
   poolID: Long;
   spot_price: string;
 }
 export interface QueryDenomPoolIdRequest {
   denom: string;
 }
+export interface QueryDenomPoolIdRequestSDKType {
+  denom: string;
+}
 export interface QueryDenomPoolIdResponse {
   poolID: Long;
 }
+export interface QueryDenomPoolIdResponseSDKType {
+  poolID: Long;
+}
 export interface QueryBaseDenomRequest {}
+export interface QueryBaseDenomRequestSDKType {}
 export interface QueryBaseDenomResponse {
+  baseDenom: string;
+}
+export interface QueryBaseDenomResponseSDKType {
   base_denom: string;
 }
 
@@ -78,20 +109,20 @@ export const QueryFeeTokensRequest = {
 
 function createBaseQueryFeeTokensResponse(): QueryFeeTokensResponse {
   return {
-    fee_tokens: []
+    feeTokens: []
   };
 }
 
 export const QueryFeeTokensResponse = {
   encode(message: QueryFeeTokensResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.fee_tokens) {
+    for (const v of message.feeTokens) {
       FeeToken.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryFeeTokensResponse();
@@ -101,7 +132,7 @@ export const QueryFeeTokensResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.fee_tokens.push(FeeToken.decode(reader, reader.uint32()));
+          message.feeTokens.push(FeeToken.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -115,17 +146,17 @@ export const QueryFeeTokensResponse = {
 
   fromJSON(object: any): QueryFeeTokensResponse {
     return {
-      fee_tokens: Array.isArray(object?.fee_tokens) ? object.fee_tokens.map((e: any) => FeeToken.fromJSON(e)) : []
+      feeTokens: Array.isArray(object?.feeTokens) ? object.feeTokens.map((e: any) => FeeToken.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryFeeTokensResponse): unknown {
     const obj: any = {};
 
-    if (message.fee_tokens) {
-      obj.fee_tokens = message.fee_tokens.map(e => e ? FeeToken.toJSON(e) : undefined);
+    if (message.feeTokens) {
+      obj.feeTokens = message.feeTokens.map(e => e ? FeeToken.toJSON(e) : undefined);
     } else {
-      obj.fee_tokens = [];
+      obj.feeTokens = [];
     }
 
     return obj;
@@ -133,7 +164,7 @@ export const QueryFeeTokensResponse = {
 
   fromPartial(object: DeepPartial<QueryFeeTokensResponse>): QueryFeeTokensResponse {
     const message = createBaseQueryFeeTokensResponse();
-    message.fee_tokens = object.fee_tokens?.map(e => FeeToken.fromPartial(e)) || [];
+    message.feeTokens = object.feeTokens?.map(e => FeeToken.fromPartial(e)) || [];
     return message;
   }
 
@@ -199,7 +230,7 @@ export const QueryDenomSpotPriceRequest = {
 function createBaseQueryDenomSpotPriceResponse(): QueryDenomSpotPriceResponse {
   return {
     poolID: Long.UZERO,
-    spot_price: ""
+    spotPrice: ""
   };
 }
 
@@ -209,14 +240,14 @@ export const QueryDenomSpotPriceResponse = {
       writer.uint32(8).uint64(message.poolID);
     }
 
-    if (message.spot_price !== "") {
-      writer.uint32(18).string(message.spot_price);
+    if (message.spotPrice !== "") {
+      writer.uint32(18).string(message.spotPrice);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomSpotPriceResponse();
@@ -230,7 +261,7 @@ export const QueryDenomSpotPriceResponse = {
           break;
 
         case 2:
-          message.spot_price = reader.string();
+          message.spotPrice = reader.string();
           break;
 
         default:
@@ -245,21 +276,21 @@ export const QueryDenomSpotPriceResponse = {
   fromJSON(object: any): QueryDenomSpotPriceResponse {
     return {
       poolID: isSet(object.poolID) ? Long.fromString(object.poolID) : Long.UZERO,
-      spot_price: isSet(object.spot_price) ? String(object.spot_price) : ""
+      spotPrice: isSet(object.spotPrice) ? String(object.spotPrice) : ""
     };
   },
 
   toJSON(message: QueryDenomSpotPriceResponse): unknown {
     const obj: any = {};
     message.poolID !== undefined && (obj.poolID = (message.poolID || Long.UZERO).toString());
-    message.spot_price !== undefined && (obj.spot_price = message.spot_price);
+    message.spotPrice !== undefined && (obj.spotPrice = message.spotPrice);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse {
     const message = createBaseQueryDenomSpotPriceResponse();
     message.poolID = object.poolID !== undefined && object.poolID !== null ? Long.fromValue(object.poolID) : Long.UZERO;
-    message.spot_price = object.spot_price ?? "";
+    message.spotPrice = object.spotPrice ?? "";
     return message;
   }
 
@@ -337,7 +368,7 @@ export const QueryDenomPoolIdResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomPoolIdResponse();
@@ -424,20 +455,20 @@ export const QueryBaseDenomRequest = {
 
 function createBaseQueryBaseDenomResponse(): QueryBaseDenomResponse {
   return {
-    base_denom: ""
+    baseDenom: ""
   };
 }
 
 export const QueryBaseDenomResponse = {
   encode(message: QueryBaseDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.base_denom !== "") {
-      writer.uint32(10).string(message.base_denom);
+    if (message.baseDenom !== "") {
+      writer.uint32(10).string(message.baseDenom);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryBaseDenomResponse();
@@ -447,7 +478,7 @@ export const QueryBaseDenomResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.base_denom = reader.string();
+          message.baseDenom = reader.string();
           break;
 
         default:
@@ -461,19 +492,19 @@ export const QueryBaseDenomResponse = {
 
   fromJSON(object: any): QueryBaseDenomResponse {
     return {
-      base_denom: isSet(object.base_denom) ? String(object.base_denom) : ""
+      baseDenom: isSet(object.baseDenom) ? String(object.baseDenom) : ""
     };
   },
 
   toJSON(message: QueryBaseDenomResponse): unknown {
     const obj: any = {};
-    message.base_denom !== undefined && (obj.base_denom = message.base_denom);
+    message.baseDenom !== undefined && (obj.baseDenom = message.baseDenom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryBaseDenomResponse>): QueryBaseDenomResponse {
     const message = createBaseQueryBaseDenomResponse();
-    message.base_denom = object.base_denom ?? "";
+    message.baseDenom = object.baseDenom ?? "";
     return message;
   }
 

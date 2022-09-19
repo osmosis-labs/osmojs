@@ -1,8 +1,17 @@
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** Params holds parameters for the superfluid module */
+
 export interface Params {
+  /**
+   * the risk_factor is to be cut on OSMO equivalent value of lp tokens for
+   * superfluid staking, default: 5%
+   */
+  minimumRiskFactor: string;
+}
+/** Params holds parameters for the superfluid module */
+
+export interface ParamsSDKType {
   /**
    * the risk_factor is to be cut on OSMO equivalent value of lp tokens for
    * superfluid staking, default: 5%
@@ -12,14 +21,14 @@ export interface Params {
 
 function createBaseParams(): Params {
   return {
-    minimum_risk_factor: ""
+    minimumRiskFactor: ""
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.minimum_risk_factor !== "") {
-      writer.uint32(10).string(message.minimum_risk_factor);
+    if (message.minimumRiskFactor !== "") {
+      writer.uint32(10).string(message.minimumRiskFactor);
     }
 
     return writer;
@@ -35,7 +44,7 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.minimum_risk_factor = reader.string();
+          message.minimumRiskFactor = reader.string();
           break;
 
         default:
@@ -49,19 +58,19 @@ export const Params = {
 
   fromJSON(object: any): Params {
     return {
-      minimum_risk_factor: isSet(object.minimum_risk_factor) ? String(object.minimum_risk_factor) : ""
+      minimumRiskFactor: isSet(object.minimumRiskFactor) ? String(object.minimumRiskFactor) : ""
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    message.minimum_risk_factor !== undefined && (obj.minimum_risk_factor = message.minimum_risk_factor);
+    message.minimumRiskFactor !== undefined && (obj.minimumRiskFactor = message.minimumRiskFactor);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.minimum_risk_factor = object.minimum_risk_factor ?? "";
+    message.minimumRiskFactor = object.minimumRiskFactor ?? "";
     return message;
   }
 

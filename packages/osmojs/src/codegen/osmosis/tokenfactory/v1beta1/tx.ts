@@ -1,7 +1,6 @@
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * MsgCreateDenom is the sdk.Msg type for allowing an account to create
  * a new denom. It requires a sender address and a subdenomination.
@@ -11,51 +10,107 @@ import { isSet, DeepPartial } from "@osmonauts/helpers";
  * creator, but this can be changed later. The token denom does not indicate the
  * current admin.
  */
+
 export interface MsgCreateDenom {
   sender: string;
-
   /** subdenom can be up to 44 "alphanumeric" characters long. */
+
   subdenom: string;
 }
+/**
+ * MsgCreateDenom is the sdk.Msg type for allowing an account to create
+ * a new denom. It requires a sender address and a subdenomination.
+ * The (sender_address, sub_denomination) pair must be unique and cannot be
+ * re-used. The resulting denom created is `factory/{creator
+ * address}/{subdenom}`. The resultant denom's admin is originally set to be the
+ * creator, but this can be changed later. The token denom does not indicate the
+ * current admin.
+ */
 
+export interface MsgCreateDenomSDKType {
+  sender: string;
+  /** subdenom can be up to 44 "alphanumeric" characters long. */
+
+  subdenom: string;
+}
 /**
  * MsgCreateDenomResponse is the return value of MsgCreateDenom
  * It returns the full string of the newly created denom
  */
+
 export interface MsgCreateDenomResponse {
+  newTokenDenom: string;
+}
+/**
+ * MsgCreateDenomResponse is the return value of MsgCreateDenom
+ * It returns the full string of the newly created denom
+ */
+
+export interface MsgCreateDenomResponseSDKType {
   new_token_denom: string;
 }
-
 /**
  * MsgMint is the sdk.Msg type for allowing an admin account to mint
  * more of a token.  For now, we only support minting to the sender account
  */
+
 export interface MsgMint {
   sender: string;
   amount: Coin;
 }
-export interface MsgMintResponse {}
+/**
+ * MsgMint is the sdk.Msg type for allowing an admin account to mint
+ * more of a token.  For now, we only support minting to the sender account
+ */
 
+export interface MsgMintSDKType {
+  sender: string;
+  amount: CoinSDKType;
+}
+export interface MsgMintResponse {}
+export interface MsgMintResponseSDKType {}
 /**
  * MsgBurn is the sdk.Msg type for allowing an admin account to burn
  * a token.  For now, we only support burning from the sender account.
  */
+
 export interface MsgBurn {
   sender: string;
   amount: Coin;
 }
-export interface MsgBurnResponse {}
+/**
+ * MsgBurn is the sdk.Msg type for allowing an admin account to burn
+ * a token.  For now, we only support burning from the sender account.
+ */
 
+export interface MsgBurnSDKType {
+  sender: string;
+  amount: CoinSDKType;
+}
+export interface MsgBurnResponse {}
+export interface MsgBurnResponseSDKType {}
 /**
  * MsgChangeAdmin is the sdk.Msg type for allowing an admin account to reassign
  * adminship of a denom to a new account
  */
+
 export interface MsgChangeAdmin {
   sender: string;
   denom: string;
   newAdmin: string;
 }
+/**
+ * MsgChangeAdmin is the sdk.Msg type for allowing an admin account to reassign
+ * adminship of a denom to a new account
+ */
+
+export interface MsgChangeAdminSDKType {
+  sender: string;
+  denom: string;
+  newAdmin: string;
+}
 export interface MsgChangeAdminResponse {}
+export interface MsgChangeAdminResponseSDKType {}
 
 function createBaseMsgCreateDenom(): MsgCreateDenom {
   return {
@@ -128,20 +183,20 @@ export const MsgCreateDenom = {
 
 function createBaseMsgCreateDenomResponse(): MsgCreateDenomResponse {
   return {
-    new_token_denom: ""
+    newTokenDenom: ""
   };
 }
 
 export const MsgCreateDenomResponse = {
   encode(message: MsgCreateDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.new_token_denom !== "") {
-      writer.uint32(10).string(message.new_token_denom);
+    if (message.newTokenDenom !== "") {
+      writer.uint32(10).string(message.newTokenDenom);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateDenomResponse();
@@ -151,7 +206,7 @@ export const MsgCreateDenomResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.new_token_denom = reader.string();
+          message.newTokenDenom = reader.string();
           break;
 
         default:
@@ -165,19 +220,19 @@ export const MsgCreateDenomResponse = {
 
   fromJSON(object: any): MsgCreateDenomResponse {
     return {
-      new_token_denom: isSet(object.new_token_denom) ? String(object.new_token_denom) : ""
+      newTokenDenom: isSet(object.newTokenDenom) ? String(object.newTokenDenom) : ""
     };
   },
 
   toJSON(message: MsgCreateDenomResponse): unknown {
     const obj: any = {};
-    message.new_token_denom !== undefined && (obj.new_token_denom = message.new_token_denom);
+    message.newTokenDenom !== undefined && (obj.newTokenDenom = message.newTokenDenom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgCreateDenomResponse>): MsgCreateDenomResponse {
     const message = createBaseMsgCreateDenomResponse();
-    message.new_token_denom = object.new_token_denom ?? "";
+    message.newTokenDenom = object.newTokenDenom ?? "";
     return message;
   }
 
@@ -261,7 +316,7 @@ export const MsgMintResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgMintResponse();
@@ -373,7 +428,7 @@ export const MsgBurnResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBurnResponse();
@@ -497,7 +552,7 @@ export const MsgChangeAdminResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgChangeAdminResponse();

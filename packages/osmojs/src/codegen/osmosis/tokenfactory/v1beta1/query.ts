@@ -1,26 +1,47 @@
-import { Params } from "./params";
-import { DenomAuthorityMetadata } from "./authorityMetadata";
+import { Params, ParamsSDKType } from "./params";
+import { DenomAuthorityMetadata, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, isSet } from "@osmonauts/helpers";
-
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
-export interface QueryParamsRequest {}
 
+export interface QueryParamsRequest {}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+
+export interface QueryParamsRequestSDKType {}
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
 }
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
+export interface QueryParamsResponseSDKType {
+  /** params defines the parameters of the module. */
+  params: ParamsSDKType;
+}
 export interface QueryDenomAuthorityMetadataRequest {
   denom: string;
 }
+export interface QueryDenomAuthorityMetadataRequestSDKType {
+  denom: string;
+}
 export interface QueryDenomAuthorityMetadataResponse {
-  authority_metadata: DenomAuthorityMetadata;
+  authorityMetadata: DenomAuthorityMetadata;
+}
+export interface QueryDenomAuthorityMetadataResponseSDKType {
+  authority_metadata: DenomAuthorityMetadataSDKType;
 }
 export interface QueryDenomsFromCreatorRequest {
   creator: string;
 }
+export interface QueryDenomsFromCreatorRequestSDKType {
+  creator: string;
+}
 export interface QueryDenomsFromCreatorResponse {
+  denoms: string[];
+}
+export interface QueryDenomsFromCreatorResponseSDKType {
   denoms: string[];
 }
 
@@ -82,7 +103,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -183,20 +204,20 @@ export const QueryDenomAuthorityMetadataRequest = {
 
 function createBaseQueryDenomAuthorityMetadataResponse(): QueryDenomAuthorityMetadataResponse {
   return {
-    authority_metadata: undefined
+    authorityMetadata: undefined
   };
 }
 
 export const QueryDenomAuthorityMetadataResponse = {
   encode(message: QueryDenomAuthorityMetadataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.authority_metadata !== undefined) {
-      DenomAuthorityMetadata.encode(message.authority_metadata, writer.uint32(10).fork()).ldelim();
+    if (message.authorityMetadata !== undefined) {
+      DenomAuthorityMetadata.encode(message.authorityMetadata, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomAuthorityMetadataResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomAuthorityMetadataResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomAuthorityMetadataResponse();
@@ -206,7 +227,7 @@ export const QueryDenomAuthorityMetadataResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.authority_metadata = DenomAuthorityMetadata.decode(reader, reader.uint32());
+          message.authorityMetadata = DenomAuthorityMetadata.decode(reader, reader.uint32());
           break;
 
         default:
@@ -220,19 +241,19 @@ export const QueryDenomAuthorityMetadataResponse = {
 
   fromJSON(object: any): QueryDenomAuthorityMetadataResponse {
     return {
-      authority_metadata: isSet(object.authority_metadata) ? DenomAuthorityMetadata.fromJSON(object.authority_metadata) : undefined
+      authorityMetadata: isSet(object.authorityMetadata) ? DenomAuthorityMetadata.fromJSON(object.authorityMetadata) : undefined
     };
   },
 
   toJSON(message: QueryDenomAuthorityMetadataResponse): unknown {
     const obj: any = {};
-    message.authority_metadata !== undefined && (obj.authority_metadata = message.authority_metadata ? DenomAuthorityMetadata.toJSON(message.authority_metadata) : undefined);
+    message.authorityMetadata !== undefined && (obj.authorityMetadata = message.authorityMetadata ? DenomAuthorityMetadata.toJSON(message.authorityMetadata) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse {
     const message = createBaseQueryDenomAuthorityMetadataResponse();
-    message.authority_metadata = object.authority_metadata !== undefined && object.authority_metadata !== null ? DenomAuthorityMetadata.fromPartial(object.authority_metadata) : undefined;
+    message.authorityMetadata = object.authorityMetadata !== undefined && object.authorityMetadata !== null ? DenomAuthorityMetadata.fromPartial(object.authorityMetadata) : undefined;
     return message;
   }
 
@@ -310,7 +331,7 @@ export const QueryDenomsFromCreatorResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsFromCreatorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsFromCreatorResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomsFromCreatorResponse();

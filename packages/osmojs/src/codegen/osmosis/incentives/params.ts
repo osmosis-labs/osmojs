@@ -1,22 +1,28 @@
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** Params holds parameters for the incentives module */
+
 export interface Params {
+  /** distribution epoch identifier */
+  distrEpochIdentifier: string;
+}
+/** Params holds parameters for the incentives module */
+
+export interface ParamsSDKType {
   /** distribution epoch identifier */
   distr_epoch_identifier: string;
 }
 
 function createBaseParams(): Params {
   return {
-    distr_epoch_identifier: ""
+    distrEpochIdentifier: ""
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.distr_epoch_identifier !== "") {
-      writer.uint32(10).string(message.distr_epoch_identifier);
+    if (message.distrEpochIdentifier !== "") {
+      writer.uint32(10).string(message.distrEpochIdentifier);
     }
 
     return writer;
@@ -32,7 +38,7 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.distr_epoch_identifier = reader.string();
+          message.distrEpochIdentifier = reader.string();
           break;
 
         default:
@@ -46,19 +52,19 @@ export const Params = {
 
   fromJSON(object: any): Params {
     return {
-      distr_epoch_identifier: isSet(object.distr_epoch_identifier) ? String(object.distr_epoch_identifier) : ""
+      distrEpochIdentifier: isSet(object.distrEpochIdentifier) ? String(object.distrEpochIdentifier) : ""
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
-    message.distr_epoch_identifier !== undefined && (obj.distr_epoch_identifier = message.distr_epoch_identifier);
+    message.distrEpochIdentifier !== undefined && (obj.distrEpochIdentifier = message.distrEpochIdentifier);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.distr_epoch_identifier = object.distr_epoch_identifier ?? "";
+    message.distrEpochIdentifier = object.distrEpochIdentifier ?? "";
     return message;
   }
 

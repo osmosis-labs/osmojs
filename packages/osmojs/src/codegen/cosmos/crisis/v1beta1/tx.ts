@@ -1,21 +1,31 @@
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** MsgVerifyInvariant represents a message to verify a particular invariance. */
+
 export interface MsgVerifyInvariant {
+  sender: string;
+  invariantModuleName: string;
+  invariantRoute: string;
+}
+/** MsgVerifyInvariant represents a message to verify a particular invariance. */
+
+export interface MsgVerifyInvariantSDKType {
   sender: string;
   invariant_module_name: string;
   invariant_route: string;
 }
-
 /** MsgVerifyInvariantResponse defines the Msg/VerifyInvariant response type. */
+
 export interface MsgVerifyInvariantResponse {}
+/** MsgVerifyInvariantResponse defines the Msg/VerifyInvariant response type. */
+
+export interface MsgVerifyInvariantResponseSDKType {}
 
 function createBaseMsgVerifyInvariant(): MsgVerifyInvariant {
   return {
     sender: "",
-    invariant_module_name: "",
-    invariant_route: ""
+    invariantModuleName: "",
+    invariantRoute: ""
   };
 }
 
@@ -25,12 +35,12 @@ export const MsgVerifyInvariant = {
       writer.uint32(10).string(message.sender);
     }
 
-    if (message.invariant_module_name !== "") {
-      writer.uint32(18).string(message.invariant_module_name);
+    if (message.invariantModuleName !== "") {
+      writer.uint32(18).string(message.invariantModuleName);
     }
 
-    if (message.invariant_route !== "") {
-      writer.uint32(26).string(message.invariant_route);
+    if (message.invariantRoute !== "") {
+      writer.uint32(26).string(message.invariantRoute);
     }
 
     return writer;
@@ -50,11 +60,11 @@ export const MsgVerifyInvariant = {
           break;
 
         case 2:
-          message.invariant_module_name = reader.string();
+          message.invariantModuleName = reader.string();
           break;
 
         case 3:
-          message.invariant_route = reader.string();
+          message.invariantRoute = reader.string();
           break;
 
         default:
@@ -69,24 +79,24 @@ export const MsgVerifyInvariant = {
   fromJSON(object: any): MsgVerifyInvariant {
     return {
       sender: isSet(object.sender) ? String(object.sender) : "",
-      invariant_module_name: isSet(object.invariant_module_name) ? String(object.invariant_module_name) : "",
-      invariant_route: isSet(object.invariant_route) ? String(object.invariant_route) : ""
+      invariantModuleName: isSet(object.invariantModuleName) ? String(object.invariantModuleName) : "",
+      invariantRoute: isSet(object.invariantRoute) ? String(object.invariantRoute) : ""
     };
   },
 
   toJSON(message: MsgVerifyInvariant): unknown {
     const obj: any = {};
     message.sender !== undefined && (obj.sender = message.sender);
-    message.invariant_module_name !== undefined && (obj.invariant_module_name = message.invariant_module_name);
-    message.invariant_route !== undefined && (obj.invariant_route = message.invariant_route);
+    message.invariantModuleName !== undefined && (obj.invariantModuleName = message.invariantModuleName);
+    message.invariantRoute !== undefined && (obj.invariantRoute = message.invariantRoute);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgVerifyInvariant>): MsgVerifyInvariant {
     const message = createBaseMsgVerifyInvariant();
     message.sender = object.sender ?? "";
-    message.invariant_module_name = object.invariant_module_name ?? "";
-    message.invariant_route = object.invariant_route ?? "";
+    message.invariantModuleName = object.invariantModuleName ?? "";
+    message.invariantRoute = object.invariantRoute ?? "";
     return message;
   }
 
@@ -101,7 +111,7 @@ export const MsgVerifyInvariantResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgVerifyInvariantResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgVerifyInvariantResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgVerifyInvariantResponse();

@@ -4,6 +4,10 @@ export interface BitArray {
   bits: Long;
   elems: Long[];
 }
+export interface BitArraySDKType {
+  bits: Long;
+  elems: Long[];
+}
 
 function createBaseBitArray(): BitArray {
   return {

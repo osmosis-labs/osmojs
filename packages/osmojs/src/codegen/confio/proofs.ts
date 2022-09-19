@@ -12,6 +12,18 @@ export enum HashOp {
   BITCOIN = 5,
   UNRECOGNIZED = -1,
 }
+export enum HashOpSDKType {
+  /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
+  NO_HASH = 0,
+  SHA256 = 1,
+  SHA512 = 2,
+  KECCAK = 3,
+  RIPEMD160 = 4,
+
+  /** BITCOIN - ripemd160(sha256(x)) */
+  BITCOIN = 5,
+  UNRECOGNIZED = -1,
+}
 export function hashOpFromJSON(object: any): HashOp {
   switch (object) {
     case 0:
@@ -68,14 +80,50 @@ export function hashOpToJSON(object: HashOp): string {
       return "UNKNOWN";
   }
 }
-
 /**
  * LengthOp defines how to process the key and value of the LeafOp
  * to include length information. After encoding the length with the given
  * algorithm, the length will be prepended to the key and value bytes.
  * (Each one with it's own encoded length)
  */
+
 export enum LengthOp {
+  /** NO_PREFIX - NO_PREFIX don't include any length info */
+  NO_PREFIX = 0,
+
+  /** VAR_PROTO - VAR_PROTO uses protobuf (and go-amino) varint encoding of the length */
+  VAR_PROTO = 1,
+
+  /** VAR_RLP - VAR_RLP uses rlp int encoding of the length */
+  VAR_RLP = 2,
+
+  /** FIXED32_BIG - FIXED32_BIG uses big-endian encoding of the length as a 32 bit integer */
+  FIXED32_BIG = 3,
+
+  /** FIXED32_LITTLE - FIXED32_LITTLE uses little-endian encoding of the length as a 32 bit integer */
+  FIXED32_LITTLE = 4,
+
+  /** FIXED64_BIG - FIXED64_BIG uses big-endian encoding of the length as a 64 bit integer */
+  FIXED64_BIG = 5,
+
+  /** FIXED64_LITTLE - FIXED64_LITTLE uses little-endian encoding of the length as a 64 bit integer */
+  FIXED64_LITTLE = 6,
+
+  /** REQUIRE_32_BYTES - REQUIRE_32_BYTES is like NONE, but will fail if the input is not exactly 32 bytes (sha256 output) */
+  REQUIRE_32_BYTES = 7,
+
+  /** REQUIRE_64_BYTES - REQUIRE_64_BYTES is like NONE, but will fail if the input is not exactly 64 bytes (sha512 output) */
+  REQUIRE_64_BYTES = 8,
+  UNRECOGNIZED = -1,
+}
+/**
+ * LengthOp defines how to process the key and value of the LeafOp
+ * to include length information. After encoding the length with the given
+ * algorithm, the length will be prepended to the key and value bytes.
+ * (Each one with it's own encoded length)
+ */
+
+export enum LengthOpSDKType {
   /** NO_PREFIX - NO_PREFIX don't include any length info */
   NO_PREFIX = 0,
 
@@ -181,7 +229,6 @@ export function lengthOpToJSON(object: LengthOp): string {
       return "UNKNOWN";
   }
 }
-
 /**
  * ExistenceProof takes a key and a value and a set of steps to perform on it.
  * The result of peforming all these steps will provide a "root hash", which can
@@ -203,33 +250,81 @@ export function lengthOpToJSON(object: LengthOp): string {
  * in the ProofSpec is valuable to prevent this mutability. And why all trees should
  * length-prefix the data before hashing it.
  */
+
 export interface ExistenceProof {
   key: Uint8Array;
   value: Uint8Array;
   leaf: LeafOp;
   path: InnerOp[];
 }
+/**
+ * ExistenceProof takes a key and a value and a set of steps to perform on it.
+ * The result of peforming all these steps will provide a "root hash", which can
+ * be compared to the value in a header.
+ * 
+ * Since it is computationally infeasible to produce a hash collission for any of the used
+ * cryptographic hash functions, if someone can provide a series of operations to transform
+ * a given key and value into a root hash that matches some trusted root, these key and values
+ * must be in the referenced merkle tree.
+ * 
+ * The only possible issue is maliablity in LeafOp, such as providing extra prefix data,
+ * which should be controlled by a spec. Eg. with lengthOp as NONE,
+ * prefix = FOO, key = BAR, value = CHOICE
+ * and
+ * prefix = F, key = OOBAR, value = CHOICE
+ * would produce the same value.
+ * 
+ * With LengthOp this is tricker but not impossible. Which is why the "leafPrefixEqual" field
+ * in the ProofSpec is valuable to prevent this mutability. And why all trees should
+ * length-prefix the data before hashing it.
+ */
 
+export interface ExistenceProofSDKType {
+  key: Uint8Array;
+  value: Uint8Array;
+  leaf: LeafOpSDKType;
+  path: InnerOpSDKType[];
+}
 /**
  * NonExistenceProof takes a proof of two neighbors, one left of the desired key,
  * one right of the desired key. If both proofs are valid AND they are neighbors,
  * then there is no valid proof for the given key.
  */
+
 export interface NonExistenceProof {
   /** TODO: remove this as unnecessary??? we prove a range */
   key: Uint8Array;
   left: ExistenceProof;
   right: ExistenceProof;
 }
+/**
+ * NonExistenceProof takes a proof of two neighbors, one left of the desired key,
+ * one right of the desired key. If both proofs are valid AND they are neighbors,
+ * then there is no valid proof for the given key.
+ */
 
+export interface NonExistenceProofSDKType {
+  /** TODO: remove this as unnecessary??? we prove a range */
+  key: Uint8Array;
+  left: ExistenceProofSDKType;
+  right: ExistenceProofSDKType;
+}
 /** CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages */
+
 export interface CommitmentProof {
   exist?: ExistenceProof;
   nonexist?: NonExistenceProof;
   batch?: BatchProof;
   compressed?: CompressedBatchProof;
 }
+/** CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages */
 
+export interface CommitmentProofSDKType {
+  exist?: ExistenceProofSDKType;
+  nonexist?: NonExistenceProofSDKType;
+  batch?: BatchProofSDKType;
+  compressed?: CompressedBatchProofSDKType;
+}
 /**
  * LeafOp represents the raw key-value data we wish to prove, and
  * must be flexible to represent the internal transformation from
@@ -246,19 +341,48 @@ export interface CommitmentProof {
  * Then combine the bytes, and hash it
  * output = hash(prefix || length(hkey) || hkey || length(hvalue) || hvalue)
  */
+
 export interface LeafOp {
   hash: HashOp;
-  prehash_key: HashOp;
-  prehash_value: HashOp;
+  prehashKey: HashOp;
+  prehashValue: HashOp;
   length: LengthOp;
-
   /**
    * prefix is a fixed bytes that may optionally be included at the beginning to differentiate
    * a leaf node from an inner node.
    */
+
   prefix: Uint8Array;
 }
+/**
+ * LeafOp represents the raw key-value data we wish to prove, and
+ * must be flexible to represent the internal transformation from
+ * the original key-value pairs into the basis hash, for many existing
+ * merkle trees.
+ * 
+ * key and value are passed in. So that the signature of this operation is:
+ * leafOp(key, value) -> output
+ * 
+ * To process this, first prehash the keys and values if needed (ANY means no hash in this case):
+ * hkey = prehashKey(key)
+ * hvalue = prehashValue(value)
+ * 
+ * Then combine the bytes, and hash it
+ * output = hash(prefix || length(hkey) || hkey || length(hvalue) || hvalue)
+ */
 
+export interface LeafOpSDKType {
+  hash: HashOpSDKType;
+  prehash_key: HashOpSDKType;
+  prehash_value: HashOpSDKType;
+  length: LengthOpSDKType;
+  /**
+   * prefix is a fixed bytes that may optionally be included at the beginning to differentiate
+   * a leaf node from an inner node.
+   */
+
+  prefix: Uint8Array;
+}
 /**
  * InnerOp represents a merkle-proof step that is not a leaf.
  * It represents concatenating two children and hashing them to provide the next result.
@@ -276,12 +400,35 @@ export interface LeafOp {
  * some value to differentiate from leaf nodes, should be included in prefix and suffix.
  * If either of prefix or suffix is empty, we just treat it as an empty string
  */
+
 export interface InnerOp {
   hash: HashOp;
   prefix: Uint8Array;
   suffix: Uint8Array;
 }
+/**
+ * InnerOp represents a merkle-proof step that is not a leaf.
+ * It represents concatenating two children and hashing them to provide the next result.
+ * 
+ * The result of the previous step is passed in, so the signature of this op is:
+ * innerOp(child) -> output
+ * 
+ * The result of applying InnerOp should be:
+ * output = op.hash(op.prefix || child || op.suffix)
+ * 
+ * where the || operator is concatenation of binary data,
+ * and child is the result of hashing all the tree below this step.
+ * 
+ * Any special data, like prepending child with the length, or prepending the entire operation with
+ * some value to differentiate from leaf nodes, should be included in prefix and suffix.
+ * If either of prefix or suffix is empty, we just treat it as an empty string
+ */
 
+export interface InnerOpSDKType {
+  hash: HashOpSDKType;
+  prefix: Uint8Array;
+  suffix: Uint8Array;
+}
 /**
  * ProofSpec defines what the expected parameters are for a given proof type.
  * This can be stored in the client and used to validate any incoming proofs.
@@ -294,21 +441,48 @@ export interface InnerOp {
  * We need this for proper security, requires client knows a priori what
  * tree format server uses. But not in code, rather a configuration object.
  */
+
 export interface ProofSpec {
   /**
    * any field in the ExistenceProof must be the same as in this spec.
    * except Prefix, which is just the first bytes of prefix (spec can be longer)
    */
-  leaf_spec: LeafOp;
-  inner_spec: InnerSpec;
-
+  leafSpec: LeafOp;
+  innerSpec: InnerSpec;
   /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
-  max_depth: number;
 
+  maxDepth: number;
   /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
+
+  minDepth: number;
+}
+/**
+ * ProofSpec defines what the expected parameters are for a given proof type.
+ * This can be stored in the client and used to validate any incoming proofs.
+ * 
+ * verify(ProofSpec, Proof) -> Proof | Error
+ * 
+ * As demonstrated in tests, if we don't fix the algorithm used to calculate the
+ * LeafHash for a given tree, there are many possible key-value pairs that can
+ * generate a given hash (by interpretting the preimage differently).
+ * We need this for proper security, requires client knows a priori what
+ * tree format server uses. But not in code, rather a configuration object.
+ */
+
+export interface ProofSpecSDKType {
+  /**
+   * any field in the ExistenceProof must be the same as in this spec.
+   * except Prefix, which is just the first bytes of prefix (spec can be longer)
+   */
+  leaf_spec: LeafOpSDKType;
+  inner_spec: InnerSpecSDKType;
+  /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
+
+  max_depth: number;
+  /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
+
   min_depth: number;
 }
-
 /**
  * InnerSpec contains all store-specific structure info to determine if two proofs from a
  * given store are neighbors.
@@ -319,7 +493,36 @@ export interface ProofSpec {
  * isRightMost(spec: InnerSpec, op: InnerOp)
  * isLeftNeighbor(spec: InnerSpec, left: InnerOp, right: InnerOp)
  */
+
 export interface InnerSpec {
+  /**
+   * Child order is the ordering of the children node, must count from 0
+   * iavl tree is [0, 1] (left then right)
+   * merk is [0, 2, 1] (left, right, here)
+   */
+  childOrder: number[];
+  childSize: number;
+  minPrefixLength: number;
+  maxPrefixLength: number;
+  /** empty child is the prehash image that is used when one child is nil (eg. 20 bytes of 0) */
+
+  emptyChild: Uint8Array;
+  /** hash is the algorithm that must be used for each InnerOp */
+
+  hash: HashOp;
+}
+/**
+ * InnerSpec contains all store-specific structure info to determine if two proofs from a
+ * given store are neighbors.
+ * 
+ * This enables:
+ * 
+ * isLeftMost(spec: InnerSpec, op: InnerOp)
+ * isRightMost(spec: InnerSpec, op: InnerOp)
+ * isLeftNeighbor(spec: InnerSpec, left: InnerOp, right: InnerOp)
+ */
+
+export interface InnerSpecSDKType {
   /**
    * Child order is the ordering of the children node, must count from 0
    * iavl tree is [0, 1] (left then right)
@@ -329,40 +532,69 @@ export interface InnerSpec {
   child_size: number;
   min_prefix_length: number;
   max_prefix_length: number;
-
   /** empty child is the prehash image that is used when one child is nil (eg. 20 bytes of 0) */
+
   empty_child: Uint8Array;
-
   /** hash is the algorithm that must be used for each InnerOp */
-  hash: HashOp;
-}
 
+  hash: HashOpSDKType;
+}
 /** BatchProof is a group of multiple proof types than can be compressed */
+
 export interface BatchProof {
   entries: BatchEntry[];
 }
+/** BatchProof is a group of multiple proof types than can be compressed */
 
+export interface BatchProofSDKType {
+  entries: BatchEntrySDKType[];
+}
 /** Use BatchEntry not CommitmentProof, to avoid recursion */
+
 export interface BatchEntry {
   exist?: ExistenceProof;
   nonexist?: NonExistenceProof;
 }
+/** Use BatchEntry not CommitmentProof, to avoid recursion */
+
+export interface BatchEntrySDKType {
+  exist?: ExistenceProofSDKType;
+  nonexist?: NonExistenceProofSDKType;
+}
 export interface CompressedBatchProof {
   entries: CompressedBatchEntry[];
-  lookup_inners: InnerOp[];
+  lookupInners: InnerOp[];
 }
-
+export interface CompressedBatchProofSDKType {
+  entries: CompressedBatchEntrySDKType[];
+  lookup_inners: InnerOpSDKType[];
+}
 /** Use BatchEntry not CommitmentProof, to avoid recursion */
+
 export interface CompressedBatchEntry {
   exist?: CompressedExistenceProof;
   nonexist?: CompressedNonExistenceProof;
+}
+/** Use BatchEntry not CommitmentProof, to avoid recursion */
+
+export interface CompressedBatchEntrySDKType {
+  exist?: CompressedExistenceProofSDKType;
+  nonexist?: CompressedNonExistenceProofSDKType;
 }
 export interface CompressedExistenceProof {
   key: Uint8Array;
   value: Uint8Array;
   leaf: LeafOp;
-
   /** these are indexes into the lookup_inners table in CompressedBatchProof */
+
+  path: number[];
+}
+export interface CompressedExistenceProofSDKType {
+  key: Uint8Array;
+  value: Uint8Array;
+  leaf: LeafOpSDKType;
+  /** these are indexes into the lookup_inners table in CompressedBatchProof */
+
   path: number[];
 }
 export interface CompressedNonExistenceProof {
@@ -370,6 +602,12 @@ export interface CompressedNonExistenceProof {
   key: Uint8Array;
   left: CompressedExistenceProof;
   right: CompressedExistenceProof;
+}
+export interface CompressedNonExistenceProofSDKType {
+  /** TODO: remove this as unnecessary??? we prove a range */
+  key: Uint8Array;
+  left: CompressedExistenceProofSDKType;
+  right: CompressedExistenceProofSDKType;
 }
 
 function createBaseExistenceProof(): ExistenceProof {
@@ -648,8 +886,8 @@ export const CommitmentProof = {
 function createBaseLeafOp(): LeafOp {
   return {
     hash: 0,
-    prehash_key: 0,
-    prehash_value: 0,
+    prehashKey: 0,
+    prehashValue: 0,
     length: 0,
     prefix: new Uint8Array()
   };
@@ -661,12 +899,12 @@ export const LeafOp = {
       writer.uint32(8).int32(message.hash);
     }
 
-    if (message.prehash_key !== 0) {
-      writer.uint32(16).int32(message.prehash_key);
+    if (message.prehashKey !== 0) {
+      writer.uint32(16).int32(message.prehashKey);
     }
 
-    if (message.prehash_value !== 0) {
-      writer.uint32(24).int32(message.prehash_value);
+    if (message.prehashValue !== 0) {
+      writer.uint32(24).int32(message.prehashValue);
     }
 
     if (message.length !== 0) {
@@ -694,11 +932,11 @@ export const LeafOp = {
           break;
 
         case 2:
-          message.prehash_key = (reader.int32() as any);
+          message.prehashKey = (reader.int32() as any);
           break;
 
         case 3:
-          message.prehash_value = (reader.int32() as any);
+          message.prehashValue = (reader.int32() as any);
           break;
 
         case 4:
@@ -721,8 +959,8 @@ export const LeafOp = {
   fromJSON(object: any): LeafOp {
     return {
       hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : 0,
-      prehash_key: isSet(object.prehash_key) ? hashOpFromJSON(object.prehash_key) : 0,
-      prehash_value: isSet(object.prehash_value) ? hashOpFromJSON(object.prehash_value) : 0,
+      prehashKey: isSet(object.prehashKey) ? hashOpFromJSON(object.prehashKey) : 0,
+      prehashValue: isSet(object.prehashValue) ? hashOpFromJSON(object.prehashValue) : 0,
       length: isSet(object.length) ? lengthOpFromJSON(object.length) : 0,
       prefix: isSet(object.prefix) ? bytesFromBase64(object.prefix) : new Uint8Array()
     };
@@ -731,8 +969,8 @@ export const LeafOp = {
   toJSON(message: LeafOp): unknown {
     const obj: any = {};
     message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    message.prehash_key !== undefined && (obj.prehash_key = hashOpToJSON(message.prehash_key));
-    message.prehash_value !== undefined && (obj.prehash_value = hashOpToJSON(message.prehash_value));
+    message.prehashKey !== undefined && (obj.prehashKey = hashOpToJSON(message.prehashKey));
+    message.prehashValue !== undefined && (obj.prehashValue = hashOpToJSON(message.prehashValue));
     message.length !== undefined && (obj.length = lengthOpToJSON(message.length));
     message.prefix !== undefined && (obj.prefix = base64FromBytes(message.prefix !== undefined ? message.prefix : new Uint8Array()));
     return obj;
@@ -741,8 +979,8 @@ export const LeafOp = {
   fromPartial(object: DeepPartial<LeafOp>): LeafOp {
     const message = createBaseLeafOp();
     message.hash = object.hash ?? 0;
-    message.prehash_key = object.prehash_key ?? 0;
-    message.prehash_value = object.prehash_value ?? 0;
+    message.prehashKey = object.prehashKey ?? 0;
+    message.prehashValue = object.prehashValue ?? 0;
     message.length = object.length ?? 0;
     message.prefix = object.prefix ?? new Uint8Array();
     return message;
@@ -833,29 +1071,29 @@ export const InnerOp = {
 
 function createBaseProofSpec(): ProofSpec {
   return {
-    leaf_spec: undefined,
-    inner_spec: undefined,
-    max_depth: 0,
-    min_depth: 0
+    leafSpec: undefined,
+    innerSpec: undefined,
+    maxDepth: 0,
+    minDepth: 0
   };
 }
 
 export const ProofSpec = {
   encode(message: ProofSpec, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.leaf_spec !== undefined) {
-      LeafOp.encode(message.leaf_spec, writer.uint32(10).fork()).ldelim();
+    if (message.leafSpec !== undefined) {
+      LeafOp.encode(message.leafSpec, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.inner_spec !== undefined) {
-      InnerSpec.encode(message.inner_spec, writer.uint32(18).fork()).ldelim();
+    if (message.innerSpec !== undefined) {
+      InnerSpec.encode(message.innerSpec, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.max_depth !== 0) {
-      writer.uint32(24).int32(message.max_depth);
+    if (message.maxDepth !== 0) {
+      writer.uint32(24).int32(message.maxDepth);
     }
 
-    if (message.min_depth !== 0) {
-      writer.uint32(32).int32(message.min_depth);
+    if (message.minDepth !== 0) {
+      writer.uint32(32).int32(message.minDepth);
     }
 
     return writer;
@@ -871,19 +1109,19 @@ export const ProofSpec = {
 
       switch (tag >>> 3) {
         case 1:
-          message.leaf_spec = LeafOp.decode(reader, reader.uint32());
+          message.leafSpec = LeafOp.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.inner_spec = InnerSpec.decode(reader, reader.uint32());
+          message.innerSpec = InnerSpec.decode(reader, reader.uint32());
           break;
 
         case 3:
-          message.max_depth = reader.int32();
+          message.maxDepth = reader.int32();
           break;
 
         case 4:
-          message.min_depth = reader.int32();
+          message.minDepth = reader.int32();
           break;
 
         default:
@@ -897,28 +1135,28 @@ export const ProofSpec = {
 
   fromJSON(object: any): ProofSpec {
     return {
-      leaf_spec: isSet(object.leaf_spec) ? LeafOp.fromJSON(object.leaf_spec) : undefined,
-      inner_spec: isSet(object.inner_spec) ? InnerSpec.fromJSON(object.inner_spec) : undefined,
-      max_depth: isSet(object.max_depth) ? Number(object.max_depth) : 0,
-      min_depth: isSet(object.min_depth) ? Number(object.min_depth) : 0
+      leafSpec: isSet(object.leafSpec) ? LeafOp.fromJSON(object.leafSpec) : undefined,
+      innerSpec: isSet(object.innerSpec) ? InnerSpec.fromJSON(object.innerSpec) : undefined,
+      maxDepth: isSet(object.maxDepth) ? Number(object.maxDepth) : 0,
+      minDepth: isSet(object.minDepth) ? Number(object.minDepth) : 0
     };
   },
 
   toJSON(message: ProofSpec): unknown {
     const obj: any = {};
-    message.leaf_spec !== undefined && (obj.leaf_spec = message.leaf_spec ? LeafOp.toJSON(message.leaf_spec) : undefined);
-    message.inner_spec !== undefined && (obj.inner_spec = message.inner_spec ? InnerSpec.toJSON(message.inner_spec) : undefined);
-    message.max_depth !== undefined && (obj.max_depth = Math.round(message.max_depth));
-    message.min_depth !== undefined && (obj.min_depth = Math.round(message.min_depth));
+    message.leafSpec !== undefined && (obj.leafSpec = message.leafSpec ? LeafOp.toJSON(message.leafSpec) : undefined);
+    message.innerSpec !== undefined && (obj.innerSpec = message.innerSpec ? InnerSpec.toJSON(message.innerSpec) : undefined);
+    message.maxDepth !== undefined && (obj.maxDepth = Math.round(message.maxDepth));
+    message.minDepth !== undefined && (obj.minDepth = Math.round(message.minDepth));
     return obj;
   },
 
   fromPartial(object: DeepPartial<ProofSpec>): ProofSpec {
     const message = createBaseProofSpec();
-    message.leaf_spec = object.leaf_spec !== undefined && object.leaf_spec !== null ? LeafOp.fromPartial(object.leaf_spec) : undefined;
-    message.inner_spec = object.inner_spec !== undefined && object.inner_spec !== null ? InnerSpec.fromPartial(object.inner_spec) : undefined;
-    message.max_depth = object.max_depth ?? 0;
-    message.min_depth = object.min_depth ?? 0;
+    message.leafSpec = object.leafSpec !== undefined && object.leafSpec !== null ? LeafOp.fromPartial(object.leafSpec) : undefined;
+    message.innerSpec = object.innerSpec !== undefined && object.innerSpec !== null ? InnerSpec.fromPartial(object.innerSpec) : undefined;
+    message.maxDepth = object.maxDepth ?? 0;
+    message.minDepth = object.minDepth ?? 0;
     return message;
   }
 
@@ -926,11 +1164,11 @@ export const ProofSpec = {
 
 function createBaseInnerSpec(): InnerSpec {
   return {
-    child_order: [],
-    child_size: 0,
-    min_prefix_length: 0,
-    max_prefix_length: 0,
-    empty_child: new Uint8Array(),
+    childOrder: [],
+    childSize: 0,
+    minPrefixLength: 0,
+    maxPrefixLength: 0,
+    emptyChild: new Uint8Array(),
     hash: 0
   };
 }
@@ -939,26 +1177,26 @@ export const InnerSpec = {
   encode(message: InnerSpec, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     writer.uint32(10).fork();
 
-    for (const v of message.child_order) {
+    for (const v of message.childOrder) {
       writer.int32(v);
     }
 
     writer.ldelim();
 
-    if (message.child_size !== 0) {
-      writer.uint32(16).int32(message.child_size);
+    if (message.childSize !== 0) {
+      writer.uint32(16).int32(message.childSize);
     }
 
-    if (message.min_prefix_length !== 0) {
-      writer.uint32(24).int32(message.min_prefix_length);
+    if (message.minPrefixLength !== 0) {
+      writer.uint32(24).int32(message.minPrefixLength);
     }
 
-    if (message.max_prefix_length !== 0) {
-      writer.uint32(32).int32(message.max_prefix_length);
+    if (message.maxPrefixLength !== 0) {
+      writer.uint32(32).int32(message.maxPrefixLength);
     }
 
-    if (message.empty_child.length !== 0) {
-      writer.uint32(42).bytes(message.empty_child);
+    if (message.emptyChild.length !== 0) {
+      writer.uint32(42).bytes(message.emptyChild);
     }
 
     if (message.hash !== 0) {
@@ -982,28 +1220,28 @@ export const InnerSpec = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.child_order.push(reader.int32());
+              message.childOrder.push(reader.int32());
             }
           } else {
-            message.child_order.push(reader.int32());
+            message.childOrder.push(reader.int32());
           }
 
           break;
 
         case 2:
-          message.child_size = reader.int32();
+          message.childSize = reader.int32();
           break;
 
         case 3:
-          message.min_prefix_length = reader.int32();
+          message.minPrefixLength = reader.int32();
           break;
 
         case 4:
-          message.max_prefix_length = reader.int32();
+          message.maxPrefixLength = reader.int32();
           break;
 
         case 5:
-          message.empty_child = reader.bytes();
+          message.emptyChild = reader.bytes();
           break;
 
         case 6:
@@ -1021,11 +1259,11 @@ export const InnerSpec = {
 
   fromJSON(object: any): InnerSpec {
     return {
-      child_order: Array.isArray(object?.child_order) ? object.child_order.map((e: any) => Number(e)) : [],
-      child_size: isSet(object.child_size) ? Number(object.child_size) : 0,
-      min_prefix_length: isSet(object.min_prefix_length) ? Number(object.min_prefix_length) : 0,
-      max_prefix_length: isSet(object.max_prefix_length) ? Number(object.max_prefix_length) : 0,
-      empty_child: isSet(object.empty_child) ? bytesFromBase64(object.empty_child) : new Uint8Array(),
+      childOrder: Array.isArray(object?.childOrder) ? object.childOrder.map((e: any) => Number(e)) : [],
+      childSize: isSet(object.childSize) ? Number(object.childSize) : 0,
+      minPrefixLength: isSet(object.minPrefixLength) ? Number(object.minPrefixLength) : 0,
+      maxPrefixLength: isSet(object.maxPrefixLength) ? Number(object.maxPrefixLength) : 0,
+      emptyChild: isSet(object.emptyChild) ? bytesFromBase64(object.emptyChild) : new Uint8Array(),
       hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : 0
     };
   },
@@ -1033,27 +1271,27 @@ export const InnerSpec = {
   toJSON(message: InnerSpec): unknown {
     const obj: any = {};
 
-    if (message.child_order) {
-      obj.child_order = message.child_order.map(e => Math.round(e));
+    if (message.childOrder) {
+      obj.childOrder = message.childOrder.map(e => Math.round(e));
     } else {
-      obj.child_order = [];
+      obj.childOrder = [];
     }
 
-    message.child_size !== undefined && (obj.child_size = Math.round(message.child_size));
-    message.min_prefix_length !== undefined && (obj.min_prefix_length = Math.round(message.min_prefix_length));
-    message.max_prefix_length !== undefined && (obj.max_prefix_length = Math.round(message.max_prefix_length));
-    message.empty_child !== undefined && (obj.empty_child = base64FromBytes(message.empty_child !== undefined ? message.empty_child : new Uint8Array()));
+    message.childSize !== undefined && (obj.childSize = Math.round(message.childSize));
+    message.minPrefixLength !== undefined && (obj.minPrefixLength = Math.round(message.minPrefixLength));
+    message.maxPrefixLength !== undefined && (obj.maxPrefixLength = Math.round(message.maxPrefixLength));
+    message.emptyChild !== undefined && (obj.emptyChild = base64FromBytes(message.emptyChild !== undefined ? message.emptyChild : new Uint8Array()));
     message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
     return obj;
   },
 
   fromPartial(object: DeepPartial<InnerSpec>): InnerSpec {
     const message = createBaseInnerSpec();
-    message.child_order = object.child_order?.map(e => e) || [];
-    message.child_size = object.child_size ?? 0;
-    message.min_prefix_length = object.min_prefix_length ?? 0;
-    message.max_prefix_length = object.max_prefix_length ?? 0;
-    message.empty_child = object.empty_child ?? new Uint8Array();
+    message.childOrder = object.childOrder?.map(e => e) || [];
+    message.childSize = object.childSize ?? 0;
+    message.minPrefixLength = object.minPrefixLength ?? 0;
+    message.maxPrefixLength = object.maxPrefixLength ?? 0;
+    message.emptyChild = object.emptyChild ?? new Uint8Array();
     message.hash = object.hash ?? 0;
     return message;
   }
@@ -1195,7 +1433,7 @@ export const BatchEntry = {
 function createBaseCompressedBatchProof(): CompressedBatchProof {
   return {
     entries: [],
-    lookup_inners: []
+    lookupInners: []
   };
 }
 
@@ -1205,7 +1443,7 @@ export const CompressedBatchProof = {
       CompressedBatchEntry.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.lookup_inners) {
+    for (const v of message.lookupInners) {
       InnerOp.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -1226,7 +1464,7 @@ export const CompressedBatchProof = {
           break;
 
         case 2:
-          message.lookup_inners.push(InnerOp.decode(reader, reader.uint32()));
+          message.lookupInners.push(InnerOp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1241,7 +1479,7 @@ export const CompressedBatchProof = {
   fromJSON(object: any): CompressedBatchProof {
     return {
       entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => CompressedBatchEntry.fromJSON(e)) : [],
-      lookup_inners: Array.isArray(object?.lookup_inners) ? object.lookup_inners.map((e: any) => InnerOp.fromJSON(e)) : []
+      lookupInners: Array.isArray(object?.lookupInners) ? object.lookupInners.map((e: any) => InnerOp.fromJSON(e)) : []
     };
   },
 
@@ -1254,10 +1492,10 @@ export const CompressedBatchProof = {
       obj.entries = [];
     }
 
-    if (message.lookup_inners) {
-      obj.lookup_inners = message.lookup_inners.map(e => e ? InnerOp.toJSON(e) : undefined);
+    if (message.lookupInners) {
+      obj.lookupInners = message.lookupInners.map(e => e ? InnerOp.toJSON(e) : undefined);
     } else {
-      obj.lookup_inners = [];
+      obj.lookupInners = [];
     }
 
     return obj;
@@ -1266,7 +1504,7 @@ export const CompressedBatchProof = {
   fromPartial(object: DeepPartial<CompressedBatchProof>): CompressedBatchProof {
     const message = createBaseCompressedBatchProof();
     message.entries = object.entries?.map(e => CompressedBatchEntry.fromPartial(e)) || [];
-    message.lookup_inners = object.lookup_inners?.map(e => InnerOp.fromPartial(e)) || [];
+    message.lookupInners = object.lookupInners?.map(e => InnerOp.fromPartial(e)) || [];
     return message;
   }
 

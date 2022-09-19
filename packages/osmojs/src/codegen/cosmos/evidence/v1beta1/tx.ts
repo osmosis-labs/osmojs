@@ -1,18 +1,33 @@
-import { Any } from "../../../google/protobuf/any";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
 /**
  * MsgSubmitEvidence represents a message that supports submitting arbitrary
  * Evidence of misbehavior such as equivocation or counterfactual signing.
  */
+
 export interface MsgSubmitEvidence {
   submitter: string;
   evidence: Any;
 }
+/**
+ * MsgSubmitEvidence represents a message that supports submitting arbitrary
+ * Evidence of misbehavior such as equivocation or counterfactual signing.
+ */
 
+export interface MsgSubmitEvidenceSDKType {
+  submitter: string;
+  evidence: AnySDKType;
+}
 /** MsgSubmitEvidenceResponse defines the Msg/SubmitEvidence response type. */
+
 export interface MsgSubmitEvidenceResponse {
+  /** hash defines the hash of the evidence. */
+  hash: Uint8Array;
+}
+/** MsgSubmitEvidenceResponse defines the Msg/SubmitEvidence response type. */
+
+export interface MsgSubmitEvidenceResponseSDKType {
   /** hash defines the hash of the evidence. */
   hash: Uint8Array;
 }
@@ -101,7 +116,7 @@ export const MsgSubmitEvidenceResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitEvidenceResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitEvidenceResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSubmitEvidenceResponse();

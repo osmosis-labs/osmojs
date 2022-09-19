@@ -1,103 +1,198 @@
-import { PageRequest, PageResponse } from "../../../cosmos/base/query/v1beta1/pagination";
-import { SwapAmountInRoute, SwapAmountOutRoute } from "./tx";
-import { Any } from "../../../google/protobuf/any";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
+import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteSDKType } from "./tx";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** =============================== Pool */
+
 export interface QueryPoolRequest {
+  poolId: Long;
+}
+/** =============================== Pool */
+
+export interface QueryPoolRequestSDKType {
   poolId: Long;
 }
 export interface QueryPoolResponse {
   pool: Any;
 }
-
+export interface QueryPoolResponseSDKType {
+  pool: AnySDKType;
+}
 /** =============================== Pools */
+
 export interface QueryPoolsRequest {
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
 }
+/** =============================== Pools */
+
+export interface QueryPoolsRequestSDKType {
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequestSDKType;
+}
 export interface QueryPoolsResponse {
   pools: Any[];
-
   /** pagination defines the pagination in the response. */
+
   pagination?: PageResponse;
 }
+export interface QueryPoolsResponseSDKType {
+  pools: AnySDKType[];
+  /** pagination defines the pagination in the response. */
 
+  pagination?: PageResponseSDKType;
+}
 /** =============================== NumPools */
+
 export interface QueryNumPoolsRequest {}
+/** =============================== NumPools */
+
+export interface QueryNumPoolsRequestSDKType {}
 export interface QueryNumPoolsResponse {
   numPools: Long;
 }
-
+export interface QueryNumPoolsResponseSDKType {
+  numPools: Long;
+}
 /** =============================== PoolParams */
+
 export interface QueryPoolParamsRequest {
+  poolId: Long;
+}
+/** =============================== PoolParams */
+
+export interface QueryPoolParamsRequestSDKType {
   poolId: Long;
 }
 export interface QueryPoolParamsResponse {
   params: Any;
 }
-
+export interface QueryPoolParamsResponseSDKType {
+  params: AnySDKType;
+}
 /** =============================== PoolLiquidity */
+
 export interface QueryTotalPoolLiquidityRequest {
+  poolId: Long;
+}
+/** =============================== PoolLiquidity */
+
+export interface QueryTotalPoolLiquidityRequestSDKType {
   poolId: Long;
 }
 export interface QueryTotalPoolLiquidityResponse {
   liquidity: Coin[];
 }
-
+export interface QueryTotalPoolLiquidityResponseSDKType {
+  liquidity: CoinSDKType[];
+}
 /** =============================== TotalShares */
+
 export interface QueryTotalSharesRequest {
+  poolId: Long;
+}
+/** =============================== TotalShares */
+
+export interface QueryTotalSharesRequestSDKType {
   poolId: Long;
 }
 export interface QueryTotalSharesResponse {
   totalShares: Coin;
 }
-
+export interface QueryTotalSharesResponseSDKType {
+  totalShares: CoinSDKType;
+}
 /**
  * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
  * query.
  */
+
 export interface QuerySpotPriceRequest {
+  poolId: Long;
+  baseAssetDenom?: string;
+  quoteAssetDenom?: string;
+}
+/**
+ * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
+ * query.
+ */
+
+export interface QuerySpotPriceRequestSDKType {
   poolId: Long;
   base_asset_denom?: string;
   quote_asset_denom?: string;
 }
-
 /**
  * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
  * query.
  */
+
 export interface QuerySpotPriceResponse {
   /** String of the Dec. Ex) 10.203uatom */
   spotPrice: string;
 }
+/**
+ * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
+ * query.
+ */
 
+export interface QuerySpotPriceResponseSDKType {
+  /** String of the Dec. Ex) 10.203uatom */
+  spotPrice: string;
+}
 /** =============================== EstimateSwapExactAmountIn */
+
 export interface QuerySwapExactAmountInRequest {
   sender?: string;
   poolId: Long;
   tokenIn?: string;
   routes?: SwapAmountInRoute[];
 }
+/** =============================== EstimateSwapExactAmountIn */
+
+export interface QuerySwapExactAmountInRequestSDKType {
+  sender?: string;
+  poolId: Long;
+  tokenIn?: string;
+  routes?: SwapAmountInRouteSDKType[];
+}
 export interface QuerySwapExactAmountInResponse {
   tokenOutAmount: string;
 }
-
+export interface QuerySwapExactAmountInResponseSDKType {
+  tokenOutAmount: string;
+}
 /** =============================== EstimateSwapExactAmountOut */
+
 export interface QuerySwapExactAmountOutRequest {
   sender?: string;
   poolId: Long;
   routes?: SwapAmountOutRoute[];
   tokenOut?: string;
 }
+/** =============================== EstimateSwapExactAmountOut */
+
+export interface QuerySwapExactAmountOutRequestSDKType {
+  sender?: string;
+  poolId: Long;
+  routes?: SwapAmountOutRouteSDKType[];
+  tokenOut?: string;
+}
 export interface QuerySwapExactAmountOutResponse {
   tokenInAmount: string;
 }
+export interface QuerySwapExactAmountOutResponseSDKType {
+  tokenInAmount: string;
+}
 export interface QueryTotalLiquidityRequest {}
+export interface QueryTotalLiquidityRequestSDKType {}
 export interface QueryTotalLiquidityResponse {
   liquidity: Coin[];
+}
+export interface QueryTotalLiquidityResponseSDKType {
+  liquidity: CoinSDKType[];
 }
 
 function createBaseQueryPoolRequest(): QueryPoolRequest {
@@ -172,7 +267,7 @@ export const QueryPoolResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolResponse();
@@ -291,7 +386,7 @@ export const QueryPoolsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolsResponse();
@@ -404,7 +499,7 @@ export const QueryNumPoolsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryNumPoolsResponse();
@@ -518,7 +613,7 @@ export const QueryPoolParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolParamsResponse();
@@ -632,7 +727,7 @@ export const QueryTotalPoolLiquidityResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryTotalPoolLiquidityResponse();
@@ -752,7 +847,7 @@ export const QueryTotalSharesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryTotalSharesResponse();
@@ -797,8 +892,8 @@ export const QueryTotalSharesResponse = {
 function createBaseQuerySpotPriceRequest(): QuerySpotPriceRequest {
   return {
     poolId: Long.UZERO,
-    base_asset_denom: "",
-    quote_asset_denom: ""
+    baseAssetDenom: "",
+    quoteAssetDenom: ""
   };
 }
 
@@ -808,12 +903,12 @@ export const QuerySpotPriceRequest = {
       writer.uint32(8).uint64(message.poolId);
     }
 
-    if (message.base_asset_denom !== "") {
-      writer.uint32(18).string(message.base_asset_denom);
+    if (message.baseAssetDenom !== "") {
+      writer.uint32(18).string(message.baseAssetDenom);
     }
 
-    if (message.quote_asset_denom !== "") {
-      writer.uint32(26).string(message.quote_asset_denom);
+    if (message.quoteAssetDenom !== "") {
+      writer.uint32(26).string(message.quoteAssetDenom);
     }
 
     return writer;
@@ -833,11 +928,11 @@ export const QuerySpotPriceRequest = {
           break;
 
         case 2:
-          message.base_asset_denom = reader.string();
+          message.baseAssetDenom = reader.string();
           break;
 
         case 3:
-          message.quote_asset_denom = reader.string();
+          message.quoteAssetDenom = reader.string();
           break;
 
         default:
@@ -852,24 +947,24 @@ export const QuerySpotPriceRequest = {
   fromJSON(object: any): QuerySpotPriceRequest {
     return {
       poolId: isSet(object.poolId) ? Long.fromString(object.poolId) : Long.UZERO,
-      base_asset_denom: isSet(object.base_asset_denom) ? String(object.base_asset_denom) : "",
-      quote_asset_denom: isSet(object.quote_asset_denom) ? String(object.quote_asset_denom) : ""
+      baseAssetDenom: isSet(object.baseAssetDenom) ? String(object.baseAssetDenom) : "",
+      quoteAssetDenom: isSet(object.quoteAssetDenom) ? String(object.quoteAssetDenom) : ""
     };
   },
 
   toJSON(message: QuerySpotPriceRequest): unknown {
     const obj: any = {};
     message.poolId !== undefined && (obj.poolId = (message.poolId || Long.UZERO).toString());
-    message.base_asset_denom !== undefined && (obj.base_asset_denom = message.base_asset_denom);
-    message.quote_asset_denom !== undefined && (obj.quote_asset_denom = message.quote_asset_denom);
+    message.baseAssetDenom !== undefined && (obj.baseAssetDenom = message.baseAssetDenom);
+    message.quoteAssetDenom !== undefined && (obj.quoteAssetDenom = message.quoteAssetDenom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QuerySpotPriceRequest>): QuerySpotPriceRequest {
     const message = createBaseQuerySpotPriceRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
-    message.base_asset_denom = object.base_asset_denom ?? "";
-    message.quote_asset_denom = object.quote_asset_denom ?? "";
+    message.baseAssetDenom = object.baseAssetDenom ?? "";
+    message.quoteAssetDenom = object.quoteAssetDenom ?? "";
     return message;
   }
 
@@ -890,7 +985,7 @@ export const QuerySpotPriceResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySpotPriceResponse();
@@ -1046,7 +1141,7 @@ export const QuerySwapExactAmountInResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySwapExactAmountInResponse();
@@ -1202,7 +1297,7 @@ export const QuerySwapExactAmountOutResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySwapExactAmountOutResponse();
@@ -1302,7 +1397,7 @@ export const QueryTotalLiquidityResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryTotalLiquidityResponse();

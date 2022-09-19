@@ -1,4 +1,3 @@
-import { Coin } from "../../base/v1beta1/coin";
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgSetWithdrawAddress, MsgWithdrawDelegatorReward, MsgWithdrawValidatorCommission, MsgFundCommunityPool } from "./tx";
 export interface AminoMsgSetWithdrawAddress extends AminoMsg {
@@ -35,12 +34,12 @@ export const AminoConverter = {
   "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress": {
     aminoType: "cosmos-sdk/MsgModifyWithdrawAddress",
     toAmino: ({
-      delegator_address,
-      withdraw_address
+      delegatorAddress,
+      withdrawAddress
     }: MsgSetWithdrawAddress): AminoMsgSetWithdrawAddress["value"] => {
       return {
-        delegator_address,
-        withdraw_address
+        delegator_address: delegatorAddress,
+        withdraw_address: withdrawAddress
       };
     },
     fromAmino: ({
@@ -48,20 +47,20 @@ export const AminoConverter = {
       withdraw_address
     }: AminoMsgSetWithdrawAddress["value"]): MsgSetWithdrawAddress => {
       return {
-        delegator_address,
-        withdraw_address
+        delegatorAddress: delegator_address,
+        withdrawAddress: withdraw_address
       };
     }
   },
   "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward": {
     aminoType: "cosmos-sdk/MsgWithdrawDelegationReward",
     toAmino: ({
-      delegator_address,
-      validator_address
+      delegatorAddress,
+      validatorAddress
     }: MsgWithdrawDelegatorReward): AminoMsgWithdrawDelegatorReward["value"] => {
       return {
-        delegator_address,
-        validator_address
+        delegator_address: delegatorAddress,
+        validator_address: validatorAddress
       };
     },
     fromAmino: ({
@@ -69,25 +68,25 @@ export const AminoConverter = {
       validator_address
     }: AminoMsgWithdrawDelegatorReward["value"]): MsgWithdrawDelegatorReward => {
       return {
-        delegator_address,
-        validator_address
+        delegatorAddress: delegator_address,
+        validatorAddress: validator_address
       };
     }
   },
   "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission": {
     aminoType: "cosmos-sdk/MsgWithdrawValidatorCommission",
     toAmino: ({
-      validator_address
+      validatorAddress
     }: MsgWithdrawValidatorCommission): AminoMsgWithdrawValidatorCommission["value"] => {
       return {
-        validator_address
+        validator_address: validatorAddress
       };
     },
     fromAmino: ({
       validator_address
     }: AminoMsgWithdrawValidatorCommission["value"]): MsgWithdrawValidatorCommission => {
       return {
-        validator_address
+        validatorAddress: validator_address
       };
     }
   },

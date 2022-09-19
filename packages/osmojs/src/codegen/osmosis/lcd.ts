@@ -42,6 +42,9 @@ export const createLCDClient = async ({
       })
     },
     gov: {
+      v1: new (await import("../cosmos/gov/v1/query.lcd")).LCDQueryClient({
+        restEndpoint
+      }),
       v1beta1: new (await import("../cosmos/gov/v1beta1/query.lcd")).LCDQueryClient({
         restEndpoint
       })

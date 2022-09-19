@@ -1,54 +1,89 @@
-import { Duration } from "../../../google/protobuf/duration";
-import { DistrInfo, Params } from "./incentives";
-import { Gauge } from "../../incentives/gauge";
+import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
+import { DistrInfo, DistrInfoSDKType, Params, ParamsSDKType } from "./incentives";
+import { Gauge, GaugeSDKType } from "../../incentives/gauge";
 import * as _m0 from "protobufjs/minimal";
 import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
 export interface QueryGaugeIdsRequest {
+  poolId: Long;
+}
+export interface QueryGaugeIdsRequestSDKType {
   pool_id: Long;
 }
 export interface QueryGaugeIdsResponse {
-  gauge_ids_with_duration: QueryGaugeIdsResponse_GaugeIdWithDuration[];
+  gaugeIdsWithDuration: QueryGaugeIdsResponse_GaugeIdWithDuration[];
+}
+export interface QueryGaugeIdsResponseSDKType {
+  gauge_ids_with_duration: QueryGaugeIdsResponse_GaugeIdWithDurationSDKType[];
 }
 export interface QueryGaugeIdsResponse_GaugeIdWithDuration {
-  gauge_id: Long;
+  gaugeId: Long;
   duration: Duration;
 }
+export interface QueryGaugeIdsResponse_GaugeIdWithDurationSDKType {
+  gauge_id: Long;
+  duration: DurationSDKType;
+}
 export interface QueryDistrInfoRequest {}
+export interface QueryDistrInfoRequestSDKType {}
 export interface QueryDistrInfoResponse {
-  distr_info: DistrInfo;
+  distrInfo: DistrInfo;
+}
+export interface QueryDistrInfoResponseSDKType {
+  distr_info: DistrInfoSDKType;
 }
 export interface QueryParamsRequest {}
+export interface QueryParamsRequestSDKType {}
 export interface QueryParamsResponse {
   params: Params;
 }
+export interface QueryParamsResponseSDKType {
+  params: ParamsSDKType;
+}
 export interface QueryLockableDurationsRequest {}
+export interface QueryLockableDurationsRequestSDKType {}
 export interface QueryLockableDurationsResponse {
-  lockable_durations: Duration[];
+  lockableDurations: Duration[];
+}
+export interface QueryLockableDurationsResponseSDKType {
+  lockable_durations: DurationSDKType[];
 }
 export interface QueryIncentivizedPoolsRequest {}
+export interface QueryIncentivizedPoolsRequestSDKType {}
 export interface IncentivizedPool {
+  poolId: Long;
+  lockableDuration: Duration;
+  gaugeId: Long;
+}
+export interface IncentivizedPoolSDKType {
   pool_id: Long;
-  lockable_duration: Duration;
+  lockable_duration: DurationSDKType;
   gauge_id: Long;
 }
 export interface QueryIncentivizedPoolsResponse {
-  incentivized_pools: IncentivizedPool[];
+  incentivizedPools: IncentivizedPool[];
+}
+export interface QueryIncentivizedPoolsResponseSDKType {
+  incentivized_pools: IncentivizedPoolSDKType[];
 }
 export interface QueryExternalIncentiveGaugesRequest {}
+export interface QueryExternalIncentiveGaugesRequestSDKType {}
 export interface QueryExternalIncentiveGaugesResponse {
   data: Gauge[];
+}
+export interface QueryExternalIncentiveGaugesResponseSDKType {
+  data: GaugeSDKType[];
 }
 
 function createBaseQueryGaugeIdsRequest(): QueryGaugeIdsRequest {
   return {
-    pool_id: Long.UZERO
+    poolId: Long.UZERO
   };
 }
 
 export const QueryGaugeIdsRequest = {
   encode(message: QueryGaugeIdsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.pool_id.isZero()) {
-      writer.uint32(8).uint64(message.pool_id);
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
     }
 
     return writer;
@@ -64,7 +99,7 @@ export const QueryGaugeIdsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.pool_id = (reader.uint64() as Long);
+          message.poolId = (reader.uint64() as Long);
           break;
 
         default:
@@ -78,19 +113,19 @@ export const QueryGaugeIdsRequest = {
 
   fromJSON(object: any): QueryGaugeIdsRequest {
     return {
-      pool_id: isSet(object.pool_id) ? Long.fromString(object.pool_id) : Long.UZERO
+      poolId: isSet(object.poolId) ? Long.fromString(object.poolId) : Long.UZERO
     };
   },
 
   toJSON(message: QueryGaugeIdsRequest): unknown {
     const obj: any = {};
-    message.pool_id !== undefined && (obj.pool_id = (message.pool_id || Long.UZERO).toString());
+    message.poolId !== undefined && (obj.poolId = (message.poolId || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryGaugeIdsRequest>): QueryGaugeIdsRequest {
     const message = createBaseQueryGaugeIdsRequest();
-    message.pool_id = object.pool_id !== undefined && object.pool_id !== null ? Long.fromValue(object.pool_id) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     return message;
   }
 
@@ -98,20 +133,20 @@ export const QueryGaugeIdsRequest = {
 
 function createBaseQueryGaugeIdsResponse(): QueryGaugeIdsResponse {
   return {
-    gauge_ids_with_duration: []
+    gaugeIdsWithDuration: []
   };
 }
 
 export const QueryGaugeIdsResponse = {
   encode(message: QueryGaugeIdsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.gauge_ids_with_duration) {
+    for (const v of message.gaugeIdsWithDuration) {
       QueryGaugeIdsResponse_GaugeIdWithDuration.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGaugeIdsResponse();
@@ -121,7 +156,7 @@ export const QueryGaugeIdsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.gauge_ids_with_duration.push(QueryGaugeIdsResponse_GaugeIdWithDuration.decode(reader, reader.uint32()));
+          message.gaugeIdsWithDuration.push(QueryGaugeIdsResponse_GaugeIdWithDuration.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -135,17 +170,17 @@ export const QueryGaugeIdsResponse = {
 
   fromJSON(object: any): QueryGaugeIdsResponse {
     return {
-      gauge_ids_with_duration: Array.isArray(object?.gauge_ids_with_duration) ? object.gauge_ids_with_duration.map((e: any) => QueryGaugeIdsResponse_GaugeIdWithDuration.fromJSON(e)) : []
+      gaugeIdsWithDuration: Array.isArray(object?.gaugeIdsWithDuration) ? object.gaugeIdsWithDuration.map((e: any) => QueryGaugeIdsResponse_GaugeIdWithDuration.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryGaugeIdsResponse): unknown {
     const obj: any = {};
 
-    if (message.gauge_ids_with_duration) {
-      obj.gauge_ids_with_duration = message.gauge_ids_with_duration.map(e => e ? QueryGaugeIdsResponse_GaugeIdWithDuration.toJSON(e) : undefined);
+    if (message.gaugeIdsWithDuration) {
+      obj.gaugeIdsWithDuration = message.gaugeIdsWithDuration.map(e => e ? QueryGaugeIdsResponse_GaugeIdWithDuration.toJSON(e) : undefined);
     } else {
-      obj.gauge_ids_with_duration = [];
+      obj.gaugeIdsWithDuration = [];
     }
 
     return obj;
@@ -153,7 +188,7 @@ export const QueryGaugeIdsResponse = {
 
   fromPartial(object: DeepPartial<QueryGaugeIdsResponse>): QueryGaugeIdsResponse {
     const message = createBaseQueryGaugeIdsResponse();
-    message.gauge_ids_with_duration = object.gauge_ids_with_duration?.map(e => QueryGaugeIdsResponse_GaugeIdWithDuration.fromPartial(e)) || [];
+    message.gaugeIdsWithDuration = object.gaugeIdsWithDuration?.map(e => QueryGaugeIdsResponse_GaugeIdWithDuration.fromPartial(e)) || [];
     return message;
   }
 
@@ -161,15 +196,15 @@ export const QueryGaugeIdsResponse = {
 
 function createBaseQueryGaugeIdsResponse_GaugeIdWithDuration(): QueryGaugeIdsResponse_GaugeIdWithDuration {
   return {
-    gauge_id: Long.UZERO,
+    gaugeId: Long.UZERO,
     duration: undefined
   };
 }
 
 export const QueryGaugeIdsResponse_GaugeIdWithDuration = {
   encode(message: QueryGaugeIdsResponse_GaugeIdWithDuration, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.gauge_id.isZero()) {
-      writer.uint32(8).uint64(message.gauge_id);
+    if (!message.gaugeId.isZero()) {
+      writer.uint32(8).uint64(message.gaugeId);
     }
 
     if (message.duration !== undefined) {
@@ -189,7 +224,7 @@ export const QueryGaugeIdsResponse_GaugeIdWithDuration = {
 
       switch (tag >>> 3) {
         case 1:
-          message.gauge_id = (reader.uint64() as Long);
+          message.gaugeId = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -207,21 +242,21 @@ export const QueryGaugeIdsResponse_GaugeIdWithDuration = {
 
   fromJSON(object: any): QueryGaugeIdsResponse_GaugeIdWithDuration {
     return {
-      gauge_id: isSet(object.gauge_id) ? Long.fromString(object.gauge_id) : Long.UZERO,
+      gaugeId: isSet(object.gaugeId) ? Long.fromString(object.gaugeId) : Long.UZERO,
       duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined
     };
   },
 
   toJSON(message: QueryGaugeIdsResponse_GaugeIdWithDuration): unknown {
     const obj: any = {};
-    message.gauge_id !== undefined && (obj.gauge_id = (message.gauge_id || Long.UZERO).toString());
+    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || Long.UZERO).toString());
     message.duration !== undefined && (obj.duration = message.duration);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryGaugeIdsResponse_GaugeIdWithDuration>): QueryGaugeIdsResponse_GaugeIdWithDuration {
     const message = createBaseQueryGaugeIdsResponse_GaugeIdWithDuration();
-    message.gauge_id = object.gauge_id !== undefined && object.gauge_id !== null ? Long.fromValue(object.gauge_id) : Long.UZERO;
+    message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     message.duration = object.duration ?? undefined;
     return message;
   }
@@ -273,20 +308,20 @@ export const QueryDistrInfoRequest = {
 
 function createBaseQueryDistrInfoResponse(): QueryDistrInfoResponse {
   return {
-    distr_info: undefined
+    distrInfo: undefined
   };
 }
 
 export const QueryDistrInfoResponse = {
   encode(message: QueryDistrInfoResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.distr_info !== undefined) {
-      DistrInfo.encode(message.distr_info, writer.uint32(10).fork()).ldelim();
+    if (message.distrInfo !== undefined) {
+      DistrInfo.encode(message.distrInfo, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDistrInfoResponse();
@@ -296,7 +331,7 @@ export const QueryDistrInfoResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.distr_info = DistrInfo.decode(reader, reader.uint32());
+          message.distrInfo = DistrInfo.decode(reader, reader.uint32());
           break;
 
         default:
@@ -310,19 +345,19 @@ export const QueryDistrInfoResponse = {
 
   fromJSON(object: any): QueryDistrInfoResponse {
     return {
-      distr_info: isSet(object.distr_info) ? DistrInfo.fromJSON(object.distr_info) : undefined
+      distrInfo: isSet(object.distrInfo) ? DistrInfo.fromJSON(object.distrInfo) : undefined
     };
   },
 
   toJSON(message: QueryDistrInfoResponse): unknown {
     const obj: any = {};
-    message.distr_info !== undefined && (obj.distr_info = message.distr_info ? DistrInfo.toJSON(message.distr_info) : undefined);
+    message.distrInfo !== undefined && (obj.distrInfo = message.distrInfo ? DistrInfo.toJSON(message.distrInfo) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDistrInfoResponse>): QueryDistrInfoResponse {
     const message = createBaseQueryDistrInfoResponse();
-    message.distr_info = object.distr_info !== undefined && object.distr_info !== null ? DistrInfo.fromPartial(object.distr_info) : undefined;
+    message.distrInfo = object.distrInfo !== undefined && object.distrInfo !== null ? DistrInfo.fromPartial(object.distrInfo) : undefined;
     return message;
   }
 
@@ -386,7 +421,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -473,20 +508,20 @@ export const QueryLockableDurationsRequest = {
 
 function createBaseQueryLockableDurationsResponse(): QueryLockableDurationsResponse {
   return {
-    lockable_durations: []
+    lockableDurations: []
   };
 }
 
 export const QueryLockableDurationsResponse = {
   encode(message: QueryLockableDurationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.lockable_durations) {
+    for (const v of message.lockableDurations) {
       Duration.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryLockableDurationsResponse();
@@ -496,7 +531,7 @@ export const QueryLockableDurationsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.lockable_durations.push(Duration.decode(reader, reader.uint32()));
+          message.lockableDurations.push(Duration.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -510,17 +545,17 @@ export const QueryLockableDurationsResponse = {
 
   fromJSON(object: any): QueryLockableDurationsResponse {
     return {
-      lockable_durations: Array.isArray(object?.lockable_durations) ? object.lockable_durations.map((e: any) => Duration.fromJSON(e)) : []
+      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryLockableDurationsResponse): unknown {
     const obj: any = {};
 
-    if (message.lockable_durations) {
-      obj.lockable_durations = message.lockable_durations.map(e => e ? Duration.toJSON(e) : undefined);
+    if (message.lockableDurations) {
+      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
     } else {
-      obj.lockable_durations = [];
+      obj.lockableDurations = [];
     }
 
     return obj;
@@ -528,7 +563,7 @@ export const QueryLockableDurationsResponse = {
 
   fromPartial(object: DeepPartial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse {
     const message = createBaseQueryLockableDurationsResponse();
-    message.lockable_durations = object.lockable_durations?.map(e => Duration.fromPartial(e)) || [];
+    message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
     return message;
   }
 
@@ -579,24 +614,24 @@ export const QueryIncentivizedPoolsRequest = {
 
 function createBaseIncentivizedPool(): IncentivizedPool {
   return {
-    pool_id: Long.UZERO,
-    lockable_duration: undefined,
-    gauge_id: Long.UZERO
+    poolId: Long.UZERO,
+    lockableDuration: undefined,
+    gaugeId: Long.UZERO
   };
 }
 
 export const IncentivizedPool = {
   encode(message: IncentivizedPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.pool_id.isZero()) {
-      writer.uint32(8).uint64(message.pool_id);
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
     }
 
-    if (message.lockable_duration !== undefined) {
-      Duration.encode(message.lockable_duration, writer.uint32(18).fork()).ldelim();
+    if (message.lockableDuration !== undefined) {
+      Duration.encode(message.lockableDuration, writer.uint32(18).fork()).ldelim();
     }
 
-    if (!message.gauge_id.isZero()) {
-      writer.uint32(24).uint64(message.gauge_id);
+    if (!message.gaugeId.isZero()) {
+      writer.uint32(24).uint64(message.gaugeId);
     }
 
     return writer;
@@ -612,15 +647,15 @@ export const IncentivizedPool = {
 
       switch (tag >>> 3) {
         case 1:
-          message.pool_id = (reader.uint64() as Long);
+          message.poolId = (reader.uint64() as Long);
           break;
 
         case 2:
-          message.lockable_duration = Duration.decode(reader, reader.uint32());
+          message.lockableDuration = Duration.decode(reader, reader.uint32());
           break;
 
         case 3:
-          message.gauge_id = (reader.uint64() as Long);
+          message.gaugeId = (reader.uint64() as Long);
           break;
 
         default:
@@ -634,25 +669,25 @@ export const IncentivizedPool = {
 
   fromJSON(object: any): IncentivizedPool {
     return {
-      pool_id: isSet(object.pool_id) ? Long.fromString(object.pool_id) : Long.UZERO,
-      lockable_duration: isSet(object.lockable_duration) ? Duration.fromJSON(object.lockable_duration) : undefined,
-      gauge_id: isSet(object.gauge_id) ? Long.fromString(object.gauge_id) : Long.UZERO
+      poolId: isSet(object.poolId) ? Long.fromString(object.poolId) : Long.UZERO,
+      lockableDuration: isSet(object.lockableDuration) ? Duration.fromJSON(object.lockableDuration) : undefined,
+      gaugeId: isSet(object.gaugeId) ? Long.fromString(object.gaugeId) : Long.UZERO
     };
   },
 
   toJSON(message: IncentivizedPool): unknown {
     const obj: any = {};
-    message.pool_id !== undefined && (obj.pool_id = (message.pool_id || Long.UZERO).toString());
-    message.lockable_duration !== undefined && (obj.lockable_duration = message.lockable_duration);
-    message.gauge_id !== undefined && (obj.gauge_id = (message.gauge_id || Long.UZERO).toString());
+    message.poolId !== undefined && (obj.poolId = (message.poolId || Long.UZERO).toString());
+    message.lockableDuration !== undefined && (obj.lockableDuration = message.lockableDuration);
+    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<IncentivizedPool>): IncentivizedPool {
     const message = createBaseIncentivizedPool();
-    message.pool_id = object.pool_id !== undefined && object.pool_id !== null ? Long.fromValue(object.pool_id) : Long.UZERO;
-    message.lockable_duration = object.lockable_duration ?? undefined;
-    message.gauge_id = object.gauge_id !== undefined && object.gauge_id !== null ? Long.fromValue(object.gauge_id) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.lockableDuration = object.lockableDuration ?? undefined;
+    message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     return message;
   }
 
@@ -660,20 +695,20 @@ export const IncentivizedPool = {
 
 function createBaseQueryIncentivizedPoolsResponse(): QueryIncentivizedPoolsResponse {
   return {
-    incentivized_pools: []
+    incentivizedPools: []
   };
 }
 
 export const QueryIncentivizedPoolsResponse = {
   encode(message: QueryIncentivizedPoolsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.incentivized_pools) {
+    for (const v of message.incentivizedPools) {
       IncentivizedPool.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryIncentivizedPoolsResponse();
@@ -683,7 +718,7 @@ export const QueryIncentivizedPoolsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.incentivized_pools.push(IncentivizedPool.decode(reader, reader.uint32()));
+          message.incentivizedPools.push(IncentivizedPool.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -697,17 +732,17 @@ export const QueryIncentivizedPoolsResponse = {
 
   fromJSON(object: any): QueryIncentivizedPoolsResponse {
     return {
-      incentivized_pools: Array.isArray(object?.incentivized_pools) ? object.incentivized_pools.map((e: any) => IncentivizedPool.fromJSON(e)) : []
+      incentivizedPools: Array.isArray(object?.incentivizedPools) ? object.incentivizedPools.map((e: any) => IncentivizedPool.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryIncentivizedPoolsResponse): unknown {
     const obj: any = {};
 
-    if (message.incentivized_pools) {
-      obj.incentivized_pools = message.incentivized_pools.map(e => e ? IncentivizedPool.toJSON(e) : undefined);
+    if (message.incentivizedPools) {
+      obj.incentivizedPools = message.incentivizedPools.map(e => e ? IncentivizedPool.toJSON(e) : undefined);
     } else {
-      obj.incentivized_pools = [];
+      obj.incentivizedPools = [];
     }
 
     return obj;
@@ -715,7 +750,7 @@ export const QueryIncentivizedPoolsResponse = {
 
   fromPartial(object: DeepPartial<QueryIncentivizedPoolsResponse>): QueryIncentivizedPoolsResponse {
     const message = createBaseQueryIncentivizedPoolsResponse();
-    message.incentivized_pools = object.incentivized_pools?.map(e => IncentivizedPool.fromPartial(e)) || [];
+    message.incentivizedPools = object.incentivizedPools?.map(e => IncentivizedPool.fromPartial(e)) || [];
     return message;
   }
 
@@ -779,7 +814,7 @@ export const QueryExternalIncentiveGaugesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryExternalIncentiveGaugesResponse();

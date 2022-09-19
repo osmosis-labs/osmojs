@@ -1,5 +1,3 @@
-import { Coin } from "../../base/v1beta1/coin";
-import { Input, Output } from "./bank";
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgSend, MsgMultiSend } from "./tx";
 export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmos.bank.v1beta1.MsgSend", MsgSend], ["/cosmos.bank.v1beta1.MsgMultiSend", MsgMultiSend]];

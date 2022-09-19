@@ -1,5 +1,3 @@
-import { Coin } from "../../../../cosmos/base/v1beta1/coin";
-import { Height } from "../../../core/client/v1/client";
 import { AminoMsg } from "@cosmjs/amino";
 import { AminoHeight, Long, omitDefault } from "@osmonauts/helpers";
 import { MsgTransfer } from "./tx";
@@ -22,28 +20,28 @@ export const AminoConverter = {
   "/ibc.applications.transfer.v1.MsgTransfer": {
     aminoType: "cosmos-sdk/MsgTransfer",
     toAmino: ({
-      source_port,
-      source_channel,
+      sourcePort,
+      sourceChannel,
       token,
       sender,
       receiver,
-      timeout_height,
-      timeout_timestamp
+      timeoutHeight,
+      timeoutTimestamp
     }: MsgTransfer): AminoMsgTransfer["value"] => {
       return {
-        source_port,
-        source_channel,
+        source_port: sourcePort,
+        source_channel: sourceChannel,
         token: {
           denom: token.denom,
           amount: Long.fromNumber(token.amount).toString()
         },
         sender,
         receiver,
-        timeout_height: timeout_height ? {
-          revision_height: omitDefault(timeout_height.revisionHeight)?.toString(),
-          revision_number: omitDefault(timeout_height.revisionNumber)?.toString()
+        timeout_height: timeoutHeight ? {
+          revision_height: omitDefault(timeoutHeight.revisionHeight)?.toString(),
+          revision_number: omitDefault(timeoutHeight.revisionNumber)?.toString()
         } : {},
-        timeout_timestamp: timeout_timestamp.toString()
+        timeout_timestamp: timeoutTimestamp.toString()
       };
     },
     fromAmino: ({
@@ -56,19 +54,19 @@ export const AminoConverter = {
       timeout_timestamp
     }: AminoMsgTransfer["value"]): MsgTransfer => {
       return {
-        source_port,
-        source_channel,
+        sourcePort: source_port,
+        sourceChannel: source_channel,
         token: {
           denom: token.denom,
           amount: token.amount
         },
         sender,
         receiver,
-        timeout_height: timeout_height ? {
+        timeoutHeight: timeout_height ? {
           revisionHeight: Long.fromString(timeout_height.revision_height || "0", true),
           revisionNumber: Long.fromString(timeout_height.revision_number || "0", true)
         } : undefined,
-        timeout_timestamp: Long.fromString(timeout_timestamp)
+        timeoutTimestamp: Long.fromString(timeout_timestamp)
       };
     }
   }

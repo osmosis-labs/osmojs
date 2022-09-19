@@ -1,30 +1,57 @@
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * ===================== MsgJoinPool
  * This is really MsgJoinPoolNoSwap
  */
+
 export interface MsgJoinPool {
   sender: string;
   poolId: Long;
   shareOutAmount: string;
   tokenInMaxs: Coin[];
 }
-export interface MsgJoinPoolResponse {}
+/**
+ * ===================== MsgJoinPool
+ * This is really MsgJoinPoolNoSwap
+ */
 
+export interface MsgJoinPoolSDKType {
+  sender: string;
+  poolId: Long;
+  shareOutAmount: string;
+  tokenInMaxs: CoinSDKType[];
+}
+export interface MsgJoinPoolResponse {}
+export interface MsgJoinPoolResponseSDKType {}
 /** ===================== MsgExitPool */
+
 export interface MsgExitPool {
   sender: string;
   poolId: Long;
   shareInAmount: string;
   tokenOutMins: Coin[];
 }
-export interface MsgExitPoolResponse {}
+/** ===================== MsgExitPool */
 
+export interface MsgExitPoolSDKType {
+  sender: string;
+  poolId: Long;
+  shareInAmount: string;
+  tokenOutMins: CoinSDKType[];
+}
+export interface MsgExitPoolResponse {}
+export interface MsgExitPoolResponseSDKType {}
 /** ===================== MsgSwapExactAmountIn */
+
 export interface SwapAmountInRoute {
+  poolId: Long;
+  tokenOutDenom: string;
+}
+/** ===================== MsgSwapExactAmountIn */
+
+export interface SwapAmountInRouteSDKType {
   poolId: Long;
   tokenOutDenom: string;
 }
@@ -34,12 +61,27 @@ export interface MsgSwapExactAmountIn {
   tokenIn: Coin;
   tokenOutMinAmount: string;
 }
+export interface MsgSwapExactAmountInSDKType {
+  sender: string;
+  routes: SwapAmountInRouteSDKType[];
+  tokenIn: CoinSDKType;
+  tokenOutMinAmount: string;
+}
 export interface MsgSwapExactAmountInResponse {
   tokenOutAmount: string;
 }
-
+export interface MsgSwapExactAmountInResponseSDKType {
+  tokenOutAmount: string;
+}
 /** ===================== MsgSwapExactAmountOut */
+
 export interface SwapAmountOutRoute {
+  poolId: Long;
+  tokenInDenom: string;
+}
+/** ===================== MsgSwapExactAmountOut */
+
+export interface SwapAmountOutRouteSDKType {
   poolId: Long;
   tokenInDenom: string;
 }
@@ -49,26 +91,58 @@ export interface MsgSwapExactAmountOut {
   tokenInMaxAmount: string;
   tokenOut: Coin;
 }
+export interface MsgSwapExactAmountOutSDKType {
+  sender: string;
+  routes: SwapAmountOutRouteSDKType[];
+  tokenInMaxAmount: string;
+  tokenOut: CoinSDKType;
+}
 export interface MsgSwapExactAmountOutResponse {
   tokenInAmount: string;
 }
-
+export interface MsgSwapExactAmountOutResponseSDKType {
+  tokenInAmount: string;
+}
 /**
  * ===================== MsgJoinSwapExternAmountIn
  * TODO: Rename to MsgJoinSwapExactAmountIn
  */
+
 export interface MsgJoinSwapExternAmountIn {
   sender: string;
   poolId: Long;
   tokenIn: Coin;
   shareOutMinAmount: string;
 }
+/**
+ * ===================== MsgJoinSwapExternAmountIn
+ * TODO: Rename to MsgJoinSwapExactAmountIn
+ */
+
+export interface MsgJoinSwapExternAmountInSDKType {
+  sender: string;
+  poolId: Long;
+  tokenIn: CoinSDKType;
+  shareOutMinAmount: string;
+}
 export interface MsgJoinSwapExternAmountInResponse {
   shareOutAmount: string;
 }
-
+export interface MsgJoinSwapExternAmountInResponseSDKType {
+  shareOutAmount: string;
+}
 /** ===================== MsgJoinSwapShareAmountOut */
+
 export interface MsgJoinSwapShareAmountOut {
+  sender: string;
+  poolId: Long;
+  tokenInDenom: string;
+  shareOutAmount: string;
+  tokenInMaxAmount: string;
+}
+/** ===================== MsgJoinSwapShareAmountOut */
+
+export interface MsgJoinSwapShareAmountOutSDKType {
   sender: string;
   poolId: Long;
   tokenInDenom: string;
@@ -78,9 +152,21 @@ export interface MsgJoinSwapShareAmountOut {
 export interface MsgJoinSwapShareAmountOutResponse {
   tokenInAmount: string;
 }
-
+export interface MsgJoinSwapShareAmountOutResponseSDKType {
+  tokenInAmount: string;
+}
 /** ===================== MsgExitSwapShareAmountIn */
+
 export interface MsgExitSwapShareAmountIn {
+  sender: string;
+  poolId: Long;
+  tokenOutDenom: string;
+  shareInAmount: string;
+  tokenOutMinAmount: string;
+}
+/** ===================== MsgExitSwapShareAmountIn */
+
+export interface MsgExitSwapShareAmountInSDKType {
   sender: string;
   poolId: Long;
   tokenOutDenom: string;
@@ -90,15 +176,29 @@ export interface MsgExitSwapShareAmountIn {
 export interface MsgExitSwapShareAmountInResponse {
   tokenOutAmount: string;
 }
-
+export interface MsgExitSwapShareAmountInResponseSDKType {
+  tokenOutAmount: string;
+}
 /** ===================== MsgExitSwapExternAmountOut */
+
 export interface MsgExitSwapExternAmountOut {
   sender: string;
   poolId: Long;
   tokenOut: Coin;
   shareInMaxAmount: string;
 }
+/** ===================== MsgExitSwapExternAmountOut */
+
+export interface MsgExitSwapExternAmountOutSDKType {
+  sender: string;
+  poolId: Long;
+  tokenOut: CoinSDKType;
+  shareInMaxAmount: string;
+}
 export interface MsgExitSwapExternAmountOutResponse {
+  shareInAmount: string;
+}
+export interface MsgExitSwapExternAmountOutResponseSDKType {
   shareInAmount: string;
 }
 
@@ -210,7 +310,7 @@ export const MsgJoinPoolResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPoolResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPoolResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgJoinPoolResponse();
@@ -352,7 +452,7 @@ export const MsgExitPoolResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPoolResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPoolResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitPoolResponse();
@@ -569,7 +669,7 @@ export const MsgSwapExactAmountInResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSwapExactAmountInResponse();
@@ -794,7 +894,7 @@ export const MsgSwapExactAmountOutResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOutResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOutResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSwapExactAmountOutResponse();
@@ -944,7 +1044,7 @@ export const MsgJoinSwapExternAmountInResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountInResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountInResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgJoinSwapExternAmountInResponse();
@@ -1106,7 +1206,7 @@ export const MsgJoinSwapShareAmountOutResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOutResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOutResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgJoinSwapShareAmountOutResponse();
@@ -1268,7 +1368,7 @@ export const MsgExitSwapShareAmountInResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountInResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountInResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitSwapShareAmountInResponse();
@@ -1418,7 +1518,7 @@ export const MsgExitSwapExternAmountOutResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOutResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOutResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitSwapExternAmountOutResponse();

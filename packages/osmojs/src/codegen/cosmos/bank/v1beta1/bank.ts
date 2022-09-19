@@ -1,34 +1,60 @@
-import { Coin } from "../../base/v1beta1/coin";
+import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** Params defines the parameters for the bank module. */
+
 export interface Params {
-  send_enabled: SendEnabled[];
+  sendEnabled: SendEnabled[];
+  defaultSendEnabled: boolean;
+}
+/** Params defines the parameters for the bank module. */
+
+export interface ParamsSDKType {
+  send_enabled: SendEnabledSDKType[];
   default_send_enabled: boolean;
 }
-
 /**
  * SendEnabled maps coin denom to a send_enabled status (whether a denom is
  * sendable).
  */
+
 export interface SendEnabled {
   denom: string;
   enabled: boolean;
 }
+/**
+ * SendEnabled maps coin denom to a send_enabled status (whether a denom is
+ * sendable).
+ */
 
+export interface SendEnabledSDKType {
+  denom: string;
+  enabled: boolean;
+}
 /** Input models transaction input. */
+
 export interface Input {
   address: string;
   coins: Coin[];
 }
+/** Input models transaction input. */
 
+export interface InputSDKType {
+  address: string;
+  coins: CoinSDKType[];
+}
 /** Output models transaction outputs. */
+
 export interface Output {
   address: string;
   coins: Coin[];
 }
+/** Output models transaction outputs. */
 
+export interface OutputSDKType {
+  address: string;
+  coins: CoinSDKType[];
+}
 /**
  * Supply represents a struct that passively keeps track of the total supply
  * amounts in the network.
@@ -36,18 +62,29 @@ export interface Output {
  */
 
 /** @deprecated */
+
 export interface Supply {
   total: Coin[];
 }
+/**
+ * Supply represents a struct that passively keeps track of the total supply
+ * amounts in the network.
+ * This message is deprecated now that supply is indexed by denom.
+ */
 
+/** @deprecated */
+
+export interface SupplySDKType {
+  total: CoinSDKType[];
+}
 /**
  * DenomUnit represents a struct that describes a given
  * denomination unit of the basic token.
  */
+
 export interface DenomUnit {
   /** denom represents the string name of the given denom unit (e.g uatom). */
   denom: string;
-
   /**
    * exponent represents power of 10 exponent that one must
    * raise the base_denom to in order to equal the given DenomUnit's denom
@@ -55,77 +92,149 @@ export interface DenomUnit {
    * (e.g. with a base_denom of uatom, one can create a DenomUnit of 'atom' with
    * exponent = 6, thus: 1 atom = 10^6 uatom).
    */
-  exponent: number;
 
+  exponent: number;
   /** aliases is a list of string aliases for the given denom */
+
   aliases: string[];
 }
+/**
+ * DenomUnit represents a struct that describes a given
+ * denomination unit of the basic token.
+ */
 
+export interface DenomUnitSDKType {
+  /** denom represents the string name of the given denom unit (e.g uatom). */
+  denom: string;
+  /**
+   * exponent represents power of 10 exponent that one must
+   * raise the base_denom to in order to equal the given DenomUnit's denom
+   * 1 denom = 10^exponent base_denom
+   * (e.g. with a base_denom of uatom, one can create a DenomUnit of 'atom' with
+   * exponent = 6, thus: 1 atom = 10^6 uatom).
+   */
+
+  exponent: number;
+  /** aliases is a list of string aliases for the given denom */
+
+  aliases: string[];
+}
 /**
  * Metadata represents a struct that describes
  * a basic token.
  */
+
 export interface Metadata {
   description: string;
-
   /** denom_units represents the list of DenomUnit's for a given coin */
-  denom_units: DenomUnit[];
 
+  denomUnits: DenomUnit[];
   /** base represents the base denom (should be the DenomUnit with exponent = 0). */
-  base: string;
 
+  base: string;
   /**
    * display indicates the suggested denom that should be
    * displayed in clients.
    */
-  display: string;
 
+  display: string;
   /**
    * name defines the name of the token (eg: Cosmos Atom)
    * 
    * Since: cosmos-sdk 0.43
    */
-  name: string;
 
+  name: string;
   /**
    * symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
    * be the same as the display.
    * 
    * Since: cosmos-sdk 0.43
    */
-  symbol: string;
 
+  symbol: string;
   /**
    * URI to a document (on or off-chain) that contains additional information. Optional.
    * 
    * Since: cosmos-sdk 0.46
    */
-  uri: string;
 
+  uri: string;
   /**
    * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
    * the document didn't change. Optional.
    * 
    * Since: cosmos-sdk 0.46
    */
+
+  uriHash: string;
+}
+/**
+ * Metadata represents a struct that describes
+ * a basic token.
+ */
+
+export interface MetadataSDKType {
+  description: string;
+  /** denom_units represents the list of DenomUnit's for a given coin */
+
+  denom_units: DenomUnitSDKType[];
+  /** base represents the base denom (should be the DenomUnit with exponent = 0). */
+
+  base: string;
+  /**
+   * display indicates the suggested denom that should be
+   * displayed in clients.
+   */
+
+  display: string;
+  /**
+   * name defines the name of the token (eg: Cosmos Atom)
+   * 
+   * Since: cosmos-sdk 0.43
+   */
+
+  name: string;
+  /**
+   * symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
+   * be the same as the display.
+   * 
+   * Since: cosmos-sdk 0.43
+   */
+
+  symbol: string;
+  /**
+   * URI to a document (on or off-chain) that contains additional information. Optional.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+
+  uri: string;
+  /**
+   * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
+   * the document didn't change. Optional.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+
   uri_hash: string;
 }
 
 function createBaseParams(): Params {
   return {
-    send_enabled: [],
-    default_send_enabled: false
+    sendEnabled: [],
+    defaultSendEnabled: false
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.send_enabled) {
+    for (const v of message.sendEnabled) {
       SendEnabled.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.default_send_enabled === true) {
-      writer.uint32(16).bool(message.default_send_enabled);
+    if (message.defaultSendEnabled === true) {
+      writer.uint32(16).bool(message.defaultSendEnabled);
     }
 
     return writer;
@@ -141,11 +250,11 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.send_enabled.push(SendEnabled.decode(reader, reader.uint32()));
+          message.sendEnabled.push(SendEnabled.decode(reader, reader.uint32()));
           break;
 
         case 2:
-          message.default_send_enabled = reader.bool();
+          message.defaultSendEnabled = reader.bool();
           break;
 
         default:
@@ -159,28 +268,28 @@ export const Params = {
 
   fromJSON(object: any): Params {
     return {
-      send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e: any) => SendEnabled.fromJSON(e)) : [],
-      default_send_enabled: isSet(object.default_send_enabled) ? Boolean(object.default_send_enabled) : false
+      sendEnabled: Array.isArray(object?.sendEnabled) ? object.sendEnabled.map((e: any) => SendEnabled.fromJSON(e)) : [],
+      defaultSendEnabled: isSet(object.defaultSendEnabled) ? Boolean(object.defaultSendEnabled) : false
     };
   },
 
   toJSON(message: Params): unknown {
     const obj: any = {};
 
-    if (message.send_enabled) {
-      obj.send_enabled = message.send_enabled.map(e => e ? SendEnabled.toJSON(e) : undefined);
+    if (message.sendEnabled) {
+      obj.sendEnabled = message.sendEnabled.map(e => e ? SendEnabled.toJSON(e) : undefined);
     } else {
-      obj.send_enabled = [];
+      obj.sendEnabled = [];
     }
 
-    message.default_send_enabled !== undefined && (obj.default_send_enabled = message.default_send_enabled);
+    message.defaultSendEnabled !== undefined && (obj.defaultSendEnabled = message.defaultSendEnabled);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.send_enabled = object.send_enabled?.map(e => SendEnabled.fromPartial(e)) || [];
-    message.default_send_enabled = object.default_send_enabled ?? false;
+    message.sendEnabled = object.sendEnabled?.map(e => SendEnabled.fromPartial(e)) || [];
+    message.defaultSendEnabled = object.defaultSendEnabled ?? false;
     return message;
   }
 
@@ -558,13 +667,13 @@ export const DenomUnit = {
 function createBaseMetadata(): Metadata {
   return {
     description: "",
-    denom_units: [],
+    denomUnits: [],
     base: "",
     display: "",
     name: "",
     symbol: "",
     uri: "",
-    uri_hash: ""
+    uriHash: ""
   };
 }
 
@@ -574,7 +683,7 @@ export const Metadata = {
       writer.uint32(10).string(message.description);
     }
 
-    for (const v of message.denom_units) {
+    for (const v of message.denomUnits) {
       DenomUnit.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -598,8 +707,8 @@ export const Metadata = {
       writer.uint32(58).string(message.uri);
     }
 
-    if (message.uri_hash !== "") {
-      writer.uint32(66).string(message.uri_hash);
+    if (message.uriHash !== "") {
+      writer.uint32(66).string(message.uriHash);
     }
 
     return writer;
@@ -619,7 +728,7 @@ export const Metadata = {
           break;
 
         case 2:
-          message.denom_units.push(DenomUnit.decode(reader, reader.uint32()));
+          message.denomUnits.push(DenomUnit.decode(reader, reader.uint32()));
           break;
 
         case 3:
@@ -643,7 +752,7 @@ export const Metadata = {
           break;
 
         case 8:
-          message.uri_hash = reader.string();
+          message.uriHash = reader.string();
           break;
 
         default:
@@ -658,13 +767,13 @@ export const Metadata = {
   fromJSON(object: any): Metadata {
     return {
       description: isSet(object.description) ? String(object.description) : "",
-      denom_units: Array.isArray(object?.denom_units) ? object.denom_units.map((e: any) => DenomUnit.fromJSON(e)) : [],
+      denomUnits: Array.isArray(object?.denomUnits) ? object.denomUnits.map((e: any) => DenomUnit.fromJSON(e)) : [],
       base: isSet(object.base) ? String(object.base) : "",
       display: isSet(object.display) ? String(object.display) : "",
       name: isSet(object.name) ? String(object.name) : "",
       symbol: isSet(object.symbol) ? String(object.symbol) : "",
       uri: isSet(object.uri) ? String(object.uri) : "",
-      uri_hash: isSet(object.uri_hash) ? String(object.uri_hash) : ""
+      uriHash: isSet(object.uriHash) ? String(object.uriHash) : ""
     };
   },
 
@@ -672,10 +781,10 @@ export const Metadata = {
     const obj: any = {};
     message.description !== undefined && (obj.description = message.description);
 
-    if (message.denom_units) {
-      obj.denom_units = message.denom_units.map(e => e ? DenomUnit.toJSON(e) : undefined);
+    if (message.denomUnits) {
+      obj.denomUnits = message.denomUnits.map(e => e ? DenomUnit.toJSON(e) : undefined);
     } else {
-      obj.denom_units = [];
+      obj.denomUnits = [];
     }
 
     message.base !== undefined && (obj.base = message.base);
@@ -683,20 +792,20 @@ export const Metadata = {
     message.name !== undefined && (obj.name = message.name);
     message.symbol !== undefined && (obj.symbol = message.symbol);
     message.uri !== undefined && (obj.uri = message.uri);
-    message.uri_hash !== undefined && (obj.uri_hash = message.uri_hash);
+    message.uriHash !== undefined && (obj.uriHash = message.uriHash);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Metadata>): Metadata {
     const message = createBaseMetadata();
     message.description = object.description ?? "";
-    message.denom_units = object.denom_units?.map(e => DenomUnit.fromPartial(e)) || [];
+    message.denomUnits = object.denomUnits?.map(e => DenomUnit.fromPartial(e)) || [];
     message.base = object.base ?? "";
     message.display = object.display ?? "";
     message.name = object.name ?? "";
     message.symbol = object.symbol ?? "";
     message.uri = object.uri ?? "";
-    message.uri_hash = object.uri_hash ?? "";
+    message.uriHash = object.uriHash ?? "";
     return message;
   }
 

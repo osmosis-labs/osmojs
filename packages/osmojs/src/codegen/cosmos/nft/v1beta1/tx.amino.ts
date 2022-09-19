@@ -13,13 +13,13 @@ export const AminoConverter = {
   "/cosmos.nft.v1beta1.MsgSend": {
     aminoType: "cosmos-sdk/MsgNFTSend",
     toAmino: ({
-      class_id,
+      classId,
       id,
       sender,
       receiver
     }: MsgSend): AminoMsgSend["value"] => {
       return {
-        class_id,
+        class_id: classId,
         id,
         sender,
         receiver
@@ -32,7 +32,7 @@ export const AminoConverter = {
       receiver
     }: AminoMsgSend["value"]): MsgSend => {
       return {
-        class_id,
+        classId: class_id,
         id,
         sender,
         receiver

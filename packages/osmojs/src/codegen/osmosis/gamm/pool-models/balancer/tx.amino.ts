@@ -1,9 +1,5 @@
-import { PoolParams, PoolAsset, SmoothWeightChangeParams } from "./balancerPool";
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "@osmonauts/helpers";
-import { Timestamp } from "../../../../google/protobuf/timestamp";
-import { Duration } from "../../../../google/protobuf/duration";
-import { Coin } from "../../../../cosmos/base/v1beta1/coin";
 import { MsgCreateBalancerPool } from "./tx";
 export interface AminoMsgCreateBalancerPool extends AminoMsg {
   type: "osmosis/gamm/poolmodels/balancer/create-balancer-pool";
@@ -54,7 +50,7 @@ export const AminoConverter = {
       sender,
       poolParams,
       poolAssets,
-      future_pool_governor
+      futurePoolGovernor
     }: MsgCreateBalancerPool): AminoMsgCreateBalancerPool["value"] => {
       return {
         sender,
@@ -62,7 +58,7 @@ export const AminoConverter = {
           swapFee: poolParams.swapFee,
           exitFee: poolParams.exitFee,
           smoothWeightChangeParams: {
-            start_time: poolParams.smoothWeightChangeParams.start_time,
+            start_time: poolParams.smoothWeightChangeParams.startTime,
             duration: (poolParams.smoothWeightChangeParams.duration * 1_000_000_000).toString(),
             initialPoolWeights: poolParams.smoothWeightChangeParams.initialPoolWeights.map(el0 => ({
               token: {
@@ -87,7 +83,7 @@ export const AminoConverter = {
           },
           weight: el0.weight
         })),
-        future_pool_governor
+        future_pool_governor: futurePoolGovernor
       };
     },
     fromAmino: ({
@@ -102,7 +98,7 @@ export const AminoConverter = {
           swapFee: poolParams.swapFee,
           exitFee: poolParams.exitFee,
           smoothWeightChangeParams: {
-            start_time: poolParams.smoothWeightChangeParams.start_time,
+            startTime: poolParams.smoothWeightChangeParams.start_time,
             duration: {
               seconds: Long.fromNumber(Math.floor(parseInt(poolParams.smoothWeightChangeParams.duration) / 1_000_000_000)),
               nanos: parseInt(poolParams.smoothWeightChangeParams.duration) % 1_000_000_000
@@ -130,7 +126,7 @@ export const AminoConverter = {
           },
           weight: el0.weight
         })),
-        future_pool_governor
+        futurePoolGovernor: future_pool_governor
       };
     }
   }

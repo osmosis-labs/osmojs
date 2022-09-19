@@ -1,74 +1,143 @@
-import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagination";
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Gauge } from "./gauge";
-import { Duration } from "../../google/protobuf/duration";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../cosmos/base/query/v1beta1/pagination";
+import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { Gauge, GaugeSDKType } from "./gauge";
+import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long, isSet } from "@osmonauts/helpers";
 export interface ModuleToDistributeCoinsRequest {}
+export interface ModuleToDistributeCoinsRequestSDKType {}
 export interface ModuleToDistributeCoinsResponse {
   coins: Coin[];
 }
+export interface ModuleToDistributeCoinsResponseSDKType {
+  coins: CoinSDKType[];
+}
 export interface ModuleDistributedCoinsRequest {}
+export interface ModuleDistributedCoinsRequestSDKType {}
 export interface ModuleDistributedCoinsResponse {
   coins: Coin[];
 }
+export interface ModuleDistributedCoinsResponseSDKType {
+  coins: CoinSDKType[];
+}
 export interface GaugeByIDRequest {
+  id: Long;
+}
+export interface GaugeByIDRequestSDKType {
   id: Long;
 }
 export interface GaugeByIDResponse {
   gauge: Gauge;
 }
+export interface GaugeByIDResponseSDKType {
+  gauge: GaugeSDKType;
+}
 export interface GaugesRequest {
   /** pagination defines an pagination for the request. */
   pagination?: PageRequest;
 }
+export interface GaugesRequestSDKType {
+  /** pagination defines an pagination for the request. */
+  pagination?: PageRequestSDKType;
+}
 export interface GaugesResponse {
   data: Gauge[];
-
   /** pagination defines an pagination for the response. */
+
   pagination?: PageResponse;
+}
+export interface GaugesResponseSDKType {
+  data: GaugeSDKType[];
+  /** pagination defines an pagination for the response. */
+
+  pagination?: PageResponseSDKType;
 }
 export interface ActiveGaugesRequest {
   /** pagination defines an pagination for the request. */
   pagination?: PageRequest;
 }
+export interface ActiveGaugesRequestSDKType {
+  /** pagination defines an pagination for the request. */
+  pagination?: PageRequestSDKType;
+}
 export interface ActiveGaugesResponse {
   data: Gauge[];
-
   /** pagination defines an pagination for the response. */
+
   pagination?: PageResponse;
+}
+export interface ActiveGaugesResponseSDKType {
+  data: GaugeSDKType[];
+  /** pagination defines an pagination for the response. */
+
+  pagination?: PageResponseSDKType;
 }
 export interface ActiveGaugesPerDenomRequest {
   denom?: string;
-
   /** pagination defines an pagination for the request. */
+
   pagination?: PageRequest;
+}
+export interface ActiveGaugesPerDenomRequestSDKType {
+  denom?: string;
+  /** pagination defines an pagination for the request. */
+
+  pagination?: PageRequestSDKType;
 }
 export interface ActiveGaugesPerDenomResponse {
   data: Gauge[];
-
   /** pagination defines an pagination for the response. */
+
   pagination?: PageResponse;
+}
+export interface ActiveGaugesPerDenomResponseSDKType {
+  data: GaugeSDKType[];
+  /** pagination defines an pagination for the response. */
+
+  pagination?: PageResponseSDKType;
 }
 export interface UpcomingGaugesRequest {
   /** pagination defines an pagination for the request. */
   pagination?: PageRequest;
 }
+export interface UpcomingGaugesRequestSDKType {
+  /** pagination defines an pagination for the request. */
+  pagination?: PageRequestSDKType;
+}
 export interface UpcomingGaugesResponse {
   data: Gauge[];
-
   /** pagination defines an pagination for the response. */
+
   pagination?: PageResponse;
+}
+export interface UpcomingGaugesResponseSDKType {
+  data: GaugeSDKType[];
+  /** pagination defines an pagination for the response. */
+
+  pagination?: PageResponseSDKType;
 }
 export interface UpcomingGaugesPerDenomRequest {
   denom?: string;
   pagination?: PageRequest;
 }
+export interface UpcomingGaugesPerDenomRequestSDKType {
+  denom?: string;
+  pagination?: PageRequestSDKType;
+}
 export interface UpcomingGaugesPerDenomResponse {
-  upcoming_gauges: Gauge[];
+  upcomingGauges: Gauge[];
   pagination?: PageResponse;
 }
+export interface UpcomingGaugesPerDenomResponseSDKType {
+  upcoming_gauges: GaugeSDKType[];
+  pagination?: PageResponseSDKType;
+}
 export interface RewardsEstRequest {
+  owner: string;
+  lockIds?: Long[];
+  endEpoch?: Long;
+}
+export interface RewardsEstRequestSDKType {
   owner: string;
   lock_ids?: Long[];
   end_epoch?: Long;
@@ -76,9 +145,16 @@ export interface RewardsEstRequest {
 export interface RewardsEstResponse {
   coins: Coin[];
 }
+export interface RewardsEstResponseSDKType {
+  coins: CoinSDKType[];
+}
 export interface QueryLockableDurationsRequest {}
+export interface QueryLockableDurationsRequestSDKType {}
 export interface QueryLockableDurationsResponse {
-  lockable_durations: Duration[];
+  lockableDurations: Duration[];
+}
+export interface QueryLockableDurationsResponseSDKType {
+  lockable_durations: DurationSDKType[];
 }
 
 function createBaseModuleToDistributeCoinsRequest(): ModuleToDistributeCoinsRequest {
@@ -139,7 +215,7 @@ export const ModuleToDistributeCoinsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseModuleToDistributeCoinsResponse();
@@ -245,7 +321,7 @@ export const ModuleDistributedCoinsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseModuleDistributedCoinsResponse();
@@ -365,7 +441,7 @@ export const GaugeByIDResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGaugeByIDResponse();
@@ -484,7 +560,7 @@ export const GaugesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGaugesResponse();
@@ -616,7 +692,7 @@ export const ActiveGaugesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseActiveGaugesResponse();
@@ -760,7 +836,7 @@ export const ActiveGaugesPerDenomResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseActiveGaugesPerDenomResponse();
@@ -892,7 +968,7 @@ export const UpcomingGaugesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpcomingGaugesResponse();
@@ -1018,14 +1094,14 @@ export const UpcomingGaugesPerDenomRequest = {
 
 function createBaseUpcomingGaugesPerDenomResponse(): UpcomingGaugesPerDenomResponse {
   return {
-    upcoming_gauges: [],
+    upcomingGauges: [],
     pagination: undefined
   };
 }
 
 export const UpcomingGaugesPerDenomResponse = {
   encode(message: UpcomingGaugesPerDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.upcoming_gauges) {
+    for (const v of message.upcomingGauges) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -1036,7 +1112,7 @@ export const UpcomingGaugesPerDenomResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpcomingGaugesPerDenomResponse();
@@ -1046,7 +1122,7 @@ export const UpcomingGaugesPerDenomResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.upcoming_gauges.push(Gauge.decode(reader, reader.uint32()));
+          message.upcomingGauges.push(Gauge.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -1064,7 +1140,7 @@ export const UpcomingGaugesPerDenomResponse = {
 
   fromJSON(object: any): UpcomingGaugesPerDenomResponse {
     return {
-      upcoming_gauges: Array.isArray(object?.upcoming_gauges) ? object.upcoming_gauges.map((e: any) => Gauge.fromJSON(e)) : [],
+      upcomingGauges: Array.isArray(object?.upcomingGauges) ? object.upcomingGauges.map((e: any) => Gauge.fromJSON(e)) : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
@@ -1072,10 +1148,10 @@ export const UpcomingGaugesPerDenomResponse = {
   toJSON(message: UpcomingGaugesPerDenomResponse): unknown {
     const obj: any = {};
 
-    if (message.upcoming_gauges) {
-      obj.upcoming_gauges = message.upcoming_gauges.map(e => e ? Gauge.toJSON(e) : undefined);
+    if (message.upcomingGauges) {
+      obj.upcomingGauges = message.upcomingGauges.map(e => e ? Gauge.toJSON(e) : undefined);
     } else {
-      obj.upcoming_gauges = [];
+      obj.upcomingGauges = [];
     }
 
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
@@ -1084,7 +1160,7 @@ export const UpcomingGaugesPerDenomResponse = {
 
   fromPartial(object: DeepPartial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse {
     const message = createBaseUpcomingGaugesPerDenomResponse();
-    message.upcoming_gauges = object.upcoming_gauges?.map(e => Gauge.fromPartial(e)) || [];
+    message.upcomingGauges = object.upcomingGauges?.map(e => Gauge.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -1094,8 +1170,8 @@ export const UpcomingGaugesPerDenomResponse = {
 function createBaseRewardsEstRequest(): RewardsEstRequest {
   return {
     owner: "",
-    lock_ids: [],
-    end_epoch: Long.ZERO
+    lockIds: [],
+    endEpoch: Long.ZERO
   };
 }
 
@@ -1107,14 +1183,14 @@ export const RewardsEstRequest = {
 
     writer.uint32(18).fork();
 
-    for (const v of message.lock_ids) {
+    for (const v of message.lockIds) {
       writer.uint64(v);
     }
 
     writer.ldelim();
 
-    if (!message.end_epoch.isZero()) {
-      writer.uint32(24).int64(message.end_epoch);
+    if (!message.endEpoch.isZero()) {
+      writer.uint32(24).int64(message.endEpoch);
     }
 
     return writer;
@@ -1138,16 +1214,16 @@ export const RewardsEstRequest = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.lock_ids.push((reader.uint64() as Long));
+              message.lockIds.push((reader.uint64() as Long));
             }
           } else {
-            message.lock_ids.push((reader.uint64() as Long));
+            message.lockIds.push((reader.uint64() as Long));
           }
 
           break;
 
         case 3:
-          message.end_epoch = (reader.int64() as Long);
+          message.endEpoch = (reader.int64() as Long);
           break;
 
         default:
@@ -1162,8 +1238,8 @@ export const RewardsEstRequest = {
   fromJSON(object: any): RewardsEstRequest {
     return {
       owner: isSet(object.owner) ? String(object.owner) : "",
-      lock_ids: Array.isArray(object?.lock_ids) ? object.lock_ids.map((e: any) => Long.fromString(e)) : [],
-      end_epoch: isSet(object.end_epoch) ? Long.fromString(object.end_epoch) : Long.ZERO
+      lockIds: Array.isArray(object?.lockIds) ? object.lockIds.map((e: any) => Long.fromString(e)) : [],
+      endEpoch: isSet(object.endEpoch) ? Long.fromString(object.endEpoch) : Long.ZERO
     };
   },
 
@@ -1171,21 +1247,21 @@ export const RewardsEstRequest = {
     const obj: any = {};
     message.owner !== undefined && (obj.owner = message.owner);
 
-    if (message.lock_ids) {
-      obj.lock_ids = message.lock_ids.map(e => (e || Long.UZERO).toString());
+    if (message.lockIds) {
+      obj.lockIds = message.lockIds.map(e => (e || Long.UZERO).toString());
     } else {
-      obj.lock_ids = [];
+      obj.lockIds = [];
     }
 
-    message.end_epoch !== undefined && (obj.end_epoch = (message.end_epoch || Long.ZERO).toString());
+    message.endEpoch !== undefined && (obj.endEpoch = (message.endEpoch || Long.ZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<RewardsEstRequest>): RewardsEstRequest {
     const message = createBaseRewardsEstRequest();
     message.owner = object.owner ?? "";
-    message.lock_ids = object.lock_ids?.map(e => Long.fromValue(e)) || [];
-    message.end_epoch = object.end_epoch !== undefined && object.end_epoch !== null ? Long.fromValue(object.end_epoch) : Long.ZERO;
+    message.lockIds = object.lockIds?.map(e => Long.fromValue(e)) || [];
+    message.endEpoch = object.endEpoch !== undefined && object.endEpoch !== null ? Long.fromValue(object.endEpoch) : Long.ZERO;
     return message;
   }
 
@@ -1206,7 +1282,7 @@ export const RewardsEstResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRewardsEstResponse();
@@ -1299,20 +1375,20 @@ export const QueryLockableDurationsRequest = {
 
 function createBaseQueryLockableDurationsResponse(): QueryLockableDurationsResponse {
   return {
-    lockable_durations: []
+    lockableDurations: []
   };
 }
 
 export const QueryLockableDurationsResponse = {
   encode(message: QueryLockableDurationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.lockable_durations) {
+    for (const v of message.lockableDurations) {
       Duration.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryLockableDurationsResponse();
@@ -1322,7 +1398,7 @@ export const QueryLockableDurationsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.lockable_durations.push(Duration.decode(reader, reader.uint32()));
+          message.lockableDurations.push(Duration.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1336,17 +1412,17 @@ export const QueryLockableDurationsResponse = {
 
   fromJSON(object: any): QueryLockableDurationsResponse {
     return {
-      lockable_durations: Array.isArray(object?.lockable_durations) ? object.lockable_durations.map((e: any) => Duration.fromJSON(e)) : []
+      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryLockableDurationsResponse): unknown {
     const obj: any = {};
 
-    if (message.lockable_durations) {
-      obj.lockable_durations = message.lockable_durations.map(e => e ? Duration.toJSON(e) : undefined);
+    if (message.lockableDurations) {
+      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
     } else {
-      obj.lockable_durations = [];
+      obj.lockableDurations = [];
     }
 
     return obj;
@@ -1354,7 +1430,7 @@ export const QueryLockableDurationsResponse = {
 
   fromPartial(object: DeepPartial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse {
     const message = createBaseQueryLockableDurationsResponse();
-    message.lockable_durations = object.lockable_durations?.map(e => Duration.fromPartial(e)) || [];
+    message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
     return message;
   }
 

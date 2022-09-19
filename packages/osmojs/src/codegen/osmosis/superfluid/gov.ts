@@ -1,22 +1,42 @@
-import { SuperfluidAsset } from "./superfluid";
+import { SuperfluidAsset, SuperfluidAssetSDKType } from "./superfluid";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
  * assets
  */
+
 export interface SetSuperfluidAssetsProposal {
   title: string;
   description: string;
   assets: SuperfluidAsset[];
 }
+/**
+ * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
+ * assets
+ */
 
+export interface SetSuperfluidAssetsProposalSDKType {
+  title: string;
+  description: string;
+  assets: SuperfluidAssetSDKType[];
+}
 /**
  * RemoveSuperfluidAssetsProposal is a gov Content type to remove the superfluid
  * assets by denom
  */
+
 export interface RemoveSuperfluidAssetsProposal {
+  title: string;
+  description: string;
+  superfluidAssetDenoms: string[];
+}
+/**
+ * RemoveSuperfluidAssetsProposal is a gov Content type to remove the superfluid
+ * assets by denom
+ */
+
+export interface RemoveSuperfluidAssetsProposalSDKType {
   title: string;
   description: string;
   superfluid_asset_denoms: string[];
@@ -113,7 +133,7 @@ function createBaseRemoveSuperfluidAssetsProposal(): RemoveSuperfluidAssetsPropo
   return {
     title: "",
     description: "",
-    superfluid_asset_denoms: []
+    superfluidAssetDenoms: []
   };
 }
 
@@ -127,7 +147,7 @@ export const RemoveSuperfluidAssetsProposal = {
       writer.uint32(18).string(message.description);
     }
 
-    for (const v of message.superfluid_asset_denoms) {
+    for (const v of message.superfluidAssetDenoms) {
       writer.uint32(26).string(v!);
     }
 
@@ -152,7 +172,7 @@ export const RemoveSuperfluidAssetsProposal = {
           break;
 
         case 3:
-          message.superfluid_asset_denoms.push(reader.string());
+          message.superfluidAssetDenoms.push(reader.string());
           break;
 
         default:
@@ -168,7 +188,7 @@ export const RemoveSuperfluidAssetsProposal = {
     return {
       title: isSet(object.title) ? String(object.title) : "",
       description: isSet(object.description) ? String(object.description) : "",
-      superfluid_asset_denoms: Array.isArray(object?.superfluid_asset_denoms) ? object.superfluid_asset_denoms.map((e: any) => String(e)) : []
+      superfluidAssetDenoms: Array.isArray(object?.superfluidAssetDenoms) ? object.superfluidAssetDenoms.map((e: any) => String(e)) : []
     };
   },
 
@@ -177,10 +197,10 @@ export const RemoveSuperfluidAssetsProposal = {
     message.title !== undefined && (obj.title = message.title);
     message.description !== undefined && (obj.description = message.description);
 
-    if (message.superfluid_asset_denoms) {
-      obj.superfluid_asset_denoms = message.superfluid_asset_denoms.map(e => e);
+    if (message.superfluidAssetDenoms) {
+      obj.superfluidAssetDenoms = message.superfluidAssetDenoms.map(e => e);
     } else {
-      obj.superfluid_asset_denoms = [];
+      obj.superfluidAssetDenoms = [];
     }
 
     return obj;
@@ -190,7 +210,7 @@ export const RemoveSuperfluidAssetsProposal = {
     const message = createBaseRemoveSuperfluidAssetsProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.superfluid_asset_denoms = object.superfluid_asset_denoms?.map(e => e) || [];
+    message.superfluidAssetDenoms = object.superfluidAssetDenoms?.map(e => e) || [];
     return message;
   }
 

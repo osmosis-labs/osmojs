@@ -1,5 +1,3 @@
-import { Coin } from "../../../../cosmos/base/v1beta1/coin";
-import { Height } from "../../../core/client/v1/client";
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgTransfer } from "./tx";
 export const registry: ReadonlyArray<[string, GeneratedType]> = [["/ibc.applications.transfer.v1.MsgTransfer", MsgTransfer]];

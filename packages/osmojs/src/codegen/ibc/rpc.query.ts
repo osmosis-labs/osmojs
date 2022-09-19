@@ -32,6 +32,7 @@ export const createRPCQueryClient = async ({
       v1beta1: new (await import("../cosmos/feegrant/v1beta1/query.rpc.query")).QueryClientImpl(rpc)
     },
     gov: {
+      v1: new (await import("../cosmos/gov/v1/query.rpc.query")).QueryClientImpl(rpc),
       v1beta1: new (await import("../cosmos/gov/v1beta1/query.rpc.query")).QueryClientImpl(rpc)
     },
     mint: {

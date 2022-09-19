@@ -1,6 +1,6 @@
-import { Duration } from "../../google/protobuf/duration";
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { PeriodLock } from "./lock";
+import { Duration, DurationSDKType } from "../../google/protobuf/duration";
+import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { PeriodLock, PeriodLockSDKType } from "./lock";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
 export interface MsgLockTokens {
@@ -8,41 +8,83 @@ export interface MsgLockTokens {
   duration: Duration;
   coins: Coin[];
 }
+export interface MsgLockTokensSDKType {
+  owner: string;
+  duration: DurationSDKType;
+  coins: CoinSDKType[];
+}
 export interface MsgLockTokensResponse {
+  ID: Long;
+}
+export interface MsgLockTokensResponseSDKType {
   ID: Long;
 }
 export interface MsgBeginUnlockingAll {
   owner: string;
 }
+export interface MsgBeginUnlockingAllSDKType {
+  owner: string;
+}
 export interface MsgBeginUnlockingAllResponse {
   unlocks: PeriodLock[];
+}
+export interface MsgBeginUnlockingAllResponseSDKType {
+  unlocks: PeriodLockSDKType[];
 }
 export interface MsgBeginUnlocking {
   owner: string;
   ID: Long;
-
   /** Amount of unlocking coins. Unlock all if not set. */
+
   coins: Coin[];
+}
+export interface MsgBeginUnlockingSDKType {
+  owner: string;
+  ID: Long;
+  /** Amount of unlocking coins. Unlock all if not set. */
+
+  coins: CoinSDKType[];
 }
 export interface MsgBeginUnlockingResponse {
   success: boolean;
 }
-
+export interface MsgBeginUnlockingResponseSDKType {
+  success: boolean;
+}
 /**
  * MsgExtendLockup extends the existing lockup's duration.
  * The new duration is longer than the original.
  */
+
 export interface MsgExtendLockup {
   owner: string;
   ID: Long;
-
   /**
    * duration to be set. fails if lower than the current duration, or is
    * unlocking
    */
+
   duration: Duration;
 }
+/**
+ * MsgExtendLockup extends the existing lockup's duration.
+ * The new duration is longer than the original.
+ */
+
+export interface MsgExtendLockupSDKType {
+  owner: string;
+  ID: Long;
+  /**
+   * duration to be set. fails if lower than the current duration, or is
+   * unlocking
+   */
+
+  duration: DurationSDKType;
+}
 export interface MsgExtendLockupResponse {
+  success: boolean;
+}
+export interface MsgExtendLockupResponseSDKType {
   success: boolean;
 }
 
@@ -148,7 +190,7 @@ export const MsgLockTokensResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgLockTokensResponse();
@@ -262,7 +304,7 @@ export const MsgBeginUnlockingAllResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBeginUnlockingAllResponse();
@@ -412,7 +454,7 @@ export const MsgBeginUnlockingResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBeginUnlockingResponse();
@@ -550,7 +592,7 @@ export const MsgExtendLockupResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExtendLockupResponse();

@@ -1,31 +1,45 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { Duration } from "../../google/protobuf/duration";
+import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { toTimestamp, fromTimestamp, Long, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
 export interface EpochInfo {
   identifier: string;
-  start_time: Date;
+  startTime: Date;
   duration: Duration;
+  currentEpoch: Long;
+  currentEpochStartTime: Date;
+  epochCountingStarted: boolean;
+  currentEpochStartHeight: Long;
+}
+export interface EpochInfoSDKType {
+  identifier: string;
+  start_time: Date;
+  duration: DurationSDKType;
   current_epoch: Long;
   current_epoch_start_time: Date;
   epoch_counting_started: boolean;
   current_epoch_start_height: Long;
 }
-
 /** GenesisState defines the epochs module's genesis state. */
+
 export interface GenesisState {
   epochs: EpochInfo[];
+}
+/** GenesisState defines the epochs module's genesis state. */
+
+export interface GenesisStateSDKType {
+  epochs: EpochInfoSDKType[];
 }
 
 function createBaseEpochInfo(): EpochInfo {
   return {
     identifier: "",
-    start_time: undefined,
+    startTime: undefined,
     duration: undefined,
-    current_epoch: Long.ZERO,
-    current_epoch_start_time: undefined,
-    epoch_counting_started: false,
-    current_epoch_start_height: Long.ZERO
+    currentEpoch: Long.ZERO,
+    currentEpochStartTime: undefined,
+    epochCountingStarted: false,
+    currentEpochStartHeight: Long.ZERO
   };
 }
 
@@ -35,28 +49,28 @@ export const EpochInfo = {
       writer.uint32(10).string(message.identifier);
     }
 
-    if (message.start_time !== undefined) {
-      Timestamp.encode(toTimestamp(message.start_time), writer.uint32(18).fork()).ldelim();
+    if (message.startTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.startTime), writer.uint32(18).fork()).ldelim();
     }
 
     if (message.duration !== undefined) {
       Duration.encode(message.duration, writer.uint32(26).fork()).ldelim();
     }
 
-    if (!message.current_epoch.isZero()) {
-      writer.uint32(32).int64(message.current_epoch);
+    if (!message.currentEpoch.isZero()) {
+      writer.uint32(32).int64(message.currentEpoch);
     }
 
-    if (message.current_epoch_start_time !== undefined) {
-      Timestamp.encode(toTimestamp(message.current_epoch_start_time), writer.uint32(42).fork()).ldelim();
+    if (message.currentEpochStartTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.currentEpochStartTime), writer.uint32(42).fork()).ldelim();
     }
 
-    if (message.epoch_counting_started === true) {
-      writer.uint32(48).bool(message.epoch_counting_started);
+    if (message.epochCountingStarted === true) {
+      writer.uint32(48).bool(message.epochCountingStarted);
     }
 
-    if (!message.current_epoch_start_height.isZero()) {
-      writer.uint32(64).int64(message.current_epoch_start_height);
+    if (!message.currentEpochStartHeight.isZero()) {
+      writer.uint32(64).int64(message.currentEpochStartHeight);
     }
 
     return writer;
@@ -76,7 +90,7 @@ export const EpochInfo = {
           break;
 
         case 2:
-          message.start_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.startTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         case 3:
@@ -84,19 +98,19 @@ export const EpochInfo = {
           break;
 
         case 4:
-          message.current_epoch = (reader.int64() as Long);
+          message.currentEpoch = (reader.int64() as Long);
           break;
 
         case 5:
-          message.current_epoch_start_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.currentEpochStartTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         case 6:
-          message.epoch_counting_started = reader.bool();
+          message.epochCountingStarted = reader.bool();
           break;
 
         case 8:
-          message.current_epoch_start_height = (reader.int64() as Long);
+          message.currentEpochStartHeight = (reader.int64() as Long);
           break;
 
         default:
@@ -111,36 +125,36 @@ export const EpochInfo = {
   fromJSON(object: any): EpochInfo {
     return {
       identifier: isSet(object.identifier) ? String(object.identifier) : "",
-      start_time: isSet(object.start_time) ? fromJsonTimestamp(object.start_time) : undefined,
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
       duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
-      current_epoch: isSet(object.current_epoch) ? Long.fromString(object.current_epoch) : Long.ZERO,
-      current_epoch_start_time: isSet(object.current_epoch_start_time) ? fromJsonTimestamp(object.current_epoch_start_time) : undefined,
-      epoch_counting_started: isSet(object.epoch_counting_started) ? Boolean(object.epoch_counting_started) : false,
-      current_epoch_start_height: isSet(object.current_epoch_start_height) ? Long.fromString(object.current_epoch_start_height) : Long.ZERO
+      currentEpoch: isSet(object.currentEpoch) ? Long.fromString(object.currentEpoch) : Long.ZERO,
+      currentEpochStartTime: isSet(object.currentEpochStartTime) ? fromJsonTimestamp(object.currentEpochStartTime) : undefined,
+      epochCountingStarted: isSet(object.epochCountingStarted) ? Boolean(object.epochCountingStarted) : false,
+      currentEpochStartHeight: isSet(object.currentEpochStartHeight) ? Long.fromString(object.currentEpochStartHeight) : Long.ZERO
     };
   },
 
   toJSON(message: EpochInfo): unknown {
     const obj: any = {};
     message.identifier !== undefined && (obj.identifier = message.identifier);
-    message.start_time !== undefined && (obj.start_time = message.start_time.toISOString());
+    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
     message.duration !== undefined && (obj.duration = message.duration);
-    message.current_epoch !== undefined && (obj.current_epoch = (message.current_epoch || Long.ZERO).toString());
-    message.current_epoch_start_time !== undefined && (obj.current_epoch_start_time = message.current_epoch_start_time.toISOString());
-    message.epoch_counting_started !== undefined && (obj.epoch_counting_started = message.epoch_counting_started);
-    message.current_epoch_start_height !== undefined && (obj.current_epoch_start_height = (message.current_epoch_start_height || Long.ZERO).toString());
+    message.currentEpoch !== undefined && (obj.currentEpoch = (message.currentEpoch || Long.ZERO).toString());
+    message.currentEpochStartTime !== undefined && (obj.currentEpochStartTime = message.currentEpochStartTime.toISOString());
+    message.epochCountingStarted !== undefined && (obj.epochCountingStarted = message.epochCountingStarted);
+    message.currentEpochStartHeight !== undefined && (obj.currentEpochStartHeight = (message.currentEpochStartHeight || Long.ZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<EpochInfo>): EpochInfo {
     const message = createBaseEpochInfo();
     message.identifier = object.identifier ?? "";
-    message.start_time = object.start_time ?? undefined;
+    message.startTime = object.startTime ?? undefined;
     message.duration = object.duration ?? undefined;
-    message.current_epoch = object.current_epoch !== undefined && object.current_epoch !== null ? Long.fromValue(object.current_epoch) : Long.ZERO;
-    message.current_epoch_start_time = object.current_epoch_start_time ?? undefined;
-    message.epoch_counting_started = object.epoch_counting_started ?? false;
-    message.current_epoch_start_height = object.current_epoch_start_height !== undefined && object.current_epoch_start_height !== null ? Long.fromValue(object.current_epoch_start_height) : Long.ZERO;
+    message.currentEpoch = object.currentEpoch !== undefined && object.currentEpoch !== null ? Long.fromValue(object.currentEpoch) : Long.ZERO;
+    message.currentEpochStartTime = object.currentEpochStartTime ?? undefined;
+    message.epochCountingStarted = object.epochCountingStarted ?? false;
+    message.currentEpochStartHeight = object.currentEpochStartHeight !== undefined && object.currentEpochStartHeight !== null ? Long.fromValue(object.currentEpochStartHeight) : Long.ZERO;
     return message;
   }
 

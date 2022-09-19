@@ -1,33 +1,40 @@
-import { PeriodLock, SyntheticLock } from "./lock";
+import { PeriodLock, PeriodLockSDKType, SyntheticLock, SyntheticLockSDKType } from "./lock";
 import * as _m0 from "protobufjs/minimal";
 import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** GenesisState defines the lockup module's genesis state. */
+
 export interface GenesisState {
-  last_lock_id: Long;
+  lastLockId: Long;
   locks: PeriodLock[];
-  synthetic_locks: SyntheticLock[];
+  syntheticLocks: SyntheticLock[];
+}
+/** GenesisState defines the lockup module's genesis state. */
+
+export interface GenesisStateSDKType {
+  last_lock_id: Long;
+  locks: PeriodLockSDKType[];
+  synthetic_locks: SyntheticLockSDKType[];
 }
 
 function createBaseGenesisState(): GenesisState {
   return {
-    last_lock_id: Long.UZERO,
+    lastLockId: Long.UZERO,
     locks: [],
-    synthetic_locks: []
+    syntheticLocks: []
   };
 }
 
 export const GenesisState = {
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.last_lock_id.isZero()) {
-      writer.uint32(8).uint64(message.last_lock_id);
+    if (!message.lastLockId.isZero()) {
+      writer.uint32(8).uint64(message.lastLockId);
     }
 
     for (const v of message.locks) {
       PeriodLock.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.synthetic_locks) {
+    for (const v of message.syntheticLocks) {
       SyntheticLock.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
@@ -44,7 +51,7 @@ export const GenesisState = {
 
       switch (tag >>> 3) {
         case 1:
-          message.last_lock_id = (reader.uint64() as Long);
+          message.lastLockId = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -52,7 +59,7 @@ export const GenesisState = {
           break;
 
         case 3:
-          message.synthetic_locks.push(SyntheticLock.decode(reader, reader.uint32()));
+          message.syntheticLocks.push(SyntheticLock.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -66,15 +73,15 @@ export const GenesisState = {
 
   fromJSON(object: any): GenesisState {
     return {
-      last_lock_id: isSet(object.last_lock_id) ? Long.fromString(object.last_lock_id) : Long.UZERO,
+      lastLockId: isSet(object.lastLockId) ? Long.fromString(object.lastLockId) : Long.UZERO,
       locks: Array.isArray(object?.locks) ? object.locks.map((e: any) => PeriodLock.fromJSON(e)) : [],
-      synthetic_locks: Array.isArray(object?.synthetic_locks) ? object.synthetic_locks.map((e: any) => SyntheticLock.fromJSON(e)) : []
+      syntheticLocks: Array.isArray(object?.syntheticLocks) ? object.syntheticLocks.map((e: any) => SyntheticLock.fromJSON(e)) : []
     };
   },
 
   toJSON(message: GenesisState): unknown {
     const obj: any = {};
-    message.last_lock_id !== undefined && (obj.last_lock_id = (message.last_lock_id || Long.UZERO).toString());
+    message.lastLockId !== undefined && (obj.lastLockId = (message.lastLockId || Long.UZERO).toString());
 
     if (message.locks) {
       obj.locks = message.locks.map(e => e ? PeriodLock.toJSON(e) : undefined);
@@ -82,10 +89,10 @@ export const GenesisState = {
       obj.locks = [];
     }
 
-    if (message.synthetic_locks) {
-      obj.synthetic_locks = message.synthetic_locks.map(e => e ? SyntheticLock.toJSON(e) : undefined);
+    if (message.syntheticLocks) {
+      obj.syntheticLocks = message.syntheticLocks.map(e => e ? SyntheticLock.toJSON(e) : undefined);
     } else {
-      obj.synthetic_locks = [];
+      obj.syntheticLocks = [];
     }
 
     return obj;
@@ -93,9 +100,9 @@ export const GenesisState = {
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.last_lock_id = object.last_lock_id !== undefined && object.last_lock_id !== null ? Long.fromValue(object.last_lock_id) : Long.UZERO;
+    message.lastLockId = object.lastLockId !== undefined && object.lastLockId !== null ? Long.fromValue(object.lastLockId) : Long.UZERO;
     message.locks = object.locks?.map(e => PeriodLock.fromPartial(e)) || [];
-    message.synthetic_locks = object.synthetic_locks?.map(e => SyntheticLock.fromPartial(e)) || [];
+    message.syntheticLocks = object.syntheticLocks?.map(e => SyntheticLock.fromPartial(e)) || [];
     return message;
   }
 

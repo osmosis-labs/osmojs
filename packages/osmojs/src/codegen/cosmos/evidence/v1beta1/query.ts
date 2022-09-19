@@ -1,51 +1,84 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Any } from "../../../google/protobuf/any";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, bytesFromBase64, base64FromBytes, DeepPartial } from "@osmonauts/helpers";
-
 /** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
+
 export interface QueryEvidenceRequest {
+  /** evidence_hash defines the hash of the requested evidence. */
+  evidenceHash: Uint8Array;
+}
+/** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
+
+export interface QueryEvidenceRequestSDKType {
   /** evidence_hash defines the hash of the requested evidence. */
   evidence_hash: Uint8Array;
 }
-
 /** QueryEvidenceResponse is the response type for the Query/Evidence RPC method. */
+
 export interface QueryEvidenceResponse {
   /** evidence returns the requested evidence. */
   evidence: Any;
 }
+/** QueryEvidenceResponse is the response type for the Query/Evidence RPC method. */
 
+export interface QueryEvidenceResponseSDKType {
+  /** evidence returns the requested evidence. */
+  evidence: AnySDKType;
+}
 /**
  * QueryEvidenceRequest is the request type for the Query/AllEvidence RPC
  * method.
  */
+
 export interface QueryAllEvidenceRequest {
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
 }
+/**
+ * QueryEvidenceRequest is the request type for the Query/AllEvidence RPC
+ * method.
+ */
 
+export interface QueryAllEvidenceRequestSDKType {
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequestSDKType;
+}
 /**
  * QueryAllEvidenceResponse is the response type for the Query/AllEvidence RPC
  * method.
  */
+
 export interface QueryAllEvidenceResponse {
   /** evidence returns all evidences. */
   evidence: Any[];
-
   /** pagination defines the pagination in the response. */
+
   pagination?: PageResponse;
+}
+/**
+ * QueryAllEvidenceResponse is the response type for the Query/AllEvidence RPC
+ * method.
+ */
+
+export interface QueryAllEvidenceResponseSDKType {
+  /** evidence returns all evidences. */
+  evidence: AnySDKType[];
+  /** pagination defines the pagination in the response. */
+
+  pagination?: PageResponseSDKType;
 }
 
 function createBaseQueryEvidenceRequest(): QueryEvidenceRequest {
   return {
-    evidence_hash: new Uint8Array()
+    evidenceHash: new Uint8Array()
   };
 }
 
 export const QueryEvidenceRequest = {
   encode(message: QueryEvidenceRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.evidence_hash.length !== 0) {
-      writer.uint32(10).bytes(message.evidence_hash);
+    if (message.evidenceHash.length !== 0) {
+      writer.uint32(10).bytes(message.evidenceHash);
     }
 
     return writer;
@@ -61,7 +94,7 @@ export const QueryEvidenceRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.evidence_hash = reader.bytes();
+          message.evidenceHash = reader.bytes();
           break;
 
         default:
@@ -75,19 +108,19 @@ export const QueryEvidenceRequest = {
 
   fromJSON(object: any): QueryEvidenceRequest {
     return {
-      evidence_hash: isSet(object.evidence_hash) ? bytesFromBase64(object.evidence_hash) : new Uint8Array()
+      evidenceHash: isSet(object.evidenceHash) ? bytesFromBase64(object.evidenceHash) : new Uint8Array()
     };
   },
 
   toJSON(message: QueryEvidenceRequest): unknown {
     const obj: any = {};
-    message.evidence_hash !== undefined && (obj.evidence_hash = base64FromBytes(message.evidence_hash !== undefined ? message.evidence_hash : new Uint8Array()));
+    message.evidenceHash !== undefined && (obj.evidenceHash = base64FromBytes(message.evidenceHash !== undefined ? message.evidenceHash : new Uint8Array()));
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryEvidenceRequest>): QueryEvidenceRequest {
     const message = createBaseQueryEvidenceRequest();
-    message.evidence_hash = object.evidence_hash ?? new Uint8Array();
+    message.evidenceHash = object.evidenceHash ?? new Uint8Array();
     return message;
   }
 
@@ -108,7 +141,7 @@ export const QueryEvidenceResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryEvidenceResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryEvidenceResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryEvidenceResponse();
@@ -227,7 +260,7 @@ export const QueryAllEvidenceResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllEvidenceResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllEvidenceResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllEvidenceResponse();

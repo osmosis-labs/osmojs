@@ -1,41 +1,79 @@
-import { ParamChange } from "./params";
+import { ParamChange, ParamChangeSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
+
 export interface QueryParamsRequest {
   /** subspace defines the module to query the parameter for. */
   subspace: string;
-
   /** key defines the key of the parameter in the subspace. */
+
   key: string;
 }
+/** QueryParamsRequest is request type for the Query/Params RPC method. */
 
+export interface QueryParamsRequestSDKType {
+  /** subspace defines the module to query the parameter for. */
+  subspace: string;
+  /** key defines the key of the parameter in the subspace. */
+
+  key: string;
+}
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
+
 export interface QueryParamsResponse {
   /** param defines the queried parameter. */
   param: ParamChange;
 }
+/** QueryParamsResponse is response type for the Query/Params RPC method. */
 
+export interface QueryParamsResponseSDKType {
+  /** param defines the queried parameter. */
+  param: ParamChangeSDKType;
+}
 /**
  * QuerySubspacesRequest defines a request type for querying for all registered
  * subspaces and all keys for a subspace.
  */
-export interface QuerySubspacesRequest {}
 
+export interface QuerySubspacesRequest {}
+/**
+ * QuerySubspacesRequest defines a request type for querying for all registered
+ * subspaces and all keys for a subspace.
+ */
+
+export interface QuerySubspacesRequestSDKType {}
 /**
  * QuerySubspacesResponse defines the response types for querying for all
  * registered subspaces and all keys for a subspace.
  */
+
 export interface QuerySubspacesResponse {
   subspaces: Subspace[];
 }
+/**
+ * QuerySubspacesResponse defines the response types for querying for all
+ * registered subspaces and all keys for a subspace.
+ */
 
+export interface QuerySubspacesResponseSDKType {
+  subspaces: SubspaceSDKType[];
+}
 /**
  * Subspace defines a parameter subspace name and all the keys that exist for
  * the subspace.
  */
+
 export interface Subspace {
+  subspace: string;
+  keys: string[];
+}
+/**
+ * Subspace defines a parameter subspace name and all the keys that exist for
+ * the subspace.
+ */
+
+export interface SubspaceSDKType {
   subspace: string;
   keys: string[];
 }
@@ -124,7 +162,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -224,7 +262,7 @@ export const QuerySubspacesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySubspacesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySubspacesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySubspacesResponse();

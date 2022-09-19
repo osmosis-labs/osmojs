@@ -1,7 +1,4 @@
-import { Grant } from "./authz";
-import { Any } from "../../../google/protobuf/any";
 import { AminoMsg } from "@cosmjs/amino";
-import { Timestamp } from "../../../google/protobuf/timestamp";
 import { MsgGrant, MsgExec, MsgRevoke } from "./tx";
 export interface AminoMsgGrant extends AminoMsg {
   type: "cosmos-sdk/MsgGrant";
@@ -51,7 +48,7 @@ export const AminoConverter = {
         grantee,
         grant: {
           authorization: {
-            type_url: grant.authorization.type_url,
+            type_url: grant.authorization.typeUrl,
             value: grant.authorization.value
           },
           expiration: grant.expiration
@@ -68,7 +65,7 @@ export const AminoConverter = {
         grantee,
         grant: {
           authorization: {
-            type_url: grant.authorization.type_url,
+            typeUrl: grant.authorization.type_url,
             value: grant.authorization.value
           },
           expiration: grant.expiration
@@ -85,7 +82,7 @@ export const AminoConverter = {
       return {
         grantee,
         msgs: msgs.map(el0 => ({
-          type_url: el0.type_url,
+          type_url: el0.typeUrl,
           value: el0.value
         }))
       };
@@ -97,7 +94,7 @@ export const AminoConverter = {
       return {
         grantee,
         msgs: msgs.map(el0 => ({
-          type_url: el0.type_url,
+          typeUrl: el0.type_url,
           value: el0.value
         }))
       };
@@ -108,12 +105,12 @@ export const AminoConverter = {
     toAmino: ({
       granter,
       grantee,
-      msg_type_url
+      msgTypeUrl
     }: MsgRevoke): AminoMsgRevoke["value"] => {
       return {
         granter,
         grantee,
-        msg_type_url
+        msg_type_url: msgTypeUrl
       };
     },
     fromAmino: ({
@@ -124,7 +121,7 @@ export const AminoConverter = {
       return {
         granter,
         grantee,
-        msg_type_url
+        msgTypeUrl: msg_type_url
       };
     }
   }

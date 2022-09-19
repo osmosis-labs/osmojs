@@ -1,32 +1,59 @@
-import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagination";
-import { Params } from "./params";
-import { SuperfluidAssetType, SuperfluidAsset, OsmoEquivalentMultiplierRecord, SuperfluidDelegationRecord, superfluidAssetTypeFromJSON, superfluidAssetTypeToJSON } from "./superfluid";
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { SyntheticLock } from "../lockup/lock";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../cosmos/base/query/v1beta1/pagination";
+import { Params, ParamsSDKType } from "./params";
+import { SuperfluidAssetType, SuperfluidAssetTypeSDKType, SuperfluidAsset, SuperfluidAssetSDKType, OsmoEquivalentMultiplierRecord, OsmoEquivalentMultiplierRecordSDKType, SuperfluidDelegationRecord, SuperfluidDelegationRecordSDKType, superfluidAssetTypeFromJSON, superfluidAssetTypeToJSON } from "./superfluid";
+import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { SyntheticLock, SyntheticLockSDKType } from "../lockup/lock";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, isSet, Long } from "@osmonauts/helpers";
 export interface QueryParamsRequest {}
+export interface QueryParamsRequestSDKType {}
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
 }
+export interface QueryParamsResponseSDKType {
+  /** params defines the parameters of the module. */
+  params: ParamsSDKType;
+}
 export interface AssetTypeRequest {
   denom?: string;
 }
+export interface AssetTypeRequestSDKType {
+  denom?: string;
+}
 export interface AssetTypeResponse {
-  asset_type: SuperfluidAssetType;
+  assetType: SuperfluidAssetType;
+}
+export interface AssetTypeResponseSDKType {
+  asset_type: SuperfluidAssetTypeSDKType;
 }
 export interface AllAssetsRequest {}
+export interface AllAssetsRequestSDKType {}
 export interface AllAssetsResponse {
   assets: SuperfluidAsset[];
+}
+export interface AllAssetsResponseSDKType {
+  assets: SuperfluidAssetSDKType[];
 }
 export interface AssetMultiplierRequest {
   denom?: string;
 }
+export interface AssetMultiplierRequestSDKType {
+  denom?: string;
+}
 export interface AssetMultiplierResponse {
-  osmo_equivalent_multiplier: OsmoEquivalentMultiplierRecord;
+  osmoEquivalentMultiplier: OsmoEquivalentMultiplierRecord;
+}
+export interface AssetMultiplierResponseSDKType {
+  osmo_equivalent_multiplier: OsmoEquivalentMultiplierRecordSDKType;
 }
 export interface SuperfluidIntermediaryAccountInfo {
+  denom: string;
+  valAddr: string;
+  gaugeId: Long;
+  address: string;
+}
+export interface SuperfluidIntermediaryAccountInfoSDKType {
   denom: string;
   val_addr: string;
   gauge_id: Long;
@@ -35,21 +62,43 @@ export interface SuperfluidIntermediaryAccountInfo {
 export interface AllIntermediaryAccountsRequest {
   pagination?: PageRequest;
 }
+export interface AllIntermediaryAccountsRequestSDKType {
+  pagination?: PageRequestSDKType;
+}
 export interface AllIntermediaryAccountsResponse {
   accounts: SuperfluidIntermediaryAccountInfo[];
   pagination?: PageResponse;
 }
+export interface AllIntermediaryAccountsResponseSDKType {
+  accounts: SuperfluidIntermediaryAccountInfoSDKType[];
+  pagination?: PageResponseSDKType;
+}
 export interface ConnectedIntermediaryAccountRequest {
+  lockId: Long;
+}
+export interface ConnectedIntermediaryAccountRequestSDKType {
   lock_id: Long;
 }
 export interface ConnectedIntermediaryAccountResponse {
   account: SuperfluidIntermediaryAccountInfo;
 }
+export interface ConnectedIntermediaryAccountResponseSDKType {
+  account: SuperfluidIntermediaryAccountInfoSDKType;
+}
 export interface TotalSuperfluidDelegationsRequest {}
+export interface TotalSuperfluidDelegationsRequestSDKType {}
 export interface TotalSuperfluidDelegationsResponse {
   totalDelegations: string;
 }
+export interface TotalSuperfluidDelegationsResponseSDKType {
+  totalDelegations: string;
+}
 export interface SuperfluidDelegationAmountRequest {
+  delegatorAddress?: string;
+  validatorAddress?: string;
+  denom?: string;
+}
+export interface SuperfluidDelegationAmountRequestSDKType {
   delegator_address?: string;
   validator_address?: string;
   denom?: string;
@@ -57,36 +106,70 @@ export interface SuperfluidDelegationAmountRequest {
 export interface SuperfluidDelegationAmountResponse {
   amount: Coin[];
 }
+export interface SuperfluidDelegationAmountResponseSDKType {
+  amount: CoinSDKType[];
+}
 export interface SuperfluidDelegationsByDelegatorRequest {
+  delegatorAddress: string;
+}
+export interface SuperfluidDelegationsByDelegatorRequestSDKType {
   delegator_address: string;
 }
 export interface SuperfluidDelegationsByDelegatorResponse {
-  superfluid_delegation_records: SuperfluidDelegationRecord[];
-  total_delegated_coins: Coin[];
-  total_equivalent_staked_amount: Coin;
+  superfluidDelegationRecords: SuperfluidDelegationRecord[];
+  totalDelegatedCoins: Coin[];
+  totalEquivalentStakedAmount: Coin;
+}
+export interface SuperfluidDelegationsByDelegatorResponseSDKType {
+  superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
+  total_delegated_coins: CoinSDKType[];
+  total_equivalent_staked_amount: CoinSDKType;
 }
 export interface SuperfluidUndelegationsByDelegatorRequest {
+  delegatorAddress: string;
+  denom?: string;
+}
+export interface SuperfluidUndelegationsByDelegatorRequestSDKType {
   delegator_address: string;
   denom?: string;
 }
 export interface SuperfluidUndelegationsByDelegatorResponse {
-  superfluid_delegation_records: SuperfluidDelegationRecord[];
-  total_undelegated_coins: Coin[];
-  synthetic_locks: SyntheticLock[];
+  superfluidDelegationRecords: SuperfluidDelegationRecord[];
+  totalUndelegatedCoins: Coin[];
+  syntheticLocks: SyntheticLock[];
+}
+export interface SuperfluidUndelegationsByDelegatorResponseSDKType {
+  superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
+  total_undelegated_coins: CoinSDKType[];
+  synthetic_locks: SyntheticLockSDKType[];
 }
 export interface SuperfluidDelegationsByValidatorDenomRequest {
+  validatorAddress?: string;
+  denom?: string;
+}
+export interface SuperfluidDelegationsByValidatorDenomRequestSDKType {
   validator_address?: string;
   denom?: string;
 }
 export interface SuperfluidDelegationsByValidatorDenomResponse {
-  superfluid_delegation_records: SuperfluidDelegationRecord[];
+  superfluidDelegationRecords: SuperfluidDelegationRecord[];
+}
+export interface SuperfluidDelegationsByValidatorDenomResponseSDKType {
+  superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
 }
 export interface EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
+  validatorAddress?: string;
+  denom?: string;
+}
+export interface EstimateSuperfluidDelegatedAmountByValidatorDenomRequestSDKType {
   validator_address?: string;
   denom?: string;
 }
 export interface EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
-  total_delegated_coins: Coin[];
+  totalDelegatedCoins: Coin[];
+}
+export interface EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType {
+  total_delegated_coins: CoinSDKType[];
 }
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -147,7 +230,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -248,20 +331,20 @@ export const AssetTypeRequest = {
 
 function createBaseAssetTypeResponse(): AssetTypeResponse {
   return {
-    asset_type: 0
+    assetType: 0
   };
 }
 
 export const AssetTypeResponse = {
   encode(message: AssetTypeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.asset_type !== 0) {
-      writer.uint32(8).int32(message.asset_type);
+    if (message.assetType !== 0) {
+      writer.uint32(8).int32(message.assetType);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAssetTypeResponse();
@@ -271,7 +354,7 @@ export const AssetTypeResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.asset_type = (reader.int32() as any);
+          message.assetType = (reader.int32() as any);
           break;
 
         default:
@@ -285,19 +368,19 @@ export const AssetTypeResponse = {
 
   fromJSON(object: any): AssetTypeResponse {
     return {
-      asset_type: isSet(object.asset_type) ? superfluidAssetTypeFromJSON(object.asset_type) : 0
+      assetType: isSet(object.assetType) ? superfluidAssetTypeFromJSON(object.assetType) : 0
     };
   },
 
   toJSON(message: AssetTypeResponse): unknown {
     const obj: any = {};
-    message.asset_type !== undefined && (obj.asset_type = superfluidAssetTypeToJSON(message.asset_type));
+    message.assetType !== undefined && (obj.assetType = superfluidAssetTypeToJSON(message.assetType));
     return obj;
   },
 
   fromPartial(object: DeepPartial<AssetTypeResponse>): AssetTypeResponse {
     const message = createBaseAssetTypeResponse();
-    message.asset_type = object.asset_type ?? 0;
+    message.assetType = object.assetType ?? 0;
     return message;
   }
 
@@ -361,7 +444,7 @@ export const AllAssetsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAllAssetsResponse();
@@ -468,20 +551,20 @@ export const AssetMultiplierRequest = {
 
 function createBaseAssetMultiplierResponse(): AssetMultiplierResponse {
   return {
-    osmo_equivalent_multiplier: undefined
+    osmoEquivalentMultiplier: undefined
   };
 }
 
 export const AssetMultiplierResponse = {
   encode(message: AssetMultiplierResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.osmo_equivalent_multiplier !== undefined) {
-      OsmoEquivalentMultiplierRecord.encode(message.osmo_equivalent_multiplier, writer.uint32(10).fork()).ldelim();
+    if (message.osmoEquivalentMultiplier !== undefined) {
+      OsmoEquivalentMultiplierRecord.encode(message.osmoEquivalentMultiplier, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAssetMultiplierResponse();
@@ -491,7 +574,7 @@ export const AssetMultiplierResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.osmo_equivalent_multiplier = OsmoEquivalentMultiplierRecord.decode(reader, reader.uint32());
+          message.osmoEquivalentMultiplier = OsmoEquivalentMultiplierRecord.decode(reader, reader.uint32());
           break;
 
         default:
@@ -505,19 +588,19 @@ export const AssetMultiplierResponse = {
 
   fromJSON(object: any): AssetMultiplierResponse {
     return {
-      osmo_equivalent_multiplier: isSet(object.osmo_equivalent_multiplier) ? OsmoEquivalentMultiplierRecord.fromJSON(object.osmo_equivalent_multiplier) : undefined
+      osmoEquivalentMultiplier: isSet(object.osmoEquivalentMultiplier) ? OsmoEquivalentMultiplierRecord.fromJSON(object.osmoEquivalentMultiplier) : undefined
     };
   },
 
   toJSON(message: AssetMultiplierResponse): unknown {
     const obj: any = {};
-    message.osmo_equivalent_multiplier !== undefined && (obj.osmo_equivalent_multiplier = message.osmo_equivalent_multiplier ? OsmoEquivalentMultiplierRecord.toJSON(message.osmo_equivalent_multiplier) : undefined);
+    message.osmoEquivalentMultiplier !== undefined && (obj.osmoEquivalentMultiplier = message.osmoEquivalentMultiplier ? OsmoEquivalentMultiplierRecord.toJSON(message.osmoEquivalentMultiplier) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<AssetMultiplierResponse>): AssetMultiplierResponse {
     const message = createBaseAssetMultiplierResponse();
-    message.osmo_equivalent_multiplier = object.osmo_equivalent_multiplier !== undefined && object.osmo_equivalent_multiplier !== null ? OsmoEquivalentMultiplierRecord.fromPartial(object.osmo_equivalent_multiplier) : undefined;
+    message.osmoEquivalentMultiplier = object.osmoEquivalentMultiplier !== undefined && object.osmoEquivalentMultiplier !== null ? OsmoEquivalentMultiplierRecord.fromPartial(object.osmoEquivalentMultiplier) : undefined;
     return message;
   }
 
@@ -526,8 +609,8 @@ export const AssetMultiplierResponse = {
 function createBaseSuperfluidIntermediaryAccountInfo(): SuperfluidIntermediaryAccountInfo {
   return {
     denom: "",
-    val_addr: "",
-    gauge_id: Long.UZERO,
+    valAddr: "",
+    gaugeId: Long.UZERO,
     address: ""
   };
 }
@@ -538,12 +621,12 @@ export const SuperfluidIntermediaryAccountInfo = {
       writer.uint32(10).string(message.denom);
     }
 
-    if (message.val_addr !== "") {
-      writer.uint32(18).string(message.val_addr);
+    if (message.valAddr !== "") {
+      writer.uint32(18).string(message.valAddr);
     }
 
-    if (!message.gauge_id.isZero()) {
-      writer.uint32(24).uint64(message.gauge_id);
+    if (!message.gaugeId.isZero()) {
+      writer.uint32(24).uint64(message.gaugeId);
     }
 
     if (message.address !== "") {
@@ -567,11 +650,11 @@ export const SuperfluidIntermediaryAccountInfo = {
           break;
 
         case 2:
-          message.val_addr = reader.string();
+          message.valAddr = reader.string();
           break;
 
         case 3:
-          message.gauge_id = (reader.uint64() as Long);
+          message.gaugeId = (reader.uint64() as Long);
           break;
 
         case 4:
@@ -590,8 +673,8 @@ export const SuperfluidIntermediaryAccountInfo = {
   fromJSON(object: any): SuperfluidIntermediaryAccountInfo {
     return {
       denom: isSet(object.denom) ? String(object.denom) : "",
-      val_addr: isSet(object.val_addr) ? String(object.val_addr) : "",
-      gauge_id: isSet(object.gauge_id) ? Long.fromString(object.gauge_id) : Long.UZERO,
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : "",
+      gaugeId: isSet(object.gaugeId) ? Long.fromString(object.gaugeId) : Long.UZERO,
       address: isSet(object.address) ? String(object.address) : ""
     };
   },
@@ -599,8 +682,8 @@ export const SuperfluidIntermediaryAccountInfo = {
   toJSON(message: SuperfluidIntermediaryAccountInfo): unknown {
     const obj: any = {};
     message.denom !== undefined && (obj.denom = message.denom);
-    message.val_addr !== undefined && (obj.val_addr = message.val_addr);
-    message.gauge_id !== undefined && (obj.gauge_id = (message.gauge_id || Long.UZERO).toString());
+    message.valAddr !== undefined && (obj.valAddr = message.valAddr);
+    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || Long.UZERO).toString());
     message.address !== undefined && (obj.address = message.address);
     return obj;
   },
@@ -608,8 +691,8 @@ export const SuperfluidIntermediaryAccountInfo = {
   fromPartial(object: DeepPartial<SuperfluidIntermediaryAccountInfo>): SuperfluidIntermediaryAccountInfo {
     const message = createBaseSuperfluidIntermediaryAccountInfo();
     message.denom = object.denom ?? "";
-    message.val_addr = object.val_addr ?? "";
-    message.gauge_id = object.gauge_id !== undefined && object.gauge_id !== null ? Long.fromValue(object.gauge_id) : Long.UZERO;
+    message.valAddr = object.valAddr ?? "";
+    message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     message.address = object.address ?? "";
     return message;
   }
@@ -693,7 +776,7 @@ export const AllIntermediaryAccountsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAllIntermediaryAccountsResponse();
@@ -750,14 +833,14 @@ export const AllIntermediaryAccountsResponse = {
 
 function createBaseConnectedIntermediaryAccountRequest(): ConnectedIntermediaryAccountRequest {
   return {
-    lock_id: Long.UZERO
+    lockId: Long.UZERO
   };
 }
 
 export const ConnectedIntermediaryAccountRequest = {
   encode(message: ConnectedIntermediaryAccountRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.lock_id.isZero()) {
-      writer.uint32(8).uint64(message.lock_id);
+    if (!message.lockId.isZero()) {
+      writer.uint32(8).uint64(message.lockId);
     }
 
     return writer;
@@ -773,7 +856,7 @@ export const ConnectedIntermediaryAccountRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.lock_id = (reader.uint64() as Long);
+          message.lockId = (reader.uint64() as Long);
           break;
 
         default:
@@ -787,19 +870,19 @@ export const ConnectedIntermediaryAccountRequest = {
 
   fromJSON(object: any): ConnectedIntermediaryAccountRequest {
     return {
-      lock_id: isSet(object.lock_id) ? Long.fromString(object.lock_id) : Long.UZERO
+      lockId: isSet(object.lockId) ? Long.fromString(object.lockId) : Long.UZERO
     };
   },
 
   toJSON(message: ConnectedIntermediaryAccountRequest): unknown {
     const obj: any = {};
-    message.lock_id !== undefined && (obj.lock_id = (message.lock_id || Long.UZERO).toString());
+    message.lockId !== undefined && (obj.lockId = (message.lockId || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<ConnectedIntermediaryAccountRequest>): ConnectedIntermediaryAccountRequest {
     const message = createBaseConnectedIntermediaryAccountRequest();
-    message.lock_id = object.lock_id !== undefined && object.lock_id !== null ? Long.fromValue(object.lock_id) : Long.UZERO;
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
     return message;
   }
 
@@ -820,7 +903,7 @@ export const ConnectedIntermediaryAccountResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseConnectedIntermediaryAccountResponse();
@@ -920,7 +1003,7 @@ export const TotalSuperfluidDelegationsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTotalSuperfluidDelegationsResponse();
@@ -964,20 +1047,20 @@ export const TotalSuperfluidDelegationsResponse = {
 
 function createBaseSuperfluidDelegationAmountRequest(): SuperfluidDelegationAmountRequest {
   return {
-    delegator_address: "",
-    validator_address: "",
+    delegatorAddress: "",
+    validatorAddress: "",
     denom: ""
   };
 }
 
 export const SuperfluidDelegationAmountRequest = {
   encode(message: SuperfluidDelegationAmountRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
-    if (message.validator_address !== "") {
-      writer.uint32(18).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(18).string(message.validatorAddress);
     }
 
     if (message.denom !== "") {
@@ -997,11 +1080,11 @@ export const SuperfluidDelegationAmountRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         case 2:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 3:
@@ -1019,24 +1102,24 @@ export const SuperfluidDelegationAmountRequest = {
 
   fromJSON(object: any): SuperfluidDelegationAmountRequest {
     return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
       denom: isSet(object.denom) ? String(object.denom) : ""
     };
   },
 
   toJSON(message: SuperfluidDelegationAmountRequest): unknown {
     const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
+    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
+    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
     message.denom !== undefined && (obj.denom = message.denom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<SuperfluidDelegationAmountRequest>): SuperfluidDelegationAmountRequest {
     const message = createBaseSuperfluidDelegationAmountRequest();
-    message.delegator_address = object.delegator_address ?? "";
-    message.validator_address = object.validator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     message.denom = object.denom ?? "";
     return message;
   }
@@ -1058,7 +1141,7 @@ export const SuperfluidDelegationAmountResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSuperfluidDelegationAmountResponse();
@@ -1108,14 +1191,14 @@ export const SuperfluidDelegationAmountResponse = {
 
 function createBaseSuperfluidDelegationsByDelegatorRequest(): SuperfluidDelegationsByDelegatorRequest {
   return {
-    delegator_address: ""
+    delegatorAddress: ""
   };
 }
 
 export const SuperfluidDelegationsByDelegatorRequest = {
   encode(message: SuperfluidDelegationsByDelegatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
     return writer;
@@ -1131,7 +1214,7 @@ export const SuperfluidDelegationsByDelegatorRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         default:
@@ -1145,19 +1228,19 @@ export const SuperfluidDelegationsByDelegatorRequest = {
 
   fromJSON(object: any): SuperfluidDelegationsByDelegatorRequest {
     return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : ""
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : ""
     };
   },
 
   toJSON(message: SuperfluidDelegationsByDelegatorRequest): unknown {
     const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
+    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
     return obj;
   },
 
   fromPartial(object: DeepPartial<SuperfluidDelegationsByDelegatorRequest>): SuperfluidDelegationsByDelegatorRequest {
     const message = createBaseSuperfluidDelegationsByDelegatorRequest();
-    message.delegator_address = object.delegator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
   }
 
@@ -1165,30 +1248,30 @@ export const SuperfluidDelegationsByDelegatorRequest = {
 
 function createBaseSuperfluidDelegationsByDelegatorResponse(): SuperfluidDelegationsByDelegatorResponse {
   return {
-    superfluid_delegation_records: [],
-    total_delegated_coins: [],
-    total_equivalent_staked_amount: undefined
+    superfluidDelegationRecords: [],
+    totalDelegatedCoins: [],
+    totalEquivalentStakedAmount: undefined
   };
 }
 
 export const SuperfluidDelegationsByDelegatorResponse = {
   encode(message: SuperfluidDelegationsByDelegatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.superfluid_delegation_records) {
+    for (const v of message.superfluidDelegationRecords) {
       SuperfluidDelegationRecord.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.total_delegated_coins) {
+    for (const v of message.totalDelegatedCoins) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.total_equivalent_staked_amount !== undefined) {
-      Coin.encode(message.total_equivalent_staked_amount, writer.uint32(26).fork()).ldelim();
+    if (message.totalEquivalentStakedAmount !== undefined) {
+      Coin.encode(message.totalEquivalentStakedAmount, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSuperfluidDelegationsByDelegatorResponse();
@@ -1198,15 +1281,15 @@ export const SuperfluidDelegationsByDelegatorResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.superfluid_delegation_records.push(SuperfluidDelegationRecord.decode(reader, reader.uint32()));
+          message.superfluidDelegationRecords.push(SuperfluidDelegationRecord.decode(reader, reader.uint32()));
           break;
 
         case 2:
-          message.total_delegated_coins.push(Coin.decode(reader, reader.uint32()));
+          message.totalDelegatedCoins.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.total_equivalent_staked_amount = Coin.decode(reader, reader.uint32());
+          message.totalEquivalentStakedAmount = Coin.decode(reader, reader.uint32());
           break;
 
         default:
@@ -1220,36 +1303,36 @@ export const SuperfluidDelegationsByDelegatorResponse = {
 
   fromJSON(object: any): SuperfluidDelegationsByDelegatorResponse {
     return {
-      superfluid_delegation_records: Array.isArray(object?.superfluid_delegation_records) ? object.superfluid_delegation_records.map((e: any) => SuperfluidDelegationRecord.fromJSON(e)) : [],
-      total_delegated_coins: Array.isArray(object?.total_delegated_coins) ? object.total_delegated_coins.map((e: any) => Coin.fromJSON(e)) : [],
-      total_equivalent_staked_amount: isSet(object.total_equivalent_staked_amount) ? Coin.fromJSON(object.total_equivalent_staked_amount) : undefined
+      superfluidDelegationRecords: Array.isArray(object?.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map((e: any) => SuperfluidDelegationRecord.fromJSON(e)) : [],
+      totalDelegatedCoins: Array.isArray(object?.totalDelegatedCoins) ? object.totalDelegatedCoins.map((e: any) => Coin.fromJSON(e)) : [],
+      totalEquivalentStakedAmount: isSet(object.totalEquivalentStakedAmount) ? Coin.fromJSON(object.totalEquivalentStakedAmount) : undefined
     };
   },
 
   toJSON(message: SuperfluidDelegationsByDelegatorResponse): unknown {
     const obj: any = {};
 
-    if (message.superfluid_delegation_records) {
-      obj.superfluid_delegation_records = message.superfluid_delegation_records.map(e => e ? SuperfluidDelegationRecord.toJSON(e) : undefined);
+    if (message.superfluidDelegationRecords) {
+      obj.superfluidDelegationRecords = message.superfluidDelegationRecords.map(e => e ? SuperfluidDelegationRecord.toJSON(e) : undefined);
     } else {
-      obj.superfluid_delegation_records = [];
+      obj.superfluidDelegationRecords = [];
     }
 
-    if (message.total_delegated_coins) {
-      obj.total_delegated_coins = message.total_delegated_coins.map(e => e ? Coin.toJSON(e) : undefined);
+    if (message.totalDelegatedCoins) {
+      obj.totalDelegatedCoins = message.totalDelegatedCoins.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
-      obj.total_delegated_coins = [];
+      obj.totalDelegatedCoins = [];
     }
 
-    message.total_equivalent_staked_amount !== undefined && (obj.total_equivalent_staked_amount = message.total_equivalent_staked_amount ? Coin.toJSON(message.total_equivalent_staked_amount) : undefined);
+    message.totalEquivalentStakedAmount !== undefined && (obj.totalEquivalentStakedAmount = message.totalEquivalentStakedAmount ? Coin.toJSON(message.totalEquivalentStakedAmount) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<SuperfluidDelegationsByDelegatorResponse>): SuperfluidDelegationsByDelegatorResponse {
     const message = createBaseSuperfluidDelegationsByDelegatorResponse();
-    message.superfluid_delegation_records = object.superfluid_delegation_records?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
-    message.total_delegated_coins = object.total_delegated_coins?.map(e => Coin.fromPartial(e)) || [];
-    message.total_equivalent_staked_amount = object.total_equivalent_staked_amount !== undefined && object.total_equivalent_staked_amount !== null ? Coin.fromPartial(object.total_equivalent_staked_amount) : undefined;
+    message.superfluidDelegationRecords = object.superfluidDelegationRecords?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
+    message.totalDelegatedCoins = object.totalDelegatedCoins?.map(e => Coin.fromPartial(e)) || [];
+    message.totalEquivalentStakedAmount = object.totalEquivalentStakedAmount !== undefined && object.totalEquivalentStakedAmount !== null ? Coin.fromPartial(object.totalEquivalentStakedAmount) : undefined;
     return message;
   }
 
@@ -1257,15 +1340,15 @@ export const SuperfluidDelegationsByDelegatorResponse = {
 
 function createBaseSuperfluidUndelegationsByDelegatorRequest(): SuperfluidUndelegationsByDelegatorRequest {
   return {
-    delegator_address: "",
+    delegatorAddress: "",
     denom: ""
   };
 }
 
 export const SuperfluidUndelegationsByDelegatorRequest = {
   encode(message: SuperfluidUndelegationsByDelegatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
     if (message.denom !== "") {
@@ -1285,7 +1368,7 @@ export const SuperfluidUndelegationsByDelegatorRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         case 2:
@@ -1303,21 +1386,21 @@ export const SuperfluidUndelegationsByDelegatorRequest = {
 
   fromJSON(object: any): SuperfluidUndelegationsByDelegatorRequest {
     return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
       denom: isSet(object.denom) ? String(object.denom) : ""
     };
   },
 
   toJSON(message: SuperfluidUndelegationsByDelegatorRequest): unknown {
     const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
+    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
     message.denom !== undefined && (obj.denom = message.denom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<SuperfluidUndelegationsByDelegatorRequest>): SuperfluidUndelegationsByDelegatorRequest {
     const message = createBaseSuperfluidUndelegationsByDelegatorRequest();
-    message.delegator_address = object.delegator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
     message.denom = object.denom ?? "";
     return message;
   }
@@ -1326,30 +1409,30 @@ export const SuperfluidUndelegationsByDelegatorRequest = {
 
 function createBaseSuperfluidUndelegationsByDelegatorResponse(): SuperfluidUndelegationsByDelegatorResponse {
   return {
-    superfluid_delegation_records: [],
-    total_undelegated_coins: [],
-    synthetic_locks: []
+    superfluidDelegationRecords: [],
+    totalUndelegatedCoins: [],
+    syntheticLocks: []
   };
 }
 
 export const SuperfluidUndelegationsByDelegatorResponse = {
   encode(message: SuperfluidUndelegationsByDelegatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.superfluid_delegation_records) {
+    for (const v of message.superfluidDelegationRecords) {
       SuperfluidDelegationRecord.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.total_undelegated_coins) {
+    for (const v of message.totalUndelegatedCoins) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.synthetic_locks) {
+    for (const v of message.syntheticLocks) {
       SyntheticLock.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSuperfluidUndelegationsByDelegatorResponse();
@@ -1359,15 +1442,15 @@ export const SuperfluidUndelegationsByDelegatorResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.superfluid_delegation_records.push(SuperfluidDelegationRecord.decode(reader, reader.uint32()));
+          message.superfluidDelegationRecords.push(SuperfluidDelegationRecord.decode(reader, reader.uint32()));
           break;
 
         case 2:
-          message.total_undelegated_coins.push(Coin.decode(reader, reader.uint32()));
+          message.totalUndelegatedCoins.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.synthetic_locks.push(SyntheticLock.decode(reader, reader.uint32()));
+          message.syntheticLocks.push(SyntheticLock.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1381,31 +1464,31 @@ export const SuperfluidUndelegationsByDelegatorResponse = {
 
   fromJSON(object: any): SuperfluidUndelegationsByDelegatorResponse {
     return {
-      superfluid_delegation_records: Array.isArray(object?.superfluid_delegation_records) ? object.superfluid_delegation_records.map((e: any) => SuperfluidDelegationRecord.fromJSON(e)) : [],
-      total_undelegated_coins: Array.isArray(object?.total_undelegated_coins) ? object.total_undelegated_coins.map((e: any) => Coin.fromJSON(e)) : [],
-      synthetic_locks: Array.isArray(object?.synthetic_locks) ? object.synthetic_locks.map((e: any) => SyntheticLock.fromJSON(e)) : []
+      superfluidDelegationRecords: Array.isArray(object?.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map((e: any) => SuperfluidDelegationRecord.fromJSON(e)) : [],
+      totalUndelegatedCoins: Array.isArray(object?.totalUndelegatedCoins) ? object.totalUndelegatedCoins.map((e: any) => Coin.fromJSON(e)) : [],
+      syntheticLocks: Array.isArray(object?.syntheticLocks) ? object.syntheticLocks.map((e: any) => SyntheticLock.fromJSON(e)) : []
     };
   },
 
   toJSON(message: SuperfluidUndelegationsByDelegatorResponse): unknown {
     const obj: any = {};
 
-    if (message.superfluid_delegation_records) {
-      obj.superfluid_delegation_records = message.superfluid_delegation_records.map(e => e ? SuperfluidDelegationRecord.toJSON(e) : undefined);
+    if (message.superfluidDelegationRecords) {
+      obj.superfluidDelegationRecords = message.superfluidDelegationRecords.map(e => e ? SuperfluidDelegationRecord.toJSON(e) : undefined);
     } else {
-      obj.superfluid_delegation_records = [];
+      obj.superfluidDelegationRecords = [];
     }
 
-    if (message.total_undelegated_coins) {
-      obj.total_undelegated_coins = message.total_undelegated_coins.map(e => e ? Coin.toJSON(e) : undefined);
+    if (message.totalUndelegatedCoins) {
+      obj.totalUndelegatedCoins = message.totalUndelegatedCoins.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
-      obj.total_undelegated_coins = [];
+      obj.totalUndelegatedCoins = [];
     }
 
-    if (message.synthetic_locks) {
-      obj.synthetic_locks = message.synthetic_locks.map(e => e ? SyntheticLock.toJSON(e) : undefined);
+    if (message.syntheticLocks) {
+      obj.syntheticLocks = message.syntheticLocks.map(e => e ? SyntheticLock.toJSON(e) : undefined);
     } else {
-      obj.synthetic_locks = [];
+      obj.syntheticLocks = [];
     }
 
     return obj;
@@ -1413,9 +1496,9 @@ export const SuperfluidUndelegationsByDelegatorResponse = {
 
   fromPartial(object: DeepPartial<SuperfluidUndelegationsByDelegatorResponse>): SuperfluidUndelegationsByDelegatorResponse {
     const message = createBaseSuperfluidUndelegationsByDelegatorResponse();
-    message.superfluid_delegation_records = object.superfluid_delegation_records?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
-    message.total_undelegated_coins = object.total_undelegated_coins?.map(e => Coin.fromPartial(e)) || [];
-    message.synthetic_locks = object.synthetic_locks?.map(e => SyntheticLock.fromPartial(e)) || [];
+    message.superfluidDelegationRecords = object.superfluidDelegationRecords?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
+    message.totalUndelegatedCoins = object.totalUndelegatedCoins?.map(e => Coin.fromPartial(e)) || [];
+    message.syntheticLocks = object.syntheticLocks?.map(e => SyntheticLock.fromPartial(e)) || [];
     return message;
   }
 
@@ -1423,15 +1506,15 @@ export const SuperfluidUndelegationsByDelegatorResponse = {
 
 function createBaseSuperfluidDelegationsByValidatorDenomRequest(): SuperfluidDelegationsByValidatorDenomRequest {
   return {
-    validator_address: "",
+    validatorAddress: "",
     denom: ""
   };
 }
 
 export const SuperfluidDelegationsByValidatorDenomRequest = {
   encode(message: SuperfluidDelegationsByValidatorDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     if (message.denom !== "") {
@@ -1451,7 +1534,7 @@ export const SuperfluidDelegationsByValidatorDenomRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
@@ -1469,21 +1552,21 @@ export const SuperfluidDelegationsByValidatorDenomRequest = {
 
   fromJSON(object: any): SuperfluidDelegationsByValidatorDenomRequest {
     return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
       denom: isSet(object.denom) ? String(object.denom) : ""
     };
   },
 
   toJSON(message: SuperfluidDelegationsByValidatorDenomRequest): unknown {
     const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
+    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
     message.denom !== undefined && (obj.denom = message.denom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<SuperfluidDelegationsByValidatorDenomRequest>): SuperfluidDelegationsByValidatorDenomRequest {
     const message = createBaseSuperfluidDelegationsByValidatorDenomRequest();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     message.denom = object.denom ?? "";
     return message;
   }
@@ -1492,20 +1575,20 @@ export const SuperfluidDelegationsByValidatorDenomRequest = {
 
 function createBaseSuperfluidDelegationsByValidatorDenomResponse(): SuperfluidDelegationsByValidatorDenomResponse {
   return {
-    superfluid_delegation_records: []
+    superfluidDelegationRecords: []
   };
 }
 
 export const SuperfluidDelegationsByValidatorDenomResponse = {
   encode(message: SuperfluidDelegationsByValidatorDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.superfluid_delegation_records) {
+    for (const v of message.superfluidDelegationRecords) {
       SuperfluidDelegationRecord.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSuperfluidDelegationsByValidatorDenomResponse();
@@ -1515,7 +1598,7 @@ export const SuperfluidDelegationsByValidatorDenomResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.superfluid_delegation_records.push(SuperfluidDelegationRecord.decode(reader, reader.uint32()));
+          message.superfluidDelegationRecords.push(SuperfluidDelegationRecord.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1529,17 +1612,17 @@ export const SuperfluidDelegationsByValidatorDenomResponse = {
 
   fromJSON(object: any): SuperfluidDelegationsByValidatorDenomResponse {
     return {
-      superfluid_delegation_records: Array.isArray(object?.superfluid_delegation_records) ? object.superfluid_delegation_records.map((e: any) => SuperfluidDelegationRecord.fromJSON(e)) : []
+      superfluidDelegationRecords: Array.isArray(object?.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map((e: any) => SuperfluidDelegationRecord.fromJSON(e)) : []
     };
   },
 
   toJSON(message: SuperfluidDelegationsByValidatorDenomResponse): unknown {
     const obj: any = {};
 
-    if (message.superfluid_delegation_records) {
-      obj.superfluid_delegation_records = message.superfluid_delegation_records.map(e => e ? SuperfluidDelegationRecord.toJSON(e) : undefined);
+    if (message.superfluidDelegationRecords) {
+      obj.superfluidDelegationRecords = message.superfluidDelegationRecords.map(e => e ? SuperfluidDelegationRecord.toJSON(e) : undefined);
     } else {
-      obj.superfluid_delegation_records = [];
+      obj.superfluidDelegationRecords = [];
     }
 
     return obj;
@@ -1547,7 +1630,7 @@ export const SuperfluidDelegationsByValidatorDenomResponse = {
 
   fromPartial(object: DeepPartial<SuperfluidDelegationsByValidatorDenomResponse>): SuperfluidDelegationsByValidatorDenomResponse {
     const message = createBaseSuperfluidDelegationsByValidatorDenomResponse();
-    message.superfluid_delegation_records = object.superfluid_delegation_records?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
+    message.superfluidDelegationRecords = object.superfluidDelegationRecords?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
     return message;
   }
 
@@ -1555,15 +1638,15 @@ export const SuperfluidDelegationsByValidatorDenomResponse = {
 
 function createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomRequest(): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
   return {
-    validator_address: "",
+    validatorAddress: "",
     denom: ""
   };
 }
 
 export const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest = {
   encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     if (message.denom !== "") {
@@ -1583,7 +1666,7 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
@@ -1601,21 +1684,21 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest = {
 
   fromJSON(object: any): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
     return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
       denom: isSet(object.denom) ? String(object.denom) : ""
     };
   },
 
   toJSON(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): unknown {
     const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
+    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
     message.denom !== undefined && (obj.denom = message.denom);
     return obj;
   },
 
   fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomRequest>): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
     const message = createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomRequest();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     message.denom = object.denom ?? "";
     return message;
   }
@@ -1624,20 +1707,20 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest = {
 
 function createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomResponse(): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
   return {
-    total_delegated_coins: []
+    totalDelegatedCoins: []
   };
 }
 
 export const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse = {
   encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.total_delegated_coins) {
+    for (const v of message.totalDelegatedCoins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomResponse();
@@ -1647,7 +1730,7 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.total_delegated_coins.push(Coin.decode(reader, reader.uint32()));
+          message.totalDelegatedCoins.push(Coin.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1661,17 +1744,17 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse = {
 
   fromJSON(object: any): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
     return {
-      total_delegated_coins: Array.isArray(object?.total_delegated_coins) ? object.total_delegated_coins.map((e: any) => Coin.fromJSON(e)) : []
+      totalDelegatedCoins: Array.isArray(object?.totalDelegatedCoins) ? object.totalDelegatedCoins.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
 
   toJSON(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): unknown {
     const obj: any = {};
 
-    if (message.total_delegated_coins) {
-      obj.total_delegated_coins = message.total_delegated_coins.map(e => e ? Coin.toJSON(e) : undefined);
+    if (message.totalDelegatedCoins) {
+      obj.totalDelegatedCoins = message.totalDelegatedCoins.map(e => e ? Coin.toJSON(e) : undefined);
     } else {
-      obj.total_delegated_coins = [];
+      obj.totalDelegatedCoins = [];
     }
 
     return obj;
@@ -1679,7 +1762,7 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse = {
 
   fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
     const message = createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomResponse();
-    message.total_delegated_coins = object.total_delegated_coins?.map(e => Coin.fromPartial(e)) || [];
+    message.totalDelegatedCoins = object.totalDelegatedCoins?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
 

@@ -1,7 +1,3 @@
-import { Description, CommissionRates } from "./staking";
-import { Any } from "../../../google/protobuf/any";
-import { Coin } from "../../base/v1beta1/coin";
-import { Timestamp } from "../../../google/protobuf/timestamp";
 import { AminoMsg, decodeBech32Pubkey, encodeBech32Pubkey } from "@cosmjs/amino";
 import { fromBase64, toBase64 } from "@cosmjs/encoding";
 import { Long } from "@osmonauts/helpers";
@@ -89,9 +85,9 @@ export const AminoConverter = {
     toAmino: ({
       description,
       commission,
-      min_self_delegation,
-      delegator_address,
-      validator_address,
+      minSelfDelegation,
+      delegatorAddress,
+      validatorAddress,
       pubkey,
       value
     }: MsgCreateValidator): AminoMsgCreateValidator["value"] => {
@@ -100,17 +96,17 @@ export const AminoConverter = {
           moniker: description.moniker,
           identity: description.identity,
           website: description.website,
-          security_contact: description.security_contact,
+          security_contact: description.securityContact,
           details: description.details
         },
         commission: {
           rate: commission.rate,
-          max_rate: commission.max_rate,
-          max_change_rate: commission.max_change_rate
+          max_rate: commission.maxRate,
+          max_change_rate: commission.maxChangeRate
         },
-        min_self_delegation,
-        delegator_address,
-        validator_address,
+        min_self_delegation: minSelfDelegation,
+        delegator_address: delegatorAddress,
+        validator_address: validatorAddress,
         pubkey: {
           typeUrl: "/cosmos.crypto.secp256k1.PubKey",
           value: fromBase64(decodeBech32Pubkey(pubkey).value)
@@ -135,17 +131,17 @@ export const AminoConverter = {
           moniker: description.moniker,
           identity: description.identity,
           website: description.website,
-          security_contact: description.security_contact,
+          securityContact: description.security_contact,
           details: description.details
         },
         commission: {
           rate: commission.rate,
-          max_rate: commission.max_rate,
-          max_change_rate: commission.max_change_rate
+          maxRate: commission.max_rate,
+          maxChangeRate: commission.max_change_rate
         },
-        min_self_delegation,
-        delegator_address,
-        validator_address,
+        minSelfDelegation: min_self_delegation,
+        delegatorAddress: delegator_address,
+        validatorAddress: validator_address,
         pubkey: encodeBech32Pubkey({
           type: "tendermint/PubKeySecp256k1",
           value: toBase64(pubkey.value)
@@ -161,21 +157,21 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgEditValidator",
     toAmino: ({
       description,
-      validator_address,
-      commission_rate,
-      min_self_delegation
+      validatorAddress,
+      commissionRate,
+      minSelfDelegation
     }: MsgEditValidator): AminoMsgEditValidator["value"] => {
       return {
         description: {
           moniker: description.moniker,
           identity: description.identity,
           website: description.website,
-          security_contact: description.security_contact,
+          security_contact: description.securityContact,
           details: description.details
         },
-        validator_address,
-        commission_rate,
-        min_self_delegation
+        validator_address: validatorAddress,
+        commission_rate: commissionRate,
+        min_self_delegation: minSelfDelegation
       };
     },
     fromAmino: ({
@@ -189,25 +185,25 @@ export const AminoConverter = {
           moniker: description.moniker,
           identity: description.identity,
           website: description.website,
-          security_contact: description.security_contact,
+          securityContact: description.security_contact,
           details: description.details
         },
-        validator_address,
-        commission_rate,
-        min_self_delegation
+        validatorAddress: validator_address,
+        commissionRate: commission_rate,
+        minSelfDelegation: min_self_delegation
       };
     }
   },
   "/cosmos.staking.v1beta1.MsgDelegate": {
     aminoType: "cosmos-sdk/MsgDelegate",
     toAmino: ({
-      delegator_address,
-      validator_address,
+      delegatorAddress,
+      validatorAddress,
       amount
     }: MsgDelegate): AminoMsgDelegate["value"] => {
       return {
-        delegator_address,
-        validator_address,
+        delegator_address: delegatorAddress,
+        validator_address: validatorAddress,
         amount: {
           denom: amount.denom,
           amount: Long.fromNumber(amount.amount).toString()
@@ -220,8 +216,8 @@ export const AminoConverter = {
       amount
     }: AminoMsgDelegate["value"]): MsgDelegate => {
       return {
-        delegator_address,
-        validator_address,
+        delegatorAddress: delegator_address,
+        validatorAddress: validator_address,
         amount: {
           denom: amount.denom,
           amount: amount.amount
@@ -232,15 +228,15 @@ export const AminoConverter = {
   "/cosmos.staking.v1beta1.MsgBeginRedelegate": {
     aminoType: "cosmos-sdk/MsgBeginRedelegate",
     toAmino: ({
-      delegator_address,
-      validator_src_address,
-      validator_dst_address,
+      delegatorAddress,
+      validatorSrcAddress,
+      validatorDstAddress,
       amount
     }: MsgBeginRedelegate): AminoMsgBeginRedelegate["value"] => {
       return {
-        delegator_address,
-        validator_src_address,
-        validator_dst_address,
+        delegator_address: delegatorAddress,
+        validator_src_address: validatorSrcAddress,
+        validator_dst_address: validatorDstAddress,
         amount: {
           denom: amount.denom,
           amount: Long.fromNumber(amount.amount).toString()
@@ -254,9 +250,9 @@ export const AminoConverter = {
       amount
     }: AminoMsgBeginRedelegate["value"]): MsgBeginRedelegate => {
       return {
-        delegator_address,
-        validator_src_address,
-        validator_dst_address,
+        delegatorAddress: delegator_address,
+        validatorSrcAddress: validator_src_address,
+        validatorDstAddress: validator_dst_address,
         amount: {
           denom: amount.denom,
           amount: amount.amount
@@ -267,13 +263,13 @@ export const AminoConverter = {
   "/cosmos.staking.v1beta1.MsgUndelegate": {
     aminoType: "cosmos-sdk/MsgUndelegate",
     toAmino: ({
-      delegator_address,
-      validator_address,
+      delegatorAddress,
+      validatorAddress,
       amount
     }: MsgUndelegate): AminoMsgUndelegate["value"] => {
       return {
-        delegator_address,
-        validator_address,
+        delegator_address: delegatorAddress,
+        validator_address: validatorAddress,
         amount: {
           denom: amount.denom,
           amount: Long.fromNumber(amount.amount).toString()
@@ -286,8 +282,8 @@ export const AminoConverter = {
       amount
     }: AminoMsgUndelegate["value"]): MsgUndelegate => {
       return {
-        delegator_address,
-        validator_address,
+        delegatorAddress: delegator_address,
+        validatorAddress: validator_address,
         amount: {
           denom: amount.denom,
           amount: amount.amount

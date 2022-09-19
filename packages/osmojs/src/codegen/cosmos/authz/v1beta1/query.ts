@@ -1,68 +1,123 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Grant, GrantAuthorization } from "./authz";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { Grant, GrantSDKType, GrantAuthorization, GrantAuthorizationSDKType } from "./authz";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** QueryGrantsRequest is the request type for the Query/Grants RPC method. */
+
 export interface QueryGrantsRequest {
   granter?: string;
   grantee?: string;
-
   /** Optional, msg_type_url, when set, will query only grants matching given msg type. */
-  msg_type_url?: string;
 
+  msgTypeUrl?: string;
   /** pagination defines an pagination for the request. */
+
   pagination?: PageRequest;
 }
+/** QueryGrantsRequest is the request type for the Query/Grants RPC method. */
 
+export interface QueryGrantsRequestSDKType {
+  granter?: string;
+  grantee?: string;
+  /** Optional, msg_type_url, when set, will query only grants matching given msg type. */
+
+  msg_type_url?: string;
+  /** pagination defines an pagination for the request. */
+
+  pagination?: PageRequestSDKType;
+}
 /** QueryGrantsResponse is the response type for the Query/Authorizations RPC method. */
+
 export interface QueryGrantsResponse {
   /** authorizations is a list of grants granted for grantee by granter. */
   grants: Grant[];
-
   /** pagination defines an pagination for the response. */
+
   pagination?: PageResponse;
 }
+/** QueryGrantsResponse is the response type for the Query/Authorizations RPC method. */
 
+export interface QueryGrantsResponseSDKType {
+  /** authorizations is a list of grants granted for grantee by granter. */
+  grants: GrantSDKType[];
+  /** pagination defines an pagination for the response. */
+
+  pagination?: PageResponseSDKType;
+}
 /** QueryGranterGrantsRequest is the request type for the Query/GranterGrants RPC method. */
+
 export interface QueryGranterGrantsRequest {
   granter: string;
-
   /** pagination defines an pagination for the request. */
+
   pagination?: PageRequest;
 }
+/** QueryGranterGrantsRequest is the request type for the Query/GranterGrants RPC method. */
 
+export interface QueryGranterGrantsRequestSDKType {
+  granter: string;
+  /** pagination defines an pagination for the request. */
+
+  pagination?: PageRequestSDKType;
+}
 /** QueryGranterGrantsResponse is the response type for the Query/GranterGrants RPC method. */
+
 export interface QueryGranterGrantsResponse {
   /** grants is a list of grants granted by the granter. */
   grants: GrantAuthorization[];
-
   /** pagination defines an pagination for the response. */
+
   pagination?: PageResponse;
 }
+/** QueryGranterGrantsResponse is the response type for the Query/GranterGrants RPC method. */
 
+export interface QueryGranterGrantsResponseSDKType {
+  /** grants is a list of grants granted by the granter. */
+  grants: GrantAuthorizationSDKType[];
+  /** pagination defines an pagination for the response. */
+
+  pagination?: PageResponseSDKType;
+}
 /** QueryGranteeGrantsRequest is the request type for the Query/IssuedGrants RPC method. */
+
 export interface QueryGranteeGrantsRequest {
   grantee: string;
-
   /** pagination defines an pagination for the request. */
+
   pagination?: PageRequest;
 }
+/** QueryGranteeGrantsRequest is the request type for the Query/IssuedGrants RPC method. */
 
+export interface QueryGranteeGrantsRequestSDKType {
+  grantee: string;
+  /** pagination defines an pagination for the request. */
+
+  pagination?: PageRequestSDKType;
+}
 /** QueryGranteeGrantsResponse is the response type for the Query/GranteeGrants RPC method. */
+
 export interface QueryGranteeGrantsResponse {
   /** grants is a list of grants granted to the grantee. */
   grants: GrantAuthorization[];
-
   /** pagination defines an pagination for the response. */
+
   pagination?: PageResponse;
+}
+/** QueryGranteeGrantsResponse is the response type for the Query/GranteeGrants RPC method. */
+
+export interface QueryGranteeGrantsResponseSDKType {
+  /** grants is a list of grants granted to the grantee. */
+  grants: GrantAuthorizationSDKType[];
+  /** pagination defines an pagination for the response. */
+
+  pagination?: PageResponseSDKType;
 }
 
 function createBaseQueryGrantsRequest(): QueryGrantsRequest {
   return {
     granter: "",
     grantee: "",
-    msg_type_url: "",
+    msgTypeUrl: "",
     pagination: undefined
   };
 }
@@ -77,8 +132,8 @@ export const QueryGrantsRequest = {
       writer.uint32(18).string(message.grantee);
     }
 
-    if (message.msg_type_url !== "") {
-      writer.uint32(26).string(message.msg_type_url);
+    if (message.msgTypeUrl !== "") {
+      writer.uint32(26).string(message.msgTypeUrl);
     }
 
     if (message.pagination !== undefined) {
@@ -106,7 +161,7 @@ export const QueryGrantsRequest = {
           break;
 
         case 3:
-          message.msg_type_url = reader.string();
+          message.msgTypeUrl = reader.string();
           break;
 
         case 4:
@@ -126,7 +181,7 @@ export const QueryGrantsRequest = {
     return {
       granter: isSet(object.granter) ? String(object.granter) : "",
       grantee: isSet(object.grantee) ? String(object.grantee) : "",
-      msg_type_url: isSet(object.msg_type_url) ? String(object.msg_type_url) : "",
+      msgTypeUrl: isSet(object.msgTypeUrl) ? String(object.msgTypeUrl) : "",
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
@@ -135,7 +190,7 @@ export const QueryGrantsRequest = {
     const obj: any = {};
     message.granter !== undefined && (obj.granter = message.granter);
     message.grantee !== undefined && (obj.grantee = message.grantee);
-    message.msg_type_url !== undefined && (obj.msg_type_url = message.msg_type_url);
+    message.msgTypeUrl !== undefined && (obj.msgTypeUrl = message.msgTypeUrl);
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
   },
@@ -144,7 +199,7 @@ export const QueryGrantsRequest = {
     const message = createBaseQueryGrantsRequest();
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
-    message.msg_type_url = object.msg_type_url ?? "";
+    message.msgTypeUrl = object.msgTypeUrl ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -171,7 +226,7 @@ export const QueryGrantsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGrantsResponse();
@@ -315,7 +370,7 @@ export const QueryGranterGrantsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGranterGrantsResponse();
@@ -459,7 +514,7 @@ export const QueryGranteeGrantsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGranteeGrantsResponse();

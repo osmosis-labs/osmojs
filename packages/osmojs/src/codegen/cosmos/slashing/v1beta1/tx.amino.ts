@@ -10,17 +10,17 @@ export const AminoConverter = {
   "/cosmos.slashing.v1beta1.MsgUnjail": {
     aminoType: "cosmos-sdk/MsgUnjail",
     toAmino: ({
-      validator_addr
+      validatorAddr
     }: MsgUnjail): AminoMsgUnjail["value"] => {
       return {
-        validator_addr
+        validator_addr: validatorAddr
       };
     },
     fromAmino: ({
       validator_addr
     }: AminoMsgUnjail["value"]): MsgUnjail => {
       return {
-        validator_addr
+        validatorAddr: validator_addr
       };
     }
   }

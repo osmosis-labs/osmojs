@@ -3,12 +3,22 @@ import { DeepPartial, isSet, bytesFromBase64, base64FromBytes } from "@osmonauts
 export interface Node {
   children: Child[];
 }
+export interface NodeSDKType {
+  children: ChildSDKType[];
+}
 export interface Child {
+  index: Uint8Array;
+  accumulation: string;
+}
+export interface ChildSDKType {
   index: Uint8Array;
   accumulation: string;
 }
 export interface Leaf {
   leaf: Child;
+}
+export interface LeafSDKType {
+  leaf: ChildSDKType;
 }
 
 function createBaseNode(): Node {

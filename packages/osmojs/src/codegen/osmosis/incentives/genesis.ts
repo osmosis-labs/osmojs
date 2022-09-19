@@ -1,15 +1,24 @@
-import { Params } from "./params";
-import { Gauge } from "./gauge";
-import { Duration } from "../../google/protobuf/duration";
+import { Params, ParamsSDKType } from "./params";
+import { Gauge, GaugeSDKType } from "./gauge";
+import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** GenesisState defines the incentives module's genesis state. */
+
 export interface GenesisState {
   /** params defines all the parameters of the module */
   params: Params;
   gauges: Gauge[];
-  lockable_durations: Duration[];
+  lockableDurations: Duration[];
+  lastGaugeId: Long;
+}
+/** GenesisState defines the incentives module's genesis state. */
+
+export interface GenesisStateSDKType {
+  /** params defines all the parameters of the module */
+  params: ParamsSDKType;
+  gauges: GaugeSDKType[];
+  lockable_durations: DurationSDKType[];
   last_gauge_id: Long;
 }
 
@@ -17,8 +26,8 @@ function createBaseGenesisState(): GenesisState {
   return {
     params: undefined,
     gauges: [],
-    lockable_durations: [],
-    last_gauge_id: Long.UZERO
+    lockableDurations: [],
+    lastGaugeId: Long.UZERO
   };
 }
 
@@ -32,12 +41,12 @@ export const GenesisState = {
       Gauge.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.lockable_durations) {
+    for (const v of message.lockableDurations) {
       Duration.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    if (!message.last_gauge_id.isZero()) {
-      writer.uint32(32).uint64(message.last_gauge_id);
+    if (!message.lastGaugeId.isZero()) {
+      writer.uint32(32).uint64(message.lastGaugeId);
     }
 
     return writer;
@@ -61,11 +70,11 @@ export const GenesisState = {
           break;
 
         case 3:
-          message.lockable_durations.push(Duration.decode(reader, reader.uint32()));
+          message.lockableDurations.push(Duration.decode(reader, reader.uint32()));
           break;
 
         case 4:
-          message.last_gauge_id = (reader.uint64() as Long);
+          message.lastGaugeId = (reader.uint64() as Long);
           break;
 
         default:
@@ -81,8 +90,8 @@ export const GenesisState = {
     return {
       params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
       gauges: Array.isArray(object?.gauges) ? object.gauges.map((e: any) => Gauge.fromJSON(e)) : [],
-      lockable_durations: Array.isArray(object?.lockable_durations) ? object.lockable_durations.map((e: any) => Duration.fromJSON(e)) : [],
-      last_gauge_id: isSet(object.last_gauge_id) ? Long.fromString(object.last_gauge_id) : Long.UZERO
+      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : [],
+      lastGaugeId: isSet(object.lastGaugeId) ? Long.fromString(object.lastGaugeId) : Long.UZERO
     };
   },
 
@@ -96,13 +105,13 @@ export const GenesisState = {
       obj.gauges = [];
     }
 
-    if (message.lockable_durations) {
-      obj.lockable_durations = message.lockable_durations.map(e => e ? Duration.toJSON(e) : undefined);
+    if (message.lockableDurations) {
+      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
     } else {
-      obj.lockable_durations = [];
+      obj.lockableDurations = [];
     }
 
-    message.last_gauge_id !== undefined && (obj.last_gauge_id = (message.last_gauge_id || Long.UZERO).toString());
+    message.lastGaugeId !== undefined && (obj.lastGaugeId = (message.lastGaugeId || Long.UZERO).toString());
     return obj;
   },
 
@@ -110,8 +119,8 @@ export const GenesisState = {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.gauges = object.gauges?.map(e => Gauge.fromPartial(e)) || [];
-    message.lockable_durations = object.lockable_durations?.map(e => Duration.fromPartial(e)) || [];
-    message.last_gauge_id = object.last_gauge_id !== undefined && object.last_gauge_id !== null ? Long.fromValue(object.last_gauge_id) : Long.UZERO;
+    message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
+    message.lastGaugeId = object.lastGaugeId !== undefined && object.lastGaugeId !== null ? Long.fromValue(object.lastGaugeId) : Long.UZERO;
     return message;
   }
 

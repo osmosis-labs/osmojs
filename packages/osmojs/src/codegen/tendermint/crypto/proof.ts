@@ -3,43 +3,77 @@ import { Long, isSet, bytesFromBase64, base64FromBytes, DeepPartial } from "@osm
 export interface Proof {
   total: Long;
   index: Long;
+  leafHash: Uint8Array;
+  aunts: Uint8Array[];
+}
+export interface ProofSDKType {
+  total: Long;
+  index: Long;
   leaf_hash: Uint8Array;
   aunts: Uint8Array[];
 }
 export interface ValueOp {
   /** Encoded in ProofOp.Key. */
   key: Uint8Array;
-
   /** To encode in ProofOp.Data */
+
   proof: Proof;
+}
+export interface ValueOpSDKType {
+  /** Encoded in ProofOp.Key. */
+  key: Uint8Array;
+  /** To encode in ProofOp.Data */
+
+  proof: ProofSDKType;
 }
 export interface DominoOp {
   key: string;
   input: string;
   output: string;
 }
-
+export interface DominoOpSDKType {
+  key: string;
+  input: string;
+  output: string;
+}
 /**
  * ProofOp defines an operation used for calculating Merkle root
  * The data could be arbitrary format, providing nessecary data
  * for example neighbouring node hash
  */
+
 export interface ProofOp {
   type: string;
   key: Uint8Array;
   data: Uint8Array;
 }
+/**
+ * ProofOp defines an operation used for calculating Merkle root
+ * The data could be arbitrary format, providing nessecary data
+ * for example neighbouring node hash
+ */
 
+export interface ProofOpSDKType {
+  type: string;
+  key: Uint8Array;
+  data: Uint8Array;
+}
 /** ProofOps is Merkle proof defined by the list of ProofOps */
+
 export interface ProofOps {
   ops: ProofOp[];
+}
+/** ProofOps is Merkle proof defined by the list of ProofOps */
+
+export interface ProofOpsSDKType {
+  ops: ProofOpSDKType[];
 }
 
 function createBaseProof(): Proof {
   return {
     total: Long.ZERO,
     index: Long.ZERO,
-    leaf_hash: new Uint8Array(),
+    leafHash: new Uint8Array(),
     aunts: []
   };
 }
@@ -54,8 +88,8 @@ export const Proof = {
       writer.uint32(16).int64(message.index);
     }
 
-    if (message.leaf_hash.length !== 0) {
-      writer.uint32(26).bytes(message.leaf_hash);
+    if (message.leafHash.length !== 0) {
+      writer.uint32(26).bytes(message.leafHash);
     }
 
     for (const v of message.aunts) {
@@ -83,7 +117,7 @@ export const Proof = {
           break;
 
         case 3:
-          message.leaf_hash = reader.bytes();
+          message.leafHash = reader.bytes();
           break;
 
         case 4:
@@ -103,7 +137,7 @@ export const Proof = {
     return {
       total: isSet(object.total) ? Long.fromString(object.total) : Long.ZERO,
       index: isSet(object.index) ? Long.fromString(object.index) : Long.ZERO,
-      leaf_hash: isSet(object.leaf_hash) ? bytesFromBase64(object.leaf_hash) : new Uint8Array(),
+      leafHash: isSet(object.leafHash) ? bytesFromBase64(object.leafHash) : new Uint8Array(),
       aunts: Array.isArray(object?.aunts) ? object.aunts.map((e: any) => bytesFromBase64(e)) : []
     };
   },
@@ -112,7 +146,7 @@ export const Proof = {
     const obj: any = {};
     message.total !== undefined && (obj.total = (message.total || Long.ZERO).toString());
     message.index !== undefined && (obj.index = (message.index || Long.ZERO).toString());
-    message.leaf_hash !== undefined && (obj.leaf_hash = base64FromBytes(message.leaf_hash !== undefined ? message.leaf_hash : new Uint8Array()));
+    message.leafHash !== undefined && (obj.leafHash = base64FromBytes(message.leafHash !== undefined ? message.leafHash : new Uint8Array()));
 
     if (message.aunts) {
       obj.aunts = message.aunts.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
@@ -127,7 +161,7 @@ export const Proof = {
     const message = createBaseProof();
     message.total = object.total !== undefined && object.total !== null ? Long.fromValue(object.total) : Long.ZERO;
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.ZERO;
-    message.leaf_hash = object.leaf_hash ?? new Uint8Array();
+    message.leafHash = object.leafHash ?? new Uint8Array();
     message.aunts = object.aunts?.map(e => e) || [];
     return message;
   }

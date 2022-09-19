@@ -1,7 +1,12 @@
-import { Coin } from "../../cosmos/base/v1beta1/coin";
+import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
 export enum SuperfluidAssetType {
+  SuperfluidAssetTypeNative = 0,
+  SuperfluidAssetTypeLPShare = 1,
+  UNRECOGNIZED = -1,
+}
+export enum SuperfluidAssetTypeSDKType {
   SuperfluidAssetTypeNative = 0,
   SuperfluidAssetTypeLPShare = 1,
   UNRECOGNIZED = -1,
@@ -34,25 +39,42 @@ export function superfluidAssetTypeToJSON(object: SuperfluidAssetType): string {
       return "UNKNOWN";
   }
 }
-
 /** SuperfluidAsset stores the pair of superfluid asset type and denom pair */
+
 export interface SuperfluidAsset {
   denom: string;
-  asset_type: SuperfluidAssetType;
+  assetType: SuperfluidAssetType;
 }
+/** SuperfluidAsset stores the pair of superfluid asset type and denom pair */
 
+export interface SuperfluidAssetSDKType {
+  denom: string;
+  asset_type: SuperfluidAssetTypeSDKType;
+}
 /**
  * SuperfluidIntermediaryAccount takes the role of intermediary between LP token
  * and OSMO tokens for superfluid staking
  */
+
 export interface SuperfluidIntermediaryAccount {
   denom: string;
-  val_addr: string;
-
+  valAddr: string;
   /** perpetual gauge for rewards distribution */
+
+  gaugeId: Long;
+}
+/**
+ * SuperfluidIntermediaryAccount takes the role of intermediary between LP token
+ * and OSMO tokens for superfluid staking
+ */
+
+export interface SuperfluidIntermediaryAccountSDKType {
+  denom: string;
+  val_addr: string;
+  /** perpetual gauge for rewards distribution */
+
   gauge_id: Long;
 }
-
 /**
  * The Osmo-Equivalent-Multiplier Record for epoch N refers to the osmo worth we
  * treat an LP share as having, for all of epoch N. Eventually this is intended
@@ -62,36 +84,72 @@ export interface SuperfluidIntermediaryAccount {
  * price at the boundary.  For different types of assets in the future, it could
  * change.
  */
-export interface OsmoEquivalentMultiplierRecord {
-  epoch_number: Long;
 
+export interface OsmoEquivalentMultiplierRecord {
+  epochNumber: Long;
   /** superfluid asset denom, can be LP token or native token */
+
   denom: string;
   multiplier: string;
 }
+/**
+ * The Osmo-Equivalent-Multiplier Record for epoch N refers to the osmo worth we
+ * treat an LP share as having, for all of epoch N. Eventually this is intended
+ * to be set as the Time-weighted-average-osmo-backing for the entire duration
+ * of epoch N-1. (Thereby locking whats in use for epoch N as based on the prior
+ * epochs rewards) However for now, this is not the TWAP but instead the spot
+ * price at the boundary.  For different types of assets in the future, it could
+ * change.
+ */
 
+export interface OsmoEquivalentMultiplierRecordSDKType {
+  epoch_number: Long;
+  /** superfluid asset denom, can be LP token or native token */
+
+  denom: string;
+  multiplier: string;
+}
 /**
  * SuperfluidDelegationRecord takes the role of intermediary between LP token
  * and OSMO tokens for superfluid staking
  */
+
 export interface SuperfluidDelegationRecord {
+  delegatorAddress: string;
+  validatorAddress: string;
+  delegationAmount: Coin;
+  equivalentStakedAmount: Coin;
+}
+/**
+ * SuperfluidDelegationRecord takes the role of intermediary between LP token
+ * and OSMO tokens for superfluid staking
+ */
+
+export interface SuperfluidDelegationRecordSDKType {
   delegator_address: string;
   validator_address: string;
-  delegation_amount: Coin;
-  equivalent_staked_amount: Coin;
+  delegation_amount: CoinSDKType;
+  equivalent_staked_amount: CoinSDKType;
 }
 export interface LockIdIntermediaryAccountConnection {
+  lockId: Long;
+  intermediaryAccount: string;
+}
+export interface LockIdIntermediaryAccountConnectionSDKType {
   lock_id: Long;
   intermediary_account: string;
 }
 export interface UnpoolWhitelistedPools {
   ids: Long[];
 }
+export interface UnpoolWhitelistedPoolsSDKType {
+  ids: Long[];
+}
 
 function createBaseSuperfluidAsset(): SuperfluidAsset {
   return {
     denom: "",
-    asset_type: 0
+    assetType: 0
   };
 }
 
@@ -101,8 +159,8 @@ export const SuperfluidAsset = {
       writer.uint32(10).string(message.denom);
     }
 
-    if (message.asset_type !== 0) {
-      writer.uint32(16).int32(message.asset_type);
+    if (message.assetType !== 0) {
+      writer.uint32(16).int32(message.assetType);
     }
 
     return writer;
@@ -122,7 +180,7 @@ export const SuperfluidAsset = {
           break;
 
         case 2:
-          message.asset_type = (reader.int32() as any);
+          message.assetType = (reader.int32() as any);
           break;
 
         default:
@@ -137,21 +195,21 @@ export const SuperfluidAsset = {
   fromJSON(object: any): SuperfluidAsset {
     return {
       denom: isSet(object.denom) ? String(object.denom) : "",
-      asset_type: isSet(object.asset_type) ? superfluidAssetTypeFromJSON(object.asset_type) : 0
+      assetType: isSet(object.assetType) ? superfluidAssetTypeFromJSON(object.assetType) : 0
     };
   },
 
   toJSON(message: SuperfluidAsset): unknown {
     const obj: any = {};
     message.denom !== undefined && (obj.denom = message.denom);
-    message.asset_type !== undefined && (obj.asset_type = superfluidAssetTypeToJSON(message.asset_type));
+    message.assetType !== undefined && (obj.assetType = superfluidAssetTypeToJSON(message.assetType));
     return obj;
   },
 
   fromPartial(object: DeepPartial<SuperfluidAsset>): SuperfluidAsset {
     const message = createBaseSuperfluidAsset();
     message.denom = object.denom ?? "";
-    message.asset_type = object.asset_type ?? 0;
+    message.assetType = object.assetType ?? 0;
     return message;
   }
 
@@ -160,8 +218,8 @@ export const SuperfluidAsset = {
 function createBaseSuperfluidIntermediaryAccount(): SuperfluidIntermediaryAccount {
   return {
     denom: "",
-    val_addr: "",
-    gauge_id: Long.UZERO
+    valAddr: "",
+    gaugeId: Long.UZERO
   };
 }
 
@@ -171,12 +229,12 @@ export const SuperfluidIntermediaryAccount = {
       writer.uint32(10).string(message.denom);
     }
 
-    if (message.val_addr !== "") {
-      writer.uint32(18).string(message.val_addr);
+    if (message.valAddr !== "") {
+      writer.uint32(18).string(message.valAddr);
     }
 
-    if (!message.gauge_id.isZero()) {
-      writer.uint32(24).uint64(message.gauge_id);
+    if (!message.gaugeId.isZero()) {
+      writer.uint32(24).uint64(message.gaugeId);
     }
 
     return writer;
@@ -196,11 +254,11 @@ export const SuperfluidIntermediaryAccount = {
           break;
 
         case 2:
-          message.val_addr = reader.string();
+          message.valAddr = reader.string();
           break;
 
         case 3:
-          message.gauge_id = (reader.uint64() as Long);
+          message.gaugeId = (reader.uint64() as Long);
           break;
 
         default:
@@ -215,24 +273,24 @@ export const SuperfluidIntermediaryAccount = {
   fromJSON(object: any): SuperfluidIntermediaryAccount {
     return {
       denom: isSet(object.denom) ? String(object.denom) : "",
-      val_addr: isSet(object.val_addr) ? String(object.val_addr) : "",
-      gauge_id: isSet(object.gauge_id) ? Long.fromString(object.gauge_id) : Long.UZERO
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : "",
+      gaugeId: isSet(object.gaugeId) ? Long.fromString(object.gaugeId) : Long.UZERO
     };
   },
 
   toJSON(message: SuperfluidIntermediaryAccount): unknown {
     const obj: any = {};
     message.denom !== undefined && (obj.denom = message.denom);
-    message.val_addr !== undefined && (obj.val_addr = message.val_addr);
-    message.gauge_id !== undefined && (obj.gauge_id = (message.gauge_id || Long.UZERO).toString());
+    message.valAddr !== undefined && (obj.valAddr = message.valAddr);
+    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<SuperfluidIntermediaryAccount>): SuperfluidIntermediaryAccount {
     const message = createBaseSuperfluidIntermediaryAccount();
     message.denom = object.denom ?? "";
-    message.val_addr = object.val_addr ?? "";
-    message.gauge_id = object.gauge_id !== undefined && object.gauge_id !== null ? Long.fromValue(object.gauge_id) : Long.UZERO;
+    message.valAddr = object.valAddr ?? "";
+    message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     return message;
   }
 
@@ -240,7 +298,7 @@ export const SuperfluidIntermediaryAccount = {
 
 function createBaseOsmoEquivalentMultiplierRecord(): OsmoEquivalentMultiplierRecord {
   return {
-    epoch_number: Long.ZERO,
+    epochNumber: Long.ZERO,
     denom: "",
     multiplier: ""
   };
@@ -248,8 +306,8 @@ function createBaseOsmoEquivalentMultiplierRecord(): OsmoEquivalentMultiplierRec
 
 export const OsmoEquivalentMultiplierRecord = {
   encode(message: OsmoEquivalentMultiplierRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.epoch_number.isZero()) {
-      writer.uint32(8).int64(message.epoch_number);
+    if (!message.epochNumber.isZero()) {
+      writer.uint32(8).int64(message.epochNumber);
     }
 
     if (message.denom !== "") {
@@ -273,7 +331,7 @@ export const OsmoEquivalentMultiplierRecord = {
 
       switch (tag >>> 3) {
         case 1:
-          message.epoch_number = (reader.int64() as Long);
+          message.epochNumber = (reader.int64() as Long);
           break;
 
         case 2:
@@ -295,7 +353,7 @@ export const OsmoEquivalentMultiplierRecord = {
 
   fromJSON(object: any): OsmoEquivalentMultiplierRecord {
     return {
-      epoch_number: isSet(object.epoch_number) ? Long.fromString(object.epoch_number) : Long.ZERO,
+      epochNumber: isSet(object.epochNumber) ? Long.fromString(object.epochNumber) : Long.ZERO,
       denom: isSet(object.denom) ? String(object.denom) : "",
       multiplier: isSet(object.multiplier) ? String(object.multiplier) : ""
     };
@@ -303,7 +361,7 @@ export const OsmoEquivalentMultiplierRecord = {
 
   toJSON(message: OsmoEquivalentMultiplierRecord): unknown {
     const obj: any = {};
-    message.epoch_number !== undefined && (obj.epoch_number = (message.epoch_number || Long.ZERO).toString());
+    message.epochNumber !== undefined && (obj.epochNumber = (message.epochNumber || Long.ZERO).toString());
     message.denom !== undefined && (obj.denom = message.denom);
     message.multiplier !== undefined && (obj.multiplier = message.multiplier);
     return obj;
@@ -311,7 +369,7 @@ export const OsmoEquivalentMultiplierRecord = {
 
   fromPartial(object: DeepPartial<OsmoEquivalentMultiplierRecord>): OsmoEquivalentMultiplierRecord {
     const message = createBaseOsmoEquivalentMultiplierRecord();
-    message.epoch_number = object.epoch_number !== undefined && object.epoch_number !== null ? Long.fromValue(object.epoch_number) : Long.ZERO;
+    message.epochNumber = object.epochNumber !== undefined && object.epochNumber !== null ? Long.fromValue(object.epochNumber) : Long.ZERO;
     message.denom = object.denom ?? "";
     message.multiplier = object.multiplier ?? "";
     return message;
@@ -321,29 +379,29 @@ export const OsmoEquivalentMultiplierRecord = {
 
 function createBaseSuperfluidDelegationRecord(): SuperfluidDelegationRecord {
   return {
-    delegator_address: "",
-    validator_address: "",
-    delegation_amount: undefined,
-    equivalent_staked_amount: undefined
+    delegatorAddress: "",
+    validatorAddress: "",
+    delegationAmount: undefined,
+    equivalentStakedAmount: undefined
   };
 }
 
 export const SuperfluidDelegationRecord = {
   encode(message: SuperfluidDelegationRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
-    if (message.validator_address !== "") {
-      writer.uint32(18).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(18).string(message.validatorAddress);
     }
 
-    if (message.delegation_amount !== undefined) {
-      Coin.encode(message.delegation_amount, writer.uint32(26).fork()).ldelim();
+    if (message.delegationAmount !== undefined) {
+      Coin.encode(message.delegationAmount, writer.uint32(26).fork()).ldelim();
     }
 
-    if (message.equivalent_staked_amount !== undefined) {
-      Coin.encode(message.equivalent_staked_amount, writer.uint32(34).fork()).ldelim();
+    if (message.equivalentStakedAmount !== undefined) {
+      Coin.encode(message.equivalentStakedAmount, writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -359,19 +417,19 @@ export const SuperfluidDelegationRecord = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         case 2:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 3:
-          message.delegation_amount = Coin.decode(reader, reader.uint32());
+          message.delegationAmount = Coin.decode(reader, reader.uint32());
           break;
 
         case 4:
-          message.equivalent_staked_amount = Coin.decode(reader, reader.uint32());
+          message.equivalentStakedAmount = Coin.decode(reader, reader.uint32());
           break;
 
         default:
@@ -385,28 +443,28 @@ export const SuperfluidDelegationRecord = {
 
   fromJSON(object: any): SuperfluidDelegationRecord {
     return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-      delegation_amount: isSet(object.delegation_amount) ? Coin.fromJSON(object.delegation_amount) : undefined,
-      equivalent_staked_amount: isSet(object.equivalent_staked_amount) ? Coin.fromJSON(object.equivalent_staked_amount) : undefined
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      delegationAmount: isSet(object.delegationAmount) ? Coin.fromJSON(object.delegationAmount) : undefined,
+      equivalentStakedAmount: isSet(object.equivalentStakedAmount) ? Coin.fromJSON(object.equivalentStakedAmount) : undefined
     };
   },
 
   toJSON(message: SuperfluidDelegationRecord): unknown {
     const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-    message.delegation_amount !== undefined && (obj.delegation_amount = message.delegation_amount ? Coin.toJSON(message.delegation_amount) : undefined);
-    message.equivalent_staked_amount !== undefined && (obj.equivalent_staked_amount = message.equivalent_staked_amount ? Coin.toJSON(message.equivalent_staked_amount) : undefined);
+    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
+    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
+    message.delegationAmount !== undefined && (obj.delegationAmount = message.delegationAmount ? Coin.toJSON(message.delegationAmount) : undefined);
+    message.equivalentStakedAmount !== undefined && (obj.equivalentStakedAmount = message.equivalentStakedAmount ? Coin.toJSON(message.equivalentStakedAmount) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<SuperfluidDelegationRecord>): SuperfluidDelegationRecord {
     const message = createBaseSuperfluidDelegationRecord();
-    message.delegator_address = object.delegator_address ?? "";
-    message.validator_address = object.validator_address ?? "";
-    message.delegation_amount = object.delegation_amount !== undefined && object.delegation_amount !== null ? Coin.fromPartial(object.delegation_amount) : undefined;
-    message.equivalent_staked_amount = object.equivalent_staked_amount !== undefined && object.equivalent_staked_amount !== null ? Coin.fromPartial(object.equivalent_staked_amount) : undefined;
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.delegationAmount = object.delegationAmount !== undefined && object.delegationAmount !== null ? Coin.fromPartial(object.delegationAmount) : undefined;
+    message.equivalentStakedAmount = object.equivalentStakedAmount !== undefined && object.equivalentStakedAmount !== null ? Coin.fromPartial(object.equivalentStakedAmount) : undefined;
     return message;
   }
 
@@ -414,19 +472,19 @@ export const SuperfluidDelegationRecord = {
 
 function createBaseLockIdIntermediaryAccountConnection(): LockIdIntermediaryAccountConnection {
   return {
-    lock_id: Long.UZERO,
-    intermediary_account: ""
+    lockId: Long.UZERO,
+    intermediaryAccount: ""
   };
 }
 
 export const LockIdIntermediaryAccountConnection = {
   encode(message: LockIdIntermediaryAccountConnection, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.lock_id.isZero()) {
-      writer.uint32(8).uint64(message.lock_id);
+    if (!message.lockId.isZero()) {
+      writer.uint32(8).uint64(message.lockId);
     }
 
-    if (message.intermediary_account !== "") {
-      writer.uint32(18).string(message.intermediary_account);
+    if (message.intermediaryAccount !== "") {
+      writer.uint32(18).string(message.intermediaryAccount);
     }
 
     return writer;
@@ -442,11 +500,11 @@ export const LockIdIntermediaryAccountConnection = {
 
       switch (tag >>> 3) {
         case 1:
-          message.lock_id = (reader.uint64() as Long);
+          message.lockId = (reader.uint64() as Long);
           break;
 
         case 2:
-          message.intermediary_account = reader.string();
+          message.intermediaryAccount = reader.string();
           break;
 
         default:
@@ -460,22 +518,22 @@ export const LockIdIntermediaryAccountConnection = {
 
   fromJSON(object: any): LockIdIntermediaryAccountConnection {
     return {
-      lock_id: isSet(object.lock_id) ? Long.fromString(object.lock_id) : Long.UZERO,
-      intermediary_account: isSet(object.intermediary_account) ? String(object.intermediary_account) : ""
+      lockId: isSet(object.lockId) ? Long.fromString(object.lockId) : Long.UZERO,
+      intermediaryAccount: isSet(object.intermediaryAccount) ? String(object.intermediaryAccount) : ""
     };
   },
 
   toJSON(message: LockIdIntermediaryAccountConnection): unknown {
     const obj: any = {};
-    message.lock_id !== undefined && (obj.lock_id = (message.lock_id || Long.UZERO).toString());
-    message.intermediary_account !== undefined && (obj.intermediary_account = message.intermediary_account);
+    message.lockId !== undefined && (obj.lockId = (message.lockId || Long.UZERO).toString());
+    message.intermediaryAccount !== undefined && (obj.intermediaryAccount = message.intermediaryAccount);
     return obj;
   },
 
   fromPartial(object: DeepPartial<LockIdIntermediaryAccountConnection>): LockIdIntermediaryAccountConnection {
     const message = createBaseLockIdIntermediaryAccountConnection();
-    message.lock_id = object.lock_id !== undefined && object.lock_id !== null ? Long.fromValue(object.lock_id) : Long.UZERO;
-    message.intermediary_account = object.intermediary_account ?? "";
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.intermediaryAccount = object.intermediaryAccount ?? "";
     return message;
   }
 

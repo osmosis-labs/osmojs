@@ -1,29 +1,56 @@
 import * as _m0 from "protobufjs/minimal";
 import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
 /**
  * CommitInfo defines commit information used by the multi-store when committing
  * a version/height.
  */
+
 export interface CommitInfo {
   version: Long;
-  store_infos: StoreInfo[];
+  storeInfos: StoreInfo[];
 }
+/**
+ * CommitInfo defines commit information used by the multi-store when committing
+ * a version/height.
+ */
 
+export interface CommitInfoSDKType {
+  version: Long;
+  store_infos: StoreInfoSDKType[];
+}
 /**
  * StoreInfo defines store-specific commit information. It contains a reference
  * between a store name and the commit ID.
  */
+
 export interface StoreInfo {
   name: string;
-  commit_id: CommitID;
+  commitId: CommitID;
 }
+/**
+ * StoreInfo defines store-specific commit information. It contains a reference
+ * between a store name and the commit ID.
+ */
 
+export interface StoreInfoSDKType {
+  name: string;
+  commit_id: CommitIDSDKType;
+}
 /**
  * CommitID defines the committment information when a specific store is
  * committed.
  */
+
 export interface CommitID {
+  version: Long;
+  hash: Uint8Array;
+}
+/**
+ * CommitID defines the committment information when a specific store is
+ * committed.
+ */
+
+export interface CommitIDSDKType {
   version: Long;
   hash: Uint8Array;
 }
@@ -31,7 +58,7 @@ export interface CommitID {
 function createBaseCommitInfo(): CommitInfo {
   return {
     version: Long.ZERO,
-    store_infos: []
+    storeInfos: []
   };
 }
 
@@ -41,7 +68,7 @@ export const CommitInfo = {
       writer.uint32(8).int64(message.version);
     }
 
-    for (const v of message.store_infos) {
+    for (const v of message.storeInfos) {
       StoreInfo.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -62,7 +89,7 @@ export const CommitInfo = {
           break;
 
         case 2:
-          message.store_infos.push(StoreInfo.decode(reader, reader.uint32()));
+          message.storeInfos.push(StoreInfo.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -77,7 +104,7 @@ export const CommitInfo = {
   fromJSON(object: any): CommitInfo {
     return {
       version: isSet(object.version) ? Long.fromString(object.version) : Long.ZERO,
-      store_infos: Array.isArray(object?.store_infos) ? object.store_infos.map((e: any) => StoreInfo.fromJSON(e)) : []
+      storeInfos: Array.isArray(object?.storeInfos) ? object.storeInfos.map((e: any) => StoreInfo.fromJSON(e)) : []
     };
   },
 
@@ -85,10 +112,10 @@ export const CommitInfo = {
     const obj: any = {};
     message.version !== undefined && (obj.version = (message.version || Long.ZERO).toString());
 
-    if (message.store_infos) {
-      obj.store_infos = message.store_infos.map(e => e ? StoreInfo.toJSON(e) : undefined);
+    if (message.storeInfos) {
+      obj.storeInfos = message.storeInfos.map(e => e ? StoreInfo.toJSON(e) : undefined);
     } else {
-      obj.store_infos = [];
+      obj.storeInfos = [];
     }
 
     return obj;
@@ -97,7 +124,7 @@ export const CommitInfo = {
   fromPartial(object: DeepPartial<CommitInfo>): CommitInfo {
     const message = createBaseCommitInfo();
     message.version = object.version !== undefined && object.version !== null ? Long.fromValue(object.version) : Long.ZERO;
-    message.store_infos = object.store_infos?.map(e => StoreInfo.fromPartial(e)) || [];
+    message.storeInfos = object.storeInfos?.map(e => StoreInfo.fromPartial(e)) || [];
     return message;
   }
 
@@ -106,7 +133,7 @@ export const CommitInfo = {
 function createBaseStoreInfo(): StoreInfo {
   return {
     name: "",
-    commit_id: undefined
+    commitId: undefined
   };
 }
 
@@ -116,8 +143,8 @@ export const StoreInfo = {
       writer.uint32(10).string(message.name);
     }
 
-    if (message.commit_id !== undefined) {
-      CommitID.encode(message.commit_id, writer.uint32(18).fork()).ldelim();
+    if (message.commitId !== undefined) {
+      CommitID.encode(message.commitId, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -137,7 +164,7 @@ export const StoreInfo = {
           break;
 
         case 2:
-          message.commit_id = CommitID.decode(reader, reader.uint32());
+          message.commitId = CommitID.decode(reader, reader.uint32());
           break;
 
         default:
@@ -152,21 +179,21 @@ export const StoreInfo = {
   fromJSON(object: any): StoreInfo {
     return {
       name: isSet(object.name) ? String(object.name) : "",
-      commit_id: isSet(object.commit_id) ? CommitID.fromJSON(object.commit_id) : undefined
+      commitId: isSet(object.commitId) ? CommitID.fromJSON(object.commitId) : undefined
     };
   },
 
   toJSON(message: StoreInfo): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.commit_id !== undefined && (obj.commit_id = message.commit_id ? CommitID.toJSON(message.commit_id) : undefined);
+    message.commitId !== undefined && (obj.commitId = message.commitId ? CommitID.toJSON(message.commitId) : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<StoreInfo>): StoreInfo {
     const message = createBaseStoreInfo();
     message.name = object.name ?? "";
-    message.commit_id = object.commit_id !== undefined && object.commit_id !== null ? CommitID.fromPartial(object.commit_id) : undefined;
+    message.commitId = object.commitId !== undefined && object.commitId !== null ? CommitID.fromPartial(object.commitId) : undefined;
     return message;
   }
 

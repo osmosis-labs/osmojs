@@ -1,4 +1,3 @@
-import { Any } from "../../../google/protobuf/any";
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgSubmitEvidence } from "./tx";
 export interface AminoMsgSubmitEvidence extends AminoMsg {
@@ -21,7 +20,7 @@ export const AminoConverter = {
       return {
         submitter,
         evidence: {
-          type_url: evidence.type_url,
+          type_url: evidence.typeUrl,
           value: evidence.value
         }
       };
@@ -33,7 +32,7 @@ export const AminoConverter = {
       return {
         submitter,
         evidence: {
-          type_url: evidence.type_url,
+          typeUrl: evidence.type_url,
           value: evidence.value
         }
       };

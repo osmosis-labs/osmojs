@@ -1,43 +1,80 @@
-import { Plan } from "./upgrade";
+import { Plan, PlanSDKType } from "./upgrade";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
  * 
  * Since: cosmos-sdk 0.46
  */
+
 export interface MsgSoftwareUpgrade {
   /** authority is the address of the governance account. */
   authority: string;
-
   /** plan is the upgrade plan. */
+
   plan: Plan;
 }
+/**
+ * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
+ * 
+ * Since: cosmos-sdk 0.46
+ */
 
+export interface MsgSoftwareUpgradeSDKType {
+  /** authority is the address of the governance account. */
+  authority: string;
+  /** plan is the upgrade plan. */
+
+  plan: PlanSDKType;
+}
 /**
  * MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.
  * 
  * Since: cosmos-sdk 0.46
  */
-export interface MsgSoftwareUpgradeResponse {}
 
+export interface MsgSoftwareUpgradeResponse {}
+/**
+ * MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.
+ * 
+ * Since: cosmos-sdk 0.46
+ */
+
+export interface MsgSoftwareUpgradeResponseSDKType {}
 /**
  * MsgCancelUpgrade is the Msg/CancelUpgrade request type.
  * 
  * Since: cosmos-sdk 0.46
  */
+
 export interface MsgCancelUpgrade {
   /** authority is the address of the governance account. */
   authority: string;
 }
+/**
+ * MsgCancelUpgrade is the Msg/CancelUpgrade request type.
+ * 
+ * Since: cosmos-sdk 0.46
+ */
 
+export interface MsgCancelUpgradeSDKType {
+  /** authority is the address of the governance account. */
+  authority: string;
+}
 /**
  * MsgCancelUpgradeResponse is the Msg/CancelUpgrade response type.
  * 
  * Since: cosmos-sdk 0.46
  */
+
 export interface MsgCancelUpgradeResponse {}
+/**
+ * MsgCancelUpgradeResponse is the Msg/CancelUpgrade response type.
+ * 
+ * Since: cosmos-sdk 0.46
+ */
+
+export interface MsgCancelUpgradeResponseSDKType {}
 
 function createBaseMsgSoftwareUpgrade(): MsgSoftwareUpgrade {
   return {
@@ -117,7 +154,7 @@ export const MsgSoftwareUpgradeResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSoftwareUpgradeResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSoftwareUpgradeResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSoftwareUpgradeResponse();
@@ -217,7 +254,7 @@ export const MsgCancelUpgradeResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUpgradeResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUpgradeResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCancelUpgradeResponse();

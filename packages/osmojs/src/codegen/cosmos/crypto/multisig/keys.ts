@@ -1,21 +1,31 @@
-import { Any } from "../../../google/protobuf/any";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * LegacyAminoPubKey specifies a public key type
  * which nests multiple public keys and a threshold,
  * it uses legacy amino address rules.
  */
+
 export interface LegacyAminoPubKey {
   threshold: number;
-  public_keys: Any[];
+  publicKeys: Any[];
+}
+/**
+ * LegacyAminoPubKey specifies a public key type
+ * which nests multiple public keys and a threshold,
+ * it uses legacy amino address rules.
+ */
+
+export interface LegacyAminoPubKeySDKType {
+  threshold: number;
+  public_keys: AnySDKType[];
 }
 
 function createBaseLegacyAminoPubKey(): LegacyAminoPubKey {
   return {
     threshold: 0,
-    public_keys: []
+    publicKeys: []
   };
 }
 
@@ -25,7 +35,7 @@ export const LegacyAminoPubKey = {
       writer.uint32(8).uint32(message.threshold);
     }
 
-    for (const v of message.public_keys) {
+    for (const v of message.publicKeys) {
       Any.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -46,7 +56,7 @@ export const LegacyAminoPubKey = {
           break;
 
         case 2:
-          message.public_keys.push(Any.decode(reader, reader.uint32()));
+          message.publicKeys.push(Any.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -61,7 +71,7 @@ export const LegacyAminoPubKey = {
   fromJSON(object: any): LegacyAminoPubKey {
     return {
       threshold: isSet(object.threshold) ? Number(object.threshold) : 0,
-      public_keys: Array.isArray(object?.public_keys) ? object.public_keys.map((e: any) => Any.fromJSON(e)) : []
+      publicKeys: Array.isArray(object?.publicKeys) ? object.publicKeys.map((e: any) => Any.fromJSON(e)) : []
     };
   },
 
@@ -69,10 +79,10 @@ export const LegacyAminoPubKey = {
     const obj: any = {};
     message.threshold !== undefined && (obj.threshold = Math.round(message.threshold));
 
-    if (message.public_keys) {
-      obj.public_keys = message.public_keys.map(e => e ? Any.toJSON(e) : undefined);
+    if (message.publicKeys) {
+      obj.publicKeys = message.publicKeys.map(e => e ? Any.toJSON(e) : undefined);
     } else {
-      obj.public_keys = [];
+      obj.publicKeys = [];
     }
 
     return obj;
@@ -81,7 +91,7 @@ export const LegacyAminoPubKey = {
   fromPartial(object: DeepPartial<LegacyAminoPubKey>): LegacyAminoPubKey {
     const message = createBaseLegacyAminoPubKey();
     message.threshold = object.threshold ?? 0;
-    message.public_keys = object.public_keys?.map(e => Any.fromPartial(e)) || [];
+    message.publicKeys = object.publicKeys?.map(e => Any.fromPartial(e)) || [];
     return message;
   }
 

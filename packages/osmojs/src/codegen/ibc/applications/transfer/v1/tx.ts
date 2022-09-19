@@ -1,65 +1,102 @@
-import { Coin } from "../../../../cosmos/base/v1beta1/coin";
-import { Height } from "../../../core/client/v1/client";
+import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
+import { Height, HeightSDKType } from "../../../core/client/v1/client";
 import * as _m0 from "protobufjs/minimal";
 import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
  * ICS20 enabled chains. See ICS Spec here:
  * https://github.com/cosmos/ibc/tree/master/spec/app/ics-020-fungible-token-transfer#data-structures
  */
+
 export interface MsgTransfer {
   /** the port on which the packet will be sent */
-  source_port: string;
-
+  sourcePort: string;
   /** the channel by which the packet will be sent */
-  source_channel: string;
 
+  sourceChannel: string;
   /** the tokens to be transferred */
+
   token: Coin;
-
   /** the sender address */
+
   sender: string;
-
   /** the recipient address on the destination chain */
-  receiver: string;
 
+  receiver: string;
   /**
    * Timeout height relative to the current block height.
    * The timeout is disabled when set to 0.
    */
-  timeout_height: Height;
 
+  timeoutHeight: Height;
   /**
    * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
    * The timeout is disabled when set to 0.
    */
+
+  timeoutTimestamp: Long;
+}
+/**
+ * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
+ * ICS20 enabled chains. See ICS Spec here:
+ * https://github.com/cosmos/ibc/tree/master/spec/app/ics-020-fungible-token-transfer#data-structures
+ */
+
+export interface MsgTransferSDKType {
+  /** the port on which the packet will be sent */
+  source_port: string;
+  /** the channel by which the packet will be sent */
+
+  source_channel: string;
+  /** the tokens to be transferred */
+
+  token: CoinSDKType;
+  /** the sender address */
+
+  sender: string;
+  /** the recipient address on the destination chain */
+
+  receiver: string;
+  /**
+   * Timeout height relative to the current block height.
+   * The timeout is disabled when set to 0.
+   */
+
+  timeout_height: HeightSDKType;
+  /**
+   * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
+   * The timeout is disabled when set to 0.
+   */
+
   timeout_timestamp: Long;
 }
-
 /** MsgTransferResponse defines the Msg/Transfer response type. */
+
 export interface MsgTransferResponse {}
+/** MsgTransferResponse defines the Msg/Transfer response type. */
+
+export interface MsgTransferResponseSDKType {}
 
 function createBaseMsgTransfer(): MsgTransfer {
   return {
-    source_port: "",
-    source_channel: "",
+    sourcePort: "",
+    sourceChannel: "",
     token: undefined,
     sender: "",
     receiver: "",
-    timeout_height: undefined,
-    timeout_timestamp: Long.UZERO
+    timeoutHeight: undefined,
+    timeoutTimestamp: Long.UZERO
   };
 }
 
 export const MsgTransfer = {
   encode(message: MsgTransfer, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.source_port !== "") {
-      writer.uint32(10).string(message.source_port);
+    if (message.sourcePort !== "") {
+      writer.uint32(10).string(message.sourcePort);
     }
 
-    if (message.source_channel !== "") {
-      writer.uint32(18).string(message.source_channel);
+    if (message.sourceChannel !== "") {
+      writer.uint32(18).string(message.sourceChannel);
     }
 
     if (message.token !== undefined) {
@@ -74,12 +111,12 @@ export const MsgTransfer = {
       writer.uint32(42).string(message.receiver);
     }
 
-    if (message.timeout_height !== undefined) {
-      Height.encode(message.timeout_height, writer.uint32(50).fork()).ldelim();
+    if (message.timeoutHeight !== undefined) {
+      Height.encode(message.timeoutHeight, writer.uint32(50).fork()).ldelim();
     }
 
-    if (!message.timeout_timestamp.isZero()) {
-      writer.uint32(56).uint64(message.timeout_timestamp);
+    if (!message.timeoutTimestamp.isZero()) {
+      writer.uint32(56).uint64(message.timeoutTimestamp);
     }
 
     return writer;
@@ -95,11 +132,11 @@ export const MsgTransfer = {
 
       switch (tag >>> 3) {
         case 1:
-          message.source_port = reader.string();
+          message.sourcePort = reader.string();
           break;
 
         case 2:
-          message.source_channel = reader.string();
+          message.sourceChannel = reader.string();
           break;
 
         case 3:
@@ -115,11 +152,11 @@ export const MsgTransfer = {
           break;
 
         case 6:
-          message.timeout_height = Height.decode(reader, reader.uint32());
+          message.timeoutHeight = Height.decode(reader, reader.uint32());
           break;
 
         case 7:
-          message.timeout_timestamp = (reader.uint64() as Long);
+          message.timeoutTimestamp = (reader.uint64() as Long);
           break;
 
         default:
@@ -133,37 +170,37 @@ export const MsgTransfer = {
 
   fromJSON(object: any): MsgTransfer {
     return {
-      source_port: isSet(object.source_port) ? String(object.source_port) : "",
-      source_channel: isSet(object.source_channel) ? String(object.source_channel) : "",
+      sourcePort: isSet(object.sourcePort) ? String(object.sourcePort) : "",
+      sourceChannel: isSet(object.sourceChannel) ? String(object.sourceChannel) : "",
       token: isSet(object.token) ? Coin.fromJSON(object.token) : undefined,
       sender: isSet(object.sender) ? String(object.sender) : "",
       receiver: isSet(object.receiver) ? String(object.receiver) : "",
-      timeout_height: isSet(object.timeout_height) ? Height.fromJSON(object.timeout_height) : undefined,
-      timeout_timestamp: isSet(object.timeout_timestamp) ? Long.fromString(object.timeout_timestamp) : Long.UZERO
+      timeoutHeight: isSet(object.timeoutHeight) ? Height.fromJSON(object.timeoutHeight) : undefined,
+      timeoutTimestamp: isSet(object.timeoutTimestamp) ? Long.fromString(object.timeoutTimestamp) : Long.UZERO
     };
   },
 
   toJSON(message: MsgTransfer): unknown {
     const obj: any = {};
-    message.source_port !== undefined && (obj.source_port = message.source_port);
-    message.source_channel !== undefined && (obj.source_channel = message.source_channel);
+    message.sourcePort !== undefined && (obj.sourcePort = message.sourcePort);
+    message.sourceChannel !== undefined && (obj.sourceChannel = message.sourceChannel);
     message.token !== undefined && (obj.token = message.token ? Coin.toJSON(message.token) : undefined);
     message.sender !== undefined && (obj.sender = message.sender);
     message.receiver !== undefined && (obj.receiver = message.receiver);
-    message.timeout_height !== undefined && (obj.timeout_height = message.timeout_height ? Height.toJSON(message.timeout_height) : undefined);
-    message.timeout_timestamp !== undefined && (obj.timeout_timestamp = (message.timeout_timestamp || Long.UZERO).toString());
+    message.timeoutHeight !== undefined && (obj.timeoutHeight = message.timeoutHeight ? Height.toJSON(message.timeoutHeight) : undefined);
+    message.timeoutTimestamp !== undefined && (obj.timeoutTimestamp = (message.timeoutTimestamp || Long.UZERO).toString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgTransfer>): MsgTransfer {
     const message = createBaseMsgTransfer();
-    message.source_port = object.source_port ?? "";
-    message.source_channel = object.source_channel ?? "";
+    message.sourcePort = object.sourcePort ?? "";
+    message.sourceChannel = object.sourceChannel ?? "";
     message.token = object.token !== undefined && object.token !== null ? Coin.fromPartial(object.token) : undefined;
     message.sender = object.sender ?? "";
     message.receiver = object.receiver ?? "";
-    message.timeout_height = object.timeout_height !== undefined && object.timeout_height !== null ? Height.fromPartial(object.timeout_height) : undefined;
-    message.timeout_timestamp = object.timeout_timestamp !== undefined && object.timeout_timestamp !== null ? Long.fromValue(object.timeout_timestamp) : Long.UZERO;
+    message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? Height.fromPartial(object.timeoutHeight) : undefined;
+    message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO;
     return message;
   }
 
@@ -178,7 +215,7 @@ export const MsgTransferResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgTransferResponse();

@@ -1,13 +1,24 @@
 import * as _m0 from "protobufjs/minimal";
 import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
 /**
  * FeeToken is a struct that specifies a coin denom, and pool ID pair.
  * This marks the token as eligible for use as a tx fee asset in Osmosis.
  * Its price in osmo is derived through looking at the provided pool ID.
  * The pool ID must have osmo as one of its assets.
  */
+
 export interface FeeToken {
+  denom: string;
+  poolID: Long;
+}
+/**
+ * FeeToken is a struct that specifies a coin denom, and pool ID pair.
+ * This marks the token as eligible for use as a tx fee asset in Osmosis.
+ * Its price in osmo is derived through looking at the provided pool ID.
+ * The pool ID must have osmo as one of its assets.
+ */
+
+export interface FeeTokenSDKType {
   denom: string;
   poolID: Long;
 }

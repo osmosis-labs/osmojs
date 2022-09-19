@@ -1,43 +1,62 @@
-import { Coin } from "../../base/v1beta1/coin";
-import { Input, Output } from "./bank";
+import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
+import { Input, InputSDKType, Output, OutputSDKType } from "./bank";
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** MsgSend represents a message to send coins from one account to another. */
+
 export interface MsgSend {
-  from_address: string;
-  to_address: string;
+  fromAddress: string;
+  toAddress: string;
   amount: Coin[];
 }
+/** MsgSend represents a message to send coins from one account to another. */
 
+export interface MsgSendSDKType {
+  from_address: string;
+  to_address: string;
+  amount: CoinSDKType[];
+}
 /** MsgSendResponse defines the Msg/Send response type. */
-export interface MsgSendResponse {}
 
+export interface MsgSendResponse {}
+/** MsgSendResponse defines the Msg/Send response type. */
+
+export interface MsgSendResponseSDKType {}
 /** MsgMultiSend represents an arbitrary multi-in, multi-out send message. */
+
 export interface MsgMultiSend {
   inputs: Input[];
   outputs: Output[];
 }
+/** MsgMultiSend represents an arbitrary multi-in, multi-out send message. */
 
+export interface MsgMultiSendSDKType {
+  inputs: InputSDKType[];
+  outputs: OutputSDKType[];
+}
 /** MsgMultiSendResponse defines the Msg/MultiSend response type. */
+
 export interface MsgMultiSendResponse {}
+/** MsgMultiSendResponse defines the Msg/MultiSend response type. */
+
+export interface MsgMultiSendResponseSDKType {}
 
 function createBaseMsgSend(): MsgSend {
   return {
-    from_address: "",
-    to_address: "",
+    fromAddress: "",
+    toAddress: "",
     amount: []
   };
 }
 
 export const MsgSend = {
   encode(message: MsgSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.from_address !== "") {
-      writer.uint32(10).string(message.from_address);
+    if (message.fromAddress !== "") {
+      writer.uint32(10).string(message.fromAddress);
     }
 
-    if (message.to_address !== "") {
-      writer.uint32(18).string(message.to_address);
+    if (message.toAddress !== "") {
+      writer.uint32(18).string(message.toAddress);
     }
 
     for (const v of message.amount) {
@@ -57,11 +76,11 @@ export const MsgSend = {
 
       switch (tag >>> 3) {
         case 1:
-          message.from_address = reader.string();
+          message.fromAddress = reader.string();
           break;
 
         case 2:
-          message.to_address = reader.string();
+          message.toAddress = reader.string();
           break;
 
         case 3:
@@ -79,16 +98,16 @@ export const MsgSend = {
 
   fromJSON(object: any): MsgSend {
     return {
-      from_address: isSet(object.from_address) ? String(object.from_address) : "",
-      to_address: isSet(object.to_address) ? String(object.to_address) : "",
+      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
       amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
     };
   },
 
   toJSON(message: MsgSend): unknown {
     const obj: any = {};
-    message.from_address !== undefined && (obj.from_address = message.from_address);
-    message.to_address !== undefined && (obj.to_address = message.to_address);
+    message.fromAddress !== undefined && (obj.fromAddress = message.fromAddress);
+    message.toAddress !== undefined && (obj.toAddress = message.toAddress);
 
     if (message.amount) {
       obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
@@ -101,8 +120,8 @@ export const MsgSend = {
 
   fromPartial(object: DeepPartial<MsgSend>): MsgSend {
     const message = createBaseMsgSend();
-    message.from_address = object.from_address ?? "";
-    message.to_address = object.to_address ?? "";
+    message.fromAddress = object.fromAddress ?? "";
+    message.toAddress = object.toAddress ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
@@ -118,7 +137,7 @@ export const MsgSendResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSendResponse();
@@ -241,7 +260,7 @@ export const MsgMultiSendResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSendResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSendResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgMultiSendResponse();

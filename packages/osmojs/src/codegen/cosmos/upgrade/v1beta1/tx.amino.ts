@@ -1,8 +1,5 @@
-import { Plan } from "./upgrade";
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "@osmonauts/helpers";
-import { Timestamp } from "../../../google/protobuf/timestamp";
-import { Any } from "../../../google/protobuf/any";
 import { MsgSoftwareUpgrade, MsgCancelUpgrade } from "./tx";
 export interface AminoMsgSoftwareUpgrade extends AminoMsg {
   type: "cosmos-sdk/MsgSoftwareUpgrade";
@@ -44,8 +41,8 @@ export const AminoConverter = {
           height: plan.height.toString(),
           info: plan.info,
           upgraded_client_state: {
-            type_url: plan.upgraded_client_state.type_url,
-            value: plan.upgraded_client_state.value
+            type_url: plan.upgradedClientState.typeUrl,
+            value: plan.upgradedClientState.value
           }
         }
       };
@@ -61,8 +58,8 @@ export const AminoConverter = {
           time: plan.time,
           height: Long.fromString(plan.height),
           info: plan.info,
-          upgraded_client_state: {
-            type_url: plan.upgraded_client_state.type_url,
+          upgradedClientState: {
+            typeUrl: plan.upgraded_client_state.type_url,
             value: plan.upgraded_client_state.value
           }
         }

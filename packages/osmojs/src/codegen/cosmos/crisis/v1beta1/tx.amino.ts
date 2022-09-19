@@ -13,13 +13,13 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgVerifyInvariant",
     toAmino: ({
       sender,
-      invariant_module_name,
-      invariant_route
+      invariantModuleName,
+      invariantRoute
     }: MsgVerifyInvariant): AminoMsgVerifyInvariant["value"] => {
       return {
         sender,
-        invariant_module_name,
-        invariant_route
+        invariant_module_name: invariantModuleName,
+        invariant_route: invariantRoute
       };
     },
     fromAmino: ({
@@ -29,8 +29,8 @@ export const AminoConverter = {
     }: AminoMsgVerifyInvariant["value"]): MsgVerifyInvariant => {
       return {
         sender,
-        invariant_module_name,
-        invariant_route
+        invariantModuleName: invariant_module_name,
+        invariantRoute: invariant_route
       };
     }
   }

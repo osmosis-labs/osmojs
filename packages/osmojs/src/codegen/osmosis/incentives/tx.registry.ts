@@ -1,6 +1,3 @@
-import { QueryCondition } from "../lockup/lock";
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Timestamp } from "../../google/protobuf/timestamp";
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgCreateGauge, MsgAddToGauge } from "./tx";
 export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.incentives.MsgCreateGauge", MsgCreateGauge], ["/osmosis.incentives.MsgAddToGauge", MsgAddToGauge]];

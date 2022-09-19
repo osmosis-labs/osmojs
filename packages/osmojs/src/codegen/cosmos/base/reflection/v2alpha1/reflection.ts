@@ -1,31 +1,55 @@
 import * as _m0 from "protobufjs/minimal";
 import { isSet, DeepPartial } from "@osmonauts/helpers";
-
 /** AppDescriptor describes a cosmos-sdk based application */
+
 export interface AppDescriptor {
   /**
    * AuthnDescriptor provides information on how to authenticate transactions on the application
    * NOTE: experimental and subject to change in future releases.
    */
   authn: AuthnDescriptor;
-
   /** chain provides the chain descriptor */
+
   chain: ChainDescriptor;
-
   /** codec provides metadata information regarding codec related types */
+
   codec: CodecDescriptor;
-
   /** configuration provides metadata information regarding the sdk.Config type */
+
   configuration: ConfigurationDescriptor;
-
   /** query_services provides metadata information regarding the available queriable endpoints */
-  query_services: QueryServicesDescriptor;
 
+  queryServices: QueryServicesDescriptor;
   /** tx provides metadata information regarding how to send transactions to the given application */
+
   tx: TxDescriptor;
 }
+/** AppDescriptor describes a cosmos-sdk based application */
 
+export interface AppDescriptorSDKType {
+  /**
+   * AuthnDescriptor provides information on how to authenticate transactions on the application
+   * NOTE: experimental and subject to change in future releases.
+   */
+  authn: AuthnDescriptorSDKType;
+  /** chain provides the chain descriptor */
+
+  chain: ChainDescriptorSDKType;
+  /** codec provides metadata information regarding codec related types */
+
+  codec: CodecDescriptorSDKType;
+  /** configuration provides metadata information regarding the sdk.Config type */
+
+  configuration: ConfigurationDescriptorSDKType;
+  /** query_services provides metadata information regarding the available queriable endpoints */
+
+  query_services: QueryServicesDescriptorSDKType;
+  /** tx provides metadata information regarding how to send transactions to the given application */
+
+  tx: TxDescriptorSDKType;
+}
 /** TxDescriptor describes the accepted transaction type */
+
 export interface TxDescriptor {
   /**
    * fullname is the protobuf fullname of the raw transaction type (for instance the tx.Tx type)
@@ -33,158 +57,317 @@ export interface TxDescriptor {
    * reflection clients to understand if they can handle a specific transaction type in an application.
    */
   fullname: string;
-
   /** msgs lists the accepted application messages (sdk.Msg) */
+
   msgs: MsgDescriptor[];
 }
+/** TxDescriptor describes the accepted transaction type */
 
+export interface TxDescriptorSDKType {
+  /**
+   * fullname is the protobuf fullname of the raw transaction type (for instance the tx.Tx type)
+   * it is not meant to support polymorphism of transaction types, it is supposed to be used by
+   * reflection clients to understand if they can handle a specific transaction type in an application.
+   */
+  fullname: string;
+  /** msgs lists the accepted application messages (sdk.Msg) */
+
+  msgs: MsgDescriptorSDKType[];
+}
 /**
  * AuthnDescriptor provides information on how to sign transactions without relying
  * on the online RPCs GetTxMetadata and CombineUnsignedTxAndSignatures
  */
+
 export interface AuthnDescriptor {
   /** sign_modes defines the supported signature algorithm */
-  sign_modes: SigningModeDescriptor[];
+  signModes: SigningModeDescriptor[];
 }
+/**
+ * AuthnDescriptor provides information on how to sign transactions without relying
+ * on the online RPCs GetTxMetadata and CombineUnsignedTxAndSignatures
+ */
 
+export interface AuthnDescriptorSDKType {
+  /** sign_modes defines the supported signature algorithm */
+  sign_modes: SigningModeDescriptorSDKType[];
+}
 /**
  * SigningModeDescriptor provides information on a signing flow of the application
  * NOTE(fdymylja): here we could go as far as providing an entire flow on how
  * to sign a message given a SigningModeDescriptor, but it's better to think about
  * this another time
  */
+
 export interface SigningModeDescriptor {
   /** name defines the unique name of the signing mode */
   name: string;
-
   /** number is the unique int32 identifier for the sign_mode enum */
-  number: number;
 
+  number: number;
   /**
    * authn_info_provider_method_fullname defines the fullname of the method to call to get
    * the metadata required to authenticate using the provided sign_modes
    */
+
+  authnInfoProviderMethodFullname: string;
+}
+/**
+ * SigningModeDescriptor provides information on a signing flow of the application
+ * NOTE(fdymylja): here we could go as far as providing an entire flow on how
+ * to sign a message given a SigningModeDescriptor, but it's better to think about
+ * this another time
+ */
+
+export interface SigningModeDescriptorSDKType {
+  /** name defines the unique name of the signing mode */
+  name: string;
+  /** number is the unique int32 identifier for the sign_mode enum */
+
+  number: number;
+  /**
+   * authn_info_provider_method_fullname defines the fullname of the method to call to get
+   * the metadata required to authenticate using the provided sign_modes
+   */
+
   authn_info_provider_method_fullname: string;
 }
-
 /** ChainDescriptor describes chain information of the application */
+
 export interface ChainDescriptor {
   /** id is the chain id */
   id: string;
 }
+/** ChainDescriptor describes chain information of the application */
 
+export interface ChainDescriptorSDKType {
+  /** id is the chain id */
+  id: string;
+}
 /** CodecDescriptor describes the registered interfaces and provides metadata information on the types */
+
 export interface CodecDescriptor {
   /** interfaces is a list of the registerted interfaces descriptors */
   interfaces: InterfaceDescriptor[];
 }
+/** CodecDescriptor describes the registered interfaces and provides metadata information on the types */
 
+export interface CodecDescriptorSDKType {
+  /** interfaces is a list of the registerted interfaces descriptors */
+  interfaces: InterfaceDescriptorSDKType[];
+}
 /** InterfaceDescriptor describes the implementation of an interface */
+
 export interface InterfaceDescriptor {
   /** fullname is the name of the interface */
   fullname: string;
-
   /**
    * interface_accepting_messages contains information regarding the proto messages which contain the interface as
    * google.protobuf.Any field
    */
-  interface_accepting_messages: InterfaceAcceptingMessageDescriptor[];
 
+  interfaceAcceptingMessages: InterfaceAcceptingMessageDescriptor[];
   /** interface_implementers is a list of the descriptors of the interface implementers */
-  interface_implementers: InterfaceImplementerDescriptor[];
-}
 
+  interfaceImplementers: InterfaceImplementerDescriptor[];
+}
+/** InterfaceDescriptor describes the implementation of an interface */
+
+export interface InterfaceDescriptorSDKType {
+  /** fullname is the name of the interface */
+  fullname: string;
+  /**
+   * interface_accepting_messages contains information regarding the proto messages which contain the interface as
+   * google.protobuf.Any field
+   */
+
+  interface_accepting_messages: InterfaceAcceptingMessageDescriptorSDKType[];
+  /** interface_implementers is a list of the descriptors of the interface implementers */
+
+  interface_implementers: InterfaceImplementerDescriptorSDKType[];
+}
 /** InterfaceImplementerDescriptor describes an interface implementer */
+
 export interface InterfaceImplementerDescriptor {
   /** fullname is the protobuf queryable name of the interface implementer */
   fullname: string;
-
   /**
    * type_url defines the type URL used when marshalling the type as any
    * this is required so we can provide type safe google.protobuf.Any marshalling and
    * unmarshalling, making sure that we don't accept just 'any' type
    * in our interface fields
    */
+
+  typeUrl: string;
+}
+/** InterfaceImplementerDescriptor describes an interface implementer */
+
+export interface InterfaceImplementerDescriptorSDKType {
+  /** fullname is the protobuf queryable name of the interface implementer */
+  fullname: string;
+  /**
+   * type_url defines the type URL used when marshalling the type as any
+   * this is required so we can provide type safe google.protobuf.Any marshalling and
+   * unmarshalling, making sure that we don't accept just 'any' type
+   * in our interface fields
+   */
+
   type_url: string;
 }
-
 /**
  * InterfaceAcceptingMessageDescriptor describes a protobuf message which contains
  * an interface represented as a google.protobuf.Any
  */
+
 export interface InterfaceAcceptingMessageDescriptor {
   /** fullname is the protobuf fullname of the type containing the interface */
   fullname: string;
-
   /**
    * field_descriptor_names is a list of the protobuf name (not fullname) of the field
    * which contains the interface as google.protobuf.Any (the interface is the same, but
    * it can be in multiple fields of the same proto message)
    */
+
+  fieldDescriptorNames: string[];
+}
+/**
+ * InterfaceAcceptingMessageDescriptor describes a protobuf message which contains
+ * an interface represented as a google.protobuf.Any
+ */
+
+export interface InterfaceAcceptingMessageDescriptorSDKType {
+  /** fullname is the protobuf fullname of the type containing the interface */
+  fullname: string;
+  /**
+   * field_descriptor_names is a list of the protobuf name (not fullname) of the field
+   * which contains the interface as google.protobuf.Any (the interface is the same, but
+   * it can be in multiple fields of the same proto message)
+   */
+
   field_descriptor_names: string[];
 }
-
 /** ConfigurationDescriptor contains metadata information on the sdk.Config */
+
 export interface ConfigurationDescriptor {
+  /** bech32_account_address_prefix is the account address prefix */
+  bech32AccountAddressPrefix: string;
+}
+/** ConfigurationDescriptor contains metadata information on the sdk.Config */
+
+export interface ConfigurationDescriptorSDKType {
   /** bech32_account_address_prefix is the account address prefix */
   bech32_account_address_prefix: string;
 }
-
 /** MsgDescriptor describes a cosmos-sdk message that can be delivered with a transaction */
+
 export interface MsgDescriptor {
+  /** msg_type_url contains the TypeURL of a sdk.Msg. */
+  msgTypeUrl: string;
+}
+/** MsgDescriptor describes a cosmos-sdk message that can be delivered with a transaction */
+
+export interface MsgDescriptorSDKType {
   /** msg_type_url contains the TypeURL of a sdk.Msg. */
   msg_type_url: string;
 }
-
 /** GetAuthnDescriptorRequest is the request used for the GetAuthnDescriptor RPC */
-export interface GetAuthnDescriptorRequest {}
 
+export interface GetAuthnDescriptorRequest {}
+/** GetAuthnDescriptorRequest is the request used for the GetAuthnDescriptor RPC */
+
+export interface GetAuthnDescriptorRequestSDKType {}
 /** GetAuthnDescriptorResponse is the response returned by the GetAuthnDescriptor RPC */
+
 export interface GetAuthnDescriptorResponse {
   /** authn describes how to authenticate to the application when sending transactions */
   authn: AuthnDescriptor;
 }
+/** GetAuthnDescriptorResponse is the response returned by the GetAuthnDescriptor RPC */
 
+export interface GetAuthnDescriptorResponseSDKType {
+  /** authn describes how to authenticate to the application when sending transactions */
+  authn: AuthnDescriptorSDKType;
+}
 /** GetChainDescriptorRequest is the request used for the GetChainDescriptor RPC */
-export interface GetChainDescriptorRequest {}
 
+export interface GetChainDescriptorRequest {}
+/** GetChainDescriptorRequest is the request used for the GetChainDescriptor RPC */
+
+export interface GetChainDescriptorRequestSDKType {}
 /** GetChainDescriptorResponse is the response returned by the GetChainDescriptor RPC */
+
 export interface GetChainDescriptorResponse {
   /** chain describes application chain information */
   chain: ChainDescriptor;
 }
+/** GetChainDescriptorResponse is the response returned by the GetChainDescriptor RPC */
 
+export interface GetChainDescriptorResponseSDKType {
+  /** chain describes application chain information */
+  chain: ChainDescriptorSDKType;
+}
 /** GetCodecDescriptorRequest is the request used for the GetCodecDescriptor RPC */
-export interface GetCodecDescriptorRequest {}
 
+export interface GetCodecDescriptorRequest {}
+/** GetCodecDescriptorRequest is the request used for the GetCodecDescriptor RPC */
+
+export interface GetCodecDescriptorRequestSDKType {}
 /** GetCodecDescriptorResponse is the response returned by the GetCodecDescriptor RPC */
+
 export interface GetCodecDescriptorResponse {
   /** codec describes the application codec such as registered interfaces and implementations */
   codec: CodecDescriptor;
 }
+/** GetCodecDescriptorResponse is the response returned by the GetCodecDescriptor RPC */
 
+export interface GetCodecDescriptorResponseSDKType {
+  /** codec describes the application codec such as registered interfaces and implementations */
+  codec: CodecDescriptorSDKType;
+}
 /** GetConfigurationDescriptorRequest is the request used for the GetConfigurationDescriptor RPC */
-export interface GetConfigurationDescriptorRequest {}
 
+export interface GetConfigurationDescriptorRequest {}
+/** GetConfigurationDescriptorRequest is the request used for the GetConfigurationDescriptor RPC */
+
+export interface GetConfigurationDescriptorRequestSDKType {}
 /** GetConfigurationDescriptorResponse is the response returned by the GetConfigurationDescriptor RPC */
+
 export interface GetConfigurationDescriptorResponse {
   /** config describes the application's sdk.Config */
   config: ConfigurationDescriptor;
 }
+/** GetConfigurationDescriptorResponse is the response returned by the GetConfigurationDescriptor RPC */
 
+export interface GetConfigurationDescriptorResponseSDKType {
+  /** config describes the application's sdk.Config */
+  config: ConfigurationDescriptorSDKType;
+}
 /** GetQueryServicesDescriptorRequest is the request used for the GetQueryServicesDescriptor RPC */
-export interface GetQueryServicesDescriptorRequest {}
 
+export interface GetQueryServicesDescriptorRequest {}
+/** GetQueryServicesDescriptorRequest is the request used for the GetQueryServicesDescriptor RPC */
+
+export interface GetQueryServicesDescriptorRequestSDKType {}
 /** GetQueryServicesDescriptorResponse is the response returned by the GetQueryServicesDescriptor RPC */
+
 export interface GetQueryServicesDescriptorResponse {
   /** queries provides information on the available queryable services */
   queries: QueryServicesDescriptor;
 }
+/** GetQueryServicesDescriptorResponse is the response returned by the GetQueryServicesDescriptor RPC */
 
+export interface GetQueryServicesDescriptorResponseSDKType {
+  /** queries provides information on the available queryable services */
+  queries: QueryServicesDescriptorSDKType;
+}
 /** GetTxDescriptorRequest is the request used for the GetTxDescriptor RPC */
-export interface GetTxDescriptorRequest {}
 
+export interface GetTxDescriptorRequest {}
+/** GetTxDescriptorRequest is the request used for the GetTxDescriptor RPC */
+
+export interface GetTxDescriptorRequestSDKType {}
 /** GetTxDescriptorResponse is the response returned by the GetTxDescriptor RPC */
+
 export interface GetTxDescriptorResponse {
   /**
    * tx provides information on msgs that can be forwarded to the application
@@ -192,38 +375,81 @@ export interface GetTxDescriptorResponse {
    */
   tx: TxDescriptor;
 }
+/** GetTxDescriptorResponse is the response returned by the GetTxDescriptor RPC */
 
+export interface GetTxDescriptorResponseSDKType {
+  /**
+   * tx provides information on msgs that can be forwarded to the application
+   * alongside the accepted transaction protobuf type
+   */
+  tx: TxDescriptorSDKType;
+}
 /** QueryServicesDescriptor contains the list of cosmos-sdk queriable services */
+
 export interface QueryServicesDescriptor {
   /** query_services is a list of cosmos-sdk QueryServiceDescriptor */
-  query_services: QueryServiceDescriptor[];
+  queryServices: QueryServiceDescriptor[];
 }
+/** QueryServicesDescriptor contains the list of cosmos-sdk queriable services */
 
+export interface QueryServicesDescriptorSDKType {
+  /** query_services is a list of cosmos-sdk QueryServiceDescriptor */
+  query_services: QueryServiceDescriptorSDKType[];
+}
 /** QueryServiceDescriptor describes a cosmos-sdk queryable service */
+
 export interface QueryServiceDescriptor {
   /** fullname is the protobuf fullname of the service descriptor */
   fullname: string;
-
   /** is_module describes if this service is actually exposed by an application's module */
-  is_module: boolean;
 
+  isModule: boolean;
   /** methods provides a list of query service methods */
+
   methods: QueryMethodDescriptor[];
 }
+/** QueryServiceDescriptor describes a cosmos-sdk queryable service */
 
+export interface QueryServiceDescriptorSDKType {
+  /** fullname is the protobuf fullname of the service descriptor */
+  fullname: string;
+  /** is_module describes if this service is actually exposed by an application's module */
+
+  is_module: boolean;
+  /** methods provides a list of query service methods */
+
+  methods: QueryMethodDescriptorSDKType[];
+}
 /**
  * QueryMethodDescriptor describes a queryable method of a query service
  * no other info is provided beside method name and tendermint queryable path
  * because it would be redundant with the grpc reflection service
  */
+
 export interface QueryMethodDescriptor {
   /** name is the protobuf name (not fullname) of the method */
   name: string;
-
   /**
    * full_query_path is the path that can be used to query
    * this method via tendermint abci.Query
    */
+
+  fullQueryPath: string;
+}
+/**
+ * QueryMethodDescriptor describes a queryable method of a query service
+ * no other info is provided beside method name and tendermint queryable path
+ * because it would be redundant with the grpc reflection service
+ */
+
+export interface QueryMethodDescriptorSDKType {
+  /** name is the protobuf name (not fullname) of the method */
+  name: string;
+  /**
+   * full_query_path is the path that can be used to query
+   * this method via tendermint abci.Query
+   */
+
   full_query_path: string;
 }
 
@@ -233,7 +459,7 @@ function createBaseAppDescriptor(): AppDescriptor {
     chain: undefined,
     codec: undefined,
     configuration: undefined,
-    query_services: undefined,
+    queryServices: undefined,
     tx: undefined
   };
 }
@@ -256,8 +482,8 @@ export const AppDescriptor = {
       ConfigurationDescriptor.encode(message.configuration, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.query_services !== undefined) {
-      QueryServicesDescriptor.encode(message.query_services, writer.uint32(42).fork()).ldelim();
+    if (message.queryServices !== undefined) {
+      QueryServicesDescriptor.encode(message.queryServices, writer.uint32(42).fork()).ldelim();
     }
 
     if (message.tx !== undefined) {
@@ -293,7 +519,7 @@ export const AppDescriptor = {
           break;
 
         case 5:
-          message.query_services = QueryServicesDescriptor.decode(reader, reader.uint32());
+          message.queryServices = QueryServicesDescriptor.decode(reader, reader.uint32());
           break;
 
         case 6:
@@ -315,7 +541,7 @@ export const AppDescriptor = {
       chain: isSet(object.chain) ? ChainDescriptor.fromJSON(object.chain) : undefined,
       codec: isSet(object.codec) ? CodecDescriptor.fromJSON(object.codec) : undefined,
       configuration: isSet(object.configuration) ? ConfigurationDescriptor.fromJSON(object.configuration) : undefined,
-      query_services: isSet(object.query_services) ? QueryServicesDescriptor.fromJSON(object.query_services) : undefined,
+      queryServices: isSet(object.queryServices) ? QueryServicesDescriptor.fromJSON(object.queryServices) : undefined,
       tx: isSet(object.tx) ? TxDescriptor.fromJSON(object.tx) : undefined
     };
   },
@@ -326,7 +552,7 @@ export const AppDescriptor = {
     message.chain !== undefined && (obj.chain = message.chain ? ChainDescriptor.toJSON(message.chain) : undefined);
     message.codec !== undefined && (obj.codec = message.codec ? CodecDescriptor.toJSON(message.codec) : undefined);
     message.configuration !== undefined && (obj.configuration = message.configuration ? ConfigurationDescriptor.toJSON(message.configuration) : undefined);
-    message.query_services !== undefined && (obj.query_services = message.query_services ? QueryServicesDescriptor.toJSON(message.query_services) : undefined);
+    message.queryServices !== undefined && (obj.queryServices = message.queryServices ? QueryServicesDescriptor.toJSON(message.queryServices) : undefined);
     message.tx !== undefined && (obj.tx = message.tx ? TxDescriptor.toJSON(message.tx) : undefined);
     return obj;
   },
@@ -337,7 +563,7 @@ export const AppDescriptor = {
     message.chain = object.chain !== undefined && object.chain !== null ? ChainDescriptor.fromPartial(object.chain) : undefined;
     message.codec = object.codec !== undefined && object.codec !== null ? CodecDescriptor.fromPartial(object.codec) : undefined;
     message.configuration = object.configuration !== undefined && object.configuration !== null ? ConfigurationDescriptor.fromPartial(object.configuration) : undefined;
-    message.query_services = object.query_services !== undefined && object.query_services !== null ? QueryServicesDescriptor.fromPartial(object.query_services) : undefined;
+    message.queryServices = object.queryServices !== undefined && object.queryServices !== null ? QueryServicesDescriptor.fromPartial(object.queryServices) : undefined;
     message.tx = object.tx !== undefined && object.tx !== null ? TxDescriptor.fromPartial(object.tx) : undefined;
     return message;
   }
@@ -421,13 +647,13 @@ export const TxDescriptor = {
 
 function createBaseAuthnDescriptor(): AuthnDescriptor {
   return {
-    sign_modes: []
+    signModes: []
   };
 }
 
 export const AuthnDescriptor = {
   encode(message: AuthnDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.sign_modes) {
+    for (const v of message.signModes) {
       SigningModeDescriptor.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -444,7 +670,7 @@ export const AuthnDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.sign_modes.push(SigningModeDescriptor.decode(reader, reader.uint32()));
+          message.signModes.push(SigningModeDescriptor.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -458,17 +684,17 @@ export const AuthnDescriptor = {
 
   fromJSON(object: any): AuthnDescriptor {
     return {
-      sign_modes: Array.isArray(object?.sign_modes) ? object.sign_modes.map((e: any) => SigningModeDescriptor.fromJSON(e)) : []
+      signModes: Array.isArray(object?.signModes) ? object.signModes.map((e: any) => SigningModeDescriptor.fromJSON(e)) : []
     };
   },
 
   toJSON(message: AuthnDescriptor): unknown {
     const obj: any = {};
 
-    if (message.sign_modes) {
-      obj.sign_modes = message.sign_modes.map(e => e ? SigningModeDescriptor.toJSON(e) : undefined);
+    if (message.signModes) {
+      obj.signModes = message.signModes.map(e => e ? SigningModeDescriptor.toJSON(e) : undefined);
     } else {
-      obj.sign_modes = [];
+      obj.signModes = [];
     }
 
     return obj;
@@ -476,7 +702,7 @@ export const AuthnDescriptor = {
 
   fromPartial(object: DeepPartial<AuthnDescriptor>): AuthnDescriptor {
     const message = createBaseAuthnDescriptor();
-    message.sign_modes = object.sign_modes?.map(e => SigningModeDescriptor.fromPartial(e)) || [];
+    message.signModes = object.signModes?.map(e => SigningModeDescriptor.fromPartial(e)) || [];
     return message;
   }
 
@@ -486,7 +712,7 @@ function createBaseSigningModeDescriptor(): SigningModeDescriptor {
   return {
     name: "",
     number: 0,
-    authn_info_provider_method_fullname: ""
+    authnInfoProviderMethodFullname: ""
   };
 }
 
@@ -500,8 +726,8 @@ export const SigningModeDescriptor = {
       writer.uint32(16).int32(message.number);
     }
 
-    if (message.authn_info_provider_method_fullname !== "") {
-      writer.uint32(26).string(message.authn_info_provider_method_fullname);
+    if (message.authnInfoProviderMethodFullname !== "") {
+      writer.uint32(26).string(message.authnInfoProviderMethodFullname);
     }
 
     return writer;
@@ -525,7 +751,7 @@ export const SigningModeDescriptor = {
           break;
 
         case 3:
-          message.authn_info_provider_method_fullname = reader.string();
+          message.authnInfoProviderMethodFullname = reader.string();
           break;
 
         default:
@@ -541,7 +767,7 @@ export const SigningModeDescriptor = {
     return {
       name: isSet(object.name) ? String(object.name) : "",
       number: isSet(object.number) ? Number(object.number) : 0,
-      authn_info_provider_method_fullname: isSet(object.authn_info_provider_method_fullname) ? String(object.authn_info_provider_method_fullname) : ""
+      authnInfoProviderMethodFullname: isSet(object.authnInfoProviderMethodFullname) ? String(object.authnInfoProviderMethodFullname) : ""
     };
   },
 
@@ -549,7 +775,7 @@ export const SigningModeDescriptor = {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     message.number !== undefined && (obj.number = Math.round(message.number));
-    message.authn_info_provider_method_fullname !== undefined && (obj.authn_info_provider_method_fullname = message.authn_info_provider_method_fullname);
+    message.authnInfoProviderMethodFullname !== undefined && (obj.authnInfoProviderMethodFullname = message.authnInfoProviderMethodFullname);
     return obj;
   },
 
@@ -557,7 +783,7 @@ export const SigningModeDescriptor = {
     const message = createBaseSigningModeDescriptor();
     message.name = object.name ?? "";
     message.number = object.number ?? 0;
-    message.authn_info_provider_method_fullname = object.authn_info_provider_method_fullname ?? "";
+    message.authnInfoProviderMethodFullname = object.authnInfoProviderMethodFullname ?? "";
     return message;
   }
 
@@ -686,8 +912,8 @@ export const CodecDescriptor = {
 function createBaseInterfaceDescriptor(): InterfaceDescriptor {
   return {
     fullname: "",
-    interface_accepting_messages: [],
-    interface_implementers: []
+    interfaceAcceptingMessages: [],
+    interfaceImplementers: []
   };
 }
 
@@ -697,11 +923,11 @@ export const InterfaceDescriptor = {
       writer.uint32(10).string(message.fullname);
     }
 
-    for (const v of message.interface_accepting_messages) {
+    for (const v of message.interfaceAcceptingMessages) {
       InterfaceAcceptingMessageDescriptor.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.interface_implementers) {
+    for (const v of message.interfaceImplementers) {
       InterfaceImplementerDescriptor.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
@@ -722,11 +948,11 @@ export const InterfaceDescriptor = {
           break;
 
         case 2:
-          message.interface_accepting_messages.push(InterfaceAcceptingMessageDescriptor.decode(reader, reader.uint32()));
+          message.interfaceAcceptingMessages.push(InterfaceAcceptingMessageDescriptor.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.interface_implementers.push(InterfaceImplementerDescriptor.decode(reader, reader.uint32()));
+          message.interfaceImplementers.push(InterfaceImplementerDescriptor.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -741,8 +967,8 @@ export const InterfaceDescriptor = {
   fromJSON(object: any): InterfaceDescriptor {
     return {
       fullname: isSet(object.fullname) ? String(object.fullname) : "",
-      interface_accepting_messages: Array.isArray(object?.interface_accepting_messages) ? object.interface_accepting_messages.map((e: any) => InterfaceAcceptingMessageDescriptor.fromJSON(e)) : [],
-      interface_implementers: Array.isArray(object?.interface_implementers) ? object.interface_implementers.map((e: any) => InterfaceImplementerDescriptor.fromJSON(e)) : []
+      interfaceAcceptingMessages: Array.isArray(object?.interfaceAcceptingMessages) ? object.interfaceAcceptingMessages.map((e: any) => InterfaceAcceptingMessageDescriptor.fromJSON(e)) : [],
+      interfaceImplementers: Array.isArray(object?.interfaceImplementers) ? object.interfaceImplementers.map((e: any) => InterfaceImplementerDescriptor.fromJSON(e)) : []
     };
   },
 
@@ -750,16 +976,16 @@ export const InterfaceDescriptor = {
     const obj: any = {};
     message.fullname !== undefined && (obj.fullname = message.fullname);
 
-    if (message.interface_accepting_messages) {
-      obj.interface_accepting_messages = message.interface_accepting_messages.map(e => e ? InterfaceAcceptingMessageDescriptor.toJSON(e) : undefined);
+    if (message.interfaceAcceptingMessages) {
+      obj.interfaceAcceptingMessages = message.interfaceAcceptingMessages.map(e => e ? InterfaceAcceptingMessageDescriptor.toJSON(e) : undefined);
     } else {
-      obj.interface_accepting_messages = [];
+      obj.interfaceAcceptingMessages = [];
     }
 
-    if (message.interface_implementers) {
-      obj.interface_implementers = message.interface_implementers.map(e => e ? InterfaceImplementerDescriptor.toJSON(e) : undefined);
+    if (message.interfaceImplementers) {
+      obj.interfaceImplementers = message.interfaceImplementers.map(e => e ? InterfaceImplementerDescriptor.toJSON(e) : undefined);
     } else {
-      obj.interface_implementers = [];
+      obj.interfaceImplementers = [];
     }
 
     return obj;
@@ -768,8 +994,8 @@ export const InterfaceDescriptor = {
   fromPartial(object: DeepPartial<InterfaceDescriptor>): InterfaceDescriptor {
     const message = createBaseInterfaceDescriptor();
     message.fullname = object.fullname ?? "";
-    message.interface_accepting_messages = object.interface_accepting_messages?.map(e => InterfaceAcceptingMessageDescriptor.fromPartial(e)) || [];
-    message.interface_implementers = object.interface_implementers?.map(e => InterfaceImplementerDescriptor.fromPartial(e)) || [];
+    message.interfaceAcceptingMessages = object.interfaceAcceptingMessages?.map(e => InterfaceAcceptingMessageDescriptor.fromPartial(e)) || [];
+    message.interfaceImplementers = object.interfaceImplementers?.map(e => InterfaceImplementerDescriptor.fromPartial(e)) || [];
     return message;
   }
 
@@ -778,7 +1004,7 @@ export const InterfaceDescriptor = {
 function createBaseInterfaceImplementerDescriptor(): InterfaceImplementerDescriptor {
   return {
     fullname: "",
-    type_url: ""
+    typeUrl: ""
   };
 }
 
@@ -788,8 +1014,8 @@ export const InterfaceImplementerDescriptor = {
       writer.uint32(10).string(message.fullname);
     }
 
-    if (message.type_url !== "") {
-      writer.uint32(18).string(message.type_url);
+    if (message.typeUrl !== "") {
+      writer.uint32(18).string(message.typeUrl);
     }
 
     return writer;
@@ -809,7 +1035,7 @@ export const InterfaceImplementerDescriptor = {
           break;
 
         case 2:
-          message.type_url = reader.string();
+          message.typeUrl = reader.string();
           break;
 
         default:
@@ -824,21 +1050,21 @@ export const InterfaceImplementerDescriptor = {
   fromJSON(object: any): InterfaceImplementerDescriptor {
     return {
       fullname: isSet(object.fullname) ? String(object.fullname) : "",
-      type_url: isSet(object.type_url) ? String(object.type_url) : ""
+      typeUrl: isSet(object.typeUrl) ? String(object.typeUrl) : ""
     };
   },
 
   toJSON(message: InterfaceImplementerDescriptor): unknown {
     const obj: any = {};
     message.fullname !== undefined && (obj.fullname = message.fullname);
-    message.type_url !== undefined && (obj.type_url = message.type_url);
+    message.typeUrl !== undefined && (obj.typeUrl = message.typeUrl);
     return obj;
   },
 
   fromPartial(object: DeepPartial<InterfaceImplementerDescriptor>): InterfaceImplementerDescriptor {
     const message = createBaseInterfaceImplementerDescriptor();
     message.fullname = object.fullname ?? "";
-    message.type_url = object.type_url ?? "";
+    message.typeUrl = object.typeUrl ?? "";
     return message;
   }
 
@@ -847,7 +1073,7 @@ export const InterfaceImplementerDescriptor = {
 function createBaseInterfaceAcceptingMessageDescriptor(): InterfaceAcceptingMessageDescriptor {
   return {
     fullname: "",
-    field_descriptor_names: []
+    fieldDescriptorNames: []
   };
 }
 
@@ -857,7 +1083,7 @@ export const InterfaceAcceptingMessageDescriptor = {
       writer.uint32(10).string(message.fullname);
     }
 
-    for (const v of message.field_descriptor_names) {
+    for (const v of message.fieldDescriptorNames) {
       writer.uint32(18).string(v!);
     }
 
@@ -878,7 +1104,7 @@ export const InterfaceAcceptingMessageDescriptor = {
           break;
 
         case 2:
-          message.field_descriptor_names.push(reader.string());
+          message.fieldDescriptorNames.push(reader.string());
           break;
 
         default:
@@ -893,7 +1119,7 @@ export const InterfaceAcceptingMessageDescriptor = {
   fromJSON(object: any): InterfaceAcceptingMessageDescriptor {
     return {
       fullname: isSet(object.fullname) ? String(object.fullname) : "",
-      field_descriptor_names: Array.isArray(object?.field_descriptor_names) ? object.field_descriptor_names.map((e: any) => String(e)) : []
+      fieldDescriptorNames: Array.isArray(object?.fieldDescriptorNames) ? object.fieldDescriptorNames.map((e: any) => String(e)) : []
     };
   },
 
@@ -901,10 +1127,10 @@ export const InterfaceAcceptingMessageDescriptor = {
     const obj: any = {};
     message.fullname !== undefined && (obj.fullname = message.fullname);
 
-    if (message.field_descriptor_names) {
-      obj.field_descriptor_names = message.field_descriptor_names.map(e => e);
+    if (message.fieldDescriptorNames) {
+      obj.fieldDescriptorNames = message.fieldDescriptorNames.map(e => e);
     } else {
-      obj.field_descriptor_names = [];
+      obj.fieldDescriptorNames = [];
     }
 
     return obj;
@@ -913,7 +1139,7 @@ export const InterfaceAcceptingMessageDescriptor = {
   fromPartial(object: DeepPartial<InterfaceAcceptingMessageDescriptor>): InterfaceAcceptingMessageDescriptor {
     const message = createBaseInterfaceAcceptingMessageDescriptor();
     message.fullname = object.fullname ?? "";
-    message.field_descriptor_names = object.field_descriptor_names?.map(e => e) || [];
+    message.fieldDescriptorNames = object.fieldDescriptorNames?.map(e => e) || [];
     return message;
   }
 
@@ -921,14 +1147,14 @@ export const InterfaceAcceptingMessageDescriptor = {
 
 function createBaseConfigurationDescriptor(): ConfigurationDescriptor {
   return {
-    bech32_account_address_prefix: ""
+    bech32AccountAddressPrefix: ""
   };
 }
 
 export const ConfigurationDescriptor = {
   encode(message: ConfigurationDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.bech32_account_address_prefix !== "") {
-      writer.uint32(10).string(message.bech32_account_address_prefix);
+    if (message.bech32AccountAddressPrefix !== "") {
+      writer.uint32(10).string(message.bech32AccountAddressPrefix);
     }
 
     return writer;
@@ -944,7 +1170,7 @@ export const ConfigurationDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.bech32_account_address_prefix = reader.string();
+          message.bech32AccountAddressPrefix = reader.string();
           break;
 
         default:
@@ -958,19 +1184,19 @@ export const ConfigurationDescriptor = {
 
   fromJSON(object: any): ConfigurationDescriptor {
     return {
-      bech32_account_address_prefix: isSet(object.bech32_account_address_prefix) ? String(object.bech32_account_address_prefix) : ""
+      bech32AccountAddressPrefix: isSet(object.bech32AccountAddressPrefix) ? String(object.bech32AccountAddressPrefix) : ""
     };
   },
 
   toJSON(message: ConfigurationDescriptor): unknown {
     const obj: any = {};
-    message.bech32_account_address_prefix !== undefined && (obj.bech32_account_address_prefix = message.bech32_account_address_prefix);
+    message.bech32AccountAddressPrefix !== undefined && (obj.bech32AccountAddressPrefix = message.bech32AccountAddressPrefix);
     return obj;
   },
 
   fromPartial(object: DeepPartial<ConfigurationDescriptor>): ConfigurationDescriptor {
     const message = createBaseConfigurationDescriptor();
-    message.bech32_account_address_prefix = object.bech32_account_address_prefix ?? "";
+    message.bech32AccountAddressPrefix = object.bech32AccountAddressPrefix ?? "";
     return message;
   }
 
@@ -978,14 +1204,14 @@ export const ConfigurationDescriptor = {
 
 function createBaseMsgDescriptor(): MsgDescriptor {
   return {
-    msg_type_url: ""
+    msgTypeUrl: ""
   };
 }
 
 export const MsgDescriptor = {
   encode(message: MsgDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.msg_type_url !== "") {
-      writer.uint32(10).string(message.msg_type_url);
+    if (message.msgTypeUrl !== "") {
+      writer.uint32(10).string(message.msgTypeUrl);
     }
 
     return writer;
@@ -1001,7 +1227,7 @@ export const MsgDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.msg_type_url = reader.string();
+          message.msgTypeUrl = reader.string();
           break;
 
         default:
@@ -1015,19 +1241,19 @@ export const MsgDescriptor = {
 
   fromJSON(object: any): MsgDescriptor {
     return {
-      msg_type_url: isSet(object.msg_type_url) ? String(object.msg_type_url) : ""
+      msgTypeUrl: isSet(object.msgTypeUrl) ? String(object.msgTypeUrl) : ""
     };
   },
 
   toJSON(message: MsgDescriptor): unknown {
     const obj: any = {};
-    message.msg_type_url !== undefined && (obj.msg_type_url = message.msg_type_url);
+    message.msgTypeUrl !== undefined && (obj.msgTypeUrl = message.msgTypeUrl);
     return obj;
   },
 
   fromPartial(object: DeepPartial<MsgDescriptor>): MsgDescriptor {
     const message = createBaseMsgDescriptor();
-    message.msg_type_url = object.msg_type_url ?? "";
+    message.msgTypeUrl = object.msgTypeUrl ?? "";
     return message;
   }
 
@@ -1091,7 +1317,7 @@ export const GetAuthnDescriptorResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetAuthnDescriptorResponse();
@@ -1191,7 +1417,7 @@ export const GetChainDescriptorResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetChainDescriptorResponse();
@@ -1291,7 +1517,7 @@ export const GetCodecDescriptorResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetCodecDescriptorResponse();
@@ -1391,7 +1617,7 @@ export const GetConfigurationDescriptorResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetConfigurationDescriptorResponse();
@@ -1491,7 +1717,7 @@ export const GetQueryServicesDescriptorResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetQueryServicesDescriptorResponse();
@@ -1591,7 +1817,7 @@ export const GetTxDescriptorResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetTxDescriptorResponse();
@@ -1635,13 +1861,13 @@ export const GetTxDescriptorResponse = {
 
 function createBaseQueryServicesDescriptor(): QueryServicesDescriptor {
   return {
-    query_services: []
+    queryServices: []
   };
 }
 
 export const QueryServicesDescriptor = {
   encode(message: QueryServicesDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.query_services) {
+    for (const v of message.queryServices) {
       QueryServiceDescriptor.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -1658,7 +1884,7 @@ export const QueryServicesDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.query_services.push(QueryServiceDescriptor.decode(reader, reader.uint32()));
+          message.queryServices.push(QueryServiceDescriptor.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1672,17 +1898,17 @@ export const QueryServicesDescriptor = {
 
   fromJSON(object: any): QueryServicesDescriptor {
     return {
-      query_services: Array.isArray(object?.query_services) ? object.query_services.map((e: any) => QueryServiceDescriptor.fromJSON(e)) : []
+      queryServices: Array.isArray(object?.queryServices) ? object.queryServices.map((e: any) => QueryServiceDescriptor.fromJSON(e)) : []
     };
   },
 
   toJSON(message: QueryServicesDescriptor): unknown {
     const obj: any = {};
 
-    if (message.query_services) {
-      obj.query_services = message.query_services.map(e => e ? QueryServiceDescriptor.toJSON(e) : undefined);
+    if (message.queryServices) {
+      obj.queryServices = message.queryServices.map(e => e ? QueryServiceDescriptor.toJSON(e) : undefined);
     } else {
-      obj.query_services = [];
+      obj.queryServices = [];
     }
 
     return obj;
@@ -1690,7 +1916,7 @@ export const QueryServicesDescriptor = {
 
   fromPartial(object: DeepPartial<QueryServicesDescriptor>): QueryServicesDescriptor {
     const message = createBaseQueryServicesDescriptor();
-    message.query_services = object.query_services?.map(e => QueryServiceDescriptor.fromPartial(e)) || [];
+    message.queryServices = object.queryServices?.map(e => QueryServiceDescriptor.fromPartial(e)) || [];
     return message;
   }
 
@@ -1699,7 +1925,7 @@ export const QueryServicesDescriptor = {
 function createBaseQueryServiceDescriptor(): QueryServiceDescriptor {
   return {
     fullname: "",
-    is_module: false,
+    isModule: false,
     methods: []
   };
 }
@@ -1710,8 +1936,8 @@ export const QueryServiceDescriptor = {
       writer.uint32(10).string(message.fullname);
     }
 
-    if (message.is_module === true) {
-      writer.uint32(16).bool(message.is_module);
+    if (message.isModule === true) {
+      writer.uint32(16).bool(message.isModule);
     }
 
     for (const v of message.methods) {
@@ -1735,7 +1961,7 @@ export const QueryServiceDescriptor = {
           break;
 
         case 2:
-          message.is_module = reader.bool();
+          message.isModule = reader.bool();
           break;
 
         case 3:
@@ -1754,7 +1980,7 @@ export const QueryServiceDescriptor = {
   fromJSON(object: any): QueryServiceDescriptor {
     return {
       fullname: isSet(object.fullname) ? String(object.fullname) : "",
-      is_module: isSet(object.is_module) ? Boolean(object.is_module) : false,
+      isModule: isSet(object.isModule) ? Boolean(object.isModule) : false,
       methods: Array.isArray(object?.methods) ? object.methods.map((e: any) => QueryMethodDescriptor.fromJSON(e)) : []
     };
   },
@@ -1762,7 +1988,7 @@ export const QueryServiceDescriptor = {
   toJSON(message: QueryServiceDescriptor): unknown {
     const obj: any = {};
     message.fullname !== undefined && (obj.fullname = message.fullname);
-    message.is_module !== undefined && (obj.is_module = message.is_module);
+    message.isModule !== undefined && (obj.isModule = message.isModule);
 
     if (message.methods) {
       obj.methods = message.methods.map(e => e ? QueryMethodDescriptor.toJSON(e) : undefined);
@@ -1776,7 +2002,7 @@ export const QueryServiceDescriptor = {
   fromPartial(object: DeepPartial<QueryServiceDescriptor>): QueryServiceDescriptor {
     const message = createBaseQueryServiceDescriptor();
     message.fullname = object.fullname ?? "";
-    message.is_module = object.is_module ?? false;
+    message.isModule = object.isModule ?? false;
     message.methods = object.methods?.map(e => QueryMethodDescriptor.fromPartial(e)) || [];
     return message;
   }
@@ -1786,7 +2012,7 @@ export const QueryServiceDescriptor = {
 function createBaseQueryMethodDescriptor(): QueryMethodDescriptor {
   return {
     name: "",
-    full_query_path: ""
+    fullQueryPath: ""
   };
 }
 
@@ -1796,8 +2022,8 @@ export const QueryMethodDescriptor = {
       writer.uint32(10).string(message.name);
     }
 
-    if (message.full_query_path !== "") {
-      writer.uint32(18).string(message.full_query_path);
+    if (message.fullQueryPath !== "") {
+      writer.uint32(18).string(message.fullQueryPath);
     }
 
     return writer;
@@ -1817,7 +2043,7 @@ export const QueryMethodDescriptor = {
           break;
 
         case 2:
-          message.full_query_path = reader.string();
+          message.fullQueryPath = reader.string();
           break;
 
         default:
@@ -1832,21 +2058,21 @@ export const QueryMethodDescriptor = {
   fromJSON(object: any): QueryMethodDescriptor {
     return {
       name: isSet(object.name) ? String(object.name) : "",
-      full_query_path: isSet(object.full_query_path) ? String(object.full_query_path) : ""
+      fullQueryPath: isSet(object.fullQueryPath) ? String(object.fullQueryPath) : ""
     };
   },
 
   toJSON(message: QueryMethodDescriptor): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.full_query_path !== undefined && (obj.full_query_path = message.full_query_path);
+    message.fullQueryPath !== undefined && (obj.fullQueryPath = message.fullQueryPath);
     return obj;
   },
 
   fromPartial(object: DeepPartial<QueryMethodDescriptor>): QueryMethodDescriptor {
     const message = createBaseQueryMethodDescriptor();
     message.name = object.name ?? "";
-    message.full_query_path = object.full_query_path ?? "";
+    message.fullQueryPath = object.fullQueryPath ?? "";
     return message;
   }
 
