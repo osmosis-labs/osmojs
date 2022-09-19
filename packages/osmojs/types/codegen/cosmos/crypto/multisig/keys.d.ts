@@ -1,4 +1,4 @@
-import { Any } from "../../../google/protobuf/any";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /**
@@ -8,7 +8,16 @@ import { DeepPartial } from "@osmonauts/helpers";
  */
 export interface LegacyAminoPubKey {
     threshold: number;
-    public_keys: Any[];
+    publicKeys: Any[];
+}
+/**
+ * LegacyAminoPubKey specifies a public key type
+ * which nests multiple public keys and a threshold,
+ * it uses legacy amino address rules.
+ */
+export interface LegacyAminoPubKeySDKType {
+    threshold: number;
+    public_keys: AnySDKType[];
 }
 export declare const LegacyAminoPubKey: {
     encode(message: LegacyAminoPubKey, writer?: _m0.Writer): _m0.Writer;

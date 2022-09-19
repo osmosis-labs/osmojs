@@ -1,17 +1,17 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
+import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponseSDKType, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponseSDKType, GaugeByIDRequest, GaugeByIDResponseSDKType, GaugesRequest, GaugesResponseSDKType, ActiveGaugesRequest, ActiveGaugesResponseSDKType, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponseSDKType, UpcomingGaugesRequest, UpcomingGaugesResponseSDKType, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponseSDKType, RewardsEstRequest, RewardsEstResponseSDKType, QueryLockableDurationsRequest, QueryLockableDurationsResponseSDKType } from "./query";
 export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
         restEndpoint: string;
     });
-    moduleToDistributeCoins(_params?: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponse>;
-    moduleDistributedCoins(_params?: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponse>;
-    gaugeByID(params: GaugeByIDRequest): Promise<GaugeByIDResponse>;
-    gauges(params?: GaugesRequest): Promise<GaugesResponse>;
-    activeGauges(params?: ActiveGaugesRequest): Promise<ActiveGaugesResponse>;
-    activeGaugesPerDenom(params: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponse>;
-    upcomingGauges(params?: UpcomingGaugesRequest): Promise<UpcomingGaugesResponse>;
-    upcomingGaugesPerDenom(params: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse>;
-    rewardsEst(params: RewardsEstRequest): Promise<RewardsEstResponse>;
-    lockableDurations(_params?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse>;
+    moduleToDistributeCoins(_params?: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponseSDKType>;
+    moduleDistributedCoins(_params?: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponseSDKType>;
+    gaugeByID(params: GaugeByIDRequest): Promise<GaugeByIDResponseSDKType>;
+    gauges(params?: GaugesRequest): Promise<GaugesResponseSDKType>;
+    activeGauges(params?: ActiveGaugesRequest): Promise<ActiveGaugesResponseSDKType>;
+    activeGaugesPerDenom(params: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponseSDKType>;
+    upcomingGauges(params?: UpcomingGaugesRequest): Promise<UpcomingGaugesResponseSDKType>;
+    upcomingGaugesPerDenom(params: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponseSDKType>;
+    rewardsEst(params: RewardsEstRequest): Promise<RewardsEstResponseSDKType>;
+    lockableDurations(_params?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
 }

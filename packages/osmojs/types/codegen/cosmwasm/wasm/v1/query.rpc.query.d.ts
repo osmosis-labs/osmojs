@@ -1,27 +1,27 @@
 import { Rpc } from "@osmonauts/helpers";
-import { QueryContractInfoRequest, QueryContractInfoResponse, QueryContractHistoryRequest, QueryContractHistoryResponse, QueryContractsByCodeRequest, QueryContractsByCodeResponse, QueryAllContractStateRequest, QueryAllContractStateResponse, QueryRawContractStateRequest, QueryRawContractStateResponse, QuerySmartContractStateRequest, QuerySmartContractStateResponse, QueryCodeRequest, QueryCodeResponse, QueryCodesRequest, QueryCodesResponse, QueryPinnedCodesRequest, QueryPinnedCodesResponse } from "./query";
+import { QueryContractInfoRequest, QueryContractInfoResponseSDKType, QueryContractHistoryRequest, QueryContractHistoryResponseSDKType, QueryContractsByCodeRequest, QueryContractsByCodeResponseSDKType, QueryAllContractStateRequest, QueryAllContractStateResponseSDKType, QueryRawContractStateRequest, QueryRawContractStateResponseSDKType, QuerySmartContractStateRequest, QuerySmartContractStateResponseSDKType, QueryCodeRequest, QueryCodeResponseSDKType, QueryCodesRequest, QueryCodesResponseSDKType, QueryPinnedCodesRequest, QueryPinnedCodesResponseSDKType } from "./query";
 /** Query defines the RPC service */
 export interface Query {
-    contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponse>;
-    contractHistory(request: QueryContractHistoryRequest): Promise<QueryContractHistoryResponse>;
-    contractsByCode(request: QueryContractsByCodeRequest): Promise<QueryContractsByCodeResponse>;
-    allContractState(request: QueryAllContractStateRequest): Promise<QueryAllContractStateResponse>;
-    rawContractState(request: QueryRawContractStateRequest): Promise<QueryRawContractStateResponse>;
-    smartContractState(request: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponse>;
-    code(request: QueryCodeRequest): Promise<QueryCodeResponse>;
-    codes(request: QueryCodesRequest): Promise<QueryCodesResponse>;
-    pinnedCodes(request: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponse>;
+    contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponseSDKType>;
+    contractHistory(request: QueryContractHistoryRequest): Promise<QueryContractHistoryResponseSDKType>;
+    contractsByCode(request: QueryContractsByCodeRequest): Promise<QueryContractsByCodeResponseSDKType>;
+    allContractState(request: QueryAllContractStateRequest): Promise<QueryAllContractStateResponseSDKType>;
+    rawContractState(request: QueryRawContractStateRequest): Promise<QueryRawContractStateResponseSDKType>;
+    smartContractState(request: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponseSDKType>;
+    code(request: QueryCodeRequest): Promise<QueryCodeResponseSDKType>;
+    codes(request: QueryCodesRequest): Promise<QueryCodesResponseSDKType>;
+    pinnedCodes(request: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponse>;
-    contractHistory(request: QueryContractHistoryRequest): Promise<QueryContractHistoryResponse>;
-    contractsByCode(request: QueryContractsByCodeRequest): Promise<QueryContractsByCodeResponse>;
-    allContractState(request: QueryAllContractStateRequest): Promise<QueryAllContractStateResponse>;
-    rawContractState(request: QueryRawContractStateRequest): Promise<QueryRawContractStateResponse>;
-    smartContractState(request: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponse>;
-    code(request: QueryCodeRequest): Promise<QueryCodeResponse>;
-    codes(request: QueryCodesRequest): Promise<QueryCodesResponse>;
-    pinnedCodes(request: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponse>;
+    contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponseSDKType>;
+    contractHistory(request: QueryContractHistoryRequest): Promise<QueryContractHistoryResponseSDKType>;
+    contractsByCode(request: QueryContractsByCodeRequest): Promise<QueryContractsByCodeResponseSDKType>;
+    allContractState(request: QueryAllContractStateRequest): Promise<QueryAllContractStateResponseSDKType>;
+    rawContractState(request: QueryRawContractStateRequest): Promise<QueryRawContractStateResponseSDKType>;
+    smartContractState(request: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponseSDKType>;
+    code(request: QueryCodeRequest): Promise<QueryCodeResponseSDKType>;
+    codes(request: QueryCodesRequest): Promise<QueryCodesResponseSDKType>;
+    pinnedCodes(request: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponseSDKType>;
 }

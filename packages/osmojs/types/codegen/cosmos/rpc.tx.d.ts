@@ -22,6 +22,7 @@ export declare const createRPCMsgClient: ({ rpc }: {
             v1beta1: import("./feegrant/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
         gov: {
+            v1: import("./gov/v1/tx.rpc.msg").MsgClientImpl;
             v1beta1: import("./gov/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
         nft: {

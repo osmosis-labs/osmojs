@@ -19,7 +19,7 @@ export interface AminoMsgTransfer extends AminoMsg {
 export declare const AminoConverter: {
     "/ibc.applications.transfer.v1.MsgTransfer": {
         aminoType: string;
-        toAmino: ({ source_port, source_channel, token, sender, receiver, timeout_height, timeout_timestamp }: MsgTransfer) => AminoMsgTransfer["value"];
+        toAmino: ({ sourcePort, sourceChannel, token, sender, receiver, timeoutHeight, timeoutTimestamp }: MsgTransfer) => AminoMsgTransfer["value"];
         fromAmino: ({ source_port, source_channel, token, sender, receiver, timeout_height, timeout_timestamp }: AminoMsgTransfer["value"]) => MsgTransfer;
     };
 };

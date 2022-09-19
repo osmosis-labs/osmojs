@@ -1,29 +1,29 @@
 import { Rpc } from "@osmonauts/helpers";
-import { MsgChannelOpenInit, MsgChannelOpenInitResponse, MsgChannelOpenTry, MsgChannelOpenTryResponse, MsgChannelOpenAck, MsgChannelOpenAckResponse, MsgChannelOpenConfirm, MsgChannelOpenConfirmResponse, MsgChannelCloseInit, MsgChannelCloseInitResponse, MsgChannelCloseConfirm, MsgChannelCloseConfirmResponse, MsgRecvPacket, MsgRecvPacketResponse, MsgTimeout, MsgTimeoutResponse, MsgTimeoutOnClose, MsgTimeoutOnCloseResponse, MsgAcknowledgement, MsgAcknowledgementResponse } from "./tx";
+import { MsgChannelOpenInit, MsgChannelOpenInitResponseSDKType, MsgChannelOpenTry, MsgChannelOpenTryResponseSDKType, MsgChannelOpenAck, MsgChannelOpenAckResponseSDKType, MsgChannelOpenConfirm, MsgChannelOpenConfirmResponseSDKType, MsgChannelCloseInit, MsgChannelCloseInitResponseSDKType, MsgChannelCloseConfirm, MsgChannelCloseConfirmResponseSDKType, MsgRecvPacket, MsgRecvPacketResponseSDKType, MsgTimeout, MsgTimeoutResponseSDKType, MsgTimeoutOnClose, MsgTimeoutOnCloseResponseSDKType, MsgAcknowledgement, MsgAcknowledgementResponseSDKType } from "./tx";
 /** Msg defines the RPC service */
 export interface Msg {
-    channelOpenInit(request: MsgChannelOpenInit): Promise<MsgChannelOpenInitResponse>;
-    channelOpenTry(request: MsgChannelOpenTry): Promise<MsgChannelOpenTryResponse>;
-    channelOpenAck(request: MsgChannelOpenAck): Promise<MsgChannelOpenAckResponse>;
-    channelOpenConfirm(request: MsgChannelOpenConfirm): Promise<MsgChannelOpenConfirmResponse>;
-    channelCloseInit(request: MsgChannelCloseInit): Promise<MsgChannelCloseInitResponse>;
-    channelCloseConfirm(request: MsgChannelCloseConfirm): Promise<MsgChannelCloseConfirmResponse>;
-    recvPacket(request: MsgRecvPacket): Promise<MsgRecvPacketResponse>;
-    timeout(request: MsgTimeout): Promise<MsgTimeoutResponse>;
-    timeoutOnClose(request: MsgTimeoutOnClose): Promise<MsgTimeoutOnCloseResponse>;
-    acknowledgement(request: MsgAcknowledgement): Promise<MsgAcknowledgementResponse>;
+    channelOpenInit(request: MsgChannelOpenInit): Promise<MsgChannelOpenInitResponseSDKType>;
+    channelOpenTry(request: MsgChannelOpenTry): Promise<MsgChannelOpenTryResponseSDKType>;
+    channelOpenAck(request: MsgChannelOpenAck): Promise<MsgChannelOpenAckResponseSDKType>;
+    channelOpenConfirm(request: MsgChannelOpenConfirm): Promise<MsgChannelOpenConfirmResponseSDKType>;
+    channelCloseInit(request: MsgChannelCloseInit): Promise<MsgChannelCloseInitResponseSDKType>;
+    channelCloseConfirm(request: MsgChannelCloseConfirm): Promise<MsgChannelCloseConfirmResponseSDKType>;
+    recvPacket(request: MsgRecvPacket): Promise<MsgRecvPacketResponseSDKType>;
+    timeout(request: MsgTimeout): Promise<MsgTimeoutResponseSDKType>;
+    timeoutOnClose(request: MsgTimeoutOnClose): Promise<MsgTimeoutOnCloseResponseSDKType>;
+    acknowledgement(request: MsgAcknowledgement): Promise<MsgAcknowledgementResponseSDKType>;
 }
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    channelOpenInit(request: MsgChannelOpenInit): Promise<MsgChannelOpenInitResponse>;
-    channelOpenTry(request: MsgChannelOpenTry): Promise<MsgChannelOpenTryResponse>;
-    channelOpenAck(request: MsgChannelOpenAck): Promise<MsgChannelOpenAckResponse>;
-    channelOpenConfirm(request: MsgChannelOpenConfirm): Promise<MsgChannelOpenConfirmResponse>;
-    channelCloseInit(request: MsgChannelCloseInit): Promise<MsgChannelCloseInitResponse>;
-    channelCloseConfirm(request: MsgChannelCloseConfirm): Promise<MsgChannelCloseConfirmResponse>;
-    recvPacket(request: MsgRecvPacket): Promise<MsgRecvPacketResponse>;
-    timeout(request: MsgTimeout): Promise<MsgTimeoutResponse>;
-    timeoutOnClose(request: MsgTimeoutOnClose): Promise<MsgTimeoutOnCloseResponse>;
-    acknowledgement(request: MsgAcknowledgement): Promise<MsgAcknowledgementResponse>;
+    channelOpenInit(request: MsgChannelOpenInit): Promise<MsgChannelOpenInitResponseSDKType>;
+    channelOpenTry(request: MsgChannelOpenTry): Promise<MsgChannelOpenTryResponseSDKType>;
+    channelOpenAck(request: MsgChannelOpenAck): Promise<MsgChannelOpenAckResponseSDKType>;
+    channelOpenConfirm(request: MsgChannelOpenConfirm): Promise<MsgChannelOpenConfirmResponseSDKType>;
+    channelCloseInit(request: MsgChannelCloseInit): Promise<MsgChannelCloseInitResponseSDKType>;
+    channelCloseConfirm(request: MsgChannelCloseConfirm): Promise<MsgChannelCloseConfirmResponseSDKType>;
+    recvPacket(request: MsgRecvPacket): Promise<MsgRecvPacketResponseSDKType>;
+    timeout(request: MsgTimeout): Promise<MsgTimeoutResponseSDKType>;
+    timeoutOnClose(request: MsgTimeoutOnClose): Promise<MsgTimeoutOnCloseResponseSDKType>;
+    acknowledgement(request: MsgAcknowledgement): Promise<MsgAcknowledgementResponseSDKType>;
 }

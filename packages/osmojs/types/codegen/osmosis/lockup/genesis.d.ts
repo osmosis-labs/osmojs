@@ -1,11 +1,17 @@
-import { PeriodLock, SyntheticLock } from "./lock";
+import { PeriodLock, PeriodLockSDKType, SyntheticLock, SyntheticLockSDKType } from "./lock";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the lockup module's genesis state. */
 export interface GenesisState {
-    last_lock_id: Long;
+    lastLockId: Long;
     locks: PeriodLock[];
-    synthetic_locks: SyntheticLock[];
+    syntheticLocks: SyntheticLock[];
+}
+/** GenesisState defines the lockup module's genesis state. */
+export interface GenesisStateSDKType {
+    last_lock_id: Long;
+    locks: PeriodLockSDKType[];
+    synthetic_locks: SyntheticLockSDKType[];
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

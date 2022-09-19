@@ -30,6 +30,7 @@ export declare const createRPCQueryClient: ({ rpc }: {
             v1beta1: import("./feegrant/v1beta1/query.rpc.query").QueryClientImpl;
         };
         gov: {
+            v1: import("./gov/v1/query.rpc.query").QueryClientImpl;
             v1beta1: import("./gov/v1beta1/query.rpc.query").QueryClientImpl;
         };
         mint: {

@@ -1,19 +1,34 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Params, ValidatorSigningInfo } from "./slashing";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { Params, ParamsSDKType, ValidatorSigningInfo, ValidatorSigningInfoSDKType } from "./slashing";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method */
 export interface QueryParamsRequest {
 }
+/** QueryParamsRequest is the request type for the Query/Params RPC method */
+export interface QueryParamsRequestSDKType {
+}
 /** QueryParamsResponse is the response type for the Query/Params RPC method */
 export interface QueryParamsResponse {
     params: Params;
+}
+/** QueryParamsResponse is the response type for the Query/Params RPC method */
+export interface QueryParamsResponseSDKType {
+    params: ParamsSDKType;
 }
 /**
  * QuerySigningInfoRequest is the request type for the Query/SigningInfo RPC
  * method
  */
 export interface QuerySigningInfoRequest {
+    /** cons_address is the address to query signing info of */
+    consAddress: string;
+}
+/**
+ * QuerySigningInfoRequest is the request type for the Query/SigningInfo RPC
+ * method
+ */
+export interface QuerySigningInfoRequestSDKType {
     /** cons_address is the address to query signing info of */
     cons_address: string;
 }
@@ -23,7 +38,15 @@ export interface QuerySigningInfoRequest {
  */
 export interface QuerySigningInfoResponse {
     /** val_signing_info is the signing info of requested val cons address */
-    val_signing_info: ValidatorSigningInfo;
+    valSigningInfo: ValidatorSigningInfo;
+}
+/**
+ * QuerySigningInfoResponse is the response type for the Query/SigningInfo RPC
+ * method
+ */
+export interface QuerySigningInfoResponseSDKType {
+    /** val_signing_info is the signing info of requested val cons address */
+    val_signing_info: ValidatorSigningInfoSDKType;
 }
 /**
  * QuerySigningInfosRequest is the request type for the Query/SigningInfos RPC
@@ -31,6 +54,13 @@ export interface QuerySigningInfoResponse {
  */
 export interface QuerySigningInfosRequest {
     pagination?: PageRequest;
+}
+/**
+ * QuerySigningInfosRequest is the request type for the Query/SigningInfos RPC
+ * method
+ */
+export interface QuerySigningInfosRequestSDKType {
+    pagination?: PageRequestSDKType;
 }
 /**
  * QuerySigningInfosResponse is the response type for the Query/SigningInfos RPC
@@ -41,6 +71,15 @@ export interface QuerySigningInfosResponse {
     info: ValidatorSigningInfo[];
     pagination?: PageResponse;
 }
+/**
+ * QuerySigningInfosResponse is the response type for the Query/SigningInfos RPC
+ * method
+ */
+export interface QuerySigningInfosResponseSDKType {
+    /** info is the signing info of all validators */
+    info: ValidatorSigningInfoSDKType[];
+    pagination?: PageResponseSDKType;
+}
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
@@ -50,7 +89,7 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
@@ -64,7 +103,7 @@ export declare const QuerySigningInfoRequest: {
 };
 export declare const QuerySigningInfoResponse: {
     encode(message: QuerySigningInfoResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfoResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfoResponseSDKType;
     fromJSON(object: any): QuerySigningInfoResponse;
     toJSON(message: QuerySigningInfoResponse): unknown;
     fromPartial(object: DeepPartial<QuerySigningInfoResponse>): QuerySigningInfoResponse;
@@ -78,7 +117,7 @@ export declare const QuerySigningInfosRequest: {
 };
 export declare const QuerySigningInfosResponse: {
     encode(message: QuerySigningInfosResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfosResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfosResponseSDKType;
     fromJSON(object: any): QuerySigningInfosResponse;
     toJSON(message: QuerySigningInfosResponse): unknown;
     fromPartial(object: DeepPartial<QuerySigningInfosResponse>): QuerySigningInfosResponse;

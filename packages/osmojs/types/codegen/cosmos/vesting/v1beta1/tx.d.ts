@@ -1,5 +1,5 @@
-import { Coin } from "../../base/v1beta1/coin";
-import { Period } from "./vesting";
+import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
+import { Period, PeriodSDKType } from "./vesting";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
@@ -7,42 +7,84 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  * account.
  */
 export interface MsgCreateVestingAccount {
+    fromAddress: string;
+    toAddress: string;
+    amount: Coin[];
+    endTime: Long;
+    delayed: boolean;
+}
+/**
+ * MsgCreateVestingAccount defines a message that enables creating a vesting
+ * account.
+ */
+export interface MsgCreateVestingAccountSDKType {
     from_address: string;
     to_address: string;
-    amount: Coin[];
+    amount: CoinSDKType[];
     end_time: Long;
     delayed: boolean;
 }
 /** MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount response type. */
 export interface MsgCreateVestingAccountResponse {
 }
+/** MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount response type. */
+export interface MsgCreateVestingAccountResponseSDKType {
+}
 /**
  * MsgCreatePermanentLockedAccount defines a message that enables creating a permanent
  * locked account.
  */
 export interface MsgCreatePermanentLockedAccount {
+    fromAddress: string;
+    toAddress: string;
+    amount: Coin[];
+}
+/**
+ * MsgCreatePermanentLockedAccount defines a message that enables creating a permanent
+ * locked account.
+ */
+export interface MsgCreatePermanentLockedAccountSDKType {
     from_address: string;
     to_address: string;
-    amount: Coin[];
+    amount: CoinSDKType[];
 }
 /** MsgCreatePermanentLockedAccountResponse defines the Msg/CreatePermanentLockedAccount response type. */
 export interface MsgCreatePermanentLockedAccountResponse {
+}
+/** MsgCreatePermanentLockedAccountResponse defines the Msg/CreatePermanentLockedAccount response type. */
+export interface MsgCreatePermanentLockedAccountResponseSDKType {
 }
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
  * account.
  */
 export interface MsgCreatePeriodicVestingAccount {
+    fromAddress: string;
+    toAddress: string;
+    startTime: Long;
+    vestingPeriods: Period[];
+}
+/**
+ * MsgCreateVestingAccount defines a message that enables creating a vesting
+ * account.
+ */
+export interface MsgCreatePeriodicVestingAccountSDKType {
     from_address: string;
     to_address: string;
     start_time: Long;
-    vesting_periods: Period[];
+    vesting_periods: PeriodSDKType[];
 }
 /**
  * MsgCreateVestingAccountResponse defines the Msg/CreatePeriodicVestingAccount
  * response type.
  */
 export interface MsgCreatePeriodicVestingAccountResponse {
+}
+/**
+ * MsgCreateVestingAccountResponse defines the Msg/CreatePeriodicVestingAccount
+ * response type.
+ */
+export interface MsgCreatePeriodicVestingAccountResponseSDKType {
 }
 export declare const MsgCreateVestingAccount: {
     encode(message: MsgCreateVestingAccount, writer?: _m0.Writer): _m0.Writer;
@@ -53,7 +95,7 @@ export declare const MsgCreateVestingAccount: {
 };
 export declare const MsgCreateVestingAccountResponse: {
     encode(_: MsgCreateVestingAccountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccountResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccountResponseSDKType;
     fromJSON(_: any): MsgCreateVestingAccountResponse;
     toJSON(_: MsgCreateVestingAccountResponse): unknown;
     fromPartial(_: DeepPartial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse;
@@ -67,7 +109,7 @@ export declare const MsgCreatePermanentLockedAccount: {
 };
 export declare const MsgCreatePermanentLockedAccountResponse: {
     encode(_: MsgCreatePermanentLockedAccountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePermanentLockedAccountResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePermanentLockedAccountResponseSDKType;
     fromJSON(_: any): MsgCreatePermanentLockedAccountResponse;
     toJSON(_: MsgCreatePermanentLockedAccountResponse): unknown;
     fromPartial(_: DeepPartial<MsgCreatePermanentLockedAccountResponse>): MsgCreatePermanentLockedAccountResponse;
@@ -81,7 +123,7 @@ export declare const MsgCreatePeriodicVestingAccount: {
 };
 export declare const MsgCreatePeriodicVestingAccountResponse: {
     encode(_: MsgCreatePeriodicVestingAccountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccountResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccountResponseSDKType;
     fromJSON(_: any): MsgCreatePeriodicVestingAccountResponse;
     toJSON(_: MsgCreatePeriodicVestingAccountResponse): unknown;
     fromPartial(_: DeepPartial<MsgCreatePeriodicVestingAccountResponse>): MsgCreatePeriodicVestingAccountResponse;

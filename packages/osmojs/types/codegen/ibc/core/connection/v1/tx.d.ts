@@ -1,6 +1,6 @@
-import { Counterparty, Version } from "./connection";
-import { Any } from "../../../../google/protobuf/any";
-import { Height } from "../../client/v1/client";
+import { Counterparty, CounterpartySDKType, Version, VersionSDKType } from "./connection";
+import { Any, AnySDKType } from "../../../../google/protobuf/any";
+import { Height, HeightSDKType } from "../../client/v1/client";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
@@ -8,9 +8,20 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  * initialize a connection with Chain B.
  */
 export interface MsgConnectionOpenInit {
-    client_id: string;
+    clientId: string;
     counterparty: Counterparty;
     version: Version;
+    delayPeriod: Long;
+    signer: string;
+}
+/**
+ * MsgConnectionOpenInit defines the msg sent by an account on Chain A to
+ * initialize a connection with Chain B.
+ */
+export interface MsgConnectionOpenInitSDKType {
+    client_id: string;
+    counterparty: CounterpartySDKType;
+    version: VersionSDKType;
     delay_period: Long;
     signer: string;
 }
@@ -21,21 +32,55 @@ export interface MsgConnectionOpenInit {
 export interface MsgConnectionOpenInitResponse {
 }
 /**
+ * MsgConnectionOpenInitResponse defines the Msg/ConnectionOpenInit response
+ * type.
+ */
+export interface MsgConnectionOpenInitResponseSDKType {
+}
+/**
  * MsgConnectionOpenTry defines a msg sent by a Relayer to try to open a
  * connection on Chain B.
  */
 export interface MsgConnectionOpenTry {
+    clientId: string;
+    /**
+     * in the case of crossing hello's, when both chains call OpenInit, we need
+     * the connection identifier of the previous connection in state INIT
+     */
+    previousConnectionId: string;
+    clientState: Any;
+    counterparty: Counterparty;
+    delayPeriod: Long;
+    counterpartyVersions: Version[];
+    proofHeight: Height;
+    /**
+     * proof of the initialization the connection on Chain A: `UNITIALIZED ->
+     * INIT`
+     */
+    proofInit: Uint8Array;
+    /** proof of client state included in message */
+    proofClient: Uint8Array;
+    /** proof of client consensus state */
+    proofConsensus: Uint8Array;
+    consensusHeight: Height;
+    signer: string;
+}
+/**
+ * MsgConnectionOpenTry defines a msg sent by a Relayer to try to open a
+ * connection on Chain B.
+ */
+export interface MsgConnectionOpenTrySDKType {
     client_id: string;
     /**
      * in the case of crossing hello's, when both chains call OpenInit, we need
      * the connection identifier of the previous connection in state INIT
      */
     previous_connection_id: string;
-    client_state: Any;
-    counterparty: Counterparty;
+    client_state: AnySDKType;
+    counterparty: CounterpartySDKType;
     delay_period: Long;
-    counterparty_versions: Version[];
-    proof_height: Height;
+    counterparty_versions: VersionSDKType[];
+    proof_height: HeightSDKType;
     /**
      * proof of the initialization the connection on Chain A: `UNITIALIZED ->
      * INIT`
@@ -45,22 +90,47 @@ export interface MsgConnectionOpenTry {
     proof_client: Uint8Array;
     /** proof of client consensus state */
     proof_consensus: Uint8Array;
-    consensus_height: Height;
+    consensus_height: HeightSDKType;
     signer: string;
 }
 /** MsgConnectionOpenTryResponse defines the Msg/ConnectionOpenTry response type. */
 export interface MsgConnectionOpenTryResponse {
+}
+/** MsgConnectionOpenTryResponse defines the Msg/ConnectionOpenTry response type. */
+export interface MsgConnectionOpenTryResponseSDKType {
 }
 /**
  * MsgConnectionOpenAck defines a msg sent by a Relayer to Chain A to
  * acknowledge the change of connection state to TRYOPEN on Chain B.
  */
 export interface MsgConnectionOpenAck {
+    connectionId: string;
+    counterpartyConnectionId: string;
+    version: Version;
+    clientState: Any;
+    proofHeight: Height;
+    /**
+     * proof of the initialization the connection on Chain B: `UNITIALIZED ->
+     * TRYOPEN`
+     */
+    proofTry: Uint8Array;
+    /** proof of client state included in message */
+    proofClient: Uint8Array;
+    /** proof of client consensus state */
+    proofConsensus: Uint8Array;
+    consensusHeight: Height;
+    signer: string;
+}
+/**
+ * MsgConnectionOpenAck defines a msg sent by a Relayer to Chain A to
+ * acknowledge the change of connection state to TRYOPEN on Chain B.
+ */
+export interface MsgConnectionOpenAckSDKType {
     connection_id: string;
     counterparty_connection_id: string;
-    version: Version;
-    client_state: Any;
-    proof_height: Height;
+    version: VersionSDKType;
+    client_state: AnySDKType;
+    proof_height: HeightSDKType;
     /**
      * proof of the initialization the connection on Chain B: `UNITIALIZED ->
      * TRYOPEN`
@@ -70,21 +140,35 @@ export interface MsgConnectionOpenAck {
     proof_client: Uint8Array;
     /** proof of client consensus state */
     proof_consensus: Uint8Array;
-    consensus_height: Height;
+    consensus_height: HeightSDKType;
     signer: string;
 }
 /** MsgConnectionOpenAckResponse defines the Msg/ConnectionOpenAck response type. */
 export interface MsgConnectionOpenAckResponse {
+}
+/** MsgConnectionOpenAckResponse defines the Msg/ConnectionOpenAck response type. */
+export interface MsgConnectionOpenAckResponseSDKType {
 }
 /**
  * MsgConnectionOpenConfirm defines a msg sent by a Relayer to Chain B to
  * acknowledge the change of connection state to OPEN on Chain A.
  */
 export interface MsgConnectionOpenConfirm {
+    connectionId: string;
+    /** proof for the change of the connection state on Chain A: `INIT -> OPEN` */
+    proofAck: Uint8Array;
+    proofHeight: Height;
+    signer: string;
+}
+/**
+ * MsgConnectionOpenConfirm defines a msg sent by a Relayer to Chain B to
+ * acknowledge the change of connection state to OPEN on Chain A.
+ */
+export interface MsgConnectionOpenConfirmSDKType {
     connection_id: string;
     /** proof for the change of the connection state on Chain A: `INIT -> OPEN` */
     proof_ack: Uint8Array;
-    proof_height: Height;
+    proof_height: HeightSDKType;
     signer: string;
 }
 /**
@@ -92,6 +176,12 @@ export interface MsgConnectionOpenConfirm {
  * response type.
  */
 export interface MsgConnectionOpenConfirmResponse {
+}
+/**
+ * MsgConnectionOpenConfirmResponse defines the Msg/ConnectionOpenConfirm
+ * response type.
+ */
+export interface MsgConnectionOpenConfirmResponseSDKType {
 }
 export declare const MsgConnectionOpenInit: {
     encode(message: MsgConnectionOpenInit, writer?: _m0.Writer): _m0.Writer;
@@ -102,7 +192,7 @@ export declare const MsgConnectionOpenInit: {
 };
 export declare const MsgConnectionOpenInitResponse: {
     encode(_: MsgConnectionOpenInitResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInitResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInitResponseSDKType;
     fromJSON(_: any): MsgConnectionOpenInitResponse;
     toJSON(_: MsgConnectionOpenInitResponse): unknown;
     fromPartial(_: DeepPartial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse;
@@ -116,7 +206,7 @@ export declare const MsgConnectionOpenTry: {
 };
 export declare const MsgConnectionOpenTryResponse: {
     encode(_: MsgConnectionOpenTryResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTryResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTryResponseSDKType;
     fromJSON(_: any): MsgConnectionOpenTryResponse;
     toJSON(_: MsgConnectionOpenTryResponse): unknown;
     fromPartial(_: DeepPartial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse;
@@ -130,7 +220,7 @@ export declare const MsgConnectionOpenAck: {
 };
 export declare const MsgConnectionOpenAckResponse: {
     encode(_: MsgConnectionOpenAckResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAckResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAckResponseSDKType;
     fromJSON(_: any): MsgConnectionOpenAckResponse;
     toJSON(_: MsgConnectionOpenAckResponse): unknown;
     fromPartial(_: DeepPartial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse;
@@ -144,7 +234,7 @@ export declare const MsgConnectionOpenConfirm: {
 };
 export declare const MsgConnectionOpenConfirmResponse: {
     encode(_: MsgConnectionOpenConfirmResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponseSDKType;
     fromJSON(_: any): MsgConnectionOpenConfirmResponse;
     toJSON(_: MsgConnectionOpenConfirmResponse): unknown;
     fromPartial(_: DeepPartial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse;

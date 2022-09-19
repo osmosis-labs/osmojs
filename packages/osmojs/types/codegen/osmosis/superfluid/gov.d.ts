@@ -1,4 +1,4 @@
-import { SuperfluidAsset } from "./superfluid";
+import { SuperfluidAsset, SuperfluidAssetSDKType } from "./superfluid";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /**
@@ -11,10 +11,28 @@ export interface SetSuperfluidAssetsProposal {
     assets: SuperfluidAsset[];
 }
 /**
+ * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
+ * assets
+ */
+export interface SetSuperfluidAssetsProposalSDKType {
+    title: string;
+    description: string;
+    assets: SuperfluidAssetSDKType[];
+}
+/**
  * RemoveSuperfluidAssetsProposal is a gov Content type to remove the superfluid
  * assets by denom
  */
 export interface RemoveSuperfluidAssetsProposal {
+    title: string;
+    description: string;
+    superfluidAssetDenoms: string[];
+}
+/**
+ * RemoveSuperfluidAssetsProposal is a gov Content type to remove the superfluid
+ * assets by denom
+ */
+export interface RemoveSuperfluidAssetsProposalSDKType {
     title: string;
     description: string;
     superfluid_asset_denoms: string[];

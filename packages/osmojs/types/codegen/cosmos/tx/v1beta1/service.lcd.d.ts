@@ -1,10 +1,10 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { GetTxRequest, GetTxResponse, GetTxsEventRequest, GetTxsEventResponse, GetBlockWithTxsRequest, GetBlockWithTxsResponse } from "./service";
+import { GetTxRequest, GetTxResponseSDKType, GetTxsEventRequest, GetTxsEventResponseSDKType, GetBlockWithTxsRequest, GetBlockWithTxsResponseSDKType } from "./service";
 export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
         restEndpoint: string;
     });
-    getTx(params: GetTxRequest): Promise<GetTxResponse>;
-    getTxsEvent(params: GetTxsEventRequest): Promise<GetTxsEventResponse>;
-    getBlockWithTxs(params: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse>;
+    getTx(params: GetTxRequest): Promise<GetTxResponseSDKType>;
+    getTxsEvent(params: GetTxsEventRequest): Promise<GetTxsEventResponseSDKType>;
+    getBlockWithTxs(params: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponseSDKType>;
 }

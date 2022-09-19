@@ -1,9 +1,13 @@
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** Params holds parameters for the tokenfactory module */
 export interface Params {
-    denom_creation_fee: Coin[];
+    denomCreationFee: Coin[];
+}
+/** Params holds parameters for the tokenfactory module */
+export interface ParamsSDKType {
+    denom_creation_fee: CoinSDKType[];
 }
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;

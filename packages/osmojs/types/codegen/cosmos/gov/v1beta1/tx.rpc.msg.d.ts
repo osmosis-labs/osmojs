@@ -1,17 +1,17 @@
 import { Rpc } from "@osmonauts/helpers";
-import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse } from "./tx";
+import { MsgSubmitProposal, MsgSubmitProposalResponseSDKType, MsgVote, MsgVoteResponseSDKType, MsgVoteWeighted, MsgVoteWeightedResponseSDKType, MsgDeposit, MsgDepositResponseSDKType } from "./tx";
 /** Msg defines the RPC service */
 export interface Msg {
-    submitProposal(request: MsgSubmitProposal): Promise<MsgSubmitProposalResponse>;
-    vote(request: MsgVote): Promise<MsgVoteResponse>;
-    voteWeighted(request: MsgVoteWeighted): Promise<MsgVoteWeightedResponse>;
-    deposit(request: MsgDeposit): Promise<MsgDepositResponse>;
+    submitProposal(request: MsgSubmitProposal): Promise<MsgSubmitProposalResponseSDKType>;
+    vote(request: MsgVote): Promise<MsgVoteResponseSDKType>;
+    voteWeighted(request: MsgVoteWeighted): Promise<MsgVoteWeightedResponseSDKType>;
+    deposit(request: MsgDeposit): Promise<MsgDepositResponseSDKType>;
 }
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    submitProposal(request: MsgSubmitProposal): Promise<MsgSubmitProposalResponse>;
-    vote(request: MsgVote): Promise<MsgVoteResponse>;
-    voteWeighted(request: MsgVoteWeighted): Promise<MsgVoteWeightedResponse>;
-    deposit(request: MsgDeposit): Promise<MsgDepositResponse>;
+    submitProposal(request: MsgSubmitProposal): Promise<MsgSubmitProposalResponseSDKType>;
+    vote(request: MsgVote): Promise<MsgVoteResponseSDKType>;
+    voteWeighted(request: MsgVoteWeighted): Promise<MsgVoteWeightedResponseSDKType>;
+    deposit(request: MsgDeposit): Promise<MsgDepositResponseSDKType>;
 }

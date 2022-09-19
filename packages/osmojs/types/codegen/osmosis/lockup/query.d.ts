@@ -1,58 +1,112 @@
-import { Duration } from "../../google/protobuf/duration";
-import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { PeriodLock, SyntheticLock } from "./lock";
+import { Duration, DurationSDKType } from "../../google/protobuf/duration";
+import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { PeriodLock, PeriodLockSDKType, SyntheticLock, SyntheticLockSDKType } from "./lock";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface ModuleBalanceRequest {
 }
+export interface ModuleBalanceRequestSDKType {
+}
 export interface ModuleBalanceResponse {
     coins: Coin[];
 }
+export interface ModuleBalanceResponseSDKType {
+    coins: CoinSDKType[];
+}
 export interface ModuleLockedAmountRequest {
+}
+export interface ModuleLockedAmountRequestSDKType {
 }
 export interface ModuleLockedAmountResponse {
     coins: Coin[];
 }
+export interface ModuleLockedAmountResponseSDKType {
+    coins: CoinSDKType[];
+}
 export interface AccountUnlockableCoinsRequest {
+    owner: string;
+}
+export interface AccountUnlockableCoinsRequestSDKType {
     owner: string;
 }
 export interface AccountUnlockableCoinsResponse {
     coins: Coin[];
 }
+export interface AccountUnlockableCoinsResponseSDKType {
+    coins: CoinSDKType[];
+}
 export interface AccountUnlockingCoinsRequest {
+    owner: string;
+}
+export interface AccountUnlockingCoinsRequestSDKType {
     owner: string;
 }
 export interface AccountUnlockingCoinsResponse {
     coins: Coin[];
 }
+export interface AccountUnlockingCoinsResponseSDKType {
+    coins: CoinSDKType[];
+}
 export interface AccountLockedCoinsRequest {
+    owner: string;
+}
+export interface AccountLockedCoinsRequestSDKType {
     owner: string;
 }
 export interface AccountLockedCoinsResponse {
     coins: Coin[];
 }
+export interface AccountLockedCoinsResponseSDKType {
+    coins: CoinSDKType[];
+}
 export interface AccountLockedPastTimeRequest {
+    owner: string;
+    timestamp?: Date;
+}
+export interface AccountLockedPastTimeRequestSDKType {
     owner: string;
     timestamp?: Date;
 }
 export interface AccountLockedPastTimeResponse {
     locks: PeriodLock[];
 }
+export interface AccountLockedPastTimeResponseSDKType {
+    locks: PeriodLockSDKType[];
+}
 export interface AccountLockedPastTimeNotUnlockingOnlyRequest {
+    owner: string;
+    timestamp?: Date;
+}
+export interface AccountLockedPastTimeNotUnlockingOnlyRequestSDKType {
     owner: string;
     timestamp?: Date;
 }
 export interface AccountLockedPastTimeNotUnlockingOnlyResponse {
     locks: PeriodLock[];
 }
+export interface AccountLockedPastTimeNotUnlockingOnlyResponseSDKType {
+    locks: PeriodLockSDKType[];
+}
 export interface AccountUnlockedBeforeTimeRequest {
+    owner: string;
+    timestamp?: Date;
+}
+export interface AccountUnlockedBeforeTimeRequestSDKType {
     owner: string;
     timestamp?: Date;
 }
 export interface AccountUnlockedBeforeTimeResponse {
     locks: PeriodLock[];
 }
+export interface AccountUnlockedBeforeTimeResponseSDKType {
+    locks: PeriodLockSDKType[];
+}
 export interface AccountLockedPastTimeDenomRequest {
+    owner: string;
+    timestamp?: Date;
+    denom?: string;
+}
+export interface AccountLockedPastTimeDenomRequestSDKType {
     owner: string;
     timestamp?: Date;
     denom?: string;
@@ -60,53 +114,104 @@ export interface AccountLockedPastTimeDenomRequest {
 export interface AccountLockedPastTimeDenomResponse {
     locks: PeriodLock[];
 }
+export interface AccountLockedPastTimeDenomResponseSDKType {
+    locks: PeriodLockSDKType[];
+}
 export interface LockedDenomRequest {
     denom?: string;
     duration?: Duration;
 }
+export interface LockedDenomRequestSDKType {
+    denom?: string;
+    duration?: DurationSDKType;
+}
 export interface LockedDenomResponse {
     amount: string;
 }
+export interface LockedDenomResponseSDKType {
+    amount: string;
+}
 export interface LockedRequest {
+    lockId: Long;
+}
+export interface LockedRequestSDKType {
     lock_id: Long;
 }
 export interface LockedResponse {
     lock: PeriodLock;
 }
+export interface LockedResponseSDKType {
+    lock: PeriodLockSDKType;
+}
 export interface SyntheticLockupsByLockupIDRequest {
+    lockId: Long;
+}
+export interface SyntheticLockupsByLockupIDRequestSDKType {
     lock_id: Long;
 }
 export interface SyntheticLockupsByLockupIDResponse {
-    synthetic_locks: SyntheticLock[];
+    syntheticLocks: SyntheticLock[];
+}
+export interface SyntheticLockupsByLockupIDResponseSDKType {
+    synthetic_locks: SyntheticLockSDKType[];
 }
 export interface AccountLockedLongerDurationRequest {
     owner: string;
     duration?: Duration;
 }
+export interface AccountLockedLongerDurationRequestSDKType {
+    owner: string;
+    duration?: DurationSDKType;
+}
 export interface AccountLockedLongerDurationResponse {
     locks: PeriodLock[];
+}
+export interface AccountLockedLongerDurationResponseSDKType {
+    locks: PeriodLockSDKType[];
 }
 export interface AccountLockedDurationRequest {
     owner: string;
     duration?: Duration;
 }
+export interface AccountLockedDurationRequestSDKType {
+    owner: string;
+    duration?: DurationSDKType;
+}
 export interface AccountLockedDurationResponse {
     locks: PeriodLock[];
+}
+export interface AccountLockedDurationResponseSDKType {
+    locks: PeriodLockSDKType[];
 }
 export interface AccountLockedLongerDurationNotUnlockingOnlyRequest {
     owner: string;
     duration?: Duration;
 }
+export interface AccountLockedLongerDurationNotUnlockingOnlyRequestSDKType {
+    owner: string;
+    duration?: DurationSDKType;
+}
 export interface AccountLockedLongerDurationNotUnlockingOnlyResponse {
     locks: PeriodLock[];
+}
+export interface AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType {
+    locks: PeriodLockSDKType[];
 }
 export interface AccountLockedLongerDurationDenomRequest {
     owner: string;
     duration?: Duration;
     denom?: string;
 }
+export interface AccountLockedLongerDurationDenomRequestSDKType {
+    owner: string;
+    duration?: DurationSDKType;
+    denom?: string;
+}
 export interface AccountLockedLongerDurationDenomResponse {
     locks: PeriodLock[];
+}
+export interface AccountLockedLongerDurationDenomResponseSDKType {
+    locks: PeriodLockSDKType[];
 }
 export declare const ModuleBalanceRequest: {
     encode(_: ModuleBalanceRequest, writer?: _m0.Writer): _m0.Writer;
@@ -117,7 +222,7 @@ export declare const ModuleBalanceRequest: {
 };
 export declare const ModuleBalanceResponse: {
     encode(message: ModuleBalanceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleBalanceResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleBalanceResponseSDKType;
     fromJSON(object: any): ModuleBalanceResponse;
     toJSON(message: ModuleBalanceResponse): unknown;
     fromPartial(object: DeepPartial<ModuleBalanceResponse>): ModuleBalanceResponse;
@@ -131,7 +236,7 @@ export declare const ModuleLockedAmountRequest: {
 };
 export declare const ModuleLockedAmountResponse: {
     encode(message: ModuleLockedAmountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleLockedAmountResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleLockedAmountResponseSDKType;
     fromJSON(object: any): ModuleLockedAmountResponse;
     toJSON(message: ModuleLockedAmountResponse): unknown;
     fromPartial(object: DeepPartial<ModuleLockedAmountResponse>): ModuleLockedAmountResponse;
@@ -145,7 +250,7 @@ export declare const AccountUnlockableCoinsRequest: {
 };
 export declare const AccountUnlockableCoinsResponse: {
     encode(message: AccountUnlockableCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockableCoinsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockableCoinsResponseSDKType;
     fromJSON(object: any): AccountUnlockableCoinsResponse;
     toJSON(message: AccountUnlockableCoinsResponse): unknown;
     fromPartial(object: DeepPartial<AccountUnlockableCoinsResponse>): AccountUnlockableCoinsResponse;
@@ -159,7 +264,7 @@ export declare const AccountUnlockingCoinsRequest: {
 };
 export declare const AccountUnlockingCoinsResponse: {
     encode(message: AccountUnlockingCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockingCoinsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockingCoinsResponseSDKType;
     fromJSON(object: any): AccountUnlockingCoinsResponse;
     toJSON(message: AccountUnlockingCoinsResponse): unknown;
     fromPartial(object: DeepPartial<AccountUnlockingCoinsResponse>): AccountUnlockingCoinsResponse;
@@ -173,7 +278,7 @@ export declare const AccountLockedCoinsRequest: {
 };
 export declare const AccountLockedCoinsResponse: {
     encode(message: AccountLockedCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedCoinsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedCoinsResponseSDKType;
     fromJSON(object: any): AccountLockedCoinsResponse;
     toJSON(message: AccountLockedCoinsResponse): unknown;
     fromPartial(object: DeepPartial<AccountLockedCoinsResponse>): AccountLockedCoinsResponse;
@@ -187,7 +292,7 @@ export declare const AccountLockedPastTimeRequest: {
 };
 export declare const AccountLockedPastTimeResponse: {
     encode(message: AccountLockedPastTimeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeResponseSDKType;
     fromJSON(object: any): AccountLockedPastTimeResponse;
     toJSON(message: AccountLockedPastTimeResponse): unknown;
     fromPartial(object: DeepPartial<AccountLockedPastTimeResponse>): AccountLockedPastTimeResponse;
@@ -201,7 +306,7 @@ export declare const AccountLockedPastTimeNotUnlockingOnlyRequest: {
 };
 export declare const AccountLockedPastTimeNotUnlockingOnlyResponse: {
     encode(message: AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeNotUnlockingOnlyResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeNotUnlockingOnlyResponseSDKType;
     fromJSON(object: any): AccountLockedPastTimeNotUnlockingOnlyResponse;
     toJSON(message: AccountLockedPastTimeNotUnlockingOnlyResponse): unknown;
     fromPartial(object: DeepPartial<AccountLockedPastTimeNotUnlockingOnlyResponse>): AccountLockedPastTimeNotUnlockingOnlyResponse;
@@ -215,7 +320,7 @@ export declare const AccountUnlockedBeforeTimeRequest: {
 };
 export declare const AccountUnlockedBeforeTimeResponse: {
     encode(message: AccountUnlockedBeforeTimeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockedBeforeTimeResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockedBeforeTimeResponseSDKType;
     fromJSON(object: any): AccountUnlockedBeforeTimeResponse;
     toJSON(message: AccountUnlockedBeforeTimeResponse): unknown;
     fromPartial(object: DeepPartial<AccountUnlockedBeforeTimeResponse>): AccountUnlockedBeforeTimeResponse;
@@ -229,7 +334,7 @@ export declare const AccountLockedPastTimeDenomRequest: {
 };
 export declare const AccountLockedPastTimeDenomResponse: {
     encode(message: AccountLockedPastTimeDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeDenomResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeDenomResponseSDKType;
     fromJSON(object: any): AccountLockedPastTimeDenomResponse;
     toJSON(message: AccountLockedPastTimeDenomResponse): unknown;
     fromPartial(object: DeepPartial<AccountLockedPastTimeDenomResponse>): AccountLockedPastTimeDenomResponse;
@@ -243,7 +348,7 @@ export declare const LockedDenomRequest: {
 };
 export declare const LockedDenomResponse: {
     encode(message: LockedDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockedDenomResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LockedDenomResponseSDKType;
     fromJSON(object: any): LockedDenomResponse;
     toJSON(message: LockedDenomResponse): unknown;
     fromPartial(object: DeepPartial<LockedDenomResponse>): LockedDenomResponse;
@@ -257,7 +362,7 @@ export declare const LockedRequest: {
 };
 export declare const LockedResponse: {
     encode(message: LockedResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockedResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LockedResponseSDKType;
     fromJSON(object: any): LockedResponse;
     toJSON(message: LockedResponse): unknown;
     fromPartial(object: DeepPartial<LockedResponse>): LockedResponse;
@@ -271,7 +376,7 @@ export declare const SyntheticLockupsByLockupIDRequest: {
 };
 export declare const SyntheticLockupsByLockupIDResponse: {
     encode(message: SyntheticLockupsByLockupIDResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupsByLockupIDResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupsByLockupIDResponseSDKType;
     fromJSON(object: any): SyntheticLockupsByLockupIDResponse;
     toJSON(message: SyntheticLockupsByLockupIDResponse): unknown;
     fromPartial(object: DeepPartial<SyntheticLockupsByLockupIDResponse>): SyntheticLockupsByLockupIDResponse;
@@ -285,7 +390,7 @@ export declare const AccountLockedLongerDurationRequest: {
 };
 export declare const AccountLockedLongerDurationResponse: {
     encode(message: AccountLockedLongerDurationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationResponseSDKType;
     fromJSON(object: any): AccountLockedLongerDurationResponse;
     toJSON(message: AccountLockedLongerDurationResponse): unknown;
     fromPartial(object: DeepPartial<AccountLockedLongerDurationResponse>): AccountLockedLongerDurationResponse;
@@ -299,7 +404,7 @@ export declare const AccountLockedDurationRequest: {
 };
 export declare const AccountLockedDurationResponse: {
     encode(message: AccountLockedDurationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedDurationResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedDurationResponseSDKType;
     fromJSON(object: any): AccountLockedDurationResponse;
     toJSON(message: AccountLockedDurationResponse): unknown;
     fromPartial(object: DeepPartial<AccountLockedDurationResponse>): AccountLockedDurationResponse;
@@ -313,7 +418,7 @@ export declare const AccountLockedLongerDurationNotUnlockingOnlyRequest: {
 };
 export declare const AccountLockedLongerDurationNotUnlockingOnlyResponse: {
     encode(message: AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationNotUnlockingOnlyResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType;
     fromJSON(object: any): AccountLockedLongerDurationNotUnlockingOnlyResponse;
     toJSON(message: AccountLockedLongerDurationNotUnlockingOnlyResponse): unknown;
     fromPartial(object: DeepPartial<AccountLockedLongerDurationNotUnlockingOnlyResponse>): AccountLockedLongerDurationNotUnlockingOnlyResponse;
@@ -327,7 +432,7 @@ export declare const AccountLockedLongerDurationDenomRequest: {
 };
 export declare const AccountLockedLongerDurationDenomResponse: {
     encode(message: AccountLockedLongerDurationDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationDenomResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationDenomResponseSDKType;
     fromJSON(object: any): AccountLockedLongerDurationDenomResponse;
     toJSON(message: AccountLockedLongerDurationDenomResponse): unknown;
     fromPartial(object: DeepPartial<AccountLockedLongerDurationDenomResponse>): AccountLockedLongerDurationDenomResponse;

@@ -1,19 +1,19 @@
 import { Rpc } from "@osmonauts/helpers";
-import { QueryConnectionRequest, QueryConnectionResponse, QueryConnectionsRequest, QueryConnectionsResponse, QueryClientConnectionsRequest, QueryClientConnectionsResponse, QueryConnectionClientStateRequest, QueryConnectionClientStateResponse, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponse } from "./query";
+import { QueryConnectionRequest, QueryConnectionResponseSDKType, QueryConnectionsRequest, QueryConnectionsResponseSDKType, QueryClientConnectionsRequest, QueryClientConnectionsResponseSDKType, QueryConnectionClientStateRequest, QueryConnectionClientStateResponseSDKType, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponseSDKType } from "./query";
 /** Query defines the RPC service */
 export interface Query {
-    connection(request: QueryConnectionRequest): Promise<QueryConnectionResponse>;
-    connections(request: QueryConnectionsRequest): Promise<QueryConnectionsResponse>;
-    clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponse>;
-    connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponse>;
-    connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponse>;
+    connection(request: QueryConnectionRequest): Promise<QueryConnectionResponseSDKType>;
+    connections(request: QueryConnectionsRequest): Promise<QueryConnectionsResponseSDKType>;
+    clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponseSDKType>;
+    connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponseSDKType>;
+    connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    connection(request: QueryConnectionRequest): Promise<QueryConnectionResponse>;
-    connections(request: QueryConnectionsRequest): Promise<QueryConnectionsResponse>;
-    clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponse>;
-    connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponse>;
-    connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponse>;
+    connection(request: QueryConnectionRequest): Promise<QueryConnectionResponseSDKType>;
+    connections(request: QueryConnectionsRequest): Promise<QueryConnectionsResponseSDKType>;
+    clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponseSDKType>;
+    connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponseSDKType>;
+    connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType>;
 }

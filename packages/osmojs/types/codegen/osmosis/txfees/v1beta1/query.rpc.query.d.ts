@@ -1,17 +1,17 @@
 import { Rpc } from "@osmonauts/helpers";
-import { QueryFeeTokensRequest, QueryFeeTokensResponse, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponse, QueryDenomPoolIdRequest, QueryDenomPoolIdResponse, QueryBaseDenomRequest, QueryBaseDenomResponse } from "./query";
+import { QueryFeeTokensRequest, QueryFeeTokensResponseSDKType, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponseSDKType, QueryDenomPoolIdRequest, QueryDenomPoolIdResponseSDKType, QueryBaseDenomRequest, QueryBaseDenomResponseSDKType } from "./query";
 /** Query defines the RPC service */
 export interface Query {
-    feeTokens(request: QueryFeeTokensRequest): Promise<QueryFeeTokensResponse>;
-    denomSpotPrice(request: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponse>;
-    denomPoolId(request: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponse>;
-    baseDenom(request: QueryBaseDenomRequest): Promise<QueryBaseDenomResponse>;
+    feeTokens(request: QueryFeeTokensRequest): Promise<QueryFeeTokensResponseSDKType>;
+    denomSpotPrice(request: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponseSDKType>;
+    denomPoolId(request: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponseSDKType>;
+    baseDenom(request: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    feeTokens(request: QueryFeeTokensRequest): Promise<QueryFeeTokensResponse>;
-    denomSpotPrice(request: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponse>;
-    denomPoolId(request: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponse>;
-    baseDenom(request: QueryBaseDenomRequest): Promise<QueryBaseDenomResponse>;
+    feeTokens(request: QueryFeeTokensRequest): Promise<QueryFeeTokensResponseSDKType>;
+    denomSpotPrice(request: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponseSDKType>;
+    denomPoolId(request: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponseSDKType>;
+    baseDenom(request: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType>;
 }

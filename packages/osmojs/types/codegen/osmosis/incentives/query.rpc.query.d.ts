@@ -1,29 +1,29 @@
 import { Rpc } from "@osmonauts/helpers";
-import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
+import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponseSDKType, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponseSDKType, GaugeByIDRequest, GaugeByIDResponseSDKType, GaugesRequest, GaugesResponseSDKType, ActiveGaugesRequest, ActiveGaugesResponseSDKType, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponseSDKType, UpcomingGaugesRequest, UpcomingGaugesResponseSDKType, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponseSDKType, RewardsEstRequest, RewardsEstResponseSDKType, QueryLockableDurationsRequest, QueryLockableDurationsResponseSDKType } from "./query";
 /** Query defines the RPC service */
 export interface Query {
-    moduleToDistributeCoins(request: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponse>;
-    moduleDistributedCoins(request: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponse>;
-    gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponse>;
-    gauges(request: GaugesRequest): Promise<GaugesResponse>;
-    activeGauges(request: ActiveGaugesRequest): Promise<ActiveGaugesResponse>;
-    activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponse>;
-    upcomingGauges(request: UpcomingGaugesRequest): Promise<UpcomingGaugesResponse>;
-    upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse>;
-    rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponse>;
-    lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse>;
+    moduleToDistributeCoins(request: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponseSDKType>;
+    moduleDistributedCoins(request: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponseSDKType>;
+    gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponseSDKType>;
+    gauges(request: GaugesRequest): Promise<GaugesResponseSDKType>;
+    activeGauges(request: ActiveGaugesRequest): Promise<ActiveGaugesResponseSDKType>;
+    activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponseSDKType>;
+    upcomingGauges(request: UpcomingGaugesRequest): Promise<UpcomingGaugesResponseSDKType>;
+    upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponseSDKType>;
+    rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponseSDKType>;
+    lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    moduleToDistributeCoins(request: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponse>;
-    moduleDistributedCoins(request: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponse>;
-    gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponse>;
-    gauges(request: GaugesRequest): Promise<GaugesResponse>;
-    activeGauges(request: ActiveGaugesRequest): Promise<ActiveGaugesResponse>;
-    activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponse>;
-    upcomingGauges(request: UpcomingGaugesRequest): Promise<UpcomingGaugesResponse>;
-    upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse>;
-    rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponse>;
-    lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse>;
+    moduleToDistributeCoins(request: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponseSDKType>;
+    moduleDistributedCoins(request: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponseSDKType>;
+    gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponseSDKType>;
+    gauges(request: GaugesRequest): Promise<GaugesResponseSDKType>;
+    activeGauges(request: ActiveGaugesRequest): Promise<ActiveGaugesResponseSDKType>;
+    activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponseSDKType>;
+    upcomingGauges(request: UpcomingGaugesRequest): Promise<UpcomingGaugesResponseSDKType>;
+    upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponseSDKType>;
+    rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponseSDKType>;
+    lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
 }

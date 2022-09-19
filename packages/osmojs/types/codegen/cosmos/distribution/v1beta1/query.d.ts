@@ -1,21 +1,37 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Params, ValidatorOutstandingRewards, ValidatorAccumulatedCommission, ValidatorSlashEvent, DelegationDelegatorReward } from "./distribution";
-import { DecCoin } from "../../base/v1beta1/coin";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { Params, ParamsSDKType, ValidatorOutstandingRewards, ValidatorOutstandingRewardsSDKType, ValidatorAccumulatedCommission, ValidatorAccumulatedCommissionSDKType, ValidatorSlashEvent, ValidatorSlashEventSDKType, DelegationDelegatorReward, DelegationDelegatorRewardSDKType } from "./distribution";
+import { DecCoin, DecCoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
+}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
     params: Params;
 }
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+export interface QueryParamsResponseSDKType {
+    /** params defines the parameters of the module. */
+    params: ParamsSDKType;
+}
 /**
  * QueryValidatorOutstandingRewardsRequest is the request type for the
  * Query/ValidatorOutstandingRewards RPC method.
  */
 export interface QueryValidatorOutstandingRewardsRequest {
+    /** validator_address defines the validator address to query for. */
+    validatorAddress: string;
+}
+/**
+ * QueryValidatorOutstandingRewardsRequest is the request type for the
+ * Query/ValidatorOutstandingRewards RPC method.
+ */
+export interface QueryValidatorOutstandingRewardsRequestSDKType {
     /** validator_address defines the validator address to query for. */
     validator_address: string;
 }
@@ -27,10 +43,25 @@ export interface QueryValidatorOutstandingRewardsResponse {
     rewards: ValidatorOutstandingRewards;
 }
 /**
+ * QueryValidatorOutstandingRewardsResponse is the response type for the
+ * Query/ValidatorOutstandingRewards RPC method.
+ */
+export interface QueryValidatorOutstandingRewardsResponseSDKType {
+    rewards: ValidatorOutstandingRewardsSDKType;
+}
+/**
  * QueryValidatorCommissionRequest is the request type for the
  * Query/ValidatorCommission RPC method
  */
 export interface QueryValidatorCommissionRequest {
+    /** validator_address defines the validator address to query for. */
+    validatorAddress: string;
+}
+/**
+ * QueryValidatorCommissionRequest is the request type for the
+ * Query/ValidatorCommission RPC method
+ */
+export interface QueryValidatorCommissionRequestSDKType {
     /** validator_address defines the validator address to query for. */
     validator_address: string;
 }
@@ -43,10 +74,32 @@ export interface QueryValidatorCommissionResponse {
     commission: ValidatorAccumulatedCommission;
 }
 /**
+ * QueryValidatorCommissionResponse is the response type for the
+ * Query/ValidatorCommission RPC method
+ */
+export interface QueryValidatorCommissionResponseSDKType {
+    /** commission defines the commision the validator received. */
+    commission: ValidatorAccumulatedCommissionSDKType;
+}
+/**
  * QueryValidatorSlashesRequest is the request type for the
  * Query/ValidatorSlashes RPC method
  */
 export interface QueryValidatorSlashesRequest {
+    /** validator_address defines the validator address to query for. */
+    validatorAddress: string;
+    /** starting_height defines the optional starting height to query the slashes. */
+    startingHeight?: Long;
+    /** starting_height defines the optional ending height to query the slashes. */
+    endingHeight?: Long;
+    /** pagination defines an optional pagination for the request. */
+    pagination?: PageRequest;
+}
+/**
+ * QueryValidatorSlashesRequest is the request type for the
+ * Query/ValidatorSlashes RPC method
+ */
+export interface QueryValidatorSlashesRequestSDKType {
     /** validator_address defines the validator address to query for. */
     validator_address: string;
     /** starting_height defines the optional starting height to query the slashes. */
@@ -54,7 +107,7 @@ export interface QueryValidatorSlashesRequest {
     /** starting_height defines the optional ending height to query the slashes. */
     ending_height?: Long;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination?: PageRequestSDKType;
 }
 /**
  * QueryValidatorSlashesResponse is the response type for the
@@ -67,10 +120,30 @@ export interface QueryValidatorSlashesResponse {
     pagination?: PageResponse;
 }
 /**
+ * QueryValidatorSlashesResponse is the response type for the
+ * Query/ValidatorSlashes RPC method.
+ */
+export interface QueryValidatorSlashesResponseSDKType {
+    /** slashes defines the slashes the validator received. */
+    slashes: ValidatorSlashEventSDKType[];
+    /** pagination defines the pagination in the response. */
+    pagination?: PageResponseSDKType;
+}
+/**
  * QueryDelegationRewardsRequest is the request type for the
  * Query/DelegationRewards RPC method.
  */
 export interface QueryDelegationRewardsRequest {
+    /** delegator_address defines the delegator address to query for. */
+    delegatorAddress: string;
+    /** validator_address defines the validator address to query for. */
+    validatorAddress: string;
+}
+/**
+ * QueryDelegationRewardsRequest is the request type for the
+ * Query/DelegationRewards RPC method.
+ */
+export interface QueryDelegationRewardsRequestSDKType {
     /** delegator_address defines the delegator address to query for. */
     delegator_address: string;
     /** validator_address defines the validator address to query for. */
@@ -85,10 +158,26 @@ export interface QueryDelegationRewardsResponse {
     rewards: DecCoin[];
 }
 /**
+ * QueryDelegationRewardsResponse is the response type for the
+ * Query/DelegationRewards RPC method.
+ */
+export interface QueryDelegationRewardsResponseSDKType {
+    /** rewards defines the rewards accrued by a delegation. */
+    rewards: DecCoinSDKType[];
+}
+/**
  * QueryDelegationTotalRewardsRequest is the request type for the
  * Query/DelegationTotalRewards RPC method.
  */
 export interface QueryDelegationTotalRewardsRequest {
+    /** delegator_address defines the delegator address to query for. */
+    delegatorAddress: string;
+}
+/**
+ * QueryDelegationTotalRewardsRequest is the request type for the
+ * Query/DelegationTotalRewards RPC method.
+ */
+export interface QueryDelegationTotalRewardsRequestSDKType {
     /** delegator_address defines the delegator address to query for. */
     delegator_address: string;
 }
@@ -103,10 +192,28 @@ export interface QueryDelegationTotalRewardsResponse {
     total: DecCoin[];
 }
 /**
+ * QueryDelegationTotalRewardsResponse is the response type for the
+ * Query/DelegationTotalRewards RPC method.
+ */
+export interface QueryDelegationTotalRewardsResponseSDKType {
+    /** rewards defines all the rewards accrued by a delegator. */
+    rewards: DelegationDelegatorRewardSDKType[];
+    /** total defines the sum of all the rewards. */
+    total: DecCoinSDKType[];
+}
+/**
  * QueryDelegatorValidatorsRequest is the request type for the
  * Query/DelegatorValidators RPC method.
  */
 export interface QueryDelegatorValidatorsRequest {
+    /** delegator_address defines the delegator address to query for. */
+    delegatorAddress: string;
+}
+/**
+ * QueryDelegatorValidatorsRequest is the request type for the
+ * Query/DelegatorValidators RPC method.
+ */
+export interface QueryDelegatorValidatorsRequestSDKType {
     /** delegator_address defines the delegator address to query for. */
     delegator_address: string;
 }
@@ -119,10 +226,26 @@ export interface QueryDelegatorValidatorsResponse {
     validators: string[];
 }
 /**
+ * QueryDelegatorValidatorsResponse is the response type for the
+ * Query/DelegatorValidators RPC method.
+ */
+export interface QueryDelegatorValidatorsResponseSDKType {
+    /** validators defines the validators a delegator is delegating for. */
+    validators: string[];
+}
+/**
  * QueryDelegatorWithdrawAddressRequest is the request type for the
  * Query/DelegatorWithdrawAddress RPC method.
  */
 export interface QueryDelegatorWithdrawAddressRequest {
+    /** delegator_address defines the delegator address to query for. */
+    delegatorAddress: string;
+}
+/**
+ * QueryDelegatorWithdrawAddressRequest is the request type for the
+ * Query/DelegatorWithdrawAddress RPC method.
+ */
+export interface QueryDelegatorWithdrawAddressRequestSDKType {
     /** delegator_address defines the delegator address to query for. */
     delegator_address: string;
 }
@@ -131,6 +254,14 @@ export interface QueryDelegatorWithdrawAddressRequest {
  * Query/DelegatorWithdrawAddress RPC method.
  */
 export interface QueryDelegatorWithdrawAddressResponse {
+    /** withdraw_address defines the delegator address to query for. */
+    withdrawAddress: string;
+}
+/**
+ * QueryDelegatorWithdrawAddressResponse is the response type for the
+ * Query/DelegatorWithdrawAddress RPC method.
+ */
+export interface QueryDelegatorWithdrawAddressResponseSDKType {
     /** withdraw_address defines the delegator address to query for. */
     withdraw_address: string;
 }
@@ -141,12 +272,26 @@ export interface QueryDelegatorWithdrawAddressResponse {
 export interface QueryCommunityPoolRequest {
 }
 /**
+ * QueryCommunityPoolRequest is the request type for the Query/CommunityPool RPC
+ * method.
+ */
+export interface QueryCommunityPoolRequestSDKType {
+}
+/**
  * QueryCommunityPoolResponse is the response type for the Query/CommunityPool
  * RPC method.
  */
 export interface QueryCommunityPoolResponse {
     /** pool defines community pool's coins. */
     pool: DecCoin[];
+}
+/**
+ * QueryCommunityPoolResponse is the response type for the Query/CommunityPool
+ * RPC method.
+ */
+export interface QueryCommunityPoolResponseSDKType {
+    /** pool defines community pool's coins. */
+    pool: DecCoinSDKType[];
 }
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
@@ -157,7 +302,7 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
@@ -171,7 +316,7 @@ export declare const QueryValidatorOutstandingRewardsRequest: {
 };
 export declare const QueryValidatorOutstandingRewardsResponse: {
     encode(message: QueryValidatorOutstandingRewardsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorOutstandingRewardsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorOutstandingRewardsResponseSDKType;
     fromJSON(object: any): QueryValidatorOutstandingRewardsResponse;
     toJSON(message: QueryValidatorOutstandingRewardsResponse): unknown;
     fromPartial(object: DeepPartial<QueryValidatorOutstandingRewardsResponse>): QueryValidatorOutstandingRewardsResponse;
@@ -185,7 +330,7 @@ export declare const QueryValidatorCommissionRequest: {
 };
 export declare const QueryValidatorCommissionResponse: {
     encode(message: QueryValidatorCommissionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorCommissionResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorCommissionResponseSDKType;
     fromJSON(object: any): QueryValidatorCommissionResponse;
     toJSON(message: QueryValidatorCommissionResponse): unknown;
     fromPartial(object: DeepPartial<QueryValidatorCommissionResponse>): QueryValidatorCommissionResponse;
@@ -199,7 +344,7 @@ export declare const QueryValidatorSlashesRequest: {
 };
 export declare const QueryValidatorSlashesResponse: {
     encode(message: QueryValidatorSlashesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorSlashesResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorSlashesResponseSDKType;
     fromJSON(object: any): QueryValidatorSlashesResponse;
     toJSON(message: QueryValidatorSlashesResponse): unknown;
     fromPartial(object: DeepPartial<QueryValidatorSlashesResponse>): QueryValidatorSlashesResponse;
@@ -213,7 +358,7 @@ export declare const QueryDelegationRewardsRequest: {
 };
 export declare const QueryDelegationRewardsResponse: {
     encode(message: QueryDelegationRewardsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationRewardsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationRewardsResponseSDKType;
     fromJSON(object: any): QueryDelegationRewardsResponse;
     toJSON(message: QueryDelegationRewardsResponse): unknown;
     fromPartial(object: DeepPartial<QueryDelegationRewardsResponse>): QueryDelegationRewardsResponse;
@@ -227,7 +372,7 @@ export declare const QueryDelegationTotalRewardsRequest: {
 };
 export declare const QueryDelegationTotalRewardsResponse: {
     encode(message: QueryDelegationTotalRewardsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationTotalRewardsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationTotalRewardsResponseSDKType;
     fromJSON(object: any): QueryDelegationTotalRewardsResponse;
     toJSON(message: QueryDelegationTotalRewardsResponse): unknown;
     fromPartial(object: DeepPartial<QueryDelegationTotalRewardsResponse>): QueryDelegationTotalRewardsResponse;
@@ -241,7 +386,7 @@ export declare const QueryDelegatorValidatorsRequest: {
 };
 export declare const QueryDelegatorValidatorsResponse: {
     encode(message: QueryDelegatorValidatorsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsResponseSDKType;
     fromJSON(object: any): QueryDelegatorValidatorsResponse;
     toJSON(message: QueryDelegatorValidatorsResponse): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse;
@@ -255,7 +400,7 @@ export declare const QueryDelegatorWithdrawAddressRequest: {
 };
 export declare const QueryDelegatorWithdrawAddressResponse: {
     encode(message: QueryDelegatorWithdrawAddressResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorWithdrawAddressResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorWithdrawAddressResponseSDKType;
     fromJSON(object: any): QueryDelegatorWithdrawAddressResponse;
     toJSON(message: QueryDelegatorWithdrawAddressResponse): unknown;
     fromPartial(object: DeepPartial<QueryDelegatorWithdrawAddressResponse>): QueryDelegatorWithdrawAddressResponse;
@@ -269,7 +414,7 @@ export declare const QueryCommunityPoolRequest: {
 };
 export declare const QueryCommunityPoolResponse: {
     encode(message: QueryCommunityPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCommunityPoolResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCommunityPoolResponseSDKType;
     fromJSON(object: any): QueryCommunityPoolResponse;
     toJSON(message: QueryCommunityPoolResponse): unknown;
     fromPartial(object: DeepPartial<QueryCommunityPoolResponse>): QueryCommunityPoolResponse;

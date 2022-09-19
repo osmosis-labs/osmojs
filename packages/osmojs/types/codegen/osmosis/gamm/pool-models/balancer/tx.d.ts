@@ -1,4 +1,4 @@
-import { PoolParams, PoolAsset } from "./balancerPool";
+import { PoolParams, PoolParamsSDKType, PoolAsset, PoolAssetSDKType } from "./balancerPool";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 /** ===================== MsgCreatePool */
@@ -6,9 +6,19 @@ export interface MsgCreateBalancerPool {
     sender: string;
     poolParams: PoolParams;
     poolAssets: PoolAsset[];
+    futurePoolGovernor: string;
+}
+/** ===================== MsgCreatePool */
+export interface MsgCreateBalancerPoolSDKType {
+    sender: string;
+    poolParams: PoolParamsSDKType;
+    poolAssets: PoolAssetSDKType[];
     future_pool_governor: string;
 }
 export interface MsgCreateBalancerPoolResponse {
+    poolId: Long;
+}
+export interface MsgCreateBalancerPoolResponseSDKType {
     pool_id: Long;
 }
 export declare const MsgCreateBalancerPool: {
@@ -20,7 +30,7 @@ export declare const MsgCreateBalancerPool: {
 };
 export declare const MsgCreateBalancerPoolResponse: {
     encode(message: MsgCreateBalancerPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPoolResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPoolResponseSDKType;
     fromJSON(object: any): MsgCreateBalancerPoolResponse;
     toJSON(message: MsgCreateBalancerPoolResponse): unknown;
     fromPartial(object: DeepPartial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse;

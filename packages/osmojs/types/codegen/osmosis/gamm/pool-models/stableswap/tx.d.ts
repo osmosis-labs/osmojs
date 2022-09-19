@@ -1,17 +1,35 @@
-import { PoolParams } from "./stableswap_pool";
-import { Coin } from "../../../../cosmos/base/v1beta1/coin";
+import { PoolParams, PoolParamsSDKType } from "./stableswap_pool";
+import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface MsgCreateStableswapPool {
     sender: string;
     poolParams: PoolParams;
-    initial_pool_liquidity: Coin[];
+    initialPoolLiquidity: Coin[];
+    futurePoolGovernor: string;
+}
+export interface MsgCreateStableswapPoolSDKType {
+    sender: string;
+    poolParams: PoolParamsSDKType;
+    initial_pool_liquidity: CoinSDKType[];
     future_pool_governor: string;
 }
 export interface MsgCreateStableswapPoolResponse {
+    poolId: Long;
+}
+export interface MsgCreateStableswapPoolResponseSDKType {
     pool_id: Long;
 }
 export interface MsgStableSwapAdjustScalingFactors {
+    /**
+     * Sender must be the pool's scaling_factor_governor in order for the tx to
+     * succeed
+     */
+    sender: string;
+    poolId: Long;
+    scalingFactors: Long[];
+}
+export interface MsgStableSwapAdjustScalingFactorsSDKType {
     /**
      * Sender must be the pool's scaling_factor_governor in order for the tx to
      * succeed
@@ -22,6 +40,8 @@ export interface MsgStableSwapAdjustScalingFactors {
 }
 export interface MsgStableSwapAdjustScalingFactorsResponse {
 }
+export interface MsgStableSwapAdjustScalingFactorsResponseSDKType {
+}
 export declare const MsgCreateStableswapPool: {
     encode(message: MsgCreateStableswapPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPool;
@@ -31,7 +51,7 @@ export declare const MsgCreateStableswapPool: {
 };
 export declare const MsgCreateStableswapPoolResponse: {
     encode(message: MsgCreateStableswapPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPoolResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPoolResponseSDKType;
     fromJSON(object: any): MsgCreateStableswapPoolResponse;
     toJSON(message: MsgCreateStableswapPoolResponse): unknown;
     fromPartial(object: DeepPartial<MsgCreateStableswapPoolResponse>): MsgCreateStableswapPoolResponse;
@@ -45,7 +65,7 @@ export declare const MsgStableSwapAdjustScalingFactors: {
 };
 export declare const MsgStableSwapAdjustScalingFactorsResponse: {
     encode(_: MsgStableSwapAdjustScalingFactorsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactorsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactorsResponseSDKType;
     fromJSON(_: any): MsgStableSwapAdjustScalingFactorsResponse;
     toJSON(_: MsgStableSwapAdjustScalingFactorsResponse): unknown;
     fromPartial(_: DeepPartial<MsgStableSwapAdjustScalingFactorsResponse>): MsgStableSwapAdjustScalingFactorsResponse;

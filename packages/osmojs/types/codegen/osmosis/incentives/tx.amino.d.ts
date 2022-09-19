@@ -42,12 +42,12 @@ export interface AminoMsgAddToGauge extends AminoMsg {
 export declare const AminoConverter: {
     "/osmosis.incentives.MsgCreateGauge": {
         aminoType: string;
-        toAmino: ({ is_perpetual, owner, distribute_to, coins, start_time, num_epochs_paid_over }: MsgCreateGauge) => AminoMsgCreateGauge["value"];
+        toAmino: ({ isPerpetual, owner, distributeTo, coins, startTime, numEpochsPaidOver }: MsgCreateGauge) => AminoMsgCreateGauge["value"];
         fromAmino: ({ is_perpetual, owner, distribute_to, coins, start_time, num_epochs_paid_over }: AminoMsgCreateGauge["value"]) => MsgCreateGauge;
     };
     "/osmosis.incentives.MsgAddToGauge": {
         aminoType: string;
-        toAmino: ({ owner, gauge_id, rewards }: MsgAddToGauge) => AminoMsgAddToGauge["value"];
+        toAmino: ({ owner, gaugeId, rewards }: MsgAddToGauge) => AminoMsgAddToGauge["value"];
         fromAmino: ({ owner, gauge_id, rewards }: AminoMsgAddToGauge["value"]) => MsgAddToGauge;
     };
 };

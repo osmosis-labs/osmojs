@@ -26,6 +26,7 @@ export declare const createLCDClient: ({ restEndpoint }: {
             v1beta1: import("../cosmos/feegrant/v1beta1/query.lcd").LCDQueryClient;
         };
         gov: {
+            v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
             v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
         };
         mint: {

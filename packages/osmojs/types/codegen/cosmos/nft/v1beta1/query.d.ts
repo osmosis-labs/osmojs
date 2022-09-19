@@ -1,9 +1,14 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { NFT, Class } from "./nft";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { NFT, NFTSDKType, Class, ClassSDKType } from "./nft";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 /** QueryBalanceRequest is the request type for the Query/Balance RPC method */
 export interface QueryBalanceRequest {
+    classId: string;
+    owner: string;
+}
+/** QueryBalanceRequest is the request type for the Query/Balance RPC method */
+export interface QueryBalanceRequestSDKType {
     class_id: string;
     owner: string;
 }
@@ -11,8 +16,17 @@ export interface QueryBalanceRequest {
 export interface QueryBalanceResponse {
     amount: Long;
 }
+/** QueryBalanceResponse is the response type for the Query/Balance RPC method */
+export interface QueryBalanceResponseSDKType {
+    amount: Long;
+}
 /** QueryOwnerRequest is the request type for the Query/Owner RPC method */
 export interface QueryOwnerRequest {
+    classId: string;
+    id: string;
+}
+/** QueryOwnerRequest is the request type for the Query/Owner RPC method */
+export interface QueryOwnerRequestSDKType {
     class_id: string;
     id: string;
 }
@@ -20,27 +34,55 @@ export interface QueryOwnerRequest {
 export interface QueryOwnerResponse {
     owner: string;
 }
+/** QueryOwnerResponse is the response type for the Query/Owner RPC method */
+export interface QueryOwnerResponseSDKType {
+    owner: string;
+}
 /** QuerySupplyRequest is the request type for the Query/Supply RPC method */
 export interface QuerySupplyRequest {
+    classId: string;
+}
+/** QuerySupplyRequest is the request type for the Query/Supply RPC method */
+export interface QuerySupplyRequestSDKType {
     class_id: string;
 }
 /** QuerySupplyResponse is the response type for the Query/Supply RPC method */
 export interface QuerySupplyResponse {
     amount: Long;
 }
+/** QuerySupplyResponse is the response type for the Query/Supply RPC method */
+export interface QuerySupplyResponseSDKType {
+    amount: Long;
+}
 /** QueryNFTstRequest is the request type for the Query/NFTs RPC method */
 export interface QueryNFTsRequest {
-    class_id?: string;
+    classId?: string;
     owner?: string;
     pagination?: PageRequest;
+}
+/** QueryNFTstRequest is the request type for the Query/NFTs RPC method */
+export interface QueryNFTsRequestSDKType {
+    class_id?: string;
+    owner?: string;
+    pagination?: PageRequestSDKType;
 }
 /** QueryNFTsResponse is the response type for the Query/NFTs RPC methods */
 export interface QueryNFTsResponse {
     nfts: NFT[];
     pagination?: PageResponse;
 }
+/** QueryNFTsResponse is the response type for the Query/NFTs RPC methods */
+export interface QueryNFTsResponseSDKType {
+    nfts: NFTSDKType[];
+    pagination?: PageResponseSDKType;
+}
 /** QueryNFTRequest is the request type for the Query/NFT RPC method */
 export interface QueryNFTRequest {
+    classId: string;
+    id: string;
+}
+/** QueryNFTRequest is the request type for the Query/NFT RPC method */
+export interface QueryNFTRequestSDKType {
     class_id: string;
     id: string;
 }
@@ -48,23 +90,45 @@ export interface QueryNFTRequest {
 export interface QueryNFTResponse {
     nft: NFT;
 }
+/** QueryNFTResponse is the response type for the Query/NFT RPC method */
+export interface QueryNFTResponseSDKType {
+    nft: NFTSDKType;
+}
 /** QueryClassRequest is the request type for the Query/Class RPC method */
 export interface QueryClassRequest {
+    classId: string;
+}
+/** QueryClassRequest is the request type for the Query/Class RPC method */
+export interface QueryClassRequestSDKType {
     class_id: string;
 }
 /** QueryClassResponse is the response type for the Query/Class RPC method */
 export interface QueryClassResponse {
     class: Class;
 }
+/** QueryClassResponse is the response type for the Query/Class RPC method */
+export interface QueryClassResponseSDKType {
+    class: ClassSDKType;
+}
 /** QueryClassesRequest is the request type for the Query/Classes RPC method */
 export interface QueryClassesRequest {
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequest;
 }
+/** QueryClassesRequest is the request type for the Query/Classes RPC method */
+export interface QueryClassesRequestSDKType {
+    /** pagination defines an optional pagination for the request. */
+    pagination?: PageRequestSDKType;
+}
 /** QueryClassesResponse is the response type for the Query/Classes RPC method */
 export interface QueryClassesResponse {
     classes: Class[];
     pagination?: PageResponse;
+}
+/** QueryClassesResponse is the response type for the Query/Classes RPC method */
+export interface QueryClassesResponseSDKType {
+    classes: ClassSDKType[];
+    pagination?: PageResponseSDKType;
 }
 export declare const QueryBalanceRequest: {
     encode(message: QueryBalanceRequest, writer?: _m0.Writer): _m0.Writer;
@@ -75,7 +139,7 @@ export declare const QueryBalanceRequest: {
 };
 export declare const QueryBalanceResponse: {
     encode(message: QueryBalanceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceResponseSDKType;
     fromJSON(object: any): QueryBalanceResponse;
     toJSON(message: QueryBalanceResponse): unknown;
     fromPartial(object: DeepPartial<QueryBalanceResponse>): QueryBalanceResponse;
@@ -89,7 +153,7 @@ export declare const QueryOwnerRequest: {
 };
 export declare const QueryOwnerResponse: {
     encode(message: QueryOwnerResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryOwnerResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryOwnerResponseSDKType;
     fromJSON(object: any): QueryOwnerResponse;
     toJSON(message: QueryOwnerResponse): unknown;
     fromPartial(object: DeepPartial<QueryOwnerResponse>): QueryOwnerResponse;
@@ -103,7 +167,7 @@ export declare const QuerySupplyRequest: {
 };
 export declare const QuerySupplyResponse: {
     encode(message: QuerySupplyResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyResponseSDKType;
     fromJSON(object: any): QuerySupplyResponse;
     toJSON(message: QuerySupplyResponse): unknown;
     fromPartial(object: DeepPartial<QuerySupplyResponse>): QuerySupplyResponse;
@@ -117,7 +181,7 @@ export declare const QueryNFTsRequest: {
 };
 export declare const QueryNFTsResponse: {
     encode(message: QueryNFTsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNFTsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNFTsResponseSDKType;
     fromJSON(object: any): QueryNFTsResponse;
     toJSON(message: QueryNFTsResponse): unknown;
     fromPartial(object: DeepPartial<QueryNFTsResponse>): QueryNFTsResponse;
@@ -131,7 +195,7 @@ export declare const QueryNFTRequest: {
 };
 export declare const QueryNFTResponse: {
     encode(message: QueryNFTResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNFTResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNFTResponseSDKType;
     fromJSON(object: any): QueryNFTResponse;
     toJSON(message: QueryNFTResponse): unknown;
     fromPartial(object: DeepPartial<QueryNFTResponse>): QueryNFTResponse;
@@ -145,7 +209,7 @@ export declare const QueryClassRequest: {
 };
 export declare const QueryClassResponse: {
     encode(message: QueryClassResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClassResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClassResponseSDKType;
     fromJSON(object: any): QueryClassResponse;
     toJSON(message: QueryClassResponse): unknown;
     fromPartial(object: DeepPartial<QueryClassResponse>): QueryClassResponse;
@@ -159,7 +223,7 @@ export declare const QueryClassesRequest: {
 };
 export declare const QueryClassesResponse: {
     encode(message: QueryClassesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClassesResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClassesResponseSDKType;
     fromJSON(object: any): QueryClassesResponse;
     toJSON(message: QueryClassesResponse): unknown;
     fromPartial(object: DeepPartial<QueryClassesResponse>): QueryClassesResponse;

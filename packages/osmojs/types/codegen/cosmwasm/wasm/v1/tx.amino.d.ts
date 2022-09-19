@@ -64,12 +64,12 @@ export interface AminoMsgClearAdmin extends AminoMsg {
 export declare const AminoConverter: {
     "/cosmwasm.wasm.v1.MsgStoreCode": {
         aminoType: string;
-        toAmino: ({ sender, wasm_byte_code, instantiate_permission }: MsgStoreCode) => AminoMsgStoreCode["value"];
+        toAmino: ({ sender, wasmByteCode, instantiatePermission }: MsgStoreCode) => AminoMsgStoreCode["value"];
         fromAmino: ({ sender, wasm_byte_code, instantiate_permission }: AminoMsgStoreCode["value"]) => MsgStoreCode;
     };
     "/cosmwasm.wasm.v1.MsgInstantiateContract": {
         aminoType: string;
-        toAmino: ({ sender, admin, code_id, label, msg, funds }: MsgInstantiateContract) => AminoMsgInstantiateContract["value"];
+        toAmino: ({ sender, admin, codeId, label, msg, funds }: MsgInstantiateContract) => AminoMsgInstantiateContract["value"];
         fromAmino: ({ sender, admin, code_id, label, msg, funds }: AminoMsgInstantiateContract["value"]) => MsgInstantiateContract;
     };
     "/cosmwasm.wasm.v1.MsgExecuteContract": {
@@ -79,12 +79,12 @@ export declare const AminoConverter: {
     };
     "/cosmwasm.wasm.v1.MsgMigrateContract": {
         aminoType: string;
-        toAmino: ({ sender, contract, code_id, msg }: MsgMigrateContract) => AminoMsgMigrateContract["value"];
+        toAmino: ({ sender, contract, codeId, msg }: MsgMigrateContract) => AminoMsgMigrateContract["value"];
         fromAmino: ({ sender, contract, code_id, msg }: AminoMsgMigrateContract["value"]) => MsgMigrateContract;
     };
     "/cosmwasm.wasm.v1.MsgUpdateAdmin": {
         aminoType: string;
-        toAmino: ({ sender, new_admin, contract }: MsgUpdateAdmin) => AminoMsgUpdateAdmin["value"];
+        toAmino: ({ sender, newAdmin, contract }: MsgUpdateAdmin) => AminoMsgUpdateAdmin["value"];
         fromAmino: ({ sender, new_admin, contract }: AminoMsgUpdateAdmin["value"]) => MsgUpdateAdmin;
     };
     "/cosmwasm.wasm.v1.MsgClearAdmin": {

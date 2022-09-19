@@ -45,7 +45,7 @@ export interface AminoMsgCreateBalancerPool extends AminoMsg {
 export declare const AminoConverter: {
     "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPool": {
         aminoType: string;
-        toAmino: ({ sender, poolParams, poolAssets, future_pool_governor }: MsgCreateBalancerPool) => AminoMsgCreateBalancerPool["value"];
+        toAmino: ({ sender, poolParams, poolAssets, futurePoolGovernor }: MsgCreateBalancerPool) => AminoMsgCreateBalancerPool["value"];
         fromAmino: ({ sender, poolParams, poolAssets, future_pool_governor }: AminoMsgCreateBalancerPool["value"]) => MsgCreateBalancerPool;
     };
 };

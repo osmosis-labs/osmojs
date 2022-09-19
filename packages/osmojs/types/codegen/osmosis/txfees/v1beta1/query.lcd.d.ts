@@ -1,11 +1,11 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryFeeTokensRequest, QueryFeeTokensResponse, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponse, QueryDenomPoolIdRequest, QueryDenomPoolIdResponse, QueryBaseDenomRequest, QueryBaseDenomResponse } from "./query";
+import { QueryFeeTokensRequest, QueryFeeTokensResponseSDKType, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponseSDKType, QueryDenomPoolIdRequest, QueryDenomPoolIdResponseSDKType, QueryBaseDenomRequest, QueryBaseDenomResponseSDKType } from "./query";
 export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
         restEndpoint: string;
     });
-    feeTokens(_params?: QueryFeeTokensRequest): Promise<QueryFeeTokensResponse>;
-    denomSpotPrice(params: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponse>;
-    denomPoolId(params: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponse>;
-    baseDenom(_params?: QueryBaseDenomRequest): Promise<QueryBaseDenomResponse>;
+    feeTokens(_params?: QueryFeeTokensRequest): Promise<QueryFeeTokensResponseSDKType>;
+    denomSpotPrice(params: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponseSDKType>;
+    denomPoolId(params: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponseSDKType>;
+    baseDenom(_params?: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType>;
 }

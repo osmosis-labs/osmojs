@@ -30,6 +30,7 @@ export declare const createRPCQueryClient: ({ rpc }: {
             v1beta1: import("../cosmos/feegrant/v1beta1/query.rpc.query").QueryClientImpl;
         };
         gov: {
+            v1: import("../cosmos/gov/v1/query.rpc.query").QueryClientImpl;
             v1beta1: import("../cosmos/gov/v1beta1/query.rpc.query").QueryClientImpl;
         };
         mint: {

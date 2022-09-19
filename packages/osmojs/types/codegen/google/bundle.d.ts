@@ -1,19 +1,19 @@
-import * as _93 from "./api/http";
-import * as _94 from "./protobuf/any";
-import * as _95 from "./protobuf/descriptor";
-import * as _96 from "./protobuf/duration";
-import * as _97 from "./protobuf/empty";
-import * as _98 from "./protobuf/timestamp";
-import * as _99 from "./protobuf/struct";
-import * as _100 from "./protobuf/wrappers";
-import * as _101 from "./protobuf/field_mask";
+import * as _97 from "./api/http";
+import * as _98 from "./protobuf/any";
+import * as _99 from "./protobuf/descriptor";
+import * as _100 from "./protobuf/duration";
+import * as _101 from "./protobuf/empty";
+import * as _102 from "./protobuf/timestamp";
+import * as _103 from "./protobuf/struct";
+import * as _104 from "./protobuf/wrappers";
+import * as _105 from "./protobuf/field_mask";
 export declare namespace google {
     const api: {
         Http: {
-            encode(message: _93.Http, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.Http;
-            fromJSON(object: any): _93.Http;
-            toJSON(message: _93.Http): unknown;
+            encode(message: _97.Http, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _97.Http;
+            fromJSON(object: any): _97.Http;
+            toJSON(message: _97.Http): unknown;
             fromPartial(object: {
                 rules?: {
                     selector?: string;
@@ -27,17 +27,17 @@ export declare namespace google {
                         path?: string;
                     };
                     body?: string;
-                    response_body?: string;
-                    additional_bindings?: any[];
+                    responseBody?: string;
+                    additionalBindings?: any[];
                 }[];
-                fully_decode_reserved_expansion?: boolean;
-            }): _93.Http;
+                fullyDecodeReservedExpansion?: boolean;
+            }): _97.Http;
         };
         HttpRule: {
-            encode(message: _93.HttpRule, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.HttpRule;
-            fromJSON(object: any): _93.HttpRule;
-            toJSON(message: _93.HttpRule): unknown;
+            encode(message: _97.HttpRule, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _97.HttpRule;
+            fromJSON(object: any): _97.HttpRule;
+            toJSON(message: _97.HttpRule): unknown;
             fromPartial(object: {
                 selector?: string;
                 get?: string;
@@ -50,1195 +50,1202 @@ export declare namespace google {
                     path?: string;
                 };
                 body?: string;
-                response_body?: string;
-                additional_bindings?: any[];
-            }): _93.HttpRule;
+                responseBody?: string;
+                additionalBindings?: any[];
+            }): _97.HttpRule;
         };
         CustomHttpPattern: {
-            encode(message: _93.CustomHttpPattern, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.CustomHttpPattern;
-            fromJSON(object: any): _93.CustomHttpPattern;
-            toJSON(message: _93.CustomHttpPattern): unknown;
+            encode(message: _97.CustomHttpPattern, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _97.CustomHttpPattern;
+            fromJSON(object: any): _97.CustomHttpPattern;
+            toJSON(message: _97.CustomHttpPattern): unknown;
             fromPartial(object: {
                 kind?: string;
                 path?: string;
-            }): _93.CustomHttpPattern;
+            }): _97.CustomHttpPattern;
         };
     };
     const protobuf: {
         FieldMask: {
-            encode(message: _101.FieldMask, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _101.FieldMask;
-            fromJSON(object: any): _101.FieldMask;
-            toJSON(message: _101.FieldMask): unknown;
+            encode(message: _105.FieldMask, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _105.FieldMask;
+            fromJSON(object: any): _105.FieldMask;
+            toJSON(message: _105.FieldMask): unknown;
             fromPartial(object: {
                 paths?: string[];
-            }): _101.FieldMask;
+            }): _105.FieldMask;
         };
         DoubleValue: {
-            encode(message: _100.DoubleValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.DoubleValue;
-            fromJSON(object: any): _100.DoubleValue;
-            toJSON(message: _100.DoubleValue): unknown;
+            encode(message: _104.DoubleValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.DoubleValue;
+            fromJSON(object: any): _104.DoubleValue;
+            toJSON(message: _104.DoubleValue): unknown;
             fromPartial(object: {
                 value?: number;
-            }): _100.DoubleValue;
+            }): _104.DoubleValue;
         };
         FloatValue: {
-            encode(message: _100.FloatValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.FloatValue;
-            fromJSON(object: any): _100.FloatValue;
-            toJSON(message: _100.FloatValue): unknown;
+            encode(message: _104.FloatValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.FloatValue;
+            fromJSON(object: any): _104.FloatValue;
+            toJSON(message: _104.FloatValue): unknown;
             fromPartial(object: {
                 value?: number;
-            }): _100.FloatValue;
+            }): _104.FloatValue;
         };
         Int64Value: {
-            encode(message: _100.Int64Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.Int64Value;
-            fromJSON(object: any): _100.Int64Value;
-            toJSON(message: _100.Int64Value): unknown;
+            encode(message: _104.Int64Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.Int64Value;
+            fromJSON(object: any): _104.Int64Value;
+            toJSON(message: _104.Int64Value): unknown;
             fromPartial(object: {
                 value?: any;
-            }): _100.Int64Value;
+            }): _104.Int64Value;
         };
         UInt64Value: {
-            encode(message: _100.UInt64Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.UInt64Value;
-            fromJSON(object: any): _100.UInt64Value;
-            toJSON(message: _100.UInt64Value): unknown;
+            encode(message: _104.UInt64Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.UInt64Value;
+            fromJSON(object: any): _104.UInt64Value;
+            toJSON(message: _104.UInt64Value): unknown;
             fromPartial(object: {
                 value?: any;
-            }): _100.UInt64Value;
+            }): _104.UInt64Value;
         };
         Int32Value: {
-            encode(message: _100.Int32Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.Int32Value;
-            fromJSON(object: any): _100.Int32Value;
-            toJSON(message: _100.Int32Value): unknown;
+            encode(message: _104.Int32Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.Int32Value;
+            fromJSON(object: any): _104.Int32Value;
+            toJSON(message: _104.Int32Value): unknown;
             fromPartial(object: {
                 value?: number;
-            }): _100.Int32Value;
+            }): _104.Int32Value;
         };
         UInt32Value: {
-            encode(message: _100.UInt32Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.UInt32Value;
-            fromJSON(object: any): _100.UInt32Value;
-            toJSON(message: _100.UInt32Value): unknown;
+            encode(message: _104.UInt32Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.UInt32Value;
+            fromJSON(object: any): _104.UInt32Value;
+            toJSON(message: _104.UInt32Value): unknown;
             fromPartial(object: {
                 value?: number;
-            }): _100.UInt32Value;
+            }): _104.UInt32Value;
         };
         BoolValue: {
-            encode(message: _100.BoolValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.BoolValue;
-            fromJSON(object: any): _100.BoolValue;
-            toJSON(message: _100.BoolValue): unknown;
+            encode(message: _104.BoolValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.BoolValue;
+            fromJSON(object: any): _104.BoolValue;
+            toJSON(message: _104.BoolValue): unknown;
             fromPartial(object: {
                 value?: boolean;
-            }): _100.BoolValue;
+            }): _104.BoolValue;
         };
         StringValue: {
-            encode(message: _100.StringValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.StringValue;
-            fromJSON(object: any): _100.StringValue;
-            toJSON(message: _100.StringValue): unknown;
+            encode(message: _104.StringValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.StringValue;
+            fromJSON(object: any): _104.StringValue;
+            toJSON(message: _104.StringValue): unknown;
             fromPartial(object: {
                 value?: string;
-            }): _100.StringValue;
+            }): _104.StringValue;
         };
         BytesValue: {
-            encode(message: _100.BytesValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.BytesValue;
-            fromJSON(object: any): _100.BytesValue;
-            toJSON(message: _100.BytesValue): unknown;
+            encode(message: _104.BytesValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.BytesValue;
+            fromJSON(object: any): _104.BytesValue;
+            toJSON(message: _104.BytesValue): unknown;
             fromPartial(object: {
                 value?: Uint8Array;
-            }): _100.BytesValue;
+            }): _104.BytesValue;
         };
-        nullValueFromJSON(object: any): _99.NullValue;
-        nullValueToJSON(object: _99.NullValue): string;
-        NullValue: typeof _99.NullValue;
+        nullValueFromJSON(object: any): _103.NullValue;
+        nullValueToJSON(object: _103.NullValue): string;
+        NullValue: typeof _103.NullValue;
+        NullValueSDKType: typeof _103.NullValueSDKType;
         Struct_FieldsEntry: {
-            encode(message: _99.Struct_FieldsEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.Struct_FieldsEntry;
-            fromJSON(object: any): _99.Struct_FieldsEntry;
-            toJSON(message: _99.Struct_FieldsEntry): unknown;
+            encode(message: _103.Struct_FieldsEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _103.Struct_FieldsEntry;
+            fromJSON(object: any): _103.Struct_FieldsEntry;
+            toJSON(message: _103.Struct_FieldsEntry): unknown;
             fromPartial(object: {
                 key?: string;
                 value?: {
-                    null_value?: _99.NullValue;
-                    number_value?: number;
-                    string_value?: string;
-                    bool_value?: boolean;
-                    struct_value?: {
+                    nullValue?: _103.NullValue;
+                    numberValue?: number;
+                    stringValue?: string;
+                    boolValue?: boolean;
+                    structValue?: {
                         fields?: {
                             [x: string]: any;
                         };
                     };
-                    list_value?: {
+                    listValue?: {
                         values?: any[];
                     };
                 };
-            }): _99.Struct_FieldsEntry;
+            }): _103.Struct_FieldsEntry;
         };
         Struct: {
-            encode(message: _99.Struct, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.Struct;
-            fromJSON(object: any): _99.Struct;
-            toJSON(message: _99.Struct): unknown;
+            encode(message: _103.Struct, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _103.Struct;
+            fromJSON(object: any): _103.Struct;
+            toJSON(message: _103.Struct): unknown;
             fromPartial(object: {
                 fields?: {
                     [x: string]: any;
                 };
-            }): _99.Struct;
+            }): _103.Struct;
         };
         Value: {
-            encode(message: _99.Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.Value;
-            fromJSON(object: any): _99.Value;
-            toJSON(message: _99.Value): unknown;
+            encode(message: _103.Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _103.Value;
+            fromJSON(object: any): _103.Value;
+            toJSON(message: _103.Value): unknown;
             fromPartial(object: {
-                null_value?: _99.NullValue;
-                number_value?: number;
-                string_value?: string;
-                bool_value?: boolean;
-                struct_value?: {
+                nullValue?: _103.NullValue;
+                numberValue?: number;
+                stringValue?: string;
+                boolValue?: boolean;
+                structValue?: {
                     fields?: {
                         [x: string]: any;
                     };
                 };
-                list_value?: {
+                listValue?: {
                     values?: any[];
                 };
-            }): _99.Value;
+            }): _103.Value;
         };
         ListValue: {
-            encode(message: _99.ListValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.ListValue;
-            fromJSON(object: any): _99.ListValue;
-            toJSON(message: _99.ListValue): unknown;
+            encode(message: _103.ListValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _103.ListValue;
+            fromJSON(object: any): _103.ListValue;
+            toJSON(message: _103.ListValue): unknown;
             fromPartial(object: {
                 values?: any[];
-            }): _99.ListValue;
+            }): _103.ListValue;
         };
         Timestamp: {
-            encode(message: _98.Timestamp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.Timestamp;
-            fromJSON(object: any): _98.Timestamp;
-            toJSON(message: _98.Timestamp): unknown;
+            encode(message: _102.Timestamp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _102.Timestamp;
+            fromJSON(object: any): _102.Timestamp;
+            toJSON(message: _102.Timestamp): unknown;
             fromPartial(object: {
                 seconds?: any;
                 nanos?: number;
-            }): _98.Timestamp;
+            }): _102.Timestamp;
         };
         Empty: {
-            encode(_: _97.Empty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _97.Empty;
-            fromJSON(_: any): _97.Empty;
-            toJSON(_: _97.Empty): unknown;
-            fromPartial(_: {}): _97.Empty;
+            encode(_: _101.Empty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _101.Empty;
+            fromJSON(_: any): _101.Empty;
+            toJSON(_: _101.Empty): unknown;
+            fromPartial(_: {}): _101.Empty;
         };
         Duration: {
-            encode(message: _96.Duration, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.Duration;
-            fromJSON(object: any): _96.Duration;
-            toJSON(message: _96.Duration): unknown;
+            encode(message: _100.Duration, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.Duration;
+            fromJSON(object: any): _100.Duration;
+            toJSON(message: _100.Duration): unknown;
             fromPartial(object: {
                 seconds?: any;
                 nanos?: number;
-            }): _96.Duration;
+            }): _100.Duration;
         };
-        fieldDescriptorProto_TypeFromJSON(object: any): _95.FieldDescriptorProto_Type;
-        fieldDescriptorProto_TypeToJSON(object: _95.FieldDescriptorProto_Type): string;
-        fieldDescriptorProto_LabelFromJSON(object: any): _95.FieldDescriptorProto_Label;
-        fieldDescriptorProto_LabelToJSON(object: _95.FieldDescriptorProto_Label): string;
-        fileOptions_OptimizeModeFromJSON(object: any): _95.FileOptions_OptimizeMode;
-        fileOptions_OptimizeModeToJSON(object: _95.FileOptions_OptimizeMode): string;
-        fieldOptions_CTypeFromJSON(object: any): _95.FieldOptions_CType;
-        fieldOptions_CTypeToJSON(object: _95.FieldOptions_CType): string;
-        fieldOptions_JSTypeFromJSON(object: any): _95.FieldOptions_JSType;
-        fieldOptions_JSTypeToJSON(object: _95.FieldOptions_JSType): string;
-        methodOptions_IdempotencyLevelFromJSON(object: any): _95.MethodOptions_IdempotencyLevel;
-        methodOptions_IdempotencyLevelToJSON(object: _95.MethodOptions_IdempotencyLevel): string;
-        FieldDescriptorProto_Type: typeof _95.FieldDescriptorProto_Type;
-        FieldDescriptorProto_Label: typeof _95.FieldDescriptorProto_Label;
-        FileOptions_OptimizeMode: typeof _95.FileOptions_OptimizeMode;
-        FieldOptions_CType: typeof _95.FieldOptions_CType;
-        FieldOptions_JSType: typeof _95.FieldOptions_JSType;
-        MethodOptions_IdempotencyLevel: typeof _95.MethodOptions_IdempotencyLevel;
+        fieldDescriptorProto_TypeFromJSON(object: any): _99.FieldDescriptorProto_Type;
+        fieldDescriptorProto_TypeToJSON(object: _99.FieldDescriptorProto_Type): string;
+        fieldDescriptorProto_LabelFromJSON(object: any): _99.FieldDescriptorProto_Label;
+        fieldDescriptorProto_LabelToJSON(object: _99.FieldDescriptorProto_Label): string;
+        fileOptions_OptimizeModeFromJSON(object: any): _99.FileOptions_OptimizeMode;
+        fileOptions_OptimizeModeToJSON(object: _99.FileOptions_OptimizeMode): string;
+        fieldOptions_CTypeFromJSON(object: any): _99.FieldOptions_CType;
+        fieldOptions_CTypeToJSON(object: _99.FieldOptions_CType): string;
+        fieldOptions_JSTypeFromJSON(object: any): _99.FieldOptions_JSType;
+        fieldOptions_JSTypeToJSON(object: _99.FieldOptions_JSType): string;
+        methodOptions_IdempotencyLevelFromJSON(object: any): _99.MethodOptions_IdempotencyLevel;
+        methodOptions_IdempotencyLevelToJSON(object: _99.MethodOptions_IdempotencyLevel): string;
+        FieldDescriptorProto_Type: typeof _99.FieldDescriptorProto_Type;
+        FieldDescriptorProto_TypeSDKType: typeof _99.FieldDescriptorProto_TypeSDKType;
+        FieldDescriptorProto_Label: typeof _99.FieldDescriptorProto_Label;
+        FieldDescriptorProto_LabelSDKType: typeof _99.FieldDescriptorProto_LabelSDKType;
+        FileOptions_OptimizeMode: typeof _99.FileOptions_OptimizeMode;
+        FileOptions_OptimizeModeSDKType: typeof _99.FileOptions_OptimizeModeSDKType;
+        FieldOptions_CType: typeof _99.FieldOptions_CType;
+        FieldOptions_CTypeSDKType: typeof _99.FieldOptions_CTypeSDKType;
+        FieldOptions_JSType: typeof _99.FieldOptions_JSType;
+        FieldOptions_JSTypeSDKType: typeof _99.FieldOptions_JSTypeSDKType;
+        MethodOptions_IdempotencyLevel: typeof _99.MethodOptions_IdempotencyLevel;
+        MethodOptions_IdempotencyLevelSDKType: typeof _99.MethodOptions_IdempotencyLevelSDKType;
         FileDescriptorSet: {
-            encode(message: _95.FileDescriptorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FileDescriptorSet;
-            fromJSON(object: any): _95.FileDescriptorSet;
-            toJSON(message: _95.FileDescriptorSet): unknown;
+            encode(message: _99.FileDescriptorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.FileDescriptorSet;
+            fromJSON(object: any): _99.FileDescriptorSet;
+            toJSON(message: _99.FileDescriptorSet): unknown;
             fromPartial(object: {
                 file?: {
                     name?: string;
                     package?: string;
                     dependency?: string[];
-                    public_dependency?: number[];
-                    weak_dependency?: number[];
-                    message_type?: {
+                    publicDependency?: number[];
+                    weakDependency?: number[];
+                    messageType?: {
                         name?: string;
                         field?: {
                             name?: string;
                             number?: number;
-                            label?: _95.FieldDescriptorProto_Label;
-                            type?: _95.FieldDescriptorProto_Type;
-                            type_name?: string;
+                            label?: _99.FieldDescriptorProto_Label;
+                            type?: _99.FieldDescriptorProto_Type;
+                            typeName?: string;
                             extendee?: string;
-                            default_value?: string;
-                            oneof_index?: number;
-                            json_name?: string;
+                            defaultValue?: string;
+                            oneofIndex?: number;
+                            jsonName?: string;
                             options?: {
-                                ctype?: _95.FieldOptions_CType;
+                                ctype?: _99.FieldOptions_CType;
                                 packed?: boolean;
-                                jstype?: _95.FieldOptions_JSType;
+                                jstype?: _99.FieldOptions_JSType;
                                 lazy?: boolean;
                                 deprecated?: boolean;
                                 weak?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
                         extension?: {
                             name?: string;
                             number?: number;
-                            label?: _95.FieldDescriptorProto_Label;
-                            type?: _95.FieldDescriptorProto_Type;
-                            type_name?: string;
+                            label?: _99.FieldDescriptorProto_Label;
+                            type?: _99.FieldDescriptorProto_Type;
+                            typeName?: string;
                             extendee?: string;
-                            default_value?: string;
-                            oneof_index?: number;
-                            json_name?: string;
+                            defaultValue?: string;
+                            oneofIndex?: number;
+                            jsonName?: string;
                             options?: {
-                                ctype?: _95.FieldOptions_CType;
+                                ctype?: _99.FieldOptions_CType;
                                 packed?: boolean;
-                                jstype?: _95.FieldOptions_JSType;
+                                jstype?: _99.FieldOptions_JSType;
                                 lazy?: boolean;
                                 deprecated?: boolean;
                                 weak?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
-                        nested_type?: any[];
-                        enum_type?: {
+                        nestedType?: any[];
+                        enumType?: {
                             name?: string;
                             value?: {
                                 name?: string;
                                 number?: number;
                                 options?: {
                                     deprecated?: boolean;
-                                    uninterpreted_option?: {
+                                    uninterpretedOption?: {
                                         name?: {
-                                            name_part?: string;
-                                            is_extension?: boolean;
+                                            namePart?: string;
+                                            isExtension?: boolean;
                                         }[];
-                                        identifier_value?: string;
-                                        positive_int_value?: any;
-                                        negative_int_value?: any;
-                                        double_value?: number;
-                                        string_value?: Uint8Array;
-                                        aggregate_value?: string;
+                                        identifierValue?: string;
+                                        positiveIntValue?: any;
+                                        negativeIntValue?: any;
+                                        doubleValue?: number;
+                                        stringValue?: Uint8Array;
+                                        aggregateValue?: string;
                                     }[];
                                 };
                             }[];
                             options?: {
-                                allow_alias?: boolean;
+                                allowAlias?: boolean;
                                 deprecated?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
-                            reserved_range?: {
+                            reservedRange?: {
                                 start?: number;
                                 end?: number;
                             }[];
-                            reserved_name?: string[];
+                            reservedName?: string[];
                         }[];
-                        extension_range?: {
+                        extensionRange?: {
                             start?: number;
                             end?: number;
                             options?: {
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
-                        oneof_decl?: {
+                        oneofDecl?: {
                             name?: string;
                             options?: {
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
                         options?: {
-                            message_set_wire_format?: boolean;
-                            no_standard_descriptor_accessor?: boolean;
+                            messageSetWireFormat?: boolean;
+                            noStandardDescriptorAccessor?: boolean;
                             deprecated?: boolean;
-                            map_entry?: boolean;
-                            uninterpreted_option?: {
+                            mapEntry?: boolean;
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
-                        reserved_range?: {
+                        reservedRange?: {
                             start?: number;
                             end?: number;
                         }[];
-                        reserved_name?: string[];
+                        reservedName?: string[];
                     }[];
-                    enum_type?: {
+                    enumType?: {
                         name?: string;
                         value?: {
                             name?: string;
                             number?: number;
                             options?: {
                                 deprecated?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
                         options?: {
-                            allow_alias?: boolean;
+                            allowAlias?: boolean;
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
-                        reserved_range?: {
+                        reservedRange?: {
                             start?: number;
                             end?: number;
                         }[];
-                        reserved_name?: string[];
+                        reservedName?: string[];
                     }[];
                     service?: {
                         name?: string;
                         method?: {
                             name?: string;
-                            input_type?: string;
-                            output_type?: string;
+                            inputType?: string;
+                            outputType?: string;
                             options?: {
                                 deprecated?: boolean;
-                                idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                                uninterpreted_option?: {
+                                idempotencyLevel?: _99.MethodOptions_IdempotencyLevel;
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
-                            client_streaming?: boolean;
-                            server_streaming?: boolean;
+                            clientStreaming?: boolean;
+                            serverStreaming?: boolean;
                         }[];
                         options?: {
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     extension?: {
                         name?: string;
                         number?: number;
-                        label?: _95.FieldDescriptorProto_Label;
-                        type?: _95.FieldDescriptorProto_Type;
-                        type_name?: string;
+                        label?: _99.FieldDescriptorProto_Label;
+                        type?: _99.FieldDescriptorProto_Type;
+                        typeName?: string;
                         extendee?: string;
-                        default_value?: string;
-                        oneof_index?: number;
-                        json_name?: string;
+                        defaultValue?: string;
+                        oneofIndex?: number;
+                        jsonName?: string;
                         options?: {
-                            ctype?: _95.FieldOptions_CType;
+                            ctype?: _99.FieldOptions_CType;
                             packed?: boolean;
-                            jstype?: _95.FieldOptions_JSType;
+                            jstype?: _99.FieldOptions_JSType;
                             lazy?: boolean;
                             deprecated?: boolean;
                             weak?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     options?: {
-                        java_package?: string;
-                        java_outer_classname?: string;
-                        java_multiple_files?: boolean;
-                        java_generate_equals_and_hash?: boolean;
-                        java_string_check_utf8?: boolean;
-                        optimize_for?: _95.FileOptions_OptimizeMode;
-                        go_package?: string;
-                        cc_generic_services?: boolean;
-                        java_generic_services?: boolean;
-                        py_generic_services?: boolean;
-                        php_generic_services?: boolean;
+                        javaPackage?: string;
+                        javaOuterClassname?: string;
+                        javaMultipleFiles?: boolean;
+                        javaGenerateEqualsAndHash?: boolean;
+                        javaStringCheckUtf8?: boolean;
+                        optimizeFor?: _99.FileOptions_OptimizeMode;
+                        goPackage?: string;
+                        ccGenericServices?: boolean;
+                        javaGenericServices?: boolean;
+                        pyGenericServices?: boolean;
+                        phpGenericServices?: boolean;
                         deprecated?: boolean;
-                        cc_enable_arenas?: boolean;
-                        objc_class_prefix?: string;
-                        csharp_namespace?: string;
-                        swift_prefix?: string;
-                        php_class_prefix?: string;
-                        php_namespace?: string;
-                        php_metadata_namespace?: string;
-                        ruby_package?: string;
-                        uninterpreted_option?: {
+                        ccEnableArenas?: boolean;
+                        objcClassPrefix?: string;
+                        csharpNamespace?: string;
+                        swiftPrefix?: string;
+                        phpClassPrefix?: string;
+                        phpNamespace?: string;
+                        phpMetadataNamespace?: string;
+                        rubyPackage?: string;
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    source_code_info?: {
+                    sourceCodeInfo?: {
                         location?: {
                             path?: number[];
                             span?: number[];
-                            leading_comments?: string;
-                            trailing_comments?: string;
-                            leading_detached_comments?: string[];
+                            leadingComments?: string;
+                            trailingComments?: string;
+                            leadingDetachedComments?: string[];
                         }[];
                     };
                     syntax?: string;
                 }[];
-            }): _95.FileDescriptorSet;
+            }): _99.FileDescriptorSet;
         };
         FileDescriptorProto: {
-            encode(message: _95.FileDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FileDescriptorProto;
-            fromJSON(object: any): _95.FileDescriptorProto;
-            toJSON(message: _95.FileDescriptorProto): unknown;
+            encode(message: _99.FileDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.FileDescriptorProto;
+            fromJSON(object: any): _99.FileDescriptorProto;
+            toJSON(message: _99.FileDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 package?: string;
                 dependency?: string[];
-                public_dependency?: number[];
-                weak_dependency?: number[];
-                message_type?: {
+                publicDependency?: number[];
+                weakDependency?: number[];
+                messageType?: {
                     name?: string;
                     field?: {
                         name?: string;
                         number?: number;
-                        label?: _95.FieldDescriptorProto_Label;
-                        type?: _95.FieldDescriptorProto_Type;
-                        type_name?: string;
+                        label?: _99.FieldDescriptorProto_Label;
+                        type?: _99.FieldDescriptorProto_Type;
+                        typeName?: string;
                         extendee?: string;
-                        default_value?: string;
-                        oneof_index?: number;
-                        json_name?: string;
+                        defaultValue?: string;
+                        oneofIndex?: number;
+                        jsonName?: string;
                         options?: {
-                            ctype?: _95.FieldOptions_CType;
+                            ctype?: _99.FieldOptions_CType;
                             packed?: boolean;
-                            jstype?: _95.FieldOptions_JSType;
+                            jstype?: _99.FieldOptions_JSType;
                             lazy?: boolean;
                             deprecated?: boolean;
                             weak?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     extension?: {
                         name?: string;
                         number?: number;
-                        label?: _95.FieldDescriptorProto_Label;
-                        type?: _95.FieldDescriptorProto_Type;
-                        type_name?: string;
+                        label?: _99.FieldDescriptorProto_Label;
+                        type?: _99.FieldDescriptorProto_Type;
+                        typeName?: string;
                         extendee?: string;
-                        default_value?: string;
-                        oneof_index?: number;
-                        json_name?: string;
+                        defaultValue?: string;
+                        oneofIndex?: number;
+                        jsonName?: string;
                         options?: {
-                            ctype?: _95.FieldOptions_CType;
+                            ctype?: _99.FieldOptions_CType;
                             packed?: boolean;
-                            jstype?: _95.FieldOptions_JSType;
+                            jstype?: _99.FieldOptions_JSType;
                             lazy?: boolean;
                             deprecated?: boolean;
                             weak?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
-                    nested_type?: any[];
-                    enum_type?: {
+                    nestedType?: any[];
+                    enumType?: {
                         name?: string;
                         value?: {
                             name?: string;
                             number?: number;
                             options?: {
                                 deprecated?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
                         options?: {
-                            allow_alias?: boolean;
+                            allowAlias?: boolean;
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
-                        reserved_range?: {
+                        reservedRange?: {
                             start?: number;
                             end?: number;
                         }[];
-                        reserved_name?: string[];
+                        reservedName?: string[];
                     }[];
-                    extension_range?: {
+                    extensionRange?: {
                         start?: number;
                         end?: number;
                         options?: {
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
-                    oneof_decl?: {
+                    oneofDecl?: {
                         name?: string;
                         options?: {
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     options?: {
-                        message_set_wire_format?: boolean;
-                        no_standard_descriptor_accessor?: boolean;
+                        messageSetWireFormat?: boolean;
+                        noStandardDescriptorAccessor?: boolean;
                         deprecated?: boolean;
-                        map_entry?: boolean;
-                        uninterpreted_option?: {
+                        mapEntry?: boolean;
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    reserved_range?: {
+                    reservedRange?: {
                         start?: number;
                         end?: number;
                     }[];
-                    reserved_name?: string[];
+                    reservedName?: string[];
                 }[];
-                enum_type?: {
+                enumType?: {
                     name?: string;
                     value?: {
                         name?: string;
                         number?: number;
                         options?: {
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     options?: {
-                        allow_alias?: boolean;
+                        allowAlias?: boolean;
                         deprecated?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    reserved_range?: {
+                    reservedRange?: {
                         start?: number;
                         end?: number;
                     }[];
-                    reserved_name?: string[];
+                    reservedName?: string[];
                 }[];
                 service?: {
                     name?: string;
                     method?: {
                         name?: string;
-                        input_type?: string;
-                        output_type?: string;
+                        inputType?: string;
+                        outputType?: string;
                         options?: {
                             deprecated?: boolean;
-                            idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                            uninterpreted_option?: {
+                            idempotencyLevel?: _99.MethodOptions_IdempotencyLevel;
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
-                        client_streaming?: boolean;
-                        server_streaming?: boolean;
+                        clientStreaming?: boolean;
+                        serverStreaming?: boolean;
                     }[];
                     options?: {
                         deprecated?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
                 extension?: {
                     name?: string;
                     number?: number;
-                    label?: _95.FieldDescriptorProto_Label;
-                    type?: _95.FieldDescriptorProto_Type;
-                    type_name?: string;
+                    label?: _99.FieldDescriptorProto_Label;
+                    type?: _99.FieldDescriptorProto_Type;
+                    typeName?: string;
                     extendee?: string;
-                    default_value?: string;
-                    oneof_index?: number;
-                    json_name?: string;
+                    defaultValue?: string;
+                    oneofIndex?: number;
+                    jsonName?: string;
                     options?: {
-                        ctype?: _95.FieldOptions_CType;
+                        ctype?: _99.FieldOptions_CType;
                         packed?: boolean;
-                        jstype?: _95.FieldOptions_JSType;
+                        jstype?: _99.FieldOptions_JSType;
                         lazy?: boolean;
                         deprecated?: boolean;
                         weak?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
                 options?: {
-                    java_package?: string;
-                    java_outer_classname?: string;
-                    java_multiple_files?: boolean;
-                    java_generate_equals_and_hash?: boolean;
-                    java_string_check_utf8?: boolean;
-                    optimize_for?: _95.FileOptions_OptimizeMode;
-                    go_package?: string;
-                    cc_generic_services?: boolean;
-                    java_generic_services?: boolean;
-                    py_generic_services?: boolean;
-                    php_generic_services?: boolean;
+                    javaPackage?: string;
+                    javaOuterClassname?: string;
+                    javaMultipleFiles?: boolean;
+                    javaGenerateEqualsAndHash?: boolean;
+                    javaStringCheckUtf8?: boolean;
+                    optimizeFor?: _99.FileOptions_OptimizeMode;
+                    goPackage?: string;
+                    ccGenericServices?: boolean;
+                    javaGenericServices?: boolean;
+                    pyGenericServices?: boolean;
+                    phpGenericServices?: boolean;
                     deprecated?: boolean;
-                    cc_enable_arenas?: boolean;
-                    objc_class_prefix?: string;
-                    csharp_namespace?: string;
-                    swift_prefix?: string;
-                    php_class_prefix?: string;
-                    php_namespace?: string;
-                    php_metadata_namespace?: string;
-                    ruby_package?: string;
-                    uninterpreted_option?: {
+                    ccEnableArenas?: boolean;
+                    objcClassPrefix?: string;
+                    csharpNamespace?: string;
+                    swiftPrefix?: string;
+                    phpClassPrefix?: string;
+                    phpNamespace?: string;
+                    phpMetadataNamespace?: string;
+                    rubyPackage?: string;
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-                source_code_info?: {
+                sourceCodeInfo?: {
                     location?: {
                         path?: number[];
                         span?: number[];
-                        leading_comments?: string;
-                        trailing_comments?: string;
-                        leading_detached_comments?: string[];
+                        leadingComments?: string;
+                        trailingComments?: string;
+                        leadingDetachedComments?: string[];
                     }[];
                 };
                 syntax?: string;
-            }): _95.FileDescriptorProto;
+            }): _99.FileDescriptorProto;
         };
         DescriptorProto: {
-            encode(message: _95.DescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.DescriptorProto;
-            fromJSON(object: any): _95.DescriptorProto;
-            toJSON(message: _95.DescriptorProto): unknown;
+            encode(message: _99.DescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.DescriptorProto;
+            fromJSON(object: any): _99.DescriptorProto;
+            toJSON(message: _99.DescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 field?: {
                     name?: string;
                     number?: number;
-                    label?: _95.FieldDescriptorProto_Label;
-                    type?: _95.FieldDescriptorProto_Type;
-                    type_name?: string;
+                    label?: _99.FieldDescriptorProto_Label;
+                    type?: _99.FieldDescriptorProto_Type;
+                    typeName?: string;
                     extendee?: string;
-                    default_value?: string;
-                    oneof_index?: number;
-                    json_name?: string;
+                    defaultValue?: string;
+                    oneofIndex?: number;
+                    jsonName?: string;
                     options?: {
-                        ctype?: _95.FieldOptions_CType;
+                        ctype?: _99.FieldOptions_CType;
                         packed?: boolean;
-                        jstype?: _95.FieldOptions_JSType;
+                        jstype?: _99.FieldOptions_JSType;
                         lazy?: boolean;
                         deprecated?: boolean;
                         weak?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
                 extension?: {
                     name?: string;
                     number?: number;
-                    label?: _95.FieldDescriptorProto_Label;
-                    type?: _95.FieldDescriptorProto_Type;
-                    type_name?: string;
+                    label?: _99.FieldDescriptorProto_Label;
+                    type?: _99.FieldDescriptorProto_Type;
+                    typeName?: string;
                     extendee?: string;
-                    default_value?: string;
-                    oneof_index?: number;
-                    json_name?: string;
+                    defaultValue?: string;
+                    oneofIndex?: number;
+                    jsonName?: string;
                     options?: {
-                        ctype?: _95.FieldOptions_CType;
+                        ctype?: _99.FieldOptions_CType;
                         packed?: boolean;
-                        jstype?: _95.FieldOptions_JSType;
+                        jstype?: _99.FieldOptions_JSType;
                         lazy?: boolean;
                         deprecated?: boolean;
                         weak?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
-                nested_type?: any[];
-                enum_type?: {
+                nestedType?: any[];
+                enumType?: {
                     name?: string;
                     value?: {
                         name?: string;
                         number?: number;
                         options?: {
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     options?: {
-                        allow_alias?: boolean;
+                        allowAlias?: boolean;
                         deprecated?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    reserved_range?: {
+                    reservedRange?: {
                         start?: number;
                         end?: number;
                     }[];
-                    reserved_name?: string[];
+                    reservedName?: string[];
                 }[];
-                extension_range?: {
+                extensionRange?: {
                     start?: number;
                     end?: number;
                     options?: {
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
-                oneof_decl?: {
+                oneofDecl?: {
                     name?: string;
                     options?: {
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
                 options?: {
-                    message_set_wire_format?: boolean;
-                    no_standard_descriptor_accessor?: boolean;
+                    messageSetWireFormat?: boolean;
+                    noStandardDescriptorAccessor?: boolean;
                     deprecated?: boolean;
-                    map_entry?: boolean;
-                    uninterpreted_option?: {
+                    mapEntry?: boolean;
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-                reserved_range?: {
+                reservedRange?: {
                     start?: number;
                     end?: number;
                 }[];
-                reserved_name?: string[];
-            }): _95.DescriptorProto;
+                reservedName?: string[];
+            }): _99.DescriptorProto;
         };
         DescriptorProto_ExtensionRange: {
-            encode(message: _95.DescriptorProto_ExtensionRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.DescriptorProto_ExtensionRange;
-            fromJSON(object: any): _95.DescriptorProto_ExtensionRange;
-            toJSON(message: _95.DescriptorProto_ExtensionRange): unknown;
+            encode(message: _99.DescriptorProto_ExtensionRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.DescriptorProto_ExtensionRange;
+            fromJSON(object: any): _99.DescriptorProto_ExtensionRange;
+            toJSON(message: _99.DescriptorProto_ExtensionRange): unknown;
             fromPartial(object: {
                 start?: number;
                 end?: number;
                 options?: {
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-            }): _95.DescriptorProto_ExtensionRange;
+            }): _99.DescriptorProto_ExtensionRange;
         };
         DescriptorProto_ReservedRange: {
-            encode(message: _95.DescriptorProto_ReservedRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.DescriptorProto_ReservedRange;
-            fromJSON(object: any): _95.DescriptorProto_ReservedRange;
-            toJSON(message: _95.DescriptorProto_ReservedRange): unknown;
+            encode(message: _99.DescriptorProto_ReservedRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.DescriptorProto_ReservedRange;
+            fromJSON(object: any): _99.DescriptorProto_ReservedRange;
+            toJSON(message: _99.DescriptorProto_ReservedRange): unknown;
             fromPartial(object: {
                 start?: number;
                 end?: number;
-            }): _95.DescriptorProto_ReservedRange;
+            }): _99.DescriptorProto_ReservedRange;
         };
         ExtensionRangeOptions: {
-            encode(message: _95.ExtensionRangeOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.ExtensionRangeOptions;
-            fromJSON(object: any): _95.ExtensionRangeOptions;
-            toJSON(message: _95.ExtensionRangeOptions): unknown;
+            encode(message: _99.ExtensionRangeOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.ExtensionRangeOptions;
+            fromJSON(object: any): _99.ExtensionRangeOptions;
+            toJSON(message: _99.ExtensionRangeOptions): unknown;
             fromPartial(object: {
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
-            }): _95.ExtensionRangeOptions;
+            }): _99.ExtensionRangeOptions;
         };
         FieldDescriptorProto: {
-            encode(message: _95.FieldDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FieldDescriptorProto;
-            fromJSON(object: any): _95.FieldDescriptorProto;
-            toJSON(message: _95.FieldDescriptorProto): unknown;
+            encode(message: _99.FieldDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.FieldDescriptorProto;
+            fromJSON(object: any): _99.FieldDescriptorProto;
+            toJSON(message: _99.FieldDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 number?: number;
-                label?: _95.FieldDescriptorProto_Label;
-                type?: _95.FieldDescriptorProto_Type;
-                type_name?: string;
+                label?: _99.FieldDescriptorProto_Label;
+                type?: _99.FieldDescriptorProto_Type;
+                typeName?: string;
                 extendee?: string;
-                default_value?: string;
-                oneof_index?: number;
-                json_name?: string;
+                defaultValue?: string;
+                oneofIndex?: number;
+                jsonName?: string;
                 options?: {
-                    ctype?: _95.FieldOptions_CType;
+                    ctype?: _99.FieldOptions_CType;
                     packed?: boolean;
-                    jstype?: _95.FieldOptions_JSType;
+                    jstype?: _99.FieldOptions_JSType;
                     lazy?: boolean;
                     deprecated?: boolean;
                     weak?: boolean;
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-            }): _95.FieldDescriptorProto;
+            }): _99.FieldDescriptorProto;
         };
         OneofDescriptorProto: {
-            encode(message: _95.OneofDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.OneofDescriptorProto;
-            fromJSON(object: any): _95.OneofDescriptorProto;
-            toJSON(message: _95.OneofDescriptorProto): unknown;
+            encode(message: _99.OneofDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.OneofDescriptorProto;
+            fromJSON(object: any): _99.OneofDescriptorProto;
+            toJSON(message: _99.OneofDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 options?: {
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-            }): _95.OneofDescriptorProto;
+            }): _99.OneofDescriptorProto;
         };
         EnumDescriptorProto: {
-            encode(message: _95.EnumDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumDescriptorProto;
-            fromJSON(object: any): _95.EnumDescriptorProto;
-            toJSON(message: _95.EnumDescriptorProto): unknown;
+            encode(message: _99.EnumDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.EnumDescriptorProto;
+            fromJSON(object: any): _99.EnumDescriptorProto;
+            toJSON(message: _99.EnumDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 value?: {
@@ -1246,441 +1253,441 @@ export declare namespace google {
                     number?: number;
                     options?: {
                         deprecated?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
                 options?: {
-                    allow_alias?: boolean;
+                    allowAlias?: boolean;
                     deprecated?: boolean;
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-                reserved_range?: {
+                reservedRange?: {
                     start?: number;
                     end?: number;
                 }[];
-                reserved_name?: string[];
-            }): _95.EnumDescriptorProto;
+                reservedName?: string[];
+            }): _99.EnumDescriptorProto;
         };
         EnumDescriptorProto_EnumReservedRange: {
-            encode(message: _95.EnumDescriptorProto_EnumReservedRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumDescriptorProto_EnumReservedRange;
-            fromJSON(object: any): _95.EnumDescriptorProto_EnumReservedRange;
-            toJSON(message: _95.EnumDescriptorProto_EnumReservedRange): unknown;
+            encode(message: _99.EnumDescriptorProto_EnumReservedRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.EnumDescriptorProto_EnumReservedRange;
+            fromJSON(object: any): _99.EnumDescriptorProto_EnumReservedRange;
+            toJSON(message: _99.EnumDescriptorProto_EnumReservedRange): unknown;
             fromPartial(object: {
                 start?: number;
                 end?: number;
-            }): _95.EnumDescriptorProto_EnumReservedRange;
+            }): _99.EnumDescriptorProto_EnumReservedRange;
         };
         EnumValueDescriptorProto: {
-            encode(message: _95.EnumValueDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumValueDescriptorProto;
-            fromJSON(object: any): _95.EnumValueDescriptorProto;
-            toJSON(message: _95.EnumValueDescriptorProto): unknown;
+            encode(message: _99.EnumValueDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.EnumValueDescriptorProto;
+            fromJSON(object: any): _99.EnumValueDescriptorProto;
+            toJSON(message: _99.EnumValueDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 number?: number;
                 options?: {
                     deprecated?: boolean;
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-            }): _95.EnumValueDescriptorProto;
+            }): _99.EnumValueDescriptorProto;
         };
         ServiceDescriptorProto: {
-            encode(message: _95.ServiceDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.ServiceDescriptorProto;
-            fromJSON(object: any): _95.ServiceDescriptorProto;
-            toJSON(message: _95.ServiceDescriptorProto): unknown;
+            encode(message: _99.ServiceDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.ServiceDescriptorProto;
+            fromJSON(object: any): _99.ServiceDescriptorProto;
+            toJSON(message: _99.ServiceDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 method?: {
                     name?: string;
-                    input_type?: string;
-                    output_type?: string;
+                    inputType?: string;
+                    outputType?: string;
                     options?: {
                         deprecated?: boolean;
-                        idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                        uninterpreted_option?: {
+                        idempotencyLevel?: _99.MethodOptions_IdempotencyLevel;
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    client_streaming?: boolean;
-                    server_streaming?: boolean;
+                    clientStreaming?: boolean;
+                    serverStreaming?: boolean;
                 }[];
                 options?: {
                     deprecated?: boolean;
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-            }): _95.ServiceDescriptorProto;
+            }): _99.ServiceDescriptorProto;
         };
         MethodDescriptorProto: {
-            encode(message: _95.MethodDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MethodDescriptorProto;
-            fromJSON(object: any): _95.MethodDescriptorProto;
-            toJSON(message: _95.MethodDescriptorProto): unknown;
+            encode(message: _99.MethodDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MethodDescriptorProto;
+            fromJSON(object: any): _99.MethodDescriptorProto;
+            toJSON(message: _99.MethodDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
-                input_type?: string;
-                output_type?: string;
+                inputType?: string;
+                outputType?: string;
                 options?: {
                     deprecated?: boolean;
-                    idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                    uninterpreted_option?: {
+                    idempotencyLevel?: _99.MethodOptions_IdempotencyLevel;
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-                client_streaming?: boolean;
-                server_streaming?: boolean;
-            }): _95.MethodDescriptorProto;
+                clientStreaming?: boolean;
+                serverStreaming?: boolean;
+            }): _99.MethodDescriptorProto;
         };
         FileOptions: {
-            encode(message: _95.FileOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FileOptions;
-            fromJSON(object: any): _95.FileOptions;
-            toJSON(message: _95.FileOptions): unknown;
+            encode(message: _99.FileOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.FileOptions;
+            fromJSON(object: any): _99.FileOptions;
+            toJSON(message: _99.FileOptions): unknown;
             fromPartial(object: {
-                java_package?: string;
-                java_outer_classname?: string;
-                java_multiple_files?: boolean;
-                java_generate_equals_and_hash?: boolean;
-                java_string_check_utf8?: boolean;
-                optimize_for?: _95.FileOptions_OptimizeMode;
-                go_package?: string;
-                cc_generic_services?: boolean;
-                java_generic_services?: boolean;
-                py_generic_services?: boolean;
-                php_generic_services?: boolean;
+                javaPackage?: string;
+                javaOuterClassname?: string;
+                javaMultipleFiles?: boolean;
+                javaGenerateEqualsAndHash?: boolean;
+                javaStringCheckUtf8?: boolean;
+                optimizeFor?: _99.FileOptions_OptimizeMode;
+                goPackage?: string;
+                ccGenericServices?: boolean;
+                javaGenericServices?: boolean;
+                pyGenericServices?: boolean;
+                phpGenericServices?: boolean;
                 deprecated?: boolean;
-                cc_enable_arenas?: boolean;
-                objc_class_prefix?: string;
-                csharp_namespace?: string;
-                swift_prefix?: string;
-                php_class_prefix?: string;
-                php_namespace?: string;
-                php_metadata_namespace?: string;
-                ruby_package?: string;
-                uninterpreted_option?: {
+                ccEnableArenas?: boolean;
+                objcClassPrefix?: string;
+                csharpNamespace?: string;
+                swiftPrefix?: string;
+                phpClassPrefix?: string;
+                phpNamespace?: string;
+                phpMetadataNamespace?: string;
+                rubyPackage?: string;
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
-            }): _95.FileOptions;
+            }): _99.FileOptions;
         };
         MessageOptions: {
-            encode(message: _95.MessageOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MessageOptions;
-            fromJSON(object: any): _95.MessageOptions;
-            toJSON(message: _95.MessageOptions): unknown;
+            encode(message: _99.MessageOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MessageOptions;
+            fromJSON(object: any): _99.MessageOptions;
+            toJSON(message: _99.MessageOptions): unknown;
             fromPartial(object: {
-                message_set_wire_format?: boolean;
-                no_standard_descriptor_accessor?: boolean;
+                messageSetWireFormat?: boolean;
+                noStandardDescriptorAccessor?: boolean;
                 deprecated?: boolean;
-                map_entry?: boolean;
-                uninterpreted_option?: {
+                mapEntry?: boolean;
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
-            }): _95.MessageOptions;
+            }): _99.MessageOptions;
         };
         FieldOptions: {
-            encode(message: _95.FieldOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FieldOptions;
-            fromJSON(object: any): _95.FieldOptions;
-            toJSON(message: _95.FieldOptions): unknown;
+            encode(message: _99.FieldOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.FieldOptions;
+            fromJSON(object: any): _99.FieldOptions;
+            toJSON(message: _99.FieldOptions): unknown;
             fromPartial(object: {
-                ctype?: _95.FieldOptions_CType;
+                ctype?: _99.FieldOptions_CType;
                 packed?: boolean;
-                jstype?: _95.FieldOptions_JSType;
+                jstype?: _99.FieldOptions_JSType;
                 lazy?: boolean;
                 deprecated?: boolean;
                 weak?: boolean;
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
-            }): _95.FieldOptions;
+            }): _99.FieldOptions;
         };
         OneofOptions: {
-            encode(message: _95.OneofOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.OneofOptions;
-            fromJSON(object: any): _95.OneofOptions;
-            toJSON(message: _95.OneofOptions): unknown;
+            encode(message: _99.OneofOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.OneofOptions;
+            fromJSON(object: any): _99.OneofOptions;
+            toJSON(message: _99.OneofOptions): unknown;
             fromPartial(object: {
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
-            }): _95.OneofOptions;
+            }): _99.OneofOptions;
         };
         EnumOptions: {
-            encode(message: _95.EnumOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumOptions;
-            fromJSON(object: any): _95.EnumOptions;
-            toJSON(message: _95.EnumOptions): unknown;
+            encode(message: _99.EnumOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.EnumOptions;
+            fromJSON(object: any): _99.EnumOptions;
+            toJSON(message: _99.EnumOptions): unknown;
             fromPartial(object: {
-                allow_alias?: boolean;
+                allowAlias?: boolean;
                 deprecated?: boolean;
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
-            }): _95.EnumOptions;
+            }): _99.EnumOptions;
         };
         EnumValueOptions: {
-            encode(message: _95.EnumValueOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumValueOptions;
-            fromJSON(object: any): _95.EnumValueOptions;
-            toJSON(message: _95.EnumValueOptions): unknown;
+            encode(message: _99.EnumValueOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.EnumValueOptions;
+            fromJSON(object: any): _99.EnumValueOptions;
+            toJSON(message: _99.EnumValueOptions): unknown;
             fromPartial(object: {
                 deprecated?: boolean;
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
-            }): _95.EnumValueOptions;
+            }): _99.EnumValueOptions;
         };
         ServiceOptions: {
-            encode(message: _95.ServiceOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.ServiceOptions;
-            fromJSON(object: any): _95.ServiceOptions;
-            toJSON(message: _95.ServiceOptions): unknown;
+            encode(message: _99.ServiceOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.ServiceOptions;
+            fromJSON(object: any): _99.ServiceOptions;
+            toJSON(message: _99.ServiceOptions): unknown;
             fromPartial(object: {
                 deprecated?: boolean;
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
-            }): _95.ServiceOptions;
+            }): _99.ServiceOptions;
         };
         MethodOptions: {
-            encode(message: _95.MethodOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MethodOptions;
-            fromJSON(object: any): _95.MethodOptions;
-            toJSON(message: _95.MethodOptions): unknown;
+            encode(message: _99.MethodOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MethodOptions;
+            fromJSON(object: any): _99.MethodOptions;
+            toJSON(message: _99.MethodOptions): unknown;
             fromPartial(object: {
                 deprecated?: boolean;
-                idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                uninterpreted_option?: {
+                idempotencyLevel?: _99.MethodOptions_IdempotencyLevel;
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
-            }): _95.MethodOptions;
+            }): _99.MethodOptions;
         };
         UninterpretedOption: {
-            encode(message: _95.UninterpretedOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.UninterpretedOption;
-            fromJSON(object: any): _95.UninterpretedOption;
-            toJSON(message: _95.UninterpretedOption): unknown;
+            encode(message: _99.UninterpretedOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.UninterpretedOption;
+            fromJSON(object: any): _99.UninterpretedOption;
+            toJSON(message: _99.UninterpretedOption): unknown;
             fromPartial(object: {
                 name?: {
-                    name_part?: string;
-                    is_extension?: boolean;
+                    namePart?: string;
+                    isExtension?: boolean;
                 }[];
-                identifier_value?: string;
-                positive_int_value?: any;
-                negative_int_value?: any;
-                double_value?: number;
-                string_value?: Uint8Array;
-                aggregate_value?: string;
-            }): _95.UninterpretedOption;
+                identifierValue?: string;
+                positiveIntValue?: any;
+                negativeIntValue?: any;
+                doubleValue?: number;
+                stringValue?: Uint8Array;
+                aggregateValue?: string;
+            }): _99.UninterpretedOption;
         };
         UninterpretedOption_NamePart: {
-            encode(message: _95.UninterpretedOption_NamePart, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.UninterpretedOption_NamePart;
-            fromJSON(object: any): _95.UninterpretedOption_NamePart;
-            toJSON(message: _95.UninterpretedOption_NamePart): unknown;
+            encode(message: _99.UninterpretedOption_NamePart, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.UninterpretedOption_NamePart;
+            fromJSON(object: any): _99.UninterpretedOption_NamePart;
+            toJSON(message: _99.UninterpretedOption_NamePart): unknown;
             fromPartial(object: {
-                name_part?: string;
-                is_extension?: boolean;
-            }): _95.UninterpretedOption_NamePart;
+                namePart?: string;
+                isExtension?: boolean;
+            }): _99.UninterpretedOption_NamePart;
         };
         SourceCodeInfo: {
-            encode(message: _95.SourceCodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SourceCodeInfo;
-            fromJSON(object: any): _95.SourceCodeInfo;
-            toJSON(message: _95.SourceCodeInfo): unknown;
+            encode(message: _99.SourceCodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.SourceCodeInfo;
+            fromJSON(object: any): _99.SourceCodeInfo;
+            toJSON(message: _99.SourceCodeInfo): unknown;
             fromPartial(object: {
                 location?: {
                     path?: number[];
                     span?: number[];
-                    leading_comments?: string;
-                    trailing_comments?: string;
-                    leading_detached_comments?: string[];
+                    leadingComments?: string;
+                    trailingComments?: string;
+                    leadingDetachedComments?: string[];
                 }[];
-            }): _95.SourceCodeInfo;
+            }): _99.SourceCodeInfo;
         };
         SourceCodeInfo_Location: {
-            encode(message: _95.SourceCodeInfo_Location, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SourceCodeInfo_Location;
-            fromJSON(object: any): _95.SourceCodeInfo_Location;
-            toJSON(message: _95.SourceCodeInfo_Location): unknown;
+            encode(message: _99.SourceCodeInfo_Location, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.SourceCodeInfo_Location;
+            fromJSON(object: any): _99.SourceCodeInfo_Location;
+            toJSON(message: _99.SourceCodeInfo_Location): unknown;
             fromPartial(object: {
                 path?: number[];
                 span?: number[];
-                leading_comments?: string;
-                trailing_comments?: string;
-                leading_detached_comments?: string[];
-            }): _95.SourceCodeInfo_Location;
+                leadingComments?: string;
+                trailingComments?: string;
+                leadingDetachedComments?: string[];
+            }): _99.SourceCodeInfo_Location;
         };
         GeneratedCodeInfo: {
-            encode(message: _95.GeneratedCodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.GeneratedCodeInfo;
-            fromJSON(object: any): _95.GeneratedCodeInfo;
-            toJSON(message: _95.GeneratedCodeInfo): unknown;
+            encode(message: _99.GeneratedCodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.GeneratedCodeInfo;
+            fromJSON(object: any): _99.GeneratedCodeInfo;
+            toJSON(message: _99.GeneratedCodeInfo): unknown;
             fromPartial(object: {
                 annotation?: {
                     path?: number[];
-                    source_file?: string;
+                    sourceFile?: string;
                     begin?: number;
                     end?: number;
                 }[];
-            }): _95.GeneratedCodeInfo;
+            }): _99.GeneratedCodeInfo;
         };
         GeneratedCodeInfo_Annotation: {
-            encode(message: _95.GeneratedCodeInfo_Annotation, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.GeneratedCodeInfo_Annotation;
-            fromJSON(object: any): _95.GeneratedCodeInfo_Annotation;
-            toJSON(message: _95.GeneratedCodeInfo_Annotation): unknown;
+            encode(message: _99.GeneratedCodeInfo_Annotation, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.GeneratedCodeInfo_Annotation;
+            fromJSON(object: any): _99.GeneratedCodeInfo_Annotation;
+            toJSON(message: _99.GeneratedCodeInfo_Annotation): unknown;
             fromPartial(object: {
                 path?: number[];
-                source_file?: string;
+                sourceFile?: string;
                 begin?: number;
                 end?: number;
-            }): _95.GeneratedCodeInfo_Annotation;
+            }): _99.GeneratedCodeInfo_Annotation;
         };
         Any: {
-            encode(message: _94.Any, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.Any;
-            fromJSON(object: any): _94.Any;
-            toJSON(message: _94.Any): unknown;
+            encode(message: _98.Any, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.Any;
+            fromJSON(object: any): _98.Any;
+            toJSON(message: _98.Any): unknown;
             fromPartial(object: {
-                type_url?: string;
+                typeUrl?: string;
                 value?: Uint8Array;
-            }): _94.Any;
+            }): _98.Any;
         };
     };
 }

@@ -1,15 +1,15 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryClientStateRequest, QueryClientStateResponse, QueryClientStatesRequest, QueryClientStatesResponse, QueryConsensusStateRequest, QueryConsensusStateResponse, QueryConsensusStatesRequest, QueryConsensusStatesResponse, QueryClientStatusRequest, QueryClientStatusResponse, QueryClientParamsRequest, QueryClientParamsResponse, QueryUpgradedClientStateRequest, QueryUpgradedClientStateResponse, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponse } from "./query";
+import { QueryClientStateRequest, QueryClientStateResponseSDKType, QueryClientStatesRequest, QueryClientStatesResponseSDKType, QueryConsensusStateRequest, QueryConsensusStateResponseSDKType, QueryConsensusStatesRequest, QueryConsensusStatesResponseSDKType, QueryClientStatusRequest, QueryClientStatusResponseSDKType, QueryClientParamsRequest, QueryClientParamsResponseSDKType, QueryUpgradedClientStateRequest, QueryUpgradedClientStateResponseSDKType, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponseSDKType } from "./query";
 export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
         restEndpoint: string;
     });
-    clientState(params: QueryClientStateRequest): Promise<QueryClientStateResponse>;
-    clientStates(params?: QueryClientStatesRequest): Promise<QueryClientStatesResponse>;
-    consensusState(params: QueryConsensusStateRequest): Promise<QueryConsensusStateResponse>;
-    consensusStates(params: QueryConsensusStatesRequest): Promise<QueryConsensusStatesResponse>;
-    clientStatus(params: QueryClientStatusRequest): Promise<QueryClientStatusResponse>;
-    clientParams(_params?: QueryClientParamsRequest): Promise<QueryClientParamsResponse>;
-    upgradedClientState(_params?: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponse>;
-    upgradedConsensusState(_params?: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponse>;
+    clientState(params: QueryClientStateRequest): Promise<QueryClientStateResponseSDKType>;
+    clientStates(params?: QueryClientStatesRequest): Promise<QueryClientStatesResponseSDKType>;
+    consensusState(params: QueryConsensusStateRequest): Promise<QueryConsensusStateResponseSDKType>;
+    consensusStates(params: QueryConsensusStatesRequest): Promise<QueryConsensusStatesResponseSDKType>;
+    clientStatus(params: QueryClientStatusRequest): Promise<QueryClientStatusResponseSDKType>;
+    clientParams(_params?: QueryClientParamsRequest): Promise<QueryClientParamsResponseSDKType>;
+    upgradedClientState(_params?: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponseSDKType>;
+    upgradedConsensusState(_params?: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType>;
 }

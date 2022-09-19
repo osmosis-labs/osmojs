@@ -1,16 +1,16 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryBalanceRequest, QueryBalanceResponse, QueryAllBalancesRequest, QueryAllBalancesResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryParamsRequest, QueryParamsResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse } from "./query";
+import { QueryBalanceRequest, QueryBalanceResponseSDKType, QueryAllBalancesRequest, QueryAllBalancesResponseSDKType, QuerySpendableBalancesRequest, QuerySpendableBalancesResponseSDKType, QueryTotalSupplyRequest, QueryTotalSupplyResponseSDKType, QuerySupplyOfRequest, QuerySupplyOfResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomMetadataRequest, QueryDenomMetadataResponseSDKType, QueryDenomsMetadataRequest, QueryDenomsMetadataResponseSDKType, QueryDenomOwnersRequest, QueryDenomOwnersResponseSDKType } from "./query";
 export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
         restEndpoint: string;
     });
-    balance(params: QueryBalanceRequest): Promise<QueryBalanceResponse>;
-    allBalances(params: QueryAllBalancesRequest): Promise<QueryAllBalancesResponse>;
-    spendableBalances(params: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponse>;
-    totalSupply(params?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponse>;
-    supplyOf(params: QuerySupplyOfRequest): Promise<QuerySupplyOfResponse>;
-    params(_params?: QueryParamsRequest): Promise<QueryParamsResponse>;
-    denomMetadata(params: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponse>;
-    denomsMetadata(params?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponse>;
-    denomOwners(params: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse>;
+    balance(params: QueryBalanceRequest): Promise<QueryBalanceResponseSDKType>;
+    allBalances(params: QueryAllBalancesRequest): Promise<QueryAllBalancesResponseSDKType>;
+    spendableBalances(params: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType>;
+    totalSupply(params?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponseSDKType>;
+    supplyOf(params: QuerySupplyOfRequest): Promise<QuerySupplyOfResponseSDKType>;
+    params(_params?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    denomMetadata(params: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponseSDKType>;
+    denomsMetadata(params?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponseSDKType>;
+    denomOwners(params: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType>;
 }

@@ -10,11 +10,29 @@ export interface DoubleValue {
     value: number;
 }
 /**
+ * Wrapper message for `double`.
+ *
+ * The JSON representation for `DoubleValue` is JSON number.
+ */
+export interface DoubleValueSDKType {
+    /** The double value. */
+    value: number;
+}
+/**
  * Wrapper message for `float`.
  *
  * The JSON representation for `FloatValue` is JSON number.
  */
 export interface FloatValue {
+    /** The float value. */
+    value: number;
+}
+/**
+ * Wrapper message for `float`.
+ *
+ * The JSON representation for `FloatValue` is JSON number.
+ */
+export interface FloatValueSDKType {
     /** The float value. */
     value: number;
 }
@@ -28,11 +46,29 @@ export interface Int64Value {
     value: Long;
 }
 /**
+ * Wrapper message for `int64`.
+ *
+ * The JSON representation for `Int64Value` is JSON string.
+ */
+export interface Int64ValueSDKType {
+    /** The int64 value. */
+    value: Long;
+}
+/**
  * Wrapper message for `uint64`.
  *
  * The JSON representation for `UInt64Value` is JSON string.
  */
 export interface UInt64Value {
+    /** The uint64 value. */
+    value: Long;
+}
+/**
+ * Wrapper message for `uint64`.
+ *
+ * The JSON representation for `UInt64Value` is JSON string.
+ */
+export interface UInt64ValueSDKType {
     /** The uint64 value. */
     value: Long;
 }
@@ -46,11 +82,29 @@ export interface Int32Value {
     value: number;
 }
 /**
+ * Wrapper message for `int32`.
+ *
+ * The JSON representation for `Int32Value` is JSON number.
+ */
+export interface Int32ValueSDKType {
+    /** The int32 value. */
+    value: number;
+}
+/**
  * Wrapper message for `uint32`.
  *
  * The JSON representation for `UInt32Value` is JSON number.
  */
 export interface UInt32Value {
+    /** The uint32 value. */
+    value: number;
+}
+/**
+ * Wrapper message for `uint32`.
+ *
+ * The JSON representation for `UInt32Value` is JSON number.
+ */
+export interface UInt32ValueSDKType {
     /** The uint32 value. */
     value: number;
 }
@@ -64,6 +118,15 @@ export interface BoolValue {
     value: boolean;
 }
 /**
+ * Wrapper message for `bool`.
+ *
+ * The JSON representation for `BoolValue` is JSON `true` and `false`.
+ */
+export interface BoolValueSDKType {
+    /** The bool value. */
+    value: boolean;
+}
+/**
  * Wrapper message for `string`.
  *
  * The JSON representation for `StringValue` is JSON string.
@@ -73,11 +136,29 @@ export interface StringValue {
     value: string;
 }
 /**
+ * Wrapper message for `string`.
+ *
+ * The JSON representation for `StringValue` is JSON string.
+ */
+export interface StringValueSDKType {
+    /** The string value. */
+    value: string;
+}
+/**
  * Wrapper message for `bytes`.
  *
  * The JSON representation for `BytesValue` is JSON string.
  */
 export interface BytesValue {
+    /** The bytes value. */
+    value: Uint8Array;
+}
+/**
+ * Wrapper message for `bytes`.
+ *
+ * The JSON representation for `BytesValue` is JSON string.
+ */
+export interface BytesValueSDKType {
     /** The bytes value. */
     value: Uint8Array;
 }

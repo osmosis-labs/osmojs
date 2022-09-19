@@ -1,12 +1,12 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryConnectionRequest, QueryConnectionResponse, QueryConnectionsRequest, QueryConnectionsResponse, QueryClientConnectionsRequest, QueryClientConnectionsResponse, QueryConnectionClientStateRequest, QueryConnectionClientStateResponse, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponse } from "./query";
+import { QueryConnectionRequest, QueryConnectionResponseSDKType, QueryConnectionsRequest, QueryConnectionsResponseSDKType, QueryClientConnectionsRequest, QueryClientConnectionsResponseSDKType, QueryConnectionClientStateRequest, QueryConnectionClientStateResponseSDKType, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponseSDKType } from "./query";
 export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
         restEndpoint: string;
     });
-    connection(params: QueryConnectionRequest): Promise<QueryConnectionResponse>;
-    connections(params?: QueryConnectionsRequest): Promise<QueryConnectionsResponse>;
-    clientConnections(params: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponse>;
-    connectionClientState(params: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponse>;
-    connectionConsensusState(params: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponse>;
+    connection(params: QueryConnectionRequest): Promise<QueryConnectionResponseSDKType>;
+    connections(params?: QueryConnectionsRequest): Promise<QueryConnectionsResponseSDKType>;
+    clientConnections(params: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponseSDKType>;
+    connectionClientState(params: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponseSDKType>;
+    connectionConsensusState(params: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType>;
 }

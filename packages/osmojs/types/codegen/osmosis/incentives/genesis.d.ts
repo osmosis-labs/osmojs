@@ -1,6 +1,6 @@
-import { Params } from "./params";
-import { Gauge } from "./gauge";
-import { Duration } from "../../google/protobuf/duration";
+import { Params, ParamsSDKType } from "./params";
+import { Gauge, GaugeSDKType } from "./gauge";
+import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the incentives module's genesis state. */
@@ -8,7 +8,15 @@ export interface GenesisState {
     /** params defines all the parameters of the module */
     params: Params;
     gauges: Gauge[];
-    lockable_durations: Duration[];
+    lockableDurations: Duration[];
+    lastGaugeId: Long;
+}
+/** GenesisState defines the incentives module's genesis state. */
+export interface GenesisStateSDKType {
+    /** params defines all the parameters of the module */
+    params: ParamsSDKType;
+    gauges: GaugeSDKType[];
+    lockable_durations: DurationSDKType[];
     last_gauge_id: Long;
 }
 export declare const GenesisState: {

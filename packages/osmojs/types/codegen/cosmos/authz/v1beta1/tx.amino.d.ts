@@ -48,7 +48,7 @@ export declare const AminoConverter: {
     };
     "/cosmos.authz.v1beta1.MsgRevoke": {
         aminoType: string;
-        toAmino: ({ granter, grantee, msg_type_url }: MsgRevoke) => AminoMsgRevoke["value"];
+        toAmino: ({ granter, grantee, msgTypeUrl }: MsgRevoke) => AminoMsgRevoke["value"];
         fromAmino: ({ granter, grantee, msg_type_url }: AminoMsgRevoke["value"]) => MsgRevoke;
     };
 };

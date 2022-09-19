@@ -1,12 +1,12 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryCurrentPlanRequest, QueryCurrentPlanResponse, QueryAppliedPlanRequest, QueryAppliedPlanResponse, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponse, QueryModuleVersionsRequest, QueryModuleVersionsResponse, QueryAuthorityRequest, QueryAuthorityResponse } from "./query";
+import { QueryCurrentPlanRequest, QueryCurrentPlanResponseSDKType, QueryAppliedPlanRequest, QueryAppliedPlanResponseSDKType, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponseSDKType, QueryModuleVersionsRequest, QueryModuleVersionsResponseSDKType, QueryAuthorityRequest, QueryAuthorityResponseSDKType } from "./query";
 export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
         restEndpoint: string;
     });
-    currentPlan(_params?: QueryCurrentPlanRequest): Promise<QueryCurrentPlanResponse>;
-    appliedPlan(params: QueryAppliedPlanRequest): Promise<QueryAppliedPlanResponse>;
-    upgradedConsensusState(params: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponse>;
-    moduleVersions(params: QueryModuleVersionsRequest): Promise<QueryModuleVersionsResponse>;
-    authority(_params?: QueryAuthorityRequest): Promise<QueryAuthorityResponse>;
+    currentPlan(_params?: QueryCurrentPlanRequest): Promise<QueryCurrentPlanResponseSDKType>;
+    appliedPlan(params: QueryAppliedPlanRequest): Promise<QueryAppliedPlanResponseSDKType>;
+    upgradedConsensusState(params: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType>;
+    moduleVersions(params: QueryModuleVersionsRequest): Promise<QueryModuleVersionsResponseSDKType>;
+    authority(_params?: QueryAuthorityRequest): Promise<QueryAuthorityResponseSDKType>;
 }

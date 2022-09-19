@@ -1,16 +1,27 @@
-import { Params } from "./mint";
+import { Params, ParamsSDKType } from "./mint";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
+}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
     params: Params;
 }
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+export interface QueryParamsResponseSDKType {
+    /** params defines the parameters of the module. */
+    params: ParamsSDKType;
+}
 /** QueryInflationRequest is the request type for the Query/Inflation RPC method. */
 export interface QueryInflationRequest {
+}
+/** QueryInflationRequest is the request type for the Query/Inflation RPC method. */
+export interface QueryInflationRequestSDKType {
 }
 /**
  * QueryInflationResponse is the response type for the Query/Inflation RPC
@@ -21,16 +32,38 @@ export interface QueryInflationResponse {
     inflation: Uint8Array;
 }
 /**
+ * QueryInflationResponse is the response type for the Query/Inflation RPC
+ * method.
+ */
+export interface QueryInflationResponseSDKType {
+    /** inflation is the current minting inflation value. */
+    inflation: Uint8Array;
+}
+/**
  * QueryAnnualProvisionsRequest is the request type for the
  * Query/AnnualProvisions RPC method.
  */
 export interface QueryAnnualProvisionsRequest {
 }
 /**
+ * QueryAnnualProvisionsRequest is the request type for the
+ * Query/AnnualProvisions RPC method.
+ */
+export interface QueryAnnualProvisionsRequestSDKType {
+}
+/**
  * QueryAnnualProvisionsResponse is the response type for the
  * Query/AnnualProvisions RPC method.
  */
 export interface QueryAnnualProvisionsResponse {
+    /** annual_provisions is the current minting annual provisions value. */
+    annualProvisions: Uint8Array;
+}
+/**
+ * QueryAnnualProvisionsResponse is the response type for the
+ * Query/AnnualProvisions RPC method.
+ */
+export interface QueryAnnualProvisionsResponseSDKType {
     /** annual_provisions is the current minting annual provisions value. */
     annual_provisions: Uint8Array;
 }
@@ -43,7 +76,7 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
@@ -57,7 +90,7 @@ export declare const QueryInflationRequest: {
 };
 export declare const QueryInflationResponse: {
     encode(message: QueryInflationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryInflationResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryInflationResponseSDKType;
     fromJSON(object: any): QueryInflationResponse;
     toJSON(message: QueryInflationResponse): unknown;
     fromPartial(object: DeepPartial<QueryInflationResponse>): QueryInflationResponse;
@@ -71,7 +104,7 @@ export declare const QueryAnnualProvisionsRequest: {
 };
 export declare const QueryAnnualProvisionsResponse: {
     encode(message: QueryAnnualProvisionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAnnualProvisionsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAnnualProvisionsResponseSDKType;
     fromJSON(object: any): QueryAnnualProvisionsResponse;
     toJSON(message: QueryAnnualProvisionsResponse): unknown;
     fromPartial(object: DeepPartial<QueryAnnualProvisionsResponse>): QueryAnnualProvisionsResponse;

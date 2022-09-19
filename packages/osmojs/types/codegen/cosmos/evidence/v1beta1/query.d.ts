@@ -1,9 +1,14 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Any } from "../../../google/protobuf/any";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
 export interface QueryEvidenceRequest {
+    /** evidence_hash defines the hash of the requested evidence. */
+    evidenceHash: Uint8Array;
+}
+/** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
+export interface QueryEvidenceRequestSDKType {
     /** evidence_hash defines the hash of the requested evidence. */
     evidence_hash: Uint8Array;
 }
@@ -12,6 +17,11 @@ export interface QueryEvidenceResponse {
     /** evidence returns the requested evidence. */
     evidence: Any;
 }
+/** QueryEvidenceResponse is the response type for the Query/Evidence RPC method. */
+export interface QueryEvidenceResponseSDKType {
+    /** evidence returns the requested evidence. */
+    evidence: AnySDKType;
+}
 /**
  * QueryEvidenceRequest is the request type for the Query/AllEvidence RPC
  * method.
@@ -19,6 +29,14 @@ export interface QueryEvidenceResponse {
 export interface QueryAllEvidenceRequest {
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequest;
+}
+/**
+ * QueryEvidenceRequest is the request type for the Query/AllEvidence RPC
+ * method.
+ */
+export interface QueryAllEvidenceRequestSDKType {
+    /** pagination defines an optional pagination for the request. */
+    pagination?: PageRequestSDKType;
 }
 /**
  * QueryAllEvidenceResponse is the response type for the Query/AllEvidence RPC
@@ -30,6 +48,16 @@ export interface QueryAllEvidenceResponse {
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }
+/**
+ * QueryAllEvidenceResponse is the response type for the Query/AllEvidence RPC
+ * method.
+ */
+export interface QueryAllEvidenceResponseSDKType {
+    /** evidence returns all evidences. */
+    evidence: AnySDKType[];
+    /** pagination defines the pagination in the response. */
+    pagination?: PageResponseSDKType;
+}
 export declare const QueryEvidenceRequest: {
     encode(message: QueryEvidenceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEvidenceRequest;
@@ -39,7 +67,7 @@ export declare const QueryEvidenceRequest: {
 };
 export declare const QueryEvidenceResponse: {
     encode(message: QueryEvidenceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEvidenceResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEvidenceResponseSDKType;
     fromJSON(object: any): QueryEvidenceResponse;
     toJSON(message: QueryEvidenceResponse): unknown;
     fromPartial(object: DeepPartial<QueryEvidenceResponse>): QueryEvidenceResponse;
@@ -53,7 +81,7 @@ export declare const QueryAllEvidenceRequest: {
 };
 export declare const QueryAllEvidenceResponse: {
     encode(message: QueryAllEvidenceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllEvidenceResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllEvidenceResponseSDKType;
     fromJSON(object: any): QueryAllEvidenceResponse;
     toJSON(message: QueryAllEvidenceResponse): unknown;
     fromPartial(object: DeepPartial<QueryAllEvidenceResponse>): QueryAllEvidenceResponse;

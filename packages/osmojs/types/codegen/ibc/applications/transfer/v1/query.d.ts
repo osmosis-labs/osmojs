@@ -1,5 +1,5 @@
-import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination";
-import { DenomTrace, Params } from "./transfer";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
+import { DenomTrace, DenomTraceSDKType, Params, ParamsSDKType } from "./transfer";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /**
@@ -11,12 +11,28 @@ export interface QueryDenomTraceRequest {
     hash: string;
 }
 /**
+ * QueryDenomTraceRequest is the request type for the Query/DenomTrace RPC
+ * method
+ */
+export interface QueryDenomTraceRequestSDKType {
+    /** hash (in hex format) of the denomination trace information. */
+    hash: string;
+}
+/**
  * QueryDenomTraceResponse is the response type for the Query/DenomTrace RPC
  * method.
  */
 export interface QueryDenomTraceResponse {
     /** denom_trace returns the requested denomination trace information. */
-    denom_trace: DenomTrace;
+    denomTrace: DenomTrace;
+}
+/**
+ * QueryDenomTraceResponse is the response type for the Query/DenomTrace RPC
+ * method.
+ */
+export interface QueryDenomTraceResponseSDKType {
+    /** denom_trace returns the requested denomination trace information. */
+    denom_trace: DenomTraceSDKType;
 }
 /**
  * QueryConnectionsRequest is the request type for the Query/DenomTraces RPC
@@ -27,22 +43,48 @@ export interface QueryDenomTracesRequest {
     pagination?: PageRequest;
 }
 /**
+ * QueryConnectionsRequest is the request type for the Query/DenomTraces RPC
+ * method
+ */
+export interface QueryDenomTracesRequestSDKType {
+    /** pagination defines an optional pagination for the request. */
+    pagination?: PageRequestSDKType;
+}
+/**
  * QueryConnectionsResponse is the response type for the Query/DenomTraces RPC
  * method.
  */
 export interface QueryDenomTracesResponse {
     /** denom_traces returns all denominations trace information. */
-    denom_traces: DenomTrace[];
+    denomTraces: DenomTrace[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }
+/**
+ * QueryConnectionsResponse is the response type for the Query/DenomTraces RPC
+ * method.
+ */
+export interface QueryDenomTracesResponseSDKType {
+    /** denom_traces returns all denominations trace information. */
+    denom_traces: DenomTraceSDKType[];
+    /** pagination defines the pagination in the response. */
+    pagination?: PageResponseSDKType;
+}
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
+}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
     params: Params;
+}
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+export interface QueryParamsResponseSDKType {
+    /** params defines the parameters of the module. */
+    params: ParamsSDKType;
 }
 export declare const QueryDenomTraceRequest: {
     encode(message: QueryDenomTraceRequest, writer?: _m0.Writer): _m0.Writer;
@@ -53,7 +95,7 @@ export declare const QueryDenomTraceRequest: {
 };
 export declare const QueryDenomTraceResponse: {
     encode(message: QueryDenomTraceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceResponseSDKType;
     fromJSON(object: any): QueryDenomTraceResponse;
     toJSON(message: QueryDenomTraceResponse): unknown;
     fromPartial(object: DeepPartial<QueryDenomTraceResponse>): QueryDenomTraceResponse;
@@ -67,7 +109,7 @@ export declare const QueryDenomTracesRequest: {
 };
 export declare const QueryDenomTracesResponse: {
     encode(message: QueryDenomTracesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesResponseSDKType;
     fromJSON(object: any): QueryDenomTracesResponse;
     toJSON(message: QueryDenomTracesResponse): unknown;
     fromPartial(object: DeepPartial<QueryDenomTracesResponse>): QueryDenomTracesResponse;
@@ -81,7 +123,7 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;

@@ -1,4 +1,4 @@
-import { Minter, Params } from "./mint";
+import { Minter, MinterSDKType, Params, ParamsSDKType } from "./mint";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the mint module's genesis state. */
@@ -7,6 +7,15 @@ export interface GenesisState {
     minter: Minter;
     /** params defines all the paramaters of the module. */
     params: Params;
+    /** current halven period start epoch */
+    halvenStartedEpoch: Long;
+}
+/** GenesisState defines the mint module's genesis state. */
+export interface GenesisStateSDKType {
+    /** minter is a space for holding current rewards information. */
+    minter: MinterSDKType;
+    /** params defines all the paramaters of the module. */
+    params: ParamsSDKType;
     /** current halven period start epoch */
     halven_started_epoch: Long;
 }

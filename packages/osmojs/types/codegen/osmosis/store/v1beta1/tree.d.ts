@@ -3,12 +3,22 @@ import { DeepPartial } from "@osmonauts/helpers";
 export interface Node {
     children: Child[];
 }
+export interface NodeSDKType {
+    children: ChildSDKType[];
+}
 export interface Child {
+    index: Uint8Array;
+    accumulation: string;
+}
+export interface ChildSDKType {
     index: Uint8Array;
     accumulation: string;
 }
 export interface Leaf {
     leaf: Child;
+}
+export interface LeafSDKType {
+    leaf: ChildSDKType;
 }
 export declare const Node: {
     encode(message: Node, writer?: _m0.Writer): _m0.Writer;

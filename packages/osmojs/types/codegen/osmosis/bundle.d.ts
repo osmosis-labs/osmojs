@@ -1,264 +1,264 @@
-import * as _126 from "./epochs/genesis";
-import * as _127 from "./epochs/query";
-import * as _128 from "./gamm/pool-models/balancer/balancerPool";
-import * as _129 from "./gamm/v1beta1/genesis";
-import * as _130 from "./gamm/v1beta1/query";
-import * as _131 from "./gamm/v1beta1/tx";
-import * as _132 from "./gamm/pool-models/balancer/tx";
-import * as _133 from "./gamm/pool-models/stableswap/stableswap_pool";
-import * as _134 from "./gamm/pool-models/stableswap/tx";
-import * as _135 from "./incentives/gauge";
-import * as _136 from "./incentives/genesis";
-import * as _137 from "./incentives/params";
-import * as _138 from "./incentives/query";
-import * as _139 from "./incentives/tx";
-import * as _140 from "./lockup/genesis";
-import * as _141 from "./lockup/lock";
-import * as _142 from "./lockup/query";
-import * as _143 from "./lockup/tx";
-import * as _144 from "./mint/v1beta1/genesis";
-import * as _145 from "./mint/v1beta1/mint";
-import * as _146 from "./mint/v1beta1/query";
-import * as _147 from "./pool-incentives/v1beta1/genesis";
-import * as _148 from "./pool-incentives/v1beta1/gov";
-import * as _149 from "./pool-incentives/v1beta1/incentives";
-import * as _150 from "./pool-incentives/v1beta1/query";
-import * as _151 from "./store/v1beta1/tree";
-import * as _152 from "./superfluid/genesis";
-import * as _153 from "./superfluid/params";
-import * as _154 from "./superfluid/query";
-import * as _155 from "./superfluid/superfluid";
-import * as _156 from "./superfluid/tx";
-import * as _157 from "./tokenfactory/v1beta1/authorityMetadata";
-import * as _158 from "./tokenfactory/v1beta1/genesis";
-import * as _159 from "./tokenfactory/v1beta1/params";
-import * as _160 from "./tokenfactory/v1beta1/query";
-import * as _161 from "./tokenfactory/v1beta1/tx";
-import * as _162 from "./txfees/v1beta1/feetoken";
-import * as _163 from "./txfees/v1beta1/genesis";
-import * as _164 from "./txfees/v1beta1/gov";
-import * as _165 from "./txfees/v1beta1/query";
-import * as _284 from "./epochs/query.lcd";
-import * as _285 from "./gamm/v1beta1/query.lcd";
-import * as _286 from "./incentives/query.lcd";
-import * as _287 from "./lockup/query.lcd";
-import * as _288 from "./mint/v1beta1/query.lcd";
-import * as _289 from "./pool-incentives/v1beta1/query.lcd";
-import * as _290 from "./superfluid/query.lcd";
-import * as _291 from "./tokenfactory/v1beta1/query.lcd";
-import * as _292 from "./txfees/v1beta1/query.lcd";
-import * as _293 from "./epochs/query.rpc.query";
-import * as _294 from "./gamm/v1beta1/query.rpc.query";
-import * as _295 from "./incentives/query.rpc.query";
-import * as _296 from "./lockup/query.rpc.query";
-import * as _297 from "./mint/v1beta1/query.rpc.query";
-import * as _298 from "./pool-incentives/v1beta1/query.rpc.query";
-import * as _299 from "./superfluid/query.rpc.query";
-import * as _300 from "./tokenfactory/v1beta1/query.rpc.query";
-import * as _301 from "./txfees/v1beta1/query.rpc.query";
-import * as _302 from "./gamm/pool-models/balancer/tx.rpc.msg";
-import * as _303 from "./gamm/pool-models/stableswap/tx.rpc.msg";
-import * as _304 from "./gamm/v1beta1/tx.rpc.msg";
-import * as _305 from "./incentives/tx.rpc.msg";
-import * as _306 from "./lockup/tx.rpc.msg";
-import * as _307 from "./superfluid/tx.rpc.msg";
-import * as _308 from "./tokenfactory/v1beta1/tx.rpc.msg";
+import * as _130 from "./epochs/genesis";
+import * as _131 from "./epochs/query";
+import * as _132 from "./gamm/pool-models/balancer/balancerPool";
+import * as _133 from "./gamm/v1beta1/genesis";
+import * as _134 from "./gamm/v1beta1/query";
+import * as _135 from "./gamm/v1beta1/tx";
+import * as _136 from "./gamm/pool-models/balancer/tx";
+import * as _137 from "./gamm/pool-models/stableswap/stableswap_pool";
+import * as _138 from "./gamm/pool-models/stableswap/tx";
+import * as _139 from "./incentives/gauge";
+import * as _140 from "./incentives/genesis";
+import * as _141 from "./incentives/params";
+import * as _142 from "./incentives/query";
+import * as _143 from "./incentives/tx";
+import * as _144 from "./lockup/genesis";
+import * as _145 from "./lockup/lock";
+import * as _146 from "./lockup/query";
+import * as _147 from "./lockup/tx";
+import * as _148 from "./mint/v1beta1/genesis";
+import * as _149 from "./mint/v1beta1/mint";
+import * as _150 from "./mint/v1beta1/query";
+import * as _151 from "./pool-incentives/v1beta1/genesis";
+import * as _152 from "./pool-incentives/v1beta1/gov";
+import * as _153 from "./pool-incentives/v1beta1/incentives";
+import * as _154 from "./pool-incentives/v1beta1/query";
+import * as _155 from "./store/v1beta1/tree";
+import * as _156 from "./superfluid/genesis";
+import * as _157 from "./superfluid/params";
+import * as _158 from "./superfluid/query";
+import * as _159 from "./superfluid/superfluid";
+import * as _160 from "./superfluid/tx";
+import * as _161 from "./tokenfactory/v1beta1/authorityMetadata";
+import * as _162 from "./tokenfactory/v1beta1/genesis";
+import * as _163 from "./tokenfactory/v1beta1/params";
+import * as _164 from "./tokenfactory/v1beta1/query";
+import * as _165 from "./tokenfactory/v1beta1/tx";
+import * as _166 from "./txfees/v1beta1/feetoken";
+import * as _167 from "./txfees/v1beta1/genesis";
+import * as _168 from "./txfees/v1beta1/gov";
+import * as _169 from "./txfees/v1beta1/query";
+import * as _293 from "./epochs/query.lcd";
+import * as _294 from "./gamm/v1beta1/query.lcd";
+import * as _295 from "./incentives/query.lcd";
+import * as _296 from "./lockup/query.lcd";
+import * as _297 from "./mint/v1beta1/query.lcd";
+import * as _298 from "./pool-incentives/v1beta1/query.lcd";
+import * as _299 from "./superfluid/query.lcd";
+import * as _300 from "./tokenfactory/v1beta1/query.lcd";
+import * as _301 from "./txfees/v1beta1/query.lcd";
+import * as _302 from "./epochs/query.rpc.query";
+import * as _303 from "./gamm/v1beta1/query.rpc.query";
+import * as _304 from "./incentives/query.rpc.query";
+import * as _305 from "./lockup/query.rpc.query";
+import * as _306 from "./mint/v1beta1/query.rpc.query";
+import * as _307 from "./pool-incentives/v1beta1/query.rpc.query";
+import * as _308 from "./superfluid/query.rpc.query";
+import * as _309 from "./tokenfactory/v1beta1/query.rpc.query";
+import * as _310 from "./txfees/v1beta1/query.rpc.query";
+import * as _311 from "./gamm/pool-models/balancer/tx.rpc.msg";
+import * as _312 from "./gamm/pool-models/stableswap/tx.rpc.msg";
+import * as _313 from "./gamm/v1beta1/tx.rpc.msg";
+import * as _314 from "./incentives/tx.rpc.msg";
+import * as _315 from "./lockup/tx.rpc.msg";
+import * as _316 from "./superfluid/tx.rpc.msg";
+import * as _317 from "./tokenfactory/v1beta1/tx.rpc.msg";
 export declare namespace osmosis {
     namespace epochs {
         const v1beta1: {
-            QueryClientImpl: typeof _293.QueryClientImpl;
-            LCDQueryClient: typeof _284.LCDQueryClient;
+            QueryClientImpl: typeof _302.QueryClientImpl;
+            LCDQueryClient: typeof _293.LCDQueryClient;
             QueryEpochsInfoRequest: {
-                encode(_: _127.QueryEpochsInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.QueryEpochsInfoRequest;
-                fromJSON(_: any): _127.QueryEpochsInfoRequest;
-                toJSON(_: _127.QueryEpochsInfoRequest): unknown;
-                fromPartial(_: {}): _127.QueryEpochsInfoRequest;
+                encode(_: _131.QueryEpochsInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.QueryEpochsInfoRequest;
+                fromJSON(_: any): _131.QueryEpochsInfoRequest;
+                toJSON(_: _131.QueryEpochsInfoRequest): unknown;
+                fromPartial(_: {}): _131.QueryEpochsInfoRequest;
             };
             QueryEpochsInfoResponse: {
-                encode(message: _127.QueryEpochsInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.QueryEpochsInfoResponse;
-                fromJSON(object: any): _127.QueryEpochsInfoResponse;
-                toJSON(message: _127.QueryEpochsInfoResponse): unknown;
+                encode(message: _131.QueryEpochsInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.QueryEpochsInfoResponseSDKType;
+                fromJSON(object: any): _131.QueryEpochsInfoResponse;
+                toJSON(message: _131.QueryEpochsInfoResponse): unknown;
                 fromPartial(object: {
                     epochs?: {
                         identifier?: string;
-                        start_time?: Date;
+                        startTime?: Date;
                         duration?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        current_epoch?: any;
-                        current_epoch_start_time?: Date;
-                        epoch_counting_started?: boolean;
-                        current_epoch_start_height?: any;
+                        currentEpoch?: any;
+                        currentEpochStartTime?: Date;
+                        epochCountingStarted?: boolean;
+                        currentEpochStartHeight?: any;
                     }[];
-                }): _127.QueryEpochsInfoResponse;
+                }): _131.QueryEpochsInfoResponse;
             };
             QueryCurrentEpochRequest: {
-                encode(message: _127.QueryCurrentEpochRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.QueryCurrentEpochRequest;
-                fromJSON(object: any): _127.QueryCurrentEpochRequest;
-                toJSON(message: _127.QueryCurrentEpochRequest): unknown;
+                encode(message: _131.QueryCurrentEpochRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.QueryCurrentEpochRequest;
+                fromJSON(object: any): _131.QueryCurrentEpochRequest;
+                toJSON(message: _131.QueryCurrentEpochRequest): unknown;
                 fromPartial(object: {
                     identifier?: string;
-                }): _127.QueryCurrentEpochRequest;
+                }): _131.QueryCurrentEpochRequest;
             };
             QueryCurrentEpochResponse: {
-                encode(message: _127.QueryCurrentEpochResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.QueryCurrentEpochResponse;
-                fromJSON(object: any): _127.QueryCurrentEpochResponse;
-                toJSON(message: _127.QueryCurrentEpochResponse): unknown;
+                encode(message: _131.QueryCurrentEpochResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.QueryCurrentEpochResponseSDKType;
+                fromJSON(object: any): _131.QueryCurrentEpochResponse;
+                toJSON(message: _131.QueryCurrentEpochResponse): unknown;
                 fromPartial(object: {
-                    current_epoch?: any;
-                }): _127.QueryCurrentEpochResponse;
+                    currentEpoch?: any;
+                }): _131.QueryCurrentEpochResponse;
             };
             EpochInfo: {
-                encode(message: _126.EpochInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.EpochInfo;
-                fromJSON(object: any): _126.EpochInfo;
-                toJSON(message: _126.EpochInfo): unknown;
+                encode(message: _130.EpochInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.EpochInfo;
+                fromJSON(object: any): _130.EpochInfo;
+                toJSON(message: _130.EpochInfo): unknown;
                 fromPartial(object: {
                     identifier?: string;
-                    start_time?: Date;
+                    startTime?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
                     };
-                    current_epoch?: any;
-                    current_epoch_start_time?: Date;
-                    epoch_counting_started?: boolean;
-                    current_epoch_start_height?: any;
-                }): _126.EpochInfo;
+                    currentEpoch?: any;
+                    currentEpochStartTime?: Date;
+                    epochCountingStarted?: boolean;
+                    currentEpochStartHeight?: any;
+                }): _130.EpochInfo;
             };
             GenesisState: {
-                encode(message: _126.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.GenesisState;
-                fromJSON(object: any): _126.GenesisState;
-                toJSON(message: _126.GenesisState): unknown;
+                encode(message: _130.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.GenesisState;
+                fromJSON(object: any): _130.GenesisState;
+                toJSON(message: _130.GenesisState): unknown;
                 fromPartial(object: {
                     epochs?: {
                         identifier?: string;
-                        start_time?: Date;
+                        startTime?: Date;
                         duration?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        current_epoch?: any;
-                        current_epoch_start_time?: Date;
-                        epoch_counting_started?: boolean;
-                        current_epoch_start_height?: any;
+                        currentEpoch?: any;
+                        currentEpochStartTime?: Date;
+                        epochCountingStarted?: boolean;
+                        currentEpochStartHeight?: any;
                     }[];
-                }): _126.GenesisState;
+                }): _130.GenesisState;
             };
         };
     }
     namespace gamm {
         const v1beta1: {
-            MsgClientImpl: typeof _304.MsgClientImpl;
-            QueryClientImpl: typeof _294.QueryClientImpl;
-            LCDQueryClient: typeof _285.LCDQueryClient;
+            MsgClientImpl: typeof _313.MsgClientImpl;
+            QueryClientImpl: typeof _303.QueryClientImpl;
+            LCDQueryClient: typeof _294.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
                 encoded: {
-                    joinPool(value: _131.MsgJoinPool): {
+                    joinPool(value: _135.MsgJoinPool): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    exitPool(value: _131.MsgExitPool): {
+                    exitPool(value: _135.MsgExitPool): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    swapExactAmountIn(value: _131.MsgSwapExactAmountIn): {
+                    swapExactAmountIn(value: _135.MsgSwapExactAmountIn): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    swapExactAmountOut(value: _131.MsgSwapExactAmountOut): {
+                    swapExactAmountOut(value: _135.MsgSwapExactAmountOut): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    joinSwapExternAmountIn(value: _131.MsgJoinSwapExternAmountIn): {
+                    joinSwapExternAmountIn(value: _135.MsgJoinSwapExternAmountIn): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    joinSwapShareAmountOut(value: _131.MsgJoinSwapShareAmountOut): {
+                    joinSwapShareAmountOut(value: _135.MsgJoinSwapShareAmountOut): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    exitSwapExternAmountOut(value: _131.MsgExitSwapExternAmountOut): {
+                    exitSwapExternAmountOut(value: _135.MsgExitSwapExternAmountOut): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    exitSwapShareAmountIn(value: _131.MsgExitSwapShareAmountIn): {
+                    exitSwapShareAmountIn(value: _135.MsgExitSwapShareAmountIn): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
                 };
                 withTypeUrl: {
-                    joinPool(value: _131.MsgJoinPool): {
+                    joinPool(value: _135.MsgJoinPool): {
                         typeUrl: string;
-                        value: _131.MsgJoinPool;
+                        value: _135.MsgJoinPool;
                     };
-                    exitPool(value: _131.MsgExitPool): {
+                    exitPool(value: _135.MsgExitPool): {
                         typeUrl: string;
-                        value: _131.MsgExitPool;
+                        value: _135.MsgExitPool;
                     };
-                    swapExactAmountIn(value: _131.MsgSwapExactAmountIn): {
+                    swapExactAmountIn(value: _135.MsgSwapExactAmountIn): {
                         typeUrl: string;
-                        value: _131.MsgSwapExactAmountIn;
+                        value: _135.MsgSwapExactAmountIn;
                     };
-                    swapExactAmountOut(value: _131.MsgSwapExactAmountOut): {
+                    swapExactAmountOut(value: _135.MsgSwapExactAmountOut): {
                         typeUrl: string;
-                        value: _131.MsgSwapExactAmountOut;
+                        value: _135.MsgSwapExactAmountOut;
                     };
-                    joinSwapExternAmountIn(value: _131.MsgJoinSwapExternAmountIn): {
+                    joinSwapExternAmountIn(value: _135.MsgJoinSwapExternAmountIn): {
                         typeUrl: string;
-                        value: _131.MsgJoinSwapExternAmountIn;
+                        value: _135.MsgJoinSwapExternAmountIn;
                     };
-                    joinSwapShareAmountOut(value: _131.MsgJoinSwapShareAmountOut): {
+                    joinSwapShareAmountOut(value: _135.MsgJoinSwapShareAmountOut): {
                         typeUrl: string;
-                        value: _131.MsgJoinSwapShareAmountOut;
+                        value: _135.MsgJoinSwapShareAmountOut;
                     };
-                    exitSwapExternAmountOut(value: _131.MsgExitSwapExternAmountOut): {
+                    exitSwapExternAmountOut(value: _135.MsgExitSwapExternAmountOut): {
                         typeUrl: string;
-                        value: _131.MsgExitSwapExternAmountOut;
+                        value: _135.MsgExitSwapExternAmountOut;
                     };
-                    exitSwapShareAmountIn(value: _131.MsgExitSwapShareAmountIn): {
+                    exitSwapShareAmountIn(value: _135.MsgExitSwapShareAmountIn): {
                         typeUrl: string;
-                        value: _131.MsgExitSwapShareAmountIn;
+                        value: _135.MsgExitSwapShareAmountIn;
                     };
                 };
                 toJSON: {
-                    joinPool(value: _131.MsgJoinPool): {
+                    joinPool(value: _135.MsgJoinPool): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    exitPool(value: _131.MsgExitPool): {
+                    exitPool(value: _135.MsgExitPool): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    swapExactAmountIn(value: _131.MsgSwapExactAmountIn): {
+                    swapExactAmountIn(value: _135.MsgSwapExactAmountIn): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    swapExactAmountOut(value: _131.MsgSwapExactAmountOut): {
+                    swapExactAmountOut(value: _135.MsgSwapExactAmountOut): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    joinSwapExternAmountIn(value: _131.MsgJoinSwapExternAmountIn): {
+                    joinSwapExternAmountIn(value: _135.MsgJoinSwapExternAmountIn): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    joinSwapShareAmountOut(value: _131.MsgJoinSwapShareAmountOut): {
+                    joinSwapShareAmountOut(value: _135.MsgJoinSwapShareAmountOut): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    exitSwapExternAmountOut(value: _131.MsgExitSwapExternAmountOut): {
+                    exitSwapExternAmountOut(value: _135.MsgExitSwapExternAmountOut): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    exitSwapShareAmountIn(value: _131.MsgExitSwapShareAmountIn): {
+                    exitSwapShareAmountIn(value: _135.MsgExitSwapShareAmountIn): {
                         typeUrl: string;
                         value: unknown;
                     };
@@ -266,76 +266,76 @@ export declare namespace osmosis {
                 fromJSON: {
                     joinPool(value: any): {
                         typeUrl: string;
-                        value: _131.MsgJoinPool;
+                        value: _135.MsgJoinPool;
                     };
                     exitPool(value: any): {
                         typeUrl: string;
-                        value: _131.MsgExitPool;
+                        value: _135.MsgExitPool;
                     };
                     swapExactAmountIn(value: any): {
                         typeUrl: string;
-                        value: _131.MsgSwapExactAmountIn;
+                        value: _135.MsgSwapExactAmountIn;
                     };
                     swapExactAmountOut(value: any): {
                         typeUrl: string;
-                        value: _131.MsgSwapExactAmountOut;
+                        value: _135.MsgSwapExactAmountOut;
                     };
                     joinSwapExternAmountIn(value: any): {
                         typeUrl: string;
-                        value: _131.MsgJoinSwapExternAmountIn;
+                        value: _135.MsgJoinSwapExternAmountIn;
                     };
                     joinSwapShareAmountOut(value: any): {
                         typeUrl: string;
-                        value: _131.MsgJoinSwapShareAmountOut;
+                        value: _135.MsgJoinSwapShareAmountOut;
                     };
                     exitSwapExternAmountOut(value: any): {
                         typeUrl: string;
-                        value: _131.MsgExitSwapExternAmountOut;
+                        value: _135.MsgExitSwapExternAmountOut;
                     };
                     exitSwapShareAmountIn(value: any): {
                         typeUrl: string;
-                        value: _131.MsgExitSwapShareAmountIn;
+                        value: _135.MsgExitSwapShareAmountIn;
                     };
                 };
                 fromPartial: {
-                    joinPool(value: _131.MsgJoinPool): {
+                    joinPool(value: _135.MsgJoinPool): {
                         typeUrl: string;
-                        value: _131.MsgJoinPool;
+                        value: _135.MsgJoinPool;
                     };
-                    exitPool(value: _131.MsgExitPool): {
+                    exitPool(value: _135.MsgExitPool): {
                         typeUrl: string;
-                        value: _131.MsgExitPool;
+                        value: _135.MsgExitPool;
                     };
-                    swapExactAmountIn(value: _131.MsgSwapExactAmountIn): {
+                    swapExactAmountIn(value: _135.MsgSwapExactAmountIn): {
                         typeUrl: string;
-                        value: _131.MsgSwapExactAmountIn;
+                        value: _135.MsgSwapExactAmountIn;
                     };
-                    swapExactAmountOut(value: _131.MsgSwapExactAmountOut): {
+                    swapExactAmountOut(value: _135.MsgSwapExactAmountOut): {
                         typeUrl: string;
-                        value: _131.MsgSwapExactAmountOut;
+                        value: _135.MsgSwapExactAmountOut;
                     };
-                    joinSwapExternAmountIn(value: _131.MsgJoinSwapExternAmountIn): {
+                    joinSwapExternAmountIn(value: _135.MsgJoinSwapExternAmountIn): {
                         typeUrl: string;
-                        value: _131.MsgJoinSwapExternAmountIn;
+                        value: _135.MsgJoinSwapExternAmountIn;
                     };
-                    joinSwapShareAmountOut(value: _131.MsgJoinSwapShareAmountOut): {
+                    joinSwapShareAmountOut(value: _135.MsgJoinSwapShareAmountOut): {
                         typeUrl: string;
-                        value: _131.MsgJoinSwapShareAmountOut;
+                        value: _135.MsgJoinSwapShareAmountOut;
                     };
-                    exitSwapExternAmountOut(value: _131.MsgExitSwapExternAmountOut): {
+                    exitSwapExternAmountOut(value: _135.MsgExitSwapExternAmountOut): {
                         typeUrl: string;
-                        value: _131.MsgExitSwapExternAmountOut;
+                        value: _135.MsgExitSwapExternAmountOut;
                     };
-                    exitSwapShareAmountIn(value: _131.MsgExitSwapShareAmountIn): {
+                    exitSwapShareAmountIn(value: _135.MsgExitSwapShareAmountIn): {
                         typeUrl: string;
-                        value: _131.MsgExitSwapShareAmountIn;
+                        value: _135.MsgExitSwapShareAmountIn;
                     };
                 };
             };
             AminoConverter: {
                 "/osmosis.gamm.v1beta1.MsgJoinPool": {
                     aminoType: string;
-                    toAmino: ({ sender, poolId, shareOutAmount, tokenInMaxs }: _131.MsgJoinPool) => {
+                    toAmino: ({ sender, poolId, shareOutAmount, tokenInMaxs }: _135.MsgJoinPool) => {
                         sender: string;
                         poolId: string;
                         shareOutAmount: string;
@@ -352,11 +352,11 @@ export declare namespace osmosis {
                             denom: string;
                             amount: string;
                         }[];
-                    }) => _131.MsgJoinPool;
+                    }) => _135.MsgJoinPool;
                 };
                 "/osmosis.gamm.v1beta1.MsgExitPool": {
                     aminoType: string;
-                    toAmino: ({ sender, poolId, shareInAmount, tokenOutMins }: _131.MsgExitPool) => {
+                    toAmino: ({ sender, poolId, shareInAmount, tokenOutMins }: _135.MsgExitPool) => {
                         sender: string;
                         poolId: string;
                         shareInAmount: string;
@@ -373,11 +373,11 @@ export declare namespace osmosis {
                             denom: string;
                             amount: string;
                         }[];
-                    }) => _131.MsgExitPool;
+                    }) => _135.MsgExitPool;
                 };
                 "/osmosis.gamm.v1beta1.MsgSwapExactAmountIn": {
                     aminoType: string;
-                    toAmino: ({ sender, routes, tokenIn, tokenOutMinAmount }: _131.MsgSwapExactAmountIn) => {
+                    toAmino: ({ sender, routes, tokenIn, tokenOutMinAmount }: _135.MsgSwapExactAmountIn) => {
                         sender: string;
                         routes: {
                             poolId: string;
@@ -400,11 +400,11 @@ export declare namespace osmosis {
                             amount: string;
                         };
                         tokenOutMinAmount: string;
-                    }) => _131.MsgSwapExactAmountIn;
+                    }) => _135.MsgSwapExactAmountIn;
                 };
                 "/osmosis.gamm.v1beta1.MsgSwapExactAmountOut": {
                     aminoType: string;
-                    toAmino: ({ sender, routes, tokenInMaxAmount, tokenOut }: _131.MsgSwapExactAmountOut) => {
+                    toAmino: ({ sender, routes, tokenInMaxAmount, tokenOut }: _135.MsgSwapExactAmountOut) => {
                         sender: string;
                         routes: {
                             poolId: string;
@@ -427,11 +427,11 @@ export declare namespace osmosis {
                             denom: string;
                             amount: string;
                         };
-                    }) => _131.MsgSwapExactAmountOut;
+                    }) => _135.MsgSwapExactAmountOut;
                 };
                 "/osmosis.gamm.v1beta1.MsgJoinSwapExternAmountIn": {
                     aminoType: string;
-                    toAmino: ({ sender, poolId, tokenIn, shareOutMinAmount }: _131.MsgJoinSwapExternAmountIn) => {
+                    toAmino: ({ sender, poolId, tokenIn, shareOutMinAmount }: _135.MsgJoinSwapExternAmountIn) => {
                         sender: string;
                         poolId: string;
                         tokenIn: {
@@ -448,11 +448,11 @@ export declare namespace osmosis {
                             amount: string;
                         };
                         shareOutMinAmount: string;
-                    }) => _131.MsgJoinSwapExternAmountIn;
+                    }) => _135.MsgJoinSwapExternAmountIn;
                 };
                 "/osmosis.gamm.v1beta1.MsgJoinSwapShareAmountOut": {
                     aminoType: string;
-                    toAmino: ({ sender, poolId, tokenInDenom, shareOutAmount, tokenInMaxAmount }: _131.MsgJoinSwapShareAmountOut) => {
+                    toAmino: ({ sender, poolId, tokenInDenom, shareOutAmount, tokenInMaxAmount }: _135.MsgJoinSwapShareAmountOut) => {
                         sender: string;
                         poolId: string;
                         tokenInDenom: string;
@@ -465,11 +465,11 @@ export declare namespace osmosis {
                         tokenInDenom: string;
                         shareOutAmount: string;
                         tokenInMaxAmount: string;
-                    }) => _131.MsgJoinSwapShareAmountOut;
+                    }) => _135.MsgJoinSwapShareAmountOut;
                 };
                 "/osmosis.gamm.v1beta1.MsgExitSwapExternAmountOut": {
                     aminoType: string;
-                    toAmino: ({ sender, poolId, tokenOut, shareInMaxAmount }: _131.MsgExitSwapExternAmountOut) => {
+                    toAmino: ({ sender, poolId, tokenOut, shareInMaxAmount }: _135.MsgExitSwapExternAmountOut) => {
                         sender: string;
                         poolId: string;
                         tokenOut: {
@@ -486,11 +486,11 @@ export declare namespace osmosis {
                             amount: string;
                         };
                         shareInMaxAmount: string;
-                    }) => _131.MsgExitSwapExternAmountOut;
+                    }) => _135.MsgExitSwapExternAmountOut;
                 };
                 "/osmosis.gamm.v1beta1.MsgExitSwapShareAmountIn": {
                     aminoType: string;
-                    toAmino: ({ sender, poolId, tokenOutDenom, shareInAmount, tokenOutMinAmount }: _131.MsgExitSwapShareAmountIn) => {
+                    toAmino: ({ sender, poolId, tokenOutDenom, shareInAmount, tokenOutMinAmount }: _135.MsgExitSwapShareAmountIn) => {
                         sender: string;
                         poolId: string;
                         tokenOutDenom: string;
@@ -503,14 +503,14 @@ export declare namespace osmosis {
                         tokenOutDenom: string;
                         shareInAmount: string;
                         tokenOutMinAmount: string;
-                    }) => _131.MsgExitSwapShareAmountIn;
+                    }) => _135.MsgExitSwapShareAmountIn;
                 };
             };
             MsgJoinPool: {
-                encode(message: _131.MsgJoinPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgJoinPool;
-                fromJSON(object: any): _131.MsgJoinPool;
-                toJSON(message: _131.MsgJoinPool): unknown;
+                encode(message: _135.MsgJoinPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgJoinPool;
+                fromJSON(object: any): _135.MsgJoinPool;
+                toJSON(message: _135.MsgJoinPool): unknown;
                 fromPartial(object: {
                     sender?: string;
                     poolId?: any;
@@ -519,20 +519,20 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                }): _131.MsgJoinPool;
+                }): _135.MsgJoinPool;
             };
             MsgJoinPoolResponse: {
-                encode(_: _131.MsgJoinPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgJoinPoolResponse;
-                fromJSON(_: any): _131.MsgJoinPoolResponse;
-                toJSON(_: _131.MsgJoinPoolResponse): unknown;
-                fromPartial(_: {}): _131.MsgJoinPoolResponse;
+                encode(_: _135.MsgJoinPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgJoinPoolResponseSDKType;
+                fromJSON(_: any): _135.MsgJoinPoolResponse;
+                toJSON(_: _135.MsgJoinPoolResponse): unknown;
+                fromPartial(_: {}): _135.MsgJoinPoolResponse;
             };
             MsgExitPool: {
-                encode(message: _131.MsgExitPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgExitPool;
-                fromJSON(object: any): _131.MsgExitPool;
-                toJSON(message: _131.MsgExitPool): unknown;
+                encode(message: _135.MsgExitPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgExitPool;
+                fromJSON(object: any): _135.MsgExitPool;
+                toJSON(message: _135.MsgExitPool): unknown;
                 fromPartial(object: {
                     sender?: string;
                     poolId?: any;
@@ -541,30 +541,30 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                }): _131.MsgExitPool;
+                }): _135.MsgExitPool;
             };
             MsgExitPoolResponse: {
-                encode(_: _131.MsgExitPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgExitPoolResponse;
-                fromJSON(_: any): _131.MsgExitPoolResponse;
-                toJSON(_: _131.MsgExitPoolResponse): unknown;
-                fromPartial(_: {}): _131.MsgExitPoolResponse;
+                encode(_: _135.MsgExitPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgExitPoolResponseSDKType;
+                fromJSON(_: any): _135.MsgExitPoolResponse;
+                toJSON(_: _135.MsgExitPoolResponse): unknown;
+                fromPartial(_: {}): _135.MsgExitPoolResponse;
             };
             SwapAmountInRoute: {
-                encode(message: _131.SwapAmountInRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.SwapAmountInRoute;
-                fromJSON(object: any): _131.SwapAmountInRoute;
-                toJSON(message: _131.SwapAmountInRoute): unknown;
+                encode(message: _135.SwapAmountInRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.SwapAmountInRoute;
+                fromJSON(object: any): _135.SwapAmountInRoute;
+                toJSON(message: _135.SwapAmountInRoute): unknown;
                 fromPartial(object: {
                     poolId?: any;
                     tokenOutDenom?: string;
-                }): _131.SwapAmountInRoute;
+                }): _135.SwapAmountInRoute;
             };
             MsgSwapExactAmountIn: {
-                encode(message: _131.MsgSwapExactAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgSwapExactAmountIn;
-                fromJSON(object: any): _131.MsgSwapExactAmountIn;
-                toJSON(message: _131.MsgSwapExactAmountIn): unknown;
+                encode(message: _135.MsgSwapExactAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgSwapExactAmountIn;
+                fromJSON(object: any): _135.MsgSwapExactAmountIn;
+                toJSON(message: _135.MsgSwapExactAmountIn): unknown;
                 fromPartial(object: {
                     sender?: string;
                     routes?: {
@@ -576,32 +576,32 @@ export declare namespace osmosis {
                         amount?: string;
                     };
                     tokenOutMinAmount?: string;
-                }): _131.MsgSwapExactAmountIn;
+                }): _135.MsgSwapExactAmountIn;
             };
             MsgSwapExactAmountInResponse: {
-                encode(message: _131.MsgSwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgSwapExactAmountInResponse;
-                fromJSON(object: any): _131.MsgSwapExactAmountInResponse;
-                toJSON(message: _131.MsgSwapExactAmountInResponse): unknown;
+                encode(message: _135.MsgSwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgSwapExactAmountInResponseSDKType;
+                fromJSON(object: any): _135.MsgSwapExactAmountInResponse;
+                toJSON(message: _135.MsgSwapExactAmountInResponse): unknown;
                 fromPartial(object: {
                     tokenOutAmount?: string;
-                }): _131.MsgSwapExactAmountInResponse;
+                }): _135.MsgSwapExactAmountInResponse;
             };
             SwapAmountOutRoute: {
-                encode(message: _131.SwapAmountOutRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.SwapAmountOutRoute;
-                fromJSON(object: any): _131.SwapAmountOutRoute;
-                toJSON(message: _131.SwapAmountOutRoute): unknown;
+                encode(message: _135.SwapAmountOutRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.SwapAmountOutRoute;
+                fromJSON(object: any): _135.SwapAmountOutRoute;
+                toJSON(message: _135.SwapAmountOutRoute): unknown;
                 fromPartial(object: {
                     poolId?: any;
                     tokenInDenom?: string;
-                }): _131.SwapAmountOutRoute;
+                }): _135.SwapAmountOutRoute;
             };
             MsgSwapExactAmountOut: {
-                encode(message: _131.MsgSwapExactAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgSwapExactAmountOut;
-                fromJSON(object: any): _131.MsgSwapExactAmountOut;
-                toJSON(message: _131.MsgSwapExactAmountOut): unknown;
+                encode(message: _135.MsgSwapExactAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgSwapExactAmountOut;
+                fromJSON(object: any): _135.MsgSwapExactAmountOut;
+                toJSON(message: _135.MsgSwapExactAmountOut): unknown;
                 fromPartial(object: {
                     sender?: string;
                     routes?: {
@@ -613,22 +613,22 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     };
-                }): _131.MsgSwapExactAmountOut;
+                }): _135.MsgSwapExactAmountOut;
             };
             MsgSwapExactAmountOutResponse: {
-                encode(message: _131.MsgSwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgSwapExactAmountOutResponse;
-                fromJSON(object: any): _131.MsgSwapExactAmountOutResponse;
-                toJSON(message: _131.MsgSwapExactAmountOutResponse): unknown;
+                encode(message: _135.MsgSwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgSwapExactAmountOutResponseSDKType;
+                fromJSON(object: any): _135.MsgSwapExactAmountOutResponse;
+                toJSON(message: _135.MsgSwapExactAmountOutResponse): unknown;
                 fromPartial(object: {
                     tokenInAmount?: string;
-                }): _131.MsgSwapExactAmountOutResponse;
+                }): _135.MsgSwapExactAmountOutResponse;
             };
             MsgJoinSwapExternAmountIn: {
-                encode(message: _131.MsgJoinSwapExternAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgJoinSwapExternAmountIn;
-                fromJSON(object: any): _131.MsgJoinSwapExternAmountIn;
-                toJSON(message: _131.MsgJoinSwapExternAmountIn): unknown;
+                encode(message: _135.MsgJoinSwapExternAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgJoinSwapExternAmountIn;
+                fromJSON(object: any): _135.MsgJoinSwapExternAmountIn;
+                toJSON(message: _135.MsgJoinSwapExternAmountIn): unknown;
                 fromPartial(object: {
                     sender?: string;
                     poolId?: any;
@@ -637,66 +637,66 @@ export declare namespace osmosis {
                         amount?: string;
                     };
                     shareOutMinAmount?: string;
-                }): _131.MsgJoinSwapExternAmountIn;
+                }): _135.MsgJoinSwapExternAmountIn;
             };
             MsgJoinSwapExternAmountInResponse: {
-                encode(message: _131.MsgJoinSwapExternAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgJoinSwapExternAmountInResponse;
-                fromJSON(object: any): _131.MsgJoinSwapExternAmountInResponse;
-                toJSON(message: _131.MsgJoinSwapExternAmountInResponse): unknown;
+                encode(message: _135.MsgJoinSwapExternAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgJoinSwapExternAmountInResponseSDKType;
+                fromJSON(object: any): _135.MsgJoinSwapExternAmountInResponse;
+                toJSON(message: _135.MsgJoinSwapExternAmountInResponse): unknown;
                 fromPartial(object: {
                     shareOutAmount?: string;
-                }): _131.MsgJoinSwapExternAmountInResponse;
+                }): _135.MsgJoinSwapExternAmountInResponse;
             };
             MsgJoinSwapShareAmountOut: {
-                encode(message: _131.MsgJoinSwapShareAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgJoinSwapShareAmountOut;
-                fromJSON(object: any): _131.MsgJoinSwapShareAmountOut;
-                toJSON(message: _131.MsgJoinSwapShareAmountOut): unknown;
+                encode(message: _135.MsgJoinSwapShareAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgJoinSwapShareAmountOut;
+                fromJSON(object: any): _135.MsgJoinSwapShareAmountOut;
+                toJSON(message: _135.MsgJoinSwapShareAmountOut): unknown;
                 fromPartial(object: {
                     sender?: string;
                     poolId?: any;
                     tokenInDenom?: string;
                     shareOutAmount?: string;
                     tokenInMaxAmount?: string;
-                }): _131.MsgJoinSwapShareAmountOut;
+                }): _135.MsgJoinSwapShareAmountOut;
             };
             MsgJoinSwapShareAmountOutResponse: {
-                encode(message: _131.MsgJoinSwapShareAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgJoinSwapShareAmountOutResponse;
-                fromJSON(object: any): _131.MsgJoinSwapShareAmountOutResponse;
-                toJSON(message: _131.MsgJoinSwapShareAmountOutResponse): unknown;
+                encode(message: _135.MsgJoinSwapShareAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgJoinSwapShareAmountOutResponseSDKType;
+                fromJSON(object: any): _135.MsgJoinSwapShareAmountOutResponse;
+                toJSON(message: _135.MsgJoinSwapShareAmountOutResponse): unknown;
                 fromPartial(object: {
                     tokenInAmount?: string;
-                }): _131.MsgJoinSwapShareAmountOutResponse;
+                }): _135.MsgJoinSwapShareAmountOutResponse;
             };
             MsgExitSwapShareAmountIn: {
-                encode(message: _131.MsgExitSwapShareAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgExitSwapShareAmountIn;
-                fromJSON(object: any): _131.MsgExitSwapShareAmountIn;
-                toJSON(message: _131.MsgExitSwapShareAmountIn): unknown;
+                encode(message: _135.MsgExitSwapShareAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgExitSwapShareAmountIn;
+                fromJSON(object: any): _135.MsgExitSwapShareAmountIn;
+                toJSON(message: _135.MsgExitSwapShareAmountIn): unknown;
                 fromPartial(object: {
                     sender?: string;
                     poolId?: any;
                     tokenOutDenom?: string;
                     shareInAmount?: string;
                     tokenOutMinAmount?: string;
-                }): _131.MsgExitSwapShareAmountIn;
+                }): _135.MsgExitSwapShareAmountIn;
             };
             MsgExitSwapShareAmountInResponse: {
-                encode(message: _131.MsgExitSwapShareAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgExitSwapShareAmountInResponse;
-                fromJSON(object: any): _131.MsgExitSwapShareAmountInResponse;
-                toJSON(message: _131.MsgExitSwapShareAmountInResponse): unknown;
+                encode(message: _135.MsgExitSwapShareAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgExitSwapShareAmountInResponseSDKType;
+                fromJSON(object: any): _135.MsgExitSwapShareAmountInResponse;
+                toJSON(message: _135.MsgExitSwapShareAmountInResponse): unknown;
                 fromPartial(object: {
                     tokenOutAmount?: string;
-                }): _131.MsgExitSwapShareAmountInResponse;
+                }): _135.MsgExitSwapShareAmountInResponse;
             };
             MsgExitSwapExternAmountOut: {
-                encode(message: _131.MsgExitSwapExternAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgExitSwapExternAmountOut;
-                fromJSON(object: any): _131.MsgExitSwapExternAmountOut;
-                toJSON(message: _131.MsgExitSwapExternAmountOut): unknown;
+                encode(message: _135.MsgExitSwapExternAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgExitSwapExternAmountOut;
+                fromJSON(object: any): _135.MsgExitSwapExternAmountOut;
+                toJSON(message: _135.MsgExitSwapExternAmountOut): unknown;
                 fromPartial(object: {
                     sender?: string;
                     poolId?: any;
@@ -705,173 +705,173 @@ export declare namespace osmosis {
                         amount?: string;
                     };
                     shareInMaxAmount?: string;
-                }): _131.MsgExitSwapExternAmountOut;
+                }): _135.MsgExitSwapExternAmountOut;
             };
             MsgExitSwapExternAmountOutResponse: {
-                encode(message: _131.MsgExitSwapExternAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.MsgExitSwapExternAmountOutResponse;
-                fromJSON(object: any): _131.MsgExitSwapExternAmountOutResponse;
-                toJSON(message: _131.MsgExitSwapExternAmountOutResponse): unknown;
+                encode(message: _135.MsgExitSwapExternAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.MsgExitSwapExternAmountOutResponseSDKType;
+                fromJSON(object: any): _135.MsgExitSwapExternAmountOutResponse;
+                toJSON(message: _135.MsgExitSwapExternAmountOutResponse): unknown;
                 fromPartial(object: {
                     shareInAmount?: string;
-                }): _131.MsgExitSwapExternAmountOutResponse;
+                }): _135.MsgExitSwapExternAmountOutResponse;
             };
             QueryPoolRequest: {
-                encode(message: _130.QueryPoolRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryPoolRequest;
-                fromJSON(object: any): _130.QueryPoolRequest;
-                toJSON(message: _130.QueryPoolRequest): unknown;
+                encode(message: _134.QueryPoolRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryPoolRequest;
+                fromJSON(object: any): _134.QueryPoolRequest;
+                toJSON(message: _134.QueryPoolRequest): unknown;
                 fromPartial(object: {
                     poolId?: any;
-                }): _130.QueryPoolRequest;
+                }): _134.QueryPoolRequest;
             };
             QueryPoolResponse: {
-                encode(message: _130.QueryPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryPoolResponse;
-                fromJSON(object: any): _130.QueryPoolResponse;
-                toJSON(message: _130.QueryPoolResponse): unknown;
+                encode(message: _134.QueryPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryPoolResponseSDKType;
+                fromJSON(object: any): _134.QueryPoolResponse;
+                toJSON(message: _134.QueryPoolResponse): unknown;
                 fromPartial(object: {
                     pool?: {
-                        type_url?: string;
+                        typeUrl?: string;
                         value?: Uint8Array;
                     };
-                }): _130.QueryPoolResponse;
+                }): _134.QueryPoolResponse;
             };
             QueryPoolsRequest: {
-                encode(message: _130.QueryPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryPoolsRequest;
-                fromJSON(object: any): _130.QueryPoolsRequest;
-                toJSON(message: _130.QueryPoolsRequest): unknown;
+                encode(message: _134.QueryPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryPoolsRequest;
+                fromJSON(object: any): _134.QueryPoolsRequest;
+                toJSON(message: _134.QueryPoolsRequest): unknown;
                 fromPartial(object: {
                     pagination?: {
                         key?: Uint8Array;
                         offset?: any;
                         limit?: any;
-                        count_total?: boolean;
+                        countTotal?: boolean;
                         reverse?: boolean;
                     };
-                }): _130.QueryPoolsRequest;
+                }): _134.QueryPoolsRequest;
             };
             QueryPoolsResponse: {
-                encode(message: _130.QueryPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryPoolsResponse;
-                fromJSON(object: any): _130.QueryPoolsResponse;
-                toJSON(message: _130.QueryPoolsResponse): unknown;
+                encode(message: _134.QueryPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryPoolsResponseSDKType;
+                fromJSON(object: any): _134.QueryPoolsResponse;
+                toJSON(message: _134.QueryPoolsResponse): unknown;
                 fromPartial(object: {
                     pools?: {
-                        type_url?: string;
+                        typeUrl?: string;
                         value?: Uint8Array;
                     }[];
                     pagination?: {
-                        next_key?: Uint8Array;
+                        nextKey?: Uint8Array;
                         total?: any;
                     };
-                }): _130.QueryPoolsResponse;
+                }): _134.QueryPoolsResponse;
             };
             QueryNumPoolsRequest: {
-                encode(_: _130.QueryNumPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryNumPoolsRequest;
-                fromJSON(_: any): _130.QueryNumPoolsRequest;
-                toJSON(_: _130.QueryNumPoolsRequest): unknown;
-                fromPartial(_: {}): _130.QueryNumPoolsRequest;
+                encode(_: _134.QueryNumPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryNumPoolsRequest;
+                fromJSON(_: any): _134.QueryNumPoolsRequest;
+                toJSON(_: _134.QueryNumPoolsRequest): unknown;
+                fromPartial(_: {}): _134.QueryNumPoolsRequest;
             };
             QueryNumPoolsResponse: {
-                encode(message: _130.QueryNumPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryNumPoolsResponse;
-                fromJSON(object: any): _130.QueryNumPoolsResponse;
-                toJSON(message: _130.QueryNumPoolsResponse): unknown;
+                encode(message: _134.QueryNumPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryNumPoolsResponseSDKType;
+                fromJSON(object: any): _134.QueryNumPoolsResponse;
+                toJSON(message: _134.QueryNumPoolsResponse): unknown;
                 fromPartial(object: {
                     numPools?: any;
-                }): _130.QueryNumPoolsResponse;
+                }): _134.QueryNumPoolsResponse;
             };
             QueryPoolParamsRequest: {
-                encode(message: _130.QueryPoolParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryPoolParamsRequest;
-                fromJSON(object: any): _130.QueryPoolParamsRequest;
-                toJSON(message: _130.QueryPoolParamsRequest): unknown;
+                encode(message: _134.QueryPoolParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryPoolParamsRequest;
+                fromJSON(object: any): _134.QueryPoolParamsRequest;
+                toJSON(message: _134.QueryPoolParamsRequest): unknown;
                 fromPartial(object: {
                     poolId?: any;
-                }): _130.QueryPoolParamsRequest;
+                }): _134.QueryPoolParamsRequest;
             };
             QueryPoolParamsResponse: {
-                encode(message: _130.QueryPoolParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryPoolParamsResponse;
-                fromJSON(object: any): _130.QueryPoolParamsResponse;
-                toJSON(message: _130.QueryPoolParamsResponse): unknown;
+                encode(message: _134.QueryPoolParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryPoolParamsResponseSDKType;
+                fromJSON(object: any): _134.QueryPoolParamsResponse;
+                toJSON(message: _134.QueryPoolParamsResponse): unknown;
                 fromPartial(object: {
                     params?: {
-                        type_url?: string;
+                        typeUrl?: string;
                         value?: Uint8Array;
                     };
-                }): _130.QueryPoolParamsResponse;
+                }): _134.QueryPoolParamsResponse;
             };
             QueryTotalPoolLiquidityRequest: {
-                encode(message: _130.QueryTotalPoolLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryTotalPoolLiquidityRequest;
-                fromJSON(object: any): _130.QueryTotalPoolLiquidityRequest;
-                toJSON(message: _130.QueryTotalPoolLiquidityRequest): unknown;
+                encode(message: _134.QueryTotalPoolLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryTotalPoolLiquidityRequest;
+                fromJSON(object: any): _134.QueryTotalPoolLiquidityRequest;
+                toJSON(message: _134.QueryTotalPoolLiquidityRequest): unknown;
                 fromPartial(object: {
                     poolId?: any;
-                }): _130.QueryTotalPoolLiquidityRequest;
+                }): _134.QueryTotalPoolLiquidityRequest;
             };
             QueryTotalPoolLiquidityResponse: {
-                encode(message: _130.QueryTotalPoolLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryTotalPoolLiquidityResponse;
-                fromJSON(object: any): _130.QueryTotalPoolLiquidityResponse;
-                toJSON(message: _130.QueryTotalPoolLiquidityResponse): unknown;
+                encode(message: _134.QueryTotalPoolLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryTotalPoolLiquidityResponseSDKType;
+                fromJSON(object: any): _134.QueryTotalPoolLiquidityResponse;
+                toJSON(message: _134.QueryTotalPoolLiquidityResponse): unknown;
                 fromPartial(object: {
                     liquidity?: {
                         denom?: string;
                         amount?: string;
                     }[];
-                }): _130.QueryTotalPoolLiquidityResponse;
+                }): _134.QueryTotalPoolLiquidityResponse;
             };
             QueryTotalSharesRequest: {
-                encode(message: _130.QueryTotalSharesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryTotalSharesRequest;
-                fromJSON(object: any): _130.QueryTotalSharesRequest;
-                toJSON(message: _130.QueryTotalSharesRequest): unknown;
+                encode(message: _134.QueryTotalSharesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryTotalSharesRequest;
+                fromJSON(object: any): _134.QueryTotalSharesRequest;
+                toJSON(message: _134.QueryTotalSharesRequest): unknown;
                 fromPartial(object: {
                     poolId?: any;
-                }): _130.QueryTotalSharesRequest;
+                }): _134.QueryTotalSharesRequest;
             };
             QueryTotalSharesResponse: {
-                encode(message: _130.QueryTotalSharesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryTotalSharesResponse;
-                fromJSON(object: any): _130.QueryTotalSharesResponse;
-                toJSON(message: _130.QueryTotalSharesResponse): unknown;
+                encode(message: _134.QueryTotalSharesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryTotalSharesResponseSDKType;
+                fromJSON(object: any): _134.QueryTotalSharesResponse;
+                toJSON(message: _134.QueryTotalSharesResponse): unknown;
                 fromPartial(object: {
                     totalShares?: {
                         denom?: string;
                         amount?: string;
                     };
-                }): _130.QueryTotalSharesResponse;
+                }): _134.QueryTotalSharesResponse;
             };
             QuerySpotPriceRequest: {
-                encode(message: _130.QuerySpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QuerySpotPriceRequest;
-                fromJSON(object: any): _130.QuerySpotPriceRequest;
-                toJSON(message: _130.QuerySpotPriceRequest): unknown;
+                encode(message: _134.QuerySpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QuerySpotPriceRequest;
+                fromJSON(object: any): _134.QuerySpotPriceRequest;
+                toJSON(message: _134.QuerySpotPriceRequest): unknown;
                 fromPartial(object: {
                     poolId?: any;
-                    base_asset_denom?: string;
-                    quote_asset_denom?: string;
-                }): _130.QuerySpotPriceRequest;
+                    baseAssetDenom?: string;
+                    quoteAssetDenom?: string;
+                }): _134.QuerySpotPriceRequest;
             };
             QuerySpotPriceResponse: {
-                encode(message: _130.QuerySpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QuerySpotPriceResponse;
-                fromJSON(object: any): _130.QuerySpotPriceResponse;
-                toJSON(message: _130.QuerySpotPriceResponse): unknown;
+                encode(message: _134.QuerySpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QuerySpotPriceResponseSDKType;
+                fromJSON(object: any): _134.QuerySpotPriceResponse;
+                toJSON(message: _134.QuerySpotPriceResponse): unknown;
                 fromPartial(object: {
                     spotPrice?: string;
-                }): _130.QuerySpotPriceResponse;
+                }): _134.QuerySpotPriceResponse;
             };
             QuerySwapExactAmountInRequest: {
-                encode(message: _130.QuerySwapExactAmountInRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QuerySwapExactAmountInRequest;
-                fromJSON(object: any): _130.QuerySwapExactAmountInRequest;
-                toJSON(message: _130.QuerySwapExactAmountInRequest): unknown;
+                encode(message: _134.QuerySwapExactAmountInRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QuerySwapExactAmountInRequest;
+                fromJSON(object: any): _134.QuerySwapExactAmountInRequest;
+                toJSON(message: _134.QuerySwapExactAmountInRequest): unknown;
                 fromPartial(object: {
                     sender?: string;
                     poolId?: any;
@@ -880,22 +880,22 @@ export declare namespace osmosis {
                         poolId?: any;
                         tokenOutDenom?: string;
                     }[];
-                }): _130.QuerySwapExactAmountInRequest;
+                }): _134.QuerySwapExactAmountInRequest;
             };
             QuerySwapExactAmountInResponse: {
-                encode(message: _130.QuerySwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QuerySwapExactAmountInResponse;
-                fromJSON(object: any): _130.QuerySwapExactAmountInResponse;
-                toJSON(message: _130.QuerySwapExactAmountInResponse): unknown;
+                encode(message: _134.QuerySwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QuerySwapExactAmountInResponseSDKType;
+                fromJSON(object: any): _134.QuerySwapExactAmountInResponse;
+                toJSON(message: _134.QuerySwapExactAmountInResponse): unknown;
                 fromPartial(object: {
                     tokenOutAmount?: string;
-                }): _130.QuerySwapExactAmountInResponse;
+                }): _134.QuerySwapExactAmountInResponse;
             };
             QuerySwapExactAmountOutRequest: {
-                encode(message: _130.QuerySwapExactAmountOutRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QuerySwapExactAmountOutRequest;
-                fromJSON(object: any): _130.QuerySwapExactAmountOutRequest;
-                toJSON(message: _130.QuerySwapExactAmountOutRequest): unknown;
+                encode(message: _134.QuerySwapExactAmountOutRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QuerySwapExactAmountOutRequest;
+                fromJSON(object: any): _134.QuerySwapExactAmountOutRequest;
+                toJSON(message: _134.QuerySwapExactAmountOutRequest): unknown;
                 fromPartial(object: {
                     sender?: string;
                     poolId?: any;
@@ -904,74 +904,74 @@ export declare namespace osmosis {
                         tokenInDenom?: string;
                     }[];
                     tokenOut?: string;
-                }): _130.QuerySwapExactAmountOutRequest;
+                }): _134.QuerySwapExactAmountOutRequest;
             };
             QuerySwapExactAmountOutResponse: {
-                encode(message: _130.QuerySwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QuerySwapExactAmountOutResponse;
-                fromJSON(object: any): _130.QuerySwapExactAmountOutResponse;
-                toJSON(message: _130.QuerySwapExactAmountOutResponse): unknown;
+                encode(message: _134.QuerySwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QuerySwapExactAmountOutResponseSDKType;
+                fromJSON(object: any): _134.QuerySwapExactAmountOutResponse;
+                toJSON(message: _134.QuerySwapExactAmountOutResponse): unknown;
                 fromPartial(object: {
                     tokenInAmount?: string;
-                }): _130.QuerySwapExactAmountOutResponse;
+                }): _134.QuerySwapExactAmountOutResponse;
             };
             QueryTotalLiquidityRequest: {
-                encode(_: _130.QueryTotalLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryTotalLiquidityRequest;
-                fromJSON(_: any): _130.QueryTotalLiquidityRequest;
-                toJSON(_: _130.QueryTotalLiquidityRequest): unknown;
-                fromPartial(_: {}): _130.QueryTotalLiquidityRequest;
+                encode(_: _134.QueryTotalLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryTotalLiquidityRequest;
+                fromJSON(_: any): _134.QueryTotalLiquidityRequest;
+                toJSON(_: _134.QueryTotalLiquidityRequest): unknown;
+                fromPartial(_: {}): _134.QueryTotalLiquidityRequest;
             };
             QueryTotalLiquidityResponse: {
-                encode(message: _130.QueryTotalLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryTotalLiquidityResponse;
-                fromJSON(object: any): _130.QueryTotalLiquidityResponse;
-                toJSON(message: _130.QueryTotalLiquidityResponse): unknown;
+                encode(message: _134.QueryTotalLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.QueryTotalLiquidityResponseSDKType;
+                fromJSON(object: any): _134.QueryTotalLiquidityResponse;
+                toJSON(message: _134.QueryTotalLiquidityResponse): unknown;
                 fromPartial(object: {
                     liquidity?: {
                         denom?: string;
                         amount?: string;
                     }[];
-                }): _130.QueryTotalLiquidityResponse;
+                }): _134.QueryTotalLiquidityResponse;
             };
             Params: {
-                encode(message: _129.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.Params;
-                fromJSON(object: any): _129.Params;
-                toJSON(message: _129.Params): unknown;
+                encode(message: _133.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.Params;
+                fromJSON(object: any): _133.Params;
+                toJSON(message: _133.Params): unknown;
                 fromPartial(object: {
-                    pool_creation_fee?: {
+                    poolCreationFee?: {
                         denom?: string;
                         amount?: string;
                     }[];
-                }): _129.Params;
+                }): _133.Params;
             };
             GenesisState: {
-                encode(message: _129.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.GenesisState;
-                fromJSON(object: any): _129.GenesisState;
-                toJSON(message: _129.GenesisState): unknown;
+                encode(message: _133.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.GenesisState;
+                fromJSON(object: any): _133.GenesisState;
+                toJSON(message: _133.GenesisState): unknown;
                 fromPartial(object: {
                     pools?: {
-                        type_url?: string;
+                        typeUrl?: string;
                         value?: Uint8Array;
                     }[];
-                    next_pool_number?: any;
+                    nextPoolNumber?: any;
                     params?: {
-                        pool_creation_fee?: {
+                        poolCreationFee?: {
                             denom?: string;
                             amount?: string;
                         }[];
                     };
-                }): _129.GenesisState;
+                }): _133.GenesisState;
             };
             SmoothWeightChangeParams: {
-                encode(message: _128.SmoothWeightChangeParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.SmoothWeightChangeParams;
-                fromJSON(object: any): _128.SmoothWeightChangeParams;
-                toJSON(message: _128.SmoothWeightChangeParams): unknown;
+                encode(message: _132.SmoothWeightChangeParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.SmoothWeightChangeParams;
+                fromJSON(object: any): _132.SmoothWeightChangeParams;
+                toJSON(message: _132.SmoothWeightChangeParams): unknown;
                 fromPartial(object: {
-                    start_time?: Date;
+                    startTime?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
@@ -990,18 +990,18 @@ export declare namespace osmosis {
                         };
                         weight?: string;
                     }[];
-                }): _128.SmoothWeightChangeParams;
+                }): _132.SmoothWeightChangeParams;
             };
             PoolParams: {
-                encode(message: _128.PoolParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.PoolParams;
-                fromJSON(object: any): _128.PoolParams;
-                toJSON(message: _128.PoolParams): unknown;
+                encode(message: _132.PoolParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.PoolParams;
+                fromJSON(object: any): _132.PoolParams;
+                toJSON(message: _132.PoolParams): unknown;
                 fromPartial(object: {
                     swapFee?: string;
                     exitFee?: string;
                     smoothWeightChangeParams?: {
-                        start_time?: Date;
+                        startTime?: Date;
                         duration?: {
                             seconds?: any;
                             nanos?: number;
@@ -1021,26 +1021,26 @@ export declare namespace osmosis {
                             weight?: string;
                         }[];
                     };
-                }): _128.PoolParams;
+                }): _132.PoolParams;
             };
             PoolAsset: {
-                encode(message: _128.PoolAsset, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.PoolAsset;
-                fromJSON(object: any): _128.PoolAsset;
-                toJSON(message: _128.PoolAsset): unknown;
+                encode(message: _132.PoolAsset, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.PoolAsset;
+                fromJSON(object: any): _132.PoolAsset;
+                toJSON(message: _132.PoolAsset): unknown;
                 fromPartial(object: {
                     token?: {
                         denom?: string;
                         amount?: string;
                     };
                     weight?: string;
-                }): _128.PoolAsset;
+                }): _132.PoolAsset;
             };
             Pool: {
-                encode(message: _128.Pool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.Pool;
-                fromJSON(object: any): _128.Pool;
-                toJSON(message: _128.Pool): unknown;
+                encode(message: _132.Pool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.Pool;
+                fromJSON(object: any): _132.Pool;
+                toJSON(message: _132.Pool): unknown;
                 fromPartial(object: {
                     address?: string;
                     id?: any;
@@ -1048,7 +1048,7 @@ export declare namespace osmosis {
                         swapFee?: string;
                         exitFee?: string;
                         smoothWeightChangeParams?: {
-                            start_time?: Date;
+                            startTime?: Date;
                             duration?: {
                                 seconds?: any;
                                 nanos?: number;
@@ -1069,7 +1069,7 @@ export declare namespace osmosis {
                             }[];
                         };
                     };
-                    future_pool_governor?: string;
+                    futurePoolGovernor?: string;
                     totalShares?: {
                         denom?: string;
                         amount?: string;
@@ -1082,30 +1082,30 @@ export declare namespace osmosis {
                         weight?: string;
                     }[];
                     totalWeight?: string;
-                }): _128.Pool;
+                }): _132.Pool;
             };
         };
         namespace poolmodels {
             namespace balancer {
                 const v1beta1: {
-                    MsgClientImpl: typeof _302.MsgClientImpl;
+                    MsgClientImpl: typeof _311.MsgClientImpl;
                     registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                     load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                     MessageComposer: {
                         encoded: {
-                            createBalancerPool(value: _132.MsgCreateBalancerPool): {
+                            createBalancerPool(value: _136.MsgCreateBalancerPool): {
                                 typeUrl: string;
                                 value: Uint8Array;
                             };
                         };
                         withTypeUrl: {
-                            createBalancerPool(value: _132.MsgCreateBalancerPool): {
+                            createBalancerPool(value: _136.MsgCreateBalancerPool): {
                                 typeUrl: string;
-                                value: _132.MsgCreateBalancerPool;
+                                value: _136.MsgCreateBalancerPool;
                             };
                         };
                         toJSON: {
-                            createBalancerPool(value: _132.MsgCreateBalancerPool): {
+                            createBalancerPool(value: _136.MsgCreateBalancerPool): {
                                 typeUrl: string;
                                 value: unknown;
                             };
@@ -1113,20 +1113,20 @@ export declare namespace osmosis {
                         fromJSON: {
                             createBalancerPool(value: any): {
                                 typeUrl: string;
-                                value: _132.MsgCreateBalancerPool;
+                                value: _136.MsgCreateBalancerPool;
                             };
                         };
                         fromPartial: {
-                            createBalancerPool(value: _132.MsgCreateBalancerPool): {
+                            createBalancerPool(value: _136.MsgCreateBalancerPool): {
                                 typeUrl: string;
-                                value: _132.MsgCreateBalancerPool;
+                                value: _136.MsgCreateBalancerPool;
                             };
                         };
                     };
                     AminoConverter: {
                         "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPool": {
                             aminoType: string;
-                            toAmino: ({ sender, poolParams, poolAssets, future_pool_governor }: _132.MsgCreateBalancerPool) => {
+                            toAmino: ({ sender, poolParams, poolAssets, futurePoolGovernor }: _136.MsgCreateBalancerPool) => {
                                 sender: string;
                                 poolParams: {
                                     swapFee: string;
@@ -1203,21 +1203,21 @@ export declare namespace osmosis {
                                     weight: string;
                                 }[];
                                 future_pool_governor: string;
-                            }) => _132.MsgCreateBalancerPool;
+                            }) => _136.MsgCreateBalancerPool;
                         };
                     };
                     MsgCreateBalancerPool: {
-                        encode(message: _132.MsgCreateBalancerPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.MsgCreateBalancerPool;
-                        fromJSON(object: any): _132.MsgCreateBalancerPool;
-                        toJSON(message: _132.MsgCreateBalancerPool): unknown;
+                        encode(message: _136.MsgCreateBalancerPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.MsgCreateBalancerPool;
+                        fromJSON(object: any): _136.MsgCreateBalancerPool;
+                        toJSON(message: _136.MsgCreateBalancerPool): unknown;
                         fromPartial(object: {
                             sender?: string;
                             poolParams?: {
                                 swapFee?: string;
                                 exitFee?: string;
                                 smoothWeightChangeParams?: {
-                                    start_time?: Date;
+                                    startTime?: Date;
                                     duration?: {
                                         seconds?: any;
                                         nanos?: number;
@@ -1245,52 +1245,52 @@ export declare namespace osmosis {
                                 };
                                 weight?: string;
                             }[];
-                            future_pool_governor?: string;
-                        }): _132.MsgCreateBalancerPool;
+                            futurePoolGovernor?: string;
+                        }): _136.MsgCreateBalancerPool;
                     };
                     MsgCreateBalancerPoolResponse: {
-                        encode(message: _132.MsgCreateBalancerPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.MsgCreateBalancerPoolResponse;
-                        fromJSON(object: any): _132.MsgCreateBalancerPoolResponse;
-                        toJSON(message: _132.MsgCreateBalancerPoolResponse): unknown;
+                        encode(message: _136.MsgCreateBalancerPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.MsgCreateBalancerPoolResponseSDKType;
+                        fromJSON(object: any): _136.MsgCreateBalancerPoolResponse;
+                        toJSON(message: _136.MsgCreateBalancerPoolResponse): unknown;
                         fromPartial(object: {
-                            pool_id?: any;
-                        }): _132.MsgCreateBalancerPoolResponse;
+                            poolId?: any;
+                        }): _136.MsgCreateBalancerPoolResponse;
                     };
                 };
             }
             namespace stableswap {
                 const v1beta1: {
-                    MsgClientImpl: typeof _303.MsgClientImpl;
+                    MsgClientImpl: typeof _312.MsgClientImpl;
                     registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                     load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                     MessageComposer: {
                         encoded: {
-                            createStableswapPool(value: _134.MsgCreateStableswapPool): {
+                            createStableswapPool(value: _138.MsgCreateStableswapPool): {
                                 typeUrl: string;
                                 value: Uint8Array;
                             };
-                            stableSwapAdjustScalingFactors(value: _134.MsgStableSwapAdjustScalingFactors): {
+                            stableSwapAdjustScalingFactors(value: _138.MsgStableSwapAdjustScalingFactors): {
                                 typeUrl: string;
                                 value: Uint8Array;
                             };
                         };
                         withTypeUrl: {
-                            createStableswapPool(value: _134.MsgCreateStableswapPool): {
+                            createStableswapPool(value: _138.MsgCreateStableswapPool): {
                                 typeUrl: string;
-                                value: _134.MsgCreateStableswapPool;
+                                value: _138.MsgCreateStableswapPool;
                             };
-                            stableSwapAdjustScalingFactors(value: _134.MsgStableSwapAdjustScalingFactors): {
+                            stableSwapAdjustScalingFactors(value: _138.MsgStableSwapAdjustScalingFactors): {
                                 typeUrl: string;
-                                value: _134.MsgStableSwapAdjustScalingFactors;
+                                value: _138.MsgStableSwapAdjustScalingFactors;
                             };
                         };
                         toJSON: {
-                            createStableswapPool(value: _134.MsgCreateStableswapPool): {
+                            createStableswapPool(value: _138.MsgCreateStableswapPool): {
                                 typeUrl: string;
                                 value: unknown;
                             };
-                            stableSwapAdjustScalingFactors(value: _134.MsgStableSwapAdjustScalingFactors): {
+                            stableSwapAdjustScalingFactors(value: _138.MsgStableSwapAdjustScalingFactors): {
                                 typeUrl: string;
                                 value: unknown;
                             };
@@ -1298,28 +1298,28 @@ export declare namespace osmosis {
                         fromJSON: {
                             createStableswapPool(value: any): {
                                 typeUrl: string;
-                                value: _134.MsgCreateStableswapPool;
+                                value: _138.MsgCreateStableswapPool;
                             };
                             stableSwapAdjustScalingFactors(value: any): {
                                 typeUrl: string;
-                                value: _134.MsgStableSwapAdjustScalingFactors;
+                                value: _138.MsgStableSwapAdjustScalingFactors;
                             };
                         };
                         fromPartial: {
-                            createStableswapPool(value: _134.MsgCreateStableswapPool): {
+                            createStableswapPool(value: _138.MsgCreateStableswapPool): {
                                 typeUrl: string;
-                                value: _134.MsgCreateStableswapPool;
+                                value: _138.MsgCreateStableswapPool;
                             };
-                            stableSwapAdjustScalingFactors(value: _134.MsgStableSwapAdjustScalingFactors): {
+                            stableSwapAdjustScalingFactors(value: _138.MsgStableSwapAdjustScalingFactors): {
                                 typeUrl: string;
-                                value: _134.MsgStableSwapAdjustScalingFactors;
+                                value: _138.MsgStableSwapAdjustScalingFactors;
                             };
                         };
                     };
                     AminoConverter: {
                         "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgCreateStableswapPool": {
                             aminoType: string;
-                            toAmino: ({ sender, poolParams, initial_pool_liquidity, future_pool_governor }: _134.MsgCreateStableswapPool) => {
+                            toAmino: ({ sender, poolParams, initialPoolLiquidity, futurePoolGovernor }: _138.MsgCreateStableswapPool) => {
                                 sender: string;
                                 poolParams: {
                                     swapFee: string;
@@ -1342,11 +1342,11 @@ export declare namespace osmosis {
                                     amount: string;
                                 }[];
                                 future_pool_governor: string;
-                            }) => _134.MsgCreateStableswapPool;
+                            }) => _138.MsgCreateStableswapPool;
                         };
                         "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgStableSwapAdjustScalingFactors": {
                             aminoType: string;
-                            toAmino: ({ sender, pool_id, scaling_factors }: _134.MsgStableSwapAdjustScalingFactors) => {
+                            toAmino: ({ sender, poolId, scalingFactors }: _138.MsgStableSwapAdjustScalingFactors) => {
                                 sender: string;
                                 pool_id: string;
                                 scaling_factors: Long[];
@@ -1355,69 +1355,69 @@ export declare namespace osmosis {
                                 sender: string;
                                 pool_id: string;
                                 scaling_factors: Long[];
-                            }) => _134.MsgStableSwapAdjustScalingFactors;
+                            }) => _138.MsgStableSwapAdjustScalingFactors;
                         };
                     };
                     MsgCreateStableswapPool: {
-                        encode(message: _134.MsgCreateStableswapPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.MsgCreateStableswapPool;
-                        fromJSON(object: any): _134.MsgCreateStableswapPool;
-                        toJSON(message: _134.MsgCreateStableswapPool): unknown;
+                        encode(message: _138.MsgCreateStableswapPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.MsgCreateStableswapPool;
+                        fromJSON(object: any): _138.MsgCreateStableswapPool;
+                        toJSON(message: _138.MsgCreateStableswapPool): unknown;
                         fromPartial(object: {
                             sender?: string;
                             poolParams?: {
                                 swapFee?: string;
                                 exitFee?: string;
                             };
-                            initial_pool_liquidity?: {
+                            initialPoolLiquidity?: {
                                 denom?: string;
                                 amount?: string;
                             }[];
-                            future_pool_governor?: string;
-                        }): _134.MsgCreateStableswapPool;
+                            futurePoolGovernor?: string;
+                        }): _138.MsgCreateStableswapPool;
                     };
                     MsgCreateStableswapPoolResponse: {
-                        encode(message: _134.MsgCreateStableswapPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.MsgCreateStableswapPoolResponse;
-                        fromJSON(object: any): _134.MsgCreateStableswapPoolResponse;
-                        toJSON(message: _134.MsgCreateStableswapPoolResponse): unknown;
+                        encode(message: _138.MsgCreateStableswapPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.MsgCreateStableswapPoolResponseSDKType;
+                        fromJSON(object: any): _138.MsgCreateStableswapPoolResponse;
+                        toJSON(message: _138.MsgCreateStableswapPoolResponse): unknown;
                         fromPartial(object: {
-                            pool_id?: any;
-                        }): _134.MsgCreateStableswapPoolResponse;
+                            poolId?: any;
+                        }): _138.MsgCreateStableswapPoolResponse;
                     };
                     MsgStableSwapAdjustScalingFactors: {
-                        encode(message: _134.MsgStableSwapAdjustScalingFactors, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.MsgStableSwapAdjustScalingFactors;
-                        fromJSON(object: any): _134.MsgStableSwapAdjustScalingFactors;
-                        toJSON(message: _134.MsgStableSwapAdjustScalingFactors): unknown;
+                        encode(message: _138.MsgStableSwapAdjustScalingFactors, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.MsgStableSwapAdjustScalingFactors;
+                        fromJSON(object: any): _138.MsgStableSwapAdjustScalingFactors;
+                        toJSON(message: _138.MsgStableSwapAdjustScalingFactors): unknown;
                         fromPartial(object: {
                             sender?: string;
-                            pool_id?: any;
-                            scaling_factors?: any[];
-                        }): _134.MsgStableSwapAdjustScalingFactors;
+                            poolId?: any;
+                            scalingFactors?: any[];
+                        }): _138.MsgStableSwapAdjustScalingFactors;
                     };
                     MsgStableSwapAdjustScalingFactorsResponse: {
-                        encode(_: _134.MsgStableSwapAdjustScalingFactorsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.MsgStableSwapAdjustScalingFactorsResponse;
-                        fromJSON(_: any): _134.MsgStableSwapAdjustScalingFactorsResponse;
-                        toJSON(_: _134.MsgStableSwapAdjustScalingFactorsResponse): unknown;
-                        fromPartial(_: {}): _134.MsgStableSwapAdjustScalingFactorsResponse;
+                        encode(_: _138.MsgStableSwapAdjustScalingFactorsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.MsgStableSwapAdjustScalingFactorsResponseSDKType;
+                        fromJSON(_: any): _138.MsgStableSwapAdjustScalingFactorsResponse;
+                        toJSON(_: _138.MsgStableSwapAdjustScalingFactorsResponse): unknown;
+                        fromPartial(_: {}): _138.MsgStableSwapAdjustScalingFactorsResponse;
                     };
                     PoolParams: {
-                        encode(message: _133.PoolParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.PoolParams;
-                        fromJSON(object: any): _133.PoolParams;
-                        toJSON(message: _133.PoolParams): unknown;
+                        encode(message: _137.PoolParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.PoolParams;
+                        fromJSON(object: any): _137.PoolParams;
+                        toJSON(message: _137.PoolParams): unknown;
                         fromPartial(object: {
                             swapFee?: string;
                             exitFee?: string;
-                        }): _133.PoolParams;
+                        }): _137.PoolParams;
                     };
                     Pool: {
-                        encode(message: _133.Pool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.Pool;
-                        fromJSON(object: any): _133.Pool;
-                        toJSON(message: _133.Pool): unknown;
+                        encode(message: _137.Pool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.Pool;
+                        fromJSON(object: any): _137.Pool;
+                        toJSON(message: _137.Pool): unknown;
                         fromPartial(object: {
                             address?: string;
                             id?: any;
@@ -1425,7 +1425,7 @@ export declare namespace osmosis {
                                 swapFee?: string;
                                 exitFee?: string;
                             };
-                            future_pool_governor?: string;
+                            futurePoolGovernor?: string;
                             totalShares?: {
                                 denom?: string;
                                 amount?: string;
@@ -1434,47 +1434,47 @@ export declare namespace osmosis {
                                 denom?: string;
                                 amount?: string;
                             }[];
-                            scaling_factor?: any[];
-                            scaling_factor_governor?: string;
-                        }): _133.Pool;
+                            scalingFactor?: any[];
+                            scalingFactorGovernor?: string;
+                        }): _137.Pool;
                     };
                 };
             }
         }
     }
     const incentives: {
-        MsgClientImpl: typeof _305.MsgClientImpl;
-        QueryClientImpl: typeof _295.QueryClientImpl;
-        LCDQueryClient: typeof _286.LCDQueryClient;
+        MsgClientImpl: typeof _314.MsgClientImpl;
+        QueryClientImpl: typeof _304.QueryClientImpl;
+        LCDQueryClient: typeof _295.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
             encoded: {
-                createGauge(value: _139.MsgCreateGauge): {
+                createGauge(value: _143.MsgCreateGauge): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
-                addToGauge(value: _139.MsgAddToGauge): {
+                addToGauge(value: _143.MsgAddToGauge): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
             };
             withTypeUrl: {
-                createGauge(value: _139.MsgCreateGauge): {
+                createGauge(value: _143.MsgCreateGauge): {
                     typeUrl: string;
-                    value: _139.MsgCreateGauge;
+                    value: _143.MsgCreateGauge;
                 };
-                addToGauge(value: _139.MsgAddToGauge): {
+                addToGauge(value: _143.MsgAddToGauge): {
                     typeUrl: string;
-                    value: _139.MsgAddToGauge;
+                    value: _143.MsgAddToGauge;
                 };
             };
             toJSON: {
-                createGauge(value: _139.MsgCreateGauge): {
+                createGauge(value: _143.MsgCreateGauge): {
                     typeUrl: string;
                     value: unknown;
                 };
-                addToGauge(value: _139.MsgAddToGauge): {
+                addToGauge(value: _143.MsgAddToGauge): {
                     typeUrl: string;
                     value: unknown;
                 };
@@ -1482,28 +1482,28 @@ export declare namespace osmosis {
             fromJSON: {
                 createGauge(value: any): {
                     typeUrl: string;
-                    value: _139.MsgCreateGauge;
+                    value: _143.MsgCreateGauge;
                 };
                 addToGauge(value: any): {
                     typeUrl: string;
-                    value: _139.MsgAddToGauge;
+                    value: _143.MsgAddToGauge;
                 };
             };
             fromPartial: {
-                createGauge(value: _139.MsgCreateGauge): {
+                createGauge(value: _143.MsgCreateGauge): {
                     typeUrl: string;
-                    value: _139.MsgCreateGauge;
+                    value: _143.MsgCreateGauge;
                 };
-                addToGauge(value: _139.MsgAddToGauge): {
+                addToGauge(value: _143.MsgAddToGauge): {
                     typeUrl: string;
-                    value: _139.MsgAddToGauge;
+                    value: _143.MsgAddToGauge;
                 };
             };
         };
         AminoConverter: {
             "/osmosis.incentives.MsgCreateGauge": {
                 aminoType: string;
-                toAmino: ({ is_perpetual, owner, distribute_to, coins, start_time, num_epochs_paid_over }: _139.MsgCreateGauge) => {
+                toAmino: ({ isPerpetual, owner, distributeTo, coins, startTime, numEpochsPaidOver }: _143.MsgCreateGauge) => {
                     is_perpetual: boolean;
                     owner: string;
                     distribute_to: {
@@ -1552,11 +1552,11 @@ export declare namespace osmosis {
                         nanos: number;
                     };
                     num_epochs_paid_over: string;
-                }) => _139.MsgCreateGauge;
+                }) => _143.MsgCreateGauge;
             };
             "/osmosis.incentives.MsgAddToGauge": {
                 aminoType: string;
-                toAmino: ({ owner, gauge_id, rewards }: _139.MsgAddToGauge) => {
+                toAmino: ({ owner, gaugeId, rewards }: _143.MsgAddToGauge) => {
                     owner: string;
                     gauge_id: string;
                     rewards: {
@@ -1571,19 +1571,19 @@ export declare namespace osmosis {
                         denom: string;
                         amount: string;
                     }[];
-                }) => _139.MsgAddToGauge;
+                }) => _143.MsgAddToGauge;
             };
         };
         MsgCreateGauge: {
-            encode(message: _139.MsgCreateGauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.MsgCreateGauge;
-            fromJSON(object: any): _139.MsgCreateGauge;
-            toJSON(message: _139.MsgCreateGauge): unknown;
+            encode(message: _143.MsgCreateGauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgCreateGauge;
+            fromJSON(object: any): _143.MsgCreateGauge;
+            toJSON(message: _143.MsgCreateGauge): unknown;
             fromPartial(object: {
-                is_perpetual?: boolean;
+                isPerpetual?: boolean;
                 owner?: string;
-                distribute_to?: {
-                    lock_query_type?: _141.LockQueryType;
+                distributeTo?: {
+                    lockQueryType?: _145.LockQueryType;
                     denom?: string;
                     duration?: {
                         seconds?: any;
@@ -1595,96 +1595,96 @@ export declare namespace osmosis {
                     denom?: string;
                     amount?: string;
                 }[];
-                start_time?: Date;
-                num_epochs_paid_over?: any;
-            }): _139.MsgCreateGauge;
+                startTime?: Date;
+                numEpochsPaidOver?: any;
+            }): _143.MsgCreateGauge;
         };
         MsgCreateGaugeResponse: {
-            encode(_: _139.MsgCreateGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.MsgCreateGaugeResponse;
-            fromJSON(_: any): _139.MsgCreateGaugeResponse;
-            toJSON(_: _139.MsgCreateGaugeResponse): unknown;
-            fromPartial(_: {}): _139.MsgCreateGaugeResponse;
+            encode(_: _143.MsgCreateGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgCreateGaugeResponseSDKType;
+            fromJSON(_: any): _143.MsgCreateGaugeResponse;
+            toJSON(_: _143.MsgCreateGaugeResponse): unknown;
+            fromPartial(_: {}): _143.MsgCreateGaugeResponse;
         };
         MsgAddToGauge: {
-            encode(message: _139.MsgAddToGauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.MsgAddToGauge;
-            fromJSON(object: any): _139.MsgAddToGauge;
-            toJSON(message: _139.MsgAddToGauge): unknown;
+            encode(message: _143.MsgAddToGauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgAddToGauge;
+            fromJSON(object: any): _143.MsgAddToGauge;
+            toJSON(message: _143.MsgAddToGauge): unknown;
             fromPartial(object: {
                 owner?: string;
-                gauge_id?: any;
+                gaugeId?: any;
                 rewards?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _139.MsgAddToGauge;
+            }): _143.MsgAddToGauge;
         };
         MsgAddToGaugeResponse: {
-            encode(_: _139.MsgAddToGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.MsgAddToGaugeResponse;
-            fromJSON(_: any): _139.MsgAddToGaugeResponse;
-            toJSON(_: _139.MsgAddToGaugeResponse): unknown;
-            fromPartial(_: {}): _139.MsgAddToGaugeResponse;
+            encode(_: _143.MsgAddToGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgAddToGaugeResponseSDKType;
+            fromJSON(_: any): _143.MsgAddToGaugeResponse;
+            toJSON(_: _143.MsgAddToGaugeResponse): unknown;
+            fromPartial(_: {}): _143.MsgAddToGaugeResponse;
         };
         ModuleToDistributeCoinsRequest: {
-            encode(_: _138.ModuleToDistributeCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.ModuleToDistributeCoinsRequest;
-            fromJSON(_: any): _138.ModuleToDistributeCoinsRequest;
-            toJSON(_: _138.ModuleToDistributeCoinsRequest): unknown;
-            fromPartial(_: {}): _138.ModuleToDistributeCoinsRequest;
+            encode(_: _142.ModuleToDistributeCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleToDistributeCoinsRequest;
+            fromJSON(_: any): _142.ModuleToDistributeCoinsRequest;
+            toJSON(_: _142.ModuleToDistributeCoinsRequest): unknown;
+            fromPartial(_: {}): _142.ModuleToDistributeCoinsRequest;
         };
         ModuleToDistributeCoinsResponse: {
-            encode(message: _138.ModuleToDistributeCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.ModuleToDistributeCoinsResponse;
-            fromJSON(object: any): _138.ModuleToDistributeCoinsResponse;
-            toJSON(message: _138.ModuleToDistributeCoinsResponse): unknown;
+            encode(message: _142.ModuleToDistributeCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleToDistributeCoinsResponseSDKType;
+            fromJSON(object: any): _142.ModuleToDistributeCoinsResponse;
+            toJSON(message: _142.ModuleToDistributeCoinsResponse): unknown;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _138.ModuleToDistributeCoinsResponse;
+            }): _142.ModuleToDistributeCoinsResponse;
         };
         ModuleDistributedCoinsRequest: {
-            encode(_: _138.ModuleDistributedCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.ModuleDistributedCoinsRequest;
-            fromJSON(_: any): _138.ModuleDistributedCoinsRequest;
-            toJSON(_: _138.ModuleDistributedCoinsRequest): unknown;
-            fromPartial(_: {}): _138.ModuleDistributedCoinsRequest;
+            encode(_: _142.ModuleDistributedCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleDistributedCoinsRequest;
+            fromJSON(_: any): _142.ModuleDistributedCoinsRequest;
+            toJSON(_: _142.ModuleDistributedCoinsRequest): unknown;
+            fromPartial(_: {}): _142.ModuleDistributedCoinsRequest;
         };
         ModuleDistributedCoinsResponse: {
-            encode(message: _138.ModuleDistributedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.ModuleDistributedCoinsResponse;
-            fromJSON(object: any): _138.ModuleDistributedCoinsResponse;
-            toJSON(message: _138.ModuleDistributedCoinsResponse): unknown;
+            encode(message: _142.ModuleDistributedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleDistributedCoinsResponseSDKType;
+            fromJSON(object: any): _142.ModuleDistributedCoinsResponse;
+            toJSON(message: _142.ModuleDistributedCoinsResponse): unknown;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _138.ModuleDistributedCoinsResponse;
+            }): _142.ModuleDistributedCoinsResponse;
         };
         GaugeByIDRequest: {
-            encode(message: _138.GaugeByIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.GaugeByIDRequest;
-            fromJSON(object: any): _138.GaugeByIDRequest;
-            toJSON(message: _138.GaugeByIDRequest): unknown;
+            encode(message: _142.GaugeByIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.GaugeByIDRequest;
+            fromJSON(object: any): _142.GaugeByIDRequest;
+            toJSON(message: _142.GaugeByIDRequest): unknown;
             fromPartial(object: {
                 id?: any;
-            }): _138.GaugeByIDRequest;
+            }): _142.GaugeByIDRequest;
         };
         GaugeByIDResponse: {
-            encode(message: _138.GaugeByIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.GaugeByIDResponse;
-            fromJSON(object: any): _138.GaugeByIDResponse;
-            toJSON(message: _138.GaugeByIDResponse): unknown;
+            encode(message: _142.GaugeByIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.GaugeByIDResponseSDKType;
+            fromJSON(object: any): _142.GaugeByIDResponse;
+            toJSON(message: _142.GaugeByIDResponse): unknown;
             fromPartial(object: {
                 gauge?: {
                     id?: any;
-                    is_perpetual?: boolean;
-                    distribute_to?: {
-                        lock_query_type?: _141.LockQueryType;
+                    isPerpetual?: boolean;
+                    distributeTo?: {
+                        lockQueryType?: _145.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1696,42 +1696,42 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    start_time?: Date;
-                    num_epochs_paid_over?: any;
-                    filled_epochs?: any;
-                    distributed_coins?: {
+                    startTime?: Date;
+                    numEpochsPaidOver?: any;
+                    filledEpochs?: any;
+                    distributedCoins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 };
-            }): _138.GaugeByIDResponse;
+            }): _142.GaugeByIDResponse;
         };
         GaugesRequest: {
-            encode(message: _138.GaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.GaugesRequest;
-            fromJSON(object: any): _138.GaugesRequest;
-            toJSON(message: _138.GaugesRequest): unknown;
+            encode(message: _142.GaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.GaugesRequest;
+            fromJSON(object: any): _142.GaugesRequest;
+            toJSON(message: _142.GaugesRequest): unknown;
             fromPartial(object: {
                 pagination?: {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    count_total?: boolean;
+                    countTotal?: boolean;
                     reverse?: boolean;
                 };
-            }): _138.GaugesRequest;
+            }): _142.GaugesRequest;
         };
         GaugesResponse: {
-            encode(message: _138.GaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.GaugesResponse;
-            fromJSON(object: any): _138.GaugesResponse;
-            toJSON(message: _138.GaugesResponse): unknown;
+            encode(message: _142.GaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.GaugesResponseSDKType;
+            fromJSON(object: any): _142.GaugesResponse;
+            toJSON(message: _142.GaugesResponse): unknown;
             fromPartial(object: {
                 data?: {
                     id?: any;
-                    is_perpetual?: boolean;
-                    distribute_to?: {
-                        lock_query_type?: _141.LockQueryType;
+                    isPerpetual?: boolean;
+                    distributeTo?: {
+                        lockQueryType?: _145.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1743,46 +1743,46 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    start_time?: Date;
-                    num_epochs_paid_over?: any;
-                    filled_epochs?: any;
-                    distributed_coins?: {
+                    startTime?: Date;
+                    numEpochsPaidOver?: any;
+                    filledEpochs?: any;
+                    distributedCoins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    next_key?: Uint8Array;
+                    nextKey?: Uint8Array;
                     total?: any;
                 };
-            }): _138.GaugesResponse;
+            }): _142.GaugesResponse;
         };
         ActiveGaugesRequest: {
-            encode(message: _138.ActiveGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.ActiveGaugesRequest;
-            fromJSON(object: any): _138.ActiveGaugesRequest;
-            toJSON(message: _138.ActiveGaugesRequest): unknown;
+            encode(message: _142.ActiveGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ActiveGaugesRequest;
+            fromJSON(object: any): _142.ActiveGaugesRequest;
+            toJSON(message: _142.ActiveGaugesRequest): unknown;
             fromPartial(object: {
                 pagination?: {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    count_total?: boolean;
+                    countTotal?: boolean;
                     reverse?: boolean;
                 };
-            }): _138.ActiveGaugesRequest;
+            }): _142.ActiveGaugesRequest;
         };
         ActiveGaugesResponse: {
-            encode(message: _138.ActiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.ActiveGaugesResponse;
-            fromJSON(object: any): _138.ActiveGaugesResponse;
-            toJSON(message: _138.ActiveGaugesResponse): unknown;
+            encode(message: _142.ActiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ActiveGaugesResponseSDKType;
+            fromJSON(object: any): _142.ActiveGaugesResponse;
+            toJSON(message: _142.ActiveGaugesResponse): unknown;
             fromPartial(object: {
                 data?: {
                     id?: any;
-                    is_perpetual?: boolean;
-                    distribute_to?: {
-                        lock_query_type?: _141.LockQueryType;
+                    isPerpetual?: boolean;
+                    distributeTo?: {
+                        lockQueryType?: _145.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1794,47 +1794,47 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    start_time?: Date;
-                    num_epochs_paid_over?: any;
-                    filled_epochs?: any;
-                    distributed_coins?: {
+                    startTime?: Date;
+                    numEpochsPaidOver?: any;
+                    filledEpochs?: any;
+                    distributedCoins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    next_key?: Uint8Array;
+                    nextKey?: Uint8Array;
                     total?: any;
                 };
-            }): _138.ActiveGaugesResponse;
+            }): _142.ActiveGaugesResponse;
         };
         ActiveGaugesPerDenomRequest: {
-            encode(message: _138.ActiveGaugesPerDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.ActiveGaugesPerDenomRequest;
-            fromJSON(object: any): _138.ActiveGaugesPerDenomRequest;
-            toJSON(message: _138.ActiveGaugesPerDenomRequest): unknown;
+            encode(message: _142.ActiveGaugesPerDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ActiveGaugesPerDenomRequest;
+            fromJSON(object: any): _142.ActiveGaugesPerDenomRequest;
+            toJSON(message: _142.ActiveGaugesPerDenomRequest): unknown;
             fromPartial(object: {
                 denom?: string;
                 pagination?: {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    count_total?: boolean;
+                    countTotal?: boolean;
                     reverse?: boolean;
                 };
-            }): _138.ActiveGaugesPerDenomRequest;
+            }): _142.ActiveGaugesPerDenomRequest;
         };
         ActiveGaugesPerDenomResponse: {
-            encode(message: _138.ActiveGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.ActiveGaugesPerDenomResponse;
-            fromJSON(object: any): _138.ActiveGaugesPerDenomResponse;
-            toJSON(message: _138.ActiveGaugesPerDenomResponse): unknown;
+            encode(message: _142.ActiveGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ActiveGaugesPerDenomResponseSDKType;
+            fromJSON(object: any): _142.ActiveGaugesPerDenomResponse;
+            toJSON(message: _142.ActiveGaugesPerDenomResponse): unknown;
             fromPartial(object: {
                 data?: {
                     id?: any;
-                    is_perpetual?: boolean;
-                    distribute_to?: {
-                        lock_query_type?: _141.LockQueryType;
+                    isPerpetual?: boolean;
+                    distributeTo?: {
+                        lockQueryType?: _145.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1846,46 +1846,46 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    start_time?: Date;
-                    num_epochs_paid_over?: any;
-                    filled_epochs?: any;
-                    distributed_coins?: {
+                    startTime?: Date;
+                    numEpochsPaidOver?: any;
+                    filledEpochs?: any;
+                    distributedCoins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    next_key?: Uint8Array;
+                    nextKey?: Uint8Array;
                     total?: any;
                 };
-            }): _138.ActiveGaugesPerDenomResponse;
+            }): _142.ActiveGaugesPerDenomResponse;
         };
         UpcomingGaugesRequest: {
-            encode(message: _138.UpcomingGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.UpcomingGaugesRequest;
-            fromJSON(object: any): _138.UpcomingGaugesRequest;
-            toJSON(message: _138.UpcomingGaugesRequest): unknown;
+            encode(message: _142.UpcomingGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.UpcomingGaugesRequest;
+            fromJSON(object: any): _142.UpcomingGaugesRequest;
+            toJSON(message: _142.UpcomingGaugesRequest): unknown;
             fromPartial(object: {
                 pagination?: {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    count_total?: boolean;
+                    countTotal?: boolean;
                     reverse?: boolean;
                 };
-            }): _138.UpcomingGaugesRequest;
+            }): _142.UpcomingGaugesRequest;
         };
         UpcomingGaugesResponse: {
-            encode(message: _138.UpcomingGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.UpcomingGaugesResponse;
-            fromJSON(object: any): _138.UpcomingGaugesResponse;
-            toJSON(message: _138.UpcomingGaugesResponse): unknown;
+            encode(message: _142.UpcomingGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.UpcomingGaugesResponseSDKType;
+            fromJSON(object: any): _142.UpcomingGaugesResponse;
+            toJSON(message: _142.UpcomingGaugesResponse): unknown;
             fromPartial(object: {
                 data?: {
                     id?: any;
-                    is_perpetual?: boolean;
-                    distribute_to?: {
-                        lock_query_type?: _141.LockQueryType;
+                    isPerpetual?: boolean;
+                    distributeTo?: {
+                        lockQueryType?: _145.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1897,47 +1897,47 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    start_time?: Date;
-                    num_epochs_paid_over?: any;
-                    filled_epochs?: any;
-                    distributed_coins?: {
+                    startTime?: Date;
+                    numEpochsPaidOver?: any;
+                    filledEpochs?: any;
+                    distributedCoins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    next_key?: Uint8Array;
+                    nextKey?: Uint8Array;
                     total?: any;
                 };
-            }): _138.UpcomingGaugesResponse;
+            }): _142.UpcomingGaugesResponse;
         };
         UpcomingGaugesPerDenomRequest: {
-            encode(message: _138.UpcomingGaugesPerDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.UpcomingGaugesPerDenomRequest;
-            fromJSON(object: any): _138.UpcomingGaugesPerDenomRequest;
-            toJSON(message: _138.UpcomingGaugesPerDenomRequest): unknown;
+            encode(message: _142.UpcomingGaugesPerDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.UpcomingGaugesPerDenomRequest;
+            fromJSON(object: any): _142.UpcomingGaugesPerDenomRequest;
+            toJSON(message: _142.UpcomingGaugesPerDenomRequest): unknown;
             fromPartial(object: {
                 denom?: string;
                 pagination?: {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    count_total?: boolean;
+                    countTotal?: boolean;
                     reverse?: boolean;
                 };
-            }): _138.UpcomingGaugesPerDenomRequest;
+            }): _142.UpcomingGaugesPerDenomRequest;
         };
         UpcomingGaugesPerDenomResponse: {
-            encode(message: _138.UpcomingGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.UpcomingGaugesPerDenomResponse;
-            fromJSON(object: any): _138.UpcomingGaugesPerDenomResponse;
-            toJSON(message: _138.UpcomingGaugesPerDenomResponse): unknown;
+            encode(message: _142.UpcomingGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.UpcomingGaugesPerDenomResponseSDKType;
+            fromJSON(object: any): _142.UpcomingGaugesPerDenomResponse;
+            toJSON(message: _142.UpcomingGaugesPerDenomResponse): unknown;
             fromPartial(object: {
-                upcoming_gauges?: {
+                upcomingGauges?: {
                     id?: any;
-                    is_perpetual?: boolean;
-                    distribute_to?: {
-                        lock_query_type?: _141.LockQueryType;
+                    isPerpetual?: boolean;
+                    distributeTo?: {
+                        lockQueryType?: _145.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -1949,85 +1949,85 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    start_time?: Date;
-                    num_epochs_paid_over?: any;
-                    filled_epochs?: any;
-                    distributed_coins?: {
+                    startTime?: Date;
+                    numEpochsPaidOver?: any;
+                    filledEpochs?: any;
+                    distributedCoins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
                 pagination?: {
-                    next_key?: Uint8Array;
+                    nextKey?: Uint8Array;
                     total?: any;
                 };
-            }): _138.UpcomingGaugesPerDenomResponse;
+            }): _142.UpcomingGaugesPerDenomResponse;
         };
         RewardsEstRequest: {
-            encode(message: _138.RewardsEstRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.RewardsEstRequest;
-            fromJSON(object: any): _138.RewardsEstRequest;
-            toJSON(message: _138.RewardsEstRequest): unknown;
+            encode(message: _142.RewardsEstRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.RewardsEstRequest;
+            fromJSON(object: any): _142.RewardsEstRequest;
+            toJSON(message: _142.RewardsEstRequest): unknown;
             fromPartial(object: {
                 owner?: string;
-                lock_ids?: any[];
-                end_epoch?: any;
-            }): _138.RewardsEstRequest;
+                lockIds?: any[];
+                endEpoch?: any;
+            }): _142.RewardsEstRequest;
         };
         RewardsEstResponse: {
-            encode(message: _138.RewardsEstResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.RewardsEstResponse;
-            fromJSON(object: any): _138.RewardsEstResponse;
-            toJSON(message: _138.RewardsEstResponse): unknown;
+            encode(message: _142.RewardsEstResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.RewardsEstResponseSDKType;
+            fromJSON(object: any): _142.RewardsEstResponse;
+            toJSON(message: _142.RewardsEstResponse): unknown;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _138.RewardsEstResponse;
+            }): _142.RewardsEstResponse;
         };
         QueryLockableDurationsRequest: {
-            encode(_: _138.QueryLockableDurationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.QueryLockableDurationsRequest;
-            fromJSON(_: any): _138.QueryLockableDurationsRequest;
-            toJSON(_: _138.QueryLockableDurationsRequest): unknown;
-            fromPartial(_: {}): _138.QueryLockableDurationsRequest;
+            encode(_: _142.QueryLockableDurationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.QueryLockableDurationsRequest;
+            fromJSON(_: any): _142.QueryLockableDurationsRequest;
+            toJSON(_: _142.QueryLockableDurationsRequest): unknown;
+            fromPartial(_: {}): _142.QueryLockableDurationsRequest;
         };
         QueryLockableDurationsResponse: {
-            encode(message: _138.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.QueryLockableDurationsResponse;
-            fromJSON(object: any): _138.QueryLockableDurationsResponse;
-            toJSON(message: _138.QueryLockableDurationsResponse): unknown;
+            encode(message: _142.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.QueryLockableDurationsResponseSDKType;
+            fromJSON(object: any): _142.QueryLockableDurationsResponse;
+            toJSON(message: _142.QueryLockableDurationsResponse): unknown;
             fromPartial(object: {
-                lockable_durations?: {
+                lockableDurations?: {
                     seconds?: any;
                     nanos?: number;
                 }[];
-            }): _138.QueryLockableDurationsResponse;
+            }): _142.QueryLockableDurationsResponse;
         };
         Params: {
-            encode(message: _137.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.Params;
-            fromJSON(object: any): _137.Params;
-            toJSON(message: _137.Params): unknown;
+            encode(message: _141.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.Params;
+            fromJSON(object: any): _141.Params;
+            toJSON(message: _141.Params): unknown;
             fromPartial(object: {
-                distr_epoch_identifier?: string;
-            }): _137.Params;
+                distrEpochIdentifier?: string;
+            }): _141.Params;
         };
         GenesisState: {
-            encode(message: _136.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.GenesisState;
-            fromJSON(object: any): _136.GenesisState;
-            toJSON(message: _136.GenesisState): unknown;
+            encode(message: _140.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _140.GenesisState;
+            fromJSON(object: any): _140.GenesisState;
+            toJSON(message: _140.GenesisState): unknown;
             fromPartial(object: {
                 params?: {
-                    distr_epoch_identifier?: string;
+                    distrEpochIdentifier?: string;
                 };
                 gauges?: {
                     id?: any;
-                    is_perpetual?: boolean;
-                    distribute_to?: {
-                        lock_query_type?: _141.LockQueryType;
+                    isPerpetual?: boolean;
+                    distributeTo?: {
+                        lockQueryType?: _145.LockQueryType;
                         denom?: string;
                         duration?: {
                             seconds?: any;
@@ -2039,31 +2039,31 @@ export declare namespace osmosis {
                         denom?: string;
                         amount?: string;
                     }[];
-                    start_time?: Date;
-                    num_epochs_paid_over?: any;
-                    filled_epochs?: any;
-                    distributed_coins?: {
+                    startTime?: Date;
+                    numEpochsPaidOver?: any;
+                    filledEpochs?: any;
+                    distributedCoins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-                lockable_durations?: {
+                lockableDurations?: {
                     seconds?: any;
                     nanos?: number;
                 }[];
-                last_gauge_id?: any;
-            }): _136.GenesisState;
+                lastGaugeId?: any;
+            }): _140.GenesisState;
         };
         Gauge: {
-            encode(message: _135.Gauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.Gauge;
-            fromJSON(object: any): _135.Gauge;
-            toJSON(message: _135.Gauge): unknown;
+            encode(message: _139.Gauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.Gauge;
+            fromJSON(object: any): _139.Gauge;
+            toJSON(message: _139.Gauge): unknown;
             fromPartial(object: {
                 id?: any;
-                is_perpetual?: boolean;
-                distribute_to?: {
-                    lock_query_type?: _141.LockQueryType;
+                isPerpetual?: boolean;
+                distributeTo?: {
+                    lockQueryType?: _145.LockQueryType;
                     denom?: string;
                     duration?: {
                         seconds?: any;
@@ -2075,85 +2075,85 @@ export declare namespace osmosis {
                     denom?: string;
                     amount?: string;
                 }[];
-                start_time?: Date;
-                num_epochs_paid_over?: any;
-                filled_epochs?: any;
-                distributed_coins?: {
+                startTime?: Date;
+                numEpochsPaidOver?: any;
+                filledEpochs?: any;
+                distributedCoins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _135.Gauge;
+            }): _139.Gauge;
         };
         LockableDurationsInfo: {
-            encode(message: _135.LockableDurationsInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.LockableDurationsInfo;
-            fromJSON(object: any): _135.LockableDurationsInfo;
-            toJSON(message: _135.LockableDurationsInfo): unknown;
+            encode(message: _139.LockableDurationsInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.LockableDurationsInfo;
+            fromJSON(object: any): _139.LockableDurationsInfo;
+            toJSON(message: _139.LockableDurationsInfo): unknown;
             fromPartial(object: {
-                lockable_durations?: {
+                lockableDurations?: {
                     seconds?: any;
                     nanos?: number;
                 }[];
-            }): _135.LockableDurationsInfo;
+            }): _139.LockableDurationsInfo;
         };
     };
     const lockup: {
-        MsgClientImpl: typeof _306.MsgClientImpl;
-        QueryClientImpl: typeof _296.QueryClientImpl;
-        LCDQueryClient: typeof _287.LCDQueryClient;
+        MsgClientImpl: typeof _315.MsgClientImpl;
+        QueryClientImpl: typeof _305.QueryClientImpl;
+        LCDQueryClient: typeof _296.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
             encoded: {
-                lockTokens(value: _143.MsgLockTokens): {
+                lockTokens(value: _147.MsgLockTokens): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
-                beginUnlockingAll(value: _143.MsgBeginUnlockingAll): {
+                beginUnlockingAll(value: _147.MsgBeginUnlockingAll): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
-                beginUnlocking(value: _143.MsgBeginUnlocking): {
+                beginUnlocking(value: _147.MsgBeginUnlocking): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
-                extendLockup(value: _143.MsgExtendLockup): {
+                extendLockup(value: _147.MsgExtendLockup): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
             };
             withTypeUrl: {
-                lockTokens(value: _143.MsgLockTokens): {
+                lockTokens(value: _147.MsgLockTokens): {
                     typeUrl: string;
-                    value: _143.MsgLockTokens;
+                    value: _147.MsgLockTokens;
                 };
-                beginUnlockingAll(value: _143.MsgBeginUnlockingAll): {
+                beginUnlockingAll(value: _147.MsgBeginUnlockingAll): {
                     typeUrl: string;
-                    value: _143.MsgBeginUnlockingAll;
+                    value: _147.MsgBeginUnlockingAll;
                 };
-                beginUnlocking(value: _143.MsgBeginUnlocking): {
+                beginUnlocking(value: _147.MsgBeginUnlocking): {
                     typeUrl: string;
-                    value: _143.MsgBeginUnlocking;
+                    value: _147.MsgBeginUnlocking;
                 };
-                extendLockup(value: _143.MsgExtendLockup): {
+                extendLockup(value: _147.MsgExtendLockup): {
                     typeUrl: string;
-                    value: _143.MsgExtendLockup;
+                    value: _147.MsgExtendLockup;
                 };
             };
             toJSON: {
-                lockTokens(value: _143.MsgLockTokens): {
+                lockTokens(value: _147.MsgLockTokens): {
                     typeUrl: string;
                     value: unknown;
                 };
-                beginUnlockingAll(value: _143.MsgBeginUnlockingAll): {
+                beginUnlockingAll(value: _147.MsgBeginUnlockingAll): {
                     typeUrl: string;
                     value: unknown;
                 };
-                beginUnlocking(value: _143.MsgBeginUnlocking): {
+                beginUnlocking(value: _147.MsgBeginUnlocking): {
                     typeUrl: string;
                     value: unknown;
                 };
-                extendLockup(value: _143.MsgExtendLockup): {
+                extendLockup(value: _147.MsgExtendLockup): {
                     typeUrl: string;
                     value: unknown;
                 };
@@ -2161,44 +2161,44 @@ export declare namespace osmosis {
             fromJSON: {
                 lockTokens(value: any): {
                     typeUrl: string;
-                    value: _143.MsgLockTokens;
+                    value: _147.MsgLockTokens;
                 };
                 beginUnlockingAll(value: any): {
                     typeUrl: string;
-                    value: _143.MsgBeginUnlockingAll;
+                    value: _147.MsgBeginUnlockingAll;
                 };
                 beginUnlocking(value: any): {
                     typeUrl: string;
-                    value: _143.MsgBeginUnlocking;
+                    value: _147.MsgBeginUnlocking;
                 };
                 extendLockup(value: any): {
                     typeUrl: string;
-                    value: _143.MsgExtendLockup;
+                    value: _147.MsgExtendLockup;
                 };
             };
             fromPartial: {
-                lockTokens(value: _143.MsgLockTokens): {
+                lockTokens(value: _147.MsgLockTokens): {
                     typeUrl: string;
-                    value: _143.MsgLockTokens;
+                    value: _147.MsgLockTokens;
                 };
-                beginUnlockingAll(value: _143.MsgBeginUnlockingAll): {
+                beginUnlockingAll(value: _147.MsgBeginUnlockingAll): {
                     typeUrl: string;
-                    value: _143.MsgBeginUnlockingAll;
+                    value: _147.MsgBeginUnlockingAll;
                 };
-                beginUnlocking(value: _143.MsgBeginUnlocking): {
+                beginUnlocking(value: _147.MsgBeginUnlocking): {
                     typeUrl: string;
-                    value: _143.MsgBeginUnlocking;
+                    value: _147.MsgBeginUnlocking;
                 };
-                extendLockup(value: _143.MsgExtendLockup): {
+                extendLockup(value: _147.MsgExtendLockup): {
                     typeUrl: string;
-                    value: _143.MsgExtendLockup;
+                    value: _147.MsgExtendLockup;
                 };
             };
         };
         AminoConverter: {
             "/osmosis.lockup.MsgLockTokens": {
                 aminoType: string;
-                toAmino: ({ owner, duration, coins }: _143.MsgLockTokens) => {
+                toAmino: ({ owner, duration, coins }: _147.MsgLockTokens) => {
                     owner: string;
                     duration: {
                         seconds: string;
@@ -2219,20 +2219,20 @@ export declare namespace osmosis {
                         denom: string;
                         amount: string;
                     }[];
-                }) => _143.MsgLockTokens;
+                }) => _147.MsgLockTokens;
             };
             "/osmosis.lockup.MsgBeginUnlockingAll": {
                 aminoType: string;
-                toAmino: ({ owner }: _143.MsgBeginUnlockingAll) => {
+                toAmino: ({ owner }: _147.MsgBeginUnlockingAll) => {
                     owner: string;
                 };
                 fromAmino: ({ owner }: {
                     owner: string;
-                }) => _143.MsgBeginUnlockingAll;
+                }) => _147.MsgBeginUnlockingAll;
             };
             "/osmosis.lockup.MsgBeginUnlocking": {
                 aminoType: string;
-                toAmino: ({ owner, ID, coins }: _143.MsgBeginUnlocking) => {
+                toAmino: ({ owner, ID, coins }: _147.MsgBeginUnlocking) => {
                     owner: string;
                     ID: string;
                     coins: {
@@ -2247,11 +2247,11 @@ export declare namespace osmosis {
                         denom: string;
                         amount: string;
                     }[];
-                }) => _143.MsgBeginUnlocking;
+                }) => _147.MsgBeginUnlocking;
             };
             "/osmosis.lockup.MsgExtendLockup": {
                 aminoType: string;
-                toAmino: ({ owner, ID, duration }: _143.MsgExtendLockup) => {
+                toAmino: ({ owner, ID, duration }: _147.MsgExtendLockup) => {
                     owner: string;
                     ID: string;
                     duration: {
@@ -2266,14 +2266,14 @@ export declare namespace osmosis {
                         seconds: string;
                         nanos: number;
                     };
-                }) => _143.MsgExtendLockup;
+                }) => _147.MsgExtendLockup;
             };
         };
         MsgLockTokens: {
-            encode(message: _143.MsgLockTokens, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgLockTokens;
-            fromJSON(object: any): _143.MsgLockTokens;
-            toJSON(message: _143.MsgLockTokens): unknown;
+            encode(message: _147.MsgLockTokens, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.MsgLockTokens;
+            fromJSON(object: any): _147.MsgLockTokens;
+            toJSON(message: _147.MsgLockTokens): unknown;
             fromPartial(object: {
                 owner?: string;
                 duration?: {
@@ -2284,31 +2284,31 @@ export declare namespace osmosis {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _143.MsgLockTokens;
+            }): _147.MsgLockTokens;
         };
         MsgLockTokensResponse: {
-            encode(message: _143.MsgLockTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgLockTokensResponse;
-            fromJSON(object: any): _143.MsgLockTokensResponse;
-            toJSON(message: _143.MsgLockTokensResponse): unknown;
+            encode(message: _147.MsgLockTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.MsgLockTokensResponseSDKType;
+            fromJSON(object: any): _147.MsgLockTokensResponse;
+            toJSON(message: _147.MsgLockTokensResponse): unknown;
             fromPartial(object: {
                 ID?: any;
-            }): _143.MsgLockTokensResponse;
+            }): _147.MsgLockTokensResponse;
         };
         MsgBeginUnlockingAll: {
-            encode(message: _143.MsgBeginUnlockingAll, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgBeginUnlockingAll;
-            fromJSON(object: any): _143.MsgBeginUnlockingAll;
-            toJSON(message: _143.MsgBeginUnlockingAll): unknown;
+            encode(message: _147.MsgBeginUnlockingAll, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.MsgBeginUnlockingAll;
+            fromJSON(object: any): _147.MsgBeginUnlockingAll;
+            toJSON(message: _147.MsgBeginUnlockingAll): unknown;
             fromPartial(object: {
                 owner?: string;
-            }): _143.MsgBeginUnlockingAll;
+            }): _147.MsgBeginUnlockingAll;
         };
         MsgBeginUnlockingAllResponse: {
-            encode(message: _143.MsgBeginUnlockingAllResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgBeginUnlockingAllResponse;
-            fromJSON(object: any): _143.MsgBeginUnlockingAllResponse;
-            toJSON(message: _143.MsgBeginUnlockingAllResponse): unknown;
+            encode(message: _147.MsgBeginUnlockingAllResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.MsgBeginUnlockingAllResponseSDKType;
+            fromJSON(object: any): _147.MsgBeginUnlockingAllResponse;
+            toJSON(message: _147.MsgBeginUnlockingAllResponse): unknown;
             fromPartial(object: {
                 unlocks?: {
                     ID?: any;
@@ -2317,19 +2317,19 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-            }): _143.MsgBeginUnlockingAllResponse;
+            }): _147.MsgBeginUnlockingAllResponse;
         };
         MsgBeginUnlocking: {
-            encode(message: _143.MsgBeginUnlocking, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgBeginUnlocking;
-            fromJSON(object: any): _143.MsgBeginUnlocking;
-            toJSON(message: _143.MsgBeginUnlocking): unknown;
+            encode(message: _147.MsgBeginUnlocking, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.MsgBeginUnlocking;
+            fromJSON(object: any): _147.MsgBeginUnlocking;
+            toJSON(message: _147.MsgBeginUnlocking): unknown;
             fromPartial(object: {
                 owner?: string;
                 ID?: any;
@@ -2337,22 +2337,22 @@ export declare namespace osmosis {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _143.MsgBeginUnlocking;
+            }): _147.MsgBeginUnlocking;
         };
         MsgBeginUnlockingResponse: {
-            encode(message: _143.MsgBeginUnlockingResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgBeginUnlockingResponse;
-            fromJSON(object: any): _143.MsgBeginUnlockingResponse;
-            toJSON(message: _143.MsgBeginUnlockingResponse): unknown;
+            encode(message: _147.MsgBeginUnlockingResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.MsgBeginUnlockingResponseSDKType;
+            fromJSON(object: any): _147.MsgBeginUnlockingResponse;
+            toJSON(message: _147.MsgBeginUnlockingResponse): unknown;
             fromPartial(object: {
                 success?: boolean;
-            }): _143.MsgBeginUnlockingResponse;
+            }): _147.MsgBeginUnlockingResponse;
         };
         MsgExtendLockup: {
-            encode(message: _143.MsgExtendLockup, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgExtendLockup;
-            fromJSON(object: any): _143.MsgExtendLockup;
-            toJSON(message: _143.MsgExtendLockup): unknown;
+            encode(message: _147.MsgExtendLockup, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.MsgExtendLockup;
+            fromJSON(object: any): _147.MsgExtendLockup;
+            toJSON(message: _147.MsgExtendLockup): unknown;
             fromPartial(object: {
                 owner?: string;
                 ID?: any;
@@ -2360,133 +2360,133 @@ export declare namespace osmosis {
                     seconds?: any;
                     nanos?: number;
                 };
-            }): _143.MsgExtendLockup;
+            }): _147.MsgExtendLockup;
         };
         MsgExtendLockupResponse: {
-            encode(message: _143.MsgExtendLockupResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgExtendLockupResponse;
-            fromJSON(object: any): _143.MsgExtendLockupResponse;
-            toJSON(message: _143.MsgExtendLockupResponse): unknown;
+            encode(message: _147.MsgExtendLockupResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.MsgExtendLockupResponseSDKType;
+            fromJSON(object: any): _147.MsgExtendLockupResponse;
+            toJSON(message: _147.MsgExtendLockupResponse): unknown;
             fromPartial(object: {
                 success?: boolean;
-            }): _143.MsgExtendLockupResponse;
+            }): _147.MsgExtendLockupResponse;
         };
         ModuleBalanceRequest: {
-            encode(_: _142.ModuleBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleBalanceRequest;
-            fromJSON(_: any): _142.ModuleBalanceRequest;
-            toJSON(_: _142.ModuleBalanceRequest): unknown;
-            fromPartial(_: {}): _142.ModuleBalanceRequest;
+            encode(_: _146.ModuleBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.ModuleBalanceRequest;
+            fromJSON(_: any): _146.ModuleBalanceRequest;
+            toJSON(_: _146.ModuleBalanceRequest): unknown;
+            fromPartial(_: {}): _146.ModuleBalanceRequest;
         };
         ModuleBalanceResponse: {
-            encode(message: _142.ModuleBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleBalanceResponse;
-            fromJSON(object: any): _142.ModuleBalanceResponse;
-            toJSON(message: _142.ModuleBalanceResponse): unknown;
+            encode(message: _146.ModuleBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.ModuleBalanceResponseSDKType;
+            fromJSON(object: any): _146.ModuleBalanceResponse;
+            toJSON(message: _146.ModuleBalanceResponse): unknown;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _142.ModuleBalanceResponse;
+            }): _146.ModuleBalanceResponse;
         };
         ModuleLockedAmountRequest: {
-            encode(_: _142.ModuleLockedAmountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleLockedAmountRequest;
-            fromJSON(_: any): _142.ModuleLockedAmountRequest;
-            toJSON(_: _142.ModuleLockedAmountRequest): unknown;
-            fromPartial(_: {}): _142.ModuleLockedAmountRequest;
+            encode(_: _146.ModuleLockedAmountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.ModuleLockedAmountRequest;
+            fromJSON(_: any): _146.ModuleLockedAmountRequest;
+            toJSON(_: _146.ModuleLockedAmountRequest): unknown;
+            fromPartial(_: {}): _146.ModuleLockedAmountRequest;
         };
         ModuleLockedAmountResponse: {
-            encode(message: _142.ModuleLockedAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ModuleLockedAmountResponse;
-            fromJSON(object: any): _142.ModuleLockedAmountResponse;
-            toJSON(message: _142.ModuleLockedAmountResponse): unknown;
+            encode(message: _146.ModuleLockedAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.ModuleLockedAmountResponseSDKType;
+            fromJSON(object: any): _146.ModuleLockedAmountResponse;
+            toJSON(message: _146.ModuleLockedAmountResponse): unknown;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _142.ModuleLockedAmountResponse;
+            }): _146.ModuleLockedAmountResponse;
         };
         AccountUnlockableCoinsRequest: {
-            encode(message: _142.AccountUnlockableCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountUnlockableCoinsRequest;
-            fromJSON(object: any): _142.AccountUnlockableCoinsRequest;
-            toJSON(message: _142.AccountUnlockableCoinsRequest): unknown;
+            encode(message: _146.AccountUnlockableCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountUnlockableCoinsRequest;
+            fromJSON(object: any): _146.AccountUnlockableCoinsRequest;
+            toJSON(message: _146.AccountUnlockableCoinsRequest): unknown;
             fromPartial(object: {
                 owner?: string;
-            }): _142.AccountUnlockableCoinsRequest;
+            }): _146.AccountUnlockableCoinsRequest;
         };
         AccountUnlockableCoinsResponse: {
-            encode(message: _142.AccountUnlockableCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountUnlockableCoinsResponse;
-            fromJSON(object: any): _142.AccountUnlockableCoinsResponse;
-            toJSON(message: _142.AccountUnlockableCoinsResponse): unknown;
+            encode(message: _146.AccountUnlockableCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountUnlockableCoinsResponseSDKType;
+            fromJSON(object: any): _146.AccountUnlockableCoinsResponse;
+            toJSON(message: _146.AccountUnlockableCoinsResponse): unknown;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _142.AccountUnlockableCoinsResponse;
+            }): _146.AccountUnlockableCoinsResponse;
         };
         AccountUnlockingCoinsRequest: {
-            encode(message: _142.AccountUnlockingCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountUnlockingCoinsRequest;
-            fromJSON(object: any): _142.AccountUnlockingCoinsRequest;
-            toJSON(message: _142.AccountUnlockingCoinsRequest): unknown;
+            encode(message: _146.AccountUnlockingCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountUnlockingCoinsRequest;
+            fromJSON(object: any): _146.AccountUnlockingCoinsRequest;
+            toJSON(message: _146.AccountUnlockingCoinsRequest): unknown;
             fromPartial(object: {
                 owner?: string;
-            }): _142.AccountUnlockingCoinsRequest;
+            }): _146.AccountUnlockingCoinsRequest;
         };
         AccountUnlockingCoinsResponse: {
-            encode(message: _142.AccountUnlockingCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountUnlockingCoinsResponse;
-            fromJSON(object: any): _142.AccountUnlockingCoinsResponse;
-            toJSON(message: _142.AccountUnlockingCoinsResponse): unknown;
+            encode(message: _146.AccountUnlockingCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountUnlockingCoinsResponseSDKType;
+            fromJSON(object: any): _146.AccountUnlockingCoinsResponse;
+            toJSON(message: _146.AccountUnlockingCoinsResponse): unknown;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _142.AccountUnlockingCoinsResponse;
+            }): _146.AccountUnlockingCoinsResponse;
         };
         AccountLockedCoinsRequest: {
-            encode(message: _142.AccountLockedCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedCoinsRequest;
-            fromJSON(object: any): _142.AccountLockedCoinsRequest;
-            toJSON(message: _142.AccountLockedCoinsRequest): unknown;
+            encode(message: _146.AccountLockedCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedCoinsRequest;
+            fromJSON(object: any): _146.AccountLockedCoinsRequest;
+            toJSON(message: _146.AccountLockedCoinsRequest): unknown;
             fromPartial(object: {
                 owner?: string;
-            }): _142.AccountLockedCoinsRequest;
+            }): _146.AccountLockedCoinsRequest;
         };
         AccountLockedCoinsResponse: {
-            encode(message: _142.AccountLockedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedCoinsResponse;
-            fromJSON(object: any): _142.AccountLockedCoinsResponse;
-            toJSON(message: _142.AccountLockedCoinsResponse): unknown;
+            encode(message: _146.AccountLockedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedCoinsResponseSDKType;
+            fromJSON(object: any): _146.AccountLockedCoinsResponse;
+            toJSON(message: _146.AccountLockedCoinsResponse): unknown;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _142.AccountLockedCoinsResponse;
+            }): _146.AccountLockedCoinsResponse;
         };
         AccountLockedPastTimeRequest: {
-            encode(message: _142.AccountLockedPastTimeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedPastTimeRequest;
-            fromJSON(object: any): _142.AccountLockedPastTimeRequest;
-            toJSON(message: _142.AccountLockedPastTimeRequest): unknown;
+            encode(message: _146.AccountLockedPastTimeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedPastTimeRequest;
+            fromJSON(object: any): _146.AccountLockedPastTimeRequest;
+            toJSON(message: _146.AccountLockedPastTimeRequest): unknown;
             fromPartial(object: {
                 owner?: string;
                 timestamp?: Date;
-            }): _142.AccountLockedPastTimeRequest;
+            }): _146.AccountLockedPastTimeRequest;
         };
         AccountLockedPastTimeResponse: {
-            encode(message: _142.AccountLockedPastTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedPastTimeResponse;
-            fromJSON(object: any): _142.AccountLockedPastTimeResponse;
-            toJSON(message: _142.AccountLockedPastTimeResponse): unknown;
+            encode(message: _146.AccountLockedPastTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedPastTimeResponseSDKType;
+            fromJSON(object: any): _146.AccountLockedPastTimeResponse;
+            toJSON(message: _146.AccountLockedPastTimeResponse): unknown;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2495,29 +2495,29 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-            }): _142.AccountLockedPastTimeResponse;
+            }): _146.AccountLockedPastTimeResponse;
         };
         AccountLockedPastTimeNotUnlockingOnlyRequest: {
-            encode(message: _142.AccountLockedPastTimeNotUnlockingOnlyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedPastTimeNotUnlockingOnlyRequest;
-            fromJSON(object: any): _142.AccountLockedPastTimeNotUnlockingOnlyRequest;
-            toJSON(message: _142.AccountLockedPastTimeNotUnlockingOnlyRequest): unknown;
+            encode(message: _146.AccountLockedPastTimeNotUnlockingOnlyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedPastTimeNotUnlockingOnlyRequest;
+            fromJSON(object: any): _146.AccountLockedPastTimeNotUnlockingOnlyRequest;
+            toJSON(message: _146.AccountLockedPastTimeNotUnlockingOnlyRequest): unknown;
             fromPartial(object: {
                 owner?: string;
                 timestamp?: Date;
-            }): _142.AccountLockedPastTimeNotUnlockingOnlyRequest;
+            }): _146.AccountLockedPastTimeNotUnlockingOnlyRequest;
         };
         AccountLockedPastTimeNotUnlockingOnlyResponse: {
-            encode(message: _142.AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedPastTimeNotUnlockingOnlyResponse;
-            fromJSON(object: any): _142.AccountLockedPastTimeNotUnlockingOnlyResponse;
-            toJSON(message: _142.AccountLockedPastTimeNotUnlockingOnlyResponse): unknown;
+            encode(message: _146.AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedPastTimeNotUnlockingOnlyResponseSDKType;
+            fromJSON(object: any): _146.AccountLockedPastTimeNotUnlockingOnlyResponse;
+            toJSON(message: _146.AccountLockedPastTimeNotUnlockingOnlyResponse): unknown;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2526,29 +2526,29 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-            }): _142.AccountLockedPastTimeNotUnlockingOnlyResponse;
+            }): _146.AccountLockedPastTimeNotUnlockingOnlyResponse;
         };
         AccountUnlockedBeforeTimeRequest: {
-            encode(message: _142.AccountUnlockedBeforeTimeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountUnlockedBeforeTimeRequest;
-            fromJSON(object: any): _142.AccountUnlockedBeforeTimeRequest;
-            toJSON(message: _142.AccountUnlockedBeforeTimeRequest): unknown;
+            encode(message: _146.AccountUnlockedBeforeTimeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountUnlockedBeforeTimeRequest;
+            fromJSON(object: any): _146.AccountUnlockedBeforeTimeRequest;
+            toJSON(message: _146.AccountUnlockedBeforeTimeRequest): unknown;
             fromPartial(object: {
                 owner?: string;
                 timestamp?: Date;
-            }): _142.AccountUnlockedBeforeTimeRequest;
+            }): _146.AccountUnlockedBeforeTimeRequest;
         };
         AccountUnlockedBeforeTimeResponse: {
-            encode(message: _142.AccountUnlockedBeforeTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountUnlockedBeforeTimeResponse;
-            fromJSON(object: any): _142.AccountUnlockedBeforeTimeResponse;
-            toJSON(message: _142.AccountUnlockedBeforeTimeResponse): unknown;
+            encode(message: _146.AccountUnlockedBeforeTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountUnlockedBeforeTimeResponseSDKType;
+            fromJSON(object: any): _146.AccountUnlockedBeforeTimeResponse;
+            toJSON(message: _146.AccountUnlockedBeforeTimeResponse): unknown;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2557,30 +2557,30 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-            }): _142.AccountUnlockedBeforeTimeResponse;
+            }): _146.AccountUnlockedBeforeTimeResponse;
         };
         AccountLockedPastTimeDenomRequest: {
-            encode(message: _142.AccountLockedPastTimeDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedPastTimeDenomRequest;
-            fromJSON(object: any): _142.AccountLockedPastTimeDenomRequest;
-            toJSON(message: _142.AccountLockedPastTimeDenomRequest): unknown;
+            encode(message: _146.AccountLockedPastTimeDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedPastTimeDenomRequest;
+            fromJSON(object: any): _146.AccountLockedPastTimeDenomRequest;
+            toJSON(message: _146.AccountLockedPastTimeDenomRequest): unknown;
             fromPartial(object: {
                 owner?: string;
                 timestamp?: Date;
                 denom?: string;
-            }): _142.AccountLockedPastTimeDenomRequest;
+            }): _146.AccountLockedPastTimeDenomRequest;
         };
         AccountLockedPastTimeDenomResponse: {
-            encode(message: _142.AccountLockedPastTimeDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedPastTimeDenomResponse;
-            fromJSON(object: any): _142.AccountLockedPastTimeDenomResponse;
-            toJSON(message: _142.AccountLockedPastTimeDenomResponse): unknown;
+            encode(message: _146.AccountLockedPastTimeDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedPastTimeDenomResponseSDKType;
+            fromJSON(object: any): _146.AccountLockedPastTimeDenomResponse;
+            toJSON(message: _146.AccountLockedPastTimeDenomResponse): unknown;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2589,50 +2589,50 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-            }): _142.AccountLockedPastTimeDenomResponse;
+            }): _146.AccountLockedPastTimeDenomResponse;
         };
         LockedDenomRequest: {
-            encode(message: _142.LockedDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.LockedDenomRequest;
-            fromJSON(object: any): _142.LockedDenomRequest;
-            toJSON(message: _142.LockedDenomRequest): unknown;
+            encode(message: _146.LockedDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.LockedDenomRequest;
+            fromJSON(object: any): _146.LockedDenomRequest;
+            toJSON(message: _146.LockedDenomRequest): unknown;
             fromPartial(object: {
                 denom?: string;
                 duration?: {
                     seconds?: any;
                     nanos?: number;
                 };
-            }): _142.LockedDenomRequest;
+            }): _146.LockedDenomRequest;
         };
         LockedDenomResponse: {
-            encode(message: _142.LockedDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.LockedDenomResponse;
-            fromJSON(object: any): _142.LockedDenomResponse;
-            toJSON(message: _142.LockedDenomResponse): unknown;
+            encode(message: _146.LockedDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.LockedDenomResponseSDKType;
+            fromJSON(object: any): _146.LockedDenomResponse;
+            toJSON(message: _146.LockedDenomResponse): unknown;
             fromPartial(object: {
                 amount?: string;
-            }): _142.LockedDenomResponse;
+            }): _146.LockedDenomResponse;
         };
         LockedRequest: {
-            encode(message: _142.LockedRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.LockedRequest;
-            fromJSON(object: any): _142.LockedRequest;
-            toJSON(message: _142.LockedRequest): unknown;
+            encode(message: _146.LockedRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.LockedRequest;
+            fromJSON(object: any): _146.LockedRequest;
+            toJSON(message: _146.LockedRequest): unknown;
             fromPartial(object: {
-                lock_id?: any;
-            }): _142.LockedRequest;
+                lockId?: any;
+            }): _146.LockedRequest;
         };
         LockedResponse: {
-            encode(message: _142.LockedResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.LockedResponse;
-            fromJSON(object: any): _142.LockedResponse;
-            toJSON(message: _142.LockedResponse): unknown;
+            encode(message: _146.LockedResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.LockedResponseSDKType;
+            fromJSON(object: any): _146.LockedResponse;
+            toJSON(message: _146.LockedResponse): unknown;
             fromPartial(object: {
                 lock?: {
                     ID?: any;
@@ -2641,58 +2641,58 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 };
-            }): _142.LockedResponse;
+            }): _146.LockedResponse;
         };
         SyntheticLockupsByLockupIDRequest: {
-            encode(message: _142.SyntheticLockupsByLockupIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.SyntheticLockupsByLockupIDRequest;
-            fromJSON(object: any): _142.SyntheticLockupsByLockupIDRequest;
-            toJSON(message: _142.SyntheticLockupsByLockupIDRequest): unknown;
+            encode(message: _146.SyntheticLockupsByLockupIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.SyntheticLockupsByLockupIDRequest;
+            fromJSON(object: any): _146.SyntheticLockupsByLockupIDRequest;
+            toJSON(message: _146.SyntheticLockupsByLockupIDRequest): unknown;
             fromPartial(object: {
-                lock_id?: any;
-            }): _142.SyntheticLockupsByLockupIDRequest;
+                lockId?: any;
+            }): _146.SyntheticLockupsByLockupIDRequest;
         };
         SyntheticLockupsByLockupIDResponse: {
-            encode(message: _142.SyntheticLockupsByLockupIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.SyntheticLockupsByLockupIDResponse;
-            fromJSON(object: any): _142.SyntheticLockupsByLockupIDResponse;
-            toJSON(message: _142.SyntheticLockupsByLockupIDResponse): unknown;
+            encode(message: _146.SyntheticLockupsByLockupIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.SyntheticLockupsByLockupIDResponseSDKType;
+            fromJSON(object: any): _146.SyntheticLockupsByLockupIDResponse;
+            toJSON(message: _146.SyntheticLockupsByLockupIDResponse): unknown;
             fromPartial(object: {
-                synthetic_locks?: {
-                    underlying_lock_id?: any;
-                    synth_denom?: string;
-                    end_time?: Date;
+                syntheticLocks?: {
+                    underlyingLockId?: any;
+                    synthDenom?: string;
+                    endTime?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
                     };
                 }[];
-            }): _142.SyntheticLockupsByLockupIDResponse;
+            }): _146.SyntheticLockupsByLockupIDResponse;
         };
         AccountLockedLongerDurationRequest: {
-            encode(message: _142.AccountLockedLongerDurationRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedLongerDurationRequest;
-            fromJSON(object: any): _142.AccountLockedLongerDurationRequest;
-            toJSON(message: _142.AccountLockedLongerDurationRequest): unknown;
+            encode(message: _146.AccountLockedLongerDurationRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedLongerDurationRequest;
+            fromJSON(object: any): _146.AccountLockedLongerDurationRequest;
+            toJSON(message: _146.AccountLockedLongerDurationRequest): unknown;
             fromPartial(object: {
                 owner?: string;
                 duration?: {
                     seconds?: any;
                     nanos?: number;
                 };
-            }): _142.AccountLockedLongerDurationRequest;
+            }): _146.AccountLockedLongerDurationRequest;
         };
         AccountLockedLongerDurationResponse: {
-            encode(message: _142.AccountLockedLongerDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedLongerDurationResponse;
-            fromJSON(object: any): _142.AccountLockedLongerDurationResponse;
-            toJSON(message: _142.AccountLockedLongerDurationResponse): unknown;
+            encode(message: _146.AccountLockedLongerDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedLongerDurationResponseSDKType;
+            fromJSON(object: any): _146.AccountLockedLongerDurationResponse;
+            toJSON(message: _146.AccountLockedLongerDurationResponse): unknown;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2701,32 +2701,32 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-            }): _142.AccountLockedLongerDurationResponse;
+            }): _146.AccountLockedLongerDurationResponse;
         };
         AccountLockedDurationRequest: {
-            encode(message: _142.AccountLockedDurationRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedDurationRequest;
-            fromJSON(object: any): _142.AccountLockedDurationRequest;
-            toJSON(message: _142.AccountLockedDurationRequest): unknown;
+            encode(message: _146.AccountLockedDurationRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedDurationRequest;
+            fromJSON(object: any): _146.AccountLockedDurationRequest;
+            toJSON(message: _146.AccountLockedDurationRequest): unknown;
             fromPartial(object: {
                 owner?: string;
                 duration?: {
                     seconds?: any;
                     nanos?: number;
                 };
-            }): _142.AccountLockedDurationRequest;
+            }): _146.AccountLockedDurationRequest;
         };
         AccountLockedDurationResponse: {
-            encode(message: _142.AccountLockedDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedDurationResponse;
-            fromJSON(object: any): _142.AccountLockedDurationResponse;
-            toJSON(message: _142.AccountLockedDurationResponse): unknown;
+            encode(message: _146.AccountLockedDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedDurationResponseSDKType;
+            fromJSON(object: any): _146.AccountLockedDurationResponse;
+            toJSON(message: _146.AccountLockedDurationResponse): unknown;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2735,32 +2735,32 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-            }): _142.AccountLockedDurationResponse;
+            }): _146.AccountLockedDurationResponse;
         };
         AccountLockedLongerDurationNotUnlockingOnlyRequest: {
-            encode(message: _142.AccountLockedLongerDurationNotUnlockingOnlyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedLongerDurationNotUnlockingOnlyRequest;
-            fromJSON(object: any): _142.AccountLockedLongerDurationNotUnlockingOnlyRequest;
-            toJSON(message: _142.AccountLockedLongerDurationNotUnlockingOnlyRequest): unknown;
+            encode(message: _146.AccountLockedLongerDurationNotUnlockingOnlyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedLongerDurationNotUnlockingOnlyRequest;
+            fromJSON(object: any): _146.AccountLockedLongerDurationNotUnlockingOnlyRequest;
+            toJSON(message: _146.AccountLockedLongerDurationNotUnlockingOnlyRequest): unknown;
             fromPartial(object: {
                 owner?: string;
                 duration?: {
                     seconds?: any;
                     nanos?: number;
                 };
-            }): _142.AccountLockedLongerDurationNotUnlockingOnlyRequest;
+            }): _146.AccountLockedLongerDurationNotUnlockingOnlyRequest;
         };
         AccountLockedLongerDurationNotUnlockingOnlyResponse: {
-            encode(message: _142.AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedLongerDurationNotUnlockingOnlyResponse;
-            fromJSON(object: any): _142.AccountLockedLongerDurationNotUnlockingOnlyResponse;
-            toJSON(message: _142.AccountLockedLongerDurationNotUnlockingOnlyResponse): unknown;
+            encode(message: _146.AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType;
+            fromJSON(object: any): _146.AccountLockedLongerDurationNotUnlockingOnlyResponse;
+            toJSON(message: _146.AccountLockedLongerDurationNotUnlockingOnlyResponse): unknown;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2769,19 +2769,19 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-            }): _142.AccountLockedLongerDurationNotUnlockingOnlyResponse;
+            }): _146.AccountLockedLongerDurationNotUnlockingOnlyResponse;
         };
         AccountLockedLongerDurationDenomRequest: {
-            encode(message: _142.AccountLockedLongerDurationDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedLongerDurationDenomRequest;
-            fromJSON(object: any): _142.AccountLockedLongerDurationDenomRequest;
-            toJSON(message: _142.AccountLockedLongerDurationDenomRequest): unknown;
+            encode(message: _146.AccountLockedLongerDurationDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedLongerDurationDenomRequest;
+            fromJSON(object: any): _146.AccountLockedLongerDurationDenomRequest;
+            toJSON(message: _146.AccountLockedLongerDurationDenomRequest): unknown;
             fromPartial(object: {
                 owner?: string;
                 duration?: {
@@ -2789,13 +2789,13 @@ export declare namespace osmosis {
                     nanos?: number;
                 };
                 denom?: string;
-            }): _142.AccountLockedLongerDurationDenomRequest;
+            }): _146.AccountLockedLongerDurationDenomRequest;
         };
         AccountLockedLongerDurationDenomResponse: {
-            encode(message: _142.AccountLockedLongerDurationDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.AccountLockedLongerDurationDenomResponse;
-            fromJSON(object: any): _142.AccountLockedLongerDurationDenomResponse;
-            toJSON(message: _142.AccountLockedLongerDurationDenomResponse): unknown;
+            encode(message: _146.AccountLockedLongerDurationDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.AccountLockedLongerDurationDenomResponseSDKType;
+            fromJSON(object: any): _146.AccountLockedLongerDurationDenomResponse;
+            toJSON(message: _146.AccountLockedLongerDurationDenomResponse): unknown;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2804,22 +2804,23 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-            }): _142.AccountLockedLongerDurationDenomResponse;
+            }): _146.AccountLockedLongerDurationDenomResponse;
         };
-        lockQueryTypeFromJSON(object: any): _141.LockQueryType;
-        lockQueryTypeToJSON(object: _141.LockQueryType): string;
-        LockQueryType: typeof _141.LockQueryType;
+        lockQueryTypeFromJSON(object: any): _145.LockQueryType;
+        lockQueryTypeToJSON(object: _145.LockQueryType): string;
+        LockQueryType: typeof _145.LockQueryType;
+        LockQueryTypeSDKType: typeof _145.LockQueryTypeSDKType;
         PeriodLock: {
-            encode(message: _141.PeriodLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.PeriodLock;
-            fromJSON(object: any): _141.PeriodLock;
-            toJSON(message: _141.PeriodLock): unknown;
+            encode(message: _145.PeriodLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.PeriodLock;
+            fromJSON(object: any): _145.PeriodLock;
+            toJSON(message: _145.PeriodLock): unknown;
             fromPartial(object: {
                 ID?: any;
                 owner?: string;
@@ -2827,50 +2828,50 @@ export declare namespace osmosis {
                     seconds?: any;
                     nanos?: number;
                 };
-                end_time?: Date;
+                endTime?: Date;
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _141.PeriodLock;
+            }): _145.PeriodLock;
         };
         QueryCondition: {
-            encode(message: _141.QueryCondition, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.QueryCondition;
-            fromJSON(object: any): _141.QueryCondition;
-            toJSON(message: _141.QueryCondition): unknown;
+            encode(message: _145.QueryCondition, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.QueryCondition;
+            fromJSON(object: any): _145.QueryCondition;
+            toJSON(message: _145.QueryCondition): unknown;
             fromPartial(object: {
-                lock_query_type?: _141.LockQueryType;
+                lockQueryType?: _145.LockQueryType;
                 denom?: string;
                 duration?: {
                     seconds?: any;
                     nanos?: number;
                 };
                 timestamp?: Date;
-            }): _141.QueryCondition;
+            }): _145.QueryCondition;
         };
         SyntheticLock: {
-            encode(message: _141.SyntheticLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.SyntheticLock;
-            fromJSON(object: any): _141.SyntheticLock;
-            toJSON(message: _141.SyntheticLock): unknown;
+            encode(message: _145.SyntheticLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.SyntheticLock;
+            fromJSON(object: any): _145.SyntheticLock;
+            toJSON(message: _145.SyntheticLock): unknown;
             fromPartial(object: {
-                underlying_lock_id?: any;
-                synth_denom?: string;
-                end_time?: Date;
+                underlyingLockId?: any;
+                synthDenom?: string;
+                endTime?: Date;
                 duration?: {
                     seconds?: any;
                     nanos?: number;
                 };
-            }): _141.SyntheticLock;
+            }): _145.SyntheticLock;
         };
         GenesisState: {
-            encode(message: _140.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _140.GenesisState;
-            fromJSON(object: any): _140.GenesisState;
-            toJSON(message: _140.GenesisState): unknown;
+            encode(message: _144.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _144.GenesisState;
+            fromJSON(object: any): _144.GenesisState;
+            toJSON(message: _144.GenesisState): unknown;
             fromPartial(object: {
-                last_lock_id?: any;
+                lastLockId?: any;
                 locks?: {
                     ID?: any;
                     owner?: string;
@@ -2878,227 +2879,28 @@ export declare namespace osmosis {
                         seconds?: any;
                         nanos?: number;
                     };
-                    end_time?: Date;
+                    endTime?: Date;
                     coins?: {
                         denom?: string;
                         amount?: string;
                     }[];
                 }[];
-                synthetic_locks?: {
-                    underlying_lock_id?: any;
-                    synth_denom?: string;
-                    end_time?: Date;
+                syntheticLocks?: {
+                    underlyingLockId?: any;
+                    synthDenom?: string;
+                    endTime?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
                     };
                 }[];
-            }): _140.GenesisState;
+            }): _144.GenesisState;
         };
     };
     namespace mint {
         const v1beta1: {
-            QueryClientImpl: typeof _297.QueryClientImpl;
-            LCDQueryClient: typeof _288.LCDQueryClient;
-            QueryParamsRequest: {
-                encode(_: _146.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.QueryParamsRequest;
-                fromJSON(_: any): _146.QueryParamsRequest;
-                toJSON(_: _146.QueryParamsRequest): unknown;
-                fromPartial(_: {}): _146.QueryParamsRequest;
-            };
-            QueryParamsResponse: {
-                encode(message: _146.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.QueryParamsResponse;
-                fromJSON(object: any): _146.QueryParamsResponse;
-                toJSON(message: _146.QueryParamsResponse): unknown;
-                fromPartial(object: {
-                    params?: {
-                        mint_denom?: string;
-                        genesis_epoch_provisions?: string;
-                        epoch_identifier?: string;
-                        reduction_period_in_epochs?: any;
-                        reduction_factor?: string;
-                        distribution_proportions?: {
-                            staking?: string;
-                            pool_incentives?: string;
-                            developer_rewards?: string;
-                            community_pool?: string;
-                        };
-                        weighted_developer_rewards_receivers?: {
-                            address?: string;
-                            weight?: string;
-                        }[];
-                        minting_rewards_distribution_start_epoch?: any;
-                    };
-                }): _146.QueryParamsResponse;
-            };
-            QueryEpochProvisionsRequest: {
-                encode(_: _146.QueryEpochProvisionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.QueryEpochProvisionsRequest;
-                fromJSON(_: any): _146.QueryEpochProvisionsRequest;
-                toJSON(_: _146.QueryEpochProvisionsRequest): unknown;
-                fromPartial(_: {}): _146.QueryEpochProvisionsRequest;
-            };
-            QueryEpochProvisionsResponse: {
-                encode(message: _146.QueryEpochProvisionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.QueryEpochProvisionsResponse;
-                fromJSON(object: any): _146.QueryEpochProvisionsResponse;
-                toJSON(message: _146.QueryEpochProvisionsResponse): unknown;
-                fromPartial(object: {
-                    epoch_provisions?: Uint8Array;
-                }): _146.QueryEpochProvisionsResponse;
-            };
-            Minter: {
-                encode(message: _145.Minter, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.Minter;
-                fromJSON(object: any): _145.Minter;
-                toJSON(message: _145.Minter): unknown;
-                fromPartial(object: {
-                    epoch_provisions?: string;
-                }): _145.Minter;
-            };
-            WeightedAddress: {
-                encode(message: _145.WeightedAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.WeightedAddress;
-                fromJSON(object: any): _145.WeightedAddress;
-                toJSON(message: _145.WeightedAddress): unknown;
-                fromPartial(object: {
-                    address?: string;
-                    weight?: string;
-                }): _145.WeightedAddress;
-            };
-            DistributionProportions: {
-                encode(message: _145.DistributionProportions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.DistributionProportions;
-                fromJSON(object: any): _145.DistributionProportions;
-                toJSON(message: _145.DistributionProportions): unknown;
-                fromPartial(object: {
-                    staking?: string;
-                    pool_incentives?: string;
-                    developer_rewards?: string;
-                    community_pool?: string;
-                }): _145.DistributionProportions;
-            };
-            Params: {
-                encode(message: _145.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.Params;
-                fromJSON(object: any): _145.Params;
-                toJSON(message: _145.Params): unknown;
-                fromPartial(object: {
-                    mint_denom?: string;
-                    genesis_epoch_provisions?: string;
-                    epoch_identifier?: string;
-                    reduction_period_in_epochs?: any;
-                    reduction_factor?: string;
-                    distribution_proportions?: {
-                        staking?: string;
-                        pool_incentives?: string;
-                        developer_rewards?: string;
-                        community_pool?: string;
-                    };
-                    weighted_developer_rewards_receivers?: {
-                        address?: string;
-                        weight?: string;
-                    }[];
-                    minting_rewards_distribution_start_epoch?: any;
-                }): _145.Params;
-            };
-            GenesisState: {
-                encode(message: _144.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _144.GenesisState;
-                fromJSON(object: any): _144.GenesisState;
-                toJSON(message: _144.GenesisState): unknown;
-                fromPartial(object: {
-                    minter?: {
-                        epoch_provisions?: string;
-                    };
-                    params?: {
-                        mint_denom?: string;
-                        genesis_epoch_provisions?: string;
-                        epoch_identifier?: string;
-                        reduction_period_in_epochs?: any;
-                        reduction_factor?: string;
-                        distribution_proportions?: {
-                            staking?: string;
-                            pool_incentives?: string;
-                            developer_rewards?: string;
-                            community_pool?: string;
-                        };
-                        weighted_developer_rewards_receivers?: {
-                            address?: string;
-                            weight?: string;
-                        }[];
-                        minting_rewards_distribution_start_epoch?: any;
-                    };
-                    halven_started_epoch?: any;
-                }): _144.GenesisState;
-            };
-        };
-    }
-    namespace poolincentives {
-        const v1beta1: {
-            QueryClientImpl: typeof _298.QueryClientImpl;
-            LCDQueryClient: typeof _289.LCDQueryClient;
-            QueryGaugeIdsRequest: {
-                encode(message: _150.QueryGaugeIdsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryGaugeIdsRequest;
-                fromJSON(object: any): _150.QueryGaugeIdsRequest;
-                toJSON(message: _150.QueryGaugeIdsRequest): unknown;
-                fromPartial(object: {
-                    pool_id?: any;
-                }): _150.QueryGaugeIdsRequest;
-            };
-            QueryGaugeIdsResponse: {
-                encode(message: _150.QueryGaugeIdsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryGaugeIdsResponse;
-                fromJSON(object: any): _150.QueryGaugeIdsResponse;
-                toJSON(message: _150.QueryGaugeIdsResponse): unknown;
-                fromPartial(object: {
-                    gauge_ids_with_duration?: {
-                        gauge_id?: any;
-                        duration?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                    }[];
-                }): _150.QueryGaugeIdsResponse;
-            };
-            QueryGaugeIdsResponse_GaugeIdWithDuration: {
-                encode(message: _150.QueryGaugeIdsResponse_GaugeIdWithDuration, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryGaugeIdsResponse_GaugeIdWithDuration;
-                fromJSON(object: any): _150.QueryGaugeIdsResponse_GaugeIdWithDuration;
-                toJSON(message: _150.QueryGaugeIdsResponse_GaugeIdWithDuration): unknown;
-                fromPartial(object: {
-                    gauge_id?: any;
-                    duration?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
-                }): _150.QueryGaugeIdsResponse_GaugeIdWithDuration;
-            };
-            QueryDistrInfoRequest: {
-                encode(_: _150.QueryDistrInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryDistrInfoRequest;
-                fromJSON(_: any): _150.QueryDistrInfoRequest;
-                toJSON(_: _150.QueryDistrInfoRequest): unknown;
-                fromPartial(_: {}): _150.QueryDistrInfoRequest;
-            };
-            QueryDistrInfoResponse: {
-                encode(message: _150.QueryDistrInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryDistrInfoResponse;
-                fromJSON(object: any): _150.QueryDistrInfoResponse;
-                toJSON(message: _150.QueryDistrInfoResponse): unknown;
-                fromPartial(object: {
-                    distr_info?: {
-                        total_weight?: string;
-                        records?: {
-                            gauge_id?: any;
-                            weight?: string;
-                        }[];
-                    };
-                }): _150.QueryDistrInfoResponse;
-            };
+            QueryClientImpl: typeof _306.QueryClientImpl;
+            LCDQueryClient: typeof _297.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _150.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryParamsRequest;
@@ -3108,89 +2910,288 @@ export declare namespace osmosis {
             };
             QueryParamsResponse: {
                 encode(message: _150.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryParamsResponse;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryParamsResponseSDKType;
                 fromJSON(object: any): _150.QueryParamsResponse;
                 toJSON(message: _150.QueryParamsResponse): unknown;
                 fromPartial(object: {
                     params?: {
-                        minted_denom?: string;
+                        mintDenom?: string;
+                        genesisEpochProvisions?: string;
+                        epochIdentifier?: string;
+                        reductionPeriodInEpochs?: any;
+                        reductionFactor?: string;
+                        distributionProportions?: {
+                            staking?: string;
+                            poolIncentives?: string;
+                            developerRewards?: string;
+                            communityPool?: string;
+                        };
+                        weightedDeveloperRewardsReceivers?: {
+                            address?: string;
+                            weight?: string;
+                        }[];
+                        mintingRewardsDistributionStartEpoch?: any;
                     };
                 }): _150.QueryParamsResponse;
             };
-            QueryLockableDurationsRequest: {
-                encode(_: _150.QueryLockableDurationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryLockableDurationsRequest;
-                fromJSON(_: any): _150.QueryLockableDurationsRequest;
-                toJSON(_: _150.QueryLockableDurationsRequest): unknown;
-                fromPartial(_: {}): _150.QueryLockableDurationsRequest;
+            QueryEpochProvisionsRequest: {
+                encode(_: _150.QueryEpochProvisionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryEpochProvisionsRequest;
+                fromJSON(_: any): _150.QueryEpochProvisionsRequest;
+                toJSON(_: _150.QueryEpochProvisionsRequest): unknown;
+                fromPartial(_: {}): _150.QueryEpochProvisionsRequest;
             };
-            QueryLockableDurationsResponse: {
-                encode(message: _150.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryLockableDurationsResponse;
-                fromJSON(object: any): _150.QueryLockableDurationsResponse;
-                toJSON(message: _150.QueryLockableDurationsResponse): unknown;
+            QueryEpochProvisionsResponse: {
+                encode(message: _150.QueryEpochProvisionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryEpochProvisionsResponseSDKType;
+                fromJSON(object: any): _150.QueryEpochProvisionsResponse;
+                toJSON(message: _150.QueryEpochProvisionsResponse): unknown;
                 fromPartial(object: {
-                    lockable_durations?: {
-                        seconds?: any;
-                        nanos?: number;
-                    }[];
-                }): _150.QueryLockableDurationsResponse;
+                    epochProvisions?: Uint8Array;
+                }): _150.QueryEpochProvisionsResponse;
             };
-            QueryIncentivizedPoolsRequest: {
-                encode(_: _150.QueryIncentivizedPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryIncentivizedPoolsRequest;
-                fromJSON(_: any): _150.QueryIncentivizedPoolsRequest;
-                toJSON(_: _150.QueryIncentivizedPoolsRequest): unknown;
-                fromPartial(_: {}): _150.QueryIncentivizedPoolsRequest;
-            };
-            IncentivizedPool: {
-                encode(message: _150.IncentivizedPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.IncentivizedPool;
-                fromJSON(object: any): _150.IncentivizedPool;
-                toJSON(message: _150.IncentivizedPool): unknown;
+            Minter: {
+                encode(message: _149.Minter, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.Minter;
+                fromJSON(object: any): _149.Minter;
+                toJSON(message: _149.Minter): unknown;
                 fromPartial(object: {
-                    pool_id?: any;
-                    lockable_duration?: {
-                        seconds?: any;
-                        nanos?: number;
+                    epochProvisions?: string;
+                }): _149.Minter;
+            };
+            WeightedAddress: {
+                encode(message: _149.WeightedAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.WeightedAddress;
+                fromJSON(object: any): _149.WeightedAddress;
+                toJSON(message: _149.WeightedAddress): unknown;
+                fromPartial(object: {
+                    address?: string;
+                    weight?: string;
+                }): _149.WeightedAddress;
+            };
+            DistributionProportions: {
+                encode(message: _149.DistributionProportions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.DistributionProportions;
+                fromJSON(object: any): _149.DistributionProportions;
+                toJSON(message: _149.DistributionProportions): unknown;
+                fromPartial(object: {
+                    staking?: string;
+                    poolIncentives?: string;
+                    developerRewards?: string;
+                    communityPool?: string;
+                }): _149.DistributionProportions;
+            };
+            Params: {
+                encode(message: _149.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.Params;
+                fromJSON(object: any): _149.Params;
+                toJSON(message: _149.Params): unknown;
+                fromPartial(object: {
+                    mintDenom?: string;
+                    genesisEpochProvisions?: string;
+                    epochIdentifier?: string;
+                    reductionPeriodInEpochs?: any;
+                    reductionFactor?: string;
+                    distributionProportions?: {
+                        staking?: string;
+                        poolIncentives?: string;
+                        developerRewards?: string;
+                        communityPool?: string;
                     };
-                    gauge_id?: any;
-                }): _150.IncentivizedPool;
+                    weightedDeveloperRewardsReceivers?: {
+                        address?: string;
+                        weight?: string;
+                    }[];
+                    mintingRewardsDistributionStartEpoch?: any;
+                }): _149.Params;
             };
-            QueryIncentivizedPoolsResponse: {
-                encode(message: _150.QueryIncentivizedPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryIncentivizedPoolsResponse;
-                fromJSON(object: any): _150.QueryIncentivizedPoolsResponse;
-                toJSON(message: _150.QueryIncentivizedPoolsResponse): unknown;
+            GenesisState: {
+                encode(message: _148.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.GenesisState;
+                fromJSON(object: any): _148.GenesisState;
+                toJSON(message: _148.GenesisState): unknown;
                 fromPartial(object: {
-                    incentivized_pools?: {
-                        pool_id?: any;
-                        lockable_duration?: {
+                    minter?: {
+                        epochProvisions?: string;
+                    };
+                    params?: {
+                        mintDenom?: string;
+                        genesisEpochProvisions?: string;
+                        epochIdentifier?: string;
+                        reductionPeriodInEpochs?: any;
+                        reductionFactor?: string;
+                        distributionProportions?: {
+                            staking?: string;
+                            poolIncentives?: string;
+                            developerRewards?: string;
+                            communityPool?: string;
+                        };
+                        weightedDeveloperRewardsReceivers?: {
+                            address?: string;
+                            weight?: string;
+                        }[];
+                        mintingRewardsDistributionStartEpoch?: any;
+                    };
+                    halvenStartedEpoch?: any;
+                }): _148.GenesisState;
+            };
+        };
+    }
+    namespace poolincentives {
+        const v1beta1: {
+            QueryClientImpl: typeof _307.QueryClientImpl;
+            LCDQueryClient: typeof _298.LCDQueryClient;
+            QueryGaugeIdsRequest: {
+                encode(message: _154.QueryGaugeIdsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryGaugeIdsRequest;
+                fromJSON(object: any): _154.QueryGaugeIdsRequest;
+                toJSON(message: _154.QueryGaugeIdsRequest): unknown;
+                fromPartial(object: {
+                    poolId?: any;
+                }): _154.QueryGaugeIdsRequest;
+            };
+            QueryGaugeIdsResponse: {
+                encode(message: _154.QueryGaugeIdsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryGaugeIdsResponseSDKType;
+                fromJSON(object: any): _154.QueryGaugeIdsResponse;
+                toJSON(message: _154.QueryGaugeIdsResponse): unknown;
+                fromPartial(object: {
+                    gaugeIdsWithDuration?: {
+                        gaugeId?: any;
+                        duration?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        gauge_id?: any;
                     }[];
-                }): _150.QueryIncentivizedPoolsResponse;
+                }): _154.QueryGaugeIdsResponse;
+            };
+            QueryGaugeIdsResponse_GaugeIdWithDuration: {
+                encode(message: _154.QueryGaugeIdsResponse_GaugeIdWithDuration, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryGaugeIdsResponse_GaugeIdWithDuration;
+                fromJSON(object: any): _154.QueryGaugeIdsResponse_GaugeIdWithDuration;
+                toJSON(message: _154.QueryGaugeIdsResponse_GaugeIdWithDuration): unknown;
+                fromPartial(object: {
+                    gaugeId?: any;
+                    duration?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
+                }): _154.QueryGaugeIdsResponse_GaugeIdWithDuration;
+            };
+            QueryDistrInfoRequest: {
+                encode(_: _154.QueryDistrInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryDistrInfoRequest;
+                fromJSON(_: any): _154.QueryDistrInfoRequest;
+                toJSON(_: _154.QueryDistrInfoRequest): unknown;
+                fromPartial(_: {}): _154.QueryDistrInfoRequest;
+            };
+            QueryDistrInfoResponse: {
+                encode(message: _154.QueryDistrInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryDistrInfoResponseSDKType;
+                fromJSON(object: any): _154.QueryDistrInfoResponse;
+                toJSON(message: _154.QueryDistrInfoResponse): unknown;
+                fromPartial(object: {
+                    distrInfo?: {
+                        totalWeight?: string;
+                        records?: {
+                            gaugeId?: any;
+                            weight?: string;
+                        }[];
+                    };
+                }): _154.QueryDistrInfoResponse;
+            };
+            QueryParamsRequest: {
+                encode(_: _154.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryParamsRequest;
+                fromJSON(_: any): _154.QueryParamsRequest;
+                toJSON(_: _154.QueryParamsRequest): unknown;
+                fromPartial(_: {}): _154.QueryParamsRequest;
+            };
+            QueryParamsResponse: {
+                encode(message: _154.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryParamsResponseSDKType;
+                fromJSON(object: any): _154.QueryParamsResponse;
+                toJSON(message: _154.QueryParamsResponse): unknown;
+                fromPartial(object: {
+                    params?: {
+                        mintedDenom?: string;
+                    };
+                }): _154.QueryParamsResponse;
+            };
+            QueryLockableDurationsRequest: {
+                encode(_: _154.QueryLockableDurationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryLockableDurationsRequest;
+                fromJSON(_: any): _154.QueryLockableDurationsRequest;
+                toJSON(_: _154.QueryLockableDurationsRequest): unknown;
+                fromPartial(_: {}): _154.QueryLockableDurationsRequest;
+            };
+            QueryLockableDurationsResponse: {
+                encode(message: _154.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryLockableDurationsResponseSDKType;
+                fromJSON(object: any): _154.QueryLockableDurationsResponse;
+                toJSON(message: _154.QueryLockableDurationsResponse): unknown;
+                fromPartial(object: {
+                    lockableDurations?: {
+                        seconds?: any;
+                        nanos?: number;
+                    }[];
+                }): _154.QueryLockableDurationsResponse;
+            };
+            QueryIncentivizedPoolsRequest: {
+                encode(_: _154.QueryIncentivizedPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryIncentivizedPoolsRequest;
+                fromJSON(_: any): _154.QueryIncentivizedPoolsRequest;
+                toJSON(_: _154.QueryIncentivizedPoolsRequest): unknown;
+                fromPartial(_: {}): _154.QueryIncentivizedPoolsRequest;
+            };
+            IncentivizedPool: {
+                encode(message: _154.IncentivizedPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.IncentivizedPool;
+                fromJSON(object: any): _154.IncentivizedPool;
+                toJSON(message: _154.IncentivizedPool): unknown;
+                fromPartial(object: {
+                    poolId?: any;
+                    lockableDuration?: {
+                        seconds?: any;
+                        nanos?: number;
+                    };
+                    gaugeId?: any;
+                }): _154.IncentivizedPool;
+            };
+            QueryIncentivizedPoolsResponse: {
+                encode(message: _154.QueryIncentivizedPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryIncentivizedPoolsResponseSDKType;
+                fromJSON(object: any): _154.QueryIncentivizedPoolsResponse;
+                toJSON(message: _154.QueryIncentivizedPoolsResponse): unknown;
+                fromPartial(object: {
+                    incentivizedPools?: {
+                        poolId?: any;
+                        lockableDuration?: {
+                            seconds?: any;
+                            nanos?: number;
+                        };
+                        gaugeId?: any;
+                    }[];
+                }): _154.QueryIncentivizedPoolsResponse;
             };
             QueryExternalIncentiveGaugesRequest: {
-                encode(_: _150.QueryExternalIncentiveGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryExternalIncentiveGaugesRequest;
-                fromJSON(_: any): _150.QueryExternalIncentiveGaugesRequest;
-                toJSON(_: _150.QueryExternalIncentiveGaugesRequest): unknown;
-                fromPartial(_: {}): _150.QueryExternalIncentiveGaugesRequest;
+                encode(_: _154.QueryExternalIncentiveGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryExternalIncentiveGaugesRequest;
+                fromJSON(_: any): _154.QueryExternalIncentiveGaugesRequest;
+                toJSON(_: _154.QueryExternalIncentiveGaugesRequest): unknown;
+                fromPartial(_: {}): _154.QueryExternalIncentiveGaugesRequest;
             };
             QueryExternalIncentiveGaugesResponse: {
-                encode(message: _150.QueryExternalIncentiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.QueryExternalIncentiveGaugesResponse;
-                fromJSON(object: any): _150.QueryExternalIncentiveGaugesResponse;
-                toJSON(message: _150.QueryExternalIncentiveGaugesResponse): unknown;
+                encode(message: _154.QueryExternalIncentiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryExternalIncentiveGaugesResponseSDKType;
+                fromJSON(object: any): _154.QueryExternalIncentiveGaugesResponse;
+                toJSON(message: _154.QueryExternalIncentiveGaugesResponse): unknown;
                 fromPartial(object: {
                     data?: {
                         id?: any;
-                        is_perpetual?: boolean;
-                        distribute_to?: {
-                            lock_query_type?: _141.LockQueryType;
+                        isPerpetual?: boolean;
+                        distributeTo?: {
+                            lockQueryType?: _145.LockQueryType;
                             denom?: string;
                             duration?: {
                                 seconds?: any;
@@ -3202,219 +3203,219 @@ export declare namespace osmosis {
                             denom?: string;
                             amount?: string;
                         }[];
-                        start_time?: Date;
-                        num_epochs_paid_over?: any;
-                        filled_epochs?: any;
-                        distributed_coins?: {
+                        startTime?: Date;
+                        numEpochsPaidOver?: any;
+                        filledEpochs?: any;
+                        distributedCoins?: {
                             denom?: string;
                             amount?: string;
                         }[];
                     }[];
-                }): _150.QueryExternalIncentiveGaugesResponse;
+                }): _154.QueryExternalIncentiveGaugesResponse;
             };
             Params: {
-                encode(message: _149.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.Params;
-                fromJSON(object: any): _149.Params;
-                toJSON(message: _149.Params): unknown;
+                encode(message: _153.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.Params;
+                fromJSON(object: any): _153.Params;
+                toJSON(message: _153.Params): unknown;
                 fromPartial(object: {
-                    minted_denom?: string;
-                }): _149.Params;
+                    mintedDenom?: string;
+                }): _153.Params;
             };
             LockableDurationsInfo: {
-                encode(message: _149.LockableDurationsInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.LockableDurationsInfo;
-                fromJSON(object: any): _149.LockableDurationsInfo;
-                toJSON(message: _149.LockableDurationsInfo): unknown;
+                encode(message: _153.LockableDurationsInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.LockableDurationsInfo;
+                fromJSON(object: any): _153.LockableDurationsInfo;
+                toJSON(message: _153.LockableDurationsInfo): unknown;
                 fromPartial(object: {
-                    lockable_durations?: {
+                    lockableDurations?: {
                         seconds?: any;
                         nanos?: number;
                     }[];
-                }): _149.LockableDurationsInfo;
+                }): _153.LockableDurationsInfo;
             };
             DistrInfo: {
-                encode(message: _149.DistrInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.DistrInfo;
-                fromJSON(object: any): _149.DistrInfo;
-                toJSON(message: _149.DistrInfo): unknown;
+                encode(message: _153.DistrInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.DistrInfo;
+                fromJSON(object: any): _153.DistrInfo;
+                toJSON(message: _153.DistrInfo): unknown;
                 fromPartial(object: {
-                    total_weight?: string;
+                    totalWeight?: string;
                     records?: {
-                        gauge_id?: any;
+                        gaugeId?: any;
                         weight?: string;
                     }[];
-                }): _149.DistrInfo;
+                }): _153.DistrInfo;
             };
             DistrRecord: {
-                encode(message: _149.DistrRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.DistrRecord;
-                fromJSON(object: any): _149.DistrRecord;
-                toJSON(message: _149.DistrRecord): unknown;
+                encode(message: _153.DistrRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.DistrRecord;
+                fromJSON(object: any): _153.DistrRecord;
+                toJSON(message: _153.DistrRecord): unknown;
                 fromPartial(object: {
-                    gauge_id?: any;
+                    gaugeId?: any;
                     weight?: string;
-                }): _149.DistrRecord;
+                }): _153.DistrRecord;
             };
             ReplacePoolIncentivesProposal: {
-                encode(message: _148.ReplacePoolIncentivesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.ReplacePoolIncentivesProposal;
-                fromJSON(object: any): _148.ReplacePoolIncentivesProposal;
-                toJSON(message: _148.ReplacePoolIncentivesProposal): unknown;
+                encode(message: _152.ReplacePoolIncentivesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.ReplacePoolIncentivesProposal;
+                fromJSON(object: any): _152.ReplacePoolIncentivesProposal;
+                toJSON(message: _152.ReplacePoolIncentivesProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
                     records?: {
-                        gauge_id?: any;
+                        gaugeId?: any;
                         weight?: string;
                     }[];
-                }): _148.ReplacePoolIncentivesProposal;
+                }): _152.ReplacePoolIncentivesProposal;
             };
             UpdatePoolIncentivesProposal: {
-                encode(message: _148.UpdatePoolIncentivesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.UpdatePoolIncentivesProposal;
-                fromJSON(object: any): _148.UpdatePoolIncentivesProposal;
-                toJSON(message: _148.UpdatePoolIncentivesProposal): unknown;
+                encode(message: _152.UpdatePoolIncentivesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.UpdatePoolIncentivesProposal;
+                fromJSON(object: any): _152.UpdatePoolIncentivesProposal;
+                toJSON(message: _152.UpdatePoolIncentivesProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
                     records?: {
-                        gauge_id?: any;
+                        gaugeId?: any;
                         weight?: string;
                     }[];
-                }): _148.UpdatePoolIncentivesProposal;
+                }): _152.UpdatePoolIncentivesProposal;
             };
             GenesisState: {
-                encode(message: _147.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.GenesisState;
-                fromJSON(object: any): _147.GenesisState;
-                toJSON(message: _147.GenesisState): unknown;
+                encode(message: _151.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.GenesisState;
+                fromJSON(object: any): _151.GenesisState;
+                toJSON(message: _151.GenesisState): unknown;
                 fromPartial(object: {
                     params?: {
-                        minted_denom?: string;
+                        mintedDenom?: string;
                     };
-                    lockable_durations?: {
+                    lockableDurations?: {
                         seconds?: any;
                         nanos?: number;
                     }[];
-                    distr_info?: {
-                        total_weight?: string;
+                    distrInfo?: {
+                        totalWeight?: string;
                         records?: {
-                            gauge_id?: any;
+                            gaugeId?: any;
                             weight?: string;
                         }[];
                     };
-                }): _147.GenesisState;
+                }): _151.GenesisState;
             };
         };
     }
     namespace store {
         const v1beta1: {
             Node: {
-                encode(message: _151.Node, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.Node;
-                fromJSON(object: any): _151.Node;
-                toJSON(message: _151.Node): unknown;
+                encode(message: _155.Node, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.Node;
+                fromJSON(object: any): _155.Node;
+                toJSON(message: _155.Node): unknown;
                 fromPartial(object: {
                     children?: {
                         index?: Uint8Array;
                         accumulation?: string;
                     }[];
-                }): _151.Node;
+                }): _155.Node;
             };
             Child: {
-                encode(message: _151.Child, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.Child;
-                fromJSON(object: any): _151.Child;
-                toJSON(message: _151.Child): unknown;
+                encode(message: _155.Child, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.Child;
+                fromJSON(object: any): _155.Child;
+                toJSON(message: _155.Child): unknown;
                 fromPartial(object: {
                     index?: Uint8Array;
                     accumulation?: string;
-                }): _151.Child;
+                }): _155.Child;
             };
             Leaf: {
-                encode(message: _151.Leaf, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.Leaf;
-                fromJSON(object: any): _151.Leaf;
-                toJSON(message: _151.Leaf): unknown;
+                encode(message: _155.Leaf, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.Leaf;
+                fromJSON(object: any): _155.Leaf;
+                toJSON(message: _155.Leaf): unknown;
                 fromPartial(object: {
                     leaf?: {
                         index?: Uint8Array;
                         accumulation?: string;
                     };
-                }): _151.Leaf;
+                }): _155.Leaf;
             };
         };
     }
     const superfluid: {
-        MsgClientImpl: typeof _307.MsgClientImpl;
-        QueryClientImpl: typeof _299.QueryClientImpl;
-        LCDQueryClient: typeof _290.LCDQueryClient;
+        MsgClientImpl: typeof _316.MsgClientImpl;
+        QueryClientImpl: typeof _308.QueryClientImpl;
+        LCDQueryClient: typeof _299.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
             encoded: {
-                superfluidDelegate(value: _156.MsgSuperfluidDelegate): {
+                superfluidDelegate(value: _160.MsgSuperfluidDelegate): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
-                superfluidUndelegate(value: _156.MsgSuperfluidUndelegate): {
+                superfluidUndelegate(value: _160.MsgSuperfluidUndelegate): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
-                superfluidUnbondLock(value: _156.MsgSuperfluidUnbondLock): {
+                superfluidUnbondLock(value: _160.MsgSuperfluidUnbondLock): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
-                lockAndSuperfluidDelegate(value: _156.MsgLockAndSuperfluidDelegate): {
+                lockAndSuperfluidDelegate(value: _160.MsgLockAndSuperfluidDelegate): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
-                unPoolWhitelistedPool(value: _156.MsgUnPoolWhitelistedPool): {
+                unPoolWhitelistedPool(value: _160.MsgUnPoolWhitelistedPool): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
             };
             withTypeUrl: {
-                superfluidDelegate(value: _156.MsgSuperfluidDelegate): {
+                superfluidDelegate(value: _160.MsgSuperfluidDelegate): {
                     typeUrl: string;
-                    value: _156.MsgSuperfluidDelegate;
+                    value: _160.MsgSuperfluidDelegate;
                 };
-                superfluidUndelegate(value: _156.MsgSuperfluidUndelegate): {
+                superfluidUndelegate(value: _160.MsgSuperfluidUndelegate): {
                     typeUrl: string;
-                    value: _156.MsgSuperfluidUndelegate;
+                    value: _160.MsgSuperfluidUndelegate;
                 };
-                superfluidUnbondLock(value: _156.MsgSuperfluidUnbondLock): {
+                superfluidUnbondLock(value: _160.MsgSuperfluidUnbondLock): {
                     typeUrl: string;
-                    value: _156.MsgSuperfluidUnbondLock;
+                    value: _160.MsgSuperfluidUnbondLock;
                 };
-                lockAndSuperfluidDelegate(value: _156.MsgLockAndSuperfluidDelegate): {
+                lockAndSuperfluidDelegate(value: _160.MsgLockAndSuperfluidDelegate): {
                     typeUrl: string;
-                    value: _156.MsgLockAndSuperfluidDelegate;
+                    value: _160.MsgLockAndSuperfluidDelegate;
                 };
-                unPoolWhitelistedPool(value: _156.MsgUnPoolWhitelistedPool): {
+                unPoolWhitelistedPool(value: _160.MsgUnPoolWhitelistedPool): {
                     typeUrl: string;
-                    value: _156.MsgUnPoolWhitelistedPool;
+                    value: _160.MsgUnPoolWhitelistedPool;
                 };
             };
             toJSON: {
-                superfluidDelegate(value: _156.MsgSuperfluidDelegate): {
+                superfluidDelegate(value: _160.MsgSuperfluidDelegate): {
                     typeUrl: string;
                     value: unknown;
                 };
-                superfluidUndelegate(value: _156.MsgSuperfluidUndelegate): {
+                superfluidUndelegate(value: _160.MsgSuperfluidUndelegate): {
                     typeUrl: string;
                     value: unknown;
                 };
-                superfluidUnbondLock(value: _156.MsgSuperfluidUnbondLock): {
+                superfluidUnbondLock(value: _160.MsgSuperfluidUnbondLock): {
                     typeUrl: string;
                     value: unknown;
                 };
-                lockAndSuperfluidDelegate(value: _156.MsgLockAndSuperfluidDelegate): {
+                lockAndSuperfluidDelegate(value: _160.MsgLockAndSuperfluidDelegate): {
                     typeUrl: string;
                     value: unknown;
                 };
-                unPoolWhitelistedPool(value: _156.MsgUnPoolWhitelistedPool): {
+                unPoolWhitelistedPool(value: _160.MsgUnPoolWhitelistedPool): {
                     typeUrl: string;
                     value: unknown;
                 };
@@ -3422,52 +3423,52 @@ export declare namespace osmosis {
             fromJSON: {
                 superfluidDelegate(value: any): {
                     typeUrl: string;
-                    value: _156.MsgSuperfluidDelegate;
+                    value: _160.MsgSuperfluidDelegate;
                 };
                 superfluidUndelegate(value: any): {
                     typeUrl: string;
-                    value: _156.MsgSuperfluidUndelegate;
+                    value: _160.MsgSuperfluidUndelegate;
                 };
                 superfluidUnbondLock(value: any): {
                     typeUrl: string;
-                    value: _156.MsgSuperfluidUnbondLock;
+                    value: _160.MsgSuperfluidUnbondLock;
                 };
                 lockAndSuperfluidDelegate(value: any): {
                     typeUrl: string;
-                    value: _156.MsgLockAndSuperfluidDelegate;
+                    value: _160.MsgLockAndSuperfluidDelegate;
                 };
                 unPoolWhitelistedPool(value: any): {
                     typeUrl: string;
-                    value: _156.MsgUnPoolWhitelistedPool;
+                    value: _160.MsgUnPoolWhitelistedPool;
                 };
             };
             fromPartial: {
-                superfluidDelegate(value: _156.MsgSuperfluidDelegate): {
+                superfluidDelegate(value: _160.MsgSuperfluidDelegate): {
                     typeUrl: string;
-                    value: _156.MsgSuperfluidDelegate;
+                    value: _160.MsgSuperfluidDelegate;
                 };
-                superfluidUndelegate(value: _156.MsgSuperfluidUndelegate): {
+                superfluidUndelegate(value: _160.MsgSuperfluidUndelegate): {
                     typeUrl: string;
-                    value: _156.MsgSuperfluidUndelegate;
+                    value: _160.MsgSuperfluidUndelegate;
                 };
-                superfluidUnbondLock(value: _156.MsgSuperfluidUnbondLock): {
+                superfluidUnbondLock(value: _160.MsgSuperfluidUnbondLock): {
                     typeUrl: string;
-                    value: _156.MsgSuperfluidUnbondLock;
+                    value: _160.MsgSuperfluidUnbondLock;
                 };
-                lockAndSuperfluidDelegate(value: _156.MsgLockAndSuperfluidDelegate): {
+                lockAndSuperfluidDelegate(value: _160.MsgLockAndSuperfluidDelegate): {
                     typeUrl: string;
-                    value: _156.MsgLockAndSuperfluidDelegate;
+                    value: _160.MsgLockAndSuperfluidDelegate;
                 };
-                unPoolWhitelistedPool(value: _156.MsgUnPoolWhitelistedPool): {
+                unPoolWhitelistedPool(value: _160.MsgUnPoolWhitelistedPool): {
                     typeUrl: string;
-                    value: _156.MsgUnPoolWhitelistedPool;
+                    value: _160.MsgUnPoolWhitelistedPool;
                 };
             };
         };
         AminoConverter: {
             "/osmosis.superfluid.MsgSuperfluidDelegate": {
                 aminoType: string;
-                toAmino: ({ sender, lock_id, val_addr }: _156.MsgSuperfluidDelegate) => {
+                toAmino: ({ sender, lockId, valAddr }: _160.MsgSuperfluidDelegate) => {
                     sender: string;
                     lock_id: string;
                     val_addr: string;
@@ -3476,33 +3477,33 @@ export declare namespace osmosis {
                     sender: string;
                     lock_id: string;
                     val_addr: string;
-                }) => _156.MsgSuperfluidDelegate;
+                }) => _160.MsgSuperfluidDelegate;
             };
             "/osmosis.superfluid.MsgSuperfluidUndelegate": {
                 aminoType: string;
-                toAmino: ({ sender, lock_id }: _156.MsgSuperfluidUndelegate) => {
+                toAmino: ({ sender, lockId }: _160.MsgSuperfluidUndelegate) => {
                     sender: string;
                     lock_id: string;
                 };
                 fromAmino: ({ sender, lock_id }: {
                     sender: string;
                     lock_id: string;
-                }) => _156.MsgSuperfluidUndelegate;
+                }) => _160.MsgSuperfluidUndelegate;
             };
             "/osmosis.superfluid.MsgSuperfluidUnbondLock": {
                 aminoType: string;
-                toAmino: ({ sender, lock_id }: _156.MsgSuperfluidUnbondLock) => {
+                toAmino: ({ sender, lockId }: _160.MsgSuperfluidUnbondLock) => {
                     sender: string;
                     lock_id: string;
                 };
                 fromAmino: ({ sender, lock_id }: {
                     sender: string;
                     lock_id: string;
-                }) => _156.MsgSuperfluidUnbondLock;
+                }) => _160.MsgSuperfluidUnbondLock;
             };
             "/osmosis.superfluid.MsgLockAndSuperfluidDelegate": {
                 aminoType: string;
-                toAmino: ({ sender, coins, val_addr }: _156.MsgLockAndSuperfluidDelegate) => {
+                toAmino: ({ sender, coins, valAddr }: _160.MsgLockAndSuperfluidDelegate) => {
                     sender: string;
                     coins: {
                         denom: string;
@@ -3517,599 +3518,600 @@ export declare namespace osmosis {
                         amount: string;
                     }[];
                     val_addr: string;
-                }) => _156.MsgLockAndSuperfluidDelegate;
+                }) => _160.MsgLockAndSuperfluidDelegate;
             };
             "/osmosis.superfluid.MsgUnPoolWhitelistedPool": {
                 aminoType: string;
-                toAmino: ({ sender, pool_id }: _156.MsgUnPoolWhitelistedPool) => {
+                toAmino: ({ sender, poolId }: _160.MsgUnPoolWhitelistedPool) => {
                     sender: string;
                     pool_id: string;
                 };
                 fromAmino: ({ sender, pool_id }: {
                     sender: string;
                     pool_id: string;
-                }) => _156.MsgUnPoolWhitelistedPool;
+                }) => _160.MsgUnPoolWhitelistedPool;
             };
         };
         MsgSuperfluidDelegate: {
-            encode(message: _156.MsgSuperfluidDelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgSuperfluidDelegate;
-            fromJSON(object: any): _156.MsgSuperfluidDelegate;
-            toJSON(message: _156.MsgSuperfluidDelegate): unknown;
+            encode(message: _160.MsgSuperfluidDelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSuperfluidDelegate;
+            fromJSON(object: any): _160.MsgSuperfluidDelegate;
+            toJSON(message: _160.MsgSuperfluidDelegate): unknown;
             fromPartial(object: {
                 sender?: string;
-                lock_id?: any;
-                val_addr?: string;
-            }): _156.MsgSuperfluidDelegate;
+                lockId?: any;
+                valAddr?: string;
+            }): _160.MsgSuperfluidDelegate;
         };
         MsgSuperfluidDelegateResponse: {
-            encode(_: _156.MsgSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgSuperfluidDelegateResponse;
-            fromJSON(_: any): _156.MsgSuperfluidDelegateResponse;
-            toJSON(_: _156.MsgSuperfluidDelegateResponse): unknown;
-            fromPartial(_: {}): _156.MsgSuperfluidDelegateResponse;
+            encode(_: _160.MsgSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSuperfluidDelegateResponseSDKType;
+            fromJSON(_: any): _160.MsgSuperfluidDelegateResponse;
+            toJSON(_: _160.MsgSuperfluidDelegateResponse): unknown;
+            fromPartial(_: {}): _160.MsgSuperfluidDelegateResponse;
         };
         MsgSuperfluidUndelegate: {
-            encode(message: _156.MsgSuperfluidUndelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgSuperfluidUndelegate;
-            fromJSON(object: any): _156.MsgSuperfluidUndelegate;
-            toJSON(message: _156.MsgSuperfluidUndelegate): unknown;
+            encode(message: _160.MsgSuperfluidUndelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSuperfluidUndelegate;
+            fromJSON(object: any): _160.MsgSuperfluidUndelegate;
+            toJSON(message: _160.MsgSuperfluidUndelegate): unknown;
             fromPartial(object: {
                 sender?: string;
-                lock_id?: any;
-            }): _156.MsgSuperfluidUndelegate;
+                lockId?: any;
+            }): _160.MsgSuperfluidUndelegate;
         };
         MsgSuperfluidUndelegateResponse: {
-            encode(_: _156.MsgSuperfluidUndelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgSuperfluidUndelegateResponse;
-            fromJSON(_: any): _156.MsgSuperfluidUndelegateResponse;
-            toJSON(_: _156.MsgSuperfluidUndelegateResponse): unknown;
-            fromPartial(_: {}): _156.MsgSuperfluidUndelegateResponse;
+            encode(_: _160.MsgSuperfluidUndelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSuperfluidUndelegateResponseSDKType;
+            fromJSON(_: any): _160.MsgSuperfluidUndelegateResponse;
+            toJSON(_: _160.MsgSuperfluidUndelegateResponse): unknown;
+            fromPartial(_: {}): _160.MsgSuperfluidUndelegateResponse;
         };
         MsgSuperfluidUnbondLock: {
-            encode(message: _156.MsgSuperfluidUnbondLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgSuperfluidUnbondLock;
-            fromJSON(object: any): _156.MsgSuperfluidUnbondLock;
-            toJSON(message: _156.MsgSuperfluidUnbondLock): unknown;
+            encode(message: _160.MsgSuperfluidUnbondLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSuperfluidUnbondLock;
+            fromJSON(object: any): _160.MsgSuperfluidUnbondLock;
+            toJSON(message: _160.MsgSuperfluidUnbondLock): unknown;
             fromPartial(object: {
                 sender?: string;
-                lock_id?: any;
-            }): _156.MsgSuperfluidUnbondLock;
+                lockId?: any;
+            }): _160.MsgSuperfluidUnbondLock;
         };
         MsgSuperfluidUnbondLockResponse: {
-            encode(_: _156.MsgSuperfluidUnbondLockResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgSuperfluidUnbondLockResponse;
-            fromJSON(_: any): _156.MsgSuperfluidUnbondLockResponse;
-            toJSON(_: _156.MsgSuperfluidUnbondLockResponse): unknown;
-            fromPartial(_: {}): _156.MsgSuperfluidUnbondLockResponse;
+            encode(_: _160.MsgSuperfluidUnbondLockResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSuperfluidUnbondLockResponseSDKType;
+            fromJSON(_: any): _160.MsgSuperfluidUnbondLockResponse;
+            toJSON(_: _160.MsgSuperfluidUnbondLockResponse): unknown;
+            fromPartial(_: {}): _160.MsgSuperfluidUnbondLockResponse;
         };
         MsgLockAndSuperfluidDelegate: {
-            encode(message: _156.MsgLockAndSuperfluidDelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgLockAndSuperfluidDelegate;
-            fromJSON(object: any): _156.MsgLockAndSuperfluidDelegate;
-            toJSON(message: _156.MsgLockAndSuperfluidDelegate): unknown;
+            encode(message: _160.MsgLockAndSuperfluidDelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgLockAndSuperfluidDelegate;
+            fromJSON(object: any): _160.MsgLockAndSuperfluidDelegate;
+            toJSON(message: _160.MsgLockAndSuperfluidDelegate): unknown;
             fromPartial(object: {
                 sender?: string;
                 coins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-                val_addr?: string;
-            }): _156.MsgLockAndSuperfluidDelegate;
+                valAddr?: string;
+            }): _160.MsgLockAndSuperfluidDelegate;
         };
         MsgLockAndSuperfluidDelegateResponse: {
-            encode(message: _156.MsgLockAndSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgLockAndSuperfluidDelegateResponse;
-            fromJSON(object: any): _156.MsgLockAndSuperfluidDelegateResponse;
-            toJSON(message: _156.MsgLockAndSuperfluidDelegateResponse): unknown;
+            encode(message: _160.MsgLockAndSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgLockAndSuperfluidDelegateResponseSDKType;
+            fromJSON(object: any): _160.MsgLockAndSuperfluidDelegateResponse;
+            toJSON(message: _160.MsgLockAndSuperfluidDelegateResponse): unknown;
             fromPartial(object: {
                 ID?: any;
-            }): _156.MsgLockAndSuperfluidDelegateResponse;
+            }): _160.MsgLockAndSuperfluidDelegateResponse;
         };
         MsgUnPoolWhitelistedPool: {
-            encode(message: _156.MsgUnPoolWhitelistedPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgUnPoolWhitelistedPool;
-            fromJSON(object: any): _156.MsgUnPoolWhitelistedPool;
-            toJSON(message: _156.MsgUnPoolWhitelistedPool): unknown;
+            encode(message: _160.MsgUnPoolWhitelistedPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgUnPoolWhitelistedPool;
+            fromJSON(object: any): _160.MsgUnPoolWhitelistedPool;
+            toJSON(message: _160.MsgUnPoolWhitelistedPool): unknown;
             fromPartial(object: {
                 sender?: string;
-                pool_id?: any;
-            }): _156.MsgUnPoolWhitelistedPool;
+                poolId?: any;
+            }): _160.MsgUnPoolWhitelistedPool;
         };
         MsgUnPoolWhitelistedPoolResponse: {
-            encode(message: _156.MsgUnPoolWhitelistedPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.MsgUnPoolWhitelistedPoolResponse;
-            fromJSON(object: any): _156.MsgUnPoolWhitelistedPoolResponse;
-            toJSON(message: _156.MsgUnPoolWhitelistedPoolResponse): unknown;
+            encode(message: _160.MsgUnPoolWhitelistedPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgUnPoolWhitelistedPoolResponseSDKType;
+            fromJSON(object: any): _160.MsgUnPoolWhitelistedPoolResponse;
+            toJSON(message: _160.MsgUnPoolWhitelistedPoolResponse): unknown;
             fromPartial(object: {
                 exitedLockIds?: any[];
-            }): _156.MsgUnPoolWhitelistedPoolResponse;
+            }): _160.MsgUnPoolWhitelistedPoolResponse;
         };
-        superfluidAssetTypeFromJSON(object: any): _155.SuperfluidAssetType;
-        superfluidAssetTypeToJSON(object: _155.SuperfluidAssetType): string;
-        SuperfluidAssetType: typeof _155.SuperfluidAssetType;
+        superfluidAssetTypeFromJSON(object: any): _159.SuperfluidAssetType;
+        superfluidAssetTypeToJSON(object: _159.SuperfluidAssetType): string;
+        SuperfluidAssetType: typeof _159.SuperfluidAssetType;
+        SuperfluidAssetTypeSDKType: typeof _159.SuperfluidAssetTypeSDKType;
         SuperfluidAsset: {
-            encode(message: _155.SuperfluidAsset, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.SuperfluidAsset;
-            fromJSON(object: any): _155.SuperfluidAsset;
-            toJSON(message: _155.SuperfluidAsset): unknown;
+            encode(message: _159.SuperfluidAsset, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.SuperfluidAsset;
+            fromJSON(object: any): _159.SuperfluidAsset;
+            toJSON(message: _159.SuperfluidAsset): unknown;
             fromPartial(object: {
                 denom?: string;
-                asset_type?: _155.SuperfluidAssetType;
-            }): _155.SuperfluidAsset;
+                assetType?: _159.SuperfluidAssetType;
+            }): _159.SuperfluidAsset;
         };
         SuperfluidIntermediaryAccount: {
-            encode(message: _155.SuperfluidIntermediaryAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.SuperfluidIntermediaryAccount;
-            fromJSON(object: any): _155.SuperfluidIntermediaryAccount;
-            toJSON(message: _155.SuperfluidIntermediaryAccount): unknown;
+            encode(message: _159.SuperfluidIntermediaryAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.SuperfluidIntermediaryAccount;
+            fromJSON(object: any): _159.SuperfluidIntermediaryAccount;
+            toJSON(message: _159.SuperfluidIntermediaryAccount): unknown;
             fromPartial(object: {
                 denom?: string;
-                val_addr?: string;
-                gauge_id?: any;
-            }): _155.SuperfluidIntermediaryAccount;
+                valAddr?: string;
+                gaugeId?: any;
+            }): _159.SuperfluidIntermediaryAccount;
         };
         OsmoEquivalentMultiplierRecord: {
-            encode(message: _155.OsmoEquivalentMultiplierRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.OsmoEquivalentMultiplierRecord;
-            fromJSON(object: any): _155.OsmoEquivalentMultiplierRecord;
-            toJSON(message: _155.OsmoEquivalentMultiplierRecord): unknown;
+            encode(message: _159.OsmoEquivalentMultiplierRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.OsmoEquivalentMultiplierRecord;
+            fromJSON(object: any): _159.OsmoEquivalentMultiplierRecord;
+            toJSON(message: _159.OsmoEquivalentMultiplierRecord): unknown;
             fromPartial(object: {
-                epoch_number?: any;
+                epochNumber?: any;
                 denom?: string;
                 multiplier?: string;
-            }): _155.OsmoEquivalentMultiplierRecord;
+            }): _159.OsmoEquivalentMultiplierRecord;
         };
         SuperfluidDelegationRecord: {
-            encode(message: _155.SuperfluidDelegationRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.SuperfluidDelegationRecord;
-            fromJSON(object: any): _155.SuperfluidDelegationRecord;
-            toJSON(message: _155.SuperfluidDelegationRecord): unknown;
+            encode(message: _159.SuperfluidDelegationRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.SuperfluidDelegationRecord;
+            fromJSON(object: any): _159.SuperfluidDelegationRecord;
+            toJSON(message: _159.SuperfluidDelegationRecord): unknown;
             fromPartial(object: {
-                delegator_address?: string;
-                validator_address?: string;
-                delegation_amount?: {
+                delegatorAddress?: string;
+                validatorAddress?: string;
+                delegationAmount?: {
                     denom?: string;
                     amount?: string;
                 };
-                equivalent_staked_amount?: {
+                equivalentStakedAmount?: {
                     denom?: string;
                     amount?: string;
                 };
-            }): _155.SuperfluidDelegationRecord;
+            }): _159.SuperfluidDelegationRecord;
         };
         LockIdIntermediaryAccountConnection: {
-            encode(message: _155.LockIdIntermediaryAccountConnection, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.LockIdIntermediaryAccountConnection;
-            fromJSON(object: any): _155.LockIdIntermediaryAccountConnection;
-            toJSON(message: _155.LockIdIntermediaryAccountConnection): unknown;
+            encode(message: _159.LockIdIntermediaryAccountConnection, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.LockIdIntermediaryAccountConnection;
+            fromJSON(object: any): _159.LockIdIntermediaryAccountConnection;
+            toJSON(message: _159.LockIdIntermediaryAccountConnection): unknown;
             fromPartial(object: {
-                lock_id?: any;
-                intermediary_account?: string;
-            }): _155.LockIdIntermediaryAccountConnection;
+                lockId?: any;
+                intermediaryAccount?: string;
+            }): _159.LockIdIntermediaryAccountConnection;
         };
         UnpoolWhitelistedPools: {
-            encode(message: _155.UnpoolWhitelistedPools, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.UnpoolWhitelistedPools;
-            fromJSON(object: any): _155.UnpoolWhitelistedPools;
-            toJSON(message: _155.UnpoolWhitelistedPools): unknown;
+            encode(message: _159.UnpoolWhitelistedPools, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.UnpoolWhitelistedPools;
+            fromJSON(object: any): _159.UnpoolWhitelistedPools;
+            toJSON(message: _159.UnpoolWhitelistedPools): unknown;
             fromPartial(object: {
                 ids?: any[];
-            }): _155.UnpoolWhitelistedPools;
+            }): _159.UnpoolWhitelistedPools;
         };
         QueryParamsRequest: {
-            encode(_: _154.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryParamsRequest;
-            fromJSON(_: any): _154.QueryParamsRequest;
-            toJSON(_: _154.QueryParamsRequest): unknown;
-            fromPartial(_: {}): _154.QueryParamsRequest;
+            encode(_: _158.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryParamsRequest;
+            fromJSON(_: any): _158.QueryParamsRequest;
+            toJSON(_: _158.QueryParamsRequest): unknown;
+            fromPartial(_: {}): _158.QueryParamsRequest;
         };
         QueryParamsResponse: {
-            encode(message: _154.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryParamsResponse;
-            fromJSON(object: any): _154.QueryParamsResponse;
-            toJSON(message: _154.QueryParamsResponse): unknown;
+            encode(message: _158.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryParamsResponseSDKType;
+            fromJSON(object: any): _158.QueryParamsResponse;
+            toJSON(message: _158.QueryParamsResponse): unknown;
             fromPartial(object: {
                 params?: {
-                    minimum_risk_factor?: string;
+                    minimumRiskFactor?: string;
                 };
-            }): _154.QueryParamsResponse;
+            }): _158.QueryParamsResponse;
         };
         AssetTypeRequest: {
-            encode(message: _154.AssetTypeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.AssetTypeRequest;
-            fromJSON(object: any): _154.AssetTypeRequest;
-            toJSON(message: _154.AssetTypeRequest): unknown;
+            encode(message: _158.AssetTypeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.AssetTypeRequest;
+            fromJSON(object: any): _158.AssetTypeRequest;
+            toJSON(message: _158.AssetTypeRequest): unknown;
             fromPartial(object: {
                 denom?: string;
-            }): _154.AssetTypeRequest;
+            }): _158.AssetTypeRequest;
         };
         AssetTypeResponse: {
-            encode(message: _154.AssetTypeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.AssetTypeResponse;
-            fromJSON(object: any): _154.AssetTypeResponse;
-            toJSON(message: _154.AssetTypeResponse): unknown;
+            encode(message: _158.AssetTypeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.AssetTypeResponseSDKType;
+            fromJSON(object: any): _158.AssetTypeResponse;
+            toJSON(message: _158.AssetTypeResponse): unknown;
             fromPartial(object: {
-                asset_type?: _155.SuperfluidAssetType;
-            }): _154.AssetTypeResponse;
+                assetType?: _159.SuperfluidAssetType;
+            }): _158.AssetTypeResponse;
         };
         AllAssetsRequest: {
-            encode(_: _154.AllAssetsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.AllAssetsRequest;
-            fromJSON(_: any): _154.AllAssetsRequest;
-            toJSON(_: _154.AllAssetsRequest): unknown;
-            fromPartial(_: {}): _154.AllAssetsRequest;
+            encode(_: _158.AllAssetsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.AllAssetsRequest;
+            fromJSON(_: any): _158.AllAssetsRequest;
+            toJSON(_: _158.AllAssetsRequest): unknown;
+            fromPartial(_: {}): _158.AllAssetsRequest;
         };
         AllAssetsResponse: {
-            encode(message: _154.AllAssetsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.AllAssetsResponse;
-            fromJSON(object: any): _154.AllAssetsResponse;
-            toJSON(message: _154.AllAssetsResponse): unknown;
+            encode(message: _158.AllAssetsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.AllAssetsResponseSDKType;
+            fromJSON(object: any): _158.AllAssetsResponse;
+            toJSON(message: _158.AllAssetsResponse): unknown;
             fromPartial(object: {
                 assets?: {
                     denom?: string;
-                    asset_type?: _155.SuperfluidAssetType;
+                    assetType?: _159.SuperfluidAssetType;
                 }[];
-            }): _154.AllAssetsResponse;
+            }): _158.AllAssetsResponse;
         };
         AssetMultiplierRequest: {
-            encode(message: _154.AssetMultiplierRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.AssetMultiplierRequest;
-            fromJSON(object: any): _154.AssetMultiplierRequest;
-            toJSON(message: _154.AssetMultiplierRequest): unknown;
+            encode(message: _158.AssetMultiplierRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.AssetMultiplierRequest;
+            fromJSON(object: any): _158.AssetMultiplierRequest;
+            toJSON(message: _158.AssetMultiplierRequest): unknown;
             fromPartial(object: {
                 denom?: string;
-            }): _154.AssetMultiplierRequest;
+            }): _158.AssetMultiplierRequest;
         };
         AssetMultiplierResponse: {
-            encode(message: _154.AssetMultiplierResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.AssetMultiplierResponse;
-            fromJSON(object: any): _154.AssetMultiplierResponse;
-            toJSON(message: _154.AssetMultiplierResponse): unknown;
+            encode(message: _158.AssetMultiplierResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.AssetMultiplierResponseSDKType;
+            fromJSON(object: any): _158.AssetMultiplierResponse;
+            toJSON(message: _158.AssetMultiplierResponse): unknown;
             fromPartial(object: {
-                osmo_equivalent_multiplier?: {
-                    epoch_number?: any;
+                osmoEquivalentMultiplier?: {
+                    epochNumber?: any;
                     denom?: string;
                     multiplier?: string;
                 };
-            }): _154.AssetMultiplierResponse;
+            }): _158.AssetMultiplierResponse;
         };
         SuperfluidIntermediaryAccountInfo: {
-            encode(message: _154.SuperfluidIntermediaryAccountInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidIntermediaryAccountInfo;
-            fromJSON(object: any): _154.SuperfluidIntermediaryAccountInfo;
-            toJSON(message: _154.SuperfluidIntermediaryAccountInfo): unknown;
+            encode(message: _158.SuperfluidIntermediaryAccountInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.SuperfluidIntermediaryAccountInfo;
+            fromJSON(object: any): _158.SuperfluidIntermediaryAccountInfo;
+            toJSON(message: _158.SuperfluidIntermediaryAccountInfo): unknown;
             fromPartial(object: {
                 denom?: string;
-                val_addr?: string;
-                gauge_id?: any;
+                valAddr?: string;
+                gaugeId?: any;
                 address?: string;
-            }): _154.SuperfluidIntermediaryAccountInfo;
+            }): _158.SuperfluidIntermediaryAccountInfo;
         };
         AllIntermediaryAccountsRequest: {
-            encode(message: _154.AllIntermediaryAccountsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.AllIntermediaryAccountsRequest;
-            fromJSON(object: any): _154.AllIntermediaryAccountsRequest;
-            toJSON(message: _154.AllIntermediaryAccountsRequest): unknown;
+            encode(message: _158.AllIntermediaryAccountsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.AllIntermediaryAccountsRequest;
+            fromJSON(object: any): _158.AllIntermediaryAccountsRequest;
+            toJSON(message: _158.AllIntermediaryAccountsRequest): unknown;
             fromPartial(object: {
                 pagination?: {
                     key?: Uint8Array;
                     offset?: any;
                     limit?: any;
-                    count_total?: boolean;
+                    countTotal?: boolean;
                     reverse?: boolean;
                 };
-            }): _154.AllIntermediaryAccountsRequest;
+            }): _158.AllIntermediaryAccountsRequest;
         };
         AllIntermediaryAccountsResponse: {
-            encode(message: _154.AllIntermediaryAccountsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.AllIntermediaryAccountsResponse;
-            fromJSON(object: any): _154.AllIntermediaryAccountsResponse;
-            toJSON(message: _154.AllIntermediaryAccountsResponse): unknown;
+            encode(message: _158.AllIntermediaryAccountsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.AllIntermediaryAccountsResponseSDKType;
+            fromJSON(object: any): _158.AllIntermediaryAccountsResponse;
+            toJSON(message: _158.AllIntermediaryAccountsResponse): unknown;
             fromPartial(object: {
                 accounts?: {
                     denom?: string;
-                    val_addr?: string;
-                    gauge_id?: any;
+                    valAddr?: string;
+                    gaugeId?: any;
                     address?: string;
                 }[];
                 pagination?: {
-                    next_key?: Uint8Array;
+                    nextKey?: Uint8Array;
                     total?: any;
                 };
-            }): _154.AllIntermediaryAccountsResponse;
+            }): _158.AllIntermediaryAccountsResponse;
         };
         ConnectedIntermediaryAccountRequest: {
-            encode(message: _154.ConnectedIntermediaryAccountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.ConnectedIntermediaryAccountRequest;
-            fromJSON(object: any): _154.ConnectedIntermediaryAccountRequest;
-            toJSON(message: _154.ConnectedIntermediaryAccountRequest): unknown;
+            encode(message: _158.ConnectedIntermediaryAccountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.ConnectedIntermediaryAccountRequest;
+            fromJSON(object: any): _158.ConnectedIntermediaryAccountRequest;
+            toJSON(message: _158.ConnectedIntermediaryAccountRequest): unknown;
             fromPartial(object: {
-                lock_id?: any;
-            }): _154.ConnectedIntermediaryAccountRequest;
+                lockId?: any;
+            }): _158.ConnectedIntermediaryAccountRequest;
         };
         ConnectedIntermediaryAccountResponse: {
-            encode(message: _154.ConnectedIntermediaryAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.ConnectedIntermediaryAccountResponse;
-            fromJSON(object: any): _154.ConnectedIntermediaryAccountResponse;
-            toJSON(message: _154.ConnectedIntermediaryAccountResponse): unknown;
+            encode(message: _158.ConnectedIntermediaryAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.ConnectedIntermediaryAccountResponseSDKType;
+            fromJSON(object: any): _158.ConnectedIntermediaryAccountResponse;
+            toJSON(message: _158.ConnectedIntermediaryAccountResponse): unknown;
             fromPartial(object: {
                 account?: {
                     denom?: string;
-                    val_addr?: string;
-                    gauge_id?: any;
+                    valAddr?: string;
+                    gaugeId?: any;
                     address?: string;
                 };
-            }): _154.ConnectedIntermediaryAccountResponse;
+            }): _158.ConnectedIntermediaryAccountResponse;
         };
         TotalSuperfluidDelegationsRequest: {
-            encode(_: _154.TotalSuperfluidDelegationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.TotalSuperfluidDelegationsRequest;
-            fromJSON(_: any): _154.TotalSuperfluidDelegationsRequest;
-            toJSON(_: _154.TotalSuperfluidDelegationsRequest): unknown;
-            fromPartial(_: {}): _154.TotalSuperfluidDelegationsRequest;
+            encode(_: _158.TotalSuperfluidDelegationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.TotalSuperfluidDelegationsRequest;
+            fromJSON(_: any): _158.TotalSuperfluidDelegationsRequest;
+            toJSON(_: _158.TotalSuperfluidDelegationsRequest): unknown;
+            fromPartial(_: {}): _158.TotalSuperfluidDelegationsRequest;
         };
         TotalSuperfluidDelegationsResponse: {
-            encode(message: _154.TotalSuperfluidDelegationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.TotalSuperfluidDelegationsResponse;
-            fromJSON(object: any): _154.TotalSuperfluidDelegationsResponse;
-            toJSON(message: _154.TotalSuperfluidDelegationsResponse): unknown;
+            encode(message: _158.TotalSuperfluidDelegationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.TotalSuperfluidDelegationsResponseSDKType;
+            fromJSON(object: any): _158.TotalSuperfluidDelegationsResponse;
+            toJSON(message: _158.TotalSuperfluidDelegationsResponse): unknown;
             fromPartial(object: {
                 totalDelegations?: string;
-            }): _154.TotalSuperfluidDelegationsResponse;
+            }): _158.TotalSuperfluidDelegationsResponse;
         };
         SuperfluidDelegationAmountRequest: {
-            encode(message: _154.SuperfluidDelegationAmountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidDelegationAmountRequest;
-            fromJSON(object: any): _154.SuperfluidDelegationAmountRequest;
-            toJSON(message: _154.SuperfluidDelegationAmountRequest): unknown;
+            encode(message: _158.SuperfluidDelegationAmountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.SuperfluidDelegationAmountRequest;
+            fromJSON(object: any): _158.SuperfluidDelegationAmountRequest;
+            toJSON(message: _158.SuperfluidDelegationAmountRequest): unknown;
             fromPartial(object: {
-                delegator_address?: string;
-                validator_address?: string;
+                delegatorAddress?: string;
+                validatorAddress?: string;
                 denom?: string;
-            }): _154.SuperfluidDelegationAmountRequest;
+            }): _158.SuperfluidDelegationAmountRequest;
         };
         SuperfluidDelegationAmountResponse: {
-            encode(message: _154.SuperfluidDelegationAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidDelegationAmountResponse;
-            fromJSON(object: any): _154.SuperfluidDelegationAmountResponse;
-            toJSON(message: _154.SuperfluidDelegationAmountResponse): unknown;
+            encode(message: _158.SuperfluidDelegationAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.SuperfluidDelegationAmountResponseSDKType;
+            fromJSON(object: any): _158.SuperfluidDelegationAmountResponse;
+            toJSON(message: _158.SuperfluidDelegationAmountResponse): unknown;
             fromPartial(object: {
                 amount?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _154.SuperfluidDelegationAmountResponse;
+            }): _158.SuperfluidDelegationAmountResponse;
         };
         SuperfluidDelegationsByDelegatorRequest: {
-            encode(message: _154.SuperfluidDelegationsByDelegatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidDelegationsByDelegatorRequest;
-            fromJSON(object: any): _154.SuperfluidDelegationsByDelegatorRequest;
-            toJSON(message: _154.SuperfluidDelegationsByDelegatorRequest): unknown;
+            encode(message: _158.SuperfluidDelegationsByDelegatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.SuperfluidDelegationsByDelegatorRequest;
+            fromJSON(object: any): _158.SuperfluidDelegationsByDelegatorRequest;
+            toJSON(message: _158.SuperfluidDelegationsByDelegatorRequest): unknown;
             fromPartial(object: {
-                delegator_address?: string;
-            }): _154.SuperfluidDelegationsByDelegatorRequest;
+                delegatorAddress?: string;
+            }): _158.SuperfluidDelegationsByDelegatorRequest;
         };
         SuperfluidDelegationsByDelegatorResponse: {
-            encode(message: _154.SuperfluidDelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidDelegationsByDelegatorResponse;
-            fromJSON(object: any): _154.SuperfluidDelegationsByDelegatorResponse;
-            toJSON(message: _154.SuperfluidDelegationsByDelegatorResponse): unknown;
+            encode(message: _158.SuperfluidDelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.SuperfluidDelegationsByDelegatorResponseSDKType;
+            fromJSON(object: any): _158.SuperfluidDelegationsByDelegatorResponse;
+            toJSON(message: _158.SuperfluidDelegationsByDelegatorResponse): unknown;
             fromPartial(object: {
-                superfluid_delegation_records?: {
-                    delegator_address?: string;
-                    validator_address?: string;
-                    delegation_amount?: {
+                superfluidDelegationRecords?: {
+                    delegatorAddress?: string;
+                    validatorAddress?: string;
+                    delegationAmount?: {
                         denom?: string;
                         amount?: string;
                     };
-                    equivalent_staked_amount?: {
+                    equivalentStakedAmount?: {
                         denom?: string;
                         amount?: string;
                     };
                 }[];
-                total_delegated_coins?: {
+                totalDelegatedCoins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-                total_equivalent_staked_amount?: {
+                totalEquivalentStakedAmount?: {
                     denom?: string;
                     amount?: string;
                 };
-            }): _154.SuperfluidDelegationsByDelegatorResponse;
+            }): _158.SuperfluidDelegationsByDelegatorResponse;
         };
         SuperfluidUndelegationsByDelegatorRequest: {
-            encode(message: _154.SuperfluidUndelegationsByDelegatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidUndelegationsByDelegatorRequest;
-            fromJSON(object: any): _154.SuperfluidUndelegationsByDelegatorRequest;
-            toJSON(message: _154.SuperfluidUndelegationsByDelegatorRequest): unknown;
+            encode(message: _158.SuperfluidUndelegationsByDelegatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.SuperfluidUndelegationsByDelegatorRequest;
+            fromJSON(object: any): _158.SuperfluidUndelegationsByDelegatorRequest;
+            toJSON(message: _158.SuperfluidUndelegationsByDelegatorRequest): unknown;
             fromPartial(object: {
-                delegator_address?: string;
+                delegatorAddress?: string;
                 denom?: string;
-            }): _154.SuperfluidUndelegationsByDelegatorRequest;
+            }): _158.SuperfluidUndelegationsByDelegatorRequest;
         };
         SuperfluidUndelegationsByDelegatorResponse: {
-            encode(message: _154.SuperfluidUndelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidUndelegationsByDelegatorResponse;
-            fromJSON(object: any): _154.SuperfluidUndelegationsByDelegatorResponse;
-            toJSON(message: _154.SuperfluidUndelegationsByDelegatorResponse): unknown;
+            encode(message: _158.SuperfluidUndelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.SuperfluidUndelegationsByDelegatorResponseSDKType;
+            fromJSON(object: any): _158.SuperfluidUndelegationsByDelegatorResponse;
+            toJSON(message: _158.SuperfluidUndelegationsByDelegatorResponse): unknown;
             fromPartial(object: {
-                superfluid_delegation_records?: {
-                    delegator_address?: string;
-                    validator_address?: string;
-                    delegation_amount?: {
+                superfluidDelegationRecords?: {
+                    delegatorAddress?: string;
+                    validatorAddress?: string;
+                    delegationAmount?: {
                         denom?: string;
                         amount?: string;
                     };
-                    equivalent_staked_amount?: {
+                    equivalentStakedAmount?: {
                         denom?: string;
                         amount?: string;
                     };
                 }[];
-                total_undelegated_coins?: {
+                totalUndelegatedCoins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-                synthetic_locks?: {
-                    underlying_lock_id?: any;
-                    synth_denom?: string;
-                    end_time?: Date;
+                syntheticLocks?: {
+                    underlyingLockId?: any;
+                    synthDenom?: string;
+                    endTime?: Date;
                     duration?: {
                         seconds?: any;
                         nanos?: number;
                     };
                 }[];
-            }): _154.SuperfluidUndelegationsByDelegatorResponse;
+            }): _158.SuperfluidUndelegationsByDelegatorResponse;
         };
         SuperfluidDelegationsByValidatorDenomRequest: {
-            encode(message: _154.SuperfluidDelegationsByValidatorDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidDelegationsByValidatorDenomRequest;
-            fromJSON(object: any): _154.SuperfluidDelegationsByValidatorDenomRequest;
-            toJSON(message: _154.SuperfluidDelegationsByValidatorDenomRequest): unknown;
+            encode(message: _158.SuperfluidDelegationsByValidatorDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.SuperfluidDelegationsByValidatorDenomRequest;
+            fromJSON(object: any): _158.SuperfluidDelegationsByValidatorDenomRequest;
+            toJSON(message: _158.SuperfluidDelegationsByValidatorDenomRequest): unknown;
             fromPartial(object: {
-                validator_address?: string;
+                validatorAddress?: string;
                 denom?: string;
-            }): _154.SuperfluidDelegationsByValidatorDenomRequest;
+            }): _158.SuperfluidDelegationsByValidatorDenomRequest;
         };
         SuperfluidDelegationsByValidatorDenomResponse: {
-            encode(message: _154.SuperfluidDelegationsByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidDelegationsByValidatorDenomResponse;
-            fromJSON(object: any): _154.SuperfluidDelegationsByValidatorDenomResponse;
-            toJSON(message: _154.SuperfluidDelegationsByValidatorDenomResponse): unknown;
+            encode(message: _158.SuperfluidDelegationsByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.SuperfluidDelegationsByValidatorDenomResponseSDKType;
+            fromJSON(object: any): _158.SuperfluidDelegationsByValidatorDenomResponse;
+            toJSON(message: _158.SuperfluidDelegationsByValidatorDenomResponse): unknown;
             fromPartial(object: {
-                superfluid_delegation_records?: {
-                    delegator_address?: string;
-                    validator_address?: string;
-                    delegation_amount?: {
+                superfluidDelegationRecords?: {
+                    delegatorAddress?: string;
+                    validatorAddress?: string;
+                    delegationAmount?: {
                         denom?: string;
                         amount?: string;
                     };
-                    equivalent_staked_amount?: {
+                    equivalentStakedAmount?: {
                         denom?: string;
                         amount?: string;
                     };
                 }[];
-            }): _154.SuperfluidDelegationsByValidatorDenomResponse;
+            }): _158.SuperfluidDelegationsByValidatorDenomResponse;
         };
         EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
-            encode(message: _154.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
-            fromJSON(object: any): _154.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
-            toJSON(message: _154.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): unknown;
+            encode(message: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
+            fromJSON(object: any): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
+            toJSON(message: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): unknown;
             fromPartial(object: {
-                validator_address?: string;
+                validatorAddress?: string;
                 denom?: string;
-            }): _154.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
+            }): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
         };
         EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: {
-            encode(message: _154.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
-            fromJSON(object: any): _154.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
-            toJSON(message: _154.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): unknown;
+            encode(message: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType;
+            fromJSON(object: any): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
+            toJSON(message: _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): unknown;
             fromPartial(object: {
-                total_delegated_coins?: {
+                totalDelegatedCoins?: {
                     denom?: string;
                     amount?: string;
                 }[];
-            }): _154.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
+            }): _158.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
         };
         Params: {
-            encode(message: _153.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.Params;
-            fromJSON(object: any): _153.Params;
-            toJSON(message: _153.Params): unknown;
+            encode(message: _157.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.Params;
+            fromJSON(object: any): _157.Params;
+            toJSON(message: _157.Params): unknown;
             fromPartial(object: {
-                minimum_risk_factor?: string;
-            }): _153.Params;
+                minimumRiskFactor?: string;
+            }): _157.Params;
         };
         GenesisState: {
-            encode(message: _152.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.GenesisState;
-            fromJSON(object: any): _152.GenesisState;
-            toJSON(message: _152.GenesisState): unknown;
+            encode(message: _156.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.GenesisState;
+            fromJSON(object: any): _156.GenesisState;
+            toJSON(message: _156.GenesisState): unknown;
             fromPartial(object: {
                 params?: {
-                    minimum_risk_factor?: string;
+                    minimumRiskFactor?: string;
                 };
-                superfluid_assets?: {
+                superfluidAssets?: {
                     denom?: string;
-                    asset_type?: _155.SuperfluidAssetType;
+                    assetType?: _159.SuperfluidAssetType;
                 }[];
-                osmo_equivalent_multipliers?: {
-                    epoch_number?: any;
+                osmoEquivalentMultipliers?: {
+                    epochNumber?: any;
                     denom?: string;
                     multiplier?: string;
                 }[];
-                intermediary_accounts?: {
+                intermediaryAccounts?: {
                     denom?: string;
-                    val_addr?: string;
-                    gauge_id?: any;
+                    valAddr?: string;
+                    gaugeId?: any;
                 }[];
-                intemediary_account_connections?: {
-                    lock_id?: any;
-                    intermediary_account?: string;
+                intemediaryAccountConnections?: {
+                    lockId?: any;
+                    intermediaryAccount?: string;
                 }[];
-            }): _152.GenesisState;
+            }): _156.GenesisState;
         };
     };
     namespace tokenfactory {
         const v1beta1: {
-            MsgClientImpl: typeof _308.MsgClientImpl;
-            QueryClientImpl: typeof _300.QueryClientImpl;
-            LCDQueryClient: typeof _291.LCDQueryClient;
+            MsgClientImpl: typeof _317.MsgClientImpl;
+            QueryClientImpl: typeof _309.QueryClientImpl;
+            LCDQueryClient: typeof _300.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
                 encoded: {
-                    createDenom(value: _161.MsgCreateDenom): {
+                    createDenom(value: _165.MsgCreateDenom): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    mint(value: _161.MsgMint): {
+                    mint(value: _165.MsgMint): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    burn(value: _161.MsgBurn): {
+                    burn(value: _165.MsgBurn): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
-                    changeAdmin(value: _161.MsgChangeAdmin): {
+                    changeAdmin(value: _165.MsgChangeAdmin): {
                         typeUrl: string;
                         value: Uint8Array;
                     };
                 };
                 withTypeUrl: {
-                    createDenom(value: _161.MsgCreateDenom): {
+                    createDenom(value: _165.MsgCreateDenom): {
                         typeUrl: string;
-                        value: _161.MsgCreateDenom;
+                        value: _165.MsgCreateDenom;
                     };
-                    mint(value: _161.MsgMint): {
+                    mint(value: _165.MsgMint): {
                         typeUrl: string;
-                        value: _161.MsgMint;
+                        value: _165.MsgMint;
                     };
-                    burn(value: _161.MsgBurn): {
+                    burn(value: _165.MsgBurn): {
                         typeUrl: string;
-                        value: _161.MsgBurn;
+                        value: _165.MsgBurn;
                     };
-                    changeAdmin(value: _161.MsgChangeAdmin): {
+                    changeAdmin(value: _165.MsgChangeAdmin): {
                         typeUrl: string;
-                        value: _161.MsgChangeAdmin;
+                        value: _165.MsgChangeAdmin;
                     };
                 };
                 toJSON: {
-                    createDenom(value: _161.MsgCreateDenom): {
+                    createDenom(value: _165.MsgCreateDenom): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    mint(value: _161.MsgMint): {
+                    mint(value: _165.MsgMint): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    burn(value: _161.MsgBurn): {
+                    burn(value: _165.MsgBurn): {
                         typeUrl: string;
                         value: unknown;
                     };
-                    changeAdmin(value: _161.MsgChangeAdmin): {
+                    changeAdmin(value: _165.MsgChangeAdmin): {
                         typeUrl: string;
                         value: unknown;
                     };
@@ -4117,55 +4119,55 @@ export declare namespace osmosis {
                 fromJSON: {
                     createDenom(value: any): {
                         typeUrl: string;
-                        value: _161.MsgCreateDenom;
+                        value: _165.MsgCreateDenom;
                     };
                     mint(value: any): {
                         typeUrl: string;
-                        value: _161.MsgMint;
+                        value: _165.MsgMint;
                     };
                     burn(value: any): {
                         typeUrl: string;
-                        value: _161.MsgBurn;
+                        value: _165.MsgBurn;
                     };
                     changeAdmin(value: any): {
                         typeUrl: string;
-                        value: _161.MsgChangeAdmin;
+                        value: _165.MsgChangeAdmin;
                     };
                 };
                 fromPartial: {
-                    createDenom(value: _161.MsgCreateDenom): {
+                    createDenom(value: _165.MsgCreateDenom): {
                         typeUrl: string;
-                        value: _161.MsgCreateDenom;
+                        value: _165.MsgCreateDenom;
                     };
-                    mint(value: _161.MsgMint): {
+                    mint(value: _165.MsgMint): {
                         typeUrl: string;
-                        value: _161.MsgMint;
+                        value: _165.MsgMint;
                     };
-                    burn(value: _161.MsgBurn): {
+                    burn(value: _165.MsgBurn): {
                         typeUrl: string;
-                        value: _161.MsgBurn;
+                        value: _165.MsgBurn;
                     };
-                    changeAdmin(value: _161.MsgChangeAdmin): {
+                    changeAdmin(value: _165.MsgChangeAdmin): {
                         typeUrl: string;
-                        value: _161.MsgChangeAdmin;
+                        value: _165.MsgChangeAdmin;
                     };
                 };
             };
             AminoConverter: {
                 "/osmosis.tokenfactory.v1beta1.MsgCreateDenom": {
                     aminoType: string;
-                    toAmino: ({ sender, subdenom }: _161.MsgCreateDenom) => {
+                    toAmino: ({ sender, subdenom }: _165.MsgCreateDenom) => {
                         sender: string;
                         subdenom: string;
                     };
                     fromAmino: ({ sender, subdenom }: {
                         sender: string;
                         subdenom: string;
-                    }) => _161.MsgCreateDenom;
+                    }) => _165.MsgCreateDenom;
                 };
                 "/osmosis.tokenfactory.v1beta1.MsgMint": {
                     aminoType: string;
-                    toAmino: ({ sender, amount }: _161.MsgMint) => {
+                    toAmino: ({ sender, amount }: _165.MsgMint) => {
                         sender: string;
                         amount: {
                             denom: string;
@@ -4178,11 +4180,11 @@ export declare namespace osmosis {
                             denom: string;
                             amount: string;
                         };
-                    }) => _161.MsgMint;
+                    }) => _165.MsgMint;
                 };
                 "/osmosis.tokenfactory.v1beta1.MsgBurn": {
                     aminoType: string;
-                    toAmino: ({ sender, amount }: _161.MsgBurn) => {
+                    toAmino: ({ sender, amount }: _165.MsgBurn) => {
                         sender: string;
                         amount: {
                             denom: string;
@@ -4195,11 +4197,11 @@ export declare namespace osmosis {
                             denom: string;
                             amount: string;
                         };
-                    }) => _161.MsgBurn;
+                    }) => _165.MsgBurn;
                 };
                 "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin": {
                     aminoType: string;
-                    toAmino: ({ sender, denom, newAdmin }: _161.MsgChangeAdmin) => {
+                    toAmino: ({ sender, denom, newAdmin }: _165.MsgChangeAdmin) => {
                         sender: string;
                         denom: string;
                         newAdmin: string;
@@ -4208,281 +4210,281 @@ export declare namespace osmosis {
                         sender: string;
                         denom: string;
                         newAdmin: string;
-                    }) => _161.MsgChangeAdmin;
+                    }) => _165.MsgChangeAdmin;
                 };
             };
             MsgCreateDenom: {
-                encode(message: _161.MsgCreateDenom, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.MsgCreateDenom;
-                fromJSON(object: any): _161.MsgCreateDenom;
-                toJSON(message: _161.MsgCreateDenom): unknown;
+                encode(message: _165.MsgCreateDenom, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgCreateDenom;
+                fromJSON(object: any): _165.MsgCreateDenom;
+                toJSON(message: _165.MsgCreateDenom): unknown;
                 fromPartial(object: {
                     sender?: string;
                     subdenom?: string;
-                }): _161.MsgCreateDenom;
+                }): _165.MsgCreateDenom;
             };
             MsgCreateDenomResponse: {
-                encode(message: _161.MsgCreateDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.MsgCreateDenomResponse;
-                fromJSON(object: any): _161.MsgCreateDenomResponse;
-                toJSON(message: _161.MsgCreateDenomResponse): unknown;
+                encode(message: _165.MsgCreateDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgCreateDenomResponseSDKType;
+                fromJSON(object: any): _165.MsgCreateDenomResponse;
+                toJSON(message: _165.MsgCreateDenomResponse): unknown;
                 fromPartial(object: {
-                    new_token_denom?: string;
-                }): _161.MsgCreateDenomResponse;
+                    newTokenDenom?: string;
+                }): _165.MsgCreateDenomResponse;
             };
             MsgMint: {
-                encode(message: _161.MsgMint, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.MsgMint;
-                fromJSON(object: any): _161.MsgMint;
-                toJSON(message: _161.MsgMint): unknown;
+                encode(message: _165.MsgMint, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgMint;
+                fromJSON(object: any): _165.MsgMint;
+                toJSON(message: _165.MsgMint): unknown;
                 fromPartial(object: {
                     sender?: string;
                     amount?: {
                         denom?: string;
                         amount?: string;
                     };
-                }): _161.MsgMint;
+                }): _165.MsgMint;
             };
             MsgMintResponse: {
-                encode(_: _161.MsgMintResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.MsgMintResponse;
-                fromJSON(_: any): _161.MsgMintResponse;
-                toJSON(_: _161.MsgMintResponse): unknown;
-                fromPartial(_: {}): _161.MsgMintResponse;
+                encode(_: _165.MsgMintResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgMintResponseSDKType;
+                fromJSON(_: any): _165.MsgMintResponse;
+                toJSON(_: _165.MsgMintResponse): unknown;
+                fromPartial(_: {}): _165.MsgMintResponse;
             };
             MsgBurn: {
-                encode(message: _161.MsgBurn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.MsgBurn;
-                fromJSON(object: any): _161.MsgBurn;
-                toJSON(message: _161.MsgBurn): unknown;
+                encode(message: _165.MsgBurn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgBurn;
+                fromJSON(object: any): _165.MsgBurn;
+                toJSON(message: _165.MsgBurn): unknown;
                 fromPartial(object: {
                     sender?: string;
                     amount?: {
                         denom?: string;
                         amount?: string;
                     };
-                }): _161.MsgBurn;
+                }): _165.MsgBurn;
             };
             MsgBurnResponse: {
-                encode(_: _161.MsgBurnResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.MsgBurnResponse;
-                fromJSON(_: any): _161.MsgBurnResponse;
-                toJSON(_: _161.MsgBurnResponse): unknown;
-                fromPartial(_: {}): _161.MsgBurnResponse;
+                encode(_: _165.MsgBurnResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgBurnResponseSDKType;
+                fromJSON(_: any): _165.MsgBurnResponse;
+                toJSON(_: _165.MsgBurnResponse): unknown;
+                fromPartial(_: {}): _165.MsgBurnResponse;
             };
             MsgChangeAdmin: {
-                encode(message: _161.MsgChangeAdmin, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.MsgChangeAdmin;
-                fromJSON(object: any): _161.MsgChangeAdmin;
-                toJSON(message: _161.MsgChangeAdmin): unknown;
+                encode(message: _165.MsgChangeAdmin, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgChangeAdmin;
+                fromJSON(object: any): _165.MsgChangeAdmin;
+                toJSON(message: _165.MsgChangeAdmin): unknown;
                 fromPartial(object: {
                     sender?: string;
                     denom?: string;
                     newAdmin?: string;
-                }): _161.MsgChangeAdmin;
+                }): _165.MsgChangeAdmin;
             };
             MsgChangeAdminResponse: {
-                encode(_: _161.MsgChangeAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.MsgChangeAdminResponse;
-                fromJSON(_: any): _161.MsgChangeAdminResponse;
-                toJSON(_: _161.MsgChangeAdminResponse): unknown;
-                fromPartial(_: {}): _161.MsgChangeAdminResponse;
+                encode(_: _165.MsgChangeAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.MsgChangeAdminResponseSDKType;
+                fromJSON(_: any): _165.MsgChangeAdminResponse;
+                toJSON(_: _165.MsgChangeAdminResponse): unknown;
+                fromPartial(_: {}): _165.MsgChangeAdminResponse;
             };
             QueryParamsRequest: {
-                encode(_: _160.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.QueryParamsRequest;
-                fromJSON(_: any): _160.QueryParamsRequest;
-                toJSON(_: _160.QueryParamsRequest): unknown;
-                fromPartial(_: {}): _160.QueryParamsRequest;
+                encode(_: _164.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.QueryParamsRequest;
+                fromJSON(_: any): _164.QueryParamsRequest;
+                toJSON(_: _164.QueryParamsRequest): unknown;
+                fromPartial(_: {}): _164.QueryParamsRequest;
             };
             QueryParamsResponse: {
-                encode(message: _160.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.QueryParamsResponse;
-                fromJSON(object: any): _160.QueryParamsResponse;
-                toJSON(message: _160.QueryParamsResponse): unknown;
+                encode(message: _164.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.QueryParamsResponseSDKType;
+                fromJSON(object: any): _164.QueryParamsResponse;
+                toJSON(message: _164.QueryParamsResponse): unknown;
                 fromPartial(object: {
                     params?: {
-                        denom_creation_fee?: {
+                        denomCreationFee?: {
                             denom?: string;
                             amount?: string;
                         }[];
                     };
-                }): _160.QueryParamsResponse;
+                }): _164.QueryParamsResponse;
             };
             QueryDenomAuthorityMetadataRequest: {
-                encode(message: _160.QueryDenomAuthorityMetadataRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.QueryDenomAuthorityMetadataRequest;
-                fromJSON(object: any): _160.QueryDenomAuthorityMetadataRequest;
-                toJSON(message: _160.QueryDenomAuthorityMetadataRequest): unknown;
+                encode(message: _164.QueryDenomAuthorityMetadataRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.QueryDenomAuthorityMetadataRequest;
+                fromJSON(object: any): _164.QueryDenomAuthorityMetadataRequest;
+                toJSON(message: _164.QueryDenomAuthorityMetadataRequest): unknown;
                 fromPartial(object: {
                     denom?: string;
-                }): _160.QueryDenomAuthorityMetadataRequest;
+                }): _164.QueryDenomAuthorityMetadataRequest;
             };
             QueryDenomAuthorityMetadataResponse: {
-                encode(message: _160.QueryDenomAuthorityMetadataResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.QueryDenomAuthorityMetadataResponse;
-                fromJSON(object: any): _160.QueryDenomAuthorityMetadataResponse;
-                toJSON(message: _160.QueryDenomAuthorityMetadataResponse): unknown;
+                encode(message: _164.QueryDenomAuthorityMetadataResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.QueryDenomAuthorityMetadataResponseSDKType;
+                fromJSON(object: any): _164.QueryDenomAuthorityMetadataResponse;
+                toJSON(message: _164.QueryDenomAuthorityMetadataResponse): unknown;
                 fromPartial(object: {
-                    authority_metadata?: {
+                    authorityMetadata?: {
                         Admin?: string;
                     };
-                }): _160.QueryDenomAuthorityMetadataResponse;
+                }): _164.QueryDenomAuthorityMetadataResponse;
             };
             QueryDenomsFromCreatorRequest: {
-                encode(message: _160.QueryDenomsFromCreatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.QueryDenomsFromCreatorRequest;
-                fromJSON(object: any): _160.QueryDenomsFromCreatorRequest;
-                toJSON(message: _160.QueryDenomsFromCreatorRequest): unknown;
+                encode(message: _164.QueryDenomsFromCreatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.QueryDenomsFromCreatorRequest;
+                fromJSON(object: any): _164.QueryDenomsFromCreatorRequest;
+                toJSON(message: _164.QueryDenomsFromCreatorRequest): unknown;
                 fromPartial(object: {
                     creator?: string;
-                }): _160.QueryDenomsFromCreatorRequest;
+                }): _164.QueryDenomsFromCreatorRequest;
             };
             QueryDenomsFromCreatorResponse: {
-                encode(message: _160.QueryDenomsFromCreatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.QueryDenomsFromCreatorResponse;
-                fromJSON(object: any): _160.QueryDenomsFromCreatorResponse;
-                toJSON(message: _160.QueryDenomsFromCreatorResponse): unknown;
+                encode(message: _164.QueryDenomsFromCreatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.QueryDenomsFromCreatorResponseSDKType;
+                fromJSON(object: any): _164.QueryDenomsFromCreatorResponse;
+                toJSON(message: _164.QueryDenomsFromCreatorResponse): unknown;
                 fromPartial(object: {
                     denoms?: string[];
-                }): _160.QueryDenomsFromCreatorResponse;
+                }): _164.QueryDenomsFromCreatorResponse;
             };
             Params: {
-                encode(message: _159.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.Params;
-                fromJSON(object: any): _159.Params;
-                toJSON(message: _159.Params): unknown;
+                encode(message: _163.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.Params;
+                fromJSON(object: any): _163.Params;
+                toJSON(message: _163.Params): unknown;
                 fromPartial(object: {
-                    denom_creation_fee?: {
+                    denomCreationFee?: {
                         denom?: string;
                         amount?: string;
                     }[];
-                }): _159.Params;
+                }): _163.Params;
             };
             GenesisState: {
-                encode(message: _158.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.GenesisState;
-                fromJSON(object: any): _158.GenesisState;
-                toJSON(message: _158.GenesisState): unknown;
+                encode(message: _162.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.GenesisState;
+                fromJSON(object: any): _162.GenesisState;
+                toJSON(message: _162.GenesisState): unknown;
                 fromPartial(object: {
                     params?: {
-                        denom_creation_fee?: {
+                        denomCreationFee?: {
                             denom?: string;
                             amount?: string;
                         }[];
                     };
-                    factory_denoms?: {
+                    factoryDenoms?: {
                         denom?: string;
-                        authority_metadata?: {
+                        authorityMetadata?: {
                             Admin?: string;
                         };
                     }[];
-                }): _158.GenesisState;
+                }): _162.GenesisState;
             };
             GenesisDenom: {
-                encode(message: _158.GenesisDenom, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.GenesisDenom;
-                fromJSON(object: any): _158.GenesisDenom;
-                toJSON(message: _158.GenesisDenom): unknown;
+                encode(message: _162.GenesisDenom, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.GenesisDenom;
+                fromJSON(object: any): _162.GenesisDenom;
+                toJSON(message: _162.GenesisDenom): unknown;
                 fromPartial(object: {
                     denom?: string;
-                    authority_metadata?: {
+                    authorityMetadata?: {
                         Admin?: string;
                     };
-                }): _158.GenesisDenom;
+                }): _162.GenesisDenom;
             };
             DenomAuthorityMetadata: {
-                encode(message: _157.DenomAuthorityMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.DenomAuthorityMetadata;
-                fromJSON(object: any): _157.DenomAuthorityMetadata;
-                toJSON(message: _157.DenomAuthorityMetadata): unknown;
+                encode(message: _161.DenomAuthorityMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.DenomAuthorityMetadata;
+                fromJSON(object: any): _161.DenomAuthorityMetadata;
+                toJSON(message: _161.DenomAuthorityMetadata): unknown;
                 fromPartial(object: {
                     Admin?: string;
-                }): _157.DenomAuthorityMetadata;
+                }): _161.DenomAuthorityMetadata;
             };
         };
     }
     namespace txfees {
         const v1beta1: {
-            QueryClientImpl: typeof _301.QueryClientImpl;
-            LCDQueryClient: typeof _292.LCDQueryClient;
+            QueryClientImpl: typeof _310.QueryClientImpl;
+            LCDQueryClient: typeof _301.LCDQueryClient;
             QueryFeeTokensRequest: {
-                encode(_: _165.QueryFeeTokensRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryFeeTokensRequest;
-                fromJSON(_: any): _165.QueryFeeTokensRequest;
-                toJSON(_: _165.QueryFeeTokensRequest): unknown;
-                fromPartial(_: {}): _165.QueryFeeTokensRequest;
+                encode(_: _169.QueryFeeTokensRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryFeeTokensRequest;
+                fromJSON(_: any): _169.QueryFeeTokensRequest;
+                toJSON(_: _169.QueryFeeTokensRequest): unknown;
+                fromPartial(_: {}): _169.QueryFeeTokensRequest;
             };
             QueryFeeTokensResponse: {
-                encode(message: _165.QueryFeeTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryFeeTokensResponse;
-                fromJSON(object: any): _165.QueryFeeTokensResponse;
-                toJSON(message: _165.QueryFeeTokensResponse): unknown;
+                encode(message: _169.QueryFeeTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryFeeTokensResponseSDKType;
+                fromJSON(object: any): _169.QueryFeeTokensResponse;
+                toJSON(message: _169.QueryFeeTokensResponse): unknown;
                 fromPartial(object: {
-                    fee_tokens?: {
+                    feeTokens?: {
                         denom?: string;
                         poolID?: any;
                     }[];
-                }): _165.QueryFeeTokensResponse;
+                }): _169.QueryFeeTokensResponse;
             };
             QueryDenomSpotPriceRequest: {
-                encode(message: _165.QueryDenomSpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryDenomSpotPriceRequest;
-                fromJSON(object: any): _165.QueryDenomSpotPriceRequest;
-                toJSON(message: _165.QueryDenomSpotPriceRequest): unknown;
+                encode(message: _169.QueryDenomSpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryDenomSpotPriceRequest;
+                fromJSON(object: any): _169.QueryDenomSpotPriceRequest;
+                toJSON(message: _169.QueryDenomSpotPriceRequest): unknown;
                 fromPartial(object: {
                     denom?: string;
-                }): _165.QueryDenomSpotPriceRequest;
+                }): _169.QueryDenomSpotPriceRequest;
             };
             QueryDenomSpotPriceResponse: {
-                encode(message: _165.QueryDenomSpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryDenomSpotPriceResponse;
-                fromJSON(object: any): _165.QueryDenomSpotPriceResponse;
-                toJSON(message: _165.QueryDenomSpotPriceResponse): unknown;
+                encode(message: _169.QueryDenomSpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryDenomSpotPriceResponseSDKType;
+                fromJSON(object: any): _169.QueryDenomSpotPriceResponse;
+                toJSON(message: _169.QueryDenomSpotPriceResponse): unknown;
                 fromPartial(object: {
                     poolID?: any;
-                    spot_price?: string;
-                }): _165.QueryDenomSpotPriceResponse;
+                    spotPrice?: string;
+                }): _169.QueryDenomSpotPriceResponse;
             };
             QueryDenomPoolIdRequest: {
-                encode(message: _165.QueryDenomPoolIdRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryDenomPoolIdRequest;
-                fromJSON(object: any): _165.QueryDenomPoolIdRequest;
-                toJSON(message: _165.QueryDenomPoolIdRequest): unknown;
+                encode(message: _169.QueryDenomPoolIdRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryDenomPoolIdRequest;
+                fromJSON(object: any): _169.QueryDenomPoolIdRequest;
+                toJSON(message: _169.QueryDenomPoolIdRequest): unknown;
                 fromPartial(object: {
                     denom?: string;
-                }): _165.QueryDenomPoolIdRequest;
+                }): _169.QueryDenomPoolIdRequest;
             };
             QueryDenomPoolIdResponse: {
-                encode(message: _165.QueryDenomPoolIdResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryDenomPoolIdResponse;
-                fromJSON(object: any): _165.QueryDenomPoolIdResponse;
-                toJSON(message: _165.QueryDenomPoolIdResponse): unknown;
+                encode(message: _169.QueryDenomPoolIdResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryDenomPoolIdResponseSDKType;
+                fromJSON(object: any): _169.QueryDenomPoolIdResponse;
+                toJSON(message: _169.QueryDenomPoolIdResponse): unknown;
                 fromPartial(object: {
                     poolID?: any;
-                }): _165.QueryDenomPoolIdResponse;
+                }): _169.QueryDenomPoolIdResponse;
             };
             QueryBaseDenomRequest: {
-                encode(_: _165.QueryBaseDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryBaseDenomRequest;
-                fromJSON(_: any): _165.QueryBaseDenomRequest;
-                toJSON(_: _165.QueryBaseDenomRequest): unknown;
-                fromPartial(_: {}): _165.QueryBaseDenomRequest;
+                encode(_: _169.QueryBaseDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryBaseDenomRequest;
+                fromJSON(_: any): _169.QueryBaseDenomRequest;
+                toJSON(_: _169.QueryBaseDenomRequest): unknown;
+                fromPartial(_: {}): _169.QueryBaseDenomRequest;
             };
             QueryBaseDenomResponse: {
-                encode(message: _165.QueryBaseDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryBaseDenomResponse;
-                fromJSON(object: any): _165.QueryBaseDenomResponse;
-                toJSON(message: _165.QueryBaseDenomResponse): unknown;
+                encode(message: _169.QueryBaseDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.QueryBaseDenomResponseSDKType;
+                fromJSON(object: any): _169.QueryBaseDenomResponse;
+                toJSON(message: _169.QueryBaseDenomResponse): unknown;
                 fromPartial(object: {
-                    base_denom?: string;
-                }): _165.QueryBaseDenomResponse;
+                    baseDenom?: string;
+                }): _169.QueryBaseDenomResponse;
             };
             UpdateFeeTokenProposal: {
-                encode(message: _164.UpdateFeeTokenProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.UpdateFeeTokenProposal;
-                fromJSON(object: any): _164.UpdateFeeTokenProposal;
-                toJSON(message: _164.UpdateFeeTokenProposal): unknown;
+                encode(message: _168.UpdateFeeTokenProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _168.UpdateFeeTokenProposal;
+                fromJSON(object: any): _168.UpdateFeeTokenProposal;
+                toJSON(message: _168.UpdateFeeTokenProposal): unknown;
                 fromPartial(object: {
                     title?: string;
                     description?: string;
@@ -4490,30 +4492,30 @@ export declare namespace osmosis {
                         denom?: string;
                         poolID?: any;
                     };
-                }): _164.UpdateFeeTokenProposal;
+                }): _168.UpdateFeeTokenProposal;
             };
             GenesisState: {
-                encode(message: _163.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.GenesisState;
-                fromJSON(object: any): _163.GenesisState;
-                toJSON(message: _163.GenesisState): unknown;
+                encode(message: _167.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.GenesisState;
+                fromJSON(object: any): _167.GenesisState;
+                toJSON(message: _167.GenesisState): unknown;
                 fromPartial(object: {
                     basedenom?: string;
                     feetokens?: {
                         denom?: string;
                         poolID?: any;
                     }[];
-                }): _163.GenesisState;
+                }): _167.GenesisState;
             };
             FeeToken: {
-                encode(message: _162.FeeToken, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.FeeToken;
-                fromJSON(object: any): _162.FeeToken;
-                toJSON(message: _162.FeeToken): unknown;
+                encode(message: _166.FeeToken, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _166.FeeToken;
+                fromJSON(object: any): _166.FeeToken;
+                toJSON(message: _166.FeeToken): unknown;
                 fromPartial(object: {
                     denom?: string;
                     poolID?: any;
-                }): _162.FeeToken;
+                }): _166.FeeToken;
             };
         };
     }
@@ -4541,6 +4543,7 @@ export declare namespace osmosis {
                     v1beta1: import("../cosmos/feegrant/v1beta1/tx.rpc.msg").MsgClientImpl;
                 };
                 gov: {
+                    v1: import("../cosmos/gov/v1/tx.rpc.msg").MsgClientImpl;
                     v1beta1: import("../cosmos/gov/v1beta1/tx.rpc.msg").MsgClientImpl;
                 };
                 nft: {
@@ -4563,19 +4566,19 @@ export declare namespace osmosis {
                 gamm: {
                     poolmodels: {
                         balancer: {
-                            v1beta1: _302.MsgClientImpl;
+                            v1beta1: _311.MsgClientImpl;
                         };
                         stableswap: {
-                            v1beta1: _303.MsgClientImpl;
+                            v1beta1: _312.MsgClientImpl;
                         };
                     };
-                    v1beta1: _304.MsgClientImpl;
+                    v1beta1: _313.MsgClientImpl;
                 };
-                incentives: _305.MsgClientImpl;
-                lockup: _306.MsgClientImpl;
-                superfluid: _307.MsgClientImpl;
+                incentives: _314.MsgClientImpl;
+                lockup: _315.MsgClientImpl;
+                superfluid: _316.MsgClientImpl;
                 tokenfactory: {
-                    v1beta1: _308.MsgClientImpl;
+                    v1beta1: _317.MsgClientImpl;
                 };
             };
         }>;
@@ -4610,6 +4613,7 @@ export declare namespace osmosis {
                     v1beta1: import("../cosmos/feegrant/v1beta1/query.rpc.query").QueryClientImpl;
                 };
                 gov: {
+                    v1: import("../cosmos/gov/v1/query.rpc.query").QueryClientImpl;
                     v1beta1: import("../cosmos/gov/v1beta1/query.rpc.query").QueryClientImpl;
                 };
                 mint: {
@@ -4636,25 +4640,25 @@ export declare namespace osmosis {
             };
             osmosis: {
                 epochs: {
-                    v1beta1: _293.QueryClientImpl;
+                    v1beta1: _302.QueryClientImpl;
                 };
                 gamm: {
-                    v1beta1: _294.QueryClientImpl;
+                    v1beta1: _303.QueryClientImpl;
                 };
-                incentives: _295.QueryClientImpl;
-                lockup: _296.QueryClientImpl;
+                incentives: _304.QueryClientImpl;
+                lockup: _305.QueryClientImpl;
                 mint: {
-                    v1beta1: _297.QueryClientImpl;
+                    v1beta1: _306.QueryClientImpl;
                 };
                 poolincentives: {
-                    v1beta1: _298.QueryClientImpl;
+                    v1beta1: _307.QueryClientImpl;
                 };
-                superfluid: _299.QueryClientImpl;
+                superfluid: _308.QueryClientImpl;
                 tokenfactory: {
-                    v1beta1: _300.QueryClientImpl;
+                    v1beta1: _309.QueryClientImpl;
                 };
                 txfees: {
-                    v1beta1: _301.QueryClientImpl;
+                    v1beta1: _310.QueryClientImpl;
                 };
             };
         }>;
@@ -4686,6 +4690,7 @@ export declare namespace osmosis {
                     v1beta1: import("../cosmos/feegrant/v1beta1/query.lcd").LCDQueryClient;
                 };
                 gov: {
+                    v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
                     v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
                 };
                 mint: {
@@ -4712,25 +4717,25 @@ export declare namespace osmosis {
             };
             osmosis: {
                 epochs: {
-                    v1beta1: _284.LCDQueryClient;
+                    v1beta1: _293.LCDQueryClient;
                 };
                 gamm: {
-                    v1beta1: _285.LCDQueryClient;
+                    v1beta1: _294.LCDQueryClient;
                 };
-                incentives: _286.LCDQueryClient;
-                lockup: _287.LCDQueryClient;
+                incentives: _295.LCDQueryClient;
+                lockup: _296.LCDQueryClient;
                 mint: {
-                    v1beta1: _288.LCDQueryClient;
+                    v1beta1: _297.LCDQueryClient;
                 };
                 poolincentives: {
-                    v1beta1: _289.LCDQueryClient;
+                    v1beta1: _298.LCDQueryClient;
                 };
-                superfluid: _290.LCDQueryClient;
+                superfluid: _299.LCDQueryClient;
                 tokenfactory: {
-                    v1beta1: _291.LCDQueryClient;
+                    v1beta1: _300.LCDQueryClient;
                 };
                 txfees: {
-                    v1beta1: _292.LCDQueryClient;
+                    v1beta1: _301.LCDQueryClient;
                 };
             };
         }>;
