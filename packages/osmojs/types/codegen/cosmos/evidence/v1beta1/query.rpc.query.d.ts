@@ -14,5 +14,5 @@ export declare class QueryClientImpl implements Query {
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     evidence(request: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType>;
-    allEvidence(request: QueryAllEvidenceRequest): Promise<QueryAllEvidenceResponseSDKType>;
+    allEvidence(request?: QueryAllEvidenceRequest): Promise<QueryAllEvidenceResponseSDKType>;
 };

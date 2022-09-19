@@ -43,8 +43,8 @@ export declare namespace ibc {
                 QueryClientImpl: typeof _270.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     denomTrace(request: _107.QueryDenomTraceRequest): Promise<_107.QueryDenomTraceResponseSDKType>;
-                    denomTraces(request: _107.QueryDenomTracesRequest): Promise<_107.QueryDenomTracesResponseSDKType>;
-                    params(request: _107.QueryParamsRequest): Promise<_107.QueryParamsResponseSDKType>;
+                    denomTraces(request?: _107.QueryDenomTracesRequest): Promise<_107.QueryDenomTracesResponseSDKType>;
+                    params(request?: _107.QueryParamsRequest): Promise<_107.QueryParamsResponseSDKType>;
                 };
                 LCDQueryClient: typeof _266.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
@@ -234,7 +234,7 @@ export declare namespace ibc {
                 QueryClientImpl: typeof _271.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     channel(request: _113.QueryChannelRequest): Promise<_113.QueryChannelResponseSDKType>;
-                    channels(request: _113.QueryChannelsRequest): Promise<_113.QueryChannelsResponseSDKType>;
+                    channels(request?: _113.QueryChannelsRequest): Promise<_113.QueryChannelsResponseSDKType>;
                     connectionChannels(request: _113.QueryConnectionChannelsRequest): Promise<_113.QueryConnectionChannelsResponseSDKType>;
                     channelClientState(request: _113.QueryChannelClientStateRequest): Promise<_113.QueryChannelClientStateResponseSDKType>;
                     channelConsensusState(request: _113.QueryChannelConsensusStateRequest): Promise<_113.QueryChannelConsensusStateResponseSDKType>;
@@ -1412,13 +1412,13 @@ export declare namespace ibc {
                 QueryClientImpl: typeof _272.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     clientState(request: _117.QueryClientStateRequest): Promise<_117.QueryClientStateResponseSDKType>;
-                    clientStates(request: _117.QueryClientStatesRequest): Promise<_117.QueryClientStatesResponseSDKType>;
+                    clientStates(request?: _117.QueryClientStatesRequest): Promise<_117.QueryClientStatesResponseSDKType>;
                     consensusState(request: _117.QueryConsensusStateRequest): Promise<_117.QueryConsensusStateResponseSDKType>;
                     consensusStates(request: _117.QueryConsensusStatesRequest): Promise<_117.QueryConsensusStatesResponseSDKType>;
                     clientStatus(request: _117.QueryClientStatusRequest): Promise<_117.QueryClientStatusResponseSDKType>;
-                    clientParams(request: _117.QueryClientParamsRequest): Promise<_117.QueryClientParamsResponseSDKType>;
-                    upgradedClientState(request: _117.QueryUpgradedClientStateRequest): Promise<_117.QueryUpgradedClientStateResponseSDKType>;
-                    upgradedConsensusState(request: _117.QueryUpgradedConsensusStateRequest): Promise<_117.QueryUpgradedConsensusStateResponseSDKType>;
+                    clientParams(request?: _117.QueryClientParamsRequest): Promise<_117.QueryClientParamsResponseSDKType>;
+                    upgradedClientState(request?: _117.QueryUpgradedClientStateRequest): Promise<_117.QueryUpgradedClientStateResponseSDKType>;
+                    upgradedConsensusState(request?: _117.QueryUpgradedConsensusStateRequest): Promise<_117.QueryUpgradedConsensusStateResponseSDKType>;
                 };
                 LCDQueryClient: typeof _268.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
@@ -2162,7 +2162,7 @@ export declare namespace ibc {
                 QueryClientImpl: typeof _273.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     connection(request: _122.QueryConnectionRequest): Promise<_122.QueryConnectionResponseSDKType>;
-                    connections(request: _122.QueryConnectionsRequest): Promise<_122.QueryConnectionsResponseSDKType>;
+                    connections(request?: _122.QueryConnectionsRequest): Promise<_122.QueryConnectionsResponseSDKType>;
                     clientConnections(request: _122.QueryClientConnectionsRequest): Promise<_122.QueryClientConnectionsResponseSDKType>;
                     connectionClientState(request: _122.QueryConnectionClientStateRequest): Promise<_122.QueryConnectionClientStateResponseSDKType>;
                     connectionConsensusState(request: _122.QueryConnectionConsensusStateRequest): Promise<_122.QueryConnectionConsensusStateResponseSDKType>;
@@ -3759,16 +3759,16 @@ export declare namespace ibc {
             cosmos: {
                 app: {
                     v1alpha1: {
-                        config(request: import("../cosmos/app/v1alpha1/query").QueryConfigRequest): Promise<import("../cosmos/app/v1alpha1/query").QueryConfigResponseSDKType>;
+                        config(request?: import("../cosmos/app/v1alpha1/query").QueryConfigRequest): Promise<import("../cosmos/app/v1alpha1/query").QueryConfigResponseSDKType>;
                     };
                 };
                 auth: {
                     v1beta1: {
-                        accounts(request: import("../cosmos/auth/v1beta1/query").QueryAccountsRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryAccountsResponseSDKType>;
+                        accounts(request?: import("../cosmos/auth/v1beta1/query").QueryAccountsRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryAccountsResponseSDKType>;
                         account(request: import("../cosmos/auth/v1beta1/query").QueryAccountRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryAccountResponseSDKType>;
-                        params(request: import("../cosmos/auth/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryParamsResponseSDKType>;
-                        moduleAccounts(request: import("../cosmos/auth/v1beta1/query").QueryModuleAccountsRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryModuleAccountsResponseSDKType>;
-                        bech32Prefix(request: import("../cosmos/auth/v1beta1/query").Bech32PrefixRequest): Promise<import("../cosmos/auth/v1beta1/query").Bech32PrefixResponseSDKType>;
+                        params(request?: import("../cosmos/auth/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryParamsResponseSDKType>;
+                        moduleAccounts(request?: import("../cosmos/auth/v1beta1/query").QueryModuleAccountsRequest): Promise<import("../cosmos/auth/v1beta1/query").QueryModuleAccountsResponseSDKType>;
+                        bech32Prefix(request?: import("../cosmos/auth/v1beta1/query").Bech32PrefixRequest): Promise<import("../cosmos/auth/v1beta1/query").Bech32PrefixResponseSDKType>;
                         addressBytesToString(request: import("../cosmos/auth/v1beta1/query").AddressBytesToStringRequest): Promise<import("../cosmos/auth/v1beta1/query").AddressBytesToStringResponseSDKType>;
                         addressStringToBytes(request: import("../cosmos/auth/v1beta1/query").AddressStringToBytesRequest): Promise<import("../cosmos/auth/v1beta1/query").AddressStringToBytesResponseSDKType>;
                     };
@@ -3785,29 +3785,29 @@ export declare namespace ibc {
                         balance(request: import("../cosmos/bank/v1beta1/query").QueryBalanceRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryBalanceResponseSDKType>;
                         allBalances(request: import("../cosmos/bank/v1beta1/query").QueryAllBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryAllBalancesResponseSDKType>;
                         spendableBalances(request: import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesResponseSDKType>;
-                        totalSupply(request: import("../cosmos/bank/v1beta1/query").QueryTotalSupplyRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryTotalSupplyResponseSDKType>;
+                        totalSupply(request?: import("../cosmos/bank/v1beta1/query").QueryTotalSupplyRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryTotalSupplyResponseSDKType>;
                         supplyOf(request: import("../cosmos/bank/v1beta1/query").QuerySupplyOfRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySupplyOfResponseSDKType>;
-                        params(request: import("../cosmos/bank/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryParamsResponseSDKType>;
+                        params(request?: import("../cosmos/bank/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryParamsResponseSDKType>;
                         denomMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomMetadataResponseSDKType>;
-                        denomsMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponseSDKType>;
+                        denomsMetadata(request?: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponseSDKType>;
                         denomOwners(request: import("../cosmos/bank/v1beta1/query").QueryDenomOwnersRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomOwnersResponseSDKType>;
                     };
                 };
                 base: {
                     tendermint: {
                         v1beta1: {
-                            getNodeInfo(request: import("../cosmos/base/tendermint/v1beta1/query").GetNodeInfoRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetNodeInfoResponseSDKType>;
-                            getSyncing(request: import("../cosmos/base/tendermint/v1beta1/query").GetSyncingRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetSyncingResponseSDKType>;
-                            getLatestBlock(request: import("../cosmos/base/tendermint/v1beta1/query").GetLatestBlockRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetLatestBlockResponseSDKType>;
+                            getNodeInfo(request?: import("../cosmos/base/tendermint/v1beta1/query").GetNodeInfoRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetNodeInfoResponseSDKType>;
+                            getSyncing(request?: import("../cosmos/base/tendermint/v1beta1/query").GetSyncingRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetSyncingResponseSDKType>;
+                            getLatestBlock(request?: import("../cosmos/base/tendermint/v1beta1/query").GetLatestBlockRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetLatestBlockResponseSDKType>;
                             getBlockByHeight(request: import("../cosmos/base/tendermint/v1beta1/query").GetBlockByHeightRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetBlockByHeightResponseSDKType>;
-                            getLatestValidatorSet(request: import("../cosmos/base/tendermint/v1beta1/query").GetLatestValidatorSetRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetLatestValidatorSetResponseSDKType>;
+                            getLatestValidatorSet(request?: import("../cosmos/base/tendermint/v1beta1/query").GetLatestValidatorSetRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetLatestValidatorSetResponseSDKType>;
                             getValidatorSetByHeight(request: import("../cosmos/base/tendermint/v1beta1/query").GetValidatorSetByHeightRequest): Promise<import("../cosmos/base/tendermint/v1beta1/query").GetValidatorSetByHeightResponseSDKType>;
                         };
                     };
                 };
                 distribution: {
                     v1beta1: {
-                        params(request: import("../cosmos/distribution/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryParamsResponseSDKType>;
+                        params(request?: import("../cosmos/distribution/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryParamsResponseSDKType>;
                         validatorOutstandingRewards(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsResponseSDKType>;
                         validatorCommission(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionResponseSDKType>;
                         validatorSlashes(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesResponseSDKType>;
@@ -3815,13 +3815,13 @@ export declare namespace ibc {
                         delegationTotalRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsResponseSDKType>;
                         delegatorValidators(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsResponseSDKType>;
                         delegatorWithdrawAddress(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressResponseSDKType>;
-                        communityPool(request: import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolResponseSDKType>;
+                        communityPool(request?: import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolResponseSDKType>;
                     };
                 };
                 evidence: {
                     v1beta1: {
                         evidence(request: import("../cosmos/evidence/v1beta1/query").QueryEvidenceRequest): Promise<import("../cosmos/evidence/v1beta1/query").QueryEvidenceResponseSDKType>;
-                        allEvidence(request: import("../cosmos/evidence/v1beta1/query").QueryAllEvidenceRequest): Promise<import("../cosmos/evidence/v1beta1/query").QueryAllEvidenceResponseSDKType>;
+                        allEvidence(request?: import("../cosmos/evidence/v1beta1/query").QueryAllEvidenceRequest): Promise<import("../cosmos/evidence/v1beta1/query").QueryAllEvidenceResponseSDKType>;
                     };
                 };
                 feegrant: {
@@ -3855,9 +3855,9 @@ export declare namespace ibc {
                 };
                 mint: {
                     v1beta1: {
-                        params(request: import("../cosmos/mint/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryParamsResponseSDKType>;
-                        inflation(request: import("../cosmos/mint/v1beta1/query").QueryInflationRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryInflationResponseSDKType>;
-                        annualProvisions(request: import("../cosmos/mint/v1beta1/query").QueryAnnualProvisionsRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryAnnualProvisionsResponseSDKType>;
+                        params(request?: import("../cosmos/mint/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryParamsResponseSDKType>;
+                        inflation(request?: import("../cosmos/mint/v1beta1/query").QueryInflationRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryInflationResponseSDKType>;
+                        annualProvisions(request?: import("../cosmos/mint/v1beta1/query").QueryAnnualProvisionsRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryAnnualProvisionsResponseSDKType>;
                     };
                 };
                 nft: {
@@ -3868,20 +3868,20 @@ export declare namespace ibc {
                         nFTs(request: import("../cosmos/nft/v1beta1/query").QueryNFTsRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryNFTsResponseSDKType>;
                         nFT(request: import("../cosmos/nft/v1beta1/query").QueryNFTRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryNFTResponseSDKType>;
                         class(request: import("../cosmos/nft/v1beta1/query").QueryClassRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryClassResponseSDKType>;
-                        classes(request: import("../cosmos/nft/v1beta1/query").QueryClassesRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryClassesResponseSDKType>;
+                        classes(request?: import("../cosmos/nft/v1beta1/query").QueryClassesRequest): Promise<import("../cosmos/nft/v1beta1/query").QueryClassesResponseSDKType>;
                     };
                 };
                 params: {
                     v1beta1: {
                         params(request: import("../cosmos/params/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/params/v1beta1/query").QueryParamsResponseSDKType>;
-                        subspaces(request: import("../cosmos/params/v1beta1/query").QuerySubspacesRequest): Promise<import("../cosmos/params/v1beta1/query").QuerySubspacesResponseSDKType>;
+                        subspaces(request?: import("../cosmos/params/v1beta1/query").QuerySubspacesRequest): Promise<import("../cosmos/params/v1beta1/query").QuerySubspacesResponseSDKType>;
                     };
                 };
                 slashing: {
                     v1beta1: {
-                        params(request: import("../cosmos/slashing/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/slashing/v1beta1/query").QueryParamsResponseSDKType>;
+                        params(request?: import("../cosmos/slashing/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/slashing/v1beta1/query").QueryParamsResponseSDKType>;
                         signingInfo(request: import("../cosmos/slashing/v1beta1/query").QuerySigningInfoRequest): Promise<import("../cosmos/slashing/v1beta1/query").QuerySigningInfoResponseSDKType>;
-                        signingInfos(request: import("../cosmos/slashing/v1beta1/query").QuerySigningInfosRequest): Promise<import("../cosmos/slashing/v1beta1/query").QuerySigningInfosResponseSDKType>;
+                        signingInfos(request?: import("../cosmos/slashing/v1beta1/query").QuerySigningInfosRequest): Promise<import("../cosmos/slashing/v1beta1/query").QuerySigningInfosResponseSDKType>;
                     };
                 };
                 staking: {
@@ -3898,8 +3898,8 @@ export declare namespace ibc {
                         delegatorValidators(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsResponseSDKType>;
                         delegatorValidator(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorResponseSDKType>;
                         historicalInfo(request: import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoResponseSDKType>;
-                        pool(request: import("../cosmos/staking/v1beta1/query").QueryPoolRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryPoolResponseSDKType>;
-                        params(request: import("../cosmos/staking/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryParamsResponseSDKType>;
+                        pool(request?: import("../cosmos/staking/v1beta1/query").QueryPoolRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryPoolResponseSDKType>;
+                        params(request?: import("../cosmos/staking/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryParamsResponseSDKType>;
                     };
                 };
                 tx: {
@@ -3913,11 +3913,11 @@ export declare namespace ibc {
                 };
                 upgrade: {
                     v1beta1: {
-                        currentPlan(request: import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanResponseSDKType>;
+                        currentPlan(request?: import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanResponseSDKType>;
                         appliedPlan(request: import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanResponseSDKType>;
                         upgradedConsensusState(request: import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateResponseSDKType>;
                         moduleVersions(request: import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsResponseSDKType>;
-                        authority(request: import("../cosmos/upgrade/v1beta1/query").QueryAuthorityRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAuthorityResponseSDKType>;
+                        authority(request?: import("../cosmos/upgrade/v1beta1/query").QueryAuthorityRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAuthorityResponseSDKType>;
                     };
                 };
             };
@@ -3926,8 +3926,8 @@ export declare namespace ibc {
                     transfer: {
                         v1: {
                             denomTrace(request: _107.QueryDenomTraceRequest): Promise<_107.QueryDenomTraceResponseSDKType>;
-                            denomTraces(request: _107.QueryDenomTracesRequest): Promise<_107.QueryDenomTracesResponseSDKType>;
-                            params(request: _107.QueryParamsRequest): Promise<_107.QueryParamsResponseSDKType>;
+                            denomTraces(request?: _107.QueryDenomTracesRequest): Promise<_107.QueryDenomTracesResponseSDKType>;
+                            params(request?: _107.QueryParamsRequest): Promise<_107.QueryParamsResponseSDKType>;
                         };
                     };
                 };
@@ -3935,7 +3935,7 @@ export declare namespace ibc {
                     channel: {
                         v1: {
                             channel(request: _113.QueryChannelRequest): Promise<_113.QueryChannelResponseSDKType>;
-                            channels(request: _113.QueryChannelsRequest): Promise<_113.QueryChannelsResponseSDKType>;
+                            channels(request?: _113.QueryChannelsRequest): Promise<_113.QueryChannelsResponseSDKType>;
                             connectionChannels(request: _113.QueryConnectionChannelsRequest): Promise<_113.QueryConnectionChannelsResponseSDKType>;
                             channelClientState(request: _113.QueryChannelClientStateRequest): Promise<_113.QueryChannelClientStateResponseSDKType>;
                             channelConsensusState(request: _113.QueryChannelConsensusStateRequest): Promise<_113.QueryChannelConsensusStateResponseSDKType>;
@@ -3952,19 +3952,19 @@ export declare namespace ibc {
                     client: {
                         v1: {
                             clientState(request: _117.QueryClientStateRequest): Promise<_117.QueryClientStateResponseSDKType>;
-                            clientStates(request: _117.QueryClientStatesRequest): Promise<_117.QueryClientStatesResponseSDKType>;
+                            clientStates(request?: _117.QueryClientStatesRequest): Promise<_117.QueryClientStatesResponseSDKType>;
                             consensusState(request: _117.QueryConsensusStateRequest): Promise<_117.QueryConsensusStateResponseSDKType>;
                             consensusStates(request: _117.QueryConsensusStatesRequest): Promise<_117.QueryConsensusStatesResponseSDKType>;
                             clientStatus(request: _117.QueryClientStatusRequest): Promise<_117.QueryClientStatusResponseSDKType>;
-                            clientParams(request: _117.QueryClientParamsRequest): Promise<_117.QueryClientParamsResponseSDKType>;
-                            upgradedClientState(request: _117.QueryUpgradedClientStateRequest): Promise<_117.QueryUpgradedClientStateResponseSDKType>;
-                            upgradedConsensusState(request: _117.QueryUpgradedConsensusStateRequest): Promise<_117.QueryUpgradedConsensusStateResponseSDKType>;
+                            clientParams(request?: _117.QueryClientParamsRequest): Promise<_117.QueryClientParamsResponseSDKType>;
+                            upgradedClientState(request?: _117.QueryUpgradedClientStateRequest): Promise<_117.QueryUpgradedClientStateResponseSDKType>;
+                            upgradedConsensusState(request?: _117.QueryUpgradedConsensusStateRequest): Promise<_117.QueryUpgradedConsensusStateResponseSDKType>;
                         };
                     };
                     connection: {
                         v1: {
                             connection(request: _122.QueryConnectionRequest): Promise<_122.QueryConnectionResponseSDKType>;
-                            connections(request: _122.QueryConnectionsRequest): Promise<_122.QueryConnectionsResponseSDKType>;
+                            connections(request?: _122.QueryConnectionsRequest): Promise<_122.QueryConnectionsResponseSDKType>;
                             clientConnections(request: _122.QueryClientConnectionsRequest): Promise<_122.QueryClientConnectionsResponseSDKType>;
                             connectionClientState(request: _122.QueryConnectionClientStateRequest): Promise<_122.QueryConnectionClientStateResponseSDKType>;
                             connectionConsensusState(request: _122.QueryConnectionConsensusStateRequest): Promise<_122.QueryConnectionConsensusStateResponseSDKType>;

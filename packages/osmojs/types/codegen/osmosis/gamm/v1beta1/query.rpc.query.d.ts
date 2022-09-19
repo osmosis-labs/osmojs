@@ -29,9 +29,9 @@ export declare class QueryClientImpl implements Query {
     estimateSwapExactAmountOut(request: QuerySwapExactAmountOutRequest): Promise<QuerySwapExactAmountOutResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
-    pools(request: QueryPoolsRequest): Promise<QueryPoolsResponseSDKType>;
-    numPools(request: QueryNumPoolsRequest): Promise<QueryNumPoolsResponseSDKType>;
-    totalLiquidity(request: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponseSDKType>;
+    pools(request?: QueryPoolsRequest): Promise<QueryPoolsResponseSDKType>;
+    numPools(request?: QueryNumPoolsRequest): Promise<QueryNumPoolsResponseSDKType>;
+    totalLiquidity(request?: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponseSDKType>;
     pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType>;
     poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponseSDKType>;
     totalPoolLiquidity(request: QueryTotalPoolLiquidityRequest): Promise<QueryTotalPoolLiquidityResponseSDKType>;

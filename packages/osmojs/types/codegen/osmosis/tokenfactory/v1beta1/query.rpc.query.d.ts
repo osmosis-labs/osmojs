@@ -15,7 +15,7 @@ export declare class QueryClientImpl implements Query {
     denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
     denomAuthorityMetadata(request: QueryDenomAuthorityMetadataRequest): Promise<QueryDenomAuthorityMetadataResponseSDKType>;
     denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponseSDKType>;
 };

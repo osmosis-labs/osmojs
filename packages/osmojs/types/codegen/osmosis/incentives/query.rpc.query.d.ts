@@ -29,14 +29,14 @@ export declare class QueryClientImpl implements Query {
     lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
-    moduleToDistributeCoins(request: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponseSDKType>;
-    moduleDistributedCoins(request: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponseSDKType>;
+    moduleToDistributeCoins(request?: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponseSDKType>;
+    moduleDistributedCoins(request?: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponseSDKType>;
     gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponseSDKType>;
-    gauges(request: GaugesRequest): Promise<GaugesResponseSDKType>;
-    activeGauges(request: ActiveGaugesRequest): Promise<ActiveGaugesResponseSDKType>;
+    gauges(request?: GaugesRequest): Promise<GaugesResponseSDKType>;
+    activeGauges(request?: ActiveGaugesRequest): Promise<ActiveGaugesResponseSDKType>;
     activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponseSDKType>;
-    upcomingGauges(request: UpcomingGaugesRequest): Promise<UpcomingGaugesResponseSDKType>;
+    upcomingGauges(request?: UpcomingGaugesRequest): Promise<UpcomingGaugesResponseSDKType>;
     upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponseSDKType>;
     rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponseSDKType>;
-    lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
+    lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
 };

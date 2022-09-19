@@ -17,8 +17,8 @@ export declare class QueryClientImpl implements Query {
     baseDenom(request?: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
-    feeTokens(request: QueryFeeTokensRequest): Promise<QueryFeeTokensResponseSDKType>;
+    feeTokens(request?: QueryFeeTokensRequest): Promise<QueryFeeTokensResponseSDKType>;
     denomSpotPrice(request: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponseSDKType>;
     denomPoolId(request: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponseSDKType>;
-    baseDenom(request: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType>;
+    baseDenom(request?: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType>;
 };

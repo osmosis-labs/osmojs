@@ -14,5 +14,5 @@ export declare class QueryClientImpl implements Query {
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    subspaces(request: QuerySubspacesRequest): Promise<QuerySubspacesResponseSDKType>;
+    subspaces(request?: QuerySubspacesRequest): Promise<QuerySubspacesResponseSDKType>;
 };

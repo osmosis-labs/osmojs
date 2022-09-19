@@ -22,9 +22,9 @@ export declare class QueryClientImpl implements Query {
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     gaugeIds(request: QueryGaugeIdsRequest): Promise<QueryGaugeIdsResponseSDKType>;
-    distrInfo(request: QueryDistrInfoRequest): Promise<QueryDistrInfoResponseSDKType>;
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    lockableDurations(request: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
-    incentivizedPools(request: QueryIncentivizedPoolsRequest): Promise<QueryIncentivizedPoolsResponseSDKType>;
-    externalIncentiveGauges(request: QueryExternalIncentiveGaugesRequest): Promise<QueryExternalIncentiveGaugesResponseSDKType>;
+    distrInfo(request?: QueryDistrInfoRequest): Promise<QueryDistrInfoResponseSDKType>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
+    incentivizedPools(request?: QueryIncentivizedPoolsRequest): Promise<QueryIncentivizedPoolsResponseSDKType>;
+    externalIncentiveGauges(request?: QueryExternalIncentiveGaugesRequest): Promise<QueryExternalIncentiveGaugesResponseSDKType>;
 };

@@ -26,11 +26,11 @@ export declare class QueryClientImpl implements Query {
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     clientState(request: QueryClientStateRequest): Promise<QueryClientStateResponseSDKType>;
-    clientStates(request: QueryClientStatesRequest): Promise<QueryClientStatesResponseSDKType>;
+    clientStates(request?: QueryClientStatesRequest): Promise<QueryClientStatesResponseSDKType>;
     consensusState(request: QueryConsensusStateRequest): Promise<QueryConsensusStateResponseSDKType>;
     consensusStates(request: QueryConsensusStatesRequest): Promise<QueryConsensusStatesResponseSDKType>;
     clientStatus(request: QueryClientStatusRequest): Promise<QueryClientStatusResponseSDKType>;
-    clientParams(request: QueryClientParamsRequest): Promise<QueryClientParamsResponseSDKType>;
-    upgradedClientState(request: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponseSDKType>;
-    upgradedConsensusState(request: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType>;
+    clientParams(request?: QueryClientParamsRequest): Promise<QueryClientParamsResponseSDKType>;
+    upgradedClientState(request?: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponseSDKType>;
+    upgradedConsensusState(request?: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType>;
 };

@@ -41,8 +41,8 @@ export declare class QueryClientImpl implements Query {
     accountLockedLongerDurationDenom(request: AccountLockedLongerDurationDenomRequest): Promise<AccountLockedLongerDurationDenomResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
-    moduleBalance(request: ModuleBalanceRequest): Promise<ModuleBalanceResponseSDKType>;
-    moduleLockedAmount(request: ModuleLockedAmountRequest): Promise<ModuleLockedAmountResponseSDKType>;
+    moduleBalance(request?: ModuleBalanceRequest): Promise<ModuleBalanceResponseSDKType>;
+    moduleLockedAmount(request?: ModuleLockedAmountRequest): Promise<ModuleLockedAmountResponseSDKType>;
     accountUnlockableCoins(request: AccountUnlockableCoinsRequest): Promise<AccountUnlockableCoinsResponseSDKType>;
     accountUnlockingCoins(request: AccountUnlockingCoinsRequest): Promise<AccountUnlockingCoinsResponseSDKType>;
     accountLockedCoins(request: AccountLockedCoinsRequest): Promise<AccountLockedCoinsResponseSDKType>;

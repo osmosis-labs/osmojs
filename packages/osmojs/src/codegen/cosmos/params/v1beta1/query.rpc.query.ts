@@ -43,7 +43,7 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.params(request);
     },
 
-    subspaces(request: QuerySubspacesRequest): Promise<QuerySubspacesResponseSDKType> {
+    subspaces(request?: QuerySubspacesRequest): Promise<QuerySubspacesResponseSDKType> {
       return queryService.subspaces(request);
     }
 

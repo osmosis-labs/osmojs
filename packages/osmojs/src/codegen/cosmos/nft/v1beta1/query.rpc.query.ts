@@ -115,7 +115,7 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.class(request);
     },
 
-    classes(request: QueryClassesRequest): Promise<QueryClassesResponseSDKType> {
+    classes(request?: QueryClassesRequest): Promise<QueryClassesResponseSDKType> {
       return queryService.classes(request);
     }
 

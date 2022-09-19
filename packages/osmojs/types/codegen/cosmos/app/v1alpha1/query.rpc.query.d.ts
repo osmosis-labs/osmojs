@@ -11,5 +11,5 @@ export declare class QueryClientImpl implements Query {
     config(request?: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
-    config(request: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;
+    config(request?: QueryConfigRequest): Promise<QueryConfigResponseSDKType>;
 };

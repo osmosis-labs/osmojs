@@ -106,7 +106,7 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.clientState(request);
     },
 
-    clientStates(request: QueryClientStatesRequest): Promise<QueryClientStatesResponseSDKType> {
+    clientStates(request?: QueryClientStatesRequest): Promise<QueryClientStatesResponseSDKType> {
       return queryService.clientStates(request);
     },
 
@@ -122,15 +122,15 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.clientStatus(request);
     },
 
-    clientParams(request: QueryClientParamsRequest): Promise<QueryClientParamsResponseSDKType> {
+    clientParams(request?: QueryClientParamsRequest): Promise<QueryClientParamsResponseSDKType> {
       return queryService.clientParams(request);
     },
 
-    upgradedClientState(request: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponseSDKType> {
+    upgradedClientState(request?: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponseSDKType> {
       return queryService.upgradedClientState(request);
     },
 
-    upgradedConsensusState(request: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType> {
+    upgradedConsensusState(request?: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType> {
       return queryService.upgradedConsensusState(request);
     }
 

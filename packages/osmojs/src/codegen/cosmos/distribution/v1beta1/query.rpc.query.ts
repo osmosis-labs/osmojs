@@ -109,7 +109,7 @@ export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
   const queryService = new QueryClientImpl(rpc);
   return {
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
       return queryService.params(request);
     },
 
@@ -141,7 +141,7 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.delegatorWithdrawAddress(request);
     },
 
-    communityPool(request: QueryCommunityPoolRequest): Promise<QueryCommunityPoolResponseSDKType> {
+    communityPool(request?: QueryCommunityPoolRequest): Promise<QueryCommunityPoolResponseSDKType> {
       return queryService.communityPool(request);
     }
 

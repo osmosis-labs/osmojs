@@ -23,11 +23,11 @@ export declare class QueryClientImpl implements Query {
     addressStringToBytes(request: AddressStringToBytesRequest): Promise<AddressStringToBytesResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
-    accounts(request: QueryAccountsRequest): Promise<QueryAccountsResponseSDKType>;
+    accounts(request?: QueryAccountsRequest): Promise<QueryAccountsResponseSDKType>;
     account(request: QueryAccountRequest): Promise<QueryAccountResponseSDKType>;
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    moduleAccounts(request: QueryModuleAccountsRequest): Promise<QueryModuleAccountsResponseSDKType>;
-    bech32Prefix(request: Bech32PrefixRequest): Promise<Bech32PrefixResponseSDKType>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    moduleAccounts(request?: QueryModuleAccountsRequest): Promise<QueryModuleAccountsResponseSDKType>;
+    bech32Prefix(request?: Bech32PrefixRequest): Promise<Bech32PrefixResponseSDKType>;
     addressBytesToString(request: AddressBytesToStringRequest): Promise<AddressBytesToStringResponseSDKType>;
     addressStringToBytes(request: AddressStringToBytesRequest): Promise<AddressStringToBytesResponseSDKType>;
 };

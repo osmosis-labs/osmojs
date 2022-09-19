@@ -16,6 +16,6 @@ export declare class QueryClientImpl implements Query {
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     denomTrace(request: QueryDenomTraceRequest): Promise<QueryDenomTraceResponseSDKType>;
-    denomTraces(request: QueryDenomTracesRequest): Promise<QueryDenomTracesResponseSDKType>;
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    denomTraces(request?: QueryDenomTracesRequest): Promise<QueryDenomTracesResponseSDKType>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
 };

@@ -36,7 +36,7 @@ export declare class QueryClientImpl implements Query {
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     channel(request: QueryChannelRequest): Promise<QueryChannelResponseSDKType>;
-    channels(request: QueryChannelsRequest): Promise<QueryChannelsResponseSDKType>;
+    channels(request?: QueryChannelsRequest): Promise<QueryChannelsResponseSDKType>;
     connectionChannels(request: QueryConnectionChannelsRequest): Promise<QueryConnectionChannelsResponseSDKType>;
     channelClientState(request: QueryChannelClientStateRequest): Promise<QueryChannelClientStateResponseSDKType>;
     channelConsensusState(request: QueryChannelConsensusStateRequest): Promise<QueryChannelConsensusStateResponseSDKType>;

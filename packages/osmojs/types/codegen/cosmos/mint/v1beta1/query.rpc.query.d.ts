@@ -15,7 +15,7 @@ export declare class QueryClientImpl implements Query {
     annualProvisions(request?: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    inflation(request: QueryInflationRequest): Promise<QueryInflationResponseSDKType>;
-    annualProvisions(request: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponseSDKType>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    inflation(request?: QueryInflationRequest): Promise<QueryInflationResponseSDKType>;
+    annualProvisions(request?: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponseSDKType>;
 };

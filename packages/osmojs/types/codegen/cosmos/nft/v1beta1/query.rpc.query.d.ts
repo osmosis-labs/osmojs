@@ -29,5 +29,5 @@ export declare const createRpcQueryExtension: (base: QueryClient) => {
     nFTs(request: QueryNFTsRequest): Promise<QueryNFTsResponseSDKType>;
     nFT(request: QueryNFTRequest): Promise<QueryNFTResponseSDKType>;
     class(request: QueryClassRequest): Promise<QueryClassResponseSDKType>;
-    classes(request: QueryClassesRequest): Promise<QueryClassesResponseSDKType>;
+    classes(request?: QueryClassesRequest): Promise<QueryClassesResponseSDKType>;
 };

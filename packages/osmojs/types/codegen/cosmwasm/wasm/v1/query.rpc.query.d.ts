@@ -34,6 +34,6 @@ export declare const createRpcQueryExtension: (base: QueryClient) => {
     rawContractState(request: QueryRawContractStateRequest): Promise<QueryRawContractStateResponseSDKType>;
     smartContractState(request: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponseSDKType>;
     code(request: QueryCodeRequest): Promise<QueryCodeResponseSDKType>;
-    codes(request: QueryCodesRequest): Promise<QueryCodesResponseSDKType>;
-    pinnedCodes(request: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponseSDKType>;
+    codes(request?: QueryCodesRequest): Promise<QueryCodesResponseSDKType>;
+    pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponseSDKType>;
 };
