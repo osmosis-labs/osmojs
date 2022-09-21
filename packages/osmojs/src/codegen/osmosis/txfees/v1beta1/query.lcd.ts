@@ -1,14 +1,18 @@
 import { LCDClient } from "@osmonauts/lcd";
 import { QueryFeeTokensRequest, QueryFeeTokensResponseSDKType, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponseSDKType, QueryDenomPoolIdRequest, QueryDenomPoolIdResponseSDKType, QueryBaseDenomRequest, QueryBaseDenomResponseSDKType } from "./query";
-export class LCDQueryClient extends LCDClient {
+export class LCDQueryClient {
+  req: LCDClient;
+
   constructor({
-    restEndpoint
+    requestClient
   }: {
-    restEndpoint: string;
+    requestClient: LCDClient;
   }) {
-    super({
-      restEndpoint
-    });
+    this.req = requestClient;
+    this.feeTokens = this.feeTokens.bind(this);
+    this.denomSpotPrice = this.denomSpotPrice.bind(this);
+    this.denomPoolId = this.denomPoolId.bind(this);
+    this.baseDenom = this.baseDenom.bind(this);
   }
   /* FeeTokens returns a list of all the whitelisted fee tokens and their
   corresponding pools It does not include the BaseDenom, which has its own
@@ -17,7 +21,7 @@ export class LCDQueryClient extends LCDClient {
 
   async feeTokens(_params: QueryFeeTokensRequest = {}): Promise<QueryFeeTokensResponseSDKType> {
     const endpoint = `osmosis/txfees/v1beta1/fee_tokens`;
-    return await this.get<QueryFeeTokensResponseSDKType>(endpoint);
+    return await this.req.get<QueryFeeTokensResponseSDKType>(endpoint);
   }
   /* DenomSpotPrice */
 
@@ -32,21 +36,21 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `osmosis/txfees/v1beta1/spot_price_by_denom`;
-    return await this.get<QueryDenomSpotPriceResponseSDKType>(endpoint, options);
+    return await this.req.get<QueryDenomSpotPriceResponseSDKType>(endpoint, options);
   }
   /* DenomPoolId */
 
 
   async denomPoolId(params: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponseSDKType> {
     const endpoint = `osmosis/txfees/v1beta1/denom_pool_id/${params.denom}`;
-    return await this.get<QueryDenomPoolIdResponseSDKType>(endpoint);
+    return await this.req.get<QueryDenomPoolIdResponseSDKType>(endpoint);
   }
   /* BaseDenom */
 
 
   async baseDenom(_params: QueryBaseDenomRequest = {}): Promise<QueryBaseDenomResponseSDKType> {
     const endpoint = `osmosis/txfees/v1beta1/base_denom`;
-    return await this.get<QueryBaseDenomResponseSDKType>(endpoint);
+    return await this.req.get<QueryBaseDenomResponseSDKType>(endpoint);
   }
 
 }

@@ -1,8 +1,9 @@
 import { LCDClient } from "@osmonauts/lcd";
 import { QueryGaugeIdsRequest, QueryGaugeIdsResponseSDKType, QueryDistrInfoRequest, QueryDistrInfoResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryLockableDurationsRequest, QueryLockableDurationsResponseSDKType, QueryIncentivizedPoolsRequest, QueryIncentivizedPoolsResponseSDKType, QueryExternalIncentiveGaugesRequest, QueryExternalIncentiveGaugesResponseSDKType } from "./query";
-export declare class LCDQueryClient extends LCDClient {
-    constructor({ restEndpoint }: {
-        restEndpoint: string;
+export declare class LCDQueryClient {
+    req: LCDClient;
+    constructor({ requestClient }: {
+        requestClient: LCDClient;
     });
     gaugeIds(params: QueryGaugeIdsRequest): Promise<QueryGaugeIdsResponseSDKType>;
     distrInfo(_params?: QueryDistrInfoRequest): Promise<QueryDistrInfoResponseSDKType>;

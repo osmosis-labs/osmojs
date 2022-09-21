@@ -1,22 +1,30 @@
 import { setPaginationParams } from "@osmonauts/helpers";
 import { LCDClient } from "@osmonauts/lcd";
 import { QueryProposalRequest, QueryProposalResponseSDKType, QueryProposalsRequest, QueryProposalsResponseSDKType, QueryVoteRequest, QueryVoteResponseSDKType, QueryVotesRequest, QueryVotesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDepositRequest, QueryDepositResponseSDKType, QueryDepositsRequest, QueryDepositsResponseSDKType, QueryTallyResultRequest, QueryTallyResultResponseSDKType } from "./query";
-export class LCDQueryClient extends LCDClient {
+export class LCDQueryClient {
+  req: LCDClient;
+
   constructor({
-    restEndpoint
+    requestClient
   }: {
-    restEndpoint: string;
+    requestClient: LCDClient;
   }) {
-    super({
-      restEndpoint
-    });
+    this.req = requestClient;
+    this.proposal = this.proposal.bind(this);
+    this.proposals = this.proposals.bind(this);
+    this.vote = this.vote.bind(this);
+    this.votes = this.votes.bind(this);
+    this.params = this.params.bind(this);
+    this.deposit = this.deposit.bind(this);
+    this.deposits = this.deposits.bind(this);
+    this.tallyResult = this.tallyResult.bind(this);
   }
   /* Proposal queries proposal details based on ProposalID. */
 
 
   async proposal(params: QueryProposalRequest): Promise<QueryProposalResponseSDKType> {
     const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}`;
-    return await this.get<QueryProposalResponseSDKType>(endpoint);
+    return await this.req.get<QueryProposalResponseSDKType>(endpoint);
   }
   /* Proposals queries all proposals based on given status. */
 
@@ -43,14 +51,14 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/gov/v1beta1/proposals`;
-    return await this.get<QueryProposalsResponseSDKType>(endpoint, options);
+    return await this.req.get<QueryProposalsResponseSDKType>(endpoint, options);
   }
   /* Vote queries voted information based on proposalID, voterAddr. */
 
 
   async vote(params: QueryVoteRequest): Promise<QueryVoteResponseSDKType> {
     const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}votes/${params.voter}`;
-    return await this.get<QueryVoteResponseSDKType>(endpoint);
+    return await this.req.get<QueryVoteResponseSDKType>(endpoint);
   }
   /* Votes queries votes of a given proposal. */
 
@@ -65,21 +73,21 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}/votes`;
-    return await this.get<QueryVotesResponseSDKType>(endpoint, options);
+    return await this.req.get<QueryVotesResponseSDKType>(endpoint, options);
   }
   /* Params queries all parameters of the gov module. */
 
 
   async params(params: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
     const endpoint = `cosmos/gov/v1beta1/params/${params.paramsType}`;
-    return await this.get<QueryParamsResponseSDKType>(endpoint);
+    return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
   /* Deposit queries single deposit information based proposalID, depositAddr. */
 
 
   async deposit(params: QueryDepositRequest): Promise<QueryDepositResponseSDKType> {
     const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}deposits/${params.depositor}`;
-    return await this.get<QueryDepositResponseSDKType>(endpoint);
+    return await this.req.get<QueryDepositResponseSDKType>(endpoint);
   }
   /* Deposits queries all deposits of a single proposal. */
 
@@ -94,14 +102,14 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}/deposits`;
-    return await this.get<QueryDepositsResponseSDKType>(endpoint, options);
+    return await this.req.get<QueryDepositsResponseSDKType>(endpoint, options);
   }
   /* TallyResult queries the tally of a proposal vote. */
 
 
   async tallyResult(params: QueryTallyResultRequest): Promise<QueryTallyResultResponseSDKType> {
     const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}/tally`;
-    return await this.get<QueryTallyResultResponseSDKType>(endpoint);
+    return await this.req.get<QueryTallyResultResponseSDKType>(endpoint);
   }
 
 }

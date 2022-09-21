@@ -1,22 +1,25 @@
 import { setPaginationParams } from "@osmonauts/helpers";
 import { LCDClient } from "@osmonauts/lcd";
 import { QueryAllowanceRequest, QueryAllowanceResponseSDKType, QueryAllowancesRequest, QueryAllowancesResponseSDKType, QueryAllowancesByGranterRequest, QueryAllowancesByGranterResponseSDKType } from "./query";
-export class LCDQueryClient extends LCDClient {
+export class LCDQueryClient {
+  req: LCDClient;
+
   constructor({
-    restEndpoint
+    requestClient
   }: {
-    restEndpoint: string;
+    requestClient: LCDClient;
   }) {
-    super({
-      restEndpoint
-    });
+    this.req = requestClient;
+    this.allowance = this.allowance.bind(this);
+    this.allowances = this.allowances.bind(this);
+    this.allowancesByGranter = this.allowancesByGranter.bind(this);
   }
   /* Allowance returns fee granted to the grantee by the granter. */
 
 
   async allowance(params: QueryAllowanceRequest): Promise<QueryAllowanceResponseSDKType> {
     const endpoint = `cosmos/feegrant/v1beta1/allowance/${params.granter}/${params.grantee}`;
-    return await this.get<QueryAllowanceResponseSDKType>(endpoint);
+    return await this.req.get<QueryAllowanceResponseSDKType>(endpoint);
   }
   /* Allowances returns all the grants for address. */
 
@@ -31,7 +34,7 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/feegrant/v1beta1/allowances/${params.grantee}`;
-    return await this.get<QueryAllowancesResponseSDKType>(endpoint, options);
+    return await this.req.get<QueryAllowancesResponseSDKType>(endpoint, options);
   }
   /* AllowancesByGranter returns all the grants given by an address
   Since v0.46 */
@@ -47,7 +50,7 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/feegrant/v1beta1/issued/${params.granter}`;
-    return await this.get<QueryAllowancesByGranterResponseSDKType>(endpoint, options);
+    return await this.req.get<QueryAllowancesByGranterResponseSDKType>(endpoint, options);
   }
 
 }

@@ -1,22 +1,25 @@
 import { setPaginationParams } from "@osmonauts/helpers";
 import { LCDClient } from "@osmonauts/lcd";
 import { QueryDenomTraceRequest, QueryDenomTraceResponseSDKType, QueryDenomTracesRequest, QueryDenomTracesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType } from "./query";
-export class LCDQueryClient extends LCDClient {
+export class LCDQueryClient {
+  req: LCDClient;
+
   constructor({
-    restEndpoint
+    requestClient
   }: {
-    restEndpoint: string;
+    requestClient: LCDClient;
   }) {
-    super({
-      restEndpoint
-    });
+    this.req = requestClient;
+    this.denomTrace = this.denomTrace.bind(this);
+    this.denomTraces = this.denomTraces.bind(this);
+    this.params = this.params.bind(this);
   }
   /* DenomTrace queries a denomination trace information. */
 
 
   async denomTrace(params: QueryDenomTraceRequest): Promise<QueryDenomTraceResponseSDKType> {
     const endpoint = `ibc/apps/transfer/v1/denom_traces/${params.hash}`;
-    return await this.get<QueryDenomTraceResponseSDKType>(endpoint);
+    return await this.req.get<QueryDenomTraceResponseSDKType>(endpoint);
   }
   /* DenomTraces queries all denomination traces. */
 
@@ -33,14 +36,14 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `ibc/apps/transfer/v1/denom_traces`;
-    return await this.get<QueryDenomTracesResponseSDKType>(endpoint, options);
+    return await this.req.get<QueryDenomTracesResponseSDKType>(endpoint, options);
   }
   /* Params queries all parameters of the ibc-transfer module. */
 
 
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const endpoint = `ibc/apps/transfer/v1/params`;
-    return await this.get<QueryParamsResponseSDKType>(endpoint);
+    return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
 
 }

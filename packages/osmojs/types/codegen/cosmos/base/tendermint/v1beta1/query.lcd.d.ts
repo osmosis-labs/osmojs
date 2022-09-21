@@ -1,8 +1,9 @@
 import { LCDClient } from "@osmonauts/lcd";
 import { GetNodeInfoRequest, GetNodeInfoResponseSDKType, GetSyncingRequest, GetSyncingResponseSDKType, GetLatestBlockRequest, GetLatestBlockResponseSDKType, GetBlockByHeightRequest, GetBlockByHeightResponseSDKType, GetLatestValidatorSetRequest, GetLatestValidatorSetResponseSDKType, GetValidatorSetByHeightRequest, GetValidatorSetByHeightResponseSDKType } from "./query";
-export declare class LCDQueryClient extends LCDClient {
-    constructor({ restEndpoint }: {
-        restEndpoint: string;
+export declare class LCDQueryClient {
+    req: LCDClient;
+    constructor({ requestClient }: {
+        requestClient: LCDClient;
     });
     getNodeInfo(_params?: GetNodeInfoRequest): Promise<GetNodeInfoResponseSDKType>;
     getSyncing(_params?: GetSyncingRequest): Promise<GetSyncingResponseSDKType>;
