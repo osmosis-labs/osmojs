@@ -27,9 +27,9 @@ describe("AminoTypes", () => {
         type: "osmosis/gamm/join-pool",
         value: {
           sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
-          poolId: "3",
-          shareOutAmount: "1000",
-          tokenInMaxs: [
+          pool_id: "3",
+          share_out_amount: "1000",
+          token_in_maxs: [
             coin(1234, "uosmo")
           ]
 
@@ -63,15 +63,15 @@ describe("AminoTypes", () => {
           sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
           routes: [
             {
-              poolId: "1",
-              tokenOutDenom: "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+              pool_id: "1",
+              token_out_denom: "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
             }
           ],
-          tokenIn: {
+          token_in: {
             denom: 'uosmo',
             amount: '25652'
           },
-          tokenOutMinAmount: '6036'
+          token_out_min_amount: '6036'
         },
       };
       expect(aminoMsg).toEqual(expected);
@@ -84,9 +84,9 @@ describe("AminoTypes", () => {
         type: "osmosis/gamm/join-pool",
         value: {
           sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
-          poolId: "3",
-          shareOutAmount: "1000",
-          tokenInMaxs: [
+          pool_id: "3",
+          share_out_amount: "1000",
+          token_in_maxs: [
             coin(1234, "uosmo")
           ]
         },
@@ -112,15 +112,15 @@ describe("AminoTypes", () => {
           sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
           routes: [
             {
-              poolId: "1",
-              tokenOutDenom: "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+              pool_id: "1",
+              token_out_denom: "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
             }
           ],
-          tokenIn: {
+          token_in: {
             denom: 'uosmo',
             amount: '25652'
           },
-          tokenOutMinAmount: '6036'
+          token_out_min_amount: '6036'
         },
       };
       const msg = new AminoTypes({ ...AminoConverter }).fromAmino(aminoMsg);
@@ -138,6 +138,7 @@ describe("AminoTypes", () => {
         },
         tokenOutMinAmount: '6036'
       };
+      // console.log(JSON.stringify({ msg, expectedValue }, null, 2));
       expect(msg).toEqual({
         typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountIn",
         value: expectedValue,

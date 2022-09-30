@@ -2,10 +2,10 @@
 
 exports[`AminoConverter 1`] = `
 {
-  "poolId": "606",
+  "pool_id": "606",
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
-  "shareOutAmount": "101010101",
-  "tokenInMaxs": [
+  "share_out_amount": "101010101",
+  "token_in_maxs": [
     {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
@@ -42,10 +42,10 @@ exports[`AminoConverter 2`] = `
 
 exports[`AminoConverter 3`] = `
 {
-  "poolId": "606",
+  "pool_id": "606",
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
-  "shareOutAmount": "101010101",
-  "tokenInMaxs": [
+  "share_out_amount": "101010101",
+  "token_in_maxs": [
     {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
@@ -62,16 +62,16 @@ exports[`AminoConverter.MsgSwapExactAmountIn 1`] = `
 {
   "routes": [
     {
-      "poolId": "606",
-      "tokenOutDenom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+      "pool_id": "606",
+      "token_out_denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
   ],
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
-  "tokenIn": {
+  "token_in": {
     "amount": "10248",
     "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
   },
-  "tokenOutMinAmount": "1000000",
+  "token_out_min_amount": "1000000",
 }
 `;
 
@@ -100,25 +100,25 @@ exports[`AminoConverter.MsgSwapExactAmountIn 3`] = `
 {
   "routes": [
     {
-      "poolId": "606",
-      "tokenOutDenom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+      "pool_id": "606",
+      "token_out_denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
     },
   ],
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
-  "tokenIn": {
+  "token_in": {
     "amount": "10248",
     "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
   },
-  "tokenOutMinAmount": "1000000",
+  "token_out_min_amount": "1000000",
 }
 `;
 
 exports[`AminoConverter.scoped 1`] = `
 {
-  "poolId": "606",
+  "pool_id": "606",
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
-  "shareOutAmount": "101010101",
-  "tokenInMaxs": [
+  "share_out_amount": "101010101",
+  "token_in_maxs": [
     {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
@@ -155,10 +155,10 @@ exports[`AminoConverter.scoped 2`] = `
 
 exports[`AminoConverter.scoped 3`] = `
 {
-  "poolId": "606",
+  "pool_id": "606",
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
-  "shareOutAmount": "101010101",
-  "tokenInMaxs": [
+  "share_out_amount": "101010101",
+  "token_in_maxs": [
     {
       "amount": "10248",
       "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
