@@ -9,19 +9,19 @@ export interface Query {
   /*GaugeIds takes the pool id and returns the matching gauge ids and durations*/
 
   distrInfo(request?: QueryDistrInfoRequest): Promise<QueryDistrInfoResponseSDKType>;
-  /*null*/
+  /*DistrInfo returns the pool's matching gauge ids and weights.*/
 
   params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-  /*null*/
+  /*Params returns pool incentives params.*/
 
   lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
-  /*null*/
+  /*LockableDurations returns lock durations for pools.*/
 
   incentivizedPools(request?: QueryIncentivizedPoolsRequest): Promise<QueryIncentivizedPoolsResponseSDKType>;
-  /*null*/
+  /*IncentivizedPools returns currently incentivized pools*/
 
   externalIncentiveGauges(request?: QueryExternalIncentiveGaugesRequest): Promise<QueryExternalIncentiveGaugesResponseSDKType>;
-  /*null*/
+  /*ExternalIncentiveGauges returns external incentive gauges.*/
 
 }
 export class QueryClientImpl implements Query {

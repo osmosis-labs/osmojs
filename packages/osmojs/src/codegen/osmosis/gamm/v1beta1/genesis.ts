@@ -16,6 +16,8 @@ export interface ParamsSDKType {
 
 export interface GenesisState {
   pools: Any[];
+  /** will be renamed to next_pool_id in an upcoming version */
+
   nextPoolNumber: Long;
   params: Params;
 }
@@ -23,6 +25,8 @@ export interface GenesisState {
 
 export interface GenesisStateSDKType {
   pools: AnySDKType[];
+  /** will be renamed to next_pool_id in an upcoming version */
+
   next_pool_number: Long;
   params: ParamsSDKType;
 }

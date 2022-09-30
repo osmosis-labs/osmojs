@@ -3659,10 +3659,10 @@
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@0.33.0":
-  version "0.33.0"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.33.0.tgz#1b6418067acc824fb28aecf958abf09dd13a057d"
-  integrity sha512-Lu9uT0cF4kqxaxoIA4kZFnmhr90EYmOZQYhINy1GmWiRx2QOFk/s14k08T6HRYjPBmh2przu3P+t+NsNs3T0xA==
+"@osmonauts/telescope@0.33.2":
+  version "0.33.2"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.33.2.tgz#7407ae5a08c3e0e58fbc323b64d4cbc8d2d565e4"
+  integrity sha512-Ldtxuks9F4rbCdjgpQ3v1n7dk7nAegTHaHjlisVTxaxX+myVvGexEcHJVtvqWU7l5O1MakgtLbp+X1+Rgjkf4Q==
   dependencies:
     "@babel/core" "7.18.13"
     "@babel/generator" "7.18.13"
@@ -3821,10 +3821,10 @@
     "@protobufs/google" "^0.0.10"
     "@protobufs/tendermint" "^0.0.10"
 
-"@protobufs/osmosis@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.npmjs.org/@protobufs/osmosis/-/osmosis-0.0.12.tgz#ec23f1491929736b2efca811639173b10c66364f"
-  integrity sha512-PzzKez45qDZOhA36CceLrEwMIc98btuXSrfqwolquoC95AS1wqp9FC/jnSNpTcWAKz8vj6EPf0sVsA5RqV23/Q==
+"@protobufs/osmosis@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@protobufs/osmosis/-/osmosis-0.1.0.tgz#2f511d40d4b3722992cc281c07ae6bffb2cd9e60"
+  integrity sha512-lYukVrtBBC6yN5nDLFHcD7vGDeMGvntmZsY3PRz7Fwt3+f5rr0e8TPmrv5ZP8UxnIBUv4KdWZUhFCZysggcGAA==
   dependencies:
     "@protobufs/cosmos" "^0.0.11"
     "@protobufs/gogoproto" "^0.0.10"

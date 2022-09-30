@@ -18,10 +18,12 @@ export interface QueryGaugeIdsResponseSDKType {
 export interface QueryGaugeIdsResponse_GaugeIdWithDuration {
     gaugeId: Long;
     duration: Duration;
+    gaugeIncentivePercentage: string;
 }
 export interface QueryGaugeIdsResponse_GaugeIdWithDurationSDKType {
     gauge_id: Long;
     duration: DurationSDKType;
+    gauge_incentive_percentage: string;
 }
 export interface QueryDistrInfoRequest {
 }

@@ -1,39 +1,45 @@
 import { PoolParams, PoolParamsSDKType } from "./stableswap_pool";
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
+/** ===================== MsgCreatePool */
 export interface MsgCreateStableswapPool {
     sender: string;
     poolParams: PoolParams;
     initialPoolLiquidity: Coin[];
+    scalingFactors: Long[];
     futurePoolGovernor: string;
 }
+/** ===================== MsgCreatePool */
 export interface MsgCreateStableswapPoolSDKType {
     sender: string;
-    poolParams: PoolParamsSDKType;
+    pool_params: PoolParamsSDKType;
     initial_pool_liquidity: CoinSDKType[];
+    scaling_factors: Long[];
     future_pool_governor: string;
 }
+/** Returns a poolID with custom poolName. */
 export interface MsgCreateStableswapPoolResponse {
     poolId: Long;
 }
+/** Returns a poolID with custom poolName. */
 export interface MsgCreateStableswapPoolResponseSDKType {
     pool_id: Long;
 }
+/**
+ * Sender must be the pool's scaling_factor_governor in order for the tx to
+ * succeed. Adjusts stableswap scaling factors.
+ */
 export interface MsgStableSwapAdjustScalingFactors {
-    /**
-     * Sender must be the pool's scaling_factor_governor in order for the tx to
-     * succeed
-     */
     sender: string;
     poolId: Long;
     scalingFactors: Long[];
 }
+/**
+ * Sender must be the pool's scaling_factor_governor in order for the tx to
+ * succeed. Adjusts stableswap scaling factors.
+ */
 export interface MsgStableSwapAdjustScalingFactorsSDKType {
-    /**
-     * Sender must be the pool's scaling_factor_governor in order for the tx to
-     * succeed
-     */
     sender: string;
     pool_id: Long;
     scaling_factors: Long[];

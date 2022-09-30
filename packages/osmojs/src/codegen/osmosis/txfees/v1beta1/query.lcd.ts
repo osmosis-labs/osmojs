@@ -15,7 +15,7 @@ export class LCDQueryClient {
     this.baseDenom = this.baseDenom.bind(this);
   }
   /* FeeTokens returns a list of all the whitelisted fee tokens and their
-  corresponding pools It does not include the BaseDenom, which has its own
+  corresponding pools. It does not include the BaseDenom, which has its own
   query endpoint */
 
 
@@ -23,7 +23,7 @@ export class LCDQueryClient {
     const endpoint = `osmosis/txfees/v1beta1/fee_tokens`;
     return await this.req.get<QueryFeeTokensResponseSDKType>(endpoint);
   }
-  /* DenomSpotPrice */
+  /* DenomSpotPrice returns all spot prices by each registered token denom. */
 
 
   async denomSpotPrice(params: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponseSDKType> {
@@ -38,14 +38,14 @@ export class LCDQueryClient {
     const endpoint = `osmosis/txfees/v1beta1/spot_price_by_denom`;
     return await this.req.get<QueryDenomSpotPriceResponseSDKType>(endpoint, options);
   }
-  /* DenomPoolId */
+  /* Returns the poolID for a specified denom input. */
 
 
   async denomPoolId(params: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponseSDKType> {
     const endpoint = `osmosis/txfees/v1beta1/denom_pool_id/${params.denom}`;
     return await this.req.get<QueryDenomPoolIdResponseSDKType>(endpoint);
   }
-  /* BaseDenom */
+  /* Returns a list of all base denom tokens and their corresponding pools. */
 
 
   async baseDenom(_params: QueryBaseDenomRequest = {}): Promise<QueryBaseDenomResponseSDKType> {

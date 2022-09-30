@@ -12,7 +12,7 @@ export interface QueryPoolRequest {
 /** =============================== Pool */
 
 export interface QueryPoolRequestSDKType {
-  poolId: Long;
+  pool_id: Long;
 }
 export interface QueryPoolResponse {
   pool: Any;
@@ -54,7 +54,23 @@ export interface QueryNumPoolsResponse {
   numPools: Long;
 }
 export interface QueryNumPoolsResponseSDKType {
-  numPools: Long;
+  num_pools: Long;
+}
+/** =============================== PoolType */
+
+export interface QueryPoolTypeRequest {
+  poolId: Long;
+}
+/** =============================== PoolType */
+
+export interface QueryPoolTypeRequestSDKType {
+  pool_id: Long;
+}
+export interface QueryPoolTypeResponse {
+  poolType: string;
+}
+export interface QueryPoolTypeResponseSDKType {
+  pool_type: string;
 }
 /** =============================== PoolParams */
 
@@ -64,7 +80,7 @@ export interface QueryPoolParamsRequest {
 /** =============================== PoolParams */
 
 export interface QueryPoolParamsRequestSDKType {
-  poolId: Long;
+  pool_id: Long;
 }
 export interface QueryPoolParamsResponse {
   params: Any;
@@ -80,7 +96,7 @@ export interface QueryTotalPoolLiquidityRequest {
 /** =============================== PoolLiquidity */
 
 export interface QueryTotalPoolLiquidityRequestSDKType {
-  poolId: Long;
+  pool_id: Long;
 }
 export interface QueryTotalPoolLiquidityResponse {
   liquidity: Coin[];
@@ -96,13 +112,13 @@ export interface QueryTotalSharesRequest {
 /** =============================== TotalShares */
 
 export interface QueryTotalSharesRequestSDKType {
-  poolId: Long;
+  pool_id: Long;
 }
 export interface QueryTotalSharesResponse {
   totalShares: Coin;
 }
 export interface QueryTotalSharesResponseSDKType {
-  totalShares: CoinSDKType;
+  total_shares: CoinSDKType;
 }
 /**
  * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
@@ -120,7 +136,7 @@ export interface QuerySpotPriceRequest {
  */
 
 export interface QuerySpotPriceRequestSDKType {
-  poolId: Long;
+  pool_id: Long;
   base_asset_denom?: string;
   quote_asset_denom?: string;
 }
@@ -140,7 +156,7 @@ export interface QuerySpotPriceResponse {
 
 export interface QuerySpotPriceResponseSDKType {
   /** String of the Dec. Ex) 10.203uatom */
-  spotPrice: string;
+  spot_price: string;
 }
 /** =============================== EstimateSwapExactAmountIn */
 
@@ -154,15 +170,15 @@ export interface QuerySwapExactAmountInRequest {
 
 export interface QuerySwapExactAmountInRequestSDKType {
   sender?: string;
-  poolId: Long;
-  tokenIn?: string;
+  pool_id: Long;
+  token_in?: string;
   routes?: SwapAmountInRouteSDKType[];
 }
 export interface QuerySwapExactAmountInResponse {
   tokenOutAmount: string;
 }
 export interface QuerySwapExactAmountInResponseSDKType {
-  tokenOutAmount: string;
+  token_out_amount: string;
 }
 /** =============================== EstimateSwapExactAmountOut */
 
@@ -176,15 +192,15 @@ export interface QuerySwapExactAmountOutRequest {
 
 export interface QuerySwapExactAmountOutRequestSDKType {
   sender?: string;
-  poolId: Long;
+  pool_id: Long;
   routes?: SwapAmountOutRouteSDKType[];
-  tokenOut?: string;
+  token_out?: string;
 }
 export interface QuerySwapExactAmountOutResponse {
   tokenInAmount: string;
 }
 export interface QuerySwapExactAmountOutResponseSDKType {
-  tokenInAmount: string;
+  token_in_amount: string;
 }
 export interface QueryTotalLiquidityRequest {}
 export interface QueryTotalLiquidityRequestSDKType {}
@@ -459,6 +475,96 @@ export const QueryNumPoolsResponse = {
   fromPartial(object: DeepPartial<QueryNumPoolsResponse>): QueryNumPoolsResponse {
     const message = createBaseQueryNumPoolsResponse();
     message.numPools = object.numPools !== undefined && object.numPools !== null ? Long.fromValue(object.numPools) : Long.UZERO;
+    return message;
+  }
+
+};
+
+function createBaseQueryPoolTypeRequest(): QueryPoolTypeRequest {
+  return {
+    poolId: Long.UZERO
+  };
+}
+
+export const QueryPoolTypeRequest = {
+  encode(message: QueryPoolTypeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryPoolTypeRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = (reader.uint64() as Long);
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<QueryPoolTypeRequest>): QueryPoolTypeRequest {
+    const message = createBaseQueryPoolTypeRequest();
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    return message;
+  }
+
+};
+
+function createBaseQueryPoolTypeResponse(): QueryPoolTypeResponse {
+  return {
+    poolType: ""
+  };
+}
+
+export const QueryPoolTypeResponse = {
+  encode(message: QueryPoolTypeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.poolType !== "") {
+      writer.uint32(10).string(message.poolType);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponseSDKType {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryPoolTypeResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.poolType = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<QueryPoolTypeResponse>): QueryPoolTypeResponse {
+    const message = createBaseQueryPoolTypeResponse();
+    message.poolType = object.poolType ?? "";
     return message;
   }
 

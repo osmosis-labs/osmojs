@@ -18,8 +18,8 @@ export interface PoolParams {
  * The pool's token holders are specified in future_pool_governor.
  */
 export interface PoolParamsSDKType {
-    swapFee: string;
-    exitFee: string;
+    swap_fee: string;
+    exit_fee: string;
 }
 /** Pool is the stableswap Pool struct */
 export interface Pool {
@@ -50,7 +50,7 @@ export interface Pool {
 export interface PoolSDKType {
     address: string;
     id: Long;
-    poolParams: PoolParamsSDKType;
+    pool_params: PoolParamsSDKType;
     /**
      * This string specifies who will govern the pool in the future.
      * Valid forms of this are:
@@ -63,9 +63,9 @@ export interface PoolSDKType {
      */
     future_pool_governor: string;
     /** sum of all LP shares */
-    totalShares: CoinSDKType;
+    total_shares: CoinSDKType;
     /** assets in the pool */
-    poolLiquidity: CoinSDKType[];
+    pool_liquidity: CoinSDKType[];
     /** for calculation amognst assets with different precisions */
     scaling_factor: Long[];
     /** scaling_factor_governor is the address can adjust pool scaling factors */

@@ -4,33 +4,39 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the mint module's genesis state. */
 
 export interface GenesisState {
-  /** minter is a space for holding current rewards information. */
+  /** minter is an abstraction for holding current rewards information. */
   minter: Minter;
-  /** params defines all the paramaters of the module. */
+  /** params defines all the paramaters of the mint module. */
 
   params: Params;
-  /** current halven period start epoch */
+  /**
+   * reduction_started_epoch is the first epoch in which the reduction of mint
+   * begins.
+   */
 
-  halvenStartedEpoch: Long;
+  reductionStartedEpoch: Long;
 }
 /** GenesisState defines the mint module's genesis state. */
 
 export interface GenesisStateSDKType {
-  /** minter is a space for holding current rewards information. */
+  /** minter is an abstraction for holding current rewards information. */
   minter: MinterSDKType;
-  /** params defines all the paramaters of the module. */
+  /** params defines all the paramaters of the mint module. */
 
   params: ParamsSDKType;
-  /** current halven period start epoch */
+  /**
+   * reduction_started_epoch is the first epoch in which the reduction of mint
+   * begins.
+   */
 
-  halven_started_epoch: Long;
+  reduction_started_epoch: Long;
 }
 
 function createBaseGenesisState(): GenesisState {
   return {
     minter: undefined,
     params: undefined,
-    halvenStartedEpoch: Long.ZERO
+    reductionStartedEpoch: Long.ZERO
   };
 }
 
@@ -44,8 +50,8 @@ export const GenesisState = {
       Params.encode(message.params, writer.uint32(18).fork()).ldelim();
     }
 
-    if (!message.halvenStartedEpoch.isZero()) {
-      writer.uint32(24).int64(message.halvenStartedEpoch);
+    if (!message.reductionStartedEpoch.isZero()) {
+      writer.uint32(24).int64(message.reductionStartedEpoch);
     }
 
     return writer;
@@ -69,7 +75,7 @@ export const GenesisState = {
           break;
 
         case 3:
-          message.halvenStartedEpoch = (reader.int64() as Long);
+          message.reductionStartedEpoch = (reader.int64() as Long);
           break;
 
         default:
@@ -85,7 +91,7 @@ export const GenesisState = {
     const message = createBaseGenesisState();
     message.minter = object.minter !== undefined && object.minter !== null ? Minter.fromPartial(object.minter) : undefined;
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.halvenStartedEpoch = object.halvenStartedEpoch !== undefined && object.halvenStartedEpoch !== null ? Long.fromValue(object.halvenStartedEpoch) : Long.ZERO;
+    message.reductionStartedEpoch = object.reductionStartedEpoch !== undefined && object.reductionStartedEpoch !== null ? Long.fromValue(object.reductionStartedEpoch) : Long.ZERO;
     return message;
   }
 

@@ -95,7 +95,7 @@ export interface MsgUnPoolWhitelistedPoolResponse {
   exitedLockIds: Long[];
 }
 export interface MsgUnPoolWhitelistedPoolResponseSDKType {
-  exitedLockIds: Long[];
+  exited_lock_ids: Long[];
 }
 
 function createBaseMsgSuperfluidDelegate(): MsgSuperfluidDelegate {

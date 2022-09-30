@@ -77,7 +77,7 @@ export interface SmoothWeightChangeParamsSDKType {
    * here.
    */
 
-  initialPoolWeights: PoolAssetSDKType[];
+  initial_pool_weights: PoolAssetSDKType[];
   /**
    * The target pool weights. The pool weights will change linearly with respect
    * to time between start_time, and start_time + duration. The amount
@@ -85,7 +85,7 @@ export interface SmoothWeightChangeParamsSDKType {
    * refactorings should just have a type with the denom & weight here.
    */
 
-  targetPoolWeights: PoolAssetSDKType[];
+  target_pool_weights: PoolAssetSDKType[];
 }
 /**
  * PoolParams defined the parameters that will be managed by the pool
@@ -107,9 +107,9 @@ export interface PoolParams {
  */
 
 export interface PoolParamsSDKType {
-  swapFee: string;
-  exitFee: string;
-  smoothWeightChangeParams?: SmoothWeightChangeParamsSDKType;
+  swap_fee: string;
+  exit_fee: string;
+  smooth_weight_change_params?: SmoothWeightChangeParamsSDKType;
 }
 /**
  * Pool asset is an internal struct that combines the amount of the
@@ -178,7 +178,7 @@ export interface Pool {
 export interface PoolSDKType {
   address: string;
   id: Long;
-  poolParams: PoolParamsSDKType;
+  pool_params: PoolParamsSDKType;
   /**
    * This string specifies who will govern the pool in the future.
    * Valid forms of this are:
@@ -194,16 +194,16 @@ export interface PoolSDKType {
   future_pool_governor: string;
   /** sum of all LP tokens sent out */
 
-  totalShares: CoinSDKType;
+  total_shares: CoinSDKType;
   /**
    * These are assumed to be sorted by denomiation.
    * They contain the pool asset and the information about the weight
    */
 
-  poolAssets: PoolAssetSDKType[];
+  pool_assets: PoolAssetSDKType[];
   /** sum of all non-normalized pool weights */
 
-  totalWeight: string;
+  total_weight: string;
 }
 
 function createBaseSmoothWeightChangeParams(): SmoothWeightChangeParams {

@@ -1,11 +1,12 @@
 import { Rpc } from "@osmonauts/helpers";
-import { MsgCreateDenom, MsgCreateDenomResponseSDKType, MsgMint, MsgMintResponseSDKType, MsgBurn, MsgBurnResponseSDKType, MsgChangeAdmin, MsgChangeAdminResponseSDKType } from "./tx";
+import { MsgCreateDenom, MsgCreateDenomResponseSDKType, MsgMint, MsgMintResponseSDKType, MsgBurn, MsgBurnResponseSDKType, MsgChangeAdmin, MsgChangeAdminResponseSDKType, MsgSetDenomMetadata, MsgSetDenomMetadataResponseSDKType } from "./tx";
 /** Msg defines the RPC service */
 export interface Msg {
     createDenom(request: MsgCreateDenom): Promise<MsgCreateDenomResponseSDKType>;
     mint(request: MsgMint): Promise<MsgMintResponseSDKType>;
     burn(request: MsgBurn): Promise<MsgBurnResponseSDKType>;
     changeAdmin(request: MsgChangeAdmin): Promise<MsgChangeAdminResponseSDKType>;
+    setDenomMetadata(request: MsgSetDenomMetadata): Promise<MsgSetDenomMetadataResponseSDKType>;
 }
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
@@ -14,4 +15,5 @@ export declare class MsgClientImpl implements Msg {
     mint(request: MsgMint): Promise<MsgMintResponseSDKType>;
     burn(request: MsgBurn): Promise<MsgBurnResponseSDKType>;
     changeAdmin(request: MsgChangeAdmin): Promise<MsgChangeAdminResponseSDKType>;
+    setDenomMetadata(request: MsgSetDenomMetadata): Promise<MsgSetDenomMetadataResponseSDKType>;
 }

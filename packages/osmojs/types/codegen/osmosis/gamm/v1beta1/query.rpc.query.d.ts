@@ -1,12 +1,13 @@
 import { Rpc } from "@osmonauts/helpers";
 import { QueryClient } from "@cosmjs/stargate";
-import { QueryPoolsRequest, QueryPoolsResponseSDKType, QueryNumPoolsRequest, QueryNumPoolsResponseSDKType, QueryTotalLiquidityRequest, QueryTotalLiquidityResponseSDKType, QueryPoolRequest, QueryPoolResponseSDKType, QueryPoolParamsRequest, QueryPoolParamsResponseSDKType, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponseSDKType, QueryTotalSharesRequest, QueryTotalSharesResponseSDKType, QuerySpotPriceRequest, QuerySpotPriceResponseSDKType, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponseSDKType, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponseSDKType } from "./query";
+import { QueryPoolsRequest, QueryPoolsResponseSDKType, QueryNumPoolsRequest, QueryNumPoolsResponseSDKType, QueryTotalLiquidityRequest, QueryTotalLiquidityResponseSDKType, QueryPoolRequest, QueryPoolResponseSDKType, QueryPoolTypeRequest, QueryPoolTypeResponseSDKType, QueryPoolParamsRequest, QueryPoolParamsResponseSDKType, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponseSDKType, QueryTotalSharesRequest, QueryTotalSharesResponseSDKType, QuerySpotPriceRequest, QuerySpotPriceResponseSDKType, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponseSDKType, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponseSDKType } from "./query";
 /** Query defines the RPC service */
 export interface Query {
     pools(request?: QueryPoolsRequest): Promise<QueryPoolsResponseSDKType>;
     numPools(request?: QueryNumPoolsRequest): Promise<QueryNumPoolsResponseSDKType>;
     totalLiquidity(request?: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponseSDKType>;
     pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType>;
+    poolType(request: QueryPoolTypeRequest): Promise<QueryPoolTypeResponseSDKType>;
     poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponseSDKType>;
     totalPoolLiquidity(request: QueryTotalPoolLiquidityRequest): Promise<QueryTotalPoolLiquidityResponseSDKType>;
     totalShares(request: QueryTotalSharesRequest): Promise<QueryTotalSharesResponseSDKType>;
@@ -21,6 +22,7 @@ export declare class QueryClientImpl implements Query {
     numPools(request?: QueryNumPoolsRequest): Promise<QueryNumPoolsResponseSDKType>;
     totalLiquidity(request?: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponseSDKType>;
     pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType>;
+    poolType(request: QueryPoolTypeRequest): Promise<QueryPoolTypeResponseSDKType>;
     poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponseSDKType>;
     totalPoolLiquidity(request: QueryTotalPoolLiquidityRequest): Promise<QueryTotalPoolLiquidityResponseSDKType>;
     totalShares(request: QueryTotalSharesRequest): Promise<QueryTotalSharesResponseSDKType>;
@@ -33,6 +35,7 @@ export declare const createRpcQueryExtension: (base: QueryClient) => {
     numPools(request?: QueryNumPoolsRequest): Promise<QueryNumPoolsResponseSDKType>;
     totalLiquidity(request?: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponseSDKType>;
     pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType>;
+    poolType(request: QueryPoolTypeRequest): Promise<QueryPoolTypeResponseSDKType>;
     poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponseSDKType>;
     totalPoolLiquidity(request: QueryTotalPoolLiquidityRequest): Promise<QueryTotalPoolLiquidityResponseSDKType>;
     totalShares(request: QueryTotalSharesRequest): Promise<QueryTotalSharesResponseSDKType>;

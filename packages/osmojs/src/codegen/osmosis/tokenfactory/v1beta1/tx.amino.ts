@@ -1,6 +1,6 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "@osmonauts/helpers";
-import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin } from "./tx";
+import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
 export interface AminoMsgCreateDenom extends AminoMsg {
   type: "osmosis/tokenfactory/create-denom";
   value: {
@@ -33,7 +33,27 @@ export interface AminoMsgChangeAdmin extends AminoMsg {
   value: {
     sender: string;
     denom: string;
-    newAdmin: string;
+    new_admin: string;
+  };
+}
+export interface AminoMsgSetDenomMetadata extends AminoMsg {
+  type: "osmosis/tokenfactory/set-denom-metadata";
+  value: {
+    sender: string;
+    metadata: {
+      description: string;
+      denom_units: {
+        denom: string;
+        exponent: number;
+        aliases: string[];
+      }[];
+      base: string;
+      display: string;
+      name: string;
+      symbol: string;
+      uri: string;
+      uri_hash: string;
+    };
   };
 }
 export const AminoConverter = {
@@ -122,18 +142,65 @@ export const AminoConverter = {
       return {
         sender,
         denom,
-        newAdmin
+        new_admin: newAdmin
       };
     },
     fromAmino: ({
       sender,
       denom,
-      newAdmin
+      new_admin
     }: AminoMsgChangeAdmin["value"]): MsgChangeAdmin => {
       return {
         sender,
         denom,
-        newAdmin
+        newAdmin: new_admin
+      };
+    }
+  },
+  "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata": {
+    aminoType: "osmosis/tokenfactory/set-denom-metadata",
+    toAmino: ({
+      sender,
+      metadata
+    }: MsgSetDenomMetadata): AminoMsgSetDenomMetadata["value"] => {
+      return {
+        sender,
+        metadata: {
+          description: metadata.description,
+          denom_units: metadata.denomUnits.map(el0 => ({
+            denom: el0.denom,
+            exponent: el0.exponent,
+            aliases: el0.aliases
+          })),
+          base: metadata.base,
+          display: metadata.display,
+          name: metadata.name,
+          symbol: metadata.symbol,
+          uri: metadata.uri,
+          uri_hash: metadata.uriHash
+        }
+      };
+    },
+    fromAmino: ({
+      sender,
+      metadata
+    }: AminoMsgSetDenomMetadata["value"]): MsgSetDenomMetadata => {
+      return {
+        sender,
+        metadata: {
+          description: metadata.description,
+          denomUnits: metadata.denom_units.map(el1 => ({
+            denom: el1.denom,
+            exponent: el1.exponent,
+            aliases: el1.aliases
+          })),
+          base: metadata.base,
+          display: metadata.display,
+          name: metadata.name,
+          symbol: metadata.symbol,
+          uri: metadata.uri,
+          uriHash: metadata.uri_hash
+        }
       };
     }
   }

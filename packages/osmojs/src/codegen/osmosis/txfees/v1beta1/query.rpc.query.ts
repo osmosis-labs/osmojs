@@ -7,17 +7,17 @@ import { QueryFeeTokensRequest, QueryFeeTokensResponse, QueryFeeTokensResponseSD
 export interface Query {
   feeTokens(request?: QueryFeeTokensRequest): Promise<QueryFeeTokensResponseSDKType>;
   /*FeeTokens returns a list of all the whitelisted fee tokens and their
-  corresponding pools It does not include the BaseDenom, which has its own
+  corresponding pools. It does not include the BaseDenom, which has its own
   query endpoint*/
 
   denomSpotPrice(request: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponseSDKType>;
-  /*null*/
+  /*DenomSpotPrice returns all spot prices by each registered token denom.*/
 
   denomPoolId(request: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponseSDKType>;
-  /*null*/
+  /*Returns the poolID for a specified denom input.*/
 
   baseDenom(request?: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType>;
-  /*null*/
+  /*Returns a list of all base denom tokens and their corresponding pools.*/
 
 }
 export class QueryClientImpl implements Query {

@@ -41,6 +41,22 @@ export interface DistrRecordSDKType {
   gauge_id: Long;
   weight: string;
 }
+export interface PoolToGauge {
+  poolId: Long;
+  gaugeId: Long;
+  duration: Duration;
+}
+export interface PoolToGaugeSDKType {
+  pool_id: Long;
+  gauge_id: Long;
+  duration: DurationSDKType;
+}
+export interface PoolToGauges {
+  poolToGauge: PoolToGauge[];
+}
+export interface PoolToGaugesSDKType {
+  pool_to_gauge: PoolToGaugeSDKType[];
+}
 
 function createBaseParams(): Params {
   return {
@@ -237,6 +253,116 @@ export const DistrRecord = {
     const message = createBaseDistrRecord();
     message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     message.weight = object.weight ?? "";
+    return message;
+  }
+
+};
+
+function createBasePoolToGauge(): PoolToGauge {
+  return {
+    poolId: Long.UZERO,
+    gaugeId: Long.UZERO,
+    duration: undefined
+  };
+}
+
+export const PoolToGauge = {
+  encode(message: PoolToGauge, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
+    }
+
+    if (!message.gaugeId.isZero()) {
+      writer.uint32(16).uint64(message.gaugeId);
+    }
+
+    if (message.duration !== undefined) {
+      Duration.encode(message.duration, writer.uint32(26).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauge {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePoolToGauge();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = (reader.uint64() as Long);
+          break;
+
+        case 2:
+          message.gaugeId = (reader.uint64() as Long);
+          break;
+
+        case 3:
+          message.duration = Duration.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<PoolToGauge>): PoolToGauge {
+    const message = createBasePoolToGauge();
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
+    message.duration = object.duration ?? undefined;
+    return message;
+  }
+
+};
+
+function createBasePoolToGauges(): PoolToGauges {
+  return {
+    poolToGauge: []
+  };
+}
+
+export const PoolToGauges = {
+  encode(message: PoolToGauges, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.poolToGauge) {
+      PoolToGauge.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauges {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePoolToGauges();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 2:
+          message.poolToGauge.push(PoolToGauge.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<PoolToGauges>): PoolToGauges {
+    const message = createBasePoolToGauges();
+    message.poolToGauge = object.poolToGauge?.map(e => PoolToGauge.fromPartial(e)) || [];
     return message;
   }
 

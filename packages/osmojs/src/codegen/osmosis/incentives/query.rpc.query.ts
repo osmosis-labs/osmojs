@@ -6,36 +6,39 @@ import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, Module
 
 export interface Query {
   moduleToDistributeCoins(request?: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponseSDKType>;
-  /*returns coins that is going to be distributed*/
+  /*ModuleToDistributeCoins returns coins that are going to be distributed*/
 
   moduleDistributedCoins(request?: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponseSDKType>;
-  /*returns coins that are distributed by module so far*/
+  /*ModuleDistributedCoins returns coins that are distributed by the module so
+  far*/
 
   gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponseSDKType>;
-  /*returns Gauge by id*/
+  /*GaugeByID returns gauges by their respective ID*/
 
   gauges(request?: GaugesRequest): Promise<GaugesResponseSDKType>;
-  /*returns gauges both upcoming and active*/
+  /*Gauges returns both upcoming and active gauges*/
 
   activeGauges(request?: ActiveGaugesRequest): Promise<ActiveGaugesResponseSDKType>;
-  /*returns active gauges*/
+  /*ActiveGauges returns active gauges*/
 
   activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponseSDKType>;
-  /*returns active gauges per denom*/
+  /*ActiveGaugesPerDenom returns active gauges by denom*/
 
   upcomingGauges(request?: UpcomingGaugesRequest): Promise<UpcomingGaugesResponseSDKType>;
-  /*returns scheduled gauges*/
+  /*Returns scheduled gauges that have not yet occured*/
 
   upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponseSDKType>;
-  /*returns scheduled gauges per denom*/
+  /*UpcomingGaugesPerDenom returns scheduled gauges that have not yet occured
+  by denom*/
 
   rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponseSDKType>;
-  /*RewardsEst returns an estimate of the rewards at a future specific time.
-  The querier either provides an address or a set of locks
-  for which they want to find the associated rewards.*/
+  /*RewardsEst returns an estimate of the rewards from now until a specified
+  time in the future The querier either provides an address or a set of locks
+  for which they want to find the associated rewards*/
 
   lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponseSDKType>;
-  /*returns lockable durations that are valid to give incentives*/
+  /*LockableDurations returns lockable durations that are valid to distribute
+  incentives for*/
 
 }
 export class QueryClientImpl implements Query {

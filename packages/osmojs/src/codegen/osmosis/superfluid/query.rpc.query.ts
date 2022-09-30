@@ -1,41 +1,42 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryParamsResponseSDKType, AssetTypeRequest, AssetTypeResponse, AssetTypeResponseSDKType, AllAssetsRequest, AllAssetsResponse, AllAssetsResponseSDKType, AssetMultiplierRequest, AssetMultiplierResponse, AssetMultiplierResponseSDKType, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, AllIntermediaryAccountsResponseSDKType, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, ConnectedIntermediaryAccountResponseSDKType, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, TotalSuperfluidDelegationsResponseSDKType, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationAmountResponseSDKType, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidDelegationsByDelegatorResponseSDKType, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorResponseSDKType, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, SuperfluidDelegationsByValidatorDenomResponseSDKType, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryParamsResponseSDKType, AssetTypeRequest, AssetTypeResponse, AssetTypeResponseSDKType, AllAssetsRequest, AllAssetsResponse, AllAssetsResponseSDKType, AssetMultiplierRequest, AssetMultiplierResponse, AssetMultiplierResponseSDKType, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, AllIntermediaryAccountsResponseSDKType, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, ConnectedIntermediaryAccountResponseSDKType, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, TotalSuperfluidDelegationsResponseSDKType, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationAmountResponseSDKType, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidDelegationsByDelegatorResponseSDKType, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorResponseSDKType, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, SuperfluidDelegationsByValidatorDenomResponseSDKType, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse, QueryTotalDelegationByDelegatorResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
 export interface Query {
   params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-  /*Params returns the total set of minting parameters.*/
+  /*Params returns the total set of superfluid parameters.*/
 
   assetType(request: AssetTypeRequest): Promise<AssetTypeResponseSDKType>;
-  /*Returns superfluid asset type*/
+  /*Returns superfluid asset type, whether if it's a native asset or an lp
+  share.*/
 
   allAssets(request?: AllAssetsRequest): Promise<AllAssetsResponseSDKType>;
-  /*Returns all superfluid asset types*/
+  /*Returns all registered superfluid assets.*/
 
   assetMultiplier(request: AssetMultiplierRequest): Promise<AssetMultiplierResponseSDKType>;
-  /*Returns superfluid asset Multiplier*/
+  /*Returns the osmo equivalent multiplier used in the most recent epoch.*/
 
   allIntermediaryAccounts(request?: AllIntermediaryAccountsRequest): Promise<AllIntermediaryAccountsResponseSDKType>;
-  /*Returns all superfluid intermediary account*/
+  /*Returns all superfluid intermediary accounts.*/
 
   connectedIntermediaryAccount(request: ConnectedIntermediaryAccountRequest): Promise<ConnectedIntermediaryAccountResponseSDKType>;
   /*Returns intermediary account connected to a superfluid staked lock by id*/
 
   totalSuperfluidDelegations(request?: TotalSuperfluidDelegationsRequest): Promise<TotalSuperfluidDelegationsResponseSDKType>;
-  /*Returns the total amount of osmo superfluidly staked
-  response denominated in uosmo*/
+  /*Returns the total amount of osmo superfluidly staked.
+  Response is denominated in uosmo.*/
 
   superfluidDelegationAmount(request: SuperfluidDelegationAmountRequest): Promise<SuperfluidDelegationAmountResponseSDKType>;
-  /*Returns the coins superfluid delegated for a delegator, validator, denom
+  /*Returns the coins superfluid delegated for the delegator, validator, denom
   triplet*/
 
   superfluidDelegationsByDelegator(request: SuperfluidDelegationsByDelegatorRequest): Promise<SuperfluidDelegationsByDelegatorResponseSDKType>;
-  /*Returns all the superfluid poistions for a specific delegator*/
+  /*Returns all the delegated superfluid poistions for a specific delegator.*/
 
   superfluidUndelegationsByDelegator(request: SuperfluidUndelegationsByDelegatorRequest): Promise<SuperfluidUndelegationsByDelegatorResponseSDKType>;
-  /*null*/
+  /*Returns all the undelegating superfluid poistions for a specific delegator.*/
 
   superfluidDelegationsByValidatorDenom(request: SuperfluidDelegationsByValidatorDenomRequest): Promise<SuperfluidDelegationsByValidatorDenomResponseSDKType>;
   /*Returns all the superfluid positions of a specific denom delegated to one
@@ -45,6 +46,9 @@ export interface Query {
   /*Returns the amount of a specific denom delegated to a specific validator
   This is labeled an estimate, because the way it calculates the amount can
   lead rounding errors from the true delegated amount*/
+
+  totalDelegationByDelegator(request: QueryTotalDelegationByDelegatorRequest): Promise<QueryTotalDelegationByDelegatorResponseSDKType>;
+  /*Returns the specified delegations for a specific delegator*/
 
 }
 export class QueryClientImpl implements Query {
@@ -64,6 +68,7 @@ export class QueryClientImpl implements Query {
     this.superfluidUndelegationsByDelegator = this.superfluidUndelegationsByDelegator.bind(this);
     this.superfluidDelegationsByValidatorDenom = this.superfluidDelegationsByValidatorDenom.bind(this);
     this.estimateSuperfluidDelegatedAmountByValidatorDenom = this.estimateSuperfluidDelegatedAmountByValidatorDenom.bind(this);
+    this.totalDelegationByDelegator = this.totalDelegationByDelegator.bind(this);
   }
 
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
@@ -140,6 +145,12 @@ export class QueryClientImpl implements Query {
     return promise.then(data => EstimateSuperfluidDelegatedAmountByValidatorDenomResponse.decode(new _m0.Reader(data)));
   }
 
+  totalDelegationByDelegator(request: QueryTotalDelegationByDelegatorRequest): Promise<QueryTotalDelegationByDelegatorResponseSDKType> {
+    const data = QueryTotalDelegationByDelegatorRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.superfluid.Query", "TotalDelegationByDelegator", data);
+    return promise.then(data => QueryTotalDelegationByDelegatorResponse.decode(new _m0.Reader(data)));
+  }
+
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -191,6 +202,10 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     estimateSuperfluidDelegatedAmountByValidatorDenom(request: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType> {
       return queryService.estimateSuperfluidDelegatedAmountByValidatorDenom(request);
+    },
+
+    totalDelegationByDelegator(request: QueryTotalDelegationByDelegatorRequest): Promise<QueryTotalDelegationByDelegatorResponseSDKType> {
+      return queryService.totalDelegationByDelegator(request);
     }
 
   };

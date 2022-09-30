@@ -1,6 +1,6 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.tokenfactory.v1beta1.MsgCreateDenom", MsgCreateDenom], ["/osmosis.tokenfactory.v1beta1.MsgMint", MsgMint], ["/osmosis.tokenfactory.v1beta1.MsgBurn", MsgBurn], ["/osmosis.tokenfactory.v1beta1.MsgChangeAdmin", MsgChangeAdmin]];
+import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.tokenfactory.v1beta1.MsgCreateDenom", MsgCreateDenom], ["/osmosis.tokenfactory.v1beta1.MsgMint", MsgMint], ["/osmosis.tokenfactory.v1beta1.MsgBurn", MsgBurn], ["/osmosis.tokenfactory.v1beta1.MsgChangeAdmin", MsgChangeAdmin], ["/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata", MsgSetDenomMetadata]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -34,6 +34,13 @@ export const MessageComposer = {
         typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin",
         value: MsgChangeAdmin.encode(value).finish()
       };
+    },
+
+    setDenomMetadata(value: MsgSetDenomMetadata) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata",
+        value: MsgSetDenomMetadata.encode(value).finish()
+      };
     }
 
   },
@@ -62,6 +69,13 @@ export const MessageComposer = {
     changeAdmin(value: MsgChangeAdmin) {
       return {
         typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin",
+        value
+      };
+    },
+
+    setDenomMetadata(value: MsgSetDenomMetadata) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata",
         value
       };
     }
@@ -93,6 +107,13 @@ export const MessageComposer = {
       return {
         typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin",
         value: MsgChangeAdmin.fromPartial(value)
+      };
+    },
+
+    setDenomMetadata(value: MsgSetDenomMetadata) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata",
+        value: MsgSetDenomMetadata.fromPartial(value)
       };
     }
 

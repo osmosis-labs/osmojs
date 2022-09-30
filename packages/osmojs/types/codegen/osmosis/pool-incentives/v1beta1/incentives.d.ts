@@ -41,6 +41,22 @@ export interface DistrRecordSDKType {
     gauge_id: Long;
     weight: string;
 }
+export interface PoolToGauge {
+    poolId: Long;
+    gaugeId: Long;
+    duration: Duration;
+}
+export interface PoolToGaugeSDKType {
+    pool_id: Long;
+    gauge_id: Long;
+    duration: DurationSDKType;
+}
+export interface PoolToGauges {
+    poolToGauge: PoolToGauge[];
+}
+export interface PoolToGaugesSDKType {
+    pool_to_gauge: PoolToGaugeSDKType[];
+}
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
@@ -60,4 +76,14 @@ export declare const DistrRecord: {
     encode(message: DistrRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrRecord;
     fromPartial(object: DeepPartial<DistrRecord>): DistrRecord;
+};
+export declare const PoolToGauge: {
+    encode(message: PoolToGauge, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauge;
+    fromPartial(object: DeepPartial<PoolToGauge>): PoolToGauge;
+};
+export declare const PoolToGauges: {
+    encode(message: PoolToGauges, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauges;
+    fromPartial(object: DeepPartial<PoolToGauges>): PoolToGauges;
 };

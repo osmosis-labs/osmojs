@@ -9,11 +9,6 @@ export const createLCDClient = async ({
   });
   return {
     cosmos: {
-      auth: {
-        v1beta1: new (await import("./auth/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
       authz: {
         v1beta1: new (await import("./authz/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
@@ -24,25 +19,8 @@ export const createLCDClient = async ({
           requestClient
         })
       },
-      base: {
-        tendermint: {
-          v1beta1: new (await import("./base/tendermint/v1beta1/query.lcd")).LCDQueryClient({
-            requestClient
-          })
-        }
-      },
       distribution: {
         v1beta1: new (await import("./distribution/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      evidence: {
-        v1beta1: new (await import("./evidence/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      feegrant: {
-        v1beta1: new (await import("./feegrant/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
@@ -51,26 +29,6 @@ export const createLCDClient = async ({
           requestClient
         }),
         v1beta1: new (await import("./gov/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      mint: {
-        v1beta1: new (await import("./mint/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      nft: {
-        v1beta1: new (await import("./nft/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      params: {
-        v1beta1: new (await import("./params/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      slashing: {
-        v1beta1: new (await import("./slashing/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

@@ -8,7 +8,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface DenomAuthorityMetadata {
   /** Can be empty for no admin, or a valid osmosis address */
-  Admin: string;
+  admin: string;
 }
 /**
  * DenomAuthorityMetadata specifies metadata for addresses that have specific
@@ -18,19 +18,19 @@ export interface DenomAuthorityMetadata {
 
 export interface DenomAuthorityMetadataSDKType {
   /** Can be empty for no admin, or a valid osmosis address */
-  Admin: string;
+  admin: string;
 }
 
 function createBaseDenomAuthorityMetadata(): DenomAuthorityMetadata {
   return {
-    Admin: ""
+    admin: ""
   };
 }
 
 export const DenomAuthorityMetadata = {
   encode(message: DenomAuthorityMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.Admin !== "") {
-      writer.uint32(10).string(message.Admin);
+    if (message.admin !== "") {
+      writer.uint32(10).string(message.admin);
     }
 
     return writer;
@@ -46,7 +46,7 @@ export const DenomAuthorityMetadata = {
 
       switch (tag >>> 3) {
         case 1:
-          message.Admin = reader.string();
+          message.admin = reader.string();
           break;
 
         default:
@@ -60,7 +60,7 @@ export const DenomAuthorityMetadata = {
 
   fromPartial(object: DeepPartial<DenomAuthorityMetadata>): DenomAuthorityMetadata {
     const message = createBaseDenomAuthorityMetadata();
-    message.Admin = object.Admin ?? "";
+    message.admin = object.admin ?? "";
     return message;
   }
 

@@ -18,10 +18,12 @@ export interface QueryGaugeIdsResponseSDKType {
 export interface QueryGaugeIdsResponse_GaugeIdWithDuration {
   gaugeId: Long;
   duration: Duration;
+  gaugeIncentivePercentage: string;
 }
 export interface QueryGaugeIdsResponse_GaugeIdWithDurationSDKType {
   gauge_id: Long;
   duration: DurationSDKType;
+  gauge_incentive_percentage: string;
 }
 export interface QueryDistrInfoRequest {}
 export interface QueryDistrInfoRequestSDKType {}
@@ -167,7 +169,8 @@ export const QueryGaugeIdsResponse = {
 function createBaseQueryGaugeIdsResponse_GaugeIdWithDuration(): QueryGaugeIdsResponse_GaugeIdWithDuration {
   return {
     gaugeId: Long.UZERO,
-    duration: undefined
+    duration: undefined,
+    gaugeIncentivePercentage: ""
   };
 }
 
@@ -179,6 +182,10 @@ export const QueryGaugeIdsResponse_GaugeIdWithDuration = {
 
     if (message.duration !== undefined) {
       Duration.encode(message.duration, writer.uint32(18).fork()).ldelim();
+    }
+
+    if (message.gaugeIncentivePercentage !== "") {
+      writer.uint32(26).string(message.gaugeIncentivePercentage);
     }
 
     return writer;
@@ -201,6 +208,10 @@ export const QueryGaugeIdsResponse_GaugeIdWithDuration = {
           message.duration = Duration.decode(reader, reader.uint32());
           break;
 
+        case 3:
+          message.gaugeIncentivePercentage = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -214,6 +225,7 @@ export const QueryGaugeIdsResponse_GaugeIdWithDuration = {
     const message = createBaseQueryGaugeIdsResponse_GaugeIdWithDuration();
     message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     message.duration = object.duration ?? undefined;
+    message.gaugeIncentivePercentage = object.gaugeIncentivePercentage ?? "";
     return message;
   }
 

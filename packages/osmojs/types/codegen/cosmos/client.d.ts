@@ -1,75 +1,6 @@
 import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 export declare const cosmosAminoConverters: {
-    "/cosmos.vesting.v1beta1.MsgCreateVestingAccount": {
-        aminoType: string;
-        toAmino: ({ fromAddress, toAddress, amount, endTime, delayed }: import("./vesting/v1beta1/tx").MsgCreateVestingAccount) => {
-            from_address: string;
-            to_address: string;
-            amount: {
-                denom: string;
-                amount: string;
-            }[];
-            end_time: string;
-            delayed: boolean;
-        };
-        fromAmino: ({ from_address, to_address, amount, end_time, delayed }: {
-            from_address: string;
-            to_address: string;
-            amount: {
-                denom: string;
-                amount: string;
-            }[];
-            end_time: string;
-            delayed: boolean;
-        }) => import("./vesting/v1beta1/tx").MsgCreateVestingAccount;
-    };
-    "/cosmos.vesting.v1beta1.MsgCreatePermanentLockedAccount": {
-        aminoType: string;
-        toAmino: ({ fromAddress, toAddress, amount }: import("./vesting/v1beta1/tx").MsgCreatePermanentLockedAccount) => {
-            from_address: string;
-            to_address: string;
-            amount: {
-                denom: string;
-                amount: string;
-            }[];
-        };
-        fromAmino: ({ from_address, to_address, amount }: {
-            from_address: string;
-            to_address: string;
-            amount: {
-                denom: string;
-                amount: string;
-            }[];
-        }) => import("./vesting/v1beta1/tx").MsgCreatePermanentLockedAccount;
-    };
-    "/cosmos.vesting.v1beta1.MsgCreatePeriodicVestingAccount": {
-        aminoType: string;
-        toAmino: ({ fromAddress, toAddress, startTime, vestingPeriods }: import("./vesting/v1beta1/tx").MsgCreatePeriodicVestingAccount) => {
-            from_address: string;
-            to_address: string;
-            start_time: string;
-            vesting_periods: {
-                length: string;
-                amount: {
-                    denom: string;
-                    amount: string;
-                }[];
-            }[];
-        };
-        fromAmino: ({ from_address, to_address, start_time, vesting_periods }: {
-            from_address: string;
-            to_address: string;
-            start_time: string;
-            vesting_periods: {
-                length: string;
-                amount: {
-                    denom: string;
-                    amount: string;
-                }[];
-            }[];
-        }) => import("./vesting/v1beta1/tx").MsgCreatePeriodicVestingAccount;
-    };
     "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade": {
         aminoType: string;
         toAmino: ({ authority, plan }: import("./upgrade/v1beta1/tx").MsgSoftwareUpgrade) => {
@@ -253,30 +184,6 @@ export declare const cosmosAminoConverters: {
             };
         }) => import("./staking/v1beta1/tx").MsgUndelegate;
     };
-    "/cosmos.slashing.v1beta1.MsgUnjail": {
-        aminoType: string;
-        toAmino: ({ validatorAddr }: import("./slashing/v1beta1/tx").MsgUnjail) => {
-            validator_addr: string;
-        };
-        fromAmino: ({ validator_addr }: {
-            validator_addr: string;
-        }) => import("./slashing/v1beta1/tx").MsgUnjail;
-    };
-    "/cosmos.nft.v1beta1.MsgSend": {
-        aminoType: string;
-        toAmino: ({ classId, id, sender, receiver }: import("./nft/v1beta1/tx").MsgSend) => {
-            class_id: string;
-            id: string;
-            sender: string;
-            receiver: string;
-        };
-        fromAmino: ({ class_id, id, sender, receiver }: {
-            class_id: string;
-            id: string;
-            sender: string;
-            receiver: string;
-        }) => import("./nft/v1beta1/tx").MsgSend;
-    };
     "/cosmos.gov.v1beta1.MsgSubmitProposal": {
         aminoType: string;
         toAmino: ({ content, initialDeposit, proposer }: import("./gov/v1beta1/tx").MsgSubmitProposal) => {
@@ -452,53 +359,6 @@ export declare const cosmosAminoConverters: {
             }[];
         }) => import("./gov/v1/tx").MsgDeposit;
     };
-    "/cosmos.feegrant.v1beta1.MsgGrantAllowance": {
-        aminoType: string;
-        toAmino: ({ granter, grantee, allowance }: import("./feegrant/v1beta1/tx").MsgGrantAllowance) => {
-            granter: string;
-            grantee: string;
-            allowance: {
-                type_url: string;
-                value: Uint8Array;
-            };
-        };
-        fromAmino: ({ granter, grantee, allowance }: {
-            granter: string;
-            grantee: string;
-            allowance: {
-                type_url: string;
-                value: Uint8Array;
-            };
-        }) => import("./feegrant/v1beta1/tx").MsgGrantAllowance;
-    };
-    "/cosmos.feegrant.v1beta1.MsgRevokeAllowance": {
-        aminoType: string;
-        toAmino: ({ granter, grantee }: import("./feegrant/v1beta1/tx").MsgRevokeAllowance) => {
-            granter: string;
-            grantee: string;
-        };
-        fromAmino: ({ granter, grantee }: {
-            granter: string;
-            grantee: string;
-        }) => import("./feegrant/v1beta1/tx").MsgRevokeAllowance;
-    };
-    "/cosmos.evidence.v1beta1.MsgSubmitEvidence": {
-        aminoType: string;
-        toAmino: ({ submitter, evidence }: import("./evidence/v1beta1/tx").MsgSubmitEvidence) => {
-            submitter: string;
-            evidence: {
-                type_url: string;
-                value: Uint8Array;
-            };
-        };
-        fromAmino: ({ submitter, evidence }: {
-            submitter: string;
-            evidence: {
-                type_url: string;
-                value: Uint8Array;
-            };
-        }) => import("./evidence/v1beta1/tx").MsgSubmitEvidence;
-    };
     "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress": {
         aminoType: string;
         toAmino: ({ delegatorAddress, withdrawAddress }: import("./distribution/v1beta1/tx").MsgSetWithdrawAddress) => {
@@ -546,19 +406,6 @@ export declare const cosmosAminoConverters: {
             }[];
             depositor: string;
         }) => import("./distribution/v1beta1/tx").MsgFundCommunityPool;
-    };
-    "/cosmos.crisis.v1beta1.MsgVerifyInvariant": {
-        aminoType: string;
-        toAmino: ({ sender, invariantModuleName, invariantRoute }: import("./crisis/v1beta1/tx").MsgVerifyInvariant) => {
-            sender: string;
-            invariant_module_name: string;
-            invariant_route: string;
-        };
-        fromAmino: ({ sender, invariant_module_name, invariant_route }: {
-            sender: string;
-            invariant_module_name: string;
-            invariant_route: string;
-        }) => import("./crisis/v1beta1/tx").MsgVerifyInvariant;
     };
     "/cosmos.bank.v1beta1.MsgSend": {
         aminoType: string;

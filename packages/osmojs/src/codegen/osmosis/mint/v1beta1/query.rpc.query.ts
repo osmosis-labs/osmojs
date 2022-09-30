@@ -9,7 +9,7 @@ export interface Query {
   /*Params returns the total set of minting parameters.*/
 
   epochProvisions(request?: QueryEpochProvisionsRequest): Promise<QueryEpochProvisionsResponseSDKType>;
-  /*EpochProvisions current minting epoch provisions value.*/
+  /*EpochProvisions returns the current minting epoch provisions value.*/
 
 }
 export class QueryClientImpl implements Query {

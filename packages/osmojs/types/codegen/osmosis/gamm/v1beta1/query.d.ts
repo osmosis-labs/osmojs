@@ -10,7 +10,7 @@ export interface QueryPoolRequest {
 }
 /** =============================== Pool */
 export interface QueryPoolRequestSDKType {
-    poolId: Long;
+    pool_id: Long;
 }
 export interface QueryPoolResponse {
     pool: Any;
@@ -48,7 +48,21 @@ export interface QueryNumPoolsResponse {
     numPools: Long;
 }
 export interface QueryNumPoolsResponseSDKType {
-    numPools: Long;
+    num_pools: Long;
+}
+/** =============================== PoolType */
+export interface QueryPoolTypeRequest {
+    poolId: Long;
+}
+/** =============================== PoolType */
+export interface QueryPoolTypeRequestSDKType {
+    pool_id: Long;
+}
+export interface QueryPoolTypeResponse {
+    poolType: string;
+}
+export interface QueryPoolTypeResponseSDKType {
+    pool_type: string;
 }
 /** =============================== PoolParams */
 export interface QueryPoolParamsRequest {
@@ -56,7 +70,7 @@ export interface QueryPoolParamsRequest {
 }
 /** =============================== PoolParams */
 export interface QueryPoolParamsRequestSDKType {
-    poolId: Long;
+    pool_id: Long;
 }
 export interface QueryPoolParamsResponse {
     params: Any;
@@ -70,7 +84,7 @@ export interface QueryTotalPoolLiquidityRequest {
 }
 /** =============================== PoolLiquidity */
 export interface QueryTotalPoolLiquidityRequestSDKType {
-    poolId: Long;
+    pool_id: Long;
 }
 export interface QueryTotalPoolLiquidityResponse {
     liquidity: Coin[];
@@ -84,13 +98,13 @@ export interface QueryTotalSharesRequest {
 }
 /** =============================== TotalShares */
 export interface QueryTotalSharesRequestSDKType {
-    poolId: Long;
+    pool_id: Long;
 }
 export interface QueryTotalSharesResponse {
     totalShares: Coin;
 }
 export interface QueryTotalSharesResponseSDKType {
-    totalShares: CoinSDKType;
+    total_shares: CoinSDKType;
 }
 /**
  * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
@@ -106,7 +120,7 @@ export interface QuerySpotPriceRequest {
  * query.
  */
 export interface QuerySpotPriceRequestSDKType {
-    poolId: Long;
+    pool_id: Long;
     base_asset_denom?: string;
     quote_asset_denom?: string;
 }
@@ -124,7 +138,7 @@ export interface QuerySpotPriceResponse {
  */
 export interface QuerySpotPriceResponseSDKType {
     /** String of the Dec. Ex) 10.203uatom */
-    spotPrice: string;
+    spot_price: string;
 }
 /** =============================== EstimateSwapExactAmountIn */
 export interface QuerySwapExactAmountInRequest {
@@ -136,15 +150,15 @@ export interface QuerySwapExactAmountInRequest {
 /** =============================== EstimateSwapExactAmountIn */
 export interface QuerySwapExactAmountInRequestSDKType {
     sender?: string;
-    poolId: Long;
-    tokenIn?: string;
+    pool_id: Long;
+    token_in?: string;
     routes?: SwapAmountInRouteSDKType[];
 }
 export interface QuerySwapExactAmountInResponse {
     tokenOutAmount: string;
 }
 export interface QuerySwapExactAmountInResponseSDKType {
-    tokenOutAmount: string;
+    token_out_amount: string;
 }
 /** =============================== EstimateSwapExactAmountOut */
 export interface QuerySwapExactAmountOutRequest {
@@ -156,15 +170,15 @@ export interface QuerySwapExactAmountOutRequest {
 /** =============================== EstimateSwapExactAmountOut */
 export interface QuerySwapExactAmountOutRequestSDKType {
     sender?: string;
-    poolId: Long;
+    pool_id: Long;
     routes?: SwapAmountOutRouteSDKType[];
-    tokenOut?: string;
+    token_out?: string;
 }
 export interface QuerySwapExactAmountOutResponse {
     tokenInAmount: string;
 }
 export interface QuerySwapExactAmountOutResponseSDKType {
-    tokenInAmount: string;
+    token_in_amount: string;
 }
 export interface QueryTotalLiquidityRequest {
 }
@@ -205,6 +219,16 @@ export declare const QueryNumPoolsResponse: {
     encode(message: QueryNumPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponseSDKType;
     fromPartial(object: DeepPartial<QueryNumPoolsResponse>): QueryNumPoolsResponse;
+};
+export declare const QueryPoolTypeRequest: {
+    encode(message: QueryPoolTypeRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeRequest;
+    fromPartial(object: DeepPartial<QueryPoolTypeRequest>): QueryPoolTypeRequest;
+};
+export declare const QueryPoolTypeResponse: {
+    encode(message: QueryPoolTypeResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponseSDKType;
+    fromPartial(object: DeepPartial<QueryPoolTypeResponse>): QueryPoolTypeResponse;
 };
 export declare const QueryPoolParamsRequest: {
     encode(message: QueryPoolParamsRequest, writer?: _m0.Writer): _m0.Writer;

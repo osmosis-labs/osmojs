@@ -1,14 +1,17 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { Metadata, MetadataSDKType } from "../../../cosmos/bank/v1beta1/bank";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /**
- * MsgCreateDenom is the sdk.Msg type for allowing an account to create
- * a new denom. It requires a sender address and a subdenomination.
- * The (sender_address, sub_denomination) pair must be unique and cannot be
- * re-used. The resulting denom created is `factory/{creator
- * address}/{subdenom}`. The resultant denom's admin is originally set to be the
- * creator, but this can be changed later. The token denom does not indicate the
- * current admin.
+ * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
+ * method. It allows an account to create a new denom. It requires a sender
+ * address and a sub denomination. The (sender_address, sub_denomination) tuple
+ * must be unique and cannot be re-used.
+ * 
+ * The resulting denom created is defined as
+ * <factory/{creatorAddress}/{subdenom}>. The resulting denom's admin is
+ * originally set to be the creator, but this can be changed later. The token
+ * denom does not indicate the current admin.
  */
 
 export interface MsgCreateDenom {
@@ -18,13 +21,15 @@ export interface MsgCreateDenom {
   subdenom: string;
 }
 /**
- * MsgCreateDenom is the sdk.Msg type for allowing an account to create
- * a new denom. It requires a sender address and a subdenomination.
- * The (sender_address, sub_denomination) pair must be unique and cannot be
- * re-used. The resulting denom created is `factory/{creator
- * address}/{subdenom}`. The resultant denom's admin is originally set to be the
- * creator, but this can be changed later. The token denom does not indicate the
- * current admin.
+ * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
+ * method. It allows an account to create a new denom. It requires a sender
+ * address and a sub denomination. The (sender_address, sub_denomination) tuple
+ * must be unique and cannot be re-used.
+ * 
+ * The resulting denom created is defined as
+ * <factory/{creatorAddress}/{subdenom}>. The resulting denom's admin is
+ * originally set to be the creator, but this can be changed later. The token
+ * denom does not indicate the current admin.
  */
 
 export interface MsgCreateDenomSDKType {
@@ -107,10 +112,50 @@ export interface MsgChangeAdmin {
 export interface MsgChangeAdminSDKType {
   sender: string;
   denom: string;
-  newAdmin: string;
+  new_admin: string;
 }
+/**
+ * MsgChangeAdminResponse defines the response structure for an executed
+ * MsgChangeAdmin message.
+ */
+
 export interface MsgChangeAdminResponse {}
+/**
+ * MsgChangeAdminResponse defines the response structure for an executed
+ * MsgChangeAdmin message.
+ */
+
 export interface MsgChangeAdminResponseSDKType {}
+/**
+ * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
+ * the denom's bank metadata
+ */
+
+export interface MsgSetDenomMetadata {
+  sender: string;
+  metadata: Metadata;
+}
+/**
+ * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
+ * the denom's bank metadata
+ */
+
+export interface MsgSetDenomMetadataSDKType {
+  sender: string;
+  metadata: MetadataSDKType;
+}
+/**
+ * MsgSetDenomMetadataResponse defines the response structure for an executed
+ * MsgSetDenomMetadata message.
+ */
+
+export interface MsgSetDenomMetadataResponse {}
+/**
+ * MsgSetDenomMetadataResponse defines the response structure for an executed
+ * MsgSetDenomMetadata message.
+ */
+
+export interface MsgSetDenomMetadataResponseSDKType {}
 
 function createBaseMsgCreateDenom(): MsgCreateDenom {
   return {
@@ -484,6 +529,95 @@ export const MsgChangeAdminResponse = {
 
   fromPartial(_: DeepPartial<MsgChangeAdminResponse>): MsgChangeAdminResponse {
     const message = createBaseMsgChangeAdminResponse();
+    return message;
+  }
+
+};
+
+function createBaseMsgSetDenomMetadata(): MsgSetDenomMetadata {
+  return {
+    sender: "",
+    metadata: undefined
+  };
+}
+
+export const MsgSetDenomMetadata = {
+  encode(message: MsgSetDenomMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+
+    if (message.metadata !== undefined) {
+      Metadata.encode(message.metadata, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetDenomMetadata();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.sender = reader.string();
+          break;
+
+        case 2:
+          message.metadata = Metadata.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<MsgSetDenomMetadata>): MsgSetDenomMetadata {
+    const message = createBaseMsgSetDenomMetadata();
+    message.sender = object.sender ?? "";
+    message.metadata = object.metadata !== undefined && object.metadata !== null ? Metadata.fromPartial(object.metadata) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseMsgSetDenomMetadataResponse(): MsgSetDenomMetadataResponse {
+  return {};
+}
+
+export const MsgSetDenomMetadataResponse = {
+  encode(_: MsgSetDenomMetadataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponseSDKType {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetDenomMetadataResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(_: DeepPartial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse {
+    const message = createBaseMsgSetDenomMetadataResponse();
     return message;
   }
 

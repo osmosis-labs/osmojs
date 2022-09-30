@@ -2,12 +2,18 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** Params holds parameters for the incentives module */
 export interface Params {
-    /** distribution epoch identifier */
+    /**
+     * distr_epoch_identifier is what epoch type distribution will be triggered by
+     * (day, week, etc.)
+     */
     distrEpochIdentifier: string;
 }
 /** Params holds parameters for the incentives module */
 export interface ParamsSDKType {
-    /** distribution epoch identifier */
+    /**
+     * distr_epoch_identifier is what epoch type distribution will be triggered by
+     * (day, week, etc.)
+     */
     distr_epoch_identifier: string;
 }
 export declare const Params: {

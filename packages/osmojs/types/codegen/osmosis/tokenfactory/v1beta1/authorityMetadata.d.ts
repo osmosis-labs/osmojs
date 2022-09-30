@@ -7,7 +7,7 @@ import { DeepPartial } from "@osmonauts/helpers";
  */
 export interface DenomAuthorityMetadata {
     /** Can be empty for no admin, or a valid osmosis address */
-    Admin: string;
+    admin: string;
 }
 /**
  * DenomAuthorityMetadata specifies metadata for addresses that have specific
@@ -16,7 +16,7 @@ export interface DenomAuthorityMetadata {
  */
 export interface DenomAuthorityMetadataSDKType {
     /** Can be empty for no admin, or a valid osmosis address */
-    Admin: string;
+    admin: string;
 }
 export declare const DenomAuthorityMetadata: {
     encode(message: DenomAuthorityMetadata, writer?: _m0.Writer): _m0.Writer;

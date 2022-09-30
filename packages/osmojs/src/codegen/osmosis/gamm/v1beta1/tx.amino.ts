@@ -5,9 +5,9 @@ export interface AminoMsgJoinPool extends AminoMsg {
   type: "osmosis/gamm/join-pool";
   value: {
     sender: string;
-    poolId: string;
-    shareOutAmount: string;
-    tokenInMaxs: {
+    pool_id: string;
+    share_out_amount: string;
+    token_in_maxs: {
       denom: string;
       amount: string;
     }[];
@@ -17,9 +17,9 @@ export interface AminoMsgExitPool extends AminoMsg {
   type: "osmosis/gamm/exit-pool";
   value: {
     sender: string;
-    poolId: string;
-    shareInAmount: string;
-    tokenOutMins: {
+    pool_id: string;
+    share_in_amount: string;
+    token_out_mins: {
       denom: string;
       amount: string;
     }[];
@@ -30,14 +30,14 @@ export interface AminoMsgSwapExactAmountIn extends AminoMsg {
   value: {
     sender: string;
     routes: {
-      poolId: string;
-      tokenOutDenom: string;
+      pool_id: string;
+      token_out_denom: string;
     }[];
-    tokenIn: {
+    token_in: {
       denom: string;
       amount: string;
     };
-    tokenOutMinAmount: string;
+    token_out_min_amount: string;
   };
 }
 export interface AminoMsgSwapExactAmountOut extends AminoMsg {
@@ -45,11 +45,11 @@ export interface AminoMsgSwapExactAmountOut extends AminoMsg {
   value: {
     sender: string;
     routes: {
-      poolId: string;
-      tokenInDenom: string;
+      pool_id: string;
+      token_in_denom: string;
     }[];
-    tokenInMaxAmount: string;
-    tokenOut: {
+    token_in_max_amount: string;
+    token_out: {
       denom: string;
       amount: string;
     };
@@ -59,44 +59,44 @@ export interface AminoMsgJoinSwapExternAmountIn extends AminoMsg {
   type: "osmosis/gamm/join-swap-extern-amount-in";
   value: {
     sender: string;
-    poolId: string;
-    tokenIn: {
+    pool_id: string;
+    token_in: {
       denom: string;
       amount: string;
     };
-    shareOutMinAmount: string;
+    share_out_min_amount: string;
   };
 }
 export interface AminoMsgJoinSwapShareAmountOut extends AminoMsg {
   type: "osmosis/gamm/join-swap-share-amount-out";
   value: {
     sender: string;
-    poolId: string;
-    tokenInDenom: string;
-    shareOutAmount: string;
-    tokenInMaxAmount: string;
+    pool_id: string;
+    token_in_denom: string;
+    share_out_amount: string;
+    token_in_max_amount: string;
   };
 }
 export interface AminoMsgExitSwapExternAmountOut extends AminoMsg {
   type: "osmosis/gamm/exit-swap-extern-amount-out";
   value: {
     sender: string;
-    poolId: string;
-    tokenOut: {
+    pool_id: string;
+    token_out: {
       denom: string;
       amount: string;
     };
-    shareInMaxAmount: string;
+    share_in_max_amount: string;
   };
 }
 export interface AminoMsgExitSwapShareAmountIn extends AminoMsg {
   type: "osmosis/gamm/exit-swap-share-amount-in";
   value: {
     sender: string;
-    poolId: string;
-    tokenOutDenom: string;
-    shareInAmount: string;
-    tokenOutMinAmount: string;
+    pool_id: string;
+    token_out_denom: string;
+    share_in_amount: string;
+    token_out_min_amount: string;
   };
 }
 export const AminoConverter = {
@@ -110,9 +110,9 @@ export const AminoConverter = {
     }: MsgJoinPool): AminoMsgJoinPool["value"] => {
       return {
         sender,
-        poolId: poolId.toString(),
-        shareOutAmount,
-        tokenInMaxs: tokenInMaxs.map(el0 => ({
+        pool_id: poolId.toString(),
+        share_out_amount: shareOutAmount,
+        token_in_maxs: tokenInMaxs.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         }))
@@ -120,15 +120,15 @@ export const AminoConverter = {
     },
     fromAmino: ({
       sender,
-      poolId,
-      shareOutAmount,
-      tokenInMaxs
+      pool_id,
+      share_out_amount,
+      token_in_maxs
     }: AminoMsgJoinPool["value"]): MsgJoinPool => {
       return {
         sender,
-        poolId: Long.fromString(poolId),
-        shareOutAmount,
-        tokenInMaxs: tokenInMaxs.map(el0 => ({
+        poolId: Long.fromString(pool_id),
+        shareOutAmount: share_out_amount,
+        tokenInMaxs: token_in_maxs.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         }))
@@ -145,9 +145,9 @@ export const AminoConverter = {
     }: MsgExitPool): AminoMsgExitPool["value"] => {
       return {
         sender,
-        poolId: poolId.toString(),
-        shareInAmount,
-        tokenOutMins: tokenOutMins.map(el0 => ({
+        pool_id: poolId.toString(),
+        share_in_amount: shareInAmount,
+        token_out_mins: tokenOutMins.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         }))
@@ -155,15 +155,15 @@ export const AminoConverter = {
     },
     fromAmino: ({
       sender,
-      poolId,
-      shareInAmount,
-      tokenOutMins
+      pool_id,
+      share_in_amount,
+      token_out_mins
     }: AminoMsgExitPool["value"]): MsgExitPool => {
       return {
         sender,
-        poolId: Long.fromString(poolId),
-        shareInAmount,
-        tokenOutMins: tokenOutMins.map(el0 => ({
+        poolId: Long.fromString(pool_id),
+        shareInAmount: share_in_amount,
+        tokenOutMins: token_out_mins.map(el0 => ({
           denom: el0.denom,
           amount: el0.amount
         }))
@@ -181,33 +181,33 @@ export const AminoConverter = {
       return {
         sender,
         routes: routes.map(el0 => ({
-          poolId: el0.poolId.toString(),
-          tokenOutDenom: el0.tokenOutDenom
+          pool_id: el0.poolId.toString(),
+          token_out_denom: el0.tokenOutDenom
         })),
-        tokenIn: {
+        token_in: {
           denom: tokenIn.denom,
           amount: Long.fromNumber(tokenIn.amount).toString()
         },
-        tokenOutMinAmount
+        token_out_min_amount: tokenOutMinAmount
       };
     },
     fromAmino: ({
       sender,
       routes,
-      tokenIn,
-      tokenOutMinAmount
+      token_in,
+      token_out_min_amount
     }: AminoMsgSwapExactAmountIn["value"]): MsgSwapExactAmountIn => {
       return {
         sender,
         routes: routes.map(el0 => ({
-          poolId: Long.fromString(el0.poolId),
-          tokenOutDenom: el0.tokenOutDenom
+          poolId: Long.fromString(el0.pool_id),
+          tokenOutDenom: el0.token_out_denom
         })),
         tokenIn: {
-          denom: tokenIn.denom,
-          amount: tokenIn.amount
+          denom: token_in.denom,
+          amount: token_in.amount
         },
-        tokenOutMinAmount
+        tokenOutMinAmount: token_out_min_amount
       };
     }
   },
@@ -222,11 +222,11 @@ export const AminoConverter = {
       return {
         sender,
         routes: routes.map(el0 => ({
-          poolId: el0.poolId.toString(),
-          tokenInDenom: el0.tokenInDenom
+          pool_id: el0.poolId.toString(),
+          token_in_denom: el0.tokenInDenom
         })),
-        tokenInMaxAmount,
-        tokenOut: {
+        token_in_max_amount: tokenInMaxAmount,
+        token_out: {
           denom: tokenOut.denom,
           amount: Long.fromNumber(tokenOut.amount).toString()
         }
@@ -235,19 +235,19 @@ export const AminoConverter = {
     fromAmino: ({
       sender,
       routes,
-      tokenInMaxAmount,
-      tokenOut
+      token_in_max_amount,
+      token_out
     }: AminoMsgSwapExactAmountOut["value"]): MsgSwapExactAmountOut => {
       return {
         sender,
         routes: routes.map(el0 => ({
-          poolId: Long.fromString(el0.poolId),
-          tokenInDenom: el0.tokenInDenom
+          poolId: Long.fromString(el0.pool_id),
+          tokenInDenom: el0.token_in_denom
         })),
-        tokenInMaxAmount,
+        tokenInMaxAmount: token_in_max_amount,
         tokenOut: {
-          denom: tokenOut.denom,
-          amount: tokenOut.amount
+          denom: token_out.denom,
+          amount: token_out.amount
         }
       };
     }
@@ -262,28 +262,28 @@ export const AminoConverter = {
     }: MsgJoinSwapExternAmountIn): AminoMsgJoinSwapExternAmountIn["value"] => {
       return {
         sender,
-        poolId: poolId.toString(),
-        tokenIn: {
+        pool_id: poolId.toString(),
+        token_in: {
           denom: tokenIn.denom,
           amount: Long.fromNumber(tokenIn.amount).toString()
         },
-        shareOutMinAmount
+        share_out_min_amount: shareOutMinAmount
       };
     },
     fromAmino: ({
       sender,
-      poolId,
-      tokenIn,
-      shareOutMinAmount
+      pool_id,
+      token_in,
+      share_out_min_amount
     }: AminoMsgJoinSwapExternAmountIn["value"]): MsgJoinSwapExternAmountIn => {
       return {
         sender,
-        poolId: Long.fromString(poolId),
+        poolId: Long.fromString(pool_id),
         tokenIn: {
-          denom: tokenIn.denom,
-          amount: tokenIn.amount
+          denom: token_in.denom,
+          amount: token_in.amount
         },
-        shareOutMinAmount
+        shareOutMinAmount: share_out_min_amount
       };
     }
   },
@@ -298,25 +298,25 @@ export const AminoConverter = {
     }: MsgJoinSwapShareAmountOut): AminoMsgJoinSwapShareAmountOut["value"] => {
       return {
         sender,
-        poolId: poolId.toString(),
-        tokenInDenom,
-        shareOutAmount,
-        tokenInMaxAmount
+        pool_id: poolId.toString(),
+        token_in_denom: tokenInDenom,
+        share_out_amount: shareOutAmount,
+        token_in_max_amount: tokenInMaxAmount
       };
     },
     fromAmino: ({
       sender,
-      poolId,
-      tokenInDenom,
-      shareOutAmount,
-      tokenInMaxAmount
+      pool_id,
+      token_in_denom,
+      share_out_amount,
+      token_in_max_amount
     }: AminoMsgJoinSwapShareAmountOut["value"]): MsgJoinSwapShareAmountOut => {
       return {
         sender,
-        poolId: Long.fromString(poolId),
-        tokenInDenom,
-        shareOutAmount,
-        tokenInMaxAmount
+        poolId: Long.fromString(pool_id),
+        tokenInDenom: token_in_denom,
+        shareOutAmount: share_out_amount,
+        tokenInMaxAmount: token_in_max_amount
       };
     }
   },
@@ -330,28 +330,28 @@ export const AminoConverter = {
     }: MsgExitSwapExternAmountOut): AminoMsgExitSwapExternAmountOut["value"] => {
       return {
         sender,
-        poolId: poolId.toString(),
-        tokenOut: {
+        pool_id: poolId.toString(),
+        token_out: {
           denom: tokenOut.denom,
           amount: Long.fromNumber(tokenOut.amount).toString()
         },
-        shareInMaxAmount
+        share_in_max_amount: shareInMaxAmount
       };
     },
     fromAmino: ({
       sender,
-      poolId,
-      tokenOut,
-      shareInMaxAmount
+      pool_id,
+      token_out,
+      share_in_max_amount
     }: AminoMsgExitSwapExternAmountOut["value"]): MsgExitSwapExternAmountOut => {
       return {
         sender,
-        poolId: Long.fromString(poolId),
+        poolId: Long.fromString(pool_id),
         tokenOut: {
-          denom: tokenOut.denom,
-          amount: tokenOut.amount
+          denom: token_out.denom,
+          amount: token_out.amount
         },
-        shareInMaxAmount
+        shareInMaxAmount: share_in_max_amount
       };
     }
   },
@@ -366,25 +366,25 @@ export const AminoConverter = {
     }: MsgExitSwapShareAmountIn): AminoMsgExitSwapShareAmountIn["value"] => {
       return {
         sender,
-        poolId: poolId.toString(),
-        tokenOutDenom,
-        shareInAmount,
-        tokenOutMinAmount
+        pool_id: poolId.toString(),
+        token_out_denom: tokenOutDenom,
+        share_in_amount: shareInAmount,
+        token_out_min_amount: tokenOutMinAmount
       };
     },
     fromAmino: ({
       sender,
-      poolId,
-      tokenOutDenom,
-      shareInAmount,
-      tokenOutMinAmount
+      pool_id,
+      token_out_denom,
+      share_in_amount,
+      token_out_min_amount
     }: AminoMsgExitSwapShareAmountIn["value"]): MsgExitSwapShareAmountIn => {
       return {
         sender,
-        poolId: Long.fromString(poolId),
-        tokenOutDenom,
-        shareInAmount,
-        tokenOutMinAmount
+        poolId: Long.fromString(pool_id),
+        tokenOutDenom: token_out_denom,
+        shareInAmount: share_in_amount,
+        tokenOutMinAmount: token_out_min_amount
       };
     }
   }

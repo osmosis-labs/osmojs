@@ -3,6 +3,7 @@ import { Params, ParamsSDKType } from "./params";
 import { SuperfluidAssetType, SuperfluidAssetTypeSDKType, SuperfluidAsset, SuperfluidAssetSDKType, OsmoEquivalentMultiplierRecord, OsmoEquivalentMultiplierRecordSDKType, SuperfluidDelegationRecord, SuperfluidDelegationRecordSDKType } from "./superfluid";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock, SyntheticLockSDKType } from "../lockup/lock";
+import { DelegationResponse, DelegationResponseSDKType } from "../../cosmos/staking/v1beta1/staking";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface QueryParamsRequest {
@@ -97,7 +98,7 @@ export interface TotalSuperfluidDelegationsResponse {
     totalDelegations: string;
 }
 export interface TotalSuperfluidDelegationsResponseSDKType {
-    totalDelegations: string;
+    total_delegations: string;
 }
 export interface SuperfluidDelegationAmountRequest {
     delegatorAddress?: string;
@@ -176,6 +177,24 @@ export interface EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
 }
 export interface EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType {
     total_delegated_coins: CoinSDKType[];
+}
+export interface QueryTotalDelegationByDelegatorRequest {
+    delegatorAddress: string;
+}
+export interface QueryTotalDelegationByDelegatorRequestSDKType {
+    delegator_address: string;
+}
+export interface QueryTotalDelegationByDelegatorResponse {
+    superfluidDelegationRecords: SuperfluidDelegationRecord[];
+    delegationResponse: DelegationResponse[];
+    totalDelegatedCoins: Coin[];
+    totalEquivalentStakedAmount: Coin;
+}
+export interface QueryTotalDelegationByDelegatorResponseSDKType {
+    superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
+    delegation_response: DelegationResponseSDKType[];
+    total_delegated_coins: CoinSDKType[];
+    total_equivalent_staked_amount: CoinSDKType;
 }
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
@@ -301,4 +320,14 @@ export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: 
     encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType;
     fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
+};
+export declare const QueryTotalDelegationByDelegatorRequest: {
+    encode(message: QueryTotalDelegationByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorRequest;
+    fromPartial(object: DeepPartial<QueryTotalDelegationByDelegatorRequest>): QueryTotalDelegationByDelegatorRequest;
+};
+export declare const QueryTotalDelegationByDelegatorResponse: {
+    encode(message: QueryTotalDelegationByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorResponseSDKType;
+    fromPartial(object: DeepPartial<QueryTotalDelegationByDelegatorResponse>): QueryTotalDelegationByDelegatorResponse;
 };

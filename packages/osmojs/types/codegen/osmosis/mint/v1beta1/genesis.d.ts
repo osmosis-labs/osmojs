@@ -3,21 +3,27 @@ import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the mint module's genesis state. */
 export interface GenesisState {
-    /** minter is a space for holding current rewards information. */
+    /** minter is an abstraction for holding current rewards information. */
     minter: Minter;
-    /** params defines all the paramaters of the module. */
+    /** params defines all the paramaters of the mint module. */
     params: Params;
-    /** current halven period start epoch */
-    halvenStartedEpoch: Long;
+    /**
+     * reduction_started_epoch is the first epoch in which the reduction of mint
+     * begins.
+     */
+    reductionStartedEpoch: Long;
 }
 /** GenesisState defines the mint module's genesis state. */
 export interface GenesisStateSDKType {
-    /** minter is a space for holding current rewards information. */
+    /** minter is an abstraction for holding current rewards information. */
     minter: MinterSDKType;
-    /** params defines all the paramaters of the module. */
+    /** params defines all the paramaters of the mint module. */
     params: ParamsSDKType;
-    /** current halven period start epoch */
-    halven_started_epoch: Long;
+    /**
+     * reduction_started_epoch is the first epoch in which the reduction of mint
+     * begins.
+     */
+    reduction_started_epoch: Long;
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

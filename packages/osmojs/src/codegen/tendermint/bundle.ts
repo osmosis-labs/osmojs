@@ -1,32 +1,32 @@
-import * as _170 from "./abci/types";
-import * as _171 from "./crypto/keys";
-import * as _172 from "./crypto/proof";
-import * as _173 from "./libs/bits/types";
-import * as _174 from "./p2p/types";
-import * as _175 from "./types/block";
-import * as _176 from "./types/evidence";
-import * as _177 from "./types/params";
-import * as _178 from "./types/types";
-import * as _179 from "./types/validator";
-import * as _180 from "./version/types";
+import * as _131 from "./abci/types";
+import * as _132 from "./crypto/keys";
+import * as _133 from "./crypto/proof";
+import * as _134 from "./libs/bits/types";
+import * as _135 from "./p2p/types";
+import * as _136 from "./types/block";
+import * as _137 from "./types/evidence";
+import * as _138 from "./types/params";
+import * as _139 from "./types/types";
+import * as _140 from "./types/validator";
+import * as _141 from "./version/types";
 export namespace tendermint {
-  export const abci = { ..._170
+  export const abci = { ..._131
   };
-  export const crypto = { ..._171,
-    ..._172
+  export const crypto = { ..._132,
+    ..._133
   };
   export namespace libs {
-    export const bits = { ..._173
+    export const bits = { ..._134
     };
   }
-  export const p2p = { ..._174
+  export const p2p = { ..._135
   };
-  export const types = { ..._175,
-    ..._176,
-    ..._177,
-    ..._178,
-    ..._179
+  export const types = { ..._136,
+    ..._137,
+    ..._138,
+    ..._139,
+    ..._140
   };
-  export const version = { ..._180
+  export const version = { ..._141
   };
 }

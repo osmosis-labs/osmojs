@@ -1,4 +1,4 @@
-import { Params, ParamsSDKType, DistrInfo, DistrInfoSDKType } from "./incentives";
+import { Params, ParamsSDKType, DistrInfo, DistrInfoSDKType, PoolToGauges, PoolToGaugesSDKType } from "./incentives";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
@@ -9,6 +9,7 @@ export interface GenesisState {
   params: Params;
   lockableDurations: Duration[];
   distrInfo?: DistrInfo;
+  poolToGauges?: PoolToGauges;
 }
 /** GenesisState defines the pool incentives module's genesis state. */
 
@@ -17,13 +18,15 @@ export interface GenesisStateSDKType {
   params: ParamsSDKType;
   lockable_durations: DurationSDKType[];
   distr_info?: DistrInfoSDKType;
+  pool_to_gauges?: PoolToGaugesSDKType;
 }
 
 function createBaseGenesisState(): GenesisState {
   return {
     params: undefined,
     lockableDurations: [],
-    distrInfo: undefined
+    distrInfo: undefined,
+    poolToGauges: undefined
   };
 }
 
@@ -39,6 +42,10 @@ export const GenesisState = {
 
     if (message.distrInfo !== undefined) {
       DistrInfo.encode(message.distrInfo, writer.uint32(26).fork()).ldelim();
+    }
+
+    if (message.poolToGauges !== undefined) {
+      PoolToGauges.encode(message.poolToGauges, writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -65,6 +72,10 @@ export const GenesisState = {
           message.distrInfo = DistrInfo.decode(reader, reader.uint32());
           break;
 
+        case 4:
+          message.poolToGauges = PoolToGauges.decode(reader, reader.uint32());
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -79,6 +90,7 @@ export const GenesisState = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
     message.distrInfo = object.distrInfo !== undefined && object.distrInfo !== null ? DistrInfo.fromPartial(object.distrInfo) : undefined;
+    message.poolToGauges = object.poolToGauges !== undefined && object.poolToGauges !== null ? PoolToGauges.fromPartial(object.poolToGauges) : undefined;
     return message;
   }
 

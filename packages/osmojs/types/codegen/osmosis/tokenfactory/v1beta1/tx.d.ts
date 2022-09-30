@@ -1,14 +1,17 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { Metadata, MetadataSDKType } from "../../../cosmos/bank/v1beta1/bank";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /**
- * MsgCreateDenom is the sdk.Msg type for allowing an account to create
- * a new denom. It requires a sender address and a subdenomination.
- * The (sender_address, sub_denomination) pair must be unique and cannot be
- * re-used. The resulting denom created is `factory/{creator
- * address}/{subdenom}`. The resultant denom's admin is originally set to be the
- * creator, but this can be changed later. The token denom does not indicate the
- * current admin.
+ * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
+ * method. It allows an account to create a new denom. It requires a sender
+ * address and a sub denomination. The (sender_address, sub_denomination) tuple
+ * must be unique and cannot be re-used.
+ *
+ * The resulting denom created is defined as
+ * <factory/{creatorAddress}/{subdenom}>. The resulting denom's admin is
+ * originally set to be the creator, but this can be changed later. The token
+ * denom does not indicate the current admin.
  */
 export interface MsgCreateDenom {
     sender: string;
@@ -16,13 +19,15 @@ export interface MsgCreateDenom {
     subdenom: string;
 }
 /**
- * MsgCreateDenom is the sdk.Msg type for allowing an account to create
- * a new denom. It requires a sender address and a subdenomination.
- * The (sender_address, sub_denomination) pair must be unique and cannot be
- * re-used. The resulting denom created is `factory/{creator
- * address}/{subdenom}`. The resultant denom's admin is originally set to be the
- * creator, but this can be changed later. The token denom does not indicate the
- * current admin.
+ * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
+ * method. It allows an account to create a new denom. It requires a sender
+ * address and a sub denomination. The (sender_address, sub_denomination) tuple
+ * must be unique and cannot be re-used.
+ *
+ * The resulting denom created is defined as
+ * <factory/{creatorAddress}/{subdenom}>. The resulting denom's admin is
+ * originally set to be the creator, but this can be changed later. The token
+ * denom does not indicate the current admin.
  */
 export interface MsgCreateDenomSDKType {
     sender: string;
@@ -99,11 +104,47 @@ export interface MsgChangeAdmin {
 export interface MsgChangeAdminSDKType {
     sender: string;
     denom: string;
-    newAdmin: string;
+    new_admin: string;
 }
+/**
+ * MsgChangeAdminResponse defines the response structure for an executed
+ * MsgChangeAdmin message.
+ */
 export interface MsgChangeAdminResponse {
 }
+/**
+ * MsgChangeAdminResponse defines the response structure for an executed
+ * MsgChangeAdmin message.
+ */
 export interface MsgChangeAdminResponseSDKType {
+}
+/**
+ * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
+ * the denom's bank metadata
+ */
+export interface MsgSetDenomMetadata {
+    sender: string;
+    metadata: Metadata;
+}
+/**
+ * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
+ * the denom's bank metadata
+ */
+export interface MsgSetDenomMetadataSDKType {
+    sender: string;
+    metadata: MetadataSDKType;
+}
+/**
+ * MsgSetDenomMetadataResponse defines the response structure for an executed
+ * MsgSetDenomMetadata message.
+ */
+export interface MsgSetDenomMetadataResponse {
+}
+/**
+ * MsgSetDenomMetadataResponse defines the response structure for an executed
+ * MsgSetDenomMetadata message.
+ */
+export interface MsgSetDenomMetadataResponseSDKType {
 }
 export declare const MsgCreateDenom: {
     encode(message: MsgCreateDenom, writer?: _m0.Writer): _m0.Writer;
@@ -144,4 +185,14 @@ export declare const MsgChangeAdminResponse: {
     encode(_: MsgChangeAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponseSDKType;
     fromPartial(_: DeepPartial<MsgChangeAdminResponse>): MsgChangeAdminResponse;
+};
+export declare const MsgSetDenomMetadata: {
+    encode(message: MsgSetDenomMetadata, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata;
+    fromPartial(object: DeepPartial<MsgSetDenomMetadata>): MsgSetDenomMetadata;
+};
+export declare const MsgSetDenomMetadataResponse: {
+    encode(_: MsgSetDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponseSDKType;
+    fromPartial(_: DeepPartial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse;
 };

@@ -1,7 +1,7 @@
 import { Rpc } from "@osmonauts/helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryPoolsRequest, QueryPoolsResponse, QueryPoolsResponseSDKType, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryNumPoolsResponseSDKType, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryTotalLiquidityResponseSDKType, QueryPoolRequest, QueryPoolResponse, QueryPoolResponseSDKType, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryPoolParamsResponseSDKType, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalPoolLiquidityResponseSDKType, QueryTotalSharesRequest, QueryTotalSharesResponse, QueryTotalSharesResponseSDKType, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySpotPriceResponseSDKType, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountInResponseSDKType, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse, QuerySwapExactAmountOutResponseSDKType } from "./query";
+import { QueryPoolsRequest, QueryPoolsResponse, QueryPoolsResponseSDKType, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryNumPoolsResponseSDKType, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryTotalLiquidityResponseSDKType, QueryPoolRequest, QueryPoolResponse, QueryPoolResponseSDKType, QueryPoolTypeRequest, QueryPoolTypeResponse, QueryPoolTypeResponseSDKType, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryPoolParamsResponseSDKType, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalPoolLiquidityResponseSDKType, QueryTotalSharesRequest, QueryTotalSharesResponse, QueryTotalSharesResponseSDKType, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySpotPriceResponseSDKType, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountInResponseSDKType, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse, QuerySwapExactAmountOutResponseSDKType } from "./query";
 /** Query defines the RPC service */
 
 export interface Query {
@@ -16,6 +16,11 @@ export interface Query {
 
   pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType>;
   /*Per Pool gRPC Endpoints*/
+
+  poolType(request: QueryPoolTypeRequest): Promise<QueryPoolTypeResponseSDKType>;
+  /*PoolType returns the type of the pool.
+  Returns "Balancer" as a string literal when the pool is a balancer pool.
+  Errors if the pool is failed to be type caseted.*/
 
   poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponseSDKType>;
   /*null*/
@@ -46,6 +51,7 @@ export class QueryClientImpl implements Query {
     this.numPools = this.numPools.bind(this);
     this.totalLiquidity = this.totalLiquidity.bind(this);
     this.pool = this.pool.bind(this);
+    this.poolType = this.poolType.bind(this);
     this.poolParams = this.poolParams.bind(this);
     this.totalPoolLiquidity = this.totalPoolLiquidity.bind(this);
     this.totalShares = this.totalShares.bind(this);
@@ -78,6 +84,12 @@ export class QueryClientImpl implements Query {
     const data = QueryPoolRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "Pool", data);
     return promise.then(data => QueryPoolResponse.decode(new _m0.Reader(data)));
+  }
+
+  poolType(request: QueryPoolTypeRequest): Promise<QueryPoolTypeResponseSDKType> {
+    const data = QueryPoolTypeRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "PoolType", data);
+    return promise.then(data => QueryPoolTypeResponse.decode(new _m0.Reader(data)));
   }
 
   poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponseSDKType> {
@@ -135,6 +147,10 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     pool(request: QueryPoolRequest): Promise<QueryPoolResponseSDKType> {
       return queryService.pool(request);
+    },
+
+    poolType(request: QueryPoolTypeRequest): Promise<QueryPoolTypeResponseSDKType> {
+      return queryService.poolType(request);
     },
 
     poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponseSDKType> {

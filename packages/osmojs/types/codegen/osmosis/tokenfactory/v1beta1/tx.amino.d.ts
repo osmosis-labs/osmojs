@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin } from "./tx";
+import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
 export interface AminoMsgCreateDenom extends AminoMsg {
     type: "osmosis/tokenfactory/create-denom";
     value: {
@@ -32,7 +32,27 @@ export interface AminoMsgChangeAdmin extends AminoMsg {
     value: {
         sender: string;
         denom: string;
-        newAdmin: string;
+        new_admin: string;
+    };
+}
+export interface AminoMsgSetDenomMetadata extends AminoMsg {
+    type: "osmosis/tokenfactory/set-denom-metadata";
+    value: {
+        sender: string;
+        metadata: {
+            description: string;
+            denom_units: {
+                denom: string;
+                exponent: number;
+                aliases: string[];
+            }[];
+            base: string;
+            display: string;
+            name: string;
+            symbol: string;
+            uri: string;
+            uri_hash: string;
+        };
     };
 }
 export declare const AminoConverter: {
@@ -54,6 +74,11 @@ export declare const AminoConverter: {
     "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin": {
         aminoType: string;
         toAmino: ({ sender, denom, newAdmin }: MsgChangeAdmin) => AminoMsgChangeAdmin["value"];
-        fromAmino: ({ sender, denom, newAdmin }: AminoMsgChangeAdmin["value"]) => MsgChangeAdmin;
+        fromAmino: ({ sender, denom, new_admin }: AminoMsgChangeAdmin["value"]) => MsgChangeAdmin;
+    };
+    "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata": {
+        aminoType: string;
+        toAmino: ({ sender, metadata }: MsgSetDenomMetadata) => AminoMsgSetDenomMetadata["value"];
+        fromAmino: ({ sender, metadata }: AminoMsgSetDenomMetadata["value"]) => MsgSetDenomMetadata;
     };
 };

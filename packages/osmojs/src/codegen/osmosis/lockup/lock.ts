@@ -3,19 +3,23 @@ import { Timestamp } from "../../google/protobuf/timestamp";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { toTimestamp, Long, fromTimestamp, DeepPartial } from "@osmonauts/helpers";
-export enum LockQueryType {
-  /** ByDuration - Queries for locks that are longer than a certain duration */
-  ByDuration = 0,
+/**
+ * LockQueryType defines the type of the lock query that can
+ * either be by duration or start time of the lock.
+ */
 
-  /** ByTime - Queries for lockups that started before a specific time */
+export enum LockQueryType {
+  ByDuration = 0,
   ByTime = 1,
   UNRECOGNIZED = -1,
 }
-export enum LockQueryTypeSDKType {
-  /** ByDuration - Queries for locks that are longer than a certain duration */
-  ByDuration = 0,
+/**
+ * LockQueryType defines the type of the lock query that can
+ * either be by duration or start time of the lock.
+ */
 
-  /** ByTime - Queries for lockups that started before a specific time */
+export enum LockQueryTypeSDKType {
+  ByDuration = 0,
   ByTime = 1,
   UNRECOGNIZED = -1,
 }
@@ -48,77 +52,153 @@ export function lockQueryTypeToJSON(object: LockQueryType): string {
   }
 }
 /**
- * PeriodLock is a single unit of lock by period. It's a record of locked coin
- * at a specific time. It stores owner, duration, unlock time and the amount of
- * coins locked.
+ * PeriodLock is a single lock unit by period defined by the x/lockup module.
+ * It's a record of a locked coin at a specific time. It stores owner, duration,
+ * unlock time and the number of coins locked. A state of a period lock is
+ * created upon lock creation, and deleted once the lock has been matured after
+ * the `duration` has passed since unbonding started.
  */
 
 export interface PeriodLock {
+  /**
+   * ID is the unique id of the lock.
+   * The ID of the lock is decided upon lock creation, incrementing by 1 for
+   * every lock.
+   */
   ID: Long;
+  /**
+   * Owner is the account address of the lock owner.
+   * Only the owner can modify the state of the lock.
+   */
+
   owner: string;
+  /**
+   * Duration is the time needed for a lock to mature after unlocking has
+   * started.
+   */
+
   duration: Duration;
+  /**
+   * EndTime refers to the time at which the lock would mature and get deleted.
+   * This value is first initialized when an unlock has started for the lock,
+   * end time being block time + duration.
+   */
+
   endTime: Date;
+  /** Coins are the tokens locked within the lock, kept in the module account. */
+
   coins: Coin[];
 }
 /**
- * PeriodLock is a single unit of lock by period. It's a record of locked coin
- * at a specific time. It stores owner, duration, unlock time and the amount of
- * coins locked.
+ * PeriodLock is a single lock unit by period defined by the x/lockup module.
+ * It's a record of a locked coin at a specific time. It stores owner, duration,
+ * unlock time and the number of coins locked. A state of a period lock is
+ * created upon lock creation, and deleted once the lock has been matured after
+ * the `duration` has passed since unbonding started.
  */
 
 export interface PeriodLockSDKType {
+  /**
+   * ID is the unique id of the lock.
+   * The ID of the lock is decided upon lock creation, incrementing by 1 for
+   * every lock.
+   */
   ID: Long;
+  /**
+   * Owner is the account address of the lock owner.
+   * Only the owner can modify the state of the lock.
+   */
+
   owner: string;
+  /**
+   * Duration is the time needed for a lock to mature after unlocking has
+   * started.
+   */
+
   duration: DurationSDKType;
+  /**
+   * EndTime refers to the time at which the lock would mature and get deleted.
+   * This value is first initialized when an unlock has started for the lock,
+   * end time being block time + duration.
+   */
+
   end_time: Date;
+  /** Coins are the tokens locked within the lock, kept in the module account. */
+
   coins: CoinSDKType[];
 }
+/**
+ * QueryCondition is a struct used for querying locks upon different conditions.
+ * Duration field and timestamp fields could be optional, depending on the
+ * LockQueryType.
+ */
+
 export interface QueryCondition {
-  /** type of lock query, ByLockDuration | ByLockTime */
+  /** LockQueryType is a type of lock query, ByLockDuration | ByLockTime */
   lockQueryType: LockQueryType;
-  /** What token denomination are we looking for lockups of */
+  /** Denom represents the token denomination we are looking to lock up */
 
   denom: string;
-  /** valid when query condition is ByDuration */
+  /**
+   * Duration is used to query locks with longer duration than the specified
+   * duration. Duration field must not be nil when the lock query type is
+   * `ByLockDuration`.
+   */
 
   duration: Duration;
-  /** valid when query condition is ByTime */
-
-  timestamp: Date;
-}
-export interface QueryConditionSDKType {
-  /** type of lock query, ByLockDuration | ByLockTime */
-  lock_query_type: LockQueryTypeSDKType;
-  /** What token denomination are we looking for lockups of */
-
-  denom: string;
-  /** valid when query condition is ByDuration */
-
-  duration: DurationSDKType;
-  /** valid when query condition is ByTime */
+  /**
+   * Timestamp is used by locks started before the specified duration.
+   * Timestamp field must not be nil when the lock query type is `ByLockTime`.
+   * Querying locks with timestamp is currently not implemented.
+   */
 
   timestamp: Date;
 }
 /**
- * SyntheticLock is a single unit of synthetic lockup
- * TODO: Change this to have
- * * underlying_lock_id
- * * synthetic_coin
- * * end_time
- * * duration
- * * owner
- * We then index synthetic locks by the denom, just like we do with normal
- * locks. Ideally we even get an interface, so we can re-use that same logic.
- * I currently have no idea how reward distribution is supposed to be working...
- * EVENTUALLY
- * we make a "constrained_coin" field, which is what the current "coins" field
- * is. Constrained coin field can be a #post-v7 feature, since we aren't
- * allowing partial unlocks of synthetic lockups.
+ * QueryCondition is a struct used for querying locks upon different conditions.
+ * Duration field and timestamp fields could be optional, depending on the
+ * LockQueryType.
+ */
+
+export interface QueryConditionSDKType {
+  /** LockQueryType is a type of lock query, ByLockDuration | ByLockTime */
+  lock_query_type: LockQueryTypeSDKType;
+  /** Denom represents the token denomination we are looking to lock up */
+
+  denom: string;
+  /**
+   * Duration is used to query locks with longer duration than the specified
+   * duration. Duration field must not be nil when the lock query type is
+   * `ByLockDuration`.
+   */
+
+  duration: DurationSDKType;
+  /**
+   * Timestamp is used by locks started before the specified duration.
+   * Timestamp field must not be nil when the lock query type is `ByLockTime`.
+   * Querying locks with timestamp is currently not implemented.
+   */
+
+  timestamp: Date;
+}
+/**
+ * SyntheticLock is creating virtual lockup where new denom is combination of
+ * original denom and synthetic suffix. At the time of synthetic lockup creation
+ * and deletion, accumulation store is also being updated and on querier side,
+ * they can query as freely as native lockup.
  */
 
 export interface SyntheticLock {
-  /** underlying native lockup id for this synthetic lockup */
+  /**
+   * Underlying Lock ID is the underlying native lock's id for this synthetic
+   * lockup. A synthetic lock MUST have an underlying lock.
+   */
   underlyingLockId: Long;
+  /**
+   * SynthDenom is the synthetic denom that is a combination of
+   * gamm share + bonding status + validator address.
+   */
+
   synthDenom: string;
   /**
    * used for unbonding synthetic lockups, for active synthetic lockups, this
@@ -126,28 +206,31 @@ export interface SyntheticLock {
    */
 
   endTime: Date;
+  /**
+   * Duration is the duration for a synthetic lock to mature
+   * at the point of unbonding has started.
+   */
+
   duration: Duration;
 }
 /**
- * SyntheticLock is a single unit of synthetic lockup
- * TODO: Change this to have
- * * underlying_lock_id
- * * synthetic_coin
- * * end_time
- * * duration
- * * owner
- * We then index synthetic locks by the denom, just like we do with normal
- * locks. Ideally we even get an interface, so we can re-use that same logic.
- * I currently have no idea how reward distribution is supposed to be working...
- * EVENTUALLY
- * we make a "constrained_coin" field, which is what the current "coins" field
- * is. Constrained coin field can be a #post-v7 feature, since we aren't
- * allowing partial unlocks of synthetic lockups.
+ * SyntheticLock is creating virtual lockup where new denom is combination of
+ * original denom and synthetic suffix. At the time of synthetic lockup creation
+ * and deletion, accumulation store is also being updated and on querier side,
+ * they can query as freely as native lockup.
  */
 
 export interface SyntheticLockSDKType {
-  /** underlying native lockup id for this synthetic lockup */
+  /**
+   * Underlying Lock ID is the underlying native lock's id for this synthetic
+   * lockup. A synthetic lock MUST have an underlying lock.
+   */
   underlying_lock_id: Long;
+  /**
+   * SynthDenom is the synthetic denom that is a combination of
+   * gamm share + bonding status + validator address.
+   */
+
   synth_denom: string;
   /**
    * used for unbonding synthetic lockups, for active synthetic lockups, this
@@ -155,6 +238,11 @@ export interface SyntheticLockSDKType {
    */
 
   end_time: Date;
+  /**
+   * Duration is the duration for a synthetic lock to mature
+   * at the point of unbonding has started.
+   */
+
   duration: DurationSDKType;
 }
 

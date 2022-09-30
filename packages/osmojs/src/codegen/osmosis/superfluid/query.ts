@@ -3,6 +3,7 @@ import { Params, ParamsSDKType } from "./params";
 import { SuperfluidAssetType, SuperfluidAssetTypeSDKType, SuperfluidAsset, SuperfluidAssetSDKType, OsmoEquivalentMultiplierRecord, OsmoEquivalentMultiplierRecordSDKType, SuperfluidDelegationRecord, SuperfluidDelegationRecordSDKType } from "./superfluid";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock, SyntheticLockSDKType } from "../lockup/lock";
+import { DelegationResponse, DelegationResponseSDKType } from "../../cosmos/staking/v1beta1/staking";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface QueryParamsRequest {}
@@ -91,7 +92,7 @@ export interface TotalSuperfluidDelegationsResponse {
   totalDelegations: string;
 }
 export interface TotalSuperfluidDelegationsResponseSDKType {
-  totalDelegations: string;
+  total_delegations: string;
 }
 export interface SuperfluidDelegationAmountRequest {
   delegatorAddress?: string;
@@ -170,6 +171,24 @@ export interface EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
 }
 export interface EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType {
   total_delegated_coins: CoinSDKType[];
+}
+export interface QueryTotalDelegationByDelegatorRequest {
+  delegatorAddress: string;
+}
+export interface QueryTotalDelegationByDelegatorRequestSDKType {
+  delegator_address: string;
+}
+export interface QueryTotalDelegationByDelegatorResponse {
+  superfluidDelegationRecords: SuperfluidDelegationRecord[];
+  delegationResponse: DelegationResponse[];
+  totalDelegatedCoins: Coin[];
+  totalEquivalentStakedAmount: Coin;
+}
+export interface QueryTotalDelegationByDelegatorResponseSDKType {
+  superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
+  delegation_response: DelegationResponseSDKType[];
+  total_delegated_coins: CoinSDKType[];
+  total_equivalent_staked_amount: CoinSDKType;
 }
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -1389,6 +1408,126 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse = {
   fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
     const message = createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomResponse();
     message.totalDelegatedCoins = object.totalDelegatedCoins?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseQueryTotalDelegationByDelegatorRequest(): QueryTotalDelegationByDelegatorRequest {
+  return {
+    delegatorAddress: ""
+  };
+}
+
+export const QueryTotalDelegationByDelegatorRequest = {
+  encode(message: QueryTotalDelegationByDelegatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryTotalDelegationByDelegatorRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.delegatorAddress = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<QueryTotalDelegationByDelegatorRequest>): QueryTotalDelegationByDelegatorRequest {
+    const message = createBaseQueryTotalDelegationByDelegatorRequest();
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    return message;
+  }
+
+};
+
+function createBaseQueryTotalDelegationByDelegatorResponse(): QueryTotalDelegationByDelegatorResponse {
+  return {
+    superfluidDelegationRecords: [],
+    delegationResponse: [],
+    totalDelegatedCoins: [],
+    totalEquivalentStakedAmount: undefined
+  };
+}
+
+export const QueryTotalDelegationByDelegatorResponse = {
+  encode(message: QueryTotalDelegationByDelegatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.superfluidDelegationRecords) {
+      SuperfluidDelegationRecord.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    for (const v of message.delegationResponse) {
+      DelegationResponse.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+
+    for (const v of message.totalDelegatedCoins) {
+      Coin.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+
+    if (message.totalEquivalentStakedAmount !== undefined) {
+      Coin.encode(message.totalEquivalentStakedAmount, writer.uint32(34).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorResponseSDKType {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryTotalDelegationByDelegatorResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.superfluidDelegationRecords.push(SuperfluidDelegationRecord.decode(reader, reader.uint32()));
+          break;
+
+        case 2:
+          message.delegationResponse.push(DelegationResponse.decode(reader, reader.uint32()));
+          break;
+
+        case 3:
+          message.totalDelegatedCoins.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        case 4:
+          message.totalEquivalentStakedAmount = Coin.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<QueryTotalDelegationByDelegatorResponse>): QueryTotalDelegationByDelegatorResponse {
+    const message = createBaseQueryTotalDelegationByDelegatorResponse();
+    message.superfluidDelegationRecords = object.superfluidDelegationRecords?.map(e => SuperfluidDelegationRecord.fromPartial(e)) || [];
+    message.delegationResponse = object.delegationResponse?.map(e => DelegationResponse.fromPartial(e)) || [];
+    message.totalDelegatedCoins = object.totalDelegatedCoins?.map(e => Coin.fromPartial(e)) || [];
+    message.totalEquivalentStakedAmount = object.totalEquivalentStakedAmount !== undefined && object.totalEquivalentStakedAmount !== null ? Coin.fromPartial(object.totalEquivalentStakedAmount) : undefined;
     return message;
   }
 
