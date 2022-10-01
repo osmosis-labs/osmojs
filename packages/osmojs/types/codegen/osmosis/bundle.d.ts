@@ -82,8 +82,8 @@ export declare namespace osmosis {
         const v1beta1: {
             QueryClientImpl: typeof _231.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                epochInfos(request?: _83.QueryEpochsInfoRequest): Promise<_83.QueryEpochsInfoResponseSDKType>;
-                currentEpoch(request: _83.QueryCurrentEpochRequest): Promise<_83.QueryCurrentEpochResponseSDKType>;
+                epochInfos(request?: _83.QueryEpochsInfoRequest): Promise<_83.QueryEpochsInfoResponse>;
+                currentEpoch(request: _83.QueryCurrentEpochRequest): Promise<_83.QueryCurrentEpochResponse>;
             };
             LCDQueryClient: typeof _220.LCDQueryClient;
             QueryEpochsInfoRequest: {
@@ -93,7 +93,7 @@ export declare namespace osmosis {
             };
             QueryEpochsInfoResponse: {
                 encode(message: _83.QueryEpochsInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.QueryEpochsInfoResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.QueryEpochsInfoResponse;
                 fromPartial(object: {
                     epochs?: {
                         identifier?: string;
@@ -118,7 +118,7 @@ export declare namespace osmosis {
             };
             QueryCurrentEpochResponse: {
                 encode(message: _83.QueryCurrentEpochResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.QueryCurrentEpochResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _83.QueryCurrentEpochResponse;
                 fromPartial(object: {
                     currentEpoch?: any;
                 }): _83.QueryCurrentEpochResponse;
@@ -164,17 +164,17 @@ export declare namespace osmosis {
             MsgClientImpl: typeof _244.MsgClientImpl;
             QueryClientImpl: typeof _232.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                pools(request?: _86.QueryPoolsRequest): Promise<_86.QueryPoolsResponseSDKType>;
-                numPools(request?: _86.QueryNumPoolsRequest): Promise<_86.QueryNumPoolsResponseSDKType>;
-                totalLiquidity(request?: _86.QueryTotalLiquidityRequest): Promise<_86.QueryTotalLiquidityResponseSDKType>;
-                pool(request: _86.QueryPoolRequest): Promise<_86.QueryPoolResponseSDKType>;
-                poolType(request: _86.QueryPoolTypeRequest): Promise<_86.QueryPoolTypeResponseSDKType>;
-                poolParams(request: _86.QueryPoolParamsRequest): Promise<_86.QueryPoolParamsResponseSDKType>;
-                totalPoolLiquidity(request: _86.QueryTotalPoolLiquidityRequest): Promise<_86.QueryTotalPoolLiquidityResponseSDKType>;
-                totalShares(request: _86.QueryTotalSharesRequest): Promise<_86.QueryTotalSharesResponseSDKType>;
-                spotPrice(request: _86.QuerySpotPriceRequest): Promise<_86.QuerySpotPriceResponseSDKType>;
-                estimateSwapExactAmountIn(request: _86.QuerySwapExactAmountInRequest): Promise<_86.QuerySwapExactAmountInResponseSDKType>;
-                estimateSwapExactAmountOut(request: _86.QuerySwapExactAmountOutRequest): Promise<_86.QuerySwapExactAmountOutResponseSDKType>;
+                pools(request?: _86.QueryPoolsRequest): Promise<_86.QueryPoolsResponse>;
+                numPools(request?: _86.QueryNumPoolsRequest): Promise<_86.QueryNumPoolsResponse>;
+                totalLiquidity(request?: _86.QueryTotalLiquidityRequest): Promise<_86.QueryTotalLiquidityResponse>;
+                pool(request: _86.QueryPoolRequest): Promise<_86.QueryPoolResponse>;
+                poolType(request: _86.QueryPoolTypeRequest): Promise<_86.QueryPoolTypeResponse>;
+                poolParams(request: _86.QueryPoolParamsRequest): Promise<_86.QueryPoolParamsResponse>;
+                totalPoolLiquidity(request: _86.QueryTotalPoolLiquidityRequest): Promise<_86.QueryTotalPoolLiquidityResponse>;
+                totalShares(request: _86.QueryTotalSharesRequest): Promise<_86.QueryTotalSharesResponse>;
+                spotPrice(request: _86.QuerySpotPriceRequest): Promise<_86.QuerySpotPriceResponse>;
+                estimateSwapExactAmountIn(request: _86.QuerySwapExactAmountInRequest): Promise<_86.QuerySwapExactAmountInResponse>;
+                estimateSwapExactAmountOut(request: _86.QuerySwapExactAmountOutRequest): Promise<_86.QuerySwapExactAmountOutResponse>;
             };
             LCDQueryClient: typeof _221.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
@@ -472,7 +472,7 @@ export declare namespace osmosis {
             };
             MsgJoinPoolResponse: {
                 encode(message: _87.MsgJoinPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgJoinPoolResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgJoinPoolResponse;
                 fromPartial(object: {
                     shareOutAmount?: string;
                     tokenIn?: {
@@ -496,7 +496,7 @@ export declare namespace osmosis {
             };
             MsgExitPoolResponse: {
                 encode(message: _87.MsgExitPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgExitPoolResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgExitPoolResponse;
                 fromPartial(object: {
                     tokenOut?: {
                         denom?: string;
@@ -530,7 +530,7 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountInResponse: {
                 encode(message: _87.MsgSwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgSwapExactAmountInResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgSwapExactAmountInResponse;
                 fromPartial(object: {
                     tokenOutAmount?: string;
                 }): _87.MsgSwapExactAmountInResponse;
@@ -561,7 +561,7 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountOutResponse: {
                 encode(message: _87.MsgSwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgSwapExactAmountOutResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgSwapExactAmountOutResponse;
                 fromPartial(object: {
                     tokenInAmount?: string;
                 }): _87.MsgSwapExactAmountOutResponse;
@@ -581,7 +581,7 @@ export declare namespace osmosis {
             };
             MsgJoinSwapExternAmountInResponse: {
                 encode(message: _87.MsgJoinSwapExternAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgJoinSwapExternAmountInResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgJoinSwapExternAmountInResponse;
                 fromPartial(object: {
                     shareOutAmount?: string;
                 }): _87.MsgJoinSwapExternAmountInResponse;
@@ -599,7 +599,7 @@ export declare namespace osmosis {
             };
             MsgJoinSwapShareAmountOutResponse: {
                 encode(message: _87.MsgJoinSwapShareAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgJoinSwapShareAmountOutResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgJoinSwapShareAmountOutResponse;
                 fromPartial(object: {
                     tokenInAmount?: string;
                 }): _87.MsgJoinSwapShareAmountOutResponse;
@@ -617,7 +617,7 @@ export declare namespace osmosis {
             };
             MsgExitSwapShareAmountInResponse: {
                 encode(message: _87.MsgExitSwapShareAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgExitSwapShareAmountInResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgExitSwapShareAmountInResponse;
                 fromPartial(object: {
                     tokenOutAmount?: string;
                 }): _87.MsgExitSwapShareAmountInResponse;
@@ -637,7 +637,7 @@ export declare namespace osmosis {
             };
             MsgExitSwapExternAmountOutResponse: {
                 encode(message: _87.MsgExitSwapExternAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgExitSwapExternAmountOutResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _87.MsgExitSwapExternAmountOutResponse;
                 fromPartial(object: {
                     shareInAmount?: string;
                 }): _87.MsgExitSwapExternAmountOutResponse;
@@ -651,7 +651,7 @@ export declare namespace osmosis {
             };
             QueryPoolResponse: {
                 encode(message: _86.QueryPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryPoolResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryPoolResponse;
                 fromPartial(object: {
                     pool?: {
                         typeUrl?: string;
@@ -674,7 +674,7 @@ export declare namespace osmosis {
             };
             QueryPoolsResponse: {
                 encode(message: _86.QueryPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryPoolsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryPoolsResponse;
                 fromPartial(object: {
                     pools?: {
                         typeUrl?: string;
@@ -693,7 +693,7 @@ export declare namespace osmosis {
             };
             QueryNumPoolsResponse: {
                 encode(message: _86.QueryNumPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryNumPoolsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryNumPoolsResponse;
                 fromPartial(object: {
                     numPools?: any;
                 }): _86.QueryNumPoolsResponse;
@@ -707,7 +707,7 @@ export declare namespace osmosis {
             };
             QueryPoolTypeResponse: {
                 encode(message: _86.QueryPoolTypeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryPoolTypeResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryPoolTypeResponse;
                 fromPartial(object: {
                     poolType?: string;
                 }): _86.QueryPoolTypeResponse;
@@ -721,7 +721,7 @@ export declare namespace osmosis {
             };
             QueryPoolParamsResponse: {
                 encode(message: _86.QueryPoolParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryPoolParamsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryPoolParamsResponse;
                 fromPartial(object: {
                     params?: {
                         typeUrl?: string;
@@ -738,7 +738,7 @@ export declare namespace osmosis {
             };
             QueryTotalPoolLiquidityResponse: {
                 encode(message: _86.QueryTotalPoolLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalPoolLiquidityResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalPoolLiquidityResponse;
                 fromPartial(object: {
                     liquidity?: {
                         denom?: string;
@@ -755,7 +755,7 @@ export declare namespace osmosis {
             };
             QueryTotalSharesResponse: {
                 encode(message: _86.QueryTotalSharesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalSharesResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalSharesResponse;
                 fromPartial(object: {
                     totalShares?: {
                         denom?: string;
@@ -774,7 +774,7 @@ export declare namespace osmosis {
             };
             QuerySpotPriceResponse: {
                 encode(message: _86.QuerySpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QuerySpotPriceResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QuerySpotPriceResponse;
                 fromPartial(object: {
                     spotPrice?: string;
                 }): _86.QuerySpotPriceResponse;
@@ -794,7 +794,7 @@ export declare namespace osmosis {
             };
             QuerySwapExactAmountInResponse: {
                 encode(message: _86.QuerySwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QuerySwapExactAmountInResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QuerySwapExactAmountInResponse;
                 fromPartial(object: {
                     tokenOutAmount?: string;
                 }): _86.QuerySwapExactAmountInResponse;
@@ -814,7 +814,7 @@ export declare namespace osmosis {
             };
             QuerySwapExactAmountOutResponse: {
                 encode(message: _86.QuerySwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QuerySwapExactAmountOutResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QuerySwapExactAmountOutResponse;
                 fromPartial(object: {
                     tokenInAmount?: string;
                 }): _86.QuerySwapExactAmountOutResponse;
@@ -826,7 +826,7 @@ export declare namespace osmosis {
             };
             QueryTotalLiquidityResponse: {
                 encode(message: _86.QueryTotalLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalLiquidityResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.QueryTotalLiquidityResponse;
                 fromPartial(object: {
                     liquidity?: {
                         denom?: string;
@@ -1124,7 +1124,7 @@ export declare namespace osmosis {
                     };
                     MsgCreateBalancerPoolResponse: {
                         encode(message: _88.MsgCreateBalancerPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.MsgCreateBalancerPoolResponseSDKType;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.MsgCreateBalancerPoolResponse;
                         fromPartial(object: {
                             poolId?: any;
                         }): _88.MsgCreateBalancerPoolResponse;
@@ -1231,7 +1231,7 @@ export declare namespace osmosis {
                     };
                     MsgCreateStableswapPoolResponse: {
                         encode(message: _90.MsgCreateStableswapPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgCreateStableswapPoolResponseSDKType;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgCreateStableswapPoolResponse;
                         fromPartial(object: {
                             poolId?: any;
                         }): _90.MsgCreateStableswapPoolResponse;
@@ -1247,7 +1247,7 @@ export declare namespace osmosis {
                     };
                     MsgStableSwapAdjustScalingFactorsResponse: {
                         encode(_: _90.MsgStableSwapAdjustScalingFactorsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgStableSwapAdjustScalingFactorsResponseSDKType;
+                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.MsgStableSwapAdjustScalingFactorsResponse;
                         fromPartial(_: {}): _90.MsgStableSwapAdjustScalingFactorsResponse;
                     };
                     PoolParams: {
@@ -1289,16 +1289,16 @@ export declare namespace osmosis {
         MsgClientImpl: typeof _245.MsgClientImpl;
         QueryClientImpl: typeof _233.QueryClientImpl;
         createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-            moduleToDistributeCoins(request?: _94.ModuleToDistributeCoinsRequest): Promise<_94.ModuleToDistributeCoinsResponseSDKType>;
-            moduleDistributedCoins(request?: _94.ModuleDistributedCoinsRequest): Promise<_94.ModuleDistributedCoinsResponseSDKType>;
-            gaugeByID(request: _94.GaugeByIDRequest): Promise<_94.GaugeByIDResponseSDKType>;
-            gauges(request?: _94.GaugesRequest): Promise<_94.GaugesResponseSDKType>;
-            activeGauges(request?: _94.ActiveGaugesRequest): Promise<_94.ActiveGaugesResponseSDKType>;
-            activeGaugesPerDenom(request: _94.ActiveGaugesPerDenomRequest): Promise<_94.ActiveGaugesPerDenomResponseSDKType>;
-            upcomingGauges(request?: _94.UpcomingGaugesRequest): Promise<_94.UpcomingGaugesResponseSDKType>;
-            upcomingGaugesPerDenom(request: _94.UpcomingGaugesPerDenomRequest): Promise<_94.UpcomingGaugesPerDenomResponseSDKType>;
-            rewardsEst(request: _94.RewardsEstRequest): Promise<_94.RewardsEstResponseSDKType>;
-            lockableDurations(request?: _94.QueryLockableDurationsRequest): Promise<_94.QueryLockableDurationsResponseSDKType>;
+            moduleToDistributeCoins(request?: _94.ModuleToDistributeCoinsRequest): Promise<_94.ModuleToDistributeCoinsResponse>;
+            moduleDistributedCoins(request?: _94.ModuleDistributedCoinsRequest): Promise<_94.ModuleDistributedCoinsResponse>;
+            gaugeByID(request: _94.GaugeByIDRequest): Promise<_94.GaugeByIDResponse>;
+            gauges(request?: _94.GaugesRequest): Promise<_94.GaugesResponse>;
+            activeGauges(request?: _94.ActiveGaugesRequest): Promise<_94.ActiveGaugesResponse>;
+            activeGaugesPerDenom(request: _94.ActiveGaugesPerDenomRequest): Promise<_94.ActiveGaugesPerDenomResponse>;
+            upcomingGauges(request?: _94.UpcomingGaugesRequest): Promise<_94.UpcomingGaugesResponse>;
+            upcomingGaugesPerDenom(request: _94.UpcomingGaugesPerDenomRequest): Promise<_94.UpcomingGaugesPerDenomResponse>;
+            rewardsEst(request: _94.RewardsEstRequest): Promise<_94.RewardsEstResponse>;
+            lockableDurations(request?: _94.QueryLockableDurationsRequest): Promise<_94.QueryLockableDurationsResponse>;
         };
         LCDQueryClient: typeof _222.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
@@ -1434,7 +1434,7 @@ export declare namespace osmosis {
         };
         MsgCreateGaugeResponse: {
             encode(_: _95.MsgCreateGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MsgCreateGaugeResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MsgCreateGaugeResponse;
             fromPartial(_: {}): _95.MsgCreateGaugeResponse;
         };
         MsgAddToGauge: {
@@ -1451,7 +1451,7 @@ export declare namespace osmosis {
         };
         MsgAddToGaugeResponse: {
             encode(_: _95.MsgAddToGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MsgAddToGaugeResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MsgAddToGaugeResponse;
             fromPartial(_: {}): _95.MsgAddToGaugeResponse;
         };
         ModuleToDistributeCoinsRequest: {
@@ -1461,7 +1461,7 @@ export declare namespace osmosis {
         };
         ModuleToDistributeCoinsResponse: {
             encode(message: _94.ModuleToDistributeCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ModuleToDistributeCoinsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ModuleToDistributeCoinsResponse;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
@@ -1476,7 +1476,7 @@ export declare namespace osmosis {
         };
         ModuleDistributedCoinsResponse: {
             encode(message: _94.ModuleDistributedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ModuleDistributedCoinsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ModuleDistributedCoinsResponse;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
@@ -1493,7 +1493,7 @@ export declare namespace osmosis {
         };
         GaugeByIDResponse: {
             encode(message: _94.GaugeByIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.GaugeByIDResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.GaugeByIDResponse;
             fromPartial(object: {
                 gauge?: {
                     id?: any;
@@ -1536,7 +1536,7 @@ export declare namespace osmosis {
         };
         GaugesResponse: {
             encode(message: _94.GaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.GaugesResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.GaugesResponse;
             fromPartial(object: {
                 data?: {
                     id?: any;
@@ -1583,7 +1583,7 @@ export declare namespace osmosis {
         };
         ActiveGaugesResponse: {
             encode(message: _94.ActiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ActiveGaugesResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ActiveGaugesResponse;
             fromPartial(object: {
                 data?: {
                     id?: any;
@@ -1631,7 +1631,7 @@ export declare namespace osmosis {
         };
         ActiveGaugesPerDenomResponse: {
             encode(message: _94.ActiveGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ActiveGaugesPerDenomResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.ActiveGaugesPerDenomResponse;
             fromPartial(object: {
                 data?: {
                     id?: any;
@@ -1678,7 +1678,7 @@ export declare namespace osmosis {
         };
         UpcomingGaugesResponse: {
             encode(message: _94.UpcomingGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.UpcomingGaugesResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.UpcomingGaugesResponse;
             fromPartial(object: {
                 data?: {
                     id?: any;
@@ -1726,7 +1726,7 @@ export declare namespace osmosis {
         };
         UpcomingGaugesPerDenomResponse: {
             encode(message: _94.UpcomingGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.UpcomingGaugesPerDenomResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.UpcomingGaugesPerDenomResponse;
             fromPartial(object: {
                 upcomingGauges?: {
                     id?: any;
@@ -1769,7 +1769,7 @@ export declare namespace osmosis {
         };
         RewardsEstResponse: {
             encode(message: _94.RewardsEstResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.RewardsEstResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.RewardsEstResponse;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
@@ -1784,7 +1784,7 @@ export declare namespace osmosis {
         };
         QueryLockableDurationsResponse: {
             encode(message: _94.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.QueryLockableDurationsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.QueryLockableDurationsResponse;
             fromPartial(object: {
                 lockableDurations?: {
                     seconds?: any;
@@ -1880,22 +1880,22 @@ export declare namespace osmosis {
         MsgClientImpl: typeof _246.MsgClientImpl;
         QueryClientImpl: typeof _234.QueryClientImpl;
         createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-            moduleBalance(request?: _98.ModuleBalanceRequest): Promise<_98.ModuleBalanceResponseSDKType>;
-            moduleLockedAmount(request?: _98.ModuleLockedAmountRequest): Promise<_98.ModuleLockedAmountResponseSDKType>;
-            accountUnlockableCoins(request: _98.AccountUnlockableCoinsRequest): Promise<_98.AccountUnlockableCoinsResponseSDKType>;
-            accountUnlockingCoins(request: _98.AccountUnlockingCoinsRequest): Promise<_98.AccountUnlockingCoinsResponseSDKType>;
-            accountLockedCoins(request: _98.AccountLockedCoinsRequest): Promise<_98.AccountLockedCoinsResponseSDKType>;
-            accountLockedPastTime(request: _98.AccountLockedPastTimeRequest): Promise<_98.AccountLockedPastTimeResponseSDKType>;
-            accountLockedPastTimeNotUnlockingOnly(request: _98.AccountLockedPastTimeNotUnlockingOnlyRequest): Promise<_98.AccountLockedPastTimeNotUnlockingOnlyResponseSDKType>;
-            accountUnlockedBeforeTime(request: _98.AccountUnlockedBeforeTimeRequest): Promise<_98.AccountUnlockedBeforeTimeResponseSDKType>;
-            accountLockedPastTimeDenom(request: _98.AccountLockedPastTimeDenomRequest): Promise<_98.AccountLockedPastTimeDenomResponseSDKType>;
-            lockedDenom(request: _98.LockedDenomRequest): Promise<_98.LockedDenomResponseSDKType>;
-            lockedByID(request: _98.LockedRequest): Promise<_98.LockedResponseSDKType>;
-            syntheticLockupsByLockupID(request: _98.SyntheticLockupsByLockupIDRequest): Promise<_98.SyntheticLockupsByLockupIDResponseSDKType>;
-            accountLockedLongerDuration(request: _98.AccountLockedLongerDurationRequest): Promise<_98.AccountLockedLongerDurationResponseSDKType>;
-            accountLockedDuration(request: _98.AccountLockedDurationRequest): Promise<_98.AccountLockedDurationResponseSDKType>;
-            accountLockedLongerDurationNotUnlockingOnly(request: _98.AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<_98.AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType>;
-            accountLockedLongerDurationDenom(request: _98.AccountLockedLongerDurationDenomRequest): Promise<_98.AccountLockedLongerDurationDenomResponseSDKType>;
+            moduleBalance(request?: _98.ModuleBalanceRequest): Promise<_98.ModuleBalanceResponse>;
+            moduleLockedAmount(request?: _98.ModuleLockedAmountRequest): Promise<_98.ModuleLockedAmountResponse>;
+            accountUnlockableCoins(request: _98.AccountUnlockableCoinsRequest): Promise<_98.AccountUnlockableCoinsResponse>;
+            accountUnlockingCoins(request: _98.AccountUnlockingCoinsRequest): Promise<_98.AccountUnlockingCoinsResponse>;
+            accountLockedCoins(request: _98.AccountLockedCoinsRequest): Promise<_98.AccountLockedCoinsResponse>;
+            accountLockedPastTime(request: _98.AccountLockedPastTimeRequest): Promise<_98.AccountLockedPastTimeResponse>;
+            accountLockedPastTimeNotUnlockingOnly(request: _98.AccountLockedPastTimeNotUnlockingOnlyRequest): Promise<_98.AccountLockedPastTimeNotUnlockingOnlyResponse>;
+            accountUnlockedBeforeTime(request: _98.AccountUnlockedBeforeTimeRequest): Promise<_98.AccountUnlockedBeforeTimeResponse>;
+            accountLockedPastTimeDenom(request: _98.AccountLockedPastTimeDenomRequest): Promise<_98.AccountLockedPastTimeDenomResponse>;
+            lockedDenom(request: _98.LockedDenomRequest): Promise<_98.LockedDenomResponse>;
+            lockedByID(request: _98.LockedRequest): Promise<_98.LockedResponse>;
+            syntheticLockupsByLockupID(request: _98.SyntheticLockupsByLockupIDRequest): Promise<_98.SyntheticLockupsByLockupIDResponse>;
+            accountLockedLongerDuration(request: _98.AccountLockedLongerDurationRequest): Promise<_98.AccountLockedLongerDurationResponse>;
+            accountLockedDuration(request: _98.AccountLockedDurationRequest): Promise<_98.AccountLockedDurationResponse>;
+            accountLockedLongerDurationNotUnlockingOnly(request: _98.AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<_98.AccountLockedLongerDurationNotUnlockingOnlyResponse>;
+            accountLockedLongerDurationDenom(request: _98.AccountLockedLongerDurationDenomRequest): Promise<_98.AccountLockedLongerDurationDenomResponse>;
         };
         LCDQueryClient: typeof _223.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
@@ -2047,7 +2047,7 @@ export declare namespace osmosis {
         };
         MsgLockTokensResponse: {
             encode(message: _99.MsgLockTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgLockTokensResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgLockTokensResponse;
             fromPartial(object: {
                 ID?: any;
             }): _99.MsgLockTokensResponse;
@@ -2061,7 +2061,7 @@ export declare namespace osmosis {
         };
         MsgBeginUnlockingAllResponse: {
             encode(message: _99.MsgBeginUnlockingAllResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgBeginUnlockingAllResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgBeginUnlockingAllResponse;
             fromPartial(object: {
                 unlocks?: {
                     ID?: any;
@@ -2092,7 +2092,7 @@ export declare namespace osmosis {
         };
         MsgBeginUnlockingResponse: {
             encode(message: _99.MsgBeginUnlockingResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgBeginUnlockingResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgBeginUnlockingResponse;
             fromPartial(object: {
                 success?: boolean;
             }): _99.MsgBeginUnlockingResponse;
@@ -2111,7 +2111,7 @@ export declare namespace osmosis {
         };
         MsgExtendLockupResponse: {
             encode(message: _99.MsgExtendLockupResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgExtendLockupResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgExtendLockupResponse;
             fromPartial(object: {
                 success?: boolean;
             }): _99.MsgExtendLockupResponse;
@@ -2123,7 +2123,7 @@ export declare namespace osmosis {
         };
         ModuleBalanceResponse: {
             encode(message: _98.ModuleBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.ModuleBalanceResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.ModuleBalanceResponse;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
@@ -2138,7 +2138,7 @@ export declare namespace osmosis {
         };
         ModuleLockedAmountResponse: {
             encode(message: _98.ModuleLockedAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.ModuleLockedAmountResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.ModuleLockedAmountResponse;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
@@ -2155,7 +2155,7 @@ export declare namespace osmosis {
         };
         AccountUnlockableCoinsResponse: {
             encode(message: _98.AccountUnlockableCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountUnlockableCoinsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountUnlockableCoinsResponse;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
@@ -2172,7 +2172,7 @@ export declare namespace osmosis {
         };
         AccountUnlockingCoinsResponse: {
             encode(message: _98.AccountUnlockingCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountUnlockingCoinsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountUnlockingCoinsResponse;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
@@ -2189,7 +2189,7 @@ export declare namespace osmosis {
         };
         AccountLockedCoinsResponse: {
             encode(message: _98.AccountLockedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedCoinsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedCoinsResponse;
             fromPartial(object: {
                 coins?: {
                     denom?: string;
@@ -2207,7 +2207,7 @@ export declare namespace osmosis {
         };
         AccountLockedPastTimeResponse: {
             encode(message: _98.AccountLockedPastTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedPastTimeResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedPastTimeResponse;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2234,7 +2234,7 @@ export declare namespace osmosis {
         };
         AccountLockedPastTimeNotUnlockingOnlyResponse: {
             encode(message: _98.AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedPastTimeNotUnlockingOnlyResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedPastTimeNotUnlockingOnlyResponse;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2261,7 +2261,7 @@ export declare namespace osmosis {
         };
         AccountUnlockedBeforeTimeResponse: {
             encode(message: _98.AccountUnlockedBeforeTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountUnlockedBeforeTimeResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountUnlockedBeforeTimeResponse;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2289,7 +2289,7 @@ export declare namespace osmosis {
         };
         AccountLockedPastTimeDenomResponse: {
             encode(message: _98.AccountLockedPastTimeDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedPastTimeDenomResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedPastTimeDenomResponse;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2319,7 +2319,7 @@ export declare namespace osmosis {
         };
         LockedDenomResponse: {
             encode(message: _98.LockedDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.LockedDenomResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.LockedDenomResponse;
             fromPartial(object: {
                 amount?: string;
             }): _98.LockedDenomResponse;
@@ -2333,7 +2333,7 @@ export declare namespace osmosis {
         };
         LockedResponse: {
             encode(message: _98.LockedResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.LockedResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.LockedResponse;
             fromPartial(object: {
                 lock?: {
                     ID?: any;
@@ -2359,7 +2359,7 @@ export declare namespace osmosis {
         };
         SyntheticLockupsByLockupIDResponse: {
             encode(message: _98.SyntheticLockupsByLockupIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.SyntheticLockupsByLockupIDResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.SyntheticLockupsByLockupIDResponse;
             fromPartial(object: {
                 syntheticLocks?: {
                     underlyingLockId?: any;
@@ -2385,7 +2385,7 @@ export declare namespace osmosis {
         };
         AccountLockedLongerDurationResponse: {
             encode(message: _98.AccountLockedLongerDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedLongerDurationResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedLongerDurationResponse;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2415,7 +2415,7 @@ export declare namespace osmosis {
         };
         AccountLockedDurationResponse: {
             encode(message: _98.AccountLockedDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedDurationResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedDurationResponse;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2445,7 +2445,7 @@ export declare namespace osmosis {
         };
         AccountLockedLongerDurationNotUnlockingOnlyResponse: {
             encode(message: _98.AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedLongerDurationNotUnlockingOnlyResponse;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2476,7 +2476,7 @@ export declare namespace osmosis {
         };
         AccountLockedLongerDurationDenomResponse: {
             encode(message: _98.AccountLockedLongerDurationDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedLongerDurationDenomResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.AccountLockedLongerDurationDenomResponse;
             fromPartial(object: {
                 locks?: {
                     ID?: any;
@@ -2574,8 +2574,8 @@ export declare namespace osmosis {
         const v1beta1: {
             QueryClientImpl: typeof _235.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                params(request?: _102.QueryParamsRequest): Promise<_102.QueryParamsResponseSDKType>;
-                epochProvisions(request?: _102.QueryEpochProvisionsRequest): Promise<_102.QueryEpochProvisionsResponseSDKType>;
+                params(request?: _102.QueryParamsRequest): Promise<_102.QueryParamsResponse>;
+                epochProvisions(request?: _102.QueryEpochProvisionsRequest): Promise<_102.QueryEpochProvisionsResponse>;
             };
             LCDQueryClient: typeof _224.LCDQueryClient;
             QueryParamsRequest: {
@@ -2585,7 +2585,7 @@ export declare namespace osmosis {
             };
             QueryParamsResponse: {
                 encode(message: _102.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _102.QueryParamsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _102.QueryParamsResponse;
                 fromPartial(object: {
                     params?: {
                         mintDenom?: string;
@@ -2614,7 +2614,7 @@ export declare namespace osmosis {
             };
             QueryEpochProvisionsResponse: {
                 encode(message: _102.QueryEpochProvisionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _102.QueryEpochProvisionsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _102.QueryEpochProvisionsResponse;
                 fromPartial(object: {
                     epochProvisions?: Uint8Array;
                 }): _102.QueryEpochProvisionsResponse;
@@ -2700,12 +2700,12 @@ export declare namespace osmosis {
         const v1beta1: {
             QueryClientImpl: typeof _236.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                gaugeIds(request: _106.QueryGaugeIdsRequest): Promise<_106.QueryGaugeIdsResponseSDKType>;
-                distrInfo(request?: _106.QueryDistrInfoRequest): Promise<_106.QueryDistrInfoResponseSDKType>;
-                params(request?: _106.QueryParamsRequest): Promise<_106.QueryParamsResponseSDKType>;
-                lockableDurations(request?: _106.QueryLockableDurationsRequest): Promise<_106.QueryLockableDurationsResponseSDKType>;
-                incentivizedPools(request?: _106.QueryIncentivizedPoolsRequest): Promise<_106.QueryIncentivizedPoolsResponseSDKType>;
-                externalIncentiveGauges(request?: _106.QueryExternalIncentiveGaugesRequest): Promise<_106.QueryExternalIncentiveGaugesResponseSDKType>;
+                gaugeIds(request: _106.QueryGaugeIdsRequest): Promise<_106.QueryGaugeIdsResponse>;
+                distrInfo(request?: _106.QueryDistrInfoRequest): Promise<_106.QueryDistrInfoResponse>;
+                params(request?: _106.QueryParamsRequest): Promise<_106.QueryParamsResponse>;
+                lockableDurations(request?: _106.QueryLockableDurationsRequest): Promise<_106.QueryLockableDurationsResponse>;
+                incentivizedPools(request?: _106.QueryIncentivizedPoolsRequest): Promise<_106.QueryIncentivizedPoolsResponse>;
+                externalIncentiveGauges(request?: _106.QueryExternalIncentiveGaugesRequest): Promise<_106.QueryExternalIncentiveGaugesResponse>;
             };
             LCDQueryClient: typeof _225.LCDQueryClient;
             QueryGaugeIdsRequest: {
@@ -2717,7 +2717,7 @@ export declare namespace osmosis {
             };
             QueryGaugeIdsResponse: {
                 encode(message: _106.QueryGaugeIdsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryGaugeIdsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryGaugeIdsResponse;
                 fromPartial(object: {
                     gaugeIdsWithDuration?: {
                         gaugeId?: any;
@@ -2748,7 +2748,7 @@ export declare namespace osmosis {
             };
             QueryDistrInfoResponse: {
                 encode(message: _106.QueryDistrInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryDistrInfoResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryDistrInfoResponse;
                 fromPartial(object: {
                     distrInfo?: {
                         totalWeight?: string;
@@ -2766,7 +2766,7 @@ export declare namespace osmosis {
             };
             QueryParamsResponse: {
                 encode(message: _106.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryParamsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryParamsResponse;
                 fromPartial(object: {
                     params?: {
                         mintedDenom?: string;
@@ -2780,7 +2780,7 @@ export declare namespace osmosis {
             };
             QueryLockableDurationsResponse: {
                 encode(message: _106.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryLockableDurationsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryLockableDurationsResponse;
                 fromPartial(object: {
                     lockableDurations?: {
                         seconds?: any;
@@ -2807,7 +2807,7 @@ export declare namespace osmosis {
             };
             QueryIncentivizedPoolsResponse: {
                 encode(message: _106.QueryIncentivizedPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryIncentivizedPoolsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryIncentivizedPoolsResponse;
                 fromPartial(object: {
                     incentivizedPools?: {
                         poolId?: any;
@@ -2826,7 +2826,7 @@ export declare namespace osmosis {
             };
             QueryExternalIncentiveGaugesResponse: {
                 encode(message: _106.QueryExternalIncentiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryExternalIncentiveGaugesResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.QueryExternalIncentiveGaugesResponse;
                 fromPartial(object: {
                     data?: {
                         id?: any;
@@ -3009,9 +3009,9 @@ export declare namespace osmosis {
             MsgClientImpl: typeof _247.MsgClientImpl;
             QueryClientImpl: typeof _237.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                sales(request?: _111.QuerySales): Promise<_111.QuerySalesResponseSDKType>;
-                sale(request: _111.QuerySale): Promise<_111.QuerySaleResponseSDKType>;
-                userPosition(request: _111.QueryUserPosition): Promise<_111.QueryUserPositionResponseSDKType>;
+                sales(request?: _111.QuerySales): Promise<_111.QuerySalesResponse>;
+                sale(request: _111.QuerySale): Promise<_111.QuerySaleResponse>;
+                userPosition(request: _111.QueryUserPosition): Promise<_111.QueryUserPositionResponse>;
             };
             LCDQueryClient: typeof _226.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
@@ -3209,7 +3209,7 @@ export declare namespace osmosis {
             };
             MsgCreateSaleResponse: {
                 encode(message: _113.MsgCreateSaleResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgCreateSaleResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgCreateSaleResponse;
                 fromPartial(object: {
                     saleId?: any;
                 }): _113.MsgCreateSaleResponse;
@@ -3242,7 +3242,7 @@ export declare namespace osmosis {
             };
             MsgExitSaleResponse: {
                 encode(message: _113.MsgExitSaleResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgExitSaleResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgExitSaleResponse;
                 fromPartial(object: {
                     purchased?: string;
                 }): _113.MsgExitSaleResponse;
@@ -3257,7 +3257,7 @@ export declare namespace osmosis {
             };
             MsgFinalizeSaleResponse: {
                 encode(message: _113.MsgFinalizeSaleResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgFinalizeSaleResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgFinalizeSaleResponse;
                 fromPartial(object: {
                     income?: string;
                 }): _113.MsgFinalizeSaleResponse;
@@ -3311,7 +3311,7 @@ export declare namespace osmosis {
             };
             QuerySalesResponse: {
                 encode(message: _111.QuerySalesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySalesResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySalesResponse;
                 fromPartial(object: {
                     sales?: {
                         treasury?: string;
@@ -3347,7 +3347,7 @@ export declare namespace osmosis {
             };
             QuerySaleResponse: {
                 encode(message: _111.QuerySaleResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySaleResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySaleResponse;
                 fromPartial(object: {
                     sale?: {
                         treasury?: string;
@@ -3380,7 +3380,7 @@ export declare namespace osmosis {
             };
             QueryUserPositionResponse: {
                 encode(message: _111.QueryUserPositionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryUserPositionResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryUserPositionResponse;
                 fromPartial(object: {
                     userPosition?: {
                         shares?: string;
@@ -3531,19 +3531,19 @@ export declare namespace osmosis {
         MsgClientImpl: typeof _248.MsgClientImpl;
         QueryClientImpl: typeof _238.QueryClientImpl;
         createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-            params(request?: _116.QueryParamsRequest): Promise<_116.QueryParamsResponseSDKType>;
-            assetType(request: _116.AssetTypeRequest): Promise<_116.AssetTypeResponseSDKType>;
-            allAssets(request?: _116.AllAssetsRequest): Promise<_116.AllAssetsResponseSDKType>;
-            assetMultiplier(request: _116.AssetMultiplierRequest): Promise<_116.AssetMultiplierResponseSDKType>;
-            allIntermediaryAccounts(request?: _116.AllIntermediaryAccountsRequest): Promise<_116.AllIntermediaryAccountsResponseSDKType>;
-            connectedIntermediaryAccount(request: _116.ConnectedIntermediaryAccountRequest): Promise<_116.ConnectedIntermediaryAccountResponseSDKType>;
-            totalSuperfluidDelegations(request?: _116.TotalSuperfluidDelegationsRequest): Promise<_116.TotalSuperfluidDelegationsResponseSDKType>;
-            superfluidDelegationAmount(request: _116.SuperfluidDelegationAmountRequest): Promise<_116.SuperfluidDelegationAmountResponseSDKType>;
-            superfluidDelegationsByDelegator(request: _116.SuperfluidDelegationsByDelegatorRequest): Promise<_116.SuperfluidDelegationsByDelegatorResponseSDKType>;
-            superfluidUndelegationsByDelegator(request: _116.SuperfluidUndelegationsByDelegatorRequest): Promise<_116.SuperfluidUndelegationsByDelegatorResponseSDKType>;
-            superfluidDelegationsByValidatorDenom(request: _116.SuperfluidDelegationsByValidatorDenomRequest): Promise<_116.SuperfluidDelegationsByValidatorDenomResponseSDKType>;
-            estimateSuperfluidDelegatedAmountByValidatorDenom(request: _116.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<_116.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType>;
-            totalDelegationByDelegator(request: _116.QueryTotalDelegationByDelegatorRequest): Promise<_116.QueryTotalDelegationByDelegatorResponseSDKType>;
+            params(request?: _116.QueryParamsRequest): Promise<_116.QueryParamsResponse>;
+            assetType(request: _116.AssetTypeRequest): Promise<_116.AssetTypeResponse>;
+            allAssets(request?: _116.AllAssetsRequest): Promise<_116.AllAssetsResponse>;
+            assetMultiplier(request: _116.AssetMultiplierRequest): Promise<_116.AssetMultiplierResponse>;
+            allIntermediaryAccounts(request?: _116.AllIntermediaryAccountsRequest): Promise<_116.AllIntermediaryAccountsResponse>;
+            connectedIntermediaryAccount(request: _116.ConnectedIntermediaryAccountRequest): Promise<_116.ConnectedIntermediaryAccountResponse>;
+            totalSuperfluidDelegations(request?: _116.TotalSuperfluidDelegationsRequest): Promise<_116.TotalSuperfluidDelegationsResponse>;
+            superfluidDelegationAmount(request: _116.SuperfluidDelegationAmountRequest): Promise<_116.SuperfluidDelegationAmountResponse>;
+            superfluidDelegationsByDelegator(request: _116.SuperfluidDelegationsByDelegatorRequest): Promise<_116.SuperfluidDelegationsByDelegatorResponse>;
+            superfluidUndelegationsByDelegator(request: _116.SuperfluidUndelegationsByDelegatorRequest): Promise<_116.SuperfluidUndelegationsByDelegatorResponse>;
+            superfluidDelegationsByValidatorDenom(request: _116.SuperfluidDelegationsByValidatorDenomRequest): Promise<_116.SuperfluidDelegationsByValidatorDenomResponse>;
+            estimateSuperfluidDelegatedAmountByValidatorDenom(request: _116.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<_116.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>;
+            totalDelegationByDelegator(request: _116.QueryTotalDelegationByDelegatorRequest): Promise<_116.QueryTotalDelegationByDelegatorResponse>;
         };
         LCDQueryClient: typeof _227.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
@@ -3694,7 +3694,7 @@ export declare namespace osmosis {
         };
         MsgSuperfluidDelegateResponse: {
             encode(_: _118.MsgSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgSuperfluidDelegateResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgSuperfluidDelegateResponse;
             fromPartial(_: {}): _118.MsgSuperfluidDelegateResponse;
         };
         MsgSuperfluidUndelegate: {
@@ -3707,7 +3707,7 @@ export declare namespace osmosis {
         };
         MsgSuperfluidUndelegateResponse: {
             encode(_: _118.MsgSuperfluidUndelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgSuperfluidUndelegateResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgSuperfluidUndelegateResponse;
             fromPartial(_: {}): _118.MsgSuperfluidUndelegateResponse;
         };
         MsgSuperfluidUnbondLock: {
@@ -3720,7 +3720,7 @@ export declare namespace osmosis {
         };
         MsgSuperfluidUnbondLockResponse: {
             encode(_: _118.MsgSuperfluidUnbondLockResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgSuperfluidUnbondLockResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgSuperfluidUnbondLockResponse;
             fromPartial(_: {}): _118.MsgSuperfluidUnbondLockResponse;
         };
         MsgLockAndSuperfluidDelegate: {
@@ -3737,7 +3737,7 @@ export declare namespace osmosis {
         };
         MsgLockAndSuperfluidDelegateResponse: {
             encode(message: _118.MsgLockAndSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgLockAndSuperfluidDelegateResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgLockAndSuperfluidDelegateResponse;
             fromPartial(object: {
                 ID?: any;
             }): _118.MsgLockAndSuperfluidDelegateResponse;
@@ -3752,7 +3752,7 @@ export declare namespace osmosis {
         };
         MsgUnPoolWhitelistedPoolResponse: {
             encode(message: _118.MsgUnPoolWhitelistedPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgUnPoolWhitelistedPoolResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.MsgUnPoolWhitelistedPoolResponse;
             fromPartial(object: {
                 exitedLockIds?: any[];
             }): _118.MsgUnPoolWhitelistedPoolResponse;
@@ -3825,7 +3825,7 @@ export declare namespace osmosis {
         };
         QueryParamsResponse: {
             encode(message: _116.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.QueryParamsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.QueryParamsResponse;
             fromPartial(object: {
                 params?: {
                     minimumRiskFactor?: string;
@@ -3841,7 +3841,7 @@ export declare namespace osmosis {
         };
         AssetTypeResponse: {
             encode(message: _116.AssetTypeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.AssetTypeResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.AssetTypeResponse;
             fromPartial(object: {
                 assetType?: _117.SuperfluidAssetType;
             }): _116.AssetTypeResponse;
@@ -3853,7 +3853,7 @@ export declare namespace osmosis {
         };
         AllAssetsResponse: {
             encode(message: _116.AllAssetsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.AllAssetsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.AllAssetsResponse;
             fromPartial(object: {
                 assets?: {
                     denom?: string;
@@ -3870,7 +3870,7 @@ export declare namespace osmosis {
         };
         AssetMultiplierResponse: {
             encode(message: _116.AssetMultiplierResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.AssetMultiplierResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.AssetMultiplierResponse;
             fromPartial(object: {
                 osmoEquivalentMultiplier?: {
                     epochNumber?: any;
@@ -3904,7 +3904,7 @@ export declare namespace osmosis {
         };
         AllIntermediaryAccountsResponse: {
             encode(message: _116.AllIntermediaryAccountsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.AllIntermediaryAccountsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.AllIntermediaryAccountsResponse;
             fromPartial(object: {
                 accounts?: {
                     denom?: string;
@@ -3927,7 +3927,7 @@ export declare namespace osmosis {
         };
         ConnectedIntermediaryAccountResponse: {
             encode(message: _116.ConnectedIntermediaryAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.ConnectedIntermediaryAccountResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.ConnectedIntermediaryAccountResponse;
             fromPartial(object: {
                 account?: {
                     denom?: string;
@@ -3944,7 +3944,7 @@ export declare namespace osmosis {
         };
         TotalSuperfluidDelegationsResponse: {
             encode(message: _116.TotalSuperfluidDelegationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.TotalSuperfluidDelegationsResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.TotalSuperfluidDelegationsResponse;
             fromPartial(object: {
                 totalDelegations?: string;
             }): _116.TotalSuperfluidDelegationsResponse;
@@ -3960,7 +3960,7 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationAmountResponse: {
             encode(message: _116.SuperfluidDelegationAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.SuperfluidDelegationAmountResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.SuperfluidDelegationAmountResponse;
             fromPartial(object: {
                 amount?: {
                     denom?: string;
@@ -3977,7 +3977,7 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationsByDelegatorResponse: {
             encode(message: _116.SuperfluidDelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.SuperfluidDelegationsByDelegatorResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.SuperfluidDelegationsByDelegatorResponse;
             fromPartial(object: {
                 superfluidDelegationRecords?: {
                     delegatorAddress?: string;
@@ -4011,7 +4011,7 @@ export declare namespace osmosis {
         };
         SuperfluidUndelegationsByDelegatorResponse: {
             encode(message: _116.SuperfluidUndelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.SuperfluidUndelegationsByDelegatorResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.SuperfluidUndelegationsByDelegatorResponse;
             fromPartial(object: {
                 superfluidDelegationRecords?: {
                     delegatorAddress?: string;
@@ -4050,7 +4050,7 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationsByValidatorDenomResponse: {
             encode(message: _116.SuperfluidDelegationsByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.SuperfluidDelegationsByValidatorDenomResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.SuperfluidDelegationsByValidatorDenomResponse;
             fromPartial(object: {
                 superfluidDelegationRecords?: {
                     delegatorAddress?: string;
@@ -4076,7 +4076,7 @@ export declare namespace osmosis {
         };
         EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: {
             encode(message: _116.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
             fromPartial(object: {
                 totalDelegatedCoins?: {
                     denom?: string;
@@ -4093,7 +4093,7 @@ export declare namespace osmosis {
         };
         QueryTotalDelegationByDelegatorResponse: {
             encode(message: _116.QueryTotalDelegationByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.QueryTotalDelegationByDelegatorResponseSDKType;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.QueryTotalDelegationByDelegatorResponse;
             fromPartial(object: {
                 superfluidDelegationRecords?: {
                     delegatorAddress?: string;
@@ -4168,9 +4168,9 @@ export declare namespace osmosis {
             MsgClientImpl: typeof _249.MsgClientImpl;
             QueryClientImpl: typeof _239.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                params(request?: _122.QueryParamsRequest): Promise<_122.QueryParamsResponseSDKType>;
-                denomAuthorityMetadata(request: _122.QueryDenomAuthorityMetadataRequest): Promise<_122.QueryDenomAuthorityMetadataResponseSDKType>;
-                denomsFromCreator(request: _122.QueryDenomsFromCreatorRequest): Promise<_122.QueryDenomsFromCreatorResponseSDKType>;
+                params(request?: _122.QueryParamsRequest): Promise<_122.QueryParamsResponse>;
+                denomAuthorityMetadata(request: _122.QueryDenomAuthorityMetadataRequest): Promise<_122.QueryDenomAuthorityMetadataResponse>;
+                denomsFromCreator(request: _122.QueryDenomsFromCreatorRequest): Promise<_122.QueryDenomsFromCreatorResponse>;
             };
             LCDQueryClient: typeof _228.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
@@ -4350,7 +4350,7 @@ export declare namespace osmosis {
             };
             MsgCreateDenomResponse: {
                 encode(message: _123.MsgCreateDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgCreateDenomResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgCreateDenomResponse;
                 fromPartial(object: {
                     newTokenDenom?: string;
                 }): _123.MsgCreateDenomResponse;
@@ -4368,7 +4368,7 @@ export declare namespace osmosis {
             };
             MsgMintResponse: {
                 encode(_: _123.MsgMintResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgMintResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgMintResponse;
                 fromPartial(_: {}): _123.MsgMintResponse;
             };
             MsgBurn: {
@@ -4384,7 +4384,7 @@ export declare namespace osmosis {
             };
             MsgBurnResponse: {
                 encode(_: _123.MsgBurnResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgBurnResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgBurnResponse;
                 fromPartial(_: {}): _123.MsgBurnResponse;
             };
             MsgChangeAdmin: {
@@ -4398,7 +4398,7 @@ export declare namespace osmosis {
             };
             MsgChangeAdminResponse: {
                 encode(_: _123.MsgChangeAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgChangeAdminResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgChangeAdminResponse;
                 fromPartial(_: {}): _123.MsgChangeAdminResponse;
             };
             MsgSetDenomMetadata: {
@@ -4424,7 +4424,7 @@ export declare namespace osmosis {
             };
             MsgSetDenomMetadataResponse: {
                 encode(_: _123.MsgSetDenomMetadataResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgSetDenomMetadataResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.MsgSetDenomMetadataResponse;
                 fromPartial(_: {}): _123.MsgSetDenomMetadataResponse;
             };
             QueryParamsRequest: {
@@ -4434,7 +4434,7 @@ export declare namespace osmosis {
             };
             QueryParamsResponse: {
                 encode(message: _122.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryParamsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryParamsResponse;
                 fromPartial(object: {
                     params?: {
                         denomCreationFee?: {
@@ -4453,7 +4453,7 @@ export declare namespace osmosis {
             };
             QueryDenomAuthorityMetadataResponse: {
                 encode(message: _122.QueryDenomAuthorityMetadataResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryDenomAuthorityMetadataResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryDenomAuthorityMetadataResponse;
                 fromPartial(object: {
                     authorityMetadata?: {
                         admin?: string;
@@ -4469,7 +4469,7 @@ export declare namespace osmosis {
             };
             QueryDenomsFromCreatorResponse: {
                 encode(message: _122.QueryDenomsFromCreatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryDenomsFromCreatorResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.QueryDenomsFromCreatorResponse;
                 fromPartial(object: {
                     denoms?: string[];
                 }): _122.QueryDenomsFromCreatorResponse;
@@ -4525,9 +4525,9 @@ export declare namespace osmosis {
         const v1beta1: {
             QueryClientImpl: typeof _240.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                params(request?: _125.ParamsRequest): Promise<_125.ParamsResponseSDKType>;
-                arithmeticTwap(request: _125.ArithmeticTwapRequest): Promise<_125.ArithmeticTwapResponseSDKType>;
-                arithmeticTwapToNow(request: _125.ArithmeticTwapToNowRequest): Promise<_125.ArithmeticTwapToNowResponseSDKType>;
+                params(request?: _125.ParamsRequest): Promise<_125.ParamsResponse>;
+                arithmeticTwap(request: _125.ArithmeticTwapRequest): Promise<_125.ArithmeticTwapResponse>;
+                arithmeticTwapToNow(request: _125.ArithmeticTwapToNowRequest): Promise<_125.ArithmeticTwapToNowResponse>;
             };
             LCDQueryClient: typeof _229.LCDQueryClient;
             TwapRecord: {
@@ -4559,7 +4559,7 @@ export declare namespace osmosis {
             };
             ArithmeticTwapResponse: {
                 encode(message: _125.ArithmeticTwapResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.ArithmeticTwapResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.ArithmeticTwapResponse;
                 fromPartial(object: {
                     arithmeticTwap?: string;
                 }): _125.ArithmeticTwapResponse;
@@ -4576,7 +4576,7 @@ export declare namespace osmosis {
             };
             ArithmeticTwapToNowResponse: {
                 encode(message: _125.ArithmeticTwapToNowResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.ArithmeticTwapToNowResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.ArithmeticTwapToNowResponse;
                 fromPartial(object: {
                     arithmeticTwap?: string;
                 }): _125.ArithmeticTwapToNowResponse;
@@ -4588,7 +4588,7 @@ export declare namespace osmosis {
             };
             ParamsResponse: {
                 encode(message: _125.ParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.ParamsResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.ParamsResponse;
                 fromPartial(object: {
                     params?: {
                         pruneEpochIdentifier?: string;
@@ -4641,10 +4641,10 @@ export declare namespace osmosis {
         const v1beta1: {
             QueryClientImpl: typeof _241.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                feeTokens(request?: _130.QueryFeeTokensRequest): Promise<_130.QueryFeeTokensResponseSDKType>;
-                denomSpotPrice(request: _130.QueryDenomSpotPriceRequest): Promise<_130.QueryDenomSpotPriceResponseSDKType>;
-                denomPoolId(request: _130.QueryDenomPoolIdRequest): Promise<_130.QueryDenomPoolIdResponseSDKType>;
-                baseDenom(request?: _130.QueryBaseDenomRequest): Promise<_130.QueryBaseDenomResponseSDKType>;
+                feeTokens(request?: _130.QueryFeeTokensRequest): Promise<_130.QueryFeeTokensResponse>;
+                denomSpotPrice(request: _130.QueryDenomSpotPriceRequest): Promise<_130.QueryDenomSpotPriceResponse>;
+                denomPoolId(request: _130.QueryDenomPoolIdRequest): Promise<_130.QueryDenomPoolIdResponse>;
+                baseDenom(request?: _130.QueryBaseDenomRequest): Promise<_130.QueryBaseDenomResponse>;
             };
             LCDQueryClient: typeof _230.LCDQueryClient;
             QueryFeeTokensRequest: {
@@ -4654,7 +4654,7 @@ export declare namespace osmosis {
             };
             QueryFeeTokensResponse: {
                 encode(message: _130.QueryFeeTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryFeeTokensResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryFeeTokensResponse;
                 fromPartial(object: {
                     feeTokens?: {
                         denom?: string;
@@ -4671,7 +4671,7 @@ export declare namespace osmosis {
             };
             QueryDenomSpotPriceResponse: {
                 encode(message: _130.QueryDenomSpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryDenomSpotPriceResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryDenomSpotPriceResponse;
                 fromPartial(object: {
                     poolID?: any;
                     spotPrice?: string;
@@ -4686,7 +4686,7 @@ export declare namespace osmosis {
             };
             QueryDenomPoolIdResponse: {
                 encode(message: _130.QueryDenomPoolIdResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryDenomPoolIdResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryDenomPoolIdResponse;
                 fromPartial(object: {
                     poolID?: any;
                 }): _130.QueryDenomPoolIdResponse;
@@ -4698,7 +4698,7 @@ export declare namespace osmosis {
             };
             QueryBaseDenomResponse: {
                 encode(message: _130.QueryBaseDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryBaseDenomResponseSDKType;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.QueryBaseDenomResponse;
                 fromPartial(object: {
                     baseDenom?: string;
                 }): _130.QueryBaseDenomResponse;
@@ -4790,206 +4790,206 @@ export declare namespace osmosis {
             cosmos: {
                 authz: {
                     v1beta1: {
-                        grants(request: import("../cosmos/authz/v1beta1/query").QueryGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGrantsResponseSDKType>;
-                        granterGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranterGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranterGrantsResponseSDKType>;
-                        granteeGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsResponseSDKType>;
+                        grants(request: import("../cosmos/authz/v1beta1/query").QueryGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGrantsResponse>;
+                        granterGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranterGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranterGrantsResponse>;
+                        granteeGrants(request: import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsRequest): Promise<import("../cosmos/authz/v1beta1/query").QueryGranteeGrantsResponse>;
                     };
                 };
                 bank: {
                     v1beta1: {
-                        balance(request: import("../cosmos/bank/v1beta1/query").QueryBalanceRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryBalanceResponseSDKType>;
-                        allBalances(request: import("../cosmos/bank/v1beta1/query").QueryAllBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryAllBalancesResponseSDKType>;
-                        spendableBalances(request: import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesResponseSDKType>;
-                        totalSupply(request?: import("../cosmos/bank/v1beta1/query").QueryTotalSupplyRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryTotalSupplyResponseSDKType>;
-                        supplyOf(request: import("../cosmos/bank/v1beta1/query").QuerySupplyOfRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySupplyOfResponseSDKType>;
-                        params(request?: import("../cosmos/bank/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryParamsResponseSDKType>;
-                        denomMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomMetadataResponseSDKType>;
-                        denomsMetadata(request?: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponseSDKType>;
-                        denomOwners(request: import("../cosmos/bank/v1beta1/query").QueryDenomOwnersRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomOwnersResponseSDKType>;
+                        balance(request: import("../cosmos/bank/v1beta1/query").QueryBalanceRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryBalanceResponse>;
+                        allBalances(request: import("../cosmos/bank/v1beta1/query").QueryAllBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryAllBalancesResponse>;
+                        spendableBalances(request: import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySpendableBalancesResponse>;
+                        totalSupply(request?: import("../cosmos/bank/v1beta1/query").QueryTotalSupplyRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryTotalSupplyResponse>;
+                        supplyOf(request: import("../cosmos/bank/v1beta1/query").QuerySupplyOfRequest): Promise<import("../cosmos/bank/v1beta1/query").QuerySupplyOfResponse>;
+                        params(request?: import("../cosmos/bank/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryParamsResponse>;
+                        denomMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomMetadataResponse>;
+                        denomsMetadata(request?: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponse>;
+                        denomOwners(request: import("../cosmos/bank/v1beta1/query").QueryDenomOwnersRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomOwnersResponse>;
                     };
                 };
                 distribution: {
                     v1beta1: {
-                        params(request?: import("../cosmos/distribution/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryParamsResponseSDKType>;
-                        validatorOutstandingRewards(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsResponseSDKType>;
-                        validatorCommission(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionResponseSDKType>;
-                        validatorSlashes(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesResponseSDKType>;
-                        delegationRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsResponseSDKType>;
-                        delegationTotalRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsResponseSDKType>;
-                        delegatorValidators(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsResponseSDKType>;
-                        delegatorWithdrawAddress(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressResponseSDKType>;
-                        communityPool(request?: import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolResponseSDKType>;
+                        params(request?: import("../cosmos/distribution/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryParamsResponse>;
+                        validatorOutstandingRewards(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorOutstandingRewardsResponse>;
+                        validatorCommission(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorCommissionResponse>;
+                        validatorSlashes(request: import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryValidatorSlashesResponse>;
+                        delegationRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationRewardsResponse>;
+                        delegationTotalRewards(request: import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegationTotalRewardsResponse>;
+                        delegatorValidators(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorValidatorsResponse>;
+                        delegatorWithdrawAddress(request: import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryDelegatorWithdrawAddressResponse>;
+                        communityPool(request?: import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolRequest): Promise<import("../cosmos/distribution/v1beta1/query").QueryCommunityPoolResponse>;
                     };
                 };
                 gov: {
                     v1: {
-                        proposal(request: import("../cosmos/gov/v1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalResponseSDKType>;
-                        proposals(request: import("../cosmos/gov/v1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalsResponseSDKType>;
-                        vote(request: import("../cosmos/gov/v1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1/query").QueryVoteResponseSDKType>;
-                        votes(request: import("../cosmos/gov/v1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1/query").QueryVotesResponseSDKType>;
-                        params(request: import("../cosmos/gov/v1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1/query").QueryParamsResponseSDKType>;
-                        deposit(request: import("../cosmos/gov/v1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositResponseSDKType>;
-                        deposits(request: import("../cosmos/gov/v1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositsResponseSDKType>;
-                        tallyResult(request: import("../cosmos/gov/v1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1/query").QueryTallyResultResponseSDKType>;
+                        proposal(request: import("../cosmos/gov/v1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalResponse>;
+                        proposals(request: import("../cosmos/gov/v1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalsResponse>;
+                        vote(request: import("../cosmos/gov/v1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1/query").QueryVoteResponse>;
+                        votes(request: import("../cosmos/gov/v1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1/query").QueryVotesResponse>;
+                        params(request: import("../cosmos/gov/v1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1/query").QueryParamsResponse>;
+                        deposit(request: import("../cosmos/gov/v1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositResponse>;
+                        deposits(request: import("../cosmos/gov/v1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositsResponse>;
+                        tallyResult(request: import("../cosmos/gov/v1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1/query").QueryTallyResultResponse>;
                     };
                     v1beta1: {
-                        proposal(request: import("../cosmos/gov/v1beta1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalResponseSDKType>;
-                        proposals(request: import("../cosmos/gov/v1beta1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalsResponseSDKType>;
-                        vote(request: import("../cosmos/gov/v1beta1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVoteResponseSDKType>;
-                        votes(request: import("../cosmos/gov/v1beta1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVotesResponseSDKType>;
-                        params(request: import("../cosmos/gov/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryParamsResponseSDKType>;
-                        deposit(request: import("../cosmos/gov/v1beta1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositResponseSDKType>;
-                        deposits(request: import("../cosmos/gov/v1beta1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositsResponseSDKType>;
-                        tallyResult(request: import("../cosmos/gov/v1beta1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryTallyResultResponseSDKType>;
+                        proposal(request: import("../cosmos/gov/v1beta1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalResponse>;
+                        proposals(request: import("../cosmos/gov/v1beta1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryProposalsResponse>;
+                        vote(request: import("../cosmos/gov/v1beta1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVoteResponse>;
+                        votes(request: import("../cosmos/gov/v1beta1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryVotesResponse>;
+                        params(request: import("../cosmos/gov/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryParamsResponse>;
+                        deposit(request: import("../cosmos/gov/v1beta1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositResponse>;
+                        deposits(request: import("../cosmos/gov/v1beta1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositsResponse>;
+                        tallyResult(request: import("../cosmos/gov/v1beta1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryTallyResultResponse>;
                     };
                 };
                 staking: {
                     v1beta1: {
-                        validators(request: import("../cosmos/staking/v1beta1/query").QueryValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorsResponseSDKType>;
-                        validator(request: import("../cosmos/staking/v1beta1/query").QueryValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorResponseSDKType>;
-                        validatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsResponseSDKType>;
-                        validatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsResponseSDKType>;
-                        delegation(request: import("../cosmos/staking/v1beta1/query").QueryDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegationResponseSDKType>;
-                        unbondingDelegation(request: import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationResponseSDKType>;
-                        delegatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsResponseSDKType>;
-                        delegatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsResponseSDKType>;
-                        redelegations(request: import("../cosmos/staking/v1beta1/query").QueryRedelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryRedelegationsResponseSDKType>;
-                        delegatorValidators(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsResponseSDKType>;
-                        delegatorValidator(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorResponseSDKType>;
-                        historicalInfo(request: import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoResponseSDKType>;
-                        pool(request?: import("../cosmos/staking/v1beta1/query").QueryPoolRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryPoolResponseSDKType>;
-                        params(request?: import("../cosmos/staking/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryParamsResponseSDKType>;
+                        validators(request: import("../cosmos/staking/v1beta1/query").QueryValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorsResponse>;
+                        validator(request: import("../cosmos/staking/v1beta1/query").QueryValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorResponse>;
+                        validatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorDelegationsResponse>;
+                        validatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryValidatorUnbondingDelegationsResponse>;
+                        delegation(request: import("../cosmos/staking/v1beta1/query").QueryDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegationResponse>;
+                        unbondingDelegation(request: import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryUnbondingDelegationResponse>;
+                        delegatorDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorDelegationsResponse>;
+                        delegatorUnbondingDelegations(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorUnbondingDelegationsResponse>;
+                        redelegations(request: import("../cosmos/staking/v1beta1/query").QueryRedelegationsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryRedelegationsResponse>;
+                        delegatorValidators(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorsResponse>;
+                        delegatorValidator(request: import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryDelegatorValidatorResponse>;
+                        historicalInfo(request: import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryHistoricalInfoResponse>;
+                        pool(request?: import("../cosmos/staking/v1beta1/query").QueryPoolRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryPoolResponse>;
+                        params(request?: import("../cosmos/staking/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/staking/v1beta1/query").QueryParamsResponse>;
                     };
                 };
                 tx: {
                     v1beta1: {
-                        simulate(request: import("../cosmos/tx/v1beta1/service").SimulateRequest): Promise<import("../cosmos/tx/v1beta1/service").SimulateResponseSDKType>;
-                        getTx(request: import("../cosmos/tx/v1beta1/service").GetTxRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxResponseSDKType>;
-                        broadcastTx(request: import("../cosmos/tx/v1beta1/service").BroadcastTxRequest): Promise<import("../cosmos/tx/v1beta1/service").BroadcastTxResponseSDKType>;
-                        getTxsEvent(request: import("../cosmos/tx/v1beta1/service").GetTxsEventRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxsEventResponseSDKType>;
-                        getBlockWithTxs(request: import("../cosmos/tx/v1beta1/service").GetBlockWithTxsRequest): Promise<import("../cosmos/tx/v1beta1/service").GetBlockWithTxsResponseSDKType>;
+                        simulate(request: import("../cosmos/tx/v1beta1/service").SimulateRequest): Promise<import("../cosmos/tx/v1beta1/service").SimulateResponse>;
+                        getTx(request: import("../cosmos/tx/v1beta1/service").GetTxRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxResponse>;
+                        broadcastTx(request: import("../cosmos/tx/v1beta1/service").BroadcastTxRequest): Promise<import("../cosmos/tx/v1beta1/service").BroadcastTxResponse>;
+                        getTxsEvent(request: import("../cosmos/tx/v1beta1/service").GetTxsEventRequest): Promise<import("../cosmos/tx/v1beta1/service").GetTxsEventResponse>;
+                        getBlockWithTxs(request: import("../cosmos/tx/v1beta1/service").GetBlockWithTxsRequest): Promise<import("../cosmos/tx/v1beta1/service").GetBlockWithTxsResponse>;
                     };
                 };
                 upgrade: {
                     v1beta1: {
-                        currentPlan(request?: import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanResponseSDKType>;
-                        appliedPlan(request: import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanResponseSDKType>;
-                        upgradedConsensusState(request: import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateResponseSDKType>;
-                        moduleVersions(request: import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsResponseSDKType>;
-                        authority(request?: import("../cosmos/upgrade/v1beta1/query").QueryAuthorityRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAuthorityResponseSDKType>;
+                        currentPlan(request?: import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryCurrentPlanResponse>;
+                        appliedPlan(request: import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAppliedPlanResponse>;
+                        upgradedConsensusState(request: import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryUpgradedConsensusStateResponse>;
+                        moduleVersions(request: import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryModuleVersionsResponse>;
+                        authority(request?: import("../cosmos/upgrade/v1beta1/query").QueryAuthorityRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAuthorityResponse>;
                     };
                 };
             };
             osmosis: {
                 epochs: {
                     v1beta1: {
-                        epochInfos(request?: _83.QueryEpochsInfoRequest): Promise<_83.QueryEpochsInfoResponseSDKType>;
-                        currentEpoch(request: _83.QueryCurrentEpochRequest): Promise<_83.QueryCurrentEpochResponseSDKType>;
+                        epochInfos(request?: _83.QueryEpochsInfoRequest): Promise<_83.QueryEpochsInfoResponse>;
+                        currentEpoch(request: _83.QueryCurrentEpochRequest): Promise<_83.QueryCurrentEpochResponse>;
                     };
                 };
                 gamm: {
                     v1beta1: {
-                        pools(request?: _86.QueryPoolsRequest): Promise<_86.QueryPoolsResponseSDKType>;
-                        numPools(request?: _86.QueryNumPoolsRequest): Promise<_86.QueryNumPoolsResponseSDKType>;
-                        totalLiquidity(request?: _86.QueryTotalLiquidityRequest): Promise<_86.QueryTotalLiquidityResponseSDKType>;
-                        pool(request: _86.QueryPoolRequest): Promise<_86.QueryPoolResponseSDKType>;
-                        poolType(request: _86.QueryPoolTypeRequest): Promise<_86.QueryPoolTypeResponseSDKType>;
-                        poolParams(request: _86.QueryPoolParamsRequest): Promise<_86.QueryPoolParamsResponseSDKType>;
-                        totalPoolLiquidity(request: _86.QueryTotalPoolLiquidityRequest): Promise<_86.QueryTotalPoolLiquidityResponseSDKType>;
-                        totalShares(request: _86.QueryTotalSharesRequest): Promise<_86.QueryTotalSharesResponseSDKType>;
-                        spotPrice(request: _86.QuerySpotPriceRequest): Promise<_86.QuerySpotPriceResponseSDKType>;
-                        estimateSwapExactAmountIn(request: _86.QuerySwapExactAmountInRequest): Promise<_86.QuerySwapExactAmountInResponseSDKType>;
-                        estimateSwapExactAmountOut(request: _86.QuerySwapExactAmountOutRequest): Promise<_86.QuerySwapExactAmountOutResponseSDKType>;
+                        pools(request?: _86.QueryPoolsRequest): Promise<_86.QueryPoolsResponse>;
+                        numPools(request?: _86.QueryNumPoolsRequest): Promise<_86.QueryNumPoolsResponse>;
+                        totalLiquidity(request?: _86.QueryTotalLiquidityRequest): Promise<_86.QueryTotalLiquidityResponse>;
+                        pool(request: _86.QueryPoolRequest): Promise<_86.QueryPoolResponse>;
+                        poolType(request: _86.QueryPoolTypeRequest): Promise<_86.QueryPoolTypeResponse>;
+                        poolParams(request: _86.QueryPoolParamsRequest): Promise<_86.QueryPoolParamsResponse>;
+                        totalPoolLiquidity(request: _86.QueryTotalPoolLiquidityRequest): Promise<_86.QueryTotalPoolLiquidityResponse>;
+                        totalShares(request: _86.QueryTotalSharesRequest): Promise<_86.QueryTotalSharesResponse>;
+                        spotPrice(request: _86.QuerySpotPriceRequest): Promise<_86.QuerySpotPriceResponse>;
+                        estimateSwapExactAmountIn(request: _86.QuerySwapExactAmountInRequest): Promise<_86.QuerySwapExactAmountInResponse>;
+                        estimateSwapExactAmountOut(request: _86.QuerySwapExactAmountOutRequest): Promise<_86.QuerySwapExactAmountOutResponse>;
                     };
                 };
                 incentives: {
-                    moduleToDistributeCoins(request?: _94.ModuleToDistributeCoinsRequest): Promise<_94.ModuleToDistributeCoinsResponseSDKType>;
-                    moduleDistributedCoins(request?: _94.ModuleDistributedCoinsRequest): Promise<_94.ModuleDistributedCoinsResponseSDKType>;
-                    gaugeByID(request: _94.GaugeByIDRequest): Promise<_94.GaugeByIDResponseSDKType>;
-                    gauges(request?: _94.GaugesRequest): Promise<_94.GaugesResponseSDKType>;
-                    activeGauges(request?: _94.ActiveGaugesRequest): Promise<_94.ActiveGaugesResponseSDKType>;
-                    activeGaugesPerDenom(request: _94.ActiveGaugesPerDenomRequest): Promise<_94.ActiveGaugesPerDenomResponseSDKType>;
-                    upcomingGauges(request?: _94.UpcomingGaugesRequest): Promise<_94.UpcomingGaugesResponseSDKType>;
-                    upcomingGaugesPerDenom(request: _94.UpcomingGaugesPerDenomRequest): Promise<_94.UpcomingGaugesPerDenomResponseSDKType>;
-                    rewardsEst(request: _94.RewardsEstRequest): Promise<_94.RewardsEstResponseSDKType>;
-                    lockableDurations(request?: _94.QueryLockableDurationsRequest): Promise<_94.QueryLockableDurationsResponseSDKType>;
+                    moduleToDistributeCoins(request?: _94.ModuleToDistributeCoinsRequest): Promise<_94.ModuleToDistributeCoinsResponse>;
+                    moduleDistributedCoins(request?: _94.ModuleDistributedCoinsRequest): Promise<_94.ModuleDistributedCoinsResponse>;
+                    gaugeByID(request: _94.GaugeByIDRequest): Promise<_94.GaugeByIDResponse>;
+                    gauges(request?: _94.GaugesRequest): Promise<_94.GaugesResponse>;
+                    activeGauges(request?: _94.ActiveGaugesRequest): Promise<_94.ActiveGaugesResponse>;
+                    activeGaugesPerDenom(request: _94.ActiveGaugesPerDenomRequest): Promise<_94.ActiveGaugesPerDenomResponse>;
+                    upcomingGauges(request?: _94.UpcomingGaugesRequest): Promise<_94.UpcomingGaugesResponse>;
+                    upcomingGaugesPerDenom(request: _94.UpcomingGaugesPerDenomRequest): Promise<_94.UpcomingGaugesPerDenomResponse>;
+                    rewardsEst(request: _94.RewardsEstRequest): Promise<_94.RewardsEstResponse>;
+                    lockableDurations(request?: _94.QueryLockableDurationsRequest): Promise<_94.QueryLockableDurationsResponse>;
                 };
                 lockup: {
-                    moduleBalance(request?: _98.ModuleBalanceRequest): Promise<_98.ModuleBalanceResponseSDKType>;
-                    moduleLockedAmount(request?: _98.ModuleLockedAmountRequest): Promise<_98.ModuleLockedAmountResponseSDKType>;
-                    accountUnlockableCoins(request: _98.AccountUnlockableCoinsRequest): Promise<_98.AccountUnlockableCoinsResponseSDKType>;
-                    accountUnlockingCoins(request: _98.AccountUnlockingCoinsRequest): Promise<_98.AccountUnlockingCoinsResponseSDKType>;
-                    accountLockedCoins(request: _98.AccountLockedCoinsRequest): Promise<_98.AccountLockedCoinsResponseSDKType>;
-                    accountLockedPastTime(request: _98.AccountLockedPastTimeRequest): Promise<_98.AccountLockedPastTimeResponseSDKType>;
-                    accountLockedPastTimeNotUnlockingOnly(request: _98.AccountLockedPastTimeNotUnlockingOnlyRequest): Promise<_98.AccountLockedPastTimeNotUnlockingOnlyResponseSDKType>;
-                    accountUnlockedBeforeTime(request: _98.AccountUnlockedBeforeTimeRequest): Promise<_98.AccountUnlockedBeforeTimeResponseSDKType>;
-                    accountLockedPastTimeDenom(request: _98.AccountLockedPastTimeDenomRequest): Promise<_98.AccountLockedPastTimeDenomResponseSDKType>;
-                    lockedDenom(request: _98.LockedDenomRequest): Promise<_98.LockedDenomResponseSDKType>;
-                    lockedByID(request: _98.LockedRequest): Promise<_98.LockedResponseSDKType>;
-                    syntheticLockupsByLockupID(request: _98.SyntheticLockupsByLockupIDRequest): Promise<_98.SyntheticLockupsByLockupIDResponseSDKType>;
-                    accountLockedLongerDuration(request: _98.AccountLockedLongerDurationRequest): Promise<_98.AccountLockedLongerDurationResponseSDKType>;
-                    accountLockedDuration(request: _98.AccountLockedDurationRequest): Promise<_98.AccountLockedDurationResponseSDKType>;
-                    accountLockedLongerDurationNotUnlockingOnly(request: _98.AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<_98.AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType>;
-                    accountLockedLongerDurationDenom(request: _98.AccountLockedLongerDurationDenomRequest): Promise<_98.AccountLockedLongerDurationDenomResponseSDKType>;
+                    moduleBalance(request?: _98.ModuleBalanceRequest): Promise<_98.ModuleBalanceResponse>;
+                    moduleLockedAmount(request?: _98.ModuleLockedAmountRequest): Promise<_98.ModuleLockedAmountResponse>;
+                    accountUnlockableCoins(request: _98.AccountUnlockableCoinsRequest): Promise<_98.AccountUnlockableCoinsResponse>;
+                    accountUnlockingCoins(request: _98.AccountUnlockingCoinsRequest): Promise<_98.AccountUnlockingCoinsResponse>;
+                    accountLockedCoins(request: _98.AccountLockedCoinsRequest): Promise<_98.AccountLockedCoinsResponse>;
+                    accountLockedPastTime(request: _98.AccountLockedPastTimeRequest): Promise<_98.AccountLockedPastTimeResponse>;
+                    accountLockedPastTimeNotUnlockingOnly(request: _98.AccountLockedPastTimeNotUnlockingOnlyRequest): Promise<_98.AccountLockedPastTimeNotUnlockingOnlyResponse>;
+                    accountUnlockedBeforeTime(request: _98.AccountUnlockedBeforeTimeRequest): Promise<_98.AccountUnlockedBeforeTimeResponse>;
+                    accountLockedPastTimeDenom(request: _98.AccountLockedPastTimeDenomRequest): Promise<_98.AccountLockedPastTimeDenomResponse>;
+                    lockedDenom(request: _98.LockedDenomRequest): Promise<_98.LockedDenomResponse>;
+                    lockedByID(request: _98.LockedRequest): Promise<_98.LockedResponse>;
+                    syntheticLockupsByLockupID(request: _98.SyntheticLockupsByLockupIDRequest): Promise<_98.SyntheticLockupsByLockupIDResponse>;
+                    accountLockedLongerDuration(request: _98.AccountLockedLongerDurationRequest): Promise<_98.AccountLockedLongerDurationResponse>;
+                    accountLockedDuration(request: _98.AccountLockedDurationRequest): Promise<_98.AccountLockedDurationResponse>;
+                    accountLockedLongerDurationNotUnlockingOnly(request: _98.AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<_98.AccountLockedLongerDurationNotUnlockingOnlyResponse>;
+                    accountLockedLongerDurationDenom(request: _98.AccountLockedLongerDurationDenomRequest): Promise<_98.AccountLockedLongerDurationDenomResponse>;
                 };
                 mint: {
                     v1beta1: {
-                        params(request?: _102.QueryParamsRequest): Promise<_102.QueryParamsResponseSDKType>;
-                        epochProvisions(request?: _102.QueryEpochProvisionsRequest): Promise<_102.QueryEpochProvisionsResponseSDKType>;
+                        params(request?: _102.QueryParamsRequest): Promise<_102.QueryParamsResponse>;
+                        epochProvisions(request?: _102.QueryEpochProvisionsRequest): Promise<_102.QueryEpochProvisionsResponse>;
                     };
                 };
                 poolincentives: {
                     v1beta1: {
-                        gaugeIds(request: _106.QueryGaugeIdsRequest): Promise<_106.QueryGaugeIdsResponseSDKType>;
-                        distrInfo(request?: _106.QueryDistrInfoRequest): Promise<_106.QueryDistrInfoResponseSDKType>;
-                        params(request?: _106.QueryParamsRequest): Promise<_106.QueryParamsResponseSDKType>;
-                        lockableDurations(request?: _106.QueryLockableDurationsRequest): Promise<_106.QueryLockableDurationsResponseSDKType>;
-                        incentivizedPools(request?: _106.QueryIncentivizedPoolsRequest): Promise<_106.QueryIncentivizedPoolsResponseSDKType>;
-                        externalIncentiveGauges(request?: _106.QueryExternalIncentiveGaugesRequest): Promise<_106.QueryExternalIncentiveGaugesResponseSDKType>;
+                        gaugeIds(request: _106.QueryGaugeIdsRequest): Promise<_106.QueryGaugeIdsResponse>;
+                        distrInfo(request?: _106.QueryDistrInfoRequest): Promise<_106.QueryDistrInfoResponse>;
+                        params(request?: _106.QueryParamsRequest): Promise<_106.QueryParamsResponse>;
+                        lockableDurations(request?: _106.QueryLockableDurationsRequest): Promise<_106.QueryLockableDurationsResponse>;
+                        incentivizedPools(request?: _106.QueryIncentivizedPoolsRequest): Promise<_106.QueryIncentivizedPoolsResponse>;
+                        externalIncentiveGauges(request?: _106.QueryExternalIncentiveGaugesRequest): Promise<_106.QueryExternalIncentiveGaugesResponse>;
                     };
                 };
                 streamswap: {
                     v1: {
-                        sales(request?: _111.QuerySales): Promise<_111.QuerySalesResponseSDKType>;
-                        sale(request: _111.QuerySale): Promise<_111.QuerySaleResponseSDKType>;
-                        userPosition(request: _111.QueryUserPosition): Promise<_111.QueryUserPositionResponseSDKType>;
+                        sales(request?: _111.QuerySales): Promise<_111.QuerySalesResponse>;
+                        sale(request: _111.QuerySale): Promise<_111.QuerySaleResponse>;
+                        userPosition(request: _111.QueryUserPosition): Promise<_111.QueryUserPositionResponse>;
                     };
                 };
                 superfluid: {
-                    params(request?: _116.QueryParamsRequest): Promise<_116.QueryParamsResponseSDKType>;
-                    assetType(request: _116.AssetTypeRequest): Promise<_116.AssetTypeResponseSDKType>;
-                    allAssets(request?: _116.AllAssetsRequest): Promise<_116.AllAssetsResponseSDKType>;
-                    assetMultiplier(request: _116.AssetMultiplierRequest): Promise<_116.AssetMultiplierResponseSDKType>;
-                    allIntermediaryAccounts(request?: _116.AllIntermediaryAccountsRequest): Promise<_116.AllIntermediaryAccountsResponseSDKType>;
-                    connectedIntermediaryAccount(request: _116.ConnectedIntermediaryAccountRequest): Promise<_116.ConnectedIntermediaryAccountResponseSDKType>;
-                    totalSuperfluidDelegations(request?: _116.TotalSuperfluidDelegationsRequest): Promise<_116.TotalSuperfluidDelegationsResponseSDKType>;
-                    superfluidDelegationAmount(request: _116.SuperfluidDelegationAmountRequest): Promise<_116.SuperfluidDelegationAmountResponseSDKType>;
-                    superfluidDelegationsByDelegator(request: _116.SuperfluidDelegationsByDelegatorRequest): Promise<_116.SuperfluidDelegationsByDelegatorResponseSDKType>;
-                    superfluidUndelegationsByDelegator(request: _116.SuperfluidUndelegationsByDelegatorRequest): Promise<_116.SuperfluidUndelegationsByDelegatorResponseSDKType>;
-                    superfluidDelegationsByValidatorDenom(request: _116.SuperfluidDelegationsByValidatorDenomRequest): Promise<_116.SuperfluidDelegationsByValidatorDenomResponseSDKType>;
-                    estimateSuperfluidDelegatedAmountByValidatorDenom(request: _116.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<_116.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType>;
-                    totalDelegationByDelegator(request: _116.QueryTotalDelegationByDelegatorRequest): Promise<_116.QueryTotalDelegationByDelegatorResponseSDKType>;
+                    params(request?: _116.QueryParamsRequest): Promise<_116.QueryParamsResponse>;
+                    assetType(request: _116.AssetTypeRequest): Promise<_116.AssetTypeResponse>;
+                    allAssets(request?: _116.AllAssetsRequest): Promise<_116.AllAssetsResponse>;
+                    assetMultiplier(request: _116.AssetMultiplierRequest): Promise<_116.AssetMultiplierResponse>;
+                    allIntermediaryAccounts(request?: _116.AllIntermediaryAccountsRequest): Promise<_116.AllIntermediaryAccountsResponse>;
+                    connectedIntermediaryAccount(request: _116.ConnectedIntermediaryAccountRequest): Promise<_116.ConnectedIntermediaryAccountResponse>;
+                    totalSuperfluidDelegations(request?: _116.TotalSuperfluidDelegationsRequest): Promise<_116.TotalSuperfluidDelegationsResponse>;
+                    superfluidDelegationAmount(request: _116.SuperfluidDelegationAmountRequest): Promise<_116.SuperfluidDelegationAmountResponse>;
+                    superfluidDelegationsByDelegator(request: _116.SuperfluidDelegationsByDelegatorRequest): Promise<_116.SuperfluidDelegationsByDelegatorResponse>;
+                    superfluidUndelegationsByDelegator(request: _116.SuperfluidUndelegationsByDelegatorRequest): Promise<_116.SuperfluidUndelegationsByDelegatorResponse>;
+                    superfluidDelegationsByValidatorDenom(request: _116.SuperfluidDelegationsByValidatorDenomRequest): Promise<_116.SuperfluidDelegationsByValidatorDenomResponse>;
+                    estimateSuperfluidDelegatedAmountByValidatorDenom(request: _116.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<_116.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>;
+                    totalDelegationByDelegator(request: _116.QueryTotalDelegationByDelegatorRequest): Promise<_116.QueryTotalDelegationByDelegatorResponse>;
                 };
                 tokenfactory: {
                     v1beta1: {
-                        params(request?: _122.QueryParamsRequest): Promise<_122.QueryParamsResponseSDKType>;
-                        denomAuthorityMetadata(request: _122.QueryDenomAuthorityMetadataRequest): Promise<_122.QueryDenomAuthorityMetadataResponseSDKType>;
-                        denomsFromCreator(request: _122.QueryDenomsFromCreatorRequest): Promise<_122.QueryDenomsFromCreatorResponseSDKType>;
+                        params(request?: _122.QueryParamsRequest): Promise<_122.QueryParamsResponse>;
+                        denomAuthorityMetadata(request: _122.QueryDenomAuthorityMetadataRequest): Promise<_122.QueryDenomAuthorityMetadataResponse>;
+                        denomsFromCreator(request: _122.QueryDenomsFromCreatorRequest): Promise<_122.QueryDenomsFromCreatorResponse>;
                     };
                 };
                 twap: {
                     v1beta1: {
-                        params(request?: _125.ParamsRequest): Promise<_125.ParamsResponseSDKType>;
-                        arithmeticTwap(request: _125.ArithmeticTwapRequest): Promise<_125.ArithmeticTwapResponseSDKType>;
-                        arithmeticTwapToNow(request: _125.ArithmeticTwapToNowRequest): Promise<_125.ArithmeticTwapToNowResponseSDKType>;
+                        params(request?: _125.ParamsRequest): Promise<_125.ParamsResponse>;
+                        arithmeticTwap(request: _125.ArithmeticTwapRequest): Promise<_125.ArithmeticTwapResponse>;
+                        arithmeticTwapToNow(request: _125.ArithmeticTwapToNowRequest): Promise<_125.ArithmeticTwapToNowResponse>;
                     };
                 };
                 txfees: {
                     v1beta1: {
-                        feeTokens(request?: _130.QueryFeeTokensRequest): Promise<_130.QueryFeeTokensResponseSDKType>;
-                        denomSpotPrice(request: _130.QueryDenomSpotPriceRequest): Promise<_130.QueryDenomSpotPriceResponseSDKType>;
-                        denomPoolId(request: _130.QueryDenomPoolIdRequest): Promise<_130.QueryDenomPoolIdResponseSDKType>;
-                        baseDenom(request?: _130.QueryBaseDenomRequest): Promise<_130.QueryBaseDenomResponseSDKType>;
+                        feeTokens(request?: _130.QueryFeeTokensRequest): Promise<_130.QueryFeeTokensResponse>;
+                        denomSpotPrice(request: _130.QueryDenomSpotPriceRequest): Promise<_130.QueryDenomSpotPriceResponse>;
+                        denomPoolId(request: _130.QueryDenomPoolIdRequest): Promise<_130.QueryDenomPoolIdResponse>;
+                        baseDenom(request?: _130.QueryBaseDenomRequest): Promise<_130.QueryBaseDenomResponse>;
                     };
                 };
             };

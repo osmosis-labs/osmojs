@@ -342,7 +342,7 @@ export const MsgCreateSaleResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateSaleResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateSaleResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateSaleResponse();
@@ -572,7 +572,7 @@ export const MsgExitSaleResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSaleResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSaleResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExitSaleResponse();
@@ -672,7 +672,7 @@ export const MsgFinalizeSaleResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgFinalizeSaleResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgFinalizeSaleResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgFinalizeSaleResponse();

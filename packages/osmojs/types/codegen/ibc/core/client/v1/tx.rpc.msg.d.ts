@@ -1,17 +1,17 @@
 import { Rpc } from "@osmonauts/helpers";
-import { MsgCreateClient, MsgCreateClientResponseSDKType, MsgUpdateClient, MsgUpdateClientResponseSDKType, MsgUpgradeClient, MsgUpgradeClientResponseSDKType, MsgSubmitMisbehaviour, MsgSubmitMisbehaviourResponseSDKType } from "./tx";
+import { MsgCreateClient, MsgCreateClientResponse, MsgUpdateClient, MsgUpdateClientResponse, MsgUpgradeClient, MsgUpgradeClientResponse, MsgSubmitMisbehaviour, MsgSubmitMisbehaviourResponse } from "./tx";
 /** Msg defines the RPC service */
 export interface Msg {
-    createClient(request: MsgCreateClient): Promise<MsgCreateClientResponseSDKType>;
-    updateClient(request: MsgUpdateClient): Promise<MsgUpdateClientResponseSDKType>;
-    upgradeClient(request: MsgUpgradeClient): Promise<MsgUpgradeClientResponseSDKType>;
-    submitMisbehaviour(request: MsgSubmitMisbehaviour): Promise<MsgSubmitMisbehaviourResponseSDKType>;
+    createClient(request: MsgCreateClient): Promise<MsgCreateClientResponse>;
+    updateClient(request: MsgUpdateClient): Promise<MsgUpdateClientResponse>;
+    upgradeClient(request: MsgUpgradeClient): Promise<MsgUpgradeClientResponse>;
+    submitMisbehaviour(request: MsgSubmitMisbehaviour): Promise<MsgSubmitMisbehaviourResponse>;
 }
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    createClient(request: MsgCreateClient): Promise<MsgCreateClientResponseSDKType>;
-    updateClient(request: MsgUpdateClient): Promise<MsgUpdateClientResponseSDKType>;
-    upgradeClient(request: MsgUpgradeClient): Promise<MsgUpgradeClientResponseSDKType>;
-    submitMisbehaviour(request: MsgSubmitMisbehaviour): Promise<MsgSubmitMisbehaviourResponseSDKType>;
+    createClient(request: MsgCreateClient): Promise<MsgCreateClientResponse>;
+    updateClient(request: MsgUpdateClient): Promise<MsgUpdateClientResponse>;
+    upgradeClient(request: MsgUpgradeClient): Promise<MsgUpgradeClientResponse>;
+    submitMisbehaviour(request: MsgSubmitMisbehaviour): Promise<MsgSubmitMisbehaviourResponse>;
 }

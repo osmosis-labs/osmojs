@@ -98,7 +98,7 @@ export declare const MsgSetWithdrawAddress: {
 };
 export declare const MsgSetWithdrawAddressResponse: {
     encode(_: MsgSetWithdrawAddressResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddressResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddressResponse;
     fromPartial(_: DeepPartial<MsgSetWithdrawAddressResponse>): MsgSetWithdrawAddressResponse;
 };
 export declare const MsgWithdrawDelegatorReward: {
@@ -108,7 +108,7 @@ export declare const MsgWithdrawDelegatorReward: {
 };
 export declare const MsgWithdrawDelegatorRewardResponse: {
     encode(message: MsgWithdrawDelegatorRewardResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorRewardResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorRewardResponse;
     fromPartial(object: DeepPartial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse;
 };
 export declare const MsgWithdrawValidatorCommission: {
@@ -118,7 +118,7 @@ export declare const MsgWithdrawValidatorCommission: {
 };
 export declare const MsgWithdrawValidatorCommissionResponse: {
     encode(message: MsgWithdrawValidatorCommissionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommissionResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommissionResponse;
     fromPartial(object: DeepPartial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse;
 };
 export declare const MsgFundCommunityPool: {
@@ -128,6 +128,6 @@ export declare const MsgFundCommunityPool: {
 };
 export declare const MsgFundCommunityPoolResponse: {
     encode(_: MsgFundCommunityPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPoolResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPoolResponse;
     fromPartial(_: DeepPartial<MsgFundCommunityPoolResponse>): MsgFundCommunityPoolResponse;
 };

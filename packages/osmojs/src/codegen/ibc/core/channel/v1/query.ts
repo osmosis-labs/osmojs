@@ -821,7 +821,7 @@ export const QueryChannelResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryChannelResponse();
@@ -931,7 +931,7 @@ export const QueryChannelsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryChannelsResponse();
@@ -1051,7 +1051,7 @@ export const QueryConnectionChannelsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionChannelsResponse();
@@ -1171,7 +1171,7 @@ export const QueryChannelClientStateResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryChannelClientStateResponse();
@@ -1316,7 +1316,7 @@ export const QueryChannelConsensusStateResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryChannelConsensusStateResponse();
@@ -1451,7 +1451,7 @@ export const QueryPacketCommitmentResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPacketCommitmentResponse();
@@ -1581,7 +1581,7 @@ export const QueryPacketCommitmentsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPacketCommitmentsResponse();
@@ -1711,7 +1711,7 @@ export const QueryPacketReceiptResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPacketReceiptResponse();
@@ -1841,7 +1841,7 @@ export const QueryPacketAcknowledgementResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPacketAcknowledgementResponse();
@@ -1993,7 +1993,7 @@ export const QueryPacketAcknowledgementsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPacketAcknowledgementsResponse();
@@ -2134,7 +2134,7 @@ export const QueryUnreceivedPacketsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryUnreceivedPacketsResponse();
@@ -2279,7 +2279,7 @@ export const QueryUnreceivedAcksResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryUnreceivedAcksResponse();
@@ -2403,7 +2403,7 @@ export const QueryNextSequenceReceiveResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryNextSequenceReceiveResponse();

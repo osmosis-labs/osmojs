@@ -69,6 +69,6 @@ export declare const MsgTransfer: {
 };
 export declare const MsgTransferResponse: {
     encode(_: MsgTransferResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponse;
     fromPartial(_: DeepPartial<MsgTransferResponse>): MsgTransferResponse;
 };

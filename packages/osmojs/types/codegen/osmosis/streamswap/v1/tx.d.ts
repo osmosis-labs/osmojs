@@ -179,7 +179,7 @@ export declare const MsgCreateSale: {
 };
 export declare const MsgCreateSaleResponse: {
     encode(message: MsgCreateSaleResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateSaleResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateSaleResponse;
     fromPartial(object: DeepPartial<MsgCreateSaleResponse>): MsgCreateSaleResponse;
 };
 export declare const MsgSubscribe: {
@@ -199,7 +199,7 @@ export declare const MsgExitSale: {
 };
 export declare const MsgExitSaleResponse: {
     encode(message: MsgExitSaleResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSaleResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSaleResponse;
     fromPartial(object: DeepPartial<MsgExitSaleResponse>): MsgExitSaleResponse;
 };
 export declare const MsgFinalizeSale: {
@@ -209,6 +209,6 @@ export declare const MsgFinalizeSale: {
 };
 export declare const MsgFinalizeSaleResponse: {
     encode(message: MsgFinalizeSaleResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFinalizeSaleResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFinalizeSaleResponse;
     fromPartial(object: DeepPartial<MsgFinalizeSaleResponse>): MsgFinalizeSaleResponse;
 };

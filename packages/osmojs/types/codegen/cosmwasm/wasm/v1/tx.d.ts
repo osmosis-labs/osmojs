@@ -207,7 +207,7 @@ export declare const MsgStoreCode: {
 };
 export declare const MsgStoreCodeResponse: {
     encode(message: MsgStoreCodeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCodeResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCodeResponse;
     fromPartial(object: DeepPartial<MsgStoreCodeResponse>): MsgStoreCodeResponse;
 };
 export declare const MsgInstantiateContract: {
@@ -217,7 +217,7 @@ export declare const MsgInstantiateContract: {
 };
 export declare const MsgInstantiateContractResponse: {
     encode(message: MsgInstantiateContractResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContractResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContractResponse;
     fromPartial(object: DeepPartial<MsgInstantiateContractResponse>): MsgInstantiateContractResponse;
 };
 export declare const MsgExecuteContract: {
@@ -227,7 +227,7 @@ export declare const MsgExecuteContract: {
 };
 export declare const MsgExecuteContractResponse: {
     encode(message: MsgExecuteContractResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContractResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContractResponse;
     fromPartial(object: DeepPartial<MsgExecuteContractResponse>): MsgExecuteContractResponse;
 };
 export declare const MsgMigrateContract: {
@@ -237,7 +237,7 @@ export declare const MsgMigrateContract: {
 };
 export declare const MsgMigrateContractResponse: {
     encode(message: MsgMigrateContractResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContractResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContractResponse;
     fromPartial(object: DeepPartial<MsgMigrateContractResponse>): MsgMigrateContractResponse;
 };
 export declare const MsgUpdateAdmin: {
@@ -247,7 +247,7 @@ export declare const MsgUpdateAdmin: {
 };
 export declare const MsgUpdateAdminResponse: {
     encode(_: MsgUpdateAdminResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdminResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdminResponse;
     fromPartial(_: DeepPartial<MsgUpdateAdminResponse>): MsgUpdateAdminResponse;
 };
 export declare const MsgClearAdmin: {
@@ -257,6 +257,6 @@ export declare const MsgClearAdmin: {
 };
 export declare const MsgClearAdminResponse: {
     encode(_: MsgClearAdminResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdminResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdminResponse;
     fromPartial(_: DeepPartial<MsgClearAdminResponse>): MsgClearAdminResponse;
 };

@@ -207,7 +207,7 @@ export declare const ModuleToDistributeCoinsRequest: {
 };
 export declare const ModuleToDistributeCoinsResponse: {
     encode(message: ModuleToDistributeCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse;
     fromPartial(object: DeepPartial<ModuleToDistributeCoinsResponse>): ModuleToDistributeCoinsResponse;
 };
 export declare const ModuleDistributedCoinsRequest: {
@@ -217,7 +217,7 @@ export declare const ModuleDistributedCoinsRequest: {
 };
 export declare const ModuleDistributedCoinsResponse: {
     encode(message: ModuleDistributedCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsResponse;
     fromPartial(object: DeepPartial<ModuleDistributedCoinsResponse>): ModuleDistributedCoinsResponse;
 };
 export declare const GaugeByIDRequest: {
@@ -227,7 +227,7 @@ export declare const GaugeByIDRequest: {
 };
 export declare const GaugeByIDResponse: {
     encode(message: GaugeByIDResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponse;
     fromPartial(object: DeepPartial<GaugeByIDResponse>): GaugeByIDResponse;
 };
 export declare const GaugesRequest: {
@@ -237,7 +237,7 @@ export declare const GaugesRequest: {
 };
 export declare const GaugesResponse: {
     encode(message: GaugesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponse;
     fromPartial(object: DeepPartial<GaugesResponse>): GaugesResponse;
 };
 export declare const ActiveGaugesRequest: {
@@ -247,7 +247,7 @@ export declare const ActiveGaugesRequest: {
 };
 export declare const ActiveGaugesResponse: {
     encode(message: ActiveGaugesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponse;
     fromPartial(object: DeepPartial<ActiveGaugesResponse>): ActiveGaugesResponse;
 };
 export declare const ActiveGaugesPerDenomRequest: {
@@ -257,7 +257,7 @@ export declare const ActiveGaugesPerDenomRequest: {
 };
 export declare const ActiveGaugesPerDenomResponse: {
     encode(message: ActiveGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponse;
     fromPartial(object: DeepPartial<ActiveGaugesPerDenomResponse>): ActiveGaugesPerDenomResponse;
 };
 export declare const UpcomingGaugesRequest: {
@@ -267,7 +267,7 @@ export declare const UpcomingGaugesRequest: {
 };
 export declare const UpcomingGaugesResponse: {
     encode(message: UpcomingGaugesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponse;
     fromPartial(object: DeepPartial<UpcomingGaugesResponse>): UpcomingGaugesResponse;
 };
 export declare const UpcomingGaugesPerDenomRequest: {
@@ -277,7 +277,7 @@ export declare const UpcomingGaugesPerDenomRequest: {
 };
 export declare const UpcomingGaugesPerDenomResponse: {
     encode(message: UpcomingGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse;
     fromPartial(object: DeepPartial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse;
 };
 export declare const RewardsEstRequest: {
@@ -287,7 +287,7 @@ export declare const RewardsEstRequest: {
 };
 export declare const RewardsEstResponse: {
     encode(message: RewardsEstResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponse;
     fromPartial(object: DeepPartial<RewardsEstResponse>): RewardsEstResponse;
 };
 export declare const QueryLockableDurationsRequest: {
@@ -297,6 +297,6 @@ export declare const QueryLockableDurationsRequest: {
 };
 export declare const QueryLockableDurationsResponse: {
     encode(message: QueryLockableDurationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse;
     fromPartial(object: DeepPartial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse;
 };

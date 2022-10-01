@@ -168,7 +168,7 @@ export const MsgLockTokensResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgLockTokensResponse();
@@ -258,7 +258,7 @@ export const MsgBeginUnlockingAllResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBeginUnlockingAllResponse();
@@ -368,7 +368,7 @@ export const MsgBeginUnlockingResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBeginUnlockingResponse();
@@ -478,7 +478,7 @@ export const MsgExtendLockupResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExtendLockupResponse();

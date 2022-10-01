@@ -262,7 +262,7 @@ export const ModuleToDistributeCoinsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseModuleToDistributeCoinsResponse();
@@ -341,7 +341,7 @@ export const ModuleDistributedCoinsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseModuleDistributedCoinsResponse();
@@ -431,7 +431,7 @@ export const GaugeByIDResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGaugeByIDResponse();
@@ -526,7 +526,7 @@ export const GaugesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGaugesResponse();
@@ -626,7 +626,7 @@ export const ActiveGaugesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseActiveGaugesResponse();
@@ -736,7 +736,7 @@ export const ActiveGaugesPerDenomResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseActiveGaugesPerDenomResponse();
@@ -836,7 +836,7 @@ export const UpcomingGaugesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpcomingGaugesResponse();
@@ -946,7 +946,7 @@ export const UpcomingGaugesPerDenomResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpcomingGaugesPerDenomResponse();
@@ -1074,7 +1074,7 @@ export const RewardsEstResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRewardsEstResponse();
@@ -1153,7 +1153,7 @@ export const QueryLockableDurationsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryLockableDurationsResponse();

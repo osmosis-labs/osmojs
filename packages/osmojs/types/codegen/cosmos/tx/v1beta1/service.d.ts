@@ -294,7 +294,7 @@ export declare const GetTxsEventRequest: {
 };
 export declare const GetTxsEventResponse: {
     encode(message: GetTxsEventResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponse;
     fromPartial(object: DeepPartial<GetTxsEventResponse>): GetTxsEventResponse;
 };
 export declare const BroadcastTxRequest: {
@@ -304,7 +304,7 @@ export declare const BroadcastTxRequest: {
 };
 export declare const BroadcastTxResponse: {
     encode(message: BroadcastTxResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponse;
     fromPartial(object: DeepPartial<BroadcastTxResponse>): BroadcastTxResponse;
 };
 export declare const SimulateRequest: {
@@ -314,7 +314,7 @@ export declare const SimulateRequest: {
 };
 export declare const SimulateResponse: {
     encode(message: SimulateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponse;
     fromPartial(object: DeepPartial<SimulateResponse>): SimulateResponse;
 };
 export declare const GetTxRequest: {
@@ -324,7 +324,7 @@ export declare const GetTxRequest: {
 };
 export declare const GetTxResponse: {
     encode(message: GetTxResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponse;
     fromPartial(object: DeepPartial<GetTxResponse>): GetTxResponse;
 };
 export declare const GetBlockWithTxsRequest: {
@@ -334,6 +334,6 @@ export declare const GetBlockWithTxsRequest: {
 };
 export declare const GetBlockWithTxsResponse: {
     encode(message: GetBlockWithTxsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponse;
     fromPartial(object: DeepPartial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse;
 };

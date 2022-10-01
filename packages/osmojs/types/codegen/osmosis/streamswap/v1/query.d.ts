@@ -61,7 +61,7 @@ export declare const QuerySales: {
 };
 export declare const QuerySalesResponse: {
     encode(message: QuerySalesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySalesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySalesResponse;
     fromPartial(object: DeepPartial<QuerySalesResponse>): QuerySalesResponse;
 };
 export declare const QuerySale: {
@@ -71,7 +71,7 @@ export declare const QuerySale: {
 };
 export declare const QuerySaleResponse: {
     encode(message: QuerySaleResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySaleResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySaleResponse;
     fromPartial(object: DeepPartial<QuerySaleResponse>): QuerySaleResponse;
 };
 export declare const QueryUserPosition: {
@@ -81,6 +81,6 @@ export declare const QueryUserPosition: {
 };
 export declare const QueryUserPositionResponse: {
     encode(message: QueryUserPositionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionResponse;
     fromPartial(object: DeepPartial<QueryUserPositionResponse>): QueryUserPositionResponse;
 };

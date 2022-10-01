@@ -219,7 +219,7 @@ export declare const QueryConnectionRequest: {
 };
 export declare const QueryConnectionResponse: {
     encode(message: QueryConnectionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionResponse;
     fromPartial(object: DeepPartial<QueryConnectionResponse>): QueryConnectionResponse;
 };
 export declare const QueryConnectionsRequest: {
@@ -229,7 +229,7 @@ export declare const QueryConnectionsRequest: {
 };
 export declare const QueryConnectionsResponse: {
     encode(message: QueryConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsResponse;
     fromPartial(object: DeepPartial<QueryConnectionsResponse>): QueryConnectionsResponse;
 };
 export declare const QueryClientConnectionsRequest: {
@@ -239,7 +239,7 @@ export declare const QueryClientConnectionsRequest: {
 };
 export declare const QueryClientConnectionsResponse: {
     encode(message: QueryClientConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsResponse;
     fromPartial(object: DeepPartial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse;
 };
 export declare const QueryConnectionClientStateRequest: {
@@ -249,7 +249,7 @@ export declare const QueryConnectionClientStateRequest: {
 };
 export declare const QueryConnectionClientStateResponse: {
     encode(message: QueryConnectionClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateResponse;
     fromPartial(object: DeepPartial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse;
 };
 export declare const QueryConnectionConsensusStateRequest: {
@@ -259,6 +259,6 @@ export declare const QueryConnectionConsensusStateRequest: {
 };
 export declare const QueryConnectionConsensusStateResponse: {
     encode(message: QueryConnectionConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateResponse;
     fromPartial(object: DeepPartial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse;
 };

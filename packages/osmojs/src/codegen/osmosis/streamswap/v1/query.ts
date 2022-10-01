@@ -126,7 +126,7 @@ export const QuerySalesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySalesResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySalesResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySalesResponse();
@@ -221,7 +221,7 @@ export const QuerySaleResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySaleResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySaleResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySaleResponse();
@@ -321,7 +321,7 @@ export const QueryUserPositionResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryUserPositionResponse();

@@ -271,7 +271,7 @@ export const QueryPoolResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolResponse();
@@ -366,7 +366,7 @@ export const QueryPoolsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolsResponse();
@@ -450,7 +450,7 @@ export const QueryNumPoolsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryNumPoolsResponse();
@@ -540,7 +540,7 @@ export const QueryPoolTypeResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolTypeResponse();
@@ -630,7 +630,7 @@ export const QueryPoolParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPoolParamsResponse();
@@ -720,7 +720,7 @@ export const QueryTotalPoolLiquidityResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryTotalPoolLiquidityResponse();
@@ -810,7 +810,7 @@ export const QueryTotalSharesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryTotalSharesResponse();
@@ -920,7 +920,7 @@ export const QuerySpotPriceResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySpotPriceResponse();
@@ -1040,7 +1040,7 @@ export const QuerySwapExactAmountInResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySwapExactAmountInResponse();
@@ -1160,7 +1160,7 @@ export const QuerySwapExactAmountOutResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySwapExactAmountOutResponse();
@@ -1239,7 +1239,7 @@ export const QueryTotalLiquidityResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryTotalLiquidityResponse();

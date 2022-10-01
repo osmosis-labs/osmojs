@@ -197,7 +197,7 @@ export declare const QueryPoolRequest: {
 };
 export declare const QueryPoolResponse: {
     encode(message: QueryPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse;
     fromPartial(object: DeepPartial<QueryPoolResponse>): QueryPoolResponse;
 };
 export declare const QueryPoolsRequest: {
@@ -207,7 +207,7 @@ export declare const QueryPoolsRequest: {
 };
 export declare const QueryPoolsResponse: {
     encode(message: QueryPoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponse;
     fromPartial(object: DeepPartial<QueryPoolsResponse>): QueryPoolsResponse;
 };
 export declare const QueryNumPoolsRequest: {
@@ -217,7 +217,7 @@ export declare const QueryNumPoolsRequest: {
 };
 export declare const QueryNumPoolsResponse: {
     encode(message: QueryNumPoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponse;
     fromPartial(object: DeepPartial<QueryNumPoolsResponse>): QueryNumPoolsResponse;
 };
 export declare const QueryPoolTypeRequest: {
@@ -227,7 +227,7 @@ export declare const QueryPoolTypeRequest: {
 };
 export declare const QueryPoolTypeResponse: {
     encode(message: QueryPoolTypeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponse;
     fromPartial(object: DeepPartial<QueryPoolTypeResponse>): QueryPoolTypeResponse;
 };
 export declare const QueryPoolParamsRequest: {
@@ -237,7 +237,7 @@ export declare const QueryPoolParamsRequest: {
 };
 export declare const QueryPoolParamsResponse: {
     encode(message: QueryPoolParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsResponse;
     fromPartial(object: DeepPartial<QueryPoolParamsResponse>): QueryPoolParamsResponse;
 };
 export declare const QueryTotalPoolLiquidityRequest: {
@@ -247,7 +247,7 @@ export declare const QueryTotalPoolLiquidityRequest: {
 };
 export declare const QueryTotalPoolLiquidityResponse: {
     encode(message: QueryTotalPoolLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponse;
     fromPartial(object: DeepPartial<QueryTotalPoolLiquidityResponse>): QueryTotalPoolLiquidityResponse;
 };
 export declare const QueryTotalSharesRequest: {
@@ -257,7 +257,7 @@ export declare const QueryTotalSharesRequest: {
 };
 export declare const QueryTotalSharesResponse: {
     encode(message: QueryTotalSharesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponse;
     fromPartial(object: DeepPartial<QueryTotalSharesResponse>): QueryTotalSharesResponse;
 };
 export declare const QuerySpotPriceRequest: {
@@ -267,7 +267,7 @@ export declare const QuerySpotPriceRequest: {
 };
 export declare const QuerySpotPriceResponse: {
     encode(message: QuerySpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponse;
     fromPartial(object: DeepPartial<QuerySpotPriceResponse>): QuerySpotPriceResponse;
 };
 export declare const QuerySwapExactAmountInRequest: {
@@ -277,7 +277,7 @@ export declare const QuerySwapExactAmountInRequest: {
 };
 export declare const QuerySwapExactAmountInResponse: {
     encode(message: QuerySwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInResponse;
     fromPartial(object: DeepPartial<QuerySwapExactAmountInResponse>): QuerySwapExactAmountInResponse;
 };
 export declare const QuerySwapExactAmountOutRequest: {
@@ -287,7 +287,7 @@ export declare const QuerySwapExactAmountOutRequest: {
 };
 export declare const QuerySwapExactAmountOutResponse: {
     encode(message: QuerySwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutResponse;
     fromPartial(object: DeepPartial<QuerySwapExactAmountOutResponse>): QuerySwapExactAmountOutResponse;
 };
 export declare const QueryTotalLiquidityRequest: {
@@ -297,6 +297,6 @@ export declare const QueryTotalLiquidityRequest: {
 };
 export declare const QueryTotalLiquidityResponse: {
     encode(message: QueryTotalLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityResponse;
     fromPartial(object: DeepPartial<QueryTotalLiquidityResponse>): QueryTotalLiquidityResponse;
 };

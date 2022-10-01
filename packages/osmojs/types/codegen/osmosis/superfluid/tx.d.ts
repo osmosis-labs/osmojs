@@ -106,7 +106,7 @@ export declare const MsgSuperfluidDelegate: {
 };
 export declare const MsgSuperfluidDelegateResponse: {
     encode(_: MsgSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegateResponse;
     fromPartial(_: DeepPartial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse;
 };
 export declare const MsgSuperfluidUndelegate: {
@@ -116,7 +116,7 @@ export declare const MsgSuperfluidUndelegate: {
 };
 export declare const MsgSuperfluidUndelegateResponse: {
     encode(_: MsgSuperfluidUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateResponse;
     fromPartial(_: DeepPartial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse;
 };
 export declare const MsgSuperfluidUnbondLock: {
@@ -126,7 +126,7 @@ export declare const MsgSuperfluidUnbondLock: {
 };
 export declare const MsgSuperfluidUnbondLockResponse: {
     encode(_: MsgSuperfluidUnbondLockResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponse;
     fromPartial(_: DeepPartial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse;
 };
 export declare const MsgLockAndSuperfluidDelegate: {
@@ -136,7 +136,7 @@ export declare const MsgLockAndSuperfluidDelegate: {
 };
 export declare const MsgLockAndSuperfluidDelegateResponse: {
     encode(message: MsgLockAndSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegateResponse;
     fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse;
 };
 export declare const MsgUnPoolWhitelistedPool: {
@@ -146,6 +146,6 @@ export declare const MsgUnPoolWhitelistedPool: {
 };
 export declare const MsgUnPoolWhitelistedPoolResponse: {
     encode(message: MsgUnPoolWhitelistedPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponse;
     fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse;
 };

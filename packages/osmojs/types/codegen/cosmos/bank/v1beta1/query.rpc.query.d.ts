@@ -1,39 +1,39 @@
 import { Rpc } from "@osmonauts/helpers";
 import { QueryClient } from "@cosmjs/stargate";
-import { QueryBalanceRequest, QueryBalanceResponseSDKType, QueryAllBalancesRequest, QueryAllBalancesResponseSDKType, QuerySpendableBalancesRequest, QuerySpendableBalancesResponseSDKType, QueryTotalSupplyRequest, QueryTotalSupplyResponseSDKType, QuerySupplyOfRequest, QuerySupplyOfResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomMetadataRequest, QueryDenomMetadataResponseSDKType, QueryDenomsMetadataRequest, QueryDenomsMetadataResponseSDKType, QueryDenomOwnersRequest, QueryDenomOwnersResponseSDKType } from "./query";
+import { QueryBalanceRequest, QueryBalanceResponse, QueryAllBalancesRequest, QueryAllBalancesResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryParamsRequest, QueryParamsResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse } from "./query";
 /** Query defines the RPC service */
 export interface Query {
-    balance(request: QueryBalanceRequest): Promise<QueryBalanceResponseSDKType>;
-    allBalances(request: QueryAllBalancesRequest): Promise<QueryAllBalancesResponseSDKType>;
-    spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType>;
-    totalSupply(request?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponseSDKType>;
-    supplyOf(request: QuerySupplyOfRequest): Promise<QuerySupplyOfResponseSDKType>;
-    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    denomMetadata(request: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponseSDKType>;
-    denomsMetadata(request?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponseSDKType>;
-    denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType>;
+    balance(request: QueryBalanceRequest): Promise<QueryBalanceResponse>;
+    allBalances(request: QueryAllBalancesRequest): Promise<QueryAllBalancesResponse>;
+    spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponse>;
+    totalSupply(request?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponse>;
+    supplyOf(request: QuerySupplyOfRequest): Promise<QuerySupplyOfResponse>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+    denomMetadata(request: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponse>;
+    denomsMetadata(request?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponse>;
+    denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    balance(request: QueryBalanceRequest): Promise<QueryBalanceResponseSDKType>;
-    allBalances(request: QueryAllBalancesRequest): Promise<QueryAllBalancesResponseSDKType>;
-    spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType>;
-    totalSupply(request?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponseSDKType>;
-    supplyOf(request: QuerySupplyOfRequest): Promise<QuerySupplyOfResponseSDKType>;
-    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    denomMetadata(request: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponseSDKType>;
-    denomsMetadata(request?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponseSDKType>;
-    denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType>;
+    balance(request: QueryBalanceRequest): Promise<QueryBalanceResponse>;
+    allBalances(request: QueryAllBalancesRequest): Promise<QueryAllBalancesResponse>;
+    spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponse>;
+    totalSupply(request?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponse>;
+    supplyOf(request: QuerySupplyOfRequest): Promise<QuerySupplyOfResponse>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+    denomMetadata(request: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponse>;
+    denomsMetadata(request?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponse>;
+    denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
-    balance(request: QueryBalanceRequest): Promise<QueryBalanceResponseSDKType>;
-    allBalances(request: QueryAllBalancesRequest): Promise<QueryAllBalancesResponseSDKType>;
-    spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType>;
-    totalSupply(request?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponseSDKType>;
-    supplyOf(request: QuerySupplyOfRequest): Promise<QuerySupplyOfResponseSDKType>;
-    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    denomMetadata(request: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponseSDKType>;
-    denomsMetadata(request?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponseSDKType>;
-    denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType>;
+    balance(request: QueryBalanceRequest): Promise<QueryBalanceResponse>;
+    allBalances(request: QueryAllBalancesRequest): Promise<QueryAllBalancesResponse>;
+    spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponse>;
+    totalSupply(request?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponse>;
+    supplyOf(request: QuerySupplyOfRequest): Promise<QuerySupplyOfResponse>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+    denomMetadata(request: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponse>;
+    denomsMetadata(request?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponse>;
+    denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse>;
 };

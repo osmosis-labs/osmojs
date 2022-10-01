@@ -88,7 +88,7 @@ export declare const MsgLockTokens: {
 };
 export declare const MsgLockTokensResponse: {
     encode(message: MsgLockTokensResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponse;
     fromPartial(object: DeepPartial<MsgLockTokensResponse>): MsgLockTokensResponse;
 };
 export declare const MsgBeginUnlockingAll: {
@@ -98,7 +98,7 @@ export declare const MsgBeginUnlockingAll: {
 };
 export declare const MsgBeginUnlockingAllResponse: {
     encode(message: MsgBeginUnlockingAllResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse;
     fromPartial(object: DeepPartial<MsgBeginUnlockingAllResponse>): MsgBeginUnlockingAllResponse;
 };
 export declare const MsgBeginUnlocking: {
@@ -108,7 +108,7 @@ export declare const MsgBeginUnlocking: {
 };
 export declare const MsgBeginUnlockingResponse: {
     encode(message: MsgBeginUnlockingResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponse;
     fromPartial(object: DeepPartial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse;
 };
 export declare const MsgExtendLockup: {
@@ -118,6 +118,6 @@ export declare const MsgExtendLockup: {
 };
 export declare const MsgExtendLockupResponse: {
     encode(message: MsgExtendLockupResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse;
     fromPartial(object: DeepPartial<MsgExtendLockupResponse>): MsgExtendLockupResponse;
 };

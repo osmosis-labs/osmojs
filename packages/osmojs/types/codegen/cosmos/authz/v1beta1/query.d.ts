@@ -93,7 +93,7 @@ export declare const QueryGrantsRequest: {
 };
 export declare const QueryGrantsResponse: {
     encode(message: QueryGrantsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsResponse;
     fromPartial(object: DeepPartial<QueryGrantsResponse>): QueryGrantsResponse;
 };
 export declare const QueryGranterGrantsRequest: {
@@ -103,7 +103,7 @@ export declare const QueryGranterGrantsRequest: {
 };
 export declare const QueryGranterGrantsResponse: {
     encode(message: QueryGranterGrantsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsResponse;
     fromPartial(object: DeepPartial<QueryGranterGrantsResponse>): QueryGranterGrantsResponse;
 };
 export declare const QueryGranteeGrantsRequest: {
@@ -113,6 +113,6 @@ export declare const QueryGranteeGrantsRequest: {
 };
 export declare const QueryGranteeGrantsResponse: {
     encode(message: QueryGranteeGrantsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsResponse;
     fromPartial(object: DeepPartial<QueryGranteeGrantsResponse>): QueryGranteeGrantsResponse;
 };

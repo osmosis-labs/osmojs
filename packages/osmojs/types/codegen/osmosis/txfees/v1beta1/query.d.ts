@@ -70,7 +70,7 @@ export declare const QueryFeeTokensRequest: {
 };
 export declare const QueryFeeTokensResponse: {
     encode(message: QueryFeeTokensResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensResponse;
     fromPartial(object: DeepPartial<QueryFeeTokensResponse>): QueryFeeTokensResponse;
 };
 export declare const QueryDenomSpotPriceRequest: {
@@ -80,7 +80,7 @@ export declare const QueryDenomSpotPriceRequest: {
 };
 export declare const QueryDenomSpotPriceResponse: {
     encode(message: QueryDenomSpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceResponse;
     fromPartial(object: DeepPartial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse;
 };
 export declare const QueryDenomPoolIdRequest: {
@@ -90,7 +90,7 @@ export declare const QueryDenomPoolIdRequest: {
 };
 export declare const QueryDenomPoolIdResponse: {
     encode(message: QueryDenomPoolIdResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdResponse;
     fromPartial(object: DeepPartial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse;
 };
 export declare const QueryBaseDenomRequest: {
@@ -100,6 +100,6 @@ export declare const QueryBaseDenomRequest: {
 };
 export declare const QueryBaseDenomResponse: {
     encode(message: QueryBaseDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomResponse;
     fromPartial(object: DeepPartial<QueryBaseDenomResponse>): QueryBaseDenomResponse;
 };

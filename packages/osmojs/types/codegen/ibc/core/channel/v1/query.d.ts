@@ -601,7 +601,7 @@ export declare const QueryChannelRequest: {
 };
 export declare const QueryChannelResponse: {
     encode(message: QueryChannelResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelResponse;
     fromPartial(object: DeepPartial<QueryChannelResponse>): QueryChannelResponse;
 };
 export declare const QueryChannelsRequest: {
@@ -611,7 +611,7 @@ export declare const QueryChannelsRequest: {
 };
 export declare const QueryChannelsResponse: {
     encode(message: QueryChannelsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsResponse;
     fromPartial(object: DeepPartial<QueryChannelsResponse>): QueryChannelsResponse;
 };
 export declare const QueryConnectionChannelsRequest: {
@@ -621,7 +621,7 @@ export declare const QueryConnectionChannelsRequest: {
 };
 export declare const QueryConnectionChannelsResponse: {
     encode(message: QueryConnectionChannelsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsResponse;
     fromPartial(object: DeepPartial<QueryConnectionChannelsResponse>): QueryConnectionChannelsResponse;
 };
 export declare const QueryChannelClientStateRequest: {
@@ -631,7 +631,7 @@ export declare const QueryChannelClientStateRequest: {
 };
 export declare const QueryChannelClientStateResponse: {
     encode(message: QueryChannelClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateResponse;
     fromPartial(object: DeepPartial<QueryChannelClientStateResponse>): QueryChannelClientStateResponse;
 };
 export declare const QueryChannelConsensusStateRequest: {
@@ -641,7 +641,7 @@ export declare const QueryChannelConsensusStateRequest: {
 };
 export declare const QueryChannelConsensusStateResponse: {
     encode(message: QueryChannelConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateResponse;
     fromPartial(object: DeepPartial<QueryChannelConsensusStateResponse>): QueryChannelConsensusStateResponse;
 };
 export declare const QueryPacketCommitmentRequest: {
@@ -651,7 +651,7 @@ export declare const QueryPacketCommitmentRequest: {
 };
 export declare const QueryPacketCommitmentResponse: {
     encode(message: QueryPacketCommitmentResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentResponse;
     fromPartial(object: DeepPartial<QueryPacketCommitmentResponse>): QueryPacketCommitmentResponse;
 };
 export declare const QueryPacketCommitmentsRequest: {
@@ -661,7 +661,7 @@ export declare const QueryPacketCommitmentsRequest: {
 };
 export declare const QueryPacketCommitmentsResponse: {
     encode(message: QueryPacketCommitmentsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsResponse;
     fromPartial(object: DeepPartial<QueryPacketCommitmentsResponse>): QueryPacketCommitmentsResponse;
 };
 export declare const QueryPacketReceiptRequest: {
@@ -671,7 +671,7 @@ export declare const QueryPacketReceiptRequest: {
 };
 export declare const QueryPacketReceiptResponse: {
     encode(message: QueryPacketReceiptResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptResponse;
     fromPartial(object: DeepPartial<QueryPacketReceiptResponse>): QueryPacketReceiptResponse;
 };
 export declare const QueryPacketAcknowledgementRequest: {
@@ -681,7 +681,7 @@ export declare const QueryPacketAcknowledgementRequest: {
 };
 export declare const QueryPacketAcknowledgementResponse: {
     encode(message: QueryPacketAcknowledgementResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementResponse;
     fromPartial(object: DeepPartial<QueryPacketAcknowledgementResponse>): QueryPacketAcknowledgementResponse;
 };
 export declare const QueryPacketAcknowledgementsRequest: {
@@ -691,7 +691,7 @@ export declare const QueryPacketAcknowledgementsRequest: {
 };
 export declare const QueryPacketAcknowledgementsResponse: {
     encode(message: QueryPacketAcknowledgementsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponse;
     fromPartial(object: DeepPartial<QueryPacketAcknowledgementsResponse>): QueryPacketAcknowledgementsResponse;
 };
 export declare const QueryUnreceivedPacketsRequest: {
@@ -701,7 +701,7 @@ export declare const QueryUnreceivedPacketsRequest: {
 };
 export declare const QueryUnreceivedPacketsResponse: {
     encode(message: QueryUnreceivedPacketsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsResponse;
     fromPartial(object: DeepPartial<QueryUnreceivedPacketsResponse>): QueryUnreceivedPacketsResponse;
 };
 export declare const QueryUnreceivedAcksRequest: {
@@ -711,7 +711,7 @@ export declare const QueryUnreceivedAcksRequest: {
 };
 export declare const QueryUnreceivedAcksResponse: {
     encode(message: QueryUnreceivedAcksResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksResponse;
     fromPartial(object: DeepPartial<QueryUnreceivedAcksResponse>): QueryUnreceivedAcksResponse;
 };
 export declare const QueryNextSequenceReceiveRequest: {
@@ -721,6 +721,6 @@ export declare const QueryNextSequenceReceiveRequest: {
 };
 export declare const QueryNextSequenceReceiveResponse: {
     encode(message: QueryNextSequenceReceiveResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveResponse;
     fromPartial(object: DeepPartial<QueryNextSequenceReceiveResponse>): QueryNextSequenceReceiveResponse;
 };

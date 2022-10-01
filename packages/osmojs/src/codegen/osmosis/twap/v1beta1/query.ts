@@ -149,7 +149,7 @@ export const ArithmeticTwapResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseArithmeticTwapResponse();
@@ -269,7 +269,7 @@ export const ArithmeticTwapToNowResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseArithmeticTwapToNowResponse();
@@ -348,7 +348,7 @@ export const ParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParamsResponse();

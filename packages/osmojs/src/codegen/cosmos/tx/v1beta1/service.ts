@@ -503,7 +503,7 @@ export const GetTxsEventResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetTxsEventResponse();
@@ -613,7 +613,7 @@ export const BroadcastTxResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBroadcastTxResponse();
@@ -718,7 +718,7 @@ export const SimulateResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimulateResponse();
@@ -818,7 +818,7 @@ export const GetTxResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetTxResponse();
@@ -938,7 +938,7 @@ export const GetBlockWithTxsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponseSDKType {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetBlockWithTxsResponse();

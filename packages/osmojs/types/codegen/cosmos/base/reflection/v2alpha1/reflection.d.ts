@@ -444,7 +444,7 @@ export declare const GetAuthnDescriptorRequest: {
 };
 export declare const GetAuthnDescriptorResponse: {
     encode(message: GetAuthnDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorResponse;
     fromPartial(object: DeepPartial<GetAuthnDescriptorResponse>): GetAuthnDescriptorResponse;
 };
 export declare const GetChainDescriptorRequest: {
@@ -454,7 +454,7 @@ export declare const GetChainDescriptorRequest: {
 };
 export declare const GetChainDescriptorResponse: {
     encode(message: GetChainDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorResponse;
     fromPartial(object: DeepPartial<GetChainDescriptorResponse>): GetChainDescriptorResponse;
 };
 export declare const GetCodecDescriptorRequest: {
@@ -464,7 +464,7 @@ export declare const GetCodecDescriptorRequest: {
 };
 export declare const GetCodecDescriptorResponse: {
     encode(message: GetCodecDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorResponse;
     fromPartial(object: DeepPartial<GetCodecDescriptorResponse>): GetCodecDescriptorResponse;
 };
 export declare const GetConfigurationDescriptorRequest: {
@@ -474,7 +474,7 @@ export declare const GetConfigurationDescriptorRequest: {
 };
 export declare const GetConfigurationDescriptorResponse: {
     encode(message: GetConfigurationDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorResponse;
     fromPartial(object: DeepPartial<GetConfigurationDescriptorResponse>): GetConfigurationDescriptorResponse;
 };
 export declare const GetQueryServicesDescriptorRequest: {
@@ -484,7 +484,7 @@ export declare const GetQueryServicesDescriptorRequest: {
 };
 export declare const GetQueryServicesDescriptorResponse: {
     encode(message: GetQueryServicesDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorResponse;
     fromPartial(object: DeepPartial<GetQueryServicesDescriptorResponse>): GetQueryServicesDescriptorResponse;
 };
 export declare const GetTxDescriptorRequest: {
@@ -494,7 +494,7 @@ export declare const GetTxDescriptorRequest: {
 };
 export declare const GetTxDescriptorResponse: {
     encode(message: GetTxDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorResponse;
     fromPartial(object: DeepPartial<GetTxDescriptorResponse>): GetTxDescriptorResponse;
 };
 export declare const QueryServicesDescriptor: {

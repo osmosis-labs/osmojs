@@ -30,6 +30,6 @@ export declare const MsgCreateBalancerPool: {
 };
 export declare const MsgCreateBalancerPoolResponse: {
     encode(message: MsgCreateBalancerPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPoolResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPoolResponse;
     fromPartial(object: DeepPartial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse;
 };

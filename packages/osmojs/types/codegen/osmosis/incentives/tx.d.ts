@@ -89,7 +89,7 @@ export declare const MsgCreateGauge: {
 };
 export declare const MsgCreateGaugeResponse: {
     encode(_: MsgCreateGaugeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGaugeResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGaugeResponse;
     fromPartial(_: DeepPartial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse;
 };
 export declare const MsgAddToGauge: {
@@ -99,6 +99,6 @@ export declare const MsgAddToGauge: {
 };
 export declare const MsgAddToGaugeResponse: {
     encode(_: MsgAddToGaugeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGaugeResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGaugeResponse;
     fromPartial(_: DeepPartial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse;
 };

@@ -1,17 +1,17 @@
 import { Rpc } from "@osmonauts/helpers";
-import { MsgConnectionOpenInit, MsgConnectionOpenInitResponseSDKType, MsgConnectionOpenTry, MsgConnectionOpenTryResponseSDKType, MsgConnectionOpenAck, MsgConnectionOpenAckResponseSDKType, MsgConnectionOpenConfirm, MsgConnectionOpenConfirmResponseSDKType } from "./tx";
+import { MsgConnectionOpenInit, MsgConnectionOpenInitResponse, MsgConnectionOpenTry, MsgConnectionOpenTryResponse, MsgConnectionOpenAck, MsgConnectionOpenAckResponse, MsgConnectionOpenConfirm, MsgConnectionOpenConfirmResponse } from "./tx";
 /** Msg defines the RPC service */
 export interface Msg {
-    connectionOpenInit(request: MsgConnectionOpenInit): Promise<MsgConnectionOpenInitResponseSDKType>;
-    connectionOpenTry(request: MsgConnectionOpenTry): Promise<MsgConnectionOpenTryResponseSDKType>;
-    connectionOpenAck(request: MsgConnectionOpenAck): Promise<MsgConnectionOpenAckResponseSDKType>;
-    connectionOpenConfirm(request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponseSDKType>;
+    connectionOpenInit(request: MsgConnectionOpenInit): Promise<MsgConnectionOpenInitResponse>;
+    connectionOpenTry(request: MsgConnectionOpenTry): Promise<MsgConnectionOpenTryResponse>;
+    connectionOpenAck(request: MsgConnectionOpenAck): Promise<MsgConnectionOpenAckResponse>;
+    connectionOpenConfirm(request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponse>;
 }
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    connectionOpenInit(request: MsgConnectionOpenInit): Promise<MsgConnectionOpenInitResponseSDKType>;
-    connectionOpenTry(request: MsgConnectionOpenTry): Promise<MsgConnectionOpenTryResponseSDKType>;
-    connectionOpenAck(request: MsgConnectionOpenAck): Promise<MsgConnectionOpenAckResponseSDKType>;
-    connectionOpenConfirm(request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponseSDKType>;
+    connectionOpenInit(request: MsgConnectionOpenInit): Promise<MsgConnectionOpenInitResponse>;
+    connectionOpenTry(request: MsgConnectionOpenTry): Promise<MsgConnectionOpenTryResponse>;
+    connectionOpenAck(request: MsgConnectionOpenAck): Promise<MsgConnectionOpenAckResponse>;
+    connectionOpenConfirm(request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponse>;
 }

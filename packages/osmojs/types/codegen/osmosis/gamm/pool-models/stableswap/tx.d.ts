@@ -55,7 +55,7 @@ export declare const MsgCreateStableswapPool: {
 };
 export declare const MsgCreateStableswapPoolResponse: {
     encode(message: MsgCreateStableswapPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPoolResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPoolResponse;
     fromPartial(object: DeepPartial<MsgCreateStableswapPoolResponse>): MsgCreateStableswapPoolResponse;
 };
 export declare const MsgStableSwapAdjustScalingFactors: {
@@ -65,6 +65,6 @@ export declare const MsgStableSwapAdjustScalingFactors: {
 };
 export declare const MsgStableSwapAdjustScalingFactorsResponse: {
     encode(_: MsgStableSwapAdjustScalingFactorsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactorsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactorsResponse;
     fromPartial(_: DeepPartial<MsgStableSwapAdjustScalingFactorsResponse>): MsgStableSwapAdjustScalingFactorsResponse;
 };

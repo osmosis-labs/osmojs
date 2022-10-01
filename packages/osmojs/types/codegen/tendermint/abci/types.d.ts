@@ -772,77 +772,77 @@ export declare const ResponseException: {
 };
 export declare const ResponseEcho: {
     encode(message: ResponseEcho, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseEchoSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseEcho;
     fromPartial(object: DeepPartial<ResponseEcho>): ResponseEcho;
 };
 export declare const ResponseFlush: {
     encode(_: ResponseFlush, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseFlushSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseFlush;
     fromPartial(_: DeepPartial<ResponseFlush>): ResponseFlush;
 };
 export declare const ResponseInfo: {
     encode(message: ResponseInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseInfoSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseInfo;
     fromPartial(object: DeepPartial<ResponseInfo>): ResponseInfo;
 };
 export declare const ResponseSetOption: {
     encode(message: ResponseSetOption, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseSetOptionSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseSetOption;
     fromPartial(object: DeepPartial<ResponseSetOption>): ResponseSetOption;
 };
 export declare const ResponseInitChain: {
     encode(message: ResponseInitChain, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseInitChainSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseInitChain;
     fromPartial(object: DeepPartial<ResponseInitChain>): ResponseInitChain;
 };
 export declare const ResponseQuery: {
     encode(message: ResponseQuery, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseQuerySDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseQuery;
     fromPartial(object: DeepPartial<ResponseQuery>): ResponseQuery;
 };
 export declare const ResponseBeginBlock: {
     encode(message: ResponseBeginBlock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseBeginBlockSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseBeginBlock;
     fromPartial(object: DeepPartial<ResponseBeginBlock>): ResponseBeginBlock;
 };
 export declare const ResponseCheckTx: {
     encode(message: ResponseCheckTx, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseCheckTxSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseCheckTx;
     fromPartial(object: DeepPartial<ResponseCheckTx>): ResponseCheckTx;
 };
 export declare const ResponseDeliverTx: {
     encode(message: ResponseDeliverTx, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseDeliverTxSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseDeliverTx;
     fromPartial(object: DeepPartial<ResponseDeliverTx>): ResponseDeliverTx;
 };
 export declare const ResponseEndBlock: {
     encode(message: ResponseEndBlock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseEndBlockSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseEndBlock;
     fromPartial(object: DeepPartial<ResponseEndBlock>): ResponseEndBlock;
 };
 export declare const ResponseCommit: {
     encode(message: ResponseCommit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseCommitSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseCommit;
     fromPartial(object: DeepPartial<ResponseCommit>): ResponseCommit;
 };
 export declare const ResponseListSnapshots: {
     encode(message: ResponseListSnapshots, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseListSnapshotsSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseListSnapshots;
     fromPartial(object: DeepPartial<ResponseListSnapshots>): ResponseListSnapshots;
 };
 export declare const ResponseOfferSnapshot: {
     encode(message: ResponseOfferSnapshot, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseOfferSnapshotSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseOfferSnapshot;
     fromPartial(object: DeepPartial<ResponseOfferSnapshot>): ResponseOfferSnapshot;
 };
 export declare const ResponseLoadSnapshotChunk: {
     encode(message: ResponseLoadSnapshotChunk, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseLoadSnapshotChunkSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseLoadSnapshotChunk;
     fromPartial(object: DeepPartial<ResponseLoadSnapshotChunk>): ResponseLoadSnapshotChunk;
 };
 export declare const ResponseApplySnapshotChunk: {
     encode(message: ResponseApplySnapshotChunk, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseApplySnapshotChunkSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseApplySnapshotChunk;
     fromPartial(object: DeepPartial<ResponseApplySnapshotChunk>): ResponseApplySnapshotChunk;
 };
 export declare const ConsensusParams: {

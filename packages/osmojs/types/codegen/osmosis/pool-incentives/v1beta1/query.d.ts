@@ -92,7 +92,7 @@ export declare const QueryGaugeIdsRequest: {
 };
 export declare const QueryGaugeIdsResponse: {
     encode(message: QueryGaugeIdsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponse;
     fromPartial(object: DeepPartial<QueryGaugeIdsResponse>): QueryGaugeIdsResponse;
 };
 export declare const QueryGaugeIdsResponse_GaugeIdWithDuration: {
@@ -107,7 +107,7 @@ export declare const QueryDistrInfoRequest: {
 };
 export declare const QueryDistrInfoResponse: {
     encode(message: QueryDistrInfoResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoResponse;
     fromPartial(object: DeepPartial<QueryDistrInfoResponse>): QueryDistrInfoResponse;
 };
 export declare const QueryParamsRequest: {
@@ -117,7 +117,7 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryLockableDurationsRequest: {
@@ -127,7 +127,7 @@ export declare const QueryLockableDurationsRequest: {
 };
 export declare const QueryLockableDurationsResponse: {
     encode(message: QueryLockableDurationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse;
     fromPartial(object: DeepPartial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse;
 };
 export declare const QueryIncentivizedPoolsRequest: {
@@ -142,7 +142,7 @@ export declare const IncentivizedPool: {
 };
 export declare const QueryIncentivizedPoolsResponse: {
     encode(message: QueryIncentivizedPoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsResponse;
     fromPartial(object: DeepPartial<QueryIncentivizedPoolsResponse>): QueryIncentivizedPoolsResponse;
 };
 export declare const QueryExternalIncentiveGaugesRequest: {
@@ -152,6 +152,6 @@ export declare const QueryExternalIncentiveGaugesRequest: {
 };
 export declare const QueryExternalIncentiveGaugesResponse: {
     encode(message: QueryExternalIncentiveGaugesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesResponse;
     fromPartial(object: DeepPartial<QueryExternalIncentiveGaugesResponse>): QueryExternalIncentiveGaugesResponse;
 };

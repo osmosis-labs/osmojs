@@ -190,7 +190,7 @@ export declare const MsgConnectionOpenInit: {
 };
 export declare const MsgConnectionOpenInitResponse: {
     encode(_: MsgConnectionOpenInitResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInitResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInitResponse;
     fromPartial(_: DeepPartial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse;
 };
 export declare const MsgConnectionOpenTry: {
@@ -200,7 +200,7 @@ export declare const MsgConnectionOpenTry: {
 };
 export declare const MsgConnectionOpenTryResponse: {
     encode(_: MsgConnectionOpenTryResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTryResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTryResponse;
     fromPartial(_: DeepPartial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse;
 };
 export declare const MsgConnectionOpenAck: {
@@ -210,7 +210,7 @@ export declare const MsgConnectionOpenAck: {
 };
 export declare const MsgConnectionOpenAckResponse: {
     encode(_: MsgConnectionOpenAckResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAckResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAckResponse;
     fromPartial(_: DeepPartial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse;
 };
 export declare const MsgConnectionOpenConfirm: {
@@ -220,6 +220,6 @@ export declare const MsgConnectionOpenConfirm: {
 };
 export declare const MsgConnectionOpenConfirmResponse: {
     encode(_: MsgConnectionOpenConfirmResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponse;
     fromPartial(_: DeepPartial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse;
 };

@@ -81,7 +81,7 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryDenomAuthorityMetadataRequest: {
@@ -91,7 +91,7 @@ export declare const QueryDenomAuthorityMetadataRequest: {
 };
 export declare const QueryDenomAuthorityMetadataResponse: {
     encode(message: QueryDenomAuthorityMetadataResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomAuthorityMetadataResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomAuthorityMetadataResponse;
     fromPartial(object: DeepPartial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse;
 };
 export declare const QueryDenomsFromCreatorRequest: {
@@ -101,6 +101,6 @@ export declare const QueryDenomsFromCreatorRequest: {
 };
 export declare const QueryDenomsFromCreatorResponse: {
     encode(message: QueryDenomsFromCreatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsFromCreatorResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsFromCreatorResponse;
     fromPartial(object: DeepPartial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse;
 };

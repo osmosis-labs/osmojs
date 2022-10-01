@@ -124,7 +124,7 @@ export declare const MsgSubmitProposal: {
 };
 export declare const MsgSubmitProposalResponse: {
     encode(message: MsgSubmitProposalResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponse;
     fromPartial(object: DeepPartial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
 };
 export declare const MsgExecLegacyContent: {
@@ -134,7 +134,7 @@ export declare const MsgExecLegacyContent: {
 };
 export declare const MsgExecLegacyContentResponse: {
     encode(_: MsgExecLegacyContentResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecLegacyContentResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecLegacyContentResponse;
     fromPartial(_: DeepPartial<MsgExecLegacyContentResponse>): MsgExecLegacyContentResponse;
 };
 export declare const MsgVote: {
@@ -144,7 +144,7 @@ export declare const MsgVote: {
 };
 export declare const MsgVoteResponse: {
     encode(_: MsgVoteResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponse;
     fromPartial(_: DeepPartial<MsgVoteResponse>): MsgVoteResponse;
 };
 export declare const MsgVoteWeighted: {
@@ -154,7 +154,7 @@ export declare const MsgVoteWeighted: {
 };
 export declare const MsgVoteWeightedResponse: {
     encode(_: MsgVoteWeightedResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeightedResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeightedResponse;
     fromPartial(_: DeepPartial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse;
 };
 export declare const MsgDeposit: {
@@ -164,6 +164,6 @@ export declare const MsgDeposit: {
 };
 export declare const MsgDepositResponse: {
     encode(_: MsgDepositResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDepositResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDepositResponse;
     fromPartial(_: DeepPartial<MsgDepositResponse>): MsgDepositResponse;
 };

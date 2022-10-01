@@ -285,7 +285,7 @@ export declare const MsgChannelOpenInit: {
 };
 export declare const MsgChannelOpenInitResponse: {
     encode(_: MsgChannelOpenInitResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenInitResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenInitResponse;
     fromPartial(_: DeepPartial<MsgChannelOpenInitResponse>): MsgChannelOpenInitResponse;
 };
 export declare const MsgChannelOpenTry: {
@@ -295,7 +295,7 @@ export declare const MsgChannelOpenTry: {
 };
 export declare const MsgChannelOpenTryResponse: {
     encode(_: MsgChannelOpenTryResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenTryResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenTryResponse;
     fromPartial(_: DeepPartial<MsgChannelOpenTryResponse>): MsgChannelOpenTryResponse;
 };
 export declare const MsgChannelOpenAck: {
@@ -305,7 +305,7 @@ export declare const MsgChannelOpenAck: {
 };
 export declare const MsgChannelOpenAckResponse: {
     encode(_: MsgChannelOpenAckResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenAckResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenAckResponse;
     fromPartial(_: DeepPartial<MsgChannelOpenAckResponse>): MsgChannelOpenAckResponse;
 };
 export declare const MsgChannelOpenConfirm: {
@@ -315,7 +315,7 @@ export declare const MsgChannelOpenConfirm: {
 };
 export declare const MsgChannelOpenConfirmResponse: {
     encode(_: MsgChannelOpenConfirmResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenConfirmResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenConfirmResponse;
     fromPartial(_: DeepPartial<MsgChannelOpenConfirmResponse>): MsgChannelOpenConfirmResponse;
 };
 export declare const MsgChannelCloseInit: {
@@ -325,7 +325,7 @@ export declare const MsgChannelCloseInit: {
 };
 export declare const MsgChannelCloseInitResponse: {
     encode(_: MsgChannelCloseInitResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseInitResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseInitResponse;
     fromPartial(_: DeepPartial<MsgChannelCloseInitResponse>): MsgChannelCloseInitResponse;
 };
 export declare const MsgChannelCloseConfirm: {
@@ -335,7 +335,7 @@ export declare const MsgChannelCloseConfirm: {
 };
 export declare const MsgChannelCloseConfirmResponse: {
     encode(_: MsgChannelCloseConfirmResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseConfirmResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseConfirmResponse;
     fromPartial(_: DeepPartial<MsgChannelCloseConfirmResponse>): MsgChannelCloseConfirmResponse;
 };
 export declare const MsgRecvPacket: {
@@ -345,7 +345,7 @@ export declare const MsgRecvPacket: {
 };
 export declare const MsgRecvPacketResponse: {
     encode(_: MsgRecvPacketResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRecvPacketResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRecvPacketResponse;
     fromPartial(_: DeepPartial<MsgRecvPacketResponse>): MsgRecvPacketResponse;
 };
 export declare const MsgTimeout: {
@@ -355,7 +355,7 @@ export declare const MsgTimeout: {
 };
 export declare const MsgTimeoutResponse: {
     encode(_: MsgTimeoutResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutResponse;
     fromPartial(_: DeepPartial<MsgTimeoutResponse>): MsgTimeoutResponse;
 };
 export declare const MsgTimeoutOnClose: {
@@ -365,7 +365,7 @@ export declare const MsgTimeoutOnClose: {
 };
 export declare const MsgTimeoutOnCloseResponse: {
     encode(_: MsgTimeoutOnCloseResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutOnCloseResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutOnCloseResponse;
     fromPartial(_: DeepPartial<MsgTimeoutOnCloseResponse>): MsgTimeoutOnCloseResponse;
 };
 export declare const MsgAcknowledgement: {
@@ -375,6 +375,6 @@ export declare const MsgAcknowledgement: {
 };
 export declare const MsgAcknowledgementResponse: {
     encode(_: MsgAcknowledgementResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAcknowledgementResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAcknowledgementResponse;
     fromPartial(_: DeepPartial<MsgAcknowledgementResponse>): MsgAcknowledgementResponse;
 };

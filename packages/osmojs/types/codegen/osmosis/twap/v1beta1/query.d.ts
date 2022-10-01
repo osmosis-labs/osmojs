@@ -56,7 +56,7 @@ export declare const ArithmeticTwapRequest: {
 };
 export declare const ArithmeticTwapResponse: {
     encode(message: ArithmeticTwapResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapResponse;
     fromPartial(object: DeepPartial<ArithmeticTwapResponse>): ArithmeticTwapResponse;
 };
 export declare const ArithmeticTwapToNowRequest: {
@@ -66,7 +66,7 @@ export declare const ArithmeticTwapToNowRequest: {
 };
 export declare const ArithmeticTwapToNowResponse: {
     encode(message: ArithmeticTwapToNowResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowResponse;
     fromPartial(object: DeepPartial<ArithmeticTwapToNowResponse>): ArithmeticTwapToNowResponse;
 };
 export declare const ParamsRequest: {
@@ -76,6 +76,6 @@ export declare const ParamsRequest: {
 };
 export declare const ParamsResponse: {
     encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
     fromPartial(object: DeepPartial<ParamsResponse>): ParamsResponse;
 };

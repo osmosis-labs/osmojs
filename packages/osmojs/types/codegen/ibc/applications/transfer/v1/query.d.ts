@@ -93,7 +93,7 @@ export declare const QueryDenomTraceRequest: {
 };
 export declare const QueryDenomTraceResponse: {
     encode(message: QueryDenomTraceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceResponse;
     fromPartial(object: DeepPartial<QueryDenomTraceResponse>): QueryDenomTraceResponse;
 };
 export declare const QueryDenomTracesRequest: {
@@ -103,7 +103,7 @@ export declare const QueryDenomTracesRequest: {
 };
 export declare const QueryDenomTracesResponse: {
     encode(message: QueryDenomTracesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesResponse;
     fromPartial(object: DeepPartial<QueryDenomTracesResponse>): QueryDenomTracesResponse;
 };
 export declare const QueryParamsRequest: {
@@ -113,6 +113,6 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
 };

@@ -152,7 +152,7 @@ export declare const MsgCreateClient: {
 };
 export declare const MsgCreateClientResponse: {
     encode(_: MsgCreateClientResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateClientResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateClientResponse;
     fromPartial(_: DeepPartial<MsgCreateClientResponse>): MsgCreateClientResponse;
 };
 export declare const MsgUpdateClient: {
@@ -162,7 +162,7 @@ export declare const MsgUpdateClient: {
 };
 export declare const MsgUpdateClientResponse: {
     encode(_: MsgUpdateClientResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateClientResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateClientResponse;
     fromPartial(_: DeepPartial<MsgUpdateClientResponse>): MsgUpdateClientResponse;
 };
 export declare const MsgUpgradeClient: {
@@ -172,7 +172,7 @@ export declare const MsgUpgradeClient: {
 };
 export declare const MsgUpgradeClientResponse: {
     encode(_: MsgUpgradeClientResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpgradeClientResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpgradeClientResponse;
     fromPartial(_: DeepPartial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse;
 };
 export declare const MsgSubmitMisbehaviour: {
@@ -182,6 +182,6 @@ export declare const MsgSubmitMisbehaviour: {
 };
 export declare const MsgSubmitMisbehaviourResponse: {
     encode(_: MsgSubmitMisbehaviourResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponse;
     fromPartial(_: DeepPartial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse;
 };

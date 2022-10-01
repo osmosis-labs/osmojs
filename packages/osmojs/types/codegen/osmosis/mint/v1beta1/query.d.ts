@@ -52,7 +52,7 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryEpochProvisionsRequest: {
@@ -62,6 +62,6 @@ export declare const QueryEpochProvisionsRequest: {
 };
 export declare const QueryEpochProvisionsResponse: {
     encode(message: QueryEpochProvisionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsResponse;
     fromPartial(object: DeepPartial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse;
 };

@@ -188,7 +188,7 @@ export declare const QueryCurrentPlanRequest: {
 };
 export declare const QueryCurrentPlanResponse: {
     encode(message: QueryCurrentPlanResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanResponse;
     fromPartial(object: DeepPartial<QueryCurrentPlanResponse>): QueryCurrentPlanResponse;
 };
 export declare const QueryAppliedPlanRequest: {
@@ -198,7 +198,7 @@ export declare const QueryAppliedPlanRequest: {
 };
 export declare const QueryAppliedPlanResponse: {
     encode(message: QueryAppliedPlanResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanResponse;
     fromPartial(object: DeepPartial<QueryAppliedPlanResponse>): QueryAppliedPlanResponse;
 };
 export declare const QueryUpgradedConsensusStateRequest: {
@@ -208,7 +208,7 @@ export declare const QueryUpgradedConsensusStateRequest: {
 };
 export declare const QueryUpgradedConsensusStateResponse: {
     encode(message: QueryUpgradedConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
     fromPartial(object: DeepPartial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
 };
 export declare const QueryModuleVersionsRequest: {
@@ -218,7 +218,7 @@ export declare const QueryModuleVersionsRequest: {
 };
 export declare const QueryModuleVersionsResponse: {
     encode(message: QueryModuleVersionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsResponse;
     fromPartial(object: DeepPartial<QueryModuleVersionsResponse>): QueryModuleVersionsResponse;
 };
 export declare const QueryAuthorityRequest: {
@@ -228,6 +228,6 @@ export declare const QueryAuthorityRequest: {
 };
 export declare const QueryAuthorityResponse: {
     encode(message: QueryAuthorityResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAuthorityResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAuthorityResponse;
     fromPartial(object: DeepPartial<QueryAuthorityResponse>): QueryAuthorityResponse;
 };

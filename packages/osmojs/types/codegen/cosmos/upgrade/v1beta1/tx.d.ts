@@ -76,7 +76,7 @@ export declare const MsgSoftwareUpgrade: {
 };
 export declare const MsgSoftwareUpgradeResponse: {
     encode(_: MsgSoftwareUpgradeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSoftwareUpgradeResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSoftwareUpgradeResponse;
     fromPartial(_: DeepPartial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse;
 };
 export declare const MsgCancelUpgrade: {
@@ -86,6 +86,6 @@ export declare const MsgCancelUpgrade: {
 };
 export declare const MsgCancelUpgradeResponse: {
     encode(_: MsgCancelUpgradeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUpgradeResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUpgradeResponse;
     fromPartial(_: DeepPartial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse;
 };

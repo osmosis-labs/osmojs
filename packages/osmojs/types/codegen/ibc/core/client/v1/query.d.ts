@@ -302,7 +302,7 @@ export declare const QueryClientStateRequest: {
 };
 export declare const QueryClientStateResponse: {
     encode(message: QueryClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStateResponse;
     fromPartial(object: DeepPartial<QueryClientStateResponse>): QueryClientStateResponse;
 };
 export declare const QueryClientStatesRequest: {
@@ -312,7 +312,7 @@ export declare const QueryClientStatesRequest: {
 };
 export declare const QueryClientStatesResponse: {
     encode(message: QueryClientStatesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatesResponse;
     fromPartial(object: DeepPartial<QueryClientStatesResponse>): QueryClientStatesResponse;
 };
 export declare const QueryConsensusStateRequest: {
@@ -322,7 +322,7 @@ export declare const QueryConsensusStateRequest: {
 };
 export declare const QueryConsensusStateResponse: {
     encode(message: QueryConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateResponse;
     fromPartial(object: DeepPartial<QueryConsensusStateResponse>): QueryConsensusStateResponse;
 };
 export declare const QueryConsensusStatesRequest: {
@@ -332,7 +332,7 @@ export declare const QueryConsensusStatesRequest: {
 };
 export declare const QueryConsensusStatesResponse: {
     encode(message: QueryConsensusStatesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStatesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStatesResponse;
     fromPartial(object: DeepPartial<QueryConsensusStatesResponse>): QueryConsensusStatesResponse;
 };
 export declare const QueryClientStatusRequest: {
@@ -342,7 +342,7 @@ export declare const QueryClientStatusRequest: {
 };
 export declare const QueryClientStatusResponse: {
     encode(message: QueryClientStatusResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatusResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatusResponse;
     fromPartial(object: DeepPartial<QueryClientStatusResponse>): QueryClientStatusResponse;
 };
 export declare const QueryClientParamsRequest: {
@@ -352,7 +352,7 @@ export declare const QueryClientParamsRequest: {
 };
 export declare const QueryClientParamsResponse: {
     encode(message: QueryClientParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientParamsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientParamsResponse;
     fromPartial(object: DeepPartial<QueryClientParamsResponse>): QueryClientParamsResponse;
 };
 export declare const QueryUpgradedClientStateRequest: {
@@ -362,7 +362,7 @@ export declare const QueryUpgradedClientStateRequest: {
 };
 export declare const QueryUpgradedClientStateResponse: {
     encode(message: QueryUpgradedClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedClientStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedClientStateResponse;
     fromPartial(object: DeepPartial<QueryUpgradedClientStateResponse>): QueryUpgradedClientStateResponse;
 };
 export declare const QueryUpgradedConsensusStateRequest: {
@@ -372,6 +372,6 @@ export declare const QueryUpgradedConsensusStateRequest: {
 };
 export declare const QueryUpgradedConsensusStateResponse: {
     encode(message: QueryUpgradedConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
     fromPartial(object: DeepPartial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
 };

@@ -306,7 +306,7 @@ export declare const QueryBalanceRequest: {
 };
 export declare const QueryBalanceResponse: {
     encode(message: QueryBalanceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceResponse;
     fromPartial(object: DeepPartial<QueryBalanceResponse>): QueryBalanceResponse;
 };
 export declare const QueryAllBalancesRequest: {
@@ -316,7 +316,7 @@ export declare const QueryAllBalancesRequest: {
 };
 export declare const QueryAllBalancesResponse: {
     encode(message: QueryAllBalancesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBalancesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBalancesResponse;
     fromPartial(object: DeepPartial<QueryAllBalancesResponse>): QueryAllBalancesResponse;
 };
 export declare const QuerySpendableBalancesRequest: {
@@ -326,7 +326,7 @@ export declare const QuerySpendableBalancesRequest: {
 };
 export declare const QuerySpendableBalancesResponse: {
     encode(message: QuerySpendableBalancesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpendableBalancesResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpendableBalancesResponse;
     fromPartial(object: DeepPartial<QuerySpendableBalancesResponse>): QuerySpendableBalancesResponse;
 };
 export declare const QueryTotalSupplyRequest: {
@@ -336,7 +336,7 @@ export declare const QueryTotalSupplyRequest: {
 };
 export declare const QueryTotalSupplyResponse: {
     encode(message: QueryTotalSupplyResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyResponse;
     fromPartial(object: DeepPartial<QueryTotalSupplyResponse>): QueryTotalSupplyResponse;
 };
 export declare const QuerySupplyOfRequest: {
@@ -346,7 +346,7 @@ export declare const QuerySupplyOfRequest: {
 };
 export declare const QuerySupplyOfResponse: {
     encode(message: QuerySupplyOfResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfResponse;
     fromPartial(object: DeepPartial<QuerySupplyOfResponse>): QuerySupplyOfResponse;
 };
 export declare const QueryParamsRequest: {
@@ -356,7 +356,7 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryDenomsMetadataRequest: {
@@ -366,7 +366,7 @@ export declare const QueryDenomsMetadataRequest: {
 };
 export declare const QueryDenomsMetadataResponse: {
     encode(message: QueryDenomsMetadataResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsMetadataResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsMetadataResponse;
     fromPartial(object: DeepPartial<QueryDenomsMetadataResponse>): QueryDenomsMetadataResponse;
 };
 export declare const QueryDenomMetadataRequest: {
@@ -376,7 +376,7 @@ export declare const QueryDenomMetadataRequest: {
 };
 export declare const QueryDenomMetadataResponse: {
     encode(message: QueryDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomMetadataResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomMetadataResponse;
     fromPartial(object: DeepPartial<QueryDenomMetadataResponse>): QueryDenomMetadataResponse;
 };
 export declare const QueryDenomOwnersRequest: {
@@ -391,6 +391,6 @@ export declare const DenomOwner: {
 };
 export declare const QueryDenomOwnersResponse: {
     encode(message: QueryDenomOwnersResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomOwnersResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomOwnersResponse;
     fromPartial(object: DeepPartial<QueryDenomOwnersResponse>): QueryDenomOwnersResponse;
 };

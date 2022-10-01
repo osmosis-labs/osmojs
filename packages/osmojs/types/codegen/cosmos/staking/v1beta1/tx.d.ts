@@ -146,7 +146,7 @@ export declare const MsgCreateValidator: {
 };
 export declare const MsgCreateValidatorResponse: {
     encode(_: MsgCreateValidatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidatorResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidatorResponse;
     fromPartial(_: DeepPartial<MsgCreateValidatorResponse>): MsgCreateValidatorResponse;
 };
 export declare const MsgEditValidator: {
@@ -156,7 +156,7 @@ export declare const MsgEditValidator: {
 };
 export declare const MsgEditValidatorResponse: {
     encode(_: MsgEditValidatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidatorResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidatorResponse;
     fromPartial(_: DeepPartial<MsgEditValidatorResponse>): MsgEditValidatorResponse;
 };
 export declare const MsgDelegate: {
@@ -166,7 +166,7 @@ export declare const MsgDelegate: {
 };
 export declare const MsgDelegateResponse: {
     encode(_: MsgDelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateResponse;
     fromPartial(_: DeepPartial<MsgDelegateResponse>): MsgDelegateResponse;
 };
 export declare const MsgBeginRedelegate: {
@@ -176,7 +176,7 @@ export declare const MsgBeginRedelegate: {
 };
 export declare const MsgBeginRedelegateResponse: {
     encode(message: MsgBeginRedelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegateResponse;
     fromPartial(object: DeepPartial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse;
 };
 export declare const MsgUndelegate: {
@@ -186,6 +186,6 @@ export declare const MsgUndelegate: {
 };
 export declare const MsgUndelegateResponse: {
     encode(message: MsgUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateResponse;
     fromPartial(object: DeepPartial<MsgUndelegateResponse>): MsgUndelegateResponse;
 };

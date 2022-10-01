@@ -153,7 +153,7 @@ export declare const MsgCreateDenom: {
 };
 export declare const MsgCreateDenomResponse: {
     encode(message: MsgCreateDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponse;
     fromPartial(object: DeepPartial<MsgCreateDenomResponse>): MsgCreateDenomResponse;
 };
 export declare const MsgMint: {
@@ -163,7 +163,7 @@ export declare const MsgMint: {
 };
 export declare const MsgMintResponse: {
     encode(_: MsgMintResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponse;
     fromPartial(_: DeepPartial<MsgMintResponse>): MsgMintResponse;
 };
 export declare const MsgBurn: {
@@ -173,7 +173,7 @@ export declare const MsgBurn: {
 };
 export declare const MsgBurnResponse: {
     encode(_: MsgBurnResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse;
     fromPartial(_: DeepPartial<MsgBurnResponse>): MsgBurnResponse;
 };
 export declare const MsgChangeAdmin: {
@@ -183,7 +183,7 @@ export declare const MsgChangeAdmin: {
 };
 export declare const MsgChangeAdminResponse: {
     encode(_: MsgChangeAdminResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponse;
     fromPartial(_: DeepPartial<MsgChangeAdminResponse>): MsgChangeAdminResponse;
 };
 export declare const MsgSetDenomMetadata: {
@@ -193,6 +193,6 @@ export declare const MsgSetDenomMetadata: {
 };
 export declare const MsgSetDenomMetadataResponse: {
     encode(_: MsgSetDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponse;
     fromPartial(_: DeepPartial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse;
 };

@@ -1,13 +1,13 @@
 import { Rpc } from "@osmonauts/helpers";
-import { MsgSend, MsgSendResponseSDKType, MsgMultiSend, MsgMultiSendResponseSDKType } from "./tx";
+import { MsgSend, MsgSendResponse, MsgMultiSend, MsgMultiSendResponse } from "./tx";
 /** Msg defines the RPC service */
 export interface Msg {
-    send(request: MsgSend): Promise<MsgSendResponseSDKType>;
-    multiSend(request: MsgMultiSend): Promise<MsgMultiSendResponseSDKType>;
+    send(request: MsgSend): Promise<MsgSendResponse>;
+    multiSend(request: MsgMultiSend): Promise<MsgMultiSendResponse>;
 }
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    send(request: MsgSend): Promise<MsgSendResponseSDKType>;
-    multiSend(request: MsgMultiSend): Promise<MsgMultiSendResponseSDKType>;
+    send(request: MsgSend): Promise<MsgSendResponse>;
+    multiSend(request: MsgMultiSend): Promise<MsgMultiSendResponse>;
 }

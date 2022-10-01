@@ -93,7 +93,7 @@ export declare const MsgGrant: {
 };
 export declare const MsgExecResponse: {
     encode(message: MsgExecResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecResponse;
     fromPartial(object: DeepPartial<MsgExecResponse>): MsgExecResponse;
 };
 export declare const MsgExec: {
@@ -103,7 +103,7 @@ export declare const MsgExec: {
 };
 export declare const MsgGrantResponse: {
     encode(_: MsgGrantResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantResponse;
     fromPartial(_: DeepPartial<MsgGrantResponse>): MsgGrantResponse;
 };
 export declare const MsgRevoke: {
@@ -113,6 +113,6 @@ export declare const MsgRevoke: {
 };
 export declare const MsgRevokeResponse: {
     encode(_: MsgRevokeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeResponseSDKType;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeResponse;
     fromPartial(_: DeepPartial<MsgRevokeResponse>): MsgRevokeResponse;
 };
