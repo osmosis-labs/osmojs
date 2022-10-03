@@ -1949,7 +1949,7 @@
     "@cosmjs/math" "^0.29.0"
     "@cosmjs/utils" "^0.29.0"
 
-"@cosmjs/crypto@0.29.0", "@cosmjs/crypto@^0.29.0":
+"@cosmjs/crypto@^0.29.0":
   version "0.29.0"
   resolved "https://registry.npmjs.org/@cosmjs/crypto/-/crypto-0.29.0.tgz#c914424a8b538f6624e505bc2015a71e3977c2fb"
   integrity sha512-MPJoebRGh7AcZgbfR25ci7iV+XzJiKwVq4wL8n6M5P2QdrIv7DqqniyFXcBbn9dQjMLMHnOSgT9LRv+VXzUVCA==
@@ -3496,14 +3496,14 @@
   dependencies:
     "@octokit/openapi-types" "^12.7.0"
 
-"@osmonauts/ast@^0.32.0":
-  version "0.32.0"
-  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.32.0.tgz#bc38052aa1e59734f788645605855e1e0deb0a65"
-  integrity sha512-76sIZEBuXTnLDLVrHLZRW4fjiuGUYHD1cbYypT+eUHlQ107154n8xavaMZHeLwLfzE1s+jaK1tD7jY6CsNwsxA==
+"@osmonauts/ast@^0.33.2":
+  version "0.33.2"
+  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.33.2.tgz#8a945f8d1b90ec7b9d275bf9bf8ce03d2c6cf153"
+  integrity sha512-8CQUDJLauZppPQnRdshY7kogovbatzkDcdqUaquowZb/Ho0Ex8Xxssxf598RTXdR+vF/6gG9ZLDSN3fp/CHshQ==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@babel/types" "7.18.13"
-    "@osmonauts/proto-parser" "^0.20.0"
+    "@osmonauts/proto-parser" "^0.21.1"
     "@osmonauts/types" "^0.16.0"
     "@osmonauts/utils" "^0.5.0"
     case "1.6.3"
@@ -3517,10 +3517,10 @@
     "@babel/runtime" "^7.18.9"
     axios "0.27.2"
 
-"@osmonauts/proto-parser@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.20.0.tgz#211a310f8c1d54b47b7cd977e5872b22fd00afde"
-  integrity sha512-ag6foIuEuFLV44T8EqasGw9WTWMUEDCZW0+rQ0Odr/Tptsfare5BEpoH5y0wRLrHOj29UlOrazWzLrD7LDUy1w==
+"@osmonauts/proto-parser@^0.21.1":
+  version "0.21.1"
+  resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.21.1.tgz#3daa281e6464c923f28f5cc099911a2aa1eef5af"
+  integrity sha512-bZq+iMFT0gSSn+j8aciNWhh8b335FhylV6rt8/NTkjH/FoAx5B2H5VipOXKlStf5zsa7Ri3MtsTjRBkKmN0syA==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@osmonauts/types" "^0.16.0"
@@ -3529,10 +3529,10 @@
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@0.37.0":
-  version "0.37.0"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.37.0.tgz#9d37ef3918cf46f7e7e945c8ec7adbd15d372d76"
-  integrity sha512-frnk38QigO+qmEt28xRNVRZWWMnBcLHx8xUYhJ+SsI8CFz3gMo/JYEW1k0wgSG8Ppv5E0V5Ap7uf7PUTzpTM7w==
+"@osmonauts/telescope@0.38.2":
+  version "0.38.2"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.38.2.tgz#96213dc42deb1119239428beca8bbdee2b961c00"
+  integrity sha512-4uZ1un3d55IUJEreTsa+2E0ZXvA5zjLwzR0lnwnF65lcJaM2+0hVl1WVM+rfGlJrSW/DxAc1r3HqRPurau19gQ==
   dependencies:
     "@babel/core" "7.18.13"
     "@babel/generator" "7.18.13"
@@ -3547,8 +3547,8 @@
     "@babel/traverse" "7.18.13"
     "@babel/types" "7.18.13"
     "@cosmwasm/ts-codegen" "0.17.0"
-    "@osmonauts/ast" "^0.32.0"
-    "@osmonauts/proto-parser" "^0.20.0"
+    "@osmonauts/ast" "^0.33.2"
+    "@osmonauts/proto-parser" "^0.21.1"
     "@osmonauts/types" "^0.16.0"
     "@osmonauts/utils" "^0.5.0"
     "@types/parse-package-name" "0.1.0"
@@ -4967,25 +4967,13 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cosmjs-types@0.5.1, cosmjs-types@^0.5.0:
+cosmjs-types@^0.5.0:
   version "0.5.1"
   resolved "https://registry.npmjs.org/cosmjs-types/-/cosmjs-types-0.5.1.tgz#f9bc35e78c32b687fb6018dc573eb454b3ae2587"
   integrity sha512-NcC58xUIVLlKdIimWWQAmSlmCjiMrJnuHf4i3LiD8PCextfHR0fT3V5/WlXZZreyMgdmh6ML1zPUfGTbbo3Z5g==
   dependencies:
     long "^4.0.0"
     protobufjs "~6.11.2"
-
-cosmjs-utils@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/cosmjs-utils/-/cosmjs-utils-0.1.0.tgz#a3e114a42619d541649587a37d489fc0cf6b9462"
-  integrity sha512-Ao2YhVXN+FqvbKqNeVN6I4njzRsCe3LVuPiLerMrAr6xr4MMABzvZbnY13AK/CYPrFJFJpmBCssocthAxOi59g==
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@cosmjs/amino" "0.29.0"
-    "@cosmjs/crypto" "0.29.0"
-    "@cosmjs/proto-signing" "0.29.0"
-    "@cosmjs/stargate" "0.29.0"
-    cosmjs-types "0.5.1"
 
 cross-env@^7.0.2:
   version "7.0.3"
