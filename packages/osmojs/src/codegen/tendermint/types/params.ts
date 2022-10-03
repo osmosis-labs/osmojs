@@ -1,6 +1,6 @@
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../helpers";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.
@@ -40,7 +40,7 @@ export interface BlockParams {
   /**
    * Minimum time increment between consecutive blocks (in milliseconds) If the
    * block header timestamp is ahead of the system clock, decrease this value.
-   * 
+   *
    * Not exposed to the application.
    */
 
@@ -63,7 +63,7 @@ export interface BlockParamsSDKType {
   /**
    * Minimum time increment between consecutive blocks (in milliseconds) If the
    * block header timestamp is ahead of the system clock, decrease this value.
-   * 
+   *
    * Not exposed to the application.
    */
 
@@ -74,14 +74,14 @@ export interface BlockParamsSDKType {
 export interface EvidenceParams {
   /**
    * Max age of evidence, in blocks.
-   * 
+   *
    * The basic formula for calculating this is: MaxAgeDuration / {average block
    * time}.
    */
   maxAgeNumBlocks: Long;
   /**
    * Max age of evidence, in time.
-   * 
+   *
    * It should correspond with an app's "unbonding period" or other similar
    * mechanism for handling [Nothing-At-Stake
    * attacks](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed).
@@ -101,14 +101,14 @@ export interface EvidenceParams {
 export interface EvidenceParamsSDKType {
   /**
    * Max age of evidence, in blocks.
-   * 
+   *
    * The basic formula for calculating this is: MaxAgeDuration / {average block
    * time}.
    */
   max_age_num_blocks: Long;
   /**
    * Max age of evidence, in time.
-   * 
+   *
    * It should correspond with an app's "unbonding period" or other similar
    * mechanism for handling [Nothing-At-Stake
    * attacks](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed).
@@ -151,7 +151,7 @@ export interface VersionParamsSDKType {
 }
 /**
  * HashedParams is a subset of ConsensusParams.
- * 
+ *
  * It is hashed into the Header.ConsensusHash.
  */
 
@@ -161,7 +161,7 @@ export interface HashedParams {
 }
 /**
  * HashedParams is a subset of ConsensusParams.
- * 
+ *
  * It is hashed into the Header.ConsensusHash.
  */
 

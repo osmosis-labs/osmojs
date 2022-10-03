@@ -1,6 +1,6 @@
 import { Height, HeightSDKType } from "../../client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../../helpers";
 /**
  * State defines if a channel is in one of the following states:
  * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -18,13 +18,13 @@ export enum State {
 
   /**
    * STATE_OPEN - A channel has completed the handshake. Open channels are
-   * ready to send and receive packets.
+   *  ready to send and receive packets.
    */
   STATE_OPEN = 3,
 
   /**
    * STATE_CLOSED - A channel has been closed and can no longer be used to send or receive
-   * packets.
+   *  packets.
    */
   STATE_CLOSED = 4,
   UNRECOGNIZED = -1,
@@ -46,13 +46,13 @@ export enum StateSDKType {
 
   /**
    * STATE_OPEN - A channel has completed the handshake. Open channels are
-   * ready to send and receive packets.
+   *  ready to send and receive packets.
    */
   STATE_OPEN = 3,
 
   /**
    * STATE_CLOSED - A channel has been closed and can no longer be used to send or receive
-   * packets.
+   *  packets.
    */
   STATE_CLOSED = 4,
   UNRECOGNIZED = -1,
@@ -114,7 +114,7 @@ export enum Order {
 
   /**
    * ORDER_UNORDERED - packets can be delivered in any order, which may differ from the order in
-   * which they were sent.
+   *  which they were sent.
    */
   ORDER_UNORDERED = 1,
 
@@ -130,7 +130,7 @@ export enum OrderSDKType {
 
   /**
    * ORDER_UNORDERED - packets can be delivered in any order, which may differ from the order in
-   * which they were sent.
+   *  which they were sent.
    */
   ORDER_UNORDERED = 1,
 

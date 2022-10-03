@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
 import { Sale, SaleSDKType, UserPosition, UserPositionSDKType } from "./state";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../helpers";
 export interface QuerySales {
     /** pagination defines an pagination for the request. */
     pagination?: PageRequest;

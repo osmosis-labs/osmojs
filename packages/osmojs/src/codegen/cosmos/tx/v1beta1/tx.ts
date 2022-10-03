@@ -3,7 +3,7 @@ import { SignMode, SignModeSDKType } from "../signing/v1beta1/signing";
 import { CompactBitArray, CompactBitArraySDKType } from "../../crypto/multisig/v1beta1/multisig";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../helpers";
 /** Tx is the standard type used for broadcasting transactions. */
 
 export interface Tx {
@@ -151,7 +151,7 @@ export interface SignDocSDKType {
 /**
  * SignDocDirectAux is the type used for generating sign bytes for
  * SIGN_MODE_DIRECT_AUX.
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 
@@ -187,7 +187,7 @@ export interface SignDocDirectAux {
 /**
  * SignDocDirectAux is the type used for generating sign bytes for
  * SIGN_MODE_DIRECT_AUX.
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 
@@ -325,7 +325,7 @@ export interface AuthInfo {
   fee: Fee;
   /**
    * Tip is the optional tip used for meta-transactions.
-   * 
+   *
    * Since: cosmos-sdk 0.46
    */
 
@@ -354,7 +354,7 @@ export interface AuthInfoSDKType {
   fee: FeeSDKType;
   /**
    * Tip is the optional tip used for meta-transactions.
-   * 
+   *
    * Since: cosmos-sdk 0.46
    */
 
@@ -536,7 +536,7 @@ export interface FeeSDKType {
 }
 /**
  * Tip is the tip used for meta-transactions.
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 
@@ -549,7 +549,7 @@ export interface Tip {
 }
 /**
  * Tip is the tip used for meta-transactions.
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 
@@ -565,7 +565,7 @@ export interface TipSDKType {
  * tipper) builds and sends to the fee payer (who will build and broadcast the
  * actual tx). AuxSignerData is not a valid tx in itself, and will be rejected
  * by the node if sent directly as-is.
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 
@@ -595,7 +595,7 @@ export interface AuxSignerData {
  * tipper) builds and sends to the fee payer (who will build and broadcast the
  * actual tx). AuxSignerData is not a valid tx in itself, and will be rejected
  * by the node if sent directly as-is.
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 

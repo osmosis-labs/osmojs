@@ -3,7 +3,7 @@ import { Consensus, ConsensusSDKType } from "../version/types";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { ValidatorSet, ValidatorSetSDKType } from "./validator";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, toTimestamp, Long, fromTimestamp } from "@osmonauts/helpers";
+import { DeepPartial, toTimestamp, Long, fromTimestamp } from "../../helpers";
 /** BlockIdFlag indicates which BlcokID the signature is for */
 
 export enum BlockIDFlag {

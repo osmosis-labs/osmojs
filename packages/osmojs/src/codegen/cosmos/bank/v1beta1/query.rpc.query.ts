@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryBalanceRequest, QueryBalanceResponse, QueryAllBalancesRequest, QueryAllBalancesResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryParamsRequest, QueryParamsResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse } from "./query";
@@ -13,7 +13,7 @@ export interface Query {
 
   spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponse>;
   /*SpendableBalances queries the spenable balance of all coins for a single
-  account.*/
+   account.*/
 
   totalSupply(request?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponse>;
   /*TotalSupply queries the total supply of all coins.*/
@@ -29,11 +29,11 @@ export interface Query {
 
   denomsMetadata(request?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponse>;
   /*DenomsMetadata queries the client metadata for all registered coin
-  denominations.*/
+   denominations.*/
 
   denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse>;
   /*DenomOwners queries for all account addresses that own a particular token
-  denomination.*/
+   denomination.*/
 
 }
 export class QueryClientImpl implements Query {

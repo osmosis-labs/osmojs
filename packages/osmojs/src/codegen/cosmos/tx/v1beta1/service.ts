@@ -4,7 +4,7 @@ import { TxResponse, TxResponseSDKType, GasInfo, GasInfoSDKType, Result, ResultS
 import { BlockID, BlockIDSDKType } from "../../../tendermint/types/types";
 import { Block, BlockSDKType } from "../../../tendermint/types/block";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../helpers";
 /** OrderBy defines the sorting order */
 
 export enum OrderBy {
@@ -74,19 +74,19 @@ export enum BroadcastMode {
 
   /**
    * BROADCAST_MODE_BLOCK - BROADCAST_MODE_BLOCK defines a tx broadcasting mode where the client waits for
-   * the tx to be committed in a block.
+   *  the tx to be committed in a block.
    */
   BROADCAST_MODE_BLOCK = 1,
 
   /**
    * BROADCAST_MODE_SYNC - BROADCAST_MODE_SYNC defines a tx broadcasting mode where the client waits for
-   * a CheckTx execution response only.
+   *  a CheckTx execution response only.
    */
   BROADCAST_MODE_SYNC = 2,
 
   /**
    * BROADCAST_MODE_ASYNC - BROADCAST_MODE_ASYNC defines a tx broadcasting mode where the client returns
-   * immediately.
+   *  immediately.
    */
   BROADCAST_MODE_ASYNC = 3,
   UNRECOGNIZED = -1,
@@ -99,19 +99,19 @@ export enum BroadcastModeSDKType {
 
   /**
    * BROADCAST_MODE_BLOCK - BROADCAST_MODE_BLOCK defines a tx broadcasting mode where the client waits for
-   * the tx to be committed in a block.
+   *  the tx to be committed in a block.
    */
   BROADCAST_MODE_BLOCK = 1,
 
   /**
    * BROADCAST_MODE_SYNC - BROADCAST_MODE_SYNC defines a tx broadcasting mode where the client waits for
-   * a CheckTx execution response only.
+   *  a CheckTx execution response only.
    */
   BROADCAST_MODE_SYNC = 2,
 
   /**
    * BROADCAST_MODE_ASYNC - BROADCAST_MODE_ASYNC defines a tx broadcasting mode where the client returns
-   * immediately.
+   *  immediately.
    */
   BROADCAST_MODE_ASYNC = 3,
   UNRECOGNIZED = -1,
@@ -267,7 +267,7 @@ export interface SimulateRequest {
   tx: Tx;
   /**
    * tx_bytes is the raw transaction.
-   * 
+   *
    * Since: cosmos-sdk 0.43
    */
 
@@ -288,7 +288,7 @@ export interface SimulateRequestSDKType {
   tx: TxSDKType;
   /**
    * tx_bytes is the raw transaction.
-   * 
+   *
    * Since: cosmos-sdk 0.43
    */
 
@@ -357,7 +357,7 @@ export interface GetTxResponseSDKType {
 /**
  * GetBlockWithTxsRequest is the request type for the Service.GetBlockWithTxs
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.45.2
  */
 
@@ -371,7 +371,7 @@ export interface GetBlockWithTxsRequest {
 /**
  * GetBlockWithTxsRequest is the request type for the Service.GetBlockWithTxs
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.45.2
  */
 
@@ -384,7 +384,7 @@ export interface GetBlockWithTxsRequestSDKType {
 }
 /**
  * GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs method.
- * 
+ *
  * Since: cosmos-sdk 0.45.2
  */
 
@@ -399,7 +399,7 @@ export interface GetBlockWithTxsResponse {
 }
 /**
  * GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs method.
- * 
+ *
  * Since: cosmos-sdk 0.45.2
  */
 

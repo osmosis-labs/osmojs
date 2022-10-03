@@ -15,8 +15,8 @@ export class LCDQueryClient {
     this.baseDenom = this.baseDenom.bind(this);
   }
   /* FeeTokens returns a list of all the whitelisted fee tokens and their
-  corresponding pools. It does not include the BaseDenom, which has its own
-  query endpoint */
+   corresponding pools. It does not include the BaseDenom, which has its own
+   query endpoint */
 
 
   async feeTokens(_params: QueryFeeTokensRequest = {}): Promise<QueryFeeTokensResponseSDKType> {

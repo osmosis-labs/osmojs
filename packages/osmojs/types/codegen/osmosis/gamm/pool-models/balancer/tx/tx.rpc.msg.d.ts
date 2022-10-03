@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../../../helpers";
 import { MsgCreateBalancerPool, MsgCreateBalancerPoolResponse } from "./tx";
 /** Msg defines the RPC service */
 export interface Msg {

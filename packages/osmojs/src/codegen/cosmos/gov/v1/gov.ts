@@ -3,7 +3,7 @@ import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
+import { DeepPartial, Long, toTimestamp, fromTimestamp } from "../../../helpers";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 
 export enum VoteOption {
@@ -99,31 +99,31 @@ export enum ProposalStatus {
 
   /**
    * PROPOSAL_STATUS_DEPOSIT_PERIOD - PROPOSAL_STATUS_DEPOSIT_PERIOD defines a proposal status during the deposit
-   * period.
+   *  period.
    */
   PROPOSAL_STATUS_DEPOSIT_PERIOD = 1,
 
   /**
    * PROPOSAL_STATUS_VOTING_PERIOD - PROPOSAL_STATUS_VOTING_PERIOD defines a proposal status during the voting
-   * period.
+   *  period.
    */
   PROPOSAL_STATUS_VOTING_PERIOD = 2,
 
   /**
    * PROPOSAL_STATUS_PASSED - PROPOSAL_STATUS_PASSED defines a proposal status of a proposal that has
-   * passed.
+   *  passed.
    */
   PROPOSAL_STATUS_PASSED = 3,
 
   /**
    * PROPOSAL_STATUS_REJECTED - PROPOSAL_STATUS_REJECTED defines a proposal status of a proposal that has
-   * been rejected.
+   *  been rejected.
    */
   PROPOSAL_STATUS_REJECTED = 4,
 
   /**
    * PROPOSAL_STATUS_FAILED - PROPOSAL_STATUS_FAILED defines a proposal status of a proposal that has
-   * failed.
+   *  failed.
    */
   PROPOSAL_STATUS_FAILED = 5,
   UNRECOGNIZED = -1,
@@ -136,31 +136,31 @@ export enum ProposalStatusSDKType {
 
   /**
    * PROPOSAL_STATUS_DEPOSIT_PERIOD - PROPOSAL_STATUS_DEPOSIT_PERIOD defines a proposal status during the deposit
-   * period.
+   *  period.
    */
   PROPOSAL_STATUS_DEPOSIT_PERIOD = 1,
 
   /**
    * PROPOSAL_STATUS_VOTING_PERIOD - PROPOSAL_STATUS_VOTING_PERIOD defines a proposal status during the voting
-   * period.
+   *  period.
    */
   PROPOSAL_STATUS_VOTING_PERIOD = 2,
 
   /**
    * PROPOSAL_STATUS_PASSED - PROPOSAL_STATUS_PASSED defines a proposal status of a proposal that has
-   * passed.
+   *  passed.
    */
   PROPOSAL_STATUS_PASSED = 3,
 
   /**
    * PROPOSAL_STATUS_REJECTED - PROPOSAL_STATUS_REJECTED defines a proposal status of a proposal that has
-   * been rejected.
+   *  been rejected.
    */
   PROPOSAL_STATUS_REJECTED = 4,
 
   /**
    * PROPOSAL_STATUS_FAILED - PROPOSAL_STATUS_FAILED defines a proposal status of a proposal that has
-   * failed.
+   *  failed.
    */
   PROPOSAL_STATUS_FAILED = 5,
   UNRECOGNIZED = -1,
@@ -346,7 +346,7 @@ export interface DepositParams {
   minDeposit: Coin[];
   /**
    * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
-   * months.
+   *  months.
    */
 
   maxDepositPeriod: Duration;
@@ -358,7 +358,7 @@ export interface DepositParamsSDKType {
   min_deposit: CoinSDKType[];
   /**
    * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
-   * months.
+   *  months.
    */
 
   max_deposit_period: DurationSDKType;
@@ -380,7 +380,7 @@ export interface VotingParamsSDKType {
 export interface TallyParams {
   /**
    * Minimum percentage of total stake needed to vote for a result to be
-   * considered valid.
+   *  considered valid.
    */
   quorum: string;
   /** Minimum proportion of Yes votes for proposal to pass. Default value: 0.5. */
@@ -388,7 +388,7 @@ export interface TallyParams {
   threshold: string;
   /**
    * Minimum value of Veto votes to Total votes ratio for proposal to be
-   * vetoed. Default value: 1/3.
+   *  vetoed. Default value: 1/3.
    */
 
   vetoThreshold: string;
@@ -398,7 +398,7 @@ export interface TallyParams {
 export interface TallyParamsSDKType {
   /**
    * Minimum percentage of total stake needed to vote for a result to be
-   * considered valid.
+   *  considered valid.
    */
   quorum: string;
   /** Minimum proportion of Yes votes for proposal to pass. Default value: 0.5. */
@@ -406,7 +406,7 @@ export interface TallyParamsSDKType {
   threshold: string;
   /**
    * Minimum value of Veto votes to Total votes ratio for proposal to be
-   * vetoed. Default value: 1/3.
+   *  vetoed. Default value: 1/3.
    */
 
   veto_threshold: string;

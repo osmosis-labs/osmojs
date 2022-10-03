@@ -1,13 +1,13 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Metadata, MetadataSDKType } from "../../../cosmos/bank/v1beta1/bank";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /**
  * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
  * method. It allows an account to create a new denom. It requires a sender
  * address and a sub denomination. The (sender_address, sub_denomination) tuple
  * must be unique and cannot be re-used.
- * 
+ *
  * The resulting denom created is defined as
  * <factory/{creatorAddress}/{subdenom}>. The resulting denom's admin is
  * originally set to be the creator, but this can be changed later. The token
@@ -25,7 +25,7 @@ export interface MsgCreateDenom {
  * method. It allows an account to create a new denom. It requires a sender
  * address and a sub denomination. The (sender_address, sub_denomination) tuple
  * must be unique and cannot be re-used.
- * 
+ *
  * The resulting denom created is defined as
  * <factory/{creatorAddress}/{subdenom}>. The resulting denom's admin is
  * originally set to be the creator, but this can be changed later. The token

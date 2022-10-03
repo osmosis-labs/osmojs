@@ -1,7 +1,7 @@
 import { Sale, SaleSDKType, UserPosition, UserPositionSDKType } from "./state";
 import { Params, ParamsSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "../../../helpers";
 /** GenesisState defines the streamswap module's genesis state. */
 export interface GenesisState {
     sales: Sale[];

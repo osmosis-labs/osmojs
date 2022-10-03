@@ -1,13 +1,13 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "../../../../helpers";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:
  *
- * message SomeRequest {
- * Foo some_parameter = 1;
- * PageRequest pagination = 2;
- * }
+ *  message SomeRequest {
+ *          Foo some_parameter = 1;
+ *          PageRequest pagination = 2;
+ *  }
  */
 export interface PageRequest {
     /**
@@ -45,10 +45,10 @@ export interface PageRequest {
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:
  *
- * message SomeRequest {
- * Foo some_parameter = 1;
- * PageRequest pagination = 2;
- * }
+ *  message SomeRequest {
+ *          Foo some_parameter = 1;
+ *          PageRequest pagination = 2;
+ *  }
  */
 export interface PageRequestSDKType {
     /**
@@ -86,10 +86,10 @@ export interface PageRequestSDKType {
  * PageResponse is to be embedded in gRPC response messages where the
  * corresponding request message has used PageRequest.
  *
- * message SomeResponse {
- * repeated Bar results = 1;
- * PageResponse page = 2;
- * }
+ *  message SomeResponse {
+ *          repeated Bar results = 1;
+ *          PageResponse page = 2;
+ *  }
  */
 export interface PageResponse {
     /**
@@ -108,10 +108,10 @@ export interface PageResponse {
  * PageResponse is to be embedded in gRPC response messages where the
  * corresponding request message has used PageRequest.
  *
- * message SomeResponse {
- * repeated Bar results = 1;
- * PageResponse page = 2;
- * }
+ *  message SomeResponse {
+ *          repeated Bar results = 1;
+ *          PageResponse page = 2;
+ *  }
  */
 export interface PageResponseSDKType {
     /**

@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgCreateSale, MsgCreateSaleResponse, MsgSubscribe, MsgWithdraw, MsgExitSale, MsgExitSaleResponse, MsgFinalizeSale, MsgFinalizeSaleResponse } from "./tx";
 import { Empty } from "../../../google/protobuf/empty";
@@ -7,31 +7,31 @@ import { Empty } from "../../../google/protobuf/empty";
 export interface Msg {
   createSale(request: MsgCreateSale): Promise<MsgCreateSaleResponse>;
   /*CreateSale creates new token sale. Anyone can create a new sale.
-  params.SaleBond OSMO will be charged as a bond (returned in FinalizeSale)
-  to avoid spams.
-  The sale follows the streamswap functionality explained in the
-  x/launchapd/spec*/
+   params.SaleBond OSMO will be charged as a bond (returned in FinalizeSale)
+   to avoid spams.
+   The sale follows the streamswap functionality explained in the
+   x/launchapd/spec*/
 
   subscribe(request: MsgSubscribe): Promise<google.protobuf.Empty>;
   /*Subscribe to a token sale. Any use at any time before the sale end can join
-  the sale by sending `token_in` to the Sale through the Subscribe msg.
-  During the sale, user `token_in` will be automatically charged every
-  epoch to purchase `token_out`.*/
+   the sale by sending `token_in` to the Sale through the Subscribe msg.
+   During the sale, user `token_in` will be automatically charged every
+   epoch to purchase `token_out`.*/
 
   withdraw(request: MsgWithdraw): Promise<google.protobuf.Empty>;
   /*Withdraw sends back `amount` of unspent tokens_in to the user.
-  If `amount` is empty, it will default to all unspent tokens.
-  User can do it any time unless his deposit is empty.*/
+   If `amount` is empty, it will default to all unspent tokens.
+   User can do it any time unless his deposit is empty.*/
 
   exitSale(request: MsgExitSale): Promise<MsgExitSaleResponse>;
   /*ExitSale withdraws (by a user who subscribed to the sale) purchased
-  tokens_out from the pool and remained tokens_in. Must be called before
-  the sale end.*/
+   tokens_out from the pool and remained tokens_in. Must be called before
+   the sale end.*/
 
   finalizeSale(request: MsgFinalizeSale): Promise<MsgFinalizeSaleResponse>;
   /*FinalizeSale clean ups the sale and sends income (earned tokens_in) to the
-  Sale recipient. Returns error if called before the Sale end. Anyone can
-  call this method.*/
+   Sale recipient. Returns error if called before the Sale end. Anyone can
+   call this method.*/
 
 }
 export class MsgClientImpl implements Msg {

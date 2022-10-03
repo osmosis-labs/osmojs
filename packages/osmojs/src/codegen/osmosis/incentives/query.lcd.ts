@@ -1,4 +1,4 @@
-import { setPaginationParams } from "@osmonauts/helpers";
+import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
 import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponseSDKType, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponseSDKType, GaugeByIDRequest, GaugeByIDResponseSDKType, GaugesRequest, GaugesResponseSDKType, ActiveGaugesRequest, ActiveGaugesResponseSDKType, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponseSDKType, UpcomingGaugesRequest, UpcomingGaugesResponseSDKType, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponseSDKType, RewardsEstRequest, RewardsEstResponseSDKType, QueryLockableDurationsRequest, QueryLockableDurationsResponseSDKType } from "./query";
 export class LCDQueryClient {
@@ -29,7 +29,7 @@ export class LCDQueryClient {
     return await this.req.get<ModuleToDistributeCoinsResponseSDKType>(endpoint);
   }
   /* ModuleDistributedCoins returns coins that are distributed by the module so
-  far */
+   far */
 
 
   async moduleDistributedCoins(_params: ModuleDistributedCoinsRequest = {}): Promise<ModuleDistributedCoinsResponseSDKType> {
@@ -114,7 +114,7 @@ export class LCDQueryClient {
     return await this.req.get<UpcomingGaugesResponseSDKType>(endpoint, options);
   }
   /* UpcomingGaugesPerDenom returns scheduled gauges that have not yet occured
-  by denom */
+   by denom */
 
 
   async upcomingGaugesPerDenom(params: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponseSDKType> {
@@ -134,8 +134,8 @@ export class LCDQueryClient {
     return await this.req.get<UpcomingGaugesPerDenomResponseSDKType>(endpoint, options);
   }
   /* RewardsEst returns an estimate of the rewards from now until a specified
-  time in the future The querier either provides an address or a set of locks
-  for which they want to find the associated rewards */
+   time in the future The querier either provides an address or a set of locks
+   for which they want to find the associated rewards */
 
 
   async rewardsEst(params: RewardsEstRequest): Promise<RewardsEstResponseSDKType> {
@@ -155,7 +155,7 @@ export class LCDQueryClient {
     return await this.req.get<RewardsEstResponseSDKType>(endpoint, options);
   }
   /* LockableDurations returns lockable durations that are valid to distribute
-  incentives for */
+   incentives for */
 
 
   async lockableDurations(_params: QueryLockableDurationsRequest = {}): Promise<QueryLockableDurationsResponseSDKType> {

@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../../helpers";
 /** BIP44Params is used as path field in ledger item in Record. */
 export interface BIP44Params {
     /** purpose is a constant set to 44' (or 0x8000002C) following the BIP43 recommendation */

@@ -1,4 +1,4 @@
-import { setPaginationParams } from "@osmonauts/helpers";
+import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
 import { QueryParamsRequest, QueryParamsResponseSDKType, AssetTypeRequest, AssetTypeResponseSDKType, AllAssetsRequest, AllAssetsResponseSDKType, AssetMultiplierRequest, AssetMultiplierResponseSDKType, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponseSDKType, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponseSDKType, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponseSDKType, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponseSDKType, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponseSDKType, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponseSDKType, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponseSDKType, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponseSDKType } from "./query";
 export class LCDQueryClient {
@@ -32,7 +32,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
   /* Returns superfluid asset type, whether if it's a native asset or an lp
-  share. */
+   share. */
 
 
   async assetType(params: AssetTypeRequest): Promise<AssetTypeResponseSDKType> {
@@ -94,7 +94,7 @@ export class LCDQueryClient {
     return await this.req.get<ConnectedIntermediaryAccountResponseSDKType>(endpoint);
   }
   /* Returns the total amount of osmo superfluidly staked.
-  Response is denominated in uosmo. */
+   Response is denominated in uosmo. */
 
 
   async totalSuperfluidDelegations(_params: TotalSuperfluidDelegationsRequest = {}): Promise<TotalSuperfluidDelegationsResponseSDKType> {
@@ -102,7 +102,7 @@ export class LCDQueryClient {
     return await this.req.get<TotalSuperfluidDelegationsResponseSDKType>(endpoint);
   }
   /* Returns the coins superfluid delegated for the delegator, validator, denom
-  triplet */
+   triplet */
 
 
   async superfluidDelegationAmount(params: SuperfluidDelegationAmountRequest): Promise<SuperfluidDelegationAmountResponseSDKType> {
@@ -148,7 +148,7 @@ export class LCDQueryClient {
     return await this.req.get<SuperfluidUndelegationsByDelegatorResponseSDKType>(endpoint, options);
   }
   /* Returns all the superfluid positions of a specific denom delegated to one
-  validator */
+   validator */
 
 
   async superfluidDelegationsByValidatorDenom(params: SuperfluidDelegationsByValidatorDenomRequest): Promise<SuperfluidDelegationsByValidatorDenomResponseSDKType> {
@@ -168,8 +168,8 @@ export class LCDQueryClient {
     return await this.req.get<SuperfluidDelegationsByValidatorDenomResponseSDKType>(endpoint, options);
   }
   /* Returns the amount of a specific denom delegated to a specific validator
-  This is labeled an estimate, because the way it calculates the amount can
-  lead rounding errors from the true delegated amount */
+   This is labeled an estimate, because the way it calculates the amount can
+   lead rounding errors from the true delegated amount */
 
 
   async estimateSuperfluidDelegatedAmountByValidatorDenom(params: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType> {

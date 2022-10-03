@@ -1,7 +1,7 @@
 import { Duration, DurationSDKType } from "../../../../google/protobuf/duration";
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../../helpers";
 /**
  * Parameters for changing the weights in a balancer pool smoothly from
  * a start weight and end weight over a period of time.
@@ -9,11 +9,11 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  * the two weights, but more types may be added in the future.
  * When these parameters are set, the weight w(t) for pool time `t` is the
  * following:
- * t <= start_time: w(t) = initial_pool_weights
- * start_time < t <= start_time + duration:
- * w(t) = initial_pool_weights + (t - start_time) *
- * (target_pool_weights - initial_pool_weights) / (duration)
- * t > start_time + duration: w(t) = target_pool_weights
+ *   t <= start_time: w(t) = initial_pool_weights
+ *   start_time < t <= start_time + duration:
+ *     w(t) = initial_pool_weights + (t - start_time) *
+ *       (target_pool_weights - initial_pool_weights) / (duration)
+ *   t > start_time + duration: w(t) = target_pool_weights
  */
 export interface SmoothWeightChangeParams {
     /**
@@ -47,11 +47,11 @@ export interface SmoothWeightChangeParams {
  * the two weights, but more types may be added in the future.
  * When these parameters are set, the weight w(t) for pool time `t` is the
  * following:
- * t <= start_time: w(t) = initial_pool_weights
- * start_time < t <= start_time + duration:
- * w(t) = initial_pool_weights + (t - start_time) *
- * (target_pool_weights - initial_pool_weights) / (duration)
- * t > start_time + duration: w(t) = target_pool_weights
+ *   t <= start_time: w(t) = initial_pool_weights
+ *   start_time < t <= start_time + duration:
+ *     w(t) = initial_pool_weights + (t - start_time) *
+ *       (target_pool_weights - initial_pool_weights) / (duration)
+ *   t > start_time + duration: w(t) = target_pool_weights
  */
 export interface SmoothWeightChangeParamsSDKType {
     /**

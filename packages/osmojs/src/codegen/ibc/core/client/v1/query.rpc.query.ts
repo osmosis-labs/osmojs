@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryClientStateRequest, QueryClientStateResponse, QueryClientStatesRequest, QueryClientStatesResponse, QueryConsensusStateRequest, QueryConsensusStateResponse, QueryConsensusStatesRequest, QueryConsensusStatesResponse, QueryClientStatusRequest, QueryClientStatusResponse, QueryClientParamsRequest, QueryClientParamsResponse, QueryUpgradedClientStateRequest, QueryUpgradedClientStateResponse, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponse } from "./query";
@@ -13,11 +13,11 @@ export interface Query {
 
   consensusState(request: QueryConsensusStateRequest): Promise<QueryConsensusStateResponse>;
   /*ConsensusState queries a consensus state associated with a client state at
-  a given height.*/
+   a given height.*/
 
   consensusStates(request: QueryConsensusStatesRequest): Promise<QueryConsensusStatesResponse>;
   /*ConsensusStates queries all the consensus state associated with a given
-  client.*/
+   client.*/
 
   clientStatus(request: QueryClientStatusRequest): Promise<QueryClientStatusResponse>;
   /*Status queries the status of an IBC client.*/

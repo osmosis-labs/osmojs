@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryFeeTokensRequest, QueryFeeTokensResponse, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponse, QueryDenomPoolIdRequest, QueryDenomPoolIdResponse, QueryBaseDenomRequest, QueryBaseDenomResponse } from "./query";
@@ -7,8 +7,8 @@ import { QueryFeeTokensRequest, QueryFeeTokensResponse, QueryDenomSpotPriceReque
 export interface Query {
   feeTokens(request?: QueryFeeTokensRequest): Promise<QueryFeeTokensResponse>;
   /*FeeTokens returns a list of all the whitelisted fee tokens and their
-  corresponding pools. It does not include the BaseDenom, which has its own
-  query endpoint*/
+   corresponding pools. It does not include the BaseDenom, which has its own
+   query endpoint*/
 
   denomSpotPrice(request: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponse>;
   /*DenomSpotPrice returns all spot prices by each registered token denom.*/

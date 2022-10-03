@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryConnectionRequest, QueryConnectionResponse, QueryConnectionsRequest, QueryConnectionsResponse, QueryClientConnectionsRequest, QueryClientConnectionsResponse, QueryConnectionClientStateRequest, QueryConnectionClientStateResponse, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponse } from "./query";
@@ -13,15 +13,15 @@ export interface Query {
 
   clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponse>;
   /*ClientConnections queries the connection paths associated with a client
-  state.*/
+   state.*/
 
   connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponse>;
   /*ConnectionClientState queries the client state associated with the
-  connection.*/
+   connection.*/
 
   connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponse>;
   /*ConnectionConsensusState queries the consensus state associated with the
-  connection.*/
+   connection.*/
 
 }
 export class QueryClientImpl implements Query {

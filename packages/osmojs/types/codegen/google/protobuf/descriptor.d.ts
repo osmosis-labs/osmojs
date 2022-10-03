@@ -1,21 +1,21 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../helpers";
 export declare enum FieldDescriptorProto_Type {
     /**
      * TYPE_DOUBLE - 0 is reserved for errors.
-     * Order is weird for historical reasons.
+     *  Order is weird for historical reasons.
      */
     TYPE_DOUBLE = 1,
     TYPE_FLOAT = 2,
     /**
      * TYPE_INT64 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
-     * negative values are likely.
+     *  negative values are likely.
      */
     TYPE_INT64 = 3,
     TYPE_UINT64 = 4,
     /**
      * TYPE_INT32 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
-     * negative values are likely.
+     *  negative values are likely.
      */
     TYPE_INT32 = 5,
     TYPE_FIXED64 = 6,
@@ -24,9 +24,9 @@ export declare enum FieldDescriptorProto_Type {
     TYPE_STRING = 9,
     /**
      * TYPE_GROUP - Tag-delimited aggregate.
-     * Group type is deprecated and not supported in proto3. However, Proto3
-     * implementations should still be able to parse the group wire format and
-     * treat group fields as unknown fields.
+     *  Group type is deprecated and not supported in proto3. However, Proto3
+     *  implementations should still be able to parse the group wire format and
+     *  treat group fields as unknown fields.
      */
     TYPE_GROUP = 10,
     TYPE_MESSAGE = 11,
@@ -45,19 +45,19 @@ export declare enum FieldDescriptorProto_Type {
 export declare enum FieldDescriptorProto_TypeSDKType {
     /**
      * TYPE_DOUBLE - 0 is reserved for errors.
-     * Order is weird for historical reasons.
+     *  Order is weird for historical reasons.
      */
     TYPE_DOUBLE = 1,
     TYPE_FLOAT = 2,
     /**
      * TYPE_INT64 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
-     * negative values are likely.
+     *  negative values are likely.
      */
     TYPE_INT64 = 3,
     TYPE_UINT64 = 4,
     /**
      * TYPE_INT32 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
-     * negative values are likely.
+     *  negative values are likely.
      */
     TYPE_INT32 = 5,
     TYPE_FIXED64 = 6,
@@ -66,9 +66,9 @@ export declare enum FieldDescriptorProto_TypeSDKType {
     TYPE_STRING = 9,
     /**
      * TYPE_GROUP - Tag-delimited aggregate.
-     * Group type is deprecated and not supported in proto3. However, Proto3
-     * implementations should still be able to parse the group wire format and
-     * treat group fields as unknown fields.
+     *  Group type is deprecated and not supported in proto3. However, Proto3
+     *  implementations should still be able to parse the group wire format and
+     *  treat group fields as unknown fields.
      */
     TYPE_GROUP = 10,
     TYPE_MESSAGE = 11,
@@ -106,7 +106,7 @@ export declare function fieldDescriptorProto_LabelToJSON(object: FieldDescriptor
 export declare enum FileOptions_OptimizeMode {
     /**
      * SPEED - Generate complete code for parsing, serialization,
-     * etc.
+     *  etc.
      */
     SPEED = 1,
     /** CODE_SIZE - Use ReflectionOps to implement these methods. */
@@ -119,7 +119,7 @@ export declare enum FileOptions_OptimizeMode {
 export declare enum FileOptions_OptimizeModeSDKType {
     /**
      * SPEED - Generate complete code for parsing, serialization,
-     * etc.
+     *  etc.
      */
     SPEED = 1,
     /** CODE_SIZE - Use ReflectionOps to implement these methods. */
@@ -609,9 +609,9 @@ export interface FileOptions {
     /**
      * Sets the Go package where structs generated from this .proto will be
      * placed. If omitted, the Go package will be derived from the following:
-     * - The basename of the package import path, if provided.
-     * - Otherwise, the package statement in the .proto file, if present.
-     * - Otherwise, the basename of the .proto file, without extension.
+     *   - The basename of the package import path, if provided.
+     *   - Otherwise, the package statement in the .proto file, if present.
+     *   - Otherwise, the basename of the .proto file, without extension.
      */
     goPackage: string;
     /**
@@ -726,9 +726,9 @@ export interface FileOptionsSDKType {
     /**
      * Sets the Go package where structs generated from this .proto will be
      * placed. If omitted, the Go package will be derived from the following:
-     * - The basename of the package import path, if provided.
-     * - Otherwise, the package statement in the .proto file, if present.
-     * - Otherwise, the basename of the .proto file, without extension.
+     *   - The basename of the package import path, if provided.
+     *   - Otherwise, the package statement in the .proto file, if present.
+     *   - Otherwise, the basename of the .proto file, without extension.
      */
     go_package: string;
     /**
@@ -810,10 +810,10 @@ export interface MessageOptions {
      * efficient, has fewer features, and is more complicated.
      *
      * The message must be defined exactly as follows:
-     * message Foo {
-     * option message_set_wire_format = true;
-     * extensions 4 to max;
-     * }
+     *   message Foo {
+     *     option message_set_wire_format = true;
+     *     extensions 4 to max;
+     *   }
      * Note that the message cannot have any defined fields; MessageSets only
      * have extensions.
      *
@@ -842,14 +842,14 @@ export interface MessageOptions {
      * maps field.
      *
      * For maps fields:
-     * map<KeyType, ValueType> map_field = 1;
+     *     map<KeyType, ValueType> map_field = 1;
      * The parsed descriptor looks like:
-     * message MapFieldEntry {
-     * option map_entry = true;
-     * optional KeyType key = 1;
-     * optional ValueType value = 2;
-     * }
-     * repeated MapFieldEntry map_field = 1;
+     *     message MapFieldEntry {
+     *         option map_entry = true;
+     *         optional KeyType key = 1;
+     *         optional ValueType value = 2;
+     *     }
+     *     repeated MapFieldEntry map_field = 1;
      *
      * Implementations may choose not to generate the map_entry=true message, but
      * use a native map in the target language to hold the keys and values.
@@ -872,10 +872,10 @@ export interface MessageOptionsSDKType {
      * efficient, has fewer features, and is more complicated.
      *
      * The message must be defined exactly as follows:
-     * message Foo {
-     * option message_set_wire_format = true;
-     * extensions 4 to max;
-     * }
+     *   message Foo {
+     *     option message_set_wire_format = true;
+     *     extensions 4 to max;
+     *   }
      * Note that the message cannot have any defined fields; MessageSets only
      * have extensions.
      *
@@ -904,14 +904,14 @@ export interface MessageOptionsSDKType {
      * maps field.
      *
      * For maps fields:
-     * map<KeyType, ValueType> map_field = 1;
+     *     map<KeyType, ValueType> map_field = 1;
      * The parsed descriptor looks like:
-     * message MapFieldEntry {
-     * option map_entry = true;
-     * optional KeyType key = 1;
-     * optional ValueType value = 2;
-     * }
-     * repeated MapFieldEntry map_field = 1;
+     *     message MapFieldEntry {
+     *         option map_entry = true;
+     *         optional KeyType key = 1;
+     *         optional ValueType value = 2;
+     *     }
+     *     repeated MapFieldEntry map_field = 1;
      *
      * Implementations may choose not to generate the map_entry=true message, but
      * use a native map in the target language to hold the keys and values.
@@ -1256,43 +1256,43 @@ export interface SourceCodeInfo {
      * tools.
      *
      * For example, say we have a file like:
-     * message Foo {
-     * optional string foo = 1;
-     * }
+     *   message Foo {
+     *     optional string foo = 1;
+     *   }
      * Let's look at just the field definition:
-     * optional string foo = 1;
-     * ^       ^^     ^^  ^  ^^^
-     * a       bc     de  f  ghi
+     *   optional string foo = 1;
+     *   ^       ^^     ^^  ^  ^^^
+     *   a       bc     de  f  ghi
      * We have the following locations:
-     * span   path               represents
-     * [a,i)  [ 4, 0, 2, 0 ]     The whole field definition.
-     * [a,b)  [ 4, 0, 2, 0, 4 ]  The label (optional).
-     * [c,d)  [ 4, 0, 2, 0, 5 ]  The type (string).
-     * [e,f)  [ 4, 0, 2, 0, 1 ]  The name (foo).
-     * [g,h)  [ 4, 0, 2, 0, 3 ]  The number (1).
+     *   span   path               represents
+     *   [a,i)  [ 4, 0, 2, 0 ]     The whole field definition.
+     *   [a,b)  [ 4, 0, 2, 0, 4 ]  The label (optional).
+     *   [c,d)  [ 4, 0, 2, 0, 5 ]  The type (string).
+     *   [e,f)  [ 4, 0, 2, 0, 1 ]  The name (foo).
+     *   [g,h)  [ 4, 0, 2, 0, 3 ]  The number (1).
      *
      * Notes:
      * - A location may refer to a repeated field itself (i.e. not to any
-     * particular index within it).  This is used whenever a set of elements are
-     * logically enclosed in a single code segment.  For example, an entire
-     * extend block (possibly containing multiple extension definitions) will
-     * have an outer location whose path refers to the "extensions" repeated
-     * field without an index.
+     *   particular index within it).  This is used whenever a set of elements are
+     *   logically enclosed in a single code segment.  For example, an entire
+     *   extend block (possibly containing multiple extension definitions) will
+     *   have an outer location whose path refers to the "extensions" repeated
+     *   field without an index.
      * - Multiple locations may have the same path.  This happens when a single
-     * logical declaration is spread out across multiple places.  The most
-     * obvious example is the "extend" block again -- there may be multiple
-     * extend blocks in the same scope, each of which will have the same path.
+     *   logical declaration is spread out across multiple places.  The most
+     *   obvious example is the "extend" block again -- there may be multiple
+     *   extend blocks in the same scope, each of which will have the same path.
      * - A location's span is not always a subset of its parent's span.  For
-     * example, the "extendee" of an extension declaration appears at the
-     * beginning of the "extend" block and is shared by all extensions within
-     * the block.
+     *   example, the "extendee" of an extension declaration appears at the
+     *   beginning of the "extend" block and is shared by all extensions within
+     *   the block.
      * - Just because a location's span is a subset of some other location's span
-     * does not mean that it is a descendant.  For example, a "group" defines
-     * both a type and a field in a single declaration.  Thus, the locations
-     * corresponding to the type and field and their components will overlap.
+     *   does not mean that it is a descendant.  For example, a "group" defines
+     *   both a type and a field in a single declaration.  Thus, the locations
+     *   corresponding to the type and field and their components will overlap.
      * - Code which tries to interpret locations should probably be designed to
-     * ignore those that it doesn't understand, as more types of locations could
-     * be recorded in the future.
+     *   ignore those that it doesn't understand, as more types of locations could
+     *   be recorded in the future.
      */
     location: SourceCodeInfo_Location[];
 }
@@ -1308,43 +1308,43 @@ export interface SourceCodeInfoSDKType {
      * tools.
      *
      * For example, say we have a file like:
-     * message Foo {
-     * optional string foo = 1;
-     * }
+     *   message Foo {
+     *     optional string foo = 1;
+     *   }
      * Let's look at just the field definition:
-     * optional string foo = 1;
-     * ^       ^^     ^^  ^  ^^^
-     * a       bc     de  f  ghi
+     *   optional string foo = 1;
+     *   ^       ^^     ^^  ^  ^^^
+     *   a       bc     de  f  ghi
      * We have the following locations:
-     * span   path               represents
-     * [a,i)  [ 4, 0, 2, 0 ]     The whole field definition.
-     * [a,b)  [ 4, 0, 2, 0, 4 ]  The label (optional).
-     * [c,d)  [ 4, 0, 2, 0, 5 ]  The type (string).
-     * [e,f)  [ 4, 0, 2, 0, 1 ]  The name (foo).
-     * [g,h)  [ 4, 0, 2, 0, 3 ]  The number (1).
+     *   span   path               represents
+     *   [a,i)  [ 4, 0, 2, 0 ]     The whole field definition.
+     *   [a,b)  [ 4, 0, 2, 0, 4 ]  The label (optional).
+     *   [c,d)  [ 4, 0, 2, 0, 5 ]  The type (string).
+     *   [e,f)  [ 4, 0, 2, 0, 1 ]  The name (foo).
+     *   [g,h)  [ 4, 0, 2, 0, 3 ]  The number (1).
      *
      * Notes:
      * - A location may refer to a repeated field itself (i.e. not to any
-     * particular index within it).  This is used whenever a set of elements are
-     * logically enclosed in a single code segment.  For example, an entire
-     * extend block (possibly containing multiple extension definitions) will
-     * have an outer location whose path refers to the "extensions" repeated
-     * field without an index.
+     *   particular index within it).  This is used whenever a set of elements are
+     *   logically enclosed in a single code segment.  For example, an entire
+     *   extend block (possibly containing multiple extension definitions) will
+     *   have an outer location whose path refers to the "extensions" repeated
+     *   field without an index.
      * - Multiple locations may have the same path.  This happens when a single
-     * logical declaration is spread out across multiple places.  The most
-     * obvious example is the "extend" block again -- there may be multiple
-     * extend blocks in the same scope, each of which will have the same path.
+     *   logical declaration is spread out across multiple places.  The most
+     *   obvious example is the "extend" block again -- there may be multiple
+     *   extend blocks in the same scope, each of which will have the same path.
      * - A location's span is not always a subset of its parent's span.  For
-     * example, the "extendee" of an extension declaration appears at the
-     * beginning of the "extend" block and is shared by all extensions within
-     * the block.
+     *   example, the "extendee" of an extension declaration appears at the
+     *   beginning of the "extend" block and is shared by all extensions within
+     *   the block.
      * - Just because a location's span is a subset of some other location's span
-     * does not mean that it is a descendant.  For example, a "group" defines
-     * both a type and a field in a single declaration.  Thus, the locations
-     * corresponding to the type and field and their components will overlap.
+     *   does not mean that it is a descendant.  For example, a "group" defines
+     *   both a type and a field in a single declaration.  Thus, the locations
+     *   corresponding to the type and field and their components will overlap.
      * - Code which tries to interpret locations should probably be designed to
-     * ignore those that it doesn't understand, as more types of locations could
-     * be recorded in the future.
+     *   ignore those that it doesn't understand, as more types of locations could
+     *   be recorded in the future.
      */
     location: SourceCodeInfo_LocationSDKType[];
 }
@@ -1356,21 +1356,21 @@ export interface SourceCodeInfo_Location {
      * Each element is a field number or an index.  They form a path from
      * the root FileDescriptorProto to the place where the definition.  For
      * example, this path:
-     * [ 4, 3, 2, 7, 1 ]
+     *   [ 4, 3, 2, 7, 1 ]
      * refers to:
-     * file.message_type(3)  // 4, 3
-     * .field(7)         // 2, 7
-     * .name()           // 1
+     *   file.message_type(3)  // 4, 3
+     *       .field(7)         // 2, 7
+     *       .name()           // 1
      * This is because FileDescriptorProto.message_type has field number 4:
-     * repeated DescriptorProto message_type = 4;
+     *   repeated DescriptorProto message_type = 4;
      * and DescriptorProto.field has field number 2:
-     * repeated FieldDescriptorProto field = 2;
+     *   repeated FieldDescriptorProto field = 2;
      * and FieldDescriptorProto.name has field number 1:
-     * optional string name = 1;
+     *   optional string name = 1;
      *
      * Thus, the above path gives the location of a field name.  If we removed
      * the last element:
-     * [ 4, 3, 2, 7 ]
+     *   [ 4, 3, 2, 7 ]
      * this path refers to the whole field declaration (from the beginning
      * of the label to the terminating semicolon).
      */
@@ -1403,34 +1403,34 @@ export interface SourceCodeInfo_Location {
      *
      * Examples:
      *
-     * optional int32 foo = 1;  // Comment attached to foo.
-     * // Comment attached to bar.
-     * optional int32 bar = 2;
+     *   optional int32 foo = 1;  // Comment attached to foo.
+     *   // Comment attached to bar.
+     *   optional int32 bar = 2;
      *
-     * optional string baz = 3;
-     * // Comment attached to baz.
-     * // Another line attached to baz.
+     *   optional string baz = 3;
+     *   // Comment attached to baz.
+     *   // Another line attached to baz.
      *
-     * // Comment attached to qux.
-     * //
-     * // Another line attached to qux.
-     * optional double qux = 4;
+     *   // Comment attached to qux.
+     *   //
+     *   // Another line attached to qux.
+     *   optional double qux = 4;
      *
-     * // Detached comment for corge. This is not leading or trailing comments
-     * // to qux or corge because there are blank lines separating it from
-     * // both.
+     *   // Detached comment for corge. This is not leading or trailing comments
+     *   // to qux or corge because there are blank lines separating it from
+     *   // both.
      *
-     * // Detached comment for corge paragraph 2.
+     *   // Detached comment for corge paragraph 2.
      *
-     * optional string corge = 5;
-     * /* Block comment attached
-     * * to corge.  Leading asterisks
-     * * will be removed. *\/
-     * /* Block comment attached to
-     * * grault. *\/
-     * optional int32 grault = 6;
+     *   optional string corge = 5;
+     *   /* Block comment attached
+     *    * to corge.  Leading asterisks
+     *    * will be removed. *\/
+     *   /* Block comment attached to
+     *    * grault. *\/
+     *   optional int32 grault = 6;
      *
-     * // ignored detached comments.
+     *   // ignored detached comments.
      */
     leadingComments: string;
     trailingComments: string;
@@ -1444,21 +1444,21 @@ export interface SourceCodeInfo_LocationSDKType {
      * Each element is a field number or an index.  They form a path from
      * the root FileDescriptorProto to the place where the definition.  For
      * example, this path:
-     * [ 4, 3, 2, 7, 1 ]
+     *   [ 4, 3, 2, 7, 1 ]
      * refers to:
-     * file.message_type(3)  // 4, 3
-     * .field(7)         // 2, 7
-     * .name()           // 1
+     *   file.message_type(3)  // 4, 3
+     *       .field(7)         // 2, 7
+     *       .name()           // 1
      * This is because FileDescriptorProto.message_type has field number 4:
-     * repeated DescriptorProto message_type = 4;
+     *   repeated DescriptorProto message_type = 4;
      * and DescriptorProto.field has field number 2:
-     * repeated FieldDescriptorProto field = 2;
+     *   repeated FieldDescriptorProto field = 2;
      * and FieldDescriptorProto.name has field number 1:
-     * optional string name = 1;
+     *   optional string name = 1;
      *
      * Thus, the above path gives the location of a field name.  If we removed
      * the last element:
-     * [ 4, 3, 2, 7 ]
+     *   [ 4, 3, 2, 7 ]
      * this path refers to the whole field declaration (from the beginning
      * of the label to the terminating semicolon).
      */
@@ -1491,34 +1491,34 @@ export interface SourceCodeInfo_LocationSDKType {
      *
      * Examples:
      *
-     * optional int32 foo = 1;  // Comment attached to foo.
-     * // Comment attached to bar.
-     * optional int32 bar = 2;
+     *   optional int32 foo = 1;  // Comment attached to foo.
+     *   // Comment attached to bar.
+     *   optional int32 bar = 2;
      *
-     * optional string baz = 3;
-     * // Comment attached to baz.
-     * // Another line attached to baz.
+     *   optional string baz = 3;
+     *   // Comment attached to baz.
+     *   // Another line attached to baz.
      *
-     * // Comment attached to qux.
-     * //
-     * // Another line attached to qux.
-     * optional double qux = 4;
+     *   // Comment attached to qux.
+     *   //
+     *   // Another line attached to qux.
+     *   optional double qux = 4;
      *
-     * // Detached comment for corge. This is not leading or trailing comments
-     * // to qux or corge because there are blank lines separating it from
-     * // both.
+     *   // Detached comment for corge. This is not leading or trailing comments
+     *   // to qux or corge because there are blank lines separating it from
+     *   // both.
      *
-     * // Detached comment for corge paragraph 2.
+     *   // Detached comment for corge paragraph 2.
      *
-     * optional string corge = 5;
-     * /* Block comment attached
-     * * to corge.  Leading asterisks
-     * * will be removed. *\/
-     * /* Block comment attached to
-     * * grault. *\/
-     * optional int32 grault = 6;
+     *   optional string corge = 5;
+     *   /* Block comment attached
+     *    * to corge.  Leading asterisks
+     *    * will be removed. *\/
+     *   /* Block comment attached to
+     *    * grault. *\/
+     *   optional int32 grault = 6;
      *
-     * // ignored detached comments.
+     *   // ignored detached comments.
      */
     leading_comments: string;
     trailing_comments: string;

@@ -14,7 +14,7 @@ export class LCDQueryClient {
     this.denomsFromCreator = this.denomsFromCreator.bind(this);
   }
   /* Params defines a gRPC query method that returns the tokenfactory module's
-  parameters. */
+   parameters. */
 
 
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
@@ -22,7 +22,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
   /* DenomAuthorityMetadata defines a gRPC query method for fetching
-  DenomAuthorityMetadata for a particular denom. */
+   DenomAuthorityMetadata for a particular denom. */
 
 
   async denomAuthorityMetadata(params: QueryDenomAuthorityMetadataRequest): Promise<QueryDenomAuthorityMetadataResponseSDKType> {
@@ -30,7 +30,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryDenomAuthorityMetadataResponseSDKType>(endpoint);
   }
   /* DenomsFromCreator defines a gRPC query method for fetching all
-  denominations created by a specific admin/creator. */
+   denominations created by a specific admin/creator. */
 
 
   async denomsFromCreator(params: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponseSDKType> {

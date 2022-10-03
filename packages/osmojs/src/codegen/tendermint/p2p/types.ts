@@ -1,6 +1,6 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
+import { Long, DeepPartial, toTimestamp, fromTimestamp } from "../../helpers";
 export interface ProtocolVersion {
   p2p: Long;
   block: Long;

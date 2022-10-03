@@ -1,6 +1,6 @@
 import { Plan, PlanSDKType, ModuleVersion, ModuleVersionSDKType } from "./upgrade";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../helpers";
 /**
  * QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
  * method.
@@ -120,7 +120,7 @@ export interface QueryUpgradedConsensusStateResponseSDKType {
 /**
  * QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 
@@ -135,7 +135,7 @@ export interface QueryModuleVersionsRequest {
 /**
  * QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 
@@ -150,7 +150,7 @@ export interface QueryModuleVersionsRequestSDKType {
 /**
  * QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 
@@ -161,7 +161,7 @@ export interface QueryModuleVersionsResponse {
 /**
  * QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 
@@ -171,21 +171,21 @@ export interface QueryModuleVersionsResponseSDKType {
 }
 /**
  * QueryAuthorityRequest is the request type for Query/Authority
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 
 export interface QueryAuthorityRequest {}
 /**
  * QueryAuthorityRequest is the request type for Query/Authority
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 
 export interface QueryAuthorityRequestSDKType {}
 /**
  * QueryAuthorityResponse is the response type for Query/Authority
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 
@@ -194,7 +194,7 @@ export interface QueryAuthorityResponse {
 }
 /**
  * QueryAuthorityResponse is the response type for Query/Authority
- * 
+ *
  * Since: cosmos-sdk 0.46
  */
 

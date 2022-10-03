@@ -1,9 +1,9 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /**
  * AuthorizationType defines the type of staking module authorization type
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 
@@ -23,7 +23,7 @@ export enum AuthorizationType {
 }
 /**
  * AuthorizationType defines the type of staking module authorization type
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 
@@ -85,7 +85,7 @@ export function authorizationTypeToJSON(object: AuthorizationType): string {
 }
 /**
  * StakeAuthorization defines authorization for delegate/undelegate/redelegate.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 
@@ -110,7 +110,7 @@ export interface StakeAuthorization {
 }
 /**
  * StakeAuthorization defines authorization for delegate/undelegate/redelegate.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 

@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { AminoHeight } from "@osmonauts/helpers";
+import { AminoHeight } from "../../../../helpers";
 import { MsgConnectionOpenInit, MsgConnectionOpenTry, MsgConnectionOpenAck, MsgConnectionOpenConfirm } from "./tx";
 export interface AminoMsgConnectionOpenInit extends AminoMsg {
     type: "cosmos-sdk/MsgConnectionOpenInit";

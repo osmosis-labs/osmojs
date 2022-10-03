@@ -1,7 +1,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp, Long, DeepPartial } from "@osmonauts/helpers";
+import { toTimestamp, fromTimestamp, Long, DeepPartial } from "../../../helpers";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 
 export interface Plan {
@@ -146,7 +146,7 @@ export interface CancelSoftwareUpgradeProposalSDKType {
 }
 /**
  * ModuleVersion specifies a module and its consensus version.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 
@@ -159,7 +159,7 @@ export interface ModuleVersion {
 }
 /**
  * ModuleVersion specifies a module and its consensus version.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 

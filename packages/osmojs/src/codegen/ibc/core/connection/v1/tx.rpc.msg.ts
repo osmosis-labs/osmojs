@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgConnectionOpenInit, MsgConnectionOpenInitResponse, MsgConnectionOpenTry, MsgConnectionOpenTryResponse, MsgConnectionOpenAck, MsgConnectionOpenAckResponse, MsgConnectionOpenConfirm, MsgConnectionOpenConfirmResponse } from "./tx";
 /** Msg defines the RPC service */
@@ -15,7 +15,7 @@ export interface Msg {
 
   connectionOpenConfirm(request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponse>;
   /*ConnectionOpenConfirm defines a rpc handler method for
-  MsgConnectionOpenConfirm.*/
+   MsgConnectionOpenConfirm.*/
 
 }
 export class MsgClientImpl implements Msg {

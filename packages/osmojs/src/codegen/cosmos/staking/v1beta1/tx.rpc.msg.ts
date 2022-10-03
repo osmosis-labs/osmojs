@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse } from "./tx";
 /** Msg defines the RPC service */
@@ -12,15 +12,15 @@ export interface Msg {
 
   delegate(request: MsgDelegate): Promise<MsgDelegateResponse>;
   /*Delegate defines a method for performing a delegation of coins
-  from a delegator to a validator.*/
+   from a delegator to a validator.*/
 
   beginRedelegate(request: MsgBeginRedelegate): Promise<MsgBeginRedelegateResponse>;
   /*BeginRedelegate defines a method for performing a redelegation
-  of coins from a delegator and source validator to a destination validator.*/
+   of coins from a delegator and source validator to a destination validator.*/
 
   undelegate(request: MsgUndelegate): Promise<MsgUndelegateResponse>;
   /*Undelegate defines a method for performing an undelegation from a
-  delegate and a validator.*/
+   delegate and a validator.*/
 
 }
 export class MsgClientImpl implements Msg {

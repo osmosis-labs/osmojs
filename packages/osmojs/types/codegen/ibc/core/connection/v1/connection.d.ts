@@ -1,6 +1,6 @@
 import { MerklePrefix, MerklePrefixSDKType } from "../../commitment/v1/commitment";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "../../../../helpers";
 /**
  * State defines if a connection is in one of the following states:
  * INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -12,7 +12,7 @@ export declare enum State {
     STATE_INIT = 1,
     /**
      * STATE_TRYOPEN - A connection end has acknowledged the handshake step on the counterparty
-     * chain.
+     *  chain.
      */
     STATE_TRYOPEN = 2,
     /** STATE_OPEN - A connection end has completed the handshake. */
@@ -30,7 +30,7 @@ export declare enum StateSDKType {
     STATE_INIT = 1,
     /**
      * STATE_TRYOPEN - A connection end has acknowledged the handshake step on the counterparty
-     * chain.
+     *  chain.
      */
     STATE_TRYOPEN = 2,
     /** STATE_OPEN - A connection end has completed the handshake. */

@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgSoftwareUpgrade, MsgSoftwareUpgradeResponse, MsgCancelUpgrade, MsgCancelUpgradeResponse } from "./tx";
 /** Msg defines the RPC service */
@@ -7,13 +7,13 @@ export interface Msg {
   softwareUpgrade(request: MsgSoftwareUpgrade): Promise<MsgSoftwareUpgradeResponse>;
   /*SoftwareUpgrade is a governance operation for initiating a software upgrade.
   
-  Since: cosmos-sdk 0.46*/
+   Since: cosmos-sdk 0.46*/
 
   cancelUpgrade(request: MsgCancelUpgrade): Promise<MsgCancelUpgradeResponse>;
   /*CancelUpgrade is a governance operation for cancelling a previously
-  approvid software upgrade.
+   approvid software upgrade.
   
-  Since: cosmos-sdk 0.46*/
+   Since: cosmos-sdk 0.46*/
 
 }
 export class MsgClientImpl implements Msg {

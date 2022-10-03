@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { Long } from "@osmonauts/helpers";
+import { Long } from "../../../../../helpers";
 import { MsgCreateBalancerPool } from "./tx";
 export interface AminoMsgCreateBalancerPool extends AminoMsg {
   type: "osmosis/gamm/poolmodels/balancer/create-balancer-pool";

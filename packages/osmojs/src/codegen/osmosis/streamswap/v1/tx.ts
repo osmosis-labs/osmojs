@@ -2,7 +2,7 @@ import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp, DeepPartial, Long } from "@osmonauts/helpers";
+import { toTimestamp, fromTimestamp, DeepPartial, Long } from "../../../helpers";
 export interface MsgCreateSale {
   /**
    * Sale creator and the account which provides token (token_out) to the sale.

@@ -1,7 +1,7 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp, Long, DeepPartial } from "@osmonauts/helpers";
+import { toTimestamp, fromTimestamp, Long, DeepPartial } from "../../helpers";
 /**
  * EpochInfo is a struct that describes the data going into
  * a timer defined by the x/epochs module.
@@ -39,7 +39,7 @@ export interface EpochInfo {
    * current_epoch_start_time + duration] When the timer ticks, this is set to
    * current_epoch_start_time = last_epoch_start_time + duration only one timer
    * tick for a given identifier can occur per block.
-   * 
+   *
    * NOTE! The current_epoch_start_time may diverge significantly from the
    * wall-clock time the epoch began at. Wall-clock time of epoch start may be
    * >> current_epoch_start_time. Suppose current_epoch_start_time = 10,
@@ -104,7 +104,7 @@ export interface EpochInfoSDKType {
    * current_epoch_start_time + duration] When the timer ticks, this is set to
    * current_epoch_start_time = last_epoch_start_time + duration only one timer
    * tick for a given identifier can occur per block.
-   * 
+   *
    * NOTE! The current_epoch_start_time may diverge significantly from the
    * wall-clock time the epoch began at. Wall-clock time of epoch start may be
    * >> current_epoch_start_time. Suppose current_epoch_start_time = 10,

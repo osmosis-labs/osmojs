@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /** Params defines the parameters for the bank module. */
 
 export interface Params {
@@ -140,7 +140,7 @@ export interface Metadata {
   display: string;
   /**
    * name defines the name of the token (eg: Cosmos Atom)
-   * 
+   *
    * Since: cosmos-sdk 0.43
    */
 
@@ -148,14 +148,14 @@ export interface Metadata {
   /**
    * symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
    * be the same as the display.
-   * 
+   *
    * Since: cosmos-sdk 0.43
    */
 
   symbol: string;
   /**
    * URI to a document (on or off-chain) that contains additional information. Optional.
-   * 
+   *
    * Since: cosmos-sdk 0.46
    */
 
@@ -163,7 +163,7 @@ export interface Metadata {
   /**
    * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
    * the document didn't change. Optional.
-   * 
+   *
    * Since: cosmos-sdk 0.46
    */
 
@@ -190,7 +190,7 @@ export interface MetadataSDKType {
   display: string;
   /**
    * name defines the name of the token (eg: Cosmos Atom)
-   * 
+   *
    * Since: cosmos-sdk 0.43
    */
 
@@ -198,14 +198,14 @@ export interface MetadataSDKType {
   /**
    * symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
    * be the same as the display.
-   * 
+   *
    * Since: cosmos-sdk 0.43
    */
 
   symbol: string;
   /**
    * URI to a document (on or off-chain) that contains additional information. Optional.
-   * 
+   *
    * Since: cosmos-sdk 0.46
    */
 
@@ -213,7 +213,7 @@ export interface MetadataSDKType {
   /**
    * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
    * the document didn't change. Optional.
-   * 
+   *
    * Since: cosmos-sdk 0.46
    */
 

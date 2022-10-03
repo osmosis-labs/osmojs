@@ -1,4 +1,4 @@
-import { setPaginationParams } from "@osmonauts/helpers";
+import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
 import { QuerySales, QuerySalesResponseSDKType, QuerySale, QuerySaleResponseSDKType, QueryUserPosition, QueryUserPositionResponseSDKType } from "./query";
 export class LCDQueryClient {

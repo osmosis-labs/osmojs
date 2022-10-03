@@ -4,7 +4,7 @@ import { TxResponse, TxResponseSDKType, GasInfo, GasInfoSDKType, Result, ResultS
 import { BlockID, BlockIDSDKType } from "../../../tendermint/types/types";
 import { Block, BlockSDKType } from "../../../tendermint/types/block";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../helpers";
 /** OrderBy defines the sorting order */
 export declare enum OrderBy {
     /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */
@@ -33,17 +33,17 @@ export declare enum BroadcastMode {
     BROADCAST_MODE_UNSPECIFIED = 0,
     /**
      * BROADCAST_MODE_BLOCK - BROADCAST_MODE_BLOCK defines a tx broadcasting mode where the client waits for
-     * the tx to be committed in a block.
+     *  the tx to be committed in a block.
      */
     BROADCAST_MODE_BLOCK = 1,
     /**
      * BROADCAST_MODE_SYNC - BROADCAST_MODE_SYNC defines a tx broadcasting mode where the client waits for
-     * a CheckTx execution response only.
+     *  a CheckTx execution response only.
      */
     BROADCAST_MODE_SYNC = 2,
     /**
      * BROADCAST_MODE_ASYNC - BROADCAST_MODE_ASYNC defines a tx broadcasting mode where the client returns
-     * immediately.
+     *  immediately.
      */
     BROADCAST_MODE_ASYNC = 3,
     UNRECOGNIZED = -1
@@ -54,17 +54,17 @@ export declare enum BroadcastModeSDKType {
     BROADCAST_MODE_UNSPECIFIED = 0,
     /**
      * BROADCAST_MODE_BLOCK - BROADCAST_MODE_BLOCK defines a tx broadcasting mode where the client waits for
-     * the tx to be committed in a block.
+     *  the tx to be committed in a block.
      */
     BROADCAST_MODE_BLOCK = 1,
     /**
      * BROADCAST_MODE_SYNC - BROADCAST_MODE_SYNC defines a tx broadcasting mode where the client waits for
-     * a CheckTx execution response only.
+     *  a CheckTx execution response only.
      */
     BROADCAST_MODE_SYNC = 2,
     /**
      * BROADCAST_MODE_ASYNC - BROADCAST_MODE_ASYNC defines a tx broadcasting mode where the client returns
-     * immediately.
+     *  immediately.
      */
     BROADCAST_MODE_ASYNC = 3,
     UNRECOGNIZED = -1

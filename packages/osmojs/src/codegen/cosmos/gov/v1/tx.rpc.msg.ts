@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse } from "./tx";
 /** Msg defines the RPC service */
@@ -9,7 +9,7 @@ export interface Msg {
 
   execLegacyContent(request: MsgExecLegacyContent): Promise<MsgExecLegacyContentResponse>;
   /*ExecLegacyContent defines a Msg to be in included in a MsgSubmitProposal
-  to execute a legacy content-based proposal.*/
+   to execute a legacy content-based proposal.*/
 
   vote(request: MsgVote): Promise<MsgVoteResponse>;
   /*Vote defines a method to add a vote on a specific proposal.*/

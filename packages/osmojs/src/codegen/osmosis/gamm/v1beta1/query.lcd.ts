@@ -1,4 +1,4 @@
-import { setPaginationParams } from "@osmonauts/helpers";
+import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
 import { QueryPoolsRequest, QueryPoolsResponseSDKType, QueryNumPoolsRequest, QueryNumPoolsResponseSDKType, QueryTotalLiquidityRequest, QueryTotalLiquidityResponseSDKType, QueryPoolRequest, QueryPoolResponseSDKType, QueryPoolTypeRequest, QueryPoolTypeResponseSDKType, QueryPoolParamsRequest, QueryPoolParamsResponseSDKType, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponseSDKType, QueryTotalSharesRequest, QueryTotalSharesResponseSDKType, QuerySpotPriceRequest, QuerySpotPriceResponseSDKType, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponseSDKType, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponseSDKType } from "./query";
 export class LCDQueryClient {
@@ -61,8 +61,8 @@ export class LCDQueryClient {
     return await this.req.get<QueryPoolResponseSDKType>(endpoint);
   }
   /* PoolType returns the type of the pool.
-  Returns "Balancer" as a string literal when the pool is a balancer pool.
-  Errors if the pool is failed to be type caseted. */
+   Returns "Balancer" as a string literal when the pool is a balancer pool.
+   Errors if the pool is failed to be type caseted. */
 
 
   async poolType(params: QueryPoolTypeRequest): Promise<QueryPoolTypeResponseSDKType> {
@@ -91,7 +91,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryTotalSharesResponseSDKType>(endpoint);
   }
   /* SpotPrice defines a gRPC query handler that returns the spot price given
-  a base denomination and a quote denomination. */
+   a base denomination and a quote denomination. */
 
 
   async spotPrice(params: QuerySpotPriceRequest): Promise<QuerySpotPriceResponseSDKType> {

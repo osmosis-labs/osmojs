@@ -1,4 +1,4 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
@@ -10,7 +10,7 @@ export interface Query {
 
   moduleDistributedCoins(request?: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponse>;
   /*ModuleDistributedCoins returns coins that are distributed by the module so
-  far*/
+   far*/
 
   gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponse>;
   /*GaugeByID returns gauges by their respective ID*/
@@ -29,16 +29,16 @@ export interface Query {
 
   upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse>;
   /*UpcomingGaugesPerDenom returns scheduled gauges that have not yet occured
-  by denom*/
+   by denom*/
 
   rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponse>;
   /*RewardsEst returns an estimate of the rewards from now until a specified
-  time in the future The querier either provides an address or a set of locks
-  for which they want to find the associated rewards*/
+   time in the future The querier either provides an address or a set of locks
+   for which they want to find the associated rewards*/
 
   lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse>;
   /*LockableDurations returns lockable durations that are valid to distribute
-  incentives for*/
+   incentives for*/
 
 }
 export class QueryClientImpl implements Query {

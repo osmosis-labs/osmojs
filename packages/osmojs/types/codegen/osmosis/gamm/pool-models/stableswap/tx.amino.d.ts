@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { Long } from "@osmonauts/helpers";
+import { Long } from "../../../../helpers";
 import { MsgCreateStableswapPool, MsgStableSwapAdjustScalingFactors } from "./tx";
 export interface AminoMsgCreateStableswapPool extends AminoMsg {
     type: "osmosis/gamm/create-stableswap-pool";
