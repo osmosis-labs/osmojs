@@ -2,7 +2,7 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../../helpers";
 /**
  * Coin defines a token with a denomination and an amount.
- *
+ * 
  * NOTE: The amount field is an Int which implements the custom method
  * signatures required by gogoproto.
  */
@@ -13,7 +13,7 @@ export interface Coin {
 }
 /**
  * Coin defines a token with a denomination and an amount.
- *
+ * 
  * NOTE: The amount field is an Int which implements the custom method
  * signatures required by gogoproto.
  */
@@ -24,7 +24,7 @@ export interface CoinSDKType {
 }
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
- *
+ * 
  * NOTE: The amount field is an Dec which implements the custom method
  * signatures required by gogoproto.
  */
@@ -35,7 +35,7 @@ export interface DecCoin {
 }
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
- *
+ * 
  * NOTE: The amount field is an Dec which implements the custom method
  * signatures required by gogoproto.
  */

@@ -2,54 +2,63 @@ import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryParamsRequest, QueryParamsResponse, AssetTypeRequest, AssetTypeResponse, AllAssetsRequest, AllAssetsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse } from "./query";
-/** Query defines the RPC service */
+/** Query defines the gRPC querier service. */
 
 export interface Query {
+  /** Params returns the total set of superfluid parameters. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /*Params returns the total set of superfluid parameters.*/
+  /**
+   * Returns superfluid asset type, whether if it's a native asset or an lp
+   * share.
+   */
 
   assetType(request: AssetTypeRequest): Promise<AssetTypeResponse>;
-  /*Returns superfluid asset type, whether if it's a native asset or an lp
-   share.*/
+  /** Returns all registered superfluid assets. */
 
   allAssets(request?: AllAssetsRequest): Promise<AllAssetsResponse>;
-  /*Returns all registered superfluid assets.*/
+  /** Returns the osmo equivalent multiplier used in the most recent epoch. */
 
   assetMultiplier(request: AssetMultiplierRequest): Promise<AssetMultiplierResponse>;
-  /*Returns the osmo equivalent multiplier used in the most recent epoch.*/
+  /** Returns all superfluid intermediary accounts. */
 
   allIntermediaryAccounts(request?: AllIntermediaryAccountsRequest): Promise<AllIntermediaryAccountsResponse>;
-  /*Returns all superfluid intermediary accounts.*/
+  /** Returns intermediary account connected to a superfluid staked lock by id */
 
   connectedIntermediaryAccount(request: ConnectedIntermediaryAccountRequest): Promise<ConnectedIntermediaryAccountResponse>;
-  /*Returns intermediary account connected to a superfluid staked lock by id*/
+  /**
+   * Returns the total amount of osmo superfluidly staked.
+   * Response is denominated in uosmo.
+   */
 
   totalSuperfluidDelegations(request?: TotalSuperfluidDelegationsRequest): Promise<TotalSuperfluidDelegationsResponse>;
-  /*Returns the total amount of osmo superfluidly staked.
-   Response is denominated in uosmo.*/
+  /**
+   * Returns the coins superfluid delegated for the delegator, validator, denom
+   * triplet
+   */
 
   superfluidDelegationAmount(request: SuperfluidDelegationAmountRequest): Promise<SuperfluidDelegationAmountResponse>;
-  /*Returns the coins superfluid delegated for the delegator, validator, denom
-   triplet*/
+  /** Returns all the delegated superfluid poistions for a specific delegator. */
 
   superfluidDelegationsByDelegator(request: SuperfluidDelegationsByDelegatorRequest): Promise<SuperfluidDelegationsByDelegatorResponse>;
-  /*Returns all the delegated superfluid poistions for a specific delegator.*/
+  /** Returns all the undelegating superfluid poistions for a specific delegator. */
 
   superfluidUndelegationsByDelegator(request: SuperfluidUndelegationsByDelegatorRequest): Promise<SuperfluidUndelegationsByDelegatorResponse>;
-  /*Returns all the undelegating superfluid poistions for a specific delegator.*/
+  /**
+   * Returns all the superfluid positions of a specific denom delegated to one
+   * validator
+   */
 
   superfluidDelegationsByValidatorDenom(request: SuperfluidDelegationsByValidatorDenomRequest): Promise<SuperfluidDelegationsByValidatorDenomResponse>;
-  /*Returns all the superfluid positions of a specific denom delegated to one
-   validator*/
+  /**
+   * Returns the amount of a specific denom delegated to a specific validator
+   * This is labeled an estimate, because the way it calculates the amount can
+   * lead rounding errors from the true delegated amount
+   */
 
   estimateSuperfluidDelegatedAmountByValidatorDenom(request: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>;
-  /*Returns the amount of a specific denom delegated to a specific validator
-   This is labeled an estimate, because the way it calculates the amount can
-   lead rounding errors from the true delegated amount*/
+  /** Returns the specified delegations for a specific delegator */
 
   totalDelegationByDelegator(request: QueryTotalDelegationByDelegatorRequest): Promise<QueryTotalDelegationByDelegatorResponse>;
-  /*Returns the specified delegations for a specific delegator*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

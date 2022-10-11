@@ -1,21 +1,20 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgLockTokens, MsgLockTokensResponse, MsgBeginUnlockingAll, MsgBeginUnlockingAllResponse, MsgBeginUnlocking, MsgBeginUnlockingResponse, MsgExtendLockup, MsgExtendLockupResponse } from "./tx";
-/** Msg defines the RPC service */
+/** Msg defines the Msg service. */
 
 export interface Msg {
+  /** LockTokens lock tokens */
   lockTokens(request: MsgLockTokens): Promise<MsgLockTokensResponse>;
-  /*LockTokens lock tokens*/
+  /** BeginUnlockingAll begin unlocking all tokens */
 
   beginUnlockingAll(request: MsgBeginUnlockingAll): Promise<MsgBeginUnlockingAllResponse>;
-  /*BeginUnlockingAll begin unlocking all tokens*/
+  /** MsgBeginUnlocking begins unlocking tokens by lock ID */
 
   beginUnlocking(request: MsgBeginUnlocking): Promise<MsgBeginUnlockingResponse>;
-  /*MsgBeginUnlocking begins unlocking tokens by lock ID*/
+  /** MsgEditLockup edits the existing lockups by lock ID */
 
   extendLockup(request: MsgExtendLockup): Promise<MsgExtendLockupResponse>;
-  /*MsgEditLockup edits the existing lockups by lock ID*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;

@@ -1,15 +1,9 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgCreateGauge, MsgCreateGaugeResponse, MsgAddToGauge, MsgAddToGaugeResponse } from "./tx";
-/** Msg defines the RPC service */
-
 export interface Msg {
   createGauge(request: MsgCreateGauge): Promise<MsgCreateGaugeResponse>;
-  /*null*/
-
   addToGauge(request: MsgAddToGauge): Promise<MsgAddToGaugeResponse>;
-  /*null*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;

@@ -87,8 +87,9 @@ export function voteOptionToJSON(object: VoteOption): string {
     case VoteOption.VOTE_OPTION_NO_WITH_VETO:
       return "VOTE_OPTION_NO_WITH_VETO";
 
+    case VoteOption.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 /** ProposalStatus enumerates the valid statuses of a proposal. */
@@ -99,31 +100,31 @@ export enum ProposalStatus {
 
   /**
    * PROPOSAL_STATUS_DEPOSIT_PERIOD - PROPOSAL_STATUS_DEPOSIT_PERIOD defines a proposal status during the deposit
-   *  period.
+   * period.
    */
   PROPOSAL_STATUS_DEPOSIT_PERIOD = 1,
 
   /**
    * PROPOSAL_STATUS_VOTING_PERIOD - PROPOSAL_STATUS_VOTING_PERIOD defines a proposal status during the voting
-   *  period.
+   * period.
    */
   PROPOSAL_STATUS_VOTING_PERIOD = 2,
 
   /**
    * PROPOSAL_STATUS_PASSED - PROPOSAL_STATUS_PASSED defines a proposal status of a proposal that has
-   *  passed.
+   * passed.
    */
   PROPOSAL_STATUS_PASSED = 3,
 
   /**
    * PROPOSAL_STATUS_REJECTED - PROPOSAL_STATUS_REJECTED defines a proposal status of a proposal that has
-   *  been rejected.
+   * been rejected.
    */
   PROPOSAL_STATUS_REJECTED = 4,
 
   /**
    * PROPOSAL_STATUS_FAILED - PROPOSAL_STATUS_FAILED defines a proposal status of a proposal that has
-   *  failed.
+   * failed.
    */
   PROPOSAL_STATUS_FAILED = 5,
   UNRECOGNIZED = -1,
@@ -136,31 +137,31 @@ export enum ProposalStatusSDKType {
 
   /**
    * PROPOSAL_STATUS_DEPOSIT_PERIOD - PROPOSAL_STATUS_DEPOSIT_PERIOD defines a proposal status during the deposit
-   *  period.
+   * period.
    */
   PROPOSAL_STATUS_DEPOSIT_PERIOD = 1,
 
   /**
    * PROPOSAL_STATUS_VOTING_PERIOD - PROPOSAL_STATUS_VOTING_PERIOD defines a proposal status during the voting
-   *  period.
+   * period.
    */
   PROPOSAL_STATUS_VOTING_PERIOD = 2,
 
   /**
    * PROPOSAL_STATUS_PASSED - PROPOSAL_STATUS_PASSED defines a proposal status of a proposal that has
-   *  passed.
+   * passed.
    */
   PROPOSAL_STATUS_PASSED = 3,
 
   /**
    * PROPOSAL_STATUS_REJECTED - PROPOSAL_STATUS_REJECTED defines a proposal status of a proposal that has
-   *  been rejected.
+   * been rejected.
    */
   PROPOSAL_STATUS_REJECTED = 4,
 
   /**
    * PROPOSAL_STATUS_FAILED - PROPOSAL_STATUS_FAILED defines a proposal status of a proposal that has
-   *  failed.
+   * failed.
    */
   PROPOSAL_STATUS_FAILED = 5,
   UNRECOGNIZED = -1,
@@ -217,13 +218,14 @@ export function proposalStatusToJSON(object: ProposalStatus): string {
     case ProposalStatus.PROPOSAL_STATUS_FAILED:
       return "PROPOSAL_STATUS_FAILED";
 
+    case ProposalStatus.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 /**
  * WeightedVoteOption defines a unit of vote for vote split.
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 
@@ -233,7 +235,7 @@ export interface WeightedVoteOption {
 }
 /**
  * WeightedVoteOption defines a unit of vote for vote split.
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 
@@ -947,7 +949,7 @@ export const DepositParams = {
   fromPartial(object: DeepPartial<DepositParams>): DepositParams {
     const message = createBaseDepositParams();
     message.minDeposit = object.minDeposit?.map(e => Coin.fromPartial(e)) || [];
-    message.maxDepositPeriod = object.maxDepositPeriod ?? undefined;
+    message.maxDepositPeriod = object.maxDepositPeriod !== undefined && object.maxDepositPeriod !== null ? Duration.fromPartial(object.maxDepositPeriod) : undefined;
     return message;
   }
 
@@ -992,7 +994,7 @@ export const VotingParams = {
 
   fromPartial(object: DeepPartial<VotingParams>): VotingParams {
     const message = createBaseVotingParams();
-    message.votingPeriod = object.votingPeriod ?? undefined;
+    message.votingPeriod = object.votingPeriod !== undefined && object.votingPeriod !== null ? Duration.fromPartial(object.votingPeriod) : undefined;
     return message;
   }
 

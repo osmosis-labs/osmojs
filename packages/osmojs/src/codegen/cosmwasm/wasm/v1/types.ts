@@ -71,8 +71,9 @@ export function accessTypeToJSON(object: AccessType): string {
     case AccessType.ACCESS_TYPE_EVERYBODY:
       return "ACCESS_TYPE_EVERYBODY";
 
+    case AccessType.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 /** ContractCodeHistoryOperationType actions that caused a code change */
@@ -145,8 +146,9 @@ export function contractCodeHistoryOperationTypeToJSON(object: ContractCodeHisto
     case ContractCodeHistoryOperationType.CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS:
       return "CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS";
 
+    case ContractCodeHistoryOperationType.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 /** AccessTypeParam */

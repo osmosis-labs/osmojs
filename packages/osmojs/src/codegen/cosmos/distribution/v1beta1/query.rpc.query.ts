@@ -2,37 +2,38 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryParamsRequest, QueryParamsResponse, QueryValidatorOutstandingRewardsRequest, QueryValidatorOutstandingRewardsResponse, QueryValidatorCommissionRequest, QueryValidatorCommissionResponse, QueryValidatorSlashesRequest, QueryValidatorSlashesResponse, QueryDelegationRewardsRequest, QueryDelegationRewardsResponse, QueryDelegationTotalRewardsRequest, QueryDelegationTotalRewardsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorWithdrawAddressRequest, QueryDelegatorWithdrawAddressResponse, QueryCommunityPoolRequest, QueryCommunityPoolResponse } from "./query";
-/** Query defines the RPC service */
+/** Query defines the gRPC querier service for distribution module. */
 
 export interface Query {
+  /** Params queries params of the distribution module. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /*Params queries params of the distribution module.*/
+  /** ValidatorOutstandingRewards queries rewards of a validator address. */
 
   validatorOutstandingRewards(request: QueryValidatorOutstandingRewardsRequest): Promise<QueryValidatorOutstandingRewardsResponse>;
-  /*ValidatorOutstandingRewards queries rewards of a validator address.*/
+  /** ValidatorCommission queries accumulated commission for a validator. */
 
   validatorCommission(request: QueryValidatorCommissionRequest): Promise<QueryValidatorCommissionResponse>;
-  /*ValidatorCommission queries accumulated commission for a validator.*/
+  /** ValidatorSlashes queries slash events of a validator. */
 
   validatorSlashes(request: QueryValidatorSlashesRequest): Promise<QueryValidatorSlashesResponse>;
-  /*ValidatorSlashes queries slash events of a validator.*/
+  /** DelegationRewards queries the total rewards accrued by a delegation. */
 
   delegationRewards(request: QueryDelegationRewardsRequest): Promise<QueryDelegationRewardsResponse>;
-  /*DelegationRewards queries the total rewards accrued by a delegation.*/
+  /**
+   * DelegationTotalRewards queries the total rewards accrued by a each
+   * validator.
+   */
 
   delegationTotalRewards(request: QueryDelegationTotalRewardsRequest): Promise<QueryDelegationTotalRewardsResponse>;
-  /*DelegationTotalRewards queries the total rewards accrued by a each
-   validator.*/
+  /** DelegatorValidators queries the validators of a delegator. */
 
   delegatorValidators(request: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponse>;
-  /*DelegatorValidators queries the validators of a delegator.*/
+  /** DelegatorWithdrawAddress queries withdraw address of a delegator. */
 
   delegatorWithdrawAddress(request: QueryDelegatorWithdrawAddressRequest): Promise<QueryDelegatorWithdrawAddressResponse>;
-  /*DelegatorWithdrawAddress queries withdraw address of a delegator.*/
+  /** CommunityPool queries the community pool coins. */
 
   communityPool(request?: QueryCommunityPoolRequest): Promise<QueryCommunityPoolResponse>;
-  /*CommunityPool queries the community pool coins.*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

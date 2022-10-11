@@ -2,18 +2,10 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { ParamsRequest, ParamsResponse, ArithmeticTwapRequest, ArithmeticTwapResponse, ArithmeticTwapToNowRequest, ArithmeticTwapToNowResponse } from "./query";
-/** Query defines the RPC service */
-
 export interface Query {
   params(request?: ParamsRequest): Promise<ParamsResponse>;
-  /*null*/
-
   arithmeticTwap(request: ArithmeticTwapRequest): Promise<ArithmeticTwapResponse>;
-  /*null*/
-
   arithmeticTwapToNow(request: ArithmeticTwapToNowRequest): Promise<ArithmeticTwapToNowResponse>;
-  /*null*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

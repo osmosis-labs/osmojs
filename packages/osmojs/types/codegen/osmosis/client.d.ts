@@ -586,7 +586,7 @@ export declare const osmosisAminoConverters: {
                 denom: string;
                 amount: string;
             }[];
-            scaling_factors: Long[];
+            scaling_factors: import("long")[];
             future_pool_governor: string;
         };
         fromAmino: ({ sender, pool_params, initial_pool_liquidity, scaling_factors, future_pool_governor }: {
@@ -599,7 +599,7 @@ export declare const osmosisAminoConverters: {
                 denom: string;
                 amount: string;
             }[];
-            scaling_factors: Long[];
+            scaling_factors: import("long")[];
             future_pool_governor: string;
         }) => import("./gamm/pool-models/stableswap/tx").MsgCreateStableswapPool;
     };
@@ -608,12 +608,12 @@ export declare const osmosisAminoConverters: {
         toAmino: ({ sender, poolId, scalingFactors }: import("./gamm/pool-models/stableswap/tx").MsgStableSwapAdjustScalingFactors) => {
             sender: string;
             pool_id: string;
-            scaling_factors: Long[];
+            scaling_factors: import("long")[];
         };
         fromAmino: ({ sender, pool_id, scaling_factors }: {
             sender: string;
             pool_id: string;
-            scaling_factors: Long[];
+            scaling_factors: import("long")[];
         }) => import("./gamm/pool-models/stableswap/tx").MsgStableSwapAdjustScalingFactors;
     };
     "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPool": {

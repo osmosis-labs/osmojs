@@ -2,36 +2,35 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryContractInfoRequest, QueryContractInfoResponse, QueryContractHistoryRequest, QueryContractHistoryResponse, QueryContractsByCodeRequest, QueryContractsByCodeResponse, QueryAllContractStateRequest, QueryAllContractStateResponse, QueryRawContractStateRequest, QueryRawContractStateResponse, QuerySmartContractStateRequest, QuerySmartContractStateResponse, QueryCodeRequest, QueryCodeResponse, QueryCodesRequest, QueryCodesResponse, QueryPinnedCodesRequest, QueryPinnedCodesResponse } from "./query";
-/** Query defines the RPC service */
+/** Query provides defines the gRPC querier service */
 
 export interface Query {
+  /** ContractInfo gets the contract meta data */
   contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponse>;
-  /*ContractInfo gets the contract meta data*/
+  /** ContractHistory gets the contract code history */
 
   contractHistory(request: QueryContractHistoryRequest): Promise<QueryContractHistoryResponse>;
-  /*ContractHistory gets the contract code history*/
+  /** ContractsByCode lists all smart contracts for a code id */
 
   contractsByCode(request: QueryContractsByCodeRequest): Promise<QueryContractsByCodeResponse>;
-  /*ContractsByCode lists all smart contracts for a code id*/
+  /** AllContractState gets all raw store data for a single contract */
 
   allContractState(request: QueryAllContractStateRequest): Promise<QueryAllContractStateResponse>;
-  /*AllContractState gets all raw store data for a single contract*/
+  /** RawContractState gets single key from the raw store data of a contract */
 
   rawContractState(request: QueryRawContractStateRequest): Promise<QueryRawContractStateResponse>;
-  /*RawContractState gets single key from the raw store data of a contract*/
+  /** SmartContractState get smart query result from the contract */
 
   smartContractState(request: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponse>;
-  /*SmartContractState get smart query result from the contract*/
+  /** Code gets the binary code and metadata for a singe wasm code */
 
   code(request: QueryCodeRequest): Promise<QueryCodeResponse>;
-  /*Code gets the binary code and metadata for a singe wasm code*/
+  /** Codes gets the metadata for all stored wasm codes */
 
   codes(request?: QueryCodesRequest): Promise<QueryCodesResponse>;
-  /*Codes gets the metadata for all stored wasm codes*/
+  /** PinnedCodes gets the pinned code ids */
 
   pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponse>;
-  /*PinnedCodes gets the pinned code ids*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

@@ -12,7 +12,7 @@ export declare enum State {
     STATE_INIT = 1,
     /**
      * STATE_TRYOPEN - A connection end has acknowledged the handshake step on the counterparty
-     *  chain.
+     * chain.
      */
     STATE_TRYOPEN = 2,
     /** STATE_OPEN - A connection end has completed the handshake. */
@@ -30,7 +30,7 @@ export declare enum StateSDKType {
     STATE_INIT = 1,
     /**
      * STATE_TRYOPEN - A connection end has acknowledged the handshake step on the counterparty
-     *  chain.
+     * chain.
      */
     STATE_TRYOPEN = 2,
     /** STATE_OPEN - A connection end has completed the handshake. */

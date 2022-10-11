@@ -318,7 +318,7 @@ export const MsgCreateSale = {
     message.tokenOut = object.tokenOut !== undefined && object.tokenOut !== null ? Coin.fromPartial(object.tokenOut) : undefined;
     message.maxFee = object.maxFee?.map(e => Coin.fromPartial(e)) || [];
     message.startTime = object.startTime ?? undefined;
-    message.duration = object.duration ?? undefined;
+    message.duration = object.duration !== undefined && object.duration !== null ? Duration.fromPartial(object.duration) : undefined;
     message.recipient = object.recipient ?? "";
     message.name = object.name ?? "";
     message.url = object.url ?? "";

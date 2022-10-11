@@ -1,21 +1,20 @@
 import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgCreateClient, MsgCreateClientResponse, MsgUpdateClient, MsgUpdateClientResponse, MsgUpgradeClient, MsgUpgradeClientResponse, MsgSubmitMisbehaviour, MsgSubmitMisbehaviourResponse } from "./tx";
-/** Msg defines the RPC service */
+/** Msg defines the ibc/client Msg service. */
 
 export interface Msg {
+  /** CreateClient defines a rpc handler method for MsgCreateClient. */
   createClient(request: MsgCreateClient): Promise<MsgCreateClientResponse>;
-  /*CreateClient defines a rpc handler method for MsgCreateClient.*/
+  /** UpdateClient defines a rpc handler method for MsgUpdateClient. */
 
   updateClient(request: MsgUpdateClient): Promise<MsgUpdateClientResponse>;
-  /*UpdateClient defines a rpc handler method for MsgUpdateClient.*/
+  /** UpgradeClient defines a rpc handler method for MsgUpgradeClient. */
 
   upgradeClient(request: MsgUpgradeClient): Promise<MsgUpgradeClientResponse>;
-  /*UpgradeClient defines a rpc handler method for MsgUpgradeClient.*/
+  /** SubmitMisbehaviour defines a rpc handler method for MsgSubmitMisbehaviour. */
 
   submitMisbehaviour(request: MsgSubmitMisbehaviour): Promise<MsgSubmitMisbehaviourResponse>;
-  /*SubmitMisbehaviour defines a rpc handler method for MsgSubmitMisbehaviour.*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;

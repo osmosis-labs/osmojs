@@ -1,6 +1,5 @@
 import { Rpc } from "../../helpers";
 import { MsgCreateGauge, MsgCreateGaugeResponse, MsgAddToGauge, MsgAddToGaugeResponse } from "./tx";
-/** Msg defines the RPC service */
 export interface Msg {
     createGauge(request: MsgCreateGauge): Promise<MsgCreateGaugeResponse>;
     addToGauge(request: MsgAddToGauge): Promise<MsgAddToGaugeResponse>;

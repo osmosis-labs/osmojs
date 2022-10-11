@@ -2,27 +2,24 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryGaugeIdsRequest, QueryGaugeIdsResponse, QueryDistrInfoRequest, QueryDistrInfoResponse, QueryParamsRequest, QueryParamsResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse, QueryIncentivizedPoolsRequest, QueryIncentivizedPoolsResponse, QueryExternalIncentiveGaugesRequest, QueryExternalIncentiveGaugesResponse } from "./query";
-/** Query defines the RPC service */
-
 export interface Query {
+  /** GaugeIds takes the pool id and returns the matching gauge ids and durations */
   gaugeIds(request: QueryGaugeIdsRequest): Promise<QueryGaugeIdsResponse>;
-  /*GaugeIds takes the pool id and returns the matching gauge ids and durations*/
+  /** DistrInfo returns the pool's matching gauge ids and weights. */
 
   distrInfo(request?: QueryDistrInfoRequest): Promise<QueryDistrInfoResponse>;
-  /*DistrInfo returns the pool's matching gauge ids and weights.*/
+  /** Params returns pool incentives params. */
 
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /*Params returns pool incentives params.*/
+  /** LockableDurations returns lock durations for pools. */
 
   lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse>;
-  /*LockableDurations returns lock durations for pools.*/
+  /** IncentivizedPools returns currently incentivized pools */
 
   incentivizedPools(request?: QueryIncentivizedPoolsRequest): Promise<QueryIncentivizedPoolsResponse>;
-  /*IncentivizedPools returns currently incentivized pools*/
+  /** ExternalIncentiveGauges returns external incentive gauges. */
 
   externalIncentiveGauges(request?: QueryExternalIncentiveGaugesRequest): Promise<QueryExternalIncentiveGaugesResponse>;
-  /*ExternalIncentiveGauges returns external incentive gauges.*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

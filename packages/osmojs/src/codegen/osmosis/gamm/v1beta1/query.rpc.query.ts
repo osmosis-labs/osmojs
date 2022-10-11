@@ -2,45 +2,33 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryPoolsRequest, QueryPoolsResponse, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolTypeRequest, QueryPoolTypeResponse, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalSharesRequest, QueryTotalSharesResponse, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse } from "./query";
-/** Query defines the RPC service */
-
 export interface Query {
   pools(request?: QueryPoolsRequest): Promise<QueryPoolsResponse>;
-  /*null*/
-
   numPools(request?: QueryNumPoolsRequest): Promise<QueryNumPoolsResponse>;
-  /*null*/
-
   totalLiquidity(request?: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponse>;
-  /*null*/
+  /** Per Pool gRPC Endpoints */
 
   pool(request: QueryPoolRequest): Promise<QueryPoolResponse>;
-  /*Per Pool gRPC Endpoints*/
+  /**
+   * PoolType returns the type of the pool.
+   * Returns "Balancer" as a string literal when the pool is a balancer pool.
+   * Errors if the pool is failed to be type caseted.
+   */
 
   poolType(request: QueryPoolTypeRequest): Promise<QueryPoolTypeResponse>;
-  /*PoolType returns the type of the pool.
-   Returns "Balancer" as a string literal when the pool is a balancer pool.
-   Errors if the pool is failed to be type caseted.*/
-
   poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponse>;
-  /*null*/
-
   totalPoolLiquidity(request: QueryTotalPoolLiquidityRequest): Promise<QueryTotalPoolLiquidityResponse>;
-  /*null*/
-
   totalShares(request: QueryTotalSharesRequest): Promise<QueryTotalSharesResponse>;
-  /*null*/
+  /**
+   * SpotPrice defines a gRPC query handler that returns the spot price given
+   * a base denomination and a quote denomination.
+   */
 
   spotPrice(request: QuerySpotPriceRequest): Promise<QuerySpotPriceResponse>;
-  /*SpotPrice defines a gRPC query handler that returns the spot price given
-   a base denomination and a quote denomination.*/
+  /** Estimate the swap. */
 
   estimateSwapExactAmountIn(request: QuerySwapExactAmountInRequest): Promise<QuerySwapExactAmountInResponse>;
-  /*Estimate the swap.*/
-
   estimateSwapExactAmountOut(request: QuerySwapExactAmountOutRequest): Promise<QuerySwapExactAmountOutResponse>;
-  /*null*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

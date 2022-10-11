@@ -7,7 +7,7 @@ import { DeepPartial } from "../../../helpers";
  * method. It allows an account to create a new denom. It requires a sender
  * address and a sub denomination. The (sender_address, sub_denomination) tuple
  * must be unique and cannot be re-used.
- *
+ * 
  * The resulting denom created is defined as
  * <factory/{creatorAddress}/{subdenom}>. The resulting denom's admin is
  * originally set to be the creator, but this can be changed later. The token
@@ -25,7 +25,7 @@ export interface MsgCreateDenom {
  * method. It allows an account to create a new denom. It requires a sender
  * address and a sub denomination. The (sender_address, sub_denomination) tuple
  * must be unique and cannot be re-used.
- *
+ * 
  * The resulting denom created is defined as
  * <factory/{creatorAddress}/{subdenom}>. The resulting denom's admin is
  * originally set to be the creator, but this can be changed later. The token

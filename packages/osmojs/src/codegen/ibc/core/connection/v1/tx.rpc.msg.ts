@@ -1,22 +1,23 @@
 import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgConnectionOpenInit, MsgConnectionOpenInitResponse, MsgConnectionOpenTry, MsgConnectionOpenTryResponse, MsgConnectionOpenAck, MsgConnectionOpenAckResponse, MsgConnectionOpenConfirm, MsgConnectionOpenConfirmResponse } from "./tx";
-/** Msg defines the RPC service */
+/** Msg defines the ibc/connection Msg service. */
 
 export interface Msg {
+  /** ConnectionOpenInit defines a rpc handler method for MsgConnectionOpenInit. */
   connectionOpenInit(request: MsgConnectionOpenInit): Promise<MsgConnectionOpenInitResponse>;
-  /*ConnectionOpenInit defines a rpc handler method for MsgConnectionOpenInit.*/
+  /** ConnectionOpenTry defines a rpc handler method for MsgConnectionOpenTry. */
 
   connectionOpenTry(request: MsgConnectionOpenTry): Promise<MsgConnectionOpenTryResponse>;
-  /*ConnectionOpenTry defines a rpc handler method for MsgConnectionOpenTry.*/
+  /** ConnectionOpenAck defines a rpc handler method for MsgConnectionOpenAck. */
 
   connectionOpenAck(request: MsgConnectionOpenAck): Promise<MsgConnectionOpenAckResponse>;
-  /*ConnectionOpenAck defines a rpc handler method for MsgConnectionOpenAck.*/
+  /**
+   * ConnectionOpenConfirm defines a rpc handler method for
+   * MsgConnectionOpenConfirm.
+   */
 
   connectionOpenConfirm(request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponse>;
-  /*ConnectionOpenConfirm defines a rpc handler method for
-   MsgConnectionOpenConfirm.*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;

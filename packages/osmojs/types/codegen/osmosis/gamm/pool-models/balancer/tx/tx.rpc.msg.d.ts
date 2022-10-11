@@ -1,6 +1,5 @@
 import { Rpc } from "../../../../../helpers";
 import { MsgCreateBalancerPool, MsgCreateBalancerPoolResponse } from "./tx";
-/** Msg defines the RPC service */
 export interface Msg {
     createBalancerPool(request: MsgCreateBalancerPool): Promise<MsgCreateBalancerPoolResponse>;
 }

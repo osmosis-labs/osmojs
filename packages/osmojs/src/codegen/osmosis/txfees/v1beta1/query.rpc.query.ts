@@ -2,23 +2,22 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryFeeTokensRequest, QueryFeeTokensResponse, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponse, QueryDenomPoolIdRequest, QueryDenomPoolIdResponse, QueryBaseDenomRequest, QueryBaseDenomResponse } from "./query";
-/** Query defines the RPC service */
-
 export interface Query {
+  /**
+   * FeeTokens returns a list of all the whitelisted fee tokens and their
+   * corresponding pools. It does not include the BaseDenom, which has its own
+   * query endpoint
+   */
   feeTokens(request?: QueryFeeTokensRequest): Promise<QueryFeeTokensResponse>;
-  /*FeeTokens returns a list of all the whitelisted fee tokens and their
-   corresponding pools. It does not include the BaseDenom, which has its own
-   query endpoint*/
+  /** DenomSpotPrice returns all spot prices by each registered token denom. */
 
   denomSpotPrice(request: QueryDenomSpotPriceRequest): Promise<QueryDenomSpotPriceResponse>;
-  /*DenomSpotPrice returns all spot prices by each registered token denom.*/
+  /** Returns the poolID for a specified denom input. */
 
   denomPoolId(request: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponse>;
-  /*Returns the poolID for a specified denom input.*/
+  /** Returns a list of all base denom tokens and their corresponding pools. */
 
   baseDenom(request?: QueryBaseDenomRequest): Promise<QueryBaseDenomResponse>;
-  /*Returns a list of all base denom tokens and their corresponding pools.*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

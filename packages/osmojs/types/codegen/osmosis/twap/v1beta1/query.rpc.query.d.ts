@@ -1,7 +1,6 @@
 import { Rpc } from "../../../helpers";
 import { QueryClient } from "@cosmjs/stargate";
 import { ParamsRequest, ParamsResponse, ArithmeticTwapRequest, ArithmeticTwapResponse, ArithmeticTwapToNowRequest, ArithmeticTwapToNowResponse } from "./query";
-/** Query defines the RPC service */
 export interface Query {
     params(request?: ParamsRequest): Promise<ParamsResponse>;
     arithmeticTwap(request: ArithmeticTwapRequest): Promise<ArithmeticTwapResponse>;

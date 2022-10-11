@@ -2,18 +2,15 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QuerySales, QuerySalesResponse, QuerySale, QuerySaleResponse, QueryUserPosition, QueryUserPositionResponse } from "./query";
-/** Query defines the RPC service */
+/** Query defines the gRPC querier service. */
 
 export interface Query {
+  /** Returns list of Sales ordered by the creation time */
   sales(request?: QuerySales): Promise<QuerySalesResponse>;
-  /*Returns list of Sales ordered by the creation time*/
+  /** Returns the specific Sale object */
 
   sale(request: QuerySale): Promise<QuerySaleResponse>;
-  /*Returns the specific Sale object*/
-
   userPosition(request: QueryUserPosition): Promise<QueryUserPositionResponse>;
-  /*null*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

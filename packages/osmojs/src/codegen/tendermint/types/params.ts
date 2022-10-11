@@ -40,7 +40,7 @@ export interface BlockParams {
   /**
    * Minimum time increment between consecutive blocks (in milliseconds) If the
    * block header timestamp is ahead of the system clock, decrease this value.
-   *
+   * 
    * Not exposed to the application.
    */
 
@@ -63,7 +63,7 @@ export interface BlockParamsSDKType {
   /**
    * Minimum time increment between consecutive blocks (in milliseconds) If the
    * block header timestamp is ahead of the system clock, decrease this value.
-   *
+   * 
    * Not exposed to the application.
    */
 
@@ -74,14 +74,14 @@ export interface BlockParamsSDKType {
 export interface EvidenceParams {
   /**
    * Max age of evidence, in blocks.
-   *
+   * 
    * The basic formula for calculating this is: MaxAgeDuration / {average block
    * time}.
    */
   maxAgeNumBlocks: Long;
   /**
    * Max age of evidence, in time.
-   *
+   * 
    * It should correspond with an app's "unbonding period" or other similar
    * mechanism for handling [Nothing-At-Stake
    * attacks](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed).
@@ -101,14 +101,14 @@ export interface EvidenceParams {
 export interface EvidenceParamsSDKType {
   /**
    * Max age of evidence, in blocks.
-   *
+   * 
    * The basic formula for calculating this is: MaxAgeDuration / {average block
    * time}.
    */
   max_age_num_blocks: Long;
   /**
    * Max age of evidence, in time.
-   *
+   * 
    * It should correspond with an app's "unbonding period" or other similar
    * mechanism for handling [Nothing-At-Stake
    * attacks](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed).
@@ -151,7 +151,7 @@ export interface VersionParamsSDKType {
 }
 /**
  * HashedParams is a subset of ConsensusParams.
- *
+ * 
  * It is hashed into the Header.ConsensusHash.
  */
 
@@ -161,7 +161,7 @@ export interface HashedParams {
 }
 /**
  * HashedParams is a subset of ConsensusParams.
- *
+ * 
  * It is hashed into the Header.ConsensusHash.
  */
 
@@ -368,7 +368,7 @@ export const EvidenceParams = {
   fromPartial(object: DeepPartial<EvidenceParams>): EvidenceParams {
     const message = createBaseEvidenceParams();
     message.maxAgeNumBlocks = object.maxAgeNumBlocks !== undefined && object.maxAgeNumBlocks !== null ? Long.fromValue(object.maxAgeNumBlocks) : Long.ZERO;
-    message.maxAgeDuration = object.maxAgeDuration ?? undefined;
+    message.maxAgeDuration = object.maxAgeDuration !== undefined && object.maxAgeDuration !== null ? Duration.fromPartial(object.maxAgeDuration) : undefined;
     message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? Long.fromValue(object.maxBytes) : Long.ZERO;
     return message;
   }

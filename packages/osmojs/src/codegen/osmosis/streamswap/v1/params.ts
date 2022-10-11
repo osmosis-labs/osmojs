@@ -113,8 +113,8 @@ export const Params = {
     const message = createBaseParams();
     message.saleCreationFee = object.saleCreationFee?.map(e => Coin.fromPartial(e)) || [];
     message.saleCreationFeeRecipient = object.saleCreationFeeRecipient ?? "";
-    message.minDurationUntilStartTime = object.minDurationUntilStartTime ?? undefined;
-    message.minSaleDuration = object.minSaleDuration ?? undefined;
+    message.minDurationUntilStartTime = object.minDurationUntilStartTime !== undefined && object.minDurationUntilStartTime !== null ? Duration.fromPartial(object.minDurationUntilStartTime) : undefined;
+    message.minSaleDuration = object.minSaleDuration !== undefined && object.minSaleDuration !== null ? Duration.fromPartial(object.minSaleDuration) : undefined;
     return message;
   }
 

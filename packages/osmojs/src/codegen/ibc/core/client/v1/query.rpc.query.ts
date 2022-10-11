@@ -2,35 +2,38 @@ import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryClientStateRequest, QueryClientStateResponse, QueryClientStatesRequest, QueryClientStatesResponse, QueryConsensusStateRequest, QueryConsensusStateResponse, QueryConsensusStatesRequest, QueryConsensusStatesResponse, QueryClientStatusRequest, QueryClientStatusResponse, QueryClientParamsRequest, QueryClientParamsResponse, QueryUpgradedClientStateRequest, QueryUpgradedClientStateResponse, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponse } from "./query";
-/** Query defines the RPC service */
+/** Query provides defines the gRPC querier service */
 
 export interface Query {
+  /** ClientState queries an IBC light client. */
   clientState(request: QueryClientStateRequest): Promise<QueryClientStateResponse>;
-  /*ClientState queries an IBC light client.*/
+  /** ClientStates queries all the IBC light clients of a chain. */
 
   clientStates(request?: QueryClientStatesRequest): Promise<QueryClientStatesResponse>;
-  /*ClientStates queries all the IBC light clients of a chain.*/
+  /**
+   * ConsensusState queries a consensus state associated with a client state at
+   * a given height.
+   */
 
   consensusState(request: QueryConsensusStateRequest): Promise<QueryConsensusStateResponse>;
-  /*ConsensusState queries a consensus state associated with a client state at
-   a given height.*/
+  /**
+   * ConsensusStates queries all the consensus state associated with a given
+   * client.
+   */
 
   consensusStates(request: QueryConsensusStatesRequest): Promise<QueryConsensusStatesResponse>;
-  /*ConsensusStates queries all the consensus state associated with a given
-   client.*/
+  /** Status queries the status of an IBC client. */
 
   clientStatus(request: QueryClientStatusRequest): Promise<QueryClientStatusResponse>;
-  /*Status queries the status of an IBC client.*/
+  /** ClientParams queries all parameters of the ibc client. */
 
   clientParams(request?: QueryClientParamsRequest): Promise<QueryClientParamsResponse>;
-  /*ClientParams queries all parameters of the ibc client.*/
+  /** UpgradedClientState queries an Upgraded IBC light client. */
 
   upgradedClientState(request?: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponse>;
-  /*UpgradedClientState queries an Upgraded IBC light client.*/
+  /** UpgradedConsensusState queries an Upgraded IBC consensus state. */
 
   upgradedConsensusState(request?: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponse>;
-  /*UpgradedConsensusState queries an Upgraded IBC consensus state.*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

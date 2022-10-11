@@ -2,21 +2,26 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryParamsRequest, QueryParamsResponse, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponse, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponse } from "./query";
-/** Query defines the RPC service */
+/** Query defines the gRPC querier service. */
 
 export interface Query {
+  /**
+   * Params defines a gRPC query method that returns the tokenfactory module's
+   * parameters.
+   */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /*Params defines a gRPC query method that returns the tokenfactory module's
-   parameters.*/
+  /**
+   * DenomAuthorityMetadata defines a gRPC query method for fetching
+   * DenomAuthorityMetadata for a particular denom.
+   */
 
   denomAuthorityMetadata(request: QueryDenomAuthorityMetadataRequest): Promise<QueryDenomAuthorityMetadataResponse>;
-  /*DenomAuthorityMetadata defines a gRPC query method for fetching
-   DenomAuthorityMetadata for a particular denom.*/
+  /**
+   * DenomsFromCreator defines a gRPC query method for fetching all
+   * denominations created by a specific admin/creator.
+   */
 
   denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponse>;
-  /*DenomsFromCreator defines a gRPC query method for fetching all
-   denominations created by a specific admin/creator.*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

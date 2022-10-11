@@ -2,27 +2,32 @@ import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryConnectionRequest, QueryConnectionResponse, QueryConnectionsRequest, QueryConnectionsResponse, QueryClientConnectionsRequest, QueryClientConnectionsResponse, QueryConnectionClientStateRequest, QueryConnectionClientStateResponse, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponse } from "./query";
-/** Query defines the RPC service */
+/** Query provides defines the gRPC querier service */
 
 export interface Query {
+  /** Connection queries an IBC connection end. */
   connection(request: QueryConnectionRequest): Promise<QueryConnectionResponse>;
-  /*Connection queries an IBC connection end.*/
+  /** Connections queries all the IBC connections of a chain. */
 
   connections(request?: QueryConnectionsRequest): Promise<QueryConnectionsResponse>;
-  /*Connections queries all the IBC connections of a chain.*/
+  /**
+   * ClientConnections queries the connection paths associated with a client
+   * state.
+   */
 
   clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponse>;
-  /*ClientConnections queries the connection paths associated with a client
-   state.*/
+  /**
+   * ConnectionClientState queries the client state associated with the
+   * connection.
+   */
 
   connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponse>;
-  /*ConnectionClientState queries the client state associated with the
-   connection.*/
+  /**
+   * ConnectionConsensusState queries the consensus state associated with the
+   * connection.
+   */
 
   connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponse>;
-  /*ConnectionConsensusState queries the consensus state associated with the
-   connection.*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

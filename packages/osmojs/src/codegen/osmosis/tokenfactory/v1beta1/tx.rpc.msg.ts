@@ -1,24 +1,14 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgCreateDenom, MsgCreateDenomResponse, MsgMint, MsgMintResponse, MsgBurn, MsgBurnResponse, MsgChangeAdmin, MsgChangeAdminResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse } from "./tx";
-/** Msg defines the RPC service */
+/** Msg defines the tokefactory module's gRPC message service. */
 
 export interface Msg {
   createDenom(request: MsgCreateDenom): Promise<MsgCreateDenomResponse>;
-  /*null*/
-
   mint(request: MsgMint): Promise<MsgMintResponse>;
-  /*null*/
-
   burn(request: MsgBurn): Promise<MsgBurnResponse>;
-  /*null*/
-
   changeAdmin(request: MsgChangeAdmin): Promise<MsgChangeAdminResponse>;
-  /*null*/
-
   setDenomMetadata(request: MsgSetDenomMetadata): Promise<MsgSetDenomMetadataResponse>;
-  /*null*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;

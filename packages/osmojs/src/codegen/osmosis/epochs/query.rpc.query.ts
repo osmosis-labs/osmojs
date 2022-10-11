@@ -2,15 +2,14 @@ import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryEpochsInfoRequest, QueryEpochsInfoResponse, QueryCurrentEpochRequest, QueryCurrentEpochResponse } from "./query";
-/** Query defines the RPC service */
+/** Query defines the gRPC querier service. */
 
 export interface Query {
+  /** EpochInfos provide running epochInfos */
   epochInfos(request?: QueryEpochsInfoRequest): Promise<QueryEpochsInfoResponse>;
-  /*EpochInfos provide running epochInfos*/
+  /** CurrentEpoch provide current epoch of specified identifier */
 
   currentEpoch(request: QueryCurrentEpochRequest): Promise<QueryCurrentEpochResponse>;
-  /*CurrentEpoch provide current epoch of specified identifier*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

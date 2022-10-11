@@ -2,18 +2,17 @@ import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryDenomTraceRequest, QueryDenomTraceResponse, QueryDenomTracesRequest, QueryDenomTracesResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
-/** Query defines the RPC service */
+/** Query provides defines the gRPC querier service. */
 
 export interface Query {
+  /** DenomTrace queries a denomination trace information. */
   denomTrace(request: QueryDenomTraceRequest): Promise<QueryDenomTraceResponse>;
-  /*DenomTrace queries a denomination trace information.*/
+  /** DenomTraces queries all denomination traces. */
 
   denomTraces(request?: QueryDenomTracesRequest): Promise<QueryDenomTracesResponse>;
-  /*DenomTraces queries all denomination traces.*/
+  /** Params queries all parameters of the ibc-transfer module. */
 
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /*Params queries all parameters of the ibc-transfer module.*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

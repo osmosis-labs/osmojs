@@ -39,7 +39,7 @@ export interface EpochInfo {
    * current_epoch_start_time + duration] When the timer ticks, this is set to
    * current_epoch_start_time = last_epoch_start_time + duration only one timer
    * tick for a given identifier can occur per block.
-   *
+   * 
    * NOTE! The current_epoch_start_time may diverge significantly from the
    * wall-clock time the epoch began at. Wall-clock time of epoch start may be
    * >> current_epoch_start_time. Suppose current_epoch_start_time = 10,
@@ -104,7 +104,7 @@ export interface EpochInfoSDKType {
    * current_epoch_start_time + duration] When the timer ticks, this is set to
    * current_epoch_start_time = last_epoch_start_time + duration only one timer
    * tick for a given identifier can occur per block.
-   *
+   * 
    * NOTE! The current_epoch_start_time may diverge significantly from the
    * wall-clock time the epoch began at. Wall-clock time of epoch start may be
    * >> current_epoch_start_time. Suppose current_epoch_start_time = 10,
@@ -238,7 +238,7 @@ export const EpochInfo = {
     const message = createBaseEpochInfo();
     message.identifier = object.identifier ?? "";
     message.startTime = object.startTime ?? undefined;
-    message.duration = object.duration ?? undefined;
+    message.duration = object.duration !== undefined && object.duration !== null ? Duration.fromPartial(object.duration) : undefined;
     message.currentEpoch = object.currentEpoch !== undefined && object.currentEpoch !== null ? Long.fromValue(object.currentEpoch) : Long.ZERO;
     message.currentEpochStartTime = object.currentEpochStartTime ?? undefined;
     message.epochCountingStarted = object.epochCountingStarted ?? false;

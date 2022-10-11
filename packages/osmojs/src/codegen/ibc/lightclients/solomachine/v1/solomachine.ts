@@ -157,8 +157,9 @@ export function dataTypeToJSON(object: DataType): string {
     case DataType.DATA_TYPE_HEADER:
       return "DATA_TYPE_HEADER";
 
+    case DataType.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 /**

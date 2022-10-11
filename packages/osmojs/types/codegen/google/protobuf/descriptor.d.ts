@@ -3,19 +3,19 @@ import { DeepPartial, Long } from "../../helpers";
 export declare enum FieldDescriptorProto_Type {
     /**
      * TYPE_DOUBLE - 0 is reserved for errors.
-     *  Order is weird for historical reasons.
+     * Order is weird for historical reasons.
      */
     TYPE_DOUBLE = 1,
     TYPE_FLOAT = 2,
     /**
      * TYPE_INT64 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
-     *  negative values are likely.
+     * negative values are likely.
      */
     TYPE_INT64 = 3,
     TYPE_UINT64 = 4,
     /**
      * TYPE_INT32 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
-     *  negative values are likely.
+     * negative values are likely.
      */
     TYPE_INT32 = 5,
     TYPE_FIXED64 = 6,
@@ -24,9 +24,9 @@ export declare enum FieldDescriptorProto_Type {
     TYPE_STRING = 9,
     /**
      * TYPE_GROUP - Tag-delimited aggregate.
-     *  Group type is deprecated and not supported in proto3. However, Proto3
-     *  implementations should still be able to parse the group wire format and
-     *  treat group fields as unknown fields.
+     * Group type is deprecated and not supported in proto3. However, Proto3
+     * implementations should still be able to parse the group wire format and
+     * treat group fields as unknown fields.
      */
     TYPE_GROUP = 10,
     TYPE_MESSAGE = 11,
@@ -45,19 +45,19 @@ export declare enum FieldDescriptorProto_Type {
 export declare enum FieldDescriptorProto_TypeSDKType {
     /**
      * TYPE_DOUBLE - 0 is reserved for errors.
-     *  Order is weird for historical reasons.
+     * Order is weird for historical reasons.
      */
     TYPE_DOUBLE = 1,
     TYPE_FLOAT = 2,
     /**
      * TYPE_INT64 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
-     *  negative values are likely.
+     * negative values are likely.
      */
     TYPE_INT64 = 3,
     TYPE_UINT64 = 4,
     /**
      * TYPE_INT32 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
-     *  negative values are likely.
+     * negative values are likely.
      */
     TYPE_INT32 = 5,
     TYPE_FIXED64 = 6,
@@ -66,9 +66,9 @@ export declare enum FieldDescriptorProto_TypeSDKType {
     TYPE_STRING = 9,
     /**
      * TYPE_GROUP - Tag-delimited aggregate.
-     *  Group type is deprecated and not supported in proto3. However, Proto3
-     *  implementations should still be able to parse the group wire format and
-     *  treat group fields as unknown fields.
+     * Group type is deprecated and not supported in proto3. However, Proto3
+     * implementations should still be able to parse the group wire format and
+     * treat group fields as unknown fields.
      */
     TYPE_GROUP = 10,
     TYPE_MESSAGE = 11,
@@ -106,7 +106,7 @@ export declare function fieldDescriptorProto_LabelToJSON(object: FieldDescriptor
 export declare enum FileOptions_OptimizeMode {
     /**
      * SPEED - Generate complete code for parsing, serialization,
-     *  etc.
+     * etc.
      */
     SPEED = 1,
     /** CODE_SIZE - Use ReflectionOps to implement these methods. */
@@ -119,7 +119,7 @@ export declare enum FileOptions_OptimizeMode {
 export declare enum FileOptions_OptimizeModeSDKType {
     /**
      * SPEED - Generate complete code for parsing, serialization,
-     *  etc.
+     * etc.
      */
     SPEED = 1,
     /** CODE_SIZE - Use ReflectionOps to implement these methods. */

@@ -2,44 +2,51 @@ import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
-/** Query defines the RPC service */
+/** Query defines the gRPC querier service */
 
 export interface Query {
+  /** ModuleToDistributeCoins returns coins that are going to be distributed */
   moduleToDistributeCoins(request?: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponse>;
-  /*ModuleToDistributeCoins returns coins that are going to be distributed*/
+  /**
+   * ModuleDistributedCoins returns coins that are distributed by the module so
+   * far
+   */
 
   moduleDistributedCoins(request?: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponse>;
-  /*ModuleDistributedCoins returns coins that are distributed by the module so
-   far*/
+  /** GaugeByID returns gauges by their respective ID */
 
   gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponse>;
-  /*GaugeByID returns gauges by their respective ID*/
+  /** Gauges returns both upcoming and active gauges */
 
   gauges(request?: GaugesRequest): Promise<GaugesResponse>;
-  /*Gauges returns both upcoming and active gauges*/
+  /** ActiveGauges returns active gauges */
 
   activeGauges(request?: ActiveGaugesRequest): Promise<ActiveGaugesResponse>;
-  /*ActiveGauges returns active gauges*/
+  /** ActiveGaugesPerDenom returns active gauges by denom */
 
   activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponse>;
-  /*ActiveGaugesPerDenom returns active gauges by denom*/
+  /** Returns scheduled gauges that have not yet occured */
 
   upcomingGauges(request?: UpcomingGaugesRequest): Promise<UpcomingGaugesResponse>;
-  /*Returns scheduled gauges that have not yet occured*/
+  /**
+   * UpcomingGaugesPerDenom returns scheduled gauges that have not yet occured
+   * by denom
+   */
 
   upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse>;
-  /*UpcomingGaugesPerDenom returns scheduled gauges that have not yet occured
-   by denom*/
+  /**
+   * RewardsEst returns an estimate of the rewards from now until a specified
+   * time in the future The querier either provides an address or a set of locks
+   * for which they want to find the associated rewards
+   */
 
   rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponse>;
-  /*RewardsEst returns an estimate of the rewards from now until a specified
-   time in the future The querier either provides an address or a set of locks
-   for which they want to find the associated rewards*/
+  /**
+   * LockableDurations returns lockable durations that are valid to distribute
+   * incentives for
+   */
 
   lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse>;
-  /*LockableDurations returns lockable durations that are valid to distribute
-   incentives for*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

@@ -2,55 +2,62 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryValidatorsRequest, QueryValidatorsResponse, QueryValidatorRequest, QueryValidatorResponse, QueryValidatorDelegationsRequest, QueryValidatorDelegationsResponse, QueryValidatorUnbondingDelegationsRequest, QueryValidatorUnbondingDelegationsResponse, QueryDelegationRequest, QueryDelegationResponse, QueryUnbondingDelegationRequest, QueryUnbondingDelegationResponse, QueryDelegatorDelegationsRequest, QueryDelegatorDelegationsResponse, QueryDelegatorUnbondingDelegationsRequest, QueryDelegatorUnbondingDelegationsResponse, QueryRedelegationsRequest, QueryRedelegationsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorValidatorRequest, QueryDelegatorValidatorResponse, QueryHistoricalInfoRequest, QueryHistoricalInfoResponse, QueryPoolRequest, QueryPoolResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
-/** Query defines the RPC service */
+/** Query defines the gRPC querier service. */
 
 export interface Query {
+  /** Validators queries all validators that match the given status. */
   validators(request: QueryValidatorsRequest): Promise<QueryValidatorsResponse>;
-  /*Validators queries all validators that match the given status.*/
+  /** Validator queries validator info for given validator address. */
 
   validator(request: QueryValidatorRequest): Promise<QueryValidatorResponse>;
-  /*Validator queries validator info for given validator address.*/
+  /** ValidatorDelegations queries delegate info for given validator. */
 
   validatorDelegations(request: QueryValidatorDelegationsRequest): Promise<QueryValidatorDelegationsResponse>;
-  /*ValidatorDelegations queries delegate info for given validator.*/
+  /** ValidatorUnbondingDelegations queries unbonding delegations of a validator. */
 
   validatorUnbondingDelegations(request: QueryValidatorUnbondingDelegationsRequest): Promise<QueryValidatorUnbondingDelegationsResponse>;
-  /*ValidatorUnbondingDelegations queries unbonding delegations of a validator.*/
+  /** Delegation queries delegate info for given validator delegator pair. */
 
   delegation(request: QueryDelegationRequest): Promise<QueryDelegationResponse>;
-  /*Delegation queries delegate info for given validator delegator pair.*/
+  /**
+   * UnbondingDelegation queries unbonding info for given validator delegator
+   * pair.
+   */
 
   unbondingDelegation(request: QueryUnbondingDelegationRequest): Promise<QueryUnbondingDelegationResponse>;
-  /*UnbondingDelegation queries unbonding info for given validator delegator
-   pair.*/
+  /** DelegatorDelegations queries all delegations of a given delegator address. */
 
   delegatorDelegations(request: QueryDelegatorDelegationsRequest): Promise<QueryDelegatorDelegationsResponse>;
-  /*DelegatorDelegations queries all delegations of a given delegator address.*/
+  /**
+   * DelegatorUnbondingDelegations queries all unbonding delegations of a given
+   * delegator address.
+   */
 
   delegatorUnbondingDelegations(request: QueryDelegatorUnbondingDelegationsRequest): Promise<QueryDelegatorUnbondingDelegationsResponse>;
-  /*DelegatorUnbondingDelegations queries all unbonding delegations of a given
-   delegator address.*/
+  /** Redelegations queries redelegations of given address. */
 
   redelegations(request: QueryRedelegationsRequest): Promise<QueryRedelegationsResponse>;
-  /*Redelegations queries redelegations of given address.*/
+  /**
+   * DelegatorValidators queries all validators info for given delegator
+   * address.
+   */
 
   delegatorValidators(request: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponse>;
-  /*DelegatorValidators queries all validators info for given delegator
-   address.*/
+  /**
+   * DelegatorValidator queries validator info for given delegator validator
+   * pair.
+   */
 
   delegatorValidator(request: QueryDelegatorValidatorRequest): Promise<QueryDelegatorValidatorResponse>;
-  /*DelegatorValidator queries validator info for given delegator validator
-   pair.*/
+  /** HistoricalInfo queries the historical info for given height. */
 
   historicalInfo(request: QueryHistoricalInfoRequest): Promise<QueryHistoricalInfoResponse>;
-  /*HistoricalInfo queries the historical info for given height.*/
+  /** Pool queries the pool info. */
 
   pool(request?: QueryPoolRequest): Promise<QueryPoolResponse>;
-  /*Pool queries the pool info.*/
+  /** Parameters queries the staking parameters. */
 
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /*Parameters queries the staking parameters.*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;

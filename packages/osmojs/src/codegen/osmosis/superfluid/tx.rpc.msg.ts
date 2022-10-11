@@ -1,25 +1,24 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgSuperfluidDelegate, MsgSuperfluidDelegateResponse, MsgSuperfluidUndelegate, MsgSuperfluidUndelegateResponse, MsgSuperfluidUnbondLock, MsgSuperfluidUnbondLockResponse, MsgLockAndSuperfluidDelegate, MsgLockAndSuperfluidDelegateResponse, MsgUnPoolWhitelistedPool, MsgUnPoolWhitelistedPoolResponse } from "./tx";
-/** Msg defines the RPC service */
+/** Msg defines the Msg service. */
 
 export interface Msg {
+  /** Execute superfluid delegation for a lockup */
   superfluidDelegate(request: MsgSuperfluidDelegate): Promise<MsgSuperfluidDelegateResponse>;
-  /*Execute superfluid delegation for a lockup*/
+  /** Execute superfluid undelegation for a lockup */
 
   superfluidUndelegate(request: MsgSuperfluidUndelegate): Promise<MsgSuperfluidUndelegateResponse>;
-  /*Execute superfluid undelegation for a lockup*/
+  /**
+   * For a given lock that is being superfluidly undelegated,
+   * also unbond the underlying lock.
+   */
 
   superfluidUnbondLock(request: MsgSuperfluidUnbondLock): Promise<MsgSuperfluidUnbondLockResponse>;
-  /*For a given lock that is being superfluidly undelegated,
-   also unbond the underlying lock.*/
+  /** Execute lockup lock and superfluid delegation in a single msg */
 
   lockAndSuperfluidDelegate(request: MsgLockAndSuperfluidDelegate): Promise<MsgLockAndSuperfluidDelegateResponse>;
-  /*Execute lockup lock and superfluid delegation in a single msg*/
-
   unPoolWhitelistedPool(request: MsgUnPoolWhitelistedPool): Promise<MsgUnPoolWhitelistedPoolResponse>;
-  /*null*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;

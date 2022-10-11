@@ -14,12 +14,12 @@ export declare enum State {
     STATE_TRYOPEN = 2,
     /**
      * STATE_OPEN - A channel has completed the handshake. Open channels are
-     *  ready to send and receive packets.
+     * ready to send and receive packets.
      */
     STATE_OPEN = 3,
     /**
      * STATE_CLOSED - A channel has been closed and can no longer be used to send or receive
-     *  packets.
+     * packets.
      */
     STATE_CLOSED = 4,
     UNRECOGNIZED = -1
@@ -37,12 +37,12 @@ export declare enum StateSDKType {
     STATE_TRYOPEN = 2,
     /**
      * STATE_OPEN - A channel has completed the handshake. Open channels are
-     *  ready to send and receive packets.
+     * ready to send and receive packets.
      */
     STATE_OPEN = 3,
     /**
      * STATE_CLOSED - A channel has been closed and can no longer be used to send or receive
-     *  packets.
+     * packets.
      */
     STATE_CLOSED = 4,
     UNRECOGNIZED = -1
@@ -55,7 +55,7 @@ export declare enum Order {
     ORDER_NONE_UNSPECIFIED = 0,
     /**
      * ORDER_UNORDERED - packets can be delivered in any order, which may differ from the order in
-     *  which they were sent.
+     * which they were sent.
      */
     ORDER_UNORDERED = 1,
     /** ORDER_ORDERED - packets are delivered exactly in the order which they were sent */
@@ -68,7 +68,7 @@ export declare enum OrderSDKType {
     ORDER_NONE_UNSPECIFIED = 0,
     /**
      * ORDER_UNORDERED - packets can be delivered in any order, which may differ from the order in
-     *  which they were sent.
+     * which they were sent.
      */
     ORDER_UNORDERED = 1,
     /** ORDER_ORDERED - packets are delivered exactly in the order which they were sent */

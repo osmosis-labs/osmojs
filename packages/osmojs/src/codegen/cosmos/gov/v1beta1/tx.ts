@@ -55,7 +55,7 @@ export interface MsgVoteResponse {}
 export interface MsgVoteResponseSDKType {}
 /**
  * MsgVoteWeighted defines a message to cast a vote.
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 
@@ -66,7 +66,7 @@ export interface MsgVoteWeighted {
 }
 /**
  * MsgVoteWeighted defines a message to cast a vote.
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 
@@ -77,14 +77,14 @@ export interface MsgVoteWeightedSDKType {
 }
 /**
  * MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 
 export interface MsgVoteWeightedResponse {}
 /**
  * MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 

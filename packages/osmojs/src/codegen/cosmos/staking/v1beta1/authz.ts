@@ -3,7 +3,7 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../../helpers";
 /**
  * AuthorizationType defines the type of staking module authorization type
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 
@@ -23,7 +23,7 @@ export enum AuthorizationType {
 }
 /**
  * AuthorizationType defines the type of staking module authorization type
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 
@@ -79,13 +79,14 @@ export function authorizationTypeToJSON(object: AuthorizationType): string {
     case AuthorizationType.AUTHORIZATION_TYPE_REDELEGATE:
       return "AUTHORIZATION_TYPE_REDELEGATE";
 
+    case AuthorizationType.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 /**
  * StakeAuthorization defines authorization for delegate/undelegate/redelegate.
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 
@@ -110,7 +111,7 @@ export interface StakeAuthorization {
 }
 /**
  * StakeAuthorization defines authorization for delegate/undelegate/redelegate.
- *
+ * 
  * Since: cosmos-sdk 0.43
  */
 

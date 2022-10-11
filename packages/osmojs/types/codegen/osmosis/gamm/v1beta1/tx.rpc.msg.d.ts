@@ -1,6 +1,5 @@
 import { Rpc } from "../../../helpers";
 import { MsgJoinPool, MsgJoinPoolResponse, MsgExitPool, MsgExitPoolResponse, MsgSwapExactAmountIn, MsgSwapExactAmountInResponse, MsgSwapExactAmountOut, MsgSwapExactAmountOutResponse, MsgJoinSwapExternAmountIn, MsgJoinSwapExternAmountInResponse, MsgJoinSwapShareAmountOut, MsgJoinSwapShareAmountOutResponse, MsgExitSwapExternAmountOut, MsgExitSwapExternAmountOutResponse, MsgExitSwapShareAmountIn, MsgExitSwapShareAmountInResponse } from "./tx";
-/** Msg defines the RPC service */
 export interface Msg {
     joinPool(request: MsgJoinPool): Promise<MsgJoinPoolResponse>;
     exitPool(request: MsgExitPool): Promise<MsgExitPoolResponse>;

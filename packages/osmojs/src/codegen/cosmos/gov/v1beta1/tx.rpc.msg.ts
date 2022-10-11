@@ -1,23 +1,24 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse } from "./tx";
-/** Msg defines the RPC service */
+/** Msg defines the bank Msg service. */
 
 export interface Msg {
+  /** SubmitProposal defines a method to create new proposal given a content. */
   submitProposal(request: MsgSubmitProposal): Promise<MsgSubmitProposalResponse>;
-  /*SubmitProposal defines a method to create new proposal given a content.*/
+  /** Vote defines a method to add a vote on a specific proposal. */
 
   vote(request: MsgVote): Promise<MsgVoteResponse>;
-  /*Vote defines a method to add a vote on a specific proposal.*/
+  /**
+   * VoteWeighted defines a method to add a weighted vote on a specific proposal.
+   * 
+   * Since: cosmos-sdk 0.43
+   */
 
   voteWeighted(request: MsgVoteWeighted): Promise<MsgVoteWeightedResponse>;
-  /*VoteWeighted defines a method to add a weighted vote on a specific proposal.
-  
-   Since: cosmos-sdk 0.43*/
+  /** Deposit defines a method to add deposit on a specific proposal. */
 
   deposit(request: MsgDeposit): Promise<MsgDepositResponse>;
-  /*Deposit defines a method to add deposit on a specific proposal.*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;

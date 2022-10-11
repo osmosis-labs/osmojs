@@ -55,7 +55,7 @@ export interface TxResponse {
    * these events include those emitted by processing all the messages and those
    * emitted from the ante handler. Whereas Logs contains the events, with
    * additional metadata, emitted only by processing the messages.
-   *
+   * 
    * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
    */
 
@@ -114,7 +114,7 @@ export interface TxResponseSDKType {
    * these events include those emitted by processing all the messages and those
    * emitted from the ante handler. Whereas Logs contains the events, with
    * additional metadata, emitted only by processing the messages.
-   *
+   * 
    * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
    */
 
@@ -221,7 +221,7 @@ export interface Result {
   events: Event[];
   /**
    * msg_responses contains the Msg handler responses type packed in Anys.
-   *
+   * 
    * Since: cosmos-sdk 0.46
    */
 
@@ -250,7 +250,7 @@ export interface ResultSDKType {
   events: EventSDKType[];
   /**
    * msg_responses contains the Msg handler responses type packed in Anys.
-   *
+   * 
    * Since: cosmos-sdk 0.46
    */
 
@@ -308,7 +308,7 @@ export interface TxMsgData {
   data: MsgData[];
   /**
    * msg_responses contains the Msg handler responses packed into Anys.
-   *
+   * 
    * Since: cosmos-sdk 0.46
    */
 
@@ -326,7 +326,7 @@ export interface TxMsgDataSDKType {
   data: MsgDataSDKType[];
   /**
    * msg_responses contains the Msg handler responses packed into Anys.
-   *
+   * 
    * Since: cosmos-sdk 0.46
    */
 
