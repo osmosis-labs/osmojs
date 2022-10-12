@@ -69,8 +69,11 @@ const response = await client.osmosis.gamm.v1beta1.pools();
 // currently Pools need to be decoded
 response.pools.map(({ typeUrl, value }) => {
     console.log(osmosis.gamm.v1beta1.Pool.decode(value));
-})
+}) 
 ```
+
+** Every RPC endpoint is available! Simply use vscode or another tool to visually explore through autocomplete all of the RPC endpoints available on the `RPCQueryClient`!
+
 ### Composing Messages
 
 Import the `osmosis` object from `osmojs`.
