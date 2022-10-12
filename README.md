@@ -349,7 +349,48 @@ const response = await stargateClient.signAndBroadcast(address, [msg], fee);
 
 ## Advanced Usage
 
-[documentation](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs)
+If you want to manually construct a stargate client
+
+```js
+import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
+import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+
+import { 
+    cosmosAminoConverters,
+    cosmosProtoRegistry,
+    cosmwasmAminoConverters,
+    cosmwasmProtoRegistry,
+    ibcProtoRegistry,
+    ibcAminoConverters,
+    osmosisAminoConverters,
+    osmosisProtoRegistry
+} from 'osmojs';
+
+const signer: OfflineSigner = /* create your signer (see above)  */
+const rpcEndpint = 'https://rpc.cosmos.directory/osmosis'; // or another URL
+
+const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
+    ...cosmosProtoRegistry,
+    ...cosmwasmProtoRegistry,
+    ...ibcProtoRegistry,
+    ...osmosisProtoRegistry
+];
+
+const aminoConverters = {
+    ...cosmosAminoConverters,
+    ...cosmwasmAminoConverters,
+    ...ibcAminoConverters,
+    ...osmosisAminoConverters
+};
+
+const registry = new Registry(protoRegistry);
+const aminoTypes = new AminoTypes(aminoConverters);
+
+const stargateClient = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
+    registry,
+    aminoTypes
+});
+```
 
 ## Developing
 
