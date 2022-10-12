@@ -17,15 +17,65 @@
 [OsmosJS](https://github.com/osmosis-labs/osmojs) makes it easy to compose and broadcast Osmosis and Cosmos messages, with all of the proto and amino encoding handled for you.
 
 ---
-## usage
+## install
 
 ```sh
 npm install osmojs
 ```
 
+## Table of contents
+
+- [OsmoJS](#osmojs)
+  - [Install](#install)
+  - [Table of contents](#table-of-contents)
+- [Usage](#usage)
+    - [RPC Clients](#rpc-clients)
+    - [Composing Messages](#composing-messages)
+        - Osmosis
+            - [Lockup](#lockup-messages)
+            - [Superfluid](#superfluid-messages)
+            - [Incentives](#incentives-messages)
+            - [Gamm](#gamm-messages)
+        - Cosmos, CosmWasm, and IBC
+            - [CosmWasm](#cosmwasm-messages)
+            - [IBC](#ibc-messages)
+            - [Cosmos](#cosmos-messages)
+    - [Calculating Fees](#calculating-fees)
+- [Wallets and Signers](#connecting-with-wallets-and-signing-messages)
+    - [Stargate Client](#initializing-the-stargate-client)
+    - [Creating Signers](#creating-signers)
+    - [Broadcasting Messages](#broadcasting-messages)
+- [Advanced Usage](#advanced-usage)
+- [Developing](#developing)
+- [Credits](#credits)
+
+## Usage
+
+### RPC Clients
+
+```js
+import { osmosis } from 'osmojs';
+
+const { createRPCQueryClient } = osmosis.ClientFactory;
+const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
+
+// now you can query the cosmos modules
+const balance = await client.cosmos.bank.v1beta1
+    .allBalances({ address: 'osmo1addresshere' });
+
+// you can also query the osmosis pools
+const response = await client.osmosis.gamm.v1beta1.pools();
+
+// currently Pools need to be decoded
+response.pools.map(({ typeUrl, value }) => {
+    console.log(osmosis.gamm.v1beta1.Pool.decode(value));
+})
+```
 ### Composing Messages
 
-Import the `osmosis` object from `osmojs`. In this case, we're show the messages available from the `osmosis.gamm.v1beta1` module:
+Import the `osmosis` object from `osmojs`.
+
+In this case, we're show the messages available from the `osmosis.gamm.v1beta1` module:
 
 ```js
 import { osmosis } from 'osmojs';
@@ -42,7 +92,7 @@ const {
 } = osmosis.gamm.v1beta1.MessageComposer.withTypeUrl;
 ```
 
-To see a complete list of messages, [see the section below](#osmosis-messages).
+To see a complete list of messages, see all the messages below.
 
 Now you can construct messages. If you use vscode or another typescript-enabled IDE, you should also be able to use `ctrl+space` to see auto-completion of the fields required for the message.
 
@@ -58,6 +108,113 @@ const msg = swapExactAmountIn({
 ```
 
 (If you want to see an example of calculating `routes` and `tokenOutMinAmount` cosmology uses osmojs and has an [example here](https://github.com/cosmology-tech/cosmology/tree/main/packages/core#lookuproutesfortrade).)
+
+
+### Lockup Messages
+
+```js
+import { osmosis } from 'osmojs';
+const {
+    beginUnlocking,
+    beginUnlockingAll,
+    lockTokens
+} = osmosis.lockup.MessageComposer.withTypeUrl;
+```
+
+### Superfluid Messages
+
+```js
+import { osmosis } from 'osmojs';
+const {
+    lockAndSuperfluidDelegate,
+    superfluidDelegate,
+    superfluidUnbondLock,
+    superfluidUndelegate
+} = osmosis.superfluid.MessageComposer.withTypeUrl;
+```
+
+### Incentives Messages
+
+```js
+import { osmosis } from 'osmojs';
+const {
+    addToGauge,
+    createGauge
+} = osmosis.incentives.MessageComposer.withTypeUrl;
+```
+
+### Gamm Messages
+
+```js
+import { osmosis } from 'osmojs';
+const {
+    joinPool,
+    exitPool,
+    exitSwapExternAmountOut,
+    exitSwapShareAmountIn,
+    joinSwapExternAmountIn,
+    joinSwapShareAmountOut,
+    swapExactAmountIn,
+    swapExactAmountOut
+} = osmosis.gamm.v1beta1.MessageComposer.withTypeUrl;
+```
+
+### CosmWasm Messages
+
+```js
+import { cosmwasm } from "osmojs";
+
+const {
+    clearAdmin,
+    executeContract,
+    instantiateContract,
+    migrateContract,
+    storeCode,
+    updateAdmin
+} = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
+```
+
+### IBC Messages
+```js
+import { ibc } from 'osmojs';
+
+const {
+    transfer
+} = ibc.applications.transfer.v1.MessageComposer.withTypeUrl
+```
+
+### Cosmos Messages
+
+```js
+import { cosmos } from 'osmojs';
+
+const {
+    fundCommunityPool,
+    setWithdrawAddress,
+    withdrawDelegatorReward,
+    withdrawValidatorCommission
+} = cosmos.distribution.v1beta1.MessageComposer.fromPartial;
+
+const {
+    multiSend,
+    send
+} = cosmos.bank.v1beta1.MessageComposer.fromPartial;
+
+const {
+    beginRedelegate,
+    createValidator,
+    delegate,
+    editValidator,
+    undelegate
+} = cosmos.staking.v1beta1.MessageComposer.fromPartial;
+
+const {
+    deposit,
+    submitProposal,
+    vote,
+    voteWeighted
+} = cosmos.gov.v1beta1.MessageComposer.fromPartial;
+```
 
 ### Calculating Fees
 
@@ -105,6 +262,12 @@ const fee = {
 };
 ```
 
+## Connecting with Wallets and Signing Messages
+
+⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit). Continue below to see how to manually construct signers and clients.
+
+Here are the docs on [creating signers](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) in cosmos-kit that can be used with Keplr and other wallets.
+
 ### Initializing the Stargate Client
 
 Use `getSigningOsmosisClient` to get your `SigningStargateClient`, with the Osmosis proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
@@ -118,27 +281,24 @@ const client = await getSigningOsmosisClient({
 });
 ```
 
-## Creating Signers
+### Creating Signers
 
 To broadcast messages, you can create signers with a variety of options:
 
 * [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) (recommended)
 * [keplr](https://docs.keplr.app/api/cosmjs.html)
 * [cosmjs](https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9)
-### Cosmos Kit
-
-We recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) for creating signers that work with Keplr and other wallets.
 ### Amino Signer
 
 Likely you'll want to use the Amino, so unless you need proto, you should use this one:
 
 ```js
-import { getOfflineSignerAmino as getOfflineSigner } from 'osmojs';
+import { getOfflineSignerAmino as getOfflineSigner } from 'cosmjs-utils';
 ```
 ### Proto Signer
 
 ```js
-import { getOfflineSignerProto as getOfflineSigner } from 'osmojs';
+import { getOfflineSignerProto as getOfflineSigner } from 'cosmjs-utils';
 ```
 
 WARNING: NOT RECOMMENDED TO USE PLAIN-TEXT MNEMONICS. Please take care of your security and use best practices such as AES encryption and/or methods from 12factor applications.
@@ -159,114 +319,61 @@ const mnemonic =
 Now that you have your `client`, you can broadcast messages:
 
 ```js
-import { signAndBroadcast } from 'osmojs';
+const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
 
-const res = await signAndBroadcast({
-  client, // SigningStargateClient
-  chainId: 'osmosis-1', // use 'osmo-test-4' for testnet
-  address,
-  msgs: [msg],
-  fee,
-  memo: ''
+const msg = send({
+    amount: [
+    {
+        denom: 'uosmo',
+        amount: '1000'
+    }
+    ],
+    toAddress: address,
+    fromAddress: address
 });
+
+const fee: StdFee = {
+    amount: [
+    {
+        denom: 'uosmo',
+        amount: '864'
+    }
+    ],
+    gas: '86364'
+};
+const response = await stargateClient.signAndBroadcast(address, [msg], fee);
 ```
 
-### Osmosis Messages
-
-```js
-import { osmosis } from 'osmojs';
-
-const {
-    beginUnlocking,
-    beginUnlockingAll,
-    lockTokens
-} = osmosis.lockup.MessageComposer.withTypeUrl;
-
-const {
-    lockAndSuperfluidDelegate,
-    superfluidDelegate,
-    superfluidUnbondLock,
-    superfluidUndelegate
-} = osmosis.superfluid.MessageComposer.withTypeUrl;
-
-const {
-    addToGauge,
-    createGauge
-} = osmosis.incentives.MessageComposer.withTypeUrl;
-
-const {
-    joinPool,
-    exitPool,
-    exitSwapExternAmountOut,
-    exitSwapShareAmountIn,
-    joinSwapExternAmountIn,
-    joinSwapShareAmountOut,
-    swapExactAmountIn,
-    swapExactAmountOut
-} = osmosis.gamm.v1beta1.MessageComposer.withTypeUrl;
-```
-
-### IBC Messages
-
-```js
-import { ibc } from 'osmojs';
-
-const {
-    transfer
-} = ibc.applications.transfer.v1.MessageComposer.withTypeUrl
-```
-
-### Cosmos Messages
-
-```js
-import { cosmos } from 'osmojs';
-
-const {
-    fundCommunityPool,
-    setWithdrawAddress,
-    withdrawDelegatorReward,
-    withdrawValidatorCommission
-} = cosmos.distribution.v1beta1.MessageComposer.fromPartial;
-
-const {
-    multiSend,
-    send
-} = cosmos.bank.v1beta1.MessageComposer.fromPartial;
-
-const {
-    beginRedelegate,
-    createValidator,
-    delegate,
-    editValidator,
-    undelegate
-} = cosmos.staking.v1beta1.MessageComposer.fromPartial;
-
-const {
-    deposit,
-    submitProposal,
-    vote,
-    voteWeighted
-} = cosmos.gov.v1beta1.MessageComposer.fromPartial;
-```
-
-### CosmWasm Messages
-
-```js
-import { cosmwasm } from "osmojs";
-
-const {
-    clearAdmin,
-    executeContract,
-    instantiateContract,
-    migrateContract,
-    storeCode,
-    updateAdmin
-} = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
-```
-
-### Advanced Usage
+## Advanced Usage
 
 [documentation](https://github.com/osmosis-labs/osmojs/tree/main/packages/osmojs/docs)
+
+## Developing
+
+When first cloning the repo:
+
+```
+yarn
+yarn bootstrap
+yarn build
+```
+
+### Codegen
+
+Contract schemas live in `./contracts`, and protos in `./proto`. Look inside of `scripts/codegen.js` and configure the settings for bundling your SDK and contracts into `osmojs`:
+
+```
+yarn codegen
+```
+
+### Publishing
+
+Build the types and then publish:
+
+```
+yarn build:ts
+yarn publish
+```
 
 ## Credits
 
@@ -274,10 +381,12 @@ const {
 
 Code built with the help of these related projects:
 
+* [@cosmwasm/ts-codegen](https://github.com/CosmWasm/ts-codegen) for generated CosmWasm contract Typescript classes
 * [@osmonauts/telescope](https://github.com/osmosis-labs/telescope) a "babel for the Cosmos", Telescope is a TypeScript Transpiler for Cosmos Protobufs.
 * [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit) A wallet connector for the Cosmos ⚛️
+
 ## Disclaimer
 
-AS DESCRIBED IN THE OSMOJS LICENSES, THE SOFTWARE IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
+AS DESCRIBED IN THE LICENSES, THE SOFTWARE IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
 
-No developer or entity involved in creating OsmoJS will be liable for any claims or damages whatsoever associated with your use, inability to use, or your interaction with other users of the OsmoJS code, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
+No developer or entity involved in creating this software will be liable for any claims or damages whatsoever associated with your use, inability to use, or your interaction with other users of the code, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
