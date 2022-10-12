@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/osmosis-labs/osmojs">
-    <img width="150" src="https://user-images.githubusercontent.com/545047/178600364-accb0c63-1935-4756-a457-e38b45e3289d.png">
+    <img width="150" src="https://user-images.githubusercontent.com/545047/195456198-c35bf731-255e-42b6-833b-e76df553eec8.svg">
   </a>
 </p>
 
