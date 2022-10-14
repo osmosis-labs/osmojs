@@ -3,9 +3,9 @@
   * DO NOT MODIFY BY HAND. Instead, download the latest proto files for your chain
   * and run the transpile command or yarn proto command to regenerate this bundle.
   */
- 
+
 import * as _m0 from "protobufjs/minimal";
-import * as Long from 'long';
+import Long from 'long';
 
 if (_m0.util.Long !== Long) {
     _m0.util.Long = (Long as any);
