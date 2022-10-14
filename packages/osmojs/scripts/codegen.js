@@ -11,6 +11,12 @@ telescope({
   outPath,
   options: {
     removeUnusedImports: true,
+    tsDisable: {
+      patterns: [
+        '**/*amino.ts',
+        '**/*registry.ts'
+      ]
+    },
     prototypes: {
       excluded: {
         packages: [
@@ -52,7 +58,8 @@ telescope({
       typingsFormat: {
         duration: 'duration',
         timestamp: 'date',
-        useExact: false
+        useExact: false,
+        useDeepPartial: false
       }
     },
     aminoEncoding: {
