@@ -1,7 +1,7 @@
 import { AccessConfig, AccessConfigSDKType } from "./types";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** MsgStoreCode submit Wasm code to the system */
 
 export interface MsgStoreCode {
@@ -15,7 +15,7 @@ export interface MsgStoreCode {
    * optional
    */
 
-  instantiatePermission: AccessConfig;
+  instantiatePermission?: AccessConfig;
 }
 /** MsgStoreCode submit Wasm code to the system */
 
@@ -30,7 +30,7 @@ export interface MsgStoreCodeSDKType {
    * optional
    */
 
-  instantiate_permission: AccessConfigSDKType;
+  instantiate_permission?: AccessConfigSDKType;
 }
 /** MsgStoreCodeResponse returns store result data. */
 
@@ -310,7 +310,7 @@ export const MsgStoreCode = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgStoreCode>): MsgStoreCode {
+  fromPartial(object: Partial<MsgStoreCode>): MsgStoreCode {
     const message = createBaseMsgStoreCode();
     message.sender = object.sender ?? "";
     message.wasmByteCode = object.wasmByteCode ?? new Uint8Array();
@@ -357,7 +357,7 @@ export const MsgStoreCodeResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgStoreCodeResponse>): MsgStoreCodeResponse {
+  fromPartial(object: Partial<MsgStoreCodeResponse>): MsgStoreCodeResponse {
     const message = createBaseMsgStoreCodeResponse();
     message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     return message;
@@ -447,7 +447,7 @@ export const MsgInstantiateContract = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgInstantiateContract>): MsgInstantiateContract {
+  fromPartial(object: Partial<MsgInstantiateContract>): MsgInstantiateContract {
     const message = createBaseMsgInstantiateContract();
     message.sender = object.sender ?? "";
     message.admin = object.admin ?? "";
@@ -506,7 +506,7 @@ export const MsgInstantiateContractResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgInstantiateContractResponse>): MsgInstantiateContractResponse {
+  fromPartial(object: Partial<MsgInstantiateContractResponse>): MsgInstantiateContractResponse {
     const message = createBaseMsgInstantiateContractResponse();
     message.address = object.address ?? "";
     message.data = object.data ?? new Uint8Array();
@@ -579,7 +579,7 @@ export const MsgExecuteContract = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExecuteContract>): MsgExecuteContract {
+  fromPartial(object: Partial<MsgExecuteContract>): MsgExecuteContract {
     const message = createBaseMsgExecuteContract();
     message.sender = object.sender ?? "";
     message.contract = object.contract ?? "";
@@ -627,7 +627,7 @@ export const MsgExecuteContractResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExecuteContractResponse>): MsgExecuteContractResponse {
+  fromPartial(object: Partial<MsgExecuteContractResponse>): MsgExecuteContractResponse {
     const message = createBaseMsgExecuteContractResponse();
     message.data = object.data ?? new Uint8Array();
     return message;
@@ -699,7 +699,7 @@ export const MsgMigrateContract = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgMigrateContract>): MsgMigrateContract {
+  fromPartial(object: Partial<MsgMigrateContract>): MsgMigrateContract {
     const message = createBaseMsgMigrateContract();
     message.sender = object.sender ?? "";
     message.contract = object.contract ?? "";
@@ -747,7 +747,7 @@ export const MsgMigrateContractResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgMigrateContractResponse>): MsgMigrateContractResponse {
+  fromPartial(object: Partial<MsgMigrateContractResponse>): MsgMigrateContractResponse {
     const message = createBaseMsgMigrateContractResponse();
     message.data = object.data ?? new Uint8Array();
     return message;
@@ -810,7 +810,7 @@ export const MsgUpdateAdmin = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgUpdateAdmin>): MsgUpdateAdmin {
+  fromPartial(object: Partial<MsgUpdateAdmin>): MsgUpdateAdmin {
     const message = createBaseMsgUpdateAdmin();
     message.sender = object.sender ?? "";
     message.newAdmin = object.newAdmin ?? "";
@@ -847,7 +847,7 @@ export const MsgUpdateAdminResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgUpdateAdminResponse>): MsgUpdateAdminResponse {
+  fromPartial(_: Partial<MsgUpdateAdminResponse>): MsgUpdateAdminResponse {
     const message = createBaseMsgUpdateAdminResponse();
     return message;
   }
@@ -900,7 +900,7 @@ export const MsgClearAdmin = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgClearAdmin>): MsgClearAdmin {
+  fromPartial(object: Partial<MsgClearAdmin>): MsgClearAdmin {
     const message = createBaseMsgClearAdmin();
     message.sender = object.sender ?? "";
     message.contract = object.contract ?? "";
@@ -936,7 +936,7 @@ export const MsgClearAdminResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgClearAdminResponse>): MsgClearAdminResponse {
+  fromPartial(_: Partial<MsgClearAdminResponse>): MsgClearAdminResponse {
     const message = createBaseMsgClearAdminResponse();
     return message;
   }

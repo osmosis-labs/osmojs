@@ -1,6 +1,5 @@
 import { DistrRecord, DistrRecordSDKType } from "./incentives";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * ReplacePoolIncentivesProposal is a gov Content type for updating the pool
  * incentives. If a ReplacePoolIncentivesProposal passes, the proposal’s records
@@ -60,10 +59,10 @@ export interface UpdatePoolIncentivesProposalSDKType {
 export declare const ReplacePoolIncentivesProposal: {
     encode(message: ReplacePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ReplacePoolIncentivesProposal;
-    fromPartial(object: DeepPartial<ReplacePoolIncentivesProposal>): ReplacePoolIncentivesProposal;
+    fromPartial(object: Partial<ReplacePoolIncentivesProposal>): ReplacePoolIncentivesProposal;
 };
 export declare const UpdatePoolIncentivesProposal: {
     encode(message: UpdatePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdatePoolIncentivesProposal;
-    fromPartial(object: DeepPartial<UpdatePoolIncentivesProposal>): UpdatePoolIncentivesProposal;
+    fromPartial(object: Partial<UpdatePoolIncentivesProposal>): UpdatePoolIncentivesProposal;
 };

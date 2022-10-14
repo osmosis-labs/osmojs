@@ -2,7 +2,7 @@ import { Params, ParamsSDKType } from "./params";
 import { Gauge, GaugeSDKType } from "./gauge";
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * GenesisState defines the incentives module's various parameters when first
  * initialized
@@ -10,7 +10,7 @@ import { Long, DeepPartial } from "../../helpers";
 
 export interface GenesisState {
   /** params are all the parameters of the module */
-  params: Params;
+  params?: Params;
   /** gauges are all gauges that should exist at genesis */
 
   gauges: Gauge[];
@@ -34,7 +34,7 @@ export interface GenesisState {
 
 export interface GenesisStateSDKType {
   /** params are all the parameters of the module */
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
   /** gauges are all gauges that should exist at genesis */
 
   gauges: GaugeSDKType[];
@@ -116,7 +116,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.gauges = object.gauges?.map(e => Gauge.fromPartial(e)) || [];

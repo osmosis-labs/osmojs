@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * Coin defines a token with a denomination and an amount.
  * 
@@ -111,7 +110,7 @@ export const Coin = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Coin>): Coin {
+  fromPartial(object: Partial<Coin>): Coin {
     const message = createBaseCoin();
     message.denom = object.denom ?? "";
     message.amount = object.amount ?? "";
@@ -166,7 +165,7 @@ export const DecCoin = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DecCoin>): DecCoin {
+  fromPartial(object: Partial<DecCoin>): DecCoin {
     const message = createBaseDecCoin();
     message.denom = object.denom ?? "";
     message.amount = object.amount ?? "";
@@ -212,7 +211,7 @@ export const IntProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<IntProto>): IntProto {
+  fromPartial(object: Partial<IntProto>): IntProto {
     const message = createBaseIntProto();
     message.int = object.int ?? "";
     return message;
@@ -257,7 +256,7 @@ export const DecProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DecProto>): DecProto {
+  fromPartial(object: Partial<DecProto>): DecProto {
     const message = createBaseDecProto();
     message.dec = object.dec ?? "";
     return message;

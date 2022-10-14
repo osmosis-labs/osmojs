@@ -1,17 +1,16 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../../helpers";
 /** MsgCreateClient defines a message to create an IBC client */
 
 export interface MsgCreateClient {
   /** light client state */
-  clientState: Any;
+  clientState?: Any;
   /**
    * consensus state associated with the client that corresponds to a given
    * height.
    */
 
-  consensusState: Any;
+  consensusState?: Any;
   /** signer address */
 
   signer: string;
@@ -20,13 +19,13 @@ export interface MsgCreateClient {
 
 export interface MsgCreateClientSDKType {
   /** light client state */
-  client_state: AnySDKType;
+  client_state?: AnySDKType;
   /**
    * consensus state associated with the client that corresponds to a given
    * height.
    */
 
-  consensus_state: AnySDKType;
+  consensus_state?: AnySDKType;
   /** signer address */
 
   signer: string;
@@ -47,7 +46,7 @@ export interface MsgUpdateClient {
   clientId: string;
   /** header to update the light client */
 
-  header: Any;
+  header?: Any;
   /** signer address */
 
   signer: string;
@@ -62,7 +61,7 @@ export interface MsgUpdateClientSDKType {
   client_id: string;
   /** header to update the light client */
 
-  header: AnySDKType;
+  header?: AnySDKType;
   /** signer address */
 
   signer: string;
@@ -83,13 +82,13 @@ export interface MsgUpgradeClient {
   clientId: string;
   /** upgraded client state */
 
-  clientState: Any;
+  clientState?: Any;
   /**
    * upgraded consensus state, only contains enough information to serve as a
    * basis of trust in update logic
    */
 
-  consensusState: Any;
+  consensusState?: Any;
   /** proof that old chain committed to new client */
 
   proofUpgradeClient: Uint8Array;
@@ -110,13 +109,13 @@ export interface MsgUpgradeClientSDKType {
   client_id: string;
   /** upgraded client state */
 
-  client_state: AnySDKType;
+  client_state?: AnySDKType;
   /**
    * upgraded consensus state, only contains enough information to serve as a
    * basis of trust in update logic
    */
 
-  consensus_state: AnySDKType;
+  consensus_state?: AnySDKType;
   /** proof that old chain committed to new client */
 
   proof_upgrade_client: Uint8Array;
@@ -143,7 +142,7 @@ export interface MsgSubmitMisbehaviour {
   clientId: string;
   /** misbehaviour used for freezing the light client */
 
-  misbehaviour: Any;
+  misbehaviour?: Any;
   /** signer address */
 
   signer: string;
@@ -158,7 +157,7 @@ export interface MsgSubmitMisbehaviourSDKType {
   client_id: string;
   /** misbehaviour used for freezing the light client */
 
-  misbehaviour: AnySDKType;
+  misbehaviour?: AnySDKType;
   /** signer address */
 
   signer: string;
@@ -231,7 +230,7 @@ export const MsgCreateClient = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgCreateClient>): MsgCreateClient {
+  fromPartial(object: Partial<MsgCreateClient>): MsgCreateClient {
     const message = createBaseMsgCreateClient();
     message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
@@ -268,7 +267,7 @@ export const MsgCreateClientResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgCreateClientResponse>): MsgCreateClientResponse {
+  fromPartial(_: Partial<MsgCreateClientResponse>): MsgCreateClientResponse {
     const message = createBaseMsgCreateClientResponse();
     return message;
   }
@@ -330,7 +329,7 @@ export const MsgUpdateClient = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgUpdateClient>): MsgUpdateClient {
+  fromPartial(object: Partial<MsgUpdateClient>): MsgUpdateClient {
     const message = createBaseMsgUpdateClient();
     message.clientId = object.clientId ?? "";
     message.header = object.header !== undefined && object.header !== null ? Any.fromPartial(object.header) : undefined;
@@ -367,7 +366,7 @@ export const MsgUpdateClientResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgUpdateClientResponse>): MsgUpdateClientResponse {
+  fromPartial(_: Partial<MsgUpdateClientResponse>): MsgUpdateClientResponse {
     const message = createBaseMsgUpdateClientResponse();
     return message;
   }
@@ -456,7 +455,7 @@ export const MsgUpgradeClient = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgUpgradeClient>): MsgUpgradeClient {
+  fromPartial(object: Partial<MsgUpgradeClient>): MsgUpgradeClient {
     const message = createBaseMsgUpgradeClient();
     message.clientId = object.clientId ?? "";
     message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
@@ -496,7 +495,7 @@ export const MsgUpgradeClientResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse {
+  fromPartial(_: Partial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse {
     const message = createBaseMsgUpgradeClientResponse();
     return message;
   }
@@ -558,7 +557,7 @@ export const MsgSubmitMisbehaviour = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour {
+  fromPartial(object: Partial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour {
     const message = createBaseMsgSubmitMisbehaviour();
     message.clientId = object.clientId ?? "";
     message.misbehaviour = object.misbehaviour !== undefined && object.misbehaviour !== null ? Any.fromPartial(object.misbehaviour) : undefined;
@@ -595,7 +594,7 @@ export const MsgSubmitMisbehaviourResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse {
+  fromPartial(_: Partial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse {
     const message = createBaseMsgSubmitMisbehaviourResponse();
     return message;
   }

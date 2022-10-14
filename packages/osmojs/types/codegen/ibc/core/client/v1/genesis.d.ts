@@ -1,6 +1,6 @@
 import { IdentifiedClientState, IdentifiedClientStateSDKType, ClientConsensusStates, ClientConsensusStatesSDKType, Params, ParamsSDKType } from "./client";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /** GenesisState defines the ibc client submodule's genesis state. */
 export interface GenesisState {
     /** client states with their corresponding identifiers */
@@ -9,7 +9,7 @@ export interface GenesisState {
     clientsConsensus: ClientConsensusStates[];
     /** metadata from each client */
     clientsMetadata: IdentifiedGenesisMetadata[];
-    params: Params;
+    params?: Params;
     /** create localhost on initialization */
     createLocalhost: boolean;
     /** the sequence for the next generated client identifier */
@@ -23,7 +23,7 @@ export interface GenesisStateSDKType {
     clients_consensus: ClientConsensusStatesSDKType[];
     /** metadata from each client */
     clients_metadata: IdentifiedGenesisMetadataSDKType[];
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
     /** create localhost on initialization */
     create_localhost: boolean;
     /** the sequence for the next generated client identifier */
@@ -68,15 +68,15 @@ export interface IdentifiedGenesisMetadataSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+    fromPartial(object: Partial<GenesisState>): GenesisState;
 };
 export declare const GenesisMetadata: {
     encode(message: GenesisMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisMetadata;
-    fromPartial(object: DeepPartial<GenesisMetadata>): GenesisMetadata;
+    fromPartial(object: Partial<GenesisMetadata>): GenesisMetadata;
 };
 export declare const IdentifiedGenesisMetadata: {
     encode(message: IdentifiedGenesisMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedGenesisMetadata;
-    fromPartial(object: DeepPartial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata;
+    fromPartial(object: Partial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata;
 };

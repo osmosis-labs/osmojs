@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * PubKey defines a secp256k1 public key
  * Key is the compressed form of the pubkey. The first byte depends is a 0x02 byte
@@ -70,7 +69,7 @@ export const PubKey = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PubKey>): PubKey {
+  fromPartial(object: Partial<PubKey>): PubKey {
     const message = createBasePubKey();
     message.key = object.key ?? new Uint8Array();
     return message;
@@ -115,7 +114,7 @@ export const PrivKey = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PrivKey>): PrivKey {
+  fromPartial(object: Partial<PrivKey>): PrivKey {
     const message = createBasePrivKey();
     message.key = object.key ?? new Uint8Array();
     return message;

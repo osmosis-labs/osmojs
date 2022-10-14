@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
 import { Sale, SaleSDKType, UserPosition, UserPositionSDKType } from "./state";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface QuerySales {
   /** pagination defines an pagination for the request. */
   pagination?: PageRequest;
@@ -31,10 +31,10 @@ export interface QuerySaleSDKType {
   sale_id: Long;
 }
 export interface QuerySaleResponse {
-  sale: Sale;
+  sale?: Sale;
 }
 export interface QuerySaleResponseSDKType {
-  sale: SaleSDKType;
+  sale?: SaleSDKType;
 }
 /** Request type for Query/Sale */
 
@@ -55,10 +55,10 @@ export interface QueryUserPositionSDKType {
   user: string;
 }
 export interface QueryUserPositionResponse {
-  userPosition: UserPosition;
+  userPosition?: UserPosition;
 }
 export interface QueryUserPositionResponseSDKType {
-  user_position: UserPositionSDKType;
+  user_position?: UserPositionSDKType;
 }
 
 function createBaseQuerySales(): QuerySales {
@@ -98,7 +98,7 @@ export const QuerySales = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QuerySales>): QuerySales {
+  fromPartial(object: Partial<QuerySales>): QuerySales {
     const message = createBaseQuerySales();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -152,7 +152,7 @@ export const QuerySalesResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QuerySalesResponse>): QuerySalesResponse {
+  fromPartial(object: Partial<QuerySalesResponse>): QuerySalesResponse {
     const message = createBaseQuerySalesResponse();
     message.sales = object.sales?.map(e => Sale.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -198,7 +198,7 @@ export const QuerySale = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QuerySale>): QuerySale {
+  fromPartial(object: Partial<QuerySale>): QuerySale {
     const message = createBaseQuerySale();
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
     return message;
@@ -243,7 +243,7 @@ export const QuerySaleResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QuerySaleResponse>): QuerySaleResponse {
+  fromPartial(object: Partial<QuerySaleResponse>): QuerySaleResponse {
     const message = createBaseQuerySaleResponse();
     message.sale = object.sale !== undefined && object.sale !== null ? Sale.fromPartial(object.sale) : undefined;
     return message;
@@ -297,7 +297,7 @@ export const QueryUserPosition = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryUserPosition>): QueryUserPosition {
+  fromPartial(object: Partial<QueryUserPosition>): QueryUserPosition {
     const message = createBaseQueryUserPosition();
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
     message.user = object.user ?? "";
@@ -343,7 +343,7 @@ export const QueryUserPositionResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryUserPositionResponse>): QueryUserPositionResponse {
+  fromPartial(object: Partial<QueryUserPositionResponse>): QueryUserPositionResponse {
     const message = createBaseQueryUserPositionResponse();
     message.userPosition = object.userPosition !== undefined && object.userPosition !== null ? UserPosition.fromPartial(object.userPosition) : undefined;
     return message;

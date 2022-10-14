@@ -1,7 +1,7 @@
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * LockQueryType defines the type of the lock query that can
  * either be by duration or start time of the lock.
@@ -45,13 +45,13 @@ export interface PeriodLock {
      * Duration is the time needed for a lock to mature after unlocking has
      * started.
      */
-    duration: Duration;
+    duration?: Duration;
     /**
      * EndTime refers to the time at which the lock would mature and get deleted.
      * This value is first initialized when an unlock has started for the lock,
      * end time being block time + duration.
      */
-    endTime: Date;
+    endTime?: Date;
     /** Coins are the tokens locked within the lock, kept in the module account. */
     coins: Coin[];
 }
@@ -78,13 +78,13 @@ export interface PeriodLockSDKType {
      * Duration is the time needed for a lock to mature after unlocking has
      * started.
      */
-    duration: DurationSDKType;
+    duration?: DurationSDKType;
     /**
      * EndTime refers to the time at which the lock would mature and get deleted.
      * This value is first initialized when an unlock has started for the lock,
      * end time being block time + duration.
      */
-    end_time: Date;
+    end_time?: Date;
     /** Coins are the tokens locked within the lock, kept in the module account. */
     coins: CoinSDKType[];
 }
@@ -103,13 +103,13 @@ export interface QueryCondition {
      * duration. Duration field must not be nil when the lock query type is
      * `ByLockDuration`.
      */
-    duration: Duration;
+    duration?: Duration;
     /**
      * Timestamp is used by locks started before the specified duration.
      * Timestamp field must not be nil when the lock query type is `ByLockTime`.
      * Querying locks with timestamp is currently not implemented.
      */
-    timestamp: Date;
+    timestamp?: Date;
 }
 /**
  * QueryCondition is a struct used for querying locks upon different conditions.
@@ -126,13 +126,13 @@ export interface QueryConditionSDKType {
      * duration. Duration field must not be nil when the lock query type is
      * `ByLockDuration`.
      */
-    duration: DurationSDKType;
+    duration?: DurationSDKType;
     /**
      * Timestamp is used by locks started before the specified duration.
      * Timestamp field must not be nil when the lock query type is `ByLockTime`.
      * Querying locks with timestamp is currently not implemented.
      */
-    timestamp: Date;
+    timestamp?: Date;
 }
 /**
  * SyntheticLock is creating virtual lockup where new denom is combination of
@@ -155,12 +155,12 @@ export interface SyntheticLock {
      * used for unbonding synthetic lockups, for active synthetic lockups, this
      * value is set to uninitialized value
      */
-    endTime: Date;
+    endTime?: Date;
     /**
      * Duration is the duration for a synthetic lock to mature
      * at the point of unbonding has started.
      */
-    duration: Duration;
+    duration?: Duration;
 }
 /**
  * SyntheticLock is creating virtual lockup where new denom is combination of
@@ -183,25 +183,25 @@ export interface SyntheticLockSDKType {
      * used for unbonding synthetic lockups, for active synthetic lockups, this
      * value is set to uninitialized value
      */
-    end_time: Date;
+    end_time?: Date;
     /**
      * Duration is the duration for a synthetic lock to mature
      * at the point of unbonding has started.
      */
-    duration: DurationSDKType;
+    duration?: DurationSDKType;
 }
 export declare const PeriodLock: {
     encode(message: PeriodLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeriodLock;
-    fromPartial(object: DeepPartial<PeriodLock>): PeriodLock;
+    fromPartial(object: Partial<PeriodLock>): PeriodLock;
 };
 export declare const QueryCondition: {
     encode(message: QueryCondition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCondition;
-    fromPartial(object: DeepPartial<QueryCondition>): QueryCondition;
+    fromPartial(object: Partial<QueryCondition>): QueryCondition;
 };
 export declare const SyntheticLock: {
     encode(message: SyntheticLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLock;
-    fromPartial(object: DeepPartial<SyntheticLock>): SyntheticLock;
+    fromPartial(object: Partial<SyntheticLock>): SyntheticLock;
 };

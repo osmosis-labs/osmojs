@@ -7,7 +7,7 @@ import * as _50 from "./wasm/v1/types";
 import * as _176 from "./wasm/v1/tx.amino";
 import * as _177 from "./wasm/v1/tx.registry";
 import * as _178 from "./wasm/v1/query.lcd";
-import * as _179 from "./wasm/v1/query.rpc.query";
+import * as _179 from "./wasm/v1/query.rpc.Query";
 import * as _180 from "./wasm/v1/tx.rpc.msg";
 import * as _250 from "./lcd";
 import * as _251 from "./rpc.query";

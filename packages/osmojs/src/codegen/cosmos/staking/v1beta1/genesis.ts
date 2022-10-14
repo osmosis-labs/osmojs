@@ -1,11 +1,11 @@
 import { Params, ParamsSDKType, Validator, ValidatorSDKType, Delegation, DelegationSDKType, UnbondingDelegation, UnbondingDelegationSDKType, Redelegation, RedelegationSDKType } from "./staking";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** GenesisState defines the staking module's genesis state. */
 
 export interface GenesisState {
   /** params defines all the paramaters of related to deposit. */
-  params: Params;
+  params?: Params;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during
    * the previous end block.
@@ -36,7 +36,7 @@ export interface GenesisState {
 
 export interface GenesisStateSDKType {
   /** params defines all the paramaters of related to deposit. */
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during
    * the previous end block.
@@ -182,7 +182,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.lastTotalPower = object.lastTotalPower ?? new Uint8Array();
@@ -243,7 +243,7 @@ export const LastValidatorPower = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<LastValidatorPower>): LastValidatorPower {
+  fromPartial(object: Partial<LastValidatorPower>): LastValidatorPower {
     const message = createBaseLastValidatorPower();
     message.address = object.address ?? "";
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;

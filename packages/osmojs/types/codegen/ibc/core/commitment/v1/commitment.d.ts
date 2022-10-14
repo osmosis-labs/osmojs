@@ -1,6 +1,5 @@
 import { CommitmentProof, CommitmentProofSDKType } from "../../../../confio/proofs";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../../helpers";
 /**
  * MerkleRoot defines a merkle root hash.
  * In the Cosmos SDK, the AppHash of a block header becomes the root.
@@ -70,20 +69,20 @@ export interface MerkleProofSDKType {
 export declare const MerkleRoot: {
     encode(message: MerkleRoot, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerkleRoot;
-    fromPartial(object: DeepPartial<MerkleRoot>): MerkleRoot;
+    fromPartial(object: Partial<MerkleRoot>): MerkleRoot;
 };
 export declare const MerklePrefix: {
     encode(message: MerklePrefix, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerklePrefix;
-    fromPartial(object: DeepPartial<MerklePrefix>): MerklePrefix;
+    fromPartial(object: Partial<MerklePrefix>): MerklePrefix;
 };
 export declare const MerklePath: {
     encode(message: MerklePath, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerklePath;
-    fromPartial(object: DeepPartial<MerklePath>): MerklePath;
+    fromPartial(object: Partial<MerklePath>): MerklePath;
 };
 export declare const MerkleProof: {
     encode(message: MerkleProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerkleProof;
-    fromPartial(object: DeepPartial<MerkleProof>): MerkleProof;
+    fromPartial(object: Partial<MerkleProof>): MerkleProof;
 };

@@ -5,24 +5,24 @@ import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock, SyntheticLockSDKType } from "../lockup/lock";
 import { DelegationResponse, DelegationResponseSDKType } from "../../cosmos/staking/v1beta1/staking";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../helpers";
+import { Long } from "../../helpers";
 export interface QueryParamsRequest {
 }
 export interface QueryParamsRequestSDKType {
 }
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
-    params: Params;
+    params?: Params;
 }
 export interface QueryParamsResponseSDKType {
     /** params defines the parameters of the module. */
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
 }
 export interface AssetTypeRequest {
-    denom?: string;
+    denom: string;
 }
 export interface AssetTypeRequestSDKType {
-    denom?: string;
+    denom: string;
 }
 export interface AssetTypeResponse {
     assetType: SuperfluidAssetType;
@@ -41,16 +41,16 @@ export interface AllAssetsResponseSDKType {
     assets: SuperfluidAssetSDKType[];
 }
 export interface AssetMultiplierRequest {
-    denom?: string;
+    denom: string;
 }
 export interface AssetMultiplierRequestSDKType {
-    denom?: string;
+    denom: string;
 }
 export interface AssetMultiplierResponse {
-    osmoEquivalentMultiplier: OsmoEquivalentMultiplierRecord;
+    osmoEquivalentMultiplier?: OsmoEquivalentMultiplierRecord;
 }
 export interface AssetMultiplierResponseSDKType {
-    osmo_equivalent_multiplier: OsmoEquivalentMultiplierRecordSDKType;
+    osmo_equivalent_multiplier?: OsmoEquivalentMultiplierRecordSDKType;
 }
 export interface SuperfluidIntermediaryAccountInfo {
     denom: string;
@@ -85,10 +85,10 @@ export interface ConnectedIntermediaryAccountRequestSDKType {
     lock_id: Long;
 }
 export interface ConnectedIntermediaryAccountResponse {
-    account: SuperfluidIntermediaryAccountInfo;
+    account?: SuperfluidIntermediaryAccountInfo;
 }
 export interface ConnectedIntermediaryAccountResponseSDKType {
-    account: SuperfluidIntermediaryAccountInfoSDKType;
+    account?: SuperfluidIntermediaryAccountInfoSDKType;
 }
 export interface TotalSuperfluidDelegationsRequest {
 }
@@ -101,14 +101,14 @@ export interface TotalSuperfluidDelegationsResponseSDKType {
     total_delegations: string;
 }
 export interface SuperfluidDelegationAmountRequest {
-    delegatorAddress?: string;
-    validatorAddress?: string;
-    denom?: string;
+    delegatorAddress: string;
+    validatorAddress: string;
+    denom: string;
 }
 export interface SuperfluidDelegationAmountRequestSDKType {
-    delegator_address?: string;
-    validator_address?: string;
-    denom?: string;
+    delegator_address: string;
+    validator_address: string;
+    denom: string;
 }
 export interface SuperfluidDelegationAmountResponse {
     amount: Coin[];
@@ -125,20 +125,20 @@ export interface SuperfluidDelegationsByDelegatorRequestSDKType {
 export interface SuperfluidDelegationsByDelegatorResponse {
     superfluidDelegationRecords: SuperfluidDelegationRecord[];
     totalDelegatedCoins: Coin[];
-    totalEquivalentStakedAmount: Coin;
+    totalEquivalentStakedAmount?: Coin;
 }
 export interface SuperfluidDelegationsByDelegatorResponseSDKType {
     superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
     total_delegated_coins: CoinSDKType[];
-    total_equivalent_staked_amount: CoinSDKType;
+    total_equivalent_staked_amount?: CoinSDKType;
 }
 export interface SuperfluidUndelegationsByDelegatorRequest {
     delegatorAddress: string;
-    denom?: string;
+    denom: string;
 }
 export interface SuperfluidUndelegationsByDelegatorRequestSDKType {
     delegator_address: string;
-    denom?: string;
+    denom: string;
 }
 export interface SuperfluidUndelegationsByDelegatorResponse {
     superfluidDelegationRecords: SuperfluidDelegationRecord[];
@@ -151,12 +151,12 @@ export interface SuperfluidUndelegationsByDelegatorResponseSDKType {
     synthetic_locks: SyntheticLockSDKType[];
 }
 export interface SuperfluidDelegationsByValidatorDenomRequest {
-    validatorAddress?: string;
-    denom?: string;
+    validatorAddress: string;
+    denom: string;
 }
 export interface SuperfluidDelegationsByValidatorDenomRequestSDKType {
-    validator_address?: string;
-    denom?: string;
+    validator_address: string;
+    denom: string;
 }
 export interface SuperfluidDelegationsByValidatorDenomResponse {
     superfluidDelegationRecords: SuperfluidDelegationRecord[];
@@ -165,12 +165,12 @@ export interface SuperfluidDelegationsByValidatorDenomResponseSDKType {
     superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
 }
 export interface EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
-    validatorAddress?: string;
-    denom?: string;
+    validatorAddress: string;
+    denom: string;
 }
 export interface EstimateSuperfluidDelegatedAmountByValidatorDenomRequestSDKType {
-    validator_address?: string;
-    denom?: string;
+    validator_address: string;
+    denom: string;
 }
 export interface EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
     totalDelegatedCoins: Coin[];
@@ -188,146 +188,146 @@ export interface QueryTotalDelegationByDelegatorResponse {
     superfluidDelegationRecords: SuperfluidDelegationRecord[];
     delegationResponse: DelegationResponse[];
     totalDelegatedCoins: Coin[];
-    totalEquivalentStakedAmount: Coin;
+    totalEquivalentStakedAmount?: Coin;
 }
 export interface QueryTotalDelegationByDelegatorResponseSDKType {
     superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
     delegation_response: DelegationResponseSDKType[];
     total_delegated_coins: CoinSDKType[];
-    total_equivalent_staked_amount: CoinSDKType;
+    total_equivalent_staked_amount?: CoinSDKType;
 }
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
-    fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const AssetTypeRequest: {
     encode(message: AssetTypeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeRequest;
-    fromPartial(object: DeepPartial<AssetTypeRequest>): AssetTypeRequest;
+    fromPartial(object: Partial<AssetTypeRequest>): AssetTypeRequest;
 };
 export declare const AssetTypeResponse: {
     encode(message: AssetTypeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeResponse;
-    fromPartial(object: DeepPartial<AssetTypeResponse>): AssetTypeResponse;
+    fromPartial(object: Partial<AssetTypeResponse>): AssetTypeResponse;
 };
 export declare const AllAssetsRequest: {
     encode(_: AllAssetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsRequest;
-    fromPartial(_: DeepPartial<AllAssetsRequest>): AllAssetsRequest;
+    fromPartial(_: Partial<AllAssetsRequest>): AllAssetsRequest;
 };
 export declare const AllAssetsResponse: {
     encode(message: AllAssetsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsResponse;
-    fromPartial(object: DeepPartial<AllAssetsResponse>): AllAssetsResponse;
+    fromPartial(object: Partial<AllAssetsResponse>): AllAssetsResponse;
 };
 export declare const AssetMultiplierRequest: {
     encode(message: AssetMultiplierRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierRequest;
-    fromPartial(object: DeepPartial<AssetMultiplierRequest>): AssetMultiplierRequest;
+    fromPartial(object: Partial<AssetMultiplierRequest>): AssetMultiplierRequest;
 };
 export declare const AssetMultiplierResponse: {
     encode(message: AssetMultiplierResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierResponse;
-    fromPartial(object: DeepPartial<AssetMultiplierResponse>): AssetMultiplierResponse;
+    fromPartial(object: Partial<AssetMultiplierResponse>): AssetMultiplierResponse;
 };
 export declare const SuperfluidIntermediaryAccountInfo: {
     encode(message: SuperfluidIntermediaryAccountInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidIntermediaryAccountInfo;
-    fromPartial(object: DeepPartial<SuperfluidIntermediaryAccountInfo>): SuperfluidIntermediaryAccountInfo;
+    fromPartial(object: Partial<SuperfluidIntermediaryAccountInfo>): SuperfluidIntermediaryAccountInfo;
 };
 export declare const AllIntermediaryAccountsRequest: {
     encode(message: AllIntermediaryAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsRequest;
-    fromPartial(object: DeepPartial<AllIntermediaryAccountsRequest>): AllIntermediaryAccountsRequest;
+    fromPartial(object: Partial<AllIntermediaryAccountsRequest>): AllIntermediaryAccountsRequest;
 };
 export declare const AllIntermediaryAccountsResponse: {
     encode(message: AllIntermediaryAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsResponse;
-    fromPartial(object: DeepPartial<AllIntermediaryAccountsResponse>): AllIntermediaryAccountsResponse;
+    fromPartial(object: Partial<AllIntermediaryAccountsResponse>): AllIntermediaryAccountsResponse;
 };
 export declare const ConnectedIntermediaryAccountRequest: {
     encode(message: ConnectedIntermediaryAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountRequest;
-    fromPartial(object: DeepPartial<ConnectedIntermediaryAccountRequest>): ConnectedIntermediaryAccountRequest;
+    fromPartial(object: Partial<ConnectedIntermediaryAccountRequest>): ConnectedIntermediaryAccountRequest;
 };
 export declare const ConnectedIntermediaryAccountResponse: {
     encode(message: ConnectedIntermediaryAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountResponse;
-    fromPartial(object: DeepPartial<ConnectedIntermediaryAccountResponse>): ConnectedIntermediaryAccountResponse;
+    fromPartial(object: Partial<ConnectedIntermediaryAccountResponse>): ConnectedIntermediaryAccountResponse;
 };
 export declare const TotalSuperfluidDelegationsRequest: {
     encode(_: TotalSuperfluidDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsRequest;
-    fromPartial(_: DeepPartial<TotalSuperfluidDelegationsRequest>): TotalSuperfluidDelegationsRequest;
+    fromPartial(_: Partial<TotalSuperfluidDelegationsRequest>): TotalSuperfluidDelegationsRequest;
 };
 export declare const TotalSuperfluidDelegationsResponse: {
     encode(message: TotalSuperfluidDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsResponse;
-    fromPartial(object: DeepPartial<TotalSuperfluidDelegationsResponse>): TotalSuperfluidDelegationsResponse;
+    fromPartial(object: Partial<TotalSuperfluidDelegationsResponse>): TotalSuperfluidDelegationsResponse;
 };
 export declare const SuperfluidDelegationAmountRequest: {
     encode(message: SuperfluidDelegationAmountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountRequest;
-    fromPartial(object: DeepPartial<SuperfluidDelegationAmountRequest>): SuperfluidDelegationAmountRequest;
+    fromPartial(object: Partial<SuperfluidDelegationAmountRequest>): SuperfluidDelegationAmountRequest;
 };
 export declare const SuperfluidDelegationAmountResponse: {
     encode(message: SuperfluidDelegationAmountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountResponse;
-    fromPartial(object: DeepPartial<SuperfluidDelegationAmountResponse>): SuperfluidDelegationAmountResponse;
+    fromPartial(object: Partial<SuperfluidDelegationAmountResponse>): SuperfluidDelegationAmountResponse;
 };
 export declare const SuperfluidDelegationsByDelegatorRequest: {
     encode(message: SuperfluidDelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorRequest;
-    fromPartial(object: DeepPartial<SuperfluidDelegationsByDelegatorRequest>): SuperfluidDelegationsByDelegatorRequest;
+    fromPartial(object: Partial<SuperfluidDelegationsByDelegatorRequest>): SuperfluidDelegationsByDelegatorRequest;
 };
 export declare const SuperfluidDelegationsByDelegatorResponse: {
     encode(message: SuperfluidDelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorResponse;
-    fromPartial(object: DeepPartial<SuperfluidDelegationsByDelegatorResponse>): SuperfluidDelegationsByDelegatorResponse;
+    fromPartial(object: Partial<SuperfluidDelegationsByDelegatorResponse>): SuperfluidDelegationsByDelegatorResponse;
 };
 export declare const SuperfluidUndelegationsByDelegatorRequest: {
     encode(message: SuperfluidUndelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorRequest;
-    fromPartial(object: DeepPartial<SuperfluidUndelegationsByDelegatorRequest>): SuperfluidUndelegationsByDelegatorRequest;
+    fromPartial(object: Partial<SuperfluidUndelegationsByDelegatorRequest>): SuperfluidUndelegationsByDelegatorRequest;
 };
 export declare const SuperfluidUndelegationsByDelegatorResponse: {
     encode(message: SuperfluidUndelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorResponse;
-    fromPartial(object: DeepPartial<SuperfluidUndelegationsByDelegatorResponse>): SuperfluidUndelegationsByDelegatorResponse;
+    fromPartial(object: Partial<SuperfluidUndelegationsByDelegatorResponse>): SuperfluidUndelegationsByDelegatorResponse;
 };
 export declare const SuperfluidDelegationsByValidatorDenomRequest: {
     encode(message: SuperfluidDelegationsByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomRequest;
-    fromPartial(object: DeepPartial<SuperfluidDelegationsByValidatorDenomRequest>): SuperfluidDelegationsByValidatorDenomRequest;
+    fromPartial(object: Partial<SuperfluidDelegationsByValidatorDenomRequest>): SuperfluidDelegationsByValidatorDenomRequest;
 };
 export declare const SuperfluidDelegationsByValidatorDenomResponse: {
     encode(message: SuperfluidDelegationsByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomResponse;
-    fromPartial(object: DeepPartial<SuperfluidDelegationsByValidatorDenomResponse>): SuperfluidDelegationsByValidatorDenomResponse;
+    fromPartial(object: Partial<SuperfluidDelegationsByValidatorDenomResponse>): SuperfluidDelegationsByValidatorDenomResponse;
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
     encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
-    fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomRequest>): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
+    fromPartial(object: Partial<EstimateSuperfluidDelegatedAmountByValidatorDenomRequest>): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: {
     encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
-    fromPartial(object: DeepPartial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
+    fromPartial(object: Partial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
 };
 export declare const QueryTotalDelegationByDelegatorRequest: {
     encode(message: QueryTotalDelegationByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorRequest;
-    fromPartial(object: DeepPartial<QueryTotalDelegationByDelegatorRequest>): QueryTotalDelegationByDelegatorRequest;
+    fromPartial(object: Partial<QueryTotalDelegationByDelegatorRequest>): QueryTotalDelegationByDelegatorRequest;
 };
 export declare const QueryTotalDelegationByDelegatorResponse: {
     encode(message: QueryTotalDelegationByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorResponse;
-    fromPartial(object: DeepPartial<QueryTotalDelegationByDelegatorResponse>): QueryTotalDelegationByDelegatorResponse;
+    fromPartial(object: Partial<QueryTotalDelegationByDelegatorResponse>): QueryTotalDelegationByDelegatorResponse;
 };

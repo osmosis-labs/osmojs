@@ -1,6 +1,6 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 export interface ProtocolVersion {
   p2p: Long;
   block: Long;
@@ -12,24 +12,24 @@ export interface ProtocolVersionSDKType {
   app: Long;
 }
 export interface NodeInfo {
-  protocolVersion: ProtocolVersion;
+  protocolVersion?: ProtocolVersion;
   nodeId: string;
   listenAddr: string;
   network: string;
   version: string;
   channels: Uint8Array;
   moniker: string;
-  other: NodeInfoOther;
+  other?: NodeInfoOther;
 }
 export interface NodeInfoSDKType {
-  protocol_version: ProtocolVersionSDKType;
+  protocol_version?: ProtocolVersionSDKType;
   node_id: string;
   listen_addr: string;
   network: string;
   version: string;
   channels: Uint8Array;
   moniker: string;
-  other: NodeInfoOtherSDKType;
+  other?: NodeInfoOtherSDKType;
 }
 export interface NodeInfoOther {
   txIndex: string;
@@ -42,23 +42,23 @@ export interface NodeInfoOtherSDKType {
 export interface PeerInfo {
   id: string;
   addressInfo: PeerAddressInfo[];
-  lastConnected: Date;
+  lastConnected?: Date;
 }
 export interface PeerInfoSDKType {
   id: string;
   address_info: PeerAddressInfoSDKType[];
-  last_connected: Date;
+  last_connected?: Date;
 }
 export interface PeerAddressInfo {
   address: string;
-  lastDialSuccess: Date;
-  lastDialFailure: Date;
+  lastDialSuccess?: Date;
+  lastDialFailure?: Date;
   dialFailures: number;
 }
 export interface PeerAddressInfoSDKType {
   address: string;
-  last_dial_success: Date;
-  last_dial_failure: Date;
+  last_dial_success?: Date;
+  last_dial_failure?: Date;
   dial_failures: number;
 }
 
@@ -117,7 +117,7 @@ export const ProtocolVersion = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ProtocolVersion>): ProtocolVersion {
+  fromPartial(object: Partial<ProtocolVersion>): ProtocolVersion {
     const message = createBaseProtocolVersion();
     message.p2p = object.p2p !== undefined && object.p2p !== null ? Long.fromValue(object.p2p) : Long.UZERO;
     message.block = object.block !== undefined && object.block !== null ? Long.fromValue(object.block) : Long.UZERO;
@@ -227,7 +227,7 @@ export const NodeInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<NodeInfo>): NodeInfo {
+  fromPartial(object: Partial<NodeInfo>): NodeInfo {
     const message = createBaseNodeInfo();
     message.protocolVersion = object.protocolVersion !== undefined && object.protocolVersion !== null ? ProtocolVersion.fromPartial(object.protocolVersion) : undefined;
     message.nodeId = object.nodeId ?? "";
@@ -288,7 +288,7 @@ export const NodeInfoOther = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<NodeInfoOther>): NodeInfoOther {
+  fromPartial(object: Partial<NodeInfoOther>): NodeInfoOther {
     const message = createBaseNodeInfoOther();
     message.txIndex = object.txIndex ?? "";
     message.rpcAddress = object.rpcAddress ?? "";
@@ -352,7 +352,7 @@ export const PeerInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PeerInfo>): PeerInfo {
+  fromPartial(object: Partial<PeerInfo>): PeerInfo {
     const message = createBasePeerInfo();
     message.id = object.id ?? "";
     message.addressInfo = object.addressInfo?.map(e => PeerAddressInfo.fromPartial(e)) || [];
@@ -426,7 +426,7 @@ export const PeerAddressInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PeerAddressInfo>): PeerAddressInfo {
+  fromPartial(object: Partial<PeerAddressInfo>): PeerAddressInfo {
     const message = createBasePeerAddressInfo();
     message.address = object.address ?? "";
     message.lastDialSuccess = object.lastDialSuccess ?? undefined;

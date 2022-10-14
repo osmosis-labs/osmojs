@@ -1,7 +1,7 @@
 import { AccessConfig, AccessConfigSDKType } from "./types";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 export interface StoreCodeProposal {
     /** Title is a short summary */
@@ -13,7 +13,7 @@ export interface StoreCodeProposal {
     /** WASMByteCode can be raw or gzip compressed */
     wasmByteCode: Uint8Array;
     /** InstantiatePermission to apply on contract creation, optional */
-    instantiatePermission: AccessConfig;
+    instantiatePermission?: AccessConfig;
 }
 /** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 export interface StoreCodeProposalSDKType {
@@ -26,7 +26,7 @@ export interface StoreCodeProposalSDKType {
     /** WASMByteCode can be raw or gzip compressed */
     wasm_byte_code: Uint8Array;
     /** InstantiatePermission to apply on contract creation, optional */
-    instantiate_permission: AccessConfigSDKType;
+    instantiate_permission?: AccessConfigSDKType;
 }
 /**
  * InstantiateContractProposal gov proposal content type to instantiate a
@@ -253,45 +253,45 @@ export interface UnpinCodesProposalSDKType {
 export declare const StoreCodeProposal: {
     encode(message: StoreCodeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StoreCodeProposal;
-    fromPartial(object: DeepPartial<StoreCodeProposal>): StoreCodeProposal;
+    fromPartial(object: Partial<StoreCodeProposal>): StoreCodeProposal;
 };
 export declare const InstantiateContractProposal: {
     encode(message: InstantiateContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateContractProposal;
-    fromPartial(object: DeepPartial<InstantiateContractProposal>): InstantiateContractProposal;
+    fromPartial(object: Partial<InstantiateContractProposal>): InstantiateContractProposal;
 };
 export declare const MigrateContractProposal: {
     encode(message: MigrateContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MigrateContractProposal;
-    fromPartial(object: DeepPartial<MigrateContractProposal>): MigrateContractProposal;
+    fromPartial(object: Partial<MigrateContractProposal>): MigrateContractProposal;
 };
 export declare const SudoContractProposal: {
     encode(message: SudoContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SudoContractProposal;
-    fromPartial(object: DeepPartial<SudoContractProposal>): SudoContractProposal;
+    fromPartial(object: Partial<SudoContractProposal>): SudoContractProposal;
 };
 export declare const ExecuteContractProposal: {
     encode(message: ExecuteContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ExecuteContractProposal;
-    fromPartial(object: DeepPartial<ExecuteContractProposal>): ExecuteContractProposal;
+    fromPartial(object: Partial<ExecuteContractProposal>): ExecuteContractProposal;
 };
 export declare const UpdateAdminProposal: {
     encode(message: UpdateAdminProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdateAdminProposal;
-    fromPartial(object: DeepPartial<UpdateAdminProposal>): UpdateAdminProposal;
+    fromPartial(object: Partial<UpdateAdminProposal>): UpdateAdminProposal;
 };
 export declare const ClearAdminProposal: {
     encode(message: ClearAdminProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClearAdminProposal;
-    fromPartial(object: DeepPartial<ClearAdminProposal>): ClearAdminProposal;
+    fromPartial(object: Partial<ClearAdminProposal>): ClearAdminProposal;
 };
 export declare const PinCodesProposal: {
     encode(message: PinCodesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PinCodesProposal;
-    fromPartial(object: DeepPartial<PinCodesProposal>): PinCodesProposal;
+    fromPartial(object: Partial<PinCodesProposal>): PinCodesProposal;
 };
 export declare const UnpinCodesProposal: {
     encode(message: UnpinCodesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnpinCodesProposal;
-    fromPartial(object: DeepPartial<UnpinCodesProposal>): UnpinCodesProposal;
+    fromPartial(object: Partial<UnpinCodesProposal>): UnpinCodesProposal;
 };

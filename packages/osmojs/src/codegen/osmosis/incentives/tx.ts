@@ -2,7 +2,7 @@ import { QueryCondition, QueryConditionSDKType } from "../lockup/lock";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp, Long, DeepPartial } from "../../helpers";
+import { toTimestamp, fromTimestamp, Long } from "../../helpers";
 /** MsgCreateGauge creates a gague to distribute rewards to users */
 
 export interface MsgCreateGauge {
@@ -22,13 +22,13 @@ export interface MsgCreateGauge {
    * duration or by timestamp
    */
 
-  distributeTo: QueryCondition;
+  distributeTo?: QueryCondition;
   /** coins are coin(s) to be distributed by the gauge */
 
   coins: Coin[];
   /** start_time is the distribution start time */
 
-  startTime: Date;
+  startTime?: Date;
   /**
    * num_epochs_paid_over is the number of epochs distribution will be completed
    * over
@@ -55,13 +55,13 @@ export interface MsgCreateGaugeSDKType {
    * duration or by timestamp
    */
 
-  distribute_to: QueryConditionSDKType;
+  distribute_to?: QueryConditionSDKType;
   /** coins are coin(s) to be distributed by the gauge */
 
   coins: CoinSDKType[];
   /** start_time is the distribution start time */
 
-  start_time: Date;
+  start_time?: Date;
   /**
    * num_epochs_paid_over is the number of epochs distribution will be completed
    * over
@@ -180,7 +180,7 @@ export const MsgCreateGauge = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgCreateGauge>): MsgCreateGauge {
+  fromPartial(object: Partial<MsgCreateGauge>): MsgCreateGauge {
     const message = createBaseMsgCreateGauge();
     message.isPerpetual = object.isPerpetual ?? false;
     message.owner = object.owner ?? "";
@@ -220,7 +220,7 @@ export const MsgCreateGaugeResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse {
+  fromPartial(_: Partial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse {
     const message = createBaseMsgCreateGaugeResponse();
     return message;
   }
@@ -282,7 +282,7 @@ export const MsgAddToGauge = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgAddToGauge>): MsgAddToGauge {
+  fromPartial(object: Partial<MsgAddToGauge>): MsgAddToGauge {
     const message = createBaseMsgAddToGauge();
     message.owner = object.owner ?? "";
     message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
@@ -319,7 +319,7 @@ export const MsgAddToGaugeResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse {
+  fromPartial(_: Partial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse {
     const message = createBaseMsgAddToGaugeResponse();
     return message;
   }

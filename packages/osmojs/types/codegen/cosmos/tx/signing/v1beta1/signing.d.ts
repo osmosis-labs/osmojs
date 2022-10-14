@@ -1,7 +1,7 @@
 import { CompactBitArray, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * SignMode represents a signing mode with its own security guarantees.
  *
@@ -108,8 +108,8 @@ export interface SignatureDescriptorsSDKType {
  */
 export interface SignatureDescriptor {
     /** public_key is the public key of the signer */
-    publicKey: Any;
-    data: SignatureDescriptor_Data;
+    publicKey?: Any;
+    data?: SignatureDescriptor_Data;
     /**
      * sequence is the sequence of the account, which describes the
      * number of committed transactions signed by a given address. It is used to prevent
@@ -125,8 +125,8 @@ export interface SignatureDescriptor {
  */
 export interface SignatureDescriptorSDKType {
     /** public_key is the public key of the signer */
-    public_key: AnySDKType;
-    data: SignatureDescriptor_DataSDKType;
+    public_key?: AnySDKType;
+    data?: SignatureDescriptor_DataSDKType;
     /**
      * sequence is the sequence of the account, which describes the
      * number of committed transactions signed by a given address. It is used to prevent
@@ -165,39 +165,39 @@ export interface SignatureDescriptor_Data_SingleSDKType {
 /** Multi is the signature data for a multisig public key */
 export interface SignatureDescriptor_Data_Multi {
     /** bitarray specifies which keys within the multisig are signing */
-    bitarray: CompactBitArray;
+    bitarray?: CompactBitArray;
     /** signatures is the signatures of the multi-signature */
     signatures: SignatureDescriptor_Data[];
 }
 /** Multi is the signature data for a multisig public key */
 export interface SignatureDescriptor_Data_MultiSDKType {
     /** bitarray specifies which keys within the multisig are signing */
-    bitarray: CompactBitArraySDKType;
+    bitarray?: CompactBitArraySDKType;
     /** signatures is the signatures of the multi-signature */
     signatures: SignatureDescriptor_DataSDKType[];
 }
 export declare const SignatureDescriptors: {
     encode(message: SignatureDescriptors, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptors;
-    fromPartial(object: DeepPartial<SignatureDescriptors>): SignatureDescriptors;
+    fromPartial(object: Partial<SignatureDescriptors>): SignatureDescriptors;
 };
 export declare const SignatureDescriptor: {
     encode(message: SignatureDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor;
-    fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor;
+    fromPartial(object: Partial<SignatureDescriptor>): SignatureDescriptor;
 };
 export declare const SignatureDescriptor_Data: {
     encode(message: SignatureDescriptor_Data, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data;
-    fromPartial(object: DeepPartial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
+    fromPartial(object: Partial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
 };
 export declare const SignatureDescriptor_Data_Single: {
     encode(message: SignatureDescriptor_Data_Single, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Single;
-    fromPartial(object: DeepPartial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
+    fromPartial(object: Partial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
 };
 export declare const SignatureDescriptor_Data_Multi: {
     encode(message: SignatureDescriptor_Data_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi;
-    fromPartial(object: DeepPartial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;
+    fromPartial(object: Partial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;
 };

@@ -1,6 +1,5 @@
 import { FeeToken, FeeTokenSDKType } from "./feetoken";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * UpdateFeeTokenProposal is a gov Content type for adding a new whitelisted fee
  * token. It must specify a denom along with gamm pool ID to use as a spot price
@@ -12,7 +11,7 @@ import { DeepPartial } from "../../../helpers";
 export interface UpdateFeeTokenProposal {
   title: string;
   description: string;
-  feetoken: FeeToken;
+  feetoken?: FeeToken;
 }
 /**
  * UpdateFeeTokenProposal is a gov Content type for adding a new whitelisted fee
@@ -25,7 +24,7 @@ export interface UpdateFeeTokenProposal {
 export interface UpdateFeeTokenProposalSDKType {
   title: string;
   description: string;
-  feetoken: FeeTokenSDKType;
+  feetoken?: FeeTokenSDKType;
 }
 
 function createBaseUpdateFeeTokenProposal(): UpdateFeeTokenProposal {
@@ -83,7 +82,7 @@ export const UpdateFeeTokenProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UpdateFeeTokenProposal>): UpdateFeeTokenProposal {
+  fromPartial(object: Partial<UpdateFeeTokenProposal>): UpdateFeeTokenProposal {
     const message = createBaseUpdateFeeTokenProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";

@@ -1,6 +1,5 @@
 import { CommitmentProof, CommitmentProofSDKType } from "../../../../confio/proofs";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../../helpers";
 /**
  * MerkleRoot defines a merkle root hash.
  * In the Cosmos SDK, the AppHash of a block header becomes the root.
@@ -113,7 +112,7 @@ export const MerkleRoot = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MerkleRoot>): MerkleRoot {
+  fromPartial(object: Partial<MerkleRoot>): MerkleRoot {
     const message = createBaseMerkleRoot();
     message.hash = object.hash ?? new Uint8Array();
     return message;
@@ -158,7 +157,7 @@ export const MerklePrefix = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MerklePrefix>): MerklePrefix {
+  fromPartial(object: Partial<MerklePrefix>): MerklePrefix {
     const message = createBaseMerklePrefix();
     message.keyPrefix = object.keyPrefix ?? new Uint8Array();
     return message;
@@ -203,7 +202,7 @@ export const MerklePath = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MerklePath>): MerklePath {
+  fromPartial(object: Partial<MerklePath>): MerklePath {
     const message = createBaseMerklePath();
     message.keyPath = object.keyPath?.map(e => e) || [];
     return message;
@@ -248,7 +247,7 @@ export const MerkleProof = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MerkleProof>): MerkleProof {
+  fromPartial(object: Partial<MerkleProof>): MerkleProof {
     const message = createBaseMerkleProof();
     message.proofs = object.proofs?.map(e => CommitmentProof.fromPartial(e)) || [];
     return message;

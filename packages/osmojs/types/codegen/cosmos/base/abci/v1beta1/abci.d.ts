@@ -1,7 +1,7 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventSDKType } from "../../../../tendermint/abci/types";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
  * tags are stringified and the log is JSON decoded.
@@ -31,7 +31,7 @@ export interface TxResponse {
     /** Amount of gas consumed by transaction. */
     gasUsed: Long;
     /** The request transaction bytes. */
-    tx: Any;
+    tx?: Any;
     /**
      * Time of the previous block. For heights > 1, it's the weighted median of
      * the timestamps of the valid votes in the block.LastCommit. For height == 1,
@@ -77,7 +77,7 @@ export interface TxResponseSDKType {
     /** Amount of gas consumed by transaction. */
     gas_used: Long;
     /** The request transaction bytes. */
-    tx: AnySDKType;
+    tx?: AnySDKType;
     /**
      * Time of the previous block. For heights > 1, it's the weighted median of
      * the timestamps of the valid votes in the block.LastCommit. For height == 1,
@@ -213,16 +213,16 @@ export interface ResultSDKType {
  * successfully simulated.
  */
 export interface SimulationResponse {
-    gasInfo: GasInfo;
-    result: Result;
+    gasInfo?: GasInfo;
+    result?: Result;
 }
 /**
  * SimulationResponse defines the response generated when a transaction is
  * successfully simulated.
  */
 export interface SimulationResponseSDKType {
-    gas_info: GasInfoSDKType;
-    result: ResultSDKType;
+    gas_info?: GasInfoSDKType;
+    result?: ResultSDKType;
 }
 /**
  * MsgData defines the data returned in a Result object during message
@@ -305,50 +305,50 @@ export interface SearchTxsResultSDKType {
 export declare const TxResponse: {
     encode(message: TxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxResponse;
-    fromPartial(object: DeepPartial<TxResponse>): TxResponse;
+    fromPartial(object: Partial<TxResponse>): TxResponse;
 };
 export declare const ABCIMessageLog: {
     encode(message: ABCIMessageLog, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ABCIMessageLog;
-    fromPartial(object: DeepPartial<ABCIMessageLog>): ABCIMessageLog;
+    fromPartial(object: Partial<ABCIMessageLog>): ABCIMessageLog;
 };
 export declare const StringEvent: {
     encode(message: StringEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StringEvent;
-    fromPartial(object: DeepPartial<StringEvent>): StringEvent;
+    fromPartial(object: Partial<StringEvent>): StringEvent;
 };
 export declare const Attribute: {
     encode(message: Attribute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Attribute;
-    fromPartial(object: DeepPartial<Attribute>): Attribute;
+    fromPartial(object: Partial<Attribute>): Attribute;
 };
 export declare const GasInfo: {
     encode(message: GasInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GasInfo;
-    fromPartial(object: DeepPartial<GasInfo>): GasInfo;
+    fromPartial(object: Partial<GasInfo>): GasInfo;
 };
 export declare const Result: {
     encode(message: Result, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Result;
-    fromPartial(object: DeepPartial<Result>): Result;
+    fromPartial(object: Partial<Result>): Result;
 };
 export declare const SimulationResponse: {
     encode(message: SimulationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulationResponse;
-    fromPartial(object: DeepPartial<SimulationResponse>): SimulationResponse;
+    fromPartial(object: Partial<SimulationResponse>): SimulationResponse;
 };
 export declare const MsgData: {
     encode(message: MsgData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgData;
-    fromPartial(object: DeepPartial<MsgData>): MsgData;
+    fromPartial(object: Partial<MsgData>): MsgData;
 };
 export declare const TxMsgData: {
     encode(message: TxMsgData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxMsgData;
-    fromPartial(object: DeepPartial<TxMsgData>): TxMsgData;
+    fromPartial(object: Partial<TxMsgData>): TxMsgData;
 };
 export declare const SearchTxsResult: {
     encode(message: SearchTxsResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SearchTxsResult;
-    fromPartial(object: DeepPartial<SearchTxsResult>): SearchTxsResult;
+    fromPartial(object: Partial<SearchTxsResult>): SearchTxsResult;
 };

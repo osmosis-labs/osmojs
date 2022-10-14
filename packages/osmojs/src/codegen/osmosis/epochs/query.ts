@@ -1,6 +1,6 @@
 import { EpochInfo, EpochInfoSDKType } from "./genesis";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../helpers";
+import { Long } from "../../helpers";
 export interface QueryEpochsInfoRequest {}
 export interface QueryEpochsInfoRequestSDKType {}
 export interface QueryEpochsInfoResponse {
@@ -10,10 +10,10 @@ export interface QueryEpochsInfoResponseSDKType {
   epochs: EpochInfoSDKType[];
 }
 export interface QueryCurrentEpochRequest {
-  identifier?: string;
+  identifier: string;
 }
 export interface QueryCurrentEpochRequestSDKType {
-  identifier?: string;
+  identifier: string;
 }
 export interface QueryCurrentEpochResponse {
   currentEpoch: Long;
@@ -49,7 +49,7 @@ export const QueryEpochsInfoRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryEpochsInfoRequest>): QueryEpochsInfoRequest {
+  fromPartial(_: Partial<QueryEpochsInfoRequest>): QueryEpochsInfoRequest {
     const message = createBaseQueryEpochsInfoRequest();
     return message;
   }
@@ -93,7 +93,7 @@ export const QueryEpochsInfoResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryEpochsInfoResponse>): QueryEpochsInfoResponse {
+  fromPartial(object: Partial<QueryEpochsInfoResponse>): QueryEpochsInfoResponse {
     const message = createBaseQueryEpochsInfoResponse();
     message.epochs = object.epochs?.map(e => EpochInfo.fromPartial(e)) || [];
     return message;
@@ -138,7 +138,7 @@ export const QueryCurrentEpochRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryCurrentEpochRequest>): QueryCurrentEpochRequest {
+  fromPartial(object: Partial<QueryCurrentEpochRequest>): QueryCurrentEpochRequest {
     const message = createBaseQueryCurrentEpochRequest();
     message.identifier = object.identifier ?? "";
     return message;
@@ -183,7 +183,7 @@ export const QueryCurrentEpochResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse {
+  fromPartial(object: Partial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse {
     const message = createBaseQueryCurrentEpochResponse();
     message.currentEpoch = object.currentEpoch !== undefined && object.currentEpoch !== null ? Long.fromValue(object.currentEpoch) : Long.ZERO;
     return message;

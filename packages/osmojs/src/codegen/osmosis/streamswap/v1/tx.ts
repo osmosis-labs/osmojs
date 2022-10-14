@@ -2,7 +2,7 @@ import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp, DeepPartial, Long } from "../../../helpers";
+import { toTimestamp, fromTimestamp, Long } from "../../../helpers";
 export interface MsgCreateSale {
   /**
    * Sale creator and the account which provides token (token_out) to the sale.
@@ -21,7 +21,7 @@ export interface MsgCreateSale {
    * to the module and will be sold during the sale.
    */
 
-  tokenOut: Coin;
+  tokenOut?: Coin;
   /**
    * Maximum fee the creator is going to pay for creating a sale. The creator
    * will be charged params.SaleCreationFee. Transaction will fail if
@@ -32,10 +32,10 @@ export interface MsgCreateSale {
   maxFee: Coin[];
   /** start time when the token sale starts. */
 
-  startTime: Date;
+  startTime?: Date;
   /** duration time that the sale takes place over */
 
-  duration: Duration;
+  duration?: Duration;
   /**
    * Recipient is the account which receives earned `token_in` from when the
    * sale is finalized. If not defined (empty) the creator
@@ -72,7 +72,7 @@ export interface MsgCreateSaleSDKType {
    * to the module and will be sold during the sale.
    */
 
-  token_out: CoinSDKType;
+  token_out?: CoinSDKType;
   /**
    * Maximum fee the creator is going to pay for creating a sale. The creator
    * will be charged params.SaleCreationFee. Transaction will fail if
@@ -83,10 +83,10 @@ export interface MsgCreateSaleSDKType {
   max_fee: CoinSDKType[];
   /** start time when the token sale starts. */
 
-  start_time: Date;
+  start_time?: Date;
   /** duration time that the sale takes place over */
 
-  duration: DurationSDKType;
+  duration?: DurationSDKType;
   /**
    * Recipient is the account which receives earned `token_in` from when the
    * sale is finalized. If not defined (empty) the creator
@@ -142,7 +142,7 @@ export interface MsgWithdraw {
    * tokens, unless set to null - then all remaining balance will be withdrawn.
    */
 
-  amount?: string;
+  amount: string;
 }
 export interface MsgWithdrawSDKType {
   /** sender is an account address subscribed to the sale_id */
@@ -155,7 +155,7 @@ export interface MsgWithdrawSDKType {
    * tokens, unless set to null - then all remaining balance will be withdrawn.
    */
 
-  amount?: string;
+  amount: string;
 }
 export interface MsgExitSale {
   /** sender is an account address exiting a sale */
@@ -311,7 +311,7 @@ export const MsgCreateSale = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgCreateSale>): MsgCreateSale {
+  fromPartial(object: Partial<MsgCreateSale>): MsgCreateSale {
     const message = createBaseMsgCreateSale();
     message.creator = object.creator ?? "";
     message.tokenIn = object.tokenIn ?? "";
@@ -364,7 +364,7 @@ export const MsgCreateSaleResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgCreateSaleResponse>): MsgCreateSaleResponse {
+  fromPartial(object: Partial<MsgCreateSaleResponse>): MsgCreateSaleResponse {
     const message = createBaseMsgCreateSaleResponse();
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
     return message;
@@ -427,7 +427,7 @@ export const MsgSubscribe = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSubscribe>): MsgSubscribe {
+  fromPartial(object: Partial<MsgSubscribe>): MsgSubscribe {
     const message = createBaseMsgSubscribe();
     message.sender = object.sender ?? "";
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
@@ -492,7 +492,7 @@ export const MsgWithdraw = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgWithdraw>): MsgWithdraw {
+  fromPartial(object: Partial<MsgWithdraw>): MsgWithdraw {
     const message = createBaseMsgWithdraw();
     message.sender = object.sender ?? "";
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
@@ -548,7 +548,7 @@ export const MsgExitSale = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExitSale>): MsgExitSale {
+  fromPartial(object: Partial<MsgExitSale>): MsgExitSale {
     const message = createBaseMsgExitSale();
     message.sender = object.sender ?? "";
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
@@ -594,7 +594,7 @@ export const MsgExitSaleResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExitSaleResponse>): MsgExitSaleResponse {
+  fromPartial(object: Partial<MsgExitSaleResponse>): MsgExitSaleResponse {
     const message = createBaseMsgExitSaleResponse();
     message.purchased = object.purchased ?? "";
     return message;
@@ -648,7 +648,7 @@ export const MsgFinalizeSale = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgFinalizeSale>): MsgFinalizeSale {
+  fromPartial(object: Partial<MsgFinalizeSale>): MsgFinalizeSale {
     const message = createBaseMsgFinalizeSale();
     message.sender = object.sender ?? "";
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
@@ -694,7 +694,7 @@ export const MsgFinalizeSaleResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgFinalizeSaleResponse>): MsgFinalizeSaleResponse {
+  fromPartial(object: Partial<MsgFinalizeSaleResponse>): MsgFinalizeSaleResponse {
     const message = createBaseMsgFinalizeSaleResponse();
     message.income = object.income ?? "";
     return message;

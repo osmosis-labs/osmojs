@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * PoolParams defined the parameters that will be managed by the pool
  * governance in the future. This params are not managed by the chain
@@ -25,7 +25,7 @@ export interface PoolParamsSDKType {
 export interface Pool {
     address: string;
     id: Long;
-    poolParams: PoolParams;
+    poolParams?: PoolParams;
     /**
      * This string specifies who will govern the pool in the future.
      * Valid forms of this are:
@@ -38,7 +38,7 @@ export interface Pool {
      */
     futurePoolGovernor: string;
     /** sum of all LP shares */
-    totalShares: Coin;
+    totalShares?: Coin;
     /** assets in the pool */
     poolLiquidity: Coin[];
     /** for calculation amognst assets with different precisions */
@@ -50,7 +50,7 @@ export interface Pool {
 export interface PoolSDKType {
     address: string;
     id: Long;
-    pool_params: PoolParamsSDKType;
+    pool_params?: PoolParamsSDKType;
     /**
      * This string specifies who will govern the pool in the future.
      * Valid forms of this are:
@@ -63,7 +63,7 @@ export interface PoolSDKType {
      */
     future_pool_governor: string;
     /** sum of all LP shares */
-    total_shares: CoinSDKType;
+    total_shares?: CoinSDKType;
     /** assets in the pool */
     pool_liquidity: CoinSDKType[];
     /** for calculation amognst assets with different precisions */
@@ -74,10 +74,10 @@ export interface PoolSDKType {
 export declare const PoolParams: {
     encode(message: PoolParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolParams;
-    fromPartial(object: DeepPartial<PoolParams>): PoolParams;
+    fromPartial(object: Partial<PoolParams>): PoolParams;
 };
 export declare const Pool: {
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
-    fromPartial(object: DeepPartial<Pool>): Pool;
+    fromPartial(object: Partial<Pool>): Pool;
 };

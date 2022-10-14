@@ -1,7 +1,6 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** Params holds parameters for the streamswap module */
 
 export interface Params {
@@ -18,10 +17,10 @@ export interface Params {
    * start time.
    */
 
-  minDurationUntilStartTime: Duration;
+  minDurationUntilStartTime?: Duration;
   /** minimum duration for every new sale. */
 
-  minSaleDuration: Duration;
+  minSaleDuration?: Duration;
 }
 /** Params holds parameters for the streamswap module */
 
@@ -39,10 +38,10 @@ export interface ParamsSDKType {
    * start time.
    */
 
-  min_duration_until_start_time: DurationSDKType;
+  min_duration_until_start_time?: DurationSDKType;
   /** minimum duration for every new sale. */
 
-  min_sale_duration: DurationSDKType;
+  min_sale_duration?: DurationSDKType;
 }
 
 function createBaseParams(): Params {
@@ -109,7 +108,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.saleCreationFee = object.saleCreationFee?.map(e => Coin.fromPartial(e)) || [];
     message.saleCreationFeeRecipient = object.saleCreationFeeRecipient ?? "";

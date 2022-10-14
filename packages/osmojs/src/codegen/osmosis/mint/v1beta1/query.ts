@@ -1,6 +1,5 @@
 import { Params, ParamsSDKType } from "./mint";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 
 export interface QueryParamsRequest {}
@@ -11,13 +10,13 @@ export interface QueryParamsRequestSDKType {}
 
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
-  params: Params;
+  params?: Params;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 
 export interface QueryParamsResponseSDKType {
   /** params defines the parameters of the module. */
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
 }
 /**
  * QueryEpochProvisionsRequest is the request type for the
@@ -77,7 +76,7 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
+  fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
   }
@@ -121,7 +120,7 @@ export const QueryParamsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
+  fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
@@ -156,7 +155,7 @@ export const QueryEpochProvisionsRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryEpochProvisionsRequest>): QueryEpochProvisionsRequest {
+  fromPartial(_: Partial<QueryEpochProvisionsRequest>): QueryEpochProvisionsRequest {
     const message = createBaseQueryEpochProvisionsRequest();
     return message;
   }
@@ -200,7 +199,7 @@ export const QueryEpochProvisionsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse {
+  fromPartial(object: Partial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse {
     const message = createBaseQueryEpochProvisionsResponse();
     message.epochProvisions = object.epochProvisions ?? new Uint8Array();
     return message;

@@ -1,6 +1,5 @@
 import { FeeToken, FeeTokenSDKType } from "./feetoken";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** GenesisState defines the txfees module's genesis state. */
 
 export interface GenesisState {
@@ -60,7 +59,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.basedenom = object.basedenom ?? "";
     message.feetokens = object.feetokens?.map(e => FeeToken.fromPartial(e)) || [];

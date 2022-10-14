@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond
@@ -157,5 +157,5 @@ export interface DurationSDKType {
 export declare const Duration: {
     encode(message: Duration, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Duration;
-    fromPartial(object: DeepPartial<Duration>): Duration;
+    fromPartial(object: Partial<Duration>): Duration;
 };

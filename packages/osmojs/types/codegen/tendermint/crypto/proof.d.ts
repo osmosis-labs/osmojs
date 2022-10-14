@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 export interface Proof {
     total: Long;
     index: Long;
@@ -16,13 +16,13 @@ export interface ValueOp {
     /** Encoded in ProofOp.Key. */
     key: Uint8Array;
     /** To encode in ProofOp.Data */
-    proof: Proof;
+    proof?: Proof;
 }
 export interface ValueOpSDKType {
     /** Encoded in ProofOp.Key. */
     key: Uint8Array;
     /** To encode in ProofOp.Data */
-    proof: ProofSDKType;
+    proof?: ProofSDKType;
 }
 export interface DominoOp {
     key: string;
@@ -65,25 +65,25 @@ export interface ProofOpsSDKType {
 export declare const Proof: {
     encode(message: Proof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proof;
-    fromPartial(object: DeepPartial<Proof>): Proof;
+    fromPartial(object: Partial<Proof>): Proof;
 };
 export declare const ValueOp: {
     encode(message: ValueOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValueOp;
-    fromPartial(object: DeepPartial<ValueOp>): ValueOp;
+    fromPartial(object: Partial<ValueOp>): ValueOp;
 };
 export declare const DominoOp: {
     encode(message: DominoOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DominoOp;
-    fromPartial(object: DeepPartial<DominoOp>): DominoOp;
+    fromPartial(object: Partial<DominoOp>): DominoOp;
 };
 export declare const ProofOp: {
     encode(message: ProofOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOp;
-    fromPartial(object: DeepPartial<ProofOp>): ProofOp;
+    fromPartial(object: Partial<ProofOp>): ProofOp;
 };
 export declare const ProofOps: {
     encode(message: ProofOps, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOps;
-    fromPartial(object: DeepPartial<ProofOps>): ProofOps;
+    fromPartial(object: Partial<ProofOps>): ProofOps;
 };

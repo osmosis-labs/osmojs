@@ -2,7 +2,7 @@ import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export declare enum VoteOption {
     /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
@@ -152,36 +152,36 @@ export interface DepositSDKType {
 /** Proposal defines the core field members of a governance proposal. */
 export interface Proposal {
     proposalId: Long;
-    content: Any;
+    content?: Any;
     status: ProposalStatus;
     /**
      * final_tally_result is the final tally result of the proposal. When
      * querying a proposal via gRPC, this field is not populated until the
      * proposal's voting period has ended.
      */
-    finalTallyResult: TallyResult;
-    submitTime: Date;
-    depositEndTime: Date;
+    finalTallyResult?: TallyResult;
+    submitTime?: Date;
+    depositEndTime?: Date;
     totalDeposit: Coin[];
-    votingStartTime: Date;
-    votingEndTime: Date;
+    votingStartTime?: Date;
+    votingEndTime?: Date;
 }
 /** Proposal defines the core field members of a governance proposal. */
 export interface ProposalSDKType {
     proposal_id: Long;
-    content: AnySDKType;
+    content?: AnySDKType;
     status: ProposalStatusSDKType;
     /**
      * final_tally_result is the final tally result of the proposal. When
      * querying a proposal via gRPC, this field is not populated until the
      * proposal's voting period has ended.
      */
-    final_tally_result: TallyResultSDKType;
-    submit_time: Date;
-    deposit_end_time: Date;
+    final_tally_result?: TallyResultSDKType;
+    submit_time?: Date;
+    deposit_end_time?: Date;
     total_deposit: CoinSDKType[];
-    voting_start_time: Date;
-    voting_end_time: Date;
+    voting_start_time?: Date;
+    voting_end_time?: Date;
 }
 /** TallyResult defines a standard tally for a governance proposal. */
 export interface TallyResult {
@@ -239,7 +239,7 @@ export interface DepositParams {
      * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
      *  months.
      */
-    maxDepositPeriod: Duration;
+    maxDepositPeriod?: Duration;
 }
 /** DepositParams defines the params for deposits on governance proposals. */
 export interface DepositParamsSDKType {
@@ -249,17 +249,17 @@ export interface DepositParamsSDKType {
      * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
      *  months.
      */
-    max_deposit_period: DurationSDKType;
+    max_deposit_period?: DurationSDKType;
 }
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParams {
     /** Length of the voting period. */
-    votingPeriod: Duration;
+    votingPeriod?: Duration;
 }
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParamsSDKType {
     /** Length of the voting period. */
-    voting_period: DurationSDKType;
+    voting_period?: DurationSDKType;
 }
 /** TallyParams defines the params for tallying votes on governance proposals. */
 export interface TallyParams {
@@ -294,45 +294,45 @@ export interface TallyParamsSDKType {
 export declare const WeightedVoteOption: {
     encode(message: WeightedVoteOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): WeightedVoteOption;
-    fromPartial(object: DeepPartial<WeightedVoteOption>): WeightedVoteOption;
+    fromPartial(object: Partial<WeightedVoteOption>): WeightedVoteOption;
 };
 export declare const TextProposal: {
     encode(message: TextProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TextProposal;
-    fromPartial(object: DeepPartial<TextProposal>): TextProposal;
+    fromPartial(object: Partial<TextProposal>): TextProposal;
 };
 export declare const Deposit: {
     encode(message: Deposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Deposit;
-    fromPartial(object: DeepPartial<Deposit>): Deposit;
+    fromPartial(object: Partial<Deposit>): Deposit;
 };
 export declare const Proposal: {
     encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
-    fromPartial(object: DeepPartial<Proposal>): Proposal;
+    fromPartial(object: Partial<Proposal>): Proposal;
 };
 export declare const TallyResult: {
     encode(message: TallyResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TallyResult;
-    fromPartial(object: DeepPartial<TallyResult>): TallyResult;
+    fromPartial(object: Partial<TallyResult>): TallyResult;
 };
 export declare const Vote: {
     encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
-    fromPartial(object: DeepPartial<Vote>): Vote;
+    fromPartial(object: Partial<Vote>): Vote;
 };
 export declare const DepositParams: {
     encode(message: DepositParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DepositParams;
-    fromPartial(object: DeepPartial<DepositParams>): DepositParams;
+    fromPartial(object: Partial<DepositParams>): DepositParams;
 };
 export declare const VotingParams: {
     encode(message: VotingParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VotingParams;
-    fromPartial(object: DeepPartial<VotingParams>): VotingParams;
+    fromPartial(object: Partial<VotingParams>): VotingParams;
 };
 export declare const TallyParams: {
     encode(message: TallyParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TallyParams;
-    fromPartial(object: DeepPartial<TallyParams>): TallyParams;
+    fromPartial(object: Partial<TallyParams>): TallyParams;
 };

@@ -1,6 +1,6 @@
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface Params {
     /**
      * minted_denom is the denomination of the coin expected to be minted by the
@@ -44,12 +44,12 @@ export interface DistrRecordSDKType {
 export interface PoolToGauge {
     poolId: Long;
     gaugeId: Long;
-    duration: Duration;
+    duration?: Duration;
 }
 export interface PoolToGaugeSDKType {
     pool_id: Long;
     gauge_id: Long;
-    duration: DurationSDKType;
+    duration?: DurationSDKType;
 }
 export interface PoolToGauges {
     poolToGauge: PoolToGauge[];
@@ -60,30 +60,30 @@ export interface PoolToGaugesSDKType {
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromPartial(object: DeepPartial<Params>): Params;
+    fromPartial(object: Partial<Params>): Params;
 };
 export declare const LockableDurationsInfo: {
     encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
-    fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo;
+    fromPartial(object: Partial<LockableDurationsInfo>): LockableDurationsInfo;
 };
 export declare const DistrInfo: {
     encode(message: DistrInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrInfo;
-    fromPartial(object: DeepPartial<DistrInfo>): DistrInfo;
+    fromPartial(object: Partial<DistrInfo>): DistrInfo;
 };
 export declare const DistrRecord: {
     encode(message: DistrRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrRecord;
-    fromPartial(object: DeepPartial<DistrRecord>): DistrRecord;
+    fromPartial(object: Partial<DistrRecord>): DistrRecord;
 };
 export declare const PoolToGauge: {
     encode(message: PoolToGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauge;
-    fromPartial(object: DeepPartial<PoolToGauge>): PoolToGauge;
+    fromPartial(object: Partial<PoolToGauge>): PoolToGauge;
 };
 export declare const PoolToGauges: {
     encode(message: PoolToGauges, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauges;
-    fromPartial(object: DeepPartial<PoolToGauges>): PoolToGauges;
+    fromPartial(object: Partial<PoolToGauges>): PoolToGauges;
 };

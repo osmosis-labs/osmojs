@@ -1,11 +1,11 @@
 import { PoolParams, PoolParamsSDKType, PoolAsset, PoolAssetSDKType } from "../balancerPool";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../../helpers";
+import { Long } from "../../../../../helpers";
 /** ===================== MsgCreatePool */
 
 export interface MsgCreateBalancerPool {
   sender: string;
-  poolParams: PoolParams;
+  poolParams?: PoolParams;
   poolAssets: PoolAsset[];
   futurePoolGovernor: string;
 }
@@ -13,7 +13,7 @@ export interface MsgCreateBalancerPool {
 
 export interface MsgCreateBalancerPoolSDKType {
   sender: string;
-  pool_params: PoolParamsSDKType;
+  pool_params?: PoolParamsSDKType;
   pool_assets: PoolAssetSDKType[];
   future_pool_governor: string;
 }
@@ -92,7 +92,7 @@ export const MsgCreateBalancerPool = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgCreateBalancerPool>): MsgCreateBalancerPool {
+  fromPartial(object: Partial<MsgCreateBalancerPool>): MsgCreateBalancerPool {
     const message = createBaseMsgCreateBalancerPool();
     message.sender = object.sender ?? "";
     message.poolParams = object.poolParams !== undefined && object.poolParams !== null ? PoolParams.fromPartial(object.poolParams) : undefined;
@@ -140,7 +140,7 @@ export const MsgCreateBalancerPoolResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse {
+  fromPartial(object: Partial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse {
     const message = createBaseMsgCreateBalancerPoolResponse();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     return message;

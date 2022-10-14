@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../../helpers";
 /**
  * FungibleTokenPacketData defines a struct for the packet payload
  * See FungibleTokenPacketData spec:
@@ -33,5 +32,5 @@ export interface FungibleTokenPacketDataSDKType {
 export declare const FungibleTokenPacketData: {
     encode(message: FungibleTokenPacketData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FungibleTokenPacketData;
-    fromPartial(object: DeepPartial<FungibleTokenPacketData>): FungibleTokenPacketData;
+    fromPartial(object: Partial<FungibleTokenPacketData>): FungibleTokenPacketData;
 };

@@ -1,12 +1,12 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Validator, ValidatorSDKType, DelegationResponse, DelegationResponseSDKType, UnbondingDelegation, UnbondingDelegationSDKType, RedelegationResponse, RedelegationResponseSDKType, HistoricalInfo, HistoricalInfoSDKType, Pool, PoolSDKType, Params, ParamsSDKType } from "./staking";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** QueryValidatorsRequest is request type for Query/Validators RPC method. */
 
 export interface QueryValidatorsRequest {
   /** status enables to query for validators matching a given status. */
-  status?: string;
+  status: string;
   /** pagination defines an optional pagination for the request. */
 
   pagination?: PageRequest;
@@ -15,7 +15,7 @@ export interface QueryValidatorsRequest {
 
 export interface QueryValidatorsRequestSDKType {
   /** status enables to query for validators matching a given status. */
-  status?: string;
+  status: string;
   /** pagination defines an optional pagination for the request. */
 
   pagination?: PageRequestSDKType;
@@ -54,13 +54,13 @@ export interface QueryValidatorRequestSDKType {
 
 export interface QueryValidatorResponse {
   /** validator defines the the validator info. */
-  validator: Validator;
+  validator?: Validator;
 }
 /** QueryValidatorResponse is response type for the Query/Validator RPC method */
 
 export interface QueryValidatorResponseSDKType {
   /** validator defines the the validator info. */
-  validator: ValidatorSDKType;
+  validator?: ValidatorSDKType;
 }
 /**
  * QueryValidatorDelegationsRequest is request type for the
@@ -176,13 +176,13 @@ export interface QueryDelegationRequestSDKType {
 
 export interface QueryDelegationResponse {
   /** delegation_responses defines the delegation info of a delegation. */
-  delegationResponse: DelegationResponse;
+  delegationResponse?: DelegationResponse;
 }
 /** QueryDelegationResponse is response type for the Query/Delegation RPC method. */
 
 export interface QueryDelegationResponseSDKType {
   /** delegation_responses defines the delegation info of a delegation. */
-  delegation_response: DelegationResponseSDKType;
+  delegation_response?: DelegationResponseSDKType;
 }
 /**
  * QueryUnbondingDelegationRequest is request type for the
@@ -215,7 +215,7 @@ export interface QueryUnbondingDelegationRequestSDKType {
 
 export interface QueryUnbondingDelegationResponse {
   /** unbond defines the unbonding information of a delegation. */
-  unbond: UnbondingDelegation;
+  unbond?: UnbondingDelegation;
 }
 /**
  * QueryDelegationResponse is response type for the Query/UnbondingDelegation
@@ -224,7 +224,7 @@ export interface QueryUnbondingDelegationResponse {
 
 export interface QueryUnbondingDelegationResponseSDKType {
   /** unbond defines the unbonding information of a delegation. */
-  unbond: UnbondingDelegationSDKType;
+  unbond?: UnbondingDelegationSDKType;
 }
 /**
  * QueryDelegatorDelegationsRequest is request type for the
@@ -330,10 +330,10 @@ export interface QueryRedelegationsRequest {
   delegatorAddr: string;
   /** src_validator_addr defines the validator address to redelegate from. */
 
-  srcValidatorAddr?: string;
+  srcValidatorAddr: string;
   /** dst_validator_addr defines the validator address to redelegate to. */
 
-  dstValidatorAddr?: string;
+  dstValidatorAddr: string;
   /** pagination defines an optional pagination for the request. */
 
   pagination?: PageRequest;
@@ -348,10 +348,10 @@ export interface QueryRedelegationsRequestSDKType {
   delegator_addr: string;
   /** src_validator_addr defines the validator address to redelegate from. */
 
-  src_validator_addr?: string;
+  src_validator_addr: string;
   /** dst_validator_addr defines the validator address to redelegate to. */
 
-  dst_validator_addr?: string;
+  dst_validator_addr: string;
   /** pagination defines an optional pagination for the request. */
 
   pagination?: PageRequestSDKType;
@@ -457,7 +457,7 @@ export interface QueryDelegatorValidatorRequestSDKType {
 
 export interface QueryDelegatorValidatorResponse {
   /** validator defines the the validator info. */
-  validator: Validator;
+  validator?: Validator;
 }
 /**
  * QueryDelegatorValidatorResponse response type for the
@@ -466,7 +466,7 @@ export interface QueryDelegatorValidatorResponse {
 
 export interface QueryDelegatorValidatorResponseSDKType {
   /** validator defines the the validator info. */
-  validator: ValidatorSDKType;
+  validator?: ValidatorSDKType;
 }
 /**
  * QueryHistoricalInfoRequest is request type for the Query/HistoricalInfo RPC
@@ -493,7 +493,7 @@ export interface QueryHistoricalInfoRequestSDKType {
 
 export interface QueryHistoricalInfoResponse {
   /** hist defines the historical info at the given height. */
-  hist: HistoricalInfo;
+  hist?: HistoricalInfo;
 }
 /**
  * QueryHistoricalInfoResponse is response type for the Query/HistoricalInfo RPC
@@ -502,7 +502,7 @@ export interface QueryHistoricalInfoResponse {
 
 export interface QueryHistoricalInfoResponseSDKType {
   /** hist defines the historical info at the given height. */
-  hist: HistoricalInfoSDKType;
+  hist?: HistoricalInfoSDKType;
 }
 /** QueryPoolRequest is request type for the Query/Pool RPC method. */
 
@@ -514,13 +514,13 @@ export interface QueryPoolRequestSDKType {}
 
 export interface QueryPoolResponse {
   /** pool defines the pool info. */
-  pool: Pool;
+  pool?: Pool;
 }
 /** QueryPoolResponse is response type for the Query/Pool RPC method. */
 
 export interface QueryPoolResponseSDKType {
   /** pool defines the pool info. */
-  pool: PoolSDKType;
+  pool?: PoolSDKType;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 
@@ -532,13 +532,13 @@ export interface QueryParamsRequestSDKType {}
 
 export interface QueryParamsResponse {
   /** params holds all the parameters of this module. */
-  params: Params;
+  params?: Params;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 
 export interface QueryParamsResponseSDKType {
   /** params holds all the parameters of this module. */
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
 }
 
 function createBaseQueryValidatorsRequest(): QueryValidatorsRequest {
@@ -587,7 +587,7 @@ export const QueryValidatorsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryValidatorsRequest>): QueryValidatorsRequest {
+  fromPartial(object: Partial<QueryValidatorsRequest>): QueryValidatorsRequest {
     const message = createBaseQueryValidatorsRequest();
     message.status = object.status ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -642,7 +642,7 @@ export const QueryValidatorsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryValidatorsResponse>): QueryValidatorsResponse {
+  fromPartial(object: Partial<QueryValidatorsResponse>): QueryValidatorsResponse {
     const message = createBaseQueryValidatorsResponse();
     message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -688,7 +688,7 @@ export const QueryValidatorRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryValidatorRequest>): QueryValidatorRequest {
+  fromPartial(object: Partial<QueryValidatorRequest>): QueryValidatorRequest {
     const message = createBaseQueryValidatorRequest();
     message.validatorAddr = object.validatorAddr ?? "";
     return message;
@@ -733,7 +733,7 @@ export const QueryValidatorResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryValidatorResponse>): QueryValidatorResponse {
+  fromPartial(object: Partial<QueryValidatorResponse>): QueryValidatorResponse {
     const message = createBaseQueryValidatorResponse();
     message.validator = object.validator !== undefined && object.validator !== null ? Validator.fromPartial(object.validator) : undefined;
     return message;
@@ -787,7 +787,7 @@ export const QueryValidatorDelegationsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryValidatorDelegationsRequest>): QueryValidatorDelegationsRequest {
+  fromPartial(object: Partial<QueryValidatorDelegationsRequest>): QueryValidatorDelegationsRequest {
     const message = createBaseQueryValidatorDelegationsRequest();
     message.validatorAddr = object.validatorAddr ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -842,7 +842,7 @@ export const QueryValidatorDelegationsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryValidatorDelegationsResponse>): QueryValidatorDelegationsResponse {
+  fromPartial(object: Partial<QueryValidatorDelegationsResponse>): QueryValidatorDelegationsResponse {
     const message = createBaseQueryValidatorDelegationsResponse();
     message.delegationResponses = object.delegationResponses?.map(e => DelegationResponse.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -897,7 +897,7 @@ export const QueryValidatorUnbondingDelegationsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryValidatorUnbondingDelegationsRequest>): QueryValidatorUnbondingDelegationsRequest {
+  fromPartial(object: Partial<QueryValidatorUnbondingDelegationsRequest>): QueryValidatorUnbondingDelegationsRequest {
     const message = createBaseQueryValidatorUnbondingDelegationsRequest();
     message.validatorAddr = object.validatorAddr ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -952,7 +952,7 @@ export const QueryValidatorUnbondingDelegationsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryValidatorUnbondingDelegationsResponse>): QueryValidatorUnbondingDelegationsResponse {
+  fromPartial(object: Partial<QueryValidatorUnbondingDelegationsResponse>): QueryValidatorUnbondingDelegationsResponse {
     const message = createBaseQueryValidatorUnbondingDelegationsResponse();
     message.unbondingResponses = object.unbondingResponses?.map(e => UnbondingDelegation.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -1007,7 +1007,7 @@ export const QueryDelegationRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegationRequest>): QueryDelegationRequest {
+  fromPartial(object: Partial<QueryDelegationRequest>): QueryDelegationRequest {
     const message = createBaseQueryDelegationRequest();
     message.delegatorAddr = object.delegatorAddr ?? "";
     message.validatorAddr = object.validatorAddr ?? "";
@@ -1053,7 +1053,7 @@ export const QueryDelegationResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegationResponse>): QueryDelegationResponse {
+  fromPartial(object: Partial<QueryDelegationResponse>): QueryDelegationResponse {
     const message = createBaseQueryDelegationResponse();
     message.delegationResponse = object.delegationResponse !== undefined && object.delegationResponse !== null ? DelegationResponse.fromPartial(object.delegationResponse) : undefined;
     return message;
@@ -1107,7 +1107,7 @@ export const QueryUnbondingDelegationRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryUnbondingDelegationRequest>): QueryUnbondingDelegationRequest {
+  fromPartial(object: Partial<QueryUnbondingDelegationRequest>): QueryUnbondingDelegationRequest {
     const message = createBaseQueryUnbondingDelegationRequest();
     message.delegatorAddr = object.delegatorAddr ?? "";
     message.validatorAddr = object.validatorAddr ?? "";
@@ -1153,7 +1153,7 @@ export const QueryUnbondingDelegationResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryUnbondingDelegationResponse>): QueryUnbondingDelegationResponse {
+  fromPartial(object: Partial<QueryUnbondingDelegationResponse>): QueryUnbondingDelegationResponse {
     const message = createBaseQueryUnbondingDelegationResponse();
     message.unbond = object.unbond !== undefined && object.unbond !== null ? UnbondingDelegation.fromPartial(object.unbond) : undefined;
     return message;
@@ -1207,7 +1207,7 @@ export const QueryDelegatorDelegationsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegatorDelegationsRequest>): QueryDelegatorDelegationsRequest {
+  fromPartial(object: Partial<QueryDelegatorDelegationsRequest>): QueryDelegatorDelegationsRequest {
     const message = createBaseQueryDelegatorDelegationsRequest();
     message.delegatorAddr = object.delegatorAddr ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -1262,7 +1262,7 @@ export const QueryDelegatorDelegationsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegatorDelegationsResponse>): QueryDelegatorDelegationsResponse {
+  fromPartial(object: Partial<QueryDelegatorDelegationsResponse>): QueryDelegatorDelegationsResponse {
     const message = createBaseQueryDelegatorDelegationsResponse();
     message.delegationResponses = object.delegationResponses?.map(e => DelegationResponse.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -1317,7 +1317,7 @@ export const QueryDelegatorUnbondingDelegationsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegatorUnbondingDelegationsRequest>): QueryDelegatorUnbondingDelegationsRequest {
+  fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsRequest>): QueryDelegatorUnbondingDelegationsRequest {
     const message = createBaseQueryDelegatorUnbondingDelegationsRequest();
     message.delegatorAddr = object.delegatorAddr ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -1372,7 +1372,7 @@ export const QueryDelegatorUnbondingDelegationsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegatorUnbondingDelegationsResponse>): QueryDelegatorUnbondingDelegationsResponse {
+  fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsResponse>): QueryDelegatorUnbondingDelegationsResponse {
     const message = createBaseQueryDelegatorUnbondingDelegationsResponse();
     message.unbondingResponses = object.unbondingResponses?.map(e => UnbondingDelegation.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -1445,7 +1445,7 @@ export const QueryRedelegationsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryRedelegationsRequest>): QueryRedelegationsRequest {
+  fromPartial(object: Partial<QueryRedelegationsRequest>): QueryRedelegationsRequest {
     const message = createBaseQueryRedelegationsRequest();
     message.delegatorAddr = object.delegatorAddr ?? "";
     message.srcValidatorAddr = object.srcValidatorAddr ?? "";
@@ -1502,7 +1502,7 @@ export const QueryRedelegationsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryRedelegationsResponse>): QueryRedelegationsResponse {
+  fromPartial(object: Partial<QueryRedelegationsResponse>): QueryRedelegationsResponse {
     const message = createBaseQueryRedelegationsResponse();
     message.redelegationResponses = object.redelegationResponses?.map(e => RedelegationResponse.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -1557,7 +1557,7 @@ export const QueryDelegatorValidatorsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest {
+  fromPartial(object: Partial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest {
     const message = createBaseQueryDelegatorValidatorsRequest();
     message.delegatorAddr = object.delegatorAddr ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -1612,7 +1612,7 @@ export const QueryDelegatorValidatorsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse {
+  fromPartial(object: Partial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse {
     const message = createBaseQueryDelegatorValidatorsResponse();
     message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -1667,7 +1667,7 @@ export const QueryDelegatorValidatorRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegatorValidatorRequest>): QueryDelegatorValidatorRequest {
+  fromPartial(object: Partial<QueryDelegatorValidatorRequest>): QueryDelegatorValidatorRequest {
     const message = createBaseQueryDelegatorValidatorRequest();
     message.delegatorAddr = object.delegatorAddr ?? "";
     message.validatorAddr = object.validatorAddr ?? "";
@@ -1713,7 +1713,7 @@ export const QueryDelegatorValidatorResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDelegatorValidatorResponse>): QueryDelegatorValidatorResponse {
+  fromPartial(object: Partial<QueryDelegatorValidatorResponse>): QueryDelegatorValidatorResponse {
     const message = createBaseQueryDelegatorValidatorResponse();
     message.validator = object.validator !== undefined && object.validator !== null ? Validator.fromPartial(object.validator) : undefined;
     return message;
@@ -1758,7 +1758,7 @@ export const QueryHistoricalInfoRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryHistoricalInfoRequest>): QueryHistoricalInfoRequest {
+  fromPartial(object: Partial<QueryHistoricalInfoRequest>): QueryHistoricalInfoRequest {
     const message = createBaseQueryHistoricalInfoRequest();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     return message;
@@ -1803,7 +1803,7 @@ export const QueryHistoricalInfoResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryHistoricalInfoResponse>): QueryHistoricalInfoResponse {
+  fromPartial(object: Partial<QueryHistoricalInfoResponse>): QueryHistoricalInfoResponse {
     const message = createBaseQueryHistoricalInfoResponse();
     message.hist = object.hist !== undefined && object.hist !== null ? HistoricalInfo.fromPartial(object.hist) : undefined;
     return message;
@@ -1838,7 +1838,7 @@ export const QueryPoolRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryPoolRequest>): QueryPoolRequest {
+  fromPartial(_: Partial<QueryPoolRequest>): QueryPoolRequest {
     const message = createBaseQueryPoolRequest();
     return message;
   }
@@ -1882,7 +1882,7 @@ export const QueryPoolResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPoolResponse>): QueryPoolResponse {
+  fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse {
     const message = createBaseQueryPoolResponse();
     message.pool = object.pool !== undefined && object.pool !== null ? Pool.fromPartial(object.pool) : undefined;
     return message;
@@ -1917,7 +1917,7 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
+  fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
   }
@@ -1961,7 +1961,7 @@ export const QueryParamsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
+  fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;

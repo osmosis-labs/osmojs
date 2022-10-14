@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be
@@ -39,10 +39,10 @@ export interface ConsensusSDKType {
 export declare const App: {
     encode(message: App, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): App;
-    fromPartial(object: DeepPartial<App>): App;
+    fromPartial(object: Partial<App>): App;
 };
 export declare const Consensus: {
     encode(message: Consensus, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Consensus;
-    fromPartial(object: DeepPartial<Consensus>): Consensus;
+    fromPartial(object: Partial<Consensus>): Consensus;
 };

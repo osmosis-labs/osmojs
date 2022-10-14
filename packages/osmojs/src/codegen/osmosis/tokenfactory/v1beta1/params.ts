@@ -1,6 +1,5 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** Params defines the parameters for the tokenfactory module. */
 
 export interface Params {
@@ -49,7 +48,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.denomCreationFee = object.denomCreationFee?.map(e => Coin.fromPartial(e)) || [];
     return message;

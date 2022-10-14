@@ -2,7 +2,7 @@ import { Counterparty, CounterpartySDKType, Version, VersionSDKType } from "./co
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightSDKType } from "../../client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * MsgConnectionOpenInit defines the msg sent by an account on Chain A to
  * initialize a connection with Chain B.
@@ -10,8 +10,8 @@ import { Long, DeepPartial } from "../../../../helpers";
 
 export interface MsgConnectionOpenInit {
   clientId: string;
-  counterparty: Counterparty;
-  version: Version;
+  counterparty?: Counterparty;
+  version?: Version;
   delayPeriod: Long;
   signer: string;
 }
@@ -22,8 +22,8 @@ export interface MsgConnectionOpenInit {
 
 export interface MsgConnectionOpenInitSDKType {
   client_id: string;
-  counterparty: CounterpartySDKType;
-  version: VersionSDKType;
+  counterparty?: CounterpartySDKType;
+  version?: VersionSDKType;
   delay_period: Long;
   signer: string;
 }
@@ -52,11 +52,11 @@ export interface MsgConnectionOpenTry {
    */
 
   previousConnectionId: string;
-  clientState: Any;
-  counterparty: Counterparty;
+  clientState?: Any;
+  counterparty?: Counterparty;
   delayPeriod: Long;
   counterpartyVersions: Version[];
-  proofHeight: Height;
+  proofHeight?: Height;
   /**
    * proof of the initialization the connection on Chain A: `UNITIALIZED ->
    * INIT`
@@ -69,7 +69,7 @@ export interface MsgConnectionOpenTry {
   /** proof of client consensus state */
 
   proofConsensus: Uint8Array;
-  consensusHeight: Height;
+  consensusHeight?: Height;
   signer: string;
 }
 /**
@@ -85,11 +85,11 @@ export interface MsgConnectionOpenTrySDKType {
    */
 
   previous_connection_id: string;
-  client_state: AnySDKType;
-  counterparty: CounterpartySDKType;
+  client_state?: AnySDKType;
+  counterparty?: CounterpartySDKType;
   delay_period: Long;
   counterparty_versions: VersionSDKType[];
-  proof_height: HeightSDKType;
+  proof_height?: HeightSDKType;
   /**
    * proof of the initialization the connection on Chain A: `UNITIALIZED ->
    * INIT`
@@ -102,7 +102,7 @@ export interface MsgConnectionOpenTrySDKType {
   /** proof of client consensus state */
 
   proof_consensus: Uint8Array;
-  consensus_height: HeightSDKType;
+  consensus_height?: HeightSDKType;
   signer: string;
 }
 /** MsgConnectionOpenTryResponse defines the Msg/ConnectionOpenTry response type. */
@@ -119,9 +119,9 @@ export interface MsgConnectionOpenTryResponseSDKType {}
 export interface MsgConnectionOpenAck {
   connectionId: string;
   counterpartyConnectionId: string;
-  version: Version;
-  clientState: Any;
-  proofHeight: Height;
+  version?: Version;
+  clientState?: Any;
+  proofHeight?: Height;
   /**
    * proof of the initialization the connection on Chain B: `UNITIALIZED ->
    * TRYOPEN`
@@ -134,7 +134,7 @@ export interface MsgConnectionOpenAck {
   /** proof of client consensus state */
 
   proofConsensus: Uint8Array;
-  consensusHeight: Height;
+  consensusHeight?: Height;
   signer: string;
 }
 /**
@@ -145,9 +145,9 @@ export interface MsgConnectionOpenAck {
 export interface MsgConnectionOpenAckSDKType {
   connection_id: string;
   counterparty_connection_id: string;
-  version: VersionSDKType;
-  client_state: AnySDKType;
-  proof_height: HeightSDKType;
+  version?: VersionSDKType;
+  client_state?: AnySDKType;
+  proof_height?: HeightSDKType;
   /**
    * proof of the initialization the connection on Chain B: `UNITIALIZED ->
    * TRYOPEN`
@@ -160,7 +160,7 @@ export interface MsgConnectionOpenAckSDKType {
   /** proof of client consensus state */
 
   proof_consensus: Uint8Array;
-  consensus_height: HeightSDKType;
+  consensus_height?: HeightSDKType;
   signer: string;
 }
 /** MsgConnectionOpenAckResponse defines the Msg/ConnectionOpenAck response type. */
@@ -179,7 +179,7 @@ export interface MsgConnectionOpenConfirm {
   /** proof for the change of the connection state on Chain A: `INIT -> OPEN` */
 
   proofAck: Uint8Array;
-  proofHeight: Height;
+  proofHeight?: Height;
   signer: string;
 }
 /**
@@ -192,7 +192,7 @@ export interface MsgConnectionOpenConfirmSDKType {
   /** proof for the change of the connection state on Chain A: `INIT -> OPEN` */
 
   proof_ack: Uint8Array;
-  proof_height: HeightSDKType;
+  proof_height?: HeightSDKType;
   signer: string;
 }
 /**
@@ -281,7 +281,7 @@ export const MsgConnectionOpenInit = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgConnectionOpenInit>): MsgConnectionOpenInit {
+  fromPartial(object: Partial<MsgConnectionOpenInit>): MsgConnectionOpenInit {
     const message = createBaseMsgConnectionOpenInit();
     message.clientId = object.clientId ?? "";
     message.counterparty = object.counterparty !== undefined && object.counterparty !== null ? Counterparty.fromPartial(object.counterparty) : undefined;
@@ -320,7 +320,7 @@ export const MsgConnectionOpenInitResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse {
+  fromPartial(_: Partial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse {
     const message = createBaseMsgConnectionOpenInitResponse();
     return message;
   }
@@ -463,7 +463,7 @@ export const MsgConnectionOpenTry = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgConnectionOpenTry>): MsgConnectionOpenTry {
+  fromPartial(object: Partial<MsgConnectionOpenTry>): MsgConnectionOpenTry {
     const message = createBaseMsgConnectionOpenTry();
     message.clientId = object.clientId ?? "";
     message.previousConnectionId = object.previousConnectionId ?? "";
@@ -509,7 +509,7 @@ export const MsgConnectionOpenTryResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse {
+  fromPartial(_: Partial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse {
     const message = createBaseMsgConnectionOpenTryResponse();
     return message;
   }
@@ -634,7 +634,7 @@ export const MsgConnectionOpenAck = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgConnectionOpenAck>): MsgConnectionOpenAck {
+  fromPartial(object: Partial<MsgConnectionOpenAck>): MsgConnectionOpenAck {
     const message = createBaseMsgConnectionOpenAck();
     message.connectionId = object.connectionId ?? "";
     message.counterpartyConnectionId = object.counterpartyConnectionId ?? "";
@@ -678,7 +678,7 @@ export const MsgConnectionOpenAckResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse {
+  fromPartial(_: Partial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse {
     const message = createBaseMsgConnectionOpenAckResponse();
     return message;
   }
@@ -749,7 +749,7 @@ export const MsgConnectionOpenConfirm = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgConnectionOpenConfirm>): MsgConnectionOpenConfirm {
+  fromPartial(object: Partial<MsgConnectionOpenConfirm>): MsgConnectionOpenConfirm {
     const message = createBaseMsgConnectionOpenConfirm();
     message.connectionId = object.connectionId ?? "";
     message.proofAck = object.proofAck ?? new Uint8Array();
@@ -787,7 +787,7 @@ export const MsgConnectionOpenConfirmResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse {
+  fromPartial(_: Partial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse {
     const message = createBaseMsgConnectionOpenConfirmResponse();
     return message;
   }

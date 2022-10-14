@@ -1,7 +1,7 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface MsgCreateSale {
     /**
      * Sale creator and the account which provides token (token_out) to the sale.
@@ -18,7 +18,7 @@ export interface MsgCreateSale {
      * "base currency". The whole supply will be transferred from the creator
      * to the module and will be sold during the sale.
      */
-    tokenOut: Coin;
+    tokenOut?: Coin;
     /**
      * Maximum fee the creator is going to pay for creating a sale. The creator
      * will be charged params.SaleCreationFee. Transaction will fail if
@@ -27,9 +27,9 @@ export interface MsgCreateSale {
      */
     maxFee: Coin[];
     /** start time when the token sale starts. */
-    startTime: Date;
+    startTime?: Date;
     /** duration time that the sale takes place over */
-    duration: Duration;
+    duration?: Duration;
     /**
      * Recipient is the account which receives earned `token_in` from when the
      * sale is finalized. If not defined (empty) the creator
@@ -61,7 +61,7 @@ export interface MsgCreateSaleSDKType {
      * "base currency". The whole supply will be transferred from the creator
      * to the module and will be sold during the sale.
      */
-    token_out: CoinSDKType;
+    token_out?: CoinSDKType;
     /**
      * Maximum fee the creator is going to pay for creating a sale. The creator
      * will be charged params.SaleCreationFee. Transaction will fail if
@@ -70,9 +70,9 @@ export interface MsgCreateSaleSDKType {
      */
     max_fee: CoinSDKType[];
     /** start time when the token sale starts. */
-    start_time: Date;
+    start_time?: Date;
     /** duration time that the sale takes place over */
-    duration: DurationSDKType;
+    duration?: DurationSDKType;
     /**
      * Recipient is the account which receives earned `token_in` from when the
      * sale is finalized. If not defined (empty) the creator
@@ -119,7 +119,7 @@ export interface MsgWithdraw {
      * amount of tokens_in to withdraw. Must be at most the amount of not spent
      * tokens, unless set to null - then all remaining balance will be withdrawn.
      */
-    amount?: string;
+    amount: string;
 }
 export interface MsgWithdrawSDKType {
     /** sender is an account address subscribed to the sale_id */
@@ -130,7 +130,7 @@ export interface MsgWithdrawSDKType {
      * amount of tokens_in to withdraw. Must be at most the amount of not spent
      * tokens, unless set to null - then all remaining balance will be withdrawn.
      */
-    amount?: string;
+    amount: string;
 }
 export interface MsgExitSale {
     /** sender is an account address exiting a sale */
@@ -175,40 +175,40 @@ export interface MsgFinalizeSaleResponseSDKType {
 export declare const MsgCreateSale: {
     encode(message: MsgCreateSale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateSale;
-    fromPartial(object: DeepPartial<MsgCreateSale>): MsgCreateSale;
+    fromPartial(object: Partial<MsgCreateSale>): MsgCreateSale;
 };
 export declare const MsgCreateSaleResponse: {
     encode(message: MsgCreateSaleResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateSaleResponse;
-    fromPartial(object: DeepPartial<MsgCreateSaleResponse>): MsgCreateSaleResponse;
+    fromPartial(object: Partial<MsgCreateSaleResponse>): MsgCreateSaleResponse;
 };
 export declare const MsgSubscribe: {
     encode(message: MsgSubscribe, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubscribe;
-    fromPartial(object: DeepPartial<MsgSubscribe>): MsgSubscribe;
+    fromPartial(object: Partial<MsgSubscribe>): MsgSubscribe;
 };
 export declare const MsgWithdraw: {
     encode(message: MsgWithdraw, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdraw;
-    fromPartial(object: DeepPartial<MsgWithdraw>): MsgWithdraw;
+    fromPartial(object: Partial<MsgWithdraw>): MsgWithdraw;
 };
 export declare const MsgExitSale: {
     encode(message: MsgExitSale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSale;
-    fromPartial(object: DeepPartial<MsgExitSale>): MsgExitSale;
+    fromPartial(object: Partial<MsgExitSale>): MsgExitSale;
 };
 export declare const MsgExitSaleResponse: {
     encode(message: MsgExitSaleResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSaleResponse;
-    fromPartial(object: DeepPartial<MsgExitSaleResponse>): MsgExitSaleResponse;
+    fromPartial(object: Partial<MsgExitSaleResponse>): MsgExitSaleResponse;
 };
 export declare const MsgFinalizeSale: {
     encode(message: MsgFinalizeSale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgFinalizeSale;
-    fromPartial(object: DeepPartial<MsgFinalizeSale>): MsgFinalizeSale;
+    fromPartial(object: Partial<MsgFinalizeSale>): MsgFinalizeSale;
 };
 export declare const MsgFinalizeSaleResponse: {
     encode(message: MsgFinalizeSaleResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgFinalizeSaleResponse;
-    fromPartial(object: DeepPartial<MsgFinalizeSaleResponse>): MsgFinalizeSaleResponse;
+    fromPartial(object: Partial<MsgFinalizeSaleResponse>): MsgFinalizeSaleResponse;
 };

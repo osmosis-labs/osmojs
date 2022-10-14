@@ -1,7 +1,6 @@
 import { Grant, GrantSDKType } from "./authz";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * MsgGrant is a request type for Grant method. It declares authorization to the grantee
  * on behalf of the granter with the provided expiration time.
@@ -10,7 +9,7 @@ import { DeepPartial } from "../../../helpers";
 export interface MsgGrant {
   granter: string;
   grantee: string;
-  grant: Grant;
+  grant?: Grant;
 }
 /**
  * MsgGrant is a request type for Grant method. It declares authorization to the grantee
@@ -20,7 +19,7 @@ export interface MsgGrant {
 export interface MsgGrantSDKType {
   granter: string;
   grantee: string;
-  grant: GrantSDKType;
+  grant?: GrantSDKType;
 }
 /** MsgExecResponse defines the Msg/MsgExecResponse response type. */
 
@@ -152,7 +151,7 @@ export const MsgGrant = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgGrant>): MsgGrant {
+  fromPartial(object: Partial<MsgGrant>): MsgGrant {
     const message = createBaseMsgGrant();
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
@@ -199,7 +198,7 @@ export const MsgExecResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExecResponse>): MsgExecResponse {
+  fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse {
     const message = createBaseMsgExecResponse();
     message.results = object.results?.map(e => e) || [];
     return message;
@@ -253,7 +252,7 @@ export const MsgExec = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExec>): MsgExec {
+  fromPartial(object: Partial<MsgExec>): MsgExec {
     const message = createBaseMsgExec();
     message.grantee = object.grantee ?? "";
     message.msgs = object.msgs?.map(e => Any.fromPartial(e)) || [];
@@ -289,7 +288,7 @@ export const MsgGrantResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgGrantResponse>): MsgGrantResponse {
+  fromPartial(_: Partial<MsgGrantResponse>): MsgGrantResponse {
     const message = createBaseMsgGrantResponse();
     return message;
   }
@@ -351,7 +350,7 @@ export const MsgRevoke = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgRevoke>): MsgRevoke {
+  fromPartial(object: Partial<MsgRevoke>): MsgRevoke {
     const message = createBaseMsgRevoke();
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
@@ -388,7 +387,7 @@ export const MsgRevokeResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgRevokeResponse>): MsgRevokeResponse {
+  fromPartial(_: Partial<MsgRevokeResponse>): MsgRevokeResponse {
     const message = createBaseMsgRevokeResponse();
     return message;
   }

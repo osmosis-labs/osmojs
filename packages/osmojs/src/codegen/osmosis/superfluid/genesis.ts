@@ -1,11 +1,10 @@
 import { Params, ParamsSDKType } from "./params";
 import { SuperfluidAsset, SuperfluidAssetSDKType, OsmoEquivalentMultiplierRecord, OsmoEquivalentMultiplierRecordSDKType, SuperfluidIntermediaryAccount, SuperfluidIntermediaryAccountSDKType, LockIdIntermediaryAccountConnection, LockIdIntermediaryAccountConnectionSDKType } from "./superfluid";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../helpers";
 /** GenesisState defines the module's genesis state. */
 
 export interface GenesisState {
-  params: Params;
+  params?: Params;
   /**
    * superfluid_assets defines the registered superfluid assets that have been
    * registered via governance.
@@ -29,7 +28,7 @@ export interface GenesisState {
 /** GenesisState defines the module's genesis state. */
 
 export interface GenesisStateSDKType {
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
   /**
    * superfluid_assets defines the registered superfluid assets that have been
    * registered via governance.
@@ -124,7 +123,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.superfluidAssets = object.superfluidAssets?.map(e => SuperfluidAsset.fromPartial(e)) || [];

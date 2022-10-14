@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /**
  * ===================== MsgJoinPool
  * This is really MsgJoinPoolNoSwap
@@ -62,13 +62,13 @@ export interface SwapAmountInRouteSDKType {
 export interface MsgSwapExactAmountIn {
     sender: string;
     routes: SwapAmountInRoute[];
-    tokenIn: Coin;
+    tokenIn?: Coin;
     tokenOutMinAmount: string;
 }
 export interface MsgSwapExactAmountInSDKType {
     sender: string;
     routes: SwapAmountInRouteSDKType[];
-    token_in: CoinSDKType;
+    token_in?: CoinSDKType;
     token_out_min_amount: string;
 }
 export interface MsgSwapExactAmountInResponse {
@@ -91,13 +91,13 @@ export interface MsgSwapExactAmountOut {
     sender: string;
     routes: SwapAmountOutRoute[];
     tokenInMaxAmount: string;
-    tokenOut: Coin;
+    tokenOut?: Coin;
 }
 export interface MsgSwapExactAmountOutSDKType {
     sender: string;
     routes: SwapAmountOutRouteSDKType[];
     token_in_max_amount: string;
-    token_out: CoinSDKType;
+    token_out?: CoinSDKType;
 }
 export interface MsgSwapExactAmountOutResponse {
     tokenInAmount: string;
@@ -112,7 +112,7 @@ export interface MsgSwapExactAmountOutResponseSDKType {
 export interface MsgJoinSwapExternAmountIn {
     sender: string;
     poolId: Long;
-    tokenIn: Coin;
+    tokenIn?: Coin;
     shareOutMinAmount: string;
 }
 /**
@@ -122,7 +122,7 @@ export interface MsgJoinSwapExternAmountIn {
 export interface MsgJoinSwapExternAmountInSDKType {
     sender: string;
     pool_id: Long;
-    token_in: CoinSDKType;
+    token_in?: CoinSDKType;
     share_out_min_amount: string;
 }
 export interface MsgJoinSwapExternAmountInResponse {
@@ -179,14 +179,14 @@ export interface MsgExitSwapShareAmountInResponseSDKType {
 export interface MsgExitSwapExternAmountOut {
     sender: string;
     poolId: Long;
-    tokenOut: Coin;
+    tokenOut?: Coin;
     shareInMaxAmount: string;
 }
 /** ===================== MsgExitSwapExternAmountOut */
 export interface MsgExitSwapExternAmountOutSDKType {
     sender: string;
     pool_id: Long;
-    token_out: CoinSDKType;
+    token_out?: CoinSDKType;
     share_in_max_amount: string;
 }
 export interface MsgExitSwapExternAmountOutResponse {
@@ -198,90 +198,90 @@ export interface MsgExitSwapExternAmountOutResponseSDKType {
 export declare const MsgJoinPool: {
     encode(message: MsgJoinPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPool;
-    fromPartial(object: DeepPartial<MsgJoinPool>): MsgJoinPool;
+    fromPartial(object: Partial<MsgJoinPool>): MsgJoinPool;
 };
 export declare const MsgJoinPoolResponse: {
     encode(message: MsgJoinPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPoolResponse;
-    fromPartial(object: DeepPartial<MsgJoinPoolResponse>): MsgJoinPoolResponse;
+    fromPartial(object: Partial<MsgJoinPoolResponse>): MsgJoinPoolResponse;
 };
 export declare const MsgExitPool: {
     encode(message: MsgExitPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPool;
-    fromPartial(object: DeepPartial<MsgExitPool>): MsgExitPool;
+    fromPartial(object: Partial<MsgExitPool>): MsgExitPool;
 };
 export declare const MsgExitPoolResponse: {
     encode(message: MsgExitPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPoolResponse;
-    fromPartial(object: DeepPartial<MsgExitPoolResponse>): MsgExitPoolResponse;
+    fromPartial(object: Partial<MsgExitPoolResponse>): MsgExitPoolResponse;
 };
 export declare const SwapAmountInRoute: {
     encode(message: SwapAmountInRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountInRoute;
-    fromPartial(object: DeepPartial<SwapAmountInRoute>): SwapAmountInRoute;
+    fromPartial(object: Partial<SwapAmountInRoute>): SwapAmountInRoute;
 };
 export declare const MsgSwapExactAmountIn: {
     encode(message: MsgSwapExactAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountIn;
-    fromPartial(object: DeepPartial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn;
+    fromPartial(object: Partial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn;
 };
 export declare const MsgSwapExactAmountInResponse: {
     encode(message: MsgSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponse;
-    fromPartial(object: DeepPartial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse;
+    fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse;
 };
 export declare const SwapAmountOutRoute: {
     encode(message: SwapAmountOutRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountOutRoute;
-    fromPartial(object: DeepPartial<SwapAmountOutRoute>): SwapAmountOutRoute;
+    fromPartial(object: Partial<SwapAmountOutRoute>): SwapAmountOutRoute;
 };
 export declare const MsgSwapExactAmountOut: {
     encode(message: MsgSwapExactAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOut;
-    fromPartial(object: DeepPartial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut;
+    fromPartial(object: Partial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut;
 };
 export declare const MsgSwapExactAmountOutResponse: {
     encode(message: MsgSwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOutResponse;
-    fromPartial(object: DeepPartial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse;
+    fromPartial(object: Partial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse;
 };
 export declare const MsgJoinSwapExternAmountIn: {
     encode(message: MsgJoinSwapExternAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountIn;
-    fromPartial(object: DeepPartial<MsgJoinSwapExternAmountIn>): MsgJoinSwapExternAmountIn;
+    fromPartial(object: Partial<MsgJoinSwapExternAmountIn>): MsgJoinSwapExternAmountIn;
 };
 export declare const MsgJoinSwapExternAmountInResponse: {
     encode(message: MsgJoinSwapExternAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountInResponse;
-    fromPartial(object: DeepPartial<MsgJoinSwapExternAmountInResponse>): MsgJoinSwapExternAmountInResponse;
+    fromPartial(object: Partial<MsgJoinSwapExternAmountInResponse>): MsgJoinSwapExternAmountInResponse;
 };
 export declare const MsgJoinSwapShareAmountOut: {
     encode(message: MsgJoinSwapShareAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOut;
-    fromPartial(object: DeepPartial<MsgJoinSwapShareAmountOut>): MsgJoinSwapShareAmountOut;
+    fromPartial(object: Partial<MsgJoinSwapShareAmountOut>): MsgJoinSwapShareAmountOut;
 };
 export declare const MsgJoinSwapShareAmountOutResponse: {
     encode(message: MsgJoinSwapShareAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOutResponse;
-    fromPartial(object: DeepPartial<MsgJoinSwapShareAmountOutResponse>): MsgJoinSwapShareAmountOutResponse;
+    fromPartial(object: Partial<MsgJoinSwapShareAmountOutResponse>): MsgJoinSwapShareAmountOutResponse;
 };
 export declare const MsgExitSwapShareAmountIn: {
     encode(message: MsgExitSwapShareAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountIn;
-    fromPartial(object: DeepPartial<MsgExitSwapShareAmountIn>): MsgExitSwapShareAmountIn;
+    fromPartial(object: Partial<MsgExitSwapShareAmountIn>): MsgExitSwapShareAmountIn;
 };
 export declare const MsgExitSwapShareAmountInResponse: {
     encode(message: MsgExitSwapShareAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountInResponse;
-    fromPartial(object: DeepPartial<MsgExitSwapShareAmountInResponse>): MsgExitSwapShareAmountInResponse;
+    fromPartial(object: Partial<MsgExitSwapShareAmountInResponse>): MsgExitSwapShareAmountInResponse;
 };
 export declare const MsgExitSwapExternAmountOut: {
     encode(message: MsgExitSwapExternAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOut;
-    fromPartial(object: DeepPartial<MsgExitSwapExternAmountOut>): MsgExitSwapExternAmountOut;
+    fromPartial(object: Partial<MsgExitSwapExternAmountOut>): MsgExitSwapExternAmountOut;
 };
 export declare const MsgExitSwapExternAmountOutResponse: {
     encode(message: MsgExitSwapExternAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOutResponse;
-    fromPartial(object: DeepPartial<MsgExitSwapExternAmountOutResponse>): MsgExitSwapExternAmountOutResponse;
+    fromPartial(object: Partial<MsgExitSwapExternAmountOutResponse>): MsgExitSwapExternAmountOutResponse;
 };

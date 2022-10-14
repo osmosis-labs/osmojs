@@ -1,7 +1,6 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Metadata, MetadataSDKType } from "../../../cosmos/bank/v1beta1/bank";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
  * method. It allows an account to create a new denom. It requires a sender
@@ -54,7 +53,7 @@ export interface MsgCreateDenomResponseSDKType {
  */
 export interface MsgMint {
     sender: string;
-    amount: Coin;
+    amount?: Coin;
 }
 /**
  * MsgMint is the sdk.Msg type for allowing an admin account to mint
@@ -62,7 +61,7 @@ export interface MsgMint {
  */
 export interface MsgMintSDKType {
     sender: string;
-    amount: CoinSDKType;
+    amount?: CoinSDKType;
 }
 export interface MsgMintResponse {
 }
@@ -74,7 +73,7 @@ export interface MsgMintResponseSDKType {
  */
 export interface MsgBurn {
     sender: string;
-    amount: Coin;
+    amount?: Coin;
 }
 /**
  * MsgBurn is the sdk.Msg type for allowing an admin account to burn
@@ -82,7 +81,7 @@ export interface MsgBurn {
  */
 export interface MsgBurnSDKType {
     sender: string;
-    amount: CoinSDKType;
+    amount?: CoinSDKType;
 }
 export interface MsgBurnResponse {
 }
@@ -124,7 +123,7 @@ export interface MsgChangeAdminResponseSDKType {
  */
 export interface MsgSetDenomMetadata {
     sender: string;
-    metadata: Metadata;
+    metadata?: Metadata;
 }
 /**
  * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
@@ -132,7 +131,7 @@ export interface MsgSetDenomMetadata {
  */
 export interface MsgSetDenomMetadataSDKType {
     sender: string;
-    metadata: MetadataSDKType;
+    metadata?: MetadataSDKType;
 }
 /**
  * MsgSetDenomMetadataResponse defines the response structure for an executed
@@ -149,50 +148,50 @@ export interface MsgSetDenomMetadataResponseSDKType {
 export declare const MsgCreateDenom: {
     encode(message: MsgCreateDenom, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenom;
-    fromPartial(object: DeepPartial<MsgCreateDenom>): MsgCreateDenom;
+    fromPartial(object: Partial<MsgCreateDenom>): MsgCreateDenom;
 };
 export declare const MsgCreateDenomResponse: {
     encode(message: MsgCreateDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponse;
-    fromPartial(object: DeepPartial<MsgCreateDenomResponse>): MsgCreateDenomResponse;
+    fromPartial(object: Partial<MsgCreateDenomResponse>): MsgCreateDenomResponse;
 };
 export declare const MsgMint: {
     encode(message: MsgMint, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMint;
-    fromPartial(object: DeepPartial<MsgMint>): MsgMint;
+    fromPartial(object: Partial<MsgMint>): MsgMint;
 };
 export declare const MsgMintResponse: {
     encode(_: MsgMintResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponse;
-    fromPartial(_: DeepPartial<MsgMintResponse>): MsgMintResponse;
+    fromPartial(_: Partial<MsgMintResponse>): MsgMintResponse;
 };
 export declare const MsgBurn: {
     encode(message: MsgBurn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurn;
-    fromPartial(object: DeepPartial<MsgBurn>): MsgBurn;
+    fromPartial(object: Partial<MsgBurn>): MsgBurn;
 };
 export declare const MsgBurnResponse: {
     encode(_: MsgBurnResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse;
-    fromPartial(_: DeepPartial<MsgBurnResponse>): MsgBurnResponse;
+    fromPartial(_: Partial<MsgBurnResponse>): MsgBurnResponse;
 };
 export declare const MsgChangeAdmin: {
     encode(message: MsgChangeAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdmin;
-    fromPartial(object: DeepPartial<MsgChangeAdmin>): MsgChangeAdmin;
+    fromPartial(object: Partial<MsgChangeAdmin>): MsgChangeAdmin;
 };
 export declare const MsgChangeAdminResponse: {
     encode(_: MsgChangeAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponse;
-    fromPartial(_: DeepPartial<MsgChangeAdminResponse>): MsgChangeAdminResponse;
+    fromPartial(_: Partial<MsgChangeAdminResponse>): MsgChangeAdminResponse;
 };
 export declare const MsgSetDenomMetadata: {
     encode(message: MsgSetDenomMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata;
-    fromPartial(object: DeepPartial<MsgSetDenomMetadata>): MsgSetDenomMetadata;
+    fromPartial(object: Partial<MsgSetDenomMetadata>): MsgSetDenomMetadata;
 };
 export declare const MsgSetDenomMetadataResponse: {
     encode(_: MsgSetDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponse;
-    fromPartial(_: DeepPartial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse;
+    fromPartial(_: Partial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse;
 };

@@ -1,19 +1,18 @@
 import { DenomTrace, DenomTraceSDKType, Params, ParamsSDKType } from "./transfer";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../../helpers";
 /** GenesisState defines the ibc-transfer genesis state */
 
 export interface GenesisState {
   portId: string;
   denomTraces: DenomTrace[];
-  params: Params;
+  params?: Params;
 }
 /** GenesisState defines the ibc-transfer genesis state */
 
 export interface GenesisStateSDKType {
   port_id: string;
   denom_traces: DenomTraceSDKType[];
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -71,7 +70,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.portId = object.portId ?? "";
     message.denomTraces = object.denomTraces?.map(e => DenomTrace.fromPartial(e)) || [];

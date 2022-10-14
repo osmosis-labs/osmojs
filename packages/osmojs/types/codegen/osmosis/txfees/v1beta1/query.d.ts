@@ -1,6 +1,6 @@
 import { FeeToken, FeeTokenSDKType } from "./feetoken";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface QueryFeeTokensRequest {
 }
 export interface QueryFeeTokensRequestSDKType {
@@ -16,14 +16,14 @@ export interface QueryFeeTokensResponseSDKType {
  * price for the specified tx fee denom
  */
 export interface QueryDenomSpotPriceRequest {
-    denom?: string;
+    denom: string;
 }
 /**
  * QueryDenomSpotPriceRequest defines grpc request structure for querying spot
  * price for the specified tx fee denom
  */
 export interface QueryDenomSpotPriceRequestSDKType {
-    denom?: string;
+    denom: string;
 }
 /**
  * QueryDenomSpotPriceRequest defines grpc response structure for querying spot
@@ -66,40 +66,40 @@ export interface QueryBaseDenomResponseSDKType {
 export declare const QueryFeeTokensRequest: {
     encode(_: QueryFeeTokensRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensRequest;
-    fromPartial(_: DeepPartial<QueryFeeTokensRequest>): QueryFeeTokensRequest;
+    fromPartial(_: Partial<QueryFeeTokensRequest>): QueryFeeTokensRequest;
 };
 export declare const QueryFeeTokensResponse: {
     encode(message: QueryFeeTokensResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensResponse;
-    fromPartial(object: DeepPartial<QueryFeeTokensResponse>): QueryFeeTokensResponse;
+    fromPartial(object: Partial<QueryFeeTokensResponse>): QueryFeeTokensResponse;
 };
 export declare const QueryDenomSpotPriceRequest: {
     encode(message: QueryDenomSpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceRequest;
-    fromPartial(object: DeepPartial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest;
+    fromPartial(object: Partial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest;
 };
 export declare const QueryDenomSpotPriceResponse: {
     encode(message: QueryDenomSpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceResponse;
-    fromPartial(object: DeepPartial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse;
+    fromPartial(object: Partial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse;
 };
 export declare const QueryDenomPoolIdRequest: {
     encode(message: QueryDenomPoolIdRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdRequest;
-    fromPartial(object: DeepPartial<QueryDenomPoolIdRequest>): QueryDenomPoolIdRequest;
+    fromPartial(object: Partial<QueryDenomPoolIdRequest>): QueryDenomPoolIdRequest;
 };
 export declare const QueryDenomPoolIdResponse: {
     encode(message: QueryDenomPoolIdResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdResponse;
-    fromPartial(object: DeepPartial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse;
+    fromPartial(object: Partial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse;
 };
 export declare const QueryBaseDenomRequest: {
     encode(_: QueryBaseDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomRequest;
-    fromPartial(_: DeepPartial<QueryBaseDenomRequest>): QueryBaseDenomRequest;
+    fromPartial(_: Partial<QueryBaseDenomRequest>): QueryBaseDenomRequest;
 };
 export declare const QueryBaseDenomResponse: {
     encode(message: QueryBaseDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomResponse;
-    fromPartial(object: DeepPartial<QueryBaseDenomResponse>): QueryBaseDenomResponse;
+    fromPartial(object: Partial<QueryBaseDenomResponse>): QueryBaseDenomResponse;
 };

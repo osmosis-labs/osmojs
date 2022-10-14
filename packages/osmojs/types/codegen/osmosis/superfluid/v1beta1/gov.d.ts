@@ -1,6 +1,5 @@
 import { SuperfluidAsset, SuperfluidAssetSDKType } from "../superfluid";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
  * assets
@@ -40,10 +39,10 @@ export interface RemoveSuperfluidAssetsProposalSDKType {
 export declare const SetSuperfluidAssetsProposal: {
     encode(message: SetSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SetSuperfluidAssetsProposal;
-    fromPartial(object: DeepPartial<SetSuperfluidAssetsProposal>): SetSuperfluidAssetsProposal;
+    fromPartial(object: Partial<SetSuperfluidAssetsProposal>): SetSuperfluidAssetsProposal;
 };
 export declare const RemoveSuperfluidAssetsProposal: {
     encode(message: RemoveSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RemoveSuperfluidAssetsProposal;
-    fromPartial(object: DeepPartial<RemoveSuperfluidAssetsProposal>): RemoveSuperfluidAssetsProposal;
+    fromPartial(object: Partial<RemoveSuperfluidAssetsProposal>): RemoveSuperfluidAssetsProposal;
 };

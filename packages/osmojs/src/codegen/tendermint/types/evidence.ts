@@ -2,7 +2,7 @@ import { Vote, VoteSDKType, LightBlock, LightBlockSDKType } from "./types";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Validator, ValidatorSDKType } from "./validator";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, toTimestamp, Long, fromTimestamp } from "../../helpers";
+import { toTimestamp, Long, fromTimestamp } from "../../helpers";
 export interface Evidence {
   duplicateVoteEvidence?: DuplicateVoteEvidence;
   lightClientAttackEvidence?: LightClientAttackEvidence;
@@ -14,38 +14,38 @@ export interface EvidenceSDKType {
 /** DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes. */
 
 export interface DuplicateVoteEvidence {
-  voteA: Vote;
-  voteB: Vote;
+  voteA?: Vote;
+  voteB?: Vote;
   totalVotingPower: Long;
   validatorPower: Long;
-  timestamp: Date;
+  timestamp?: Date;
 }
 /** DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes. */
 
 export interface DuplicateVoteEvidenceSDKType {
-  vote_a: VoteSDKType;
-  vote_b: VoteSDKType;
+  vote_a?: VoteSDKType;
+  vote_b?: VoteSDKType;
   total_voting_power: Long;
   validator_power: Long;
-  timestamp: Date;
+  timestamp?: Date;
 }
 /** LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client. */
 
 export interface LightClientAttackEvidence {
-  conflictingBlock: LightBlock;
+  conflictingBlock?: LightBlock;
   commonHeight: Long;
   byzantineValidators: Validator[];
   totalVotingPower: Long;
-  timestamp: Date;
+  timestamp?: Date;
 }
 /** LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client. */
 
 export interface LightClientAttackEvidenceSDKType {
-  conflicting_block: LightBlockSDKType;
+  conflicting_block?: LightBlockSDKType;
   common_height: Long;
   byzantine_validators: ValidatorSDKType[];
   total_voting_power: Long;
-  timestamp: Date;
+  timestamp?: Date;
 }
 export interface EvidenceList {
   evidence: Evidence[];
@@ -100,7 +100,7 @@ export const Evidence = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Evidence>): Evidence {
+  fromPartial(object: Partial<Evidence>): Evidence {
     const message = createBaseEvidence();
     message.duplicateVoteEvidence = object.duplicateVoteEvidence !== undefined && object.duplicateVoteEvidence !== null ? DuplicateVoteEvidence.fromPartial(object.duplicateVoteEvidence) : undefined;
     message.lightClientAttackEvidence = object.lightClientAttackEvidence !== undefined && object.lightClientAttackEvidence !== null ? LightClientAttackEvidence.fromPartial(object.lightClientAttackEvidence) : undefined;
@@ -182,7 +182,7 @@ export const DuplicateVoteEvidence = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DuplicateVoteEvidence>): DuplicateVoteEvidence {
+  fromPartial(object: Partial<DuplicateVoteEvidence>): DuplicateVoteEvidence {
     const message = createBaseDuplicateVoteEvidence();
     message.voteA = object.voteA !== undefined && object.voteA !== null ? Vote.fromPartial(object.voteA) : undefined;
     message.voteB = object.voteB !== undefined && object.voteB !== null ? Vote.fromPartial(object.voteB) : undefined;
@@ -267,7 +267,7 @@ export const LightClientAttackEvidence = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<LightClientAttackEvidence>): LightClientAttackEvidence {
+  fromPartial(object: Partial<LightClientAttackEvidence>): LightClientAttackEvidence {
     const message = createBaseLightClientAttackEvidence();
     message.conflictingBlock = object.conflictingBlock !== undefined && object.conflictingBlock !== null ? LightBlock.fromPartial(object.conflictingBlock) : undefined;
     message.commonHeight = object.commonHeight !== undefined && object.commonHeight !== null ? Long.fromValue(object.commonHeight) : Long.ZERO;
@@ -316,7 +316,7 @@ export const EvidenceList = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EvidenceList>): EvidenceList {
+  fromPartial(object: Partial<EvidenceList>): EvidenceList {
     const message = createBaseEvidenceList();
     message.evidence = object.evidence?.map(e => Evidence.fromPartial(e)) || [];
     return message;

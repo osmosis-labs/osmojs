@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 export interface Proof {
   total: Long;
   index: Long;
@@ -17,14 +17,14 @@ export interface ValueOp {
   key: Uint8Array;
   /** To encode in ProofOp.Data */
 
-  proof: Proof;
+  proof?: Proof;
 }
 export interface ValueOpSDKType {
   /** Encoded in ProofOp.Key. */
   key: Uint8Array;
   /** To encode in ProofOp.Data */
 
-  proof: ProofSDKType;
+  proof?: ProofSDKType;
 }
 export interface DominoOp {
   key: string;
@@ -133,7 +133,7 @@ export const Proof = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Proof>): Proof {
+  fromPartial(object: Partial<Proof>): Proof {
     const message = createBaseProof();
     message.total = object.total !== undefined && object.total !== null ? Long.fromValue(object.total) : Long.ZERO;
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.ZERO;
@@ -190,7 +190,7 @@ export const ValueOp = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ValueOp>): ValueOp {
+  fromPartial(object: Partial<ValueOp>): ValueOp {
     const message = createBaseValueOp();
     message.key = object.key ?? new Uint8Array();
     message.proof = object.proof !== undefined && object.proof !== null ? Proof.fromPartial(object.proof) : undefined;
@@ -254,7 +254,7 @@ export const DominoOp = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DominoOp>): DominoOp {
+  fromPartial(object: Partial<DominoOp>): DominoOp {
     const message = createBaseDominoOp();
     message.key = object.key ?? "";
     message.input = object.input ?? "";
@@ -319,7 +319,7 @@ export const ProofOp = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ProofOp>): ProofOp {
+  fromPartial(object: Partial<ProofOp>): ProofOp {
     const message = createBaseProofOp();
     message.type = object.type ?? "";
     message.key = object.key ?? new Uint8Array();
@@ -366,7 +366,7 @@ export const ProofOps = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ProofOps>): ProofOps {
+  fromPartial(object: Partial<ProofOps>): ProofOps {
     const message = createBaseProofOps();
     message.ops = object.ops?.map(e => ProofOp.fromPartial(e)) || [];
     return message;

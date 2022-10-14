@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface Plan {
     /**
@@ -19,7 +19,7 @@ export interface Plan {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    time: Date;
+    time?: Date;
     /**
      * The height at which the upgrade must be performed.
      * Only used if Time is not set.
@@ -36,7 +36,7 @@ export interface Plan {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    upgradedClientState: Any;
+    upgradedClientState?: Any;
 }
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface PlanSDKType {
@@ -56,7 +56,7 @@ export interface PlanSDKType {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    time: Date;
+    time?: Date;
     /**
      * The height at which the upgrade must be performed.
      * Only used if Time is not set.
@@ -73,7 +73,7 @@ export interface PlanSDKType {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    upgraded_client_state: AnySDKType;
+    upgraded_client_state?: AnySDKType;
 }
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
@@ -85,7 +85,7 @@ export interface PlanSDKType {
 export interface SoftwareUpgradeProposal {
     title: string;
     description: string;
-    plan: Plan;
+    plan?: Plan;
 }
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
@@ -97,7 +97,7 @@ export interface SoftwareUpgradeProposal {
 export interface SoftwareUpgradeProposalSDKType {
     title: string;
     description: string;
-    plan: PlanSDKType;
+    plan?: PlanSDKType;
 }
 /**
  * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software
@@ -146,20 +146,20 @@ export interface ModuleVersionSDKType {
 export declare const Plan: {
     encode(message: Plan, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Plan;
-    fromPartial(object: DeepPartial<Plan>): Plan;
+    fromPartial(object: Partial<Plan>): Plan;
 };
 export declare const SoftwareUpgradeProposal: {
     encode(message: SoftwareUpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SoftwareUpgradeProposal;
-    fromPartial(object: DeepPartial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal;
+    fromPartial(object: Partial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal;
 };
 export declare const CancelSoftwareUpgradeProposal: {
     encode(message: CancelSoftwareUpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CancelSoftwareUpgradeProposal;
-    fromPartial(object: DeepPartial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal;
+    fromPartial(object: Partial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal;
 };
 export declare const ModuleVersion: {
     encode(message: ModuleVersion, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleVersion;
-    fromPartial(object: DeepPartial<ModuleVersion>): ModuleVersion;
+    fromPartial(object: Partial<ModuleVersion>): ModuleVersion;
 };

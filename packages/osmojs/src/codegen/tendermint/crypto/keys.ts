@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../helpers";
 /** PublicKey defines the keys available for use with Tendermint Validators */
 
 export interface PublicKey {
@@ -59,7 +58,7 @@ export const PublicKey = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PublicKey>): PublicKey {
+  fromPartial(object: Partial<PublicKey>): PublicKey {
     const message = createBasePublicKey();
     message.ed25519 = object.ed25519 ?? undefined;
     message.secp256k1 = object.secp256k1 ?? undefined;

@@ -3,7 +3,7 @@ import { Channel, ChannelSDKType, IdentifiedChannel, IdentifiedChannelSDKType, P
 import { Height, HeightSDKType, IdentifiedClientState, IdentifiedClientStateSDKType } from "../../client/v1/client";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /** QueryChannelRequest is the request type for the Query/Channel RPC method */
 
 export interface QueryChannelRequest {
@@ -30,13 +30,13 @@ export interface QueryChannelRequestSDKType {
 
 export interface QueryChannelResponse {
   /** channel associated with the request identifiers */
-  channel: Channel;
+  channel?: Channel;
   /** merkle proof of existence */
 
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proofHeight: Height;
+  proofHeight?: Height;
 }
 /**
  * QueryChannelResponse is the response type for the Query/Channel RPC method.
@@ -46,13 +46,13 @@ export interface QueryChannelResponse {
 
 export interface QueryChannelResponseSDKType {
   /** channel associated with the request identifiers */
-  channel: ChannelSDKType;
+  channel?: ChannelSDKType;
   /** merkle proof of existence */
 
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: HeightSDKType;
+  proof_height?: HeightSDKType;
 }
 /** QueryChannelsRequest is the request type for the Query/Channels RPC method */
 
@@ -76,7 +76,7 @@ export interface QueryChannelsResponse {
   pagination?: PageResponse;
   /** query block height */
 
-  height: Height;
+  height?: Height;
 }
 /** QueryChannelsResponse is the response type for the Query/Channels RPC method. */
 
@@ -88,7 +88,7 @@ export interface QueryChannelsResponseSDKType {
   pagination?: PageResponseSDKType;
   /** query block height */
 
-  height: HeightSDKType;
+  height?: HeightSDKType;
 }
 /**
  * QueryConnectionChannelsRequest is the request type for the
@@ -127,7 +127,7 @@ export interface QueryConnectionChannelsResponse {
   pagination?: PageResponse;
   /** query block height */
 
-  height: Height;
+  height?: Height;
 }
 /**
  * QueryConnectionChannelsResponse is the Response type for the
@@ -142,7 +142,7 @@ export interface QueryConnectionChannelsResponseSDKType {
   pagination?: PageResponseSDKType;
   /** query block height */
 
-  height: HeightSDKType;
+  height?: HeightSDKType;
 }
 /**
  * QueryChannelClientStateRequest is the request type for the Query/ClientState
@@ -175,13 +175,13 @@ export interface QueryChannelClientStateRequestSDKType {
 
 export interface QueryChannelClientStateResponse {
   /** client state associated with the channel */
-  identifiedClientState: IdentifiedClientState;
+  identifiedClientState?: IdentifiedClientState;
   /** merkle proof of existence */
 
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proofHeight: Height;
+  proofHeight?: Height;
 }
 /**
  * QueryChannelClientStateResponse is the Response type for the
@@ -190,13 +190,13 @@ export interface QueryChannelClientStateResponse {
 
 export interface QueryChannelClientStateResponseSDKType {
   /** client state associated with the channel */
-  identified_client_state: IdentifiedClientStateSDKType;
+  identified_client_state?: IdentifiedClientStateSDKType;
   /** merkle proof of existence */
 
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: HeightSDKType;
+  proof_height?: HeightSDKType;
 }
 /**
  * QueryChannelConsensusStateRequest is the request type for the
@@ -241,7 +241,7 @@ export interface QueryChannelConsensusStateRequestSDKType {
 
 export interface QueryChannelConsensusStateResponse {
   /** consensus state associated with the channel */
-  consensusState: Any;
+  consensusState?: Any;
   /** client ID associated with the consensus state */
 
   clientId: string;
@@ -250,7 +250,7 @@ export interface QueryChannelConsensusStateResponse {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proofHeight: Height;
+  proofHeight?: Height;
 }
 /**
  * QueryChannelClientStateResponse is the Response type for the
@@ -259,7 +259,7 @@ export interface QueryChannelConsensusStateResponse {
 
 export interface QueryChannelConsensusStateResponseSDKType {
   /** consensus state associated with the channel */
-  consensus_state: AnySDKType;
+  consensus_state?: AnySDKType;
   /** client ID associated with the consensus state */
 
   client_id: string;
@@ -268,7 +268,7 @@ export interface QueryChannelConsensusStateResponseSDKType {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: HeightSDKType;
+  proof_height?: HeightSDKType;
 }
 /**
  * QueryPacketCommitmentRequest is the request type for the
@@ -314,7 +314,7 @@ export interface QueryPacketCommitmentResponse {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proofHeight: Height;
+  proofHeight?: Height;
 }
 /**
  * QueryPacketCommitmentResponse defines the client query response for a packet
@@ -330,7 +330,7 @@ export interface QueryPacketCommitmentResponseSDKType {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: HeightSDKType;
+  proof_height?: HeightSDKType;
 }
 /**
  * QueryPacketCommitmentsRequest is the request type for the
@@ -374,7 +374,7 @@ export interface QueryPacketCommitmentsResponse {
   pagination?: PageResponse;
   /** query block height */
 
-  height: Height;
+  height?: Height;
 }
 /**
  * QueryPacketCommitmentsResponse is the request type for the
@@ -388,7 +388,7 @@ export interface QueryPacketCommitmentsResponseSDKType {
   pagination?: PageResponseSDKType;
   /** query block height */
 
-  height: HeightSDKType;
+  height?: HeightSDKType;
 }
 /**
  * QueryPacketReceiptRequest is the request type for the
@@ -434,7 +434,7 @@ export interface QueryPacketReceiptResponse {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proofHeight: Height;
+  proofHeight?: Height;
 }
 /**
  * QueryPacketReceiptResponse defines the client query response for a packet
@@ -450,7 +450,7 @@ export interface QueryPacketReceiptResponseSDKType {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: HeightSDKType;
+  proof_height?: HeightSDKType;
 }
 /**
  * QueryPacketAcknowledgementRequest is the request type for the
@@ -496,7 +496,7 @@ export interface QueryPacketAcknowledgementResponse {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proofHeight: Height;
+  proofHeight?: Height;
 }
 /**
  * QueryPacketAcknowledgementResponse defines the client query response for a
@@ -512,7 +512,7 @@ export interface QueryPacketAcknowledgementResponseSDKType {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: HeightSDKType;
+  proof_height?: HeightSDKType;
 }
 /**
  * QueryPacketAcknowledgementsRequest is the request type for the
@@ -530,7 +530,7 @@ export interface QueryPacketAcknowledgementsRequest {
   pagination?: PageRequest;
   /** list of packet sequences */
 
-  packetCommitmentSequences?: Long[];
+  packetCommitmentSequences: Long[];
 }
 /**
  * QueryPacketAcknowledgementsRequest is the request type for the
@@ -548,7 +548,7 @@ export interface QueryPacketAcknowledgementsRequestSDKType {
   pagination?: PageRequestSDKType;
   /** list of packet sequences */
 
-  packet_commitment_sequences?: Long[];
+  packet_commitment_sequences: Long[];
 }
 /**
  * QueryPacketAcknowledgemetsResponse is the request type for the
@@ -562,7 +562,7 @@ export interface QueryPacketAcknowledgementsResponse {
   pagination?: PageResponse;
   /** query block height */
 
-  height: Height;
+  height?: Height;
 }
 /**
  * QueryPacketAcknowledgemetsResponse is the request type for the
@@ -576,7 +576,7 @@ export interface QueryPacketAcknowledgementsResponseSDKType {
   pagination?: PageResponseSDKType;
   /** query block height */
 
-  height: HeightSDKType;
+  height?: HeightSDKType;
 }
 /**
  * QueryUnreceivedPacketsRequest is the request type for the
@@ -618,7 +618,7 @@ export interface QueryUnreceivedPacketsResponse {
   sequences: Long[];
   /** query block height */
 
-  height: Height;
+  height?: Height;
 }
 /**
  * QueryUnreceivedPacketsResponse is the response type for the
@@ -630,7 +630,7 @@ export interface QueryUnreceivedPacketsResponseSDKType {
   sequences: Long[];
   /** query block height */
 
-  height: HeightSDKType;
+  height?: HeightSDKType;
 }
 /**
  * QueryUnreceivedAcks is the request type for the
@@ -672,7 +672,7 @@ export interface QueryUnreceivedAcksResponse {
   sequences: Long[];
   /** query block height */
 
-  height: Height;
+  height?: Height;
 }
 /**
  * QueryUnreceivedAcksResponse is the response type for the
@@ -684,7 +684,7 @@ export interface QueryUnreceivedAcksResponseSDKType {
   sequences: Long[];
   /** query block height */
 
-  height: HeightSDKType;
+  height?: HeightSDKType;
 }
 /**
  * QueryNextSequenceReceiveRequest is the request type for the
@@ -723,7 +723,7 @@ export interface QueryNextSequenceReceiveResponse {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proofHeight: Height;
+  proofHeight?: Height;
 }
 /**
  * QuerySequenceResponse is the request type for the
@@ -738,7 +738,7 @@ export interface QueryNextSequenceReceiveResponseSDKType {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: HeightSDKType;
+  proof_height?: HeightSDKType;
 }
 
 function createBaseQueryChannelRequest(): QueryChannelRequest {
@@ -787,7 +787,7 @@ export const QueryChannelRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryChannelRequest>): QueryChannelRequest {
+  fromPartial(object: Partial<QueryChannelRequest>): QueryChannelRequest {
     const message = createBaseQueryChannelRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -851,7 +851,7 @@ export const QueryChannelResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryChannelResponse>): QueryChannelResponse {
+  fromPartial(object: Partial<QueryChannelResponse>): QueryChannelResponse {
     const message = createBaseQueryChannelResponse();
     message.channel = object.channel !== undefined && object.channel !== null ? Channel.fromPartial(object.channel) : undefined;
     message.proof = object.proof ?? new Uint8Array();
@@ -898,7 +898,7 @@ export const QueryChannelsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryChannelsRequest>): QueryChannelsRequest {
+  fromPartial(object: Partial<QueryChannelsRequest>): QueryChannelsRequest {
     const message = createBaseQueryChannelsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -961,7 +961,7 @@ export const QueryChannelsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryChannelsResponse>): QueryChannelsResponse {
+  fromPartial(object: Partial<QueryChannelsResponse>): QueryChannelsResponse {
     const message = createBaseQueryChannelsResponse();
     message.channels = object.channels?.map(e => IdentifiedChannel.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -1017,7 +1017,7 @@ export const QueryConnectionChannelsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryConnectionChannelsRequest>): QueryConnectionChannelsRequest {
+  fromPartial(object: Partial<QueryConnectionChannelsRequest>): QueryConnectionChannelsRequest {
     const message = createBaseQueryConnectionChannelsRequest();
     message.connection = object.connection ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -1081,7 +1081,7 @@ export const QueryConnectionChannelsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryConnectionChannelsResponse>): QueryConnectionChannelsResponse {
+  fromPartial(object: Partial<QueryConnectionChannelsResponse>): QueryConnectionChannelsResponse {
     const message = createBaseQueryConnectionChannelsResponse();
     message.channels = object.channels?.map(e => IdentifiedChannel.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -1137,7 +1137,7 @@ export const QueryChannelClientStateRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryChannelClientStateRequest>): QueryChannelClientStateRequest {
+  fromPartial(object: Partial<QueryChannelClientStateRequest>): QueryChannelClientStateRequest {
     const message = createBaseQueryChannelClientStateRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -1201,7 +1201,7 @@ export const QueryChannelClientStateResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryChannelClientStateResponse>): QueryChannelClientStateResponse {
+  fromPartial(object: Partial<QueryChannelClientStateResponse>): QueryChannelClientStateResponse {
     const message = createBaseQueryChannelClientStateResponse();
     message.identifiedClientState = object.identifiedClientState !== undefined && object.identifiedClientState !== null ? IdentifiedClientState.fromPartial(object.identifiedClientState) : undefined;
     message.proof = object.proof ?? new Uint8Array();
@@ -1275,7 +1275,7 @@ export const QueryChannelConsensusStateRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryChannelConsensusStateRequest>): QueryChannelConsensusStateRequest {
+  fromPartial(object: Partial<QueryChannelConsensusStateRequest>): QueryChannelConsensusStateRequest {
     const message = createBaseQueryChannelConsensusStateRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -1350,7 +1350,7 @@ export const QueryChannelConsensusStateResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryChannelConsensusStateResponse>): QueryChannelConsensusStateResponse {
+  fromPartial(object: Partial<QueryChannelConsensusStateResponse>): QueryChannelConsensusStateResponse {
     const message = createBaseQueryChannelConsensusStateResponse();
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
     message.clientId = object.clientId ?? "";
@@ -1416,7 +1416,7 @@ export const QueryPacketCommitmentRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketCommitmentRequest>): QueryPacketCommitmentRequest {
+  fromPartial(object: Partial<QueryPacketCommitmentRequest>): QueryPacketCommitmentRequest {
     const message = createBaseQueryPacketCommitmentRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -1481,7 +1481,7 @@ export const QueryPacketCommitmentResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketCommitmentResponse>): QueryPacketCommitmentResponse {
+  fromPartial(object: Partial<QueryPacketCommitmentResponse>): QueryPacketCommitmentResponse {
     const message = createBaseQueryPacketCommitmentResponse();
     message.commitment = object.commitment ?? new Uint8Array();
     message.proof = object.proof ?? new Uint8Array();
@@ -1546,7 +1546,7 @@ export const QueryPacketCommitmentsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketCommitmentsRequest>): QueryPacketCommitmentsRequest {
+  fromPartial(object: Partial<QueryPacketCommitmentsRequest>): QueryPacketCommitmentsRequest {
     const message = createBaseQueryPacketCommitmentsRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -1611,7 +1611,7 @@ export const QueryPacketCommitmentsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketCommitmentsResponse>): QueryPacketCommitmentsResponse {
+  fromPartial(object: Partial<QueryPacketCommitmentsResponse>): QueryPacketCommitmentsResponse {
     const message = createBaseQueryPacketCommitmentsResponse();
     message.commitments = object.commitments?.map(e => PacketState.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -1676,7 +1676,7 @@ export const QueryPacketReceiptRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketReceiptRequest>): QueryPacketReceiptRequest {
+  fromPartial(object: Partial<QueryPacketReceiptRequest>): QueryPacketReceiptRequest {
     const message = createBaseQueryPacketReceiptRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -1741,7 +1741,7 @@ export const QueryPacketReceiptResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketReceiptResponse>): QueryPacketReceiptResponse {
+  fromPartial(object: Partial<QueryPacketReceiptResponse>): QueryPacketReceiptResponse {
     const message = createBaseQueryPacketReceiptResponse();
     message.received = object.received ?? false;
     message.proof = object.proof ?? new Uint8Array();
@@ -1806,7 +1806,7 @@ export const QueryPacketAcknowledgementRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketAcknowledgementRequest>): QueryPacketAcknowledgementRequest {
+  fromPartial(object: Partial<QueryPacketAcknowledgementRequest>): QueryPacketAcknowledgementRequest {
     const message = createBaseQueryPacketAcknowledgementRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -1871,7 +1871,7 @@ export const QueryPacketAcknowledgementResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketAcknowledgementResponse>): QueryPacketAcknowledgementResponse {
+  fromPartial(object: Partial<QueryPacketAcknowledgementResponse>): QueryPacketAcknowledgementResponse {
     const message = createBaseQueryPacketAcknowledgementResponse();
     message.acknowledgement = object.acknowledgement ?? new Uint8Array();
     message.proof = object.proof ?? new Uint8Array();
@@ -1957,7 +1957,7 @@ export const QueryPacketAcknowledgementsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketAcknowledgementsRequest>): QueryPacketAcknowledgementsRequest {
+  fromPartial(object: Partial<QueryPacketAcknowledgementsRequest>): QueryPacketAcknowledgementsRequest {
     const message = createBaseQueryPacketAcknowledgementsRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -2023,7 +2023,7 @@ export const QueryPacketAcknowledgementsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPacketAcknowledgementsResponse>): QueryPacketAcknowledgementsResponse {
+  fromPartial(object: Partial<QueryPacketAcknowledgementsResponse>): QueryPacketAcknowledgementsResponse {
     const message = createBaseQueryPacketAcknowledgementsResponse();
     message.acknowledgements = object.acknowledgements?.map(e => PacketState.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -2100,7 +2100,7 @@ export const QueryUnreceivedPacketsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryUnreceivedPacketsRequest>): QueryUnreceivedPacketsRequest {
+  fromPartial(object: Partial<QueryUnreceivedPacketsRequest>): QueryUnreceivedPacketsRequest {
     const message = createBaseQueryUnreceivedPacketsRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -2169,7 +2169,7 @@ export const QueryUnreceivedPacketsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryUnreceivedPacketsResponse>): QueryUnreceivedPacketsResponse {
+  fromPartial(object: Partial<QueryUnreceivedPacketsResponse>): QueryUnreceivedPacketsResponse {
     const message = createBaseQueryUnreceivedPacketsResponse();
     message.sequences = object.sequences?.map(e => Long.fromValue(e)) || [];
     message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
@@ -2245,7 +2245,7 @@ export const QueryUnreceivedAcksRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryUnreceivedAcksRequest>): QueryUnreceivedAcksRequest {
+  fromPartial(object: Partial<QueryUnreceivedAcksRequest>): QueryUnreceivedAcksRequest {
     const message = createBaseQueryUnreceivedAcksRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -2314,7 +2314,7 @@ export const QueryUnreceivedAcksResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryUnreceivedAcksResponse>): QueryUnreceivedAcksResponse {
+  fromPartial(object: Partial<QueryUnreceivedAcksResponse>): QueryUnreceivedAcksResponse {
     const message = createBaseQueryUnreceivedAcksResponse();
     message.sequences = object.sequences?.map(e => Long.fromValue(e)) || [];
     message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
@@ -2369,7 +2369,7 @@ export const QueryNextSequenceReceiveRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryNextSequenceReceiveRequest>): QueryNextSequenceReceiveRequest {
+  fromPartial(object: Partial<QueryNextSequenceReceiveRequest>): QueryNextSequenceReceiveRequest {
     const message = createBaseQueryNextSequenceReceiveRequest();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -2433,7 +2433,7 @@ export const QueryNextSequenceReceiveResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryNextSequenceReceiveResponse>): QueryNextSequenceReceiveResponse {
+  fromPartial(object: Partial<QueryNextSequenceReceiveResponse>): QueryNextSequenceReceiveResponse {
     const message = createBaseQueryNextSequenceReceiveResponse();
     message.nextSequenceReceive = object.nextSequenceReceive !== undefined && object.nextSequenceReceive !== null ? Long.fromValue(object.nextSequenceReceive) : Long.UZERO;
     message.proof = object.proof ?? new Uint8Array();

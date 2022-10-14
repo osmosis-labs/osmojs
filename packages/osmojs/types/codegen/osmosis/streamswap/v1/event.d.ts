@@ -1,17 +1,17 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface EventCreateSale {
     id: Long;
     creator: string;
     tokenIn: string;
-    tokenOut: Coin;
+    tokenOut?: Coin;
 }
 export interface EventCreateSaleSDKType {
     id: Long;
     creator: string;
     token_in: string;
-    token_out: CoinSDKType;
+    token_out?: CoinSDKType;
 }
 export interface EventSubscribe {
     sender: string;
@@ -60,25 +60,25 @@ export interface EventFinalizeSaleSDKType {
 export declare const EventCreateSale: {
     encode(message: EventCreateSale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventCreateSale;
-    fromPartial(object: DeepPartial<EventCreateSale>): EventCreateSale;
+    fromPartial(object: Partial<EventCreateSale>): EventCreateSale;
 };
 export declare const EventSubscribe: {
     encode(message: EventSubscribe, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventSubscribe;
-    fromPartial(object: DeepPartial<EventSubscribe>): EventSubscribe;
+    fromPartial(object: Partial<EventSubscribe>): EventSubscribe;
 };
 export declare const EventWithdraw: {
     encode(message: EventWithdraw, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventWithdraw;
-    fromPartial(object: DeepPartial<EventWithdraw>): EventWithdraw;
+    fromPartial(object: Partial<EventWithdraw>): EventWithdraw;
 };
 export declare const EventExit: {
     encode(message: EventExit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventExit;
-    fromPartial(object: DeepPartial<EventExit>): EventExit;
+    fromPartial(object: Partial<EventExit>): EventExit;
 };
 export declare const EventFinalizeSale: {
     encode(message: EventFinalizeSale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventFinalizeSale;
-    fromPartial(object: DeepPartial<EventFinalizeSale>): EventFinalizeSale;
+    fromPartial(object: Partial<EventFinalizeSale>): EventFinalizeSale;
 };

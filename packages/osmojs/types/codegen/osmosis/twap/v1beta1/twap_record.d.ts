@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /**
  * A TWAP record should be indexed in state by pool_id, (asset pair), timestamp
  * The asset pair assets should be lexicographically sorted.
@@ -21,7 +21,7 @@ export interface TwapRecord {
      * This field should only exist until we have a global registry in the state
      * machine, mapping prior block heights within {TIME RANGE} to times.
      */
-    time: Date;
+    time?: Date;
     /**
      * We store the last spot prices in the struct, so that we can interpolate
      * accumulator values for times between when accumulator records are stored.
@@ -35,7 +35,7 @@ export interface TwapRecord {
      * It is used to alert the caller if they are getting a potentially erroneous
      * TWAP, due to an unforeseen underlying error.
      */
-    lastErrorTime: Date;
+    lastErrorTime?: Date;
 }
 /**
  * A TWAP record should be indexed in state by pool_id, (asset pair), timestamp
@@ -58,7 +58,7 @@ export interface TwapRecordSDKType {
      * This field should only exist until we have a global registry in the state
      * machine, mapping prior block heights within {TIME RANGE} to times.
      */
-    time: Date;
+    time?: Date;
     /**
      * We store the last spot prices in the struct, so that we can interpolate
      * accumulator values for times between when accumulator records are stored.
@@ -72,10 +72,10 @@ export interface TwapRecordSDKType {
      * It is used to alert the caller if they are getting a potentially erroneous
      * TWAP, due to an unforeseen underlying error.
      */
-    last_error_time: Date;
+    last_error_time?: Date;
 }
 export declare const TwapRecord: {
     encode(message: TwapRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TwapRecord;
-    fromPartial(object: DeepPartial<TwapRecord>): TwapRecord;
+    fromPartial(object: Partial<TwapRecord>): TwapRecord;
 };

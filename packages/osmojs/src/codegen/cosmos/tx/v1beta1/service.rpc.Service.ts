@@ -24,7 +24,7 @@ export interface Service {
 
   getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse>;
 }
-export class QueryClientImpl implements Service {
+export class ServiceClientImpl implements Service {
   private readonly rpc: Rpc;
 
   constructor(rpc: Rpc) {
@@ -69,7 +69,7 @@ export class QueryClientImpl implements Service {
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
-  const queryService = new QueryClientImpl(rpc);
+  const queryService = new ServiceClientImpl(rpc);
   return {
     simulate(request: SimulateRequest): Promise<SimulateResponse> {
       return queryService.simulate(request);

@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../helpers";
 export enum HashOp {
   /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
   NO_HASH = 0,
@@ -256,7 +255,7 @@ export function lengthOpToJSON(object: LengthOp): string {
 export interface ExistenceProof {
   key: Uint8Array;
   value: Uint8Array;
-  leaf: LeafOp;
+  leaf?: LeafOp;
   path: InnerOp[];
 }
 /**
@@ -284,7 +283,7 @@ export interface ExistenceProof {
 export interface ExistenceProofSDKType {
   key: Uint8Array;
   value: Uint8Array;
-  leaf: LeafOpSDKType;
+  leaf?: LeafOpSDKType;
   path: InnerOpSDKType[];
 }
 /**
@@ -296,8 +295,8 @@ export interface ExistenceProofSDKType {
 export interface NonExistenceProof {
   /** TODO: remove this as unnecessary??? we prove a range */
   key: Uint8Array;
-  left: ExistenceProof;
-  right: ExistenceProof;
+  left?: ExistenceProof;
+  right?: ExistenceProof;
 }
 /**
  * NonExistenceProof takes a proof of two neighbors, one left of the desired key,
@@ -308,8 +307,8 @@ export interface NonExistenceProof {
 export interface NonExistenceProofSDKType {
   /** TODO: remove this as unnecessary??? we prove a range */
   key: Uint8Array;
-  left: ExistenceProofSDKType;
-  right: ExistenceProofSDKType;
+  left?: ExistenceProofSDKType;
+  right?: ExistenceProofSDKType;
 }
 /** CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages */
 
@@ -449,8 +448,8 @@ export interface ProofSpec {
    * any field in the ExistenceProof must be the same as in this spec.
    * except Prefix, which is just the first bytes of prefix (spec can be longer)
    */
-  leafSpec: LeafOp;
-  innerSpec: InnerSpec;
+  leafSpec?: LeafOp;
+  innerSpec?: InnerSpec;
   /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
 
   maxDepth: number;
@@ -476,8 +475,8 @@ export interface ProofSpecSDKType {
    * any field in the ExistenceProof must be the same as in this spec.
    * except Prefix, which is just the first bytes of prefix (spec can be longer)
    */
-  leaf_spec: LeafOpSDKType;
-  inner_spec: InnerSpecSDKType;
+  leaf_spec?: LeafOpSDKType;
+  inner_spec?: InnerSpecSDKType;
   /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
 
   max_depth: number;
@@ -586,7 +585,7 @@ export interface CompressedBatchEntrySDKType {
 export interface CompressedExistenceProof {
   key: Uint8Array;
   value: Uint8Array;
-  leaf: LeafOp;
+  leaf?: LeafOp;
   /** these are indexes into the lookup_inners table in CompressedBatchProof */
 
   path: number[];
@@ -594,7 +593,7 @@ export interface CompressedExistenceProof {
 export interface CompressedExistenceProofSDKType {
   key: Uint8Array;
   value: Uint8Array;
-  leaf: LeafOpSDKType;
+  leaf?: LeafOpSDKType;
   /** these are indexes into the lookup_inners table in CompressedBatchProof */
 
   path: number[];
@@ -602,14 +601,14 @@ export interface CompressedExistenceProofSDKType {
 export interface CompressedNonExistenceProof {
   /** TODO: remove this as unnecessary??? we prove a range */
   key: Uint8Array;
-  left: CompressedExistenceProof;
-  right: CompressedExistenceProof;
+  left?: CompressedExistenceProof;
+  right?: CompressedExistenceProof;
 }
 export interface CompressedNonExistenceProofSDKType {
   /** TODO: remove this as unnecessary??? we prove a range */
   key: Uint8Array;
-  left: CompressedExistenceProofSDKType;
-  right: CompressedExistenceProofSDKType;
+  left?: CompressedExistenceProofSDKType;
+  right?: CompressedExistenceProofSDKType;
 }
 
 function createBaseExistenceProof(): ExistenceProof {
@@ -676,7 +675,7 @@ export const ExistenceProof = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ExistenceProof>): ExistenceProof {
+  fromPartial(object: Partial<ExistenceProof>): ExistenceProof {
     const message = createBaseExistenceProof();
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();
@@ -742,7 +741,7 @@ export const NonExistenceProof = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<NonExistenceProof>): NonExistenceProof {
+  fromPartial(object: Partial<NonExistenceProof>): NonExistenceProof {
     const message = createBaseNonExistenceProof();
     message.key = object.key ?? new Uint8Array();
     message.left = object.left !== undefined && object.left !== null ? ExistenceProof.fromPartial(object.left) : undefined;
@@ -816,7 +815,7 @@ export const CommitmentProof = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<CommitmentProof>): CommitmentProof {
+  fromPartial(object: Partial<CommitmentProof>): CommitmentProof {
     const message = createBaseCommitmentProof();
     message.exist = object.exist !== undefined && object.exist !== null ? ExistenceProof.fromPartial(object.exist) : undefined;
     message.nonexist = object.nonexist !== undefined && object.nonexist !== null ? NonExistenceProof.fromPartial(object.nonexist) : undefined;
@@ -900,7 +899,7 @@ export const LeafOp = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<LeafOp>): LeafOp {
+  fromPartial(object: Partial<LeafOp>): LeafOp {
     const message = createBaseLeafOp();
     message.hash = object.hash ?? 0;
     message.prehashKey = object.prehashKey ?? 0;
@@ -967,7 +966,7 @@ export const InnerOp = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<InnerOp>): InnerOp {
+  fromPartial(object: Partial<InnerOp>): InnerOp {
     const message = createBaseInnerOp();
     message.hash = object.hash ?? 0;
     message.prefix = object.prefix ?? new Uint8Array();
@@ -1041,7 +1040,7 @@ export const ProofSpec = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ProofSpec>): ProofSpec {
+  fromPartial(object: Partial<ProofSpec>): ProofSpec {
     const message = createBaseProofSpec();
     message.leafSpec = object.leafSpec !== undefined && object.leafSpec !== null ? LeafOp.fromPartial(object.leafSpec) : undefined;
     message.innerSpec = object.innerSpec !== undefined && object.innerSpec !== null ? InnerSpec.fromPartial(object.innerSpec) : undefined;
@@ -1147,7 +1146,7 @@ export const InnerSpec = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<InnerSpec>): InnerSpec {
+  fromPartial(object: Partial<InnerSpec>): InnerSpec {
     const message = createBaseInnerSpec();
     message.childOrder = object.childOrder?.map(e => e) || [];
     message.childSize = object.childSize ?? 0;
@@ -1197,7 +1196,7 @@ export const BatchProof = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<BatchProof>): BatchProof {
+  fromPartial(object: Partial<BatchProof>): BatchProof {
     const message = createBaseBatchProof();
     message.entries = object.entries?.map(e => BatchEntry.fromPartial(e)) || [];
     return message;
@@ -1251,7 +1250,7 @@ export const BatchEntry = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<BatchEntry>): BatchEntry {
+  fromPartial(object: Partial<BatchEntry>): BatchEntry {
     const message = createBaseBatchEntry();
     message.exist = object.exist !== undefined && object.exist !== null ? ExistenceProof.fromPartial(object.exist) : undefined;
     message.nonexist = object.nonexist !== undefined && object.nonexist !== null ? NonExistenceProof.fromPartial(object.nonexist) : undefined;
@@ -1306,7 +1305,7 @@ export const CompressedBatchProof = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<CompressedBatchProof>): CompressedBatchProof {
+  fromPartial(object: Partial<CompressedBatchProof>): CompressedBatchProof {
     const message = createBaseCompressedBatchProof();
     message.entries = object.entries?.map(e => CompressedBatchEntry.fromPartial(e)) || [];
     message.lookupInners = object.lookupInners?.map(e => InnerOp.fromPartial(e)) || [];
@@ -1361,7 +1360,7 @@ export const CompressedBatchEntry = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<CompressedBatchEntry>): CompressedBatchEntry {
+  fromPartial(object: Partial<CompressedBatchEntry>): CompressedBatchEntry {
     const message = createBaseCompressedBatchEntry();
     message.exist = object.exist !== undefined && object.exist !== null ? CompressedExistenceProof.fromPartial(object.exist) : undefined;
     message.nonexist = object.nonexist !== undefined && object.nonexist !== null ? CompressedNonExistenceProof.fromPartial(object.nonexist) : undefined;
@@ -1446,7 +1445,7 @@ export const CompressedExistenceProof = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<CompressedExistenceProof>): CompressedExistenceProof {
+  fromPartial(object: Partial<CompressedExistenceProof>): CompressedExistenceProof {
     const message = createBaseCompressedExistenceProof();
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();
@@ -1512,7 +1511,7 @@ export const CompressedNonExistenceProof = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<CompressedNonExistenceProof>): CompressedNonExistenceProof {
+  fromPartial(object: Partial<CompressedNonExistenceProof>): CompressedNonExistenceProof {
     const message = createBaseCompressedNonExistenceProof();
     message.key = object.key ?? new Uint8Array();
     message.left = object.left !== undefined && object.left !== null ? CompressedExistenceProof.fromPartial(object.left) : undefined;

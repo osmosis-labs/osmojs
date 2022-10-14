@@ -1,6 +1,6 @@
 import { IdentifiedClientState, IdentifiedClientStateSDKType, ClientConsensusStates, ClientConsensusStatesSDKType, Params, ParamsSDKType } from "./client";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /** GenesisState defines the ibc client submodule's genesis state. */
 
 export interface GenesisState {
@@ -12,7 +12,7 @@ export interface GenesisState {
   /** metadata from each client */
 
   clientsMetadata: IdentifiedGenesisMetadata[];
-  params: Params;
+  params?: Params;
   /** create localhost on initialization */
 
   createLocalhost: boolean;
@@ -31,7 +31,7 @@ export interface GenesisStateSDKType {
   /** metadata from each client */
 
   clients_metadata: IdentifiedGenesisMetadataSDKType[];
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
   /** create localhost on initialization */
 
   create_localhost: boolean;
@@ -164,7 +164,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.clients = object.clients?.map(e => IdentifiedClientState.fromPartial(e)) || [];
     message.clientsConsensus = object.clientsConsensus?.map(e => ClientConsensusStates.fromPartial(e)) || [];
@@ -223,7 +223,7 @@ export const GenesisMetadata = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisMetadata>): GenesisMetadata {
+  fromPartial(object: Partial<GenesisMetadata>): GenesisMetadata {
     const message = createBaseGenesisMetadata();
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();
@@ -278,7 +278,7 @@ export const IdentifiedGenesisMetadata = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata {
+  fromPartial(object: Partial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata {
     const message = createBaseIdentifiedGenesisMetadata();
     message.clientId = object.clientId ?? "";
     message.clientMetadata = object.clientMetadata?.map(e => GenesisMetadata.fromPartial(e)) || [];

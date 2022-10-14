@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * A Timestamp represents a point in time independent of any time zone or local
  * calendar, encoded as a count of seconds and fractions of seconds at
@@ -201,5 +201,5 @@ export interface TimestampSDKType {
 export declare const Timestamp: {
     encode(message: Timestamp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Timestamp;
-    fromPartial(object: DeepPartial<Timestamp>): Timestamp;
+    fromPartial(object: Partial<Timestamp>): Timestamp;
 };

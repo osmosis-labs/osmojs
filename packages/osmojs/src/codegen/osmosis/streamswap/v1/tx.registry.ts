@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgCreateSale, MsgSubscribe, MsgWithdraw, MsgExitSale, MsgFinalizeSale } from "./tx";
 export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.streamswap.v1.MsgCreateSale", MsgCreateSale], ["/osmosis.streamswap.v1.MsgSubscribe", MsgSubscribe], ["/osmosis.streamswap.v1.MsgWithdraw", MsgWithdraw], ["/osmosis.streamswap.v1.MsgExitSale", MsgExitSale], ["/osmosis.streamswap.v1.MsgFinalizeSale", MsgFinalizeSale]];

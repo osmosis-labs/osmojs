@@ -1,12 +1,11 @@
 import { Params, ParamsSDKType, DistrInfo, DistrInfoSDKType, PoolToGauges, PoolToGaugesSDKType } from "./incentives";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** GenesisState defines the pool incentives module's genesis state. */
 
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
-  params: Params;
+  params?: Params;
   lockableDurations: Duration[];
   distrInfo?: DistrInfo;
   poolToGauges?: PoolToGauges;
@@ -15,7 +14,7 @@ export interface GenesisState {
 
 export interface GenesisStateSDKType {
   /** params defines all the paramaters of the module. */
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
   lockable_durations: DurationSDKType[];
   distr_info?: DistrInfoSDKType;
   pool_to_gauges?: PoolToGaugesSDKType;
@@ -85,7 +84,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];

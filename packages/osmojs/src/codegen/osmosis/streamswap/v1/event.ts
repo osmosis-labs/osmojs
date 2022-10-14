@@ -1,17 +1,17 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface EventCreateSale {
   id: Long;
   creator: string;
   tokenIn: string;
-  tokenOut: Coin;
+  tokenOut?: Coin;
 }
 export interface EventCreateSaleSDKType {
   id: Long;
   creator: string;
   token_in: string;
-  token_out: CoinSDKType;
+  token_out?: CoinSDKType;
 }
 export interface EventSubscribe {
   sender: string;
@@ -128,7 +128,7 @@ export const EventCreateSale = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EventCreateSale>): EventCreateSale {
+  fromPartial(object: Partial<EventCreateSale>): EventCreateSale {
     const message = createBaseEventCreateSale();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     message.creator = object.creator ?? "";
@@ -194,7 +194,7 @@ export const EventSubscribe = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EventSubscribe>): EventSubscribe {
+  fromPartial(object: Partial<EventSubscribe>): EventSubscribe {
     const message = createBaseEventSubscribe();
     message.sender = object.sender ?? "";
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
@@ -259,7 +259,7 @@ export const EventWithdraw = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EventWithdraw>): EventWithdraw {
+  fromPartial(object: Partial<EventWithdraw>): EventWithdraw {
     const message = createBaseEventWithdraw();
     message.sender = object.sender ?? "";
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
@@ -324,7 +324,7 @@ export const EventExit = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EventExit>): EventExit {
+  fromPartial(object: Partial<EventExit>): EventExit {
     const message = createBaseEventExit();
     message.sender = object.sender ?? "";
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
@@ -380,7 +380,7 @@ export const EventFinalizeSale = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EventFinalizeSale>): EventFinalizeSale {
+  fromPartial(object: Partial<EventFinalizeSale>): EventFinalizeSale {
     const message = createBaseEventFinalizeSale();
     message.saleId = object.saleId !== undefined && object.saleId !== null ? Long.fromValue(object.saleId) : Long.UZERO;
     message.income = object.income ?? "";

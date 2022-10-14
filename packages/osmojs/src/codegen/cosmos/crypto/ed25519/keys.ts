@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * PubKey is an ed25519 public key for handling Tendermint keys in SDK.
  * It's needed for Any serialization and SDK compatibility.
@@ -76,7 +75,7 @@ export const PubKey = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PubKey>): PubKey {
+  fromPartial(object: Partial<PubKey>): PubKey {
     const message = createBasePubKey();
     message.key = object.key ?? new Uint8Array();
     return message;
@@ -121,7 +120,7 @@ export const PrivKey = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PrivKey>): PrivKey {
+  fromPartial(object: Partial<PrivKey>): PrivKey {
     const message = createBasePrivKey();
     message.key = object.key ?? new Uint8Array();
     return message;

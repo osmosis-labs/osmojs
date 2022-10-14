@@ -1,7 +1,7 @@
 import { AccessConfig, AccessConfigSDKType } from "./types";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 
 export interface StoreCodeProposal {
@@ -18,7 +18,7 @@ export interface StoreCodeProposal {
   wasmByteCode: Uint8Array;
   /** InstantiatePermission to apply on contract creation, optional */
 
-  instantiatePermission: AccessConfig;
+  instantiatePermission?: AccessConfig;
 }
 /** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 
@@ -36,7 +36,7 @@ export interface StoreCodeProposalSDKType {
   wasm_byte_code: Uint8Array;
   /** InstantiatePermission to apply on contract creation, optional */
 
-  instantiate_permission: AccessConfigSDKType;
+  instantiate_permission?: AccessConfigSDKType;
 }
 /**
  * InstantiateContractProposal gov proposal content type to instantiate a
@@ -406,7 +406,7 @@ export const StoreCodeProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<StoreCodeProposal>): StoreCodeProposal {
+  fromPartial(object: Partial<StoreCodeProposal>): StoreCodeProposal {
     const message = createBaseStoreCodeProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -518,7 +518,7 @@ export const InstantiateContractProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<InstantiateContractProposal>): InstantiateContractProposal {
+  fromPartial(object: Partial<InstantiateContractProposal>): InstantiateContractProposal {
     const message = createBaseInstantiateContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -606,7 +606,7 @@ export const MigrateContractProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MigrateContractProposal>): MigrateContractProposal {
+  fromPartial(object: Partial<MigrateContractProposal>): MigrateContractProposal {
     const message = createBaseMigrateContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -682,7 +682,7 @@ export const SudoContractProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SudoContractProposal>): SudoContractProposal {
+  fromPartial(object: Partial<SudoContractProposal>): SudoContractProposal {
     const message = createBaseSudoContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -775,7 +775,7 @@ export const ExecuteContractProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ExecuteContractProposal>): ExecuteContractProposal {
+  fromPartial(object: Partial<ExecuteContractProposal>): ExecuteContractProposal {
     const message = createBaseExecuteContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -852,7 +852,7 @@ export const UpdateAdminProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UpdateAdminProposal>): UpdateAdminProposal {
+  fromPartial(object: Partial<UpdateAdminProposal>): UpdateAdminProposal {
     const message = createBaseUpdateAdminProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -918,7 +918,7 @@ export const ClearAdminProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ClearAdminProposal>): ClearAdminProposal {
+  fromPartial(object: Partial<ClearAdminProposal>): ClearAdminProposal {
     const message = createBaseClearAdminProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -995,7 +995,7 @@ export const PinCodesProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PinCodesProposal>): PinCodesProposal {
+  fromPartial(object: Partial<PinCodesProposal>): PinCodesProposal {
     const message = createBasePinCodesProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -1072,7 +1072,7 @@ export const UnpinCodesProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UnpinCodesProposal>): UnpinCodesProposal {
+  fromPartial(object: Partial<UnpinCodesProposal>): UnpinCodesProposal {
     const message = createBaseUnpinCodesProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";

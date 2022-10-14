@@ -2,7 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Params, ParamsSDKType, ValidatorOutstandingRewards, ValidatorOutstandingRewardsSDKType, ValidatorAccumulatedCommission, ValidatorAccumulatedCommissionSDKType, ValidatorSlashEvent, ValidatorSlashEventSDKType, DelegationDelegatorReward, DelegationDelegatorRewardSDKType } from "./distribution";
 import { DecCoin, DecCoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
 }
@@ -12,12 +12,12 @@ export interface QueryParamsRequestSDKType {
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
-    params: Params;
+    params?: Params;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
     /** params defines the parameters of the module. */
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
 }
 /**
  * QueryValidatorOutstandingRewardsRequest is the request type for the
@@ -40,14 +40,14 @@ export interface QueryValidatorOutstandingRewardsRequestSDKType {
  * Query/ValidatorOutstandingRewards RPC method.
  */
 export interface QueryValidatorOutstandingRewardsResponse {
-    rewards: ValidatorOutstandingRewards;
+    rewards?: ValidatorOutstandingRewards;
 }
 /**
  * QueryValidatorOutstandingRewardsResponse is the response type for the
  * Query/ValidatorOutstandingRewards RPC method.
  */
 export interface QueryValidatorOutstandingRewardsResponseSDKType {
-    rewards: ValidatorOutstandingRewardsSDKType;
+    rewards?: ValidatorOutstandingRewardsSDKType;
 }
 /**
  * QueryValidatorCommissionRequest is the request type for the
@@ -71,7 +71,7 @@ export interface QueryValidatorCommissionRequestSDKType {
  */
 export interface QueryValidatorCommissionResponse {
     /** commission defines the commision the validator received. */
-    commission: ValidatorAccumulatedCommission;
+    commission?: ValidatorAccumulatedCommission;
 }
 /**
  * QueryValidatorCommissionResponse is the response type for the
@@ -79,7 +79,7 @@ export interface QueryValidatorCommissionResponse {
  */
 export interface QueryValidatorCommissionResponseSDKType {
     /** commission defines the commision the validator received. */
-    commission: ValidatorAccumulatedCommissionSDKType;
+    commission?: ValidatorAccumulatedCommissionSDKType;
 }
 /**
  * QueryValidatorSlashesRequest is the request type for the
@@ -89,9 +89,9 @@ export interface QueryValidatorSlashesRequest {
     /** validator_address defines the validator address to query for. */
     validatorAddress: string;
     /** starting_height defines the optional starting height to query the slashes. */
-    startingHeight?: Long;
+    startingHeight: Long;
     /** starting_height defines the optional ending height to query the slashes. */
-    endingHeight?: Long;
+    endingHeight: Long;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequest;
 }
@@ -103,9 +103,9 @@ export interface QueryValidatorSlashesRequestSDKType {
     /** validator_address defines the validator address to query for. */
     validator_address: string;
     /** starting_height defines the optional starting height to query the slashes. */
-    starting_height?: Long;
+    starting_height: Long;
     /** starting_height defines the optional ending height to query the slashes. */
-    ending_height?: Long;
+    ending_height: Long;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
@@ -296,90 +296,90 @@ export interface QueryCommunityPoolResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
-    fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryValidatorOutstandingRewardsRequest: {
     encode(message: QueryValidatorOutstandingRewardsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorOutstandingRewardsRequest;
-    fromPartial(object: DeepPartial<QueryValidatorOutstandingRewardsRequest>): QueryValidatorOutstandingRewardsRequest;
+    fromPartial(object: Partial<QueryValidatorOutstandingRewardsRequest>): QueryValidatorOutstandingRewardsRequest;
 };
 export declare const QueryValidatorOutstandingRewardsResponse: {
     encode(message: QueryValidatorOutstandingRewardsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorOutstandingRewardsResponse;
-    fromPartial(object: DeepPartial<QueryValidatorOutstandingRewardsResponse>): QueryValidatorOutstandingRewardsResponse;
+    fromPartial(object: Partial<QueryValidatorOutstandingRewardsResponse>): QueryValidatorOutstandingRewardsResponse;
 };
 export declare const QueryValidatorCommissionRequest: {
     encode(message: QueryValidatorCommissionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorCommissionRequest;
-    fromPartial(object: DeepPartial<QueryValidatorCommissionRequest>): QueryValidatorCommissionRequest;
+    fromPartial(object: Partial<QueryValidatorCommissionRequest>): QueryValidatorCommissionRequest;
 };
 export declare const QueryValidatorCommissionResponse: {
     encode(message: QueryValidatorCommissionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorCommissionResponse;
-    fromPartial(object: DeepPartial<QueryValidatorCommissionResponse>): QueryValidatorCommissionResponse;
+    fromPartial(object: Partial<QueryValidatorCommissionResponse>): QueryValidatorCommissionResponse;
 };
 export declare const QueryValidatorSlashesRequest: {
     encode(message: QueryValidatorSlashesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorSlashesRequest;
-    fromPartial(object: DeepPartial<QueryValidatorSlashesRequest>): QueryValidatorSlashesRequest;
+    fromPartial(object: Partial<QueryValidatorSlashesRequest>): QueryValidatorSlashesRequest;
 };
 export declare const QueryValidatorSlashesResponse: {
     encode(message: QueryValidatorSlashesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorSlashesResponse;
-    fromPartial(object: DeepPartial<QueryValidatorSlashesResponse>): QueryValidatorSlashesResponse;
+    fromPartial(object: Partial<QueryValidatorSlashesResponse>): QueryValidatorSlashesResponse;
 };
 export declare const QueryDelegationRewardsRequest: {
     encode(message: QueryDelegationRewardsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationRewardsRequest;
-    fromPartial(object: DeepPartial<QueryDelegationRewardsRequest>): QueryDelegationRewardsRequest;
+    fromPartial(object: Partial<QueryDelegationRewardsRequest>): QueryDelegationRewardsRequest;
 };
 export declare const QueryDelegationRewardsResponse: {
     encode(message: QueryDelegationRewardsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationRewardsResponse;
-    fromPartial(object: DeepPartial<QueryDelegationRewardsResponse>): QueryDelegationRewardsResponse;
+    fromPartial(object: Partial<QueryDelegationRewardsResponse>): QueryDelegationRewardsResponse;
 };
 export declare const QueryDelegationTotalRewardsRequest: {
     encode(message: QueryDelegationTotalRewardsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationTotalRewardsRequest;
-    fromPartial(object: DeepPartial<QueryDelegationTotalRewardsRequest>): QueryDelegationTotalRewardsRequest;
+    fromPartial(object: Partial<QueryDelegationTotalRewardsRequest>): QueryDelegationTotalRewardsRequest;
 };
 export declare const QueryDelegationTotalRewardsResponse: {
     encode(message: QueryDelegationTotalRewardsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationTotalRewardsResponse;
-    fromPartial(object: DeepPartial<QueryDelegationTotalRewardsResponse>): QueryDelegationTotalRewardsResponse;
+    fromPartial(object: Partial<QueryDelegationTotalRewardsResponse>): QueryDelegationTotalRewardsResponse;
 };
 export declare const QueryDelegatorValidatorsRequest: {
     encode(message: QueryDelegatorValidatorsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsRequest;
-    fromPartial(object: DeepPartial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest;
+    fromPartial(object: Partial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest;
 };
 export declare const QueryDelegatorValidatorsResponse: {
     encode(message: QueryDelegatorValidatorsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsResponse;
-    fromPartial(object: DeepPartial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse;
+    fromPartial(object: Partial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse;
 };
 export declare const QueryDelegatorWithdrawAddressRequest: {
     encode(message: QueryDelegatorWithdrawAddressRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorWithdrawAddressRequest;
-    fromPartial(object: DeepPartial<QueryDelegatorWithdrawAddressRequest>): QueryDelegatorWithdrawAddressRequest;
+    fromPartial(object: Partial<QueryDelegatorWithdrawAddressRequest>): QueryDelegatorWithdrawAddressRequest;
 };
 export declare const QueryDelegatorWithdrawAddressResponse: {
     encode(message: QueryDelegatorWithdrawAddressResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorWithdrawAddressResponse;
-    fromPartial(object: DeepPartial<QueryDelegatorWithdrawAddressResponse>): QueryDelegatorWithdrawAddressResponse;
+    fromPartial(object: Partial<QueryDelegatorWithdrawAddressResponse>): QueryDelegatorWithdrawAddressResponse;
 };
 export declare const QueryCommunityPoolRequest: {
     encode(_: QueryCommunityPoolRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCommunityPoolRequest;
-    fromPartial(_: DeepPartial<QueryCommunityPoolRequest>): QueryCommunityPoolRequest;
+    fromPartial(_: Partial<QueryCommunityPoolRequest>): QueryCommunityPoolRequest;
 };
 export declare const QueryCommunityPoolResponse: {
     encode(message: QueryCommunityPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCommunityPoolResponse;
-    fromPartial(object: DeepPartial<QueryCommunityPoolResponse>): QueryCommunityPoolResponse;
+    fromPartial(object: Partial<QueryCommunityPoolResponse>): QueryCommunityPoolResponse;
 };

@@ -1,6 +1,6 @@
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface Params {
   /**
    * minted_denom is the denomination of the coin expected to be minted by the
@@ -44,12 +44,12 @@ export interface DistrRecordSDKType {
 export interface PoolToGauge {
   poolId: Long;
   gaugeId: Long;
-  duration: Duration;
+  duration?: Duration;
 }
 export interface PoolToGaugeSDKType {
   pool_id: Long;
   gauge_id: Long;
-  duration: DurationSDKType;
+  duration?: DurationSDKType;
 }
 export interface PoolToGauges {
   poolToGauge: PoolToGauge[];
@@ -95,7 +95,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.mintedDenom = object.mintedDenom ?? "";
     return message;
@@ -140,7 +140,7 @@ export const LockableDurationsInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo {
+  fromPartial(object: Partial<LockableDurationsInfo>): LockableDurationsInfo {
     const message = createBaseLockableDurationsInfo();
     message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
     return message;
@@ -194,7 +194,7 @@ export const DistrInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DistrInfo>): DistrInfo {
+  fromPartial(object: Partial<DistrInfo>): DistrInfo {
     const message = createBaseDistrInfo();
     message.totalWeight = object.totalWeight ?? "";
     message.records = object.records?.map(e => DistrRecord.fromPartial(e)) || [];
@@ -249,7 +249,7 @@ export const DistrRecord = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DistrRecord>): DistrRecord {
+  fromPartial(object: Partial<DistrRecord>): DistrRecord {
     const message = createBaseDistrRecord();
     message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
     message.weight = object.weight ?? "";
@@ -313,7 +313,7 @@ export const PoolToGauge = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PoolToGauge>): PoolToGauge {
+  fromPartial(object: Partial<PoolToGauge>): PoolToGauge {
     const message = createBasePoolToGauge();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
@@ -360,7 +360,7 @@ export const PoolToGauges = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PoolToGauges>): PoolToGauges {
+  fromPartial(object: Partial<PoolToGauges>): PoolToGauges {
     const message = createBasePoolToGauges();
     message.poolToGauge = object.poolToGauge?.map(e => PoolToGauge.fromPartial(e)) || [];
     return message;

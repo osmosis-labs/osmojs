@@ -1,7 +1,6 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** Params holds parameters for the streamswap module */
 export interface Params {
     /**
@@ -15,9 +14,9 @@ export interface Params {
      * minimum amount duration of time between the sale creation and the sale
      * start time.
      */
-    minDurationUntilStartTime: Duration;
+    minDurationUntilStartTime?: Duration;
     /** minimum duration for every new sale. */
-    minSaleDuration: Duration;
+    minSaleDuration?: Duration;
 }
 /** Params holds parameters for the streamswap module */
 export interface ParamsSDKType {
@@ -32,12 +31,12 @@ export interface ParamsSDKType {
      * minimum amount duration of time between the sale creation and the sale
      * start time.
      */
-    min_duration_until_start_time: DurationSDKType;
+    min_duration_until_start_time?: DurationSDKType;
     /** minimum duration for every new sale. */
-    min_sale_duration: DurationSDKType;
+    min_sale_duration?: DurationSDKType;
 }
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromPartial(object: DeepPartial<Params>): Params;
+    fromPartial(object: Partial<Params>): Params;
 };

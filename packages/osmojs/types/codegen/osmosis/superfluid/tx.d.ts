@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 export interface MsgSuperfluidDelegate {
     sender: string;
     lockId: Long;
@@ -102,50 +102,50 @@ export interface MsgUnPoolWhitelistedPoolResponseSDKType {
 export declare const MsgSuperfluidDelegate: {
     encode(message: MsgSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegate;
-    fromPartial(object: DeepPartial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate;
+    fromPartial(object: Partial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate;
 };
 export declare const MsgSuperfluidDelegateResponse: {
     encode(_: MsgSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegateResponse;
-    fromPartial(_: DeepPartial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse;
+    fromPartial(_: Partial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse;
 };
 export declare const MsgSuperfluidUndelegate: {
     encode(message: MsgSuperfluidUndelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegate;
-    fromPartial(object: DeepPartial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate;
+    fromPartial(object: Partial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate;
 };
 export declare const MsgSuperfluidUndelegateResponse: {
     encode(_: MsgSuperfluidUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateResponse;
-    fromPartial(_: DeepPartial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse;
+    fromPartial(_: Partial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse;
 };
 export declare const MsgSuperfluidUnbondLock: {
     encode(message: MsgSuperfluidUnbondLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLock;
-    fromPartial(object: DeepPartial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock;
+    fromPartial(object: Partial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock;
 };
 export declare const MsgSuperfluidUnbondLockResponse: {
     encode(_: MsgSuperfluidUnbondLockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponse;
-    fromPartial(_: DeepPartial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse;
+    fromPartial(_: Partial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse;
 };
 export declare const MsgLockAndSuperfluidDelegate: {
     encode(message: MsgLockAndSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegate;
-    fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegate>): MsgLockAndSuperfluidDelegate;
+    fromPartial(object: Partial<MsgLockAndSuperfluidDelegate>): MsgLockAndSuperfluidDelegate;
 };
 export declare const MsgLockAndSuperfluidDelegateResponse: {
     encode(message: MsgLockAndSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegateResponse;
-    fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse;
+    fromPartial(object: Partial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse;
 };
 export declare const MsgUnPoolWhitelistedPool: {
     encode(message: MsgUnPoolWhitelistedPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPool;
-    fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool;
+    fromPartial(object: Partial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool;
 };
 export declare const MsgUnPoolWhitelistedPoolResponse: {
     encode(message: MsgUnPoolWhitelistedPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponse;
-    fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse;
+    fromPartial(object: Partial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse;
 };

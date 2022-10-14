@@ -4,7 +4,7 @@ import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, toTimestamp, fromTimestamp, Long } from "../../../helpers";
+import { toTimestamp, fromTimestamp, Long } from "../../../helpers";
 /** BondStatus is the status of a validator. */
 
 export enum BondStatus {
@@ -88,7 +88,7 @@ export function bondStatusToJSON(object: BondStatus): string {
  */
 
 export interface HistoricalInfo {
-  header: Header;
+  header?: Header;
   valset: Validator[];
 }
 /**
@@ -99,7 +99,7 @@ export interface HistoricalInfo {
  */
 
 export interface HistoricalInfoSDKType {
-  header: HeaderSDKType;
+  header?: HeaderSDKType;
   valset: ValidatorSDKType[];
 }
 /**
@@ -136,19 +136,19 @@ export interface CommissionRatesSDKType {
 
 export interface Commission {
   /** commission_rates defines the initial commission rates to be used for creating a validator. */
-  commissionRates: CommissionRates;
+  commissionRates?: CommissionRates;
   /** update_time is the last time the commission rate was changed. */
 
-  updateTime: Date;
+  updateTime?: Date;
 }
 /** Commission defines commission parameters for a given validator. */
 
 export interface CommissionSDKType {
   /** commission_rates defines the initial commission rates to be used for creating a validator. */
-  commission_rates: CommissionRatesSDKType;
+  commission_rates?: CommissionRatesSDKType;
   /** update_time is the last time the commission rate was changed. */
 
-  update_time: Date;
+  update_time?: Date;
 }
 /** Description defines a validator description. */
 
@@ -202,7 +202,7 @@ export interface Validator {
   operatorAddress: string;
   /** consensus_pubkey is the consensus public key of the validator, as a Protobuf Any. */
 
-  consensusPubkey: Any;
+  consensusPubkey?: Any;
   /** jailed defined whether the validator has been jailed from bonded status or not. */
 
   jailed: boolean;
@@ -217,16 +217,16 @@ export interface Validator {
   delegatorShares: string;
   /** description defines the description terms for the validator. */
 
-  description: Description;
+  description?: Description;
   /** unbonding_height defines, if unbonding, the height at which this validator has begun unbonding. */
 
   unbondingHeight: Long;
   /** unbonding_time defines, if unbonding, the min time for the validator to complete unbonding. */
 
-  unbondingTime: Date;
+  unbondingTime?: Date;
   /** commission defines the commission parameters. */
 
-  commission: Commission;
+  commission?: Commission;
   /** min_self_delegation is the validator's self declared minimum self delegation. */
 
   minSelfDelegation: string;
@@ -247,7 +247,7 @@ export interface ValidatorSDKType {
   operator_address: string;
   /** consensus_pubkey is the consensus public key of the validator, as a Protobuf Any. */
 
-  consensus_pubkey: AnySDKType;
+  consensus_pubkey?: AnySDKType;
   /** jailed defined whether the validator has been jailed from bonded status or not. */
 
   jailed: boolean;
@@ -262,16 +262,16 @@ export interface ValidatorSDKType {
   delegator_shares: string;
   /** description defines the description terms for the validator. */
 
-  description: DescriptionSDKType;
+  description?: DescriptionSDKType;
   /** unbonding_height defines, if unbonding, the height at which this validator has begun unbonding. */
 
   unbonding_height: Long;
   /** unbonding_time defines, if unbonding, the min time for the validator to complete unbonding. */
 
-  unbonding_time: Date;
+  unbonding_time?: Date;
   /** commission defines the commission parameters. */
 
-  commission: CommissionSDKType;
+  commission?: CommissionSDKType;
   /** min_self_delegation is the validator's self declared minimum self delegation. */
 
   min_self_delegation: string;
@@ -419,7 +419,7 @@ export interface UnbondingDelegationEntry {
   creationHeight: Long;
   /** completion_time is the unix time for unbonding completion. */
 
-  completionTime: Date;
+  completionTime?: Date;
   /** initial_balance defines the tokens initially scheduled to receive at completion. */
 
   initialBalance: string;
@@ -434,7 +434,7 @@ export interface UnbondingDelegationEntrySDKType {
   creation_height: Long;
   /** completion_time is the unix time for unbonding completion. */
 
-  completion_time: Date;
+  completion_time?: Date;
   /** initial_balance defines the tokens initially scheduled to receive at completion. */
 
   initial_balance: string;
@@ -449,7 +449,7 @@ export interface RedelegationEntry {
   creationHeight: Long;
   /** completion_time defines the unix time for redelegation completion. */
 
-  completionTime: Date;
+  completionTime?: Date;
   /** initial_balance defines the initial balance when redelegation started. */
 
   initialBalance: string;
@@ -464,7 +464,7 @@ export interface RedelegationEntrySDKType {
   creation_height: Long;
   /** completion_time defines the unix time for redelegation completion. */
 
-  completion_time: Date;
+  completion_time?: Date;
   /** initial_balance defines the initial balance when redelegation started. */
 
   initial_balance: string;
@@ -512,7 +512,7 @@ export interface RedelegationSDKType {
 
 export interface Params {
   /** unbonding_time is the time duration of unbonding. */
-  unbondingTime: Duration;
+  unbondingTime?: Duration;
   /** max_validators is the maximum number of validators. */
 
   maxValidators: number;
@@ -533,7 +533,7 @@ export interface Params {
 
 export interface ParamsSDKType {
   /** unbonding_time is the time duration of unbonding. */
-  unbonding_time: DurationSDKType;
+  unbonding_time?: DurationSDKType;
   /** max_validators is the maximum number of validators. */
 
   max_validators: number;
@@ -556,8 +556,8 @@ export interface ParamsSDKType {
  */
 
 export interface DelegationResponse {
-  delegation: Delegation;
-  balance: Coin;
+  delegation?: Delegation;
+  balance?: Coin;
 }
 /**
  * DelegationResponse is equivalent to Delegation except that it contains a
@@ -565,8 +565,8 @@ export interface DelegationResponse {
  */
 
 export interface DelegationResponseSDKType {
-  delegation: DelegationSDKType;
-  balance: CoinSDKType;
+  delegation?: DelegationSDKType;
+  balance?: CoinSDKType;
 }
 /**
  * RedelegationEntryResponse is equivalent to a RedelegationEntry except that it
@@ -575,7 +575,7 @@ export interface DelegationResponseSDKType {
  */
 
 export interface RedelegationEntryResponse {
-  redelegationEntry: RedelegationEntry;
+  redelegationEntry?: RedelegationEntry;
   balance: string;
 }
 /**
@@ -585,7 +585,7 @@ export interface RedelegationEntryResponse {
  */
 
 export interface RedelegationEntryResponseSDKType {
-  redelegation_entry: RedelegationEntrySDKType;
+  redelegation_entry?: RedelegationEntrySDKType;
   balance: string;
 }
 /**
@@ -595,7 +595,7 @@ export interface RedelegationEntryResponseSDKType {
  */
 
 export interface RedelegationResponse {
-  redelegation: Redelegation;
+  redelegation?: Redelegation;
   entries: RedelegationEntryResponse[];
 }
 /**
@@ -605,7 +605,7 @@ export interface RedelegationResponse {
  */
 
 export interface RedelegationResponseSDKType {
-  redelegation: RedelegationSDKType;
+  redelegation?: RedelegationSDKType;
   entries: RedelegationEntryResponseSDKType[];
 }
 /**
@@ -673,7 +673,7 @@ export const HistoricalInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<HistoricalInfo>): HistoricalInfo {
+  fromPartial(object: Partial<HistoricalInfo>): HistoricalInfo {
     const message = createBaseHistoricalInfo();
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
     message.valset = object.valset?.map(e => Validator.fromPartial(e)) || [];
@@ -737,7 +737,7 @@ export const CommissionRates = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<CommissionRates>): CommissionRates {
+  fromPartial(object: Partial<CommissionRates>): CommissionRates {
     const message = createBaseCommissionRates();
     message.rate = object.rate ?? "";
     message.maxRate = object.maxRate ?? "";
@@ -793,7 +793,7 @@ export const Commission = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Commission>): Commission {
+  fromPartial(object: Partial<Commission>): Commission {
     const message = createBaseCommission();
     message.commissionRates = object.commissionRates !== undefined && object.commissionRates !== null ? CommissionRates.fromPartial(object.commissionRates) : undefined;
     message.updateTime = object.updateTime ?? undefined;
@@ -875,7 +875,7 @@ export const Description = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Description>): Description {
+  fromPartial(object: Partial<Description>): Description {
     const message = createBaseDescription();
     message.moniker = object.moniker ?? "";
     message.identity = object.identity ?? "";
@@ -1014,7 +1014,7 @@ export const Validator = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Validator>): Validator {
+  fromPartial(object: Partial<Validator>): Validator {
     const message = createBaseValidator();
     message.operatorAddress = object.operatorAddress ?? "";
     message.consensusPubkey = object.consensusPubkey !== undefined && object.consensusPubkey !== null ? Any.fromPartial(object.consensusPubkey) : undefined;
@@ -1069,7 +1069,7 @@ export const ValAddresses = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ValAddresses>): ValAddresses {
+  fromPartial(object: Partial<ValAddresses>): ValAddresses {
     const message = createBaseValAddresses();
     message.addresses = object.addresses?.map(e => e) || [];
     return message;
@@ -1123,7 +1123,7 @@ export const DVPair = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DVPair>): DVPair {
+  fromPartial(object: Partial<DVPair>): DVPair {
     const message = createBaseDVPair();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
@@ -1169,7 +1169,7 @@ export const DVPairs = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DVPairs>): DVPairs {
+  fromPartial(object: Partial<DVPairs>): DVPairs {
     const message = createBaseDVPairs();
     message.pairs = object.pairs?.map(e => DVPair.fromPartial(e)) || [];
     return message;
@@ -1232,7 +1232,7 @@ export const DVVTriplet = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DVVTriplet>): DVVTriplet {
+  fromPartial(object: Partial<DVVTriplet>): DVVTriplet {
     const message = createBaseDVVTriplet();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorSrcAddress = object.validatorSrcAddress ?? "";
@@ -1279,7 +1279,7 @@ export const DVVTriplets = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DVVTriplets>): DVVTriplets {
+  fromPartial(object: Partial<DVVTriplets>): DVVTriplets {
     const message = createBaseDVVTriplets();
     message.triplets = object.triplets?.map(e => DVVTriplet.fromPartial(e)) || [];
     return message;
@@ -1342,7 +1342,7 @@ export const Delegation = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Delegation>): Delegation {
+  fromPartial(object: Partial<Delegation>): Delegation {
     const message = createBaseDelegation();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
@@ -1407,7 +1407,7 @@ export const UnbondingDelegation = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UnbondingDelegation>): UnbondingDelegation {
+  fromPartial(object: Partial<UnbondingDelegation>): UnbondingDelegation {
     const message = createBaseUnbondingDelegation();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
@@ -1481,7 +1481,7 @@ export const UnbondingDelegationEntry = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UnbondingDelegationEntry>): UnbondingDelegationEntry {
+  fromPartial(object: Partial<UnbondingDelegationEntry>): UnbondingDelegationEntry {
     const message = createBaseUnbondingDelegationEntry();
     message.creationHeight = object.creationHeight !== undefined && object.creationHeight !== null ? Long.fromValue(object.creationHeight) : Long.ZERO;
     message.completionTime = object.completionTime ?? undefined;
@@ -1556,7 +1556,7 @@ export const RedelegationEntry = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RedelegationEntry>): RedelegationEntry {
+  fromPartial(object: Partial<RedelegationEntry>): RedelegationEntry {
     const message = createBaseRedelegationEntry();
     message.creationHeight = object.creationHeight !== undefined && object.creationHeight !== null ? Long.fromValue(object.creationHeight) : Long.ZERO;
     message.completionTime = object.completionTime ?? undefined;
@@ -1631,7 +1631,7 @@ export const Redelegation = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Redelegation>): Redelegation {
+  fromPartial(object: Partial<Redelegation>): Redelegation {
     const message = createBaseRedelegation();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorSrcAddress = object.validatorSrcAddress ?? "";
@@ -1724,7 +1724,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.unbondingTime = object.unbondingTime !== undefined && object.unbondingTime !== null ? Duration.fromPartial(object.unbondingTime) : undefined;
     message.maxValidators = object.maxValidators ?? 0;
@@ -1783,7 +1783,7 @@ export const DelegationResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DelegationResponse>): DelegationResponse {
+  fromPartial(object: Partial<DelegationResponse>): DelegationResponse {
     const message = createBaseDelegationResponse();
     message.delegation = object.delegation !== undefined && object.delegation !== null ? Delegation.fromPartial(object.delegation) : undefined;
     message.balance = object.balance !== undefined && object.balance !== null ? Coin.fromPartial(object.balance) : undefined;
@@ -1838,7 +1838,7 @@ export const RedelegationEntryResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RedelegationEntryResponse>): RedelegationEntryResponse {
+  fromPartial(object: Partial<RedelegationEntryResponse>): RedelegationEntryResponse {
     const message = createBaseRedelegationEntryResponse();
     message.redelegationEntry = object.redelegationEntry !== undefined && object.redelegationEntry !== null ? RedelegationEntry.fromPartial(object.redelegationEntry) : undefined;
     message.balance = object.balance ?? "";
@@ -1893,7 +1893,7 @@ export const RedelegationResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RedelegationResponse>): RedelegationResponse {
+  fromPartial(object: Partial<RedelegationResponse>): RedelegationResponse {
     const message = createBaseRedelegationResponse();
     message.redelegation = object.redelegation !== undefined && object.redelegation !== null ? Redelegation.fromPartial(object.redelegation) : undefined;
     message.entries = object.entries?.map(e => RedelegationEntryResponse.fromPartial(e)) || [];
@@ -1948,7 +1948,7 @@ export const Pool = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Pool>): Pool {
+  fromPartial(object: Partial<Pool>): Pool {
     const message = createBasePool();
     message.notBondedTokens = object.notBondedTokens ?? "";
     message.bondedTokens = object.bondedTokens ?? "";

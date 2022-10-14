@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { lockQueryTypeFromJSON } from "../lockup/lock";
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "../../helpers";

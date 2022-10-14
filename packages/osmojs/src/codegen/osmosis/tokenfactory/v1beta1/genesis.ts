@@ -1,19 +1,18 @@
 import { Params, ParamsSDKType } from "./params";
 import { DenomAuthorityMetadata, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** GenesisState defines the tokenfactory module's genesis state. */
 
 export interface GenesisState {
   /** params defines the paramaters of the module. */
-  params: Params;
+  params?: Params;
   factoryDenoms: GenesisDenom[];
 }
 /** GenesisState defines the tokenfactory module's genesis state. */
 
 export interface GenesisStateSDKType {
   /** params defines the paramaters of the module. */
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
   factory_denoms: GenesisDenomSDKType[];
 }
 /**
@@ -24,7 +23,7 @@ export interface GenesisStateSDKType {
 
 export interface GenesisDenom {
   denom: string;
-  authorityMetadata: DenomAuthorityMetadata;
+  authorityMetadata?: DenomAuthorityMetadata;
 }
 /**
  * GenesisDenom defines a tokenfactory denom that is defined within genesis
@@ -34,7 +33,7 @@ export interface GenesisDenom {
 
 export interface GenesisDenomSDKType {
   denom: string;
-  authority_metadata: DenomAuthorityMetadataSDKType;
+  authority_metadata?: DenomAuthorityMetadataSDKType;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -83,7 +82,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.factoryDenoms = object.factoryDenoms?.map(e => GenesisDenom.fromPartial(e)) || [];
@@ -138,7 +137,7 @@ export const GenesisDenom = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisDenom>): GenesisDenom {
+  fromPartial(object: Partial<GenesisDenom>): GenesisDenom {
     const message = createBaseGenesisDenom();
     message.denom = object.denom ?? "";
     message.authorityMetadata = object.authorityMetadata !== undefined && object.authorityMetadata !== null ? DenomAuthorityMetadata.fromPartial(object.authorityMetadata) : undefined;

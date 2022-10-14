@@ -1,6 +1,5 @@
 import { Plan, PlanSDKType } from "./upgrade";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
  * 
@@ -12,7 +11,7 @@ export interface MsgSoftwareUpgrade {
   authority: string;
   /** plan is the upgrade plan. */
 
-  plan: Plan;
+  plan?: Plan;
 }
 /**
  * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
@@ -25,7 +24,7 @@ export interface MsgSoftwareUpgradeSDKType {
   authority: string;
   /** plan is the upgrade plan. */
 
-  plan: PlanSDKType;
+  plan?: PlanSDKType;
 }
 /**
  * MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.
@@ -122,7 +121,7 @@ export const MsgSoftwareUpgrade = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSoftwareUpgrade>): MsgSoftwareUpgrade {
+  fromPartial(object: Partial<MsgSoftwareUpgrade>): MsgSoftwareUpgrade {
     const message = createBaseMsgSoftwareUpgrade();
     message.authority = object.authority ?? "";
     message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
@@ -158,7 +157,7 @@ export const MsgSoftwareUpgradeResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse {
+  fromPartial(_: Partial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse {
     const message = createBaseMsgSoftwareUpgradeResponse();
     return message;
   }
@@ -202,7 +201,7 @@ export const MsgCancelUpgrade = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgCancelUpgrade>): MsgCancelUpgrade {
+  fromPartial(object: Partial<MsgCancelUpgrade>): MsgCancelUpgrade {
     const message = createBaseMsgCancelUpgrade();
     message.authority = object.authority ?? "";
     return message;
@@ -237,7 +236,7 @@ export const MsgCancelUpgradeResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse {
+  fromPartial(_: Partial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse {
     const message = createBaseMsgCancelUpgradeResponse();
     return message;
   }

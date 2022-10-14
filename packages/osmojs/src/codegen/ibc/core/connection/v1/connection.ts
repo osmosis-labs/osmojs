@@ -1,6 +1,6 @@
 import { MerklePrefix, MerklePrefixSDKType } from "../../commitment/v1/commitment";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * State defines if a connection is in one of the following states:
  * INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -109,7 +109,7 @@ export interface ConnectionEnd {
   state: State;
   /** counterparty chain associated with this connection. */
 
-  counterparty: Counterparty;
+  counterparty?: Counterparty;
   /**
    * delay period that must pass before a consensus state can be used for
    * packet-verification NOTE: delay period logic is only implemented by some
@@ -139,7 +139,7 @@ export interface ConnectionEndSDKType {
   state: StateSDKType;
   /** counterparty chain associated with this connection. */
 
-  counterparty: CounterpartySDKType;
+  counterparty?: CounterpartySDKType;
   /**
    * delay period that must pass before a consensus state can be used for
    * packet-verification NOTE: delay period logic is only implemented by some
@@ -170,7 +170,7 @@ export interface IdentifiedConnection {
   state: State;
   /** counterparty chain associated with this connection. */
 
-  counterparty: Counterparty;
+  counterparty?: Counterparty;
   /** delay period associated with this connection. */
 
   delayPeriod: Long;
@@ -197,7 +197,7 @@ export interface IdentifiedConnectionSDKType {
   state: StateSDKType;
   /** counterparty chain associated with this connection. */
 
-  counterparty: CounterpartySDKType;
+  counterparty?: CounterpartySDKType;
   /** delay period associated with this connection. */
 
   delay_period: Long;
@@ -218,7 +218,7 @@ export interface Counterparty {
   connectionId: string;
   /** commitment merkle prefix of the counterparty chain. */
 
-  prefix: MerklePrefix;
+  prefix?: MerklePrefix;
 }
 /** Counterparty defines the counterparty chain associated with a connection end. */
 
@@ -236,7 +236,7 @@ export interface CounterpartySDKType {
   connection_id: string;
   /** commitment merkle prefix of the counterparty chain. */
 
-  prefix: MerklePrefixSDKType;
+  prefix?: MerklePrefixSDKType;
 }
 /** ClientPaths define all the connection paths for a client state. */
 
@@ -386,7 +386,7 @@ export const ConnectionEnd = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ConnectionEnd>): ConnectionEnd {
+  fromPartial(object: Partial<ConnectionEnd>): ConnectionEnd {
     const message = createBaseConnectionEnd();
     message.clientId = object.clientId ?? "";
     message.versions = object.versions?.map(e => Version.fromPartial(e)) || [];
@@ -480,7 +480,7 @@ export const IdentifiedConnection = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<IdentifiedConnection>): IdentifiedConnection {
+  fromPartial(object: Partial<IdentifiedConnection>): IdentifiedConnection {
     const message = createBaseIdentifiedConnection();
     message.id = object.id ?? "";
     message.clientId = object.clientId ?? "";
@@ -548,7 +548,7 @@ export const Counterparty = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Counterparty>): Counterparty {
+  fromPartial(object: Partial<Counterparty>): Counterparty {
     const message = createBaseCounterparty();
     message.clientId = object.clientId ?? "";
     message.connectionId = object.connectionId ?? "";
@@ -595,7 +595,7 @@ export const ClientPaths = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ClientPaths>): ClientPaths {
+  fromPartial(object: Partial<ClientPaths>): ClientPaths {
     const message = createBaseClientPaths();
     message.paths = object.paths?.map(e => e) || [];
     return message;
@@ -649,7 +649,7 @@ export const ConnectionPaths = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ConnectionPaths>): ConnectionPaths {
+  fromPartial(object: Partial<ConnectionPaths>): ConnectionPaths {
     const message = createBaseConnectionPaths();
     message.clientId = object.clientId ?? "";
     message.paths = object.paths?.map(e => e) || [];
@@ -704,7 +704,7 @@ export const Version = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Version>): Version {
+  fromPartial(object: Partial<Version>): Version {
     const message = createBaseVersion();
     message.identifier = object.identifier ?? "";
     message.features = object.features?.map(e => e) || [];
@@ -750,7 +750,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.maxExpectedTimePerBlock = object.maxExpectedTimePerBlock !== undefined && object.maxExpectedTimePerBlock !== null ? Long.fromValue(object.maxExpectedTimePerBlock) : Long.UZERO;
     return message;

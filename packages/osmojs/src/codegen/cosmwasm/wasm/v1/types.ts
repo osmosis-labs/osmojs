@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** AccessType permission types */
 
 export enum AccessType {
@@ -176,14 +176,14 @@ export interface AccessConfigSDKType {
 /** Params defines the set of wasm parameters. */
 
 export interface Params {
-  codeUploadAccess: AccessConfig;
+  codeUploadAccess?: AccessConfig;
   instantiateDefaultPermission: AccessType;
   maxWasmCodeSize: Long;
 }
 /** Params defines the set of wasm parameters. */
 
 export interface ParamsSDKType {
-  code_upload_access: AccessConfigSDKType;
+  code_upload_access?: AccessConfigSDKType;
   instantiate_default_permission: AccessTypeSDKType;
   max_wasm_code_size: Long;
 }
@@ -197,7 +197,7 @@ export interface CodeInfo {
   creator: string;
   /** InstantiateConfig access control to apply on contract creation, optional */
 
-  instantiateConfig: AccessConfig;
+  instantiateConfig?: AccessConfig;
 }
 /** CodeInfo is data for the uploaded contract WASM code */
 
@@ -209,7 +209,7 @@ export interface CodeInfoSDKType {
   creator: string;
   /** InstantiateConfig access control to apply on contract creation, optional */
 
-  instantiate_config: AccessConfigSDKType;
+  instantiate_config?: AccessConfigSDKType;
 }
 /** ContractInfo stores a WASM contract instance */
 
@@ -231,14 +231,14 @@ export interface ContractInfo {
    * use for sorting
    */
 
-  created: AbsoluteTxPosition;
+  created?: AbsoluteTxPosition;
   ibcPortId: string;
   /**
    * Extension is an extension point to store custom metadata within the
    * persistence model.
    */
 
-  extension: Any;
+  extension?: Any;
 }
 /** ContractInfo stores a WASM contract instance */
 
@@ -260,14 +260,14 @@ export interface ContractInfoSDKType {
    * use for sorting
    */
 
-  created: AbsoluteTxPositionSDKType;
+  created?: AbsoluteTxPositionSDKType;
   ibc_port_id: string;
   /**
    * Extension is an extension point to store custom metadata within the
    * persistence model.
    */
 
-  extension: AnySDKType;
+  extension?: AnySDKType;
 }
 /** ContractCodeHistoryEntry metadata to a contract. */
 
@@ -278,7 +278,7 @@ export interface ContractCodeHistoryEntry {
   codeId: Long;
   /** Updated Tx position when the operation was executed. */
 
-  updated: AbsoluteTxPosition;
+  updated?: AbsoluteTxPosition;
   msg: Uint8Array;
 }
 /** ContractCodeHistoryEntry metadata to a contract. */
@@ -290,7 +290,7 @@ export interface ContractCodeHistoryEntrySDKType {
   code_id: Long;
   /** Updated Tx position when the operation was executed. */
 
-  updated: AbsoluteTxPositionSDKType;
+  updated?: AbsoluteTxPositionSDKType;
   msg: Uint8Array;
 }
 /**
@@ -379,7 +379,7 @@ export const AccessTypeParam = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<AccessTypeParam>): AccessTypeParam {
+  fromPartial(object: Partial<AccessTypeParam>): AccessTypeParam {
     const message = createBaseAccessTypeParam();
     message.value = object.value ?? 0;
     return message;
@@ -433,7 +433,7 @@ export const AccessConfig = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<AccessConfig>): AccessConfig {
+  fromPartial(object: Partial<AccessConfig>): AccessConfig {
     const message = createBaseAccessConfig();
     message.permission = object.permission ?? 0;
     message.address = object.address ?? "";
@@ -497,7 +497,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.codeUploadAccess = object.codeUploadAccess !== undefined && object.codeUploadAccess !== null ? AccessConfig.fromPartial(object.codeUploadAccess) : undefined;
     message.instantiateDefaultPermission = object.instantiateDefaultPermission ?? 0;
@@ -562,7 +562,7 @@ export const CodeInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<CodeInfo>): CodeInfo {
+  fromPartial(object: Partial<CodeInfo>): CodeInfo {
     const message = createBaseCodeInfo();
     message.codeHash = object.codeHash ?? new Uint8Array();
     message.creator = object.creator ?? "";
@@ -663,7 +663,7 @@ export const ContractInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ContractInfo>): ContractInfo {
+  fromPartial(object: Partial<ContractInfo>): ContractInfo {
     const message = createBaseContractInfo();
     message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.creator = object.creator ?? "";
@@ -741,7 +741,7 @@ export const ContractCodeHistoryEntry = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ContractCodeHistoryEntry>): ContractCodeHistoryEntry {
+  fromPartial(object: Partial<ContractCodeHistoryEntry>): ContractCodeHistoryEntry {
     const message = createBaseContractCodeHistoryEntry();
     message.operation = object.operation ?? 0;
     message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
@@ -798,7 +798,7 @@ export const AbsoluteTxPosition = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<AbsoluteTxPosition>): AbsoluteTxPosition {
+  fromPartial(object: Partial<AbsoluteTxPosition>): AbsoluteTxPosition {
     const message = createBaseAbsoluteTxPosition();
     message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? Long.fromValue(object.blockHeight) : Long.UZERO;
     message.txIndex = object.txIndex !== undefined && object.txIndex !== null ? Long.fromValue(object.txIndex) : Long.UZERO;
@@ -853,7 +853,7 @@ export const Model = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Model>): Model {
+  fromPartial(object: Partial<Model>): Model {
     const message = createBaseModel();
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();

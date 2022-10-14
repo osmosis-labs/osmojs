@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../../helpers";
 /**
  * DenomTrace contains the base denomination for ICS20 fungible tokens and the
  * source tracing information path.
@@ -65,10 +64,10 @@ export interface ParamsSDKType {
 export declare const DenomTrace: {
     encode(message: DenomTrace, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomTrace;
-    fromPartial(object: DeepPartial<DenomTrace>): DenomTrace;
+    fromPartial(object: Partial<DenomTrace>): DenomTrace;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromPartial(object: DeepPartial<Params>): Params;
+    fromPartial(object: Partial<Params>): Params;
 };

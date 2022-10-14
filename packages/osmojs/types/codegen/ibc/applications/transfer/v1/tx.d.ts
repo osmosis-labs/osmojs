@@ -1,7 +1,7 @@
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { Height, HeightSDKType } from "../../../core/client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
  * ICS20 enabled chains. See ICS Spec here:
@@ -13,7 +13,7 @@ export interface MsgTransfer {
     /** the channel by which the packet will be sent */
     sourceChannel: string;
     /** the tokens to be transferred */
-    token: Coin;
+    token?: Coin;
     /** the sender address */
     sender: string;
     /** the recipient address on the destination chain */
@@ -22,7 +22,7 @@ export interface MsgTransfer {
      * Timeout height relative to the current block height.
      * The timeout is disabled when set to 0.
      */
-    timeoutHeight: Height;
+    timeoutHeight?: Height;
     /**
      * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
      * The timeout is disabled when set to 0.
@@ -40,7 +40,7 @@ export interface MsgTransferSDKType {
     /** the channel by which the packet will be sent */
     source_channel: string;
     /** the tokens to be transferred */
-    token: CoinSDKType;
+    token?: CoinSDKType;
     /** the sender address */
     sender: string;
     /** the recipient address on the destination chain */
@@ -49,7 +49,7 @@ export interface MsgTransferSDKType {
      * Timeout height relative to the current block height.
      * The timeout is disabled when set to 0.
      */
-    timeout_height: HeightSDKType;
+    timeout_height?: HeightSDKType;
     /**
      * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
      * The timeout is disabled when set to 0.
@@ -65,10 +65,10 @@ export interface MsgTransferResponseSDKType {
 export declare const MsgTransfer: {
     encode(message: MsgTransfer, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransfer;
-    fromPartial(object: DeepPartial<MsgTransfer>): MsgTransfer;
+    fromPartial(object: Partial<MsgTransfer>): MsgTransfer;
 };
 export declare const MsgTransferResponse: {
     encode(_: MsgTransferResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponse;
-    fromPartial(_: DeepPartial<MsgTransferResponse>): MsgTransferResponse;
+    fromPartial(_: Partial<MsgTransferResponse>): MsgTransferResponse;
 };

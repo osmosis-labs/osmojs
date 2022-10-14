@@ -4,7 +4,7 @@ import { TxResponse, TxResponseSDKType, GasInfo, GasInfoSDKType, Result, ResultS
 import { BlockID, BlockIDSDKType } from "../../../tendermint/types/types";
 import { Block, BlockSDKType } from "../../../tendermint/types/block";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** OrderBy defines the sorting order */
 
 export enum OrderBy {
@@ -167,11 +167,11 @@ export function broadcastModeToJSON(object: BroadcastMode): string {
 
 export interface GetTxsEventRequest {
   /** events is the list of transaction event type. */
-  events?: string[];
+  events: string[];
   /** pagination defines a pagination for the request. */
 
   pagination?: PageRequest;
-  orderBy?: OrderBy;
+  orderBy: OrderBy;
 }
 /**
  * GetTxsEventRequest is the request type for the Service.TxsByEvents
@@ -180,11 +180,11 @@ export interface GetTxsEventRequest {
 
 export interface GetTxsEventRequestSDKType {
   /** events is the list of transaction event type. */
-  events?: string[];
+  events: string[];
   /** pagination defines a pagination for the request. */
 
   pagination?: PageRequestSDKType;
-  order_by?: OrderBySDKType;
+  order_by: OrderBySDKType;
 }
 /**
  * GetTxsEventResponse is the response type for the Service.TxsByEvents
@@ -243,7 +243,7 @@ export interface BroadcastTxRequestSDKType {
 
 export interface BroadcastTxResponse {
   /** tx_response is the queried TxResponses. */
-  txResponse: TxResponse;
+  txResponse?: TxResponse;
 }
 /**
  * BroadcastTxResponse is the response type for the
@@ -252,7 +252,7 @@ export interface BroadcastTxResponse {
 
 export interface BroadcastTxResponseSDKType {
   /** tx_response is the queried TxResponses. */
-  tx_response: TxResponseSDKType;
+  tx_response?: TxResponseSDKType;
 }
 /**
  * SimulateRequest is the request type for the Service.Simulate
@@ -266,7 +266,7 @@ export interface SimulateRequest {
    */
 
   /** @deprecated */
-  tx: Tx;
+  tx?: Tx;
   /**
    * tx_bytes is the raw transaction.
    * 
@@ -287,7 +287,7 @@ export interface SimulateRequestSDKType {
    */
 
   /** @deprecated */
-  tx: TxSDKType;
+  tx?: TxSDKType;
   /**
    * tx_bytes is the raw transaction.
    * 
@@ -303,10 +303,10 @@ export interface SimulateRequestSDKType {
 
 export interface SimulateResponse {
   /** gas_info is the information about gas used in the simulation. */
-  gasInfo: GasInfo;
+  gasInfo?: GasInfo;
   /** result is the result of the simulation. */
 
-  result: Result;
+  result?: Result;
 }
 /**
  * SimulateResponse is the response type for the
@@ -315,10 +315,10 @@ export interface SimulateResponse {
 
 export interface SimulateResponseSDKType {
   /** gas_info is the information about gas used in the simulation. */
-  gas_info: GasInfoSDKType;
+  gas_info?: GasInfoSDKType;
   /** result is the result of the simulation. */
 
-  result: ResultSDKType;
+  result?: ResultSDKType;
 }
 /**
  * GetTxRequest is the request type for the Service.GetTx
@@ -342,19 +342,19 @@ export interface GetTxRequestSDKType {
 
 export interface GetTxResponse {
   /** tx is the queried transaction. */
-  tx: Tx;
+  tx?: Tx;
   /** tx_response is the queried TxResponses. */
 
-  txResponse: TxResponse;
+  txResponse?: TxResponse;
 }
 /** GetTxResponse is the response type for the Service.GetTx method. */
 
 export interface GetTxResponseSDKType {
   /** tx is the queried transaction. */
-  tx: TxSDKType;
+  tx?: TxSDKType;
   /** tx_response is the queried TxResponses. */
 
-  tx_response: TxResponseSDKType;
+  tx_response?: TxResponseSDKType;
 }
 /**
  * GetBlockWithTxsRequest is the request type for the Service.GetBlockWithTxs
@@ -393,8 +393,8 @@ export interface GetBlockWithTxsRequestSDKType {
 export interface GetBlockWithTxsResponse {
   /** txs are the transactions in the block. */
   txs: Tx[];
-  blockId: BlockID;
-  block: Block;
+  blockId?: BlockID;
+  block?: Block;
   /** pagination defines a pagination for the response. */
 
   pagination?: PageResponse;
@@ -408,8 +408,8 @@ export interface GetBlockWithTxsResponse {
 export interface GetBlockWithTxsResponseSDKType {
   /** txs are the transactions in the block. */
   txs: TxSDKType[];
-  block_id: BlockIDSDKType;
-  block: BlockSDKType;
+  block_id?: BlockIDSDKType;
+  block?: BlockSDKType;
   /** pagination defines a pagination for the response. */
 
   pagination?: PageResponseSDKType;
@@ -470,7 +470,7 @@ export const GetTxsEventRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetTxsEventRequest>): GetTxsEventRequest {
+  fromPartial(object: Partial<GetTxsEventRequest>): GetTxsEventRequest {
     const message = createBaseGetTxsEventRequest();
     message.events = object.events?.map(e => e) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -535,7 +535,7 @@ export const GetTxsEventResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetTxsEventResponse>): GetTxsEventResponse {
+  fromPartial(object: Partial<GetTxsEventResponse>): GetTxsEventResponse {
     const message = createBaseGetTxsEventResponse();
     message.txs = object.txs?.map(e => Tx.fromPartial(e)) || [];
     message.txResponses = object.txResponses?.map(e => TxResponse.fromPartial(e)) || [];
@@ -591,7 +591,7 @@ export const BroadcastTxRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<BroadcastTxRequest>): BroadcastTxRequest {
+  fromPartial(object: Partial<BroadcastTxRequest>): BroadcastTxRequest {
     const message = createBaseBroadcastTxRequest();
     message.txBytes = object.txBytes ?? new Uint8Array();
     message.mode = object.mode ?? 0;
@@ -637,7 +637,7 @@ export const BroadcastTxResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<BroadcastTxResponse>): BroadcastTxResponse {
+  fromPartial(object: Partial<BroadcastTxResponse>): BroadcastTxResponse {
     const message = createBaseBroadcastTxResponse();
     message.txResponse = object.txResponse !== undefined && object.txResponse !== null ? TxResponse.fromPartial(object.txResponse) : undefined;
     return message;
@@ -691,7 +691,7 @@ export const SimulateRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SimulateRequest>): SimulateRequest {
+  fromPartial(object: Partial<SimulateRequest>): SimulateRequest {
     const message = createBaseSimulateRequest();
     message.tx = object.tx !== undefined && object.tx !== null ? Tx.fromPartial(object.tx) : undefined;
     message.txBytes = object.txBytes ?? new Uint8Array();
@@ -746,7 +746,7 @@ export const SimulateResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SimulateResponse>): SimulateResponse {
+  fromPartial(object: Partial<SimulateResponse>): SimulateResponse {
     const message = createBaseSimulateResponse();
     message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? GasInfo.fromPartial(object.gasInfo) : undefined;
     message.result = object.result !== undefined && object.result !== null ? Result.fromPartial(object.result) : undefined;
@@ -792,7 +792,7 @@ export const GetTxRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetTxRequest>): GetTxRequest {
+  fromPartial(object: Partial<GetTxRequest>): GetTxRequest {
     const message = createBaseGetTxRequest();
     message.hash = object.hash ?? "";
     return message;
@@ -846,7 +846,7 @@ export const GetTxResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetTxResponse>): GetTxResponse {
+  fromPartial(object: Partial<GetTxResponse>): GetTxResponse {
     const message = createBaseGetTxResponse();
     message.tx = object.tx !== undefined && object.tx !== null ? Tx.fromPartial(object.tx) : undefined;
     message.txResponse = object.txResponse !== undefined && object.txResponse !== null ? TxResponse.fromPartial(object.txResponse) : undefined;
@@ -901,7 +901,7 @@ export const GetBlockWithTxsRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetBlockWithTxsRequest>): GetBlockWithTxsRequest {
+  fromPartial(object: Partial<GetBlockWithTxsRequest>): GetBlockWithTxsRequest {
     const message = createBaseGetBlockWithTxsRequest();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -974,7 +974,7 @@ export const GetBlockWithTxsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse {
+  fromPartial(object: Partial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse {
     const message = createBaseGetBlockWithTxsResponse();
     message.txs = object.txs?.map(e => Tx.fromPartial(e)) || [];
     message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;

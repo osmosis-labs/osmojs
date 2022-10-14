@@ -1,7 +1,6 @@
 import { Params, ParamsSDKType } from "./params";
 import { DenomAuthorityMetadata, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 
 export interface QueryParamsRequest {}
@@ -12,13 +11,13 @@ export interface QueryParamsRequestSDKType {}
 
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
-  params: Params;
+  params?: Params;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 
 export interface QueryParamsResponseSDKType {
   /** params defines the parameters of the module. */
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
 }
 /**
  * QueryDenomAuthorityMetadataRequest defines the request structure for the
@@ -42,7 +41,7 @@ export interface QueryDenomAuthorityMetadataRequestSDKType {
  */
 
 export interface QueryDenomAuthorityMetadataResponse {
-  authorityMetadata: DenomAuthorityMetadata;
+  authorityMetadata?: DenomAuthorityMetadata;
 }
 /**
  * QueryDenomAuthorityMetadataResponse defines the response structure for the
@@ -50,7 +49,7 @@ export interface QueryDenomAuthorityMetadataResponse {
  */
 
 export interface QueryDenomAuthorityMetadataResponseSDKType {
-  authority_metadata: DenomAuthorityMetadataSDKType;
+  authority_metadata?: DenomAuthorityMetadataSDKType;
 }
 /**
  * QueryDenomsFromCreatorRequest defines the request structure for the
@@ -112,7 +111,7 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
+  fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
   }
@@ -156,7 +155,7 @@ export const QueryParamsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
+  fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
@@ -201,7 +200,7 @@ export const QueryDenomAuthorityMetadataRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDenomAuthorityMetadataRequest>): QueryDenomAuthorityMetadataRequest {
+  fromPartial(object: Partial<QueryDenomAuthorityMetadataRequest>): QueryDenomAuthorityMetadataRequest {
     const message = createBaseQueryDenomAuthorityMetadataRequest();
     message.denom = object.denom ?? "";
     return message;
@@ -246,7 +245,7 @@ export const QueryDenomAuthorityMetadataResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse {
+  fromPartial(object: Partial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse {
     const message = createBaseQueryDenomAuthorityMetadataResponse();
     message.authorityMetadata = object.authorityMetadata !== undefined && object.authorityMetadata !== null ? DenomAuthorityMetadata.fromPartial(object.authorityMetadata) : undefined;
     return message;
@@ -291,7 +290,7 @@ export const QueryDenomsFromCreatorRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDenomsFromCreatorRequest>): QueryDenomsFromCreatorRequest {
+  fromPartial(object: Partial<QueryDenomsFromCreatorRequest>): QueryDenomsFromCreatorRequest {
     const message = createBaseQueryDenomsFromCreatorRequest();
     message.creator = object.creator ?? "";
     return message;
@@ -336,7 +335,7 @@ export const QueryDenomsFromCreatorResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse {
+  fromPartial(object: Partial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse {
     const message = createBaseQueryDenomsFromCreatorResponse();
     message.denoms = object.denoms?.map(e => e) || [];
     return message;

@@ -1,6 +1,6 @@
 import { MerklePrefix, MerklePrefixSDKType } from "../../commitment/v1/commitment";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * State defines if a connection is in one of the following states:
  * INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -56,7 +56,7 @@ export interface ConnectionEnd {
     /** current state of the connection end. */
     state: State;
     /** counterparty chain associated with this connection. */
-    counterparty: Counterparty;
+    counterparty?: Counterparty;
     /**
      * delay period that must pass before a consensus state can be used for
      * packet-verification NOTE: delay period logic is only implemented by some
@@ -81,7 +81,7 @@ export interface ConnectionEndSDKType {
     /** current state of the connection end. */
     state: StateSDKType;
     /** counterparty chain associated with this connection. */
-    counterparty: CounterpartySDKType;
+    counterparty?: CounterpartySDKType;
     /**
      * delay period that must pass before a consensus state can be used for
      * packet-verification NOTE: delay period logic is only implemented by some
@@ -106,7 +106,7 @@ export interface IdentifiedConnection {
     /** current state of the connection end. */
     state: State;
     /** counterparty chain associated with this connection. */
-    counterparty: Counterparty;
+    counterparty?: Counterparty;
     /** delay period associated with this connection. */
     delayPeriod: Long;
 }
@@ -127,7 +127,7 @@ export interface IdentifiedConnectionSDKType {
     /** current state of the connection end. */
     state: StateSDKType;
     /** counterparty chain associated with this connection. */
-    counterparty: CounterpartySDKType;
+    counterparty?: CounterpartySDKType;
     /** delay period associated with this connection. */
     delay_period: Long;
 }
@@ -144,7 +144,7 @@ export interface Counterparty {
      */
     connectionId: string;
     /** commitment merkle prefix of the counterparty chain. */
-    prefix: MerklePrefix;
+    prefix?: MerklePrefix;
 }
 /** Counterparty defines the counterparty chain associated with a connection end. */
 export interface CounterpartySDKType {
@@ -159,7 +159,7 @@ export interface CounterpartySDKType {
      */
     connection_id: string;
     /** commitment merkle prefix of the counterparty chain. */
-    prefix: MerklePrefixSDKType;
+    prefix?: MerklePrefixSDKType;
 }
 /** ClientPaths define all the connection paths for a client state. */
 export interface ClientPaths {
@@ -226,35 +226,35 @@ export interface ParamsSDKType {
 export declare const ConnectionEnd: {
     encode(message: ConnectionEnd, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionEnd;
-    fromPartial(object: DeepPartial<ConnectionEnd>): ConnectionEnd;
+    fromPartial(object: Partial<ConnectionEnd>): ConnectionEnd;
 };
 export declare const IdentifiedConnection: {
     encode(message: IdentifiedConnection, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedConnection;
-    fromPartial(object: DeepPartial<IdentifiedConnection>): IdentifiedConnection;
+    fromPartial(object: Partial<IdentifiedConnection>): IdentifiedConnection;
 };
 export declare const Counterparty: {
     encode(message: Counterparty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Counterparty;
-    fromPartial(object: DeepPartial<Counterparty>): Counterparty;
+    fromPartial(object: Partial<Counterparty>): Counterparty;
 };
 export declare const ClientPaths: {
     encode(message: ClientPaths, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientPaths;
-    fromPartial(object: DeepPartial<ClientPaths>): ClientPaths;
+    fromPartial(object: Partial<ClientPaths>): ClientPaths;
 };
 export declare const ConnectionPaths: {
     encode(message: ConnectionPaths, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionPaths;
-    fromPartial(object: DeepPartial<ConnectionPaths>): ConnectionPaths;
+    fromPartial(object: Partial<ConnectionPaths>): ConnectionPaths;
 };
 export declare const Version: {
     encode(message: Version, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Version;
-    fromPartial(object: DeepPartial<Version>): Version;
+    fromPartial(object: Partial<Version>): Version;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromPartial(object: DeepPartial<Params>): Params;
+    fromPartial(object: Partial<Params>): Params;
 };

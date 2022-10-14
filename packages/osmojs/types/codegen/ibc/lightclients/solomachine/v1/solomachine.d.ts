@@ -2,7 +2,7 @@ import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { ConnectionEnd, ConnectionEndSDKType } from "../../../core/connection/v1/connection";
 import { Channel, ChannelSDKType } from "../../../core/channel/v1/channel";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * DataType defines the type of solo machine proof being created. This is done
  * to preserve uniqueness of different data sign byte encodings.
@@ -68,7 +68,7 @@ export interface ClientState {
     sequence: Long;
     /** frozen sequence of the solo machine */
     frozenSequence: Long;
-    consensusState: ConsensusState;
+    consensusState?: ConsensusState;
     /**
      * when set to true, will allow governance to update a solo machine client.
      * The client will be unfrozen if it is frozen.
@@ -84,7 +84,7 @@ export interface ClientStateSDKType {
     sequence: Long;
     /** frozen sequence of the solo machine */
     frozen_sequence: Long;
-    consensus_state: ConsensusStateSDKType;
+    consensus_state?: ConsensusStateSDKType;
     /**
      * when set to true, will allow governance to update a solo machine client.
      * The client will be unfrozen if it is frozen.
@@ -98,7 +98,7 @@ export interface ClientStateSDKType {
  */
 export interface ConsensusState {
     /** public key of the solo machine */
-    publicKey: Any;
+    publicKey?: Any;
     /**
      * diversifier allows the same public key to be re-used across different solo
      * machine clients (potentially on different chains) without being considered
@@ -114,7 +114,7 @@ export interface ConsensusState {
  */
 export interface ConsensusStateSDKType {
     /** public key of the solo machine */
-    public_key: AnySDKType;
+    public_key?: AnySDKType;
     /**
      * diversifier allows the same public key to be re-used across different solo
      * machine clients (potentially on different chains) without being considered
@@ -129,7 +129,7 @@ export interface Header {
     sequence: Long;
     timestamp: Long;
     signature: Uint8Array;
-    newPublicKey: Any;
+    newPublicKey?: Any;
     newDiversifier: string;
 }
 /** Header defines a solo machine consensus header */
@@ -138,7 +138,7 @@ export interface HeaderSDKType {
     sequence: Long;
     timestamp: Long;
     signature: Uint8Array;
-    new_public_key: AnySDKType;
+    new_public_key?: AnySDKType;
     new_diversifier: string;
 }
 /**
@@ -148,8 +148,8 @@ export interface HeaderSDKType {
 export interface Misbehaviour {
     clientId: string;
     sequence: Long;
-    signatureOne: SignatureAndData;
-    signatureTwo: SignatureAndData;
+    signatureOne?: SignatureAndData;
+    signatureTwo?: SignatureAndData;
 }
 /**
  * Misbehaviour defines misbehaviour for a solo machine which consists
@@ -158,8 +158,8 @@ export interface Misbehaviour {
 export interface MisbehaviourSDKType {
     client_id: string;
     sequence: Long;
-    signature_one: SignatureAndDataSDKType;
-    signature_two: SignatureAndDataSDKType;
+    signature_one?: SignatureAndDataSDKType;
+    signature_two?: SignatureAndDataSDKType;
 }
 /**
  * SignatureAndData contains a signature and the data signed over to create that
@@ -220,26 +220,26 @@ export interface SignBytesSDKType {
 /** HeaderData returns the SignBytes data for update verification. */
 export interface HeaderData {
     /** header public key */
-    newPubKey: Any;
+    newPubKey?: Any;
     /** header diversifier */
     newDiversifier: string;
 }
 /** HeaderData returns the SignBytes data for update verification. */
 export interface HeaderDataSDKType {
     /** header public key */
-    new_pub_key: AnySDKType;
+    new_pub_key?: AnySDKType;
     /** header diversifier */
     new_diversifier: string;
 }
 /** ClientStateData returns the SignBytes data for client state verification. */
 export interface ClientStateData {
     path: Uint8Array;
-    clientState: Any;
+    clientState?: Any;
 }
 /** ClientStateData returns the SignBytes data for client state verification. */
 export interface ClientStateDataSDKType {
     path: Uint8Array;
-    client_state: AnySDKType;
+    client_state?: AnySDKType;
 }
 /**
  * ConsensusStateData returns the SignBytes data for consensus state
@@ -247,7 +247,7 @@ export interface ClientStateDataSDKType {
  */
 export interface ConsensusStateData {
     path: Uint8Array;
-    consensusState: Any;
+    consensusState?: Any;
 }
 /**
  * ConsensusStateData returns the SignBytes data for consensus state
@@ -255,7 +255,7 @@ export interface ConsensusStateData {
  */
 export interface ConsensusStateDataSDKType {
     path: Uint8Array;
-    consensus_state: AnySDKType;
+    consensus_state?: AnySDKType;
 }
 /**
  * ConnectionStateData returns the SignBytes data for connection state
@@ -263,7 +263,7 @@ export interface ConsensusStateDataSDKType {
  */
 export interface ConnectionStateData {
     path: Uint8Array;
-    connection: ConnectionEnd;
+    connection?: ConnectionEnd;
 }
 /**
  * ConnectionStateData returns the SignBytes data for connection state
@@ -271,7 +271,7 @@ export interface ConnectionStateData {
  */
 export interface ConnectionStateDataSDKType {
     path: Uint8Array;
-    connection: ConnectionEndSDKType;
+    connection?: ConnectionEndSDKType;
 }
 /**
  * ChannelStateData returns the SignBytes data for channel state
@@ -279,7 +279,7 @@ export interface ConnectionStateDataSDKType {
  */
 export interface ChannelStateData {
     path: Uint8Array;
-    channel: Channel;
+    channel?: Channel;
 }
 /**
  * ChannelStateData returns the SignBytes data for channel state
@@ -287,7 +287,7 @@ export interface ChannelStateData {
  */
 export interface ChannelStateDataSDKType {
     path: Uint8Array;
-    channel: ChannelSDKType;
+    channel?: ChannelSDKType;
 }
 /**
  * PacketCommitmentData returns the SignBytes data for packet commitment
@@ -354,80 +354,80 @@ export interface NextSequenceRecvDataSDKType {
 export declare const ClientState: {
     encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientState;
-    fromPartial(object: DeepPartial<ClientState>): ClientState;
+    fromPartial(object: Partial<ClientState>): ClientState;
 };
 export declare const ConsensusState: {
     encode(message: ConsensusState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusState;
-    fromPartial(object: DeepPartial<ConsensusState>): ConsensusState;
+    fromPartial(object: Partial<ConsensusState>): ConsensusState;
 };
 export declare const Header: {
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
-    fromPartial(object: DeepPartial<Header>): Header;
+    fromPartial(object: Partial<Header>): Header;
 };
 export declare const Misbehaviour: {
     encode(message: Misbehaviour, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Misbehaviour;
-    fromPartial(object: DeepPartial<Misbehaviour>): Misbehaviour;
+    fromPartial(object: Partial<Misbehaviour>): Misbehaviour;
 };
 export declare const SignatureAndData: {
     encode(message: SignatureAndData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureAndData;
-    fromPartial(object: DeepPartial<SignatureAndData>): SignatureAndData;
+    fromPartial(object: Partial<SignatureAndData>): SignatureAndData;
 };
 export declare const TimestampedSignatureData: {
     encode(message: TimestampedSignatureData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TimestampedSignatureData;
-    fromPartial(object: DeepPartial<TimestampedSignatureData>): TimestampedSignatureData;
+    fromPartial(object: Partial<TimestampedSignatureData>): TimestampedSignatureData;
 };
 export declare const SignBytes: {
     encode(message: SignBytes, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignBytes;
-    fromPartial(object: DeepPartial<SignBytes>): SignBytes;
+    fromPartial(object: Partial<SignBytes>): SignBytes;
 };
 export declare const HeaderData: {
     encode(message: HeaderData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HeaderData;
-    fromPartial(object: DeepPartial<HeaderData>): HeaderData;
+    fromPartial(object: Partial<HeaderData>): HeaderData;
 };
 export declare const ClientStateData: {
     encode(message: ClientStateData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientStateData;
-    fromPartial(object: DeepPartial<ClientStateData>): ClientStateData;
+    fromPartial(object: Partial<ClientStateData>): ClientStateData;
 };
 export declare const ConsensusStateData: {
     encode(message: ConsensusStateData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusStateData;
-    fromPartial(object: DeepPartial<ConsensusStateData>): ConsensusStateData;
+    fromPartial(object: Partial<ConsensusStateData>): ConsensusStateData;
 };
 export declare const ConnectionStateData: {
     encode(message: ConnectionStateData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionStateData;
-    fromPartial(object: DeepPartial<ConnectionStateData>): ConnectionStateData;
+    fromPartial(object: Partial<ConnectionStateData>): ConnectionStateData;
 };
 export declare const ChannelStateData: {
     encode(message: ChannelStateData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ChannelStateData;
-    fromPartial(object: DeepPartial<ChannelStateData>): ChannelStateData;
+    fromPartial(object: Partial<ChannelStateData>): ChannelStateData;
 };
 export declare const PacketCommitmentData: {
     encode(message: PacketCommitmentData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketCommitmentData;
-    fromPartial(object: DeepPartial<PacketCommitmentData>): PacketCommitmentData;
+    fromPartial(object: Partial<PacketCommitmentData>): PacketCommitmentData;
 };
 export declare const PacketAcknowledgementData: {
     encode(message: PacketAcknowledgementData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketAcknowledgementData;
-    fromPartial(object: DeepPartial<PacketAcknowledgementData>): PacketAcknowledgementData;
+    fromPartial(object: Partial<PacketAcknowledgementData>): PacketAcknowledgementData;
 };
 export declare const PacketReceiptAbsenceData: {
     encode(message: PacketReceiptAbsenceData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketReceiptAbsenceData;
-    fromPartial(object: DeepPartial<PacketReceiptAbsenceData>): PacketReceiptAbsenceData;
+    fromPartial(object: Partial<PacketReceiptAbsenceData>): PacketReceiptAbsenceData;
 };
 export declare const NextSequenceRecvData: {
     encode(message: NextSequenceRecvData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NextSequenceRecvData;
-    fromPartial(object: DeepPartial<NextSequenceRecvData>): NextSequenceRecvData;
+    fromPartial(object: Partial<NextSequenceRecvData>): NextSequenceRecvData;
 };

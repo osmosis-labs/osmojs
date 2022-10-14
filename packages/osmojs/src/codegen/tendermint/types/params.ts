@@ -1,16 +1,16 @@
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.
  */
 
 export interface ConsensusParams {
-  block: BlockParams;
-  evidence: EvidenceParams;
-  validator: ValidatorParams;
-  version: VersionParams;
+  block?: BlockParams;
+  evidence?: EvidenceParams;
+  validator?: ValidatorParams;
+  version?: VersionParams;
 }
 /**
  * ConsensusParams contains consensus critical parameters that determine the
@@ -18,10 +18,10 @@ export interface ConsensusParams {
  */
 
 export interface ConsensusParamsSDKType {
-  block: BlockParamsSDKType;
-  evidence: EvidenceParamsSDKType;
-  validator: ValidatorParamsSDKType;
-  version: VersionParamsSDKType;
+  block?: BlockParamsSDKType;
+  evidence?: EvidenceParamsSDKType;
+  validator?: ValidatorParamsSDKType;
+  version?: VersionParamsSDKType;
 }
 /** BlockParams contains limits on the block size. */
 
@@ -87,7 +87,7 @@ export interface EvidenceParams {
    * attacks](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed).
    */
 
-  maxAgeDuration: Duration;
+  maxAgeDuration?: Duration;
   /**
    * This sets the maximum size of total evidence in bytes that can be committed in a single block.
    * and should fall comfortably under the max block bytes.
@@ -114,7 +114,7 @@ export interface EvidenceParamsSDKType {
    * attacks](https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ#what-is-the-nothing-at-stake-problem-and-how-can-it-be-fixed).
    */
 
-  max_age_duration: DurationSDKType;
+  max_age_duration?: DurationSDKType;
   /**
    * This sets the maximum size of total evidence in bytes that can be committed in a single block.
    * and should fall comfortably under the max block bytes.
@@ -234,7 +234,7 @@ export const ConsensusParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ConsensusParams>): ConsensusParams {
+  fromPartial(object: Partial<ConsensusParams>): ConsensusParams {
     const message = createBaseConsensusParams();
     message.block = object.block !== undefined && object.block !== null ? BlockParams.fromPartial(object.block) : undefined;
     message.evidence = object.evidence !== undefined && object.evidence !== null ? EvidenceParams.fromPartial(object.evidence) : undefined;
@@ -300,7 +300,7 @@ export const BlockParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<BlockParams>): BlockParams {
+  fromPartial(object: Partial<BlockParams>): BlockParams {
     const message = createBaseBlockParams();
     message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? Long.fromValue(object.maxBytes) : Long.ZERO;
     message.maxGas = object.maxGas !== undefined && object.maxGas !== null ? Long.fromValue(object.maxGas) : Long.ZERO;
@@ -365,7 +365,7 @@ export const EvidenceParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EvidenceParams>): EvidenceParams {
+  fromPartial(object: Partial<EvidenceParams>): EvidenceParams {
     const message = createBaseEvidenceParams();
     message.maxAgeNumBlocks = object.maxAgeNumBlocks !== undefined && object.maxAgeNumBlocks !== null ? Long.fromValue(object.maxAgeNumBlocks) : Long.ZERO;
     message.maxAgeDuration = object.maxAgeDuration !== undefined && object.maxAgeDuration !== null ? Duration.fromPartial(object.maxAgeDuration) : undefined;
@@ -412,7 +412,7 @@ export const ValidatorParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ValidatorParams>): ValidatorParams {
+  fromPartial(object: Partial<ValidatorParams>): ValidatorParams {
     const message = createBaseValidatorParams();
     message.pubKeyTypes = object.pubKeyTypes?.map(e => e) || [];
     return message;
@@ -457,7 +457,7 @@ export const VersionParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<VersionParams>): VersionParams {
+  fromPartial(object: Partial<VersionParams>): VersionParams {
     const message = createBaseVersionParams();
     message.appVersion = object.appVersion !== undefined && object.appVersion !== null ? Long.fromValue(object.appVersion) : Long.UZERO;
     return message;
@@ -511,7 +511,7 @@ export const HashedParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<HashedParams>): HashedParams {
+  fromPartial(object: Partial<HashedParams>): HashedParams {
     const message = createBaseHashedParams();
     message.blockMaxBytes = object.blockMaxBytes !== undefined && object.blockMaxBytes !== null ? Long.fromValue(object.blockMaxBytes) : Long.ZERO;
     message.blockMaxGas = object.blockMaxGas !== undefined && object.blockMaxGas !== null ? Long.fromValue(object.blockMaxGas) : Long.ZERO;

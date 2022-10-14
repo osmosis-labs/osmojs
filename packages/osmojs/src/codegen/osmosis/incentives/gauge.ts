@@ -3,7 +3,7 @@ import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, Long, fromTimestamp, DeepPartial } from "../../helpers";
+import { toTimestamp, Long, fromTimestamp } from "../../helpers";
 /**
  * Gauge is an object that stores and distributes yields to recipients who
  * satisfy certain conditions. Currently gauges support conditions around the
@@ -27,7 +27,7 @@ export interface Gauge {
    * This is queried via lock duration or by timestamp
    */
 
-  distributeTo: QueryCondition;
+  distributeTo?: QueryCondition;
   /**
    * coins is the total amount of coins that have been in the gauge
    * Can distribute multiple coin denoms
@@ -36,7 +36,7 @@ export interface Gauge {
   coins: Coin[];
   /** start_time is the distribution start time */
 
-  startTime: Date;
+  startTime?: Date;
   /**
    * num_epochs_paid_over is the number of total epochs distribution will be
    * completed over
@@ -76,7 +76,7 @@ export interface GaugeSDKType {
    * This is queried via lock duration or by timestamp
    */
 
-  distribute_to: QueryConditionSDKType;
+  distribute_to?: QueryConditionSDKType;
   /**
    * coins is the total amount of coins that have been in the gauge
    * Can distribute multiple coin denoms
@@ -85,7 +85,7 @@ export interface GaugeSDKType {
   coins: CoinSDKType[];
   /** start_time is the distribution start time */
 
-  start_time: Date;
+  start_time?: Date;
   /**
    * num_epochs_paid_over is the number of total epochs distribution will be
    * completed over
@@ -211,7 +211,7 @@ export const Gauge = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Gauge>): Gauge {
+  fromPartial(object: Partial<Gauge>): Gauge {
     const message = createBaseGauge();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     message.isPerpetual = object.isPerpetual ?? false;
@@ -263,7 +263,7 @@ export const LockableDurationsInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<LockableDurationsInfo>): LockableDurationsInfo {
+  fromPartial(object: Partial<LockableDurationsInfo>): LockableDurationsInfo {
     const message = createBaseLockableDurationsInfo();
     message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
     return message;

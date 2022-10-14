@@ -3,7 +3,7 @@ import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Gauge, GaugeSDKType } from "./gauge";
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../helpers";
+import { Long } from "../../helpers";
 export interface ModuleToDistributeCoinsRequest {}
 export interface ModuleToDistributeCoinsRequestSDKType {}
 export interface ModuleToDistributeCoinsResponse {
@@ -34,11 +34,11 @@ export interface GaugeByIDRequestSDKType {
 }
 export interface GaugeByIDResponse {
   /** Gauge that corresponds to provided gague ID */
-  gauge: Gauge;
+  gauge?: Gauge;
 }
 export interface GaugeByIDResponseSDKType {
   /** Gauge that corresponds to provided gague ID */
-  gauge: GaugeSDKType;
+  gauge?: GaugeSDKType;
 }
 export interface GaugesRequest {
   /** Pagination defines pagination for the request */
@@ -86,14 +86,14 @@ export interface ActiveGaugesResponseSDKType {
 }
 export interface ActiveGaugesPerDenomRequest {
   /** Desired denom when querying active gagues */
-  denom?: string;
+  denom: string;
   /** Pagination defines pagination for the request */
 
   pagination?: PageRequest;
 }
 export interface ActiveGaugesPerDenomRequestSDKType {
   /** Desired denom when querying active gagues */
-  denom?: string;
+  denom: string;
   /** Pagination defines pagination for the request */
 
   pagination?: PageRequestSDKType;
@@ -136,14 +136,14 @@ export interface UpcomingGaugesResponseSDKType {
 }
 export interface UpcomingGaugesPerDenomRequest {
   /** Filter for upcoming gagues that match specific denom */
-  denom?: string;
+  denom: string;
   /** Pagination defines pagination for the request */
 
   pagination?: PageRequest;
 }
 export interface UpcomingGaugesPerDenomRequestSDKType {
   /** Filter for upcoming gagues that match specific denom */
-  denom?: string;
+  denom: string;
   /** Pagination defines pagination for the request */
 
   pagination?: PageRequestSDKType;
@@ -167,26 +167,26 @@ export interface RewardsEstRequest {
   owner: string;
   /** Lock IDs included in future reward estimation */
 
-  lockIds?: Long[];
+  lockIds: Long[];
   /**
    * Upper time limit of reward estimation
    * Lower limit is current epoch
    */
 
-  endEpoch?: Long;
+  endEpoch: Long;
 }
 export interface RewardsEstRequestSDKType {
   /** Address that is being queried for future estimated rewards */
   owner: string;
   /** Lock IDs included in future reward estimation */
 
-  lock_ids?: Long[];
+  lock_ids: Long[];
   /**
    * Upper time limit of reward estimation
    * Lower limit is current epoch
    */
 
-  end_epoch?: Long;
+  end_epoch: Long;
 }
 export interface RewardsEstResponse {
   /**
@@ -240,7 +240,7 @@ export const ModuleToDistributeCoinsRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<ModuleToDistributeCoinsRequest>): ModuleToDistributeCoinsRequest {
+  fromPartial(_: Partial<ModuleToDistributeCoinsRequest>): ModuleToDistributeCoinsRequest {
     const message = createBaseModuleToDistributeCoinsRequest();
     return message;
   }
@@ -284,7 +284,7 @@ export const ModuleToDistributeCoinsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ModuleToDistributeCoinsResponse>): ModuleToDistributeCoinsResponse {
+  fromPartial(object: Partial<ModuleToDistributeCoinsResponse>): ModuleToDistributeCoinsResponse {
     const message = createBaseModuleToDistributeCoinsResponse();
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -319,7 +319,7 @@ export const ModuleDistributedCoinsRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<ModuleDistributedCoinsRequest>): ModuleDistributedCoinsRequest {
+  fromPartial(_: Partial<ModuleDistributedCoinsRequest>): ModuleDistributedCoinsRequest {
     const message = createBaseModuleDistributedCoinsRequest();
     return message;
   }
@@ -363,7 +363,7 @@ export const ModuleDistributedCoinsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ModuleDistributedCoinsResponse>): ModuleDistributedCoinsResponse {
+  fromPartial(object: Partial<ModuleDistributedCoinsResponse>): ModuleDistributedCoinsResponse {
     const message = createBaseModuleDistributedCoinsResponse();
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -408,7 +408,7 @@ export const GaugeByIDRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GaugeByIDRequest>): GaugeByIDRequest {
+  fromPartial(object: Partial<GaugeByIDRequest>): GaugeByIDRequest {
     const message = createBaseGaugeByIDRequest();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     return message;
@@ -453,7 +453,7 @@ export const GaugeByIDResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GaugeByIDResponse>): GaugeByIDResponse {
+  fromPartial(object: Partial<GaugeByIDResponse>): GaugeByIDResponse {
     const message = createBaseGaugeByIDResponse();
     message.gauge = object.gauge !== undefined && object.gauge !== null ? Gauge.fromPartial(object.gauge) : undefined;
     return message;
@@ -498,7 +498,7 @@ export const GaugesRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GaugesRequest>): GaugesRequest {
+  fromPartial(object: Partial<GaugesRequest>): GaugesRequest {
     const message = createBaseGaugesRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -552,7 +552,7 @@ export const GaugesResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GaugesResponse>): GaugesResponse {
+  fromPartial(object: Partial<GaugesResponse>): GaugesResponse {
     const message = createBaseGaugesResponse();
     message.data = object.data?.map(e => Gauge.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -598,7 +598,7 @@ export const ActiveGaugesRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ActiveGaugesRequest>): ActiveGaugesRequest {
+  fromPartial(object: Partial<ActiveGaugesRequest>): ActiveGaugesRequest {
     const message = createBaseActiveGaugesRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -652,7 +652,7 @@ export const ActiveGaugesResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ActiveGaugesResponse>): ActiveGaugesResponse {
+  fromPartial(object: Partial<ActiveGaugesResponse>): ActiveGaugesResponse {
     const message = createBaseActiveGaugesResponse();
     message.data = object.data?.map(e => Gauge.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -707,7 +707,7 @@ export const ActiveGaugesPerDenomRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ActiveGaugesPerDenomRequest>): ActiveGaugesPerDenomRequest {
+  fromPartial(object: Partial<ActiveGaugesPerDenomRequest>): ActiveGaugesPerDenomRequest {
     const message = createBaseActiveGaugesPerDenomRequest();
     message.denom = object.denom ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -762,7 +762,7 @@ export const ActiveGaugesPerDenomResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ActiveGaugesPerDenomResponse>): ActiveGaugesPerDenomResponse {
+  fromPartial(object: Partial<ActiveGaugesPerDenomResponse>): ActiveGaugesPerDenomResponse {
     const message = createBaseActiveGaugesPerDenomResponse();
     message.data = object.data?.map(e => Gauge.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -808,7 +808,7 @@ export const UpcomingGaugesRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UpcomingGaugesRequest>): UpcomingGaugesRequest {
+  fromPartial(object: Partial<UpcomingGaugesRequest>): UpcomingGaugesRequest {
     const message = createBaseUpcomingGaugesRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -862,7 +862,7 @@ export const UpcomingGaugesResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UpcomingGaugesResponse>): UpcomingGaugesResponse {
+  fromPartial(object: Partial<UpcomingGaugesResponse>): UpcomingGaugesResponse {
     const message = createBaseUpcomingGaugesResponse();
     message.data = object.data?.map(e => Gauge.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -917,7 +917,7 @@ export const UpcomingGaugesPerDenomRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UpcomingGaugesPerDenomRequest>): UpcomingGaugesPerDenomRequest {
+  fromPartial(object: Partial<UpcomingGaugesPerDenomRequest>): UpcomingGaugesPerDenomRequest {
     const message = createBaseUpcomingGaugesPerDenomRequest();
     message.denom = object.denom ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -972,7 +972,7 @@ export const UpcomingGaugesPerDenomResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse {
+  fromPartial(object: Partial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse {
     const message = createBaseUpcomingGaugesPerDenomResponse();
     message.upcomingGauges = object.upcomingGauges?.map(e => Gauge.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -1049,7 +1049,7 @@ export const RewardsEstRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RewardsEstRequest>): RewardsEstRequest {
+  fromPartial(object: Partial<RewardsEstRequest>): RewardsEstRequest {
     const message = createBaseRewardsEstRequest();
     message.owner = object.owner ?? "";
     message.lockIds = object.lockIds?.map(e => Long.fromValue(e)) || [];
@@ -1096,7 +1096,7 @@ export const RewardsEstResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RewardsEstResponse>): RewardsEstResponse {
+  fromPartial(object: Partial<RewardsEstResponse>): RewardsEstResponse {
     const message = createBaseRewardsEstResponse();
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -1131,7 +1131,7 @@ export const QueryLockableDurationsRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryLockableDurationsRequest>): QueryLockableDurationsRequest {
+  fromPartial(_: Partial<QueryLockableDurationsRequest>): QueryLockableDurationsRequest {
     const message = createBaseQueryLockableDurationsRequest();
     return message;
   }
@@ -1175,7 +1175,7 @@ export const QueryLockableDurationsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse {
+  fromPartial(object: Partial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse {
     const message = createBaseQueryLockableDurationsResponse();
     message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
     return message;

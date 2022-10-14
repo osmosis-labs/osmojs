@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * PoolParams defined the parameters that will be managed by the pool
  * governance in the future. This params are not managed by the chain
@@ -28,7 +28,7 @@ export interface PoolParamsSDKType {
 export interface Pool {
   address: string;
   id: Long;
-  poolParams: PoolParams;
+  poolParams?: PoolParams;
   /**
    * This string specifies who will govern the pool in the future.
    * Valid forms of this are:
@@ -43,7 +43,7 @@ export interface Pool {
   futurePoolGovernor: string;
   /** sum of all LP shares */
 
-  totalShares: Coin;
+  totalShares?: Coin;
   /** assets in the pool */
 
   poolLiquidity: Coin[];
@@ -59,7 +59,7 @@ export interface Pool {
 export interface PoolSDKType {
   address: string;
   id: Long;
-  pool_params: PoolParamsSDKType;
+  pool_params?: PoolParamsSDKType;
   /**
    * This string specifies who will govern the pool in the future.
    * Valid forms of this are:
@@ -74,7 +74,7 @@ export interface PoolSDKType {
   future_pool_governor: string;
   /** sum of all LP shares */
 
-  total_shares: CoinSDKType;
+  total_shares?: CoinSDKType;
   /** assets in the pool */
 
   pool_liquidity: CoinSDKType[];
@@ -132,7 +132,7 @@ export const PoolParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PoolParams>): PoolParams {
+  fromPartial(object: Partial<PoolParams>): PoolParams {
     const message = createBasePoolParams();
     message.swapFee = object.swapFee ?? "";
     message.exitFee = object.exitFee ?? "";
@@ -254,7 +254,7 @@ export const Pool = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Pool>): Pool {
+  fromPartial(object: Partial<Pool>): Pool {
     const message = createBasePool();
     message.address = object.address ?? "";
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;

@@ -1,6 +1,6 @@
 import { Deposit, DepositSDKType, Vote, VoteSDKType, Proposal, ProposalSDKType, DepositParams, DepositParamsSDKType, VotingParams, VotingParamsSDKType, TallyParams, TallyParamsSDKType } from "./gov";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** GenesisState defines the gov module's genesis state. */
 
 export interface GenesisState {
@@ -17,13 +17,13 @@ export interface GenesisState {
   proposals: Proposal[];
   /** params defines all the paramaters of related to deposit. */
 
-  depositParams: DepositParams;
+  depositParams?: DepositParams;
   /** params defines all the paramaters of related to voting. */
 
-  votingParams: VotingParams;
+  votingParams?: VotingParams;
   /** params defines all the paramaters of related to tally. */
 
-  tallyParams: TallyParams;
+  tallyParams?: TallyParams;
 }
 /** GenesisState defines the gov module's genesis state. */
 
@@ -41,13 +41,13 @@ export interface GenesisStateSDKType {
   proposals: ProposalSDKType[];
   /** params defines all the paramaters of related to deposit. */
 
-  deposit_params: DepositParamsSDKType;
+  deposit_params?: DepositParamsSDKType;
   /** params defines all the paramaters of related to voting. */
 
-  voting_params: VotingParamsSDKType;
+  voting_params?: VotingParamsSDKType;
   /** params defines all the paramaters of related to tally. */
 
-  tally_params: TallyParamsSDKType;
+  tally_params?: TallyParamsSDKType;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -141,7 +141,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.startingProposalId = object.startingProposalId !== undefined && object.startingProposalId !== null ? Long.fromValue(object.startingProposalId) : Long.UZERO;
     message.deposits = object.deposits?.map(e => Deposit.fromPartial(e)) || [];

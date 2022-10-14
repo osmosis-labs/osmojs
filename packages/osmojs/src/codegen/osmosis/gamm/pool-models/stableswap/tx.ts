@@ -1,12 +1,12 @@
 import { PoolParams, PoolParamsSDKType } from "./stableswap_pool";
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /** ===================== MsgCreatePool */
 
 export interface MsgCreateStableswapPool {
   sender: string;
-  poolParams: PoolParams;
+  poolParams?: PoolParams;
   initialPoolLiquidity: Coin[];
   scalingFactors: Long[];
   futurePoolGovernor: string;
@@ -15,7 +15,7 @@ export interface MsgCreateStableswapPool {
 
 export interface MsgCreateStableswapPoolSDKType {
   sender: string;
-  pool_params: PoolParamsSDKType;
+  pool_params?: PoolParamsSDKType;
   initial_pool_liquidity: CoinSDKType[];
   scaling_factors: Long[];
   future_pool_governor: string;
@@ -139,7 +139,7 @@ export const MsgCreateStableswapPool = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgCreateStableswapPool>): MsgCreateStableswapPool {
+  fromPartial(object: Partial<MsgCreateStableswapPool>): MsgCreateStableswapPool {
     const message = createBaseMsgCreateStableswapPool();
     message.sender = object.sender ?? "";
     message.poolParams = object.poolParams !== undefined && object.poolParams !== null ? PoolParams.fromPartial(object.poolParams) : undefined;
@@ -188,7 +188,7 @@ export const MsgCreateStableswapPoolResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgCreateStableswapPoolResponse>): MsgCreateStableswapPoolResponse {
+  fromPartial(object: Partial<MsgCreateStableswapPoolResponse>): MsgCreateStableswapPoolResponse {
     const message = createBaseMsgCreateStableswapPoolResponse();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     return message;
@@ -263,7 +263,7 @@ export const MsgStableSwapAdjustScalingFactors = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgStableSwapAdjustScalingFactors>): MsgStableSwapAdjustScalingFactors {
+  fromPartial(object: Partial<MsgStableSwapAdjustScalingFactors>): MsgStableSwapAdjustScalingFactors {
     const message = createBaseMsgStableSwapAdjustScalingFactors();
     message.sender = object.sender ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -300,7 +300,7 @@ export const MsgStableSwapAdjustScalingFactorsResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgStableSwapAdjustScalingFactorsResponse>): MsgStableSwapAdjustScalingFactorsResponse {
+  fromPartial(_: Partial<MsgStableSwapAdjustScalingFactorsResponse>): MsgStableSwapAdjustScalingFactorsResponse {
     const message = createBaseMsgStableSwapAdjustScalingFactorsResponse();
     return message;
   }

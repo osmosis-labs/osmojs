@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** EventGrant is emitted on Msg/Grant */
 export interface EventGrant {
     /** Msg type URL for which an autorization is granted */
@@ -39,10 +38,10 @@ export interface EventRevokeSDKType {
 export declare const EventGrant: {
     encode(message: EventGrant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventGrant;
-    fromPartial(object: DeepPartial<EventGrant>): EventGrant;
+    fromPartial(object: Partial<EventGrant>): EventGrant;
 };
 export declare const EventRevoke: {
     encode(message: EventRevoke, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventRevoke;
-    fromPartial(object: DeepPartial<EventRevoke>): EventRevoke;
+    fromPartial(object: Partial<EventRevoke>): EventRevoke;
 };

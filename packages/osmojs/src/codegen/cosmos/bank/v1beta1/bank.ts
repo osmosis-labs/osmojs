@@ -1,6 +1,5 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** Params defines the parameters for the bank module. */
 
 export interface Params {
@@ -266,7 +265,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.sendEnabled = object.sendEnabled?.map(e => SendEnabled.fromPartial(e)) || [];
     message.defaultSendEnabled = object.defaultSendEnabled ?? false;
@@ -321,7 +320,7 @@ export const SendEnabled = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SendEnabled>): SendEnabled {
+  fromPartial(object: Partial<SendEnabled>): SendEnabled {
     const message = createBaseSendEnabled();
     message.denom = object.denom ?? "";
     message.enabled = object.enabled ?? false;
@@ -376,7 +375,7 @@ export const Input = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Input>): Input {
+  fromPartial(object: Partial<Input>): Input {
     const message = createBaseInput();
     message.address = object.address ?? "";
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
@@ -431,7 +430,7 @@ export const Output = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Output>): Output {
+  fromPartial(object: Partial<Output>): Output {
     const message = createBaseOutput();
     message.address = object.address ?? "";
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
@@ -477,7 +476,7 @@ export const Supply = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Supply>): Supply {
+  fromPartial(object: Partial<Supply>): Supply {
     const message = createBaseSupply();
     message.total = object.total?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -540,7 +539,7 @@ export const DenomUnit = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DenomUnit>): DenomUnit {
+  fromPartial(object: Partial<DenomUnit>): DenomUnit {
     const message = createBaseDenomUnit();
     message.denom = object.denom ?? "";
     message.exponent = object.exponent ?? 0;
@@ -650,7 +649,7 @@ export const Metadata = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Metadata>): Metadata {
+  fromPartial(object: Partial<Metadata>): Metadata {
     const message = createBaseMetadata();
     message.description = object.description ?? "";
     message.denomUnits = object.denomUnits?.map(e => DenomUnit.fromPartial(e)) || [];

@@ -2,7 +2,7 @@ import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, Long, fromTimestamp, DeepPartial } from "../../helpers";
+import { toTimestamp, Long, fromTimestamp } from "../../helpers";
 /**
  * LockQueryType defines the type of the lock query that can
  * either be by duration or start time of the lock.
@@ -78,14 +78,14 @@ export interface PeriodLock {
    * started.
    */
 
-  duration: Duration;
+  duration?: Duration;
   /**
    * EndTime refers to the time at which the lock would mature and get deleted.
    * This value is first initialized when an unlock has started for the lock,
    * end time being block time + duration.
    */
 
-  endTime: Date;
+  endTime?: Date;
   /** Coins are the tokens locked within the lock, kept in the module account. */
 
   coins: Coin[];
@@ -116,14 +116,14 @@ export interface PeriodLockSDKType {
    * started.
    */
 
-  duration: DurationSDKType;
+  duration?: DurationSDKType;
   /**
    * EndTime refers to the time at which the lock would mature and get deleted.
    * This value is first initialized when an unlock has started for the lock,
    * end time being block time + duration.
    */
 
-  end_time: Date;
+  end_time?: Date;
   /** Coins are the tokens locked within the lock, kept in the module account. */
 
   coins: CoinSDKType[];
@@ -146,14 +146,14 @@ export interface QueryCondition {
    * `ByLockDuration`.
    */
 
-  duration: Duration;
+  duration?: Duration;
   /**
    * Timestamp is used by locks started before the specified duration.
    * Timestamp field must not be nil when the lock query type is `ByLockTime`.
    * Querying locks with timestamp is currently not implemented.
    */
 
-  timestamp: Date;
+  timestamp?: Date;
 }
 /**
  * QueryCondition is a struct used for querying locks upon different conditions.
@@ -173,14 +173,14 @@ export interface QueryConditionSDKType {
    * `ByLockDuration`.
    */
 
-  duration: DurationSDKType;
+  duration?: DurationSDKType;
   /**
    * Timestamp is used by locks started before the specified duration.
    * Timestamp field must not be nil when the lock query type is `ByLockTime`.
    * Querying locks with timestamp is currently not implemented.
    */
 
-  timestamp: Date;
+  timestamp?: Date;
 }
 /**
  * SyntheticLock is creating virtual lockup where new denom is combination of
@@ -206,13 +206,13 @@ export interface SyntheticLock {
    * value is set to uninitialized value
    */
 
-  endTime: Date;
+  endTime?: Date;
   /**
    * Duration is the duration for a synthetic lock to mature
    * at the point of unbonding has started.
    */
 
-  duration: Duration;
+  duration?: Duration;
 }
 /**
  * SyntheticLock is creating virtual lockup where new denom is combination of
@@ -238,13 +238,13 @@ export interface SyntheticLockSDKType {
    * value is set to uninitialized value
    */
 
-  end_time: Date;
+  end_time?: Date;
   /**
    * Duration is the duration for a synthetic lock to mature
    * at the point of unbonding has started.
    */
 
-  duration: DurationSDKType;
+  duration?: DurationSDKType;
 }
 
 function createBasePeriodLock(): PeriodLock {
@@ -320,7 +320,7 @@ export const PeriodLock = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PeriodLock>): PeriodLock {
+  fromPartial(object: Partial<PeriodLock>): PeriodLock {
     const message = createBasePeriodLock();
     message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
     message.owner = object.owner ?? "";
@@ -396,7 +396,7 @@ export const QueryCondition = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryCondition>): QueryCondition {
+  fromPartial(object: Partial<QueryCondition>): QueryCondition {
     const message = createBaseQueryCondition();
     message.lockQueryType = object.lockQueryType ?? 0;
     message.denom = object.denom ?? "";
@@ -471,7 +471,7 @@ export const SyntheticLock = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SyntheticLock>): SyntheticLock {
+  fromPartial(object: Partial<SyntheticLock>): SyntheticLock {
     const message = createBaseSyntheticLock();
     message.underlyingLockId = object.underlyingLockId !== undefined && object.underlyingLockId !== null ? Long.fromValue(object.underlyingLockId) : Long.UZERO;
     message.synthDenom = object.synthDenom ?? "";

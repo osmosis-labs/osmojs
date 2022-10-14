@@ -4,7 +4,7 @@ import { ProofOps, ProofOpsSDKType } from "../crypto/proof";
 import { EvidenceParams, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsSDKType, VersionParams, VersionParamsSDKType } from "../types/params";
 import { PublicKey, PublicKeySDKType } from "../crypto/keys";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 export enum CheckTxType {
   NEW = 0,
   RECHECK = 1,
@@ -351,17 +351,17 @@ export interface RequestSetOptionSDKType {
   value: string;
 }
 export interface RequestInitChain {
-  time: Date;
+  time?: Date;
   chainId: string;
-  consensusParams: ConsensusParams;
+  consensusParams?: ConsensusParams;
   validators: ValidatorUpdate[];
   appStateBytes: Uint8Array;
   initialHeight: Long;
 }
 export interface RequestInitChainSDKType {
-  time: Date;
+  time?: Date;
   chain_id: string;
-  consensus_params: ConsensusParamsSDKType;
+  consensus_params?: ConsensusParamsSDKType;
   validators: ValidatorUpdateSDKType[];
   app_state_bytes: Uint8Array;
   initial_height: Long;
@@ -380,14 +380,14 @@ export interface RequestQuerySDKType {
 }
 export interface RequestBeginBlock {
   hash: Uint8Array;
-  header: Header;
-  lastCommitInfo: LastCommitInfo;
+  header?: Header;
+  lastCommitInfo?: LastCommitInfo;
   byzantineValidators: Evidence[];
 }
 export interface RequestBeginBlockSDKType {
   hash: Uint8Array;
-  header: HeaderSDKType;
-  last_commit_info: LastCommitInfoSDKType;
+  header?: HeaderSDKType;
+  last_commit_info?: LastCommitInfoSDKType;
   byzantine_validators: EvidenceSDKType[];
 }
 export interface RequestCheckTx {
@@ -422,7 +422,7 @@ export interface RequestListSnapshotsSDKType {}
 
 export interface RequestOfferSnapshot {
   /** snapshot offered by peers */
-  snapshot: Snapshot;
+  snapshot?: Snapshot;
   /** light client-verified app hash for snapshot height */
 
   appHash: Uint8Array;
@@ -431,7 +431,7 @@ export interface RequestOfferSnapshot {
 
 export interface RequestOfferSnapshotSDKType {
   /** snapshot offered by peers */
-  snapshot: SnapshotSDKType;
+  snapshot?: SnapshotSDKType;
   /** light client-verified app hash for snapshot height */
 
   app_hash: Uint8Array;
@@ -551,12 +551,12 @@ export interface ResponseSetOptionSDKType {
   info: string;
 }
 export interface ResponseInitChain {
-  consensusParams: ConsensusParams;
+  consensusParams?: ConsensusParams;
   validators: ValidatorUpdate[];
   appHash: Uint8Array;
 }
 export interface ResponseInitChainSDKType {
-  consensus_params: ConsensusParamsSDKType;
+  consensus_params?: ConsensusParamsSDKType;
   validators: ValidatorUpdateSDKType[];
   app_hash: Uint8Array;
 }
@@ -571,7 +571,7 @@ export interface ResponseQuery {
   index: Long;
   key: Uint8Array;
   value: Uint8Array;
-  proofOps: ProofOps;
+  proofOps?: ProofOps;
   height: Long;
   codespace: string;
 }
@@ -586,7 +586,7 @@ export interface ResponseQuerySDKType {
   index: Long;
   key: Uint8Array;
   value: Uint8Array;
-  proof_ops: ProofOpsSDKType;
+  proof_ops?: ProofOpsSDKType;
   height: Long;
   codespace: string;
 }
@@ -654,12 +654,12 @@ export interface ResponseDeliverTxSDKType {
 }
 export interface ResponseEndBlock {
   validatorUpdates: ValidatorUpdate[];
-  consensusParamUpdates: ConsensusParams;
+  consensusParamUpdates?: ConsensusParams;
   events: Event[];
 }
 export interface ResponseEndBlockSDKType {
   validator_updates: ValidatorUpdateSDKType[];
-  consensus_param_updates: ConsensusParamsSDKType;
+  consensus_param_updates?: ConsensusParamsSDKType;
   events: EventSDKType[];
 }
 export interface ResponseCommit {
@@ -714,10 +714,10 @@ export interface ResponseApplySnapshotChunkSDKType {
  */
 
 export interface ConsensusParams {
-  block: BlockParams;
-  evidence: EvidenceParams;
-  validator: ValidatorParams;
-  version: VersionParams;
+  block?: BlockParams;
+  evidence?: EvidenceParams;
+  validator?: ValidatorParams;
+  version?: VersionParams;
 }
 /**
  * ConsensusParams contains all consensus-relevant parameters
@@ -725,10 +725,10 @@ export interface ConsensusParams {
  */
 
 export interface ConsensusParamsSDKType {
-  block: BlockParamsSDKType;
-  evidence: EvidenceParamsSDKType;
-  validator: ValidatorParamsSDKType;
-  version: VersionParamsSDKType;
+  block?: BlockParamsSDKType;
+  evidence?: EvidenceParamsSDKType;
+  validator?: ValidatorParamsSDKType;
+  version?: VersionParamsSDKType;
 }
 /** BlockParams contains limits on the block size. */
 
@@ -804,7 +804,7 @@ export interface TxResult {
   height: Long;
   index: number;
   tx: Uint8Array;
-  result: ResponseDeliverTx;
+  result?: ResponseDeliverTx;
 }
 /**
  * TxResult contains results of executing the transaction.
@@ -816,7 +816,7 @@ export interface TxResultSDKType {
   height: Long;
   index: number;
   tx: Uint8Array;
-  result: ResponseDeliverTxSDKType;
+  result?: ResponseDeliverTxSDKType;
 }
 /** Validator */
 
@@ -845,38 +845,38 @@ export interface ValidatorSDKType {
 /** ValidatorUpdate */
 
 export interface ValidatorUpdate {
-  pubKey: PublicKey;
+  pubKey?: PublicKey;
   power: Long;
 }
 /** ValidatorUpdate */
 
 export interface ValidatorUpdateSDKType {
-  pub_key: PublicKeySDKType;
+  pub_key?: PublicKeySDKType;
   power: Long;
 }
 /** VoteInfo */
 
 export interface VoteInfo {
-  validator: Validator;
+  validator?: Validator;
   signedLastBlock: boolean;
 }
 /** VoteInfo */
 
 export interface VoteInfoSDKType {
-  validator: ValidatorSDKType;
+  validator?: ValidatorSDKType;
   signed_last_block: boolean;
 }
 export interface Evidence {
   type: EvidenceType;
   /** The offending validator */
 
-  validator: Validator;
+  validator?: Validator;
   /** The height when the offense occurred */
 
   height: Long;
   /** The corresponding time where the offense occurred */
 
-  time: Date;
+  time?: Date;
   /**
    * Total voting power of the validator set in case the ABCI application does
    * not store historical validators.
@@ -889,13 +889,13 @@ export interface EvidenceSDKType {
   type: EvidenceTypeSDKType;
   /** The offending validator */
 
-  validator: ValidatorSDKType;
+  validator?: ValidatorSDKType;
   /** The height when the offense occurred */
 
   height: Long;
   /** The corresponding time where the offense occurred */
 
-  time: Date;
+  time?: Date;
   /**
    * Total voting power of the validator set in case the ABCI application does
    * not store historical validators.
@@ -1100,7 +1100,7 @@ export const Request = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Request>): Request {
+  fromPartial(object: Partial<Request>): Request {
     const message = createBaseRequest();
     message.echo = object.echo !== undefined && object.echo !== null ? RequestEcho.fromPartial(object.echo) : undefined;
     message.flush = object.flush !== undefined && object.flush !== null ? RequestFlush.fromPartial(object.flush) : undefined;
@@ -1159,7 +1159,7 @@ export const RequestEcho = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestEcho>): RequestEcho {
+  fromPartial(object: Partial<RequestEcho>): RequestEcho {
     const message = createBaseRequestEcho();
     message.message = object.message ?? "";
     return message;
@@ -1194,7 +1194,7 @@ export const RequestFlush = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<RequestFlush>): RequestFlush {
+  fromPartial(_: Partial<RequestFlush>): RequestFlush {
     const message = createBaseRequestFlush();
     return message;
   }
@@ -1256,7 +1256,7 @@ export const RequestInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestInfo>): RequestInfo {
+  fromPartial(object: Partial<RequestInfo>): RequestInfo {
     const message = createBaseRequestInfo();
     message.version = object.version ?? "";
     message.blockVersion = object.blockVersion !== undefined && object.blockVersion !== null ? Long.fromValue(object.blockVersion) : Long.UZERO;
@@ -1312,7 +1312,7 @@ export const RequestSetOption = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestSetOption>): RequestSetOption {
+  fromPartial(object: Partial<RequestSetOption>): RequestSetOption {
     const message = createBaseRequestSetOption();
     message.key = object.key ?? "";
     message.value = object.value ?? "";
@@ -1403,7 +1403,7 @@ export const RequestInitChain = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestInitChain>): RequestInitChain {
+  fromPartial(object: Partial<RequestInitChain>): RequestInitChain {
     const message = createBaseRequestInitChain();
     message.time = object.time ?? undefined;
     message.chainId = object.chainId ?? "";
@@ -1480,7 +1480,7 @@ export const RequestQuery = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestQuery>): RequestQuery {
+  fromPartial(object: Partial<RequestQuery>): RequestQuery {
     const message = createBaseRequestQuery();
     message.data = object.data ?? new Uint8Array();
     message.path = object.path ?? "";
@@ -1555,7 +1555,7 @@ export const RequestBeginBlock = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestBeginBlock>): RequestBeginBlock {
+  fromPartial(object: Partial<RequestBeginBlock>): RequestBeginBlock {
     const message = createBaseRequestBeginBlock();
     message.hash = object.hash ?? new Uint8Array();
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
@@ -1612,7 +1612,7 @@ export const RequestCheckTx = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestCheckTx>): RequestCheckTx {
+  fromPartial(object: Partial<RequestCheckTx>): RequestCheckTx {
     const message = createBaseRequestCheckTx();
     message.tx = object.tx ?? new Uint8Array();
     message.type = object.type ?? 0;
@@ -1658,7 +1658,7 @@ export const RequestDeliverTx = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestDeliverTx>): RequestDeliverTx {
+  fromPartial(object: Partial<RequestDeliverTx>): RequestDeliverTx {
     const message = createBaseRequestDeliverTx();
     message.tx = object.tx ?? new Uint8Array();
     return message;
@@ -1703,7 +1703,7 @@ export const RequestEndBlock = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestEndBlock>): RequestEndBlock {
+  fromPartial(object: Partial<RequestEndBlock>): RequestEndBlock {
     const message = createBaseRequestEndBlock();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     return message;
@@ -1738,7 +1738,7 @@ export const RequestCommit = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<RequestCommit>): RequestCommit {
+  fromPartial(_: Partial<RequestCommit>): RequestCommit {
     const message = createBaseRequestCommit();
     return message;
   }
@@ -1772,7 +1772,7 @@ export const RequestListSnapshots = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<RequestListSnapshots>): RequestListSnapshots {
+  fromPartial(_: Partial<RequestListSnapshots>): RequestListSnapshots {
     const message = createBaseRequestListSnapshots();
     return message;
   }
@@ -1825,7 +1825,7 @@ export const RequestOfferSnapshot = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestOfferSnapshot>): RequestOfferSnapshot {
+  fromPartial(object: Partial<RequestOfferSnapshot>): RequestOfferSnapshot {
     const message = createBaseRequestOfferSnapshot();
     message.snapshot = object.snapshot !== undefined && object.snapshot !== null ? Snapshot.fromPartial(object.snapshot) : undefined;
     message.appHash = object.appHash ?? new Uint8Array();
@@ -1889,7 +1889,7 @@ export const RequestLoadSnapshotChunk = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestLoadSnapshotChunk>): RequestLoadSnapshotChunk {
+  fromPartial(object: Partial<RequestLoadSnapshotChunk>): RequestLoadSnapshotChunk {
     const message = createBaseRequestLoadSnapshotChunk();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.UZERO;
     message.format = object.format ?? 0;
@@ -1954,7 +1954,7 @@ export const RequestApplySnapshotChunk = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<RequestApplySnapshotChunk>): RequestApplySnapshotChunk {
+  fromPartial(object: Partial<RequestApplySnapshotChunk>): RequestApplySnapshotChunk {
     const message = createBaseRequestApplySnapshotChunk();
     message.index = object.index ?? 0;
     message.chunk = object.chunk ?? new Uint8Array();
@@ -2136,7 +2136,7 @@ export const Response = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Response>): Response {
+  fromPartial(object: Partial<Response>): Response {
     const message = createBaseResponse();
     message.exception = object.exception !== undefined && object.exception !== null ? ResponseException.fromPartial(object.exception) : undefined;
     message.echo = object.echo !== undefined && object.echo !== null ? ResponseEcho.fromPartial(object.echo) : undefined;
@@ -2196,7 +2196,7 @@ export const ResponseException = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseException>): ResponseException {
+  fromPartial(object: Partial<ResponseException>): ResponseException {
     const message = createBaseResponseException();
     message.error = object.error ?? "";
     return message;
@@ -2241,7 +2241,7 @@ export const ResponseEcho = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseEcho>): ResponseEcho {
+  fromPartial(object: Partial<ResponseEcho>): ResponseEcho {
     const message = createBaseResponseEcho();
     message.message = object.message ?? "";
     return message;
@@ -2276,7 +2276,7 @@ export const ResponseFlush = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<ResponseFlush>): ResponseFlush {
+  fromPartial(_: Partial<ResponseFlush>): ResponseFlush {
     const message = createBaseResponseFlush();
     return message;
   }
@@ -2356,7 +2356,7 @@ export const ResponseInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseInfo>): ResponseInfo {
+  fromPartial(object: Partial<ResponseInfo>): ResponseInfo {
     const message = createBaseResponseInfo();
     message.data = object.data ?? "";
     message.version = object.version ?? "";
@@ -2423,7 +2423,7 @@ export const ResponseSetOption = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseSetOption>): ResponseSetOption {
+  fromPartial(object: Partial<ResponseSetOption>): ResponseSetOption {
     const message = createBaseResponseSetOption();
     message.code = object.code ?? 0;
     message.log = object.log ?? "";
@@ -2488,7 +2488,7 @@ export const ResponseInitChain = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseInitChain>): ResponseInitChain {
+  fromPartial(object: Partial<ResponseInitChain>): ResponseInitChain {
     const message = createBaseResponseInitChain();
     message.consensusParams = object.consensusParams !== undefined && object.consensusParams !== null ? ConsensusParams.fromPartial(object.consensusParams) : undefined;
     message.validators = object.validators?.map(e => ValidatorUpdate.fromPartial(e)) || [];
@@ -2607,7 +2607,7 @@ export const ResponseQuery = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseQuery>): ResponseQuery {
+  fromPartial(object: Partial<ResponseQuery>): ResponseQuery {
     const message = createBaseResponseQuery();
     message.code = object.code ?? 0;
     message.log = object.log ?? "";
@@ -2660,7 +2660,7 @@ export const ResponseBeginBlock = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseBeginBlock>): ResponseBeginBlock {
+  fromPartial(object: Partial<ResponseBeginBlock>): ResponseBeginBlock {
     const message = createBaseResponseBeginBlock();
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
     return message;
@@ -2768,7 +2768,7 @@ export const ResponseCheckTx = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseCheckTx>): ResponseCheckTx {
+  fromPartial(object: Partial<ResponseCheckTx>): ResponseCheckTx {
     const message = createBaseResponseCheckTx();
     message.code = object.code ?? 0;
     message.data = object.data ?? new Uint8Array();
@@ -2883,7 +2883,7 @@ export const ResponseDeliverTx = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseDeliverTx>): ResponseDeliverTx {
+  fromPartial(object: Partial<ResponseDeliverTx>): ResponseDeliverTx {
     const message = createBaseResponseDeliverTx();
     message.code = object.code ?? 0;
     message.data = object.data ?? new Uint8Array();
@@ -2953,7 +2953,7 @@ export const ResponseEndBlock = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseEndBlock>): ResponseEndBlock {
+  fromPartial(object: Partial<ResponseEndBlock>): ResponseEndBlock {
     const message = createBaseResponseEndBlock();
     message.validatorUpdates = object.validatorUpdates?.map(e => ValidatorUpdate.fromPartial(e)) || [];
     message.consensusParamUpdates = object.consensusParamUpdates !== undefined && object.consensusParamUpdates !== null ? ConsensusParams.fromPartial(object.consensusParamUpdates) : undefined;
@@ -3009,7 +3009,7 @@ export const ResponseCommit = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseCommit>): ResponseCommit {
+  fromPartial(object: Partial<ResponseCommit>): ResponseCommit {
     const message = createBaseResponseCommit();
     message.data = object.data ?? new Uint8Array();
     message.retainHeight = object.retainHeight !== undefined && object.retainHeight !== null ? Long.fromValue(object.retainHeight) : Long.ZERO;
@@ -3055,7 +3055,7 @@ export const ResponseListSnapshots = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseListSnapshots>): ResponseListSnapshots {
+  fromPartial(object: Partial<ResponseListSnapshots>): ResponseListSnapshots {
     const message = createBaseResponseListSnapshots();
     message.snapshots = object.snapshots?.map(e => Snapshot.fromPartial(e)) || [];
     return message;
@@ -3100,7 +3100,7 @@ export const ResponseOfferSnapshot = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseOfferSnapshot>): ResponseOfferSnapshot {
+  fromPartial(object: Partial<ResponseOfferSnapshot>): ResponseOfferSnapshot {
     const message = createBaseResponseOfferSnapshot();
     message.result = object.result ?? 0;
     return message;
@@ -3145,7 +3145,7 @@ export const ResponseLoadSnapshotChunk = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseLoadSnapshotChunk>): ResponseLoadSnapshotChunk {
+  fromPartial(object: Partial<ResponseLoadSnapshotChunk>): ResponseLoadSnapshotChunk {
     const message = createBaseResponseLoadSnapshotChunk();
     message.chunk = object.chunk ?? new Uint8Array();
     return message;
@@ -3221,7 +3221,7 @@ export const ResponseApplySnapshotChunk = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ResponseApplySnapshotChunk>): ResponseApplySnapshotChunk {
+  fromPartial(object: Partial<ResponseApplySnapshotChunk>): ResponseApplySnapshotChunk {
     const message = createBaseResponseApplySnapshotChunk();
     message.result = object.result ?? 0;
     message.refetchChunks = object.refetchChunks?.map(e => e) || [];
@@ -3295,7 +3295,7 @@ export const ConsensusParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ConsensusParams>): ConsensusParams {
+  fromPartial(object: Partial<ConsensusParams>): ConsensusParams {
     const message = createBaseConsensusParams();
     message.block = object.block !== undefined && object.block !== null ? BlockParams.fromPartial(object.block) : undefined;
     message.evidence = object.evidence !== undefined && object.evidence !== null ? EvidenceParams.fromPartial(object.evidence) : undefined;
@@ -3352,7 +3352,7 @@ export const BlockParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<BlockParams>): BlockParams {
+  fromPartial(object: Partial<BlockParams>): BlockParams {
     const message = createBaseBlockParams();
     message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? Long.fromValue(object.maxBytes) : Long.ZERO;
     message.maxGas = object.maxGas !== undefined && object.maxGas !== null ? Long.fromValue(object.maxGas) : Long.ZERO;
@@ -3407,7 +3407,7 @@ export const LastCommitInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<LastCommitInfo>): LastCommitInfo {
+  fromPartial(object: Partial<LastCommitInfo>): LastCommitInfo {
     const message = createBaseLastCommitInfo();
     message.round = object.round ?? 0;
     message.votes = object.votes?.map(e => VoteInfo.fromPartial(e)) || [];
@@ -3462,7 +3462,7 @@ export const Event = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Event>): Event {
+  fromPartial(object: Partial<Event>): Event {
     const message = createBaseEvent();
     message.type = object.type ?? "";
     message.attributes = object.attributes?.map(e => EventAttribute.fromPartial(e)) || [];
@@ -3526,7 +3526,7 @@ export const EventAttribute = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EventAttribute>): EventAttribute {
+  fromPartial(object: Partial<EventAttribute>): EventAttribute {
     const message = createBaseEventAttribute();
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();
@@ -3600,7 +3600,7 @@ export const TxResult = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<TxResult>): TxResult {
+  fromPartial(object: Partial<TxResult>): TxResult {
     const message = createBaseTxResult();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.index = object.index ?? 0;
@@ -3657,7 +3657,7 @@ export const Validator = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Validator>): Validator {
+  fromPartial(object: Partial<Validator>): Validator {
     const message = createBaseValidator();
     message.address = object.address ?? new Uint8Array();
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
@@ -3712,7 +3712,7 @@ export const ValidatorUpdate = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ValidatorUpdate>): ValidatorUpdate {
+  fromPartial(object: Partial<ValidatorUpdate>): ValidatorUpdate {
     const message = createBaseValidatorUpdate();
     message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? PublicKey.fromPartial(object.pubKey) : undefined;
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
@@ -3767,7 +3767,7 @@ export const VoteInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<VoteInfo>): VoteInfo {
+  fromPartial(object: Partial<VoteInfo>): VoteInfo {
     const message = createBaseVoteInfo();
     message.validator = object.validator !== undefined && object.validator !== null ? Validator.fromPartial(object.validator) : undefined;
     message.signedLastBlock = object.signedLastBlock ?? false;
@@ -3849,7 +3849,7 @@ export const Evidence = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Evidence>): Evidence {
+  fromPartial(object: Partial<Evidence>): Evidence {
     const message = createBaseEvidence();
     message.type = object.type ?? 0;
     message.validator = object.validator !== undefined && object.validator !== null ? Validator.fromPartial(object.validator) : undefined;
@@ -3934,7 +3934,7 @@ export const Snapshot = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Snapshot>): Snapshot {
+  fromPartial(object: Partial<Snapshot>): Snapshot {
     const message = createBaseSnapshot();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.UZERO;
     message.format = object.format ?? 0;

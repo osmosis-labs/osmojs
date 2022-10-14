@@ -1,17 +1,17 @@
 import { Params, ParamsSDKType } from "./genesis";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface ArithmeticTwapRequest {
-    poolId?: Long;
-    baseAsset?: string;
-    quoteAsset?: string;
+    poolId: Long;
+    baseAsset: string;
+    quoteAsset: string;
     startTime?: Date;
     endTime?: Date;
 }
 export interface ArithmeticTwapRequestSDKType {
-    pool_id?: Long;
-    base_asset?: string;
-    quote_asset?: string;
+    pool_id: Long;
+    base_asset: string;
+    quote_asset: string;
     start_time?: Date;
     end_time?: Date;
 }
@@ -22,15 +22,15 @@ export interface ArithmeticTwapResponseSDKType {
     arithmetic_twap: string;
 }
 export interface ArithmeticTwapToNowRequest {
-    poolId?: Long;
-    baseAsset?: string;
-    quoteAsset?: string;
+    poolId: Long;
+    baseAsset: string;
+    quoteAsset: string;
     startTime?: Date;
 }
 export interface ArithmeticTwapToNowRequestSDKType {
-    pool_id?: Long;
-    base_asset?: string;
-    quote_asset?: string;
+    pool_id: Long;
+    base_asset: string;
+    quote_asset: string;
     start_time?: Date;
 }
 export interface ArithmeticTwapToNowResponse {
@@ -44,38 +44,38 @@ export interface ParamsRequest {
 export interface ParamsRequestSDKType {
 }
 export interface ParamsResponse {
-    params: Params;
+    params?: Params;
 }
 export interface ParamsResponseSDKType {
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
 }
 export declare const ArithmeticTwapRequest: {
     encode(message: ArithmeticTwapRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapRequest;
-    fromPartial(object: DeepPartial<ArithmeticTwapRequest>): ArithmeticTwapRequest;
+    fromPartial(object: Partial<ArithmeticTwapRequest>): ArithmeticTwapRequest;
 };
 export declare const ArithmeticTwapResponse: {
     encode(message: ArithmeticTwapResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapResponse;
-    fromPartial(object: DeepPartial<ArithmeticTwapResponse>): ArithmeticTwapResponse;
+    fromPartial(object: Partial<ArithmeticTwapResponse>): ArithmeticTwapResponse;
 };
 export declare const ArithmeticTwapToNowRequest: {
     encode(message: ArithmeticTwapToNowRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowRequest;
-    fromPartial(object: DeepPartial<ArithmeticTwapToNowRequest>): ArithmeticTwapToNowRequest;
+    fromPartial(object: Partial<ArithmeticTwapToNowRequest>): ArithmeticTwapToNowRequest;
 };
 export declare const ArithmeticTwapToNowResponse: {
     encode(message: ArithmeticTwapToNowResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowResponse;
-    fromPartial(object: DeepPartial<ArithmeticTwapToNowResponse>): ArithmeticTwapToNowResponse;
+    fromPartial(object: Partial<ArithmeticTwapToNowResponse>): ArithmeticTwapToNowResponse;
 };
 export declare const ParamsRequest: {
     encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
-    fromPartial(_: DeepPartial<ParamsRequest>): ParamsRequest;
+    fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
 };
 export declare const ParamsResponse: {
     encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
-    fromPartial(object: DeepPartial<ParamsResponse>): ParamsResponse;
+    fromPartial(object: Partial<ParamsResponse>): ParamsResponse;
 };

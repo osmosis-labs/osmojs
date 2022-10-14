@@ -1,6 +1,6 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, Long, fromTimestamp, DeepPartial } from "../../../helpers";
+import { toTimestamp, Long, fromTimestamp } from "../../../helpers";
 export interface Sale {
   /** Destination for the earned token_in */
   treasury: string;
@@ -22,13 +22,13 @@ export interface Sale {
   tokenOutSupply: string;
   /** start time when the token emission starts. */
 
-  startTime: Date;
+  startTime?: Date;
   /**
    * end time when the token emission ends. Can't be bigger than start +
    * 139years (to avoid round overflow)
    */
 
-  endTime: Date;
+  endTime?: Date;
   /** Round number when the sale was last time updated. */
 
   round: Long;
@@ -81,13 +81,13 @@ export interface SaleSDKType {
   token_out_supply: string;
   /** start time when the token emission starts. */
 
-  start_time: Date;
+  start_time?: Date;
   /**
    * end time when the token emission ends. Can't be bigger than start +
    * 139years (to avoid round overflow)
    */
 
-  end_time: Date;
+  end_time?: Date;
   /** Round number when the sale was last time updated. */
 
   round: Long;
@@ -335,7 +335,7 @@ export const Sale = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Sale>): Sale {
+  fromPartial(object: Partial<Sale>): Sale {
     const message = createBaseSale();
     message.treasury = object.treasury ?? "";
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
@@ -432,7 +432,7 @@ export const UserPosition = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UserPosition>): UserPosition {
+  fromPartial(object: Partial<UserPosition>): UserPosition {
     const message = createBaseUserPosition();
     message.shares = object.shares ?? "";
     message.staked = object.staked ?? "";

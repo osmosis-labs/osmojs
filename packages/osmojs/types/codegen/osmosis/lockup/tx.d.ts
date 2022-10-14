@@ -2,15 +2,15 @@ import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockSDKType } from "./lock";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../helpers";
+import { Long } from "../../helpers";
 export interface MsgLockTokens {
     owner: string;
-    duration: Duration;
+    duration?: Duration;
     coins: Coin[];
 }
 export interface MsgLockTokensSDKType {
     owner: string;
-    duration: DurationSDKType;
+    duration?: DurationSDKType;
     coins: CoinSDKType[];
 }
 export interface MsgLockTokensResponse {
@@ -60,7 +60,7 @@ export interface MsgExtendLockup {
      * duration to be set. fails if lower than the current duration, or is
      * unlocking
      */
-    duration: Duration;
+    duration?: Duration;
 }
 /**
  * MsgExtendLockup extends the existing lockup's duration.
@@ -73,7 +73,7 @@ export interface MsgExtendLockupSDKType {
      * duration to be set. fails if lower than the current duration, or is
      * unlocking
      */
-    duration: DurationSDKType;
+    duration?: DurationSDKType;
 }
 export interface MsgExtendLockupResponse {
     success: boolean;
@@ -84,40 +84,40 @@ export interface MsgExtendLockupResponseSDKType {
 export declare const MsgLockTokens: {
     encode(message: MsgLockTokens, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokens;
-    fromPartial(object: DeepPartial<MsgLockTokens>): MsgLockTokens;
+    fromPartial(object: Partial<MsgLockTokens>): MsgLockTokens;
 };
 export declare const MsgLockTokensResponse: {
     encode(message: MsgLockTokensResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponse;
-    fromPartial(object: DeepPartial<MsgLockTokensResponse>): MsgLockTokensResponse;
+    fromPartial(object: Partial<MsgLockTokensResponse>): MsgLockTokensResponse;
 };
 export declare const MsgBeginUnlockingAll: {
     encode(message: MsgBeginUnlockingAll, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAll;
-    fromPartial(object: DeepPartial<MsgBeginUnlockingAll>): MsgBeginUnlockingAll;
+    fromPartial(object: Partial<MsgBeginUnlockingAll>): MsgBeginUnlockingAll;
 };
 export declare const MsgBeginUnlockingAllResponse: {
     encode(message: MsgBeginUnlockingAllResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse;
-    fromPartial(object: DeepPartial<MsgBeginUnlockingAllResponse>): MsgBeginUnlockingAllResponse;
+    fromPartial(object: Partial<MsgBeginUnlockingAllResponse>): MsgBeginUnlockingAllResponse;
 };
 export declare const MsgBeginUnlocking: {
     encode(message: MsgBeginUnlocking, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlocking;
-    fromPartial(object: DeepPartial<MsgBeginUnlocking>): MsgBeginUnlocking;
+    fromPartial(object: Partial<MsgBeginUnlocking>): MsgBeginUnlocking;
 };
 export declare const MsgBeginUnlockingResponse: {
     encode(message: MsgBeginUnlockingResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponse;
-    fromPartial(object: DeepPartial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse;
+    fromPartial(object: Partial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse;
 };
 export declare const MsgExtendLockup: {
     encode(message: MsgExtendLockup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockup;
-    fromPartial(object: DeepPartial<MsgExtendLockup>): MsgExtendLockup;
+    fromPartial(object: Partial<MsgExtendLockup>): MsgExtendLockup;
 };
 export declare const MsgExtendLockupResponse: {
     encode(message: MsgExtendLockupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse;
-    fromPartial(object: DeepPartial<MsgExtendLockupResponse>): MsgExtendLockupResponse;
+    fromPartial(object: Partial<MsgExtendLockupResponse>): MsgExtendLockupResponse;
 };

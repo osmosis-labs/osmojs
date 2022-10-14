@@ -1,6 +1,6 @@
 import { Height, HeightSDKType } from "../../client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * State defines if a channel is in one of the following states:
  * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -88,7 +88,7 @@ export interface Channel {
     /** whether the channel is ordered or unordered */
     ordering: Order;
     /** counterparty channel end */
-    counterparty: Counterparty;
+    counterparty?: Counterparty;
     /**
      * list of connection identifiers, in order, along which packets sent on
      * this channel will travel
@@ -108,7 +108,7 @@ export interface ChannelSDKType {
     /** whether the channel is ordered or unordered */
     ordering: OrderSDKType;
     /** counterparty channel end */
-    counterparty: CounterpartySDKType;
+    counterparty?: CounterpartySDKType;
     /**
      * list of connection identifiers, in order, along which packets sent on
      * this channel will travel
@@ -127,7 +127,7 @@ export interface IdentifiedChannel {
     /** whether the channel is ordered or unordered */
     ordering: Order;
     /** counterparty channel end */
-    counterparty: Counterparty;
+    counterparty?: Counterparty;
     /**
      * list of connection identifiers, in order, along which packets sent on
      * this channel will travel
@@ -150,7 +150,7 @@ export interface IdentifiedChannelSDKType {
     /** whether the channel is ordered or unordered */
     ordering: OrderSDKType;
     /** counterparty channel end */
-    counterparty: CounterpartySDKType;
+    counterparty?: CounterpartySDKType;
     /**
      * list of connection identifiers, in order, along which packets sent on
      * this channel will travel
@@ -196,7 +196,7 @@ export interface Packet {
     /** actual opaque bytes transferred directly to the application module */
     data: Uint8Array;
     /** block height after which the packet times out */
-    timeoutHeight: Height;
+    timeoutHeight?: Height;
     /** block timestamp (in nanoseconds) after which the packet times out */
     timeoutTimestamp: Long;
 }
@@ -219,7 +219,7 @@ export interface PacketSDKType {
     /** actual opaque bytes transferred directly to the application module */
     data: Uint8Array;
     /** block height after which the packet times out */
-    timeout_height: HeightSDKType;
+    timeout_height?: HeightSDKType;
     /** block timestamp (in nanoseconds) after which the packet times out */
     timeout_timestamp: Long;
 }
@@ -284,30 +284,30 @@ export interface AcknowledgementSDKType {
 export declare const Channel: {
     encode(message: Channel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Channel;
-    fromPartial(object: DeepPartial<Channel>): Channel;
+    fromPartial(object: Partial<Channel>): Channel;
 };
 export declare const IdentifiedChannel: {
     encode(message: IdentifiedChannel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedChannel;
-    fromPartial(object: DeepPartial<IdentifiedChannel>): IdentifiedChannel;
+    fromPartial(object: Partial<IdentifiedChannel>): IdentifiedChannel;
 };
 export declare const Counterparty: {
     encode(message: Counterparty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Counterparty;
-    fromPartial(object: DeepPartial<Counterparty>): Counterparty;
+    fromPartial(object: Partial<Counterparty>): Counterparty;
 };
 export declare const Packet: {
     encode(message: Packet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Packet;
-    fromPartial(object: DeepPartial<Packet>): Packet;
+    fromPartial(object: Partial<Packet>): Packet;
 };
 export declare const PacketState: {
     encode(message: PacketState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketState;
-    fromPartial(object: DeepPartial<PacketState>): PacketState;
+    fromPartial(object: Partial<PacketState>): PacketState;
 };
 export declare const Acknowledgement: {
     encode(message: Acknowledgement, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Acknowledgement;
-    fromPartial(object: DeepPartial<Acknowledgement>): Acknowledgement;
+    fromPartial(object: Partial<Acknowledgement>): Acknowledgement;
 };

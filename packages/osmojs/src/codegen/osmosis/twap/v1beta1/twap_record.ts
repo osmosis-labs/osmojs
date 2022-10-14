@@ -1,6 +1,6 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, Long, fromTimestamp, DeepPartial } from "../../../helpers";
+import { toTimestamp, Long, fromTimestamp } from "../../../helpers";
 /**
  * A TWAP record should be indexed in state by pool_id, (asset pair), timestamp
  * The asset pair assets should be lexicographically sorted.
@@ -27,7 +27,7 @@ export interface TwapRecord {
    * machine, mapping prior block heights within {TIME RANGE} to times.
    */
 
-  time: Date;
+  time?: Date;
   /**
    * We store the last spot prices in the struct, so that we can interpolate
    * accumulator values for times between when accumulator records are stored.
@@ -43,7 +43,7 @@ export interface TwapRecord {
    * TWAP, due to an unforeseen underlying error.
    */
 
-  lastErrorTime: Date;
+  lastErrorTime?: Date;
 }
 /**
  * A TWAP record should be indexed in state by pool_id, (asset pair), timestamp
@@ -71,7 +71,7 @@ export interface TwapRecordSDKType {
    * machine, mapping prior block heights within {TIME RANGE} to times.
    */
 
-  time: Date;
+  time?: Date;
   /**
    * We store the last spot prices in the struct, so that we can interpolate
    * accumulator values for times between when accumulator records are stored.
@@ -87,7 +87,7 @@ export interface TwapRecordSDKType {
    * TWAP, due to an unforeseen underlying error.
    */
 
-  last_error_time: Date;
+  last_error_time?: Date;
 }
 
 function createBaseTwapRecord(): TwapRecord {
@@ -208,7 +208,7 @@ export const TwapRecord = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<TwapRecord>): TwapRecord {
+  fromPartial(object: Partial<TwapRecord>): TwapRecord {
     const message = createBaseTwapRecord();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.asset0Denom = object.asset0Denom ?? "";

@@ -2,7 +2,7 @@ import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { VoteOption, VoteOptionSDKType, WeightedVoteOption, WeightedVoteOptionSDKType } from "./gov";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
@@ -46,7 +46,7 @@ export interface MsgSubmitProposalResponseSDKType {
 
 export interface MsgExecLegacyContent {
   /** content is the proposal's content. */
-  content: Any;
+  content?: Any;
   /** authority must be the gov module address. */
 
   authority: string;
@@ -58,7 +58,7 @@ export interface MsgExecLegacyContent {
 
 export interface MsgExecLegacyContentSDKType {
   /** content is the proposal's content. */
-  content: AnySDKType;
+  content?: AnySDKType;
   /** authority must be the gov module address. */
 
   authority: string;
@@ -198,7 +198,7 @@ export const MsgSubmitProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSubmitProposal>): MsgSubmitProposal {
+  fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal {
     const message = createBaseMsgSubmitProposal();
     message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
     message.initialDeposit = object.initialDeposit?.map(e => Coin.fromPartial(e)) || [];
@@ -246,7 +246,7 @@ export const MsgSubmitProposalResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse {
+  fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse {
     const message = createBaseMsgSubmitProposalResponse();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     return message;
@@ -300,7 +300,7 @@ export const MsgExecLegacyContent = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExecLegacyContent>): MsgExecLegacyContent {
+  fromPartial(object: Partial<MsgExecLegacyContent>): MsgExecLegacyContent {
     const message = createBaseMsgExecLegacyContent();
     message.content = object.content !== undefined && object.content !== null ? Any.fromPartial(object.content) : undefined;
     message.authority = object.authority ?? "";
@@ -336,7 +336,7 @@ export const MsgExecLegacyContentResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgExecLegacyContentResponse>): MsgExecLegacyContentResponse {
+  fromPartial(_: Partial<MsgExecLegacyContentResponse>): MsgExecLegacyContentResponse {
     const message = createBaseMsgExecLegacyContentResponse();
     return message;
   }
@@ -407,7 +407,7 @@ export const MsgVote = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgVote>): MsgVote {
+  fromPartial(object: Partial<MsgVote>): MsgVote {
     const message = createBaseMsgVote();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.voter = object.voter ?? "";
@@ -445,7 +445,7 @@ export const MsgVoteResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgVoteResponse>): MsgVoteResponse {
+  fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse {
     const message = createBaseMsgVoteResponse();
     return message;
   }
@@ -516,7 +516,7 @@ export const MsgVoteWeighted = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgVoteWeighted>): MsgVoteWeighted {
+  fromPartial(object: Partial<MsgVoteWeighted>): MsgVoteWeighted {
     const message = createBaseMsgVoteWeighted();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.voter = object.voter ?? "";
@@ -554,7 +554,7 @@ export const MsgVoteWeightedResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse {
+  fromPartial(_: Partial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse {
     const message = createBaseMsgVoteWeightedResponse();
     return message;
   }
@@ -616,7 +616,7 @@ export const MsgDeposit = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgDeposit>): MsgDeposit {
+  fromPartial(object: Partial<MsgDeposit>): MsgDeposit {
     const message = createBaseMsgDeposit();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.depositor = object.depositor ?? "";
@@ -653,7 +653,7 @@ export const MsgDepositResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgDepositResponse>): MsgDepositResponse {
+  fromPartial(_: Partial<MsgDepositResponse>): MsgDepositResponse {
     const message = createBaseMsgDepositResponse();
     return message;
   }

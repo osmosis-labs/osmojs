@@ -1,34 +1,34 @@
 import { PublicKey, PublicKeySDKType } from "../crypto/keys";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 export interface ValidatorSet {
   validators: Validator[];
-  proposer: Validator;
+  proposer?: Validator;
   totalVotingPower: Long;
 }
 export interface ValidatorSetSDKType {
   validators: ValidatorSDKType[];
-  proposer: ValidatorSDKType;
+  proposer?: ValidatorSDKType;
   total_voting_power: Long;
 }
 export interface Validator {
   address: Uint8Array;
-  pubKey: PublicKey;
+  pubKey?: PublicKey;
   votingPower: Long;
   proposerPriority: Long;
 }
 export interface ValidatorSDKType {
   address: Uint8Array;
-  pub_key: PublicKeySDKType;
+  pub_key?: PublicKeySDKType;
   voting_power: Long;
   proposer_priority: Long;
 }
 export interface SimpleValidator {
-  pubKey: PublicKey;
+  pubKey?: PublicKey;
   votingPower: Long;
 }
 export interface SimpleValidatorSDKType {
-  pub_key: PublicKeySDKType;
+  pub_key?: PublicKeySDKType;
   voting_power: Long;
 }
 
@@ -87,7 +87,7 @@ export const ValidatorSet = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ValidatorSet>): ValidatorSet {
+  fromPartial(object: Partial<ValidatorSet>): ValidatorSet {
     const message = createBaseValidatorSet();
     message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
     message.proposer = object.proposer !== undefined && object.proposer !== null ? Validator.fromPartial(object.proposer) : undefined;
@@ -161,7 +161,7 @@ export const Validator = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Validator>): Validator {
+  fromPartial(object: Partial<Validator>): Validator {
     const message = createBaseValidator();
     message.address = object.address ?? new Uint8Array();
     message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? PublicKey.fromPartial(object.pubKey) : undefined;
@@ -218,7 +218,7 @@ export const SimpleValidator = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SimpleValidator>): SimpleValidator {
+  fromPartial(object: Partial<SimpleValidator>): SimpleValidator {
     const message = createBaseSimpleValidator();
     message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? PublicKey.fromPartial(object.pubKey) : undefined;
     message.votingPower = object.votingPower !== undefined && object.votingPower !== null ? Long.fromValue(object.votingPower) : Long.ZERO;

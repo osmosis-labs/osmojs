@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../helpers";
+import { Long } from "../../helpers";
 export enum FieldDescriptorProto_Type {
   /**
    * TYPE_DOUBLE - 0 is reserved for errors.
@@ -571,7 +571,7 @@ export interface FileDescriptorProto {
   enumType: EnumDescriptorProto[];
   service: ServiceDescriptorProto[];
   extension: FieldDescriptorProto[];
-  options: FileOptions;
+  options?: FileOptions;
   /**
    * This field contains optional information about the original source code.
    * You may safely remove this entire field without harming runtime
@@ -579,7 +579,7 @@ export interface FileDescriptorProto {
    * development tools.
    */
 
-  sourceCodeInfo: SourceCodeInfo;
+  sourceCodeInfo?: SourceCodeInfo;
   /**
    * The syntax of the proto file.
    * The supported values are "proto2" and "proto3".
@@ -611,7 +611,7 @@ export interface FileDescriptorProtoSDKType {
   enum_type: EnumDescriptorProtoSDKType[];
   service: ServiceDescriptorProtoSDKType[];
   extension: FieldDescriptorProtoSDKType[];
-  options: FileOptionsSDKType;
+  options?: FileOptionsSDKType;
   /**
    * This field contains optional information about the original source code.
    * You may safely remove this entire field without harming runtime
@@ -619,7 +619,7 @@ export interface FileDescriptorProtoSDKType {
    * development tools.
    */
 
-  source_code_info: SourceCodeInfoSDKType;
+  source_code_info?: SourceCodeInfoSDKType;
   /**
    * The syntax of the proto file.
    * The supported values are "proto2" and "proto3".
@@ -637,7 +637,7 @@ export interface DescriptorProto {
   enumType: EnumDescriptorProto[];
   extensionRange: DescriptorProto_ExtensionRange[];
   oneofDecl: OneofDescriptorProto[];
-  options: MessageOptions;
+  options?: MessageOptions;
   reservedRange: DescriptorProto_ReservedRange[];
   /**
    * Reserved field names, which may not be used by fields in the same message.
@@ -656,7 +656,7 @@ export interface DescriptorProtoSDKType {
   enum_type: EnumDescriptorProtoSDKType[];
   extension_range: DescriptorProto_ExtensionRangeSDKType[];
   oneof_decl: OneofDescriptorProtoSDKType[];
-  options: MessageOptionsSDKType;
+  options?: MessageOptionsSDKType;
   reserved_range: DescriptorProto_ReservedRangeSDKType[];
   /**
    * Reserved field names, which may not be used by fields in the same message.
@@ -671,7 +671,7 @@ export interface DescriptorProto_ExtensionRange {
   /** Exclusive. */
 
   end: number;
-  options: ExtensionRangeOptions;
+  options?: ExtensionRangeOptions;
 }
 export interface DescriptorProto_ExtensionRangeSDKType {
   /** Inclusive. */
@@ -679,7 +679,7 @@ export interface DescriptorProto_ExtensionRangeSDKType {
   /** Exclusive. */
 
   end: number;
-  options: ExtensionRangeOptionsSDKType;
+  options?: ExtensionRangeOptionsSDKType;
 }
 /**
  * Range of reserved tag numbers. Reserved tag numbers may not be used by
@@ -765,7 +765,7 @@ export interface FieldDescriptorProto {
    */
 
   jsonName: string;
-  options: FieldOptions;
+  options?: FieldOptions;
 }
 /** Describes a field within a message. */
 
@@ -817,26 +817,26 @@ export interface FieldDescriptorProtoSDKType {
    */
 
   json_name: string;
-  options: FieldOptionsSDKType;
+  options?: FieldOptionsSDKType;
 }
 /** Describes a oneof. */
 
 export interface OneofDescriptorProto {
   name: string;
-  options: OneofOptions;
+  options?: OneofOptions;
 }
 /** Describes a oneof. */
 
 export interface OneofDescriptorProtoSDKType {
   name: string;
-  options: OneofOptionsSDKType;
+  options?: OneofOptionsSDKType;
 }
 /** Describes an enum type. */
 
 export interface EnumDescriptorProto {
   name: string;
   value: EnumValueDescriptorProto[];
-  options: EnumOptions;
+  options?: EnumOptions;
   /**
    * Range of reserved numeric values. Reserved numeric values may not be used
    * by enum values in the same enum declaration. Reserved ranges may not
@@ -856,7 +856,7 @@ export interface EnumDescriptorProto {
 export interface EnumDescriptorProtoSDKType {
   name: string;
   value: EnumValueDescriptorProtoSDKType[];
-  options: EnumOptionsSDKType;
+  options?: EnumOptionsSDKType;
   /**
    * Range of reserved numeric values. Reserved numeric values may not be used
    * by enum values in the same enum declaration. Reserved ranges may not
@@ -908,28 +908,28 @@ export interface EnumDescriptorProto_EnumReservedRangeSDKType {
 export interface EnumValueDescriptorProto {
   name: string;
   number: number;
-  options: EnumValueOptions;
+  options?: EnumValueOptions;
 }
 /** Describes a value within an enum. */
 
 export interface EnumValueDescriptorProtoSDKType {
   name: string;
   number: number;
-  options: EnumValueOptionsSDKType;
+  options?: EnumValueOptionsSDKType;
 }
 /** Describes a service. */
 
 export interface ServiceDescriptorProto {
   name: string;
   method: MethodDescriptorProto[];
-  options: ServiceOptions;
+  options?: ServiceOptions;
 }
 /** Describes a service. */
 
 export interface ServiceDescriptorProtoSDKType {
   name: string;
   method: MethodDescriptorProtoSDKType[];
-  options: ServiceOptionsSDKType;
+  options?: ServiceOptionsSDKType;
 }
 /** Describes a method of a service. */
 
@@ -942,7 +942,7 @@ export interface MethodDescriptorProto {
 
   inputType: string;
   outputType: string;
-  options: MethodOptions;
+  options?: MethodOptions;
   /** Identifies if client streams multiple client messages */
 
   clientStreaming: boolean;
@@ -961,7 +961,7 @@ export interface MethodDescriptorProtoSDKType {
 
   input_type: string;
   output_type: string;
-  options: MethodOptionsSDKType;
+  options?: MethodOptionsSDKType;
   /** Identifies if client streams multiple client messages */
 
   client_streaming: boolean;
@@ -2111,7 +2111,7 @@ export const FileDescriptorSet = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<FileDescriptorSet>): FileDescriptorSet {
+  fromPartial(object: Partial<FileDescriptorSet>): FileDescriptorSet {
     const message = createBaseFileDescriptorSet();
     message.file = object.file?.map(e => FileDescriptorProto.fromPartial(e)) || [];
     return message;
@@ -2280,7 +2280,7 @@ export const FileDescriptorProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<FileDescriptorProto>): FileDescriptorProto {
+  fromPartial(object: Partial<FileDescriptorProto>): FileDescriptorProto {
     const message = createBaseFileDescriptorProto();
     message.name = object.name ?? "";
     message.package = object.package ?? "";
@@ -2417,7 +2417,7 @@ export const DescriptorProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DescriptorProto>): DescriptorProto {
+  fromPartial(object: Partial<DescriptorProto>): DescriptorProto {
     const message = createBaseDescriptorProto();
     message.name = object.name ?? "";
     message.field = object.field?.map(e => FieldDescriptorProto.fromPartial(e)) || [];
@@ -2489,7 +2489,7 @@ export const DescriptorProto_ExtensionRange = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DescriptorProto_ExtensionRange>): DescriptorProto_ExtensionRange {
+  fromPartial(object: Partial<DescriptorProto_ExtensionRange>): DescriptorProto_ExtensionRange {
     const message = createBaseDescriptorProto_ExtensionRange();
     message.start = object.start ?? 0;
     message.end = object.end ?? 0;
@@ -2545,7 +2545,7 @@ export const DescriptorProto_ReservedRange = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DescriptorProto_ReservedRange>): DescriptorProto_ReservedRange {
+  fromPartial(object: Partial<DescriptorProto_ReservedRange>): DescriptorProto_ReservedRange {
     const message = createBaseDescriptorProto_ReservedRange();
     message.start = object.start ?? 0;
     message.end = object.end ?? 0;
@@ -2591,7 +2591,7 @@ export const ExtensionRangeOptions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ExtensionRangeOptions>): ExtensionRangeOptions {
+  fromPartial(object: Partial<ExtensionRangeOptions>): ExtensionRangeOptions {
     const message = createBaseExtensionRangeOptions();
     message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
@@ -2603,8 +2603,8 @@ function createBaseFieldDescriptorProto(): FieldDescriptorProto {
   return {
     name: "",
     number: 0,
-    label: 0,
-    type: 0,
+    label: 1,
+    type: 1,
     typeName: "",
     extendee: "",
     defaultValue: "",
@@ -2624,11 +2624,11 @@ export const FieldDescriptorProto = {
       writer.uint32(24).int32(message.number);
     }
 
-    if (message.label !== 0) {
+    if (message.label !== 1) {
       writer.uint32(32).int32(message.label);
     }
 
-    if (message.type !== 0) {
+    if (message.type !== 1) {
       writer.uint32(40).int32(message.type);
     }
 
@@ -2717,12 +2717,12 @@ export const FieldDescriptorProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<FieldDescriptorProto>): FieldDescriptorProto {
+  fromPartial(object: Partial<FieldDescriptorProto>): FieldDescriptorProto {
     const message = createBaseFieldDescriptorProto();
     message.name = object.name ?? "";
     message.number = object.number ?? 0;
-    message.label = object.label ?? 0;
-    message.type = object.type ?? 0;
+    message.label = object.label ?? 1;
+    message.type = object.type ?? 1;
     message.typeName = object.typeName ?? "";
     message.extendee = object.extendee ?? "";
     message.defaultValue = object.defaultValue ?? "";
@@ -2780,7 +2780,7 @@ export const OneofDescriptorProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<OneofDescriptorProto>): OneofDescriptorProto {
+  fromPartial(object: Partial<OneofDescriptorProto>): OneofDescriptorProto {
     const message = createBaseOneofDescriptorProto();
     message.name = object.name ?? "";
     message.options = object.options !== undefined && object.options !== null ? OneofOptions.fromPartial(object.options) : undefined;
@@ -2862,7 +2862,7 @@ export const EnumDescriptorProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EnumDescriptorProto>): EnumDescriptorProto {
+  fromPartial(object: Partial<EnumDescriptorProto>): EnumDescriptorProto {
     const message = createBaseEnumDescriptorProto();
     message.name = object.name ?? "";
     message.value = object.value?.map(e => EnumValueDescriptorProto.fromPartial(e)) || [];
@@ -2920,7 +2920,7 @@ export const EnumDescriptorProto_EnumReservedRange = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EnumDescriptorProto_EnumReservedRange>): EnumDescriptorProto_EnumReservedRange {
+  fromPartial(object: Partial<EnumDescriptorProto_EnumReservedRange>): EnumDescriptorProto_EnumReservedRange {
     const message = createBaseEnumDescriptorProto_EnumReservedRange();
     message.start = object.start ?? 0;
     message.end = object.end ?? 0;
@@ -2984,7 +2984,7 @@ export const EnumValueDescriptorProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EnumValueDescriptorProto>): EnumValueDescriptorProto {
+  fromPartial(object: Partial<EnumValueDescriptorProto>): EnumValueDescriptorProto {
     const message = createBaseEnumValueDescriptorProto();
     message.name = object.name ?? "";
     message.number = object.number ?? 0;
@@ -3049,7 +3049,7 @@ export const ServiceDescriptorProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ServiceDescriptorProto>): ServiceDescriptorProto {
+  fromPartial(object: Partial<ServiceDescriptorProto>): ServiceDescriptorProto {
     const message = createBaseServiceDescriptorProto();
     message.name = object.name ?? "";
     message.method = object.method?.map(e => MethodDescriptorProto.fromPartial(e)) || [];
@@ -3141,7 +3141,7 @@ export const MethodDescriptorProto = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MethodDescriptorProto>): MethodDescriptorProto {
+  fromPartial(object: Partial<MethodDescriptorProto>): MethodDescriptorProto {
     const message = createBaseMethodDescriptorProto();
     message.name = object.name ?? "";
     message.inputType = object.inputType ?? "";
@@ -3161,7 +3161,7 @@ function createBaseFileOptions(): FileOptions {
     javaMultipleFiles: false,
     javaGenerateEqualsAndHash: false,
     javaStringCheckUtf8: false,
-    optimizeFor: 0,
+    optimizeFor: 1,
     goPackage: "",
     ccGenericServices: false,
     javaGenericServices: false,
@@ -3202,7 +3202,7 @@ export const FileOptions = {
       writer.uint32(216).bool(message.javaStringCheckUtf8);
     }
 
-    if (message.optimizeFor !== 0) {
+    if (message.optimizeFor !== 1) {
       writer.uint32(72).int32(message.optimizeFor);
     }
 
@@ -3371,14 +3371,14 @@ export const FileOptions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<FileOptions>): FileOptions {
+  fromPartial(object: Partial<FileOptions>): FileOptions {
     const message = createBaseFileOptions();
     message.javaPackage = object.javaPackage ?? "";
     message.javaOuterClassname = object.javaOuterClassname ?? "";
     message.javaMultipleFiles = object.javaMultipleFiles ?? false;
     message.javaGenerateEqualsAndHash = object.javaGenerateEqualsAndHash ?? false;
     message.javaStringCheckUtf8 = object.javaStringCheckUtf8 ?? false;
-    message.optimizeFor = object.optimizeFor ?? 0;
+    message.optimizeFor = object.optimizeFor ?? 1;
     message.goPackage = object.goPackage ?? "";
     message.ccGenericServices = object.ccGenericServices ?? false;
     message.javaGenericServices = object.javaGenericServices ?? false;
@@ -3472,7 +3472,7 @@ export const MessageOptions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MessageOptions>): MessageOptions {
+  fromPartial(object: Partial<MessageOptions>): MessageOptions {
     const message = createBaseMessageOptions();
     message.messageSetWireFormat = object.messageSetWireFormat ?? false;
     message.noStandardDescriptorAccessor = object.noStandardDescriptorAccessor ?? false;
@@ -3486,9 +3486,9 @@ export const MessageOptions = {
 
 function createBaseFieldOptions(): FieldOptions {
   return {
-    ctype: 0,
+    ctype: 1,
     packed: false,
-    jstype: 0,
+    jstype: 1,
     lazy: false,
     deprecated: false,
     weak: false,
@@ -3498,7 +3498,7 @@ function createBaseFieldOptions(): FieldOptions {
 
 export const FieldOptions = {
   encode(message: FieldOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.ctype !== 0) {
+    if (message.ctype !== 1) {
       writer.uint32(8).int32(message.ctype);
     }
 
@@ -3506,7 +3506,7 @@ export const FieldOptions = {
       writer.uint32(16).bool(message.packed);
     }
 
-    if (message.jstype !== 0) {
+    if (message.jstype !== 1) {
       writer.uint32(48).int32(message.jstype);
     }
 
@@ -3575,11 +3575,11 @@ export const FieldOptions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<FieldOptions>): FieldOptions {
+  fromPartial(object: Partial<FieldOptions>): FieldOptions {
     const message = createBaseFieldOptions();
-    message.ctype = object.ctype ?? 0;
+    message.ctype = object.ctype ?? 1;
     message.packed = object.packed ?? false;
-    message.jstype = object.jstype ?? 0;
+    message.jstype = object.jstype ?? 1;
     message.lazy = object.lazy ?? false;
     message.deprecated = object.deprecated ?? false;
     message.weak = object.weak ?? false;
@@ -3626,7 +3626,7 @@ export const OneofOptions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<OneofOptions>): OneofOptions {
+  fromPartial(object: Partial<OneofOptions>): OneofOptions {
     const message = createBaseOneofOptions();
     message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
@@ -3689,7 +3689,7 @@ export const EnumOptions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EnumOptions>): EnumOptions {
+  fromPartial(object: Partial<EnumOptions>): EnumOptions {
     const message = createBaseEnumOptions();
     message.allowAlias = object.allowAlias ?? false;
     message.deprecated = object.deprecated ?? false;
@@ -3745,7 +3745,7 @@ export const EnumValueOptions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EnumValueOptions>): EnumValueOptions {
+  fromPartial(object: Partial<EnumValueOptions>): EnumValueOptions {
     const message = createBaseEnumValueOptions();
     message.deprecated = object.deprecated ?? false;
     message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
@@ -3800,7 +3800,7 @@ export const ServiceOptions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ServiceOptions>): ServiceOptions {
+  fromPartial(object: Partial<ServiceOptions>): ServiceOptions {
     const message = createBaseServiceOptions();
     message.deprecated = object.deprecated ?? false;
     message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
@@ -3812,7 +3812,7 @@ export const ServiceOptions = {
 function createBaseMethodOptions(): MethodOptions {
   return {
     deprecated: false,
-    idempotencyLevel: 0,
+    idempotencyLevel: 1,
     uninterpretedOption: []
   };
 }
@@ -3823,7 +3823,7 @@ export const MethodOptions = {
       writer.uint32(264).bool(message.deprecated);
     }
 
-    if (message.idempotencyLevel !== 0) {
+    if (message.idempotencyLevel !== 1) {
       writer.uint32(272).int32(message.idempotencyLevel);
     }
 
@@ -3864,10 +3864,10 @@ export const MethodOptions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MethodOptions>): MethodOptions {
+  fromPartial(object: Partial<MethodOptions>): MethodOptions {
     const message = createBaseMethodOptions();
     message.deprecated = object.deprecated ?? false;
-    message.idempotencyLevel = object.idempotencyLevel ?? 0;
+    message.idempotencyLevel = object.idempotencyLevel ?? 1;
     message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
@@ -3965,7 +3965,7 @@ export const UninterpretedOption = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UninterpretedOption>): UninterpretedOption {
+  fromPartial(object: Partial<UninterpretedOption>): UninterpretedOption {
     const message = createBaseUninterpretedOption();
     message.name = object.name?.map(e => UninterpretedOption_NamePart.fromPartial(e)) || [];
     message.identifierValue = object.identifierValue ?? "";
@@ -4025,7 +4025,7 @@ export const UninterpretedOption_NamePart = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart {
+  fromPartial(object: Partial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart {
     const message = createBaseUninterpretedOption_NamePart();
     message.namePart = object.namePart ?? "";
     message.isExtension = object.isExtension ?? false;
@@ -4071,7 +4071,7 @@ export const SourceCodeInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SourceCodeInfo>): SourceCodeInfo {
+  fromPartial(object: Partial<SourceCodeInfo>): SourceCodeInfo {
     const message = createBaseSourceCodeInfo();
     message.location = object.location?.map(e => SourceCodeInfo_Location.fromPartial(e)) || [];
     return message;
@@ -4177,7 +4177,7 @@ export const SourceCodeInfo_Location = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SourceCodeInfo_Location>): SourceCodeInfo_Location {
+  fromPartial(object: Partial<SourceCodeInfo_Location>): SourceCodeInfo_Location {
     const message = createBaseSourceCodeInfo_Location();
     message.path = object.path?.map(e => e) || [];
     message.span = object.span?.map(e => e) || [];
@@ -4226,7 +4226,7 @@ export const GeneratedCodeInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GeneratedCodeInfo>): GeneratedCodeInfo {
+  fromPartial(object: Partial<GeneratedCodeInfo>): GeneratedCodeInfo {
     const message = createBaseGeneratedCodeInfo();
     message.annotation = object.annotation?.map(e => GeneratedCodeInfo_Annotation.fromPartial(e)) || [];
     return message;
@@ -4311,7 +4311,7 @@ export const GeneratedCodeInfo_Annotation = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation {
+  fromPartial(object: Partial<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation {
     const message = createBaseGeneratedCodeInfo_Annotation();
     message.path = object.path?.map(e => e) || [];
     message.sourceFile = object.sourceFile ?? "";

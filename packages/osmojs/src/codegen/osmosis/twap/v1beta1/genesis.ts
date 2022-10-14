@@ -1,18 +1,17 @@
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import { TwapRecord, TwapRecordSDKType } from "./twap_record";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** Params holds parameters for the twap module */
 
 export interface Params {
   pruneEpochIdentifier: string;
-  recordHistoryKeepPeriod: Duration;
+  recordHistoryKeepPeriod?: Duration;
 }
 /** Params holds parameters for the twap module */
 
 export interface ParamsSDKType {
   prune_epoch_identifier: string;
-  record_history_keep_period: DurationSDKType;
+  record_history_keep_period?: DurationSDKType;
 }
 /** GenesisState defines the twap module's genesis state. */
 
@@ -21,7 +20,7 @@ export interface GenesisState {
   twaps: TwapRecord[];
   /** params is the container of twap parameters. */
 
-  params: Params;
+  params?: Params;
 }
 /** GenesisState defines the twap module's genesis state. */
 
@@ -30,7 +29,7 @@ export interface GenesisStateSDKType {
   twaps: TwapRecordSDKType[];
   /** params is the container of twap parameters. */
 
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
 }
 
 function createBaseParams(): Params {
@@ -79,7 +78,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.pruneEpochIdentifier = object.pruneEpochIdentifier ?? "";
     message.recordHistoryKeepPeriod = object.recordHistoryKeepPeriod !== undefined && object.recordHistoryKeepPeriod !== null ? Duration.fromPartial(object.recordHistoryKeepPeriod) : undefined;
@@ -134,7 +133,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.twaps = object.twaps?.map(e => TwapRecord.fromPartial(e)) || [];
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;

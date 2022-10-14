@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
 import { Sale, SaleSDKType, UserPosition, UserPositionSDKType } from "./state";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface QuerySales {
     /** pagination defines an pagination for the request. */
     pagination?: PageRequest;
@@ -29,10 +29,10 @@ export interface QuerySaleSDKType {
     sale_id: Long;
 }
 export interface QuerySaleResponse {
-    sale: Sale;
+    sale?: Sale;
 }
 export interface QuerySaleResponseSDKType {
-    sale: SaleSDKType;
+    sale?: SaleSDKType;
 }
 /** Request type for Query/Sale */
 export interface QueryUserPosition {
@@ -49,38 +49,38 @@ export interface QueryUserPositionSDKType {
     user: string;
 }
 export interface QueryUserPositionResponse {
-    userPosition: UserPosition;
+    userPosition?: UserPosition;
 }
 export interface QueryUserPositionResponseSDKType {
-    user_position: UserPositionSDKType;
+    user_position?: UserPositionSDKType;
 }
 export declare const QuerySales: {
     encode(message: QuerySales, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySales;
-    fromPartial(object: DeepPartial<QuerySales>): QuerySales;
+    fromPartial(object: Partial<QuerySales>): QuerySales;
 };
 export declare const QuerySalesResponse: {
     encode(message: QuerySalesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySalesResponse;
-    fromPartial(object: DeepPartial<QuerySalesResponse>): QuerySalesResponse;
+    fromPartial(object: Partial<QuerySalesResponse>): QuerySalesResponse;
 };
 export declare const QuerySale: {
     encode(message: QuerySale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySale;
-    fromPartial(object: DeepPartial<QuerySale>): QuerySale;
+    fromPartial(object: Partial<QuerySale>): QuerySale;
 };
 export declare const QuerySaleResponse: {
     encode(message: QuerySaleResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySaleResponse;
-    fromPartial(object: DeepPartial<QuerySaleResponse>): QuerySaleResponse;
+    fromPartial(object: Partial<QuerySaleResponse>): QuerySaleResponse;
 };
 export declare const QueryUserPosition: {
     encode(message: QueryUserPosition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPosition;
-    fromPartial(object: DeepPartial<QueryUserPosition>): QueryUserPosition;
+    fromPartial(object: Partial<QueryUserPosition>): QueryUserPosition;
 };
 export declare const QueryUserPositionResponse: {
     encode(message: QueryUserPositionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionResponse;
-    fromPartial(object: DeepPartial<QueryUserPositionResponse>): QueryUserPositionResponse;
+    fromPartial(object: Partial<QueryUserPositionResponse>): QueryUserPositionResponse;
 };

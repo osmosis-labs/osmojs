@@ -5,27 +5,27 @@ import { MerkleRoot, MerkleRootSDKType } from "../../../core/commitment/v1/commi
 import { SignedHeader, SignedHeaderSDKType } from "../../../../tendermint/types/types";
 import { ValidatorSet, ValidatorSetSDKType } from "../../../../tendermint/types/validator";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * ClientState from Tendermint tracks the current validator set, latest height,
  * and a possible frozen height.
  */
 export interface ClientState {
     chainId: string;
-    trustLevel: Fraction;
+    trustLevel?: Fraction;
     /**
      * duration of the period since the LastestTimestamp during which the
      * submitted headers are valid for upgrade
      */
-    trustingPeriod: Duration;
+    trustingPeriod?: Duration;
     /** duration of the staking unbonding period */
-    unbondingPeriod: Duration;
+    unbondingPeriod?: Duration;
     /** defines how much new (untrusted) header's Time can drift into the future. */
-    maxClockDrift: Duration;
+    maxClockDrift?: Duration;
     /** Block height when the client was frozen due to a misbehaviour */
-    frozenHeight: Height;
+    frozenHeight?: Height;
     /** Latest height the client was updated to */
-    latestHeight: Height;
+    latestHeight?: Height;
     /** Proof specifications used in verifying counterparty state */
     proofSpecs: ProofSpec[];
     /**
@@ -55,20 +55,20 @@ export interface ClientState {
  */
 export interface ClientStateSDKType {
     chain_id: string;
-    trust_level: FractionSDKType;
+    trust_level?: FractionSDKType;
     /**
      * duration of the period since the LastestTimestamp during which the
      * submitted headers are valid for upgrade
      */
-    trusting_period: DurationSDKType;
+    trusting_period?: DurationSDKType;
     /** duration of the staking unbonding period */
-    unbonding_period: DurationSDKType;
+    unbonding_period?: DurationSDKType;
     /** defines how much new (untrusted) header's Time can drift into the future. */
-    max_clock_drift: DurationSDKType;
+    max_clock_drift?: DurationSDKType;
     /** Block height when the client was frozen due to a misbehaviour */
-    frozen_height: HeightSDKType;
+    frozen_height?: HeightSDKType;
     /** Latest height the client was updated to */
-    latest_height: HeightSDKType;
+    latest_height?: HeightSDKType;
     /** Proof specifications used in verifying counterparty state */
     proof_specs: ProofSpecSDKType[];
     /**
@@ -98,9 +98,9 @@ export interface ConsensusState {
      * timestamp that corresponds to the block height in which the ConsensusState
      * was stored.
      */
-    timestamp: Date;
+    timestamp?: Date;
     /** commitment root (i.e app hash) */
-    root: MerkleRoot;
+    root?: MerkleRoot;
     nextValidatorsHash: Uint8Array;
 }
 /** ConsensusState defines the consensus state from Tendermint. */
@@ -109,9 +109,9 @@ export interface ConsensusStateSDKType {
      * timestamp that corresponds to the block height in which the ConsensusState
      * was stored.
      */
-    timestamp: Date;
+    timestamp?: Date;
     /** commitment root (i.e app hash) */
-    root: MerkleRootSDKType;
+    root?: MerkleRootSDKType;
     next_validators_hash: Uint8Array;
 }
 /**
@@ -120,8 +120,8 @@ export interface ConsensusStateSDKType {
  */
 export interface Misbehaviour {
     clientId: string;
-    header_1: Header;
-    header_2: Header;
+    header1?: Header;
+    header2?: Header;
 }
 /**
  * Misbehaviour is a wrapper over two conflicting Headers
@@ -129,8 +129,8 @@ export interface Misbehaviour {
  */
 export interface MisbehaviourSDKType {
     client_id: string;
-    header_1: HeaderSDKType;
-    header_2: HeaderSDKType;
+    header_1?: HeaderSDKType;
+    header_2?: HeaderSDKType;
 }
 /**
  * Header defines the Tendermint client consensus Header.
@@ -147,10 +147,10 @@ export interface MisbehaviourSDKType {
  * trusted validator set at the TrustedHeight.
  */
 export interface Header {
-    signedHeader: SignedHeader;
-    validatorSet: ValidatorSet;
-    trustedHeight: Height;
-    trustedValidators: ValidatorSet;
+    signedHeader?: SignedHeader;
+    validatorSet?: ValidatorSet;
+    trustedHeight?: Height;
+    trustedValidators?: ValidatorSet;
 }
 /**
  * Header defines the Tendermint client consensus Header.
@@ -167,10 +167,10 @@ export interface Header {
  * trusted validator set at the TrustedHeight.
  */
 export interface HeaderSDKType {
-    signed_header: SignedHeaderSDKType;
-    validator_set: ValidatorSetSDKType;
-    trusted_height: HeightSDKType;
-    trusted_validators: ValidatorSetSDKType;
+    signed_header?: SignedHeaderSDKType;
+    validator_set?: ValidatorSetSDKType;
+    trusted_height?: HeightSDKType;
+    trusted_validators?: ValidatorSetSDKType;
 }
 /**
  * Fraction defines the protobuf message type for tmmath.Fraction that only
@@ -191,25 +191,25 @@ export interface FractionSDKType {
 export declare const ClientState: {
     encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientState;
-    fromPartial(object: DeepPartial<ClientState>): ClientState;
+    fromPartial(object: Partial<ClientState>): ClientState;
 };
 export declare const ConsensusState: {
     encode(message: ConsensusState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusState;
-    fromPartial(object: DeepPartial<ConsensusState>): ConsensusState;
+    fromPartial(object: Partial<ConsensusState>): ConsensusState;
 };
 export declare const Misbehaviour: {
     encode(message: Misbehaviour, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Misbehaviour;
-    fromPartial(object: DeepPartial<Misbehaviour>): Misbehaviour;
+    fromPartial(object: Partial<Misbehaviour>): Misbehaviour;
 };
 export declare const Header: {
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
-    fromPartial(object: DeepPartial<Header>): Header;
+    fromPartial(object: Partial<Header>): Header;
 };
 export declare const Fraction: {
     encode(message: Fraction, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Fraction;
-    fromPartial(object: DeepPartial<Fraction>): Fraction;
+    fromPartial(object: Partial<Fraction>): Fraction;
 };

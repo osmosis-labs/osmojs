@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * SuperfluidAssetType indicates whether the superfluid asset is
  * a native token itself or the lp share of a pool.
@@ -142,8 +142,8 @@ export interface OsmoEquivalentMultiplierRecordSDKType {
 export interface SuperfluidDelegationRecord {
   delegatorAddress: string;
   validatorAddress: string;
-  delegationAmount: Coin;
-  equivalentStakedAmount: Coin;
+  delegationAmount?: Coin;
+  equivalentStakedAmount?: Coin;
 }
 /**
  * SuperfluidDelegationRecord is a struct used to indicate superfluid
@@ -153,8 +153,8 @@ export interface SuperfluidDelegationRecord {
 export interface SuperfluidDelegationRecordSDKType {
   delegator_address: string;
   validator_address: string;
-  delegation_amount: CoinSDKType;
-  equivalent_staked_amount: CoinSDKType;
+  delegation_amount?: CoinSDKType;
+  equivalent_staked_amount?: CoinSDKType;
 }
 /**
  * LockIdIntermediaryAccountConnection is a struct used to indicate the
@@ -229,7 +229,7 @@ export const SuperfluidAsset = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SuperfluidAsset>): SuperfluidAsset {
+  fromPartial(object: Partial<SuperfluidAsset>): SuperfluidAsset {
     const message = createBaseSuperfluidAsset();
     message.denom = object.denom ?? "";
     message.assetType = object.assetType ?? 0;
@@ -293,7 +293,7 @@ export const SuperfluidIntermediaryAccount = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SuperfluidIntermediaryAccount>): SuperfluidIntermediaryAccount {
+  fromPartial(object: Partial<SuperfluidIntermediaryAccount>): SuperfluidIntermediaryAccount {
     const message = createBaseSuperfluidIntermediaryAccount();
     message.denom = object.denom ?? "";
     message.valAddr = object.valAddr ?? "";
@@ -358,7 +358,7 @@ export const OsmoEquivalentMultiplierRecord = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<OsmoEquivalentMultiplierRecord>): OsmoEquivalentMultiplierRecord {
+  fromPartial(object: Partial<OsmoEquivalentMultiplierRecord>): OsmoEquivalentMultiplierRecord {
     const message = createBaseOsmoEquivalentMultiplierRecord();
     message.epochNumber = object.epochNumber !== undefined && object.epochNumber !== null ? Long.fromValue(object.epochNumber) : Long.ZERO;
     message.denom = object.denom ?? "";
@@ -432,7 +432,7 @@ export const SuperfluidDelegationRecord = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SuperfluidDelegationRecord>): SuperfluidDelegationRecord {
+  fromPartial(object: Partial<SuperfluidDelegationRecord>): SuperfluidDelegationRecord {
     const message = createBaseSuperfluidDelegationRecord();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
@@ -489,7 +489,7 @@ export const LockIdIntermediaryAccountConnection = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<LockIdIntermediaryAccountConnection>): LockIdIntermediaryAccountConnection {
+  fromPartial(object: Partial<LockIdIntermediaryAccountConnection>): LockIdIntermediaryAccountConnection {
     const message = createBaseLockIdIntermediaryAccountConnection();
     message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
     message.intermediaryAccount = object.intermediaryAccount ?? "";
@@ -547,7 +547,7 @@ export const UnpoolWhitelistedPools = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<UnpoolWhitelistedPools>): UnpoolWhitelistedPools {
+  fromPartial(object: Partial<UnpoolWhitelistedPools>): UnpoolWhitelistedPools {
     const message = createBaseUnpoolWhitelistedPools();
     message.ids = object.ids?.map(e => Long.fromValue(e)) || [];
     return message;

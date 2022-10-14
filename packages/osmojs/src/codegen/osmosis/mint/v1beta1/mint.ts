@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** Minter represents the minting state. */
 
 export interface Minter {
@@ -123,7 +123,7 @@ export interface Params {
    * denoms and how much.
    */
 
-  distributionProportions: DistributionProportions;
+  distributionProportions?: DistributionProportions;
   /**
    * weighted_developer_rewards_receivers is the address to receive developer
    * rewards with weights assignedt to each address. The final amount that each
@@ -168,7 +168,7 @@ export interface ParamsSDKType {
    * denoms and how much.
    */
 
-  distribution_proportions: DistributionProportionsSDKType;
+  distribution_proportions?: DistributionProportionsSDKType;
   /**
    * weighted_developer_rewards_receivers is the address to receive developer
    * rewards with weights assignedt to each address. The final amount that each
@@ -222,7 +222,7 @@ export const Minter = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Minter>): Minter {
+  fromPartial(object: Partial<Minter>): Minter {
     const message = createBaseMinter();
     message.epochProvisions = object.epochProvisions ?? "";
     return message;
@@ -276,7 +276,7 @@ export const WeightedAddress = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<WeightedAddress>): WeightedAddress {
+  fromPartial(object: Partial<WeightedAddress>): WeightedAddress {
     const message = createBaseWeightedAddress();
     message.address = object.address ?? "";
     message.weight = object.weight ?? "";
@@ -349,7 +349,7 @@ export const DistributionProportions = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<DistributionProportions>): DistributionProportions {
+  fromPartial(object: Partial<DistributionProportions>): DistributionProportions {
     const message = createBaseDistributionProportions();
     message.staking = object.staking ?? "";
     message.poolIncentives = object.poolIncentives ?? "";
@@ -460,7 +460,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.mintDenom = object.mintDenom ?? "";
     message.genesisEpochProvisions = object.genesisEpochProvisions ?? "";

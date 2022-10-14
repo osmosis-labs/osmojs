@@ -2,7 +2,7 @@ import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { VoteOption, VoteOptionSDKType, WeightedVoteOption, WeightedVoteOptionSDKType } from "./gov";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
@@ -39,7 +39,7 @@ export interface MsgSubmitProposalResponseSDKType {
  */
 export interface MsgExecLegacyContent {
     /** content is the proposal's content. */
-    content: Any;
+    content?: Any;
     /** authority must be the gov module address. */
     authority: string;
 }
@@ -49,7 +49,7 @@ export interface MsgExecLegacyContent {
  */
 export interface MsgExecLegacyContentSDKType {
     /** content is the proposal's content. */
-    content: AnySDKType;
+    content?: AnySDKType;
     /** authority must be the gov module address. */
     authority: string;
 }
@@ -120,50 +120,50 @@ export interface MsgDepositResponseSDKType {
 export declare const MsgSubmitProposal: {
     encode(message: MsgSubmitProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposal;
-    fromPartial(object: DeepPartial<MsgSubmitProposal>): MsgSubmitProposal;
+    fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal;
 };
 export declare const MsgSubmitProposalResponse: {
     encode(message: MsgSubmitProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponse;
-    fromPartial(object: DeepPartial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
+    fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
 };
 export declare const MsgExecLegacyContent: {
     encode(message: MsgExecLegacyContent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecLegacyContent;
-    fromPartial(object: DeepPartial<MsgExecLegacyContent>): MsgExecLegacyContent;
+    fromPartial(object: Partial<MsgExecLegacyContent>): MsgExecLegacyContent;
 };
 export declare const MsgExecLegacyContentResponse: {
     encode(_: MsgExecLegacyContentResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecLegacyContentResponse;
-    fromPartial(_: DeepPartial<MsgExecLegacyContentResponse>): MsgExecLegacyContentResponse;
+    fromPartial(_: Partial<MsgExecLegacyContentResponse>): MsgExecLegacyContentResponse;
 };
 export declare const MsgVote: {
     encode(message: MsgVote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVote;
-    fromPartial(object: DeepPartial<MsgVote>): MsgVote;
+    fromPartial(object: Partial<MsgVote>): MsgVote;
 };
 export declare const MsgVoteResponse: {
     encode(_: MsgVoteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponse;
-    fromPartial(_: DeepPartial<MsgVoteResponse>): MsgVoteResponse;
+    fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse;
 };
 export declare const MsgVoteWeighted: {
     encode(message: MsgVoteWeighted, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeighted;
-    fromPartial(object: DeepPartial<MsgVoteWeighted>): MsgVoteWeighted;
+    fromPartial(object: Partial<MsgVoteWeighted>): MsgVoteWeighted;
 };
 export declare const MsgVoteWeightedResponse: {
     encode(_: MsgVoteWeightedResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeightedResponse;
-    fromPartial(_: DeepPartial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse;
+    fromPartial(_: Partial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse;
 };
 export declare const MsgDeposit: {
     encode(message: MsgDeposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeposit;
-    fromPartial(object: DeepPartial<MsgDeposit>): MsgDeposit;
+    fromPartial(object: Partial<MsgDeposit>): MsgDeposit;
 };
 export declare const MsgDepositResponse: {
     encode(_: MsgDepositResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDepositResponse;
-    fromPartial(_: DeepPartial<MsgDepositResponse>): MsgDepositResponse;
+    fromPartial(_: Partial<MsgDepositResponse>): MsgDepositResponse;
 };

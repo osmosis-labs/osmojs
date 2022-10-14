@@ -1,6 +1,6 @@
 import { FeeToken, FeeTokenSDKType } from "./feetoken";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface QueryFeeTokensRequest {}
 export interface QueryFeeTokensRequestSDKType {}
 export interface QueryFeeTokensResponse {
@@ -15,7 +15,7 @@ export interface QueryFeeTokensResponseSDKType {
  */
 
 export interface QueryDenomSpotPriceRequest {
-  denom?: string;
+  denom: string;
 }
 /**
  * QueryDenomSpotPriceRequest defines grpc request structure for querying spot
@@ -23,7 +23,7 @@ export interface QueryDenomSpotPriceRequest {
  */
 
 export interface QueryDenomSpotPriceRequestSDKType {
-  denom?: string;
+  denom: string;
 }
 /**
  * QueryDenomSpotPriceRequest defines grpc response structure for querying spot
@@ -91,7 +91,7 @@ export const QueryFeeTokensRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryFeeTokensRequest>): QueryFeeTokensRequest {
+  fromPartial(_: Partial<QueryFeeTokensRequest>): QueryFeeTokensRequest {
     const message = createBaseQueryFeeTokensRequest();
     return message;
   }
@@ -135,7 +135,7 @@ export const QueryFeeTokensResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryFeeTokensResponse>): QueryFeeTokensResponse {
+  fromPartial(object: Partial<QueryFeeTokensResponse>): QueryFeeTokensResponse {
     const message = createBaseQueryFeeTokensResponse();
     message.feeTokens = object.feeTokens?.map(e => FeeToken.fromPartial(e)) || [];
     return message;
@@ -180,7 +180,7 @@ export const QueryDenomSpotPriceRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest {
+  fromPartial(object: Partial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest {
     const message = createBaseQueryDenomSpotPriceRequest();
     message.denom = object.denom ?? "";
     return message;
@@ -234,7 +234,7 @@ export const QueryDenomSpotPriceResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse {
+  fromPartial(object: Partial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse {
     const message = createBaseQueryDenomSpotPriceResponse();
     message.poolID = object.poolID !== undefined && object.poolID !== null ? Long.fromValue(object.poolID) : Long.UZERO;
     message.spotPrice = object.spotPrice ?? "";
@@ -280,7 +280,7 @@ export const QueryDenomPoolIdRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDenomPoolIdRequest>): QueryDenomPoolIdRequest {
+  fromPartial(object: Partial<QueryDenomPoolIdRequest>): QueryDenomPoolIdRequest {
     const message = createBaseQueryDenomPoolIdRequest();
     message.denom = object.denom ?? "";
     return message;
@@ -325,7 +325,7 @@ export const QueryDenomPoolIdResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse {
+  fromPartial(object: Partial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse {
     const message = createBaseQueryDenomPoolIdResponse();
     message.poolID = object.poolID !== undefined && object.poolID !== null ? Long.fromValue(object.poolID) : Long.UZERO;
     return message;
@@ -360,7 +360,7 @@ export const QueryBaseDenomRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryBaseDenomRequest>): QueryBaseDenomRequest {
+  fromPartial(_: Partial<QueryBaseDenomRequest>): QueryBaseDenomRequest {
     const message = createBaseQueryBaseDenomRequest();
     return message;
   }
@@ -404,7 +404,7 @@ export const QueryBaseDenomResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryBaseDenomResponse>): QueryBaseDenomResponse {
+  fromPartial(object: Partial<QueryBaseDenomResponse>): QueryBaseDenomResponse {
     const message = createBaseQueryBaseDenomResponse();
     message.baseDenom = object.baseDenom ?? "";
     return message;

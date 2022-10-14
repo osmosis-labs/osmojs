@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * A Timestamp represents a point in time independent of any time zone or local
  * calendar, encoded as a count of seconds and fractions of seconds at
@@ -249,7 +249,7 @@ export const Timestamp = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Timestamp>): Timestamp {
+  fromPartial(object: Partial<Timestamp>): Timestamp {
     const message = createBaseTimestamp();
     message.seconds = object.seconds !== undefined && object.seconds !== null ? Long.fromValue(object.seconds) : Long.ZERO;
     message.nanos = object.nanos ?? 0;

@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** EventGrant is emitted on Msg/Grant */
 
 export interface EventGrant {
@@ -104,7 +103,7 @@ export const EventGrant = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EventGrant>): EventGrant {
+  fromPartial(object: Partial<EventGrant>): EventGrant {
     const message = createBaseEventGrant();
     message.msgTypeUrl = object.msgTypeUrl ?? "";
     message.granter = object.granter ?? "";
@@ -169,7 +168,7 @@ export const EventRevoke = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<EventRevoke>): EventRevoke {
+  fromPartial(object: Partial<EventRevoke>): EventRevoke {
     const message = createBaseEventRevoke();
     message.msgTypeUrl = object.msgTypeUrl ?? "";
     message.granter = object.granter ?? "";

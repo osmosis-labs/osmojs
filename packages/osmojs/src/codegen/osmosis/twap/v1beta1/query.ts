@@ -1,18 +1,18 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Params, ParamsSDKType } from "./genesis";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, Long, fromTimestamp, DeepPartial } from "../../../helpers";
+import { toTimestamp, Long, fromTimestamp } from "../../../helpers";
 export interface ArithmeticTwapRequest {
-  poolId?: Long;
-  baseAsset?: string;
-  quoteAsset?: string;
+  poolId: Long;
+  baseAsset: string;
+  quoteAsset: string;
   startTime?: Date;
   endTime?: Date;
 }
 export interface ArithmeticTwapRequestSDKType {
-  pool_id?: Long;
-  base_asset?: string;
-  quote_asset?: string;
+  pool_id: Long;
+  base_asset: string;
+  quote_asset: string;
   start_time?: Date;
   end_time?: Date;
 }
@@ -23,15 +23,15 @@ export interface ArithmeticTwapResponseSDKType {
   arithmetic_twap: string;
 }
 export interface ArithmeticTwapToNowRequest {
-  poolId?: Long;
-  baseAsset?: string;
-  quoteAsset?: string;
+  poolId: Long;
+  baseAsset: string;
+  quoteAsset: string;
   startTime?: Date;
 }
 export interface ArithmeticTwapToNowRequestSDKType {
-  pool_id?: Long;
-  base_asset?: string;
-  quote_asset?: string;
+  pool_id: Long;
+  base_asset: string;
+  quote_asset: string;
   start_time?: Date;
 }
 export interface ArithmeticTwapToNowResponse {
@@ -43,10 +43,10 @@ export interface ArithmeticTwapToNowResponseSDKType {
 export interface ParamsRequest {}
 export interface ParamsRequestSDKType {}
 export interface ParamsResponse {
-  params: Params;
+  params?: Params;
 }
 export interface ParamsResponseSDKType {
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
 }
 
 function createBaseArithmeticTwapRequest(): ArithmeticTwapRequest {
@@ -122,7 +122,7 @@ export const ArithmeticTwapRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ArithmeticTwapRequest>): ArithmeticTwapRequest {
+  fromPartial(object: Partial<ArithmeticTwapRequest>): ArithmeticTwapRequest {
     const message = createBaseArithmeticTwapRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.baseAsset = object.baseAsset ?? "";
@@ -171,7 +171,7 @@ export const ArithmeticTwapResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ArithmeticTwapResponse>): ArithmeticTwapResponse {
+  fromPartial(object: Partial<ArithmeticTwapResponse>): ArithmeticTwapResponse {
     const message = createBaseArithmeticTwapResponse();
     message.arithmeticTwap = object.arithmeticTwap ?? "";
     return message;
@@ -243,7 +243,7 @@ export const ArithmeticTwapToNowRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ArithmeticTwapToNowRequest>): ArithmeticTwapToNowRequest {
+  fromPartial(object: Partial<ArithmeticTwapToNowRequest>): ArithmeticTwapToNowRequest {
     const message = createBaseArithmeticTwapToNowRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.baseAsset = object.baseAsset ?? "";
@@ -291,7 +291,7 @@ export const ArithmeticTwapToNowResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ArithmeticTwapToNowResponse>): ArithmeticTwapToNowResponse {
+  fromPartial(object: Partial<ArithmeticTwapToNowResponse>): ArithmeticTwapToNowResponse {
     const message = createBaseArithmeticTwapToNowResponse();
     message.arithmeticTwap = object.arithmeticTwap ?? "";
     return message;
@@ -326,7 +326,7 @@ export const ParamsRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<ParamsRequest>): ParamsRequest {
+  fromPartial(_: Partial<ParamsRequest>): ParamsRequest {
     const message = createBaseParamsRequest();
     return message;
   }
@@ -370,7 +370,7 @@ export const ParamsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ParamsResponse>): ParamsResponse {
+  fromPartial(object: Partial<ParamsResponse>): ParamsResponse {
     const message = createBaseParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;

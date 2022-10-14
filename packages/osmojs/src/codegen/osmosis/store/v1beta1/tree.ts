@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 export interface Node {
   children: Child[];
 }
@@ -15,10 +14,10 @@ export interface ChildSDKType {
   accumulation: string;
 }
 export interface Leaf {
-  leaf: Child;
+  leaf?: Child;
 }
 export interface LeafSDKType {
-  leaf: ChildSDKType;
+  leaf?: ChildSDKType;
 }
 
 function createBaseNode(): Node {
@@ -58,7 +57,7 @@ export const Node = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Node>): Node {
+  fromPartial(object: Partial<Node>): Node {
     const message = createBaseNode();
     message.children = object.children?.map(e => Child.fromPartial(e)) || [];
     return message;
@@ -112,7 +111,7 @@ export const Child = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Child>): Child {
+  fromPartial(object: Partial<Child>): Child {
     const message = createBaseChild();
     message.index = object.index ?? new Uint8Array();
     message.accumulation = object.accumulation ?? "";
@@ -158,7 +157,7 @@ export const Leaf = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Leaf>): Leaf {
+  fromPartial(object: Partial<Leaf>): Leaf {
     const message = createBaseLeaf();
     message.leaf = object.leaf !== undefined && object.leaf !== null ? Child.fromPartial(object.leaf) : undefined;
     return message;

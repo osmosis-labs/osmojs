@@ -1,7 +1,7 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** Params holds parameters for the incentives module */
 
 export interface Params {
@@ -19,7 +19,7 @@ export interface GenesisState {
   /** will be renamed to next_pool_id in an upcoming version */
 
   nextPoolNumber: Long;
-  params: Params;
+  params?: Params;
 }
 /** GenesisState defines the gamm module's genesis state. */
 
@@ -28,7 +28,7 @@ export interface GenesisStateSDKType {
   /** will be renamed to next_pool_id in an upcoming version */
 
   next_pool_number: Long;
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
 }
 
 function createBaseParams(): Params {
@@ -68,7 +68,7 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.poolCreationFee = object.poolCreationFee?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -131,7 +131,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
+  fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.pools = object.pools?.map(e => Any.fromPartial(e)) || [];
     message.nextPoolNumber = object.nextPoolNumber !== undefined && object.nextPoolNumber !== null ? Long.fromValue(object.nextPoolNumber) : Long.UZERO;

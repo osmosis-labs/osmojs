@@ -1,6 +1,6 @@
 import { Height, HeightSDKType } from "../../client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * State defines if a channel is in one of the following states:
  * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -189,7 +189,7 @@ export interface Channel {
   ordering: Order;
   /** counterparty channel end */
 
-  counterparty: Counterparty;
+  counterparty?: Counterparty;
   /**
    * list of connection identifiers, in order, along which packets sent on
    * this channel will travel
@@ -214,7 +214,7 @@ export interface ChannelSDKType {
   ordering: OrderSDKType;
   /** counterparty channel end */
 
-  counterparty: CounterpartySDKType;
+  counterparty?: CounterpartySDKType;
   /**
    * list of connection identifiers, in order, along which packets sent on
    * this channel will travel
@@ -238,7 +238,7 @@ export interface IdentifiedChannel {
   ordering: Order;
   /** counterparty channel end */
 
-  counterparty: Counterparty;
+  counterparty?: Counterparty;
   /**
    * list of connection identifiers, in order, along which packets sent on
    * this channel will travel
@@ -268,7 +268,7 @@ export interface IdentifiedChannelSDKType {
   ordering: OrderSDKType;
   /** counterparty channel end */
 
-  counterparty: CounterpartySDKType;
+  counterparty?: CounterpartySDKType;
   /**
    * list of connection identifiers, in order, along which packets sent on
    * this channel will travel
@@ -329,7 +329,7 @@ export interface Packet {
   data: Uint8Array;
   /** block height after which the packet times out */
 
-  timeoutHeight: Height;
+  timeoutHeight?: Height;
   /** block timestamp (in nanoseconds) after which the packet times out */
 
   timeoutTimestamp: Long;
@@ -360,7 +360,7 @@ export interface PacketSDKType {
   data: Uint8Array;
   /** block height after which the packet times out */
 
-  timeout_height: HeightSDKType;
+  timeout_height?: HeightSDKType;
   /** block timestamp (in nanoseconds) after which the packet times out */
 
   timeout_timestamp: Long;
@@ -507,7 +507,7 @@ export const Channel = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Channel>): Channel {
+  fromPartial(object: Partial<Channel>): Channel {
     const message = createBaseChannel();
     message.state = object.state ?? 0;
     message.ordering = object.ordering ?? 0;
@@ -610,7 +610,7 @@ export const IdentifiedChannel = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<IdentifiedChannel>): IdentifiedChannel {
+  fromPartial(object: Partial<IdentifiedChannel>): IdentifiedChannel {
     const message = createBaseIdentifiedChannel();
     message.state = object.state ?? 0;
     message.ordering = object.ordering ?? 0;
@@ -670,7 +670,7 @@ export const Counterparty = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Counterparty>): Counterparty {
+  fromPartial(object: Partial<Counterparty>): Counterparty {
     const message = createBaseCounterparty();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -779,7 +779,7 @@ export const Packet = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Packet>): Packet {
+  fromPartial(object: Partial<Packet>): Packet {
     const message = createBasePacket();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     message.sourcePort = object.sourcePort ?? "";
@@ -858,7 +858,7 @@ export const PacketState = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PacketState>): PacketState {
+  fromPartial(object: Partial<PacketState>): PacketState {
     const message = createBasePacketState();
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
@@ -915,7 +915,7 @@ export const Acknowledgement = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Acknowledgement>): Acknowledgement {
+  fromPartial(object: Partial<Acknowledgement>): Acknowledgement {
     const message = createBaseAcknowledgement();
     message.result = object.result ?? undefined;
     message.error = object.error ?? undefined;

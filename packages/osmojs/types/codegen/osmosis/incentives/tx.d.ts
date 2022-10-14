@@ -1,7 +1,7 @@
 import { QueryCondition, QueryConditionSDKType } from "../lockup/lock";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 /** MsgCreateGauge creates a gague to distribute rewards to users */
 export interface MsgCreateGauge {
     /**
@@ -18,11 +18,11 @@ export interface MsgCreateGauge {
      * distribute_to show which lock the gauge should distribute to by time
      * duration or by timestamp
      */
-    distributeTo: QueryCondition;
+    distributeTo?: QueryCondition;
     /** coins are coin(s) to be distributed by the gauge */
     coins: Coin[];
     /** start_time is the distribution start time */
-    startTime: Date;
+    startTime?: Date;
     /**
      * num_epochs_paid_over is the number of epochs distribution will be completed
      * over
@@ -45,11 +45,11 @@ export interface MsgCreateGaugeSDKType {
      * distribute_to show which lock the gauge should distribute to by time
      * duration or by timestamp
      */
-    distribute_to: QueryConditionSDKType;
+    distribute_to?: QueryConditionSDKType;
     /** coins are coin(s) to be distributed by the gauge */
     coins: CoinSDKType[];
     /** start_time is the distribution start time */
-    start_time: Date;
+    start_time?: Date;
     /**
      * num_epochs_paid_over is the number of epochs distribution will be completed
      * over
@@ -85,20 +85,20 @@ export interface MsgAddToGaugeResponseSDKType {
 export declare const MsgCreateGauge: {
     encode(message: MsgCreateGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGauge;
-    fromPartial(object: DeepPartial<MsgCreateGauge>): MsgCreateGauge;
+    fromPartial(object: Partial<MsgCreateGauge>): MsgCreateGauge;
 };
 export declare const MsgCreateGaugeResponse: {
     encode(_: MsgCreateGaugeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGaugeResponse;
-    fromPartial(_: DeepPartial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse;
+    fromPartial(_: Partial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse;
 };
 export declare const MsgAddToGauge: {
     encode(message: MsgAddToGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGauge;
-    fromPartial(object: DeepPartial<MsgAddToGauge>): MsgAddToGauge;
+    fromPartial(object: Partial<MsgAddToGauge>): MsgAddToGauge;
 };
 export declare const MsgAddToGaugeResponse: {
     encode(_: MsgAddToGaugeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGaugeResponse;
-    fromPartial(_: DeepPartial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse;
+    fromPartial(_: Partial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse;
 };

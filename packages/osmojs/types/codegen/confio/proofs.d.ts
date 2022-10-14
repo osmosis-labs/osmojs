@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../helpers";
 export declare enum HashOp {
     /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
     NO_HASH = 0,
@@ -104,7 +103,7 @@ export declare function lengthOpToJSON(object: LengthOp): string;
 export interface ExistenceProof {
     key: Uint8Array;
     value: Uint8Array;
-    leaf: LeafOp;
+    leaf?: LeafOp;
     path: InnerOp[];
 }
 /**
@@ -131,7 +130,7 @@ export interface ExistenceProof {
 export interface ExistenceProofSDKType {
     key: Uint8Array;
     value: Uint8Array;
-    leaf: LeafOpSDKType;
+    leaf?: LeafOpSDKType;
     path: InnerOpSDKType[];
 }
 /**
@@ -142,8 +141,8 @@ export interface ExistenceProofSDKType {
 export interface NonExistenceProof {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left: ExistenceProof;
-    right: ExistenceProof;
+    left?: ExistenceProof;
+    right?: ExistenceProof;
 }
 /**
  * NonExistenceProof takes a proof of two neighbors, one left of the desired key,
@@ -153,8 +152,8 @@ export interface NonExistenceProof {
 export interface NonExistenceProofSDKType {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left: ExistenceProofSDKType;
-    right: ExistenceProofSDKType;
+    left?: ExistenceProofSDKType;
+    right?: ExistenceProofSDKType;
 }
 /** CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages */
 export interface CommitmentProof {
@@ -285,8 +284,8 @@ export interface ProofSpec {
      * any field in the ExistenceProof must be the same as in this spec.
      * except Prefix, which is just the first bytes of prefix (spec can be longer)
      */
-    leafSpec: LeafOp;
-    innerSpec: InnerSpec;
+    leafSpec?: LeafOp;
+    innerSpec?: InnerSpec;
     /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
     maxDepth: number;
     /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
@@ -309,8 +308,8 @@ export interface ProofSpecSDKType {
      * any field in the ExistenceProof must be the same as in this spec.
      * except Prefix, which is just the first bytes of prefix (spec can be longer)
      */
-    leaf_spec: LeafOpSDKType;
-    inner_spec: InnerSpecSDKType;
+    leaf_spec?: LeafOpSDKType;
+    inner_spec?: InnerSpecSDKType;
     /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
     max_depth: number;
     /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
@@ -405,91 +404,91 @@ export interface CompressedBatchEntrySDKType {
 export interface CompressedExistenceProof {
     key: Uint8Array;
     value: Uint8Array;
-    leaf: LeafOp;
+    leaf?: LeafOp;
     /** these are indexes into the lookup_inners table in CompressedBatchProof */
     path: number[];
 }
 export interface CompressedExistenceProofSDKType {
     key: Uint8Array;
     value: Uint8Array;
-    leaf: LeafOpSDKType;
+    leaf?: LeafOpSDKType;
     /** these are indexes into the lookup_inners table in CompressedBatchProof */
     path: number[];
 }
 export interface CompressedNonExistenceProof {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left: CompressedExistenceProof;
-    right: CompressedExistenceProof;
+    left?: CompressedExistenceProof;
+    right?: CompressedExistenceProof;
 }
 export interface CompressedNonExistenceProofSDKType {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left: CompressedExistenceProofSDKType;
-    right: CompressedExistenceProofSDKType;
+    left?: CompressedExistenceProofSDKType;
+    right?: CompressedExistenceProofSDKType;
 }
 export declare const ExistenceProof: {
     encode(message: ExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ExistenceProof;
-    fromPartial(object: DeepPartial<ExistenceProof>): ExistenceProof;
+    fromPartial(object: Partial<ExistenceProof>): ExistenceProof;
 };
 export declare const NonExistenceProof: {
     encode(message: NonExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NonExistenceProof;
-    fromPartial(object: DeepPartial<NonExistenceProof>): NonExistenceProof;
+    fromPartial(object: Partial<NonExistenceProof>): NonExistenceProof;
 };
 export declare const CommitmentProof: {
     encode(message: CommitmentProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitmentProof;
-    fromPartial(object: DeepPartial<CommitmentProof>): CommitmentProof;
+    fromPartial(object: Partial<CommitmentProof>): CommitmentProof;
 };
 export declare const LeafOp: {
     encode(message: LeafOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LeafOp;
-    fromPartial(object: DeepPartial<LeafOp>): LeafOp;
+    fromPartial(object: Partial<LeafOp>): LeafOp;
 };
 export declare const InnerOp: {
     encode(message: InnerOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InnerOp;
-    fromPartial(object: DeepPartial<InnerOp>): InnerOp;
+    fromPartial(object: Partial<InnerOp>): InnerOp;
 };
 export declare const ProofSpec: {
     encode(message: ProofSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofSpec;
-    fromPartial(object: DeepPartial<ProofSpec>): ProofSpec;
+    fromPartial(object: Partial<ProofSpec>): ProofSpec;
 };
 export declare const InnerSpec: {
     encode(message: InnerSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InnerSpec;
-    fromPartial(object: DeepPartial<InnerSpec>): InnerSpec;
+    fromPartial(object: Partial<InnerSpec>): InnerSpec;
 };
 export declare const BatchProof: {
     encode(message: BatchProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BatchProof;
-    fromPartial(object: DeepPartial<BatchProof>): BatchProof;
+    fromPartial(object: Partial<BatchProof>): BatchProof;
 };
 export declare const BatchEntry: {
     encode(message: BatchEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BatchEntry;
-    fromPartial(object: DeepPartial<BatchEntry>): BatchEntry;
+    fromPartial(object: Partial<BatchEntry>): BatchEntry;
 };
 export declare const CompressedBatchProof: {
     encode(message: CompressedBatchProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedBatchProof;
-    fromPartial(object: DeepPartial<CompressedBatchProof>): CompressedBatchProof;
+    fromPartial(object: Partial<CompressedBatchProof>): CompressedBatchProof;
 };
 export declare const CompressedBatchEntry: {
     encode(message: CompressedBatchEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedBatchEntry;
-    fromPartial(object: DeepPartial<CompressedBatchEntry>): CompressedBatchEntry;
+    fromPartial(object: Partial<CompressedBatchEntry>): CompressedBatchEntry;
 };
 export declare const CompressedExistenceProof: {
     encode(message: CompressedExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedExistenceProof;
-    fromPartial(object: DeepPartial<CompressedExistenceProof>): CompressedExistenceProof;
+    fromPartial(object: Partial<CompressedExistenceProof>): CompressedExistenceProof;
 };
 export declare const CompressedNonExistenceProof: {
     encode(message: CompressedNonExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedNonExistenceProof;
-    fromPartial(object: DeepPartial<CompressedNonExistenceProof>): CompressedNonExistenceProof;
+    fromPartial(object: Partial<CompressedNonExistenceProof>): CompressedNonExistenceProof;
 };

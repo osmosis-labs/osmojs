@@ -1,7 +1,7 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp } from "../../../helpers";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
  * the provided method on behalf of the granter's account.
@@ -26,7 +26,7 @@ export interface GenericAuthorizationSDKType {
  */
 
 export interface Grant {
-  authorization: Any;
+  authorization?: Any;
   /**
    * time when the grant will expire and will be pruned. If null, then the grant
    * doesn't have a time expiration (other conditions  in `authorization`
@@ -41,7 +41,7 @@ export interface Grant {
  */
 
 export interface GrantSDKType {
-  authorization: AnySDKType;
+  authorization?: AnySDKType;
   /**
    * time when the grant will expire and will be pruned. If null, then the grant
    * doesn't have a time expiration (other conditions  in `authorization`
@@ -58,8 +58,8 @@ export interface GrantSDKType {
 export interface GrantAuthorization {
   granter: string;
   grantee: string;
-  authorization: Any;
-  expiration: Date;
+  authorization?: Any;
+  expiration?: Date;
 }
 /**
  * GrantAuthorization extends a grant with both the addresses of the grantee and granter.
@@ -69,8 +69,8 @@ export interface GrantAuthorization {
 export interface GrantAuthorizationSDKType {
   granter: string;
   grantee: string;
-  authorization: AnySDKType;
-  expiration: Date;
+  authorization?: AnySDKType;
+  expiration?: Date;
 }
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 
@@ -122,7 +122,7 @@ export const GenericAuthorization = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GenericAuthorization>): GenericAuthorization {
+  fromPartial(object: Partial<GenericAuthorization>): GenericAuthorization {
     const message = createBaseGenericAuthorization();
     message.msg = object.msg ?? "";
     return message;
@@ -176,7 +176,7 @@ export const Grant = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Grant>): Grant {
+  fromPartial(object: Partial<Grant>): Grant {
     const message = createBaseGrant();
     message.authorization = object.authorization !== undefined && object.authorization !== null ? Any.fromPartial(object.authorization) : undefined;
     message.expiration = object.expiration ?? undefined;
@@ -249,7 +249,7 @@ export const GrantAuthorization = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GrantAuthorization>): GrantAuthorization {
+  fromPartial(object: Partial<GrantAuthorization>): GrantAuthorization {
     const message = createBaseGrantAuthorization();
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
@@ -297,7 +297,7 @@ export const GrantQueueItem = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GrantQueueItem>): GrantQueueItem {
+  fromPartial(object: Partial<GrantQueueItem>): GrantQueueItem {
     const message = createBaseGrantQueueItem();
     message.msgTypeUrls = object.msgTypeUrls?.map(e => e) || [];
     return message;

@@ -1,6 +1,5 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * MsgSetWithdrawAddress sets the withdraw address for
  * a delegator (or validator self-delegation).
@@ -150,7 +149,7 @@ export const MsgSetWithdrawAddress = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSetWithdrawAddress>): MsgSetWithdrawAddress {
+  fromPartial(object: Partial<MsgSetWithdrawAddress>): MsgSetWithdrawAddress {
     const message = createBaseMsgSetWithdrawAddress();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.withdrawAddress = object.withdrawAddress ?? "";
@@ -186,7 +185,7 @@ export const MsgSetWithdrawAddressResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgSetWithdrawAddressResponse>): MsgSetWithdrawAddressResponse {
+  fromPartial(_: Partial<MsgSetWithdrawAddressResponse>): MsgSetWithdrawAddressResponse {
     const message = createBaseMsgSetWithdrawAddressResponse();
     return message;
   }
@@ -239,7 +238,7 @@ export const MsgWithdrawDelegatorReward = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgWithdrawDelegatorReward>): MsgWithdrawDelegatorReward {
+  fromPartial(object: Partial<MsgWithdrawDelegatorReward>): MsgWithdrawDelegatorReward {
     const message = createBaseMsgWithdrawDelegatorReward();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
@@ -285,7 +284,7 @@ export const MsgWithdrawDelegatorRewardResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse {
+  fromPartial(object: Partial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse {
     const message = createBaseMsgWithdrawDelegatorRewardResponse();
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -330,7 +329,7 @@ export const MsgWithdrawValidatorCommission = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgWithdrawValidatorCommission>): MsgWithdrawValidatorCommission {
+  fromPartial(object: Partial<MsgWithdrawValidatorCommission>): MsgWithdrawValidatorCommission {
     const message = createBaseMsgWithdrawValidatorCommission();
     message.validatorAddress = object.validatorAddress ?? "";
     return message;
@@ -375,7 +374,7 @@ export const MsgWithdrawValidatorCommissionResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse {
+  fromPartial(object: Partial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse {
     const message = createBaseMsgWithdrawValidatorCommissionResponse();
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -429,7 +428,7 @@ export const MsgFundCommunityPool = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgFundCommunityPool>): MsgFundCommunityPool {
+  fromPartial(object: Partial<MsgFundCommunityPool>): MsgFundCommunityPool {
     const message = createBaseMsgFundCommunityPool();
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     message.depositor = object.depositor ?? "";
@@ -465,7 +464,7 @@ export const MsgFundCommunityPoolResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgFundCommunityPoolResponse>): MsgFundCommunityPoolResponse {
+  fromPartial(_: Partial<MsgFundCommunityPoolResponse>): MsgFundCommunityPoolResponse {
     const message = createBaseMsgFundCommunityPoolResponse();
     return message;
   }

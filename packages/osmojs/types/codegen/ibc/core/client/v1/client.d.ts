@@ -1,7 +1,7 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Plan, PlanSDKType } from "../../../../cosmos/upgrade/v1beta1/upgrade";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * IdentifiedClientState defines a client state with an additional client
  * identifier field.
@@ -10,7 +10,7 @@ export interface IdentifiedClientState {
     /** client identifier */
     clientId: string;
     /** client state */
-    clientState: Any;
+    clientState?: Any;
 }
 /**
  * IdentifiedClientState defines a client state with an additional client
@@ -20,7 +20,7 @@ export interface IdentifiedClientStateSDKType {
     /** client identifier */
     client_id: string;
     /** client state */
-    client_state: AnySDKType;
+    client_state?: AnySDKType;
 }
 /**
  * ConsensusStateWithHeight defines a consensus state with an additional height
@@ -28,9 +28,9 @@ export interface IdentifiedClientStateSDKType {
  */
 export interface ConsensusStateWithHeight {
     /** consensus state height */
-    height: Height;
+    height?: Height;
     /** consensus state */
-    consensusState: Any;
+    consensusState?: Any;
 }
 /**
  * ConsensusStateWithHeight defines a consensus state with an additional height
@@ -38,9 +38,9 @@ export interface ConsensusStateWithHeight {
  */
 export interface ConsensusStateWithHeightSDKType {
     /** consensus state height */
-    height: HeightSDKType;
+    height?: HeightSDKType;
     /** consensus state */
-    consensus_state: AnySDKType;
+    consensus_state?: AnySDKType;
 }
 /**
  * ClientConsensusStates defines all the stored consensus states for a given
@@ -107,7 +107,7 @@ export interface ClientUpdateProposalSDKType {
 export interface UpgradeProposal {
     title: string;
     description: string;
-    plan: Plan;
+    plan?: Plan;
     /**
      * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
      * This will make the chain commit to the correct upgraded (self) client state
@@ -116,7 +116,7 @@ export interface UpgradeProposal {
      * of the chain. This will allow IBC connections to persist smoothly across
      * planned chain upgrades
      */
-    upgradedClientState: Any;
+    upgradedClientState?: Any;
 }
 /**
  * UpgradeProposal is a gov Content type for initiating an IBC breaking
@@ -125,7 +125,7 @@ export interface UpgradeProposal {
 export interface UpgradeProposalSDKType {
     title: string;
     description: string;
-    plan: PlanSDKType;
+    plan?: PlanSDKType;
     /**
      * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
      * This will make the chain commit to the correct upgraded (self) client state
@@ -134,7 +134,7 @@ export interface UpgradeProposalSDKType {
      * of the chain. This will allow IBC connections to persist smoothly across
      * planned chain upgrades
      */
-    upgraded_client_state: AnySDKType;
+    upgraded_client_state?: AnySDKType;
 }
 /**
  * Height is a monotonically increasing data type
@@ -185,35 +185,35 @@ export interface ParamsSDKType {
 export declare const IdentifiedClientState: {
     encode(message: IdentifiedClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedClientState;
-    fromPartial(object: DeepPartial<IdentifiedClientState>): IdentifiedClientState;
+    fromPartial(object: Partial<IdentifiedClientState>): IdentifiedClientState;
 };
 export declare const ConsensusStateWithHeight: {
     encode(message: ConsensusStateWithHeight, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusStateWithHeight;
-    fromPartial(object: DeepPartial<ConsensusStateWithHeight>): ConsensusStateWithHeight;
+    fromPartial(object: Partial<ConsensusStateWithHeight>): ConsensusStateWithHeight;
 };
 export declare const ClientConsensusStates: {
     encode(message: ClientConsensusStates, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientConsensusStates;
-    fromPartial(object: DeepPartial<ClientConsensusStates>): ClientConsensusStates;
+    fromPartial(object: Partial<ClientConsensusStates>): ClientConsensusStates;
 };
 export declare const ClientUpdateProposal: {
     encode(message: ClientUpdateProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientUpdateProposal;
-    fromPartial(object: DeepPartial<ClientUpdateProposal>): ClientUpdateProposal;
+    fromPartial(object: Partial<ClientUpdateProposal>): ClientUpdateProposal;
 };
 export declare const UpgradeProposal: {
     encode(message: UpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpgradeProposal;
-    fromPartial(object: DeepPartial<UpgradeProposal>): UpgradeProposal;
+    fromPartial(object: Partial<UpgradeProposal>): UpgradeProposal;
 };
 export declare const Height: {
     encode(message: Height, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Height;
-    fromPartial(object: DeepPartial<Height>): Height;
+    fromPartial(object: Partial<Height>): Height;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromPartial(object: DeepPartial<Params>): Params;
+    fromPartial(object: Partial<Params>): Params;
 };

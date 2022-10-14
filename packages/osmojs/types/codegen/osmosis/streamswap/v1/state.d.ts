@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 export interface Sale {
     /** Destination for the earned token_in */
     treasury: string;
@@ -17,12 +17,12 @@ export interface Sale {
     /** total number of `tokens_out` to be sold during the continuous sale. */
     tokenOutSupply: string;
     /** start time when the token emission starts. */
-    startTime: Date;
+    startTime?: Date;
     /**
      * end time when the token emission ends. Can't be bigger than start +
      * 139years (to avoid round overflow)
      */
-    endTime: Date;
+    endTime?: Date;
     /** Round number when the sale was last time updated. */
     round: Long;
     /** Last round of the Sale; */
@@ -61,12 +61,12 @@ export interface SaleSDKType {
     /** total number of `tokens_out` to be sold during the continuous sale. */
     token_out_supply: string;
     /** start time when the token emission starts. */
-    start_time: Date;
+    start_time?: Date;
     /**
      * end time when the token emission ends. Can't be bigger than start +
      * 139years (to avoid round overflow)
      */
-    end_time: Date;
+    end_time?: Date;
     /** Round number when the sale was last time updated. */
     round: Long;
     /** Last round of the Sale; */
@@ -115,10 +115,10 @@ export interface UserPositionSDKType {
 export declare const Sale: {
     encode(message: Sale, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Sale;
-    fromPartial(object: DeepPartial<Sale>): Sale;
+    fromPartial(object: Partial<Sale>): Sale;
 };
 export declare const UserPosition: {
     encode(message: UserPosition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UserPosition;
-    fromPartial(object: DeepPartial<UserPosition>): UserPosition;
+    fromPartial(object: Partial<UserPosition>): UserPosition;
 };

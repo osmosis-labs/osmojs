@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 export interface MsgSuperfluidDelegate {
   sender: string;
   lockId: Long;
@@ -153,7 +153,7 @@ export const MsgSuperfluidDelegate = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate {
+  fromPartial(object: Partial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate {
     const message = createBaseMsgSuperfluidDelegate();
     message.sender = object.sender ?? "";
     message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
@@ -190,7 +190,7 @@ export const MsgSuperfluidDelegateResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse {
+  fromPartial(_: Partial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse {
     const message = createBaseMsgSuperfluidDelegateResponse();
     return message;
   }
@@ -243,7 +243,7 @@ export const MsgSuperfluidUndelegate = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate {
+  fromPartial(object: Partial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate {
     const message = createBaseMsgSuperfluidUndelegate();
     message.sender = object.sender ?? "";
     message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
@@ -279,7 +279,7 @@ export const MsgSuperfluidUndelegateResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse {
+  fromPartial(_: Partial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse {
     const message = createBaseMsgSuperfluidUndelegateResponse();
     return message;
   }
@@ -332,7 +332,7 @@ export const MsgSuperfluidUnbondLock = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock {
+  fromPartial(object: Partial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock {
     const message = createBaseMsgSuperfluidUnbondLock();
     message.sender = object.sender ?? "";
     message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
@@ -368,7 +368,7 @@ export const MsgSuperfluidUnbondLockResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse {
+  fromPartial(_: Partial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse {
     const message = createBaseMsgSuperfluidUnbondLockResponse();
     return message;
   }
@@ -430,7 +430,7 @@ export const MsgLockAndSuperfluidDelegate = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegate>): MsgLockAndSuperfluidDelegate {
+  fromPartial(object: Partial<MsgLockAndSuperfluidDelegate>): MsgLockAndSuperfluidDelegate {
     const message = createBaseMsgLockAndSuperfluidDelegate();
     message.sender = object.sender ?? "";
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
@@ -477,7 +477,7 @@ export const MsgLockAndSuperfluidDelegateResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse {
+  fromPartial(object: Partial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse {
     const message = createBaseMsgLockAndSuperfluidDelegateResponse();
     message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
     return message;
@@ -531,7 +531,7 @@ export const MsgUnPoolWhitelistedPool = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool {
+  fromPartial(object: Partial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool {
     const message = createBaseMsgUnPoolWhitelistedPool();
     message.sender = object.sender ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -589,7 +589,7 @@ export const MsgUnPoolWhitelistedPoolResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse {
+  fromPartial(object: Partial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse {
     const message = createBaseMsgUnPoolWhitelistedPoolResponse();
     message.exitedLockIds = object.exitedLockIds?.map(e => Long.fromValue(e)) || [];
     return message;

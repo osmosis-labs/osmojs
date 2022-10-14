@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be
@@ -87,7 +87,7 @@ export const App = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<App>): App {
+  fromPartial(object: Partial<App>): App {
     const message = createBaseApp();
     message.protocol = object.protocol !== undefined && object.protocol !== null ? Long.fromValue(object.protocol) : Long.UZERO;
     message.software = object.software ?? "";
@@ -142,7 +142,7 @@ export const Consensus = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Consensus>): Consensus {
+  fromPartial(object: Partial<Consensus>): Consensus {
     const message = createBaseConsensus();
     message.block = object.block !== undefined && object.block !== null ? Long.fromValue(object.block) : Long.UZERO;
     message.app = object.app !== undefined && object.app !== null ? Long.fromValue(object.app) : Long.UZERO;

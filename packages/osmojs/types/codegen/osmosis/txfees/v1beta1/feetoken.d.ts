@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /**
  * FeeToken is a struct that specifies a coin denom, and pool ID pair.
  * This marks the token as eligible for use as a tx fee asset in Osmosis.
@@ -23,5 +23,5 @@ export interface FeeTokenSDKType {
 export declare const FeeToken: {
     encode(message: FeeToken, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FeeToken;
-    fromPartial(object: DeepPartial<FeeToken>): FeeToken;
+    fromPartial(object: Partial<FeeToken>): FeeToken;
 };

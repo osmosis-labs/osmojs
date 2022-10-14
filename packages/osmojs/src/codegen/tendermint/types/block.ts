@@ -1,18 +1,17 @@
 import { Header, HeaderSDKType, Data, DataSDKType, Commit, CommitSDKType } from "./types";
 import { EvidenceList, EvidenceListSDKType } from "./evidence";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../helpers";
 export interface Block {
-  header: Header;
-  data: Data;
-  evidence: EvidenceList;
-  lastCommit: Commit;
+  header?: Header;
+  data?: Data;
+  evidence?: EvidenceList;
+  lastCommit?: Commit;
 }
 export interface BlockSDKType {
-  header: HeaderSDKType;
-  data: DataSDKType;
-  evidence: EvidenceListSDKType;
-  last_commit: CommitSDKType;
+  header?: HeaderSDKType;
+  data?: DataSDKType;
+  evidence?: EvidenceListSDKType;
+  last_commit?: CommitSDKType;
 }
 
 function createBaseBlock(): Block {
@@ -79,7 +78,7 @@ export const Block = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Block>): Block {
+  fromPartial(object: Partial<Block>): Block {
     const message = createBaseBlock();
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
     message.data = object.data !== undefined && object.data !== null ? Data.fromPartial(object.data) : undefined;

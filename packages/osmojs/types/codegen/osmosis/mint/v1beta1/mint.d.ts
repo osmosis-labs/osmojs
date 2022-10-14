@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** Minter represents the minting state. */
 export interface Minter {
     /** epoch_provisions represent rewards for the current epoch. */
@@ -105,7 +105,7 @@ export interface Params {
      * denom. In other words, defines which stakeholders will receive the minted
      * denoms and how much.
      */
-    distributionProportions: DistributionProportions;
+    distributionProportions?: DistributionProportions;
     /**
      * weighted_developer_rewards_receivers is the address to receive developer
      * rewards with weights assignedt to each address. The final amount that each
@@ -142,7 +142,7 @@ export interface ParamsSDKType {
      * denom. In other words, defines which stakeholders will receive the minted
      * denoms and how much.
      */
-    distribution_proportions: DistributionProportionsSDKType;
+    distribution_proportions?: DistributionProportionsSDKType;
     /**
      * weighted_developer_rewards_receivers is the address to receive developer
      * rewards with weights assignedt to each address. The final amount that each
@@ -159,20 +159,20 @@ export interface ParamsSDKType {
 export declare const Minter: {
     encode(message: Minter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Minter;
-    fromPartial(object: DeepPartial<Minter>): Minter;
+    fromPartial(object: Partial<Minter>): Minter;
 };
 export declare const WeightedAddress: {
     encode(message: WeightedAddress, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): WeightedAddress;
-    fromPartial(object: DeepPartial<WeightedAddress>): WeightedAddress;
+    fromPartial(object: Partial<WeightedAddress>): WeightedAddress;
 };
 export declare const DistributionProportions: {
     encode(message: DistributionProportions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistributionProportions;
-    fromPartial(object: DeepPartial<DistributionProportions>): DistributionProportions;
+    fromPartial(object: Partial<DistributionProportions>): DistributionProportions;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromPartial(object: DeepPartial<Params>): Params;
+    fromPartial(object: Partial<Params>): Params;
 };

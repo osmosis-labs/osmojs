@@ -18,7 +18,7 @@ export interface Service {
      */
     getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse>;
 }
-export declare class QueryClientImpl implements Service {
+export declare class ServiceClientImpl implements Service {
     private readonly rpc;
     constructor(rpc: Rpc);
     simulate(request: SimulateRequest): Promise<SimulateResponse>;

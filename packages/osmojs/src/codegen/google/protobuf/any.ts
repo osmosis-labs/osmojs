@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../helpers";
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a
  * URL that describes the type of the serialized message.
@@ -281,7 +280,7 @@ export const Any = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Any>): Any {
+  fromPartial(object: Partial<Any>): Any {
     const message = createBaseAny();
     message.typeUrl = object.typeUrl ?? "";
     message.value = object.value ?? new Uint8Array();

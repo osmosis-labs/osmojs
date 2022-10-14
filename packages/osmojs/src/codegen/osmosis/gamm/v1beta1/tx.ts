@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /**
  * ===================== MsgJoinPool
  * This is really MsgJoinPoolNoSwap
@@ -68,13 +68,13 @@ export interface SwapAmountInRouteSDKType {
 export interface MsgSwapExactAmountIn {
   sender: string;
   routes: SwapAmountInRoute[];
-  tokenIn: Coin;
+  tokenIn?: Coin;
   tokenOutMinAmount: string;
 }
 export interface MsgSwapExactAmountInSDKType {
   sender: string;
   routes: SwapAmountInRouteSDKType[];
-  token_in: CoinSDKType;
+  token_in?: CoinSDKType;
   token_out_min_amount: string;
 }
 export interface MsgSwapExactAmountInResponse {
@@ -99,13 +99,13 @@ export interface MsgSwapExactAmountOut {
   sender: string;
   routes: SwapAmountOutRoute[];
   tokenInMaxAmount: string;
-  tokenOut: Coin;
+  tokenOut?: Coin;
 }
 export interface MsgSwapExactAmountOutSDKType {
   sender: string;
   routes: SwapAmountOutRouteSDKType[];
   token_in_max_amount: string;
-  token_out: CoinSDKType;
+  token_out?: CoinSDKType;
 }
 export interface MsgSwapExactAmountOutResponse {
   tokenInAmount: string;
@@ -121,7 +121,7 @@ export interface MsgSwapExactAmountOutResponseSDKType {
 export interface MsgJoinSwapExternAmountIn {
   sender: string;
   poolId: Long;
-  tokenIn: Coin;
+  tokenIn?: Coin;
   shareOutMinAmount: string;
 }
 /**
@@ -132,7 +132,7 @@ export interface MsgJoinSwapExternAmountIn {
 export interface MsgJoinSwapExternAmountInSDKType {
   sender: string;
   pool_id: Long;
-  token_in: CoinSDKType;
+  token_in?: CoinSDKType;
   share_out_min_amount: string;
 }
 export interface MsgJoinSwapExternAmountInResponse {
@@ -194,7 +194,7 @@ export interface MsgExitSwapShareAmountInResponseSDKType {
 export interface MsgExitSwapExternAmountOut {
   sender: string;
   poolId: Long;
-  tokenOut: Coin;
+  tokenOut?: Coin;
   shareInMaxAmount: string;
 }
 /** ===================== MsgExitSwapExternAmountOut */
@@ -202,7 +202,7 @@ export interface MsgExitSwapExternAmountOut {
 export interface MsgExitSwapExternAmountOutSDKType {
   sender: string;
   pool_id: Long;
-  token_out: CoinSDKType;
+  token_out?: CoinSDKType;
   share_in_max_amount: string;
 }
 export interface MsgExitSwapExternAmountOutResponse {
@@ -276,7 +276,7 @@ export const MsgJoinPool = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgJoinPool>): MsgJoinPool {
+  fromPartial(object: Partial<MsgJoinPool>): MsgJoinPool {
     const message = createBaseMsgJoinPool();
     message.sender = object.sender ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -333,7 +333,7 @@ export const MsgJoinPoolResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgJoinPoolResponse>): MsgJoinPoolResponse {
+  fromPartial(object: Partial<MsgJoinPoolResponse>): MsgJoinPoolResponse {
     const message = createBaseMsgJoinPoolResponse();
     message.shareOutAmount = object.shareOutAmount ?? "";
     message.tokenIn = object.tokenIn?.map(e => Coin.fromPartial(e)) || [];
@@ -406,7 +406,7 @@ export const MsgExitPool = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExitPool>): MsgExitPool {
+  fromPartial(object: Partial<MsgExitPool>): MsgExitPool {
     const message = createBaseMsgExitPool();
     message.sender = object.sender ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -454,7 +454,7 @@ export const MsgExitPoolResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExitPoolResponse>): MsgExitPoolResponse {
+  fromPartial(object: Partial<MsgExitPoolResponse>): MsgExitPoolResponse {
     const message = createBaseMsgExitPoolResponse();
     message.tokenOut = object.tokenOut?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -508,7 +508,7 @@ export const SwapAmountInRoute = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SwapAmountInRoute>): SwapAmountInRoute {
+  fromPartial(object: Partial<SwapAmountInRoute>): SwapAmountInRoute {
     const message = createBaseSwapAmountInRoute();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.tokenOutDenom = object.tokenOutDenom ?? "";
@@ -581,7 +581,7 @@ export const MsgSwapExactAmountIn = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn {
+  fromPartial(object: Partial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn {
     const message = createBaseMsgSwapExactAmountIn();
     message.sender = object.sender ?? "";
     message.routes = object.routes?.map(e => SwapAmountInRoute.fromPartial(e)) || [];
@@ -629,7 +629,7 @@ export const MsgSwapExactAmountInResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse {
+  fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse {
     const message = createBaseMsgSwapExactAmountInResponse();
     message.tokenOutAmount = object.tokenOutAmount ?? "";
     return message;
@@ -683,7 +683,7 @@ export const SwapAmountOutRoute = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SwapAmountOutRoute>): SwapAmountOutRoute {
+  fromPartial(object: Partial<SwapAmountOutRoute>): SwapAmountOutRoute {
     const message = createBaseSwapAmountOutRoute();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.tokenInDenom = object.tokenInDenom ?? "";
@@ -756,7 +756,7 @@ export const MsgSwapExactAmountOut = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut {
+  fromPartial(object: Partial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut {
     const message = createBaseMsgSwapExactAmountOut();
     message.sender = object.sender ?? "";
     message.routes = object.routes?.map(e => SwapAmountOutRoute.fromPartial(e)) || [];
@@ -804,7 +804,7 @@ export const MsgSwapExactAmountOutResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse {
+  fromPartial(object: Partial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse {
     const message = createBaseMsgSwapExactAmountOutResponse();
     message.tokenInAmount = object.tokenInAmount ?? "";
     return message;
@@ -876,7 +876,7 @@ export const MsgJoinSwapExternAmountIn = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgJoinSwapExternAmountIn>): MsgJoinSwapExternAmountIn {
+  fromPartial(object: Partial<MsgJoinSwapExternAmountIn>): MsgJoinSwapExternAmountIn {
     const message = createBaseMsgJoinSwapExternAmountIn();
     message.sender = object.sender ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -924,7 +924,7 @@ export const MsgJoinSwapExternAmountInResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgJoinSwapExternAmountInResponse>): MsgJoinSwapExternAmountInResponse {
+  fromPartial(object: Partial<MsgJoinSwapExternAmountInResponse>): MsgJoinSwapExternAmountInResponse {
     const message = createBaseMsgJoinSwapExternAmountInResponse();
     message.shareOutAmount = object.shareOutAmount ?? "";
     return message;
@@ -1005,7 +1005,7 @@ export const MsgJoinSwapShareAmountOut = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgJoinSwapShareAmountOut>): MsgJoinSwapShareAmountOut {
+  fromPartial(object: Partial<MsgJoinSwapShareAmountOut>): MsgJoinSwapShareAmountOut {
     const message = createBaseMsgJoinSwapShareAmountOut();
     message.sender = object.sender ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -1054,7 +1054,7 @@ export const MsgJoinSwapShareAmountOutResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgJoinSwapShareAmountOutResponse>): MsgJoinSwapShareAmountOutResponse {
+  fromPartial(object: Partial<MsgJoinSwapShareAmountOutResponse>): MsgJoinSwapShareAmountOutResponse {
     const message = createBaseMsgJoinSwapShareAmountOutResponse();
     message.tokenInAmount = object.tokenInAmount ?? "";
     return message;
@@ -1135,7 +1135,7 @@ export const MsgExitSwapShareAmountIn = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExitSwapShareAmountIn>): MsgExitSwapShareAmountIn {
+  fromPartial(object: Partial<MsgExitSwapShareAmountIn>): MsgExitSwapShareAmountIn {
     const message = createBaseMsgExitSwapShareAmountIn();
     message.sender = object.sender ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -1184,7 +1184,7 @@ export const MsgExitSwapShareAmountInResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExitSwapShareAmountInResponse>): MsgExitSwapShareAmountInResponse {
+  fromPartial(object: Partial<MsgExitSwapShareAmountInResponse>): MsgExitSwapShareAmountInResponse {
     const message = createBaseMsgExitSwapShareAmountInResponse();
     message.tokenOutAmount = object.tokenOutAmount ?? "";
     return message;
@@ -1256,7 +1256,7 @@ export const MsgExitSwapExternAmountOut = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExitSwapExternAmountOut>): MsgExitSwapExternAmountOut {
+  fromPartial(object: Partial<MsgExitSwapExternAmountOut>): MsgExitSwapExternAmountOut {
     const message = createBaseMsgExitSwapExternAmountOut();
     message.sender = object.sender ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -1304,7 +1304,7 @@ export const MsgExitSwapExternAmountOutResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgExitSwapExternAmountOutResponse>): MsgExitSwapExternAmountOutResponse {
+  fromPartial(object: Partial<MsgExitSwapExternAmountOutResponse>): MsgExitSwapExternAmountOutResponse {
     const message = createBaseMsgExitSwapExternAmountOutResponse();
     message.shareInAmount = object.shareInAmount ?? "";
     return message;

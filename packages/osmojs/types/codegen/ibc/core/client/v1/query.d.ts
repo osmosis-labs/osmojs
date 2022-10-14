@@ -2,7 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightSDKType, IdentifiedClientState, IdentifiedClientStateSDKType, ConsensusStateWithHeight, ConsensusStateWithHeightSDKType, Params, ParamsSDKType } from "./client";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * QueryClientStateRequest is the request type for the Query/ClientState RPC
  * method
@@ -26,11 +26,11 @@ export interface QueryClientStateRequestSDKType {
  */
 export interface QueryClientStateResponse {
     /** client state associated with the request identifier */
-    clientState: Any;
+    clientState?: Any;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryClientStateResponse is the response type for the Query/ClientState RPC
@@ -39,11 +39,11 @@ export interface QueryClientStateResponse {
  */
 export interface QueryClientStateResponseSDKType {
     /** client state associated with the request identifier */
-    client_state: AnySDKType;
+    client_state?: AnySDKType;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryClientStatesRequest is the request type for the Query/ClientStates RPC
@@ -97,7 +97,7 @@ export interface QueryConsensusStateRequest {
      * latest_height overrrides the height field and queries the latest stored
      * ConsensusState
      */
-    latestHeight?: boolean;
+    latestHeight: boolean;
 }
 /**
  * QueryConsensusStateRequest is the request type for the Query/ConsensusState
@@ -115,7 +115,7 @@ export interface QueryConsensusStateRequestSDKType {
      * latest_height overrrides the height field and queries the latest stored
      * ConsensusState
      */
-    latest_height?: boolean;
+    latest_height: boolean;
 }
 /**
  * QueryConsensusStateResponse is the response type for the Query/ConsensusState
@@ -123,11 +123,11 @@ export interface QueryConsensusStateRequestSDKType {
  */
 export interface QueryConsensusStateResponse {
     /** consensus state associated with the client identifier at the given height */
-    consensusState: Any;
+    consensusState?: Any;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryConsensusStateResponse is the response type for the Query/ConsensusState
@@ -135,11 +135,11 @@ export interface QueryConsensusStateResponse {
  */
 export interface QueryConsensusStateResponseSDKType {
     /** consensus state associated with the client identifier at the given height */
-    consensus_state: AnySDKType;
+    consensus_state?: AnySDKType;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryConsensusStatesRequest is the request type for the Query/ConsensusStates
@@ -229,7 +229,7 @@ export interface QueryClientParamsRequestSDKType {
  */
 export interface QueryClientParamsResponse {
     /** params defines the parameters of the module. */
-    params: Params;
+    params?: Params;
 }
 /**
  * QueryClientParamsResponse is the response type for the Query/ClientParams RPC
@@ -237,7 +237,7 @@ export interface QueryClientParamsResponse {
  */
 export interface QueryClientParamsResponseSDKType {
     /** params defines the parameters of the module. */
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
 }
 /**
  * QueryUpgradedClientStateRequest is the request type for the
@@ -257,7 +257,7 @@ export interface QueryUpgradedClientStateRequestSDKType {
  */
 export interface QueryUpgradedClientStateResponse {
     /** client state associated with the request identifier */
-    upgradedClientState: Any;
+    upgradedClientState?: Any;
 }
 /**
  * QueryUpgradedClientStateResponse is the response type for the
@@ -265,7 +265,7 @@ export interface QueryUpgradedClientStateResponse {
  */
 export interface QueryUpgradedClientStateResponseSDKType {
     /** client state associated with the request identifier */
-    upgraded_client_state: AnySDKType;
+    upgraded_client_state?: AnySDKType;
 }
 /**
  * QueryUpgradedConsensusStateRequest is the request type for the
@@ -285,7 +285,7 @@ export interface QueryUpgradedConsensusStateRequestSDKType {
  */
 export interface QueryUpgradedConsensusStateResponse {
     /** Consensus state associated with the request identifier */
-    upgradedConsensusState: Any;
+    upgradedConsensusState?: Any;
 }
 /**
  * QueryUpgradedConsensusStateResponse is the response type for the
@@ -293,85 +293,85 @@ export interface QueryUpgradedConsensusStateResponse {
  */
 export interface QueryUpgradedConsensusStateResponseSDKType {
     /** Consensus state associated with the request identifier */
-    upgraded_consensus_state: AnySDKType;
+    upgraded_consensus_state?: AnySDKType;
 }
 export declare const QueryClientStateRequest: {
     encode(message: QueryClientStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStateRequest;
-    fromPartial(object: DeepPartial<QueryClientStateRequest>): QueryClientStateRequest;
+    fromPartial(object: Partial<QueryClientStateRequest>): QueryClientStateRequest;
 };
 export declare const QueryClientStateResponse: {
     encode(message: QueryClientStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStateResponse;
-    fromPartial(object: DeepPartial<QueryClientStateResponse>): QueryClientStateResponse;
+    fromPartial(object: Partial<QueryClientStateResponse>): QueryClientStateResponse;
 };
 export declare const QueryClientStatesRequest: {
     encode(message: QueryClientStatesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatesRequest;
-    fromPartial(object: DeepPartial<QueryClientStatesRequest>): QueryClientStatesRequest;
+    fromPartial(object: Partial<QueryClientStatesRequest>): QueryClientStatesRequest;
 };
 export declare const QueryClientStatesResponse: {
     encode(message: QueryClientStatesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatesResponse;
-    fromPartial(object: DeepPartial<QueryClientStatesResponse>): QueryClientStatesResponse;
+    fromPartial(object: Partial<QueryClientStatesResponse>): QueryClientStatesResponse;
 };
 export declare const QueryConsensusStateRequest: {
     encode(message: QueryConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateRequest;
-    fromPartial(object: DeepPartial<QueryConsensusStateRequest>): QueryConsensusStateRequest;
+    fromPartial(object: Partial<QueryConsensusStateRequest>): QueryConsensusStateRequest;
 };
 export declare const QueryConsensusStateResponse: {
     encode(message: QueryConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateResponse;
-    fromPartial(object: DeepPartial<QueryConsensusStateResponse>): QueryConsensusStateResponse;
+    fromPartial(object: Partial<QueryConsensusStateResponse>): QueryConsensusStateResponse;
 };
 export declare const QueryConsensusStatesRequest: {
     encode(message: QueryConsensusStatesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStatesRequest;
-    fromPartial(object: DeepPartial<QueryConsensusStatesRequest>): QueryConsensusStatesRequest;
+    fromPartial(object: Partial<QueryConsensusStatesRequest>): QueryConsensusStatesRequest;
 };
 export declare const QueryConsensusStatesResponse: {
     encode(message: QueryConsensusStatesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStatesResponse;
-    fromPartial(object: DeepPartial<QueryConsensusStatesResponse>): QueryConsensusStatesResponse;
+    fromPartial(object: Partial<QueryConsensusStatesResponse>): QueryConsensusStatesResponse;
 };
 export declare const QueryClientStatusRequest: {
     encode(message: QueryClientStatusRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatusRequest;
-    fromPartial(object: DeepPartial<QueryClientStatusRequest>): QueryClientStatusRequest;
+    fromPartial(object: Partial<QueryClientStatusRequest>): QueryClientStatusRequest;
 };
 export declare const QueryClientStatusResponse: {
     encode(message: QueryClientStatusResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatusResponse;
-    fromPartial(object: DeepPartial<QueryClientStatusResponse>): QueryClientStatusResponse;
+    fromPartial(object: Partial<QueryClientStatusResponse>): QueryClientStatusResponse;
 };
 export declare const QueryClientParamsRequest: {
     encode(_: QueryClientParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientParamsRequest;
-    fromPartial(_: DeepPartial<QueryClientParamsRequest>): QueryClientParamsRequest;
+    fromPartial(_: Partial<QueryClientParamsRequest>): QueryClientParamsRequest;
 };
 export declare const QueryClientParamsResponse: {
     encode(message: QueryClientParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientParamsResponse;
-    fromPartial(object: DeepPartial<QueryClientParamsResponse>): QueryClientParamsResponse;
+    fromPartial(object: Partial<QueryClientParamsResponse>): QueryClientParamsResponse;
 };
 export declare const QueryUpgradedClientStateRequest: {
     encode(_: QueryUpgradedClientStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedClientStateRequest;
-    fromPartial(_: DeepPartial<QueryUpgradedClientStateRequest>): QueryUpgradedClientStateRequest;
+    fromPartial(_: Partial<QueryUpgradedClientStateRequest>): QueryUpgradedClientStateRequest;
 };
 export declare const QueryUpgradedClientStateResponse: {
     encode(message: QueryUpgradedClientStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedClientStateResponse;
-    fromPartial(object: DeepPartial<QueryUpgradedClientStateResponse>): QueryUpgradedClientStateResponse;
+    fromPartial(object: Partial<QueryUpgradedClientStateResponse>): QueryUpgradedClientStateResponse;
 };
 export declare const QueryUpgradedConsensusStateRequest: {
     encode(_: QueryUpgradedConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
-    fromPartial(_: DeepPartial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest;
+    fromPartial(_: Partial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest;
 };
 export declare const QueryUpgradedConsensusStateResponse: {
     encode(message: QueryUpgradedConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
-    fromPartial(object: DeepPartial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
+    fromPartial(object: Partial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
 };
