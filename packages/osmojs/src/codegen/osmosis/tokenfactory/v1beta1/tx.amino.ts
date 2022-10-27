@@ -89,7 +89,7 @@ export const AminoConverter = {
         sender,
         amount: {
           denom: amount.denom,
-          amount: Long.fromNumber(amount.amount).toString()
+          amount: Long.fromValue(amount.amount).toString()
         }
       };
     },
@@ -116,7 +116,7 @@ export const AminoConverter = {
         sender,
         amount: {
           denom: amount.denom,
-          amount: Long.fromNumber(amount.amount).toString()
+          amount: Long.fromValue(amount.amount).toString()
         }
       };
     },
