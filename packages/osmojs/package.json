@@ -28,7 +28,10 @@
     "clean": "rimraf ./types && rimraf ./src/codegen",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "e2e": "npm run e2e:test",
+    "e2e:setup": "make setup install",
+    "e2e:test": "npm run e2e:setup && jest"
   },
   "publishConfig": {
     "access": "public"
@@ -93,6 +96,7 @@
     "@cosmjs/stargate": "0.29.3",
     "@cosmjs/tendermint-rpc": "^0.29.3",
     "@osmonauts/lcd": "^0.8.0",
+    "js-yaml": "4.1.0",
     "long": "^5.2.0",
     "protobufjs": "^6.11.3"
   }

@@ -38,3 +38,6 @@ jest.config.js
 package.json
 test
 out
+
+# test file
+tests/configs/values.json
