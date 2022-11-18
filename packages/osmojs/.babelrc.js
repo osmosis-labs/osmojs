@@ -12,6 +12,6 @@ module.exports = (api) => {
       '@babel/plugin-proposal-optional-chaining',
       '@babel/proposal-export-default-from'
     ],
-    presets: useESModules ? ['@babel/typescript'] : ['@babel/typescript', '@babel/env']
+    presets: useESModules ? ['@babel/typescript'] : ['@babel/typescript', ['@babel/env', {targets: {node: 'current'}}]]
   };
 };

@@ -31,7 +31,7 @@
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "e2e": "npm run e2e:test",
     "e2e:setup": "make setup install",
-    "e2e:test": "npm run e2e:setup && jest"
+    "e2e:test": "jest"
   },
   "publishConfig": {
     "access": "public"
@@ -90,14 +90,23 @@
     "typescript": "^4.8.3"
   },
   "dependencies": {
+    "@babel/preset-env": "7.20.2",
     "@babel/runtime": "^7.19.0",
     "@cosmjs/amino": "0.29.3",
+    "@cosmjs/cosmwasm-stargate": "0.29.4",
     "@cosmjs/proto-signing": "0.29.3",
     "@cosmjs/stargate": "0.29.3",
     "@cosmjs/tendermint-rpc": "^0.29.3",
     "@osmonauts/lcd": "^0.8.0",
+    "cosmjs-types": "0.5.2",
+    "esbuild-jest": "0.5.0",
+    "jest-environment-jsdom": "29.3.1",
     "js-yaml": "4.1.0",
+    "jsdom": "20.0.2",
     "long": "^5.2.0",
-    "protobufjs": "^6.11.3"
+    "nock": "13.2.9",
+    "node-fetch": "2.6.0",
+    "protobufjs": "^6.11.3",
+    "supertest": "6.3.1"
   }
 }
