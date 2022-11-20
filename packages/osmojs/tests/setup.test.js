@@ -1,3 +1,4 @@
+import {coin} from '@cosmjs/amino';
 import {connect, getChainInfo, getMnemonic} from './config';
 
 import {
@@ -13,6 +14,7 @@ function getClient(network) {
 
 async function ibcCosmosToOsmosis() {
   const client = getClient("cosmos");
+  const chainInfo = CHAIN_CLIENT["cosmos"].chainInfo;
 
   // Fetch open transfer channels and ports
   const requestData = Uint8Array.from(
@@ -20,11 +22,18 @@ async function ibcCosmosToOsmosis() {
   );
   const data = await client.getQueryClient().queryUnverified(`/ibc.core.channel.v1.Query/Channels`, requestData);
   const response = QueryChannelsResponse.decode(data);
-  console.log(`channels: ${JSON.stringify(response.channels)}`);
+  const channel = response.channels[0];
 
   await client.sendIbcTokens(
     CHAIN_CLIENT.cosmos.address,
     CHAIN_CLIENT.osmosis.address,
+    coin(100_000_000, chainInfo.denom),
+    channel.portId,
+    channel.channelId,
+    // heigth
+    // timestamp
+    fee,
+    "initial send atoms as part of setup",
   );
 };
 
@@ -33,7 +42,11 @@ beforeAll(async () => {
   for (const network of ["osmosis", "juno", "cosmos"]) {
     const mnemonic = await getMnemonic();
     const {client, address} = await connect(network, mnemonic);
-    CHAIN_CLIENT[network] = {client: client, address: address};
+    CHAIN_CLIENT[network] = {
+      client: client,
+      address: address,
+      chainInfo: getChainInfo(network)
+    };
   };
 });
 
