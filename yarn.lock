@@ -2151,10 +2151,10 @@
   resolved "https://registry.npmjs.org/@cosmjs/utils/-/utils-0.29.3.tgz#d7e1f381267e61b7d3219ebd75d46defc397cd43"
   integrity sha512-UuKoBN2xiRXcBpz7jzCwagKhOnLOsRmR8mu3IzY+Yx38i8rW52FSXMbxC/yE83X0vLea+zgMQFPwv0gy4QWUJw==
 
-"@cosmwasm/ts-codegen@0.20.0":
-  version "0.20.0"
-  resolved "https://registry.npmjs.org/@cosmwasm/ts-codegen/-/ts-codegen-0.20.0.tgz#786afd4c2c172040547134c1c3076fb47e823721"
-  integrity sha512-lrp61YkjONbuStNWQEKdD/MYQwREnQ2fNnI59dSa7VOqBxyhlBoOhj/6xjYFv4P3cm2Pd374kzfayhTkuFwhLw==
+"@cosmwasm/ts-codegen@0.21.1":
+  version "0.21.1"
+  resolved "https://registry.npmjs.org/@cosmwasm/ts-codegen/-/ts-codegen-0.21.1.tgz#abbb15fdb8f1c966079de49e0da0f847fa5045fe"
+  integrity sha512-6Rp1zKJLL08H0wMpXuEcvTWx29mR/pNlBS/2S6jTW8h+NzVlDfXQcLm42gpnpb7CzgW8rt1GMNZ3mCCdTDNuSA==
   dependencies:
     "@babel/core" "7.18.10"
     "@babel/generator" "7.18.12"
@@ -2182,7 +2182,7 @@
     parse-package-name "1.0.0"
     rimraf "3.0.2"
     shelljs "0.8.5"
-    wasm-ast-types "^0.14.0"
+    wasm-ast-types "^0.15.0"
 
 "@eslint/eslintrc@^1.3.2":
   version "1.3.2"
@@ -3592,11 +3592,12 @@
   dependencies:
     "@octokit/openapi-types" "^12.7.0"
 
-"@osmonauts/ast@^0.64.0":
-  version "0.64.0"
-  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.64.0.tgz#9e64f1db6b7f0b86c24e575608839a19fbcc2b78"
-  integrity sha512-v0wrTKUOJWqILSx75lGBfK3Z/9JCQRyqaaX4uOhh6p16wTVqlZJB7fuk76GjNXA3zy0sXaZzqKBBwVvJ6GHZ4A==
+"@osmonauts/ast@^0.65.0":
+  version "0.65.0"
+  resolved "https://registry.npmjs.org/@osmonauts/ast/-/ast-0.65.0.tgz#2cc5976909567cf30a514a69ef2301977e9ded44"
+  integrity sha512-dMWoqXVniprn+c96IXOkWB8Ax2L/LRlkhOq7UGtXy/SVuvVOzqUAD2JfwAlammN+tKiOWJyo2wYkklk2f4jidw==
   dependencies:
+    "@babel/parser" "^7.19.3"
     "@babel/runtime" "^7.19.0"
     "@babel/types" "7.19.3"
     "@osmonauts/proto-parser" "^0.32.0"
@@ -3625,10 +3626,10 @@
     glob "8.0.3"
     mkdirp "1.0.4"
 
-"@osmonauts/telescope@0.74.0":
-  version "0.74.0"
-  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.74.0.tgz#77d264d561f936dff634d12f1b326c1476df1829"
-  integrity sha512-1GtSvgrJlVy8l28I5kMP6MEdBXE9Zq2rCBIzCSoxxtCS/x/VUsy5QjblrOuiVXdAb7e6n9QVGGTwovd1slmmKg==
+"@osmonauts/telescope@0.76.0":
+  version "0.76.0"
+  resolved "https://registry.npmjs.org/@osmonauts/telescope/-/telescope-0.76.0.tgz#9763440b4db838db181578084412d21fac24e241"
+  integrity sha512-LJaiOPdahrnq/UT9GkH3pIQMJu792e3eFH4w0fDEDfrTqaEfFREaevcIEdOKwaN3jssl5995V6UJwPs/uS0cRw==
   dependencies:
     "@babel/core" "7.19.3"
     "@babel/generator" "7.19.3"
@@ -3642,8 +3643,8 @@
     "@babel/runtime" "^7.19.0"
     "@babel/traverse" "7.19.3"
     "@babel/types" "7.19.3"
-    "@cosmwasm/ts-codegen" "0.20.0"
-    "@osmonauts/ast" "^0.64.0"
+    "@cosmwasm/ts-codegen" "0.21.1"
+    "@osmonauts/ast" "^0.65.0"
     "@osmonauts/proto-parser" "^0.32.0"
     "@osmonauts/types" "^0.24.0"
     "@osmonauts/utils" "^0.7.0"
@@ -10052,10 +10053,10 @@ walker@^1.0.8:
   dependencies:
     makeerror "1.0.12"
 
-wasm-ast-types@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.npmjs.org/wasm-ast-types/-/wasm-ast-types-0.14.0.tgz#c6e135df2f029280a4be1dbdbf01d4de488a244b"
-  integrity sha512-1DAiGmLexIA2nizkLHQdyTN3GWb1bdox2/iroyrBmeazTwCdAsPhud/5Pro9JBSmoWjnBGSdlsUYTaY5n25PcA==
+wasm-ast-types@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.npmjs.org/wasm-ast-types/-/wasm-ast-types-0.15.0.tgz#101f98fc9c5d0528bc615f80d9d7a897168e0593"
+  integrity sha512-A3wgW3mlqK3irUjHqMkA26ADFA1z55LgQKl+KXRf1ylN5DValI3t/R9Sv3grSa7vpCAeG6E+XWCd7pGRNDsylw==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@babel/types" "7.18.10"
