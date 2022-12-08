@@ -16,18 +16,6 @@ export interface ModuleToDistributeCoinsResponseSDKType {
     /** Coins that have yet to be distributed */
     coins: CoinSDKType[];
 }
-export interface ModuleDistributedCoinsRequest {
-}
-export interface ModuleDistributedCoinsRequestSDKType {
-}
-export interface ModuleDistributedCoinsResponse {
-    /** Coins that have been distributed already */
-    coins: Coin[];
-}
-export interface ModuleDistributedCoinsResponseSDKType {
-    /** Coins that have been distributed already */
-    coins: CoinSDKType[];
-}
 export interface GaugeByIDRequest {
     /** Gague ID being queried */
     id: Long;
@@ -209,16 +197,6 @@ export declare const ModuleToDistributeCoinsResponse: {
     encode(message: ModuleToDistributeCoinsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse;
     fromPartial(object: Partial<ModuleToDistributeCoinsResponse>): ModuleToDistributeCoinsResponse;
-};
-export declare const ModuleDistributedCoinsRequest: {
-    encode(_: ModuleDistributedCoinsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsRequest;
-    fromPartial(_: Partial<ModuleDistributedCoinsRequest>): ModuleDistributedCoinsRequest;
-};
-export declare const ModuleDistributedCoinsResponse: {
-    encode(message: ModuleDistributedCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsResponse;
-    fromPartial(object: Partial<ModuleDistributedCoinsResponse>): ModuleDistributedCoinsResponse;
 };
 export declare const GaugeByIDRequest: {
     encode(message: GaugeByIDRequest, writer?: _m0.Writer): _m0.Writer;

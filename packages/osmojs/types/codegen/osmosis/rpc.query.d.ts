@@ -1,5 +1,6 @@
+import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const createRPCQueryClient: ({ rpcEndpoint }: {
-    rpcEndpoint: string;
+    rpcEndpoint: string | HttpEndpoint;
 }) => Promise<{
     cosmos: {
         authz: {
@@ -106,8 +107,12 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 pools(request?: import("./gamm/v1beta1/query").QueryPoolsRequest): Promise<import("./gamm/v1beta1/query").QueryPoolsResponse>;
                 numPools(request?: import("./gamm/v1beta1/query").QueryNumPoolsRequest): Promise<import("./gamm/v1beta1/query").QueryNumPoolsResponse>;
                 totalLiquidity(request?: import("./gamm/v1beta1/query").QueryTotalLiquidityRequest): Promise<import("./gamm/v1beta1/query").QueryTotalLiquidityResponse>;
+                poolsWithFilter(request: import("./gamm/v1beta1/query").QueryPoolsWithFilterRequest): Promise<import("./gamm/v1beta1/query").QueryPoolsWithFilterResponse>;
                 pool(request: import("./gamm/v1beta1/query").QueryPoolRequest): Promise<import("./gamm/v1beta1/query").QueryPoolResponse>;
                 poolType(request: import("./gamm/v1beta1/query").QueryPoolTypeRequest): Promise<import("./gamm/v1beta1/query").QueryPoolTypeResponse>;
+                calcJoinPoolNoSwapShares(request: import("./gamm/v1beta1/query").QueryCalcJoinPoolNoSwapSharesRequest): Promise<import("./gamm/v1beta1/query").QueryCalcJoinPoolNoSwapSharesResponse>;
+                calcJoinPoolShares(request: import("./gamm/v1beta1/query").QueryCalcJoinPoolSharesRequest): Promise<import("./gamm/v1beta1/query").QueryCalcJoinPoolSharesResponse>;
+                calcExitPoolCoinsFromShares(request: import("./gamm/v1beta1/query").QueryCalcExitPoolCoinsFromSharesRequest): Promise<import("./gamm/v1beta1/query").QueryCalcExitPoolCoinsFromSharesResponse>;
                 poolParams(request: import("./gamm/v1beta1/query").QueryPoolParamsRequest): Promise<import("./gamm/v1beta1/query").QueryPoolParamsResponse>;
                 totalPoolLiquidity(request: import("./gamm/v1beta1/query").QueryTotalPoolLiquidityRequest): Promise<import("./gamm/v1beta1/query").QueryTotalPoolLiquidityResponse>;
                 totalShares(request: import("./gamm/v1beta1/query").QueryTotalSharesRequest): Promise<import("./gamm/v1beta1/query").QueryTotalSharesResponse>;
@@ -115,10 +120,17 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 estimateSwapExactAmountIn(request: import("./gamm/v1beta1/query").QuerySwapExactAmountInRequest): Promise<import("./gamm/v1beta1/query").QuerySwapExactAmountInResponse>;
                 estimateSwapExactAmountOut(request: import("./gamm/v1beta1/query").QuerySwapExactAmountOutRequest): Promise<import("./gamm/v1beta1/query").QuerySwapExactAmountOutResponse>;
             };
+            v2: {
+                spotPrice(request: import("./gamm/v2/query").QuerySpotPriceRequest): Promise<import("./gamm/v2/query").QuerySpotPriceResponse>;
+            };
+        };
+        ibcratelimit: {
+            v1beta1: {
+                params(request?: import("./ibc-rate-limit/v1beta1/query").QueryParamsRequest): Promise<import("./ibc-rate-limit/v1beta1/query").QueryParamsResponse>;
+            };
         };
         incentives: {
             moduleToDistributeCoins(request?: import("./incentives/query").ModuleToDistributeCoinsRequest): Promise<import("./incentives/query").ModuleToDistributeCoinsResponse>;
-            moduleDistributedCoins(request?: import("./incentives/query").ModuleDistributedCoinsRequest): Promise<import("./incentives/query").ModuleDistributedCoinsResponse>;
             gaugeByID(request: import("./incentives/query").GaugeByIDRequest): Promise<import("./incentives/query").GaugeByIDResponse>;
             gauges(request?: import("./incentives/query").GaugesRequest): Promise<import("./incentives/query").GaugesResponse>;
             activeGauges(request?: import("./incentives/query").ActiveGaugesRequest): Promise<import("./incentives/query").ActiveGaugesResponse>;
@@ -145,6 +157,7 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
             accountLockedDuration(request: import("./lockup/query").AccountLockedDurationRequest): Promise<import("./lockup/query").AccountLockedDurationResponse>;
             accountLockedLongerDurationNotUnlockingOnly(request: import("./lockup/query").AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<import("./lockup/query").AccountLockedLongerDurationNotUnlockingOnlyResponse>;
             accountLockedLongerDurationDenom(request: import("./lockup/query").AccountLockedLongerDurationDenomRequest): Promise<import("./lockup/query").AccountLockedLongerDurationDenomResponse>;
+            params(request?: import("./lockup/query").QueryParamsRequest): Promise<import("./lockup/query").QueryParamsResponse>;
         };
         mint: {
             v1beta1: {
@@ -162,13 +175,6 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 externalIncentiveGauges(request?: import("./pool-incentives/v1beta1/query").QueryExternalIncentiveGaugesRequest): Promise<import("./pool-incentives/v1beta1/query").QueryExternalIncentiveGaugesResponse>;
             };
         };
-        streamswap: {
-            v1: {
-                sales(request?: import("./streamswap/v1/query").QuerySales): Promise<import("./streamswap/v1/query").QuerySalesResponse>;
-                sale(request: import("./streamswap/v1/query").QuerySale): Promise<import("./streamswap/v1/query").QuerySaleResponse>;
-                userPosition(request: import("./streamswap/v1/query").QueryUserPosition): Promise<import("./streamswap/v1/query").QueryUserPositionResponse>;
-            };
-        };
         superfluid: {
             params(request?: import("./superfluid/query").QueryParamsRequest): Promise<import("./superfluid/query").QueryParamsResponse>;
             assetType(request: import("./superfluid/query").AssetTypeRequest): Promise<import("./superfluid/query").AssetTypeResponse>;
@@ -176,6 +182,7 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
             assetMultiplier(request: import("./superfluid/query").AssetMultiplierRequest): Promise<import("./superfluid/query").AssetMultiplierResponse>;
             allIntermediaryAccounts(request?: import("./superfluid/query").AllIntermediaryAccountsRequest): Promise<import("./superfluid/query").AllIntermediaryAccountsResponse>;
             connectedIntermediaryAccount(request: import("./superfluid/query").ConnectedIntermediaryAccountRequest): Promise<import("./superfluid/query").ConnectedIntermediaryAccountResponse>;
+            totalDelegationByValidatorForDenom(request: import("./superfluid/query").QueryTotalDelegationByValidatorForDenomRequest): Promise<import("./superfluid/query").QueryTotalDelegationByValidatorForDenomResponse>;
             totalSuperfluidDelegations(request?: import("./superfluid/query").TotalSuperfluidDelegationsRequest): Promise<import("./superfluid/query").TotalSuperfluidDelegationsResponse>;
             superfluidDelegationAmount(request: import("./superfluid/query").SuperfluidDelegationAmountRequest): Promise<import("./superfluid/query").SuperfluidDelegationAmountResponse>;
             superfluidDelegationsByDelegator(request: import("./superfluid/query").SuperfluidDelegationsByDelegatorRequest): Promise<import("./superfluid/query").SuperfluidDelegationsByDelegatorResponse>;
@@ -183,6 +190,7 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
             superfluidDelegationsByValidatorDenom(request: import("./superfluid/query").SuperfluidDelegationsByValidatorDenomRequest): Promise<import("./superfluid/query").SuperfluidDelegationsByValidatorDenomResponse>;
             estimateSuperfluidDelegatedAmountByValidatorDenom(request: import("./superfluid/query").EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<import("./superfluid/query").EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>;
             totalDelegationByDelegator(request: import("./superfluid/query").QueryTotalDelegationByDelegatorRequest): Promise<import("./superfluid/query").QueryTotalDelegationByDelegatorResponse>;
+            unpoolWhitelist(request?: import("./superfluid/query").QueryUnpoolWhitelistRequest): Promise<import("./superfluid/query").QueryUnpoolWhitelistResponse>;
         };
         tokenfactory: {
             v1beta1: {

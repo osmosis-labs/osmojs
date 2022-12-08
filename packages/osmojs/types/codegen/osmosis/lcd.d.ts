@@ -31,6 +31,10 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
         gamm: {
             v1beta1: import("./gamm/v1beta1/query.lcd").LCDQueryClient;
+            v2: import("./gamm/v2/query.lcd").LCDQueryClient;
+        };
+        ibcratelimit: {
+            v1beta1: import("./ibc-rate-limit/v1beta1/query.lcd").LCDQueryClient;
         };
         incentives: import("./incentives/query.lcd").LCDQueryClient;
         lockup: import("./lockup/query.lcd").LCDQueryClient;
@@ -39,9 +43,6 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
         poolincentives: {
             v1beta1: import("./pool-incentives/v1beta1/query.lcd").LCDQueryClient;
-        };
-        streamswap: {
-            v1: import("./streamswap/v1/query.lcd").LCDQueryClient;
         };
         superfluid: import("./superfluid/query.lcd").LCDQueryClient;
         tokenfactory: {

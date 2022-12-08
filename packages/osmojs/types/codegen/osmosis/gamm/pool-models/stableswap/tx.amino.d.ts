@@ -15,6 +15,7 @@ export interface AminoMsgCreateStableswapPool extends AminoMsg {
         }[];
         scaling_factors: Long[];
         future_pool_governor: string;
+        scaling_factor_controller: string;
     };
 }
 export interface AminoMsgStableSwapAdjustScalingFactors extends AminoMsg {
@@ -28,8 +29,8 @@ export interface AminoMsgStableSwapAdjustScalingFactors extends AminoMsg {
 export declare const AminoConverter: {
     "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgCreateStableswapPool": {
         aminoType: string;
-        toAmino: ({ sender, poolParams, initialPoolLiquidity, scalingFactors, futurePoolGovernor }: MsgCreateStableswapPool) => AminoMsgCreateStableswapPool["value"];
-        fromAmino: ({ sender, pool_params, initial_pool_liquidity, scaling_factors, future_pool_governor }: AminoMsgCreateStableswapPool["value"]) => MsgCreateStableswapPool;
+        toAmino: ({ sender, poolParams, initialPoolLiquidity, scalingFactors, futurePoolGovernor, scalingFactorController }: MsgCreateStableswapPool) => AminoMsgCreateStableswapPool["value"];
+        fromAmino: ({ sender, pool_params, initial_pool_liquidity, scaling_factors, future_pool_governor, scaling_factor_controller }: AminoMsgCreateStableswapPool["value"]) => MsgCreateStableswapPool;
     };
     "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgStableSwapAdjustScalingFactors": {
         aminoType: string;

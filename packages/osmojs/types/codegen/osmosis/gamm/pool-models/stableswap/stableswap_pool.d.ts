@@ -42,9 +42,9 @@ export interface Pool {
     /** assets in the pool */
     poolLiquidity: Coin[];
     /** for calculation amognst assets with different precisions */
-    scalingFactor: Long[];
-    /** scaling_factor_governor is the address can adjust pool scaling factors */
-    scalingFactorGovernor: string;
+    scalingFactors: Long[];
+    /** scaling_factor_controller is the address can adjust pool scaling factors */
+    scalingFactorController: string;
 }
 /** Pool is the stableswap Pool struct */
 export interface PoolSDKType {
@@ -67,9 +67,9 @@ export interface PoolSDKType {
     /** assets in the pool */
     pool_liquidity: CoinSDKType[];
     /** for calculation amognst assets with different precisions */
-    scaling_factor: Long[];
-    /** scaling_factor_governor is the address can adjust pool scaling factors */
-    scaling_factor_governor: string;
+    scaling_factors: Long[];
+    /** scaling_factor_controller is the address can adjust pool scaling factors */
+    scaling_factor_controller: string;
 }
 export declare const PoolParams: {
     encode(message: PoolParams, writer?: _m0.Writer): _m0.Writer;

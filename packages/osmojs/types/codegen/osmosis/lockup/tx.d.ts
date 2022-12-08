@@ -81,6 +81,32 @@ export interface MsgExtendLockupResponse {
 export interface MsgExtendLockupResponseSDKType {
     success: boolean;
 }
+/**
+ * MsgForceUnlock unlocks locks immediately for
+ * addresses registered via governance.
+ */
+export interface MsgForceUnlock {
+    owner: string;
+    ID: Long;
+    /** Amount of unlocking coins. Unlock all if not set. */
+    coins: Coin[];
+}
+/**
+ * MsgForceUnlock unlocks locks immediately for
+ * addresses registered via governance.
+ */
+export interface MsgForceUnlockSDKType {
+    owner: string;
+    ID: Long;
+    /** Amount of unlocking coins. Unlock all if not set. */
+    coins: CoinSDKType[];
+}
+export interface MsgForceUnlockResponse {
+    success: boolean;
+}
+export interface MsgForceUnlockResponseSDKType {
+    success: boolean;
+}
 export declare const MsgLockTokens: {
     encode(message: MsgLockTokens, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokens;
@@ -120,4 +146,14 @@ export declare const MsgExtendLockupResponse: {
     encode(message: MsgExtendLockupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse;
     fromPartial(object: Partial<MsgExtendLockupResponse>): MsgExtendLockupResponse;
+};
+export declare const MsgForceUnlock: {
+    encode(message: MsgForceUnlock, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlock;
+    fromPartial(object: Partial<MsgForceUnlock>): MsgForceUnlock;
+};
+export declare const MsgForceUnlockResponse: {
+    encode(message: MsgForceUnlockResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlockResponse;
+    fromPartial(object: Partial<MsgForceUnlockResponse>): MsgForceUnlockResponse;
 };
