@@ -37,9 +37,6 @@ export declare const createRPCMsgClient: ({ rpc }: {
         };
         incentives: import("./incentives/tx.rpc.msg").MsgClientImpl;
         lockup: import("./lockup/tx.rpc.msg").MsgClientImpl;
-        streamswap: {
-            v1: import("./streamswap/v1/tx.rpc.msg").MsgClientImpl;
-        };
         superfluid: import("./superfluid/tx.rpc.msg").MsgClientImpl;
         tokenfactory: {
             v1beta1: import("./tokenfactory/v1beta1/tx.rpc.msg").MsgClientImpl;

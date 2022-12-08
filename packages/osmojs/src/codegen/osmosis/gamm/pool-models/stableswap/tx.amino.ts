@@ -16,6 +16,7 @@ export interface AminoMsgCreateStableswapPool extends AminoMsg {
     }[];
     scaling_factors: Long[];
     future_pool_governor: string;
+    scaling_factor_controller: string;
   };
 }
 export interface AminoMsgStableSwapAdjustScalingFactors extends AminoMsg {
@@ -34,7 +35,8 @@ export const AminoConverter = {
       poolParams,
       initialPoolLiquidity,
       scalingFactors,
-      futurePoolGovernor
+      futurePoolGovernor,
+      scalingFactorController
     }: MsgCreateStableswapPool): AminoMsgCreateStableswapPool["value"] => {
       return {
         sender,
@@ -47,7 +49,8 @@ export const AminoConverter = {
           amount: el0.amount
         })),
         scaling_factors: scalingFactors.map(el0 => el0.toString()),
-        future_pool_governor: futurePoolGovernor
+        future_pool_governor: futurePoolGovernor,
+        scaling_factor_controller: scalingFactorController
       };
     },
     fromAmino: ({
@@ -55,7 +58,8 @@ export const AminoConverter = {
       pool_params,
       initial_pool_liquidity,
       scaling_factors,
-      future_pool_governor
+      future_pool_governor,
+      scaling_factor_controller
     }: AminoMsgCreateStableswapPool["value"]): MsgCreateStableswapPool => {
       return {
         sender,
@@ -68,7 +72,8 @@ export const AminoConverter = {
           amount: el0.amount
         })),
         scalingFactors: scaling_factors.map(el0 => Long.fromString(el0)),
-        futurePoolGovernor: future_pool_governor
+        futurePoolGovernor: future_pool_governor,
+        scalingFactorController: scaling_factor_controller
       };
     }
   },

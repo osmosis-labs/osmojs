@@ -1,6 +1,7 @@
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockSDKType, SyntheticLock, SyntheticLockSDKType } from "./lock";
+import { Params, ParamsSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
 export interface ModuleBalanceRequest {
@@ -213,6 +214,16 @@ export interface AccountLockedLongerDurationDenomResponse {
 export interface AccountLockedLongerDurationDenomResponseSDKType {
     locks: PeriodLockSDKType[];
 }
+export interface QueryParamsRequest {
+}
+export interface QueryParamsRequestSDKType {
+}
+export interface QueryParamsResponse {
+    params?: Params;
+}
+export interface QueryParamsResponseSDKType {
+    params?: ParamsSDKType;
+}
 export declare const ModuleBalanceRequest: {
     encode(_: ModuleBalanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleBalanceRequest;
@@ -372,4 +383,14 @@ export declare const AccountLockedLongerDurationDenomResponse: {
     encode(message: AccountLockedLongerDurationDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationDenomResponse;
     fromPartial(object: Partial<AccountLockedLongerDurationDenomResponse>): AccountLockedLongerDurationDenomResponse;
+};
+export declare const QueryParamsRequest: {
+    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
+};
+export declare const QueryParamsResponse: {
+    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };

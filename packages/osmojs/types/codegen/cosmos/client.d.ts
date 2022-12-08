@@ -1,5 +1,6 @@
-import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
+import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const cosmosAminoConverters: {
     "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade": {
         aminoType: string;
@@ -529,6 +530,6 @@ export declare const getSigningCosmosClientOptions: () => {
     aminoTypes: AminoTypes;
 };
 export declare const getSigningCosmosClient: ({ rpcEndpoint, signer }: {
-    rpcEndpoint: string;
+    rpcEndpoint: string | HttpEndpoint;
     signer: OfflineSigner;
 }) => Promise<SigningStargateClient>;

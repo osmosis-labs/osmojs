@@ -1,5 +1,6 @@
-import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
+import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const osmosisAminoConverters: {
     "/osmosis.tokenfactory.v1beta1.MsgCreateDenom": {
         aminoType: string;
@@ -161,103 +162,6 @@ export declare const osmosisAminoConverters: {
             pool_id: string;
         }) => import("./superfluid/tx").MsgUnPoolWhitelistedPool;
     };
-    "/osmosis.streamswap.v1.MsgCreateSale": {
-        aminoType: string;
-        toAmino: ({ creator, tokenIn, tokenOut, maxFee, startTime, duration, recipient, name, url }: import("./streamswap/v1/tx").MsgCreateSale) => {
-            creator: string;
-            token_in: string;
-            token_out: {
-                denom: string;
-                amount: string;
-            };
-            max_fee: {
-                denom: string;
-                amount: string;
-            }[];
-            start_time: {
-                seconds: string;
-                nanos: number;
-            };
-            duration: {
-                seconds: string;
-                nanos: number;
-            };
-            recipient: string;
-            name: string;
-            url: string;
-        };
-        fromAmino: ({ creator, token_in, token_out, max_fee, start_time, duration, recipient, name, url }: {
-            creator: string;
-            token_in: string;
-            token_out: {
-                denom: string;
-                amount: string;
-            };
-            max_fee: {
-                denom: string;
-                amount: string;
-            }[];
-            start_time: {
-                seconds: string;
-                nanos: number;
-            };
-            duration: {
-                seconds: string;
-                nanos: number;
-            };
-            recipient: string;
-            name: string;
-            url: string;
-        }) => import("./streamswap/v1/tx").MsgCreateSale;
-    };
-    "/osmosis.streamswap.v1.MsgSubscribe": {
-        aminoType: string;
-        toAmino: ({ sender, saleId, amount }: import("./streamswap/v1/tx").MsgSubscribe) => {
-            sender: string;
-            sale_id: string;
-            amount: string;
-        };
-        fromAmino: ({ sender, sale_id, amount }: {
-            sender: string;
-            sale_id: string;
-            amount: string;
-        }) => import("./streamswap/v1/tx").MsgSubscribe;
-    };
-    "/osmosis.streamswap.v1.MsgWithdraw": {
-        aminoType: string;
-        toAmino: ({ sender, saleId, amount }: import("./streamswap/v1/tx").MsgWithdraw) => {
-            sender: string;
-            sale_id: string;
-            amount: string;
-        };
-        fromAmino: ({ sender, sale_id, amount }: {
-            sender: string;
-            sale_id: string;
-            amount: string;
-        }) => import("./streamswap/v1/tx").MsgWithdraw;
-    };
-    "/osmosis.streamswap.v1.MsgExitSale": {
-        aminoType: string;
-        toAmino: ({ sender, saleId }: import("./streamswap/v1/tx").MsgExitSale) => {
-            sender: string;
-            sale_id: string;
-        };
-        fromAmino: ({ sender, sale_id }: {
-            sender: string;
-            sale_id: string;
-        }) => import("./streamswap/v1/tx").MsgExitSale;
-    };
-    "/osmosis.streamswap.v1.MsgFinalizeSale": {
-        aminoType: string;
-        toAmino: ({ sender, saleId }: import("./streamswap/v1/tx").MsgFinalizeSale) => {
-            sender: string;
-            sale_id: string;
-        };
-        fromAmino: ({ sender, sale_id }: {
-            sender: string;
-            sale_id: string;
-        }) => import("./streamswap/v1/tx").MsgFinalizeSale;
-    };
     "/osmosis.lockup.MsgLockTokens": {
         aminoType: string;
         toAmino: ({ owner, duration, coins }: import("./lockup/tx").MsgLockTokens) => {
@@ -329,6 +233,25 @@ export declare const osmosisAminoConverters: {
                 nanos: number;
             };
         }) => import("./lockup/tx").MsgExtendLockup;
+    };
+    "/osmosis.lockup.MsgForceUnlock": {
+        aminoType: string;
+        toAmino: ({ owner, ID, coins }: import("./lockup/tx").MsgForceUnlock) => {
+            owner: string;
+            ID: string;
+            coins: {
+                denom: string;
+                amount: string;
+            }[];
+        };
+        fromAmino: ({ owner, ID, coins }: {
+            owner: string;
+            ID: string;
+            coins: {
+                denom: string;
+                amount: string;
+            }[];
+        }) => import("./lockup/tx").MsgForceUnlock;
     };
     "/osmosis.incentives.MsgCreateGauge": {
         aminoType: string;
@@ -576,7 +499,7 @@ export declare const osmosisAminoConverters: {
     };
     "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgCreateStableswapPool": {
         aminoType: string;
-        toAmino: ({ sender, poolParams, initialPoolLiquidity, scalingFactors, futurePoolGovernor }: import("./gamm/pool-models/stableswap/tx").MsgCreateStableswapPool) => {
+        toAmino: ({ sender, poolParams, initialPoolLiquidity, scalingFactors, futurePoolGovernor, scalingFactorController }: import("./gamm/pool-models/stableswap/tx").MsgCreateStableswapPool) => {
             sender: string;
             pool_params: {
                 swap_fee: string;
@@ -588,8 +511,9 @@ export declare const osmosisAminoConverters: {
             }[];
             scaling_factors: import("long")[];
             future_pool_governor: string;
+            scaling_factor_controller: string;
         };
-        fromAmino: ({ sender, pool_params, initial_pool_liquidity, scaling_factors, future_pool_governor }: {
+        fromAmino: ({ sender, pool_params, initial_pool_liquidity, scaling_factors, future_pool_governor, scaling_factor_controller }: {
             sender: string;
             pool_params: {
                 swap_fee: string;
@@ -601,6 +525,7 @@ export declare const osmosisAminoConverters: {
             }[];
             scaling_factors: import("long")[];
             future_pool_governor: string;
+            scaling_factor_controller: string;
         }) => import("./gamm/pool-models/stableswap/tx").MsgCreateStableswapPool;
     };
     "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgStableSwapAdjustScalingFactors": {
@@ -706,7 +631,7 @@ export declare const getSigningOsmosisClientOptions: ({ defaultTypes }?: {
     aminoTypes: AminoTypes;
 };
 export declare const getSigningOsmosisClient: ({ rpcEndpoint, signer, defaultTypes }: {
-    rpcEndpoint: string;
+    rpcEndpoint: string | HttpEndpoint;
     signer: OfflineSigner;
     defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => Promise<SigningStargateClient>;

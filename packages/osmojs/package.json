@@ -1,6 +1,6 @@
 {
   "name": "osmojs",
-  "version": "0.37.0",
+  "version": "13.0.0-rc.0",
   "description": "Typescript Protobuf Messages for Osmosis",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
@@ -64,6 +64,7 @@
     "@protobufs/cosmwasm": "^0.0.11",
     "@protobufs/ibc": "^0.0.11",
     "@protobufs/osmosis": "^0.2.0",
+    "@protobufs/tendermint": "^0.0.10",
     "@types/jest": "^29.0.2",
     "ast-stringify": "0.1.0",
     "axios": "^0.27.2",

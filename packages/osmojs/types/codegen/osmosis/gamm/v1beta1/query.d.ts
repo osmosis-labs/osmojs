@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteSDKType } from "./tx";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
-import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
 /** =============================== Pool */
@@ -64,6 +64,40 @@ export interface QueryPoolTypeResponse {
 export interface QueryPoolTypeResponseSDKType {
     pool_type: string;
 }
+/** =============================== CalcJoinPoolShares */
+export interface QueryCalcJoinPoolSharesRequest {
+    poolId: Long;
+    tokensIn: Coin[];
+}
+/** =============================== CalcJoinPoolShares */
+export interface QueryCalcJoinPoolSharesRequestSDKType {
+    pool_id: Long;
+    tokens_in: CoinSDKType[];
+}
+export interface QueryCalcJoinPoolSharesResponse {
+    shareOutAmount: string;
+    tokensOut: Coin[];
+}
+export interface QueryCalcJoinPoolSharesResponseSDKType {
+    share_out_amount: string;
+    tokens_out: CoinSDKType[];
+}
+/** =============================== CalcExitPoolCoinsFromShares */
+export interface QueryCalcExitPoolCoinsFromSharesRequest {
+    poolId: Long;
+    shareInAmount: string;
+}
+/** =============================== CalcExitPoolCoinsFromShares */
+export interface QueryCalcExitPoolCoinsFromSharesRequestSDKType {
+    pool_id: Long;
+    share_in_amount: string;
+}
+export interface QueryCalcExitPoolCoinsFromSharesResponse {
+    tokensOut: Coin[];
+}
+export interface QueryCalcExitPoolCoinsFromSharesResponseSDKType {
+    tokens_out: CoinSDKType[];
+}
 /** =============================== PoolParams */
 export interface QueryPoolParamsRequest {
     poolId: Long;
@@ -106,10 +140,29 @@ export interface QueryTotalSharesResponse {
 export interface QueryTotalSharesResponseSDKType {
     total_shares?: CoinSDKType;
 }
+/** =============================== CalcJoinPoolNoSwapShares */
+export interface QueryCalcJoinPoolNoSwapSharesRequest {
+    poolId: Long;
+    tokensIn: Coin[];
+}
+/** =============================== CalcJoinPoolNoSwapShares */
+export interface QueryCalcJoinPoolNoSwapSharesRequestSDKType {
+    pool_id: Long;
+    tokens_in: CoinSDKType[];
+}
+export interface QueryCalcJoinPoolNoSwapSharesResponse {
+    tokensOut: Coin[];
+    sharesOut: string;
+}
+export interface QueryCalcJoinPoolNoSwapSharesResponseSDKType {
+    tokens_out: CoinSDKType[];
+    shares_out: string;
+}
 /**
  * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
  * query.
  */
+/** @deprecated */
 export interface QuerySpotPriceRequest {
     poolId: Long;
     baseAssetDenom: string;
@@ -119,15 +172,37 @@ export interface QuerySpotPriceRequest {
  * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
  * query.
  */
+/** @deprecated */
 export interface QuerySpotPriceRequestSDKType {
     pool_id: Long;
     base_asset_denom: string;
     quote_asset_denom: string;
 }
+export interface QueryPoolsWithFilterRequest {
+    minLiquidity: Coin[];
+    poolType: string;
+    pagination?: PageRequest;
+}
+export interface QueryPoolsWithFilterRequestSDKType {
+    min_liquidity: CoinSDKType[];
+    pool_type: string;
+    pagination?: PageRequestSDKType;
+}
+export interface QueryPoolsWithFilterResponse {
+    pools: Any[];
+    /** pagination defines the pagination in the response. */
+    pagination?: PageResponse;
+}
+export interface QueryPoolsWithFilterResponseSDKType {
+    pools: AnySDKType[];
+    /** pagination defines the pagination in the response. */
+    pagination?: PageResponseSDKType;
+}
 /**
  * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
  * query.
  */
+/** @deprecated */
 export interface QuerySpotPriceResponse {
     /** String of the Dec. Ex) 10.203uatom */
     spotPrice: string;
@@ -136,12 +211,14 @@ export interface QuerySpotPriceResponse {
  * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
  * query.
  */
+/** @deprecated */
 export interface QuerySpotPriceResponseSDKType {
     /** String of the Dec. Ex) 10.203uatom */
     spot_price: string;
 }
 /** =============================== EstimateSwapExactAmountIn */
 export interface QuerySwapExactAmountInRequest {
+    /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
     sender: string;
     poolId: Long;
     tokenIn: string;
@@ -149,6 +226,7 @@ export interface QuerySwapExactAmountInRequest {
 }
 /** =============================== EstimateSwapExactAmountIn */
 export interface QuerySwapExactAmountInRequestSDKType {
+    /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
     sender: string;
     pool_id: Long;
     token_in: string;
@@ -162,6 +240,7 @@ export interface QuerySwapExactAmountInResponseSDKType {
 }
 /** =============================== EstimateSwapExactAmountOut */
 export interface QuerySwapExactAmountOutRequest {
+    /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
     sender: string;
     poolId: Long;
     routes: SwapAmountOutRoute[];
@@ -169,6 +248,7 @@ export interface QuerySwapExactAmountOutRequest {
 }
 /** =============================== EstimateSwapExactAmountOut */
 export interface QuerySwapExactAmountOutRequestSDKType {
+    /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
     sender: string;
     pool_id: Long;
     routes: SwapAmountOutRouteSDKType[];
@@ -230,6 +310,26 @@ export declare const QueryPoolTypeResponse: {
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponse;
     fromPartial(object: Partial<QueryPoolTypeResponse>): QueryPoolTypeResponse;
 };
+export declare const QueryCalcJoinPoolSharesRequest: {
+    encode(message: QueryCalcJoinPoolSharesRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesRequest;
+    fromPartial(object: Partial<QueryCalcJoinPoolSharesRequest>): QueryCalcJoinPoolSharesRequest;
+};
+export declare const QueryCalcJoinPoolSharesResponse: {
+    encode(message: QueryCalcJoinPoolSharesResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesResponse;
+    fromPartial(object: Partial<QueryCalcJoinPoolSharesResponse>): QueryCalcJoinPoolSharesResponse;
+};
+export declare const QueryCalcExitPoolCoinsFromSharesRequest: {
+    encode(message: QueryCalcExitPoolCoinsFromSharesRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesRequest;
+    fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesRequest>): QueryCalcExitPoolCoinsFromSharesRequest;
+};
+export declare const QueryCalcExitPoolCoinsFromSharesResponse: {
+    encode(message: QueryCalcExitPoolCoinsFromSharesResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesResponse;
+    fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesResponse>): QueryCalcExitPoolCoinsFromSharesResponse;
+};
 export declare const QueryPoolParamsRequest: {
     encode(message: QueryPoolParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsRequest;
@@ -260,10 +360,30 @@ export declare const QueryTotalSharesResponse: {
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponse;
     fromPartial(object: Partial<QueryTotalSharesResponse>): QueryTotalSharesResponse;
 };
+export declare const QueryCalcJoinPoolNoSwapSharesRequest: {
+    encode(message: QueryCalcJoinPoolNoSwapSharesRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesRequest;
+    fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesRequest>): QueryCalcJoinPoolNoSwapSharesRequest;
+};
+export declare const QueryCalcJoinPoolNoSwapSharesResponse: {
+    encode(message: QueryCalcJoinPoolNoSwapSharesResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesResponse;
+    fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesResponse>): QueryCalcJoinPoolNoSwapSharesResponse;
+};
 export declare const QuerySpotPriceRequest: {
     encode(message: QuerySpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceRequest;
     fromPartial(object: Partial<QuerySpotPriceRequest>): QuerySpotPriceRequest;
+};
+export declare const QueryPoolsWithFilterRequest: {
+    encode(message: QueryPoolsWithFilterRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterRequest;
+    fromPartial(object: Partial<QueryPoolsWithFilterRequest>): QueryPoolsWithFilterRequest;
+};
+export declare const QueryPoolsWithFilterResponse: {
+    encode(message: QueryPoolsWithFilterResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterResponse;
+    fromPartial(object: Partial<QueryPoolsWithFilterResponse>): QueryPoolsWithFilterResponse;
 };
 export declare const QuerySpotPriceResponse: {
     encode(message: QuerySpotPriceResponse, writer?: _m0.Writer): _m0.Writer;

@@ -90,6 +90,28 @@ export interface ConnectedIntermediaryAccountResponse {
 export interface ConnectedIntermediaryAccountResponseSDKType {
     account?: SuperfluidIntermediaryAccountInfoSDKType;
 }
+export interface QueryTotalDelegationByValidatorForDenomRequest {
+    denom: string;
+}
+export interface QueryTotalDelegationByValidatorForDenomRequestSDKType {
+    denom: string;
+}
+export interface QueryTotalDelegationByValidatorForDenomResponse {
+    assets: Delegations[];
+}
+export interface QueryTotalDelegationByValidatorForDenomResponseSDKType {
+    assets: DelegationsSDKType[];
+}
+export interface Delegations {
+    valAddr: string;
+    amountSfsd: string;
+    osmoEquivalent: string;
+}
+export interface DelegationsSDKType {
+    val_addr: string;
+    amount_sfsd: string;
+    osmo_equivalent: string;
+}
 export interface TotalSuperfluidDelegationsRequest {
 }
 export interface TotalSuperfluidDelegationsRequestSDKType {
@@ -196,6 +218,16 @@ export interface QueryTotalDelegationByDelegatorResponseSDKType {
     total_delegated_coins: CoinSDKType[];
     total_equivalent_staked_amount?: CoinSDKType;
 }
+export interface QueryUnpoolWhitelistRequest {
+}
+export interface QueryUnpoolWhitelistRequestSDKType {
+}
+export interface QueryUnpoolWhitelistResponse {
+    poolIds: Long[];
+}
+export interface QueryUnpoolWhitelistResponseSDKType {
+    pool_ids: Long[];
+}
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
@@ -260,6 +292,21 @@ export declare const ConnectedIntermediaryAccountResponse: {
     encode(message: ConnectedIntermediaryAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountResponse;
     fromPartial(object: Partial<ConnectedIntermediaryAccountResponse>): ConnectedIntermediaryAccountResponse;
+};
+export declare const QueryTotalDelegationByValidatorForDenomRequest: {
+    encode(message: QueryTotalDelegationByValidatorForDenomRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomRequest;
+    fromPartial(object: Partial<QueryTotalDelegationByValidatorForDenomRequest>): QueryTotalDelegationByValidatorForDenomRequest;
+};
+export declare const QueryTotalDelegationByValidatorForDenomResponse: {
+    encode(message: QueryTotalDelegationByValidatorForDenomResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomResponse;
+    fromPartial(object: Partial<QueryTotalDelegationByValidatorForDenomResponse>): QueryTotalDelegationByValidatorForDenomResponse;
+};
+export declare const Delegations: {
+    encode(message: Delegations, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Delegations;
+    fromPartial(object: Partial<Delegations>): Delegations;
 };
 export declare const TotalSuperfluidDelegationsRequest: {
     encode(_: TotalSuperfluidDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
@@ -330,4 +377,14 @@ export declare const QueryTotalDelegationByDelegatorResponse: {
     encode(message: QueryTotalDelegationByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorResponse;
     fromPartial(object: Partial<QueryTotalDelegationByDelegatorResponse>): QueryTotalDelegationByDelegatorResponse;
+};
+export declare const QueryUnpoolWhitelistRequest: {
+    encode(_: QueryUnpoolWhitelistRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnpoolWhitelistRequest;
+    fromPartial(_: Partial<QueryUnpoolWhitelistRequest>): QueryUnpoolWhitelistRequest;
+};
+export declare const QueryUnpoolWhitelistResponse: {
+    encode(message: QueryUnpoolWhitelistResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnpoolWhitelistResponse;
+    fromPartial(object: Partial<QueryUnpoolWhitelistResponse>): QueryUnpoolWhitelistResponse;
 };

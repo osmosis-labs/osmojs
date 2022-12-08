@@ -1,5 +1,6 @@
 import { SuperfluidAsset, SuperfluidAssetSDKType } from "../superfluid";
 import * as _m0 from "protobufjs/minimal";
+import { Long } from "../../../helpers";
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
  * assets
@@ -39,6 +40,28 @@ export interface RemoveSuperfluidAssetsProposalSDKType {
   title: string;
   description: string;
   superfluid_asset_denoms: string[];
+}
+/**
+ * UpdateUnpoolWhiteListProposal is a gov Content type to update the
+ * allowed list of pool ids.
+ */
+
+export interface UpdateUnpoolWhiteListProposal {
+  title: string;
+  description: string;
+  ids: Long[];
+  isOverwrite: boolean;
+}
+/**
+ * UpdateUnpoolWhiteListProposal is a gov Content type to update the
+ * allowed list of pool ids.
+ */
+
+export interface UpdateUnpoolWhiteListProposalSDKType {
+  title: string;
+  description: string;
+  ids: Long[];
+  is_overwrite: boolean;
 }
 
 function createBaseSetSuperfluidAssetsProposal(): SetSuperfluidAssetsProposal {
@@ -166,6 +189,94 @@ export const RemoveSuperfluidAssetsProposal = {
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.superfluidAssetDenoms = object.superfluidAssetDenoms?.map(e => e) || [];
+    return message;
+  }
+
+};
+
+function createBaseUpdateUnpoolWhiteListProposal(): UpdateUnpoolWhiteListProposal {
+  return {
+    title: "",
+    description: "",
+    ids: [],
+    isOverwrite: false
+  };
+}
+
+export const UpdateUnpoolWhiteListProposal = {
+  encode(message: UpdateUnpoolWhiteListProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.title !== "") {
+      writer.uint32(10).string(message.title);
+    }
+
+    if (message.description !== "") {
+      writer.uint32(18).string(message.description);
+    }
+
+    writer.uint32(26).fork();
+
+    for (const v of message.ids) {
+      writer.uint64(v);
+    }
+
+    writer.ldelim();
+
+    if (message.isOverwrite === true) {
+      writer.uint32(32).bool(message.isOverwrite);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateUnpoolWhiteListProposal {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateUnpoolWhiteListProposal();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.title = reader.string();
+          break;
+
+        case 2:
+          message.description = reader.string();
+          break;
+
+        case 3:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+
+            while (reader.pos < end2) {
+              message.ids.push((reader.uint64() as Long));
+            }
+          } else {
+            message.ids.push((reader.uint64() as Long));
+          }
+
+          break;
+
+        case 4:
+          message.isOverwrite = reader.bool();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<UpdateUnpoolWhiteListProposal>): UpdateUnpoolWhiteListProposal {
+    const message = createBaseUpdateUnpoolWhiteListProposal();
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    message.ids = object.ids?.map(e => Long.fromValue(e)) || [];
+    message.isOverwrite = object.isOverwrite ?? false;
     return message;
   }
 

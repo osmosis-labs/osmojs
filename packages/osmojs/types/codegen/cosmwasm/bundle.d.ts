@@ -4,14 +4,14 @@ import * as _47 from "./wasm/v1/proposal";
 import * as _48 from "./wasm/v1/query";
 import * as _49 from "./wasm/v1/tx";
 import * as _50 from "./wasm/v1/types";
-import * as _178 from "./wasm/v1/query.lcd";
-import * as _179 from "./wasm/v1/query.rpc.Query";
-import * as _180 from "./wasm/v1/tx.rpc.msg";
+import * as _176 from "./wasm/v1/query.lcd";
+import * as _177 from "./wasm/v1/query.rpc.Query";
+import * as _178 from "./wasm/v1/tx.rpc.msg";
 export declare namespace cosmwasm {
     namespace wasm {
         const v1: {
-            MsgClientImpl: typeof _180.MsgClientImpl;
-            QueryClientImpl: typeof _179.QueryClientImpl;
+            MsgClientImpl: typeof _178.MsgClientImpl;
+            QueryClientImpl: typeof _177.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 contractInfo(request: _48.QueryContractInfoRequest): Promise<_48.QueryContractInfoResponse>;
                 contractHistory(request: _48.QueryContractHistoryRequest): Promise<_48.QueryContractHistoryResponse>;
@@ -23,7 +23,7 @@ export declare namespace cosmwasm {
                 codes(request?: _48.QueryCodesRequest): Promise<_48.QueryCodesResponse>;
                 pinnedCodes(request?: _48.QueryPinnedCodesRequest): Promise<_48.QueryPinnedCodesResponse>;
             };
-            LCDQueryClient: typeof _178.LCDQueryClient;
+            LCDQueryClient: typeof _176.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -524,12 +524,12 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _180.MsgClientImpl;
+                    v1: _178.MsgClientImpl;
                 };
             };
         }>;
         createRPCQueryClient: ({ rpcEndpoint }: {
-            rpcEndpoint: string;
+            rpcEndpoint: string | import("@cosmjs/tendermint-rpc").HttpEndpoint;
         }) => Promise<{
             cosmos: {
                 authz: {
@@ -669,7 +669,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _178.LCDQueryClient;
+                    v1: _176.LCDQueryClient;
                 };
             };
         }>;

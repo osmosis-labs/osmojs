@@ -1,7 +1,7 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, AssetTypeRequest, AssetTypeResponse, AllAssetsRequest, AllAssetsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, AssetTypeRequest, AssetTypeResponse, AllAssetsRequest, AllAssetsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, QueryTotalDelegationByValidatorForDenomRequest, QueryTotalDelegationByValidatorForDenomResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponse } from "./query";
 /** Query defines the gRPC querier service. */
 
 export interface Query {
@@ -25,6 +25,9 @@ export interface Query {
   /** Returns intermediary account connected to a superfluid staked lock by id */
 
   connectedIntermediaryAccount(request: ConnectedIntermediaryAccountRequest): Promise<ConnectedIntermediaryAccountResponse>;
+  /** Returns the amount of delegations of specific denom for all validators */
+
+  totalDelegationByValidatorForDenom(request: QueryTotalDelegationByValidatorForDenomRequest): Promise<QueryTotalDelegationByValidatorForDenomResponse>;
   /**
    * Returns the total amount of osmo superfluidly staked.
    * Response is denominated in uosmo.
@@ -59,6 +62,9 @@ export interface Query {
   /** Returns the specified delegations for a specific delegator */
 
   totalDelegationByDelegator(request: QueryTotalDelegationByDelegatorRequest): Promise<QueryTotalDelegationByDelegatorResponse>;
+  /** Returns a list of whitelisted pool ids to unpool. */
+
+  unpoolWhitelist(request?: QueryUnpoolWhitelistRequest): Promise<QueryUnpoolWhitelistResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -71,6 +77,7 @@ export class QueryClientImpl implements Query {
     this.assetMultiplier = this.assetMultiplier.bind(this);
     this.allIntermediaryAccounts = this.allIntermediaryAccounts.bind(this);
     this.connectedIntermediaryAccount = this.connectedIntermediaryAccount.bind(this);
+    this.totalDelegationByValidatorForDenom = this.totalDelegationByValidatorForDenom.bind(this);
     this.totalSuperfluidDelegations = this.totalSuperfluidDelegations.bind(this);
     this.superfluidDelegationAmount = this.superfluidDelegationAmount.bind(this);
     this.superfluidDelegationsByDelegator = this.superfluidDelegationsByDelegator.bind(this);
@@ -78,6 +85,7 @@ export class QueryClientImpl implements Query {
     this.superfluidDelegationsByValidatorDenom = this.superfluidDelegationsByValidatorDenom.bind(this);
     this.estimateSuperfluidDelegatedAmountByValidatorDenom = this.estimateSuperfluidDelegatedAmountByValidatorDenom.bind(this);
     this.totalDelegationByDelegator = this.totalDelegationByDelegator.bind(this);
+    this.unpoolWhitelist = this.unpoolWhitelist.bind(this);
   }
 
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
@@ -116,6 +124,12 @@ export class QueryClientImpl implements Query {
     const data = ConnectedIntermediaryAccountRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "ConnectedIntermediaryAccount", data);
     return promise.then(data => ConnectedIntermediaryAccountResponse.decode(new _m0.Reader(data)));
+  }
+
+  totalDelegationByValidatorForDenom(request: QueryTotalDelegationByValidatorForDenomRequest): Promise<QueryTotalDelegationByValidatorForDenomResponse> {
+    const data = QueryTotalDelegationByValidatorForDenomRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.superfluid.Query", "TotalDelegationByValidatorForDenom", data);
+    return promise.then(data => QueryTotalDelegationByValidatorForDenomResponse.decode(new _m0.Reader(data)));
   }
 
   totalSuperfluidDelegations(request: TotalSuperfluidDelegationsRequest = {}): Promise<TotalSuperfluidDelegationsResponse> {
@@ -160,6 +174,12 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryTotalDelegationByDelegatorResponse.decode(new _m0.Reader(data)));
   }
 
+  unpoolWhitelist(request: QueryUnpoolWhitelistRequest = {}): Promise<QueryUnpoolWhitelistResponse> {
+    const data = QueryUnpoolWhitelistRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.superfluid.Query", "UnpoolWhitelist", data);
+    return promise.then(data => QueryUnpoolWhitelistResponse.decode(new _m0.Reader(data)));
+  }
+
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -189,6 +209,10 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.connectedIntermediaryAccount(request);
     },
 
+    totalDelegationByValidatorForDenom(request: QueryTotalDelegationByValidatorForDenomRequest): Promise<QueryTotalDelegationByValidatorForDenomResponse> {
+      return queryService.totalDelegationByValidatorForDenom(request);
+    },
+
     totalSuperfluidDelegations(request?: TotalSuperfluidDelegationsRequest): Promise<TotalSuperfluidDelegationsResponse> {
       return queryService.totalSuperfluidDelegations(request);
     },
@@ -215,6 +239,10 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     totalDelegationByDelegator(request: QueryTotalDelegationByDelegatorRequest): Promise<QueryTotalDelegationByDelegatorResponse> {
       return queryService.totalDelegationByDelegator(request);
+    },
+
+    unpoolWhitelist(request?: QueryUnpoolWhitelistRequest): Promise<QueryUnpoolWhitelistResponse> {
+      return queryService.unpoolWhitelist(request);
     }
 
   };

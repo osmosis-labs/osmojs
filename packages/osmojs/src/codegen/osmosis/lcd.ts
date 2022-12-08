@@ -57,6 +57,14 @@ export const createLCDClient = async ({
       gamm: {
         v1beta1: new (await import("./gamm/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
+        }),
+        v2: new (await import("./gamm/v2/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      ibcratelimit: {
+        v1beta1: new (await import("./ibc-rate-limit/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
         })
       },
       incentives: new (await import("./incentives/query.lcd")).LCDQueryClient({
@@ -72,11 +80,6 @@ export const createLCDClient = async ({
       },
       poolincentives: {
         v1beta1: new (await import("./pool-incentives/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      streamswap: {
-        v1: new (await import("./streamswap/v1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

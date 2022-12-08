@@ -9,6 +9,7 @@ export interface MsgCreateStableswapPool {
     initialPoolLiquidity: Coin[];
     scalingFactors: Long[];
     futurePoolGovernor: string;
+    scalingFactorController: string;
 }
 /** ===================== MsgCreatePool */
 export interface MsgCreateStableswapPoolSDKType {
@@ -17,6 +18,7 @@ export interface MsgCreateStableswapPoolSDKType {
     initial_pool_liquidity: CoinSDKType[];
     scaling_factors: Long[];
     future_pool_governor: string;
+    scaling_factor_controller: string;
 }
 /** Returns a poolID with custom poolName. */
 export interface MsgCreateStableswapPoolResponse {

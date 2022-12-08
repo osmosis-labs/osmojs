@@ -2,7 +2,11 @@ import { join } from 'path';
 import telescope from '@osmonauts/telescope';
 import { sync as rimraf } from 'rimraf';
 
-const protoDirs = [join(__dirname, '/../proto')];
+const protoDirs = [
+  join(__dirname, '/../proto'),
+  join(__dirname, '/../cosmos-sdk/proto'),
+  join(__dirname, '/../osmosis/proto')
+];
 const outPath = join(__dirname, '/../src/codegen');
 rimraf(outPath);
 
@@ -12,10 +16,7 @@ telescope({
   options: {
     removeUnusedImports: true,
     tsDisable: {
-      patterns: [
-        '**/*amino.ts',
-        '**/*registry.ts'
-      ]
+      patterns: ['**/*amino.ts', '**/*registry.ts']
     },
     prototypes: {
       excluded: {

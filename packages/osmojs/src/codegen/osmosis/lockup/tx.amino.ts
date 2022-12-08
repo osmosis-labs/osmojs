@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "../../helpers";
-import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup } from "./tx";
+import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup, MsgForceUnlock } from "./tx";
 export interface AminoMsgLockTokens extends AminoMsg {
   type: "osmosis/lockup/lock-tokens";
   value: {
@@ -42,6 +42,17 @@ export interface AminoMsgExtendLockup extends AminoMsg {
       seconds: string;
       nanos: number;
     };
+  };
+}
+export interface AminoMsgForceUnlock extends AminoMsg {
+  type: "osmosis/lockup/force-unlock";
+  value: {
+    owner: string;
+    ID: string;
+    coins: {
+      denom: string;
+      amount: string;
+    }[];
   };
 }
 export const AminoConverter = {
@@ -152,6 +163,37 @@ export const AminoConverter = {
           seconds: Long.fromNumber(Math.floor(parseInt(duration) / 1_000_000_000)),
           nanos: parseInt(duration) % 1_000_000_000
         }
+      };
+    }
+  },
+  "/osmosis.lockup.MsgForceUnlock": {
+    aminoType: "osmosis/lockup/force-unlock",
+    toAmino: ({
+      owner,
+      ID,
+      coins
+    }: MsgForceUnlock): AminoMsgForceUnlock["value"] => {
+      return {
+        owner,
+        ID: ID.toString(),
+        coins: coins.map(el0 => ({
+          denom: el0.denom,
+          amount: el0.amount
+        }))
+      };
+    },
+    fromAmino: ({
+      owner,
+      ID,
+      coins
+    }: AminoMsgForceUnlock["value"]): MsgForceUnlock => {
+      return {
+        owner,
+        ID: Long.fromString(ID),
+        coins: coins.map(el0 => ({
+          denom: el0.denom,
+          amount: el0.amount
+        }))
       };
     }
   }

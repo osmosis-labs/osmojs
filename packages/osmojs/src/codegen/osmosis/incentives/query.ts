@@ -14,16 +14,6 @@ export interface ModuleToDistributeCoinsResponseSDKType {
   /** Coins that have yet to be distributed */
   coins: CoinSDKType[];
 }
-export interface ModuleDistributedCoinsRequest {}
-export interface ModuleDistributedCoinsRequestSDKType {}
-export interface ModuleDistributedCoinsResponse {
-  /** Coins that have been distributed already */
-  coins: Coin[];
-}
-export interface ModuleDistributedCoinsResponseSDKType {
-  /** Coins that have been distributed already */
-  coins: CoinSDKType[];
-}
 export interface GaugeByIDRequest {
   /** Gague ID being queried */
   id: Long;
@@ -286,85 +276,6 @@ export const ModuleToDistributeCoinsResponse = {
 
   fromPartial(object: Partial<ModuleToDistributeCoinsResponse>): ModuleToDistributeCoinsResponse {
     const message = createBaseModuleToDistributeCoinsResponse();
-    message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
-    return message;
-  }
-
-};
-
-function createBaseModuleDistributedCoinsRequest(): ModuleDistributedCoinsRequest {
-  return {};
-}
-
-export const ModuleDistributedCoinsRequest = {
-  encode(_: ModuleDistributedCoinsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseModuleDistributedCoinsRequest();
-
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-
-      switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-
-    return message;
-  },
-
-  fromPartial(_: Partial<ModuleDistributedCoinsRequest>): ModuleDistributedCoinsRequest {
-    const message = createBaseModuleDistributedCoinsRequest();
-    return message;
-  }
-
-};
-
-function createBaseModuleDistributedCoinsResponse(): ModuleDistributedCoinsResponse {
-  return {
-    coins: []
-  };
-}
-
-export const ModuleDistributedCoinsResponse = {
-  encode(message: ModuleDistributedCoinsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.coins) {
-      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
-
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDistributedCoinsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseModuleDistributedCoinsResponse();
-
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-
-      switch (tag >>> 3) {
-        case 1:
-          message.coins.push(Coin.decode(reader, reader.uint32()));
-          break;
-
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-
-    return message;
-  },
-
-  fromPartial(object: Partial<ModuleDistributedCoinsResponse>): ModuleDistributedCoinsResponse {
-    const message = createBaseModuleDistributedCoinsResponse();
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }

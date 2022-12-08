@@ -10,6 +10,7 @@ export interface MsgCreateStableswapPool {
   initialPoolLiquidity: Coin[];
   scalingFactors: Long[];
   futurePoolGovernor: string;
+  scalingFactorController: string;
 }
 /** ===================== MsgCreatePool */
 
@@ -19,6 +20,7 @@ export interface MsgCreateStableswapPoolSDKType {
   initial_pool_liquidity: CoinSDKType[];
   scaling_factors: Long[];
   future_pool_governor: string;
+  scaling_factor_controller: string;
 }
 /** Returns a poolID with custom poolName. */
 
@@ -59,7 +61,8 @@ function createBaseMsgCreateStableswapPool(): MsgCreateStableswapPool {
     poolParams: undefined,
     initialPoolLiquidity: [],
     scalingFactors: [],
-    futurePoolGovernor: ""
+    futurePoolGovernor: "",
+    scalingFactorController: ""
   };
 }
 
@@ -87,6 +90,10 @@ export const MsgCreateStableswapPool = {
 
     if (message.futurePoolGovernor !== "") {
       writer.uint32(42).string(message.futurePoolGovernor);
+    }
+
+    if (message.scalingFactorController !== "") {
+      writer.uint32(50).string(message.scalingFactorController);
     }
 
     return writer;
@@ -130,6 +137,10 @@ export const MsgCreateStableswapPool = {
           message.futurePoolGovernor = reader.string();
           break;
 
+        case 6:
+          message.scalingFactorController = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -146,6 +157,7 @@ export const MsgCreateStableswapPool = {
     message.initialPoolLiquidity = object.initialPoolLiquidity?.map(e => Coin.fromPartial(e)) || [];
     message.scalingFactors = object.scalingFactors?.map(e => Long.fromValue(e)) || [];
     message.futurePoolGovernor = object.futurePoolGovernor ?? "";
+    message.scalingFactorController = object.scalingFactorController ?? "";
     return message;
   }
 

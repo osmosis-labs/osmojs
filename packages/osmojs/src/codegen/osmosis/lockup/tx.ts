@@ -87,6 +87,36 @@ export interface MsgExtendLockupResponse {
 export interface MsgExtendLockupResponseSDKType {
   success: boolean;
 }
+/**
+ * MsgForceUnlock unlocks locks immediately for
+ * addresses registered via governance.
+ */
+
+export interface MsgForceUnlock {
+  owner: string;
+  ID: Long;
+  /** Amount of unlocking coins. Unlock all if not set. */
+
+  coins: Coin[];
+}
+/**
+ * MsgForceUnlock unlocks locks immediately for
+ * addresses registered via governance.
+ */
+
+export interface MsgForceUnlockSDKType {
+  owner: string;
+  ID: Long;
+  /** Amount of unlocking coins. Unlock all if not set. */
+
+  coins: CoinSDKType[];
+}
+export interface MsgForceUnlockResponse {
+  success: boolean;
+}
+export interface MsgForceUnlockResponseSDKType {
+  success: boolean;
+}
 
 function createBaseMsgLockTokens(): MsgLockTokens {
   return {
@@ -502,6 +532,116 @@ export const MsgExtendLockupResponse = {
 
   fromPartial(object: Partial<MsgExtendLockupResponse>): MsgExtendLockupResponse {
     const message = createBaseMsgExtendLockupResponse();
+    message.success = object.success ?? false;
+    return message;
+  }
+
+};
+
+function createBaseMsgForceUnlock(): MsgForceUnlock {
+  return {
+    owner: "",
+    ID: Long.UZERO,
+    coins: []
+  };
+}
+
+export const MsgForceUnlock = {
+  encode(message: MsgForceUnlock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.owner !== "") {
+      writer.uint32(10).string(message.owner);
+    }
+
+    if (!message.ID.isZero()) {
+      writer.uint32(16).uint64(message.ID);
+    }
+
+    for (const v of message.coins) {
+      Coin.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlock {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgForceUnlock();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.owner = reader.string();
+          break;
+
+        case 2:
+          message.ID = (reader.uint64() as Long);
+          break;
+
+        case 3:
+          message.coins.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<MsgForceUnlock>): MsgForceUnlock {
+    const message = createBaseMsgForceUnlock();
+    message.owner = object.owner ?? "";
+    message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
+    message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseMsgForceUnlockResponse(): MsgForceUnlockResponse {
+  return {
+    success: false
+  };
+}
+
+export const MsgForceUnlockResponse = {
+  encode(message: MsgForceUnlockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.success === true) {
+      writer.uint32(8).bool(message.success);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlockResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgForceUnlockResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.success = reader.bool();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<MsgForceUnlockResponse>): MsgForceUnlockResponse {
+    const message = createBaseMsgForceUnlockResponse();
     message.success = object.success ?? false;
     return message;
   }
