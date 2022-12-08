@@ -16,10 +16,7 @@ telescope({
   options: {
     removeUnusedImports: true,
     tsDisable: {
-      patterns: [
-        '**/*amino.ts',
-        '**/*registry.ts'
-      ]
+      patterns: ['**/*amino.ts', '**/*registry.ts']
     },
     prototypes: {
       excluded: {
