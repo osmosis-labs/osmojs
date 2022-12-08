@@ -1,11 +1,17 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryPoolsRequest, QueryPoolsResponse, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolTypeRequest, QueryPoolTypeResponse, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalSharesRequest, QueryTotalSharesResponse, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse } from "./query";
+import { QueryPoolsRequest, QueryPoolsResponse, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryPoolsWithFilterRequest, QueryPoolsWithFilterResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolTypeRequest, QueryPoolTypeResponse, QueryCalcJoinPoolNoSwapSharesRequest, QueryCalcJoinPoolNoSwapSharesResponse, QueryCalcJoinPoolSharesRequest, QueryCalcJoinPoolSharesResponse, QueryCalcExitPoolCoinsFromSharesRequest, QueryCalcExitPoolCoinsFromSharesResponse, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalSharesRequest, QueryTotalSharesResponse, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse } from "./query";
 export interface Query {
   pools(request?: QueryPoolsRequest): Promise<QueryPoolsResponse>;
   numPools(request?: QueryNumPoolsRequest): Promise<QueryNumPoolsResponse>;
   totalLiquidity(request?: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponse>;
+  /**
+   * PoolsWithFilter allows you to query specific pools with requested
+   * parameters
+   */
+
+  poolsWithFilter(request: QueryPoolsWithFilterRequest): Promise<QueryPoolsWithFilterResponse>;
   /** Per Pool gRPC Endpoints */
 
   pool(request: QueryPoolRequest): Promise<QueryPoolResponse>;
@@ -16,6 +22,14 @@ export interface Query {
    */
 
   poolType(request: QueryPoolTypeRequest): Promise<QueryPoolTypeResponse>;
+  /**
+   * Simulates joining pool without a swap. Returns the amount of shares you'd
+   * get and tokens needed to provide
+   */
+
+  calcJoinPoolNoSwapShares(request: QueryCalcJoinPoolNoSwapSharesRequest): Promise<QueryCalcJoinPoolNoSwapSharesResponse>;
+  calcJoinPoolShares(request: QueryCalcJoinPoolSharesRequest): Promise<QueryCalcJoinPoolSharesResponse>;
+  calcExitPoolCoinsFromShares(request: QueryCalcExitPoolCoinsFromSharesRequest): Promise<QueryCalcExitPoolCoinsFromSharesResponse>;
   poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponse>;
   totalPoolLiquidity(request: QueryTotalPoolLiquidityRequest): Promise<QueryTotalPoolLiquidityResponse>;
   totalShares(request: QueryTotalSharesRequest): Promise<QueryTotalSharesResponse>;
@@ -38,8 +52,12 @@ export class QueryClientImpl implements Query {
     this.pools = this.pools.bind(this);
     this.numPools = this.numPools.bind(this);
     this.totalLiquidity = this.totalLiquidity.bind(this);
+    this.poolsWithFilter = this.poolsWithFilter.bind(this);
     this.pool = this.pool.bind(this);
     this.poolType = this.poolType.bind(this);
+    this.calcJoinPoolNoSwapShares = this.calcJoinPoolNoSwapShares.bind(this);
+    this.calcJoinPoolShares = this.calcJoinPoolShares.bind(this);
+    this.calcExitPoolCoinsFromShares = this.calcExitPoolCoinsFromShares.bind(this);
     this.poolParams = this.poolParams.bind(this);
     this.totalPoolLiquidity = this.totalPoolLiquidity.bind(this);
     this.totalShares = this.totalShares.bind(this);
@@ -68,6 +86,12 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryTotalLiquidityResponse.decode(new _m0.Reader(data)));
   }
 
+  poolsWithFilter(request: QueryPoolsWithFilterRequest): Promise<QueryPoolsWithFilterResponse> {
+    const data = QueryPoolsWithFilterRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "PoolsWithFilter", data);
+    return promise.then(data => QueryPoolsWithFilterResponse.decode(new _m0.Reader(data)));
+  }
+
   pool(request: QueryPoolRequest): Promise<QueryPoolResponse> {
     const data = QueryPoolRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "Pool", data);
@@ -78,6 +102,24 @@ export class QueryClientImpl implements Query {
     const data = QueryPoolTypeRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "PoolType", data);
     return promise.then(data => QueryPoolTypeResponse.decode(new _m0.Reader(data)));
+  }
+
+  calcJoinPoolNoSwapShares(request: QueryCalcJoinPoolNoSwapSharesRequest): Promise<QueryCalcJoinPoolNoSwapSharesResponse> {
+    const data = QueryCalcJoinPoolNoSwapSharesRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "CalcJoinPoolNoSwapShares", data);
+    return promise.then(data => QueryCalcJoinPoolNoSwapSharesResponse.decode(new _m0.Reader(data)));
+  }
+
+  calcJoinPoolShares(request: QueryCalcJoinPoolSharesRequest): Promise<QueryCalcJoinPoolSharesResponse> {
+    const data = QueryCalcJoinPoolSharesRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "CalcJoinPoolShares", data);
+    return promise.then(data => QueryCalcJoinPoolSharesResponse.decode(new _m0.Reader(data)));
+  }
+
+  calcExitPoolCoinsFromShares(request: QueryCalcExitPoolCoinsFromSharesRequest): Promise<QueryCalcExitPoolCoinsFromSharesResponse> {
+    const data = QueryCalcExitPoolCoinsFromSharesRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "CalcExitPoolCoinsFromShares", data);
+    return promise.then(data => QueryCalcExitPoolCoinsFromSharesResponse.decode(new _m0.Reader(data)));
   }
 
   poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponse> {
@@ -133,12 +175,28 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.totalLiquidity(request);
     },
 
+    poolsWithFilter(request: QueryPoolsWithFilterRequest): Promise<QueryPoolsWithFilterResponse> {
+      return queryService.poolsWithFilter(request);
+    },
+
     pool(request: QueryPoolRequest): Promise<QueryPoolResponse> {
       return queryService.pool(request);
     },
 
     poolType(request: QueryPoolTypeRequest): Promise<QueryPoolTypeResponse> {
       return queryService.poolType(request);
+    },
+
+    calcJoinPoolNoSwapShares(request: QueryCalcJoinPoolNoSwapSharesRequest): Promise<QueryCalcJoinPoolNoSwapSharesResponse> {
+      return queryService.calcJoinPoolNoSwapShares(request);
+    },
+
+    calcJoinPoolShares(request: QueryCalcJoinPoolSharesRequest): Promise<QueryCalcJoinPoolSharesResponse> {
+      return queryService.calcJoinPoolShares(request);
+    },
+
+    calcExitPoolCoinsFromShares(request: QueryCalcExitPoolCoinsFromSharesRequest): Promise<QueryCalcExitPoolCoinsFromSharesResponse> {
+      return queryService.calcExitPoolCoinsFromShares(request);
     },
 
     poolParams(request: QueryPoolParamsRequest): Promise<QueryPoolParamsResponse> {

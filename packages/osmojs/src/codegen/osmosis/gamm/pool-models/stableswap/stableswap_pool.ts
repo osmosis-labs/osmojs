@@ -49,10 +49,10 @@ export interface Pool {
   poolLiquidity: Coin[];
   /** for calculation amognst assets with different precisions */
 
-  scalingFactor: Long[];
-  /** scaling_factor_governor is the address can adjust pool scaling factors */
+  scalingFactors: Long[];
+  /** scaling_factor_controller is the address can adjust pool scaling factors */
 
-  scalingFactorGovernor: string;
+  scalingFactorController: string;
 }
 /** Pool is the stableswap Pool struct */
 
@@ -80,10 +80,10 @@ export interface PoolSDKType {
   pool_liquidity: CoinSDKType[];
   /** for calculation amognst assets with different precisions */
 
-  scaling_factor: Long[];
-  /** scaling_factor_governor is the address can adjust pool scaling factors */
+  scaling_factors: Long[];
+  /** scaling_factor_controller is the address can adjust pool scaling factors */
 
-  scaling_factor_governor: string;
+  scaling_factor_controller: string;
 }
 
 function createBasePoolParams(): PoolParams {
@@ -149,8 +149,8 @@ function createBasePool(): Pool {
     futurePoolGovernor: "",
     totalShares: undefined,
     poolLiquidity: [],
-    scalingFactor: [],
-    scalingFactorGovernor: ""
+    scalingFactors: [],
+    scalingFactorController: ""
   };
 }
 
@@ -182,14 +182,14 @@ export const Pool = {
 
     writer.uint32(58).fork();
 
-    for (const v of message.scalingFactor) {
+    for (const v of message.scalingFactors) {
       writer.uint64(v);
     }
 
     writer.ldelim();
 
-    if (message.scalingFactorGovernor !== "") {
-      writer.uint32(66).string(message.scalingFactorGovernor);
+    if (message.scalingFactorController !== "") {
+      writer.uint32(66).string(message.scalingFactorController);
     }
 
     return writer;
@@ -233,16 +233,16 @@ export const Pool = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.scalingFactor.push((reader.uint64() as Long));
+              message.scalingFactors.push((reader.uint64() as Long));
             }
           } else {
-            message.scalingFactor.push((reader.uint64() as Long));
+            message.scalingFactors.push((reader.uint64() as Long));
           }
 
           break;
 
         case 8:
-          message.scalingFactorGovernor = reader.string();
+          message.scalingFactorController = reader.string();
           break;
 
         default:
@@ -262,8 +262,8 @@ export const Pool = {
     message.futurePoolGovernor = object.futurePoolGovernor ?? "";
     message.totalShares = object.totalShares !== undefined && object.totalShares !== null ? Coin.fromPartial(object.totalShares) : undefined;
     message.poolLiquidity = object.poolLiquidity?.map(e => Coin.fromPartial(e)) || [];
-    message.scalingFactor = object.scalingFactor?.map(e => Long.fromValue(e)) || [];
-    message.scalingFactorGovernor = object.scalingFactorGovernor ?? "";
+    message.scalingFactors = object.scalingFactors?.map(e => Long.fromValue(e)) || [];
+    message.scalingFactorController = object.scalingFactorController ?? "";
     return message;
   }
 

@@ -1,18 +1,12 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ModuleDistributedCoinsRequest, ModuleDistributedCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
+import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
 /** Query defines the gRPC querier service */
 
 export interface Query {
   /** ModuleToDistributeCoins returns coins that are going to be distributed */
   moduleToDistributeCoins(request?: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponse>;
-  /**
-   * ModuleDistributedCoins returns coins that are distributed by the module so
-   * far
-   */
-
-  moduleDistributedCoins(request?: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponse>;
   /** GaugeByID returns gauges by their respective ID */
 
   gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponse>;
@@ -54,7 +48,6 @@ export class QueryClientImpl implements Query {
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.moduleToDistributeCoins = this.moduleToDistributeCoins.bind(this);
-    this.moduleDistributedCoins = this.moduleDistributedCoins.bind(this);
     this.gaugeByID = this.gaugeByID.bind(this);
     this.gauges = this.gauges.bind(this);
     this.activeGauges = this.activeGauges.bind(this);
@@ -69,12 +62,6 @@ export class QueryClientImpl implements Query {
     const data = ModuleToDistributeCoinsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "ModuleToDistributeCoins", data);
     return promise.then(data => ModuleToDistributeCoinsResponse.decode(new _m0.Reader(data)));
-  }
-
-  moduleDistributedCoins(request: ModuleDistributedCoinsRequest = {}): Promise<ModuleDistributedCoinsResponse> {
-    const data = ModuleDistributedCoinsRequest.encode(request).finish();
-    const promise = this.rpc.request("osmosis.incentives.Query", "ModuleDistributedCoins", data);
-    return promise.then(data => ModuleDistributedCoinsResponse.decode(new _m0.Reader(data)));
   }
 
   gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponse> {
@@ -138,10 +125,6 @@ export const createRpcQueryExtension = (base: QueryClient) => {
   return {
     moduleToDistributeCoins(request?: ModuleToDistributeCoinsRequest): Promise<ModuleToDistributeCoinsResponse> {
       return queryService.moduleToDistributeCoins(request);
-    },
-
-    moduleDistributedCoins(request?: ModuleDistributedCoinsRequest): Promise<ModuleDistributedCoinsResponse> {
-      return queryService.moduleDistributedCoins(request);
     },
 
     gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponse> {

@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteSDKType } from "./tx";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
-import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
 /** =============================== Pool */
@@ -72,6 +72,44 @@ export interface QueryPoolTypeResponse {
 export interface QueryPoolTypeResponseSDKType {
   pool_type: string;
 }
+/** =============================== CalcJoinPoolShares */
+
+export interface QueryCalcJoinPoolSharesRequest {
+  poolId: Long;
+  tokensIn: Coin[];
+}
+/** =============================== CalcJoinPoolShares */
+
+export interface QueryCalcJoinPoolSharesRequestSDKType {
+  pool_id: Long;
+  tokens_in: CoinSDKType[];
+}
+export interface QueryCalcJoinPoolSharesResponse {
+  shareOutAmount: string;
+  tokensOut: Coin[];
+}
+export interface QueryCalcJoinPoolSharesResponseSDKType {
+  share_out_amount: string;
+  tokens_out: CoinSDKType[];
+}
+/** =============================== CalcExitPoolCoinsFromShares */
+
+export interface QueryCalcExitPoolCoinsFromSharesRequest {
+  poolId: Long;
+  shareInAmount: string;
+}
+/** =============================== CalcExitPoolCoinsFromShares */
+
+export interface QueryCalcExitPoolCoinsFromSharesRequestSDKType {
+  pool_id: Long;
+  share_in_amount: string;
+}
+export interface QueryCalcExitPoolCoinsFromSharesResponse {
+  tokensOut: Coin[];
+}
+export interface QueryCalcExitPoolCoinsFromSharesResponseSDKType {
+  tokens_out: CoinSDKType[];
+}
 /** =============================== PoolParams */
 
 export interface QueryPoolParamsRequest {
@@ -120,10 +158,32 @@ export interface QueryTotalSharesResponse {
 export interface QueryTotalSharesResponseSDKType {
   total_shares?: CoinSDKType;
 }
+/** =============================== CalcJoinPoolNoSwapShares */
+
+export interface QueryCalcJoinPoolNoSwapSharesRequest {
+  poolId: Long;
+  tokensIn: Coin[];
+}
+/** =============================== CalcJoinPoolNoSwapShares */
+
+export interface QueryCalcJoinPoolNoSwapSharesRequestSDKType {
+  pool_id: Long;
+  tokens_in: CoinSDKType[];
+}
+export interface QueryCalcJoinPoolNoSwapSharesResponse {
+  tokensOut: Coin[];
+  sharesOut: string;
+}
+export interface QueryCalcJoinPoolNoSwapSharesResponseSDKType {
+  tokens_out: CoinSDKType[];
+  shares_out: string;
+}
 /**
  * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
  * query.
  */
+
+/** @deprecated */
 
 export interface QuerySpotPriceRequest {
   poolId: Long;
@@ -135,15 +195,41 @@ export interface QuerySpotPriceRequest {
  * query.
  */
 
+/** @deprecated */
+
 export interface QuerySpotPriceRequestSDKType {
   pool_id: Long;
   base_asset_denom: string;
   quote_asset_denom: string;
 }
+export interface QueryPoolsWithFilterRequest {
+  minLiquidity: Coin[];
+  poolType: string;
+  pagination?: PageRequest;
+}
+export interface QueryPoolsWithFilterRequestSDKType {
+  min_liquidity: CoinSDKType[];
+  pool_type: string;
+  pagination?: PageRequestSDKType;
+}
+export interface QueryPoolsWithFilterResponse {
+  pools: Any[];
+  /** pagination defines the pagination in the response. */
+
+  pagination?: PageResponse;
+}
+export interface QueryPoolsWithFilterResponseSDKType {
+  pools: AnySDKType[];
+  /** pagination defines the pagination in the response. */
+
+  pagination?: PageResponseSDKType;
+}
 /**
  * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
  * query.
  */
+
+/** @deprecated */
 
 export interface QuerySpotPriceResponse {
   /** String of the Dec. Ex) 10.203uatom */
@@ -154,6 +240,8 @@ export interface QuerySpotPriceResponse {
  * query.
  */
 
+/** @deprecated */
+
 export interface QuerySpotPriceResponseSDKType {
   /** String of the Dec. Ex) 10.203uatom */
   spot_price: string;
@@ -161,6 +249,7 @@ export interface QuerySpotPriceResponseSDKType {
 /** =============================== EstimateSwapExactAmountIn */
 
 export interface QuerySwapExactAmountInRequest {
+  /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
   sender: string;
   poolId: Long;
   tokenIn: string;
@@ -169,6 +258,7 @@ export interface QuerySwapExactAmountInRequest {
 /** =============================== EstimateSwapExactAmountIn */
 
 export interface QuerySwapExactAmountInRequestSDKType {
+  /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
   sender: string;
   pool_id: Long;
   token_in: string;
@@ -183,6 +273,7 @@ export interface QuerySwapExactAmountInResponseSDKType {
 /** =============================== EstimateSwapExactAmountOut */
 
 export interface QuerySwapExactAmountOutRequest {
+  /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
   sender: string;
   poolId: Long;
   routes: SwapAmountOutRoute[];
@@ -191,6 +282,7 @@ export interface QuerySwapExactAmountOutRequest {
 /** =============================== EstimateSwapExactAmountOut */
 
 export interface QuerySwapExactAmountOutRequestSDKType {
+  /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
   sender: string;
   pool_id: Long;
   routes: SwapAmountOutRouteSDKType[];
@@ -570,6 +662,216 @@ export const QueryPoolTypeResponse = {
 
 };
 
+function createBaseQueryCalcJoinPoolSharesRequest(): QueryCalcJoinPoolSharesRequest {
+  return {
+    poolId: Long.UZERO,
+    tokensIn: []
+  };
+}
+
+export const QueryCalcJoinPoolSharesRequest = {
+  encode(message: QueryCalcJoinPoolSharesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
+    }
+
+    for (const v of message.tokensIn) {
+      Coin.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryCalcJoinPoolSharesRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = (reader.uint64() as Long);
+          break;
+
+        case 2:
+          message.tokensIn.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryCalcJoinPoolSharesRequest>): QueryCalcJoinPoolSharesRequest {
+    const message = createBaseQueryCalcJoinPoolSharesRequest();
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.tokensIn = object.tokensIn?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseQueryCalcJoinPoolSharesResponse(): QueryCalcJoinPoolSharesResponse {
+  return {
+    shareOutAmount: "",
+    tokensOut: []
+  };
+}
+
+export const QueryCalcJoinPoolSharesResponse = {
+  encode(message: QueryCalcJoinPoolSharesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.shareOutAmount !== "") {
+      writer.uint32(10).string(message.shareOutAmount);
+    }
+
+    for (const v of message.tokensOut) {
+      Coin.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryCalcJoinPoolSharesResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.shareOutAmount = reader.string();
+          break;
+
+        case 2:
+          message.tokensOut.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryCalcJoinPoolSharesResponse>): QueryCalcJoinPoolSharesResponse {
+    const message = createBaseQueryCalcJoinPoolSharesResponse();
+    message.shareOutAmount = object.shareOutAmount ?? "";
+    message.tokensOut = object.tokensOut?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseQueryCalcExitPoolCoinsFromSharesRequest(): QueryCalcExitPoolCoinsFromSharesRequest {
+  return {
+    poolId: Long.UZERO,
+    shareInAmount: ""
+  };
+}
+
+export const QueryCalcExitPoolCoinsFromSharesRequest = {
+  encode(message: QueryCalcExitPoolCoinsFromSharesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
+    }
+
+    if (message.shareInAmount !== "") {
+      writer.uint32(18).string(message.shareInAmount);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryCalcExitPoolCoinsFromSharesRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = (reader.uint64() as Long);
+          break;
+
+        case 2:
+          message.shareInAmount = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesRequest>): QueryCalcExitPoolCoinsFromSharesRequest {
+    const message = createBaseQueryCalcExitPoolCoinsFromSharesRequest();
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.shareInAmount = object.shareInAmount ?? "";
+    return message;
+  }
+
+};
+
+function createBaseQueryCalcExitPoolCoinsFromSharesResponse(): QueryCalcExitPoolCoinsFromSharesResponse {
+  return {
+    tokensOut: []
+  };
+}
+
+export const QueryCalcExitPoolCoinsFromSharesResponse = {
+  encode(message: QueryCalcExitPoolCoinsFromSharesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.tokensOut) {
+      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryCalcExitPoolCoinsFromSharesResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.tokensOut.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesResponse>): QueryCalcExitPoolCoinsFromSharesResponse {
+    const message = createBaseQueryCalcExitPoolCoinsFromSharesResponse();
+    message.tokensOut = object.tokensOut?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
 function createBaseQueryPoolParamsRequest(): QueryPoolParamsRequest {
   return {
     poolId: Long.UZERO
@@ -840,6 +1142,116 @@ export const QueryTotalSharesResponse = {
 
 };
 
+function createBaseQueryCalcJoinPoolNoSwapSharesRequest(): QueryCalcJoinPoolNoSwapSharesRequest {
+  return {
+    poolId: Long.UZERO,
+    tokensIn: []
+  };
+}
+
+export const QueryCalcJoinPoolNoSwapSharesRequest = {
+  encode(message: QueryCalcJoinPoolNoSwapSharesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
+    }
+
+    for (const v of message.tokensIn) {
+      Coin.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryCalcJoinPoolNoSwapSharesRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = (reader.uint64() as Long);
+          break;
+
+        case 2:
+          message.tokensIn.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesRequest>): QueryCalcJoinPoolNoSwapSharesRequest {
+    const message = createBaseQueryCalcJoinPoolNoSwapSharesRequest();
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.tokensIn = object.tokensIn?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseQueryCalcJoinPoolNoSwapSharesResponse(): QueryCalcJoinPoolNoSwapSharesResponse {
+  return {
+    tokensOut: [],
+    sharesOut: ""
+  };
+}
+
+export const QueryCalcJoinPoolNoSwapSharesResponse = {
+  encode(message: QueryCalcJoinPoolNoSwapSharesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.tokensOut) {
+      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.sharesOut !== "") {
+      writer.uint32(18).string(message.sharesOut);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryCalcJoinPoolNoSwapSharesResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.tokensOut.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        case 2:
+          message.sharesOut = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesResponse>): QueryCalcJoinPoolNoSwapSharesResponse {
+    const message = createBaseQueryCalcJoinPoolNoSwapSharesResponse();
+    message.tokensOut = object.tokensOut?.map(e => Coin.fromPartial(e)) || [];
+    message.sharesOut = object.sharesOut ?? "";
+    return message;
+  }
+
+};
+
 function createBaseQuerySpotPriceRequest(): QuerySpotPriceRequest {
   return {
     poolId: Long.UZERO,
@@ -900,6 +1312,126 @@ export const QuerySpotPriceRequest = {
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.baseAssetDenom = object.baseAssetDenom ?? "";
     message.quoteAssetDenom = object.quoteAssetDenom ?? "";
+    return message;
+  }
+
+};
+
+function createBaseQueryPoolsWithFilterRequest(): QueryPoolsWithFilterRequest {
+  return {
+    minLiquidity: [],
+    poolType: "",
+    pagination: undefined
+  };
+}
+
+export const QueryPoolsWithFilterRequest = {
+  encode(message: QueryPoolsWithFilterRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.minLiquidity) {
+      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.poolType !== "") {
+      writer.uint32(18).string(message.poolType);
+    }
+
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(26).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryPoolsWithFilterRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.minLiquidity.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        case 2:
+          message.poolType = reader.string();
+          break;
+
+        case 3:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryPoolsWithFilterRequest>): QueryPoolsWithFilterRequest {
+    const message = createBaseQueryPoolsWithFilterRequest();
+    message.minLiquidity = object.minLiquidity?.map(e => Coin.fromPartial(e)) || [];
+    message.poolType = object.poolType ?? "";
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseQueryPoolsWithFilterResponse(): QueryPoolsWithFilterResponse {
+  return {
+    pools: [],
+    pagination: undefined
+  };
+}
+
+export const QueryPoolsWithFilterResponse = {
+  encode(message: QueryPoolsWithFilterResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.pools) {
+      Any.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryPoolsWithFilterResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.pools.push(Any.decode(reader, reader.uint32()));
+          break;
+
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryPoolsWithFilterResponse>): QueryPoolsWithFilterResponse {
+    const message = createBaseQueryPoolsWithFilterResponse();
+    message.pools = object.pools?.map(e => Any.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   }
 
