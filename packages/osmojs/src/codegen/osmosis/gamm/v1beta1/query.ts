@@ -1,6 +1,6 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteSDKType } from "./tx";
+import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteSDKType } from "../../poolmanager/v1beta1/swap_route";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
@@ -46,13 +46,21 @@ export interface QueryPoolsResponseSDKType {
 }
 /** =============================== NumPools */
 
+/** @deprecated */
+
 export interface QueryNumPoolsRequest {}
 /** =============================== NumPools */
 
+/** @deprecated */
+
 export interface QueryNumPoolsRequestSDKType {}
+/** @deprecated */
+
 export interface QueryNumPoolsResponse {
   numPools: Long;
 }
+/** @deprecated */
+
 export interface QueryNumPoolsResponseSDKType {
   num_pools: Long;
 }
@@ -203,12 +211,20 @@ export interface QuerySpotPriceRequestSDKType {
   quote_asset_denom: string;
 }
 export interface QueryPoolsWithFilterRequest {
-  minLiquidity: Coin[];
+  /**
+   * String of the coins in single string seperated by comma. Ex)
+   * 10uatom,100uosmo
+   */
+  minLiquidity: string;
   poolType: string;
   pagination?: PageRequest;
 }
 export interface QueryPoolsWithFilterRequestSDKType {
-  min_liquidity: CoinSDKType[];
+  /**
+   * String of the coins in single string seperated by comma. Ex)
+   * 10uatom,100uosmo
+   */
+  min_liquidity: string;
   pool_type: string;
   pagination?: PageRequestSDKType;
 }
@@ -248,8 +264,9 @@ export interface QuerySpotPriceResponseSDKType {
 }
 /** =============================== EstimateSwapExactAmountIn */
 
+/** @deprecated */
+
 export interface QuerySwapExactAmountInRequest {
-  /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
   sender: string;
   poolId: Long;
   tokenIn: string;
@@ -257,23 +274,29 @@ export interface QuerySwapExactAmountInRequest {
 }
 /** =============================== EstimateSwapExactAmountIn */
 
+/** @deprecated */
+
 export interface QuerySwapExactAmountInRequestSDKType {
-  /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
   sender: string;
   pool_id: Long;
   token_in: string;
   routes: SwapAmountInRouteSDKType[];
 }
+/** @deprecated */
+
 export interface QuerySwapExactAmountInResponse {
   tokenOutAmount: string;
 }
+/** @deprecated */
+
 export interface QuerySwapExactAmountInResponseSDKType {
   token_out_amount: string;
 }
 /** =============================== EstimateSwapExactAmountOut */
 
+/** @deprecated */
+
 export interface QuerySwapExactAmountOutRequest {
-  /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
   sender: string;
   poolId: Long;
   routes: SwapAmountOutRoute[];
@@ -281,16 +304,21 @@ export interface QuerySwapExactAmountOutRequest {
 }
 /** =============================== EstimateSwapExactAmountOut */
 
+/** @deprecated */
+
 export interface QuerySwapExactAmountOutRequestSDKType {
-  /** TODO: CHANGE THIS TO RESERVED IN A PATCH RELEASE */
   sender: string;
   pool_id: Long;
   routes: SwapAmountOutRouteSDKType[];
   token_out: string;
 }
+/** @deprecated */
+
 export interface QuerySwapExactAmountOutResponse {
   tokenInAmount: string;
 }
+/** @deprecated */
+
 export interface QuerySwapExactAmountOutResponseSDKType {
   token_in_amount: string;
 }
@@ -1319,7 +1347,7 @@ export const QuerySpotPriceRequest = {
 
 function createBaseQueryPoolsWithFilterRequest(): QueryPoolsWithFilterRequest {
   return {
-    minLiquidity: [],
+    minLiquidity: "",
     poolType: "",
     pagination: undefined
   };
@@ -1327,8 +1355,8 @@ function createBaseQueryPoolsWithFilterRequest(): QueryPoolsWithFilterRequest {
 
 export const QueryPoolsWithFilterRequest = {
   encode(message: QueryPoolsWithFilterRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.minLiquidity) {
-      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
+    if (message.minLiquidity !== "") {
+      writer.uint32(10).string(message.minLiquidity);
     }
 
     if (message.poolType !== "") {
@@ -1352,7 +1380,7 @@ export const QueryPoolsWithFilterRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.minLiquidity.push(Coin.decode(reader, reader.uint32()));
+          message.minLiquidity = reader.string();
           break;
 
         case 2:
@@ -1374,7 +1402,7 @@ export const QueryPoolsWithFilterRequest = {
 
   fromPartial(object: Partial<QueryPoolsWithFilterRequest>): QueryPoolsWithFilterRequest {
     const message = createBaseQueryPoolsWithFilterRequest();
-    message.minLiquidity = object.minLiquidity?.map(e => Coin.fromPartial(e)) || [];
+    message.minLiquidity = object.minLiquidity ?? "";
     message.poolType = object.poolType ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;

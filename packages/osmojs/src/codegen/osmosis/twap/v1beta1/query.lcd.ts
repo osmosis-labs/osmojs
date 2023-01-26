@@ -1,5 +1,5 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { ParamsRequest, ParamsResponseSDKType, ArithmeticTwapRequest, ArithmeticTwapResponseSDKType, ArithmeticTwapToNowRequest, ArithmeticTwapToNowResponseSDKType } from "./query";
+import { ParamsRequest, ParamsResponseSDKType, ArithmeticTwapRequest, ArithmeticTwapResponseSDKType, ArithmeticTwapToNowRequest, ArithmeticTwapToNowResponseSDKType, GeometricTwapRequest, GeometricTwapResponseSDKType, GeometricTwapToNowRequest, GeometricTwapToNowResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -12,6 +12,8 @@ export class LCDQueryClient {
     this.params = this.params.bind(this);
     this.arithmeticTwap = this.arithmeticTwap.bind(this);
     this.arithmeticTwapToNow = this.arithmeticTwapToNow.bind(this);
+    this.geometricTwap = this.geometricTwap.bind(this);
+    this.geometricTwapToNow = this.geometricTwapToNow.bind(this);
   }
   /* Params */
 
@@ -77,6 +79,64 @@ export class LCDQueryClient {
 
     const endpoint = `osmosis/twap/v1beta1/ArithmeticTwapToNow`;
     return await this.req.get<ArithmeticTwapToNowResponseSDKType>(endpoint, options);
+  }
+  /* GeometricTwap */
+
+
+  async geometricTwap(params: GeometricTwapRequest): Promise<GeometricTwapResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+
+    if (typeof params?.poolId !== "undefined") {
+      options.params.pool_id = params.poolId;
+    }
+
+    if (typeof params?.baseAsset !== "undefined") {
+      options.params.base_asset = params.baseAsset;
+    }
+
+    if (typeof params?.quoteAsset !== "undefined") {
+      options.params.quote_asset = params.quoteAsset;
+    }
+
+    if (typeof params?.startTime !== "undefined") {
+      options.params.start_time = params.startTime;
+    }
+
+    if (typeof params?.endTime !== "undefined") {
+      options.params.end_time = params.endTime;
+    }
+
+    const endpoint = `osmosis/twap/v1beta1/GeometricTwap`;
+    return await this.req.get<GeometricTwapResponseSDKType>(endpoint, options);
+  }
+  /* GeometricTwapToNow */
+
+
+  async geometricTwapToNow(params: GeometricTwapToNowRequest): Promise<GeometricTwapToNowResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+
+    if (typeof params?.poolId !== "undefined") {
+      options.params.pool_id = params.poolId;
+    }
+
+    if (typeof params?.baseAsset !== "undefined") {
+      options.params.base_asset = params.baseAsset;
+    }
+
+    if (typeof params?.quoteAsset !== "undefined") {
+      options.params.quote_asset = params.quoteAsset;
+    }
+
+    if (typeof params?.startTime !== "undefined") {
+      options.params.start_time = params.startTime;
+    }
+
+    const endpoint = `osmosis/twap/v1beta1/GeometricTwapToNow`;
+    return await this.req.get<GeometricTwapToNowResponseSDKType>(endpoint, options);
   }
 
 }

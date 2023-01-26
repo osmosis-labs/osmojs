@@ -1,4 +1,5 @@
 import { PoolParams, PoolParamsSDKType, PoolAsset, PoolAssetSDKType } from "../balancerPool";
+import { Coin, CoinSDKType } from "../../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../../helpers";
 /** ===================== MsgCreatePool */
@@ -26,6 +27,34 @@ export interface MsgCreateBalancerPoolResponse {
 
 export interface MsgCreateBalancerPoolResponseSDKType {
   pool_id: Long;
+}
+/** ===================== MsgMigrateSharesToFullRangeConcentratedPosition */
+
+export interface MsgMigrateSharesToFullRangeConcentratedPosition {
+  sender: string;
+  sharesToMigrate?: Coin;
+  /** temporary field, eventually gamm pool should be linked to cl pool */
+
+  poolIdEntering: Long;
+}
+/** ===================== MsgMigrateSharesToFullRangeConcentratedPosition */
+
+export interface MsgMigrateSharesToFullRangeConcentratedPositionSDKType {
+  sender: string;
+  shares_to_migrate?: CoinSDKType;
+  /** temporary field, eventually gamm pool should be linked to cl pool */
+
+  pool_id_entering: Long;
+}
+export interface MsgMigrateSharesToFullRangeConcentratedPositionResponse {
+  amount0: string;
+  amount1: string;
+  liquidityCreated: string;
+}
+export interface MsgMigrateSharesToFullRangeConcentratedPositionResponseSDKType {
+  amount0: string;
+  amount1: string;
+  liquidity_created: string;
 }
 
 function createBaseMsgCreateBalancerPool(): MsgCreateBalancerPool {
@@ -143,6 +172,136 @@ export const MsgCreateBalancerPoolResponse = {
   fromPartial(object: Partial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse {
     const message = createBaseMsgCreateBalancerPoolResponse();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    return message;
+  }
+
+};
+
+function createBaseMsgMigrateSharesToFullRangeConcentratedPosition(): MsgMigrateSharesToFullRangeConcentratedPosition {
+  return {
+    sender: "",
+    sharesToMigrate: undefined,
+    poolIdEntering: Long.UZERO
+  };
+}
+
+export const MsgMigrateSharesToFullRangeConcentratedPosition = {
+  encode(message: MsgMigrateSharesToFullRangeConcentratedPosition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+
+    if (message.sharesToMigrate !== undefined) {
+      Coin.encode(message.sharesToMigrate, writer.uint32(18).fork()).ldelim();
+    }
+
+    if (!message.poolIdEntering.isZero()) {
+      writer.uint32(24).uint64(message.poolIdEntering);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateSharesToFullRangeConcentratedPosition {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgMigrateSharesToFullRangeConcentratedPosition();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.sender = reader.string();
+          break;
+
+        case 2:
+          message.sharesToMigrate = Coin.decode(reader, reader.uint32());
+          break;
+
+        case 3:
+          message.poolIdEntering = (reader.uint64() as Long);
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<MsgMigrateSharesToFullRangeConcentratedPosition>): MsgMigrateSharesToFullRangeConcentratedPosition {
+    const message = createBaseMsgMigrateSharesToFullRangeConcentratedPosition();
+    message.sender = object.sender ?? "";
+    message.sharesToMigrate = object.sharesToMigrate !== undefined && object.sharesToMigrate !== null ? Coin.fromPartial(object.sharesToMigrate) : undefined;
+    message.poolIdEntering = object.poolIdEntering !== undefined && object.poolIdEntering !== null ? Long.fromValue(object.poolIdEntering) : Long.UZERO;
+    return message;
+  }
+
+};
+
+function createBaseMsgMigrateSharesToFullRangeConcentratedPositionResponse(): MsgMigrateSharesToFullRangeConcentratedPositionResponse {
+  return {
+    amount0: "",
+    amount1: "",
+    liquidityCreated: ""
+  };
+}
+
+export const MsgMigrateSharesToFullRangeConcentratedPositionResponse = {
+  encode(message: MsgMigrateSharesToFullRangeConcentratedPositionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.amount0 !== "") {
+      writer.uint32(10).string(message.amount0);
+    }
+
+    if (message.amount1 !== "") {
+      writer.uint32(18).string(message.amount1);
+    }
+
+    if (message.liquidityCreated !== "") {
+      writer.uint32(26).string(message.liquidityCreated);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateSharesToFullRangeConcentratedPositionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgMigrateSharesToFullRangeConcentratedPositionResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.amount0 = reader.string();
+          break;
+
+        case 2:
+          message.amount1 = reader.string();
+          break;
+
+        case 3:
+          message.liquidityCreated = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<MsgMigrateSharesToFullRangeConcentratedPositionResponse>): MsgMigrateSharesToFullRangeConcentratedPositionResponse {
+    const message = createBaseMsgMigrateSharesToFullRangeConcentratedPositionResponse();
+    message.amount0 = object.amount0 ?? "";
+    message.amount1 = object.amount1 ?? "";
+    message.liquidityCreated = object.liquidityCreated ?? "";
     return message;
   }
 

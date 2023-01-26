@@ -14,6 +14,7 @@ telescope({
   protoDirs,
   outPath,
   options: {
+    experimentalGlobalProtoNamespace: true,
     removeUnusedImports: true,
     tsDisable: {
       patterns: ['**/*amino.ts', '**/*registry.ts']

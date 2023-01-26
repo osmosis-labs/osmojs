@@ -49,6 +49,16 @@ export const createLCDClient = async ({
       }
     },
     osmosis: {
+      concentratedliquidity: {
+        v1beta1: new (await import("./concentrated-liquidity/pool-model/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      downtimedetector: {
+        v1beta1: new (await import("./downtime-detector/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       epochs: {
         v1beta1: new (await import("./epochs/query.lcd")).LCDQueryClient({
           requestClient
@@ -83,6 +93,16 @@ export const createLCDClient = async ({
           requestClient
         })
       },
+      poolmanager: {
+        v1beta1: new (await import("./poolmanager/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      protorev: {
+        v1beta1: new (await import("./protorev/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       superfluid: new (await import("./superfluid/query.lcd")).LCDQueryClient({
         requestClient
       }),
@@ -98,6 +118,11 @@ export const createLCDClient = async ({
       },
       txfees: {
         v1beta1: new (await import("./txfees/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      valsetpref: {
+        v1beta1: new (await import("./valset-pref/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       }
