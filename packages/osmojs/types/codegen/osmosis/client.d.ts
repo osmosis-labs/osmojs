@@ -2,6 +2,94 @@ import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const osmosisAminoConverters: {
+    "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreference": {
+        aminoType: string;
+        toAmino: ({ delegator, preferences }: import("./valset-pref/v1beta1/tx").MsgSetValidatorSetPreference) => {
+            delegator: string;
+            preferences: {
+                val_oper_address: string;
+                weight: string;
+            }[];
+        };
+        fromAmino: ({ delegator, preferences }: {
+            delegator: string;
+            preferences: {
+                val_oper_address: string;
+                weight: string;
+            }[];
+        }) => import("./valset-pref/v1beta1/tx").MsgSetValidatorSetPreference;
+    };
+    "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSet": {
+        aminoType: string;
+        toAmino: ({ delegator, coin }: import("./valset-pref/v1beta1/tx").MsgDelegateToValidatorSet) => {
+            delegator: string;
+            coin: {
+                denom: string;
+                amount: string;
+            };
+        };
+        fromAmino: ({ delegator, coin }: {
+            delegator: string;
+            coin: {
+                denom: string;
+                amount: string;
+            };
+        }) => import("./valset-pref/v1beta1/tx").MsgDelegateToValidatorSet;
+    };
+    "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSet": {
+        aminoType: string;
+        toAmino: ({ delegator, coin }: import("./valset-pref/v1beta1/tx").MsgUndelegateFromValidatorSet) => {
+            delegator: string;
+            coin: {
+                denom: string;
+                amount: string;
+            };
+        };
+        fromAmino: ({ delegator, coin }: {
+            delegator: string;
+            coin: {
+                denom: string;
+                amount: string;
+            };
+        }) => import("./valset-pref/v1beta1/tx").MsgUndelegateFromValidatorSet;
+    };
+    "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSet": {
+        aminoType: string;
+        toAmino: ({ delegator, preferences }: import("./valset-pref/v1beta1/tx").MsgRedelegateValidatorSet) => {
+            delegator: string;
+            preferences: {
+                val_oper_address: string;
+                weight: string;
+            }[];
+        };
+        fromAmino: ({ delegator, preferences }: {
+            delegator: string;
+            preferences: {
+                val_oper_address: string;
+                weight: string;
+            }[];
+        }) => import("./valset-pref/v1beta1/tx").MsgRedelegateValidatorSet;
+    };
+    "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards": {
+        aminoType: string;
+        toAmino: ({ delegator }: import("./valset-pref/v1beta1/tx").MsgWithdrawDelegationRewards) => {
+            delegator: string;
+        };
+        fromAmino: ({ delegator }: {
+            delegator: string;
+        }) => import("./valset-pref/v1beta1/tx").MsgWithdrawDelegationRewards;
+    };
+    "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens": {
+        aminoType: string;
+        toAmino: ({ delegator, lockID }: import("./valset-pref/v1beta1/tx").MsgDelegateBondedTokens) => {
+            delegator: string;
+            lockID: string;
+        };
+        fromAmino: ({ delegator, lockID }: {
+            delegator: string;
+            lockID: string;
+        }) => import("./valset-pref/v1beta1/tx").MsgDelegateBondedTokens;
+    };
     "/osmosis.tokenfactory.v1beta1.MsgCreateDenom": {
         aminoType: string;
         toAmino: ({ sender, subdenom }: import("./tokenfactory/v1beta1/tx").MsgCreateDenom) => {
@@ -161,6 +249,102 @@ export declare const osmosisAminoConverters: {
             sender: string;
             pool_id: string;
         }) => import("./superfluid/tx").MsgUnPoolWhitelistedPool;
+    };
+    "/osmosis.protorev.v1beta1.MsgSetHotRoutes": {
+        aminoType: string;
+        toAmino: ({ admin, hotRoutes }: import("./protorev/v1beta1/tx").MsgSetHotRoutes) => {
+            admin: string;
+            hot_routes: {
+                arb_routes: {
+                    trades: {
+                        pool: string;
+                        token_in: string;
+                        token_out: string;
+                    }[];
+                }[];
+                token_in: string;
+                token_out: string;
+            }[];
+        };
+        fromAmino: ({ admin, hot_routes }: {
+            admin: string;
+            hot_routes: {
+                arb_routes: {
+                    trades: {
+                        pool: string;
+                        token_in: string;
+                        token_out: string;
+                    }[];
+                }[];
+                token_in: string;
+                token_out: string;
+            }[];
+        }) => import("./protorev/v1beta1/tx").MsgSetHotRoutes;
+    };
+    "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount": {
+        aminoType: string;
+        toAmino: ({ admin, developerAccount }: import("./protorev/v1beta1/tx").MsgSetDeveloperAccount) => {
+            admin: string;
+            developer_account: string;
+        };
+        fromAmino: ({ admin, developer_account }: {
+            admin: string;
+            developer_account: string;
+        }) => import("./protorev/v1beta1/tx").MsgSetDeveloperAccount;
+    };
+    "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn": {
+        aminoType: string;
+        toAmino: ({ sender, routes, tokenIn, tokenOutMinAmount }: import("./poolmanager/v1beta1/tx").MsgSwapExactAmountIn) => {
+            sender: string;
+            routes: {
+                pool_id: string;
+                token_out_denom: string;
+            }[];
+            token_in: {
+                denom: string;
+                amount: string;
+            };
+            token_out_min_amount: string;
+        };
+        fromAmino: ({ sender, routes, token_in, token_out_min_amount }: {
+            sender: string;
+            routes: {
+                pool_id: string;
+                token_out_denom: string;
+            }[];
+            token_in: {
+                denom: string;
+                amount: string;
+            };
+            token_out_min_amount: string;
+        }) => import("./poolmanager/v1beta1/tx").MsgSwapExactAmountIn;
+    };
+    "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut": {
+        aminoType: string;
+        toAmino: ({ sender, routes, tokenInMaxAmount, tokenOut }: import("./poolmanager/v1beta1/tx").MsgSwapExactAmountOut) => {
+            sender: string;
+            routes: {
+                pool_id: string;
+                token_in_denom: string;
+            }[];
+            token_in_max_amount: string;
+            token_out: {
+                denom: string;
+                amount: string;
+            };
+        };
+        fromAmino: ({ sender, routes, token_in_max_amount, token_out }: {
+            sender: string;
+            routes: {
+                pool_id: string;
+                token_in_denom: string;
+            }[];
+            token_in_max_amount: string;
+            token_out: {
+                denom: string;
+                amount: string;
+            };
+        }) => import("./poolmanager/v1beta1/tx").MsgSwapExactAmountOut;
     };
     "/osmosis.lockup.MsgLockTokens": {
         aminoType: string;
@@ -621,6 +805,92 @@ export declare const osmosisAminoConverters: {
             }[];
             future_pool_governor: string;
         }) => import("./gamm/pool-models/balancer/tx/tx").MsgCreateBalancerPool;
+    };
+    "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPosition": {
+        aminoType: string;
+        toAmino: ({ sender, sharesToMigrate, poolIdEntering }: import("./gamm/pool-models/balancer/tx/tx").MsgMigrateSharesToFullRangeConcentratedPosition) => {
+            sender: string;
+            shares_to_migrate: {
+                denom: string;
+                amount: string;
+            };
+            pool_id_entering: string;
+        };
+        fromAmino: ({ sender, shares_to_migrate, pool_id_entering }: {
+            sender: string;
+            shares_to_migrate: {
+                denom: string;
+                amount: string;
+            };
+            pool_id_entering: string;
+        }) => import("./gamm/pool-models/balancer/tx/tx").MsgMigrateSharesToFullRangeConcentratedPosition;
+    };
+    "/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition": {
+        aminoType: string;
+        toAmino: ({ poolId, sender, lowerTick, upperTick, tokenDesired0, tokenDesired1, tokenMinAmount0, tokenMinAmount1 }: import("./concentrated-liquidity/tx").MsgCreatePosition) => {
+            pool_id: string;
+            sender: string;
+            lower_tick: string;
+            upper_tick: string;
+            token_desired0: {
+                denom: string;
+                amount: string;
+            };
+            token_desired1: {
+                denom: string;
+                amount: string;
+            };
+            token_min_amount0: string;
+            token_min_amount1: string;
+        };
+        fromAmino: ({ pool_id, sender, lower_tick, upper_tick, token_desired0, token_desired1, token_min_amount0, token_min_amount1 }: {
+            pool_id: string;
+            sender: string;
+            lower_tick: string;
+            upper_tick: string;
+            token_desired0: {
+                denom: string;
+                amount: string;
+            };
+            token_desired1: {
+                denom: string;
+                amount: string;
+            };
+            token_min_amount0: string;
+            token_min_amount1: string;
+        }) => import("./concentrated-liquidity/tx").MsgCreatePosition;
+    };
+    "/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition": {
+        aminoType: string;
+        toAmino: ({ poolId, sender, lowerTick, upperTick, liquidityAmount }: import("./concentrated-liquidity/tx").MsgWithdrawPosition) => {
+            pool_id: string;
+            sender: string;
+            lower_tick: string;
+            upper_tick: string;
+            liquidity_amount: string;
+        };
+        fromAmino: ({ pool_id, sender, lower_tick, upper_tick, liquidity_amount }: {
+            pool_id: string;
+            sender: string;
+            lower_tick: string;
+            upper_tick: string;
+            liquidity_amount: string;
+        }) => import("./concentrated-liquidity/tx").MsgWithdrawPosition;
+    };
+    "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees": {
+        aminoType: string;
+        toAmino: ({ poolId, sender, lowerTick, upperTick }: import("./concentrated-liquidity/tx").MsgCollectFees) => {
+            pool_id: string;
+            sender: string;
+            lower_tick: string;
+            upper_tick: string;
+        };
+        fromAmino: ({ pool_id, sender, lower_tick, upper_tick }: {
+            pool_id: string;
+            sender: string;
+            lower_tick: string;
+            upper_tick: string;
+        }) => import("./concentrated-liquidity/tx").MsgCollectFees;
     };
 };
 export declare const osmosisProtoRegistry: ReadonlyArray<[string, GeneratedType]>;

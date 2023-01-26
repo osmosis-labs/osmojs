@@ -1,4 +1,5 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteSDKType } from "../../poolmanager/v1beta1/swap_route";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
 /**
@@ -50,21 +51,13 @@ export interface MsgExitPoolResponseSDKType {
     token_out: CoinSDKType[];
 }
 /** ===================== MsgSwapExactAmountIn */
-export interface SwapAmountInRoute {
-    poolId: Long;
-    tokenOutDenom: string;
-}
-/** ===================== MsgSwapExactAmountIn */
-export interface SwapAmountInRouteSDKType {
-    pool_id: Long;
-    token_out_denom: string;
-}
 export interface MsgSwapExactAmountIn {
     sender: string;
     routes: SwapAmountInRoute[];
     tokenIn?: Coin;
     tokenOutMinAmount: string;
 }
+/** ===================== MsgSwapExactAmountIn */
 export interface MsgSwapExactAmountInSDKType {
     sender: string;
     routes: SwapAmountInRouteSDKType[];
@@ -76,16 +69,6 @@ export interface MsgSwapExactAmountInResponse {
 }
 export interface MsgSwapExactAmountInResponseSDKType {
     token_out_amount: string;
-}
-/** ===================== MsgSwapExactAmountOut */
-export interface SwapAmountOutRoute {
-    poolId: Long;
-    tokenInDenom: string;
-}
-/** ===================== MsgSwapExactAmountOut */
-export interface SwapAmountOutRouteSDKType {
-    pool_id: Long;
-    token_in_denom: string;
 }
 export interface MsgSwapExactAmountOut {
     sender: string;
@@ -215,11 +198,6 @@ export declare const MsgExitPoolResponse: {
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPoolResponse;
     fromPartial(object: Partial<MsgExitPoolResponse>): MsgExitPoolResponse;
 };
-export declare const SwapAmountInRoute: {
-    encode(message: SwapAmountInRoute, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountInRoute;
-    fromPartial(object: Partial<SwapAmountInRoute>): SwapAmountInRoute;
-};
 export declare const MsgSwapExactAmountIn: {
     encode(message: MsgSwapExactAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountIn;
@@ -229,11 +207,6 @@ export declare const MsgSwapExactAmountInResponse: {
     encode(message: MsgSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponse;
     fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse;
-};
-export declare const SwapAmountOutRoute: {
-    encode(message: SwapAmountOutRoute, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountOutRoute;
-    fromPartial(object: Partial<SwapAmountOutRoute>): SwapAmountOutRoute;
 };
 export declare const MsgSwapExactAmountOut: {
     encode(message: MsgSwapExactAmountOut, writer?: _m0.Writer): _m0.Writer;

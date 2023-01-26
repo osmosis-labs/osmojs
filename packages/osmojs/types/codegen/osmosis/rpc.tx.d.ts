@@ -24,6 +24,9 @@ export declare const createRPCMsgClient: ({ rpc }: {
         };
     };
     osmosis: {
+        concentratedliquidity: {
+            v1beta1: import("./concentrated-liquidity/tx.rpc.msg").MsgClientImpl;
+        };
         gamm: {
             poolmodels: {
                 balancer: {
@@ -37,9 +40,18 @@ export declare const createRPCMsgClient: ({ rpc }: {
         };
         incentives: import("./incentives/tx.rpc.msg").MsgClientImpl;
         lockup: import("./lockup/tx.rpc.msg").MsgClientImpl;
+        poolmanager: {
+            v1beta1: import("./poolmanager/v1beta1/tx.rpc.msg").MsgClientImpl;
+        };
+        protorev: {
+            v1beta1: import("./protorev/v1beta1/tx.rpc.msg").MsgClientImpl;
+        };
         superfluid: import("./superfluid/tx.rpc.msg").MsgClientImpl;
         tokenfactory: {
             v1beta1: import("./tokenfactory/v1beta1/tx.rpc.msg").MsgClientImpl;
+        };
+        valsetpref: {
+            v1beta1: import("./valset-pref/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
     };
 }>;

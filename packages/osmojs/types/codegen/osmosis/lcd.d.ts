@@ -26,6 +26,12 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
     };
     osmosis: {
+        concentratedliquidity: {
+            v1beta1: import("./concentrated-liquidity/pool-model/query.lcd").LCDQueryClient;
+        };
+        downtimedetector: {
+            v1beta1: import("./downtime-detector/v1beta1/query.lcd").LCDQueryClient;
+        };
         epochs: {
             v1beta1: import("./epochs/query.lcd").LCDQueryClient;
         };
@@ -44,6 +50,12 @@ export declare const createLCDClient: ({ restEndpoint }: {
         poolincentives: {
             v1beta1: import("./pool-incentives/v1beta1/query.lcd").LCDQueryClient;
         };
+        poolmanager: {
+            v1beta1: import("./poolmanager/v1beta1/query.lcd").LCDQueryClient;
+        };
+        protorev: {
+            v1beta1: import("./protorev/v1beta1/query.lcd").LCDQueryClient;
+        };
         superfluid: import("./superfluid/query.lcd").LCDQueryClient;
         tokenfactory: {
             v1beta1: import("./tokenfactory/v1beta1/query.lcd").LCDQueryClient;
@@ -53,6 +65,9 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
         txfees: {
             v1beta1: import("./txfees/v1beta1/query.lcd").LCDQueryClient;
+        };
+        valsetpref: {
+            v1beta1: import("./valset-pref/v1beta1/query.lcd").LCDQueryClient;
         };
     };
 }>;
