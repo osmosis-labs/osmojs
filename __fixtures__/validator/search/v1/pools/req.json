@@ -1,0 +1,4 @@
+{
+    "url": "https://api-osmosis.imperator.co/search/v1/pools",
+    "method": "GET"
+}

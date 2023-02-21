@@ -1,0 +1,4 @@
+{
+    "url": "https://lcd-osmosis.keplr.app/osmosis/gamm/v1beta1/pools?pagination.limit=750",
+    "get": "GET"
+}

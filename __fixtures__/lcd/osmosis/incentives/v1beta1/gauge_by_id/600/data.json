@@ -1,0 +1,27 @@
+{
+  "gauge": {
+    "id": "600",
+    "is_perpetual": true,
+    "distribute_to": {
+      "lock_query_type": "ByDuration",
+      "denom": "gamm/pool/197",
+      "duration": "86400s",
+      "timestamp": "0001-01-01T00:00:00Z"
+    },
+    "coins": [
+      {
+        "denom": "uosmo",
+        "amount": "7848046095"
+      }
+    ],
+    "start_time": "2021-08-03T15:12:59.163157666Z",
+    "num_epochs_paid_over": "1",
+    "filled_epochs": "160",
+    "distributed_coins": [
+      {
+        "denom": "uosmo",
+        "amount": "7832082649"
+      }
+    ]
+  }
+}

@@ -1,0 +1,342 @@
+[
+    {
+        "price": 5.39,
+        "denom": "ibc/0954E1C28EB7AF5B72D24F3BC2B47BBB2FDF91BDDFD57B74B99E133AED40972A",
+        "symbol": "SCRT",
+        "liquidity": 17496634.57121965,
+        "liquidity_24h_change": 0.2894009594,
+        "volume_24h": 2147911.474567744,
+        "volume_24h_change": 2003347.4245449053,
+        "name": "Secret Network"
+    },
+    {
+        "price": 52.7,
+        "denom": "ibc/0EF15DF2F02480ADE0BB6E85D9EBB5DAEA2836D3860E9F97F9AADE4F57A31AA0",
+        "symbol": "LUNC",
+        "liquidity": 80951777.7166738,
+        "liquidity_24h_change": 2.6627240736,
+        "volume_24h": 13659699.084233476,
+        "volume_24h_change": 19223986.628708035,
+        "name": "Luna"
+    },
+    {
+        "price": 1.54,
+        "denom": "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4",
+        "symbol": "AKT",
+        "liquidity": 13703055.609621845,
+        "liquidity_24h_change": 0.8176487909,
+        "volume_24h": 786653.3686509797,
+        "volume_24h_change": 703087.0671325185,
+        "name": "Akash Network"
+    },
+    {
+        "price": 0.958615,
+        "denom": "ibc/1DC495FCEFDA068A3820F903EDBD78B942FBD204D7E93D3BA2B432E9669D1A59",
+        "symbol": "NGM",
+        "liquidity": 2524703.8399806744,
+        "liquidity_24h_change": 1.451810258,
+        "volume_24h": 127518.4961540184,
+        "volume_24h_change": 234047.2886089844,
+        "name": "e-Money"
+    },
+    {
+        "price": 1.1,
+        "denom": "ibc/1DCC8A6CB5689018431323953344A9F6CC4D0BFB261E88C9F7777372C10CD076",
+        "symbol": "REGEN",
+        "liquidity": 5786560.533044501,
+        "liquidity_24h_change": -0.8617226237,
+        "volume_24h": 219639.0166116043,
+        "volume_24h_change": 178396.0925130218,
+        "name": "Regen Network"
+    },
+    {
+        "price": 0.00083504,
+        "denom": "ibc/204A582244FC241613DBB50B04D1D454116C58C4AF7866C186AA0D6EEAD42780",
+        "symbol": "KRT",
+        "liquidity": 1510.6316650939,
+        "liquidity_24h_change": 0.4945994305,
+        "volume_24h": 48.9511535415,
+        "volume_24h_change": 94.1339645555,
+        "name": "TerraKRW"
+    },
+    {
+        "price": 28.68,
+        "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+        "symbol": "ATOM",
+        "liquidity": 289993992.32658875,
+        "liquidity_24h_change": 1.82452101,
+        "volume_24h": 30373576.631938085,
+        "volume_24h_change": 37703381.46233631,
+        "name": "Cosmos"
+    },
+    {
+        "price": 0.0168747821,
+        "denom": "ibc/307E5C96C8F60D1CBEE269A9A86C0834E1DB06F2B3788AE4F716EDB97A48B97D",
+        "symbol": "DIG",
+        "liquidity": 102743.2030773912,
+        "liquidity_24h_change": 2.429227571,
+        "volume_24h": 170030.1684900292,
+        "volume_24h_change": 85677.1583508853,
+        "name": "Dig Chain"
+    },
+    {
+        "price": 0.04105597,
+        "denom": "ibc/3BCCC93AD5DF58D11A6F8A05FA8BC801CBA0BA61A981F57E91B8B598BF8061CB",
+        "symbol": "MED",
+        "liquidity": 2622622.526998942,
+        "liquidity_24h_change": 1.2071558014,
+        "volume_24h": 183438.995827973,
+        "volume_24h_change": 716972.9593892905,
+        "name": "MediBloc"
+    },
+    {
+        "price": 19.6728557971,
+        "denom": "ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED",
+        "symbol": "JUNO",
+        "liquidity": 48423957.11378755,
+        "liquidity_24h_change": 3.3723407659,
+        "volume_24h": 10277590.16029618,
+        "volume_24h_change": 6467200.9492566995,
+        "name": "Juno"
+    },
+    {
+        "price": 0.2398021619,
+        "denom": "ibc/4E5444C35610CC76FC94E7F7886B93121175C28262DDFDDE6F84E82BF2425452",
+        "symbol": "BTSG",
+        "liquidity": 2723938.9480106942,
+        "liquidity_24h_change": -0.6151987589,
+        "volume_24h": 98892.0494055144,
+        "volume_24h_change": 252669.1814080544,
+        "name": "BitSong"
+    },
+    {
+        "price": 0.054067,
+        "denom": "ibc/52B1AA623B34EB78FD767CEA69E8D7FA6C9CFE1FBF49C5406268FD325E2CC2AC",
+        "symbol": "IOV",
+        "liquidity": 263340.9419651584,
+        "liquidity_24h_change": 3.7168504091,
+        "volume_24h": 18069.1931084965,
+        "volume_24h_change": 9293.8236148684,
+        "name": "Starname"
+    },
+    {
+        "price": 1.073611,
+        "denom": "ibc/5973C068568365FFF40DEDCF1A1CB7582B6116B731CD31A12231AE25E20B871F",
+        "symbol": "EEUR",
+        "liquidity": 11686558.583752653,
+        "liquidity_24h_change": -0.0952349902,
+        "volume_24h": 1623279.7050107208,
+        "volume_24h_change": 1851354.7159001287,
+        "name": "e-Money EUR"
+    },
+    {
+        "price": 4.4582071663,
+        "denom": "ibc/655BCEF3CDEBE32863FF281DBBE3B06160339E9897DC9C9C9821932A5F8BA6F8",
+        "symbol": "TICK",
+        "liquidity": 225077.1778883887,
+        "liquidity_24h_change": 1.1482567203,
+        "volume_24h": 13734.9434608949,
+        "volume_24h_change": 5215.2420954739,
+        "name": "Microtick"
+    },
+    {
+        "price": 0.1452002711,
+        "denom": "ibc/7A08C6F11EF0F59EB841B9F788A87EC9F2361C7D9703157EC13D940DC53031FA",
+        "symbol": "CHEQ",
+        "liquidity": 454820.3166274476,
+        "liquidity_24h_change": 32.2168757123,
+        "volume_24h": 240221.7403769166,
+        "volume_24h_change": 54804.9196561694,
+        "name": "Cheqd"
+    },
+    {
+        "price": 0.06791,
+        "denom": "ibc/7C4D60AA95E5A7558B0A364860979CA34B7FF8AAF255B87AF9E879374470CEC0",
+        "symbol": "IRIS",
+        "liquidity": 3049101.6044914466,
+        "liquidity_24h_change": -2.389950925,
+        "volume_24h": 468634.2135798572,
+        "volume_24h_change": 180894.6052540649,
+        "name": "IRISnet"
+    },
+    {
+        "price": 0.0127554931,
+        "denom": "ibc/8A34AF0C1943FD0DFCDE9ADBF0B2C9959C45E87E6088EA2FC6ADACD59261B8A2",
+        "symbol": "LUM",
+        "liquidity": 2410798.184292552,
+        "liquidity_24h_change": 0.2577363468,
+        "volume_24h": 35945.5835870673,
+        "volume_24h_change": 45288.140388156,
+        "name": "Lum"
+    },
+    {
+        "price": 0.00889807,
+        "denom": "ibc/9712DBB13B9631EDFA9BF61B55F1B2D290B2ADB67E3A4EB3A875F3B6081B3B84",
+        "symbol": "DVPN",
+        "liquidity": 11496772.255575594,
+        "liquidity_24h_change": 2.2840287662,
+        "volume_24h": 1654987.7912650148,
+        "volume_24h_change": 1689112.6029141024,
+        "name": "Sentinel"
+    },
+    {
+        "price": 0.7143649996,
+        "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
+        "symbol": "STARS",
+        "liquidity": 37990028.97133137,
+        "liquidity_24h_change": 4.6151503808,
+        "volume_24h": 2864907.6328812395,
+        "volume_24h_change": 5157172.663963908,
+        "name": "Stargaze"
+    },
+    {
+        "price": 0.02256379,
+        "denom": "ibc/9989AD6CCA39D1131523DB0617B50F6442081162294B4795E26746292467B525",
+        "symbol": "LIKE",
+        "liquidity": 772942.1390323802,
+        "liquidity_24h_change": 0.9159696297,
+        "volume_24h": 9004.5774319741,
+        "volume_24h_change": 15555.4781389564,
+        "name": "LikeCoin"
+    },
+    {
+        "price": 2.0693773799,
+        "denom": "ibc/9BBA9A1C257E971E38C1422780CE6F0B0686F0A3085E2D61118D904BFE0F5F5E",
+        "symbol": "SOMM",
+        "liquidity": 244173.9600700701,
+        "liquidity_24h_change": 1806.7309356159,
+        "volume_24h": 1614433.2614944642,
+        "volume_24h_change": 91926.918617701,
+        "name": "Sommelier Chain"
+    },
+    {
+        "price": 3.34,
+        "denom": "ibc/A0CC0CF735BFB30E730C70019D4218A1244FF383503FF7579C9201AB93CA9293",
+        "symbol": "XPRT",
+        "liquidity": 8600502.251106562,
+        "liquidity_24h_change": -1.3244409717,
+        "volume_24h": 794715.7507069977,
+        "volume_24h_change": 797011.025419075,
+        "name": "Persistence"
+    },
+    {
+        "price": 0.2033744096,
+        "denom": "ibc/B547DC9B897E7C3AA5B824696110B8E3D2C31E3ED3F02FF363DCBAD82457E07E",
+        "symbol": "XKI",
+        "liquidity": 2029377.0046294634,
+        "liquidity_24h_change": 2.2207366517,
+        "volume_24h": 67998.1921843535,
+        "volume_24h_change": 100874.1076025262,
+        "name": "Ki"
+    },
+    {
+        "price": 0.0043336702,
+        "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
+        "symbol": "HUAHUA",
+        "liquidity": 10306874.742598308,
+        "liquidity_24h_change": 7.5090904993,
+        "volume_24h": 1336895.8802892596,
+        "volume_24h_change": 2449908.8405286707,
+        "name": "Chihuahua"
+    },
+    {
+        "price": 1,
+        "denom": "ibc/BE1BB42D4BE3C30D50B68D7C41DB4DFCE9678E8EF8C539F6E6A9345048894FCC",
+        "symbol": "USTC",
+        "liquidity": 126621686.57304199,
+        "liquidity_24h_change": 1.1422128584,
+        "volume_24h": 25933144.99148733,
+        "volume_24h_change": 27016189.627186563,
+        "name": "TerraUSD"
+    },
+    {
+        "price": 0.103986,
+        "denom": "ibc/D805F1DA50D31B96E4282C1D4181EDDFB1A44A598BFF5666F4B43E4B8BEA95A5",
+        "symbol": "BCNA",
+        "liquidity": 2687438.7178108785,
+        "liquidity_24h_change": 0.1277193723,
+        "volume_24h": 78433.5840827615,
+        "volume_24h_change": 387170.234969624,
+        "name": "BitCanna"
+    },
+    {
+        "price": 0.432481,
+        "denom": "ibc/E6931F78057F7CC5DA0FD6CEF82FF39373A6E0452BF1FD76910B93292CF356C1",
+        "symbol": "CRO",
+        "liquidity": 15756007.41421421,
+        "liquidity_24h_change": 0.1885072696,
+        "volume_24h": 1370070.7140384316,
+        "volume_24h_change": 2079807.615450443,
+        "name": "Crypto.com Coin"
+    },
+    {
+        "price": 0.212991747,
+        "denom": "ibc/E7B35499CFBEB0FF5778127ABA4FB2C4B79A6B8D3D831D4379C4048C238796BD",
+        "symbol": "VDL",
+        "liquidity": 46481.0029409428,
+        "liquidity_24h_change": 1.6824039524,
+        "volume_24h": 888.6033857398,
+        "volume_24h_change": 5250.3963750378,
+        "name": "Vidulum"
+    },
+    {
+        "price": 2.6504926779,
+        "denom": "ibc/EA3E1640F9B1532AB129A571203A0B9F789A7F14BB66E350DCBFA18E1A1931F0",
+        "symbol": "CMDX",
+        "liquidity": 17994619.873180505,
+        "liquidity_24h_change": -0.5251649163,
+        "volume_24h": 2011036.939293005,
+        "volume_24h_change": 885381.9315586863,
+        "name": "Comdex"
+    },
+    {
+        "price": 0.6601285598,
+        "denom": "ibc/EA4C0A9F72E2CEDF10D0E7A9A6A22954DB3444910DB5BE980DF59B05A46DAD1C",
+        "symbol": "DSM",
+        "liquidity": 2875166.0487809936,
+        "liquidity_24h_change": 1.1563808519,
+        "volume_24h": 259983.2868663507,
+        "volume_24h_change": 234368.0409545249,
+        "name": "Desmos"
+    },
+    {
+        "price": 0.474382484,
+        "denom": "ibc/F3FF7A84A73B62921538642F9797C423D2B4C4ACB3C7FCFFCE7F12AA69909C4B",
+        "symbol": "IXO",
+        "liquidity": 792613.9810566187,
+        "liquidity_24h_change": -0.0722530593,
+        "volume_24h": 9464.209013159,
+        "volume_24h_change": 13449.7107826841,
+        "name": "IXO"
+    },
+    {
+        "price": 2.97e-7,
+        "denom": "ibc/FE2CD1E6828EC0FAB8AF39BAC45BC25B965BA67CCBC50C13A14BD610B0D1E2C4",
+        "symbol": "BOOT",
+        "liquidity": 470386.7113475967,
+        "liquidity_24h_change": -0.5612646071,
+        "volume_24h": 14535.4260168795,
+        "volume_24h_change": 12297.7334303006,
+        "name": "Bostrom"
+    },
+    {
+        "price": 7166.693654509,
+        "denom": "uion",
+        "symbol": "ION",
+        "liquidity": 7929503.562546077,
+        "liquidity_24h_change": -10.7460361686,
+        "volume_24h": 546103.5937409333,
+        "volume_24h_change": 382081.0614472718,
+        "name": "Ion"
+    },
+    {
+        "price": 7.9568607051,
+        "denom": "uosmo",
+        "symbol": "OSMO",
+        "liquidity": 451730688.47734845,
+        "liquidity_24h_change": 2.1204330172,
+        "volume_24h": 62924339.06271902,
+        "volume_24h_change": 71131316.75542,
+        "name": "Osmosis"
+    }
+]
