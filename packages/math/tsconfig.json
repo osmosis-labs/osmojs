@@ -1,19 +1,14 @@
 {
-    "compilerOptions": {
-        "declaration": true,
-        "declarationDir": "./types",
-        "emitDeclarationOnly": true,
-        "isolatedModules": true,
-        "esModuleInterop": true,
-        "allowJs": true,
-        "lib": [
-            "es2015"
-        ]
-    },
-    "include": [
-        "src/**/*"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./types",
+    "emitDeclarationOnly": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "lib": ["es2015"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

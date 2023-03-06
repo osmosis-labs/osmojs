@@ -17,17 +17,100 @@
 [OsmosJS](https://github.com/osmosis-labs/osmojs) makes it easy to compose and broadcast Osmosis and Cosmos messages, with all of the proto and amino encoding handled for you.
 
 ---
+
 ## install
 
 ```sh
 npm install @osmonauts/math
 ```
 
-## Table of contents
+## Table of Contents
 
-TODO
+- [@osmonauts/math](#osmonautsmath)
+  - [install](#install)
+  - [Table of Contents](#table-of-contents)
+  - [Calculations](#calculations)
+    - [`calcPoolLiquidity`](#calcpoolliquidity)
+    - [`calcCoinsNeededForValue`](#calccoinsneededforvalue)
+    - [`calcMaxCoinsForPool`](#calcmaxcoinsforpool)
+    - [`calcShareOutAmount`](#calcshareoutamount)
+    - [`calcPoolAprs`](#calcpoolaprs)
+  - [Publishing](#publishing)
+  - [Credits](#credits)
+  - [Disclaimer](#disclaimer)
 
-### Publishing
+## Calculations
+
+### `calcPoolLiquidity`
+
+Calculate a pool's liquidity.
+
+```js
+const liquidity = calcPoolLiquidity(pool, prices);
+```
+
+Pool liquidity is calculated using the formula below:
+$$liquidity=\dfrac{tokenA}{10^{exponentA}}\times priceA + \dfrac{tokenB}{10^{exponentB}}\times priceB$$
+For pools with multiple tokens, just add more tokens to the end.
+
+### `calcCoinsNeededForValue`
+
+Calculate the coins needed in a pool for the given dollar value.
+
+```js
+const coinsNeeded = calcCoinsNeededForValue(prices, poolInfo, value);
+```
+
+The amount of either of the tokens needed in a pool is calculated using the formula below:
+
+$$amountNeeded=\dfrac{tokenWeight}{totalWeight}\times value \div price\times 10^{exponent}$$
+
+### `calcMaxCoinsForPool`
+
+Calculate the maximum coins affordable in the balance for a given pool.
+
+```js
+const maxCoins = calcMaxCoinsForPool(prices, poolInfo, balances);
+```
+
+### `calcShareOutAmount`
+
+Once you have the coins needed from either `calcCoinsNeededForValue` or `calcMaxCoinsForPool`, you can use `calcShareOutAmount` to get the shareOutAmount for the pool:
+
+```js
+const shareOutAmount = calcShareOutAmount(poolInfo, coinsNeeded);
+```
+
+### `calcPoolAprs`
+
+Calculate a pool's APR which consists of three parts: superfluid APR, gauge APR and fees APR.
+
+```js
+const poolApr = calcPoolAprs({
+  activeGauges, // all the active gauges of a pool
+  pool, // pool info
+  prices, // priceHash
+  superfluidPools, // all the superfluid pools
+  aprSuperfluid, // apr of superfluid staking
+  lockupDurations, // all the lockup durations
+  volume7d, // 7 day trading volume of the pool
+  swapFee, // percentage value, e.g. 0.002
+  lockup = "14", // optional, specify the lockup duration
+  includeNonPerpetual = true, // optional, whether to include non-perpetual gauges
+})
+```
+
+For superfluid APR, you can get all the pools' APRs from this [endpoint](https://api-osmosis.imperator.co/apr/v2/all).
+
+The formula for calculating the gauge APR:
+
+$$gaugeAPR=\dfrac{totalCoins-distributedCoins}{10^{exponent}}\times price\div liquidity\times 36500$$
+
+Fees APR works in a similar way:
+
+$$feesAPR=\dfrac{tradingVolume7d}{7}\times swapFee\div liquidity\times 36500$$
+
+## Publishing
 
 Build the types and then publish:
 
@@ -42,9 +125,9 @@ yarn publish
 
 Code built with the help of these related projects:
 
-* [@cosmwasm/ts-codegen](https://github.com/CosmWasm/ts-codegen) for generated CosmWasm contract Typescript classes
-* [@osmonauts/telescope](https://github.com/osmosis-labs/telescope) a "babel for the Cosmos", Telescope is a TypeScript Transpiler for Cosmos Protobufs.
-* [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit) A wallet connector for the Cosmos ⚛️
+- [@cosmwasm/ts-codegen](https://github.com/CosmWasm/ts-codegen) for generated CosmWasm contract Typescript classes
+- [@osmonauts/telescope](https://github.com/osmosis-labs/telescope) a "babel for the Cosmos", Telescope is a TypeScript Transpiler for Cosmos Protobufs.
+- [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit) A wallet connector for the Cosmos ⚛️
 
 ## Disclaimer
 
