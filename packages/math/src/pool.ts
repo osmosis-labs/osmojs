@@ -70,16 +70,16 @@ export const getPoolByGammName = (pools: Pool[], gammId: string): Pool => {
 
 export const convertGammTokenToDollarValue = (
   coin: Coin,
-  pools: Pool[],
+  pool: Pool,
   prices: PriceHash
 ): string => {
-  const { amount, denom } = coin;
-  const pool = getPoolByGammName(pools, denom);
+  const { amount } = coin;
   const liquidity = calcPoolLiquidity(pool, prices);
-  const valuePerShare = new BigNumber(liquidity).dividedBy(
-    new BigNumber(pool.totalShares.amount)
-  );
-  return new BigNumber(amount).multipliedBy(valuePerShare).toString();
+
+  return new BigNumber(liquidity)
+    .multipliedBy(amount)
+    .dividedBy(pool.totalShares!.amount)
+    .toString();
 };
 
 export const convertDollarValueToCoins = (
@@ -113,10 +113,12 @@ export const convertDollarValueToShares = (
   prices: PriceHash
 ) => {
   const liquidity = calcPoolLiquidity(pool, prices);
-  const valuePerShare = new BigNumber(liquidity).dividedBy(
-    new BigNumber(pool.totalShares.amount)
-  );
-  return new BigNumber(value).dividedBy(valuePerShare.shiftedBy(18)).toString();
+
+  return new BigNumber(value)
+    .multipliedBy(pool.totalShares.amount)
+    .dividedBy(liquidity)
+    .shiftedBy(-18)
+    .toString();
 };
 
 const assetHashMap = osmosisAssets.reduce((res, asset) => {

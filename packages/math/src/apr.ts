@@ -36,22 +36,35 @@ export const calcPoolAprs = ({
   lockup = "14",
   includeNonPerpetual = true,
 }: CalcPoolAprsParams) => {
+  const hasAssetsPrices = pool.poolAssets.every((asset) =>
+    Boolean(prices[asset.token!.denom])
+  );
+  if (!hasAssetsPrices) {
+    for (const asset of pool.poolAssets) {
+      if (!prices[asset.token!.denom]) {
+        console.log("price not found:", asset.token!.denom);
+      }
+    }
+    return { totalApr: "0" };
+  }
+
   // superfluid staking apr
   const isSuperfluidPool = superfluidPools.some(
     (sfPool) => sfPool.denom === pool.totalShares.denom
   );
-  const superfluidApr = isSuperfluidPool ? aprSuperfluid : null;
+  const superfluidApr =
+    isSuperfluidPool && lockup === "14" ? aprSuperfluid : null;
+
   const liquidity = calcPoolLiquidity(pool, prices);
 
   // gauge aprs
-  // 1. get all the gauges
-  // 2. filter the gauges by lockup, isPerpetual and isOver
-  // 3. map through the gauges and calc each of the apr
   const lockupDuration = convertLockup(lockup, lockupDurations);
   const gauges = activeGauges.filter((gauge) => {
-    const isGaugeActive = !new BigNumber(gauge.coins[0].amount)
-      .minus(gauge.distributedCoins[0].amount)
-      .isLessThan(100);
+    const isGaugeActive =
+      gauge.coins.length > 0 &&
+      !new BigNumber(gauge.coins[0].amount)
+        .minus(gauge.distributedCoins[0].amount)
+        .isLessThan(100);
     return (
       gauge.distributeTo.duration.seconds.low === lockupDuration &&
       (includeNonPerpetual || gauge.isPerpetual) &&
