@@ -9,17 +9,17 @@ export type CoinDenom = AssetDenomUnit["denom"];
 
 export type Exponent = AssetDenomUnit["exponent"];
 
+export type CoinSymbol = string;
+
 export interface PriceHash {
   [key: CoinDenom]: number;
 }
 
+export type CoinGeckoToken = string;
+
 export interface CoinGeckoUSD {
   usd: number;
 }
-
-export type CoinSymbol = string;
-
-export type CoinGeckoToken = string;
 
 export type CoinGeckoUSDResponse = Record<CoinGeckoToken, CoinGeckoUSD>;
 
@@ -32,19 +32,6 @@ export interface CoinValue {
 }
 
 export type CoinBalance = Coin & { displayValue: string | number };
-
-export interface Scenario {
-  token: CoinBalance;
-  ratio: string;
-  symbol: string;
-  amount: string;
-  enoughCoinsExist: boolean;
-  totalDollarValue?: string;
-}
-
-export interface Scenarios {
-  [key: string]: Scenario[];
-}
 
 export interface PoolAssetPretty {
   symbol: any;
@@ -79,4 +66,20 @@ export interface CalcPoolAprsParams {
   swapFee: string | number;
   lockup?: string;
   includeNonPerpetual?: boolean;
+}
+
+export interface Trade {
+  sell: Coin;
+  buy: Coin;
+}
+
+export interface PrettyPair {
+  poolId: string;
+  poolAddress: string;
+  baseName: string;
+  baseSymbol: string;
+  baseAddress: string;
+  quoteName: string;
+  quoteSymbol: string;
+  quoteAddress: string;
 }

@@ -85,6 +85,7 @@
     "@chain-registry/osmosis": "1.10.0",
     "@chain-registry/types": "0.14.0",
     "bignumber.js": "9.1.1",
+    "long": "5.2.1",
     "osmojs": "14.0.0-rc.0"
   }
 }

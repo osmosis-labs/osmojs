@@ -1,12 +1,12 @@
 import { CalcPoolAprsParams } from "./types";
 import { Duration } from "osmojs/types/codegen/google/protobuf/duration";
-import {
-  getSymbolForDenom,
-  calcPoolLiquidity,
-  getExponentByDenom,
-  dollarValueToDenomUnits,
-} from "./pool";
+import { calcPoolLiquidity } from "./pool";
 import BigNumber from "bignumber.js";
+import {
+  dollarValueToDenomUnits,
+  getExponentByDenom,
+  osmoDenomToSymbol,
+} from "./utils";
 
 const DAYS_PER_YEAR = 365;
 const YEARLY_PERCENT = DAYS_PER_YEAR * 100;
@@ -75,7 +75,7 @@ export const calcPoolAprs = ({
     const tokensRemaining = new BigNumber(gauge.coins[0].amount).minus(
       gauge.distributedCoins[0].amount
     );
-    const symbol = getSymbolForDenom(gauge.coins[0].denom);
+    const symbol = osmoDenomToSymbol(gauge.coins[0].denom);
     const daysRemaining = gauge.isPerpetual
       ? null
       : gauge.numEpochsPaidOver.low - gauge.filledEpochs.low;

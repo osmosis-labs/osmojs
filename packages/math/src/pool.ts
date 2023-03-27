@@ -1,57 +1,24 @@
-import { asset_list, assets } from "@chain-registry/osmosis";
-import { Asset as OsmosisAsset } from "@chain-registry/types";
 import { Pool } from "osmojs/types/codegen/osmosis/gamm/pool-models/balancer/balancerPool";
 import { Coin } from "osmojs/types/codegen/cosmos/base/v1beta1/coin";
 import {
-  CoinGeckoToken,
-  CoinDenom,
-  Exponent,
-  CoinSymbol,
   PriceHash,
-  CoinGeckoUSDResponse,
   CoinValue,
   PoolPretty,
   CoinBalance,
   PoolAssetPretty,
+  PrettyPair,
 } from "./types";
 import BigNumber from "bignumber.js";
-
-export const osmosisAssets: OsmosisAsset[] = [
-  ...assets.assets,
-  ...asset_list.assets,
-];
-
-export const getOsmoAssetByDenom = (denom: CoinDenom): OsmosisAsset => {
-  return osmosisAssets.find((asset) => asset.base === denom) as OsmosisAsset;
-};
-
-export const getDenomForCoinGeckoId = (
-  coinGeckoId: CoinGeckoToken
-): CoinDenom => {
-  return osmosisAssets.find((asset) => asset.coingecko_id === coinGeckoId).base;
-};
-
-export const getSymbolForDenom = (denom: CoinDenom): CoinSymbol => {
-  const asset = getOsmoAssetByDenom(denom);
-  const symbol = asset.symbol;
-  return symbol;
-};
-
-export const getExponentByDenom = (denom: CoinDenom): Exponent => {
-  const asset = getOsmoAssetByDenom(denom);
-  const unit = asset.denom_units.find(({ denom }) => denom === asset.display);
-  return unit.exponent;
-};
-
-export const convertGeckoPricesToDenomPriceHash = (
-  prices: CoinGeckoUSDResponse
-): PriceHash => {
-  return Object.keys(prices).reduce((res, geckoId) => {
-    const denom = getDenomForCoinGeckoId(geckoId);
-    res[denom] = prices[geckoId].usd;
-    return res;
-  }, {});
-};
+import { osmosisAssets } from "./assets";
+import {
+  baseUnitsToDisplayUnits,
+  baseUnitsToDollarValue,
+  dollarValueToDenomUnits,
+  getExponentByDenom,
+  osmoDenomToSymbol,
+  noDecimals,
+  getOsmoAssetByDenom,
+} from "./utils";
 
 export const calcPoolLiquidity = (pool: Pool, prices: PriceHash): string => {
   return pool.poolAssets
@@ -94,7 +61,7 @@ export const convertDollarValueToCoins = (
     const amount = new BigNumber(displayAmount)
       .shiftedBy(getExponentByDenom(denom))
       .toString();
-    const symbol = getSymbolForDenom(denom);
+    const symbol = osmoDenomToSymbol(denom);
 
     return {
       denom,
@@ -168,52 +135,6 @@ export const prettyPool = (
     ...pool,
     poolAssetsPretty: tokens,
   };
-};
-
-export const getOsmoDenomForSymbol = (token: CoinSymbol): CoinDenom => {
-  const asset = osmosisAssets.find(({ symbol }) => symbol === token);
-  const base = asset?.base;
-  if (!base) {
-    console.log(`cannot find base for token ${token}`);
-    return null;
-  }
-  return base;
-};
-
-export const noDecimals = (num: number | string) => {
-  return new BigNumber(num).decimalPlaces(0, BigNumber.ROUND_DOWN).toString();
-};
-
-export const baseUnitsToDollarValue = (
-  prices: PriceHash,
-  symbol: string,
-  amount: string | number
-) => {
-  const denom = getOsmoDenomForSymbol(symbol);
-  return new BigNumber(amount)
-    .shiftedBy(-getExponentByDenom(denom))
-    .multipliedBy(prices[denom])
-    .toString();
-};
-
-export const dollarValueToDenomUnits = (
-  prices: PriceHash,
-  symbol: string,
-  value: string | number
-) => {
-  const denom = getOsmoDenomForSymbol(symbol);
-  return new BigNumber(value)
-    .dividedBy(prices[denom])
-    .shiftedBy(getExponentByDenom(denom))
-    .toString();
-};
-
-export const baseUnitsToDisplayUnits = (
-  symbol: string,
-  amount: string | number
-) => {
-  const denom = getOsmoDenomForSymbol(symbol);
-  return new BigNumber(amount).shiftedBy(-getExponentByDenom(denom)).toString();
 };
 
 export const calcCoinsNeededForValue = (
@@ -317,4 +238,33 @@ export const calcShareOutAmount = (
         .toString();
     })
     .sort()[0];
+};
+
+export const makePoolPairs = (pools: Pool[]): PrettyPair[] => {
+  return pools
+    .filter(
+      (pool) =>
+        pool.poolAssets.length === 2 &&
+        pool.poolAssets.every(({ token }) => !token.denom.startsWith("gamm"))
+    )
+    .map((pool) => {
+      const assetA = pool.poolAssets[0].token;
+      const assetAinfo = getOsmoAssetByDenom(assetA.denom);
+      const assetB = pool.poolAssets[1].token;
+      const assetBinfo = getOsmoAssetByDenom(assetB.denom);
+
+      if (!assetAinfo || !assetBinfo) return;
+
+      return {
+        poolId: typeof pool.id === "string" ? pool.id : pool.id.low.toString(),
+        poolAddress: pool.address,
+        baseName: assetAinfo.display,
+        baseSymbol: assetAinfo.symbol,
+        baseAddress: assetAinfo.base,
+        quoteName: assetBinfo.display,
+        quoteSymbol: assetBinfo.symbol,
+        quoteAddress: assetBinfo.base,
+      };
+    })
+    .filter(Boolean);
 };

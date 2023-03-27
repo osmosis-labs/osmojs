@@ -1,20 +1,19 @@
-import {
-  calcMaxCoinsForPool,
-  calcShareOutAmount,
-  prettyPool,
-} from "./../src/pool";
 import priceResponse from "../../../__fixtures__/coingecko/api/v3/simple/price/data.json";
 import poolResponse from "../../../__fixtures__/rpc/osmosis/gamm/v1beta1/pools/data.json";
 import {
-  noDecimals,
   calcPoolLiquidity,
   convertGammTokenToDollarValue,
   convertDollarValueToCoins,
   convertDollarValueToShares,
   calcCoinsNeededForValue,
-  convertGeckoPricesToDenomPriceHash,
+  calcMaxCoinsForPool,
+  calcShareOutAmount,
+  prettyPool,
+  makePoolPairs,
 } from "../src/pool";
 import cases from "jest-in-case";
+import { noDecimals, convertGeckoPricesToDenomPriceHash } from "../src/utils";
+import Long from "long";
 
 const fakeBalances = [
   {
@@ -100,13 +99,14 @@ describe("Test pool calculations", () => {
   cases(
     "convertGammTokenToDollarValue",
     (opts) => {
-      const value = convertGammTokenToDollarValue(opts.coin, pools, prices);
+      const pool = pools.find((pool) => pool.id === opts.poolId);
+      const value = convertGammTokenToDollarValue(opts.coin, pool, prices);
       expect(noDecimals(value)).toEqual(opts.value);
     },
     [
-      { name: "gamm/pool/1", coin: fakeBalances[0], value: "5" },
-      { name: "gamm/pool/497", coin: fakeBalances[1], value: "14" },
-      { name: "gamm/pool/604", coin: fakeBalances[2], value: "6" },
+      { poolId: "1", coin: fakeBalances[0], value: "5" },
+      { poolId: "497", coin: fakeBalances[1], value: "14" },
+      { poolId: "604", coin: fakeBalances[2], value: "6" },
     ]
   );
 
@@ -229,4 +229,9 @@ describe("Test pool calculations", () => {
       },
     ]
   );
+
+  test("makePoolPairs", () => {
+    const poolPairs = makePoolPairs(pools);
+    expect(poolPairs.slice(0, 10)).toMatchSnapshot();
+  });
 });
