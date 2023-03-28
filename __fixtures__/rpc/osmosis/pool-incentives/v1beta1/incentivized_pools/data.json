@@ -1,0 +1,919 @@
+{
+  "incentivized_pools": [
+    {
+      "pool_id": "1",
+      "lockable_duration": "86400s",
+      "gauge_id": "1"
+    },
+    {
+      "pool_id": "1",
+      "lockable_duration": "604800s",
+      "gauge_id": "2"
+    },
+    {
+      "pool_id": "1",
+      "lockable_duration": "1209600s",
+      "gauge_id": "3"
+    },
+    {
+      "pool_id": "2",
+      "lockable_duration": "86400s",
+      "gauge_id": "4"
+    },
+    {
+      "pool_id": "2",
+      "lockable_duration": "604800s",
+      "gauge_id": "5"
+    },
+    {
+      "pool_id": "2",
+      "lockable_duration": "1209600s",
+      "gauge_id": "6"
+    },
+    {
+      "pool_id": "3",
+      "lockable_duration": "86400s",
+      "gauge_id": "7"
+    },
+    {
+      "pool_id": "3",
+      "lockable_duration": "604800s",
+      "gauge_id": "8"
+    },
+    {
+      "pool_id": "3",
+      "lockable_duration": "1209600s",
+      "gauge_id": "9"
+    },
+    {
+      "pool_id": "4",
+      "lockable_duration": "86400s",
+      "gauge_id": "10"
+    },
+    {
+      "pool_id": "4",
+      "lockable_duration": "604800s",
+      "gauge_id": "11"
+    },
+    {
+      "pool_id": "4",
+      "lockable_duration": "1209600s",
+      "gauge_id": "12"
+    },
+    {
+      "pool_id": "5",
+      "lockable_duration": "86400s",
+      "gauge_id": "13"
+    },
+    {
+      "pool_id": "5",
+      "lockable_duration": "604800s",
+      "gauge_id": "14"
+    },
+    {
+      "pool_id": "5",
+      "lockable_duration": "1209600s",
+      "gauge_id": "15"
+    },
+    {
+      "pool_id": "6",
+      "lockable_duration": "86400s",
+      "gauge_id": "16"
+    },
+    {
+      "pool_id": "6",
+      "lockable_duration": "604800s",
+      "gauge_id": "17"
+    },
+    {
+      "pool_id": "6",
+      "lockable_duration": "1209600s",
+      "gauge_id": "18"
+    },
+    {
+      "pool_id": "7",
+      "lockable_duration": "86400s",
+      "gauge_id": "19"
+    },
+    {
+      "pool_id": "7",
+      "lockable_duration": "604800s",
+      "gauge_id": "20"
+    },
+    {
+      "pool_id": "7",
+      "lockable_duration": "1209600s",
+      "gauge_id": "21"
+    },
+    {
+      "pool_id": "8",
+      "lockable_duration": "86400s",
+      "gauge_id": "22"
+    },
+    {
+      "pool_id": "8",
+      "lockable_duration": "604800s",
+      "gauge_id": "23"
+    },
+    {
+      "pool_id": "8",
+      "lockable_duration": "1209600s",
+      "gauge_id": "24"
+    },
+    {
+      "pool_id": "9",
+      "lockable_duration": "86400s",
+      "gauge_id": "25"
+    },
+    {
+      "pool_id": "9",
+      "lockable_duration": "604800s",
+      "gauge_id": "26"
+    },
+    {
+      "pool_id": "9",
+      "lockable_duration": "1209600s",
+      "gauge_id": "27"
+    },
+    {
+      "pool_id": "10",
+      "lockable_duration": "86400s",
+      "gauge_id": "28"
+    },
+    {
+      "pool_id": "10",
+      "lockable_duration": "604800s",
+      "gauge_id": "29"
+    },
+    {
+      "pool_id": "10",
+      "lockable_duration": "1209600s",
+      "gauge_id": "30"
+    },
+    {
+      "pool_id": "13",
+      "lockable_duration": "86400s",
+      "gauge_id": "37"
+    },
+    {
+      "pool_id": "13",
+      "lockable_duration": "604800s",
+      "gauge_id": "38"
+    },
+    {
+      "pool_id": "13",
+      "lockable_duration": "1209600s",
+      "gauge_id": "39"
+    },
+    {
+      "pool_id": "15",
+      "lockable_duration": "86400s",
+      "gauge_id": "43"
+    },
+    {
+      "pool_id": "15",
+      "lockable_duration": "604800s",
+      "gauge_id": "44"
+    },
+    {
+      "pool_id": "15",
+      "lockable_duration": "1209600s",
+      "gauge_id": "45"
+    },
+    {
+      "pool_id": "22",
+      "lockable_duration": "86400s",
+      "gauge_id": "64"
+    },
+    {
+      "pool_id": "22",
+      "lockable_duration": "604800s",
+      "gauge_id": "65"
+    },
+    {
+      "pool_id": "22",
+      "lockable_duration": "1209600s",
+      "gauge_id": "66"
+    },
+    {
+      "pool_id": "42",
+      "lockable_duration": "86400s",
+      "gauge_id": "124"
+    },
+    {
+      "pool_id": "42",
+      "lockable_duration": "604800s",
+      "gauge_id": "125"
+    },
+    {
+      "pool_id": "42",
+      "lockable_duration": "1209600s",
+      "gauge_id": "126"
+    },
+    {
+      "pool_id": "183",
+      "lockable_duration": "86400s",
+      "gauge_id": "558"
+    },
+    {
+      "pool_id": "183",
+      "lockable_duration": "604800s",
+      "gauge_id": "559"
+    },
+    {
+      "pool_id": "183",
+      "lockable_duration": "1209600s",
+      "gauge_id": "560"
+    },
+    {
+      "pool_id": "197",
+      "lockable_duration": "86400s",
+      "gauge_id": "600"
+    },
+    {
+      "pool_id": "197",
+      "lockable_duration": "604800s",
+      "gauge_id": "601"
+    },
+    {
+      "pool_id": "197",
+      "lockable_duration": "1209600s",
+      "gauge_id": "602"
+    },
+    {
+      "pool_id": "461",
+      "lockable_duration": "86400s",
+      "gauge_id": "1392"
+    },
+    {
+      "pool_id": "461",
+      "lockable_duration": "604800s",
+      "gauge_id": "1393"
+    },
+    {
+      "pool_id": "461",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1394"
+    },
+    {
+      "pool_id": "463",
+      "lockable_duration": "86400s",
+      "gauge_id": "1398"
+    },
+    {
+      "pool_id": "463",
+      "lockable_duration": "604800s",
+      "gauge_id": "1399"
+    },
+    {
+      "pool_id": "463",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1400"
+    },
+    {
+      "pool_id": "464",
+      "lockable_duration": "86400s",
+      "gauge_id": "1401"
+    },
+    {
+      "pool_id": "464",
+      "lockable_duration": "604800s",
+      "gauge_id": "1402"
+    },
+    {
+      "pool_id": "464",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1403"
+    },
+    {
+      "pool_id": "481",
+      "lockable_duration": "86400s",
+      "gauge_id": "1453"
+    },
+    {
+      "pool_id": "481",
+      "lockable_duration": "604800s",
+      "gauge_id": "1454"
+    },
+    {
+      "pool_id": "481",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1455"
+    },
+    {
+      "pool_id": "482",
+      "lockable_duration": "86400s",
+      "gauge_id": "1456"
+    },
+    {
+      "pool_id": "482",
+      "lockable_duration": "604800s",
+      "gauge_id": "1457"
+    },
+    {
+      "pool_id": "482",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1458"
+    },
+    {
+      "pool_id": "497",
+      "lockable_duration": "86400s",
+      "gauge_id": "1507"
+    },
+    {
+      "pool_id": "497",
+      "lockable_duration": "604800s",
+      "gauge_id": "1508"
+    },
+    {
+      "pool_id": "497",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1509"
+    },
+    {
+      "pool_id": "498",
+      "lockable_duration": "86400s",
+      "gauge_id": "1510"
+    },
+    {
+      "pool_id": "498",
+      "lockable_duration": "604800s",
+      "gauge_id": "1511"
+    },
+    {
+      "pool_id": "498",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1512"
+    },
+    {
+      "pool_id": "548",
+      "lockable_duration": "86400s",
+      "gauge_id": "1661"
+    },
+    {
+      "pool_id": "548",
+      "lockable_duration": "604800s",
+      "gauge_id": "1662"
+    },
+    {
+      "pool_id": "548",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1663"
+    },
+    {
+      "pool_id": "549",
+      "lockable_duration": "86400s",
+      "gauge_id": "1685"
+    },
+    {
+      "pool_id": "549",
+      "lockable_duration": "604800s",
+      "gauge_id": "1686"
+    },
+    {
+      "pool_id": "549",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1687"
+    },
+    {
+      "pool_id": "553",
+      "lockable_duration": "86400s",
+      "gauge_id": "1697"
+    },
+    {
+      "pool_id": "553",
+      "lockable_duration": "604800s",
+      "gauge_id": "1698"
+    },
+    {
+      "pool_id": "553",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1699"
+    },
+    {
+      "pool_id": "555",
+      "lockable_duration": "86400s",
+      "gauge_id": "1703"
+    },
+    {
+      "pool_id": "555",
+      "lockable_duration": "604800s",
+      "gauge_id": "1704"
+    },
+    {
+      "pool_id": "555",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1705"
+    },
+    {
+      "pool_id": "557",
+      "lockable_duration": "86400s",
+      "gauge_id": "1709"
+    },
+    {
+      "pool_id": "557",
+      "lockable_duration": "604800s",
+      "gauge_id": "1710"
+    },
+    {
+      "pool_id": "557",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1711"
+    },
+    {
+      "pool_id": "558",
+      "lockable_duration": "86400s",
+      "gauge_id": "1712"
+    },
+    {
+      "pool_id": "558",
+      "lockable_duration": "604800s",
+      "gauge_id": "1713"
+    },
+    {
+      "pool_id": "558",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1714"
+    },
+    {
+      "pool_id": "560",
+      "lockable_duration": "86400s",
+      "gauge_id": "1718"
+    },
+    {
+      "pool_id": "560",
+      "lockable_duration": "604800s",
+      "gauge_id": "1719"
+    },
+    {
+      "pool_id": "560",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1720"
+    },
+    {
+      "pool_id": "561",
+      "lockable_duration": "86400s",
+      "gauge_id": "1721"
+    },
+    {
+      "pool_id": "561",
+      "lockable_duration": "604800s",
+      "gauge_id": "1722"
+    },
+    {
+      "pool_id": "561",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1723"
+    },
+    {
+      "pool_id": "562",
+      "lockable_duration": "86400s",
+      "gauge_id": "1724"
+    },
+    {
+      "pool_id": "562",
+      "lockable_duration": "604800s",
+      "gauge_id": "1725"
+    },
+    {
+      "pool_id": "562",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1726"
+    },
+    {
+      "pool_id": "565",
+      "lockable_duration": "86400s",
+      "gauge_id": "1733"
+    },
+    {
+      "pool_id": "565",
+      "lockable_duration": "604800s",
+      "gauge_id": "1734"
+    },
+    {
+      "pool_id": "565",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1735"
+    },
+    {
+      "pool_id": "567",
+      "lockable_duration": "86400s",
+      "gauge_id": "1741"
+    },
+    {
+      "pool_id": "567",
+      "lockable_duration": "604800s",
+      "gauge_id": "1742"
+    },
+    {
+      "pool_id": "567",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1743"
+    },
+    {
+      "pool_id": "571",
+      "lockable_duration": "86400s",
+      "gauge_id": "1753"
+    },
+    {
+      "pool_id": "571",
+      "lockable_duration": "604800s",
+      "gauge_id": "1754"
+    },
+    {
+      "pool_id": "571",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1755"
+    },
+    {
+      "pool_id": "572",
+      "lockable_duration": "86400s",
+      "gauge_id": "1756"
+    },
+    {
+      "pool_id": "572",
+      "lockable_duration": "604800s",
+      "gauge_id": "1757"
+    },
+    {
+      "pool_id": "572",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1758"
+    },
+    {
+      "pool_id": "573",
+      "lockable_duration": "86400s",
+      "gauge_id": "1765"
+    },
+    {
+      "pool_id": "573",
+      "lockable_duration": "604800s",
+      "gauge_id": "1766"
+    },
+    {
+      "pool_id": "573",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1767"
+    },
+    {
+      "pool_id": "574",
+      "lockable_duration": "86400s",
+      "gauge_id": "1768"
+    },
+    {
+      "pool_id": "574",
+      "lockable_duration": "604800s",
+      "gauge_id": "1769"
+    },
+    {
+      "pool_id": "574",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1770"
+    },
+    {
+      "pool_id": "577",
+      "lockable_duration": "86400s",
+      "gauge_id": "1783"
+    },
+    {
+      "pool_id": "577",
+      "lockable_duration": "604800s",
+      "gauge_id": "1784"
+    },
+    {
+      "pool_id": "577",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1785"
+    },
+    {
+      "pool_id": "578",
+      "lockable_duration": "86400s",
+      "gauge_id": "1786"
+    },
+    {
+      "pool_id": "578",
+      "lockable_duration": "604800s",
+      "gauge_id": "1787"
+    },
+    {
+      "pool_id": "578",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1788"
+    },
+    {
+      "pool_id": "580",
+      "lockable_duration": "86400s",
+      "gauge_id": "1798"
+    },
+    {
+      "pool_id": "580",
+      "lockable_duration": "604800s",
+      "gauge_id": "1799"
+    },
+    {
+      "pool_id": "580",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1800"
+    },
+    {
+      "pool_id": "584",
+      "lockable_duration": "86400s",
+      "gauge_id": "1810"
+    },
+    {
+      "pool_id": "584",
+      "lockable_duration": "604800s",
+      "gauge_id": "1811"
+    },
+    {
+      "pool_id": "584",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1812"
+    },
+    {
+      "pool_id": "585",
+      "lockable_duration": "86400s",
+      "gauge_id": "1813"
+    },
+    {
+      "pool_id": "585",
+      "lockable_duration": "604800s",
+      "gauge_id": "1814"
+    },
+    {
+      "pool_id": "585",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1815"
+    },
+    {
+      "pool_id": "586",
+      "lockable_duration": "86400s",
+      "gauge_id": "1816"
+    },
+    {
+      "pool_id": "586",
+      "lockable_duration": "604800s",
+      "gauge_id": "1817"
+    },
+    {
+      "pool_id": "586",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1818"
+    },
+    {
+      "pool_id": "587",
+      "lockable_duration": "86400s",
+      "gauge_id": "1819"
+    },
+    {
+      "pool_id": "587",
+      "lockable_duration": "604800s",
+      "gauge_id": "1820"
+    },
+    {
+      "pool_id": "587",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1821"
+    },
+    {
+      "pool_id": "592",
+      "lockable_duration": "86400s",
+      "gauge_id": "1834"
+    },
+    {
+      "pool_id": "592",
+      "lockable_duration": "604800s",
+      "gauge_id": "1835"
+    },
+    {
+      "pool_id": "592",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1836"
+    },
+    {
+      "pool_id": "596",
+      "lockable_duration": "86400s",
+      "gauge_id": "1846"
+    },
+    {
+      "pool_id": "596",
+      "lockable_duration": "604800s",
+      "gauge_id": "1847"
+    },
+    {
+      "pool_id": "596",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1848"
+    },
+    {
+      "pool_id": "597",
+      "lockable_duration": "86400s",
+      "gauge_id": "1849"
+    },
+    {
+      "pool_id": "597",
+      "lockable_duration": "604800s",
+      "gauge_id": "1850"
+    },
+    {
+      "pool_id": "597",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1851"
+    },
+    {
+      "pool_id": "600",
+      "lockable_duration": "86400s",
+      "gauge_id": "1873"
+    },
+    {
+      "pool_id": "600",
+      "lockable_duration": "604800s",
+      "gauge_id": "1874"
+    },
+    {
+      "pool_id": "600",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1875"
+    },
+    {
+      "pool_id": "601",
+      "lockable_duration": "86400s",
+      "gauge_id": "1876"
+    },
+    {
+      "pool_id": "601",
+      "lockable_duration": "604800s",
+      "gauge_id": "1877"
+    },
+    {
+      "pool_id": "601",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1878"
+    },
+    {
+      "pool_id": "602",
+      "lockable_duration": "86400s",
+      "gauge_id": "1897"
+    },
+    {
+      "pool_id": "602",
+      "lockable_duration": "604800s",
+      "gauge_id": "1898"
+    },
+    {
+      "pool_id": "602",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1899"
+    },
+    {
+      "pool_id": "604",
+      "lockable_duration": "86400s",
+      "gauge_id": "1911"
+    },
+    {
+      "pool_id": "604",
+      "lockable_duration": "604800s",
+      "gauge_id": "1912"
+    },
+    {
+      "pool_id": "604",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1913"
+    },
+    {
+      "pool_id": "605",
+      "lockable_duration": "86400s",
+      "gauge_id": "1915"
+    },
+    {
+      "pool_id": "605",
+      "lockable_duration": "604800s",
+      "gauge_id": "1916"
+    },
+    {
+      "pool_id": "605",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1917"
+    },
+    {
+      "pool_id": "606",
+      "lockable_duration": "86400s",
+      "gauge_id": "1918"
+    },
+    {
+      "pool_id": "606",
+      "lockable_duration": "604800s",
+      "gauge_id": "1919"
+    },
+    {
+      "pool_id": "606",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1920"
+    },
+    {
+      "pool_id": "608",
+      "lockable_duration": "86400s",
+      "gauge_id": "1924"
+    },
+    {
+      "pool_id": "608",
+      "lockable_duration": "604800s",
+      "gauge_id": "1925"
+    },
+    {
+      "pool_id": "608",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1926"
+    },
+    {
+      "pool_id": "610",
+      "lockable_duration": "86400s",
+      "gauge_id": "1939"
+    },
+    {
+      "pool_id": "610",
+      "lockable_duration": "604800s",
+      "gauge_id": "1940"
+    },
+    {
+      "pool_id": "610",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1941"
+    },
+    {
+      "pool_id": "611",
+      "lockable_duration": "86400s",
+      "gauge_id": "1942"
+    },
+    {
+      "pool_id": "611",
+      "lockable_duration": "604800s",
+      "gauge_id": "1943"
+    },
+    {
+      "pool_id": "611",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1944"
+    },
+    {
+      "pool_id": "615",
+      "lockable_duration": "86400s",
+      "gauge_id": "1972"
+    },
+    {
+      "pool_id": "615",
+      "lockable_duration": "604800s",
+      "gauge_id": "1973"
+    },
+    {
+      "pool_id": "615",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1974"
+    },
+    {
+      "pool_id": "616",
+      "lockable_duration": "86400s",
+      "gauge_id": "1975"
+    },
+    {
+      "pool_id": "616",
+      "lockable_duration": "604800s",
+      "gauge_id": "1976"
+    },
+    {
+      "pool_id": "616",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1977"
+    },
+    {
+      "pool_id": "618",
+      "lockable_duration": "86400s",
+      "gauge_id": "1983"
+    },
+    {
+      "pool_id": "618",
+      "lockable_duration": "604800s",
+      "gauge_id": "1984"
+    },
+    {
+      "pool_id": "618",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1985"
+    },
+    {
+      "pool_id": "619",
+      "lockable_duration": "86400s",
+      "gauge_id": "1986"
+    },
+    {
+      "pool_id": "619",
+      "lockable_duration": "604800s",
+      "gauge_id": "1987"
+    },
+    {
+      "pool_id": "619",
+      "lockable_duration": "1209600s",
+      "gauge_id": "1988"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "assets": [
+    {
+      "denom": "gamm/pool/1",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/15",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/3",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/42",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/463",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/497",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/584",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/604",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/605",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/674",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/678",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/704",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/712",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/722",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/773",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/789",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/806",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/812",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/840",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/899",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    },
+    {
+      "denom": "gamm/pool/9",
+      "asset_type": "SuperfluidAssetTypeLPShare"
+    }
+  ]
+}

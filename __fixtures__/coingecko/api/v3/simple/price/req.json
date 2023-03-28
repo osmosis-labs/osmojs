@@ -1,0 +1,4 @@
+{
+    "url": "https://api.coingecko.com/api/v3/simple/price?ids=osmosis,ion,cosmos,terra-luna,crypto-com-chain,terrausd,secret,juno-network,persistence,terra-krw,akash-network,regen,sentinel,iris-network,starname,e-money,e-money-eur,likecoin,bitcanna,medibloc,comdex,cheqd-network,vidulum,stargaze,chihuahua-token&vs_currencies=usd",
+    "method": "GET"
+}

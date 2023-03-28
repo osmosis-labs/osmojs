@@ -1,0 +1,526 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test APR calculations calcPoolAprs pool#497 1`] = `
+{
+  "gaugeAprs": [
+    {
+      "apr": "12.943190055320448935",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "2560573858",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "13.99503455691078221",
+      "daysRemaining": 69,
+      "distributedCoinPerDay": {
+        "amount": "1388909868.68115942028986",
+        "denom": "ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED",
+      },
+      "isPerpetual": false,
+      "symbol": "JUNO",
+    },
+  ],
+  "superfluidApr": 5.28,
+  "swapFeeApr": {
+    "apr": "5.608470878012372265",
+    "swapFeeValuePerDay": "10096.75551816339857142857142",
+  },
+  "totalApr": "37.82669549024360341",
+}
+`;
+
+exports[`Test APR calculations calcPoolAprs pool#604 lockup-1 1`] = `
+{
+  "gaugeAprs": [
+    {
+      "apr": "160.64843197194232367",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "12045632211",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "57.730126991022910385",
+      "daysRemaining": 70,
+      "distributedCoinPerDay": {
+        "amount": "55555556424.42857142857143",
+        "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
+      },
+      "isPerpetual": false,
+      "symbol": "STARS",
+    },
+  ],
+  "superfluidApr": null,
+  "swapFeeApr": {
+    "apr": "9.153771984981903825",
+    "swapFeeValuePerDay": "6245.893724706363",
+  },
+  "totalApr": "227.53233094794713788",
+}
+`;
+
+exports[`Test APR calculations calcPoolAprs pool#604 lockup-7 1`] = `
+{
+  "gaugeAprs": [
+    {
+      "apr": "96.38910481319423105",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "7227382748",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "115.46025302490672154",
+      "daysRemaining": 70,
+      "distributedCoinPerDay": {
+        "amount": "111111111927.77142857142857",
+        "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
+      },
+      "isPerpetual": false,
+      "symbol": "STARS",
+    },
+  ],
+  "superfluidApr": null,
+  "swapFeeApr": {
+    "apr": "9.153771984981903825",
+    "swapFeeValuePerDay": "6245.893724706363",
+  },
+  "totalApr": "221.003129823082856415",
+}
+`;
+
+exports[`Test APR calculations calcPoolAprs pool#604 lockup-14 has-perpetual 1`] = `
+{
+  "gaugeAprs": [
+    {
+      "apr": "64.259389214200298735",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "4818254116",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "173.19037905211033226",
+      "daysRemaining": 70,
+      "distributedCoinPerDay": {
+        "amount": "166666667424.68571428571429",
+        "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
+      },
+      "isPerpetual": false,
+      "symbol": "STARS",
+    },
+  ],
+  "superfluidApr": 5.28,
+  "swapFeeApr": {
+    "apr": "9.153771984981903825",
+    "swapFeeValuePerDay": "6245.893724706363",
+  },
+  "totalApr": "251.88354025129253482",
+}
+`;
+
+exports[`Test APR calculations calcPoolAprs pool#604 lockup-14 no-perpetual 1`] = `
+{
+  "gaugeAprs": [
+    {
+      "apr": "64.259389214200298735",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "4818254116",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+  ],
+  "superfluidApr": 5.28,
+  "swapFeeApr": {
+    "apr": "9.153771984981903825",
+    "swapFeeValuePerDay": "6245.893724706363",
+  },
+  "totalApr": "78.69316119918220256",
+}
+`;
+
+exports[`Test APR calculations calcPoolAprs pool#605 1`] = `
+{
+  "gaugeAprs": [
+    {
+      "apr": "46.472872894663064345",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "1341688865",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "158.644204932075392035",
+      "daysRemaining": 161,
+      "distributedCoinPerDay": {
+        "amount": "9802777778561.24844720496924",
+        "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
+      },
+      "isPerpetual": false,
+      "symbol": "HUAHUA",
+    },
+  ],
+  "superfluidApr": 5.28,
+  "swapFeeApr": {
+    "apr": "7.81809531777339549",
+    "swapFeeValuePerDay": "2053.97261021461942857142858",
+  },
+  "totalApr": "218.21517314451185187",
+}
+`;
+
+exports[`Test pool calculations calcCoinsNeededForValue 0 for pool#1 1`] = `
+[
+  {
+    "amount": "0",
+    "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "displayAmount": "0",
+    "shareTotalValue": "0",
+    "symbol": "ATOM",
+    "totalDollarValue": "226964145.58592049",
+    "unitRatio": "0",
+  },
+  {
+    "amount": "0",
+    "denom": "uosmo",
+    "displayAmount": "0",
+    "shareTotalValue": "0",
+    "symbol": "OSMO",
+    "totalDollarValue": "219898456.741054",
+    "unitRatio": "0",
+  },
+]
+`;
+
+exports[`Test pool calculations calcCoinsNeededForValue 10 for pool#1 1`] = `
+[
+  {
+    "amount": "136500",
+    "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "displayAmount": "0.13650013650013650014",
+    "shareTotalValue": "5",
+    "symbol": "ATOM",
+    "totalDollarValue": "226964145.58592049",
+    "unitRatio": "2.202991131966e-8",
+  },
+  {
+    "amount": "549450",
+    "denom": "uosmo",
+    "displayAmount": "0.54945054945054945055",
+    "shareTotalValue": "5",
+    "symbol": "OSMO",
+    "totalDollarValue": "219898456.741054",
+    "unitRatio": "2.273776757737e-8",
+  },
+]
+`;
+
+exports[`Test pool calculations calcCoinsNeededForValue 10 for pool#497 1`] = `
+[
+  {
+    "amount": "275633",
+    "denom": "ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED",
+    "displayAmount": "0.27563395810363836825",
+    "shareTotalValue": "5",
+    "symbol": "JUNO",
+    "totalDollarValue": "33383106.20983148",
+    "unitRatio": "1.4977635599792e-7",
+  },
+  {
+    "amount": "549450",
+    "denom": "uosmo",
+    "displayAmount": "0.54945054945054945055",
+    "shareTotalValue": "5",
+    "symbol": "OSMO",
+    "totalDollarValue": "32326707.4682188",
+    "unitRatio": "1.5467087097922e-7",
+  },
+]
+`;
+
+exports[`Test pool calculations calcCoinsNeededForValue 10 for pool#604 1`] = `
+[
+  {
+    "amount": "7051808",
+    "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
+    "displayAmount": "7.05180822466496859125",
+    "shareTotalValue": "5",
+    "symbol": "STARS",
+    "totalDollarValue": "13817947.976249658516",
+    "unitRatio": "3.6184822873802e-7",
+  },
+  {
+    "amount": "549450",
+    "denom": "uosmo",
+    "displayAmount": "0.54945054945054945055",
+    "shareTotalValue": "5",
+    "symbol": "OSMO",
+    "totalDollarValue": "11087098.9624122",
+    "unitRatio": "4.5097459822007e-7",
+  },
+]
+`;
+
+exports[`Test pool calculations calcMaxCoinsForPool pool#1 1`] = `
+[
+  {
+    "amount": "838542",
+    "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+  },
+  {
+    "amount": "3375361",
+    "denom": "uosmo",
+  },
+]
+`;
+
+exports[`Test pool calculations calcMaxCoinsForPool pool#25 1`] = `
+[
+  {
+    "amount": "0",
+    "denom": "ibc/1DCC8A6CB5689018431323953344A9F6CC4D0BFB261E88C9F7777372C10CD076",
+  },
+  {
+    "amount": "0",
+    "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+  },
+  {
+    "amount": "0",
+    "denom": "uosmo",
+  },
+]
+`;
+
+exports[`Test pool calculations calcMaxCoinsForPool pool#604 1`] = `
+[
+  {
+    "amount": "67812902",
+    "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
+  },
+  {
+    "amount": "5283728",
+    "denom": "uosmo",
+  },
+]
+`;
+
+exports[`Test pool calculations convertDollarValueToCoins 0 dollar 1`] = `
+[
+  {
+    "amount": "0",
+    "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "displayAmount": "0",
+    "symbol": "ATOM",
+    "value": "0",
+  },
+  {
+    "amount": "0",
+    "denom": "uosmo",
+    "displayAmount": "0",
+    "symbol": "OSMO",
+    "value": "0",
+  },
+]
+`;
+
+exports[`Test pool calculations convertDollarValueToCoins 2 token pool 1`] = `
+[
+  {
+    "amount": "136500.13650013650014",
+    "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "displayAmount": "0.13650013650013650014",
+    "symbol": "ATOM",
+    "value": "5",
+  },
+  {
+    "amount": "549450.54945054945055",
+    "denom": "uosmo",
+    "displayAmount": "0.54945054945054945055",
+    "symbol": "OSMO",
+    "value": "5",
+  },
+]
+`;
+
+exports[`Test pool calculations convertDollarValueToCoins 3 token pool 1`] = `
+[
+  {
+    "amount": "7071428.57142857142857",
+    "denom": "ibc/1DCC8A6CB5689018431323953344A9F6CC4D0BFB261E88C9F7777372C10CD076",
+    "displayAmount": "7.07142857142857142857",
+    "symbol": "REGEN",
+    "value": "9.9",
+  },
+  {
+    "amount": "1365.001365001365",
+    "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "displayAmount": "0.001365001365001365",
+    "symbol": "ATOM",
+    "value": "0.05",
+  },
+  {
+    "amount": "5494.50549450549451",
+    "denom": "uosmo",
+    "displayAmount": "0.00549450549450549451",
+    "symbol": "OSMO",
+    "value": "0.05",
+  },
+]
+`;
+
+exports[`Test pool calculations convertDollarValueToCoins 4 token pool 1`] = `
+[
+  {
+    "amount": "1785714.28571428571429",
+    "denom": "ibc/1DCC8A6CB5689018431323953344A9F6CC4D0BFB261E88C9F7777372C10CD076",
+    "displayAmount": "1.78571428571428571429",
+    "symbol": "REGEN",
+    "value": "2.5",
+  },
+  {
+    "amount": "68250.06825006825007",
+    "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "displayAmount": "0.06825006825006825007",
+    "symbol": "ATOM",
+    "value": "2.5",
+  },
+  {
+    "amount": "642673.52185089974293",
+    "denom": "ibc/A0CC0CF735BFB30E730C70019D4218A1244FF383503FF7579C9201AB93CA9293",
+    "displayAmount": "0.64267352185089974293",
+    "symbol": "XPRT",
+    "value": "2.5",
+  },
+  {
+    "amount": "274725.27472527472527",
+    "denom": "uosmo",
+    "displayAmount": "0.27472527472527472527",
+    "symbol": "OSMO",
+    "value": "2.5",
+  },
+]
+`;
+
+exports[`Test pool calculations makePoolPairs 1`] = `
+[
+  {
+    "baseAddress": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "baseName": "atom",
+    "baseSymbol": "ATOM",
+    "poolAddress": "osmo1mw0ac6rwlp5r8wapwk3zs6g29h8fcscxqakdzw9emkne6c8wjp9q0t3v8t",
+    "poolId": "1",
+    "quoteAddress": "uosmo",
+    "quoteName": "osmo",
+    "quoteSymbol": "OSMO",
+  },
+  {
+    "baseAddress": "uion",
+    "baseName": "ion",
+    "baseSymbol": "ION",
+    "poolAddress": "osmo1500hy75krs9e8t50aav6fahk8sxhajn9ctp40qwvvn8tcprkk6wszun4a5",
+    "poolId": "2",
+    "quoteAddress": "uosmo",
+    "quoteName": "osmo",
+    "quoteSymbol": "OSMO",
+  },
+  {
+    "baseAddress": "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4",
+    "baseName": "akt",
+    "baseSymbol": "AKT",
+    "poolAddress": "osmo1c9gj5nwxhuh2gz7wwg4r8e8tw8v7ggy9lh2hu7kkdgh0t450754qh9cpvd",
+    "poolId": "3",
+    "quoteAddress": "uosmo",
+    "quoteName": "osmo",
+    "quoteSymbol": "OSMO",
+  },
+  {
+    "baseAddress": "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4",
+    "baseName": "akt",
+    "baseSymbol": "AKT",
+    "poolAddress": "osmo1lzwv0glchfcw0fpwzdwfdsepmvluv6z6eh4qunxdml33sj06q3yq7xwtde",
+    "poolId": "4",
+    "quoteAddress": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "quoteName": "atom",
+    "quoteSymbol": "ATOM",
+  },
+  {
+    "baseAddress": "ibc/9712DBB13B9631EDFA9BF61B55F1B2D290B2ADB67E3A4EB3A875F3B6081B3B84",
+    "baseName": "dvpn",
+    "baseSymbol": "DVPN",
+    "poolAddress": "osmo1j5l9ysw5xv0uqz9uh7mcg0l5rlerqm695ec9kkg2t8rp600zv47q82eqwa",
+    "poolId": "5",
+    "quoteAddress": "uosmo",
+    "quoteName": "osmo",
+    "quoteSymbol": "OSMO",
+  },
+  {
+    "baseAddress": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "baseName": "atom",
+    "baseSymbol": "ATOM",
+    "poolAddress": "osmo1p0rpttlp8v2hy7m82l2t9p6545788f2ac3yksgrlycke2wr4mu0qdr7ytu",
+    "poolId": "6",
+    "quoteAddress": "ibc/9712DBB13B9631EDFA9BF61B55F1B2D290B2ADB67E3A4EB3A875F3B6081B3B84",
+    "quoteName": "dvpn",
+    "quoteSymbol": "DVPN",
+  },
+  {
+    "baseAddress": "ibc/7C4D60AA95E5A7558B0A364860979CA34B7FF8AAF255B87AF9E879374470CEC0",
+    "baseName": "iris",
+    "baseSymbol": "IRIS",
+    "poolAddress": "osmo13jr3p5p070h4pu7sxhtldag9899sev9pwx0r2vlvpkyravpxlqssnzsuq9",
+    "poolId": "7",
+    "quoteAddress": "uosmo",
+    "quoteName": "osmo",
+    "quoteSymbol": "OSMO",
+  },
+  {
+    "baseAddress": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "baseName": "atom",
+    "baseSymbol": "ATOM",
+    "poolAddress": "osmo1605py4r32r73csszlqpz6n5t5sgax9gjjfnm68jnd7pv6qe4l54ql0w8ku",
+    "poolId": "8",
+    "quoteAddress": "ibc/7C4D60AA95E5A7558B0A364860979CA34B7FF8AAF255B87AF9E879374470CEC0",
+    "quoteName": "iris",
+    "quoteSymbol": "IRIS",
+  },
+  {
+    "baseAddress": "ibc/E6931F78057F7CC5DA0FD6CEF82FF39373A6E0452BF1FD76910B93292CF356C1",
+    "baseName": "cro",
+    "baseSymbol": "CRO",
+    "poolAddress": "osmo19fm8jtzyw8ujsnsqm5rznudn8fhhkykjh4ra8rvx9lsfslw2pc2sp36h3r",
+    "poolId": "9",
+    "quoteAddress": "uosmo",
+    "quoteName": "osmo",
+    "quoteSymbol": "OSMO",
+  },
+  {
+    "baseAddress": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+    "baseName": "atom",
+    "baseSymbol": "ATOM",
+    "poolAddress": "osmo1krp38zzc3zz5as9ndqkyskhkzv6x9e30ckcq5g4lcsu5wpwcqy0sa3dea2",
+    "poolId": "10",
+    "quoteAddress": "ibc/E6931F78057F7CC5DA0FD6CEF82FF39373A6E0452BF1FD76910B93292CF356C1",
+    "quoteName": "cro",
+    "quoteSymbol": "CRO",
+  },
+]
+`;
