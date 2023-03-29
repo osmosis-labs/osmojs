@@ -3,14 +3,14 @@ import { coins } from '@cosmjs/amino';
 export const GAS_VALUES = {
     osmosis: {
         createPool: '250000',
-        joinPool: '140000',
-        joinSwapExternAmountIn: '140000',
-        exitPool: '140000',
+        joinPool: '250000',
+        joinSwapExternAmountIn: '250000',
+        exitPool: '250000',
         swapExactAmountIn: '250000',
         swapExactAmountOut: '250000',
         lockTokens: '250000',
-        beginUnlocking: '140000',
-        unlockPeriodLock: '140000',
+        beginUnlocking: '250000',
+        unlockPeriodLock: '250000',
     }
 };
 
