@@ -3,6 +3,7 @@ import { QueryClient } from "@cosmjs/stargate";
 import { QueryPoolsRequest, QueryPoolsResponse, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryPoolsWithFilterRequest, QueryPoolsWithFilterResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolTypeRequest, QueryPoolTypeResponse, QueryCalcJoinPoolNoSwapSharesRequest, QueryCalcJoinPoolNoSwapSharesResponse, QueryCalcJoinPoolSharesRequest, QueryCalcJoinPoolSharesResponse, QueryCalcExitPoolCoinsFromSharesRequest, QueryCalcExitPoolCoinsFromSharesResponse, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalSharesRequest, QueryTotalSharesResponse, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse } from "./query";
 export interface Query {
     pools(request?: QueryPoolsRequest): Promise<QueryPoolsResponse>;
+    /** Deprecated: please use the alternative in x/poolmanager */
     numPools(request?: QueryNumPoolsRequest): Promise<QueryNumPoolsResponse>;
     totalLiquidity(request?: QueryTotalLiquidityRequest): Promise<QueryTotalLiquidityResponse>;
     /**
@@ -33,8 +34,9 @@ export interface Query {
      * a base denomination and a quote denomination.
      */
     spotPrice(request: QuerySpotPriceRequest): Promise<QuerySpotPriceResponse>;
-    /** Estimate the swap. */
+    /** Deprecated: please use the alternative in x/poolmanager */
     estimateSwapExactAmountIn(request: QuerySwapExactAmountInRequest): Promise<QuerySwapExactAmountInResponse>;
+    /** Deprecated: please use the alternative in x/poolmanager */
     estimateSwapExactAmountOut(request: QuerySwapExactAmountOutRequest): Promise<QuerySwapExactAmountOutResponse>;
 }
 export declare class QueryClientImpl implements Query {

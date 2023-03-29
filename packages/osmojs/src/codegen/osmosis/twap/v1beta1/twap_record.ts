@@ -37,6 +37,7 @@ export interface TwapRecord {
   p1LastSpotPrice: string;
   p0ArithmeticTwapAccumulator: string;
   p1ArithmeticTwapAccumulator: string;
+  geometricTwapAccumulator: string;
   /**
    * This field contains the time in which the last spot price error occured.
    * It is used to alert the caller if they are getting a potentially erroneous
@@ -81,6 +82,7 @@ export interface TwapRecordSDKType {
   p1_last_spot_price: string;
   p0_arithmetic_twap_accumulator: string;
   p1_arithmetic_twap_accumulator: string;
+  geometric_twap_accumulator: string;
   /**
    * This field contains the time in which the last spot price error occured.
    * It is used to alert the caller if they are getting a potentially erroneous
@@ -101,6 +103,7 @@ function createBaseTwapRecord(): TwapRecord {
     p1LastSpotPrice: "",
     p0ArithmeticTwapAccumulator: "",
     p1ArithmeticTwapAccumulator: "",
+    geometricTwapAccumulator: "",
     lastErrorTime: undefined
   };
 }
@@ -141,6 +144,10 @@ export const TwapRecord = {
 
     if (message.p1ArithmeticTwapAccumulator !== "") {
       writer.uint32(74).string(message.p1ArithmeticTwapAccumulator);
+    }
+
+    if (message.geometricTwapAccumulator !== "") {
+      writer.uint32(82).string(message.geometricTwapAccumulator);
     }
 
     if (message.lastErrorTime !== undefined) {
@@ -195,6 +202,10 @@ export const TwapRecord = {
           message.p1ArithmeticTwapAccumulator = reader.string();
           break;
 
+        case 10:
+          message.geometricTwapAccumulator = reader.string();
+          break;
+
         case 11:
           message.lastErrorTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
@@ -219,6 +230,7 @@ export const TwapRecord = {
     message.p1LastSpotPrice = object.p1LastSpotPrice ?? "";
     message.p0ArithmeticTwapAccumulator = object.p0ArithmeticTwapAccumulator ?? "";
     message.p1ArithmeticTwapAccumulator = object.p1ArithmeticTwapAccumulator ?? "";
+    message.geometricTwapAccumulator = object.geometricTwapAccumulator ?? "";
     message.lastErrorTime = object.lastErrorTime ?? undefined;
     return message;
   }

@@ -42,7 +42,7 @@ export class LCDQueryClient {
     const endpoint = `osmosis/gamm/v1beta1/pools`;
     return await this.req.get<QueryPoolsResponseSDKType>(endpoint, options);
   }
-  /* NumPools */
+  /* Deprecated: please use the alternative in x/poolmanager */
 
 
   async numPools(_params: QueryNumPoolsRequest = {}): Promise<QueryNumPoolsResponseSDKType> {
@@ -167,7 +167,7 @@ export class LCDQueryClient {
     const endpoint = `osmosis/gamm/v1beta1/pools/${params.poolId}/prices`;
     return await this.req.get<QuerySpotPriceResponseSDKType>(endpoint, options);
   }
-  /* Estimate the swap. */
+  /* Deprecated: please use the alternative in x/poolmanager */
 
 
   async estimateSwapExactAmountIn(params: QuerySwapExactAmountInRequest): Promise<QuerySwapExactAmountInResponseSDKType> {
@@ -190,7 +190,7 @@ export class LCDQueryClient {
     const endpoint = `osmosis/gamm/v1beta1/${params.poolId}/estimate/swap_exact_amount_in`;
     return await this.req.get<QuerySwapExactAmountInResponseSDKType>(endpoint, options);
   }
-  /* EstimateSwapExactAmountOut */
+  /* Deprecated: please use the alternative in x/poolmanager */
 
 
   async estimateSwapExactAmountOut(params: QuerySwapExactAmountOutRequest): Promise<QuerySwapExactAmountOutResponseSDKType> {

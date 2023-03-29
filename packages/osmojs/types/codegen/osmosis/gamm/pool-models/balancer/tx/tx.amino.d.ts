@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgCreateBalancerPool } from "./tx";
+import { MsgCreateBalancerPool, MsgMigrateSharesToFullRangeConcentratedPosition } from "./tx";
 export interface AminoMsgCreateBalancerPool extends AminoMsg {
     type: "osmosis/gamm/poolmodels/balancer/create-balancer-pool";
     value: {
@@ -42,10 +42,26 @@ export interface AminoMsgCreateBalancerPool extends AminoMsg {
         future_pool_governor: string;
     };
 }
+export interface AminoMsgMigrateSharesToFullRangeConcentratedPosition extends AminoMsg {
+    type: "osmosis/gamm/poolmodels/balancer/migrate-shares-to-full-range-concentrated-position";
+    value: {
+        sender: string;
+        shares_to_migrate: {
+            denom: string;
+            amount: string;
+        };
+        pool_id_entering: string;
+    };
+}
 export declare const AminoConverter: {
     "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPool": {
         aminoType: string;
         toAmino: ({ sender, poolParams, poolAssets, futurePoolGovernor }: MsgCreateBalancerPool) => AminoMsgCreateBalancerPool["value"];
         fromAmino: ({ sender, pool_params, pool_assets, future_pool_governor }: AminoMsgCreateBalancerPool["value"]) => MsgCreateBalancerPool;
+    };
+    "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPosition": {
+        aminoType: string;
+        toAmino: ({ sender, sharesToMigrate, poolIdEntering }: MsgMigrateSharesToFullRangeConcentratedPosition) => AminoMsgMigrateSharesToFullRangeConcentratedPosition["value"];
+        fromAmino: ({ sender, shares_to_migrate, pool_id_entering }: AminoMsgMigrateSharesToFullRangeConcentratedPosition["value"]) => MsgMigrateSharesToFullRangeConcentratedPosition;
     };
 };

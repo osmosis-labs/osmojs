@@ -33,6 +33,12 @@ export const createRPCQueryClient = async ({
       }
     },
     osmosis: {
+      concentratedliquidity: {
+        v1beta1: (await import("./concentrated-liquidity/pool-model/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      downtimedetector: {
+        v1beta1: (await import("./downtime-detector/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
       epochs: {
         v1beta1: (await import("./epochs/query.rpc.Query")).createRpcQueryExtension(client)
       },
@@ -51,6 +57,12 @@ export const createRPCQueryClient = async ({
       poolincentives: {
         v1beta1: (await import("./pool-incentives/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
+      poolmanager: {
+        v1beta1: (await import("./poolmanager/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      protorev: {
+        v1beta1: (await import("./protorev/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
       superfluid: (await import("./superfluid/query.rpc.Query")).createRpcQueryExtension(client),
       tokenfactory: {
         v1beta1: (await import("./tokenfactory/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
@@ -60,6 +72,9 @@ export const createRPCQueryClient = async ({
       },
       txfees: {
         v1beta1: (await import("./txfees/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      valsetpref: {
+        v1beta1: (await import("./valset-pref/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       }
     }
   };
