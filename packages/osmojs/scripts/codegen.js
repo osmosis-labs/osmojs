@@ -14,11 +14,11 @@ telescope({
   protoDirs,
   outPath,
   options: {
-    experimentalGlobalProtoNamespace: true,
     removeUnusedImports: true,
     tsDisable: {
       patterns: ['**/*amino.ts', '**/*registry.ts']
     },
+    experimentalGlobalProtoNamespace: true, //  [ 'v1beta1' ] concentratedliquidity
     prototypes: {
       excluded: {
         packages: [
