@@ -28,25 +28,23 @@ export interface MsgCreateBalancerPoolResponseSDKType {
 export interface MsgMigrateSharesToFullRangeConcentratedPosition {
     sender: string;
     sharesToMigrate?: Coin;
-    /** temporary field, eventually gamm pool should be linked to cl pool */
-    poolIdEntering: Long;
 }
 /** ===================== MsgMigrateSharesToFullRangeConcentratedPosition */
 export interface MsgMigrateSharesToFullRangeConcentratedPositionSDKType {
     sender: string;
     shares_to_migrate?: CoinSDKType;
-    /** temporary field, eventually gamm pool should be linked to cl pool */
-    pool_id_entering: Long;
 }
 export interface MsgMigrateSharesToFullRangeConcentratedPositionResponse {
     amount0: string;
     amount1: string;
     liquidityCreated: string;
+    joinTime?: Date;
 }
 export interface MsgMigrateSharesToFullRangeConcentratedPositionResponseSDKType {
     amount0: string;
     amount1: string;
     liquidity_created: string;
+    join_time?: Date;
 }
 export declare const MsgCreateBalancerPool: {
     encode(message: MsgCreateBalancerPool, writer?: _m0.Writer): _m0.Writer;

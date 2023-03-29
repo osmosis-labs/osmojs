@@ -1,6 +1,6 @@
 import { Params, ParamsSDKType } from "./params";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { PoolStatistics, PoolStatisticsSDKType, TokenPairArbRoutes, TokenPairArbRoutesSDKType } from "./protorev";
+import { RouteStatistics, RouteStatisticsSDKType, TokenPairArbRoutes, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsSDKType, BaseDenom, BaseDenomSDKType } from "./protorev";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -109,75 +109,75 @@ export interface QueryGetProtoRevAllProfitsResponseSDKType {
 }
 /**
  * QueryGetProtoRevStatisticsByPoolRequest is request type for the
- * Query/GetProtoRevStatisticsByPool RPC method.
+ * Query/GetProtoRevStatisticsByRoute RPC method.
  */
-export interface QueryGetProtoRevStatisticsByPoolRequest {
-    /** pool_id is the pool id to query statistics by */
-    poolId: Long;
+export interface QueryGetProtoRevStatisticsByRouteRequest {
+    /** route is the set of pool ids to query statistics by i.e. 1,2,3 */
+    route: Long[];
 }
 /**
  * QueryGetProtoRevStatisticsByPoolRequest is request type for the
- * Query/GetProtoRevStatisticsByPool RPC method.
+ * Query/GetProtoRevStatisticsByRoute RPC method.
  */
-export interface QueryGetProtoRevStatisticsByPoolRequestSDKType {
-    /** pool_id is the pool id to query statistics by */
-    pool_id: Long;
+export interface QueryGetProtoRevStatisticsByRouteRequestSDKType {
+    /** route is the set of pool ids to query statistics by i.e. 1,2,3 */
+    route: Long[];
 }
 /**
- * QueryGetProtoRevStatisticsByPoolResponse is response type for the
- * Query/GetProtoRevStatisticsByPool RPC method.
+ * QueryGetProtoRevStatisticsByRouteResponse is response type for the
+ * Query/GetProtoRevStatisticsByRoute RPC method.
  */
-export interface QueryGetProtoRevStatisticsByPoolResponse {
+export interface QueryGetProtoRevStatisticsByRouteResponse {
     /**
      * statistics contains the number of trades the module has executed after a
      * swap on a given pool and the profits from the trades
      */
-    statistics?: PoolStatistics;
+    statistics?: RouteStatistics;
 }
 /**
- * QueryGetProtoRevStatisticsByPoolResponse is response type for the
- * Query/GetProtoRevStatisticsByPool RPC method.
+ * QueryGetProtoRevStatisticsByRouteResponse is response type for the
+ * Query/GetProtoRevStatisticsByRoute RPC method.
  */
-export interface QueryGetProtoRevStatisticsByPoolResponseSDKType {
+export interface QueryGetProtoRevStatisticsByRouteResponseSDKType {
     /**
      * statistics contains the number of trades the module has executed after a
      * swap on a given pool and the profits from the trades
      */
-    statistics?: PoolStatisticsSDKType;
+    statistics?: RouteStatisticsSDKType;
 }
 /**
- * QueryGetProtoRevAllStatisticsRequest is request type for the
- * Query/GetProtoRevAllStatistics RPC method.
+ * QueryGetProtoRevAllRouteStatisticsRequest is request type for the
+ * Query/GetProtoRevAllRouteStatistics RPC method.
  */
-export interface QueryGetProtoRevAllStatisticsRequest {
+export interface QueryGetProtoRevAllRouteStatisticsRequest {
 }
 /**
- * QueryGetProtoRevAllStatisticsRequest is request type for the
- * Query/GetProtoRevAllStatistics RPC method.
+ * QueryGetProtoRevAllRouteStatisticsRequest is request type for the
+ * Query/GetProtoRevAllRouteStatistics RPC method.
  */
-export interface QueryGetProtoRevAllStatisticsRequestSDKType {
+export interface QueryGetProtoRevAllRouteStatisticsRequestSDKType {
 }
 /**
- * QueryGetProtoRevAllStatisticsResponse is response type for the
- * Query/GetProtoRevAllStatistics RPC method.
+ * QueryGetProtoRevAllRouteStatisticsResponse is response type for the
+ * Query/GetProtoRevAllRouteStatistics RPC method.
  */
-export interface QueryGetProtoRevAllStatisticsResponse {
+export interface QueryGetProtoRevAllRouteStatisticsResponse {
     /**
-     * statistics contains the number of trades the module has executed after a
-     * swap on a given pool and the profits from the trades for all pools
+     * statistics contains the number of trades/profits the module has executed on
+     * all routes it has successfully executed a trade on
      */
-    statistics: PoolStatistics[];
+    statistics: RouteStatistics[];
 }
 /**
- * QueryGetProtoRevAllStatisticsResponse is response type for the
- * Query/GetProtoRevAllStatistics RPC method.
+ * QueryGetProtoRevAllRouteStatisticsResponse is response type for the
+ * Query/GetProtoRevAllRouteStatistics RPC method.
  */
-export interface QueryGetProtoRevAllStatisticsResponseSDKType {
+export interface QueryGetProtoRevAllRouteStatisticsResponseSDKType {
     /**
-     * statistics contains the number of trades the module has executed after a
-     * swap on a given pool and the profits from the trades for all pools
+     * statistics contains the number of trades/profits the module has executed on
+     * all routes it has successfully executed a trade on
      */
-    statistics: PoolStatisticsSDKType[];
+    statistics: RouteStatisticsSDKType[];
 }
 /**
  * QueryGetProtoRevTokenPairArbRoutesRequest is request type for the
@@ -212,6 +212,214 @@ export interface QueryGetProtoRevTokenPairArbRoutesResponseSDKType {
      * arbitraging
      */
     routes: TokenPairArbRoutesSDKType[];
+}
+/**
+ * QueryGetProtoRevAdminAccountRequest is request type for the
+ * Query/GetProtoRevAdminAccount RPC method.
+ */
+export interface QueryGetProtoRevAdminAccountRequest {
+}
+/**
+ * QueryGetProtoRevAdminAccountRequest is request type for the
+ * Query/GetProtoRevAdminAccount RPC method.
+ */
+export interface QueryGetProtoRevAdminAccountRequestSDKType {
+}
+/**
+ * QueryGetProtoRevAdminAccountResponse is response type for the
+ * Query/GetProtoRevAdminAccount RPC method.
+ */
+export interface QueryGetProtoRevAdminAccountResponse {
+    /** admin_account is the admin account of the module */
+    adminAccount: string;
+}
+/**
+ * QueryGetProtoRevAdminAccountResponse is response type for the
+ * Query/GetProtoRevAdminAccount RPC method.
+ */
+export interface QueryGetProtoRevAdminAccountResponseSDKType {
+    /** admin_account is the admin account of the module */
+    admin_account: string;
+}
+/**
+ * QueryGetProtoRevDeveloperAccountRequest is request type for the
+ * Query/GetProtoRevDeveloperAccount RPC method.
+ */
+export interface QueryGetProtoRevDeveloperAccountRequest {
+}
+/**
+ * QueryGetProtoRevDeveloperAccountRequest is request type for the
+ * Query/GetProtoRevDeveloperAccount RPC method.
+ */
+export interface QueryGetProtoRevDeveloperAccountRequestSDKType {
+}
+/**
+ * QueryGetProtoRevDeveloperAccountResponse is response type for the
+ * Query/GetProtoRevDeveloperAccount RPC method.
+ */
+export interface QueryGetProtoRevDeveloperAccountResponse {
+    /** developer_account is the developer account of the module */
+    developerAccount: string;
+}
+/**
+ * QueryGetProtoRevDeveloperAccountResponse is response type for the
+ * Query/GetProtoRevDeveloperAccount RPC method.
+ */
+export interface QueryGetProtoRevDeveloperAccountResponseSDKType {
+    /** developer_account is the developer account of the module */
+    developer_account: string;
+}
+/**
+ * QueryGetProtoRevPoolWeightsRequest is request type for the
+ * Query/GetProtoRevPoolWeights RPC method.
+ */
+export interface QueryGetProtoRevPoolWeightsRequest {
+}
+/**
+ * QueryGetProtoRevPoolWeightsRequest is request type for the
+ * Query/GetProtoRevPoolWeights RPC method.
+ */
+export interface QueryGetProtoRevPoolWeightsRequestSDKType {
+}
+/**
+ * QueryGetProtoRevPoolWeightsResponse is response type for the
+ * Query/GetProtoRevPoolWeights RPC method.
+ */
+export interface QueryGetProtoRevPoolWeightsResponse {
+    /** pool_weights is a list of all of the pool weights */
+    poolWeights?: PoolWeights;
+}
+/**
+ * QueryGetProtoRevPoolWeightsResponse is response type for the
+ * Query/GetProtoRevPoolWeights RPC method.
+ */
+export interface QueryGetProtoRevPoolWeightsResponseSDKType {
+    /** pool_weights is a list of all of the pool weights */
+    pool_weights?: PoolWeightsSDKType;
+}
+/**
+ * QueryGetProtoRevMaxPoolPointsPerBlockRequest is request type for the
+ * Query/GetProtoRevMaxPoolPointsPerBlock RPC method.
+ */
+export interface QueryGetProtoRevMaxPoolPointsPerBlockRequest {
+}
+/**
+ * QueryGetProtoRevMaxPoolPointsPerBlockRequest is request type for the
+ * Query/GetProtoRevMaxPoolPointsPerBlock RPC method.
+ */
+export interface QueryGetProtoRevMaxPoolPointsPerBlockRequestSDKType {
+}
+/**
+ * QueryGetProtoRevMaxPoolPointsPerBlockResponse is response type for the
+ * Query/GetProtoRevMaxPoolPointsPerBlock RPC method.
+ */
+export interface QueryGetProtoRevMaxPoolPointsPerBlockResponse {
+    /**
+     * max_pool_points_per_block is the maximum number of pool points that can be
+     * consumed per block
+     */
+    maxPoolPointsPerBlock: Long;
+}
+/**
+ * QueryGetProtoRevMaxPoolPointsPerBlockResponse is response type for the
+ * Query/GetProtoRevMaxPoolPointsPerBlock RPC method.
+ */
+export interface QueryGetProtoRevMaxPoolPointsPerBlockResponseSDKType {
+    /**
+     * max_pool_points_per_block is the maximum number of pool points that can be
+     * consumed per block
+     */
+    max_pool_points_per_block: Long;
+}
+/**
+ * QueryGetProtoRevMaxPoolPointsPerTxRequest is request type for the
+ * Query/GetProtoRevMaxPoolPointsPerTx RPC method.
+ */
+export interface QueryGetProtoRevMaxPoolPointsPerTxRequest {
+}
+/**
+ * QueryGetProtoRevMaxPoolPointsPerTxRequest is request type for the
+ * Query/GetProtoRevMaxPoolPointsPerTx RPC method.
+ */
+export interface QueryGetProtoRevMaxPoolPointsPerTxRequestSDKType {
+}
+/**
+ * QueryGetProtoRevMaxPoolPointsPerTxResponse is response type for the
+ * Query/GetProtoRevMaxPoolPointsPerTx RPC method.
+ */
+export interface QueryGetProtoRevMaxPoolPointsPerTxResponse {
+    /**
+     * max_pool_points_per_tx is the maximum number of pool points that can be
+     * consumed per transaction
+     */
+    maxPoolPointsPerTx: Long;
+}
+/**
+ * QueryGetProtoRevMaxPoolPointsPerTxResponse is response type for the
+ * Query/GetProtoRevMaxPoolPointsPerTx RPC method.
+ */
+export interface QueryGetProtoRevMaxPoolPointsPerTxResponseSDKType {
+    /**
+     * max_pool_points_per_tx is the maximum number of pool points that can be
+     * consumed per transaction
+     */
+    max_pool_points_per_tx: Long;
+}
+/**
+ * QueryGetProtoRevBaseDenomsRequest is request type for the
+ * Query/GetProtoRevBaseDenoms RPC method.
+ */
+export interface QueryGetProtoRevBaseDenomsRequest {
+}
+/**
+ * QueryGetProtoRevBaseDenomsRequest is request type for the
+ * Query/GetProtoRevBaseDenoms RPC method.
+ */
+export interface QueryGetProtoRevBaseDenomsRequestSDKType {
+}
+/**
+ * QueryGetProtoRevBaseDenomsResponse is response type for the
+ * Query/GetProtoRevBaseDenoms RPC method.
+ */
+export interface QueryGetProtoRevBaseDenomsResponse {
+    /** base_denoms is a list of all of the base denoms and step sizes */
+    baseDenoms: BaseDenom[];
+}
+/**
+ * QueryGetProtoRevBaseDenomsResponse is response type for the
+ * Query/GetProtoRevBaseDenoms RPC method.
+ */
+export interface QueryGetProtoRevBaseDenomsResponseSDKType {
+    /** base_denoms is a list of all of the base denoms and step sizes */
+    base_denoms: BaseDenomSDKType[];
+}
+/**
+ * QueryGetProtoRevEnabledRequest is request type for the
+ * Query/GetProtoRevEnabled RPC method.
+ */
+export interface QueryGetProtoRevEnabledRequest {
+}
+/**
+ * QueryGetProtoRevEnabledRequest is request type for the
+ * Query/GetProtoRevEnabled RPC method.
+ */
+export interface QueryGetProtoRevEnabledRequestSDKType {
+}
+/**
+ * QueryGetProtoRevEnabledResponse is response type for the
+ * Query/GetProtoRevEnabled RPC method.
+ */
+export interface QueryGetProtoRevEnabledResponse {
+    /** enabled is whether the module is enabled */
+    enabled: boolean;
+}
+/**
+ * QueryGetProtoRevEnabledResponse is response type for the
+ * Query/GetProtoRevEnabled RPC method.
+ */
+export interface QueryGetProtoRevEnabledResponseSDKType {
+    /** enabled is whether the module is enabled */
+    enabled: boolean;
 }
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
@@ -253,25 +461,25 @@ export declare const QueryGetProtoRevAllProfitsResponse: {
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsResponse;
     fromPartial(object: Partial<QueryGetProtoRevAllProfitsResponse>): QueryGetProtoRevAllProfitsResponse;
 };
-export declare const QueryGetProtoRevStatisticsByPoolRequest: {
-    encode(message: QueryGetProtoRevStatisticsByPoolRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByPoolRequest;
-    fromPartial(object: Partial<QueryGetProtoRevStatisticsByPoolRequest>): QueryGetProtoRevStatisticsByPoolRequest;
+export declare const QueryGetProtoRevStatisticsByRouteRequest: {
+    encode(message: QueryGetProtoRevStatisticsByRouteRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteRequest;
+    fromPartial(object: Partial<QueryGetProtoRevStatisticsByRouteRequest>): QueryGetProtoRevStatisticsByRouteRequest;
 };
-export declare const QueryGetProtoRevStatisticsByPoolResponse: {
-    encode(message: QueryGetProtoRevStatisticsByPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByPoolResponse;
-    fromPartial(object: Partial<QueryGetProtoRevStatisticsByPoolResponse>): QueryGetProtoRevStatisticsByPoolResponse;
+export declare const QueryGetProtoRevStatisticsByRouteResponse: {
+    encode(message: QueryGetProtoRevStatisticsByRouteResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteResponse;
+    fromPartial(object: Partial<QueryGetProtoRevStatisticsByRouteResponse>): QueryGetProtoRevStatisticsByRouteResponse;
 };
-export declare const QueryGetProtoRevAllStatisticsRequest: {
-    encode(_: QueryGetProtoRevAllStatisticsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllStatisticsRequest;
-    fromPartial(_: Partial<QueryGetProtoRevAllStatisticsRequest>): QueryGetProtoRevAllStatisticsRequest;
+export declare const QueryGetProtoRevAllRouteStatisticsRequest: {
+    encode(_: QueryGetProtoRevAllRouteStatisticsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsRequest;
+    fromPartial(_: Partial<QueryGetProtoRevAllRouteStatisticsRequest>): QueryGetProtoRevAllRouteStatisticsRequest;
 };
-export declare const QueryGetProtoRevAllStatisticsResponse: {
-    encode(message: QueryGetProtoRevAllStatisticsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllStatisticsResponse;
-    fromPartial(object: Partial<QueryGetProtoRevAllStatisticsResponse>): QueryGetProtoRevAllStatisticsResponse;
+export declare const QueryGetProtoRevAllRouteStatisticsResponse: {
+    encode(message: QueryGetProtoRevAllRouteStatisticsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsResponse;
+    fromPartial(object: Partial<QueryGetProtoRevAllRouteStatisticsResponse>): QueryGetProtoRevAllRouteStatisticsResponse;
 };
 export declare const QueryGetProtoRevTokenPairArbRoutesRequest: {
     encode(_: QueryGetProtoRevTokenPairArbRoutesRequest, writer?: _m0.Writer): _m0.Writer;
@@ -282,4 +490,74 @@ export declare const QueryGetProtoRevTokenPairArbRoutesResponse: {
     encode(message: QueryGetProtoRevTokenPairArbRoutesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesResponse;
     fromPartial(object: Partial<QueryGetProtoRevTokenPairArbRoutesResponse>): QueryGetProtoRevTokenPairArbRoutesResponse;
+};
+export declare const QueryGetProtoRevAdminAccountRequest: {
+    encode(_: QueryGetProtoRevAdminAccountRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountRequest;
+    fromPartial(_: Partial<QueryGetProtoRevAdminAccountRequest>): QueryGetProtoRevAdminAccountRequest;
+};
+export declare const QueryGetProtoRevAdminAccountResponse: {
+    encode(message: QueryGetProtoRevAdminAccountResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountResponse;
+    fromPartial(object: Partial<QueryGetProtoRevAdminAccountResponse>): QueryGetProtoRevAdminAccountResponse;
+};
+export declare const QueryGetProtoRevDeveloperAccountRequest: {
+    encode(_: QueryGetProtoRevDeveloperAccountRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountRequest;
+    fromPartial(_: Partial<QueryGetProtoRevDeveloperAccountRequest>): QueryGetProtoRevDeveloperAccountRequest;
+};
+export declare const QueryGetProtoRevDeveloperAccountResponse: {
+    encode(message: QueryGetProtoRevDeveloperAccountResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountResponse;
+    fromPartial(object: Partial<QueryGetProtoRevDeveloperAccountResponse>): QueryGetProtoRevDeveloperAccountResponse;
+};
+export declare const QueryGetProtoRevPoolWeightsRequest: {
+    encode(_: QueryGetProtoRevPoolWeightsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsRequest;
+    fromPartial(_: Partial<QueryGetProtoRevPoolWeightsRequest>): QueryGetProtoRevPoolWeightsRequest;
+};
+export declare const QueryGetProtoRevPoolWeightsResponse: {
+    encode(message: QueryGetProtoRevPoolWeightsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsResponse;
+    fromPartial(object: Partial<QueryGetProtoRevPoolWeightsResponse>): QueryGetProtoRevPoolWeightsResponse;
+};
+export declare const QueryGetProtoRevMaxPoolPointsPerBlockRequest: {
+    encode(_: QueryGetProtoRevMaxPoolPointsPerBlockRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockRequest;
+    fromPartial(_: Partial<QueryGetProtoRevMaxPoolPointsPerBlockRequest>): QueryGetProtoRevMaxPoolPointsPerBlockRequest;
+};
+export declare const QueryGetProtoRevMaxPoolPointsPerBlockResponse: {
+    encode(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockResponse;
+    fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerBlockResponse>): QueryGetProtoRevMaxPoolPointsPerBlockResponse;
+};
+export declare const QueryGetProtoRevMaxPoolPointsPerTxRequest: {
+    encode(_: QueryGetProtoRevMaxPoolPointsPerTxRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxRequest;
+    fromPartial(_: Partial<QueryGetProtoRevMaxPoolPointsPerTxRequest>): QueryGetProtoRevMaxPoolPointsPerTxRequest;
+};
+export declare const QueryGetProtoRevMaxPoolPointsPerTxResponse: {
+    encode(message: QueryGetProtoRevMaxPoolPointsPerTxResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxResponse;
+    fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerTxResponse>): QueryGetProtoRevMaxPoolPointsPerTxResponse;
+};
+export declare const QueryGetProtoRevBaseDenomsRequest: {
+    encode(_: QueryGetProtoRevBaseDenomsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsRequest;
+    fromPartial(_: Partial<QueryGetProtoRevBaseDenomsRequest>): QueryGetProtoRevBaseDenomsRequest;
+};
+export declare const QueryGetProtoRevBaseDenomsResponse: {
+    encode(message: QueryGetProtoRevBaseDenomsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsResponse;
+    fromPartial(object: Partial<QueryGetProtoRevBaseDenomsResponse>): QueryGetProtoRevBaseDenomsResponse;
+};
+export declare const QueryGetProtoRevEnabledRequest: {
+    encode(_: QueryGetProtoRevEnabledRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevEnabledRequest;
+    fromPartial(_: Partial<QueryGetProtoRevEnabledRequest>): QueryGetProtoRevEnabledRequest;
+};
+export declare const QueryGetProtoRevEnabledResponse: {
+    encode(message: QueryGetProtoRevEnabledResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevEnabledResponse;
+    fromPartial(object: Partial<QueryGetProtoRevEnabledResponse>): QueryGetProtoRevEnabledResponse;
 };

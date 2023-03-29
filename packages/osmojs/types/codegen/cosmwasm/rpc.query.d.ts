@@ -94,6 +94,13 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 authority(request?: import("../cosmos/upgrade/v1beta1/query").QueryAuthorityRequest): Promise<import("../cosmos/upgrade/v1beta1/query").QueryAuthorityResponse>;
             };
         };
+        base: {
+            node: {
+                v1beta1: {
+                    config(request?: import("../cosmos/base/node/v1beta1/query").ConfigRequest): Promise<import("../cosmos/base/node/v1beta1/query").ConfigResponse>;
+                };
+            };
+        };
     };
     cosmwasm: {
         wasm: {

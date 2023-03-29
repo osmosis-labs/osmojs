@@ -1,4 +1,5 @@
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
 /** ===================== MsgCreatePosition */
@@ -11,6 +12,7 @@ export interface MsgCreatePosition {
     tokenDesired1?: Coin;
     tokenMinAmount0: string;
     tokenMinAmount1: string;
+    freezeDuration?: Duration;
 }
 /** ===================== MsgCreatePosition */
 export interface MsgCreatePositionSDKType {
@@ -22,31 +24,32 @@ export interface MsgCreatePositionSDKType {
     token_desired1?: CoinSDKType;
     token_min_amount0: string;
     token_min_amount1: string;
+    freeze_duration?: DurationSDKType;
 }
 export interface MsgCreatePositionResponse {
+    positionId: Long;
     amount0: string;
     amount1: string;
+    joinTime?: Date;
     liquidityCreated: string;
 }
 export interface MsgCreatePositionResponseSDKType {
+    position_id: Long;
     amount0: string;
     amount1: string;
+    join_time?: Date;
     liquidity_created: string;
 }
 /** ===================== MsgWithdrawPosition */
 export interface MsgWithdrawPosition {
-    poolId: Long;
+    positionId: Long;
     sender: string;
-    lowerTick: Long;
-    upperTick: Long;
     liquidityAmount: string;
 }
 /** ===================== MsgWithdrawPosition */
 export interface MsgWithdrawPositionSDKType {
-    pool_id: Long;
+    position_id: Long;
     sender: string;
-    lower_tick: Long;
-    upper_tick: Long;
     liquidity_amount: string;
 }
 export interface MsgWithdrawPositionResponse {
@@ -59,23 +62,69 @@ export interface MsgWithdrawPositionResponseSDKType {
 }
 /** ===================== MsgCollectFees */
 export interface MsgCollectFees {
-    poolId: Long;
+    positionIds: Long[];
     sender: string;
-    lowerTick: Long;
-    upperTick: Long;
 }
 /** ===================== MsgCollectFees */
 export interface MsgCollectFeesSDKType {
-    pool_id: Long;
+    position_ids: Long[];
     sender: string;
-    lower_tick: Long;
-    upper_tick: Long;
 }
 export interface MsgCollectFeesResponse {
-    tokenOut: Coin[];
+    collectedFees: Coin[];
 }
 export interface MsgCollectFeesResponseSDKType {
-    token_out: CoinSDKType[];
+    collected_fees: CoinSDKType[];
+}
+/** ===================== MsgCollectIncentives */
+export interface MsgCollectIncentives {
+    positionIds: Long[];
+    sender: string;
+}
+/** ===================== MsgCollectIncentives */
+export interface MsgCollectIncentivesSDKType {
+    position_ids: Long[];
+    sender: string;
+}
+export interface MsgCollectIncentivesResponse {
+    collectedIncentives: Coin[];
+}
+export interface MsgCollectIncentivesResponseSDKType {
+    collected_incentives: CoinSDKType[];
+}
+/** ===================== MsgCreateIncentive */
+export interface MsgCreateIncentive {
+    poolId: Long;
+    sender: string;
+    incentiveDenom: string;
+    incentiveAmount: string;
+    emissionRate: string;
+    startTime?: Date;
+    minUptime?: Duration;
+}
+/** ===================== MsgCreateIncentive */
+export interface MsgCreateIncentiveSDKType {
+    pool_id: Long;
+    sender: string;
+    incentive_denom: string;
+    incentive_amount: string;
+    emission_rate: string;
+    start_time?: Date;
+    min_uptime?: DurationSDKType;
+}
+export interface MsgCreateIncentiveResponse {
+    incentiveDenom: string;
+    incentiveAmount: string;
+    emissionRate: string;
+    startTime?: Date;
+    minUptime?: Duration;
+}
+export interface MsgCreateIncentiveResponseSDKType {
+    incentive_denom: string;
+    incentive_amount: string;
+    emission_rate: string;
+    start_time?: Date;
+    min_uptime?: DurationSDKType;
 }
 export declare const MsgCreatePosition: {
     encode(message: MsgCreatePosition, writer?: _m0.Writer): _m0.Writer;
@@ -106,4 +155,24 @@ export declare const MsgCollectFeesResponse: {
     encode(message: MsgCollectFeesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectFeesResponse;
     fromPartial(object: Partial<MsgCollectFeesResponse>): MsgCollectFeesResponse;
+};
+export declare const MsgCollectIncentives: {
+    encode(message: MsgCollectIncentives, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectIncentives;
+    fromPartial(object: Partial<MsgCollectIncentives>): MsgCollectIncentives;
+};
+export declare const MsgCollectIncentivesResponse: {
+    encode(message: MsgCollectIncentivesResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectIncentivesResponse;
+    fromPartial(object: Partial<MsgCollectIncentivesResponse>): MsgCollectIncentivesResponse;
+};
+export declare const MsgCreateIncentive: {
+    encode(message: MsgCreateIncentive, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateIncentive;
+    fromPartial(object: Partial<MsgCreateIncentive>): MsgCreateIncentive;
+};
+export declare const MsgCreateIncentiveResponse: {
+    encode(message: MsgCreateIncentiveResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateIncentiveResponse;
+    fromPartial(object: Partial<MsgCreateIncentiveResponse>): MsgCreateIncentiveResponse;
 };

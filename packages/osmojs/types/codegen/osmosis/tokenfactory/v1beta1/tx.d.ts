@@ -54,6 +54,7 @@ export interface MsgCreateDenomResponseSDKType {
 export interface MsgMint {
     sender: string;
     amount?: Coin;
+    mintToAddress: string;
 }
 /**
  * MsgMint is the sdk.Msg type for allowing an admin account to mint
@@ -62,6 +63,7 @@ export interface MsgMint {
 export interface MsgMintSDKType {
     sender: string;
     amount?: CoinSDKType;
+    mintToAddress: string;
 }
 export interface MsgMintResponse {
 }
@@ -74,6 +76,7 @@ export interface MsgMintResponseSDKType {
 export interface MsgBurn {
     sender: string;
     amount?: Coin;
+    burnFromAddress: string;
 }
 /**
  * MsgBurn is the sdk.Msg type for allowing an admin account to burn
@@ -82,6 +85,7 @@ export interface MsgBurn {
 export interface MsgBurnSDKType {
     sender: string;
     amount?: CoinSDKType;
+    burnFromAddress: string;
 }
 export interface MsgBurnResponse {
 }
@@ -118,6 +122,36 @@ export interface MsgChangeAdminResponse {
 export interface MsgChangeAdminResponseSDKType {
 }
 /**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+export interface MsgSetBeforeSendHook {
+    sender: string;
+    denom: string;
+    cosmwasmAddress: string;
+}
+/**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+export interface MsgSetBeforeSendHookSDKType {
+    sender: string;
+    denom: string;
+    cosmwasm_address: string;
+}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+export interface MsgSetBeforeSendHookResponse {
+}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+export interface MsgSetBeforeSendHookResponseSDKType {
+}
+/**
  * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
  * the denom's bank metadata
  */
@@ -144,6 +178,22 @@ export interface MsgSetDenomMetadataResponse {
  * MsgSetDenomMetadata message.
  */
 export interface MsgSetDenomMetadataResponseSDKType {
+}
+export interface MsgForceTransfer {
+    sender: string;
+    amount?: Coin;
+    transferFromAddress: string;
+    transferToAddress: string;
+}
+export interface MsgForceTransferSDKType {
+    sender: string;
+    amount?: CoinSDKType;
+    transferFromAddress: string;
+    transferToAddress: string;
+}
+export interface MsgForceTransferResponse {
+}
+export interface MsgForceTransferResponseSDKType {
 }
 export declare const MsgCreateDenom: {
     encode(message: MsgCreateDenom, writer?: _m0.Writer): _m0.Writer;
@@ -185,6 +235,16 @@ export declare const MsgChangeAdminResponse: {
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponse;
     fromPartial(_: Partial<MsgChangeAdminResponse>): MsgChangeAdminResponse;
 };
+export declare const MsgSetBeforeSendHook: {
+    encode(message: MsgSetBeforeSendHook, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHook;
+    fromPartial(object: Partial<MsgSetBeforeSendHook>): MsgSetBeforeSendHook;
+};
+export declare const MsgSetBeforeSendHookResponse: {
+    encode(_: MsgSetBeforeSendHookResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHookResponse;
+    fromPartial(_: Partial<MsgSetBeforeSendHookResponse>): MsgSetBeforeSendHookResponse;
+};
 export declare const MsgSetDenomMetadata: {
     encode(message: MsgSetDenomMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata;
@@ -194,4 +254,14 @@ export declare const MsgSetDenomMetadataResponse: {
     encode(_: MsgSetDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponse;
     fromPartial(_: Partial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse;
+};
+export declare const MsgForceTransfer: {
+    encode(message: MsgForceTransfer, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransfer;
+    fromPartial(object: Partial<MsgForceTransfer>): MsgForceTransfer;
+};
+export declare const MsgForceTransferResponse: {
+    encode(_: MsgForceTransferResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransferResponse;
+    fromPartial(_: Partial<MsgForceTransferResponse>): MsgForceTransferResponse;
 };

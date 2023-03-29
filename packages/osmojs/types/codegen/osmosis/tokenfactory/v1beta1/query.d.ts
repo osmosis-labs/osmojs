@@ -73,6 +73,26 @@ export interface QueryDenomsFromCreatorResponse {
 export interface QueryDenomsFromCreatorResponseSDKType {
     denoms: string[];
 }
+export interface QueryBeforeSendHookAddressRequest {
+    denom: string;
+}
+export interface QueryBeforeSendHookAddressRequestSDKType {
+    denom: string;
+}
+/**
+ * QueryBeforeSendHookAddressResponse defines the response structure for the
+ * DenomBeforeSendHook gRPC query.
+ */
+export interface QueryBeforeSendHookAddressResponse {
+    cosmwasmAddress: string;
+}
+/**
+ * QueryBeforeSendHookAddressResponse defines the response structure for the
+ * DenomBeforeSendHook gRPC query.
+ */
+export interface QueryBeforeSendHookAddressResponseSDKType {
+    cosmwasm_address: string;
+}
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
@@ -102,4 +122,14 @@ export declare const QueryDenomsFromCreatorResponse: {
     encode(message: QueryDenomsFromCreatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsFromCreatorResponse;
     fromPartial(object: Partial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse;
+};
+export declare const QueryBeforeSendHookAddressRequest: {
+    encode(message: QueryBeforeSendHookAddressRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBeforeSendHookAddressRequest;
+    fromPartial(object: Partial<QueryBeforeSendHookAddressRequest>): QueryBeforeSendHookAddressRequest;
+};
+export declare const QueryBeforeSendHookAddressResponse: {
+    encode(message: QueryBeforeSendHookAddressResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBeforeSendHookAddressResponse;
+    fromPartial(object: Partial<QueryBeforeSendHookAddressResponse>): QueryBeforeSendHookAddressResponse;
 };

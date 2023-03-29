@@ -1,21 +1,39 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
+import { PositionWithUnderlyingAssetBreakdown, PositionWithUnderlyingAssetBreakdownSDKType } from "../position";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Params, ParamsSDKType } from "../params";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
-/** =============================== Pool */
-export interface QueryPoolRequest {
+/** =============================== UserPositions */
+export interface QueryUserPositionsRequest {
+    address: string;
     poolId: Long;
 }
-/** =============================== Pool */
-export interface QueryPoolRequestSDKType {
+/** =============================== UserPositions */
+export interface QueryUserPositionsRequestSDKType {
+    address: string;
     pool_id: Long;
 }
-export interface QueryPoolResponse {
-    pool?: Any;
+export interface QueryUserPositionsResponse {
+    positions: PositionWithUnderlyingAssetBreakdown[];
 }
-export interface QueryPoolResponseSDKType {
-    pool?: AnySDKType;
+export interface QueryUserPositionsResponseSDKType {
+    positions: PositionWithUnderlyingAssetBreakdownSDKType[];
+}
+/** =============================== PositionById */
+export interface QueryPositionByIdRequest {
+    positionId: Long;
+}
+/** =============================== PositionById */
+export interface QueryPositionByIdRequestSDKType {
+    position_id: Long;
+}
+export interface QueryPositionByIdResponse {
+    position?: PositionWithUnderlyingAssetBreakdown;
+}
+export interface QueryPositionByIdResponseSDKType {
+    position?: PositionWithUnderlyingAssetBreakdownSDKType;
 }
 /** =============================== Pools */
 export interface QueryPoolsRequest {
@@ -49,15 +67,89 @@ export interface QueryParamsResponse {
 export interface QueryParamsResponseSDKType {
     params?: ParamsSDKType;
 }
-export declare const QueryPoolRequest: {
-    encode(message: QueryPoolRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolRequest;
-    fromPartial(object: Partial<QueryPoolRequest>): QueryPoolRequest;
+/** =============================== LiquidityDepthsForRange */
+export interface QueryLiquidityDepthsForRangeRequest {
+    poolId: Long;
+    lowerTick: string;
+    upperTick: string;
+}
+/** =============================== LiquidityDepthsForRange */
+export interface QueryLiquidityDepthsForRangeRequestSDKType {
+    pool_id: Long;
+    lower_tick: string;
+    upper_tick: string;
+}
+export interface QueryLiquidityDepthsForRangeResponse {
+    liquidityDepths: LiquidityDepth[];
+}
+export interface QueryLiquidityDepthsForRangeResponseSDKType {
+    liquidity_depths: LiquidityDepthSDKType[];
+}
+export interface LiquidityDepth {
+    liquidityNet: string;
+    tickIndex: string;
+}
+export interface LiquidityDepthSDKType {
+    liquidity_net: string;
+    tick_index: string;
+}
+export interface LiquidityDepthWithRange {
+    liquidityAmount: string;
+    lowerTick: string;
+    upperTick: string;
+}
+export interface LiquidityDepthWithRangeSDKType {
+    liquidity_amount: string;
+    lower_tick: string;
+    upper_tick: string;
+}
+/** =============================== TickLiquidityInBatches */
+export interface QueryTotalLiquidityForRangeRequest {
+    poolId: Long;
+}
+/** =============================== TickLiquidityInBatches */
+export interface QueryTotalLiquidityForRangeRequestSDKType {
+    pool_id: Long;
+}
+export interface QueryTotalLiquidityForRangeResponse {
+    liquidity: LiquidityDepthWithRange[];
+}
+export interface QueryTotalLiquidityForRangeResponseSDKType {
+    liquidity: LiquidityDepthWithRangeSDKType[];
+}
+/** ===================== MsgQueryClaimableFees */
+export interface QueryClaimableFeesRequest {
+    positionId: Long;
+}
+/** ===================== MsgQueryClaimableFees */
+export interface QueryClaimableFeesRequestSDKType {
+    position_id: Long;
+}
+export interface QueryClaimableFeesResponse {
+    claimableFees: Coin[];
+}
+export interface QueryClaimableFeesResponseSDKType {
+    claimable_fees: CoinSDKType[];
+}
+export declare const QueryUserPositionsRequest: {
+    encode(message: QueryUserPositionsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionsRequest;
+    fromPartial(object: Partial<QueryUserPositionsRequest>): QueryUserPositionsRequest;
 };
-export declare const QueryPoolResponse: {
-    encode(message: QueryPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse;
-    fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse;
+export declare const QueryUserPositionsResponse: {
+    encode(message: QueryUserPositionsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionsResponse;
+    fromPartial(object: Partial<QueryUserPositionsResponse>): QueryUserPositionsResponse;
+};
+export declare const QueryPositionByIdRequest: {
+    encode(message: QueryPositionByIdRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPositionByIdRequest;
+    fromPartial(object: Partial<QueryPositionByIdRequest>): QueryPositionByIdRequest;
+};
+export declare const QueryPositionByIdResponse: {
+    encode(message: QueryPositionByIdResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPositionByIdResponse;
+    fromPartial(object: Partial<QueryPositionByIdResponse>): QueryPositionByIdResponse;
 };
 export declare const QueryPoolsRequest: {
     encode(message: QueryPoolsRequest, writer?: _m0.Writer): _m0.Writer;
@@ -78,4 +170,44 @@ export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
+};
+export declare const QueryLiquidityDepthsForRangeRequest: {
+    encode(message: QueryLiquidityDepthsForRangeRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLiquidityDepthsForRangeRequest;
+    fromPartial(object: Partial<QueryLiquidityDepthsForRangeRequest>): QueryLiquidityDepthsForRangeRequest;
+};
+export declare const QueryLiquidityDepthsForRangeResponse: {
+    encode(message: QueryLiquidityDepthsForRangeResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLiquidityDepthsForRangeResponse;
+    fromPartial(object: Partial<QueryLiquidityDepthsForRangeResponse>): QueryLiquidityDepthsForRangeResponse;
+};
+export declare const LiquidityDepth: {
+    encode(message: LiquidityDepth, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityDepth;
+    fromPartial(object: Partial<LiquidityDepth>): LiquidityDepth;
+};
+export declare const LiquidityDepthWithRange: {
+    encode(message: LiquidityDepthWithRange, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityDepthWithRange;
+    fromPartial(object: Partial<LiquidityDepthWithRange>): LiquidityDepthWithRange;
+};
+export declare const QueryTotalLiquidityForRangeRequest: {
+    encode(message: QueryTotalLiquidityForRangeRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityForRangeRequest;
+    fromPartial(object: Partial<QueryTotalLiquidityForRangeRequest>): QueryTotalLiquidityForRangeRequest;
+};
+export declare const QueryTotalLiquidityForRangeResponse: {
+    encode(message: QueryTotalLiquidityForRangeResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityForRangeResponse;
+    fromPartial(object: Partial<QueryTotalLiquidityForRangeResponse>): QueryTotalLiquidityForRangeResponse;
+};
+export declare const QueryClaimableFeesRequest: {
+    encode(message: QueryClaimableFeesRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimableFeesRequest;
+    fromPartial(object: Partial<QueryClaimableFeesRequest>): QueryClaimableFeesRequest;
+};
+export declare const QueryClaimableFeesResponse: {
+    encode(message: QueryClaimableFeesResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimableFeesResponse;
+    fromPartial(object: Partial<QueryClaimableFeesResponse>): QueryClaimableFeesResponse;
 };

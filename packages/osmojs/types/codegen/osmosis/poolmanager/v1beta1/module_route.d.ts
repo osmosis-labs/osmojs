@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { Long } from "../../../helpers";
 /** PoolType is an enumeration of all supported pool types. */
 export declare enum PoolType {
     /** Balancer - Balancer is the standard xy=k curve. Its pool model is defined in x/gamm. */
@@ -13,6 +14,11 @@ export declare enum PoolType {
      * defined in x/concentrated-liquidity.
      */
     Concentrated = 2,
+    /**
+     * CosmWasm - CosmWasm is the pool model specific to CosmWasm. It is defined in
+     * x/cosmwasmpool.
+     */
+    CosmWasm = 3,
     UNRECOGNIZED = -1
 }
 /** PoolType is an enumeration of all supported pool types. */
@@ -29,6 +35,11 @@ export declare enum PoolTypeSDKType {
      * defined in x/concentrated-liquidity.
      */
     Concentrated = 2,
+    /**
+     * CosmWasm - CosmWasm is the pool model specific to CosmWasm. It is defined in
+     * x/cosmwasmpool.
+     */
+    CosmWasm = 3,
     UNRECOGNIZED = -1
 }
 export declare function poolTypeFromJSON(object: any): PoolType;
@@ -42,6 +53,7 @@ export declare function poolTypeToJSON(object: PoolType): string;
 export interface ModuleRoute {
     /** pool_type specifies the type of the pool */
     poolType: PoolType;
+    poolId: Long;
 }
 /**
  * ModuleRouter defines a route encapsulating pool type.
@@ -52,6 +64,7 @@ export interface ModuleRoute {
 export interface ModuleRouteSDKType {
     /** pool_type specifies the type of the pool */
     pool_type: PoolTypeSDKType;
+    pool_id: Long;
 }
 export declare const ModuleRoute: {
     encode(message: ModuleRoute, writer?: _m0.Writer): _m0.Writer;

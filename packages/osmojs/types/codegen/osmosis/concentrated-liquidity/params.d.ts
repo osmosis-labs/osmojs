@@ -8,6 +8,7 @@ export interface Params {
      * to be created with tick spacing of 1, 10, or 30.
      */
     authorizedTickSpacing: Long[];
+    authorizedSwapFees: string[];
 }
 export interface ParamsSDKType {
     /**
@@ -17,6 +18,7 @@ export interface ParamsSDKType {
      * to be created with tick spacing of 1, 10, or 30.
      */
     authorized_tick_spacing: Long[];
+    authorized_swap_fees: string[];
 }
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;

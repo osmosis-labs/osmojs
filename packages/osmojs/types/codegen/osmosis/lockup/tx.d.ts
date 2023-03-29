@@ -45,9 +45,11 @@ export interface MsgBeginUnlockingSDKType {
 }
 export interface MsgBeginUnlockingResponse {
     success: boolean;
+    unlockingLockID: Long;
 }
 export interface MsgBeginUnlockingResponseSDKType {
     success: boolean;
+    unlockingLockID: Long;
 }
 /**
  * MsgExtendLockup extends the existing lockup's duration.

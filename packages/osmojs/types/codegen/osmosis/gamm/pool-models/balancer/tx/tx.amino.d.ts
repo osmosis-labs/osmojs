@@ -50,7 +50,6 @@ export interface AminoMsgMigrateSharesToFullRangeConcentratedPosition extends Am
             denom: string;
             amount: string;
         };
-        pool_id_entering: string;
     };
 }
 export declare const AminoConverter: {
@@ -61,7 +60,7 @@ export declare const AminoConverter: {
     };
     "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPosition": {
         aminoType: string;
-        toAmino: ({ sender, sharesToMigrate, poolIdEntering }: MsgMigrateSharesToFullRangeConcentratedPosition) => AminoMsgMigrateSharesToFullRangeConcentratedPosition["value"];
-        fromAmino: ({ sender, shares_to_migrate, pool_id_entering }: AminoMsgMigrateSharesToFullRangeConcentratedPosition["value"]) => MsgMigrateSharesToFullRangeConcentratedPosition;
+        toAmino: ({ sender, sharesToMigrate }: MsgMigrateSharesToFullRangeConcentratedPosition) => AminoMsgMigrateSharesToFullRangeConcentratedPosition["value"];
+        fromAmino: ({ sender, shares_to_migrate }: AminoMsgMigrateSharesToFullRangeConcentratedPosition["value"]) => MsgMigrateSharesToFullRangeConcentratedPosition;
     };
 };

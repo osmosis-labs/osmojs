@@ -26,6 +26,11 @@ export interface Route {
      * -> right)
      */
     trades: Trade[];
+    /**
+     * The step size that will be used to find the optimal swap amount in the
+     * binary search
+     */
+    stepSize: string;
 }
 /** Route is a hot route for a given pair of tokens */
 export interface RouteSDKType {
@@ -34,78 +39,117 @@ export interface RouteSDKType {
      * -> right)
      */
     trades: TradeSDKType[];
+    /**
+     * The step size that will be used to find the optimal swap amount in the
+     * binary search
+     */
+    step_size: string;
 }
 /** Trade is a single trade in a route */
 export interface Trade {
-    /**
-     * The pool IDs that are travered in the directed cyclic graph (traversed left
-     * -> right)
-     */
+    /** The pool id of the pool that is traded on */
     pool: Long;
-    /** The denom of token A that is traded */
+    /** The denom of the token that is traded */
     tokenIn: string;
-    /** The denom of token B that is traded */
+    /** The denom of the token that is received */
     tokenOut: string;
 }
 /** Trade is a single trade in a route */
 export interface TradeSDKType {
-    /**
-     * The pool IDs that are travered in the directed cyclic graph (traversed left
-     * -> right)
-     */
+    /** The pool id of the pool that is traded on */
     pool: Long;
-    /** The denom of token A that is traded */
+    /** The denom of the token that is traded */
     token_in: string;
-    /** The denom of token B that is traded */
+    /** The denom of the token that is received */
     token_out: string;
 }
 /**
- * PoolStatistics contains the number of trades the module has executed after a
- * swap on a given pool and the profits from the trades
+ * RouteStatistics contains the number of trades the module has executed after a
+ * swap on a given route and the profits from the trades
  */
-export interface PoolStatistics {
-    /** profits is the total profit from all trades on this pool */
+export interface RouteStatistics {
+    /** profits is the total profit from all trades on this route */
     profits: Coin[];
-    /** number_of_trades is the number of trades the module has executed */
+    /**
+     * number_of_trades is the number of trades the module has executed using this
+     * route
+     */
     numberOfTrades: string;
-    /** pool_id is the id of the pool */
-    poolId: Long;
+    /** route is the route that was used (pool ids along the arbitrage route) */
+    route: Long[];
 }
 /**
- * PoolStatistics contains the number of trades the module has executed after a
- * swap on a given pool and the profits from the trades
+ * RouteStatistics contains the number of trades the module has executed after a
+ * swap on a given route and the profits from the trades
  */
-export interface PoolStatisticsSDKType {
-    /** profits is the total profit from all trades on this pool */
+export interface RouteStatisticsSDKType {
+    /** profits is the total profit from all trades on this route */
     profits: CoinSDKType[];
-    /** number_of_trades is the number of trades the module has executed */
+    /**
+     * number_of_trades is the number of trades the module has executed using this
+     * route
+     */
     number_of_trades: string;
-    /** pool_id is the id of the pool */
-    pool_id: Long;
+    /** route is the route that was used (pool ids along the arbitrage route) */
+    route: Long[];
 }
 /**
- * RouteWeights contains the weights of all of the different route types. Routes
- * are broken up into different types based on the pool that is sandwiched in
- * between the arbitrage route. This distinction is made and necessary because
- * the execution time ranges fairly between the different route types.
+ * PoolWeights contains the weights of all of the different pool types. This
+ * distinction is made and necessary because the execution time ranges
+ * significantly between the different pool types. Each weight roughly
+ * corresponds to the amount of time (in ms) it takes to execute a swap on that
+ * pool type.
  */
-export interface RouteWeights {
-    /** The weight of a route that includes a stableswap pool */
+export interface PoolWeights {
+    /** The weight of a stableswap pool */
     stableWeight: Long;
-    /** The weight of a route that includes a balancer pool */
+    /** The weight of a balancer pool */
     balancerWeight: Long;
+    /** The weight of a concentrated pool */
+    concentratedWeight: Long;
 }
 /**
- * RouteWeights contains the weights of all of the different route types. Routes
- * are broken up into different types based on the pool that is sandwiched in
- * between the arbitrage route. This distinction is made and necessary because
- * the execution time ranges fairly between the different route types.
+ * PoolWeights contains the weights of all of the different pool types. This
+ * distinction is made and necessary because the execution time ranges
+ * significantly between the different pool types. Each weight roughly
+ * corresponds to the amount of time (in ms) it takes to execute a swap on that
+ * pool type.
  */
-export interface RouteWeightsSDKType {
-    /** The weight of a route that includes a stableswap pool */
+export interface PoolWeightsSDKType {
+    /** The weight of a stableswap pool */
     stable_weight: Long;
-    /** The weight of a route that includes a balancer pool */
+    /** The weight of a balancer pool */
     balancer_weight: Long;
+    /** The weight of a concentrated pool */
+    concentrated_weight: Long;
+}
+/**
+ * BaseDenom represents a single base denom that the module uses for its
+ * arbitrage trades. It contains the denom name alongside the step size of the
+ * binary search that is used to find the optimal swap amount
+ */
+export interface BaseDenom {
+    /** The denom i.e. name of the base denom (ex. uosmo) */
+    denom: string;
+    /**
+     * The step size of the binary search that is used to find the optimal swap
+     * amount
+     */
+    stepSize: string;
+}
+/**
+ * BaseDenom represents a single base denom that the module uses for its
+ * arbitrage trades. It contains the denom name alongside the step size of the
+ * binary search that is used to find the optimal swap amount
+ */
+export interface BaseDenomSDKType {
+    /** The denom i.e. name of the base denom (ex. uosmo) */
+    denom: string;
+    /**
+     * The step size of the binary search that is used to find the optimal swap
+     * amount
+     */
+    step_size: string;
 }
 export declare const TokenPairArbRoutes: {
     encode(message: TokenPairArbRoutes, writer?: _m0.Writer): _m0.Writer;
@@ -122,13 +166,18 @@ export declare const Trade: {
     decode(input: _m0.Reader | Uint8Array, length?: number): Trade;
     fromPartial(object: Partial<Trade>): Trade;
 };
-export declare const PoolStatistics: {
-    encode(message: PoolStatistics, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolStatistics;
-    fromPartial(object: Partial<PoolStatistics>): PoolStatistics;
+export declare const RouteStatistics: {
+    encode(message: RouteStatistics, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RouteStatistics;
+    fromPartial(object: Partial<RouteStatistics>): RouteStatistics;
 };
-export declare const RouteWeights: {
-    encode(message: RouteWeights, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RouteWeights;
-    fromPartial(object: Partial<RouteWeights>): RouteWeights;
+export declare const PoolWeights: {
+    encode(message: PoolWeights, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PoolWeights;
+    fromPartial(object: Partial<PoolWeights>): PoolWeights;
+};
+export declare const BaseDenom: {
+    encode(message: BaseDenom, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): BaseDenom;
+    fromPartial(object: Partial<BaseDenom>): BaseDenom;
 };

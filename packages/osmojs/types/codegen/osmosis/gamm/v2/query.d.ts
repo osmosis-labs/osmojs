@@ -1,35 +1,27 @@
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
-/**
- * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
- * query.
- */
+/** Deprecated: please use alternate in x/poolmanager */
+/** @deprecated */
 export interface QuerySpotPriceRequest {
     poolId: Long;
     baseAssetDenom: string;
     quoteAssetDenom: string;
 }
-/**
- * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
- * query.
- */
+/** Deprecated: please use alternate in x/poolmanager */
+/** @deprecated */
 export interface QuerySpotPriceRequestSDKType {
     pool_id: Long;
     base_asset_denom: string;
     quote_asset_denom: string;
 }
-/**
- * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
- * query.
- */
+/** Depreacted: please use alternate in x/poolmanager */
+/** @deprecated */
 export interface QuerySpotPriceResponse {
     /** String of the Dec. Ex) 10.203uatom */
     spotPrice: string;
 }
-/**
- * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
- * query.
- */
+/** Depreacted: please use alternate in x/poolmanager */
+/** @deprecated */
 export interface QuerySpotPriceResponseSDKType {
     /** String of the Dec. Ex) 10.203uatom */
     spot_price: string;

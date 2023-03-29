@@ -144,6 +144,16 @@ export interface LockedResponse {
 export interface LockedResponseSDKType {
     lock?: PeriodLockSDKType;
 }
+export interface NextLockIDRequest {
+}
+export interface NextLockIDRequestSDKType {
+}
+export interface NextLockIDResponse {
+    lockId: Long;
+}
+export interface NextLockIDResponseSDKType {
+    lock_id: Long;
+}
 export interface SyntheticLockupsByLockupIDRequest {
     lockId: Long;
 }
@@ -333,6 +343,16 @@ export declare const LockedResponse: {
     encode(message: LockedResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockedResponse;
     fromPartial(object: Partial<LockedResponse>): LockedResponse;
+};
+export declare const NextLockIDRequest: {
+    encode(_: NextLockIDRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): NextLockIDRequest;
+    fromPartial(_: Partial<NextLockIDRequest>): NextLockIDRequest;
+};
+export declare const NextLockIDResponse: {
+    encode(message: NextLockIDResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): NextLockIDResponse;
+    fromPartial(object: Partial<NextLockIDResponse>): NextLockIDResponse;
 };
 export declare const SyntheticLockupsByLockupIDRequest: {
     encode(message: SyntheticLockupsByLockupIDRequest, writer?: _m0.Writer): _m0.Writer;

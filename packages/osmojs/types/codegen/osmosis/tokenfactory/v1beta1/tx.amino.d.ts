@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
+import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetBeforeSendHook, MsgForceTransfer } from "./tx";
 export interface AminoMsgCreateDenom extends AminoMsg {
     type: "osmosis/tokenfactory/create-denom";
     value: {
@@ -15,6 +15,7 @@ export interface AminoMsgMint extends AminoMsg {
             denom: string;
             amount: string;
         };
+        mintToAddress: string;
     };
 }
 export interface AminoMsgBurn extends AminoMsg {
@@ -25,6 +26,7 @@ export interface AminoMsgBurn extends AminoMsg {
             denom: string;
             amount: string;
         };
+        burnFromAddress: string;
     };
 }
 export interface AminoMsgChangeAdmin extends AminoMsg {
@@ -55,6 +57,26 @@ export interface AminoMsgSetDenomMetadata extends AminoMsg {
         };
     };
 }
+export interface AminoMsgSetBeforeSendHook extends AminoMsg {
+    type: "osmosis/tokenfactory/set-before-send-hook";
+    value: {
+        sender: string;
+        denom: string;
+        cosmwasm_address: string;
+    };
+}
+export interface AminoMsgForceTransfer extends AminoMsg {
+    type: "osmosis/tokenfactory/force-transfer";
+    value: {
+        sender: string;
+        amount: {
+            denom: string;
+            amount: string;
+        };
+        transferFromAddress: string;
+        transferToAddress: string;
+    };
+}
 export declare const AminoConverter: {
     "/osmosis.tokenfactory.v1beta1.MsgCreateDenom": {
         aminoType: string;
@@ -63,13 +85,13 @@ export declare const AminoConverter: {
     };
     "/osmosis.tokenfactory.v1beta1.MsgMint": {
         aminoType: string;
-        toAmino: ({ sender, amount }: MsgMint) => AminoMsgMint["value"];
-        fromAmino: ({ sender, amount }: AminoMsgMint["value"]) => MsgMint;
+        toAmino: ({ sender, amount, mintToAddress }: MsgMint) => AminoMsgMint["value"];
+        fromAmino: ({ sender, amount, mintToAddress }: AminoMsgMint["value"]) => MsgMint;
     };
     "/osmosis.tokenfactory.v1beta1.MsgBurn": {
         aminoType: string;
-        toAmino: ({ sender, amount }: MsgBurn) => AminoMsgBurn["value"];
-        fromAmino: ({ sender, amount }: AminoMsgBurn["value"]) => MsgBurn;
+        toAmino: ({ sender, amount, burnFromAddress }: MsgBurn) => AminoMsgBurn["value"];
+        fromAmino: ({ sender, amount, burnFromAddress }: AminoMsgBurn["value"]) => MsgBurn;
     };
     "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin": {
         aminoType: string;
@@ -80,5 +102,15 @@ export declare const AminoConverter: {
         aminoType: string;
         toAmino: ({ sender, metadata }: MsgSetDenomMetadata) => AminoMsgSetDenomMetadata["value"];
         fromAmino: ({ sender, metadata }: AminoMsgSetDenomMetadata["value"]) => MsgSetDenomMetadata;
+    };
+    "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook": {
+        aminoType: string;
+        toAmino: ({ sender, denom, cosmwasmAddress }: MsgSetBeforeSendHook) => AminoMsgSetBeforeSendHook["value"];
+        fromAmino: ({ sender, denom, cosmwasm_address }: AminoMsgSetBeforeSendHook["value"]) => MsgSetBeforeSendHook;
+    };
+    "/osmosis.tokenfactory.v1beta1.MsgForceTransfer": {
+        aminoType: string;
+        toAmino: ({ sender, amount, transferFromAddress, transferToAddress }: MsgForceTransfer) => AminoMsgForceTransfer["value"];
+        fromAmino: ({ sender, amount, transferFromAddress, transferToAddress }: AminoMsgForceTransfer["value"]) => MsgForceTransfer;
     };
 };

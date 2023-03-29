@@ -2,9 +2,11 @@ import { DecCoin, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 export interface AccumulatorContent {
     accumValue: DecCoin[];
+    totalShares: string;
 }
 export interface AccumulatorContentSDKType {
     accum_value: DecCoinSDKType[];
+    total_shares: string;
 }
 export interface Options {
 }

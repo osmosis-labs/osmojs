@@ -39,6 +39,22 @@ export interface MsgSuperfluidUnbondLockResponse {
 }
 export interface MsgSuperfluidUnbondLockResponseSDKType {
 }
+export interface MsgSuperfluidUndelegateAndUnbondLock {
+    sender: string;
+    lockId: Long;
+    /** Amount of unlocking coin. */
+    coin?: Coin;
+}
+export interface MsgSuperfluidUndelegateAndUnbondLockSDKType {
+    sender: string;
+    lock_id: Long;
+    /** Amount of unlocking coin. */
+    coin?: CoinSDKType;
+}
+export interface MsgSuperfluidUndelegateAndUnbondLockResponse {
+}
+export interface MsgSuperfluidUndelegateAndUnbondLockResponseSDKType {
+}
 /**
  * MsgLockAndSuperfluidDelegate locks coins with the unbonding period duration,
  * and then does a superfluid lock from the newly created lockup, to the
@@ -99,6 +115,36 @@ export interface MsgUnPoolWhitelistedPoolResponse {
 export interface MsgUnPoolWhitelistedPoolResponseSDKType {
     exited_lock_ids: Long[];
 }
+/**
+ * =====================
+ * MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition
+ */
+export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
+    sender: string;
+    lockId: Long;
+    sharesToMigrate?: Coin;
+}
+/**
+ * =====================
+ * MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition
+ */
+export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionSDKType {
+    sender: string;
+    lock_id: Long;
+    shares_to_migrate?: CoinSDKType;
+}
+export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
+    amount0: string;
+    amount1: string;
+    liquidityCreated: string;
+    joinTime?: Date;
+}
+export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponseSDKType {
+    amount0: string;
+    amount1: string;
+    liquidity_created: string;
+    join_time?: Date;
+}
 export declare const MsgSuperfluidDelegate: {
     encode(message: MsgSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegate;
@@ -129,6 +175,16 @@ export declare const MsgSuperfluidUnbondLockResponse: {
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponse;
     fromPartial(_: Partial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse;
 };
+export declare const MsgSuperfluidUndelegateAndUnbondLock: {
+    encode(message: MsgSuperfluidUndelegateAndUnbondLock, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLock;
+    fromPartial(object: Partial<MsgSuperfluidUndelegateAndUnbondLock>): MsgSuperfluidUndelegateAndUnbondLock;
+};
+export declare const MsgSuperfluidUndelegateAndUnbondLockResponse: {
+    encode(_: MsgSuperfluidUndelegateAndUnbondLockResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLockResponse;
+    fromPartial(_: Partial<MsgSuperfluidUndelegateAndUnbondLockResponse>): MsgSuperfluidUndelegateAndUnbondLockResponse;
+};
 export declare const MsgLockAndSuperfluidDelegate: {
     encode(message: MsgLockAndSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegate;
@@ -148,4 +204,14 @@ export declare const MsgUnPoolWhitelistedPoolResponse: {
     encode(message: MsgUnPoolWhitelistedPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponse;
     fromPartial(object: Partial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse;
+};
+export declare const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition: {
+    encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
+    fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
+};
+export declare const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse: {
+    encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
+    fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
 };

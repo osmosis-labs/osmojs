@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool } from "./tx";
+import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgSuperfluidUndelegateAndUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -16,11 +16,19 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: Uint8Array;
         };
+        superfluidUndelegateAndUnbondLock(value: MsgSuperfluidUndelegateAndUnbondLock): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
         lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate): {
             typeUrl: string;
             value: Uint8Array;
         };
         unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        unlockAndMigrateSharesToFullRangeConcentratedPosition(value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -38,6 +46,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgSuperfluidUnbondLock;
         };
+        superfluidUndelegateAndUnbondLock(value: MsgSuperfluidUndelegateAndUnbondLock): {
+            typeUrl: string;
+            value: MsgSuperfluidUndelegateAndUnbondLock;
+        };
         lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate): {
             typeUrl: string;
             value: MsgLockAndSuperfluidDelegate;
@@ -45,6 +57,10 @@ export declare const MessageComposer: {
         unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool): {
             typeUrl: string;
             value: MsgUnPoolWhitelistedPool;
+        };
+        unlockAndMigrateSharesToFullRangeConcentratedPosition(value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition): {
+            typeUrl: string;
+            value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
         };
     };
     fromPartial: {
@@ -60,6 +76,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgSuperfluidUnbondLock;
         };
+        superfluidUndelegateAndUnbondLock(value: MsgSuperfluidUndelegateAndUnbondLock): {
+            typeUrl: string;
+            value: MsgSuperfluidUndelegateAndUnbondLock;
+        };
         lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate): {
             typeUrl: string;
             value: MsgLockAndSuperfluidDelegate;
@@ -67,6 +87,10 @@ export declare const MessageComposer: {
         unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool): {
             typeUrl: string;
             value: MsgUnPoolWhitelistedPool;
+        };
+        unlockAndMigrateSharesToFullRangeConcentratedPosition(value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition): {
+            typeUrl: string;
+            value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
         };
     };
 };

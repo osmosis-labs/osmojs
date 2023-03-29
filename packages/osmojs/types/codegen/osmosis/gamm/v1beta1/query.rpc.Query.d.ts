@@ -11,7 +11,7 @@ export interface Query {
      * parameters
      */
     poolsWithFilter(request: QueryPoolsWithFilterRequest): Promise<QueryPoolsWithFilterResponse>;
-    /** Per Pool gRPC Endpoints */
+    /** Deprecated: please use the alternative in x/poolmanager */
     pool(request: QueryPoolRequest): Promise<QueryPoolResponse>;
     /**
      * PoolType returns the type of the pool.

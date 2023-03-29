@@ -6,7 +6,7 @@ export interface MsgCreateConcentratedPool {
     denom0: string;
     denom1: string;
     tickSpacing: Long;
-    precisionFactorAtPriceOne: string;
+    exponentAtPriceOne: string;
     swapFee: string;
 }
 /** ===================== MsgCreateConcentratedPool */
@@ -15,7 +15,7 @@ export interface MsgCreateConcentratedPoolSDKType {
     denom0: string;
     denom1: string;
     tick_spacing: Long;
-    precision_factor_at_price_one: string;
+    exponent_at_price_one: string;
     swap_fee: string;
 }
 /** Returns a unique poolID to identify the pool with. */
