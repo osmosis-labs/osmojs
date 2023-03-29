@@ -8,7 +8,7 @@ export const GAS_VALUES = {
         exitPool: '250000',
         swapExactAmountIn: '250000',
         swapExactAmountOut: '250000',
-        lockTokens: '250000',
+        lockTokens: '260000',
         beginUnlocking: '250000',
         unlockPeriodLock: '250000',
     }
