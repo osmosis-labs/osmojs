@@ -1,6 +1,7 @@
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { Timestamp } from "../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../helpers";
+import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 export interface MsgSuperfluidDelegate {
   sender: string;
   lockId: Long;
@@ -33,6 +34,22 @@ export interface MsgSuperfluidUnbondLockSDKType {
 }
 export interface MsgSuperfluidUnbondLockResponse {}
 export interface MsgSuperfluidUnbondLockResponseSDKType {}
+export interface MsgSuperfluidUndelegateAndUnbondLock {
+  sender: string;
+  lockId: Long;
+  /** Amount of unlocking coin. */
+
+  coin?: Coin;
+}
+export interface MsgSuperfluidUndelegateAndUnbondLockSDKType {
+  sender: string;
+  lock_id: Long;
+  /** Amount of unlocking coin. */
+
+  coin?: CoinSDKType;
+}
+export interface MsgSuperfluidUndelegateAndUnbondLockResponse {}
+export interface MsgSuperfluidUndelegateAndUnbondLockResponseSDKType {}
 /**
  * MsgLockAndSuperfluidDelegate locks coins with the unbonding period duration,
  * and then does a superfluid lock from the newly created lockup, to the
@@ -96,6 +113,38 @@ export interface MsgUnPoolWhitelistedPoolResponse {
 }
 export interface MsgUnPoolWhitelistedPoolResponseSDKType {
   exited_lock_ids: Long[];
+}
+/**
+ * =====================
+ * MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition
+ */
+
+export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
+  sender: string;
+  lockId: Long;
+  sharesToMigrate?: Coin;
+}
+/**
+ * =====================
+ * MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition
+ */
+
+export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionSDKType {
+  sender: string;
+  lock_id: Long;
+  shares_to_migrate?: CoinSDKType;
+}
+export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
+  amount0: string;
+  amount1: string;
+  liquidityCreated: string;
+  joinTime?: Date;
+}
+export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponseSDKType {
+  amount0: string;
+  amount1: string;
+  liquidity_created: string;
+  join_time?: Date;
 }
 
 function createBaseMsgSuperfluidDelegate(): MsgSuperfluidDelegate {
@@ -375,6 +424,105 @@ export const MsgSuperfluidUnbondLockResponse = {
 
 };
 
+function createBaseMsgSuperfluidUndelegateAndUnbondLock(): MsgSuperfluidUndelegateAndUnbondLock {
+  return {
+    sender: "",
+    lockId: Long.UZERO,
+    coin: undefined
+  };
+}
+
+export const MsgSuperfluidUndelegateAndUnbondLock = {
+  encode(message: MsgSuperfluidUndelegateAndUnbondLock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+
+    if (!message.lockId.isZero()) {
+      writer.uint32(16).uint64(message.lockId);
+    }
+
+    if (message.coin !== undefined) {
+      Coin.encode(message.coin, writer.uint32(26).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLock {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSuperfluidUndelegateAndUnbondLock();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.sender = reader.string();
+          break;
+
+        case 2:
+          message.lockId = (reader.uint64() as Long);
+          break;
+
+        case 3:
+          message.coin = Coin.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<MsgSuperfluidUndelegateAndUnbondLock>): MsgSuperfluidUndelegateAndUnbondLock {
+    const message = createBaseMsgSuperfluidUndelegateAndUnbondLock();
+    message.sender = object.sender ?? "";
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.coin = object.coin !== undefined && object.coin !== null ? Coin.fromPartial(object.coin) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseMsgSuperfluidUndelegateAndUnbondLockResponse(): MsgSuperfluidUndelegateAndUnbondLockResponse {
+  return {};
+}
+
+export const MsgSuperfluidUndelegateAndUnbondLockResponse = {
+  encode(_: MsgSuperfluidUndelegateAndUnbondLockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLockResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSuperfluidUndelegateAndUnbondLockResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(_: Partial<MsgSuperfluidUndelegateAndUnbondLockResponse>): MsgSuperfluidUndelegateAndUnbondLockResponse {
+    const message = createBaseMsgSuperfluidUndelegateAndUnbondLockResponse();
+    return message;
+  }
+
+};
+
 function createBaseMsgLockAndSuperfluidDelegate(): MsgLockAndSuperfluidDelegate {
   return {
     sender: "",
@@ -592,6 +740,146 @@ export const MsgUnPoolWhitelistedPoolResponse = {
   fromPartial(object: Partial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse {
     const message = createBaseMsgUnPoolWhitelistedPoolResponse();
     message.exitedLockIds = object.exitedLockIds?.map(e => Long.fromValue(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition(): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
+  return {
+    sender: "",
+    lockId: Long.UZERO,
+    sharesToMigrate: undefined
+  };
+}
+
+export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
+  encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+
+    if (!message.lockId.isZero()) {
+      writer.uint32(16).uint64(message.lockId);
+    }
+
+    if (message.sharesToMigrate !== undefined) {
+      Coin.encode(message.sharesToMigrate, writer.uint32(26).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.sender = reader.string();
+          break;
+
+        case 2:
+          message.lockId = (reader.uint64() as Long);
+          break;
+
+        case 3:
+          message.sharesToMigrate = Coin.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
+    const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition();
+    message.sender = object.sender ?? "";
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.sharesToMigrate = object.sharesToMigrate !== undefined && object.sharesToMigrate !== null ? Coin.fromPartial(object.sharesToMigrate) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse(): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
+  return {
+    amount0: "",
+    amount1: "",
+    liquidityCreated: "",
+    joinTime: undefined
+  };
+}
+
+export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse = {
+  encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.amount0 !== "") {
+      writer.uint32(10).string(message.amount0);
+    }
+
+    if (message.amount1 !== "") {
+      writer.uint32(18).string(message.amount1);
+    }
+
+    if (message.liquidityCreated !== "") {
+      writer.uint32(26).string(message.liquidityCreated);
+    }
+
+    if (message.joinTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.joinTime), writer.uint32(34).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.amount0 = reader.string();
+          break;
+
+        case 2:
+          message.amount1 = reader.string();
+          break;
+
+        case 3:
+          message.liquidityCreated = reader.string();
+          break;
+
+        case 4:
+          message.joinTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
+    const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse();
+    message.amount0 = object.amount0 ?? "";
+    message.amount1 = object.amount1 ?? "";
+    message.liquidityCreated = object.liquidityCreated ?? "";
+    message.joinTime = object.joinTime ?? undefined;
     return message;
   }
 

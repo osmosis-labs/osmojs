@@ -1,4 +1,5 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { ModuleRoute, ModuleRouteSDKType } from "./module_route";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
 /** Params holds parameters for the poolmanager module */
@@ -19,6 +20,9 @@ export interface GenesisState {
   /** params is the container of poolmanager parameters. */
 
   params?: Params;
+  /** pool_routes is the container of the mappings from pool id to pool type. */
+
+  poolRoutes: ModuleRoute[];
 }
 /** GenesisState defines the poolmanager module's genesis state. */
 
@@ -28,6 +32,9 @@ export interface GenesisStateSDKType {
   /** params is the container of poolmanager parameters. */
 
   params?: ParamsSDKType;
+  /** pool_routes is the container of the mappings from pool id to pool type. */
+
+  pool_routes: ModuleRouteSDKType[];
 }
 
 function createBaseParams(): Params {
@@ -78,7 +85,8 @@ export const Params = {
 function createBaseGenesisState(): GenesisState {
   return {
     nextPoolId: Long.UZERO,
-    params: undefined
+    params: undefined,
+    poolRoutes: []
   };
 }
 
@@ -90,6 +98,10 @@ export const GenesisState = {
 
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(18).fork()).ldelim();
+    }
+
+    for (const v of message.poolRoutes) {
+      ModuleRoute.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -112,6 +124,10 @@ export const GenesisState = {
           message.params = Params.decode(reader, reader.uint32());
           break;
 
+        case 3:
+          message.poolRoutes.push(ModuleRoute.decode(reader, reader.uint32()));
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -125,6 +141,7 @@ export const GenesisState = {
     const message = createBaseGenesisState();
     message.nextPoolId = object.nextPoolId !== undefined && object.nextPoolId !== null ? Long.fromValue(object.nextPoolId) : Long.UZERO;
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.poolRoutes = object.poolRoutes?.map(e => ModuleRoute.fromPartial(e)) || [];
     return message;
   }
 

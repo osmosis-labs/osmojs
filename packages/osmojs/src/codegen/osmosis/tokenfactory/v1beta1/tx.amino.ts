@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "../../../helpers";
-import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
+import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetBeforeSendHook, MsgForceTransfer } from "./tx";
 export interface AminoMsgCreateDenom extends AminoMsg {
   type: "osmosis/tokenfactory/create-denom";
   value: {
@@ -17,6 +17,7 @@ export interface AminoMsgMint extends AminoMsg {
       denom: string;
       amount: string;
     };
+    mintToAddress: string;
   };
 }
 export interface AminoMsgBurn extends AminoMsg {
@@ -27,6 +28,7 @@ export interface AminoMsgBurn extends AminoMsg {
       denom: string;
       amount: string;
     };
+    burnFromAddress: string;
   };
 }
 export interface AminoMsgChangeAdmin extends AminoMsg {
@@ -57,6 +59,26 @@ export interface AminoMsgSetDenomMetadata extends AminoMsg {
     };
   };
 }
+export interface AminoMsgSetBeforeSendHook extends AminoMsg {
+  type: "osmosis/tokenfactory/set-before-send-hook";
+  value: {
+    sender: string;
+    denom: string;
+    cosmwasm_address: string;
+  };
+}
+export interface AminoMsgForceTransfer extends AminoMsg {
+  type: "osmosis/tokenfactory/force-transfer";
+  value: {
+    sender: string;
+    amount: {
+      denom: string;
+      amount: string;
+    };
+    transferFromAddress: string;
+    transferToAddress: string;
+  };
+}
 export const AminoConverter = {
   "/osmosis.tokenfactory.v1beta1.MsgCreateDenom": {
     aminoType: "osmosis/tokenfactory/create-denom",
@@ -83,26 +105,30 @@ export const AminoConverter = {
     aminoType: "osmosis/tokenfactory/mint",
     toAmino: ({
       sender,
-      amount
+      amount,
+      mintToAddress
     }: MsgMint): AminoMsgMint["value"] => {
       return {
         sender,
         amount: {
           denom: amount.denom,
           amount: Long.fromValue(amount.amount).toString()
-        }
+        },
+        mintToAddress
       };
     },
     fromAmino: ({
       sender,
-      amount
+      amount,
+      mintToAddress
     }: AminoMsgMint["value"]): MsgMint => {
       return {
         sender,
         amount: {
           denom: amount.denom,
           amount: amount.amount
-        }
+        },
+        mintToAddress
       };
     }
   },
@@ -110,26 +136,30 @@ export const AminoConverter = {
     aminoType: "osmosis/tokenfactory/burn",
     toAmino: ({
       sender,
-      amount
+      amount,
+      burnFromAddress
     }: MsgBurn): AminoMsgBurn["value"] => {
       return {
         sender,
         amount: {
           denom: amount.denom,
           amount: Long.fromValue(amount.amount).toString()
-        }
+        },
+        burnFromAddress
       };
     },
     fromAmino: ({
       sender,
-      amount
+      amount,
+      burnFromAddress
     }: AminoMsgBurn["value"]): MsgBurn => {
       return {
         sender,
         amount: {
           denom: amount.denom,
           amount: amount.amount
-        }
+        },
+        burnFromAddress
       };
     }
   },
@@ -202,6 +232,66 @@ export const AminoConverter = {
           uri: metadata.uri,
           uriHash: metadata.uri_hash
         }
+      };
+    }
+  },
+  "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook": {
+    aminoType: "osmosis/tokenfactory/set-before-send-hook",
+    toAmino: ({
+      sender,
+      denom,
+      cosmwasmAddress
+    }: MsgSetBeforeSendHook): AminoMsgSetBeforeSendHook["value"] => {
+      return {
+        sender,
+        denom,
+        cosmwasm_address: cosmwasmAddress
+      };
+    },
+    fromAmino: ({
+      sender,
+      denom,
+      cosmwasm_address
+    }: AminoMsgSetBeforeSendHook["value"]): MsgSetBeforeSendHook => {
+      return {
+        sender,
+        denom,
+        cosmwasmAddress: cosmwasm_address
+      };
+    }
+  },
+  "/osmosis.tokenfactory.v1beta1.MsgForceTransfer": {
+    aminoType: "osmosis/tokenfactory/force-transfer",
+    toAmino: ({
+      sender,
+      amount,
+      transferFromAddress,
+      transferToAddress
+    }: MsgForceTransfer): AminoMsgForceTransfer["value"] => {
+      return {
+        sender,
+        amount: {
+          denom: amount.denom,
+          amount: Long.fromValue(amount.amount).toString()
+        },
+        transferFromAddress,
+        transferToAddress
+      };
+    },
+    fromAmino: ({
+      sender,
+      amount,
+      transferFromAddress,
+      transferToAddress
+    }: AminoMsgForceTransfer["value"]): MsgForceTransfer => {
+      return {
+        sender,
+        amount: {
+          denom: amount.denom,
+          amount: amount.amount
+        },
+        transferFromAddress,
+        transferToAddress
       };
     }
   }

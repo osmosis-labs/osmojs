@@ -1,7 +1,7 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { ModuleBalanceRequest, ModuleBalanceResponse, ModuleLockedAmountRequest, ModuleLockedAmountResponse, AccountUnlockableCoinsRequest, AccountUnlockableCoinsResponse, AccountUnlockingCoinsRequest, AccountUnlockingCoinsResponse, AccountLockedCoinsRequest, AccountLockedCoinsResponse, AccountLockedPastTimeRequest, AccountLockedPastTimeResponse, AccountLockedPastTimeNotUnlockingOnlyRequest, AccountLockedPastTimeNotUnlockingOnlyResponse, AccountUnlockedBeforeTimeRequest, AccountUnlockedBeforeTimeResponse, AccountLockedPastTimeDenomRequest, AccountLockedPastTimeDenomResponse, LockedDenomRequest, LockedDenomResponse, LockedRequest, LockedResponse, SyntheticLockupsByLockupIDRequest, SyntheticLockupsByLockupIDResponse, AccountLockedLongerDurationRequest, AccountLockedLongerDurationResponse, AccountLockedDurationRequest, AccountLockedDurationResponse, AccountLockedLongerDurationNotUnlockingOnlyRequest, AccountLockedLongerDurationNotUnlockingOnlyResponse, AccountLockedLongerDurationDenomRequest, AccountLockedLongerDurationDenomResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
+import { ModuleBalanceRequest, ModuleBalanceResponse, ModuleLockedAmountRequest, ModuleLockedAmountResponse, AccountUnlockableCoinsRequest, AccountUnlockableCoinsResponse, AccountUnlockingCoinsRequest, AccountUnlockingCoinsResponse, AccountLockedCoinsRequest, AccountLockedCoinsResponse, AccountLockedPastTimeRequest, AccountLockedPastTimeResponse, AccountLockedPastTimeNotUnlockingOnlyRequest, AccountLockedPastTimeNotUnlockingOnlyResponse, AccountUnlockedBeforeTimeRequest, AccountUnlockedBeforeTimeResponse, AccountLockedPastTimeDenomRequest, AccountLockedPastTimeDenomResponse, LockedDenomRequest, LockedDenomResponse, LockedRequest, LockedResponse, NextLockIDRequest, NextLockIDResponse, SyntheticLockupsByLockupIDRequest, SyntheticLockupsByLockupIDResponse, AccountLockedLongerDurationRequest, AccountLockedLongerDurationResponse, AccountLockedDurationRequest, AccountLockedDurationResponse, AccountLockedLongerDurationNotUnlockingOnlyRequest, AccountLockedLongerDurationNotUnlockingOnlyResponse, AccountLockedLongerDurationDenomRequest, AccountLockedLongerDurationDenomResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
 /** Query defines the gRPC querier service. */
 
 export interface Query {
@@ -40,6 +40,9 @@ export interface Query {
   /** Returns lock record by id */
 
   lockedByID(request: LockedRequest): Promise<LockedResponse>;
+  /** Returns next lock ID */
+
+  nextLockID(request?: NextLockIDRequest): Promise<NextLockIDResponse>;
   /** Returns synthetic lockups by native lockup id */
 
   syntheticLockupsByLockupID(request: SyntheticLockupsByLockupIDRequest): Promise<SyntheticLockupsByLockupIDResponse>;
@@ -78,6 +81,7 @@ export class QueryClientImpl implements Query {
     this.accountLockedPastTimeDenom = this.accountLockedPastTimeDenom.bind(this);
     this.lockedDenom = this.lockedDenom.bind(this);
     this.lockedByID = this.lockedByID.bind(this);
+    this.nextLockID = this.nextLockID.bind(this);
     this.syntheticLockupsByLockupID = this.syntheticLockupsByLockupID.bind(this);
     this.accountLockedLongerDuration = this.accountLockedLongerDuration.bind(this);
     this.accountLockedDuration = this.accountLockedDuration.bind(this);
@@ -150,6 +154,12 @@ export class QueryClientImpl implements Query {
     const data = LockedRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.lockup.Query", "LockedByID", data);
     return promise.then(data => LockedResponse.decode(new _m0.Reader(data)));
+  }
+
+  nextLockID(request: NextLockIDRequest = {}): Promise<NextLockIDResponse> {
+    const data = NextLockIDRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.lockup.Query", "NextLockID", data);
+    return promise.then(data => NextLockIDResponse.decode(new _m0.Reader(data)));
   }
 
   syntheticLockupsByLockupID(request: SyntheticLockupsByLockupIDRequest): Promise<SyntheticLockupsByLockupIDResponse> {
@@ -235,6 +245,10 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     lockedByID(request: LockedRequest): Promise<LockedResponse> {
       return queryService.lockedByID(request);
+    },
+
+    nextLockID(request?: NextLockIDRequest): Promise<NextLockIDResponse> {
+      return queryService.nextLockID(request);
     },
 
     syntheticLockupsByLockupID(request: SyntheticLockupsByLockupIDRequest): Promise<SyntheticLockupsByLockupIDResponse> {

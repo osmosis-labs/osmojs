@@ -80,7 +80,7 @@ export class LCDQueryClient {
     const endpoint = `osmosis/gamm/v1beta1/filtered_pools`;
     return await this.req.get<QueryPoolsWithFilterResponseSDKType>(endpoint, options);
   }
-  /* Per Pool gRPC Endpoints */
+  /* Deprecated: please use the alternative in x/poolmanager */
 
 
   async pool(params: QueryPoolRequest): Promise<QueryPoolResponseSDKType> {

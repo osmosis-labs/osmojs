@@ -8,6 +8,7 @@ export interface Params {
    * to be created with tick spacing of 1, 10, or 30.
    */
   authorizedTickSpacing: Long[];
+  authorizedSwapFees: string[];
 }
 export interface ParamsSDKType {
   /**
@@ -17,11 +18,13 @@ export interface ParamsSDKType {
    * to be created with tick spacing of 1, 10, or 30.
    */
   authorized_tick_spacing: Long[];
+  authorized_swap_fees: string[];
 }
 
 function createBaseParams(): Params {
   return {
-    authorizedTickSpacing: []
+    authorizedTickSpacing: [],
+    authorizedSwapFees: []
   };
 }
 
@@ -34,6 +37,11 @@ export const Params = {
     }
 
     writer.ldelim();
+
+    for (const v of message.authorizedSwapFees) {
+      writer.uint32(18).string(v!);
+    }
+
     return writer;
   },
 
@@ -59,6 +67,10 @@ export const Params = {
 
           break;
 
+        case 2:
+          message.authorizedSwapFees.push(reader.string());
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -71,6 +83,7 @@ export const Params = {
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.authorizedTickSpacing = object.authorizedTickSpacing?.map(e => Long.fromValue(e)) || [];
+    message.authorizedSwapFees = object.authorizedSwapFees?.map(e => e) || [];
     return message;
   }
 

@@ -61,6 +61,7 @@ export interface MsgCreateDenomResponseSDKType {
 export interface MsgMint {
   sender: string;
   amount?: Coin;
+  mintToAddress: string;
 }
 /**
  * MsgMint is the sdk.Msg type for allowing an admin account to mint
@@ -70,6 +71,7 @@ export interface MsgMint {
 export interface MsgMintSDKType {
   sender: string;
   amount?: CoinSDKType;
+  mintToAddress: string;
 }
 export interface MsgMintResponse {}
 export interface MsgMintResponseSDKType {}
@@ -81,6 +83,7 @@ export interface MsgMintResponseSDKType {}
 export interface MsgBurn {
   sender: string;
   amount?: Coin;
+  burnFromAddress: string;
 }
 /**
  * MsgBurn is the sdk.Msg type for allowing an admin account to burn
@@ -90,6 +93,7 @@ export interface MsgBurn {
 export interface MsgBurnSDKType {
   sender: string;
   amount?: CoinSDKType;
+  burnFromAddress: string;
 }
 export interface MsgBurnResponse {}
 export interface MsgBurnResponseSDKType {}
@@ -126,6 +130,38 @@ export interface MsgChangeAdminResponse {}
 
 export interface MsgChangeAdminResponseSDKType {}
 /**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+
+export interface MsgSetBeforeSendHook {
+  sender: string;
+  denom: string;
+  cosmwasmAddress: string;
+}
+/**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+
+export interface MsgSetBeforeSendHookSDKType {
+  sender: string;
+  denom: string;
+  cosmwasm_address: string;
+}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+
+export interface MsgSetBeforeSendHookResponse {}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+
+export interface MsgSetBeforeSendHookResponseSDKType {}
+/**
  * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
  * the denom's bank metadata
  */
@@ -155,6 +191,20 @@ export interface MsgSetDenomMetadataResponse {}
  */
 
 export interface MsgSetDenomMetadataResponseSDKType {}
+export interface MsgForceTransfer {
+  sender: string;
+  amount?: Coin;
+  transferFromAddress: string;
+  transferToAddress: string;
+}
+export interface MsgForceTransferSDKType {
+  sender: string;
+  amount?: CoinSDKType;
+  transferFromAddress: string;
+  transferToAddress: string;
+}
+export interface MsgForceTransferResponse {}
+export interface MsgForceTransferResponseSDKType {}
 
 function createBaseMsgCreateDenom(): MsgCreateDenom {
   return {
@@ -259,7 +309,8 @@ export const MsgCreateDenomResponse = {
 function createBaseMsgMint(): MsgMint {
   return {
     sender: "",
-    amount: undefined
+    amount: undefined,
+    mintToAddress: ""
   };
 }
 
@@ -271,6 +322,10 @@ export const MsgMint = {
 
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
+    }
+
+    if (message.mintToAddress !== "") {
+      writer.uint32(26).string(message.mintToAddress);
     }
 
     return writer;
@@ -293,6 +348,10 @@ export const MsgMint = {
           message.amount = Coin.decode(reader, reader.uint32());
           break;
 
+        case 3:
+          message.mintToAddress = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -306,6 +365,7 @@ export const MsgMint = {
     const message = createBaseMsgMint();
     message.sender = object.sender ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.mintToAddress = object.mintToAddress ?? "";
     return message;
   }
 
@@ -348,7 +408,8 @@ export const MsgMintResponse = {
 function createBaseMsgBurn(): MsgBurn {
   return {
     sender: "",
-    amount: undefined
+    amount: undefined,
+    burnFromAddress: ""
   };
 }
 
@@ -360,6 +421,10 @@ export const MsgBurn = {
 
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
+    }
+
+    if (message.burnFromAddress !== "") {
+      writer.uint32(26).string(message.burnFromAddress);
     }
 
     return writer;
@@ -382,6 +447,10 @@ export const MsgBurn = {
           message.amount = Coin.decode(reader, reader.uint32());
           break;
 
+        case 3:
+          message.burnFromAddress = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -395,6 +464,7 @@ export const MsgBurn = {
     const message = createBaseMsgBurn();
     message.sender = object.sender ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.burnFromAddress = object.burnFromAddress ?? "";
     return message;
   }
 
@@ -533,6 +603,105 @@ export const MsgChangeAdminResponse = {
 
 };
 
+function createBaseMsgSetBeforeSendHook(): MsgSetBeforeSendHook {
+  return {
+    sender: "",
+    denom: "",
+    cosmwasmAddress: ""
+  };
+}
+
+export const MsgSetBeforeSendHook = {
+  encode(message: MsgSetBeforeSendHook, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+
+    if (message.cosmwasmAddress !== "") {
+      writer.uint32(26).string(message.cosmwasmAddress);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHook {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetBeforeSendHook();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.sender = reader.string();
+          break;
+
+        case 2:
+          message.denom = reader.string();
+          break;
+
+        case 3:
+          message.cosmwasmAddress = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<MsgSetBeforeSendHook>): MsgSetBeforeSendHook {
+    const message = createBaseMsgSetBeforeSendHook();
+    message.sender = object.sender ?? "";
+    message.denom = object.denom ?? "";
+    message.cosmwasmAddress = object.cosmwasmAddress ?? "";
+    return message;
+  }
+
+};
+
+function createBaseMsgSetBeforeSendHookResponse(): MsgSetBeforeSendHookResponse {
+  return {};
+}
+
+export const MsgSetBeforeSendHookResponse = {
+  encode(_: MsgSetBeforeSendHookResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHookResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetBeforeSendHookResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(_: Partial<MsgSetBeforeSendHookResponse>): MsgSetBeforeSendHookResponse {
+    const message = createBaseMsgSetBeforeSendHookResponse();
+    return message;
+  }
+
+};
+
 function createBaseMsgSetDenomMetadata(): MsgSetDenomMetadata {
   return {
     sender: "",
@@ -617,6 +786,115 @@ export const MsgSetDenomMetadataResponse = {
 
   fromPartial(_: Partial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse {
     const message = createBaseMsgSetDenomMetadataResponse();
+    return message;
+  }
+
+};
+
+function createBaseMsgForceTransfer(): MsgForceTransfer {
+  return {
+    sender: "",
+    amount: undefined,
+    transferFromAddress: "",
+    transferToAddress: ""
+  };
+}
+
+export const MsgForceTransfer = {
+  encode(message: MsgForceTransfer, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+
+    if (message.amount !== undefined) {
+      Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
+    }
+
+    if (message.transferFromAddress !== "") {
+      writer.uint32(26).string(message.transferFromAddress);
+    }
+
+    if (message.transferToAddress !== "") {
+      writer.uint32(34).string(message.transferToAddress);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransfer {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgForceTransfer();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.sender = reader.string();
+          break;
+
+        case 2:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+
+        case 3:
+          message.transferFromAddress = reader.string();
+          break;
+
+        case 4:
+          message.transferToAddress = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<MsgForceTransfer>): MsgForceTransfer {
+    const message = createBaseMsgForceTransfer();
+    message.sender = object.sender ?? "";
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.transferFromAddress = object.transferFromAddress ?? "";
+    message.transferToAddress = object.transferToAddress ?? "";
+    return message;
+  }
+
+};
+
+function createBaseMsgForceTransferResponse(): MsgForceTransferResponse {
+  return {};
+}
+
+export const MsgForceTransferResponse = {
+  encode(_: MsgForceTransferResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransferResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgForceTransferResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(_: Partial<MsgForceTransferResponse>): MsgForceTransferResponse {
+    const message = createBaseMsgForceTransferResponse();
     return message;
   }
 

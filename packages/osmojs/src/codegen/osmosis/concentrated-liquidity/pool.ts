@@ -1,11 +1,12 @@
+import { Timestamp } from "../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../helpers";
+import { toTimestamp, Long, fromTimestamp } from "../../helpers";
 export interface Pool {
   address: string;
   id: Long;
   /** Amount of total liquidity */
 
-  liquidity: string;
+  currentTickLiquidity: string;
   token0: string;
   token1: string;
   currentSqrtPrice: string;
@@ -16,17 +17,23 @@ export interface Pool {
    */
 
   tickSpacing: Long;
-  precisionFactorAtPriceOne: string;
+  exponentAtPriceOne: string;
   /** swap_fee is the ratio that is charged on the amount of token in. */
 
   swapFee: string;
+  /**
+   * last_liquidity_update is the last time either the pool liquidity or the
+   * active tick changed
+   */
+
+  lastLiquidityUpdate?: Date;
 }
 export interface PoolSDKType {
   address: string;
   id: Long;
   /** Amount of total liquidity */
 
-  liquidity: string;
+  current_tick_liquidity: string;
   token0: string;
   token1: string;
   current_sqrt_price: string;
@@ -37,24 +44,31 @@ export interface PoolSDKType {
    */
 
   tick_spacing: Long;
-  precision_factor_at_price_one: string;
+  exponent_at_price_one: string;
   /** swap_fee is the ratio that is charged on the amount of token in. */
 
   swap_fee: string;
+  /**
+   * last_liquidity_update is the last time either the pool liquidity or the
+   * active tick changed
+   */
+
+  last_liquidity_update?: Date;
 }
 
 function createBasePool(): Pool {
   return {
     address: "",
     id: Long.UZERO,
-    liquidity: "",
+    currentTickLiquidity: "",
     token0: "",
     token1: "",
     currentSqrtPrice: "",
     currentTick: "",
     tickSpacing: Long.UZERO,
-    precisionFactorAtPriceOne: "",
-    swapFee: ""
+    exponentAtPriceOne: "",
+    swapFee: "",
+    lastLiquidityUpdate: undefined
   };
 }
 
@@ -68,8 +82,8 @@ export const Pool = {
       writer.uint32(16).uint64(message.id);
     }
 
-    if (message.liquidity !== "") {
-      writer.uint32(26).string(message.liquidity);
+    if (message.currentTickLiquidity !== "") {
+      writer.uint32(26).string(message.currentTickLiquidity);
     }
 
     if (message.token0 !== "") {
@@ -92,12 +106,16 @@ export const Pool = {
       writer.uint32(64).uint64(message.tickSpacing);
     }
 
-    if (message.precisionFactorAtPriceOne !== "") {
-      writer.uint32(74).string(message.precisionFactorAtPriceOne);
+    if (message.exponentAtPriceOne !== "") {
+      writer.uint32(74).string(message.exponentAtPriceOne);
     }
 
     if (message.swapFee !== "") {
       writer.uint32(82).string(message.swapFee);
+    }
+
+    if (message.lastLiquidityUpdate !== undefined) {
+      Timestamp.encode(toTimestamp(message.lastLiquidityUpdate), writer.uint32(90).fork()).ldelim();
     }
 
     return writer;
@@ -121,7 +139,7 @@ export const Pool = {
           break;
 
         case 3:
-          message.liquidity = reader.string();
+          message.currentTickLiquidity = reader.string();
           break;
 
         case 4:
@@ -145,11 +163,15 @@ export const Pool = {
           break;
 
         case 9:
-          message.precisionFactorAtPriceOne = reader.string();
+          message.exponentAtPriceOne = reader.string();
           break;
 
         case 10:
           message.swapFee = reader.string();
+          break;
+
+        case 11:
+          message.lastLiquidityUpdate = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -165,14 +187,15 @@ export const Pool = {
     const message = createBasePool();
     message.address = object.address ?? "";
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
-    message.liquidity = object.liquidity ?? "";
+    message.currentTickLiquidity = object.currentTickLiquidity ?? "";
     message.token0 = object.token0 ?? "";
     message.token1 = object.token1 ?? "";
     message.currentSqrtPrice = object.currentSqrtPrice ?? "";
     message.currentTick = object.currentTick ?? "";
     message.tickSpacing = object.tickSpacing !== undefined && object.tickSpacing !== null ? Long.fromValue(object.tickSpacing) : Long.UZERO;
-    message.precisionFactorAtPriceOne = object.precisionFactorAtPriceOne ?? "";
+    message.exponentAtPriceOne = object.exponentAtPriceOne ?? "";
     message.swapFee = object.swapFee ?? "";
+    message.lastLiquidityUpdate = object.lastLiquidityUpdate ?? undefined;
     return message;
   }
 

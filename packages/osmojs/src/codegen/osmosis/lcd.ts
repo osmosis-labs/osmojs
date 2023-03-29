@@ -46,11 +46,23 @@ export const createLCDClient = async ({
         v1beta1: new (await import("../cosmos/upgrade/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
+      },
+      base: {
+        node: {
+          v1beta1: new (await import("../cosmos/base/node/v1beta1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        }
       }
     },
     osmosis: {
       concentratedliquidity: {
         v1beta1: new (await import("./concentrated-liquidity/pool-model/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      cosmwasmpool: {
+        v1beta1: new (await import("./cosmwasmpool/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

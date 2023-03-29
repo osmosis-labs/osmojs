@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetProtoRevNumberOfTradesRequest, QueryGetProtoRevNumberOfTradesResponse, QueryGetProtoRevProfitsByDenomRequest, QueryGetProtoRevProfitsByDenomResponse, QueryGetProtoRevAllProfitsRequest, QueryGetProtoRevAllProfitsResponse, QueryGetProtoRevStatisticsByPoolRequest, QueryGetProtoRevStatisticsByPoolResponse, QueryGetProtoRevAllStatisticsRequest, QueryGetProtoRevAllStatisticsResponse, QueryGetProtoRevTokenPairArbRoutesRequest, QueryGetProtoRevTokenPairArbRoutesResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryGetProtoRevNumberOfTradesRequest, QueryGetProtoRevNumberOfTradesResponse, QueryGetProtoRevProfitsByDenomRequest, QueryGetProtoRevProfitsByDenomResponse, QueryGetProtoRevAllProfitsRequest, QueryGetProtoRevAllProfitsResponse, QueryGetProtoRevStatisticsByRouteRequest, QueryGetProtoRevStatisticsByRouteResponse, QueryGetProtoRevAllRouteStatisticsRequest, QueryGetProtoRevAllRouteStatisticsResponse, QueryGetProtoRevTokenPairArbRoutesRequest, QueryGetProtoRevTokenPairArbRoutesResponse, QueryGetProtoRevAdminAccountRequest, QueryGetProtoRevAdminAccountResponse, QueryGetProtoRevDeveloperAccountRequest, QueryGetProtoRevDeveloperAccountResponse, QueryGetProtoRevPoolWeightsRequest, QueryGetProtoRevPoolWeightsResponse, QueryGetProtoRevMaxPoolPointsPerTxRequest, QueryGetProtoRevMaxPoolPointsPerTxResponse, QueryGetProtoRevMaxPoolPointsPerBlockRequest, QueryGetProtoRevMaxPoolPointsPerBlockResponse, QueryGetProtoRevBaseDenomsRequest, QueryGetProtoRevBaseDenomsResponse, QueryGetProtoRevEnabledRequest, QueryGetProtoRevEnabledResponse } from "./query";
 /** Query defines the gRPC querier service. */
 
 export interface Query {
@@ -20,24 +20,57 @@ export interface Query {
 
   getProtoRevAllProfits(request?: QueryGetProtoRevAllProfitsRequest): Promise<QueryGetProtoRevAllProfitsResponse>;
   /**
-   * GetProtoRevStatisticsByPool queries the number of arbitrages and profits
-   * that have been executed for a given pool
+   * GetProtoRevStatisticsByRoute queries the number of arbitrages and profits
+   * that have been executed for a given route
    */
 
-  getProtoRevStatisticsByPool(request: QueryGetProtoRevStatisticsByPoolRequest): Promise<QueryGetProtoRevStatisticsByPoolResponse>;
+  getProtoRevStatisticsByRoute(request: QueryGetProtoRevStatisticsByRouteRequest): Promise<QueryGetProtoRevStatisticsByRouteResponse>;
   /**
-   * GetProtoRevAllStatistics queries all of pools that the module has arbitrage
-   * against and the number of trades and profits that have been executed for
-   * each pool
+   * GetProtoRevAllRouteStatistics queries all of routes that the module has
+   * arbitraged against and the number of trades and profits that have been
+   * accumulated for each route
    */
 
-  getProtoRevAllStatistics(request?: QueryGetProtoRevAllStatisticsRequest): Promise<QueryGetProtoRevAllStatisticsResponse>;
+  getProtoRevAllRouteStatistics(request?: QueryGetProtoRevAllRouteStatisticsRequest): Promise<QueryGetProtoRevAllRouteStatisticsResponse>;
   /**
    * GetProtoRevTokenPairArbRoutes queries all of the hot routes that the module
    * is currently arbitraging
    */
 
   getProtoRevTokenPairArbRoutes(request?: QueryGetProtoRevTokenPairArbRoutesRequest): Promise<QueryGetProtoRevTokenPairArbRoutesResponse>;
+  /** GetProtoRevAdminAccount queries the admin account of the module */
+
+  getProtoRevAdminAccount(request?: QueryGetProtoRevAdminAccountRequest): Promise<QueryGetProtoRevAdminAccountResponse>;
+  /** GetProtoRevDeveloperAccount queries the developer account of the module */
+
+  getProtoRevDeveloperAccount(request?: QueryGetProtoRevDeveloperAccountRequest): Promise<QueryGetProtoRevDeveloperAccountResponse>;
+  /**
+   * GetProtoRevPoolWeights queries the weights of each pool type currently
+   * being used by the module
+   */
+
+  getProtoRevPoolWeights(request?: QueryGetProtoRevPoolWeightsRequest): Promise<QueryGetProtoRevPoolWeightsResponse>;
+  /**
+   * GetProtoRevMaxPoolPointsPerTx queries the maximum number of pool points
+   * that can be consumed per transaction
+   */
+
+  getProtoRevMaxPoolPointsPerTx(request?: QueryGetProtoRevMaxPoolPointsPerTxRequest): Promise<QueryGetProtoRevMaxPoolPointsPerTxResponse>;
+  /**
+   * GetProtoRevMaxPoolPointsPerBlock queries the maximum number of pool points
+   * that can consumed per block
+   */
+
+  getProtoRevMaxPoolPointsPerBlock(request?: QueryGetProtoRevMaxPoolPointsPerBlockRequest): Promise<QueryGetProtoRevMaxPoolPointsPerBlockResponse>;
+  /**
+   * GetProtoRevBaseDenoms queries the base denoms that the module is currently
+   * utilizing for arbitrage
+   */
+
+  getProtoRevBaseDenoms(request?: QueryGetProtoRevBaseDenomsRequest): Promise<QueryGetProtoRevBaseDenomsResponse>;
+  /** GetProtoRevEnabled queries whether the module is enabled or not */
+
+  getProtoRevEnabled(request?: QueryGetProtoRevEnabledRequest): Promise<QueryGetProtoRevEnabledResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -48,9 +81,16 @@ export class QueryClientImpl implements Query {
     this.getProtoRevNumberOfTrades = this.getProtoRevNumberOfTrades.bind(this);
     this.getProtoRevProfitsByDenom = this.getProtoRevProfitsByDenom.bind(this);
     this.getProtoRevAllProfits = this.getProtoRevAllProfits.bind(this);
-    this.getProtoRevStatisticsByPool = this.getProtoRevStatisticsByPool.bind(this);
-    this.getProtoRevAllStatistics = this.getProtoRevAllStatistics.bind(this);
+    this.getProtoRevStatisticsByRoute = this.getProtoRevStatisticsByRoute.bind(this);
+    this.getProtoRevAllRouteStatistics = this.getProtoRevAllRouteStatistics.bind(this);
     this.getProtoRevTokenPairArbRoutes = this.getProtoRevTokenPairArbRoutes.bind(this);
+    this.getProtoRevAdminAccount = this.getProtoRevAdminAccount.bind(this);
+    this.getProtoRevDeveloperAccount = this.getProtoRevDeveloperAccount.bind(this);
+    this.getProtoRevPoolWeights = this.getProtoRevPoolWeights.bind(this);
+    this.getProtoRevMaxPoolPointsPerTx = this.getProtoRevMaxPoolPointsPerTx.bind(this);
+    this.getProtoRevMaxPoolPointsPerBlock = this.getProtoRevMaxPoolPointsPerBlock.bind(this);
+    this.getProtoRevBaseDenoms = this.getProtoRevBaseDenoms.bind(this);
+    this.getProtoRevEnabled = this.getProtoRevEnabled.bind(this);
   }
 
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
@@ -77,22 +117,64 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryGetProtoRevAllProfitsResponse.decode(new _m0.Reader(data)));
   }
 
-  getProtoRevStatisticsByPool(request: QueryGetProtoRevStatisticsByPoolRequest): Promise<QueryGetProtoRevStatisticsByPoolResponse> {
-    const data = QueryGetProtoRevStatisticsByPoolRequest.encode(request).finish();
-    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevStatisticsByPool", data);
-    return promise.then(data => QueryGetProtoRevStatisticsByPoolResponse.decode(new _m0.Reader(data)));
+  getProtoRevStatisticsByRoute(request: QueryGetProtoRevStatisticsByRouteRequest): Promise<QueryGetProtoRevStatisticsByRouteResponse> {
+    const data = QueryGetProtoRevStatisticsByRouteRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevStatisticsByRoute", data);
+    return promise.then(data => QueryGetProtoRevStatisticsByRouteResponse.decode(new _m0.Reader(data)));
   }
 
-  getProtoRevAllStatistics(request: QueryGetProtoRevAllStatisticsRequest = {}): Promise<QueryGetProtoRevAllStatisticsResponse> {
-    const data = QueryGetProtoRevAllStatisticsRequest.encode(request).finish();
-    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevAllStatistics", data);
-    return promise.then(data => QueryGetProtoRevAllStatisticsResponse.decode(new _m0.Reader(data)));
+  getProtoRevAllRouteStatistics(request: QueryGetProtoRevAllRouteStatisticsRequest = {}): Promise<QueryGetProtoRevAllRouteStatisticsResponse> {
+    const data = QueryGetProtoRevAllRouteStatisticsRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevAllRouteStatistics", data);
+    return promise.then(data => QueryGetProtoRevAllRouteStatisticsResponse.decode(new _m0.Reader(data)));
   }
 
   getProtoRevTokenPairArbRoutes(request: QueryGetProtoRevTokenPairArbRoutesRequest = {}): Promise<QueryGetProtoRevTokenPairArbRoutesResponse> {
     const data = QueryGetProtoRevTokenPairArbRoutesRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevTokenPairArbRoutes", data);
     return promise.then(data => QueryGetProtoRevTokenPairArbRoutesResponse.decode(new _m0.Reader(data)));
+  }
+
+  getProtoRevAdminAccount(request: QueryGetProtoRevAdminAccountRequest = {}): Promise<QueryGetProtoRevAdminAccountResponse> {
+    const data = QueryGetProtoRevAdminAccountRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevAdminAccount", data);
+    return promise.then(data => QueryGetProtoRevAdminAccountResponse.decode(new _m0.Reader(data)));
+  }
+
+  getProtoRevDeveloperAccount(request: QueryGetProtoRevDeveloperAccountRequest = {}): Promise<QueryGetProtoRevDeveloperAccountResponse> {
+    const data = QueryGetProtoRevDeveloperAccountRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevDeveloperAccount", data);
+    return promise.then(data => QueryGetProtoRevDeveloperAccountResponse.decode(new _m0.Reader(data)));
+  }
+
+  getProtoRevPoolWeights(request: QueryGetProtoRevPoolWeightsRequest = {}): Promise<QueryGetProtoRevPoolWeightsResponse> {
+    const data = QueryGetProtoRevPoolWeightsRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevPoolWeights", data);
+    return promise.then(data => QueryGetProtoRevPoolWeightsResponse.decode(new _m0.Reader(data)));
+  }
+
+  getProtoRevMaxPoolPointsPerTx(request: QueryGetProtoRevMaxPoolPointsPerTxRequest = {}): Promise<QueryGetProtoRevMaxPoolPointsPerTxResponse> {
+    const data = QueryGetProtoRevMaxPoolPointsPerTxRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevMaxPoolPointsPerTx", data);
+    return promise.then(data => QueryGetProtoRevMaxPoolPointsPerTxResponse.decode(new _m0.Reader(data)));
+  }
+
+  getProtoRevMaxPoolPointsPerBlock(request: QueryGetProtoRevMaxPoolPointsPerBlockRequest = {}): Promise<QueryGetProtoRevMaxPoolPointsPerBlockResponse> {
+    const data = QueryGetProtoRevMaxPoolPointsPerBlockRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevMaxPoolPointsPerBlock", data);
+    return promise.then(data => QueryGetProtoRevMaxPoolPointsPerBlockResponse.decode(new _m0.Reader(data)));
+  }
+
+  getProtoRevBaseDenoms(request: QueryGetProtoRevBaseDenomsRequest = {}): Promise<QueryGetProtoRevBaseDenomsResponse> {
+    const data = QueryGetProtoRevBaseDenomsRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevBaseDenoms", data);
+    return promise.then(data => QueryGetProtoRevBaseDenomsResponse.decode(new _m0.Reader(data)));
+  }
+
+  getProtoRevEnabled(request: QueryGetProtoRevEnabledRequest = {}): Promise<QueryGetProtoRevEnabledResponse> {
+    const data = QueryGetProtoRevEnabledRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Query", "GetProtoRevEnabled", data);
+    return promise.then(data => QueryGetProtoRevEnabledResponse.decode(new _m0.Reader(data)));
   }
 
 }
@@ -116,16 +198,44 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.getProtoRevAllProfits(request);
     },
 
-    getProtoRevStatisticsByPool(request: QueryGetProtoRevStatisticsByPoolRequest): Promise<QueryGetProtoRevStatisticsByPoolResponse> {
-      return queryService.getProtoRevStatisticsByPool(request);
+    getProtoRevStatisticsByRoute(request: QueryGetProtoRevStatisticsByRouteRequest): Promise<QueryGetProtoRevStatisticsByRouteResponse> {
+      return queryService.getProtoRevStatisticsByRoute(request);
     },
 
-    getProtoRevAllStatistics(request?: QueryGetProtoRevAllStatisticsRequest): Promise<QueryGetProtoRevAllStatisticsResponse> {
-      return queryService.getProtoRevAllStatistics(request);
+    getProtoRevAllRouteStatistics(request?: QueryGetProtoRevAllRouteStatisticsRequest): Promise<QueryGetProtoRevAllRouteStatisticsResponse> {
+      return queryService.getProtoRevAllRouteStatistics(request);
     },
 
     getProtoRevTokenPairArbRoutes(request?: QueryGetProtoRevTokenPairArbRoutesRequest): Promise<QueryGetProtoRevTokenPairArbRoutesResponse> {
       return queryService.getProtoRevTokenPairArbRoutes(request);
+    },
+
+    getProtoRevAdminAccount(request?: QueryGetProtoRevAdminAccountRequest): Promise<QueryGetProtoRevAdminAccountResponse> {
+      return queryService.getProtoRevAdminAccount(request);
+    },
+
+    getProtoRevDeveloperAccount(request?: QueryGetProtoRevDeveloperAccountRequest): Promise<QueryGetProtoRevDeveloperAccountResponse> {
+      return queryService.getProtoRevDeveloperAccount(request);
+    },
+
+    getProtoRevPoolWeights(request?: QueryGetProtoRevPoolWeightsRequest): Promise<QueryGetProtoRevPoolWeightsResponse> {
+      return queryService.getProtoRevPoolWeights(request);
+    },
+
+    getProtoRevMaxPoolPointsPerTx(request?: QueryGetProtoRevMaxPoolPointsPerTxRequest): Promise<QueryGetProtoRevMaxPoolPointsPerTxResponse> {
+      return queryService.getProtoRevMaxPoolPointsPerTx(request);
+    },
+
+    getProtoRevMaxPoolPointsPerBlock(request?: QueryGetProtoRevMaxPoolPointsPerBlockRequest): Promise<QueryGetProtoRevMaxPoolPointsPerBlockResponse> {
+      return queryService.getProtoRevMaxPoolPointsPerBlock(request);
+    },
+
+    getProtoRevBaseDenoms(request?: QueryGetProtoRevBaseDenomsRequest): Promise<QueryGetProtoRevBaseDenomsResponse> {
+      return queryService.getProtoRevBaseDenoms(request);
+    },
+
+    getProtoRevEnabled(request?: QueryGetProtoRevEnabledRequest): Promise<QueryGetProtoRevEnabledResponse> {
+      return queryService.getProtoRevEnabled(request);
     }
 
   };

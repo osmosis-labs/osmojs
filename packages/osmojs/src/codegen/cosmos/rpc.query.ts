@@ -30,6 +30,11 @@ export const createRPCQueryClient = async ({
       },
       upgrade: {
         v1beta1: (await import("./upgrade/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      base: {
+        node: {
+          v1beta1: (await import("./base/node/v1beta1/query.rpc.Service")).createRpcQueryExtension(client)
+        }
       }
     }
   };

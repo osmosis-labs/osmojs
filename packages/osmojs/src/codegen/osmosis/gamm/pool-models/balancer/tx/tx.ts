@@ -1,7 +1,8 @@
 import { PoolParams, PoolParamsSDKType, PoolAsset, PoolAssetSDKType } from "../balancerPool";
 import { Coin, CoinSDKType } from "../../../../../cosmos/base/v1beta1/coin";
+import { Timestamp } from "../../../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../../../../helpers";
+import { Long, toTimestamp, fromTimestamp } from "../../../../../helpers";
 /** ===================== MsgCreatePool */
 
 export interface MsgCreateBalancerPool {
@@ -33,28 +34,24 @@ export interface MsgCreateBalancerPoolResponseSDKType {
 export interface MsgMigrateSharesToFullRangeConcentratedPosition {
   sender: string;
   sharesToMigrate?: Coin;
-  /** temporary field, eventually gamm pool should be linked to cl pool */
-
-  poolIdEntering: Long;
 }
 /** ===================== MsgMigrateSharesToFullRangeConcentratedPosition */
 
 export interface MsgMigrateSharesToFullRangeConcentratedPositionSDKType {
   sender: string;
   shares_to_migrate?: CoinSDKType;
-  /** temporary field, eventually gamm pool should be linked to cl pool */
-
-  pool_id_entering: Long;
 }
 export interface MsgMigrateSharesToFullRangeConcentratedPositionResponse {
   amount0: string;
   amount1: string;
   liquidityCreated: string;
+  joinTime?: Date;
 }
 export interface MsgMigrateSharesToFullRangeConcentratedPositionResponseSDKType {
   amount0: string;
   amount1: string;
   liquidity_created: string;
+  join_time?: Date;
 }
 
 function createBaseMsgCreateBalancerPool(): MsgCreateBalancerPool {
@@ -180,8 +177,7 @@ export const MsgCreateBalancerPoolResponse = {
 function createBaseMsgMigrateSharesToFullRangeConcentratedPosition(): MsgMigrateSharesToFullRangeConcentratedPosition {
   return {
     sender: "",
-    sharesToMigrate: undefined,
-    poolIdEntering: Long.UZERO
+    sharesToMigrate: undefined
   };
 }
 
@@ -193,10 +189,6 @@ export const MsgMigrateSharesToFullRangeConcentratedPosition = {
 
     if (message.sharesToMigrate !== undefined) {
       Coin.encode(message.sharesToMigrate, writer.uint32(18).fork()).ldelim();
-    }
-
-    if (!message.poolIdEntering.isZero()) {
-      writer.uint32(24).uint64(message.poolIdEntering);
     }
 
     return writer;
@@ -219,10 +211,6 @@ export const MsgMigrateSharesToFullRangeConcentratedPosition = {
           message.sharesToMigrate = Coin.decode(reader, reader.uint32());
           break;
 
-        case 3:
-          message.poolIdEntering = (reader.uint64() as Long);
-          break;
-
         default:
           reader.skipType(tag & 7);
           break;
@@ -236,7 +224,6 @@ export const MsgMigrateSharesToFullRangeConcentratedPosition = {
     const message = createBaseMsgMigrateSharesToFullRangeConcentratedPosition();
     message.sender = object.sender ?? "";
     message.sharesToMigrate = object.sharesToMigrate !== undefined && object.sharesToMigrate !== null ? Coin.fromPartial(object.sharesToMigrate) : undefined;
-    message.poolIdEntering = object.poolIdEntering !== undefined && object.poolIdEntering !== null ? Long.fromValue(object.poolIdEntering) : Long.UZERO;
     return message;
   }
 
@@ -246,7 +233,8 @@ function createBaseMsgMigrateSharesToFullRangeConcentratedPositionResponse(): Ms
   return {
     amount0: "",
     amount1: "",
-    liquidityCreated: ""
+    liquidityCreated: "",
+    joinTime: undefined
   };
 }
 
@@ -262,6 +250,10 @@ export const MsgMigrateSharesToFullRangeConcentratedPositionResponse = {
 
     if (message.liquidityCreated !== "") {
       writer.uint32(26).string(message.liquidityCreated);
+    }
+
+    if (message.joinTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.joinTime), writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -288,6 +280,10 @@ export const MsgMigrateSharesToFullRangeConcentratedPositionResponse = {
           message.liquidityCreated = reader.string();
           break;
 
+        case 4:
+          message.joinTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -302,6 +298,7 @@ export const MsgMigrateSharesToFullRangeConcentratedPositionResponse = {
     message.amount0 = object.amount0 ?? "";
     message.amount1 = object.amount1 ?? "";
     message.liquidityCreated = object.liquidityCreated ?? "";
+    message.joinTime = object.joinTime ?? undefined;
     return message;
   }
 

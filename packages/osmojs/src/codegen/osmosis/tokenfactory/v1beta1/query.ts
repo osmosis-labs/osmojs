@@ -83,6 +83,28 @@ export interface QueryDenomsFromCreatorResponse {
 export interface QueryDenomsFromCreatorResponseSDKType {
   denoms: string[];
 }
+export interface QueryBeforeSendHookAddressRequest {
+  denom: string;
+}
+export interface QueryBeforeSendHookAddressRequestSDKType {
+  denom: string;
+}
+/**
+ * QueryBeforeSendHookAddressResponse defines the response structure for the
+ * DenomBeforeSendHook gRPC query.
+ */
+
+export interface QueryBeforeSendHookAddressResponse {
+  cosmwasmAddress: string;
+}
+/**
+ * QueryBeforeSendHookAddressResponse defines the response structure for the
+ * DenomBeforeSendHook gRPC query.
+ */
+
+export interface QueryBeforeSendHookAddressResponseSDKType {
+  cosmwasm_address: string;
+}
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
@@ -338,6 +360,96 @@ export const QueryDenomsFromCreatorResponse = {
   fromPartial(object: Partial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse {
     const message = createBaseQueryDenomsFromCreatorResponse();
     message.denoms = object.denoms?.map(e => e) || [];
+    return message;
+  }
+
+};
+
+function createBaseQueryBeforeSendHookAddressRequest(): QueryBeforeSendHookAddressRequest {
+  return {
+    denom: ""
+  };
+}
+
+export const QueryBeforeSendHookAddressRequest = {
+  encode(message: QueryBeforeSendHookAddressRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryBeforeSendHookAddressRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryBeforeSendHookAddressRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryBeforeSendHookAddressRequest>): QueryBeforeSendHookAddressRequest {
+    const message = createBaseQueryBeforeSendHookAddressRequest();
+    message.denom = object.denom ?? "";
+    return message;
+  }
+
+};
+
+function createBaseQueryBeforeSendHookAddressResponse(): QueryBeforeSendHookAddressResponse {
+  return {
+    cosmwasmAddress: ""
+  };
+}
+
+export const QueryBeforeSendHookAddressResponse = {
+  encode(message: QueryBeforeSendHookAddressResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.cosmwasmAddress !== "") {
+      writer.uint32(10).string(message.cosmwasmAddress);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryBeforeSendHookAddressResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryBeforeSendHookAddressResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.cosmwasmAddress = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryBeforeSendHookAddressResponse>): QueryBeforeSendHookAddressResponse {
+    const message = createBaseQueryBeforeSendHookAddressResponse();
+    message.cosmwasmAddress = object.cosmwasmAddress ?? "";
     return message;
   }
 

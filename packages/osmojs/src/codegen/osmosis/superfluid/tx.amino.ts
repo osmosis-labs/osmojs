@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "../../helpers";
-import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool } from "./tx";
+import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgSuperfluidUndelegateAndUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition } from "./tx";
 export interface AminoMsgSuperfluidDelegate extends AminoMsg {
   type: "osmosis/superfluid-delegate";
   value: {
@@ -24,6 +24,17 @@ export interface AminoMsgSuperfluidUnbondLock extends AminoMsg {
     lock_id: string;
   };
 }
+export interface AminoMsgSuperfluidUndelegateAndUnbondLock extends AminoMsg {
+  type: "osmosis/superfluid-undelegate-and-unbond-lock";
+  value: {
+    sender: string;
+    lock_id: string;
+    coin: {
+      denom: string;
+      amount: string;
+    };
+  };
+}
 export interface AminoMsgLockAndSuperfluidDelegate extends AminoMsg {
   type: "osmosis/lock-and-superfluid-delegate";
   value: {
@@ -40,6 +51,17 @@ export interface AminoMsgUnPoolWhitelistedPool extends AminoMsg {
   value: {
     sender: string;
     pool_id: string;
+  };
+}
+export interface AminoMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition extends AminoMsg {
+  type: "osmosis/unlock-and-migrate-shares-to-full-range-concentrated-position";
+  value: {
+    sender: string;
+    lock_id: string;
+    shares_to_migrate: {
+      denom: string;
+      amount: string;
+    };
   };
 }
 export const AminoConverter = {
@@ -110,6 +132,37 @@ export const AminoConverter = {
       };
     }
   },
+  "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock": {
+    aminoType: "osmosis/superfluid-undelegate-and-unbond-lock",
+    toAmino: ({
+      sender,
+      lockId,
+      coin
+    }: MsgSuperfluidUndelegateAndUnbondLock): AminoMsgSuperfluidUndelegateAndUnbondLock["value"] => {
+      return {
+        sender,
+        lock_id: lockId.toString(),
+        coin: {
+          denom: coin.denom,
+          amount: Long.fromValue(coin.amount).toString()
+        }
+      };
+    },
+    fromAmino: ({
+      sender,
+      lock_id,
+      coin
+    }: AminoMsgSuperfluidUndelegateAndUnbondLock["value"]): MsgSuperfluidUndelegateAndUnbondLock => {
+      return {
+        sender,
+        lockId: Long.fromString(lock_id),
+        coin: {
+          denom: coin.denom,
+          amount: coin.amount
+        }
+      };
+    }
+  },
   "/osmosis.superfluid.MsgLockAndSuperfluidDelegate": {
     aminoType: "osmosis/lock-and-superfluid-delegate",
     toAmino: ({
@@ -159,6 +212,37 @@ export const AminoConverter = {
       return {
         sender,
         poolId: Long.fromString(pool_id)
+      };
+    }
+  },
+  "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition": {
+    aminoType: "osmosis/unlock-and-migrate-shares-to-full-range-concentrated-position",
+    toAmino: ({
+      sender,
+      lockId,
+      sharesToMigrate
+    }: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition): AminoMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition["value"] => {
+      return {
+        sender,
+        lock_id: lockId.toString(),
+        shares_to_migrate: {
+          denom: sharesToMigrate.denom,
+          amount: Long.fromValue(sharesToMigrate.amount).toString()
+        }
+      };
+    },
+    fromAmino: ({
+      sender,
+      lock_id,
+      shares_to_migrate
+    }: AminoMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition["value"]): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition => {
+      return {
+        sender,
+        lockId: Long.fromString(lock_id),
+        sharesToMigrate: {
+          denom: shares_to_migrate.denom,
+          amount: shares_to_migrate.amount
+        }
       };
     }
   }

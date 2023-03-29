@@ -4,18 +4,27 @@ export interface TickInfo {
   liquidityGross: string;
   liquidityNet: string;
   feeGrowthOutside: DecCoin[];
+  uptimeTrackers: UptimeTracker[];
 }
 export interface TickInfoSDKType {
   liquidity_gross: string;
   liquidity_net: string;
   fee_growth_outside: DecCoinSDKType[];
+  uptime_trackers: UptimeTrackerSDKType[];
+}
+export interface UptimeTracker {
+  uptimeGrowthOutside: DecCoin[];
+}
+export interface UptimeTrackerSDKType {
+  uptime_growth_outside: DecCoinSDKType[];
 }
 
 function createBaseTickInfo(): TickInfo {
   return {
     liquidityGross: "",
     liquidityNet: "",
-    feeGrowthOutside: []
+    feeGrowthOutside: [],
+    uptimeTrackers: []
   };
 }
 
@@ -31,6 +40,10 @@ export const TickInfo = {
 
     for (const v of message.feeGrowthOutside) {
       DecCoin.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+
+    for (const v of message.uptimeTrackers) {
+      UptimeTracker.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -57,6 +70,10 @@ export const TickInfo = {
           message.feeGrowthOutside.push(DecCoin.decode(reader, reader.uint32()));
           break;
 
+        case 4:
+          message.uptimeTrackers.push(UptimeTracker.decode(reader, reader.uint32()));
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -71,6 +88,52 @@ export const TickInfo = {
     message.liquidityGross = object.liquidityGross ?? "";
     message.liquidityNet = object.liquidityNet ?? "";
     message.feeGrowthOutside = object.feeGrowthOutside?.map(e => DecCoin.fromPartial(e)) || [];
+    message.uptimeTrackers = object.uptimeTrackers?.map(e => UptimeTracker.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseUptimeTracker(): UptimeTracker {
+  return {
+    uptimeGrowthOutside: []
+  };
+}
+
+export const UptimeTracker = {
+  encode(message: UptimeTracker, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.uptimeGrowthOutside) {
+      DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UptimeTracker {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUptimeTracker();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.uptimeGrowthOutside.push(DecCoin.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<UptimeTracker>): UptimeTracker {
+    const message = createBaseUptimeTracker();
+    message.uptimeGrowthOutside = object.uptimeGrowthOutside?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
   }
 

@@ -2,9 +2,11 @@ import { DecCoin, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 export interface AccumulatorContent {
   accumValue: DecCoin[];
+  totalShares: string;
 }
 export interface AccumulatorContentSDKType {
   accum_value: DecCoinSDKType[];
+  total_shares: string;
 }
 export interface Options {}
 export interface OptionsSDKType {}
@@ -23,7 +25,8 @@ export interface RecordSDKType {
 
 function createBaseAccumulatorContent(): AccumulatorContent {
   return {
-    accumValue: []
+    accumValue: [],
+    totalShares: ""
   };
 }
 
@@ -31,6 +34,10 @@ export const AccumulatorContent = {
   encode(message: AccumulatorContent, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.accumValue) {
       DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.totalShares !== "") {
+      writer.uint32(18).string(message.totalShares);
     }
 
     return writer;
@@ -49,6 +56,10 @@ export const AccumulatorContent = {
           message.accumValue.push(DecCoin.decode(reader, reader.uint32()));
           break;
 
+        case 2:
+          message.totalShares = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -61,6 +72,7 @@ export const AccumulatorContent = {
   fromPartial(object: Partial<AccumulatorContent>): AccumulatorContent {
     const message = createBaseAccumulatorContent();
     message.accumValue = object.accumValue?.map(e => DecCoin.fromPartial(e)) || [];
+    message.totalShares = object.totalShares ?? "";
     return message;
   }
 

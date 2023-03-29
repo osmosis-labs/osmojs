@@ -47,9 +47,11 @@ export interface MsgBeginUnlockingSDKType {
 }
 export interface MsgBeginUnlockingResponse {
   success: boolean;
+  unlockingLockID: Long;
 }
 export interface MsgBeginUnlockingResponseSDKType {
   success: boolean;
+  unlockingLockID: Long;
 }
 /**
  * MsgExtendLockup extends the existing lockup's duration.
@@ -385,7 +387,8 @@ export const MsgBeginUnlocking = {
 
 function createBaseMsgBeginUnlockingResponse(): MsgBeginUnlockingResponse {
   return {
-    success: false
+    success: false,
+    unlockingLockID: Long.UZERO
   };
 }
 
@@ -393,6 +396,10 @@ export const MsgBeginUnlockingResponse = {
   encode(message: MsgBeginUnlockingResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.success === true) {
       writer.uint32(8).bool(message.success);
+    }
+
+    if (!message.unlockingLockID.isZero()) {
+      writer.uint32(16).uint64(message.unlockingLockID);
     }
 
     return writer;
@@ -411,6 +418,10 @@ export const MsgBeginUnlockingResponse = {
           message.success = reader.bool();
           break;
 
+        case 2:
+          message.unlockingLockID = (reader.uint64() as Long);
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -423,6 +434,7 @@ export const MsgBeginUnlockingResponse = {
   fromPartial(object: Partial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse {
     const message = createBaseMsgBeginUnlockingResponse();
     message.success = object.success ?? false;
+    message.unlockingLockID = object.unlockingLockID !== undefined && object.unlockingLockID !== null ? Long.fromValue(object.unlockingLockID) : Long.UZERO;
     return message;
   }
 

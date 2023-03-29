@@ -7,7 +7,7 @@ export interface MsgCreateConcentratedPool {
   denom0: string;
   denom1: string;
   tickSpacing: Long;
-  precisionFactorAtPriceOne: string;
+  exponentAtPriceOne: string;
   swapFee: string;
 }
 /** ===================== MsgCreateConcentratedPool */
@@ -17,7 +17,7 @@ export interface MsgCreateConcentratedPoolSDKType {
   denom0: string;
   denom1: string;
   tick_spacing: Long;
-  precision_factor_at_price_one: string;
+  exponent_at_price_one: string;
   swap_fee: string;
 }
 /** Returns a unique poolID to identify the pool with. */
@@ -37,7 +37,7 @@ function createBaseMsgCreateConcentratedPool(): MsgCreateConcentratedPool {
     denom0: "",
     denom1: "",
     tickSpacing: Long.UZERO,
-    precisionFactorAtPriceOne: "",
+    exponentAtPriceOne: "",
     swapFee: ""
   };
 }
@@ -60,8 +60,8 @@ export const MsgCreateConcentratedPool = {
       writer.uint32(32).uint64(message.tickSpacing);
     }
 
-    if (message.precisionFactorAtPriceOne !== "") {
-      writer.uint32(42).string(message.precisionFactorAtPriceOne);
+    if (message.exponentAtPriceOne !== "") {
+      writer.uint32(42).string(message.exponentAtPriceOne);
     }
 
     if (message.swapFee !== "") {
@@ -97,7 +97,7 @@ export const MsgCreateConcentratedPool = {
           break;
 
         case 5:
-          message.precisionFactorAtPriceOne = reader.string();
+          message.exponentAtPriceOne = reader.string();
           break;
 
         case 9:
@@ -119,7 +119,7 @@ export const MsgCreateConcentratedPool = {
     message.denom0 = object.denom0 ?? "";
     message.denom1 = object.denom1 ?? "";
     message.tickSpacing = object.tickSpacing !== undefined && object.tickSpacing !== null ? Long.fromValue(object.tickSpacing) : Long.UZERO;
-    message.precisionFactorAtPriceOne = object.precisionFactorAtPriceOne ?? "";
+    message.exponentAtPriceOne = object.exponentAtPriceOne ?? "";
     message.swapFee = object.swapFee ?? "";
     return message;
   }

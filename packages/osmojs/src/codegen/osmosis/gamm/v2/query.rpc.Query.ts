@@ -3,10 +3,7 @@ import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QuerySpotPriceRequest, QuerySpotPriceResponse } from "./query";
 export interface Query {
-  /**
-   * SpotPrice defines a gRPC query handler that returns the spot price given
-   * a base denomination and a quote denomination.
-   */
+  /** Deprecated: please use alternate in x/poolmanager */
   spotPrice(request: QuerySpotPriceRequest): Promise<QuerySpotPriceResponse>;
 }
 export class QueryClientImpl implements Query {

@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.superfluid.MsgSuperfluidDelegate", MsgSuperfluidDelegate], ["/osmosis.superfluid.MsgSuperfluidUndelegate", MsgSuperfluidUndelegate], ["/osmosis.superfluid.MsgSuperfluidUnbondLock", MsgSuperfluidUnbondLock], ["/osmosis.superfluid.MsgLockAndSuperfluidDelegate", MsgLockAndSuperfluidDelegate], ["/osmosis.superfluid.MsgUnPoolWhitelistedPool", MsgUnPoolWhitelistedPool]];
+import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgSuperfluidUndelegateAndUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.superfluid.MsgSuperfluidDelegate", MsgSuperfluidDelegate], ["/osmosis.superfluid.MsgSuperfluidUndelegate", MsgSuperfluidUndelegate], ["/osmosis.superfluid.MsgSuperfluidUnbondLock", MsgSuperfluidUnbondLock], ["/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock", MsgSuperfluidUndelegateAndUnbondLock], ["/osmosis.superfluid.MsgLockAndSuperfluidDelegate", MsgLockAndSuperfluidDelegate], ["/osmosis.superfluid.MsgUnPoolWhitelistedPool", MsgUnPoolWhitelistedPool], ["/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition", MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -30,6 +30,13 @@ export const MessageComposer = {
       };
     },
 
+    superfluidUndelegateAndUnbondLock(value: MsgSuperfluidUndelegateAndUnbondLock) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock",
+        value: MsgSuperfluidUndelegateAndUnbondLock.encode(value).finish()
+      };
+    },
+
     lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate) {
       return {
         typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegate",
@@ -41,6 +48,13 @@ export const MessageComposer = {
       return {
         typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool",
         value: MsgUnPoolWhitelistedPool.encode(value).finish()
+      };
+    },
+
+    unlockAndMigrateSharesToFullRangeConcentratedPosition(value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition",
+        value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.encode(value).finish()
       };
     }
 
@@ -67,6 +81,13 @@ export const MessageComposer = {
       };
     },
 
+    superfluidUndelegateAndUnbondLock(value: MsgSuperfluidUndelegateAndUnbondLock) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock",
+        value
+      };
+    },
+
     lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate) {
       return {
         typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegate",
@@ -77,6 +98,13 @@ export const MessageComposer = {
     unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool) {
       return {
         typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool",
+        value
+      };
+    },
+
+    unlockAndMigrateSharesToFullRangeConcentratedPosition(value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition",
         value
       };
     }
@@ -104,6 +132,13 @@ export const MessageComposer = {
       };
     },
 
+    superfluidUndelegateAndUnbondLock(value: MsgSuperfluidUndelegateAndUnbondLock) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock",
+        value: MsgSuperfluidUndelegateAndUnbondLock.fromPartial(value)
+      };
+    },
+
     lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate) {
       return {
         typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegate",
@@ -115,6 +150,13 @@ export const MessageComposer = {
       return {
         typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool",
         value: MsgUnPoolWhitelistedPool.fromPartial(value)
+      };
+    },
+
+    unlockAndMigrateSharesToFullRangeConcentratedPosition(value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition",
+        value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.fromPartial(value)
       };
     }
 

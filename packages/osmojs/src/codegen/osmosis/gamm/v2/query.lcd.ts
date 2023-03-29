@@ -11,8 +11,7 @@ export class LCDQueryClient {
     this.req = requestClient;
     this.spotPrice = this.spotPrice.bind(this);
   }
-  /* SpotPrice defines a gRPC query handler that returns the spot price given
-   a base denomination and a quote denomination. */
+  /* Deprecated: please use alternate in x/poolmanager */
 
 
   async spotPrice(params: QuerySpotPriceRequest): Promise<QuerySpotPriceResponseSDKType> {

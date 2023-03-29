@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponse, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponse, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponse, QueryBeforeSendHookAddressRequest, QueryBeforeSendHookAddressResponse } from "./query";
 /** Query defines the gRPC querier service. */
 
 export interface Query {
@@ -22,6 +22,12 @@ export interface Query {
    */
 
   denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponse>;
+  /**
+   * BeforeSendHookAddress defines a gRPC query method for
+   * getting the address registered for the before send hook.
+   */
+
+  beforeSendHookAddress(request: QueryBeforeSendHookAddressRequest): Promise<QueryBeforeSendHookAddressResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -31,6 +37,7 @@ export class QueryClientImpl implements Query {
     this.params = this.params.bind(this);
     this.denomAuthorityMetadata = this.denomAuthorityMetadata.bind(this);
     this.denomsFromCreator = this.denomsFromCreator.bind(this);
+    this.beforeSendHookAddress = this.beforeSendHookAddress.bind(this);
   }
 
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
@@ -51,6 +58,12 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryDenomsFromCreatorResponse.decode(new _m0.Reader(data)));
   }
 
+  beforeSendHookAddress(request: QueryBeforeSendHookAddressRequest): Promise<QueryBeforeSendHookAddressResponse> {
+    const data = QueryBeforeSendHookAddressRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.tokenfactory.v1beta1.Query", "BeforeSendHookAddress", data);
+    return promise.then(data => QueryBeforeSendHookAddressResponse.decode(new _m0.Reader(data)));
+  }
+
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -66,6 +79,10 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponse> {
       return queryService.denomsFromCreator(request);
+    },
+
+    beforeSendHookAddress(request: QueryBeforeSendHookAddressRequest): Promise<QueryBeforeSendHookAddressResponse> {
+      return queryService.beforeSendHookAddress(request);
     }
 
   };

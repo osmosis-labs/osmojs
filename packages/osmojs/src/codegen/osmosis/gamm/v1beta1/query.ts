@@ -4,19 +4,37 @@ import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAm
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
-/** =============================== Pool */
+/**
+ * =============================== Pool
+ * Deprecated: please use the alternative in x/poolmanager
+ */
+
+/** @deprecated */
 
 export interface QueryPoolRequest {
   poolId: Long;
 }
-/** =============================== Pool */
+/**
+ * =============================== Pool
+ * Deprecated: please use the alternative in x/poolmanager
+ */
+
+/** @deprecated */
 
 export interface QueryPoolRequestSDKType {
   pool_id: Long;
 }
+/** Deprecated: please use the alternative in x/poolmanager */
+
+/** @deprecated */
+
 export interface QueryPoolResponse {
   pool?: Any;
 }
+/** Deprecated: please use the alternative in x/poolmanager */
+
+/** @deprecated */
+
 export interface QueryPoolResponseSDKType {
   pool?: AnySDKType;
 }

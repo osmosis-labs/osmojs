@@ -1,6 +1,6 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgSetHotRoutes, MsgSetHotRoutesResponse, MsgSetDeveloperAccount, MsgSetDeveloperAccountResponse } from "./tx";
+import { MsgSetHotRoutes, MsgSetHotRoutesResponse, MsgSetDeveloperAccount, MsgSetDeveloperAccountResponse, MsgSetMaxPoolPointsPerTx, MsgSetMaxPoolPointsPerTxResponse, MsgSetMaxPoolPointsPerBlock, MsgSetMaxPoolPointsPerBlockResponse, MsgSetPoolWeights, MsgSetPoolWeightsResponse, MsgSetBaseDenoms, MsgSetBaseDenomsResponse } from "./tx";
 export interface Msg {
   /**
    * SetHotRoutes sets the hot routes that will be explored when creating
@@ -13,6 +13,30 @@ export interface Msg {
    */
 
   setDeveloperAccount(request: MsgSetDeveloperAccount): Promise<MsgSetDeveloperAccountResponse>;
+  /**
+   * SetMaxPoolPointsPerTx sets the maximum number of pool points that can be
+   * consumed per transaction. Can only be called by the admin account.
+   */
+
+  setMaxPoolPointsPerTx(request: MsgSetMaxPoolPointsPerTx): Promise<MsgSetMaxPoolPointsPerTxResponse>;
+  /**
+   * SetMaxPoolPointsPerBlock sets the maximum number of pool points that can be
+   * consumed per block. Can only be called by the admin account.
+   */
+
+  setMaxPoolPointsPerBlock(request: MsgSetMaxPoolPointsPerBlock): Promise<MsgSetMaxPoolPointsPerBlockResponse>;
+  /**
+   * SetPoolWeights sets the weights of each pool type in the store. Can only be
+   * called by the admin account.
+   */
+
+  setPoolWeights(request: MsgSetPoolWeights): Promise<MsgSetPoolWeightsResponse>;
+  /**
+   * SetBaseDenoms sets the base denoms that will be used to create cyclic
+   * arbitrage routes. Can only be called by the admin account.
+   */
+
+  setBaseDenoms(request: MsgSetBaseDenoms): Promise<MsgSetBaseDenomsResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -21,6 +45,10 @@ export class MsgClientImpl implements Msg {
     this.rpc = rpc;
     this.setHotRoutes = this.setHotRoutes.bind(this);
     this.setDeveloperAccount = this.setDeveloperAccount.bind(this);
+    this.setMaxPoolPointsPerTx = this.setMaxPoolPointsPerTx.bind(this);
+    this.setMaxPoolPointsPerBlock = this.setMaxPoolPointsPerBlock.bind(this);
+    this.setPoolWeights = this.setPoolWeights.bind(this);
+    this.setBaseDenoms = this.setBaseDenoms.bind(this);
   }
 
   setHotRoutes(request: MsgSetHotRoutes): Promise<MsgSetHotRoutesResponse> {
@@ -33,6 +61,30 @@ export class MsgClientImpl implements Msg {
     const data = MsgSetDeveloperAccount.encode(request).finish();
     const promise = this.rpc.request("osmosis.protorev.v1beta1.Msg", "SetDeveloperAccount", data);
     return promise.then(data => MsgSetDeveloperAccountResponse.decode(new _m0.Reader(data)));
+  }
+
+  setMaxPoolPointsPerTx(request: MsgSetMaxPoolPointsPerTx): Promise<MsgSetMaxPoolPointsPerTxResponse> {
+    const data = MsgSetMaxPoolPointsPerTx.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Msg", "SetMaxPoolPointsPerTx", data);
+    return promise.then(data => MsgSetMaxPoolPointsPerTxResponse.decode(new _m0.Reader(data)));
+  }
+
+  setMaxPoolPointsPerBlock(request: MsgSetMaxPoolPointsPerBlock): Promise<MsgSetMaxPoolPointsPerBlockResponse> {
+    const data = MsgSetMaxPoolPointsPerBlock.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Msg", "SetMaxPoolPointsPerBlock", data);
+    return promise.then(data => MsgSetMaxPoolPointsPerBlockResponse.decode(new _m0.Reader(data)));
+  }
+
+  setPoolWeights(request: MsgSetPoolWeights): Promise<MsgSetPoolWeightsResponse> {
+    const data = MsgSetPoolWeights.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Msg", "SetPoolWeights", data);
+    return promise.then(data => MsgSetPoolWeightsResponse.decode(new _m0.Reader(data)));
+  }
+
+  setBaseDenoms(request: MsgSetBaseDenoms): Promise<MsgSetBaseDenomsResponse> {
+    const data = MsgSetBaseDenoms.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Msg", "SetBaseDenoms", data);
+    return promise.then(data => MsgSetBaseDenomsResponse.decode(new _m0.Reader(data)));
   }
 
 }

@@ -1,5 +1,5 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType } from "./query";
+import { ParamsRequest, ParamsResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -15,9 +15,9 @@ export class LCDQueryClient {
    parameters. */
 
 
-  async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
+  async params(_params: ParamsRequest = {}): Promise<ParamsResponseSDKType> {
     const endpoint = `osmosis/ibc-rate-limit/v1beta1/params`;
-    return await this.req.get<QueryParamsResponseSDKType>(endpoint);
+    return await this.req.get<ParamsResponseSDKType>(endpoint);
   }
 
 }

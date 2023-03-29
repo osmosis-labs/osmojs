@@ -30,11 +30,19 @@ export const createRPCQueryClient = async ({
       },
       upgrade: {
         v1beta1: (await import("../cosmos/upgrade/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      base: {
+        node: {
+          v1beta1: (await import("../cosmos/base/node/v1beta1/query.rpc.Service")).createRpcQueryExtension(client)
+        }
       }
     },
     osmosis: {
       concentratedliquidity: {
         v1beta1: (await import("./concentrated-liquidity/pool-model/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      cosmwasmpool: {
+        v1beta1: (await import("./cosmwasmpool/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
       downtimedetector: {
         v1beta1: (await import("./downtime-detector/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)

@@ -141,6 +141,14 @@ export interface LockedResponse {
 export interface LockedResponseSDKType {
   lock?: PeriodLockSDKType;
 }
+export interface NextLockIDRequest {}
+export interface NextLockIDRequestSDKType {}
+export interface NextLockIDResponse {
+  lockId: Long;
+}
+export interface NextLockIDResponseSDKType {
+  lock_id: Long;
+}
 export interface SyntheticLockupsByLockupIDRequest {
   lockId: Long;
 }
@@ -1243,6 +1251,85 @@ export const LockedResponse = {
   fromPartial(object: Partial<LockedResponse>): LockedResponse {
     const message = createBaseLockedResponse();
     message.lock = object.lock !== undefined && object.lock !== null ? PeriodLock.fromPartial(object.lock) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseNextLockIDRequest(): NextLockIDRequest {
+  return {};
+}
+
+export const NextLockIDRequest = {
+  encode(_: NextLockIDRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): NextLockIDRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseNextLockIDRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(_: Partial<NextLockIDRequest>): NextLockIDRequest {
+    const message = createBaseNextLockIDRequest();
+    return message;
+  }
+
+};
+
+function createBaseNextLockIDResponse(): NextLockIDResponse {
+  return {
+    lockId: Long.UZERO
+  };
+}
+
+export const NextLockIDResponse = {
+  encode(message: NextLockIDResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.lockId.isZero()) {
+      writer.uint32(8).uint64(message.lockId);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): NextLockIDResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseNextLockIDResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.lockId = (reader.uint64() as Long);
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<NextLockIDResponse>): NextLockIDResponse {
+    const message = createBaseNextLockIDResponse();
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
     return message;
   }
 

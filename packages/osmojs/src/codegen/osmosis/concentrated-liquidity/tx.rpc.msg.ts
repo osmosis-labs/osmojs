@@ -1,10 +1,11 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgCreatePosition, MsgCreatePositionResponse, MsgWithdrawPosition, MsgWithdrawPositionResponse, MsgCollectFees, MsgCollectFeesResponse } from "./tx";
+import { MsgCreatePosition, MsgCreatePositionResponse, MsgWithdrawPosition, MsgWithdrawPositionResponse, MsgCollectFees, MsgCollectFeesResponse, MsgCollectIncentives, MsgCollectIncentivesResponse } from "./tx";
 export interface Msg {
   createPosition(request: MsgCreatePosition): Promise<MsgCreatePositionResponse>;
   withdrawPosition(request: MsgWithdrawPosition): Promise<MsgWithdrawPositionResponse>;
   collectFees(request: MsgCollectFees): Promise<MsgCollectFeesResponse>;
+  collectIncentives(request: MsgCollectIncentives): Promise<MsgCollectIncentivesResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -14,6 +15,7 @@ export class MsgClientImpl implements Msg {
     this.createPosition = this.createPosition.bind(this);
     this.withdrawPosition = this.withdrawPosition.bind(this);
     this.collectFees = this.collectFees.bind(this);
+    this.collectIncentives = this.collectIncentives.bind(this);
   }
 
   createPosition(request: MsgCreatePosition): Promise<MsgCreatePositionResponse> {
@@ -32,6 +34,12 @@ export class MsgClientImpl implements Msg {
     const data = MsgCollectFees.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "CollectFees", data);
     return promise.then(data => MsgCollectFeesResponse.decode(new _m0.Reader(data)));
+  }
+
+  collectIncentives(request: MsgCollectIncentives): Promise<MsgCollectIncentivesResponse> {
+    const data = MsgCollectIncentives.encode(request).finish();
+    const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "CollectIncentives", data);
+    return promise.then(data => MsgCollectIncentivesResponse.decode(new _m0.Reader(data)));
   }
 
 }

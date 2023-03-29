@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreatePosition, MsgWithdrawPosition, MsgCollectFees } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition", MsgCreatePosition], ["/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition", MsgWithdrawPosition], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectFees", MsgCollectFees]];
+import { MsgCreatePosition, MsgWithdrawPosition, MsgCollectFees, MsgCollectIncentives } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition", MsgCreatePosition], ["/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition", MsgWithdrawPosition], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectFees", MsgCollectFees], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives", MsgCollectIncentives]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -28,6 +28,13 @@ export const MessageComposer = {
         typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees",
         value: MsgCollectFees.encode(value).finish()
       };
+    },
+
+    collectIncentives(value: MsgCollectIncentives) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
+        value: MsgCollectIncentives.encode(value).finish()
+      };
     }
 
   },
@@ -49,6 +56,13 @@ export const MessageComposer = {
     collectFees(value: MsgCollectFees) {
       return {
         typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees",
+        value
+      };
+    },
+
+    collectIncentives(value: MsgCollectIncentives) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
         value
       };
     }
@@ -73,6 +87,13 @@ export const MessageComposer = {
       return {
         typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees",
         value: MsgCollectFees.fromPartial(value)
+      };
+    },
+
+    collectIncentives(value: MsgCollectIncentives) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
+        value: MsgCollectIncentives.fromPartial(value)
       };
     }
 

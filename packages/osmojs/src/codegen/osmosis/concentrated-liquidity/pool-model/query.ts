@@ -1,23 +1,43 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
+import { PositionWithUnderlyingAssetBreakdown, PositionWithUnderlyingAssetBreakdownSDKType } from "../position";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Params, ParamsSDKType } from "../params";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
-/** =============================== Pool */
+/** =============================== UserPositions */
 
-export interface QueryPoolRequest {
+export interface QueryUserPositionsRequest {
+  address: string;
   poolId: Long;
 }
-/** =============================== Pool */
+/** =============================== UserPositions */
 
-export interface QueryPoolRequestSDKType {
+export interface QueryUserPositionsRequestSDKType {
+  address: string;
   pool_id: Long;
 }
-export interface QueryPoolResponse {
-  pool?: Any;
+export interface QueryUserPositionsResponse {
+  positions: PositionWithUnderlyingAssetBreakdown[];
 }
-export interface QueryPoolResponseSDKType {
-  pool?: AnySDKType;
+export interface QueryUserPositionsResponseSDKType {
+  positions: PositionWithUnderlyingAssetBreakdownSDKType[];
+}
+/** =============================== PositionById */
+
+export interface QueryPositionByIdRequest {
+  positionId: Long;
+}
+/** =============================== PositionById */
+
+export interface QueryPositionByIdRequestSDKType {
+  position_id: Long;
+}
+export interface QueryPositionByIdResponse {
+  position?: PositionWithUnderlyingAssetBreakdown;
+}
+export interface QueryPositionByIdResponseSDKType {
+  position?: PositionWithUnderlyingAssetBreakdownSDKType;
 }
 /** =============================== Pools */
 
@@ -55,32 +75,111 @@ export interface QueryParamsResponse {
 export interface QueryParamsResponseSDKType {
   params?: ParamsSDKType;
 }
+/** =============================== LiquidityDepthsForRange */
 
-function createBaseQueryPoolRequest(): QueryPoolRequest {
+export interface QueryLiquidityDepthsForRangeRequest {
+  poolId: Long;
+  lowerTick: string;
+  upperTick: string;
+}
+/** =============================== LiquidityDepthsForRange */
+
+export interface QueryLiquidityDepthsForRangeRequestSDKType {
+  pool_id: Long;
+  lower_tick: string;
+  upper_tick: string;
+}
+export interface QueryLiquidityDepthsForRangeResponse {
+  liquidityDepths: LiquidityDepth[];
+}
+export interface QueryLiquidityDepthsForRangeResponseSDKType {
+  liquidity_depths: LiquidityDepthSDKType[];
+}
+export interface LiquidityDepth {
+  liquidityNet: string;
+  tickIndex: string;
+}
+export interface LiquidityDepthSDKType {
+  liquidity_net: string;
+  tick_index: string;
+}
+export interface LiquidityDepthWithRange {
+  liquidityAmount: string;
+  lowerTick: string;
+  upperTick: string;
+}
+export interface LiquidityDepthWithRangeSDKType {
+  liquidity_amount: string;
+  lower_tick: string;
+  upper_tick: string;
+}
+/** =============================== TickLiquidityInBatches */
+
+export interface QueryTotalLiquidityForRangeRequest {
+  poolId: Long;
+}
+/** =============================== TickLiquidityInBatches */
+
+export interface QueryTotalLiquidityForRangeRequestSDKType {
+  pool_id: Long;
+}
+export interface QueryTotalLiquidityForRangeResponse {
+  liquidity: LiquidityDepthWithRange[];
+}
+export interface QueryTotalLiquidityForRangeResponseSDKType {
+  liquidity: LiquidityDepthWithRangeSDKType[];
+}
+/** ===================== MsgQueryClaimableFees */
+
+export interface QueryClaimableFeesRequest {
+  positionId: Long;
+}
+/** ===================== MsgQueryClaimableFees */
+
+export interface QueryClaimableFeesRequestSDKType {
+  position_id: Long;
+}
+export interface QueryClaimableFeesResponse {
+  claimableFees: Coin[];
+}
+export interface QueryClaimableFeesResponseSDKType {
+  claimable_fees: CoinSDKType[];
+}
+
+function createBaseQueryUserPositionsRequest(): QueryUserPositionsRequest {
   return {
+    address: "",
     poolId: Long.UZERO
   };
 }
 
-export const QueryPoolRequest = {
-  encode(message: QueryPoolRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const QueryUserPositionsRequest = {
+  encode(message: QueryUserPositionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+
     if (!message.poolId.isZero()) {
-      writer.uint32(8).uint64(message.poolId);
+      writer.uint32(16).uint64(message.poolId);
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionsRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryPoolRequest();
+    const message = createBaseQueryUserPositionsRequest();
 
     while (reader.pos < end) {
       const tag = reader.uint32();
 
       switch (tag >>> 3) {
         case 1:
+          message.address = reader.string();
+          break;
+
+        case 2:
           message.poolId = (reader.uint64() as Long);
           break;
 
@@ -93,40 +192,41 @@ export const QueryPoolRequest = {
     return message;
   },
 
-  fromPartial(object: Partial<QueryPoolRequest>): QueryPoolRequest {
-    const message = createBaseQueryPoolRequest();
+  fromPartial(object: Partial<QueryUserPositionsRequest>): QueryUserPositionsRequest {
+    const message = createBaseQueryUserPositionsRequest();
+    message.address = object.address ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     return message;
   }
 
 };
 
-function createBaseQueryPoolResponse(): QueryPoolResponse {
+function createBaseQueryUserPositionsResponse(): QueryUserPositionsResponse {
   return {
-    pool: undefined
+    positions: []
   };
 }
 
-export const QueryPoolResponse = {
-  encode(message: QueryPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pool !== undefined) {
-      Any.encode(message.pool, writer.uint32(10).fork()).ldelim();
+export const QueryUserPositionsResponse = {
+  encode(message: QueryUserPositionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.positions) {
+      PositionWithUnderlyingAssetBreakdown.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryPoolResponse();
+    const message = createBaseQueryUserPositionsResponse();
 
     while (reader.pos < end) {
       const tag = reader.uint32();
 
       switch (tag >>> 3) {
         case 1:
-          message.pool = Any.decode(reader, reader.uint32());
+          message.positions.push(PositionWithUnderlyingAssetBreakdown.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -138,9 +238,99 @@ export const QueryPoolResponse = {
     return message;
   },
 
-  fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse {
-    const message = createBaseQueryPoolResponse();
-    message.pool = object.pool !== undefined && object.pool !== null ? Any.fromPartial(object.pool) : undefined;
+  fromPartial(object: Partial<QueryUserPositionsResponse>): QueryUserPositionsResponse {
+    const message = createBaseQueryUserPositionsResponse();
+    message.positions = object.positions?.map(e => PositionWithUnderlyingAssetBreakdown.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseQueryPositionByIdRequest(): QueryPositionByIdRequest {
+  return {
+    positionId: Long.UZERO
+  };
+}
+
+export const QueryPositionByIdRequest = {
+  encode(message: QueryPositionByIdRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.positionId.isZero()) {
+      writer.uint32(8).uint64(message.positionId);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPositionByIdRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryPositionByIdRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.positionId = (reader.uint64() as Long);
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryPositionByIdRequest>): QueryPositionByIdRequest {
+    const message = createBaseQueryPositionByIdRequest();
+    message.positionId = object.positionId !== undefined && object.positionId !== null ? Long.fromValue(object.positionId) : Long.UZERO;
+    return message;
+  }
+
+};
+
+function createBaseQueryPositionByIdResponse(): QueryPositionByIdResponse {
+  return {
+    position: undefined
+  };
+}
+
+export const QueryPositionByIdResponse = {
+  encode(message: QueryPositionByIdResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.position !== undefined) {
+      PositionWithUnderlyingAssetBreakdown.encode(message.position, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryPositionByIdResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryPositionByIdResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.position = PositionWithUnderlyingAssetBreakdown.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryPositionByIdResponse>): QueryPositionByIdResponse {
+    const message = createBaseQueryPositionByIdResponse();
+    message.position = object.position !== undefined && object.position !== null ? PositionWithUnderlyingAssetBreakdown.fromPartial(object.position) : undefined;
     return message;
   }
 
@@ -320,6 +510,416 @@ export const QueryParamsResponse = {
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseQueryLiquidityDepthsForRangeRequest(): QueryLiquidityDepthsForRangeRequest {
+  return {
+    poolId: Long.UZERO,
+    lowerTick: "",
+    upperTick: ""
+  };
+}
+
+export const QueryLiquidityDepthsForRangeRequest = {
+  encode(message: QueryLiquidityDepthsForRangeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
+    }
+
+    if (message.lowerTick !== "") {
+      writer.uint32(18).string(message.lowerTick);
+    }
+
+    if (message.upperTick !== "") {
+      writer.uint32(26).string(message.upperTick);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLiquidityDepthsForRangeRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryLiquidityDepthsForRangeRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = (reader.uint64() as Long);
+          break;
+
+        case 2:
+          message.lowerTick = reader.string();
+          break;
+
+        case 3:
+          message.upperTick = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryLiquidityDepthsForRangeRequest>): QueryLiquidityDepthsForRangeRequest {
+    const message = createBaseQueryLiquidityDepthsForRangeRequest();
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.lowerTick = object.lowerTick ?? "";
+    message.upperTick = object.upperTick ?? "";
+    return message;
+  }
+
+};
+
+function createBaseQueryLiquidityDepthsForRangeResponse(): QueryLiquidityDepthsForRangeResponse {
+  return {
+    liquidityDepths: []
+  };
+}
+
+export const QueryLiquidityDepthsForRangeResponse = {
+  encode(message: QueryLiquidityDepthsForRangeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.liquidityDepths) {
+      LiquidityDepth.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLiquidityDepthsForRangeResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryLiquidityDepthsForRangeResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.liquidityDepths.push(LiquidityDepth.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryLiquidityDepthsForRangeResponse>): QueryLiquidityDepthsForRangeResponse {
+    const message = createBaseQueryLiquidityDepthsForRangeResponse();
+    message.liquidityDepths = object.liquidityDepths?.map(e => LiquidityDepth.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseLiquidityDepth(): LiquidityDepth {
+  return {
+    liquidityNet: "",
+    tickIndex: ""
+  };
+}
+
+export const LiquidityDepth = {
+  encode(message: LiquidityDepth, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.liquidityNet !== "") {
+      writer.uint32(10).string(message.liquidityNet);
+    }
+
+    if (message.tickIndex !== "") {
+      writer.uint32(18).string(message.tickIndex);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityDepth {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseLiquidityDepth();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.liquidityNet = reader.string();
+          break;
+
+        case 2:
+          message.tickIndex = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<LiquidityDepth>): LiquidityDepth {
+    const message = createBaseLiquidityDepth();
+    message.liquidityNet = object.liquidityNet ?? "";
+    message.tickIndex = object.tickIndex ?? "";
+    return message;
+  }
+
+};
+
+function createBaseLiquidityDepthWithRange(): LiquidityDepthWithRange {
+  return {
+    liquidityAmount: "",
+    lowerTick: "",
+    upperTick: ""
+  };
+}
+
+export const LiquidityDepthWithRange = {
+  encode(message: LiquidityDepthWithRange, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.liquidityAmount !== "") {
+      writer.uint32(10).string(message.liquidityAmount);
+    }
+
+    if (message.lowerTick !== "") {
+      writer.uint32(18).string(message.lowerTick);
+    }
+
+    if (message.upperTick !== "") {
+      writer.uint32(26).string(message.upperTick);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityDepthWithRange {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseLiquidityDepthWithRange();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.liquidityAmount = reader.string();
+          break;
+
+        case 2:
+          message.lowerTick = reader.string();
+          break;
+
+        case 3:
+          message.upperTick = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<LiquidityDepthWithRange>): LiquidityDepthWithRange {
+    const message = createBaseLiquidityDepthWithRange();
+    message.liquidityAmount = object.liquidityAmount ?? "";
+    message.lowerTick = object.lowerTick ?? "";
+    message.upperTick = object.upperTick ?? "";
+    return message;
+  }
+
+};
+
+function createBaseQueryTotalLiquidityForRangeRequest(): QueryTotalLiquidityForRangeRequest {
+  return {
+    poolId: Long.UZERO
+  };
+}
+
+export const QueryTotalLiquidityForRangeRequest = {
+  encode(message: QueryTotalLiquidityForRangeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityForRangeRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryTotalLiquidityForRangeRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = (reader.uint64() as Long);
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryTotalLiquidityForRangeRequest>): QueryTotalLiquidityForRangeRequest {
+    const message = createBaseQueryTotalLiquidityForRangeRequest();
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    return message;
+  }
+
+};
+
+function createBaseQueryTotalLiquidityForRangeResponse(): QueryTotalLiquidityForRangeResponse {
+  return {
+    liquidity: []
+  };
+}
+
+export const QueryTotalLiquidityForRangeResponse = {
+  encode(message: QueryTotalLiquidityForRangeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.liquidity) {
+      LiquidityDepthWithRange.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityForRangeResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryTotalLiquidityForRangeResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.liquidity.push(LiquidityDepthWithRange.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryTotalLiquidityForRangeResponse>): QueryTotalLiquidityForRangeResponse {
+    const message = createBaseQueryTotalLiquidityForRangeResponse();
+    message.liquidity = object.liquidity?.map(e => LiquidityDepthWithRange.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseQueryClaimableFeesRequest(): QueryClaimableFeesRequest {
+  return {
+    positionId: Long.UZERO
+  };
+}
+
+export const QueryClaimableFeesRequest = {
+  encode(message: QueryClaimableFeesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.positionId.isZero()) {
+      writer.uint32(8).uint64(message.positionId);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimableFeesRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryClaimableFeesRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.positionId = (reader.uint64() as Long);
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryClaimableFeesRequest>): QueryClaimableFeesRequest {
+    const message = createBaseQueryClaimableFeesRequest();
+    message.positionId = object.positionId !== undefined && object.positionId !== null ? Long.fromValue(object.positionId) : Long.UZERO;
+    return message;
+  }
+
+};
+
+function createBaseQueryClaimableFeesResponse(): QueryClaimableFeesResponse {
+  return {
+    claimableFees: []
+  };
+}
+
+export const QueryClaimableFeesResponse = {
+  encode(message: QueryClaimableFeesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.claimableFees) {
+      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimableFeesResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryClaimableFeesResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.claimableFees.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryClaimableFeesResponse>): QueryClaimableFeesResponse {
+    const message = createBaseQueryClaimableFeesResponse();
+    message.claimableFees = object.claimableFees?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
 
