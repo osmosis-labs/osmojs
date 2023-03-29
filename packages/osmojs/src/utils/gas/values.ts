@@ -16,7 +16,7 @@ export const GAS_VALUES = {
 
 export const FEE_VALUES = {
     osmosis: {
-        low: '0',
+        low: '650',
         medium: '6250',
         high: '10000',
     }
