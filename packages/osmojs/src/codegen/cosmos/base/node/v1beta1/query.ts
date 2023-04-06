@@ -45,6 +45,8 @@ function createBaseConfigRequest(): ConfigRequest {
 }
 
 export const ConfigRequest = {
+  typeUrl: "/cosmos.base.node.v1beta1.ConfigRequest",
+
   encode(_: ConfigRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -116,6 +118,8 @@ function createBaseConfigResponse(): ConfigResponse {
 }
 
 export const ConfigResponse = {
+  typeUrl: "/cosmos.base.node.v1beta1.ConfigResponse",
+
   encode(message: ConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.minimumGasPrice !== "") {
       writer.uint32(10).string(message.minimumGasPrice);

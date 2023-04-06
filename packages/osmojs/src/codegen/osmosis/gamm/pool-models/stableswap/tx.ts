@@ -125,6 +125,8 @@ function createBaseMsgCreateStableswapPool(): MsgCreateStableswapPool {
 }
 
 export const MsgCreateStableswapPool = {
+  typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgCreateStableswapPool",
+
   encode(message: MsgCreateStableswapPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -287,6 +289,8 @@ function createBaseMsgCreateStableswapPoolResponse(): MsgCreateStableswapPoolRes
 }
 
 export const MsgCreateStableswapPoolResponse = {
+  typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgCreateStableswapPoolResponse",
+
   encode(message: MsgCreateStableswapPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -372,6 +376,8 @@ function createBaseMsgStableSwapAdjustScalingFactors(): MsgStableSwapAdjustScali
 }
 
 export const MsgStableSwapAdjustScalingFactors = {
+  typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgStableSwapAdjustScalingFactors",
+
   encode(message: MsgStableSwapAdjustScalingFactors, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -493,6 +499,8 @@ function createBaseMsgStableSwapAdjustScalingFactorsResponse(): MsgStableSwapAdj
 }
 
 export const MsgStableSwapAdjustScalingFactorsResponse = {
+  typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgStableSwapAdjustScalingFactorsResponse",
+
   encode(_: MsgStableSwapAdjustScalingFactorsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },

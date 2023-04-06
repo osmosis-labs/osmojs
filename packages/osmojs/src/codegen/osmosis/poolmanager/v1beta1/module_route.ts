@@ -122,6 +122,8 @@ function createBaseModuleRoute(): ModuleRoute {
 }
 
 export const ModuleRoute = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.ModuleRoute",
+
   encode(message: ModuleRoute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.poolType !== 0) {
       writer.uint32(8).int32(message.poolType);

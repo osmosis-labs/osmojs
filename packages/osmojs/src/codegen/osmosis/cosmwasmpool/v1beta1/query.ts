@@ -40,6 +40,8 @@ function createBaseParamsRequest(): ParamsRequest {
 }
 
 export const ParamsRequest = {
+  typeUrl: "/osmosis.cosmwasmpool.v1beta1.ParamsRequest",
+
   encode(_: ParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -111,6 +113,8 @@ function createBaseParamsResponse(): ParamsResponse {
 }
 
 export const ParamsResponse = {
+  typeUrl: "/osmosis.cosmwasmpool.v1beta1.ParamsResponse",
+
   encode(message: ParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();

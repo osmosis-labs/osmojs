@@ -192,6 +192,8 @@ function createBaseFullTick(): FullTick {
 }
 
 export const FullTick = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullTick",
+
   encode(message: FullTick, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -301,6 +303,8 @@ function createBasePoolData(): PoolData {
 }
 
 export const PoolData = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolData",
+
   encode(message: PoolData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pool !== undefined) {
       Any.encode((message.pool as Any), writer.uint32(10).fork()).ldelim();
@@ -448,6 +452,8 @@ function createBaseGenesisState(): GenesisState {
 }
 
 export const GenesisState = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisState",
+
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -576,6 +582,8 @@ function createBaseAccumObject(): AccumObject {
 }
 
 export const AccumObject = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.AccumObject",
+
   encode(message: AccumObject, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);

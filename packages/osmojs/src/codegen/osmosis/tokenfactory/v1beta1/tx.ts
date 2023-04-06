@@ -426,6 +426,8 @@ function createBaseMsgCreateDenom(): MsgCreateDenom {
 }
 
 export const MsgCreateDenom = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgCreateDenom",
+
   encode(message: MsgCreateDenom, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -520,6 +522,8 @@ function createBaseMsgCreateDenomResponse(): MsgCreateDenomResponse {
 }
 
 export const MsgCreateDenomResponse = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgCreateDenomResponse",
+
   encode(message: MsgCreateDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.newTokenDenom !== "") {
       writer.uint32(10).string(message.newTokenDenom);
@@ -605,6 +609,8 @@ function createBaseMsgMint(): MsgMint {
 }
 
 export const MsgMint = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgMint",
+
   encode(message: MsgMint, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -708,6 +714,8 @@ function createBaseMsgMintResponse(): MsgMintResponse {
 }
 
 export const MsgMintResponse = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgMintResponse",
+
   encode(_: MsgMintResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -781,6 +789,8 @@ function createBaseMsgBurn(): MsgBurn {
 }
 
 export const MsgBurn = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgBurn",
+
   encode(message: MsgBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -884,6 +894,8 @@ function createBaseMsgBurnResponse(): MsgBurnResponse {
 }
 
 export const MsgBurnResponse = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgBurnResponse",
+
   encode(_: MsgBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -957,6 +969,8 @@ function createBaseMsgChangeAdmin(): MsgChangeAdmin {
 }
 
 export const MsgChangeAdmin = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin",
+
   encode(message: MsgChangeAdmin, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1060,6 +1074,8 @@ function createBaseMsgChangeAdminResponse(): MsgChangeAdminResponse {
 }
 
 export const MsgChangeAdminResponse = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdminResponse",
+
   encode(_: MsgChangeAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1133,6 +1149,8 @@ function createBaseMsgSetBeforeSendHook(): MsgSetBeforeSendHook {
 }
 
 export const MsgSetBeforeSendHook = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook",
+
   encode(message: MsgSetBeforeSendHook, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1236,6 +1254,8 @@ function createBaseMsgSetBeforeSendHookResponse(): MsgSetBeforeSendHookResponse 
 }
 
 export const MsgSetBeforeSendHookResponse = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHookResponse",
+
   encode(_: MsgSetBeforeSendHookResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1308,6 +1328,8 @@ function createBaseMsgSetDenomMetadata(): MsgSetDenomMetadata {
 }
 
 export const MsgSetDenomMetadata = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata",
+
   encode(message: MsgSetDenomMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1400,6 +1422,8 @@ function createBaseMsgSetDenomMetadataResponse(): MsgSetDenomMetadataResponse {
 }
 
 export const MsgSetDenomMetadataResponse = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadataResponse",
+
   encode(_: MsgSetDenomMetadataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1474,6 +1498,8 @@ function createBaseMsgForceTransfer(): MsgForceTransfer {
 }
 
 export const MsgForceTransfer = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgForceTransfer",
+
   encode(message: MsgForceTransfer, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1588,6 +1614,8 @@ function createBaseMsgForceTransferResponse(): MsgForceTransferResponse {
 }
 
 export const MsgForceTransferResponse = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgForceTransferResponse",
+
   encode(_: MsgForceTransferResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },

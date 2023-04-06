@@ -24,6 +24,8 @@ function createBaseParams(): Params {
 }
 
 export const Params = {
+  typeUrl: "/osmosis.lockup.Params",
+
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.forceUnlockAllowedAddresses) {
       writer.uint32(10).string(v!);

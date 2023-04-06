@@ -150,6 +150,8 @@ function createBaseIncentiveRecord(): IncentiveRecord {
 }
 
 export const IncentiveRecord = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecord",
+
   encode(message: IncentiveRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -279,6 +281,8 @@ function createBaseIncentiveRecordBody(): IncentiveRecordBody {
 }
 
 export const IncentiveRecordBody = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecordBody",
+
   encode(message: IncentiveRecordBody, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.remainingAmount !== "") {
       writer.uint32(10).string(message.remainingAmount);

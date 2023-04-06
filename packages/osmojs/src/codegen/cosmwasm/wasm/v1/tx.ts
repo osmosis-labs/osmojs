@@ -1129,6 +1129,8 @@ function createBaseMsgStoreCode(): MsgStoreCode {
 }
 
 export const MsgStoreCode = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgStoreCode",
+
   encode(message: MsgStoreCode, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1235,6 +1237,8 @@ function createBaseMsgStoreCodeResponse(): MsgStoreCodeResponse {
 }
 
 export const MsgStoreCodeResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgStoreCodeResponse",
+
   encode(message: MsgStoreCodeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.codeId.isZero()) {
       writer.uint32(8).uint64(message.codeId);
@@ -1334,6 +1338,8 @@ function createBaseMsgInstantiateContract(): MsgInstantiateContract {
 }
 
 export const MsgInstantiateContract = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract",
+
   encode(message: MsgInstantiateContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1479,6 +1485,8 @@ function createBaseMsgInstantiateContractResponse(): MsgInstantiateContractRespo
 }
 
 export const MsgInstantiateContractResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContractResponse",
+
   encode(message: MsgInstantiateContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -1580,6 +1588,8 @@ function createBaseMsgInstantiateContract2(): MsgInstantiateContract2 {
 }
 
 export const MsgInstantiateContract2 = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract2",
+
   encode(message: MsgInstantiateContract2, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1747,6 +1757,8 @@ function createBaseMsgInstantiateContract2Response(): MsgInstantiateContract2Res
 }
 
 export const MsgInstantiateContract2Response = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract2Response",
+
   encode(message: MsgInstantiateContract2Response, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -1844,6 +1856,8 @@ function createBaseMsgExecuteContract(): MsgExecuteContract {
 }
 
 export const MsgExecuteContract = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
+
   encode(message: MsgExecuteContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1966,6 +1980,8 @@ function createBaseMsgExecuteContractResponse(): MsgExecuteContractResponse {
 }
 
 export const MsgExecuteContractResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContractResponse",
+
   encode(message: MsgExecuteContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -2052,6 +2068,8 @@ function createBaseMsgMigrateContract(): MsgMigrateContract {
 }
 
 export const MsgMigrateContract = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgMigrateContract",
+
   encode(message: MsgMigrateContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -2168,6 +2186,8 @@ function createBaseMsgMigrateContractResponse(): MsgMigrateContractResponse {
 }
 
 export const MsgMigrateContractResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgMigrateContractResponse",
+
   encode(message: MsgMigrateContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -2253,6 +2273,8 @@ function createBaseMsgUpdateAdmin(): MsgUpdateAdmin {
 }
 
 export const MsgUpdateAdmin = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgUpdateAdmin",
+
   encode(message: MsgUpdateAdmin, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -2356,6 +2378,8 @@ function createBaseMsgUpdateAdminResponse(): MsgUpdateAdminResponse {
 }
 
 export const MsgUpdateAdminResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgUpdateAdminResponse",
+
   encode(_: MsgUpdateAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2428,6 +2452,8 @@ function createBaseMsgClearAdmin(): MsgClearAdmin {
 }
 
 export const MsgClearAdmin = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgClearAdmin",
+
   encode(message: MsgClearAdmin, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -2520,6 +2546,8 @@ function createBaseMsgClearAdminResponse(): MsgClearAdminResponse {
 }
 
 export const MsgClearAdminResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgClearAdminResponse",
+
   encode(_: MsgClearAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2593,6 +2621,8 @@ function createBaseMsgUpdateInstantiateConfig(): MsgUpdateInstantiateConfig {
 }
 
 export const MsgUpdateInstantiateConfig = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgUpdateInstantiateConfig",
+
   encode(message: MsgUpdateInstantiateConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -2696,6 +2726,8 @@ function createBaseMsgUpdateInstantiateConfigResponse(): MsgUpdateInstantiateCon
 }
 
 export const MsgUpdateInstantiateConfigResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgUpdateInstantiateConfigResponse",
+
   encode(_: MsgUpdateInstantiateConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2768,6 +2800,8 @@ function createBaseMsgUpdateParams(): MsgUpdateParams {
 }
 
 export const MsgUpdateParams = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgUpdateParams",
+
   encode(message: MsgUpdateParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -2860,6 +2894,8 @@ function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
 }
 
 export const MsgUpdateParamsResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgUpdateParamsResponse",
+
   encode(_: MsgUpdateParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2933,6 +2969,8 @@ function createBaseMsgSudoContract(): MsgSudoContract {
 }
 
 export const MsgSudoContract = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgSudoContract",
+
   encode(message: MsgSudoContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -3038,6 +3076,8 @@ function createBaseMsgSudoContractResponse(): MsgSudoContractResponse {
 }
 
 export const MsgSudoContractResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgSudoContractResponse",
+
   encode(message: MsgSudoContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -3122,6 +3162,8 @@ function createBaseMsgPinCodes(): MsgPinCodes {
 }
 
 export const MsgPinCodes = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgPinCodes",
+
   encode(message: MsgPinCodes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -3232,6 +3274,8 @@ function createBaseMsgPinCodesResponse(): MsgPinCodesResponse {
 }
 
 export const MsgPinCodesResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgPinCodesResponse",
+
   encode(_: MsgPinCodesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -3304,6 +3348,8 @@ function createBaseMsgUnpinCodes(): MsgUnpinCodes {
 }
 
 export const MsgUnpinCodes = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgUnpinCodes",
+
   encode(message: MsgUnpinCodes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -3414,6 +3460,8 @@ function createBaseMsgUnpinCodesResponse(): MsgUnpinCodesResponse {
 }
 
 export const MsgUnpinCodesResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgUnpinCodesResponse",
+
   encode(_: MsgUnpinCodesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -3495,6 +3543,8 @@ function createBaseMsgStoreAndInstantiateContract(): MsgStoreAndInstantiateContr
 }
 
 export const MsgStoreAndInstantiateContract = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract",
+
   encode(message: MsgStoreAndInstantiateContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -3695,6 +3745,8 @@ function createBaseMsgStoreAndInstantiateContractResponse(): MsgStoreAndInstanti
 }
 
 export const MsgStoreAndInstantiateContractResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContractResponse",
+
   encode(message: MsgStoreAndInstantiateContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);

@@ -289,6 +289,8 @@ function createBaseSignatureDescriptors(): SignatureDescriptors {
 }
 
 export const SignatureDescriptors = {
+  typeUrl: "/cosmos.tx.signing.v1beta1.SignatureDescriptors",
+
   encode(message: SignatureDescriptors, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.signatures) {
       SignatureDescriptor.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -380,6 +382,8 @@ function createBaseSignatureDescriptor(): SignatureDescriptor {
 }
 
 export const SignatureDescriptor = {
+  typeUrl: "/cosmos.tx.signing.v1beta1.SignatureDescriptor",
+
   encode(message: SignatureDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.publicKey !== undefined) {
       Any.encode(message.publicKey, writer.uint32(10).fork()).ldelim();
@@ -486,6 +490,8 @@ function createBaseSignatureDescriptor_Data(): SignatureDescriptor_Data {
 }
 
 export const SignatureDescriptor_Data = {
+  typeUrl: "/cosmos.tx.signing.v1beta1.Data",
+
   encode(message: SignatureDescriptor_Data, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.single !== undefined) {
       SignatureDescriptor_Data_Single.encode(message.single, writer.uint32(10).fork()).ldelim();
@@ -581,6 +587,8 @@ function createBaseSignatureDescriptor_Data_Single(): SignatureDescriptor_Data_S
 }
 
 export const SignatureDescriptor_Data_Single = {
+  typeUrl: "/cosmos.tx.signing.v1beta1.Single",
+
   encode(message: SignatureDescriptor_Data_Single, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.mode !== 0) {
       writer.uint32(8).int32(message.mode);
@@ -676,6 +684,8 @@ function createBaseSignatureDescriptor_Data_Multi(): SignatureDescriptor_Data_Mu
 }
 
 export const SignatureDescriptor_Data_Multi = {
+  typeUrl: "/cosmos.tx.signing.v1beta1.Multi",
+
   encode(message: SignatureDescriptor_Data_Multi, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.bitarray !== undefined) {
       CompactBitArray.encode(message.bitarray, writer.uint32(10).fork()).ldelim();

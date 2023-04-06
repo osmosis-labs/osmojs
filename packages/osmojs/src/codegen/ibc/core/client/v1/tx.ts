@@ -303,6 +303,8 @@ function createBaseMsgCreateClient(): MsgCreateClient {
 }
 
 export const MsgCreateClient = {
+  typeUrl: "/ibc.core.client.v1.MsgCreateClient",
+
   encode(message: MsgCreateClient, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientState !== undefined) {
       Any.encode(message.clientState, writer.uint32(10).fork()).ldelim();
@@ -406,6 +408,8 @@ function createBaseMsgCreateClientResponse(): MsgCreateClientResponse {
 }
 
 export const MsgCreateClientResponse = {
+  typeUrl: "/ibc.core.client.v1.MsgCreateClientResponse",
+
   encode(_: MsgCreateClientResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -479,6 +483,8 @@ function createBaseMsgUpdateClient(): MsgUpdateClient {
 }
 
 export const MsgUpdateClient = {
+  typeUrl: "/ibc.core.client.v1.MsgUpdateClient",
+
   encode(message: MsgUpdateClient, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -582,6 +588,8 @@ function createBaseMsgUpdateClientResponse(): MsgUpdateClientResponse {
 }
 
 export const MsgUpdateClientResponse = {
+  typeUrl: "/ibc.core.client.v1.MsgUpdateClientResponse",
+
   encode(_: MsgUpdateClientResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -658,6 +666,8 @@ function createBaseMsgUpgradeClient(): MsgUpgradeClient {
 }
 
 export const MsgUpgradeClient = {
+  typeUrl: "/ibc.core.client.v1.MsgUpgradeClient",
+
   encode(message: MsgUpgradeClient, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -794,6 +804,8 @@ function createBaseMsgUpgradeClientResponse(): MsgUpgradeClientResponse {
 }
 
 export const MsgUpgradeClientResponse = {
+  typeUrl: "/ibc.core.client.v1.MsgUpgradeClientResponse",
+
   encode(_: MsgUpgradeClientResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -867,6 +879,8 @@ function createBaseMsgSubmitMisbehaviour(): MsgSubmitMisbehaviour {
 }
 
 export const MsgSubmitMisbehaviour = {
+  typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
+
   encode(message: MsgSubmitMisbehaviour, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -970,6 +984,8 @@ function createBaseMsgSubmitMisbehaviourResponse(): MsgSubmitMisbehaviourRespons
 }
 
 export const MsgSubmitMisbehaviourResponse = {
+  typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviourResponse",
+
   encode(_: MsgSubmitMisbehaviourResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },

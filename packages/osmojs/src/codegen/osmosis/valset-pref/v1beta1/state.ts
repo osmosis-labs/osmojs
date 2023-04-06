@@ -104,6 +104,8 @@ function createBaseValidatorPreference(): ValidatorPreference {
 }
 
 export const ValidatorPreference = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.ValidatorPreference",
+
   encode(message: ValidatorPreference, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.valOperAddress !== "") {
       writer.uint32(10).string(message.valOperAddress);
@@ -198,6 +200,8 @@ function createBaseValidatorSetPreferences(): ValidatorSetPreferences {
 }
 
 export const ValidatorSetPreferences = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.ValidatorSetPreferences",
+
   encode(message: ValidatorSetPreferences, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.preferences) {
       ValidatorPreference.encode(v!, writer.uint32(18).fork()).ldelim();

@@ -44,6 +44,8 @@ function createBaseDenomAuthorityMetadata(): DenomAuthorityMetadata {
 }
 
 export const DenomAuthorityMetadata = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.DenomAuthorityMetadata",
+
   encode(message: DenomAuthorityMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);

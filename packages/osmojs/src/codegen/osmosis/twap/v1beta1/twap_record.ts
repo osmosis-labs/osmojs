@@ -140,6 +140,8 @@ function createBaseTwapRecord(): TwapRecord {
 }
 
 export const TwapRecord = {
+  typeUrl: "/osmosis.twap.v1beta1.TwapRecord",
+
   encode(message: TwapRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);

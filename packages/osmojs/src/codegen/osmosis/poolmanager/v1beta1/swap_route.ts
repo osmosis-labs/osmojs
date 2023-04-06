@@ -49,6 +49,8 @@ function createBaseSwapAmountInRoute(): SwapAmountInRoute {
 }
 
 export const SwapAmountInRoute = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountInRoute",
+
   encode(message: SwapAmountInRoute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -144,6 +146,8 @@ function createBaseSwapAmountOutRoute(): SwapAmountOutRoute {
 }
 
 export const SwapAmountOutRoute = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountOutRoute",
+
   encode(message: SwapAmountOutRoute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);

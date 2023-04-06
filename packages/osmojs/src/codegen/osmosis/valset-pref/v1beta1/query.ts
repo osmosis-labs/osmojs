@@ -56,6 +56,8 @@ function createBaseUserValidatorPreferencesRequest(): UserValidatorPreferencesRe
 }
 
 export const UserValidatorPreferencesRequest = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.UserValidatorPreferencesRequest",
+
   encode(message: UserValidatorPreferencesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -139,6 +141,8 @@ function createBaseUserValidatorPreferencesResponse(): UserValidatorPreferencesR
 }
 
 export const UserValidatorPreferencesResponse = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.UserValidatorPreferencesResponse",
+
   encode(message: UserValidatorPreferencesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.preferences) {
       ValidatorPreference.encode(v!, writer.uint32(10).fork()).ldelim();

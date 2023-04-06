@@ -364,6 +364,8 @@ function createBaseMsgSetHotRoutes(): MsgSetHotRoutes {
 }
 
 export const MsgSetHotRoutes = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutes",
+
   encode(message: MsgSetHotRoutes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -462,6 +464,8 @@ function createBaseMsgSetHotRoutesResponse(): MsgSetHotRoutesResponse {
 }
 
 export const MsgSetHotRoutesResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutesResponse",
+
   encode(_: MsgSetHotRoutesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -534,6 +538,8 @@ function createBaseMsgSetDeveloperAccount(): MsgSetDeveloperAccount {
 }
 
 export const MsgSetDeveloperAccount = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
+
   encode(message: MsgSetDeveloperAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -626,6 +632,8 @@ function createBaseMsgSetDeveloperAccountResponse(): MsgSetDeveloperAccountRespo
 }
 
 export const MsgSetDeveloperAccountResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccountResponse",
+
   encode(_: MsgSetDeveloperAccountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -698,6 +706,8 @@ function createBaseMsgSetPoolWeights(): MsgSetPoolWeights {
 }
 
 export const MsgSetPoolWeights = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
+
   encode(message: MsgSetPoolWeights, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -790,6 +800,8 @@ function createBaseMsgSetPoolWeightsResponse(): MsgSetPoolWeightsResponse {
 }
 
 export const MsgSetPoolWeightsResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeightsResponse",
+
   encode(_: MsgSetPoolWeightsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -862,6 +874,8 @@ function createBaseMsgSetMaxPoolPointsPerTx(): MsgSetMaxPoolPointsPerTx {
 }
 
 export const MsgSetMaxPoolPointsPerTx = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
+
   encode(message: MsgSetMaxPoolPointsPerTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -954,6 +968,8 @@ function createBaseMsgSetMaxPoolPointsPerTxResponse(): MsgSetMaxPoolPointsPerTxR
 }
 
 export const MsgSetMaxPoolPointsPerTxResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTxResponse",
+
   encode(_: MsgSetMaxPoolPointsPerTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1026,6 +1042,8 @@ function createBaseMsgSetMaxPoolPointsPerBlock(): MsgSetMaxPoolPointsPerBlock {
 }
 
 export const MsgSetMaxPoolPointsPerBlock = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
+
   encode(message: MsgSetMaxPoolPointsPerBlock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -1118,6 +1136,8 @@ function createBaseMsgSetMaxPoolPointsPerBlockResponse(): MsgSetMaxPoolPointsPer
 }
 
 export const MsgSetMaxPoolPointsPerBlockResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlockResponse",
+
   encode(_: MsgSetMaxPoolPointsPerBlockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1190,6 +1210,8 @@ function createBaseMsgSetBaseDenoms(): MsgSetBaseDenoms {
 }
 
 export const MsgSetBaseDenoms = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
+
   encode(message: MsgSetBaseDenoms, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -1288,6 +1310,8 @@ function createBaseMsgSetBaseDenomsResponse(): MsgSetBaseDenomsResponse {
 }
 
 export const MsgSetBaseDenomsResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenomsResponse",
+
   encode(_: MsgSetBaseDenomsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },

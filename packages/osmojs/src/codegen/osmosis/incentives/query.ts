@@ -411,6 +411,8 @@ function createBaseModuleToDistributeCoinsRequest(): ModuleToDistributeCoinsRequ
 }
 
 export const ModuleToDistributeCoinsRequest = {
+  typeUrl: "/osmosis.incentives.ModuleToDistributeCoinsRequest",
+
   encode(_: ModuleToDistributeCoinsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -482,6 +484,8 @@ function createBaseModuleToDistributeCoinsResponse(): ModuleToDistributeCoinsRes
 }
 
 export const ModuleToDistributeCoinsResponse = {
+  typeUrl: "/osmosis.incentives.ModuleToDistributeCoinsResponse",
+
   encode(message: ModuleToDistributeCoinsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -571,6 +575,8 @@ function createBaseGaugeByIDRequest(): GaugeByIDRequest {
 }
 
 export const GaugeByIDRequest = {
+  typeUrl: "/osmosis.incentives.GaugeByIDRequest",
+
   encode(message: GaugeByIDRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -654,6 +660,8 @@ function createBaseGaugeByIDResponse(): GaugeByIDResponse {
 }
 
 export const GaugeByIDResponse = {
+  typeUrl: "/osmosis.incentives.GaugeByIDResponse",
+
   encode(message: GaugeByIDResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.gauge !== undefined) {
       Gauge.encode(message.gauge, writer.uint32(10).fork()).ldelim();
@@ -737,6 +745,8 @@ function createBaseGaugesRequest(): GaugesRequest {
 }
 
 export const GaugesRequest = {
+  typeUrl: "/osmosis.incentives.GaugesRequest",
+
   encode(message: GaugesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -821,6 +831,8 @@ function createBaseGaugesResponse(): GaugesResponse {
 }
 
 export const GaugesResponse = {
+  typeUrl: "/osmosis.incentives.GaugesResponse",
+
   encode(message: GaugesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.data) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -921,6 +933,8 @@ function createBaseActiveGaugesRequest(): ActiveGaugesRequest {
 }
 
 export const ActiveGaugesRequest = {
+  typeUrl: "/osmosis.incentives.ActiveGaugesRequest",
+
   encode(message: ActiveGaugesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -1005,6 +1019,8 @@ function createBaseActiveGaugesResponse(): ActiveGaugesResponse {
 }
 
 export const ActiveGaugesResponse = {
+  typeUrl: "/osmosis.incentives.ActiveGaugesResponse",
+
   encode(message: ActiveGaugesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.data) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1106,6 +1122,8 @@ function createBaseActiveGaugesPerDenomRequest(): ActiveGaugesPerDenomRequest {
 }
 
 export const ActiveGaugesPerDenomRequest = {
+  typeUrl: "/osmosis.incentives.ActiveGaugesPerDenomRequest",
+
   encode(message: ActiveGaugesPerDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -1201,6 +1219,8 @@ function createBaseActiveGaugesPerDenomResponse(): ActiveGaugesPerDenomResponse 
 }
 
 export const ActiveGaugesPerDenomResponse = {
+  typeUrl: "/osmosis.incentives.ActiveGaugesPerDenomResponse",
+
   encode(message: ActiveGaugesPerDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.data) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1301,6 +1321,8 @@ function createBaseUpcomingGaugesRequest(): UpcomingGaugesRequest {
 }
 
 export const UpcomingGaugesRequest = {
+  typeUrl: "/osmosis.incentives.UpcomingGaugesRequest",
+
   encode(message: UpcomingGaugesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -1385,6 +1407,8 @@ function createBaseUpcomingGaugesResponse(): UpcomingGaugesResponse {
 }
 
 export const UpcomingGaugesResponse = {
+  typeUrl: "/osmosis.incentives.UpcomingGaugesResponse",
+
   encode(message: UpcomingGaugesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.data) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1486,6 +1510,8 @@ function createBaseUpcomingGaugesPerDenomRequest(): UpcomingGaugesPerDenomReques
 }
 
 export const UpcomingGaugesPerDenomRequest = {
+  typeUrl: "/osmosis.incentives.UpcomingGaugesPerDenomRequest",
+
   encode(message: UpcomingGaugesPerDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -1581,6 +1607,8 @@ function createBaseUpcomingGaugesPerDenomResponse(): UpcomingGaugesPerDenomRespo
 }
 
 export const UpcomingGaugesPerDenomResponse = {
+  typeUrl: "/osmosis.incentives.UpcomingGaugesPerDenomResponse",
+
   encode(message: UpcomingGaugesPerDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.upcomingGauges) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1683,6 +1711,8 @@ function createBaseRewardsEstRequest(): RewardsEstRequest {
 }
 
 export const RewardsEstRequest = {
+  typeUrl: "/osmosis.incentives.RewardsEstRequest",
+
   encode(message: RewardsEstRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -1807,6 +1837,8 @@ function createBaseRewardsEstResponse(): RewardsEstResponse {
 }
 
 export const RewardsEstResponse = {
+  typeUrl: "/osmosis.incentives.RewardsEstResponse",
+
   encode(message: RewardsEstResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1894,6 +1926,8 @@ function createBaseQueryLockableDurationsRequest(): QueryLockableDurationsReques
 }
 
 export const QueryLockableDurationsRequest = {
+  typeUrl: "/osmosis.incentives.QueryLockableDurationsRequest",
+
   encode(_: QueryLockableDurationsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1965,6 +1999,8 @@ function createBaseQueryLockableDurationsResponse(): QueryLockableDurationsRespo
 }
 
 export const QueryLockableDurationsResponse = {
+  typeUrl: "/osmosis.incentives.QueryLockableDurationsResponse",
+
   encode(message: QueryLockableDurationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.lockableDurations) {
       Duration.encode(v!, writer.uint32(10).fork()).ldelim();

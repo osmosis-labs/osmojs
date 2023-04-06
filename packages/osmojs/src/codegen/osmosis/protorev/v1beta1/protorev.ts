@@ -294,6 +294,8 @@ function createBaseTokenPairArbRoutes(): TokenPairArbRoutes {
 }
 
 export const TokenPairArbRoutes = {
+  typeUrl: "/osmosis.protorev.v1beta1.TokenPairArbRoutes",
+
   encode(message: TokenPairArbRoutes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.arbRoutes) {
       Route.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -406,6 +408,8 @@ function createBaseRoute(): Route {
 }
 
 export const Route = {
+  typeUrl: "/osmosis.protorev.v1beta1.Route",
+
   encode(message: Route, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.trades) {
       Trade.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -508,6 +512,8 @@ function createBaseTrade(): Trade {
 }
 
 export const Trade = {
+  typeUrl: "/osmosis.protorev.v1beta1.Trade",
+
   encode(message: Trade, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.pool.isZero()) {
       writer.uint32(8).uint64(message.pool);
@@ -615,6 +621,8 @@ function createBaseRouteStatistics(): RouteStatistics {
 }
 
 export const RouteStatistics = {
+  typeUrl: "/osmosis.protorev.v1beta1.RouteStatistics",
+
   encode(message: RouteStatistics, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.profits) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -746,6 +754,8 @@ function createBasePoolWeights(): PoolWeights {
 }
 
 export const PoolWeights = {
+  typeUrl: "/osmosis.protorev.v1beta1.PoolWeights",
+
   encode(message: PoolWeights, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.stableWeight.isZero()) {
       writer.uint32(8).uint64(message.stableWeight);
@@ -852,6 +862,8 @@ function createBaseBaseDenom(): BaseDenom {
 }
 
 export const BaseDenom = {
+  typeUrl: "/osmosis.protorev.v1beta1.BaseDenom",
+
   encode(message: BaseDenom, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);

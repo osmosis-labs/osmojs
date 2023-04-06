@@ -371,6 +371,8 @@ function createBaseQueryUserPositionsRequest(): QueryUserPositionsRequest {
 }
 
 export const QueryUserPositionsRequest = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryUserPositionsRequest",
+
   encode(message: QueryUserPositionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -465,6 +467,8 @@ function createBaseQueryUserPositionsResponse(): QueryUserPositionsResponse {
 }
 
 export const QueryUserPositionsResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryUserPositionsResponse",
+
   encode(message: QueryUserPositionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.positions) {
       PositionWithUnderlyingAssetBreakdown.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -554,6 +558,8 @@ function createBaseQueryPositionByIdRequest(): QueryPositionByIdRequest {
 }
 
 export const QueryPositionByIdRequest = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryPositionByIdRequest",
+
   encode(message: QueryPositionByIdRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.positionId.isZero()) {
       writer.uint32(8).uint64(message.positionId);
@@ -637,6 +643,8 @@ function createBaseQueryPositionByIdResponse(): QueryPositionByIdResponse {
 }
 
 export const QueryPositionByIdResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryPositionByIdResponse",
+
   encode(message: QueryPositionByIdResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.position !== undefined) {
       PositionWithUnderlyingAssetBreakdown.encode(message.position, writer.uint32(10).fork()).ldelim();
@@ -720,6 +728,8 @@ function createBaseQueryPoolsRequest(): QueryPoolsRequest {
 }
 
 export const QueryPoolsRequest = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryPoolsRequest",
+
   encode(message: QueryPoolsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
@@ -804,6 +814,8 @@ function createBaseQueryPoolsResponse(): QueryPoolsResponse {
 }
 
 export const QueryPoolsResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryPoolsResponse",
+
   encode(message: QueryPoolsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.pools) {
       Any.encode((v! as Any), writer.uint32(10).fork()).ldelim();
@@ -902,6 +914,8 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 
 export const QueryParamsRequest = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryParamsRequest",
+
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -973,6 +987,8 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 
 export const QueryParamsResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryParamsResponse",
+
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -1057,6 +1073,8 @@ function createBaseTickLiquidityNet(): TickLiquidityNet {
 }
 
 export const TickLiquidityNet = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.TickLiquidityNet",
+
   encode(message: TickLiquidityNet, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.liquidityNet !== "") {
       writer.uint32(10).string(message.liquidityNet);
@@ -1153,6 +1171,8 @@ function createBaseLiquidityDepthWithRange(): LiquidityDepthWithRange {
 }
 
 export const LiquidityDepthWithRange = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.LiquidityDepthWithRange",
+
   encode(message: LiquidityDepthWithRange, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.liquidityAmount !== "") {
       writer.uint32(10).string(message.liquidityAmount);
@@ -1261,6 +1281,8 @@ function createBaseQueryLiquidityNetInDirectionRequest(): QueryLiquidityNetInDir
 }
 
 export const QueryLiquidityNetInDirectionRequest = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryLiquidityNetInDirectionRequest",
+
   encode(message: QueryLiquidityNetInDirectionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -1379,6 +1401,8 @@ function createBaseQueryLiquidityNetInDirectionResponse(): QueryLiquidityNetInDi
 }
 
 export const QueryLiquidityNetInDirectionResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryLiquidityNetInDirectionResponse",
+
   encode(message: QueryLiquidityNetInDirectionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.liquidityDepths) {
       TickLiquidityNet.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1490,6 +1514,8 @@ function createBaseQueryTotalLiquidityForRangeRequest(): QueryTotalLiquidityForR
 }
 
 export const QueryTotalLiquidityForRangeRequest = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryTotalLiquidityForRangeRequest",
+
   encode(message: QueryTotalLiquidityForRangeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -1573,6 +1599,8 @@ function createBaseQueryTotalLiquidityForRangeResponse(): QueryTotalLiquidityFor
 }
 
 export const QueryTotalLiquidityForRangeResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryTotalLiquidityForRangeResponse",
+
   encode(message: QueryTotalLiquidityForRangeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.liquidity) {
       LiquidityDepthWithRange.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1662,6 +1690,8 @@ function createBaseQueryClaimableFeesRequest(): QueryClaimableFeesRequest {
 }
 
 export const QueryClaimableFeesRequest = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryClaimableFeesRequest",
+
   encode(message: QueryClaimableFeesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.positionId.isZero()) {
       writer.uint32(8).uint64(message.positionId);
@@ -1745,6 +1775,8 @@ function createBaseQueryClaimableFeesResponse(): QueryClaimableFeesResponse {
 }
 
 export const QueryClaimableFeesResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.QueryClaimableFeesResponse",
+
   encode(message: QueryClaimableFeesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.claimableFees) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();

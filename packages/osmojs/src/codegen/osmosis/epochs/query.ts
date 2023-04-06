@@ -69,6 +69,8 @@ function createBaseQueryEpochsInfoRequest(): QueryEpochsInfoRequest {
 }
 
 export const QueryEpochsInfoRequest = {
+  typeUrl: "/osmosis.epochs.v1beta1.QueryEpochsInfoRequest",
+
   encode(_: QueryEpochsInfoRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -140,6 +142,8 @@ function createBaseQueryEpochsInfoResponse(): QueryEpochsInfoResponse {
 }
 
 export const QueryEpochsInfoResponse = {
+  typeUrl: "/osmosis.epochs.v1beta1.QueryEpochsInfoResponse",
+
   encode(message: QueryEpochsInfoResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.epochs) {
       EpochInfo.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -229,6 +233,8 @@ function createBaseQueryCurrentEpochRequest(): QueryCurrentEpochRequest {
 }
 
 export const QueryCurrentEpochRequest = {
+  typeUrl: "/osmosis.epochs.v1beta1.QueryCurrentEpochRequest",
+
   encode(message: QueryCurrentEpochRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.identifier !== "") {
       writer.uint32(10).string(message.identifier);
@@ -312,6 +318,8 @@ function createBaseQueryCurrentEpochResponse(): QueryCurrentEpochResponse {
 }
 
 export const QueryCurrentEpochResponse = {
+  typeUrl: "/osmosis.epochs.v1beta1.QueryCurrentEpochResponse",
+
   encode(message: QueryCurrentEpochResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.currentEpoch.isZero()) {
       writer.uint32(8).int64(message.currentEpoch);

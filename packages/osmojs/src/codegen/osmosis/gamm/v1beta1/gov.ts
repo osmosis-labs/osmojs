@@ -113,6 +113,8 @@ function createBaseReplaceMigrationRecordsProposal(): ReplaceMigrationRecordsPro
 }
 
 export const ReplaceMigrationRecordsProposal = {
+  typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal",
+
   encode(message: ReplaceMigrationRecordsProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -226,6 +228,8 @@ function createBaseUpdateMigrationRecordsProposal(): UpdateMigrationRecordsPropo
 }
 
 export const UpdateMigrationRecordsProposal = {
+  typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
+
   encode(message: UpdateMigrationRecordsProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);

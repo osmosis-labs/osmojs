@@ -383,6 +383,8 @@ function createBaseParamsRequest(): ParamsRequest {
 }
 
 export const ParamsRequest = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.ParamsRequest",
+
   encode(_: ParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -454,6 +456,8 @@ function createBaseParamsResponse(): ParamsResponse {
 }
 
 export const ParamsResponse = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.ParamsResponse",
+
   encode(message: ParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -539,6 +543,8 @@ function createBaseEstimateSwapExactAmountInRequest(): EstimateSwapExactAmountIn
 }
 
 export const EstimateSwapExactAmountInRequest = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountInRequest",
+
   encode(message: EstimateSwapExactAmountInRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(16).uint64(message.poolId);
@@ -652,6 +658,8 @@ function createBaseEstimateSinglePoolSwapExactAmountInRequest(): EstimateSingleP
 }
 
 export const EstimateSinglePoolSwapExactAmountInRequest = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSinglePoolSwapExactAmountInRequest",
+
   encode(message: EstimateSinglePoolSwapExactAmountInRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -757,6 +765,8 @@ function createBaseEstimateSwapExactAmountInResponse(): EstimateSwapExactAmountI
 }
 
 export const EstimateSwapExactAmountInResponse = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountInResponse",
+
   encode(message: EstimateSwapExactAmountInResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.tokenOutAmount !== "") {
       writer.uint32(10).string(message.tokenOutAmount);
@@ -842,6 +852,8 @@ function createBaseEstimateSwapExactAmountOutRequest(): EstimateSwapExactAmountO
 }
 
 export const EstimateSwapExactAmountOutRequest = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountOutRequest",
+
   encode(message: EstimateSwapExactAmountOutRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(16).uint64(message.poolId);
@@ -955,6 +967,8 @@ function createBaseEstimateSinglePoolSwapExactAmountOutRequest(): EstimateSingle
 }
 
 export const EstimateSinglePoolSwapExactAmountOutRequest = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSinglePoolSwapExactAmountOutRequest",
+
   encode(message: EstimateSinglePoolSwapExactAmountOutRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -1060,6 +1074,8 @@ function createBaseEstimateSwapExactAmountOutResponse(): EstimateSwapExactAmount
 }
 
 export const EstimateSwapExactAmountOutResponse = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountOutResponse",
+
   encode(message: EstimateSwapExactAmountOutResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.tokenInAmount !== "") {
       writer.uint32(10).string(message.tokenInAmount);
@@ -1141,6 +1157,8 @@ function createBaseNumPoolsRequest(): NumPoolsRequest {
 }
 
 export const NumPoolsRequest = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.NumPoolsRequest",
+
   encode(_: NumPoolsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1212,6 +1230,8 @@ function createBaseNumPoolsResponse(): NumPoolsResponse {
 }
 
 export const NumPoolsResponse = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.NumPoolsResponse",
+
   encode(message: NumPoolsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.numPools.isZero()) {
       writer.uint32(8).uint64(message.numPools);
@@ -1295,6 +1315,8 @@ function createBasePoolRequest(): PoolRequest {
 }
 
 export const PoolRequest = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.PoolRequest",
+
   encode(message: PoolRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -1378,6 +1400,8 @@ function createBasePoolResponse(): PoolResponse {
 }
 
 export const PoolResponse = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.PoolResponse",
+
   encode(message: PoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pool !== undefined) {
       Any.encode((message.pool as Any), writer.uint32(10).fork()).ldelim();
@@ -1461,6 +1485,8 @@ function createBaseAllPoolsRequest(): AllPoolsRequest {
 }
 
 export const AllPoolsRequest = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.AllPoolsRequest",
+
   encode(message: AllPoolsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -1544,6 +1570,8 @@ function createBaseAllPoolsResponse(): AllPoolsResponse {
 }
 
 export const AllPoolsResponse = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.AllPoolsResponse",
+
   encode(message: AllPoolsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.pools) {
       Any.encode((v! as Any), writer.uint32(10).fork()).ldelim();
@@ -1635,6 +1663,8 @@ function createBaseSpotPriceRequest(): SpotPriceRequest {
 }
 
 export const SpotPriceRequest = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.SpotPriceRequest",
+
   encode(message: SpotPriceRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -1740,6 +1770,8 @@ function createBaseSpotPriceResponse(): SpotPriceResponse {
 }
 
 export const SpotPriceResponse = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.SpotPriceResponse",
+
   encode(message: SpotPriceResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.spotPrice !== "") {
       writer.uint32(10).string(message.spotPrice);

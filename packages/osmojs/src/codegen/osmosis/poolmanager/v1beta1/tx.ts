@@ -110,6 +110,8 @@ function createBaseMsgSwapExactAmountIn(): MsgSwapExactAmountIn {
 }
 
 export const MsgSwapExactAmountIn = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn",
+
   encode(message: MsgSwapExactAmountIn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -232,6 +234,8 @@ function createBaseMsgSwapExactAmountInResponse(): MsgSwapExactAmountInResponse 
 }
 
 export const MsgSwapExactAmountInResponse = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountInResponse",
+
   encode(message: MsgSwapExactAmountInResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.tokenOutAmount !== "") {
       writer.uint32(10).string(message.tokenOutAmount);
@@ -318,6 +322,8 @@ function createBaseMsgSwapExactAmountOut(): MsgSwapExactAmountOut {
 }
 
 export const MsgSwapExactAmountOut = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
+
   encode(message: MsgSwapExactAmountOut, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -440,6 +446,8 @@ function createBaseMsgSwapExactAmountOutResponse(): MsgSwapExactAmountOutRespons
 }
 
 export const MsgSwapExactAmountOutResponse = {
+  typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOutResponse",
+
   encode(message: MsgSwapExactAmountOutResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.tokenInAmount !== "") {
       writer.uint32(10).string(message.tokenInAmount);

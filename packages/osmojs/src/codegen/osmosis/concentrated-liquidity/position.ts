@@ -89,6 +89,8 @@ function createBasePosition(): Position {
 }
 
 export const Position = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.Position",
+
   encode(message: Position, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.positionId.isZero()) {
       writer.uint32(8).uint64(message.positionId);
@@ -240,6 +242,8 @@ function createBasePositionWithUnderlyingAssetBreakdown(): PositionWithUnderlyin
 }
 
 export const PositionWithUnderlyingAssetBreakdown = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithUnderlyingAssetBreakdown",
+
   encode(message: PositionWithUnderlyingAssetBreakdown, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.position !== undefined) {
       Position.encode(message.position, writer.uint32(10).fork()).ldelim();

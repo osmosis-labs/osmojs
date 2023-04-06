@@ -314,6 +314,8 @@ function createBasePeriodLock(): PeriodLock {
 }
 
 export const PeriodLock = {
+  typeUrl: "/osmosis.lockup.PeriodLock",
+
   encode(message: PeriodLock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.ID.isZero()) {
       writer.uint32(8).uint64(message.ID);
@@ -450,6 +452,8 @@ function createBaseQueryCondition(): QueryCondition {
 }
 
 export const QueryCondition = {
+  typeUrl: "/osmosis.lockup.QueryCondition",
+
   encode(message: QueryCondition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.lockQueryType !== 0) {
       writer.uint32(8).int32(message.lockQueryType);
@@ -569,6 +573,8 @@ function createBaseSyntheticLock(): SyntheticLock {
 }
 
 export const SyntheticLock = {
+  typeUrl: "/osmosis.lockup.SyntheticLock",
+
   encode(message: SyntheticLock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.underlyingLockId.isZero()) {
       writer.uint32(8).uint64(message.underlyingLockId);

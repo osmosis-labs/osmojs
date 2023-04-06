@@ -74,6 +74,8 @@ function createBaseMsgCreateConcentratedPool(): MsgCreateConcentratedPool {
 }
 
 export const MsgCreateConcentratedPool = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateConcentratedPool",
+
   encode(message: MsgCreateConcentratedPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -212,6 +214,8 @@ function createBaseMsgCreateConcentratedPoolResponse(): MsgCreateConcentratedPoo
 }
 
 export const MsgCreateConcentratedPoolResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateConcentratedPoolResponse",
+
   encode(message: MsgCreateConcentratedPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);

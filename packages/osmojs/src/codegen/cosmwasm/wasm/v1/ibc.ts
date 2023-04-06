@@ -123,6 +123,8 @@ function createBaseMsgIBCSend(): MsgIBCSend {
 }
 
 export const MsgIBCSend = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgIBCSend",
+
   encode(message: MsgIBCSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
@@ -239,6 +241,8 @@ function createBaseMsgIBCSendResponse(): MsgIBCSendResponse {
 }
 
 export const MsgIBCSendResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgIBCSendResponse",
+
   encode(message: MsgIBCSendResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.sequence.isZero()) {
       writer.uint32(8).uint64(message.sequence);
@@ -322,6 +326,8 @@ function createBaseMsgIBCCloseChannel(): MsgIBCCloseChannel {
 }
 
 export const MsgIBCCloseChannel = {
+  typeUrl: "/cosmwasm.wasm.v1.MsgIBCCloseChannel",
+
   encode(message: MsgIBCCloseChannel, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);

@@ -220,6 +220,8 @@ function createBaseArithmeticTwapRequest(): ArithmeticTwapRequest {
 }
 
 export const ArithmeticTwapRequest = {
+  typeUrl: "/osmosis.twap.v1beta1.ArithmeticTwapRequest",
+
   encode(message: ArithmeticTwapRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -347,6 +349,8 @@ function createBaseArithmeticTwapResponse(): ArithmeticTwapResponse {
 }
 
 export const ArithmeticTwapResponse = {
+  typeUrl: "/osmosis.twap.v1beta1.ArithmeticTwapResponse",
+
   encode(message: ArithmeticTwapResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.arithmeticTwap !== "") {
       writer.uint32(10).string(message.arithmeticTwap);
@@ -433,6 +437,8 @@ function createBaseArithmeticTwapToNowRequest(): ArithmeticTwapToNowRequest {
 }
 
 export const ArithmeticTwapToNowRequest = {
+  typeUrl: "/osmosis.twap.v1beta1.ArithmeticTwapToNowRequest",
+
   encode(message: ArithmeticTwapToNowRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -549,6 +555,8 @@ function createBaseArithmeticTwapToNowResponse(): ArithmeticTwapToNowResponse {
 }
 
 export const ArithmeticTwapToNowResponse = {
+  typeUrl: "/osmosis.twap.v1beta1.ArithmeticTwapToNowResponse",
+
   encode(message: ArithmeticTwapToNowResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.arithmeticTwap !== "") {
       writer.uint32(10).string(message.arithmeticTwap);
@@ -636,6 +644,8 @@ function createBaseGeometricTwapRequest(): GeometricTwapRequest {
 }
 
 export const GeometricTwapRequest = {
+  typeUrl: "/osmosis.twap.v1beta1.GeometricTwapRequest",
+
   encode(message: GeometricTwapRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -763,6 +773,8 @@ function createBaseGeometricTwapResponse(): GeometricTwapResponse {
 }
 
 export const GeometricTwapResponse = {
+  typeUrl: "/osmosis.twap.v1beta1.GeometricTwapResponse",
+
   encode(message: GeometricTwapResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.geometricTwap !== "") {
       writer.uint32(10).string(message.geometricTwap);
@@ -849,6 +861,8 @@ function createBaseGeometricTwapToNowRequest(): GeometricTwapToNowRequest {
 }
 
 export const GeometricTwapToNowRequest = {
+  typeUrl: "/osmosis.twap.v1beta1.GeometricTwapToNowRequest",
+
   encode(message: GeometricTwapToNowRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -965,6 +979,8 @@ function createBaseGeometricTwapToNowResponse(): GeometricTwapToNowResponse {
 }
 
 export const GeometricTwapToNowResponse = {
+  typeUrl: "/osmosis.twap.v1beta1.GeometricTwapToNowResponse",
+
   encode(message: GeometricTwapToNowResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.geometricTwap !== "") {
       writer.uint32(10).string(message.geometricTwap);
@@ -1046,6 +1062,8 @@ function createBaseParamsRequest(): ParamsRequest {
 }
 
 export const ParamsRequest = {
+  typeUrl: "/osmosis.twap.v1beta1.ParamsRequest",
+
   encode(_: ParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1117,6 +1135,8 @@ function createBaseParamsResponse(): ParamsResponse {
 }
 
 export const ParamsResponse = {
+  typeUrl: "/osmosis.twap.v1beta1.ParamsResponse",
+
   encode(message: ParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();

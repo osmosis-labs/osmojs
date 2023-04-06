@@ -419,6 +419,8 @@ function createBaseConnectionEnd(): ConnectionEnd {
 }
 
 export const ConnectionEnd = {
+  typeUrl: "/ibc.core.connection.v1.ConnectionEnd",
+
   encode(message: ConnectionEnd, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -557,6 +559,8 @@ function createBaseIdentifiedConnection(): IdentifiedConnection {
 }
 
 export const IdentifiedConnection = {
+  typeUrl: "/ibc.core.connection.v1.IdentifiedConnection",
+
   encode(message: IdentifiedConnection, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
@@ -703,6 +707,8 @@ function createBaseCounterparty(): Counterparty {
 }
 
 export const Counterparty = {
+  typeUrl: "/ibc.core.connection.v1.Counterparty",
+
   encode(message: Counterparty, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -808,6 +814,8 @@ function createBaseClientPaths(): ClientPaths {
 }
 
 export const ClientPaths = {
+  typeUrl: "/ibc.core.connection.v1.ClientPaths",
+
   encode(message: ClientPaths, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.paths) {
       writer.uint32(10).string(v!);
@@ -898,6 +906,8 @@ function createBaseConnectionPaths(): ConnectionPaths {
 }
 
 export const ConnectionPaths = {
+  typeUrl: "/ibc.core.connection.v1.ConnectionPaths",
+
   encode(message: ConnectionPaths, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -999,6 +1009,8 @@ function createBaseVersion(): Version {
 }
 
 export const Version = {
+  typeUrl: "/ibc.core.connection.v1.Version",
+
   encode(message: Version, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.identifier !== "") {
       writer.uint32(10).string(message.identifier);
@@ -1099,6 +1111,8 @@ function createBaseParams(): Params {
 }
 
 export const Params = {
+  typeUrl: "/ibc.core.connection.v1.Params",
+
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.maxExpectedTimePerBlock.isZero()) {
       writer.uint32(8).uint64(message.maxExpectedTimePerBlock);

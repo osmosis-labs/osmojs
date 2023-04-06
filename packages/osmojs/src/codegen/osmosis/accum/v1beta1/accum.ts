@@ -66,6 +66,8 @@ function createBaseAccumulatorContent(): AccumulatorContent {
 }
 
 export const AccumulatorContent = {
+  typeUrl: "/osmosis.accum.v1beta1.AccumulatorContent",
+
   encode(message: AccumulatorContent, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.accumValue) {
       DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -164,6 +166,8 @@ function createBaseOptions(): Options {
 }
 
 export const Options = {
+  typeUrl: "/osmosis.accum.v1beta1.Options",
+
   encode(_: Options, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -238,6 +242,8 @@ function createBaseRecord(): Record {
 }
 
 export const Record = {
+  typeUrl: "/osmosis.accum.v1beta1.Record",
+
   encode(message: Record, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.numShares !== "") {
       writer.uint32(10).string(message.numShares);

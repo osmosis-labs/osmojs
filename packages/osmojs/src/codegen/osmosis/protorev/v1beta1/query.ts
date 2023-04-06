@@ -877,6 +877,8 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 
 export const QueryParamsRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryParamsRequest",
+
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -948,6 +950,8 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 
 export const QueryParamsResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryParamsResponse",
+
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -1029,6 +1033,8 @@ function createBaseQueryGetProtoRevNumberOfTradesRequest(): QueryGetProtoRevNumb
 }
 
 export const QueryGetProtoRevNumberOfTradesRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevNumberOfTradesRequest",
+
   encode(_: QueryGetProtoRevNumberOfTradesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1100,6 +1106,8 @@ function createBaseQueryGetProtoRevNumberOfTradesResponse(): QueryGetProtoRevNum
 }
 
 export const QueryGetProtoRevNumberOfTradesResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevNumberOfTradesResponse",
+
   encode(message: QueryGetProtoRevNumberOfTradesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.numberOfTrades !== "") {
       writer.uint32(10).string(message.numberOfTrades);
@@ -1183,6 +1191,8 @@ function createBaseQueryGetProtoRevProfitsByDenomRequest(): QueryGetProtoRevProf
 }
 
 export const QueryGetProtoRevProfitsByDenomRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevProfitsByDenomRequest",
+
   encode(message: QueryGetProtoRevProfitsByDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -1266,6 +1276,8 @@ function createBaseQueryGetProtoRevProfitsByDenomResponse(): QueryGetProtoRevPro
 }
 
 export const QueryGetProtoRevProfitsByDenomResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevProfitsByDenomResponse",
+
   encode(message: QueryGetProtoRevProfitsByDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.profit !== undefined) {
       Coin.encode(message.profit, writer.uint32(10).fork()).ldelim();
@@ -1347,6 +1359,8 @@ function createBaseQueryGetProtoRevAllProfitsRequest(): QueryGetProtoRevAllProfi
 }
 
 export const QueryGetProtoRevAllProfitsRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAllProfitsRequest",
+
   encode(_: QueryGetProtoRevAllProfitsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1418,6 +1432,8 @@ function createBaseQueryGetProtoRevAllProfitsResponse(): QueryGetProtoRevAllProf
 }
 
 export const QueryGetProtoRevAllProfitsResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAllProfitsResponse",
+
   encode(message: QueryGetProtoRevAllProfitsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.profits) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1507,6 +1523,8 @@ function createBaseQueryGetProtoRevStatisticsByRouteRequest(): QueryGetProtoRevS
 }
 
 export const QueryGetProtoRevStatisticsByRouteRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevStatisticsByRouteRequest",
+
   encode(message: QueryGetProtoRevStatisticsByRouteRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     writer.uint32(10).fork();
 
@@ -1608,6 +1626,8 @@ function createBaseQueryGetProtoRevStatisticsByRouteResponse(): QueryGetProtoRev
 }
 
 export const QueryGetProtoRevStatisticsByRouteResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevStatisticsByRouteResponse",
+
   encode(message: QueryGetProtoRevStatisticsByRouteResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.statistics !== undefined) {
       RouteStatistics.encode(message.statistics, writer.uint32(10).fork()).ldelim();
@@ -1689,6 +1709,8 @@ function createBaseQueryGetProtoRevAllRouteStatisticsRequest(): QueryGetProtoRev
 }
 
 export const QueryGetProtoRevAllRouteStatisticsRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAllRouteStatisticsRequest",
+
   encode(_: QueryGetProtoRevAllRouteStatisticsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1760,6 +1782,8 @@ function createBaseQueryGetProtoRevAllRouteStatisticsResponse(): QueryGetProtoRe
 }
 
 export const QueryGetProtoRevAllRouteStatisticsResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAllRouteStatisticsResponse",
+
   encode(message: QueryGetProtoRevAllRouteStatisticsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.statistics) {
       RouteStatistics.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1847,6 +1871,8 @@ function createBaseQueryGetProtoRevTokenPairArbRoutesRequest(): QueryGetProtoRev
 }
 
 export const QueryGetProtoRevTokenPairArbRoutesRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevTokenPairArbRoutesRequest",
+
   encode(_: QueryGetProtoRevTokenPairArbRoutesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1918,6 +1944,8 @@ function createBaseQueryGetProtoRevTokenPairArbRoutesResponse(): QueryGetProtoRe
 }
 
 export const QueryGetProtoRevTokenPairArbRoutesResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevTokenPairArbRoutesResponse",
+
   encode(message: QueryGetProtoRevTokenPairArbRoutesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.routes) {
       TokenPairArbRoutes.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2005,6 +2033,8 @@ function createBaseQueryGetProtoRevAdminAccountRequest(): QueryGetProtoRevAdminA
 }
 
 export const QueryGetProtoRevAdminAccountRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAdminAccountRequest",
+
   encode(_: QueryGetProtoRevAdminAccountRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2076,6 +2106,8 @@ function createBaseQueryGetProtoRevAdminAccountResponse(): QueryGetProtoRevAdmin
 }
 
 export const QueryGetProtoRevAdminAccountResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAdminAccountResponse",
+
   encode(message: QueryGetProtoRevAdminAccountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.adminAccount !== "") {
       writer.uint32(10).string(message.adminAccount);
@@ -2157,6 +2189,8 @@ function createBaseQueryGetProtoRevDeveloperAccountRequest(): QueryGetProtoRevDe
 }
 
 export const QueryGetProtoRevDeveloperAccountRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevDeveloperAccountRequest",
+
   encode(_: QueryGetProtoRevDeveloperAccountRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2228,6 +2262,8 @@ function createBaseQueryGetProtoRevDeveloperAccountResponse(): QueryGetProtoRevD
 }
 
 export const QueryGetProtoRevDeveloperAccountResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevDeveloperAccountResponse",
+
   encode(message: QueryGetProtoRevDeveloperAccountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.developerAccount !== "") {
       writer.uint32(10).string(message.developerAccount);
@@ -2309,6 +2345,8 @@ function createBaseQueryGetProtoRevPoolWeightsRequest(): QueryGetProtoRevPoolWei
 }
 
 export const QueryGetProtoRevPoolWeightsRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsRequest",
+
   encode(_: QueryGetProtoRevPoolWeightsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2380,6 +2418,8 @@ function createBaseQueryGetProtoRevPoolWeightsResponse(): QueryGetProtoRevPoolWe
 }
 
 export const QueryGetProtoRevPoolWeightsResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsResponse",
+
   encode(message: QueryGetProtoRevPoolWeightsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.poolWeights !== undefined) {
       PoolWeights.encode(message.poolWeights, writer.uint32(10).fork()).ldelim();
@@ -2461,6 +2501,8 @@ function createBaseQueryGetProtoRevMaxPoolPointsPerBlockRequest(): QueryGetProto
 }
 
 export const QueryGetProtoRevMaxPoolPointsPerBlockRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerBlockRequest",
+
   encode(_: QueryGetProtoRevMaxPoolPointsPerBlockRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2532,6 +2574,8 @@ function createBaseQueryGetProtoRevMaxPoolPointsPerBlockResponse(): QueryGetProt
 }
 
 export const QueryGetProtoRevMaxPoolPointsPerBlockResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerBlockResponse",
+
   encode(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.maxPoolPointsPerBlock.isZero()) {
       writer.uint32(8).uint64(message.maxPoolPointsPerBlock);
@@ -2613,6 +2657,8 @@ function createBaseQueryGetProtoRevMaxPoolPointsPerTxRequest(): QueryGetProtoRev
 }
 
 export const QueryGetProtoRevMaxPoolPointsPerTxRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerTxRequest",
+
   encode(_: QueryGetProtoRevMaxPoolPointsPerTxRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2684,6 +2730,8 @@ function createBaseQueryGetProtoRevMaxPoolPointsPerTxResponse(): QueryGetProtoRe
 }
 
 export const QueryGetProtoRevMaxPoolPointsPerTxResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerTxResponse",
+
   encode(message: QueryGetProtoRevMaxPoolPointsPerTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.maxPoolPointsPerTx.isZero()) {
       writer.uint32(8).uint64(message.maxPoolPointsPerTx);
@@ -2765,6 +2813,8 @@ function createBaseQueryGetProtoRevBaseDenomsRequest(): QueryGetProtoRevBaseDeno
 }
 
 export const QueryGetProtoRevBaseDenomsRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevBaseDenomsRequest",
+
   encode(_: QueryGetProtoRevBaseDenomsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2836,6 +2886,8 @@ function createBaseQueryGetProtoRevBaseDenomsResponse(): QueryGetProtoRevBaseDen
 }
 
 export const QueryGetProtoRevBaseDenomsResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevBaseDenomsResponse",
+
   encode(message: QueryGetProtoRevBaseDenomsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.baseDenoms) {
       BaseDenom.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2923,6 +2975,8 @@ function createBaseQueryGetProtoRevEnabledRequest(): QueryGetProtoRevEnabledRequ
 }
 
 export const QueryGetProtoRevEnabledRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevEnabledRequest",
+
   encode(_: QueryGetProtoRevEnabledRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2994,6 +3048,8 @@ function createBaseQueryGetProtoRevEnabledResponse(): QueryGetProtoRevEnabledRes
 }
 
 export const QueryGetProtoRevEnabledResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevEnabledResponse",
+
   encode(message: QueryGetProtoRevEnabledResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.enabled === true) {
       writer.uint32(8).bool(message.enabled);

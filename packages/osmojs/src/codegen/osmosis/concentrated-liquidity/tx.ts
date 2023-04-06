@@ -339,6 +339,8 @@ function createBaseMsgCreatePosition(): MsgCreatePosition {
 }
 
 export const MsgCreatePosition = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition",
+
   encode(message: MsgCreatePosition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -503,6 +505,8 @@ function createBaseMsgCreatePositionResponse(): MsgCreatePositionResponse {
 }
 
 export const MsgCreatePositionResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreatePositionResponse",
+
   encode(message: MsgCreatePositionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.positionId.isZero()) {
       writer.uint32(8).uint64(message.positionId);
@@ -632,6 +636,8 @@ function createBaseMsgWithdrawPosition(): MsgWithdrawPosition {
 }
 
 export const MsgWithdrawPosition = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition",
+
   encode(message: MsgWithdrawPosition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.positionId.isZero()) {
       writer.uint32(8).uint64(message.positionId);
@@ -738,6 +744,8 @@ function createBaseMsgWithdrawPositionResponse(): MsgWithdrawPositionResponse {
 }
 
 export const MsgWithdrawPositionResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPositionResponse",
+
   encode(message: MsgWithdrawPositionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.amount0 !== "") {
       writer.uint32(10).string(message.amount0);
@@ -833,6 +841,8 @@ function createBaseMsgCollectFees(): MsgCollectFees {
 }
 
 export const MsgCollectFees = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees",
+
   encode(message: MsgCollectFees, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     writer.uint32(10).fork();
 
@@ -946,6 +956,8 @@ function createBaseMsgCollectFeesResponse(): MsgCollectFeesResponse {
 }
 
 export const MsgCollectFeesResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFeesResponse",
+
   encode(message: MsgCollectFeesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.collectedFees) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1036,6 +1048,8 @@ function createBaseMsgCollectIncentives(): MsgCollectIncentives {
 }
 
 export const MsgCollectIncentives = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
+
   encode(message: MsgCollectIncentives, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     writer.uint32(10).fork();
 
@@ -1149,6 +1163,8 @@ function createBaseMsgCollectIncentivesResponse(): MsgCollectIncentivesResponse 
 }
 
 export const MsgCollectIncentivesResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentivesResponse",
+
   encode(message: MsgCollectIncentivesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.collectedIncentives) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1244,6 +1260,8 @@ function createBaseMsgCreateIncentive(): MsgCreateIncentive {
 }
 
 export const MsgCreateIncentive = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateIncentive",
+
   encode(message: MsgCreateIncentive, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -1397,6 +1415,8 @@ function createBaseMsgCreateIncentiveResponse(): MsgCreateIncentiveResponse {
 }
 
 export const MsgCreateIncentiveResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateIncentiveResponse",
+
   encode(message: MsgCreateIncentiveResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.incentiveDenom !== "") {
       writer.uint32(10).string(message.incentiveDenom);
@@ -1525,6 +1545,8 @@ function createBaseMsgFungifyChargedPositions(): MsgFungifyChargedPositions {
 }
 
 export const MsgFungifyChargedPositions = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions",
+
   encode(message: MsgFungifyChargedPositions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     writer.uint32(10).fork();
 
@@ -1638,6 +1660,8 @@ function createBaseMsgFungifyChargedPositionsResponse(): MsgFungifyChargedPositi
 }
 
 export const MsgFungifyChargedPositionsResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositionsResponse",
+
   encode(message: MsgFungifyChargedPositionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.newPositionId.isZero()) {
       writer.uint32(8).uint64(message.newPositionId);

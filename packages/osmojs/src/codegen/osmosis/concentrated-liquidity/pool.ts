@@ -104,6 +104,8 @@ function createBasePool(): Pool {
 }
 
 export const Pool = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.Pool",
+
   encode(message: Pool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);

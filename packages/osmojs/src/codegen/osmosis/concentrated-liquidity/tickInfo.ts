@@ -54,6 +54,8 @@ function createBaseTickInfo(): TickInfo {
 }
 
 export const TickInfo = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.TickInfo",
+
   encode(message: TickInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.liquidityGross !== "") {
       writer.uint32(10).string(message.liquidityGross);
@@ -181,6 +183,8 @@ function createBaseUptimeTracker(): UptimeTracker {
 }
 
 export const UptimeTracker = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.UptimeTracker",
+
   encode(message: UptimeTracker, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.uptimeGrowthOutside) {
       DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();

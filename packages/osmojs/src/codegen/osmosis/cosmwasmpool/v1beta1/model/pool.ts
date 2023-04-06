@@ -37,6 +37,8 @@ function createBaseCosmWasmPool(): CosmWasmPool {
 }
 
 export const CosmWasmPool = {
+  typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
+
   encode(message: CosmWasmPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.poolAddress !== "") {
       writer.uint32(10).string(message.poolAddress);

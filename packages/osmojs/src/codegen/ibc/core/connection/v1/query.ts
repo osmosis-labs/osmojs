@@ -436,6 +436,8 @@ function createBaseQueryConnectionRequest(): QueryConnectionRequest {
 }
 
 export const QueryConnectionRequest = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionRequest",
+
   encode(message: QueryConnectionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.connectionId !== "") {
       writer.uint32(10).string(message.connectionId);
@@ -521,6 +523,8 @@ function createBaseQueryConnectionResponse(): QueryConnectionResponse {
 }
 
 export const QueryConnectionResponse = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionResponse",
+
   encode(message: QueryConnectionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.connection !== undefined) {
       ConnectionEnd.encode(message.connection, writer.uint32(10).fork()).ldelim();
@@ -626,6 +630,8 @@ function createBaseQueryConnectionsRequest(): QueryConnectionsRequest {
 }
 
 export const QueryConnectionsRequest = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionsRequest",
+
   encode(message: QueryConnectionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -711,6 +717,8 @@ function createBaseQueryConnectionsResponse(): QueryConnectionsResponse {
 }
 
 export const QueryConnectionsResponse = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionsResponse",
+
   encode(message: QueryConnectionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.connections) {
       IdentifiedConnection.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -822,6 +830,8 @@ function createBaseQueryClientConnectionsRequest(): QueryClientConnectionsReques
 }
 
 export const QueryClientConnectionsRequest = {
+  typeUrl: "/ibc.core.connection.v1.QueryClientConnectionsRequest",
+
   encode(message: QueryClientConnectionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -907,6 +917,8 @@ function createBaseQueryClientConnectionsResponse(): QueryClientConnectionsRespo
 }
 
 export const QueryClientConnectionsResponse = {
+  typeUrl: "/ibc.core.connection.v1.QueryClientConnectionsResponse",
+
   encode(message: QueryClientConnectionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.connectionPaths) {
       writer.uint32(10).string(v!);
@@ -1018,6 +1030,8 @@ function createBaseQueryConnectionClientStateRequest(): QueryConnectionClientSta
 }
 
 export const QueryConnectionClientStateRequest = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionClientStateRequest",
+
   encode(message: QueryConnectionClientStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.connectionId !== "") {
       writer.uint32(10).string(message.connectionId);
@@ -1103,6 +1117,8 @@ function createBaseQueryConnectionClientStateResponse(): QueryConnectionClientSt
 }
 
 export const QueryConnectionClientStateResponse = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionClientStateResponse",
+
   encode(message: QueryConnectionClientStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.identifiedClientState !== undefined) {
       IdentifiedClientState.encode(message.identifiedClientState, writer.uint32(10).fork()).ldelim();
@@ -1210,6 +1226,8 @@ function createBaseQueryConnectionConsensusStateRequest(): QueryConnectionConsen
 }
 
 export const QueryConnectionConsensusStateRequest = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionConsensusStateRequest",
+
   encode(message: QueryConnectionConsensusStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.connectionId !== "") {
       writer.uint32(10).string(message.connectionId);
@@ -1318,6 +1336,8 @@ function createBaseQueryConnectionConsensusStateResponse(): QueryConnectionConse
 }
 
 export const QueryConnectionConsensusStateResponse = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionConsensusStateResponse",
+
   encode(message: QueryConnectionConsensusStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.consensusState !== undefined) {
       Any.encode(message.consensusState, writer.uint32(10).fork()).ldelim();

@@ -350,6 +350,8 @@ function createBaseIdentifiedClientState(): IdentifiedClientState {
 }
 
 export const IdentifiedClientState = {
+  typeUrl: "/ibc.core.client.v1.IdentifiedClientState",
+
   encode(message: IdentifiedClientState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -445,6 +447,8 @@ function createBaseConsensusStateWithHeight(): ConsensusStateWithHeight {
 }
 
 export const ConsensusStateWithHeight = {
+  typeUrl: "/ibc.core.client.v1.ConsensusStateWithHeight",
+
   encode(message: ConsensusStateWithHeight, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.height !== undefined) {
       Height.encode(message.height, writer.uint32(10).fork()).ldelim();
@@ -540,6 +544,8 @@ function createBaseClientConsensusStates(): ClientConsensusStates {
 }
 
 export const ClientConsensusStates = {
+  typeUrl: "/ibc.core.client.v1.ClientConsensusStates",
+
   encode(message: ClientConsensusStates, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -643,6 +649,8 @@ function createBaseClientUpdateProposal(): ClientUpdateProposal {
 }
 
 export const ClientUpdateProposal = {
+  typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
+
   encode(message: ClientUpdateProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -762,6 +770,8 @@ function createBaseUpgradeProposal(): UpgradeProposal {
 }
 
 export const UpgradeProposal = {
+  typeUrl: "/ibc.core.client.v1.UpgradeProposal",
+
   encode(message: UpgradeProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -879,6 +889,8 @@ function createBaseHeight(): Height {
 }
 
 export const Height = {
+  typeUrl: "/ibc.core.client.v1.Height",
+
   encode(message: Height, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.revisionNumber.isZero()) {
       writer.uint32(8).uint64(message.revisionNumber);
@@ -973,6 +985,8 @@ function createBaseParams(): Params {
 }
 
 export const Params = {
+  typeUrl: "/ibc.core.client.v1.Params",
+
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.allowedClients) {
       writer.uint32(10).string(v!);

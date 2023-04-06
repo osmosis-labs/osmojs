@@ -807,6 +807,8 @@ function createBaseQueryContractInfoRequest(): QueryContractInfoRequest {
 }
 
 export const QueryContractInfoRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryContractInfoRequest",
+
   encode(message: QueryContractInfoRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -891,6 +893,8 @@ function createBaseQueryContractInfoResponse(): QueryContractInfoResponse {
 }
 
 export const QueryContractInfoResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryContractInfoResponse",
+
   encode(message: QueryContractInfoResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -986,6 +990,8 @@ function createBaseQueryContractHistoryRequest(): QueryContractHistoryRequest {
 }
 
 export const QueryContractHistoryRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryRequest",
+
   encode(message: QueryContractHistoryRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -1081,6 +1087,8 @@ function createBaseQueryContractHistoryResponse(): QueryContractHistoryResponse 
 }
 
 export const QueryContractHistoryResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryResponse",
+
   encode(message: QueryContractHistoryResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.entries) {
       ContractCodeHistoryEntry.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1182,6 +1190,8 @@ function createBaseQueryContractsByCodeRequest(): QueryContractsByCodeRequest {
 }
 
 export const QueryContractsByCodeRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeRequest",
+
   encode(message: QueryContractsByCodeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.codeId.isZero()) {
       writer.uint32(8).uint64(message.codeId);
@@ -1277,6 +1287,8 @@ function createBaseQueryContractsByCodeResponse(): QueryContractsByCodeResponse 
 }
 
 export const QueryContractsByCodeResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeResponse",
+
   encode(message: QueryContractsByCodeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.contracts) {
       writer.uint32(10).string(v!);
@@ -1378,6 +1390,8 @@ function createBaseQueryAllContractStateRequest(): QueryAllContractStateRequest 
 }
 
 export const QueryAllContractStateRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateRequest",
+
   encode(message: QueryAllContractStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -1473,6 +1487,8 @@ function createBaseQueryAllContractStateResponse(): QueryAllContractStateRespons
 }
 
 export const QueryAllContractStateResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateResponse",
+
   encode(message: QueryAllContractStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.models) {
       Model.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1574,6 +1590,8 @@ function createBaseQueryRawContractStateRequest(): QueryRawContractStateRequest 
 }
 
 export const QueryRawContractStateRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryRawContractStateRequest",
+
   encode(message: QueryRawContractStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -1668,6 +1686,8 @@ function createBaseQueryRawContractStateResponse(): QueryRawContractStateRespons
 }
 
 export const QueryRawContractStateResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryRawContractStateResponse",
+
   encode(message: QueryRawContractStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -1752,6 +1772,8 @@ function createBaseQuerySmartContractStateRequest(): QuerySmartContractStateRequ
 }
 
 export const QuerySmartContractStateRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QuerySmartContractStateRequest",
+
   encode(message: QuerySmartContractStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -1846,6 +1868,8 @@ function createBaseQuerySmartContractStateResponse(): QuerySmartContractStateRes
 }
 
 export const QuerySmartContractStateResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QuerySmartContractStateResponse",
+
   encode(message: QuerySmartContractStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -1929,6 +1953,8 @@ function createBaseQueryCodeRequest(): QueryCodeRequest {
 }
 
 export const QueryCodeRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryCodeRequest",
+
   encode(message: QueryCodeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.codeId.isZero()) {
       writer.uint32(8).uint64(message.codeId);
@@ -2015,6 +2041,8 @@ function createBaseCodeInfoResponse(): CodeInfoResponse {
 }
 
 export const CodeInfoResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.CodeInfoResponse",
+
   encode(message: CodeInfoResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.codeId.isZero()) {
       writer.uint32(8).uint64(message.codeId);
@@ -2132,6 +2160,8 @@ function createBaseQueryCodeResponse(): QueryCodeResponse {
 }
 
 export const QueryCodeResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryCodeResponse",
+
   encode(message: QueryCodeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.codeInfo !== undefined) {
       CodeInfoResponse.encode(message.codeInfo, writer.uint32(10).fork()).ldelim();
@@ -2226,6 +2256,8 @@ function createBaseQueryCodesRequest(): QueryCodesRequest {
 }
 
 export const QueryCodesRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryCodesRequest",
+
   encode(message: QueryCodesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -2310,6 +2342,8 @@ function createBaseQueryCodesResponse(): QueryCodesResponse {
 }
 
 export const QueryCodesResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryCodesResponse",
+
   encode(message: QueryCodesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.codeInfos) {
       CodeInfoResponse.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2410,6 +2444,8 @@ function createBaseQueryPinnedCodesRequest(): QueryPinnedCodesRequest {
 }
 
 export const QueryPinnedCodesRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesRequest",
+
   encode(message: QueryPinnedCodesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
@@ -2494,6 +2530,8 @@ function createBaseQueryPinnedCodesResponse(): QueryPinnedCodesResponse {
 }
 
 export const QueryPinnedCodesResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesResponse",
+
   encode(message: QueryPinnedCodesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     writer.uint32(10).fork();
 
@@ -2605,6 +2643,8 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 
 export const QueryParamsRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryParamsRequest",
+
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2676,6 +2716,8 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 
 export const QueryParamsResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryParamsResponse",
+
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -2760,6 +2802,8 @@ function createBaseQueryContractsByCreatorRequest(): QueryContractsByCreatorRequ
 }
 
 export const QueryContractsByCreatorRequest = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorRequest",
+
   encode(message: QueryContractsByCreatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creatorAddress !== "") {
       writer.uint32(10).string(message.creatorAddress);
@@ -2855,6 +2899,8 @@ function createBaseQueryContractsByCreatorResponse(): QueryContractsByCreatorRes
 }
 
 export const QueryContractsByCreatorResponse = {
+  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorResponse",
+
   encode(message: QueryContractsByCreatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.contractAddresses) {
       writer.uint32(10).string(v!);

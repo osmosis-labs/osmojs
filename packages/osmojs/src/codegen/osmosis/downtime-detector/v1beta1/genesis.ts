@@ -57,6 +57,8 @@ function createBaseGenesisDowntimeEntry(): GenesisDowntimeEntry {
 }
 
 export const GenesisDowntimeEntry = {
+  typeUrl: "/osmosis.downtimedetector.v1beta1.GenesisDowntimeEntry",
+
   encode(message: GenesisDowntimeEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.duration !== 0) {
       writer.uint32(8).int32(message.duration);
@@ -152,6 +154,8 @@ function createBaseGenesisState(): GenesisState {
 }
 
 export const GenesisState = {
+  typeUrl: "/osmosis.downtimedetector.v1beta1.GenesisState",
+
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.downtimes) {
       GenesisDowntimeEntry.encode(v!, writer.uint32(10).fork()).ldelim();

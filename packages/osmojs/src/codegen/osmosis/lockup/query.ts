@@ -632,6 +632,8 @@ function createBaseModuleBalanceRequest(): ModuleBalanceRequest {
 }
 
 export const ModuleBalanceRequest = {
+  typeUrl: "/osmosis.lockup.ModuleBalanceRequest",
+
   encode(_: ModuleBalanceRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -703,6 +705,8 @@ function createBaseModuleBalanceResponse(): ModuleBalanceResponse {
 }
 
 export const ModuleBalanceResponse = {
+  typeUrl: "/osmosis.lockup.ModuleBalanceResponse",
+
   encode(message: ModuleBalanceResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -790,6 +794,8 @@ function createBaseModuleLockedAmountRequest(): ModuleLockedAmountRequest {
 }
 
 export const ModuleLockedAmountRequest = {
+  typeUrl: "/osmosis.lockup.ModuleLockedAmountRequest",
+
   encode(_: ModuleLockedAmountRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -861,6 +867,8 @@ function createBaseModuleLockedAmountResponse(): ModuleLockedAmountResponse {
 }
 
 export const ModuleLockedAmountResponse = {
+  typeUrl: "/osmosis.lockup.ModuleLockedAmountResponse",
+
   encode(message: ModuleLockedAmountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -950,6 +958,8 @@ function createBaseAccountUnlockableCoinsRequest(): AccountUnlockableCoinsReques
 }
 
 export const AccountUnlockableCoinsRequest = {
+  typeUrl: "/osmosis.lockup.AccountUnlockableCoinsRequest",
+
   encode(message: AccountUnlockableCoinsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -1033,6 +1043,8 @@ function createBaseAccountUnlockableCoinsResponse(): AccountUnlockableCoinsRespo
 }
 
 export const AccountUnlockableCoinsResponse = {
+  typeUrl: "/osmosis.lockup.AccountUnlockableCoinsResponse",
+
   encode(message: AccountUnlockableCoinsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1122,6 +1134,8 @@ function createBaseAccountUnlockingCoinsRequest(): AccountUnlockingCoinsRequest 
 }
 
 export const AccountUnlockingCoinsRequest = {
+  typeUrl: "/osmosis.lockup.AccountUnlockingCoinsRequest",
+
   encode(message: AccountUnlockingCoinsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -1205,6 +1219,8 @@ function createBaseAccountUnlockingCoinsResponse(): AccountUnlockingCoinsRespons
 }
 
 export const AccountUnlockingCoinsResponse = {
+  typeUrl: "/osmosis.lockup.AccountUnlockingCoinsResponse",
+
   encode(message: AccountUnlockingCoinsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1294,6 +1310,8 @@ function createBaseAccountLockedCoinsRequest(): AccountLockedCoinsRequest {
 }
 
 export const AccountLockedCoinsRequest = {
+  typeUrl: "/osmosis.lockup.AccountLockedCoinsRequest",
+
   encode(message: AccountLockedCoinsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -1377,6 +1395,8 @@ function createBaseAccountLockedCoinsResponse(): AccountLockedCoinsResponse {
 }
 
 export const AccountLockedCoinsResponse = {
+  typeUrl: "/osmosis.lockup.AccountLockedCoinsResponse",
+
   encode(message: AccountLockedCoinsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1467,6 +1487,8 @@ function createBaseAccountLockedPastTimeRequest(): AccountLockedPastTimeRequest 
 }
 
 export const AccountLockedPastTimeRequest = {
+  typeUrl: "/osmosis.lockup.AccountLockedPastTimeRequest",
+
   encode(message: AccountLockedPastTimeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -1561,6 +1583,8 @@ function createBaseAccountLockedPastTimeResponse(): AccountLockedPastTimeRespons
 }
 
 export const AccountLockedPastTimeResponse = {
+  typeUrl: "/osmosis.lockup.AccountLockedPastTimeResponse",
+
   encode(message: AccountLockedPastTimeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.locks) {
       PeriodLock.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1651,6 +1675,8 @@ function createBaseAccountLockedPastTimeNotUnlockingOnlyRequest(): AccountLocked
 }
 
 export const AccountLockedPastTimeNotUnlockingOnlyRequest = {
+  typeUrl: "/osmosis.lockup.AccountLockedPastTimeNotUnlockingOnlyRequest",
+
   encode(message: AccountLockedPastTimeNotUnlockingOnlyRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -1745,6 +1771,8 @@ function createBaseAccountLockedPastTimeNotUnlockingOnlyResponse(): AccountLocke
 }
 
 export const AccountLockedPastTimeNotUnlockingOnlyResponse = {
+  typeUrl: "/osmosis.lockup.AccountLockedPastTimeNotUnlockingOnlyResponse",
+
   encode(message: AccountLockedPastTimeNotUnlockingOnlyResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.locks) {
       PeriodLock.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1835,6 +1863,8 @@ function createBaseAccountUnlockedBeforeTimeRequest(): AccountUnlockedBeforeTime
 }
 
 export const AccountUnlockedBeforeTimeRequest = {
+  typeUrl: "/osmosis.lockup.AccountUnlockedBeforeTimeRequest",
+
   encode(message: AccountUnlockedBeforeTimeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -1929,6 +1959,8 @@ function createBaseAccountUnlockedBeforeTimeResponse(): AccountUnlockedBeforeTim
 }
 
 export const AccountUnlockedBeforeTimeResponse = {
+  typeUrl: "/osmosis.lockup.AccountUnlockedBeforeTimeResponse",
+
   encode(message: AccountUnlockedBeforeTimeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.locks) {
       PeriodLock.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2020,6 +2052,8 @@ function createBaseAccountLockedPastTimeDenomRequest(): AccountLockedPastTimeDen
 }
 
 export const AccountLockedPastTimeDenomRequest = {
+  typeUrl: "/osmosis.lockup.AccountLockedPastTimeDenomRequest",
+
   encode(message: AccountLockedPastTimeDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -2125,6 +2159,8 @@ function createBaseAccountLockedPastTimeDenomResponse(): AccountLockedPastTimeDe
 }
 
 export const AccountLockedPastTimeDenomResponse = {
+  typeUrl: "/osmosis.lockup.AccountLockedPastTimeDenomResponse",
+
   encode(message: AccountLockedPastTimeDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.locks) {
       PeriodLock.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2215,6 +2251,8 @@ function createBaseLockedDenomRequest(): LockedDenomRequest {
 }
 
 export const LockedDenomRequest = {
+  typeUrl: "/osmosis.lockup.LockedDenomRequest",
+
   encode(message: LockedDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -2309,6 +2347,8 @@ function createBaseLockedDenomResponse(): LockedDenomResponse {
 }
 
 export const LockedDenomResponse = {
+  typeUrl: "/osmosis.lockup.LockedDenomResponse",
+
   encode(message: LockedDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.amount !== "") {
       writer.uint32(10).string(message.amount);
@@ -2392,6 +2432,8 @@ function createBaseLockedRequest(): LockedRequest {
 }
 
 export const LockedRequest = {
+  typeUrl: "/osmosis.lockup.LockedRequest",
+
   encode(message: LockedRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.lockId.isZero()) {
       writer.uint32(8).uint64(message.lockId);
@@ -2475,6 +2517,8 @@ function createBaseLockedResponse(): LockedResponse {
 }
 
 export const LockedResponse = {
+  typeUrl: "/osmosis.lockup.LockedResponse",
+
   encode(message: LockedResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.lock !== undefined) {
       PeriodLock.encode(message.lock, writer.uint32(10).fork()).ldelim();
@@ -2556,6 +2600,8 @@ function createBaseNextLockIDRequest(): NextLockIDRequest {
 }
 
 export const NextLockIDRequest = {
+  typeUrl: "/osmosis.lockup.NextLockIDRequest",
+
   encode(_: NextLockIDRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -2627,6 +2673,8 @@ function createBaseNextLockIDResponse(): NextLockIDResponse {
 }
 
 export const NextLockIDResponse = {
+  typeUrl: "/osmosis.lockup.NextLockIDResponse",
+
   encode(message: NextLockIDResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.lockId.isZero()) {
       writer.uint32(8).uint64(message.lockId);
@@ -2710,6 +2758,8 @@ function createBaseSyntheticLockupsByLockupIDRequest(): SyntheticLockupsByLockup
 }
 
 export const SyntheticLockupsByLockupIDRequest = {
+  typeUrl: "/osmosis.lockup.SyntheticLockupsByLockupIDRequest",
+
   encode(message: SyntheticLockupsByLockupIDRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.lockId.isZero()) {
       writer.uint32(8).uint64(message.lockId);
@@ -2793,6 +2843,8 @@ function createBaseSyntheticLockupsByLockupIDResponse(): SyntheticLockupsByLocku
 }
 
 export const SyntheticLockupsByLockupIDResponse = {
+  typeUrl: "/osmosis.lockup.SyntheticLockupsByLockupIDResponse",
+
   encode(message: SyntheticLockupsByLockupIDResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.syntheticLocks) {
       SyntheticLock.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2883,6 +2935,8 @@ function createBaseAccountLockedLongerDurationRequest(): AccountLockedLongerDura
 }
 
 export const AccountLockedLongerDurationRequest = {
+  typeUrl: "/osmosis.lockup.AccountLockedLongerDurationRequest",
+
   encode(message: AccountLockedLongerDurationRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -2977,6 +3031,8 @@ function createBaseAccountLockedLongerDurationResponse(): AccountLockedLongerDur
 }
 
 export const AccountLockedLongerDurationResponse = {
+  typeUrl: "/osmosis.lockup.AccountLockedLongerDurationResponse",
+
   encode(message: AccountLockedLongerDurationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.locks) {
       PeriodLock.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -3067,6 +3123,8 @@ function createBaseAccountLockedDurationRequest(): AccountLockedDurationRequest 
 }
 
 export const AccountLockedDurationRequest = {
+  typeUrl: "/osmosis.lockup.AccountLockedDurationRequest",
+
   encode(message: AccountLockedDurationRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -3161,6 +3219,8 @@ function createBaseAccountLockedDurationResponse(): AccountLockedDurationRespons
 }
 
 export const AccountLockedDurationResponse = {
+  typeUrl: "/osmosis.lockup.AccountLockedDurationResponse",
+
   encode(message: AccountLockedDurationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.locks) {
       PeriodLock.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -3251,6 +3311,8 @@ function createBaseAccountLockedLongerDurationNotUnlockingOnlyRequest(): Account
 }
 
 export const AccountLockedLongerDurationNotUnlockingOnlyRequest = {
+  typeUrl: "/osmosis.lockup.AccountLockedLongerDurationNotUnlockingOnlyRequest",
+
   encode(message: AccountLockedLongerDurationNotUnlockingOnlyRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -3345,6 +3407,8 @@ function createBaseAccountLockedLongerDurationNotUnlockingOnlyResponse(): Accoun
 }
 
 export const AccountLockedLongerDurationNotUnlockingOnlyResponse = {
+  typeUrl: "/osmosis.lockup.AccountLockedLongerDurationNotUnlockingOnlyResponse",
+
   encode(message: AccountLockedLongerDurationNotUnlockingOnlyResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.locks) {
       PeriodLock.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -3436,6 +3500,8 @@ function createBaseAccountLockedLongerDurationDenomRequest(): AccountLockedLonge
 }
 
 export const AccountLockedLongerDurationDenomRequest = {
+  typeUrl: "/osmosis.lockup.AccountLockedLongerDurationDenomRequest",
+
   encode(message: AccountLockedLongerDurationDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -3541,6 +3607,8 @@ function createBaseAccountLockedLongerDurationDenomResponse(): AccountLockedLong
 }
 
 export const AccountLockedLongerDurationDenomResponse = {
+  typeUrl: "/osmosis.lockup.AccountLockedLongerDurationDenomResponse",
+
   encode(message: AccountLockedLongerDurationDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.locks) {
       PeriodLock.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -3628,6 +3696,8 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 
 export const QueryParamsRequest = {
+  typeUrl: "/osmosis.lockup.QueryParamsRequest",
+
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -3699,6 +3769,8 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 
 export const QueryParamsResponse = {
+  typeUrl: "/osmosis.lockup.QueryParamsResponse",
+
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();

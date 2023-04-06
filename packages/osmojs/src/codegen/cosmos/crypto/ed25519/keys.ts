@@ -80,6 +80,8 @@ function createBasePubKey(): PubKey {
 }
 
 export const PubKey = {
+  typeUrl: "/cosmos.crypto.ed25519.PubKey",
+
   encode(message: PubKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -163,6 +165,8 @@ function createBasePrivKey(): PrivKey {
 }
 
 export const PrivKey = {
+  typeUrl: "/cosmos.crypto.ed25519.PrivKey",
+
   encode(message: PrivKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);

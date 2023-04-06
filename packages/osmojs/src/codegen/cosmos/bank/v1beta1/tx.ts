@@ -100,6 +100,8 @@ function createBaseMsgSend(): MsgSend {
 }
 
 export const MsgSend = {
+  typeUrl: "/cosmos.bank.v1beta1.MsgSend",
+
   encode(message: MsgSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.fromAddress !== "") {
       writer.uint32(10).string(message.fromAddress);
@@ -209,6 +211,8 @@ function createBaseMsgSendResponse(): MsgSendResponse {
 }
 
 export const MsgSendResponse = {
+  typeUrl: "/cosmos.bank.v1beta1.MsgSendResponse",
+
   encode(_: MsgSendResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -281,6 +285,8 @@ function createBaseMsgMultiSend(): MsgMultiSend {
 }
 
 export const MsgMultiSend = {
+  typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
+
   encode(message: MsgMultiSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.inputs) {
       Input.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -384,6 +390,8 @@ function createBaseMsgMultiSendResponse(): MsgMultiSendResponse {
 }
 
 export const MsgMultiSendResponse = {
+  typeUrl: "/cosmos.bank.v1beta1.MsgMultiSendResponse",
+
   encode(_: MsgMultiSendResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },

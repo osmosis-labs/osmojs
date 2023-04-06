@@ -88,6 +88,8 @@ function createBaseSetProtoRevEnabledProposal(): SetProtoRevEnabledProposal {
 }
 
 export const SetProtoRevEnabledProposal = {
+  typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal",
+
   encode(message: SetProtoRevEnabledProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -195,6 +197,8 @@ function createBaseSetProtoRevAdminAccountProposal(): SetProtoRevAdminAccountPro
 }
 
 export const SetProtoRevAdminAccountProposal = {
+  typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal",
+
   encode(message: SetProtoRevAdminAccountProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);

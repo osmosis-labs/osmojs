@@ -121,6 +121,8 @@ function createBaseMsgCreateBalancerPool(): MsgCreateBalancerPool {
 }
 
 export const MsgCreateBalancerPool = {
+  typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPool",
+
   encode(message: MsgCreateBalancerPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -243,6 +245,8 @@ function createBaseMsgCreateBalancerPoolResponse(): MsgCreateBalancerPoolRespons
 }
 
 export const MsgCreateBalancerPoolResponse = {
+  typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPoolResponse",
+
   encode(message: MsgCreateBalancerPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.poolId.isZero()) {
       writer.uint32(8).uint64(message.poolId);
@@ -327,6 +331,8 @@ function createBaseMsgMigrateSharesToFullRangeConcentratedPosition(): MsgMigrate
 }
 
 export const MsgMigrateSharesToFullRangeConcentratedPosition = {
+  typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPosition",
+
   encode(message: MsgMigrateSharesToFullRangeConcentratedPosition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -424,6 +430,8 @@ function createBaseMsgMigrateSharesToFullRangeConcentratedPositionResponse(): Ms
 }
 
 export const MsgMigrateSharesToFullRangeConcentratedPositionResponse = {
+  typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPositionResponse",
+
   encode(message: MsgMigrateSharesToFullRangeConcentratedPositionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.amount0 !== "") {
       writer.uint32(10).string(message.amount0);

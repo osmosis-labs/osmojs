@@ -982,6 +982,8 @@ function createBaseQueryValidatorsRequest(): QueryValidatorsRequest {
 }
 
 export const QueryValidatorsRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryValidatorsRequest",
+
   encode(message: QueryValidatorsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.status !== "") {
       writer.uint32(10).string(message.status);
@@ -1077,6 +1079,8 @@ function createBaseQueryValidatorsResponse(): QueryValidatorsResponse {
 }
 
 export const QueryValidatorsResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryValidatorsResponse",
+
   encode(message: QueryValidatorsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.validators) {
       Validator.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1177,6 +1181,8 @@ function createBaseQueryValidatorRequest(): QueryValidatorRequest {
 }
 
 export const QueryValidatorRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryValidatorRequest",
+
   encode(message: QueryValidatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.validatorAddr !== "") {
       writer.uint32(10).string(message.validatorAddr);
@@ -1260,6 +1266,8 @@ function createBaseQueryValidatorResponse(): QueryValidatorResponse {
 }
 
 export const QueryValidatorResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryValidatorResponse",
+
   encode(message: QueryValidatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.validator !== undefined) {
       Validator.encode(message.validator, writer.uint32(10).fork()).ldelim();
@@ -1344,6 +1352,8 @@ function createBaseQueryValidatorDelegationsRequest(): QueryValidatorDelegations
 }
 
 export const QueryValidatorDelegationsRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryValidatorDelegationsRequest",
+
   encode(message: QueryValidatorDelegationsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.validatorAddr !== "") {
       writer.uint32(10).string(message.validatorAddr);
@@ -1439,6 +1449,8 @@ function createBaseQueryValidatorDelegationsResponse(): QueryValidatorDelegation
 }
 
 export const QueryValidatorDelegationsResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryValidatorDelegationsResponse",
+
   encode(message: QueryValidatorDelegationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.delegationResponses) {
       DelegationResponse.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1540,6 +1552,8 @@ function createBaseQueryValidatorUnbondingDelegationsRequest(): QueryValidatorUn
 }
 
 export const QueryValidatorUnbondingDelegationsRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsRequest",
+
   encode(message: QueryValidatorUnbondingDelegationsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.validatorAddr !== "") {
       writer.uint32(10).string(message.validatorAddr);
@@ -1635,6 +1649,8 @@ function createBaseQueryValidatorUnbondingDelegationsResponse(): QueryValidatorU
 }
 
 export const QueryValidatorUnbondingDelegationsResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsResponse",
+
   encode(message: QueryValidatorUnbondingDelegationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.unbondingResponses) {
       UnbondingDelegation.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1736,6 +1752,8 @@ function createBaseQueryDelegationRequest(): QueryDelegationRequest {
 }
 
 export const QueryDelegationRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegationRequest",
+
   encode(message: QueryDelegationRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegatorAddr !== "") {
       writer.uint32(10).string(message.delegatorAddr);
@@ -1830,6 +1848,8 @@ function createBaseQueryDelegationResponse(): QueryDelegationResponse {
 }
 
 export const QueryDelegationResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegationResponse",
+
   encode(message: QueryDelegationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegationResponse !== undefined) {
       DelegationResponse.encode(message.delegationResponse, writer.uint32(10).fork()).ldelim();
@@ -1914,6 +1934,8 @@ function createBaseQueryUnbondingDelegationRequest(): QueryUnbondingDelegationRe
 }
 
 export const QueryUnbondingDelegationRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryUnbondingDelegationRequest",
+
   encode(message: QueryUnbondingDelegationRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegatorAddr !== "") {
       writer.uint32(10).string(message.delegatorAddr);
@@ -2008,6 +2030,8 @@ function createBaseQueryUnbondingDelegationResponse(): QueryUnbondingDelegationR
 }
 
 export const QueryUnbondingDelegationResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryUnbondingDelegationResponse",
+
   encode(message: QueryUnbondingDelegationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.unbond !== undefined) {
       UnbondingDelegation.encode(message.unbond, writer.uint32(10).fork()).ldelim();
@@ -2092,6 +2116,8 @@ function createBaseQueryDelegatorDelegationsRequest(): QueryDelegatorDelegations
 }
 
 export const QueryDelegatorDelegationsRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorDelegationsRequest",
+
   encode(message: QueryDelegatorDelegationsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegatorAddr !== "") {
       writer.uint32(10).string(message.delegatorAddr);
@@ -2187,6 +2213,8 @@ function createBaseQueryDelegatorDelegationsResponse(): QueryDelegatorDelegation
 }
 
 export const QueryDelegatorDelegationsResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorDelegationsResponse",
+
   encode(message: QueryDelegatorDelegationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.delegationResponses) {
       DelegationResponse.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2288,6 +2316,8 @@ function createBaseQueryDelegatorUnbondingDelegationsRequest(): QueryDelegatorUn
 }
 
 export const QueryDelegatorUnbondingDelegationsRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsRequest",
+
   encode(message: QueryDelegatorUnbondingDelegationsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegatorAddr !== "") {
       writer.uint32(10).string(message.delegatorAddr);
@@ -2383,6 +2413,8 @@ function createBaseQueryDelegatorUnbondingDelegationsResponse(): QueryDelegatorU
 }
 
 export const QueryDelegatorUnbondingDelegationsResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsResponse",
+
   encode(message: QueryDelegatorUnbondingDelegationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.unbondingResponses) {
       UnbondingDelegation.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2486,6 +2518,8 @@ function createBaseQueryRedelegationsRequest(): QueryRedelegationsRequest {
 }
 
 export const QueryRedelegationsRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryRedelegationsRequest",
+
   encode(message: QueryRedelegationsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegatorAddr !== "") {
       writer.uint32(10).string(message.delegatorAddr);
@@ -2603,6 +2637,8 @@ function createBaseQueryRedelegationsResponse(): QueryRedelegationsResponse {
 }
 
 export const QueryRedelegationsResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryRedelegationsResponse",
+
   encode(message: QueryRedelegationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.redelegationResponses) {
       RedelegationResponse.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2704,6 +2740,8 @@ function createBaseQueryDelegatorValidatorsRequest(): QueryDelegatorValidatorsRe
 }
 
 export const QueryDelegatorValidatorsRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorsRequest",
+
   encode(message: QueryDelegatorValidatorsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegatorAddr !== "") {
       writer.uint32(10).string(message.delegatorAddr);
@@ -2799,6 +2837,8 @@ function createBaseQueryDelegatorValidatorsResponse(): QueryDelegatorValidatorsR
 }
 
 export const QueryDelegatorValidatorsResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorsResponse",
+
   encode(message: QueryDelegatorValidatorsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.validators) {
       Validator.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2900,6 +2940,8 @@ function createBaseQueryDelegatorValidatorRequest(): QueryDelegatorValidatorRequ
 }
 
 export const QueryDelegatorValidatorRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorRequest",
+
   encode(message: QueryDelegatorValidatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegatorAddr !== "") {
       writer.uint32(10).string(message.delegatorAddr);
@@ -2994,6 +3036,8 @@ function createBaseQueryDelegatorValidatorResponse(): QueryDelegatorValidatorRes
 }
 
 export const QueryDelegatorValidatorResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorResponse",
+
   encode(message: QueryDelegatorValidatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.validator !== undefined) {
       Validator.encode(message.validator, writer.uint32(10).fork()).ldelim();
@@ -3077,6 +3121,8 @@ function createBaseQueryHistoricalInfoRequest(): QueryHistoricalInfoRequest {
 }
 
 export const QueryHistoricalInfoRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryHistoricalInfoRequest",
+
   encode(message: QueryHistoricalInfoRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.height.isZero()) {
       writer.uint32(8).int64(message.height);
@@ -3160,6 +3206,8 @@ function createBaseQueryHistoricalInfoResponse(): QueryHistoricalInfoResponse {
 }
 
 export const QueryHistoricalInfoResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryHistoricalInfoResponse",
+
   encode(message: QueryHistoricalInfoResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.hist !== undefined) {
       HistoricalInfo.encode(message.hist, writer.uint32(10).fork()).ldelim();
@@ -3241,6 +3289,8 @@ function createBaseQueryPoolRequest(): QueryPoolRequest {
 }
 
 export const QueryPoolRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryPoolRequest",
+
   encode(_: QueryPoolRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -3312,6 +3362,8 @@ function createBaseQueryPoolResponse(): QueryPoolResponse {
 }
 
 export const QueryPoolResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryPoolResponse",
+
   encode(message: QueryPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pool !== undefined) {
       Pool.encode(message.pool, writer.uint32(10).fork()).ldelim();
@@ -3393,6 +3445,8 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 
 export const QueryParamsRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryParamsRequest",
+
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -3464,6 +3518,8 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 
 export const QueryParamsResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryParamsResponse",
+
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();

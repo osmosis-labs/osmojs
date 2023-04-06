@@ -161,6 +161,8 @@ function createBaseMsgCreateGauge(): MsgCreateGauge {
 }
 
 export const MsgCreateGauge = {
+  typeUrl: "/osmosis.incentives.MsgCreateGauge",
+
   encode(message: MsgCreateGauge, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.isPerpetual === true) {
       writer.uint32(8).bool(message.isPerpetual);
@@ -303,6 +305,8 @@ function createBaseMsgCreateGaugeResponse(): MsgCreateGaugeResponse {
 }
 
 export const MsgCreateGaugeResponse = {
+  typeUrl: "/osmosis.incentives.MsgCreateGaugeResponse",
+
   encode(_: MsgCreateGaugeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -376,6 +380,8 @@ function createBaseMsgAddToGauge(): MsgAddToGauge {
 }
 
 export const MsgAddToGauge = {
+  typeUrl: "/osmosis.incentives.MsgAddToGauge",
+
   encode(message: MsgAddToGauge, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -485,6 +491,8 @@ function createBaseMsgAddToGaugeResponse(): MsgAddToGaugeResponse {
 }
 
 export const MsgAddToGaugeResponse = {
+  typeUrl: "/osmosis.incentives.MsgAddToGaugeResponse",
+
   encode(_: MsgAddToGaugeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },

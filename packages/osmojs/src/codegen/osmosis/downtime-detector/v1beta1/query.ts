@@ -63,6 +63,8 @@ function createBaseRecoveredSinceDowntimeOfLengthRequest(): RecoveredSinceDownti
 }
 
 export const RecoveredSinceDowntimeOfLengthRequest = {
+  typeUrl: "/osmosis.downtimedetector.v1beta1.RecoveredSinceDowntimeOfLengthRequest",
+
   encode(message: RecoveredSinceDowntimeOfLengthRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.downtime !== 0) {
       writer.uint32(8).int32(message.downtime);
@@ -157,6 +159,8 @@ function createBaseRecoveredSinceDowntimeOfLengthResponse(): RecoveredSinceDownt
 }
 
 export const RecoveredSinceDowntimeOfLengthResponse = {
+  typeUrl: "/osmosis.downtimedetector.v1beta1.RecoveredSinceDowntimeOfLengthResponse",
+
   encode(message: RecoveredSinceDowntimeOfLengthResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.succesfullyRecovered === true) {
       writer.uint32(8).bool(message.succesfullyRecovered);

@@ -302,6 +302,8 @@ function createBaseMsgSetValidatorSetPreference(): MsgSetValidatorSetPreference 
 }
 
 export const MsgSetValidatorSetPreference = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreference",
+
   encode(message: MsgSetValidatorSetPreference, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -400,6 +402,8 @@ function createBaseMsgSetValidatorSetPreferenceResponse(): MsgSetValidatorSetPre
 }
 
 export const MsgSetValidatorSetPreferenceResponse = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreferenceResponse",
+
   encode(_: MsgSetValidatorSetPreferenceResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -472,6 +476,8 @@ function createBaseMsgDelegateToValidatorSet(): MsgDelegateToValidatorSet {
 }
 
 export const MsgDelegateToValidatorSet = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSet",
+
   encode(message: MsgDelegateToValidatorSet, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -564,6 +570,8 @@ function createBaseMsgDelegateToValidatorSetResponse(): MsgDelegateToValidatorSe
 }
 
 export const MsgDelegateToValidatorSetResponse = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSetResponse",
+
   encode(_: MsgDelegateToValidatorSetResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -636,6 +644,8 @@ function createBaseMsgUndelegateFromValidatorSet(): MsgUndelegateFromValidatorSe
 }
 
 export const MsgUndelegateFromValidatorSet = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSet",
+
   encode(message: MsgUndelegateFromValidatorSet, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -728,6 +738,8 @@ function createBaseMsgUndelegateFromValidatorSetResponse(): MsgUndelegateFromVal
 }
 
 export const MsgUndelegateFromValidatorSetResponse = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSetResponse",
+
   encode(_: MsgUndelegateFromValidatorSetResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -800,6 +812,8 @@ function createBaseMsgRedelegateValidatorSet(): MsgRedelegateValidatorSet {
 }
 
 export const MsgRedelegateValidatorSet = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSet",
+
   encode(message: MsgRedelegateValidatorSet, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -898,6 +912,8 @@ function createBaseMsgRedelegateValidatorSetResponse(): MsgRedelegateValidatorSe
 }
 
 export const MsgRedelegateValidatorSetResponse = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSetResponse",
+
   encode(_: MsgRedelegateValidatorSetResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -969,6 +985,8 @@ function createBaseMsgWithdrawDelegationRewards(): MsgWithdrawDelegationRewards 
 }
 
 export const MsgWithdrawDelegationRewards = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards",
+
   encode(message: MsgWithdrawDelegationRewards, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -1050,6 +1068,8 @@ function createBaseMsgWithdrawDelegationRewardsResponse(): MsgWithdrawDelegation
 }
 
 export const MsgWithdrawDelegationRewardsResponse = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewardsResponse",
+
   encode(_: MsgWithdrawDelegationRewardsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1122,6 +1142,8 @@ function createBaseMsgDelegateBondedTokens(): MsgDelegateBondedTokens {
 }
 
 export const MsgDelegateBondedTokens = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens",
+
   encode(message: MsgDelegateBondedTokens, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -1214,6 +1236,8 @@ function createBaseMsgDelegateBondedTokensResponse(): MsgDelegateBondedTokensRes
 }
 
 export const MsgDelegateBondedTokensResponse = {
+  typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokensResponse",
+
   encode(_: MsgDelegateBondedTokensResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },

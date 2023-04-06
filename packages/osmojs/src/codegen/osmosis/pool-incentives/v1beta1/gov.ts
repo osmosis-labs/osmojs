@@ -116,6 +116,8 @@ function createBaseReplacePoolIncentivesProposal(): ReplacePoolIncentivesProposa
 }
 
 export const ReplacePoolIncentivesProposal = {
+  typeUrl: "/osmosis.poolincentives.v1beta1.ReplacePoolIncentivesProposal",
+
   encode(message: ReplacePoolIncentivesProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -229,6 +231,8 @@ function createBaseUpdatePoolIncentivesProposal(): UpdatePoolIncentivesProposal 
 }
 
 export const UpdatePoolIncentivesProposal = {
+  typeUrl: "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal",
+
   encode(message: UpdatePoolIncentivesProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);

@@ -346,6 +346,8 @@ function createBaseParams(): Params {
 }
 
 export const Params = {
+  typeUrl: "/cosmos.bank.v1beta1.Params",
+
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.sendEnabled) {
       SendEnabled.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -447,6 +449,8 @@ function createBaseSendEnabled(): SendEnabled {
 }
 
 export const SendEnabled = {
+  typeUrl: "/cosmos.bank.v1beta1.SendEnabled",
+
   encode(message: SendEnabled, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -542,6 +546,8 @@ function createBaseInput(): Input {
 }
 
 export const Input = {
+  typeUrl: "/cosmos.bank.v1beta1.Input",
+
   encode(message: Input, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -643,6 +649,8 @@ function createBaseOutput(): Output {
 }
 
 export const Output = {
+  typeUrl: "/cosmos.bank.v1beta1.Output",
+
   encode(message: Output, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -743,6 +751,8 @@ function createBaseSupply(): Supply {
 }
 
 export const Supply = {
+  typeUrl: "/cosmos.bank.v1beta1.Supply",
+
   encode(message: Supply, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.total) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -834,6 +844,8 @@ function createBaseDenomUnit(): DenomUnit {
 }
 
 export const DenomUnit = {
+  typeUrl: "/cosmos.bank.v1beta1.DenomUnit",
+
   encode(message: DenomUnit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -952,6 +964,8 @@ function createBaseMetadata(): Metadata {
 }
 
 export const Metadata = {
+  typeUrl: "/cosmos.bank.v1beta1.Metadata",
+
   encode(message: Metadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.description !== "") {
       writer.uint32(10).string(message.description);

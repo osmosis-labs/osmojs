@@ -76,6 +76,8 @@ function createBaseGenesisState(): GenesisState {
 }
 
 export const GenesisState = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.GenesisState",
+
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -177,6 +179,8 @@ function createBaseGenesisDenom(): GenesisDenom {
 }
 
 export const GenesisDenom = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.GenesisDenom",
+
   encode(message: GenesisDenom, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);

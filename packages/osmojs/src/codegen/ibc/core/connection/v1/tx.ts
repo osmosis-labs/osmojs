@@ -360,6 +360,8 @@ function createBaseMsgConnectionOpenInit(): MsgConnectionOpenInit {
 }
 
 export const MsgConnectionOpenInit = {
+  typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenInit",
+
   encode(message: MsgConnectionOpenInit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -485,6 +487,8 @@ function createBaseMsgConnectionOpenInitResponse(): MsgConnectionOpenInitRespons
 }
 
 export const MsgConnectionOpenInitResponse = {
+  typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenInitResponse",
+
   encode(_: MsgConnectionOpenInitResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -567,6 +571,8 @@ function createBaseMsgConnectionOpenTry(): MsgConnectionOpenTry {
 }
 
 export const MsgConnectionOpenTry = {
+  typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTry",
+
   encode(message: MsgConnectionOpenTry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
@@ -775,6 +781,8 @@ function createBaseMsgConnectionOpenTryResponse(): MsgConnectionOpenTryResponse 
 }
 
 export const MsgConnectionOpenTryResponse = {
+  typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTryResponse",
+
   encode(_: MsgConnectionOpenTryResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -855,6 +863,8 @@ function createBaseMsgConnectionOpenAck(): MsgConnectionOpenAck {
 }
 
 export const MsgConnectionOpenAck = {
+  typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAck",
+
   encode(message: MsgConnectionOpenAck, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.connectionId !== "") {
       writer.uint32(10).string(message.connectionId);
@@ -1035,6 +1045,8 @@ function createBaseMsgConnectionOpenAckResponse(): MsgConnectionOpenAckResponse 
 }
 
 export const MsgConnectionOpenAckResponse = {
+  typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAckResponse",
+
   encode(_: MsgConnectionOpenAckResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1109,6 +1121,8 @@ function createBaseMsgConnectionOpenConfirm(): MsgConnectionOpenConfirm {
 }
 
 export const MsgConnectionOpenConfirm = {
+  typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenConfirm",
+
   encode(message: MsgConnectionOpenConfirm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.connectionId !== "") {
       writer.uint32(10).string(message.connectionId);
@@ -1223,6 +1237,8 @@ function createBaseMsgConnectionOpenConfirmResponse(): MsgConnectionOpenConfirmR
 }
 
 export const MsgConnectionOpenConfirmResponse = {
+  typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenConfirmResponse",
+
   encode(_: MsgConnectionOpenConfirmResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },

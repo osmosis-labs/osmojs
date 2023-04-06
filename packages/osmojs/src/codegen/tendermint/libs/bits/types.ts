@@ -29,6 +29,8 @@ function createBaseBitArray(): BitArray {
 }
 
 export const BitArray = {
+  typeUrl: "/tendermint.libs.bits.BitArray",
+
   encode(message: BitArray, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.bits.isZero()) {
       writer.uint32(8).int64(message.bits);

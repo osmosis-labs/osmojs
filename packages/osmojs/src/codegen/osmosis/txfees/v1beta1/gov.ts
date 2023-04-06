@@ -57,6 +57,8 @@ function createBaseUpdateFeeTokenProposal(): UpdateFeeTokenProposal {
 }
 
 export const UpdateFeeTokenProposal = {
+  typeUrl: "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal",
+
   encode(message: UpdateFeeTokenProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);

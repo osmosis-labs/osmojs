@@ -161,6 +161,8 @@ function createBaseParams(): Params {
 }
 
 export const Params = {
+  typeUrl: "/osmosis.gamm.v1beta1.Params",
+
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.poolCreationFee) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -253,6 +255,8 @@ function createBaseGenesisState(): GenesisState {
 }
 
 export const GenesisState = {
+  typeUrl: "/osmosis.gamm.v1beta1.GenesisState",
+
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.pools) {
       Any.encode((v! as Any), writer.uint32(10).fork()).ldelim();
@@ -375,6 +379,8 @@ function createBaseMigrationRecords(): MigrationRecords {
 }
 
 export const MigrationRecords = {
+  typeUrl: "/osmosis.gamm.v1beta1.MigrationRecords",
+
   encode(message: MigrationRecords, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.balancerToConcentratedPoolLinks) {
       BalancerToConcentratedPoolLink.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -465,6 +471,8 @@ function createBaseBalancerToConcentratedPoolLink(): BalancerToConcentratedPoolL
 }
 
 export const BalancerToConcentratedPoolLink = {
+  typeUrl: "/osmosis.gamm.v1beta1.BalancerToConcentratedPoolLink",
+
   encode(message: BalancerToConcentratedPoolLink, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.balancerPoolId.isZero()) {
       writer.uint32(8).uint64(message.balancerPoolId);

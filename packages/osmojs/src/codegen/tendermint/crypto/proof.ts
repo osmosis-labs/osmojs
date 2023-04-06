@@ -150,6 +150,8 @@ function createBaseProof(): Proof {
 }
 
 export const Proof = {
+  typeUrl: "/tendermint.crypto.Proof",
+
   encode(message: Proof, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.total.isZero()) {
       writer.uint32(8).int64(message.total);
@@ -266,6 +268,8 @@ function createBaseValueOp(): ValueOp {
 }
 
 export const ValueOp = {
+  typeUrl: "/tendermint.crypto.ValueOp",
+
   encode(message: ValueOp, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -355,6 +359,8 @@ function createBaseDominoOp(): DominoOp {
 }
 
 export const DominoOp = {
+  typeUrl: "/tendermint.crypto.DominoOp",
+
   encode(message: DominoOp, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key !== "") {
       writer.uint32(10).string(message.key);
@@ -455,6 +461,8 @@ function createBaseProofOp(): ProofOp {
 }
 
 export const ProofOp = {
+  typeUrl: "/tendermint.crypto.ProofOp",
+
   encode(message: ProofOp, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.type !== "") {
       writer.uint32(10).string(message.type);
@@ -553,6 +561,8 @@ function createBaseProofOps(): ProofOps {
 }
 
 export const ProofOps = {
+  typeUrl: "/tendermint.crypto.ProofOps",
+
   encode(message: ProofOps, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.ops) {
       ProofOp.encode(v!, writer.uint32(10).fork()).ldelim();

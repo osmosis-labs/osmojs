@@ -108,6 +108,8 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 
 export const QueryParamsRequest = {
+  typeUrl: "/osmosis.mint.v1beta1.QueryParamsRequest",
+
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -179,6 +181,8 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 
 export const QueryParamsResponse = {
+  typeUrl: "/osmosis.mint.v1beta1.QueryParamsResponse",
+
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -260,6 +264,8 @@ function createBaseQueryEpochProvisionsRequest(): QueryEpochProvisionsRequest {
 }
 
 export const QueryEpochProvisionsRequest = {
+  typeUrl: "/osmosis.mint.v1beta1.QueryEpochProvisionsRequest",
+
   encode(_: QueryEpochProvisionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -331,6 +337,8 @@ function createBaseQueryEpochProvisionsResponse(): QueryEpochProvisionsResponse 
 }
 
 export const QueryEpochProvisionsResponse = {
+  typeUrl: "/osmosis.mint.v1beta1.QueryEpochProvisionsResponse",
+
   encode(message: QueryEpochProvisionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.epochProvisions.length !== 0) {
       writer.uint32(10).bytes(message.epochProvisions);

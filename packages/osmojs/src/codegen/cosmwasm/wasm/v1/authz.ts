@@ -369,6 +369,8 @@ function createBaseContractExecutionAuthorization(): ContractExecutionAuthorizat
 }
 
 export const ContractExecutionAuthorization = {
+  typeUrl: "/cosmwasm.wasm.v1.ContractExecutionAuthorization",
+
   encode(message: ContractExecutionAuthorization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.grants) {
       ContractGrant.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -458,6 +460,8 @@ function createBaseContractMigrationAuthorization(): ContractMigrationAuthorizat
 }
 
 export const ContractMigrationAuthorization = {
+  typeUrl: "/cosmwasm.wasm.v1.ContractMigrationAuthorization",
+
   encode(message: ContractMigrationAuthorization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.grants) {
       ContractGrant.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -549,6 +553,8 @@ function createBaseContractGrant(): ContractGrant {
 }
 
 export const ContractGrant = {
+  typeUrl: "/cosmwasm.wasm.v1.ContractGrant",
+
   encode(message: ContractGrant, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.contract !== "") {
       writer.uint32(10).string(message.contract);
@@ -654,6 +660,8 @@ function createBaseMaxCallsLimit(): MaxCallsLimit {
 }
 
 export const MaxCallsLimit = {
+  typeUrl: "/cosmwasm.wasm.v1.MaxCallsLimit",
+
   encode(message: MaxCallsLimit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.remaining.isZero()) {
       writer.uint32(8).uint64(message.remaining);
@@ -737,6 +745,8 @@ function createBaseMaxFundsLimit(): MaxFundsLimit {
 }
 
 export const MaxFundsLimit = {
+  typeUrl: "/cosmwasm.wasm.v1.MaxFundsLimit",
+
   encode(message: MaxFundsLimit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.amounts) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -827,6 +837,8 @@ function createBaseCombinedLimit(): CombinedLimit {
 }
 
 export const CombinedLimit = {
+  typeUrl: "/cosmwasm.wasm.v1.CombinedLimit",
+
   encode(message: CombinedLimit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.callsRemaining.isZero()) {
       writer.uint32(8).uint64(message.callsRemaining);
@@ -925,6 +937,8 @@ function createBaseAllowAllMessagesFilter(): AllowAllMessagesFilter {
 }
 
 export const AllowAllMessagesFilter = {
+  typeUrl: "/cosmwasm.wasm.v1.AllowAllMessagesFilter",
+
   encode(_: AllowAllMessagesFilter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -996,6 +1010,8 @@ function createBaseAcceptedMessageKeysFilter(): AcceptedMessageKeysFilter {
 }
 
 export const AcceptedMessageKeysFilter = {
+  typeUrl: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter",
+
   encode(message: AcceptedMessageKeysFilter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.keys) {
       writer.uint32(10).string(v!);
@@ -1085,6 +1101,8 @@ function createBaseAcceptedMessagesFilter(): AcceptedMessagesFilter {
 }
 
 export const AcceptedMessagesFilter = {
+  typeUrl: "/cosmwasm.wasm.v1.AcceptedMessagesFilter",
+
   encode(message: AcceptedMessagesFilter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.messages) {
       writer.uint32(10).bytes(v!);

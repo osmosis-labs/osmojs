@@ -146,6 +146,8 @@ function createBaseGenesisState(): GenesisState {
 }
 
 export const GenesisState = {
+  typeUrl: "/ibc.core.client.v1.GenesisState",
+
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.clients) {
       IdentifiedClientState.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -301,6 +303,8 @@ function createBaseGenesisMetadata(): GenesisMetadata {
 }
 
 export const GenesisMetadata = {
+  typeUrl: "/ibc.core.client.v1.GenesisMetadata",
+
   encode(message: GenesisMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -396,6 +400,8 @@ function createBaseIdentifiedGenesisMetadata(): IdentifiedGenesisMetadata {
 }
 
 export const IdentifiedGenesisMetadata = {
+  typeUrl: "/ibc.core.client.v1.IdentifiedGenesisMetadata",
+
   encode(message: IdentifiedGenesisMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
