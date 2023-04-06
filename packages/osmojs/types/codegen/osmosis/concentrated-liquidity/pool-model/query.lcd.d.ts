@@ -1,5 +1,5 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryPoolsRequest, QueryPoolsResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryLiquidityDepthsForRangeRequest, QueryLiquidityDepthsForRangeResponseSDKType, QueryUserPositionsRequest, QueryUserPositionsResponseSDKType, QueryTotalLiquidityForRangeRequest, QueryTotalLiquidityForRangeResponseSDKType, QueryClaimableFeesRequest, QueryClaimableFeesResponseSDKType, QueryPositionByIdRequest, QueryPositionByIdResponseSDKType } from "./query";
+import { QueryPoolsRequest, QueryPoolsResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryUserPositionsRequest, QueryUserPositionsResponseSDKType, QueryTotalLiquidityForRangeRequest, QueryTotalLiquidityForRangeResponseSDKType, QueryLiquidityNetInDirectionRequest, QueryLiquidityNetInDirectionResponseSDKType, QueryClaimableFeesRequest, QueryClaimableFeesResponseSDKType, QueryPositionByIdRequest, QueryPositionByIdResponseSDKType } from "./query";
 export declare class LCDQueryClient {
     req: LCDClient;
     constructor({ requestClient }: {
@@ -7,9 +7,9 @@ export declare class LCDQueryClient {
     });
     pools(params?: QueryPoolsRequest): Promise<QueryPoolsResponseSDKType>;
     params(_params?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    liquidityDepthsForRange(params: QueryLiquidityDepthsForRangeRequest): Promise<QueryLiquidityDepthsForRangeResponseSDKType>;
     userPositions(params: QueryUserPositionsRequest): Promise<QueryUserPositionsResponseSDKType>;
     totalLiquidityForRange(params: QueryTotalLiquidityForRangeRequest): Promise<QueryTotalLiquidityForRangeResponseSDKType>;
+    liquidityNetInDirection(params: QueryLiquidityNetInDirectionRequest): Promise<QueryLiquidityNetInDirectionResponseSDKType>;
     claimableFees(params: QueryClaimableFeesRequest): Promise<QueryClaimableFeesResponseSDKType>;
     positionById(params: QueryPositionByIdRequest): Promise<QueryPositionByIdResponseSDKType>;
 }

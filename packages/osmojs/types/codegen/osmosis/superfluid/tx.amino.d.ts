@@ -1,101 +1,38 @@
-import { AminoMsg } from "@cosmjs/amino";
 import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgSuperfluidUndelegateAndUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition } from "./tx";
-export interface AminoMsgSuperfluidDelegate extends AminoMsg {
-    type: "osmosis/superfluid-delegate";
-    value: {
-        sender: string;
-        lock_id: string;
-        val_addr: string;
-    };
-}
-export interface AminoMsgSuperfluidUndelegate extends AminoMsg {
-    type: "osmosis/superfluid-undelegate";
-    value: {
-        sender: string;
-        lock_id: string;
-    };
-}
-export interface AminoMsgSuperfluidUnbondLock extends AminoMsg {
-    type: "osmosis/superfluid-unbond-lock";
-    value: {
-        sender: string;
-        lock_id: string;
-    };
-}
-export interface AminoMsgSuperfluidUndelegateAndUnbondLock extends AminoMsg {
-    type: "osmosis/superfluid-undelegate-and-unbond-lock";
-    value: {
-        sender: string;
-        lock_id: string;
-        coin: {
-            denom: string;
-            amount: string;
-        };
-    };
-}
-export interface AminoMsgLockAndSuperfluidDelegate extends AminoMsg {
-    type: "osmosis/lock-and-superfluid-delegate";
-    value: {
-        sender: string;
-        coins: {
-            denom: string;
-            amount: string;
-        }[];
-        val_addr: string;
-    };
-}
-export interface AminoMsgUnPoolWhitelistedPool extends AminoMsg {
-    type: "osmosis/unpool-whitelisted-pool";
-    value: {
-        sender: string;
-        pool_id: string;
-    };
-}
-export interface AminoMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition extends AminoMsg {
-    type: "osmosis/unlock-and-migrate-shares-to-full-range-concentrated-position";
-    value: {
-        sender: string;
-        lock_id: string;
-        shares_to_migrate: {
-            denom: string;
-            amount: string;
-        };
-    };
-}
 export declare const AminoConverter: {
     "/osmosis.superfluid.MsgSuperfluidDelegate": {
         aminoType: string;
-        toAmino: ({ sender, lockId, valAddr }: MsgSuperfluidDelegate) => AminoMsgSuperfluidDelegate["value"];
-        fromAmino: ({ sender, lock_id, val_addr }: AminoMsgSuperfluidDelegate["value"]) => MsgSuperfluidDelegate;
+        toAmino: (message: MsgSuperfluidDelegate) => import("./tx").MsgSuperfluidDelegateAmino;
+        fromAmino: (object: import("./tx").MsgSuperfluidDelegateAmino) => MsgSuperfluidDelegate;
     };
     "/osmosis.superfluid.MsgSuperfluidUndelegate": {
         aminoType: string;
-        toAmino: ({ sender, lockId }: MsgSuperfluidUndelegate) => AminoMsgSuperfluidUndelegate["value"];
-        fromAmino: ({ sender, lock_id }: AminoMsgSuperfluidUndelegate["value"]) => MsgSuperfluidUndelegate;
+        toAmino: (message: MsgSuperfluidUndelegate) => import("./tx").MsgSuperfluidUndelegateAmino;
+        fromAmino: (object: import("./tx").MsgSuperfluidUndelegateAmino) => MsgSuperfluidUndelegate;
     };
     "/osmosis.superfluid.MsgSuperfluidUnbondLock": {
         aminoType: string;
-        toAmino: ({ sender, lockId }: MsgSuperfluidUnbondLock) => AminoMsgSuperfluidUnbondLock["value"];
-        fromAmino: ({ sender, lock_id }: AminoMsgSuperfluidUnbondLock["value"]) => MsgSuperfluidUnbondLock;
+        toAmino: (message: MsgSuperfluidUnbondLock) => import("./tx").MsgSuperfluidUnbondLockAmino;
+        fromAmino: (object: import("./tx").MsgSuperfluidUnbondLockAmino) => MsgSuperfluidUnbondLock;
     };
     "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock": {
         aminoType: string;
-        toAmino: ({ sender, lockId, coin }: MsgSuperfluidUndelegateAndUnbondLock) => AminoMsgSuperfluidUndelegateAndUnbondLock["value"];
-        fromAmino: ({ sender, lock_id, coin }: AminoMsgSuperfluidUndelegateAndUnbondLock["value"]) => MsgSuperfluidUndelegateAndUnbondLock;
+        toAmino: (message: MsgSuperfluidUndelegateAndUnbondLock) => import("./tx").MsgSuperfluidUndelegateAndUnbondLockAmino;
+        fromAmino: (object: import("./tx").MsgSuperfluidUndelegateAndUnbondLockAmino) => MsgSuperfluidUndelegateAndUnbondLock;
     };
     "/osmosis.superfluid.MsgLockAndSuperfluidDelegate": {
         aminoType: string;
-        toAmino: ({ sender, coins, valAddr }: MsgLockAndSuperfluidDelegate) => AminoMsgLockAndSuperfluidDelegate["value"];
-        fromAmino: ({ sender, coins, val_addr }: AminoMsgLockAndSuperfluidDelegate["value"]) => MsgLockAndSuperfluidDelegate;
+        toAmino: (message: MsgLockAndSuperfluidDelegate) => import("./tx").MsgLockAndSuperfluidDelegateAmino;
+        fromAmino: (object: import("./tx").MsgLockAndSuperfluidDelegateAmino) => MsgLockAndSuperfluidDelegate;
     };
     "/osmosis.superfluid.MsgUnPoolWhitelistedPool": {
         aminoType: string;
-        toAmino: ({ sender, poolId }: MsgUnPoolWhitelistedPool) => AminoMsgUnPoolWhitelistedPool["value"];
-        fromAmino: ({ sender, pool_id }: AminoMsgUnPoolWhitelistedPool["value"]) => MsgUnPoolWhitelistedPool;
+        toAmino: (message: MsgUnPoolWhitelistedPool) => import("./tx").MsgUnPoolWhitelistedPoolAmino;
+        fromAmino: (object: import("./tx").MsgUnPoolWhitelistedPoolAmino) => MsgUnPoolWhitelistedPool;
     };
     "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition": {
         aminoType: string;
-        toAmino: ({ sender, lockId, sharesToMigrate }: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition) => AminoMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition["value"];
-        fromAmino: ({ sender, lock_id, shares_to_migrate }: AminoMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition["value"]) => MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
+        toAmino: (message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition) => import("./tx").MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino;
+        fromAmino: (object: import("./tx").MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino) => MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
     };
 };

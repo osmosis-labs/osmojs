@@ -1,82 +1,28 @@
-import { AminoMsg } from "@cosmjs/amino";
 import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup, MsgForceUnlock } from "./tx";
-export interface AminoMsgLockTokens extends AminoMsg {
-    type: "osmosis/lockup/lock-tokens";
-    value: {
-        owner: string;
-        duration: {
-            seconds: string;
-            nanos: number;
-        };
-        coins: {
-            denom: string;
-            amount: string;
-        }[];
-    };
-}
-export interface AminoMsgBeginUnlockingAll extends AminoMsg {
-    type: "osmosis/lockup/begin-unlocking-all";
-    value: {
-        owner: string;
-    };
-}
-export interface AminoMsgBeginUnlocking extends AminoMsg {
-    type: "osmosis/lockup/begin-unlocking";
-    value: {
-        owner: string;
-        ID: string;
-        coins: {
-            denom: string;
-            amount: string;
-        }[];
-    };
-}
-export interface AminoMsgExtendLockup extends AminoMsg {
-    type: "osmosis/lockup/extend-lockup";
-    value: {
-        owner: string;
-        ID: string;
-        duration: {
-            seconds: string;
-            nanos: number;
-        };
-    };
-}
-export interface AminoMsgForceUnlock extends AminoMsg {
-    type: "osmosis/lockup/force-unlock";
-    value: {
-        owner: string;
-        ID: string;
-        coins: {
-            denom: string;
-            amount: string;
-        }[];
-    };
-}
 export declare const AminoConverter: {
     "/osmosis.lockup.MsgLockTokens": {
         aminoType: string;
-        toAmino: ({ owner, duration, coins }: MsgLockTokens) => AminoMsgLockTokens["value"];
-        fromAmino: ({ owner, duration, coins }: AminoMsgLockTokens["value"]) => MsgLockTokens;
+        toAmino: (message: MsgLockTokens) => import("./tx").MsgLockTokensAmino;
+        fromAmino: (object: import("./tx").MsgLockTokensAmino) => MsgLockTokens;
     };
     "/osmosis.lockup.MsgBeginUnlockingAll": {
         aminoType: string;
-        toAmino: ({ owner }: MsgBeginUnlockingAll) => AminoMsgBeginUnlockingAll["value"];
-        fromAmino: ({ owner }: AminoMsgBeginUnlockingAll["value"]) => MsgBeginUnlockingAll;
+        toAmino: (message: MsgBeginUnlockingAll) => import("./tx").MsgBeginUnlockingAllAmino;
+        fromAmino: (object: import("./tx").MsgBeginUnlockingAllAmino) => MsgBeginUnlockingAll;
     };
     "/osmosis.lockup.MsgBeginUnlocking": {
         aminoType: string;
-        toAmino: ({ owner, ID, coins }: MsgBeginUnlocking) => AminoMsgBeginUnlocking["value"];
-        fromAmino: ({ owner, ID, coins }: AminoMsgBeginUnlocking["value"]) => MsgBeginUnlocking;
+        toAmino: (message: MsgBeginUnlocking) => import("./tx").MsgBeginUnlockingAmino;
+        fromAmino: (object: import("./tx").MsgBeginUnlockingAmino) => MsgBeginUnlocking;
     };
     "/osmosis.lockup.MsgExtendLockup": {
         aminoType: string;
-        toAmino: ({ owner, ID, duration }: MsgExtendLockup) => AminoMsgExtendLockup["value"];
-        fromAmino: ({ owner, ID, duration }: AminoMsgExtendLockup["value"]) => MsgExtendLockup;
+        toAmino: (message: MsgExtendLockup) => import("./tx").MsgExtendLockupAmino;
+        fromAmino: (object: import("./tx").MsgExtendLockupAmino) => MsgExtendLockup;
     };
     "/osmosis.lockup.MsgForceUnlock": {
         aminoType: string;
-        toAmino: ({ owner, ID, coins }: MsgForceUnlock) => AminoMsgForceUnlock["value"];
-        fromAmino: ({ owner, ID, coins }: AminoMsgForceUnlock["value"]) => MsgForceUnlock;
+        toAmino: (message: MsgForceUnlock) => import("./tx").MsgForceUnlockAmino;
+        fromAmino: (object: import("./tx").MsgForceUnlockAmino) => MsgForceUnlock;
     };
 };

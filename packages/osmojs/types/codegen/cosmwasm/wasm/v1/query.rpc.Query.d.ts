@@ -1,6 +1,6 @@
 import { Rpc } from "../../../helpers";
 import { QueryClient } from "@cosmjs/stargate";
-import { QueryContractInfoRequest, QueryContractInfoResponse, QueryContractHistoryRequest, QueryContractHistoryResponse, QueryContractsByCodeRequest, QueryContractsByCodeResponse, QueryAllContractStateRequest, QueryAllContractStateResponse, QueryRawContractStateRequest, QueryRawContractStateResponse, QuerySmartContractStateRequest, QuerySmartContractStateResponse, QueryCodeRequest, QueryCodeResponse, QueryCodesRequest, QueryCodesResponse, QueryPinnedCodesRequest, QueryPinnedCodesResponse } from "./query";
+import { QueryContractInfoRequest, QueryContractInfoResponse, QueryContractHistoryRequest, QueryContractHistoryResponse, QueryContractsByCodeRequest, QueryContractsByCodeResponse, QueryAllContractStateRequest, QueryAllContractStateResponse, QueryRawContractStateRequest, QueryRawContractStateResponse, QuerySmartContractStateRequest, QuerySmartContractStateResponse, QueryCodeRequest, QueryCodeResponse, QueryCodesRequest, QueryCodesResponse, QueryPinnedCodesRequest, QueryPinnedCodesResponse, QueryParamsRequest, QueryParamsResponse, QueryContractsByCreatorRequest, QueryContractsByCreatorResponse } from "./query";
 /** Query provides defines the gRPC querier service */
 export interface Query {
     /** ContractInfo gets the contract meta data */
@@ -21,6 +21,10 @@ export interface Query {
     codes(request?: QueryCodesRequest): Promise<QueryCodesResponse>;
     /** PinnedCodes gets the pinned code ids */
     pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponse>;
+    /** Params gets the module params */
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+    /** ContractsByCreator gets the contracts by creator */
+    contractsByCreator(request: QueryContractsByCreatorRequest): Promise<QueryContractsByCreatorResponse>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
@@ -34,6 +38,8 @@ export declare class QueryClientImpl implements Query {
     code(request: QueryCodeRequest): Promise<QueryCodeResponse>;
     codes(request?: QueryCodesRequest): Promise<QueryCodesResponse>;
     pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponse>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+    contractsByCreator(request: QueryContractsByCreatorRequest): Promise<QueryContractsByCreatorResponse>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponse>;
@@ -45,4 +51,6 @@ export declare const createRpcQueryExtension: (base: QueryClient) => {
     code(request: QueryCodeRequest): Promise<QueryCodeResponse>;
     codes(request?: QueryCodesRequest): Promise<QueryCodesResponse>;
     pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponse>;
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+    contractsByCreator(request: QueryContractsByCreatorRequest): Promise<QueryContractsByCreatorResponse>;
 };

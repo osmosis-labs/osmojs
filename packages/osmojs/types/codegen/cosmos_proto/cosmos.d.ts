@@ -5,12 +5,8 @@ export declare enum ScalarType {
     SCALAR_TYPE_BYTES = 2,
     UNRECOGNIZED = -1
 }
-export declare enum ScalarTypeSDKType {
-    SCALAR_TYPE_UNSPECIFIED = 0,
-    SCALAR_TYPE_STRING = 1,
-    SCALAR_TYPE_BYTES = 2,
-    UNRECOGNIZED = -1
-}
+export declare const ScalarTypeSDKType: typeof ScalarType;
+export declare const ScalarTypeAmino: typeof ScalarType;
 export declare function scalarTypeFromJSON(object: any): ScalarType;
 export declare function scalarTypeToJSON(object: ScalarType): string;
 /**
@@ -31,11 +27,15 @@ export interface InterfaceDescriptor {
      */
     description: string;
 }
+export interface InterfaceDescriptorProtoMsg {
+    typeUrl: "/cosmos_proto.InterfaceDescriptor";
+    value: Uint8Array;
+}
 /**
  * InterfaceDescriptor describes an interface type to be used with
  * accepts_interface and implements_interface and declared by declare_interface.
  */
-export interface InterfaceDescriptorSDKType {
+export interface InterfaceDescriptorAmino {
     /**
      * name is the name of the interface. It should be a short-name (without
      * a period) such that the fully qualified name of the interface will be
@@ -47,6 +47,18 @@ export interface InterfaceDescriptorSDKType {
      * description is a human-readable description of the interface and its
      * purpose.
      */
+    description: string;
+}
+export interface InterfaceDescriptorAminoMsg {
+    type: "/cosmos_proto.InterfaceDescriptor";
+    value: InterfaceDescriptorAmino;
+}
+/**
+ * InterfaceDescriptor describes an interface type to be used with
+ * accepts_interface and implements_interface and declared by declare_interface.
+ */
+export interface InterfaceDescriptorSDKType {
+    name: string;
     description: string;
 }
 /**
@@ -80,6 +92,10 @@ export interface ScalarDescriptor {
      */
     fieldType: ScalarType[];
 }
+export interface ScalarDescriptorProtoMsg {
+    typeUrl: "/cosmos_proto.ScalarDescriptor";
+    value: Uint8Array;
+}
 /**
  * ScalarDescriptor describes an scalar type to be used with
  * the scalar field option and declared by declare_scalar.
@@ -89,7 +105,7 @@ export interface ScalarDescriptor {
  * valid syntactical representation for a given semantic meaning,
  * i.e. the encoding should be deterministic.
  */
-export interface ScalarDescriptorSDKType {
+export interface ScalarDescriptorAmino {
     /**
      * name is the name of the scalar. It should be a short-name (without
      * a period) such that the fully qualified name of the scalar will be
@@ -109,15 +125,45 @@ export interface ScalarDescriptorSDKType {
      * encoding standards and simple and clear. Currently only string and
      * bytes fields are supported for scalars.
      */
-    field_type: ScalarTypeSDKType[];
+    field_type: ScalarType[];
+}
+export interface ScalarDescriptorAminoMsg {
+    type: "/cosmos_proto.ScalarDescriptor";
+    value: ScalarDescriptorAmino;
+}
+/**
+ * ScalarDescriptor describes an scalar type to be used with
+ * the scalar field option and declared by declare_scalar.
+ * Scalars extend simple protobuf built-in types with additional
+ * syntax and semantics, for instance to represent big integers.
+ * Scalars should ideally define an encoding such that there is only one
+ * valid syntactical representation for a given semantic meaning,
+ * i.e. the encoding should be deterministic.
+ */
+export interface ScalarDescriptorSDKType {
+    name: string;
+    description: string;
+    field_type: ScalarType[];
 }
 export declare const InterfaceDescriptor: {
     encode(message: InterfaceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceDescriptor;
     fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor;
+    fromAmino(object: InterfaceDescriptorAmino): InterfaceDescriptor;
+    toAmino(message: InterfaceDescriptor): InterfaceDescriptorAmino;
+    fromAminoMsg(object: InterfaceDescriptorAminoMsg): InterfaceDescriptor;
+    fromProtoMsg(message: InterfaceDescriptorProtoMsg): InterfaceDescriptor;
+    toProto(message: InterfaceDescriptor): Uint8Array;
+    toProtoMsg(message: InterfaceDescriptor): InterfaceDescriptorProtoMsg;
 };
 export declare const ScalarDescriptor: {
     encode(message: ScalarDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ScalarDescriptor;
     fromPartial(object: Partial<ScalarDescriptor>): ScalarDescriptor;
+    fromAmino(object: ScalarDescriptorAmino): ScalarDescriptor;
+    toAmino(message: ScalarDescriptor): ScalarDescriptorAmino;
+    fromAminoMsg(object: ScalarDescriptorAminoMsg): ScalarDescriptor;
+    fromProtoMsg(message: ScalarDescriptorProtoMsg): ScalarDescriptor;
+    toProto(message: ScalarDescriptor): Uint8Array;
+    toProtoMsg(message: ScalarDescriptor): ScalarDescriptorProtoMsg;
 };
