@@ -1,9 +1,22 @@
-import { GrantAuthorization, GrantAuthorizationSDKType } from "./authz";
+import { GrantAuthorization, GrantAuthorizationAmino, GrantAuthorizationSDKType } from "./authz";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the authz module's genesis state. */
 
 export interface GenesisState {
   authorization: GrantAuthorization[];
+}
+export interface GenesisStateProtoMsg {
+  typeUrl: "/cosmos.authz.v1beta1.GenesisState";
+  value: Uint8Array;
+}
+/** GenesisState defines the authz module's genesis state. */
+
+export interface GenesisStateAmino {
+  authorization: GrantAuthorizationAmino[];
+}
+export interface GenesisStateAminoMsg {
+  type: "cosmos-sdk/GenesisState";
+  value: GenesisStateAmino;
 }
 /** GenesisState defines the authz module's genesis state. */
 
@@ -52,6 +65,50 @@ export const GenesisState = {
     const message = createBaseGenesisState();
     message.authorization = object.authorization?.map(e => GrantAuthorization.fromPartial(e)) || [];
     return message;
+  },
+
+  fromAmino(object: GenesisStateAmino): GenesisState {
+    return {
+      authorization: Array.isArray(object?.authorization) ? object.authorization.map((e: any) => GrantAuthorization.fromAmino(e)) : []
+    };
+  },
+
+  toAmino(message: GenesisState): GenesisStateAmino {
+    const obj: any = {};
+
+    if (message.authorization) {
+      obj.authorization = message.authorization.map(e => e ? GrantAuthorization.toAmino(e) : undefined);
+    } else {
+      obj.authorization = [];
+    }
+
+    return obj;
+  },
+
+  fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
+    return GenesisState.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
+    return {
+      type: "cosmos-sdk/GenesisState",
+      value: GenesisState.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
+    return GenesisState.decode(message.value);
+  },
+
+  toProto(message: GenesisState): Uint8Array {
+    return GenesisState.encode(message).finish();
+  },
+
+  toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
+    return {
+      typeUrl: "/cosmos.authz.v1beta1.GenesisState",
+      value: GenesisState.encode(message).finish()
+    };
   }
 
 };

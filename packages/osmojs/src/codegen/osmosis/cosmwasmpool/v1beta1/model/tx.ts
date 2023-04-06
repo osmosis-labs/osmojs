@@ -1,11 +1,26 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** ===================== MsgCreateCosmwasmPool */
 
 export interface MsgCreateCosmWasmPool {
   codeId: Long;
   instantiateMsg: Uint8Array;
   sender: string;
+}
+export interface MsgCreateCosmWasmPoolProtoMsg {
+  typeUrl: "/osmosis.cosmwasmpool.v1beta1.MsgCreateCosmWasmPool";
+  value: Uint8Array;
+}
+/** ===================== MsgCreateCosmwasmPool */
+
+export interface MsgCreateCosmWasmPoolAmino {
+  code_id: string;
+  instantiate_msg: Uint8Array;
+  sender: string;
+}
+export interface MsgCreateCosmWasmPoolAminoMsg {
+  type: "osmosis/cosmwasmpool/create-cosm-wasm-pool";
+  value: MsgCreateCosmWasmPoolAmino;
 }
 /** ===================== MsgCreateCosmwasmPool */
 
@@ -18,6 +33,19 @@ export interface MsgCreateCosmWasmPoolSDKType {
 
 export interface MsgCreateCosmWasmPoolResponse {
   poolId: Long;
+}
+export interface MsgCreateCosmWasmPoolResponseProtoMsg {
+  typeUrl: "/osmosis.cosmwasmpool.v1beta1.MsgCreateCosmWasmPoolResponse";
+  value: Uint8Array;
+}
+/** Returns a unique poolID to identify the pool with. */
+
+export interface MsgCreateCosmWasmPoolResponseAmino {
+  pool_id: string;
+}
+export interface MsgCreateCosmWasmPoolResponseAminoMsg {
+  type: "osmosis/cosmwasmpool/create-cosm-wasm-pool-response";
+  value: MsgCreateCosmWasmPoolResponseAmino;
 }
 /** Returns a unique poolID to identify the pool with. */
 
@@ -86,6 +114,48 @@ export const MsgCreateCosmWasmPool = {
     message.instantiateMsg = object.instantiateMsg ?? new Uint8Array();
     message.sender = object.sender ?? "";
     return message;
+  },
+
+  fromAmino(object: MsgCreateCosmWasmPoolAmino): MsgCreateCosmWasmPool {
+    return {
+      codeId: Long.fromString(object.code_id),
+      instantiateMsg: object.instantiate_msg,
+      sender: object.sender
+    };
+  },
+
+  toAmino(message: MsgCreateCosmWasmPool): MsgCreateCosmWasmPoolAmino {
+    const obj: any = {};
+    obj.code_id = message.codeId ? message.codeId.toString() : undefined;
+    obj.instantiate_msg = message.instantiateMsg;
+    obj.sender = message.sender;
+    return obj;
+  },
+
+  fromAminoMsg(object: MsgCreateCosmWasmPoolAminoMsg): MsgCreateCosmWasmPool {
+    return MsgCreateCosmWasmPool.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: MsgCreateCosmWasmPool): MsgCreateCosmWasmPoolAminoMsg {
+    return {
+      type: "osmosis/cosmwasmpool/create-cosm-wasm-pool",
+      value: MsgCreateCosmWasmPool.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: MsgCreateCosmWasmPoolProtoMsg): MsgCreateCosmWasmPool {
+    return MsgCreateCosmWasmPool.decode(message.value);
+  },
+
+  toProto(message: MsgCreateCosmWasmPool): Uint8Array {
+    return MsgCreateCosmWasmPool.encode(message).finish();
+  },
+
+  toProtoMsg(message: MsgCreateCosmWasmPool): MsgCreateCosmWasmPoolProtoMsg {
+    return {
+      typeUrl: "/osmosis.cosmwasmpool.v1beta1.MsgCreateCosmWasmPool",
+      value: MsgCreateCosmWasmPool.encode(message).finish()
+    };
   }
 
 };
@@ -131,6 +201,44 @@ export const MsgCreateCosmWasmPoolResponse = {
     const message = createBaseMsgCreateCosmWasmPoolResponse();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     return message;
+  },
+
+  fromAmino(object: MsgCreateCosmWasmPoolResponseAmino): MsgCreateCosmWasmPoolResponse {
+    return {
+      poolId: Long.fromString(object.pool_id)
+    };
+  },
+
+  toAmino(message: MsgCreateCosmWasmPoolResponse): MsgCreateCosmWasmPoolResponseAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: MsgCreateCosmWasmPoolResponseAminoMsg): MsgCreateCosmWasmPoolResponse {
+    return MsgCreateCosmWasmPoolResponse.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: MsgCreateCosmWasmPoolResponse): MsgCreateCosmWasmPoolResponseAminoMsg {
+    return {
+      type: "osmosis/cosmwasmpool/create-cosm-wasm-pool-response",
+      value: MsgCreateCosmWasmPoolResponse.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: MsgCreateCosmWasmPoolResponseProtoMsg): MsgCreateCosmWasmPoolResponse {
+    return MsgCreateCosmWasmPoolResponse.decode(message.value);
+  },
+
+  toProto(message: MsgCreateCosmWasmPoolResponse): Uint8Array {
+    return MsgCreateCosmWasmPoolResponse.encode(message).finish();
+  },
+
+  toProtoMsg(message: MsgCreateCosmWasmPoolResponse): MsgCreateCosmWasmPoolResponseProtoMsg {
+    return {
+      typeUrl: "/osmosis.cosmwasmpool.v1beta1.MsgCreateCosmWasmPoolResponse",
+      value: MsgCreateCosmWasmPoolResponse.encode(message).finish()
+    };
   }
 
 };

@@ -1,8 +1,8 @@
-import { Params, ParamsSDKType } from "./params";
-import { TokenPairArbRoutes, TokenPairArbRoutesSDKType, BaseDenom, BaseDenomSDKType, PoolWeights, PoolWeightsSDKType } from "./protorev";
-import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType } from "./protorev";
+import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the protorev module's genesis state. */
 
 export interface GenesisState {
@@ -51,35 +51,39 @@ export interface GenesisState {
 
   pointCountForBlock: Long;
 }
+export interface GenesisStateProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.GenesisState";
+  value: Uint8Array;
+}
 /** GenesisState defines the protorev module's genesis state. */
 
-export interface GenesisStateSDKType {
+export interface GenesisStateAmino {
   /** Parameters for the protorev module. */
-  params?: ParamsSDKType;
+  params?: ParamsAmino;
   /** Token pair arb routes for the protorev module (hot routes). */
 
-  token_pair_arb_routes: TokenPairArbRoutesSDKType[];
+  token_pair_arb_routes: TokenPairArbRoutesAmino[];
   /**
    * The base denominations being used to create cyclic arbitrage routes via the
    * highest liquidity method.
    */
 
-  base_denoms: BaseDenomSDKType[];
+  base_denoms: BaseDenomAmino[];
   /**
    * The pool weights that are being used to calculate the weight (compute cost)
    * of each route.
    */
 
-  pool_weights?: PoolWeightsSDKType;
+  pool_weights?: PoolWeightsAmino;
   /** The number of days since module genesis. */
 
-  days_since_module_genesis: Long;
+  days_since_module_genesis: string;
   /** The fees the developer account has accumulated over time. */
 
-  developer_fees: CoinSDKType[];
+  developer_fees: CoinAmino[];
   /** The latest block height that the module has processed. */
 
-  latest_block_height: Long;
+  latest_block_height: string;
   /** The developer account address of the module. */
 
   developer_address: string;
@@ -88,15 +92,34 @@ export interface GenesisStateSDKType {
    * that protorev can use per block.
    */
 
-  max_pool_points_per_block: Long;
+  max_pool_points_per_block: string;
   /**
    * Max pool points per tx i.e. the maximum compute time (in ms) that
    * protorev can use per tx.
    */
 
-  max_pool_points_per_tx: Long;
+  max_pool_points_per_tx: string;
   /** The number of pool points that have been consumed in the current block. */
 
+  point_count_for_block: string;
+}
+export interface GenesisStateAminoMsg {
+  type: "osmosis/protorev/genesis-state";
+  value: GenesisStateAmino;
+}
+/** GenesisState defines the protorev module's genesis state. */
+
+export interface GenesisStateSDKType {
+  params?: ParamsSDKType;
+  token_pair_arb_routes: TokenPairArbRoutesSDKType[];
+  base_denoms: BaseDenomSDKType[];
+  pool_weights?: PoolWeightsSDKType;
+  days_since_module_genesis: Long;
+  developer_fees: CoinSDKType[];
+  latest_block_height: Long;
+  developer_address: string;
+  max_pool_points_per_block: Long;
+  max_pool_points_per_tx: Long;
   point_count_for_block: Long;
 }
 
@@ -241,6 +264,81 @@ export const GenesisState = {
     message.maxPoolPointsPerTx = object.maxPoolPointsPerTx !== undefined && object.maxPoolPointsPerTx !== null ? Long.fromValue(object.maxPoolPointsPerTx) : Long.UZERO;
     message.pointCountForBlock = object.pointCountForBlock !== undefined && object.pointCountForBlock !== null ? Long.fromValue(object.pointCountForBlock) : Long.UZERO;
     return message;
+  },
+
+  fromAmino(object: GenesisStateAmino): GenesisState {
+    return {
+      params: object?.params ? Params.fromAmino(object.params) : undefined,
+      tokenPairArbRoutes: Array.isArray(object?.token_pair_arb_routes) ? object.token_pair_arb_routes.map((e: any) => TokenPairArbRoutes.fromAmino(e)) : [],
+      baseDenoms: Array.isArray(object?.base_denoms) ? object.base_denoms.map((e: any) => BaseDenom.fromAmino(e)) : [],
+      poolWeights: object?.pool_weights ? PoolWeights.fromAmino(object.pool_weights) : undefined,
+      daysSinceModuleGenesis: Long.fromString(object.days_since_module_genesis),
+      developerFees: Array.isArray(object?.developer_fees) ? object.developer_fees.map((e: any) => Coin.fromAmino(e)) : [],
+      latestBlockHeight: Long.fromString(object.latest_block_height),
+      developerAddress: object.developer_address,
+      maxPoolPointsPerBlock: Long.fromString(object.max_pool_points_per_block),
+      maxPoolPointsPerTx: Long.fromString(object.max_pool_points_per_tx),
+      pointCountForBlock: Long.fromString(object.point_count_for_block)
+    };
+  },
+
+  toAmino(message: GenesisState): GenesisStateAmino {
+    const obj: any = {};
+    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+
+    if (message.tokenPairArbRoutes) {
+      obj.token_pair_arb_routes = message.tokenPairArbRoutes.map(e => e ? TokenPairArbRoutes.toAmino(e) : undefined);
+    } else {
+      obj.token_pair_arb_routes = [];
+    }
+
+    if (message.baseDenoms) {
+      obj.base_denoms = message.baseDenoms.map(e => e ? BaseDenom.toAmino(e) : undefined);
+    } else {
+      obj.base_denoms = [];
+    }
+
+    obj.pool_weights = message.poolWeights ? PoolWeights.toAmino(message.poolWeights) : undefined;
+    obj.days_since_module_genesis = message.daysSinceModuleGenesis ? message.daysSinceModuleGenesis.toString() : undefined;
+
+    if (message.developerFees) {
+      obj.developer_fees = message.developerFees.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.developer_fees = [];
+    }
+
+    obj.latest_block_height = message.latestBlockHeight ? message.latestBlockHeight.toString() : undefined;
+    obj.developer_address = message.developerAddress;
+    obj.max_pool_points_per_block = message.maxPoolPointsPerBlock ? message.maxPoolPointsPerBlock.toString() : undefined;
+    obj.max_pool_points_per_tx = message.maxPoolPointsPerTx ? message.maxPoolPointsPerTx.toString() : undefined;
+    obj.point_count_for_block = message.pointCountForBlock ? message.pointCountForBlock.toString() : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
+    return GenesisState.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
+    return {
+      type: "osmosis/protorev/genesis-state",
+      value: GenesisState.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
+    return GenesisState.decode(message.value);
+  },
+
+  toProto(message: GenesisState): Uint8Array {
+    return GenesisState.encode(message).finish();
+  },
+
+  toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
+    return {
+      typeUrl: "/osmosis.protorev.v1beta1.GenesisState",
+      value: GenesisState.encode(message).finish()
+    };
   }
 
 };

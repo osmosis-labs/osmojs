@@ -1,8 +1,20 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface BitArray {
   bits: Long;
   elems: Long[];
+}
+export interface BitArrayProtoMsg {
+  typeUrl: "/tendermint.libs.bits.BitArray";
+  value: Uint8Array;
+}
+export interface BitArrayAmino {
+  bits: string;
+  elems: string[];
+}
+export interface BitArrayAminoMsg {
+  type: "/tendermint.libs.bits.BitArray";
+  value: BitArrayAmino;
 }
 export interface BitArraySDKType {
   bits: Long;
@@ -72,6 +84,45 @@ export const BitArray = {
     message.bits = object.bits !== undefined && object.bits !== null ? Long.fromValue(object.bits) : Long.ZERO;
     message.elems = object.elems?.map(e => Long.fromValue(e)) || [];
     return message;
+  },
+
+  fromAmino(object: BitArrayAmino): BitArray {
+    return {
+      bits: Long.fromString(object.bits),
+      elems: Array.isArray(object?.elems) ? object.elems.map((e: any) => e) : []
+    };
+  },
+
+  toAmino(message: BitArray): BitArrayAmino {
+    const obj: any = {};
+    obj.bits = message.bits ? message.bits.toString() : undefined;
+
+    if (message.elems) {
+      obj.elems = message.elems.map(e => e);
+    } else {
+      obj.elems = [];
+    }
+
+    return obj;
+  },
+
+  fromAminoMsg(object: BitArrayAminoMsg): BitArray {
+    return BitArray.fromAmino(object.value);
+  },
+
+  fromProtoMsg(message: BitArrayProtoMsg): BitArray {
+    return BitArray.decode(message.value);
+  },
+
+  toProto(message: BitArray): Uint8Array {
+    return BitArray.encode(message).finish();
+  },
+
+  toProtoMsg(message: BitArray): BitArrayProtoMsg {
+    return {
+      typeUrl: "/tendermint.libs.bits.BitArray",
+      value: BitArray.encode(message).finish()
+    };
   }
 
 };

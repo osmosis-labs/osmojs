@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryContractInfoRequest, QueryContractInfoResponse, QueryContractHistoryRequest, QueryContractHistoryResponse, QueryContractsByCodeRequest, QueryContractsByCodeResponse, QueryAllContractStateRequest, QueryAllContractStateResponse, QueryRawContractStateRequest, QueryRawContractStateResponse, QuerySmartContractStateRequest, QuerySmartContractStateResponse, QueryCodeRequest, QueryCodeResponse, QueryCodesRequest, QueryCodesResponse, QueryPinnedCodesRequest, QueryPinnedCodesResponse } from "./query";
+import { QueryContractInfoRequest, QueryContractInfoResponse, QueryContractHistoryRequest, QueryContractHistoryResponse, QueryContractsByCodeRequest, QueryContractsByCodeResponse, QueryAllContractStateRequest, QueryAllContractStateResponse, QueryRawContractStateRequest, QueryRawContractStateResponse, QuerySmartContractStateRequest, QuerySmartContractStateResponse, QueryCodeRequest, QueryCodeResponse, QueryCodesRequest, QueryCodesResponse, QueryPinnedCodesRequest, QueryPinnedCodesResponse, QueryParamsRequest, QueryParamsResponse, QueryContractsByCreatorRequest, QueryContractsByCreatorResponse } from "./query";
 /** Query provides defines the gRPC querier service */
 
 export interface Query {
@@ -31,6 +31,12 @@ export interface Query {
   /** PinnedCodes gets the pinned code ids */
 
   pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponse>;
+  /** Params gets the module params */
+
+  params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+  /** ContractsByCreator gets the contracts by creator */
+
+  contractsByCreator(request: QueryContractsByCreatorRequest): Promise<QueryContractsByCreatorResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -46,6 +52,8 @@ export class QueryClientImpl implements Query {
     this.code = this.code.bind(this);
     this.codes = this.codes.bind(this);
     this.pinnedCodes = this.pinnedCodes.bind(this);
+    this.params = this.params.bind(this);
+    this.contractsByCreator = this.contractsByCreator.bind(this);
   }
 
   contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponse> {
@@ -106,6 +114,18 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryPinnedCodesResponse.decode(new _m0.Reader(data)));
   }
 
+  params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
+    const data = QueryParamsRequest.encode(request).finish();
+    const promise = this.rpc.request("cosmwasm.wasm.v1.Query", "Params", data);
+    return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
+  }
+
+  contractsByCreator(request: QueryContractsByCreatorRequest): Promise<QueryContractsByCreatorResponse> {
+    const data = QueryContractsByCreatorRequest.encode(request).finish();
+    const promise = this.rpc.request("cosmwasm.wasm.v1.Query", "ContractsByCreator", data);
+    return promise.then(data => QueryContractsByCreatorResponse.decode(new _m0.Reader(data)));
+  }
+
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -145,6 +165,14 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponse> {
       return queryService.pinnedCodes(request);
+    },
+
+    params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
+      return queryService.params(request);
+    },
+
+    contractsByCreator(request: QueryContractsByCreatorRequest): Promise<QueryContractsByCreatorResponse> {
+      return queryService.contractsByCreator(request);
     }
 
   };

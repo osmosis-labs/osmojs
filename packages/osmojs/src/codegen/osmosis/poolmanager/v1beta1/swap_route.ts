@@ -1,8 +1,20 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface SwapAmountInRoute {
   poolId: Long;
   tokenOutDenom: string;
+}
+export interface SwapAmountInRouteProtoMsg {
+  typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountInRoute";
+  value: Uint8Array;
+}
+export interface SwapAmountInRouteAmino {
+  pool_id: string;
+  token_out_denom: string;
+}
+export interface SwapAmountInRouteAminoMsg {
+  type: "osmosis/poolmanager/swap-amount-in-route";
+  value: SwapAmountInRouteAmino;
 }
 export interface SwapAmountInRouteSDKType {
   pool_id: Long;
@@ -11,6 +23,18 @@ export interface SwapAmountInRouteSDKType {
 export interface SwapAmountOutRoute {
   poolId: Long;
   tokenInDenom: string;
+}
+export interface SwapAmountOutRouteProtoMsg {
+  typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountOutRoute";
+  value: Uint8Array;
+}
+export interface SwapAmountOutRouteAmino {
+  pool_id: string;
+  token_in_denom: string;
+}
+export interface SwapAmountOutRouteAminoMsg {
+  type: "osmosis/poolmanager/swap-amount-out-route";
+  value: SwapAmountOutRouteAmino;
 }
 export interface SwapAmountOutRouteSDKType {
   pool_id: Long;
@@ -68,6 +92,46 @@ export const SwapAmountInRoute = {
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.tokenOutDenom = object.tokenOutDenom ?? "";
     return message;
+  },
+
+  fromAmino(object: SwapAmountInRouteAmino): SwapAmountInRoute {
+    return {
+      poolId: Long.fromString(object.pool_id),
+      tokenOutDenom: object.token_out_denom
+    };
+  },
+
+  toAmino(message: SwapAmountInRoute): SwapAmountInRouteAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
+    obj.token_out_denom = message.tokenOutDenom;
+    return obj;
+  },
+
+  fromAminoMsg(object: SwapAmountInRouteAminoMsg): SwapAmountInRoute {
+    return SwapAmountInRoute.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: SwapAmountInRoute): SwapAmountInRouteAminoMsg {
+    return {
+      type: "osmosis/poolmanager/swap-amount-in-route",
+      value: SwapAmountInRoute.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: SwapAmountInRouteProtoMsg): SwapAmountInRoute {
+    return SwapAmountInRoute.decode(message.value);
+  },
+
+  toProto(message: SwapAmountInRoute): Uint8Array {
+    return SwapAmountInRoute.encode(message).finish();
+  },
+
+  toProtoMsg(message: SwapAmountInRoute): SwapAmountInRouteProtoMsg {
+    return {
+      typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountInRoute",
+      value: SwapAmountInRoute.encode(message).finish()
+    };
   }
 
 };
@@ -123,6 +187,46 @@ export const SwapAmountOutRoute = {
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.tokenInDenom = object.tokenInDenom ?? "";
     return message;
+  },
+
+  fromAmino(object: SwapAmountOutRouteAmino): SwapAmountOutRoute {
+    return {
+      poolId: Long.fromString(object.pool_id),
+      tokenInDenom: object.token_in_denom
+    };
+  },
+
+  toAmino(message: SwapAmountOutRoute): SwapAmountOutRouteAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
+    obj.token_in_denom = message.tokenInDenom;
+    return obj;
+  },
+
+  fromAminoMsg(object: SwapAmountOutRouteAminoMsg): SwapAmountOutRoute {
+    return SwapAmountOutRoute.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: SwapAmountOutRoute): SwapAmountOutRouteAminoMsg {
+    return {
+      type: "osmosis/poolmanager/swap-amount-out-route",
+      value: SwapAmountOutRoute.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: SwapAmountOutRouteProtoMsg): SwapAmountOutRoute {
+    return SwapAmountOutRoute.decode(message.value);
+  },
+
+  toProto(message: SwapAmountOutRoute): Uint8Array {
+    return SwapAmountOutRoute.encode(message).finish();
+  },
+
+  toProtoMsg(message: SwapAmountOutRoute): SwapAmountOutRouteProtoMsg {
+    return {
+      typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountOutRoute",
+      value: SwapAmountOutRoute.encode(message).finish()
+    };
   }
 
 };

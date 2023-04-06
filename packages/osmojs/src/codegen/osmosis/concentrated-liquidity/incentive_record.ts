@@ -1,7 +1,7 @@
-import { Duration, DurationSDKType } from "../../google/protobuf/duration";
+import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import * as _m0 from "protobufjs/minimal";
 import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * IncentiveRecord is the high-level struct we use to deal with an independent
  * incentive being distributed on a pool. Note that PoolId, Denom, and MinUptime
@@ -35,6 +35,10 @@ export interface IncentiveRecord {
 
   minUptime?: Duration;
 }
+export interface IncentiveRecordProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecord";
+  value: Uint8Array;
+}
 /**
  * IncentiveRecord is the high-level struct we use to deal with an independent
  * incentive being distributed on a pool. Note that PoolId, Denom, and MinUptime
@@ -42,8 +46,8 @@ export interface IncentiveRecord {
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 
-export interface IncentiveRecordSDKType {
-  pool_id: Long;
+export interface IncentiveRecordAmino {
+  pool_id: string;
   /**
    * incentive_denom is the denom of the token being distributed as part of this
    * incentive record
@@ -59,13 +63,31 @@ export interface IncentiveRecordSDKType {
   incentive_creator_addr: string;
   /** incentive record body holds necessary */
 
-  incentive_record_body?: IncentiveRecordBodySDKType;
+  incentive_record_body?: IncentiveRecordBodyAmino;
   /**
    * min_uptime is the minimum uptime required for liquidity to qualify for this
    * incentive. It should be always be one of the supported uptimes in
    * types.SupportedUptimes
    */
 
+  min_uptime?: DurationAmino;
+}
+export interface IncentiveRecordAminoMsg {
+  type: "osmosis/concentratedliquidity/incentive-record";
+  value: IncentiveRecordAmino;
+}
+/**
+ * IncentiveRecord is the high-level struct we use to deal with an independent
+ * incentive being distributed on a pool. Note that PoolId, Denom, and MinUptime
+ * are included in the key so we avoid storing them in state, hence the
+ * distinction between IncentiveRecord and IncentiveRecordBody.
+ */
+
+export interface IncentiveRecordSDKType {
+  pool_id: Long;
+  incentive_denom: string;
+  incentive_creator_addr: string;
+  incentive_record_body?: IncentiveRecordBodySDKType;
   min_uptime?: DurationSDKType;
 }
 /**
@@ -83,12 +105,16 @@ export interface IncentiveRecordBody {
 
   startTime?: Date;
 }
+export interface IncentiveRecordBodyProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecordBody";
+  value: Uint8Array;
+}
 /**
  * IncentiveRecordBody represents the body stored in state for each individual
  * record.
  */
 
-export interface IncentiveRecordBodySDKType {
+export interface IncentiveRecordBodyAmino {
   /** remaining_amount is the total amount of incentives to be distributed */
   remaining_amount: string;
   /** emission_rate is the incentive emission rate per second */
@@ -96,6 +122,20 @@ export interface IncentiveRecordBodySDKType {
   emission_rate: string;
   /** start_time is the time when the incentive starts distributing */
 
+  start_time?: Date;
+}
+export interface IncentiveRecordBodyAminoMsg {
+  type: "osmosis/concentratedliquidity/incentive-record-body";
+  value: IncentiveRecordBodyAmino;
+}
+/**
+ * IncentiveRecordBody represents the body stored in state for each individual
+ * record.
+ */
+
+export interface IncentiveRecordBodySDKType {
+  remaining_amount: string;
+  emission_rate: string;
   start_time?: Date;
 }
 
@@ -180,6 +220,52 @@ export const IncentiveRecord = {
     message.incentiveRecordBody = object.incentiveRecordBody !== undefined && object.incentiveRecordBody !== null ? IncentiveRecordBody.fromPartial(object.incentiveRecordBody) : undefined;
     message.minUptime = object.minUptime !== undefined && object.minUptime !== null ? Duration.fromPartial(object.minUptime) : undefined;
     return message;
+  },
+
+  fromAmino(object: IncentiveRecordAmino): IncentiveRecord {
+    return {
+      poolId: Long.fromString(object.pool_id),
+      incentiveDenom: object.incentive_denom,
+      incentiveCreatorAddr: object.incentive_creator_addr,
+      incentiveRecordBody: object?.incentive_record_body ? IncentiveRecordBody.fromAmino(object.incentive_record_body) : undefined,
+      minUptime: object?.min_uptime ? Duration.fromAmino(object.min_uptime) : undefined
+    };
+  },
+
+  toAmino(message: IncentiveRecord): IncentiveRecordAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
+    obj.incentive_denom = message.incentiveDenom;
+    obj.incentive_creator_addr = message.incentiveCreatorAddr;
+    obj.incentive_record_body = message.incentiveRecordBody ? IncentiveRecordBody.toAmino(message.incentiveRecordBody) : undefined;
+    obj.min_uptime = message.minUptime ? Duration.toAmino(message.minUptime) : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: IncentiveRecordAminoMsg): IncentiveRecord {
+    return IncentiveRecord.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: IncentiveRecord): IncentiveRecordAminoMsg {
+    return {
+      type: "osmosis/concentratedliquidity/incentive-record",
+      value: IncentiveRecord.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: IncentiveRecordProtoMsg): IncentiveRecord {
+    return IncentiveRecord.decode(message.value);
+  },
+
+  toProto(message: IncentiveRecord): Uint8Array {
+    return IncentiveRecord.encode(message).finish();
+  },
+
+  toProtoMsg(message: IncentiveRecord): IncentiveRecordProtoMsg {
+    return {
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecord",
+      value: IncentiveRecord.encode(message).finish()
+    };
   }
 
 };
@@ -245,6 +331,48 @@ export const IncentiveRecordBody = {
     message.emissionRate = object.emissionRate ?? "";
     message.startTime = object.startTime ?? undefined;
     return message;
+  },
+
+  fromAmino(object: IncentiveRecordBodyAmino): IncentiveRecordBody {
+    return {
+      remainingAmount: object.remaining_amount,
+      emissionRate: object.emission_rate,
+      startTime: object?.start_time ? Timestamp.fromAmino(object.start_time) : undefined
+    };
+  },
+
+  toAmino(message: IncentiveRecordBody): IncentiveRecordBodyAmino {
+    const obj: any = {};
+    obj.remaining_amount = message.remainingAmount;
+    obj.emission_rate = message.emissionRate;
+    obj.start_time = message.startTime ? Timestamp.toAmino(message.startTime) : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: IncentiveRecordBodyAminoMsg): IncentiveRecordBody {
+    return IncentiveRecordBody.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: IncentiveRecordBody): IncentiveRecordBodyAminoMsg {
+    return {
+      type: "osmosis/concentratedliquidity/incentive-record-body",
+      value: IncentiveRecordBody.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: IncentiveRecordBodyProtoMsg): IncentiveRecordBody {
+    return IncentiveRecordBody.decode(message.value);
+  },
+
+  toProto(message: IncentiveRecordBody): Uint8Array {
+    return IncentiveRecordBody.encode(message).finish();
+  },
+
+  toProtoMsg(message: IncentiveRecordBody): IncentiveRecordBodyProtoMsg {
+    return {
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecordBody",
+      value: IncentiveRecordBody.encode(message).finish()
+    };
   }
 
 };

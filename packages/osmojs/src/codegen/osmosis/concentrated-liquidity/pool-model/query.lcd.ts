@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryPoolsRequest, QueryPoolsResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryLiquidityDepthsForRangeRequest, QueryLiquidityDepthsForRangeResponseSDKType, QueryUserPositionsRequest, QueryUserPositionsResponseSDKType, QueryTotalLiquidityForRangeRequest, QueryTotalLiquidityForRangeResponseSDKType, QueryClaimableFeesRequest, QueryClaimableFeesResponseSDKType, QueryPositionByIdRequest, QueryPositionByIdResponseSDKType } from "./query";
+import { QueryPoolsRequest, QueryPoolsResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryUserPositionsRequest, QueryUserPositionsResponseSDKType, QueryTotalLiquidityForRangeRequest, QueryTotalLiquidityForRangeResponseSDKType, QueryLiquidityNetInDirectionRequest, QueryLiquidityNetInDirectionResponseSDKType, QueryClaimableFeesRequest, QueryClaimableFeesResponseSDKType, QueryPositionByIdRequest, QueryPositionByIdResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -12,9 +12,9 @@ export class LCDQueryClient {
     this.req = requestClient;
     this.pools = this.pools.bind(this);
     this.params = this.params.bind(this);
-    this.liquidityDepthsForRange = this.liquidityDepthsForRange.bind(this);
     this.userPositions = this.userPositions.bind(this);
     this.totalLiquidityForRange = this.totalLiquidityForRange.bind(this);
+    this.liquidityNetInDirection = this.liquidityNetInDirection.bind(this);
     this.claimableFees = this.claimableFees.bind(this);
     this.positionById = this.positionById.bind(this);
   }
@@ -41,29 +41,6 @@ export class LCDQueryClient {
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const endpoint = `osmosis/concentratedliquidity/v1beta1/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
-  }
-  /* LiquidityDepthsForRange returns Liqiudity Depths for given range */
-
-
-  async liquidityDepthsForRange(params: QueryLiquidityDepthsForRangeRequest): Promise<QueryLiquidityDepthsForRangeResponseSDKType> {
-    const options: any = {
-      params: {}
-    };
-
-    if (typeof params?.poolId !== "undefined") {
-      options.params.pool_id = params.poolId;
-    }
-
-    if (typeof params?.lowerTick !== "undefined") {
-      options.params.lower_tick = params.lowerTick;
-    }
-
-    if (typeof params?.upperTick !== "undefined") {
-      options.params.upper_tick = params.upperTick;
-    }
-
-    const endpoint = `osmosis/concentratedliquidity/v1beta1/liquidity_depths_for_range`;
-    return await this.req.get<QueryLiquidityDepthsForRangeResponseSDKType>(endpoint, options);
   }
   /* UserPositions returns all concentrated postitions of some address. */
 
@@ -94,6 +71,35 @@ export class LCDQueryClient {
 
     const endpoint = `osmosis/concentratedliquidity/v1beta1/total_liquidity_for_range`;
     return await this.req.get<QueryTotalLiquidityForRangeResponseSDKType>(endpoint, options);
+  }
+  /* LiquidityNetInDirection returns liquidity net in the direction given.
+   Uses the bound if specified, if not uses either min tick / max tick
+   depending on the direction. */
+
+
+  async liquidityNetInDirection(params: QueryLiquidityNetInDirectionRequest): Promise<QueryLiquidityNetInDirectionResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+
+    if (typeof params?.poolId !== "undefined") {
+      options.params.pool_id = params.poolId;
+    }
+
+    if (typeof params?.tokenIn !== "undefined") {
+      options.params.token_in = params.tokenIn;
+    }
+
+    if (typeof params?.startTick !== "undefined") {
+      options.params.start_tick = params.startTick;
+    }
+
+    if (typeof params?.boundTick !== "undefined") {
+      options.params.bound_tick = params.boundTick;
+    }
+
+    const endpoint = `osmosis/concentratedliquidity/v1beta1/query_liquidity_net_in_direction`;
+    return await this.req.get<QueryLiquidityNetInDirectionResponseSDKType>(endpoint, options);
   }
   /* ClaimableFees returns the amount of fees that can be claimed by a position
    with the given id. */

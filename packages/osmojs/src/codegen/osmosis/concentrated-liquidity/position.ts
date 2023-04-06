@@ -1,10 +1,10 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { Duration, DurationSDKType } from "../../google/protobuf/duration";
+import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, Long, fromTimestamp } from "../../helpers";
 /**
  * Position contains position's id, address, pool id, lower tick, upper tick
- * join time, freeze duration, and liquidity.
+ * join time, and liquidity.
  */
 
 export interface Position {
@@ -14,12 +14,33 @@ export interface Position {
   lowerTick: Long;
   upperTick: Long;
   joinTime?: Date;
-  freezeDuration?: Duration;
   liquidity: string;
+}
+export interface PositionProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.Position";
+  value: Uint8Array;
 }
 /**
  * Position contains position's id, address, pool id, lower tick, upper tick
- * join time, freeze duration, and liquidity.
+ * join time, and liquidity.
+ */
+
+export interface PositionAmino {
+  position_id: string;
+  address: string;
+  pool_id: string;
+  lower_tick: string;
+  upper_tick: string;
+  join_time?: Date;
+  liquidity: string;
+}
+export interface PositionAminoMsg {
+  type: "osmosis/concentratedliquidity/position";
+  value: PositionAmino;
+}
+/**
+ * Position contains position's id, address, pool id, lower tick, upper tick
+ * join time, and liquidity.
  */
 
 export interface PositionSDKType {
@@ -29,18 +50,30 @@ export interface PositionSDKType {
   lower_tick: Long;
   upper_tick: Long;
   join_time?: Date;
-  freeze_duration?: DurationSDKType;
   liquidity: string;
 }
 export interface PositionWithUnderlyingAssetBreakdown {
   position?: Position;
-  asset0: string;
-  asset1: string;
+  asset0?: Coin;
+  asset1?: Coin;
+}
+export interface PositionWithUnderlyingAssetBreakdownProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithUnderlyingAssetBreakdown";
+  value: Uint8Array;
+}
+export interface PositionWithUnderlyingAssetBreakdownAmino {
+  position?: PositionAmino;
+  asset0?: CoinAmino;
+  asset1?: CoinAmino;
+}
+export interface PositionWithUnderlyingAssetBreakdownAminoMsg {
+  type: "osmosis/concentratedliquidity/position-with-underlying-asset-breakdown";
+  value: PositionWithUnderlyingAssetBreakdownAmino;
 }
 export interface PositionWithUnderlyingAssetBreakdownSDKType {
   position?: PositionSDKType;
-  asset0: string;
-  asset1: string;
+  asset0?: CoinSDKType;
+  asset1?: CoinSDKType;
 }
 
 function createBasePosition(): Position {
@@ -51,7 +84,6 @@ function createBasePosition(): Position {
     lowerTick: Long.ZERO,
     upperTick: Long.ZERO,
     joinTime: undefined,
-    freezeDuration: undefined,
     liquidity: ""
   };
 }
@@ -82,12 +114,8 @@ export const Position = {
       Timestamp.encode(toTimestamp(message.joinTime), writer.uint32(50).fork()).ldelim();
     }
 
-    if (message.freezeDuration !== undefined) {
-      Duration.encode(message.freezeDuration, writer.uint32(58).fork()).ldelim();
-    }
-
     if (message.liquidity !== "") {
-      writer.uint32(66).string(message.liquidity);
+      writer.uint32(58).string(message.liquidity);
     }
 
     return writer;
@@ -127,10 +155,6 @@ export const Position = {
           break;
 
         case 7:
-          message.freezeDuration = Duration.decode(reader, reader.uint32());
-          break;
-
-        case 8:
           message.liquidity = reader.string();
           break;
 
@@ -151,9 +175,58 @@ export const Position = {
     message.lowerTick = object.lowerTick !== undefined && object.lowerTick !== null ? Long.fromValue(object.lowerTick) : Long.ZERO;
     message.upperTick = object.upperTick !== undefined && object.upperTick !== null ? Long.fromValue(object.upperTick) : Long.ZERO;
     message.joinTime = object.joinTime ?? undefined;
-    message.freezeDuration = object.freezeDuration !== undefined && object.freezeDuration !== null ? Duration.fromPartial(object.freezeDuration) : undefined;
     message.liquidity = object.liquidity ?? "";
     return message;
+  },
+
+  fromAmino(object: PositionAmino): Position {
+    return {
+      positionId: Long.fromString(object.position_id),
+      address: object.address,
+      poolId: Long.fromString(object.pool_id),
+      lowerTick: Long.fromString(object.lower_tick),
+      upperTick: Long.fromString(object.upper_tick),
+      joinTime: object?.join_time ? Timestamp.fromAmino(object.join_time) : undefined,
+      liquidity: object.liquidity
+    };
+  },
+
+  toAmino(message: Position): PositionAmino {
+    const obj: any = {};
+    obj.position_id = message.positionId ? message.positionId.toString() : undefined;
+    obj.address = message.address;
+    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
+    obj.lower_tick = message.lowerTick ? message.lowerTick.toString() : undefined;
+    obj.upper_tick = message.upperTick ? message.upperTick.toString() : undefined;
+    obj.join_time = message.joinTime ? Timestamp.toAmino(message.joinTime) : undefined;
+    obj.liquidity = message.liquidity;
+    return obj;
+  },
+
+  fromAminoMsg(object: PositionAminoMsg): Position {
+    return Position.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: Position): PositionAminoMsg {
+    return {
+      type: "osmosis/concentratedliquidity/position",
+      value: Position.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: PositionProtoMsg): Position {
+    return Position.decode(message.value);
+  },
+
+  toProto(message: Position): Uint8Array {
+    return Position.encode(message).finish();
+  },
+
+  toProtoMsg(message: Position): PositionProtoMsg {
+    return {
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.Position",
+      value: Position.encode(message).finish()
+    };
   }
 
 };
@@ -161,8 +234,8 @@ export const Position = {
 function createBasePositionWithUnderlyingAssetBreakdown(): PositionWithUnderlyingAssetBreakdown {
   return {
     position: undefined,
-    asset0: "",
-    asset1: ""
+    asset0: undefined,
+    asset1: undefined
   };
 }
 
@@ -172,12 +245,12 @@ export const PositionWithUnderlyingAssetBreakdown = {
       Position.encode(message.position, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.asset0 !== "") {
-      writer.uint32(18).string(message.asset0);
+    if (message.asset0 !== undefined) {
+      Coin.encode(message.asset0, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.asset1 !== "") {
-      writer.uint32(26).string(message.asset1);
+    if (message.asset1 !== undefined) {
+      Coin.encode(message.asset1, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -197,11 +270,11 @@ export const PositionWithUnderlyingAssetBreakdown = {
           break;
 
         case 2:
-          message.asset0 = reader.string();
+          message.asset0 = Coin.decode(reader, reader.uint32());
           break;
 
         case 3:
-          message.asset1 = reader.string();
+          message.asset1 = Coin.decode(reader, reader.uint32());
           break;
 
         default:
@@ -216,9 +289,51 @@ export const PositionWithUnderlyingAssetBreakdown = {
   fromPartial(object: Partial<PositionWithUnderlyingAssetBreakdown>): PositionWithUnderlyingAssetBreakdown {
     const message = createBasePositionWithUnderlyingAssetBreakdown();
     message.position = object.position !== undefined && object.position !== null ? Position.fromPartial(object.position) : undefined;
-    message.asset0 = object.asset0 ?? "";
-    message.asset1 = object.asset1 ?? "";
+    message.asset0 = object.asset0 !== undefined && object.asset0 !== null ? Coin.fromPartial(object.asset0) : undefined;
+    message.asset1 = object.asset1 !== undefined && object.asset1 !== null ? Coin.fromPartial(object.asset1) : undefined;
     return message;
+  },
+
+  fromAmino(object: PositionWithUnderlyingAssetBreakdownAmino): PositionWithUnderlyingAssetBreakdown {
+    return {
+      position: object?.position ? Position.fromAmino(object.position) : undefined,
+      asset0: object?.asset0 ? Coin.fromAmino(object.asset0) : undefined,
+      asset1: object?.asset1 ? Coin.fromAmino(object.asset1) : undefined
+    };
+  },
+
+  toAmino(message: PositionWithUnderlyingAssetBreakdown): PositionWithUnderlyingAssetBreakdownAmino {
+    const obj: any = {};
+    obj.position = message.position ? Position.toAmino(message.position) : undefined;
+    obj.asset0 = message.asset0 ? Coin.toAmino(message.asset0) : undefined;
+    obj.asset1 = message.asset1 ? Coin.toAmino(message.asset1) : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: PositionWithUnderlyingAssetBreakdownAminoMsg): PositionWithUnderlyingAssetBreakdown {
+    return PositionWithUnderlyingAssetBreakdown.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: PositionWithUnderlyingAssetBreakdown): PositionWithUnderlyingAssetBreakdownAminoMsg {
+    return {
+      type: "osmosis/concentratedliquidity/position-with-underlying-asset-breakdown",
+      value: PositionWithUnderlyingAssetBreakdown.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: PositionWithUnderlyingAssetBreakdownProtoMsg): PositionWithUnderlyingAssetBreakdown {
+    return PositionWithUnderlyingAssetBreakdown.decode(message.value);
+  },
+
+  toProto(message: PositionWithUnderlyingAssetBreakdown): Uint8Array {
+    return PositionWithUnderlyingAssetBreakdown.encode(message).finish();
+  },
+
+  toProtoMsg(message: PositionWithUnderlyingAssetBreakdown): PositionWithUnderlyingAssetBreakdownProtoMsg {
+    return {
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithUnderlyingAssetBreakdown",
+      value: PositionWithUnderlyingAssetBreakdown.encode(message).finish()
+    };
   }
 
 };

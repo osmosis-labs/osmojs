@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be
@@ -9,6 +9,24 @@ import { Long } from "../../helpers";
 export interface App {
   protocol: Long;
   software: string;
+}
+export interface AppProtoMsg {
+  typeUrl: "/tendermint.version.App";
+  value: Uint8Array;
+}
+/**
+ * App includes the protocol and software version for the application.
+ * This information is included in ResponseInfo. The App.Protocol can be
+ * updated in ResponseEndBlock.
+ */
+
+export interface AppAmino {
+  protocol: string;
+  software: string;
+}
+export interface AppAminoMsg {
+  type: "/tendermint.version.App";
+  value: AppAmino;
 }
 /**
  * App includes the protocol and software version for the application.
@@ -29,6 +47,24 @@ export interface AppSDKType {
 export interface Consensus {
   block: Long;
   app: Long;
+}
+export interface ConsensusProtoMsg {
+  typeUrl: "/tendermint.version.Consensus";
+  value: Uint8Array;
+}
+/**
+ * Consensus captures the consensus rules for processing a block in the blockchain,
+ * including all blockchain data structures and the rules of the application's
+ * state transition machine.
+ */
+
+export interface ConsensusAmino {
+  block: string;
+  app: string;
+}
+export interface ConsensusAminoMsg {
+  type: "/tendermint.version.Consensus";
+  value: ConsensusAmino;
 }
 /**
  * Consensus captures the consensus rules for processing a block in the blockchain,
@@ -92,6 +128,39 @@ export const App = {
     message.protocol = object.protocol !== undefined && object.protocol !== null ? Long.fromValue(object.protocol) : Long.UZERO;
     message.software = object.software ?? "";
     return message;
+  },
+
+  fromAmino(object: AppAmino): App {
+    return {
+      protocol: Long.fromString(object.protocol),
+      software: object.software
+    };
+  },
+
+  toAmino(message: App): AppAmino {
+    const obj: any = {};
+    obj.protocol = message.protocol ? message.protocol.toString() : undefined;
+    obj.software = message.software;
+    return obj;
+  },
+
+  fromAminoMsg(object: AppAminoMsg): App {
+    return App.fromAmino(object.value);
+  },
+
+  fromProtoMsg(message: AppProtoMsg): App {
+    return App.decode(message.value);
+  },
+
+  toProto(message: App): Uint8Array {
+    return App.encode(message).finish();
+  },
+
+  toProtoMsg(message: App): AppProtoMsg {
+    return {
+      typeUrl: "/tendermint.version.App",
+      value: App.encode(message).finish()
+    };
   }
 
 };
@@ -147,6 +216,39 @@ export const Consensus = {
     message.block = object.block !== undefined && object.block !== null ? Long.fromValue(object.block) : Long.UZERO;
     message.app = object.app !== undefined && object.app !== null ? Long.fromValue(object.app) : Long.UZERO;
     return message;
+  },
+
+  fromAmino(object: ConsensusAmino): Consensus {
+    return {
+      block: Long.fromString(object.block),
+      app: Long.fromString(object.app)
+    };
+  },
+
+  toAmino(message: Consensus): ConsensusAmino {
+    const obj: any = {};
+    obj.block = message.block ? message.block.toString() : undefined;
+    obj.app = message.app ? message.app.toString() : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: ConsensusAminoMsg): Consensus {
+    return Consensus.fromAmino(object.value);
+  },
+
+  fromProtoMsg(message: ConsensusProtoMsg): Consensus {
+    return Consensus.decode(message.value);
+  },
+
+  toProto(message: Consensus): Uint8Array {
+    return Consensus.encode(message).finish();
+  },
+
+  toProtoMsg(message: Consensus): ConsensusProtoMsg {
+    return {
+      typeUrl: "/tendermint.version.Consensus",
+      value: Consensus.encode(message).finish()
+    };
   }
 
 };
