@@ -224,6 +224,7 @@ export interface WeightedVoteOptionSDKType {
  */
 
 export interface TextProposal {
+  $typeUrl?: string;
   title: string;
   description: string;
 }
@@ -250,6 +251,7 @@ export interface TextProposalAminoMsg {
  */
 
 export interface TextProposalSDKType {
+  $typeUrl?: string;
   title: string;
   description: string;
 }
@@ -662,6 +664,7 @@ export const WeightedVoteOption = {
 
 function createBaseTextProposal(): TextProposal {
   return {
+    $typeUrl: "/cosmos.gov.v1beta1.TextProposal",
     title: "",
     description: ""
   };

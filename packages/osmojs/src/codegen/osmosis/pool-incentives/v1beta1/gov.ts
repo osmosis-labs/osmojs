@@ -11,6 +11,7 @@ import * as _m0 from "protobufjs/minimal";
  */
 
 export interface ReplacePoolIncentivesProposal {
+  $typeUrl?: string;
   title: string;
   description: string;
   records: DistrRecord[];
@@ -49,6 +50,7 @@ export interface ReplacePoolIncentivesProposalAminoMsg {
  */
 
 export interface ReplacePoolIncentivesProposalSDKType {
+  $typeUrl?: string;
   title: string;
   description: string;
   records: DistrRecordSDKType[];
@@ -64,6 +66,7 @@ export interface ReplacePoolIncentivesProposalSDKType {
  */
 
 export interface UpdatePoolIncentivesProposal {
+  $typeUrl?: string;
   title: string;
   description: string;
   records: DistrRecord[];
@@ -102,6 +105,7 @@ export interface UpdatePoolIncentivesProposalAminoMsg {
  */
 
 export interface UpdatePoolIncentivesProposalSDKType {
+  $typeUrl?: string;
   title: string;
   description: string;
   records: DistrRecordSDKType[];
@@ -109,6 +113,7 @@ export interface UpdatePoolIncentivesProposalSDKType {
 
 function createBaseReplacePoolIncentivesProposal(): ReplacePoolIncentivesProposal {
   return {
+    $typeUrl: "/osmosis.poolincentives.v1beta1.ReplacePoolIncentivesProposal",
     title: "",
     description: "",
     records: []
@@ -224,6 +229,7 @@ export const ReplacePoolIncentivesProposal = {
 
 function createBaseUpdatePoolIncentivesProposal(): UpdatePoolIncentivesProposal {
   return {
+    $typeUrl: "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal",
     title: "",
     description: "",
     records: []

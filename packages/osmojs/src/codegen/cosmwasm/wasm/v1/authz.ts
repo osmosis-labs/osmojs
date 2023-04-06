@@ -8,7 +8,9 @@ import { Long } from "../../../helpers";
  */
 
 export interface ContractExecutionAuthorization {
+  $typeUrl?: string;
   /** Grants for contract executions */
+
   grants: ContractGrant[];
 }
 export interface ContractExecutionAuthorizationProtoMsg {
@@ -34,6 +36,7 @@ export interface ContractExecutionAuthorizationAminoMsg {
  */
 
 export interface ContractExecutionAuthorizationSDKType {
+  $typeUrl?: string;
   grants: ContractGrantSDKType[];
 }
 /**
@@ -42,7 +45,9 @@ export interface ContractExecutionAuthorizationSDKType {
  */
 
 export interface ContractMigrationAuthorization {
+  $typeUrl?: string;
   /** Grants for contract migrations */
+
   grants: ContractGrant[];
 }
 export interface ContractMigrationAuthorizationProtoMsg {
@@ -68,6 +73,7 @@ export interface ContractMigrationAuthorizationAminoMsg {
  */
 
 export interface ContractMigrationAuthorizationSDKType {
+  $typeUrl?: string;
   grants: ContractGrantSDKType[];
 }
 /**
@@ -152,7 +158,9 @@ export interface ContractGrantSDKType {
  */
 
 export interface MaxCallsLimit {
+  $typeUrl?: string;
   /** Remaining number that is decremented on each execution */
+
   remaining: Long;
 }
 export interface MaxCallsLimitProtoMsg {
@@ -178,6 +186,7 @@ export interface MaxCallsLimitAminoMsg {
  */
 
 export interface MaxCallsLimitSDKType {
+  $typeUrl?: string;
   remaining: Long;
 }
 /**
@@ -186,7 +195,9 @@ export interface MaxCallsLimitSDKType {
  */
 
 export interface MaxFundsLimit {
+  $typeUrl?: string;
   /** Amounts is the maximal amount of tokens transferable to the contract. */
+
   amounts: Coin[];
 }
 export interface MaxFundsLimitProtoMsg {
@@ -212,6 +223,7 @@ export interface MaxFundsLimitAminoMsg {
  */
 
 export interface MaxFundsLimitSDKType {
+  $typeUrl?: string;
   amounts: CoinSDKType[];
 }
 /**
@@ -221,7 +233,9 @@ export interface MaxFundsLimitSDKType {
  */
 
 export interface CombinedLimit {
+  $typeUrl?: string;
   /** Remaining number that is decremented on each execution */
+
   callsRemaining: Long;
   /** Amounts is the maximal amount of tokens transferable to the contract. */
 
@@ -255,6 +269,7 @@ export interface CombinedLimitAminoMsg {
  */
 
 export interface CombinedLimitSDKType {
+  $typeUrl?: string;
   calls_remaining: Long;
   amounts: CoinSDKType[];
 }
@@ -264,7 +279,9 @@ export interface CombinedLimitSDKType {
  * Since: wasmd 0.30
  */
 
-export interface AllowAllMessagesFilter {}
+export interface AllowAllMessagesFilter {
+  $typeUrl?: string;
+}
 export interface AllowAllMessagesFilterProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
   value: Uint8Array;
@@ -286,7 +303,9 @@ export interface AllowAllMessagesFilterAminoMsg {
  * Since: wasmd 0.30
  */
 
-export interface AllowAllMessagesFilterSDKType {}
+export interface AllowAllMessagesFilterSDKType {
+  $typeUrl?: string;
+}
 /**
  * AcceptedMessageKeysFilter accept only the specific contract message keys in
  * the json object to be executed.
@@ -294,7 +313,9 @@ export interface AllowAllMessagesFilterSDKType {}
  */
 
 export interface AcceptedMessageKeysFilter {
+  $typeUrl?: string;
   /** Messages is the list of unique keys */
+
   keys: string[];
 }
 export interface AcceptedMessageKeysFilterProtoMsg {
@@ -322,6 +343,7 @@ export interface AcceptedMessageKeysFilterAminoMsg {
  */
 
 export interface AcceptedMessageKeysFilterSDKType {
+  $typeUrl?: string;
   keys: string[];
 }
 /**
@@ -331,7 +353,9 @@ export interface AcceptedMessageKeysFilterSDKType {
  */
 
 export interface AcceptedMessagesFilter {
+  $typeUrl?: string;
   /** Messages is the list of raw contract messages */
+
   messages: Uint8Array[];
 }
 export interface AcceptedMessagesFilterProtoMsg {
@@ -359,11 +383,13 @@ export interface AcceptedMessagesFilterAminoMsg {
  */
 
 export interface AcceptedMessagesFilterSDKType {
+  $typeUrl?: string;
   messages: Uint8Array[];
 }
 
 function createBaseContractExecutionAuthorization(): ContractExecutionAuthorization {
   return {
+    $typeUrl: "/cosmwasm.wasm.v1.ContractExecutionAuthorization",
     grants: []
   };
 }
@@ -455,6 +481,7 @@ export const ContractExecutionAuthorization = {
 
 function createBaseContractMigrationAuthorization(): ContractMigrationAuthorization {
   return {
+    $typeUrl: "/cosmwasm.wasm.v1.ContractMigrationAuthorization",
     grants: []
   };
 }
@@ -655,6 +682,7 @@ export const ContractGrant = {
 
 function createBaseMaxCallsLimit(): MaxCallsLimit {
   return {
+    $typeUrl: "/cosmwasm.wasm.v1.MaxCallsLimit",
     remaining: Long.UZERO
   };
 }
@@ -740,6 +768,7 @@ export const MaxCallsLimit = {
 
 function createBaseMaxFundsLimit(): MaxFundsLimit {
   return {
+    $typeUrl: "/cosmwasm.wasm.v1.MaxFundsLimit",
     amounts: []
   };
 }
@@ -831,6 +860,7 @@ export const MaxFundsLimit = {
 
 function createBaseCombinedLimit(): CombinedLimit {
   return {
+    $typeUrl: "/cosmwasm.wasm.v1.CombinedLimit",
     callsRemaining: Long.UZERO,
     amounts: []
   };
@@ -933,7 +963,9 @@ export const CombinedLimit = {
 };
 
 function createBaseAllowAllMessagesFilter(): AllowAllMessagesFilter {
-  return {};
+  return {
+    $typeUrl: "/cosmwasm.wasm.v1.AllowAllMessagesFilter"
+  };
 }
 
 export const AllowAllMessagesFilter = {
@@ -1005,6 +1037,7 @@ export const AllowAllMessagesFilter = {
 
 function createBaseAcceptedMessageKeysFilter(): AcceptedMessageKeysFilter {
   return {
+    $typeUrl: "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter",
     keys: []
   };
 }
@@ -1096,6 +1129,7 @@ export const AcceptedMessageKeysFilter = {
 
 function createBaseAcceptedMessagesFilter(): AcceptedMessagesFilter {
   return {
+    $typeUrl: "/cosmwasm.wasm.v1.AcceptedMessagesFilter",
     messages: []
   };
 }

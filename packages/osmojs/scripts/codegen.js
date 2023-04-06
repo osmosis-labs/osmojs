@@ -25,7 +25,7 @@ telescope({
       useUnionTypes: false
     },
     prototypes: {
-      // addTypeUrlToDecoders: true,
+      addTypeUrlToDecoders: true,
       addTypeUrlToObjects: true,
       excluded: {
         packages: [

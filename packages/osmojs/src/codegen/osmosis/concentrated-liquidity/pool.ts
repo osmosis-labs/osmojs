@@ -2,7 +2,9 @@ import { Timestamp } from "../../google/protobuf/timestamp";
 import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface Pool {
+  $typeUrl?: string;
   /** pool's address holding all liquidity tokens. */
+
   address: string;
   /** address holding the incentives liquidity. */
 
@@ -72,6 +74,7 @@ export interface PoolAminoMsg {
   value: PoolAmino;
 }
 export interface PoolSDKType {
+  $typeUrl?: string;
   address: string;
   incentives_address: string;
   id: Long;
@@ -88,6 +91,7 @@ export interface PoolSDKType {
 
 function createBasePool(): Pool {
   return {
+    $typeUrl: "/osmosis.concentratedliquidity.v1beta1.Pool",
     address: "",
     incentivesAddress: "",
     id: Long.UZERO,

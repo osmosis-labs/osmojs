@@ -1,6 +1,7 @@
 import { Long } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface CosmWasmPool {
+  $typeUrl?: string;
   poolAddress: string;
   contractAddress: string;
   poolId: Long;
@@ -21,6 +22,7 @@ export interface CosmWasmPoolAminoMsg {
   value: CosmWasmPoolAmino;
 }
 export interface CosmWasmPoolSDKType {
+  $typeUrl?: string;
   pool_address: string;
   contract_address: string;
   pool_id: Long;
@@ -29,6 +31,7 @@ export interface CosmWasmPoolSDKType {
 
 function createBaseCosmWasmPool(): CosmWasmPool {
   return {
+    $typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
     poolAddress: "",
     contractAddress: "",
     poolId: Long.UZERO,

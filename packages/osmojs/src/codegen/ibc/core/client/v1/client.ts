@@ -133,7 +133,9 @@ export interface ClientConsensusStatesSDKType {
  */
 
 export interface ClientUpdateProposal {
+  $typeUrl?: string;
   /** the title of the update proposal */
+
   title: string;
   /** the description of the proposal */
 
@@ -187,6 +189,7 @@ export interface ClientUpdateProposalAminoMsg {
  */
 
 export interface ClientUpdateProposalSDKType {
+  $typeUrl?: string;
   title: string;
   description: string;
   subject_client_id: string;
@@ -198,6 +201,7 @@ export interface ClientUpdateProposalSDKType {
  */
 
 export interface UpgradeProposal {
+  $typeUrl?: string;
   title: string;
   description: string;
   plan?: Plan;
@@ -246,6 +250,7 @@ export interface UpgradeProposalAminoMsg {
  */
 
 export interface UpgradeProposalSDKType {
+  $typeUrl?: string;
   title: string;
   description: string;
   plan?: PlanSDKType;
@@ -641,6 +646,7 @@ export const ClientConsensusStates = {
 
 function createBaseClientUpdateProposal(): ClientUpdateProposal {
   return {
+    $typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
     title: "",
     description: "",
     subjectClientId: "",
@@ -762,6 +768,7 @@ export const ClientUpdateProposal = {
 
 function createBaseUpgradeProposal(): UpgradeProposal {
   return {
+    $typeUrl: "/ibc.core.client.v1.UpgradeProposal",
     title: "",
     description: "",
     plan: undefined,

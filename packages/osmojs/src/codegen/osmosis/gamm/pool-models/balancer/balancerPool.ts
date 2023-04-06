@@ -225,6 +225,7 @@ export interface PoolAssetSDKType {
   weight: string;
 }
 export interface Pool {
+  $typeUrl?: string;
   address: string;
   id: Long;
   poolParams?: PoolParams;
@@ -293,6 +294,7 @@ export interface PoolAminoMsg {
   value: PoolAmino;
 }
 export interface PoolSDKType {
+  $typeUrl?: string;
   address: string;
   id: Long;
   pool_params?: PoolParamsSDKType;
@@ -642,6 +644,7 @@ export const PoolAsset = {
 
 function createBasePool(): Pool {
   return {
+    $typeUrl: "/osmosis.gamm.v1beta1.Pool",
     address: "",
     id: Long.UZERO,
     poolParams: undefined,

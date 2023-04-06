@@ -9,6 +9,7 @@ import * as _m0 from "protobufjs/minimal";
  */
 
 export interface UpdateFeeTokenProposal {
+  $typeUrl?: string;
   title: string;
   description: string;
   feetoken?: FeeToken;
@@ -43,6 +44,7 @@ export interface UpdateFeeTokenProposalAminoMsg {
  */
 
 export interface UpdateFeeTokenProposalSDKType {
+  $typeUrl?: string;
   title: string;
   description: string;
   feetoken?: FeeTokenSDKType;
@@ -50,6 +52,7 @@ export interface UpdateFeeTokenProposalSDKType {
 
 function createBaseUpdateFeeTokenProposal(): UpdateFeeTokenProposal {
   return {
+    $typeUrl: "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal",
     title: "",
     description: "",
     feetoken: undefined

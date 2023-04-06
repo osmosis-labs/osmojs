@@ -57,6 +57,7 @@ export interface PoolParamsSDKType {
 /** Pool is the stableswap Pool struct */
 
 export interface Pool {
+  $typeUrl?: string;
   address: string;
   id: Long;
   poolParams?: PoolParams;
@@ -127,6 +128,7 @@ export interface PoolAminoMsg {
 /** Pool is the stableswap Pool struct */
 
 export interface PoolSDKType {
+  $typeUrl?: string;
   address: string;
   id: Long;
   pool_params?: PoolParamsSDKType;
@@ -236,6 +238,7 @@ export const PoolParams = {
 
 function createBasePool(): Pool {
   return {
+    $typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool",
     address: "",
     id: Long.UZERO,
     poolParams: undefined,
