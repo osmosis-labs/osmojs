@@ -92,8 +92,10 @@
   "dependencies": {
     "@babel/preset-env": "7.20.2",
     "@babel/runtime": "^7.19.0",
+    "@confio/relayer": "0.7.0",
     "@cosmjs/amino": "0.29.3",
     "@cosmjs/cosmwasm-stargate": "0.29.4",
+    "@cosmjs/crypto": "0.29.4",
     "@cosmjs/proto-signing": "0.29.3",
     "@cosmjs/stargate": "0.29.3",
     "@cosmjs/tendermint-rpc": "^0.29.3",
@@ -107,6 +109,7 @@
     "nock": "13.2.9",
     "node-fetch": "2.6.0",
     "protobufjs": "^6.11.3",
+    "sinon": "14.0.2",
     "supertest": "6.3.1"
   }
 }
