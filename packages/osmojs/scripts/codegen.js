@@ -25,6 +25,8 @@ telescope({
       useUnionTypes: false
     },
     prototypes: {
+      // addTypeUrlToDecoders: true,
+      addTypeUrlToObjects: true,
       excluded: {
         packages: [
           'cosmos.app.v1alpha1',
