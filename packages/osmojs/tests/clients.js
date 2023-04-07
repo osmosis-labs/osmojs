@@ -1,11 +1,13 @@
-import {makeCosmoshubPath} from '@cosmjs/amino';
+import {coins, makeCosmoshubPath} from '@cosmjs/amino';
 import {DirectSecp256k1HdWallet} from '@cosmjs/proto-signing';
-import {QueryClient, setupIbcExtension, SigningStargateClient} from '@cosmjs/stargate';
+import {defaultRegistryTypes, QueryClient, setupIbcExtension, SigningStargateClient} from '@cosmjs/stargate';
 import fetch from 'node-fetch';
-import {connect, getChainInfo, getIBCInfo, getStarshipConfig} from 'packages/osmojs/tests/config';
+import {getSigningOsmosisClient, getSigningOsmosisClientOptions} from '../src/index';
 
-class ChainClientRegistry {
-  #keys;
+import {getChainInfo, getStarshipConfig} from './config';
+
+export class ChainClientRegistry {
+  keys;
 
   constructor(chainId, client, address) {
     this.chainId = chainId;
@@ -17,10 +19,29 @@ class ChainClientRegistry {
   // initialize class object. chainInfo is initialized first before everything else
   async initialize() {
     this.chainInfo = await ChainClientRegistry.fetchChainInfo(this.chainId);
-    this.#keys = await ChainClientRegistry.fetchKeys();
+    this.keys = await ChainClientRegistry.fetchKeys();
 
     await this.initClient();
     this.queryClient = QueryClient.withExtensions(this.client.getTmClient(), setupIbcExtension)
+  }
+
+  stargateClientOpts() {
+    const opts = {
+        prefix: this.getPrefix(),
+        gasPrice: `0.025${this.getDenom()}`,
+    }
+
+    if (this.getChainType() === "osmosis") {
+      const {
+        registry,
+        aminoTypes
+      } = getSigningOsmosisClientOptions({
+        defaultRegistryTypes
+      });
+      Object.assign(opts, {registry, aminoTypes})
+    }
+
+    return opts;
   }
 
   // initialize client and address
@@ -42,10 +63,7 @@ class ChainClientRegistry {
     const client = await SigningStargateClient.connectWithSigner(
       rpc,
       offlineSigner,
-      {
-        prefix,
-        gasPrice: `0.025${denom}`,
-      }
+      this.stargateClientOpts(),
     );
 
     const chainId = await client.getChainId();
@@ -69,7 +87,7 @@ class ChainClientRegistry {
   }
 
   getGenesisMnemonic() {
-    return this.#keys["genesis"][0]["mnemonic"]
+    return this.keys["genesis"][0]["mnemonic"]
   }
 
   getClient() {
@@ -84,12 +102,24 @@ class ChainClientRegistry {
     return this.chainInfo;
   }
 
+  getPrefix() {
+    return this.chainInfo["bech32_prefix"];
+  }
+
   getChainId() {
     return this.chainInfo.chain_id;
   }
 
+  getChainType() {
+    return this.chainInfo["chain_name"];
+  }
+
   getDenom() {
     return this.chainInfo.staking["staking_tokens"][0].denom
+  }
+
+  getDefaultFees() {
+    return { amount: coins(200000, this.getDenom()), gas: "200000" };
   }
 
   // returns IBC info between current chain and given chain
@@ -103,13 +133,6 @@ class ChainClientRegistry {
 
   static async withChainId(chainId) {
     const chainClient = new ChainClientRegistry(chainId);
-
-    const mnemonic = await chainClient.getGenesisMnemonic();
-    const {client, address} = await connect(chainId, mnemonic);
-
-    chainClient.client = client;
-    chainClient.address = address;
-
     await chainClient.initialize();
 
     return chainClient;
