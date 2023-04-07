@@ -1,17 +1,8 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
-import { CommunityPoolSpendProposal, CommunityPoolSpendProposalProtoMsg, CommunityPoolSpendProposalSDKType, CommunityPoolSpendProposalWithDeposit, CommunityPoolSpendProposalWithDepositProtoMsg, CommunityPoolSpendProposalWithDepositSDKType } from "../../distribution/v1beta1/distribution";
-import { ParameterChangeProposal, ParameterChangeProposalProtoMsg, ParameterChangeProposalSDKType } from "../../params/v1beta1/params";
-import { SoftwareUpgradeProposal, SoftwareUpgradeProposalProtoMsg, SoftwareUpgradeProposalSDKType, CancelSoftwareUpgradeProposal, CancelSoftwareUpgradeProposalProtoMsg, CancelSoftwareUpgradeProposalSDKType } from "../../upgrade/v1beta1/upgrade";
-import { ClientUpdateProposal, ClientUpdateProposalProtoMsg, ClientUpdateProposalSDKType, UpgradeProposal, UpgradeProposalProtoMsg, UpgradeProposalSDKType } from "../../../ibc/core/client/v1/client";
-import { StoreCodeProposal, StoreCodeProposalProtoMsg, StoreCodeProposalSDKType, InstantiateContractProposal, InstantiateContractProposalProtoMsg, InstantiateContractProposalSDKType, InstantiateContract2Proposal, InstantiateContract2ProposalProtoMsg, InstantiateContract2ProposalSDKType, MigrateContractProposal, MigrateContractProposalProtoMsg, MigrateContractProposalSDKType, SudoContractProposal, SudoContractProposalProtoMsg, SudoContractProposalSDKType, ExecuteContractProposal, ExecuteContractProposalProtoMsg, ExecuteContractProposalSDKType, UpdateAdminProposal, UpdateAdminProposalProtoMsg, UpdateAdminProposalSDKType, ClearAdminProposal, ClearAdminProposalProtoMsg, ClearAdminProposalSDKType, PinCodesProposal, PinCodesProposalProtoMsg, PinCodesProposalSDKType, UnpinCodesProposal, UnpinCodesProposalProtoMsg, UnpinCodesProposalSDKType, UpdateInstantiateConfigProposal, UpdateInstantiateConfigProposalProtoMsg, UpdateInstantiateConfigProposalSDKType, StoreAndInstantiateContractProposal, StoreAndInstantiateContractProposalProtoMsg, StoreAndInstantiateContractProposalSDKType } from "../../../cosmwasm/wasm/v1/proposal";
-import { ReplacePoolIncentivesProposal, ReplacePoolIncentivesProposalProtoMsg, ReplacePoolIncentivesProposalSDKType, UpdatePoolIncentivesProposal, UpdatePoolIncentivesProposalProtoMsg, UpdatePoolIncentivesProposalSDKType } from "../../../osmosis/pool-incentives/v1beta1/gov";
-import { SetProtoRevEnabledProposal, SetProtoRevEnabledProposalProtoMsg, SetProtoRevEnabledProposalSDKType, SetProtoRevAdminAccountProposal, SetProtoRevAdminAccountProposalProtoMsg, SetProtoRevAdminAccountProposalSDKType } from "../../../osmosis/protorev/v1beta1/gov";
-import { SetSuperfluidAssetsProposal, SetSuperfluidAssetsProposalProtoMsg, SetSuperfluidAssetsProposalSDKType, RemoveSuperfluidAssetsProposal, RemoveSuperfluidAssetsProposalProtoMsg, RemoveSuperfluidAssetsProposalSDKType, UpdateUnpoolWhiteListProposal, UpdateUnpoolWhiteListProposalProtoMsg, UpdateUnpoolWhiteListProposalSDKType } from "../../../osmosis/superfluid/v1beta1/gov";
-import { UpdateFeeTokenProposal, UpdateFeeTokenProposalProtoMsg, UpdateFeeTokenProposalSDKType } from "../../../osmosis/txfees/v1beta1/gov";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export declare enum VoteOption {
     /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
@@ -105,6 +96,7 @@ export interface WeightedVoteOptionSDKType {
  * manually updated in case of approval.
  */
 export interface TextProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
 }
@@ -129,6 +121,7 @@ export interface TextProposalAminoMsg {
  * manually updated in case of approval.
  */
 export interface TextProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
 }
@@ -170,43 +163,35 @@ export interface DepositSDKType {
 /** Proposal defines the core field members of a governance proposal. */
 export interface Proposal {
     proposalId: Long;
-    content?: (TextProposal & CommunityPoolSpendProposal & CommunityPoolSpendProposalWithDeposit & ParameterChangeProposal & SoftwareUpgradeProposal & CancelSoftwareUpgradeProposal & ClientUpdateProposal & UpgradeProposal & StoreCodeProposal & InstantiateContractProposal & InstantiateContract2Proposal & MigrateContractProposal & SudoContractProposal & ExecuteContractProposal & UpdateAdminProposal & ClearAdminProposal & PinCodesProposal & UnpinCodesProposal & UpdateInstantiateConfigProposal & StoreAndInstantiateContractProposal & ReplacePoolIncentivesProposal & UpdatePoolIncentivesProposal & SetProtoRevEnabledProposal & SetProtoRevAdminAccountProposal & SetSuperfluidAssetsProposal & RemoveSuperfluidAssetsProposal & UpdateUnpoolWhiteListProposal & UpdateFeeTokenProposal & Any) | undefined;
+    content?: (TextProposal & Any) | undefined;
     status: ProposalStatus;
-    /**
-     * final_tally_result is the final tally result of the proposal. When
-     * querying a proposal via gRPC, this field is not populated until the
-     * proposal's voting period has ended.
-     */
     finalTallyResult?: TallyResult;
     submitTime?: Date;
     depositEndTime?: Date;
     totalDeposit: Coin[];
     votingStartTime?: Date;
     votingEndTime?: Date;
+    isExpedited: boolean;
 }
 export interface ProposalProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.Proposal";
     value: Uint8Array;
 }
 export declare type ProposalEncoded = Omit<Proposal, "content"> & {
-    content?: TextProposalProtoMsg | CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | ParameterChangeProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | ClientUpdateProposalProtoMsg | UpgradeProposalProtoMsg | StoreCodeProposalProtoMsg | InstantiateContractProposalProtoMsg | InstantiateContract2ProposalProtoMsg | MigrateContractProposalProtoMsg | SudoContractProposalProtoMsg | ExecuteContractProposalProtoMsg | UpdateAdminProposalProtoMsg | ClearAdminProposalProtoMsg | PinCodesProposalProtoMsg | UnpinCodesProposalProtoMsg | UpdateInstantiateConfigProposalProtoMsg | StoreAndInstantiateContractProposalProtoMsg | ReplacePoolIncentivesProposalProtoMsg | UpdatePoolIncentivesProposalProtoMsg | SetProtoRevEnabledProposalProtoMsg | SetProtoRevAdminAccountProposalProtoMsg | SetSuperfluidAssetsProposalProtoMsg | RemoveSuperfluidAssetsProposalProtoMsg | UpdateUnpoolWhiteListProposalProtoMsg | UpdateFeeTokenProposalProtoMsg | AnyProtoMsg | undefined;
+    content?: TextProposalProtoMsg | AnyProtoMsg | undefined;
 };
 /** Proposal defines the core field members of a governance proposal. */
 export interface ProposalAmino {
     proposal_id: string;
     content?: AnyAmino;
     status: ProposalStatus;
-    /**
-     * final_tally_result is the final tally result of the proposal. When
-     * querying a proposal via gRPC, this field is not populated until the
-     * proposal's voting period has ended.
-     */
     final_tally_result?: TallyResultAmino;
     submit_time?: Date;
     deposit_end_time?: Date;
     total_deposit: CoinAmino[];
     voting_start_time?: Date;
     voting_end_time?: Date;
+    is_expedited: boolean;
 }
 export interface ProposalAminoMsg {
     type: "cosmos-sdk/Proposal";
@@ -215,7 +200,7 @@ export interface ProposalAminoMsg {
 /** Proposal defines the core field members of a governance proposal. */
 export interface ProposalSDKType {
     proposal_id: Long;
-    content?: TextProposalSDKType | CommunityPoolSpendProposalSDKType | CommunityPoolSpendProposalWithDepositSDKType | ParameterChangeProposalSDKType | SoftwareUpgradeProposalSDKType | CancelSoftwareUpgradeProposalSDKType | ClientUpdateProposalSDKType | UpgradeProposalSDKType | StoreCodeProposalSDKType | InstantiateContractProposalSDKType | InstantiateContract2ProposalSDKType | MigrateContractProposalSDKType | SudoContractProposalSDKType | ExecuteContractProposalSDKType | UpdateAdminProposalSDKType | ClearAdminProposalSDKType | PinCodesProposalSDKType | UnpinCodesProposalSDKType | UpdateInstantiateConfigProposalSDKType | StoreAndInstantiateContractProposalSDKType | ReplacePoolIncentivesProposalSDKType | UpdatePoolIncentivesProposalSDKType | SetProtoRevEnabledProposalSDKType | SetProtoRevAdminAccountProposalSDKType | SetSuperfluidAssetsProposalSDKType | RemoveSuperfluidAssetsProposalSDKType | UpdateUnpoolWhiteListProposalSDKType | UpdateFeeTokenProposalSDKType | AnySDKType | undefined;
+    content?: TextProposalSDKType | AnySDKType | undefined;
     status: ProposalStatus;
     final_tally_result?: TallyResultSDKType;
     submit_time?: Date;
@@ -223,6 +208,7 @@ export interface ProposalSDKType {
     total_deposit: CoinSDKType[];
     voting_start_time?: Date;
     voting_end_time?: Date;
+    is_expedited: boolean;
 }
 /** TallyResult defines a standard tally for a governance proposal. */
 export interface TallyResult {
@@ -315,6 +301,10 @@ export interface DepositParams {
      *  months.
      */
     maxDepositPeriod?: Duration;
+    /** Minimum expedited deposit for a proposal to enter voting period. */
+    minExpeditedDeposit: Coin[];
+    /** The ratio representing the proportion of the deposit value that must be paid at proposal submission. */
+    minInitialDepositRatio: string;
 }
 export interface DepositParamsProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.DepositParams";
@@ -329,6 +319,10 @@ export interface DepositParamsAmino {
      *  months.
      */
     max_deposit_period?: DurationAmino;
+    /** Minimum expedited deposit for a proposal to enter voting period. */
+    min_expedited_deposit: CoinAmino[];
+    /** The ratio representing the proportion of the deposit value that must be paid at proposal submission. */
+    min_initial_deposit_ratio: string;
 }
 export interface DepositParamsAminoMsg {
     type: "cosmos-sdk/DepositParams";
@@ -338,11 +332,17 @@ export interface DepositParamsAminoMsg {
 export interface DepositParamsSDKType {
     min_deposit: CoinSDKType[];
     max_deposit_period?: DurationSDKType;
+    min_expedited_deposit: CoinSDKType[];
+    min_initial_deposit_ratio: string;
 }
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParams {
-    /** Length of the voting period. */
+    /** voting_period defines the length of the voting period. */
     votingPeriod?: Duration;
+    /** proposal_voting_periods defines custom voting periods for proposal types. */
+    proposalVotingPeriods: ProposalVotingPeriod[];
+    /** Length of the expedited voting period. */
+    expeditedVotingPeriod?: Duration;
 }
 export interface VotingParamsProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.VotingParams";
@@ -350,8 +350,12 @@ export interface VotingParamsProtoMsg {
 }
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParamsAmino {
-    /** Length of the voting period. */
+    /** voting_period defines the length of the voting period. */
     voting_period?: DurationAmino;
+    /** proposal_voting_periods defines custom voting periods for proposal types. */
+    proposal_voting_periods: ProposalVotingPeriodAmino[];
+    /** Length of the expedited voting period. */
+    expedited_voting_period?: DurationAmino;
 }
 export interface VotingParamsAminoMsg {
     type: "cosmos-sdk/VotingParams";
@@ -360,6 +364,8 @@ export interface VotingParamsAminoMsg {
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParamsSDKType {
     voting_period?: DurationSDKType;
+    proposal_voting_periods: ProposalVotingPeriodSDKType[];
+    expedited_voting_period?: DurationSDKType;
 }
 /** TallyParams defines the params for tallying votes on governance proposals. */
 export interface TallyParams {
@@ -375,6 +381,8 @@ export interface TallyParams {
      *  vetoed. Default value: 1/3.
      */
     vetoThreshold: Uint8Array;
+    /** Minimum proportion of Yes votes for an expedited proposal to pass. Default value: 0.67. */
+    expeditedThreshold: Uint8Array;
 }
 export interface TallyParamsProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.TallyParams";
@@ -394,6 +402,8 @@ export interface TallyParamsAmino {
      *  vetoed. Default value: 1/3.
      */
     veto_threshold: Uint8Array;
+    /** Minimum proportion of Yes votes for an expedited proposal to pass. Default value: 0.67. */
+    expedited_threshold: Uint8Array;
 }
 export interface TallyParamsAminoMsg {
     type: "cosmos-sdk/TallyParams";
@@ -404,8 +414,44 @@ export interface TallyParamsSDKType {
     quorum: Uint8Array;
     threshold: Uint8Array;
     veto_threshold: Uint8Array;
+    expedited_threshold: Uint8Array;
+}
+/**
+ * ProposalVotingPeriod defines custom voting periods for a unique governance
+ * proposal type.
+ */
+export interface ProposalVotingPeriod {
+    /** e.g. "cosmos.params.v1beta1.ParameterChangeProposal" */
+    proposalType: string;
+    votingPeriod?: Duration;
+}
+export interface ProposalVotingPeriodProtoMsg {
+    typeUrl: "/cosmos.gov.v1beta1.ProposalVotingPeriod";
+    value: Uint8Array;
+}
+/**
+ * ProposalVotingPeriod defines custom voting periods for a unique governance
+ * proposal type.
+ */
+export interface ProposalVotingPeriodAmino {
+    /** e.g. "cosmos.params.v1beta1.ParameterChangeProposal" */
+    proposal_type: string;
+    voting_period?: DurationAmino;
+}
+export interface ProposalVotingPeriodAminoMsg {
+    type: "cosmos-sdk/ProposalVotingPeriod";
+    value: ProposalVotingPeriodAmino;
+}
+/**
+ * ProposalVotingPeriod defines custom voting periods for a unique governance
+ * proposal type.
+ */
+export interface ProposalVotingPeriodSDKType {
+    proposal_type: string;
+    voting_period?: DurationSDKType;
 }
 export declare const WeightedVoteOption: {
+    typeUrl: string;
     encode(message: WeightedVoteOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): WeightedVoteOption;
     fromPartial(object: Partial<WeightedVoteOption>): WeightedVoteOption;
@@ -418,6 +464,7 @@ export declare const WeightedVoteOption: {
     toProtoMsg(message: WeightedVoteOption): WeightedVoteOptionProtoMsg;
 };
 export declare const TextProposal: {
+    typeUrl: string;
     encode(message: TextProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TextProposal;
     fromPartial(object: Partial<TextProposal>): TextProposal;
@@ -430,6 +477,7 @@ export declare const TextProposal: {
     toProtoMsg(message: TextProposal): TextProposalProtoMsg;
 };
 export declare const Deposit: {
+    typeUrl: string;
     encode(message: Deposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Deposit;
     fromPartial(object: Partial<Deposit>): Deposit;
@@ -442,6 +490,7 @@ export declare const Deposit: {
     toProtoMsg(message: Deposit): DepositProtoMsg;
 };
 export declare const Proposal: {
+    typeUrl: string;
     encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
     fromPartial(object: Partial<Proposal>): Proposal;
@@ -454,6 +503,7 @@ export declare const Proposal: {
     toProtoMsg(message: Proposal): ProposalProtoMsg;
 };
 export declare const TallyResult: {
+    typeUrl: string;
     encode(message: TallyResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TallyResult;
     fromPartial(object: Partial<TallyResult>): TallyResult;
@@ -466,6 +516,7 @@ export declare const TallyResult: {
     toProtoMsg(message: TallyResult): TallyResultProtoMsg;
 };
 export declare const Vote: {
+    typeUrl: string;
     encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
     fromPartial(object: Partial<Vote>): Vote;
@@ -478,6 +529,7 @@ export declare const Vote: {
     toProtoMsg(message: Vote): VoteProtoMsg;
 };
 export declare const DepositParams: {
+    typeUrl: string;
     encode(message: DepositParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DepositParams;
     fromPartial(object: Partial<DepositParams>): DepositParams;
@@ -490,6 +542,7 @@ export declare const DepositParams: {
     toProtoMsg(message: DepositParams): DepositParamsProtoMsg;
 };
 export declare const VotingParams: {
+    typeUrl: string;
     encode(message: VotingParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VotingParams;
     fromPartial(object: Partial<VotingParams>): VotingParams;
@@ -502,6 +555,7 @@ export declare const VotingParams: {
     toProtoMsg(message: VotingParams): VotingParamsProtoMsg;
 };
 export declare const TallyParams: {
+    typeUrl: string;
     encode(message: TallyParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TallyParams;
     fromPartial(object: Partial<TallyParams>): TallyParams;
@@ -513,6 +567,19 @@ export declare const TallyParams: {
     toProto(message: TallyParams): Uint8Array;
     toProtoMsg(message: TallyParams): TallyParamsProtoMsg;
 };
-export declare const Cosmos_govv1beta1Content_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | ClientUpdateProposal | UpgradeProposal | StoreCodeProposal | InstantiateContractProposal | InstantiateContract2Proposal | MigrateContractProposal | SudoContractProposal | ExecuteContractProposal | UpdateAdminProposal | ClearAdminProposal | PinCodesProposal | UnpinCodesProposal | UpdateInstantiateConfigProposal | StoreAndInstantiateContractProposal | ReplacePoolIncentivesProposal | UpdatePoolIncentivesProposal | SetProtoRevEnabledProposal | SetProtoRevAdminAccountProposal | SetSuperfluidAssetsProposal | RemoveSuperfluidAssetsProposal | UpdateUnpoolWhiteListProposal | UpdateFeeTokenProposal | Any;
-export declare const Cosmos_govv1beta1Content_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_govv1beta1Content_ToAmino: (content: Any) => AnyAmino;
+export declare const ProposalVotingPeriod: {
+    typeUrl: string;
+    encode(message: ProposalVotingPeriod, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ProposalVotingPeriod;
+    fromPartial(object: Partial<ProposalVotingPeriod>): ProposalVotingPeriod;
+    fromAmino(object: ProposalVotingPeriodAmino): ProposalVotingPeriod;
+    toAmino(message: ProposalVotingPeriod): ProposalVotingPeriodAmino;
+    fromAminoMsg(object: ProposalVotingPeriodAminoMsg): ProposalVotingPeriod;
+    toAminoMsg(message: ProposalVotingPeriod): ProposalVotingPeriodAminoMsg;
+    fromProtoMsg(message: ProposalVotingPeriodProtoMsg): ProposalVotingPeriod;
+    toProto(message: ProposalVotingPeriod): Uint8Array;
+    toProtoMsg(message: ProposalVotingPeriod): ProposalVotingPeriodProtoMsg;
+};
+export declare const Content_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => TextProposal | Any;
+export declare const Content_FromAmino: (content: AnyAmino) => Any;
+export declare const Content_ToAmino: (content: Any) => AnyAmino;

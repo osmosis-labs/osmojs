@@ -1,6 +1,6 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType, Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** Params defines the set of params for the distribution module. */
 
 export interface Params {
@@ -22,7 +22,7 @@ export interface ParamsAmino {
   withdraw_addr_enabled: boolean;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: "cosmos-sdk/x/distribution/Params";
   value: ParamsAmino;
 }
 /** Params defines the set of params for the distribution module. */
@@ -294,7 +294,6 @@ export interface FeePoolSDKType {
  */
 
 export interface CommunityPoolSpendProposal {
-  $typeUrl?: string;
   title: string;
   description: string;
   recipient: string;
@@ -327,7 +326,6 @@ export interface CommunityPoolSpendProposalAminoMsg {
  */
 
 export interface CommunityPoolSpendProposalSDKType {
-  $typeUrl?: string;
   title: string;
   description: string;
   recipient: string;
@@ -424,7 +422,6 @@ export interface DelegationDelegatorRewardSDKType {
  */
 
 export interface CommunityPoolSpendProposalWithDeposit {
-  $typeUrl?: string;
   title: string;
   description: string;
   recipient: string;
@@ -457,7 +454,6 @@ export interface CommunityPoolSpendProposalWithDepositAminoMsg {
  */
 
 export interface CommunityPoolSpendProposalWithDepositSDKType {
-  $typeUrl?: string;
   title: string;
   description: string;
   recipient: string;
@@ -564,7 +560,7 @@ export const Params = {
 
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
+      type: "cosmos-sdk/x/distribution/Params",
       value: Params.toAmino(message)
     };
   },
@@ -1255,7 +1251,6 @@ export const FeePool = {
 
 function createBaseCommunityPoolSpendProposal(): CommunityPoolSpendProposal {
   return {
-    $typeUrl: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal",
     title: "",
     description: "",
     recipient: "",
@@ -1595,7 +1590,6 @@ export const DelegationDelegatorReward = {
 
 function createBaseCommunityPoolSpendProposalWithDeposit(): CommunityPoolSpendProposalWithDeposit {
   return {
-    $typeUrl: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit",
     title: "",
     description: "",
     recipient: "",

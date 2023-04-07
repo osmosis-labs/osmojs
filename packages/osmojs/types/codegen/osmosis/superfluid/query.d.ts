@@ -4,8 +4,8 @@ import { SuperfluidAssetType, SuperfluidAsset, SuperfluidAssetAmino, SuperfluidA
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "../lockup/lock";
 import { DelegationResponse, DelegationResponseAmino, DelegationResponseSDKType } from "../../cosmos/staking/v1beta1/staking";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface QueryParamsRequest {
 }
 export interface QueryParamsRequestProtoMsg {
@@ -595,6 +595,7 @@ export interface QueryUnpoolWhitelistResponseSDKType {
     pool_ids: Long[];
 }
 export declare const QueryParamsRequest: {
+    typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
@@ -607,6 +608,7 @@ export declare const QueryParamsRequest: {
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
 export declare const QueryParamsResponse: {
+    typeUrl: string;
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
@@ -619,6 +621,7 @@ export declare const QueryParamsResponse: {
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
 export declare const AssetTypeRequest: {
+    typeUrl: string;
     encode(message: AssetTypeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeRequest;
     fromPartial(object: Partial<AssetTypeRequest>): AssetTypeRequest;
@@ -631,6 +634,7 @@ export declare const AssetTypeRequest: {
     toProtoMsg(message: AssetTypeRequest): AssetTypeRequestProtoMsg;
 };
 export declare const AssetTypeResponse: {
+    typeUrl: string;
     encode(message: AssetTypeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeResponse;
     fromPartial(object: Partial<AssetTypeResponse>): AssetTypeResponse;
@@ -643,6 +647,7 @@ export declare const AssetTypeResponse: {
     toProtoMsg(message: AssetTypeResponse): AssetTypeResponseProtoMsg;
 };
 export declare const AllAssetsRequest: {
+    typeUrl: string;
     encode(_: AllAssetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsRequest;
     fromPartial(_: Partial<AllAssetsRequest>): AllAssetsRequest;
@@ -655,6 +660,7 @@ export declare const AllAssetsRequest: {
     toProtoMsg(message: AllAssetsRequest): AllAssetsRequestProtoMsg;
 };
 export declare const AllAssetsResponse: {
+    typeUrl: string;
     encode(message: AllAssetsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsResponse;
     fromPartial(object: Partial<AllAssetsResponse>): AllAssetsResponse;
@@ -667,6 +673,7 @@ export declare const AllAssetsResponse: {
     toProtoMsg(message: AllAssetsResponse): AllAssetsResponseProtoMsg;
 };
 export declare const AssetMultiplierRequest: {
+    typeUrl: string;
     encode(message: AssetMultiplierRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierRequest;
     fromPartial(object: Partial<AssetMultiplierRequest>): AssetMultiplierRequest;
@@ -679,6 +686,7 @@ export declare const AssetMultiplierRequest: {
     toProtoMsg(message: AssetMultiplierRequest): AssetMultiplierRequestProtoMsg;
 };
 export declare const AssetMultiplierResponse: {
+    typeUrl: string;
     encode(message: AssetMultiplierResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierResponse;
     fromPartial(object: Partial<AssetMultiplierResponse>): AssetMultiplierResponse;
@@ -691,6 +699,7 @@ export declare const AssetMultiplierResponse: {
     toProtoMsg(message: AssetMultiplierResponse): AssetMultiplierResponseProtoMsg;
 };
 export declare const SuperfluidIntermediaryAccountInfo: {
+    typeUrl: string;
     encode(message: SuperfluidIntermediaryAccountInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidIntermediaryAccountInfo;
     fromPartial(object: Partial<SuperfluidIntermediaryAccountInfo>): SuperfluidIntermediaryAccountInfo;
@@ -703,6 +712,7 @@ export declare const SuperfluidIntermediaryAccountInfo: {
     toProtoMsg(message: SuperfluidIntermediaryAccountInfo): SuperfluidIntermediaryAccountInfoProtoMsg;
 };
 export declare const AllIntermediaryAccountsRequest: {
+    typeUrl: string;
     encode(message: AllIntermediaryAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsRequest;
     fromPartial(object: Partial<AllIntermediaryAccountsRequest>): AllIntermediaryAccountsRequest;
@@ -715,6 +725,7 @@ export declare const AllIntermediaryAccountsRequest: {
     toProtoMsg(message: AllIntermediaryAccountsRequest): AllIntermediaryAccountsRequestProtoMsg;
 };
 export declare const AllIntermediaryAccountsResponse: {
+    typeUrl: string;
     encode(message: AllIntermediaryAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsResponse;
     fromPartial(object: Partial<AllIntermediaryAccountsResponse>): AllIntermediaryAccountsResponse;
@@ -727,6 +738,7 @@ export declare const AllIntermediaryAccountsResponse: {
     toProtoMsg(message: AllIntermediaryAccountsResponse): AllIntermediaryAccountsResponseProtoMsg;
 };
 export declare const ConnectedIntermediaryAccountRequest: {
+    typeUrl: string;
     encode(message: ConnectedIntermediaryAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountRequest;
     fromPartial(object: Partial<ConnectedIntermediaryAccountRequest>): ConnectedIntermediaryAccountRequest;
@@ -739,6 +751,7 @@ export declare const ConnectedIntermediaryAccountRequest: {
     toProtoMsg(message: ConnectedIntermediaryAccountRequest): ConnectedIntermediaryAccountRequestProtoMsg;
 };
 export declare const ConnectedIntermediaryAccountResponse: {
+    typeUrl: string;
     encode(message: ConnectedIntermediaryAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountResponse;
     fromPartial(object: Partial<ConnectedIntermediaryAccountResponse>): ConnectedIntermediaryAccountResponse;
@@ -751,6 +764,7 @@ export declare const ConnectedIntermediaryAccountResponse: {
     toProtoMsg(message: ConnectedIntermediaryAccountResponse): ConnectedIntermediaryAccountResponseProtoMsg;
 };
 export declare const QueryTotalDelegationByValidatorForDenomRequest: {
+    typeUrl: string;
     encode(message: QueryTotalDelegationByValidatorForDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomRequest;
     fromPartial(object: Partial<QueryTotalDelegationByValidatorForDenomRequest>): QueryTotalDelegationByValidatorForDenomRequest;
@@ -763,6 +777,7 @@ export declare const QueryTotalDelegationByValidatorForDenomRequest: {
     toProtoMsg(message: QueryTotalDelegationByValidatorForDenomRequest): QueryTotalDelegationByValidatorForDenomRequestProtoMsg;
 };
 export declare const QueryTotalDelegationByValidatorForDenomResponse: {
+    typeUrl: string;
     encode(message: QueryTotalDelegationByValidatorForDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomResponse;
     fromPartial(object: Partial<QueryTotalDelegationByValidatorForDenomResponse>): QueryTotalDelegationByValidatorForDenomResponse;
@@ -775,6 +790,7 @@ export declare const QueryTotalDelegationByValidatorForDenomResponse: {
     toProtoMsg(message: QueryTotalDelegationByValidatorForDenomResponse): QueryTotalDelegationByValidatorForDenomResponseProtoMsg;
 };
 export declare const Delegations: {
+    typeUrl: string;
     encode(message: Delegations, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Delegations;
     fromPartial(object: Partial<Delegations>): Delegations;
@@ -787,6 +803,7 @@ export declare const Delegations: {
     toProtoMsg(message: Delegations): DelegationsProtoMsg;
 };
 export declare const TotalSuperfluidDelegationsRequest: {
+    typeUrl: string;
     encode(_: TotalSuperfluidDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsRequest;
     fromPartial(_: Partial<TotalSuperfluidDelegationsRequest>): TotalSuperfluidDelegationsRequest;
@@ -799,6 +816,7 @@ export declare const TotalSuperfluidDelegationsRequest: {
     toProtoMsg(message: TotalSuperfluidDelegationsRequest): TotalSuperfluidDelegationsRequestProtoMsg;
 };
 export declare const TotalSuperfluidDelegationsResponse: {
+    typeUrl: string;
     encode(message: TotalSuperfluidDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsResponse;
     fromPartial(object: Partial<TotalSuperfluidDelegationsResponse>): TotalSuperfluidDelegationsResponse;
@@ -811,6 +829,7 @@ export declare const TotalSuperfluidDelegationsResponse: {
     toProtoMsg(message: TotalSuperfluidDelegationsResponse): TotalSuperfluidDelegationsResponseProtoMsg;
 };
 export declare const SuperfluidDelegationAmountRequest: {
+    typeUrl: string;
     encode(message: SuperfluidDelegationAmountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountRequest;
     fromPartial(object: Partial<SuperfluidDelegationAmountRequest>): SuperfluidDelegationAmountRequest;
@@ -823,6 +842,7 @@ export declare const SuperfluidDelegationAmountRequest: {
     toProtoMsg(message: SuperfluidDelegationAmountRequest): SuperfluidDelegationAmountRequestProtoMsg;
 };
 export declare const SuperfluidDelegationAmountResponse: {
+    typeUrl: string;
     encode(message: SuperfluidDelegationAmountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountResponse;
     fromPartial(object: Partial<SuperfluidDelegationAmountResponse>): SuperfluidDelegationAmountResponse;
@@ -835,6 +855,7 @@ export declare const SuperfluidDelegationAmountResponse: {
     toProtoMsg(message: SuperfluidDelegationAmountResponse): SuperfluidDelegationAmountResponseProtoMsg;
 };
 export declare const SuperfluidDelegationsByDelegatorRequest: {
+    typeUrl: string;
     encode(message: SuperfluidDelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorRequest;
     fromPartial(object: Partial<SuperfluidDelegationsByDelegatorRequest>): SuperfluidDelegationsByDelegatorRequest;
@@ -847,6 +868,7 @@ export declare const SuperfluidDelegationsByDelegatorRequest: {
     toProtoMsg(message: SuperfluidDelegationsByDelegatorRequest): SuperfluidDelegationsByDelegatorRequestProtoMsg;
 };
 export declare const SuperfluidDelegationsByDelegatorResponse: {
+    typeUrl: string;
     encode(message: SuperfluidDelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorResponse;
     fromPartial(object: Partial<SuperfluidDelegationsByDelegatorResponse>): SuperfluidDelegationsByDelegatorResponse;
@@ -859,6 +881,7 @@ export declare const SuperfluidDelegationsByDelegatorResponse: {
     toProtoMsg(message: SuperfluidDelegationsByDelegatorResponse): SuperfluidDelegationsByDelegatorResponseProtoMsg;
 };
 export declare const SuperfluidUndelegationsByDelegatorRequest: {
+    typeUrl: string;
     encode(message: SuperfluidUndelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorRequest;
     fromPartial(object: Partial<SuperfluidUndelegationsByDelegatorRequest>): SuperfluidUndelegationsByDelegatorRequest;
@@ -871,6 +894,7 @@ export declare const SuperfluidUndelegationsByDelegatorRequest: {
     toProtoMsg(message: SuperfluidUndelegationsByDelegatorRequest): SuperfluidUndelegationsByDelegatorRequestProtoMsg;
 };
 export declare const SuperfluidUndelegationsByDelegatorResponse: {
+    typeUrl: string;
     encode(message: SuperfluidUndelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorResponse;
     fromPartial(object: Partial<SuperfluidUndelegationsByDelegatorResponse>): SuperfluidUndelegationsByDelegatorResponse;
@@ -883,6 +907,7 @@ export declare const SuperfluidUndelegationsByDelegatorResponse: {
     toProtoMsg(message: SuperfluidUndelegationsByDelegatorResponse): SuperfluidUndelegationsByDelegatorResponseProtoMsg;
 };
 export declare const SuperfluidDelegationsByValidatorDenomRequest: {
+    typeUrl: string;
     encode(message: SuperfluidDelegationsByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomRequest;
     fromPartial(object: Partial<SuperfluidDelegationsByValidatorDenomRequest>): SuperfluidDelegationsByValidatorDenomRequest;
@@ -895,6 +920,7 @@ export declare const SuperfluidDelegationsByValidatorDenomRequest: {
     toProtoMsg(message: SuperfluidDelegationsByValidatorDenomRequest): SuperfluidDelegationsByValidatorDenomRequestProtoMsg;
 };
 export declare const SuperfluidDelegationsByValidatorDenomResponse: {
+    typeUrl: string;
     encode(message: SuperfluidDelegationsByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomResponse;
     fromPartial(object: Partial<SuperfluidDelegationsByValidatorDenomResponse>): SuperfluidDelegationsByValidatorDenomResponse;
@@ -907,6 +933,7 @@ export declare const SuperfluidDelegationsByValidatorDenomResponse: {
     toProtoMsg(message: SuperfluidDelegationsByValidatorDenomResponse): SuperfluidDelegationsByValidatorDenomResponseProtoMsg;
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
+    typeUrl: string;
     encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
     fromPartial(object: Partial<EstimateSuperfluidDelegatedAmountByValidatorDenomRequest>): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
@@ -919,6 +946,7 @@ export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
     toProtoMsg(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): EstimateSuperfluidDelegatedAmountByValidatorDenomRequestProtoMsg;
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: {
+    typeUrl: string;
     encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
     fromPartial(object: Partial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
@@ -931,6 +959,7 @@ export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: 
     toProtoMsg(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): EstimateSuperfluidDelegatedAmountByValidatorDenomResponseProtoMsg;
 };
 export declare const QueryTotalDelegationByDelegatorRequest: {
+    typeUrl: string;
     encode(message: QueryTotalDelegationByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorRequest;
     fromPartial(object: Partial<QueryTotalDelegationByDelegatorRequest>): QueryTotalDelegationByDelegatorRequest;
@@ -943,6 +972,7 @@ export declare const QueryTotalDelegationByDelegatorRequest: {
     toProtoMsg(message: QueryTotalDelegationByDelegatorRequest): QueryTotalDelegationByDelegatorRequestProtoMsg;
 };
 export declare const QueryTotalDelegationByDelegatorResponse: {
+    typeUrl: string;
     encode(message: QueryTotalDelegationByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorResponse;
     fromPartial(object: Partial<QueryTotalDelegationByDelegatorResponse>): QueryTotalDelegationByDelegatorResponse;
@@ -955,6 +985,7 @@ export declare const QueryTotalDelegationByDelegatorResponse: {
     toProtoMsg(message: QueryTotalDelegationByDelegatorResponse): QueryTotalDelegationByDelegatorResponseProtoMsg;
 };
 export declare const QueryUnpoolWhitelistRequest: {
+    typeUrl: string;
     encode(_: QueryUnpoolWhitelistRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnpoolWhitelistRequest;
     fromPartial(_: Partial<QueryUnpoolWhitelistRequest>): QueryUnpoolWhitelistRequest;
@@ -967,6 +998,7 @@ export declare const QueryUnpoolWhitelistRequest: {
     toProtoMsg(message: QueryUnpoolWhitelistRequest): QueryUnpoolWhitelistRequestProtoMsg;
 };
 export declare const QueryUnpoolWhitelistResponse: {
+    typeUrl: string;
     encode(message: QueryUnpoolWhitelistResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnpoolWhitelistResponse;
     fromPartial(object: Partial<QueryUnpoolWhitelistResponse>): QueryUnpoolWhitelistResponse;

@@ -39,6 +39,7 @@ export interface FeeTokenSDKType {
     poolID: Long;
 }
 export declare const FeeToken: {
+    typeUrl: string;
     encode(message: FeeToken, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FeeToken;
     fromPartial(object: Partial<FeeToken>): FeeToken;

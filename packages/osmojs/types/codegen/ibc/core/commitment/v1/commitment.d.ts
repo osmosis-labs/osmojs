@@ -1,4 +1,4 @@
-import { CommitmentProof, CommitmentProofAmino, CommitmentProofSDKType } from "../../../../confio/proofs";
+import { CommitmentProof, CommitmentProofAmino, CommitmentProofSDKType } from "../../../../cosmos/ics23/v1/proofs";
 import * as _m0 from "protobufjs/minimal";
 /**
  * MerkleRoot defines a merkle root hash.
@@ -132,6 +132,7 @@ export interface MerkleProofSDKType {
     proofs: CommitmentProofSDKType[];
 }
 export declare const MerkleRoot: {
+    typeUrl: string;
     encode(message: MerkleRoot, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerkleRoot;
     fromPartial(object: Partial<MerkleRoot>): MerkleRoot;
@@ -144,6 +145,7 @@ export declare const MerkleRoot: {
     toProtoMsg(message: MerkleRoot): MerkleRootProtoMsg;
 };
 export declare const MerklePrefix: {
+    typeUrl: string;
     encode(message: MerklePrefix, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerklePrefix;
     fromPartial(object: Partial<MerklePrefix>): MerklePrefix;
@@ -156,6 +158,7 @@ export declare const MerklePrefix: {
     toProtoMsg(message: MerklePrefix): MerklePrefixProtoMsg;
 };
 export declare const MerklePath: {
+    typeUrl: string;
     encode(message: MerklePath, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerklePath;
     fromPartial(object: Partial<MerklePath>): MerklePath;
@@ -168,6 +171,7 @@ export declare const MerklePath: {
     toProtoMsg(message: MerklePath): MerklePathProtoMsg;
 };
 export declare const MerkleProof: {
+    typeUrl: string;
     encode(message: MerkleProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerkleProof;
     fromPartial(object: Partial<MerkleProof>): MerkleProof;

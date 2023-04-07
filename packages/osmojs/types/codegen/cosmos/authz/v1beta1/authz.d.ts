@@ -7,6 +7,7 @@ import * as _m0 from "protobufjs/minimal";
  * the provided method on behalf of the granter's account.
  */
 export interface GenericAuthorization {
+    $typeUrl?: string;
     /** Msg, identified by it's type URL, to grant unrestricted permissions to execute */
     msg: string;
 }
@@ -31,6 +32,7 @@ export interface GenericAuthorizationAminoMsg {
  * the provided method on behalf of the granter's account.
  */
 export interface GenericAuthorizationSDKType {
+    $typeUrl?: string;
     msg: string;
 }
 /**
@@ -39,11 +41,6 @@ export interface GenericAuthorizationSDKType {
  */
 export interface Grant {
     authorization?: (GenericAuthorization & SendAuthorization & StakeAuthorization & Any) | undefined;
-    /**
-     * time when the grant will expire and will be pruned. If null, then the grant
-     * doesn't have a time expiration (other conditions  in `authorization`
-     * may apply to invalidate the grant)
-     */
     expiration?: Date;
 }
 export interface GrantProtoMsg {
@@ -59,11 +56,6 @@ export declare type GrantEncoded = Omit<Grant, "authorization"> & {
  */
 export interface GrantAmino {
     authorization?: AnyAmino;
-    /**
-     * time when the grant will expire and will be pruned. If null, then the grant
-     * doesn't have a time expiration (other conditions  in `authorization`
-     * may apply to invalidate the grant)
-     */
     expiration?: Date;
 }
 export interface GrantAminoMsg {
@@ -119,29 +111,8 @@ export interface GrantAuthorizationSDKType {
     authorization?: GenericAuthorizationSDKType | SendAuthorizationSDKType | StakeAuthorizationSDKType | AnySDKType | undefined;
     expiration?: Date;
 }
-/** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
-export interface GrantQueueItem {
-    /** msg_type_urls contains the list of TypeURL of a sdk.Msg. */
-    msgTypeUrls: string[];
-}
-export interface GrantQueueItemProtoMsg {
-    typeUrl: "/cosmos.authz.v1beta1.GrantQueueItem";
-    value: Uint8Array;
-}
-/** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
-export interface GrantQueueItemAmino {
-    /** msg_type_urls contains the list of TypeURL of a sdk.Msg. */
-    msg_type_urls: string[];
-}
-export interface GrantQueueItemAminoMsg {
-    type: "cosmos-sdk/GrantQueueItem";
-    value: GrantQueueItemAmino;
-}
-/** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
-export interface GrantQueueItemSDKType {
-    msg_type_urls: string[];
-}
 export declare const GenericAuthorization: {
+    typeUrl: string;
     encode(message: GenericAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenericAuthorization;
     fromPartial(object: Partial<GenericAuthorization>): GenericAuthorization;
@@ -154,6 +125,7 @@ export declare const GenericAuthorization: {
     toProtoMsg(message: GenericAuthorization): GenericAuthorizationProtoMsg;
 };
 export declare const Grant: {
+    typeUrl: string;
     encode(message: Grant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Grant;
     fromPartial(object: Partial<Grant>): Grant;
@@ -166,6 +138,7 @@ export declare const Grant: {
     toProtoMsg(message: Grant): GrantProtoMsg;
 };
 export declare const GrantAuthorization: {
+    typeUrl: string;
     encode(message: GrantAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GrantAuthorization;
     fromPartial(object: Partial<GrantAuthorization>): GrantAuthorization;
@@ -177,18 +150,6 @@ export declare const GrantAuthorization: {
     toProto(message: GrantAuthorization): Uint8Array;
     toProtoMsg(message: GrantAuthorization): GrantAuthorizationProtoMsg;
 };
-export declare const GrantQueueItem: {
-    encode(message: GrantQueueItem, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GrantQueueItem;
-    fromPartial(object: Partial<GrantQueueItem>): GrantQueueItem;
-    fromAmino(object: GrantQueueItemAmino): GrantQueueItem;
-    toAmino(message: GrantQueueItem): GrantQueueItemAmino;
-    fromAminoMsg(object: GrantQueueItemAminoMsg): GrantQueueItem;
-    toAminoMsg(message: GrantQueueItem): GrantQueueItemAminoMsg;
-    fromProtoMsg(message: GrantQueueItemProtoMsg): GrantQueueItem;
-    toProto(message: GrantQueueItem): Uint8Array;
-    toProtoMsg(message: GrantQueueItem): GrantQueueItemProtoMsg;
-};
-export declare const Cosmos_authzAuthorization_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => GenericAuthorization | SendAuthorization | StakeAuthorization | Any;
-export declare const Cosmos_authzAuthorization_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authzAuthorization_ToAmino: (content: Any) => AnyAmino;
+export declare const Authorization_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => GenericAuthorization | SendAuthorization | StakeAuthorization | Any;
+export declare const Authorization_FromAmino: (content: AnyAmino) => Any;
+export declare const Authorization_ToAmino: (content: Any) => AnyAmino;

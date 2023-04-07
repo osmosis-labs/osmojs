@@ -40,6 +40,7 @@ export interface ParamsResponseSDKType {
     params?: ParamsSDKType;
 }
 export declare const ParamsRequest: {
+    typeUrl: string;
     encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
@@ -52,6 +53,7 @@ export declare const ParamsRequest: {
     toProtoMsg(message: ParamsRequest): ParamsRequestProtoMsg;
 };
 export declare const ParamsResponse: {
+    typeUrl: string;
     encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;

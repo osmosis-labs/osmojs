@@ -19,16 +19,23 @@ export const createLCDClient = async ({
           requestClient
         })
       },
+      base: {
+        node: {
+          v1beta1: new (await import("./base/node/v1beta1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        }
+      },
       distribution: {
         v1beta1: new (await import("./distribution/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
       gov: {
-        v1: new (await import("./gov/v1/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./gov/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         }),
-        v1beta1: new (await import("./gov/v1beta1/query.lcd")).LCDQueryClient({
+        v1: new (await import("./gov/v1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
@@ -46,13 +53,6 @@ export const createLCDClient = async ({
         v1beta1: new (await import("./upgrade/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
-      },
-      base: {
-        node: {
-          v1beta1: new (await import("./base/node/v1beta1/query.lcd")).LCDQueryClient({
-            requestClient
-          })
-        }
       }
     }
   };

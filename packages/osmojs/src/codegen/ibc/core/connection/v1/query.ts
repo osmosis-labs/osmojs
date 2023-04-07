@@ -1,9 +1,9 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { ConnectionEnd, ConnectionEndAmino, ConnectionEndSDKType, IdentifiedConnection, IdentifiedConnectionAmino, IdentifiedConnectionSDKType } from "./connection";
-import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType } from "../../client/v1/client";
+import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType, Params, ParamsAmino, ParamsSDKType } from "../../client/v1/client";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * QueryConnectionRequest is the request type for the Query/Connection RPC
  * method
@@ -427,6 +427,48 @@ export interface QueryConnectionConsensusStateResponseSDKType {
   client_id: string;
   proof: Uint8Array;
   proof_height?: HeightSDKType;
+}
+/** QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method. */
+
+export interface QueryConnectionParamsRequest {}
+export interface QueryConnectionParamsRequestProtoMsg {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsRequest";
+  value: Uint8Array;
+}
+/** QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method. */
+
+export interface QueryConnectionParamsRequestAmino {}
+export interface QueryConnectionParamsRequestAminoMsg {
+  type: "cosmos-sdk/QueryConnectionParamsRequest";
+  value: QueryConnectionParamsRequestAmino;
+}
+/** QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method. */
+
+export interface QueryConnectionParamsRequestSDKType {}
+/** QueryConnectionParamsResponse is the response type for the Query/ConnectionParams RPC method. */
+
+export interface QueryConnectionParamsResponse {
+  /** params defines the parameters of the module. */
+  params?: Params;
+}
+export interface QueryConnectionParamsResponseProtoMsg {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsResponse";
+  value: Uint8Array;
+}
+/** QueryConnectionParamsResponse is the response type for the Query/ConnectionParams RPC method. */
+
+export interface QueryConnectionParamsResponseAmino {
+  /** params defines the parameters of the module. */
+  params?: ParamsAmino;
+}
+export interface QueryConnectionParamsResponseAminoMsg {
+  type: "cosmos-sdk/QueryConnectionParamsResponse";
+  value: QueryConnectionParamsResponseAmino;
+}
+/** QueryConnectionParamsResponse is the response type for the Query/ConnectionParams RPC method. */
+
+export interface QueryConnectionParamsResponseSDKType {
+  params?: ParamsSDKType;
 }
 
 function createBaseQueryConnectionRequest(): QueryConnectionRequest {
@@ -1442,6 +1484,162 @@ export const QueryConnectionConsensusStateResponse = {
     return {
       typeUrl: "/ibc.core.connection.v1.QueryConnectionConsensusStateResponse",
       value: QueryConnectionConsensusStateResponse.encode(message).finish()
+    };
+  }
+
+};
+
+function createBaseQueryConnectionParamsRequest(): QueryConnectionParamsRequest {
+  return {};
+}
+
+export const QueryConnectionParamsRequest = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsRequest",
+
+  encode(_: QueryConnectionParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionParamsRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryConnectionParamsRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(_: Partial<QueryConnectionParamsRequest>): QueryConnectionParamsRequest {
+    const message = createBaseQueryConnectionParamsRequest();
+    return message;
+  },
+
+  fromAmino(_: QueryConnectionParamsRequestAmino): QueryConnectionParamsRequest {
+    return {};
+  },
+
+  toAmino(_: QueryConnectionParamsRequest): QueryConnectionParamsRequestAmino {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromAminoMsg(object: QueryConnectionParamsRequestAminoMsg): QueryConnectionParamsRequest {
+    return QueryConnectionParamsRequest.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: QueryConnectionParamsRequest): QueryConnectionParamsRequestAminoMsg {
+    return {
+      type: "cosmos-sdk/QueryConnectionParamsRequest",
+      value: QueryConnectionParamsRequest.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: QueryConnectionParamsRequestProtoMsg): QueryConnectionParamsRequest {
+    return QueryConnectionParamsRequest.decode(message.value);
+  },
+
+  toProto(message: QueryConnectionParamsRequest): Uint8Array {
+    return QueryConnectionParamsRequest.encode(message).finish();
+  },
+
+  toProtoMsg(message: QueryConnectionParamsRequest): QueryConnectionParamsRequestProtoMsg {
+    return {
+      typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsRequest",
+      value: QueryConnectionParamsRequest.encode(message).finish()
+    };
+  }
+
+};
+
+function createBaseQueryConnectionParamsResponse(): QueryConnectionParamsResponse {
+  return {
+    params: undefined
+  };
+}
+
+export const QueryConnectionParamsResponse = {
+  typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsResponse",
+
+  encode(message: QueryConnectionParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.params !== undefined) {
+      Params.encode(message.params, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionParamsResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryConnectionParamsResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryConnectionParamsResponse>): QueryConnectionParamsResponse {
+    const message = createBaseQueryConnectionParamsResponse();
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    return message;
+  },
+
+  fromAmino(object: QueryConnectionParamsResponseAmino): QueryConnectionParamsResponse {
+    return {
+      params: object?.params ? Params.fromAmino(object.params) : undefined
+    };
+  },
+
+  toAmino(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseAmino {
+    const obj: any = {};
+    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: QueryConnectionParamsResponseAminoMsg): QueryConnectionParamsResponse {
+    return QueryConnectionParamsResponse.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/QueryConnectionParamsResponse",
+      value: QueryConnectionParamsResponse.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: QueryConnectionParamsResponseProtoMsg): QueryConnectionParamsResponse {
+    return QueryConnectionParamsResponse.decode(message.value);
+  },
+
+  toProto(message: QueryConnectionParamsResponse): Uint8Array {
+    return QueryConnectionParamsResponse.encode(message).finish();
+  },
+
+  toProtoMsg(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseProtoMsg {
+    return {
+      typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsResponse",
+      value: QueryConnectionParamsResponse.encode(message).finish()
     };
   }
 

@@ -55,6 +55,7 @@ export interface QuerySpotPriceResponseSDKType {
     spot_price: string;
 }
 export declare const QuerySpotPriceRequest: {
+    typeUrl: string;
     encode(message: QuerySpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceRequest;
     fromPartial(object: Partial<QuerySpotPriceRequest>): QuerySpotPriceRequest;
@@ -67,6 +68,7 @@ export declare const QuerySpotPriceRequest: {
     toProtoMsg(message: QuerySpotPriceRequest): QuerySpotPriceRequestProtoMsg;
 };
 export declare const QuerySpotPriceResponse: {
+    typeUrl: string;
     encode(message: QuerySpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponse;
     fromPartial(object: Partial<QuerySpotPriceResponse>): QuerySpotPriceResponse;

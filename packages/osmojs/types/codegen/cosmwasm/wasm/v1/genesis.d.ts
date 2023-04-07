@@ -1,6 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType, CodeInfo, CodeInfoAmino, CodeInfoSDKType, ContractInfo, ContractInfoAmino, ContractInfoSDKType, Model, ModelAmino, ModelSDKType, ContractCodeHistoryEntry, ContractCodeHistoryEntryAmino, ContractCodeHistoryEntrySDKType } from "./types";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState - genesis state of x/wasm */
 export interface GenesisState {
     params?: Params;
@@ -114,6 +114,7 @@ export interface SequenceSDKType {
     value: Long;
 }
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
@@ -126,6 +127,7 @@ export declare const GenesisState: {
     toProtoMsg(message: GenesisState): GenesisStateProtoMsg;
 };
 export declare const Code: {
+    typeUrl: string;
     encode(message: Code, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Code;
     fromPartial(object: Partial<Code>): Code;
@@ -138,6 +140,7 @@ export declare const Code: {
     toProtoMsg(message: Code): CodeProtoMsg;
 };
 export declare const Contract: {
+    typeUrl: string;
     encode(message: Contract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Contract;
     fromPartial(object: Partial<Contract>): Contract;
@@ -150,6 +153,7 @@ export declare const Contract: {
     toProtoMsg(message: Contract): ContractProtoMsg;
 };
 export declare const Sequence: {
+    typeUrl: string;
     encode(message: Sequence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Sequence;
     fromPartial(object: Partial<Sequence>): Sequence;

@@ -21,6 +21,7 @@ export interface BitArraySDKType {
     elems: Long[];
 }
 export declare const BitArray: {
+    typeUrl: string;
     encode(message: BitArray, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BitArray;
     fromPartial(object: Partial<BitArray>): BitArray;

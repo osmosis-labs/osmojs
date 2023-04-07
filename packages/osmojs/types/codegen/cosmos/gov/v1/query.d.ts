@@ -424,6 +424,7 @@ export interface QueryTallyResultResponseSDKType {
     tally?: TallyResultSDKType;
 }
 export declare const QueryProposalRequest: {
+    typeUrl: string;
     encode(message: QueryProposalRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalRequest;
     fromPartial(object: Partial<QueryProposalRequest>): QueryProposalRequest;
@@ -436,6 +437,7 @@ export declare const QueryProposalRequest: {
     toProtoMsg(message: QueryProposalRequest): QueryProposalRequestProtoMsg;
 };
 export declare const QueryProposalResponse: {
+    typeUrl: string;
     encode(message: QueryProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalResponse;
     fromPartial(object: Partial<QueryProposalResponse>): QueryProposalResponse;
@@ -448,6 +450,7 @@ export declare const QueryProposalResponse: {
     toProtoMsg(message: QueryProposalResponse): QueryProposalResponseProtoMsg;
 };
 export declare const QueryProposalsRequest: {
+    typeUrl: string;
     encode(message: QueryProposalsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsRequest;
     fromPartial(object: Partial<QueryProposalsRequest>): QueryProposalsRequest;
@@ -460,6 +463,7 @@ export declare const QueryProposalsRequest: {
     toProtoMsg(message: QueryProposalsRequest): QueryProposalsRequestProtoMsg;
 };
 export declare const QueryProposalsResponse: {
+    typeUrl: string;
     encode(message: QueryProposalsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsResponse;
     fromPartial(object: Partial<QueryProposalsResponse>): QueryProposalsResponse;
@@ -472,6 +476,7 @@ export declare const QueryProposalsResponse: {
     toProtoMsg(message: QueryProposalsResponse): QueryProposalsResponseProtoMsg;
 };
 export declare const QueryVoteRequest: {
+    typeUrl: string;
     encode(message: QueryVoteRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteRequest;
     fromPartial(object: Partial<QueryVoteRequest>): QueryVoteRequest;
@@ -484,6 +489,7 @@ export declare const QueryVoteRequest: {
     toProtoMsg(message: QueryVoteRequest): QueryVoteRequestProtoMsg;
 };
 export declare const QueryVoteResponse: {
+    typeUrl: string;
     encode(message: QueryVoteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteResponse;
     fromPartial(object: Partial<QueryVoteResponse>): QueryVoteResponse;
@@ -496,6 +502,7 @@ export declare const QueryVoteResponse: {
     toProtoMsg(message: QueryVoteResponse): QueryVoteResponseProtoMsg;
 };
 export declare const QueryVotesRequest: {
+    typeUrl: string;
     encode(message: QueryVotesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesRequest;
     fromPartial(object: Partial<QueryVotesRequest>): QueryVotesRequest;
@@ -508,6 +515,7 @@ export declare const QueryVotesRequest: {
     toProtoMsg(message: QueryVotesRequest): QueryVotesRequestProtoMsg;
 };
 export declare const QueryVotesResponse: {
+    typeUrl: string;
     encode(message: QueryVotesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesResponse;
     fromPartial(object: Partial<QueryVotesResponse>): QueryVotesResponse;
@@ -520,6 +528,7 @@ export declare const QueryVotesResponse: {
     toProtoMsg(message: QueryVotesResponse): QueryVotesResponseProtoMsg;
 };
 export declare const QueryParamsRequest: {
+    typeUrl: string;
     encode(message: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(object: Partial<QueryParamsRequest>): QueryParamsRequest;
@@ -532,6 +541,7 @@ export declare const QueryParamsRequest: {
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
 export declare const QueryParamsResponse: {
+    typeUrl: string;
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
@@ -544,6 +554,7 @@ export declare const QueryParamsResponse: {
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
 export declare const QueryDepositRequest: {
+    typeUrl: string;
     encode(message: QueryDepositRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositRequest;
     fromPartial(object: Partial<QueryDepositRequest>): QueryDepositRequest;
@@ -556,6 +567,7 @@ export declare const QueryDepositRequest: {
     toProtoMsg(message: QueryDepositRequest): QueryDepositRequestProtoMsg;
 };
 export declare const QueryDepositResponse: {
+    typeUrl: string;
     encode(message: QueryDepositResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositResponse;
     fromPartial(object: Partial<QueryDepositResponse>): QueryDepositResponse;
@@ -568,6 +580,7 @@ export declare const QueryDepositResponse: {
     toProtoMsg(message: QueryDepositResponse): QueryDepositResponseProtoMsg;
 };
 export declare const QueryDepositsRequest: {
+    typeUrl: string;
     encode(message: QueryDepositsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositsRequest;
     fromPartial(object: Partial<QueryDepositsRequest>): QueryDepositsRequest;
@@ -580,6 +593,7 @@ export declare const QueryDepositsRequest: {
     toProtoMsg(message: QueryDepositsRequest): QueryDepositsRequestProtoMsg;
 };
 export declare const QueryDepositsResponse: {
+    typeUrl: string;
     encode(message: QueryDepositsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositsResponse;
     fromPartial(object: Partial<QueryDepositsResponse>): QueryDepositsResponse;
@@ -592,6 +606,7 @@ export declare const QueryDepositsResponse: {
     toProtoMsg(message: QueryDepositsResponse): QueryDepositsResponseProtoMsg;
 };
 export declare const QueryTallyResultRequest: {
+    typeUrl: string;
     encode(message: QueryTallyResultRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultRequest;
     fromPartial(object: Partial<QueryTallyResultRequest>): QueryTallyResultRequest;
@@ -604,6 +619,7 @@ export declare const QueryTallyResultRequest: {
     toProtoMsg(message: QueryTallyResultRequest): QueryTallyResultRequestProtoMsg;
 };
 export declare const QueryTallyResultResponse: {
+    typeUrl: string;
     encode(message: QueryTallyResultResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultResponse;
     fromPartial(object: Partial<QueryTallyResultResponse>): QueryTallyResultResponse;

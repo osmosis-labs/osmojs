@@ -135,6 +135,7 @@ export interface Record_OfflineAminoMsg {
 export interface Record_OfflineSDKType {
 }
 export declare const Record: {
+    typeUrl: string;
     encode(message: Record, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record;
     fromPartial(object: Partial<Record>): Record;
@@ -147,6 +148,7 @@ export declare const Record: {
     toProtoMsg(message: Record): RecordProtoMsg;
 };
 export declare const Record_Local: {
+    typeUrl: string;
     encode(message: Record_Local, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Local;
     fromPartial(object: Partial<Record_Local>): Record_Local;
@@ -159,6 +161,7 @@ export declare const Record_Local: {
     toProtoMsg(message: Record_Local): Record_LocalProtoMsg;
 };
 export declare const Record_Ledger: {
+    typeUrl: string;
     encode(message: Record_Ledger, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Ledger;
     fromPartial(object: Partial<Record_Ledger>): Record_Ledger;
@@ -171,6 +174,7 @@ export declare const Record_Ledger: {
     toProtoMsg(message: Record_Ledger): Record_LedgerProtoMsg;
 };
 export declare const Record_Multi: {
+    typeUrl: string;
     encode(_: Record_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Multi;
     fromPartial(_: Partial<Record_Multi>): Record_Multi;
@@ -183,6 +187,7 @@ export declare const Record_Multi: {
     toProtoMsg(message: Record_Multi): Record_MultiProtoMsg;
 };
 export declare const Record_Offline: {
+    typeUrl: string;
     encode(_: Record_Offline, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Offline;
     fromPartial(_: Partial<Record_Offline>): Record_Offline;

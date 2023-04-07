@@ -71,6 +71,7 @@ export interface SimpleValidatorSDKType {
     voting_power: Long;
 }
 export declare const ValidatorSet: {
+    typeUrl: string;
     encode(message: ValidatorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSet;
     fromPartial(object: Partial<ValidatorSet>): ValidatorSet;
@@ -82,6 +83,7 @@ export declare const ValidatorSet: {
     toProtoMsg(message: ValidatorSet): ValidatorSetProtoMsg;
 };
 export declare const Validator: {
+    typeUrl: string;
     encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
     fromPartial(object: Partial<Validator>): Validator;
@@ -93,6 +95,7 @@ export declare const Validator: {
     toProtoMsg(message: Validator): ValidatorProtoMsg;
 };
 export declare const SimpleValidator: {
+    typeUrl: string;
     encode(message: SimpleValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimpleValidator;
     fromPartial(object: Partial<SimpleValidator>): SimpleValidator;

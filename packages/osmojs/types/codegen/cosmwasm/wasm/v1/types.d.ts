@@ -1,6 +1,6 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** AccessType permission types */
 export declare enum AccessType {
     /** ACCESS_TYPE_UNSPECIFIED - AccessTypeUnspecified placeholder for empty value */
@@ -313,6 +313,7 @@ export interface ModelSDKType {
     value: Uint8Array;
 }
 export declare const AccessTypeParam: {
+    typeUrl: string;
     encode(message: AccessTypeParam, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccessTypeParam;
     fromPartial(object: Partial<AccessTypeParam>): AccessTypeParam;
@@ -325,6 +326,7 @@ export declare const AccessTypeParam: {
     toProtoMsg(message: AccessTypeParam): AccessTypeParamProtoMsg;
 };
 export declare const AccessConfig: {
+    typeUrl: string;
     encode(message: AccessConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccessConfig;
     fromPartial(object: Partial<AccessConfig>): AccessConfig;
@@ -337,6 +339,7 @@ export declare const AccessConfig: {
     toProtoMsg(message: AccessConfig): AccessConfigProtoMsg;
 };
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
@@ -349,6 +352,7 @@ export declare const Params: {
     toProtoMsg(message: Params): ParamsProtoMsg;
 };
 export declare const CodeInfo: {
+    typeUrl: string;
     encode(message: CodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CodeInfo;
     fromPartial(object: Partial<CodeInfo>): CodeInfo;
@@ -361,6 +365,7 @@ export declare const CodeInfo: {
     toProtoMsg(message: CodeInfo): CodeInfoProtoMsg;
 };
 export declare const ContractInfo: {
+    typeUrl: string;
     encode(message: ContractInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ContractInfo;
     fromPartial(object: Partial<ContractInfo>): ContractInfo;
@@ -373,6 +378,7 @@ export declare const ContractInfo: {
     toProtoMsg(message: ContractInfo): ContractInfoProtoMsg;
 };
 export declare const ContractCodeHistoryEntry: {
+    typeUrl: string;
     encode(message: ContractCodeHistoryEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ContractCodeHistoryEntry;
     fromPartial(object: Partial<ContractCodeHistoryEntry>): ContractCodeHistoryEntry;
@@ -385,6 +391,7 @@ export declare const ContractCodeHistoryEntry: {
     toProtoMsg(message: ContractCodeHistoryEntry): ContractCodeHistoryEntryProtoMsg;
 };
 export declare const AbsoluteTxPosition: {
+    typeUrl: string;
     encode(message: AbsoluteTxPosition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AbsoluteTxPosition;
     fromPartial(object: Partial<AbsoluteTxPosition>): AbsoluteTxPosition;
@@ -397,6 +404,7 @@ export declare const AbsoluteTxPosition: {
     toProtoMsg(message: AbsoluteTxPosition): AbsoluteTxPositionProtoMsg;
 };
 export declare const Model: {
+    typeUrl: string;
     encode(message: Model, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Model;
     fromPartial(object: Partial<Model>): Model;

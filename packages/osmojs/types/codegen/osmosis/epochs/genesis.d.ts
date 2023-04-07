@@ -159,6 +159,7 @@ export interface GenesisStateSDKType {
     epochs: EpochInfoSDKType[];
 }
 export declare const EpochInfo: {
+    typeUrl: string;
     encode(message: EpochInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EpochInfo;
     fromPartial(object: Partial<EpochInfo>): EpochInfo;
@@ -171,6 +172,7 @@ export declare const EpochInfo: {
     toProtoMsg(message: EpochInfo): EpochInfoProtoMsg;
 };
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;

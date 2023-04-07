@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryCurrentPlanRequest, QueryCurrentPlanResponse, QueryAppliedPlanRequest, QueryAppliedPlanResponse, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponse, QueryModuleVersionsRequest, QueryModuleVersionsResponse, QueryAuthorityRequest, QueryAuthorityResponse } from "./query";
+import { QueryCurrentPlanRequest, QueryCurrentPlanResponse, QueryAppliedPlanRequest, QueryAppliedPlanResponse, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponse, QueryModuleVersionsRequest, QueryModuleVersionsResponse } from "./query";
 /** Query defines the gRPC upgrade querier service. */
 
 export interface Query {
@@ -27,9 +27,6 @@ export interface Query {
    */
 
   moduleVersions(request: QueryModuleVersionsRequest): Promise<QueryModuleVersionsResponse>;
-  /** Returns the account with authority to conduct upgrades */
-
-  authority(request?: QueryAuthorityRequest): Promise<QueryAuthorityResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -40,7 +37,6 @@ export class QueryClientImpl implements Query {
     this.appliedPlan = this.appliedPlan.bind(this);
     this.upgradedConsensusState = this.upgradedConsensusState.bind(this);
     this.moduleVersions = this.moduleVersions.bind(this);
-    this.authority = this.authority.bind(this);
   }
 
   currentPlan(request: QueryCurrentPlanRequest = {}): Promise<QueryCurrentPlanResponse> {
@@ -67,12 +63,6 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryModuleVersionsResponse.decode(new _m0.Reader(data)));
   }
 
-  authority(request: QueryAuthorityRequest = {}): Promise<QueryAuthorityResponse> {
-    const data = QueryAuthorityRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.upgrade.v1beta1.Query", "Authority", data);
-    return promise.then(data => QueryAuthorityResponse.decode(new _m0.Reader(data)));
-  }
-
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -92,10 +82,6 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     moduleVersions(request: QueryModuleVersionsRequest): Promise<QueryModuleVersionsResponse> {
       return queryService.moduleVersions(request);
-    },
-
-    authority(request?: QueryAuthorityRequest): Promise<QueryAuthorityResponse> {
-      return queryService.authority(request);
     }
 
   };

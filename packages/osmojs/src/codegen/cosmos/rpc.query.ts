@@ -15,12 +15,17 @@ export const createRPCQueryClient = async ({
       bank: {
         v1beta1: (await import("./bank/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
+      base: {
+        node: {
+          v1beta1: (await import("./base/node/v1beta1/query.rpc.Service")).createRpcQueryExtension(client)
+        }
+      },
       distribution: {
         v1beta1: (await import("./distribution/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
       gov: {
-        v1: (await import("./gov/v1/query.rpc.Query")).createRpcQueryExtension(client),
-        v1beta1: (await import("./gov/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import("./gov/v1beta1/query.rpc.Query")).createRpcQueryExtension(client),
+        v1: (await import("./gov/v1/query.rpc.Query")).createRpcQueryExtension(client)
       },
       staking: {
         v1beta1: (await import("./staking/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
@@ -30,11 +35,6 @@ export const createRPCQueryClient = async ({
       },
       upgrade: {
         v1beta1: (await import("./upgrade/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
-      },
-      base: {
-        node: {
-          v1beta1: (await import("./base/node/v1beta1/query.rpc.Service")).createRpcQueryExtension(client)
-        }
       }
     }
   };

@@ -56,6 +56,7 @@ export interface MsgCreateConcentratedPoolResponseSDKType {
     pool_id: Long;
 }
 export declare const MsgCreateConcentratedPool: {
+    typeUrl: string;
     encode(message: MsgCreateConcentratedPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateConcentratedPool;
     fromPartial(object: Partial<MsgCreateConcentratedPool>): MsgCreateConcentratedPool;
@@ -68,6 +69,7 @@ export declare const MsgCreateConcentratedPool: {
     toProtoMsg(message: MsgCreateConcentratedPool): MsgCreateConcentratedPoolProtoMsg;
 };
 export declare const MsgCreateConcentratedPoolResponse: {
+    typeUrl: string;
     encode(message: MsgCreateConcentratedPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateConcentratedPoolResponse;
     fromPartial(object: Partial<MsgCreateConcentratedPoolResponse>): MsgCreateConcentratedPoolResponse;

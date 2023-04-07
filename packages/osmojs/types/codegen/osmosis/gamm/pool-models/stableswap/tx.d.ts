@@ -1,7 +1,7 @@
 import { PoolParams, PoolParamsAmino, PoolParamsSDKType } from "./stableswap_pool";
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** ===================== MsgCreatePool */
 export interface MsgCreateStableswapPool {
     sender: string;
@@ -107,6 +107,7 @@ export interface MsgStableSwapAdjustScalingFactorsResponseAminoMsg {
 export interface MsgStableSwapAdjustScalingFactorsResponseSDKType {
 }
 export declare const MsgCreateStableswapPool: {
+    typeUrl: string;
     encode(message: MsgCreateStableswapPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPool;
     fromPartial(object: Partial<MsgCreateStableswapPool>): MsgCreateStableswapPool;
@@ -119,6 +120,7 @@ export declare const MsgCreateStableswapPool: {
     toProtoMsg(message: MsgCreateStableswapPool): MsgCreateStableswapPoolProtoMsg;
 };
 export declare const MsgCreateStableswapPoolResponse: {
+    typeUrl: string;
     encode(message: MsgCreateStableswapPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPoolResponse;
     fromPartial(object: Partial<MsgCreateStableswapPoolResponse>): MsgCreateStableswapPoolResponse;
@@ -131,6 +133,7 @@ export declare const MsgCreateStableswapPoolResponse: {
     toProtoMsg(message: MsgCreateStableswapPoolResponse): MsgCreateStableswapPoolResponseProtoMsg;
 };
 export declare const MsgStableSwapAdjustScalingFactors: {
+    typeUrl: string;
     encode(message: MsgStableSwapAdjustScalingFactors, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactors;
     fromPartial(object: Partial<MsgStableSwapAdjustScalingFactors>): MsgStableSwapAdjustScalingFactors;
@@ -143,6 +146,7 @@ export declare const MsgStableSwapAdjustScalingFactors: {
     toProtoMsg(message: MsgStableSwapAdjustScalingFactors): MsgStableSwapAdjustScalingFactorsProtoMsg;
 };
 export declare const MsgStableSwapAdjustScalingFactorsResponse: {
+    typeUrl: string;
     encode(_: MsgStableSwapAdjustScalingFactorsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactorsResponse;
     fromPartial(_: Partial<MsgStableSwapAdjustScalingFactorsResponse>): MsgStableSwapAdjustScalingFactorsResponse;

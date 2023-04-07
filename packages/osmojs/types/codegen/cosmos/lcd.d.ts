@@ -8,12 +8,17 @@ export declare const createLCDClient: ({ restEndpoint }: {
         bank: {
             v1beta1: import("./bank/v1beta1/query.lcd").LCDQueryClient;
         };
+        base: {
+            node: {
+                v1beta1: import("./base/node/v1beta1/query.lcd").LCDQueryClient;
+            };
+        };
         distribution: {
             v1beta1: import("./distribution/v1beta1/query.lcd").LCDQueryClient;
         };
         gov: {
-            v1: import("./gov/v1/query.lcd").LCDQueryClient;
             v1beta1: import("./gov/v1beta1/query.lcd").LCDQueryClient;
+            v1: import("./gov/v1/query.lcd").LCDQueryClient;
         };
         staking: {
             v1beta1: import("./staking/v1beta1/query.lcd").LCDQueryClient;
@@ -23,11 +28,6 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
         upgrade: {
             v1beta1: import("./upgrade/v1beta1/query.lcd").LCDQueryClient;
-        };
-        base: {
-            node: {
-                v1beta1: import("./base/node/v1beta1/query.lcd").LCDQueryClient;
-            };
         };
     };
 }>;

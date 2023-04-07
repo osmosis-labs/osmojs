@@ -1,6 +1,6 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface Params {
     /**
      * minted_denom is the denomination of the coin expected to be minted by the
@@ -128,6 +128,7 @@ export interface PoolToGaugesSDKType {
     pool_to_gauge: PoolToGaugeSDKType[];
 }
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
@@ -140,6 +141,7 @@ export declare const Params: {
     toProtoMsg(message: Params): ParamsProtoMsg;
 };
 export declare const LockableDurationsInfo: {
+    typeUrl: string;
     encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
     fromPartial(object: Partial<LockableDurationsInfo>): LockableDurationsInfo;
@@ -152,6 +154,7 @@ export declare const LockableDurationsInfo: {
     toProtoMsg(message: LockableDurationsInfo): LockableDurationsInfoProtoMsg;
 };
 export declare const DistrInfo: {
+    typeUrl: string;
     encode(message: DistrInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrInfo;
     fromPartial(object: Partial<DistrInfo>): DistrInfo;
@@ -164,6 +167,7 @@ export declare const DistrInfo: {
     toProtoMsg(message: DistrInfo): DistrInfoProtoMsg;
 };
 export declare const DistrRecord: {
+    typeUrl: string;
     encode(message: DistrRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrRecord;
     fromPartial(object: Partial<DistrRecord>): DistrRecord;
@@ -176,6 +180,7 @@ export declare const DistrRecord: {
     toProtoMsg(message: DistrRecord): DistrRecordProtoMsg;
 };
 export declare const PoolToGauge: {
+    typeUrl: string;
     encode(message: PoolToGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauge;
     fromPartial(object: Partial<PoolToGauge>): PoolToGauge;
@@ -188,6 +193,7 @@ export declare const PoolToGauge: {
     toProtoMsg(message: PoolToGauge): PoolToGaugeProtoMsg;
 };
 export declare const PoolToGauges: {
+    typeUrl: string;
     encode(message: PoolToGauges, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauges;
     fromPartial(object: Partial<PoolToGauges>): PoolToGauges;

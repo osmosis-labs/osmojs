@@ -115,6 +115,7 @@ export interface IdentifiedGenesisMetadataSDKType {
     client_metadata: GenesisMetadataSDKType[];
 }
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
@@ -127,6 +128,7 @@ export declare const GenesisState: {
     toProtoMsg(message: GenesisState): GenesisStateProtoMsg;
 };
 export declare const GenesisMetadata: {
+    typeUrl: string;
     encode(message: GenesisMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisMetadata;
     fromPartial(object: Partial<GenesisMetadata>): GenesisMetadata;
@@ -139,6 +141,7 @@ export declare const GenesisMetadata: {
     toProtoMsg(message: GenesisMetadata): GenesisMetadataProtoMsg;
 };
 export declare const IdentifiedGenesisMetadata: {
+    typeUrl: string;
     encode(message: IdentifiedGenesisMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedGenesisMetadata;
     fromPartial(object: Partial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata;

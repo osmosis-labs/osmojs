@@ -1,6 +1,6 @@
 import { FeeToken, FeeTokenAmino, FeeTokenSDKType } from "./feetoken";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface QueryFeeTokensRequest {
 }
 export interface QueryFeeTokensRequestProtoMsg {
@@ -159,6 +159,7 @@ export interface QueryBaseDenomResponseSDKType {
     base_denom: string;
 }
 export declare const QueryFeeTokensRequest: {
+    typeUrl: string;
     encode(_: QueryFeeTokensRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensRequest;
     fromPartial(_: Partial<QueryFeeTokensRequest>): QueryFeeTokensRequest;
@@ -171,6 +172,7 @@ export declare const QueryFeeTokensRequest: {
     toProtoMsg(message: QueryFeeTokensRequest): QueryFeeTokensRequestProtoMsg;
 };
 export declare const QueryFeeTokensResponse: {
+    typeUrl: string;
     encode(message: QueryFeeTokensResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensResponse;
     fromPartial(object: Partial<QueryFeeTokensResponse>): QueryFeeTokensResponse;
@@ -183,6 +185,7 @@ export declare const QueryFeeTokensResponse: {
     toProtoMsg(message: QueryFeeTokensResponse): QueryFeeTokensResponseProtoMsg;
 };
 export declare const QueryDenomSpotPriceRequest: {
+    typeUrl: string;
     encode(message: QueryDenomSpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceRequest;
     fromPartial(object: Partial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest;
@@ -195,6 +198,7 @@ export declare const QueryDenomSpotPriceRequest: {
     toProtoMsg(message: QueryDenomSpotPriceRequest): QueryDenomSpotPriceRequestProtoMsg;
 };
 export declare const QueryDenomSpotPriceResponse: {
+    typeUrl: string;
     encode(message: QueryDenomSpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceResponse;
     fromPartial(object: Partial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse;
@@ -207,6 +211,7 @@ export declare const QueryDenomSpotPriceResponse: {
     toProtoMsg(message: QueryDenomSpotPriceResponse): QueryDenomSpotPriceResponseProtoMsg;
 };
 export declare const QueryDenomPoolIdRequest: {
+    typeUrl: string;
     encode(message: QueryDenomPoolIdRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdRequest;
     fromPartial(object: Partial<QueryDenomPoolIdRequest>): QueryDenomPoolIdRequest;
@@ -219,6 +224,7 @@ export declare const QueryDenomPoolIdRequest: {
     toProtoMsg(message: QueryDenomPoolIdRequest): QueryDenomPoolIdRequestProtoMsg;
 };
 export declare const QueryDenomPoolIdResponse: {
+    typeUrl: string;
     encode(message: QueryDenomPoolIdResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdResponse;
     fromPartial(object: Partial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse;
@@ -231,6 +237,7 @@ export declare const QueryDenomPoolIdResponse: {
     toProtoMsg(message: QueryDenomPoolIdResponse): QueryDenomPoolIdResponseProtoMsg;
 };
 export declare const QueryBaseDenomRequest: {
+    typeUrl: string;
     encode(_: QueryBaseDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomRequest;
     fromPartial(_: Partial<QueryBaseDenomRequest>): QueryBaseDenomRequest;
@@ -243,6 +250,7 @@ export declare const QueryBaseDenomRequest: {
     toProtoMsg(message: QueryBaseDenomRequest): QueryBaseDenomRequestProtoMsg;
 };
 export declare const QueryBaseDenomResponse: {
+    typeUrl: string;
     encode(message: QueryBaseDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomResponse;
     fromPartial(object: Partial<QueryBaseDenomResponse>): QueryBaseDenomResponse;

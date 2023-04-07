@@ -316,6 +316,7 @@ export interface ParamsSDKType {
     max_expected_time_per_block: Long;
 }
 export declare const ConnectionEnd: {
+    typeUrl: string;
     encode(message: ConnectionEnd, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionEnd;
     fromPartial(object: Partial<ConnectionEnd>): ConnectionEnd;
@@ -328,6 +329,7 @@ export declare const ConnectionEnd: {
     toProtoMsg(message: ConnectionEnd): ConnectionEndProtoMsg;
 };
 export declare const IdentifiedConnection: {
+    typeUrl: string;
     encode(message: IdentifiedConnection, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedConnection;
     fromPartial(object: Partial<IdentifiedConnection>): IdentifiedConnection;
@@ -340,6 +342,7 @@ export declare const IdentifiedConnection: {
     toProtoMsg(message: IdentifiedConnection): IdentifiedConnectionProtoMsg;
 };
 export declare const Counterparty: {
+    typeUrl: string;
     encode(message: Counterparty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Counterparty;
     fromPartial(object: Partial<Counterparty>): Counterparty;
@@ -352,6 +355,7 @@ export declare const Counterparty: {
     toProtoMsg(message: Counterparty): CounterpartyProtoMsg;
 };
 export declare const ClientPaths: {
+    typeUrl: string;
     encode(message: ClientPaths, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientPaths;
     fromPartial(object: Partial<ClientPaths>): ClientPaths;
@@ -364,6 +368,7 @@ export declare const ClientPaths: {
     toProtoMsg(message: ClientPaths): ClientPathsProtoMsg;
 };
 export declare const ConnectionPaths: {
+    typeUrl: string;
     encode(message: ConnectionPaths, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionPaths;
     fromPartial(object: Partial<ConnectionPaths>): ConnectionPaths;
@@ -376,6 +381,7 @@ export declare const ConnectionPaths: {
     toProtoMsg(message: ConnectionPaths): ConnectionPathsProtoMsg;
 };
 export declare const Version: {
+    typeUrl: string;
     encode(message: Version, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Version;
     fromPartial(object: Partial<Version>): Version;
@@ -388,6 +394,7 @@ export declare const Version: {
     toProtoMsg(message: Version): VersionProtoMsg;
 };
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;

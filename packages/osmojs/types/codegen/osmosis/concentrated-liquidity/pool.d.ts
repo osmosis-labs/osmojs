@@ -1,6 +1,7 @@
 import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface Pool {
+    $typeUrl?: string;
     /** pool's address holding all liquidity tokens. */
     address: string;
     /** address holding the incentives liquidity. */
@@ -61,6 +62,7 @@ export interface PoolAminoMsg {
     value: PoolAmino;
 }
 export interface PoolSDKType {
+    $typeUrl?: string;
     address: string;
     incentives_address: string;
     id: Long;
@@ -75,6 +77,7 @@ export interface PoolSDKType {
     last_liquidity_update?: Date;
 }
 export declare const Pool: {
+    typeUrl: string;
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
     fromPartial(object: Partial<Pool>): Pool;

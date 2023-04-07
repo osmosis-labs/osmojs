@@ -97,6 +97,7 @@ export interface QueryEpochProvisionsResponseSDKType {
     epoch_provisions: Uint8Array;
 }
 export declare const QueryParamsRequest: {
+    typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
@@ -109,6 +110,7 @@ export declare const QueryParamsRequest: {
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
 export declare const QueryParamsResponse: {
+    typeUrl: string;
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
@@ -121,6 +123,7 @@ export declare const QueryParamsResponse: {
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
 export declare const QueryEpochProvisionsRequest: {
+    typeUrl: string;
     encode(_: QueryEpochProvisionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsRequest;
     fromPartial(_: Partial<QueryEpochProvisionsRequest>): QueryEpochProvisionsRequest;
@@ -133,6 +136,7 @@ export declare const QueryEpochProvisionsRequest: {
     toProtoMsg(message: QueryEpochProvisionsRequest): QueryEpochProvisionsRequestProtoMsg;
 };
 export declare const QueryEpochProvisionsResponse: {
+    typeUrl: string;
     encode(message: QueryEpochProvisionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsResponse;
     fromPartial(object: Partial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse;

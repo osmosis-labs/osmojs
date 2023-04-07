@@ -96,10 +96,7 @@ export interface PlanSDKType {
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
  * upgrade.
- * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
- * proposals, see MsgSoftwareUpgrade.
  */
-/** @deprecated */
 export interface SoftwareUpgradeProposal {
     title: string;
     description: string;
@@ -112,10 +109,7 @@ export interface SoftwareUpgradeProposalProtoMsg {
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
  * upgrade.
- * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
- * proposals, see MsgSoftwareUpgrade.
  */
-/** @deprecated */
 export interface SoftwareUpgradeProposalAmino {
     title: string;
     description: string;
@@ -128,10 +122,7 @@ export interface SoftwareUpgradeProposalAminoMsg {
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
  * upgrade.
- * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
- * proposals, see MsgSoftwareUpgrade.
  */
-/** @deprecated */
 export interface SoftwareUpgradeProposalSDKType {
     title: string;
     description: string;
@@ -140,10 +131,7 @@ export interface SoftwareUpgradeProposalSDKType {
 /**
  * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software
  * upgrade.
- * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
- * proposals, see MsgCancelUpgrade.
  */
-/** @deprecated */
 export interface CancelSoftwareUpgradeProposal {
     title: string;
     description: string;
@@ -155,10 +143,7 @@ export interface CancelSoftwareUpgradeProposalProtoMsg {
 /**
  * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software
  * upgrade.
- * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
- * proposals, see MsgCancelUpgrade.
  */
-/** @deprecated */
 export interface CancelSoftwareUpgradeProposalAmino {
     title: string;
     description: string;
@@ -170,10 +155,7 @@ export interface CancelSoftwareUpgradeProposalAminoMsg {
 /**
  * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software
  * upgrade.
- * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
- * proposals, see MsgCancelUpgrade.
  */
-/** @deprecated */
 export interface CancelSoftwareUpgradeProposalSDKType {
     title: string;
     description: string;
@@ -218,6 +200,7 @@ export interface ModuleVersionSDKType {
     version: Long;
 }
 export declare const Plan: {
+    typeUrl: string;
     encode(message: Plan, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Plan;
     fromPartial(object: Partial<Plan>): Plan;
@@ -230,6 +213,7 @@ export declare const Plan: {
     toProtoMsg(message: Plan): PlanProtoMsg;
 };
 export declare const SoftwareUpgradeProposal: {
+    typeUrl: string;
     encode(message: SoftwareUpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SoftwareUpgradeProposal;
     fromPartial(object: Partial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal;
@@ -242,6 +226,7 @@ export declare const SoftwareUpgradeProposal: {
     toProtoMsg(message: SoftwareUpgradeProposal): SoftwareUpgradeProposalProtoMsg;
 };
 export declare const CancelSoftwareUpgradeProposal: {
+    typeUrl: string;
     encode(message: CancelSoftwareUpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CancelSoftwareUpgradeProposal;
     fromPartial(object: Partial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal;
@@ -254,6 +239,7 @@ export declare const CancelSoftwareUpgradeProposal: {
     toProtoMsg(message: CancelSoftwareUpgradeProposal): CancelSoftwareUpgradeProposalProtoMsg;
 };
 export declare const ModuleVersion: {
+    typeUrl: string;
     encode(message: ModuleVersion, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleVersion;
     fromPartial(object: Partial<ModuleVersion>): ModuleVersion;

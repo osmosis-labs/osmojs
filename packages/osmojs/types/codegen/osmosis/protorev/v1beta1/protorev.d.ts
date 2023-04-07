@@ -1,6 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** TokenPairArbRoutes tracks all of the hot routes for a given pair of tokens */
 export interface TokenPairArbRoutes {
     /** Stores all of the possible hot paths for a given pair of tokens */
@@ -247,6 +247,7 @@ export interface BaseDenomSDKType {
     step_size: string;
 }
 export declare const TokenPairArbRoutes: {
+    typeUrl: string;
     encode(message: TokenPairArbRoutes, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TokenPairArbRoutes;
     fromPartial(object: Partial<TokenPairArbRoutes>): TokenPairArbRoutes;
@@ -259,6 +260,7 @@ export declare const TokenPairArbRoutes: {
     toProtoMsg(message: TokenPairArbRoutes): TokenPairArbRoutesProtoMsg;
 };
 export declare const Route: {
+    typeUrl: string;
     encode(message: Route, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Route;
     fromPartial(object: Partial<Route>): Route;
@@ -271,6 +273,7 @@ export declare const Route: {
     toProtoMsg(message: Route): RouteProtoMsg;
 };
 export declare const Trade: {
+    typeUrl: string;
     encode(message: Trade, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Trade;
     fromPartial(object: Partial<Trade>): Trade;
@@ -283,6 +286,7 @@ export declare const Trade: {
     toProtoMsg(message: Trade): TradeProtoMsg;
 };
 export declare const RouteStatistics: {
+    typeUrl: string;
     encode(message: RouteStatistics, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RouteStatistics;
     fromPartial(object: Partial<RouteStatistics>): RouteStatistics;
@@ -295,6 +299,7 @@ export declare const RouteStatistics: {
     toProtoMsg(message: RouteStatistics): RouteStatisticsProtoMsg;
 };
 export declare const PoolWeights: {
+    typeUrl: string;
     encode(message: PoolWeights, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolWeights;
     fromPartial(object: Partial<PoolWeights>): PoolWeights;
@@ -307,6 +312,7 @@ export declare const PoolWeights: {
     toProtoMsg(message: PoolWeights): PoolWeightsProtoMsg;
 };
 export declare const BaseDenom: {
+    typeUrl: string;
     encode(message: BaseDenom, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BaseDenom;
     fromPartial(object: Partial<BaseDenom>): BaseDenom;

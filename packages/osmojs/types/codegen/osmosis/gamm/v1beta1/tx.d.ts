@@ -395,6 +395,7 @@ export interface MsgExitSwapExternAmountOutResponseSDKType {
     share_in_amount: string;
 }
 export declare const MsgJoinPool: {
+    typeUrl: string;
     encode(message: MsgJoinPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPool;
     fromPartial(object: Partial<MsgJoinPool>): MsgJoinPool;
@@ -407,6 +408,7 @@ export declare const MsgJoinPool: {
     toProtoMsg(message: MsgJoinPool): MsgJoinPoolProtoMsg;
 };
 export declare const MsgJoinPoolResponse: {
+    typeUrl: string;
     encode(message: MsgJoinPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPoolResponse;
     fromPartial(object: Partial<MsgJoinPoolResponse>): MsgJoinPoolResponse;
@@ -419,6 +421,7 @@ export declare const MsgJoinPoolResponse: {
     toProtoMsg(message: MsgJoinPoolResponse): MsgJoinPoolResponseProtoMsg;
 };
 export declare const MsgExitPool: {
+    typeUrl: string;
     encode(message: MsgExitPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPool;
     fromPartial(object: Partial<MsgExitPool>): MsgExitPool;
@@ -431,6 +434,7 @@ export declare const MsgExitPool: {
     toProtoMsg(message: MsgExitPool): MsgExitPoolProtoMsg;
 };
 export declare const MsgExitPoolResponse: {
+    typeUrl: string;
     encode(message: MsgExitPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPoolResponse;
     fromPartial(object: Partial<MsgExitPoolResponse>): MsgExitPoolResponse;
@@ -443,6 +447,7 @@ export declare const MsgExitPoolResponse: {
     toProtoMsg(message: MsgExitPoolResponse): MsgExitPoolResponseProtoMsg;
 };
 export declare const MsgSwapExactAmountIn: {
+    typeUrl: string;
     encode(message: MsgSwapExactAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountIn;
     fromPartial(object: Partial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn;
@@ -455,6 +460,7 @@ export declare const MsgSwapExactAmountIn: {
     toProtoMsg(message: MsgSwapExactAmountIn): MsgSwapExactAmountInProtoMsg;
 };
 export declare const MsgSwapExactAmountInResponse: {
+    typeUrl: string;
     encode(message: MsgSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponse;
     fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse;
@@ -467,6 +473,7 @@ export declare const MsgSwapExactAmountInResponse: {
     toProtoMsg(message: MsgSwapExactAmountInResponse): MsgSwapExactAmountInResponseProtoMsg;
 };
 export declare const MsgSwapExactAmountOut: {
+    typeUrl: string;
     encode(message: MsgSwapExactAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOut;
     fromPartial(object: Partial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut;
@@ -479,6 +486,7 @@ export declare const MsgSwapExactAmountOut: {
     toProtoMsg(message: MsgSwapExactAmountOut): MsgSwapExactAmountOutProtoMsg;
 };
 export declare const MsgSwapExactAmountOutResponse: {
+    typeUrl: string;
     encode(message: MsgSwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOutResponse;
     fromPartial(object: Partial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse;
@@ -491,6 +499,7 @@ export declare const MsgSwapExactAmountOutResponse: {
     toProtoMsg(message: MsgSwapExactAmountOutResponse): MsgSwapExactAmountOutResponseProtoMsg;
 };
 export declare const MsgJoinSwapExternAmountIn: {
+    typeUrl: string;
     encode(message: MsgJoinSwapExternAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountIn;
     fromPartial(object: Partial<MsgJoinSwapExternAmountIn>): MsgJoinSwapExternAmountIn;
@@ -503,6 +512,7 @@ export declare const MsgJoinSwapExternAmountIn: {
     toProtoMsg(message: MsgJoinSwapExternAmountIn): MsgJoinSwapExternAmountInProtoMsg;
 };
 export declare const MsgJoinSwapExternAmountInResponse: {
+    typeUrl: string;
     encode(message: MsgJoinSwapExternAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountInResponse;
     fromPartial(object: Partial<MsgJoinSwapExternAmountInResponse>): MsgJoinSwapExternAmountInResponse;
@@ -515,6 +525,7 @@ export declare const MsgJoinSwapExternAmountInResponse: {
     toProtoMsg(message: MsgJoinSwapExternAmountInResponse): MsgJoinSwapExternAmountInResponseProtoMsg;
 };
 export declare const MsgJoinSwapShareAmountOut: {
+    typeUrl: string;
     encode(message: MsgJoinSwapShareAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOut;
     fromPartial(object: Partial<MsgJoinSwapShareAmountOut>): MsgJoinSwapShareAmountOut;
@@ -527,6 +538,7 @@ export declare const MsgJoinSwapShareAmountOut: {
     toProtoMsg(message: MsgJoinSwapShareAmountOut): MsgJoinSwapShareAmountOutProtoMsg;
 };
 export declare const MsgJoinSwapShareAmountOutResponse: {
+    typeUrl: string;
     encode(message: MsgJoinSwapShareAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOutResponse;
     fromPartial(object: Partial<MsgJoinSwapShareAmountOutResponse>): MsgJoinSwapShareAmountOutResponse;
@@ -539,6 +551,7 @@ export declare const MsgJoinSwapShareAmountOutResponse: {
     toProtoMsg(message: MsgJoinSwapShareAmountOutResponse): MsgJoinSwapShareAmountOutResponseProtoMsg;
 };
 export declare const MsgExitSwapShareAmountIn: {
+    typeUrl: string;
     encode(message: MsgExitSwapShareAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountIn;
     fromPartial(object: Partial<MsgExitSwapShareAmountIn>): MsgExitSwapShareAmountIn;
@@ -551,6 +564,7 @@ export declare const MsgExitSwapShareAmountIn: {
     toProtoMsg(message: MsgExitSwapShareAmountIn): MsgExitSwapShareAmountInProtoMsg;
 };
 export declare const MsgExitSwapShareAmountInResponse: {
+    typeUrl: string;
     encode(message: MsgExitSwapShareAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountInResponse;
     fromPartial(object: Partial<MsgExitSwapShareAmountInResponse>): MsgExitSwapShareAmountInResponse;
@@ -563,6 +577,7 @@ export declare const MsgExitSwapShareAmountInResponse: {
     toProtoMsg(message: MsgExitSwapShareAmountInResponse): MsgExitSwapShareAmountInResponseProtoMsg;
 };
 export declare const MsgExitSwapExternAmountOut: {
+    typeUrl: string;
     encode(message: MsgExitSwapExternAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOut;
     fromPartial(object: Partial<MsgExitSwapExternAmountOut>): MsgExitSwapExternAmountOut;
@@ -575,6 +590,7 @@ export declare const MsgExitSwapExternAmountOut: {
     toProtoMsg(message: MsgExitSwapExternAmountOut): MsgExitSwapExternAmountOutProtoMsg;
 };
 export declare const MsgExitSwapExternAmountOutResponse: {
+    typeUrl: string;
     encode(message: MsgExitSwapExternAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOutResponse;
     fromPartial(object: Partial<MsgExitSwapExternAmountOutResponse>): MsgExitSwapExternAmountOutResponse;

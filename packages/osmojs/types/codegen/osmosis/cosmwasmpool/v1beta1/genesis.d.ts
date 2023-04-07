@@ -39,6 +39,7 @@ export interface GenesisStateSDKType {
     params?: ParamsSDKType;
 }
 export declare const Params: {
+    typeUrl: string;
     encode(_: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(_: Partial<Params>): Params;
@@ -51,6 +52,7 @@ export declare const Params: {
     toProtoMsg(message: Params): ParamsProtoMsg;
 };
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;

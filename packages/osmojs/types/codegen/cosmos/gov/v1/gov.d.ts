@@ -1,8 +1,8 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export declare enum VoteOption {
     /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
@@ -342,6 +342,7 @@ export interface TallyParamsSDKType {
     veto_threshold: string;
 }
 export declare const WeightedVoteOption: {
+    typeUrl: string;
     encode(message: WeightedVoteOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): WeightedVoteOption;
     fromPartial(object: Partial<WeightedVoteOption>): WeightedVoteOption;
@@ -354,6 +355,7 @@ export declare const WeightedVoteOption: {
     toProtoMsg(message: WeightedVoteOption): WeightedVoteOptionProtoMsg;
 };
 export declare const Deposit: {
+    typeUrl: string;
     encode(message: Deposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Deposit;
     fromPartial(object: Partial<Deposit>): Deposit;
@@ -366,6 +368,7 @@ export declare const Deposit: {
     toProtoMsg(message: Deposit): DepositProtoMsg;
 };
 export declare const Proposal: {
+    typeUrl: string;
     encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
     fromPartial(object: Partial<Proposal>): Proposal;
@@ -378,6 +381,7 @@ export declare const Proposal: {
     toProtoMsg(message: Proposal): ProposalProtoMsg;
 };
 export declare const TallyResult: {
+    typeUrl: string;
     encode(message: TallyResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TallyResult;
     fromPartial(object: Partial<TallyResult>): TallyResult;
@@ -390,6 +394,7 @@ export declare const TallyResult: {
     toProtoMsg(message: TallyResult): TallyResultProtoMsg;
 };
 export declare const Vote: {
+    typeUrl: string;
     encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
     fromPartial(object: Partial<Vote>): Vote;
@@ -402,6 +407,7 @@ export declare const Vote: {
     toProtoMsg(message: Vote): VoteProtoMsg;
 };
 export declare const DepositParams: {
+    typeUrl: string;
     encode(message: DepositParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DepositParams;
     fromPartial(object: Partial<DepositParams>): DepositParams;
@@ -414,6 +420,7 @@ export declare const DepositParams: {
     toProtoMsg(message: DepositParams): DepositParamsProtoMsg;
 };
 export declare const VotingParams: {
+    typeUrl: string;
     encode(message: VotingParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VotingParams;
     fromPartial(object: Partial<VotingParams>): VotingParams;
@@ -426,6 +433,7 @@ export declare const VotingParams: {
     toProtoMsg(message: VotingParams): VotingParamsProtoMsg;
 };
 export declare const TallyParams: {
+    typeUrl: string;
     encode(message: TallyParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TallyParams;
     fromPartial(object: Partial<TallyParams>): TallyParams;

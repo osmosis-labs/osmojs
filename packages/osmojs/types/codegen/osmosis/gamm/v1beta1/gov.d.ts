@@ -98,6 +98,7 @@ export interface UpdateMigrationRecordsProposalSDKType {
     records: BalancerToConcentratedPoolLinkSDKType[];
 }
 export declare const ReplaceMigrationRecordsProposal: {
+    typeUrl: string;
     encode(message: ReplaceMigrationRecordsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ReplaceMigrationRecordsProposal;
     fromPartial(object: Partial<ReplaceMigrationRecordsProposal>): ReplaceMigrationRecordsProposal;
@@ -110,6 +111,7 @@ export declare const ReplaceMigrationRecordsProposal: {
     toProtoMsg(message: ReplaceMigrationRecordsProposal): ReplaceMigrationRecordsProposalProtoMsg;
 };
 export declare const UpdateMigrationRecordsProposal: {
+    typeUrl: string;
     encode(message: UpdateMigrationRecordsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdateMigrationRecordsProposal;
     fromPartial(object: Partial<UpdateMigrationRecordsProposal>): UpdateMigrationRecordsProposal;

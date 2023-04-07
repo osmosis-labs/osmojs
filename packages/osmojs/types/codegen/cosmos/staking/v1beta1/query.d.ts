@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Validator, ValidatorAmino, ValidatorSDKType, DelegationResponse, DelegationResponseAmino, DelegationResponseSDKType, UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, RedelegationResponse, RedelegationResponseAmino, RedelegationResponseSDKType, HistoricalInfo, HistoricalInfoAmino, HistoricalInfoSDKType, Pool, PoolAmino, PoolSDKType, Params, ParamsAmino, ParamsSDKType } from "./staking";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** QueryValidatorsRequest is request type for Query/Validators RPC method. */
 export interface QueryValidatorsRequest {
     /** status enables to query for validators matching a given status. */
@@ -858,6 +858,7 @@ export interface QueryParamsResponseSDKType {
     params?: ParamsSDKType;
 }
 export declare const QueryValidatorsRequest: {
+    typeUrl: string;
     encode(message: QueryValidatorsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorsRequest;
     fromPartial(object: Partial<QueryValidatorsRequest>): QueryValidatorsRequest;
@@ -870,6 +871,7 @@ export declare const QueryValidatorsRequest: {
     toProtoMsg(message: QueryValidatorsRequest): QueryValidatorsRequestProtoMsg;
 };
 export declare const QueryValidatorsResponse: {
+    typeUrl: string;
     encode(message: QueryValidatorsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorsResponse;
     fromPartial(object: Partial<QueryValidatorsResponse>): QueryValidatorsResponse;
@@ -882,6 +884,7 @@ export declare const QueryValidatorsResponse: {
     toProtoMsg(message: QueryValidatorsResponse): QueryValidatorsResponseProtoMsg;
 };
 export declare const QueryValidatorRequest: {
+    typeUrl: string;
     encode(message: QueryValidatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorRequest;
     fromPartial(object: Partial<QueryValidatorRequest>): QueryValidatorRequest;
@@ -894,6 +897,7 @@ export declare const QueryValidatorRequest: {
     toProtoMsg(message: QueryValidatorRequest): QueryValidatorRequestProtoMsg;
 };
 export declare const QueryValidatorResponse: {
+    typeUrl: string;
     encode(message: QueryValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorResponse;
     fromPartial(object: Partial<QueryValidatorResponse>): QueryValidatorResponse;
@@ -906,6 +910,7 @@ export declare const QueryValidatorResponse: {
     toProtoMsg(message: QueryValidatorResponse): QueryValidatorResponseProtoMsg;
 };
 export declare const QueryValidatorDelegationsRequest: {
+    typeUrl: string;
     encode(message: QueryValidatorDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorDelegationsRequest;
     fromPartial(object: Partial<QueryValidatorDelegationsRequest>): QueryValidatorDelegationsRequest;
@@ -918,6 +923,7 @@ export declare const QueryValidatorDelegationsRequest: {
     toProtoMsg(message: QueryValidatorDelegationsRequest): QueryValidatorDelegationsRequestProtoMsg;
 };
 export declare const QueryValidatorDelegationsResponse: {
+    typeUrl: string;
     encode(message: QueryValidatorDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorDelegationsResponse;
     fromPartial(object: Partial<QueryValidatorDelegationsResponse>): QueryValidatorDelegationsResponse;
@@ -930,6 +936,7 @@ export declare const QueryValidatorDelegationsResponse: {
     toProtoMsg(message: QueryValidatorDelegationsResponse): QueryValidatorDelegationsResponseProtoMsg;
 };
 export declare const QueryValidatorUnbondingDelegationsRequest: {
+    typeUrl: string;
     encode(message: QueryValidatorUnbondingDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsRequest;
     fromPartial(object: Partial<QueryValidatorUnbondingDelegationsRequest>): QueryValidatorUnbondingDelegationsRequest;
@@ -942,6 +949,7 @@ export declare const QueryValidatorUnbondingDelegationsRequest: {
     toProtoMsg(message: QueryValidatorUnbondingDelegationsRequest): QueryValidatorUnbondingDelegationsRequestProtoMsg;
 };
 export declare const QueryValidatorUnbondingDelegationsResponse: {
+    typeUrl: string;
     encode(message: QueryValidatorUnbondingDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsResponse;
     fromPartial(object: Partial<QueryValidatorUnbondingDelegationsResponse>): QueryValidatorUnbondingDelegationsResponse;
@@ -954,6 +962,7 @@ export declare const QueryValidatorUnbondingDelegationsResponse: {
     toProtoMsg(message: QueryValidatorUnbondingDelegationsResponse): QueryValidatorUnbondingDelegationsResponseProtoMsg;
 };
 export declare const QueryDelegationRequest: {
+    typeUrl: string;
     encode(message: QueryDelegationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationRequest;
     fromPartial(object: Partial<QueryDelegationRequest>): QueryDelegationRequest;
@@ -966,6 +975,7 @@ export declare const QueryDelegationRequest: {
     toProtoMsg(message: QueryDelegationRequest): QueryDelegationRequestProtoMsg;
 };
 export declare const QueryDelegationResponse: {
+    typeUrl: string;
     encode(message: QueryDelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationResponse;
     fromPartial(object: Partial<QueryDelegationResponse>): QueryDelegationResponse;
@@ -978,6 +988,7 @@ export declare const QueryDelegationResponse: {
     toProtoMsg(message: QueryDelegationResponse): QueryDelegationResponseProtoMsg;
 };
 export declare const QueryUnbondingDelegationRequest: {
+    typeUrl: string;
     encode(message: QueryUnbondingDelegationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnbondingDelegationRequest;
     fromPartial(object: Partial<QueryUnbondingDelegationRequest>): QueryUnbondingDelegationRequest;
@@ -990,6 +1001,7 @@ export declare const QueryUnbondingDelegationRequest: {
     toProtoMsg(message: QueryUnbondingDelegationRequest): QueryUnbondingDelegationRequestProtoMsg;
 };
 export declare const QueryUnbondingDelegationResponse: {
+    typeUrl: string;
     encode(message: QueryUnbondingDelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnbondingDelegationResponse;
     fromPartial(object: Partial<QueryUnbondingDelegationResponse>): QueryUnbondingDelegationResponse;
@@ -1002,6 +1014,7 @@ export declare const QueryUnbondingDelegationResponse: {
     toProtoMsg(message: QueryUnbondingDelegationResponse): QueryUnbondingDelegationResponseProtoMsg;
 };
 export declare const QueryDelegatorDelegationsRequest: {
+    typeUrl: string;
     encode(message: QueryDelegatorDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorDelegationsRequest;
     fromPartial(object: Partial<QueryDelegatorDelegationsRequest>): QueryDelegatorDelegationsRequest;
@@ -1014,6 +1027,7 @@ export declare const QueryDelegatorDelegationsRequest: {
     toProtoMsg(message: QueryDelegatorDelegationsRequest): QueryDelegatorDelegationsRequestProtoMsg;
 };
 export declare const QueryDelegatorDelegationsResponse: {
+    typeUrl: string;
     encode(message: QueryDelegatorDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorDelegationsResponse;
     fromPartial(object: Partial<QueryDelegatorDelegationsResponse>): QueryDelegatorDelegationsResponse;
@@ -1026,6 +1040,7 @@ export declare const QueryDelegatorDelegationsResponse: {
     toProtoMsg(message: QueryDelegatorDelegationsResponse): QueryDelegatorDelegationsResponseProtoMsg;
 };
 export declare const QueryDelegatorUnbondingDelegationsRequest: {
+    typeUrl: string;
     encode(message: QueryDelegatorUnbondingDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsRequest;
     fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsRequest>): QueryDelegatorUnbondingDelegationsRequest;
@@ -1038,6 +1053,7 @@ export declare const QueryDelegatorUnbondingDelegationsRequest: {
     toProtoMsg(message: QueryDelegatorUnbondingDelegationsRequest): QueryDelegatorUnbondingDelegationsRequestProtoMsg;
 };
 export declare const QueryDelegatorUnbondingDelegationsResponse: {
+    typeUrl: string;
     encode(message: QueryDelegatorUnbondingDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsResponse;
     fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsResponse>): QueryDelegatorUnbondingDelegationsResponse;
@@ -1050,6 +1066,7 @@ export declare const QueryDelegatorUnbondingDelegationsResponse: {
     toProtoMsg(message: QueryDelegatorUnbondingDelegationsResponse): QueryDelegatorUnbondingDelegationsResponseProtoMsg;
 };
 export declare const QueryRedelegationsRequest: {
+    typeUrl: string;
     encode(message: QueryRedelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryRedelegationsRequest;
     fromPartial(object: Partial<QueryRedelegationsRequest>): QueryRedelegationsRequest;
@@ -1062,6 +1079,7 @@ export declare const QueryRedelegationsRequest: {
     toProtoMsg(message: QueryRedelegationsRequest): QueryRedelegationsRequestProtoMsg;
 };
 export declare const QueryRedelegationsResponse: {
+    typeUrl: string;
     encode(message: QueryRedelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryRedelegationsResponse;
     fromPartial(object: Partial<QueryRedelegationsResponse>): QueryRedelegationsResponse;
@@ -1074,6 +1092,7 @@ export declare const QueryRedelegationsResponse: {
     toProtoMsg(message: QueryRedelegationsResponse): QueryRedelegationsResponseProtoMsg;
 };
 export declare const QueryDelegatorValidatorsRequest: {
+    typeUrl: string;
     encode(message: QueryDelegatorValidatorsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsRequest;
     fromPartial(object: Partial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest;
@@ -1086,6 +1105,7 @@ export declare const QueryDelegatorValidatorsRequest: {
     toProtoMsg(message: QueryDelegatorValidatorsRequest): QueryDelegatorValidatorsRequestProtoMsg;
 };
 export declare const QueryDelegatorValidatorsResponse: {
+    typeUrl: string;
     encode(message: QueryDelegatorValidatorsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsResponse;
     fromPartial(object: Partial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse;
@@ -1098,6 +1118,7 @@ export declare const QueryDelegatorValidatorsResponse: {
     toProtoMsg(message: QueryDelegatorValidatorsResponse): QueryDelegatorValidatorsResponseProtoMsg;
 };
 export declare const QueryDelegatorValidatorRequest: {
+    typeUrl: string;
     encode(message: QueryDelegatorValidatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorRequest;
     fromPartial(object: Partial<QueryDelegatorValidatorRequest>): QueryDelegatorValidatorRequest;
@@ -1110,6 +1131,7 @@ export declare const QueryDelegatorValidatorRequest: {
     toProtoMsg(message: QueryDelegatorValidatorRequest): QueryDelegatorValidatorRequestProtoMsg;
 };
 export declare const QueryDelegatorValidatorResponse: {
+    typeUrl: string;
     encode(message: QueryDelegatorValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorResponse;
     fromPartial(object: Partial<QueryDelegatorValidatorResponse>): QueryDelegatorValidatorResponse;
@@ -1122,6 +1144,7 @@ export declare const QueryDelegatorValidatorResponse: {
     toProtoMsg(message: QueryDelegatorValidatorResponse): QueryDelegatorValidatorResponseProtoMsg;
 };
 export declare const QueryHistoricalInfoRequest: {
+    typeUrl: string;
     encode(message: QueryHistoricalInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryHistoricalInfoRequest;
     fromPartial(object: Partial<QueryHistoricalInfoRequest>): QueryHistoricalInfoRequest;
@@ -1134,6 +1157,7 @@ export declare const QueryHistoricalInfoRequest: {
     toProtoMsg(message: QueryHistoricalInfoRequest): QueryHistoricalInfoRequestProtoMsg;
 };
 export declare const QueryHistoricalInfoResponse: {
+    typeUrl: string;
     encode(message: QueryHistoricalInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryHistoricalInfoResponse;
     fromPartial(object: Partial<QueryHistoricalInfoResponse>): QueryHistoricalInfoResponse;
@@ -1146,6 +1170,7 @@ export declare const QueryHistoricalInfoResponse: {
     toProtoMsg(message: QueryHistoricalInfoResponse): QueryHistoricalInfoResponseProtoMsg;
 };
 export declare const QueryPoolRequest: {
+    typeUrl: string;
     encode(_: QueryPoolRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolRequest;
     fromPartial(_: Partial<QueryPoolRequest>): QueryPoolRequest;
@@ -1158,6 +1183,7 @@ export declare const QueryPoolRequest: {
     toProtoMsg(message: QueryPoolRequest): QueryPoolRequestProtoMsg;
 };
 export declare const QueryPoolResponse: {
+    typeUrl: string;
     encode(message: QueryPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse;
     fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse;
@@ -1170,6 +1196,7 @@ export declare const QueryPoolResponse: {
     toProtoMsg(message: QueryPoolResponse): QueryPoolResponseProtoMsg;
 };
 export declare const QueryParamsRequest: {
+    typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
@@ -1182,6 +1209,7 @@ export declare const QueryParamsRequest: {
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
 export declare const QueryParamsResponse: {
+    typeUrl: string;
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;

@@ -70,6 +70,7 @@ export interface CompactBitArraySDKType {
     elems: Uint8Array;
 }
 export declare const MultiSignature: {
+    typeUrl: string;
     encode(message: MultiSignature, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MultiSignature;
     fromPartial(object: Partial<MultiSignature>): MultiSignature;
@@ -82,6 +83,7 @@ export declare const MultiSignature: {
     toProtoMsg(message: MultiSignature): MultiSignatureProtoMsg;
 };
 export declare const CompactBitArray: {
+    typeUrl: string;
     encode(message: CompactBitArray, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompactBitArray;
     fromPartial(object: Partial<CompactBitArray>): CompactBitArray;

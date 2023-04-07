@@ -23,6 +23,7 @@ export interface PublicKeySDKType {
     secp256k1?: Uint8Array;
 }
 export declare const PublicKey: {
+    typeUrl: string;
     encode(message: PublicKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PublicKey;
     fromPartial(object: Partial<PublicKey>): PublicKey;

@@ -15,8 +15,8 @@ export const createRPCMsgClient = async ({
       v1beta1: new (await import("../cosmos/distribution/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     gov: {
-      v1: new (await import("../cosmos/gov/v1/tx.rpc.msg")).MsgClientImpl(rpc),
-      v1beta1: new (await import("../cosmos/gov/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+      v1beta1: new (await import("../cosmos/gov/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc),
+      v1: new (await import("../cosmos/gov/v1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     staking: {
       v1beta1: new (await import("../cosmos/staking/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
@@ -27,6 +27,14 @@ export const createRPCMsgClient = async ({
   },
   ibc: {
     applications: {
+      fee: {
+        v1: new (await import("./applications/fee/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+      },
+      interchain_accounts: {
+        controller: {
+          v1: new (await import("./applications/interchain_accounts/controller/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+        }
+      },
       transfer: {
         v1: new (await import("./applications/transfer/v1/tx.rpc.msg")).MsgClientImpl(rpc)
       }

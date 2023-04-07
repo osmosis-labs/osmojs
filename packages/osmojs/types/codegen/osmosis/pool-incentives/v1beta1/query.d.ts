@@ -239,6 +239,7 @@ export interface QueryExternalIncentiveGaugesResponseSDKType {
     data: GaugeSDKType[];
 }
 export declare const QueryGaugeIdsRequest: {
+    typeUrl: string;
     encode(message: QueryGaugeIdsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsRequest;
     fromPartial(object: Partial<QueryGaugeIdsRequest>): QueryGaugeIdsRequest;
@@ -251,6 +252,7 @@ export declare const QueryGaugeIdsRequest: {
     toProtoMsg(message: QueryGaugeIdsRequest): QueryGaugeIdsRequestProtoMsg;
 };
 export declare const QueryGaugeIdsResponse: {
+    typeUrl: string;
     encode(message: QueryGaugeIdsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponse;
     fromPartial(object: Partial<QueryGaugeIdsResponse>): QueryGaugeIdsResponse;
@@ -263,6 +265,7 @@ export declare const QueryGaugeIdsResponse: {
     toProtoMsg(message: QueryGaugeIdsResponse): QueryGaugeIdsResponseProtoMsg;
 };
 export declare const QueryGaugeIdsResponse_GaugeIdWithDuration: {
+    typeUrl: string;
     encode(message: QueryGaugeIdsResponse_GaugeIdWithDuration, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponse_GaugeIdWithDuration;
     fromPartial(object: Partial<QueryGaugeIdsResponse_GaugeIdWithDuration>): QueryGaugeIdsResponse_GaugeIdWithDuration;
@@ -275,6 +278,7 @@ export declare const QueryGaugeIdsResponse_GaugeIdWithDuration: {
     toProtoMsg(message: QueryGaugeIdsResponse_GaugeIdWithDuration): QueryGaugeIdsResponse_GaugeIdWithDurationProtoMsg;
 };
 export declare const QueryDistrInfoRequest: {
+    typeUrl: string;
     encode(_: QueryDistrInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoRequest;
     fromPartial(_: Partial<QueryDistrInfoRequest>): QueryDistrInfoRequest;
@@ -287,6 +291,7 @@ export declare const QueryDistrInfoRequest: {
     toProtoMsg(message: QueryDistrInfoRequest): QueryDistrInfoRequestProtoMsg;
 };
 export declare const QueryDistrInfoResponse: {
+    typeUrl: string;
     encode(message: QueryDistrInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoResponse;
     fromPartial(object: Partial<QueryDistrInfoResponse>): QueryDistrInfoResponse;
@@ -299,6 +304,7 @@ export declare const QueryDistrInfoResponse: {
     toProtoMsg(message: QueryDistrInfoResponse): QueryDistrInfoResponseProtoMsg;
 };
 export declare const QueryParamsRequest: {
+    typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
@@ -311,6 +317,7 @@ export declare const QueryParamsRequest: {
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
 export declare const QueryParamsResponse: {
+    typeUrl: string;
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
@@ -323,6 +330,7 @@ export declare const QueryParamsResponse: {
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
 export declare const QueryLockableDurationsRequest: {
+    typeUrl: string;
     encode(_: QueryLockableDurationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsRequest;
     fromPartial(_: Partial<QueryLockableDurationsRequest>): QueryLockableDurationsRequest;
@@ -335,6 +343,7 @@ export declare const QueryLockableDurationsRequest: {
     toProtoMsg(message: QueryLockableDurationsRequest): QueryLockableDurationsRequestProtoMsg;
 };
 export declare const QueryLockableDurationsResponse: {
+    typeUrl: string;
     encode(message: QueryLockableDurationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse;
     fromPartial(object: Partial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse;
@@ -347,6 +356,7 @@ export declare const QueryLockableDurationsResponse: {
     toProtoMsg(message: QueryLockableDurationsResponse): QueryLockableDurationsResponseProtoMsg;
 };
 export declare const QueryIncentivizedPoolsRequest: {
+    typeUrl: string;
     encode(_: QueryIncentivizedPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsRequest;
     fromPartial(_: Partial<QueryIncentivizedPoolsRequest>): QueryIncentivizedPoolsRequest;
@@ -359,6 +369,7 @@ export declare const QueryIncentivizedPoolsRequest: {
     toProtoMsg(message: QueryIncentivizedPoolsRequest): QueryIncentivizedPoolsRequestProtoMsg;
 };
 export declare const IncentivizedPool: {
+    typeUrl: string;
     encode(message: IncentivizedPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IncentivizedPool;
     fromPartial(object: Partial<IncentivizedPool>): IncentivizedPool;
@@ -371,6 +382,7 @@ export declare const IncentivizedPool: {
     toProtoMsg(message: IncentivizedPool): IncentivizedPoolProtoMsg;
 };
 export declare const QueryIncentivizedPoolsResponse: {
+    typeUrl: string;
     encode(message: QueryIncentivizedPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsResponse;
     fromPartial(object: Partial<QueryIncentivizedPoolsResponse>): QueryIncentivizedPoolsResponse;
@@ -383,6 +395,7 @@ export declare const QueryIncentivizedPoolsResponse: {
     toProtoMsg(message: QueryIncentivizedPoolsResponse): QueryIncentivizedPoolsResponseProtoMsg;
 };
 export declare const QueryExternalIncentiveGaugesRequest: {
+    typeUrl: string;
     encode(_: QueryExternalIncentiveGaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesRequest;
     fromPartial(_: Partial<QueryExternalIncentiveGaugesRequest>): QueryExternalIncentiveGaugesRequest;
@@ -395,6 +408,7 @@ export declare const QueryExternalIncentiveGaugesRequest: {
     toProtoMsg(message: QueryExternalIncentiveGaugesRequest): QueryExternalIncentiveGaugesRequestProtoMsg;
 };
 export declare const QueryExternalIncentiveGaugesResponse: {
+    typeUrl: string;
     encode(message: QueryExternalIncentiveGaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesResponse;
     fromPartial(object: Partial<QueryExternalIncentiveGaugesResponse>): QueryExternalIncentiveGaugesResponse;

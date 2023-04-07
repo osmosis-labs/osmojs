@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export declare enum FieldDescriptorProto_Type {
     /**
      * TYPE_DOUBLE - 0 is reserved for errors.
@@ -1954,6 +1954,7 @@ export interface GeneratedCodeInfo_AnnotationSDKType {
     end: number;
 }
 export declare const FileDescriptorSet: {
+    typeUrl: string;
     encode(message: FileDescriptorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FileDescriptorSet;
     fromPartial(object: Partial<FileDescriptorSet>): FileDescriptorSet;
@@ -1965,6 +1966,7 @@ export declare const FileDescriptorSet: {
     toProtoMsg(message: FileDescriptorSet): FileDescriptorSetProtoMsg;
 };
 export declare const FileDescriptorProto: {
+    typeUrl: string;
     encode(message: FileDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FileDescriptorProto;
     fromPartial(object: Partial<FileDescriptorProto>): FileDescriptorProto;
@@ -1976,6 +1978,7 @@ export declare const FileDescriptorProto: {
     toProtoMsg(message: FileDescriptorProto): FileDescriptorProtoProtoMsg;
 };
 export declare const DescriptorProto: {
+    typeUrl: string;
     encode(message: DescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto;
     fromPartial(object: Partial<DescriptorProto>): DescriptorProto;
@@ -1987,6 +1990,7 @@ export declare const DescriptorProto: {
     toProtoMsg(message: DescriptorProto): DescriptorProtoProtoMsg;
 };
 export declare const DescriptorProto_ExtensionRange: {
+    typeUrl: string;
     encode(message: DescriptorProto_ExtensionRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto_ExtensionRange;
     fromPartial(object: Partial<DescriptorProto_ExtensionRange>): DescriptorProto_ExtensionRange;
@@ -1998,6 +2002,7 @@ export declare const DescriptorProto_ExtensionRange: {
     toProtoMsg(message: DescriptorProto_ExtensionRange): DescriptorProto_ExtensionRangeProtoMsg;
 };
 export declare const DescriptorProto_ReservedRange: {
+    typeUrl: string;
     encode(message: DescriptorProto_ReservedRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto_ReservedRange;
     fromPartial(object: Partial<DescriptorProto_ReservedRange>): DescriptorProto_ReservedRange;
@@ -2009,6 +2014,7 @@ export declare const DescriptorProto_ReservedRange: {
     toProtoMsg(message: DescriptorProto_ReservedRange): DescriptorProto_ReservedRangeProtoMsg;
 };
 export declare const ExtensionRangeOptions: {
+    typeUrl: string;
     encode(message: ExtensionRangeOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ExtensionRangeOptions;
     fromPartial(object: Partial<ExtensionRangeOptions>): ExtensionRangeOptions;
@@ -2020,6 +2026,7 @@ export declare const ExtensionRangeOptions: {
     toProtoMsg(message: ExtensionRangeOptions): ExtensionRangeOptionsProtoMsg;
 };
 export declare const FieldDescriptorProto: {
+    typeUrl: string;
     encode(message: FieldDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FieldDescriptorProto;
     fromPartial(object: Partial<FieldDescriptorProto>): FieldDescriptorProto;
@@ -2031,6 +2038,7 @@ export declare const FieldDescriptorProto: {
     toProtoMsg(message: FieldDescriptorProto): FieldDescriptorProtoProtoMsg;
 };
 export declare const OneofDescriptorProto: {
+    typeUrl: string;
     encode(message: OneofDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): OneofDescriptorProto;
     fromPartial(object: Partial<OneofDescriptorProto>): OneofDescriptorProto;
@@ -2042,6 +2050,7 @@ export declare const OneofDescriptorProto: {
     toProtoMsg(message: OneofDescriptorProto): OneofDescriptorProtoProtoMsg;
 };
 export declare const EnumDescriptorProto: {
+    typeUrl: string;
     encode(message: EnumDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumDescriptorProto;
     fromPartial(object: Partial<EnumDescriptorProto>): EnumDescriptorProto;
@@ -2053,6 +2062,7 @@ export declare const EnumDescriptorProto: {
     toProtoMsg(message: EnumDescriptorProto): EnumDescriptorProtoProtoMsg;
 };
 export declare const EnumDescriptorProto_EnumReservedRange: {
+    typeUrl: string;
     encode(message: EnumDescriptorProto_EnumReservedRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumDescriptorProto_EnumReservedRange;
     fromPartial(object: Partial<EnumDescriptorProto_EnumReservedRange>): EnumDescriptorProto_EnumReservedRange;
@@ -2064,6 +2074,7 @@ export declare const EnumDescriptorProto_EnumReservedRange: {
     toProtoMsg(message: EnumDescriptorProto_EnumReservedRange): EnumDescriptorProto_EnumReservedRangeProtoMsg;
 };
 export declare const EnumValueDescriptorProto: {
+    typeUrl: string;
     encode(message: EnumValueDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumValueDescriptorProto;
     fromPartial(object: Partial<EnumValueDescriptorProto>): EnumValueDescriptorProto;
@@ -2075,6 +2086,7 @@ export declare const EnumValueDescriptorProto: {
     toProtoMsg(message: EnumValueDescriptorProto): EnumValueDescriptorProtoProtoMsg;
 };
 export declare const ServiceDescriptorProto: {
+    typeUrl: string;
     encode(message: ServiceDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ServiceDescriptorProto;
     fromPartial(object: Partial<ServiceDescriptorProto>): ServiceDescriptorProto;
@@ -2086,6 +2098,7 @@ export declare const ServiceDescriptorProto: {
     toProtoMsg(message: ServiceDescriptorProto): ServiceDescriptorProtoProtoMsg;
 };
 export declare const MethodDescriptorProto: {
+    typeUrl: string;
     encode(message: MethodDescriptorProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MethodDescriptorProto;
     fromPartial(object: Partial<MethodDescriptorProto>): MethodDescriptorProto;
@@ -2097,6 +2110,7 @@ export declare const MethodDescriptorProto: {
     toProtoMsg(message: MethodDescriptorProto): MethodDescriptorProtoProtoMsg;
 };
 export declare const FileOptions: {
+    typeUrl: string;
     encode(message: FileOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FileOptions;
     fromPartial(object: Partial<FileOptions>): FileOptions;
@@ -2108,6 +2122,7 @@ export declare const FileOptions: {
     toProtoMsg(message: FileOptions): FileOptionsProtoMsg;
 };
 export declare const MessageOptions: {
+    typeUrl: string;
     encode(message: MessageOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MessageOptions;
     fromPartial(object: Partial<MessageOptions>): MessageOptions;
@@ -2119,6 +2134,7 @@ export declare const MessageOptions: {
     toProtoMsg(message: MessageOptions): MessageOptionsProtoMsg;
 };
 export declare const FieldOptions: {
+    typeUrl: string;
     encode(message: FieldOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FieldOptions;
     fromPartial(object: Partial<FieldOptions>): FieldOptions;
@@ -2130,6 +2146,7 @@ export declare const FieldOptions: {
     toProtoMsg(message: FieldOptions): FieldOptionsProtoMsg;
 };
 export declare const OneofOptions: {
+    typeUrl: string;
     encode(message: OneofOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): OneofOptions;
     fromPartial(object: Partial<OneofOptions>): OneofOptions;
@@ -2141,6 +2158,7 @@ export declare const OneofOptions: {
     toProtoMsg(message: OneofOptions): OneofOptionsProtoMsg;
 };
 export declare const EnumOptions: {
+    typeUrl: string;
     encode(message: EnumOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumOptions;
     fromPartial(object: Partial<EnumOptions>): EnumOptions;
@@ -2152,6 +2170,7 @@ export declare const EnumOptions: {
     toProtoMsg(message: EnumOptions): EnumOptionsProtoMsg;
 };
 export declare const EnumValueOptions: {
+    typeUrl: string;
     encode(message: EnumValueOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EnumValueOptions;
     fromPartial(object: Partial<EnumValueOptions>): EnumValueOptions;
@@ -2163,6 +2182,7 @@ export declare const EnumValueOptions: {
     toProtoMsg(message: EnumValueOptions): EnumValueOptionsProtoMsg;
 };
 export declare const ServiceOptions: {
+    typeUrl: string;
     encode(message: ServiceOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ServiceOptions;
     fromPartial(object: Partial<ServiceOptions>): ServiceOptions;
@@ -2174,6 +2194,7 @@ export declare const ServiceOptions: {
     toProtoMsg(message: ServiceOptions): ServiceOptionsProtoMsg;
 };
 export declare const MethodOptions: {
+    typeUrl: string;
     encode(message: MethodOptions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MethodOptions;
     fromPartial(object: Partial<MethodOptions>): MethodOptions;
@@ -2185,6 +2206,7 @@ export declare const MethodOptions: {
     toProtoMsg(message: MethodOptions): MethodOptionsProtoMsg;
 };
 export declare const UninterpretedOption: {
+    typeUrl: string;
     encode(message: UninterpretedOption, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UninterpretedOption;
     fromPartial(object: Partial<UninterpretedOption>): UninterpretedOption;
@@ -2196,6 +2218,7 @@ export declare const UninterpretedOption: {
     toProtoMsg(message: UninterpretedOption): UninterpretedOptionProtoMsg;
 };
 export declare const UninterpretedOption_NamePart: {
+    typeUrl: string;
     encode(message: UninterpretedOption_NamePart, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UninterpretedOption_NamePart;
     fromPartial(object: Partial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart;
@@ -2207,6 +2230,7 @@ export declare const UninterpretedOption_NamePart: {
     toProtoMsg(message: UninterpretedOption_NamePart): UninterpretedOption_NamePartProtoMsg;
 };
 export declare const SourceCodeInfo: {
+    typeUrl: string;
     encode(message: SourceCodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SourceCodeInfo;
     fromPartial(object: Partial<SourceCodeInfo>): SourceCodeInfo;
@@ -2218,6 +2242,7 @@ export declare const SourceCodeInfo: {
     toProtoMsg(message: SourceCodeInfo): SourceCodeInfoProtoMsg;
 };
 export declare const SourceCodeInfo_Location: {
+    typeUrl: string;
     encode(message: SourceCodeInfo_Location, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SourceCodeInfo_Location;
     fromPartial(object: Partial<SourceCodeInfo_Location>): SourceCodeInfo_Location;
@@ -2229,6 +2254,7 @@ export declare const SourceCodeInfo_Location: {
     toProtoMsg(message: SourceCodeInfo_Location): SourceCodeInfo_LocationProtoMsg;
 };
 export declare const GeneratedCodeInfo: {
+    typeUrl: string;
     encode(message: GeneratedCodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeneratedCodeInfo;
     fromPartial(object: Partial<GeneratedCodeInfo>): GeneratedCodeInfo;
@@ -2240,6 +2266,7 @@ export declare const GeneratedCodeInfo: {
     toProtoMsg(message: GeneratedCodeInfo): GeneratedCodeInfoProtoMsg;
 };
 export declare const GeneratedCodeInfo_Annotation: {
+    typeUrl: string;
     encode(message: GeneratedCodeInfo_Annotation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeneratedCodeInfo_Annotation;
     fromPartial(object: Partial<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation;

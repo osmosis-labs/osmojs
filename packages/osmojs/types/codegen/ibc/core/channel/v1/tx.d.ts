@@ -1,7 +1,21 @@
 import { Channel, ChannelAmino, ChannelSDKType, Packet, PacketAmino, PacketSDKType } from "./channel";
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
+/** ResponseResultType defines the possible outcomes of the execution of a message */
+export declare enum ResponseResultType {
+    /** RESPONSE_RESULT_TYPE_UNSPECIFIED - Default zero value enumeration */
+    RESPONSE_RESULT_TYPE_UNSPECIFIED = 0,
+    /** RESPONSE_RESULT_TYPE_NOOP - The message did not call the IBC application callbacks (because, for example, the packet had already been relayed) */
+    RESPONSE_RESULT_TYPE_NOOP = 1,
+    /** RESPONSE_RESULT_TYPE_SUCCESS - The message was executed successfully */
+    RESPONSE_RESULT_TYPE_SUCCESS = 2,
+    UNRECOGNIZED = -1
+}
+export declare const ResponseResultTypeSDKType: typeof ResponseResultType;
+export declare const ResponseResultTypeAmino: typeof ResponseResultType;
+export declare function responseResultTypeFromJSON(object: any): ResponseResultType;
+export declare function responseResultTypeToJSON(object: ResponseResultType): string;
 /**
  * MsgChannelOpenInit defines an sdk.Msg to initialize a channel handshake. It
  * is called by a relayer on Chain A.
@@ -39,6 +53,8 @@ export interface MsgChannelOpenInitSDKType {
 }
 /** MsgChannelOpenInitResponse defines the Msg/ChannelOpenInit response type. */
 export interface MsgChannelOpenInitResponse {
+    channelId: string;
+    version: string;
 }
 export interface MsgChannelOpenInitResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.MsgChannelOpenInitResponse";
@@ -46,6 +62,8 @@ export interface MsgChannelOpenInitResponseProtoMsg {
 }
 /** MsgChannelOpenInitResponse defines the Msg/ChannelOpenInit response type. */
 export interface MsgChannelOpenInitResponseAmino {
+    channel_id: string;
+    version: string;
 }
 export interface MsgChannelOpenInitResponseAminoMsg {
     type: "cosmos-sdk/MsgChannelOpenInitResponse";
@@ -53,18 +71,20 @@ export interface MsgChannelOpenInitResponseAminoMsg {
 }
 /** MsgChannelOpenInitResponse defines the Msg/ChannelOpenInit response type. */
 export interface MsgChannelOpenInitResponseSDKType {
+    channel_id: string;
+    version: string;
 }
 /**
  * MsgChannelOpenInit defines a msg sent by a Relayer to try to open a channel
- * on Chain B.
+ * on Chain B. The version field within the Channel field has been deprecated. Its
+ * value will be ignored by core IBC.
  */
 export interface MsgChannelOpenTry {
     portId: string;
-    /**
-     * in the case of crossing hello's, when both chains call OpenInit, we need
-     * the channel identifier of the previous channel in state INIT
-     */
+    /** Deprecated: this field is unused. Crossing hello's are no longer supported in core IBC. */
+    /** @deprecated */
     previousChannelId: string;
+    /** NOTE: the version field within the channel has been deprecated. Its value will be ignored by core IBC. */
     channel?: Channel;
     counterpartyVersion: string;
     proofInit: Uint8Array;
@@ -77,15 +97,15 @@ export interface MsgChannelOpenTryProtoMsg {
 }
 /**
  * MsgChannelOpenInit defines a msg sent by a Relayer to try to open a channel
- * on Chain B.
+ * on Chain B. The version field within the Channel field has been deprecated. Its
+ * value will be ignored by core IBC.
  */
 export interface MsgChannelOpenTryAmino {
     port_id: string;
-    /**
-     * in the case of crossing hello's, when both chains call OpenInit, we need
-     * the channel identifier of the previous channel in state INIT
-     */
+    /** Deprecated: this field is unused. Crossing hello's are no longer supported in core IBC. */
+    /** @deprecated */
     previous_channel_id: string;
+    /** NOTE: the version field within the channel has been deprecated. Its value will be ignored by core IBC. */
     channel?: ChannelAmino;
     counterparty_version: string;
     proof_init: Uint8Array;
@@ -98,10 +118,12 @@ export interface MsgChannelOpenTryAminoMsg {
 }
 /**
  * MsgChannelOpenInit defines a msg sent by a Relayer to try to open a channel
- * on Chain B.
+ * on Chain B. The version field within the Channel field has been deprecated. Its
+ * value will be ignored by core IBC.
  */
 export interface MsgChannelOpenTrySDKType {
     port_id: string;
+    /** @deprecated */
     previous_channel_id: string;
     channel?: ChannelSDKType;
     counterparty_version: string;
@@ -111,6 +133,8 @@ export interface MsgChannelOpenTrySDKType {
 }
 /** MsgChannelOpenTryResponse defines the Msg/ChannelOpenTry response type. */
 export interface MsgChannelOpenTryResponse {
+    version: string;
+    channelId: string;
 }
 export interface MsgChannelOpenTryResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.MsgChannelOpenTryResponse";
@@ -118,6 +142,8 @@ export interface MsgChannelOpenTryResponseProtoMsg {
 }
 /** MsgChannelOpenTryResponse defines the Msg/ChannelOpenTry response type. */
 export interface MsgChannelOpenTryResponseAmino {
+    version: string;
+    channel_id: string;
 }
 export interface MsgChannelOpenTryResponseAminoMsg {
     type: "cosmos-sdk/MsgChannelOpenTryResponse";
@@ -125,6 +151,8 @@ export interface MsgChannelOpenTryResponseAminoMsg {
 }
 /** MsgChannelOpenTryResponse defines the Msg/ChannelOpenTry response type. */
 export interface MsgChannelOpenTryResponseSDKType {
+    version: string;
+    channel_id: string;
 }
 /**
  * MsgChannelOpenAck defines a msg sent by a Relayer to Chain A to acknowledge
@@ -407,6 +435,7 @@ export interface MsgRecvPacketSDKType {
 }
 /** MsgRecvPacketResponse defines the Msg/RecvPacket response type. */
 export interface MsgRecvPacketResponse {
+    result: ResponseResultType;
 }
 export interface MsgRecvPacketResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.MsgRecvPacketResponse";
@@ -414,6 +443,7 @@ export interface MsgRecvPacketResponseProtoMsg {
 }
 /** MsgRecvPacketResponse defines the Msg/RecvPacket response type. */
 export interface MsgRecvPacketResponseAmino {
+    result: ResponseResultType;
 }
 export interface MsgRecvPacketResponseAminoMsg {
     type: "cosmos-sdk/MsgRecvPacketResponse";
@@ -421,6 +451,7 @@ export interface MsgRecvPacketResponseAminoMsg {
 }
 /** MsgRecvPacketResponse defines the Msg/RecvPacket response type. */
 export interface MsgRecvPacketResponseSDKType {
+    result: ResponseResultType;
 }
 /** MsgTimeout receives timed-out packet */
 export interface MsgTimeout {
@@ -456,6 +487,7 @@ export interface MsgTimeoutSDKType {
 }
 /** MsgTimeoutResponse defines the Msg/Timeout response type. */
 export interface MsgTimeoutResponse {
+    result: ResponseResultType;
 }
 export interface MsgTimeoutResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.MsgTimeoutResponse";
@@ -463,6 +495,7 @@ export interface MsgTimeoutResponseProtoMsg {
 }
 /** MsgTimeoutResponse defines the Msg/Timeout response type. */
 export interface MsgTimeoutResponseAmino {
+    result: ResponseResultType;
 }
 export interface MsgTimeoutResponseAminoMsg {
     type: "cosmos-sdk/MsgTimeoutResponse";
@@ -470,6 +503,7 @@ export interface MsgTimeoutResponseAminoMsg {
 }
 /** MsgTimeoutResponse defines the Msg/Timeout response type. */
 export interface MsgTimeoutResponseSDKType {
+    result: ResponseResultType;
 }
 /** MsgTimeoutOnClose timed-out packet upon counterparty channel closure. */
 export interface MsgTimeoutOnClose {
@@ -508,6 +542,7 @@ export interface MsgTimeoutOnCloseSDKType {
 }
 /** MsgTimeoutOnCloseResponse defines the Msg/TimeoutOnClose response type. */
 export interface MsgTimeoutOnCloseResponse {
+    result: ResponseResultType;
 }
 export interface MsgTimeoutOnCloseResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.MsgTimeoutOnCloseResponse";
@@ -515,6 +550,7 @@ export interface MsgTimeoutOnCloseResponseProtoMsg {
 }
 /** MsgTimeoutOnCloseResponse defines the Msg/TimeoutOnClose response type. */
 export interface MsgTimeoutOnCloseResponseAmino {
+    result: ResponseResultType;
 }
 export interface MsgTimeoutOnCloseResponseAminoMsg {
     type: "cosmos-sdk/MsgTimeoutOnCloseResponse";
@@ -522,6 +558,7 @@ export interface MsgTimeoutOnCloseResponseAminoMsg {
 }
 /** MsgTimeoutOnCloseResponse defines the Msg/TimeoutOnClose response type. */
 export interface MsgTimeoutOnCloseResponseSDKType {
+    result: ResponseResultType;
 }
 /** MsgAcknowledgement receives incoming IBC acknowledgement */
 export interface MsgAcknowledgement {
@@ -557,6 +594,7 @@ export interface MsgAcknowledgementSDKType {
 }
 /** MsgAcknowledgementResponse defines the Msg/Acknowledgement response type. */
 export interface MsgAcknowledgementResponse {
+    result: ResponseResultType;
 }
 export interface MsgAcknowledgementResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.MsgAcknowledgementResponse";
@@ -564,6 +602,7 @@ export interface MsgAcknowledgementResponseProtoMsg {
 }
 /** MsgAcknowledgementResponse defines the Msg/Acknowledgement response type. */
 export interface MsgAcknowledgementResponseAmino {
+    result: ResponseResultType;
 }
 export interface MsgAcknowledgementResponseAminoMsg {
     type: "cosmos-sdk/MsgAcknowledgementResponse";
@@ -571,8 +610,10 @@ export interface MsgAcknowledgementResponseAminoMsg {
 }
 /** MsgAcknowledgementResponse defines the Msg/Acknowledgement response type. */
 export interface MsgAcknowledgementResponseSDKType {
+    result: ResponseResultType;
 }
 export declare const MsgChannelOpenInit: {
+    typeUrl: string;
     encode(message: MsgChannelOpenInit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenInit;
     fromPartial(object: Partial<MsgChannelOpenInit>): MsgChannelOpenInit;
@@ -585,11 +626,12 @@ export declare const MsgChannelOpenInit: {
     toProtoMsg(message: MsgChannelOpenInit): MsgChannelOpenInitProtoMsg;
 };
 export declare const MsgChannelOpenInitResponse: {
-    encode(_: MsgChannelOpenInitResponse, writer?: _m0.Writer): _m0.Writer;
+    typeUrl: string;
+    encode(message: MsgChannelOpenInitResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenInitResponse;
-    fromPartial(_: Partial<MsgChannelOpenInitResponse>): MsgChannelOpenInitResponse;
-    fromAmino(_: MsgChannelOpenInitResponseAmino): MsgChannelOpenInitResponse;
-    toAmino(_: MsgChannelOpenInitResponse): MsgChannelOpenInitResponseAmino;
+    fromPartial(object: Partial<MsgChannelOpenInitResponse>): MsgChannelOpenInitResponse;
+    fromAmino(object: MsgChannelOpenInitResponseAmino): MsgChannelOpenInitResponse;
+    toAmino(message: MsgChannelOpenInitResponse): MsgChannelOpenInitResponseAmino;
     fromAminoMsg(object: MsgChannelOpenInitResponseAminoMsg): MsgChannelOpenInitResponse;
     toAminoMsg(message: MsgChannelOpenInitResponse): MsgChannelOpenInitResponseAminoMsg;
     fromProtoMsg(message: MsgChannelOpenInitResponseProtoMsg): MsgChannelOpenInitResponse;
@@ -597,6 +639,7 @@ export declare const MsgChannelOpenInitResponse: {
     toProtoMsg(message: MsgChannelOpenInitResponse): MsgChannelOpenInitResponseProtoMsg;
 };
 export declare const MsgChannelOpenTry: {
+    typeUrl: string;
     encode(message: MsgChannelOpenTry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenTry;
     fromPartial(object: Partial<MsgChannelOpenTry>): MsgChannelOpenTry;
@@ -609,11 +652,12 @@ export declare const MsgChannelOpenTry: {
     toProtoMsg(message: MsgChannelOpenTry): MsgChannelOpenTryProtoMsg;
 };
 export declare const MsgChannelOpenTryResponse: {
-    encode(_: MsgChannelOpenTryResponse, writer?: _m0.Writer): _m0.Writer;
+    typeUrl: string;
+    encode(message: MsgChannelOpenTryResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenTryResponse;
-    fromPartial(_: Partial<MsgChannelOpenTryResponse>): MsgChannelOpenTryResponse;
-    fromAmino(_: MsgChannelOpenTryResponseAmino): MsgChannelOpenTryResponse;
-    toAmino(_: MsgChannelOpenTryResponse): MsgChannelOpenTryResponseAmino;
+    fromPartial(object: Partial<MsgChannelOpenTryResponse>): MsgChannelOpenTryResponse;
+    fromAmino(object: MsgChannelOpenTryResponseAmino): MsgChannelOpenTryResponse;
+    toAmino(message: MsgChannelOpenTryResponse): MsgChannelOpenTryResponseAmino;
     fromAminoMsg(object: MsgChannelOpenTryResponseAminoMsg): MsgChannelOpenTryResponse;
     toAminoMsg(message: MsgChannelOpenTryResponse): MsgChannelOpenTryResponseAminoMsg;
     fromProtoMsg(message: MsgChannelOpenTryResponseProtoMsg): MsgChannelOpenTryResponse;
@@ -621,6 +665,7 @@ export declare const MsgChannelOpenTryResponse: {
     toProtoMsg(message: MsgChannelOpenTryResponse): MsgChannelOpenTryResponseProtoMsg;
 };
 export declare const MsgChannelOpenAck: {
+    typeUrl: string;
     encode(message: MsgChannelOpenAck, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenAck;
     fromPartial(object: Partial<MsgChannelOpenAck>): MsgChannelOpenAck;
@@ -633,6 +678,7 @@ export declare const MsgChannelOpenAck: {
     toProtoMsg(message: MsgChannelOpenAck): MsgChannelOpenAckProtoMsg;
 };
 export declare const MsgChannelOpenAckResponse: {
+    typeUrl: string;
     encode(_: MsgChannelOpenAckResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenAckResponse;
     fromPartial(_: Partial<MsgChannelOpenAckResponse>): MsgChannelOpenAckResponse;
@@ -645,6 +691,7 @@ export declare const MsgChannelOpenAckResponse: {
     toProtoMsg(message: MsgChannelOpenAckResponse): MsgChannelOpenAckResponseProtoMsg;
 };
 export declare const MsgChannelOpenConfirm: {
+    typeUrl: string;
     encode(message: MsgChannelOpenConfirm, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenConfirm;
     fromPartial(object: Partial<MsgChannelOpenConfirm>): MsgChannelOpenConfirm;
@@ -657,6 +704,7 @@ export declare const MsgChannelOpenConfirm: {
     toProtoMsg(message: MsgChannelOpenConfirm): MsgChannelOpenConfirmProtoMsg;
 };
 export declare const MsgChannelOpenConfirmResponse: {
+    typeUrl: string;
     encode(_: MsgChannelOpenConfirmResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelOpenConfirmResponse;
     fromPartial(_: Partial<MsgChannelOpenConfirmResponse>): MsgChannelOpenConfirmResponse;
@@ -669,6 +717,7 @@ export declare const MsgChannelOpenConfirmResponse: {
     toProtoMsg(message: MsgChannelOpenConfirmResponse): MsgChannelOpenConfirmResponseProtoMsg;
 };
 export declare const MsgChannelCloseInit: {
+    typeUrl: string;
     encode(message: MsgChannelCloseInit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseInit;
     fromPartial(object: Partial<MsgChannelCloseInit>): MsgChannelCloseInit;
@@ -681,6 +730,7 @@ export declare const MsgChannelCloseInit: {
     toProtoMsg(message: MsgChannelCloseInit): MsgChannelCloseInitProtoMsg;
 };
 export declare const MsgChannelCloseInitResponse: {
+    typeUrl: string;
     encode(_: MsgChannelCloseInitResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseInitResponse;
     fromPartial(_: Partial<MsgChannelCloseInitResponse>): MsgChannelCloseInitResponse;
@@ -693,6 +743,7 @@ export declare const MsgChannelCloseInitResponse: {
     toProtoMsg(message: MsgChannelCloseInitResponse): MsgChannelCloseInitResponseProtoMsg;
 };
 export declare const MsgChannelCloseConfirm: {
+    typeUrl: string;
     encode(message: MsgChannelCloseConfirm, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseConfirm;
     fromPartial(object: Partial<MsgChannelCloseConfirm>): MsgChannelCloseConfirm;
@@ -705,6 +756,7 @@ export declare const MsgChannelCloseConfirm: {
     toProtoMsg(message: MsgChannelCloseConfirm): MsgChannelCloseConfirmProtoMsg;
 };
 export declare const MsgChannelCloseConfirmResponse: {
+    typeUrl: string;
     encode(_: MsgChannelCloseConfirmResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChannelCloseConfirmResponse;
     fromPartial(_: Partial<MsgChannelCloseConfirmResponse>): MsgChannelCloseConfirmResponse;
@@ -717,6 +769,7 @@ export declare const MsgChannelCloseConfirmResponse: {
     toProtoMsg(message: MsgChannelCloseConfirmResponse): MsgChannelCloseConfirmResponseProtoMsg;
 };
 export declare const MsgRecvPacket: {
+    typeUrl: string;
     encode(message: MsgRecvPacket, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRecvPacket;
     fromPartial(object: Partial<MsgRecvPacket>): MsgRecvPacket;
@@ -729,11 +782,12 @@ export declare const MsgRecvPacket: {
     toProtoMsg(message: MsgRecvPacket): MsgRecvPacketProtoMsg;
 };
 export declare const MsgRecvPacketResponse: {
-    encode(_: MsgRecvPacketResponse, writer?: _m0.Writer): _m0.Writer;
+    typeUrl: string;
+    encode(message: MsgRecvPacketResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRecvPacketResponse;
-    fromPartial(_: Partial<MsgRecvPacketResponse>): MsgRecvPacketResponse;
-    fromAmino(_: MsgRecvPacketResponseAmino): MsgRecvPacketResponse;
-    toAmino(_: MsgRecvPacketResponse): MsgRecvPacketResponseAmino;
+    fromPartial(object: Partial<MsgRecvPacketResponse>): MsgRecvPacketResponse;
+    fromAmino(object: MsgRecvPacketResponseAmino): MsgRecvPacketResponse;
+    toAmino(message: MsgRecvPacketResponse): MsgRecvPacketResponseAmino;
     fromAminoMsg(object: MsgRecvPacketResponseAminoMsg): MsgRecvPacketResponse;
     toAminoMsg(message: MsgRecvPacketResponse): MsgRecvPacketResponseAminoMsg;
     fromProtoMsg(message: MsgRecvPacketResponseProtoMsg): MsgRecvPacketResponse;
@@ -741,6 +795,7 @@ export declare const MsgRecvPacketResponse: {
     toProtoMsg(message: MsgRecvPacketResponse): MsgRecvPacketResponseProtoMsg;
 };
 export declare const MsgTimeout: {
+    typeUrl: string;
     encode(message: MsgTimeout, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeout;
     fromPartial(object: Partial<MsgTimeout>): MsgTimeout;
@@ -753,11 +808,12 @@ export declare const MsgTimeout: {
     toProtoMsg(message: MsgTimeout): MsgTimeoutProtoMsg;
 };
 export declare const MsgTimeoutResponse: {
-    encode(_: MsgTimeoutResponse, writer?: _m0.Writer): _m0.Writer;
+    typeUrl: string;
+    encode(message: MsgTimeoutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutResponse;
-    fromPartial(_: Partial<MsgTimeoutResponse>): MsgTimeoutResponse;
-    fromAmino(_: MsgTimeoutResponseAmino): MsgTimeoutResponse;
-    toAmino(_: MsgTimeoutResponse): MsgTimeoutResponseAmino;
+    fromPartial(object: Partial<MsgTimeoutResponse>): MsgTimeoutResponse;
+    fromAmino(object: MsgTimeoutResponseAmino): MsgTimeoutResponse;
+    toAmino(message: MsgTimeoutResponse): MsgTimeoutResponseAmino;
     fromAminoMsg(object: MsgTimeoutResponseAminoMsg): MsgTimeoutResponse;
     toAminoMsg(message: MsgTimeoutResponse): MsgTimeoutResponseAminoMsg;
     fromProtoMsg(message: MsgTimeoutResponseProtoMsg): MsgTimeoutResponse;
@@ -765,6 +821,7 @@ export declare const MsgTimeoutResponse: {
     toProtoMsg(message: MsgTimeoutResponse): MsgTimeoutResponseProtoMsg;
 };
 export declare const MsgTimeoutOnClose: {
+    typeUrl: string;
     encode(message: MsgTimeoutOnClose, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutOnClose;
     fromPartial(object: Partial<MsgTimeoutOnClose>): MsgTimeoutOnClose;
@@ -777,11 +834,12 @@ export declare const MsgTimeoutOnClose: {
     toProtoMsg(message: MsgTimeoutOnClose): MsgTimeoutOnCloseProtoMsg;
 };
 export declare const MsgTimeoutOnCloseResponse: {
-    encode(_: MsgTimeoutOnCloseResponse, writer?: _m0.Writer): _m0.Writer;
+    typeUrl: string;
+    encode(message: MsgTimeoutOnCloseResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTimeoutOnCloseResponse;
-    fromPartial(_: Partial<MsgTimeoutOnCloseResponse>): MsgTimeoutOnCloseResponse;
-    fromAmino(_: MsgTimeoutOnCloseResponseAmino): MsgTimeoutOnCloseResponse;
-    toAmino(_: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseAmino;
+    fromPartial(object: Partial<MsgTimeoutOnCloseResponse>): MsgTimeoutOnCloseResponse;
+    fromAmino(object: MsgTimeoutOnCloseResponseAmino): MsgTimeoutOnCloseResponse;
+    toAmino(message: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseAmino;
     fromAminoMsg(object: MsgTimeoutOnCloseResponseAminoMsg): MsgTimeoutOnCloseResponse;
     toAminoMsg(message: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseAminoMsg;
     fromProtoMsg(message: MsgTimeoutOnCloseResponseProtoMsg): MsgTimeoutOnCloseResponse;
@@ -789,6 +847,7 @@ export declare const MsgTimeoutOnCloseResponse: {
     toProtoMsg(message: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseProtoMsg;
 };
 export declare const MsgAcknowledgement: {
+    typeUrl: string;
     encode(message: MsgAcknowledgement, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAcknowledgement;
     fromPartial(object: Partial<MsgAcknowledgement>): MsgAcknowledgement;
@@ -801,11 +860,12 @@ export declare const MsgAcknowledgement: {
     toProtoMsg(message: MsgAcknowledgement): MsgAcknowledgementProtoMsg;
 };
 export declare const MsgAcknowledgementResponse: {
-    encode(_: MsgAcknowledgementResponse, writer?: _m0.Writer): _m0.Writer;
+    typeUrl: string;
+    encode(message: MsgAcknowledgementResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAcknowledgementResponse;
-    fromPartial(_: Partial<MsgAcknowledgementResponse>): MsgAcknowledgementResponse;
-    fromAmino(_: MsgAcknowledgementResponseAmino): MsgAcknowledgementResponse;
-    toAmino(_: MsgAcknowledgementResponse): MsgAcknowledgementResponseAmino;
+    fromPartial(object: Partial<MsgAcknowledgementResponse>): MsgAcknowledgementResponse;
+    fromAmino(object: MsgAcknowledgementResponseAmino): MsgAcknowledgementResponse;
+    toAmino(message: MsgAcknowledgementResponse): MsgAcknowledgementResponseAmino;
     fromAminoMsg(object: MsgAcknowledgementResponseAminoMsg): MsgAcknowledgementResponse;
     toAminoMsg(message: MsgAcknowledgementResponse): MsgAcknowledgementResponseAminoMsg;
     fromProtoMsg(message: MsgAcknowledgementResponseProtoMsg): MsgAcknowledgementResponse;

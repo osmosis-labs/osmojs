@@ -1,64 +1,43 @@
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-/**
- * ClientState defines a loopback (localhost) client. It requires (read-only)
- * access to keys outside the client prefix.
- */
+/** ClientState defines the 09-localhost client state */
 
 export interface ClientState {
-  /** self chain ID */
-  chainId: string;
-  /** self latest block height */
-
-  height?: Height;
+  /** the latest block height */
+  latestHeight?: Height;
 }
 export interface ClientStateProtoMsg {
-  typeUrl: "/ibc.lightclients.localhost.v1.ClientState";
+  typeUrl: "/ibc.lightclients.localhost.v2.ClientState";
   value: Uint8Array;
 }
-/**
- * ClientState defines a loopback (localhost) client. It requires (read-only)
- * access to keys outside the client prefix.
- */
+/** ClientState defines the 09-localhost client state */
 
 export interface ClientStateAmino {
-  /** self chain ID */
-  chain_id: string;
-  /** self latest block height */
-
-  height?: HeightAmino;
+  /** the latest block height */
+  latest_height?: HeightAmino;
 }
 export interface ClientStateAminoMsg {
   type: "cosmos-sdk/ClientState";
   value: ClientStateAmino;
 }
-/**
- * ClientState defines a loopback (localhost) client. It requires (read-only)
- * access to keys outside the client prefix.
- */
+/** ClientState defines the 09-localhost client state */
 
 export interface ClientStateSDKType {
-  chain_id: string;
-  height?: HeightSDKType;
+  latest_height?: HeightSDKType;
 }
 
 function createBaseClientState(): ClientState {
   return {
-    chainId: "",
-    height: undefined
+    latestHeight: undefined
   };
 }
 
 export const ClientState = {
-  typeUrl: "/ibc.lightclients.localhost.v1.ClientState",
+  typeUrl: "/ibc.lightclients.localhost.v2.ClientState",
 
   encode(message: ClientState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.chainId !== "") {
-      writer.uint32(10).string(message.chainId);
-    }
-
-    if (message.height !== undefined) {
-      Height.encode(message.height, writer.uint32(18).fork()).ldelim();
+    if (message.latestHeight !== undefined) {
+      Height.encode(message.latestHeight, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -74,11 +53,7 @@ export const ClientState = {
 
       switch (tag >>> 3) {
         case 1:
-          message.chainId = reader.string();
-          break;
-
-        case 2:
-          message.height = Height.decode(reader, reader.uint32());
+          message.latestHeight = Height.decode(reader, reader.uint32());
           break;
 
         default:
@@ -92,22 +67,19 @@ export const ClientState = {
 
   fromPartial(object: Partial<ClientState>): ClientState {
     const message = createBaseClientState();
-    message.chainId = object.chainId ?? "";
-    message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
+    message.latestHeight = object.latestHeight !== undefined && object.latestHeight !== null ? Height.fromPartial(object.latestHeight) : undefined;
     return message;
   },
 
   fromAmino(object: ClientStateAmino): ClientState {
     return {
-      chainId: object.chain_id,
-      height: object?.height ? Height.fromAmino(object.height) : undefined
+      latestHeight: object?.latest_height ? Height.fromAmino(object.latest_height) : undefined
     };
   },
 
   toAmino(message: ClientState): ClientStateAmino {
     const obj: any = {};
-    obj.chain_id = message.chainId;
-    obj.height = message.height ? Height.toAmino(message.height) : {};
+    obj.latest_height = message.latestHeight ? Height.toAmino(message.latestHeight) : {};
     return obj;
   },
 
@@ -132,7 +104,7 @@ export const ClientState = {
 
   toProtoMsg(message: ClientState): ClientStateProtoMsg {
     return {
-      typeUrl: "/ibc.lightclients.localhost.v1.ClientState",
+      typeUrl: "/ibc.lightclients.localhost.v2.ClientState",
       value: ClientState.encode(message).finish()
     };
   }

@@ -1,7 +1,7 @@
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType, Params, ParamsAmino, ParamsSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** MsgStoreCode submit Wasm code to the system */
 export interface MsgStoreCode {
     /** Sender is the actor that signed the messages */
@@ -971,6 +971,7 @@ export interface MsgStoreAndInstantiateContractResponseSDKType {
     data: Uint8Array;
 }
 export declare const MsgStoreCode: {
+    typeUrl: string;
     encode(message: MsgStoreCode, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCode;
     fromPartial(object: Partial<MsgStoreCode>): MsgStoreCode;
@@ -983,6 +984,7 @@ export declare const MsgStoreCode: {
     toProtoMsg(message: MsgStoreCode): MsgStoreCodeProtoMsg;
 };
 export declare const MsgStoreCodeResponse: {
+    typeUrl: string;
     encode(message: MsgStoreCodeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCodeResponse;
     fromPartial(object: Partial<MsgStoreCodeResponse>): MsgStoreCodeResponse;
@@ -995,6 +997,7 @@ export declare const MsgStoreCodeResponse: {
     toProtoMsg(message: MsgStoreCodeResponse): MsgStoreCodeResponseProtoMsg;
 };
 export declare const MsgInstantiateContract: {
+    typeUrl: string;
     encode(message: MsgInstantiateContract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContract;
     fromPartial(object: Partial<MsgInstantiateContract>): MsgInstantiateContract;
@@ -1007,6 +1010,7 @@ export declare const MsgInstantiateContract: {
     toProtoMsg(message: MsgInstantiateContract): MsgInstantiateContractProtoMsg;
 };
 export declare const MsgInstantiateContractResponse: {
+    typeUrl: string;
     encode(message: MsgInstantiateContractResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContractResponse;
     fromPartial(object: Partial<MsgInstantiateContractResponse>): MsgInstantiateContractResponse;
@@ -1019,6 +1023,7 @@ export declare const MsgInstantiateContractResponse: {
     toProtoMsg(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseProtoMsg;
 };
 export declare const MsgInstantiateContract2: {
+    typeUrl: string;
     encode(message: MsgInstantiateContract2, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContract2;
     fromPartial(object: Partial<MsgInstantiateContract2>): MsgInstantiateContract2;
@@ -1031,6 +1036,7 @@ export declare const MsgInstantiateContract2: {
     toProtoMsg(message: MsgInstantiateContract2): MsgInstantiateContract2ProtoMsg;
 };
 export declare const MsgInstantiateContract2Response: {
+    typeUrl: string;
     encode(message: MsgInstantiateContract2Response, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContract2Response;
     fromPartial(object: Partial<MsgInstantiateContract2Response>): MsgInstantiateContract2Response;
@@ -1043,6 +1049,7 @@ export declare const MsgInstantiateContract2Response: {
     toProtoMsg(message: MsgInstantiateContract2Response): MsgInstantiateContract2ResponseProtoMsg;
 };
 export declare const MsgExecuteContract: {
+    typeUrl: string;
     encode(message: MsgExecuteContract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContract;
     fromPartial(object: Partial<MsgExecuteContract>): MsgExecuteContract;
@@ -1055,6 +1062,7 @@ export declare const MsgExecuteContract: {
     toProtoMsg(message: MsgExecuteContract): MsgExecuteContractProtoMsg;
 };
 export declare const MsgExecuteContractResponse: {
+    typeUrl: string;
     encode(message: MsgExecuteContractResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContractResponse;
     fromPartial(object: Partial<MsgExecuteContractResponse>): MsgExecuteContractResponse;
@@ -1067,6 +1075,7 @@ export declare const MsgExecuteContractResponse: {
     toProtoMsg(message: MsgExecuteContractResponse): MsgExecuteContractResponseProtoMsg;
 };
 export declare const MsgMigrateContract: {
+    typeUrl: string;
     encode(message: MsgMigrateContract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContract;
     fromPartial(object: Partial<MsgMigrateContract>): MsgMigrateContract;
@@ -1079,6 +1088,7 @@ export declare const MsgMigrateContract: {
     toProtoMsg(message: MsgMigrateContract): MsgMigrateContractProtoMsg;
 };
 export declare const MsgMigrateContractResponse: {
+    typeUrl: string;
     encode(message: MsgMigrateContractResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContractResponse;
     fromPartial(object: Partial<MsgMigrateContractResponse>): MsgMigrateContractResponse;
@@ -1091,6 +1101,7 @@ export declare const MsgMigrateContractResponse: {
     toProtoMsg(message: MsgMigrateContractResponse): MsgMigrateContractResponseProtoMsg;
 };
 export declare const MsgUpdateAdmin: {
+    typeUrl: string;
     encode(message: MsgUpdateAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdmin;
     fromPartial(object: Partial<MsgUpdateAdmin>): MsgUpdateAdmin;
@@ -1103,6 +1114,7 @@ export declare const MsgUpdateAdmin: {
     toProtoMsg(message: MsgUpdateAdmin): MsgUpdateAdminProtoMsg;
 };
 export declare const MsgUpdateAdminResponse: {
+    typeUrl: string;
     encode(_: MsgUpdateAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdminResponse;
     fromPartial(_: Partial<MsgUpdateAdminResponse>): MsgUpdateAdminResponse;
@@ -1115,6 +1127,7 @@ export declare const MsgUpdateAdminResponse: {
     toProtoMsg(message: MsgUpdateAdminResponse): MsgUpdateAdminResponseProtoMsg;
 };
 export declare const MsgClearAdmin: {
+    typeUrl: string;
     encode(message: MsgClearAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdmin;
     fromPartial(object: Partial<MsgClearAdmin>): MsgClearAdmin;
@@ -1127,6 +1140,7 @@ export declare const MsgClearAdmin: {
     toProtoMsg(message: MsgClearAdmin): MsgClearAdminProtoMsg;
 };
 export declare const MsgClearAdminResponse: {
+    typeUrl: string;
     encode(_: MsgClearAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdminResponse;
     fromPartial(_: Partial<MsgClearAdminResponse>): MsgClearAdminResponse;
@@ -1139,6 +1153,7 @@ export declare const MsgClearAdminResponse: {
     toProtoMsg(message: MsgClearAdminResponse): MsgClearAdminResponseProtoMsg;
 };
 export declare const MsgUpdateInstantiateConfig: {
+    typeUrl: string;
     encode(message: MsgUpdateInstantiateConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateInstantiateConfig;
     fromPartial(object: Partial<MsgUpdateInstantiateConfig>): MsgUpdateInstantiateConfig;
@@ -1151,6 +1166,7 @@ export declare const MsgUpdateInstantiateConfig: {
     toProtoMsg(message: MsgUpdateInstantiateConfig): MsgUpdateInstantiateConfigProtoMsg;
 };
 export declare const MsgUpdateInstantiateConfigResponse: {
+    typeUrl: string;
     encode(_: MsgUpdateInstantiateConfigResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateInstantiateConfigResponse;
     fromPartial(_: Partial<MsgUpdateInstantiateConfigResponse>): MsgUpdateInstantiateConfigResponse;
@@ -1163,6 +1179,7 @@ export declare const MsgUpdateInstantiateConfigResponse: {
     toProtoMsg(message: MsgUpdateInstantiateConfigResponse): MsgUpdateInstantiateConfigResponseProtoMsg;
 };
 export declare const MsgUpdateParams: {
+    typeUrl: string;
     encode(message: MsgUpdateParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParams;
     fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
@@ -1175,6 +1192,7 @@ export declare const MsgUpdateParams: {
     toProtoMsg(message: MsgUpdateParams): MsgUpdateParamsProtoMsg;
 };
 export declare const MsgUpdateParamsResponse: {
+    typeUrl: string;
     encode(_: MsgUpdateParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
@@ -1187,6 +1205,7 @@ export declare const MsgUpdateParamsResponse: {
     toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg;
 };
 export declare const MsgSudoContract: {
+    typeUrl: string;
     encode(message: MsgSudoContract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSudoContract;
     fromPartial(object: Partial<MsgSudoContract>): MsgSudoContract;
@@ -1199,6 +1218,7 @@ export declare const MsgSudoContract: {
     toProtoMsg(message: MsgSudoContract): MsgSudoContractProtoMsg;
 };
 export declare const MsgSudoContractResponse: {
+    typeUrl: string;
     encode(message: MsgSudoContractResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSudoContractResponse;
     fromPartial(object: Partial<MsgSudoContractResponse>): MsgSudoContractResponse;
@@ -1211,6 +1231,7 @@ export declare const MsgSudoContractResponse: {
     toProtoMsg(message: MsgSudoContractResponse): MsgSudoContractResponseProtoMsg;
 };
 export declare const MsgPinCodes: {
+    typeUrl: string;
     encode(message: MsgPinCodes, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgPinCodes;
     fromPartial(object: Partial<MsgPinCodes>): MsgPinCodes;
@@ -1223,6 +1244,7 @@ export declare const MsgPinCodes: {
     toProtoMsg(message: MsgPinCodes): MsgPinCodesProtoMsg;
 };
 export declare const MsgPinCodesResponse: {
+    typeUrl: string;
     encode(_: MsgPinCodesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgPinCodesResponse;
     fromPartial(_: Partial<MsgPinCodesResponse>): MsgPinCodesResponse;
@@ -1235,6 +1257,7 @@ export declare const MsgPinCodesResponse: {
     toProtoMsg(message: MsgPinCodesResponse): MsgPinCodesResponseProtoMsg;
 };
 export declare const MsgUnpinCodes: {
+    typeUrl: string;
     encode(message: MsgUnpinCodes, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnpinCodes;
     fromPartial(object: Partial<MsgUnpinCodes>): MsgUnpinCodes;
@@ -1247,6 +1270,7 @@ export declare const MsgUnpinCodes: {
     toProtoMsg(message: MsgUnpinCodes): MsgUnpinCodesProtoMsg;
 };
 export declare const MsgUnpinCodesResponse: {
+    typeUrl: string;
     encode(_: MsgUnpinCodesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnpinCodesResponse;
     fromPartial(_: Partial<MsgUnpinCodesResponse>): MsgUnpinCodesResponse;
@@ -1259,6 +1283,7 @@ export declare const MsgUnpinCodesResponse: {
     toProtoMsg(message: MsgUnpinCodesResponse): MsgUnpinCodesResponseProtoMsg;
 };
 export declare const MsgStoreAndInstantiateContract: {
+    typeUrl: string;
     encode(message: MsgStoreAndInstantiateContract, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreAndInstantiateContract;
     fromPartial(object: Partial<MsgStoreAndInstantiateContract>): MsgStoreAndInstantiateContract;
@@ -1271,6 +1296,7 @@ export declare const MsgStoreAndInstantiateContract: {
     toProtoMsg(message: MsgStoreAndInstantiateContract): MsgStoreAndInstantiateContractProtoMsg;
 };
 export declare const MsgStoreAndInstantiateContractResponse: {
+    typeUrl: string;
     encode(message: MsgStoreAndInstantiateContractResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreAndInstantiateContractResponse;
     fromPartial(object: Partial<MsgStoreAndInstantiateContractResponse>): MsgStoreAndInstantiateContractResponse;

@@ -3,8 +3,8 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
+import { Long, toTimestamp, fromTimestamp, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp, Long, isSet } from "../../../helpers";
 import { toBase64, fromBase64 } from "@cosmjs/encoding";
 import { encodeBech32Pubkey, decodeBech32Pubkey } from "@cosmjs/amino";
 /** BondStatus is the status of a validator. */
@@ -785,6 +785,9 @@ export interface Params {
   /** min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators */
 
   minCommissionRate: string;
+  /** min_self_delegation is the chain-wide minimum amount that a validator has to self delegate */
+
+  minSelfDelegation: string;
 }
 export interface ParamsProtoMsg {
   typeUrl: "/cosmos.staking.v1beta1.Params";
@@ -810,9 +813,12 @@ export interface ParamsAmino {
   /** min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators */
 
   min_commission_rate: string;
+  /** min_self_delegation is the chain-wide minimum amount that a validator has to self delegate */
+
+  min_self_delegation: string;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: "cosmos-sdk/x/staking/Params";
   value: ParamsAmino;
 }
 /** Params defines the parameters for the staking module. */
@@ -824,6 +830,7 @@ export interface ParamsSDKType {
   historical_entries: number;
   bond_denom: string;
   min_commission_rate: string;
+  min_self_delegation: string;
 }
 /**
  * DelegationResponse is equivalent to Delegation except that it contains a
@@ -2704,7 +2711,8 @@ function createBaseParams(): Params {
     maxEntries: 0,
     historicalEntries: 0,
     bondDenom: "",
-    minCommissionRate: ""
+    minCommissionRate: "",
+    minSelfDelegation: ""
   };
 }
 
@@ -2734,6 +2742,10 @@ export const Params = {
 
     if (message.minCommissionRate !== "") {
       writer.uint32(50).string(message.minCommissionRate);
+    }
+
+    if (message.minSelfDelegation !== "") {
+      writer.uint32(58).string(message.minSelfDelegation);
     }
 
     return writer;
@@ -2772,6 +2784,10 @@ export const Params = {
           message.minCommissionRate = reader.string();
           break;
 
+        case 7:
+          message.minSelfDelegation = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -2789,6 +2805,7 @@ export const Params = {
     message.historicalEntries = object.historicalEntries ?? 0;
     message.bondDenom = object.bondDenom ?? "";
     message.minCommissionRate = object.minCommissionRate ?? "";
+    message.minSelfDelegation = object.minSelfDelegation ?? "";
     return message;
   },
 
@@ -2799,7 +2816,8 @@ export const Params = {
       maxEntries: object.max_entries,
       historicalEntries: object.historical_entries,
       bondDenom: object.bond_denom,
-      minCommissionRate: object.min_commission_rate
+      minCommissionRate: object.min_commission_rate,
+      minSelfDelegation: object.min_self_delegation
     };
   },
 
@@ -2811,6 +2829,7 @@ export const Params = {
     obj.historical_entries = message.historicalEntries;
     obj.bond_denom = message.bondDenom;
     obj.min_commission_rate = message.minCommissionRate;
+    obj.min_self_delegation = message.minSelfDelegation;
     return obj;
   },
 
@@ -2820,7 +2839,7 @@ export const Params = {
 
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
+      type: "cosmos-sdk/x/staking/Params",
       value: Params.toAmino(message)
     };
   },

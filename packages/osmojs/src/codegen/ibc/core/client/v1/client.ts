@@ -1,7 +1,7 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Plan, PlanAmino, PlanSDKType } from "../../../../cosmos/upgrade/v1beta1/upgrade";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * IdentifiedClientState defines a client state with an additional client
  * identifier field.
@@ -324,7 +324,11 @@ export interface HeightSDKType {
 /** Params defines the set of IBC light client parameters. */
 
 export interface Params {
-  /** allowed_clients defines the list of allowed client state types. */
+  /**
+   * allowed_clients defines the list of allowed client state types which can be created
+   * and interacted with. If a client type is removed from the allowed clients list, usage
+   * of this client will be disabled until it is added again to the list.
+   */
   allowedClients: string[];
 }
 export interface ParamsProtoMsg {
@@ -334,7 +338,11 @@ export interface ParamsProtoMsg {
 /** Params defines the set of IBC light client parameters. */
 
 export interface ParamsAmino {
-  /** allowed_clients defines the list of allowed client state types. */
+  /**
+   * allowed_clients defines the list of allowed client state types which can be created
+   * and interacted with. If a client type is removed from the allowed clients list, usage
+   * of this client will be disabled until it is added again to the list.
+   */
   allowed_clients: string[];
 }
 export interface ParamsAminoMsg {

@@ -211,6 +211,7 @@ export interface ParamsResponseSDKType {
     params?: ParamsSDKType;
 }
 export declare const ArithmeticTwapRequest: {
+    typeUrl: string;
     encode(message: ArithmeticTwapRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapRequest;
     fromPartial(object: Partial<ArithmeticTwapRequest>): ArithmeticTwapRequest;
@@ -223,6 +224,7 @@ export declare const ArithmeticTwapRequest: {
     toProtoMsg(message: ArithmeticTwapRequest): ArithmeticTwapRequestProtoMsg;
 };
 export declare const ArithmeticTwapResponse: {
+    typeUrl: string;
     encode(message: ArithmeticTwapResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapResponse;
     fromPartial(object: Partial<ArithmeticTwapResponse>): ArithmeticTwapResponse;
@@ -235,6 +237,7 @@ export declare const ArithmeticTwapResponse: {
     toProtoMsg(message: ArithmeticTwapResponse): ArithmeticTwapResponseProtoMsg;
 };
 export declare const ArithmeticTwapToNowRequest: {
+    typeUrl: string;
     encode(message: ArithmeticTwapToNowRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowRequest;
     fromPartial(object: Partial<ArithmeticTwapToNowRequest>): ArithmeticTwapToNowRequest;
@@ -247,6 +250,7 @@ export declare const ArithmeticTwapToNowRequest: {
     toProtoMsg(message: ArithmeticTwapToNowRequest): ArithmeticTwapToNowRequestProtoMsg;
 };
 export declare const ArithmeticTwapToNowResponse: {
+    typeUrl: string;
     encode(message: ArithmeticTwapToNowResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowResponse;
     fromPartial(object: Partial<ArithmeticTwapToNowResponse>): ArithmeticTwapToNowResponse;
@@ -259,6 +263,7 @@ export declare const ArithmeticTwapToNowResponse: {
     toProtoMsg(message: ArithmeticTwapToNowResponse): ArithmeticTwapToNowResponseProtoMsg;
 };
 export declare const GeometricTwapRequest: {
+    typeUrl: string;
     encode(message: GeometricTwapRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapRequest;
     fromPartial(object: Partial<GeometricTwapRequest>): GeometricTwapRequest;
@@ -271,6 +276,7 @@ export declare const GeometricTwapRequest: {
     toProtoMsg(message: GeometricTwapRequest): GeometricTwapRequestProtoMsg;
 };
 export declare const GeometricTwapResponse: {
+    typeUrl: string;
     encode(message: GeometricTwapResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapResponse;
     fromPartial(object: Partial<GeometricTwapResponse>): GeometricTwapResponse;
@@ -283,6 +289,7 @@ export declare const GeometricTwapResponse: {
     toProtoMsg(message: GeometricTwapResponse): GeometricTwapResponseProtoMsg;
 };
 export declare const GeometricTwapToNowRequest: {
+    typeUrl: string;
     encode(message: GeometricTwapToNowRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapToNowRequest;
     fromPartial(object: Partial<GeometricTwapToNowRequest>): GeometricTwapToNowRequest;
@@ -295,6 +302,7 @@ export declare const GeometricTwapToNowRequest: {
     toProtoMsg(message: GeometricTwapToNowRequest): GeometricTwapToNowRequestProtoMsg;
 };
 export declare const GeometricTwapToNowResponse: {
+    typeUrl: string;
     encode(message: GeometricTwapToNowResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapToNowResponse;
     fromPartial(object: Partial<GeometricTwapToNowResponse>): GeometricTwapToNowResponse;
@@ -307,6 +315,7 @@ export declare const GeometricTwapToNowResponse: {
     toProtoMsg(message: GeometricTwapToNowResponse): GeometricTwapToNowResponseProtoMsg;
 };
 export declare const ParamsRequest: {
+    typeUrl: string;
     encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
@@ -319,6 +328,7 @@ export declare const ParamsRequest: {
     toProtoMsg(message: ParamsRequest): ParamsRequestProtoMsg;
 };
 export declare const ParamsResponse: {
+    typeUrl: string;
     encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;

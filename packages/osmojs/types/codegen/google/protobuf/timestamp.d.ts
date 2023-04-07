@@ -281,6 +281,7 @@ export interface TimestampSDKType {
     nanos: number;
 }
 export declare const Timestamp: {
+    typeUrl: string;
     encode(message: Timestamp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Timestamp;
     fromPartial(object: Partial<Timestamp>): Timestamp;

@@ -1,3 +1,3 @@
-import * as _0 from "./amino";
-export const amino = { ..._0
+import * as _45 from "./amino";
+export const amino = { ..._45
 };

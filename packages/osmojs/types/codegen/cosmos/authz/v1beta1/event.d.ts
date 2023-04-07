@@ -64,6 +64,7 @@ export interface EventRevokeSDKType {
     grantee: string;
 }
 export declare const EventGrant: {
+    typeUrl: string;
     encode(message: EventGrant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventGrant;
     fromPartial(object: Partial<EventGrant>): EventGrant;
@@ -76,6 +77,7 @@ export declare const EventGrant: {
     toProtoMsg(message: EventGrant): EventGrantProtoMsg;
 };
 export declare const EventRevoke: {
+    typeUrl: string;
     encode(message: EventRevoke, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventRevoke;
     fromPartial(object: Partial<EventRevoke>): EventRevoke;

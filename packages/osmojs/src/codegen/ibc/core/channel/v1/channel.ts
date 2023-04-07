@@ -1,6 +1,6 @@
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
+import { Long, isSet } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, Long } from "../../../../helpers";
 /**
  * State defines if a channel is in one of the following states:
  * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -462,6 +462,57 @@ export interface PacketStateSDKType {
   channel_id: string;
   sequence: Long;
   data: Uint8Array;
+}
+/**
+ * PacketId is an identifer for a unique Packet
+ * Source chains refer to packets by source port/channel
+ * Destination chains refer to packets by destination port/channel
+ */
+
+export interface PacketId {
+  /** channel port identifier */
+  portId: string;
+  /** channel unique identifier */
+
+  channelId: string;
+  /** packet sequence */
+
+  sequence: Long;
+}
+export interface PacketIdProtoMsg {
+  typeUrl: "/ibc.core.channel.v1.PacketId";
+  value: Uint8Array;
+}
+/**
+ * PacketId is an identifer for a unique Packet
+ * Source chains refer to packets by source port/channel
+ * Destination chains refer to packets by destination port/channel
+ */
+
+export interface PacketIdAmino {
+  /** channel port identifier */
+  port_id: string;
+  /** channel unique identifier */
+
+  channel_id: string;
+  /** packet sequence */
+
+  sequence: string;
+}
+export interface PacketIdAminoMsg {
+  type: "cosmos-sdk/PacketId";
+  value: PacketIdAmino;
+}
+/**
+ * PacketId is an identifer for a unique Packet
+ * Source chains refer to packets by source port/channel
+ * Destination chains refer to packets by destination port/channel
+ */
+
+export interface PacketIdSDKType {
+  port_id: string;
+  channel_id: string;
+  sequence: Long;
 }
 /**
  * Acknowledgement is the recommended acknowledgement format to be used by
@@ -1198,6 +1249,115 @@ export const PacketState = {
     return {
       typeUrl: "/ibc.core.channel.v1.PacketState",
       value: PacketState.encode(message).finish()
+    };
+  }
+
+};
+
+function createBasePacketId(): PacketId {
+  return {
+    portId: "",
+    channelId: "",
+    sequence: Long.UZERO
+  };
+}
+
+export const PacketId = {
+  typeUrl: "/ibc.core.channel.v1.PacketId",
+
+  encode(message: PacketId, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.portId !== "") {
+      writer.uint32(10).string(message.portId);
+    }
+
+    if (message.channelId !== "") {
+      writer.uint32(18).string(message.channelId);
+    }
+
+    if (!message.sequence.isZero()) {
+      writer.uint32(24).uint64(message.sequence);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): PacketId {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePacketId();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.portId = reader.string();
+          break;
+
+        case 2:
+          message.channelId = reader.string();
+          break;
+
+        case 3:
+          message.sequence = (reader.uint64() as Long);
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<PacketId>): PacketId {
+    const message = createBasePacketId();
+    message.portId = object.portId ?? "";
+    message.channelId = object.channelId ?? "";
+    message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
+    return message;
+  },
+
+  fromAmino(object: PacketIdAmino): PacketId {
+    return {
+      portId: object.port_id,
+      channelId: object.channel_id,
+      sequence: Long.fromString(object.sequence)
+    };
+  },
+
+  toAmino(message: PacketId): PacketIdAmino {
+    const obj: any = {};
+    obj.port_id = message.portId;
+    obj.channel_id = message.channelId;
+    obj.sequence = message.sequence ? message.sequence.toString() : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: PacketIdAminoMsg): PacketId {
+    return PacketId.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: PacketId): PacketIdAminoMsg {
+    return {
+      type: "cosmos-sdk/PacketId",
+      value: PacketId.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: PacketIdProtoMsg): PacketId {
+    return PacketId.decode(message.value);
+  },
+
+  toProto(message: PacketId): Uint8Array {
+    return PacketId.encode(message).finish();
+  },
+
+  toProtoMsg(message: PacketId): PacketIdProtoMsg {
+    return {
+      typeUrl: "/ibc.core.channel.v1.PacketId",
+      value: PacketId.encode(message).finish()
     };
   }
 

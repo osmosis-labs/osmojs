@@ -1,12 +1,13 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * ContractExecutionAuthorization defines authorization for wasm execute.
  * Since: wasmd 0.30
  */
 export interface ContractExecutionAuthorization {
+    $typeUrl?: string;
     /** Grants for contract executions */
     grants: ContractGrant[];
 }
@@ -31,6 +32,7 @@ export interface ContractExecutionAuthorizationAminoMsg {
  * Since: wasmd 0.30
  */
 export interface ContractExecutionAuthorizationSDKType {
+    $typeUrl?: string;
     grants: ContractGrantSDKType[];
 }
 /**
@@ -38,6 +40,7 @@ export interface ContractExecutionAuthorizationSDKType {
  * migration. Since: wasmd 0.30
  */
 export interface ContractMigrationAuthorization {
+    $typeUrl?: string;
     /** Grants for contract migrations */
     grants: ContractGrant[];
 }
@@ -62,6 +65,7 @@ export interface ContractMigrationAuthorizationAminoMsg {
  * migration. Since: wasmd 0.30
  */
 export interface ContractMigrationAuthorizationSDKType {
+    $typeUrl?: string;
     grants: ContractGrantSDKType[];
 }
 /**
@@ -137,6 +141,7 @@ export interface ContractGrantSDKType {
  * Since: wasmd 0.30
  */
 export interface MaxCallsLimit {
+    $typeUrl?: string;
     /** Remaining number that is decremented on each execution */
     remaining: Long;
 }
@@ -161,6 +166,7 @@ export interface MaxCallsLimitAminoMsg {
  * Since: wasmd 0.30
  */
 export interface MaxCallsLimitSDKType {
+    $typeUrl?: string;
     remaining: Long;
 }
 /**
@@ -168,6 +174,7 @@ export interface MaxCallsLimitSDKType {
  * Since: wasmd 0.30
  */
 export interface MaxFundsLimit {
+    $typeUrl?: string;
     /** Amounts is the maximal amount of tokens transferable to the contract. */
     amounts: Coin[];
 }
@@ -192,6 +199,7 @@ export interface MaxFundsLimitAminoMsg {
  * Since: wasmd 0.30
  */
 export interface MaxFundsLimitSDKType {
+    $typeUrl?: string;
     amounts: CoinSDKType[];
 }
 /**
@@ -200,6 +208,7 @@ export interface MaxFundsLimitSDKType {
  * Since: wasmd 0.30
  */
 export interface CombinedLimit {
+    $typeUrl?: string;
     /** Remaining number that is decremented on each execution */
     callsRemaining: Long;
     /** Amounts is the maximal amount of tokens transferable to the contract. */
@@ -230,6 +239,7 @@ export interface CombinedLimitAminoMsg {
  * Since: wasmd 0.30
  */
 export interface CombinedLimitSDKType {
+    $typeUrl?: string;
     calls_remaining: Long;
     amounts: CoinSDKType[];
 }
@@ -239,6 +249,7 @@ export interface CombinedLimitSDKType {
  * Since: wasmd 0.30
  */
 export interface AllowAllMessagesFilter {
+    $typeUrl?: string;
 }
 export interface AllowAllMessagesFilterProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.AllowAllMessagesFilter";
@@ -261,6 +272,7 @@ export interface AllowAllMessagesFilterAminoMsg {
  * Since: wasmd 0.30
  */
 export interface AllowAllMessagesFilterSDKType {
+    $typeUrl?: string;
 }
 /**
  * AcceptedMessageKeysFilter accept only the specific contract message keys in
@@ -268,6 +280,7 @@ export interface AllowAllMessagesFilterSDKType {
  * Since: wasmd 0.30
  */
 export interface AcceptedMessageKeysFilter {
+    $typeUrl?: string;
     /** Messages is the list of unique keys */
     keys: string[];
 }
@@ -294,6 +307,7 @@ export interface AcceptedMessageKeysFilterAminoMsg {
  * Since: wasmd 0.30
  */
 export interface AcceptedMessageKeysFilterSDKType {
+    $typeUrl?: string;
     keys: string[];
 }
 /**
@@ -302,6 +316,7 @@ export interface AcceptedMessageKeysFilterSDKType {
  * Since: wasmd 0.30
  */
 export interface AcceptedMessagesFilter {
+    $typeUrl?: string;
     /** Messages is the list of raw contract messages */
     messages: Uint8Array[];
 }
@@ -328,9 +343,11 @@ export interface AcceptedMessagesFilterAminoMsg {
  * Since: wasmd 0.30
  */
 export interface AcceptedMessagesFilterSDKType {
+    $typeUrl?: string;
     messages: Uint8Array[];
 }
 export declare const ContractExecutionAuthorization: {
+    typeUrl: string;
     encode(message: ContractExecutionAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ContractExecutionAuthorization;
     fromPartial(object: Partial<ContractExecutionAuthorization>): ContractExecutionAuthorization;
@@ -343,6 +360,7 @@ export declare const ContractExecutionAuthorization: {
     toProtoMsg(message: ContractExecutionAuthorization): ContractExecutionAuthorizationProtoMsg;
 };
 export declare const ContractMigrationAuthorization: {
+    typeUrl: string;
     encode(message: ContractMigrationAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ContractMigrationAuthorization;
     fromPartial(object: Partial<ContractMigrationAuthorization>): ContractMigrationAuthorization;
@@ -355,6 +373,7 @@ export declare const ContractMigrationAuthorization: {
     toProtoMsg(message: ContractMigrationAuthorization): ContractMigrationAuthorizationProtoMsg;
 };
 export declare const ContractGrant: {
+    typeUrl: string;
     encode(message: ContractGrant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ContractGrant;
     fromPartial(object: Partial<ContractGrant>): ContractGrant;
@@ -367,6 +386,7 @@ export declare const ContractGrant: {
     toProtoMsg(message: ContractGrant): ContractGrantProtoMsg;
 };
 export declare const MaxCallsLimit: {
+    typeUrl: string;
     encode(message: MaxCallsLimit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MaxCallsLimit;
     fromPartial(object: Partial<MaxCallsLimit>): MaxCallsLimit;
@@ -379,6 +399,7 @@ export declare const MaxCallsLimit: {
     toProtoMsg(message: MaxCallsLimit): MaxCallsLimitProtoMsg;
 };
 export declare const MaxFundsLimit: {
+    typeUrl: string;
     encode(message: MaxFundsLimit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MaxFundsLimit;
     fromPartial(object: Partial<MaxFundsLimit>): MaxFundsLimit;
@@ -391,6 +412,7 @@ export declare const MaxFundsLimit: {
     toProtoMsg(message: MaxFundsLimit): MaxFundsLimitProtoMsg;
 };
 export declare const CombinedLimit: {
+    typeUrl: string;
     encode(message: CombinedLimit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CombinedLimit;
     fromPartial(object: Partial<CombinedLimit>): CombinedLimit;
@@ -403,6 +425,7 @@ export declare const CombinedLimit: {
     toProtoMsg(message: CombinedLimit): CombinedLimitProtoMsg;
 };
 export declare const AllowAllMessagesFilter: {
+    typeUrl: string;
     encode(_: AllowAllMessagesFilter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllowAllMessagesFilter;
     fromPartial(_: Partial<AllowAllMessagesFilter>): AllowAllMessagesFilter;
@@ -415,6 +438,7 @@ export declare const AllowAllMessagesFilter: {
     toProtoMsg(message: AllowAllMessagesFilter): AllowAllMessagesFilterProtoMsg;
 };
 export declare const AcceptedMessageKeysFilter: {
+    typeUrl: string;
     encode(message: AcceptedMessageKeysFilter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AcceptedMessageKeysFilter;
     fromPartial(object: Partial<AcceptedMessageKeysFilter>): AcceptedMessageKeysFilter;
@@ -427,6 +451,7 @@ export declare const AcceptedMessageKeysFilter: {
     toProtoMsg(message: AcceptedMessageKeysFilter): AcceptedMessageKeysFilterProtoMsg;
 };
 export declare const AcceptedMessagesFilter: {
+    typeUrl: string;
     encode(message: AcceptedMessagesFilter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AcceptedMessagesFilter;
     fromPartial(object: Partial<AcceptedMessagesFilter>): AcceptedMessagesFilter;

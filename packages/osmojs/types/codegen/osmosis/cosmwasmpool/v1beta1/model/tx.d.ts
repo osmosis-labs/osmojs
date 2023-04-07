@@ -47,6 +47,7 @@ export interface MsgCreateCosmWasmPoolResponseSDKType {
     pool_id: Long;
 }
 export declare const MsgCreateCosmWasmPool: {
+    typeUrl: string;
     encode(message: MsgCreateCosmWasmPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateCosmWasmPool;
     fromPartial(object: Partial<MsgCreateCosmWasmPool>): MsgCreateCosmWasmPool;
@@ -59,6 +60,7 @@ export declare const MsgCreateCosmWasmPool: {
     toProtoMsg(message: MsgCreateCosmWasmPool): MsgCreateCosmWasmPoolProtoMsg;
 };
 export declare const MsgCreateCosmWasmPoolResponse: {
+    typeUrl: string;
     encode(message: MsgCreateCosmWasmPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateCosmWasmPoolResponse;
     fromPartial(object: Partial<MsgCreateCosmWasmPoolResponse>): MsgCreateCosmWasmPoolResponse;

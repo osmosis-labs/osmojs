@@ -85,6 +85,7 @@ export interface MsgMultiSendResponseAminoMsg {
 export interface MsgMultiSendResponseSDKType {
 }
 export declare const MsgSend: {
+    typeUrl: string;
     encode(message: MsgSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSend;
     fromPartial(object: Partial<MsgSend>): MsgSend;
@@ -97,6 +98,7 @@ export declare const MsgSend: {
     toProtoMsg(message: MsgSend): MsgSendProtoMsg;
 };
 export declare const MsgSendResponse: {
+    typeUrl: string;
     encode(_: MsgSendResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponse;
     fromPartial(_: Partial<MsgSendResponse>): MsgSendResponse;
@@ -109,6 +111,7 @@ export declare const MsgSendResponse: {
     toProtoMsg(message: MsgSendResponse): MsgSendResponseProtoMsg;
 };
 export declare const MsgMultiSend: {
+    typeUrl: string;
     encode(message: MsgMultiSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSend;
     fromPartial(object: Partial<MsgMultiSend>): MsgMultiSend;
@@ -121,6 +124,7 @@ export declare const MsgMultiSend: {
     toProtoMsg(message: MsgMultiSend): MsgMultiSendProtoMsg;
 };
 export declare const MsgMultiSendResponse: {
+    typeUrl: string;
     encode(_: MsgMultiSendResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSendResponse;
     fromPartial(_: Partial<MsgMultiSendResponse>): MsgMultiSendResponse;

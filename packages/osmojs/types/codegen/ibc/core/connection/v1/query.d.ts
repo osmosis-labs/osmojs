@@ -1,9 +1,9 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { ConnectionEnd, ConnectionEndAmino, ConnectionEndSDKType, IdentifiedConnection, IdentifiedConnectionAmino, IdentifiedConnectionSDKType } from "./connection";
-import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType } from "../../client/v1/client";
+import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType, Params, ParamsAmino, ParamsSDKType } from "../../client/v1/client";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * QueryConnectionRequest is the request type for the Query/Connection RPC
  * method
@@ -376,7 +376,47 @@ export interface QueryConnectionConsensusStateResponseSDKType {
     proof: Uint8Array;
     proof_height?: HeightSDKType;
 }
+/** QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method. */
+export interface QueryConnectionParamsRequest {
+}
+export interface QueryConnectionParamsRequestProtoMsg {
+    typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsRequest";
+    value: Uint8Array;
+}
+/** QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method. */
+export interface QueryConnectionParamsRequestAmino {
+}
+export interface QueryConnectionParamsRequestAminoMsg {
+    type: "cosmos-sdk/QueryConnectionParamsRequest";
+    value: QueryConnectionParamsRequestAmino;
+}
+/** QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method. */
+export interface QueryConnectionParamsRequestSDKType {
+}
+/** QueryConnectionParamsResponse is the response type for the Query/ConnectionParams RPC method. */
+export interface QueryConnectionParamsResponse {
+    /** params defines the parameters of the module. */
+    params?: Params;
+}
+export interface QueryConnectionParamsResponseProtoMsg {
+    typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsResponse";
+    value: Uint8Array;
+}
+/** QueryConnectionParamsResponse is the response type for the Query/ConnectionParams RPC method. */
+export interface QueryConnectionParamsResponseAmino {
+    /** params defines the parameters of the module. */
+    params?: ParamsAmino;
+}
+export interface QueryConnectionParamsResponseAminoMsg {
+    type: "cosmos-sdk/QueryConnectionParamsResponse";
+    value: QueryConnectionParamsResponseAmino;
+}
+/** QueryConnectionParamsResponse is the response type for the Query/ConnectionParams RPC method. */
+export interface QueryConnectionParamsResponseSDKType {
+    params?: ParamsSDKType;
+}
 export declare const QueryConnectionRequest: {
+    typeUrl: string;
     encode(message: QueryConnectionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionRequest;
     fromPartial(object: Partial<QueryConnectionRequest>): QueryConnectionRequest;
@@ -389,6 +429,7 @@ export declare const QueryConnectionRequest: {
     toProtoMsg(message: QueryConnectionRequest): QueryConnectionRequestProtoMsg;
 };
 export declare const QueryConnectionResponse: {
+    typeUrl: string;
     encode(message: QueryConnectionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionResponse;
     fromPartial(object: Partial<QueryConnectionResponse>): QueryConnectionResponse;
@@ -401,6 +442,7 @@ export declare const QueryConnectionResponse: {
     toProtoMsg(message: QueryConnectionResponse): QueryConnectionResponseProtoMsg;
 };
 export declare const QueryConnectionsRequest: {
+    typeUrl: string;
     encode(message: QueryConnectionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsRequest;
     fromPartial(object: Partial<QueryConnectionsRequest>): QueryConnectionsRequest;
@@ -413,6 +455,7 @@ export declare const QueryConnectionsRequest: {
     toProtoMsg(message: QueryConnectionsRequest): QueryConnectionsRequestProtoMsg;
 };
 export declare const QueryConnectionsResponse: {
+    typeUrl: string;
     encode(message: QueryConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsResponse;
     fromPartial(object: Partial<QueryConnectionsResponse>): QueryConnectionsResponse;
@@ -425,6 +468,7 @@ export declare const QueryConnectionsResponse: {
     toProtoMsg(message: QueryConnectionsResponse): QueryConnectionsResponseProtoMsg;
 };
 export declare const QueryClientConnectionsRequest: {
+    typeUrl: string;
     encode(message: QueryClientConnectionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsRequest;
     fromPartial(object: Partial<QueryClientConnectionsRequest>): QueryClientConnectionsRequest;
@@ -437,6 +481,7 @@ export declare const QueryClientConnectionsRequest: {
     toProtoMsg(message: QueryClientConnectionsRequest): QueryClientConnectionsRequestProtoMsg;
 };
 export declare const QueryClientConnectionsResponse: {
+    typeUrl: string;
     encode(message: QueryClientConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsResponse;
     fromPartial(object: Partial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse;
@@ -449,6 +494,7 @@ export declare const QueryClientConnectionsResponse: {
     toProtoMsg(message: QueryClientConnectionsResponse): QueryClientConnectionsResponseProtoMsg;
 };
 export declare const QueryConnectionClientStateRequest: {
+    typeUrl: string;
     encode(message: QueryConnectionClientStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateRequest;
     fromPartial(object: Partial<QueryConnectionClientStateRequest>): QueryConnectionClientStateRequest;
@@ -461,6 +507,7 @@ export declare const QueryConnectionClientStateRequest: {
     toProtoMsg(message: QueryConnectionClientStateRequest): QueryConnectionClientStateRequestProtoMsg;
 };
 export declare const QueryConnectionClientStateResponse: {
+    typeUrl: string;
     encode(message: QueryConnectionClientStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateResponse;
     fromPartial(object: Partial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse;
@@ -473,6 +520,7 @@ export declare const QueryConnectionClientStateResponse: {
     toProtoMsg(message: QueryConnectionClientStateResponse): QueryConnectionClientStateResponseProtoMsg;
 };
 export declare const QueryConnectionConsensusStateRequest: {
+    typeUrl: string;
     encode(message: QueryConnectionConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateRequest;
     fromPartial(object: Partial<QueryConnectionConsensusStateRequest>): QueryConnectionConsensusStateRequest;
@@ -485,6 +533,7 @@ export declare const QueryConnectionConsensusStateRequest: {
     toProtoMsg(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestProtoMsg;
 };
 export declare const QueryConnectionConsensusStateResponse: {
+    typeUrl: string;
     encode(message: QueryConnectionConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateResponse;
     fromPartial(object: Partial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse;
@@ -495,4 +544,30 @@ export declare const QueryConnectionConsensusStateResponse: {
     fromProtoMsg(message: QueryConnectionConsensusStateResponseProtoMsg): QueryConnectionConsensusStateResponse;
     toProto(message: QueryConnectionConsensusStateResponse): Uint8Array;
     toProtoMsg(message: QueryConnectionConsensusStateResponse): QueryConnectionConsensusStateResponseProtoMsg;
+};
+export declare const QueryConnectionParamsRequest: {
+    typeUrl: string;
+    encode(_: QueryConnectionParamsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionParamsRequest;
+    fromPartial(_: Partial<QueryConnectionParamsRequest>): QueryConnectionParamsRequest;
+    fromAmino(_: QueryConnectionParamsRequestAmino): QueryConnectionParamsRequest;
+    toAmino(_: QueryConnectionParamsRequest): QueryConnectionParamsRequestAmino;
+    fromAminoMsg(object: QueryConnectionParamsRequestAminoMsg): QueryConnectionParamsRequest;
+    toAminoMsg(message: QueryConnectionParamsRequest): QueryConnectionParamsRequestAminoMsg;
+    fromProtoMsg(message: QueryConnectionParamsRequestProtoMsg): QueryConnectionParamsRequest;
+    toProto(message: QueryConnectionParamsRequest): Uint8Array;
+    toProtoMsg(message: QueryConnectionParamsRequest): QueryConnectionParamsRequestProtoMsg;
+};
+export declare const QueryConnectionParamsResponse: {
+    typeUrl: string;
+    encode(message: QueryConnectionParamsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionParamsResponse;
+    fromPartial(object: Partial<QueryConnectionParamsResponse>): QueryConnectionParamsResponse;
+    fromAmino(object: QueryConnectionParamsResponseAmino): QueryConnectionParamsResponse;
+    toAmino(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseAmino;
+    fromAminoMsg(object: QueryConnectionParamsResponseAminoMsg): QueryConnectionParamsResponse;
+    toAminoMsg(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseAminoMsg;
+    fromProtoMsg(message: QueryConnectionParamsResponseProtoMsg): QueryConnectionParamsResponse;
+    toProto(message: QueryConnectionParamsResponse): Uint8Array;
+    toProtoMsg(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseProtoMsg;
 };

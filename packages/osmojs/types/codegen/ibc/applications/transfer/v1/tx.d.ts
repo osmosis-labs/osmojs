@@ -24,10 +24,12 @@ export interface MsgTransfer {
      */
     timeoutHeight?: Height;
     /**
-     * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
+     * Timeout timestamp in absolute nanoseconds since unix epoch.
      * The timeout is disabled when set to 0.
      */
     timeoutTimestamp: Long;
+    /** optional memo */
+    memo: string;
 }
 export interface MsgTransferProtoMsg {
     typeUrl: "/ibc.applications.transfer.v1.MsgTransfer";
@@ -55,10 +57,12 @@ export interface MsgTransferAmino {
      */
     timeout_height?: HeightAmino;
     /**
-     * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
+     * Timeout timestamp in absolute nanoseconds since unix epoch.
      * The timeout is disabled when set to 0.
      */
     timeout_timestamp: string;
+    /** optional memo */
+    memo: string;
 }
 export interface MsgTransferAminoMsg {
     type: "cosmos-sdk/MsgTransfer";
@@ -77,9 +81,12 @@ export interface MsgTransferSDKType {
     receiver: string;
     timeout_height?: HeightSDKType;
     timeout_timestamp: Long;
+    memo: string;
 }
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 export interface MsgTransferResponse {
+    /** sequence number of the transfer packet sent */
+    sequence: Long;
 }
 export interface MsgTransferResponseProtoMsg {
     typeUrl: "/ibc.applications.transfer.v1.MsgTransferResponse";
@@ -87,6 +94,8 @@ export interface MsgTransferResponseProtoMsg {
 }
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 export interface MsgTransferResponseAmino {
+    /** sequence number of the transfer packet sent */
+    sequence: string;
 }
 export interface MsgTransferResponseAminoMsg {
     type: "cosmos-sdk/MsgTransferResponse";
@@ -94,8 +103,10 @@ export interface MsgTransferResponseAminoMsg {
 }
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 export interface MsgTransferResponseSDKType {
+    sequence: Long;
 }
 export declare const MsgTransfer: {
+    typeUrl: string;
     encode(message: MsgTransfer, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransfer;
     fromPartial(object: Partial<MsgTransfer>): MsgTransfer;
@@ -108,11 +119,12 @@ export declare const MsgTransfer: {
     toProtoMsg(message: MsgTransfer): MsgTransferProtoMsg;
 };
 export declare const MsgTransferResponse: {
-    encode(_: MsgTransferResponse, writer?: _m0.Writer): _m0.Writer;
+    typeUrl: string;
+    encode(message: MsgTransferResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponse;
-    fromPartial(_: Partial<MsgTransferResponse>): MsgTransferResponse;
-    fromAmino(_: MsgTransferResponseAmino): MsgTransferResponse;
-    toAmino(_: MsgTransferResponse): MsgTransferResponseAmino;
+    fromPartial(object: Partial<MsgTransferResponse>): MsgTransferResponse;
+    fromAmino(object: MsgTransferResponseAmino): MsgTransferResponse;
+    toAmino(message: MsgTransferResponse): MsgTransferResponseAmino;
     fromAminoMsg(object: MsgTransferResponseAminoMsg): MsgTransferResponse;
     toAminoMsg(message: MsgTransferResponse): MsgTransferResponseAminoMsg;
     fromProtoMsg(message: MsgTransferResponseProtoMsg): MsgTransferResponse;

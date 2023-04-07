@@ -28,6 +28,7 @@ export interface GenesisStateSDKType {
     synthetic_locks: SyntheticLockSDKType[];
 }
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;

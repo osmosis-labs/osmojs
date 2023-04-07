@@ -81,6 +81,7 @@ import * as _m0 from "protobufjs/minimal";
  *     }
  */
 export interface Any {
+    $typeUrl?: string;
     /**
      * A URL/resource name that uniquely identifies the type of the serialized
      * protocol buffer message. This string must contain at least
@@ -319,10 +320,12 @@ export interface AnyAminoMsg {
  *     }
  */
 export interface AnySDKType {
+    $typeUrl?: string;
     type_url: string;
     value: Uint8Array;
 }
 export declare const Any: {
+    typeUrl: string;
     encode(message: Any, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Any;
     fromPartial(object: Partial<Any>): Any;

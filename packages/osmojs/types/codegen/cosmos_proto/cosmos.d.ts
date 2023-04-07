@@ -146,6 +146,7 @@ export interface ScalarDescriptorSDKType {
     field_type: ScalarType[];
 }
 export declare const InterfaceDescriptor: {
+    typeUrl: string;
     encode(message: InterfaceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceDescriptor;
     fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor;
@@ -157,6 +158,7 @@ export declare const InterfaceDescriptor: {
     toProtoMsg(message: InterfaceDescriptor): InterfaceDescriptorProtoMsg;
 };
 export declare const ScalarDescriptor: {
+    typeUrl: string;
     encode(message: ScalarDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ScalarDescriptor;
     fromPartial(object: Partial<ScalarDescriptor>): ScalarDescriptor;

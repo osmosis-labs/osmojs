@@ -284,6 +284,7 @@ export interface MsgUndelegateResponseSDKType {
     completion_time?: Date;
 }
 export declare const MsgCreateValidator: {
+    typeUrl: string;
     encode(message: MsgCreateValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidator;
     fromPartial(object: Partial<MsgCreateValidator>): MsgCreateValidator;
@@ -296,6 +297,7 @@ export declare const MsgCreateValidator: {
     toProtoMsg(message: MsgCreateValidator): MsgCreateValidatorProtoMsg;
 };
 export declare const MsgCreateValidatorResponse: {
+    typeUrl: string;
     encode(_: MsgCreateValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidatorResponse;
     fromPartial(_: Partial<MsgCreateValidatorResponse>): MsgCreateValidatorResponse;
@@ -308,6 +310,7 @@ export declare const MsgCreateValidatorResponse: {
     toProtoMsg(message: MsgCreateValidatorResponse): MsgCreateValidatorResponseProtoMsg;
 };
 export declare const MsgEditValidator: {
+    typeUrl: string;
     encode(message: MsgEditValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidator;
     fromPartial(object: Partial<MsgEditValidator>): MsgEditValidator;
@@ -320,6 +323,7 @@ export declare const MsgEditValidator: {
     toProtoMsg(message: MsgEditValidator): MsgEditValidatorProtoMsg;
 };
 export declare const MsgEditValidatorResponse: {
+    typeUrl: string;
     encode(_: MsgEditValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidatorResponse;
     fromPartial(_: Partial<MsgEditValidatorResponse>): MsgEditValidatorResponse;
@@ -332,6 +336,7 @@ export declare const MsgEditValidatorResponse: {
     toProtoMsg(message: MsgEditValidatorResponse): MsgEditValidatorResponseProtoMsg;
 };
 export declare const MsgDelegate: {
+    typeUrl: string;
     encode(message: MsgDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegate;
     fromPartial(object: Partial<MsgDelegate>): MsgDelegate;
@@ -344,6 +349,7 @@ export declare const MsgDelegate: {
     toProtoMsg(message: MsgDelegate): MsgDelegateProtoMsg;
 };
 export declare const MsgDelegateResponse: {
+    typeUrl: string;
     encode(_: MsgDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateResponse;
     fromPartial(_: Partial<MsgDelegateResponse>): MsgDelegateResponse;
@@ -356,6 +362,7 @@ export declare const MsgDelegateResponse: {
     toProtoMsg(message: MsgDelegateResponse): MsgDelegateResponseProtoMsg;
 };
 export declare const MsgBeginRedelegate: {
+    typeUrl: string;
     encode(message: MsgBeginRedelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegate;
     fromPartial(object: Partial<MsgBeginRedelegate>): MsgBeginRedelegate;
@@ -368,6 +375,7 @@ export declare const MsgBeginRedelegate: {
     toProtoMsg(message: MsgBeginRedelegate): MsgBeginRedelegateProtoMsg;
 };
 export declare const MsgBeginRedelegateResponse: {
+    typeUrl: string;
     encode(message: MsgBeginRedelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegateResponse;
     fromPartial(object: Partial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse;
@@ -380,6 +388,7 @@ export declare const MsgBeginRedelegateResponse: {
     toProtoMsg(message: MsgBeginRedelegateResponse): MsgBeginRedelegateResponseProtoMsg;
 };
 export declare const MsgUndelegate: {
+    typeUrl: string;
     encode(message: MsgUndelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegate;
     fromPartial(object: Partial<MsgUndelegate>): MsgUndelegate;
@@ -392,6 +401,7 @@ export declare const MsgUndelegate: {
     toProtoMsg(message: MsgUndelegate): MsgUndelegateProtoMsg;
 };
 export declare const MsgUndelegateResponse: {
+    typeUrl: string;
     encode(message: MsgUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateResponse;
     fromPartial(object: Partial<MsgUndelegateResponse>): MsgUndelegateResponse;

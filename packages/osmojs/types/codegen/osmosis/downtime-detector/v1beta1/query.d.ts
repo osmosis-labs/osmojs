@@ -51,6 +51,7 @@ export interface RecoveredSinceDowntimeOfLengthResponseSDKType {
     succesfully_recovered: boolean;
 }
 export declare const RecoveredSinceDowntimeOfLengthRequest: {
+    typeUrl: string;
     encode(message: RecoveredSinceDowntimeOfLengthRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RecoveredSinceDowntimeOfLengthRequest;
     fromPartial(object: Partial<RecoveredSinceDowntimeOfLengthRequest>): RecoveredSinceDowntimeOfLengthRequest;
@@ -63,6 +64,7 @@ export declare const RecoveredSinceDowntimeOfLengthRequest: {
     toProtoMsg(message: RecoveredSinceDowntimeOfLengthRequest): RecoveredSinceDowntimeOfLengthRequestProtoMsg;
 };
 export declare const RecoveredSinceDowntimeOfLengthResponse: {
+    typeUrl: string;
     encode(message: RecoveredSinceDowntimeOfLengthResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RecoveredSinceDowntimeOfLengthResponse;
     fromPartial(object: Partial<RecoveredSinceDowntimeOfLengthResponse>): RecoveredSinceDowntimeOfLengthResponse;

@@ -83,7 +83,6 @@ export interface MsgWithdrawDelegatorRewardSDKType {
 }
 /** MsgWithdrawDelegatorRewardResponse defines the Msg/WithdrawDelegatorReward response type. */
 export interface MsgWithdrawDelegatorRewardResponse {
-    amount: Coin[];
 }
 export interface MsgWithdrawDelegatorRewardResponseProtoMsg {
     typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorRewardResponse";
@@ -91,7 +90,6 @@ export interface MsgWithdrawDelegatorRewardResponseProtoMsg {
 }
 /** MsgWithdrawDelegatorRewardResponse defines the Msg/WithdrawDelegatorReward response type. */
 export interface MsgWithdrawDelegatorRewardResponseAmino {
-    amount: CoinAmino[];
 }
 export interface MsgWithdrawDelegatorRewardResponseAminoMsg {
     type: "cosmos-sdk/MsgWithdrawDelegatorRewardResponse";
@@ -99,7 +97,6 @@ export interface MsgWithdrawDelegatorRewardResponseAminoMsg {
 }
 /** MsgWithdrawDelegatorRewardResponse defines the Msg/WithdrawDelegatorReward response type. */
 export interface MsgWithdrawDelegatorRewardResponseSDKType {
-    amount: CoinSDKType[];
 }
 /**
  * MsgWithdrawValidatorCommission withdraws the full commission to the validator
@@ -120,7 +117,7 @@ export interface MsgWithdrawValidatorCommissionAmino {
     validator_address: string;
 }
 export interface MsgWithdrawValidatorCommissionAminoMsg {
-    type: "cosmos-sdk/MsgWithdrawValidatorCommission";
+    type: "cosmos-sdk/MsgWithdrawValCommission";
     value: MsgWithdrawValidatorCommissionAmino;
 }
 /**
@@ -132,7 +129,6 @@ export interface MsgWithdrawValidatorCommissionSDKType {
 }
 /** MsgWithdrawValidatorCommissionResponse defines the Msg/WithdrawValidatorCommission response type. */
 export interface MsgWithdrawValidatorCommissionResponse {
-    amount: Coin[];
 }
 export interface MsgWithdrawValidatorCommissionResponseProtoMsg {
     typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse";
@@ -140,7 +136,6 @@ export interface MsgWithdrawValidatorCommissionResponseProtoMsg {
 }
 /** MsgWithdrawValidatorCommissionResponse defines the Msg/WithdrawValidatorCommission response type. */
 export interface MsgWithdrawValidatorCommissionResponseAmino {
-    amount: CoinAmino[];
 }
 export interface MsgWithdrawValidatorCommissionResponseAminoMsg {
     type: "cosmos-sdk/MsgWithdrawValidatorCommissionResponse";
@@ -148,7 +143,6 @@ export interface MsgWithdrawValidatorCommissionResponseAminoMsg {
 }
 /** MsgWithdrawValidatorCommissionResponse defines the Msg/WithdrawValidatorCommission response type. */
 export interface MsgWithdrawValidatorCommissionResponseSDKType {
-    amount: CoinSDKType[];
 }
 /**
  * MsgFundCommunityPool allows an account to directly
@@ -200,6 +194,7 @@ export interface MsgFundCommunityPoolResponseAminoMsg {
 export interface MsgFundCommunityPoolResponseSDKType {
 }
 export declare const MsgSetWithdrawAddress: {
+    typeUrl: string;
     encode(message: MsgSetWithdrawAddress, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddress;
     fromPartial(object: Partial<MsgSetWithdrawAddress>): MsgSetWithdrawAddress;
@@ -212,6 +207,7 @@ export declare const MsgSetWithdrawAddress: {
     toProtoMsg(message: MsgSetWithdrawAddress): MsgSetWithdrawAddressProtoMsg;
 };
 export declare const MsgSetWithdrawAddressResponse: {
+    typeUrl: string;
     encode(_: MsgSetWithdrawAddressResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddressResponse;
     fromPartial(_: Partial<MsgSetWithdrawAddressResponse>): MsgSetWithdrawAddressResponse;
@@ -224,6 +220,7 @@ export declare const MsgSetWithdrawAddressResponse: {
     toProtoMsg(message: MsgSetWithdrawAddressResponse): MsgSetWithdrawAddressResponseProtoMsg;
 };
 export declare const MsgWithdrawDelegatorReward: {
+    typeUrl: string;
     encode(message: MsgWithdrawDelegatorReward, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorReward;
     fromPartial(object: Partial<MsgWithdrawDelegatorReward>): MsgWithdrawDelegatorReward;
@@ -236,11 +233,12 @@ export declare const MsgWithdrawDelegatorReward: {
     toProtoMsg(message: MsgWithdrawDelegatorReward): MsgWithdrawDelegatorRewardProtoMsg;
 };
 export declare const MsgWithdrawDelegatorRewardResponse: {
-    encode(message: MsgWithdrawDelegatorRewardResponse, writer?: _m0.Writer): _m0.Writer;
+    typeUrl: string;
+    encode(_: MsgWithdrawDelegatorRewardResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorRewardResponse;
-    fromPartial(object: Partial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse;
-    fromAmino(object: MsgWithdrawDelegatorRewardResponseAmino): MsgWithdrawDelegatorRewardResponse;
-    toAmino(message: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseAmino;
+    fromPartial(_: Partial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse;
+    fromAmino(_: MsgWithdrawDelegatorRewardResponseAmino): MsgWithdrawDelegatorRewardResponse;
+    toAmino(_: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseAmino;
     fromAminoMsg(object: MsgWithdrawDelegatorRewardResponseAminoMsg): MsgWithdrawDelegatorRewardResponse;
     toAminoMsg(message: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseAminoMsg;
     fromProtoMsg(message: MsgWithdrawDelegatorRewardResponseProtoMsg): MsgWithdrawDelegatorRewardResponse;
@@ -248,6 +246,7 @@ export declare const MsgWithdrawDelegatorRewardResponse: {
     toProtoMsg(message: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseProtoMsg;
 };
 export declare const MsgWithdrawValidatorCommission: {
+    typeUrl: string;
     encode(message: MsgWithdrawValidatorCommission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommission;
     fromPartial(object: Partial<MsgWithdrawValidatorCommission>): MsgWithdrawValidatorCommission;
@@ -260,11 +259,12 @@ export declare const MsgWithdrawValidatorCommission: {
     toProtoMsg(message: MsgWithdrawValidatorCommission): MsgWithdrawValidatorCommissionProtoMsg;
 };
 export declare const MsgWithdrawValidatorCommissionResponse: {
-    encode(message: MsgWithdrawValidatorCommissionResponse, writer?: _m0.Writer): _m0.Writer;
+    typeUrl: string;
+    encode(_: MsgWithdrawValidatorCommissionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommissionResponse;
-    fromPartial(object: Partial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse;
-    fromAmino(object: MsgWithdrawValidatorCommissionResponseAmino): MsgWithdrawValidatorCommissionResponse;
-    toAmino(message: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseAmino;
+    fromPartial(_: Partial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse;
+    fromAmino(_: MsgWithdrawValidatorCommissionResponseAmino): MsgWithdrawValidatorCommissionResponse;
+    toAmino(_: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseAmino;
     fromAminoMsg(object: MsgWithdrawValidatorCommissionResponseAminoMsg): MsgWithdrawValidatorCommissionResponse;
     toAminoMsg(message: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseAminoMsg;
     fromProtoMsg(message: MsgWithdrawValidatorCommissionResponseProtoMsg): MsgWithdrawValidatorCommissionResponse;
@@ -272,6 +272,7 @@ export declare const MsgWithdrawValidatorCommissionResponse: {
     toProtoMsg(message: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseProtoMsg;
 };
 export declare const MsgFundCommunityPool: {
+    typeUrl: string;
     encode(message: MsgFundCommunityPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPool;
     fromPartial(object: Partial<MsgFundCommunityPool>): MsgFundCommunityPool;
@@ -284,6 +285,7 @@ export declare const MsgFundCommunityPool: {
     toProtoMsg(message: MsgFundCommunityPool): MsgFundCommunityPoolProtoMsg;
 };
 export declare const MsgFundCommunityPoolResponse: {
+    typeUrl: string;
     encode(_: MsgFundCommunityPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPoolResponse;
     fromPartial(_: Partial<MsgFundCommunityPoolResponse>): MsgFundCommunityPoolResponse;

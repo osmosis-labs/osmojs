@@ -71,6 +71,7 @@ export interface ConsensusSDKType {
     app: Long;
 }
 export declare const App: {
+    typeUrl: string;
     encode(message: App, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): App;
     fromPartial(object: Partial<App>): App;
@@ -82,6 +83,7 @@ export declare const App: {
     toProtoMsg(message: App): AppProtoMsg;
 };
 export declare const Consensus: {
+    typeUrl: string;
     encode(message: Consensus, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Consensus;
     fromPartial(object: Partial<Consensus>): Consensus;

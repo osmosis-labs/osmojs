@@ -1,8 +1,8 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType } from "./lock";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface MsgLockTokens {
     owner: string;
     duration?: Duration;
@@ -237,6 +237,7 @@ export interface MsgForceUnlockResponseSDKType {
     success: boolean;
 }
 export declare const MsgLockTokens: {
+    typeUrl: string;
     encode(message: MsgLockTokens, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokens;
     fromPartial(object: Partial<MsgLockTokens>): MsgLockTokens;
@@ -249,6 +250,7 @@ export declare const MsgLockTokens: {
     toProtoMsg(message: MsgLockTokens): MsgLockTokensProtoMsg;
 };
 export declare const MsgLockTokensResponse: {
+    typeUrl: string;
     encode(message: MsgLockTokensResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponse;
     fromPartial(object: Partial<MsgLockTokensResponse>): MsgLockTokensResponse;
@@ -261,6 +263,7 @@ export declare const MsgLockTokensResponse: {
     toProtoMsg(message: MsgLockTokensResponse): MsgLockTokensResponseProtoMsg;
 };
 export declare const MsgBeginUnlockingAll: {
+    typeUrl: string;
     encode(message: MsgBeginUnlockingAll, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAll;
     fromPartial(object: Partial<MsgBeginUnlockingAll>): MsgBeginUnlockingAll;
@@ -273,6 +276,7 @@ export declare const MsgBeginUnlockingAll: {
     toProtoMsg(message: MsgBeginUnlockingAll): MsgBeginUnlockingAllProtoMsg;
 };
 export declare const MsgBeginUnlockingAllResponse: {
+    typeUrl: string;
     encode(message: MsgBeginUnlockingAllResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse;
     fromPartial(object: Partial<MsgBeginUnlockingAllResponse>): MsgBeginUnlockingAllResponse;
@@ -285,6 +289,7 @@ export declare const MsgBeginUnlockingAllResponse: {
     toProtoMsg(message: MsgBeginUnlockingAllResponse): MsgBeginUnlockingAllResponseProtoMsg;
 };
 export declare const MsgBeginUnlocking: {
+    typeUrl: string;
     encode(message: MsgBeginUnlocking, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlocking;
     fromPartial(object: Partial<MsgBeginUnlocking>): MsgBeginUnlocking;
@@ -297,6 +302,7 @@ export declare const MsgBeginUnlocking: {
     toProtoMsg(message: MsgBeginUnlocking): MsgBeginUnlockingProtoMsg;
 };
 export declare const MsgBeginUnlockingResponse: {
+    typeUrl: string;
     encode(message: MsgBeginUnlockingResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponse;
     fromPartial(object: Partial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse;
@@ -309,6 +315,7 @@ export declare const MsgBeginUnlockingResponse: {
     toProtoMsg(message: MsgBeginUnlockingResponse): MsgBeginUnlockingResponseProtoMsg;
 };
 export declare const MsgExtendLockup: {
+    typeUrl: string;
     encode(message: MsgExtendLockup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockup;
     fromPartial(object: Partial<MsgExtendLockup>): MsgExtendLockup;
@@ -321,6 +328,7 @@ export declare const MsgExtendLockup: {
     toProtoMsg(message: MsgExtendLockup): MsgExtendLockupProtoMsg;
 };
 export declare const MsgExtendLockupResponse: {
+    typeUrl: string;
     encode(message: MsgExtendLockupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse;
     fromPartial(object: Partial<MsgExtendLockupResponse>): MsgExtendLockupResponse;
@@ -333,6 +341,7 @@ export declare const MsgExtendLockupResponse: {
     toProtoMsg(message: MsgExtendLockupResponse): MsgExtendLockupResponseProtoMsg;
 };
 export declare const MsgForceUnlock: {
+    typeUrl: string;
     encode(message: MsgForceUnlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlock;
     fromPartial(object: Partial<MsgForceUnlock>): MsgForceUnlock;
@@ -345,6 +354,7 @@ export declare const MsgForceUnlock: {
     toProtoMsg(message: MsgForceUnlock): MsgForceUnlockProtoMsg;
 };
 export declare const MsgForceUnlockResponse: {
+    typeUrl: string;
     encode(message: MsgForceUnlockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlockResponse;
     fromPartial(object: Partial<MsgForceUnlockResponse>): MsgForceUnlockResponse;

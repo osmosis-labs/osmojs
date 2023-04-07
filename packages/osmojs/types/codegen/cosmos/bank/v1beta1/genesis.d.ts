@@ -14,6 +14,8 @@ export interface GenesisState {
     supply: Coin[];
     /** denom_metadata defines the metadata of the differents coins. */
     denomMetadata: Metadata[];
+    /** supply_offsets defines the amount of supply offset. */
+    supplyOffsets: GenesisSupplyOffset[];
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.GenesisState";
@@ -32,6 +34,8 @@ export interface GenesisStateAmino {
     supply: CoinAmino[];
     /** denom_metadata defines the metadata of the differents coins. */
     denom_metadata: MetadataAmino[];
+    /** supply_offsets defines the amount of supply offset. */
+    supply_offsets: GenesisSupplyOffsetAmino[];
 }
 export interface GenesisStateAminoMsg {
     type: "cosmos-sdk/GenesisState";
@@ -43,6 +47,7 @@ export interface GenesisStateSDKType {
     balances: BalanceSDKType[];
     supply: CoinSDKType[];
     denom_metadata: MetadataSDKType[];
+    supply_offsets: GenesisSupplyOffsetSDKType[];
 }
 /**
  * Balance defines an account address and balance pair used in the bank module's
@@ -80,7 +85,44 @@ export interface BalanceSDKType {
     address: string;
     coins: CoinSDKType[];
 }
+/**
+ * GenesisSupplyOffset encodes the supply offsets, just for genesis.
+ * The offsets are serialized directly by denom in state.
+ */
+export interface GenesisSupplyOffset {
+    /** Denom */
+    denom: string;
+    /** SupplyOffset */
+    offset: string;
+}
+export interface GenesisSupplyOffsetProtoMsg {
+    typeUrl: "/cosmos.bank.v1beta1.GenesisSupplyOffset";
+    value: Uint8Array;
+}
+/**
+ * GenesisSupplyOffset encodes the supply offsets, just for genesis.
+ * The offsets are serialized directly by denom in state.
+ */
+export interface GenesisSupplyOffsetAmino {
+    /** Denom */
+    denom: string;
+    /** SupplyOffset */
+    offset: string;
+}
+export interface GenesisSupplyOffsetAminoMsg {
+    type: "cosmos-sdk/GenesisSupplyOffset";
+    value: GenesisSupplyOffsetAmino;
+}
+/**
+ * GenesisSupplyOffset encodes the supply offsets, just for genesis.
+ * The offsets are serialized directly by denom in state.
+ */
+export interface GenesisSupplyOffsetSDKType {
+    denom: string;
+    offset: string;
+}
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
@@ -93,6 +135,7 @@ export declare const GenesisState: {
     toProtoMsg(message: GenesisState): GenesisStateProtoMsg;
 };
 export declare const Balance: {
+    typeUrl: string;
     encode(message: Balance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Balance;
     fromPartial(object: Partial<Balance>): Balance;
@@ -103,4 +146,17 @@ export declare const Balance: {
     fromProtoMsg(message: BalanceProtoMsg): Balance;
     toProto(message: Balance): Uint8Array;
     toProtoMsg(message: Balance): BalanceProtoMsg;
+};
+export declare const GenesisSupplyOffset: {
+    typeUrl: string;
+    encode(message: GenesisSupplyOffset, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisSupplyOffset;
+    fromPartial(object: Partial<GenesisSupplyOffset>): GenesisSupplyOffset;
+    fromAmino(object: GenesisSupplyOffsetAmino): GenesisSupplyOffset;
+    toAmino(message: GenesisSupplyOffset): GenesisSupplyOffsetAmino;
+    fromAminoMsg(object: GenesisSupplyOffsetAminoMsg): GenesisSupplyOffset;
+    toAminoMsg(message: GenesisSupplyOffset): GenesisSupplyOffsetAminoMsg;
+    fromProtoMsg(message: GenesisSupplyOffsetProtoMsg): GenesisSupplyOffset;
+    toProto(message: GenesisSupplyOffset): Uint8Array;
+    toProtoMsg(message: GenesisSupplyOffset): GenesisSupplyOffsetProtoMsg;
 };

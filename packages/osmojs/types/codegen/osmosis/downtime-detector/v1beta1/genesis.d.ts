@@ -44,6 +44,7 @@ export interface GenesisStateSDKType {
     last_block_time?: Date;
 }
 export declare const GenesisDowntimeEntry: {
+    typeUrl: string;
     encode(message: GenesisDowntimeEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisDowntimeEntry;
     fromPartial(object: Partial<GenesisDowntimeEntry>): GenesisDowntimeEntry;
@@ -56,6 +57,7 @@ export declare const GenesisDowntimeEntry: {
     toProtoMsg(message: GenesisDowntimeEntry): GenesisDowntimeEntryProtoMsg;
 };
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;

@@ -34,6 +34,7 @@ export interface DenomAuthorityMetadataSDKType {
     admin: string;
 }
 export declare const DenomAuthorityMetadata: {
+    typeUrl: string;
     encode(message: DenomAuthorityMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomAuthorityMetadata;
     fromPartial(object: Partial<DenomAuthorityMetadata>): DenomAuthorityMetadata;

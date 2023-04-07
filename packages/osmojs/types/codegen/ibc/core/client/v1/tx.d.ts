@@ -57,13 +57,13 @@ export interface MsgCreateClientResponseSDKType {
 }
 /**
  * MsgUpdateClient defines an sdk.Msg to update a IBC client state using
- * the given header.
+ * the given client message.
  */
 export interface MsgUpdateClient {
     /** client unique identifier */
     clientId: string;
-    /** header to update the light client */
-    header?: Any;
+    /** client message to update the light client */
+    clientMessage?: Any;
     /** signer address */
     signer: string;
 }
@@ -73,13 +73,13 @@ export interface MsgUpdateClientProtoMsg {
 }
 /**
  * MsgUpdateClient defines an sdk.Msg to update a IBC client state using
- * the given header.
+ * the given client message.
  */
 export interface MsgUpdateClientAmino {
     /** client unique identifier */
     client_id: string;
-    /** header to update the light client */
-    header?: AnyAmino;
+    /** client message to update the light client */
+    client_message?: AnyAmino;
     /** signer address */
     signer: string;
 }
@@ -89,11 +89,11 @@ export interface MsgUpdateClientAminoMsg {
 }
 /**
  * MsgUpdateClient defines an sdk.Msg to update a IBC client state using
- * the given header.
+ * the given client message.
  */
 export interface MsgUpdateClientSDKType {
     client_id: string;
-    header?: AnySDKType;
+    client_message?: AnySDKType;
     signer: string;
 }
 /** MsgUpdateClientResponse defines the Msg/UpdateClient response type. */
@@ -195,13 +195,17 @@ export interface MsgUpgradeClientResponseSDKType {
 /**
  * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
  * light client misbehaviour.
+ * Warning: DEPRECATED
  */
 export interface MsgSubmitMisbehaviour {
     /** client unique identifier */
+    /** @deprecated */
     clientId: string;
     /** misbehaviour used for freezing the light client */
+    /** @deprecated */
     misbehaviour?: Any;
     /** signer address */
+    /** @deprecated */
     signer: string;
 }
 export interface MsgSubmitMisbehaviourProtoMsg {
@@ -211,13 +215,17 @@ export interface MsgSubmitMisbehaviourProtoMsg {
 /**
  * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
  * light client misbehaviour.
+ * Warning: DEPRECATED
  */
 export interface MsgSubmitMisbehaviourAmino {
     /** client unique identifier */
+    /** @deprecated */
     client_id: string;
     /** misbehaviour used for freezing the light client */
+    /** @deprecated */
     misbehaviour?: AnyAmino;
     /** signer address */
+    /** @deprecated */
     signer: string;
 }
 export interface MsgSubmitMisbehaviourAminoMsg {
@@ -227,10 +235,14 @@ export interface MsgSubmitMisbehaviourAminoMsg {
 /**
  * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
  * light client misbehaviour.
+ * Warning: DEPRECATED
  */
 export interface MsgSubmitMisbehaviourSDKType {
+    /** @deprecated */
     client_id: string;
+    /** @deprecated */
     misbehaviour?: AnySDKType;
+    /** @deprecated */
     signer: string;
 }
 /**
@@ -260,6 +272,7 @@ export interface MsgSubmitMisbehaviourResponseAminoMsg {
 export interface MsgSubmitMisbehaviourResponseSDKType {
 }
 export declare const MsgCreateClient: {
+    typeUrl: string;
     encode(message: MsgCreateClient, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateClient;
     fromPartial(object: Partial<MsgCreateClient>): MsgCreateClient;
@@ -272,6 +285,7 @@ export declare const MsgCreateClient: {
     toProtoMsg(message: MsgCreateClient): MsgCreateClientProtoMsg;
 };
 export declare const MsgCreateClientResponse: {
+    typeUrl: string;
     encode(_: MsgCreateClientResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateClientResponse;
     fromPartial(_: Partial<MsgCreateClientResponse>): MsgCreateClientResponse;
@@ -284,6 +298,7 @@ export declare const MsgCreateClientResponse: {
     toProtoMsg(message: MsgCreateClientResponse): MsgCreateClientResponseProtoMsg;
 };
 export declare const MsgUpdateClient: {
+    typeUrl: string;
     encode(message: MsgUpdateClient, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateClient;
     fromPartial(object: Partial<MsgUpdateClient>): MsgUpdateClient;
@@ -296,6 +311,7 @@ export declare const MsgUpdateClient: {
     toProtoMsg(message: MsgUpdateClient): MsgUpdateClientProtoMsg;
 };
 export declare const MsgUpdateClientResponse: {
+    typeUrl: string;
     encode(_: MsgUpdateClientResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateClientResponse;
     fromPartial(_: Partial<MsgUpdateClientResponse>): MsgUpdateClientResponse;
@@ -308,6 +324,7 @@ export declare const MsgUpdateClientResponse: {
     toProtoMsg(message: MsgUpdateClientResponse): MsgUpdateClientResponseProtoMsg;
 };
 export declare const MsgUpgradeClient: {
+    typeUrl: string;
     encode(message: MsgUpgradeClient, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpgradeClient;
     fromPartial(object: Partial<MsgUpgradeClient>): MsgUpgradeClient;
@@ -320,6 +337,7 @@ export declare const MsgUpgradeClient: {
     toProtoMsg(message: MsgUpgradeClient): MsgUpgradeClientProtoMsg;
 };
 export declare const MsgUpgradeClientResponse: {
+    typeUrl: string;
     encode(_: MsgUpgradeClientResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpgradeClientResponse;
     fromPartial(_: Partial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse;
@@ -332,6 +350,7 @@ export declare const MsgUpgradeClientResponse: {
     toProtoMsg(message: MsgUpgradeClientResponse): MsgUpgradeClientResponseProtoMsg;
 };
 export declare const MsgSubmitMisbehaviour: {
+    typeUrl: string;
     encode(message: MsgSubmitMisbehaviour, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitMisbehaviour;
     fromPartial(object: Partial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour;
@@ -344,6 +363,7 @@ export declare const MsgSubmitMisbehaviour: {
     toProtoMsg(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourProtoMsg;
 };
 export declare const MsgSubmitMisbehaviourResponse: {
+    typeUrl: string;
     encode(_: MsgSubmitMisbehaviourResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponse;
     fromPartial(_: Partial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse;

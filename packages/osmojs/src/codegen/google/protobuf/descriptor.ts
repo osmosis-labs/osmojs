@@ -1,5 +1,5 @@
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, Long } from "../../helpers";
 export enum FieldDescriptorProto_Type {
   /**
    * TYPE_DOUBLE - 0 is reserved for errors.

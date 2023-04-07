@@ -11,8 +11,8 @@ import { PoolSDKType as Pool2SDKType } from "../../gamm/pool-models/balancer/bal
 import { Pool as Pool3 } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../../gamm/pool-models/stableswap/stableswap_pool";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** =============================== Params */
 export interface ParamsRequest {
 }
@@ -360,6 +360,7 @@ export interface SpotPriceResponseSDKType {
     spot_price: string;
 }
 export declare const ParamsRequest: {
+    typeUrl: string;
     encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
@@ -372,6 +373,7 @@ export declare const ParamsRequest: {
     toProtoMsg(message: ParamsRequest): ParamsRequestProtoMsg;
 };
 export declare const ParamsResponse: {
+    typeUrl: string;
     encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;
@@ -384,6 +386,7 @@ export declare const ParamsResponse: {
     toProtoMsg(message: ParamsResponse): ParamsResponseProtoMsg;
 };
 export declare const EstimateSwapExactAmountInRequest: {
+    typeUrl: string;
     encode(message: EstimateSwapExactAmountInRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountInRequest;
     fromPartial(object: Partial<EstimateSwapExactAmountInRequest>): EstimateSwapExactAmountInRequest;
@@ -396,6 +399,7 @@ export declare const EstimateSwapExactAmountInRequest: {
     toProtoMsg(message: EstimateSwapExactAmountInRequest): EstimateSwapExactAmountInRequestProtoMsg;
 };
 export declare const EstimateSinglePoolSwapExactAmountInRequest: {
+    typeUrl: string;
     encode(message: EstimateSinglePoolSwapExactAmountInRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSinglePoolSwapExactAmountInRequest;
     fromPartial(object: Partial<EstimateSinglePoolSwapExactAmountInRequest>): EstimateSinglePoolSwapExactAmountInRequest;
@@ -408,6 +412,7 @@ export declare const EstimateSinglePoolSwapExactAmountInRequest: {
     toProtoMsg(message: EstimateSinglePoolSwapExactAmountInRequest): EstimateSinglePoolSwapExactAmountInRequestProtoMsg;
 };
 export declare const EstimateSwapExactAmountInResponse: {
+    typeUrl: string;
     encode(message: EstimateSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountInResponse;
     fromPartial(object: Partial<EstimateSwapExactAmountInResponse>): EstimateSwapExactAmountInResponse;
@@ -420,6 +425,7 @@ export declare const EstimateSwapExactAmountInResponse: {
     toProtoMsg(message: EstimateSwapExactAmountInResponse): EstimateSwapExactAmountInResponseProtoMsg;
 };
 export declare const EstimateSwapExactAmountOutRequest: {
+    typeUrl: string;
     encode(message: EstimateSwapExactAmountOutRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountOutRequest;
     fromPartial(object: Partial<EstimateSwapExactAmountOutRequest>): EstimateSwapExactAmountOutRequest;
@@ -432,6 +438,7 @@ export declare const EstimateSwapExactAmountOutRequest: {
     toProtoMsg(message: EstimateSwapExactAmountOutRequest): EstimateSwapExactAmountOutRequestProtoMsg;
 };
 export declare const EstimateSinglePoolSwapExactAmountOutRequest: {
+    typeUrl: string;
     encode(message: EstimateSinglePoolSwapExactAmountOutRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSinglePoolSwapExactAmountOutRequest;
     fromPartial(object: Partial<EstimateSinglePoolSwapExactAmountOutRequest>): EstimateSinglePoolSwapExactAmountOutRequest;
@@ -444,6 +451,7 @@ export declare const EstimateSinglePoolSwapExactAmountOutRequest: {
     toProtoMsg(message: EstimateSinglePoolSwapExactAmountOutRequest): EstimateSinglePoolSwapExactAmountOutRequestProtoMsg;
 };
 export declare const EstimateSwapExactAmountOutResponse: {
+    typeUrl: string;
     encode(message: EstimateSwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountOutResponse;
     fromPartial(object: Partial<EstimateSwapExactAmountOutResponse>): EstimateSwapExactAmountOutResponse;
@@ -456,6 +464,7 @@ export declare const EstimateSwapExactAmountOutResponse: {
     toProtoMsg(message: EstimateSwapExactAmountOutResponse): EstimateSwapExactAmountOutResponseProtoMsg;
 };
 export declare const NumPoolsRequest: {
+    typeUrl: string;
     encode(_: NumPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NumPoolsRequest;
     fromPartial(_: Partial<NumPoolsRequest>): NumPoolsRequest;
@@ -468,6 +477,7 @@ export declare const NumPoolsRequest: {
     toProtoMsg(message: NumPoolsRequest): NumPoolsRequestProtoMsg;
 };
 export declare const NumPoolsResponse: {
+    typeUrl: string;
     encode(message: NumPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NumPoolsResponse;
     fromPartial(object: Partial<NumPoolsResponse>): NumPoolsResponse;
@@ -480,6 +490,7 @@ export declare const NumPoolsResponse: {
     toProtoMsg(message: NumPoolsResponse): NumPoolsResponseProtoMsg;
 };
 export declare const PoolRequest: {
+    typeUrl: string;
     encode(message: PoolRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolRequest;
     fromPartial(object: Partial<PoolRequest>): PoolRequest;
@@ -492,6 +503,7 @@ export declare const PoolRequest: {
     toProtoMsg(message: PoolRequest): PoolRequestProtoMsg;
 };
 export declare const PoolResponse: {
+    typeUrl: string;
     encode(message: PoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolResponse;
     fromPartial(object: Partial<PoolResponse>): PoolResponse;
@@ -504,6 +516,7 @@ export declare const PoolResponse: {
     toProtoMsg(message: PoolResponse): PoolResponseProtoMsg;
 };
 export declare const AllPoolsRequest: {
+    typeUrl: string;
     encode(message: AllPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllPoolsRequest;
     fromPartial(object: Partial<AllPoolsRequest>): AllPoolsRequest;
@@ -516,6 +529,7 @@ export declare const AllPoolsRequest: {
     toProtoMsg(message: AllPoolsRequest): AllPoolsRequestProtoMsg;
 };
 export declare const AllPoolsResponse: {
+    typeUrl: string;
     encode(message: AllPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllPoolsResponse;
     fromPartial(object: Partial<AllPoolsResponse>): AllPoolsResponse;
@@ -528,6 +542,7 @@ export declare const AllPoolsResponse: {
     toProtoMsg(message: AllPoolsResponse): AllPoolsResponseProtoMsg;
 };
 export declare const SpotPriceRequest: {
+    typeUrl: string;
     encode(message: SpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SpotPriceRequest;
     fromPartial(object: Partial<SpotPriceRequest>): SpotPriceRequest;
@@ -540,6 +555,7 @@ export declare const SpotPriceRequest: {
     toProtoMsg(message: SpotPriceRequest): SpotPriceRequestProtoMsg;
 };
 export declare const SpotPriceResponse: {
+    typeUrl: string;
     encode(message: SpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SpotPriceResponse;
     fromPartial(object: Partial<SpotPriceResponse>): SpotPriceResponse;

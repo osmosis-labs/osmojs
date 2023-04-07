@@ -1,7 +1,7 @@
 import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryDenomTraceRequest, QueryDenomTraceResponse, QueryDenomTracesRequest, QueryDenomTracesResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
+import { QueryDenomTraceRequest, QueryDenomTraceResponse, QueryDenomTracesRequest, QueryDenomTracesResponse, QueryParamsRequest, QueryParamsResponse, QueryDenomHashRequest, QueryDenomHashResponse, QueryEscrowAddressRequest, QueryEscrowAddressResponse } from "./query";
 /** Query provides defines the gRPC querier service. */
 
 export interface Query {
@@ -13,6 +13,12 @@ export interface Query {
   /** Params queries all parameters of the ibc-transfer module. */
 
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+  /** DenomHash queries a denomination hash information. */
+
+  denomHash(request: QueryDenomHashRequest): Promise<QueryDenomHashResponse>;
+  /** EscrowAddress returns the escrow address for a particular port and channel id. */
+
+  escrowAddress(request: QueryEscrowAddressRequest): Promise<QueryEscrowAddressResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -22,6 +28,8 @@ export class QueryClientImpl implements Query {
     this.denomTrace = this.denomTrace.bind(this);
     this.denomTraces = this.denomTraces.bind(this);
     this.params = this.params.bind(this);
+    this.denomHash = this.denomHash.bind(this);
+    this.escrowAddress = this.escrowAddress.bind(this);
   }
 
   denomTrace(request: QueryDenomTraceRequest): Promise<QueryDenomTraceResponse> {
@@ -44,6 +52,18 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
 
+  denomHash(request: QueryDenomHashRequest): Promise<QueryDenomHashResponse> {
+    const data = QueryDenomHashRequest.encode(request).finish();
+    const promise = this.rpc.request("ibc.applications.transfer.v1.Query", "DenomHash", data);
+    return promise.then(data => QueryDenomHashResponse.decode(new _m0.Reader(data)));
+  }
+
+  escrowAddress(request: QueryEscrowAddressRequest): Promise<QueryEscrowAddressResponse> {
+    const data = QueryEscrowAddressRequest.encode(request).finish();
+    const promise = this.rpc.request("ibc.applications.transfer.v1.Query", "EscrowAddress", data);
+    return promise.then(data => QueryEscrowAddressResponse.decode(new _m0.Reader(data)));
+  }
+
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -59,6 +79,14 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);
+    },
+
+    denomHash(request: QueryDenomHashRequest): Promise<QueryDenomHashResponse> {
+      return queryService.denomHash(request);
+    },
+
+    escrowAddress(request: QueryEscrowAddressRequest): Promise<QueryEscrowAddressResponse> {
+      return queryService.escrowAddress(request);
     }
 
   };

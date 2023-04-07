@@ -1,8 +1,8 @@
 import { PoolParams, PoolParamsAmino, PoolParamsSDKType, PoolAsset, PoolAssetAmino, PoolAssetSDKType } from "../balancerPool";
 import { Coin, CoinAmino, CoinSDKType } from "../../../../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../../../../google/protobuf/timestamp";
-import * as _m0 from "protobufjs/minimal";
 import { Long, toTimestamp, fromTimestamp } from "../../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** ===================== MsgCreatePool */
 
 export interface MsgCreateBalancerPool {

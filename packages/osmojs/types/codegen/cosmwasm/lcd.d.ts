@@ -8,12 +8,17 @@ export declare const createLCDClient: ({ restEndpoint }: {
         bank: {
             v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
         };
+        base: {
+            node: {
+                v1beta1: import("../cosmos/base/node/v1beta1/query.lcd").LCDQueryClient;
+            };
+        };
         distribution: {
             v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
         };
         gov: {
-            v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
             v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
+            v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
         };
         staking: {
             v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
@@ -23,11 +28,6 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
         upgrade: {
             v1beta1: import("../cosmos/upgrade/v1beta1/query.lcd").LCDQueryClient;
-        };
-        base: {
-            node: {
-                v1beta1: import("../cosmos/base/node/v1beta1/query.lcd").LCDQueryClient;
-            };
         };
     };
     cosmwasm: {

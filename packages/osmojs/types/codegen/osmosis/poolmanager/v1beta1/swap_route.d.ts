@@ -41,6 +41,7 @@ export interface SwapAmountOutRouteSDKType {
     token_in_denom: string;
 }
 export declare const SwapAmountInRoute: {
+    typeUrl: string;
     encode(message: SwapAmountInRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountInRoute;
     fromPartial(object: Partial<SwapAmountInRoute>): SwapAmountInRoute;
@@ -53,6 +54,7 @@ export declare const SwapAmountInRoute: {
     toProtoMsg(message: SwapAmountInRoute): SwapAmountInRouteProtoMsg;
 };
 export declare const SwapAmountOutRoute: {
+    typeUrl: string;
     encode(message: SwapAmountOutRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountOutRoute;
     fromPartial(object: Partial<SwapAmountOutRoute>): SwapAmountOutRoute;

@@ -2,8 +2,8 @@ import { Proof, ProofAmino, ProofSDKType } from "../crypto/proof";
 import { Consensus, ConsensusAmino, ConsensusSDKType } from "../version/types";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validator";
-import * as _m0 from "protobufjs/minimal";
 import { Long, toTimestamp, fromTimestamp, isSet } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** BlockIdFlag indicates which BlcokID the signature is for */
 
 export enum BlockIDFlag {

@@ -652,6 +652,7 @@ export interface CompressedNonExistenceProofSDKType {
     right?: CompressedExistenceProofSDKType;
 }
 export declare const ExistenceProof: {
+    typeUrl: string;
     encode(message: ExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ExistenceProof;
     fromPartial(object: Partial<ExistenceProof>): ExistenceProof;
@@ -663,6 +664,7 @@ export declare const ExistenceProof: {
     toProtoMsg(message: ExistenceProof): ExistenceProofProtoMsg;
 };
 export declare const NonExistenceProof: {
+    typeUrl: string;
     encode(message: NonExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NonExistenceProof;
     fromPartial(object: Partial<NonExistenceProof>): NonExistenceProof;
@@ -674,6 +676,7 @@ export declare const NonExistenceProof: {
     toProtoMsg(message: NonExistenceProof): NonExistenceProofProtoMsg;
 };
 export declare const CommitmentProof: {
+    typeUrl: string;
     encode(message: CommitmentProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitmentProof;
     fromPartial(object: Partial<CommitmentProof>): CommitmentProof;
@@ -685,6 +688,7 @@ export declare const CommitmentProof: {
     toProtoMsg(message: CommitmentProof): CommitmentProofProtoMsg;
 };
 export declare const LeafOp: {
+    typeUrl: string;
     encode(message: LeafOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LeafOp;
     fromPartial(object: Partial<LeafOp>): LeafOp;
@@ -696,6 +700,7 @@ export declare const LeafOp: {
     toProtoMsg(message: LeafOp): LeafOpProtoMsg;
 };
 export declare const InnerOp: {
+    typeUrl: string;
     encode(message: InnerOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InnerOp;
     fromPartial(object: Partial<InnerOp>): InnerOp;
@@ -707,6 +712,7 @@ export declare const InnerOp: {
     toProtoMsg(message: InnerOp): InnerOpProtoMsg;
 };
 export declare const ProofSpec: {
+    typeUrl: string;
     encode(message: ProofSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofSpec;
     fromPartial(object: Partial<ProofSpec>): ProofSpec;
@@ -718,6 +724,7 @@ export declare const ProofSpec: {
     toProtoMsg(message: ProofSpec): ProofSpecProtoMsg;
 };
 export declare const InnerSpec: {
+    typeUrl: string;
     encode(message: InnerSpec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InnerSpec;
     fromPartial(object: Partial<InnerSpec>): InnerSpec;
@@ -729,6 +736,7 @@ export declare const InnerSpec: {
     toProtoMsg(message: InnerSpec): InnerSpecProtoMsg;
 };
 export declare const BatchProof: {
+    typeUrl: string;
     encode(message: BatchProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BatchProof;
     fromPartial(object: Partial<BatchProof>): BatchProof;
@@ -740,6 +748,7 @@ export declare const BatchProof: {
     toProtoMsg(message: BatchProof): BatchProofProtoMsg;
 };
 export declare const BatchEntry: {
+    typeUrl: string;
     encode(message: BatchEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BatchEntry;
     fromPartial(object: Partial<BatchEntry>): BatchEntry;
@@ -751,6 +760,7 @@ export declare const BatchEntry: {
     toProtoMsg(message: BatchEntry): BatchEntryProtoMsg;
 };
 export declare const CompressedBatchProof: {
+    typeUrl: string;
     encode(message: CompressedBatchProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedBatchProof;
     fromPartial(object: Partial<CompressedBatchProof>): CompressedBatchProof;
@@ -762,6 +772,7 @@ export declare const CompressedBatchProof: {
     toProtoMsg(message: CompressedBatchProof): CompressedBatchProofProtoMsg;
 };
 export declare const CompressedBatchEntry: {
+    typeUrl: string;
     encode(message: CompressedBatchEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedBatchEntry;
     fromPartial(object: Partial<CompressedBatchEntry>): CompressedBatchEntry;
@@ -773,6 +784,7 @@ export declare const CompressedBatchEntry: {
     toProtoMsg(message: CompressedBatchEntry): CompressedBatchEntryProtoMsg;
 };
 export declare const CompressedExistenceProof: {
+    typeUrl: string;
     encode(message: CompressedExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedExistenceProof;
     fromPartial(object: Partial<CompressedExistenceProof>): CompressedExistenceProof;
@@ -784,6 +796,7 @@ export declare const CompressedExistenceProof: {
     toProtoMsg(message: CompressedExistenceProof): CompressedExistenceProofProtoMsg;
 };
 export declare const CompressedNonExistenceProof: {
+    typeUrl: string;
     encode(message: CompressedNonExistenceProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompressedNonExistenceProof;
     fromPartial(object: Partial<CompressedNonExistenceProof>): CompressedNonExistenceProof;

@@ -1,6 +1,6 @@
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * State defines if a channel is in one of the following states:
  * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -317,6 +317,50 @@ export interface PacketStateSDKType {
     data: Uint8Array;
 }
 /**
+ * PacketId is an identifer for a unique Packet
+ * Source chains refer to packets by source port/channel
+ * Destination chains refer to packets by destination port/channel
+ */
+export interface PacketId {
+    /** channel port identifier */
+    portId: string;
+    /** channel unique identifier */
+    channelId: string;
+    /** packet sequence */
+    sequence: Long;
+}
+export interface PacketIdProtoMsg {
+    typeUrl: "/ibc.core.channel.v1.PacketId";
+    value: Uint8Array;
+}
+/**
+ * PacketId is an identifer for a unique Packet
+ * Source chains refer to packets by source port/channel
+ * Destination chains refer to packets by destination port/channel
+ */
+export interface PacketIdAmino {
+    /** channel port identifier */
+    port_id: string;
+    /** channel unique identifier */
+    channel_id: string;
+    /** packet sequence */
+    sequence: string;
+}
+export interface PacketIdAminoMsg {
+    type: "cosmos-sdk/PacketId";
+    value: PacketIdAmino;
+}
+/**
+ * PacketId is an identifer for a unique Packet
+ * Source chains refer to packets by source port/channel
+ * Destination chains refer to packets by destination port/channel
+ */
+export interface PacketIdSDKType {
+    port_id: string;
+    channel_id: string;
+    sequence: Long;
+}
+/**
  * Acknowledgement is the recommended acknowledgement format to be used by
  * app-specific protocols.
  * NOTE: The field numbers 21 and 22 were explicitly chosen to avoid accidental
@@ -364,6 +408,7 @@ export interface AcknowledgementSDKType {
     error?: string;
 }
 export declare const Channel: {
+    typeUrl: string;
     encode(message: Channel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Channel;
     fromPartial(object: Partial<Channel>): Channel;
@@ -376,6 +421,7 @@ export declare const Channel: {
     toProtoMsg(message: Channel): ChannelProtoMsg;
 };
 export declare const IdentifiedChannel: {
+    typeUrl: string;
     encode(message: IdentifiedChannel, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedChannel;
     fromPartial(object: Partial<IdentifiedChannel>): IdentifiedChannel;
@@ -388,6 +434,7 @@ export declare const IdentifiedChannel: {
     toProtoMsg(message: IdentifiedChannel): IdentifiedChannelProtoMsg;
 };
 export declare const Counterparty: {
+    typeUrl: string;
     encode(message: Counterparty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Counterparty;
     fromPartial(object: Partial<Counterparty>): Counterparty;
@@ -400,6 +447,7 @@ export declare const Counterparty: {
     toProtoMsg(message: Counterparty): CounterpartyProtoMsg;
 };
 export declare const Packet: {
+    typeUrl: string;
     encode(message: Packet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Packet;
     fromPartial(object: Partial<Packet>): Packet;
@@ -412,6 +460,7 @@ export declare const Packet: {
     toProtoMsg(message: Packet): PacketProtoMsg;
 };
 export declare const PacketState: {
+    typeUrl: string;
     encode(message: PacketState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketState;
     fromPartial(object: Partial<PacketState>): PacketState;
@@ -423,7 +472,21 @@ export declare const PacketState: {
     toProto(message: PacketState): Uint8Array;
     toProtoMsg(message: PacketState): PacketStateProtoMsg;
 };
+export declare const PacketId: {
+    typeUrl: string;
+    encode(message: PacketId, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PacketId;
+    fromPartial(object: Partial<PacketId>): PacketId;
+    fromAmino(object: PacketIdAmino): PacketId;
+    toAmino(message: PacketId): PacketIdAmino;
+    fromAminoMsg(object: PacketIdAminoMsg): PacketId;
+    toAminoMsg(message: PacketId): PacketIdAminoMsg;
+    fromProtoMsg(message: PacketIdProtoMsg): PacketId;
+    toProto(message: PacketId): Uint8Array;
+    toProtoMsg(message: PacketId): PacketIdProtoMsg;
+};
 export declare const Acknowledgement: {
+    typeUrl: string;
     encode(message: Acknowledgement, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Acknowledgement;
     fromPartial(object: Partial<Acknowledgement>): Acknowledgement;

@@ -80,6 +80,7 @@ export interface PacketSequenceSDKType {
     sequence: Long;
 }
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
@@ -92,6 +93,7 @@ export declare const GenesisState: {
     toProtoMsg(message: GenesisState): GenesisStateProtoMsg;
 };
 export declare const PacketSequence: {
+    typeUrl: string;
     encode(message: PacketSequence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketSequence;
     fromPartial(object: Partial<PacketSequence>): PacketSequence;

@@ -94,6 +94,7 @@ export interface MsgSwapExactAmountOutResponseSDKType {
     token_in_amount: string;
 }
 export declare const MsgSwapExactAmountIn: {
+    typeUrl: string;
     encode(message: MsgSwapExactAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountIn;
     fromPartial(object: Partial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn;
@@ -106,6 +107,7 @@ export declare const MsgSwapExactAmountIn: {
     toProtoMsg(message: MsgSwapExactAmountIn): MsgSwapExactAmountInProtoMsg;
 };
 export declare const MsgSwapExactAmountInResponse: {
+    typeUrl: string;
     encode(message: MsgSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponse;
     fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse;
@@ -118,6 +120,7 @@ export declare const MsgSwapExactAmountInResponse: {
     toProtoMsg(message: MsgSwapExactAmountInResponse): MsgSwapExactAmountInResponseProtoMsg;
 };
 export declare const MsgSwapExactAmountOut: {
+    typeUrl: string;
     encode(message: MsgSwapExactAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOut;
     fromPartial(object: Partial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut;
@@ -130,6 +133,7 @@ export declare const MsgSwapExactAmountOut: {
     toProtoMsg(message: MsgSwapExactAmountOut): MsgSwapExactAmountOutProtoMsg;
 };
 export declare const MsgSwapExactAmountOutResponse: {
+    typeUrl: string;
     encode(message: MsgSwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOutResponse;
     fromPartial(object: Partial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse;

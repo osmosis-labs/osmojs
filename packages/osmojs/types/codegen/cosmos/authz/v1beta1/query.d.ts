@@ -166,6 +166,7 @@ export interface QueryGranteeGrantsResponseSDKType {
     pagination?: PageResponseSDKType;
 }
 export declare const QueryGrantsRequest: {
+    typeUrl: string;
     encode(message: QueryGrantsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsRequest;
     fromPartial(object: Partial<QueryGrantsRequest>): QueryGrantsRequest;
@@ -178,6 +179,7 @@ export declare const QueryGrantsRequest: {
     toProtoMsg(message: QueryGrantsRequest): QueryGrantsRequestProtoMsg;
 };
 export declare const QueryGrantsResponse: {
+    typeUrl: string;
     encode(message: QueryGrantsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGrantsResponse;
     fromPartial(object: Partial<QueryGrantsResponse>): QueryGrantsResponse;
@@ -190,6 +192,7 @@ export declare const QueryGrantsResponse: {
     toProtoMsg(message: QueryGrantsResponse): QueryGrantsResponseProtoMsg;
 };
 export declare const QueryGranterGrantsRequest: {
+    typeUrl: string;
     encode(message: QueryGranterGrantsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsRequest;
     fromPartial(object: Partial<QueryGranterGrantsRequest>): QueryGranterGrantsRequest;
@@ -202,6 +205,7 @@ export declare const QueryGranterGrantsRequest: {
     toProtoMsg(message: QueryGranterGrantsRequest): QueryGranterGrantsRequestProtoMsg;
 };
 export declare const QueryGranterGrantsResponse: {
+    typeUrl: string;
     encode(message: QueryGranterGrantsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranterGrantsResponse;
     fromPartial(object: Partial<QueryGranterGrantsResponse>): QueryGranterGrantsResponse;
@@ -214,6 +218,7 @@ export declare const QueryGranterGrantsResponse: {
     toProtoMsg(message: QueryGranterGrantsResponse): QueryGranterGrantsResponseProtoMsg;
 };
 export declare const QueryGranteeGrantsRequest: {
+    typeUrl: string;
     encode(message: QueryGranteeGrantsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsRequest;
     fromPartial(object: Partial<QueryGranteeGrantsRequest>): QueryGranteeGrantsRequest;
@@ -226,6 +231,7 @@ export declare const QueryGranteeGrantsRequest: {
     toProtoMsg(message: QueryGranteeGrantsRequest): QueryGranteeGrantsRequestProtoMsg;
 };
 export declare const QueryGranteeGrantsResponse: {
+    typeUrl: string;
     encode(message: QueryGranteeGrantsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGranteeGrantsResponse;
     fromPartial(object: Partial<QueryGranteeGrantsResponse>): QueryGranteeGrantsResponse;

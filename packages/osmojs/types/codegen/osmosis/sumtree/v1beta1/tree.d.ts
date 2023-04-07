@@ -54,6 +54,7 @@ export interface LeafSDKType {
     leaf?: ChildSDKType;
 }
 export declare const Node: {
+    typeUrl: string;
     encode(message: Node, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Node;
     fromPartial(object: Partial<Node>): Node;
@@ -66,6 +67,7 @@ export declare const Node: {
     toProtoMsg(message: Node): NodeProtoMsg;
 };
 export declare const Child: {
+    typeUrl: string;
     encode(message: Child, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Child;
     fromPartial(object: Partial<Child>): Child;
@@ -78,6 +80,7 @@ export declare const Child: {
     toProtoMsg(message: Child): ChildProtoMsg;
 };
 export declare const Leaf: {
+    typeUrl: string;
     encode(message: Leaf, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Leaf;
     fromPartial(object: Partial<Leaf>): Leaf;

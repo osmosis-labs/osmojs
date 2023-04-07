@@ -329,6 +329,7 @@ export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionRespons
     join_time?: Date;
 }
 export declare const MsgSuperfluidDelegate: {
+    typeUrl: string;
     encode(message: MsgSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegate;
     fromPartial(object: Partial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate;
@@ -341,6 +342,7 @@ export declare const MsgSuperfluidDelegate: {
     toProtoMsg(message: MsgSuperfluidDelegate): MsgSuperfluidDelegateProtoMsg;
 };
 export declare const MsgSuperfluidDelegateResponse: {
+    typeUrl: string;
     encode(_: MsgSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegateResponse;
     fromPartial(_: Partial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse;
@@ -353,6 +355,7 @@ export declare const MsgSuperfluidDelegateResponse: {
     toProtoMsg(message: MsgSuperfluidDelegateResponse): MsgSuperfluidDelegateResponseProtoMsg;
 };
 export declare const MsgSuperfluidUndelegate: {
+    typeUrl: string;
     encode(message: MsgSuperfluidUndelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegate;
     fromPartial(object: Partial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate;
@@ -365,6 +368,7 @@ export declare const MsgSuperfluidUndelegate: {
     toProtoMsg(message: MsgSuperfluidUndelegate): MsgSuperfluidUndelegateProtoMsg;
 };
 export declare const MsgSuperfluidUndelegateResponse: {
+    typeUrl: string;
     encode(_: MsgSuperfluidUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateResponse;
     fromPartial(_: Partial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse;
@@ -377,6 +381,7 @@ export declare const MsgSuperfluidUndelegateResponse: {
     toProtoMsg(message: MsgSuperfluidUndelegateResponse): MsgSuperfluidUndelegateResponseProtoMsg;
 };
 export declare const MsgSuperfluidUnbondLock: {
+    typeUrl: string;
     encode(message: MsgSuperfluidUnbondLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLock;
     fromPartial(object: Partial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock;
@@ -389,6 +394,7 @@ export declare const MsgSuperfluidUnbondLock: {
     toProtoMsg(message: MsgSuperfluidUnbondLock): MsgSuperfluidUnbondLockProtoMsg;
 };
 export declare const MsgSuperfluidUnbondLockResponse: {
+    typeUrl: string;
     encode(_: MsgSuperfluidUnbondLockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponse;
     fromPartial(_: Partial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse;
@@ -401,6 +407,7 @@ export declare const MsgSuperfluidUnbondLockResponse: {
     toProtoMsg(message: MsgSuperfluidUnbondLockResponse): MsgSuperfluidUnbondLockResponseProtoMsg;
 };
 export declare const MsgSuperfluidUndelegateAndUnbondLock: {
+    typeUrl: string;
     encode(message: MsgSuperfluidUndelegateAndUnbondLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLock;
     fromPartial(object: Partial<MsgSuperfluidUndelegateAndUnbondLock>): MsgSuperfluidUndelegateAndUnbondLock;
@@ -413,6 +420,7 @@ export declare const MsgSuperfluidUndelegateAndUnbondLock: {
     toProtoMsg(message: MsgSuperfluidUndelegateAndUnbondLock): MsgSuperfluidUndelegateAndUnbondLockProtoMsg;
 };
 export declare const MsgSuperfluidUndelegateAndUnbondLockResponse: {
+    typeUrl: string;
     encode(_: MsgSuperfluidUndelegateAndUnbondLockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLockResponse;
     fromPartial(_: Partial<MsgSuperfluidUndelegateAndUnbondLockResponse>): MsgSuperfluidUndelegateAndUnbondLockResponse;
@@ -425,6 +433,7 @@ export declare const MsgSuperfluidUndelegateAndUnbondLockResponse: {
     toProtoMsg(message: MsgSuperfluidUndelegateAndUnbondLockResponse): MsgSuperfluidUndelegateAndUnbondLockResponseProtoMsg;
 };
 export declare const MsgLockAndSuperfluidDelegate: {
+    typeUrl: string;
     encode(message: MsgLockAndSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegate;
     fromPartial(object: Partial<MsgLockAndSuperfluidDelegate>): MsgLockAndSuperfluidDelegate;
@@ -437,6 +446,7 @@ export declare const MsgLockAndSuperfluidDelegate: {
     toProtoMsg(message: MsgLockAndSuperfluidDelegate): MsgLockAndSuperfluidDelegateProtoMsg;
 };
 export declare const MsgLockAndSuperfluidDelegateResponse: {
+    typeUrl: string;
     encode(message: MsgLockAndSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegateResponse;
     fromPartial(object: Partial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse;
@@ -449,6 +459,7 @@ export declare const MsgLockAndSuperfluidDelegateResponse: {
     toProtoMsg(message: MsgLockAndSuperfluidDelegateResponse): MsgLockAndSuperfluidDelegateResponseProtoMsg;
 };
 export declare const MsgUnPoolWhitelistedPool: {
+    typeUrl: string;
     encode(message: MsgUnPoolWhitelistedPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPool;
     fromPartial(object: Partial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool;
@@ -461,6 +472,7 @@ export declare const MsgUnPoolWhitelistedPool: {
     toProtoMsg(message: MsgUnPoolWhitelistedPool): MsgUnPoolWhitelistedPoolProtoMsg;
 };
 export declare const MsgUnPoolWhitelistedPoolResponse: {
+    typeUrl: string;
     encode(message: MsgUnPoolWhitelistedPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponse;
     fromPartial(object: Partial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse;
@@ -473,6 +485,7 @@ export declare const MsgUnPoolWhitelistedPoolResponse: {
     toProtoMsg(message: MsgUnPoolWhitelistedPoolResponse): MsgUnPoolWhitelistedPoolResponseProtoMsg;
 };
 export declare const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition: {
+    typeUrl: string;
     encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
     fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
@@ -485,6 +498,7 @@ export declare const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition: {
     toProtoMsg(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionProtoMsg;
 };
 export declare const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse: {
+    typeUrl: string;
     encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
     fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;

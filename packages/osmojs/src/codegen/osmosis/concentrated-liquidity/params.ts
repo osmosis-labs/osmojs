@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface Params {
   /**
    * authorized_tick_spacing is an array of uint64s that represents the tick

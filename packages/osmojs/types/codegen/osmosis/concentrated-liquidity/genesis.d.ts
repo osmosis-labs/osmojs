@@ -164,6 +164,7 @@ export interface AccumObjectSDKType {
     accum_content?: AccumulatorContentSDKType;
 }
 export declare const FullTick: {
+    typeUrl: string;
     encode(message: FullTick, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FullTick;
     fromPartial(object: Partial<FullTick>): FullTick;
@@ -176,6 +177,7 @@ export declare const FullTick: {
     toProtoMsg(message: FullTick): FullTickProtoMsg;
 };
 export declare const PoolData: {
+    typeUrl: string;
     encode(message: PoolData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolData;
     fromPartial(object: Partial<PoolData>): PoolData;
@@ -188,6 +190,7 @@ export declare const PoolData: {
     toProtoMsg(message: PoolData): PoolDataProtoMsg;
 };
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
@@ -200,6 +203,7 @@ export declare const GenesisState: {
     toProtoMsg(message: GenesisState): GenesisStateProtoMsg;
 };
 export declare const AccumObject: {
+    typeUrl: string;
     encode(message: AccumObject, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccumObject;
     fromPartial(object: Partial<AccumObject>): AccumObject;

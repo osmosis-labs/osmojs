@@ -2,8 +2,8 @@ import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType, SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "./lock";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface ModuleBalanceRequest {
 }
 export interface ModuleBalanceRequestProtoMsg {
@@ -638,6 +638,7 @@ export interface QueryParamsResponseSDKType {
     params?: ParamsSDKType;
 }
 export declare const ModuleBalanceRequest: {
+    typeUrl: string;
     encode(_: ModuleBalanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleBalanceRequest;
     fromPartial(_: Partial<ModuleBalanceRequest>): ModuleBalanceRequest;
@@ -650,6 +651,7 @@ export declare const ModuleBalanceRequest: {
     toProtoMsg(message: ModuleBalanceRequest): ModuleBalanceRequestProtoMsg;
 };
 export declare const ModuleBalanceResponse: {
+    typeUrl: string;
     encode(message: ModuleBalanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleBalanceResponse;
     fromPartial(object: Partial<ModuleBalanceResponse>): ModuleBalanceResponse;
@@ -662,6 +664,7 @@ export declare const ModuleBalanceResponse: {
     toProtoMsg(message: ModuleBalanceResponse): ModuleBalanceResponseProtoMsg;
 };
 export declare const ModuleLockedAmountRequest: {
+    typeUrl: string;
     encode(_: ModuleLockedAmountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleLockedAmountRequest;
     fromPartial(_: Partial<ModuleLockedAmountRequest>): ModuleLockedAmountRequest;
@@ -674,6 +677,7 @@ export declare const ModuleLockedAmountRequest: {
     toProtoMsg(message: ModuleLockedAmountRequest): ModuleLockedAmountRequestProtoMsg;
 };
 export declare const ModuleLockedAmountResponse: {
+    typeUrl: string;
     encode(message: ModuleLockedAmountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleLockedAmountResponse;
     fromPartial(object: Partial<ModuleLockedAmountResponse>): ModuleLockedAmountResponse;
@@ -686,6 +690,7 @@ export declare const ModuleLockedAmountResponse: {
     toProtoMsg(message: ModuleLockedAmountResponse): ModuleLockedAmountResponseProtoMsg;
 };
 export declare const AccountUnlockableCoinsRequest: {
+    typeUrl: string;
     encode(message: AccountUnlockableCoinsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockableCoinsRequest;
     fromPartial(object: Partial<AccountUnlockableCoinsRequest>): AccountUnlockableCoinsRequest;
@@ -698,6 +703,7 @@ export declare const AccountUnlockableCoinsRequest: {
     toProtoMsg(message: AccountUnlockableCoinsRequest): AccountUnlockableCoinsRequestProtoMsg;
 };
 export declare const AccountUnlockableCoinsResponse: {
+    typeUrl: string;
     encode(message: AccountUnlockableCoinsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockableCoinsResponse;
     fromPartial(object: Partial<AccountUnlockableCoinsResponse>): AccountUnlockableCoinsResponse;
@@ -710,6 +716,7 @@ export declare const AccountUnlockableCoinsResponse: {
     toProtoMsg(message: AccountUnlockableCoinsResponse): AccountUnlockableCoinsResponseProtoMsg;
 };
 export declare const AccountUnlockingCoinsRequest: {
+    typeUrl: string;
     encode(message: AccountUnlockingCoinsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockingCoinsRequest;
     fromPartial(object: Partial<AccountUnlockingCoinsRequest>): AccountUnlockingCoinsRequest;
@@ -722,6 +729,7 @@ export declare const AccountUnlockingCoinsRequest: {
     toProtoMsg(message: AccountUnlockingCoinsRequest): AccountUnlockingCoinsRequestProtoMsg;
 };
 export declare const AccountUnlockingCoinsResponse: {
+    typeUrl: string;
     encode(message: AccountUnlockingCoinsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockingCoinsResponse;
     fromPartial(object: Partial<AccountUnlockingCoinsResponse>): AccountUnlockingCoinsResponse;
@@ -734,6 +742,7 @@ export declare const AccountUnlockingCoinsResponse: {
     toProtoMsg(message: AccountUnlockingCoinsResponse): AccountUnlockingCoinsResponseProtoMsg;
 };
 export declare const AccountLockedCoinsRequest: {
+    typeUrl: string;
     encode(message: AccountLockedCoinsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedCoinsRequest;
     fromPartial(object: Partial<AccountLockedCoinsRequest>): AccountLockedCoinsRequest;
@@ -746,6 +755,7 @@ export declare const AccountLockedCoinsRequest: {
     toProtoMsg(message: AccountLockedCoinsRequest): AccountLockedCoinsRequestProtoMsg;
 };
 export declare const AccountLockedCoinsResponse: {
+    typeUrl: string;
     encode(message: AccountLockedCoinsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedCoinsResponse;
     fromPartial(object: Partial<AccountLockedCoinsResponse>): AccountLockedCoinsResponse;
@@ -758,6 +768,7 @@ export declare const AccountLockedCoinsResponse: {
     toProtoMsg(message: AccountLockedCoinsResponse): AccountLockedCoinsResponseProtoMsg;
 };
 export declare const AccountLockedPastTimeRequest: {
+    typeUrl: string;
     encode(message: AccountLockedPastTimeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeRequest;
     fromPartial(object: Partial<AccountLockedPastTimeRequest>): AccountLockedPastTimeRequest;
@@ -770,6 +781,7 @@ export declare const AccountLockedPastTimeRequest: {
     toProtoMsg(message: AccountLockedPastTimeRequest): AccountLockedPastTimeRequestProtoMsg;
 };
 export declare const AccountLockedPastTimeResponse: {
+    typeUrl: string;
     encode(message: AccountLockedPastTimeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeResponse;
     fromPartial(object: Partial<AccountLockedPastTimeResponse>): AccountLockedPastTimeResponse;
@@ -782,6 +794,7 @@ export declare const AccountLockedPastTimeResponse: {
     toProtoMsg(message: AccountLockedPastTimeResponse): AccountLockedPastTimeResponseProtoMsg;
 };
 export declare const AccountLockedPastTimeNotUnlockingOnlyRequest: {
+    typeUrl: string;
     encode(message: AccountLockedPastTimeNotUnlockingOnlyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeNotUnlockingOnlyRequest;
     fromPartial(object: Partial<AccountLockedPastTimeNotUnlockingOnlyRequest>): AccountLockedPastTimeNotUnlockingOnlyRequest;
@@ -794,6 +807,7 @@ export declare const AccountLockedPastTimeNotUnlockingOnlyRequest: {
     toProtoMsg(message: AccountLockedPastTimeNotUnlockingOnlyRequest): AccountLockedPastTimeNotUnlockingOnlyRequestProtoMsg;
 };
 export declare const AccountLockedPastTimeNotUnlockingOnlyResponse: {
+    typeUrl: string;
     encode(message: AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeNotUnlockingOnlyResponse;
     fromPartial(object: Partial<AccountLockedPastTimeNotUnlockingOnlyResponse>): AccountLockedPastTimeNotUnlockingOnlyResponse;
@@ -806,6 +820,7 @@ export declare const AccountLockedPastTimeNotUnlockingOnlyResponse: {
     toProtoMsg(message: AccountLockedPastTimeNotUnlockingOnlyResponse): AccountLockedPastTimeNotUnlockingOnlyResponseProtoMsg;
 };
 export declare const AccountUnlockedBeforeTimeRequest: {
+    typeUrl: string;
     encode(message: AccountUnlockedBeforeTimeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockedBeforeTimeRequest;
     fromPartial(object: Partial<AccountUnlockedBeforeTimeRequest>): AccountUnlockedBeforeTimeRequest;
@@ -818,6 +833,7 @@ export declare const AccountUnlockedBeforeTimeRequest: {
     toProtoMsg(message: AccountUnlockedBeforeTimeRequest): AccountUnlockedBeforeTimeRequestProtoMsg;
 };
 export declare const AccountUnlockedBeforeTimeResponse: {
+    typeUrl: string;
     encode(message: AccountUnlockedBeforeTimeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockedBeforeTimeResponse;
     fromPartial(object: Partial<AccountUnlockedBeforeTimeResponse>): AccountUnlockedBeforeTimeResponse;
@@ -830,6 +846,7 @@ export declare const AccountUnlockedBeforeTimeResponse: {
     toProtoMsg(message: AccountUnlockedBeforeTimeResponse): AccountUnlockedBeforeTimeResponseProtoMsg;
 };
 export declare const AccountLockedPastTimeDenomRequest: {
+    typeUrl: string;
     encode(message: AccountLockedPastTimeDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeDenomRequest;
     fromPartial(object: Partial<AccountLockedPastTimeDenomRequest>): AccountLockedPastTimeDenomRequest;
@@ -842,6 +859,7 @@ export declare const AccountLockedPastTimeDenomRequest: {
     toProtoMsg(message: AccountLockedPastTimeDenomRequest): AccountLockedPastTimeDenomRequestProtoMsg;
 };
 export declare const AccountLockedPastTimeDenomResponse: {
+    typeUrl: string;
     encode(message: AccountLockedPastTimeDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeDenomResponse;
     fromPartial(object: Partial<AccountLockedPastTimeDenomResponse>): AccountLockedPastTimeDenomResponse;
@@ -854,6 +872,7 @@ export declare const AccountLockedPastTimeDenomResponse: {
     toProtoMsg(message: AccountLockedPastTimeDenomResponse): AccountLockedPastTimeDenomResponseProtoMsg;
 };
 export declare const LockedDenomRequest: {
+    typeUrl: string;
     encode(message: LockedDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockedDenomRequest;
     fromPartial(object: Partial<LockedDenomRequest>): LockedDenomRequest;
@@ -866,6 +885,7 @@ export declare const LockedDenomRequest: {
     toProtoMsg(message: LockedDenomRequest): LockedDenomRequestProtoMsg;
 };
 export declare const LockedDenomResponse: {
+    typeUrl: string;
     encode(message: LockedDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockedDenomResponse;
     fromPartial(object: Partial<LockedDenomResponse>): LockedDenomResponse;
@@ -878,6 +898,7 @@ export declare const LockedDenomResponse: {
     toProtoMsg(message: LockedDenomResponse): LockedDenomResponseProtoMsg;
 };
 export declare const LockedRequest: {
+    typeUrl: string;
     encode(message: LockedRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockedRequest;
     fromPartial(object: Partial<LockedRequest>): LockedRequest;
@@ -890,6 +911,7 @@ export declare const LockedRequest: {
     toProtoMsg(message: LockedRequest): LockedRequestProtoMsg;
 };
 export declare const LockedResponse: {
+    typeUrl: string;
     encode(message: LockedResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockedResponse;
     fromPartial(object: Partial<LockedResponse>): LockedResponse;
@@ -902,6 +924,7 @@ export declare const LockedResponse: {
     toProtoMsg(message: LockedResponse): LockedResponseProtoMsg;
 };
 export declare const NextLockIDRequest: {
+    typeUrl: string;
     encode(_: NextLockIDRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NextLockIDRequest;
     fromPartial(_: Partial<NextLockIDRequest>): NextLockIDRequest;
@@ -914,6 +937,7 @@ export declare const NextLockIDRequest: {
     toProtoMsg(message: NextLockIDRequest): NextLockIDRequestProtoMsg;
 };
 export declare const NextLockIDResponse: {
+    typeUrl: string;
     encode(message: NextLockIDResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NextLockIDResponse;
     fromPartial(object: Partial<NextLockIDResponse>): NextLockIDResponse;
@@ -926,6 +950,7 @@ export declare const NextLockIDResponse: {
     toProtoMsg(message: NextLockIDResponse): NextLockIDResponseProtoMsg;
 };
 export declare const SyntheticLockupsByLockupIDRequest: {
+    typeUrl: string;
     encode(message: SyntheticLockupsByLockupIDRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupsByLockupIDRequest;
     fromPartial(object: Partial<SyntheticLockupsByLockupIDRequest>): SyntheticLockupsByLockupIDRequest;
@@ -938,6 +963,7 @@ export declare const SyntheticLockupsByLockupIDRequest: {
     toProtoMsg(message: SyntheticLockupsByLockupIDRequest): SyntheticLockupsByLockupIDRequestProtoMsg;
 };
 export declare const SyntheticLockupsByLockupIDResponse: {
+    typeUrl: string;
     encode(message: SyntheticLockupsByLockupIDResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupsByLockupIDResponse;
     fromPartial(object: Partial<SyntheticLockupsByLockupIDResponse>): SyntheticLockupsByLockupIDResponse;
@@ -950,6 +976,7 @@ export declare const SyntheticLockupsByLockupIDResponse: {
     toProtoMsg(message: SyntheticLockupsByLockupIDResponse): SyntheticLockupsByLockupIDResponseProtoMsg;
 };
 export declare const AccountLockedLongerDurationRequest: {
+    typeUrl: string;
     encode(message: AccountLockedLongerDurationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationRequest;
     fromPartial(object: Partial<AccountLockedLongerDurationRequest>): AccountLockedLongerDurationRequest;
@@ -962,6 +989,7 @@ export declare const AccountLockedLongerDurationRequest: {
     toProtoMsg(message: AccountLockedLongerDurationRequest): AccountLockedLongerDurationRequestProtoMsg;
 };
 export declare const AccountLockedLongerDurationResponse: {
+    typeUrl: string;
     encode(message: AccountLockedLongerDurationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationResponse;
     fromPartial(object: Partial<AccountLockedLongerDurationResponse>): AccountLockedLongerDurationResponse;
@@ -974,6 +1002,7 @@ export declare const AccountLockedLongerDurationResponse: {
     toProtoMsg(message: AccountLockedLongerDurationResponse): AccountLockedLongerDurationResponseProtoMsg;
 };
 export declare const AccountLockedDurationRequest: {
+    typeUrl: string;
     encode(message: AccountLockedDurationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedDurationRequest;
     fromPartial(object: Partial<AccountLockedDurationRequest>): AccountLockedDurationRequest;
@@ -986,6 +1015,7 @@ export declare const AccountLockedDurationRequest: {
     toProtoMsg(message: AccountLockedDurationRequest): AccountLockedDurationRequestProtoMsg;
 };
 export declare const AccountLockedDurationResponse: {
+    typeUrl: string;
     encode(message: AccountLockedDurationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedDurationResponse;
     fromPartial(object: Partial<AccountLockedDurationResponse>): AccountLockedDurationResponse;
@@ -998,6 +1028,7 @@ export declare const AccountLockedDurationResponse: {
     toProtoMsg(message: AccountLockedDurationResponse): AccountLockedDurationResponseProtoMsg;
 };
 export declare const AccountLockedLongerDurationNotUnlockingOnlyRequest: {
+    typeUrl: string;
     encode(message: AccountLockedLongerDurationNotUnlockingOnlyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationNotUnlockingOnlyRequest;
     fromPartial(object: Partial<AccountLockedLongerDurationNotUnlockingOnlyRequest>): AccountLockedLongerDurationNotUnlockingOnlyRequest;
@@ -1010,6 +1041,7 @@ export declare const AccountLockedLongerDurationNotUnlockingOnlyRequest: {
     toProtoMsg(message: AccountLockedLongerDurationNotUnlockingOnlyRequest): AccountLockedLongerDurationNotUnlockingOnlyRequestProtoMsg;
 };
 export declare const AccountLockedLongerDurationNotUnlockingOnlyResponse: {
+    typeUrl: string;
     encode(message: AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationNotUnlockingOnlyResponse;
     fromPartial(object: Partial<AccountLockedLongerDurationNotUnlockingOnlyResponse>): AccountLockedLongerDurationNotUnlockingOnlyResponse;
@@ -1022,6 +1054,7 @@ export declare const AccountLockedLongerDurationNotUnlockingOnlyResponse: {
     toProtoMsg(message: AccountLockedLongerDurationNotUnlockingOnlyResponse): AccountLockedLongerDurationNotUnlockingOnlyResponseProtoMsg;
 };
 export declare const AccountLockedLongerDurationDenomRequest: {
+    typeUrl: string;
     encode(message: AccountLockedLongerDurationDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationDenomRequest;
     fromPartial(object: Partial<AccountLockedLongerDurationDenomRequest>): AccountLockedLongerDurationDenomRequest;
@@ -1034,6 +1067,7 @@ export declare const AccountLockedLongerDurationDenomRequest: {
     toProtoMsg(message: AccountLockedLongerDurationDenomRequest): AccountLockedLongerDurationDenomRequestProtoMsg;
 };
 export declare const AccountLockedLongerDurationDenomResponse: {
+    typeUrl: string;
     encode(message: AccountLockedLongerDurationDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationDenomResponse;
     fromPartial(object: Partial<AccountLockedLongerDurationDenomResponse>): AccountLockedLongerDurationDenomResponse;
@@ -1046,6 +1080,7 @@ export declare const AccountLockedLongerDurationDenomResponse: {
     toProtoMsg(message: AccountLockedLongerDurationDenomResponse): AccountLockedLongerDurationDenomResponseProtoMsg;
 };
 export declare const QueryParamsRequest: {
+    typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
@@ -1058,6 +1093,7 @@ export declare const QueryParamsRequest: {
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
 export declare const QueryParamsResponse: {
+    typeUrl: string;
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
