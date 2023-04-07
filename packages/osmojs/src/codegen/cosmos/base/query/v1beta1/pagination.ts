@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:
@@ -46,6 +46,10 @@ export interface PageRequest {
 
   reverse: boolean;
 }
+export interface PageRequestProtoMsg {
+  typeUrl: "/cosmos.base.query.v1beta1.PageRequest";
+  value: Uint8Array;
+}
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:
@@ -56,7 +60,7 @@ export interface PageRequest {
  *  }
  */
 
-export interface PageRequestSDKType {
+export interface PageRequestAmino {
   /**
    * key is a value returned in PageResponse.next_key to begin
    * querying the next page most efficiently. Only one of offset or key
@@ -69,13 +73,13 @@ export interface PageRequestSDKType {
    * be set.
    */
 
-  offset: Long;
+  offset: string;
   /**
    * limit is the total number of results to be returned in the result page.
    * If left empty it will default to a value to be set by each app.
    */
 
-  limit: Long;
+  limit: string;
   /**
    * count_total is set to true  to indicate that the result set should include
    * a count of the total number of items available for pagination in UIs.
@@ -90,6 +94,27 @@ export interface PageRequestSDKType {
    * Since: cosmos-sdk 0.43
    */
 
+  reverse: boolean;
+}
+export interface PageRequestAminoMsg {
+  type: "cosmos-sdk/PageRequest";
+  value: PageRequestAmino;
+}
+/**
+ * PageRequest is to be embedded in gRPC request messages for efficient
+ * pagination. Ex:
+ * 
+ *  message SomeRequest {
+ *          Foo some_parameter = 1;
+ *          PageRequest pagination = 2;
+ *  }
+ */
+
+export interface PageRequestSDKType {
+  key: Uint8Array;
+  offset: Long;
+  limit: Long;
+  count_total: boolean;
   reverse: boolean;
 }
 /**
@@ -116,6 +141,10 @@ export interface PageResponse {
 
   total: Long;
 }
+export interface PageResponseProtoMsg {
+  typeUrl: "/cosmos.base.query.v1beta1.PageResponse";
+  value: Uint8Array;
+}
 /**
  * PageResponse is to be embedded in gRPC response messages where the
  * corresponding request message has used PageRequest.
@@ -126,7 +155,7 @@ export interface PageResponse {
  *  }
  */
 
-export interface PageResponseSDKType {
+export interface PageResponseAmino {
   /**
    * next_key is the key to be passed to PageRequest.key to
    * query the next page most efficiently. It will be empty if
@@ -138,6 +167,24 @@ export interface PageResponseSDKType {
    * was set, its value is undefined otherwise
    */
 
+  total: string;
+}
+export interface PageResponseAminoMsg {
+  type: "cosmos-sdk/PageResponse";
+  value: PageResponseAmino;
+}
+/**
+ * PageResponse is to be embedded in gRPC response messages where the
+ * corresponding request message has used PageRequest.
+ * 
+ *  message SomeResponse {
+ *          repeated Bar results = 1;
+ *          PageResponse page = 2;
+ *  }
+ */
+
+export interface PageResponseSDKType {
+  next_key: Uint8Array;
   total: Long;
 }
 
@@ -152,6 +199,8 @@ function createBasePageRequest(): PageRequest {
 }
 
 export const PageRequest = {
+  typeUrl: "/cosmos.base.query.v1beta1.PageRequest",
+
   encode(message: PageRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -222,6 +271,52 @@ export const PageRequest = {
     message.countTotal = object.countTotal ?? false;
     message.reverse = object.reverse ?? false;
     return message;
+  },
+
+  fromAmino(object: PageRequestAmino): PageRequest {
+    return {
+      key: object.key,
+      offset: Long.fromString(object.offset),
+      limit: Long.fromString(object.limit),
+      countTotal: object.count_total,
+      reverse: object.reverse
+    };
+  },
+
+  toAmino(message: PageRequest): PageRequestAmino {
+    const obj: any = {};
+    obj.key = message.key;
+    obj.offset = message.offset ? message.offset.toString() : undefined;
+    obj.limit = message.limit ? message.limit.toString() : undefined;
+    obj.count_total = message.countTotal;
+    obj.reverse = message.reverse;
+    return obj;
+  },
+
+  fromAminoMsg(object: PageRequestAminoMsg): PageRequest {
+    return PageRequest.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: PageRequest): PageRequestAminoMsg {
+    return {
+      type: "cosmos-sdk/PageRequest",
+      value: PageRequest.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: PageRequestProtoMsg): PageRequest {
+    return PageRequest.decode(message.value);
+  },
+
+  toProto(message: PageRequest): Uint8Array {
+    return PageRequest.encode(message).finish();
+  },
+
+  toProtoMsg(message: PageRequest): PageRequestProtoMsg {
+    return {
+      typeUrl: "/cosmos.base.query.v1beta1.PageRequest",
+      value: PageRequest.encode(message).finish()
+    };
   }
 
 };
@@ -234,6 +329,8 @@ function createBasePageResponse(): PageResponse {
 }
 
 export const PageResponse = {
+  typeUrl: "/cosmos.base.query.v1beta1.PageResponse",
+
   encode(message: PageResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nextKey.length !== 0) {
       writer.uint32(10).bytes(message.nextKey);
@@ -277,6 +374,46 @@ export const PageResponse = {
     message.nextKey = object.nextKey ?? new Uint8Array();
     message.total = object.total !== undefined && object.total !== null ? Long.fromValue(object.total) : Long.UZERO;
     return message;
+  },
+
+  fromAmino(object: PageResponseAmino): PageResponse {
+    return {
+      nextKey: object.next_key,
+      total: Long.fromString(object.total)
+    };
+  },
+
+  toAmino(message: PageResponse): PageResponseAmino {
+    const obj: any = {};
+    obj.next_key = message.nextKey;
+    obj.total = message.total ? message.total.toString() : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: PageResponseAminoMsg): PageResponse {
+    return PageResponse.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: PageResponse): PageResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/PageResponse",
+      value: PageResponse.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: PageResponseProtoMsg): PageResponse {
+    return PageResponse.decode(message.value);
+  },
+
+  toProto(message: PageResponse): Uint8Array {
+    return PageResponse.encode(message).finish();
+  },
+
+  toProtoMsg(message: PageResponse): PageResponseProtoMsg {
+    return {
+      typeUrl: "/cosmos.base.query.v1beta1.PageResponse",
+      value: PageResponse.encode(message).finish()
+    };
   }
 
 };

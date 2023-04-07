@@ -10,13 +10,25 @@ export interface Params {
   authorizedTickSpacing: Long[];
   authorizedSwapFees: string[];
 }
-export interface ParamsSDKType {
+export interface ParamsProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.Params";
+  value: Uint8Array;
+}
+export interface ParamsAmino {
   /**
    * authorized_tick_spacing is an array of uint64s that represents the tick
    * spacing values concentrated-liquidity pools can be created with. For
    * example, an authorized_tick_spacing of [1, 10, 30] allows for pools
    * to be created with tick spacing of 1, 10, or 30.
    */
+  authorized_tick_spacing: string[];
+  authorized_swap_fees: string[];
+}
+export interface ParamsAminoMsg {
+  type: "osmosis/concentratedliquidity/params";
+  value: ParamsAmino;
+}
+export interface ParamsSDKType {
   authorized_tick_spacing: Long[];
   authorized_swap_fees: string[];
 }
@@ -29,6 +41,8 @@ function createBaseParams(): Params {
 }
 
 export const Params = {
+  typeUrl: "/osmosis.concentratedliquidity.Params",
+
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     writer.uint32(10).fork();
 
@@ -85,6 +99,57 @@ export const Params = {
     message.authorizedTickSpacing = object.authorizedTickSpacing?.map(e => Long.fromValue(e)) || [];
     message.authorizedSwapFees = object.authorizedSwapFees?.map(e => e) || [];
     return message;
+  },
+
+  fromAmino(object: ParamsAmino): Params {
+    return {
+      authorizedTickSpacing: Array.isArray(object?.authorized_tick_spacing) ? object.authorized_tick_spacing.map((e: any) => e) : [],
+      authorizedSwapFees: Array.isArray(object?.authorized_swap_fees) ? object.authorized_swap_fees.map((e: any) => e) : []
+    };
+  },
+
+  toAmino(message: Params): ParamsAmino {
+    const obj: any = {};
+
+    if (message.authorizedTickSpacing) {
+      obj.authorized_tick_spacing = message.authorizedTickSpacing.map(e => e);
+    } else {
+      obj.authorized_tick_spacing = [];
+    }
+
+    if (message.authorizedSwapFees) {
+      obj.authorized_swap_fees = message.authorizedSwapFees.map(e => e);
+    } else {
+      obj.authorized_swap_fees = [];
+    }
+
+    return obj;
+  },
+
+  fromAminoMsg(object: ParamsAminoMsg): Params {
+    return Params.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: Params): ParamsAminoMsg {
+    return {
+      type: "osmosis/concentratedliquidity/params",
+      value: Params.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: ParamsProtoMsg): Params {
+    return Params.decode(message.value);
+  },
+
+  toProto(message: Params): Uint8Array {
+    return Params.encode(message).finish();
+  },
+
+  toProtoMsg(message: Params): ParamsProtoMsg {
+    return {
+      typeUrl: "/osmosis.concentratedliquidity.Params",
+      value: Params.encode(message).finish()
+    };
   }
 
 };

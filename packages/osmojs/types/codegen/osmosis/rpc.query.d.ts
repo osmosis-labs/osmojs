@@ -107,9 +107,9 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
             v1beta1: {
                 pools(request?: import("./concentrated-liquidity/pool-model/query").QueryPoolsRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryPoolsResponse>;
                 params(request?: import("./concentrated-liquidity/pool-model/query").QueryParamsRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryParamsResponse>;
-                liquidityDepthsForRange(request: import("./concentrated-liquidity/pool-model/query").QueryLiquidityDepthsForRangeRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryLiquidityDepthsForRangeResponse>;
                 userPositions(request: import("./concentrated-liquidity/pool-model/query").QueryUserPositionsRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryUserPositionsResponse>;
                 totalLiquidityForRange(request: import("./concentrated-liquidity/pool-model/query").QueryTotalLiquidityForRangeRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryTotalLiquidityForRangeResponse>;
+                liquidityNetInDirection(request: import("./concentrated-liquidity/pool-model/query").QueryLiquidityNetInDirectionRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryLiquidityNetInDirectionResponse>;
                 claimableFees(request: import("./concentrated-liquidity/pool-model/query").QueryClaimableFeesRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryClaimableFeesResponse>;
                 positionById(request: import("./concentrated-liquidity/pool-model/query").QueryPositionByIdRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryPositionByIdResponse>;
             };

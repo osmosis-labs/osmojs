@@ -114,6 +114,8 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 code(request: import("./wasm/v1/query").QueryCodeRequest): Promise<import("./wasm/v1/query").QueryCodeResponse>;
                 codes(request?: import("./wasm/v1/query").QueryCodesRequest): Promise<import("./wasm/v1/query").QueryCodesResponse>;
                 pinnedCodes(request?: import("./wasm/v1/query").QueryPinnedCodesRequest): Promise<import("./wasm/v1/query").QueryPinnedCodesResponse>;
+                params(request?: import("./wasm/v1/query").QueryParamsRequest): Promise<import("./wasm/v1/query").QueryParamsResponse>;
+                contractsByCreator(request: import("./wasm/v1/query").QueryContractsByCreatorRequest): Promise<import("./wasm/v1/query").QueryContractsByCreatorResponse>;
             };
         };
     };

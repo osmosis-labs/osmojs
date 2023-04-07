@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreatePosition, MsgWithdrawPosition, MsgCollectFees, MsgCollectIncentives } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition", MsgCreatePosition], ["/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition", MsgWithdrawPosition], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectFees", MsgCollectFees], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives", MsgCollectIncentives]];
+import { MsgCreatePosition, MsgWithdrawPosition, MsgCollectFees, MsgCollectIncentives, MsgFungifyChargedPositions } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition", MsgCreatePosition], ["/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition", MsgWithdrawPosition], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectFees", MsgCollectFees], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives", MsgCollectIncentives], ["/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions", MsgFungifyChargedPositions]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -35,6 +35,13 @@ export const MessageComposer = {
         typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
         value: MsgCollectIncentives.encode(value).finish()
       };
+    },
+
+    fungifyChargedPositions(value: MsgFungifyChargedPositions) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions",
+        value: MsgFungifyChargedPositions.encode(value).finish()
+      };
     }
 
   },
@@ -63,6 +70,13 @@ export const MessageComposer = {
     collectIncentives(value: MsgCollectIncentives) {
       return {
         typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
+        value
+      };
+    },
+
+    fungifyChargedPositions(value: MsgFungifyChargedPositions) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions",
         value
       };
     }
@@ -94,6 +108,13 @@ export const MessageComposer = {
       return {
         typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
         value: MsgCollectIncentives.fromPartial(value)
+      };
+    },
+
+    fungifyChargedPositions(value: MsgFungifyChargedPositions) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions",
+        value: MsgFungifyChargedPositions.fromPartial(value)
       };
     }
 
