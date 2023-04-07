@@ -49,4 +49,4 @@ yarn.lock
 .DS_Store
 
 # test file
-tests/configs/values.json
+tests/bin/

@@ -1,7 +1,8 @@
 HELM_NAME = osmojs
 HELM_FILE = configs/config.yaml
-HELM_REPO = shuttle
+HELM_REPO = starship
 HELM_CHART = devnet
+HELM_VERSION = v0.1.20
 
 ###############################################################################
 ###                              Helm commands                              ###
@@ -9,27 +10,21 @@ HELM_CHART = devnet
 
 .PHONY: setup
 setup:
-	helm repo add $(HELM_REPO) https://anmol1696.github.io/shuttle/
+	helm repo add $(HELM_REPO) https://cosmology-tech.github.io/starship/
 	helm repo update
-	helm search repo $(HELM_REPO)/$(HELM_CHART)
+	helm search repo $(HELM_REPO)/$(HELM_CHART) --version $(HELM_VERSION)
 
 .PHONY: install
 install:
-	helm install -f $(HELM_FILE) $(HELM_NAME) $(HELM_REPO)/$(HELM_CHART)
-	$(MAKE) get-values
+	helm install -f $(HELM_FILE) $(HELM_NAME) $(HELM_REPO)/$(HELM_CHART) --version $(HELM_VERSION)
 
 .PHONY: upgrade
 upgrade:
-	helm upgrade --debug -f $(HELM_FILE) $(HELM_NAME) $(HELM_REPO)/$(HELM_CHART)
-	$(MAKE) get-values
+	helm upgrade --debug -f $(HELM_FILE) $(HELM_NAME) $(HELM_REPO)/$(HELM_CHART) --version $(HELM_VERSION)
 
 .PHONY: debug
 debug:
 	helm install --dry-run --debug -f $(HELM_FILE) $(HELM_NAME) $(HELM_REPO)/$(HELM_CHART)
-	$(MAKE) get-values
-
-get-values:
-	helm get values osmojs --all -o json > configs/values.json
 
 .PHONY: delete
 delete:
@@ -39,32 +34,18 @@ delete:
 ###                              Port forward                              ###
 ###############################################################################
 
-.PHONY: port-forward port-forward-all
-.port-forward:
-	kubectl port-forward pods/$(chain)-genesis-0 $(localrpc):26657 &
-	kubectl port-forward pods/$(chain)-genesis-0 $(localrest):1317 &
+setup-forward:
+ifeq (,$(wildcard bin/port-forward.sh))
+	@echo "Fetching port-forward script from github, since not found..."
+	mkdir -p bin/
+	curl -o bin/port-forward.sh https://raw.githubusercontent.com/cosmology-tech/starship/main/scripts/port-forward.sh
+	curl -o bin/common.sh https://raw.githubusercontent.com/cosmology-tech/starship/main/scripts/common.sh
+endif
 
-num_chains = $(shell yq -r ".chains | length" $(HELM_FILE))
-port-forward-all:
-	echo "Port forwarding all chains to localhost"
-	for i in $(shell seq 0 $(num_chains)); do \
-  		$(MAKE) .port-forward \
-  			chain=$$(yq -r ".chains[$$i].name" $(HELM_FILE)) \
-  			localrpc=$$(yq -r ".chains[$$i].ports.rpc" $(HELM_FILE)) \
-  			localrest=$$(yq -r ".chains[$$i].ports.rest" $(HELM_FILE)); \
-	done
-	echo "Port forwarding explorer to localhost"
-	kubectl port-forward service/explorer 8080:8080 &
+.PHONY: port-forward
+port-forward: setup-forward
+	bash bin/port-forward.sh --config=$(HELM_FILE)
 
 .PHONY: stop-forward
 stop-forward:
 	-pkill -f "port-forward"
-
-.PHONY: check-forward
-check-forward-all:
-	while true ; do \
-		for port in $$(yq -r "(.chains[] | .ports | .rpc, .rest), .explorer.localPorts.rest" $(HELM_FILE)); do \
-			nc -vz 127.0.0.1 $$port; \
-		done; \
-		sleep 10; \
-	done
