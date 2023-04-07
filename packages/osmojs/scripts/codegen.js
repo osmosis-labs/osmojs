@@ -3,10 +3,12 @@ import telescope from '@osmonauts/telescope';
 import { sync as rimraf } from 'rimraf';
 
 const protoDirs = [
-  join(__dirname, '/../proto'),
+  join(__dirname, '/../ics23/proto'),
   join(__dirname, '/../cosmos-sdk/proto'),
+  join(__dirname, '/../ibc-go/proto'),
   join(__dirname, '/../wasmd/proto'),
-  join(__dirname, '/../osmosis/proto')
+  join(__dirname, '/../osmosis/proto'),
+  join(__dirname, '/../proto')
 ];
 const outPath = join(__dirname, '/../src/codegen');
 rimraf(outPath);
@@ -15,6 +17,7 @@ telescope({
   protoDirs,
   outPath,
   options: {
+
     removeUnusedImports: true,
     tsDisable: {
       patterns: ['**/*amino.ts', '**/*registry.ts']
@@ -29,6 +32,8 @@ telescope({
       addTypeUrlToObjects: true,
       excluded: {
         packages: [
+          // 'ibc.applications.fee.v1',
+
           'cosmos.app.v1alpha1',
           'cosmos.app.v1beta1',
           'cosmos.auth.v1beta1',
