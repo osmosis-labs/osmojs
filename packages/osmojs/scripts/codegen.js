@@ -36,7 +36,6 @@ telescope({
 
           'cosmos.app.v1alpha1',
           'cosmos.app.v1beta1',
-          'cosmos.auth.v1beta1',
           'cosmos.autocli.v1',
           'cosmos.base.kv.v1beta1',
           'cosmos.base.reflection.v1beta1',

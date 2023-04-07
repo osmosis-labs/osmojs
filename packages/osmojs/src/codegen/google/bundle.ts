@@ -1,13 +1,13 @@
-import * as _180 from "./protobuf/any";
-import * as _181 from "./protobuf/descriptor";
-import * as _182 from "./protobuf/duration";
-import * as _183 from "./protobuf/empty";
-import * as _184 from "./protobuf/timestamp";
+import * as _183 from "./protobuf/any";
+import * as _184 from "./protobuf/descriptor";
+import * as _185 from "./protobuf/duration";
+import * as _186 from "./protobuf/empty";
+import * as _187 from "./protobuf/timestamp";
 export namespace google {
-  export const protobuf = { ..._180,
-    ..._181,
-    ..._182,
-    ..._183,
-    ..._184
+  export const protobuf = { ..._183,
+    ..._184,
+    ..._185,
+    ..._186,
+    ..._187
   };
 }
