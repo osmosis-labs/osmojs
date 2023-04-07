@@ -86,6 +86,6 @@
     "@chain-registry/types": "0.14.0",
     "bignumber.js": "9.1.1",
     "long": "5.2.1",
-    "osmojs": "15.0.5"
+    "osmojs": "15.1.0"
   }
 }

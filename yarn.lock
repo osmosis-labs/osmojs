@@ -3231,14 +3231,6 @@
     "@babel/runtime" "^7.19.0"
     axios "0.27.2"
 
-"@osmonauts/lcd@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.npmjs.org/@osmonauts/lcd/-/lcd-0.8.0.tgz#fcabba93edadd23f73b2046a5cad897b420a9c84"
-  integrity sha512-k7m2gAVnXc0H4m/eTq4z/8A6hFrr3MPS9wnLV4Xu9/K/WYltCnp2PpiObZm+feZUPK/svES6hxIQeO1bODLx8g==
-  dependencies:
-    "@babel/runtime" "^7.19.0"
-    axios "0.27.2"
-
 "@osmonauts/proto-parser@^0.40.0":
   version "0.40.0"
   resolved "https://registry.npmjs.org/@osmonauts/proto-parser/-/proto-parser-0.40.0.tgz#ad52d5f9acd4ddfe66c25f66e49f1b15f320e4c1"
@@ -7723,20 +7715,6 @@ osenv@^0.1.4:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
-
-osmojs@15.0.5:
-  version "15.0.5"
-  resolved "https://registry.npmjs.org/osmojs/-/osmojs-15.0.5.tgz#384363ad6bf7de17fc58895eed3275c0c6cd44b0"
-  integrity sha512-BguDCH004JlMo4LGgpoHXUcthepWyrHz38R5jeicCDhjIO3sR6XRTRpFPOK2FMPAh32mGFMAXK/ElnPPCPRn/g==
-  dependencies:
-    "@babel/runtime" "^7.19.0"
-    "@cosmjs/amino" "0.29.3"
-    "@cosmjs/proto-signing" "0.29.3"
-    "@cosmjs/stargate" "0.29.3"
-    "@cosmjs/tendermint-rpc" "^0.29.3"
-    "@osmonauts/lcd" "^0.8.0"
-    long "^5.2.0"
-    protobufjs "^6.11.3"
 
 p-finally@^1.0.0:
   version "1.0.0"
