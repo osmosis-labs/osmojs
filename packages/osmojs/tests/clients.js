@@ -28,7 +28,7 @@ export class ChainClientRegistry {
   stargateClientOpts() {
     const opts = {
         prefix: this.getPrefix(),
-        gasPrice: `0.025${this.getDenom()}`,
+        gasPrice: `0${this.getDenom()}`,
     }
 
     if (this.getChainType() === "osmosis") {
@@ -76,6 +76,10 @@ export class ChainClientRegistry {
     this.address = address;
   }
 
+  get rpc() {
+    return this.chainInfo["apis"]["rpc"][0]["address"];
+  }
+
   static async fetchChainInfo(chainId) {
     return await getChainInfo(chainId);
   }
@@ -119,7 +123,7 @@ export class ChainClientRegistry {
   }
 
   getDefaultFees() {
-    return { amount: coins(200000, this.getDenom()), gas: "200000" };
+    return { amount: coins(0, this.getDenom()), gas: "100000" };
   }
 
   // returns IBC info between current chain and given chain

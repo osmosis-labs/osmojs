@@ -1,5 +1,5 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
-import { assertIsDeliverTxSuccess, setupIbcExtension, QueryClient } from '@cosmjs/stargate';
+import {assertIsDeliverTxSuccess, setupIbcExtension, QueryClient, SigningStargateClient} from '@cosmjs/stargate';
 import Long from "long";
 import { coin, coins } from '@cosmjs/amino';
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
@@ -24,7 +24,7 @@ async function ibcCosmosToOsmosis(cosmosChain, osmosisChain, address) {
     channel["channel_id"],
     { revisionHeight: Long.fromNumber(12300), revisionNumber: Long.fromNumber(45600) },
     Math.floor(Date.now() / 1000) + 60,
-    { amount: coins(200000, cosmosChain.getDenom()), gas: "200000" },
+    { amount: coins(0, cosmosChain.getDenom()), gas: "200000" },
     "initial send atoms as part of setup",
   );
 
@@ -42,8 +42,8 @@ async function sendOsmoToAddress(osmosisChain, address) {
   const result = await client.sendTokens(
     osmosisChain.address,
     address,
-    [coin(100_000_000, denom)],
-    { amount: coins(200000, denom), gas: "200000" },
+    [coin(1_000_000_000, denom)],
+    { amount: coins(0, denom), gas: "200000" },
   );
 
   // todo: fix this, better to wait for the broadcast to succed with a timeout
@@ -124,6 +124,7 @@ describe("create ibc pool", () => {
   let wallet;
   let baseDenom;
   let address;
+  let signingClient;
   let chainClients;
 
   beforeAll(async () => {
@@ -135,6 +136,11 @@ describe("create ibc pool", () => {
     );
     baseDenom = chainClients["osmosis-1"].getDenom();
     address = (await wallet.getAccounts())[0].address;
+    signingClient = await SigningStargateClient.connectWithSigner(
+      chainClients["osmosis-1"].rpc,
+      wallet,
+      chainClients["osmosis-1"].stargateClientOpts(),
+    );
   });
 
   it("create ibc pools with ibc atom osmo", async () => {
@@ -151,29 +157,29 @@ describe("create ibc pool", () => {
     const msg = osmosis.gamm.poolmodels.balancer.v1beta1.MessageComposer.fromPartial.createBalancerPool({
       sender: address,
       poolParams: {
-        swap_fee: 0.025,
-        exit_fee: 0,
+        swapFee: "1",
+        exitFee: "0",
       },
       poolAssets: [
         {
-          token: coin("500000", balances[0].denom),
-          weight: 100,
+          token: coin("10000000", balances[0].denom),
+          weight: "100",
         },
         {
-          token: coin("500000", balances[1].denom),
-          weight: 100,
+          token: coin("10000000", balances[1].denom),
+          weight: "100",
         }
       ],
       futurePoolGovernor: "",
-    })
+    });
 
-    const result = await client.signAndBroadcast(
-      chain.address,
+    const result = await signingClient.signAndBroadcast(
+      address,
       [msg],
       chain.getDefaultFees(),
       "creating IBC pools",
     )
 
     assertIsDeliverTxSuccess(result);
-  }, 10000);
+  }, 20000);
 });

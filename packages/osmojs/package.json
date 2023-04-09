@@ -8,6 +8,9 @@
   "main": "main/index.js",
   "module": "module/index.js",
   "typings": "types/index.d.ts",
+  "jest": {
+    "testTimeout": 15000
+  },
   "files": [
     "main",
     "module",
