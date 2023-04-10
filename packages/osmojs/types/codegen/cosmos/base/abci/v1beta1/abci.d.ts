@@ -251,10 +251,7 @@ export interface Result {
     /**
      * Data is any data returned from message or handler execution. It MUST be
      * length prefixed in order to separate data from multiple message executions.
-     * Deprecated. This field is still populated, but prefer msg_response instead
-     * because it also contains the Msg response typeURL.
      */
-    /** @deprecated */
     data: Uint8Array;
     /** Log contains the log information from message or handler execution. */
     log: string;
@@ -263,12 +260,6 @@ export interface Result {
      * or handler execution.
      */
     events: Event[];
-    /**
-     * msg_responses contains the Msg handler responses type packed in Anys.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    msgResponses: Any[];
 }
 export interface ResultProtoMsg {
     typeUrl: "/cosmos.base.abci.v1beta1.Result";
@@ -279,10 +270,7 @@ export interface ResultAmino {
     /**
      * Data is any data returned from message or handler execution. It MUST be
      * length prefixed in order to separate data from multiple message executions.
-     * Deprecated. This field is still populated, but prefer msg_response instead
-     * because it also contains the Msg response typeURL.
      */
-    /** @deprecated */
     data: Uint8Array;
     /** Log contains the log information from message or handler execution. */
     log: string;
@@ -291,12 +279,6 @@ export interface ResultAmino {
      * or handler execution.
      */
     events: EventAmino[];
-    /**
-     * msg_responses contains the Msg handler responses type packed in Anys.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    msg_responses: AnyAmino[];
 }
 export interface ResultAminoMsg {
     type: "cosmos-sdk/Result";
@@ -304,11 +286,9 @@ export interface ResultAminoMsg {
 }
 /** Result is the union of ResponseFormat and ResponseCheckTx. */
 export interface ResultSDKType {
-    /** @deprecated */
     data: Uint8Array;
     log: string;
     events: EventSDKType[];
-    msg_responses: AnySDKType[];
 }
 /**
  * SimulationResponse defines the response generated when a transaction is
@@ -346,7 +326,6 @@ export interface SimulationResponseSDKType {
  * MsgData defines the data returned in a Result object during message
  * execution.
  */
-/** @deprecated */
 export interface MsgData {
     msgType: string;
     data: Uint8Array;
@@ -359,7 +338,6 @@ export interface MsgDataProtoMsg {
  * MsgData defines the data returned in a Result object during message
  * execution.
  */
-/** @deprecated */
 export interface MsgDataAmino {
     msg_type: string;
     data: Uint8Array;
@@ -372,7 +350,6 @@ export interface MsgDataAminoMsg {
  * MsgData defines the data returned in a Result object during message
  * execution.
  */
-/** @deprecated */
 export interface MsgDataSDKType {
     msg_type: string;
     data: Uint8Array;
@@ -382,15 +359,7 @@ export interface MsgDataSDKType {
  * for each message.
  */
 export interface TxMsgData {
-    /** data field is deprecated and not populated. */
-    /** @deprecated */
     data: MsgData[];
-    /**
-     * msg_responses contains the Msg handler responses packed into Anys.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    msgResponses: Any[];
 }
 export interface TxMsgDataProtoMsg {
     typeUrl: "/cosmos.base.abci.v1beta1.TxMsgData";
@@ -401,15 +370,7 @@ export interface TxMsgDataProtoMsg {
  * for each message.
  */
 export interface TxMsgDataAmino {
-    /** data field is deprecated and not populated. */
-    /** @deprecated */
     data: MsgDataAmino[];
-    /**
-     * msg_responses contains the Msg handler responses packed into Anys.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    msg_responses: AnyAmino[];
 }
 export interface TxMsgDataAminoMsg {
     type: "cosmos-sdk/TxMsgData";
@@ -420,9 +381,7 @@ export interface TxMsgDataAminoMsg {
  * for each message.
  */
 export interface TxMsgDataSDKType {
-    /** @deprecated */
     data: MsgDataSDKType[];
-    msg_responses: AnySDKType[];
 }
 /** SearchTxsResult defines a structure for querying txs pageable */
 export interface SearchTxsResult {
@@ -472,6 +431,7 @@ export interface SearchTxsResultSDKType {
     txs: TxResponseSDKType[];
 }
 export declare const TxResponse: {
+    typeUrl: string;
     encode(message: TxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxResponse;
     fromPartial(object: Partial<TxResponse>): TxResponse;
@@ -484,6 +444,7 @@ export declare const TxResponse: {
     toProtoMsg(message: TxResponse): TxResponseProtoMsg;
 };
 export declare const ABCIMessageLog: {
+    typeUrl: string;
     encode(message: ABCIMessageLog, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ABCIMessageLog;
     fromPartial(object: Partial<ABCIMessageLog>): ABCIMessageLog;
@@ -496,6 +457,7 @@ export declare const ABCIMessageLog: {
     toProtoMsg(message: ABCIMessageLog): ABCIMessageLogProtoMsg;
 };
 export declare const StringEvent: {
+    typeUrl: string;
     encode(message: StringEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StringEvent;
     fromPartial(object: Partial<StringEvent>): StringEvent;
@@ -508,6 +470,7 @@ export declare const StringEvent: {
     toProtoMsg(message: StringEvent): StringEventProtoMsg;
 };
 export declare const Attribute: {
+    typeUrl: string;
     encode(message: Attribute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Attribute;
     fromPartial(object: Partial<Attribute>): Attribute;
@@ -520,6 +483,7 @@ export declare const Attribute: {
     toProtoMsg(message: Attribute): AttributeProtoMsg;
 };
 export declare const GasInfo: {
+    typeUrl: string;
     encode(message: GasInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GasInfo;
     fromPartial(object: Partial<GasInfo>): GasInfo;
@@ -532,6 +496,7 @@ export declare const GasInfo: {
     toProtoMsg(message: GasInfo): GasInfoProtoMsg;
 };
 export declare const Result: {
+    typeUrl: string;
     encode(message: Result, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Result;
     fromPartial(object: Partial<Result>): Result;
@@ -544,6 +509,7 @@ export declare const Result: {
     toProtoMsg(message: Result): ResultProtoMsg;
 };
 export declare const SimulationResponse: {
+    typeUrl: string;
     encode(message: SimulationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulationResponse;
     fromPartial(object: Partial<SimulationResponse>): SimulationResponse;
@@ -556,6 +522,7 @@ export declare const SimulationResponse: {
     toProtoMsg(message: SimulationResponse): SimulationResponseProtoMsg;
 };
 export declare const MsgData: {
+    typeUrl: string;
     encode(message: MsgData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgData;
     fromPartial(object: Partial<MsgData>): MsgData;
@@ -568,6 +535,7 @@ export declare const MsgData: {
     toProtoMsg(message: MsgData): MsgDataProtoMsg;
 };
 export declare const TxMsgData: {
+    typeUrl: string;
     encode(message: TxMsgData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxMsgData;
     fromPartial(object: Partial<TxMsgData>): TxMsgData;
@@ -580,6 +548,7 @@ export declare const TxMsgData: {
     toProtoMsg(message: TxMsgData): TxMsgDataProtoMsg;
 };
 export declare const SearchTxsResult: {
+    typeUrl: string;
     encode(message: SearchTxsResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SearchTxsResult;
     fromPartial(object: Partial<SearchTxsResult>): SearchTxsResult;

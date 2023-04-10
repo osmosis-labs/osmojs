@@ -1,4 +1,4 @@
-import { CommitmentProof, CommitmentProofAmino, CommitmentProofSDKType } from "../../../../confio/proofs";
+import { CommitmentProof, CommitmentProofAmino, CommitmentProofSDKType } from "../../../../cosmos/ics23/v1/proofs";
 import * as _m0 from "protobufjs/minimal";
 /**
  * MerkleRoot defines a merkle root hash.

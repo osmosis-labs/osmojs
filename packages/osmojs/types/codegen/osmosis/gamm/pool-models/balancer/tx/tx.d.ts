@@ -1,7 +1,7 @@
 import { PoolParams, PoolParamsAmino, PoolParamsSDKType, PoolAsset, PoolAssetAmino, PoolAssetSDKType } from "../balancerPool";
 import { Coin, CoinAmino, CoinSDKType } from "../../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** ===================== MsgCreatePool */
 export interface MsgCreateBalancerPool {
     sender: string;
@@ -101,6 +101,7 @@ export interface MsgMigrateSharesToFullRangeConcentratedPositionResponseSDKType 
     join_time?: Date;
 }
 export declare const MsgCreateBalancerPool: {
+    typeUrl: string;
     encode(message: MsgCreateBalancerPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPool;
     fromPartial(object: Partial<MsgCreateBalancerPool>): MsgCreateBalancerPool;
@@ -113,6 +114,7 @@ export declare const MsgCreateBalancerPool: {
     toProtoMsg(message: MsgCreateBalancerPool): MsgCreateBalancerPoolProtoMsg;
 };
 export declare const MsgCreateBalancerPoolResponse: {
+    typeUrl: string;
     encode(message: MsgCreateBalancerPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPoolResponse;
     fromPartial(object: Partial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse;
@@ -125,6 +127,7 @@ export declare const MsgCreateBalancerPoolResponse: {
     toProtoMsg(message: MsgCreateBalancerPoolResponse): MsgCreateBalancerPoolResponseProtoMsg;
 };
 export declare const MsgMigrateSharesToFullRangeConcentratedPosition: {
+    typeUrl: string;
     encode(message: MsgMigrateSharesToFullRangeConcentratedPosition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateSharesToFullRangeConcentratedPosition;
     fromPartial(object: Partial<MsgMigrateSharesToFullRangeConcentratedPosition>): MsgMigrateSharesToFullRangeConcentratedPosition;
@@ -137,6 +140,7 @@ export declare const MsgMigrateSharesToFullRangeConcentratedPosition: {
     toProtoMsg(message: MsgMigrateSharesToFullRangeConcentratedPosition): MsgMigrateSharesToFullRangeConcentratedPositionProtoMsg;
 };
 export declare const MsgMigrateSharesToFullRangeConcentratedPositionResponse: {
+    typeUrl: string;
     encode(message: MsgMigrateSharesToFullRangeConcentratedPositionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateSharesToFullRangeConcentratedPositionResponse;
     fromPartial(object: Partial<MsgMigrateSharesToFullRangeConcentratedPositionResponse>): MsgMigrateSharesToFullRangeConcentratedPositionResponse;

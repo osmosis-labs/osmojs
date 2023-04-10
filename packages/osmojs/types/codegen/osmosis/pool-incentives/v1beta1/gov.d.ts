@@ -10,6 +10,7 @@ import * as _m0 from "protobufjs/minimal";
  * configuration. Note that gaugeId=0 represents the community pool.
  */
 export interface ReplacePoolIncentivesProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     records: DistrRecord[];
@@ -46,6 +47,7 @@ export interface ReplacePoolIncentivesProposalAminoMsg {
  * configuration. Note that gaugeId=0 represents the community pool.
  */
 export interface ReplacePoolIncentivesProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     records: DistrRecordSDKType[];
@@ -60,6 +62,7 @@ export interface ReplacePoolIncentivesProposalSDKType {
  * [(Gauge 0, 5), (Gauge 2, 4), (Gauge 3, 10)]
  */
 export interface UpdatePoolIncentivesProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     records: DistrRecord[];
@@ -96,11 +99,13 @@ export interface UpdatePoolIncentivesProposalAminoMsg {
  * [(Gauge 0, 5), (Gauge 2, 4), (Gauge 3, 10)]
  */
 export interface UpdatePoolIncentivesProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     records: DistrRecordSDKType[];
 }
 export declare const ReplacePoolIncentivesProposal: {
+    typeUrl: string;
     encode(message: ReplacePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ReplacePoolIncentivesProposal;
     fromPartial(object: Partial<ReplacePoolIncentivesProposal>): ReplacePoolIncentivesProposal;
@@ -113,6 +118,7 @@ export declare const ReplacePoolIncentivesProposal: {
     toProtoMsg(message: ReplacePoolIncentivesProposal): ReplacePoolIncentivesProposalProtoMsg;
 };
 export declare const UpdatePoolIncentivesProposal: {
+    typeUrl: string;
     encode(message: UpdatePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdatePoolIncentivesProposal;
     fromPartial(object: Partial<UpdatePoolIncentivesProposal>): UpdatePoolIncentivesProposal;

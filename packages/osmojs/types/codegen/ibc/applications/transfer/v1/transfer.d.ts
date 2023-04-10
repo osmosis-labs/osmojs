@@ -96,6 +96,7 @@ export interface ParamsSDKType {
     receive_enabled: boolean;
 }
 export declare const DenomTrace: {
+    typeUrl: string;
     encode(message: DenomTrace, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomTrace;
     fromPartial(object: Partial<DenomTrace>): DenomTrace;
@@ -108,6 +109,7 @@ export declare const DenomTrace: {
     toProtoMsg(message: DenomTrace): DenomTraceProtoMsg;
 };
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;

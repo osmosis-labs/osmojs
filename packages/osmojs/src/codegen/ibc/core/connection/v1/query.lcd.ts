@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryConnectionRequest, QueryConnectionResponseSDKType, QueryConnectionsRequest, QueryConnectionsResponseSDKType, QueryClientConnectionsRequest, QueryClientConnectionsResponseSDKType, QueryConnectionClientStateRequest, QueryConnectionClientStateResponseSDKType, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponseSDKType } from "./query";
+import { QueryConnectionRequest, QueryConnectionResponseSDKType, QueryConnectionsRequest, QueryConnectionsResponseSDKType, QueryClientConnectionsRequest, QueryClientConnectionsResponseSDKType, QueryConnectionClientStateRequest, QueryConnectionClientStateResponseSDKType, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponseSDKType, QueryConnectionParamsRequest, QueryConnectionParamsResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -15,6 +15,7 @@ export class LCDQueryClient {
     this.clientConnections = this.clientConnections.bind(this);
     this.connectionClientState = this.connectionClientState.bind(this);
     this.connectionConsensusState = this.connectionConsensusState.bind(this);
+    this.connectionParams = this.connectionParams.bind(this);
   }
   /* Connection queries an IBC connection end. */
 
@@ -63,6 +64,13 @@ export class LCDQueryClient {
   async connectionConsensusState(params: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType> {
     const endpoint = `ibc/core/connection/v1/connections/${params.connectionId}/consensus_state/revision/${params.revisionNumber}/height/${params.revisionHeight}`;
     return await this.req.get<QueryConnectionConsensusStateResponseSDKType>(endpoint);
+  }
+  /* ConnectionParams queries all parameters of the ibc connection submodule. */
+
+
+  async connectionParams(_params: QueryConnectionParamsRequest = {}): Promise<QueryConnectionParamsResponseSDKType> {
+    const endpoint = `ibc/core/connection/v1/params`;
+    return await this.req.get<QueryConnectionParamsResponseSDKType>(endpoint);
   }
 
 }

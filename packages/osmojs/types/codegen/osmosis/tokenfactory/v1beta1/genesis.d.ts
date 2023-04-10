@@ -62,6 +62,7 @@ export interface GenesisDenomSDKType {
     authority_metadata?: DenomAuthorityMetadataSDKType;
 }
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
@@ -74,6 +75,7 @@ export declare const GenesisState: {
     toProtoMsg(message: GenesisState): GenesisStateProtoMsg;
 };
 export declare const GenesisDenom: {
+    typeUrl: string;
     encode(message: GenesisDenom, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisDenom;
     fromPartial(object: Partial<GenesisDenom>): GenesisDenom;

@@ -10,8 +10,8 @@ import { PoolSDKType as Pool2SDKType } from "../pool-models/balancer/balancerPoo
 import { Pool as Pool3 } from "../pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../pool-models/stableswap/stableswap_pool";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** Params holds parameters for the incentives module */
 export interface Params {
     poolCreationFee: Coin[];
@@ -140,6 +140,7 @@ export interface BalancerToConcentratedPoolLinkSDKType {
     cl_pool_id: Long;
 }
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
@@ -152,6 +153,7 @@ export declare const Params: {
     toProtoMsg(message: Params): ParamsProtoMsg;
 };
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
@@ -164,6 +166,7 @@ export declare const GenesisState: {
     toProtoMsg(message: GenesisState): GenesisStateProtoMsg;
 };
 export declare const MigrationRecords: {
+    typeUrl: string;
     encode(message: MigrationRecords, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MigrationRecords;
     fromPartial(object: Partial<MigrationRecords>): MigrationRecords;
@@ -176,6 +179,7 @@ export declare const MigrationRecords: {
     toProtoMsg(message: MigrationRecords): MigrationRecordsProtoMsg;
 };
 export declare const BalancerToConcentratedPoolLink: {
+    typeUrl: string;
     encode(message: BalancerToConcentratedPoolLink, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BalancerToConcentratedPoolLink;
     fromPartial(object: Partial<BalancerToConcentratedPoolLink>): BalancerToConcentratedPoolLink;

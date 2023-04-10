@@ -1,8 +1,8 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { RouteStatistics, RouteStatisticsAmino, RouteStatisticsSDKType, TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 
 export interface QueryParamsRequest {}

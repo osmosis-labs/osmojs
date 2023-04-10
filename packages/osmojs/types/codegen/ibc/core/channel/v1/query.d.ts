@@ -2,8 +2,8 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Channel, ChannelAmino, ChannelSDKType, IdentifiedChannel, IdentifiedChannelAmino, IdentifiedChannelSDKType, PacketState, PacketStateAmino, PacketStateSDKType } from "./channel";
 import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType } from "../../client/v1/client";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** QueryChannelRequest is the request type for the Query/Channel RPC method */
 export interface QueryChannelRequest {
     /** port unique identifier */
@@ -1027,6 +1027,7 @@ export interface QueryNextSequenceReceiveResponseSDKType {
     proof_height?: HeightSDKType;
 }
 export declare const QueryChannelRequest: {
+    typeUrl: string;
     encode(message: QueryChannelRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelRequest;
     fromPartial(object: Partial<QueryChannelRequest>): QueryChannelRequest;
@@ -1039,6 +1040,7 @@ export declare const QueryChannelRequest: {
     toProtoMsg(message: QueryChannelRequest): QueryChannelRequestProtoMsg;
 };
 export declare const QueryChannelResponse: {
+    typeUrl: string;
     encode(message: QueryChannelResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelResponse;
     fromPartial(object: Partial<QueryChannelResponse>): QueryChannelResponse;
@@ -1051,6 +1053,7 @@ export declare const QueryChannelResponse: {
     toProtoMsg(message: QueryChannelResponse): QueryChannelResponseProtoMsg;
 };
 export declare const QueryChannelsRequest: {
+    typeUrl: string;
     encode(message: QueryChannelsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsRequest;
     fromPartial(object: Partial<QueryChannelsRequest>): QueryChannelsRequest;
@@ -1063,6 +1066,7 @@ export declare const QueryChannelsRequest: {
     toProtoMsg(message: QueryChannelsRequest): QueryChannelsRequestProtoMsg;
 };
 export declare const QueryChannelsResponse: {
+    typeUrl: string;
     encode(message: QueryChannelsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsResponse;
     fromPartial(object: Partial<QueryChannelsResponse>): QueryChannelsResponse;
@@ -1075,6 +1079,7 @@ export declare const QueryChannelsResponse: {
     toProtoMsg(message: QueryChannelsResponse): QueryChannelsResponseProtoMsg;
 };
 export declare const QueryConnectionChannelsRequest: {
+    typeUrl: string;
     encode(message: QueryConnectionChannelsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsRequest;
     fromPartial(object: Partial<QueryConnectionChannelsRequest>): QueryConnectionChannelsRequest;
@@ -1087,6 +1092,7 @@ export declare const QueryConnectionChannelsRequest: {
     toProtoMsg(message: QueryConnectionChannelsRequest): QueryConnectionChannelsRequestProtoMsg;
 };
 export declare const QueryConnectionChannelsResponse: {
+    typeUrl: string;
     encode(message: QueryConnectionChannelsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsResponse;
     fromPartial(object: Partial<QueryConnectionChannelsResponse>): QueryConnectionChannelsResponse;
@@ -1099,6 +1105,7 @@ export declare const QueryConnectionChannelsResponse: {
     toProtoMsg(message: QueryConnectionChannelsResponse): QueryConnectionChannelsResponseProtoMsg;
 };
 export declare const QueryChannelClientStateRequest: {
+    typeUrl: string;
     encode(message: QueryChannelClientStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateRequest;
     fromPartial(object: Partial<QueryChannelClientStateRequest>): QueryChannelClientStateRequest;
@@ -1111,6 +1118,7 @@ export declare const QueryChannelClientStateRequest: {
     toProtoMsg(message: QueryChannelClientStateRequest): QueryChannelClientStateRequestProtoMsg;
 };
 export declare const QueryChannelClientStateResponse: {
+    typeUrl: string;
     encode(message: QueryChannelClientStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateResponse;
     fromPartial(object: Partial<QueryChannelClientStateResponse>): QueryChannelClientStateResponse;
@@ -1123,6 +1131,7 @@ export declare const QueryChannelClientStateResponse: {
     toProtoMsg(message: QueryChannelClientStateResponse): QueryChannelClientStateResponseProtoMsg;
 };
 export declare const QueryChannelConsensusStateRequest: {
+    typeUrl: string;
     encode(message: QueryChannelConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateRequest;
     fromPartial(object: Partial<QueryChannelConsensusStateRequest>): QueryChannelConsensusStateRequest;
@@ -1135,6 +1144,7 @@ export declare const QueryChannelConsensusStateRequest: {
     toProtoMsg(message: QueryChannelConsensusStateRequest): QueryChannelConsensusStateRequestProtoMsg;
 };
 export declare const QueryChannelConsensusStateResponse: {
+    typeUrl: string;
     encode(message: QueryChannelConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateResponse;
     fromPartial(object: Partial<QueryChannelConsensusStateResponse>): QueryChannelConsensusStateResponse;
@@ -1147,6 +1157,7 @@ export declare const QueryChannelConsensusStateResponse: {
     toProtoMsg(message: QueryChannelConsensusStateResponse): QueryChannelConsensusStateResponseProtoMsg;
 };
 export declare const QueryPacketCommitmentRequest: {
+    typeUrl: string;
     encode(message: QueryPacketCommitmentRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentRequest;
     fromPartial(object: Partial<QueryPacketCommitmentRequest>): QueryPacketCommitmentRequest;
@@ -1159,6 +1170,7 @@ export declare const QueryPacketCommitmentRequest: {
     toProtoMsg(message: QueryPacketCommitmentRequest): QueryPacketCommitmentRequestProtoMsg;
 };
 export declare const QueryPacketCommitmentResponse: {
+    typeUrl: string;
     encode(message: QueryPacketCommitmentResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentResponse;
     fromPartial(object: Partial<QueryPacketCommitmentResponse>): QueryPacketCommitmentResponse;
@@ -1171,6 +1183,7 @@ export declare const QueryPacketCommitmentResponse: {
     toProtoMsg(message: QueryPacketCommitmentResponse): QueryPacketCommitmentResponseProtoMsg;
 };
 export declare const QueryPacketCommitmentsRequest: {
+    typeUrl: string;
     encode(message: QueryPacketCommitmentsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsRequest;
     fromPartial(object: Partial<QueryPacketCommitmentsRequest>): QueryPacketCommitmentsRequest;
@@ -1183,6 +1196,7 @@ export declare const QueryPacketCommitmentsRequest: {
     toProtoMsg(message: QueryPacketCommitmentsRequest): QueryPacketCommitmentsRequestProtoMsg;
 };
 export declare const QueryPacketCommitmentsResponse: {
+    typeUrl: string;
     encode(message: QueryPacketCommitmentsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsResponse;
     fromPartial(object: Partial<QueryPacketCommitmentsResponse>): QueryPacketCommitmentsResponse;
@@ -1195,6 +1209,7 @@ export declare const QueryPacketCommitmentsResponse: {
     toProtoMsg(message: QueryPacketCommitmentsResponse): QueryPacketCommitmentsResponseProtoMsg;
 };
 export declare const QueryPacketReceiptRequest: {
+    typeUrl: string;
     encode(message: QueryPacketReceiptRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptRequest;
     fromPartial(object: Partial<QueryPacketReceiptRequest>): QueryPacketReceiptRequest;
@@ -1207,6 +1222,7 @@ export declare const QueryPacketReceiptRequest: {
     toProtoMsg(message: QueryPacketReceiptRequest): QueryPacketReceiptRequestProtoMsg;
 };
 export declare const QueryPacketReceiptResponse: {
+    typeUrl: string;
     encode(message: QueryPacketReceiptResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptResponse;
     fromPartial(object: Partial<QueryPacketReceiptResponse>): QueryPacketReceiptResponse;
@@ -1219,6 +1235,7 @@ export declare const QueryPacketReceiptResponse: {
     toProtoMsg(message: QueryPacketReceiptResponse): QueryPacketReceiptResponseProtoMsg;
 };
 export declare const QueryPacketAcknowledgementRequest: {
+    typeUrl: string;
     encode(message: QueryPacketAcknowledgementRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementRequest;
     fromPartial(object: Partial<QueryPacketAcknowledgementRequest>): QueryPacketAcknowledgementRequest;
@@ -1231,6 +1248,7 @@ export declare const QueryPacketAcknowledgementRequest: {
     toProtoMsg(message: QueryPacketAcknowledgementRequest): QueryPacketAcknowledgementRequestProtoMsg;
 };
 export declare const QueryPacketAcknowledgementResponse: {
+    typeUrl: string;
     encode(message: QueryPacketAcknowledgementResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementResponse;
     fromPartial(object: Partial<QueryPacketAcknowledgementResponse>): QueryPacketAcknowledgementResponse;
@@ -1243,6 +1261,7 @@ export declare const QueryPacketAcknowledgementResponse: {
     toProtoMsg(message: QueryPacketAcknowledgementResponse): QueryPacketAcknowledgementResponseProtoMsg;
 };
 export declare const QueryPacketAcknowledgementsRequest: {
+    typeUrl: string;
     encode(message: QueryPacketAcknowledgementsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsRequest;
     fromPartial(object: Partial<QueryPacketAcknowledgementsRequest>): QueryPacketAcknowledgementsRequest;
@@ -1255,6 +1274,7 @@ export declare const QueryPacketAcknowledgementsRequest: {
     toProtoMsg(message: QueryPacketAcknowledgementsRequest): QueryPacketAcknowledgementsRequestProtoMsg;
 };
 export declare const QueryPacketAcknowledgementsResponse: {
+    typeUrl: string;
     encode(message: QueryPacketAcknowledgementsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponse;
     fromPartial(object: Partial<QueryPacketAcknowledgementsResponse>): QueryPacketAcknowledgementsResponse;
@@ -1267,6 +1287,7 @@ export declare const QueryPacketAcknowledgementsResponse: {
     toProtoMsg(message: QueryPacketAcknowledgementsResponse): QueryPacketAcknowledgementsResponseProtoMsg;
 };
 export declare const QueryUnreceivedPacketsRequest: {
+    typeUrl: string;
     encode(message: QueryUnreceivedPacketsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsRequest;
     fromPartial(object: Partial<QueryUnreceivedPacketsRequest>): QueryUnreceivedPacketsRequest;
@@ -1279,6 +1300,7 @@ export declare const QueryUnreceivedPacketsRequest: {
     toProtoMsg(message: QueryUnreceivedPacketsRequest): QueryUnreceivedPacketsRequestProtoMsg;
 };
 export declare const QueryUnreceivedPacketsResponse: {
+    typeUrl: string;
     encode(message: QueryUnreceivedPacketsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsResponse;
     fromPartial(object: Partial<QueryUnreceivedPacketsResponse>): QueryUnreceivedPacketsResponse;
@@ -1291,6 +1313,7 @@ export declare const QueryUnreceivedPacketsResponse: {
     toProtoMsg(message: QueryUnreceivedPacketsResponse): QueryUnreceivedPacketsResponseProtoMsg;
 };
 export declare const QueryUnreceivedAcksRequest: {
+    typeUrl: string;
     encode(message: QueryUnreceivedAcksRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksRequest;
     fromPartial(object: Partial<QueryUnreceivedAcksRequest>): QueryUnreceivedAcksRequest;
@@ -1303,6 +1326,7 @@ export declare const QueryUnreceivedAcksRequest: {
     toProtoMsg(message: QueryUnreceivedAcksRequest): QueryUnreceivedAcksRequestProtoMsg;
 };
 export declare const QueryUnreceivedAcksResponse: {
+    typeUrl: string;
     encode(message: QueryUnreceivedAcksResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksResponse;
     fromPartial(object: Partial<QueryUnreceivedAcksResponse>): QueryUnreceivedAcksResponse;
@@ -1315,6 +1339,7 @@ export declare const QueryUnreceivedAcksResponse: {
     toProtoMsg(message: QueryUnreceivedAcksResponse): QueryUnreceivedAcksResponseProtoMsg;
 };
 export declare const QueryNextSequenceReceiveRequest: {
+    typeUrl: string;
     encode(message: QueryNextSequenceReceiveRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveRequest;
     fromPartial(object: Partial<QueryNextSequenceReceiveRequest>): QueryNextSequenceReceiveRequest;
@@ -1327,6 +1352,7 @@ export declare const QueryNextSequenceReceiveRequest: {
     toProtoMsg(message: QueryNextSequenceReceiveRequest): QueryNextSequenceReceiveRequestProtoMsg;
 };
 export declare const QueryNextSequenceReceiveResponse: {
+    typeUrl: string;
     encode(message: QueryNextSequenceReceiveResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveResponse;
     fromPartial(object: Partial<QueryNextSequenceReceiveResponse>): QueryNextSequenceReceiveResponse;

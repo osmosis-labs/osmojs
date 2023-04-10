@@ -211,6 +211,7 @@ export interface DurationSDKType {
     nanos: number;
 }
 export declare const Duration: {
+    typeUrl: string;
     encode(message: Duration, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Duration;
     fromPartial(object: Partial<Duration>): Duration;

@@ -88,6 +88,7 @@ export interface ValidatorSetPreferencesSDKType {
     preferences: ValidatorPreferenceSDKType[];
 }
 export declare const ValidatorPreference: {
+    typeUrl: string;
     encode(message: ValidatorPreference, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorPreference;
     fromPartial(object: Partial<ValidatorPreference>): ValidatorPreference;
@@ -100,6 +101,7 @@ export declare const ValidatorPreference: {
     toProtoMsg(message: ValidatorPreference): ValidatorPreferenceProtoMsg;
 };
 export declare const ValidatorSetPreferences: {
+    typeUrl: string;
     encode(message: ValidatorSetPreferences, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSetPreferences;
     fromPartial(object: Partial<ValidatorSetPreferences>): ValidatorSetPreferences;

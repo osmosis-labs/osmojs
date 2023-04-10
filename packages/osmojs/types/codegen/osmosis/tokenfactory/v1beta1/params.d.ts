@@ -21,6 +21,7 @@ export interface ParamsSDKType {
     denom_creation_fee: CoinSDKType[];
 }
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;

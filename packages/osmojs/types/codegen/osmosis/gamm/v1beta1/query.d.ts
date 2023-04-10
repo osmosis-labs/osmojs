@@ -697,6 +697,7 @@ export interface QueryTotalLiquidityResponseSDKType {
     liquidity: CoinSDKType[];
 }
 export declare const QueryPoolRequest: {
+    typeUrl: string;
     encode(message: QueryPoolRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolRequest;
     fromPartial(object: Partial<QueryPoolRequest>): QueryPoolRequest;
@@ -709,6 +710,7 @@ export declare const QueryPoolRequest: {
     toProtoMsg(message: QueryPoolRequest): QueryPoolRequestProtoMsg;
 };
 export declare const QueryPoolResponse: {
+    typeUrl: string;
     encode(message: QueryPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse;
     fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse;
@@ -721,6 +723,7 @@ export declare const QueryPoolResponse: {
     toProtoMsg(message: QueryPoolResponse): QueryPoolResponseProtoMsg;
 };
 export declare const QueryPoolsRequest: {
+    typeUrl: string;
     encode(message: QueryPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsRequest;
     fromPartial(object: Partial<QueryPoolsRequest>): QueryPoolsRequest;
@@ -733,6 +736,7 @@ export declare const QueryPoolsRequest: {
     toProtoMsg(message: QueryPoolsRequest): QueryPoolsRequestProtoMsg;
 };
 export declare const QueryPoolsResponse: {
+    typeUrl: string;
     encode(message: QueryPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponse;
     fromPartial(object: Partial<QueryPoolsResponse>): QueryPoolsResponse;
@@ -745,6 +749,7 @@ export declare const QueryPoolsResponse: {
     toProtoMsg(message: QueryPoolsResponse): QueryPoolsResponseProtoMsg;
 };
 export declare const QueryNumPoolsRequest: {
+    typeUrl: string;
     encode(_: QueryNumPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsRequest;
     fromPartial(_: Partial<QueryNumPoolsRequest>): QueryNumPoolsRequest;
@@ -757,6 +762,7 @@ export declare const QueryNumPoolsRequest: {
     toProtoMsg(message: QueryNumPoolsRequest): QueryNumPoolsRequestProtoMsg;
 };
 export declare const QueryNumPoolsResponse: {
+    typeUrl: string;
     encode(message: QueryNumPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponse;
     fromPartial(object: Partial<QueryNumPoolsResponse>): QueryNumPoolsResponse;
@@ -769,6 +775,7 @@ export declare const QueryNumPoolsResponse: {
     toProtoMsg(message: QueryNumPoolsResponse): QueryNumPoolsResponseProtoMsg;
 };
 export declare const QueryPoolTypeRequest: {
+    typeUrl: string;
     encode(message: QueryPoolTypeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeRequest;
     fromPartial(object: Partial<QueryPoolTypeRequest>): QueryPoolTypeRequest;
@@ -781,6 +788,7 @@ export declare const QueryPoolTypeRequest: {
     toProtoMsg(message: QueryPoolTypeRequest): QueryPoolTypeRequestProtoMsg;
 };
 export declare const QueryPoolTypeResponse: {
+    typeUrl: string;
     encode(message: QueryPoolTypeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponse;
     fromPartial(object: Partial<QueryPoolTypeResponse>): QueryPoolTypeResponse;
@@ -793,6 +801,7 @@ export declare const QueryPoolTypeResponse: {
     toProtoMsg(message: QueryPoolTypeResponse): QueryPoolTypeResponseProtoMsg;
 };
 export declare const QueryCalcJoinPoolSharesRequest: {
+    typeUrl: string;
     encode(message: QueryCalcJoinPoolSharesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesRequest;
     fromPartial(object: Partial<QueryCalcJoinPoolSharesRequest>): QueryCalcJoinPoolSharesRequest;
@@ -805,6 +814,7 @@ export declare const QueryCalcJoinPoolSharesRequest: {
     toProtoMsg(message: QueryCalcJoinPoolSharesRequest): QueryCalcJoinPoolSharesRequestProtoMsg;
 };
 export declare const QueryCalcJoinPoolSharesResponse: {
+    typeUrl: string;
     encode(message: QueryCalcJoinPoolSharesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesResponse;
     fromPartial(object: Partial<QueryCalcJoinPoolSharesResponse>): QueryCalcJoinPoolSharesResponse;
@@ -817,6 +827,7 @@ export declare const QueryCalcJoinPoolSharesResponse: {
     toProtoMsg(message: QueryCalcJoinPoolSharesResponse): QueryCalcJoinPoolSharesResponseProtoMsg;
 };
 export declare const QueryCalcExitPoolCoinsFromSharesRequest: {
+    typeUrl: string;
     encode(message: QueryCalcExitPoolCoinsFromSharesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesRequest;
     fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesRequest>): QueryCalcExitPoolCoinsFromSharesRequest;
@@ -829,6 +840,7 @@ export declare const QueryCalcExitPoolCoinsFromSharesRequest: {
     toProtoMsg(message: QueryCalcExitPoolCoinsFromSharesRequest): QueryCalcExitPoolCoinsFromSharesRequestProtoMsg;
 };
 export declare const QueryCalcExitPoolCoinsFromSharesResponse: {
+    typeUrl: string;
     encode(message: QueryCalcExitPoolCoinsFromSharesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesResponse;
     fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesResponse>): QueryCalcExitPoolCoinsFromSharesResponse;
@@ -841,6 +853,7 @@ export declare const QueryCalcExitPoolCoinsFromSharesResponse: {
     toProtoMsg(message: QueryCalcExitPoolCoinsFromSharesResponse): QueryCalcExitPoolCoinsFromSharesResponseProtoMsg;
 };
 export declare const QueryPoolParamsRequest: {
+    typeUrl: string;
     encode(message: QueryPoolParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsRequest;
     fromPartial(object: Partial<QueryPoolParamsRequest>): QueryPoolParamsRequest;
@@ -853,6 +866,7 @@ export declare const QueryPoolParamsRequest: {
     toProtoMsg(message: QueryPoolParamsRequest): QueryPoolParamsRequestProtoMsg;
 };
 export declare const QueryPoolParamsResponse: {
+    typeUrl: string;
     encode(message: QueryPoolParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsResponse;
     fromPartial(object: Partial<QueryPoolParamsResponse>): QueryPoolParamsResponse;
@@ -865,6 +879,7 @@ export declare const QueryPoolParamsResponse: {
     toProtoMsg(message: QueryPoolParamsResponse): QueryPoolParamsResponseProtoMsg;
 };
 export declare const QueryTotalPoolLiquidityRequest: {
+    typeUrl: string;
     encode(message: QueryTotalPoolLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityRequest;
     fromPartial(object: Partial<QueryTotalPoolLiquidityRequest>): QueryTotalPoolLiquidityRequest;
@@ -877,6 +892,7 @@ export declare const QueryTotalPoolLiquidityRequest: {
     toProtoMsg(message: QueryTotalPoolLiquidityRequest): QueryTotalPoolLiquidityRequestProtoMsg;
 };
 export declare const QueryTotalPoolLiquidityResponse: {
+    typeUrl: string;
     encode(message: QueryTotalPoolLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponse;
     fromPartial(object: Partial<QueryTotalPoolLiquidityResponse>): QueryTotalPoolLiquidityResponse;
@@ -889,6 +905,7 @@ export declare const QueryTotalPoolLiquidityResponse: {
     toProtoMsg(message: QueryTotalPoolLiquidityResponse): QueryTotalPoolLiquidityResponseProtoMsg;
 };
 export declare const QueryTotalSharesRequest: {
+    typeUrl: string;
     encode(message: QueryTotalSharesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesRequest;
     fromPartial(object: Partial<QueryTotalSharesRequest>): QueryTotalSharesRequest;
@@ -901,6 +918,7 @@ export declare const QueryTotalSharesRequest: {
     toProtoMsg(message: QueryTotalSharesRequest): QueryTotalSharesRequestProtoMsg;
 };
 export declare const QueryTotalSharesResponse: {
+    typeUrl: string;
     encode(message: QueryTotalSharesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponse;
     fromPartial(object: Partial<QueryTotalSharesResponse>): QueryTotalSharesResponse;
@@ -913,6 +931,7 @@ export declare const QueryTotalSharesResponse: {
     toProtoMsg(message: QueryTotalSharesResponse): QueryTotalSharesResponseProtoMsg;
 };
 export declare const QueryCalcJoinPoolNoSwapSharesRequest: {
+    typeUrl: string;
     encode(message: QueryCalcJoinPoolNoSwapSharesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesRequest;
     fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesRequest>): QueryCalcJoinPoolNoSwapSharesRequest;
@@ -925,6 +944,7 @@ export declare const QueryCalcJoinPoolNoSwapSharesRequest: {
     toProtoMsg(message: QueryCalcJoinPoolNoSwapSharesRequest): QueryCalcJoinPoolNoSwapSharesRequestProtoMsg;
 };
 export declare const QueryCalcJoinPoolNoSwapSharesResponse: {
+    typeUrl: string;
     encode(message: QueryCalcJoinPoolNoSwapSharesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesResponse;
     fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesResponse>): QueryCalcJoinPoolNoSwapSharesResponse;
@@ -937,6 +957,7 @@ export declare const QueryCalcJoinPoolNoSwapSharesResponse: {
     toProtoMsg(message: QueryCalcJoinPoolNoSwapSharesResponse): QueryCalcJoinPoolNoSwapSharesResponseProtoMsg;
 };
 export declare const QuerySpotPriceRequest: {
+    typeUrl: string;
     encode(message: QuerySpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceRequest;
     fromPartial(object: Partial<QuerySpotPriceRequest>): QuerySpotPriceRequest;
@@ -949,6 +970,7 @@ export declare const QuerySpotPriceRequest: {
     toProtoMsg(message: QuerySpotPriceRequest): QuerySpotPriceRequestProtoMsg;
 };
 export declare const QueryPoolsWithFilterRequest: {
+    typeUrl: string;
     encode(message: QueryPoolsWithFilterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterRequest;
     fromPartial(object: Partial<QueryPoolsWithFilterRequest>): QueryPoolsWithFilterRequest;
@@ -961,6 +983,7 @@ export declare const QueryPoolsWithFilterRequest: {
     toProtoMsg(message: QueryPoolsWithFilterRequest): QueryPoolsWithFilterRequestProtoMsg;
 };
 export declare const QueryPoolsWithFilterResponse: {
+    typeUrl: string;
     encode(message: QueryPoolsWithFilterResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterResponse;
     fromPartial(object: Partial<QueryPoolsWithFilterResponse>): QueryPoolsWithFilterResponse;
@@ -973,6 +996,7 @@ export declare const QueryPoolsWithFilterResponse: {
     toProtoMsg(message: QueryPoolsWithFilterResponse): QueryPoolsWithFilterResponseProtoMsg;
 };
 export declare const QuerySpotPriceResponse: {
+    typeUrl: string;
     encode(message: QuerySpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponse;
     fromPartial(object: Partial<QuerySpotPriceResponse>): QuerySpotPriceResponse;
@@ -985,6 +1009,7 @@ export declare const QuerySpotPriceResponse: {
     toProtoMsg(message: QuerySpotPriceResponse): QuerySpotPriceResponseProtoMsg;
 };
 export declare const QuerySwapExactAmountInRequest: {
+    typeUrl: string;
     encode(message: QuerySwapExactAmountInRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInRequest;
     fromPartial(object: Partial<QuerySwapExactAmountInRequest>): QuerySwapExactAmountInRequest;
@@ -997,6 +1022,7 @@ export declare const QuerySwapExactAmountInRequest: {
     toProtoMsg(message: QuerySwapExactAmountInRequest): QuerySwapExactAmountInRequestProtoMsg;
 };
 export declare const QuerySwapExactAmountInResponse: {
+    typeUrl: string;
     encode(message: QuerySwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInResponse;
     fromPartial(object: Partial<QuerySwapExactAmountInResponse>): QuerySwapExactAmountInResponse;
@@ -1009,6 +1035,7 @@ export declare const QuerySwapExactAmountInResponse: {
     toProtoMsg(message: QuerySwapExactAmountInResponse): QuerySwapExactAmountInResponseProtoMsg;
 };
 export declare const QuerySwapExactAmountOutRequest: {
+    typeUrl: string;
     encode(message: QuerySwapExactAmountOutRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutRequest;
     fromPartial(object: Partial<QuerySwapExactAmountOutRequest>): QuerySwapExactAmountOutRequest;
@@ -1021,6 +1048,7 @@ export declare const QuerySwapExactAmountOutRequest: {
     toProtoMsg(message: QuerySwapExactAmountOutRequest): QuerySwapExactAmountOutRequestProtoMsg;
 };
 export declare const QuerySwapExactAmountOutResponse: {
+    typeUrl: string;
     encode(message: QuerySwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutResponse;
     fromPartial(object: Partial<QuerySwapExactAmountOutResponse>): QuerySwapExactAmountOutResponse;
@@ -1033,6 +1061,7 @@ export declare const QuerySwapExactAmountOutResponse: {
     toProtoMsg(message: QuerySwapExactAmountOutResponse): QuerySwapExactAmountOutResponseProtoMsg;
 };
 export declare const QueryTotalLiquidityRequest: {
+    typeUrl: string;
     encode(_: QueryTotalLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityRequest;
     fromPartial(_: Partial<QueryTotalLiquidityRequest>): QueryTotalLiquidityRequest;
@@ -1045,6 +1074,7 @@ export declare const QueryTotalLiquidityRequest: {
     toProtoMsg(message: QueryTotalLiquidityRequest): QueryTotalLiquidityRequestProtoMsg;
 };
 export declare const QueryTotalLiquidityResponse: {
+    typeUrl: string;
     encode(message: QueryTotalLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityResponse;
     fromPartial(object: Partial<QueryTotalLiquidityResponse>): QueryTotalLiquidityResponse;

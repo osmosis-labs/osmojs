@@ -1,7 +1,5 @@
-import { Grant, GrantAmino, GrantSDKType, GenericAuthorization } from "./authz";
+import { Grant, GrantAmino, GrantSDKType } from "./authz";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { SendAuthorization } from "../../bank/v1beta1/authz";
-import { StakeAuthorization } from "../../staking/v1beta1/authz";
 import * as _m0 from "protobufjs/minimal";
 /**
  * MsgGrant is a request type for Grant method. It declares authorization to the grantee
@@ -181,6 +179,7 @@ export interface MsgRevokeResponseAminoMsg {
 export interface MsgRevokeResponseSDKType {
 }
 export declare const MsgGrant: {
+    typeUrl: string;
     encode(message: MsgGrant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrant;
     fromPartial(object: Partial<MsgGrant>): MsgGrant;
@@ -193,6 +192,7 @@ export declare const MsgGrant: {
     toProtoMsg(message: MsgGrant): MsgGrantProtoMsg;
 };
 export declare const MsgExecResponse: {
+    typeUrl: string;
     encode(message: MsgExecResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecResponse;
     fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse;
@@ -205,6 +205,7 @@ export declare const MsgExecResponse: {
     toProtoMsg(message: MsgExecResponse): MsgExecResponseProtoMsg;
 };
 export declare const MsgExec: {
+    typeUrl: string;
     encode(message: MsgExec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExec;
     fromPartial(object: Partial<MsgExec>): MsgExec;
@@ -217,6 +218,7 @@ export declare const MsgExec: {
     toProtoMsg(message: MsgExec): MsgExecProtoMsg;
 };
 export declare const MsgGrantResponse: {
+    typeUrl: string;
     encode(_: MsgGrantResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantResponse;
     fromPartial(_: Partial<MsgGrantResponse>): MsgGrantResponse;
@@ -229,6 +231,7 @@ export declare const MsgGrantResponse: {
     toProtoMsg(message: MsgGrantResponse): MsgGrantResponseProtoMsg;
 };
 export declare const MsgRevoke: {
+    typeUrl: string;
     encode(message: MsgRevoke, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevoke;
     fromPartial(object: Partial<MsgRevoke>): MsgRevoke;
@@ -241,6 +244,7 @@ export declare const MsgRevoke: {
     toProtoMsg(message: MsgRevoke): MsgRevokeProtoMsg;
 };
 export declare const MsgRevokeResponse: {
+    typeUrl: string;
     encode(_: MsgRevokeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeResponse;
     fromPartial(_: Partial<MsgRevokeResponse>): MsgRevokeResponse;
@@ -255,6 +259,6 @@ export declare const MsgRevokeResponse: {
 export declare const Sdk_Msg_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Any;
 export declare const Sdk_Msg_FromAmino: (content: AnyAmino) => Any;
 export declare const Sdk_Msg_ToAmino: (content: Any) => AnyAmino;
-export declare const Cosmos_authzAuthorization_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => GenericAuthorization | SendAuthorization | StakeAuthorization | Any;
-export declare const Cosmos_authzAuthorization_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authzAuthorization_ToAmino: (content: Any) => AnyAmino;
+export declare const Authz_Authorization_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Any;
+export declare const Authz_Authorization_FromAmino: (content: AnyAmino) => Any;
+export declare const Authz_Authorization_ToAmino: (content: Any) => AnyAmino;

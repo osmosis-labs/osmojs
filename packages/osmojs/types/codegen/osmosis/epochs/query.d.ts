@@ -1,6 +1,6 @@
 import { EpochInfo, EpochInfoAmino, EpochInfoSDKType } from "./genesis";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface QueryEpochsInfoRequest {
 }
 export interface QueryEpochsInfoRequestProtoMsg {
@@ -67,6 +67,7 @@ export interface QueryCurrentEpochResponseSDKType {
     current_epoch: Long;
 }
 export declare const QueryEpochsInfoRequest: {
+    typeUrl: string;
     encode(_: QueryEpochsInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoRequest;
     fromPartial(_: Partial<QueryEpochsInfoRequest>): QueryEpochsInfoRequest;
@@ -79,6 +80,7 @@ export declare const QueryEpochsInfoRequest: {
     toProtoMsg(message: QueryEpochsInfoRequest): QueryEpochsInfoRequestProtoMsg;
 };
 export declare const QueryEpochsInfoResponse: {
+    typeUrl: string;
     encode(message: QueryEpochsInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoResponse;
     fromPartial(object: Partial<QueryEpochsInfoResponse>): QueryEpochsInfoResponse;
@@ -91,6 +93,7 @@ export declare const QueryEpochsInfoResponse: {
     toProtoMsg(message: QueryEpochsInfoResponse): QueryEpochsInfoResponseProtoMsg;
 };
 export declare const QueryCurrentEpochRequest: {
+    typeUrl: string;
     encode(message: QueryCurrentEpochRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochRequest;
     fromPartial(object: Partial<QueryCurrentEpochRequest>): QueryCurrentEpochRequest;
@@ -103,6 +106,7 @@ export declare const QueryCurrentEpochRequest: {
     toProtoMsg(message: QueryCurrentEpochRequest): QueryCurrentEpochRequestProtoMsg;
 };
 export declare const QueryCurrentEpochResponse: {
+    typeUrl: string;
     encode(message: QueryCurrentEpochResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochResponse;
     fromPartial(object: Partial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse;

@@ -7,6 +7,7 @@ import * as _m0 from "protobufjs/minimal";
  * Since: cosmos-sdk 0.43
  */
 export interface SendAuthorization {
+    $typeUrl?: string;
     spendLimit: Coin[];
 }
 export interface SendAuthorizationProtoMsg {
@@ -33,9 +34,11 @@ export interface SendAuthorizationAminoMsg {
  * Since: cosmos-sdk 0.43
  */
 export interface SendAuthorizationSDKType {
+    $typeUrl?: string;
     spend_limit: CoinSDKType[];
 }
 export declare const SendAuthorization: {
+    typeUrl: string;
     encode(message: SendAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SendAuthorization;
     fromPartial(object: Partial<SendAuthorization>): SendAuthorization;

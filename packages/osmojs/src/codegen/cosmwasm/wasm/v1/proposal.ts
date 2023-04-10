@@ -1,8 +1,8 @@
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { fromBase64, toBase64, toUtf8, fromUtf8 } from "@cosmjs/encoding";
-import { Long } from "../../../helpers";
 /**
  * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
  * an explicit StoreCodeProposal. To submit WASM code to the system,

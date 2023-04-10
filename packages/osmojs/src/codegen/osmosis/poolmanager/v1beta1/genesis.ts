@@ -1,7 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { ModuleRoute, ModuleRouteAmino, ModuleRouteSDKType } from "./module_route";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** Params holds parameters for the poolmanager module */
 
 export interface Params {

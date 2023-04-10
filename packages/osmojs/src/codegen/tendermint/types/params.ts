@@ -1,6 +1,6 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.
@@ -56,14 +56,6 @@ export interface BlockParams {
    */
 
   maxGas: Long;
-  /**
-   * Minimum time increment between consecutive blocks (in milliseconds) If the
-   * block header timestamp is ahead of the system clock, decrease this value.
-   * 
-   * Not exposed to the application.
-   */
-
-  timeIotaMs: Long;
 }
 export interface BlockParamsProtoMsg {
   typeUrl: "/tendermint.types.BlockParams";
@@ -83,14 +75,6 @@ export interface BlockParamsAmino {
    */
 
   max_gas: string;
-  /**
-   * Minimum time increment between consecutive blocks (in milliseconds) If the
-   * block header timestamp is ahead of the system clock, decrease this value.
-   * 
-   * Not exposed to the application.
-   */
-
-  time_iota_ms: string;
 }
 export interface BlockParamsAminoMsg {
   type: "/tendermint.types.BlockParams";
@@ -101,7 +85,6 @@ export interface BlockParamsAminoMsg {
 export interface BlockParamsSDKType {
   max_bytes: Long;
   max_gas: Long;
-  time_iota_ms: Long;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
 
@@ -207,7 +190,7 @@ export interface ValidatorParamsSDKType {
 /** VersionParams contains the ABCI application version. */
 
 export interface VersionParams {
-  appVersion: Long;
+  app: Long;
 }
 export interface VersionParamsProtoMsg {
   typeUrl: "/tendermint.types.VersionParams";
@@ -216,7 +199,7 @@ export interface VersionParamsProtoMsg {
 /** VersionParams contains the ABCI application version. */
 
 export interface VersionParamsAmino {
-  app_version: string;
+  app: string;
 }
 export interface VersionParamsAminoMsg {
   type: "/tendermint.types.VersionParams";
@@ -225,7 +208,7 @@ export interface VersionParamsAminoMsg {
 /** VersionParams contains the ABCI application version. */
 
 export interface VersionParamsSDKType {
-  app_version: Long;
+  app: Long;
 }
 /**
  * HashedParams is a subset of ConsensusParams.
@@ -383,8 +366,7 @@ export const ConsensusParams = {
 function createBaseBlockParams(): BlockParams {
   return {
     maxBytes: Long.ZERO,
-    maxGas: Long.ZERO,
-    timeIotaMs: Long.ZERO
+    maxGas: Long.ZERO
   };
 }
 
@@ -398,10 +380,6 @@ export const BlockParams = {
 
     if (!message.maxGas.isZero()) {
       writer.uint32(16).int64(message.maxGas);
-    }
-
-    if (!message.timeIotaMs.isZero()) {
-      writer.uint32(24).int64(message.timeIotaMs);
     }
 
     return writer;
@@ -424,10 +402,6 @@ export const BlockParams = {
           message.maxGas = (reader.int64() as Long);
           break;
 
-        case 3:
-          message.timeIotaMs = (reader.int64() as Long);
-          break;
-
         default:
           reader.skipType(tag & 7);
           break;
@@ -441,15 +415,13 @@ export const BlockParams = {
     const message = createBaseBlockParams();
     message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? Long.fromValue(object.maxBytes) : Long.ZERO;
     message.maxGas = object.maxGas !== undefined && object.maxGas !== null ? Long.fromValue(object.maxGas) : Long.ZERO;
-    message.timeIotaMs = object.timeIotaMs !== undefined && object.timeIotaMs !== null ? Long.fromValue(object.timeIotaMs) : Long.ZERO;
     return message;
   },
 
   fromAmino(object: BlockParamsAmino): BlockParams {
     return {
       maxBytes: Long.fromString(object.max_bytes),
-      maxGas: Long.fromString(object.max_gas),
-      timeIotaMs: Long.fromString(object.time_iota_ms)
+      maxGas: Long.fromString(object.max_gas)
     };
   },
 
@@ -457,7 +429,6 @@ export const BlockParams = {
     const obj: any = {};
     obj.max_bytes = message.maxBytes ? message.maxBytes.toString() : undefined;
     obj.max_gas = message.maxGas ? message.maxGas.toString() : undefined;
-    obj.time_iota_ms = message.timeIotaMs ? message.timeIotaMs.toString() : undefined;
     return obj;
   },
 
@@ -670,7 +641,7 @@ export const ValidatorParams = {
 
 function createBaseVersionParams(): VersionParams {
   return {
-    appVersion: Long.UZERO
+    app: Long.UZERO
   };
 }
 
@@ -678,8 +649,8 @@ export const VersionParams = {
   typeUrl: "/tendermint.types.VersionParams",
 
   encode(message: VersionParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.appVersion.isZero()) {
-      writer.uint32(8).uint64(message.appVersion);
+    if (!message.app.isZero()) {
+      writer.uint32(8).uint64(message.app);
     }
 
     return writer;
@@ -695,7 +666,7 @@ export const VersionParams = {
 
       switch (tag >>> 3) {
         case 1:
-          message.appVersion = (reader.uint64() as Long);
+          message.app = (reader.uint64() as Long);
           break;
 
         default:
@@ -709,19 +680,19 @@ export const VersionParams = {
 
   fromPartial(object: Partial<VersionParams>): VersionParams {
     const message = createBaseVersionParams();
-    message.appVersion = object.appVersion !== undefined && object.appVersion !== null ? Long.fromValue(object.appVersion) : Long.UZERO;
+    message.app = object.app !== undefined && object.app !== null ? Long.fromValue(object.app) : Long.UZERO;
     return message;
   },
 
   fromAmino(object: VersionParamsAmino): VersionParams {
     return {
-      appVersion: Long.fromString(object.app_version)
+      app: Long.fromString(object.app)
     };
   },
 
   toAmino(message: VersionParams): VersionParamsAmino {
     const obj: any = {};
-    obj.app_version = message.appVersion ? message.appVersion.toString() : undefined;
+    obj.app = message.app ? message.app.toString() : undefined;
     return obj;
   },
 

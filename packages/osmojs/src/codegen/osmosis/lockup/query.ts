@@ -3,8 +3,8 @@ import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType, SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "./lock";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp, Long } from "../../helpers";
 export interface ModuleBalanceRequest {}
 export interface ModuleBalanceRequestProtoMsg {
   typeUrl: "/osmosis.lockup.ModuleBalanceRequest";

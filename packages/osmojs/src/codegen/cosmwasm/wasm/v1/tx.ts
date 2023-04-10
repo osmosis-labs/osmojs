@@ -1,8 +1,8 @@
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType, Params, ParamsAmino, ParamsSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { fromBase64, toBase64, toUtf8, fromUtf8 } from "@cosmjs/encoding";
-import { Long } from "../../../helpers";
 /** MsgStoreCode submit Wasm code to the system */
 
 export interface MsgStoreCode {

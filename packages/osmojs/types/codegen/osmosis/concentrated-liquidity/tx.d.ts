@@ -306,6 +306,7 @@ export interface MsgFungifyChargedPositionsResponseSDKType {
     new_position_id: Long;
 }
 export declare const MsgCreatePosition: {
+    typeUrl: string;
     encode(message: MsgCreatePosition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePosition;
     fromPartial(object: Partial<MsgCreatePosition>): MsgCreatePosition;
@@ -318,6 +319,7 @@ export declare const MsgCreatePosition: {
     toProtoMsg(message: MsgCreatePosition): MsgCreatePositionProtoMsg;
 };
 export declare const MsgCreatePositionResponse: {
+    typeUrl: string;
     encode(message: MsgCreatePositionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePositionResponse;
     fromPartial(object: Partial<MsgCreatePositionResponse>): MsgCreatePositionResponse;
@@ -330,6 +332,7 @@ export declare const MsgCreatePositionResponse: {
     toProtoMsg(message: MsgCreatePositionResponse): MsgCreatePositionResponseProtoMsg;
 };
 export declare const MsgWithdrawPosition: {
+    typeUrl: string;
     encode(message: MsgWithdrawPosition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawPosition;
     fromPartial(object: Partial<MsgWithdrawPosition>): MsgWithdrawPosition;
@@ -342,6 +345,7 @@ export declare const MsgWithdrawPosition: {
     toProtoMsg(message: MsgWithdrawPosition): MsgWithdrawPositionProtoMsg;
 };
 export declare const MsgWithdrawPositionResponse: {
+    typeUrl: string;
     encode(message: MsgWithdrawPositionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawPositionResponse;
     fromPartial(object: Partial<MsgWithdrawPositionResponse>): MsgWithdrawPositionResponse;
@@ -354,6 +358,7 @@ export declare const MsgWithdrawPositionResponse: {
     toProtoMsg(message: MsgWithdrawPositionResponse): MsgWithdrawPositionResponseProtoMsg;
 };
 export declare const MsgCollectFees: {
+    typeUrl: string;
     encode(message: MsgCollectFees, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectFees;
     fromPartial(object: Partial<MsgCollectFees>): MsgCollectFees;
@@ -366,6 +371,7 @@ export declare const MsgCollectFees: {
     toProtoMsg(message: MsgCollectFees): MsgCollectFeesProtoMsg;
 };
 export declare const MsgCollectFeesResponse: {
+    typeUrl: string;
     encode(message: MsgCollectFeesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectFeesResponse;
     fromPartial(object: Partial<MsgCollectFeesResponse>): MsgCollectFeesResponse;
@@ -378,6 +384,7 @@ export declare const MsgCollectFeesResponse: {
     toProtoMsg(message: MsgCollectFeesResponse): MsgCollectFeesResponseProtoMsg;
 };
 export declare const MsgCollectIncentives: {
+    typeUrl: string;
     encode(message: MsgCollectIncentives, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectIncentives;
     fromPartial(object: Partial<MsgCollectIncentives>): MsgCollectIncentives;
@@ -390,6 +397,7 @@ export declare const MsgCollectIncentives: {
     toProtoMsg(message: MsgCollectIncentives): MsgCollectIncentivesProtoMsg;
 };
 export declare const MsgCollectIncentivesResponse: {
+    typeUrl: string;
     encode(message: MsgCollectIncentivesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectIncentivesResponse;
     fromPartial(object: Partial<MsgCollectIncentivesResponse>): MsgCollectIncentivesResponse;
@@ -402,6 +410,7 @@ export declare const MsgCollectIncentivesResponse: {
     toProtoMsg(message: MsgCollectIncentivesResponse): MsgCollectIncentivesResponseProtoMsg;
 };
 export declare const MsgCreateIncentive: {
+    typeUrl: string;
     encode(message: MsgCreateIncentive, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateIncentive;
     fromPartial(object: Partial<MsgCreateIncentive>): MsgCreateIncentive;
@@ -414,6 +423,7 @@ export declare const MsgCreateIncentive: {
     toProtoMsg(message: MsgCreateIncentive): MsgCreateIncentiveProtoMsg;
 };
 export declare const MsgCreateIncentiveResponse: {
+    typeUrl: string;
     encode(message: MsgCreateIncentiveResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateIncentiveResponse;
     fromPartial(object: Partial<MsgCreateIncentiveResponse>): MsgCreateIncentiveResponse;
@@ -426,6 +436,7 @@ export declare const MsgCreateIncentiveResponse: {
     toProtoMsg(message: MsgCreateIncentiveResponse): MsgCreateIncentiveResponseProtoMsg;
 };
 export declare const MsgFungifyChargedPositions: {
+    typeUrl: string;
     encode(message: MsgFungifyChargedPositions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgFungifyChargedPositions;
     fromPartial(object: Partial<MsgFungifyChargedPositions>): MsgFungifyChargedPositions;
@@ -438,6 +449,7 @@ export declare const MsgFungifyChargedPositions: {
     toProtoMsg(message: MsgFungifyChargedPositions): MsgFungifyChargedPositionsProtoMsg;
 };
 export declare const MsgFungifyChargedPositionsResponse: {
+    typeUrl: string;
     encode(message: MsgFungifyChargedPositionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgFungifyChargedPositionsResponse;
     fromPartial(object: Partial<MsgFungifyChargedPositionsResponse>): MsgFungifyChargedPositionsResponse;

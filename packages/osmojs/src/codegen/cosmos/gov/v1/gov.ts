@@ -2,8 +2,8 @@ import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
+import { Long, isSet, toTimestamp, fromTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, Long, toTimestamp, fromTimestamp } from "../../../helpers";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 
 export enum VoteOption {

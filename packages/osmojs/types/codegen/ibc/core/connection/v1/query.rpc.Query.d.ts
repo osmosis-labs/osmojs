@@ -1,6 +1,6 @@
 import { Rpc } from "../../../../helpers";
 import { QueryClient } from "@cosmjs/stargate";
-import { QueryConnectionRequest, QueryConnectionResponse, QueryConnectionsRequest, QueryConnectionsResponse, QueryClientConnectionsRequest, QueryClientConnectionsResponse, QueryConnectionClientStateRequest, QueryConnectionClientStateResponse, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponse } from "./query";
+import { QueryConnectionRequest, QueryConnectionResponse, QueryConnectionsRequest, QueryConnectionsResponse, QueryClientConnectionsRequest, QueryClientConnectionsResponse, QueryConnectionClientStateRequest, QueryConnectionClientStateResponse, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponse, QueryConnectionParamsRequest, QueryConnectionParamsResponse } from "./query";
 /** Query provides defines the gRPC querier service */
 export interface Query {
     /** Connection queries an IBC connection end. */
@@ -22,6 +22,8 @@ export interface Query {
      * connection.
      */
     connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponse>;
+    /** ConnectionParams queries all parameters of the ibc connection submodule. */
+    connectionParams(request?: QueryConnectionParamsRequest): Promise<QueryConnectionParamsResponse>;
 }
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
@@ -31,6 +33,7 @@ export declare class QueryClientImpl implements Query {
     clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponse>;
     connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponse>;
     connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponse>;
+    connectionParams(request?: QueryConnectionParamsRequest): Promise<QueryConnectionParamsResponse>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     connection(request: QueryConnectionRequest): Promise<QueryConnectionResponse>;
@@ -38,4 +41,5 @@ export declare const createRpcQueryExtension: (base: QueryClient) => {
     clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponse>;
     connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponse>;
     connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponse>;
+    connectionParams(request?: QueryConnectionParamsRequest): Promise<QueryConnectionParamsResponse>;
 };

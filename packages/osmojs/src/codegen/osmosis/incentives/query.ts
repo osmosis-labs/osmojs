@@ -2,8 +2,8 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Gauge, GaugeAmino, GaugeSDKType } from "./gauge";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface ModuleToDistributeCoinsRequest {}
 export interface ModuleToDistributeCoinsRequestProtoMsg {
   typeUrl: "/osmosis.incentives.ModuleToDistributeCoinsRequest";

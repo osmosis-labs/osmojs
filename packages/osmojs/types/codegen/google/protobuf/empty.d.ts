@@ -47,6 +47,7 @@ export interface EmptyAminoMsg {
 export interface EmptySDKType {
 }
 export declare const Empty: {
+    typeUrl: string;
     encode(_: Empty, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Empty;
     fromPartial(_: Partial<Empty>): Empty;

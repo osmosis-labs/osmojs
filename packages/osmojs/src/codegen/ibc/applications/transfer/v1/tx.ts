@@ -30,11 +30,14 @@ export interface MsgTransfer {
 
   timeoutHeight?: Height;
   /**
-   * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
+   * Timeout timestamp in absolute nanoseconds since unix epoch.
    * The timeout is disabled when set to 0.
    */
 
   timeoutTimestamp: Long;
+  /** optional memo */
+
+  memo: string;
 }
 export interface MsgTransferProtoMsg {
   typeUrl: "/ibc.applications.transfer.v1.MsgTransfer";
@@ -68,11 +71,14 @@ export interface MsgTransferAmino {
 
   timeout_height?: HeightAmino;
   /**
-   * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
+   * Timeout timestamp in absolute nanoseconds since unix epoch.
    * The timeout is disabled when set to 0.
    */
 
   timeout_timestamp: string;
+  /** optional memo */
+
+  memo: string;
 }
 export interface MsgTransferAminoMsg {
   type: "cosmos-sdk/MsgTransfer";
@@ -92,24 +98,33 @@ export interface MsgTransferSDKType {
   receiver: string;
   timeout_height?: HeightSDKType;
   timeout_timestamp: Long;
+  memo: string;
 }
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 
-export interface MsgTransferResponse {}
+export interface MsgTransferResponse {
+  /** sequence number of the transfer packet sent */
+  sequence: Long;
+}
 export interface MsgTransferResponseProtoMsg {
   typeUrl: "/ibc.applications.transfer.v1.MsgTransferResponse";
   value: Uint8Array;
 }
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 
-export interface MsgTransferResponseAmino {}
+export interface MsgTransferResponseAmino {
+  /** sequence number of the transfer packet sent */
+  sequence: string;
+}
 export interface MsgTransferResponseAminoMsg {
   type: "cosmos-sdk/MsgTransferResponse";
   value: MsgTransferResponseAmino;
 }
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 
-export interface MsgTransferResponseSDKType {}
+export interface MsgTransferResponseSDKType {
+  sequence: Long;
+}
 
 function createBaseMsgTransfer(): MsgTransfer {
   return {
@@ -119,7 +134,8 @@ function createBaseMsgTransfer(): MsgTransfer {
     sender: "",
     receiver: "",
     timeoutHeight: undefined,
-    timeoutTimestamp: Long.UZERO
+    timeoutTimestamp: Long.UZERO,
+    memo: ""
   };
 }
 
@@ -153,6 +169,10 @@ export const MsgTransfer = {
 
     if (!message.timeoutTimestamp.isZero()) {
       writer.uint32(56).uint64(message.timeoutTimestamp);
+    }
+
+    if (message.memo !== "") {
+      writer.uint32(66).string(message.memo);
     }
 
     return writer;
@@ -195,6 +215,10 @@ export const MsgTransfer = {
           message.timeoutTimestamp = (reader.uint64() as Long);
           break;
 
+        case 8:
+          message.memo = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -213,6 +237,7 @@ export const MsgTransfer = {
     message.receiver = object.receiver ?? "";
     message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? Height.fromPartial(object.timeoutHeight) : undefined;
     message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO;
+    message.memo = object.memo ?? "";
     return message;
   },
 
@@ -224,7 +249,8 @@ export const MsgTransfer = {
       sender: object.sender,
       receiver: object.receiver,
       timeoutHeight: object?.timeout_height ? Height.fromAmino(object.timeout_height) : undefined,
-      timeoutTimestamp: Long.fromString(object.timeout_timestamp)
+      timeoutTimestamp: Long.fromString(object.timeout_timestamp),
+      memo: object.memo
     };
   },
 
@@ -237,6 +263,7 @@ export const MsgTransfer = {
     obj.receiver = message.receiver;
     obj.timeout_height = message.timeoutHeight ? Height.toAmino(message.timeoutHeight) : {};
     obj.timeout_timestamp = message.timeoutTimestamp ? message.timeoutTimestamp.toString() : undefined;
+    obj.memo = message.memo;
     return obj;
   },
 
@@ -269,13 +296,19 @@ export const MsgTransfer = {
 };
 
 function createBaseMsgTransferResponse(): MsgTransferResponse {
-  return {};
+  return {
+    sequence: Long.UZERO
+  };
 }
 
 export const MsgTransferResponse = {
   typeUrl: "/ibc.applications.transfer.v1.MsgTransferResponse",
 
-  encode(_: MsgTransferResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgTransferResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.sequence.isZero()) {
+      writer.uint32(8).uint64(message.sequence);
+    }
+
     return writer;
   },
 
@@ -288,6 +321,10 @@ export const MsgTransferResponse = {
       const tag = reader.uint32();
 
       switch (tag >>> 3) {
+        case 1:
+          message.sequence = (reader.uint64() as Long);
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -297,17 +334,21 @@ export const MsgTransferResponse = {
     return message;
   },
 
-  fromPartial(_: Partial<MsgTransferResponse>): MsgTransferResponse {
+  fromPartial(object: Partial<MsgTransferResponse>): MsgTransferResponse {
     const message = createBaseMsgTransferResponse();
+    message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     return message;
   },
 
-  fromAmino(_: MsgTransferResponseAmino): MsgTransferResponse {
-    return {};
+  fromAmino(object: MsgTransferResponseAmino): MsgTransferResponse {
+    return {
+      sequence: Long.fromString(object.sequence)
+    };
   },
 
-  toAmino(_: MsgTransferResponse): MsgTransferResponseAmino {
+  toAmino(message: MsgTransferResponse): MsgTransferResponseAmino {
     const obj: any = {};
+    obj.sequence = message.sequence ? message.sequence.toString() : undefined;
     return obj;
   },
 

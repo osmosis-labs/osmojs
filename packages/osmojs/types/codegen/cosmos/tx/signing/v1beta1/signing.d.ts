@@ -1,48 +1,43 @@
 import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
-/**
- * SignMode represents a signing mode with its own security guarantees.
- *
- * This enum should be considered a registry of all known sign modes
- * in the Cosmos ecosystem. Apps are not expected to support all known
- * sign modes. Apps that would like to support custom  sign modes are
- * encouraged to open a small PR against this file to add a new case
- * to this SignMode enum describing their sign mode so that different
- * apps have a consistent version of this enum.
- */
+import * as _m0 from "protobufjs/minimal";
+/** SignMode represents a signing mode with its own security guarantees. */
 export declare enum SignMode {
     /**
      * SIGN_MODE_UNSPECIFIED - SIGN_MODE_UNSPECIFIED specifies an unknown signing mode and will be
-     * rejected.
+     * rejected
      */
     SIGN_MODE_UNSPECIFIED = 0,
     /**
      * SIGN_MODE_DIRECT - SIGN_MODE_DIRECT specifies a signing mode which uses SignDoc and is
-     * verified with raw bytes from Tx.
+     * verified with raw bytes from Tx
      */
     SIGN_MODE_DIRECT = 1,
     /**
      * SIGN_MODE_TEXTUAL - SIGN_MODE_TEXTUAL is a future signing mode that will verify some
      * human-readable textual representation on top of the binary representation
-     * from SIGN_MODE_DIRECT. It is currently not supported.
+     * from SIGN_MODE_DIRECT
      */
     SIGN_MODE_TEXTUAL = 2,
     /**
-     * SIGN_MODE_DIRECT_AUX - SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
-     * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
-     * require signers signing over other signers' `signer_info`. It also allows
-     * for adding Tips in transactions.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    SIGN_MODE_DIRECT_AUX = 3,
-    /**
      * SIGN_MODE_LEGACY_AMINO_JSON - SIGN_MODE_LEGACY_AMINO_JSON is a backwards compatibility mode which uses
-     * Amino JSON and will be removed in the future.
+     * Amino JSON and will be removed in the future
      */
     SIGN_MODE_LEGACY_AMINO_JSON = 127,
+    /**
+     * SIGN_MODE_EIP_191 - SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos
+     * SDK. Ref: https://eips.ethereum.org/EIPS/eip-191
+     *
+     * Currently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,
+     * but is not implemented on the SDK by default. To enable EIP-191, you need
+     * to pass a custom `TxConfig` that has an implementation of
+     * `SignModeHandler` for EIP-191. The SDK may decide to fully support
+     * EIP-191 in the future.
+     *
+     * Since: cosmos-sdk 0.45.2
+     */
+    SIGN_MODE_EIP_191 = 191,
     UNRECOGNIZED = -1
 }
 export declare const SignModeSDKType: typeof SignMode;
@@ -206,6 +201,7 @@ export interface SignatureDescriptor_Data_MultiSDKType {
     signatures: SignatureDescriptor_DataSDKType[];
 }
 export declare const SignatureDescriptors: {
+    typeUrl: string;
     encode(message: SignatureDescriptors, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptors;
     fromPartial(object: Partial<SignatureDescriptors>): SignatureDescriptors;
@@ -218,6 +214,7 @@ export declare const SignatureDescriptors: {
     toProtoMsg(message: SignatureDescriptors): SignatureDescriptorsProtoMsg;
 };
 export declare const SignatureDescriptor: {
+    typeUrl: string;
     encode(message: SignatureDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor;
     fromPartial(object: Partial<SignatureDescriptor>): SignatureDescriptor;
@@ -230,6 +227,7 @@ export declare const SignatureDescriptor: {
     toProtoMsg(message: SignatureDescriptor): SignatureDescriptorProtoMsg;
 };
 export declare const SignatureDescriptor_Data: {
+    typeUrl: string;
     encode(message: SignatureDescriptor_Data, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data;
     fromPartial(object: Partial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
@@ -242,6 +240,7 @@ export declare const SignatureDescriptor_Data: {
     toProtoMsg(message: SignatureDescriptor_Data): SignatureDescriptor_DataProtoMsg;
 };
 export declare const SignatureDescriptor_Data_Single: {
+    typeUrl: string;
     encode(message: SignatureDescriptor_Data_Single, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Single;
     fromPartial(object: Partial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
@@ -254,6 +253,7 @@ export declare const SignatureDescriptor_Data_Single: {
     toProtoMsg(message: SignatureDescriptor_Data_Single): SignatureDescriptor_Data_SingleProtoMsg;
 };
 export declare const SignatureDescriptor_Data_Multi: {
+    typeUrl: string;
     encode(message: SignatureDescriptor_Data_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi;
     fromPartial(object: Partial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;

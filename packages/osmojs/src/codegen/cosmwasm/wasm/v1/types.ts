@@ -1,6 +1,6 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, Long } from "../../../helpers";
 import { toUtf8, fromUtf8 } from "@cosmjs/encoding";
 /** AccessType permission types */
 

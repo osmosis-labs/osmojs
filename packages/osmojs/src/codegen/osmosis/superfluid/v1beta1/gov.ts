@@ -1,6 +1,6 @@
 import { SuperfluidAsset, SuperfluidAssetAmino, SuperfluidAssetSDKType } from "../superfluid";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
  * assets

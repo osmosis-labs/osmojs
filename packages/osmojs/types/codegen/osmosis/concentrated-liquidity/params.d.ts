@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface Params {
     /**
      * authorized_tick_spacing is an array of uint64s that represents the tick
@@ -33,6 +33,7 @@ export interface ParamsSDKType {
     authorized_swap_fees: string[];
 }
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;

@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** PoolType is an enumeration of all supported pool types. */
 export declare enum PoolType {
     /** Balancer - Balancer is the standard xy=k curve. Its pool model is defined in x/gamm. */
@@ -66,6 +66,7 @@ export interface ModuleRouteSDKType {
     pool_id: Long;
 }
 export declare const ModuleRoute: {
+    typeUrl: string;
     encode(message: ModuleRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleRoute;
     fromPartial(object: Partial<ModuleRoute>): ModuleRoute;

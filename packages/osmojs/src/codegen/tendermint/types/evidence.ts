@@ -1,8 +1,8 @@
 import { Vote, VoteAmino, VoteSDKType, LightBlock, LightBlockAmino, LightBlockSDKType } from "./types";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Validator, ValidatorAmino, ValidatorSDKType } from "./validator";
-import * as _m0 from "protobufjs/minimal";
 import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface Evidence {
   duplicateVoteEvidence?: DuplicateVoteEvidence;
   lightClientAttackEvidence?: LightClientAttackEvidence;

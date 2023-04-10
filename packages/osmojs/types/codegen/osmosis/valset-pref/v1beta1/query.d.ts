@@ -43,6 +43,7 @@ export interface UserValidatorPreferencesResponseSDKType {
     preferences: ValidatorPreferenceSDKType[];
 }
 export declare const UserValidatorPreferencesRequest: {
+    typeUrl: string;
     encode(message: UserValidatorPreferencesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UserValidatorPreferencesRequest;
     fromPartial(object: Partial<UserValidatorPreferencesRequest>): UserValidatorPreferencesRequest;
@@ -55,6 +56,7 @@ export declare const UserValidatorPreferencesRequest: {
     toProtoMsg(message: UserValidatorPreferencesRequest): UserValidatorPreferencesRequestProtoMsg;
 };
 export declare const UserValidatorPreferencesResponse: {
+    typeUrl: string;
     encode(message: UserValidatorPreferencesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UserValidatorPreferencesResponse;
     fromPartial(object: Partial<UserValidatorPreferencesResponse>): UserValidatorPreferencesResponse;

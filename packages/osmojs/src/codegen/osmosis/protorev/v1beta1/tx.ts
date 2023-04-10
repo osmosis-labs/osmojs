@@ -1,6 +1,6 @@
 import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** MsgSetHotRoutes defines the Msg/SetHotRoutes request type. */
 
 export interface MsgSetHotRoutes {

@@ -76,10 +76,8 @@ export interface MsgConnectionOpenInitResponseSDKType {
  */
 export interface MsgConnectionOpenTry {
     clientId: string;
-    /**
-     * in the case of crossing hello's, when both chains call OpenInit, we need
-     * the connection identifier of the previous connection in state INIT
-     */
+    /** Deprecated: this field is unused. Crossing hellos are no longer supported in core IBC. */
+    /** @deprecated */
     previousConnectionId: string;
     clientState?: Any;
     counterparty?: Counterparty;
@@ -97,6 +95,8 @@ export interface MsgConnectionOpenTry {
     proofConsensus: Uint8Array;
     consensusHeight?: Height;
     signer: string;
+    /** optional proof data for host state machines that are unable to introspect their own consensus state */
+    hostConsensusStateProof: Uint8Array;
 }
 export interface MsgConnectionOpenTryProtoMsg {
     typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTry";
@@ -108,10 +108,8 @@ export interface MsgConnectionOpenTryProtoMsg {
  */
 export interface MsgConnectionOpenTryAmino {
     client_id: string;
-    /**
-     * in the case of crossing hello's, when both chains call OpenInit, we need
-     * the connection identifier of the previous connection in state INIT
-     */
+    /** Deprecated: this field is unused. Crossing hellos are no longer supported in core IBC. */
+    /** @deprecated */
     previous_connection_id: string;
     client_state?: AnyAmino;
     counterparty?: CounterpartyAmino;
@@ -129,6 +127,8 @@ export interface MsgConnectionOpenTryAmino {
     proof_consensus: Uint8Array;
     consensus_height?: HeightAmino;
     signer: string;
+    /** optional proof data for host state machines that are unable to introspect their own consensus state */
+    host_consensus_state_proof: Uint8Array;
 }
 export interface MsgConnectionOpenTryAminoMsg {
     type: "cosmos-sdk/MsgConnectionOpenTry";
@@ -140,6 +140,7 @@ export interface MsgConnectionOpenTryAminoMsg {
  */
 export interface MsgConnectionOpenTrySDKType {
     client_id: string;
+    /** @deprecated */
     previous_connection_id: string;
     client_state?: AnySDKType;
     counterparty?: CounterpartySDKType;
@@ -151,6 +152,7 @@ export interface MsgConnectionOpenTrySDKType {
     proof_consensus: Uint8Array;
     consensus_height?: HeightSDKType;
     signer: string;
+    host_consensus_state_proof: Uint8Array;
 }
 /** MsgConnectionOpenTryResponse defines the Msg/ConnectionOpenTry response type. */
 export interface MsgConnectionOpenTryResponse {
@@ -190,6 +192,8 @@ export interface MsgConnectionOpenAck {
     proofConsensus: Uint8Array;
     consensusHeight?: Height;
     signer: string;
+    /** optional proof data for host state machines that are unable to introspect their own consensus state */
+    hostConsensusStateProof: Uint8Array;
 }
 export interface MsgConnectionOpenAckProtoMsg {
     typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAck";
@@ -216,6 +220,8 @@ export interface MsgConnectionOpenAckAmino {
     proof_consensus: Uint8Array;
     consensus_height?: HeightAmino;
     signer: string;
+    /** optional proof data for host state machines that are unable to introspect their own consensus state */
+    host_consensus_state_proof: Uint8Array;
 }
 export interface MsgConnectionOpenAckAminoMsg {
     type: "cosmos-sdk/MsgConnectionOpenAck";
@@ -236,6 +242,7 @@ export interface MsgConnectionOpenAckSDKType {
     proof_consensus: Uint8Array;
     consensus_height?: HeightSDKType;
     signer: string;
+    host_consensus_state_proof: Uint8Array;
 }
 /** MsgConnectionOpenAckResponse defines the Msg/ConnectionOpenAck response type. */
 export interface MsgConnectionOpenAckResponse {
@@ -321,6 +328,7 @@ export interface MsgConnectionOpenConfirmResponseAminoMsg {
 export interface MsgConnectionOpenConfirmResponseSDKType {
 }
 export declare const MsgConnectionOpenInit: {
+    typeUrl: string;
     encode(message: MsgConnectionOpenInit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInit;
     fromPartial(object: Partial<MsgConnectionOpenInit>): MsgConnectionOpenInit;
@@ -333,6 +341,7 @@ export declare const MsgConnectionOpenInit: {
     toProtoMsg(message: MsgConnectionOpenInit): MsgConnectionOpenInitProtoMsg;
 };
 export declare const MsgConnectionOpenInitResponse: {
+    typeUrl: string;
     encode(_: MsgConnectionOpenInitResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInitResponse;
     fromPartial(_: Partial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse;
@@ -345,6 +354,7 @@ export declare const MsgConnectionOpenInitResponse: {
     toProtoMsg(message: MsgConnectionOpenInitResponse): MsgConnectionOpenInitResponseProtoMsg;
 };
 export declare const MsgConnectionOpenTry: {
+    typeUrl: string;
     encode(message: MsgConnectionOpenTry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTry;
     fromPartial(object: Partial<MsgConnectionOpenTry>): MsgConnectionOpenTry;
@@ -357,6 +367,7 @@ export declare const MsgConnectionOpenTry: {
     toProtoMsg(message: MsgConnectionOpenTry): MsgConnectionOpenTryProtoMsg;
 };
 export declare const MsgConnectionOpenTryResponse: {
+    typeUrl: string;
     encode(_: MsgConnectionOpenTryResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTryResponse;
     fromPartial(_: Partial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse;
@@ -369,6 +380,7 @@ export declare const MsgConnectionOpenTryResponse: {
     toProtoMsg(message: MsgConnectionOpenTryResponse): MsgConnectionOpenTryResponseProtoMsg;
 };
 export declare const MsgConnectionOpenAck: {
+    typeUrl: string;
     encode(message: MsgConnectionOpenAck, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAck;
     fromPartial(object: Partial<MsgConnectionOpenAck>): MsgConnectionOpenAck;
@@ -381,6 +393,7 @@ export declare const MsgConnectionOpenAck: {
     toProtoMsg(message: MsgConnectionOpenAck): MsgConnectionOpenAckProtoMsg;
 };
 export declare const MsgConnectionOpenAckResponse: {
+    typeUrl: string;
     encode(_: MsgConnectionOpenAckResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAckResponse;
     fromPartial(_: Partial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse;
@@ -393,6 +406,7 @@ export declare const MsgConnectionOpenAckResponse: {
     toProtoMsg(message: MsgConnectionOpenAckResponse): MsgConnectionOpenAckResponseProtoMsg;
 };
 export declare const MsgConnectionOpenConfirm: {
+    typeUrl: string;
     encode(message: MsgConnectionOpenConfirm, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirm;
     fromPartial(object: Partial<MsgConnectionOpenConfirm>): MsgConnectionOpenConfirm;
@@ -405,6 +419,7 @@ export declare const MsgConnectionOpenConfirm: {
     toProtoMsg(message: MsgConnectionOpenConfirm): MsgConnectionOpenConfirmProtoMsg;
 };
 export declare const MsgConnectionOpenConfirmResponse: {
+    typeUrl: string;
     encode(_: MsgConnectionOpenConfirmResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponse;
     fromPartial(_: Partial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse;

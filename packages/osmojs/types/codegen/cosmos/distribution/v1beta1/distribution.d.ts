@@ -1,6 +1,6 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType, Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
     communityTax: string;
@@ -20,7 +20,7 @@ export interface ParamsAmino {
     withdraw_addr_enabled: boolean;
 }
 export interface ParamsAminoMsg {
-    type: "cosmos-sdk/Params";
+    type: "cosmos-sdk/x/distribution/Params";
     value: ParamsAmino;
 }
 /** Params defines the set of params for the distribution module. */
@@ -425,6 +425,7 @@ export interface CommunityPoolSpendProposalWithDepositSDKType {
     deposit: string;
 }
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
@@ -437,6 +438,7 @@ export declare const Params: {
     toProtoMsg(message: Params): ParamsProtoMsg;
 };
 export declare const ValidatorHistoricalRewards: {
+    typeUrl: string;
     encode(message: ValidatorHistoricalRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorHistoricalRewards;
     fromPartial(object: Partial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards;
@@ -449,6 +451,7 @@ export declare const ValidatorHistoricalRewards: {
     toProtoMsg(message: ValidatorHistoricalRewards): ValidatorHistoricalRewardsProtoMsg;
 };
 export declare const ValidatorCurrentRewards: {
+    typeUrl: string;
     encode(message: ValidatorCurrentRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorCurrentRewards;
     fromPartial(object: Partial<ValidatorCurrentRewards>): ValidatorCurrentRewards;
@@ -461,6 +464,7 @@ export declare const ValidatorCurrentRewards: {
     toProtoMsg(message: ValidatorCurrentRewards): ValidatorCurrentRewardsProtoMsg;
 };
 export declare const ValidatorAccumulatedCommission: {
+    typeUrl: string;
     encode(message: ValidatorAccumulatedCommission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorAccumulatedCommission;
     fromPartial(object: Partial<ValidatorAccumulatedCommission>): ValidatorAccumulatedCommission;
@@ -473,6 +477,7 @@ export declare const ValidatorAccumulatedCommission: {
     toProtoMsg(message: ValidatorAccumulatedCommission): ValidatorAccumulatedCommissionProtoMsg;
 };
 export declare const ValidatorOutstandingRewards: {
+    typeUrl: string;
     encode(message: ValidatorOutstandingRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorOutstandingRewards;
     fromPartial(object: Partial<ValidatorOutstandingRewards>): ValidatorOutstandingRewards;
@@ -485,6 +490,7 @@ export declare const ValidatorOutstandingRewards: {
     toProtoMsg(message: ValidatorOutstandingRewards): ValidatorOutstandingRewardsProtoMsg;
 };
 export declare const ValidatorSlashEvent: {
+    typeUrl: string;
     encode(message: ValidatorSlashEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEvent;
     fromPartial(object: Partial<ValidatorSlashEvent>): ValidatorSlashEvent;
@@ -497,6 +503,7 @@ export declare const ValidatorSlashEvent: {
     toProtoMsg(message: ValidatorSlashEvent): ValidatorSlashEventProtoMsg;
 };
 export declare const ValidatorSlashEvents: {
+    typeUrl: string;
     encode(message: ValidatorSlashEvents, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEvents;
     fromPartial(object: Partial<ValidatorSlashEvents>): ValidatorSlashEvents;
@@ -509,6 +516,7 @@ export declare const ValidatorSlashEvents: {
     toProtoMsg(message: ValidatorSlashEvents): ValidatorSlashEventsProtoMsg;
 };
 export declare const FeePool: {
+    typeUrl: string;
     encode(message: FeePool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FeePool;
     fromPartial(object: Partial<FeePool>): FeePool;
@@ -521,6 +529,7 @@ export declare const FeePool: {
     toProtoMsg(message: FeePool): FeePoolProtoMsg;
 };
 export declare const CommunityPoolSpendProposal: {
+    typeUrl: string;
     encode(message: CommunityPoolSpendProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommunityPoolSpendProposal;
     fromPartial(object: Partial<CommunityPoolSpendProposal>): CommunityPoolSpendProposal;
@@ -533,6 +542,7 @@ export declare const CommunityPoolSpendProposal: {
     toProtoMsg(message: CommunityPoolSpendProposal): CommunityPoolSpendProposalProtoMsg;
 };
 export declare const DelegatorStartingInfo: {
+    typeUrl: string;
     encode(message: DelegatorStartingInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegatorStartingInfo;
     fromPartial(object: Partial<DelegatorStartingInfo>): DelegatorStartingInfo;
@@ -545,6 +555,7 @@ export declare const DelegatorStartingInfo: {
     toProtoMsg(message: DelegatorStartingInfo): DelegatorStartingInfoProtoMsg;
 };
 export declare const DelegationDelegatorReward: {
+    typeUrl: string;
     encode(message: DelegationDelegatorReward, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegationDelegatorReward;
     fromPartial(object: Partial<DelegationDelegatorReward>): DelegationDelegatorReward;
@@ -557,6 +568,7 @@ export declare const DelegationDelegatorReward: {
     toProtoMsg(message: DelegationDelegatorReward): DelegationDelegatorRewardProtoMsg;
 };
 export declare const CommunityPoolSpendProposalWithDeposit: {
+    typeUrl: string;
     encode(message: CommunityPoolSpendProposalWithDeposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommunityPoolSpendProposalWithDeposit;
     fromPartial(object: Partial<CommunityPoolSpendProposalWithDeposit>): CommunityPoolSpendProposalWithDeposit;

@@ -718,6 +718,7 @@ export interface QueryMethodDescriptorSDKType {
     full_query_path: string;
 }
 export declare const AppDescriptor: {
+    typeUrl: string;
     encode(message: AppDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AppDescriptor;
     fromPartial(object: Partial<AppDescriptor>): AppDescriptor;
@@ -730,6 +731,7 @@ export declare const AppDescriptor: {
     toProtoMsg(message: AppDescriptor): AppDescriptorProtoMsg;
 };
 export declare const TxDescriptor: {
+    typeUrl: string;
     encode(message: TxDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxDescriptor;
     fromPartial(object: Partial<TxDescriptor>): TxDescriptor;
@@ -742,6 +744,7 @@ export declare const TxDescriptor: {
     toProtoMsg(message: TxDescriptor): TxDescriptorProtoMsg;
 };
 export declare const AuthnDescriptor: {
+    typeUrl: string;
     encode(message: AuthnDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AuthnDescriptor;
     fromPartial(object: Partial<AuthnDescriptor>): AuthnDescriptor;
@@ -754,6 +757,7 @@ export declare const AuthnDescriptor: {
     toProtoMsg(message: AuthnDescriptor): AuthnDescriptorProtoMsg;
 };
 export declare const SigningModeDescriptor: {
+    typeUrl: string;
     encode(message: SigningModeDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SigningModeDescriptor;
     fromPartial(object: Partial<SigningModeDescriptor>): SigningModeDescriptor;
@@ -766,6 +770,7 @@ export declare const SigningModeDescriptor: {
     toProtoMsg(message: SigningModeDescriptor): SigningModeDescriptorProtoMsg;
 };
 export declare const ChainDescriptor: {
+    typeUrl: string;
     encode(message: ChainDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ChainDescriptor;
     fromPartial(object: Partial<ChainDescriptor>): ChainDescriptor;
@@ -778,6 +783,7 @@ export declare const ChainDescriptor: {
     toProtoMsg(message: ChainDescriptor): ChainDescriptorProtoMsg;
 };
 export declare const CodecDescriptor: {
+    typeUrl: string;
     encode(message: CodecDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CodecDescriptor;
     fromPartial(object: Partial<CodecDescriptor>): CodecDescriptor;
@@ -790,6 +796,7 @@ export declare const CodecDescriptor: {
     toProtoMsg(message: CodecDescriptor): CodecDescriptorProtoMsg;
 };
 export declare const InterfaceDescriptor: {
+    typeUrl: string;
     encode(message: InterfaceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceDescriptor;
     fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor;
@@ -802,6 +809,7 @@ export declare const InterfaceDescriptor: {
     toProtoMsg(message: InterfaceDescriptor): InterfaceDescriptorProtoMsg;
 };
 export declare const InterfaceImplementerDescriptor: {
+    typeUrl: string;
     encode(message: InterfaceImplementerDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceImplementerDescriptor;
     fromPartial(object: Partial<InterfaceImplementerDescriptor>): InterfaceImplementerDescriptor;
@@ -814,6 +822,7 @@ export declare const InterfaceImplementerDescriptor: {
     toProtoMsg(message: InterfaceImplementerDescriptor): InterfaceImplementerDescriptorProtoMsg;
 };
 export declare const InterfaceAcceptingMessageDescriptor: {
+    typeUrl: string;
     encode(message: InterfaceAcceptingMessageDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceAcceptingMessageDescriptor;
     fromPartial(object: Partial<InterfaceAcceptingMessageDescriptor>): InterfaceAcceptingMessageDescriptor;
@@ -826,6 +835,7 @@ export declare const InterfaceAcceptingMessageDescriptor: {
     toProtoMsg(message: InterfaceAcceptingMessageDescriptor): InterfaceAcceptingMessageDescriptorProtoMsg;
 };
 export declare const ConfigurationDescriptor: {
+    typeUrl: string;
     encode(message: ConfigurationDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConfigurationDescriptor;
     fromPartial(object: Partial<ConfigurationDescriptor>): ConfigurationDescriptor;
@@ -838,6 +848,7 @@ export declare const ConfigurationDescriptor: {
     toProtoMsg(message: ConfigurationDescriptor): ConfigurationDescriptorProtoMsg;
 };
 export declare const MsgDescriptor: {
+    typeUrl: string;
     encode(message: MsgDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDescriptor;
     fromPartial(object: Partial<MsgDescriptor>): MsgDescriptor;
@@ -850,6 +861,7 @@ export declare const MsgDescriptor: {
     toProtoMsg(message: MsgDescriptor): MsgDescriptorProtoMsg;
 };
 export declare const GetAuthnDescriptorRequest: {
+    typeUrl: string;
     encode(_: GetAuthnDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorRequest;
     fromPartial(_: Partial<GetAuthnDescriptorRequest>): GetAuthnDescriptorRequest;
@@ -862,6 +874,7 @@ export declare const GetAuthnDescriptorRequest: {
     toProtoMsg(message: GetAuthnDescriptorRequest): GetAuthnDescriptorRequestProtoMsg;
 };
 export declare const GetAuthnDescriptorResponse: {
+    typeUrl: string;
     encode(message: GetAuthnDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorResponse;
     fromPartial(object: Partial<GetAuthnDescriptorResponse>): GetAuthnDescriptorResponse;
@@ -874,6 +887,7 @@ export declare const GetAuthnDescriptorResponse: {
     toProtoMsg(message: GetAuthnDescriptorResponse): GetAuthnDescriptorResponseProtoMsg;
 };
 export declare const GetChainDescriptorRequest: {
+    typeUrl: string;
     encode(_: GetChainDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorRequest;
     fromPartial(_: Partial<GetChainDescriptorRequest>): GetChainDescriptorRequest;
@@ -886,6 +900,7 @@ export declare const GetChainDescriptorRequest: {
     toProtoMsg(message: GetChainDescriptorRequest): GetChainDescriptorRequestProtoMsg;
 };
 export declare const GetChainDescriptorResponse: {
+    typeUrl: string;
     encode(message: GetChainDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorResponse;
     fromPartial(object: Partial<GetChainDescriptorResponse>): GetChainDescriptorResponse;
@@ -898,6 +913,7 @@ export declare const GetChainDescriptorResponse: {
     toProtoMsg(message: GetChainDescriptorResponse): GetChainDescriptorResponseProtoMsg;
 };
 export declare const GetCodecDescriptorRequest: {
+    typeUrl: string;
     encode(_: GetCodecDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorRequest;
     fromPartial(_: Partial<GetCodecDescriptorRequest>): GetCodecDescriptorRequest;
@@ -910,6 +926,7 @@ export declare const GetCodecDescriptorRequest: {
     toProtoMsg(message: GetCodecDescriptorRequest): GetCodecDescriptorRequestProtoMsg;
 };
 export declare const GetCodecDescriptorResponse: {
+    typeUrl: string;
     encode(message: GetCodecDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorResponse;
     fromPartial(object: Partial<GetCodecDescriptorResponse>): GetCodecDescriptorResponse;
@@ -922,6 +939,7 @@ export declare const GetCodecDescriptorResponse: {
     toProtoMsg(message: GetCodecDescriptorResponse): GetCodecDescriptorResponseProtoMsg;
 };
 export declare const GetConfigurationDescriptorRequest: {
+    typeUrl: string;
     encode(_: GetConfigurationDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorRequest;
     fromPartial(_: Partial<GetConfigurationDescriptorRequest>): GetConfigurationDescriptorRequest;
@@ -934,6 +952,7 @@ export declare const GetConfigurationDescriptorRequest: {
     toProtoMsg(message: GetConfigurationDescriptorRequest): GetConfigurationDescriptorRequestProtoMsg;
 };
 export declare const GetConfigurationDescriptorResponse: {
+    typeUrl: string;
     encode(message: GetConfigurationDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorResponse;
     fromPartial(object: Partial<GetConfigurationDescriptorResponse>): GetConfigurationDescriptorResponse;
@@ -946,6 +965,7 @@ export declare const GetConfigurationDescriptorResponse: {
     toProtoMsg(message: GetConfigurationDescriptorResponse): GetConfigurationDescriptorResponseProtoMsg;
 };
 export declare const GetQueryServicesDescriptorRequest: {
+    typeUrl: string;
     encode(_: GetQueryServicesDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorRequest;
     fromPartial(_: Partial<GetQueryServicesDescriptorRequest>): GetQueryServicesDescriptorRequest;
@@ -958,6 +978,7 @@ export declare const GetQueryServicesDescriptorRequest: {
     toProtoMsg(message: GetQueryServicesDescriptorRequest): GetQueryServicesDescriptorRequestProtoMsg;
 };
 export declare const GetQueryServicesDescriptorResponse: {
+    typeUrl: string;
     encode(message: GetQueryServicesDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorResponse;
     fromPartial(object: Partial<GetQueryServicesDescriptorResponse>): GetQueryServicesDescriptorResponse;
@@ -970,6 +991,7 @@ export declare const GetQueryServicesDescriptorResponse: {
     toProtoMsg(message: GetQueryServicesDescriptorResponse): GetQueryServicesDescriptorResponseProtoMsg;
 };
 export declare const GetTxDescriptorRequest: {
+    typeUrl: string;
     encode(_: GetTxDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorRequest;
     fromPartial(_: Partial<GetTxDescriptorRequest>): GetTxDescriptorRequest;
@@ -982,6 +1004,7 @@ export declare const GetTxDescriptorRequest: {
     toProtoMsg(message: GetTxDescriptorRequest): GetTxDescriptorRequestProtoMsg;
 };
 export declare const GetTxDescriptorResponse: {
+    typeUrl: string;
     encode(message: GetTxDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorResponse;
     fromPartial(object: Partial<GetTxDescriptorResponse>): GetTxDescriptorResponse;
@@ -994,6 +1017,7 @@ export declare const GetTxDescriptorResponse: {
     toProtoMsg(message: GetTxDescriptorResponse): GetTxDescriptorResponseProtoMsg;
 };
 export declare const QueryServicesDescriptor: {
+    typeUrl: string;
     encode(message: QueryServicesDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryServicesDescriptor;
     fromPartial(object: Partial<QueryServicesDescriptor>): QueryServicesDescriptor;
@@ -1006,6 +1030,7 @@ export declare const QueryServicesDescriptor: {
     toProtoMsg(message: QueryServicesDescriptor): QueryServicesDescriptorProtoMsg;
 };
 export declare const QueryServiceDescriptor: {
+    typeUrl: string;
     encode(message: QueryServiceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryServiceDescriptor;
     fromPartial(object: Partial<QueryServiceDescriptor>): QueryServiceDescriptor;
@@ -1018,6 +1043,7 @@ export declare const QueryServiceDescriptor: {
     toProtoMsg(message: QueryServiceDescriptor): QueryServiceDescriptorProtoMsg;
 };
 export declare const QueryMethodDescriptor: {
+    typeUrl: string;
     encode(message: QueryMethodDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryMethodDescriptor;
     fromPartial(object: Partial<QueryMethodDescriptor>): QueryMethodDescriptor;

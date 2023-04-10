@@ -37,6 +37,7 @@ export interface ConfigResponseSDKType {
     minimum_gas_price: string;
 }
 export declare const ConfigRequest: {
+    typeUrl: string;
     encode(_: ConfigRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConfigRequest;
     fromPartial(_: Partial<ConfigRequest>): ConfigRequest;
@@ -49,6 +50,7 @@ export declare const ConfigRequest: {
     toProtoMsg(message: ConfigRequest): ConfigRequestProtoMsg;
 };
 export declare const ConfigResponse: {
+    typeUrl: string;
     encode(message: ConfigResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConfigResponse;
     fromPartial(object: Partial<ConfigResponse>): ConfigResponse;

@@ -1,6 +1,6 @@
 import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** MsgSetHotRoutes defines the Msg/SetHotRoutes request type. */
 export interface MsgSetHotRoutes {
     /** admin is the account that is authorized to set the hot routes. */
@@ -326,6 +326,7 @@ export interface MsgSetBaseDenomsResponseAminoMsg {
 export interface MsgSetBaseDenomsResponseSDKType {
 }
 export declare const MsgSetHotRoutes: {
+    typeUrl: string;
     encode(message: MsgSetHotRoutes, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetHotRoutes;
     fromPartial(object: Partial<MsgSetHotRoutes>): MsgSetHotRoutes;
@@ -338,6 +339,7 @@ export declare const MsgSetHotRoutes: {
     toProtoMsg(message: MsgSetHotRoutes): MsgSetHotRoutesProtoMsg;
 };
 export declare const MsgSetHotRoutesResponse: {
+    typeUrl: string;
     encode(_: MsgSetHotRoutesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetHotRoutesResponse;
     fromPartial(_: Partial<MsgSetHotRoutesResponse>): MsgSetHotRoutesResponse;
@@ -350,6 +352,7 @@ export declare const MsgSetHotRoutesResponse: {
     toProtoMsg(message: MsgSetHotRoutesResponse): MsgSetHotRoutesResponseProtoMsg;
 };
 export declare const MsgSetDeveloperAccount: {
+    typeUrl: string;
     encode(message: MsgSetDeveloperAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDeveloperAccount;
     fromPartial(object: Partial<MsgSetDeveloperAccount>): MsgSetDeveloperAccount;
@@ -362,6 +365,7 @@ export declare const MsgSetDeveloperAccount: {
     toProtoMsg(message: MsgSetDeveloperAccount): MsgSetDeveloperAccountProtoMsg;
 };
 export declare const MsgSetDeveloperAccountResponse: {
+    typeUrl: string;
     encode(_: MsgSetDeveloperAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDeveloperAccountResponse;
     fromPartial(_: Partial<MsgSetDeveloperAccountResponse>): MsgSetDeveloperAccountResponse;
@@ -374,6 +378,7 @@ export declare const MsgSetDeveloperAccountResponse: {
     toProtoMsg(message: MsgSetDeveloperAccountResponse): MsgSetDeveloperAccountResponseProtoMsg;
 };
 export declare const MsgSetPoolWeights: {
+    typeUrl: string;
     encode(message: MsgSetPoolWeights, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetPoolWeights;
     fromPartial(object: Partial<MsgSetPoolWeights>): MsgSetPoolWeights;
@@ -386,6 +391,7 @@ export declare const MsgSetPoolWeights: {
     toProtoMsg(message: MsgSetPoolWeights): MsgSetPoolWeightsProtoMsg;
 };
 export declare const MsgSetPoolWeightsResponse: {
+    typeUrl: string;
     encode(_: MsgSetPoolWeightsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetPoolWeightsResponse;
     fromPartial(_: Partial<MsgSetPoolWeightsResponse>): MsgSetPoolWeightsResponse;
@@ -398,6 +404,7 @@ export declare const MsgSetPoolWeightsResponse: {
     toProtoMsg(message: MsgSetPoolWeightsResponse): MsgSetPoolWeightsResponseProtoMsg;
 };
 export declare const MsgSetMaxPoolPointsPerTx: {
+    typeUrl: string;
     encode(message: MsgSetMaxPoolPointsPerTx, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTx;
     fromPartial(object: Partial<MsgSetMaxPoolPointsPerTx>): MsgSetMaxPoolPointsPerTx;
@@ -410,6 +417,7 @@ export declare const MsgSetMaxPoolPointsPerTx: {
     toProtoMsg(message: MsgSetMaxPoolPointsPerTx): MsgSetMaxPoolPointsPerTxProtoMsg;
 };
 export declare const MsgSetMaxPoolPointsPerTxResponse: {
+    typeUrl: string;
     encode(_: MsgSetMaxPoolPointsPerTxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTxResponse;
     fromPartial(_: Partial<MsgSetMaxPoolPointsPerTxResponse>): MsgSetMaxPoolPointsPerTxResponse;
@@ -422,6 +430,7 @@ export declare const MsgSetMaxPoolPointsPerTxResponse: {
     toProtoMsg(message: MsgSetMaxPoolPointsPerTxResponse): MsgSetMaxPoolPointsPerTxResponseProtoMsg;
 };
 export declare const MsgSetMaxPoolPointsPerBlock: {
+    typeUrl: string;
     encode(message: MsgSetMaxPoolPointsPerBlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlock;
     fromPartial(object: Partial<MsgSetMaxPoolPointsPerBlock>): MsgSetMaxPoolPointsPerBlock;
@@ -434,6 +443,7 @@ export declare const MsgSetMaxPoolPointsPerBlock: {
     toProtoMsg(message: MsgSetMaxPoolPointsPerBlock): MsgSetMaxPoolPointsPerBlockProtoMsg;
 };
 export declare const MsgSetMaxPoolPointsPerBlockResponse: {
+    typeUrl: string;
     encode(_: MsgSetMaxPoolPointsPerBlockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlockResponse;
     fromPartial(_: Partial<MsgSetMaxPoolPointsPerBlockResponse>): MsgSetMaxPoolPointsPerBlockResponse;
@@ -446,6 +456,7 @@ export declare const MsgSetMaxPoolPointsPerBlockResponse: {
     toProtoMsg(message: MsgSetMaxPoolPointsPerBlockResponse): MsgSetMaxPoolPointsPerBlockResponseProtoMsg;
 };
 export declare const MsgSetBaseDenoms: {
+    typeUrl: string;
     encode(message: MsgSetBaseDenoms, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBaseDenoms;
     fromPartial(object: Partial<MsgSetBaseDenoms>): MsgSetBaseDenoms;
@@ -458,6 +469,7 @@ export declare const MsgSetBaseDenoms: {
     toProtoMsg(message: MsgSetBaseDenoms): MsgSetBaseDenomsProtoMsg;
 };
 export declare const MsgSetBaseDenomsResponse: {
+    typeUrl: string;
     encode(_: MsgSetBaseDenomsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBaseDenomsResponse;
     fromPartial(_: Partial<MsgSetBaseDenomsResponse>): MsgSetBaseDenomsResponse;

@@ -1,8 +1,8 @@
 import { Proof, ProofAmino, ProofSDKType } from "../crypto/proof";
 import { Consensus, ConsensusAmino, ConsensusSDKType } from "../version/types";
 import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validator";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** BlockIdFlag indicates which BlcokID the signature is for */
 export declare enum BlockIDFlag {
     BLOCK_ID_FLAG_UNKNOWN = 0,
@@ -443,6 +443,7 @@ export interface TxProofSDKType {
     proof?: ProofSDKType;
 }
 export declare const PartSetHeader: {
+    typeUrl: string;
     encode(message: PartSetHeader, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PartSetHeader;
     fromPartial(object: Partial<PartSetHeader>): PartSetHeader;
@@ -454,6 +455,7 @@ export declare const PartSetHeader: {
     toProtoMsg(message: PartSetHeader): PartSetHeaderProtoMsg;
 };
 export declare const Part: {
+    typeUrl: string;
     encode(message: Part, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Part;
     fromPartial(object: Partial<Part>): Part;
@@ -465,6 +467,7 @@ export declare const Part: {
     toProtoMsg(message: Part): PartProtoMsg;
 };
 export declare const BlockID: {
+    typeUrl: string;
     encode(message: BlockID, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockID;
     fromPartial(object: Partial<BlockID>): BlockID;
@@ -476,6 +479,7 @@ export declare const BlockID: {
     toProtoMsg(message: BlockID): BlockIDProtoMsg;
 };
 export declare const Header: {
+    typeUrl: string;
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
     fromPartial(object: Partial<Header>): Header;
@@ -487,6 +491,7 @@ export declare const Header: {
     toProtoMsg(message: Header): HeaderProtoMsg;
 };
 export declare const Data: {
+    typeUrl: string;
     encode(message: Data, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Data;
     fromPartial(object: Partial<Data>): Data;
@@ -498,6 +503,7 @@ export declare const Data: {
     toProtoMsg(message: Data): DataProtoMsg;
 };
 export declare const Vote: {
+    typeUrl: string;
     encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
     fromPartial(object: Partial<Vote>): Vote;
@@ -509,6 +515,7 @@ export declare const Vote: {
     toProtoMsg(message: Vote): VoteProtoMsg;
 };
 export declare const Commit: {
+    typeUrl: string;
     encode(message: Commit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Commit;
     fromPartial(object: Partial<Commit>): Commit;
@@ -520,6 +527,7 @@ export declare const Commit: {
     toProtoMsg(message: Commit): CommitProtoMsg;
 };
 export declare const CommitSig: {
+    typeUrl: string;
     encode(message: CommitSig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitSig;
     fromPartial(object: Partial<CommitSig>): CommitSig;
@@ -531,6 +539,7 @@ export declare const CommitSig: {
     toProtoMsg(message: CommitSig): CommitSigProtoMsg;
 };
 export declare const Proposal: {
+    typeUrl: string;
     encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
     fromPartial(object: Partial<Proposal>): Proposal;
@@ -542,6 +551,7 @@ export declare const Proposal: {
     toProtoMsg(message: Proposal): ProposalProtoMsg;
 };
 export declare const SignedHeader: {
+    typeUrl: string;
     encode(message: SignedHeader, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignedHeader;
     fromPartial(object: Partial<SignedHeader>): SignedHeader;
@@ -553,6 +563,7 @@ export declare const SignedHeader: {
     toProtoMsg(message: SignedHeader): SignedHeaderProtoMsg;
 };
 export declare const LightBlock: {
+    typeUrl: string;
     encode(message: LightBlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LightBlock;
     fromPartial(object: Partial<LightBlock>): LightBlock;
@@ -564,6 +575,7 @@ export declare const LightBlock: {
     toProtoMsg(message: LightBlock): LightBlockProtoMsg;
 };
 export declare const BlockMeta: {
+    typeUrl: string;
     encode(message: BlockMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockMeta;
     fromPartial(object: Partial<BlockMeta>): BlockMeta;
@@ -575,6 +587,7 @@ export declare const BlockMeta: {
     toProtoMsg(message: BlockMeta): BlockMetaProtoMsg;
 };
 export declare const TxProof: {
+    typeUrl: string;
     encode(message: TxProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxProof;
     fromPartial(object: Partial<TxProof>): TxProof;

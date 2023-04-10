@@ -4,8 +4,8 @@ import { SuperfluidAssetType, SuperfluidAsset, SuperfluidAssetAmino, SuperfluidA
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "../lockup/lock";
 import { DelegationResponse, DelegationResponseAmino, DelegationResponseSDKType } from "../../cosmos/staking/v1beta1/staking";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, Long } from "../../helpers";
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
   typeUrl: "/osmosis.superfluid.QueryParamsRequest";

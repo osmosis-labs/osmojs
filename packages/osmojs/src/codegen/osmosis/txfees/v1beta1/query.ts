@@ -1,6 +1,6 @@
 import { FeeToken, FeeTokenAmino, FeeTokenSDKType } from "./feetoken";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface QueryFeeTokensRequest {}
 export interface QueryFeeTokensRequestProtoMsg {
   typeUrl: "/osmosis.txfees.v1beta1.QueryFeeTokensRequest";

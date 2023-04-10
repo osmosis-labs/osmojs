@@ -2,8 +2,8 @@ import { Header, HeaderAmino, HeaderSDKType } from "../../../tendermint/types/ty
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** BondStatus is the status of a validator. */
 export declare enum BondStatus {
     /** BOND_STATUS_UNSPECIFIED - UNSPECIFIED defines an invalid validator status. */
@@ -626,6 +626,8 @@ export interface Params {
     bondDenom: string;
     /** min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators */
     minCommissionRate: string;
+    /** min_self_delegation is the chain-wide minimum amount that a validator has to self delegate */
+    minSelfDelegation: string;
 }
 export interface ParamsProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.Params";
@@ -645,9 +647,11 @@ export interface ParamsAmino {
     bond_denom: string;
     /** min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators */
     min_commission_rate: string;
+    /** min_self_delegation is the chain-wide minimum amount that a validator has to self delegate */
+    min_self_delegation: string;
 }
 export interface ParamsAminoMsg {
-    type: "cosmos-sdk/Params";
+    type: "cosmos-sdk/x/staking/Params";
     value: ParamsAmino;
 }
 /** Params defines the parameters for the staking module. */
@@ -658,6 +662,7 @@ export interface ParamsSDKType {
     historical_entries: number;
     bond_denom: string;
     min_commission_rate: string;
+    min_self_delegation: string;
 }
 /**
  * DelegationResponse is equivalent to Delegation except that it contains a
@@ -794,6 +799,7 @@ export interface PoolSDKType {
     bonded_tokens: string;
 }
 export declare const HistoricalInfo: {
+    typeUrl: string;
     encode(message: HistoricalInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HistoricalInfo;
     fromPartial(object: Partial<HistoricalInfo>): HistoricalInfo;
@@ -806,6 +812,7 @@ export declare const HistoricalInfo: {
     toProtoMsg(message: HistoricalInfo): HistoricalInfoProtoMsg;
 };
 export declare const CommissionRates: {
+    typeUrl: string;
     encode(message: CommissionRates, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommissionRates;
     fromPartial(object: Partial<CommissionRates>): CommissionRates;
@@ -818,6 +825,7 @@ export declare const CommissionRates: {
     toProtoMsg(message: CommissionRates): CommissionRatesProtoMsg;
 };
 export declare const Commission: {
+    typeUrl: string;
     encode(message: Commission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Commission;
     fromPartial(object: Partial<Commission>): Commission;
@@ -830,6 +838,7 @@ export declare const Commission: {
     toProtoMsg(message: Commission): CommissionProtoMsg;
 };
 export declare const Description: {
+    typeUrl: string;
     encode(message: Description, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Description;
     fromPartial(object: Partial<Description>): Description;
@@ -842,6 +851,7 @@ export declare const Description: {
     toProtoMsg(message: Description): DescriptionProtoMsg;
 };
 export declare const Validator: {
+    typeUrl: string;
     encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
     fromPartial(object: Partial<Validator>): Validator;
@@ -854,6 +864,7 @@ export declare const Validator: {
     toProtoMsg(message: Validator): ValidatorProtoMsg;
 };
 export declare const ValAddresses: {
+    typeUrl: string;
     encode(message: ValAddresses, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValAddresses;
     fromPartial(object: Partial<ValAddresses>): ValAddresses;
@@ -866,6 +877,7 @@ export declare const ValAddresses: {
     toProtoMsg(message: ValAddresses): ValAddressesProtoMsg;
 };
 export declare const DVPair: {
+    typeUrl: string;
     encode(message: DVPair, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVPair;
     fromPartial(object: Partial<DVPair>): DVPair;
@@ -878,6 +890,7 @@ export declare const DVPair: {
     toProtoMsg(message: DVPair): DVPairProtoMsg;
 };
 export declare const DVPairs: {
+    typeUrl: string;
     encode(message: DVPairs, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVPairs;
     fromPartial(object: Partial<DVPairs>): DVPairs;
@@ -890,6 +903,7 @@ export declare const DVPairs: {
     toProtoMsg(message: DVPairs): DVPairsProtoMsg;
 };
 export declare const DVVTriplet: {
+    typeUrl: string;
     encode(message: DVVTriplet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplet;
     fromPartial(object: Partial<DVVTriplet>): DVVTriplet;
@@ -902,6 +916,7 @@ export declare const DVVTriplet: {
     toProtoMsg(message: DVVTriplet): DVVTripletProtoMsg;
 };
 export declare const DVVTriplets: {
+    typeUrl: string;
     encode(message: DVVTriplets, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplets;
     fromPartial(object: Partial<DVVTriplets>): DVVTriplets;
@@ -914,6 +929,7 @@ export declare const DVVTriplets: {
     toProtoMsg(message: DVVTriplets): DVVTripletsProtoMsg;
 };
 export declare const Delegation: {
+    typeUrl: string;
     encode(message: Delegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Delegation;
     fromPartial(object: Partial<Delegation>): Delegation;
@@ -926,6 +942,7 @@ export declare const Delegation: {
     toProtoMsg(message: Delegation): DelegationProtoMsg;
 };
 export declare const UnbondingDelegation: {
+    typeUrl: string;
     encode(message: UnbondingDelegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegation;
     fromPartial(object: Partial<UnbondingDelegation>): UnbondingDelegation;
@@ -938,6 +955,7 @@ export declare const UnbondingDelegation: {
     toProtoMsg(message: UnbondingDelegation): UnbondingDelegationProtoMsg;
 };
 export declare const UnbondingDelegationEntry: {
+    typeUrl: string;
     encode(message: UnbondingDelegationEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegationEntry;
     fromPartial(object: Partial<UnbondingDelegationEntry>): UnbondingDelegationEntry;
@@ -950,6 +968,7 @@ export declare const UnbondingDelegationEntry: {
     toProtoMsg(message: UnbondingDelegationEntry): UnbondingDelegationEntryProtoMsg;
 };
 export declare const RedelegationEntry: {
+    typeUrl: string;
     encode(message: RedelegationEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntry;
     fromPartial(object: Partial<RedelegationEntry>): RedelegationEntry;
@@ -962,6 +981,7 @@ export declare const RedelegationEntry: {
     toProtoMsg(message: RedelegationEntry): RedelegationEntryProtoMsg;
 };
 export declare const Redelegation: {
+    typeUrl: string;
     encode(message: Redelegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Redelegation;
     fromPartial(object: Partial<Redelegation>): Redelegation;
@@ -974,6 +994,7 @@ export declare const Redelegation: {
     toProtoMsg(message: Redelegation): RedelegationProtoMsg;
 };
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
@@ -986,6 +1007,7 @@ export declare const Params: {
     toProtoMsg(message: Params): ParamsProtoMsg;
 };
 export declare const DelegationResponse: {
+    typeUrl: string;
     encode(message: DelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegationResponse;
     fromPartial(object: Partial<DelegationResponse>): DelegationResponse;
@@ -998,6 +1020,7 @@ export declare const DelegationResponse: {
     toProtoMsg(message: DelegationResponse): DelegationResponseProtoMsg;
 };
 export declare const RedelegationEntryResponse: {
+    typeUrl: string;
     encode(message: RedelegationEntryResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntryResponse;
     fromPartial(object: Partial<RedelegationEntryResponse>): RedelegationEntryResponse;
@@ -1010,6 +1033,7 @@ export declare const RedelegationEntryResponse: {
     toProtoMsg(message: RedelegationEntryResponse): RedelegationEntryResponseProtoMsg;
 };
 export declare const RedelegationResponse: {
+    typeUrl: string;
     encode(message: RedelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationResponse;
     fromPartial(object: Partial<RedelegationResponse>): RedelegationResponse;
@@ -1022,6 +1046,7 @@ export declare const RedelegationResponse: {
     toProtoMsg(message: RedelegationResponse): RedelegationResponseProtoMsg;
 };
 export declare const Pool: {
+    typeUrl: string;
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
     fromPartial(object: Partial<Pool>): Pool;

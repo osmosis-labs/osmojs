@@ -343,6 +343,7 @@ export interface QueryClaimableFeesResponseSDKType {
     claimable_fees: CoinSDKType[];
 }
 export declare const QueryUserPositionsRequest: {
+    typeUrl: string;
     encode(message: QueryUserPositionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionsRequest;
     fromPartial(object: Partial<QueryUserPositionsRequest>): QueryUserPositionsRequest;
@@ -355,6 +356,7 @@ export declare const QueryUserPositionsRequest: {
     toProtoMsg(message: QueryUserPositionsRequest): QueryUserPositionsRequestProtoMsg;
 };
 export declare const QueryUserPositionsResponse: {
+    typeUrl: string;
     encode(message: QueryUserPositionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUserPositionsResponse;
     fromPartial(object: Partial<QueryUserPositionsResponse>): QueryUserPositionsResponse;
@@ -367,6 +369,7 @@ export declare const QueryUserPositionsResponse: {
     toProtoMsg(message: QueryUserPositionsResponse): QueryUserPositionsResponseProtoMsg;
 };
 export declare const QueryPositionByIdRequest: {
+    typeUrl: string;
     encode(message: QueryPositionByIdRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPositionByIdRequest;
     fromPartial(object: Partial<QueryPositionByIdRequest>): QueryPositionByIdRequest;
@@ -379,6 +382,7 @@ export declare const QueryPositionByIdRequest: {
     toProtoMsg(message: QueryPositionByIdRequest): QueryPositionByIdRequestProtoMsg;
 };
 export declare const QueryPositionByIdResponse: {
+    typeUrl: string;
     encode(message: QueryPositionByIdResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPositionByIdResponse;
     fromPartial(object: Partial<QueryPositionByIdResponse>): QueryPositionByIdResponse;
@@ -391,6 +395,7 @@ export declare const QueryPositionByIdResponse: {
     toProtoMsg(message: QueryPositionByIdResponse): QueryPositionByIdResponseProtoMsg;
 };
 export declare const QueryPoolsRequest: {
+    typeUrl: string;
     encode(message: QueryPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsRequest;
     fromPartial(object: Partial<QueryPoolsRequest>): QueryPoolsRequest;
@@ -403,6 +408,7 @@ export declare const QueryPoolsRequest: {
     toProtoMsg(message: QueryPoolsRequest): QueryPoolsRequestProtoMsg;
 };
 export declare const QueryPoolsResponse: {
+    typeUrl: string;
     encode(message: QueryPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponse;
     fromPartial(object: Partial<QueryPoolsResponse>): QueryPoolsResponse;
@@ -415,6 +421,7 @@ export declare const QueryPoolsResponse: {
     toProtoMsg(message: QueryPoolsResponse): QueryPoolsResponseProtoMsg;
 };
 export declare const QueryParamsRequest: {
+    typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
@@ -427,6 +434,7 @@ export declare const QueryParamsRequest: {
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
 export declare const QueryParamsResponse: {
+    typeUrl: string;
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
@@ -439,6 +447,7 @@ export declare const QueryParamsResponse: {
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
 export declare const TickLiquidityNet: {
+    typeUrl: string;
     encode(message: TickLiquidityNet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TickLiquidityNet;
     fromPartial(object: Partial<TickLiquidityNet>): TickLiquidityNet;
@@ -451,6 +460,7 @@ export declare const TickLiquidityNet: {
     toProtoMsg(message: TickLiquidityNet): TickLiquidityNetProtoMsg;
 };
 export declare const LiquidityDepthWithRange: {
+    typeUrl: string;
     encode(message: LiquidityDepthWithRange, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityDepthWithRange;
     fromPartial(object: Partial<LiquidityDepthWithRange>): LiquidityDepthWithRange;
@@ -463,6 +473,7 @@ export declare const LiquidityDepthWithRange: {
     toProtoMsg(message: LiquidityDepthWithRange): LiquidityDepthWithRangeProtoMsg;
 };
 export declare const QueryLiquidityNetInDirectionRequest: {
+    typeUrl: string;
     encode(message: QueryLiquidityNetInDirectionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLiquidityNetInDirectionRequest;
     fromPartial(object: Partial<QueryLiquidityNetInDirectionRequest>): QueryLiquidityNetInDirectionRequest;
@@ -475,6 +486,7 @@ export declare const QueryLiquidityNetInDirectionRequest: {
     toProtoMsg(message: QueryLiquidityNetInDirectionRequest): QueryLiquidityNetInDirectionRequestProtoMsg;
 };
 export declare const QueryLiquidityNetInDirectionResponse: {
+    typeUrl: string;
     encode(message: QueryLiquidityNetInDirectionResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLiquidityNetInDirectionResponse;
     fromPartial(object: Partial<QueryLiquidityNetInDirectionResponse>): QueryLiquidityNetInDirectionResponse;
@@ -487,6 +499,7 @@ export declare const QueryLiquidityNetInDirectionResponse: {
     toProtoMsg(message: QueryLiquidityNetInDirectionResponse): QueryLiquidityNetInDirectionResponseProtoMsg;
 };
 export declare const QueryTotalLiquidityForRangeRequest: {
+    typeUrl: string;
     encode(message: QueryTotalLiquidityForRangeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityForRangeRequest;
     fromPartial(object: Partial<QueryTotalLiquidityForRangeRequest>): QueryTotalLiquidityForRangeRequest;
@@ -499,6 +512,7 @@ export declare const QueryTotalLiquidityForRangeRequest: {
     toProtoMsg(message: QueryTotalLiquidityForRangeRequest): QueryTotalLiquidityForRangeRequestProtoMsg;
 };
 export declare const QueryTotalLiquidityForRangeResponse: {
+    typeUrl: string;
     encode(message: QueryTotalLiquidityForRangeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityForRangeResponse;
     fromPartial(object: Partial<QueryTotalLiquidityForRangeResponse>): QueryTotalLiquidityForRangeResponse;
@@ -511,6 +525,7 @@ export declare const QueryTotalLiquidityForRangeResponse: {
     toProtoMsg(message: QueryTotalLiquidityForRangeResponse): QueryTotalLiquidityForRangeResponseProtoMsg;
 };
 export declare const QueryClaimableFeesRequest: {
+    typeUrl: string;
     encode(message: QueryClaimableFeesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimableFeesRequest;
     fromPartial(object: Partial<QueryClaimableFeesRequest>): QueryClaimableFeesRequest;
@@ -523,6 +538,7 @@ export declare const QueryClaimableFeesRequest: {
     toProtoMsg(message: QueryClaimableFeesRequest): QueryClaimableFeesRequestProtoMsg;
 };
 export declare const QueryClaimableFeesResponse: {
+    typeUrl: string;
     encode(message: QueryClaimableFeesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClaimableFeesResponse;
     fromPartial(object: Partial<QueryClaimableFeesResponse>): QueryClaimableFeesResponse;

@@ -2,8 +2,8 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Channel, ChannelAmino, ChannelSDKType, IdentifiedChannel, IdentifiedChannelAmino, IdentifiedChannelSDKType, PacketState, PacketStateAmino, PacketStateSDKType } from "./channel";
 import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType } from "../../client/v1/client";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** QueryChannelRequest is the request type for the Query/Channel RPC method */
 
 export interface QueryChannelRequest {

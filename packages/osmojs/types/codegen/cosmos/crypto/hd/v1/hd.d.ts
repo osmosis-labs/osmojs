@@ -48,6 +48,7 @@ export interface BIP44ParamsSDKType {
     address_index: number;
 }
 export declare const BIP44Params: {
+    typeUrl: string;
     encode(message: BIP44Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BIP44Params;
     fromPartial(object: Partial<BIP44Params>): BIP44Params;

@@ -203,6 +203,7 @@ export interface QueryBeforeSendHookAddressResponseSDKType {
     cosmwasm_address: string;
 }
 export declare const QueryParamsRequest: {
+    typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
@@ -215,6 +216,7 @@ export declare const QueryParamsRequest: {
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
 export declare const QueryParamsResponse: {
+    typeUrl: string;
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
@@ -227,6 +229,7 @@ export declare const QueryParamsResponse: {
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
 export declare const QueryDenomAuthorityMetadataRequest: {
+    typeUrl: string;
     encode(message: QueryDenomAuthorityMetadataRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomAuthorityMetadataRequest;
     fromPartial(object: Partial<QueryDenomAuthorityMetadataRequest>): QueryDenomAuthorityMetadataRequest;
@@ -239,6 +242,7 @@ export declare const QueryDenomAuthorityMetadataRequest: {
     toProtoMsg(message: QueryDenomAuthorityMetadataRequest): QueryDenomAuthorityMetadataRequestProtoMsg;
 };
 export declare const QueryDenomAuthorityMetadataResponse: {
+    typeUrl: string;
     encode(message: QueryDenomAuthorityMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomAuthorityMetadataResponse;
     fromPartial(object: Partial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse;
@@ -251,6 +255,7 @@ export declare const QueryDenomAuthorityMetadataResponse: {
     toProtoMsg(message: QueryDenomAuthorityMetadataResponse): QueryDenomAuthorityMetadataResponseProtoMsg;
 };
 export declare const QueryDenomsFromCreatorRequest: {
+    typeUrl: string;
     encode(message: QueryDenomsFromCreatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsFromCreatorRequest;
     fromPartial(object: Partial<QueryDenomsFromCreatorRequest>): QueryDenomsFromCreatorRequest;
@@ -263,6 +268,7 @@ export declare const QueryDenomsFromCreatorRequest: {
     toProtoMsg(message: QueryDenomsFromCreatorRequest): QueryDenomsFromCreatorRequestProtoMsg;
 };
 export declare const QueryDenomsFromCreatorResponse: {
+    typeUrl: string;
     encode(message: QueryDenomsFromCreatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsFromCreatorResponse;
     fromPartial(object: Partial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse;
@@ -275,6 +281,7 @@ export declare const QueryDenomsFromCreatorResponse: {
     toProtoMsg(message: QueryDenomsFromCreatorResponse): QueryDenomsFromCreatorResponseProtoMsg;
 };
 export declare const QueryBeforeSendHookAddressRequest: {
+    typeUrl: string;
     encode(message: QueryBeforeSendHookAddressRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBeforeSendHookAddressRequest;
     fromPartial(object: Partial<QueryBeforeSendHookAddressRequest>): QueryBeforeSendHookAddressRequest;
@@ -287,6 +294,7 @@ export declare const QueryBeforeSendHookAddressRequest: {
     toProtoMsg(message: QueryBeforeSendHookAddressRequest): QueryBeforeSendHookAddressRequestProtoMsg;
 };
 export declare const QueryBeforeSendHookAddressResponse: {
+    typeUrl: string;
     encode(message: QueryBeforeSendHookAddressResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBeforeSendHookAddressResponse;
     fromPartial(object: Partial<QueryBeforeSendHookAddressResponse>): QueryBeforeSendHookAddressResponse;

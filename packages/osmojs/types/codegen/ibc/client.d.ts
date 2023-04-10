@@ -97,6 +97,36 @@ export declare const ibcAminoConverters: {
         toAmino: (message: import("./applications/transfer/v1/tx").MsgTransfer) => import("./applications/transfer/v1/tx").MsgTransferAmino;
         fromAmino: (object: import("./applications/transfer/v1/tx").MsgTransferAmino) => import("./applications/transfer/v1/tx").MsgTransfer;
     };
+    "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount": {
+        aminoType: string;
+        toAmino: (message: import("./applications/interchain_accounts/controller/v1/tx").MsgRegisterInterchainAccount) => import("./applications/interchain_accounts/controller/v1/tx").MsgRegisterInterchainAccountAmino;
+        fromAmino: (object: import("./applications/interchain_accounts/controller/v1/tx").MsgRegisterInterchainAccountAmino) => import("./applications/interchain_accounts/controller/v1/tx").MsgRegisterInterchainAccount;
+    };
+    "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx": {
+        aminoType: string;
+        toAmino: (message: import("./applications/interchain_accounts/controller/v1/tx").MsgSendTx) => import("./applications/interchain_accounts/controller/v1/tx").MsgSendTxAmino;
+        fromAmino: (object: import("./applications/interchain_accounts/controller/v1/tx").MsgSendTxAmino) => import("./applications/interchain_accounts/controller/v1/tx").MsgSendTx;
+    };
+    "/ibc.applications.fee.v1.MsgRegisterPayee": {
+        aminoType: string;
+        toAmino: (message: import("./applications/fee/v1/tx").MsgRegisterPayee) => import("./applications/fee/v1/tx").MsgRegisterPayeeAmino;
+        fromAmino: (object: import("./applications/fee/v1/tx").MsgRegisterPayeeAmino) => import("./applications/fee/v1/tx").MsgRegisterPayee;
+    };
+    "/ibc.applications.fee.v1.MsgRegisterCounterpartyPayee": {
+        aminoType: string;
+        toAmino: (message: import("./applications/fee/v1/tx").MsgRegisterCounterpartyPayee) => import("./applications/fee/v1/tx").MsgRegisterCounterpartyPayeeAmino;
+        fromAmino: (object: import("./applications/fee/v1/tx").MsgRegisterCounterpartyPayeeAmino) => import("./applications/fee/v1/tx").MsgRegisterCounterpartyPayee;
+    };
+    "/ibc.applications.fee.v1.MsgPayPacketFee": {
+        aminoType: string;
+        toAmino: (message: import("./applications/fee/v1/tx").MsgPayPacketFee) => import("./applications/fee/v1/tx").MsgPayPacketFeeAmino;
+        fromAmino: (object: import("./applications/fee/v1/tx").MsgPayPacketFeeAmino) => import("./applications/fee/v1/tx").MsgPayPacketFee;
+    };
+    "/ibc.applications.fee.v1.MsgPayPacketFeeAsync": {
+        aminoType: string;
+        toAmino: (message: import("./applications/fee/v1/tx").MsgPayPacketFeeAsync) => import("./applications/fee/v1/tx").MsgPayPacketFeeAsyncAmino;
+        fromAmino: (object: import("./applications/fee/v1/tx").MsgPayPacketFeeAsyncAmino) => import("./applications/fee/v1/tx").MsgPayPacketFeeAsync;
+    };
 };
 export declare const ibcProtoRegistry: ReadonlyArray<[string, GeneratedType]>;
 export declare const getSigningIbcClientOptions: ({ defaultTypes }?: {

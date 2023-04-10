@@ -1,7 +1,5 @@
-import { Grant, GrantAmino, GrantSDKType, GenericAuthorization } from "./authz";
+import { Grant, GrantAmino, GrantSDKType } from "./authz";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { SendAuthorization } from "../../bank/v1beta1/authz";
-import { StakeAuthorization } from "../../staking/v1beta1/authz";
 import * as _m0 from "protobufjs/minimal";
 
 /**
@@ -431,7 +429,7 @@ export const MsgExec = {
           break;
 
         case 2:
-          message.msgs.push((Sdk_MsgcosmosauthzAuthorization_InterfaceDecoder(reader) as Any));
+          message.msgs.push((Sdk_MsgauthzAuthorization_InterfaceDecoder(reader) as Any));
           break;
 
         default:
@@ -453,7 +451,7 @@ export const MsgExec = {
   fromAmino(object: MsgExecAmino): MsgExec {
     return {
       grantee: object.grantee,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_MsgcosmosauthzAuthorization_FromAmino(e)) : []
+      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_MsgauthzAuthorization_FromAmino(e)) : []
     };
   },
 
@@ -462,7 +460,7 @@ export const MsgExec = {
     obj.grantee = message.grantee;
 
     if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Sdk_MsgcosmosauthzAuthorization_ToAmino((e as Any)) : undefined);
+      obj.msgs = message.msgs.map(e => e ? Sdk_MsgauthzAuthorization_ToAmino((e as Any)) : undefined);
     } else {
       obj.msgs = [];
     }
@@ -763,69 +761,18 @@ export const Sdk_Msg_FromAmino = (content: AnyAmino) => {
 export const Sdk_Msg_ToAmino = (content: Any) => {
   return Any.toAmino(content);
 };
-export const Cosmos_authzAuthorization_InterfaceDecoder = (input: _m0.Reader | Uint8Array): GenericAuthorization | SendAuthorization | StakeAuthorization | Any => {
+export const Authz_Authorization_InterfaceDecoder = (input: _m0.Reader | Uint8Array): Any => {
   const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
   const data = Any.decode(reader, reader.uint32());
 
   switch (data.typeUrl) {
-    case "/cosmos.authz.v1beta1.GenericAuthorization":
-      return GenericAuthorization.decode(data.value);
-
-    case "/cosmos.bank.v1beta1.SendAuthorization":
-      return SendAuthorization.decode(data.value);
-
-    case "/cosmos.staking.v1beta1.StakeAuthorization":
-      return StakeAuthorization.decode(data.value);
-
     default:
       return data;
   }
 };
-export const Cosmos_authzAuthorization_FromAmino = (content: AnyAmino) => {
-  switch (content.type) {
-    case "cosmos-sdk/GenericAuthorization":
-      return Any.fromPartial({
-        typeUrl: "/cosmos.authz.v1beta1.GenericAuthorization",
-        value: GenericAuthorization.encode(GenericAuthorization.fromPartial(GenericAuthorization.fromAmino(content.value))).finish()
-      });
-
-    case "cosmos-sdk/SendAuthorization":
-      return Any.fromPartial({
-        typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",
-        value: SendAuthorization.encode(SendAuthorization.fromPartial(SendAuthorization.fromAmino(content.value))).finish()
-      });
-
-    case "cosmos-sdk/StakeAuthorization":
-      return Any.fromPartial({
-        typeUrl: "/cosmos.staking.v1beta1.StakeAuthorization",
-        value: StakeAuthorization.encode(StakeAuthorization.fromPartial(StakeAuthorization.fromAmino(content.value))).finish()
-      });
-
-    default:
-      return Any.fromAmino(content);
-  }
+export const Authz_Authorization_FromAmino = (content: AnyAmino) => {
+  return Any.fromAmino(content);
 };
-export const Cosmos_authzAuthorization_ToAmino = (content: Any) => {
-  switch (content.typeUrl) {
-    case "/cosmos.authz.v1beta1.GenericAuthorization":
-      return {
-        type: "cosmos-sdk/GenericAuthorization",
-        value: GenericAuthorization.toAmino(GenericAuthorization.decode(content.value))
-      };
-
-    case "/cosmos.bank.v1beta1.SendAuthorization":
-      return {
-        type: "cosmos-sdk/SendAuthorization",
-        value: SendAuthorization.toAmino(SendAuthorization.decode(content.value))
-      };
-
-    case "/cosmos.staking.v1beta1.StakeAuthorization":
-      return {
-        type: "cosmos-sdk/StakeAuthorization",
-        value: StakeAuthorization.toAmino(StakeAuthorization.decode(content.value))
-      };
-
-    default:
-      return Any.toAmino(content);
-  }
+export const Authz_Authorization_ToAmino = (content: Any) => {
+  return Any.toAmino(content);
 };

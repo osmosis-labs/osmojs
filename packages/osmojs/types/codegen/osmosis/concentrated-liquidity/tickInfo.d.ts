@@ -44,6 +44,7 @@ export interface UptimeTrackerSDKType {
     uptime_growth_outside: DecCoinSDKType[];
 }
 export declare const TickInfo: {
+    typeUrl: string;
     encode(message: TickInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TickInfo;
     fromPartial(object: Partial<TickInfo>): TickInfo;
@@ -56,6 +57,7 @@ export declare const TickInfo: {
     toProtoMsg(message: TickInfo): TickInfoProtoMsg;
 };
 export declare const UptimeTracker: {
+    typeUrl: string;
     encode(message: UptimeTracker, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UptimeTracker;
     fromPartial(object: Partial<UptimeTracker>): UptimeTracker;

@@ -1,6 +1,7 @@
 import { Long } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface CosmWasmPool {
+    $typeUrl?: string;
     poolAddress: string;
     contractAddress: string;
     poolId: Long;
@@ -21,12 +22,14 @@ export interface CosmWasmPoolAminoMsg {
     value: CosmWasmPoolAmino;
 }
 export interface CosmWasmPoolSDKType {
+    $typeUrl?: string;
     pool_address: string;
     contract_address: string;
     pool_id: Long;
     code_id: Long;
 }
 export declare const CosmWasmPool: {
+    typeUrl: string;
     encode(message: CosmWasmPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CosmWasmPool;
     fromPartial(object: Partial<CosmWasmPool>): CosmWasmPool;

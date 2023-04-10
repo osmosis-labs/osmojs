@@ -1,7 +1,7 @@
 import { ValidatorPreference, ValidatorPreferenceAmino, ValidatorPreferenceSDKType } from "./state";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** MsgCreateValidatorSetPreference is a list that holds validator-set. */
 export interface MsgSetValidatorSetPreference {
     /** delegator is the user who is trying to create a validator-set. */
@@ -290,6 +290,7 @@ export interface MsgDelegateBondedTokensResponseAminoMsg {
 export interface MsgDelegateBondedTokensResponseSDKType {
 }
 export declare const MsgSetValidatorSetPreference: {
+    typeUrl: string;
     encode(message: MsgSetValidatorSetPreference, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetValidatorSetPreference;
     fromPartial(object: Partial<MsgSetValidatorSetPreference>): MsgSetValidatorSetPreference;
@@ -302,6 +303,7 @@ export declare const MsgSetValidatorSetPreference: {
     toProtoMsg(message: MsgSetValidatorSetPreference): MsgSetValidatorSetPreferenceProtoMsg;
 };
 export declare const MsgSetValidatorSetPreferenceResponse: {
+    typeUrl: string;
     encode(_: MsgSetValidatorSetPreferenceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetValidatorSetPreferenceResponse;
     fromPartial(_: Partial<MsgSetValidatorSetPreferenceResponse>): MsgSetValidatorSetPreferenceResponse;
@@ -314,6 +316,7 @@ export declare const MsgSetValidatorSetPreferenceResponse: {
     toProtoMsg(message: MsgSetValidatorSetPreferenceResponse): MsgSetValidatorSetPreferenceResponseProtoMsg;
 };
 export declare const MsgDelegateToValidatorSet: {
+    typeUrl: string;
     encode(message: MsgDelegateToValidatorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateToValidatorSet;
     fromPartial(object: Partial<MsgDelegateToValidatorSet>): MsgDelegateToValidatorSet;
@@ -326,6 +329,7 @@ export declare const MsgDelegateToValidatorSet: {
     toProtoMsg(message: MsgDelegateToValidatorSet): MsgDelegateToValidatorSetProtoMsg;
 };
 export declare const MsgDelegateToValidatorSetResponse: {
+    typeUrl: string;
     encode(_: MsgDelegateToValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateToValidatorSetResponse;
     fromPartial(_: Partial<MsgDelegateToValidatorSetResponse>): MsgDelegateToValidatorSetResponse;
@@ -338,6 +342,7 @@ export declare const MsgDelegateToValidatorSetResponse: {
     toProtoMsg(message: MsgDelegateToValidatorSetResponse): MsgDelegateToValidatorSetResponseProtoMsg;
 };
 export declare const MsgUndelegateFromValidatorSet: {
+    typeUrl: string;
     encode(message: MsgUndelegateFromValidatorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateFromValidatorSet;
     fromPartial(object: Partial<MsgUndelegateFromValidatorSet>): MsgUndelegateFromValidatorSet;
@@ -350,6 +355,7 @@ export declare const MsgUndelegateFromValidatorSet: {
     toProtoMsg(message: MsgUndelegateFromValidatorSet): MsgUndelegateFromValidatorSetProtoMsg;
 };
 export declare const MsgUndelegateFromValidatorSetResponse: {
+    typeUrl: string;
     encode(_: MsgUndelegateFromValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateFromValidatorSetResponse;
     fromPartial(_: Partial<MsgUndelegateFromValidatorSetResponse>): MsgUndelegateFromValidatorSetResponse;
@@ -362,6 +368,7 @@ export declare const MsgUndelegateFromValidatorSetResponse: {
     toProtoMsg(message: MsgUndelegateFromValidatorSetResponse): MsgUndelegateFromValidatorSetResponseProtoMsg;
 };
 export declare const MsgRedelegateValidatorSet: {
+    typeUrl: string;
     encode(message: MsgRedelegateValidatorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRedelegateValidatorSet;
     fromPartial(object: Partial<MsgRedelegateValidatorSet>): MsgRedelegateValidatorSet;
@@ -374,6 +381,7 @@ export declare const MsgRedelegateValidatorSet: {
     toProtoMsg(message: MsgRedelegateValidatorSet): MsgRedelegateValidatorSetProtoMsg;
 };
 export declare const MsgRedelegateValidatorSetResponse: {
+    typeUrl: string;
     encode(_: MsgRedelegateValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRedelegateValidatorSetResponse;
     fromPartial(_: Partial<MsgRedelegateValidatorSetResponse>): MsgRedelegateValidatorSetResponse;
@@ -386,6 +394,7 @@ export declare const MsgRedelegateValidatorSetResponse: {
     toProtoMsg(message: MsgRedelegateValidatorSetResponse): MsgRedelegateValidatorSetResponseProtoMsg;
 };
 export declare const MsgWithdrawDelegationRewards: {
+    typeUrl: string;
     encode(message: MsgWithdrawDelegationRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegationRewards;
     fromPartial(object: Partial<MsgWithdrawDelegationRewards>): MsgWithdrawDelegationRewards;
@@ -398,6 +407,7 @@ export declare const MsgWithdrawDelegationRewards: {
     toProtoMsg(message: MsgWithdrawDelegationRewards): MsgWithdrawDelegationRewardsProtoMsg;
 };
 export declare const MsgWithdrawDelegationRewardsResponse: {
+    typeUrl: string;
     encode(_: MsgWithdrawDelegationRewardsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegationRewardsResponse;
     fromPartial(_: Partial<MsgWithdrawDelegationRewardsResponse>): MsgWithdrawDelegationRewardsResponse;
@@ -410,6 +420,7 @@ export declare const MsgWithdrawDelegationRewardsResponse: {
     toProtoMsg(message: MsgWithdrawDelegationRewardsResponse): MsgWithdrawDelegationRewardsResponseProtoMsg;
 };
 export declare const MsgDelegateBondedTokens: {
+    typeUrl: string;
     encode(message: MsgDelegateBondedTokens, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateBondedTokens;
     fromPartial(object: Partial<MsgDelegateBondedTokens>): MsgDelegateBondedTokens;
@@ -422,6 +433,7 @@ export declare const MsgDelegateBondedTokens: {
     toProtoMsg(message: MsgDelegateBondedTokens): MsgDelegateBondedTokensProtoMsg;
 };
 export declare const MsgDelegateBondedTokensResponse: {
+    typeUrl: string;
     encode(_: MsgDelegateBondedTokensResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateBondedTokensResponse;
     fromPartial(_: Partial<MsgDelegateBondedTokensResponse>): MsgDelegateBondedTokensResponse;

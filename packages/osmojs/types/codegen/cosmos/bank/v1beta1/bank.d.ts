@@ -15,7 +15,7 @@ export interface ParamsAmino {
     default_send_enabled: boolean;
 }
 export interface ParamsAminoMsg {
-    type: "cosmos-sdk/Params";
+    type: "cosmos-sdk/x/bank/Params";
     value: ParamsAmino;
 }
 /** Params defines the parameters for the bank module. */
@@ -108,6 +108,7 @@ export interface OutputSDKType {
  */
 /** @deprecated */
 export interface Supply {
+    $typeUrl?: string;
     total: Coin[];
 }
 export interface SupplyProtoMsg {
@@ -134,6 +135,7 @@ export interface SupplyAminoMsg {
  */
 /** @deprecated */
 export interface SupplySDKType {
+    $typeUrl?: string;
     total: CoinSDKType[];
 }
 /**
@@ -146,7 +148,7 @@ export interface DenomUnit {
     /**
      * exponent represents power of 10 exponent that one must
      * raise the base_denom to in order to equal the given DenomUnit's denom
-     * 1 denom = 10^exponent base_denom
+     * 1 denom = 1^exponent base_denom
      * (e.g. with a base_denom of uatom, one can create a DenomUnit of 'atom' with
      * exponent = 6, thus: 1 atom = 10^6 uatom).
      */
@@ -168,7 +170,7 @@ export interface DenomUnitAmino {
     /**
      * exponent represents power of 10 exponent that one must
      * raise the base_denom to in order to equal the given DenomUnit's denom
-     * 1 denom = 10^exponent base_denom
+     * 1 denom = 1^exponent base_denom
      * (e.g. with a base_denom of uatom, one can create a DenomUnit of 'atom' with
      * exponent = 6, thus: 1 atom = 10^6 uatom).
      */
@@ -217,19 +219,6 @@ export interface Metadata {
      * Since: cosmos-sdk 0.43
      */
     symbol: string;
-    /**
-     * URI to a document (on or off-chain) that contains additional information. Optional.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    uri: string;
-    /**
-     * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
-     * the document didn't change. Optional.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    uriHash: string;
 }
 export interface MetadataProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.Metadata";
@@ -263,19 +252,6 @@ export interface MetadataAmino {
      * Since: cosmos-sdk 0.43
      */
     symbol: string;
-    /**
-     * URI to a document (on or off-chain) that contains additional information. Optional.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    uri: string;
-    /**
-     * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
-     * the document didn't change. Optional.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    uri_hash: string;
 }
 export interface MetadataAminoMsg {
     type: "cosmos-sdk/Metadata";
@@ -292,10 +268,9 @@ export interface MetadataSDKType {
     display: string;
     name: string;
     symbol: string;
-    uri: string;
-    uri_hash: string;
 }
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
@@ -308,6 +283,7 @@ export declare const Params: {
     toProtoMsg(message: Params): ParamsProtoMsg;
 };
 export declare const SendEnabled: {
+    typeUrl: string;
     encode(message: SendEnabled, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SendEnabled;
     fromPartial(object: Partial<SendEnabled>): SendEnabled;
@@ -320,6 +296,7 @@ export declare const SendEnabled: {
     toProtoMsg(message: SendEnabled): SendEnabledProtoMsg;
 };
 export declare const Input: {
+    typeUrl: string;
     encode(message: Input, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Input;
     fromPartial(object: Partial<Input>): Input;
@@ -332,6 +309,7 @@ export declare const Input: {
     toProtoMsg(message: Input): InputProtoMsg;
 };
 export declare const Output: {
+    typeUrl: string;
     encode(message: Output, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Output;
     fromPartial(object: Partial<Output>): Output;
@@ -344,6 +322,7 @@ export declare const Output: {
     toProtoMsg(message: Output): OutputProtoMsg;
 };
 export declare const Supply: {
+    typeUrl: string;
     encode(message: Supply, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Supply;
     fromPartial(object: Partial<Supply>): Supply;
@@ -356,6 +335,7 @@ export declare const Supply: {
     toProtoMsg(message: Supply): SupplyProtoMsg;
 };
 export declare const DenomUnit: {
+    typeUrl: string;
     encode(message: DenomUnit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomUnit;
     fromPartial(object: Partial<DenomUnit>): DenomUnit;
@@ -368,6 +348,7 @@ export declare const DenomUnit: {
     toProtoMsg(message: DenomUnit): DenomUnitProtoMsg;
 };
 export declare const Metadata: {
+    typeUrl: string;
     encode(message: Metadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Metadata;
     fromPartial(object: Partial<Metadata>): Metadata;

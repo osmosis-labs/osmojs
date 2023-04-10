@@ -1,6 +1,6 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.
@@ -51,13 +51,6 @@ export interface BlockParams {
      * Note: must be greater or equal to -1
      */
     maxGas: Long;
-    /**
-     * Minimum time increment between consecutive blocks (in milliseconds) If the
-     * block header timestamp is ahead of the system clock, decrease this value.
-     *
-     * Not exposed to the application.
-     */
-    timeIotaMs: Long;
 }
 export interface BlockParamsProtoMsg {
     typeUrl: "/tendermint.types.BlockParams";
@@ -75,13 +68,6 @@ export interface BlockParamsAmino {
      * Note: must be greater or equal to -1
      */
     max_gas: string;
-    /**
-     * Minimum time increment between consecutive blocks (in milliseconds) If the
-     * block header timestamp is ahead of the system clock, decrease this value.
-     *
-     * Not exposed to the application.
-     */
-    time_iota_ms: string;
 }
 export interface BlockParamsAminoMsg {
     type: "/tendermint.types.BlockParams";
@@ -91,7 +77,6 @@ export interface BlockParamsAminoMsg {
 export interface BlockParamsSDKType {
     max_bytes: Long;
     max_gas: Long;
-    time_iota_ms: Long;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
 export interface EvidenceParams {
@@ -186,7 +171,7 @@ export interface ValidatorParamsSDKType {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParams {
-    appVersion: Long;
+    app: Long;
 }
 export interface VersionParamsProtoMsg {
     typeUrl: "/tendermint.types.VersionParams";
@@ -194,7 +179,7 @@ export interface VersionParamsProtoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsAmino {
-    app_version: string;
+    app: string;
 }
 export interface VersionParamsAminoMsg {
     type: "/tendermint.types.VersionParams";
@@ -202,7 +187,7 @@ export interface VersionParamsAminoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsSDKType {
-    app_version: Long;
+    app: Long;
 }
 /**
  * HashedParams is a subset of ConsensusParams.
@@ -240,6 +225,7 @@ export interface HashedParamsSDKType {
     block_max_gas: Long;
 }
 export declare const ConsensusParams: {
+    typeUrl: string;
     encode(message: ConsensusParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusParams;
     fromPartial(object: Partial<ConsensusParams>): ConsensusParams;
@@ -251,6 +237,7 @@ export declare const ConsensusParams: {
     toProtoMsg(message: ConsensusParams): ConsensusParamsProtoMsg;
 };
 export declare const BlockParams: {
+    typeUrl: string;
     encode(message: BlockParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockParams;
     fromPartial(object: Partial<BlockParams>): BlockParams;
@@ -262,6 +249,7 @@ export declare const BlockParams: {
     toProtoMsg(message: BlockParams): BlockParamsProtoMsg;
 };
 export declare const EvidenceParams: {
+    typeUrl: string;
     encode(message: EvidenceParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EvidenceParams;
     fromPartial(object: Partial<EvidenceParams>): EvidenceParams;
@@ -273,6 +261,7 @@ export declare const EvidenceParams: {
     toProtoMsg(message: EvidenceParams): EvidenceParamsProtoMsg;
 };
 export declare const ValidatorParams: {
+    typeUrl: string;
     encode(message: ValidatorParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorParams;
     fromPartial(object: Partial<ValidatorParams>): ValidatorParams;
@@ -284,6 +273,7 @@ export declare const ValidatorParams: {
     toProtoMsg(message: ValidatorParams): ValidatorParamsProtoMsg;
 };
 export declare const VersionParams: {
+    typeUrl: string;
     encode(message: VersionParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VersionParams;
     fromPartial(object: Partial<VersionParams>): VersionParams;
@@ -295,6 +285,7 @@ export declare const VersionParams: {
     toProtoMsg(message: VersionParams): VersionParamsProtoMsg;
 };
 export declare const HashedParams: {
+    typeUrl: string;
     encode(message: HashedParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HashedParams;
     fromPartial(object: Partial<HashedParams>): HashedParams;

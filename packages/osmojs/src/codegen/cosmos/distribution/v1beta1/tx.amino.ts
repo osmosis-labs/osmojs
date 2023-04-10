@@ -12,7 +12,7 @@ export const AminoConverter = {
     fromAmino: MsgWithdrawDelegatorReward.fromAmino
   },
   "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission": {
-    aminoType: "cosmos-sdk/MsgWithdrawValidatorCommission",
+    aminoType: "cosmos-sdk/MsgWithdrawValCommission",
     toAmino: MsgWithdrawValidatorCommission.toAmino,
     fromAmino: MsgWithdrawValidatorCommission.fromAmino
   },

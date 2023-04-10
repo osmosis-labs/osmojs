@@ -1,6 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * PoolParams defined the parameters that will be managed by the pool
  * governance in the future. This params are not managed by the chain

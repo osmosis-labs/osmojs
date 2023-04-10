@@ -28,6 +28,7 @@ export interface BlockSDKType {
     last_commit?: CommitSDKType;
 }
 export declare const Block: {
+    typeUrl: string;
     encode(message: Block, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Block;
     fromPartial(object: Partial<Block>): Block;

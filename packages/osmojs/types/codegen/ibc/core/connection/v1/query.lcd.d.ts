@@ -1,5 +1,5 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryConnectionRequest, QueryConnectionResponseSDKType, QueryConnectionsRequest, QueryConnectionsResponseSDKType, QueryClientConnectionsRequest, QueryClientConnectionsResponseSDKType, QueryConnectionClientStateRequest, QueryConnectionClientStateResponseSDKType, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponseSDKType } from "./query";
+import { QueryConnectionRequest, QueryConnectionResponseSDKType, QueryConnectionsRequest, QueryConnectionsResponseSDKType, QueryClientConnectionsRequest, QueryClientConnectionsResponseSDKType, QueryConnectionClientStateRequest, QueryConnectionClientStateResponseSDKType, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponseSDKType, QueryConnectionParamsRequest, QueryConnectionParamsResponseSDKType } from "./query";
 export declare class LCDQueryClient {
     req: LCDClient;
     constructor({ requestClient }: {
@@ -10,4 +10,5 @@ export declare class LCDQueryClient {
     clientConnections(params: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponseSDKType>;
     connectionClientState(params: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponseSDKType>;
     connectionConsensusState(params: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType>;
+    connectionParams(_params?: QueryConnectionParamsRequest): Promise<QueryConnectionParamsResponseSDKType>;
 }

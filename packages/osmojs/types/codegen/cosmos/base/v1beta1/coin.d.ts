@@ -116,6 +116,7 @@ export interface DecProtoSDKType {
     dec: string;
 }
 export declare const Coin: {
+    typeUrl: string;
     encode(message: Coin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Coin;
     fromPartial(object: Partial<Coin>): Coin;
@@ -128,6 +129,7 @@ export declare const Coin: {
     toProtoMsg(message: Coin): CoinProtoMsg;
 };
 export declare const DecCoin: {
+    typeUrl: string;
     encode(message: DecCoin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DecCoin;
     fromPartial(object: Partial<DecCoin>): DecCoin;
@@ -140,6 +142,7 @@ export declare const DecCoin: {
     toProtoMsg(message: DecCoin): DecCoinProtoMsg;
 };
 export declare const IntProto: {
+    typeUrl: string;
     encode(message: IntProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IntProto;
     fromPartial(object: Partial<IntProto>): IntProto;
@@ -152,6 +155,7 @@ export declare const IntProto: {
     toProtoMsg(message: IntProto): IntProtoProtoMsg;
 };
 export declare const DecProto: {
+    typeUrl: string;
     encode(message: DecProto, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DecProto;
     fromPartial(object: Partial<DecProto>): DecProto;

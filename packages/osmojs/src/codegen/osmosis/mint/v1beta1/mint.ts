@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** Minter represents the minting state. */
 
 export interface Minter {

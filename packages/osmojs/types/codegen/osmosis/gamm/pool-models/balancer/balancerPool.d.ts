@@ -1,7 +1,7 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * Parameters for changing the weights in a balancer pool smoothly from
  * a start weight and end weight over a period of time.
@@ -205,6 +205,7 @@ export interface PoolAssetSDKType {
     weight: string;
 }
 export interface Pool {
+    $typeUrl?: string;
     address: string;
     id: Long;
     poolParams?: PoolParams;
@@ -265,6 +266,7 @@ export interface PoolAminoMsg {
     value: PoolAmino;
 }
 export interface PoolSDKType {
+    $typeUrl?: string;
     address: string;
     id: Long;
     pool_params?: PoolParamsSDKType;
@@ -274,6 +276,7 @@ export interface PoolSDKType {
     total_weight: string;
 }
 export declare const SmoothWeightChangeParams: {
+    typeUrl: string;
     encode(message: SmoothWeightChangeParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SmoothWeightChangeParams;
     fromPartial(object: Partial<SmoothWeightChangeParams>): SmoothWeightChangeParams;
@@ -286,6 +289,7 @@ export declare const SmoothWeightChangeParams: {
     toProtoMsg(message: SmoothWeightChangeParams): SmoothWeightChangeParamsProtoMsg;
 };
 export declare const PoolParams: {
+    typeUrl: string;
     encode(message: PoolParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolParams;
     fromPartial(object: Partial<PoolParams>): PoolParams;
@@ -298,6 +302,7 @@ export declare const PoolParams: {
     toProtoMsg(message: PoolParams): PoolParamsProtoMsg;
 };
 export declare const PoolAsset: {
+    typeUrl: string;
     encode(message: PoolAsset, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolAsset;
     fromPartial(object: Partial<PoolAsset>): PoolAsset;
@@ -310,6 +315,7 @@ export declare const PoolAsset: {
     toProtoMsg(message: PoolAsset): PoolAssetProtoMsg;
 };
 export declare const Pool: {
+    typeUrl: string;
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
     fromPartial(object: Partial<Pool>): Pool;

@@ -54,6 +54,7 @@ export interface GenesisStateSDKType {
     tally_params?: TallyParamsSDKType;
 }
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;

@@ -64,15 +64,15 @@ export interface MsgCreateClientResponseAminoMsg {
 export interface MsgCreateClientResponseSDKType {}
 /**
  * MsgUpdateClient defines an sdk.Msg to update a IBC client state using
- * the given header.
+ * the given client message.
  */
 
 export interface MsgUpdateClient {
   /** client unique identifier */
   clientId: string;
-  /** header to update the light client */
+  /** client message to update the light client */
 
-  header?: Any;
+  clientMessage?: Any;
   /** signer address */
 
   signer: string;
@@ -83,15 +83,15 @@ export interface MsgUpdateClientProtoMsg {
 }
 /**
  * MsgUpdateClient defines an sdk.Msg to update a IBC client state using
- * the given header.
+ * the given client message.
  */
 
 export interface MsgUpdateClientAmino {
   /** client unique identifier */
   client_id: string;
-  /** header to update the light client */
+  /** client message to update the light client */
 
-  header?: AnyAmino;
+  client_message?: AnyAmino;
   /** signer address */
 
   signer: string;
@@ -102,12 +102,12 @@ export interface MsgUpdateClientAminoMsg {
 }
 /**
  * MsgUpdateClient defines an sdk.Msg to update a IBC client state using
- * the given header.
+ * the given client message.
  */
 
 export interface MsgUpdateClientSDKType {
   client_id: string;
-  header?: AnySDKType;
+  client_message?: AnySDKType;
   signer: string;
 }
 /** MsgUpdateClientResponse defines the Msg/UpdateClient response type. */
@@ -222,15 +222,22 @@ export interface MsgUpgradeClientResponseSDKType {}
 /**
  * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
  * light client misbehaviour.
+ * Warning: DEPRECATED
  */
 
 export interface MsgSubmitMisbehaviour {
   /** client unique identifier */
+
+  /** @deprecated */
   clientId: string;
   /** misbehaviour used for freezing the light client */
 
+  /** @deprecated */
+
   misbehaviour?: Any;
   /** signer address */
+
+  /** @deprecated */
 
   signer: string;
 }
@@ -241,15 +248,22 @@ export interface MsgSubmitMisbehaviourProtoMsg {
 /**
  * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
  * light client misbehaviour.
+ * Warning: DEPRECATED
  */
 
 export interface MsgSubmitMisbehaviourAmino {
   /** client unique identifier */
+
+  /** @deprecated */
   client_id: string;
   /** misbehaviour used for freezing the light client */
 
+  /** @deprecated */
+
   misbehaviour?: AnyAmino;
   /** signer address */
+
+  /** @deprecated */
 
   signer: string;
 }
@@ -260,11 +274,17 @@ export interface MsgSubmitMisbehaviourAminoMsg {
 /**
  * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
  * light client misbehaviour.
+ * Warning: DEPRECATED
  */
 
 export interface MsgSubmitMisbehaviourSDKType {
+  /** @deprecated */
   client_id: string;
+  /** @deprecated */
+
   misbehaviour?: AnySDKType;
+  /** @deprecated */
+
   signer: string;
 }
 /**
@@ -477,7 +497,7 @@ export const MsgCreateClientResponse = {
 function createBaseMsgUpdateClient(): MsgUpdateClient {
   return {
     clientId: "",
-    header: undefined,
+    clientMessage: undefined,
     signer: ""
   };
 }
@@ -490,8 +510,8 @@ export const MsgUpdateClient = {
       writer.uint32(10).string(message.clientId);
     }
 
-    if (message.header !== undefined) {
-      Any.encode(message.header, writer.uint32(18).fork()).ldelim();
+    if (message.clientMessage !== undefined) {
+      Any.encode(message.clientMessage, writer.uint32(18).fork()).ldelim();
     }
 
     if (message.signer !== "") {
@@ -515,7 +535,7 @@ export const MsgUpdateClient = {
           break;
 
         case 2:
-          message.header = Any.decode(reader, reader.uint32());
+          message.clientMessage = Any.decode(reader, reader.uint32());
           break;
 
         case 3:
@@ -534,7 +554,7 @@ export const MsgUpdateClient = {
   fromPartial(object: Partial<MsgUpdateClient>): MsgUpdateClient {
     const message = createBaseMsgUpdateClient();
     message.clientId = object.clientId ?? "";
-    message.header = object.header !== undefined && object.header !== null ? Any.fromPartial(object.header) : undefined;
+    message.clientMessage = object.clientMessage !== undefined && object.clientMessage !== null ? Any.fromPartial(object.clientMessage) : undefined;
     message.signer = object.signer ?? "";
     return message;
   },
@@ -542,7 +562,7 @@ export const MsgUpdateClient = {
   fromAmino(object: MsgUpdateClientAmino): MsgUpdateClient {
     return {
       clientId: object.client_id,
-      header: object?.header ? Any.fromAmino(object.header) : undefined,
+      clientMessage: object?.client_message ? Any.fromAmino(object.client_message) : undefined,
       signer: object.signer
     };
   },
@@ -550,7 +570,7 @@ export const MsgUpdateClient = {
   toAmino(message: MsgUpdateClient): MsgUpdateClientAmino {
     const obj: any = {};
     obj.client_id = message.clientId;
-    obj.header = message.header ? Any.toAmino(message.header) : undefined;
+    obj.client_message = message.clientMessage ? Any.toAmino(message.clientMessage) : undefined;
     obj.signer = message.signer;
     return obj;
   },

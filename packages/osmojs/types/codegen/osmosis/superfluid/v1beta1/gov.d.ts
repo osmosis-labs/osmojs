@@ -1,11 +1,12 @@
 import { SuperfluidAsset, SuperfluidAssetAmino, SuperfluidAssetSDKType } from "../superfluid";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
  * assets
  */
 export interface SetSuperfluidAssetsProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     assets: SuperfluidAsset[];
@@ -32,6 +33,7 @@ export interface SetSuperfluidAssetsProposalAminoMsg {
  * assets
  */
 export interface SetSuperfluidAssetsProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     assets: SuperfluidAssetSDKType[];
@@ -41,6 +43,7 @@ export interface SetSuperfluidAssetsProposalSDKType {
  * assets by denom
  */
 export interface RemoveSuperfluidAssetsProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     superfluidAssetDenoms: string[];
@@ -67,6 +70,7 @@ export interface RemoveSuperfluidAssetsProposalAminoMsg {
  * assets by denom
  */
 export interface RemoveSuperfluidAssetsProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     superfluid_asset_denoms: string[];
@@ -76,6 +80,7 @@ export interface RemoveSuperfluidAssetsProposalSDKType {
  * allowed list of pool ids.
  */
 export interface UpdateUnpoolWhiteListProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     ids: Long[];
@@ -104,12 +109,14 @@ export interface UpdateUnpoolWhiteListProposalAminoMsg {
  * allowed list of pool ids.
  */
 export interface UpdateUnpoolWhiteListProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     ids: Long[];
     is_overwrite: boolean;
 }
 export declare const SetSuperfluidAssetsProposal: {
+    typeUrl: string;
     encode(message: SetSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SetSuperfluidAssetsProposal;
     fromPartial(object: Partial<SetSuperfluidAssetsProposal>): SetSuperfluidAssetsProposal;
@@ -122,6 +129,7 @@ export declare const SetSuperfluidAssetsProposal: {
     toProtoMsg(message: SetSuperfluidAssetsProposal): SetSuperfluidAssetsProposalProtoMsg;
 };
 export declare const RemoveSuperfluidAssetsProposal: {
+    typeUrl: string;
     encode(message: RemoveSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RemoveSuperfluidAssetsProposal;
     fromPartial(object: Partial<RemoveSuperfluidAssetsProposal>): RemoveSuperfluidAssetsProposal;
@@ -134,6 +142,7 @@ export declare const RemoveSuperfluidAssetsProposal: {
     toProtoMsg(message: RemoveSuperfluidAssetsProposal): RemoveSuperfluidAssetsProposalProtoMsg;
 };
 export declare const UpdateUnpoolWhiteListProposal: {
+    typeUrl: string;
     encode(message: UpdateUnpoolWhiteListProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdateUnpoolWhiteListProposal;
     fromPartial(object: Partial<UpdateUnpoolWhiteListProposal>): UpdateUnpoolWhiteListProposal;

@@ -72,6 +72,7 @@ export interface PositionWithUnderlyingAssetBreakdownSDKType {
     asset1?: CoinSDKType;
 }
 export declare const Position: {
+    typeUrl: string;
     encode(message: Position, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Position;
     fromPartial(object: Partial<Position>): Position;
@@ -84,6 +85,7 @@ export declare const Position: {
     toProtoMsg(message: Position): PositionProtoMsg;
 };
 export declare const PositionWithUnderlyingAssetBreakdown: {
+    typeUrl: string;
     encode(message: PositionWithUnderlyingAssetBreakdown, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PositionWithUnderlyingAssetBreakdown;
     fromPartial(object: Partial<PositionWithUnderlyingAssetBreakdown>): PositionWithUnderlyingAssetBreakdown;

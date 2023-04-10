@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** Minter represents the minting state. */
 export interface Minter {
     /** epoch_provisions represent rewards for the current epoch. */
@@ -224,6 +224,7 @@ export interface ParamsSDKType {
     minting_rewards_distribution_start_epoch: Long;
 }
 export declare const Minter: {
+    typeUrl: string;
     encode(message: Minter, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Minter;
     fromPartial(object: Partial<Minter>): Minter;
@@ -236,6 +237,7 @@ export declare const Minter: {
     toProtoMsg(message: Minter): MinterProtoMsg;
 };
 export declare const WeightedAddress: {
+    typeUrl: string;
     encode(message: WeightedAddress, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): WeightedAddress;
     fromPartial(object: Partial<WeightedAddress>): WeightedAddress;
@@ -248,6 +250,7 @@ export declare const WeightedAddress: {
     toProtoMsg(message: WeightedAddress): WeightedAddressProtoMsg;
 };
 export declare const DistributionProportions: {
+    typeUrl: string;
     encode(message: DistributionProportions, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistributionProportions;
     fromPartial(object: Partial<DistributionProportions>): DistributionProportions;
@@ -260,6 +263,7 @@ export declare const DistributionProportions: {
     toProtoMsg(message: DistributionProportions): DistributionProportionsProtoMsg;
 };
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;

@@ -1,10 +1,7 @@
 import { Tx, TxAmino, TxSDKType } from "./tx";
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { TxResponse, TxResponseAmino, TxResponseSDKType, GasInfo, GasInfoAmino, GasInfoSDKType, Result, ResultAmino, ResultSDKType } from "../../base/abci/v1beta1/abci";
-import { BlockID, BlockIDAmino, BlockIDSDKType } from "../../../tendermint/types/types";
-import { Block, BlockAmino, BlockSDKType } from "../../../tendermint/types/block";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../../helpers";
 /** OrderBy defines the sorting order */
 export declare enum OrderBy {
     /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */
@@ -51,7 +48,7 @@ export declare function broadcastModeToJSON(object: BroadcastMode): string;
 export interface GetTxsEventRequest {
     /** events is the list of transaction event type. */
     events: string[];
-    /** pagination defines a pagination for the request. */
+    /** pagination defines an pagination for the request. */
     pagination?: PageRequest;
     orderBy: OrderBy;
 }
@@ -66,7 +63,7 @@ export interface GetTxsEventRequestProtoMsg {
 export interface GetTxsEventRequestAmino {
     /** events is the list of transaction event type. */
     events: string[];
-    /** pagination defines a pagination for the request. */
+    /** pagination defines an pagination for the request. */
     pagination?: PageRequestAmino;
     order_by: OrderBy;
 }
@@ -92,7 +89,7 @@ export interface GetTxsEventResponse {
     txs: Tx[];
     /** tx_responses is the list of queried TxResponses. */
     txResponses: TxResponse[];
-    /** pagination defines a pagination for the response. */
+    /** pagination defines an pagination for the response. */
     pagination?: PageResponse;
 }
 export interface GetTxsEventResponseProtoMsg {
@@ -108,7 +105,7 @@ export interface GetTxsEventResponseAmino {
     txs: TxAmino[];
     /** tx_responses is the list of queried TxResponses. */
     tx_responses: TxResponseAmino[];
-    /** pagination defines a pagination for the response. */
+    /** pagination defines an pagination for the response. */
     pagination?: PageResponseAmino;
 }
 export interface GetTxsEventResponseAminoMsg {
@@ -336,94 +333,8 @@ export interface GetTxResponseSDKType {
     tx?: TxSDKType;
     tx_response?: TxResponseSDKType;
 }
-/**
- * GetBlockWithTxsRequest is the request type for the Service.GetBlockWithTxs
- * RPC method.
- *
- * Since: cosmos-sdk 0.45.2
- */
-export interface GetBlockWithTxsRequest {
-    /** height is the height of the block to query. */
-    height: Long;
-    /** pagination defines a pagination for the request. */
-    pagination?: PageRequest;
-}
-export interface GetBlockWithTxsRequestProtoMsg {
-    typeUrl: "/cosmos.tx.v1beta1.GetBlockWithTxsRequest";
-    value: Uint8Array;
-}
-/**
- * GetBlockWithTxsRequest is the request type for the Service.GetBlockWithTxs
- * RPC method.
- *
- * Since: cosmos-sdk 0.45.2
- */
-export interface GetBlockWithTxsRequestAmino {
-    /** height is the height of the block to query. */
-    height: string;
-    /** pagination defines a pagination for the request. */
-    pagination?: PageRequestAmino;
-}
-export interface GetBlockWithTxsRequestAminoMsg {
-    type: "cosmos-sdk/GetBlockWithTxsRequest";
-    value: GetBlockWithTxsRequestAmino;
-}
-/**
- * GetBlockWithTxsRequest is the request type for the Service.GetBlockWithTxs
- * RPC method.
- *
- * Since: cosmos-sdk 0.45.2
- */
-export interface GetBlockWithTxsRequestSDKType {
-    height: Long;
-    pagination?: PageRequestSDKType;
-}
-/**
- * GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs method.
- *
- * Since: cosmos-sdk 0.45.2
- */
-export interface GetBlockWithTxsResponse {
-    /** txs are the transactions in the block. */
-    txs: Tx[];
-    blockId?: BlockID;
-    block?: Block;
-    /** pagination defines a pagination for the response. */
-    pagination?: PageResponse;
-}
-export interface GetBlockWithTxsResponseProtoMsg {
-    typeUrl: "/cosmos.tx.v1beta1.GetBlockWithTxsResponse";
-    value: Uint8Array;
-}
-/**
- * GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs method.
- *
- * Since: cosmos-sdk 0.45.2
- */
-export interface GetBlockWithTxsResponseAmino {
-    /** txs are the transactions in the block. */
-    txs: TxAmino[];
-    block_id?: BlockIDAmino;
-    block?: BlockAmino;
-    /** pagination defines a pagination for the response. */
-    pagination?: PageResponseAmino;
-}
-export interface GetBlockWithTxsResponseAminoMsg {
-    type: "cosmos-sdk/GetBlockWithTxsResponse";
-    value: GetBlockWithTxsResponseAmino;
-}
-/**
- * GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs method.
- *
- * Since: cosmos-sdk 0.45.2
- */
-export interface GetBlockWithTxsResponseSDKType {
-    txs: TxSDKType[];
-    block_id?: BlockIDSDKType;
-    block?: BlockSDKType;
-    pagination?: PageResponseSDKType;
-}
 export declare const GetTxsEventRequest: {
+    typeUrl: string;
     encode(message: GetTxsEventRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventRequest;
     fromPartial(object: Partial<GetTxsEventRequest>): GetTxsEventRequest;
@@ -436,6 +347,7 @@ export declare const GetTxsEventRequest: {
     toProtoMsg(message: GetTxsEventRequest): GetTxsEventRequestProtoMsg;
 };
 export declare const GetTxsEventResponse: {
+    typeUrl: string;
     encode(message: GetTxsEventResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponse;
     fromPartial(object: Partial<GetTxsEventResponse>): GetTxsEventResponse;
@@ -448,6 +360,7 @@ export declare const GetTxsEventResponse: {
     toProtoMsg(message: GetTxsEventResponse): GetTxsEventResponseProtoMsg;
 };
 export declare const BroadcastTxRequest: {
+    typeUrl: string;
     encode(message: BroadcastTxRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxRequest;
     fromPartial(object: Partial<BroadcastTxRequest>): BroadcastTxRequest;
@@ -460,6 +373,7 @@ export declare const BroadcastTxRequest: {
     toProtoMsg(message: BroadcastTxRequest): BroadcastTxRequestProtoMsg;
 };
 export declare const BroadcastTxResponse: {
+    typeUrl: string;
     encode(message: BroadcastTxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponse;
     fromPartial(object: Partial<BroadcastTxResponse>): BroadcastTxResponse;
@@ -472,6 +386,7 @@ export declare const BroadcastTxResponse: {
     toProtoMsg(message: BroadcastTxResponse): BroadcastTxResponseProtoMsg;
 };
 export declare const SimulateRequest: {
+    typeUrl: string;
     encode(message: SimulateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulateRequest;
     fromPartial(object: Partial<SimulateRequest>): SimulateRequest;
@@ -484,6 +399,7 @@ export declare const SimulateRequest: {
     toProtoMsg(message: SimulateRequest): SimulateRequestProtoMsg;
 };
 export declare const SimulateResponse: {
+    typeUrl: string;
     encode(message: SimulateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponse;
     fromPartial(object: Partial<SimulateResponse>): SimulateResponse;
@@ -496,6 +412,7 @@ export declare const SimulateResponse: {
     toProtoMsg(message: SimulateResponse): SimulateResponseProtoMsg;
 };
 export declare const GetTxRequest: {
+    typeUrl: string;
     encode(message: GetTxRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxRequest;
     fromPartial(object: Partial<GetTxRequest>): GetTxRequest;
@@ -508,6 +425,7 @@ export declare const GetTxRequest: {
     toProtoMsg(message: GetTxRequest): GetTxRequestProtoMsg;
 };
 export declare const GetTxResponse: {
+    typeUrl: string;
     encode(message: GetTxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponse;
     fromPartial(object: Partial<GetTxResponse>): GetTxResponse;
@@ -518,28 +436,4 @@ export declare const GetTxResponse: {
     fromProtoMsg(message: GetTxResponseProtoMsg): GetTxResponse;
     toProto(message: GetTxResponse): Uint8Array;
     toProtoMsg(message: GetTxResponse): GetTxResponseProtoMsg;
-};
-export declare const GetBlockWithTxsRequest: {
-    encode(message: GetBlockWithTxsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsRequest;
-    fromPartial(object: Partial<GetBlockWithTxsRequest>): GetBlockWithTxsRequest;
-    fromAmino(object: GetBlockWithTxsRequestAmino): GetBlockWithTxsRequest;
-    toAmino(message: GetBlockWithTxsRequest): GetBlockWithTxsRequestAmino;
-    fromAminoMsg(object: GetBlockWithTxsRequestAminoMsg): GetBlockWithTxsRequest;
-    toAminoMsg(message: GetBlockWithTxsRequest): GetBlockWithTxsRequestAminoMsg;
-    fromProtoMsg(message: GetBlockWithTxsRequestProtoMsg): GetBlockWithTxsRequest;
-    toProto(message: GetBlockWithTxsRequest): Uint8Array;
-    toProtoMsg(message: GetBlockWithTxsRequest): GetBlockWithTxsRequestProtoMsg;
-};
-export declare const GetBlockWithTxsResponse: {
-    encode(message: GetBlockWithTxsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponse;
-    fromPartial(object: Partial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse;
-    fromAmino(object: GetBlockWithTxsResponseAmino): GetBlockWithTxsResponse;
-    toAmino(message: GetBlockWithTxsResponse): GetBlockWithTxsResponseAmino;
-    fromAminoMsg(object: GetBlockWithTxsResponseAminoMsg): GetBlockWithTxsResponse;
-    toAminoMsg(message: GetBlockWithTxsResponse): GetBlockWithTxsResponseAminoMsg;
-    fromProtoMsg(message: GetBlockWithTxsResponseProtoMsg): GetBlockWithTxsResponse;
-    toProto(message: GetBlockWithTxsResponse): Uint8Array;
-    toProtoMsg(message: GetBlockWithTxsResponse): GetBlockWithTxsResponseProtoMsg;
 };

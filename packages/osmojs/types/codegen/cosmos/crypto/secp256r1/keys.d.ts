@@ -50,6 +50,7 @@ export interface PrivKeySDKType {
     secret: Uint8Array;
 }
 export declare const PubKey: {
+    typeUrl: string;
     encode(message: PubKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PubKey;
     fromPartial(object: Partial<PubKey>): PubKey;
@@ -62,6 +63,7 @@ export declare const PubKey: {
     toProtoMsg(message: PubKey): PubKeyProtoMsg;
 };
 export declare const PrivKey: {
+    typeUrl: string;
     encode(message: PrivKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PrivKey;
     fromPartial(object: Partial<PrivKey>): PrivKey;

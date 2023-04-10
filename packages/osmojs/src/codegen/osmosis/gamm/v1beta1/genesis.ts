@@ -10,8 +10,8 @@ import { PoolSDKType as Pool2SDKType } from "../pool-models/balancer/balancerPoo
 import { Pool as Pool3 } from "../pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../pool-models/stableswap/stableswap_pool";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** Params holds parameters for the incentives module */
 
 export interface Params {

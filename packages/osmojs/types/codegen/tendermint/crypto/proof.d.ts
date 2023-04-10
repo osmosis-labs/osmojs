@@ -132,6 +132,7 @@ export interface ProofOpsSDKType {
     ops: ProofOpSDKType[];
 }
 export declare const Proof: {
+    typeUrl: string;
     encode(message: Proof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proof;
     fromPartial(object: Partial<Proof>): Proof;
@@ -143,6 +144,7 @@ export declare const Proof: {
     toProtoMsg(message: Proof): ProofProtoMsg;
 };
 export declare const ValueOp: {
+    typeUrl: string;
     encode(message: ValueOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValueOp;
     fromPartial(object: Partial<ValueOp>): ValueOp;
@@ -154,6 +156,7 @@ export declare const ValueOp: {
     toProtoMsg(message: ValueOp): ValueOpProtoMsg;
 };
 export declare const DominoOp: {
+    typeUrl: string;
     encode(message: DominoOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DominoOp;
     fromPartial(object: Partial<DominoOp>): DominoOp;
@@ -165,6 +168,7 @@ export declare const DominoOp: {
     toProtoMsg(message: DominoOp): DominoOpProtoMsg;
 };
 export declare const ProofOp: {
+    typeUrl: string;
     encode(message: ProofOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOp;
     fromPartial(object: Partial<ProofOp>): ProofOp;
@@ -176,6 +180,7 @@ export declare const ProofOp: {
     toProtoMsg(message: ProofOp): ProofOpProtoMsg;
 };
 export declare const ProofOps: {
+    typeUrl: string;
     encode(message: ProofOps, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOps;
     fromPartial(object: Partial<ProofOps>): ProofOps;

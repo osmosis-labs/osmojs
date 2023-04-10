@@ -118,8 +118,7 @@ export interface PageRequestSDKType {
 export interface PageResponse {
     /**
      * next_key is the key to be passed to PageRequest.key to
-     * query the next page most efficiently. It will be empty if
-     * there are no more results.
+     * query the next page most efficiently
      */
     nextKey: Uint8Array;
     /**
@@ -144,8 +143,7 @@ export interface PageResponseProtoMsg {
 export interface PageResponseAmino {
     /**
      * next_key is the key to be passed to PageRequest.key to
-     * query the next page most efficiently. It will be empty if
-     * there are no more results.
+     * query the next page most efficiently
      */
     next_key: Uint8Array;
     /**
@@ -172,6 +170,7 @@ export interface PageResponseSDKType {
     total: Long;
 }
 export declare const PageRequest: {
+    typeUrl: string;
     encode(message: PageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PageRequest;
     fromPartial(object: Partial<PageRequest>): PageRequest;
@@ -184,6 +183,7 @@ export declare const PageRequest: {
     toProtoMsg(message: PageRequest): PageRequestProtoMsg;
 };
 export declare const PageResponse: {
+    typeUrl: string;
     encode(message: PageResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PageResponse;
     fromPartial(object: Partial<PageResponse>): PageResponse;

@@ -404,6 +404,7 @@ export interface MsgForceTransferResponseAminoMsg {
 export interface MsgForceTransferResponseSDKType {
 }
 export declare const MsgCreateDenom: {
+    typeUrl: string;
     encode(message: MsgCreateDenom, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenom;
     fromPartial(object: Partial<MsgCreateDenom>): MsgCreateDenom;
@@ -416,6 +417,7 @@ export declare const MsgCreateDenom: {
     toProtoMsg(message: MsgCreateDenom): MsgCreateDenomProtoMsg;
 };
 export declare const MsgCreateDenomResponse: {
+    typeUrl: string;
     encode(message: MsgCreateDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponse;
     fromPartial(object: Partial<MsgCreateDenomResponse>): MsgCreateDenomResponse;
@@ -428,6 +430,7 @@ export declare const MsgCreateDenomResponse: {
     toProtoMsg(message: MsgCreateDenomResponse): MsgCreateDenomResponseProtoMsg;
 };
 export declare const MsgMint: {
+    typeUrl: string;
     encode(message: MsgMint, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMint;
     fromPartial(object: Partial<MsgMint>): MsgMint;
@@ -440,6 +443,7 @@ export declare const MsgMint: {
     toProtoMsg(message: MsgMint): MsgMintProtoMsg;
 };
 export declare const MsgMintResponse: {
+    typeUrl: string;
     encode(_: MsgMintResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponse;
     fromPartial(_: Partial<MsgMintResponse>): MsgMintResponse;
@@ -452,6 +456,7 @@ export declare const MsgMintResponse: {
     toProtoMsg(message: MsgMintResponse): MsgMintResponseProtoMsg;
 };
 export declare const MsgBurn: {
+    typeUrl: string;
     encode(message: MsgBurn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurn;
     fromPartial(object: Partial<MsgBurn>): MsgBurn;
@@ -464,6 +469,7 @@ export declare const MsgBurn: {
     toProtoMsg(message: MsgBurn): MsgBurnProtoMsg;
 };
 export declare const MsgBurnResponse: {
+    typeUrl: string;
     encode(_: MsgBurnResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse;
     fromPartial(_: Partial<MsgBurnResponse>): MsgBurnResponse;
@@ -476,6 +482,7 @@ export declare const MsgBurnResponse: {
     toProtoMsg(message: MsgBurnResponse): MsgBurnResponseProtoMsg;
 };
 export declare const MsgChangeAdmin: {
+    typeUrl: string;
     encode(message: MsgChangeAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdmin;
     fromPartial(object: Partial<MsgChangeAdmin>): MsgChangeAdmin;
@@ -488,6 +495,7 @@ export declare const MsgChangeAdmin: {
     toProtoMsg(message: MsgChangeAdmin): MsgChangeAdminProtoMsg;
 };
 export declare const MsgChangeAdminResponse: {
+    typeUrl: string;
     encode(_: MsgChangeAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponse;
     fromPartial(_: Partial<MsgChangeAdminResponse>): MsgChangeAdminResponse;
@@ -500,6 +508,7 @@ export declare const MsgChangeAdminResponse: {
     toProtoMsg(message: MsgChangeAdminResponse): MsgChangeAdminResponseProtoMsg;
 };
 export declare const MsgSetBeforeSendHook: {
+    typeUrl: string;
     encode(message: MsgSetBeforeSendHook, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHook;
     fromPartial(object: Partial<MsgSetBeforeSendHook>): MsgSetBeforeSendHook;
@@ -512,6 +521,7 @@ export declare const MsgSetBeforeSendHook: {
     toProtoMsg(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookProtoMsg;
 };
 export declare const MsgSetBeforeSendHookResponse: {
+    typeUrl: string;
     encode(_: MsgSetBeforeSendHookResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHookResponse;
     fromPartial(_: Partial<MsgSetBeforeSendHookResponse>): MsgSetBeforeSendHookResponse;
@@ -524,6 +534,7 @@ export declare const MsgSetBeforeSendHookResponse: {
     toProtoMsg(message: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseProtoMsg;
 };
 export declare const MsgSetDenomMetadata: {
+    typeUrl: string;
     encode(message: MsgSetDenomMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata;
     fromPartial(object: Partial<MsgSetDenomMetadata>): MsgSetDenomMetadata;
@@ -536,6 +547,7 @@ export declare const MsgSetDenomMetadata: {
     toProtoMsg(message: MsgSetDenomMetadata): MsgSetDenomMetadataProtoMsg;
 };
 export declare const MsgSetDenomMetadataResponse: {
+    typeUrl: string;
     encode(_: MsgSetDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponse;
     fromPartial(_: Partial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse;
@@ -548,6 +560,7 @@ export declare const MsgSetDenomMetadataResponse: {
     toProtoMsg(message: MsgSetDenomMetadataResponse): MsgSetDenomMetadataResponseProtoMsg;
 };
 export declare const MsgForceTransfer: {
+    typeUrl: string;
     encode(message: MsgForceTransfer, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransfer;
     fromPartial(object: Partial<MsgForceTransfer>): MsgForceTransfer;
@@ -560,6 +573,7 @@ export declare const MsgForceTransfer: {
     toProtoMsg(message: MsgForceTransfer): MsgForceTransferProtoMsg;
 };
 export declare const MsgForceTransferResponse: {
+    typeUrl: string;
     encode(_: MsgForceTransferResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransferResponse;
     fromPartial(_: Partial<MsgForceTransferResponse>): MsgForceTransferResponse;

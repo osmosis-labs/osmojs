@@ -1,5 +1,5 @@
-import * as _m0 from "protobufjs/minimal";
 import { Long, isSet } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** PoolType is an enumeration of all supported pool types. */
 
 export enum PoolType {

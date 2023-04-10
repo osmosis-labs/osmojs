@@ -128,6 +128,7 @@ export interface LockableDurationsInfoSDKType {
     lockable_durations: DurationSDKType[];
 }
 export declare const Gauge: {
+    typeUrl: string;
     encode(message: Gauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Gauge;
     fromPartial(object: Partial<Gauge>): Gauge;
@@ -140,6 +141,7 @@ export declare const Gauge: {
     toProtoMsg(message: Gauge): GaugeProtoMsg;
 };
 export declare const LockableDurationsInfo: {
+    typeUrl: string;
     encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
     fromPartial(object: Partial<LockableDurationsInfo>): LockableDurationsInfo;

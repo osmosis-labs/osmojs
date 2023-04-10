@@ -1,7 +1,7 @@
 import { Vote, VoteAmino, VoteSDKType, LightBlock, LightBlockAmino, LightBlockSDKType } from "./types";
 import { Validator, ValidatorAmino, ValidatorSDKType } from "./validator";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface Evidence {
     duplicateVoteEvidence?: DuplicateVoteEvidence;
     lightClientAttackEvidence?: LightClientAttackEvidence;
@@ -104,6 +104,7 @@ export interface EvidenceListSDKType {
     evidence: EvidenceSDKType[];
 }
 export declare const Evidence: {
+    typeUrl: string;
     encode(message: Evidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Evidence;
     fromPartial(object: Partial<Evidence>): Evidence;
@@ -115,6 +116,7 @@ export declare const Evidence: {
     toProtoMsg(message: Evidence): EvidenceProtoMsg;
 };
 export declare const DuplicateVoteEvidence: {
+    typeUrl: string;
     encode(message: DuplicateVoteEvidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DuplicateVoteEvidence;
     fromPartial(object: Partial<DuplicateVoteEvidence>): DuplicateVoteEvidence;
@@ -126,6 +128,7 @@ export declare const DuplicateVoteEvidence: {
     toProtoMsg(message: DuplicateVoteEvidence): DuplicateVoteEvidenceProtoMsg;
 };
 export declare const LightClientAttackEvidence: {
+    typeUrl: string;
     encode(message: LightClientAttackEvidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LightClientAttackEvidence;
     fromPartial(object: Partial<LightClientAttackEvidence>): LightClientAttackEvidence;
@@ -137,6 +140,7 @@ export declare const LightClientAttackEvidence: {
     toProtoMsg(message: LightClientAttackEvidence): LightClientAttackEvidenceProtoMsg;
 };
 export declare const EvidenceList: {
+    typeUrl: string;
     encode(message: EvidenceList, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EvidenceList;
     fromPartial(object: Partial<EvidenceList>): EvidenceList;

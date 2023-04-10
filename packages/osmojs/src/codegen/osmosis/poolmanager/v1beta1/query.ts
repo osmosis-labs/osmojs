@@ -11,8 +11,8 @@ import { PoolSDKType as Pool2SDKType } from "../../gamm/pool-models/balancer/bal
 import { Pool as Pool3 } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../../gamm/pool-models/stableswap/stableswap_pool";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** =============================== Params */
 
 export interface ParamsRequest {}

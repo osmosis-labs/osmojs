@@ -584,6 +584,7 @@ export interface NextSequenceRecvDataSDKType {
     next_seq_recv: Long;
 }
 export declare const ClientState: {
+    typeUrl: string;
     encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientState;
     fromPartial(object: Partial<ClientState>): ClientState;
@@ -596,6 +597,7 @@ export declare const ClientState: {
     toProtoMsg(message: ClientState): ClientStateProtoMsg;
 };
 export declare const ConsensusState: {
+    typeUrl: string;
     encode(message: ConsensusState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusState;
     fromPartial(object: Partial<ConsensusState>): ConsensusState;
@@ -608,6 +610,7 @@ export declare const ConsensusState: {
     toProtoMsg(message: ConsensusState): ConsensusStateProtoMsg;
 };
 export declare const Header: {
+    typeUrl: string;
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
     fromPartial(object: Partial<Header>): Header;
@@ -620,6 +623,7 @@ export declare const Header: {
     toProtoMsg(message: Header): HeaderProtoMsg;
 };
 export declare const Misbehaviour: {
+    typeUrl: string;
     encode(message: Misbehaviour, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Misbehaviour;
     fromPartial(object: Partial<Misbehaviour>): Misbehaviour;
@@ -632,6 +636,7 @@ export declare const Misbehaviour: {
     toProtoMsg(message: Misbehaviour): MisbehaviourProtoMsg;
 };
 export declare const SignatureAndData: {
+    typeUrl: string;
     encode(message: SignatureAndData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureAndData;
     fromPartial(object: Partial<SignatureAndData>): SignatureAndData;
@@ -644,6 +649,7 @@ export declare const SignatureAndData: {
     toProtoMsg(message: SignatureAndData): SignatureAndDataProtoMsg;
 };
 export declare const TimestampedSignatureData: {
+    typeUrl: string;
     encode(message: TimestampedSignatureData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TimestampedSignatureData;
     fromPartial(object: Partial<TimestampedSignatureData>): TimestampedSignatureData;
@@ -656,6 +662,7 @@ export declare const TimestampedSignatureData: {
     toProtoMsg(message: TimestampedSignatureData): TimestampedSignatureDataProtoMsg;
 };
 export declare const SignBytes: {
+    typeUrl: string;
     encode(message: SignBytes, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignBytes;
     fromPartial(object: Partial<SignBytes>): SignBytes;
@@ -668,6 +675,7 @@ export declare const SignBytes: {
     toProtoMsg(message: SignBytes): SignBytesProtoMsg;
 };
 export declare const HeaderData: {
+    typeUrl: string;
     encode(message: HeaderData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HeaderData;
     fromPartial(object: Partial<HeaderData>): HeaderData;
@@ -680,6 +688,7 @@ export declare const HeaderData: {
     toProtoMsg(message: HeaderData): HeaderDataProtoMsg;
 };
 export declare const ClientStateData: {
+    typeUrl: string;
     encode(message: ClientStateData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientStateData;
     fromPartial(object: Partial<ClientStateData>): ClientStateData;
@@ -692,6 +701,7 @@ export declare const ClientStateData: {
     toProtoMsg(message: ClientStateData): ClientStateDataProtoMsg;
 };
 export declare const ConsensusStateData: {
+    typeUrl: string;
     encode(message: ConsensusStateData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusStateData;
     fromPartial(object: Partial<ConsensusStateData>): ConsensusStateData;
@@ -704,6 +714,7 @@ export declare const ConsensusStateData: {
     toProtoMsg(message: ConsensusStateData): ConsensusStateDataProtoMsg;
 };
 export declare const ConnectionStateData: {
+    typeUrl: string;
     encode(message: ConnectionStateData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionStateData;
     fromPartial(object: Partial<ConnectionStateData>): ConnectionStateData;
@@ -716,6 +727,7 @@ export declare const ConnectionStateData: {
     toProtoMsg(message: ConnectionStateData): ConnectionStateDataProtoMsg;
 };
 export declare const ChannelStateData: {
+    typeUrl: string;
     encode(message: ChannelStateData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ChannelStateData;
     fromPartial(object: Partial<ChannelStateData>): ChannelStateData;
@@ -728,6 +740,7 @@ export declare const ChannelStateData: {
     toProtoMsg(message: ChannelStateData): ChannelStateDataProtoMsg;
 };
 export declare const PacketCommitmentData: {
+    typeUrl: string;
     encode(message: PacketCommitmentData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketCommitmentData;
     fromPartial(object: Partial<PacketCommitmentData>): PacketCommitmentData;
@@ -740,6 +753,7 @@ export declare const PacketCommitmentData: {
     toProtoMsg(message: PacketCommitmentData): PacketCommitmentDataProtoMsg;
 };
 export declare const PacketAcknowledgementData: {
+    typeUrl: string;
     encode(message: PacketAcknowledgementData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketAcknowledgementData;
     fromPartial(object: Partial<PacketAcknowledgementData>): PacketAcknowledgementData;
@@ -752,6 +766,7 @@ export declare const PacketAcknowledgementData: {
     toProtoMsg(message: PacketAcknowledgementData): PacketAcknowledgementDataProtoMsg;
 };
 export declare const PacketReceiptAbsenceData: {
+    typeUrl: string;
     encode(message: PacketReceiptAbsenceData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PacketReceiptAbsenceData;
     fromPartial(object: Partial<PacketReceiptAbsenceData>): PacketReceiptAbsenceData;
@@ -764,6 +779,7 @@ export declare const PacketReceiptAbsenceData: {
     toProtoMsg(message: PacketReceiptAbsenceData): PacketReceiptAbsenceDataProtoMsg;
 };
 export declare const NextSequenceRecvData: {
+    typeUrl: string;
     encode(message: NextSequenceRecvData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NextSequenceRecvData;
     fromPartial(object: Partial<NextSequenceRecvData>): NextSequenceRecvData;

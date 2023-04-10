@@ -1,8 +1,8 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType } from "./lock";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface MsgLockTokens {
   owner: string;
   duration?: Duration;

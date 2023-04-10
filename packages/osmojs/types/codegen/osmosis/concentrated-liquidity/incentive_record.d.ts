@@ -120,6 +120,7 @@ export interface IncentiveRecordBodySDKType {
     start_time?: Date;
 }
 export declare const IncentiveRecord: {
+    typeUrl: string;
     encode(message: IncentiveRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IncentiveRecord;
     fromPartial(object: Partial<IncentiveRecord>): IncentiveRecord;
@@ -132,6 +133,7 @@ export declare const IncentiveRecord: {
     toProtoMsg(message: IncentiveRecord): IncentiveRecordProtoMsg;
 };
 export declare const IncentiveRecordBody: {
+    typeUrl: string;
     encode(message: IncentiveRecordBody, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IncentiveRecordBody;
     fromPartial(object: Partial<IncentiveRecordBody>): IncentiveRecordBody;

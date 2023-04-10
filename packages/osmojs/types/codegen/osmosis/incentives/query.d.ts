@@ -2,8 +2,8 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Gauge, GaugeAmino, GaugeSDKType } from "./gauge";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface ModuleToDistributeCoinsRequest {
 }
 export interface ModuleToDistributeCoinsRequestProtoMsg {
@@ -394,6 +394,7 @@ export interface QueryLockableDurationsResponseSDKType {
     lockable_durations: DurationSDKType[];
 }
 export declare const ModuleToDistributeCoinsRequest: {
+    typeUrl: string;
     encode(_: ModuleToDistributeCoinsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsRequest;
     fromPartial(_: Partial<ModuleToDistributeCoinsRequest>): ModuleToDistributeCoinsRequest;
@@ -406,6 +407,7 @@ export declare const ModuleToDistributeCoinsRequest: {
     toProtoMsg(message: ModuleToDistributeCoinsRequest): ModuleToDistributeCoinsRequestProtoMsg;
 };
 export declare const ModuleToDistributeCoinsResponse: {
+    typeUrl: string;
     encode(message: ModuleToDistributeCoinsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse;
     fromPartial(object: Partial<ModuleToDistributeCoinsResponse>): ModuleToDistributeCoinsResponse;
@@ -418,6 +420,7 @@ export declare const ModuleToDistributeCoinsResponse: {
     toProtoMsg(message: ModuleToDistributeCoinsResponse): ModuleToDistributeCoinsResponseProtoMsg;
 };
 export declare const GaugeByIDRequest: {
+    typeUrl: string;
     encode(message: GaugeByIDRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDRequest;
     fromPartial(object: Partial<GaugeByIDRequest>): GaugeByIDRequest;
@@ -430,6 +433,7 @@ export declare const GaugeByIDRequest: {
     toProtoMsg(message: GaugeByIDRequest): GaugeByIDRequestProtoMsg;
 };
 export declare const GaugeByIDResponse: {
+    typeUrl: string;
     encode(message: GaugeByIDResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponse;
     fromPartial(object: Partial<GaugeByIDResponse>): GaugeByIDResponse;
@@ -442,6 +446,7 @@ export declare const GaugeByIDResponse: {
     toProtoMsg(message: GaugeByIDResponse): GaugeByIDResponseProtoMsg;
 };
 export declare const GaugesRequest: {
+    typeUrl: string;
     encode(message: GaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugesRequest;
     fromPartial(object: Partial<GaugesRequest>): GaugesRequest;
@@ -454,6 +459,7 @@ export declare const GaugesRequest: {
     toProtoMsg(message: GaugesRequest): GaugesRequestProtoMsg;
 };
 export declare const GaugesResponse: {
+    typeUrl: string;
     encode(message: GaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponse;
     fromPartial(object: Partial<GaugesResponse>): GaugesResponse;
@@ -466,6 +472,7 @@ export declare const GaugesResponse: {
     toProtoMsg(message: GaugesResponse): GaugesResponseProtoMsg;
 };
 export declare const ActiveGaugesRequest: {
+    typeUrl: string;
     encode(message: ActiveGaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesRequest;
     fromPartial(object: Partial<ActiveGaugesRequest>): ActiveGaugesRequest;
@@ -478,6 +485,7 @@ export declare const ActiveGaugesRequest: {
     toProtoMsg(message: ActiveGaugesRequest): ActiveGaugesRequestProtoMsg;
 };
 export declare const ActiveGaugesResponse: {
+    typeUrl: string;
     encode(message: ActiveGaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponse;
     fromPartial(object: Partial<ActiveGaugesResponse>): ActiveGaugesResponse;
@@ -490,6 +498,7 @@ export declare const ActiveGaugesResponse: {
     toProtoMsg(message: ActiveGaugesResponse): ActiveGaugesResponseProtoMsg;
 };
 export declare const ActiveGaugesPerDenomRequest: {
+    typeUrl: string;
     encode(message: ActiveGaugesPerDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomRequest;
     fromPartial(object: Partial<ActiveGaugesPerDenomRequest>): ActiveGaugesPerDenomRequest;
@@ -502,6 +511,7 @@ export declare const ActiveGaugesPerDenomRequest: {
     toProtoMsg(message: ActiveGaugesPerDenomRequest): ActiveGaugesPerDenomRequestProtoMsg;
 };
 export declare const ActiveGaugesPerDenomResponse: {
+    typeUrl: string;
     encode(message: ActiveGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponse;
     fromPartial(object: Partial<ActiveGaugesPerDenomResponse>): ActiveGaugesPerDenomResponse;
@@ -514,6 +524,7 @@ export declare const ActiveGaugesPerDenomResponse: {
     toProtoMsg(message: ActiveGaugesPerDenomResponse): ActiveGaugesPerDenomResponseProtoMsg;
 };
 export declare const UpcomingGaugesRequest: {
+    typeUrl: string;
     encode(message: UpcomingGaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesRequest;
     fromPartial(object: Partial<UpcomingGaugesRequest>): UpcomingGaugesRequest;
@@ -526,6 +537,7 @@ export declare const UpcomingGaugesRequest: {
     toProtoMsg(message: UpcomingGaugesRequest): UpcomingGaugesRequestProtoMsg;
 };
 export declare const UpcomingGaugesResponse: {
+    typeUrl: string;
     encode(message: UpcomingGaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponse;
     fromPartial(object: Partial<UpcomingGaugesResponse>): UpcomingGaugesResponse;
@@ -538,6 +550,7 @@ export declare const UpcomingGaugesResponse: {
     toProtoMsg(message: UpcomingGaugesResponse): UpcomingGaugesResponseProtoMsg;
 };
 export declare const UpcomingGaugesPerDenomRequest: {
+    typeUrl: string;
     encode(message: UpcomingGaugesPerDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomRequest;
     fromPartial(object: Partial<UpcomingGaugesPerDenomRequest>): UpcomingGaugesPerDenomRequest;
@@ -550,6 +563,7 @@ export declare const UpcomingGaugesPerDenomRequest: {
     toProtoMsg(message: UpcomingGaugesPerDenomRequest): UpcomingGaugesPerDenomRequestProtoMsg;
 };
 export declare const UpcomingGaugesPerDenomResponse: {
+    typeUrl: string;
     encode(message: UpcomingGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse;
     fromPartial(object: Partial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse;
@@ -562,6 +576,7 @@ export declare const UpcomingGaugesPerDenomResponse: {
     toProtoMsg(message: UpcomingGaugesPerDenomResponse): UpcomingGaugesPerDenomResponseProtoMsg;
 };
 export declare const RewardsEstRequest: {
+    typeUrl: string;
     encode(message: RewardsEstRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstRequest;
     fromPartial(object: Partial<RewardsEstRequest>): RewardsEstRequest;
@@ -574,6 +589,7 @@ export declare const RewardsEstRequest: {
     toProtoMsg(message: RewardsEstRequest): RewardsEstRequestProtoMsg;
 };
 export declare const RewardsEstResponse: {
+    typeUrl: string;
     encode(message: RewardsEstResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponse;
     fromPartial(object: Partial<RewardsEstResponse>): RewardsEstResponse;
@@ -586,6 +602,7 @@ export declare const RewardsEstResponse: {
     toProtoMsg(message: RewardsEstResponse): RewardsEstResponseProtoMsg;
 };
 export declare const QueryLockableDurationsRequest: {
+    typeUrl: string;
     encode(_: QueryLockableDurationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsRequest;
     fromPartial(_: Partial<QueryLockableDurationsRequest>): QueryLockableDurationsRequest;
@@ -598,6 +615,7 @@ export declare const QueryLockableDurationsRequest: {
     toProtoMsg(message: QueryLockableDurationsRequest): QueryLockableDurationsRequestProtoMsg;
 };
 export declare const QueryLockableDurationsResponse: {
+    typeUrl: string;
     encode(message: QueryLockableDurationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse;
     fromPartial(object: Partial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse;

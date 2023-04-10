@@ -4,6 +4,7 @@ import * as _m0 from "protobufjs/minimal";
  * protorev module is enabled
  */
 export interface SetProtoRevEnabledProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     enabled: boolean;
@@ -30,6 +31,7 @@ export interface SetProtoRevEnabledProposalAminoMsg {
  * protorev module is enabled
  */
 export interface SetProtoRevEnabledProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     enabled: boolean;
@@ -40,6 +42,7 @@ export interface SetProtoRevEnabledProposalSDKType {
  * developer address that will be receiving a share of profits from the module
  */
 export interface SetProtoRevAdminAccountProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     account: string;
@@ -68,11 +71,13 @@ export interface SetProtoRevAdminAccountProposalAminoMsg {
  * developer address that will be receiving a share of profits from the module
  */
 export interface SetProtoRevAdminAccountProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     account: string;
 }
 export declare const SetProtoRevEnabledProposal: {
+    typeUrl: string;
     encode(message: SetProtoRevEnabledProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SetProtoRevEnabledProposal;
     fromPartial(object: Partial<SetProtoRevEnabledProposal>): SetProtoRevEnabledProposal;
@@ -85,6 +90,7 @@ export declare const SetProtoRevEnabledProposal: {
     toProtoMsg(message: SetProtoRevEnabledProposal): SetProtoRevEnabledProposalProtoMsg;
 };
 export declare const SetProtoRevAdminAccountProposal: {
+    typeUrl: string;
     encode(message: SetProtoRevAdminAccountProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SetProtoRevAdminAccountProposal;
     fromPartial(object: Partial<SetProtoRevAdminAccountProposal>): SetProtoRevAdminAccountProposal;

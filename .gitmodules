@@ -7,3 +7,9 @@
 [submodule "packages/osmojs/wasmd"]
 	path = packages/osmojs/wasmd
 	url = git@github.com:CosmWasm/wasmd.git
+[submodule "packages/osmojs/ibc-go"]
+	path = packages/osmojs/ibc-go
+	url = git@github.com:cosmos/ibc-go.git
+[submodule "packages/osmojs/ics23"]
+	path = packages/osmojs/ics23
+	url = git@github.com:cosmos/ics23.git

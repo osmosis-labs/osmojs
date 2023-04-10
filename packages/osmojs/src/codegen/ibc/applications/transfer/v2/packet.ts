@@ -17,6 +17,9 @@ export interface FungibleTokenPacketData {
   /** the recipient address on the destination chain */
 
   receiver: string;
+  /** optional memo */
+
+  memo: string;
 }
 export interface FungibleTokenPacketDataProtoMsg {
   typeUrl: "/ibc.applications.transfer.v2.FungibleTokenPacketData";
@@ -40,6 +43,9 @@ export interface FungibleTokenPacketDataAmino {
   /** the recipient address on the destination chain */
 
   receiver: string;
+  /** optional memo */
+
+  memo: string;
 }
 export interface FungibleTokenPacketDataAminoMsg {
   type: "cosmos-sdk/FungibleTokenPacketData";
@@ -56,6 +62,7 @@ export interface FungibleTokenPacketDataSDKType {
   amount: string;
   sender: string;
   receiver: string;
+  memo: string;
 }
 
 function createBaseFungibleTokenPacketData(): FungibleTokenPacketData {
@@ -63,7 +70,8 @@ function createBaseFungibleTokenPacketData(): FungibleTokenPacketData {
     denom: "",
     amount: "",
     sender: "",
-    receiver: ""
+    receiver: "",
+    memo: ""
   };
 }
 
@@ -85,6 +93,10 @@ export const FungibleTokenPacketData = {
 
     if (message.receiver !== "") {
       writer.uint32(34).string(message.receiver);
+    }
+
+    if (message.memo !== "") {
+      writer.uint32(42).string(message.memo);
     }
 
     return writer;
@@ -115,6 +127,10 @@ export const FungibleTokenPacketData = {
           message.receiver = reader.string();
           break;
 
+        case 5:
+          message.memo = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -130,6 +146,7 @@ export const FungibleTokenPacketData = {
     message.amount = object.amount ?? "";
     message.sender = object.sender ?? "";
     message.receiver = object.receiver ?? "";
+    message.memo = object.memo ?? "";
     return message;
   },
 
@@ -138,7 +155,8 @@ export const FungibleTokenPacketData = {
       denom: object.denom,
       amount: object.amount,
       sender: object.sender,
-      receiver: object.receiver
+      receiver: object.receiver,
+      memo: object.memo
     };
   },
 
@@ -148,6 +166,7 @@ export const FungibleTokenPacketData = {
     obj.amount = message.amount;
     obj.sender = message.sender;
     obj.receiver = message.receiver;
+    obj.memo = message.memo;
     return obj;
   },
 

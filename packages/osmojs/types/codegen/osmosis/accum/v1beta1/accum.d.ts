@@ -61,6 +61,7 @@ export interface RecordSDKType {
     options?: OptionsSDKType;
 }
 export declare const AccumulatorContent: {
+    typeUrl: string;
     encode(message: AccumulatorContent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccumulatorContent;
     fromPartial(object: Partial<AccumulatorContent>): AccumulatorContent;
@@ -73,6 +74,7 @@ export declare const AccumulatorContent: {
     toProtoMsg(message: AccumulatorContent): AccumulatorContentProtoMsg;
 };
 export declare const Options: {
+    typeUrl: string;
     encode(_: Options, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Options;
     fromPartial(_: Partial<Options>): Options;
@@ -85,6 +87,7 @@ export declare const Options: {
     toProtoMsg(message: Options): OptionsProtoMsg;
 };
 export declare const Record: {
+    typeUrl: string;
     encode(message: Record, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record;
     fromPartial(object: Partial<Record>): Record;

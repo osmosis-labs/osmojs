@@ -134,6 +134,7 @@ export interface MsgAddToGaugeResponseAminoMsg {
 export interface MsgAddToGaugeResponseSDKType {
 }
 export declare const MsgCreateGauge: {
+    typeUrl: string;
     encode(message: MsgCreateGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGauge;
     fromPartial(object: Partial<MsgCreateGauge>): MsgCreateGauge;
@@ -146,6 +147,7 @@ export declare const MsgCreateGauge: {
     toProtoMsg(message: MsgCreateGauge): MsgCreateGaugeProtoMsg;
 };
 export declare const MsgCreateGaugeResponse: {
+    typeUrl: string;
     encode(_: MsgCreateGaugeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGaugeResponse;
     fromPartial(_: Partial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse;
@@ -158,6 +160,7 @@ export declare const MsgCreateGaugeResponse: {
     toProtoMsg(message: MsgCreateGaugeResponse): MsgCreateGaugeResponseProtoMsg;
 };
 export declare const MsgAddToGauge: {
+    typeUrl: string;
     encode(message: MsgAddToGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGauge;
     fromPartial(object: Partial<MsgAddToGauge>): MsgAddToGauge;
@@ -170,6 +173,7 @@ export declare const MsgAddToGauge: {
     toProtoMsg(message: MsgAddToGauge): MsgAddToGaugeProtoMsg;
 };
 export declare const MsgAddToGaugeResponse: {
+    typeUrl: string;
     encode(_: MsgAddToGaugeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGaugeResponse;
     fromPartial(_: Partial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse;

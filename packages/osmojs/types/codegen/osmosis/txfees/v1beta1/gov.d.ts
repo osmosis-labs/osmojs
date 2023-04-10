@@ -8,6 +8,7 @@ import * as _m0 from "protobufjs/minimal";
  * it will remove the denom from the whitelisted set.
  */
 export interface UpdateFeeTokenProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     feetoken?: FeeToken;
@@ -40,11 +41,13 @@ export interface UpdateFeeTokenProposalAminoMsg {
  * it will remove the denom from the whitelisted set.
  */
 export interface UpdateFeeTokenProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     feetoken?: FeeTokenSDKType;
 }
 export declare const UpdateFeeTokenProposal: {
+    typeUrl: string;
     encode(message: UpdateFeeTokenProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdateFeeTokenProposal;
     fromPartial(object: Partial<UpdateFeeTokenProposal>): UpdateFeeTokenProposal;

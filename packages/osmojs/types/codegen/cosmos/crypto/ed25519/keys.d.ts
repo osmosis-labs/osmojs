@@ -24,7 +24,7 @@ export interface PubKeyAmino {
     key: Uint8Array;
 }
 export interface PubKeyAminoMsg {
-    type: "cosmos-sdk/PubKey";
+    type: "tendermint/PubKeyEd25519";
     value: PubKeyAmino;
 }
 /**
@@ -56,7 +56,7 @@ export interface PrivKeyAmino {
     key: Uint8Array;
 }
 export interface PrivKeyAminoMsg {
-    type: "cosmos-sdk/PrivKey";
+    type: "tendermint/PrivKeyEd25519";
     value: PrivKeyAmino;
 }
 /**
@@ -67,6 +67,7 @@ export interface PrivKeySDKType {
     key: Uint8Array;
 }
 export declare const PubKey: {
+    typeUrl: string;
     encode(message: PubKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PubKey;
     fromPartial(object: Partial<PubKey>): PubKey;
@@ -79,6 +80,7 @@ export declare const PubKey: {
     toProtoMsg(message: PubKey): PubKeyProtoMsg;
 };
 export declare const PrivKey: {
+    typeUrl: string;
     encode(message: PrivKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PrivKey;
     fromPartial(object: Partial<PrivKey>): PrivKey;

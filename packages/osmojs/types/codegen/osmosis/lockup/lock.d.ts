@@ -245,6 +245,7 @@ export interface SyntheticLockSDKType {
     duration?: DurationSDKType;
 }
 export declare const PeriodLock: {
+    typeUrl: string;
     encode(message: PeriodLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeriodLock;
     fromPartial(object: Partial<PeriodLock>): PeriodLock;
@@ -257,6 +258,7 @@ export declare const PeriodLock: {
     toProtoMsg(message: PeriodLock): PeriodLockProtoMsg;
 };
 export declare const QueryCondition: {
+    typeUrl: string;
     encode(message: QueryCondition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCondition;
     fromPartial(object: Partial<QueryCondition>): QueryCondition;
@@ -269,6 +271,7 @@ export declare const QueryCondition: {
     toProtoMsg(message: QueryCondition): QueryConditionProtoMsg;
 };
 export declare const SyntheticLock: {
+    typeUrl: string;
     encode(message: SyntheticLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLock;
     fromPartial(object: Partial<SyntheticLock>): SyntheticLock;

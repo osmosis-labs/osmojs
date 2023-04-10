@@ -1,11 +1,11 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../../../google/protobuf/duration";
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
-import { ProofSpec, ProofSpecAmino, ProofSpecSDKType } from "../../../../confio/proofs";
+import { ProofSpec, ProofSpecAmino, ProofSpecSDKType } from "../../../../cosmos/ics23/v1/proofs";
 import { MerkleRoot, MerkleRootAmino, MerkleRootSDKType } from "../../../core/commitment/v1/commitment";
 import { SignedHeader, SignedHeaderAmino, SignedHeaderSDKType } from "../../../../tendermint/types/types";
 import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "../../../../tendermint/types/validator";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * ClientState from Tendermint tracks the current validator set, latest height,
  * and a possible frozen height.
@@ -38,15 +38,11 @@ export interface ClientState {
      * "upgradedIBCState"}`
      */
     upgradePath: string[];
-    /**
-     * This flag, when set to true, will allow governance to recover a client
-     * which has expired
-     */
+    /** allow_update_after_expiry is deprecated */
+    /** @deprecated */
     allowUpdateAfterExpiry: boolean;
-    /**
-     * This flag, when set to true, will allow governance to unfreeze a client
-     * whose chain has experienced a misbehaviour event
-     */
+    /** allow_update_after_misbehaviour is deprecated */
+    /** @deprecated */
     allowUpdateAfterMisbehaviour: boolean;
 }
 export interface ClientStateProtoMsg {
@@ -85,15 +81,11 @@ export interface ClientStateAmino {
      * "upgradedIBCState"}`
      */
     upgrade_path: string[];
-    /**
-     * This flag, when set to true, will allow governance to recover a client
-     * which has expired
-     */
+    /** allow_update_after_expiry is deprecated */
+    /** @deprecated */
     allow_update_after_expiry: boolean;
-    /**
-     * This flag, when set to true, will allow governance to unfreeze a client
-     * whose chain has experienced a misbehaviour event
-     */
+    /** allow_update_after_misbehaviour is deprecated */
+    /** @deprecated */
     allow_update_after_misbehaviour: boolean;
 }
 export interface ClientStateAminoMsg {
@@ -114,7 +106,9 @@ export interface ClientStateSDKType {
     latest_height?: HeightSDKType;
     proof_specs: ProofSpecSDKType[];
     upgrade_path: string[];
+    /** @deprecated */
     allow_update_after_expiry: boolean;
+    /** @deprecated */
     allow_update_after_misbehaviour: boolean;
 }
 /** ConsensusState defines the consensus state from Tendermint. */
@@ -158,6 +152,8 @@ export interface ConsensusStateSDKType {
  * that implements Misbehaviour interface expected by ICS-02
  */
 export interface Misbehaviour {
+    /** ClientID is deprecated */
+    /** @deprecated */
     clientId: string;
     header1?: Header;
     header2?: Header;
@@ -171,6 +167,8 @@ export interface MisbehaviourProtoMsg {
  * that implements Misbehaviour interface expected by ICS-02
  */
 export interface MisbehaviourAmino {
+    /** ClientID is deprecated */
+    /** @deprecated */
     client_id: string;
     header_1?: HeaderAmino;
     header_2?: HeaderAmino;
@@ -184,6 +182,7 @@ export interface MisbehaviourAminoMsg {
  * that implements Misbehaviour interface expected by ICS-02
  */
 export interface MisbehaviourSDKType {
+    /** @deprecated */
     client_id: string;
     header_1?: HeaderSDKType;
     header_2?: HeaderSDKType;
@@ -289,6 +288,7 @@ export interface FractionSDKType {
     denominator: Long;
 }
 export declare const ClientState: {
+    typeUrl: string;
     encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientState;
     fromPartial(object: Partial<ClientState>): ClientState;
@@ -301,6 +301,7 @@ export declare const ClientState: {
     toProtoMsg(message: ClientState): ClientStateProtoMsg;
 };
 export declare const ConsensusState: {
+    typeUrl: string;
     encode(message: ConsensusState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusState;
     fromPartial(object: Partial<ConsensusState>): ConsensusState;
@@ -313,6 +314,7 @@ export declare const ConsensusState: {
     toProtoMsg(message: ConsensusState): ConsensusStateProtoMsg;
 };
 export declare const Misbehaviour: {
+    typeUrl: string;
     encode(message: Misbehaviour, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Misbehaviour;
     fromPartial(object: Partial<Misbehaviour>): Misbehaviour;
@@ -325,6 +327,7 @@ export declare const Misbehaviour: {
     toProtoMsg(message: Misbehaviour): MisbehaviourProtoMsg;
 };
 export declare const Header: {
+    typeUrl: string;
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
     fromPartial(object: Partial<Header>): Header;
@@ -337,6 +340,7 @@ export declare const Header: {
     toProtoMsg(message: Header): HeaderProtoMsg;
 };
 export declare const Fraction: {
+    typeUrl: string;
     encode(message: Fraction, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Fraction;
     fromPartial(object: Partial<Fraction>): Fraction;

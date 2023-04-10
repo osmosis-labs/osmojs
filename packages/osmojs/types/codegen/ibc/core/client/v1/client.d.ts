@@ -1,7 +1,7 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Plan, PlanAmino, PlanSDKType } from "../../../../cosmos/upgrade/v1beta1/upgrade";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * IdentifiedClientState defines a client state with an additional client
  * identifier field.
@@ -117,6 +117,7 @@ export interface ClientConsensusStatesSDKType {
  * chain parameters (with exception to latest height, frozen height, and chain-id).
  */
 export interface ClientUpdateProposal {
+    $typeUrl?: string;
     /** the title of the update proposal */
     title: string;
     /** the description of the proposal */
@@ -163,6 +164,7 @@ export interface ClientUpdateProposalAminoMsg {
  * chain parameters (with exception to latest height, frozen height, and chain-id).
  */
 export interface ClientUpdateProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     subject_client_id: string;
@@ -173,6 +175,7 @@ export interface ClientUpdateProposalSDKType {
  * upgrade.
  */
 export interface UpgradeProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     plan?: Plan;
@@ -217,6 +220,7 @@ export interface UpgradeProposalAminoMsg {
  * upgrade.
  */
 export interface UpgradeProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     plan?: PlanSDKType;
@@ -284,7 +288,11 @@ export interface HeightSDKType {
 }
 /** Params defines the set of IBC light client parameters. */
 export interface Params {
-    /** allowed_clients defines the list of allowed client state types. */
+    /**
+     * allowed_clients defines the list of allowed client state types which can be created
+     * and interacted with. If a client type is removed from the allowed clients list, usage
+     * of this client will be disabled until it is added again to the list.
+     */
     allowedClients: string[];
 }
 export interface ParamsProtoMsg {
@@ -293,7 +301,11 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the set of IBC light client parameters. */
 export interface ParamsAmino {
-    /** allowed_clients defines the list of allowed client state types. */
+    /**
+     * allowed_clients defines the list of allowed client state types which can be created
+     * and interacted with. If a client type is removed from the allowed clients list, usage
+     * of this client will be disabled until it is added again to the list.
+     */
     allowed_clients: string[];
 }
 export interface ParamsAminoMsg {
@@ -305,6 +317,7 @@ export interface ParamsSDKType {
     allowed_clients: string[];
 }
 export declare const IdentifiedClientState: {
+    typeUrl: string;
     encode(message: IdentifiedClientState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedClientState;
     fromPartial(object: Partial<IdentifiedClientState>): IdentifiedClientState;
@@ -317,6 +330,7 @@ export declare const IdentifiedClientState: {
     toProtoMsg(message: IdentifiedClientState): IdentifiedClientStateProtoMsg;
 };
 export declare const ConsensusStateWithHeight: {
+    typeUrl: string;
     encode(message: ConsensusStateWithHeight, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusStateWithHeight;
     fromPartial(object: Partial<ConsensusStateWithHeight>): ConsensusStateWithHeight;
@@ -329,6 +343,7 @@ export declare const ConsensusStateWithHeight: {
     toProtoMsg(message: ConsensusStateWithHeight): ConsensusStateWithHeightProtoMsg;
 };
 export declare const ClientConsensusStates: {
+    typeUrl: string;
     encode(message: ClientConsensusStates, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientConsensusStates;
     fromPartial(object: Partial<ClientConsensusStates>): ClientConsensusStates;
@@ -341,6 +356,7 @@ export declare const ClientConsensusStates: {
     toProtoMsg(message: ClientConsensusStates): ClientConsensusStatesProtoMsg;
 };
 export declare const ClientUpdateProposal: {
+    typeUrl: string;
     encode(message: ClientUpdateProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClientUpdateProposal;
     fromPartial(object: Partial<ClientUpdateProposal>): ClientUpdateProposal;
@@ -353,6 +369,7 @@ export declare const ClientUpdateProposal: {
     toProtoMsg(message: ClientUpdateProposal): ClientUpdateProposalProtoMsg;
 };
 export declare const UpgradeProposal: {
+    typeUrl: string;
     encode(message: UpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpgradeProposal;
     fromPartial(object: Partial<UpgradeProposal>): UpgradeProposal;
@@ -365,6 +382,7 @@ export declare const UpgradeProposal: {
     toProtoMsg(message: UpgradeProposal): UpgradeProposalProtoMsg;
 };
 export declare const Height: {
+    typeUrl: string;
     encode(message: Height, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Height;
     fromPartial(object: Partial<Height>): Height;
@@ -377,6 +395,7 @@ export declare const Height: {
     toProtoMsg(message: Height): HeightProtoMsg;
 };
 export declare const Params: {
+    typeUrl: string;
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;

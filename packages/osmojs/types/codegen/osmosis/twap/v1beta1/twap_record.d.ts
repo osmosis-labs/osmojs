@@ -107,6 +107,7 @@ export interface TwapRecordSDKType {
     last_error_time?: Date;
 }
 export declare const TwapRecord: {
+    typeUrl: string;
     encode(message: TwapRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TwapRecord;
     fromPartial(object: Partial<TwapRecord>): TwapRecord;

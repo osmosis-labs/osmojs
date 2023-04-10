@@ -1,7 +1,7 @@
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
  * an explicit StoreCodeProposal. To submit WASM code to the system,
@@ -10,6 +10,7 @@ import { Long } from "../../../helpers";
  */
 /** @deprecated */
 export interface StoreCodeProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -84,6 +85,7 @@ export interface StoreCodeProposalAminoMsg {
  */
 /** @deprecated */
 export interface StoreCodeProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     run_as: string;
@@ -102,6 +104,7 @@ export interface StoreCodeProposalSDKType {
  */
 /** @deprecated */
 export interface InstantiateContractProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -160,6 +163,7 @@ export interface InstantiateContractProposalAminoMsg {
  */
 /** @deprecated */
 export interface InstantiateContractProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     run_as: string;
@@ -177,6 +181,7 @@ export interface InstantiateContractProposalSDKType {
  */
 /** @deprecated */
 export interface InstantiateContract2Proposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -249,6 +254,7 @@ export interface InstantiateContract2ProposalAminoMsg {
  */
 /** @deprecated */
 export interface InstantiateContract2ProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     run_as: string;
@@ -268,6 +274,7 @@ export interface InstantiateContract2ProposalSDKType {
  */
 /** @deprecated */
 export interface MigrateContractProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -314,6 +321,7 @@ export interface MigrateContractProposalAminoMsg {
  */
 /** @deprecated */
 export interface MigrateContractProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     contract: string;
@@ -328,6 +336,7 @@ export interface MigrateContractProposalSDKType {
  */
 /** @deprecated */
 export interface SudoContractProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -370,6 +379,7 @@ export interface SudoContractProposalAminoMsg {
  */
 /** @deprecated */
 export interface SudoContractProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     contract: string;
@@ -383,6 +393,7 @@ export interface SudoContractProposalSDKType {
  */
 /** @deprecated */
 export interface ExecuteContractProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -433,6 +444,7 @@ export interface ExecuteContractProposalAminoMsg {
  */
 /** @deprecated */
 export interface ExecuteContractProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     run_as: string;
@@ -448,6 +460,7 @@ export interface ExecuteContractProposalSDKType {
  */
 /** @deprecated */
 export interface UpdateAdminProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -490,6 +503,7 @@ export interface UpdateAdminProposalAminoMsg {
  */
 /** @deprecated */
 export interface UpdateAdminProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     new_admin: string;
@@ -503,6 +517,7 @@ export interface UpdateAdminProposalSDKType {
  */
 /** @deprecated */
 export interface ClearAdminProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -541,6 +556,7 @@ export interface ClearAdminProposalAminoMsg {
  */
 /** @deprecated */
 export interface ClearAdminProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     contract: string;
@@ -553,6 +569,7 @@ export interface ClearAdminProposalSDKType {
  */
 /** @deprecated */
 export interface PinCodesProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -591,6 +608,7 @@ export interface PinCodesProposalAminoMsg {
  */
 /** @deprecated */
 export interface PinCodesProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     code_ids: Long[];
@@ -603,6 +621,7 @@ export interface PinCodesProposalSDKType {
  */
 /** @deprecated */
 export interface UnpinCodesProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -641,6 +660,7 @@ export interface UnpinCodesProposalAminoMsg {
  */
 /** @deprecated */
 export interface UnpinCodesProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     code_ids: Long[];
@@ -689,6 +709,7 @@ export interface AccessConfigUpdateSDKType {
  */
 /** @deprecated */
 export interface UpdateInstantiateConfigProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -733,6 +754,7 @@ export interface UpdateInstantiateConfigProposalAminoMsg {
  */
 /** @deprecated */
 export interface UpdateInstantiateConfigProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     access_config_updates: AccessConfigUpdateSDKType[];
@@ -745,6 +767,7 @@ export interface UpdateInstantiateConfigProposalSDKType {
  */
 /** @deprecated */
 export interface StoreAndInstantiateContractProposal {
+    $typeUrl?: string;
     /** Title is a short summary */
     title: string;
     /** Description is a human readable text */
@@ -835,6 +858,7 @@ export interface StoreAndInstantiateContractProposalAminoMsg {
  */
 /** @deprecated */
 export interface StoreAndInstantiateContractProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     run_as: string;
@@ -850,6 +874,7 @@ export interface StoreAndInstantiateContractProposalSDKType {
     code_hash: Uint8Array;
 }
 export declare const StoreCodeProposal: {
+    typeUrl: string;
     encode(message: StoreCodeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StoreCodeProposal;
     fromPartial(object: Partial<StoreCodeProposal>): StoreCodeProposal;
@@ -862,6 +887,7 @@ export declare const StoreCodeProposal: {
     toProtoMsg(message: StoreCodeProposal): StoreCodeProposalProtoMsg;
 };
 export declare const InstantiateContractProposal: {
+    typeUrl: string;
     encode(message: InstantiateContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateContractProposal;
     fromPartial(object: Partial<InstantiateContractProposal>): InstantiateContractProposal;
@@ -874,6 +900,7 @@ export declare const InstantiateContractProposal: {
     toProtoMsg(message: InstantiateContractProposal): InstantiateContractProposalProtoMsg;
 };
 export declare const InstantiateContract2Proposal: {
+    typeUrl: string;
     encode(message: InstantiateContract2Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateContract2Proposal;
     fromPartial(object: Partial<InstantiateContract2Proposal>): InstantiateContract2Proposal;
@@ -886,6 +913,7 @@ export declare const InstantiateContract2Proposal: {
     toProtoMsg(message: InstantiateContract2Proposal): InstantiateContract2ProposalProtoMsg;
 };
 export declare const MigrateContractProposal: {
+    typeUrl: string;
     encode(message: MigrateContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MigrateContractProposal;
     fromPartial(object: Partial<MigrateContractProposal>): MigrateContractProposal;
@@ -898,6 +926,7 @@ export declare const MigrateContractProposal: {
     toProtoMsg(message: MigrateContractProposal): MigrateContractProposalProtoMsg;
 };
 export declare const SudoContractProposal: {
+    typeUrl: string;
     encode(message: SudoContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SudoContractProposal;
     fromPartial(object: Partial<SudoContractProposal>): SudoContractProposal;
@@ -910,6 +939,7 @@ export declare const SudoContractProposal: {
     toProtoMsg(message: SudoContractProposal): SudoContractProposalProtoMsg;
 };
 export declare const ExecuteContractProposal: {
+    typeUrl: string;
     encode(message: ExecuteContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ExecuteContractProposal;
     fromPartial(object: Partial<ExecuteContractProposal>): ExecuteContractProposal;
@@ -922,6 +952,7 @@ export declare const ExecuteContractProposal: {
     toProtoMsg(message: ExecuteContractProposal): ExecuteContractProposalProtoMsg;
 };
 export declare const UpdateAdminProposal: {
+    typeUrl: string;
     encode(message: UpdateAdminProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdateAdminProposal;
     fromPartial(object: Partial<UpdateAdminProposal>): UpdateAdminProposal;
@@ -934,6 +965,7 @@ export declare const UpdateAdminProposal: {
     toProtoMsg(message: UpdateAdminProposal): UpdateAdminProposalProtoMsg;
 };
 export declare const ClearAdminProposal: {
+    typeUrl: string;
     encode(message: ClearAdminProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ClearAdminProposal;
     fromPartial(object: Partial<ClearAdminProposal>): ClearAdminProposal;
@@ -946,6 +978,7 @@ export declare const ClearAdminProposal: {
     toProtoMsg(message: ClearAdminProposal): ClearAdminProposalProtoMsg;
 };
 export declare const PinCodesProposal: {
+    typeUrl: string;
     encode(message: PinCodesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PinCodesProposal;
     fromPartial(object: Partial<PinCodesProposal>): PinCodesProposal;
@@ -958,6 +991,7 @@ export declare const PinCodesProposal: {
     toProtoMsg(message: PinCodesProposal): PinCodesProposalProtoMsg;
 };
 export declare const UnpinCodesProposal: {
+    typeUrl: string;
     encode(message: UnpinCodesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnpinCodesProposal;
     fromPartial(object: Partial<UnpinCodesProposal>): UnpinCodesProposal;
@@ -970,6 +1004,7 @@ export declare const UnpinCodesProposal: {
     toProtoMsg(message: UnpinCodesProposal): UnpinCodesProposalProtoMsg;
 };
 export declare const AccessConfigUpdate: {
+    typeUrl: string;
     encode(message: AccessConfigUpdate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccessConfigUpdate;
     fromPartial(object: Partial<AccessConfigUpdate>): AccessConfigUpdate;
@@ -982,6 +1017,7 @@ export declare const AccessConfigUpdate: {
     toProtoMsg(message: AccessConfigUpdate): AccessConfigUpdateProtoMsg;
 };
 export declare const UpdateInstantiateConfigProposal: {
+    typeUrl: string;
     encode(message: UpdateInstantiateConfigProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdateInstantiateConfigProposal;
     fromPartial(object: Partial<UpdateInstantiateConfigProposal>): UpdateInstantiateConfigProposal;
@@ -994,6 +1030,7 @@ export declare const UpdateInstantiateConfigProposal: {
     toProtoMsg(message: UpdateInstantiateConfigProposal): UpdateInstantiateConfigProposalProtoMsg;
 };
 export declare const StoreAndInstantiateContractProposal: {
+    typeUrl: string;
     encode(message: StoreAndInstantiateContractProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StoreAndInstantiateContractProposal;
     fromPartial(object: Partial<StoreAndInstantiateContractProposal>): StoreAndInstantiateContractProposal;

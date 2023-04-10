@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
 import { ContractInfo, ContractInfoAmino, ContractInfoSDKType, ContractCodeHistoryEntry, ContractCodeHistoryEntryAmino, ContractCodeHistoryEntrySDKType, Model, ModelAmino, ModelSDKType, AccessConfig, AccessConfigAmino, AccessConfigSDKType, Params, ParamsAmino, ParamsSDKType } from "./types";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * QueryContractInfoRequest is the request type for the Query/ContractInfo RPC
  * method
@@ -713,6 +713,7 @@ export interface QueryContractsByCreatorResponseSDKType {
     pagination?: PageResponseSDKType;
 }
 export declare const QueryContractInfoRequest: {
+    typeUrl: string;
     encode(message: QueryContractInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractInfoRequest;
     fromPartial(object: Partial<QueryContractInfoRequest>): QueryContractInfoRequest;
@@ -725,6 +726,7 @@ export declare const QueryContractInfoRequest: {
     toProtoMsg(message: QueryContractInfoRequest): QueryContractInfoRequestProtoMsg;
 };
 export declare const QueryContractInfoResponse: {
+    typeUrl: string;
     encode(message: QueryContractInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractInfoResponse;
     fromPartial(object: Partial<QueryContractInfoResponse>): QueryContractInfoResponse;
@@ -737,6 +739,7 @@ export declare const QueryContractInfoResponse: {
     toProtoMsg(message: QueryContractInfoResponse): QueryContractInfoResponseProtoMsg;
 };
 export declare const QueryContractHistoryRequest: {
+    typeUrl: string;
     encode(message: QueryContractHistoryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractHistoryRequest;
     fromPartial(object: Partial<QueryContractHistoryRequest>): QueryContractHistoryRequest;
@@ -749,6 +752,7 @@ export declare const QueryContractHistoryRequest: {
     toProtoMsg(message: QueryContractHistoryRequest): QueryContractHistoryRequestProtoMsg;
 };
 export declare const QueryContractHistoryResponse: {
+    typeUrl: string;
     encode(message: QueryContractHistoryResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractHistoryResponse;
     fromPartial(object: Partial<QueryContractHistoryResponse>): QueryContractHistoryResponse;
@@ -761,6 +765,7 @@ export declare const QueryContractHistoryResponse: {
     toProtoMsg(message: QueryContractHistoryResponse): QueryContractHistoryResponseProtoMsg;
 };
 export declare const QueryContractsByCodeRequest: {
+    typeUrl: string;
     encode(message: QueryContractsByCodeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractsByCodeRequest;
     fromPartial(object: Partial<QueryContractsByCodeRequest>): QueryContractsByCodeRequest;
@@ -773,6 +778,7 @@ export declare const QueryContractsByCodeRequest: {
     toProtoMsg(message: QueryContractsByCodeRequest): QueryContractsByCodeRequestProtoMsg;
 };
 export declare const QueryContractsByCodeResponse: {
+    typeUrl: string;
     encode(message: QueryContractsByCodeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractsByCodeResponse;
     fromPartial(object: Partial<QueryContractsByCodeResponse>): QueryContractsByCodeResponse;
@@ -785,6 +791,7 @@ export declare const QueryContractsByCodeResponse: {
     toProtoMsg(message: QueryContractsByCodeResponse): QueryContractsByCodeResponseProtoMsg;
 };
 export declare const QueryAllContractStateRequest: {
+    typeUrl: string;
     encode(message: QueryAllContractStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllContractStateRequest;
     fromPartial(object: Partial<QueryAllContractStateRequest>): QueryAllContractStateRequest;
@@ -797,6 +804,7 @@ export declare const QueryAllContractStateRequest: {
     toProtoMsg(message: QueryAllContractStateRequest): QueryAllContractStateRequestProtoMsg;
 };
 export declare const QueryAllContractStateResponse: {
+    typeUrl: string;
     encode(message: QueryAllContractStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllContractStateResponse;
     fromPartial(object: Partial<QueryAllContractStateResponse>): QueryAllContractStateResponse;
@@ -809,6 +817,7 @@ export declare const QueryAllContractStateResponse: {
     toProtoMsg(message: QueryAllContractStateResponse): QueryAllContractStateResponseProtoMsg;
 };
 export declare const QueryRawContractStateRequest: {
+    typeUrl: string;
     encode(message: QueryRawContractStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryRawContractStateRequest;
     fromPartial(object: Partial<QueryRawContractStateRequest>): QueryRawContractStateRequest;
@@ -821,6 +830,7 @@ export declare const QueryRawContractStateRequest: {
     toProtoMsg(message: QueryRawContractStateRequest): QueryRawContractStateRequestProtoMsg;
 };
 export declare const QueryRawContractStateResponse: {
+    typeUrl: string;
     encode(message: QueryRawContractStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryRawContractStateResponse;
     fromPartial(object: Partial<QueryRawContractStateResponse>): QueryRawContractStateResponse;
@@ -833,6 +843,7 @@ export declare const QueryRawContractStateResponse: {
     toProtoMsg(message: QueryRawContractStateResponse): QueryRawContractStateResponseProtoMsg;
 };
 export declare const QuerySmartContractStateRequest: {
+    typeUrl: string;
     encode(message: QuerySmartContractStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySmartContractStateRequest;
     fromPartial(object: Partial<QuerySmartContractStateRequest>): QuerySmartContractStateRequest;
@@ -845,6 +856,7 @@ export declare const QuerySmartContractStateRequest: {
     toProtoMsg(message: QuerySmartContractStateRequest): QuerySmartContractStateRequestProtoMsg;
 };
 export declare const QuerySmartContractStateResponse: {
+    typeUrl: string;
     encode(message: QuerySmartContractStateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySmartContractStateResponse;
     fromPartial(object: Partial<QuerySmartContractStateResponse>): QuerySmartContractStateResponse;
@@ -857,6 +869,7 @@ export declare const QuerySmartContractStateResponse: {
     toProtoMsg(message: QuerySmartContractStateResponse): QuerySmartContractStateResponseProtoMsg;
 };
 export declare const QueryCodeRequest: {
+    typeUrl: string;
     encode(message: QueryCodeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCodeRequest;
     fromPartial(object: Partial<QueryCodeRequest>): QueryCodeRequest;
@@ -869,6 +882,7 @@ export declare const QueryCodeRequest: {
     toProtoMsg(message: QueryCodeRequest): QueryCodeRequestProtoMsg;
 };
 export declare const CodeInfoResponse: {
+    typeUrl: string;
     encode(message: CodeInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CodeInfoResponse;
     fromPartial(object: Partial<CodeInfoResponse>): CodeInfoResponse;
@@ -881,6 +895,7 @@ export declare const CodeInfoResponse: {
     toProtoMsg(message: CodeInfoResponse): CodeInfoResponseProtoMsg;
 };
 export declare const QueryCodeResponse: {
+    typeUrl: string;
     encode(message: QueryCodeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCodeResponse;
     fromPartial(object: Partial<QueryCodeResponse>): QueryCodeResponse;
@@ -893,6 +908,7 @@ export declare const QueryCodeResponse: {
     toProtoMsg(message: QueryCodeResponse): QueryCodeResponseProtoMsg;
 };
 export declare const QueryCodesRequest: {
+    typeUrl: string;
     encode(message: QueryCodesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCodesRequest;
     fromPartial(object: Partial<QueryCodesRequest>): QueryCodesRequest;
@@ -905,6 +921,7 @@ export declare const QueryCodesRequest: {
     toProtoMsg(message: QueryCodesRequest): QueryCodesRequestProtoMsg;
 };
 export declare const QueryCodesResponse: {
+    typeUrl: string;
     encode(message: QueryCodesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCodesResponse;
     fromPartial(object: Partial<QueryCodesResponse>): QueryCodesResponse;
@@ -917,6 +934,7 @@ export declare const QueryCodesResponse: {
     toProtoMsg(message: QueryCodesResponse): QueryCodesResponseProtoMsg;
 };
 export declare const QueryPinnedCodesRequest: {
+    typeUrl: string;
     encode(message: QueryPinnedCodesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPinnedCodesRequest;
     fromPartial(object: Partial<QueryPinnedCodesRequest>): QueryPinnedCodesRequest;
@@ -929,6 +947,7 @@ export declare const QueryPinnedCodesRequest: {
     toProtoMsg(message: QueryPinnedCodesRequest): QueryPinnedCodesRequestProtoMsg;
 };
 export declare const QueryPinnedCodesResponse: {
+    typeUrl: string;
     encode(message: QueryPinnedCodesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPinnedCodesResponse;
     fromPartial(object: Partial<QueryPinnedCodesResponse>): QueryPinnedCodesResponse;
@@ -941,6 +960,7 @@ export declare const QueryPinnedCodesResponse: {
     toProtoMsg(message: QueryPinnedCodesResponse): QueryPinnedCodesResponseProtoMsg;
 };
 export declare const QueryParamsRequest: {
+    typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
@@ -953,6 +973,7 @@ export declare const QueryParamsRequest: {
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
 export declare const QueryParamsResponse: {
+    typeUrl: string;
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
@@ -965,6 +986,7 @@ export declare const QueryParamsResponse: {
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
 export declare const QueryContractsByCreatorRequest: {
+    typeUrl: string;
     encode(message: QueryContractsByCreatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractsByCreatorRequest;
     fromPartial(object: Partial<QueryContractsByCreatorRequest>): QueryContractsByCreatorRequest;
@@ -977,6 +999,7 @@ export declare const QueryContractsByCreatorRequest: {
     toProtoMsg(message: QueryContractsByCreatorRequest): QueryContractsByCreatorRequestProtoMsg;
 };
 export declare const QueryContractsByCreatorResponse: {
+    typeUrl: string;
     encode(message: QueryContractsByCreatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractsByCreatorResponse;
     fromPartial(object: Partial<QueryContractsByCreatorResponse>): QueryContractsByCreatorResponse;

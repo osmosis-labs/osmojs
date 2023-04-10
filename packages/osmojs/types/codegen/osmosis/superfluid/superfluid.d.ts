@@ -1,6 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * SuperfluidAssetType indicates whether the superfluid asset is
  * a native token itself or the lp share of a pool.
@@ -230,6 +230,7 @@ export interface UnpoolWhitelistedPoolsSDKType {
     ids: Long[];
 }
 export declare const SuperfluidAsset: {
+    typeUrl: string;
     encode(message: SuperfluidAsset, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidAsset;
     fromPartial(object: Partial<SuperfluidAsset>): SuperfluidAsset;
@@ -242,6 +243,7 @@ export declare const SuperfluidAsset: {
     toProtoMsg(message: SuperfluidAsset): SuperfluidAssetProtoMsg;
 };
 export declare const SuperfluidIntermediaryAccount: {
+    typeUrl: string;
     encode(message: SuperfluidIntermediaryAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidIntermediaryAccount;
     fromPartial(object: Partial<SuperfluidIntermediaryAccount>): SuperfluidIntermediaryAccount;
@@ -254,6 +256,7 @@ export declare const SuperfluidIntermediaryAccount: {
     toProtoMsg(message: SuperfluidIntermediaryAccount): SuperfluidIntermediaryAccountProtoMsg;
 };
 export declare const OsmoEquivalentMultiplierRecord: {
+    typeUrl: string;
     encode(message: OsmoEquivalentMultiplierRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): OsmoEquivalentMultiplierRecord;
     fromPartial(object: Partial<OsmoEquivalentMultiplierRecord>): OsmoEquivalentMultiplierRecord;
@@ -266,6 +269,7 @@ export declare const OsmoEquivalentMultiplierRecord: {
     toProtoMsg(message: OsmoEquivalentMultiplierRecord): OsmoEquivalentMultiplierRecordProtoMsg;
 };
 export declare const SuperfluidDelegationRecord: {
+    typeUrl: string;
     encode(message: SuperfluidDelegationRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationRecord;
     fromPartial(object: Partial<SuperfluidDelegationRecord>): SuperfluidDelegationRecord;
@@ -278,6 +282,7 @@ export declare const SuperfluidDelegationRecord: {
     toProtoMsg(message: SuperfluidDelegationRecord): SuperfluidDelegationRecordProtoMsg;
 };
 export declare const LockIdIntermediaryAccountConnection: {
+    typeUrl: string;
     encode(message: LockIdIntermediaryAccountConnection, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockIdIntermediaryAccountConnection;
     fromPartial(object: Partial<LockIdIntermediaryAccountConnection>): LockIdIntermediaryAccountConnection;
@@ -290,6 +295,7 @@ export declare const LockIdIntermediaryAccountConnection: {
     toProtoMsg(message: LockIdIntermediaryAccountConnection): LockIdIntermediaryAccountConnectionProtoMsg;
 };
 export declare const UnpoolWhitelistedPools: {
+    typeUrl: string;
     encode(message: UnpoolWhitelistedPools, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnpoolWhitelistedPools;
     fromPartial(object: Partial<UnpoolWhitelistedPools>): UnpoolWhitelistedPools;
