@@ -19,7 +19,7 @@ async function ibcCosmosToOsmosis(cosmosChain, osmosisChain, address) {
   const result = await client.sendIbcTokens(
     cosmosChain.address,
     address,
-    coin(100_000_000, cosmosChain.getDenom()),
+    coin(100_000_000_000, cosmosChain.getDenom()),
     channel["port_id"],
     channel["channel_id"],
     { revisionHeight: Long.fromNumber(12300), revisionNumber: Long.fromNumber(45600) },
@@ -42,7 +42,7 @@ async function sendOsmoToAddress(osmosisChain, address) {
   const result = await client.sendTokens(
     osmosisChain.address,
     address,
-    [coin(1_000_000_000, denom)],
+    [coin(100_000_000_000, denom)],
     { amount: coins(0, denom), gas: "200000" },
   );
 
@@ -76,7 +76,7 @@ describe("osmos token transfer", function () {
     const genesisBalance = await chainClient.client.getBalance(chainClient.address, baseDenom);
     const balance = await chainClient.client.getBalance(address, baseDenom);
 
-    expect(balance.amount).toEqual("100000000");
+    expect(balance.amount).toEqual("100000000000");
     expect(balance.denom).toEqual(baseDenom);
   }, 10000);
 });
@@ -111,7 +111,7 @@ describe("IBC transfer of atom", () => {
 
     // check balances
     expect(balances.length).toEqual(1);
-    expect(balances[0].amount).toEqual("100000000");
+    expect(balances[0].amount).toEqual("100000000000");
     expect(balances[0].denom).toContain("ibc/");
 
     // check ibc denom trace of the same
@@ -176,7 +176,7 @@ describe("create ibc pool", () => {
     const result = await signingClient.signAndBroadcast(
       address,
       [msg],
-      chain.getDefaultFees(),
+      { amount: coins(1_000_000_000, chain.getDenom()), gas: "10000000" },
       "creating IBC pools",
     )
 
