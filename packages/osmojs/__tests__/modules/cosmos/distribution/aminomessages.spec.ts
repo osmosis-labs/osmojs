@@ -91,7 +91,8 @@ describe("AminoTypes", () => {
                 value: msg,
             });
             const expected: AminoMsgWithdrawValidatorCommission = {
-                type: "cosmos-sdk/MsgWithdrawValidatorCommission",
+                // type: "cosmos-sdk/MsgWithdrawValidatorCommission",
+                type: "cosmos-sdk/MsgWithdrawValCommission",
                 value: {
                     validator_address: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
                 },

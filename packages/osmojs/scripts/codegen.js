@@ -90,6 +90,13 @@ telescope({
     },
     aminoEncoding: {
       enabled: true,
+      exceptions: {
+        
+        // '/cosmos-sdk/MsgWithdrawValCommission': {
+        //   aminoType: 'cosmos-sdk/MsgWithdrawValidatorCommission'
+        // },
+
+      },
       useRecursiveV2encoding: true
     },
     lcdClients: {
