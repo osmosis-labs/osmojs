@@ -32,7 +32,7 @@ async function ibcCosmosToOsmosis(cosmosChain, osmosisChain, address) {
   await sleep(1*1000);
 
   assertIsDeliverTxSuccess(result);
-};
+}
 
 // todo: use facuet here
 async function sendOsmoToAddress(osmosisChain, address) {

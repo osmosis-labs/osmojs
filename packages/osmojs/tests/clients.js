@@ -9,7 +9,7 @@ import {getChainInfo, getStarshipConfig} from './config';
 export class ChainClientRegistry {
   keys;
 
-  constructor(chainId, client, address) {
+  constructor(chainId) {
     this.chainId = chainId;
     this.chainInfo = null;
     this.client = null;
@@ -26,7 +26,7 @@ export class ChainClientRegistry {
   }
 
   stargateClientOpts() {
-    const opts = {
+    let opts = {
         prefix: this.getPrefix(),
         gasPrice: `0${this.getDenom()}`,
     }

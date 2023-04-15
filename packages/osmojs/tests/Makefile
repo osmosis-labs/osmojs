@@ -2,21 +2,43 @@ HELM_NAME = osmojs
 HELM_FILE = configs/config.yaml
 HELM_REPO = starship
 HELM_CHART = devnet
-HELM_VERSION = v0.1.21
+HELM_VERSION = v0.1.22
+
+###############################################################################
+###                              All commands                               ###
+###############################################################################
+
+.PHONY: setup
+setup: check setup-kind setup-helm
+
+.PHONY: start
+start: install port-forward
+
+.PHONY: test
+test:
+	jest --testPathPattern=../tests
+
+.PHONY: stop
+stop: stop-forward delete
+
+.PHONY: clean
+clean: stop clean-kind
 
 ###############################################################################
 ###                              Helm commands                              ###
 ###############################################################################
 
-.PHONY: setup
-setup:
+.PHONY: setup-helm
+setup-helm:
 	helm repo add $(HELM_REPO) https://cosmology-tech.github.io/starship/
 	helm repo update
 	helm search repo $(HELM_REPO)/$(HELM_CHART) --version $(HELM_VERSION)
 
 .PHONY: install
 install:
-	helm install -f $(HELM_FILE) $(HELM_NAME) $(HELM_REPO)/$(HELM_CHART) --version $(HELM_VERSION)
+	@echo "Installing the helm chart. This is going to take a while....."
+	@echo "You can check the status with \"kubectl get pods\", run in another terminal please"
+	helm install -f $(HELM_FILE) $(HELM_NAME) $(HELM_REPO)/$(HELM_CHART) --version $(HELM_VERSION) --wait --timeout 20m
 
 .PHONY: upgrade
 upgrade:
@@ -31,21 +53,30 @@ delete:
 	-helm delete $(HELM_NAME)
 
 ###############################################################################
-###                              Port forward                              ###
+###                                 Port forward                            ###
 ###############################################################################
 
-setup-forward:
-ifeq (,$(wildcard bin/port-forward.sh))
-	@echo "Fetching port-forward script from github, since not found..."
-	mkdir -p bin/
-	curl -o bin/port-forward.sh https://raw.githubusercontent.com/cosmology-tech/starship/main/scripts/port-forward.sh
-	curl -o bin/common.sh https://raw.githubusercontent.com/cosmology-tech/starship/main/scripts/common.sh
-endif
-
 .PHONY: port-forward
-port-forward: setup-forward
-	bash bin/port-forward.sh --config=$(HELM_FILE)
+port-forward:
+	bash $(CURDIR)/scripts/port-forward.sh --config=$(HELM_FILE)
 
 .PHONY: stop-forward
 stop-forward:
 	-pkill -f "port-forward"
+
+###############################################################################
+###                          Local Kind Setup                               ###
+###############################################################################
+KIND_CLUSTER=starship
+
+.PHONY: check
+check:
+	bash $(CURDIR)/scripts/dev-setup.sh
+
+.PHONY: setup-kind
+setup-kind:
+	kind create cluster --name $(KIND_CLUSTER)
+
+.PHONY: clean-kind
+clean-kind:
+	kind delete cluster --name $(KIND_CLUSTER)
