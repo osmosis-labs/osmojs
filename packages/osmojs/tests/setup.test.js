@@ -1,56 +1,12 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import {assertIsDeliverTxSuccess, setupIbcExtension, QueryClient, SigningStargateClient} from '@cosmjs/stargate';
-import Long from "long";
 import { coin, coins } from '@cosmjs/amino';
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { osmosis } from '../src/codegen';
 
-import { getChainInfo } from './config';
-import { sleep } from './utils';
+import { ibcCosmosToOsmosis, sendOsmoToAddress } from './utils';
 import { ChainClientRegistry } from './clients.js';
 
-async function ibcCosmosToOsmosis(cosmosChain, osmosisChain, address) {
-  const client = cosmosChain.getClient();
-
-  // Fetch open transfer channels and ports
-  const ibcInfo = await cosmosChain.getIBCInfo(osmosisChain.getChainId());
-  const channel = ibcInfo.channels[0]["chain_1"];
-
-  const result = await client.sendIbcTokens(
-    cosmosChain.address,
-    address,
-    coin(100_000_000_000, cosmosChain.getDenom()),
-    channel["port_id"],
-    channel["channel_id"],
-    { revisionHeight: Long.fromNumber(12300), revisionNumber: Long.fromNumber(45600) },
-    Math.floor(Date.now() / 1000) + 60,
-    { amount: coins(0, cosmosChain.getDenom()), gas: "200000" },
-    "initial send atoms as part of setup",
-  );
-
-  // todo: fix this, better to wait for the broadcast to succed with a timeout
-  await sleep(1*1000);
-
-  assertIsDeliverTxSuccess(result);
-}
-
-// todo: use facuet here
-async function sendOsmoToAddress(osmosisChain, address) {
-  const client = osmosisChain.getClient();
-  const denom = osmosisChain.getDenom();
-
-  const result = await client.sendTokens(
-    osmosisChain.address,
-    address,
-    [coin(100_000_000_000, denom)],
-    { amount: coins(0, denom), gas: "200000" },
-  );
-
-  // todo: fix this, better to wait for the broadcast to succed with a timeout
-  await sleep(1*1000);
-
-  assertIsDeliverTxSuccess(result);
-}
 
 describe("IBC transfer of atom", () => {
   let wallet;
