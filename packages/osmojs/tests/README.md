@@ -24,6 +24,7 @@ One can either perform connect to a
 
 To make this easier we have a handy command which will create a local kind cluster and give you access
 to a kubernetes cluster locally.
+
 NOTE: Resources constraint on local machine will affect the performance of Starship spinup time
 
 ```bash
