@@ -9,7 +9,7 @@ HELM_VERSION = v0.1.22
 ###############################################################################
 
 .PHONY: setup
-setup: check setup-kind setup-helm
+setup: check setup-helm
 
 .PHONY: start
 start: install port-forward
