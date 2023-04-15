@@ -52,24 +52,27 @@ async function sendOsmoToAddress(osmosisChain, address) {
   assertIsDeliverTxSuccess(result);
 }
 
-describe("osmos token transfer", function () {
+describe("IBC transfer of atom", () => {
   let wallet;
   let baseDenom;
   let address;
-  let chainClient;
+  let chainClients;
 
   beforeAll(async () => {
-    chainClient = await ChainClientRegistry.withChainId("osmosis-1");
+    chainClients = await ChainClientRegistry.withChainIds(["osmosis-1", "cosmos-2"]);
+  });
 
+  beforeEach(async () => {
     wallet = await DirectSecp256k1HdWallet.fromMnemonic(
       generateMnemonic(),
-      {prefix: chainClient.getPrefix()},
+      { prefix: chainClients["osmosis-1"].getPrefix() },
     );
-    baseDenom = chainClient.getDenom();
+    baseDenom = chainClients["osmosis-1"].getDenom();
     address = (await wallet.getAccounts())[0].address;
   });
 
   it("check address has osmosis token", async () => {
+    let chainClient = chainClients["osmosis-1"]
     // Transfer uosmo tokens from faceut
     await sendOsmoToAddress(chainClient, address);
 
@@ -79,24 +82,6 @@ describe("osmos token transfer", function () {
     expect(balance.amount).toEqual("100000000000");
     expect(balance.denom).toEqual(baseDenom);
   }, 10000);
-});
-
-describe("IBC transfer of atom", () => {
-  let wallet;
-  let baseDenom;
-  let address;
-  let chainClients;
-
-  beforeAll(async () => {
-    chainClients = await ChainClientRegistry.withChainIds(["osmosis-1", "cosmos-2"]);
-
-    wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-      generateMnemonic(),
-      { prefix: chainClients["osmosis-1"].getPrefix() },
-    );
-    baseDenom = chainClients["osmosis-1"].getDenom();
-    address = (await wallet.getAccounts())[0].address;
-  });
 
   it("check address has IBC tokens", async () => {
     // Transfer uatom tokens via IBC to osmosis
@@ -118,32 +103,14 @@ describe("IBC transfer of atom", () => {
     const trace = await queryClient.ibc.transfer.denomTrace(balances[0].denom.replace("ibc/", ""));
     expect(trace.denomTrace.baseDenom).toEqual(chainClients["cosmos-2"].getDenom());
   }, 10000);
-});
 
-describe("create ibc pool", () => {
-  let wallet;
-  let baseDenom;
-  let address;
-  let signingClient;
-  let chainClients;
-
-  beforeAll(async () => {
-    chainClients = await ChainClientRegistry.withChainIds(["osmosis-1", "cosmos-2"]);
-
-    wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-      generateMnemonic(),
-      { prefix: chainClients["osmosis-1"].getPrefix() },
-    );
-    baseDenom = chainClients["osmosis-1"].getDenom();
-    address = (await wallet.getAccounts())[0].address;
-    signingClient = await SigningStargateClient.connectWithSigner(
+  it("create ibc pools with ibc atom osmo", async () => {
+    const signingClient = await SigningStargateClient.connectWithSigner(
       chainClients["osmosis-1"].rpc,
       wallet,
       chainClients["osmosis-1"].stargateClientOpts(),
     );
-  });
 
-  it("create ibc pools with ibc atom osmo", async () => {
     // Transfer uosmo tokens from faceut
     await sendOsmoToAddress(chainClients["osmosis-1"], address);
     // Transfer uatom tokens via IBC to osmosis
