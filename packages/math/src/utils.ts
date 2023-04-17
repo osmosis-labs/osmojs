@@ -11,7 +11,11 @@ import { Asset as OsmosisAsset } from "@chain-registry/types";
 import BigNumber from "bignumber.js";
 
 export const getOsmoAssetByDenom = (denom: CoinDenom): OsmosisAsset => {
-  return osmosisAssets.find((asset) => asset.base === denom) as OsmosisAsset;
+  const asset = osmosisAssets.find((asset) => asset.base === denom);
+  if (!asset) {
+    throw new Error(`Asset not found: ${denom}`);
+  }
+  return asset;
 };
 
 export const getDenomForCoinGeckoId = (
@@ -42,7 +46,7 @@ export const symbolToOsmoDenom = (token: CoinSymbol): CoinDenom => {
 export const getExponentByDenom = (denom: CoinDenom): Exponent => {
   const asset = getOsmoAssetByDenom(denom);
   const unit = asset.denom_units.find(({ denom }) => denom === asset.display);
-  return unit.exponent;
+  return unit?.exponent || 0;
 };
 
 export const convertGeckoPricesToDenomPriceHash = (
