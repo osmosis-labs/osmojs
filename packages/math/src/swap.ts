@@ -96,9 +96,6 @@ export const calcAmountWithSlippage = (
   return new BigNumber(amount).multipliedBy(remainingPercentage).toString();
 };
 
-// TODO: calcPriceImpact (add test)
-// TODO: update the docs
-
 const one = new BigNumber(1);
 
 const getPoolAsset = (pool: Pool, denom: string) => {
