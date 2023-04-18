@@ -110,8 +110,29 @@ const msg = swapExactAmountIn({
 });
 ```
 
-(If you want to see an example of calculating `routes` and `tokenOutMinAmount` cosmology uses osmojs and has an [example here](https://github.com/cosmology-tech/cosmology/tree/main/packages/core#lookuproutesfortrade).)
+To calculate the routes and tokenOutMinAmount, you can use [@osmonauts/math](https://github.com/osmosis-labs/osmojs/tree/main/packages/math):
 
+```js
+import { getRoutesForTrade, calcAmountWithSlippage } from "@osmonauts/math";
+
+const routes = getRoutesForTrade({
+  trade: {
+    sell: {
+      denom: tokenIn.denom,
+      amount: tokenInAmount,
+    },
+    buy: {
+      denom: tokenOut.denom,
+      amount: tokenOutAmount,
+    },
+  },
+  pairs,
+});
+
+const tokenOutMinAmount = calcAmountWithSlippage(tokenOutAmount, slippage);
+```
+
+For more details, check out the [swap-tokens](https://github.com/cosmology-tech/create-cosmos-app/tree/main#swap-tokens) example.
 
 ### Lockup Messages
 
