@@ -1,4 +1,4 @@
-# OsmoJS 
+# OsmoJS
 
 <p align="center">
   <a href="https://github.com/osmosis-labs/osmojs">
@@ -69,7 +69,7 @@ const response = await client.osmosis.gamm.v1beta1.pools();
 // currently Pools need to be decoded
 response.pools.map(({ typeUrl, value }) => {
     console.log(osmosis.gamm.v1beta1.Pool.decode(value));
-}) 
+})
 ```
 
 ** Every RPC endpoint is available! Simply use vscode or another tool to visually explore through autocomplete all of the RPC endpoints available on the `RPCQueryClient`!
@@ -376,7 +376,7 @@ If you want to manually construct a stargate client
 import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 
-import { 
+import {
     cosmosAminoConverters,
     cosmosProtoRegistry,
     cosmwasmAminoConverters,
@@ -423,6 +423,12 @@ yarn bootstrap
 yarn build
 ```
 
+And then get all submodules if necessary:
+
+```
+git submodule update --init
+```
+
 ### Codegen
 
 Contract schemas live in `./contracts`, and protos in `./proto`. Look inside of `scripts/codegen.js` and configure the settings for bundling your SDK and contracts into `osmojs`:
@@ -430,6 +436,8 @@ Contract schemas live in `./contracts`, and protos in `./proto`. Look inside of 
 ```
 yarn codegen
 ```
+
+Note: please get all sub-modules before generating code, since some proto files within default config are included in sub-modules.
 
 ### Publishing
 
