@@ -1,6 +1,3 @@
-import {makeCosmoshubPath} from '@cosmjs/amino';
-import {DirectSecp256k1HdWallet} from '@cosmjs/proto-signing';
-import {SigningStargateClient} from '@cosmjs/stargate';
 import yaml from 'js-yaml';
 import fetch from 'node-fetch';
 import path from 'path';
@@ -12,9 +9,7 @@ let KEYS;
 // returns starship config used to spun up the cluster
 export function getStarshipConfig() {
   const configPath = path.join(__dirname, "configs", "config.yaml");
-  const config = yaml.load(fs.readFileSync(configPath, "utf-8"));
-
-  return config;
+  return yaml.load(fs.readFileSync(configPath, "utf-8"));
 }
 
 // todo: use @chain-registry/types and @chain-registry/client

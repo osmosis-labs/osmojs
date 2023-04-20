@@ -123,7 +123,7 @@ export class ChainClientRegistry {
   }
 
   getDefaultFees() {
-    return { amount: coins(0, this.getDenom()), gas: "100000" };
+    return { amount: coins(10000, this.getDenom()), gas: "100000" };
   }
 
   // returns IBC info between current chain and given chain

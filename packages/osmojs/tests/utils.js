@@ -27,7 +27,7 @@ export async function ibcCosmosToOsmosis(cosmosChain, osmosisChain, address) {
     channel["channel_id"],
     { revisionHeight: Long.fromNumber(12300), revisionNumber: Long.fromNumber(45600) },
     Math.floor(Date.now() / 1000) + 60,
-    { amount: coins(0, cosmosChain.getDenom()), gas: "200000" },
+    { amount: coins(10000, cosmosChain.getDenom()), gas: "200000" },
     "initial send atoms as part of setup",
   );
 
@@ -46,7 +46,7 @@ export async function sendOsmoToAddress(osmosisChain, address) {
     osmosisChain.address,
     address,
     [coin(100_000_000_000, denom)],
-    { amount: coins(0, denom), gas: "200000" },
+    { amount: coins(10000, denom), gas: "200000" },
   );
 
   // todo: fix this, better to wait for the broadcast to succed with a timeout
