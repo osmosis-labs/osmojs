@@ -3,7 +3,7 @@ import {assertIsDeliverTxSuccess, setupIbcExtension, QueryClient, SigningStargat
 import { coin, coins } from '@cosmjs/amino';
 import Long from 'long';
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { osmosis } from '../../osmojs';
+import { osmosis } from '../src/index';
 
 import { ibcCosmosToOsmosis, sendOsmoToAddress } from './utils';
 import { ChainClientRegistry } from './clients.js';
