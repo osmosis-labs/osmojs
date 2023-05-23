@@ -86,7 +86,7 @@ telescope({
         timestamp: 'date',
         useExact: false,
         useDeepPartial: false,
-        longLibrary: 'bigint'
+        num64: 'bigint'
       }
     },
     aminoEncoding: {
