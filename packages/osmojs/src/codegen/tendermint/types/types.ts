@@ -5,7 +5,6 @@ import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validato
 import { Long, toTimestamp, fromTimestamp, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** BlockIdFlag indicates which BlcokID the signature is for */
-
 export enum BlockIDFlag {
   BLOCK_ID_FLAG_UNKNOWN = 0,
   BLOCK_ID_FLAG_ABSENT = 1,
@@ -20,19 +19,15 @@ export function blockIDFlagFromJSON(object: any): BlockIDFlag {
     case 0:
     case "BLOCK_ID_FLAG_UNKNOWN":
       return BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN;
-
     case 1:
     case "BLOCK_ID_FLAG_ABSENT":
       return BlockIDFlag.BLOCK_ID_FLAG_ABSENT;
-
     case 2:
     case "BLOCK_ID_FLAG_COMMIT":
       return BlockIDFlag.BLOCK_ID_FLAG_COMMIT;
-
     case 3:
     case "BLOCK_ID_FLAG_NIL":
       return BlockIDFlag.BLOCK_ID_FLAG_NIL;
-
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -43,30 +38,23 @@ export function blockIDFlagToJSON(object: BlockIDFlag): string {
   switch (object) {
     case BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN:
       return "BLOCK_ID_FLAG_UNKNOWN";
-
     case BlockIDFlag.BLOCK_ID_FLAG_ABSENT:
       return "BLOCK_ID_FLAG_ABSENT";
-
     case BlockIDFlag.BLOCK_ID_FLAG_COMMIT:
       return "BLOCK_ID_FLAG_COMMIT";
-
     case BlockIDFlag.BLOCK_ID_FLAG_NIL:
       return "BLOCK_ID_FLAG_NIL";
-
     case BlockIDFlag.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
   }
 }
 /** SignedMsgType is a type of signed message in the consensus. */
-
 export enum SignedMsgType {
   SIGNED_MSG_TYPE_UNKNOWN = 0,
-
   /** SIGNED_MSG_TYPE_PREVOTE - Votes */
   SIGNED_MSG_TYPE_PREVOTE = 1,
   SIGNED_MSG_TYPE_PRECOMMIT = 2,
-
   /** SIGNED_MSG_TYPE_PROPOSAL - Proposals */
   SIGNED_MSG_TYPE_PROPOSAL = 32,
   UNRECOGNIZED = -1,
@@ -78,19 +66,15 @@ export function signedMsgTypeFromJSON(object: any): SignedMsgType {
     case 0:
     case "SIGNED_MSG_TYPE_UNKNOWN":
       return SignedMsgType.SIGNED_MSG_TYPE_UNKNOWN;
-
     case 1:
     case "SIGNED_MSG_TYPE_PREVOTE":
       return SignedMsgType.SIGNED_MSG_TYPE_PREVOTE;
-
     case 2:
     case "SIGNED_MSG_TYPE_PRECOMMIT":
       return SignedMsgType.SIGNED_MSG_TYPE_PRECOMMIT;
-
     case 32:
     case "SIGNED_MSG_TYPE_PROPOSAL":
       return SignedMsgType.SIGNED_MSG_TYPE_PROPOSAL;
-
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -101,23 +85,18 @@ export function signedMsgTypeToJSON(object: SignedMsgType): string {
   switch (object) {
     case SignedMsgType.SIGNED_MSG_TYPE_UNKNOWN:
       return "SIGNED_MSG_TYPE_UNKNOWN";
-
     case SignedMsgType.SIGNED_MSG_TYPE_PREVOTE:
       return "SIGNED_MSG_TYPE_PREVOTE";
-
     case SignedMsgType.SIGNED_MSG_TYPE_PRECOMMIT:
       return "SIGNED_MSG_TYPE_PRECOMMIT";
-
     case SignedMsgType.SIGNED_MSG_TYPE_PROPOSAL:
       return "SIGNED_MSG_TYPE_PROPOSAL";
-
     case SignedMsgType.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
   }
 }
 /** PartsetHeader */
-
 export interface PartSetHeader {
   total: number;
   hash: Uint8Array;
@@ -127,7 +106,6 @@ export interface PartSetHeaderProtoMsg {
   value: Uint8Array;
 }
 /** PartsetHeader */
-
 export interface PartSetHeaderAmino {
   total: number;
   hash: Uint8Array;
@@ -137,7 +115,6 @@ export interface PartSetHeaderAminoMsg {
   value: PartSetHeaderAmino;
 }
 /** PartsetHeader */
-
 export interface PartSetHeaderSDKType {
   total: number;
   hash: Uint8Array;
@@ -166,7 +143,6 @@ export interface PartSDKType {
   proof?: ProofSDKType;
 }
 /** BlockID */
-
 export interface BlockID {
   hash: Uint8Array;
   partSetHeader?: PartSetHeader;
@@ -176,7 +152,6 @@ export interface BlockIDProtoMsg {
   value: Uint8Array;
 }
 /** BlockID */
-
 export interface BlockIDAmino {
   hash: Uint8Array;
   part_set_header?: PartSetHeaderAmino;
@@ -186,13 +161,11 @@ export interface BlockIDAminoMsg {
   value: BlockIDAmino;
 }
 /** BlockID */
-
 export interface BlockIDSDKType {
   hash: Uint8Array;
   part_set_header?: PartSetHeaderSDKType;
 }
 /** Header defines the structure of a Tendermint block header. */
-
 export interface Header {
   /** basic block info */
   version?: Consensus;
@@ -200,30 +173,22 @@ export interface Header {
   height: Long;
   time?: Date;
   /** prev block info */
-
   lastBlockId?: BlockID;
   /** hashes of block data */
-
   lastCommitHash: Uint8Array;
   dataHash: Uint8Array;
   /** hashes from the app output from the prev block */
-
   validatorsHash: Uint8Array;
   /** validators for the next block */
-
   nextValidatorsHash: Uint8Array;
   /** consensus params for current block */
-
   consensusHash: Uint8Array;
   /** state after txs from the previous block */
-
   appHash: Uint8Array;
   lastResultsHash: Uint8Array;
   /** consensus info */
-
   evidenceHash: Uint8Array;
   /** original proposer of the block */
-
   proposerAddress: Uint8Array;
 }
 export interface HeaderProtoMsg {
@@ -231,7 +196,6 @@ export interface HeaderProtoMsg {
   value: Uint8Array;
 }
 /** Header defines the structure of a Tendermint block header. */
-
 export interface HeaderAmino {
   /** basic block info */
   version?: ConsensusAmino;
@@ -239,30 +203,22 @@ export interface HeaderAmino {
   height: string;
   time?: Date;
   /** prev block info */
-
   last_block_id?: BlockIDAmino;
   /** hashes of block data */
-
   last_commit_hash: Uint8Array;
   data_hash: Uint8Array;
   /** hashes from the app output from the prev block */
-
   validators_hash: Uint8Array;
   /** validators for the next block */
-
   next_validators_hash: Uint8Array;
   /** consensus params for current block */
-
   consensus_hash: Uint8Array;
   /** state after txs from the previous block */
-
   app_hash: Uint8Array;
   last_results_hash: Uint8Array;
   /** consensus info */
-
   evidence_hash: Uint8Array;
   /** original proposer of the block */
-
   proposer_address: Uint8Array;
 }
 export interface HeaderAminoMsg {
@@ -270,7 +226,6 @@ export interface HeaderAminoMsg {
   value: HeaderAmino;
 }
 /** Header defines the structure of a Tendermint block header. */
-
 export interface HeaderSDKType {
   version?: ConsensusSDKType;
   chain_id: string;
@@ -288,7 +243,6 @@ export interface HeaderSDKType {
   proposer_address: Uint8Array;
 }
 /** Data contains the set of transactions included in the block */
-
 export interface Data {
   /**
    * Txs that will be applied by state @ block.Height+1.
@@ -302,7 +256,6 @@ export interface DataProtoMsg {
   value: Uint8Array;
 }
 /** Data contains the set of transactions included in the block */
-
 export interface DataAmino {
   /**
    * Txs that will be applied by state @ block.Height+1.
@@ -316,7 +269,6 @@ export interface DataAminoMsg {
   value: DataAmino;
 }
 /** Data contains the set of transactions included in the block */
-
 export interface DataSDKType {
   txs: Uint8Array[];
 }
@@ -324,13 +276,11 @@ export interface DataSDKType {
  * Vote represents a prevote, precommit, or commit vote from validators for
  * consensus.
  */
-
 export interface Vote {
   type: SignedMsgType;
   height: Long;
   round: number;
   /** zero if vote is nil. */
-
   blockId?: BlockID;
   timestamp?: Date;
   validatorAddress: Uint8Array;
@@ -345,13 +295,11 @@ export interface VoteProtoMsg {
  * Vote represents a prevote, precommit, or commit vote from validators for
  * consensus.
  */
-
 export interface VoteAmino {
   type: SignedMsgType;
   height: string;
   round: number;
   /** zero if vote is nil. */
-
   block_id?: BlockIDAmino;
   timestamp?: Date;
   validator_address: Uint8Array;
@@ -366,7 +314,6 @@ export interface VoteAminoMsg {
  * Vote represents a prevote, precommit, or commit vote from validators for
  * consensus.
  */
-
 export interface VoteSDKType {
   type: SignedMsgType;
   height: Long;
@@ -378,7 +325,6 @@ export interface VoteSDKType {
   signature: Uint8Array;
 }
 /** Commit contains the evidence that a block was committed by a set of validators. */
-
 export interface Commit {
   height: Long;
   round: number;
@@ -390,7 +336,6 @@ export interface CommitProtoMsg {
   value: Uint8Array;
 }
 /** Commit contains the evidence that a block was committed by a set of validators. */
-
 export interface CommitAmino {
   height: string;
   round: number;
@@ -402,7 +347,6 @@ export interface CommitAminoMsg {
   value: CommitAmino;
 }
 /** Commit contains the evidence that a block was committed by a set of validators. */
-
 export interface CommitSDKType {
   height: Long;
   round: number;
@@ -410,7 +354,6 @@ export interface CommitSDKType {
   signatures: CommitSigSDKType[];
 }
 /** CommitSig is a part of the Vote included in a Commit. */
-
 export interface CommitSig {
   blockIdFlag: BlockIDFlag;
   validatorAddress: Uint8Array;
@@ -422,7 +365,6 @@ export interface CommitSigProtoMsg {
   value: Uint8Array;
 }
 /** CommitSig is a part of the Vote included in a Commit. */
-
 export interface CommitSigAmino {
   block_id_flag: BlockIDFlag;
   validator_address: Uint8Array;
@@ -434,7 +376,6 @@ export interface CommitSigAminoMsg {
   value: CommitSigAmino;
 }
 /** CommitSig is a part of the Vote included in a Commit. */
-
 export interface CommitSigSDKType {
   block_id_flag: BlockIDFlag;
   validator_address: Uint8Array;
@@ -543,7 +484,6 @@ export interface BlockMetaSDKType {
   num_txs: Long;
 }
 /** TxProof represents a Merkle proof of the presence of a transaction in the Merkle tree. */
-
 export interface TxProof {
   rootHash: Uint8Array;
   data: Uint8Array;
@@ -554,7 +494,6 @@ export interface TxProofProtoMsg {
   value: Uint8Array;
 }
 /** TxProof represents a Merkle proof of the presence of a transaction in the Merkle tree. */
-
 export interface TxProofAmino {
   root_hash: Uint8Array;
   data: Uint8Array;
@@ -565,103 +504,82 @@ export interface TxProofAminoMsg {
   value: TxProofAmino;
 }
 /** TxProof represents a Merkle proof of the presence of a transaction in the Merkle tree. */
-
 export interface TxProofSDKType {
   root_hash: Uint8Array;
   data: Uint8Array;
   proof?: ProofSDKType;
 }
-
 function createBasePartSetHeader(): PartSetHeader {
   return {
     total: 0,
     hash: new Uint8Array()
   };
 }
-
 export const PartSetHeader = {
   typeUrl: "/tendermint.types.PartSetHeader",
-
   encode(message: PartSetHeader, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.total !== 0) {
       writer.uint32(8).uint32(message.total);
     }
-
     if (message.hash.length !== 0) {
       writer.uint32(18).bytes(message.hash);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): PartSetHeader {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePartSetHeader();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.total = reader.uint32();
           break;
-
         case 2:
           message.hash = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<PartSetHeader>): PartSetHeader {
     const message = createBasePartSetHeader();
     message.total = object.total ?? 0;
     message.hash = object.hash ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: PartSetHeaderAmino): PartSetHeader {
     return {
       total: object.total,
       hash: object.hash
     };
   },
-
   toAmino(message: PartSetHeader): PartSetHeaderAmino {
     const obj: any = {};
     obj.total = message.total;
     obj.hash = message.hash;
     return obj;
   },
-
   fromAminoMsg(object: PartSetHeaderAminoMsg): PartSetHeader {
     return PartSetHeader.fromAmino(object.value);
   },
-
   fromProtoMsg(message: PartSetHeaderProtoMsg): PartSetHeader {
     return PartSetHeader.decode(message.value);
   },
-
   toProto(message: PartSetHeader): Uint8Array {
     return PartSetHeader.encode(message).finish();
   },
-
   toProtoMsg(message: PartSetHeader): PartSetHeaderProtoMsg {
     return {
       typeUrl: "/tendermint.types.PartSetHeader",
       value: PartSetHeader.encode(message).finish()
     };
   }
-
 };
-
 function createBasePart(): Part {
   return {
     index: 0,
@@ -669,56 +587,43 @@ function createBasePart(): Part {
     proof: undefined
   };
 }
-
 export const Part = {
   typeUrl: "/tendermint.types.Part",
-
   encode(message: Part, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.index !== 0) {
       writer.uint32(8).uint32(message.index);
     }
-
     if (message.bytes.length !== 0) {
       writer.uint32(18).bytes(message.bytes);
     }
-
     if (message.proof !== undefined) {
       Proof.encode(message.proof, writer.uint32(26).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): Part {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePart();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.index = reader.uint32();
           break;
-
         case 2:
           message.bytes = reader.bytes();
           break;
-
         case 3:
           message.proof = Proof.decode(reader, reader.uint32());
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<Part>): Part {
     const message = createBasePart();
     message.index = object.index ?? 0;
@@ -726,7 +631,6 @@ export const Part = {
     message.proof = object.proof !== undefined && object.proof !== null ? Proof.fromPartial(object.proof) : undefined;
     return message;
   },
-
   fromAmino(object: PartAmino): Part {
     return {
       index: object.index,
@@ -734,7 +638,6 @@ export const Part = {
       proof: object?.proof ? Proof.fromAmino(object.proof) : undefined
     };
   },
-
   toAmino(message: Part): PartAmino {
     const obj: any = {};
     obj.index = message.index;
@@ -742,118 +645,93 @@ export const Part = {
     obj.proof = message.proof ? Proof.toAmino(message.proof) : undefined;
     return obj;
   },
-
   fromAminoMsg(object: PartAminoMsg): Part {
     return Part.fromAmino(object.value);
   },
-
   fromProtoMsg(message: PartProtoMsg): Part {
     return Part.decode(message.value);
   },
-
   toProto(message: Part): Uint8Array {
     return Part.encode(message).finish();
   },
-
   toProtoMsg(message: Part): PartProtoMsg {
     return {
       typeUrl: "/tendermint.types.Part",
       value: Part.encode(message).finish()
     };
   }
-
 };
-
 function createBaseBlockID(): BlockID {
   return {
     hash: new Uint8Array(),
     partSetHeader: undefined
   };
 }
-
 export const BlockID = {
   typeUrl: "/tendermint.types.BlockID",
-
   encode(message: BlockID, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.hash.length !== 0) {
       writer.uint32(10).bytes(message.hash);
     }
-
     if (message.partSetHeader !== undefined) {
       PartSetHeader.encode(message.partSetHeader, writer.uint32(18).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): BlockID {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBlockID();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.hash = reader.bytes();
           break;
-
         case 2:
           message.partSetHeader = PartSetHeader.decode(reader, reader.uint32());
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<BlockID>): BlockID {
     const message = createBaseBlockID();
     message.hash = object.hash ?? new Uint8Array();
     message.partSetHeader = object.partSetHeader !== undefined && object.partSetHeader !== null ? PartSetHeader.fromPartial(object.partSetHeader) : undefined;
     return message;
   },
-
   fromAmino(object: BlockIDAmino): BlockID {
     return {
       hash: object.hash,
       partSetHeader: object?.part_set_header ? PartSetHeader.fromAmino(object.part_set_header) : undefined
     };
   },
-
   toAmino(message: BlockID): BlockIDAmino {
     const obj: any = {};
     obj.hash = message.hash;
     obj.part_set_header = message.partSetHeader ? PartSetHeader.toAmino(message.partSetHeader) : undefined;
     return obj;
   },
-
   fromAminoMsg(object: BlockIDAminoMsg): BlockID {
     return BlockID.fromAmino(object.value);
   },
-
   fromProtoMsg(message: BlockIDProtoMsg): BlockID {
     return BlockID.decode(message.value);
   },
-
   toProto(message: BlockID): Uint8Array {
     return BlockID.encode(message).finish();
   },
-
   toProtoMsg(message: BlockID): BlockIDProtoMsg {
     return {
       typeUrl: "/tendermint.types.BlockID",
       value: BlockID.encode(message).finish()
     };
   }
-
 };
-
 function createBaseHeader(): Header {
   return {
     version: undefined,
@@ -872,144 +750,109 @@ function createBaseHeader(): Header {
     proposerAddress: new Uint8Array()
   };
 }
-
 export const Header = {
   typeUrl: "/tendermint.types.Header",
-
   encode(message: Header, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.version !== undefined) {
       Consensus.encode(message.version, writer.uint32(10).fork()).ldelim();
     }
-
     if (message.chainId !== "") {
       writer.uint32(18).string(message.chainId);
     }
-
     if (!message.height.isZero()) {
       writer.uint32(24).int64(message.height);
     }
-
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(34).fork()).ldelim();
     }
-
     if (message.lastBlockId !== undefined) {
       BlockID.encode(message.lastBlockId, writer.uint32(42).fork()).ldelim();
     }
-
     if (message.lastCommitHash.length !== 0) {
       writer.uint32(50).bytes(message.lastCommitHash);
     }
-
     if (message.dataHash.length !== 0) {
       writer.uint32(58).bytes(message.dataHash);
     }
-
     if (message.validatorsHash.length !== 0) {
       writer.uint32(66).bytes(message.validatorsHash);
     }
-
     if (message.nextValidatorsHash.length !== 0) {
       writer.uint32(74).bytes(message.nextValidatorsHash);
     }
-
     if (message.consensusHash.length !== 0) {
       writer.uint32(82).bytes(message.consensusHash);
     }
-
     if (message.appHash.length !== 0) {
       writer.uint32(90).bytes(message.appHash);
     }
-
     if (message.lastResultsHash.length !== 0) {
       writer.uint32(98).bytes(message.lastResultsHash);
     }
-
     if (message.evidenceHash.length !== 0) {
       writer.uint32(106).bytes(message.evidenceHash);
     }
-
     if (message.proposerAddress.length !== 0) {
       writer.uint32(114).bytes(message.proposerAddress);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): Header {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseHeader();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.version = Consensus.decode(reader, reader.uint32());
           break;
-
         case 2:
           message.chainId = reader.string();
           break;
-
         case 3:
           message.height = (reader.int64() as Long);
           break;
-
         case 4:
           message.time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
-
         case 5:
           message.lastBlockId = BlockID.decode(reader, reader.uint32());
           break;
-
         case 6:
           message.lastCommitHash = reader.bytes();
           break;
-
         case 7:
           message.dataHash = reader.bytes();
           break;
-
         case 8:
           message.validatorsHash = reader.bytes();
           break;
-
         case 9:
           message.nextValidatorsHash = reader.bytes();
           break;
-
         case 10:
           message.consensusHash = reader.bytes();
           break;
-
         case 11:
           message.appHash = reader.bytes();
           break;
-
         case 12:
           message.lastResultsHash = reader.bytes();
           break;
-
         case 13:
           message.evidenceHash = reader.bytes();
           break;
-
         case 14:
           message.proposerAddress = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<Header>): Header {
     const message = createBaseHeader();
     message.version = object.version !== undefined && object.version !== null ? Consensus.fromPartial(object.version) : undefined;
@@ -1028,7 +871,6 @@ export const Header = {
     message.proposerAddress = object.proposerAddress ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: HeaderAmino): Header {
     return {
       version: object?.version ? Consensus.fromAmino(object.version) : undefined,
@@ -1047,7 +889,6 @@ export const Header = {
       proposerAddress: object.proposer_address
     };
   },
-
   toAmino(message: Header): HeaderAmino {
     const obj: any = {};
     obj.version = message.version ? Consensus.toAmino(message.version) : undefined;
@@ -1066,112 +907,87 @@ export const Header = {
     obj.proposer_address = message.proposerAddress;
     return obj;
   },
-
   fromAminoMsg(object: HeaderAminoMsg): Header {
     return Header.fromAmino(object.value);
   },
-
   fromProtoMsg(message: HeaderProtoMsg): Header {
     return Header.decode(message.value);
   },
-
   toProto(message: Header): Uint8Array {
     return Header.encode(message).finish();
   },
-
   toProtoMsg(message: Header): HeaderProtoMsg {
     return {
       typeUrl: "/tendermint.types.Header",
       value: Header.encode(message).finish()
     };
   }
-
 };
-
 function createBaseData(): Data {
   return {
     txs: []
   };
 }
-
 export const Data = {
   typeUrl: "/tendermint.types.Data",
-
   encode(message: Data, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.txs) {
       writer.uint32(10).bytes(v!);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): Data {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseData();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.txs.push(reader.bytes());
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<Data>): Data {
     const message = createBaseData();
     message.txs = object.txs?.map(e => e) || [];
     return message;
   },
-
   fromAmino(object: DataAmino): Data {
     return {
       txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => e) : []
     };
   },
-
   toAmino(message: Data): DataAmino {
     const obj: any = {};
-
     if (message.txs) {
       obj.txs = message.txs.map(e => e);
     } else {
       obj.txs = [];
     }
-
     return obj;
   },
-
   fromAminoMsg(object: DataAminoMsg): Data {
     return Data.fromAmino(object.value);
   },
-
   fromProtoMsg(message: DataProtoMsg): Data {
     return Data.decode(message.value);
   },
-
   toProto(message: Data): Uint8Array {
     return Data.encode(message).finish();
   },
-
   toProtoMsg(message: Data): DataProtoMsg {
     return {
       typeUrl: "/tendermint.types.Data",
       value: Data.encode(message).finish()
     };
   }
-
 };
-
 function createBaseVote(): Vote {
   return {
     type: 0,
@@ -1184,96 +1000,73 @@ function createBaseVote(): Vote {
     signature: new Uint8Array()
   };
 }
-
 export const Vote = {
   typeUrl: "/tendermint.types.Vote",
-
   encode(message: Vote, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.type !== 0) {
       writer.uint32(8).int32(message.type);
     }
-
     if (!message.height.isZero()) {
       writer.uint32(16).int64(message.height);
     }
-
     if (message.round !== 0) {
       writer.uint32(24).int32(message.round);
     }
-
     if (message.blockId !== undefined) {
       BlockID.encode(message.blockId, writer.uint32(34).fork()).ldelim();
     }
-
     if (message.timestamp !== undefined) {
       Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(42).fork()).ldelim();
     }
-
     if (message.validatorAddress.length !== 0) {
       writer.uint32(50).bytes(message.validatorAddress);
     }
-
     if (message.validatorIndex !== 0) {
       writer.uint32(56).int32(message.validatorIndex);
     }
-
     if (message.signature.length !== 0) {
       writer.uint32(66).bytes(message.signature);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): Vote {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseVote();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.type = (reader.int32() as any);
           break;
-
         case 2:
           message.height = (reader.int64() as Long);
           break;
-
         case 3:
           message.round = reader.int32();
           break;
-
         case 4:
           message.blockId = BlockID.decode(reader, reader.uint32());
           break;
-
         case 5:
           message.timestamp = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
-
         case 6:
           message.validatorAddress = reader.bytes();
           break;
-
         case 7:
           message.validatorIndex = reader.int32();
           break;
-
         case 8:
           message.signature = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<Vote>): Vote {
     const message = createBaseVote();
     message.type = object.type ?? 0;
@@ -1286,7 +1079,6 @@ export const Vote = {
     message.signature = object.signature ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: VoteAmino): Vote {
     return {
       type: isSet(object.type) ? signedMsgTypeFromJSON(object.type) : 0,
@@ -1299,7 +1091,6 @@ export const Vote = {
       signature: object.signature
     };
   },
-
   toAmino(message: Vote): VoteAmino {
     const obj: any = {};
     obj.type = message.type;
@@ -1312,28 +1103,22 @@ export const Vote = {
     obj.signature = message.signature;
     return obj;
   },
-
   fromAminoMsg(object: VoteAminoMsg): Vote {
     return Vote.fromAmino(object.value);
   },
-
   fromProtoMsg(message: VoteProtoMsg): Vote {
     return Vote.decode(message.value);
   },
-
   toProto(message: Vote): Uint8Array {
     return Vote.encode(message).finish();
   },
-
   toProtoMsg(message: Vote): VoteProtoMsg {
     return {
       typeUrl: "/tendermint.types.Vote",
       value: Vote.encode(message).finish()
     };
   }
-
 };
-
 function createBaseCommit(): Commit {
   return {
     height: Long.ZERO,
@@ -1342,64 +1127,49 @@ function createBaseCommit(): Commit {
     signatures: []
   };
 }
-
 export const Commit = {
   typeUrl: "/tendermint.types.Commit",
-
   encode(message: Commit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.height.isZero()) {
       writer.uint32(8).int64(message.height);
     }
-
     if (message.round !== 0) {
       writer.uint32(16).int32(message.round);
     }
-
     if (message.blockId !== undefined) {
       BlockID.encode(message.blockId, writer.uint32(26).fork()).ldelim();
     }
-
     for (const v of message.signatures) {
       CommitSig.encode(v!, writer.uint32(34).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): Commit {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCommit();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.height = (reader.int64() as Long);
           break;
-
         case 2:
           message.round = reader.int32();
           break;
-
         case 3:
           message.blockId = BlockID.decode(reader, reader.uint32());
           break;
-
         case 4:
           message.signatures.push(CommitSig.decode(reader, reader.uint32()));
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<Commit>): Commit {
     const message = createBaseCommit();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
@@ -1408,7 +1178,6 @@ export const Commit = {
     message.signatures = object.signatures?.map(e => CommitSig.fromPartial(e)) || [];
     return message;
   },
-
   fromAmino(object: CommitAmino): Commit {
     return {
       height: Long.fromString(object.height),
@@ -1417,43 +1186,34 @@ export const Commit = {
       signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => CommitSig.fromAmino(e)) : []
     };
   },
-
   toAmino(message: Commit): CommitAmino {
     const obj: any = {};
     obj.height = message.height ? message.height.toString() : undefined;
     obj.round = message.round;
     obj.block_id = message.blockId ? BlockID.toAmino(message.blockId) : undefined;
-
     if (message.signatures) {
       obj.signatures = message.signatures.map(e => e ? CommitSig.toAmino(e) : undefined);
     } else {
       obj.signatures = [];
     }
-
     return obj;
   },
-
   fromAminoMsg(object: CommitAminoMsg): Commit {
     return Commit.fromAmino(object.value);
   },
-
   fromProtoMsg(message: CommitProtoMsg): Commit {
     return Commit.decode(message.value);
   },
-
   toProto(message: Commit): Uint8Array {
     return Commit.encode(message).finish();
   },
-
   toProtoMsg(message: Commit): CommitProtoMsg {
     return {
       typeUrl: "/tendermint.types.Commit",
       value: Commit.encode(message).finish()
     };
   }
-
 };
-
 function createBaseCommitSig(): CommitSig {
   return {
     blockIdFlag: 0,
@@ -1462,64 +1222,49 @@ function createBaseCommitSig(): CommitSig {
     signature: new Uint8Array()
   };
 }
-
 export const CommitSig = {
   typeUrl: "/tendermint.types.CommitSig",
-
   encode(message: CommitSig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.blockIdFlag !== 0) {
       writer.uint32(8).int32(message.blockIdFlag);
     }
-
     if (message.validatorAddress.length !== 0) {
       writer.uint32(18).bytes(message.validatorAddress);
     }
-
     if (message.timestamp !== undefined) {
       Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(26).fork()).ldelim();
     }
-
     if (message.signature.length !== 0) {
       writer.uint32(34).bytes(message.signature);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): CommitSig {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCommitSig();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.blockIdFlag = (reader.int32() as any);
           break;
-
         case 2:
           message.validatorAddress = reader.bytes();
           break;
-
         case 3:
           message.timestamp = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
-
         case 4:
           message.signature = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<CommitSig>): CommitSig {
     const message = createBaseCommitSig();
     message.blockIdFlag = object.blockIdFlag ?? 0;
@@ -1528,7 +1273,6 @@ export const CommitSig = {
     message.signature = object.signature ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: CommitSigAmino): CommitSig {
     return {
       blockIdFlag: isSet(object.block_id_flag) ? blockIDFlagFromJSON(object.block_id_flag) : 0,
@@ -1537,7 +1281,6 @@ export const CommitSig = {
       signature: object.signature
     };
   },
-
   toAmino(message: CommitSig): CommitSigAmino {
     const obj: any = {};
     obj.block_id_flag = message.blockIdFlag;
@@ -1546,28 +1289,22 @@ export const CommitSig = {
     obj.signature = message.signature;
     return obj;
   },
-
   fromAminoMsg(object: CommitSigAminoMsg): CommitSig {
     return CommitSig.fromAmino(object.value);
   },
-
   fromProtoMsg(message: CommitSigProtoMsg): CommitSig {
     return CommitSig.decode(message.value);
   },
-
   toProto(message: CommitSig): Uint8Array {
     return CommitSig.encode(message).finish();
   },
-
   toProtoMsg(message: CommitSig): CommitSigProtoMsg {
     return {
       typeUrl: "/tendermint.types.CommitSig",
       value: CommitSig.encode(message).finish()
     };
   }
-
 };
-
 function createBaseProposal(): Proposal {
   return {
     type: 0,
@@ -1579,88 +1316,67 @@ function createBaseProposal(): Proposal {
     signature: new Uint8Array()
   };
 }
-
 export const Proposal = {
   typeUrl: "/tendermint.types.Proposal",
-
   encode(message: Proposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.type !== 0) {
       writer.uint32(8).int32(message.type);
     }
-
     if (!message.height.isZero()) {
       writer.uint32(16).int64(message.height);
     }
-
     if (message.round !== 0) {
       writer.uint32(24).int32(message.round);
     }
-
     if (message.polRound !== 0) {
       writer.uint32(32).int32(message.polRound);
     }
-
     if (message.blockId !== undefined) {
       BlockID.encode(message.blockId, writer.uint32(42).fork()).ldelim();
     }
-
     if (message.timestamp !== undefined) {
       Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(50).fork()).ldelim();
     }
-
     if (message.signature.length !== 0) {
       writer.uint32(58).bytes(message.signature);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): Proposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.type = (reader.int32() as any);
           break;
-
         case 2:
           message.height = (reader.int64() as Long);
           break;
-
         case 3:
           message.round = reader.int32();
           break;
-
         case 4:
           message.polRound = reader.int32();
           break;
-
         case 5:
           message.blockId = BlockID.decode(reader, reader.uint32());
           break;
-
         case 6:
           message.timestamp = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
-
         case 7:
           message.signature = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<Proposal>): Proposal {
     const message = createBaseProposal();
     message.type = object.type ?? 0;
@@ -1672,7 +1388,6 @@ export const Proposal = {
     message.signature = object.signature ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: ProposalAmino): Proposal {
     return {
       type: isSet(object.type) ? signedMsgTypeFromJSON(object.type) : 0,
@@ -1684,7 +1399,6 @@ export const Proposal = {
       signature: object.signature
     };
   },
-
   toAmino(message: Proposal): ProposalAmino {
     const obj: any = {};
     obj.type = message.type;
@@ -1696,208 +1410,164 @@ export const Proposal = {
     obj.signature = message.signature;
     return obj;
   },
-
   fromAminoMsg(object: ProposalAminoMsg): Proposal {
     return Proposal.fromAmino(object.value);
   },
-
   fromProtoMsg(message: ProposalProtoMsg): Proposal {
     return Proposal.decode(message.value);
   },
-
   toProto(message: Proposal): Uint8Array {
     return Proposal.encode(message).finish();
   },
-
   toProtoMsg(message: Proposal): ProposalProtoMsg {
     return {
       typeUrl: "/tendermint.types.Proposal",
       value: Proposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseSignedHeader(): SignedHeader {
   return {
     header: undefined,
     commit: undefined
   };
 }
-
 export const SignedHeader = {
   typeUrl: "/tendermint.types.SignedHeader",
-
   encode(message: SignedHeader, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.header !== undefined) {
       Header.encode(message.header, writer.uint32(10).fork()).ldelim();
     }
-
     if (message.commit !== undefined) {
       Commit.encode(message.commit, writer.uint32(18).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): SignedHeader {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSignedHeader();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.header = Header.decode(reader, reader.uint32());
           break;
-
         case 2:
           message.commit = Commit.decode(reader, reader.uint32());
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<SignedHeader>): SignedHeader {
     const message = createBaseSignedHeader();
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
     message.commit = object.commit !== undefined && object.commit !== null ? Commit.fromPartial(object.commit) : undefined;
     return message;
   },
-
   fromAmino(object: SignedHeaderAmino): SignedHeader {
     return {
       header: object?.header ? Header.fromAmino(object.header) : undefined,
       commit: object?.commit ? Commit.fromAmino(object.commit) : undefined
     };
   },
-
   toAmino(message: SignedHeader): SignedHeaderAmino {
     const obj: any = {};
     obj.header = message.header ? Header.toAmino(message.header) : undefined;
     obj.commit = message.commit ? Commit.toAmino(message.commit) : undefined;
     return obj;
   },
-
   fromAminoMsg(object: SignedHeaderAminoMsg): SignedHeader {
     return SignedHeader.fromAmino(object.value);
   },
-
   fromProtoMsg(message: SignedHeaderProtoMsg): SignedHeader {
     return SignedHeader.decode(message.value);
   },
-
   toProto(message: SignedHeader): Uint8Array {
     return SignedHeader.encode(message).finish();
   },
-
   toProtoMsg(message: SignedHeader): SignedHeaderProtoMsg {
     return {
       typeUrl: "/tendermint.types.SignedHeader",
       value: SignedHeader.encode(message).finish()
     };
   }
-
 };
-
 function createBaseLightBlock(): LightBlock {
   return {
     signedHeader: undefined,
     validatorSet: undefined
   };
 }
-
 export const LightBlock = {
   typeUrl: "/tendermint.types.LightBlock",
-
   encode(message: LightBlock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.signedHeader !== undefined) {
       SignedHeader.encode(message.signedHeader, writer.uint32(10).fork()).ldelim();
     }
-
     if (message.validatorSet !== undefined) {
       ValidatorSet.encode(message.validatorSet, writer.uint32(18).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): LightBlock {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseLightBlock();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.signedHeader = SignedHeader.decode(reader, reader.uint32());
           break;
-
         case 2:
           message.validatorSet = ValidatorSet.decode(reader, reader.uint32());
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<LightBlock>): LightBlock {
     const message = createBaseLightBlock();
     message.signedHeader = object.signedHeader !== undefined && object.signedHeader !== null ? SignedHeader.fromPartial(object.signedHeader) : undefined;
     message.validatorSet = object.validatorSet !== undefined && object.validatorSet !== null ? ValidatorSet.fromPartial(object.validatorSet) : undefined;
     return message;
   },
-
   fromAmino(object: LightBlockAmino): LightBlock {
     return {
       signedHeader: object?.signed_header ? SignedHeader.fromAmino(object.signed_header) : undefined,
       validatorSet: object?.validator_set ? ValidatorSet.fromAmino(object.validator_set) : undefined
     };
   },
-
   toAmino(message: LightBlock): LightBlockAmino {
     const obj: any = {};
     obj.signed_header = message.signedHeader ? SignedHeader.toAmino(message.signedHeader) : undefined;
     obj.validator_set = message.validatorSet ? ValidatorSet.toAmino(message.validatorSet) : undefined;
     return obj;
   },
-
   fromAminoMsg(object: LightBlockAminoMsg): LightBlock {
     return LightBlock.fromAmino(object.value);
   },
-
   fromProtoMsg(message: LightBlockProtoMsg): LightBlock {
     return LightBlock.decode(message.value);
   },
-
   toProto(message: LightBlock): Uint8Array {
     return LightBlock.encode(message).finish();
   },
-
   toProtoMsg(message: LightBlock): LightBlockProtoMsg {
     return {
       typeUrl: "/tendermint.types.LightBlock",
       value: LightBlock.encode(message).finish()
     };
   }
-
 };
-
 function createBaseBlockMeta(): BlockMeta {
   return {
     blockId: undefined,
@@ -1906,64 +1576,49 @@ function createBaseBlockMeta(): BlockMeta {
     numTxs: Long.ZERO
   };
 }
-
 export const BlockMeta = {
   typeUrl: "/tendermint.types.BlockMeta",
-
   encode(message: BlockMeta, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.blockId !== undefined) {
       BlockID.encode(message.blockId, writer.uint32(10).fork()).ldelim();
     }
-
     if (!message.blockSize.isZero()) {
       writer.uint32(16).int64(message.blockSize);
     }
-
     if (message.header !== undefined) {
       Header.encode(message.header, writer.uint32(26).fork()).ldelim();
     }
-
     if (!message.numTxs.isZero()) {
       writer.uint32(32).int64(message.numTxs);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): BlockMeta {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBlockMeta();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.blockId = BlockID.decode(reader, reader.uint32());
           break;
-
         case 2:
           message.blockSize = (reader.int64() as Long);
           break;
-
         case 3:
           message.header = Header.decode(reader, reader.uint32());
           break;
-
         case 4:
           message.numTxs = (reader.int64() as Long);
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<BlockMeta>): BlockMeta {
     const message = createBaseBlockMeta();
     message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
@@ -1972,7 +1627,6 @@ export const BlockMeta = {
     message.numTxs = object.numTxs !== undefined && object.numTxs !== null ? Long.fromValue(object.numTxs) : Long.ZERO;
     return message;
   },
-
   fromAmino(object: BlockMetaAmino): BlockMeta {
     return {
       blockId: object?.block_id ? BlockID.fromAmino(object.block_id) : undefined,
@@ -1981,7 +1635,6 @@ export const BlockMeta = {
       numTxs: Long.fromString(object.num_txs)
     };
   },
-
   toAmino(message: BlockMeta): BlockMetaAmino {
     const obj: any = {};
     obj.block_id = message.blockId ? BlockID.toAmino(message.blockId) : undefined;
@@ -1990,28 +1643,22 @@ export const BlockMeta = {
     obj.num_txs = message.numTxs ? message.numTxs.toString() : undefined;
     return obj;
   },
-
   fromAminoMsg(object: BlockMetaAminoMsg): BlockMeta {
     return BlockMeta.fromAmino(object.value);
   },
-
   fromProtoMsg(message: BlockMetaProtoMsg): BlockMeta {
     return BlockMeta.decode(message.value);
   },
-
   toProto(message: BlockMeta): Uint8Array {
     return BlockMeta.encode(message).finish();
   },
-
   toProtoMsg(message: BlockMeta): BlockMetaProtoMsg {
     return {
       typeUrl: "/tendermint.types.BlockMeta",
       value: BlockMeta.encode(message).finish()
     };
   }
-
 };
-
 function createBaseTxProof(): TxProof {
   return {
     rootHash: new Uint8Array(),
@@ -2019,56 +1666,43 @@ function createBaseTxProof(): TxProof {
     proof: undefined
   };
 }
-
 export const TxProof = {
   typeUrl: "/tendermint.types.TxProof",
-
   encode(message: TxProof, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.rootHash.length !== 0) {
       writer.uint32(10).bytes(message.rootHash);
     }
-
     if (message.data.length !== 0) {
       writer.uint32(18).bytes(message.data);
     }
-
     if (message.proof !== undefined) {
       Proof.encode(message.proof, writer.uint32(26).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): TxProof {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTxProof();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.rootHash = reader.bytes();
           break;
-
         case 2:
           message.data = reader.bytes();
           break;
-
         case 3:
           message.proof = Proof.decode(reader, reader.uint32());
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<TxProof>): TxProof {
     const message = createBaseTxProof();
     message.rootHash = object.rootHash ?? new Uint8Array();
@@ -2076,7 +1710,6 @@ export const TxProof = {
     message.proof = object.proof !== undefined && object.proof !== null ? Proof.fromPartial(object.proof) : undefined;
     return message;
   },
-
   fromAmino(object: TxProofAmino): TxProof {
     return {
       rootHash: object.root_hash,
@@ -2084,7 +1717,6 @@ export const TxProof = {
       proof: object?.proof ? Proof.fromAmino(object.proof) : undefined
     };
   },
-
   toAmino(message: TxProof): TxProofAmino {
     const obj: any = {};
     obj.root_hash = message.rootHash;
@@ -2092,24 +1724,19 @@ export const TxProof = {
     obj.proof = message.proof ? Proof.toAmino(message.proof) : undefined;
     return obj;
   },
-
   fromAminoMsg(object: TxProofAminoMsg): TxProof {
     return TxProof.fromAmino(object.value);
   },
-
   fromProtoMsg(message: TxProofProtoMsg): TxProof {
     return TxProof.decode(message.value);
   },
-
   toProto(message: TxProof): Uint8Array {
     return TxProof.encode(message).finish();
   },
-
   toProtoMsg(message: TxProof): TxProofProtoMsg {
     return {
       typeUrl: "/tendermint.types.TxProof",
       value: TxProof.encode(message).finish()
     };
   }
-
 };

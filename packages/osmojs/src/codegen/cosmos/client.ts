@@ -15,7 +15,8 @@ import * as cosmosGovV1beta1TxAmino from "./gov/v1beta1/tx.amino";
 import * as cosmosStakingV1beta1TxAmino from "./staking/v1beta1/tx.amino";
 import * as cosmosGovV1TxAmino from "./gov/v1/tx.amino";
 import * as cosmosUpgradeV1beta1TxAmino from "./upgrade/v1beta1/tx.amino";
-export const cosmosAminoConverters = { ...cosmosAuthzV1beta1TxAmino.AminoConverter,
+export const cosmosAminoConverters = {
+  ...cosmosAuthzV1beta1TxAmino.AminoConverter,
   ...cosmosBankV1beta1TxAmino.AminoConverter,
   ...cosmosDistributionV1beta1TxAmino.AminoConverter,
   ...cosmosGovV1beta1TxAmino.AminoConverter,
@@ -29,7 +30,8 @@ export const getSigningCosmosClientOptions = (): {
   aminoTypes: AminoTypes;
 } => {
   const registry = new Registry([...cosmosProtoRegistry]);
-  const aminoTypes = new AminoTypes({ ...cosmosAminoConverters
+  const aminoTypes = new AminoTypes({
+    ...cosmosAminoConverters
   });
   return {
     registry,

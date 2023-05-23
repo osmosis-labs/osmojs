@@ -15,14 +15,12 @@ export const MessageComposer = {
         value: MsgCreateBalancerPool.encode(value).finish()
       };
     },
-
     migrateSharesToFullRangeConcentratedPosition(value: MsgMigrateSharesToFullRangeConcentratedPosition) {
       return {
         typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPosition",
         value: MsgMigrateSharesToFullRangeConcentratedPosition.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     createBalancerPool(value: MsgCreateBalancerPool) {
@@ -31,14 +29,12 @@ export const MessageComposer = {
         value
       };
     },
-
     migrateSharesToFullRangeConcentratedPosition(value: MsgMigrateSharesToFullRangeConcentratedPosition) {
       return {
         typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPosition",
         value
       };
     }
-
   },
   fromPartial: {
     createBalancerPool(value: MsgCreateBalancerPool) {
@@ -47,13 +43,11 @@ export const MessageComposer = {
         value: MsgCreateBalancerPool.fromPartial(value)
       };
     },
-
     migrateSharesToFullRangeConcentratedPosition(value: MsgMigrateSharesToFullRangeConcentratedPosition) {
       return {
         typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPosition",
         value: MsgMigrateSharesToFullRangeConcentratedPosition.fromPartial(value)
       };
     }
-
   }
 };

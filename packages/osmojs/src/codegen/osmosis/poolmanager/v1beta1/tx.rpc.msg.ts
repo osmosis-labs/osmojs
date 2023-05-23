@@ -7,23 +7,19 @@ export interface Msg {
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.swapExactAmountIn = this.swapExactAmountIn.bind(this);
     this.swapExactAmountOut = this.swapExactAmountOut.bind(this);
   }
-
   swapExactAmountIn(request: MsgSwapExactAmountIn): Promise<MsgSwapExactAmountInResponse> {
     const data = MsgSwapExactAmountIn.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Msg", "SwapExactAmountIn", data);
     return promise.then(data => MsgSwapExactAmountInResponse.decode(new _m0.Reader(data)));
   }
-
   swapExactAmountOut(request: MsgSwapExactAmountOut): Promise<MsgSwapExactAmountOutResponse> {
     const data = MsgSwapExactAmountOut.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Msg", "SwapExactAmountOut", data);
     return promise.then(data => MsgSwapExactAmountOutResponse.decode(new _m0.Reader(data)));
   }
-
 }

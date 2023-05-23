@@ -9,43 +9,32 @@ import { fromBase64, toBase64, toUtf8, fromUtf8 } from "@cosmjs/encoding";
  * a simple MsgStoreCode can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface StoreCodeProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
-
   runAs: string;
   /** WASMByteCode can be raw or gzip compressed */
-
   wasmByteCode: Uint8Array;
   /** InstantiatePermission to apply on contract creation, optional */
-
   instantiatePermission?: AccessConfig;
   /** UnpinCode code on upload, optional */
-
   unpinCode: boolean;
   /** Source is the URL where the code is hosted */
-
   source: string;
   /**
    * Builder is the docker image used to build the code deterministically, used
    * for smart contract verification
    */
-
   builder: string;
   /**
    * CodeHash is the SHA256 sum of the code outputted by builder, used for smart
    * contract verification
    */
-
   codeHash: Uint8Array;
 }
 export interface StoreCodeProposalProtoMsg {
@@ -58,41 +47,31 @@ export interface StoreCodeProposalProtoMsg {
  * a simple MsgStoreCode can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface StoreCodeProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
-
   run_as: string;
   /** WASMByteCode can be raw or gzip compressed */
-
   wasm_byte_code: string;
   /** InstantiatePermission to apply on contract creation, optional */
-
   instantiate_permission?: AccessConfigAmino;
   /** UnpinCode code on upload, optional */
-
   unpin_code: boolean;
   /** Source is the URL where the code is hosted */
-
   source: string;
   /**
    * Builder is the docker image used to build the code deterministically, used
    * for smart contract verification
    */
-
   builder: string;
   /**
    * CodeHash is the SHA256 sum of the code outputted by builder, used for smart
    * contract verification
    */
-
   code_hash: Uint8Array;
 }
 export interface StoreCodeProposalAminoMsg {
@@ -105,9 +84,7 @@ export interface StoreCodeProposalAminoMsg {
  * a simple MsgStoreCode can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface StoreCodeProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -126,34 +103,24 @@ export interface StoreCodeProposalSDKType {
  * a simple MsgInstantiateContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface InstantiateContractProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
-
   runAs: string;
   /** Admin is an optional address that can execute migrations */
-
   admin: string;
   /** CodeID is the reference to the stored WASM code */
-
   codeId: Long;
   /** Label is optional metadata to be stored with a constract instance. */
-
   label: string;
   /** Msg json encoded message to be passed to the contract on instantiation */
-
   msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
-
   funds: Coin[];
 }
 export interface InstantiateContractProposalProtoMsg {
@@ -166,32 +133,23 @@ export interface InstantiateContractProposalProtoMsg {
  * a simple MsgInstantiateContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface InstantiateContractProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
-
   run_as: string;
   /** Admin is an optional address that can execute migrations */
-
   admin: string;
   /** CodeID is the reference to the stored WASM code */
-
   code_id: string;
   /** Label is optional metadata to be stored with a constract instance. */
-
   label: string;
   /** Msg json encoded message to be passed to the contract on instantiation */
-
   msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
-
   funds: CoinAmino[];
 }
 export interface InstantiateContractProposalAminoMsg {
@@ -204,9 +162,7 @@ export interface InstantiateContractProposalAminoMsg {
  * a simple MsgInstantiateContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface InstantiateContractProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -224,43 +180,31 @@ export interface InstantiateContractProposalSDKType {
  * a simple MsgInstantiateContract2 can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface InstantiateContract2Proposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's enviroment as sender */
-
   runAs: string;
   /** Admin is an optional address that can execute migrations */
-
   admin: string;
   /** CodeID is the reference to the stored WASM code */
-
   codeId: Long;
   /** Label is optional metadata to be stored with a constract instance. */
-
   label: string;
   /** Msg json encode message to be passed to the contract on instantiation */
-
   msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
-
   funds: Coin[];
   /** Salt is an arbitrary value provided by the sender. Size can be 1 to 64. */
-
   salt: Uint8Array;
   /**
    * FixMsg include the msg value into the hash for the predictable address.
    * Default is false
    */
-
   fixMsg: boolean;
 }
 export interface InstantiateContract2ProposalProtoMsg {
@@ -273,41 +217,30 @@ export interface InstantiateContract2ProposalProtoMsg {
  * a simple MsgInstantiateContract2 can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface InstantiateContract2ProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's enviroment as sender */
-
   run_as: string;
   /** Admin is an optional address that can execute migrations */
-
   admin: string;
   /** CodeID is the reference to the stored WASM code */
-
   code_id: string;
   /** Label is optional metadata to be stored with a constract instance. */
-
   label: string;
   /** Msg json encode message to be passed to the contract on instantiation */
-
   msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
-
   funds: CoinAmino[];
   /** Salt is an arbitrary value provided by the sender. Size can be 1 to 64. */
-
   salt: Uint8Array;
   /**
    * FixMsg include the msg value into the hash for the predictable address.
    * Default is false
    */
-
   fix_msg: boolean;
 }
 export interface InstantiateContract2ProposalAminoMsg {
@@ -320,9 +253,7 @@ export interface InstantiateContract2ProposalAminoMsg {
  * a simple MsgInstantiateContract2 can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface InstantiateContract2ProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -342,25 +273,18 @@ export interface InstantiateContract2ProposalSDKType {
  * a simple MsgMigrateContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface MigrateContractProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
   /** CodeID references the new WASM code */
-
   codeId: Long;
   /** Msg json encoded message to be passed to the contract on migration */
-
   msg: Uint8Array;
 }
 export interface MigrateContractProposalProtoMsg {
@@ -373,23 +297,17 @@ export interface MigrateContractProposalProtoMsg {
  * a simple MsgMigrateContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface MigrateContractProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
   /** CodeID references the new WASM code */
-
   code_id: string;
   /** Msg json encoded message to be passed to the contract on migration */
-
   msg: Uint8Array;
 }
 export interface MigrateContractProposalAminoMsg {
@@ -402,9 +320,7 @@ export interface MigrateContractProposalAminoMsg {
  * a simple MsgMigrateContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface MigrateContractProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -419,22 +335,16 @@ export interface MigrateContractProposalSDKType {
  * a simple MsgSudoContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface SudoContractProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
   /** Msg json encoded message to be passed to the contract as sudo */
-
   msg: Uint8Array;
 }
 export interface SudoContractProposalProtoMsg {
@@ -447,20 +357,15 @@ export interface SudoContractProposalProtoMsg {
  * a simple MsgSudoContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface SudoContractProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
   /** Msg json encoded message to be passed to the contract as sudo */
-
   msg: Uint8Array;
 }
 export interface SudoContractProposalAminoMsg {
@@ -473,9 +378,7 @@ export interface SudoContractProposalAminoMsg {
  * a simple MsgSudoContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface SudoContractProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -489,28 +392,20 @@ export interface SudoContractProposalSDKType {
  * a simple MsgExecuteContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface ExecuteContractProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
-
   runAs: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
   /** Msg json encoded message to be passed to the contract as execute */
-
   msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
-
   funds: Coin[];
 }
 export interface ExecuteContractProposalProtoMsg {
@@ -523,26 +418,19 @@ export interface ExecuteContractProposalProtoMsg {
  * a simple MsgExecuteContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface ExecuteContractProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
-
   run_as: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
   /** Msg json encoded message to be passed to the contract as execute */
-
   msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
-
   funds: CoinAmino[];
 }
 export interface ExecuteContractProposalAminoMsg {
@@ -555,9 +443,7 @@ export interface ExecuteContractProposalAminoMsg {
  * a simple MsgExecuteContract can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface ExecuteContractProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -573,22 +459,16 @@ export interface ExecuteContractProposalSDKType {
  * a simple MsgUpdateAdmin can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface UpdateAdminProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** NewAdmin address to be set */
-
   newAdmin: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
 }
 export interface UpdateAdminProposalProtoMsg {
@@ -601,20 +481,15 @@ export interface UpdateAdminProposalProtoMsg {
  * a simple MsgUpdateAdmin can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface UpdateAdminProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** NewAdmin address to be set */
-
   new_admin: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
 }
 export interface UpdateAdminProposalAminoMsg {
@@ -627,9 +502,7 @@ export interface UpdateAdminProposalAminoMsg {
  * a simple MsgUpdateAdmin can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface UpdateAdminProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -643,19 +516,14 @@ export interface UpdateAdminProposalSDKType {
  * a simple MsgClearAdmin can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface ClearAdminProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
 }
 export interface ClearAdminProposalProtoMsg {
@@ -668,17 +536,13 @@ export interface ClearAdminProposalProtoMsg {
  * a simple MsgClearAdmin can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface ClearAdminProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** Contract is the address of the smart contract */
-
   contract: string;
 }
 export interface ClearAdminProposalAminoMsg {
@@ -691,9 +555,7 @@ export interface ClearAdminProposalAminoMsg {
  * a simple MsgClearAdmin can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface ClearAdminProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -706,19 +568,14 @@ export interface ClearAdminProposalSDKType {
  * cache, a simple MsgPinCodes can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface PinCodesProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** CodeIDs references the new WASM codes */
-
   codeIds: Long[];
 }
 export interface PinCodesProposalProtoMsg {
@@ -731,17 +588,13 @@ export interface PinCodesProposalProtoMsg {
  * cache, a simple MsgPinCodes can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface PinCodesProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** CodeIDs references the new WASM codes */
-
   code_ids: string[];
 }
 export interface PinCodesProposalAminoMsg {
@@ -754,9 +607,7 @@ export interface PinCodesProposalAminoMsg {
  * cache, a simple MsgPinCodes can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface PinCodesProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -769,19 +620,14 @@ export interface PinCodesProposalSDKType {
  * cache, a simple MsgUnpinCodes can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface UnpinCodesProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** CodeIDs references the WASM codes */
-
   codeIds: Long[];
 }
 export interface UnpinCodesProposalProtoMsg {
@@ -794,17 +640,13 @@ export interface UnpinCodesProposalProtoMsg {
  * cache, a simple MsgUnpinCodes can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface UnpinCodesProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** CodeIDs references the WASM codes */
-
   code_ids: string[];
 }
 export interface UnpinCodesProposalAminoMsg {
@@ -817,9 +659,7 @@ export interface UnpinCodesProposalAminoMsg {
  * cache, a simple MsgUnpinCodes can be invoked from the x/gov module via
  * a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface UnpinCodesProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -830,12 +670,10 @@ export interface UnpinCodesProposalSDKType {
  * AccessConfigUpdate contains the code id and the access config to be
  * applied.
  */
-
 export interface AccessConfigUpdate {
   /** CodeID is the reference to the stored WASM code to be updated */
   codeId: Long;
   /** InstantiatePermission to apply to the set of code ids */
-
   instantiatePermission?: AccessConfig;
 }
 export interface AccessConfigUpdateProtoMsg {
@@ -846,12 +684,10 @@ export interface AccessConfigUpdateProtoMsg {
  * AccessConfigUpdate contains the code id and the access config to be
  * applied.
  */
-
 export interface AccessConfigUpdateAmino {
   /** CodeID is the reference to the stored WASM code to be updated */
   code_id: string;
   /** InstantiatePermission to apply to the set of code ids */
-
   instantiate_permission?: AccessConfigAmino;
 }
 export interface AccessConfigUpdateAminoMsg {
@@ -862,7 +698,6 @@ export interface AccessConfigUpdateAminoMsg {
  * AccessConfigUpdate contains the code id and the access config to be
  * applied.
  */
-
 export interface AccessConfigUpdateSDKType {
   code_id: Long;
   instantiate_permission?: AccessConfigSDKType;
@@ -873,22 +708,17 @@ export interface AccessConfigUpdateSDKType {
  * to a set of code ids, a simple MsgUpdateInstantiateConfig can be invoked from
  * the x/gov module via a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface UpdateInstantiateConfigProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /**
    * AccessConfigUpdate contains the list of code ids and the access config
    * to be applied.
    */
-
   accessConfigUpdates: AccessConfigUpdate[];
 }
 export interface UpdateInstantiateConfigProposalProtoMsg {
@@ -901,20 +731,16 @@ export interface UpdateInstantiateConfigProposalProtoMsg {
  * to a set of code ids, a simple MsgUpdateInstantiateConfig can be invoked from
  * the x/gov module via a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface UpdateInstantiateConfigProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /**
    * AccessConfigUpdate contains the list of code ids and the access config
    * to be applied.
    */
-
   access_config_updates: AccessConfigUpdateAmino[];
 }
 export interface UpdateInstantiateConfigProposalAminoMsg {
@@ -927,9 +753,7 @@ export interface UpdateInstantiateConfigProposalAminoMsg {
  * to a set of code ids, a simple MsgUpdateInstantiateConfig can be invoked from
  * the x/gov module via a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface UpdateInstantiateConfigProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -942,55 +766,40 @@ export interface UpdateInstantiateConfigProposalSDKType {
  * the contract, a simple MsgStoreAndInstantiateContract can be invoked from
  * the x/gov module via a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface StoreAndInstantiateContractProposal {
   $typeUrl?: string;
   /** Title is a short summary */
-
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
-
   runAs: string;
   /** WASMByteCode can be raw or gzip compressed */
-
   wasmByteCode: Uint8Array;
   /** InstantiatePermission to apply on contract creation, optional */
-
   instantiatePermission?: AccessConfig;
   /** UnpinCode code on upload, optional */
-
   unpinCode: boolean;
   /** Admin is an optional address that can execute migrations */
-
   admin: string;
   /** Label is optional metadata to be stored with a constract instance. */
-
   label: string;
   /** Msg json encoded message to be passed to the contract on instantiation */
-
   msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
-
   funds: Coin[];
   /** Source is the URL where the code is hosted */
-
   source: string;
   /**
    * Builder is the docker image used to build the code deterministically, used
    * for smart contract verification
    */
-
   builder: string;
   /**
    * CodeHash is the SHA256 sum of the code outputted by builder, used for smart
    * contract verification
    */
-
   codeHash: Uint8Array;
 }
 export interface StoreAndInstantiateContractProposalProtoMsg {
@@ -1003,53 +812,39 @@ export interface StoreAndInstantiateContractProposalProtoMsg {
  * the contract, a simple MsgStoreAndInstantiateContract can be invoked from
  * the x/gov module via a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface StoreAndInstantiateContractProposalAmino {
   /** Title is a short summary */
   title: string;
   /** Description is a human readable text */
-
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
-
   run_as: string;
   /** WASMByteCode can be raw or gzip compressed */
-
   wasm_byte_code: string;
   /** InstantiatePermission to apply on contract creation, optional */
-
   instantiate_permission?: AccessConfigAmino;
   /** UnpinCode code on upload, optional */
-
   unpin_code: boolean;
   /** Admin is an optional address that can execute migrations */
-
   admin: string;
   /** Label is optional metadata to be stored with a constract instance. */
-
   label: string;
   /** Msg json encoded message to be passed to the contract on instantiation */
-
   msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
-
   funds: CoinAmino[];
   /** Source is the URL where the code is hosted */
-
   source: string;
   /**
    * Builder is the docker image used to build the code deterministically, used
    * for smart contract verification
    */
-
   builder: string;
   /**
    * CodeHash is the SHA256 sum of the code outputted by builder, used for smart
    * contract verification
    */
-
   code_hash: Uint8Array;
 }
 export interface StoreAndInstantiateContractProposalAminoMsg {
@@ -1062,9 +857,7 @@ export interface StoreAndInstantiateContractProposalAminoMsg {
  * the contract, a simple MsgStoreAndInstantiateContract can be invoked from
  * the x/gov module via a v1 governance proposal.
  */
-
 /** @deprecated */
-
 export interface StoreAndInstantiateContractProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -1081,7 +874,6 @@ export interface StoreAndInstantiateContractProposalSDKType {
   builder: string;
   code_hash: Uint8Array;
 }
-
 function createBaseStoreCodeProposal(): StoreCodeProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal",
@@ -1096,104 +888,79 @@ function createBaseStoreCodeProposal(): StoreCodeProposal {
     codeHash: new Uint8Array()
   };
 }
-
 export const StoreCodeProposal = {
   typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal",
-
   encode(message: StoreCodeProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     if (message.runAs !== "") {
       writer.uint32(26).string(message.runAs);
     }
-
     if (message.wasmByteCode.length !== 0) {
       writer.uint32(34).bytes(message.wasmByteCode);
     }
-
     if (message.instantiatePermission !== undefined) {
       AccessConfig.encode(message.instantiatePermission, writer.uint32(58).fork()).ldelim();
     }
-
     if (message.unpinCode === true) {
       writer.uint32(64).bool(message.unpinCode);
     }
-
     if (message.source !== "") {
       writer.uint32(74).string(message.source);
     }
-
     if (message.builder !== "") {
       writer.uint32(82).string(message.builder);
     }
-
     if (message.codeHash.length !== 0) {
       writer.uint32(90).bytes(message.codeHash);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): StoreCodeProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseStoreCodeProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.runAs = reader.string();
           break;
-
         case 4:
           message.wasmByteCode = reader.bytes();
           break;
-
         case 7:
           message.instantiatePermission = AccessConfig.decode(reader, reader.uint32());
           break;
-
         case 8:
           message.unpinCode = reader.bool();
           break;
-
         case 9:
           message.source = reader.string();
           break;
-
         case 10:
           message.builder = reader.string();
           break;
-
         case 11:
           message.codeHash = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<StoreCodeProposal>): StoreCodeProposal {
     const message = createBaseStoreCodeProposal();
     message.title = object.title ?? "";
@@ -1207,7 +974,6 @@ export const StoreCodeProposal = {
     message.codeHash = object.codeHash ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: StoreCodeProposalAmino): StoreCodeProposal {
     return {
       title: object.title,
@@ -1221,7 +987,6 @@ export const StoreCodeProposal = {
       codeHash: object.code_hash
     };
   },
-
   toAmino(message: StoreCodeProposal): StoreCodeProposalAmino {
     const obj: any = {};
     obj.title = message.title;
@@ -1235,35 +1000,28 @@ export const StoreCodeProposal = {
     obj.code_hash = message.codeHash;
     return obj;
   },
-
   fromAminoMsg(object: StoreCodeProposalAminoMsg): StoreCodeProposal {
     return StoreCodeProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: StoreCodeProposal): StoreCodeProposalAminoMsg {
     return {
       type: "wasm/StoreCodeProposal",
       value: StoreCodeProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: StoreCodeProposalProtoMsg): StoreCodeProposal {
     return StoreCodeProposal.decode(message.value);
   },
-
   toProto(message: StoreCodeProposal): Uint8Array {
     return StoreCodeProposal.encode(message).finish();
   },
-
   toProtoMsg(message: StoreCodeProposal): StoreCodeProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal",
       value: StoreCodeProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseInstantiateContractProposal(): InstantiateContractProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.InstantiateContractProposal",
@@ -1277,96 +1035,73 @@ function createBaseInstantiateContractProposal(): InstantiateContractProposal {
     funds: []
   };
 }
-
 export const InstantiateContractProposal = {
   typeUrl: "/cosmwasm.wasm.v1.InstantiateContractProposal",
-
   encode(message: InstantiateContractProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     if (message.runAs !== "") {
       writer.uint32(26).string(message.runAs);
     }
-
     if (message.admin !== "") {
       writer.uint32(34).string(message.admin);
     }
-
     if (!message.codeId.isZero()) {
       writer.uint32(40).uint64(message.codeId);
     }
-
     if (message.label !== "") {
       writer.uint32(50).string(message.label);
     }
-
     if (message.msg.length !== 0) {
       writer.uint32(58).bytes(message.msg);
     }
-
     for (const v of message.funds) {
       Coin.encode(v!, writer.uint32(66).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateContractProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseInstantiateContractProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.runAs = reader.string();
           break;
-
         case 4:
           message.admin = reader.string();
           break;
-
         case 5:
           message.codeId = (reader.uint64() as Long);
           break;
-
         case 6:
           message.label = reader.string();
           break;
-
         case 7:
           message.msg = reader.bytes();
           break;
-
         case 8:
           message.funds.push(Coin.decode(reader, reader.uint32()));
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<InstantiateContractProposal>): InstantiateContractProposal {
     const message = createBaseInstantiateContractProposal();
     message.title = object.title ?? "";
@@ -1379,7 +1114,6 @@ export const InstantiateContractProposal = {
     message.funds = object.funds?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
-
   fromAmino(object: InstantiateContractProposalAmino): InstantiateContractProposal {
     return {
       title: object.title,
@@ -1392,7 +1126,6 @@ export const InstantiateContractProposal = {
       funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromAmino(e)) : []
     };
   },
-
   toAmino(message: InstantiateContractProposal): InstantiateContractProposalAmino {
     const obj: any = {};
     obj.title = message.title;
@@ -1402,44 +1135,35 @@ export const InstantiateContractProposal = {
     obj.code_id = message.codeId ? message.codeId.toString() : undefined;
     obj.label = message.label;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
-
     if (message.funds) {
       obj.funds = message.funds.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.funds = [];
     }
-
     return obj;
   },
-
   fromAminoMsg(object: InstantiateContractProposalAminoMsg): InstantiateContractProposal {
     return InstantiateContractProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: InstantiateContractProposal): InstantiateContractProposalAminoMsg {
     return {
       type: "wasm/InstantiateContractProposal",
       value: InstantiateContractProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: InstantiateContractProposalProtoMsg): InstantiateContractProposal {
     return InstantiateContractProposal.decode(message.value);
   },
-
   toProto(message: InstantiateContractProposal): Uint8Array {
     return InstantiateContractProposal.encode(message).finish();
   },
-
   toProtoMsg(message: InstantiateContractProposal): InstantiateContractProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.InstantiateContractProposal",
       value: InstantiateContractProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseInstantiateContract2Proposal(): InstantiateContract2Proposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.InstantiateContract2Proposal",
@@ -1455,112 +1179,85 @@ function createBaseInstantiateContract2Proposal(): InstantiateContract2Proposal 
     fixMsg: false
   };
 }
-
 export const InstantiateContract2Proposal = {
   typeUrl: "/cosmwasm.wasm.v1.InstantiateContract2Proposal",
-
   encode(message: InstantiateContract2Proposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     if (message.runAs !== "") {
       writer.uint32(26).string(message.runAs);
     }
-
     if (message.admin !== "") {
       writer.uint32(34).string(message.admin);
     }
-
     if (!message.codeId.isZero()) {
       writer.uint32(40).uint64(message.codeId);
     }
-
     if (message.label !== "") {
       writer.uint32(50).string(message.label);
     }
-
     if (message.msg.length !== 0) {
       writer.uint32(58).bytes(message.msg);
     }
-
     for (const v of message.funds) {
       Coin.encode(v!, writer.uint32(66).fork()).ldelim();
     }
-
     if (message.salt.length !== 0) {
       writer.uint32(74).bytes(message.salt);
     }
-
     if (message.fixMsg === true) {
       writer.uint32(80).bool(message.fixMsg);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateContract2Proposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseInstantiateContract2Proposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.runAs = reader.string();
           break;
-
         case 4:
           message.admin = reader.string();
           break;
-
         case 5:
           message.codeId = (reader.uint64() as Long);
           break;
-
         case 6:
           message.label = reader.string();
           break;
-
         case 7:
           message.msg = reader.bytes();
           break;
-
         case 8:
           message.funds.push(Coin.decode(reader, reader.uint32()));
           break;
-
         case 9:
           message.salt = reader.bytes();
           break;
-
         case 10:
           message.fixMsg = reader.bool();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<InstantiateContract2Proposal>): InstantiateContract2Proposal {
     const message = createBaseInstantiateContract2Proposal();
     message.title = object.title ?? "";
@@ -1575,7 +1272,6 @@ export const InstantiateContract2Proposal = {
     message.fixMsg = object.fixMsg ?? false;
     return message;
   },
-
   fromAmino(object: InstantiateContract2ProposalAmino): InstantiateContract2Proposal {
     return {
       title: object.title,
@@ -1590,7 +1286,6 @@ export const InstantiateContract2Proposal = {
       fixMsg: object.fix_msg
     };
   },
-
   toAmino(message: InstantiateContract2Proposal): InstantiateContract2ProposalAmino {
     const obj: any = {};
     obj.title = message.title;
@@ -1600,46 +1295,37 @@ export const InstantiateContract2Proposal = {
     obj.code_id = message.codeId ? message.codeId.toString() : undefined;
     obj.label = message.label;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
-
     if (message.funds) {
       obj.funds = message.funds.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.funds = [];
     }
-
     obj.salt = message.salt;
     obj.fix_msg = message.fixMsg;
     return obj;
   },
-
   fromAminoMsg(object: InstantiateContract2ProposalAminoMsg): InstantiateContract2Proposal {
     return InstantiateContract2Proposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: InstantiateContract2Proposal): InstantiateContract2ProposalAminoMsg {
     return {
       type: "wasm/InstantiateContract2Proposal",
       value: InstantiateContract2Proposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: InstantiateContract2ProposalProtoMsg): InstantiateContract2Proposal {
     return InstantiateContract2Proposal.decode(message.value);
   },
-
   toProto(message: InstantiateContract2Proposal): Uint8Array {
     return InstantiateContract2Proposal.encode(message).finish();
   },
-
   toProtoMsg(message: InstantiateContract2Proposal): InstantiateContract2ProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.InstantiateContract2Proposal",
       value: InstantiateContract2Proposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseMigrateContractProposal(): MigrateContractProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.MigrateContractProposal",
@@ -1650,72 +1336,55 @@ function createBaseMigrateContractProposal(): MigrateContractProposal {
     msg: new Uint8Array()
   };
 }
-
 export const MigrateContractProposal = {
   typeUrl: "/cosmwasm.wasm.v1.MigrateContractProposal",
-
   encode(message: MigrateContractProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     if (message.contract !== "") {
       writer.uint32(34).string(message.contract);
     }
-
     if (!message.codeId.isZero()) {
       writer.uint32(40).uint64(message.codeId);
     }
-
     if (message.msg.length !== 0) {
       writer.uint32(50).bytes(message.msg);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): MigrateContractProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMigrateContractProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 4:
           message.contract = reader.string();
           break;
-
         case 5:
           message.codeId = (reader.uint64() as Long);
           break;
-
         case 6:
           message.msg = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<MigrateContractProposal>): MigrateContractProposal {
     const message = createBaseMigrateContractProposal();
     message.title = object.title ?? "";
@@ -1725,7 +1394,6 @@ export const MigrateContractProposal = {
     message.msg = object.msg ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: MigrateContractProposalAmino): MigrateContractProposal {
     return {
       title: object.title,
@@ -1735,7 +1403,6 @@ export const MigrateContractProposal = {
       msg: toUtf8(JSON.stringify(object.msg))
     };
   },
-
   toAmino(message: MigrateContractProposal): MigrateContractProposalAmino {
     const obj: any = {};
     obj.title = message.title;
@@ -1745,35 +1412,28 @@ export const MigrateContractProposal = {
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
     return obj;
   },
-
   fromAminoMsg(object: MigrateContractProposalAminoMsg): MigrateContractProposal {
     return MigrateContractProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: MigrateContractProposal): MigrateContractProposalAminoMsg {
     return {
       type: "wasm/MigrateContractProposal",
       value: MigrateContractProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: MigrateContractProposalProtoMsg): MigrateContractProposal {
     return MigrateContractProposal.decode(message.value);
   },
-
   toProto(message: MigrateContractProposal): Uint8Array {
     return MigrateContractProposal.encode(message).finish();
   },
-
   toProtoMsg(message: MigrateContractProposal): MigrateContractProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MigrateContractProposal",
       value: MigrateContractProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseSudoContractProposal(): SudoContractProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.SudoContractProposal",
@@ -1783,64 +1443,49 @@ function createBaseSudoContractProposal(): SudoContractProposal {
     msg: new Uint8Array()
   };
 }
-
 export const SudoContractProposal = {
   typeUrl: "/cosmwasm.wasm.v1.SudoContractProposal",
-
   encode(message: SudoContractProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     if (message.contract !== "") {
       writer.uint32(26).string(message.contract);
     }
-
     if (message.msg.length !== 0) {
       writer.uint32(34).bytes(message.msg);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): SudoContractProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSudoContractProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.contract = reader.string();
           break;
-
         case 4:
           message.msg = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<SudoContractProposal>): SudoContractProposal {
     const message = createBaseSudoContractProposal();
     message.title = object.title ?? "";
@@ -1849,7 +1494,6 @@ export const SudoContractProposal = {
     message.msg = object.msg ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: SudoContractProposalAmino): SudoContractProposal {
     return {
       title: object.title,
@@ -1858,7 +1502,6 @@ export const SudoContractProposal = {
       msg: toUtf8(JSON.stringify(object.msg))
     };
   },
-
   toAmino(message: SudoContractProposal): SudoContractProposalAmino {
     const obj: any = {};
     obj.title = message.title;
@@ -1867,35 +1510,28 @@ export const SudoContractProposal = {
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
     return obj;
   },
-
   fromAminoMsg(object: SudoContractProposalAminoMsg): SudoContractProposal {
     return SudoContractProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: SudoContractProposal): SudoContractProposalAminoMsg {
     return {
       type: "wasm/SudoContractProposal",
       value: SudoContractProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: SudoContractProposalProtoMsg): SudoContractProposal {
     return SudoContractProposal.decode(message.value);
   },
-
   toProto(message: SudoContractProposal): Uint8Array {
     return SudoContractProposal.encode(message).finish();
   },
-
   toProtoMsg(message: SudoContractProposal): SudoContractProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.SudoContractProposal",
       value: SudoContractProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseExecuteContractProposal(): ExecuteContractProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.ExecuteContractProposal",
@@ -1907,80 +1543,61 @@ function createBaseExecuteContractProposal(): ExecuteContractProposal {
     funds: []
   };
 }
-
 export const ExecuteContractProposal = {
   typeUrl: "/cosmwasm.wasm.v1.ExecuteContractProposal",
-
   encode(message: ExecuteContractProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     if (message.runAs !== "") {
       writer.uint32(26).string(message.runAs);
     }
-
     if (message.contract !== "") {
       writer.uint32(34).string(message.contract);
     }
-
     if (message.msg.length !== 0) {
       writer.uint32(42).bytes(message.msg);
     }
-
     for (const v of message.funds) {
       Coin.encode(v!, writer.uint32(50).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): ExecuteContractProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseExecuteContractProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.runAs = reader.string();
           break;
-
         case 4:
           message.contract = reader.string();
           break;
-
         case 5:
           message.msg = reader.bytes();
           break;
-
         case 6:
           message.funds.push(Coin.decode(reader, reader.uint32()));
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<ExecuteContractProposal>): ExecuteContractProposal {
     const message = createBaseExecuteContractProposal();
     message.title = object.title ?? "";
@@ -1991,7 +1608,6 @@ export const ExecuteContractProposal = {
     message.funds = object.funds?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
-
   fromAmino(object: ExecuteContractProposalAmino): ExecuteContractProposal {
     return {
       title: object.title,
@@ -2002,7 +1618,6 @@ export const ExecuteContractProposal = {
       funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromAmino(e)) : []
     };
   },
-
   toAmino(message: ExecuteContractProposal): ExecuteContractProposalAmino {
     const obj: any = {};
     obj.title = message.title;
@@ -2010,44 +1625,35 @@ export const ExecuteContractProposal = {
     obj.run_as = message.runAs;
     obj.contract = message.contract;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
-
     if (message.funds) {
       obj.funds = message.funds.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.funds = [];
     }
-
     return obj;
   },
-
   fromAminoMsg(object: ExecuteContractProposalAminoMsg): ExecuteContractProposal {
     return ExecuteContractProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: ExecuteContractProposal): ExecuteContractProposalAminoMsg {
     return {
       type: "wasm/ExecuteContractProposal",
       value: ExecuteContractProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: ExecuteContractProposalProtoMsg): ExecuteContractProposal {
     return ExecuteContractProposal.decode(message.value);
   },
-
   toProto(message: ExecuteContractProposal): Uint8Array {
     return ExecuteContractProposal.encode(message).finish();
   },
-
   toProtoMsg(message: ExecuteContractProposal): ExecuteContractProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.ExecuteContractProposal",
       value: ExecuteContractProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseUpdateAdminProposal(): UpdateAdminProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.UpdateAdminProposal",
@@ -2057,64 +1663,49 @@ function createBaseUpdateAdminProposal(): UpdateAdminProposal {
     contract: ""
   };
 }
-
 export const UpdateAdminProposal = {
   typeUrl: "/cosmwasm.wasm.v1.UpdateAdminProposal",
-
   encode(message: UpdateAdminProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     if (message.newAdmin !== "") {
       writer.uint32(26).string(message.newAdmin);
     }
-
     if (message.contract !== "") {
       writer.uint32(34).string(message.contract);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): UpdateAdminProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpdateAdminProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.newAdmin = reader.string();
           break;
-
         case 4:
           message.contract = reader.string();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<UpdateAdminProposal>): UpdateAdminProposal {
     const message = createBaseUpdateAdminProposal();
     message.title = object.title ?? "";
@@ -2123,7 +1714,6 @@ export const UpdateAdminProposal = {
     message.contract = object.contract ?? "";
     return message;
   },
-
   fromAmino(object: UpdateAdminProposalAmino): UpdateAdminProposal {
     return {
       title: object.title,
@@ -2132,7 +1722,6 @@ export const UpdateAdminProposal = {
       contract: object.contract
     };
   },
-
   toAmino(message: UpdateAdminProposal): UpdateAdminProposalAmino {
     const obj: any = {};
     obj.title = message.title;
@@ -2141,35 +1730,28 @@ export const UpdateAdminProposal = {
     obj.contract = message.contract;
     return obj;
   },
-
   fromAminoMsg(object: UpdateAdminProposalAminoMsg): UpdateAdminProposal {
     return UpdateAdminProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: UpdateAdminProposal): UpdateAdminProposalAminoMsg {
     return {
       type: "wasm/UpdateAdminProposal",
       value: UpdateAdminProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: UpdateAdminProposalProtoMsg): UpdateAdminProposal {
     return UpdateAdminProposal.decode(message.value);
   },
-
   toProto(message: UpdateAdminProposal): Uint8Array {
     return UpdateAdminProposal.encode(message).finish();
   },
-
   toProtoMsg(message: UpdateAdminProposal): UpdateAdminProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.UpdateAdminProposal",
       value: UpdateAdminProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseClearAdminProposal(): ClearAdminProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.ClearAdminProposal",
@@ -2178,56 +1760,43 @@ function createBaseClearAdminProposal(): ClearAdminProposal {
     contract: ""
   };
 }
-
 export const ClearAdminProposal = {
   typeUrl: "/cosmwasm.wasm.v1.ClearAdminProposal",
-
   encode(message: ClearAdminProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     if (message.contract !== "") {
       writer.uint32(26).string(message.contract);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): ClearAdminProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseClearAdminProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.contract = reader.string();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<ClearAdminProposal>): ClearAdminProposal {
     const message = createBaseClearAdminProposal();
     message.title = object.title ?? "";
@@ -2235,7 +1804,6 @@ export const ClearAdminProposal = {
     message.contract = object.contract ?? "";
     return message;
   },
-
   fromAmino(object: ClearAdminProposalAmino): ClearAdminProposal {
     return {
       title: object.title,
@@ -2243,7 +1811,6 @@ export const ClearAdminProposal = {
       contract: object.contract
     };
   },
-
   toAmino(message: ClearAdminProposal): ClearAdminProposalAmino {
     const obj: any = {};
     obj.title = message.title;
@@ -2251,35 +1818,28 @@ export const ClearAdminProposal = {
     obj.contract = message.contract;
     return obj;
   },
-
   fromAminoMsg(object: ClearAdminProposalAminoMsg): ClearAdminProposal {
     return ClearAdminProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: ClearAdminProposal): ClearAdminProposalAminoMsg {
     return {
       type: "wasm/ClearAdminProposal",
       value: ClearAdminProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: ClearAdminProposalProtoMsg): ClearAdminProposal {
     return ClearAdminProposal.decode(message.value);
   },
-
   toProto(message: ClearAdminProposal): Uint8Array {
     return ClearAdminProposal.encode(message).finish();
   },
-
   toProtoMsg(message: ClearAdminProposal): ClearAdminProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.ClearAdminProposal",
       value: ClearAdminProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBasePinCodesProposal(): PinCodesProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.PinCodesProposal",
@@ -2288,68 +1848,52 @@ function createBasePinCodesProposal(): PinCodesProposal {
     codeIds: []
   };
 }
-
 export const PinCodesProposal = {
   typeUrl: "/cosmwasm.wasm.v1.PinCodesProposal",
-
   encode(message: PinCodesProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     writer.uint32(26).fork();
-
     for (const v of message.codeIds) {
       writer.uint64(v);
     }
-
     writer.ldelim();
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): PinCodesProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePinCodesProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
-
             while (reader.pos < end2) {
               message.codeIds.push((reader.uint64() as Long));
             }
           } else {
             message.codeIds.push((reader.uint64() as Long));
           }
-
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<PinCodesProposal>): PinCodesProposal {
     const message = createBasePinCodesProposal();
     message.title = object.title ?? "";
@@ -2357,7 +1901,6 @@ export const PinCodesProposal = {
     message.codeIds = object.codeIds?.map(e => Long.fromValue(e)) || [];
     return message;
   },
-
   fromAmino(object: PinCodesProposalAmino): PinCodesProposal {
     return {
       title: object.title,
@@ -2365,49 +1908,39 @@ export const PinCodesProposal = {
       codeIds: Array.isArray(object?.code_ids) ? object.code_ids.map((e: any) => e) : []
     };
   },
-
   toAmino(message: PinCodesProposal): PinCodesProposalAmino {
     const obj: any = {};
     obj.title = message.title;
     obj.description = message.description;
-
     if (message.codeIds) {
       obj.code_ids = message.codeIds.map(e => e);
     } else {
       obj.code_ids = [];
     }
-
     return obj;
   },
-
   fromAminoMsg(object: PinCodesProposalAminoMsg): PinCodesProposal {
     return PinCodesProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: PinCodesProposal): PinCodesProposalAminoMsg {
     return {
       type: "wasm/PinCodesProposal",
       value: PinCodesProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: PinCodesProposalProtoMsg): PinCodesProposal {
     return PinCodesProposal.decode(message.value);
   },
-
   toProto(message: PinCodesProposal): Uint8Array {
     return PinCodesProposal.encode(message).finish();
   },
-
   toProtoMsg(message: PinCodesProposal): PinCodesProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.PinCodesProposal",
       value: PinCodesProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseUnpinCodesProposal(): UnpinCodesProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.UnpinCodesProposal",
@@ -2416,68 +1949,52 @@ function createBaseUnpinCodesProposal(): UnpinCodesProposal {
     codeIds: []
   };
 }
-
 export const UnpinCodesProposal = {
   typeUrl: "/cosmwasm.wasm.v1.UnpinCodesProposal",
-
   encode(message: UnpinCodesProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     writer.uint32(26).fork();
-
     for (const v of message.codeIds) {
       writer.uint64(v);
     }
-
     writer.ldelim();
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): UnpinCodesProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUnpinCodesProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
-
             while (reader.pos < end2) {
               message.codeIds.push((reader.uint64() as Long));
             }
           } else {
             message.codeIds.push((reader.uint64() as Long));
           }
-
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<UnpinCodesProposal>): UnpinCodesProposal {
     const message = createBaseUnpinCodesProposal();
     message.title = object.title ?? "";
@@ -2485,7 +2002,6 @@ export const UnpinCodesProposal = {
     message.codeIds = object.codeIds?.map(e => Long.fromValue(e)) || [];
     return message;
   },
-
   fromAmino(object: UnpinCodesProposalAmino): UnpinCodesProposal {
     return {
       title: object.title,
@@ -2493,146 +2009,116 @@ export const UnpinCodesProposal = {
       codeIds: Array.isArray(object?.code_ids) ? object.code_ids.map((e: any) => e) : []
     };
   },
-
   toAmino(message: UnpinCodesProposal): UnpinCodesProposalAmino {
     const obj: any = {};
     obj.title = message.title;
     obj.description = message.description;
-
     if (message.codeIds) {
       obj.code_ids = message.codeIds.map(e => e);
     } else {
       obj.code_ids = [];
     }
-
     return obj;
   },
-
   fromAminoMsg(object: UnpinCodesProposalAminoMsg): UnpinCodesProposal {
     return UnpinCodesProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: UnpinCodesProposal): UnpinCodesProposalAminoMsg {
     return {
       type: "wasm/UnpinCodesProposal",
       value: UnpinCodesProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: UnpinCodesProposalProtoMsg): UnpinCodesProposal {
     return UnpinCodesProposal.decode(message.value);
   },
-
   toProto(message: UnpinCodesProposal): Uint8Array {
     return UnpinCodesProposal.encode(message).finish();
   },
-
   toProtoMsg(message: UnpinCodesProposal): UnpinCodesProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.UnpinCodesProposal",
       value: UnpinCodesProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseAccessConfigUpdate(): AccessConfigUpdate {
   return {
     codeId: Long.UZERO,
     instantiatePermission: undefined
   };
 }
-
 export const AccessConfigUpdate = {
   typeUrl: "/cosmwasm.wasm.v1.AccessConfigUpdate",
-
   encode(message: AccessConfigUpdate, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.codeId.isZero()) {
       writer.uint32(8).uint64(message.codeId);
     }
-
     if (message.instantiatePermission !== undefined) {
       AccessConfig.encode(message.instantiatePermission, writer.uint32(18).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): AccessConfigUpdate {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAccessConfigUpdate();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.codeId = (reader.uint64() as Long);
           break;
-
         case 2:
           message.instantiatePermission = AccessConfig.decode(reader, reader.uint32());
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<AccessConfigUpdate>): AccessConfigUpdate {
     const message = createBaseAccessConfigUpdate();
     message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.instantiatePermission = object.instantiatePermission !== undefined && object.instantiatePermission !== null ? AccessConfig.fromPartial(object.instantiatePermission) : undefined;
     return message;
   },
-
   fromAmino(object: AccessConfigUpdateAmino): AccessConfigUpdate {
     return {
       codeId: Long.fromString(object.code_id),
       instantiatePermission: object?.instantiate_permission ? AccessConfig.fromAmino(object.instantiate_permission) : undefined
     };
   },
-
   toAmino(message: AccessConfigUpdate): AccessConfigUpdateAmino {
     const obj: any = {};
     obj.code_id = message.codeId ? message.codeId.toString() : undefined;
     obj.instantiate_permission = message.instantiatePermission ? AccessConfig.toAmino(message.instantiatePermission) : undefined;
     return obj;
   },
-
   fromAminoMsg(object: AccessConfigUpdateAminoMsg): AccessConfigUpdate {
     return AccessConfigUpdate.fromAmino(object.value);
   },
-
   toAminoMsg(message: AccessConfigUpdate): AccessConfigUpdateAminoMsg {
     return {
       type: "wasm/AccessConfigUpdate",
       value: AccessConfigUpdate.toAmino(message)
     };
   },
-
   fromProtoMsg(message: AccessConfigUpdateProtoMsg): AccessConfigUpdate {
     return AccessConfigUpdate.decode(message.value);
   },
-
   toProto(message: AccessConfigUpdate): Uint8Array {
     return AccessConfigUpdate.encode(message).finish();
   },
-
   toProtoMsg(message: AccessConfigUpdate): AccessConfigUpdateProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.AccessConfigUpdate",
       value: AccessConfigUpdate.encode(message).finish()
     };
   }
-
 };
-
 function createBaseUpdateInstantiateConfigProposal(): UpdateInstantiateConfigProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal",
@@ -2641,56 +2127,43 @@ function createBaseUpdateInstantiateConfigProposal(): UpdateInstantiateConfigPro
     accessConfigUpdates: []
   };
 }
-
 export const UpdateInstantiateConfigProposal = {
   typeUrl: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal",
-
   encode(message: UpdateInstantiateConfigProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     for (const v of message.accessConfigUpdates) {
       AccessConfigUpdate.encode(v!, writer.uint32(26).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): UpdateInstantiateConfigProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpdateInstantiateConfigProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.accessConfigUpdates.push(AccessConfigUpdate.decode(reader, reader.uint32()));
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<UpdateInstantiateConfigProposal>): UpdateInstantiateConfigProposal {
     const message = createBaseUpdateInstantiateConfigProposal();
     message.title = object.title ?? "";
@@ -2698,7 +2171,6 @@ export const UpdateInstantiateConfigProposal = {
     message.accessConfigUpdates = object.accessConfigUpdates?.map(e => AccessConfigUpdate.fromPartial(e)) || [];
     return message;
   },
-
   fromAmino(object: UpdateInstantiateConfigProposalAmino): UpdateInstantiateConfigProposal {
     return {
       title: object.title,
@@ -2706,49 +2178,39 @@ export const UpdateInstantiateConfigProposal = {
       accessConfigUpdates: Array.isArray(object?.access_config_updates) ? object.access_config_updates.map((e: any) => AccessConfigUpdate.fromAmino(e)) : []
     };
   },
-
   toAmino(message: UpdateInstantiateConfigProposal): UpdateInstantiateConfigProposalAmino {
     const obj: any = {};
     obj.title = message.title;
     obj.description = message.description;
-
     if (message.accessConfigUpdates) {
       obj.access_config_updates = message.accessConfigUpdates.map(e => e ? AccessConfigUpdate.toAmino(e) : undefined);
     } else {
       obj.access_config_updates = [];
     }
-
     return obj;
   },
-
   fromAminoMsg(object: UpdateInstantiateConfigProposalAminoMsg): UpdateInstantiateConfigProposal {
     return UpdateInstantiateConfigProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: UpdateInstantiateConfigProposal): UpdateInstantiateConfigProposalAminoMsg {
     return {
       type: "wasm/UpdateInstantiateConfigProposal",
       value: UpdateInstantiateConfigProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: UpdateInstantiateConfigProposalProtoMsg): UpdateInstantiateConfigProposal {
     return UpdateInstantiateConfigProposal.decode(message.value);
   },
-
   toProto(message: UpdateInstantiateConfigProposal): Uint8Array {
     return UpdateInstantiateConfigProposal.encode(message).finish();
   },
-
   toProtoMsg(message: UpdateInstantiateConfigProposal): UpdateInstantiateConfigProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal",
       value: UpdateInstantiateConfigProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseStoreAndInstantiateContractProposal(): StoreAndInstantiateContractProposal {
   return {
     $typeUrl: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal",
@@ -2767,136 +2229,103 @@ function createBaseStoreAndInstantiateContractProposal(): StoreAndInstantiateCon
     codeHash: new Uint8Array()
   };
 }
-
 export const StoreAndInstantiateContractProposal = {
   typeUrl: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal",
-
   encode(message: StoreAndInstantiateContractProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     if (message.runAs !== "") {
       writer.uint32(26).string(message.runAs);
     }
-
     if (message.wasmByteCode.length !== 0) {
       writer.uint32(34).bytes(message.wasmByteCode);
     }
-
     if (message.instantiatePermission !== undefined) {
       AccessConfig.encode(message.instantiatePermission, writer.uint32(42).fork()).ldelim();
     }
-
     if (message.unpinCode === true) {
       writer.uint32(48).bool(message.unpinCode);
     }
-
     if (message.admin !== "") {
       writer.uint32(58).string(message.admin);
     }
-
     if (message.label !== "") {
       writer.uint32(66).string(message.label);
     }
-
     if (message.msg.length !== 0) {
       writer.uint32(74).bytes(message.msg);
     }
-
     for (const v of message.funds) {
       Coin.encode(v!, writer.uint32(82).fork()).ldelim();
     }
-
     if (message.source !== "") {
       writer.uint32(90).string(message.source);
     }
-
     if (message.builder !== "") {
       writer.uint32(98).string(message.builder);
     }
-
     if (message.codeHash.length !== 0) {
       writer.uint32(106).bytes(message.codeHash);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): StoreAndInstantiateContractProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseStoreAndInstantiateContractProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.runAs = reader.string();
           break;
-
         case 4:
           message.wasmByteCode = reader.bytes();
           break;
-
         case 5:
           message.instantiatePermission = AccessConfig.decode(reader, reader.uint32());
           break;
-
         case 6:
           message.unpinCode = reader.bool();
           break;
-
         case 7:
           message.admin = reader.string();
           break;
-
         case 8:
           message.label = reader.string();
           break;
-
         case 9:
           message.msg = reader.bytes();
           break;
-
         case 10:
           message.funds.push(Coin.decode(reader, reader.uint32()));
           break;
-
         case 11:
           message.source = reader.string();
           break;
-
         case 12:
           message.builder = reader.string();
           break;
-
         case 13:
           message.codeHash = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<StoreAndInstantiateContractProposal>): StoreAndInstantiateContractProposal {
     const message = createBaseStoreAndInstantiateContractProposal();
     message.title = object.title ?? "";
@@ -2914,7 +2343,6 @@ export const StoreAndInstantiateContractProposal = {
     message.codeHash = object.codeHash ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: StoreAndInstantiateContractProposalAmino): StoreAndInstantiateContractProposal {
     return {
       title: object.title,
@@ -2932,7 +2360,6 @@ export const StoreAndInstantiateContractProposal = {
       codeHash: object.code_hash
     };
   },
-
   toAmino(message: StoreAndInstantiateContractProposal): StoreAndInstantiateContractProposalAmino {
     const obj: any = {};
     obj.title = message.title;
@@ -2944,43 +2371,35 @@ export const StoreAndInstantiateContractProposal = {
     obj.admin = message.admin;
     obj.label = message.label;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
-
     if (message.funds) {
       obj.funds = message.funds.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.funds = [];
     }
-
     obj.source = message.source;
     obj.builder = message.builder;
     obj.code_hash = message.codeHash;
     return obj;
   },
-
   fromAminoMsg(object: StoreAndInstantiateContractProposalAminoMsg): StoreAndInstantiateContractProposal {
     return StoreAndInstantiateContractProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: StoreAndInstantiateContractProposal): StoreAndInstantiateContractProposalAminoMsg {
     return {
       type: "wasm/StoreAndInstantiateContractProposal",
       value: StoreAndInstantiateContractProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: StoreAndInstantiateContractProposalProtoMsg): StoreAndInstantiateContractProposal {
     return StoreAndInstantiateContractProposal.decode(message.value);
   },
-
   toProto(message: StoreAndInstantiateContractProposal): Uint8Array {
     return StoreAndInstantiateContractProposal.encode(message).finish();
   },
-
   toProtoMsg(message: StoreAndInstantiateContractProposal): StoreAndInstantiateContractProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal",
       value: StoreAndInstantiateContractProposal.encode(message).finish()
     };
   }
-
 };

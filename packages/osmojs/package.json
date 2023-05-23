@@ -59,7 +59,7 @@
     "@babel/preset-typescript": "^7.17.12",
     "@babel/traverse": "7.19.1",
     "@babel/types": "7.19.0",
-    "@osmonauts/telescope": "0.90.0",
+    "@osmonauts/telescope": "0.95.0",
     "@protobufs/confio": "^0.0.6",
     "@protobufs/cosmos": "^0.1.0",
     "@protobufs/cosmos_proto": "^0.0.10",
@@ -94,8 +94,6 @@
     "@cosmjs/proto-signing": "0.29.3",
     "@cosmjs/stargate": "0.29.3",
     "@cosmjs/tendermint-rpc": "^0.29.3",
-    "@osmonauts/lcd": "^0.10.0",
-    "long": "^5.2.0",
-    "protobufjs": "^6.11.3"
+    "@osmonauts/lcd": "^0.10.0"
   }
 }

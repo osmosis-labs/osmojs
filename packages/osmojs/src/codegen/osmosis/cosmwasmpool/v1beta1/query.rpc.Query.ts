@@ -7,18 +7,15 @@ export interface Query {
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.params = this.params.bind(this);
   }
-
   params(request: ParamsRequest = {}): Promise<ParamsResponse> {
     const data = ParamsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.cosmwasmpool.v1beta1.Query", "Params", data);
     return promise.then(data => ParamsResponse.decode(new _m0.Reader(data)));
   }
-
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -27,6 +24,5 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     params(request?: ParamsRequest): Promise<ParamsResponse> {
       return queryService.params(request);
     }
-
   };
 };

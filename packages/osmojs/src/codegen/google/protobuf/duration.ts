@@ -60,7 +60,6 @@ import * as _m0 from "protobufjs/minimal";
  * be expressed in JSON format as "3.000000001s", and 3 seconds and 1
  * microsecond should be expressed in JSON format as "3.000001s".
  */
-
 export interface Duration {
   /**
    * Signed seconds of the span of time. Must be from -315,576,000,000
@@ -76,7 +75,6 @@ export interface Duration {
    * of the same sign as the `seconds` field. Must be from -999,999,999
    * to +999,999,999 inclusive.
    */
-
   nanos: number;
 }
 export interface DurationProtoMsg {
@@ -143,7 +141,6 @@ export interface DurationProtoMsg {
  * be expressed in JSON format as "3.000000001s", and 3 seconds and 1
  * microsecond should be expressed in JSON format as "3.000001s".
  */
-
 export type DurationAmino = string;
 export interface DurationAminoMsg {
   type: "/google.protobuf.Duration";
@@ -209,67 +206,53 @@ export interface DurationAminoMsg {
  * be expressed in JSON format as "3.000000001s", and 3 seconds and 1
  * microsecond should be expressed in JSON format as "3.000001s".
  */
-
 export interface DurationSDKType {
   seconds: Long;
   nanos: number;
 }
-
 function createBaseDuration(): Duration {
   return {
     seconds: Long.ZERO,
     nanos: 0
   };
 }
-
 export const Duration = {
   typeUrl: "/google.protobuf.Duration",
-
   encode(message: Duration, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.seconds.isZero()) {
       writer.uint32(8).int64(message.seconds);
     }
-
     if (message.nanos !== 0) {
       writer.uint32(16).int32(message.nanos);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): Duration {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDuration();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.seconds = (reader.int64() as Long);
           break;
-
         case 2:
           message.nanos = reader.int32();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<Duration>): Duration {
     const message = createBaseDuration();
     message.seconds = object.seconds !== undefined && object.seconds !== null ? Long.fromValue(object.seconds) : Long.ZERO;
     message.nanos = object.nanos ?? 0;
     return message;
   },
-
   fromAmino(object: DurationAmino): Duration {
     const value = parseInt(object);
     return {
@@ -277,28 +260,22 @@ export const Duration = {
       nanos: value % 1_000_000_000
     };
   },
-
   toAmino(message: Duration): DurationAmino {
     return (message.seconds.toInt() * 1_000_000_000 + message.nanos).toString();
   },
-
   fromAminoMsg(object: DurationAminoMsg): Duration {
     return Duration.fromAmino(object.value);
   },
-
   fromProtoMsg(message: DurationProtoMsg): Duration {
     return Duration.decode(message.value);
   },
-
   toProto(message: Duration): Uint8Array {
     return Duration.encode(message).finish();
   },
-
   toProtoMsg(message: Duration): DurationProtoMsg {
     return {
       typeUrl: "/google.protobuf.Duration",
       value: Duration.encode(message).finish()
     };
   }
-
 };

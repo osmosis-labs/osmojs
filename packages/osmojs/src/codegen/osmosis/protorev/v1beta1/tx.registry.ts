@@ -15,42 +15,36 @@ export const MessageComposer = {
         value: MsgSetHotRoutes.encode(value).finish()
       };
     },
-
     setDeveloperAccount(value: MsgSetDeveloperAccount) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
         value: MsgSetDeveloperAccount.encode(value).finish()
       };
     },
-
     setMaxPoolPointsPerTx(value: MsgSetMaxPoolPointsPerTx) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
         value: MsgSetMaxPoolPointsPerTx.encode(value).finish()
       };
     },
-
     setMaxPoolPointsPerBlock(value: MsgSetMaxPoolPointsPerBlock) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
         value: MsgSetMaxPoolPointsPerBlock.encode(value).finish()
       };
     },
-
     setPoolWeights(value: MsgSetPoolWeights) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
         value: MsgSetPoolWeights.encode(value).finish()
       };
     },
-
     setBaseDenoms(value: MsgSetBaseDenoms) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
         value: MsgSetBaseDenoms.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     setHotRoutes(value: MsgSetHotRoutes) {
@@ -59,42 +53,36 @@ export const MessageComposer = {
         value
       };
     },
-
     setDeveloperAccount(value: MsgSetDeveloperAccount) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
         value
       };
     },
-
     setMaxPoolPointsPerTx(value: MsgSetMaxPoolPointsPerTx) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
         value
       };
     },
-
     setMaxPoolPointsPerBlock(value: MsgSetMaxPoolPointsPerBlock) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
         value
       };
     },
-
     setPoolWeights(value: MsgSetPoolWeights) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
         value
       };
     },
-
     setBaseDenoms(value: MsgSetBaseDenoms) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
         value
       };
     }
-
   },
   fromPartial: {
     setHotRoutes(value: MsgSetHotRoutes) {
@@ -103,41 +91,35 @@ export const MessageComposer = {
         value: MsgSetHotRoutes.fromPartial(value)
       };
     },
-
     setDeveloperAccount(value: MsgSetDeveloperAccount) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
         value: MsgSetDeveloperAccount.fromPartial(value)
       };
     },
-
     setMaxPoolPointsPerTx(value: MsgSetMaxPoolPointsPerTx) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
         value: MsgSetMaxPoolPointsPerTx.fromPartial(value)
       };
     },
-
     setMaxPoolPointsPerBlock(value: MsgSetMaxPoolPointsPerBlock) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
         value: MsgSetMaxPoolPointsPerBlock.fromPartial(value)
       };
     },
-
     setPoolWeights(value: MsgSetPoolWeights) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
         value: MsgSetPoolWeights.fromPartial(value)
       };
     },
-
     setBaseDenoms(value: MsgSetBaseDenoms) {
       return {
         typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
         value: MsgSetBaseDenoms.fromPartial(value)
       };
     }
-
   }
 };

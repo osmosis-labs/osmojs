@@ -15,14 +15,12 @@ export const MessageComposer = {
         value: MsgSend.encode(value).finish()
       };
     },
-
     multiSend(value: MsgMultiSend) {
       return {
         typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
         value: MsgMultiSend.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     send(value: MsgSend) {
@@ -31,14 +29,12 @@ export const MessageComposer = {
         value
       };
     },
-
     multiSend(value: MsgMultiSend) {
       return {
         typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
         value
       };
     }
-
   },
   fromPartial: {
     send(value: MsgSend) {
@@ -47,13 +43,11 @@ export const MessageComposer = {
         value: MsgSend.fromPartial(value)
       };
     },
-
     multiSend(value: MsgMultiSend) {
       return {
         typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
         value: MsgMultiSend.fromPartial(value)
       };
     }
-
   }
 };

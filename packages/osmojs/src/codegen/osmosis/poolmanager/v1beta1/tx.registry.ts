@@ -15,14 +15,12 @@ export const MessageComposer = {
         value: MsgSwapExactAmountIn.encode(value).finish()
       };
     },
-
     swapExactAmountOut(value: MsgSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
         value: MsgSwapExactAmountOut.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     swapExactAmountIn(value: MsgSwapExactAmountIn) {
@@ -31,14 +29,12 @@ export const MessageComposer = {
         value
       };
     },
-
     swapExactAmountOut(value: MsgSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
         value
       };
     }
-
   },
   fromPartial: {
     swapExactAmountIn(value: MsgSwapExactAmountIn) {
@@ -47,13 +43,11 @@ export const MessageComposer = {
         value: MsgSwapExactAmountIn.fromPartial(value)
       };
     },
-
     swapExactAmountOut(value: MsgSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
         value: MsgSwapExactAmountOut.fromPartial(value)
       };
     }
-
   }
 };

@@ -8,18 +8,15 @@ export interface Query {
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.spotPrice = this.spotPrice.bind(this);
   }
-
   spotPrice(request: QuerySpotPriceRequest): Promise<QuerySpotPriceResponse> {
     const data = QuerySpotPriceRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.gamm.v2.Query", "SpotPrice", data);
     return promise.then(data => QuerySpotPriceResponse.decode(new _m0.Reader(data)));
   }
-
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -28,6 +25,5 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     spotPrice(request: QuerySpotPriceRequest): Promise<QuerySpotPriceResponse> {
       return queryService.spotPrice(request);
     }
-
   };
 };

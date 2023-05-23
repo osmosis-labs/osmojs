@@ -15,14 +15,12 @@ export const MessageComposer = {
         value: MsgCreateGauge.encode(value).finish()
       };
     },
-
     addToGauge(value: MsgAddToGauge) {
       return {
         typeUrl: "/osmosis.incentives.MsgAddToGauge",
         value: MsgAddToGauge.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     createGauge(value: MsgCreateGauge) {
@@ -31,14 +29,12 @@ export const MessageComposer = {
         value
       };
     },
-
     addToGauge(value: MsgAddToGauge) {
       return {
         typeUrl: "/osmosis.incentives.MsgAddToGauge",
         value
       };
     }
-
   },
   fromPartial: {
     createGauge(value: MsgCreateGauge) {
@@ -47,13 +43,11 @@ export const MessageComposer = {
         value: MsgCreateGauge.fromPartial(value)
       };
     },
-
     addToGauge(value: MsgAddToGauge) {
       return {
         typeUrl: "/osmosis.incentives.MsgAddToGauge",
         value: MsgAddToGauge.fromPartial(value)
       };
     }
-
   }
 };
