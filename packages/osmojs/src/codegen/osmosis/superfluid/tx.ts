@@ -1,10 +1,10 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
+import { toTimestamp, fromTimestamp } from "../../helpers";
 export interface MsgSuperfluidDelegate {
   sender: string;
-  lockId: Long;
+  lockId: bigint;
   valAddr: string;
 }
 export interface MsgSuperfluidDelegateProtoMsg {
@@ -22,7 +22,7 @@ export interface MsgSuperfluidDelegateAminoMsg {
 }
 export interface MsgSuperfluidDelegateSDKType {
   sender: string;
-  lock_id: Long;
+  lock_id: bigint;
   val_addr: string;
 }
 export interface MsgSuperfluidDelegateResponse {}
@@ -38,7 +38,7 @@ export interface MsgSuperfluidDelegateResponseAminoMsg {
 export interface MsgSuperfluidDelegateResponseSDKType {}
 export interface MsgSuperfluidUndelegate {
   sender: string;
-  lockId: Long;
+  lockId: bigint;
 }
 export interface MsgSuperfluidUndelegateProtoMsg {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegate";
@@ -54,7 +54,7 @@ export interface MsgSuperfluidUndelegateAminoMsg {
 }
 export interface MsgSuperfluidUndelegateSDKType {
   sender: string;
-  lock_id: Long;
+  lock_id: bigint;
 }
 export interface MsgSuperfluidUndelegateResponse {}
 export interface MsgSuperfluidUndelegateResponseProtoMsg {
@@ -69,7 +69,7 @@ export interface MsgSuperfluidUndelegateResponseAminoMsg {
 export interface MsgSuperfluidUndelegateResponseSDKType {}
 export interface MsgSuperfluidUnbondLock {
   sender: string;
-  lockId: Long;
+  lockId: bigint;
 }
 export interface MsgSuperfluidUnbondLockProtoMsg {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUnbondLock";
@@ -85,7 +85,7 @@ export interface MsgSuperfluidUnbondLockAminoMsg {
 }
 export interface MsgSuperfluidUnbondLockSDKType {
   sender: string;
-  lock_id: Long;
+  lock_id: bigint;
 }
 export interface MsgSuperfluidUnbondLockResponse {}
 export interface MsgSuperfluidUnbondLockResponseProtoMsg {
@@ -100,7 +100,7 @@ export interface MsgSuperfluidUnbondLockResponseAminoMsg {
 export interface MsgSuperfluidUnbondLockResponseSDKType {}
 export interface MsgSuperfluidUndelegateAndUnbondLock {
   sender: string;
-  lockId: Long;
+  lockId: bigint;
   /** Amount of unlocking coin. */
   coin?: Coin;
 }
@@ -120,7 +120,7 @@ export interface MsgSuperfluidUndelegateAndUnbondLockAminoMsg {
 }
 export interface MsgSuperfluidUndelegateAndUnbondLockSDKType {
   sender: string;
-  lock_id: Long;
+  lock_id: bigint;
   coin?: CoinSDKType;
 }
 export interface MsgSuperfluidUndelegateAndUnbondLockResponse {}
@@ -173,7 +173,7 @@ export interface MsgLockAndSuperfluidDelegateSDKType {
   val_addr: string;
 }
 export interface MsgLockAndSuperfluidDelegateResponse {
-  ID: Long;
+  ID: bigint;
 }
 export interface MsgLockAndSuperfluidDelegateResponseProtoMsg {
   typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegateResponse";
@@ -187,7 +187,7 @@ export interface MsgLockAndSuperfluidDelegateResponseAminoMsg {
   value: MsgLockAndSuperfluidDelegateResponseAmino;
 }
 export interface MsgLockAndSuperfluidDelegateResponseSDKType {
-  ID: Long;
+  ID: bigint;
 }
 /**
  * MsgUnPoolWhitelistedPool Unpools every lock the sender has, that is
@@ -201,7 +201,7 @@ export interface MsgLockAndSuperfluidDelegateResponseSDKType {
  */
 export interface MsgUnPoolWhitelistedPool {
   sender: string;
-  poolId: Long;
+  poolId: bigint;
 }
 export interface MsgUnPoolWhitelistedPoolProtoMsg {
   typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool";
@@ -237,10 +237,10 @@ export interface MsgUnPoolWhitelistedPoolAminoMsg {
  */
 export interface MsgUnPoolWhitelistedPoolSDKType {
   sender: string;
-  pool_id: Long;
+  pool_id: bigint;
 }
 export interface MsgUnPoolWhitelistedPoolResponse {
-  exitedLockIds: Long[];
+  exitedLockIds: bigint[];
 }
 export interface MsgUnPoolWhitelistedPoolResponseProtoMsg {
   typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPoolResponse";
@@ -254,7 +254,7 @@ export interface MsgUnPoolWhitelistedPoolResponseAminoMsg {
   value: MsgUnPoolWhitelistedPoolResponseAmino;
 }
 export interface MsgUnPoolWhitelistedPoolResponseSDKType {
-  exited_lock_ids: Long[];
+  exited_lock_ids: bigint[];
 }
 /**
  * =====================
@@ -262,7 +262,7 @@ export interface MsgUnPoolWhitelistedPoolResponseSDKType {
  */
 export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
   sender: string;
-  lockId: Long;
+  lockId: bigint;
   sharesToMigrate?: Coin;
 }
 export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionProtoMsg {
@@ -288,7 +288,7 @@ export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAminoMs
  */
 export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionSDKType {
   sender: string;
-  lock_id: Long;
+  lock_id: bigint;
   shares_to_migrate?: CoinSDKType;
 }
 export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
@@ -320,17 +320,17 @@ export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionRespons
 function createBaseMsgSuperfluidDelegate(): MsgSuperfluidDelegate {
   return {
     sender: "",
-    lockId: Long.UZERO,
+    lockId: BigInt("0"),
     valAddr: ""
   };
 }
 export const MsgSuperfluidDelegate = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidDelegate",
-  encode(message: MsgSuperfluidDelegate, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSuperfluidDelegate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.lockId.isZero()) {
+    if (message.lockId !== BigInt(0)) {
       writer.uint32(16).uint64(message.lockId);
     }
     if (message.valAddr !== "") {
@@ -338,8 +338,8 @@ export const MsgSuperfluidDelegate = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegate {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidDelegate {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSuperfluidDelegate();
     while (reader.pos < end) {
@@ -349,7 +349,7 @@ export const MsgSuperfluidDelegate = {
           message.sender = reader.string();
           break;
         case 2:
-          message.lockId = (reader.uint64() as Long);
+          message.lockId = BigInt(reader.uint64().toString());
           break;
         case 3:
           message.valAddr = reader.string();
@@ -364,14 +364,14 @@ export const MsgSuperfluidDelegate = {
   fromPartial(object: Partial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate {
     const message = createBaseMsgSuperfluidDelegate();
     message.sender = object.sender ?? "";
-    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? BigInt(object.lockId.toString()) : BigInt("0");
     message.valAddr = object.valAddr ?? "";
     return message;
   },
   fromAmino(object: MsgSuperfluidDelegateAmino): MsgSuperfluidDelegate {
     return {
       sender: object.sender,
-      lockId: Long.fromString(object.lock_id),
+      lockId: BigInt(object.lock_id),
       valAddr: object.val_addr
     };
   },
@@ -409,11 +409,11 @@ function createBaseMsgSuperfluidDelegateResponse(): MsgSuperfluidDelegateRespons
 }
 export const MsgSuperfluidDelegateResponse = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidDelegateResponse",
-  encode(_: MsgSuperfluidDelegateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSuperfluidDelegateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegateResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidDelegateResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSuperfluidDelegateResponse();
     while (reader.pos < end) {
@@ -462,22 +462,22 @@ export const MsgSuperfluidDelegateResponse = {
 function createBaseMsgSuperfluidUndelegate(): MsgSuperfluidUndelegate {
   return {
     sender: "",
-    lockId: Long.UZERO
+    lockId: BigInt("0")
   };
 }
 export const MsgSuperfluidUndelegate = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegate",
-  encode(message: MsgSuperfluidUndelegate, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSuperfluidUndelegate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.lockId.isZero()) {
+    if (message.lockId !== BigInt(0)) {
       writer.uint32(16).uint64(message.lockId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegate {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUndelegate {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSuperfluidUndelegate();
     while (reader.pos < end) {
@@ -487,7 +487,7 @@ export const MsgSuperfluidUndelegate = {
           message.sender = reader.string();
           break;
         case 2:
-          message.lockId = (reader.uint64() as Long);
+          message.lockId = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -499,13 +499,13 @@ export const MsgSuperfluidUndelegate = {
   fromPartial(object: Partial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate {
     const message = createBaseMsgSuperfluidUndelegate();
     message.sender = object.sender ?? "";
-    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? BigInt(object.lockId.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: MsgSuperfluidUndelegateAmino): MsgSuperfluidUndelegate {
     return {
       sender: object.sender,
-      lockId: Long.fromString(object.lock_id)
+      lockId: BigInt(object.lock_id)
     };
   },
   toAmino(message: MsgSuperfluidUndelegate): MsgSuperfluidUndelegateAmino {
@@ -541,11 +541,11 @@ function createBaseMsgSuperfluidUndelegateResponse(): MsgSuperfluidUndelegateRes
 }
 export const MsgSuperfluidUndelegateResponse = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateResponse",
-  encode(_: MsgSuperfluidUndelegateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSuperfluidUndelegateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUndelegateResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSuperfluidUndelegateResponse();
     while (reader.pos < end) {
@@ -594,22 +594,22 @@ export const MsgSuperfluidUndelegateResponse = {
 function createBaseMsgSuperfluidUnbondLock(): MsgSuperfluidUnbondLock {
   return {
     sender: "",
-    lockId: Long.UZERO
+    lockId: BigInt("0")
   };
 }
 export const MsgSuperfluidUnbondLock = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUnbondLock",
-  encode(message: MsgSuperfluidUnbondLock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSuperfluidUnbondLock, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.lockId.isZero()) {
+    if (message.lockId !== BigInt(0)) {
       writer.uint32(16).uint64(message.lockId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLock {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUnbondLock {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSuperfluidUnbondLock();
     while (reader.pos < end) {
@@ -619,7 +619,7 @@ export const MsgSuperfluidUnbondLock = {
           message.sender = reader.string();
           break;
         case 2:
-          message.lockId = (reader.uint64() as Long);
+          message.lockId = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -631,13 +631,13 @@ export const MsgSuperfluidUnbondLock = {
   fromPartial(object: Partial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock {
     const message = createBaseMsgSuperfluidUnbondLock();
     message.sender = object.sender ?? "";
-    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? BigInt(object.lockId.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: MsgSuperfluidUnbondLockAmino): MsgSuperfluidUnbondLock {
     return {
       sender: object.sender,
-      lockId: Long.fromString(object.lock_id)
+      lockId: BigInt(object.lock_id)
     };
   },
   toAmino(message: MsgSuperfluidUnbondLock): MsgSuperfluidUnbondLockAmino {
@@ -673,11 +673,11 @@ function createBaseMsgSuperfluidUnbondLockResponse(): MsgSuperfluidUnbondLockRes
 }
 export const MsgSuperfluidUnbondLockResponse = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUnbondLockResponse",
-  encode(_: MsgSuperfluidUnbondLockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSuperfluidUnbondLockResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSuperfluidUnbondLockResponse();
     while (reader.pos < end) {
@@ -726,17 +726,17 @@ export const MsgSuperfluidUnbondLockResponse = {
 function createBaseMsgSuperfluidUndelegateAndUnbondLock(): MsgSuperfluidUndelegateAndUnbondLock {
   return {
     sender: "",
-    lockId: Long.UZERO,
+    lockId: BigInt("0"),
     coin: undefined
   };
 }
 export const MsgSuperfluidUndelegateAndUnbondLock = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock",
-  encode(message: MsgSuperfluidUndelegateAndUnbondLock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSuperfluidUndelegateAndUnbondLock, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.lockId.isZero()) {
+    if (message.lockId !== BigInt(0)) {
       writer.uint32(16).uint64(message.lockId);
     }
     if (message.coin !== undefined) {
@@ -744,8 +744,8 @@ export const MsgSuperfluidUndelegateAndUnbondLock = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLock {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLock {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSuperfluidUndelegateAndUnbondLock();
     while (reader.pos < end) {
@@ -755,7 +755,7 @@ export const MsgSuperfluidUndelegateAndUnbondLock = {
           message.sender = reader.string();
           break;
         case 2:
-          message.lockId = (reader.uint64() as Long);
+          message.lockId = BigInt(reader.uint64().toString());
           break;
         case 3:
           message.coin = Coin.decode(reader, reader.uint32());
@@ -770,14 +770,14 @@ export const MsgSuperfluidUndelegateAndUnbondLock = {
   fromPartial(object: Partial<MsgSuperfluidUndelegateAndUnbondLock>): MsgSuperfluidUndelegateAndUnbondLock {
     const message = createBaseMsgSuperfluidUndelegateAndUnbondLock();
     message.sender = object.sender ?? "";
-    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? BigInt(object.lockId.toString()) : BigInt("0");
     message.coin = object.coin !== undefined && object.coin !== null ? Coin.fromPartial(object.coin) : undefined;
     return message;
   },
   fromAmino(object: MsgSuperfluidUndelegateAndUnbondLockAmino): MsgSuperfluidUndelegateAndUnbondLock {
     return {
       sender: object.sender,
-      lockId: Long.fromString(object.lock_id),
+      lockId: BigInt(object.lock_id),
       coin: object?.coin ? Coin.fromAmino(object.coin) : undefined
     };
   },
@@ -815,11 +815,11 @@ function createBaseMsgSuperfluidUndelegateAndUnbondLockResponse(): MsgSuperfluid
 }
 export const MsgSuperfluidUndelegateAndUnbondLockResponse = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLockResponse",
-  encode(_: MsgSuperfluidUndelegateAndUnbondLockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSuperfluidUndelegateAndUnbondLockResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLockResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLockResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSuperfluidUndelegateAndUnbondLockResponse();
     while (reader.pos < end) {
@@ -874,7 +874,7 @@ function createBaseMsgLockAndSuperfluidDelegate(): MsgLockAndSuperfluidDelegate 
 }
 export const MsgLockAndSuperfluidDelegate = {
   typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegate",
-  encode(message: MsgLockAndSuperfluidDelegate, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgLockAndSuperfluidDelegate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -886,8 +886,8 @@ export const MsgLockAndSuperfluidDelegate = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegate {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegate {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgLockAndSuperfluidDelegate();
     while (reader.pos < end) {
@@ -958,26 +958,26 @@ export const MsgLockAndSuperfluidDelegate = {
 };
 function createBaseMsgLockAndSuperfluidDelegateResponse(): MsgLockAndSuperfluidDelegateResponse {
   return {
-    ID: Long.UZERO
+    ID: BigInt("0")
   };
 }
 export const MsgLockAndSuperfluidDelegateResponse = {
   typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegateResponse",
-  encode(message: MsgLockAndSuperfluidDelegateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.ID.isZero()) {
+  encode(message: MsgLockAndSuperfluidDelegateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.ID !== BigInt(0)) {
       writer.uint32(8).uint64(message.ID);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegateResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegateResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgLockAndSuperfluidDelegateResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.ID = (reader.uint64() as Long);
+          message.ID = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -988,12 +988,12 @@ export const MsgLockAndSuperfluidDelegateResponse = {
   },
   fromPartial(object: Partial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse {
     const message = createBaseMsgLockAndSuperfluidDelegateResponse();
-    message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
+    message.ID = object.ID !== undefined && object.ID !== null ? BigInt(object.ID.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: MsgLockAndSuperfluidDelegateResponseAmino): MsgLockAndSuperfluidDelegateResponse {
     return {
-      ID: Long.fromString(object.ID)
+      ID: BigInt(object.ID)
     };
   },
   toAmino(message: MsgLockAndSuperfluidDelegateResponse): MsgLockAndSuperfluidDelegateResponseAmino {
@@ -1026,22 +1026,22 @@ export const MsgLockAndSuperfluidDelegateResponse = {
 function createBaseMsgUnPoolWhitelistedPool(): MsgUnPoolWhitelistedPool {
   return {
     sender: "",
-    poolId: Long.UZERO
+    poolId: BigInt("0")
   };
 }
 export const MsgUnPoolWhitelistedPool = {
   typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool",
-  encode(message: MsgUnPoolWhitelistedPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgUnPoolWhitelistedPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.poolId.isZero()) {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPool {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUnPoolWhitelistedPool {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUnPoolWhitelistedPool();
     while (reader.pos < end) {
@@ -1051,7 +1051,7 @@ export const MsgUnPoolWhitelistedPool = {
           message.sender = reader.string();
           break;
         case 2:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1063,13 +1063,13 @@ export const MsgUnPoolWhitelistedPool = {
   fromPartial(object: Partial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool {
     const message = createBaseMsgUnPoolWhitelistedPool();
     message.sender = object.sender ?? "";
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: MsgUnPoolWhitelistedPoolAmino): MsgUnPoolWhitelistedPool {
     return {
       sender: object.sender,
-      poolId: Long.fromString(object.pool_id)
+      poolId: BigInt(object.pool_id)
     };
   },
   toAmino(message: MsgUnPoolWhitelistedPool): MsgUnPoolWhitelistedPoolAmino {
@@ -1107,7 +1107,7 @@ function createBaseMsgUnPoolWhitelistedPoolResponse(): MsgUnPoolWhitelistedPoolR
 }
 export const MsgUnPoolWhitelistedPoolResponse = {
   typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPoolResponse",
-  encode(message: MsgUnPoolWhitelistedPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgUnPoolWhitelistedPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.exitedLockIds) {
       writer.uint64(v);
@@ -1115,8 +1115,8 @@ export const MsgUnPoolWhitelistedPoolResponse = {
     writer.ldelim();
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUnPoolWhitelistedPoolResponse();
     while (reader.pos < end) {
@@ -1126,10 +1126,10 @@ export const MsgUnPoolWhitelistedPoolResponse = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.exitedLockIds.push((reader.uint64() as Long));
+              message.exitedLockIds.push(BigInt(reader.uint64().toString()));
             }
           } else {
-            message.exitedLockIds.push((reader.uint64() as Long));
+            message.exitedLockIds.push(BigInt(reader.uint64().toString()));
           }
           break;
         default:
@@ -1141,7 +1141,7 @@ export const MsgUnPoolWhitelistedPoolResponse = {
   },
   fromPartial(object: Partial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse {
     const message = createBaseMsgUnPoolWhitelistedPoolResponse();
-    message.exitedLockIds = object.exitedLockIds?.map(e => Long.fromValue(e)) || [];
+    message.exitedLockIds = object.exitedLockIds?.map(e => BigInt(e.toString())) || [];
     return message;
   },
   fromAmino(object: MsgUnPoolWhitelistedPoolResponseAmino): MsgUnPoolWhitelistedPoolResponse {
@@ -1183,17 +1183,17 @@ export const MsgUnPoolWhitelistedPoolResponse = {
 function createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition(): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
   return {
     sender: "",
-    lockId: Long.UZERO,
+    lockId: BigInt("0"),
     sharesToMigrate: undefined
   };
 }
 export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
   typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition",
-  encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
-    if (!message.lockId.isZero()) {
+    if (message.lockId !== BigInt(0)) {
       writer.uint32(16).uint64(message.lockId);
     }
     if (message.sharesToMigrate !== undefined) {
@@ -1201,8 +1201,8 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition();
     while (reader.pos < end) {
@@ -1212,7 +1212,7 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
           message.sender = reader.string();
           break;
         case 2:
-          message.lockId = (reader.uint64() as Long);
+          message.lockId = BigInt(reader.uint64().toString());
           break;
         case 3:
           message.sharesToMigrate = Coin.decode(reader, reader.uint32());
@@ -1227,14 +1227,14 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
   fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
     const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition();
     message.sender = object.sender ?? "";
-    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? BigInt(object.lockId.toString()) : BigInt("0");
     message.sharesToMigrate = object.sharesToMigrate !== undefined && object.sharesToMigrate !== null ? Coin.fromPartial(object.sharesToMigrate) : undefined;
     return message;
   },
   fromAmino(object: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
     return {
       sender: object.sender,
-      lockId: Long.fromString(object.lock_id),
+      lockId: BigInt(object.lock_id),
       sharesToMigrate: object?.shares_to_migrate ? Coin.fromAmino(object.shares_to_migrate) : undefined
     };
   },
@@ -1277,7 +1277,7 @@ function createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionRespo
 }
 export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse = {
   typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse",
-  encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.amount0 !== "") {
       writer.uint32(10).string(message.amount0);
     }
@@ -1292,8 +1292,8 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse = 
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse();
     while (reader.pos < end) {

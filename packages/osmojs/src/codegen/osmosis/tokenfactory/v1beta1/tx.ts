@@ -1,6 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Metadata, MetadataAmino, MetadataSDKType } from "../../../cosmos/bank/v1beta1/bank";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
  * method. It allows an account to create a new denom. It requires a sender
@@ -393,7 +393,7 @@ function createBaseMsgCreateDenom(): MsgCreateDenom {
 }
 export const MsgCreateDenom = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgCreateDenom",
-  encode(message: MsgCreateDenom, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgCreateDenom, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -402,8 +402,8 @@ export const MsgCreateDenom = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenom {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateDenom {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateDenom();
     while (reader.pos < end) {
@@ -469,14 +469,14 @@ function createBaseMsgCreateDenomResponse(): MsgCreateDenomResponse {
 }
 export const MsgCreateDenomResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgCreateDenomResponse",
-  encode(message: MsgCreateDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgCreateDenomResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.newTokenDenom !== "") {
       writer.uint32(10).string(message.newTokenDenom);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateDenomResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateDenomResponse();
     while (reader.pos < end) {
@@ -538,7 +538,7 @@ function createBaseMsgMint(): MsgMint {
 }
 export const MsgMint = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgMint",
-  encode(message: MsgMint, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgMint, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -550,8 +550,8 @@ export const MsgMint = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMint {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgMint {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgMint();
     while (reader.pos < end) {
@@ -621,11 +621,11 @@ function createBaseMsgMintResponse(): MsgMintResponse {
 }
 export const MsgMintResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgMintResponse",
-  encode(_: MsgMintResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgMintResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgMintResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgMintResponse();
     while (reader.pos < end) {
@@ -680,7 +680,7 @@ function createBaseMsgBurn(): MsgBurn {
 }
 export const MsgBurn = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgBurn",
-  encode(message: MsgBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgBurn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -692,8 +692,8 @@ export const MsgBurn = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurn {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgBurn {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBurn();
     while (reader.pos < end) {
@@ -763,11 +763,11 @@ function createBaseMsgBurnResponse(): MsgBurnResponse {
 }
 export const MsgBurnResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgBurnResponse",
-  encode(_: MsgBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgBurnResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgBurnResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBurnResponse();
     while (reader.pos < end) {
@@ -822,7 +822,7 @@ function createBaseMsgChangeAdmin(): MsgChangeAdmin {
 }
 export const MsgChangeAdmin = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin",
-  encode(message: MsgChangeAdmin, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgChangeAdmin, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -834,8 +834,8 @@ export const MsgChangeAdmin = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdmin {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgChangeAdmin {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgChangeAdmin();
     while (reader.pos < end) {
@@ -905,11 +905,11 @@ function createBaseMsgChangeAdminResponse(): MsgChangeAdminResponse {
 }
 export const MsgChangeAdminResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdminResponse",
-  encode(_: MsgChangeAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgChangeAdminResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgChangeAdminResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgChangeAdminResponse();
     while (reader.pos < end) {
@@ -964,7 +964,7 @@ function createBaseMsgSetBeforeSendHook(): MsgSetBeforeSendHook {
 }
 export const MsgSetBeforeSendHook = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook",
-  encode(message: MsgSetBeforeSendHook, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSetBeforeSendHook, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -976,8 +976,8 @@ export const MsgSetBeforeSendHook = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHook {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBeforeSendHook {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetBeforeSendHook();
     while (reader.pos < end) {
@@ -1047,11 +1047,11 @@ function createBaseMsgSetBeforeSendHookResponse(): MsgSetBeforeSendHookResponse 
 }
 export const MsgSetBeforeSendHookResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHookResponse",
-  encode(_: MsgSetBeforeSendHookResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSetBeforeSendHookResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHookResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBeforeSendHookResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetBeforeSendHookResponse();
     while (reader.pos < end) {
@@ -1105,7 +1105,7 @@ function createBaseMsgSetDenomMetadata(): MsgSetDenomMetadata {
 }
 export const MsgSetDenomMetadata = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata",
-  encode(message: MsgSetDenomMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSetDenomMetadata, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -1114,8 +1114,8 @@ export const MsgSetDenomMetadata = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomMetadata {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetDenomMetadata();
     while (reader.pos < end) {
@@ -1179,11 +1179,11 @@ function createBaseMsgSetDenomMetadataResponse(): MsgSetDenomMetadataResponse {
 }
 export const MsgSetDenomMetadataResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadataResponse",
-  encode(_: MsgSetDenomMetadataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSetDenomMetadataResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomMetadataResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetDenomMetadataResponse();
     while (reader.pos < end) {
@@ -1239,7 +1239,7 @@ function createBaseMsgForceTransfer(): MsgForceTransfer {
 }
 export const MsgForceTransfer = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgForceTransfer",
-  encode(message: MsgForceTransfer, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgForceTransfer, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -1254,8 +1254,8 @@ export const MsgForceTransfer = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransfer {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgForceTransfer {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgForceTransfer();
     while (reader.pos < end) {
@@ -1331,11 +1331,11 @@ function createBaseMsgForceTransferResponse(): MsgForceTransferResponse {
 }
 export const MsgForceTransferResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.MsgForceTransferResponse",
-  encode(_: MsgForceTransferResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgForceTransferResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransferResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgForceTransferResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgForceTransferResponse();
     while (reader.pos < end) {

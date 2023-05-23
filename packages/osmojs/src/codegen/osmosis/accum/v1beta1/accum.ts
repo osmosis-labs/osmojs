@@ -1,5 +1,5 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface AccumulatorContent {
   accumValue: DecCoin[];
   totalShares: string;
@@ -65,7 +65,7 @@ function createBaseAccumulatorContent(): AccumulatorContent {
 }
 export const AccumulatorContent = {
   typeUrl: "/osmosis.accum.v1beta1.AccumulatorContent",
-  encode(message: AccumulatorContent, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: AccumulatorContent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.accumValue) {
       DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -74,8 +74,8 @@ export const AccumulatorContent = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): AccumulatorContent {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): AccumulatorContent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAccumulatorContent();
     while (reader.pos < end) {
@@ -143,11 +143,11 @@ function createBaseOptions(): Options {
 }
 export const Options = {
   typeUrl: "/osmosis.accum.v1beta1.Options",
-  encode(_: Options, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: Options, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Options {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Options {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseOptions();
     while (reader.pos < end) {
@@ -203,7 +203,7 @@ function createBaseRecord(): Record {
 }
 export const Record = {
   typeUrl: "/osmosis.accum.v1beta1.Record",
-  encode(message: Record, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Record, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.numShares !== "") {
       writer.uint32(10).string(message.numShares);
     }
@@ -218,8 +218,8 @@ export const Record = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Record {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Record {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRecord();
     while (reader.pos < end) {

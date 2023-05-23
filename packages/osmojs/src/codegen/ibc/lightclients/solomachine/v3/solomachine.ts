@@ -1,13 +1,12 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * ClientState defines a solo machine client that tracks the current consensus
  * state and if the client is frozen.
  */
 export interface ClientState {
   /** latest sequence of the client state */
-  sequence: Long;
+  sequence: bigint;
   /** frozen sequence of the solo machine */
   isFrozen: boolean;
   consensusState?: ConsensusState;
@@ -36,7 +35,7 @@ export interface ClientStateAminoMsg {
  * state and if the client is frozen.
  */
 export interface ClientStateSDKType {
-  sequence: Long;
+  sequence: bigint;
   is_frozen: boolean;
   consensus_state?: ConsensusStateSDKType;
 }
@@ -54,7 +53,7 @@ export interface ConsensusState {
    * misbehaviour.
    */
   diversifier: string;
-  timestamp: Long;
+  timestamp: bigint;
 }
 export interface ConsensusStateProtoMsg {
   typeUrl: "/ibc.lightclients.solomachine.v3.ConsensusState";
@@ -88,11 +87,11 @@ export interface ConsensusStateAminoMsg {
 export interface ConsensusStateSDKType {
   public_key?: AnySDKType;
   diversifier: string;
-  timestamp: Long;
+  timestamp: bigint;
 }
 /** Header defines a solo machine consensus header */
 export interface Header {
-  timestamp: Long;
+  timestamp: bigint;
   signature: Uint8Array;
   newPublicKey?: Any;
   newDiversifier: string;
@@ -114,7 +113,7 @@ export interface HeaderAminoMsg {
 }
 /** Header defines a solo machine consensus header */
 export interface HeaderSDKType {
-  timestamp: Long;
+  timestamp: bigint;
   signature: Uint8Array;
   new_public_key?: AnySDKType;
   new_diversifier: string;
@@ -124,7 +123,7 @@ export interface HeaderSDKType {
  * of a sequence and two signatures over different messages at that sequence.
  */
 export interface Misbehaviour {
-  sequence: Long;
+  sequence: bigint;
   signatureOne?: SignatureAndData;
   signatureTwo?: SignatureAndData;
 }
@@ -150,7 +149,7 @@ export interface MisbehaviourAminoMsg {
  * of a sequence and two signatures over different messages at that sequence.
  */
 export interface MisbehaviourSDKType {
-  sequence: Long;
+  sequence: bigint;
   signature_one?: SignatureAndDataSDKType;
   signature_two?: SignatureAndDataSDKType;
 }
@@ -162,7 +161,7 @@ export interface SignatureAndData {
   signature: Uint8Array;
   path: Uint8Array;
   data: Uint8Array;
-  timestamp: Long;
+  timestamp: bigint;
 }
 export interface SignatureAndDataProtoMsg {
   typeUrl: "/ibc.lightclients.solomachine.v3.SignatureAndData";
@@ -190,7 +189,7 @@ export interface SignatureAndDataSDKType {
   signature: Uint8Array;
   path: Uint8Array;
   data: Uint8Array;
-  timestamp: Long;
+  timestamp: bigint;
 }
 /**
  * TimestampedSignatureData contains the signature data and the timestamp of the
@@ -198,7 +197,7 @@ export interface SignatureAndDataSDKType {
  */
 export interface TimestampedSignatureData {
   signatureData: Uint8Array;
-  timestamp: Long;
+  timestamp: bigint;
 }
 export interface TimestampedSignatureDataProtoMsg {
   typeUrl: "/ibc.lightclients.solomachine.v3.TimestampedSignatureData";
@@ -222,14 +221,14 @@ export interface TimestampedSignatureDataAminoMsg {
  */
 export interface TimestampedSignatureDataSDKType {
   signature_data: Uint8Array;
-  timestamp: Long;
+  timestamp: bigint;
 }
 /** SignBytes defines the signed bytes used for signature verification. */
 export interface SignBytes {
   /** the sequence number */
-  sequence: Long;
+  sequence: bigint;
   /** the proof timestamp */
-  timestamp: Long;
+  timestamp: bigint;
   /** the public key diversifier */
   diversifier: string;
   /** the standardised path bytes */
@@ -260,8 +259,8 @@ export interface SignBytesAminoMsg {
 }
 /** SignBytes defines the signed bytes used for signature verification. */
 export interface SignBytesSDKType {
-  sequence: Long;
-  timestamp: Long;
+  sequence: bigint;
+  timestamp: bigint;
   diversifier: string;
   path: Uint8Array;
   data: Uint8Array;
@@ -295,15 +294,15 @@ export interface HeaderDataSDKType {
 }
 function createBaseClientState(): ClientState {
   return {
-    sequence: Long.UZERO,
+    sequence: BigInt("0"),
     isFrozen: false,
     consensusState: undefined
   };
 }
 export const ClientState = {
   typeUrl: "/ibc.lightclients.solomachine.v3.ClientState",
-  encode(message: ClientState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.sequence.isZero()) {
+  encode(message: ClientState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.sequence !== BigInt(0)) {
       writer.uint32(8).uint64(message.sequence);
     }
     if (message.isFrozen === true) {
@@ -314,15 +313,15 @@ export const ClientState = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ClientState {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ClientState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseClientState();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.sequence = (reader.uint64() as Long);
+          message.sequence = BigInt(reader.uint64().toString());
           break;
         case 2:
           message.isFrozen = reader.bool();
@@ -339,14 +338,14 @@ export const ClientState = {
   },
   fromPartial(object: Partial<ClientState>): ClientState {
     const message = createBaseClientState();
-    message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
+    message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt("0");
     message.isFrozen = object.isFrozen ?? false;
     message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? ConsensusState.fromPartial(object.consensusState) : undefined;
     return message;
   },
   fromAmino(object: ClientStateAmino): ClientState {
     return {
-      sequence: Long.fromString(object.sequence),
+      sequence: BigInt(object.sequence),
       isFrozen: object.is_frozen,
       consensusState: object?.consensus_state ? ConsensusState.fromAmino(object.consensus_state) : undefined
     };
@@ -384,25 +383,25 @@ function createBaseConsensusState(): ConsensusState {
   return {
     publicKey: undefined,
     diversifier: "",
-    timestamp: Long.UZERO
+    timestamp: BigInt("0")
   };
 }
 export const ConsensusState = {
   typeUrl: "/ibc.lightclients.solomachine.v3.ConsensusState",
-  encode(message: ConsensusState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ConsensusState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.publicKey !== undefined) {
       Any.encode(message.publicKey, writer.uint32(10).fork()).ldelim();
     }
     if (message.diversifier !== "") {
       writer.uint32(18).string(message.diversifier);
     }
-    if (!message.timestamp.isZero()) {
+    if (message.timestamp !== BigInt(0)) {
       writer.uint32(24).uint64(message.timestamp);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusState {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ConsensusState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseConsensusState();
     while (reader.pos < end) {
@@ -415,7 +414,7 @@ export const ConsensusState = {
           message.diversifier = reader.string();
           break;
         case 3:
-          message.timestamp = (reader.uint64() as Long);
+          message.timestamp = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -428,14 +427,14 @@ export const ConsensusState = {
     const message = createBaseConsensusState();
     message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
     message.diversifier = object.diversifier ?? "";
-    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? Long.fromValue(object.timestamp) : Long.UZERO;
+    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: ConsensusStateAmino): ConsensusState {
     return {
       publicKey: object?.public_key ? Any.fromAmino(object.public_key) : undefined,
       diversifier: object.diversifier,
-      timestamp: Long.fromString(object.timestamp)
+      timestamp: BigInt(object.timestamp)
     };
   },
   toAmino(message: ConsensusState): ConsensusStateAmino {
@@ -469,7 +468,7 @@ export const ConsensusState = {
 };
 function createBaseHeader(): Header {
   return {
-    timestamp: Long.UZERO,
+    timestamp: BigInt("0"),
     signature: new Uint8Array(),
     newPublicKey: undefined,
     newDiversifier: ""
@@ -477,8 +476,8 @@ function createBaseHeader(): Header {
 }
 export const Header = {
   typeUrl: "/ibc.lightclients.solomachine.v3.Header",
-  encode(message: Header, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.timestamp.isZero()) {
+  encode(message: Header, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.timestamp !== BigInt(0)) {
       writer.uint32(8).uint64(message.timestamp);
     }
     if (message.signature.length !== 0) {
@@ -492,15 +491,15 @@ export const Header = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Header {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Header {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseHeader();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.timestamp = (reader.uint64() as Long);
+          message.timestamp = BigInt(reader.uint64().toString());
           break;
         case 2:
           message.signature = reader.bytes();
@@ -520,7 +519,7 @@ export const Header = {
   },
   fromPartial(object: Partial<Header>): Header {
     const message = createBaseHeader();
-    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? Long.fromValue(object.timestamp) : Long.UZERO;
+    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt("0");
     message.signature = object.signature ?? new Uint8Array();
     message.newPublicKey = object.newPublicKey !== undefined && object.newPublicKey !== null ? Any.fromPartial(object.newPublicKey) : undefined;
     message.newDiversifier = object.newDiversifier ?? "";
@@ -528,7 +527,7 @@ export const Header = {
   },
   fromAmino(object: HeaderAmino): Header {
     return {
-      timestamp: Long.fromString(object.timestamp),
+      timestamp: BigInt(object.timestamp),
       signature: object.signature,
       newPublicKey: object?.new_public_key ? Any.fromAmino(object.new_public_key) : undefined,
       newDiversifier: object.new_diversifier
@@ -566,15 +565,15 @@ export const Header = {
 };
 function createBaseMisbehaviour(): Misbehaviour {
   return {
-    sequence: Long.UZERO,
+    sequence: BigInt("0"),
     signatureOne: undefined,
     signatureTwo: undefined
   };
 }
 export const Misbehaviour = {
   typeUrl: "/ibc.lightclients.solomachine.v3.Misbehaviour",
-  encode(message: Misbehaviour, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.sequence.isZero()) {
+  encode(message: Misbehaviour, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.sequence !== BigInt(0)) {
       writer.uint32(8).uint64(message.sequence);
     }
     if (message.signatureOne !== undefined) {
@@ -585,15 +584,15 @@ export const Misbehaviour = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Misbehaviour {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Misbehaviour {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMisbehaviour();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.sequence = (reader.uint64() as Long);
+          message.sequence = BigInt(reader.uint64().toString());
           break;
         case 2:
           message.signatureOne = SignatureAndData.decode(reader, reader.uint32());
@@ -610,14 +609,14 @@ export const Misbehaviour = {
   },
   fromPartial(object: Partial<Misbehaviour>): Misbehaviour {
     const message = createBaseMisbehaviour();
-    message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
+    message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt("0");
     message.signatureOne = object.signatureOne !== undefined && object.signatureOne !== null ? SignatureAndData.fromPartial(object.signatureOne) : undefined;
     message.signatureTwo = object.signatureTwo !== undefined && object.signatureTwo !== null ? SignatureAndData.fromPartial(object.signatureTwo) : undefined;
     return message;
   },
   fromAmino(object: MisbehaviourAmino): Misbehaviour {
     return {
-      sequence: Long.fromString(object.sequence),
+      sequence: BigInt(object.sequence),
       signatureOne: object?.signature_one ? SignatureAndData.fromAmino(object.signature_one) : undefined,
       signatureTwo: object?.signature_two ? SignatureAndData.fromAmino(object.signature_two) : undefined
     };
@@ -656,12 +655,12 @@ function createBaseSignatureAndData(): SignatureAndData {
     signature: new Uint8Array(),
     path: new Uint8Array(),
     data: new Uint8Array(),
-    timestamp: Long.UZERO
+    timestamp: BigInt("0")
   };
 }
 export const SignatureAndData = {
   typeUrl: "/ibc.lightclients.solomachine.v3.SignatureAndData",
-  encode(message: SignatureAndData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SignatureAndData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.signature.length !== 0) {
       writer.uint32(10).bytes(message.signature);
     }
@@ -671,13 +670,13 @@ export const SignatureAndData = {
     if (message.data.length !== 0) {
       writer.uint32(26).bytes(message.data);
     }
-    if (!message.timestamp.isZero()) {
+    if (message.timestamp !== BigInt(0)) {
       writer.uint32(32).uint64(message.timestamp);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SignatureAndData {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SignatureAndData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSignatureAndData();
     while (reader.pos < end) {
@@ -693,7 +692,7 @@ export const SignatureAndData = {
           message.data = reader.bytes();
           break;
         case 4:
-          message.timestamp = (reader.uint64() as Long);
+          message.timestamp = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -707,7 +706,7 @@ export const SignatureAndData = {
     message.signature = object.signature ?? new Uint8Array();
     message.path = object.path ?? new Uint8Array();
     message.data = object.data ?? new Uint8Array();
-    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? Long.fromValue(object.timestamp) : Long.UZERO;
+    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: SignatureAndDataAmino): SignatureAndData {
@@ -715,7 +714,7 @@ export const SignatureAndData = {
       signature: object.signature,
       path: object.path,
       data: object.data,
-      timestamp: Long.fromString(object.timestamp)
+      timestamp: BigInt(object.timestamp)
     };
   },
   toAmino(message: SignatureAndData): SignatureAndDataAmino {
@@ -751,22 +750,22 @@ export const SignatureAndData = {
 function createBaseTimestampedSignatureData(): TimestampedSignatureData {
   return {
     signatureData: new Uint8Array(),
-    timestamp: Long.UZERO
+    timestamp: BigInt("0")
   };
 }
 export const TimestampedSignatureData = {
   typeUrl: "/ibc.lightclients.solomachine.v3.TimestampedSignatureData",
-  encode(message: TimestampedSignatureData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: TimestampedSignatureData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.signatureData.length !== 0) {
       writer.uint32(10).bytes(message.signatureData);
     }
-    if (!message.timestamp.isZero()) {
+    if (message.timestamp !== BigInt(0)) {
       writer.uint32(16).uint64(message.timestamp);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): TimestampedSignatureData {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): TimestampedSignatureData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTimestampedSignatureData();
     while (reader.pos < end) {
@@ -776,7 +775,7 @@ export const TimestampedSignatureData = {
           message.signatureData = reader.bytes();
           break;
         case 2:
-          message.timestamp = (reader.uint64() as Long);
+          message.timestamp = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -788,13 +787,13 @@ export const TimestampedSignatureData = {
   fromPartial(object: Partial<TimestampedSignatureData>): TimestampedSignatureData {
     const message = createBaseTimestampedSignatureData();
     message.signatureData = object.signatureData ?? new Uint8Array();
-    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? Long.fromValue(object.timestamp) : Long.UZERO;
+    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: TimestampedSignatureDataAmino): TimestampedSignatureData {
     return {
       signatureData: object.signature_data,
-      timestamp: Long.fromString(object.timestamp)
+      timestamp: BigInt(object.timestamp)
     };
   },
   toAmino(message: TimestampedSignatureData): TimestampedSignatureDataAmino {
@@ -827,8 +826,8 @@ export const TimestampedSignatureData = {
 };
 function createBaseSignBytes(): SignBytes {
   return {
-    sequence: Long.UZERO,
-    timestamp: Long.UZERO,
+    sequence: BigInt("0"),
+    timestamp: BigInt("0"),
     diversifier: "",
     path: new Uint8Array(),
     data: new Uint8Array()
@@ -836,11 +835,11 @@ function createBaseSignBytes(): SignBytes {
 }
 export const SignBytes = {
   typeUrl: "/ibc.lightclients.solomachine.v3.SignBytes",
-  encode(message: SignBytes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.sequence.isZero()) {
+  encode(message: SignBytes, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.sequence !== BigInt(0)) {
       writer.uint32(8).uint64(message.sequence);
     }
-    if (!message.timestamp.isZero()) {
+    if (message.timestamp !== BigInt(0)) {
       writer.uint32(16).uint64(message.timestamp);
     }
     if (message.diversifier !== "") {
@@ -854,18 +853,18 @@ export const SignBytes = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SignBytes {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SignBytes {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSignBytes();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.sequence = (reader.uint64() as Long);
+          message.sequence = BigInt(reader.uint64().toString());
           break;
         case 2:
-          message.timestamp = (reader.uint64() as Long);
+          message.timestamp = BigInt(reader.uint64().toString());
           break;
         case 3:
           message.diversifier = reader.string();
@@ -885,8 +884,8 @@ export const SignBytes = {
   },
   fromPartial(object: Partial<SignBytes>): SignBytes {
     const message = createBaseSignBytes();
-    message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
-    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? Long.fromValue(object.timestamp) : Long.UZERO;
+    message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt("0");
+    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt("0");
     message.diversifier = object.diversifier ?? "";
     message.path = object.path ?? new Uint8Array();
     message.data = object.data ?? new Uint8Array();
@@ -894,8 +893,8 @@ export const SignBytes = {
   },
   fromAmino(object: SignBytesAmino): SignBytes {
     return {
-      sequence: Long.fromString(object.sequence),
-      timestamp: Long.fromString(object.timestamp),
+      sequence: BigInt(object.sequence),
+      timestamp: BigInt(object.timestamp),
       diversifier: object.diversifier,
       path: object.path,
       data: object.data
@@ -940,7 +939,7 @@ function createBaseHeaderData(): HeaderData {
 }
 export const HeaderData = {
   typeUrl: "/ibc.lightclients.solomachine.v3.HeaderData",
-  encode(message: HeaderData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: HeaderData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.newPubKey !== undefined) {
       Any.encode(message.newPubKey, writer.uint32(10).fork()).ldelim();
     }
@@ -949,8 +948,8 @@ export const HeaderData = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): HeaderData {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): HeaderData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseHeaderData();
     while (reader.pos < end) {

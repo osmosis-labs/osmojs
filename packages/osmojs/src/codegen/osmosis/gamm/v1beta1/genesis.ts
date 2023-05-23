@@ -10,8 +10,7 @@ import { PoolSDKType as Pool2SDKType } from "../pool-models/balancer/balancerPoo
 import { Pool as Pool3 } from "../pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../pool-models/stableswap/stableswap_pool";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params holds parameters for the incentives module */
 export interface Params {
   poolCreationFee: Coin[];
@@ -36,7 +35,7 @@ export interface ParamsSDKType {
 export interface GenesisState {
   pools: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any)[] | Any[];
   /** will be renamed to next_pool_id in an upcoming version */
-  nextPoolNumber: Long;
+  nextPoolNumber: bigint;
   params?: Params;
   migrationRecords?: MigrationRecords;
 }
@@ -62,7 +61,7 @@ export interface GenesisStateAminoMsg {
 /** GenesisState defines the gamm module's genesis state. */
 export interface GenesisStateSDKType {
   pools: (Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType)[];
-  next_pool_number: Long;
+  next_pool_number: bigint;
   params?: ParamsSDKType;
   migration_records?: MigrationRecordsSDKType;
 }
@@ -104,8 +103,8 @@ export interface MigrationRecordsSDKType {
  * be linked to a maximum of one balancer pool.
  */
 export interface BalancerToConcentratedPoolLink {
-  balancerPoolId: Long;
-  clPoolId: Long;
+  balancerPoolId: bigint;
+  clPoolId: bigint;
 }
 export interface BalancerToConcentratedPoolLinkProtoMsg {
   typeUrl: "/osmosis.gamm.v1beta1.BalancerToConcentratedPoolLink";
@@ -136,8 +135,8 @@ export interface BalancerToConcentratedPoolLinkAminoMsg {
  * be linked to a maximum of one balancer pool.
  */
 export interface BalancerToConcentratedPoolLinkSDKType {
-  balancer_pool_id: Long;
-  cl_pool_id: Long;
+  balancer_pool_id: bigint;
+  cl_pool_id: bigint;
 }
 function createBaseParams(): Params {
   return {
@@ -146,14 +145,14 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.gamm.v1beta1.Params",
-  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.poolCreationFee) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Params {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Params {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
@@ -213,18 +212,18 @@ export const Params = {
 function createBaseGenesisState(): GenesisState {
   return {
     pools: [],
-    nextPoolNumber: Long.UZERO,
+    nextPoolNumber: BigInt("0"),
     params: undefined,
     migrationRecords: undefined
   };
 }
 export const GenesisState = {
   typeUrl: "/osmosis.gamm.v1beta1.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.pools) {
       Any.encode((v! as Any), writer.uint32(10).fork()).ldelim();
     }
-    if (!message.nextPoolNumber.isZero()) {
+    if (message.nextPoolNumber !== BigInt(0)) {
       writer.uint32(16).uint64(message.nextPoolNumber);
     }
     if (message.params !== undefined) {
@@ -235,8 +234,8 @@ export const GenesisState = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
@@ -246,7 +245,7 @@ export const GenesisState = {
           message.pools.push((PoolI_InterfaceDecoder(reader) as Any));
           break;
         case 2:
-          message.nextPoolNumber = (reader.uint64() as Long);
+          message.nextPoolNumber = BigInt(reader.uint64().toString());
           break;
         case 3:
           message.params = Params.decode(reader, reader.uint32());
@@ -264,7 +263,7 @@ export const GenesisState = {
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.pools = object.pools?.map(e => Any.fromPartial(e)) || [];
-    message.nextPoolNumber = object.nextPoolNumber !== undefined && object.nextPoolNumber !== null ? Long.fromValue(object.nextPoolNumber) : Long.UZERO;
+    message.nextPoolNumber = object.nextPoolNumber !== undefined && object.nextPoolNumber !== null ? BigInt(object.nextPoolNumber.toString()) : BigInt("0");
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.migrationRecords = object.migrationRecords !== undefined && object.migrationRecords !== null ? MigrationRecords.fromPartial(object.migrationRecords) : undefined;
     return message;
@@ -272,7 +271,7 @@ export const GenesisState = {
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
       pools: Array.isArray(object?.pools) ? object.pools.map((e: any) => PoolI_FromAmino(e)) : [],
-      nextPoolNumber: Long.fromString(object.next_pool_number),
+      nextPoolNumber: BigInt(object.next_pool_number),
       params: object?.params ? Params.fromAmino(object.params) : undefined,
       migrationRecords: object?.migration_records ? MigrationRecords.fromAmino(object.migration_records) : undefined
     };
@@ -318,14 +317,14 @@ function createBaseMigrationRecords(): MigrationRecords {
 }
 export const MigrationRecords = {
   typeUrl: "/osmosis.gamm.v1beta1.MigrationRecords",
-  encode(message: MigrationRecords, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MigrationRecords, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.balancerToConcentratedPoolLinks) {
       BalancerToConcentratedPoolLink.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MigrationRecords {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MigrationRecords {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMigrationRecords();
     while (reader.pos < end) {
@@ -384,33 +383,33 @@ export const MigrationRecords = {
 };
 function createBaseBalancerToConcentratedPoolLink(): BalancerToConcentratedPoolLink {
   return {
-    balancerPoolId: Long.UZERO,
-    clPoolId: Long.UZERO
+    balancerPoolId: BigInt("0"),
+    clPoolId: BigInt("0")
   };
 }
 export const BalancerToConcentratedPoolLink = {
   typeUrl: "/osmosis.gamm.v1beta1.BalancerToConcentratedPoolLink",
-  encode(message: BalancerToConcentratedPoolLink, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.balancerPoolId.isZero()) {
+  encode(message: BalancerToConcentratedPoolLink, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.balancerPoolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.balancerPoolId);
     }
-    if (!message.clPoolId.isZero()) {
+    if (message.clPoolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.clPoolId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): BalancerToConcentratedPoolLink {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): BalancerToConcentratedPoolLink {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBalancerToConcentratedPoolLink();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.balancerPoolId = (reader.uint64() as Long);
+          message.balancerPoolId = BigInt(reader.uint64().toString());
           break;
         case 2:
-          message.clPoolId = (reader.uint64() as Long);
+          message.clPoolId = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -421,14 +420,14 @@ export const BalancerToConcentratedPoolLink = {
   },
   fromPartial(object: Partial<BalancerToConcentratedPoolLink>): BalancerToConcentratedPoolLink {
     const message = createBaseBalancerToConcentratedPoolLink();
-    message.balancerPoolId = object.balancerPoolId !== undefined && object.balancerPoolId !== null ? Long.fromValue(object.balancerPoolId) : Long.UZERO;
-    message.clPoolId = object.clPoolId !== undefined && object.clPoolId !== null ? Long.fromValue(object.clPoolId) : Long.UZERO;
+    message.balancerPoolId = object.balancerPoolId !== undefined && object.balancerPoolId !== null ? BigInt(object.balancerPoolId.toString()) : BigInt("0");
+    message.clPoolId = object.clPoolId !== undefined && object.clPoolId !== null ? BigInt(object.clPoolId.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: BalancerToConcentratedPoolLinkAmino): BalancerToConcentratedPoolLink {
     return {
-      balancerPoolId: Long.fromString(object.balancer_pool_id),
-      clPoolId: Long.fromString(object.cl_pool_id)
+      balancerPoolId: BigInt(object.balancer_pool_id),
+      clPoolId: BigInt(object.cl_pool_id)
     };
   },
   toAmino(message: BalancerToConcentratedPoolLink): BalancerToConcentratedPoolLinkAmino {
@@ -459,8 +458,8 @@ export const BalancerToConcentratedPoolLink = {
     };
   }
 };
-export const PoolI_InterfaceDecoder = (input: _m0.Reader | Uint8Array): Pool1 | CosmWasmPool | Pool2 | Pool3 | Any => {
-  const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+export const PoolI_InterfaceDecoder = (input: BinaryReader | Uint8Array): Pool1 | CosmWasmPool | Pool2 | Pool3 | Any => {
+  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/osmosis.concentratedliquidity.v1beta1.Pool":

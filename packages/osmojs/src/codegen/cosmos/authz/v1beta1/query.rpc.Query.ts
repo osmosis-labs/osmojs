@@ -1,5 +1,5 @@
 import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryGrantsRequest, QueryGrantsResponse, QueryGranterGrantsRequest, QueryGranterGrantsResponse, QueryGranteeGrantsRequest, QueryGranteeGrantsResponse } from "./query";
 /** Query defines the gRPC querier service. */
@@ -22,17 +22,17 @@ export class QueryClientImpl implements Query {
   grants(request: QueryGrantsRequest): Promise<QueryGrantsResponse> {
     const data = QueryGrantsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.authz.v1beta1.Query", "Grants", data);
-    return promise.then(data => QueryGrantsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryGrantsResponse.decode(new BinaryReader(data)));
   }
   granterGrants(request: QueryGranterGrantsRequest): Promise<QueryGranterGrantsResponse> {
     const data = QueryGranterGrantsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.authz.v1beta1.Query", "GranterGrants", data);
-    return promise.then(data => QueryGranterGrantsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryGranterGrantsResponse.decode(new BinaryReader(data)));
   }
   granteeGrants(request: QueryGranteeGrantsRequest): Promise<QueryGranteeGrantsResponse> {
     const data = QueryGranteeGrantsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.authz.v1beta1.Query", "GranteeGrants", data);
-    return promise.then(data => QueryGranteeGrantsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryGranteeGrantsResponse.decode(new BinaryReader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {

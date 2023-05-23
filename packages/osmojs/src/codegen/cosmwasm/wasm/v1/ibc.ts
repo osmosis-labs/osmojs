@@ -1,5 +1,4 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgIBCSend */
 export interface MsgIBCSend {
   /** the channel by which the packet will be sent */
@@ -8,12 +7,12 @@ export interface MsgIBCSend {
    * Timeout height relative to the current block height.
    * The timeout is disabled when set to 0.
    */
-  timeoutHeight: Long;
+  timeoutHeight: bigint;
   /**
    * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
    * The timeout is disabled when set to 0.
    */
-  timeoutTimestamp: Long;
+  timeoutTimestamp: bigint;
   /**
    * Data is the payload to transfer. We must not make assumption what format or
    * content is in here.
@@ -51,14 +50,14 @@ export interface MsgIBCSendAminoMsg {
 /** MsgIBCSend */
 export interface MsgIBCSendSDKType {
   channel: string;
-  timeout_height: Long;
-  timeout_timestamp: Long;
+  timeout_height: bigint;
+  timeout_timestamp: bigint;
   data: Uint8Array;
 }
 /** MsgIBCSendResponse */
 export interface MsgIBCSendResponse {
   /** Sequence number of the IBC packet sent */
-  sequence: Long;
+  sequence: bigint;
 }
 export interface MsgIBCSendResponseProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCSendResponse";
@@ -75,7 +74,7 @@ export interface MsgIBCSendResponseAminoMsg {
 }
 /** MsgIBCSendResponse */
 export interface MsgIBCSendResponseSDKType {
-  sequence: Long;
+  sequence: bigint;
 }
 /** MsgIBCCloseChannel port and channel need to be owned by the contract */
 export interface MsgIBCCloseChannel {
@@ -100,21 +99,21 @@ export interface MsgIBCCloseChannelSDKType {
 function createBaseMsgIBCSend(): MsgIBCSend {
   return {
     channel: "",
-    timeoutHeight: Long.UZERO,
-    timeoutTimestamp: Long.UZERO,
+    timeoutHeight: BigInt("0"),
+    timeoutTimestamp: BigInt("0"),
     data: new Uint8Array()
   };
 }
 export const MsgIBCSend = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCSend",
-  encode(message: MsgIBCSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgIBCSend, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
     }
-    if (!message.timeoutHeight.isZero()) {
+    if (message.timeoutHeight !== BigInt(0)) {
       writer.uint32(32).uint64(message.timeoutHeight);
     }
-    if (!message.timeoutTimestamp.isZero()) {
+    if (message.timeoutTimestamp !== BigInt(0)) {
       writer.uint32(40).uint64(message.timeoutTimestamp);
     }
     if (message.data.length !== 0) {
@@ -122,8 +121,8 @@ export const MsgIBCSend = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgIBCSend {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgIBCSend {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgIBCSend();
     while (reader.pos < end) {
@@ -133,10 +132,10 @@ export const MsgIBCSend = {
           message.channel = reader.string();
           break;
         case 4:
-          message.timeoutHeight = (reader.uint64() as Long);
+          message.timeoutHeight = BigInt(reader.uint64().toString());
           break;
         case 5:
-          message.timeoutTimestamp = (reader.uint64() as Long);
+          message.timeoutTimestamp = BigInt(reader.uint64().toString());
           break;
         case 6:
           message.data = reader.bytes();
@@ -151,16 +150,16 @@ export const MsgIBCSend = {
   fromPartial(object: Partial<MsgIBCSend>): MsgIBCSend {
     const message = createBaseMsgIBCSend();
     message.channel = object.channel ?? "";
-    message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? Long.fromValue(object.timeoutHeight) : Long.UZERO;
-    message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO;
+    message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? BigInt(object.timeoutHeight.toString()) : BigInt("0");
+    message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? BigInt(object.timeoutTimestamp.toString()) : BigInt("0");
     message.data = object.data ?? new Uint8Array();
     return message;
   },
   fromAmino(object: MsgIBCSendAmino): MsgIBCSend {
     return {
       channel: object.channel,
-      timeoutHeight: Long.fromString(object.timeout_height),
-      timeoutTimestamp: Long.fromString(object.timeout_timestamp),
+      timeoutHeight: BigInt(object.timeout_height),
+      timeoutTimestamp: BigInt(object.timeout_timestamp),
       data: object.data
     };
   },
@@ -196,26 +195,26 @@ export const MsgIBCSend = {
 };
 function createBaseMsgIBCSendResponse(): MsgIBCSendResponse {
   return {
-    sequence: Long.UZERO
+    sequence: BigInt("0")
   };
 }
 export const MsgIBCSendResponse = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCSendResponse",
-  encode(message: MsgIBCSendResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.sequence.isZero()) {
+  encode(message: MsgIBCSendResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.sequence !== BigInt(0)) {
       writer.uint32(8).uint64(message.sequence);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgIBCSendResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgIBCSendResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgIBCSendResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.sequence = (reader.uint64() as Long);
+          message.sequence = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -226,12 +225,12 @@ export const MsgIBCSendResponse = {
   },
   fromPartial(object: Partial<MsgIBCSendResponse>): MsgIBCSendResponse {
     const message = createBaseMsgIBCSendResponse();
-    message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
+    message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: MsgIBCSendResponseAmino): MsgIBCSendResponse {
     return {
-      sequence: Long.fromString(object.sequence)
+      sequence: BigInt(object.sequence)
     };
   },
   toAmino(message: MsgIBCSendResponse): MsgIBCSendResponseAmino {
@@ -268,14 +267,14 @@ function createBaseMsgIBCCloseChannel(): MsgIBCCloseChannel {
 }
 export const MsgIBCCloseChannel = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCCloseChannel",
-  encode(message: MsgIBCCloseChannel, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgIBCCloseChannel, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgIBCCloseChannel {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgIBCCloseChannel {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgIBCCloseChannel();
     while (reader.pos < end) {

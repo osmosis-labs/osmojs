@@ -1,11 +1,10 @@
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 export interface CosmWasmPool {
   $typeUrl?: string;
   poolAddress: string;
   contractAddress: string;
-  poolId: Long;
-  codeId: Long;
+  poolId: bigint;
+  codeId: bigint;
 }
 export interface CosmWasmPoolProtoMsg {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool";
@@ -25,37 +24,37 @@ export interface CosmWasmPoolSDKType {
   $typeUrl?: string;
   pool_address: string;
   contract_address: string;
-  pool_id: Long;
-  code_id: Long;
+  pool_id: bigint;
+  code_id: bigint;
 }
 function createBaseCosmWasmPool(): CosmWasmPool {
   return {
     $typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
     poolAddress: "",
     contractAddress: "",
-    poolId: Long.UZERO,
-    codeId: Long.UZERO
+    poolId: BigInt("0"),
+    codeId: BigInt("0")
   };
 }
 export const CosmWasmPool = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
-  encode(message: CosmWasmPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: CosmWasmPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolAddress !== "") {
       writer.uint32(10).string(message.poolAddress);
     }
     if (message.contractAddress !== "") {
       writer.uint32(18).string(message.contractAddress);
     }
-    if (!message.poolId.isZero()) {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(24).uint64(message.poolId);
     }
-    if (!message.codeId.isZero()) {
+    if (message.codeId !== BigInt(0)) {
       writer.uint32(32).uint64(message.codeId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CosmWasmPool {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): CosmWasmPool {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCosmWasmPool();
     while (reader.pos < end) {
@@ -68,10 +67,10 @@ export const CosmWasmPool = {
           message.contractAddress = reader.string();
           break;
         case 3:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = BigInt(reader.uint64().toString());
           break;
         case 4:
-          message.codeId = (reader.uint64() as Long);
+          message.codeId = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -84,16 +83,16 @@ export const CosmWasmPool = {
     const message = createBaseCosmWasmPool();
     message.poolAddress = object.poolAddress ?? "";
     message.contractAddress = object.contractAddress ?? "";
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
-    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt("0");
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: CosmWasmPoolAmino): CosmWasmPool {
     return {
       poolAddress: object.pool_address,
       contractAddress: object.contract_address,
-      poolId: Long.fromString(object.pool_id),
-      codeId: Long.fromString(object.code_id)
+      poolId: BigInt(object.pool_id),
+      codeId: BigInt(object.code_id)
     };
   },
   toAmino(message: CosmWasmPool): CosmWasmPoolAmino {

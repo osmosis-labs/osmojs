@@ -1,5 +1,5 @@
 import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../binary";
 import { MsgSetValidatorSetPreference, MsgSetValidatorSetPreferenceResponse, MsgDelegateToValidatorSet, MsgDelegateToValidatorSetResponse, MsgUndelegateFromValidatorSet, MsgUndelegateFromValidatorSetResponse, MsgRedelegateValidatorSet, MsgRedelegateValidatorSetResponse, MsgWithdrawDelegationRewards, MsgWithdrawDelegationRewardsResponse, MsgDelegateBondedTokens, MsgDelegateBondedTokensResponse } from "./tx";
 /** Msg defines the valset-pref modules's gRPC message service. */
 export interface Msg {
@@ -49,31 +49,31 @@ export class MsgClientImpl implements Msg {
   setValidatorSetPreference(request: MsgSetValidatorSetPreference): Promise<MsgSetValidatorSetPreferenceResponse> {
     const data = MsgSetValidatorSetPreference.encode(request).finish();
     const promise = this.rpc.request("osmosis.valsetpref.v1beta1.Msg", "SetValidatorSetPreference", data);
-    return promise.then(data => MsgSetValidatorSetPreferenceResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgSetValidatorSetPreferenceResponse.decode(new BinaryReader(data)));
   }
   delegateToValidatorSet(request: MsgDelegateToValidatorSet): Promise<MsgDelegateToValidatorSetResponse> {
     const data = MsgDelegateToValidatorSet.encode(request).finish();
     const promise = this.rpc.request("osmosis.valsetpref.v1beta1.Msg", "DelegateToValidatorSet", data);
-    return promise.then(data => MsgDelegateToValidatorSetResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgDelegateToValidatorSetResponse.decode(new BinaryReader(data)));
   }
   undelegateFromValidatorSet(request: MsgUndelegateFromValidatorSet): Promise<MsgUndelegateFromValidatorSetResponse> {
     const data = MsgUndelegateFromValidatorSet.encode(request).finish();
     const promise = this.rpc.request("osmosis.valsetpref.v1beta1.Msg", "UndelegateFromValidatorSet", data);
-    return promise.then(data => MsgUndelegateFromValidatorSetResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgUndelegateFromValidatorSetResponse.decode(new BinaryReader(data)));
   }
   redelegateValidatorSet(request: MsgRedelegateValidatorSet): Promise<MsgRedelegateValidatorSetResponse> {
     const data = MsgRedelegateValidatorSet.encode(request).finish();
     const promise = this.rpc.request("osmosis.valsetpref.v1beta1.Msg", "RedelegateValidatorSet", data);
-    return promise.then(data => MsgRedelegateValidatorSetResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgRedelegateValidatorSetResponse.decode(new BinaryReader(data)));
   }
   withdrawDelegationRewards(request: MsgWithdrawDelegationRewards): Promise<MsgWithdrawDelegationRewardsResponse> {
     const data = MsgWithdrawDelegationRewards.encode(request).finish();
     const promise = this.rpc.request("osmosis.valsetpref.v1beta1.Msg", "WithdrawDelegationRewards", data);
-    return promise.then(data => MsgWithdrawDelegationRewardsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgWithdrawDelegationRewardsResponse.decode(new BinaryReader(data)));
   }
   delegateBondedTokens(request: MsgDelegateBondedTokens): Promise<MsgDelegateBondedTokensResponse> {
     const data = MsgDelegateBondedTokens.encode(request).finish();
     const promise = this.rpc.request("osmosis.valsetpref.v1beta1.Msg", "DelegateBondedTokens", data);
-    return promise.then(data => MsgDelegateBondedTokensResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgDelegateBondedTokensResponse.decode(new BinaryReader(data)));
   }
 }

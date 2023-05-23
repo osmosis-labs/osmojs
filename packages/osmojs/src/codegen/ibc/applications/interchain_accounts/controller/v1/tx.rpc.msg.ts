@@ -1,5 +1,5 @@
 import { Rpc } from "../../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../../../binary";
 import { MsgRegisterInterchainAccount, MsgRegisterInterchainAccountResponse, MsgSendTx, MsgSendTxResponse } from "./tx";
 /** Msg defines the 27-interchain-accounts/controller Msg service. */
 export interface Msg {
@@ -18,11 +18,11 @@ export class MsgClientImpl implements Msg {
   registerInterchainAccount(request: MsgRegisterInterchainAccount): Promise<MsgRegisterInterchainAccountResponse> {
     const data = MsgRegisterInterchainAccount.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.interchain_accounts.controller.v1.Msg", "RegisterInterchainAccount", data);
-    return promise.then(data => MsgRegisterInterchainAccountResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgRegisterInterchainAccountResponse.decode(new BinaryReader(data)));
   }
   sendTx(request: MsgSendTx): Promise<MsgSendTxResponse> {
     const data = MsgSendTx.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.interchain_accounts.controller.v1.Msg", "SendTx", data);
-    return promise.then(data => MsgSendTxResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgSendTxResponse.decode(new BinaryReader(data)));
   }
 }

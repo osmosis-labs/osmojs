@@ -14,17 +14,16 @@ import { PoolSDKType as Pool2SDKType } from "../gamm/pool-models/balancer/balanc
 import { Pool as Pool3 } from "../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../gamm/pool-models/stableswap/stableswap_pool";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * FullTick contains tick index and pool id along with other tick model
  * information.
  */
 export interface FullTick {
   /** pool id associated with the tick. */
-  poolId: Long;
+  poolId: bigint;
   /** tick's index. */
-  tickIndex: Long;
+  tickIndex: bigint;
   /** tick's info. */
   info?: TickInfo;
 }
@@ -53,8 +52,8 @@ export interface FullTickAminoMsg {
  * information.
  */
 export interface FullTickSDKType {
-  pool_id: Long;
-  tick_index: Long;
+  pool_id: bigint;
+  tick_index: bigint;
   info?: TickInfoSDKType;
 }
 /**
@@ -114,7 +113,7 @@ export interface GenesisState {
   /** pool data containining serialized pool struct and ticks. */
   poolData: PoolData[];
   positions: Position[];
-  nextPositionId: Long;
+  nextPositionId: bigint;
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisState";
@@ -138,7 +137,7 @@ export interface GenesisStateSDKType {
   params?: ParamsSDKType;
   pool_data: PoolDataSDKType[];
   positions: PositionSDKType[];
-  next_position_id: Long;
+  next_position_id: bigint;
 }
 export interface AccumObject {
   /** Accumulator's name (pulled from AccumulatorContent) */
@@ -164,18 +163,18 @@ export interface AccumObjectSDKType {
 }
 function createBaseFullTick(): FullTick {
   return {
-    poolId: Long.UZERO,
-    tickIndex: Long.ZERO,
+    poolId: BigInt("0"),
+    tickIndex: BigInt("0"),
     info: undefined
   };
 }
 export const FullTick = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullTick",
-  encode(message: FullTick, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: FullTick, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
-    if (!message.tickIndex.isZero()) {
+    if (message.tickIndex !== BigInt(0)) {
       writer.uint32(16).int64(message.tickIndex);
     }
     if (message.info !== undefined) {
@@ -183,18 +182,18 @@ export const FullTick = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): FullTick {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): FullTick {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseFullTick();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = BigInt(reader.uint64().toString());
           break;
         case 2:
-          message.tickIndex = (reader.int64() as Long);
+          message.tickIndex = BigInt(reader.int64().toString());
           break;
         case 3:
           message.info = TickInfo.decode(reader, reader.uint32());
@@ -208,15 +207,15 @@ export const FullTick = {
   },
   fromPartial(object: Partial<FullTick>): FullTick {
     const message = createBaseFullTick();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
-    message.tickIndex = object.tickIndex !== undefined && object.tickIndex !== null ? Long.fromValue(object.tickIndex) : Long.ZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt("0");
+    message.tickIndex = object.tickIndex !== undefined && object.tickIndex !== null ? BigInt(object.tickIndex.toString()) : BigInt("0");
     message.info = object.info !== undefined && object.info !== null ? TickInfo.fromPartial(object.info) : undefined;
     return message;
   },
   fromAmino(object: FullTickAmino): FullTick {
     return {
-      poolId: Long.fromString(object.pool_id),
-      tickIndex: Long.fromString(object.tick_index),
+      poolId: BigInt(object.pool_id),
+      tickIndex: BigInt(object.tick_index),
       info: object?.info ? TickInfo.fromAmino(object.info) : undefined
     };
   },
@@ -260,7 +259,7 @@ function createBasePoolData(): PoolData {
 }
 export const PoolData = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolData",
-  encode(message: PoolData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: PoolData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pool !== undefined) {
       Any.encode((message.pool as Any), writer.uint32(10).fork()).ldelim();
     }
@@ -278,8 +277,8 @@ export const PoolData = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): PoolData {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): PoolData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePoolData();
     while (reader.pos < end) {
@@ -373,12 +372,12 @@ function createBaseGenesisState(): GenesisState {
     params: undefined,
     poolData: [],
     positions: [],
-    nextPositionId: Long.UZERO
+    nextPositionId: BigInt("0")
   };
 }
 export const GenesisState = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -388,13 +387,13 @@ export const GenesisState = {
     for (const v of message.positions) {
       Position.encode(v!, writer.uint32(26).fork()).ldelim();
     }
-    if (!message.nextPositionId.isZero()) {
+    if (message.nextPositionId !== BigInt(0)) {
       writer.uint32(32).uint64(message.nextPositionId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
@@ -410,7 +409,7 @@ export const GenesisState = {
           message.positions.push(Position.decode(reader, reader.uint32()));
           break;
         case 4:
-          message.nextPositionId = (reader.uint64() as Long);
+          message.nextPositionId = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -424,7 +423,7 @@ export const GenesisState = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.poolData = object.poolData?.map(e => PoolData.fromPartial(e)) || [];
     message.positions = object.positions?.map(e => Position.fromPartial(e)) || [];
-    message.nextPositionId = object.nextPositionId !== undefined && object.nextPositionId !== null ? Long.fromValue(object.nextPositionId) : Long.UZERO;
+    message.nextPositionId = object.nextPositionId !== undefined && object.nextPositionId !== null ? BigInt(object.nextPositionId.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -432,7 +431,7 @@ export const GenesisState = {
       params: object?.params ? Params.fromAmino(object.params) : undefined,
       poolData: Array.isArray(object?.pool_data) ? object.pool_data.map((e: any) => PoolData.fromAmino(e)) : [],
       positions: Array.isArray(object?.positions) ? object.positions.map((e: any) => Position.fromAmino(e)) : [],
-      nextPositionId: Long.fromString(object.next_position_id)
+      nextPositionId: BigInt(object.next_position_id)
     };
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -481,7 +480,7 @@ function createBaseAccumObject(): AccumObject {
 }
 export const AccumObject = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.AccumObject",
-  encode(message: AccumObject, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: AccumObject, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -490,8 +489,8 @@ export const AccumObject = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): AccumObject {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): AccumObject {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAccumObject();
     while (reader.pos < end) {
@@ -550,8 +549,8 @@ export const AccumObject = {
     };
   }
 };
-export const PoolI_InterfaceDecoder = (input: _m0.Reader | Uint8Array): Pool1 | CosmWasmPool | Pool2 | Pool3 | Any => {
-  const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+export const PoolI_InterfaceDecoder = (input: BinaryReader | Uint8Array): Pool1 | CosmWasmPool | Pool2 | Pool3 | Any => {
+  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/osmosis.concentratedliquidity.v1beta1.Pool":

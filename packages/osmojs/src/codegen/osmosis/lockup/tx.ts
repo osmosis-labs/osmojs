@@ -1,8 +1,7 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType } from "./lock";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface MsgLockTokens {
   owner: string;
   duration?: Duration;
@@ -27,7 +26,7 @@ export interface MsgLockTokensSDKType {
   coins: CoinSDKType[];
 }
 export interface MsgLockTokensResponse {
-  ID: Long;
+  ID: bigint;
 }
 export interface MsgLockTokensResponseProtoMsg {
   typeUrl: "/osmosis.lockup.MsgLockTokensResponse";
@@ -41,7 +40,7 @@ export interface MsgLockTokensResponseAminoMsg {
   value: MsgLockTokensResponseAmino;
 }
 export interface MsgLockTokensResponseSDKType {
-  ID: Long;
+  ID: bigint;
 }
 export interface MsgBeginUnlockingAll {
   owner: string;
@@ -79,7 +78,7 @@ export interface MsgBeginUnlockingAllResponseSDKType {
 }
 export interface MsgBeginUnlocking {
   owner: string;
-  ID: Long;
+  ID: bigint;
   /** Amount of unlocking coins. Unlock all if not set. */
   coins: Coin[];
 }
@@ -99,12 +98,12 @@ export interface MsgBeginUnlockingAminoMsg {
 }
 export interface MsgBeginUnlockingSDKType {
   owner: string;
-  ID: Long;
+  ID: bigint;
   coins: CoinSDKType[];
 }
 export interface MsgBeginUnlockingResponse {
   success: boolean;
-  unlockingLockID: Long;
+  unlockingLockID: bigint;
 }
 export interface MsgBeginUnlockingResponseProtoMsg {
   typeUrl: "/osmosis.lockup.MsgBeginUnlockingResponse";
@@ -120,7 +119,7 @@ export interface MsgBeginUnlockingResponseAminoMsg {
 }
 export interface MsgBeginUnlockingResponseSDKType {
   success: boolean;
-  unlockingLockID: Long;
+  unlockingLockID: bigint;
 }
 /**
  * MsgExtendLockup extends the existing lockup's duration.
@@ -128,7 +127,7 @@ export interface MsgBeginUnlockingResponseSDKType {
  */
 export interface MsgExtendLockup {
   owner: string;
-  ID: Long;
+  ID: bigint;
   /**
    * duration to be set. fails if lower than the current duration, or is
    * unlocking
@@ -162,7 +161,7 @@ export interface MsgExtendLockupAminoMsg {
  */
 export interface MsgExtendLockupSDKType {
   owner: string;
-  ID: Long;
+  ID: bigint;
   duration?: DurationSDKType;
 }
 export interface MsgExtendLockupResponse {
@@ -188,7 +187,7 @@ export interface MsgExtendLockupResponseSDKType {
  */
 export interface MsgForceUnlock {
   owner: string;
-  ID: Long;
+  ID: bigint;
   /** Amount of unlocking coins. Unlock all if not set. */
   coins: Coin[];
 }
@@ -216,7 +215,7 @@ export interface MsgForceUnlockAminoMsg {
  */
 export interface MsgForceUnlockSDKType {
   owner: string;
-  ID: Long;
+  ID: bigint;
   coins: CoinSDKType[];
 }
 export interface MsgForceUnlockResponse {
@@ -245,7 +244,7 @@ function createBaseMsgLockTokens(): MsgLockTokens {
 }
 export const MsgLockTokens = {
   typeUrl: "/osmosis.lockup.MsgLockTokens",
-  encode(message: MsgLockTokens, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgLockTokens, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -257,8 +256,8 @@ export const MsgLockTokens = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokens {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgLockTokens {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgLockTokens();
     while (reader.pos < end) {
@@ -329,26 +328,26 @@ export const MsgLockTokens = {
 };
 function createBaseMsgLockTokensResponse(): MsgLockTokensResponse {
   return {
-    ID: Long.UZERO
+    ID: BigInt("0")
   };
 }
 export const MsgLockTokensResponse = {
   typeUrl: "/osmosis.lockup.MsgLockTokensResponse",
-  encode(message: MsgLockTokensResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.ID.isZero()) {
+  encode(message: MsgLockTokensResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.ID !== BigInt(0)) {
       writer.uint32(8).uint64(message.ID);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgLockTokensResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgLockTokensResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.ID = (reader.uint64() as Long);
+          message.ID = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -359,12 +358,12 @@ export const MsgLockTokensResponse = {
   },
   fromPartial(object: Partial<MsgLockTokensResponse>): MsgLockTokensResponse {
     const message = createBaseMsgLockTokensResponse();
-    message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
+    message.ID = object.ID !== undefined && object.ID !== null ? BigInt(object.ID.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: MsgLockTokensResponseAmino): MsgLockTokensResponse {
     return {
-      ID: Long.fromString(object.ID)
+      ID: BigInt(object.ID)
     };
   },
   toAmino(message: MsgLockTokensResponse): MsgLockTokensResponseAmino {
@@ -401,14 +400,14 @@ function createBaseMsgBeginUnlockingAll(): MsgBeginUnlockingAll {
 }
 export const MsgBeginUnlockingAll = {
   typeUrl: "/osmosis.lockup.MsgBeginUnlockingAll",
-  encode(message: MsgBeginUnlockingAll, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgBeginUnlockingAll, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAll {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginUnlockingAll {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBeginUnlockingAll();
     while (reader.pos < end) {
@@ -468,14 +467,14 @@ function createBaseMsgBeginUnlockingAllResponse(): MsgBeginUnlockingAllResponse 
 }
 export const MsgBeginUnlockingAllResponse = {
   typeUrl: "/osmosis.lockup.MsgBeginUnlockingAllResponse",
-  encode(message: MsgBeginUnlockingAllResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgBeginUnlockingAllResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.unlocks) {
       PeriodLock.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBeginUnlockingAllResponse();
     while (reader.pos < end) {
@@ -535,17 +534,17 @@ export const MsgBeginUnlockingAllResponse = {
 function createBaseMsgBeginUnlocking(): MsgBeginUnlocking {
   return {
     owner: "",
-    ID: Long.UZERO,
+    ID: BigInt("0"),
     coins: []
   };
 }
 export const MsgBeginUnlocking = {
   typeUrl: "/osmosis.lockup.MsgBeginUnlocking",
-  encode(message: MsgBeginUnlocking, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgBeginUnlocking, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
-    if (!message.ID.isZero()) {
+    if (message.ID !== BigInt(0)) {
       writer.uint32(16).uint64(message.ID);
     }
     for (const v of message.coins) {
@@ -553,8 +552,8 @@ export const MsgBeginUnlocking = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlocking {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginUnlocking {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBeginUnlocking();
     while (reader.pos < end) {
@@ -564,7 +563,7 @@ export const MsgBeginUnlocking = {
           message.owner = reader.string();
           break;
         case 2:
-          message.ID = (reader.uint64() as Long);
+          message.ID = BigInt(reader.uint64().toString());
           break;
         case 3:
           message.coins.push(Coin.decode(reader, reader.uint32()));
@@ -579,14 +578,14 @@ export const MsgBeginUnlocking = {
   fromPartial(object: Partial<MsgBeginUnlocking>): MsgBeginUnlocking {
     const message = createBaseMsgBeginUnlocking();
     message.owner = object.owner ?? "";
-    message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
+    message.ID = object.ID !== undefined && object.ID !== null ? BigInt(object.ID.toString()) : BigInt("0");
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: MsgBeginUnlockingAmino): MsgBeginUnlocking {
     return {
       owner: object.owner,
-      ID: Long.fromString(object.ID),
+      ID: BigInt(object.ID),
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : []
     };
   },
@@ -626,22 +625,22 @@ export const MsgBeginUnlocking = {
 function createBaseMsgBeginUnlockingResponse(): MsgBeginUnlockingResponse {
   return {
     success: false,
-    unlockingLockID: Long.UZERO
+    unlockingLockID: BigInt("0")
   };
 }
 export const MsgBeginUnlockingResponse = {
   typeUrl: "/osmosis.lockup.MsgBeginUnlockingResponse",
-  encode(message: MsgBeginUnlockingResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgBeginUnlockingResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.success === true) {
       writer.uint32(8).bool(message.success);
     }
-    if (!message.unlockingLockID.isZero()) {
+    if (message.unlockingLockID !== BigInt(0)) {
       writer.uint32(16).uint64(message.unlockingLockID);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginUnlockingResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgBeginUnlockingResponse();
     while (reader.pos < end) {
@@ -651,7 +650,7 @@ export const MsgBeginUnlockingResponse = {
           message.success = reader.bool();
           break;
         case 2:
-          message.unlockingLockID = (reader.uint64() as Long);
+          message.unlockingLockID = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -663,13 +662,13 @@ export const MsgBeginUnlockingResponse = {
   fromPartial(object: Partial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse {
     const message = createBaseMsgBeginUnlockingResponse();
     message.success = object.success ?? false;
-    message.unlockingLockID = object.unlockingLockID !== undefined && object.unlockingLockID !== null ? Long.fromValue(object.unlockingLockID) : Long.UZERO;
+    message.unlockingLockID = object.unlockingLockID !== undefined && object.unlockingLockID !== null ? BigInt(object.unlockingLockID.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: MsgBeginUnlockingResponseAmino): MsgBeginUnlockingResponse {
     return {
       success: object.success,
-      unlockingLockID: Long.fromString(object.unlockingLockID)
+      unlockingLockID: BigInt(object.unlockingLockID)
     };
   },
   toAmino(message: MsgBeginUnlockingResponse): MsgBeginUnlockingResponseAmino {
@@ -703,17 +702,17 @@ export const MsgBeginUnlockingResponse = {
 function createBaseMsgExtendLockup(): MsgExtendLockup {
   return {
     owner: "",
-    ID: Long.UZERO,
+    ID: BigInt("0"),
     duration: undefined
   };
 }
 export const MsgExtendLockup = {
   typeUrl: "/osmosis.lockup.MsgExtendLockup",
-  encode(message: MsgExtendLockup, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgExtendLockup, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
-    if (!message.ID.isZero()) {
+    if (message.ID !== BigInt(0)) {
       writer.uint32(16).uint64(message.ID);
     }
     if (message.duration !== undefined) {
@@ -721,8 +720,8 @@ export const MsgExtendLockup = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockup {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExtendLockup {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExtendLockup();
     while (reader.pos < end) {
@@ -732,7 +731,7 @@ export const MsgExtendLockup = {
           message.owner = reader.string();
           break;
         case 2:
-          message.ID = (reader.uint64() as Long);
+          message.ID = BigInt(reader.uint64().toString());
           break;
         case 3:
           message.duration = Duration.decode(reader, reader.uint32());
@@ -747,14 +746,14 @@ export const MsgExtendLockup = {
   fromPartial(object: Partial<MsgExtendLockup>): MsgExtendLockup {
     const message = createBaseMsgExtendLockup();
     message.owner = object.owner ?? "";
-    message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
+    message.ID = object.ID !== undefined && object.ID !== null ? BigInt(object.ID.toString()) : BigInt("0");
     message.duration = object.duration !== undefined && object.duration !== null ? Duration.fromPartial(object.duration) : undefined;
     return message;
   },
   fromAmino(object: MsgExtendLockupAmino): MsgExtendLockup {
     return {
       owner: object.owner,
-      ID: Long.fromString(object.ID),
+      ID: BigInt(object.ID),
       duration: object?.duration ? Duration.fromAmino(object.duration) : undefined
     };
   },
@@ -794,14 +793,14 @@ function createBaseMsgExtendLockupResponse(): MsgExtendLockupResponse {
 }
 export const MsgExtendLockupResponse = {
   typeUrl: "/osmosis.lockup.MsgExtendLockupResponse",
-  encode(message: MsgExtendLockupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgExtendLockupResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.success === true) {
       writer.uint32(8).bool(message.success);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExtendLockupResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgExtendLockupResponse();
     while (reader.pos < end) {
@@ -857,17 +856,17 @@ export const MsgExtendLockupResponse = {
 function createBaseMsgForceUnlock(): MsgForceUnlock {
   return {
     owner: "",
-    ID: Long.UZERO,
+    ID: BigInt("0"),
     coins: []
   };
 }
 export const MsgForceUnlock = {
   typeUrl: "/osmosis.lockup.MsgForceUnlock",
-  encode(message: MsgForceUnlock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgForceUnlock, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
-    if (!message.ID.isZero()) {
+    if (message.ID !== BigInt(0)) {
       writer.uint32(16).uint64(message.ID);
     }
     for (const v of message.coins) {
@@ -875,8 +874,8 @@ export const MsgForceUnlock = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlock {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgForceUnlock {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgForceUnlock();
     while (reader.pos < end) {
@@ -886,7 +885,7 @@ export const MsgForceUnlock = {
           message.owner = reader.string();
           break;
         case 2:
-          message.ID = (reader.uint64() as Long);
+          message.ID = BigInt(reader.uint64().toString());
           break;
         case 3:
           message.coins.push(Coin.decode(reader, reader.uint32()));
@@ -901,14 +900,14 @@ export const MsgForceUnlock = {
   fromPartial(object: Partial<MsgForceUnlock>): MsgForceUnlock {
     const message = createBaseMsgForceUnlock();
     message.owner = object.owner ?? "";
-    message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
+    message.ID = object.ID !== undefined && object.ID !== null ? BigInt(object.ID.toString()) : BigInt("0");
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: MsgForceUnlockAmino): MsgForceUnlock {
     return {
       owner: object.owner,
-      ID: Long.fromString(object.ID),
+      ID: BigInt(object.ID),
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : []
     };
   },
@@ -952,14 +951,14 @@ function createBaseMsgForceUnlockResponse(): MsgForceUnlockResponse {
 }
 export const MsgForceUnlockResponse = {
   typeUrl: "/osmosis.lockup.MsgForceUnlockResponse",
-  encode(message: MsgForceUnlockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgForceUnlockResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.success === true) {
       writer.uint32(8).bool(message.success);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlockResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgForceUnlockResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgForceUnlockResponse();
     while (reader.pos < end) {

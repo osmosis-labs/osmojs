@@ -1,8 +1,8 @@
 import { QueryCondition, QueryConditionAmino, QueryConditionSDKType } from "../lockup/lock";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
+import { toTimestamp, fromTimestamp } from "../../helpers";
 /** MsgCreateGauge creates a gague to distribute rewards to users */
 export interface MsgCreateGauge {
   /**
@@ -28,7 +28,7 @@ export interface MsgCreateGauge {
    * num_epochs_paid_over is the number of epochs distribution will be completed
    * over
    */
-  numEpochsPaidOver: Long;
+  numEpochsPaidOver: bigint;
 }
 export interface MsgCreateGaugeProtoMsg {
   typeUrl: "/osmosis.incentives.MsgCreateGauge";
@@ -72,7 +72,7 @@ export interface MsgCreateGaugeSDKType {
   distribute_to?: QueryConditionSDKType;
   coins: CoinSDKType[];
   start_time?: Date;
-  num_epochs_paid_over: Long;
+  num_epochs_paid_over: bigint;
 }
 export interface MsgCreateGaugeResponse {}
 export interface MsgCreateGaugeResponseProtoMsg {
@@ -90,7 +90,7 @@ export interface MsgAddToGauge {
   /** owner is the gauge owner's address */
   owner: string;
   /** gauge_id is the ID of gauge that rewards are getting added to */
-  gaugeId: Long;
+  gaugeId: bigint;
   /** rewards are the coin(s) to add to gauge */
   rewards: Coin[];
 }
@@ -114,7 +114,7 @@ export interface MsgAddToGaugeAminoMsg {
 /** MsgAddToGauge adds coins to a previously created gauge */
 export interface MsgAddToGaugeSDKType {
   owner: string;
-  gauge_id: Long;
+  gauge_id: bigint;
   rewards: CoinSDKType[];
 }
 export interface MsgAddToGaugeResponse {}
@@ -135,12 +135,12 @@ function createBaseMsgCreateGauge(): MsgCreateGauge {
     distributeTo: undefined,
     coins: [],
     startTime: undefined,
-    numEpochsPaidOver: Long.UZERO
+    numEpochsPaidOver: BigInt("0")
   };
 }
 export const MsgCreateGauge = {
   typeUrl: "/osmosis.incentives.MsgCreateGauge",
-  encode(message: MsgCreateGauge, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgCreateGauge, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.isPerpetual === true) {
       writer.uint32(8).bool(message.isPerpetual);
     }
@@ -156,13 +156,13 @@ export const MsgCreateGauge = {
     if (message.startTime !== undefined) {
       Timestamp.encode(toTimestamp(message.startTime), writer.uint32(42).fork()).ldelim();
     }
-    if (!message.numEpochsPaidOver.isZero()) {
+    if (message.numEpochsPaidOver !== BigInt(0)) {
       writer.uint32(48).uint64(message.numEpochsPaidOver);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGauge {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGauge {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateGauge();
     while (reader.pos < end) {
@@ -184,7 +184,7 @@ export const MsgCreateGauge = {
           message.startTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 6:
-          message.numEpochsPaidOver = (reader.uint64() as Long);
+          message.numEpochsPaidOver = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -200,7 +200,7 @@ export const MsgCreateGauge = {
     message.distributeTo = object.distributeTo !== undefined && object.distributeTo !== null ? QueryCondition.fromPartial(object.distributeTo) : undefined;
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     message.startTime = object.startTime ?? undefined;
-    message.numEpochsPaidOver = object.numEpochsPaidOver !== undefined && object.numEpochsPaidOver !== null ? Long.fromValue(object.numEpochsPaidOver) : Long.UZERO;
+    message.numEpochsPaidOver = object.numEpochsPaidOver !== undefined && object.numEpochsPaidOver !== null ? BigInt(object.numEpochsPaidOver.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: MsgCreateGaugeAmino): MsgCreateGauge {
@@ -210,7 +210,7 @@ export const MsgCreateGauge = {
       distributeTo: object?.distribute_to ? QueryCondition.fromAmino(object.distribute_to) : undefined,
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : [],
       startTime: object?.start_time ? Timestamp.fromAmino(object.start_time) : undefined,
-      numEpochsPaidOver: Long.fromString(object.num_epochs_paid_over)
+      numEpochsPaidOver: BigInt(object.num_epochs_paid_over)
     };
   },
   toAmino(message: MsgCreateGauge): MsgCreateGaugeAmino {
@@ -254,11 +254,11 @@ function createBaseMsgCreateGaugeResponse(): MsgCreateGaugeResponse {
 }
 export const MsgCreateGaugeResponse = {
   typeUrl: "/osmosis.incentives.MsgCreateGaugeResponse",
-  encode(_: MsgCreateGaugeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgCreateGaugeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGaugeResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGaugeResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateGaugeResponse();
     while (reader.pos < end) {
@@ -307,17 +307,17 @@ export const MsgCreateGaugeResponse = {
 function createBaseMsgAddToGauge(): MsgAddToGauge {
   return {
     owner: "",
-    gaugeId: Long.UZERO,
+    gaugeId: BigInt("0"),
     rewards: []
   };
 }
 export const MsgAddToGauge = {
   typeUrl: "/osmosis.incentives.MsgAddToGauge",
-  encode(message: MsgAddToGauge, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgAddToGauge, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
-    if (!message.gaugeId.isZero()) {
+    if (message.gaugeId !== BigInt(0)) {
       writer.uint32(16).uint64(message.gaugeId);
     }
     for (const v of message.rewards) {
@@ -325,8 +325,8 @@ export const MsgAddToGauge = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGauge {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgAddToGauge {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgAddToGauge();
     while (reader.pos < end) {
@@ -336,7 +336,7 @@ export const MsgAddToGauge = {
           message.owner = reader.string();
           break;
         case 2:
-          message.gaugeId = (reader.uint64() as Long);
+          message.gaugeId = BigInt(reader.uint64().toString());
           break;
         case 3:
           message.rewards.push(Coin.decode(reader, reader.uint32()));
@@ -351,14 +351,14 @@ export const MsgAddToGauge = {
   fromPartial(object: Partial<MsgAddToGauge>): MsgAddToGauge {
     const message = createBaseMsgAddToGauge();
     message.owner = object.owner ?? "";
-    message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? Long.fromValue(object.gaugeId) : Long.UZERO;
+    message.gaugeId = object.gaugeId !== undefined && object.gaugeId !== null ? BigInt(object.gaugeId.toString()) : BigInt("0");
     message.rewards = object.rewards?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: MsgAddToGaugeAmino): MsgAddToGauge {
     return {
       owner: object.owner,
-      gaugeId: Long.fromString(object.gauge_id),
+      gaugeId: BigInt(object.gauge_id),
       rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => Coin.fromAmino(e)) : []
     };
   },
@@ -400,11 +400,11 @@ function createBaseMsgAddToGaugeResponse(): MsgAddToGaugeResponse {
 }
 export const MsgAddToGaugeResponse = {
   typeUrl: "/osmosis.incentives.MsgAddToGaugeResponse",
-  encode(_: MsgAddToGaugeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgAddToGaugeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGaugeResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgAddToGaugeResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgAddToGaugeResponse();
     while (reader.pos < end) {

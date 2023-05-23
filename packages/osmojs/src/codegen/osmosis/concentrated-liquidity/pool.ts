@@ -1,13 +1,13 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
+import { toTimestamp, fromTimestamp } from "../../helpers";
 export interface Pool {
   $typeUrl?: string;
   /** pool's address holding all liquidity tokens. */
   address: string;
   /** address holding the incentives liquidity. */
   incentivesAddress: string;
-  id: Long;
+  id: bigint;
   /** Amount of total liquidity */
   currentTickLiquidity: string;
   token0: string;
@@ -18,7 +18,7 @@ export interface Pool {
    * tick_spacing must be one of the authorized_tick_spacing values set in the
    * concentrated-liquidity parameters
    */
-  tickSpacing: Long;
+  tickSpacing: bigint;
   exponentAtPriceOne: string;
   /** swap_fee is the ratio that is charged on the amount of token in. */
   swapFee: string;
@@ -66,13 +66,13 @@ export interface PoolSDKType {
   $typeUrl?: string;
   address: string;
   incentives_address: string;
-  id: Long;
+  id: bigint;
   current_tick_liquidity: string;
   token0: string;
   token1: string;
   current_sqrt_price: string;
   current_tick: string;
-  tick_spacing: Long;
+  tick_spacing: bigint;
   exponent_at_price_one: string;
   swap_fee: string;
   last_liquidity_update?: Date;
@@ -82,13 +82,13 @@ function createBasePool(): Pool {
     $typeUrl: "/osmosis.concentratedliquidity.v1beta1.Pool",
     address: "",
     incentivesAddress: "",
-    id: Long.UZERO,
+    id: BigInt("0"),
     currentTickLiquidity: "",
     token0: "",
     token1: "",
     currentSqrtPrice: "",
     currentTick: "",
-    tickSpacing: Long.UZERO,
+    tickSpacing: BigInt("0"),
     exponentAtPriceOne: "",
     swapFee: "",
     lastLiquidityUpdate: undefined
@@ -96,14 +96,14 @@ function createBasePool(): Pool {
 }
 export const Pool = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.Pool",
-  encode(message: Pool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Pool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
     if (message.incentivesAddress !== "") {
       writer.uint32(18).string(message.incentivesAddress);
     }
-    if (!message.id.isZero()) {
+    if (message.id !== BigInt(0)) {
       writer.uint32(24).uint64(message.id);
     }
     if (message.currentTickLiquidity !== "") {
@@ -121,7 +121,7 @@ export const Pool = {
     if (message.currentTick !== "") {
       writer.uint32(66).string(message.currentTick);
     }
-    if (!message.tickSpacing.isZero()) {
+    if (message.tickSpacing !== BigInt(0)) {
       writer.uint32(72).uint64(message.tickSpacing);
     }
     if (message.exponentAtPriceOne !== "") {
@@ -135,8 +135,8 @@ export const Pool = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Pool {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Pool {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePool();
     while (reader.pos < end) {
@@ -149,7 +149,7 @@ export const Pool = {
           message.incentivesAddress = reader.string();
           break;
         case 3:
-          message.id = (reader.uint64() as Long);
+          message.id = BigInt(reader.uint64().toString());
           break;
         case 4:
           message.currentTickLiquidity = reader.string();
@@ -167,7 +167,7 @@ export const Pool = {
           message.currentTick = reader.string();
           break;
         case 9:
-          message.tickSpacing = (reader.uint64() as Long);
+          message.tickSpacing = BigInt(reader.uint64().toString());
           break;
         case 10:
           message.exponentAtPriceOne = reader.string();
@@ -189,13 +189,13 @@ export const Pool = {
     const message = createBasePool();
     message.address = object.address ?? "";
     message.incentivesAddress = object.incentivesAddress ?? "";
-    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+    message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt("0");
     message.currentTickLiquidity = object.currentTickLiquidity ?? "";
     message.token0 = object.token0 ?? "";
     message.token1 = object.token1 ?? "";
     message.currentSqrtPrice = object.currentSqrtPrice ?? "";
     message.currentTick = object.currentTick ?? "";
-    message.tickSpacing = object.tickSpacing !== undefined && object.tickSpacing !== null ? Long.fromValue(object.tickSpacing) : Long.UZERO;
+    message.tickSpacing = object.tickSpacing !== undefined && object.tickSpacing !== null ? BigInt(object.tickSpacing.toString()) : BigInt("0");
     message.exponentAtPriceOne = object.exponentAtPriceOne ?? "";
     message.swapFee = object.swapFee ?? "";
     message.lastLiquidityUpdate = object.lastLiquidityUpdate ?? undefined;
@@ -205,13 +205,13 @@ export const Pool = {
     return {
       address: object.address,
       incentivesAddress: object.incentives_address,
-      id: Long.fromString(object.id),
+      id: BigInt(object.id),
       currentTickLiquidity: object.current_tick_liquidity,
       token0: object.token0,
       token1: object.token1,
       currentSqrtPrice: object.current_sqrt_price,
       currentTick: object.current_tick,
-      tickSpacing: Long.fromString(object.tick_spacing),
+      tickSpacing: BigInt(object.tick_spacing),
       exponentAtPriceOne: object.exponent_at_price_one,
       swapFee: object.swap_fee,
       lastLiquidityUpdate: object?.last_liquidity_update ? Timestamp.fromAmino(object.last_liquidity_update) : undefined

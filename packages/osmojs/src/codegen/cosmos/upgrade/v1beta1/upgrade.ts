@@ -1,7 +1,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
+import { toTimestamp, fromTimestamp } from "../../../helpers";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface Plan {
   /**
@@ -25,7 +25,7 @@ export interface Plan {
    * The height at which the upgrade must be performed.
    * Only used if Time is not set.
    */
-  height: Long;
+  height: bigint;
   /**
    * Any application specific upgrade info to be included on-chain
    * such as a git commit that validators could automatically upgrade to
@@ -89,7 +89,7 @@ export interface PlanSDKType {
   name: string;
   /** @deprecated */
   time?: Date;
-  height: Long;
+  height: bigint;
   info: string;
   /** @deprecated */
   upgraded_client_state?: AnySDKType;
@@ -170,7 +170,7 @@ export interface ModuleVersion {
   /** name of the app module */
   name: string;
   /** consensus version of the app module */
-  version: Long;
+  version: bigint;
 }
 export interface ModuleVersionProtoMsg {
   typeUrl: "/cosmos.upgrade.v1beta1.ModuleVersion";
@@ -198,27 +198,27 @@ export interface ModuleVersionAminoMsg {
  */
 export interface ModuleVersionSDKType {
   name: string;
-  version: Long;
+  version: bigint;
 }
 function createBasePlan(): Plan {
   return {
     name: "",
     time: undefined,
-    height: Long.ZERO,
+    height: BigInt("0"),
     info: "",
     upgradedClientState: undefined
   };
 }
 export const Plan = {
   typeUrl: "/cosmos.upgrade.v1beta1.Plan",
-  encode(message: Plan, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Plan, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     if (message.time !== undefined) {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(18).fork()).ldelim();
     }
-    if (!message.height.isZero()) {
+    if (message.height !== BigInt(0)) {
       writer.uint32(24).int64(message.height);
     }
     if (message.info !== "") {
@@ -229,8 +229,8 @@ export const Plan = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Plan {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Plan {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePlan();
     while (reader.pos < end) {
@@ -243,7 +243,7 @@ export const Plan = {
           message.time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 3:
-          message.height = (reader.int64() as Long);
+          message.height = BigInt(reader.int64().toString());
           break;
         case 4:
           message.info = reader.string();
@@ -262,7 +262,7 @@ export const Plan = {
     const message = createBasePlan();
     message.name = object.name ?? "";
     message.time = object.time ?? undefined;
-    message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
+    message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt("0");
     message.info = object.info ?? "";
     message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
     return message;
@@ -271,7 +271,7 @@ export const Plan = {
     return {
       name: object.name,
       time: object?.time ? Timestamp.fromAmino(object.time) : undefined,
-      height: Long.fromString(object.height),
+      height: BigInt(object.height),
       info: object.info,
       upgradedClientState: object?.upgraded_client_state ? Any.fromAmino(object.upgraded_client_state) : undefined
     };
@@ -316,7 +316,7 @@ function createBaseSoftwareUpgradeProposal(): SoftwareUpgradeProposal {
 }
 export const SoftwareUpgradeProposal = {
   typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
-  encode(message: SoftwareUpgradeProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SoftwareUpgradeProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -328,8 +328,8 @@ export const SoftwareUpgradeProposal = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SoftwareUpgradeProposal {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SoftwareUpgradeProposal {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSoftwareUpgradeProposal();
     while (reader.pos < end) {
@@ -402,7 +402,7 @@ function createBaseCancelSoftwareUpgradeProposal(): CancelSoftwareUpgradeProposa
 }
 export const CancelSoftwareUpgradeProposal = {
   typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
-  encode(message: CancelSoftwareUpgradeProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: CancelSoftwareUpgradeProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -411,8 +411,8 @@ export const CancelSoftwareUpgradeProposal = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CancelSoftwareUpgradeProposal {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): CancelSoftwareUpgradeProposal {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCancelSoftwareUpgradeProposal();
     while (reader.pos < end) {
@@ -474,22 +474,22 @@ export const CancelSoftwareUpgradeProposal = {
 function createBaseModuleVersion(): ModuleVersion {
   return {
     name: "",
-    version: Long.UZERO
+    version: BigInt("0")
   };
 }
 export const ModuleVersion = {
   typeUrl: "/cosmos.upgrade.v1beta1.ModuleVersion",
-  encode(message: ModuleVersion, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ModuleVersion, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
-    if (!message.version.isZero()) {
+    if (message.version !== BigInt(0)) {
       writer.uint32(16).uint64(message.version);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleVersion {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ModuleVersion {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseModuleVersion();
     while (reader.pos < end) {
@@ -499,7 +499,7 @@ export const ModuleVersion = {
           message.name = reader.string();
           break;
         case 2:
-          message.version = (reader.uint64() as Long);
+          message.version = BigInt(reader.uint64().toString());
           break;
         default:
           reader.skipType(tag & 7);
@@ -511,13 +511,13 @@ export const ModuleVersion = {
   fromPartial(object: Partial<ModuleVersion>): ModuleVersion {
     const message = createBaseModuleVersion();
     message.name = object.name ?? "";
-    message.version = object.version !== undefined && object.version !== null ? Long.fromValue(object.version) : Long.UZERO;
+    message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt("0");
     return message;
   },
   fromAmino(object: ModuleVersionAmino): ModuleVersion {
     return {
       name: object.name,
-      version: Long.fromString(object.version)
+      version: BigInt(object.version)
     };
   },
   toAmino(message: ModuleVersion): ModuleVersionAmino {

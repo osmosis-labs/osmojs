@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** IncentivizedAcknowledgement is the acknowledgement format to be used by applications wrapped in the fee middleware */
 export interface IncentivizedAcknowledgement {
   /** the underlying app acknowledgement bytes */
@@ -40,7 +40,7 @@ function createBaseIncentivizedAcknowledgement(): IncentivizedAcknowledgement {
 }
 export const IncentivizedAcknowledgement = {
   typeUrl: "/ibc.applications.fee.v1.IncentivizedAcknowledgement",
-  encode(message: IncentivizedAcknowledgement, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: IncentivizedAcknowledgement, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.appAcknowledgement.length !== 0) {
       writer.uint32(10).bytes(message.appAcknowledgement);
     }
@@ -52,8 +52,8 @@ export const IncentivizedAcknowledgement = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): IncentivizedAcknowledgement {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): IncentivizedAcknowledgement {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseIncentivizedAcknowledgement();
     while (reader.pos < end) {

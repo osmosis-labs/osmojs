@@ -1,7 +1,7 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
+import { toTimestamp, fromTimestamp } from "../../helpers";
 /**
  * IncentiveRecord is the high-level struct we use to deal with an independent
  * incentive being distributed on a pool. Note that PoolId, Denom, and MinUptime
@@ -9,7 +9,7 @@ import * as _m0 from "protobufjs/minimal";
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 export interface IncentiveRecord {
-  poolId: Long;
+  poolId: bigint;
   /**
    * incentive_denom is the denom of the token being distributed as part of this
    * incentive record
@@ -73,7 +73,7 @@ export interface IncentiveRecordAminoMsg {
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 export interface IncentiveRecordSDKType {
-  pool_id: Long;
+  pool_id: bigint;
   incentive_denom: string;
   incentive_creator_addr: string;
   incentive_record_body?: IncentiveRecordBodySDKType;
@@ -122,7 +122,7 @@ export interface IncentiveRecordBodySDKType {
 }
 function createBaseIncentiveRecord(): IncentiveRecord {
   return {
-    poolId: Long.UZERO,
+    poolId: BigInt("0"),
     incentiveDenom: "",
     incentiveCreatorAddr: "",
     incentiveRecordBody: undefined,
@@ -131,8 +131,8 @@ function createBaseIncentiveRecord(): IncentiveRecord {
 }
 export const IncentiveRecord = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecord",
-  encode(message: IncentiveRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: IncentiveRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
     if (message.incentiveDenom !== "") {
@@ -149,15 +149,15 @@ export const IncentiveRecord = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): IncentiveRecord {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): IncentiveRecord {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseIncentiveRecord();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = BigInt(reader.uint64().toString());
           break;
         case 2:
           message.incentiveDenom = reader.string();
@@ -180,7 +180,7 @@ export const IncentiveRecord = {
   },
   fromPartial(object: Partial<IncentiveRecord>): IncentiveRecord {
     const message = createBaseIncentiveRecord();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt("0");
     message.incentiveDenom = object.incentiveDenom ?? "";
     message.incentiveCreatorAddr = object.incentiveCreatorAddr ?? "";
     message.incentiveRecordBody = object.incentiveRecordBody !== undefined && object.incentiveRecordBody !== null ? IncentiveRecordBody.fromPartial(object.incentiveRecordBody) : undefined;
@@ -189,7 +189,7 @@ export const IncentiveRecord = {
   },
   fromAmino(object: IncentiveRecordAmino): IncentiveRecord {
     return {
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       incentiveDenom: object.incentive_denom,
       incentiveCreatorAddr: object.incentive_creator_addr,
       incentiveRecordBody: object?.incentive_record_body ? IncentiveRecordBody.fromAmino(object.incentive_record_body) : undefined,
@@ -236,7 +236,7 @@ function createBaseIncentiveRecordBody(): IncentiveRecordBody {
 }
 export const IncentiveRecordBody = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecordBody",
-  encode(message: IncentiveRecordBody, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: IncentiveRecordBody, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.remainingAmount !== "") {
       writer.uint32(10).string(message.remainingAmount);
     }
@@ -248,8 +248,8 @@ export const IncentiveRecordBody = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): IncentiveRecordBody {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): IncentiveRecordBody {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseIncentiveRecordBody();
     while (reader.pos < end) {

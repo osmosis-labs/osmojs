@@ -1,7 +1,6 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface SwapAmountInRoute {
-  poolId: Long;
+  poolId: bigint;
   tokenOutDenom: string;
 }
 export interface SwapAmountInRouteProtoMsg {
@@ -17,11 +16,11 @@ export interface SwapAmountInRouteAminoMsg {
   value: SwapAmountInRouteAmino;
 }
 export interface SwapAmountInRouteSDKType {
-  pool_id: Long;
+  pool_id: bigint;
   token_out_denom: string;
 }
 export interface SwapAmountOutRoute {
-  poolId: Long;
+  poolId: bigint;
   tokenInDenom: string;
 }
 export interface SwapAmountOutRouteProtoMsg {
@@ -37,19 +36,19 @@ export interface SwapAmountOutRouteAminoMsg {
   value: SwapAmountOutRouteAmino;
 }
 export interface SwapAmountOutRouteSDKType {
-  pool_id: Long;
+  pool_id: bigint;
   token_in_denom: string;
 }
 function createBaseSwapAmountInRoute(): SwapAmountInRoute {
   return {
-    poolId: Long.UZERO,
+    poolId: BigInt("0"),
     tokenOutDenom: ""
   };
 }
 export const SwapAmountInRoute = {
   typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountInRoute",
-  encode(message: SwapAmountInRoute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: SwapAmountInRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
     if (message.tokenOutDenom !== "") {
@@ -57,15 +56,15 @@ export const SwapAmountInRoute = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountInRoute {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SwapAmountInRoute {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSwapAmountInRoute();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = BigInt(reader.uint64().toString());
           break;
         case 2:
           message.tokenOutDenom = reader.string();
@@ -79,13 +78,13 @@ export const SwapAmountInRoute = {
   },
   fromPartial(object: Partial<SwapAmountInRoute>): SwapAmountInRoute {
     const message = createBaseSwapAmountInRoute();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt("0");
     message.tokenOutDenom = object.tokenOutDenom ?? "";
     return message;
   },
   fromAmino(object: SwapAmountInRouteAmino): SwapAmountInRoute {
     return {
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       tokenOutDenom: object.token_out_denom
     };
   },
@@ -119,14 +118,14 @@ export const SwapAmountInRoute = {
 };
 function createBaseSwapAmountOutRoute(): SwapAmountOutRoute {
   return {
-    poolId: Long.UZERO,
+    poolId: BigInt("0"),
     tokenInDenom: ""
   };
 }
 export const SwapAmountOutRoute = {
   typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountOutRoute",
-  encode(message: SwapAmountOutRoute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: SwapAmountOutRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
     if (message.tokenInDenom !== "") {
@@ -134,15 +133,15 @@ export const SwapAmountOutRoute = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountOutRoute {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SwapAmountOutRoute {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSwapAmountOutRoute();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = BigInt(reader.uint64().toString());
           break;
         case 2:
           message.tokenInDenom = reader.string();
@@ -156,13 +155,13 @@ export const SwapAmountOutRoute = {
   },
   fromPartial(object: Partial<SwapAmountOutRoute>): SwapAmountOutRoute {
     const message = createBaseSwapAmountOutRoute();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt("0");
     message.tokenInDenom = object.tokenInDenom ?? "";
     return message;
   },
   fromAmino(object: SwapAmountOutRouteAmino): SwapAmountOutRoute {
     return {
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       tokenInDenom: object.token_in_denom
     };
   },

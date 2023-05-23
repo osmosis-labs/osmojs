@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** EventGrant is emitted on Msg/Grant */
 export interface EventGrant {
   /** Msg type URL for which an autorization is granted */
@@ -72,7 +72,7 @@ function createBaseEventGrant(): EventGrant {
 }
 export const EventGrant = {
   typeUrl: "/cosmos.authz.v1beta1.EventGrant",
-  encode(message: EventGrant, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: EventGrant, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.msgTypeUrl !== "") {
       writer.uint32(18).string(message.msgTypeUrl);
     }
@@ -84,8 +84,8 @@ export const EventGrant = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): EventGrant {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): EventGrant {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventGrant();
     while (reader.pos < end) {
@@ -159,7 +159,7 @@ function createBaseEventRevoke(): EventRevoke {
 }
 export const EventRevoke = {
   typeUrl: "/cosmos.authz.v1beta1.EventRevoke",
-  encode(message: EventRevoke, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: EventRevoke, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.msgTypeUrl !== "") {
       writer.uint32(18).string(message.msgTypeUrl);
     }
@@ -171,8 +171,8 @@ export const EventRevoke = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): EventRevoke {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): EventRevoke {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventRevoke();
     while (reader.pos < end) {
