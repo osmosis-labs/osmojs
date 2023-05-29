@@ -1,5 +1,4 @@
 import { defaultRegistryTypes } from "@cosmjs/stargate";
-import { describe } from "node:test";
 import path from "path";
 
 import { getSigningOsmosisClientOptions } from "../../src/codegen";
