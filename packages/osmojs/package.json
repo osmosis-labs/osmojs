@@ -1,6 +1,6 @@
 {
   "name": "osmojs",
-  "version": "v1.18.0",
+  "version": "15.2.1",
   "description": "Typescript Protobuf Messages for Osmosis",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
@@ -65,7 +65,7 @@
     "@babel/plugin-proposal-object-rest-spread": "7.18.9",
     "@babel/plugin-proposal-optional-chaining": "7.18.9",
     "@babel/plugin-transform-runtime": "7.19.1",
-    "@babel/preset-env": "7.20.2",
+    "@babel/preset-env": "7.19.1",
     "@babel/preset-typescript": "^7.17.12",
     "@babel/traverse": "7.19.1",
     "@babel/types": "7.19.0",
