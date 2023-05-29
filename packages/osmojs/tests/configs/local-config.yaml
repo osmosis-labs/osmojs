@@ -5,29 +5,88 @@ chains:
     ports:
       rest: 1317
       rpc: 26657
+    resources:
+      limits:
+        cpu: "0.2"
+        memory: "200M"
+      requests:
+        cpu: "0.2"
+        memory: "200M"
   - name: cosmos-2
     type: cosmos
     numValidators: 1
     ports:
       rest: 1313
       rpc: 26653
-  - name: juno-0
-    type: juno
-    numValidators: 1
-    ports:
-      rest: 1315
-      rpc: 26655
+    resources:
+      limits:
+        cpu: "0.2"
+        memory: "200M"
+      requests:
+        cpu: "0.2"
+        memory: "200M"
 
 relayers:
-  - name: osmos-juno
-    type: hermes
-    replicas: 1
-    chains:
-      - osmosis-1
-      - juno-0
   - name: osmos-cosmos
     type: hermes
     replicas: 1
     chains:
       - osmosis-1
       - cosmos-2
+    resources:
+      limits:
+        cpu: "0.1"
+        memory: "100M"
+      requests:
+        cpu: "0.1"
+        memory: "100M"
+
+explorer:
+  enabled: false
+  ports:
+    rest: 8080
+  resources:
+    limits:
+      cpu: "0.1"
+      memory: "100M"
+    requests:
+      cpu: "0.1"
+      memory: "100M"
+
+registry:
+  enabled: true
+  ports:
+    rest: 8081
+    grpc: 9091
+  resources:
+    limits:
+      cpu: "0.1"
+      memory: "100M"
+    requests:
+      cpu: "0.1"
+      memory: "100M"
+
+exposer:
+  resources:
+    limits:
+      cpu: "0.1"
+      memory: "100M"
+    requests:
+      cpu: "0.1"
+      memory: "100M"
+
+resources:
+  init:
+    limits:
+      cpu: "0.1"
+      memory: "100M"
+    requests:
+      cpu: "0.1"
+      memory: "100M"
+  wait:
+    limits:
+      cpu: "0.1"
+      memory: "100M"
+    requests:
+      cpu: "0.1"
+      memory: "100M"

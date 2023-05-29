@@ -36,7 +36,7 @@
     "e2e:deps": "cd tests && make setup",
     "e2e:kind": "cd tests && make setup-kind",
     "e2e:start": "cd tests && make start",
-    "e2e:test": "jest --testPathPattern=tests/",
+    "e2e:test": "jest --testPathPattern=tests/ --runInBand --verbose --bail",
     "e2e:stop": "cd tests && make stop",
     "e2e:clean": "cd tests && make stop clean"
   },
@@ -106,7 +106,10 @@
     "sinon": "14.0.2",
     "supertest": "6.3.1",
     "nock": "13.2.9",
-    "node-fetch": "2.6.0"
+    "bignumber.js": "9.1.0",
+    "jest-cli": "^29.5.0",
+    "node-fetch": "^2.6.9",
+    "path": "^0.12.7"
   },
   "dependencies": {
     "@babel/runtime": "^7.19.0",
