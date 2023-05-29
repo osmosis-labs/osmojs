@@ -24,6 +24,8 @@ jobs:
         run: yarn
       - name: bootstrap
         run: yarn bootstrap
+      - name: build
+        run: yarn build
       # Starship Infra setup
       # - Create a local kind cluster
       # - Creates a new namespace based on the name
