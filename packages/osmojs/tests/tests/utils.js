@@ -10,7 +10,7 @@ export const calcShareOutAmount = (
       const totalShare = new BigNumber(poolInfo.totalShares.amount);
       const totalShareExp = totalShare.shiftedBy(-18);
       const poolAssetAmount = new BigNumber(token.amount);
-      
+
       return tokenInAmount
         .multipliedBy(totalShareExp)
         .dividedBy(poolAssetAmount)
@@ -39,6 +39,6 @@ export const waitUntil = (date, timeout = 90000) => {
     if (delay > timeout) {
       throw new Error('Timeout to wait until date');
     }
-    setTimeout(resolve, delay + 1000);
+    setTimeout(resolve, delay + 3000);
   });
 };
