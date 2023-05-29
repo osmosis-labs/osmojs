@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { SimulateRequest, SimulateResponse, GetTxRequest, GetTxResponse, BroadcastTxRequest, BroadcastTxResponse, GetTxsEventRequest, GetTxsEventResponse, GetBlockWithTxsRequest, GetBlockWithTxsResponse } from "./service";
+import { SimulateRequest, SimulateResponse, GetTxRequest, GetTxResponse, BroadcastTxRequest, BroadcastTxResponse, GetTxsEventRequest, GetTxsEventResponse } from "./service";
 /** Service defines a gRPC service for interacting with transactions. */
 
 export interface Service {
@@ -16,13 +16,6 @@ export interface Service {
   /** GetTxsEvent fetches txs by event. */
 
   getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponse>;
-  /**
-   * GetBlockWithTxs fetches a block with decoded txs.
-   * 
-   * Since: cosmos-sdk 0.45.2
-   */
-
-  getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse>;
 }
 export class ServiceClientImpl implements Service {
   private readonly rpc: Rpc;
@@ -33,7 +26,6 @@ export class ServiceClientImpl implements Service {
     this.getTx = this.getTx.bind(this);
     this.broadcastTx = this.broadcastTx.bind(this);
     this.getTxsEvent = this.getTxsEvent.bind(this);
-    this.getBlockWithTxs = this.getBlockWithTxs.bind(this);
   }
 
   simulate(request: SimulateRequest): Promise<SimulateResponse> {
@@ -60,12 +52,6 @@ export class ServiceClientImpl implements Service {
     return promise.then(data => GetTxsEventResponse.decode(new _m0.Reader(data)));
   }
 
-  getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse> {
-    const data = GetBlockWithTxsRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "GetBlockWithTxs", data);
-    return promise.then(data => GetBlockWithTxsResponse.decode(new _m0.Reader(data)));
-  }
-
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -85,10 +71,6 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponse> {
       return queryService.getTxsEvent(request);
-    },
-
-    getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse> {
-      return queryService.getBlockWithTxs(request);
     }
 
   };

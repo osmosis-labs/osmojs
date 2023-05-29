@@ -1,7 +1,6 @@
-import { MsgStoreCode, MsgStoreCodeSDKType, MsgInstantiateContract, MsgInstantiateContractSDKType, MsgExecuteContract, MsgExecuteContractSDKType } from "./tx";
-import { Params, ParamsSDKType, CodeInfo, CodeInfoSDKType, ContractInfo, ContractInfoSDKType, Model, ModelSDKType } from "./types";
-import * as _m0 from "protobufjs/minimal";
+import { Params, ParamsAmino, ParamsSDKType, CodeInfo, CodeInfoAmino, CodeInfoSDKType, ContractInfo, ContractInfoAmino, ContractInfoSDKType, Model, ModelAmino, ModelSDKType, ContractCodeHistoryEntry, ContractCodeHistoryEntryAmino, ContractCodeHistoryEntrySDKType } from "./types";
 import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState - genesis state of x/wasm */
 
 export interface GenesisState {
@@ -9,7 +8,22 @@ export interface GenesisState {
   codes: Code[];
   contracts: Contract[];
   sequences: Sequence[];
-  genMsgs: GenesisState_GenMsgs[];
+}
+export interface GenesisStateProtoMsg {
+  typeUrl: "/cosmwasm.wasm.v1.GenesisState";
+  value: Uint8Array;
+}
+/** GenesisState - genesis state of x/wasm */
+
+export interface GenesisStateAmino {
+  params?: ParamsAmino;
+  codes: CodeAmino[];
+  contracts: ContractAmino[];
+  sequences: SequenceAmino[];
+}
+export interface GenesisStateAminoMsg {
+  type: "wasm/GenesisState";
+  value: GenesisStateAmino;
 }
 /** GenesisState - genesis state of x/wasm */
 
@@ -18,27 +32,6 @@ export interface GenesisStateSDKType {
   codes: CodeSDKType[];
   contracts: ContractSDKType[];
   sequences: SequenceSDKType[];
-  gen_msgs: GenesisState_GenMsgsSDKType[];
-}
-/**
- * GenMsgs define the messages that can be executed during genesis phase in
- * order. The intention is to have more human readable data that is auditable.
- */
-
-export interface GenesisState_GenMsgs {
-  storeCode?: MsgStoreCode;
-  instantiateContract?: MsgInstantiateContract;
-  executeContract?: MsgExecuteContract;
-}
-/**
- * GenMsgs define the messages that can be executed during genesis phase in
- * order. The intention is to have more human readable data that is auditable.
- */
-
-export interface GenesisState_GenMsgsSDKType {
-  store_code?: MsgStoreCodeSDKType;
-  instantiate_contract?: MsgInstantiateContractSDKType;
-  execute_contract?: MsgExecuteContractSDKType;
 }
 /** Code struct encompasses CodeInfo and CodeBytes */
 
@@ -50,14 +43,30 @@ export interface Code {
 
   pinned: boolean;
 }
+export interface CodeProtoMsg {
+  typeUrl: "/cosmwasm.wasm.v1.Code";
+  value: Uint8Array;
+}
+/** Code struct encompasses CodeInfo and CodeBytes */
+
+export interface CodeAmino {
+  code_id: string;
+  code_info?: CodeInfoAmino;
+  code_bytes: Uint8Array;
+  /** Pinned to wasmvm cache */
+
+  pinned: boolean;
+}
+export interface CodeAminoMsg {
+  type: "wasm/Code";
+  value: CodeAmino;
+}
 /** Code struct encompasses CodeInfo and CodeBytes */
 
 export interface CodeSDKType {
   code_id: Long;
   code_info?: CodeInfoSDKType;
   code_bytes: Uint8Array;
-  /** Pinned to wasmvm cache */
-
   pinned: boolean;
 }
 /** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
@@ -66,6 +75,23 @@ export interface Contract {
   contractAddress: string;
   contractInfo?: ContractInfo;
   contractState: Model[];
+  contractCodeHistory: ContractCodeHistoryEntry[];
+}
+export interface ContractProtoMsg {
+  typeUrl: "/cosmwasm.wasm.v1.Contract";
+  value: Uint8Array;
+}
+/** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
+
+export interface ContractAmino {
+  contract_address: string;
+  contract_info?: ContractInfoAmino;
+  contract_state: ModelAmino[];
+  contract_code_history: ContractCodeHistoryEntryAmino[];
+}
+export interface ContractAminoMsg {
+  type: "wasm/Contract";
+  value: ContractAmino;
 }
 /** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
 
@@ -73,12 +99,27 @@ export interface ContractSDKType {
   contract_address: string;
   contract_info?: ContractInfoSDKType;
   contract_state: ModelSDKType[];
+  contract_code_history: ContractCodeHistoryEntrySDKType[];
 }
 /** Sequence key and value of an id generation counter */
 
 export interface Sequence {
   idKey: Uint8Array;
   value: Long;
+}
+export interface SequenceProtoMsg {
+  typeUrl: "/cosmwasm.wasm.v1.Sequence";
+  value: Uint8Array;
+}
+/** Sequence key and value of an id generation counter */
+
+export interface SequenceAmino {
+  id_key: Uint8Array;
+  value: string;
+}
+export interface SequenceAminoMsg {
+  type: "wasm/Sequence";
+  value: SequenceAmino;
 }
 /** Sequence key and value of an id generation counter */
 
@@ -92,12 +133,13 @@ function createBaseGenesisState(): GenesisState {
     params: undefined,
     codes: [],
     contracts: [],
-    sequences: [],
-    genMsgs: []
+    sequences: []
   };
 }
 
 export const GenesisState = {
+  typeUrl: "/cosmwasm.wasm.v1.GenesisState",
+
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -113,10 +155,6 @@ export const GenesisState = {
 
     for (const v of message.sequences) {
       Sequence.encode(v!, writer.uint32(34).fork()).ldelim();
-    }
-
-    for (const v of message.genMsgs) {
-      GenesisState_GenMsgs.encode(v!, writer.uint32(42).fork()).ldelim();
     }
 
     return writer;
@@ -147,10 +185,6 @@ export const GenesisState = {
           message.sequences.push(Sequence.decode(reader, reader.uint32()));
           break;
 
-        case 5:
-          message.genMsgs.push(GenesisState_GenMsgs.decode(reader, reader.uint32()));
-          break;
-
         default:
           reader.skipType(tag & 7);
           break;
@@ -166,73 +200,67 @@ export const GenesisState = {
     message.codes = object.codes?.map(e => Code.fromPartial(e)) || [];
     message.contracts = object.contracts?.map(e => Contract.fromPartial(e)) || [];
     message.sequences = object.sequences?.map(e => Sequence.fromPartial(e)) || [];
-    message.genMsgs = object.genMsgs?.map(e => GenesisState_GenMsgs.fromPartial(e)) || [];
-    return message;
-  }
-
-};
-
-function createBaseGenesisState_GenMsgs(): GenesisState_GenMsgs {
-  return {
-    storeCode: undefined,
-    instantiateContract: undefined,
-    executeContract: undefined
-  };
-}
-
-export const GenesisState_GenMsgs = {
-  encode(message: GenesisState_GenMsgs, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.storeCode !== undefined) {
-      MsgStoreCode.encode(message.storeCode, writer.uint32(10).fork()).ldelim();
-    }
-
-    if (message.instantiateContract !== undefined) {
-      MsgInstantiateContract.encode(message.instantiateContract, writer.uint32(18).fork()).ldelim();
-    }
-
-    if (message.executeContract !== undefined) {
-      MsgExecuteContract.encode(message.executeContract, writer.uint32(26).fork()).ldelim();
-    }
-
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState_GenMsgs {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGenesisState_GenMsgs();
-
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-
-      switch (tag >>> 3) {
-        case 1:
-          message.storeCode = MsgStoreCode.decode(reader, reader.uint32());
-          break;
-
-        case 2:
-          message.instantiateContract = MsgInstantiateContract.decode(reader, reader.uint32());
-          break;
-
-        case 3:
-          message.executeContract = MsgExecuteContract.decode(reader, reader.uint32());
-          break;
-
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-
     return message;
   },
 
-  fromPartial(object: Partial<GenesisState_GenMsgs>): GenesisState_GenMsgs {
-    const message = createBaseGenesisState_GenMsgs();
-    message.storeCode = object.storeCode !== undefined && object.storeCode !== null ? MsgStoreCode.fromPartial(object.storeCode) : undefined;
-    message.instantiateContract = object.instantiateContract !== undefined && object.instantiateContract !== null ? MsgInstantiateContract.fromPartial(object.instantiateContract) : undefined;
-    message.executeContract = object.executeContract !== undefined && object.executeContract !== null ? MsgExecuteContract.fromPartial(object.executeContract) : undefined;
-    return message;
+  fromAmino(object: GenesisStateAmino): GenesisState {
+    return {
+      params: object?.params ? Params.fromAmino(object.params) : undefined,
+      codes: Array.isArray(object?.codes) ? object.codes.map((e: any) => Code.fromAmino(e)) : [],
+      contracts: Array.isArray(object?.contracts) ? object.contracts.map((e: any) => Contract.fromAmino(e)) : [],
+      sequences: Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Sequence.fromAmino(e)) : []
+    };
+  },
+
+  toAmino(message: GenesisState): GenesisStateAmino {
+    const obj: any = {};
+    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+
+    if (message.codes) {
+      obj.codes = message.codes.map(e => e ? Code.toAmino(e) : undefined);
+    } else {
+      obj.codes = [];
+    }
+
+    if (message.contracts) {
+      obj.contracts = message.contracts.map(e => e ? Contract.toAmino(e) : undefined);
+    } else {
+      obj.contracts = [];
+    }
+
+    if (message.sequences) {
+      obj.sequences = message.sequences.map(e => e ? Sequence.toAmino(e) : undefined);
+    } else {
+      obj.sequences = [];
+    }
+
+    return obj;
+  },
+
+  fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
+    return GenesisState.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
+    return {
+      type: "wasm/GenesisState",
+      value: GenesisState.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
+    return GenesisState.decode(message.value);
+  },
+
+  toProto(message: GenesisState): Uint8Array {
+    return GenesisState.encode(message).finish();
+  },
+
+  toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
+    return {
+      typeUrl: "/cosmwasm.wasm.v1.GenesisState",
+      value: GenesisState.encode(message).finish()
+    };
   }
 
 };
@@ -247,6 +275,8 @@ function createBaseCode(): Code {
 }
 
 export const Code = {
+  typeUrl: "/cosmwasm.wasm.v1.Code",
+
   encode(message: Code, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.codeId.isZero()) {
       writer.uint32(8).uint64(message.codeId);
@@ -308,6 +338,50 @@ export const Code = {
     message.codeBytes = object.codeBytes ?? new Uint8Array();
     message.pinned = object.pinned ?? false;
     return message;
+  },
+
+  fromAmino(object: CodeAmino): Code {
+    return {
+      codeId: Long.fromString(object.code_id),
+      codeInfo: object?.code_info ? CodeInfo.fromAmino(object.code_info) : undefined,
+      codeBytes: object.code_bytes,
+      pinned: object.pinned
+    };
+  },
+
+  toAmino(message: Code): CodeAmino {
+    const obj: any = {};
+    obj.code_id = message.codeId ? message.codeId.toString() : undefined;
+    obj.code_info = message.codeInfo ? CodeInfo.toAmino(message.codeInfo) : undefined;
+    obj.code_bytes = message.codeBytes;
+    obj.pinned = message.pinned;
+    return obj;
+  },
+
+  fromAminoMsg(object: CodeAminoMsg): Code {
+    return Code.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: Code): CodeAminoMsg {
+    return {
+      type: "wasm/Code",
+      value: Code.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: CodeProtoMsg): Code {
+    return Code.decode(message.value);
+  },
+
+  toProto(message: Code): Uint8Array {
+    return Code.encode(message).finish();
+  },
+
+  toProtoMsg(message: Code): CodeProtoMsg {
+    return {
+      typeUrl: "/cosmwasm.wasm.v1.Code",
+      value: Code.encode(message).finish()
+    };
   }
 
 };
@@ -316,11 +390,14 @@ function createBaseContract(): Contract {
   return {
     contractAddress: "",
     contractInfo: undefined,
-    contractState: []
+    contractState: [],
+    contractCodeHistory: []
   };
 }
 
 export const Contract = {
+  typeUrl: "/cosmwasm.wasm.v1.Contract",
+
   encode(message: Contract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.contractAddress !== "") {
       writer.uint32(10).string(message.contractAddress);
@@ -332,6 +409,10 @@ export const Contract = {
 
     for (const v of message.contractState) {
       Model.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+
+    for (const v of message.contractCodeHistory) {
+      ContractCodeHistoryEntry.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -358,6 +439,10 @@ export const Contract = {
           message.contractState.push(Model.decode(reader, reader.uint32()));
           break;
 
+        case 4:
+          message.contractCodeHistory.push(ContractCodeHistoryEntry.decode(reader, reader.uint32()));
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -372,7 +457,63 @@ export const Contract = {
     message.contractAddress = object.contractAddress ?? "";
     message.contractInfo = object.contractInfo !== undefined && object.contractInfo !== null ? ContractInfo.fromPartial(object.contractInfo) : undefined;
     message.contractState = object.contractState?.map(e => Model.fromPartial(e)) || [];
+    message.contractCodeHistory = object.contractCodeHistory?.map(e => ContractCodeHistoryEntry.fromPartial(e)) || [];
     return message;
+  },
+
+  fromAmino(object: ContractAmino): Contract {
+    return {
+      contractAddress: object.contract_address,
+      contractInfo: object?.contract_info ? ContractInfo.fromAmino(object.contract_info) : undefined,
+      contractState: Array.isArray(object?.contract_state) ? object.contract_state.map((e: any) => Model.fromAmino(e)) : [],
+      contractCodeHistory: Array.isArray(object?.contract_code_history) ? object.contract_code_history.map((e: any) => ContractCodeHistoryEntry.fromAmino(e)) : []
+    };
+  },
+
+  toAmino(message: Contract): ContractAmino {
+    const obj: any = {};
+    obj.contract_address = message.contractAddress;
+    obj.contract_info = message.contractInfo ? ContractInfo.toAmino(message.contractInfo) : undefined;
+
+    if (message.contractState) {
+      obj.contract_state = message.contractState.map(e => e ? Model.toAmino(e) : undefined);
+    } else {
+      obj.contract_state = [];
+    }
+
+    if (message.contractCodeHistory) {
+      obj.contract_code_history = message.contractCodeHistory.map(e => e ? ContractCodeHistoryEntry.toAmino(e) : undefined);
+    } else {
+      obj.contract_code_history = [];
+    }
+
+    return obj;
+  },
+
+  fromAminoMsg(object: ContractAminoMsg): Contract {
+    return Contract.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: Contract): ContractAminoMsg {
+    return {
+      type: "wasm/Contract",
+      value: Contract.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: ContractProtoMsg): Contract {
+    return Contract.decode(message.value);
+  },
+
+  toProto(message: Contract): Uint8Array {
+    return Contract.encode(message).finish();
+  },
+
+  toProtoMsg(message: Contract): ContractProtoMsg {
+    return {
+      typeUrl: "/cosmwasm.wasm.v1.Contract",
+      value: Contract.encode(message).finish()
+    };
   }
 
 };
@@ -385,6 +526,8 @@ function createBaseSequence(): Sequence {
 }
 
 export const Sequence = {
+  typeUrl: "/cosmwasm.wasm.v1.Sequence",
+
   encode(message: Sequence, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.idKey.length !== 0) {
       writer.uint32(10).bytes(message.idKey);
@@ -428,6 +571,46 @@ export const Sequence = {
     message.idKey = object.idKey ?? new Uint8Array();
     message.value = object.value !== undefined && object.value !== null ? Long.fromValue(object.value) : Long.UZERO;
     return message;
+  },
+
+  fromAmino(object: SequenceAmino): Sequence {
+    return {
+      idKey: object.id_key,
+      value: Long.fromString(object.value)
+    };
+  },
+
+  toAmino(message: Sequence): SequenceAmino {
+    const obj: any = {};
+    obj.id_key = message.idKey;
+    obj.value = message.value ? message.value.toString() : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: SequenceAminoMsg): Sequence {
+    return Sequence.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: Sequence): SequenceAminoMsg {
+    return {
+      type: "wasm/Sequence",
+      value: Sequence.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: SequenceProtoMsg): Sequence {
+    return Sequence.decode(message.value);
+  },
+
+  toProto(message: Sequence): Uint8Array {
+    return Sequence.encode(message).finish();
+  },
+
+  toProtoMsg(message: Sequence): SequenceProtoMsg {
+    return {
+      typeUrl: "/cosmwasm.wasm.v1.Sequence",
+      value: Sequence.encode(message).finish()
+    };
   }
 
 };

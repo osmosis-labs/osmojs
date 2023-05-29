@@ -1,4 +1,4 @@
-import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkSDKType } from "./genesis";
+import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./genesis";
 import * as _m0 from "protobufjs/minimal";
 /**
  * ReplaceMigrationRecordsProposal is a gov Content type for updating the
@@ -12,6 +12,27 @@ export interface ReplaceMigrationRecordsProposal {
   title: string;
   description: string;
   records: BalancerToConcentratedPoolLink[];
+}
+export interface ReplaceMigrationRecordsProposalProtoMsg {
+  typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal";
+  value: Uint8Array;
+}
+/**
+ * ReplaceMigrationRecordsProposal is a gov Content type for updating the
+ * migration records. If a ReplaceMigrationRecordsProposal passes, the
+ * proposal’s records override the existing MigrationRecords set in the module.
+ * Each record specifies a single connection between a single balancer pool and
+ * a single concentrated pool.
+ */
+
+export interface ReplaceMigrationRecordsProposalAmino {
+  title: string;
+  description: string;
+  records: BalancerToConcentratedPoolLinkAmino[];
+}
+export interface ReplaceMigrationRecordsProposalAminoMsg {
+  type: "osmosis/gamm/replace-migration-records-proposal";
+  value: ReplaceMigrationRecordsProposalAmino;
 }
 /**
  * ReplaceMigrationRecordsProposal is a gov Content type for updating the
@@ -42,6 +63,30 @@ export interface UpdateMigrationRecordsProposal {
   description: string;
   records: BalancerToConcentratedPoolLink[];
 }
+export interface UpdateMigrationRecordsProposalProtoMsg {
+  typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal";
+  value: Uint8Array;
+}
+/**
+ * For example: if the existing DistrRecords were:
+ * [(Balancer 1, CL 5), (Balancer 2, CL 6), (Balancer 3, CL 7)]
+ * And an UpdateMigrationRecordsProposal includes
+ * [(Balancer 2, CL 0), (Balancer 3, CL 4), (Balancer 4, CL 10)]
+ * This would leave Balancer 1 record, delete Balancer 2 record,
+ * Edit Balancer 3 record, and Add Balancer 4 record
+ * The result MigrationRecords in state would be:
+ * [(Balancer 1, CL 5), (Balancer 3, CL 4), (Balancer 4, CL 10)]
+ */
+
+export interface UpdateMigrationRecordsProposalAmino {
+  title: string;
+  description: string;
+  records: BalancerToConcentratedPoolLinkAmino[];
+}
+export interface UpdateMigrationRecordsProposalAminoMsg {
+  type: "osmosis/gamm/update-migration-records-proposal";
+  value: UpdateMigrationRecordsProposalAmino;
+}
 /**
  * For example: if the existing DistrRecords were:
  * [(Balancer 1, CL 5), (Balancer 2, CL 6), (Balancer 3, CL 7)]
@@ -68,6 +113,8 @@ function createBaseReplaceMigrationRecordsProposal(): ReplaceMigrationRecordsPro
 }
 
 export const ReplaceMigrationRecordsProposal = {
+  typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal",
+
   encode(message: ReplaceMigrationRecordsProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -120,6 +167,54 @@ export const ReplaceMigrationRecordsProposal = {
     message.description = object.description ?? "";
     message.records = object.records?.map(e => BalancerToConcentratedPoolLink.fromPartial(e)) || [];
     return message;
+  },
+
+  fromAmino(object: ReplaceMigrationRecordsProposalAmino): ReplaceMigrationRecordsProposal {
+    return {
+      title: object.title,
+      description: object.description,
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => BalancerToConcentratedPoolLink.fromAmino(e)) : []
+    };
+  },
+
+  toAmino(message: ReplaceMigrationRecordsProposal): ReplaceMigrationRecordsProposalAmino {
+    const obj: any = {};
+    obj.title = message.title;
+    obj.description = message.description;
+
+    if (message.records) {
+      obj.records = message.records.map(e => e ? BalancerToConcentratedPoolLink.toAmino(e) : undefined);
+    } else {
+      obj.records = [];
+    }
+
+    return obj;
+  },
+
+  fromAminoMsg(object: ReplaceMigrationRecordsProposalAminoMsg): ReplaceMigrationRecordsProposal {
+    return ReplaceMigrationRecordsProposal.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: ReplaceMigrationRecordsProposal): ReplaceMigrationRecordsProposalAminoMsg {
+    return {
+      type: "osmosis/gamm/replace-migration-records-proposal",
+      value: ReplaceMigrationRecordsProposal.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: ReplaceMigrationRecordsProposalProtoMsg): ReplaceMigrationRecordsProposal {
+    return ReplaceMigrationRecordsProposal.decode(message.value);
+  },
+
+  toProto(message: ReplaceMigrationRecordsProposal): Uint8Array {
+    return ReplaceMigrationRecordsProposal.encode(message).finish();
+  },
+
+  toProtoMsg(message: ReplaceMigrationRecordsProposal): ReplaceMigrationRecordsProposalProtoMsg {
+    return {
+      typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal",
+      value: ReplaceMigrationRecordsProposal.encode(message).finish()
+    };
   }
 
 };
@@ -133,6 +228,8 @@ function createBaseUpdateMigrationRecordsProposal(): UpdateMigrationRecordsPropo
 }
 
 export const UpdateMigrationRecordsProposal = {
+  typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
+
   encode(message: UpdateMigrationRecordsProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -185,6 +282,54 @@ export const UpdateMigrationRecordsProposal = {
     message.description = object.description ?? "";
     message.records = object.records?.map(e => BalancerToConcentratedPoolLink.fromPartial(e)) || [];
     return message;
+  },
+
+  fromAmino(object: UpdateMigrationRecordsProposalAmino): UpdateMigrationRecordsProposal {
+    return {
+      title: object.title,
+      description: object.description,
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => BalancerToConcentratedPoolLink.fromAmino(e)) : []
+    };
+  },
+
+  toAmino(message: UpdateMigrationRecordsProposal): UpdateMigrationRecordsProposalAmino {
+    const obj: any = {};
+    obj.title = message.title;
+    obj.description = message.description;
+
+    if (message.records) {
+      obj.records = message.records.map(e => e ? BalancerToConcentratedPoolLink.toAmino(e) : undefined);
+    } else {
+      obj.records = [];
+    }
+
+    return obj;
+  },
+
+  fromAminoMsg(object: UpdateMigrationRecordsProposalAminoMsg): UpdateMigrationRecordsProposal {
+    return UpdateMigrationRecordsProposal.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: UpdateMigrationRecordsProposal): UpdateMigrationRecordsProposalAminoMsg {
+    return {
+      type: "osmosis/gamm/update-migration-records-proposal",
+      value: UpdateMigrationRecordsProposal.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: UpdateMigrationRecordsProposalProtoMsg): UpdateMigrationRecordsProposal {
+    return UpdateMigrationRecordsProposal.decode(message.value);
+  },
+
+  toProto(message: UpdateMigrationRecordsProposal): Uint8Array {
+    return UpdateMigrationRecordsProposal.encode(message).finish();
+  },
+
+  toProtoMsg(message: UpdateMigrationRecordsProposal): UpdateMigrationRecordsProposalProtoMsg {
+    return {
+      typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
+      value: UpdateMigrationRecordsProposal.encode(message).finish()
+    };
   }
 
 };

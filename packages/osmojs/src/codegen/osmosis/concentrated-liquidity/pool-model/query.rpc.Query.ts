@@ -1,22 +1,26 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryPoolsRequest, QueryPoolsResponse, QueryParamsRequest, QueryParamsResponse, QueryLiquidityDepthsForRangeRequest, QueryLiquidityDepthsForRangeResponse, QueryUserPositionsRequest, QueryUserPositionsResponse, QueryTotalLiquidityForRangeRequest, QueryTotalLiquidityForRangeResponse, QueryClaimableFeesRequest, QueryClaimableFeesResponse, QueryPositionByIdRequest, QueryPositionByIdResponse } from "./query";
+import { QueryPoolsRequest, QueryPoolsResponse, QueryParamsRequest, QueryParamsResponse, QueryUserPositionsRequest, QueryUserPositionsResponse, QueryTotalLiquidityForRangeRequest, QueryTotalLiquidityForRangeResponse, QueryLiquidityNetInDirectionRequest, QueryLiquidityNetInDirectionResponse, QueryClaimableFeesRequest, QueryClaimableFeesResponse, QueryPositionByIdRequest, QueryPositionByIdResponse } from "./query";
 export interface Query {
   /** Pools returns all concentrated liquidity pools */
   pools(request?: QueryPoolsRequest): Promise<QueryPoolsResponse>;
   /** Params returns concentrated liquidity module params. */
 
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-  /** LiquidityDepthsForRange returns Liqiudity Depths for given range */
-
-  liquidityDepthsForRange(request: QueryLiquidityDepthsForRangeRequest): Promise<QueryLiquidityDepthsForRangeResponse>;
   /** UserPositions returns all concentrated postitions of some address. */
 
   userPositions(request: QueryUserPositionsRequest): Promise<QueryUserPositionsResponse>;
   /** TotalLiquidityForRange the amount of liquidity existing within given range. */
 
   totalLiquidityForRange(request: QueryTotalLiquidityForRangeRequest): Promise<QueryTotalLiquidityForRangeResponse>;
+  /**
+   * LiquidityNetInDirection returns liquidity net in the direction given.
+   * Uses the bound if specified, if not uses either min tick / max tick
+   * depending on the direction.
+   */
+
+  liquidityNetInDirection(request: QueryLiquidityNetInDirectionRequest): Promise<QueryLiquidityNetInDirectionResponse>;
   /**
    * ClaimableFees returns the amount of fees that can be claimed by a position
    * with the given id.
@@ -34,9 +38,9 @@ export class QueryClientImpl implements Query {
     this.rpc = rpc;
     this.pools = this.pools.bind(this);
     this.params = this.params.bind(this);
-    this.liquidityDepthsForRange = this.liquidityDepthsForRange.bind(this);
     this.userPositions = this.userPositions.bind(this);
     this.totalLiquidityForRange = this.totalLiquidityForRange.bind(this);
+    this.liquidityNetInDirection = this.liquidityNetInDirection.bind(this);
     this.claimableFees = this.claimableFees.bind(this);
     this.positionById = this.positionById.bind(this);
   }
@@ -55,12 +59,6 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
 
-  liquidityDepthsForRange(request: QueryLiquidityDepthsForRangeRequest): Promise<QueryLiquidityDepthsForRangeResponse> {
-    const data = QueryLiquidityDepthsForRangeRequest.encode(request).finish();
-    const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "LiquidityDepthsForRange", data);
-    return promise.then(data => QueryLiquidityDepthsForRangeResponse.decode(new _m0.Reader(data)));
-  }
-
   userPositions(request: QueryUserPositionsRequest): Promise<QueryUserPositionsResponse> {
     const data = QueryUserPositionsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "UserPositions", data);
@@ -71,6 +69,12 @@ export class QueryClientImpl implements Query {
     const data = QueryTotalLiquidityForRangeRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "TotalLiquidityForRange", data);
     return promise.then(data => QueryTotalLiquidityForRangeResponse.decode(new _m0.Reader(data)));
+  }
+
+  liquidityNetInDirection(request: QueryLiquidityNetInDirectionRequest): Promise<QueryLiquidityNetInDirectionResponse> {
+    const data = QueryLiquidityNetInDirectionRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "LiquidityNetInDirection", data);
+    return promise.then(data => QueryLiquidityNetInDirectionResponse.decode(new _m0.Reader(data)));
   }
 
   claimableFees(request: QueryClaimableFeesRequest): Promise<QueryClaimableFeesResponse> {
@@ -98,16 +102,16 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.params(request);
     },
 
-    liquidityDepthsForRange(request: QueryLiquidityDepthsForRangeRequest): Promise<QueryLiquidityDepthsForRangeResponse> {
-      return queryService.liquidityDepthsForRange(request);
-    },
-
     userPositions(request: QueryUserPositionsRequest): Promise<QueryUserPositionsResponse> {
       return queryService.userPositions(request);
     },
 
     totalLiquidityForRange(request: QueryTotalLiquidityForRangeRequest): Promise<QueryTotalLiquidityForRangeResponse> {
       return queryService.totalLiquidityForRange(request);
+    },
+
+    liquidityNetInDirection(request: QueryLiquidityNetInDirectionRequest): Promise<QueryLiquidityNetInDirectionResponse> {
+      return queryService.liquidityNetInDirection(request);
     },
 
     claimableFees(request: QueryClaimableFeesRequest): Promise<QueryClaimableFeesResponse> {

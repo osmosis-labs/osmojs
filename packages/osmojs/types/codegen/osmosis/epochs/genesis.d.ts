@@ -1,6 +1,6 @@
-import { Duration, DurationSDKType } from "../../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
+import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * EpochInfo is a struct that describes the data going into
  * a timer defined by the x/epochs module.
@@ -59,11 +59,15 @@ export interface EpochInfo {
      */
     currentEpochStartHeight: Long;
 }
+export interface EpochInfoProtoMsg {
+    typeUrl: "/osmosis.epochs.v1beta1.EpochInfo";
+    value: Uint8Array;
+}
 /**
  * EpochInfo is a struct that describes the data going into
  * a timer defined by the x/epochs module.
  */
-export interface EpochInfoSDKType {
+export interface EpochInfoAmino {
     /** identifier is a unique reference to this particular timer. */
     identifier: string;
     /**
@@ -78,14 +82,14 @@ export interface EpochInfoSDKType {
      * be greater than the chains expected block time.
      * Duration must be non-zero.
      */
-    duration?: DurationSDKType;
+    duration?: DurationAmino;
     /**
      * current_epoch is the current epoch number, or in other words,
      * how many times has the timer 'ticked'.
      * The first tick (current_epoch=1) is defined as
      * the first block whose blocktime is greater than the EpochInfo start_time.
      */
-    current_epoch: Long;
+    current_epoch: string;
     /**
      * current_epoch_start_time describes the start time of the current timer
      * interval. The interval is (current_epoch_start_time,
@@ -115,23 +119,68 @@ export interface EpochInfoSDKType {
      * current_epoch_start_height is the block height at which the current epoch
      * started. (The block height at which the timer last ticked)
      */
+    current_epoch_start_height: string;
+}
+export interface EpochInfoAminoMsg {
+    type: "osmosis/epochs/epoch-info";
+    value: EpochInfoAmino;
+}
+/**
+ * EpochInfo is a struct that describes the data going into
+ * a timer defined by the x/epochs module.
+ */
+export interface EpochInfoSDKType {
+    identifier: string;
+    start_time?: Date;
+    duration?: DurationSDKType;
+    current_epoch: Long;
+    current_epoch_start_time?: Date;
+    epoch_counting_started: boolean;
     current_epoch_start_height: Long;
 }
 /** GenesisState defines the epochs module's genesis state. */
 export interface GenesisState {
     epochs: EpochInfo[];
 }
+export interface GenesisStateProtoMsg {
+    typeUrl: "/osmosis.epochs.v1beta1.GenesisState";
+    value: Uint8Array;
+}
+/** GenesisState defines the epochs module's genesis state. */
+export interface GenesisStateAmino {
+    epochs: EpochInfoAmino[];
+}
+export interface GenesisStateAminoMsg {
+    type: "osmosis/epochs/genesis-state";
+    value: GenesisStateAmino;
+}
 /** GenesisState defines the epochs module's genesis state. */
 export interface GenesisStateSDKType {
     epochs: EpochInfoSDKType[];
 }
 export declare const EpochInfo: {
+    typeUrl: string;
     encode(message: EpochInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EpochInfo;
     fromPartial(object: Partial<EpochInfo>): EpochInfo;
+    fromAmino(object: EpochInfoAmino): EpochInfo;
+    toAmino(message: EpochInfo): EpochInfoAmino;
+    fromAminoMsg(object: EpochInfoAminoMsg): EpochInfo;
+    toAminoMsg(message: EpochInfo): EpochInfoAminoMsg;
+    fromProtoMsg(message: EpochInfoProtoMsg): EpochInfo;
+    toProto(message: EpochInfo): Uint8Array;
+    toProtoMsg(message: EpochInfo): EpochInfoProtoMsg;
 };
 export declare const GenesisState: {
+    typeUrl: string;
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
+    fromAmino(object: GenesisStateAmino): GenesisState;
+    toAmino(message: GenesisState): GenesisStateAmino;
+    fromAminoMsg(object: GenesisStateAminoMsg): GenesisState;
+    toAminoMsg(message: GenesisState): GenesisStateAminoMsg;
+    fromProtoMsg(message: GenesisStateProtoMsg): GenesisState;
+    toProto(message: GenesisState): Uint8Array;
+    toProtoMsg(message: GenesisState): GenesisStateProtoMsg;
 };

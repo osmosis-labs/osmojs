@@ -1,3 +1,4 @@
+import { getOsmoAssetByDenom } from "../src/utils";
 import priceResponse from "../../../__fixtures__/coingecko/api/v3/simple/price/data.json";
 import poolResponse from "../../../__fixtures__/rpc/osmosis/gamm/v1beta1/pools/data.json";
 import {
@@ -13,7 +14,6 @@ import {
 } from "../src/pool";
 import cases from "jest-in-case";
 import { noDecimals, convertGeckoPricesToDenomPriceHash } from "../src/utils";
-import Long from "long";
 
 const fakeBalances = [
   {
@@ -231,7 +231,17 @@ describe("Test pool calculations", () => {
   );
 
   test("makePoolPairs", () => {
-    const poolPairs = makePoolPairs(pools);
-    expect(poolPairs.slice(0, 10)).toMatchSnapshot();
+    const poolsFiltered = pools.filter((pool) =>
+      pool.poolAssets.every(({ token }) => {
+        try {
+          return !!getOsmoAssetByDenom(token.denom);
+        } catch (error) {
+          return false;
+        }
+      })
+    );
+    const LIQUIDITY_LIMIT = 50000000;
+    const poolPairs = makePoolPairs(poolsFiltered, prices, LIQUIDITY_LIMIT);
+    expect(poolPairs).toMatchSnapshot();
   });
 });

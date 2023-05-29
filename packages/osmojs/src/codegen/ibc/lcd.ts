@@ -9,6 +9,11 @@ export const createLCDClient = async ({
   });
   return {
     cosmos: {
+      auth: {
+        v1beta1: new (await import("../cosmos/auth/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       authz: {
         v1beta1: new (await import("../cosmos/authz/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
@@ -19,16 +24,23 @@ export const createLCDClient = async ({
           requestClient
         })
       },
+      base: {
+        node: {
+          v1beta1: new (await import("../cosmos/base/node/v1beta1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        }
+      },
       distribution: {
         v1beta1: new (await import("../cosmos/distribution/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
       gov: {
-        v1: new (await import("../cosmos/gov/v1/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("../cosmos/gov/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         }),
-        v1beta1: new (await import("../cosmos/gov/v1beta1/query.lcd")).LCDQueryClient({
+        v1: new (await import("../cosmos/gov/v1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
@@ -46,17 +58,27 @@ export const createLCDClient = async ({
         v1beta1: new (await import("../cosmos/upgrade/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
-      },
-      base: {
-        node: {
-          v1beta1: new (await import("../cosmos/base/node/v1beta1/query.lcd")).LCDQueryClient({
-            requestClient
-          })
-        }
       }
     },
     ibc: {
       applications: {
+        fee: {
+          v1: new (await import("./applications/fee/v1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        },
+        interchain_accounts: {
+          controller: {
+            v1: new (await import("./applications/interchain_accounts/controller/v1/query.lcd")).LCDQueryClient({
+              requestClient
+            })
+          },
+          host: {
+            v1: new (await import("./applications/interchain_accounts/host/v1/query.lcd")).LCDQueryClient({
+              requestClient
+            })
+          }
+        },
         transfer: {
           v1: new (await import("./applications/transfer/v1/query.lcd")).LCDQueryClient({
             requestClient

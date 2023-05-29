@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryDenomTraceRequest, QueryDenomTraceResponseSDKType, QueryDenomTracesRequest, QueryDenomTracesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType } from "./query";
+import { QueryDenomTraceRequest, QueryDenomTraceResponseSDKType, QueryDenomTracesRequest, QueryDenomTracesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomHashRequest, QueryDenomHashResponseSDKType, QueryEscrowAddressRequest, QueryEscrowAddressResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -13,13 +13,23 @@ export class LCDQueryClient {
     this.denomTrace = this.denomTrace.bind(this);
     this.denomTraces = this.denomTraces.bind(this);
     this.params = this.params.bind(this);
+    this.denomHash = this.denomHash.bind(this);
+    this.escrowAddress = this.escrowAddress.bind(this);
   }
   /* DenomTrace queries a denomination trace information. */
 
 
   async denomTrace(params: QueryDenomTraceRequest): Promise<QueryDenomTraceResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+
+    if (typeof params?.hash !== "undefined") {
+      options.params.hash = params.hash;
+    }
+
     const endpoint = `ibc/apps/transfer/v1/denom_traces/${params.hash}`;
-    return await this.req.get<QueryDenomTraceResponseSDKType>(endpoint);
+    return await this.req.get<QueryDenomTraceResponseSDKType>(endpoint, options);
   }
   /* DenomTraces queries all denomination traces. */
 
@@ -44,6 +54,28 @@ export class LCDQueryClient {
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const endpoint = `ibc/apps/transfer/v1/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
+  }
+  /* DenomHash queries a denomination hash information. */
+
+
+  async denomHash(params: QueryDenomHashRequest): Promise<QueryDenomHashResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+
+    if (typeof params?.trace !== "undefined") {
+      options.params.trace = params.trace;
+    }
+
+    const endpoint = `ibc/apps/transfer/v1/denom_hashes/${params.trace}`;
+    return await this.req.get<QueryDenomHashResponseSDKType>(endpoint, options);
+  }
+  /* EscrowAddress returns the escrow address for a particular port and channel id. */
+
+
+  async escrowAddress(params: QueryEscrowAddressRequest): Promise<QueryEscrowAddressResponseSDKType> {
+    const endpoint = `ibc/apps/transfer/v1/channels/${params.channelId}/ports/${params.portId}/escrow_address`;
+    return await this.req.get<QueryEscrowAddressResponseSDKType>(endpoint);
   }
 
 }

@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryBalanceRequest, QueryBalanceResponseSDKType, QueryAllBalancesRequest, QueryAllBalancesResponseSDKType, QuerySpendableBalancesRequest, QuerySpendableBalancesResponseSDKType, QueryTotalSupplyRequest, QueryTotalSupplyResponseSDKType, QuerySupplyOfRequest, QuerySupplyOfResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomMetadataRequest, QueryDenomMetadataResponseSDKType, QueryDenomsMetadataRequest, QueryDenomsMetadataResponseSDKType, QueryDenomOwnersRequest, QueryDenomOwnersResponseSDKType } from "./query";
+import { QueryBalanceRequest, QueryBalanceResponseSDKType, QueryAllBalancesRequest, QueryAllBalancesResponseSDKType, QueryTotalSupplyRequest, QueryTotalSupplyResponseSDKType, QuerySupplyOfRequest, QuerySupplyOfResponseSDKType, QueryTotalSupplyWithoutOffsetRequest, QueryTotalSupplyWithoutOffsetResponseSDKType, QuerySupplyOfWithoutOffsetRequest, QuerySupplyOfWithoutOffsetResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomMetadataRequest, QueryDenomMetadataResponseSDKType, QueryDenomsMetadataRequest, QueryDenomsMetadataResponseSDKType, QueryBaseDenomRequest, QueryBaseDenomResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -12,13 +12,14 @@ export class LCDQueryClient {
     this.req = requestClient;
     this.balance = this.balance.bind(this);
     this.allBalances = this.allBalances.bind(this);
-    this.spendableBalances = this.spendableBalances.bind(this);
     this.totalSupply = this.totalSupply.bind(this);
     this.supplyOf = this.supplyOf.bind(this);
+    this.totalSupplyWithoutOffset = this.totalSupplyWithoutOffset.bind(this);
+    this.supplyOfWithoutOffset = this.supplyOfWithoutOffset.bind(this);
     this.params = this.params.bind(this);
     this.denomMetadata = this.denomMetadata.bind(this);
     this.denomsMetadata = this.denomsMetadata.bind(this);
-    this.denomOwners = this.denomOwners.bind(this);
+    this.baseDenom = this.baseDenom.bind(this);
   }
   /* Balance queries the balance of a single coin for a single account. */
 
@@ -50,22 +51,6 @@ export class LCDQueryClient {
     const endpoint = `cosmos/bank/v1beta1/balances/${params.address}`;
     return await this.req.get<QueryAllBalancesResponseSDKType>(endpoint, options);
   }
-  /* SpendableBalances queries the spenable balance of all coins for a single
-   account. */
-
-
-  async spendableBalances(params: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType> {
-    const options: any = {
-      params: {}
-    };
-
-    if (typeof params?.pagination !== "undefined") {
-      setPaginationParams(options, params.pagination);
-    }
-
-    const endpoint = `cosmos/bank/v1beta1/spendable_balances/${params.address}`;
-    return await this.req.get<QuerySpendableBalancesResponseSDKType>(endpoint, options);
-  }
   /* TotalSupply queries the total supply of all coins. */
 
 
@@ -87,16 +72,32 @@ export class LCDQueryClient {
 
 
   async supplyOf(params: QuerySupplyOfRequest): Promise<QuerySupplyOfResponseSDKType> {
+    const endpoint = `cosmos/bank/v1beta1/supply/${params.denom}`;
+    return await this.req.get<QuerySupplyOfResponseSDKType>(endpoint);
+  }
+  /* TotalSupplyWithoutOffset queries the total supply of all coins. */
+
+
+  async totalSupplyWithoutOffset(params: QueryTotalSupplyWithoutOffsetRequest = {
+    pagination: undefined
+  }): Promise<QueryTotalSupplyWithoutOffsetResponseSDKType> {
     const options: any = {
       params: {}
     };
 
-    if (typeof params?.denom !== "undefined") {
-      options.params.denom = params.denom;
+    if (typeof params?.pagination !== "undefined") {
+      setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/bank/v1beta1/supply/by_denom`;
-    return await this.req.get<QuerySupplyOfResponseSDKType>(endpoint, options);
+    const endpoint = `cosmos/bank/v1beta1/supply_without_offset`;
+    return await this.req.get<QueryTotalSupplyWithoutOffsetResponseSDKType>(endpoint, options);
+  }
+  /* SupplyOf queries the supply of a single coin. */
+
+
+  async supplyOfWithoutOffset(params: QuerySupplyOfWithoutOffsetRequest): Promise<QuerySupplyOfWithoutOffsetResponseSDKType> {
+    const endpoint = `cosmos/bank/v1beta1/supply_without_offset/${params.denom}`;
+    return await this.req.get<QuerySupplyOfWithoutOffsetResponseSDKType>(endpoint);
   }
   /* Params queries the parameters of x/bank module. */
 
@@ -112,8 +113,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/bank/v1beta1/denoms_metadata/${params.denom}`;
     return await this.req.get<QueryDenomMetadataResponseSDKType>(endpoint);
   }
-  /* DenomsMetadata queries the client metadata for all registered coin
-   denominations. */
+  /* DenomsMetadata queries the client metadata for all registered coin denominations. */
 
 
   async denomsMetadata(params: QueryDenomsMetadataRequest = {
@@ -130,21 +130,21 @@ export class LCDQueryClient {
     const endpoint = `cosmos/bank/v1beta1/denoms_metadata`;
     return await this.req.get<QueryDenomsMetadataResponseSDKType>(endpoint, options);
   }
-  /* DenomOwners queries for all account addresses that own a particular token
-   denomination. */
+  /* BaseDenom queries for a base denomination given a denom that can either be
+   the base denom itself or a metadata denom unit that maps to the base denom. */
 
 
-  async denomOwners(params: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType> {
+  async baseDenom(params: QueryBaseDenomRequest): Promise<QueryBaseDenomResponseSDKType> {
     const options: any = {
       params: {}
     };
 
-    if (typeof params?.pagination !== "undefined") {
-      setPaginationParams(options, params.pagination);
+    if (typeof params?.denom !== "undefined") {
+      options.params.denom = params.denom;
     }
 
-    const endpoint = `cosmos/bank/v1beta1/denom_owners/${params.denom}`;
-    return await this.req.get<QueryDenomOwnersResponseSDKType>(endpoint, options);
+    const endpoint = `cosmos/bank/v1beta1/base_denom`;
+    return await this.req.get<QueryBaseDenomResponseSDKType>(endpoint, options);
   }
 
 }
