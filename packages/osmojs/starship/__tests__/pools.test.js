@@ -133,7 +133,9 @@ describe('Pool testing over IBC tokens', () => {
     const gammBalance = await client.getBalance(address, gammDenom);
 
     expect(gammBalance.denom).toEqual(gammDenom);
+    // eslint-disable-next-line no-undef
     expect(BigInt(gammBalance.amount)).toEqual(
+      // eslint-disable-next-line no-undef
       BigInt(poolResponse.pool.totalShares.amount)
     );
 
@@ -182,7 +184,9 @@ describe('Pool testing over IBC tokens', () => {
     const gammBalance = await signingClient.getBalance(address, gammDenom);
 
     expect(gammBalance.denom).toEqual(gammDenom);
+    // eslint-disable-next-line no-undef
     expect(BigInt(gammBalance.amount)).toEqual(
+      // eslint-disable-next-line no-undef
       BigInt(shareOutAmount) + BigInt(totalgammAmount)
     );
   }, 200000);
@@ -295,7 +299,9 @@ describe('Pool testing over IBC tokens', () => {
     const balanceAfter = await signingClient.getBalance(address, ibcDenom);
 
     // Verify balance increase of ibc denom is from token swap
+    // eslint-disable-next-line no-undef
     expect(BigInt(balanceAfter.amount) - BigInt(balanceBefore.amount)).toEqual(
+      // eslint-disable-next-line no-undef
       BigInt(amountOut)
     );
   }, 200000);

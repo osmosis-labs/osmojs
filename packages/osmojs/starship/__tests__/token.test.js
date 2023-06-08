@@ -1,5 +1,6 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
+import {assertIsDeliverTxSuccess} from '@cosmjs/stargate';
 
 import {
   osmosis,
@@ -84,11 +85,9 @@ describe('Token transfers', () => {
 
     const {
       chainInfo: cosmosChainInfo,
-      getCoin: cosmosGetCoin,
       getStargateClient: cosmosGetStargateClient,
       getRpcEndpoint: cosmosRpcEndpoint
     } = useChain('cosmos');
-    const cosmosDenom = cosmosGetCoin().base;
 
     // Initialize wallet address for cosmos chain
     const cosmosWallet = await DirectSecp256k1HdWallet.fromMnemonic(
@@ -141,6 +140,8 @@ describe('Token transfers', () => {
       timeoutTime,
       fee
     );
+
+    assertIsDeliverTxSuccess(resp);
 
     // Check osmos in address on cosmos chain
     const cosmosClient = await cosmosGetStargateClient();

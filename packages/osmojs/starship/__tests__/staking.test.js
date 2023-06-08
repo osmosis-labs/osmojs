@@ -84,6 +84,7 @@ describe('Staking tokens testing', () => {
     });
 
     // Stake half of the tokens
+    // eslint-disable-next-line no-undef
     delegationAmount = (BigInt(balance.amount) / BigInt(2)).toString();
     const msg = cosmos.staking.v1beta1.MessageComposer.fromPartial.delegate({
       delegatorAddress: address,
@@ -116,7 +117,9 @@ describe('Staking tokens testing', () => {
       });
 
     // Assert that the delegation amount is the set delegation amount
+    // eslint-disable-next-line no-undef
     expect(BigInt(delegationResponse.balance.amount)).toBeGreaterThan(
+      // eslint-disable-next-line no-undef
       BigInt(0)
     );
     expect(delegationResponse.balance.amount).toEqual(delegationAmount);
