@@ -4,8 +4,7 @@ import Long from 'long';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 
 import { cosmos, getSigningOsmosisClient } from '../../src/codegen';
-import { waitUntil } from './utils.js';
-import { useChain } from '../src';
+import { useChain, waitUntil } from '../src';
 import './setup.test';
 
 describe('Governance tests for osmosis', () => {

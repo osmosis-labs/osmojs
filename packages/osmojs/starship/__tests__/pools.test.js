@@ -5,8 +5,7 @@ import Long from 'long';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 
 import { osmosis, google, getSigningOsmosisClient } from '../../src/codegen';
-import { calcShareOutAmount, transferIbcTokens } from './utils.js';
-import { useChain } from '../src';
+import { useChain, calcShareOutAmount, transferIbcTokens } from '../src';
 import './setup.test';
 
 describe('Pool testing over IBC tokens', () => {
