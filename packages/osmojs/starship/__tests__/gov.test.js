@@ -1,62 +1,67 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
-import {
-  assertIsDeliverTxSuccess,
-  SigningStargateClient
-} from '@cosmjs/stargate';
-import { coins } from '@cosmjs/amino';
+import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import Long from 'long';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 
-import { cosmos } from '../../src/codegen';
-import { ChainClients } from './setup.test';
+import { cosmos, getSigningOsmosisClient } from '../../src/codegen';
 import { waitUntil } from './utils.js';
+import { useChain } from '../src';
+import './setup.test';
 
 describe('Governance tests for osmosis', () => {
-  let wallet;
-  let baseDenom;
-  let address;
-  let chainClients;
-  let chain;
+  let wallet, denom, address;
+  let chainInfo,
+    getCoin,
+    getStargateClient,
+    getGenesisMnemonic,
+    getRpcEndpoint,
+    creditFromFaucet;
 
   // Variables used accross testcases
   let queryClient;
   let proposalId;
+  let genesisAddress;
 
   beforeAll(async () => {
-    chainClients = ChainClients;
-    baseDenom = chainClients['osmosis-1'].getDenom();
-    chain = chainClients['osmosis-1'];
+    ({
+      chainInfo,
+      getCoin,
+      getStargateClient,
+      getGenesisMnemonic,
+      getRpcEndpoint,
+      creditFromFaucet
+    } = useChain('osmosis'));
+    denom = getCoin().base;
 
     // Initialize wallet
     wallet = await DirectSecp256k1HdWallet.fromMnemonic(generateMnemonic(), {
-      prefix: chain.getPrefix()
+      prefix: chainInfo.chain.bech32_prefix
     });
     address = (await wallet.getAccounts())[0].address;
 
     // Create custom cosmos interchain client
     queryClient = await cosmos.ClientFactory.createRPCQueryClient({
-      rpcEndpoint: chain.rpc
+      rpcEndpoint: getRpcEndpoint()
     });
 
-    // Transfer osmosis and ibc tokens to address, send only osmo to address
-    await chain.sendTokens(address, '100000000000');
+    // Transfer osmosis to address
+    await creditFromFaucet(address);
   }, 200000);
 
   it('check address has tokens', async () => {
     const { balance } = await queryClient.cosmos.bank.v1beta1.balance({
       address,
-      denom: chain.getDenom()
+      denom
     });
 
-    expect(balance.amount).toEqual('100000000000');
+    expect(balance.amount).toEqual('10000000000');
   }, 10000);
 
   it('submit a txt proposal', async () => {
-    const signingClient = await SigningStargateClient.connectWithSigner(
-      chain.rpc,
-      wallet,
-      chain.stargateClientOpts()
-    );
+    const signingClient = await getSigningOsmosisClient({
+      rpcEndpoint: getRpcEndpoint(),
+      signer: wallet
+    });
 
     const contentMsg = cosmos.gov.v1beta1.TextProposal.fromPartial({
       title: 'Test Proposal',
@@ -66,7 +71,12 @@ describe('Governance tests for osmosis', () => {
     // Stake half of the tokens
     const msg = cosmos.gov.v1beta1.MessageComposer.withTypeUrl.submitProposal({
       proposer: address,
-      initialDeposit: coins(1_000_000, baseDenom),
+      initialDeposit: [
+        {
+          amount: '1000000',
+          denom: denom
+        }
+      ],
       content: {
         typeUrl: '/cosmos.gov.v1beta1.TextProposal',
         value: cosmos.gov.v1beta1.TextProposal.encode(contentMsg).finish()
@@ -74,8 +84,13 @@ describe('Governance tests for osmosis', () => {
     });
 
     const fee = {
-      amount: coins(100_000, baseDenom),
-      gas: '200000'
+      amount: [
+        {
+          denom,
+          amount: '100000'
+        }
+      ],
+      gas: '550000'
     };
 
     const result = await signingClient.signAndBroadcast(address, [msg], fee);
@@ -89,6 +104,7 @@ describe('Governance tests for osmosis', () => {
       (attr) => attr.key === 'proposal_id'
     ).value;
 
+    // eslint-disable-next-line no-undef
     expect(BigInt(proposalId)).toBeGreaterThan(BigInt(0));
   }, 200000);
 
@@ -100,21 +116,38 @@ describe('Governance tests for osmosis', () => {
     expect(result.proposal.proposalId.toString()).toEqual(proposalId);
   }, 10000);
 
-  it('vote on proposal from genesis wallet', async () => {
+  it('vote on proposal from genesis address', async () => {
+    // create genesis address signing client
+    const mnemonic = await getGenesisMnemonic();
+    const genesisWallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+      prefix: chainInfo.chain.bech32_prefix
+    });
+    genesisAddress = (await genesisWallet.getAccounts())[0].address;
+
+    const genesisSigningClient = await getSigningOsmosisClient({
+      rpcEndpoint: getRpcEndpoint(),
+      signer: genesisWallet
+    });
+
     // Vote on proposal from genesis mnemonic address
     const msg = cosmos.gov.v1beta1.MessageComposer.withTypeUrl.vote({
       proposalId: Long.fromString(proposalId),
-      voter: chain.address,
+      voter: genesisAddress,
       option: cosmos.gov.v1beta1.VoteOption.VOTE_OPTION_YES
     });
 
     const fee = {
-      amount: coins(100_000, baseDenom),
-      gas: '200000'
+      amount: [
+        {
+          denom,
+          amount: '100000'
+        }
+      ],
+      gas: '550000'
     };
 
-    const result = await chain.client.signAndBroadcast(
-      chain.address,
+    const result = await genesisSigningClient.signAndBroadcast(
+      genesisAddress,
       [msg],
       fee
     );
@@ -124,11 +157,11 @@ describe('Governance tests for osmosis', () => {
   it('verify vote', async () => {
     const { vote } = await queryClient.cosmos.gov.v1beta1.vote({
       proposalId: Long.fromString(proposalId),
-      voter: chain.address
+      voter: genesisAddress
     });
 
     expect(vote.proposalId.toString()).toEqual(proposalId);
-    expect(vote.voter).toEqual(chain.address);
+    expect(vote.voter).toEqual(genesisAddress);
     expect(vote.option).toEqual(cosmos.gov.v1beta1.VoteOption.VOTE_OPTION_YES);
   }, 10000);
 

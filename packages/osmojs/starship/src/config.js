@@ -1,5 +1,7 @@
 import { ChainRegistryFetcher } from '@chain-registry/client';
-import { StargateClient } from '@cosmjs/stargate';
+import {generateMnemonic} from '@confio/relayer/build/lib/helpers';
+import {DirectSecp256k1HdWallet} from '@cosmjs/proto-signing';
+import {SigningStargateClient, StargateClient} from '@cosmjs/stargate';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import fetch from 'node-fetch';
@@ -67,7 +69,8 @@ export const useChain = (chainName, signingOptions = null) => {
   const getGenesisMnemonic = async () => {
     const url = `http://localhost:${config.registry.ports.rest}/chains/${chainID}/keys`;
     const response = await fetch(url, {});
-    return await response.json()['genesis'][0]['mnemonic'];
+    const data = await response.json();
+    return data['genesis'][0]['mnemonic'];
   };
 
   if (!signingOptions) {

@@ -1,8 +1,5 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
-import {
-  assertIsDeliverTxSuccess,
-  SigningStargateClient
-} from '@cosmjs/stargate';
+import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import BigNumber from 'bignumber.js';
 
