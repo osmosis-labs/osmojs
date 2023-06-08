@@ -1,8 +1,8 @@
 HELM_NAME = osmojs
-HELM_FILE = configs/local-config.yaml
+HELM_FILE = configs/config.yaml
 HELM_REPO = starship
 HELM_CHART = devnet
-HELM_VERSION = v0.1.24
+HELM_VERSION = v0.1.32
 
 ###############################################################################
 ###                              All commands                               ###
@@ -16,7 +16,7 @@ start: install port-forward
 
 .PHONY: test
 test:
-	jest --testPathPattern=../tests --runInBand --verbose --bail
+	jest --testPathPattern=../starship --runInBand --verbose --bail
 
 .PHONY: stop
 stop: stop-forward delete

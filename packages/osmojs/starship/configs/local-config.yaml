@@ -5,6 +5,7 @@ chains:
     ports:
       rest: 1317
       rpc: 26657
+      faucet: 8007
     resources:
       limits:
         cpu: "0.2"
@@ -18,6 +19,7 @@ chains:
     ports:
       rest: 1313
       rpc: 26653
+      faucet: 8003
     resources:
       limits:
         cpu: "0.2"

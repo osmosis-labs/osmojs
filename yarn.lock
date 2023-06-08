@@ -1695,6 +1695,13 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
+"@babel/runtime@^7.21.0":
+  version "7.22.3"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.22.3.tgz#0a7fce51d43adbf0f7b517a71f4c3aaca92ebcbb"
+  integrity sha512-XsDuspWKLUsxwCp6r7EhsExHtYfbe5oAGQ19kqngTdCPUoPQzOPdUbD/pB9PJiwb2ptYKQDjSJT3R6dC+EPqfQ==
+  dependencies:
+    regenerator-runtime "^0.13.11"
+
 "@babel/template@^7.18.10", "@babel/template@^7.18.6", "@babel/template@^7.20.7", "@babel/template@^7.3.3":
   version "7.20.7"
   resolved "https://registry.npmmirror.com/@babel/template/-/template-7.20.7.tgz"
@@ -1852,6 +1859,17 @@
   resolved "https://registry.npmmirror.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@chain-registry/client@1.11.0":
+  version "1.11.0"
+  resolved "https://registry.npmjs.org/@chain-registry/client/-/client-1.11.0.tgz#dd11b0c8fddc13dfcab436b9ee2d7973d82dfa66"
+  integrity sha512-s4VTiWftt6wb5LKVF7ljRD22wR5tIKAjUxOde4JthT1+8aX0y4UMA3nDlXTO+U1/YyB+L5900k9rYxuxW2Os7A==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
+    "@chain-registry/types" "^0.16.0"
+    "@chain-registry/utils" "^1.10.0"
+    bfs-path "^1.0.2"
+    cross-fetch "^3.1.5"
+
 "@chain-registry/osmosis@1.11.0":
   version "1.11.0"
   resolved "https://registry.npmjs.org/@chain-registry/osmosis/-/osmosis-1.11.0.tgz#db33e56d91ce6bac509409130be1adfa2bcf7a47"
@@ -1866,6 +1884,22 @@
   integrity sha512-TlIqc3CijT734no7RiYBfUvCG2fory0blwrBcK4XTYOCi2vANsxfDdiPLFQcaSETYDd14DdjhrdXwMocEeOnLQ==
   dependencies:
     "@babel/runtime" "^7.19.4"
+
+"@chain-registry/types@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.npmjs.org/@chain-registry/types/-/types-0.16.0.tgz#f76409186899a976d33693d7f458c33d71a66730"
+  integrity sha512-4j6vq2Vqn/nF+UBjvRPUVs6eM3+5rJ+dPmEWpd/OoNH3wTy1k6aoilcSTZRR//vGcI5EOVGsxhhJxUzo2qqweA==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
+
+"@chain-registry/utils@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.npmjs.org/@chain-registry/utils/-/utils-1.10.0.tgz#d5d1ff35d3bbf065bd8de59d5174eb693fdfddab"
+  integrity sha512-AhJQM0ddp0ymsetUcJKZNyRpoPu2mOJmvvBwLdNVAsjUhOtzJ0z9yZ7PVdUlt9wf/8Ma1GIF12I485Y2ML2tlA==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
+    "@chain-registry/types" "^0.16.0"
+    sha.js "^2.4.11"
 
 "@colors/colors@1.5.0":
   version "1.5.0"
@@ -4426,6 +4460,11 @@ before-after-hook@^2.2.0:
   resolved "https://registry.npmjs.org/before-after-hook/-/before-after-hook-2.2.2.tgz"
   integrity sha512-3pZEU3NT5BFUo/AD5ERPWOgQOCZITni6iavr5AUw5AUwQjMlI0kzu5btnyD39AF0gUEsDPwJT+oY1ORBJijPjQ==
 
+bfs-path@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/bfs-path/-/bfs-path-1.0.2.tgz#9b5fa4b8c4ad226597fc4d2ee15398bdcc644a07"
+  integrity sha512-KTKx2JJtAAAT7C/rJYDXXWA2VLPycAS4kwFktKsxUo0hj4UTtw/Gm5PJuY7Uf3xSlIQNo7HRCSWei2ivncVwbQ==
+
 bignumber.js@9.1.0:
   version "9.1.0"
   resolved "https://registry.npmjs.org/bignumber.js/-/bignumber.js-9.1.0.tgz#8d340146107fe3a6cb8d40699643c302e8773b62"
@@ -5059,6 +5098,13 @@ cross-env@^7.0.2:
   integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
   dependencies:
     cross-spawn "^7.0.1"
+
+cross-fetch@^3.1.5:
+  version "3.1.6"
+  resolved "https://registry.npmjs.org/cross-fetch/-/cross-fetch-3.1.6.tgz#bae05aa31a4da760969756318feeee6e70f15d6c"
+  integrity sha512-riRvo06crlE8HiqOwIpQhxwdOk4fOeR7FVM/wXoxchFEqMNUjvbs3bfo4OTgMEMHzppd4DxFBDbyySj8Cv781g==
+  dependencies:
+    node-fetch "^2.6.11"
 
 cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
@@ -6317,7 +6363,7 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.3:
+inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.3:
   version "2.0.4"
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
@@ -7890,7 +7936,7 @@ node-fetch@^2.6.1, node-fetch@^2.6.7:
   dependencies:
     whatwg-url "^5.0.0"
 
-node-fetch@^2.6.9:
+node-fetch@^2.6.11, node-fetch@^2.6.9:
   version "2.6.11"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.11.tgz#cde7fc71deef3131ef80a738919f999e6edfff25"
   integrity sha512-4I6pdBY1EthSqDmJkiNk3JIT8cswwR9nfeW/cPdUagJYEQG7R95WRH74wpz7ma8Gh/9dI9FP+OU+0E4FvtA55w==
@@ -9064,6 +9110,14 @@ set-blocking@~2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/set-blocking/-/set-blocking-2.0.0.tgz"
   integrity sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==
+
+sha.js@^2.4.11:
+  version "2.4.11"
+  resolved "https://registry.npmjs.org/sha.js/-/sha.js-2.4.11.tgz#37a5cf0b81ecbc6943de109ba2960d1b26584ae7"
+  integrity sha512-QMEp5B7cftE7APOjk5Y6xgrbWu+WkLVQwk8JNjZ8nKRciZaByEW6MubieAiToS7+dwvrjGhH8jRXz3MVd0AYqQ==
+  dependencies:
+    inherits "^2.0.1"
+    safe-buffer "^5.0.1"
 
 shallow-clone@^3.0.0:
   version "3.0.1"
