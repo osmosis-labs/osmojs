@@ -1,55 +1,65 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 
-import { osmosis, ibc, getSigningOsmosisClient, getSigningIbcClient } from "../../src/codegen";
+import {
+  osmosis,
+  ibc,
+  getSigningOsmosisClient,
+  getSigningIbcClient
+} from '../../src/codegen';
 import { useChain } from '../src';
-import "./setup.test";
+import './setup.test';
 
-describe("Token transfers", () => {
+describe('Token transfers', () => {
   let wallet, denom, address;
   let chainInfo, getCoin, getStargateClient, getRpcEndpoint, creditFromFaucet;
 
   beforeAll(async () => {
-    ({ chainInfo, getCoin, getStargateClient, getRpcEndpoint, creditFromFaucet } = useChain("osmosis"))
-    denom = getCoin().base
+    ({
+      chainInfo,
+      getCoin,
+      getStargateClient,
+      getRpcEndpoint,
+      creditFromFaucet
+    } = useChain('osmosis'));
+    denom = getCoin().base;
 
     // Initialize wallet
-    wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-      generateMnemonic(),
-      { prefix: chainInfo.chain.bech32_prefix },
-    );
+    wallet = await DirectSecp256k1HdWallet.fromMnemonic(generateMnemonic(), {
+      prefix: chainInfo.chain.bech32_prefix
+    });
     address = (await wallet.getAccounts())[0].address;
 
     await creditFromFaucet(address);
   });
 
-  it("send osmosis token to address", async () => {
+  it('send osmosis token to address', async () => {
     // Initialize wallet
     const wallet2 = await DirectSecp256k1HdWallet.fromMnemonic(
       generateMnemonic(),
-      { prefix: chainInfo.chain.bech32_prefix },
+      { prefix: chainInfo.chain.bech32_prefix }
     );
     const address2 = (await wallet2.getAccounts())[0].address;
 
     const signingClient = await getSigningOsmosisClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: wallet,
+      signer: wallet
     });
 
     const fee = {
       amount: [
         {
           denom,
-          amount: '100000',
-        },
+          amount: '100000'
+        }
       ],
-      gas: '550000',
+      gas: '550000'
     };
 
     const token = {
-      amount: "10000000",
-      denom,
-    }
+      amount: '10000000',
+      denom
+    };
 
     // Transfer uosmo tokens from faceut
     await signingClient.sendTokens(
@@ -57,7 +67,7 @@ describe("Token transfers", () => {
       address2,
       [token],
       fee,
-      "send tokens test"
+      'send tokens test'
     );
 
     const balance = await signingClient.getBalance(address2, denom);
@@ -66,23 +76,30 @@ describe("Token transfers", () => {
     expect(balance.denom).toEqual(denom);
   }, 10000);
 
-  it("send ibc osmo tokens to address on cosmos chain", async () => {
+  it('send ibc osmo tokens to address on cosmos chain', async () => {
     const signingClient = await getSigningOsmosisClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: wallet,
+      signer: wallet
     });
 
-    const { chainInfo: cosmosChainInfo, getCoin: cosmosGetCoin, getStargateClient: cosmosGetStargateClient, getRpcEndpoint: cosmosRpcEndpoint } = useChain("cosmos")
-    const cosmosDenom = cosmosGetCoin().base
+    const {
+      chainInfo: cosmosChainInfo,
+      getCoin: cosmosGetCoin,
+      getStargateClient: cosmosGetStargateClient,
+      getRpcEndpoint: cosmosRpcEndpoint
+    } = useChain('cosmos');
+    const cosmosDenom = cosmosGetCoin().base;
 
     // Initialize wallet address for cosmos chain
     const cosmosWallet = await DirectSecp256k1HdWallet.fromMnemonic(
       generateMnemonic(),
-      { prefix: cosmosChainInfo.chain.bech32_prefix },
+      { prefix: cosmosChainInfo.chain.bech32_prefix }
     );
     const cosmosAddress = (await cosmosWallet.getAccounts())[0].address;
 
-    const ibcInfos = chainInfo.fetcher.getChainIbcData(chainInfo.chain.chain_id)
+    const ibcInfos = chainInfo.fetcher.getChainIbcData(
+      chainInfo.chain.chain_id
+    );
     const ibcInfo = ibcInfos.find(
       (i) =>
         i.chain_1.chain_name === chainInfo.chain.chain_id &&
@@ -91,7 +108,8 @@ describe("Token transfers", () => {
 
     expect(ibcInfo).toBeTruthy();
 
-    const { port_id: sourcePort, channel_id: sourceChannel } = ibcInfo.channels[0].chain_1;
+    const { port_id: sourcePort, channel_id: sourceChannel } =
+      ibcInfo.channels[0].chain_1;
 
     // Transfer osmosis tokens via IBC to cosmos chain
     const currentTime = Math.floor(Date.now() / 1000);
@@ -101,16 +119,16 @@ describe("Token transfers", () => {
       amount: [
         {
           denom,
-          amount: '100000',
-        },
+          amount: '100000'
+        }
       ],
-      gas: '550000',
+      gas: '550000'
     };
 
     const token = {
       denom,
-      amount: "10000000",
-    }
+      amount: '10000000'
+    };
 
     // send ibc tokens
     const resp = await signingClient.sendIbcTokens(
@@ -121,26 +139,28 @@ describe("Token transfers", () => {
       sourceChannel,
       undefined,
       timeoutTime,
-      fee,
+      fee
     );
 
     // Check osmos in address on cosmos chain
-    const cosmosClient = await cosmosGetStargateClient()
+    const cosmosClient = await cosmosGetStargateClient();
     const balances = await cosmosClient.getAllBalances(cosmosAddress);
 
     // check balances
     expect(balances.length).toEqual(1);
-    const ibcBalance = balances.find(balance => {
-      return balance.denom.startsWith("ibc/")
+    const ibcBalance = balances.find((balance) => {
+      return balance.denom.startsWith('ibc/');
     });
     expect(ibcBalance.amount).toEqual(token.amount);
-    expect(ibcBalance.denom).toContain("ibc/");
+    expect(ibcBalance.denom).toContain('ibc/');
 
     // check ibc denom trace of the same
     const queryClient = await ibc.ClientFactory.createRPCQueryClient({
-      rpcEndpoint: cosmosRpcEndpoint(),
+      rpcEndpoint: cosmosRpcEndpoint()
     });
-    const trace = await queryClient.ibc.applications.transfer.v1.denomTrace({hash: ibcBalance.denom.replace("ibc/", "")});
+    const trace = await queryClient.ibc.applications.transfer.v1.denomTrace({
+      hash: ibcBalance.denom.replace('ibc/', '')
+    });
     expect(trace.denomTrace.baseDenom).toEqual(denom);
   }, 10000);
 });

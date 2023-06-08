@@ -1,12 +1,12 @@
-import { Slip10RawIndex } from "@cosmjs/crypto";
+import { Slip10RawIndex } from '@cosmjs/crypto';
 
-export function makeCosmoshubPath(slip44 ,a) {
+export function makeCosmoshubPath(slip44, a) {
   return [
     Slip10RawIndex.hardened(44),
     Slip10RawIndex.hardened(slip44),
     Slip10RawIndex.hardened(0),
     Slip10RawIndex.normal(0),
-    Slip10RawIndex.normal(a),
+    Slip10RawIndex.normal(a)
   ];
 }
 
@@ -25,4 +25,4 @@ export const waitForTx = (hash, timeout = 10000, interval = 1000) => {
       }
     }, interval);
   });
-}
+};

@@ -6,10 +6,7 @@ import BigNumber from 'bignumber.js';
 import { getSigningIbcClient } from '../../src/codegen';
 import { useChain, Config } from '../src';
 
-export const calcShareOutAmount = (
-    poolInfo,
-    coinsNeeded
-) => {
+export const calcShareOutAmount = (poolInfo, coinsNeeded) => {
   return poolInfo.poolAssets
     .map(({ token }, i) => {
       const tokenInAmount = new BigNumber(coinsNeeded[i].amount);
@@ -27,10 +24,7 @@ export const calcShareOutAmount = (
     .sort((a, b) => (new BigNumber(a).lt(b) ? -1 : 1))[0];
 };
 
-export const calcAmountWithSlippage = (
-  amount,
-  slippage
-) => {
+export const calcAmountWithSlippage = (amount, slippage) => {
   const remainingPercentage = new BigNumber(100).minus(slippage).div(100);
   return new BigNumber(amount).multipliedBy(remainingPercentage).toString();
 };
@@ -49,14 +43,20 @@ export const waitUntil = (date, timeout = 90000) => {
   });
 };
 
-export const transferIbcTokens = async (fromChain, toChain, toAddress, amount) => {
-  const registry = Config.registry
-  const { chainInfo, getCoin, getRpcEndpoint, creditFromFaucet } = useChain(fromChain)
-  const denom = getCoin().base
+export const transferIbcTokens = async (
+  fromChain,
+  toChain,
+  toAddress,
+  amount
+) => {
+  const registry = Config.registry;
+  const { chainInfo, getCoin, getRpcEndpoint, creditFromFaucet } =
+    useChain(fromChain);
+  const denom = getCoin().base;
 
   const { chainInfo: toChainInfo } = useChain(toChain);
 
-  const ibcInfos = registry.getChainIbcData(chainInfo.chain.chain_id)
+  const ibcInfos = registry.getChainIbcData(chainInfo.chain.chain_id);
   const ibcInfo = ibcInfos.find(
     (i) =>
       i.chain_1.chain_name === chainInfo.chain.chain_id &&
@@ -67,23 +67,24 @@ export const transferIbcTokens = async (fromChain, toChain, toAddress, amount) =
     throw new Error('cannot find IBC info');
   }
 
-  const { port_id: sourcePort, channel_id: sourceChannel } = ibcInfo.channels[0].chain_1;
+  const { port_id: sourcePort, channel_id: sourceChannel } =
+    ibcInfo.channels[0].chain_1;
 
   // Create temp address on fromChain that will transfer the funds
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
     generateMnemonic(),
-    {prefix: chainInfo.chain.bech32_prefix},
+    { prefix: chainInfo.chain.bech32_prefix }
   );
   const fromAddress = (await wallet.getAccounts())[0].address;
 
   // Transfer funds to address from faucet
-  await creditFromFaucet(fromAddress)
+  await creditFromFaucet(fromAddress);
 
   // Create ibc client to transfer tokens
   const fromClient = await getSigningIbcClient({
     rpcEndpoint: getRpcEndpoint(),
-    signer: wallet,
-  })
+    signer: wallet
+  });
 
   const currentTime = Math.floor(Date.now() / 1000);
   const timeoutTime = currentTime + 300; // 5 minutes
@@ -92,16 +93,16 @@ export const transferIbcTokens = async (fromChain, toChain, toAddress, amount) =
     amount: [
       {
         denom,
-        amount: '100000',
-      },
+        amount: '100000'
+      }
     ],
-    gas: '550000',
+    gas: '550000'
   };
 
   const token = {
     denom,
-    amount,
-  }
+    amount
+  };
 
   // send ibc tokens
   const resp = await fromClient.sendIbcTokens(
@@ -112,10 +113,10 @@ export const transferIbcTokens = async (fromChain, toChain, toAddress, amount) =
     sourceChannel,
     undefined,
     timeoutTime,
-    fee,
+    fee
   );
 
-  assertIsDeliverTxSuccess(resp)
+  assertIsDeliverTxSuccess(resp);
 
-  return token
+  return token;
 };

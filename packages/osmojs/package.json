@@ -69,6 +69,7 @@
     "@babel/preset-typescript": "^7.17.12",
     "@babel/traverse": "7.19.1",
     "@babel/types": "7.19.0",
+    "@chain-registry/client": "1.11.0",
     "@confio/relayer": "0.7.0",
     "@cosmjs/cosmwasm-stargate": "0.29.4",
     "@cosmjs/crypto": "0.29.4",
