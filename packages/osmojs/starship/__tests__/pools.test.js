@@ -4,52 +4,49 @@ import { coin, coins } from '@cosmjs/amino';
 import Long from 'long';
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 
-import { osmosis, google } from "../../src/codegen";
-import { calcShareOutAmount } from "./utils.js";
-import { ChainClients } from './setup.test';
+import { osmosis, google, getSigningOsmosisClient } from "../../src/codegen";
+import { calcShareOutAmount, transferIbcTokens } from './utils.js';
+import { useChain } from '../src';
+import "./setup.test";
 
 describe("Pool testing over IBC tokens", () => {
-  let wallet;
-  let baseDenom;
-  let address;
-  let chainClients;
-  let chain;
+  let wallet, denom, address;
+  let chainInfo, getCoin, getStargateClient, getRpcEndpoint, creditFromFaucet;
 
   // Variables used accross testcases
   let poolId;
   let pool;
 
   beforeAll(async () => {
-    chainClients = ChainClients
-    baseDenom = chainClients["osmosis-1"].getDenom();
-    chain = chainClients["osmosis-1"];
+    ({ chainInfo, getCoin, getStargateClient, getRpcEndpoint, creditFromFaucet } = useChain("osmosis"))
+    denom = getCoin().base
 
     // Initialize wallet
     wallet = await DirectSecp256k1HdWallet.fromMnemonic(
       generateMnemonic(),
-      { prefix: chainClients["osmosis-1"].getPrefix() },
+      { prefix: chainInfo.chain.bech32_prefix },
     );
     address = (await wallet.getAccounts())[0].address;
 
     // Transfer osmosis and ibc tokens to address, send only osmo to address
-    await chain.sendTokens(address, "100000000000");
-    await chainClients["cosmos-2"].sendIBCTokens(address, "100000000000", chain.getChainId());
+    await creditFromFaucet(address);
+    await transferIbcTokens("cosmos", "osmosis", address, "100000000")
   }, 200000);
 
   it("check address has tokens", async () => {
-    const balances = await chain.client.getAllBalances(address);
+    const client = await getStargateClient()
+    const balances = await client.getAllBalances(address);
 
     expect(balances.length).toEqual(2);
   }, 10000);
 
   it("create ibc pools with ibc atom osmo", async () => {
-    const signingClient = await SigningStargateClient.connectWithSigner(
-      chain.rpc,
-      wallet,
-      chain.stargateClientOpts(),
-    );
+    const signingClient = await getSigningOsmosisClient({
+      rpcEndpoint: getRpcEndpoint(),
+      signer: wallet,
+    });
 
-    const balances = await chain.client.getAllBalances(address);
+    const balances = await signingClient.getAllBalances(address);
 
     const msg = osmosis.gamm.poolmodels.balancer.v1beta1.MessageComposer.fromPartial.createBalancerPool({
       sender: address,
@@ -59,21 +56,37 @@ describe("Pool testing over IBC tokens", () => {
       },
       poolAssets: [
         {
-          token: coin("10000000", balances[0].denom),
+          token: {
+            amount: "10000000",
+            denom: balances[0].denom,
+          },
           weight: "100",
         },
         {
-          token: coin("10000000", balances[1].denom),
+          token: {
+            amount: "10000000",
+            denom: balances[1].denom,
+          },
           weight: "100",
         }
       ],
       futurePoolGovernor: "",
     });
 
+    const fee = {
+      amount: [
+        {
+          denom,
+          amount: '100000',
+        },
+      ],
+      gas: '550000',
+    };
+
     const result = await signingClient.signAndBroadcast(
       address,
       [msg],
-      {amount: coins(10_000_000, chain.getDenom()), gas: "10000000"},
+      fee,
       "creating IBC pools",
     )
 
@@ -90,8 +103,11 @@ describe("Pool testing over IBC tokens", () => {
   it("query pool via id, verify creation", async () => {
     // Query the created pool
     const queryClient = await osmosis.ClientFactory.createRPCQueryClient({
-      rpcEndpoint: chain.rpc,
+      rpcEndpoint: getRpcEndpoint(),
     });
+
+    const client = await getStargateClient()
+
     const poolResponse = await queryClient.osmosis.gamm.v1beta1.pool({poolId});
 
     expect(poolResponse).toBeTruthy()
@@ -99,7 +115,7 @@ describe("Pool testing over IBC tokens", () => {
 
     // Verify the address has gamm tokens
     const gammDenom = poolResponse.pool.totalShares.denom
-    const gammBalance = await chain.client.getBalance(address, gammDenom);
+    const gammBalance = await client.getBalance(address, gammDenom);
 
     expect(gammBalance.denom).toEqual(gammDenom)
     expect(BigInt(gammBalance.amount)).toEqual(BigInt(poolResponse.pool.totalShares.amount))
@@ -109,11 +125,10 @@ describe("Pool testing over IBC tokens", () => {
   }, 20000);
 
   it("join pool", async () => {
-    const signingClient = await SigningStargateClient.connectWithSigner(
-      chain.rpc,
-      wallet,
-      chain.stargateClientOpts(),
-    );
+    const signingClient = await getSigningOsmosisClient({
+      rpcEndpoint: getRpcEndpoint(),
+      signer: wallet,
+    });
 
     const allCoins = pool.poolAssets.map(asset => coin("1000000", asset.token.denom))
     const shareOutAmount = calcShareOutAmount(pool, allCoins)
@@ -124,32 +139,46 @@ describe("Pool testing over IBC tokens", () => {
       tokenInMaxs: allCoins,
     })
 
+    const fee = {
+      amount: [
+        {
+          denom,
+          amount: '100000',
+        },
+      ],
+      gas: '550000',
+    };
+
     const result = await signingClient.signAndBroadcast(
       address,
       [msg],
-      { amount: coins(10_000_000, chain.getDenom()), gas: "10000000" },
+      fee,
       "join pool created",
     )
 
     assertIsDeliverTxSuccess(result);
 
     // Verify new gamm tokens have been minted to the address
-    const {denom: gammDenom, amount: totalgammAmount} = pool.totalShares
-    const gammBalance = await chain.client.getBalance(address, gammDenom);
+    const { denom: gammDenom, amount: totalgammAmount } = pool.totalShares
+    const gammBalance = await signingClient.getBalance(address, gammDenom);
 
     expect(gammBalance.denom).toEqual(gammDenom)
     expect(BigInt(gammBalance.amount)).toEqual(BigInt(shareOutAmount) + BigInt(totalgammAmount))
   }, 200000);
 
   it("lock tokens", async () => {
-    const signingClient = await SigningStargateClient.connectWithSigner(
-      chain.rpc,
-      wallet,
-      chain.stargateClientOpts(),
-    );
+    const signingClient = await getSigningOsmosisClient({
+      rpcEndpoint: getRpcEndpoint(),
+      signer: wallet,
+    });
 
     const gammDenom = pool.totalShares.denom
-    const coins = [coin("1000000", gammDenom)]
+    const coins = [
+      {
+        denom: gammDenom,
+        amount: "1000000",
+      }
+    ];
 
     const msg = osmosis.lockup.MessageComposer.withTypeUrl.lockTokens({
       coins,
@@ -157,10 +186,20 @@ describe("Pool testing over IBC tokens", () => {
       duration: google.protobuf.Duration.fromPartial({ seconds: "86400" , nanos: 0}),
     })
 
+    const fee = {
+      amount: [
+        {
+          denom,
+          amount: '100000',
+        },
+      ],
+      gas: '550000',
+    };
+
     const result = await signingClient.signAndBroadcast(
       address,
       [msg],
-      { amount: [coin(10_000_000, chain.getDenom())], gas: "10000000" },
+      fee,
       "lock tokens",
     )
 
@@ -168,11 +207,10 @@ describe("Pool testing over IBC tokens", () => {
   });
 
   it("swap tokens using pool, to address without ibc token", async () => {
-    const signingClient = await SigningStargateClient.connectWithSigner(
-      chainClients["osmosis-1"].rpc,
-      wallet,
-      chainClients["osmosis-1"].stargateClientOpts(),
-    );
+    const signingClient = await getSigningOsmosisClient({
+      rpcEndpoint: getRpcEndpoint(),
+      signer: wallet,
+    });
 
     const ibcDenom = pool.poolAssets.find((asset) => {
       if (asset.token.denom.startsWith("ibc/")) {
@@ -180,7 +218,7 @@ describe("Pool testing over IBC tokens", () => {
       }
     }).token.denom
 
-    const balanceBefore = await chain.client.getBalance(address, ibcDenom)
+    const balanceBefore = await signingClient.getBalance(address, ibcDenom)
 
     const msg = osmosis.gamm.v1beta1.MessageComposer.withTypeUrl.swapExactAmountIn({
       sender: address,
@@ -190,14 +228,27 @@ describe("Pool testing over IBC tokens", () => {
           tokenOutDenom: ibcDenom,
         }
       ],
-      tokenIn: coin("200000", chain.getDenom()),
+      tokenIn: {
+        amount: "200000",
+        denom: denom,
+      },
       tokenOutMinAmount: "100000",
     })
+
+    const fee = {
+      amount: [
+        {
+          denom,
+          amount: '100000',
+        },
+      ],
+      gas: '550000',
+    };
 
     const result = await signingClient.signAndBroadcast(
       address,
       [msg],
-      { amount: coins(10_000_000, chain.getDenom()), gas: "10000000" },
+      fee,
       "swap tokens",
     )
 
@@ -214,7 +265,7 @@ describe("Pool testing over IBC tokens", () => {
       }
     }).value.split(ibcDenom)[0]
 
-    const balanceAfter = await chain.client.getBalance(address, ibcDenom)
+    const balanceAfter = await signingClient.getBalance(address, ibcDenom)
 
     // Verify balance increase of ibc denom is from token swap
     expect(BigInt(balanceAfter.amount) - BigInt(balanceBefore.amount)).toEqual(BigInt(amountOut))

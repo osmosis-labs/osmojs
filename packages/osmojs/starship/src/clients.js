@@ -150,23 +150,6 @@ export class StarshipClient {
     return chainInfo;
   }
 
-  // helper functions for testing utils
-  waitForTx(hash, timeout = 10000, interval = 1000) {
-    return new Promise((resolve, reject) => {
-      const startTime = Date.now();
-      const intervalId = setInterval(async () => {
-        const tx = await this.client.getTx(hash);
-        if (tx.code === 0) {
-          clearInterval(intervalId);
-          resolve(tx);
-        } else if (Date.now() - startTime > timeout) {
-          clearInterval(intervalId);
-          reject(new Error('Transaction timeout'));
-        }
-      }, interval);
-    });
-  }
-
   async sendTokens(toAddress, amount) {
     const denom = this.getDenom();
 
