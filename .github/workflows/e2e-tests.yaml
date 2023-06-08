@@ -36,8 +36,8 @@ jobs:
         id: starship-action
         uses: cosmology-tech/starship-action@0.2.9
         with:
-         values: packages/osmojs/tests/configs/local-config.yaml
+         values: packages/osmojs/starship/configs/local-config.yaml
          port-forward: true
-         version: 0.1.25
+         version: 0.1.32
       - name: e2e
-        run: cd ./packages/osmojs/tests && yarn e2e:test
+        run: cd ./packages/osmojs/starship && yarn e2e:test
