@@ -1,6 +1,6 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgLockTokens, MsgLockTokensResponse, MsgBeginUnlockingAll, MsgBeginUnlockingAllResponse, MsgBeginUnlocking, MsgBeginUnlockingResponse, MsgExtendLockup, MsgExtendLockupResponse, MsgForceUnlock, MsgForceUnlockResponse } from "./tx";
+import { MsgLockTokens, MsgLockTokensResponse, MsgBeginUnlockingAll, MsgBeginUnlockingAllResponse, MsgBeginUnlocking, MsgBeginUnlockingResponse, MsgExtendLockup, MsgExtendLockupResponse, MsgForceUnlock, MsgForceUnlockResponse, MsgSetRewardReceiverAddress, MsgSetRewardReceiverAddressResponse } from "./tx";
 /** Msg defines the Msg service. */
 
 export interface Msg {
@@ -16,6 +16,9 @@ export interface Msg {
 
   extendLockup(request: MsgExtendLockup): Promise<MsgExtendLockupResponse>;
   forceUnlock(request: MsgForceUnlock): Promise<MsgForceUnlockResponse>;
+  /** SetRewardReceiverAddress edits the reward receiver for the given lock ID */
+
+  setRewardReceiverAddress(request: MsgSetRewardReceiverAddress): Promise<MsgSetRewardReceiverAddressResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -27,6 +30,7 @@ export class MsgClientImpl implements Msg {
     this.beginUnlocking = this.beginUnlocking.bind(this);
     this.extendLockup = this.extendLockup.bind(this);
     this.forceUnlock = this.forceUnlock.bind(this);
+    this.setRewardReceiverAddress = this.setRewardReceiverAddress.bind(this);
   }
 
   lockTokens(request: MsgLockTokens): Promise<MsgLockTokensResponse> {
@@ -57,6 +61,12 @@ export class MsgClientImpl implements Msg {
     const data = MsgForceUnlock.encode(request).finish();
     const promise = this.rpc.request("osmosis.lockup.Msg", "ForceUnlock", data);
     return promise.then(data => MsgForceUnlockResponse.decode(new _m0.Reader(data)));
+  }
+
+  setRewardReceiverAddress(request: MsgSetRewardReceiverAddress): Promise<MsgSetRewardReceiverAddressResponse> {
+    const data = MsgSetRewardReceiverAddress.encode(request).finish();
+    const promise = this.rpc.request("osmosis.lockup.Msg", "SetRewardReceiverAddress", data);
+    return promise.then(data => MsgSetRewardReceiverAddressResponse.decode(new _m0.Reader(data)));
   }
 
 }

@@ -1,5 +1,5 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { ModuleBalanceRequest, ModuleBalanceResponseSDKType, ModuleLockedAmountRequest, ModuleLockedAmountResponseSDKType, AccountUnlockableCoinsRequest, AccountUnlockableCoinsResponseSDKType, AccountUnlockingCoinsRequest, AccountUnlockingCoinsResponseSDKType, AccountLockedCoinsRequest, AccountLockedCoinsResponseSDKType, AccountLockedPastTimeRequest, AccountLockedPastTimeResponseSDKType, AccountLockedPastTimeNotUnlockingOnlyRequest, AccountLockedPastTimeNotUnlockingOnlyResponseSDKType, AccountUnlockedBeforeTimeRequest, AccountUnlockedBeforeTimeResponseSDKType, AccountLockedPastTimeDenomRequest, AccountLockedPastTimeDenomResponseSDKType, LockedDenomRequest, LockedDenomResponseSDKType, LockedRequest, LockedResponseSDKType, NextLockIDRequest, NextLockIDResponseSDKType, SyntheticLockupsByLockupIDRequest, SyntheticLockupsByLockupIDResponseSDKType, AccountLockedLongerDurationRequest, AccountLockedLongerDurationResponseSDKType, AccountLockedDurationRequest, AccountLockedDurationResponseSDKType, AccountLockedLongerDurationNotUnlockingOnlyRequest, AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType, AccountLockedLongerDurationDenomRequest, AccountLockedLongerDurationDenomResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType } from "./query";
+import { ModuleBalanceRequest, ModuleBalanceResponseSDKType, ModuleLockedAmountRequest, ModuleLockedAmountResponseSDKType, AccountUnlockableCoinsRequest, AccountUnlockableCoinsResponseSDKType, AccountUnlockingCoinsRequest, AccountUnlockingCoinsResponseSDKType, AccountLockedCoinsRequest, AccountLockedCoinsResponseSDKType, AccountLockedPastTimeRequest, AccountLockedPastTimeResponseSDKType, AccountLockedPastTimeNotUnlockingOnlyRequest, AccountLockedPastTimeNotUnlockingOnlyResponseSDKType, AccountUnlockedBeforeTimeRequest, AccountUnlockedBeforeTimeResponseSDKType, AccountLockedPastTimeDenomRequest, AccountLockedPastTimeDenomResponseSDKType, LockedDenomRequest, LockedDenomResponseSDKType, LockedRequest, LockedResponseSDKType, LockRewardReceiverRequest, LockRewardReceiverResponseSDKType, NextLockIDRequest, NextLockIDResponseSDKType, SyntheticLockupsByLockupIDRequest, SyntheticLockupsByLockupIDResponseSDKType, SyntheticLockupByLockupIDRequest, SyntheticLockupByLockupIDResponseSDKType, AccountLockedLongerDurationRequest, AccountLockedLongerDurationResponseSDKType, AccountLockedDurationRequest, AccountLockedDurationResponseSDKType, AccountLockedLongerDurationNotUnlockingOnlyRequest, AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType, AccountLockedLongerDurationDenomRequest, AccountLockedLongerDurationDenomResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -20,8 +20,10 @@ export class LCDQueryClient {
     this.accountLockedPastTimeDenom = this.accountLockedPastTimeDenom.bind(this);
     this.lockedDenom = this.lockedDenom.bind(this);
     this.lockedByID = this.lockedByID.bind(this);
+    this.lockRewardReceiver = this.lockRewardReceiver.bind(this);
     this.nextLockID = this.nextLockID.bind(this);
     this.syntheticLockupsByLockupID = this.syntheticLockupsByLockupID.bind(this);
+    this.syntheticLockupByLockupID = this.syntheticLockupByLockupID.bind(this);
     this.accountLockedLongerDuration = this.accountLockedLongerDuration.bind(this);
     this.accountLockedDuration = this.accountLockedDuration.bind(this);
     this.accountLockedLongerDurationNotUnlockingOnly = this.accountLockedLongerDurationNotUnlockingOnly.bind(this);
@@ -154,6 +156,13 @@ export class LCDQueryClient {
     const endpoint = `osmosis/lockup/v1beta1/locked_by_id/${params.lockId}`;
     return await this.req.get<LockedResponseSDKType>(endpoint);
   }
+  /* Returns lock record by id */
+
+
+  async lockRewardReceiver(params: LockRewardReceiverRequest): Promise<LockRewardReceiverResponseSDKType> {
+    const endpoint = `osmosis/lockup/v1beta1/lock_reward_receiver/${params.lockId}`;
+    return await this.req.get<LockRewardReceiverResponseSDKType>(endpoint);
+  }
   /* Returns next lock ID */
 
 
@@ -161,12 +170,20 @@ export class LCDQueryClient {
     const endpoint = `osmosis/lockup/v1beta1/next_lock_id`;
     return await this.req.get<NextLockIDResponseSDKType>(endpoint);
   }
-  /* Returns synthetic lockups by native lockup id */
+  /* Returns synthetic lockup by native lockup id
+   Deprecated: use SyntheticLockupByLockupID instead */
 
 
   async syntheticLockupsByLockupID(params: SyntheticLockupsByLockupIDRequest): Promise<SyntheticLockupsByLockupIDResponseSDKType> {
     const endpoint = `osmosis/lockup/v1beta1/synthetic_lockups_by_lock_id/${params.lockId}`;
     return await this.req.get<SyntheticLockupsByLockupIDResponseSDKType>(endpoint);
+  }
+  /* Returns synthetic lockup by native lockup id */
+
+
+  async syntheticLockupByLockupID(params: SyntheticLockupByLockupIDRequest): Promise<SyntheticLockupByLockupIDResponseSDKType> {
+    const endpoint = `osmosis/lockup/v1beta1/synthetic_lockup_by_lock_id/${params.lockId}`;
+    return await this.req.get<SyntheticLockupByLockupIDResponseSDKType>(endpoint);
   }
   /* Returns account locked records with longer duration */
 
