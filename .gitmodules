@@ -3,7 +3,7 @@
 	url = git@github.com:osmosis-labs/cosmos-sdk.git
 [submodule "packages/osmojs/osmosis"]
 	path = packages/osmojs/osmosis
-	url = git@github.com:cosmology-tech/osmosis.git
+	url = git@github.com:osmosis-labs/osmosis.git
 [submodule "packages/osmojs/wasmd"]
 	path = packages/osmojs/wasmd
 	url = git@github.com:CosmWasm/wasmd.git

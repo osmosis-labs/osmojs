@@ -62,7 +62,7 @@ export const createLCDClient = async ({
     },
     osmosis: {
       concentratedliquidity: {
-        v1beta1: new (await import("./concentrated-liquidity/pool-model/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./concentrated-liquidity/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

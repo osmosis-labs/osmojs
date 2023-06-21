@@ -1,5 +1,5 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { ParamsRequest, ParamsResponseSDKType, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponseSDKType, EstimateSinglePoolSwapExactAmountInRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponseSDKType, EstimateSinglePoolSwapExactAmountOutRequest, NumPoolsRequest, NumPoolsResponseSDKType, PoolRequest, PoolResponseSDKType, AllPoolsRequest, AllPoolsResponseSDKType, SpotPriceRequest, SpotPriceResponseSDKType } from "./query";
+import { ParamsRequest, ParamsResponseSDKType, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponseSDKType, EstimateSinglePoolSwapExactAmountInRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponseSDKType, EstimateSinglePoolSwapExactAmountOutRequest, NumPoolsRequest, NumPoolsResponseSDKType, PoolRequest, PoolResponseSDKType, AllPoolsRequest, AllPoolsResponseSDKType, SpotPriceRequest, SpotPriceResponseSDKType, TotalPoolLiquidityRequest, TotalPoolLiquidityResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -18,6 +18,7 @@ export class LCDQueryClient {
     this.pool = this.pool.bind(this);
     this.allPools = this.allPools.bind(this);
     this.spotPrice = this.spotPrice.bind(this);
+    this.totalPoolLiquidity = this.totalPoolLiquidity.bind(this);
   }
   /* Params */
 
@@ -119,17 +120,9 @@ export class LCDQueryClient {
   /* AllPools returns all pools on the Osmosis chain sorted by IDs. */
 
 
-  async allPools(params: AllPoolsRequest): Promise<AllPoolsResponseSDKType> {
-    const options: any = {
-      params: {}
-    };
-
-    if (typeof params?.poolId !== "undefined") {
-      options.params.pool_id = params.poolId;
-    }
-
+  async allPools(_params: AllPoolsRequest = {}): Promise<AllPoolsResponseSDKType> {
     const endpoint = `osmosis/poolmanager/v1beta1/all-pools`;
-    return await this.req.get<AllPoolsResponseSDKType>(endpoint, options);
+    return await this.req.get<AllPoolsResponseSDKType>(endpoint);
   }
   /* SpotPrice defines a gRPC query handler that returns the spot price given
    a base denomination and a quote denomination. */
@@ -150,6 +143,13 @@ export class LCDQueryClient {
 
     const endpoint = `osmosis/poolmanager/pools/${params.poolId}/prices`;
     return await this.req.get<SpotPriceResponseSDKType>(endpoint, options);
+  }
+  /* TotalPoolLiquidity */
+
+
+  async totalPoolLiquidity(params: TotalPoolLiquidityRequest): Promise<TotalPoolLiquidityResponseSDKType> {
+    const endpoint = `osmosis/poolmanager/v1beta1/pools/${params.poolId}/total_pool_liquidity`;
+    return await this.req.get<TotalPoolLiquidityResponseSDKType>(endpoint);
   }
 
 }

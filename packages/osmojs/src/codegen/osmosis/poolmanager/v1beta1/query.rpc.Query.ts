@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { ParamsRequest, ParamsResponse, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, EstimateSinglePoolSwapExactAmountOutRequest, NumPoolsRequest, NumPoolsResponse, PoolRequest, PoolResponse, AllPoolsRequest, AllPoolsResponse, SpotPriceRequest, SpotPriceResponse } from "./query";
+import { ParamsRequest, ParamsResponse, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, EstimateSinglePoolSwapExactAmountOutRequest, NumPoolsRequest, NumPoolsResponse, PoolRequest, PoolResponse, AllPoolsRequest, AllPoolsResponse, SpotPriceRequest, SpotPriceResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse } from "./query";
 export interface Query {
   params(request?: ParamsRequest): Promise<ParamsResponse>;
   /** Estimates swap amount out given in. */
@@ -20,13 +20,14 @@ export interface Query {
   pool(request: PoolRequest): Promise<PoolResponse>;
   /** AllPools returns all pools on the Osmosis chain sorted by IDs. */
 
-  allPools(request: AllPoolsRequest): Promise<AllPoolsResponse>;
+  allPools(request?: AllPoolsRequest): Promise<AllPoolsResponse>;
   /**
    * SpotPrice defines a gRPC query handler that returns the spot price given
    * a base denomination and a quote denomination.
    */
 
   spotPrice(request: SpotPriceRequest): Promise<SpotPriceResponse>;
+  totalPoolLiquidity(request: TotalPoolLiquidityRequest): Promise<TotalPoolLiquidityResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -42,6 +43,7 @@ export class QueryClientImpl implements Query {
     this.pool = this.pool.bind(this);
     this.allPools = this.allPools.bind(this);
     this.spotPrice = this.spotPrice.bind(this);
+    this.totalPoolLiquidity = this.totalPoolLiquidity.bind(this);
   }
 
   params(request: ParamsRequest = {}): Promise<ParamsResponse> {
@@ -86,7 +88,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => PoolResponse.decode(new _m0.Reader(data)));
   }
 
-  allPools(request: AllPoolsRequest): Promise<AllPoolsResponse> {
+  allPools(request: AllPoolsRequest = {}): Promise<AllPoolsResponse> {
     const data = AllPoolsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "AllPools", data);
     return promise.then(data => AllPoolsResponse.decode(new _m0.Reader(data)));
@@ -96,6 +98,12 @@ export class QueryClientImpl implements Query {
     const data = SpotPriceRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "SpotPrice", data);
     return promise.then(data => SpotPriceResponse.decode(new _m0.Reader(data)));
+  }
+
+  totalPoolLiquidity(request: TotalPoolLiquidityRequest): Promise<TotalPoolLiquidityResponse> {
+    const data = TotalPoolLiquidityRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "TotalPoolLiquidity", data);
+    return promise.then(data => TotalPoolLiquidityResponse.decode(new _m0.Reader(data)));
   }
 
 }
@@ -131,12 +139,16 @@ export const createRpcQueryExtension = (base: QueryClient) => {
       return queryService.pool(request);
     },
 
-    allPools(request: AllPoolsRequest): Promise<AllPoolsResponse> {
+    allPools(request?: AllPoolsRequest): Promise<AllPoolsResponse> {
       return queryService.allPools(request);
     },
 
     spotPrice(request: SpotPriceRequest): Promise<SpotPriceResponse> {
       return queryService.spotPrice(request);
+    },
+
+    totalPoolLiquidity(request: TotalPoolLiquidityRequest): Promise<TotalPoolLiquidityResponse> {
+      return queryService.totalPoolLiquidity(request);
     }
 
   };

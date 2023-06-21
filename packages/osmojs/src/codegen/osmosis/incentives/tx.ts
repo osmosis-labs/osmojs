@@ -35,6 +35,17 @@ export interface MsgCreateGauge {
    */
 
   numEpochsPaidOver: Long;
+  /**
+   * pool_id is the ID of the pool that the gauge is meant to be associated
+   * with. if pool_id is set, then the "QueryCondition.LockQueryType" must be
+   * "NoLock" with all other fields of the "QueryCondition.LockQueryType" struct
+   * unset, including "QueryCondition.Denom". However, note that, internally,
+   * the empty string in "QueryCondition.Denom" ends up being overwritten with
+   * incentivestypes.NoLockExternalGaugeDenom(<pool-id>) so that the gauges
+   * associated with a pool can be queried by this prefix if needed.
+   */
+
+  poolId: Long;
 }
 export interface MsgCreateGaugeProtoMsg {
   typeUrl: "/osmosis.incentives.MsgCreateGauge";
@@ -72,6 +83,17 @@ export interface MsgCreateGaugeAmino {
    */
 
   num_epochs_paid_over: string;
+  /**
+   * pool_id is the ID of the pool that the gauge is meant to be associated
+   * with. if pool_id is set, then the "QueryCondition.LockQueryType" must be
+   * "NoLock" with all other fields of the "QueryCondition.LockQueryType" struct
+   * unset, including "QueryCondition.Denom". However, note that, internally,
+   * the empty string in "QueryCondition.Denom" ends up being overwritten with
+   * incentivestypes.NoLockExternalGaugeDenom(<pool-id>) so that the gauges
+   * associated with a pool can be queried by this prefix if needed.
+   */
+
+  pool_id: string;
 }
 export interface MsgCreateGaugeAminoMsg {
   type: "osmosis/incentives/create-gauge";
@@ -86,6 +108,7 @@ export interface MsgCreateGaugeSDKType {
   coins: CoinSDKType[];
   start_time?: Date;
   num_epochs_paid_over: Long;
+  pool_id: Long;
 }
 export interface MsgCreateGaugeResponse {}
 export interface MsgCreateGaugeResponseProtoMsg {
@@ -156,7 +179,8 @@ function createBaseMsgCreateGauge(): MsgCreateGauge {
     distributeTo: undefined,
     coins: [],
     startTime: undefined,
-    numEpochsPaidOver: Long.UZERO
+    numEpochsPaidOver: Long.UZERO,
+    poolId: Long.UZERO
   };
 }
 
@@ -186,6 +210,10 @@ export const MsgCreateGauge = {
 
     if (!message.numEpochsPaidOver.isZero()) {
       writer.uint32(48).uint64(message.numEpochsPaidOver);
+    }
+
+    if (!message.poolId.isZero()) {
+      writer.uint32(56).uint64(message.poolId);
     }
 
     return writer;
@@ -224,6 +252,10 @@ export const MsgCreateGauge = {
           message.numEpochsPaidOver = (reader.uint64() as Long);
           break;
 
+        case 7:
+          message.poolId = (reader.uint64() as Long);
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -241,6 +273,7 @@ export const MsgCreateGauge = {
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     message.startTime = object.startTime ?? undefined;
     message.numEpochsPaidOver = object.numEpochsPaidOver !== undefined && object.numEpochsPaidOver !== null ? Long.fromValue(object.numEpochsPaidOver) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     return message;
   },
 
@@ -251,7 +284,8 @@ export const MsgCreateGauge = {
       distributeTo: object?.distribute_to ? QueryCondition.fromAmino(object.distribute_to) : undefined,
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : [],
       startTime: object?.start_time ? Timestamp.fromAmino(object.start_time) : undefined,
-      numEpochsPaidOver: Long.fromString(object.num_epochs_paid_over)
+      numEpochsPaidOver: Long.fromString(object.num_epochs_paid_over),
+      poolId: Long.fromString(object.pool_id)
     };
   },
 
@@ -269,6 +303,7 @@ export const MsgCreateGauge = {
 
     obj.start_time = message.startTime ? Timestamp.toAmino(message.startTime) : undefined;
     obj.num_epochs_paid_over = message.numEpochsPaidOver ? message.numEpochsPaidOver.toString() : undefined;
+    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
     return obj;
   },
 

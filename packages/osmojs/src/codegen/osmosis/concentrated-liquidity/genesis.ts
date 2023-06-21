@@ -1,9 +1,9 @@
 import { TickInfo, TickInfoAmino, TickInfoSDKType } from "./tickInfo";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { IncentiveRecord, IncentiveRecordAmino, IncentiveRecordSDKType } from "./incentive_record";
+import { Record, RecordAmino, RecordSDKType, AccumulatorContent, AccumulatorContentAmino, AccumulatorContentSDKType } from "../accum/v1beta1/accum";
+import { Timestamp } from "../../google/protobuf/timestamp";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { Position, PositionAmino, PositionSDKType } from "./position";
-import { AccumulatorContent, AccumulatorContentAmino, AccumulatorContentSDKType } from "../accum/v1beta1/accum";
 import { Pool as Pool1 } from "./pool";
 import { PoolProtoMsg as Pool1ProtoMsg } from "./pool";
 import { PoolSDKType as Pool1SDKType } from "./pool";
@@ -14,7 +14,7 @@ import { PoolSDKType as Pool2SDKType } from "../gamm/pool-models/balancer/balanc
 import { Pool as Pool3 } from "../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../gamm/pool-models/stableswap/stableswap_pool";
-import { Long } from "../../helpers";
+import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * FullTick contains tick index and pool id along with other tick model
@@ -22,10 +22,7 @@ import * as _m0 from "protobufjs/minimal";
  */
 
 export interface FullTick {
-  /** pool id associated with the tick. */
-  poolId: Long;
   /** tick's index. */
-
   tickIndex: Long;
   /** tick's info. */
 
@@ -41,10 +38,7 @@ export interface FullTickProtoMsg {
  */
 
 export interface FullTickAmino {
-  /** pool id associated with the tick. */
-  pool_id: string;
   /** tick's index. */
-
   tick_index: string;
   /** tick's info. */
 
@@ -60,7 +54,6 @@ export interface FullTickAminoMsg {
  */
 
 export interface FullTickSDKType {
-  pool_id: Long;
   tick_index: Long;
   info?: TickInfoSDKType;
 }
@@ -69,23 +62,24 @@ export interface FullTickSDKType {
  * for genesis state.
  */
 
-export interface PoolData {
+export interface GenesisPoolData {
   /** pool struct */
   pool?: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
   /** pool's ticks */
 
   ticks: FullTick[];
-  feeAccumulator?: AccumObject;
+  spreadRewardAccumulator?: AccumObject;
   incentivesAccumulators: AccumObject[];
   /** incentive records to be set */
 
   incentiveRecords: IncentiveRecord[];
+  positionData: PositionData[];
 }
-export interface PoolDataProtoMsg {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolData";
+export interface GenesisPoolDataProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisPoolData";
   value: Uint8Array;
 }
-export type PoolDataEncoded = Omit<PoolData, "pool"> & {
+export type GenesisPoolDataEncoded = Omit<GenesisPoolData, "pool"> & {
   /** pool struct */
   pool?: Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg | undefined;
 };
@@ -94,33 +88,93 @@ export type PoolDataEncoded = Omit<PoolData, "pool"> & {
  * for genesis state.
  */
 
-export interface PoolDataAmino {
+export interface GenesisPoolDataAmino {
   /** pool struct */
   pool?: AnyAmino;
   /** pool's ticks */
 
   ticks: FullTickAmino[];
-  fee_accumulator?: AccumObjectAmino;
+  spread_reward_accumulator?: AccumObjectAmino;
   incentives_accumulators: AccumObjectAmino[];
   /** incentive records to be set */
 
   incentive_records: IncentiveRecordAmino[];
+  position_data: PositionDataAmino[];
 }
-export interface PoolDataAminoMsg {
-  type: "osmosis/concentratedliquidity/pool-data";
-  value: PoolDataAmino;
+export interface GenesisPoolDataAminoMsg {
+  type: "osmosis/concentratedliquidity/genesis-pool-data";
+  value: GenesisPoolDataAmino;
 }
 /**
  * PoolData represents a serialized pool along with its ticks
  * for genesis state.
  */
 
-export interface PoolDataSDKType {
+export interface GenesisPoolDataSDKType {
   pool?: Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType | undefined;
   ticks: FullTickSDKType[];
-  fee_accumulator?: AccumObjectSDKType;
+  spread_reward_accumulator?: AccumObjectSDKType;
   incentives_accumulators: AccumObjectSDKType[];
   incentive_records: IncentiveRecordSDKType[];
+  position_data: PositionDataSDKType[];
+}
+export interface PositionData {
+  position?: PositionWithoutPoolId;
+  lockId: Long;
+  spreadRewardAccumRecord?: Record;
+  uptimeAccumRecords: Record[];
+}
+export interface PositionDataProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionData";
+  value: Uint8Array;
+}
+export interface PositionDataAmino {
+  position?: PositionWithoutPoolIdAmino;
+  lock_id: string;
+  spread_reward_accum_record?: RecordAmino;
+  uptime_accum_records: RecordAmino[];
+}
+export interface PositionDataAminoMsg {
+  type: "osmosis/concentratedliquidity/position-data";
+  value: PositionDataAmino;
+}
+export interface PositionDataSDKType {
+  position?: PositionWithoutPoolIdSDKType;
+  lock_id: Long;
+  spread_reward_accum_record?: RecordSDKType;
+  uptime_accum_records: RecordSDKType[];
+}
+export interface PositionWithoutPoolId {
+  positionId: Long;
+  address: string;
+  lowerTick: Long;
+  upperTick: Long;
+  joinTime?: Date;
+  liquidity: string;
+}
+export interface PositionWithoutPoolIdProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithoutPoolId";
+  value: Uint8Array;
+}
+export interface PositionWithoutPoolIdAmino {
+  position_id: string;
+  address: string;
+  lower_tick: string;
+  upper_tick: string;
+  join_time?: Date;
+  liquidity: string;
+}
+export interface PositionWithoutPoolIdAminoMsg {
+  type: "osmosis/concentratedliquidity/position-without-pool-id";
+  value: PositionWithoutPoolIdAmino;
+}
+export interface PositionWithoutPoolIdSDKType {
+  position_id: Long;
+  address: string;
+  lower_tick: Long;
+  upper_tick: Long;
+  join_time?: Date;
+  liquidity: string;
 }
 /** GenesisState defines the concentrated liquidity module's genesis state. */
 
@@ -129,9 +183,9 @@ export interface GenesisState {
   params?: Params;
   /** pool data containining serialized pool struct and ticks. */
 
-  poolData: PoolData[];
-  positions: Position[];
+  poolData: GenesisPoolData[];
   nextPositionId: Long;
+  nextIncentiveRecordId: Long;
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisState";
@@ -144,9 +198,9 @@ export interface GenesisStateAmino {
   params?: ParamsAmino;
   /** pool data containining serialized pool struct and ticks. */
 
-  pool_data: PoolDataAmino[];
-  positions: PositionAmino[];
+  pool_data: GenesisPoolDataAmino[];
   next_position_id: string;
+  next_incentive_record_id: string;
 }
 export interface GenesisStateAminoMsg {
   type: "osmosis/concentratedliquidity/genesis-state";
@@ -156,9 +210,9 @@ export interface GenesisStateAminoMsg {
 
 export interface GenesisStateSDKType {
   params?: ParamsSDKType;
-  pool_data: PoolDataSDKType[];
-  positions: PositionSDKType[];
+  pool_data: GenesisPoolDataSDKType[];
   next_position_id: Long;
+  next_incentive_record_id: Long;
 }
 export interface AccumObject {
   /** Accumulator's name (pulled from AccumulatorContent) */
@@ -185,7 +239,6 @@ export interface AccumObjectSDKType {
 
 function createBaseFullTick(): FullTick {
   return {
-    poolId: Long.UZERO,
     tickIndex: Long.ZERO,
     info: undefined
   };
@@ -195,16 +248,12 @@ export const FullTick = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullTick",
 
   encode(message: FullTick, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
-      writer.uint32(8).uint64(message.poolId);
-    }
-
     if (!message.tickIndex.isZero()) {
-      writer.uint32(16).int64(message.tickIndex);
+      writer.uint32(8).int64(message.tickIndex);
     }
 
     if (message.info !== undefined) {
-      TickInfo.encode(message.info, writer.uint32(26).fork()).ldelim();
+      TickInfo.encode(message.info, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -220,14 +269,10 @@ export const FullTick = {
 
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
-          break;
-
-        case 2:
           message.tickIndex = (reader.int64() as Long);
           break;
 
-        case 3:
+        case 2:
           message.info = TickInfo.decode(reader, reader.uint32());
           break;
 
@@ -242,7 +287,6 @@ export const FullTick = {
 
   fromPartial(object: Partial<FullTick>): FullTick {
     const message = createBaseFullTick();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
     message.tickIndex = object.tickIndex !== undefined && object.tickIndex !== null ? Long.fromValue(object.tickIndex) : Long.ZERO;
     message.info = object.info !== undefined && object.info !== null ? TickInfo.fromPartial(object.info) : undefined;
     return message;
@@ -250,7 +294,6 @@ export const FullTick = {
 
   fromAmino(object: FullTickAmino): FullTick {
     return {
-      poolId: Long.fromString(object.pool_id),
       tickIndex: Long.fromString(object.tick_index),
       info: object?.info ? TickInfo.fromAmino(object.info) : undefined
     };
@@ -258,7 +301,6 @@ export const FullTick = {
 
   toAmino(message: FullTick): FullTickAmino {
     const obj: any = {};
-    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
     obj.tick_index = message.tickIndex ? message.tickIndex.toString() : undefined;
     obj.info = message.info ? TickInfo.toAmino(message.info) : undefined;
     return obj;
@@ -292,20 +334,21 @@ export const FullTick = {
 
 };
 
-function createBasePoolData(): PoolData {
+function createBaseGenesisPoolData(): GenesisPoolData {
   return {
     pool: undefined,
     ticks: [],
-    feeAccumulator: undefined,
+    spreadRewardAccumulator: undefined,
     incentivesAccumulators: [],
-    incentiveRecords: []
+    incentiveRecords: [],
+    positionData: []
   };
 }
 
-export const PoolData = {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolData",
+export const GenesisPoolData = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisPoolData",
 
-  encode(message: PoolData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GenesisPoolData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pool !== undefined) {
       Any.encode((message.pool as Any), writer.uint32(10).fork()).ldelim();
     }
@@ -314,8 +357,8 @@ export const PoolData = {
       FullTick.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.feeAccumulator !== undefined) {
-      AccumObject.encode(message.feeAccumulator, writer.uint32(26).fork()).ldelim();
+    if (message.spreadRewardAccumulator !== undefined) {
+      AccumObject.encode(message.spreadRewardAccumulator, writer.uint32(26).fork()).ldelim();
     }
 
     for (const v of message.incentivesAccumulators) {
@@ -326,13 +369,17 @@ export const PoolData = {
       IncentiveRecord.encode(v!, writer.uint32(42).fork()).ldelim();
     }
 
+    for (const v of message.positionData) {
+      PositionData.encode(v!, writer.uint32(50).fork()).ldelim();
+    }
+
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): PoolData {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisPoolData {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePoolData();
+    const message = createBaseGenesisPoolData();
 
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -347,7 +394,7 @@ export const PoolData = {
           break;
 
         case 3:
-          message.feeAccumulator = AccumObject.decode(reader, reader.uint32());
+          message.spreadRewardAccumulator = AccumObject.decode(reader, reader.uint32());
           break;
 
         case 4:
@@ -356,6 +403,10 @@ export const PoolData = {
 
         case 5:
           message.incentiveRecords.push(IncentiveRecord.decode(reader, reader.uint32()));
+          break;
+
+        case 6:
+          message.positionData.push(PositionData.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -367,27 +418,29 @@ export const PoolData = {
     return message;
   },
 
-  fromPartial(object: Partial<PoolData>): PoolData {
-    const message = createBasePoolData();
+  fromPartial(object: Partial<GenesisPoolData>): GenesisPoolData {
+    const message = createBaseGenesisPoolData();
     message.pool = object.pool !== undefined && object.pool !== null ? Any.fromPartial(object.pool) : undefined;
     message.ticks = object.ticks?.map(e => FullTick.fromPartial(e)) || [];
-    message.feeAccumulator = object.feeAccumulator !== undefined && object.feeAccumulator !== null ? AccumObject.fromPartial(object.feeAccumulator) : undefined;
+    message.spreadRewardAccumulator = object.spreadRewardAccumulator !== undefined && object.spreadRewardAccumulator !== null ? AccumObject.fromPartial(object.spreadRewardAccumulator) : undefined;
     message.incentivesAccumulators = object.incentivesAccumulators?.map(e => AccumObject.fromPartial(e)) || [];
     message.incentiveRecords = object.incentiveRecords?.map(e => IncentiveRecord.fromPartial(e)) || [];
+    message.positionData = object.positionData?.map(e => PositionData.fromPartial(e)) || [];
     return message;
   },
 
-  fromAmino(object: PoolDataAmino): PoolData {
+  fromAmino(object: GenesisPoolDataAmino): GenesisPoolData {
     return {
       pool: object?.pool ? PoolI_FromAmino(object.pool) : undefined,
       ticks: Array.isArray(object?.ticks) ? object.ticks.map((e: any) => FullTick.fromAmino(e)) : [],
-      feeAccumulator: object?.fee_accumulator ? AccumObject.fromAmino(object.fee_accumulator) : undefined,
+      spreadRewardAccumulator: object?.spread_reward_accumulator ? AccumObject.fromAmino(object.spread_reward_accumulator) : undefined,
       incentivesAccumulators: Array.isArray(object?.incentives_accumulators) ? object.incentives_accumulators.map((e: any) => AccumObject.fromAmino(e)) : [],
-      incentiveRecords: Array.isArray(object?.incentive_records) ? object.incentive_records.map((e: any) => IncentiveRecord.fromAmino(e)) : []
+      incentiveRecords: Array.isArray(object?.incentive_records) ? object.incentive_records.map((e: any) => IncentiveRecord.fromAmino(e)) : [],
+      positionData: Array.isArray(object?.position_data) ? object.position_data.map((e: any) => PositionData.fromAmino(e)) : []
     };
   },
 
-  toAmino(message: PoolData): PoolDataAmino {
+  toAmino(message: GenesisPoolData): GenesisPoolDataAmino {
     const obj: any = {};
     obj.pool = message.pool ? PoolI_ToAmino((message.pool as Any)) : undefined;
 
@@ -397,7 +450,7 @@ export const PoolData = {
       obj.ticks = [];
     }
 
-    obj.fee_accumulator = message.feeAccumulator ? AccumObject.toAmino(message.feeAccumulator) : undefined;
+    obj.spread_reward_accumulator = message.spreadRewardAccumulator ? AccumObject.toAmino(message.spreadRewardAccumulator) : undefined;
 
     if (message.incentivesAccumulators) {
       obj.incentives_accumulators = message.incentivesAccumulators.map(e => e ? AccumObject.toAmino(e) : undefined);
@@ -411,32 +464,310 @@ export const PoolData = {
       obj.incentive_records = [];
     }
 
+    if (message.positionData) {
+      obj.position_data = message.positionData.map(e => e ? PositionData.toAmino(e) : undefined);
+    } else {
+      obj.position_data = [];
+    }
+
     return obj;
   },
 
-  fromAminoMsg(object: PoolDataAminoMsg): PoolData {
-    return PoolData.fromAmino(object.value);
+  fromAminoMsg(object: GenesisPoolDataAminoMsg): GenesisPoolData {
+    return GenesisPoolData.fromAmino(object.value);
   },
 
-  toAminoMsg(message: PoolData): PoolDataAminoMsg {
+  toAminoMsg(message: GenesisPoolData): GenesisPoolDataAminoMsg {
     return {
-      type: "osmosis/concentratedliquidity/pool-data",
-      value: PoolData.toAmino(message)
+      type: "osmosis/concentratedliquidity/genesis-pool-data",
+      value: GenesisPoolData.toAmino(message)
     };
   },
 
-  fromProtoMsg(message: PoolDataProtoMsg): PoolData {
-    return PoolData.decode(message.value);
+  fromProtoMsg(message: GenesisPoolDataProtoMsg): GenesisPoolData {
+    return GenesisPoolData.decode(message.value);
   },
 
-  toProto(message: PoolData): Uint8Array {
-    return PoolData.encode(message).finish();
+  toProto(message: GenesisPoolData): Uint8Array {
+    return GenesisPoolData.encode(message).finish();
   },
 
-  toProtoMsg(message: PoolData): PoolDataProtoMsg {
+  toProtoMsg(message: GenesisPoolData): GenesisPoolDataProtoMsg {
     return {
-      typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolData",
-      value: PoolData.encode(message).finish()
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisPoolData",
+      value: GenesisPoolData.encode(message).finish()
+    };
+  }
+
+};
+
+function createBasePositionData(): PositionData {
+  return {
+    position: undefined,
+    lockId: Long.UZERO,
+    spreadRewardAccumRecord: undefined,
+    uptimeAccumRecords: []
+  };
+}
+
+export const PositionData = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionData",
+
+  encode(message: PositionData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.position !== undefined) {
+      PositionWithoutPoolId.encode(message.position, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (!message.lockId.isZero()) {
+      writer.uint32(16).uint64(message.lockId);
+    }
+
+    if (message.spreadRewardAccumRecord !== undefined) {
+      Record.encode(message.spreadRewardAccumRecord, writer.uint32(26).fork()).ldelim();
+    }
+
+    for (const v of message.uptimeAccumRecords) {
+      Record.encode(v!, writer.uint32(34).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): PositionData {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePositionData();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.position = PositionWithoutPoolId.decode(reader, reader.uint32());
+          break;
+
+        case 2:
+          message.lockId = (reader.uint64() as Long);
+          break;
+
+        case 3:
+          message.spreadRewardAccumRecord = Record.decode(reader, reader.uint32());
+          break;
+
+        case 4:
+          message.uptimeAccumRecords.push(Record.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<PositionData>): PositionData {
+    const message = createBasePositionData();
+    message.position = object.position !== undefined && object.position !== null ? PositionWithoutPoolId.fromPartial(object.position) : undefined;
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.spreadRewardAccumRecord = object.spreadRewardAccumRecord !== undefined && object.spreadRewardAccumRecord !== null ? Record.fromPartial(object.spreadRewardAccumRecord) : undefined;
+    message.uptimeAccumRecords = object.uptimeAccumRecords?.map(e => Record.fromPartial(e)) || [];
+    return message;
+  },
+
+  fromAmino(object: PositionDataAmino): PositionData {
+    return {
+      position: object?.position ? PositionWithoutPoolId.fromAmino(object.position) : undefined,
+      lockId: Long.fromString(object.lock_id),
+      spreadRewardAccumRecord: object?.spread_reward_accum_record ? Record.fromAmino(object.spread_reward_accum_record) : undefined,
+      uptimeAccumRecords: Array.isArray(object?.uptime_accum_records) ? object.uptime_accum_records.map((e: any) => Record.fromAmino(e)) : []
+    };
+  },
+
+  toAmino(message: PositionData): PositionDataAmino {
+    const obj: any = {};
+    obj.position = message.position ? PositionWithoutPoolId.toAmino(message.position) : undefined;
+    obj.lock_id = message.lockId ? message.lockId.toString() : undefined;
+    obj.spread_reward_accum_record = message.spreadRewardAccumRecord ? Record.toAmino(message.spreadRewardAccumRecord) : undefined;
+
+    if (message.uptimeAccumRecords) {
+      obj.uptime_accum_records = message.uptimeAccumRecords.map(e => e ? Record.toAmino(e) : undefined);
+    } else {
+      obj.uptime_accum_records = [];
+    }
+
+    return obj;
+  },
+
+  fromAminoMsg(object: PositionDataAminoMsg): PositionData {
+    return PositionData.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: PositionData): PositionDataAminoMsg {
+    return {
+      type: "osmosis/concentratedliquidity/position-data",
+      value: PositionData.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: PositionDataProtoMsg): PositionData {
+    return PositionData.decode(message.value);
+  },
+
+  toProto(message: PositionData): Uint8Array {
+    return PositionData.encode(message).finish();
+  },
+
+  toProtoMsg(message: PositionData): PositionDataProtoMsg {
+    return {
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionData",
+      value: PositionData.encode(message).finish()
+    };
+  }
+
+};
+
+function createBasePositionWithoutPoolId(): PositionWithoutPoolId {
+  return {
+    positionId: Long.UZERO,
+    address: "",
+    lowerTick: Long.ZERO,
+    upperTick: Long.ZERO,
+    joinTime: undefined,
+    liquidity: ""
+  };
+}
+
+export const PositionWithoutPoolId = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithoutPoolId",
+
+  encode(message: PositionWithoutPoolId, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.positionId.isZero()) {
+      writer.uint32(8).uint64(message.positionId);
+    }
+
+    if (message.address !== "") {
+      writer.uint32(18).string(message.address);
+    }
+
+    if (!message.lowerTick.isZero()) {
+      writer.uint32(24).int64(message.lowerTick);
+    }
+
+    if (!message.upperTick.isZero()) {
+      writer.uint32(32).int64(message.upperTick);
+    }
+
+    if (message.joinTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.joinTime), writer.uint32(42).fork()).ldelim();
+    }
+
+    if (message.liquidity !== "") {
+      writer.uint32(50).string(message.liquidity);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): PositionWithoutPoolId {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePositionWithoutPoolId();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.positionId = (reader.uint64() as Long);
+          break;
+
+        case 2:
+          message.address = reader.string();
+          break;
+
+        case 3:
+          message.lowerTick = (reader.int64() as Long);
+          break;
+
+        case 4:
+          message.upperTick = (reader.int64() as Long);
+          break;
+
+        case 5:
+          message.joinTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        case 6:
+          message.liquidity = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<PositionWithoutPoolId>): PositionWithoutPoolId {
+    const message = createBasePositionWithoutPoolId();
+    message.positionId = object.positionId !== undefined && object.positionId !== null ? Long.fromValue(object.positionId) : Long.UZERO;
+    message.address = object.address ?? "";
+    message.lowerTick = object.lowerTick !== undefined && object.lowerTick !== null ? Long.fromValue(object.lowerTick) : Long.ZERO;
+    message.upperTick = object.upperTick !== undefined && object.upperTick !== null ? Long.fromValue(object.upperTick) : Long.ZERO;
+    message.joinTime = object.joinTime ?? undefined;
+    message.liquidity = object.liquidity ?? "";
+    return message;
+  },
+
+  fromAmino(object: PositionWithoutPoolIdAmino): PositionWithoutPoolId {
+    return {
+      positionId: Long.fromString(object.position_id),
+      address: object.address,
+      lowerTick: Long.fromString(object.lower_tick),
+      upperTick: Long.fromString(object.upper_tick),
+      joinTime: object?.join_time ? Timestamp.fromAmino(object.join_time) : undefined,
+      liquidity: object.liquidity
+    };
+  },
+
+  toAmino(message: PositionWithoutPoolId): PositionWithoutPoolIdAmino {
+    const obj: any = {};
+    obj.position_id = message.positionId ? message.positionId.toString() : undefined;
+    obj.address = message.address;
+    obj.lower_tick = message.lowerTick ? message.lowerTick.toString() : undefined;
+    obj.upper_tick = message.upperTick ? message.upperTick.toString() : undefined;
+    obj.join_time = message.joinTime ? Timestamp.toAmino(message.joinTime) : undefined;
+    obj.liquidity = message.liquidity;
+    return obj;
+  },
+
+  fromAminoMsg(object: PositionWithoutPoolIdAminoMsg): PositionWithoutPoolId {
+    return PositionWithoutPoolId.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: PositionWithoutPoolId): PositionWithoutPoolIdAminoMsg {
+    return {
+      type: "osmosis/concentratedliquidity/position-without-pool-id",
+      value: PositionWithoutPoolId.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: PositionWithoutPoolIdProtoMsg): PositionWithoutPoolId {
+    return PositionWithoutPoolId.decode(message.value);
+  },
+
+  toProto(message: PositionWithoutPoolId): Uint8Array {
+    return PositionWithoutPoolId.encode(message).finish();
+  },
+
+  toProtoMsg(message: PositionWithoutPoolId): PositionWithoutPoolIdProtoMsg {
+    return {
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithoutPoolId",
+      value: PositionWithoutPoolId.encode(message).finish()
     };
   }
 
@@ -446,8 +777,8 @@ function createBaseGenesisState(): GenesisState {
   return {
     params: undefined,
     poolData: [],
-    positions: [],
-    nextPositionId: Long.UZERO
+    nextPositionId: Long.UZERO,
+    nextIncentiveRecordId: Long.UZERO
   };
 }
 
@@ -460,15 +791,15 @@ export const GenesisState = {
     }
 
     for (const v of message.poolData) {
-      PoolData.encode(v!, writer.uint32(18).fork()).ldelim();
-    }
-
-    for (const v of message.positions) {
-      Position.encode(v!, writer.uint32(26).fork()).ldelim();
+      GenesisPoolData.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
     if (!message.nextPositionId.isZero()) {
       writer.uint32(32).uint64(message.nextPositionId);
+    }
+
+    if (!message.nextIncentiveRecordId.isZero()) {
+      writer.uint32(40).uint64(message.nextIncentiveRecordId);
     }
 
     return writer;
@@ -488,15 +819,15 @@ export const GenesisState = {
           break;
 
         case 2:
-          message.poolData.push(PoolData.decode(reader, reader.uint32()));
-          break;
-
-        case 3:
-          message.positions.push(Position.decode(reader, reader.uint32()));
+          message.poolData.push(GenesisPoolData.decode(reader, reader.uint32()));
           break;
 
         case 4:
           message.nextPositionId = (reader.uint64() as Long);
+          break;
+
+        case 5:
+          message.nextIncentiveRecordId = (reader.uint64() as Long);
           break;
 
         default:
@@ -511,18 +842,18 @@ export const GenesisState = {
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.poolData = object.poolData?.map(e => PoolData.fromPartial(e)) || [];
-    message.positions = object.positions?.map(e => Position.fromPartial(e)) || [];
+    message.poolData = object.poolData?.map(e => GenesisPoolData.fromPartial(e)) || [];
     message.nextPositionId = object.nextPositionId !== undefined && object.nextPositionId !== null ? Long.fromValue(object.nextPositionId) : Long.UZERO;
+    message.nextIncentiveRecordId = object.nextIncentiveRecordId !== undefined && object.nextIncentiveRecordId !== null ? Long.fromValue(object.nextIncentiveRecordId) : Long.UZERO;
     return message;
   },
 
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
       params: object?.params ? Params.fromAmino(object.params) : undefined,
-      poolData: Array.isArray(object?.pool_data) ? object.pool_data.map((e: any) => PoolData.fromAmino(e)) : [],
-      positions: Array.isArray(object?.positions) ? object.positions.map((e: any) => Position.fromAmino(e)) : [],
-      nextPositionId: Long.fromString(object.next_position_id)
+      poolData: Array.isArray(object?.pool_data) ? object.pool_data.map((e: any) => GenesisPoolData.fromAmino(e)) : [],
+      nextPositionId: Long.fromString(object.next_position_id),
+      nextIncentiveRecordId: Long.fromString(object.next_incentive_record_id)
     };
   },
 
@@ -531,18 +862,13 @@ export const GenesisState = {
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
 
     if (message.poolData) {
-      obj.pool_data = message.poolData.map(e => e ? PoolData.toAmino(e) : undefined);
+      obj.pool_data = message.poolData.map(e => e ? GenesisPoolData.toAmino(e) : undefined);
     } else {
       obj.pool_data = [];
     }
 
-    if (message.positions) {
-      obj.positions = message.positions.map(e => e ? Position.toAmino(e) : undefined);
-    } else {
-      obj.positions = [];
-    }
-
     obj.next_position_id = message.nextPositionId ? message.nextPositionId.toString() : undefined;
+    obj.next_incentive_record_id = message.nextIncentiveRecordId ? message.nextIncentiveRecordId.toString() : undefined;
     return obj;
   },
 

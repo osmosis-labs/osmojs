@@ -42,7 +42,7 @@ export const createRPCQueryClient = async ({
     },
     osmosis: {
       concentratedliquidity: {
-        v1beta1: (await import("./concentrated-liquidity/pool-model/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import("./concentrated-liquidity/query.rpc.Query")).createRpcQueryExtension(client)
       },
       cosmwasmpool: {
         v1beta1: (await import("./cosmwasmpool/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)

@@ -1,53 +1,53 @@
 import { FeeToken, FeeTokenAmino, FeeTokenSDKType } from "./feetoken";
 import * as _m0 from "protobufjs/minimal";
 /**
- * UpdateFeeTokenProposal is a gov Content type for adding a new whitelisted fee
- * token. It must specify a denom along with gamm pool ID to use as a spot price
- * calculator. It can be used to add a new denom to the whitelist It can also be
- * used to update the Pool to associate with the denom. If Pool ID is set to 0,
- * it will remove the denom from the whitelisted set.
+ * UpdateFeeTokenProposal is a gov Content type for adding new whitelisted fee
+ * token(s). It must specify a denom along with gamm pool ID to use as a spot
+ * price calculator. It can be used to add new denoms to the whitelist. It can
+ * also be used to update the Pool to associate with the denom. If Pool ID is
+ * set to 0, it will remove the denom from the whitelisted set.
  */
 
 export interface UpdateFeeTokenProposal {
   $typeUrl?: string;
   title: string;
   description: string;
-  feetoken?: FeeToken;
+  feetokens: FeeToken[];
 }
 export interface UpdateFeeTokenProposalProtoMsg {
   typeUrl: "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal";
   value: Uint8Array;
 }
 /**
- * UpdateFeeTokenProposal is a gov Content type for adding a new whitelisted fee
- * token. It must specify a denom along with gamm pool ID to use as a spot price
- * calculator. It can be used to add a new denom to the whitelist It can also be
- * used to update the Pool to associate with the denom. If Pool ID is set to 0,
- * it will remove the denom from the whitelisted set.
+ * UpdateFeeTokenProposal is a gov Content type for adding new whitelisted fee
+ * token(s). It must specify a denom along with gamm pool ID to use as a spot
+ * price calculator. It can be used to add new denoms to the whitelist. It can
+ * also be used to update the Pool to associate with the denom. If Pool ID is
+ * set to 0, it will remove the denom from the whitelisted set.
  */
 
 export interface UpdateFeeTokenProposalAmino {
   title: string;
   description: string;
-  feetoken?: FeeTokenAmino;
+  feetokens: FeeTokenAmino[];
 }
 export interface UpdateFeeTokenProposalAminoMsg {
   type: "osmosis/UpdateFeeTokenProposal";
   value: UpdateFeeTokenProposalAmino;
 }
 /**
- * UpdateFeeTokenProposal is a gov Content type for adding a new whitelisted fee
- * token. It must specify a denom along with gamm pool ID to use as a spot price
- * calculator. It can be used to add a new denom to the whitelist It can also be
- * used to update the Pool to associate with the denom. If Pool ID is set to 0,
- * it will remove the denom from the whitelisted set.
+ * UpdateFeeTokenProposal is a gov Content type for adding new whitelisted fee
+ * token(s). It must specify a denom along with gamm pool ID to use as a spot
+ * price calculator. It can be used to add new denoms to the whitelist. It can
+ * also be used to update the Pool to associate with the denom. If Pool ID is
+ * set to 0, it will remove the denom from the whitelisted set.
  */
 
 export interface UpdateFeeTokenProposalSDKType {
   $typeUrl?: string;
   title: string;
   description: string;
-  feetoken?: FeeTokenSDKType;
+  feetokens: FeeTokenSDKType[];
 }
 
 function createBaseUpdateFeeTokenProposal(): UpdateFeeTokenProposal {
@@ -55,7 +55,7 @@ function createBaseUpdateFeeTokenProposal(): UpdateFeeTokenProposal {
     $typeUrl: "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal",
     title: "",
     description: "",
-    feetoken: undefined
+    feetokens: []
   };
 }
 
@@ -71,8 +71,8 @@ export const UpdateFeeTokenProposal = {
       writer.uint32(18).string(message.description);
     }
 
-    if (message.feetoken !== undefined) {
-      FeeToken.encode(message.feetoken, writer.uint32(26).fork()).ldelim();
+    for (const v of message.feetokens) {
+      FeeToken.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -96,7 +96,7 @@ export const UpdateFeeTokenProposal = {
           break;
 
         case 3:
-          message.feetoken = FeeToken.decode(reader, reader.uint32());
+          message.feetokens.push(FeeToken.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -112,7 +112,7 @@ export const UpdateFeeTokenProposal = {
     const message = createBaseUpdateFeeTokenProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.feetoken = object.feetoken !== undefined && object.feetoken !== null ? FeeToken.fromPartial(object.feetoken) : undefined;
+    message.feetokens = object.feetokens?.map(e => FeeToken.fromPartial(e)) || [];
     return message;
   },
 
@@ -120,7 +120,7 @@ export const UpdateFeeTokenProposal = {
     return {
       title: object.title,
       description: object.description,
-      feetoken: object?.feetoken ? FeeToken.fromAmino(object.feetoken) : undefined
+      feetokens: Array.isArray(object?.feetokens) ? object.feetokens.map((e: any) => FeeToken.fromAmino(e)) : []
     };
   },
 
@@ -128,7 +128,13 @@ export const UpdateFeeTokenProposal = {
     const obj: any = {};
     obj.title = message.title;
     obj.description = message.description;
-    obj.feetoken = message.feetoken ? FeeToken.toAmino(message.feetoken) : undefined;
+
+    if (message.feetokens) {
+      obj.feetokens = message.feetokens.map(e => e ? FeeToken.toAmino(e) : undefined);
+    } else {
+      obj.feetokens = [];
+    }
+
     return obj;
   },
 

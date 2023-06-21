@@ -871,6 +871,87 @@ export interface QueryGetProtoRevEnabledResponseAminoMsg {
 export interface QueryGetProtoRevEnabledResponseSDKType {
   enabled: boolean;
 }
+/**
+ * QueryGetProtoRevPoolRequest is request type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+
+export interface QueryGetProtoRevPoolRequest {
+  /**
+   * base_denom is the base denom set in protorev for the denom pair to pool
+   * mapping
+   */
+  baseDenom: string;
+  /** other_denom is the other denom for the denom pair to pool mapping */
+
+  otherDenom: string;
+}
+export interface QueryGetProtoRevPoolRequestProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolRequest";
+  value: Uint8Array;
+}
+/**
+ * QueryGetProtoRevPoolRequest is request type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+
+export interface QueryGetProtoRevPoolRequestAmino {
+  /**
+   * base_denom is the base denom set in protorev for the denom pair to pool
+   * mapping
+   */
+  base_denom: string;
+  /** other_denom is the other denom for the denom pair to pool mapping */
+
+  other_denom: string;
+}
+export interface QueryGetProtoRevPoolRequestAminoMsg {
+  type: "osmosis/protorev/query-get-proto-rev-pool-request";
+  value: QueryGetProtoRevPoolRequestAmino;
+}
+/**
+ * QueryGetProtoRevPoolRequest is request type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+
+export interface QueryGetProtoRevPoolRequestSDKType {
+  base_denom: string;
+  other_denom: string;
+}
+/**
+ * QueryGetProtoRevPoolResponse is response type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+
+export interface QueryGetProtoRevPoolResponse {
+  /** pool_id is the pool_id stored for the denom pair */
+  poolId: Long;
+}
+export interface QueryGetProtoRevPoolResponseProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolResponse";
+  value: Uint8Array;
+}
+/**
+ * QueryGetProtoRevPoolResponse is response type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+
+export interface QueryGetProtoRevPoolResponseAmino {
+  /** pool_id is the pool_id stored for the denom pair */
+  pool_id: string;
+}
+export interface QueryGetProtoRevPoolResponseAminoMsg {
+  type: "osmosis/protorev/query-get-proto-rev-pool-response";
+  value: QueryGetProtoRevPoolResponseAmino;
+}
+/**
+ * QueryGetProtoRevPoolResponse is response type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+
+export interface QueryGetProtoRevPoolResponseSDKType {
+  pool_id: Long;
+}
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
@@ -3121,6 +3202,188 @@ export const QueryGetProtoRevEnabledResponse = {
     return {
       typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevEnabledResponse",
       value: QueryGetProtoRevEnabledResponse.encode(message).finish()
+    };
+  }
+
+};
+
+function createBaseQueryGetProtoRevPoolRequest(): QueryGetProtoRevPoolRequest {
+  return {
+    baseDenom: "",
+    otherDenom: ""
+  };
+}
+
+export const QueryGetProtoRevPoolRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolRequest",
+
+  encode(message: QueryGetProtoRevPoolRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.baseDenom !== "") {
+      writer.uint32(10).string(message.baseDenom);
+    }
+
+    if (message.otherDenom !== "") {
+      writer.uint32(18).string(message.otherDenom);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryGetProtoRevPoolRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.baseDenom = reader.string();
+          break;
+
+        case 2:
+          message.otherDenom = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryGetProtoRevPoolRequest>): QueryGetProtoRevPoolRequest {
+    const message = createBaseQueryGetProtoRevPoolRequest();
+    message.baseDenom = object.baseDenom ?? "";
+    message.otherDenom = object.otherDenom ?? "";
+    return message;
+  },
+
+  fromAmino(object: QueryGetProtoRevPoolRequestAmino): QueryGetProtoRevPoolRequest {
+    return {
+      baseDenom: object.base_denom,
+      otherDenom: object.other_denom
+    };
+  },
+
+  toAmino(message: QueryGetProtoRevPoolRequest): QueryGetProtoRevPoolRequestAmino {
+    const obj: any = {};
+    obj.base_denom = message.baseDenom;
+    obj.other_denom = message.otherDenom;
+    return obj;
+  },
+
+  fromAminoMsg(object: QueryGetProtoRevPoolRequestAminoMsg): QueryGetProtoRevPoolRequest {
+    return QueryGetProtoRevPoolRequest.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: QueryGetProtoRevPoolRequest): QueryGetProtoRevPoolRequestAminoMsg {
+    return {
+      type: "osmosis/protorev/query-get-proto-rev-pool-request",
+      value: QueryGetProtoRevPoolRequest.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: QueryGetProtoRevPoolRequestProtoMsg): QueryGetProtoRevPoolRequest {
+    return QueryGetProtoRevPoolRequest.decode(message.value);
+  },
+
+  toProto(message: QueryGetProtoRevPoolRequest): Uint8Array {
+    return QueryGetProtoRevPoolRequest.encode(message).finish();
+  },
+
+  toProtoMsg(message: QueryGetProtoRevPoolRequest): QueryGetProtoRevPoolRequestProtoMsg {
+    return {
+      typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolRequest",
+      value: QueryGetProtoRevPoolRequest.encode(message).finish()
+    };
+  }
+
+};
+
+function createBaseQueryGetProtoRevPoolResponse(): QueryGetProtoRevPoolResponse {
+  return {
+    poolId: Long.UZERO
+  };
+}
+
+export const QueryGetProtoRevPoolResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolResponse",
+
+  encode(message: QueryGetProtoRevPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.poolId.isZero()) {
+      writer.uint32(8).uint64(message.poolId);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryGetProtoRevPoolResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = (reader.uint64() as Long);
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<QueryGetProtoRevPoolResponse>): QueryGetProtoRevPoolResponse {
+    const message = createBaseQueryGetProtoRevPoolResponse();
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    return message;
+  },
+
+  fromAmino(object: QueryGetProtoRevPoolResponseAmino): QueryGetProtoRevPoolResponse {
+    return {
+      poolId: Long.fromString(object.pool_id)
+    };
+  },
+
+  toAmino(message: QueryGetProtoRevPoolResponse): QueryGetProtoRevPoolResponseAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: QueryGetProtoRevPoolResponseAminoMsg): QueryGetProtoRevPoolResponse {
+    return QueryGetProtoRevPoolResponse.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: QueryGetProtoRevPoolResponse): QueryGetProtoRevPoolResponseAminoMsg {
+    return {
+      type: "osmosis/protorev/query-get-proto-rev-pool-response",
+      value: QueryGetProtoRevPoolResponse.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: QueryGetProtoRevPoolResponseProtoMsg): QueryGetProtoRevPoolResponse {
+    return QueryGetProtoRevPoolResponse.decode(message.value);
+  },
+
+  toProto(message: QueryGetProtoRevPoolResponse): Uint8Array {
+    return QueryGetProtoRevPoolResponse.encode(message).finish();
+  },
+
+  toProtoMsg(message: QueryGetProtoRevPoolResponse): QueryGetProtoRevPoolResponseProtoMsg {
+    return {
+      typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolResponse",
+      value: QueryGetProtoRevPoolResponse.encode(message).finish()
     };
   }
 
