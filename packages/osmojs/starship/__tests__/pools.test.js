@@ -2,7 +2,7 @@ import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import { coin, coins } from '@cosmjs/amino';
 import Long from 'long';
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
+import { Secp256k1HdWallet } from '@cosmjs/amino';
 
 import { osmosis, google, getSigningOsmosisClient } from '../../src/codegen';
 import { useChain, calcShareOutAmount, transferIbcTokens } from '../src';
@@ -27,7 +27,7 @@ describe('Pool testing over IBC tokens', () => {
     denom = getCoin().base;
 
     // Initialize wallet
-    wallet = await DirectSecp256k1HdWallet.fromMnemonic(generateMnemonic(), {
+    wallet = await Secp256k1HdWallet.fromMnemonic(generateMnemonic(), {
       prefix: chainInfo.chain.bech32_prefix
     });
     address = (await wallet.getAccounts())[0].address;
