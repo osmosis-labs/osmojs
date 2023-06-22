@@ -1,17 +1,15 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import Long from 'long';
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-
 import { cosmos, getSigningOsmosisClient } from '../../src/codegen';
 import { useChain, waitUntil } from '../src';
 import './setup.test';
+import { Secp256k1HdWallet } from '@cosmjs/amino';
 
 describe('Governance tests for osmosis', () => {
   let wallet, denom, address;
   let chainInfo,
     getCoin,
-    getStargateClient,
     getGenesisMnemonic,
     getRpcEndpoint,
     creditFromFaucet;
@@ -33,7 +31,7 @@ describe('Governance tests for osmosis', () => {
     denom = getCoin().base;
 
     // Initialize wallet
-    wallet = await DirectSecp256k1HdWallet.fromMnemonic(generateMnemonic(), {
+    wallet = await Secp256k1HdWallet.fromMnemonic(generateMnemonic(), {
       prefix: chainInfo.chain.bech32_prefix
     });
     address = (await wallet.getAccounts())[0].address;
@@ -118,7 +116,7 @@ describe('Governance tests for osmosis', () => {
   xit('vote on proposal from genesis address', async () => {
     // create genesis address signing client
     const mnemonic = await getGenesisMnemonic();
-    const genesisWallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    const genesisWallet = await Secp256k1HdWallet.fromMnemonic(mnemonic, {
       prefix: chainInfo.chain.bech32_prefix
     });
     genesisAddress = (await genesisWallet.getAccounts())[0].address;
