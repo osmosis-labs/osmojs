@@ -115,7 +115,7 @@ describe('Governance tests for osmosis', () => {
     expect(result.proposal.proposalId.toString()).toEqual(proposalId);
   }, 10000);
 
-  it.todo('vote on proposal from genesis address', async () => {
+  xit('vote on proposal from genesis address', async () => {
     // create genesis address signing client
     const mnemonic = await getGenesisMnemonic();
     const genesisWallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
@@ -153,7 +153,7 @@ describe('Governance tests for osmosis', () => {
     assertIsDeliverTxSuccess(result);
   }, 10000);
 
-  it.todo('verify vote', async () => {
+  xit('verify vote', async () => {
     const { vote } = await queryClient.cosmos.gov.v1beta1.vote({
       proposalId: Long.fromString(proposalId),
       voter: genesisAddress
@@ -173,7 +173,7 @@ describe('Governance tests for osmosis', () => {
     await expect(waitUntil(proposal.votingEndTime)).resolves.not.toThrow();
   }, 200000);
 
-  it.todo('verify proposal passed', async () => {
+  xit('verify proposal passed', async () => {
     const { proposal } = await queryClient.cosmos.gov.v1beta1.proposal({
       proposalId: Long.fromString(proposalId)
     });
