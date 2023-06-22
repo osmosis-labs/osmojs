@@ -1,7 +1,7 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import Long from 'long';
-import { cosmos, getSigningOsmosisClient } from '../../src/codegen';
+import { cosmos, getSigningCosmosClient, getSigningOsmosisClient } from '../../src/codegen';
 import { useChain, waitUntil } from '../src';
 import './setup.test';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
@@ -55,7 +55,7 @@ describe('Governance tests for osmosis', () => {
   }, 10000);
 
   it('submit a txt proposal', async () => {
-    const signingClient = await getSigningOsmosisClient({
+    const signingClient = await getSigningCosmosClient({
       rpcEndpoint: getRpcEndpoint(),
       signer: wallet
     });
@@ -121,7 +121,7 @@ describe('Governance tests for osmosis', () => {
     });
     genesisAddress = (await genesisWallet.getAccounts())[0].address;
 
-    const genesisSigningClient = await getSigningOsmosisClient({
+    const genesisSigningClient = await getSigningCosmosClient({
       rpcEndpoint: getRpcEndpoint(),
       signer: genesisWallet
     });
