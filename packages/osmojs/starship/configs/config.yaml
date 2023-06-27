@@ -1,6 +1,7 @@
 chains:
   - name: osmosis-1
     type: osmosis
+    image: ghcr.io/cosmology-tech/starship/osmosis:v15.1.2-wasmvm1.1.2
     numValidators: 1
     ports:
       rest: 1317

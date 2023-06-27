@@ -93,6 +93,7 @@
     "bignumber.js": "9.1.0",
     "case": "1.6.3",
     "cosmjs-types": "0.5.2",
+    "cosmjs-utils": "0.1.0",
     "cross-env": "^7.0.2",
     "eslint": "8.23.1",
     "eslint-config-prettier": "^8.5.0",
@@ -113,10 +114,11 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.19.0",
-    "@cosmjs/amino": "0.29.3",
-    "@cosmjs/proto-signing": "0.29.3",
-    "@cosmjs/stargate": "0.29.3",
-    "@cosmjs/tendermint-rpc": "^0.29.3",
+    "@cosmjs/amino": "0.29.4",
+    "@cosmjs/proto-signing": "0.29.4",
+    "@cosmjs/stargate": "0.29.4",
+    "@cosmjs/tendermint-rpc": "^0.29.4",
+    "@cosmjs/utils": "0.30.1",
     "@osmonauts/lcd": "^0.10.0",
     "long": "^5.2.0",
     "protobufjs": "^6.11.3"

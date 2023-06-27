@@ -1,6 +1,6 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
-import { Secp256k1HdWallet, coin, coins } from '@cosmjs/amino';
+import { coin, coins, Secp256k1HdWallet } from '@cosmjs/amino';
 import Long from 'long';
 
 import { osmosis, google, getSigningOsmosisClient } from '../../src/codegen';
@@ -26,9 +26,11 @@ describe('Pool testing over IBC tokens', () => {
     denom = getCoin().base;
 
     // Initialize wallet
-    wallet = await Secp256k1HdWallet.fromMnemonic(generateMnemonic(), {
-      prefix: chainInfo.chain.bech32_prefix
-    });
+    const mnemonic = generateMnemonic();
+    wallet = await Secp256k1HdWallet.fromMnemonic(
+      mnemonic,
+      {prefix: chainInfo.chain.bech32_prefix},
+    );
     address = (await wallet.getAccounts())[0].address;
 
     // Transfer osmosis and ibc tokens to address, send only osmo to address
@@ -57,7 +59,8 @@ describe('Pool testing over IBC tokens', () => {
           sender: address,
           poolParams: {
             swapFee: '1',
-            exitFee: '0'
+            exitFee: '0',
+            smoothWeightChangeParams: null
           },
           poolAssets: [
             {
@@ -75,7 +78,7 @@ describe('Pool testing over IBC tokens', () => {
               weight: '100'
             }
           ],
-          futurePoolGovernor: ''
+          futurePoolGovernor: '24h'
         }
       );
 
@@ -106,7 +109,7 @@ describe('Pool testing over IBC tokens', () => {
     );
 
     expect(poolId.isPositive()).toBeTruthy();
-  }, 200000);
+  }, 200000000);
 
   it('query pool via id, verify creation', async () => {
     // Query the created pool

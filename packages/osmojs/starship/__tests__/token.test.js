@@ -1,8 +1,8 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
+import { Secp256k1HdWallet } from '@cosmjs/amino';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 
-import { ibc, getSigningOsmosisClient } from '../../src/codegen';
+import { ibc, getSigningOsmosisClient, getSigningCosmosClient } from '../../src/codegen';
 import { useChain } from '../src';
 import './setup.test';
 
@@ -21,7 +21,7 @@ describe('Token transfers', () => {
     denom = getCoin().base;
 
     // Initialize wallet
-    wallet = await DirectSecp256k1HdWallet.fromMnemonic(generateMnemonic(), {
+    wallet = await Secp256k1HdWallet.fromMnemonic(generateMnemonic(), {
       prefix: chainInfo.chain.bech32_prefix
     });
     address = (await wallet.getAccounts())[0].address;
@@ -31,7 +31,7 @@ describe('Token transfers', () => {
 
   it('send osmosis token to address', async () => {
     // Initialize wallet
-    const wallet2 = await DirectSecp256k1HdWallet.fromMnemonic(
+    const wallet2 = await Secp256k1HdWallet.fromMnemonic(
       generateMnemonic(),
       { prefix: chainInfo.chain.bech32_prefix }
     );
@@ -85,7 +85,7 @@ describe('Token transfers', () => {
     } = useChain('cosmos');
 
     // Initialize wallet address for cosmos chain
-    const cosmosWallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    const cosmosWallet = await Secp256k1HdWallet.fromMnemonic(
       generateMnemonic(),
       { prefix: cosmosChainInfo.chain.bech32_prefix }
     );
