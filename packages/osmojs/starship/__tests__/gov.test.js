@@ -5,9 +5,10 @@ import { cosmos, getSigningCosmosClient, getSigningOsmosisClient } from '../../s
 import { useChain, waitUntil } from '../src';
 import './setup.test';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
+import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 
 describe('Governance tests for osmosis', () => {
-  let wallet, denom, address;
+  let protoSigner, aminoSigner, denom, address;
   let chainInfo,
     getCoin,
     getGenesisMnemonic,
@@ -30,11 +31,15 @@ describe('Governance tests for osmosis', () => {
     } = useChain('osmosis'));
     denom = getCoin().base;
 
+    const mnemonic = generateMnemonic();
     // Initialize wallet
-    wallet = await Secp256k1HdWallet.fromMnemonic(generateMnemonic(), {
+    protoSigner = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
       prefix: chainInfo.chain.bech32_prefix
     });
-    address = (await wallet.getAccounts())[0].address;
+    aminoSigner = await Secp256k1HdWallet.fromMnemonic(mnemonic, {
+      prefix: chainInfo.chain.bech32_prefix
+    });
+    address = (await protoSigner.getAccounts())[0].address;
 
     // Create custom cosmos interchain client
     queryClient = await cosmos.ClientFactory.createRPCQueryClient({
@@ -57,7 +62,7 @@ describe('Governance tests for osmosis', () => {
   it('submit a txt proposal', async () => {
     const signingClient = await getSigningCosmosClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: wallet
+      signer: protoSigner
     });
 
     const contentMsg = cosmos.gov.v1beta1.TextProposal.fromPartial({
@@ -113,10 +118,11 @@ describe('Governance tests for osmosis', () => {
     expect(result.proposal.proposalId.toString()).toEqual(proposalId);
   }, 10000);
 
-  xit('vote on proposal from genesis address', async () => {
+  it('vote on proposal from genesis address', async () => {
     // create genesis address signing client
     const mnemonic = await getGenesisMnemonic();
-    const genesisWallet = await Secp256k1HdWallet.fromMnemonic(mnemonic, {
+    // TODO: this is PROTO NOT AMINO!!!
+    const genesisWallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
       prefix: chainInfo.chain.bech32_prefix
     });
     genesisAddress = (await genesisWallet.getAccounts())[0].address;
@@ -151,7 +157,7 @@ describe('Governance tests for osmosis', () => {
     assertIsDeliverTxSuccess(result);
   }, 10000);
 
-  xit('verify vote', async () => {
+  it('verify vote', async () => {
     const { vote } = await queryClient.cosmos.gov.v1beta1.vote({
       proposalId: Long.fromString(proposalId),
       voter: genesisAddress
@@ -171,7 +177,7 @@ describe('Governance tests for osmosis', () => {
     await expect(waitUntil(proposal.votingEndTime)).resolves.not.toThrow();
   }, 200000);
 
-  xit('verify proposal passed', async () => {
+  it('verify proposal passed', async () => {
     const { proposal } = await queryClient.cosmos.gov.v1beta1.proposal({
       proposalId: Long.fromString(proposalId)
     });

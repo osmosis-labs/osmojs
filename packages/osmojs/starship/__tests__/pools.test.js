@@ -49,6 +49,9 @@ describe('Pool testing over IBC tokens', () => {
     expect(balances.length).toEqual(2);
   }, 10000);
 
+
+  it.todo('create ibc pools using amino');
+  
   it('create ibc pools with ibc atom osmo', async () => {
     const signingClient = await getSigningOsmosisClient({
       rpcEndpoint: getRpcEndpoint(),
