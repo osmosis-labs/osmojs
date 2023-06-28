@@ -1,7 +1,7 @@
-import * as _56 from "./v1/capability";
-import * as _57 from "./v1/genesis";
+import * as _53 from "./v1/capability";
+import * as _54 from "./v1/genesis";
 export namespace capability {
-  export const v1 = { ..._56,
-    ..._57
+  export const v1 = { ..._53,
+    ..._54
   };
 }
