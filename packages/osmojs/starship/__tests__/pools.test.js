@@ -4,12 +4,13 @@ import { coin, coins } from '@cosmjs/amino';
 import Long from 'long';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
 
-import { osmosis, google, getSigningOsmosisClient } from '../../src/codegen';
+import { osmosis, google, getSigningOsmosisClient, amino } from '../../src/codegen';
 import { useChain, calcShareOutAmount, transferIbcTokens } from '../src';
 import './setup.test';
+import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 
 describe('Pool testing over IBC tokens', () => {
-  let wallet, denom, address;
+  let protoSigner, aminoSigner, denom, address;
   let chainInfo, getCoin, getStargateClient, getRpcEndpoint, creditFromFaucet;
 
   // Variables used accross testcases
@@ -26,11 +27,15 @@ describe('Pool testing over IBC tokens', () => {
     } = useChain('osmosis'));
     denom = getCoin().base;
 
+    const mnemonic = generateMnemonic();
     // Initialize wallet
-    wallet = await Secp256k1HdWallet.fromMnemonic(generateMnemonic(), {
+    protoSigner = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
       prefix: chainInfo.chain.bech32_prefix
     });
-    address = (await wallet.getAccounts())[0].address;
+    aminoSigner = await Secp256k1HdWallet.fromMnemonic(mnemonic, {
+      prefix: chainInfo.chain.bech32_prefix
+    });
+    address = (await protoSigner.getAccounts())[0].address;
 
     // Transfer osmosis and ibc tokens to address, send only osmo to address
     await creditFromFaucet(address);
@@ -47,7 +52,7 @@ describe('Pool testing over IBC tokens', () => {
   it('create ibc pools with ibc atom osmo', async () => {
     const signingClient = await getSigningOsmosisClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: wallet
+      signer: protoSigner
     });
 
     const balances = await signingClient.getAllBalances(address);
@@ -142,7 +147,7 @@ describe('Pool testing over IBC tokens', () => {
   it('join pool', async () => {
     const signingClient = await getSigningOsmosisClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: wallet
+      signer: aminoSigner
     });
 
     const allCoins = pool.poolAssets.map((asset) =>
@@ -190,7 +195,7 @@ describe('Pool testing over IBC tokens', () => {
   it('lock tokens', async () => {
     const signingClient = await getSigningOsmosisClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: wallet
+      signer: aminoSigner
     });
 
     const gammDenom = pool.totalShares.denom;
@@ -233,7 +238,7 @@ describe('Pool testing over IBC tokens', () => {
   it('swap tokens using pool, to address without ibc token', async () => {
     const signingClient = await getSigningOsmosisClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: wallet
+      signer: aminoSigner
     });
 
     const ibcDenom = pool.poolAssets.find((asset) => {
