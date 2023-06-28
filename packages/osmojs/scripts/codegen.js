@@ -92,11 +92,11 @@ telescope({
     aminoEncoding: {
       enabled: true,
       exceptions: {
-        
-        // '/cosmos-sdk/MsgWithdrawValCommission': {
-        //   aminoType: 'cosmos-sdk/MsgWithdrawValidatorCommission'
-        // },
-
+        // BUG in telescope? why no workie?
+        // maybe because it assumes that SDK annotations are the truth!
+        '/cosmos.gov.v1beta1.MsgVote': {
+          aminoType: 'cosmos-sdk/MsgVote'
+        }
       },
       useRecursiveV2encoding: true
     },

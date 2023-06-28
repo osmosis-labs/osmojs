@@ -118,6 +118,8 @@ describe('Governance tests for osmosis', () => {
     expect(result.proposal.proposalId.toString()).toEqual(proposalId);
   }, 10000);
 
+  it.todo('vote on proposal using amino');
+
   it('vote on proposal from genesis address', async () => {
     // create genesis address signing client
     const mnemonic = await getGenesisMnemonic();
