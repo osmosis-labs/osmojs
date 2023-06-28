@@ -50,6 +50,9 @@ export interface GenesisState {
   /** The number of pool points that have been consumed in the current block. */
 
   pointCountForBlock: Long;
+  /** All of the profits that have been accumulated by the module. */
+
+  profits: Coin[];
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.GenesisState";
@@ -102,6 +105,9 @@ export interface GenesisStateAmino {
   /** The number of pool points that have been consumed in the current block. */
 
   point_count_for_block: string;
+  /** All of the profits that have been accumulated by the module. */
+
+  profits: CoinAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "osmosis/protorev/genesis-state";
@@ -121,6 +127,7 @@ export interface GenesisStateSDKType {
   max_pool_points_per_block: Long;
   max_pool_points_per_tx: Long;
   point_count_for_block: Long;
+  profits: CoinSDKType[];
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -135,7 +142,8 @@ function createBaseGenesisState(): GenesisState {
     developerAddress: "",
     maxPoolPointsPerBlock: Long.UZERO,
     maxPoolPointsPerTx: Long.UZERO,
-    pointCountForBlock: Long.UZERO
+    pointCountForBlock: Long.UZERO,
+    profits: []
   };
 }
 
@@ -185,6 +193,10 @@ export const GenesisState = {
 
     if (!message.pointCountForBlock.isZero()) {
       writer.uint32(88).uint64(message.pointCountForBlock);
+    }
+
+    for (const v of message.profits) {
+      Coin.encode(v!, writer.uint32(98).fork()).ldelim();
     }
 
     return writer;
@@ -243,6 +255,10 @@ export const GenesisState = {
           message.pointCountForBlock = (reader.uint64() as Long);
           break;
 
+        case 12:
+          message.profits.push(Coin.decode(reader, reader.uint32()));
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -265,6 +281,7 @@ export const GenesisState = {
     message.maxPoolPointsPerBlock = object.maxPoolPointsPerBlock !== undefined && object.maxPoolPointsPerBlock !== null ? Long.fromValue(object.maxPoolPointsPerBlock) : Long.UZERO;
     message.maxPoolPointsPerTx = object.maxPoolPointsPerTx !== undefined && object.maxPoolPointsPerTx !== null ? Long.fromValue(object.maxPoolPointsPerTx) : Long.UZERO;
     message.pointCountForBlock = object.pointCountForBlock !== undefined && object.pointCountForBlock !== null ? Long.fromValue(object.pointCountForBlock) : Long.UZERO;
+    message.profits = object.profits?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
 
@@ -280,7 +297,8 @@ export const GenesisState = {
       developerAddress: object.developer_address,
       maxPoolPointsPerBlock: Long.fromString(object.max_pool_points_per_block),
       maxPoolPointsPerTx: Long.fromString(object.max_pool_points_per_tx),
-      pointCountForBlock: Long.fromString(object.point_count_for_block)
+      pointCountForBlock: Long.fromString(object.point_count_for_block),
+      profits: Array.isArray(object?.profits) ? object.profits.map((e: any) => Coin.fromAmino(e)) : []
     };
   },
 
@@ -314,6 +332,13 @@ export const GenesisState = {
     obj.max_pool_points_per_block = message.maxPoolPointsPerBlock ? message.maxPoolPointsPerBlock.toString() : undefined;
     obj.max_pool_points_per_tx = message.maxPoolPointsPerTx ? message.maxPoolPointsPerTx.toString() : undefined;
     obj.point_count_for_block = message.pointCountForBlock ? message.pointCountForBlock.toString() : undefined;
+
+    if (message.profits) {
+      obj.profits = message.profits.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.profits = [];
+    }
+
     return obj;
   },
 

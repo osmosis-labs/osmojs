@@ -39,9 +39,6 @@ export const createLCDClient = async ({
       gov: {
         v1beta1: new (await import("../cosmos/gov/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
-        }),
-        v1: new (await import("../cosmos/gov/v1/query.lcd")).LCDQueryClient({
-          requestClient
         })
       },
       staking: {
@@ -62,7 +59,7 @@ export const createLCDClient = async ({
     },
     osmosis: {
       concentratedliquidity: {
-        v1beta1: new (await import("./concentrated-liquidity/pool-model/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./concentrated-liquidity/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

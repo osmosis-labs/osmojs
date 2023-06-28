@@ -52,28 +52,67 @@ export interface PositionSDKType {
   join_time?: Date;
   liquidity: string;
 }
-export interface PositionWithUnderlyingAssetBreakdown {
+/**
+ * FullPositionBreakdown returns:
+ * - the position itself
+ * - the amount the position translates in terms of asset0 and asset1
+ * - the amount of claimable fees
+ * - the amount of claimable incentives
+ * - the amount of incentives that would be forfeited if the position was closed
+ * now
+ */
+
+export interface FullPositionBreakdown {
   position?: Position;
   asset0?: Coin;
   asset1?: Coin;
+  claimableSpreadRewards: Coin[];
+  claimableIncentives: Coin[];
+  forfeitedIncentives: Coin[];
 }
-export interface PositionWithUnderlyingAssetBreakdownProtoMsg {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithUnderlyingAssetBreakdown";
+export interface FullPositionBreakdownProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullPositionBreakdown";
   value: Uint8Array;
 }
-export interface PositionWithUnderlyingAssetBreakdownAmino {
+/**
+ * FullPositionBreakdown returns:
+ * - the position itself
+ * - the amount the position translates in terms of asset0 and asset1
+ * - the amount of claimable fees
+ * - the amount of claimable incentives
+ * - the amount of incentives that would be forfeited if the position was closed
+ * now
+ */
+
+export interface FullPositionBreakdownAmino {
   position?: PositionAmino;
   asset0?: CoinAmino;
   asset1?: CoinAmino;
+  claimable_spread_rewards: CoinAmino[];
+  claimable_incentives: CoinAmino[];
+  forfeited_incentives: CoinAmino[];
 }
-export interface PositionWithUnderlyingAssetBreakdownAminoMsg {
-  type: "osmosis/concentratedliquidity/position-with-underlying-asset-breakdown";
-  value: PositionWithUnderlyingAssetBreakdownAmino;
+export interface FullPositionBreakdownAminoMsg {
+  type: "osmosis/concentratedliquidity/full-position-breakdown";
+  value: FullPositionBreakdownAmino;
 }
-export interface PositionWithUnderlyingAssetBreakdownSDKType {
+/**
+ * FullPositionBreakdown returns:
+ * - the position itself
+ * - the amount the position translates in terms of asset0 and asset1
+ * - the amount of claimable fees
+ * - the amount of claimable incentives
+ * - the amount of incentives that would be forfeited if the position was closed
+ * now
+ */
+
+export interface FullPositionBreakdownSDKType {
   position?: PositionSDKType;
   asset0?: CoinSDKType;
   asset1?: CoinSDKType;
+  claimable_spread_rewards: CoinSDKType[];
+  claimable_incentives: CoinSDKType[];
+  forfeited_incentives: CoinSDKType[];
 }
 
 function createBasePosition(): Position {
@@ -233,18 +272,21 @@ export const Position = {
 
 };
 
-function createBasePositionWithUnderlyingAssetBreakdown(): PositionWithUnderlyingAssetBreakdown {
+function createBaseFullPositionBreakdown(): FullPositionBreakdown {
   return {
     position: undefined,
     asset0: undefined,
-    asset1: undefined
+    asset1: undefined,
+    claimableSpreadRewards: [],
+    claimableIncentives: [],
+    forfeitedIncentives: []
   };
 }
 
-export const PositionWithUnderlyingAssetBreakdown = {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithUnderlyingAssetBreakdown",
+export const FullPositionBreakdown = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullPositionBreakdown",
 
-  encode(message: PositionWithUnderlyingAssetBreakdown, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: FullPositionBreakdown, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.position !== undefined) {
       Position.encode(message.position, writer.uint32(10).fork()).ldelim();
     }
@@ -257,13 +299,25 @@ export const PositionWithUnderlyingAssetBreakdown = {
       Coin.encode(message.asset1, writer.uint32(26).fork()).ldelim();
     }
 
+    for (const v of message.claimableSpreadRewards) {
+      Coin.encode(v!, writer.uint32(34).fork()).ldelim();
+    }
+
+    for (const v of message.claimableIncentives) {
+      Coin.encode(v!, writer.uint32(42).fork()).ldelim();
+    }
+
+    for (const v of message.forfeitedIncentives) {
+      Coin.encode(v!, writer.uint32(50).fork()).ldelim();
+    }
+
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): PositionWithUnderlyingAssetBreakdown {
+  decode(input: _m0.Reader | Uint8Array, length?: number): FullPositionBreakdown {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePositionWithUnderlyingAssetBreakdown();
+    const message = createBaseFullPositionBreakdown();
 
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -281,6 +335,18 @@ export const PositionWithUnderlyingAssetBreakdown = {
           message.asset1 = Coin.decode(reader, reader.uint32());
           break;
 
+        case 4:
+          message.claimableSpreadRewards.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        case 5:
+          message.claimableIncentives.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        case 6:
+          message.forfeitedIncentives.push(Coin.decode(reader, reader.uint32()));
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -290,53 +356,78 @@ export const PositionWithUnderlyingAssetBreakdown = {
     return message;
   },
 
-  fromPartial(object: Partial<PositionWithUnderlyingAssetBreakdown>): PositionWithUnderlyingAssetBreakdown {
-    const message = createBasePositionWithUnderlyingAssetBreakdown();
+  fromPartial(object: Partial<FullPositionBreakdown>): FullPositionBreakdown {
+    const message = createBaseFullPositionBreakdown();
     message.position = object.position !== undefined && object.position !== null ? Position.fromPartial(object.position) : undefined;
     message.asset0 = object.asset0 !== undefined && object.asset0 !== null ? Coin.fromPartial(object.asset0) : undefined;
     message.asset1 = object.asset1 !== undefined && object.asset1 !== null ? Coin.fromPartial(object.asset1) : undefined;
+    message.claimableSpreadRewards = object.claimableSpreadRewards?.map(e => Coin.fromPartial(e)) || [];
+    message.claimableIncentives = object.claimableIncentives?.map(e => Coin.fromPartial(e)) || [];
+    message.forfeitedIncentives = object.forfeitedIncentives?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
 
-  fromAmino(object: PositionWithUnderlyingAssetBreakdownAmino): PositionWithUnderlyingAssetBreakdown {
+  fromAmino(object: FullPositionBreakdownAmino): FullPositionBreakdown {
     return {
       position: object?.position ? Position.fromAmino(object.position) : undefined,
       asset0: object?.asset0 ? Coin.fromAmino(object.asset0) : undefined,
-      asset1: object?.asset1 ? Coin.fromAmino(object.asset1) : undefined
+      asset1: object?.asset1 ? Coin.fromAmino(object.asset1) : undefined,
+      claimableSpreadRewards: Array.isArray(object?.claimable_spread_rewards) ? object.claimable_spread_rewards.map((e: any) => Coin.fromAmino(e)) : [],
+      claimableIncentives: Array.isArray(object?.claimable_incentives) ? object.claimable_incentives.map((e: any) => Coin.fromAmino(e)) : [],
+      forfeitedIncentives: Array.isArray(object?.forfeited_incentives) ? object.forfeited_incentives.map((e: any) => Coin.fromAmino(e)) : []
     };
   },
 
-  toAmino(message: PositionWithUnderlyingAssetBreakdown): PositionWithUnderlyingAssetBreakdownAmino {
+  toAmino(message: FullPositionBreakdown): FullPositionBreakdownAmino {
     const obj: any = {};
     obj.position = message.position ? Position.toAmino(message.position) : undefined;
     obj.asset0 = message.asset0 ? Coin.toAmino(message.asset0) : undefined;
     obj.asset1 = message.asset1 ? Coin.toAmino(message.asset1) : undefined;
+
+    if (message.claimableSpreadRewards) {
+      obj.claimable_spread_rewards = message.claimableSpreadRewards.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.claimable_spread_rewards = [];
+    }
+
+    if (message.claimableIncentives) {
+      obj.claimable_incentives = message.claimableIncentives.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.claimable_incentives = [];
+    }
+
+    if (message.forfeitedIncentives) {
+      obj.forfeited_incentives = message.forfeitedIncentives.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.forfeited_incentives = [];
+    }
+
     return obj;
   },
 
-  fromAminoMsg(object: PositionWithUnderlyingAssetBreakdownAminoMsg): PositionWithUnderlyingAssetBreakdown {
-    return PositionWithUnderlyingAssetBreakdown.fromAmino(object.value);
+  fromAminoMsg(object: FullPositionBreakdownAminoMsg): FullPositionBreakdown {
+    return FullPositionBreakdown.fromAmino(object.value);
   },
 
-  toAminoMsg(message: PositionWithUnderlyingAssetBreakdown): PositionWithUnderlyingAssetBreakdownAminoMsg {
+  toAminoMsg(message: FullPositionBreakdown): FullPositionBreakdownAminoMsg {
     return {
-      type: "osmosis/concentratedliquidity/position-with-underlying-asset-breakdown",
-      value: PositionWithUnderlyingAssetBreakdown.toAmino(message)
+      type: "osmosis/concentratedliquidity/full-position-breakdown",
+      value: FullPositionBreakdown.toAmino(message)
     };
   },
 
-  fromProtoMsg(message: PositionWithUnderlyingAssetBreakdownProtoMsg): PositionWithUnderlyingAssetBreakdown {
-    return PositionWithUnderlyingAssetBreakdown.decode(message.value);
+  fromProtoMsg(message: FullPositionBreakdownProtoMsg): FullPositionBreakdown {
+    return FullPositionBreakdown.decode(message.value);
   },
 
-  toProto(message: PositionWithUnderlyingAssetBreakdown): Uint8Array {
-    return PositionWithUnderlyingAssetBreakdown.encode(message).finish();
+  toProto(message: FullPositionBreakdown): Uint8Array {
+    return FullPositionBreakdown.encode(message).finish();
   },
 
-  toProtoMsg(message: PositionWithUnderlyingAssetBreakdown): PositionWithUnderlyingAssetBreakdownProtoMsg {
+  toProtoMsg(message: FullPositionBreakdown): FullPositionBreakdownProtoMsg {
     return {
-      typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithUnderlyingAssetBreakdown",
-      value: PositionWithUnderlyingAssetBreakdown.encode(message).finish()
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullPositionBreakdown",
+      value: FullPositionBreakdown.encode(message).finish()
     };
   }
 

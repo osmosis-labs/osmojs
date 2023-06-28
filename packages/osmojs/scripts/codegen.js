@@ -47,6 +47,7 @@ telescope({
           'cosmos.evidence.v1beta1',
           'cosmos.feegrant.v1beta1',
           'cosmos.genutil.v1beta1',
+          'cosmos.gov.v1',
           'cosmos.group.v1',
           'cosmos.group.v1beta1',
           'cosmos.mint.v1beta1',
@@ -91,11 +92,11 @@ telescope({
     aminoEncoding: {
       enabled: true,
       exceptions: {
-        
-        // '/cosmos-sdk/MsgWithdrawValCommission': {
-        //   aminoType: 'cosmos-sdk/MsgWithdrawValidatorCommission'
-        // },
-
+        // BUG in telescope? why no workie?
+        // maybe because it assumes that SDK annotations are the truth!
+        '/cosmos.gov.v1beta1.MsgVote': {
+          aminoType: 'cosmos-sdk/MsgVote'
+        }
       },
       useRecursiveV2encoding: true
     },

@@ -3,12 +3,13 @@ import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * SuperfluidAssetType indicates whether the superfluid asset is
- * a native token itself or the lp share of a pool.
+ * a native token, lp share of a pool, or concentrated share of a pool
  */
 
 export enum SuperfluidAssetType {
   SuperfluidAssetTypeNative = 0,
   SuperfluidAssetTypeLPShare = 1,
+  SuperfluidAssetTypeConcentratedShare = 2,
   UNRECOGNIZED = -1,
 }
 export const SuperfluidAssetTypeSDKType = SuperfluidAssetType;
@@ -23,6 +24,10 @@ export function superfluidAssetTypeFromJSON(object: any): SuperfluidAssetType {
     case "SuperfluidAssetTypeLPShare":
       return SuperfluidAssetType.SuperfluidAssetTypeLPShare;
 
+    case 2:
+    case "SuperfluidAssetTypeConcentratedShare":
+      return SuperfluidAssetType.SuperfluidAssetTypeConcentratedShare;
+
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -36,6 +41,9 @@ export function superfluidAssetTypeToJSON(object: SuperfluidAssetType): string {
 
     case SuperfluidAssetType.SuperfluidAssetTypeLPShare:
       return "SuperfluidAssetTypeLPShare";
+
+    case SuperfluidAssetType.SuperfluidAssetTypeConcentratedShare:
+      return "SuperfluidAssetTypeConcentratedShare";
 
     case SuperfluidAssetType.UNRECOGNIZED:
     default:

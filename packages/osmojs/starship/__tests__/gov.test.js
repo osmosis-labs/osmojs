@@ -1,17 +1,16 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import Long from 'long';
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-
-import { cosmos, getSigningOsmosisClient } from '../../src/codegen';
+import { cosmos, getSigningCosmosClient, getSigningOsmosisClient } from '../../src/codegen';
 import { useChain, waitUntil } from '../src';
 import './setup.test';
+import { Secp256k1HdWallet } from '@cosmjs/amino';
+import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 
 describe('Governance tests for osmosis', () => {
-  let wallet, denom, address;
+  let protoSigner, aminoSigner, denom, address;
   let chainInfo,
     getCoin,
-    getStargateClient,
     getGenesisMnemonic,
     getRpcEndpoint,
     creditFromFaucet;
@@ -32,11 +31,15 @@ describe('Governance tests for osmosis', () => {
     } = useChain('osmosis'));
     denom = getCoin().base;
 
+    const mnemonic = generateMnemonic();
     // Initialize wallet
-    wallet = await DirectSecp256k1HdWallet.fromMnemonic(generateMnemonic(), {
+    protoSigner = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
       prefix: chainInfo.chain.bech32_prefix
     });
-    address = (await wallet.getAccounts())[0].address;
+    aminoSigner = await Secp256k1HdWallet.fromMnemonic(mnemonic, {
+      prefix: chainInfo.chain.bech32_prefix
+    });
+    address = (await protoSigner.getAccounts())[0].address;
 
     // Create custom cosmos interchain client
     queryClient = await cosmos.ClientFactory.createRPCQueryClient({
@@ -57,9 +60,9 @@ describe('Governance tests for osmosis', () => {
   }, 10000);
 
   it('submit a txt proposal', async () => {
-    const signingClient = await getSigningOsmosisClient({
+    const signingClient = await getSigningCosmosClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: wallet
+      signer: protoSigner
     });
 
     const contentMsg = cosmos.gov.v1beta1.TextProposal.fromPartial({
@@ -115,15 +118,18 @@ describe('Governance tests for osmosis', () => {
     expect(result.proposal.proposalId.toString()).toEqual(proposalId);
   }, 10000);
 
+  it.todo('vote on proposal using amino');
+
   it('vote on proposal from genesis address', async () => {
     // create genesis address signing client
     const mnemonic = await getGenesisMnemonic();
+    // TODO: this is PROTO NOT AMINO!!!
     const genesisWallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
       prefix: chainInfo.chain.bech32_prefix
     });
     genesisAddress = (await genesisWallet.getAccounts())[0].address;
 
-    const genesisSigningClient = await getSigningOsmosisClient({
+    const genesisSigningClient = await getSigningCosmosClient({
       rpcEndpoint: getRpcEndpoint(),
       signer: genesisWallet
     });

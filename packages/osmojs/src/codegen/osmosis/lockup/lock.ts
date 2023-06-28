@@ -11,6 +11,7 @@ import * as _m0 from "protobufjs/minimal";
 export enum LockQueryType {
   ByDuration = 0,
   ByTime = 1,
+  NoLock = 2,
   UNRECOGNIZED = -1,
 }
 export const LockQueryTypeSDKType = LockQueryType;
@@ -25,6 +26,10 @@ export function lockQueryTypeFromJSON(object: any): LockQueryType {
     case "ByTime":
       return LockQueryType.ByTime;
 
+    case 2:
+    case "NoLock":
+      return LockQueryType.NoLock;
+
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -38,6 +43,9 @@ export function lockQueryTypeToJSON(object: LockQueryType): string {
 
     case LockQueryType.ByTime:
       return "ByTime";
+
+    case LockQueryType.NoLock:
+      return "NoLock";
 
     case LockQueryType.UNRECOGNIZED:
     default:
@@ -81,6 +89,13 @@ export interface PeriodLock {
   /** Coins are the tokens locked within the lock, kept in the module account. */
 
   coins: Coin[];
+  /**
+   * Reward Receiver Address is the address that would be receiving rewards for
+   * the incentives for the lock. This is set to owner by default and can be
+   * changed via separate msg.
+   */
+
+  rewardReceiverAddress: string;
 }
 export interface PeriodLockProtoMsg {
   typeUrl: "/osmosis.lockup.PeriodLock";
@@ -123,6 +138,13 @@ export interface PeriodLockAmino {
   /** Coins are the tokens locked within the lock, kept in the module account. */
 
   coins: CoinAmino[];
+  /**
+   * Reward Receiver Address is the address that would be receiving rewards for
+   * the incentives for the lock. This is set to owner by default and can be
+   * changed via separate msg.
+   */
+
+  reward_receiver_address: string;
 }
 export interface PeriodLockAminoMsg {
   type: "osmosis/lockup/period-lock";
@@ -142,6 +164,7 @@ export interface PeriodLockSDKType {
   duration?: DurationSDKType;
   end_time?: Date;
   coins: CoinSDKType[];
+  reward_receiver_address: string;
 }
 /**
  * QueryCondition is a struct used for querying locks upon different conditions.
@@ -309,7 +332,8 @@ function createBasePeriodLock(): PeriodLock {
     owner: "",
     duration: undefined,
     endTime: undefined,
-    coins: []
+    coins: [],
+    rewardReceiverAddress: ""
   };
 }
 
@@ -335,6 +359,10 @@ export const PeriodLock = {
 
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(42).fork()).ldelim();
+    }
+
+    if (message.rewardReceiverAddress !== "") {
+      writer.uint32(50).string(message.rewardReceiverAddress);
     }
 
     return writer;
@@ -369,6 +397,10 @@ export const PeriodLock = {
           message.coins.push(Coin.decode(reader, reader.uint32()));
           break;
 
+        case 6:
+          message.rewardReceiverAddress = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -385,6 +417,7 @@ export const PeriodLock = {
     message.duration = object.duration !== undefined && object.duration !== null ? Duration.fromPartial(object.duration) : undefined;
     message.endTime = object.endTime ?? undefined;
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
+    message.rewardReceiverAddress = object.rewardReceiverAddress ?? "";
     return message;
   },
 
@@ -394,7 +427,8 @@ export const PeriodLock = {
       owner: object.owner,
       duration: object?.duration ? Duration.fromAmino(object.duration) : undefined,
       endTime: object?.end_time ? Timestamp.fromAmino(object.end_time) : undefined,
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : []
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : [],
+      rewardReceiverAddress: object.reward_receiver_address
     };
   },
 
@@ -411,6 +445,7 @@ export const PeriodLock = {
       obj.coins = [];
     }
 
+    obj.reward_receiver_address = message.rewardReceiverAddress;
     return obj;
   },
 
