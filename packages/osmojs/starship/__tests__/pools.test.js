@@ -1,7 +1,6 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import { coin, coins } from '@cosmjs/amino';
-import Long from 'long';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
 
 import { osmosis, google, getSigningOsmosisClient, amino } from '../../src/codegen';
@@ -110,11 +109,11 @@ describe('Pool testing over IBC tokens', () => {
     const poolCreated = result.events.find((x) => x.type === 'pool_created');
 
     // set poolid for the following test cases
-    poolId = Long.fromString(
+    poolId = BigInt(
       poolCreated.attributes.find((x) => x.key === 'pool_id').value
     );
 
-    expect(poolId.isPositive()).toBeTruthy();
+    expect(Number(poolId.toString()) > 0).toBeTruthy();
   }, 200000);
 
   it('query pool via id, verify creation', async () => {
@@ -130,7 +129,7 @@ describe('Pool testing over IBC tokens', () => {
     });
 
     expect(poolResponse).toBeTruthy();
-    expect(poolResponse.pool.id.toInt()).toEqual(poolId.toInt());
+    expect(Number(poolResponse.pool.id.toString())).toEqual(Number(poolId.toString()));
 
     // Verify the address has gamm tokens
     const gammDenom = poolResponse.pool.totalShares.denom;

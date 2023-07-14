@@ -11,7 +11,8 @@ import * as cosmosBankV1beta1TxAmino from "./bank/v1beta1/tx.amino";
 import * as cosmosDistributionV1beta1TxAmino from "./distribution/v1beta1/tx.amino";
 import * as cosmosGovV1beta1TxAmino from "./gov/v1beta1/tx.amino";
 import * as cosmosStakingV1beta1TxAmino from "./staking/v1beta1/tx.amino";
-export const cosmosAminoConverters = { ...cosmosAuthzV1beta1TxAmino.AminoConverter,
+export const cosmosAminoConverters = {
+  ...cosmosAuthzV1beta1TxAmino.AminoConverter,
   ...cosmosBankV1beta1TxAmino.AminoConverter,
   ...cosmosDistributionV1beta1TxAmino.AminoConverter,
   ...cosmosGovV1beta1TxAmino.AminoConverter,
@@ -23,7 +24,8 @@ export const getSigningCosmosClientOptions = (): {
   aminoTypes: AminoTypes;
 } => {
   const registry = new Registry([...cosmosProtoRegistry]);
-  const aminoTypes = new AminoTypes({ ...cosmosAminoConverters
+  const aminoTypes = new AminoTypes({
+    ...cosmosAminoConverters
   });
   return {
     registry,
@@ -42,7 +44,7 @@ export const getSigningCosmosClient = async ({
     aminoTypes
   } = getSigningCosmosClientOptions();
   const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
-    registry,
+    registry: (registry as any),
     aminoTypes
   });
   return client;

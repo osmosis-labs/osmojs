@@ -3,8 +3,6 @@
 * DO NOT MODIFY BY HAND. Instead, download the latest proto files for your chain
 * and run the transpile command or yarn proto command to regenerate this bundle.
 */
-import Long from 'long';
-export { Long };
 export declare function bytesFromBase64(b64: string): Uint8Array;
 export declare function base64FromBytes(arr: Uint8Array): string;
 export interface AminoHeight {

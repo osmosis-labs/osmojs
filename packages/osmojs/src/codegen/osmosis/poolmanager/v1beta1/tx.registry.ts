@@ -15,28 +15,24 @@ export const MessageComposer = {
         value: MsgSwapExactAmountIn.encode(value).finish()
       };
     },
-
     swapExactAmountOut(value: MsgSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
         value: MsgSwapExactAmountOut.encode(value).finish()
       };
     },
-
     splitRouteSwapExactAmountIn(value: MsgSplitRouteSwapExactAmountIn) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountIn",
         value: MsgSplitRouteSwapExactAmountIn.encode(value).finish()
       };
     },
-
     splitRouteSwapExactAmountOut(value: MsgSplitRouteSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountOut",
         value: MsgSplitRouteSwapExactAmountOut.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     swapExactAmountIn(value: MsgSwapExactAmountIn) {
@@ -45,28 +41,24 @@ export const MessageComposer = {
         value
       };
     },
-
     swapExactAmountOut(value: MsgSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
         value
       };
     },
-
     splitRouteSwapExactAmountIn(value: MsgSplitRouteSwapExactAmountIn) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountIn",
         value
       };
     },
-
     splitRouteSwapExactAmountOut(value: MsgSplitRouteSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountOut",
         value
       };
     }
-
   },
   fromPartial: {
     swapExactAmountIn(value: MsgSwapExactAmountIn) {
@@ -75,27 +67,23 @@ export const MessageComposer = {
         value: MsgSwapExactAmountIn.fromPartial(value)
       };
     },
-
     swapExactAmountOut(value: MsgSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
         value: MsgSwapExactAmountOut.fromPartial(value)
       };
     },
-
     splitRouteSwapExactAmountIn(value: MsgSplitRouteSwapExactAmountIn) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountIn",
         value: MsgSplitRouteSwapExactAmountIn.fromPartial(value)
       };
     },
-
     splitRouteSwapExactAmountOut(value: MsgSplitRouteSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountOut",
         value: MsgSplitRouteSwapExactAmountOut.fromPartial(value)
       };
     }
-
   }
 };

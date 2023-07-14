@@ -15,7 +15,6 @@ export const MessageComposer = {
         value: MsgCreateConcentratedPool.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     createConcentratedPool(value: MsgCreateConcentratedPool) {
@@ -24,7 +23,6 @@ export const MessageComposer = {
         value
       };
     }
-
   },
   fromPartial: {
     createConcentratedPool(value: MsgCreateConcentratedPool) {
@@ -33,6 +31,5 @@ export const MessageComposer = {
         value: MsgCreateConcentratedPool.fromPartial(value)
       };
     }
-
   }
 };
