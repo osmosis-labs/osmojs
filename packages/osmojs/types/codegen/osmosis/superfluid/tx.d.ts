@@ -1,9 +1,8 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface MsgSuperfluidDelegate {
     sender: string;
-    lockId: Long;
+    lockId: bigint;
     valAddr: string;
 }
 export interface MsgSuperfluidDelegateProtoMsg {
@@ -21,7 +20,7 @@ export interface MsgSuperfluidDelegateAminoMsg {
 }
 export interface MsgSuperfluidDelegateSDKType {
     sender: string;
-    lock_id: Long;
+    lock_id: bigint;
     val_addr: string;
 }
 export interface MsgSuperfluidDelegateResponse {
@@ -40,7 +39,7 @@ export interface MsgSuperfluidDelegateResponseSDKType {
 }
 export interface MsgSuperfluidUndelegate {
     sender: string;
-    lockId: Long;
+    lockId: bigint;
 }
 export interface MsgSuperfluidUndelegateProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegate";
@@ -56,7 +55,7 @@ export interface MsgSuperfluidUndelegateAminoMsg {
 }
 export interface MsgSuperfluidUndelegateSDKType {
     sender: string;
-    lock_id: Long;
+    lock_id: bigint;
 }
 export interface MsgSuperfluidUndelegateResponse {
 }
@@ -74,7 +73,7 @@ export interface MsgSuperfluidUndelegateResponseSDKType {
 }
 export interface MsgSuperfluidUnbondLock {
     sender: string;
-    lockId: Long;
+    lockId: bigint;
 }
 export interface MsgSuperfluidUnbondLockProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgSuperfluidUnbondLock";
@@ -90,7 +89,7 @@ export interface MsgSuperfluidUnbondLockAminoMsg {
 }
 export interface MsgSuperfluidUnbondLockSDKType {
     sender: string;
-    lock_id: Long;
+    lock_id: bigint;
 }
 export interface MsgSuperfluidUnbondLockResponse {
 }
@@ -108,9 +107,9 @@ export interface MsgSuperfluidUnbondLockResponseSDKType {
 }
 export interface MsgSuperfluidUndelegateAndUnbondLock {
     sender: string;
-    lockId: Long;
+    lockId: bigint;
     /** Amount of unlocking coin. */
-    coin?: Coin;
+    coin: Coin;
 }
 export interface MsgSuperfluidUndelegateAndUnbondLockProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock";
@@ -128,8 +127,8 @@ export interface MsgSuperfluidUndelegateAndUnbondLockAminoMsg {
 }
 export interface MsgSuperfluidUndelegateAndUnbondLockSDKType {
     sender: string;
-    lock_id: Long;
-    coin?: CoinSDKType;
+    lock_id: bigint;
+    coin: CoinSDKType;
 }
 export interface MsgSuperfluidUndelegateAndUnbondLockResponse {
     /**
@@ -137,7 +136,7 @@ export interface MsgSuperfluidUndelegateAndUnbondLockResponse {
      * returns the original lockid if the unlocked amount is equal to the
      * original lock's amount.
      */
-    lockId: Long;
+    lockId: bigint;
 }
 export interface MsgSuperfluidUndelegateAndUnbondLockResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLockResponse";
@@ -156,7 +155,7 @@ export interface MsgSuperfluidUndelegateAndUnbondLockResponseAminoMsg {
     value: MsgSuperfluidUndelegateAndUnbondLockResponseAmino;
 }
 export interface MsgSuperfluidUndelegateAndUnbondLockResponseSDKType {
-    lock_id: Long;
+    lock_id: bigint;
 }
 /**
  * MsgLockAndSuperfluidDelegate locks coins with the unbonding period duration,
@@ -197,7 +196,7 @@ export interface MsgLockAndSuperfluidDelegateSDKType {
     val_addr: string;
 }
 export interface MsgLockAndSuperfluidDelegateResponse {
-    ID: Long;
+    ID: bigint;
 }
 export interface MsgLockAndSuperfluidDelegateResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegateResponse";
@@ -211,7 +210,7 @@ export interface MsgLockAndSuperfluidDelegateResponseAminoMsg {
     value: MsgLockAndSuperfluidDelegateResponseAmino;
 }
 export interface MsgLockAndSuperfluidDelegateResponseSDKType {
-    ID: Long;
+    ID: bigint;
 }
 /**
  * MsgCreateFullRangePositionAndSuperfluidDelegate creates a full range position
@@ -221,7 +220,7 @@ export interface MsgCreateFullRangePositionAndSuperfluidDelegate {
     sender: string;
     coins: Coin[];
     valAddr: string;
-    poolId: Long;
+    poolId: bigint;
 }
 export interface MsgCreateFullRangePositionAndSuperfluidDelegateProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgCreateFullRangePositionAndSuperfluidDelegate";
@@ -249,11 +248,11 @@ export interface MsgCreateFullRangePositionAndSuperfluidDelegateSDKType {
     sender: string;
     coins: CoinSDKType[];
     val_addr: string;
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface MsgCreateFullRangePositionAndSuperfluidDelegateResponse {
-    lockID: Long;
-    positionID: Long;
+    lockID: bigint;
+    positionID: bigint;
 }
 export interface MsgCreateFullRangePositionAndSuperfluidDelegateResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgCreateFullRangePositionAndSuperfluidDelegateResponse";
@@ -268,8 +267,8 @@ export interface MsgCreateFullRangePositionAndSuperfluidDelegateResponseAminoMsg
     value: MsgCreateFullRangePositionAndSuperfluidDelegateResponseAmino;
 }
 export interface MsgCreateFullRangePositionAndSuperfluidDelegateResponseSDKType {
-    lockID: Long;
-    positionID: Long;
+    lockID: bigint;
+    positionID: bigint;
 }
 /**
  * MsgUnPoolWhitelistedPool Unpools every lock the sender has, that is
@@ -283,7 +282,7 @@ export interface MsgCreateFullRangePositionAndSuperfluidDelegateResponseSDKType 
  */
 export interface MsgUnPoolWhitelistedPool {
     sender: string;
-    poolId: Long;
+    poolId: bigint;
 }
 export interface MsgUnPoolWhitelistedPoolProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool";
@@ -319,10 +318,10 @@ export interface MsgUnPoolWhitelistedPoolAminoMsg {
  */
 export interface MsgUnPoolWhitelistedPoolSDKType {
     sender: string;
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface MsgUnPoolWhitelistedPoolResponse {
-    exitedLockIds: Long[];
+    exitedLockIds: bigint[];
 }
 export interface MsgUnPoolWhitelistedPoolResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPoolResponse";
@@ -336,7 +335,7 @@ export interface MsgUnPoolWhitelistedPoolResponseAminoMsg {
     value: MsgUnPoolWhitelistedPoolResponseAmino;
 }
 export interface MsgUnPoolWhitelistedPoolResponseSDKType {
-    exited_lock_ids: Long[];
+    exited_lock_ids: bigint[];
 }
 /**
  * =====================
@@ -344,8 +343,8 @@ export interface MsgUnPoolWhitelistedPoolResponseSDKType {
  */
 export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
     sender: string;
-    lockId: Long;
-    sharesToMigrate?: Coin;
+    lockId: bigint;
+    sharesToMigrate: Coin;
     /** token_out_mins indicates minimum token to exit Balancer pool with. */
     tokenOutMins: Coin[];
 }
@@ -374,15 +373,15 @@ export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAminoMs
  */
 export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionSDKType {
     sender: string;
-    lock_id: Long;
-    shares_to_migrate?: CoinSDKType;
+    lock_id: bigint;
+    shares_to_migrate: CoinSDKType;
     token_out_mins: CoinSDKType[];
 }
 export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
     amount0: string;
     amount1: string;
     liquidityCreated: string;
-    joinTime?: Date;
+    joinTime: Date;
 }
 export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse";
@@ -402,14 +401,14 @@ export interface MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionRespons
     amount0: string;
     amount1: string;
     liquidity_created: string;
-    join_time?: Date;
+    join_time: Date;
 }
 /** ===================== MsgAddToConcentratedLiquiditySuperfluidPosition */
 export interface MsgAddToConcentratedLiquiditySuperfluidPosition {
-    positionId: Long;
+    positionId: bigint;
     sender: string;
-    tokenDesired0?: Coin;
-    tokenDesired1?: Coin;
+    tokenDesired0: Coin;
+    tokenDesired1: Coin;
 }
 export interface MsgAddToConcentratedLiquiditySuperfluidPositionProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgAddToConcentratedLiquiditySuperfluidPosition";
@@ -428,13 +427,13 @@ export interface MsgAddToConcentratedLiquiditySuperfluidPositionAminoMsg {
 }
 /** ===================== MsgAddToConcentratedLiquiditySuperfluidPosition */
 export interface MsgAddToConcentratedLiquiditySuperfluidPositionSDKType {
-    position_id: Long;
+    position_id: bigint;
     sender: string;
-    token_desired0?: CoinSDKType;
-    token_desired1?: CoinSDKType;
+    token_desired0: CoinSDKType;
+    token_desired1: CoinSDKType;
 }
 export interface MsgAddToConcentratedLiquiditySuperfluidPositionResponse {
-    positionId: Long;
+    positionId: bigint;
     amount0: string;
     amount1: string;
     /**
@@ -443,7 +442,7 @@ export interface MsgAddToConcentratedLiquiditySuperfluidPositionResponse {
      * and the new liquidity that was added to the position.
      */
     newLiquidity: string;
-    lockId: Long;
+    lockId: bigint;
 }
 export interface MsgAddToConcentratedLiquiditySuperfluidPositionResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.MsgAddToConcentratedLiquiditySuperfluidPositionResponse";
@@ -466,16 +465,16 @@ export interface MsgAddToConcentratedLiquiditySuperfluidPositionResponseAminoMsg
     value: MsgAddToConcentratedLiquiditySuperfluidPositionResponseAmino;
 }
 export interface MsgAddToConcentratedLiquiditySuperfluidPositionResponseSDKType {
-    position_id: Long;
+    position_id: bigint;
     amount0: string;
     amount1: string;
     new_liquidity: string;
-    lock_id: Long;
+    lock_id: bigint;
 }
 export declare const MsgSuperfluidDelegate: {
     typeUrl: string;
-    encode(message: MsgSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegate;
+    encode(message: MsgSuperfluidDelegate, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidDelegate;
     fromPartial(object: Partial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate;
     fromAmino(object: MsgSuperfluidDelegateAmino): MsgSuperfluidDelegate;
     toAmino(message: MsgSuperfluidDelegate): MsgSuperfluidDelegateAmino;
@@ -487,8 +486,8 @@ export declare const MsgSuperfluidDelegate: {
 };
 export declare const MsgSuperfluidDelegateResponse: {
     typeUrl: string;
-    encode(_: MsgSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidDelegateResponse;
+    encode(_: MsgSuperfluidDelegateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidDelegateResponse;
     fromPartial(_: Partial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse;
     fromAmino(_: MsgSuperfluidDelegateResponseAmino): MsgSuperfluidDelegateResponse;
     toAmino(_: MsgSuperfluidDelegateResponse): MsgSuperfluidDelegateResponseAmino;
@@ -500,8 +499,8 @@ export declare const MsgSuperfluidDelegateResponse: {
 };
 export declare const MsgSuperfluidUndelegate: {
     typeUrl: string;
-    encode(message: MsgSuperfluidUndelegate, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegate;
+    encode(message: MsgSuperfluidUndelegate, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUndelegate;
     fromPartial(object: Partial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate;
     fromAmino(object: MsgSuperfluidUndelegateAmino): MsgSuperfluidUndelegate;
     toAmino(message: MsgSuperfluidUndelegate): MsgSuperfluidUndelegateAmino;
@@ -513,8 +512,8 @@ export declare const MsgSuperfluidUndelegate: {
 };
 export declare const MsgSuperfluidUndelegateResponse: {
     typeUrl: string;
-    encode(_: MsgSuperfluidUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateResponse;
+    encode(_: MsgSuperfluidUndelegateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUndelegateResponse;
     fromPartial(_: Partial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse;
     fromAmino(_: MsgSuperfluidUndelegateResponseAmino): MsgSuperfluidUndelegateResponse;
     toAmino(_: MsgSuperfluidUndelegateResponse): MsgSuperfluidUndelegateResponseAmino;
@@ -526,8 +525,8 @@ export declare const MsgSuperfluidUndelegateResponse: {
 };
 export declare const MsgSuperfluidUnbondLock: {
     typeUrl: string;
-    encode(message: MsgSuperfluidUnbondLock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLock;
+    encode(message: MsgSuperfluidUnbondLock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUnbondLock;
     fromPartial(object: Partial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock;
     fromAmino(object: MsgSuperfluidUnbondLockAmino): MsgSuperfluidUnbondLock;
     toAmino(message: MsgSuperfluidUnbondLock): MsgSuperfluidUnbondLockAmino;
@@ -539,8 +538,8 @@ export declare const MsgSuperfluidUnbondLock: {
 };
 export declare const MsgSuperfluidUnbondLockResponse: {
     typeUrl: string;
-    encode(_: MsgSuperfluidUnbondLockResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponse;
+    encode(_: MsgSuperfluidUnbondLockResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUnbondLockResponse;
     fromPartial(_: Partial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse;
     fromAmino(_: MsgSuperfluidUnbondLockResponseAmino): MsgSuperfluidUnbondLockResponse;
     toAmino(_: MsgSuperfluidUnbondLockResponse): MsgSuperfluidUnbondLockResponseAmino;
@@ -552,8 +551,8 @@ export declare const MsgSuperfluidUnbondLockResponse: {
 };
 export declare const MsgSuperfluidUndelegateAndUnbondLock: {
     typeUrl: string;
-    encode(message: MsgSuperfluidUndelegateAndUnbondLock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLock;
+    encode(message: MsgSuperfluidUndelegateAndUnbondLock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLock;
     fromPartial(object: Partial<MsgSuperfluidUndelegateAndUnbondLock>): MsgSuperfluidUndelegateAndUnbondLock;
     fromAmino(object: MsgSuperfluidUndelegateAndUnbondLockAmino): MsgSuperfluidUndelegateAndUnbondLock;
     toAmino(message: MsgSuperfluidUndelegateAndUnbondLock): MsgSuperfluidUndelegateAndUnbondLockAmino;
@@ -565,8 +564,8 @@ export declare const MsgSuperfluidUndelegateAndUnbondLock: {
 };
 export declare const MsgSuperfluidUndelegateAndUnbondLockResponse: {
     typeUrl: string;
-    encode(message: MsgSuperfluidUndelegateAndUnbondLockResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLockResponse;
+    encode(message: MsgSuperfluidUndelegateAndUnbondLockResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSuperfluidUndelegateAndUnbondLockResponse;
     fromPartial(object: Partial<MsgSuperfluidUndelegateAndUnbondLockResponse>): MsgSuperfluidUndelegateAndUnbondLockResponse;
     fromAmino(object: MsgSuperfluidUndelegateAndUnbondLockResponseAmino): MsgSuperfluidUndelegateAndUnbondLockResponse;
     toAmino(message: MsgSuperfluidUndelegateAndUnbondLockResponse): MsgSuperfluidUndelegateAndUnbondLockResponseAmino;
@@ -578,8 +577,8 @@ export declare const MsgSuperfluidUndelegateAndUnbondLockResponse: {
 };
 export declare const MsgLockAndSuperfluidDelegate: {
     typeUrl: string;
-    encode(message: MsgLockAndSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegate;
+    encode(message: MsgLockAndSuperfluidDelegate, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegate;
     fromPartial(object: Partial<MsgLockAndSuperfluidDelegate>): MsgLockAndSuperfluidDelegate;
     fromAmino(object: MsgLockAndSuperfluidDelegateAmino): MsgLockAndSuperfluidDelegate;
     toAmino(message: MsgLockAndSuperfluidDelegate): MsgLockAndSuperfluidDelegateAmino;
@@ -591,8 +590,8 @@ export declare const MsgLockAndSuperfluidDelegate: {
 };
 export declare const MsgLockAndSuperfluidDelegateResponse: {
     typeUrl: string;
-    encode(message: MsgLockAndSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegateResponse;
+    encode(message: MsgLockAndSuperfluidDelegateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgLockAndSuperfluidDelegateResponse;
     fromPartial(object: Partial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse;
     fromAmino(object: MsgLockAndSuperfluidDelegateResponseAmino): MsgLockAndSuperfluidDelegateResponse;
     toAmino(message: MsgLockAndSuperfluidDelegateResponse): MsgLockAndSuperfluidDelegateResponseAmino;
@@ -604,8 +603,8 @@ export declare const MsgLockAndSuperfluidDelegateResponse: {
 };
 export declare const MsgCreateFullRangePositionAndSuperfluidDelegate: {
     typeUrl: string;
-    encode(message: MsgCreateFullRangePositionAndSuperfluidDelegate, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateFullRangePositionAndSuperfluidDelegate;
+    encode(message: MsgCreateFullRangePositionAndSuperfluidDelegate, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateFullRangePositionAndSuperfluidDelegate;
     fromPartial(object: Partial<MsgCreateFullRangePositionAndSuperfluidDelegate>): MsgCreateFullRangePositionAndSuperfluidDelegate;
     fromAmino(object: MsgCreateFullRangePositionAndSuperfluidDelegateAmino): MsgCreateFullRangePositionAndSuperfluidDelegate;
     toAmino(message: MsgCreateFullRangePositionAndSuperfluidDelegate): MsgCreateFullRangePositionAndSuperfluidDelegateAmino;
@@ -617,8 +616,8 @@ export declare const MsgCreateFullRangePositionAndSuperfluidDelegate: {
 };
 export declare const MsgCreateFullRangePositionAndSuperfluidDelegateResponse: {
     typeUrl: string;
-    encode(message: MsgCreateFullRangePositionAndSuperfluidDelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateFullRangePositionAndSuperfluidDelegateResponse;
+    encode(message: MsgCreateFullRangePositionAndSuperfluidDelegateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateFullRangePositionAndSuperfluidDelegateResponse;
     fromPartial(object: Partial<MsgCreateFullRangePositionAndSuperfluidDelegateResponse>): MsgCreateFullRangePositionAndSuperfluidDelegateResponse;
     fromAmino(object: MsgCreateFullRangePositionAndSuperfluidDelegateResponseAmino): MsgCreateFullRangePositionAndSuperfluidDelegateResponse;
     toAmino(message: MsgCreateFullRangePositionAndSuperfluidDelegateResponse): MsgCreateFullRangePositionAndSuperfluidDelegateResponseAmino;
@@ -630,8 +629,8 @@ export declare const MsgCreateFullRangePositionAndSuperfluidDelegateResponse: {
 };
 export declare const MsgUnPoolWhitelistedPool: {
     typeUrl: string;
-    encode(message: MsgUnPoolWhitelistedPool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPool;
+    encode(message: MsgUnPoolWhitelistedPool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUnPoolWhitelistedPool;
     fromPartial(object: Partial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool;
     fromAmino(object: MsgUnPoolWhitelistedPoolAmino): MsgUnPoolWhitelistedPool;
     toAmino(message: MsgUnPoolWhitelistedPool): MsgUnPoolWhitelistedPoolAmino;
@@ -643,8 +642,8 @@ export declare const MsgUnPoolWhitelistedPool: {
 };
 export declare const MsgUnPoolWhitelistedPoolResponse: {
     typeUrl: string;
-    encode(message: MsgUnPoolWhitelistedPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponse;
+    encode(message: MsgUnPoolWhitelistedPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUnPoolWhitelistedPoolResponse;
     fromPartial(object: Partial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse;
     fromAmino(object: MsgUnPoolWhitelistedPoolResponseAmino): MsgUnPoolWhitelistedPoolResponse;
     toAmino(message: MsgUnPoolWhitelistedPoolResponse): MsgUnPoolWhitelistedPoolResponseAmino;
@@ -656,8 +655,8 @@ export declare const MsgUnPoolWhitelistedPoolResponse: {
 };
 export declare const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition: {
     typeUrl: string;
-    encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
+    encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
     fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
     fromAmino(object: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
     toAmino(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino;
@@ -669,8 +668,8 @@ export declare const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition: {
 };
 export declare const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse: {
     typeUrl: string;
-    encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
+    encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
     fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
     fromAmino(object: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponseAmino): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
     toAmino(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponseAmino;
@@ -682,8 +681,8 @@ export declare const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionRes
 };
 export declare const MsgAddToConcentratedLiquiditySuperfluidPosition: {
     typeUrl: string;
-    encode(message: MsgAddToConcentratedLiquiditySuperfluidPosition, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToConcentratedLiquiditySuperfluidPosition;
+    encode(message: MsgAddToConcentratedLiquiditySuperfluidPosition, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgAddToConcentratedLiquiditySuperfluidPosition;
     fromPartial(object: Partial<MsgAddToConcentratedLiquiditySuperfluidPosition>): MsgAddToConcentratedLiquiditySuperfluidPosition;
     fromAmino(object: MsgAddToConcentratedLiquiditySuperfluidPositionAmino): MsgAddToConcentratedLiquiditySuperfluidPosition;
     toAmino(message: MsgAddToConcentratedLiquiditySuperfluidPosition): MsgAddToConcentratedLiquiditySuperfluidPositionAmino;
@@ -695,8 +694,8 @@ export declare const MsgAddToConcentratedLiquiditySuperfluidPosition: {
 };
 export declare const MsgAddToConcentratedLiquiditySuperfluidPositionResponse: {
     typeUrl: string;
-    encode(message: MsgAddToConcentratedLiquiditySuperfluidPositionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToConcentratedLiquiditySuperfluidPositionResponse;
+    encode(message: MsgAddToConcentratedLiquiditySuperfluidPositionResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgAddToConcentratedLiquiditySuperfluidPositionResponse;
     fromPartial(object: Partial<MsgAddToConcentratedLiquiditySuperfluidPositionResponse>): MsgAddToConcentratedLiquiditySuperfluidPositionResponse;
     fromAmino(object: MsgAddToConcentratedLiquiditySuperfluidPositionResponseAmino): MsgAddToConcentratedLiquiditySuperfluidPositionResponse;
     toAmino(message: MsgAddToConcentratedLiquiditySuperfluidPositionResponse): MsgAddToConcentratedLiquiditySuperfluidPositionResponseAmino;

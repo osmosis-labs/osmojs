@@ -1,10 +1,9 @@
 import { PoolParams, PoolParamsAmino, PoolParamsSDKType, PoolAsset, PoolAssetAmino, PoolAssetSDKType } from "../balancerPool";
-import { Long } from "../../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../../binary";
 /** ===================== MsgCreatePool */
 export interface MsgCreateBalancerPool {
     sender: string;
-    poolParams?: PoolParams;
+    poolParams: PoolParams;
     poolAssets: PoolAsset[];
     futurePoolGovernor: string;
 }
@@ -26,13 +25,13 @@ export interface MsgCreateBalancerPoolAminoMsg {
 /** ===================== MsgCreatePool */
 export interface MsgCreateBalancerPoolSDKType {
     sender: string;
-    pool_params?: PoolParamsSDKType;
+    pool_params: PoolParamsSDKType;
     pool_assets: PoolAssetSDKType[];
     future_pool_governor: string;
 }
 /** Returns the poolID */
 export interface MsgCreateBalancerPoolResponse {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface MsgCreateBalancerPoolResponseProtoMsg {
     typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPoolResponse";
@@ -48,12 +47,12 @@ export interface MsgCreateBalancerPoolResponseAminoMsg {
 }
 /** Returns the poolID */
 export interface MsgCreateBalancerPoolResponseSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export declare const MsgCreateBalancerPool: {
     typeUrl: string;
-    encode(message: MsgCreateBalancerPool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPool;
+    encode(message: MsgCreateBalancerPool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateBalancerPool;
     fromPartial(object: Partial<MsgCreateBalancerPool>): MsgCreateBalancerPool;
     fromAmino(object: MsgCreateBalancerPoolAmino): MsgCreateBalancerPool;
     toAmino(message: MsgCreateBalancerPool): MsgCreateBalancerPoolAmino;
@@ -65,8 +64,8 @@ export declare const MsgCreateBalancerPool: {
 };
 export declare const MsgCreateBalancerPoolResponse: {
     typeUrl: string;
-    encode(message: MsgCreateBalancerPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPoolResponse;
+    encode(message: MsgCreateBalancerPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateBalancerPoolResponse;
     fromPartial(object: Partial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse;
     fromAmino(object: MsgCreateBalancerPoolResponseAmino): MsgCreateBalancerPoolResponse;
     toAmino(message: MsgCreateBalancerPoolResponse): MsgCreateBalancerPoolResponseAmino;

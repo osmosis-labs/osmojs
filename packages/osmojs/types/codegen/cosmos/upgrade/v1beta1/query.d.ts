@@ -1,6 +1,5 @@
 import { Plan, PlanAmino, PlanSDKType, ModuleVersion, ModuleVersionAmino, ModuleVersionSDKType } from "./upgrade";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
  * method.
@@ -33,7 +32,7 @@ export interface QueryCurrentPlanRequestSDKType {
  */
 export interface QueryCurrentPlanResponse {
     /** plan is the current upgrade plan. */
-    plan?: Plan;
+    plan: Plan;
 }
 export interface QueryCurrentPlanResponseProtoMsg {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryCurrentPlanResponse";
@@ -56,7 +55,7 @@ export interface QueryCurrentPlanResponseAminoMsg {
  * method.
  */
 export interface QueryCurrentPlanResponseSDKType {
-    plan?: PlanSDKType;
+    plan: PlanSDKType;
 }
 /**
  * QueryCurrentPlanRequest is the request type for the Query/AppliedPlan RPC
@@ -95,7 +94,7 @@ export interface QueryAppliedPlanRequestSDKType {
  */
 export interface QueryAppliedPlanResponse {
     /** height is the block height at which the plan was applied. */
-    height: Long;
+    height: bigint;
 }
 export interface QueryAppliedPlanResponseProtoMsg {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryAppliedPlanResponse";
@@ -118,7 +117,7 @@ export interface QueryAppliedPlanResponseAminoMsg {
  * method.
  */
 export interface QueryAppliedPlanResponseSDKType {
-    height: Long;
+    height: bigint;
 }
 /**
  * QueryUpgradedConsensusStateRequest is the request type for the Query/UpgradedConsensusState
@@ -130,7 +129,7 @@ export interface QueryUpgradedConsensusStateRequest {
      * last height of the current chain must be sent in request
      * as this is the height under which next consensus state is stored
      */
-    lastHeight: Long;
+    lastHeight: bigint;
 }
 export interface QueryUpgradedConsensusStateRequestProtoMsg {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateRequest";
@@ -158,7 +157,7 @@ export interface QueryUpgradedConsensusStateRequestAminoMsg {
  */
 /** @deprecated */
 export interface QueryUpgradedConsensusStateRequestSDKType {
-    last_height: Long;
+    last_height: bigint;
 }
 /**
  * QueryUpgradedConsensusStateResponse is the response type for the Query/UpgradedConsensusState
@@ -278,8 +277,8 @@ export interface QueryModuleVersionsResponseSDKType {
 }
 export declare const QueryCurrentPlanRequest: {
     typeUrl: string;
-    encode(_: QueryCurrentPlanRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanRequest;
+    encode(_: QueryCurrentPlanRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCurrentPlanRequest;
     fromPartial(_: Partial<QueryCurrentPlanRequest>): QueryCurrentPlanRequest;
     fromAmino(_: QueryCurrentPlanRequestAmino): QueryCurrentPlanRequest;
     toAmino(_: QueryCurrentPlanRequest): QueryCurrentPlanRequestAmino;
@@ -291,8 +290,8 @@ export declare const QueryCurrentPlanRequest: {
 };
 export declare const QueryCurrentPlanResponse: {
     typeUrl: string;
-    encode(message: QueryCurrentPlanResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanResponse;
+    encode(message: QueryCurrentPlanResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCurrentPlanResponse;
     fromPartial(object: Partial<QueryCurrentPlanResponse>): QueryCurrentPlanResponse;
     fromAmino(object: QueryCurrentPlanResponseAmino): QueryCurrentPlanResponse;
     toAmino(message: QueryCurrentPlanResponse): QueryCurrentPlanResponseAmino;
@@ -304,8 +303,8 @@ export declare const QueryCurrentPlanResponse: {
 };
 export declare const QueryAppliedPlanRequest: {
     typeUrl: string;
-    encode(message: QueryAppliedPlanRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanRequest;
+    encode(message: QueryAppliedPlanRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryAppliedPlanRequest;
     fromPartial(object: Partial<QueryAppliedPlanRequest>): QueryAppliedPlanRequest;
     fromAmino(object: QueryAppliedPlanRequestAmino): QueryAppliedPlanRequest;
     toAmino(message: QueryAppliedPlanRequest): QueryAppliedPlanRequestAmino;
@@ -317,8 +316,8 @@ export declare const QueryAppliedPlanRequest: {
 };
 export declare const QueryAppliedPlanResponse: {
     typeUrl: string;
-    encode(message: QueryAppliedPlanResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanResponse;
+    encode(message: QueryAppliedPlanResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryAppliedPlanResponse;
     fromPartial(object: Partial<QueryAppliedPlanResponse>): QueryAppliedPlanResponse;
     fromAmino(object: QueryAppliedPlanResponseAmino): QueryAppliedPlanResponse;
     toAmino(message: QueryAppliedPlanResponse): QueryAppliedPlanResponseAmino;
@@ -330,8 +329,8 @@ export declare const QueryAppliedPlanResponse: {
 };
 export declare const QueryUpgradedConsensusStateRequest: {
     typeUrl: string;
-    encode(message: QueryUpgradedConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
+    encode(message: QueryUpgradedConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
     fromPartial(object: Partial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest;
     fromAmino(object: QueryUpgradedConsensusStateRequestAmino): QueryUpgradedConsensusStateRequest;
     toAmino(message: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestAmino;
@@ -343,8 +342,8 @@ export declare const QueryUpgradedConsensusStateRequest: {
 };
 export declare const QueryUpgradedConsensusStateResponse: {
     typeUrl: string;
-    encode(message: QueryUpgradedConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
+    encode(message: QueryUpgradedConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
     fromPartial(object: Partial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
     fromAmino(object: QueryUpgradedConsensusStateResponseAmino): QueryUpgradedConsensusStateResponse;
     toAmino(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseAmino;
@@ -356,8 +355,8 @@ export declare const QueryUpgradedConsensusStateResponse: {
 };
 export declare const QueryModuleVersionsRequest: {
     typeUrl: string;
-    encode(message: QueryModuleVersionsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsRequest;
+    encode(message: QueryModuleVersionsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleVersionsRequest;
     fromPartial(object: Partial<QueryModuleVersionsRequest>): QueryModuleVersionsRequest;
     fromAmino(object: QueryModuleVersionsRequestAmino): QueryModuleVersionsRequest;
     toAmino(message: QueryModuleVersionsRequest): QueryModuleVersionsRequestAmino;
@@ -369,8 +368,8 @@ export declare const QueryModuleVersionsRequest: {
 };
 export declare const QueryModuleVersionsResponse: {
     typeUrl: string;
-    encode(message: QueryModuleVersionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsResponse;
+    encode(message: QueryModuleVersionsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleVersionsResponse;
     fromPartial(object: Partial<QueryModuleVersionsResponse>): QueryModuleVersionsResponse;
     fromAmino(object: QueryModuleVersionsResponseAmino): QueryModuleVersionsResponse;
     toAmino(message: QueryModuleVersionsResponse): QueryModuleVersionsResponseAmino;

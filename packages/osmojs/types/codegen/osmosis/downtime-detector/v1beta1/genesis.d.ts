@@ -1,8 +1,8 @@
 import { Downtime } from "./downtime_duration";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface GenesisDowntimeEntry {
     duration: Downtime;
-    lastDowntime?: Date;
+    lastDowntime: Date;
 }
 export interface GenesisDowntimeEntryProtoMsg {
     typeUrl: "/osmosis.downtimedetector.v1beta1.GenesisDowntimeEntry";
@@ -18,12 +18,12 @@ export interface GenesisDowntimeEntryAminoMsg {
 }
 export interface GenesisDowntimeEntrySDKType {
     duration: Downtime;
-    last_downtime?: Date;
+    last_downtime: Date;
 }
 /** GenesisState defines the twap module's genesis state. */
 export interface GenesisState {
     downtimes: GenesisDowntimeEntry[];
-    lastBlockTime?: Date;
+    lastBlockTime: Date;
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/osmosis.downtimedetector.v1beta1.GenesisState";
@@ -41,12 +41,12 @@ export interface GenesisStateAminoMsg {
 /** GenesisState defines the twap module's genesis state. */
 export interface GenesisStateSDKType {
     downtimes: GenesisDowntimeEntrySDKType[];
-    last_block_time?: Date;
+    last_block_time: Date;
 }
 export declare const GenesisDowntimeEntry: {
     typeUrl: string;
-    encode(message: GenesisDowntimeEntry, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisDowntimeEntry;
+    encode(message: GenesisDowntimeEntry, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisDowntimeEntry;
     fromPartial(object: Partial<GenesisDowntimeEntry>): GenesisDowntimeEntry;
     fromAmino(object: GenesisDowntimeEntryAmino): GenesisDowntimeEntry;
     toAmino(message: GenesisDowntimeEntry): GenesisDowntimeEntryAmino;
@@ -58,8 +58,8 @@ export declare const GenesisDowntimeEntry: {
 };
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

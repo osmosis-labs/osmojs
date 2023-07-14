@@ -1,10 +1,10 @@
 import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSDKType } from "./bank";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisState {
     /** params defines all the paramaters of the module. */
-    params?: Params;
+    params: Params;
     /** balances is an array containing the balances of all the accounts. */
     balances: Balance[];
     /**
@@ -43,7 +43,7 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisStateSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
     balances: BalanceSDKType[];
     supply: CoinSDKType[];
     denom_metadata: MetadataSDKType[];
@@ -123,8 +123,8 @@ export interface GenesisSupplyOffsetSDKType {
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -136,8 +136,8 @@ export declare const GenesisState: {
 };
 export declare const Balance: {
     typeUrl: string;
-    encode(message: Balance, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Balance;
+    encode(message: Balance, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Balance;
     fromPartial(object: Partial<Balance>): Balance;
     fromAmino(object: BalanceAmino): Balance;
     toAmino(message: Balance): BalanceAmino;
@@ -149,8 +149,8 @@ export declare const Balance: {
 };
 export declare const GenesisSupplyOffset: {
     typeUrl: string;
-    encode(message: GenesisSupplyOffset, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisSupplyOffset;
+    encode(message: GenesisSupplyOffset, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisSupplyOffset;
     fromPartial(object: Partial<GenesisSupplyOffset>): GenesisSupplyOffset;
     fromAmino(object: GenesisSupplyOffsetAmino): GenesisSupplyOffset;
     toAmino(message: GenesisSupplyOffset): GenesisSupplyOffsetAmino;

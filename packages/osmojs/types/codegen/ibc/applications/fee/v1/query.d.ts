@@ -3,14 +3,13 @@ import { PacketId, PacketIdAmino, PacketIdSDKType } from "../../../core/channel/
 import { IdentifiedPacketFees, IdentifiedPacketFeesAmino, IdentifiedPacketFeesSDKType } from "./fee";
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { FeeEnabledChannel, FeeEnabledChannelAmino, FeeEnabledChannelSDKType } from "./genesis";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** QueryIncentivizedPacketsRequest defines the request type for the IncentivizedPackets rpc */
 export interface QueryIncentivizedPacketsRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
     /** block height at which to query */
-    queryHeight: Long;
+    queryHeight: bigint;
 }
 export interface QueryIncentivizedPacketsRequestProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryIncentivizedPacketsRequest";
@@ -29,15 +28,15 @@ export interface QueryIncentivizedPacketsRequestAminoMsg {
 }
 /** QueryIncentivizedPacketsRequest defines the request type for the IncentivizedPackets rpc */
 export interface QueryIncentivizedPacketsRequestSDKType {
-    pagination?: PageRequestSDKType;
-    query_height: Long;
+    pagination: PageRequestSDKType;
+    query_height: bigint;
 }
 /** QueryIncentivizedPacketsResponse defines the response type for the IncentivizedPackets rpc */
 export interface QueryIncentivizedPacketsResponse {
     /** list of identified fees for incentivized packets */
     incentivizedPackets: IdentifiedPacketFees[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryIncentivizedPacketsResponseProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryIncentivizedPacketsResponse";
@@ -57,14 +56,14 @@ export interface QueryIncentivizedPacketsResponseAminoMsg {
 /** QueryIncentivizedPacketsResponse defines the response type for the IncentivizedPackets rpc */
 export interface QueryIncentivizedPacketsResponseSDKType {
     incentivized_packets: IdentifiedPacketFeesSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** QueryIncentivizedPacketRequest defines the request type for the IncentivizedPacket rpc */
 export interface QueryIncentivizedPacketRequest {
     /** unique packet identifier comprised of channel ID, port ID and sequence */
-    packetId?: PacketId;
+    packetId: PacketId;
     /** block height at which to query */
-    queryHeight: Long;
+    queryHeight: bigint;
 }
 export interface QueryIncentivizedPacketRequestProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryIncentivizedPacketRequest";
@@ -83,13 +82,13 @@ export interface QueryIncentivizedPacketRequestAminoMsg {
 }
 /** QueryIncentivizedPacketRequest defines the request type for the IncentivizedPacket rpc */
 export interface QueryIncentivizedPacketRequestSDKType {
-    packet_id?: PacketIdSDKType;
-    query_height: Long;
+    packet_id: PacketIdSDKType;
+    query_height: bigint;
 }
 /** QueryIncentivizedPacketsResponse defines the response type for the IncentivizedPacket rpc */
 export interface QueryIncentivizedPacketResponse {
     /** the identified fees for the incentivized packet */
-    incentivizedPacket?: IdentifiedPacketFees;
+    incentivizedPacket: IdentifiedPacketFees;
 }
 export interface QueryIncentivizedPacketResponseProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryIncentivizedPacketResponse";
@@ -106,7 +105,7 @@ export interface QueryIncentivizedPacketResponseAminoMsg {
 }
 /** QueryIncentivizedPacketsResponse defines the response type for the IncentivizedPacket rpc */
 export interface QueryIncentivizedPacketResponseSDKType {
-    incentivized_packet?: IdentifiedPacketFeesSDKType;
+    incentivized_packet: IdentifiedPacketFeesSDKType;
 }
 /**
  * QueryIncentivizedPacketsForChannelRequest defines the request type for querying for all incentivized packets
@@ -114,11 +113,11 @@ export interface QueryIncentivizedPacketResponseSDKType {
  */
 export interface QueryIncentivizedPacketsForChannelRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
     portId: string;
     channelId: string;
     /** Height to query at */
-    queryHeight: Long;
+    queryHeight: bigint;
 }
 export interface QueryIncentivizedPacketsForChannelRequestProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryIncentivizedPacketsForChannelRequest";
@@ -145,17 +144,17 @@ export interface QueryIncentivizedPacketsForChannelRequestAminoMsg {
  * for a specific channel
  */
 export interface QueryIncentivizedPacketsForChannelRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
     port_id: string;
     channel_id: string;
-    query_height: Long;
+    query_height: bigint;
 }
 /** QueryIncentivizedPacketsResponse defines the response type for the incentivized packets RPC */
 export interface QueryIncentivizedPacketsForChannelResponse {
     /** Map of all incentivized_packets */
     incentivizedPackets: IdentifiedPacketFees[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryIncentivizedPacketsForChannelResponseProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryIncentivizedPacketsForChannelResponse";
@@ -175,12 +174,12 @@ export interface QueryIncentivizedPacketsForChannelResponseAminoMsg {
 /** QueryIncentivizedPacketsResponse defines the response type for the incentivized packets RPC */
 export interface QueryIncentivizedPacketsForChannelResponseSDKType {
     incentivized_packets: IdentifiedPacketFeesSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** QueryTotalRecvFeesRequest defines the request type for the TotalRecvFees rpc */
 export interface QueryTotalRecvFeesRequest {
     /** the packet identifier for the associated fees */
-    packetId?: PacketId;
+    packetId: PacketId;
 }
 export interface QueryTotalRecvFeesRequestProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryTotalRecvFeesRequest";
@@ -197,7 +196,7 @@ export interface QueryTotalRecvFeesRequestAminoMsg {
 }
 /** QueryTotalRecvFeesRequest defines the request type for the TotalRecvFees rpc */
 export interface QueryTotalRecvFeesRequestSDKType {
-    packet_id?: PacketIdSDKType;
+    packet_id: PacketIdSDKType;
 }
 /** QueryTotalRecvFeesResponse defines the response type for the TotalRecvFees rpc */
 export interface QueryTotalRecvFeesResponse {
@@ -224,7 +223,7 @@ export interface QueryTotalRecvFeesResponseSDKType {
 /** QueryTotalAckFeesRequest defines the request type for the TotalAckFees rpc */
 export interface QueryTotalAckFeesRequest {
     /** the packet identifier for the associated fees */
-    packetId?: PacketId;
+    packetId: PacketId;
 }
 export interface QueryTotalAckFeesRequestProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryTotalAckFeesRequest";
@@ -241,7 +240,7 @@ export interface QueryTotalAckFeesRequestAminoMsg {
 }
 /** QueryTotalAckFeesRequest defines the request type for the TotalAckFees rpc */
 export interface QueryTotalAckFeesRequestSDKType {
-    packet_id?: PacketIdSDKType;
+    packet_id: PacketIdSDKType;
 }
 /** QueryTotalAckFeesResponse defines the response type for the TotalAckFees rpc */
 export interface QueryTotalAckFeesResponse {
@@ -268,7 +267,7 @@ export interface QueryTotalAckFeesResponseSDKType {
 /** QueryTotalTimeoutFeesRequest defines the request type for the TotalTimeoutFees rpc */
 export interface QueryTotalTimeoutFeesRequest {
     /** the packet identifier for the associated fees */
-    packetId?: PacketId;
+    packetId: PacketId;
 }
 export interface QueryTotalTimeoutFeesRequestProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryTotalTimeoutFeesRequest";
@@ -285,7 +284,7 @@ export interface QueryTotalTimeoutFeesRequestAminoMsg {
 }
 /** QueryTotalTimeoutFeesRequest defines the request type for the TotalTimeoutFees rpc */
 export interface QueryTotalTimeoutFeesRequestSDKType {
-    packet_id?: PacketIdSDKType;
+    packet_id: PacketIdSDKType;
 }
 /** QueryTotalTimeoutFeesResponse defines the response type for the TotalTimeoutFees rpc */
 export interface QueryTotalTimeoutFeesResponse {
@@ -410,9 +409,9 @@ export interface QueryCounterpartyPayeeResponseSDKType {
 /** QueryFeeEnabledChannelsRequest defines the request type for the FeeEnabledChannels rpc */
 export interface QueryFeeEnabledChannelsRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
     /** block height at which to query */
-    queryHeight: Long;
+    queryHeight: bigint;
 }
 export interface QueryFeeEnabledChannelsRequestProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryFeeEnabledChannelsRequest";
@@ -431,15 +430,15 @@ export interface QueryFeeEnabledChannelsRequestAminoMsg {
 }
 /** QueryFeeEnabledChannelsRequest defines the request type for the FeeEnabledChannels rpc */
 export interface QueryFeeEnabledChannelsRequestSDKType {
-    pagination?: PageRequestSDKType;
-    query_height: Long;
+    pagination: PageRequestSDKType;
+    query_height: bigint;
 }
 /** QueryFeeEnabledChannelsResponse defines the response type for the FeeEnabledChannels rpc */
 export interface QueryFeeEnabledChannelsResponse {
     /** list of fee enabled channels */
     feeEnabledChannels: FeeEnabledChannel[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryFeeEnabledChannelsResponseProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.QueryFeeEnabledChannelsResponse";
@@ -459,7 +458,7 @@ export interface QueryFeeEnabledChannelsResponseAminoMsg {
 /** QueryFeeEnabledChannelsResponse defines the response type for the FeeEnabledChannels rpc */
 export interface QueryFeeEnabledChannelsResponseSDKType {
     fee_enabled_channels: FeeEnabledChannelSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** QueryFeeEnabledChannelRequest defines the request type for the FeeEnabledChannel rpc */
 export interface QueryFeeEnabledChannelRequest {
@@ -512,8 +511,8 @@ export interface QueryFeeEnabledChannelResponseSDKType {
 }
 export declare const QueryIncentivizedPacketsRequest: {
     typeUrl: string;
-    encode(message: QueryIncentivizedPacketsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPacketsRequest;
+    encode(message: QueryIncentivizedPacketsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryIncentivizedPacketsRequest;
     fromPartial(object: Partial<QueryIncentivizedPacketsRequest>): QueryIncentivizedPacketsRequest;
     fromAmino(object: QueryIncentivizedPacketsRequestAmino): QueryIncentivizedPacketsRequest;
     toAmino(message: QueryIncentivizedPacketsRequest): QueryIncentivizedPacketsRequestAmino;
@@ -525,8 +524,8 @@ export declare const QueryIncentivizedPacketsRequest: {
 };
 export declare const QueryIncentivizedPacketsResponse: {
     typeUrl: string;
-    encode(message: QueryIncentivizedPacketsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPacketsResponse;
+    encode(message: QueryIncentivizedPacketsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryIncentivizedPacketsResponse;
     fromPartial(object: Partial<QueryIncentivizedPacketsResponse>): QueryIncentivizedPacketsResponse;
     fromAmino(object: QueryIncentivizedPacketsResponseAmino): QueryIncentivizedPacketsResponse;
     toAmino(message: QueryIncentivizedPacketsResponse): QueryIncentivizedPacketsResponseAmino;
@@ -538,8 +537,8 @@ export declare const QueryIncentivizedPacketsResponse: {
 };
 export declare const QueryIncentivizedPacketRequest: {
     typeUrl: string;
-    encode(message: QueryIncentivizedPacketRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPacketRequest;
+    encode(message: QueryIncentivizedPacketRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryIncentivizedPacketRequest;
     fromPartial(object: Partial<QueryIncentivizedPacketRequest>): QueryIncentivizedPacketRequest;
     fromAmino(object: QueryIncentivizedPacketRequestAmino): QueryIncentivizedPacketRequest;
     toAmino(message: QueryIncentivizedPacketRequest): QueryIncentivizedPacketRequestAmino;
@@ -551,8 +550,8 @@ export declare const QueryIncentivizedPacketRequest: {
 };
 export declare const QueryIncentivizedPacketResponse: {
     typeUrl: string;
-    encode(message: QueryIncentivizedPacketResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPacketResponse;
+    encode(message: QueryIncentivizedPacketResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryIncentivizedPacketResponse;
     fromPartial(object: Partial<QueryIncentivizedPacketResponse>): QueryIncentivizedPacketResponse;
     fromAmino(object: QueryIncentivizedPacketResponseAmino): QueryIncentivizedPacketResponse;
     toAmino(message: QueryIncentivizedPacketResponse): QueryIncentivizedPacketResponseAmino;
@@ -564,8 +563,8 @@ export declare const QueryIncentivizedPacketResponse: {
 };
 export declare const QueryIncentivizedPacketsForChannelRequest: {
     typeUrl: string;
-    encode(message: QueryIncentivizedPacketsForChannelRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPacketsForChannelRequest;
+    encode(message: QueryIncentivizedPacketsForChannelRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryIncentivizedPacketsForChannelRequest;
     fromPartial(object: Partial<QueryIncentivizedPacketsForChannelRequest>): QueryIncentivizedPacketsForChannelRequest;
     fromAmino(object: QueryIncentivizedPacketsForChannelRequestAmino): QueryIncentivizedPacketsForChannelRequest;
     toAmino(message: QueryIncentivizedPacketsForChannelRequest): QueryIncentivizedPacketsForChannelRequestAmino;
@@ -577,8 +576,8 @@ export declare const QueryIncentivizedPacketsForChannelRequest: {
 };
 export declare const QueryIncentivizedPacketsForChannelResponse: {
     typeUrl: string;
-    encode(message: QueryIncentivizedPacketsForChannelResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPacketsForChannelResponse;
+    encode(message: QueryIncentivizedPacketsForChannelResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryIncentivizedPacketsForChannelResponse;
     fromPartial(object: Partial<QueryIncentivizedPacketsForChannelResponse>): QueryIncentivizedPacketsForChannelResponse;
     fromAmino(object: QueryIncentivizedPacketsForChannelResponseAmino): QueryIncentivizedPacketsForChannelResponse;
     toAmino(message: QueryIncentivizedPacketsForChannelResponse): QueryIncentivizedPacketsForChannelResponseAmino;
@@ -590,8 +589,8 @@ export declare const QueryIncentivizedPacketsForChannelResponse: {
 };
 export declare const QueryTotalRecvFeesRequest: {
     typeUrl: string;
-    encode(message: QueryTotalRecvFeesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalRecvFeesRequest;
+    encode(message: QueryTotalRecvFeesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalRecvFeesRequest;
     fromPartial(object: Partial<QueryTotalRecvFeesRequest>): QueryTotalRecvFeesRequest;
     fromAmino(object: QueryTotalRecvFeesRequestAmino): QueryTotalRecvFeesRequest;
     toAmino(message: QueryTotalRecvFeesRequest): QueryTotalRecvFeesRequestAmino;
@@ -603,8 +602,8 @@ export declare const QueryTotalRecvFeesRequest: {
 };
 export declare const QueryTotalRecvFeesResponse: {
     typeUrl: string;
-    encode(message: QueryTotalRecvFeesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalRecvFeesResponse;
+    encode(message: QueryTotalRecvFeesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalRecvFeesResponse;
     fromPartial(object: Partial<QueryTotalRecvFeesResponse>): QueryTotalRecvFeesResponse;
     fromAmino(object: QueryTotalRecvFeesResponseAmino): QueryTotalRecvFeesResponse;
     toAmino(message: QueryTotalRecvFeesResponse): QueryTotalRecvFeesResponseAmino;
@@ -616,8 +615,8 @@ export declare const QueryTotalRecvFeesResponse: {
 };
 export declare const QueryTotalAckFeesRequest: {
     typeUrl: string;
-    encode(message: QueryTotalAckFeesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalAckFeesRequest;
+    encode(message: QueryTotalAckFeesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalAckFeesRequest;
     fromPartial(object: Partial<QueryTotalAckFeesRequest>): QueryTotalAckFeesRequest;
     fromAmino(object: QueryTotalAckFeesRequestAmino): QueryTotalAckFeesRequest;
     toAmino(message: QueryTotalAckFeesRequest): QueryTotalAckFeesRequestAmino;
@@ -629,8 +628,8 @@ export declare const QueryTotalAckFeesRequest: {
 };
 export declare const QueryTotalAckFeesResponse: {
     typeUrl: string;
-    encode(message: QueryTotalAckFeesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalAckFeesResponse;
+    encode(message: QueryTotalAckFeesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalAckFeesResponse;
     fromPartial(object: Partial<QueryTotalAckFeesResponse>): QueryTotalAckFeesResponse;
     fromAmino(object: QueryTotalAckFeesResponseAmino): QueryTotalAckFeesResponse;
     toAmino(message: QueryTotalAckFeesResponse): QueryTotalAckFeesResponseAmino;
@@ -642,8 +641,8 @@ export declare const QueryTotalAckFeesResponse: {
 };
 export declare const QueryTotalTimeoutFeesRequest: {
     typeUrl: string;
-    encode(message: QueryTotalTimeoutFeesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalTimeoutFeesRequest;
+    encode(message: QueryTotalTimeoutFeesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalTimeoutFeesRequest;
     fromPartial(object: Partial<QueryTotalTimeoutFeesRequest>): QueryTotalTimeoutFeesRequest;
     fromAmino(object: QueryTotalTimeoutFeesRequestAmino): QueryTotalTimeoutFeesRequest;
     toAmino(message: QueryTotalTimeoutFeesRequest): QueryTotalTimeoutFeesRequestAmino;
@@ -655,8 +654,8 @@ export declare const QueryTotalTimeoutFeesRequest: {
 };
 export declare const QueryTotalTimeoutFeesResponse: {
     typeUrl: string;
-    encode(message: QueryTotalTimeoutFeesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalTimeoutFeesResponse;
+    encode(message: QueryTotalTimeoutFeesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalTimeoutFeesResponse;
     fromPartial(object: Partial<QueryTotalTimeoutFeesResponse>): QueryTotalTimeoutFeesResponse;
     fromAmino(object: QueryTotalTimeoutFeesResponseAmino): QueryTotalTimeoutFeesResponse;
     toAmino(message: QueryTotalTimeoutFeesResponse): QueryTotalTimeoutFeesResponseAmino;
@@ -668,8 +667,8 @@ export declare const QueryTotalTimeoutFeesResponse: {
 };
 export declare const QueryPayeeRequest: {
     typeUrl: string;
-    encode(message: QueryPayeeRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPayeeRequest;
+    encode(message: QueryPayeeRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPayeeRequest;
     fromPartial(object: Partial<QueryPayeeRequest>): QueryPayeeRequest;
     fromAmino(object: QueryPayeeRequestAmino): QueryPayeeRequest;
     toAmino(message: QueryPayeeRequest): QueryPayeeRequestAmino;
@@ -681,8 +680,8 @@ export declare const QueryPayeeRequest: {
 };
 export declare const QueryPayeeResponse: {
     typeUrl: string;
-    encode(message: QueryPayeeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPayeeResponse;
+    encode(message: QueryPayeeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPayeeResponse;
     fromPartial(object: Partial<QueryPayeeResponse>): QueryPayeeResponse;
     fromAmino(object: QueryPayeeResponseAmino): QueryPayeeResponse;
     toAmino(message: QueryPayeeResponse): QueryPayeeResponseAmino;
@@ -694,8 +693,8 @@ export declare const QueryPayeeResponse: {
 };
 export declare const QueryCounterpartyPayeeRequest: {
     typeUrl: string;
-    encode(message: QueryCounterpartyPayeeRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCounterpartyPayeeRequest;
+    encode(message: QueryCounterpartyPayeeRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCounterpartyPayeeRequest;
     fromPartial(object: Partial<QueryCounterpartyPayeeRequest>): QueryCounterpartyPayeeRequest;
     fromAmino(object: QueryCounterpartyPayeeRequestAmino): QueryCounterpartyPayeeRequest;
     toAmino(message: QueryCounterpartyPayeeRequest): QueryCounterpartyPayeeRequestAmino;
@@ -707,8 +706,8 @@ export declare const QueryCounterpartyPayeeRequest: {
 };
 export declare const QueryCounterpartyPayeeResponse: {
     typeUrl: string;
-    encode(message: QueryCounterpartyPayeeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCounterpartyPayeeResponse;
+    encode(message: QueryCounterpartyPayeeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCounterpartyPayeeResponse;
     fromPartial(object: Partial<QueryCounterpartyPayeeResponse>): QueryCounterpartyPayeeResponse;
     fromAmino(object: QueryCounterpartyPayeeResponseAmino): QueryCounterpartyPayeeResponse;
     toAmino(message: QueryCounterpartyPayeeResponse): QueryCounterpartyPayeeResponseAmino;
@@ -720,8 +719,8 @@ export declare const QueryCounterpartyPayeeResponse: {
 };
 export declare const QueryFeeEnabledChannelsRequest: {
     typeUrl: string;
-    encode(message: QueryFeeEnabledChannelsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeEnabledChannelsRequest;
+    encode(message: QueryFeeEnabledChannelsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeEnabledChannelsRequest;
     fromPartial(object: Partial<QueryFeeEnabledChannelsRequest>): QueryFeeEnabledChannelsRequest;
     fromAmino(object: QueryFeeEnabledChannelsRequestAmino): QueryFeeEnabledChannelsRequest;
     toAmino(message: QueryFeeEnabledChannelsRequest): QueryFeeEnabledChannelsRequestAmino;
@@ -733,8 +732,8 @@ export declare const QueryFeeEnabledChannelsRequest: {
 };
 export declare const QueryFeeEnabledChannelsResponse: {
     typeUrl: string;
-    encode(message: QueryFeeEnabledChannelsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeEnabledChannelsResponse;
+    encode(message: QueryFeeEnabledChannelsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeEnabledChannelsResponse;
     fromPartial(object: Partial<QueryFeeEnabledChannelsResponse>): QueryFeeEnabledChannelsResponse;
     fromAmino(object: QueryFeeEnabledChannelsResponseAmino): QueryFeeEnabledChannelsResponse;
     toAmino(message: QueryFeeEnabledChannelsResponse): QueryFeeEnabledChannelsResponseAmino;
@@ -746,8 +745,8 @@ export declare const QueryFeeEnabledChannelsResponse: {
 };
 export declare const QueryFeeEnabledChannelRequest: {
     typeUrl: string;
-    encode(message: QueryFeeEnabledChannelRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeEnabledChannelRequest;
+    encode(message: QueryFeeEnabledChannelRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeEnabledChannelRequest;
     fromPartial(object: Partial<QueryFeeEnabledChannelRequest>): QueryFeeEnabledChannelRequest;
     fromAmino(object: QueryFeeEnabledChannelRequestAmino): QueryFeeEnabledChannelRequest;
     toAmino(message: QueryFeeEnabledChannelRequest): QueryFeeEnabledChannelRequestAmino;
@@ -759,8 +758,8 @@ export declare const QueryFeeEnabledChannelRequest: {
 };
 export declare const QueryFeeEnabledChannelResponse: {
     typeUrl: string;
-    encode(message: QueryFeeEnabledChannelResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeEnabledChannelResponse;
+    encode(message: QueryFeeEnabledChannelResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeEnabledChannelResponse;
     fromPartial(object: Partial<QueryFeeEnabledChannelResponse>): QueryFeeEnabledChannelResponse;
     fromAmino(object: QueryFeeEnabledChannelResponseAmino): QueryFeeEnabledChannelResponse;
     toAmino(message: QueryFeeEnabledChannelResponse): QueryFeeEnabledChannelResponseAmino;

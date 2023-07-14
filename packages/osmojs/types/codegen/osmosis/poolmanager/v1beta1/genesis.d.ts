@@ -1,7 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { ModuleRoute, ModuleRouteAmino, ModuleRouteSDKType } from "./module_route";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params holds parameters for the poolmanager module */
 export interface Params {
     poolCreationFee: Coin[];
@@ -25,9 +24,9 @@ export interface ParamsSDKType {
 /** GenesisState defines the poolmanager module's genesis state. */
 export interface GenesisState {
     /** the next_pool_id */
-    nextPoolId: Long;
+    nextPoolId: bigint;
     /** params is the container of poolmanager parameters. */
-    params?: Params;
+    params: Params;
     /** pool_routes is the container of the mappings from pool id to pool type. */
     poolRoutes: ModuleRoute[];
 }
@@ -50,14 +49,14 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the poolmanager module's genesis state. */
 export interface GenesisStateSDKType {
-    next_pool_id: Long;
-    params?: ParamsSDKType;
+    next_pool_id: bigint;
+    params: ParamsSDKType;
     pool_routes: ModuleRouteSDKType[];
 }
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -69,8 +68,8 @@ export declare const Params: {
 };
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

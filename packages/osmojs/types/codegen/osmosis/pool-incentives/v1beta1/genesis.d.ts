@@ -1,10 +1,10 @@
 import { Params, ParamsAmino, ParamsSDKType, DistrInfo, DistrInfoAmino, DistrInfoSDKType, PoolToGauges, PoolToGaugesAmino, PoolToGaugesSDKType } from "./incentives";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the pool incentives module's genesis state. */
 export interface GenesisState {
     /** params defines all the paramaters of the module. */
-    params?: Params;
+    params: Params;
     lockableDurations: Duration[];
     distrInfo?: DistrInfo;
     poolToGauges?: PoolToGauges;
@@ -27,15 +27,15 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the pool incentives module's genesis state. */
 export interface GenesisStateSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
     lockable_durations: DurationSDKType[];
     distr_info?: DistrInfoSDKType;
     pool_to_gauges?: PoolToGaugesSDKType;
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

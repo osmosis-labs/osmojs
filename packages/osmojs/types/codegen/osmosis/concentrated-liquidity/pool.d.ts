@@ -1,5 +1,4 @@
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface Pool {
     $typeUrl?: string;
     /** pool's address holding all liquidity tokens. */
@@ -8,26 +7,26 @@ export interface Pool {
     incentivesAddress: string;
     /** address holding spread rewards from swaps. */
     spreadRewardsAddress: string;
-    id: Long;
+    id: bigint;
     /** Amount of total liquidity */
     currentTickLiquidity: string;
     token0: string;
     token1: string;
     currentSqrtPrice: string;
-    currentTick: Long;
+    currentTick: bigint;
     /**
      * tick_spacing must be one of the authorized_tick_spacing values set in the
      * concentrated-liquidity parameters
      */
-    tickSpacing: Long;
-    exponentAtPriceOne: Long;
+    tickSpacing: bigint;
+    exponentAtPriceOne: bigint;
     /** spread_factor is the ratio that is charged on the amount of token in. */
     spreadFactor: string;
     /**
      * last_liquidity_update is the last time either the pool liquidity or the
      * active tick changed
      */
-    lastLiquidityUpdate?: Date;
+    lastLiquidityUpdate: Date;
 }
 export interface PoolProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.Pool";
@@ -70,21 +69,21 @@ export interface PoolSDKType {
     address: string;
     incentives_address: string;
     spread_rewards_address: string;
-    id: Long;
+    id: bigint;
     current_tick_liquidity: string;
     token0: string;
     token1: string;
     current_sqrt_price: string;
-    current_tick: Long;
-    tick_spacing: Long;
-    exponent_at_price_one: Long;
+    current_tick: bigint;
+    tick_spacing: bigint;
+    exponent_at_price_one: bigint;
     spread_factor: string;
-    last_liquidity_update?: Date;
+    last_liquidity_update: Date;
 }
 export declare const Pool: {
     typeUrl: string;
-    encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
+    encode(message: Pool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Pool;
     fromPartial(object: Partial<Pool>): Pool;
     fromAmino(object: PoolAmino): Pool;
     toAmino(message: Pool): PoolAmino;

@@ -1,10 +1,9 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { DistrInfo, DistrInfoAmino, DistrInfoSDKType, Params, ParamsAmino, ParamsSDKType } from "./incentives";
 import { Gauge, GaugeAmino, GaugeSDKType } from "../../incentives/gauge";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface QueryGaugeIdsRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface QueryGaugeIdsRequestProtoMsg {
     typeUrl: "/osmosis.poolincentives.v1beta1.QueryGaugeIdsRequest";
@@ -18,7 +17,7 @@ export interface QueryGaugeIdsRequestAminoMsg {
     value: QueryGaugeIdsRequestAmino;
 }
 export interface QueryGaugeIdsRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface QueryGaugeIdsResponse {
     gaugeIdsWithDuration: QueryGaugeIdsResponse_GaugeIdWithDuration[];
@@ -38,8 +37,8 @@ export interface QueryGaugeIdsResponseSDKType {
     gauge_ids_with_duration: QueryGaugeIdsResponse_GaugeIdWithDurationSDKType[];
 }
 export interface QueryGaugeIdsResponse_GaugeIdWithDuration {
-    gaugeId: Long;
-    duration?: Duration;
+    gaugeId: bigint;
+    duration: Duration;
     gaugeIncentivePercentage: string;
 }
 export interface QueryGaugeIdsResponse_GaugeIdWithDurationProtoMsg {
@@ -56,8 +55,8 @@ export interface QueryGaugeIdsResponse_GaugeIdWithDurationAminoMsg {
     value: QueryGaugeIdsResponse_GaugeIdWithDurationAmino;
 }
 export interface QueryGaugeIdsResponse_GaugeIdWithDurationSDKType {
-    gauge_id: Long;
-    duration?: DurationSDKType;
+    gauge_id: bigint;
+    duration: DurationSDKType;
     gauge_incentive_percentage: string;
 }
 export interface QueryDistrInfoRequest {
@@ -75,7 +74,7 @@ export interface QueryDistrInfoRequestAminoMsg {
 export interface QueryDistrInfoRequestSDKType {
 }
 export interface QueryDistrInfoResponse {
-    distrInfo?: DistrInfo;
+    distrInfo: DistrInfo;
 }
 export interface QueryDistrInfoResponseProtoMsg {
     typeUrl: "/osmosis.poolincentives.v1beta1.QueryDistrInfoResponse";
@@ -89,7 +88,7 @@ export interface QueryDistrInfoResponseAminoMsg {
     value: QueryDistrInfoResponseAmino;
 }
 export interface QueryDistrInfoResponseSDKType {
-    distr_info?: DistrInfoSDKType;
+    distr_info: DistrInfoSDKType;
 }
 export interface QueryParamsRequest {
 }
@@ -106,7 +105,7 @@ export interface QueryParamsRequestAminoMsg {
 export interface QueryParamsRequestSDKType {
 }
 export interface QueryParamsResponse {
-    params?: Params;
+    params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     typeUrl: "/osmosis.poolincentives.v1beta1.QueryParamsResponse";
@@ -120,7 +119,7 @@ export interface QueryParamsResponseAminoMsg {
     value: QueryParamsResponseAmino;
 }
 export interface QueryParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 export interface QueryLockableDurationsRequest {
 }
@@ -168,9 +167,9 @@ export interface QueryIncentivizedPoolsRequestAminoMsg {
 export interface QueryIncentivizedPoolsRequestSDKType {
 }
 export interface IncentivizedPool {
-    poolId: Long;
-    lockableDuration?: Duration;
-    gaugeId: Long;
+    poolId: bigint;
+    lockableDuration: Duration;
+    gaugeId: bigint;
 }
 export interface IncentivizedPoolProtoMsg {
     typeUrl: "/osmosis.poolincentives.v1beta1.IncentivizedPool";
@@ -186,9 +185,9 @@ export interface IncentivizedPoolAminoMsg {
     value: IncentivizedPoolAmino;
 }
 export interface IncentivizedPoolSDKType {
-    pool_id: Long;
-    lockable_duration?: DurationSDKType;
-    gauge_id: Long;
+    pool_id: bigint;
+    lockable_duration: DurationSDKType;
+    gauge_id: bigint;
 }
 export interface QueryIncentivizedPoolsResponse {
     incentivizedPools: IncentivizedPool[];
@@ -240,8 +239,8 @@ export interface QueryExternalIncentiveGaugesResponseSDKType {
 }
 export declare const QueryGaugeIdsRequest: {
     typeUrl: string;
-    encode(message: QueryGaugeIdsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsRequest;
+    encode(message: QueryGaugeIdsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGaugeIdsRequest;
     fromPartial(object: Partial<QueryGaugeIdsRequest>): QueryGaugeIdsRequest;
     fromAmino(object: QueryGaugeIdsRequestAmino): QueryGaugeIdsRequest;
     toAmino(message: QueryGaugeIdsRequest): QueryGaugeIdsRequestAmino;
@@ -253,8 +252,8 @@ export declare const QueryGaugeIdsRequest: {
 };
 export declare const QueryGaugeIdsResponse: {
     typeUrl: string;
-    encode(message: QueryGaugeIdsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponse;
+    encode(message: QueryGaugeIdsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGaugeIdsResponse;
     fromPartial(object: Partial<QueryGaugeIdsResponse>): QueryGaugeIdsResponse;
     fromAmino(object: QueryGaugeIdsResponseAmino): QueryGaugeIdsResponse;
     toAmino(message: QueryGaugeIdsResponse): QueryGaugeIdsResponseAmino;
@@ -266,8 +265,8 @@ export declare const QueryGaugeIdsResponse: {
 };
 export declare const QueryGaugeIdsResponse_GaugeIdWithDuration: {
     typeUrl: string;
-    encode(message: QueryGaugeIdsResponse_GaugeIdWithDuration, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGaugeIdsResponse_GaugeIdWithDuration;
+    encode(message: QueryGaugeIdsResponse_GaugeIdWithDuration, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGaugeIdsResponse_GaugeIdWithDuration;
     fromPartial(object: Partial<QueryGaugeIdsResponse_GaugeIdWithDuration>): QueryGaugeIdsResponse_GaugeIdWithDuration;
     fromAmino(object: QueryGaugeIdsResponse_GaugeIdWithDurationAmino): QueryGaugeIdsResponse_GaugeIdWithDuration;
     toAmino(message: QueryGaugeIdsResponse_GaugeIdWithDuration): QueryGaugeIdsResponse_GaugeIdWithDurationAmino;
@@ -279,8 +278,8 @@ export declare const QueryGaugeIdsResponse_GaugeIdWithDuration: {
 };
 export declare const QueryDistrInfoRequest: {
     typeUrl: string;
-    encode(_: QueryDistrInfoRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoRequest;
+    encode(_: QueryDistrInfoRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDistrInfoRequest;
     fromPartial(_: Partial<QueryDistrInfoRequest>): QueryDistrInfoRequest;
     fromAmino(_: QueryDistrInfoRequestAmino): QueryDistrInfoRequest;
     toAmino(_: QueryDistrInfoRequest): QueryDistrInfoRequestAmino;
@@ -292,8 +291,8 @@ export declare const QueryDistrInfoRequest: {
 };
 export declare const QueryDistrInfoResponse: {
     typeUrl: string;
-    encode(message: QueryDistrInfoResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDistrInfoResponse;
+    encode(message: QueryDistrInfoResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDistrInfoResponse;
     fromPartial(object: Partial<QueryDistrInfoResponse>): QueryDistrInfoResponse;
     fromAmino(object: QueryDistrInfoResponseAmino): QueryDistrInfoResponse;
     toAmino(message: QueryDistrInfoResponse): QueryDistrInfoResponseAmino;
@@ -305,8 +304,8 @@ export declare const QueryDistrInfoResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
-    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -318,8 +317,8 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
@@ -331,8 +330,8 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryLockableDurationsRequest: {
     typeUrl: string;
-    encode(_: QueryLockableDurationsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsRequest;
+    encode(_: QueryLockableDurationsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryLockableDurationsRequest;
     fromPartial(_: Partial<QueryLockableDurationsRequest>): QueryLockableDurationsRequest;
     fromAmino(_: QueryLockableDurationsRequestAmino): QueryLockableDurationsRequest;
     toAmino(_: QueryLockableDurationsRequest): QueryLockableDurationsRequestAmino;
@@ -344,8 +343,8 @@ export declare const QueryLockableDurationsRequest: {
 };
 export declare const QueryLockableDurationsResponse: {
     typeUrl: string;
-    encode(message: QueryLockableDurationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse;
+    encode(message: QueryLockableDurationsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryLockableDurationsResponse;
     fromPartial(object: Partial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse;
     fromAmino(object: QueryLockableDurationsResponseAmino): QueryLockableDurationsResponse;
     toAmino(message: QueryLockableDurationsResponse): QueryLockableDurationsResponseAmino;
@@ -357,8 +356,8 @@ export declare const QueryLockableDurationsResponse: {
 };
 export declare const QueryIncentivizedPoolsRequest: {
     typeUrl: string;
-    encode(_: QueryIncentivizedPoolsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsRequest;
+    encode(_: QueryIncentivizedPoolsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryIncentivizedPoolsRequest;
     fromPartial(_: Partial<QueryIncentivizedPoolsRequest>): QueryIncentivizedPoolsRequest;
     fromAmino(_: QueryIncentivizedPoolsRequestAmino): QueryIncentivizedPoolsRequest;
     toAmino(_: QueryIncentivizedPoolsRequest): QueryIncentivizedPoolsRequestAmino;
@@ -370,8 +369,8 @@ export declare const QueryIncentivizedPoolsRequest: {
 };
 export declare const IncentivizedPool: {
     typeUrl: string;
-    encode(message: IncentivizedPool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): IncentivizedPool;
+    encode(message: IncentivizedPool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): IncentivizedPool;
     fromPartial(object: Partial<IncentivizedPool>): IncentivizedPool;
     fromAmino(object: IncentivizedPoolAmino): IncentivizedPool;
     toAmino(message: IncentivizedPool): IncentivizedPoolAmino;
@@ -383,8 +382,8 @@ export declare const IncentivizedPool: {
 };
 export declare const QueryIncentivizedPoolsResponse: {
     typeUrl: string;
-    encode(message: QueryIncentivizedPoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryIncentivizedPoolsResponse;
+    encode(message: QueryIncentivizedPoolsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryIncentivizedPoolsResponse;
     fromPartial(object: Partial<QueryIncentivizedPoolsResponse>): QueryIncentivizedPoolsResponse;
     fromAmino(object: QueryIncentivizedPoolsResponseAmino): QueryIncentivizedPoolsResponse;
     toAmino(message: QueryIncentivizedPoolsResponse): QueryIncentivizedPoolsResponseAmino;
@@ -396,8 +395,8 @@ export declare const QueryIncentivizedPoolsResponse: {
 };
 export declare const QueryExternalIncentiveGaugesRequest: {
     typeUrl: string;
-    encode(_: QueryExternalIncentiveGaugesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesRequest;
+    encode(_: QueryExternalIncentiveGaugesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryExternalIncentiveGaugesRequest;
     fromPartial(_: Partial<QueryExternalIncentiveGaugesRequest>): QueryExternalIncentiveGaugesRequest;
     fromAmino(_: QueryExternalIncentiveGaugesRequestAmino): QueryExternalIncentiveGaugesRequest;
     toAmino(_: QueryExternalIncentiveGaugesRequest): QueryExternalIncentiveGaugesRequestAmino;
@@ -409,8 +408,8 @@ export declare const QueryExternalIncentiveGaugesRequest: {
 };
 export declare const QueryExternalIncentiveGaugesResponse: {
     typeUrl: string;
-    encode(message: QueryExternalIncentiveGaugesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryExternalIncentiveGaugesResponse;
+    encode(message: QueryExternalIncentiveGaugesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryExternalIncentiveGaugesResponse;
     fromPartial(object: Partial<QueryExternalIncentiveGaugesResponse>): QueryExternalIncentiveGaugesResponse;
     fromAmino(object: QueryExternalIncentiveGaugesResponseAmino): QueryExternalIncentiveGaugesResponse;
     toAmino(message: QueryExternalIncentiveGaugesResponse): QueryExternalIncentiveGaugesResponseAmino;

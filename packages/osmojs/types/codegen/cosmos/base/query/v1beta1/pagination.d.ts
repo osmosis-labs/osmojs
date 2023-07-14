@@ -1,5 +1,4 @@
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:
@@ -21,12 +20,12 @@ export interface PageRequest {
      * It is less efficient than using key. Only one of offset or key should
      * be set.
      */
-    offset: Long;
+    offset: bigint;
     /**
      * limit is the total number of results to be returned in the result page.
      * If left empty it will default to a value to be set by each app.
      */
-    limit: Long;
+    limit: bigint;
     /**
      * count_total is set to true  to indicate that the result set should include
      * a count of the total number of items available for pagination in UIs.
@@ -101,8 +100,8 @@ export interface PageRequestAminoMsg {
  */
 export interface PageRequestSDKType {
     key: Uint8Array;
-    offset: Long;
-    limit: Long;
+    offset: bigint;
+    limit: bigint;
     count_total: boolean;
     reverse: boolean;
 }
@@ -125,7 +124,7 @@ export interface PageResponse {
      * total is total number of results available if PageRequest.count_total
      * was set, its value is undefined otherwise
      */
-    total: Long;
+    total: bigint;
 }
 export interface PageResponseProtoMsg {
     typeUrl: "/cosmos.base.query.v1beta1.PageResponse";
@@ -167,12 +166,12 @@ export interface PageResponseAminoMsg {
  */
 export interface PageResponseSDKType {
     next_key: Uint8Array;
-    total: Long;
+    total: bigint;
 }
 export declare const PageRequest: {
     typeUrl: string;
-    encode(message: PageRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PageRequest;
+    encode(message: PageRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PageRequest;
     fromPartial(object: Partial<PageRequest>): PageRequest;
     fromAmino(object: PageRequestAmino): PageRequest;
     toAmino(message: PageRequest): PageRequestAmino;
@@ -184,8 +183,8 @@ export declare const PageRequest: {
 };
 export declare const PageResponse: {
     typeUrl: string;
-    encode(message: PageResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PageResponse;
+    encode(message: PageResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PageResponse;
     fromPartial(object: Partial<PageResponse>): PageResponse;
     fromAmino(object: PageResponseAmino): PageResponse;
     toAmino(message: PageResponse): PageResponseAmino;

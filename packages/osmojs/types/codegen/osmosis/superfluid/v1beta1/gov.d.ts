@@ -1,6 +1,5 @@
 import { SuperfluidAsset, SuperfluidAssetAmino, SuperfluidAssetSDKType } from "../superfluid";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
  * assets
@@ -83,7 +82,7 @@ export interface UpdateUnpoolWhiteListProposal {
     $typeUrl?: string;
     title: string;
     description: string;
-    ids: Long[];
+    ids: bigint[];
     isOverwrite: boolean;
 }
 export interface UpdateUnpoolWhiteListProposalProtoMsg {
@@ -112,13 +111,13 @@ export interface UpdateUnpoolWhiteListProposalSDKType {
     $typeUrl?: string;
     title: string;
     description: string;
-    ids: Long[];
+    ids: bigint[];
     is_overwrite: boolean;
 }
 export declare const SetSuperfluidAssetsProposal: {
     typeUrl: string;
-    encode(message: SetSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SetSuperfluidAssetsProposal;
+    encode(message: SetSuperfluidAssetsProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SetSuperfluidAssetsProposal;
     fromPartial(object: Partial<SetSuperfluidAssetsProposal>): SetSuperfluidAssetsProposal;
     fromAmino(object: SetSuperfluidAssetsProposalAmino): SetSuperfluidAssetsProposal;
     toAmino(message: SetSuperfluidAssetsProposal): SetSuperfluidAssetsProposalAmino;
@@ -130,8 +129,8 @@ export declare const SetSuperfluidAssetsProposal: {
 };
 export declare const RemoveSuperfluidAssetsProposal: {
     typeUrl: string;
-    encode(message: RemoveSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RemoveSuperfluidAssetsProposal;
+    encode(message: RemoveSuperfluidAssetsProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RemoveSuperfluidAssetsProposal;
     fromPartial(object: Partial<RemoveSuperfluidAssetsProposal>): RemoveSuperfluidAssetsProposal;
     fromAmino(object: RemoveSuperfluidAssetsProposalAmino): RemoveSuperfluidAssetsProposal;
     toAmino(message: RemoveSuperfluidAssetsProposal): RemoveSuperfluidAssetsProposalAmino;
@@ -143,8 +142,8 @@ export declare const RemoveSuperfluidAssetsProposal: {
 };
 export declare const UpdateUnpoolWhiteListProposal: {
     typeUrl: string;
-    encode(message: UpdateUnpoolWhiteListProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpdateUnpoolWhiteListProposal;
+    encode(message: UpdateUnpoolWhiteListProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpdateUnpoolWhiteListProposal;
     fromPartial(object: Partial<UpdateUnpoolWhiteListProposal>): UpdateUnpoolWhiteListProposal;
     fromAmino(object: UpdateUnpoolWhiteListProposalAmino): UpdateUnpoolWhiteListProposal;
     toAmino(message: UpdateUnpoolWhiteListProposal): UpdateUnpoolWhiteListProposalAmino;

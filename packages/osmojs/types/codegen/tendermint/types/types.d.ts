@@ -1,8 +1,7 @@
 import { Proof, ProofAmino, ProofSDKType } from "../crypto/proof";
 import { Consensus, ConsensusAmino, ConsensusSDKType } from "../version/types";
 import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validator";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /** BlockIdFlag indicates which BlcokID the signature is for */
 export declare enum BlockIDFlag {
     BLOCK_ID_FLAG_UNKNOWN = 0,
@@ -55,7 +54,7 @@ export interface PartSetHeaderSDKType {
 export interface Part {
     index: number;
     bytes: Uint8Array;
-    proof?: Proof;
+    proof: Proof;
 }
 export interface PartProtoMsg {
     typeUrl: "/tendermint.types.Part";
@@ -73,12 +72,12 @@ export interface PartAminoMsg {
 export interface PartSDKType {
     index: number;
     bytes: Uint8Array;
-    proof?: ProofSDKType;
+    proof: ProofSDKType;
 }
 /** BlockID */
 export interface BlockID {
     hash: Uint8Array;
-    partSetHeader?: PartSetHeader;
+    partSetHeader: PartSetHeader;
 }
 export interface BlockIDProtoMsg {
     typeUrl: "/tendermint.types.BlockID";
@@ -96,17 +95,17 @@ export interface BlockIDAminoMsg {
 /** BlockID */
 export interface BlockIDSDKType {
     hash: Uint8Array;
-    part_set_header?: PartSetHeaderSDKType;
+    part_set_header: PartSetHeaderSDKType;
 }
 /** Header defines the structure of a Tendermint block header. */
 export interface Header {
     /** basic block info */
-    version?: Consensus;
+    version: Consensus;
     chainId: string;
-    height: Long;
-    time?: Date;
+    height: bigint;
+    time: Date;
     /** prev block info */
-    lastBlockId?: BlockID;
+    lastBlockId: BlockID;
     /** hashes of block data */
     lastCommitHash: Uint8Array;
     dataHash: Uint8Array;
@@ -160,11 +159,11 @@ export interface HeaderAminoMsg {
 }
 /** Header defines the structure of a Tendermint block header. */
 export interface HeaderSDKType {
-    version?: ConsensusSDKType;
+    version: ConsensusSDKType;
     chain_id: string;
-    height: Long;
-    time?: Date;
-    last_block_id?: BlockIDSDKType;
+    height: bigint;
+    time: Date;
+    last_block_id: BlockIDSDKType;
     last_commit_hash: Uint8Array;
     data_hash: Uint8Array;
     validators_hash: Uint8Array;
@@ -211,11 +210,11 @@ export interface DataSDKType {
  */
 export interface Vote {
     type: SignedMsgType;
-    height: Long;
+    height: bigint;
     round: number;
     /** zero if vote is nil. */
-    blockId?: BlockID;
-    timestamp?: Date;
+    blockId: BlockID;
+    timestamp: Date;
     validatorAddress: Uint8Array;
     validatorIndex: number;
     signature: Uint8Array;
@@ -249,19 +248,19 @@ export interface VoteAminoMsg {
  */
 export interface VoteSDKType {
     type: SignedMsgType;
-    height: Long;
+    height: bigint;
     round: number;
-    block_id?: BlockIDSDKType;
-    timestamp?: Date;
+    block_id: BlockIDSDKType;
+    timestamp: Date;
     validator_address: Uint8Array;
     validator_index: number;
     signature: Uint8Array;
 }
 /** Commit contains the evidence that a block was committed by a set of validators. */
 export interface Commit {
-    height: Long;
+    height: bigint;
     round: number;
-    blockId?: BlockID;
+    blockId: BlockID;
     signatures: CommitSig[];
 }
 export interface CommitProtoMsg {
@@ -281,16 +280,16 @@ export interface CommitAminoMsg {
 }
 /** Commit contains the evidence that a block was committed by a set of validators. */
 export interface CommitSDKType {
-    height: Long;
+    height: bigint;
     round: number;
-    block_id?: BlockIDSDKType;
+    block_id: BlockIDSDKType;
     signatures: CommitSigSDKType[];
 }
 /** CommitSig is a part of the Vote included in a Commit. */
 export interface CommitSig {
     blockIdFlag: BlockIDFlag;
     validatorAddress: Uint8Array;
-    timestamp?: Date;
+    timestamp: Date;
     signature: Uint8Array;
 }
 export interface CommitSigProtoMsg {
@@ -312,16 +311,16 @@ export interface CommitSigAminoMsg {
 export interface CommitSigSDKType {
     block_id_flag: BlockIDFlag;
     validator_address: Uint8Array;
-    timestamp?: Date;
+    timestamp: Date;
     signature: Uint8Array;
 }
 export interface Proposal {
     type: SignedMsgType;
-    height: Long;
+    height: bigint;
     round: number;
     polRound: number;
-    blockId?: BlockID;
-    timestamp?: Date;
+    blockId: BlockID;
+    timestamp: Date;
     signature: Uint8Array;
 }
 export interface ProposalProtoMsg {
@@ -343,16 +342,16 @@ export interface ProposalAminoMsg {
 }
 export interface ProposalSDKType {
     type: SignedMsgType;
-    height: Long;
+    height: bigint;
     round: number;
     pol_round: number;
-    block_id?: BlockIDSDKType;
-    timestamp?: Date;
+    block_id: BlockIDSDKType;
+    timestamp: Date;
     signature: Uint8Array;
 }
 export interface SignedHeader {
-    header?: Header;
-    commit?: Commit;
+    header: Header;
+    commit: Commit;
 }
 export interface SignedHeaderProtoMsg {
     typeUrl: "/tendermint.types.SignedHeader";
@@ -367,12 +366,12 @@ export interface SignedHeaderAminoMsg {
     value: SignedHeaderAmino;
 }
 export interface SignedHeaderSDKType {
-    header?: HeaderSDKType;
-    commit?: CommitSDKType;
+    header: HeaderSDKType;
+    commit: CommitSDKType;
 }
 export interface LightBlock {
-    signedHeader?: SignedHeader;
-    validatorSet?: ValidatorSet;
+    signedHeader: SignedHeader;
+    validatorSet: ValidatorSet;
 }
 export interface LightBlockProtoMsg {
     typeUrl: "/tendermint.types.LightBlock";
@@ -387,14 +386,14 @@ export interface LightBlockAminoMsg {
     value: LightBlockAmino;
 }
 export interface LightBlockSDKType {
-    signed_header?: SignedHeaderSDKType;
-    validator_set?: ValidatorSetSDKType;
+    signed_header: SignedHeaderSDKType;
+    validator_set: ValidatorSetSDKType;
 }
 export interface BlockMeta {
-    blockId?: BlockID;
-    blockSize: Long;
-    header?: Header;
-    numTxs: Long;
+    blockId: BlockID;
+    blockSize: bigint;
+    header: Header;
+    numTxs: bigint;
 }
 export interface BlockMetaProtoMsg {
     typeUrl: "/tendermint.types.BlockMeta";
@@ -411,16 +410,16 @@ export interface BlockMetaAminoMsg {
     value: BlockMetaAmino;
 }
 export interface BlockMetaSDKType {
-    block_id?: BlockIDSDKType;
-    block_size: Long;
-    header?: HeaderSDKType;
-    num_txs: Long;
+    block_id: BlockIDSDKType;
+    block_size: bigint;
+    header: HeaderSDKType;
+    num_txs: bigint;
 }
 /** TxProof represents a Merkle proof of the presence of a transaction in the Merkle tree. */
 export interface TxProof {
     rootHash: Uint8Array;
     data: Uint8Array;
-    proof?: Proof;
+    proof: Proof;
 }
 export interface TxProofProtoMsg {
     typeUrl: "/tendermint.types.TxProof";
@@ -440,12 +439,12 @@ export interface TxProofAminoMsg {
 export interface TxProofSDKType {
     root_hash: Uint8Array;
     data: Uint8Array;
-    proof?: ProofSDKType;
+    proof: ProofSDKType;
 }
 export declare const PartSetHeader: {
     typeUrl: string;
-    encode(message: PartSetHeader, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PartSetHeader;
+    encode(message: PartSetHeader, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PartSetHeader;
     fromPartial(object: Partial<PartSetHeader>): PartSetHeader;
     fromAmino(object: PartSetHeaderAmino): PartSetHeader;
     toAmino(message: PartSetHeader): PartSetHeaderAmino;
@@ -456,8 +455,8 @@ export declare const PartSetHeader: {
 };
 export declare const Part: {
     typeUrl: string;
-    encode(message: Part, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Part;
+    encode(message: Part, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Part;
     fromPartial(object: Partial<Part>): Part;
     fromAmino(object: PartAmino): Part;
     toAmino(message: Part): PartAmino;
@@ -468,8 +467,8 @@ export declare const Part: {
 };
 export declare const BlockID: {
     typeUrl: string;
-    encode(message: BlockID, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BlockID;
+    encode(message: BlockID, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BlockID;
     fromPartial(object: Partial<BlockID>): BlockID;
     fromAmino(object: BlockIDAmino): BlockID;
     toAmino(message: BlockID): BlockIDAmino;
@@ -480,8 +479,8 @@ export declare const BlockID: {
 };
 export declare const Header: {
     typeUrl: string;
-    encode(message: Header, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Header;
+    encode(message: Header, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Header;
     fromPartial(object: Partial<Header>): Header;
     fromAmino(object: HeaderAmino): Header;
     toAmino(message: Header): HeaderAmino;
@@ -492,8 +491,8 @@ export declare const Header: {
 };
 export declare const Data: {
     typeUrl: string;
-    encode(message: Data, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Data;
+    encode(message: Data, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Data;
     fromPartial(object: Partial<Data>): Data;
     fromAmino(object: DataAmino): Data;
     toAmino(message: Data): DataAmino;
@@ -504,8 +503,8 @@ export declare const Data: {
 };
 export declare const Vote: {
     typeUrl: string;
-    encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
+    encode(message: Vote, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Vote;
     fromPartial(object: Partial<Vote>): Vote;
     fromAmino(object: VoteAmino): Vote;
     toAmino(message: Vote): VoteAmino;
@@ -516,8 +515,8 @@ export declare const Vote: {
 };
 export declare const Commit: {
     typeUrl: string;
-    encode(message: Commit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Commit;
+    encode(message: Commit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Commit;
     fromPartial(object: Partial<Commit>): Commit;
     fromAmino(object: CommitAmino): Commit;
     toAmino(message: Commit): CommitAmino;
@@ -528,8 +527,8 @@ export declare const Commit: {
 };
 export declare const CommitSig: {
     typeUrl: string;
-    encode(message: CommitSig, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CommitSig;
+    encode(message: CommitSig, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CommitSig;
     fromPartial(object: Partial<CommitSig>): CommitSig;
     fromAmino(object: CommitSigAmino): CommitSig;
     toAmino(message: CommitSig): CommitSigAmino;
@@ -540,8 +539,8 @@ export declare const CommitSig: {
 };
 export declare const Proposal: {
     typeUrl: string;
-    encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
+    encode(message: Proposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Proposal;
     fromPartial(object: Partial<Proposal>): Proposal;
     fromAmino(object: ProposalAmino): Proposal;
     toAmino(message: Proposal): ProposalAmino;
@@ -552,8 +551,8 @@ export declare const Proposal: {
 };
 export declare const SignedHeader: {
     typeUrl: string;
-    encode(message: SignedHeader, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignedHeader;
+    encode(message: SignedHeader, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignedHeader;
     fromPartial(object: Partial<SignedHeader>): SignedHeader;
     fromAmino(object: SignedHeaderAmino): SignedHeader;
     toAmino(message: SignedHeader): SignedHeaderAmino;
@@ -564,8 +563,8 @@ export declare const SignedHeader: {
 };
 export declare const LightBlock: {
     typeUrl: string;
-    encode(message: LightBlock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LightBlock;
+    encode(message: LightBlock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LightBlock;
     fromPartial(object: Partial<LightBlock>): LightBlock;
     fromAmino(object: LightBlockAmino): LightBlock;
     toAmino(message: LightBlock): LightBlockAmino;
@@ -576,8 +575,8 @@ export declare const LightBlock: {
 };
 export declare const BlockMeta: {
     typeUrl: string;
-    encode(message: BlockMeta, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BlockMeta;
+    encode(message: BlockMeta, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BlockMeta;
     fromPartial(object: Partial<BlockMeta>): BlockMeta;
     fromAmino(object: BlockMetaAmino): BlockMeta;
     toAmino(message: BlockMeta): BlockMetaAmino;
@@ -588,8 +587,8 @@ export declare const BlockMeta: {
 };
 export declare const TxProof: {
     typeUrl: string;
-    encode(message: TxProof, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TxProof;
+    encode(message: TxProof, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TxProof;
     fromPartial(object: Partial<TxProof>): TxProof;
     fromAmino(object: TxProofAmino): TxProof;
     toAmino(message: TxProof): TxProofAmino;

@@ -1,14 +1,14 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** MsgCreateClient defines a message to create an IBC client */
 export interface MsgCreateClient {
     /** light client state */
-    clientState?: Any;
+    clientState: Any;
     /**
      * consensus state associated with the client that corresponds to a given
      * height.
      */
-    consensusState?: Any;
+    consensusState: Any;
     /** signer address */
     signer: string;
 }
@@ -34,8 +34,8 @@ export interface MsgCreateClientAminoMsg {
 }
 /** MsgCreateClient defines a message to create an IBC client */
 export interface MsgCreateClientSDKType {
-    client_state?: AnySDKType;
-    consensus_state?: AnySDKType;
+    client_state: AnySDKType;
+    consensus_state: AnySDKType;
     signer: string;
 }
 /** MsgCreateClientResponse defines the Msg/CreateClient response type. */
@@ -63,7 +63,7 @@ export interface MsgUpdateClient {
     /** client unique identifier */
     clientId: string;
     /** client message to update the light client */
-    clientMessage?: Any;
+    clientMessage: Any;
     /** signer address */
     signer: string;
 }
@@ -93,7 +93,7 @@ export interface MsgUpdateClientAminoMsg {
  */
 export interface MsgUpdateClientSDKType {
     client_id: string;
-    client_message?: AnySDKType;
+    client_message: AnySDKType;
     signer: string;
 }
 /** MsgUpdateClientResponse defines the Msg/UpdateClient response type. */
@@ -121,12 +121,12 @@ export interface MsgUpgradeClient {
     /** client unique identifier */
     clientId: string;
     /** upgraded client state */
-    clientState?: Any;
+    clientState: Any;
     /**
      * upgraded consensus state, only contains enough information to serve as a
      * basis of trust in update logic
      */
-    consensusState?: Any;
+    consensusState: Any;
     /** proof that old chain committed to new client */
     proofUpgradeClient: Uint8Array;
     /** proof that old chain committed to new consensus state */
@@ -169,8 +169,8 @@ export interface MsgUpgradeClientAminoMsg {
  */
 export interface MsgUpgradeClientSDKType {
     client_id: string;
-    client_state?: AnySDKType;
-    consensus_state?: AnySDKType;
+    client_state: AnySDKType;
+    consensus_state: AnySDKType;
     proof_upgrade_client: Uint8Array;
     proof_upgrade_consensus_state: Uint8Array;
     signer: string;
@@ -203,7 +203,7 @@ export interface MsgSubmitMisbehaviour {
     clientId: string;
     /** misbehaviour used for freezing the light client */
     /** @deprecated */
-    misbehaviour?: Any;
+    misbehaviour: Any;
     /** signer address */
     /** @deprecated */
     signer: string;
@@ -241,7 +241,7 @@ export interface MsgSubmitMisbehaviourSDKType {
     /** @deprecated */
     client_id: string;
     /** @deprecated */
-    misbehaviour?: AnySDKType;
+    misbehaviour: AnySDKType;
     /** @deprecated */
     signer: string;
 }
@@ -273,8 +273,8 @@ export interface MsgSubmitMisbehaviourResponseSDKType {
 }
 export declare const MsgCreateClient: {
     typeUrl: string;
-    encode(message: MsgCreateClient, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateClient;
+    encode(message: MsgCreateClient, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateClient;
     fromPartial(object: Partial<MsgCreateClient>): MsgCreateClient;
     fromAmino(object: MsgCreateClientAmino): MsgCreateClient;
     toAmino(message: MsgCreateClient): MsgCreateClientAmino;
@@ -286,8 +286,8 @@ export declare const MsgCreateClient: {
 };
 export declare const MsgCreateClientResponse: {
     typeUrl: string;
-    encode(_: MsgCreateClientResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateClientResponse;
+    encode(_: MsgCreateClientResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateClientResponse;
     fromPartial(_: Partial<MsgCreateClientResponse>): MsgCreateClientResponse;
     fromAmino(_: MsgCreateClientResponseAmino): MsgCreateClientResponse;
     toAmino(_: MsgCreateClientResponse): MsgCreateClientResponseAmino;
@@ -299,8 +299,8 @@ export declare const MsgCreateClientResponse: {
 };
 export declare const MsgUpdateClient: {
     typeUrl: string;
-    encode(message: MsgUpdateClient, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateClient;
+    encode(message: MsgUpdateClient, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateClient;
     fromPartial(object: Partial<MsgUpdateClient>): MsgUpdateClient;
     fromAmino(object: MsgUpdateClientAmino): MsgUpdateClient;
     toAmino(message: MsgUpdateClient): MsgUpdateClientAmino;
@@ -312,8 +312,8 @@ export declare const MsgUpdateClient: {
 };
 export declare const MsgUpdateClientResponse: {
     typeUrl: string;
-    encode(_: MsgUpdateClientResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateClientResponse;
+    encode(_: MsgUpdateClientResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateClientResponse;
     fromPartial(_: Partial<MsgUpdateClientResponse>): MsgUpdateClientResponse;
     fromAmino(_: MsgUpdateClientResponseAmino): MsgUpdateClientResponse;
     toAmino(_: MsgUpdateClientResponse): MsgUpdateClientResponseAmino;
@@ -325,8 +325,8 @@ export declare const MsgUpdateClientResponse: {
 };
 export declare const MsgUpgradeClient: {
     typeUrl: string;
-    encode(message: MsgUpgradeClient, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpgradeClient;
+    encode(message: MsgUpgradeClient, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUpgradeClient;
     fromPartial(object: Partial<MsgUpgradeClient>): MsgUpgradeClient;
     fromAmino(object: MsgUpgradeClientAmino): MsgUpgradeClient;
     toAmino(message: MsgUpgradeClient): MsgUpgradeClientAmino;
@@ -338,8 +338,8 @@ export declare const MsgUpgradeClient: {
 };
 export declare const MsgUpgradeClientResponse: {
     typeUrl: string;
-    encode(_: MsgUpgradeClientResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpgradeClientResponse;
+    encode(_: MsgUpgradeClientResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUpgradeClientResponse;
     fromPartial(_: Partial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse;
     fromAmino(_: MsgUpgradeClientResponseAmino): MsgUpgradeClientResponse;
     toAmino(_: MsgUpgradeClientResponse): MsgUpgradeClientResponseAmino;
@@ -351,8 +351,8 @@ export declare const MsgUpgradeClientResponse: {
 };
 export declare const MsgSubmitMisbehaviour: {
     typeUrl: string;
-    encode(message: MsgSubmitMisbehaviour, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitMisbehaviour;
+    encode(message: MsgSubmitMisbehaviour, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviour;
     fromPartial(object: Partial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour;
     fromAmino(object: MsgSubmitMisbehaviourAmino): MsgSubmitMisbehaviour;
     toAmino(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourAmino;
@@ -364,8 +364,8 @@ export declare const MsgSubmitMisbehaviour: {
 };
 export declare const MsgSubmitMisbehaviourResponse: {
     typeUrl: string;
-    encode(_: MsgSubmitMisbehaviourResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponse;
+    encode(_: MsgSubmitMisbehaviourResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponse;
     fromPartial(_: Partial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse;
     fromAmino(_: MsgSubmitMisbehaviourResponseAmino): MsgSubmitMisbehaviourResponse;
     toAmino(_: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseAmino;

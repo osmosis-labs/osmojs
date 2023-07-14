@@ -1,5 +1,4 @@
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * CreateConcentratedLiquidityPoolsProposal is a gov Content type for creating
  * concentrated liquidity pools. If a CreateConcentratedLiquidityPoolsProposal
@@ -84,8 +83,8 @@ export interface TickSpacingDecreaseProposalSDKType {
  * spacing pair.
  */
 export interface PoolIdToTickSpacingRecord {
-    poolId: Long;
-    newTickSpacing: Long;
+    poolId: bigint;
+    newTickSpacing: bigint;
 }
 export interface PoolIdToTickSpacingRecordProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolIdToTickSpacingRecord";
@@ -108,13 +107,13 @@ export interface PoolIdToTickSpacingRecordAminoMsg {
  * spacing pair.
  */
 export interface PoolIdToTickSpacingRecordSDKType {
-    pool_id: Long;
-    new_tick_spacing: Long;
+    pool_id: bigint;
+    new_tick_spacing: bigint;
 }
 export interface PoolRecord {
     denom0: string;
     denom1: string;
-    tickSpacing: Long;
+    tickSpacing: bigint;
     exponentAtPriceOne: string;
     spreadFactor: string;
 }
@@ -136,14 +135,14 @@ export interface PoolRecordAminoMsg {
 export interface PoolRecordSDKType {
     denom0: string;
     denom1: string;
-    tick_spacing: Long;
+    tick_spacing: bigint;
     exponent_at_price_one: string;
     spread_factor: string;
 }
 export declare const CreateConcentratedLiquidityPoolsProposal: {
     typeUrl: string;
-    encode(message: CreateConcentratedLiquidityPoolsProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CreateConcentratedLiquidityPoolsProposal;
+    encode(message: CreateConcentratedLiquidityPoolsProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CreateConcentratedLiquidityPoolsProposal;
     fromPartial(object: Partial<CreateConcentratedLiquidityPoolsProposal>): CreateConcentratedLiquidityPoolsProposal;
     fromAmino(object: CreateConcentratedLiquidityPoolsProposalAmino): CreateConcentratedLiquidityPoolsProposal;
     toAmino(message: CreateConcentratedLiquidityPoolsProposal): CreateConcentratedLiquidityPoolsProposalAmino;
@@ -155,8 +154,8 @@ export declare const CreateConcentratedLiquidityPoolsProposal: {
 };
 export declare const TickSpacingDecreaseProposal: {
     typeUrl: string;
-    encode(message: TickSpacingDecreaseProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TickSpacingDecreaseProposal;
+    encode(message: TickSpacingDecreaseProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TickSpacingDecreaseProposal;
     fromPartial(object: Partial<TickSpacingDecreaseProposal>): TickSpacingDecreaseProposal;
     fromAmino(object: TickSpacingDecreaseProposalAmino): TickSpacingDecreaseProposal;
     toAmino(message: TickSpacingDecreaseProposal): TickSpacingDecreaseProposalAmino;
@@ -168,8 +167,8 @@ export declare const TickSpacingDecreaseProposal: {
 };
 export declare const PoolIdToTickSpacingRecord: {
     typeUrl: string;
-    encode(message: PoolIdToTickSpacingRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolIdToTickSpacingRecord;
+    encode(message: PoolIdToTickSpacingRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolIdToTickSpacingRecord;
     fromPartial(object: Partial<PoolIdToTickSpacingRecord>): PoolIdToTickSpacingRecord;
     fromAmino(object: PoolIdToTickSpacingRecordAmino): PoolIdToTickSpacingRecord;
     toAmino(message: PoolIdToTickSpacingRecord): PoolIdToTickSpacingRecordAmino;
@@ -181,8 +180,8 @@ export declare const PoolIdToTickSpacingRecord: {
 };
 export declare const PoolRecord: {
     typeUrl: string;
-    encode(message: PoolRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolRecord;
+    encode(message: PoolRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolRecord;
     fromPartial(object: Partial<PoolRecord>): PoolRecord;
     fromAmino(object: PoolRecordAmino): PoolRecord;
     toAmino(message: PoolRecord): PoolRecordAmino;

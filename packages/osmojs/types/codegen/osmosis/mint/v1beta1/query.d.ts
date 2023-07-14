@@ -1,5 +1,5 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./mint";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
 }
@@ -20,7 +20,7 @@ export interface QueryParamsRequestSDKType {
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
-    params?: Params;
+    params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     typeUrl: "/osmosis.mint.v1beta1.QueryParamsResponse";
@@ -37,7 +37,7 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 /**
  * QueryEpochProvisionsRequest is the request type for the
@@ -98,8 +98,8 @@ export interface QueryEpochProvisionsResponseSDKType {
 }
 export declare const QueryParamsRequest: {
     typeUrl: string;
-    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -111,8 +111,8 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
@@ -124,8 +124,8 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryEpochProvisionsRequest: {
     typeUrl: string;
-    encode(_: QueryEpochProvisionsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsRequest;
+    encode(_: QueryEpochProvisionsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryEpochProvisionsRequest;
     fromPartial(_: Partial<QueryEpochProvisionsRequest>): QueryEpochProvisionsRequest;
     fromAmino(_: QueryEpochProvisionsRequestAmino): QueryEpochProvisionsRequest;
     toAmino(_: QueryEpochProvisionsRequest): QueryEpochProvisionsRequestAmino;
@@ -137,8 +137,8 @@ export declare const QueryEpochProvisionsRequest: {
 };
 export declare const QueryEpochProvisionsResponse: {
     typeUrl: string;
-    encode(message: QueryEpochProvisionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsResponse;
+    encode(message: QueryEpochProvisionsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryEpochProvisionsResponse;
     fromPartial(object: Partial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse;
     fromAmino(object: QueryEpochProvisionsResponseAmino): QueryEpochProvisionsResponse;
     toAmino(message: QueryEpochProvisionsResponse): QueryEpochProvisionsResponseAmino;

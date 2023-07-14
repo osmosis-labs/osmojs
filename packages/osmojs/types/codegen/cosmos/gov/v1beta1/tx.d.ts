@@ -1,14 +1,13 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { VoteOption, WeightedVoteOption, WeightedVoteOptionAmino, WeightedVoteOptionSDKType, TextProposal, TextProposalProtoMsg, TextProposalSDKType } from "./gov";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
  */
 export interface MsgSubmitProposal {
-    content?: (TextProposal & Any) | undefined;
+    content: (TextProposal & Any) | undefined;
     initialDeposit: Coin[];
     proposer: string;
     isExpedited: boolean;
@@ -17,7 +16,7 @@ export interface MsgSubmitProposalProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal";
     value: Uint8Array;
 }
-export type MsgSubmitProposalEncoded = Omit<MsgSubmitProposal, "content"> & {
+export declare type MsgSubmitProposalEncoded = Omit<MsgSubmitProposal, "content"> & {
     content?: TextProposalProtoMsg | AnyProtoMsg | undefined;
 };
 /**
@@ -39,14 +38,14 @@ export interface MsgSubmitProposalAminoMsg {
  * proposal Content.
  */
 export interface MsgSubmitProposalSDKType {
-    content?: TextProposalSDKType | AnySDKType | undefined;
+    content: TextProposalSDKType | AnySDKType | undefined;
     initial_deposit: CoinSDKType[];
     proposer: string;
     is_expedited: boolean;
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponse {
-    proposalId: Long;
+    proposalId: bigint;
 }
 export interface MsgSubmitProposalResponseProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposalResponse";
@@ -62,11 +61,11 @@ export interface MsgSubmitProposalResponseAminoMsg {
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponseSDKType {
-    proposal_id: Long;
+    proposal_id: bigint;
 }
 /** MsgVote defines a message to cast a vote. */
 export interface MsgVote {
-    proposalId: Long;
+    proposalId: bigint;
     voter: string;
     option: VoteOption;
 }
@@ -86,7 +85,7 @@ export interface MsgVoteAminoMsg {
 }
 /** MsgVote defines a message to cast a vote. */
 export interface MsgVoteSDKType {
-    proposal_id: Long;
+    proposal_id: bigint;
     voter: string;
     option: VoteOption;
 }
@@ -113,7 +112,7 @@ export interface MsgVoteResponseSDKType {
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeighted {
-    proposalId: Long;
+    proposalId: bigint;
     voter: string;
     options: WeightedVoteOption[];
 }
@@ -141,7 +140,7 @@ export interface MsgVoteWeightedAminoMsg {
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedSDKType {
-    proposal_id: Long;
+    proposal_id: bigint;
     voter: string;
     options: WeightedVoteOptionSDKType[];
 }
@@ -176,7 +175,7 @@ export interface MsgVoteWeightedResponseSDKType {
 }
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 export interface MsgDeposit {
-    proposalId: Long;
+    proposalId: bigint;
     depositor: string;
     amount: Coin[];
 }
@@ -196,7 +195,7 @@ export interface MsgDepositAminoMsg {
 }
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 export interface MsgDepositSDKType {
-    proposal_id: Long;
+    proposal_id: bigint;
     depositor: string;
     amount: CoinSDKType[];
 }
@@ -219,8 +218,8 @@ export interface MsgDepositResponseSDKType {
 }
 export declare const MsgSubmitProposal: {
     typeUrl: string;
-    encode(message: MsgSubmitProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposal;
+    encode(message: MsgSubmitProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposal;
     fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal;
     fromAmino(object: MsgSubmitProposalAmino): MsgSubmitProposal;
     toAmino(message: MsgSubmitProposal): MsgSubmitProposalAmino;
@@ -232,8 +231,8 @@ export declare const MsgSubmitProposal: {
 };
 export declare const MsgSubmitProposalResponse: {
     typeUrl: string;
-    encode(message: MsgSubmitProposalResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponse;
+    encode(message: MsgSubmitProposalResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposalResponse;
     fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
     fromAmino(object: MsgSubmitProposalResponseAmino): MsgSubmitProposalResponse;
     toAmino(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseAmino;
@@ -245,8 +244,8 @@ export declare const MsgSubmitProposalResponse: {
 };
 export declare const MsgVote: {
     typeUrl: string;
-    encode(message: MsgVote, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgVote;
+    encode(message: MsgVote, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgVote;
     fromPartial(object: Partial<MsgVote>): MsgVote;
     fromAmino(object: MsgVoteAmino): MsgVote;
     toAmino(message: MsgVote): MsgVoteAmino;
@@ -258,8 +257,8 @@ export declare const MsgVote: {
 };
 export declare const MsgVoteResponse: {
     typeUrl: string;
-    encode(_: MsgVoteResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponse;
+    encode(_: MsgVoteResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteResponse;
     fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse;
     fromAmino(_: MsgVoteResponseAmino): MsgVoteResponse;
     toAmino(_: MsgVoteResponse): MsgVoteResponseAmino;
@@ -271,8 +270,8 @@ export declare const MsgVoteResponse: {
 };
 export declare const MsgVoteWeighted: {
     typeUrl: string;
-    encode(message: MsgVoteWeighted, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeighted;
+    encode(message: MsgVoteWeighted, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeighted;
     fromPartial(object: Partial<MsgVoteWeighted>): MsgVoteWeighted;
     fromAmino(object: MsgVoteWeightedAmino): MsgVoteWeighted;
     toAmino(message: MsgVoteWeighted): MsgVoteWeightedAmino;
@@ -284,8 +283,8 @@ export declare const MsgVoteWeighted: {
 };
 export declare const MsgVoteWeightedResponse: {
     typeUrl: string;
-    encode(_: MsgVoteWeightedResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeightedResponse;
+    encode(_: MsgVoteWeightedResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeightedResponse;
     fromPartial(_: Partial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse;
     fromAmino(_: MsgVoteWeightedResponseAmino): MsgVoteWeightedResponse;
     toAmino(_: MsgVoteWeightedResponse): MsgVoteWeightedResponseAmino;
@@ -297,8 +296,8 @@ export declare const MsgVoteWeightedResponse: {
 };
 export declare const MsgDeposit: {
     typeUrl: string;
-    encode(message: MsgDeposit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeposit;
+    encode(message: MsgDeposit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDeposit;
     fromPartial(object: Partial<MsgDeposit>): MsgDeposit;
     fromAmino(object: MsgDepositAmino): MsgDeposit;
     toAmino(message: MsgDeposit): MsgDepositAmino;
@@ -310,8 +309,8 @@ export declare const MsgDeposit: {
 };
 export declare const MsgDepositResponse: {
     typeUrl: string;
-    encode(_: MsgDepositResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDepositResponse;
+    encode(_: MsgDepositResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDepositResponse;
     fromPartial(_: Partial<MsgDepositResponse>): MsgDepositResponse;
     fromAmino(_: MsgDepositResponseAmino): MsgDepositResponse;
     toAmino(_: MsgDepositResponse): MsgDepositResponseAmino;
@@ -321,6 +320,6 @@ export declare const MsgDepositResponse: {
     toProto(message: MsgDepositResponse): Uint8Array;
     toProtoMsg(message: MsgDepositResponse): MsgDepositResponseProtoMsg;
 };
-export declare const Content_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => TextProposal | Any;
+export declare const Content_InterfaceDecoder: (input: BinaryReader | Uint8Array) => TextProposal | Any;
 export declare const Content_FromAmino: (content: AnyAmino) => Any;
 export declare const Content_ToAmino: (content: Any) => AnyAmino;

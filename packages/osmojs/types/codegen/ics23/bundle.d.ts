@@ -12,8 +12,8 @@ export declare const ics23: {
     LengthOpAmino: typeof _171.LengthOp;
     ExistenceProof: {
         typeUrl: string;
-        encode(message: _171.ExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.ExistenceProof;
+        encode(message: _171.ExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.ExistenceProof;
         fromPartial(object: Partial<_171.ExistenceProof>): _171.ExistenceProof;
         fromAmino(object: _171.ExistenceProofAmino): _171.ExistenceProof;
         toAmino(message: _171.ExistenceProof): _171.ExistenceProofAmino;
@@ -24,8 +24,8 @@ export declare const ics23: {
     };
     NonExistenceProof: {
         typeUrl: string;
-        encode(message: _171.NonExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.NonExistenceProof;
+        encode(message: _171.NonExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.NonExistenceProof;
         fromPartial(object: Partial<_171.NonExistenceProof>): _171.NonExistenceProof;
         fromAmino(object: _171.NonExistenceProofAmino): _171.NonExistenceProof;
         toAmino(message: _171.NonExistenceProof): _171.NonExistenceProofAmino;
@@ -36,8 +36,8 @@ export declare const ics23: {
     };
     CommitmentProof: {
         typeUrl: string;
-        encode(message: _171.CommitmentProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.CommitmentProof;
+        encode(message: _171.CommitmentProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.CommitmentProof;
         fromPartial(object: Partial<_171.CommitmentProof>): _171.CommitmentProof;
         fromAmino(object: _171.CommitmentProofAmino): _171.CommitmentProof;
         toAmino(message: _171.CommitmentProof): _171.CommitmentProofAmino;
@@ -48,8 +48,8 @@ export declare const ics23: {
     };
     LeafOp: {
         typeUrl: string;
-        encode(message: _171.LeafOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.LeafOp;
+        encode(message: _171.LeafOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.LeafOp;
         fromPartial(object: Partial<_171.LeafOp>): _171.LeafOp;
         fromAmino(object: _171.LeafOpAmino): _171.LeafOp;
         toAmino(message: _171.LeafOp): _171.LeafOpAmino;
@@ -60,8 +60,8 @@ export declare const ics23: {
     };
     InnerOp: {
         typeUrl: string;
-        encode(message: _171.InnerOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.InnerOp;
+        encode(message: _171.InnerOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.InnerOp;
         fromPartial(object: Partial<_171.InnerOp>): _171.InnerOp;
         fromAmino(object: _171.InnerOpAmino): _171.InnerOp;
         toAmino(message: _171.InnerOp): _171.InnerOpAmino;
@@ -72,8 +72,8 @@ export declare const ics23: {
     };
     ProofSpec: {
         typeUrl: string;
-        encode(message: _171.ProofSpec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.ProofSpec;
+        encode(message: _171.ProofSpec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.ProofSpec;
         fromPartial(object: Partial<_171.ProofSpec>): _171.ProofSpec;
         fromAmino(object: _171.ProofSpecAmino): _171.ProofSpec;
         toAmino(message: _171.ProofSpec): _171.ProofSpecAmino;
@@ -84,8 +84,8 @@ export declare const ics23: {
     };
     InnerSpec: {
         typeUrl: string;
-        encode(message: _171.InnerSpec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.InnerSpec;
+        encode(message: _171.InnerSpec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.InnerSpec;
         fromPartial(object: Partial<_171.InnerSpec>): _171.InnerSpec;
         fromAmino(object: _171.InnerSpecAmino): _171.InnerSpec;
         toAmino(message: _171.InnerSpec): _171.InnerSpecAmino;
@@ -96,8 +96,8 @@ export declare const ics23: {
     };
     BatchProof: {
         typeUrl: string;
-        encode(message: _171.BatchProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.BatchProof;
+        encode(message: _171.BatchProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.BatchProof;
         fromPartial(object: Partial<_171.BatchProof>): _171.BatchProof;
         fromAmino(object: _171.BatchProofAmino): _171.BatchProof;
         toAmino(message: _171.BatchProof): _171.BatchProofAmino;
@@ -108,8 +108,8 @@ export declare const ics23: {
     };
     BatchEntry: {
         typeUrl: string;
-        encode(message: _171.BatchEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.BatchEntry;
+        encode(message: _171.BatchEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.BatchEntry;
         fromPartial(object: Partial<_171.BatchEntry>): _171.BatchEntry;
         fromAmino(object: _171.BatchEntryAmino): _171.BatchEntry;
         toAmino(message: _171.BatchEntry): _171.BatchEntryAmino;
@@ -120,8 +120,8 @@ export declare const ics23: {
     };
     CompressedBatchProof: {
         typeUrl: string;
-        encode(message: _171.CompressedBatchProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.CompressedBatchProof;
+        encode(message: _171.CompressedBatchProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.CompressedBatchProof;
         fromPartial(object: Partial<_171.CompressedBatchProof>): _171.CompressedBatchProof;
         fromAmino(object: _171.CompressedBatchProofAmino): _171.CompressedBatchProof;
         toAmino(message: _171.CompressedBatchProof): _171.CompressedBatchProofAmino;
@@ -132,8 +132,8 @@ export declare const ics23: {
     };
     CompressedBatchEntry: {
         typeUrl: string;
-        encode(message: _171.CompressedBatchEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.CompressedBatchEntry;
+        encode(message: _171.CompressedBatchEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.CompressedBatchEntry;
         fromPartial(object: Partial<_171.CompressedBatchEntry>): _171.CompressedBatchEntry;
         fromAmino(object: _171.CompressedBatchEntryAmino): _171.CompressedBatchEntry;
         toAmino(message: _171.CompressedBatchEntry): _171.CompressedBatchEntryAmino;
@@ -144,8 +144,8 @@ export declare const ics23: {
     };
     CompressedExistenceProof: {
         typeUrl: string;
-        encode(message: _171.CompressedExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.CompressedExistenceProof;
+        encode(message: _171.CompressedExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.CompressedExistenceProof;
         fromPartial(object: Partial<_171.CompressedExistenceProof>): _171.CompressedExistenceProof;
         fromAmino(object: _171.CompressedExistenceProofAmino): _171.CompressedExistenceProof;
         toAmino(message: _171.CompressedExistenceProof): _171.CompressedExistenceProofAmino;
@@ -156,8 +156,8 @@ export declare const ics23: {
     };
     CompressedNonExistenceProof: {
         typeUrl: string;
-        encode(message: _171.CompressedNonExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _171.CompressedNonExistenceProof;
+        encode(message: _171.CompressedNonExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _171.CompressedNonExistenceProof;
         fromPartial(object: Partial<_171.CompressedNonExistenceProof>): _171.CompressedNonExistenceProof;
         fromAmino(object: _171.CompressedNonExistenceProofAmino): _171.CompressedNonExistenceProof;
         toAmino(message: _171.CompressedNonExistenceProof): _171.CompressedNonExistenceProofAmino;

@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface Node {
     children: Child[];
 }
@@ -37,7 +37,7 @@ export interface ChildSDKType {
     accumulation: string;
 }
 export interface Leaf {
-    leaf?: Child;
+    leaf: Child;
 }
 export interface LeafProtoMsg {
     typeUrl: "/osmosis.store.v1beta1.Leaf";
@@ -51,12 +51,12 @@ export interface LeafAminoMsg {
     value: LeafAmino;
 }
 export interface LeafSDKType {
-    leaf?: ChildSDKType;
+    leaf: ChildSDKType;
 }
 export declare const Node: {
     typeUrl: string;
-    encode(message: Node, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Node;
+    encode(message: Node, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Node;
     fromPartial(object: Partial<Node>): Node;
     fromAmino(object: NodeAmino): Node;
     toAmino(message: Node): NodeAmino;
@@ -68,8 +68,8 @@ export declare const Node: {
 };
 export declare const Child: {
     typeUrl: string;
-    encode(message: Child, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Child;
+    encode(message: Child, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Child;
     fromPartial(object: Partial<Child>): Child;
     fromAmino(object: ChildAmino): Child;
     toAmino(message: Child): ChildAmino;
@@ -81,8 +81,8 @@ export declare const Child: {
 };
 export declare const Leaf: {
     typeUrl: string;
-    encode(message: Leaf, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Leaf;
+    encode(message: Leaf, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Leaf;
     fromPartial(object: Partial<Leaf>): Leaf;
     fromAmino(object: LeafAmino): Leaf;
     toAmino(message: Leaf): LeafAmino;

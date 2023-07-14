@@ -1,9 +1,8 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Deprecated: please use alternate in x/poolmanager */
 /** @deprecated */
 export interface QuerySpotPriceRequest {
-    poolId: Long;
+    poolId: bigint;
     baseAssetDenom: string;
     quoteAssetDenom: string;
 }
@@ -25,7 +24,7 @@ export interface QuerySpotPriceRequestAminoMsg {
 /** Deprecated: please use alternate in x/poolmanager */
 /** @deprecated */
 export interface QuerySpotPriceRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     base_asset_denom: string;
     quote_asset_denom: string;
 }
@@ -56,8 +55,8 @@ export interface QuerySpotPriceResponseSDKType {
 }
 export declare const QuerySpotPriceRequest: {
     typeUrl: string;
-    encode(message: QuerySpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceRequest;
+    encode(message: QuerySpotPriceRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySpotPriceRequest;
     fromPartial(object: Partial<QuerySpotPriceRequest>): QuerySpotPriceRequest;
     fromAmino(object: QuerySpotPriceRequestAmino): QuerySpotPriceRequest;
     toAmino(message: QuerySpotPriceRequest): QuerySpotPriceRequestAmino;
@@ -69,8 +68,8 @@ export declare const QuerySpotPriceRequest: {
 };
 export declare const QuerySpotPriceResponse: {
     typeUrl: string;
-    encode(message: QuerySpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponse;
+    encode(message: QuerySpotPriceResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySpotPriceResponse;
     fromPartial(object: Partial<QuerySpotPriceResponse>): QuerySpotPriceResponse;
     fromAmino(object: QuerySpotPriceResponseAmino): QuerySpotPriceResponse;
     toAmino(message: QuerySpotPriceResponse): QuerySpotPriceResponseAmino;

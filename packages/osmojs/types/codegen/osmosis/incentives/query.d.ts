@@ -2,8 +2,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Gauge, GaugeAmino, GaugeSDKType } from "./gauge";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface ModuleToDistributeCoinsRequest {
 }
 export interface ModuleToDistributeCoinsRequestProtoMsg {
@@ -39,7 +38,7 @@ export interface ModuleToDistributeCoinsResponseSDKType {
 }
 export interface GaugeByIDRequest {
     /** Gague ID being queried */
-    id: Long;
+    id: bigint;
 }
 export interface GaugeByIDRequestProtoMsg {
     typeUrl: "/osmosis.incentives.GaugeByIDRequest";
@@ -54,11 +53,11 @@ export interface GaugeByIDRequestAminoMsg {
     value: GaugeByIDRequestAmino;
 }
 export interface GaugeByIDRequestSDKType {
-    id: Long;
+    id: bigint;
 }
 export interface GaugeByIDResponse {
     /** Gauge that corresponds to provided gague ID */
-    gauge?: Gauge;
+    gauge: Gauge;
 }
 export interface GaugeByIDResponseProtoMsg {
     typeUrl: "/osmosis.incentives.GaugeByIDResponse";
@@ -73,11 +72,11 @@ export interface GaugeByIDResponseAminoMsg {
     value: GaugeByIDResponseAmino;
 }
 export interface GaugeByIDResponseSDKType {
-    gauge?: GaugeSDKType;
+    gauge: GaugeSDKType;
 }
 export interface GaugesRequest {
     /** Pagination defines pagination for the request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface GaugesRequestProtoMsg {
     typeUrl: "/osmosis.incentives.GaugesRequest";
@@ -92,13 +91,13 @@ export interface GaugesRequestAminoMsg {
     value: GaugesRequestAmino;
 }
 export interface GaugesRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface GaugesResponse {
     /** Upcoming and active gauges */
     data: Gauge[];
     /** Pagination defines pagination for the response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface GaugesResponseProtoMsg {
     typeUrl: "/osmosis.incentives.GaugesResponse";
@@ -116,11 +115,11 @@ export interface GaugesResponseAminoMsg {
 }
 export interface GaugesResponseSDKType {
     data: GaugeSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 export interface ActiveGaugesRequest {
     /** Pagination defines pagination for the request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface ActiveGaugesRequestProtoMsg {
     typeUrl: "/osmosis.incentives.ActiveGaugesRequest";
@@ -135,13 +134,13 @@ export interface ActiveGaugesRequestAminoMsg {
     value: ActiveGaugesRequestAmino;
 }
 export interface ActiveGaugesRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface ActiveGaugesResponse {
     /** Active gagues only */
     data: Gauge[];
     /** Pagination defines pagination for the response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface ActiveGaugesResponseProtoMsg {
     typeUrl: "/osmosis.incentives.ActiveGaugesResponse";
@@ -159,13 +158,13 @@ export interface ActiveGaugesResponseAminoMsg {
 }
 export interface ActiveGaugesResponseSDKType {
     data: GaugeSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 export interface ActiveGaugesPerDenomRequest {
     /** Desired denom when querying active gagues */
     denom: string;
     /** Pagination defines pagination for the request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface ActiveGaugesPerDenomRequestProtoMsg {
     typeUrl: "/osmosis.incentives.ActiveGaugesPerDenomRequest";
@@ -183,13 +182,13 @@ export interface ActiveGaugesPerDenomRequestAminoMsg {
 }
 export interface ActiveGaugesPerDenomRequestSDKType {
     denom: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface ActiveGaugesPerDenomResponse {
     /** Active gagues that match denom in query */
     data: Gauge[];
     /** Pagination defines pagination for the response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface ActiveGaugesPerDenomResponseProtoMsg {
     typeUrl: "/osmosis.incentives.ActiveGaugesPerDenomResponse";
@@ -207,11 +206,11 @@ export interface ActiveGaugesPerDenomResponseAminoMsg {
 }
 export interface ActiveGaugesPerDenomResponseSDKType {
     data: GaugeSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 export interface UpcomingGaugesRequest {
     /** Pagination defines pagination for the request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface UpcomingGaugesRequestProtoMsg {
     typeUrl: "/osmosis.incentives.UpcomingGaugesRequest";
@@ -226,13 +225,13 @@ export interface UpcomingGaugesRequestAminoMsg {
     value: UpcomingGaugesRequestAmino;
 }
 export interface UpcomingGaugesRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface UpcomingGaugesResponse {
     /** Gauges whose distribution is upcoming */
     data: Gauge[];
     /** Pagination defines pagination for the response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface UpcomingGaugesResponseProtoMsg {
     typeUrl: "/osmosis.incentives.UpcomingGaugesResponse";
@@ -250,13 +249,13 @@ export interface UpcomingGaugesResponseAminoMsg {
 }
 export interface UpcomingGaugesResponseSDKType {
     data: GaugeSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 export interface UpcomingGaugesPerDenomRequest {
     /** Filter for upcoming gagues that match specific denom */
     denom: string;
     /** Pagination defines pagination for the request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface UpcomingGaugesPerDenomRequestProtoMsg {
     typeUrl: "/osmosis.incentives.UpcomingGaugesPerDenomRequest";
@@ -274,13 +273,13 @@ export interface UpcomingGaugesPerDenomRequestAminoMsg {
 }
 export interface UpcomingGaugesPerDenomRequestSDKType {
     denom: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface UpcomingGaugesPerDenomResponse {
     /** Upcoming gagues that match denom in query */
     upcomingGauges: Gauge[];
     /** Pagination defines pagination for the response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface UpcomingGaugesPerDenomResponseProtoMsg {
     typeUrl: "/osmosis.incentives.UpcomingGaugesPerDenomResponse";
@@ -298,18 +297,18 @@ export interface UpcomingGaugesPerDenomResponseAminoMsg {
 }
 export interface UpcomingGaugesPerDenomResponseSDKType {
     upcoming_gauges: GaugeSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 export interface RewardsEstRequest {
     /** Address that is being queried for future estimated rewards */
     owner: string;
     /** Lock IDs included in future reward estimation */
-    lockIds: Long[];
+    lockIds: bigint[];
     /**
      * Upper time limit of reward estimation
      * Lower limit is current epoch
      */
-    endEpoch: Long;
+    endEpoch: bigint;
 }
 export interface RewardsEstRequestProtoMsg {
     typeUrl: "/osmosis.incentives.RewardsEstRequest";
@@ -332,8 +331,8 @@ export interface RewardsEstRequestAminoMsg {
 }
 export interface RewardsEstRequestSDKType {
     owner: string;
-    lock_ids: Long[];
-    end_epoch: Long;
+    lock_ids: bigint[];
+    end_epoch: bigint;
 }
 export interface RewardsEstResponse {
     /**
@@ -395,8 +394,8 @@ export interface QueryLockableDurationsResponseSDKType {
 }
 export declare const ModuleToDistributeCoinsRequest: {
     typeUrl: string;
-    encode(_: ModuleToDistributeCoinsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsRequest;
+    encode(_: ModuleToDistributeCoinsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModuleToDistributeCoinsRequest;
     fromPartial(_: Partial<ModuleToDistributeCoinsRequest>): ModuleToDistributeCoinsRequest;
     fromAmino(_: ModuleToDistributeCoinsRequestAmino): ModuleToDistributeCoinsRequest;
     toAmino(_: ModuleToDistributeCoinsRequest): ModuleToDistributeCoinsRequestAmino;
@@ -408,8 +407,8 @@ export declare const ModuleToDistributeCoinsRequest: {
 };
 export declare const ModuleToDistributeCoinsResponse: {
     typeUrl: string;
-    encode(message: ModuleToDistributeCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse;
+    encode(message: ModuleToDistributeCoinsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse;
     fromPartial(object: Partial<ModuleToDistributeCoinsResponse>): ModuleToDistributeCoinsResponse;
     fromAmino(object: ModuleToDistributeCoinsResponseAmino): ModuleToDistributeCoinsResponse;
     toAmino(message: ModuleToDistributeCoinsResponse): ModuleToDistributeCoinsResponseAmino;
@@ -421,8 +420,8 @@ export declare const ModuleToDistributeCoinsResponse: {
 };
 export declare const GaugeByIDRequest: {
     typeUrl: string;
-    encode(message: GaugeByIDRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDRequest;
+    encode(message: GaugeByIDRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GaugeByIDRequest;
     fromPartial(object: Partial<GaugeByIDRequest>): GaugeByIDRequest;
     fromAmino(object: GaugeByIDRequestAmino): GaugeByIDRequest;
     toAmino(message: GaugeByIDRequest): GaugeByIDRequestAmino;
@@ -434,8 +433,8 @@ export declare const GaugeByIDRequest: {
 };
 export declare const GaugeByIDResponse: {
     typeUrl: string;
-    encode(message: GaugeByIDResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponse;
+    encode(message: GaugeByIDResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GaugeByIDResponse;
     fromPartial(object: Partial<GaugeByIDResponse>): GaugeByIDResponse;
     fromAmino(object: GaugeByIDResponseAmino): GaugeByIDResponse;
     toAmino(message: GaugeByIDResponse): GaugeByIDResponseAmino;
@@ -447,8 +446,8 @@ export declare const GaugeByIDResponse: {
 };
 export declare const GaugesRequest: {
     typeUrl: string;
-    encode(message: GaugesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GaugesRequest;
+    encode(message: GaugesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GaugesRequest;
     fromPartial(object: Partial<GaugesRequest>): GaugesRequest;
     fromAmino(object: GaugesRequestAmino): GaugesRequest;
     toAmino(message: GaugesRequest): GaugesRequestAmino;
@@ -460,8 +459,8 @@ export declare const GaugesRequest: {
 };
 export declare const GaugesResponse: {
     typeUrl: string;
-    encode(message: GaugesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponse;
+    encode(message: GaugesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GaugesResponse;
     fromPartial(object: Partial<GaugesResponse>): GaugesResponse;
     fromAmino(object: GaugesResponseAmino): GaugesResponse;
     toAmino(message: GaugesResponse): GaugesResponseAmino;
@@ -473,8 +472,8 @@ export declare const GaugesResponse: {
 };
 export declare const ActiveGaugesRequest: {
     typeUrl: string;
-    encode(message: ActiveGaugesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesRequest;
+    encode(message: ActiveGaugesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ActiveGaugesRequest;
     fromPartial(object: Partial<ActiveGaugesRequest>): ActiveGaugesRequest;
     fromAmino(object: ActiveGaugesRequestAmino): ActiveGaugesRequest;
     toAmino(message: ActiveGaugesRequest): ActiveGaugesRequestAmino;
@@ -486,8 +485,8 @@ export declare const ActiveGaugesRequest: {
 };
 export declare const ActiveGaugesResponse: {
     typeUrl: string;
-    encode(message: ActiveGaugesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponse;
+    encode(message: ActiveGaugesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ActiveGaugesResponse;
     fromPartial(object: Partial<ActiveGaugesResponse>): ActiveGaugesResponse;
     fromAmino(object: ActiveGaugesResponseAmino): ActiveGaugesResponse;
     toAmino(message: ActiveGaugesResponse): ActiveGaugesResponseAmino;
@@ -499,8 +498,8 @@ export declare const ActiveGaugesResponse: {
 };
 export declare const ActiveGaugesPerDenomRequest: {
     typeUrl: string;
-    encode(message: ActiveGaugesPerDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomRequest;
+    encode(message: ActiveGaugesPerDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ActiveGaugesPerDenomRequest;
     fromPartial(object: Partial<ActiveGaugesPerDenomRequest>): ActiveGaugesPerDenomRequest;
     fromAmino(object: ActiveGaugesPerDenomRequestAmino): ActiveGaugesPerDenomRequest;
     toAmino(message: ActiveGaugesPerDenomRequest): ActiveGaugesPerDenomRequestAmino;
@@ -512,8 +511,8 @@ export declare const ActiveGaugesPerDenomRequest: {
 };
 export declare const ActiveGaugesPerDenomResponse: {
     typeUrl: string;
-    encode(message: ActiveGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponse;
+    encode(message: ActiveGaugesPerDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ActiveGaugesPerDenomResponse;
     fromPartial(object: Partial<ActiveGaugesPerDenomResponse>): ActiveGaugesPerDenomResponse;
     fromAmino(object: ActiveGaugesPerDenomResponseAmino): ActiveGaugesPerDenomResponse;
     toAmino(message: ActiveGaugesPerDenomResponse): ActiveGaugesPerDenomResponseAmino;
@@ -525,8 +524,8 @@ export declare const ActiveGaugesPerDenomResponse: {
 };
 export declare const UpcomingGaugesRequest: {
     typeUrl: string;
-    encode(message: UpcomingGaugesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesRequest;
+    encode(message: UpcomingGaugesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpcomingGaugesRequest;
     fromPartial(object: Partial<UpcomingGaugesRequest>): UpcomingGaugesRequest;
     fromAmino(object: UpcomingGaugesRequestAmino): UpcomingGaugesRequest;
     toAmino(message: UpcomingGaugesRequest): UpcomingGaugesRequestAmino;
@@ -538,8 +537,8 @@ export declare const UpcomingGaugesRequest: {
 };
 export declare const UpcomingGaugesResponse: {
     typeUrl: string;
-    encode(message: UpcomingGaugesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponse;
+    encode(message: UpcomingGaugesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpcomingGaugesResponse;
     fromPartial(object: Partial<UpcomingGaugesResponse>): UpcomingGaugesResponse;
     fromAmino(object: UpcomingGaugesResponseAmino): UpcomingGaugesResponse;
     toAmino(message: UpcomingGaugesResponse): UpcomingGaugesResponseAmino;
@@ -551,8 +550,8 @@ export declare const UpcomingGaugesResponse: {
 };
 export declare const UpcomingGaugesPerDenomRequest: {
     typeUrl: string;
-    encode(message: UpcomingGaugesPerDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomRequest;
+    encode(message: UpcomingGaugesPerDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpcomingGaugesPerDenomRequest;
     fromPartial(object: Partial<UpcomingGaugesPerDenomRequest>): UpcomingGaugesPerDenomRequest;
     fromAmino(object: UpcomingGaugesPerDenomRequestAmino): UpcomingGaugesPerDenomRequest;
     toAmino(message: UpcomingGaugesPerDenomRequest): UpcomingGaugesPerDenomRequestAmino;
@@ -564,8 +563,8 @@ export declare const UpcomingGaugesPerDenomRequest: {
 };
 export declare const UpcomingGaugesPerDenomResponse: {
     typeUrl: string;
-    encode(message: UpcomingGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse;
+    encode(message: UpcomingGaugesPerDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse;
     fromPartial(object: Partial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse;
     fromAmino(object: UpcomingGaugesPerDenomResponseAmino): UpcomingGaugesPerDenomResponse;
     toAmino(message: UpcomingGaugesPerDenomResponse): UpcomingGaugesPerDenomResponseAmino;
@@ -577,8 +576,8 @@ export declare const UpcomingGaugesPerDenomResponse: {
 };
 export declare const RewardsEstRequest: {
     typeUrl: string;
-    encode(message: RewardsEstRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstRequest;
+    encode(message: RewardsEstRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RewardsEstRequest;
     fromPartial(object: Partial<RewardsEstRequest>): RewardsEstRequest;
     fromAmino(object: RewardsEstRequestAmino): RewardsEstRequest;
     toAmino(message: RewardsEstRequest): RewardsEstRequestAmino;
@@ -590,8 +589,8 @@ export declare const RewardsEstRequest: {
 };
 export declare const RewardsEstResponse: {
     typeUrl: string;
-    encode(message: RewardsEstResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponse;
+    encode(message: RewardsEstResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RewardsEstResponse;
     fromPartial(object: Partial<RewardsEstResponse>): RewardsEstResponse;
     fromAmino(object: RewardsEstResponseAmino): RewardsEstResponse;
     toAmino(message: RewardsEstResponse): RewardsEstResponseAmino;
@@ -603,8 +602,8 @@ export declare const RewardsEstResponse: {
 };
 export declare const QueryLockableDurationsRequest: {
     typeUrl: string;
-    encode(_: QueryLockableDurationsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsRequest;
+    encode(_: QueryLockableDurationsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryLockableDurationsRequest;
     fromPartial(_: Partial<QueryLockableDurationsRequest>): QueryLockableDurationsRequest;
     fromAmino(_: QueryLockableDurationsRequestAmino): QueryLockableDurationsRequest;
     toAmino(_: QueryLockableDurationsRequest): QueryLockableDurationsRequestAmino;
@@ -616,8 +615,8 @@ export declare const QueryLockableDurationsRequest: {
 };
 export declare const QueryLockableDurationsResponse: {
     typeUrl: string;
-    encode(message: QueryLockableDurationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse;
+    encode(message: QueryLockableDurationsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryLockableDurationsResponse;
     fromPartial(object: Partial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse;
     fromAmino(object: QueryLockableDurationsResponseAmino): QueryLockableDurationsResponse;
     toAmino(message: QueryLockableDurationsResponse): QueryLockableDurationsResponseAmino;

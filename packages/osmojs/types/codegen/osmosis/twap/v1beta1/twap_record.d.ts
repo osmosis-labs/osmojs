@@ -1,5 +1,4 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * A TWAP record should be indexed in state by pool_id, (asset pair), timestamp
  * The asset pair assets should be lexicographically sorted.
@@ -10,18 +9,18 @@ import * as _m0 from "protobufjs/minimal";
  * now.
  */
 export interface TwapRecord {
-    poolId: Long;
+    poolId: bigint;
     /** Lexicographically smaller denom of the pair */
     asset0Denom: string;
     /** Lexicographically larger denom of the pair */
     asset1Denom: string;
     /** height this record corresponds to, for debugging purposes */
-    height: Long;
+    height: bigint;
     /**
      * This field should only exist until we have a global registry in the state
      * machine, mapping prior block heights within {TIME RANGE} to times.
      */
-    time?: Date;
+    time: Date;
     /**
      * We store the last spot prices in the struct, so that we can interpolate
      * accumulator values for times between when accumulator records are stored.
@@ -36,7 +35,7 @@ export interface TwapRecord {
      * It is used to alert the caller if they are getting a potentially erroneous
      * TWAP, due to an unforeseen underlying error.
      */
-    lastErrorTime?: Date;
+    lastErrorTime: Date;
 }
 export interface TwapRecordProtoMsg {
     typeUrl: "/osmosis.twap.v1beta1.TwapRecord";
@@ -94,22 +93,22 @@ export interface TwapRecordAminoMsg {
  * now.
  */
 export interface TwapRecordSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     asset0_denom: string;
     asset1_denom: string;
-    height: Long;
-    time?: Date;
+    height: bigint;
+    time: Date;
     p0_last_spot_price: string;
     p1_last_spot_price: string;
     p0_arithmetic_twap_accumulator: string;
     p1_arithmetic_twap_accumulator: string;
     geometric_twap_accumulator: string;
-    last_error_time?: Date;
+    last_error_time: Date;
 }
 export declare const TwapRecord: {
     typeUrl: string;
-    encode(message: TwapRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TwapRecord;
+    encode(message: TwapRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TwapRecord;
     fromPartial(object: Partial<TwapRecord>): TwapRecord;
     fromAmino(object: TwapRecordAmino): TwapRecord;
     toAmino(message: TwapRecord): TwapRecordAmino;

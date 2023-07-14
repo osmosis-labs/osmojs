@@ -1,6 +1,5 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface Params {
     /**
      * authorized_tick_spacing is an array of uint64s that represents the tick
@@ -8,7 +7,7 @@ export interface Params {
      * example, an authorized_tick_spacing of [1, 10, 30] allows for pools
      * to be created with tick spacing of 1, 10, or 30.
      */
-    authorizedTickSpacing: Long[];
+    authorizedTickSpacing: bigint[];
     authorizedSpreadFactors: string[];
     /**
      * balancer_shares_reward_discount is the rate by which incentives flowing
@@ -86,7 +85,7 @@ export interface ParamsAminoMsg {
     value: ParamsAmino;
 }
 export interface ParamsSDKType {
-    authorized_tick_spacing: Long[];
+    authorized_tick_spacing: bigint[];
     authorized_spread_factors: string[];
     balancer_shares_reward_discount: string;
     authorized_quote_denoms: string[];
@@ -95,8 +94,8 @@ export interface ParamsSDKType {
 }
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

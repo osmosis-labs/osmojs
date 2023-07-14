@@ -11,8 +11,7 @@ import { PoolSDKType as Pool2SDKType } from "../../gamm/pool-models/balancer/bal
 import { Pool as Pool3 } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../../gamm/pool-models/stableswap/stableswap_pool";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** =============================== ContractInfoByPoolId */
 export interface ParamsRequest {
 }
@@ -31,7 +30,7 @@ export interface ParamsRequestAminoMsg {
 export interface ParamsRequestSDKType {
 }
 export interface ParamsResponse {
-    params?: Params;
+    params: Params;
 }
 export interface ParamsResponseProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.ParamsResponse";
@@ -45,12 +44,12 @@ export interface ParamsResponseAminoMsg {
     value: ParamsResponseAmino;
 }
 export interface ParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 /** =============================== Pools */
 export interface PoolsRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface PoolsRequestProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.PoolsRequest";
@@ -67,18 +66,18 @@ export interface PoolsRequestAminoMsg {
 }
 /** =============================== Pools */
 export interface PoolsRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface PoolsResponse {
     pools: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any)[] | Any[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface PoolsResponseProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.PoolsResponse";
     value: Uint8Array;
 }
-export type PoolsResponseEncoded = Omit<PoolsResponse, "pools"> & {
+export declare type PoolsResponseEncoded = Omit<PoolsResponse, "pools"> & {
     pools: (Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg)[];
 };
 export interface PoolsResponseAmino {
@@ -92,12 +91,12 @@ export interface PoolsResponseAminoMsg {
 }
 export interface PoolsResponseSDKType {
     pools: (Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType)[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** =============================== ContractInfoByPoolId */
 export interface ContractInfoByPoolIdRequest {
     /** pool_id is the pool id of the requested pool. */
-    poolId: Long;
+    poolId: bigint;
 }
 export interface ContractInfoByPoolIdRequestProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.ContractInfoByPoolIdRequest";
@@ -114,7 +113,7 @@ export interface ContractInfoByPoolIdRequestAminoMsg {
 }
 /** =============================== ContractInfoByPoolId */
 export interface ContractInfoByPoolIdRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface ContractInfoByPoolIdResponse {
     /**
@@ -123,7 +122,7 @@ export interface ContractInfoByPoolIdResponse {
      */
     contractAddress: string;
     /** code_id is the code id of the requested pool id. */
-    codeId: Long;
+    codeId: bigint;
 }
 export interface ContractInfoByPoolIdResponseProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.ContractInfoByPoolIdResponse";
@@ -144,12 +143,12 @@ export interface ContractInfoByPoolIdResponseAminoMsg {
 }
 export interface ContractInfoByPoolIdResponseSDKType {
     contract_address: string;
-    code_id: Long;
+    code_id: bigint;
 }
 export declare const ParamsRequest: {
     typeUrl: string;
-    encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
+    encode(_: ParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
     fromAmino(_: ParamsRequestAmino): ParamsRequest;
     toAmino(_: ParamsRequest): ParamsRequestAmino;
@@ -161,8 +160,8 @@ export declare const ParamsRequest: {
 };
 export declare const ParamsResponse: {
     typeUrl: string;
-    encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
+    encode(message: ParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;
     fromAmino(object: ParamsResponseAmino): ParamsResponse;
     toAmino(message: ParamsResponse): ParamsResponseAmino;
@@ -174,8 +173,8 @@ export declare const ParamsResponse: {
 };
 export declare const PoolsRequest: {
     typeUrl: string;
-    encode(message: PoolsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolsRequest;
+    encode(message: PoolsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolsRequest;
     fromPartial(object: Partial<PoolsRequest>): PoolsRequest;
     fromAmino(object: PoolsRequestAmino): PoolsRequest;
     toAmino(message: PoolsRequest): PoolsRequestAmino;
@@ -187,8 +186,8 @@ export declare const PoolsRequest: {
 };
 export declare const PoolsResponse: {
     typeUrl: string;
-    encode(message: PoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolsResponse;
+    encode(message: PoolsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolsResponse;
     fromPartial(object: Partial<PoolsResponse>): PoolsResponse;
     fromAmino(object: PoolsResponseAmino): PoolsResponse;
     toAmino(message: PoolsResponse): PoolsResponseAmino;
@@ -200,8 +199,8 @@ export declare const PoolsResponse: {
 };
 export declare const ContractInfoByPoolIdRequest: {
     typeUrl: string;
-    encode(message: ContractInfoByPoolIdRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ContractInfoByPoolIdRequest;
+    encode(message: ContractInfoByPoolIdRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ContractInfoByPoolIdRequest;
     fromPartial(object: Partial<ContractInfoByPoolIdRequest>): ContractInfoByPoolIdRequest;
     fromAmino(object: ContractInfoByPoolIdRequestAmino): ContractInfoByPoolIdRequest;
     toAmino(message: ContractInfoByPoolIdRequest): ContractInfoByPoolIdRequestAmino;
@@ -213,8 +212,8 @@ export declare const ContractInfoByPoolIdRequest: {
 };
 export declare const ContractInfoByPoolIdResponse: {
     typeUrl: string;
-    encode(message: ContractInfoByPoolIdResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ContractInfoByPoolIdResponse;
+    encode(message: ContractInfoByPoolIdResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ContractInfoByPoolIdResponse;
     fromPartial(object: Partial<ContractInfoByPoolIdResponse>): ContractInfoByPoolIdResponse;
     fromAmino(object: ContractInfoByPoolIdResponseAmino): ContractInfoByPoolIdResponse;
     toAmino(message: ContractInfoByPoolIdResponse): ContractInfoByPoolIdResponseAmino;
@@ -224,6 +223,6 @@ export declare const ContractInfoByPoolIdResponse: {
     toProto(message: ContractInfoByPoolIdResponse): Uint8Array;
     toProtoMsg(message: ContractInfoByPoolIdResponse): ContractInfoByPoolIdResponseProtoMsg;
 };
-export declare const PoolI_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
+export declare const PoolI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
 export declare const PoolI_FromAmino: (content: AnyAmino) => Any;
 export declare const PoolI_ToAmino: (content: Any) => AnyAmino;

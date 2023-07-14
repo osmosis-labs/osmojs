@@ -1,10 +1,9 @@
 import { Params, ParamsAmino, ParamsSDKType, Validator, ValidatorAmino, ValidatorSDKType, Delegation, DelegationAmino, DelegationSDKType, UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, Redelegation, RedelegationAmino, RedelegationSDKType } from "./staking";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisState {
     /** params defines all the paramaters of related to deposit. */
-    params?: Params;
+    params: Params;
     /**
      * last_total_power tracks the total amounts of bonded tokens recorded during
      * the previous end block.
@@ -59,7 +58,7 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisStateSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
     last_total_power: Uint8Array;
     last_validator_powers: LastValidatorPowerSDKType[];
     validators: ValidatorSDKType[];
@@ -73,7 +72,7 @@ export interface LastValidatorPower {
     /** address is the address of the validator. */
     address: string;
     /** power defines the power of the validator. */
-    power: Long;
+    power: bigint;
 }
 export interface LastValidatorPowerProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.LastValidatorPower";
@@ -93,12 +92,12 @@ export interface LastValidatorPowerAminoMsg {
 /** LastValidatorPower required for validator set update logic. */
 export interface LastValidatorPowerSDKType {
     address: string;
-    power: Long;
+    power: bigint;
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -110,8 +109,8 @@ export declare const GenesisState: {
 };
 export declare const LastValidatorPower: {
     typeUrl: string;
-    encode(message: LastValidatorPower, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LastValidatorPower;
+    encode(message: LastValidatorPower, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LastValidatorPower;
     fromPartial(object: Partial<LastValidatorPower>): LastValidatorPower;
     fromAmino(object: LastValidatorPowerAmino): LastValidatorPower;
     toAmino(message: LastValidatorPower): LastValidatorPowerAmino;

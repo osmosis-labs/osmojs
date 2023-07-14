@@ -1,6 +1,5 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface Params {
     /**
      * minted_denom is the denomination of the coin expected to be minted by the
@@ -68,7 +67,7 @@ export interface DistrInfoSDKType {
     records: DistrRecordSDKType[];
 }
 export interface DistrRecord {
-    gaugeId: Long;
+    gaugeId: bigint;
     weight: string;
 }
 export interface DistrRecordProtoMsg {
@@ -84,13 +83,13 @@ export interface DistrRecordAminoMsg {
     value: DistrRecordAmino;
 }
 export interface DistrRecordSDKType {
-    gauge_id: Long;
+    gauge_id: bigint;
     weight: string;
 }
 export interface PoolToGauge {
-    poolId: Long;
-    gaugeId: Long;
-    duration?: Duration;
+    poolId: bigint;
+    gaugeId: bigint;
+    duration: Duration;
 }
 export interface PoolToGaugeProtoMsg {
     typeUrl: "/osmosis.poolincentives.v1beta1.PoolToGauge";
@@ -106,9 +105,9 @@ export interface PoolToGaugeAminoMsg {
     value: PoolToGaugeAmino;
 }
 export interface PoolToGaugeSDKType {
-    pool_id: Long;
-    gauge_id: Long;
-    duration?: DurationSDKType;
+    pool_id: bigint;
+    gauge_id: bigint;
+    duration: DurationSDKType;
 }
 export interface PoolToGauges {
     poolToGauge: PoolToGauge[];
@@ -129,8 +128,8 @@ export interface PoolToGaugesSDKType {
 }
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -142,8 +141,8 @@ export declare const Params: {
 };
 export declare const LockableDurationsInfo: {
     typeUrl: string;
-    encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
+    encode(message: LockableDurationsInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LockableDurationsInfo;
     fromPartial(object: Partial<LockableDurationsInfo>): LockableDurationsInfo;
     fromAmino(object: LockableDurationsInfoAmino): LockableDurationsInfo;
     toAmino(message: LockableDurationsInfo): LockableDurationsInfoAmino;
@@ -155,8 +154,8 @@ export declare const LockableDurationsInfo: {
 };
 export declare const DistrInfo: {
     typeUrl: string;
-    encode(message: DistrInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DistrInfo;
+    encode(message: DistrInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DistrInfo;
     fromPartial(object: Partial<DistrInfo>): DistrInfo;
     fromAmino(object: DistrInfoAmino): DistrInfo;
     toAmino(message: DistrInfo): DistrInfoAmino;
@@ -168,8 +167,8 @@ export declare const DistrInfo: {
 };
 export declare const DistrRecord: {
     typeUrl: string;
-    encode(message: DistrRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DistrRecord;
+    encode(message: DistrRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DistrRecord;
     fromPartial(object: Partial<DistrRecord>): DistrRecord;
     fromAmino(object: DistrRecordAmino): DistrRecord;
     toAmino(message: DistrRecord): DistrRecordAmino;
@@ -181,8 +180,8 @@ export declare const DistrRecord: {
 };
 export declare const PoolToGauge: {
     typeUrl: string;
-    encode(message: PoolToGauge, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauge;
+    encode(message: PoolToGauge, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolToGauge;
     fromPartial(object: Partial<PoolToGauge>): PoolToGauge;
     fromAmino(object: PoolToGaugeAmino): PoolToGauge;
     toAmino(message: PoolToGauge): PoolToGaugeAmino;
@@ -194,8 +193,8 @@ export declare const PoolToGauge: {
 };
 export declare const PoolToGauges: {
     typeUrl: string;
-    encode(message: PoolToGauges, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauges;
+    encode(message: PoolToGauges, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolToGauges;
     fromPartial(object: Partial<PoolToGauges>): PoolToGauges;
     fromAmino(object: PoolToGaugesAmino): PoolToGauges;
     toAmino(message: PoolToGauges): PoolToGaugesAmino;

@@ -2,17 +2,16 @@ import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { SignMode } from "../signing/v1beta1/signing";
 import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from "../../crypto/multisig/v1beta1/multisig";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Tx is the standard type used for broadcasting transactions. */
 export interface Tx {
     /** body is the processable content of the transaction */
-    body?: TxBody;
+    body: TxBody;
     /**
      * auth_info is the authorization related content of the transaction,
      * specifically signers, signer modes and fee
      */
-    authInfo?: AuthInfo;
+    authInfo: AuthInfo;
     /**
      * signatures is a list of signatures that matches the length and order of
      * AuthInfo's signer_infos to allow connecting signature meta information like
@@ -46,8 +45,8 @@ export interface TxAminoMsg {
 }
 /** Tx is the standard type used for broadcasting transactions. */
 export interface TxSDKType {
-    body?: TxBodySDKType;
-    auth_info?: AuthInfoSDKType;
+    body: TxBodySDKType;
+    auth_info: AuthInfoSDKType;
     signatures: Uint8Array[];
 }
 /**
@@ -139,7 +138,7 @@ export interface SignDoc {
      */
     chainId: string;
     /** account_number is the account number of the account in state */
-    accountNumber: Long;
+    accountNumber: bigint;
 }
 export interface SignDocProtoMsg {
     typeUrl: "/cosmos.tx.v1beta1.SignDoc";
@@ -175,7 +174,7 @@ export interface SignDocSDKType {
     body_bytes: Uint8Array;
     auth_info_bytes: Uint8Array;
     chain_id: string;
-    account_number: Long;
+    account_number: bigint;
 }
 /** TxBody is the body of a transaction that all signers sign over. */
 export interface TxBody {
@@ -199,7 +198,7 @@ export interface TxBody {
      * timeout is the block height after which this transaction will not
      * be processed by the chain
      */
-    timeoutHeight: Long;
+    timeoutHeight: bigint;
     /**
      * extension_options are arbitrary options that can be added by chains
      * when the default options are not sufficient. If any of these are present
@@ -261,7 +260,7 @@ export interface TxBodyAminoMsg {
 export interface TxBodySDKType {
     messages: AnySDKType[];
     memo: string;
-    timeout_height: Long;
+    timeout_height: bigint;
     extension_options: AnySDKType[];
     non_critical_extension_options: AnySDKType[];
 }
@@ -283,7 +282,7 @@ export interface AuthInfo {
      * based on the cost of evaluating the body and doing signature verification
      * of the signers. This can be estimated via simulation.
      */
-    fee?: Fee;
+    fee: Fee;
 }
 export interface AuthInfoProtoMsg {
     typeUrl: "/cosmos.tx.v1beta1.AuthInfo";
@@ -319,7 +318,7 @@ export interface AuthInfoAminoMsg {
  */
 export interface AuthInfoSDKType {
     signer_infos: SignerInfoSDKType[];
-    fee?: FeeSDKType;
+    fee: FeeSDKType;
 }
 /**
  * SignerInfo describes the public key and signing mode of a single top-level
@@ -331,18 +330,18 @@ export interface SignerInfo {
      * that already exist in state. If unset, the verifier can use the required \
      * signer address for this position and lookup the public key.
      */
-    publicKey?: Any;
+    publicKey: Any;
     /**
      * mode_info describes the signing mode of the signer and is a nested
      * structure to support nested multisig pubkey's
      */
-    modeInfo?: ModeInfo;
+    modeInfo: ModeInfo;
     /**
      * sequence is the sequence of the account, which describes the
      * number of committed transactions signed by a given address. It is used to
      * prevent replay attacks.
      */
-    sequence: Long;
+    sequence: bigint;
 }
 export interface SignerInfoProtoMsg {
     typeUrl: "/cosmos.tx.v1beta1.SignerInfo";
@@ -380,9 +379,9 @@ export interface SignerInfoAminoMsg {
  * signer.
  */
 export interface SignerInfoSDKType {
-    public_key?: AnySDKType;
-    mode_info?: ModeInfoSDKType;
-    sequence: Long;
+    public_key: AnySDKType;
+    mode_info: ModeInfoSDKType;
+    sequence: bigint;
 }
 /** ModeInfo describes the signing mode of a single or nested multisig signer. */
 export interface ModeInfo {
@@ -448,7 +447,7 @@ export interface ModeInfo_SingleSDKType {
 /** Multi is the mode info for a multisig public key */
 export interface ModeInfo_Multi {
     /** bitarray specifies which keys within the multisig are signing */
-    bitarray?: CompactBitArray;
+    bitarray: CompactBitArray;
     /**
      * mode_infos is the corresponding modes of the signers of the multisig
      * which could include nested multisig public keys
@@ -475,7 +474,7 @@ export interface ModeInfo_MultiAminoMsg {
 }
 /** Multi is the mode info for a multisig public key */
 export interface ModeInfo_MultiSDKType {
-    bitarray?: CompactBitArraySDKType;
+    bitarray: CompactBitArraySDKType;
     mode_infos: ModeInfoSDKType[];
 }
 /**
@@ -490,7 +489,7 @@ export interface Fee {
      * gas_limit is the maximum gas that can be used in transaction processing
      * before an out of gas error occurs
      */
-    gasLimit: Long;
+    gasLimit: bigint;
     /**
      * if unset, the first signer is responsible for paying the fees. If set, the specified account must pay the fees.
      * the payer must be a tx signer (and thus have signed this field in AuthInfo).
@@ -545,14 +544,14 @@ export interface FeeAminoMsg {
  */
 export interface FeeSDKType {
     amount: CoinSDKType[];
-    gas_limit: Long;
+    gas_limit: bigint;
     payer: string;
     granter: string;
 }
 export declare const Tx: {
     typeUrl: string;
-    encode(message: Tx, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Tx;
+    encode(message: Tx, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Tx;
     fromPartial(object: Partial<Tx>): Tx;
     fromAmino(object: TxAmino): Tx;
     toAmino(message: Tx): TxAmino;
@@ -564,8 +563,8 @@ export declare const Tx: {
 };
 export declare const TxRaw: {
     typeUrl: string;
-    encode(message: TxRaw, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TxRaw;
+    encode(message: TxRaw, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TxRaw;
     fromPartial(object: Partial<TxRaw>): TxRaw;
     fromAmino(object: TxRawAmino): TxRaw;
     toAmino(message: TxRaw): TxRawAmino;
@@ -577,8 +576,8 @@ export declare const TxRaw: {
 };
 export declare const SignDoc: {
     typeUrl: string;
-    encode(message: SignDoc, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignDoc;
+    encode(message: SignDoc, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignDoc;
     fromPartial(object: Partial<SignDoc>): SignDoc;
     fromAmino(object: SignDocAmino): SignDoc;
     toAmino(message: SignDoc): SignDocAmino;
@@ -590,8 +589,8 @@ export declare const SignDoc: {
 };
 export declare const TxBody: {
     typeUrl: string;
-    encode(message: TxBody, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TxBody;
+    encode(message: TxBody, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TxBody;
     fromPartial(object: Partial<TxBody>): TxBody;
     fromAmino(object: TxBodyAmino): TxBody;
     toAmino(message: TxBody): TxBodyAmino;
@@ -603,8 +602,8 @@ export declare const TxBody: {
 };
 export declare const AuthInfo: {
     typeUrl: string;
-    encode(message: AuthInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AuthInfo;
+    encode(message: AuthInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AuthInfo;
     fromPartial(object: Partial<AuthInfo>): AuthInfo;
     fromAmino(object: AuthInfoAmino): AuthInfo;
     toAmino(message: AuthInfo): AuthInfoAmino;
@@ -616,8 +615,8 @@ export declare const AuthInfo: {
 };
 export declare const SignerInfo: {
     typeUrl: string;
-    encode(message: SignerInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignerInfo;
+    encode(message: SignerInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignerInfo;
     fromPartial(object: Partial<SignerInfo>): SignerInfo;
     fromAmino(object: SignerInfoAmino): SignerInfo;
     toAmino(message: SignerInfo): SignerInfoAmino;
@@ -629,8 +628,8 @@ export declare const SignerInfo: {
 };
 export declare const ModeInfo: {
     typeUrl: string;
-    encode(message: ModeInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModeInfo;
+    encode(message: ModeInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo;
     fromPartial(object: Partial<ModeInfo>): ModeInfo;
     fromAmino(object: ModeInfoAmino): ModeInfo;
     toAmino(message: ModeInfo): ModeInfoAmino;
@@ -642,8 +641,8 @@ export declare const ModeInfo: {
 };
 export declare const ModeInfo_Single: {
     typeUrl: string;
-    encode(message: ModeInfo_Single, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModeInfo_Single;
+    encode(message: ModeInfo_Single, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo_Single;
     fromPartial(object: Partial<ModeInfo_Single>): ModeInfo_Single;
     fromAmino(object: ModeInfo_SingleAmino): ModeInfo_Single;
     toAmino(message: ModeInfo_Single): ModeInfo_SingleAmino;
@@ -655,8 +654,8 @@ export declare const ModeInfo_Single: {
 };
 export declare const ModeInfo_Multi: {
     typeUrl: string;
-    encode(message: ModeInfo_Multi, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModeInfo_Multi;
+    encode(message: ModeInfo_Multi, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo_Multi;
     fromPartial(object: Partial<ModeInfo_Multi>): ModeInfo_Multi;
     fromAmino(object: ModeInfo_MultiAmino): ModeInfo_Multi;
     toAmino(message: ModeInfo_Multi): ModeInfo_MultiAmino;
@@ -668,8 +667,8 @@ export declare const ModeInfo_Multi: {
 };
 export declare const Fee: {
     typeUrl: string;
-    encode(message: Fee, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Fee;
+    encode(message: Fee, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Fee;
     fromPartial(object: Partial<Fee>): Fee;
     fromAmino(object: FeeAmino): Fee;
     toAmino(message: Fee): FeeAmino;

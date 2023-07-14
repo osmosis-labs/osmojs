@@ -1,5 +1,5 @@
 import { DistrRecord, DistrRecordAmino, DistrRecordSDKType } from "./incentives";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * ReplacePoolIncentivesProposal is a gov Content type for updating the pool
  * incentives. If a ReplacePoolIncentivesProposal passes, the proposal’s records
@@ -106,8 +106,8 @@ export interface UpdatePoolIncentivesProposalSDKType {
 }
 export declare const ReplacePoolIncentivesProposal: {
     typeUrl: string;
-    encode(message: ReplacePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ReplacePoolIncentivesProposal;
+    encode(message: ReplacePoolIncentivesProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ReplacePoolIncentivesProposal;
     fromPartial(object: Partial<ReplacePoolIncentivesProposal>): ReplacePoolIncentivesProposal;
     fromAmino(object: ReplacePoolIncentivesProposalAmino): ReplacePoolIncentivesProposal;
     toAmino(message: ReplacePoolIncentivesProposal): ReplacePoolIncentivesProposalAmino;
@@ -119,8 +119,8 @@ export declare const ReplacePoolIncentivesProposal: {
 };
 export declare const UpdatePoolIncentivesProposal: {
     typeUrl: string;
-    encode(message: UpdatePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpdatePoolIncentivesProposal;
+    encode(message: UpdatePoolIncentivesProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpdatePoolIncentivesProposal;
     fromPartial(object: Partial<UpdatePoolIncentivesProposal>): UpdatePoolIncentivesProposal;
     fromAmino(object: UpdatePoolIncentivesProposalAmino): UpdatePoolIncentivesProposal;
     toAmino(message: UpdatePoolIncentivesProposal): UpdatePoolIncentivesProposalAmino;

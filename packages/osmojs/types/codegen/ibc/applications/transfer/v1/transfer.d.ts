@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * DenomTrace contains the base denomination for ICS20 fungible tokens and the
  * source tracing information path.
@@ -97,8 +97,8 @@ export interface ParamsSDKType {
 }
 export declare const DenomTrace: {
     typeUrl: string;
-    encode(message: DenomTrace, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DenomTrace;
+    encode(message: DenomTrace, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DenomTrace;
     fromPartial(object: Partial<DenomTrace>): DenomTrace;
     fromAmino(object: DenomTraceAmino): DenomTrace;
     toAmino(message: DenomTrace): DenomTraceAmino;
@@ -110,8 +110,8 @@ export declare const DenomTrace: {
 };
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

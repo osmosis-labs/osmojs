@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a
  * URL that describes the type of the serialized message.
@@ -326,8 +326,8 @@ export interface AnySDKType {
 }
 export declare const Any: {
     typeUrl: string;
-    encode(message: Any, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Any;
+    encode(message: Any, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Any;
     fromPartial(object: Partial<Any>): Any;
     fromAmino(object: AnyAmino): Any;
     toAmino(message: Any): AnyAmino;

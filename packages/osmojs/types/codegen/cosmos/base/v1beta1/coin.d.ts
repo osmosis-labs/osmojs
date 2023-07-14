@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * Coin defines a token with a denomination and an amount.
  *
@@ -117,8 +117,8 @@ export interface DecProtoSDKType {
 }
 export declare const Coin: {
     typeUrl: string;
-    encode(message: Coin, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Coin;
+    encode(message: Coin, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Coin;
     fromPartial(object: Partial<Coin>): Coin;
     fromAmino(object: CoinAmino): Coin;
     toAmino(message: Coin): CoinAmino;
@@ -130,8 +130,8 @@ export declare const Coin: {
 };
 export declare const DecCoin: {
     typeUrl: string;
-    encode(message: DecCoin, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DecCoin;
+    encode(message: DecCoin, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DecCoin;
     fromPartial(object: Partial<DecCoin>): DecCoin;
     fromAmino(object: DecCoinAmino): DecCoin;
     toAmino(message: DecCoin): DecCoinAmino;
@@ -143,8 +143,8 @@ export declare const DecCoin: {
 };
 export declare const IntProto: {
     typeUrl: string;
-    encode(message: IntProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): IntProto;
+    encode(message: IntProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): IntProto;
     fromPartial(object: Partial<IntProto>): IntProto;
     fromAmino(object: IntProtoAmino): IntProto;
     toAmino(message: IntProto): IntProtoAmino;
@@ -156,8 +156,8 @@ export declare const IntProto: {
 };
 export declare const DecProto: {
     typeUrl: string;
-    encode(message: DecProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DecProto;
+    encode(message: DecProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DecProto;
     fromPartial(object: Partial<DecProto>): DecProto;
     fromAmino(object: DecProtoAmino): DecProto;
     toAmino(message: DecProto): DecProtoAmino;

@@ -1,6 +1,5 @@
 import { InterchainAccountPacketData, InterchainAccountPacketDataAmino, InterchainAccountPacketDataSDKType } from "../../v1/packet";
-import { Long } from "../../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../../binary";
 /** MsgRegisterInterchainAccount defines the payload for Msg/RegisterAccount */
 export interface MsgRegisterInterchainAccount {
     owner: string;
@@ -54,12 +53,12 @@ export interface MsgRegisterInterchainAccountResponseSDKType {
 export interface MsgSendTx {
     owner: string;
     connectionId: string;
-    packetData?: InterchainAccountPacketData;
+    packetData: InterchainAccountPacketData;
     /**
      * Relative timeout timestamp provided will be added to the current block time during transaction execution.
      * The timeout timestamp must be non-zero.
      */
-    relativeTimeout: Long;
+    relativeTimeout: bigint;
 }
 export interface MsgSendTxProtoMsg {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx";
@@ -84,12 +83,12 @@ export interface MsgSendTxAminoMsg {
 export interface MsgSendTxSDKType {
     owner: string;
     connection_id: string;
-    packet_data?: InterchainAccountPacketDataSDKType;
-    relative_timeout: Long;
+    packet_data: InterchainAccountPacketDataSDKType;
+    relative_timeout: bigint;
 }
 /** MsgSendTxResponse defines the response for MsgSendTx */
 export interface MsgSendTxResponse {
-    sequence: Long;
+    sequence: bigint;
 }
 export interface MsgSendTxResponseProtoMsg {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTxResponse";
@@ -105,12 +104,12 @@ export interface MsgSendTxResponseAminoMsg {
 }
 /** MsgSendTxResponse defines the response for MsgSendTx */
 export interface MsgSendTxResponseSDKType {
-    sequence: Long;
+    sequence: bigint;
 }
 export declare const MsgRegisterInterchainAccount: {
     typeUrl: string;
-    encode(message: MsgRegisterInterchainAccount, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterInterchainAccount;
+    encode(message: MsgRegisterInterchainAccount, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterInterchainAccount;
     fromPartial(object: Partial<MsgRegisterInterchainAccount>): MsgRegisterInterchainAccount;
     fromAmino(object: MsgRegisterInterchainAccountAmino): MsgRegisterInterchainAccount;
     toAmino(message: MsgRegisterInterchainAccount): MsgRegisterInterchainAccountAmino;
@@ -122,8 +121,8 @@ export declare const MsgRegisterInterchainAccount: {
 };
 export declare const MsgRegisterInterchainAccountResponse: {
     typeUrl: string;
-    encode(message: MsgRegisterInterchainAccountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterInterchainAccountResponse;
+    encode(message: MsgRegisterInterchainAccountResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterInterchainAccountResponse;
     fromPartial(object: Partial<MsgRegisterInterchainAccountResponse>): MsgRegisterInterchainAccountResponse;
     fromAmino(object: MsgRegisterInterchainAccountResponseAmino): MsgRegisterInterchainAccountResponse;
     toAmino(message: MsgRegisterInterchainAccountResponse): MsgRegisterInterchainAccountResponseAmino;
@@ -135,8 +134,8 @@ export declare const MsgRegisterInterchainAccountResponse: {
 };
 export declare const MsgSendTx: {
     typeUrl: string;
-    encode(message: MsgSendTx, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendTx;
+    encode(message: MsgSendTx, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSendTx;
     fromPartial(object: Partial<MsgSendTx>): MsgSendTx;
     fromAmino(object: MsgSendTxAmino): MsgSendTx;
     toAmino(message: MsgSendTx): MsgSendTxAmino;
@@ -148,8 +147,8 @@ export declare const MsgSendTx: {
 };
 export declare const MsgSendTxResponse: {
     typeUrl: string;
-    encode(message: MsgSendTxResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendTxResponse;
+    encode(message: MsgSendTxResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSendTxResponse;
     fromPartial(object: Partial<MsgSendTxResponse>): MsgSendTxResponse;
     fromAmino(object: MsgSendTxResponseAmino): MsgSendTxResponse;
     toAmino(message: MsgSendTxResponse): MsgSendTxResponseAmino;

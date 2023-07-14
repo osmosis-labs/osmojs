@@ -1,10 +1,9 @@
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 export interface CosmWasmPool {
     $typeUrl?: string;
     contractAddress: string;
-    poolId: Long;
-    codeId: Long;
+    poolId: bigint;
+    codeId: bigint;
     instantiateMsg: Uint8Array;
 }
 export interface CosmWasmPoolProtoMsg {
@@ -24,14 +23,14 @@ export interface CosmWasmPoolAminoMsg {
 export interface CosmWasmPoolSDKType {
     $typeUrl?: string;
     contract_address: string;
-    pool_id: Long;
-    code_id: Long;
+    pool_id: bigint;
+    code_id: bigint;
     instantiate_msg: Uint8Array;
 }
 export declare const CosmWasmPool: {
     typeUrl: string;
-    encode(message: CosmWasmPool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CosmWasmPool;
+    encode(message: CosmWasmPool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CosmWasmPool;
     fromPartial(object: Partial<CosmWasmPool>): CosmWasmPool;
     fromAmino(object: CosmWasmPoolAmino): CosmWasmPool;
     toAmino(message: CosmWasmPool): CosmWasmPoolAmino;

@@ -1,6 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * PoolParams defined the parameters that will be managed by the pool
  * governance in the future. This params are not managed by the chain
@@ -53,8 +52,8 @@ export interface PoolParamsSDKType {
 export interface Pool {
     $typeUrl?: string;
     address: string;
-    id: Long;
-    poolParams?: PoolParams;
+    id: bigint;
+    poolParams: PoolParams;
     /**
      * This string specifies who will govern the pool in the future.
      * Valid forms of this are:
@@ -67,11 +66,11 @@ export interface Pool {
      */
     futurePoolGovernor: string;
     /** sum of all LP shares */
-    totalShares?: Coin;
+    totalShares: Coin;
     /** assets in the pool */
     poolLiquidity: Coin[];
     /** for calculation amognst assets with different precisions */
-    scalingFactors: Long[];
+    scalingFactors: bigint[];
     /** scaling_factor_controller is the address can adjust pool scaling factors */
     scalingFactorController: string;
 }
@@ -112,18 +111,18 @@ export interface PoolAminoMsg {
 export interface PoolSDKType {
     $typeUrl?: string;
     address: string;
-    id: Long;
-    pool_params?: PoolParamsSDKType;
+    id: bigint;
+    pool_params: PoolParamsSDKType;
     future_pool_governor: string;
-    total_shares?: CoinSDKType;
+    total_shares: CoinSDKType;
     pool_liquidity: CoinSDKType[];
-    scaling_factors: Long[];
+    scaling_factors: bigint[];
     scaling_factor_controller: string;
 }
 export declare const PoolParams: {
     typeUrl: string;
-    encode(message: PoolParams, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolParams;
+    encode(message: PoolParams, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolParams;
     fromPartial(object: Partial<PoolParams>): PoolParams;
     fromAmino(object: PoolParamsAmino): PoolParams;
     toAmino(message: PoolParams): PoolParamsAmino;
@@ -135,8 +134,8 @@ export declare const PoolParams: {
 };
 export declare const Pool: {
     typeUrl: string;
-    encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
+    encode(message: Pool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Pool;
     fromPartial(object: Partial<Pool>): Pool;
     fromAmino(object: PoolAmino): Pool;
     toAmino(message: Pool): PoolAmino;

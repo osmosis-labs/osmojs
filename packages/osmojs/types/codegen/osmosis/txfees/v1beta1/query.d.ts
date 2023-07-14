@@ -1,6 +1,5 @@
 import { FeeToken, FeeTokenAmino, FeeTokenSDKType } from "./feetoken";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface QueryFeeTokensRequest {
 }
 export interface QueryFeeTokensRequestProtoMsg {
@@ -66,7 +65,7 @@ export interface QueryDenomSpotPriceRequestSDKType {
  * price for the specified tx fee denom
  */
 export interface QueryDenomSpotPriceResponse {
-    poolID: Long;
+    poolID: bigint;
     spotPrice: string;
 }
 export interface QueryDenomSpotPriceResponseProtoMsg {
@@ -90,7 +89,7 @@ export interface QueryDenomSpotPriceResponseAminoMsg {
  * price for the specified tx fee denom
  */
 export interface QueryDenomSpotPriceResponseSDKType {
-    poolID: Long;
+    poolID: bigint;
     spot_price: string;
 }
 export interface QueryDenomPoolIdRequest {
@@ -111,7 +110,7 @@ export interface QueryDenomPoolIdRequestSDKType {
     denom: string;
 }
 export interface QueryDenomPoolIdResponse {
-    poolID: Long;
+    poolID: bigint;
 }
 export interface QueryDenomPoolIdResponseProtoMsg {
     typeUrl: "/osmosis.txfees.v1beta1.QueryDenomPoolIdResponse";
@@ -125,7 +124,7 @@ export interface QueryDenomPoolIdResponseAminoMsg {
     value: QueryDenomPoolIdResponseAmino;
 }
 export interface QueryDenomPoolIdResponseSDKType {
-    poolID: Long;
+    poolID: bigint;
 }
 export interface QueryBaseDenomRequest {
 }
@@ -160,8 +159,8 @@ export interface QueryBaseDenomResponseSDKType {
 }
 export declare const QueryFeeTokensRequest: {
     typeUrl: string;
-    encode(_: QueryFeeTokensRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensRequest;
+    encode(_: QueryFeeTokensRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeTokensRequest;
     fromPartial(_: Partial<QueryFeeTokensRequest>): QueryFeeTokensRequest;
     fromAmino(_: QueryFeeTokensRequestAmino): QueryFeeTokensRequest;
     toAmino(_: QueryFeeTokensRequest): QueryFeeTokensRequestAmino;
@@ -173,8 +172,8 @@ export declare const QueryFeeTokensRequest: {
 };
 export declare const QueryFeeTokensResponse: {
     typeUrl: string;
-    encode(message: QueryFeeTokensResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensResponse;
+    encode(message: QueryFeeTokensResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryFeeTokensResponse;
     fromPartial(object: Partial<QueryFeeTokensResponse>): QueryFeeTokensResponse;
     fromAmino(object: QueryFeeTokensResponseAmino): QueryFeeTokensResponse;
     toAmino(message: QueryFeeTokensResponse): QueryFeeTokensResponseAmino;
@@ -186,8 +185,8 @@ export declare const QueryFeeTokensResponse: {
 };
 export declare const QueryDenomSpotPriceRequest: {
     typeUrl: string;
-    encode(message: QueryDenomSpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceRequest;
+    encode(message: QueryDenomSpotPriceRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomSpotPriceRequest;
     fromPartial(object: Partial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest;
     fromAmino(object: QueryDenomSpotPriceRequestAmino): QueryDenomSpotPriceRequest;
     toAmino(message: QueryDenomSpotPriceRequest): QueryDenomSpotPriceRequestAmino;
@@ -199,8 +198,8 @@ export declare const QueryDenomSpotPriceRequest: {
 };
 export declare const QueryDenomSpotPriceResponse: {
     typeUrl: string;
-    encode(message: QueryDenomSpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceResponse;
+    encode(message: QueryDenomSpotPriceResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomSpotPriceResponse;
     fromPartial(object: Partial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse;
     fromAmino(object: QueryDenomSpotPriceResponseAmino): QueryDenomSpotPriceResponse;
     toAmino(message: QueryDenomSpotPriceResponse): QueryDenomSpotPriceResponseAmino;
@@ -212,8 +211,8 @@ export declare const QueryDenomSpotPriceResponse: {
 };
 export declare const QueryDenomPoolIdRequest: {
     typeUrl: string;
-    encode(message: QueryDenomPoolIdRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdRequest;
+    encode(message: QueryDenomPoolIdRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomPoolIdRequest;
     fromPartial(object: Partial<QueryDenomPoolIdRequest>): QueryDenomPoolIdRequest;
     fromAmino(object: QueryDenomPoolIdRequestAmino): QueryDenomPoolIdRequest;
     toAmino(message: QueryDenomPoolIdRequest): QueryDenomPoolIdRequestAmino;
@@ -225,8 +224,8 @@ export declare const QueryDenomPoolIdRequest: {
 };
 export declare const QueryDenomPoolIdResponse: {
     typeUrl: string;
-    encode(message: QueryDenomPoolIdResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdResponse;
+    encode(message: QueryDenomPoolIdResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomPoolIdResponse;
     fromPartial(object: Partial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse;
     fromAmino(object: QueryDenomPoolIdResponseAmino): QueryDenomPoolIdResponse;
     toAmino(message: QueryDenomPoolIdResponse): QueryDenomPoolIdResponseAmino;
@@ -238,8 +237,8 @@ export declare const QueryDenomPoolIdResponse: {
 };
 export declare const QueryBaseDenomRequest: {
     typeUrl: string;
-    encode(_: QueryBaseDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomRequest;
+    encode(_: QueryBaseDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryBaseDenomRequest;
     fromPartial(_: Partial<QueryBaseDenomRequest>): QueryBaseDenomRequest;
     fromAmino(_: QueryBaseDenomRequestAmino): QueryBaseDenomRequest;
     toAmino(_: QueryBaseDenomRequest): QueryBaseDenomRequestAmino;
@@ -251,8 +250,8 @@ export declare const QueryBaseDenomRequest: {
 };
 export declare const QueryBaseDenomResponse: {
     typeUrl: string;
-    encode(message: QueryBaseDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomResponse;
+    encode(message: QueryBaseDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryBaseDenomResponse;
     fromPartial(object: Partial<QueryBaseDenomResponse>): QueryBaseDenomResponse;
     fromAmino(object: QueryBaseDenomResponseAmino): QueryBaseDenomResponse;
     toAmino(message: QueryBaseDenomResponse): QueryBaseDenomResponseAmino;

@@ -1,9 +1,9 @@
 import { BaseAccount, BaseAccountAmino, BaseAccountSDKType } from "../../../../cosmos/auth/v1beta1/auth";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** An InterchainAccount is defined as a BaseAccount & the address of the account owner on the controller chain */
 export interface InterchainAccount {
     $typeUrl?: string;
-    baseAccount?: BaseAccount;
+    baseAccount: BaseAccount;
     accountOwner: string;
 }
 export interface InterchainAccountProtoMsg {
@@ -22,13 +22,13 @@ export interface InterchainAccountAminoMsg {
 /** An InterchainAccount is defined as a BaseAccount & the address of the account owner on the controller chain */
 export interface InterchainAccountSDKType {
     $typeUrl?: string;
-    base_account?: BaseAccountSDKType;
+    base_account: BaseAccountSDKType;
     account_owner: string;
 }
 export declare const InterchainAccount: {
     typeUrl: string;
-    encode(message: InterchainAccount, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): InterchainAccount;
+    encode(message: InterchainAccount, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): InterchainAccount;
     fromPartial(object: Partial<InterchainAccount>): InterchainAccount;
     fromAmino(object: InterchainAccountAmino): InterchainAccount;
     toAmino(message: InterchainAccount): InterchainAccountAmino;

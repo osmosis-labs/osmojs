@@ -1,6 +1,6 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { DenomTrace, DenomTraceAmino, DenomTraceSDKType, Params, ParamsAmino, ParamsSDKType } from "./transfer";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * QueryDenomTraceRequest is the request type for the Query/DenomTrace RPC
  * method
@@ -38,7 +38,7 @@ export interface QueryDenomTraceRequestSDKType {
  */
 export interface QueryDenomTraceResponse {
     /** denom_trace returns the requested denomination trace information. */
-    denomTrace?: DenomTrace;
+    denomTrace: DenomTrace;
 }
 export interface QueryDenomTraceResponseProtoMsg {
     typeUrl: "/ibc.applications.transfer.v1.QueryDenomTraceResponse";
@@ -61,7 +61,7 @@ export interface QueryDenomTraceResponseAminoMsg {
  * method.
  */
 export interface QueryDenomTraceResponseSDKType {
-    denom_trace?: DenomTraceSDKType;
+    denom_trace: DenomTraceSDKType;
 }
 /**
  * QueryConnectionsRequest is the request type for the Query/DenomTraces RPC
@@ -69,7 +69,7 @@ export interface QueryDenomTraceResponseSDKType {
  */
 export interface QueryDenomTracesRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryDenomTracesRequestProtoMsg {
     typeUrl: "/ibc.applications.transfer.v1.QueryDenomTracesRequest";
@@ -92,7 +92,7 @@ export interface QueryDenomTracesRequestAminoMsg {
  * method
  */
 export interface QueryDenomTracesRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryConnectionsResponse is the response type for the Query/DenomTraces RPC
@@ -102,7 +102,7 @@ export interface QueryDenomTracesResponse {
     /** denom_traces returns all denominations trace information. */
     denomTraces: DenomTrace[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryDenomTracesResponseProtoMsg {
     typeUrl: "/ibc.applications.transfer.v1.QueryDenomTracesResponse";
@@ -128,7 +128,7 @@ export interface QueryDenomTracesResponseAminoMsg {
  */
 export interface QueryDenomTracesResponseSDKType {
     denom_traces: DenomTraceSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
@@ -150,7 +150,7 @@ export interface QueryParamsRequestSDKType {
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
-    params?: Params;
+    params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     typeUrl: "/ibc.applications.transfer.v1.QueryParamsResponse";
@@ -167,7 +167,7 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 /**
  * QueryDenomHashRequest is the request type for the Query/DenomHash RPC
@@ -282,8 +282,8 @@ export interface QueryEscrowAddressResponseSDKType {
 }
 export declare const QueryDenomTraceRequest: {
     typeUrl: string;
-    encode(message: QueryDenomTraceRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceRequest;
+    encode(message: QueryDenomTraceRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTraceRequest;
     fromPartial(object: Partial<QueryDenomTraceRequest>): QueryDenomTraceRequest;
     fromAmino(object: QueryDenomTraceRequestAmino): QueryDenomTraceRequest;
     toAmino(message: QueryDenomTraceRequest): QueryDenomTraceRequestAmino;
@@ -295,8 +295,8 @@ export declare const QueryDenomTraceRequest: {
 };
 export declare const QueryDenomTraceResponse: {
     typeUrl: string;
-    encode(message: QueryDenomTraceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceResponse;
+    encode(message: QueryDenomTraceResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTraceResponse;
     fromPartial(object: Partial<QueryDenomTraceResponse>): QueryDenomTraceResponse;
     fromAmino(object: QueryDenomTraceResponseAmino): QueryDenomTraceResponse;
     toAmino(message: QueryDenomTraceResponse): QueryDenomTraceResponseAmino;
@@ -308,8 +308,8 @@ export declare const QueryDenomTraceResponse: {
 };
 export declare const QueryDenomTracesRequest: {
     typeUrl: string;
-    encode(message: QueryDenomTracesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesRequest;
+    encode(message: QueryDenomTracesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTracesRequest;
     fromPartial(object: Partial<QueryDenomTracesRequest>): QueryDenomTracesRequest;
     fromAmino(object: QueryDenomTracesRequestAmino): QueryDenomTracesRequest;
     toAmino(message: QueryDenomTracesRequest): QueryDenomTracesRequestAmino;
@@ -321,8 +321,8 @@ export declare const QueryDenomTracesRequest: {
 };
 export declare const QueryDenomTracesResponse: {
     typeUrl: string;
-    encode(message: QueryDenomTracesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesResponse;
+    encode(message: QueryDenomTracesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTracesResponse;
     fromPartial(object: Partial<QueryDenomTracesResponse>): QueryDenomTracesResponse;
     fromAmino(object: QueryDenomTracesResponseAmino): QueryDenomTracesResponse;
     toAmino(message: QueryDenomTracesResponse): QueryDenomTracesResponseAmino;
@@ -334,8 +334,8 @@ export declare const QueryDenomTracesResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
-    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -347,8 +347,8 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
@@ -360,8 +360,8 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryDenomHashRequest: {
     typeUrl: string;
-    encode(message: QueryDenomHashRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomHashRequest;
+    encode(message: QueryDenomHashRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomHashRequest;
     fromPartial(object: Partial<QueryDenomHashRequest>): QueryDenomHashRequest;
     fromAmino(object: QueryDenomHashRequestAmino): QueryDenomHashRequest;
     toAmino(message: QueryDenomHashRequest): QueryDenomHashRequestAmino;
@@ -373,8 +373,8 @@ export declare const QueryDenomHashRequest: {
 };
 export declare const QueryDenomHashResponse: {
     typeUrl: string;
-    encode(message: QueryDenomHashResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomHashResponse;
+    encode(message: QueryDenomHashResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomHashResponse;
     fromPartial(object: Partial<QueryDenomHashResponse>): QueryDenomHashResponse;
     fromAmino(object: QueryDenomHashResponseAmino): QueryDenomHashResponse;
     toAmino(message: QueryDenomHashResponse): QueryDenomHashResponseAmino;
@@ -386,8 +386,8 @@ export declare const QueryDenomHashResponse: {
 };
 export declare const QueryEscrowAddressRequest: {
     typeUrl: string;
-    encode(message: QueryEscrowAddressRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEscrowAddressRequest;
+    encode(message: QueryEscrowAddressRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryEscrowAddressRequest;
     fromPartial(object: Partial<QueryEscrowAddressRequest>): QueryEscrowAddressRequest;
     fromAmino(object: QueryEscrowAddressRequestAmino): QueryEscrowAddressRequest;
     toAmino(message: QueryEscrowAddressRequest): QueryEscrowAddressRequestAmino;
@@ -399,8 +399,8 @@ export declare const QueryEscrowAddressRequest: {
 };
 export declare const QueryEscrowAddressResponse: {
     typeUrl: string;
-    encode(message: QueryEscrowAddressResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEscrowAddressResponse;
+    encode(message: QueryEscrowAddressResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryEscrowAddressResponse;
     fromPartial(object: Partial<QueryEscrowAddressResponse>): QueryEscrowAddressResponse;
     fromAmino(object: QueryEscrowAddressResponseAmino): QueryEscrowAddressResponse;
     toAmino(message: QueryEscrowAddressResponse): QueryEscrowAddressResponseAmino;

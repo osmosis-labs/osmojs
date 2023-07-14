@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * FungibleTokenPacketData defines a struct for the packet payload
  * See FungibleTokenPacketData spec:
@@ -55,8 +55,8 @@ export interface FungibleTokenPacketDataSDKType {
 }
 export declare const FungibleTokenPacketData: {
     typeUrl: string;
-    encode(message: FungibleTokenPacketData, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FungibleTokenPacketData;
+    encode(message: FungibleTokenPacketData, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FungibleTokenPacketData;
     fromPartial(object: Partial<FungibleTokenPacketData>): FungibleTokenPacketData;
     fromAmino(object: FungibleTokenPacketDataAmino): FungibleTokenPacketData;
     toAmino(message: FungibleTokenPacketData): FungibleTokenPacketDataAmino;

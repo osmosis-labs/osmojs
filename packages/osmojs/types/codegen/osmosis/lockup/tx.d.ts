@@ -1,11 +1,10 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType } from "./lock";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface MsgLockTokens {
     owner: string;
-    duration?: Duration;
+    duration: Duration;
     coins: Coin[];
 }
 export interface MsgLockTokensProtoMsg {
@@ -23,11 +22,11 @@ export interface MsgLockTokensAminoMsg {
 }
 export interface MsgLockTokensSDKType {
     owner: string;
-    duration?: DurationSDKType;
+    duration: DurationSDKType;
     coins: CoinSDKType[];
 }
 export interface MsgLockTokensResponse {
-    ID: Long;
+    ID: bigint;
 }
 export interface MsgLockTokensResponseProtoMsg {
     typeUrl: "/osmosis.lockup.MsgLockTokensResponse";
@@ -41,7 +40,7 @@ export interface MsgLockTokensResponseAminoMsg {
     value: MsgLockTokensResponseAmino;
 }
 export interface MsgLockTokensResponseSDKType {
-    ID: Long;
+    ID: bigint;
 }
 export interface MsgBeginUnlockingAll {
     owner: string;
@@ -79,7 +78,7 @@ export interface MsgBeginUnlockingAllResponseSDKType {
 }
 export interface MsgBeginUnlocking {
     owner: string;
-    ID: Long;
+    ID: bigint;
     /** Amount of unlocking coins. Unlock all if not set. */
     coins: Coin[];
 }
@@ -99,12 +98,12 @@ export interface MsgBeginUnlockingAminoMsg {
 }
 export interface MsgBeginUnlockingSDKType {
     owner: string;
-    ID: Long;
+    ID: bigint;
     coins: CoinSDKType[];
 }
 export interface MsgBeginUnlockingResponse {
     success: boolean;
-    unlockingLockID: Long;
+    unlockingLockID: bigint;
 }
 export interface MsgBeginUnlockingResponseProtoMsg {
     typeUrl: "/osmosis.lockup.MsgBeginUnlockingResponse";
@@ -120,7 +119,7 @@ export interface MsgBeginUnlockingResponseAminoMsg {
 }
 export interface MsgBeginUnlockingResponseSDKType {
     success: boolean;
-    unlockingLockID: Long;
+    unlockingLockID: bigint;
 }
 /**
  * MsgExtendLockup extends the existing lockup's duration.
@@ -128,12 +127,12 @@ export interface MsgBeginUnlockingResponseSDKType {
  */
 export interface MsgExtendLockup {
     owner: string;
-    ID: Long;
+    ID: bigint;
     /**
      * duration to be set. fails if lower than the current duration, or is
      * unlocking
      */
-    duration?: Duration;
+    duration: Duration;
 }
 export interface MsgExtendLockupProtoMsg {
     typeUrl: "/osmosis.lockup.MsgExtendLockup";
@@ -162,8 +161,8 @@ export interface MsgExtendLockupAminoMsg {
  */
 export interface MsgExtendLockupSDKType {
     owner: string;
-    ID: Long;
-    duration?: DurationSDKType;
+    ID: bigint;
+    duration: DurationSDKType;
 }
 export interface MsgExtendLockupResponse {
     success: boolean;
@@ -188,7 +187,7 @@ export interface MsgExtendLockupResponseSDKType {
  */
 export interface MsgForceUnlock {
     owner: string;
-    ID: Long;
+    ID: bigint;
     /** Amount of unlocking coins. Unlock all if not set. */
     coins: Coin[];
 }
@@ -216,7 +215,7 @@ export interface MsgForceUnlockAminoMsg {
  */
 export interface MsgForceUnlockSDKType {
     owner: string;
-    ID: Long;
+    ID: bigint;
     coins: CoinSDKType[];
 }
 export interface MsgForceUnlockResponse {
@@ -238,7 +237,7 @@ export interface MsgForceUnlockResponseSDKType {
 }
 export interface MsgSetRewardReceiverAddress {
     owner: string;
-    lockID: Long;
+    lockID: bigint;
     rewardReceiver: string;
 }
 export interface MsgSetRewardReceiverAddressProtoMsg {
@@ -256,7 +255,7 @@ export interface MsgSetRewardReceiverAddressAminoMsg {
 }
 export interface MsgSetRewardReceiverAddressSDKType {
     owner: string;
-    lockID: Long;
+    lockID: bigint;
     reward_receiver: string;
 }
 export interface MsgSetRewardReceiverAddressResponse {
@@ -278,8 +277,8 @@ export interface MsgSetRewardReceiverAddressResponseSDKType {
 }
 export declare const MsgLockTokens: {
     typeUrl: string;
-    encode(message: MsgLockTokens, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokens;
+    encode(message: MsgLockTokens, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgLockTokens;
     fromPartial(object: Partial<MsgLockTokens>): MsgLockTokens;
     fromAmino(object: MsgLockTokensAmino): MsgLockTokens;
     toAmino(message: MsgLockTokens): MsgLockTokensAmino;
@@ -291,8 +290,8 @@ export declare const MsgLockTokens: {
 };
 export declare const MsgLockTokensResponse: {
     typeUrl: string;
-    encode(message: MsgLockTokensResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponse;
+    encode(message: MsgLockTokensResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgLockTokensResponse;
     fromPartial(object: Partial<MsgLockTokensResponse>): MsgLockTokensResponse;
     fromAmino(object: MsgLockTokensResponseAmino): MsgLockTokensResponse;
     toAmino(message: MsgLockTokensResponse): MsgLockTokensResponseAmino;
@@ -304,8 +303,8 @@ export declare const MsgLockTokensResponse: {
 };
 export declare const MsgBeginUnlockingAll: {
     typeUrl: string;
-    encode(message: MsgBeginUnlockingAll, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAll;
+    encode(message: MsgBeginUnlockingAll, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginUnlockingAll;
     fromPartial(object: Partial<MsgBeginUnlockingAll>): MsgBeginUnlockingAll;
     fromAmino(object: MsgBeginUnlockingAllAmino): MsgBeginUnlockingAll;
     toAmino(message: MsgBeginUnlockingAll): MsgBeginUnlockingAllAmino;
@@ -317,8 +316,8 @@ export declare const MsgBeginUnlockingAll: {
 };
 export declare const MsgBeginUnlockingAllResponse: {
     typeUrl: string;
-    encode(message: MsgBeginUnlockingAllResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse;
+    encode(message: MsgBeginUnlockingAllResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse;
     fromPartial(object: Partial<MsgBeginUnlockingAllResponse>): MsgBeginUnlockingAllResponse;
     fromAmino(object: MsgBeginUnlockingAllResponseAmino): MsgBeginUnlockingAllResponse;
     toAmino(message: MsgBeginUnlockingAllResponse): MsgBeginUnlockingAllResponseAmino;
@@ -330,8 +329,8 @@ export declare const MsgBeginUnlockingAllResponse: {
 };
 export declare const MsgBeginUnlocking: {
     typeUrl: string;
-    encode(message: MsgBeginUnlocking, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlocking;
+    encode(message: MsgBeginUnlocking, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginUnlocking;
     fromPartial(object: Partial<MsgBeginUnlocking>): MsgBeginUnlocking;
     fromAmino(object: MsgBeginUnlockingAmino): MsgBeginUnlocking;
     toAmino(message: MsgBeginUnlocking): MsgBeginUnlockingAmino;
@@ -343,8 +342,8 @@ export declare const MsgBeginUnlocking: {
 };
 export declare const MsgBeginUnlockingResponse: {
     typeUrl: string;
-    encode(message: MsgBeginUnlockingResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponse;
+    encode(message: MsgBeginUnlockingResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginUnlockingResponse;
     fromPartial(object: Partial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse;
     fromAmino(object: MsgBeginUnlockingResponseAmino): MsgBeginUnlockingResponse;
     toAmino(message: MsgBeginUnlockingResponse): MsgBeginUnlockingResponseAmino;
@@ -356,8 +355,8 @@ export declare const MsgBeginUnlockingResponse: {
 };
 export declare const MsgExtendLockup: {
     typeUrl: string;
-    encode(message: MsgExtendLockup, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockup;
+    encode(message: MsgExtendLockup, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExtendLockup;
     fromPartial(object: Partial<MsgExtendLockup>): MsgExtendLockup;
     fromAmino(object: MsgExtendLockupAmino): MsgExtendLockup;
     toAmino(message: MsgExtendLockup): MsgExtendLockupAmino;
@@ -369,8 +368,8 @@ export declare const MsgExtendLockup: {
 };
 export declare const MsgExtendLockupResponse: {
     typeUrl: string;
-    encode(message: MsgExtendLockupResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse;
+    encode(message: MsgExtendLockupResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExtendLockupResponse;
     fromPartial(object: Partial<MsgExtendLockupResponse>): MsgExtendLockupResponse;
     fromAmino(object: MsgExtendLockupResponseAmino): MsgExtendLockupResponse;
     toAmino(message: MsgExtendLockupResponse): MsgExtendLockupResponseAmino;
@@ -382,8 +381,8 @@ export declare const MsgExtendLockupResponse: {
 };
 export declare const MsgForceUnlock: {
     typeUrl: string;
-    encode(message: MsgForceUnlock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlock;
+    encode(message: MsgForceUnlock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgForceUnlock;
     fromPartial(object: Partial<MsgForceUnlock>): MsgForceUnlock;
     fromAmino(object: MsgForceUnlockAmino): MsgForceUnlock;
     toAmino(message: MsgForceUnlock): MsgForceUnlockAmino;
@@ -395,8 +394,8 @@ export declare const MsgForceUnlock: {
 };
 export declare const MsgForceUnlockResponse: {
     typeUrl: string;
-    encode(message: MsgForceUnlockResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlockResponse;
+    encode(message: MsgForceUnlockResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgForceUnlockResponse;
     fromPartial(object: Partial<MsgForceUnlockResponse>): MsgForceUnlockResponse;
     fromAmino(object: MsgForceUnlockResponseAmino): MsgForceUnlockResponse;
     toAmino(message: MsgForceUnlockResponse): MsgForceUnlockResponseAmino;
@@ -408,8 +407,8 @@ export declare const MsgForceUnlockResponse: {
 };
 export declare const MsgSetRewardReceiverAddress: {
     typeUrl: string;
-    encode(message: MsgSetRewardReceiverAddress, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetRewardReceiverAddress;
+    encode(message: MsgSetRewardReceiverAddress, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetRewardReceiverAddress;
     fromPartial(object: Partial<MsgSetRewardReceiverAddress>): MsgSetRewardReceiverAddress;
     fromAmino(object: MsgSetRewardReceiverAddressAmino): MsgSetRewardReceiverAddress;
     toAmino(message: MsgSetRewardReceiverAddress): MsgSetRewardReceiverAddressAmino;
@@ -421,8 +420,8 @@ export declare const MsgSetRewardReceiverAddress: {
 };
 export declare const MsgSetRewardReceiverAddressResponse: {
     typeUrl: string;
-    encode(message: MsgSetRewardReceiverAddressResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetRewardReceiverAddressResponse;
+    encode(message: MsgSetRewardReceiverAddressResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetRewardReceiverAddressResponse;
     fromPartial(object: Partial<MsgSetRewardReceiverAddressResponse>): MsgSetRewardReceiverAddressResponse;
     fromAmino(object: MsgSetRewardReceiverAddressResponseAmino): MsgSetRewardReceiverAddressResponse;
     toAmino(message: MsgSetRewardReceiverAddressResponse): MsgSetRewardReceiverAddressResponseAmino;

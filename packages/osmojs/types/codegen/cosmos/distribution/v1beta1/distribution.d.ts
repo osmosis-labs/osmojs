@@ -1,6 +1,5 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType, Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
     communityTax: string;
@@ -99,7 +98,7 @@ export interface ValidatorHistoricalRewardsSDKType {
  */
 export interface ValidatorCurrentRewards {
     rewards: DecCoin[];
-    period: Long;
+    period: bigint;
 }
 export interface ValidatorCurrentRewardsProtoMsg {
     typeUrl: "/cosmos.distribution.v1beta1.ValidatorCurrentRewards";
@@ -125,7 +124,7 @@ export interface ValidatorCurrentRewardsAminoMsg {
  */
 export interface ValidatorCurrentRewardsSDKType {
     rewards: DecCoinSDKType[];
-    period: Long;
+    period: bigint;
 }
 /**
  * ValidatorAccumulatedCommission represents accumulated commission
@@ -192,7 +191,7 @@ export interface ValidatorOutstandingRewardsSDKType {
  * for delegations which are withdrawn after a slash has occurred.
  */
 export interface ValidatorSlashEvent {
-    validatorPeriod: Long;
+    validatorPeriod: bigint;
     fraction: string;
 }
 export interface ValidatorSlashEventProtoMsg {
@@ -220,7 +219,7 @@ export interface ValidatorSlashEventAminoMsg {
  * for delegations which are withdrawn after a slash has occurred.
  */
 export interface ValidatorSlashEventSDKType {
-    validator_period: Long;
+    validator_period: bigint;
     fraction: string;
 }
 /** ValidatorSlashEvents is a collection of ValidatorSlashEvent messages. */
@@ -313,9 +312,9 @@ export interface CommunityPoolSpendProposalSDKType {
  * thus sdk.Dec is used.
  */
 export interface DelegatorStartingInfo {
-    previousPeriod: Long;
+    previousPeriod: bigint;
     stake: string;
-    height: Long;
+    height: bigint;
 }
 export interface DelegatorStartingInfoProtoMsg {
     typeUrl: "/cosmos.distribution.v1beta1.DelegatorStartingInfo";
@@ -347,9 +346,9 @@ export interface DelegatorStartingInfoAminoMsg {
  * thus sdk.Dec is used.
  */
 export interface DelegatorStartingInfoSDKType {
-    previous_period: Long;
+    previous_period: bigint;
     stake: string;
-    height: Long;
+    height: bigint;
 }
 /**
  * DelegationDelegatorReward represents the properties
@@ -426,8 +425,8 @@ export interface CommunityPoolSpendProposalWithDepositSDKType {
 }
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -439,8 +438,8 @@ export declare const Params: {
 };
 export declare const ValidatorHistoricalRewards: {
     typeUrl: string;
-    encode(message: ValidatorHistoricalRewards, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorHistoricalRewards;
+    encode(message: ValidatorHistoricalRewards, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorHistoricalRewards;
     fromPartial(object: Partial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards;
     fromAmino(object: ValidatorHistoricalRewardsAmino): ValidatorHistoricalRewards;
     toAmino(message: ValidatorHistoricalRewards): ValidatorHistoricalRewardsAmino;
@@ -452,8 +451,8 @@ export declare const ValidatorHistoricalRewards: {
 };
 export declare const ValidatorCurrentRewards: {
     typeUrl: string;
-    encode(message: ValidatorCurrentRewards, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorCurrentRewards;
+    encode(message: ValidatorCurrentRewards, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorCurrentRewards;
     fromPartial(object: Partial<ValidatorCurrentRewards>): ValidatorCurrentRewards;
     fromAmino(object: ValidatorCurrentRewardsAmino): ValidatorCurrentRewards;
     toAmino(message: ValidatorCurrentRewards): ValidatorCurrentRewardsAmino;
@@ -465,8 +464,8 @@ export declare const ValidatorCurrentRewards: {
 };
 export declare const ValidatorAccumulatedCommission: {
     typeUrl: string;
-    encode(message: ValidatorAccumulatedCommission, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorAccumulatedCommission;
+    encode(message: ValidatorAccumulatedCommission, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorAccumulatedCommission;
     fromPartial(object: Partial<ValidatorAccumulatedCommission>): ValidatorAccumulatedCommission;
     fromAmino(object: ValidatorAccumulatedCommissionAmino): ValidatorAccumulatedCommission;
     toAmino(message: ValidatorAccumulatedCommission): ValidatorAccumulatedCommissionAmino;
@@ -478,8 +477,8 @@ export declare const ValidatorAccumulatedCommission: {
 };
 export declare const ValidatorOutstandingRewards: {
     typeUrl: string;
-    encode(message: ValidatorOutstandingRewards, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorOutstandingRewards;
+    encode(message: ValidatorOutstandingRewards, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorOutstandingRewards;
     fromPartial(object: Partial<ValidatorOutstandingRewards>): ValidatorOutstandingRewards;
     fromAmino(object: ValidatorOutstandingRewardsAmino): ValidatorOutstandingRewards;
     toAmino(message: ValidatorOutstandingRewards): ValidatorOutstandingRewardsAmino;
@@ -491,8 +490,8 @@ export declare const ValidatorOutstandingRewards: {
 };
 export declare const ValidatorSlashEvent: {
     typeUrl: string;
-    encode(message: ValidatorSlashEvent, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEvent;
+    encode(message: ValidatorSlashEvent, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEvent;
     fromPartial(object: Partial<ValidatorSlashEvent>): ValidatorSlashEvent;
     fromAmino(object: ValidatorSlashEventAmino): ValidatorSlashEvent;
     toAmino(message: ValidatorSlashEvent): ValidatorSlashEventAmino;
@@ -504,8 +503,8 @@ export declare const ValidatorSlashEvent: {
 };
 export declare const ValidatorSlashEvents: {
     typeUrl: string;
-    encode(message: ValidatorSlashEvents, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEvents;
+    encode(message: ValidatorSlashEvents, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEvents;
     fromPartial(object: Partial<ValidatorSlashEvents>): ValidatorSlashEvents;
     fromAmino(object: ValidatorSlashEventsAmino): ValidatorSlashEvents;
     toAmino(message: ValidatorSlashEvents): ValidatorSlashEventsAmino;
@@ -517,8 +516,8 @@ export declare const ValidatorSlashEvents: {
 };
 export declare const FeePool: {
     typeUrl: string;
-    encode(message: FeePool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FeePool;
+    encode(message: FeePool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FeePool;
     fromPartial(object: Partial<FeePool>): FeePool;
     fromAmino(object: FeePoolAmino): FeePool;
     toAmino(message: FeePool): FeePoolAmino;
@@ -530,8 +529,8 @@ export declare const FeePool: {
 };
 export declare const CommunityPoolSpendProposal: {
     typeUrl: string;
-    encode(message: CommunityPoolSpendProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CommunityPoolSpendProposal;
+    encode(message: CommunityPoolSpendProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CommunityPoolSpendProposal;
     fromPartial(object: Partial<CommunityPoolSpendProposal>): CommunityPoolSpendProposal;
     fromAmino(object: CommunityPoolSpendProposalAmino): CommunityPoolSpendProposal;
     toAmino(message: CommunityPoolSpendProposal): CommunityPoolSpendProposalAmino;
@@ -543,8 +542,8 @@ export declare const CommunityPoolSpendProposal: {
 };
 export declare const DelegatorStartingInfo: {
     typeUrl: string;
-    encode(message: DelegatorStartingInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DelegatorStartingInfo;
+    encode(message: DelegatorStartingInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DelegatorStartingInfo;
     fromPartial(object: Partial<DelegatorStartingInfo>): DelegatorStartingInfo;
     fromAmino(object: DelegatorStartingInfoAmino): DelegatorStartingInfo;
     toAmino(message: DelegatorStartingInfo): DelegatorStartingInfoAmino;
@@ -556,8 +555,8 @@ export declare const DelegatorStartingInfo: {
 };
 export declare const DelegationDelegatorReward: {
     typeUrl: string;
-    encode(message: DelegationDelegatorReward, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DelegationDelegatorReward;
+    encode(message: DelegationDelegatorReward, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DelegationDelegatorReward;
     fromPartial(object: Partial<DelegationDelegatorReward>): DelegationDelegatorReward;
     fromAmino(object: DelegationDelegatorRewardAmino): DelegationDelegatorReward;
     toAmino(message: DelegationDelegatorReward): DelegationDelegatorRewardAmino;
@@ -569,8 +568,8 @@ export declare const DelegationDelegatorReward: {
 };
 export declare const CommunityPoolSpendProposalWithDeposit: {
     typeUrl: string;
-    encode(message: CommunityPoolSpendProposalWithDeposit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CommunityPoolSpendProposalWithDeposit;
+    encode(message: CommunityPoolSpendProposalWithDeposit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CommunityPoolSpendProposalWithDeposit;
     fromPartial(object: Partial<CommunityPoolSpendProposalWithDeposit>): CommunityPoolSpendProposalWithDeposit;
     fromAmino(object: CommunityPoolSpendProposalWithDepositAmino): CommunityPoolSpendProposalWithDeposit;
     toAmino(message: CommunityPoolSpendProposalWithDeposit): CommunityPoolSpendProposalWithDepositAmino;

@@ -14,19 +14,18 @@ import { PoolSDKType as Pool2SDKType } from "../gamm/pool-models/balancer/balanc
 import { Pool as Pool3 } from "../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../gamm/pool-models/stableswap/stableswap_pool";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * FullTick contains tick index and pool id along with other tick model
  * information.
  */
 export interface FullTick {
     /** pool id associated with the tick. */
-    poolId: Long;
+    poolId: bigint;
     /** tick's index. */
-    tickIndex: Long;
+    tickIndex: bigint;
     /** tick's info. */
-    info?: TickInfo;
+    info: TickInfo;
 }
 export interface FullTickProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullTick";
@@ -53,9 +52,9 @@ export interface FullTickAminoMsg {
  * information.
  */
 export interface FullTickSDKType {
-    pool_id: Long;
-    tick_index: Long;
-    info?: TickInfoSDKType;
+    pool_id: bigint;
+    tick_index: bigint;
+    info: TickInfoSDKType;
 }
 /**
  * PoolData represents a serialized pool along with its ticks
@@ -63,10 +62,10 @@ export interface FullTickSDKType {
  */
 export interface PoolData {
     /** pool struct */
-    pool?: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
+    pool: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
     /** pool's ticks */
     ticks: FullTick[];
-    spreadRewardAccumulator?: AccumObject;
+    spreadRewardAccumulator: AccumObject;
     incentivesAccumulators: AccumObject[];
     /** incentive records to be set */
     incentiveRecords: IncentiveRecord[];
@@ -75,9 +74,8 @@ export interface PoolDataProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolData";
     value: Uint8Array;
 }
-export type PoolDataEncoded = Omit<PoolData, "pool"> & {
-    /** pool struct */
-    pool?: Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg | undefined;
+export declare type PoolDataEncoded = Omit<PoolData, "pool"> & {
+    /** pool struct */ pool?: Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg | undefined;
 };
 /**
  * PoolData represents a serialized pool along with its ticks
@@ -102,16 +100,16 @@ export interface PoolDataAminoMsg {
  * for genesis state.
  */
 export interface PoolDataSDKType {
-    pool?: Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType | undefined;
+    pool: Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType | undefined;
     ticks: FullTickSDKType[];
-    spread_reward_accumulator?: AccumObjectSDKType;
+    spread_reward_accumulator: AccumObjectSDKType;
     incentives_accumulators: AccumObjectSDKType[];
     incentive_records: IncentiveRecordSDKType[];
 }
 export interface PositionData {
-    position?: Position;
-    lockId: Long;
-    spreadRewardAccumRecord?: Record;
+    position: Position;
+    lockId: bigint;
+    spreadRewardAccumRecord: Record;
     uptimeAccumRecords: Record[];
 }
 export interface PositionDataProtoMsg {
@@ -129,20 +127,20 @@ export interface PositionDataAminoMsg {
     value: PositionDataAmino;
 }
 export interface PositionDataSDKType {
-    position?: PositionSDKType;
-    lock_id: Long;
-    spread_reward_accum_record?: RecordSDKType;
+    position: PositionSDKType;
+    lock_id: bigint;
+    spread_reward_accum_record: RecordSDKType;
     uptime_accum_records: RecordSDKType[];
 }
 /** GenesisState defines the concentrated liquidity module's genesis state. */
 export interface GenesisState {
     /** params are all the parameters of the module */
-    params?: Params;
+    params: Params;
     /** pool data containining serialized pool struct and ticks. */
     poolData: PoolData[];
     positionData: PositionData[];
-    nextPositionId: Long;
-    nextIncentiveRecordId: Long;
+    nextPositionId: bigint;
+    nextIncentiveRecordId: bigint;
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisState";
@@ -164,16 +162,16 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the concentrated liquidity module's genesis state. */
 export interface GenesisStateSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
     pool_data: PoolDataSDKType[];
     position_data: PositionDataSDKType[];
-    next_position_id: Long;
-    next_incentive_record_id: Long;
+    next_position_id: bigint;
+    next_incentive_record_id: bigint;
 }
 export interface AccumObject {
     /** Accumulator's name (pulled from AccumulatorContent) */
     name: string;
-    accumContent?: AccumulatorContent;
+    accumContent: AccumulatorContent;
 }
 export interface AccumObjectProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.AccumObject";
@@ -190,12 +188,12 @@ export interface AccumObjectAminoMsg {
 }
 export interface AccumObjectSDKType {
     name: string;
-    accum_content?: AccumulatorContentSDKType;
+    accum_content: AccumulatorContentSDKType;
 }
 export declare const FullTick: {
     typeUrl: string;
-    encode(message: FullTick, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FullTick;
+    encode(message: FullTick, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FullTick;
     fromPartial(object: Partial<FullTick>): FullTick;
     fromAmino(object: FullTickAmino): FullTick;
     toAmino(message: FullTick): FullTickAmino;
@@ -207,8 +205,8 @@ export declare const FullTick: {
 };
 export declare const PoolData: {
     typeUrl: string;
-    encode(message: PoolData, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolData;
+    encode(message: PoolData, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolData;
     fromPartial(object: Partial<PoolData>): PoolData;
     fromAmino(object: PoolDataAmino): PoolData;
     toAmino(message: PoolData): PoolDataAmino;
@@ -220,8 +218,8 @@ export declare const PoolData: {
 };
 export declare const PositionData: {
     typeUrl: string;
-    encode(message: PositionData, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PositionData;
+    encode(message: PositionData, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PositionData;
     fromPartial(object: Partial<PositionData>): PositionData;
     fromAmino(object: PositionDataAmino): PositionData;
     toAmino(message: PositionData): PositionDataAmino;
@@ -233,8 +231,8 @@ export declare const PositionData: {
 };
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -246,8 +244,8 @@ export declare const GenesisState: {
 };
 export declare const AccumObject: {
     typeUrl: string;
-    encode(message: AccumObject, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccumObject;
+    encode(message: AccumObject, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccumObject;
     fromPartial(object: Partial<AccumObject>): AccumObject;
     fromAmino(object: AccumObjectAmino): AccumObject;
     toAmino(message: AccumObject): AccumObjectAmino;
@@ -257,6 +255,6 @@ export declare const AccumObject: {
     toProto(message: AccumObject): Uint8Array;
     toProtoMsg(message: AccumObject): AccumObjectProtoMsg;
 };
-export declare const PoolI_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
+export declare const PoolI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
 export declare const PoolI_FromAmino: (content: AnyAmino) => Any;
 export declare const PoolI_ToAmino: (content: Any) => AnyAmino;

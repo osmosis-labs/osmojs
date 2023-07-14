@@ -79,6 +79,7 @@ import * as _167 from "./txfees/v1beta1/query";
 import * as _168 from "./valset-pref/v1beta1/query";
 import * as _169 from "./valset-pref/v1beta1/state";
 import * as _170 from "./valset-pref/v1beta1/tx";
+import * as _284 from "./concentrated-liquidity/query.lcd";
 import * as _285 from "./cosmwasmpool/v1beta1/query.lcd";
 import * as _286 from "./downtime-detector/v1beta1/query.lcd";
 import * as _287 from "./epochs/query.lcd";
@@ -96,6 +97,7 @@ import * as _298 from "./tokenfactory/v1beta1/query.lcd";
 import * as _299 from "./twap/v1beta1/query.lcd";
 import * as _300 from "./txfees/v1beta1/query.lcd";
 import * as _301 from "./valset-pref/v1beta1/query.lcd";
+import * as _302 from "./concentrated-liquidity/query.rpc.Query";
 import * as _303 from "./cosmwasmpool/v1beta1/query.rpc.Query";
 import * as _304 from "./downtime-detector/v1beta1/query.rpc.Query";
 import * as _305 from "./epochs/query.rpc.Query";
@@ -113,6 +115,8 @@ import * as _316 from "./tokenfactory/v1beta1/query.rpc.Query";
 import * as _317 from "./twap/v1beta1/query.rpc.Query";
 import * as _318 from "./txfees/v1beta1/query.rpc.Query";
 import * as _319 from "./valset-pref/v1beta1/query.rpc.Query";
+import * as _320 from "./concentrated-liquidity/pool-model/concentrated/tx.rpc.msg";
+import * as _321 from "./concentrated-liquidity/tx.rpc.msg";
 import * as _322 from "./gamm/pool-models/balancer/tx/tx.rpc.msg";
 import * as _323 from "./gamm/pool-models/stableswap/tx.rpc.msg";
 import * as _324 from "./gamm/v1beta1/tx.rpc.msg";
@@ -128,8 +132,8 @@ export declare namespace osmosis {
         const v1beta1: {
             AccumulatorContent: {
                 typeUrl: string;
-                encode(message: _89.AccumulatorContent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.AccumulatorContent;
+                encode(message: _89.AccumulatorContent, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _89.AccumulatorContent;
                 fromPartial(object: Partial<_89.AccumulatorContent>): _89.AccumulatorContent;
                 fromAmino(object: _89.AccumulatorContentAmino): _89.AccumulatorContent;
                 toAmino(message: _89.AccumulatorContent): _89.AccumulatorContentAmino;
@@ -141,8 +145,8 @@ export declare namespace osmosis {
             };
             Options: {
                 typeUrl: string;
-                encode(_: _89.Options, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.Options;
+                encode(_: _89.Options, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _89.Options;
                 fromPartial(_: Partial<_89.Options>): _89.Options;
                 fromAmino(_: _89.OptionsAmino): _89.Options;
                 toAmino(_: _89.Options): _89.OptionsAmino;
@@ -154,8 +158,8 @@ export declare namespace osmosis {
             };
             Record: {
                 typeUrl: string;
-                encode(message: _89.Record, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.Record;
+                encode(message: _89.Record, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _89.Record;
                 fromPartial(object: Partial<_89.Record>): _89.Record;
                 fromAmino(object: _89.RecordAmino): _89.Record;
                 toAmino(message: _89.Record): _89.RecordAmino;
@@ -168,10 +172,164 @@ export declare namespace osmosis {
         };
     }
     const concentratedliquidity: {
+        poolmodel: {
+            concentrated: {
+                v1beta1: {
+                    MsgClientImpl: typeof _320.MsgClientImpl;
+                    registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
+                    load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
+                    MessageComposer: {
+                        encoded: {
+                            createConcentratedPool(value: import("./concentrated-liquidity/pool-model/concentrated/tx").MsgCreateConcentratedPool): {
+                                typeUrl: string;
+                                value: Uint8Array;
+                            };
+                        };
+                        withTypeUrl: {
+                            createConcentratedPool(value: import("./concentrated-liquidity/pool-model/concentrated/tx").MsgCreateConcentratedPool): {
+                                typeUrl: string;
+                                value: import("./concentrated-liquidity/pool-model/concentrated/tx").MsgCreateConcentratedPool;
+                            };
+                        };
+                        fromPartial: {
+                            createConcentratedPool(value: import("./concentrated-liquidity/pool-model/concentrated/tx").MsgCreateConcentratedPool): {
+                                typeUrl: string;
+                                value: import("./concentrated-liquidity/pool-model/concentrated/tx").MsgCreateConcentratedPool;
+                            };
+                        };
+                    };
+                    AminoConverter: {
+                        "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPool": {
+                            aminoType: string;
+                            toAmino: (message: import("./concentrated-liquidity/pool-model/concentrated/tx").MsgCreateConcentratedPool) => import("./concentrated-liquidity/pool-model/concentrated/tx").MsgCreateConcentratedPoolAmino;
+                            fromAmino: (object: import("./concentrated-liquidity/pool-model/concentrated/tx").MsgCreateConcentratedPoolAmino) => import("./concentrated-liquidity/pool-model/concentrated/tx").MsgCreateConcentratedPool;
+                        };
+                    };
+                };
+            };
+        };
+        v1beta1: {
+            MsgClientImpl: typeof _321.MsgClientImpl;
+            QueryClientImpl: typeof _302.QueryClientImpl;
+            createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
+                pools(request?: import("./concentrated-liquidity/query").PoolsRequest): Promise<import("./concentrated-liquidity/query").PoolsResponse>;
+                params(request?: import("./concentrated-liquidity/query").ParamsRequest): Promise<import("./concentrated-liquidity/query").ParamsResponse>;
+                userPositions(request: import("./concentrated-liquidity/query").UserPositionsRequest): Promise<import("./concentrated-liquidity/query").UserPositionsResponse>;
+                liquidityPerTickRange(request: import("./concentrated-liquidity/query").LiquidityPerTickRangeRequest): Promise<import("./concentrated-liquidity/query").LiquidityPerTickRangeResponse>;
+                liquidityNetInDirection(request: import("./concentrated-liquidity/query").LiquidityNetInDirectionRequest): Promise<import("./concentrated-liquidity/query").LiquidityNetInDirectionResponse>;
+                claimableSpreadRewards(request: import("./concentrated-liquidity/query").ClaimableSpreadRewardsRequest): Promise<import("./concentrated-liquidity/query").ClaimableSpreadRewardsResponse>;
+                claimableIncentives(request: import("./concentrated-liquidity/query").ClaimableIncentivesRequest): Promise<import("./concentrated-liquidity/query").ClaimableIncentivesResponse>;
+                positionById(request: import("./concentrated-liquidity/query").PositionByIdRequest): Promise<import("./concentrated-liquidity/query").PositionByIdResponse>;
+                poolAccumulatorRewards(request: import("./concentrated-liquidity/query").PoolAccumulatorRewardsRequest): Promise<import("./concentrated-liquidity/query").PoolAccumulatorRewardsResponse>;
+                incentiveRecords(request: import("./concentrated-liquidity/query").IncentiveRecordsRequest): Promise<import("./concentrated-liquidity/query").IncentiveRecordsResponse>;
+                tickAccumulatorTrackers(request: import("./concentrated-liquidity/query").TickAccumulatorTrackersRequest): Promise<import("./concentrated-liquidity/query").TickAccumulatorTrackersResponse>;
+                cFMMPoolIdLinkFromConcentratedPoolId(request: import("./concentrated-liquidity/query").CFMMPoolIdLinkFromConcentratedPoolIdRequest): Promise<import("./concentrated-liquidity/query").CFMMPoolIdLinkFromConcentratedPoolIdResponse>;
+                userUnbondingPositions(request: import("./concentrated-liquidity/query").UserUnbondingPositionsRequest): Promise<import("./concentrated-liquidity/query").UserUnbondingPositionsResponse>;
+                getTotalLiquidity(request?: import("./concentrated-liquidity/query").GetTotalLiquidityRequest): Promise<import("./concentrated-liquidity/query").GetTotalLiquidityResponse>;
+            };
+            LCDQueryClient: typeof _284.LCDQueryClient;
+            registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
+            load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
+            MessageComposer: {
+                encoded: {
+                    createPosition(value: import("./concentrated-liquidity/tx").MsgCreatePosition): {
+                        typeUrl: string;
+                        value: Uint8Array;
+                    };
+                    withdrawPosition(value: import("./concentrated-liquidity/tx").MsgWithdrawPosition): {
+                        typeUrl: string;
+                        value: Uint8Array;
+                    };
+                    addToPosition(value: import("./concentrated-liquidity/tx").MsgAddToPosition): {
+                        typeUrl: string;
+                        value: Uint8Array;
+                    };
+                    collectSpreadRewards(value: import("./concentrated-liquidity/tx").MsgCollectSpreadRewards): {
+                        typeUrl: string;
+                        value: Uint8Array;
+                    };
+                    collectIncentives(value: import("./concentrated-liquidity/tx").MsgCollectIncentives): {
+                        typeUrl: string;
+                        value: Uint8Array;
+                    };
+                };
+                withTypeUrl: {
+                    createPosition(value: import("./concentrated-liquidity/tx").MsgCreatePosition): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgCreatePosition;
+                    };
+                    withdrawPosition(value: import("./concentrated-liquidity/tx").MsgWithdrawPosition): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgWithdrawPosition;
+                    };
+                    addToPosition(value: import("./concentrated-liquidity/tx").MsgAddToPosition): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgAddToPosition;
+                    };
+                    collectSpreadRewards(value: import("./concentrated-liquidity/tx").MsgCollectSpreadRewards): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgCollectSpreadRewards;
+                    };
+                    collectIncentives(value: import("./concentrated-liquidity/tx").MsgCollectIncentives): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgCollectIncentives;
+                    };
+                };
+                fromPartial: {
+                    createPosition(value: import("./concentrated-liquidity/tx").MsgCreatePosition): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgCreatePosition;
+                    };
+                    withdrawPosition(value: import("./concentrated-liquidity/tx").MsgWithdrawPosition): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgWithdrawPosition;
+                    };
+                    addToPosition(value: import("./concentrated-liquidity/tx").MsgAddToPosition): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgAddToPosition;
+                    };
+                    collectSpreadRewards(value: import("./concentrated-liquidity/tx").MsgCollectSpreadRewards): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgCollectSpreadRewards;
+                    };
+                    collectIncentives(value: import("./concentrated-liquidity/tx").MsgCollectIncentives): {
+                        typeUrl: string;
+                        value: import("./concentrated-liquidity/tx").MsgCollectIncentives;
+                    };
+                };
+            };
+            AminoConverter: {
+                "/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition": {
+                    aminoType: string;
+                    toAmino: (message: import("./concentrated-liquidity/tx").MsgCreatePosition) => import("./concentrated-liquidity/tx").MsgCreatePositionAmino;
+                    fromAmino: (object: import("./concentrated-liquidity/tx").MsgCreatePositionAmino) => import("./concentrated-liquidity/tx").MsgCreatePosition;
+                };
+                "/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition": {
+                    aminoType: string;
+                    toAmino: (message: import("./concentrated-liquidity/tx").MsgWithdrawPosition) => import("./concentrated-liquidity/tx").MsgWithdrawPositionAmino;
+                    fromAmino: (object: import("./concentrated-liquidity/tx").MsgWithdrawPositionAmino) => import("./concentrated-liquidity/tx").MsgWithdrawPosition;
+                };
+                "/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition": {
+                    aminoType: string;
+                    toAmino: (message: import("./concentrated-liquidity/tx").MsgAddToPosition) => import("./concentrated-liquidity/tx").MsgAddToPositionAmino;
+                    fromAmino: (object: import("./concentrated-liquidity/tx").MsgAddToPositionAmino) => import("./concentrated-liquidity/tx").MsgAddToPosition;
+                };
+                "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards": {
+                    aminoType: string;
+                    toAmino: (message: import("./concentrated-liquidity/tx").MsgCollectSpreadRewards) => import("./concentrated-liquidity/tx").MsgCollectSpreadRewardsAmino;
+                    fromAmino: (object: import("./concentrated-liquidity/tx").MsgCollectSpreadRewardsAmino) => import("./concentrated-liquidity/tx").MsgCollectSpreadRewards;
+                };
+                "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives": {
+                    aminoType: string;
+                    toAmino: (message: import("./concentrated-liquidity/tx").MsgCollectIncentives) => import("./concentrated-liquidity/tx").MsgCollectIncentivesAmino;
+                    fromAmino: (object: import("./concentrated-liquidity/tx").MsgCollectIncentivesAmino) => import("./concentrated-liquidity/tx").MsgCollectIncentives;
+                };
+            };
+        };
         Params: {
             typeUrl: string;
-            encode(message: _90.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.Params;
+            encode(message: _90.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _90.Params;
             fromPartial(object: Partial<_90.Params>): _90.Params;
             fromAmino(object: _90.ParamsAmino): _90.Params;
             toAmino(message: _90.Params): _90.ParamsAmino;
@@ -193,8 +351,8 @@ export declare namespace osmosis {
             LCDQueryClient: typeof _285.LCDQueryClient;
             ParamsRequest: {
                 typeUrl: string;
-                encode(_: _101.ParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _101.ParamsRequest;
+                encode(_: _101.ParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _101.ParamsRequest;
                 fromPartial(_: Partial<_101.ParamsRequest>): _101.ParamsRequest;
                 fromAmino(_: _101.ParamsRequestAmino): _101.ParamsRequest;
                 toAmino(_: _101.ParamsRequest): _101.ParamsRequestAmino;
@@ -206,8 +364,8 @@ export declare namespace osmosis {
             };
             ParamsResponse: {
                 typeUrl: string;
-                encode(message: _101.ParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _101.ParamsResponse;
+                encode(message: _101.ParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _101.ParamsResponse;
                 fromPartial(object: Partial<_101.ParamsResponse>): _101.ParamsResponse;
                 fromAmino(object: _101.ParamsResponseAmino): _101.ParamsResponse;
                 toAmino(message: _101.ParamsResponse): _101.ParamsResponseAmino;
@@ -219,8 +377,8 @@ export declare namespace osmosis {
             };
             PoolsRequest: {
                 typeUrl: string;
-                encode(message: _101.PoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _101.PoolsRequest;
+                encode(message: _101.PoolsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _101.PoolsRequest;
                 fromPartial(object: Partial<_101.PoolsRequest>): _101.PoolsRequest;
                 fromAmino(object: _101.PoolsRequestAmino): _101.PoolsRequest;
                 toAmino(message: _101.PoolsRequest): _101.PoolsRequestAmino;
@@ -232,8 +390,8 @@ export declare namespace osmosis {
             };
             PoolsResponse: {
                 typeUrl: string;
-                encode(message: _101.PoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _101.PoolsResponse;
+                encode(message: _101.PoolsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _101.PoolsResponse;
                 fromPartial(object: Partial<_101.PoolsResponse>): _101.PoolsResponse;
                 fromAmino(object: _101.PoolsResponseAmino): _101.PoolsResponse;
                 toAmino(message: _101.PoolsResponse): _101.PoolsResponseAmino;
@@ -245,8 +403,8 @@ export declare namespace osmosis {
             };
             ContractInfoByPoolIdRequest: {
                 typeUrl: string;
-                encode(message: _101.ContractInfoByPoolIdRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _101.ContractInfoByPoolIdRequest;
+                encode(message: _101.ContractInfoByPoolIdRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _101.ContractInfoByPoolIdRequest;
                 fromPartial(object: Partial<_101.ContractInfoByPoolIdRequest>): _101.ContractInfoByPoolIdRequest;
                 fromAmino(object: _101.ContractInfoByPoolIdRequestAmino): _101.ContractInfoByPoolIdRequest;
                 toAmino(message: _101.ContractInfoByPoolIdRequest): _101.ContractInfoByPoolIdRequestAmino;
@@ -258,8 +416,8 @@ export declare namespace osmosis {
             };
             ContractInfoByPoolIdResponse: {
                 typeUrl: string;
-                encode(message: _101.ContractInfoByPoolIdResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _101.ContractInfoByPoolIdResponse;
+                encode(message: _101.ContractInfoByPoolIdResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _101.ContractInfoByPoolIdResponse;
                 fromPartial(object: Partial<_101.ContractInfoByPoolIdResponse>): _101.ContractInfoByPoolIdResponse;
                 fromAmino(object: _101.ContractInfoByPoolIdResponseAmino): _101.ContractInfoByPoolIdResponse;
                 toAmino(message: _101.ContractInfoByPoolIdResponse): _101.ContractInfoByPoolIdResponseAmino;
@@ -269,13 +427,13 @@ export declare namespace osmosis {
                 toProto(message: _101.ContractInfoByPoolIdResponse): Uint8Array;
                 toProtoMsg(message: _101.ContractInfoByPoolIdResponse): _101.ContractInfoByPoolIdResponseProtoMsg;
             };
-            PoolI_InterfaceDecoder: (input: Uint8Array | import("protobufjs").Reader) => import("../google/protobuf/any").Any | import("./concentrated-liquidity/pool").Pool | _97.CosmWasmPool | _108.Pool | _115.Pool;
+            PoolI_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | import("./concentrated-liquidity/pool").Pool | _97.CosmWasmPool | _108.Pool | _115.Pool;
             PoolI_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             PoolI_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
             Params: {
                 typeUrl: string;
-                encode(message: _100.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.Params;
+                encode(message: _100.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _100.Params;
                 fromPartial(object: Partial<_100.Params>): _100.Params;
                 fromAmino(object: _100.ParamsAmino): _100.Params;
                 toAmino(message: _100.Params): _100.ParamsAmino;
@@ -287,8 +445,8 @@ export declare namespace osmosis {
             };
             MsgCreateCosmWasmPool: {
                 typeUrl: string;
-                encode(message: _99.MsgCreateCosmWasmPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgCreateCosmWasmPool;
+                encode(message: _99.MsgCreateCosmWasmPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.MsgCreateCosmWasmPool;
                 fromPartial(object: Partial<_99.MsgCreateCosmWasmPool>): _99.MsgCreateCosmWasmPool;
                 fromAmino(object: _99.MsgCreateCosmWasmPoolAmino): _99.MsgCreateCosmWasmPool;
                 toAmino(message: _99.MsgCreateCosmWasmPool): _99.MsgCreateCosmWasmPoolAmino;
@@ -300,8 +458,8 @@ export declare namespace osmosis {
             };
             MsgCreateCosmWasmPoolResponse: {
                 typeUrl: string;
-                encode(message: _99.MsgCreateCosmWasmPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.MsgCreateCosmWasmPoolResponse;
+                encode(message: _99.MsgCreateCosmWasmPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.MsgCreateCosmWasmPoolResponse;
                 fromPartial(object: Partial<_99.MsgCreateCosmWasmPoolResponse>): _99.MsgCreateCosmWasmPoolResponse;
                 fromAmino(object: _99.MsgCreateCosmWasmPoolResponseAmino): _99.MsgCreateCosmWasmPoolResponse;
                 toAmino(message: _99.MsgCreateCosmWasmPoolResponse): _99.MsgCreateCosmWasmPoolResponseAmino;
@@ -313,8 +471,8 @@ export declare namespace osmosis {
             };
             EmptyRequest: {
                 typeUrl: string;
-                encode(_: _98.EmptyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.EmptyRequest;
+                encode(_: _98.EmptyRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.EmptyRequest;
                 fromPartial(_: Partial<_98.EmptyRequest>): _98.EmptyRequest;
                 fromAmino(_: _98.EmptyRequestAmino): _98.EmptyRequest;
                 toAmino(_: _98.EmptyRequest): _98.EmptyRequestAmino;
@@ -326,8 +484,8 @@ export declare namespace osmosis {
             };
             JoinPoolExecuteMsgRequest: {
                 typeUrl: string;
-                encode(message: _98.JoinPoolExecuteMsgRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.JoinPoolExecuteMsgRequest;
+                encode(message: _98.JoinPoolExecuteMsgRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.JoinPoolExecuteMsgRequest;
                 fromPartial(object: Partial<_98.JoinPoolExecuteMsgRequest>): _98.JoinPoolExecuteMsgRequest;
                 fromAmino(object: _98.JoinPoolExecuteMsgRequestAmino): _98.JoinPoolExecuteMsgRequest;
                 toAmino(message: _98.JoinPoolExecuteMsgRequest): _98.JoinPoolExecuteMsgRequestAmino;
@@ -339,8 +497,8 @@ export declare namespace osmosis {
             };
             JoinPoolExecuteMsgResponse: {
                 typeUrl: string;
-                encode(_: _98.JoinPoolExecuteMsgResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.JoinPoolExecuteMsgResponse;
+                encode(_: _98.JoinPoolExecuteMsgResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.JoinPoolExecuteMsgResponse;
                 fromPartial(_: Partial<_98.JoinPoolExecuteMsgResponse>): _98.JoinPoolExecuteMsgResponse;
                 fromAmino(_: _98.JoinPoolExecuteMsgResponseAmino): _98.JoinPoolExecuteMsgResponse;
                 toAmino(_: _98.JoinPoolExecuteMsgResponse): _98.JoinPoolExecuteMsgResponseAmino;
@@ -352,8 +510,8 @@ export declare namespace osmosis {
             };
             ExitPoolExecuteMsgRequest: {
                 typeUrl: string;
-                encode(message: _98.ExitPoolExecuteMsgRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.ExitPoolExecuteMsgRequest;
+                encode(message: _98.ExitPoolExecuteMsgRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.ExitPoolExecuteMsgRequest;
                 fromPartial(object: Partial<_98.ExitPoolExecuteMsgRequest>): _98.ExitPoolExecuteMsgRequest;
                 fromAmino(object: _98.ExitPoolExecuteMsgRequestAmino): _98.ExitPoolExecuteMsgRequest;
                 toAmino(message: _98.ExitPoolExecuteMsgRequest): _98.ExitPoolExecuteMsgRequestAmino;
@@ -365,8 +523,8 @@ export declare namespace osmosis {
             };
             ExitPoolExecuteMsgResponse: {
                 typeUrl: string;
-                encode(_: _98.ExitPoolExecuteMsgResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.ExitPoolExecuteMsgResponse;
+                encode(_: _98.ExitPoolExecuteMsgResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.ExitPoolExecuteMsgResponse;
                 fromPartial(_: Partial<_98.ExitPoolExecuteMsgResponse>): _98.ExitPoolExecuteMsgResponse;
                 fromAmino(_: _98.ExitPoolExecuteMsgResponseAmino): _98.ExitPoolExecuteMsgResponse;
                 toAmino(_: _98.ExitPoolExecuteMsgResponse): _98.ExitPoolExecuteMsgResponseAmino;
@@ -378,8 +536,8 @@ export declare namespace osmosis {
             };
             CosmWasmPool: {
                 typeUrl: string;
-                encode(message: _97.CosmWasmPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _97.CosmWasmPool;
+                encode(message: _97.CosmWasmPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _97.CosmWasmPool;
                 fromPartial(object: Partial<_97.CosmWasmPool>): _97.CosmWasmPool;
                 fromAmino(object: _97.CosmWasmPoolAmino): _97.CosmWasmPool;
                 toAmino(message: _97.CosmWasmPool): _97.CosmWasmPoolAmino;
@@ -391,8 +549,8 @@ export declare namespace osmosis {
             };
             GetSwapFeeQueryMsg: {
                 typeUrl: string;
-                encode(message: _96.GetSwapFeeQueryMsg, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.GetSwapFeeQueryMsg;
+                encode(message: _96.GetSwapFeeQueryMsg, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.GetSwapFeeQueryMsg;
                 fromPartial(object: Partial<_96.GetSwapFeeQueryMsg>): _96.GetSwapFeeQueryMsg;
                 fromAmino(object: _96.GetSwapFeeQueryMsgAmino): _96.GetSwapFeeQueryMsg;
                 toAmino(message: _96.GetSwapFeeQueryMsg): _96.GetSwapFeeQueryMsgAmino;
@@ -404,8 +562,8 @@ export declare namespace osmosis {
             };
             GetSwapFeeQueryMsgResponse: {
                 typeUrl: string;
-                encode(message: _96.GetSwapFeeQueryMsgResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.GetSwapFeeQueryMsgResponse;
+                encode(message: _96.GetSwapFeeQueryMsgResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.GetSwapFeeQueryMsgResponse;
                 fromPartial(object: Partial<_96.GetSwapFeeQueryMsgResponse>): _96.GetSwapFeeQueryMsgResponse;
                 fromAmino(object: _96.GetSwapFeeQueryMsgResponseAmino): _96.GetSwapFeeQueryMsgResponse;
                 toAmino(message: _96.GetSwapFeeQueryMsgResponse): _96.GetSwapFeeQueryMsgResponseAmino;
@@ -417,8 +575,8 @@ export declare namespace osmosis {
             };
             SpotPrice: {
                 typeUrl: string;
-                encode(message: _96.SpotPrice, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.SpotPrice;
+                encode(message: _96.SpotPrice, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.SpotPrice;
                 fromPartial(object: Partial<_96.SpotPrice>): _96.SpotPrice;
                 fromAmino(object: _96.SpotPriceAmino): _96.SpotPrice;
                 toAmino(message: _96.SpotPrice): _96.SpotPriceAmino;
@@ -430,8 +588,8 @@ export declare namespace osmosis {
             };
             SpotPriceQueryMsg: {
                 typeUrl: string;
-                encode(message: _96.SpotPriceQueryMsg, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.SpotPriceQueryMsg;
+                encode(message: _96.SpotPriceQueryMsg, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.SpotPriceQueryMsg;
                 fromPartial(object: Partial<_96.SpotPriceQueryMsg>): _96.SpotPriceQueryMsg;
                 fromAmino(object: _96.SpotPriceQueryMsgAmino): _96.SpotPriceQueryMsg;
                 toAmino(message: _96.SpotPriceQueryMsg): _96.SpotPriceQueryMsgAmino;
@@ -443,8 +601,8 @@ export declare namespace osmosis {
             };
             SpotPriceQueryMsgResponse: {
                 typeUrl: string;
-                encode(message: _96.SpotPriceQueryMsgResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.SpotPriceQueryMsgResponse;
+                encode(message: _96.SpotPriceQueryMsgResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.SpotPriceQueryMsgResponse;
                 fromPartial(object: Partial<_96.SpotPriceQueryMsgResponse>): _96.SpotPriceQueryMsgResponse;
                 fromAmino(object: _96.SpotPriceQueryMsgResponseAmino): _96.SpotPriceQueryMsgResponse;
                 toAmino(message: _96.SpotPriceQueryMsgResponse): _96.SpotPriceQueryMsgResponseAmino;
@@ -456,8 +614,8 @@ export declare namespace osmosis {
             };
             EmptyStruct: {
                 typeUrl: string;
-                encode(_: _96.EmptyStruct, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.EmptyStruct;
+                encode(_: _96.EmptyStruct, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.EmptyStruct;
                 fromPartial(_: Partial<_96.EmptyStruct>): _96.EmptyStruct;
                 fromAmino(_: _96.EmptyStructAmino): _96.EmptyStruct;
                 toAmino(_: _96.EmptyStruct): _96.EmptyStructAmino;
@@ -469,8 +627,8 @@ export declare namespace osmosis {
             };
             GetTotalPoolLiquidityQueryMsg: {
                 typeUrl: string;
-                encode(message: _96.GetTotalPoolLiquidityQueryMsg, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.GetTotalPoolLiquidityQueryMsg;
+                encode(message: _96.GetTotalPoolLiquidityQueryMsg, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.GetTotalPoolLiquidityQueryMsg;
                 fromPartial(object: Partial<_96.GetTotalPoolLiquidityQueryMsg>): _96.GetTotalPoolLiquidityQueryMsg;
                 fromAmino(object: _96.GetTotalPoolLiquidityQueryMsgAmino): _96.GetTotalPoolLiquidityQueryMsg;
                 toAmino(message: _96.GetTotalPoolLiquidityQueryMsg): _96.GetTotalPoolLiquidityQueryMsgAmino;
@@ -482,8 +640,8 @@ export declare namespace osmosis {
             };
             GetTotalPoolLiquidityQueryMsgResponse: {
                 typeUrl: string;
-                encode(message: _96.GetTotalPoolLiquidityQueryMsgResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.GetTotalPoolLiquidityQueryMsgResponse;
+                encode(message: _96.GetTotalPoolLiquidityQueryMsgResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.GetTotalPoolLiquidityQueryMsgResponse;
                 fromPartial(object: Partial<_96.GetTotalPoolLiquidityQueryMsgResponse>): _96.GetTotalPoolLiquidityQueryMsgResponse;
                 fromAmino(object: _96.GetTotalPoolLiquidityQueryMsgResponseAmino): _96.GetTotalPoolLiquidityQueryMsgResponse;
                 toAmino(message: _96.GetTotalPoolLiquidityQueryMsgResponse): _96.GetTotalPoolLiquidityQueryMsgResponseAmino;
@@ -495,8 +653,8 @@ export declare namespace osmosis {
             };
             GetTotalSharesQueryMsg: {
                 typeUrl: string;
-                encode(message: _96.GetTotalSharesQueryMsg, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.GetTotalSharesQueryMsg;
+                encode(message: _96.GetTotalSharesQueryMsg, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.GetTotalSharesQueryMsg;
                 fromPartial(object: Partial<_96.GetTotalSharesQueryMsg>): _96.GetTotalSharesQueryMsg;
                 fromAmino(object: _96.GetTotalSharesQueryMsgAmino): _96.GetTotalSharesQueryMsg;
                 toAmino(message: _96.GetTotalSharesQueryMsg): _96.GetTotalSharesQueryMsgAmino;
@@ -508,8 +666,8 @@ export declare namespace osmosis {
             };
             GetTotalSharesQueryMsgResponse: {
                 typeUrl: string;
-                encode(message: _96.GetTotalSharesQueryMsgResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.GetTotalSharesQueryMsgResponse;
+                encode(message: _96.GetTotalSharesQueryMsgResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.GetTotalSharesQueryMsgResponse;
                 fromPartial(object: Partial<_96.GetTotalSharesQueryMsgResponse>): _96.GetTotalSharesQueryMsgResponse;
                 fromAmino(object: _96.GetTotalSharesQueryMsgResponseAmino): _96.GetTotalSharesQueryMsgResponse;
                 toAmino(message: _96.GetTotalSharesQueryMsgResponse): _96.GetTotalSharesQueryMsgResponseAmino;
@@ -521,8 +679,8 @@ export declare namespace osmosis {
             };
             SwapExactAmountIn: {
                 typeUrl: string;
-                encode(message: _95.SwapExactAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SwapExactAmountIn;
+                encode(message: _95.SwapExactAmountIn, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.SwapExactAmountIn;
                 fromPartial(object: Partial<_95.SwapExactAmountIn>): _95.SwapExactAmountIn;
                 fromAmino(object: _95.SwapExactAmountInAmino): _95.SwapExactAmountIn;
                 toAmino(message: _95.SwapExactAmountIn): _95.SwapExactAmountInAmino;
@@ -534,8 +692,8 @@ export declare namespace osmosis {
             };
             SwapExactAmountInSudoMsg: {
                 typeUrl: string;
-                encode(message: _95.SwapExactAmountInSudoMsg, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SwapExactAmountInSudoMsg;
+                encode(message: _95.SwapExactAmountInSudoMsg, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.SwapExactAmountInSudoMsg;
                 fromPartial(object: Partial<_95.SwapExactAmountInSudoMsg>): _95.SwapExactAmountInSudoMsg;
                 fromAmino(object: _95.SwapExactAmountInSudoMsgAmino): _95.SwapExactAmountInSudoMsg;
                 toAmino(message: _95.SwapExactAmountInSudoMsg): _95.SwapExactAmountInSudoMsgAmino;
@@ -547,8 +705,8 @@ export declare namespace osmosis {
             };
             SwapExactAmountInSudoMsgResponse: {
                 typeUrl: string;
-                encode(message: _95.SwapExactAmountInSudoMsgResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SwapExactAmountInSudoMsgResponse;
+                encode(message: _95.SwapExactAmountInSudoMsgResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.SwapExactAmountInSudoMsgResponse;
                 fromPartial(object: Partial<_95.SwapExactAmountInSudoMsgResponse>): _95.SwapExactAmountInSudoMsgResponse;
                 fromAmino(object: _95.SwapExactAmountInSudoMsgResponseAmino): _95.SwapExactAmountInSudoMsgResponse;
                 toAmino(message: _95.SwapExactAmountInSudoMsgResponse): _95.SwapExactAmountInSudoMsgResponseAmino;
@@ -560,8 +718,8 @@ export declare namespace osmosis {
             };
             SwapExactAmountOut: {
                 typeUrl: string;
-                encode(message: _95.SwapExactAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SwapExactAmountOut;
+                encode(message: _95.SwapExactAmountOut, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.SwapExactAmountOut;
                 fromPartial(object: Partial<_95.SwapExactAmountOut>): _95.SwapExactAmountOut;
                 fromAmino(object: _95.SwapExactAmountOutAmino): _95.SwapExactAmountOut;
                 toAmino(message: _95.SwapExactAmountOut): _95.SwapExactAmountOutAmino;
@@ -573,8 +731,8 @@ export declare namespace osmosis {
             };
             SwapExactAmountOutSudoMsg: {
                 typeUrl: string;
-                encode(message: _95.SwapExactAmountOutSudoMsg, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SwapExactAmountOutSudoMsg;
+                encode(message: _95.SwapExactAmountOutSudoMsg, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.SwapExactAmountOutSudoMsg;
                 fromPartial(object: Partial<_95.SwapExactAmountOutSudoMsg>): _95.SwapExactAmountOutSudoMsg;
                 fromAmino(object: _95.SwapExactAmountOutSudoMsgAmino): _95.SwapExactAmountOutSudoMsg;
                 toAmino(message: _95.SwapExactAmountOutSudoMsg): _95.SwapExactAmountOutSudoMsgAmino;
@@ -586,8 +744,8 @@ export declare namespace osmosis {
             };
             SwapExactAmountOutSudoMsgResponse: {
                 typeUrl: string;
-                encode(message: _95.SwapExactAmountOutSudoMsgResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SwapExactAmountOutSudoMsgResponse;
+                encode(message: _95.SwapExactAmountOutSudoMsgResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.SwapExactAmountOutSudoMsgResponse;
                 fromPartial(object: Partial<_95.SwapExactAmountOutSudoMsgResponse>): _95.SwapExactAmountOutSudoMsgResponse;
                 fromAmino(object: _95.SwapExactAmountOutSudoMsgResponseAmino): _95.SwapExactAmountOutSudoMsgResponse;
                 toAmino(message: _95.SwapExactAmountOutSudoMsgResponse): _95.SwapExactAmountOutSudoMsgResponseAmino;
@@ -599,8 +757,8 @@ export declare namespace osmosis {
             };
             CalcOutAmtGivenIn: {
                 typeUrl: string;
-                encode(message: _94.CalcOutAmtGivenIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.CalcOutAmtGivenIn;
+                encode(message: _94.CalcOutAmtGivenIn, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _94.CalcOutAmtGivenIn;
                 fromPartial(object: Partial<_94.CalcOutAmtGivenIn>): _94.CalcOutAmtGivenIn;
                 fromAmino(object: _94.CalcOutAmtGivenInAmino): _94.CalcOutAmtGivenIn;
                 toAmino(message: _94.CalcOutAmtGivenIn): _94.CalcOutAmtGivenInAmino;
@@ -612,8 +770,8 @@ export declare namespace osmosis {
             };
             CalcOutAmtGivenInRequest: {
                 typeUrl: string;
-                encode(message: _94.CalcOutAmtGivenInRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.CalcOutAmtGivenInRequest;
+                encode(message: _94.CalcOutAmtGivenInRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _94.CalcOutAmtGivenInRequest;
                 fromPartial(object: Partial<_94.CalcOutAmtGivenInRequest>): _94.CalcOutAmtGivenInRequest;
                 fromAmino(object: _94.CalcOutAmtGivenInRequestAmino): _94.CalcOutAmtGivenInRequest;
                 toAmino(message: _94.CalcOutAmtGivenInRequest): _94.CalcOutAmtGivenInRequestAmino;
@@ -625,8 +783,8 @@ export declare namespace osmosis {
             };
             CalcOutAmtGivenInResponse: {
                 typeUrl: string;
-                encode(message: _94.CalcOutAmtGivenInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.CalcOutAmtGivenInResponse;
+                encode(message: _94.CalcOutAmtGivenInResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _94.CalcOutAmtGivenInResponse;
                 fromPartial(object: Partial<_94.CalcOutAmtGivenInResponse>): _94.CalcOutAmtGivenInResponse;
                 fromAmino(object: _94.CalcOutAmtGivenInResponseAmino): _94.CalcOutAmtGivenInResponse;
                 toAmino(message: _94.CalcOutAmtGivenInResponse): _94.CalcOutAmtGivenInResponseAmino;
@@ -638,8 +796,8 @@ export declare namespace osmosis {
             };
             CalcInAmtGivenOut: {
                 typeUrl: string;
-                encode(message: _94.CalcInAmtGivenOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.CalcInAmtGivenOut;
+                encode(message: _94.CalcInAmtGivenOut, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _94.CalcInAmtGivenOut;
                 fromPartial(object: Partial<_94.CalcInAmtGivenOut>): _94.CalcInAmtGivenOut;
                 fromAmino(object: _94.CalcInAmtGivenOutAmino): _94.CalcInAmtGivenOut;
                 toAmino(message: _94.CalcInAmtGivenOut): _94.CalcInAmtGivenOutAmino;
@@ -651,8 +809,8 @@ export declare namespace osmosis {
             };
             CalcInAmtGivenOutRequest: {
                 typeUrl: string;
-                encode(message: _94.CalcInAmtGivenOutRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.CalcInAmtGivenOutRequest;
+                encode(message: _94.CalcInAmtGivenOutRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _94.CalcInAmtGivenOutRequest;
                 fromPartial(object: Partial<_94.CalcInAmtGivenOutRequest>): _94.CalcInAmtGivenOutRequest;
                 fromAmino(object: _94.CalcInAmtGivenOutRequestAmino): _94.CalcInAmtGivenOutRequest;
                 toAmino(message: _94.CalcInAmtGivenOutRequest): _94.CalcInAmtGivenOutRequestAmino;
@@ -664,8 +822,8 @@ export declare namespace osmosis {
             };
             CalcInAmtGivenOutResponse: {
                 typeUrl: string;
-                encode(message: _94.CalcInAmtGivenOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.CalcInAmtGivenOutResponse;
+                encode(message: _94.CalcInAmtGivenOutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _94.CalcInAmtGivenOutResponse;
                 fromPartial(object: Partial<_94.CalcInAmtGivenOutResponse>): _94.CalcInAmtGivenOutResponse;
                 fromAmino(object: _94.CalcInAmtGivenOutResponseAmino): _94.CalcInAmtGivenOutResponse;
                 toAmino(message: _94.CalcInAmtGivenOutResponse): _94.CalcInAmtGivenOutResponseAmino;
@@ -677,8 +835,8 @@ export declare namespace osmosis {
             };
             InstantiateMsg: {
                 typeUrl: string;
-                encode(message: _93.InstantiateMsg, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.InstantiateMsg;
+                encode(message: _93.InstantiateMsg, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _93.InstantiateMsg;
                 fromPartial(object: Partial<_93.InstantiateMsg>): _93.InstantiateMsg;
                 fromAmino(object: _93.InstantiateMsgAmino): _93.InstantiateMsg;
                 toAmino(message: _93.InstantiateMsg): _93.InstantiateMsgAmino;
@@ -690,8 +848,8 @@ export declare namespace osmosis {
             };
             UploadCosmWasmPoolCodeAndWhiteListProposal: {
                 typeUrl: string;
-                encode(message: _92.UploadCosmWasmPoolCodeAndWhiteListProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.UploadCosmWasmPoolCodeAndWhiteListProposal;
+                encode(message: _92.UploadCosmWasmPoolCodeAndWhiteListProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _92.UploadCosmWasmPoolCodeAndWhiteListProposal;
                 fromPartial(object: Partial<_92.UploadCosmWasmPoolCodeAndWhiteListProposal>): _92.UploadCosmWasmPoolCodeAndWhiteListProposal;
                 fromAmino(object: _92.UploadCosmWasmPoolCodeAndWhiteListProposalAmino): _92.UploadCosmWasmPoolCodeAndWhiteListProposal;
                 toAmino(message: _92.UploadCosmWasmPoolCodeAndWhiteListProposal): _92.UploadCosmWasmPoolCodeAndWhiteListProposalAmino;
@@ -703,8 +861,8 @@ export declare namespace osmosis {
             };
             MigratePoolContractsProposal: {
                 typeUrl: string;
-                encode(message: _92.MigratePoolContractsProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _92.MigratePoolContractsProposal;
+                encode(message: _92.MigratePoolContractsProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _92.MigratePoolContractsProposal;
                 fromPartial(object: Partial<_92.MigratePoolContractsProposal>): _92.MigratePoolContractsProposal;
                 fromAmino(object: _92.MigratePoolContractsProposalAmino): _92.MigratePoolContractsProposal;
                 toAmino(message: _92.MigratePoolContractsProposal): _92.MigratePoolContractsProposalAmino;
@@ -716,8 +874,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _91.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _91.GenesisState;
+                encode(message: _91.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.GenesisState;
                 fromPartial(object: Partial<_91.GenesisState>): _91.GenesisState;
                 fromAmino(object: _91.GenesisStateAmino): _91.GenesisState;
                 toAmino(message: _91.GenesisState): _91.GenesisStateAmino;
@@ -738,8 +896,8 @@ export declare namespace osmosis {
             LCDQueryClient: typeof _286.LCDQueryClient;
             RecoveredSinceDowntimeOfLengthRequest: {
                 typeUrl: string;
-                encode(message: _105.RecoveredSinceDowntimeOfLengthRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _105.RecoveredSinceDowntimeOfLengthRequest;
+                encode(message: _105.RecoveredSinceDowntimeOfLengthRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _105.RecoveredSinceDowntimeOfLengthRequest;
                 fromPartial(object: Partial<_105.RecoveredSinceDowntimeOfLengthRequest>): _105.RecoveredSinceDowntimeOfLengthRequest;
                 fromAmino(object: _105.RecoveredSinceDowntimeOfLengthRequestAmino): _105.RecoveredSinceDowntimeOfLengthRequest;
                 toAmino(message: _105.RecoveredSinceDowntimeOfLengthRequest): _105.RecoveredSinceDowntimeOfLengthRequestAmino;
@@ -751,8 +909,8 @@ export declare namespace osmosis {
             };
             RecoveredSinceDowntimeOfLengthResponse: {
                 typeUrl: string;
-                encode(message: _105.RecoveredSinceDowntimeOfLengthResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _105.RecoveredSinceDowntimeOfLengthResponse;
+                encode(message: _105.RecoveredSinceDowntimeOfLengthResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _105.RecoveredSinceDowntimeOfLengthResponse;
                 fromPartial(object: Partial<_105.RecoveredSinceDowntimeOfLengthResponse>): _105.RecoveredSinceDowntimeOfLengthResponse;
                 fromAmino(object: _105.RecoveredSinceDowntimeOfLengthResponseAmino): _105.RecoveredSinceDowntimeOfLengthResponse;
                 toAmino(message: _105.RecoveredSinceDowntimeOfLengthResponse): _105.RecoveredSinceDowntimeOfLengthResponseAmino;
@@ -764,8 +922,8 @@ export declare namespace osmosis {
             };
             GenesisDowntimeEntry: {
                 typeUrl: string;
-                encode(message: _104.GenesisDowntimeEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.GenesisDowntimeEntry;
+                encode(message: _104.GenesisDowntimeEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _104.GenesisDowntimeEntry;
                 fromPartial(object: Partial<_104.GenesisDowntimeEntry>): _104.GenesisDowntimeEntry;
                 fromAmino(object: _104.GenesisDowntimeEntryAmino): _104.GenesisDowntimeEntry;
                 toAmino(message: _104.GenesisDowntimeEntry): _104.GenesisDowntimeEntryAmino;
@@ -777,8 +935,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _104.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.GenesisState;
+                encode(message: _104.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _104.GenesisState;
                 fromPartial(object: Partial<_104.GenesisState>): _104.GenesisState;
                 fromAmino(object: _104.GenesisStateAmino): _104.GenesisState;
                 toAmino(message: _104.GenesisState): _104.GenesisStateAmino;
@@ -805,8 +963,8 @@ export declare namespace osmosis {
             LCDQueryClient: typeof _287.LCDQueryClient;
             QueryEpochsInfoRequest: {
                 typeUrl: string;
-                encode(_: _107.QueryEpochsInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryEpochsInfoRequest;
+                encode(_: _107.QueryEpochsInfoRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _107.QueryEpochsInfoRequest;
                 fromPartial(_: Partial<_107.QueryEpochsInfoRequest>): _107.QueryEpochsInfoRequest;
                 fromAmino(_: _107.QueryEpochsInfoRequestAmino): _107.QueryEpochsInfoRequest;
                 toAmino(_: _107.QueryEpochsInfoRequest): _107.QueryEpochsInfoRequestAmino;
@@ -818,8 +976,8 @@ export declare namespace osmosis {
             };
             QueryEpochsInfoResponse: {
                 typeUrl: string;
-                encode(message: _107.QueryEpochsInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryEpochsInfoResponse;
+                encode(message: _107.QueryEpochsInfoResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _107.QueryEpochsInfoResponse;
                 fromPartial(object: Partial<_107.QueryEpochsInfoResponse>): _107.QueryEpochsInfoResponse;
                 fromAmino(object: _107.QueryEpochsInfoResponseAmino): _107.QueryEpochsInfoResponse;
                 toAmino(message: _107.QueryEpochsInfoResponse): _107.QueryEpochsInfoResponseAmino;
@@ -831,8 +989,8 @@ export declare namespace osmosis {
             };
             QueryCurrentEpochRequest: {
                 typeUrl: string;
-                encode(message: _107.QueryCurrentEpochRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryCurrentEpochRequest;
+                encode(message: _107.QueryCurrentEpochRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _107.QueryCurrentEpochRequest;
                 fromPartial(object: Partial<_107.QueryCurrentEpochRequest>): _107.QueryCurrentEpochRequest;
                 fromAmino(object: _107.QueryCurrentEpochRequestAmino): _107.QueryCurrentEpochRequest;
                 toAmino(message: _107.QueryCurrentEpochRequest): _107.QueryCurrentEpochRequestAmino;
@@ -844,8 +1002,8 @@ export declare namespace osmosis {
             };
             QueryCurrentEpochResponse: {
                 typeUrl: string;
-                encode(message: _107.QueryCurrentEpochResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.QueryCurrentEpochResponse;
+                encode(message: _107.QueryCurrentEpochResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _107.QueryCurrentEpochResponse;
                 fromPartial(object: Partial<_107.QueryCurrentEpochResponse>): _107.QueryCurrentEpochResponse;
                 fromAmino(object: _107.QueryCurrentEpochResponseAmino): _107.QueryCurrentEpochResponse;
                 toAmino(message: _107.QueryCurrentEpochResponse): _107.QueryCurrentEpochResponseAmino;
@@ -857,8 +1015,8 @@ export declare namespace osmosis {
             };
             EpochInfo: {
                 typeUrl: string;
-                encode(message: _106.EpochInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.EpochInfo;
+                encode(message: _106.EpochInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _106.EpochInfo;
                 fromPartial(object: Partial<_106.EpochInfo>): _106.EpochInfo;
                 fromAmino(object: _106.EpochInfoAmino): _106.EpochInfo;
                 toAmino(message: _106.EpochInfo): _106.EpochInfoAmino;
@@ -870,8 +1028,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _106.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _106.GenesisState;
+                encode(message: _106.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _106.GenesisState;
                 fromPartial(object: Partial<_106.GenesisState>): _106.GenesisState;
                 fromAmino(object: _106.GenesisStateAmino): _106.GenesisState;
                 toAmino(message: _106.GenesisState): _106.GenesisStateAmino;
@@ -1056,8 +1214,8 @@ export declare namespace osmosis {
             };
             MsgJoinPool: {
                 typeUrl: string;
-                encode(message: _113.MsgJoinPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgJoinPool;
+                encode(message: _113.MsgJoinPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgJoinPool;
                 fromPartial(object: Partial<_113.MsgJoinPool>): _113.MsgJoinPool;
                 fromAmino(object: _113.MsgJoinPoolAmino): _113.MsgJoinPool;
                 toAmino(message: _113.MsgJoinPool): _113.MsgJoinPoolAmino;
@@ -1069,8 +1227,8 @@ export declare namespace osmosis {
             };
             MsgJoinPoolResponse: {
                 typeUrl: string;
-                encode(message: _113.MsgJoinPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgJoinPoolResponse;
+                encode(message: _113.MsgJoinPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgJoinPoolResponse;
                 fromPartial(object: Partial<_113.MsgJoinPoolResponse>): _113.MsgJoinPoolResponse;
                 fromAmino(object: _113.MsgJoinPoolResponseAmino): _113.MsgJoinPoolResponse;
                 toAmino(message: _113.MsgJoinPoolResponse): _113.MsgJoinPoolResponseAmino;
@@ -1082,8 +1240,8 @@ export declare namespace osmosis {
             };
             MsgExitPool: {
                 typeUrl: string;
-                encode(message: _113.MsgExitPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgExitPool;
+                encode(message: _113.MsgExitPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgExitPool;
                 fromPartial(object: Partial<_113.MsgExitPool>): _113.MsgExitPool;
                 fromAmino(object: _113.MsgExitPoolAmino): _113.MsgExitPool;
                 toAmino(message: _113.MsgExitPool): _113.MsgExitPoolAmino;
@@ -1095,8 +1253,8 @@ export declare namespace osmosis {
             };
             MsgExitPoolResponse: {
                 typeUrl: string;
-                encode(message: _113.MsgExitPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgExitPoolResponse;
+                encode(message: _113.MsgExitPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgExitPoolResponse;
                 fromPartial(object: Partial<_113.MsgExitPoolResponse>): _113.MsgExitPoolResponse;
                 fromAmino(object: _113.MsgExitPoolResponseAmino): _113.MsgExitPoolResponse;
                 toAmino(message: _113.MsgExitPoolResponse): _113.MsgExitPoolResponseAmino;
@@ -1108,8 +1266,8 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountIn: {
                 typeUrl: string;
-                encode(message: _113.MsgSwapExactAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgSwapExactAmountIn;
+                encode(message: _113.MsgSwapExactAmountIn, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgSwapExactAmountIn;
                 fromPartial(object: Partial<_113.MsgSwapExactAmountIn>): _113.MsgSwapExactAmountIn;
                 fromAmino(object: _113.MsgSwapExactAmountInAmino): _113.MsgSwapExactAmountIn;
                 toAmino(message: _113.MsgSwapExactAmountIn): _113.MsgSwapExactAmountInAmino;
@@ -1121,8 +1279,8 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountInResponse: {
                 typeUrl: string;
-                encode(message: _113.MsgSwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgSwapExactAmountInResponse;
+                encode(message: _113.MsgSwapExactAmountInResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgSwapExactAmountInResponse;
                 fromPartial(object: Partial<_113.MsgSwapExactAmountInResponse>): _113.MsgSwapExactAmountInResponse;
                 fromAmino(object: _113.MsgSwapExactAmountInResponseAmino): _113.MsgSwapExactAmountInResponse;
                 toAmino(message: _113.MsgSwapExactAmountInResponse): _113.MsgSwapExactAmountInResponseAmino;
@@ -1134,8 +1292,8 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountOut: {
                 typeUrl: string;
-                encode(message: _113.MsgSwapExactAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgSwapExactAmountOut;
+                encode(message: _113.MsgSwapExactAmountOut, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgSwapExactAmountOut;
                 fromPartial(object: Partial<_113.MsgSwapExactAmountOut>): _113.MsgSwapExactAmountOut;
                 fromAmino(object: _113.MsgSwapExactAmountOutAmino): _113.MsgSwapExactAmountOut;
                 toAmino(message: _113.MsgSwapExactAmountOut): _113.MsgSwapExactAmountOutAmino;
@@ -1147,8 +1305,8 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountOutResponse: {
                 typeUrl: string;
-                encode(message: _113.MsgSwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgSwapExactAmountOutResponse;
+                encode(message: _113.MsgSwapExactAmountOutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgSwapExactAmountOutResponse;
                 fromPartial(object: Partial<_113.MsgSwapExactAmountOutResponse>): _113.MsgSwapExactAmountOutResponse;
                 fromAmino(object: _113.MsgSwapExactAmountOutResponseAmino): _113.MsgSwapExactAmountOutResponse;
                 toAmino(message: _113.MsgSwapExactAmountOutResponse): _113.MsgSwapExactAmountOutResponseAmino;
@@ -1160,8 +1318,8 @@ export declare namespace osmosis {
             };
             MsgJoinSwapExternAmountIn: {
                 typeUrl: string;
-                encode(message: _113.MsgJoinSwapExternAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgJoinSwapExternAmountIn;
+                encode(message: _113.MsgJoinSwapExternAmountIn, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgJoinSwapExternAmountIn;
                 fromPartial(object: Partial<_113.MsgJoinSwapExternAmountIn>): _113.MsgJoinSwapExternAmountIn;
                 fromAmino(object: _113.MsgJoinSwapExternAmountInAmino): _113.MsgJoinSwapExternAmountIn;
                 toAmino(message: _113.MsgJoinSwapExternAmountIn): _113.MsgJoinSwapExternAmountInAmino;
@@ -1173,8 +1331,8 @@ export declare namespace osmosis {
             };
             MsgJoinSwapExternAmountInResponse: {
                 typeUrl: string;
-                encode(message: _113.MsgJoinSwapExternAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgJoinSwapExternAmountInResponse;
+                encode(message: _113.MsgJoinSwapExternAmountInResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgJoinSwapExternAmountInResponse;
                 fromPartial(object: Partial<_113.MsgJoinSwapExternAmountInResponse>): _113.MsgJoinSwapExternAmountInResponse;
                 fromAmino(object: _113.MsgJoinSwapExternAmountInResponseAmino): _113.MsgJoinSwapExternAmountInResponse;
                 toAmino(message: _113.MsgJoinSwapExternAmountInResponse): _113.MsgJoinSwapExternAmountInResponseAmino;
@@ -1186,8 +1344,8 @@ export declare namespace osmosis {
             };
             MsgJoinSwapShareAmountOut: {
                 typeUrl: string;
-                encode(message: _113.MsgJoinSwapShareAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgJoinSwapShareAmountOut;
+                encode(message: _113.MsgJoinSwapShareAmountOut, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgJoinSwapShareAmountOut;
                 fromPartial(object: Partial<_113.MsgJoinSwapShareAmountOut>): _113.MsgJoinSwapShareAmountOut;
                 fromAmino(object: _113.MsgJoinSwapShareAmountOutAmino): _113.MsgJoinSwapShareAmountOut;
                 toAmino(message: _113.MsgJoinSwapShareAmountOut): _113.MsgJoinSwapShareAmountOutAmino;
@@ -1199,8 +1357,8 @@ export declare namespace osmosis {
             };
             MsgJoinSwapShareAmountOutResponse: {
                 typeUrl: string;
-                encode(message: _113.MsgJoinSwapShareAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgJoinSwapShareAmountOutResponse;
+                encode(message: _113.MsgJoinSwapShareAmountOutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgJoinSwapShareAmountOutResponse;
                 fromPartial(object: Partial<_113.MsgJoinSwapShareAmountOutResponse>): _113.MsgJoinSwapShareAmountOutResponse;
                 fromAmino(object: _113.MsgJoinSwapShareAmountOutResponseAmino): _113.MsgJoinSwapShareAmountOutResponse;
                 toAmino(message: _113.MsgJoinSwapShareAmountOutResponse): _113.MsgJoinSwapShareAmountOutResponseAmino;
@@ -1212,8 +1370,8 @@ export declare namespace osmosis {
             };
             MsgExitSwapShareAmountIn: {
                 typeUrl: string;
-                encode(message: _113.MsgExitSwapShareAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgExitSwapShareAmountIn;
+                encode(message: _113.MsgExitSwapShareAmountIn, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgExitSwapShareAmountIn;
                 fromPartial(object: Partial<_113.MsgExitSwapShareAmountIn>): _113.MsgExitSwapShareAmountIn;
                 fromAmino(object: _113.MsgExitSwapShareAmountInAmino): _113.MsgExitSwapShareAmountIn;
                 toAmino(message: _113.MsgExitSwapShareAmountIn): _113.MsgExitSwapShareAmountInAmino;
@@ -1225,8 +1383,8 @@ export declare namespace osmosis {
             };
             MsgExitSwapShareAmountInResponse: {
                 typeUrl: string;
-                encode(message: _113.MsgExitSwapShareAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgExitSwapShareAmountInResponse;
+                encode(message: _113.MsgExitSwapShareAmountInResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgExitSwapShareAmountInResponse;
                 fromPartial(object: Partial<_113.MsgExitSwapShareAmountInResponse>): _113.MsgExitSwapShareAmountInResponse;
                 fromAmino(object: _113.MsgExitSwapShareAmountInResponseAmino): _113.MsgExitSwapShareAmountInResponse;
                 toAmino(message: _113.MsgExitSwapShareAmountInResponse): _113.MsgExitSwapShareAmountInResponseAmino;
@@ -1238,8 +1396,8 @@ export declare namespace osmosis {
             };
             MsgExitSwapExternAmountOut: {
                 typeUrl: string;
-                encode(message: _113.MsgExitSwapExternAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgExitSwapExternAmountOut;
+                encode(message: _113.MsgExitSwapExternAmountOut, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgExitSwapExternAmountOut;
                 fromPartial(object: Partial<_113.MsgExitSwapExternAmountOut>): _113.MsgExitSwapExternAmountOut;
                 fromAmino(object: _113.MsgExitSwapExternAmountOutAmino): _113.MsgExitSwapExternAmountOut;
                 toAmino(message: _113.MsgExitSwapExternAmountOut): _113.MsgExitSwapExternAmountOutAmino;
@@ -1251,8 +1409,8 @@ export declare namespace osmosis {
             };
             MsgExitSwapExternAmountOutResponse: {
                 typeUrl: string;
-                encode(message: _113.MsgExitSwapExternAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.MsgExitSwapExternAmountOutResponse;
+                encode(message: _113.MsgExitSwapExternAmountOutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _113.MsgExitSwapExternAmountOutResponse;
                 fromPartial(object: Partial<_113.MsgExitSwapExternAmountOutResponse>): _113.MsgExitSwapExternAmountOutResponse;
                 fromAmino(object: _113.MsgExitSwapExternAmountOutResponseAmino): _113.MsgExitSwapExternAmountOutResponse;
                 toAmino(message: _113.MsgExitSwapExternAmountOutResponse): _113.MsgExitSwapExternAmountOutResponseAmino;
@@ -1264,8 +1422,8 @@ export declare namespace osmosis {
             };
             MigrationRecords: {
                 typeUrl: string;
-                encode(message: _112.MigrationRecords, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _112.MigrationRecords;
+                encode(message: _112.MigrationRecords, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _112.MigrationRecords;
                 fromPartial(object: Partial<_112.MigrationRecords>): _112.MigrationRecords;
                 fromAmino(object: _112.MigrationRecordsAmino): _112.MigrationRecords;
                 toAmino(message: _112.MigrationRecords): _112.MigrationRecordsAmino;
@@ -1277,8 +1435,8 @@ export declare namespace osmosis {
             };
             BalancerToConcentratedPoolLink: {
                 typeUrl: string;
-                encode(message: _112.BalancerToConcentratedPoolLink, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _112.BalancerToConcentratedPoolLink;
+                encode(message: _112.BalancerToConcentratedPoolLink, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _112.BalancerToConcentratedPoolLink;
                 fromPartial(object: Partial<_112.BalancerToConcentratedPoolLink>): _112.BalancerToConcentratedPoolLink;
                 fromAmino(object: _112.BalancerToConcentratedPoolLinkAmino): _112.BalancerToConcentratedPoolLink;
                 toAmino(message: _112.BalancerToConcentratedPoolLink): _112.BalancerToConcentratedPoolLinkAmino;
@@ -1290,8 +1448,8 @@ export declare namespace osmosis {
             };
             QueryPoolRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolRequest;
+                encode(message: _111.QueryPoolRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolRequest;
                 fromPartial(object: Partial<_111.QueryPoolRequest>): _111.QueryPoolRequest;
                 fromAmino(object: _111.QueryPoolRequestAmino): _111.QueryPoolRequest;
                 toAmino(message: _111.QueryPoolRequest): _111.QueryPoolRequestAmino;
@@ -1303,8 +1461,8 @@ export declare namespace osmosis {
             };
             QueryPoolResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolResponse;
+                encode(message: _111.QueryPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolResponse;
                 fromPartial(object: Partial<_111.QueryPoolResponse>): _111.QueryPoolResponse;
                 fromAmino(object: _111.QueryPoolResponseAmino): _111.QueryPoolResponse;
                 toAmino(message: _111.QueryPoolResponse): _111.QueryPoolResponseAmino;
@@ -1316,8 +1474,8 @@ export declare namespace osmosis {
             };
             QueryPoolsRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolsRequest;
+                encode(message: _111.QueryPoolsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolsRequest;
                 fromPartial(object: Partial<_111.QueryPoolsRequest>): _111.QueryPoolsRequest;
                 fromAmino(object: _111.QueryPoolsRequestAmino): _111.QueryPoolsRequest;
                 toAmino(message: _111.QueryPoolsRequest): _111.QueryPoolsRequestAmino;
@@ -1329,8 +1487,8 @@ export declare namespace osmosis {
             };
             QueryPoolsResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolsResponse;
+                encode(message: _111.QueryPoolsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolsResponse;
                 fromPartial(object: Partial<_111.QueryPoolsResponse>): _111.QueryPoolsResponse;
                 fromAmino(object: _111.QueryPoolsResponseAmino): _111.QueryPoolsResponse;
                 toAmino(message: _111.QueryPoolsResponse): _111.QueryPoolsResponseAmino;
@@ -1342,8 +1500,8 @@ export declare namespace osmosis {
             };
             QueryNumPoolsRequest: {
                 typeUrl: string;
-                encode(_: _111.QueryNumPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryNumPoolsRequest;
+                encode(_: _111.QueryNumPoolsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryNumPoolsRequest;
                 fromPartial(_: Partial<_111.QueryNumPoolsRequest>): _111.QueryNumPoolsRequest;
                 fromAmino(_: _111.QueryNumPoolsRequestAmino): _111.QueryNumPoolsRequest;
                 toAmino(_: _111.QueryNumPoolsRequest): _111.QueryNumPoolsRequestAmino;
@@ -1355,8 +1513,8 @@ export declare namespace osmosis {
             };
             QueryNumPoolsResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryNumPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryNumPoolsResponse;
+                encode(message: _111.QueryNumPoolsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryNumPoolsResponse;
                 fromPartial(object: Partial<_111.QueryNumPoolsResponse>): _111.QueryNumPoolsResponse;
                 fromAmino(object: _111.QueryNumPoolsResponseAmino): _111.QueryNumPoolsResponse;
                 toAmino(message: _111.QueryNumPoolsResponse): _111.QueryNumPoolsResponseAmino;
@@ -1368,8 +1526,8 @@ export declare namespace osmosis {
             };
             QueryPoolTypeRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolTypeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolTypeRequest;
+                encode(message: _111.QueryPoolTypeRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolTypeRequest;
                 fromPartial(object: Partial<_111.QueryPoolTypeRequest>): _111.QueryPoolTypeRequest;
                 fromAmino(object: _111.QueryPoolTypeRequestAmino): _111.QueryPoolTypeRequest;
                 toAmino(message: _111.QueryPoolTypeRequest): _111.QueryPoolTypeRequestAmino;
@@ -1381,8 +1539,8 @@ export declare namespace osmosis {
             };
             QueryPoolTypeResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolTypeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolTypeResponse;
+                encode(message: _111.QueryPoolTypeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolTypeResponse;
                 fromPartial(object: Partial<_111.QueryPoolTypeResponse>): _111.QueryPoolTypeResponse;
                 fromAmino(object: _111.QueryPoolTypeResponseAmino): _111.QueryPoolTypeResponse;
                 toAmino(message: _111.QueryPoolTypeResponse): _111.QueryPoolTypeResponseAmino;
@@ -1394,8 +1552,8 @@ export declare namespace osmosis {
             };
             QueryCalcJoinPoolSharesRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryCalcJoinPoolSharesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryCalcJoinPoolSharesRequest;
+                encode(message: _111.QueryCalcJoinPoolSharesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryCalcJoinPoolSharesRequest;
                 fromPartial(object: Partial<_111.QueryCalcJoinPoolSharesRequest>): _111.QueryCalcJoinPoolSharesRequest;
                 fromAmino(object: _111.QueryCalcJoinPoolSharesRequestAmino): _111.QueryCalcJoinPoolSharesRequest;
                 toAmino(message: _111.QueryCalcJoinPoolSharesRequest): _111.QueryCalcJoinPoolSharesRequestAmino;
@@ -1407,8 +1565,8 @@ export declare namespace osmosis {
             };
             QueryCalcJoinPoolSharesResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryCalcJoinPoolSharesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryCalcJoinPoolSharesResponse;
+                encode(message: _111.QueryCalcJoinPoolSharesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryCalcJoinPoolSharesResponse;
                 fromPartial(object: Partial<_111.QueryCalcJoinPoolSharesResponse>): _111.QueryCalcJoinPoolSharesResponse;
                 fromAmino(object: _111.QueryCalcJoinPoolSharesResponseAmino): _111.QueryCalcJoinPoolSharesResponse;
                 toAmino(message: _111.QueryCalcJoinPoolSharesResponse): _111.QueryCalcJoinPoolSharesResponseAmino;
@@ -1420,8 +1578,8 @@ export declare namespace osmosis {
             };
             QueryCalcExitPoolCoinsFromSharesRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryCalcExitPoolCoinsFromSharesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryCalcExitPoolCoinsFromSharesRequest;
+                encode(message: _111.QueryCalcExitPoolCoinsFromSharesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryCalcExitPoolCoinsFromSharesRequest;
                 fromPartial(object: Partial<_111.QueryCalcExitPoolCoinsFromSharesRequest>): _111.QueryCalcExitPoolCoinsFromSharesRequest;
                 fromAmino(object: _111.QueryCalcExitPoolCoinsFromSharesRequestAmino): _111.QueryCalcExitPoolCoinsFromSharesRequest;
                 toAmino(message: _111.QueryCalcExitPoolCoinsFromSharesRequest): _111.QueryCalcExitPoolCoinsFromSharesRequestAmino;
@@ -1433,8 +1591,8 @@ export declare namespace osmosis {
             };
             QueryCalcExitPoolCoinsFromSharesResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryCalcExitPoolCoinsFromSharesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryCalcExitPoolCoinsFromSharesResponse;
+                encode(message: _111.QueryCalcExitPoolCoinsFromSharesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryCalcExitPoolCoinsFromSharesResponse;
                 fromPartial(object: Partial<_111.QueryCalcExitPoolCoinsFromSharesResponse>): _111.QueryCalcExitPoolCoinsFromSharesResponse;
                 fromAmino(object: _111.QueryCalcExitPoolCoinsFromSharesResponseAmino): _111.QueryCalcExitPoolCoinsFromSharesResponse;
                 toAmino(message: _111.QueryCalcExitPoolCoinsFromSharesResponse): _111.QueryCalcExitPoolCoinsFromSharesResponseAmino;
@@ -1446,8 +1604,8 @@ export declare namespace osmosis {
             };
             QueryPoolParamsRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolParamsRequest;
+                encode(message: _111.QueryPoolParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolParamsRequest;
                 fromPartial(object: Partial<_111.QueryPoolParamsRequest>): _111.QueryPoolParamsRequest;
                 fromAmino(object: _111.QueryPoolParamsRequestAmino): _111.QueryPoolParamsRequest;
                 toAmino(message: _111.QueryPoolParamsRequest): _111.QueryPoolParamsRequestAmino;
@@ -1459,8 +1617,8 @@ export declare namespace osmosis {
             };
             QueryPoolParamsResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolParamsResponse;
+                encode(message: _111.QueryPoolParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolParamsResponse;
                 fromPartial(object: Partial<_111.QueryPoolParamsResponse>): _111.QueryPoolParamsResponse;
                 fromAmino(object: _111.QueryPoolParamsResponseAmino): _111.QueryPoolParamsResponse;
                 toAmino(message: _111.QueryPoolParamsResponse): _111.QueryPoolParamsResponseAmino;
@@ -1472,8 +1630,8 @@ export declare namespace osmosis {
             };
             QueryTotalPoolLiquidityRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryTotalPoolLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryTotalPoolLiquidityRequest;
+                encode(message: _111.QueryTotalPoolLiquidityRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryTotalPoolLiquidityRequest;
                 fromPartial(object: Partial<_111.QueryTotalPoolLiquidityRequest>): _111.QueryTotalPoolLiquidityRequest;
                 fromAmino(object: _111.QueryTotalPoolLiquidityRequestAmino): _111.QueryTotalPoolLiquidityRequest;
                 toAmino(message: _111.QueryTotalPoolLiquidityRequest): _111.QueryTotalPoolLiquidityRequestAmino;
@@ -1485,8 +1643,8 @@ export declare namespace osmosis {
             };
             QueryTotalPoolLiquidityResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryTotalPoolLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryTotalPoolLiquidityResponse;
+                encode(message: _111.QueryTotalPoolLiquidityResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryTotalPoolLiquidityResponse;
                 fromPartial(object: Partial<_111.QueryTotalPoolLiquidityResponse>): _111.QueryTotalPoolLiquidityResponse;
                 fromAmino(object: _111.QueryTotalPoolLiquidityResponseAmino): _111.QueryTotalPoolLiquidityResponse;
                 toAmino(message: _111.QueryTotalPoolLiquidityResponse): _111.QueryTotalPoolLiquidityResponseAmino;
@@ -1498,8 +1656,8 @@ export declare namespace osmosis {
             };
             QueryTotalSharesRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryTotalSharesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryTotalSharesRequest;
+                encode(message: _111.QueryTotalSharesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryTotalSharesRequest;
                 fromPartial(object: Partial<_111.QueryTotalSharesRequest>): _111.QueryTotalSharesRequest;
                 fromAmino(object: _111.QueryTotalSharesRequestAmino): _111.QueryTotalSharesRequest;
                 toAmino(message: _111.QueryTotalSharesRequest): _111.QueryTotalSharesRequestAmino;
@@ -1511,8 +1669,8 @@ export declare namespace osmosis {
             };
             QueryTotalSharesResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryTotalSharesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryTotalSharesResponse;
+                encode(message: _111.QueryTotalSharesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryTotalSharesResponse;
                 fromPartial(object: Partial<_111.QueryTotalSharesResponse>): _111.QueryTotalSharesResponse;
                 fromAmino(object: _111.QueryTotalSharesResponseAmino): _111.QueryTotalSharesResponse;
                 toAmino(message: _111.QueryTotalSharesResponse): _111.QueryTotalSharesResponseAmino;
@@ -1524,8 +1682,8 @@ export declare namespace osmosis {
             };
             QueryCalcJoinPoolNoSwapSharesRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryCalcJoinPoolNoSwapSharesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryCalcJoinPoolNoSwapSharesRequest;
+                encode(message: _111.QueryCalcJoinPoolNoSwapSharesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryCalcJoinPoolNoSwapSharesRequest;
                 fromPartial(object: Partial<_111.QueryCalcJoinPoolNoSwapSharesRequest>): _111.QueryCalcJoinPoolNoSwapSharesRequest;
                 fromAmino(object: _111.QueryCalcJoinPoolNoSwapSharesRequestAmino): _111.QueryCalcJoinPoolNoSwapSharesRequest;
                 toAmino(message: _111.QueryCalcJoinPoolNoSwapSharesRequest): _111.QueryCalcJoinPoolNoSwapSharesRequestAmino;
@@ -1537,8 +1695,8 @@ export declare namespace osmosis {
             };
             QueryCalcJoinPoolNoSwapSharesResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryCalcJoinPoolNoSwapSharesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryCalcJoinPoolNoSwapSharesResponse;
+                encode(message: _111.QueryCalcJoinPoolNoSwapSharesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryCalcJoinPoolNoSwapSharesResponse;
                 fromPartial(object: Partial<_111.QueryCalcJoinPoolNoSwapSharesResponse>): _111.QueryCalcJoinPoolNoSwapSharesResponse;
                 fromAmino(object: _111.QueryCalcJoinPoolNoSwapSharesResponseAmino): _111.QueryCalcJoinPoolNoSwapSharesResponse;
                 toAmino(message: _111.QueryCalcJoinPoolNoSwapSharesResponse): _111.QueryCalcJoinPoolNoSwapSharesResponseAmino;
@@ -1550,8 +1708,8 @@ export declare namespace osmosis {
             };
             QuerySpotPriceRequest: {
                 typeUrl: string;
-                encode(message: _111.QuerySpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySpotPriceRequest;
+                encode(message: _111.QuerySpotPriceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QuerySpotPriceRequest;
                 fromPartial(object: Partial<_111.QuerySpotPriceRequest>): _111.QuerySpotPriceRequest;
                 fromAmino(object: _111.QuerySpotPriceRequestAmino): _111.QuerySpotPriceRequest;
                 toAmino(message: _111.QuerySpotPriceRequest): _111.QuerySpotPriceRequestAmino;
@@ -1563,8 +1721,8 @@ export declare namespace osmosis {
             };
             QueryPoolsWithFilterRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolsWithFilterRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolsWithFilterRequest;
+                encode(message: _111.QueryPoolsWithFilterRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolsWithFilterRequest;
                 fromPartial(object: Partial<_111.QueryPoolsWithFilterRequest>): _111.QueryPoolsWithFilterRequest;
                 fromAmino(object: _111.QueryPoolsWithFilterRequestAmino): _111.QueryPoolsWithFilterRequest;
                 toAmino(message: _111.QueryPoolsWithFilterRequest): _111.QueryPoolsWithFilterRequestAmino;
@@ -1576,8 +1734,8 @@ export declare namespace osmosis {
             };
             QueryPoolsWithFilterResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryPoolsWithFilterResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryPoolsWithFilterResponse;
+                encode(message: _111.QueryPoolsWithFilterResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryPoolsWithFilterResponse;
                 fromPartial(object: Partial<_111.QueryPoolsWithFilterResponse>): _111.QueryPoolsWithFilterResponse;
                 fromAmino(object: _111.QueryPoolsWithFilterResponseAmino): _111.QueryPoolsWithFilterResponse;
                 toAmino(message: _111.QueryPoolsWithFilterResponse): _111.QueryPoolsWithFilterResponseAmino;
@@ -1589,8 +1747,8 @@ export declare namespace osmosis {
             };
             QuerySpotPriceResponse: {
                 typeUrl: string;
-                encode(message: _111.QuerySpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySpotPriceResponse;
+                encode(message: _111.QuerySpotPriceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QuerySpotPriceResponse;
                 fromPartial(object: Partial<_111.QuerySpotPriceResponse>): _111.QuerySpotPriceResponse;
                 fromAmino(object: _111.QuerySpotPriceResponseAmino): _111.QuerySpotPriceResponse;
                 toAmino(message: _111.QuerySpotPriceResponse): _111.QuerySpotPriceResponseAmino;
@@ -1602,8 +1760,8 @@ export declare namespace osmosis {
             };
             QuerySwapExactAmountInRequest: {
                 typeUrl: string;
-                encode(message: _111.QuerySwapExactAmountInRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySwapExactAmountInRequest;
+                encode(message: _111.QuerySwapExactAmountInRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QuerySwapExactAmountInRequest;
                 fromPartial(object: Partial<_111.QuerySwapExactAmountInRequest>): _111.QuerySwapExactAmountInRequest;
                 fromAmino(object: _111.QuerySwapExactAmountInRequestAmino): _111.QuerySwapExactAmountInRequest;
                 toAmino(message: _111.QuerySwapExactAmountInRequest): _111.QuerySwapExactAmountInRequestAmino;
@@ -1615,8 +1773,8 @@ export declare namespace osmosis {
             };
             QuerySwapExactAmountInResponse: {
                 typeUrl: string;
-                encode(message: _111.QuerySwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySwapExactAmountInResponse;
+                encode(message: _111.QuerySwapExactAmountInResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QuerySwapExactAmountInResponse;
                 fromPartial(object: Partial<_111.QuerySwapExactAmountInResponse>): _111.QuerySwapExactAmountInResponse;
                 fromAmino(object: _111.QuerySwapExactAmountInResponseAmino): _111.QuerySwapExactAmountInResponse;
                 toAmino(message: _111.QuerySwapExactAmountInResponse): _111.QuerySwapExactAmountInResponseAmino;
@@ -1628,8 +1786,8 @@ export declare namespace osmosis {
             };
             QuerySwapExactAmountOutRequest: {
                 typeUrl: string;
-                encode(message: _111.QuerySwapExactAmountOutRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySwapExactAmountOutRequest;
+                encode(message: _111.QuerySwapExactAmountOutRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QuerySwapExactAmountOutRequest;
                 fromPartial(object: Partial<_111.QuerySwapExactAmountOutRequest>): _111.QuerySwapExactAmountOutRequest;
                 fromAmino(object: _111.QuerySwapExactAmountOutRequestAmino): _111.QuerySwapExactAmountOutRequest;
                 toAmino(message: _111.QuerySwapExactAmountOutRequest): _111.QuerySwapExactAmountOutRequestAmino;
@@ -1641,8 +1799,8 @@ export declare namespace osmosis {
             };
             QuerySwapExactAmountOutResponse: {
                 typeUrl: string;
-                encode(message: _111.QuerySwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QuerySwapExactAmountOutResponse;
+                encode(message: _111.QuerySwapExactAmountOutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QuerySwapExactAmountOutResponse;
                 fromPartial(object: Partial<_111.QuerySwapExactAmountOutResponse>): _111.QuerySwapExactAmountOutResponse;
                 fromAmino(object: _111.QuerySwapExactAmountOutResponseAmino): _111.QuerySwapExactAmountOutResponse;
                 toAmino(message: _111.QuerySwapExactAmountOutResponse): _111.QuerySwapExactAmountOutResponseAmino;
@@ -1654,8 +1812,8 @@ export declare namespace osmosis {
             };
             QueryTotalLiquidityRequest: {
                 typeUrl: string;
-                encode(_: _111.QueryTotalLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryTotalLiquidityRequest;
+                encode(_: _111.QueryTotalLiquidityRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryTotalLiquidityRequest;
                 fromPartial(_: Partial<_111.QueryTotalLiquidityRequest>): _111.QueryTotalLiquidityRequest;
                 fromAmino(_: _111.QueryTotalLiquidityRequestAmino): _111.QueryTotalLiquidityRequest;
                 toAmino(_: _111.QueryTotalLiquidityRequest): _111.QueryTotalLiquidityRequestAmino;
@@ -1667,8 +1825,8 @@ export declare namespace osmosis {
             };
             QueryTotalLiquidityResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryTotalLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryTotalLiquidityResponse;
+                encode(message: _111.QueryTotalLiquidityResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryTotalLiquidityResponse;
                 fromPartial(object: Partial<_111.QueryTotalLiquidityResponse>): _111.QueryTotalLiquidityResponse;
                 fromAmino(object: _111.QueryTotalLiquidityResponseAmino): _111.QueryTotalLiquidityResponse;
                 toAmino(message: _111.QueryTotalLiquidityResponse): _111.QueryTotalLiquidityResponseAmino;
@@ -1680,8 +1838,8 @@ export declare namespace osmosis {
             };
             QueryConcentratedPoolIdLinkFromCFMMRequest: {
                 typeUrl: string;
-                encode(message: _111.QueryConcentratedPoolIdLinkFromCFMMRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryConcentratedPoolIdLinkFromCFMMRequest;
+                encode(message: _111.QueryConcentratedPoolIdLinkFromCFMMRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryConcentratedPoolIdLinkFromCFMMRequest;
                 fromPartial(object: Partial<_111.QueryConcentratedPoolIdLinkFromCFMMRequest>): _111.QueryConcentratedPoolIdLinkFromCFMMRequest;
                 fromAmino(object: _111.QueryConcentratedPoolIdLinkFromCFMMRequestAmino): _111.QueryConcentratedPoolIdLinkFromCFMMRequest;
                 toAmino(message: _111.QueryConcentratedPoolIdLinkFromCFMMRequest): _111.QueryConcentratedPoolIdLinkFromCFMMRequestAmino;
@@ -1693,8 +1851,8 @@ export declare namespace osmosis {
             };
             QueryConcentratedPoolIdLinkFromCFMMResponse: {
                 typeUrl: string;
-                encode(message: _111.QueryConcentratedPoolIdLinkFromCFMMResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.QueryConcentratedPoolIdLinkFromCFMMResponse;
+                encode(message: _111.QueryConcentratedPoolIdLinkFromCFMMResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _111.QueryConcentratedPoolIdLinkFromCFMMResponse;
                 fromPartial(object: Partial<_111.QueryConcentratedPoolIdLinkFromCFMMResponse>): _111.QueryConcentratedPoolIdLinkFromCFMMResponse;
                 fromAmino(object: _111.QueryConcentratedPoolIdLinkFromCFMMResponseAmino): _111.QueryConcentratedPoolIdLinkFromCFMMResponse;
                 toAmino(message: _111.QueryConcentratedPoolIdLinkFromCFMMResponse): _111.QueryConcentratedPoolIdLinkFromCFMMResponseAmino;
@@ -1704,13 +1862,13 @@ export declare namespace osmosis {
                 toProto(message: _111.QueryConcentratedPoolIdLinkFromCFMMResponse): Uint8Array;
                 toProtoMsg(message: _111.QueryConcentratedPoolIdLinkFromCFMMResponse): _111.QueryConcentratedPoolIdLinkFromCFMMResponseProtoMsg;
             };
-            PoolI_InterfaceDecoder: (input: Uint8Array | import("protobufjs").Reader) => import("../google/protobuf/any").Any | import("./concentrated-liquidity/pool").Pool | _97.CosmWasmPool | _108.Pool | _115.Pool;
+            PoolI_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | import("./concentrated-liquidity/pool").Pool | _97.CosmWasmPool | _108.Pool | _115.Pool;
             PoolI_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             PoolI_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
             ReplaceMigrationRecordsProposal: {
                 typeUrl: string;
-                encode(message: _110.ReplaceMigrationRecordsProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.ReplaceMigrationRecordsProposal;
+                encode(message: _110.ReplaceMigrationRecordsProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _110.ReplaceMigrationRecordsProposal;
                 fromPartial(object: Partial<_110.ReplaceMigrationRecordsProposal>): _110.ReplaceMigrationRecordsProposal;
                 fromAmino(object: _110.ReplaceMigrationRecordsProposalAmino): _110.ReplaceMigrationRecordsProposal;
                 toAmino(message: _110.ReplaceMigrationRecordsProposal): _110.ReplaceMigrationRecordsProposalAmino;
@@ -1722,8 +1880,8 @@ export declare namespace osmosis {
             };
             UpdateMigrationRecordsProposal: {
                 typeUrl: string;
-                encode(message: _110.UpdateMigrationRecordsProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.UpdateMigrationRecordsProposal;
+                encode(message: _110.UpdateMigrationRecordsProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _110.UpdateMigrationRecordsProposal;
                 fromPartial(object: Partial<_110.UpdateMigrationRecordsProposal>): _110.UpdateMigrationRecordsProposal;
                 fromAmino(object: _110.UpdateMigrationRecordsProposalAmino): _110.UpdateMigrationRecordsProposal;
                 toAmino(message: _110.UpdateMigrationRecordsProposal): _110.UpdateMigrationRecordsProposalAmino;
@@ -1735,8 +1893,8 @@ export declare namespace osmosis {
             };
             Params: {
                 typeUrl: string;
-                encode(message: _109.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.Params;
+                encode(message: _109.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _109.Params;
                 fromPartial(object: Partial<_109.Params>): _109.Params;
                 fromAmino(object: _109.ParamsAmino): _109.Params;
                 toAmino(message: _109.Params): _109.ParamsAmino;
@@ -1748,8 +1906,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _109.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.GenesisState;
+                encode(message: _109.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _109.GenesisState;
                 fromPartial(object: Partial<_109.GenesisState>): _109.GenesisState;
                 fromAmino(object: _109.GenesisStateAmino): _109.GenesisState;
                 toAmino(message: _109.GenesisState): _109.GenesisStateAmino;
@@ -1761,8 +1919,8 @@ export declare namespace osmosis {
             };
             SmoothWeightChangeParams: {
                 typeUrl: string;
-                encode(message: _108.SmoothWeightChangeParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.SmoothWeightChangeParams;
+                encode(message: _108.SmoothWeightChangeParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _108.SmoothWeightChangeParams;
                 fromPartial(object: Partial<_108.SmoothWeightChangeParams>): _108.SmoothWeightChangeParams;
                 fromAmino(object: _108.SmoothWeightChangeParamsAmino): _108.SmoothWeightChangeParams;
                 toAmino(message: _108.SmoothWeightChangeParams): _108.SmoothWeightChangeParamsAmino;
@@ -1774,8 +1932,8 @@ export declare namespace osmosis {
             };
             PoolParams: {
                 typeUrl: string;
-                encode(message: _108.PoolParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.PoolParams;
+                encode(message: _108.PoolParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _108.PoolParams;
                 fromPartial(object: Partial<_108.PoolParams>): _108.PoolParams;
                 fromAmino(object: _108.PoolParamsAmino): _108.PoolParams;
                 toAmino(message: _108.PoolParams): _108.PoolParamsAmino;
@@ -1787,8 +1945,8 @@ export declare namespace osmosis {
             };
             PoolAsset: {
                 typeUrl: string;
-                encode(message: _108.PoolAsset, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.PoolAsset;
+                encode(message: _108.PoolAsset, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _108.PoolAsset;
                 fromPartial(object: Partial<_108.PoolAsset>): _108.PoolAsset;
                 fromAmino(object: _108.PoolAssetAmino): _108.PoolAsset;
                 toAmino(message: _108.PoolAsset): _108.PoolAssetAmino;
@@ -1800,8 +1958,8 @@ export declare namespace osmosis {
             };
             Pool: {
                 typeUrl: string;
-                encode(message: _108.Pool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.Pool;
+                encode(message: _108.Pool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _108.Pool;
                 fromPartial(object: Partial<_108.Pool>): _108.Pool;
                 fromAmino(object: _108.PoolAmino): _108.Pool;
                 toAmino(message: _108.Pool): _108.PoolAmino;
@@ -1847,8 +2005,8 @@ export declare namespace osmosis {
                     };
                     MsgCreateBalancerPool: {
                         typeUrl: string;
-                        encode(message: _114.MsgCreateBalancerPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgCreateBalancerPool;
+                        encode(message: _114.MsgCreateBalancerPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _114.MsgCreateBalancerPool;
                         fromPartial(object: Partial<_114.MsgCreateBalancerPool>): _114.MsgCreateBalancerPool;
                         fromAmino(object: _114.MsgCreateBalancerPoolAmino): _114.MsgCreateBalancerPool;
                         toAmino(message: _114.MsgCreateBalancerPool): _114.MsgCreateBalancerPoolAmino;
@@ -1860,8 +2018,8 @@ export declare namespace osmosis {
                     };
                     MsgCreateBalancerPoolResponse: {
                         typeUrl: string;
-                        encode(message: _114.MsgCreateBalancerPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgCreateBalancerPoolResponse;
+                        encode(message: _114.MsgCreateBalancerPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _114.MsgCreateBalancerPoolResponse;
                         fromPartial(object: Partial<_114.MsgCreateBalancerPoolResponse>): _114.MsgCreateBalancerPoolResponse;
                         fromAmino(object: _114.MsgCreateBalancerPoolResponseAmino): _114.MsgCreateBalancerPoolResponse;
                         toAmino(message: _114.MsgCreateBalancerPoolResponse): _114.MsgCreateBalancerPoolResponseAmino;
@@ -1924,8 +2082,8 @@ export declare namespace osmosis {
                     };
                     MsgCreateStableswapPool: {
                         typeUrl: string;
-                        encode(message: _116.MsgCreateStableswapPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.MsgCreateStableswapPool;
+                        encode(message: _116.MsgCreateStableswapPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _116.MsgCreateStableswapPool;
                         fromPartial(object: Partial<_116.MsgCreateStableswapPool>): _116.MsgCreateStableswapPool;
                         fromAmino(object: _116.MsgCreateStableswapPoolAmino): _116.MsgCreateStableswapPool;
                         toAmino(message: _116.MsgCreateStableswapPool): _116.MsgCreateStableswapPoolAmino;
@@ -1937,8 +2095,8 @@ export declare namespace osmosis {
                     };
                     MsgCreateStableswapPoolResponse: {
                         typeUrl: string;
-                        encode(message: _116.MsgCreateStableswapPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.MsgCreateStableswapPoolResponse;
+                        encode(message: _116.MsgCreateStableswapPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _116.MsgCreateStableswapPoolResponse;
                         fromPartial(object: Partial<_116.MsgCreateStableswapPoolResponse>): _116.MsgCreateStableswapPoolResponse;
                         fromAmino(object: _116.MsgCreateStableswapPoolResponseAmino): _116.MsgCreateStableswapPoolResponse;
                         toAmino(message: _116.MsgCreateStableswapPoolResponse): _116.MsgCreateStableswapPoolResponseAmino;
@@ -1950,8 +2108,8 @@ export declare namespace osmosis {
                     };
                     MsgStableSwapAdjustScalingFactors: {
                         typeUrl: string;
-                        encode(message: _116.MsgStableSwapAdjustScalingFactors, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.MsgStableSwapAdjustScalingFactors;
+                        encode(message: _116.MsgStableSwapAdjustScalingFactors, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _116.MsgStableSwapAdjustScalingFactors;
                         fromPartial(object: Partial<_116.MsgStableSwapAdjustScalingFactors>): _116.MsgStableSwapAdjustScalingFactors;
                         fromAmino(object: _116.MsgStableSwapAdjustScalingFactorsAmino): _116.MsgStableSwapAdjustScalingFactors;
                         toAmino(message: _116.MsgStableSwapAdjustScalingFactors): _116.MsgStableSwapAdjustScalingFactorsAmino;
@@ -1963,8 +2121,8 @@ export declare namespace osmosis {
                     };
                     MsgStableSwapAdjustScalingFactorsResponse: {
                         typeUrl: string;
-                        encode(_: _116.MsgStableSwapAdjustScalingFactorsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.MsgStableSwapAdjustScalingFactorsResponse;
+                        encode(_: _116.MsgStableSwapAdjustScalingFactorsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _116.MsgStableSwapAdjustScalingFactorsResponse;
                         fromPartial(_: Partial<_116.MsgStableSwapAdjustScalingFactorsResponse>): _116.MsgStableSwapAdjustScalingFactorsResponse;
                         fromAmino(_: _116.MsgStableSwapAdjustScalingFactorsResponseAmino): _116.MsgStableSwapAdjustScalingFactorsResponse;
                         toAmino(_: _116.MsgStableSwapAdjustScalingFactorsResponse): _116.MsgStableSwapAdjustScalingFactorsResponseAmino;
@@ -1976,8 +2134,8 @@ export declare namespace osmosis {
                     };
                     PoolParams: {
                         typeUrl: string;
-                        encode(message: _115.PoolParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.PoolParams;
+                        encode(message: _115.PoolParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _115.PoolParams;
                         fromPartial(object: Partial<_115.PoolParams>): _115.PoolParams;
                         fromAmino(object: _115.PoolParamsAmino): _115.PoolParams;
                         toAmino(message: _115.PoolParams): _115.PoolParamsAmino;
@@ -1989,8 +2147,8 @@ export declare namespace osmosis {
                     };
                     Pool: {
                         typeUrl: string;
-                        encode(message: _115.Pool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.Pool;
+                        encode(message: _115.Pool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _115.Pool;
                         fromPartial(object: Partial<_115.Pool>): _115.Pool;
                         fromAmino(object: _115.PoolAmino): _115.Pool;
                         toAmino(message: _115.Pool): _115.PoolAmino;
@@ -2011,8 +2169,8 @@ export declare namespace osmosis {
             LCDQueryClient: typeof _289.LCDQueryClient;
             QuerySpotPriceRequest: {
                 typeUrl: string;
-                encode(message: _117.QuerySpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QuerySpotPriceRequest;
+                encode(message: _117.QuerySpotPriceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _117.QuerySpotPriceRequest;
                 fromPartial(object: Partial<_117.QuerySpotPriceRequest>): _117.QuerySpotPriceRequest;
                 fromAmino(object: _117.QuerySpotPriceRequestAmino): _117.QuerySpotPriceRequest;
                 toAmino(message: _117.QuerySpotPriceRequest): _117.QuerySpotPriceRequestAmino;
@@ -2024,8 +2182,8 @@ export declare namespace osmosis {
             };
             QuerySpotPriceResponse: {
                 typeUrl: string;
-                encode(message: _117.QuerySpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _117.QuerySpotPriceResponse;
+                encode(message: _117.QuerySpotPriceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _117.QuerySpotPriceResponse;
                 fromPartial(object: Partial<_117.QuerySpotPriceResponse>): _117.QuerySpotPriceResponse;
                 fromAmino(object: _117.QuerySpotPriceResponseAmino): _117.QuerySpotPriceResponse;
                 toAmino(message: _117.QuerySpotPriceResponse): _117.QuerySpotPriceResponseAmino;
@@ -2046,8 +2204,8 @@ export declare namespace osmosis {
             LCDQueryClient: typeof _290.LCDQueryClient;
             ParamsRequest: {
                 typeUrl: string;
-                encode(_: _120.ParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.ParamsRequest;
+                encode(_: _120.ParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _120.ParamsRequest;
                 fromPartial(_: Partial<_120.ParamsRequest>): _120.ParamsRequest;
                 fromAmino(_: _120.ParamsRequestAmino): _120.ParamsRequest;
                 toAmino(_: _120.ParamsRequest): _120.ParamsRequestAmino;
@@ -2059,8 +2217,8 @@ export declare namespace osmosis {
             };
             ParamsResponse: {
                 typeUrl: string;
-                encode(message: _120.ParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.ParamsResponse;
+                encode(message: _120.ParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _120.ParamsResponse;
                 fromPartial(object: Partial<_120.ParamsResponse>): _120.ParamsResponse;
                 fromAmino(object: _120.ParamsResponseAmino): _120.ParamsResponse;
                 toAmino(message: _120.ParamsResponse): _120.ParamsResponseAmino;
@@ -2072,8 +2230,8 @@ export declare namespace osmosis {
             };
             Params: {
                 typeUrl: string;
-                encode(message: _119.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _119.Params;
+                encode(message: _119.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _119.Params;
                 fromPartial(object: Partial<_119.Params>): _119.Params;
                 fromAmino(object: _119.ParamsAmino): _119.Params;
                 toAmino(message: _119.Params): _119.ParamsAmino;
@@ -2085,8 +2243,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _118.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.GenesisState;
+                encode(message: _118.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _118.GenesisState;
                 fromPartial(object: Partial<_118.GenesisState>): _118.GenesisState;
                 fromAmino(object: _118.GenesisStateAmino): _118.GenesisState;
                 toAmino(message: _118.GenesisState): _118.GenesisStateAmino;
@@ -2161,8 +2319,8 @@ export declare namespace osmosis {
         };
         MsgCreateGauge: {
             typeUrl: string;
-            encode(message: _125.MsgCreateGauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.MsgCreateGauge;
+            encode(message: _125.MsgCreateGauge, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _125.MsgCreateGauge;
             fromPartial(object: Partial<_125.MsgCreateGauge>): _125.MsgCreateGauge;
             fromAmino(object: _125.MsgCreateGaugeAmino): _125.MsgCreateGauge;
             toAmino(message: _125.MsgCreateGauge): _125.MsgCreateGaugeAmino;
@@ -2174,8 +2332,8 @@ export declare namespace osmosis {
         };
         MsgCreateGaugeResponse: {
             typeUrl: string;
-            encode(_: _125.MsgCreateGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.MsgCreateGaugeResponse;
+            encode(_: _125.MsgCreateGaugeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _125.MsgCreateGaugeResponse;
             fromPartial(_: Partial<_125.MsgCreateGaugeResponse>): _125.MsgCreateGaugeResponse;
             fromAmino(_: _125.MsgCreateGaugeResponseAmino): _125.MsgCreateGaugeResponse;
             toAmino(_: _125.MsgCreateGaugeResponse): _125.MsgCreateGaugeResponseAmino;
@@ -2187,8 +2345,8 @@ export declare namespace osmosis {
         };
         MsgAddToGauge: {
             typeUrl: string;
-            encode(message: _125.MsgAddToGauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.MsgAddToGauge;
+            encode(message: _125.MsgAddToGauge, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _125.MsgAddToGauge;
             fromPartial(object: Partial<_125.MsgAddToGauge>): _125.MsgAddToGauge;
             fromAmino(object: _125.MsgAddToGaugeAmino): _125.MsgAddToGauge;
             toAmino(message: _125.MsgAddToGauge): _125.MsgAddToGaugeAmino;
@@ -2200,8 +2358,8 @@ export declare namespace osmosis {
         };
         MsgAddToGaugeResponse: {
             typeUrl: string;
-            encode(_: _125.MsgAddToGaugeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.MsgAddToGaugeResponse;
+            encode(_: _125.MsgAddToGaugeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _125.MsgAddToGaugeResponse;
             fromPartial(_: Partial<_125.MsgAddToGaugeResponse>): _125.MsgAddToGaugeResponse;
             fromAmino(_: _125.MsgAddToGaugeResponseAmino): _125.MsgAddToGaugeResponse;
             toAmino(_: _125.MsgAddToGaugeResponse): _125.MsgAddToGaugeResponseAmino;
@@ -2213,8 +2371,8 @@ export declare namespace osmosis {
         };
         ModuleToDistributeCoinsRequest: {
             typeUrl: string;
-            encode(_: _124.ModuleToDistributeCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ModuleToDistributeCoinsRequest;
+            encode(_: _124.ModuleToDistributeCoinsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.ModuleToDistributeCoinsRequest;
             fromPartial(_: Partial<_124.ModuleToDistributeCoinsRequest>): _124.ModuleToDistributeCoinsRequest;
             fromAmino(_: _124.ModuleToDistributeCoinsRequestAmino): _124.ModuleToDistributeCoinsRequest;
             toAmino(_: _124.ModuleToDistributeCoinsRequest): _124.ModuleToDistributeCoinsRequestAmino;
@@ -2226,8 +2384,8 @@ export declare namespace osmosis {
         };
         ModuleToDistributeCoinsResponse: {
             typeUrl: string;
-            encode(message: _124.ModuleToDistributeCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ModuleToDistributeCoinsResponse;
+            encode(message: _124.ModuleToDistributeCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.ModuleToDistributeCoinsResponse;
             fromPartial(object: Partial<_124.ModuleToDistributeCoinsResponse>): _124.ModuleToDistributeCoinsResponse;
             fromAmino(object: _124.ModuleToDistributeCoinsResponseAmino): _124.ModuleToDistributeCoinsResponse;
             toAmino(message: _124.ModuleToDistributeCoinsResponse): _124.ModuleToDistributeCoinsResponseAmino;
@@ -2239,8 +2397,8 @@ export declare namespace osmosis {
         };
         GaugeByIDRequest: {
             typeUrl: string;
-            encode(message: _124.GaugeByIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.GaugeByIDRequest;
+            encode(message: _124.GaugeByIDRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.GaugeByIDRequest;
             fromPartial(object: Partial<_124.GaugeByIDRequest>): _124.GaugeByIDRequest;
             fromAmino(object: _124.GaugeByIDRequestAmino): _124.GaugeByIDRequest;
             toAmino(message: _124.GaugeByIDRequest): _124.GaugeByIDRequestAmino;
@@ -2252,8 +2410,8 @@ export declare namespace osmosis {
         };
         GaugeByIDResponse: {
             typeUrl: string;
-            encode(message: _124.GaugeByIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.GaugeByIDResponse;
+            encode(message: _124.GaugeByIDResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.GaugeByIDResponse;
             fromPartial(object: Partial<_124.GaugeByIDResponse>): _124.GaugeByIDResponse;
             fromAmino(object: _124.GaugeByIDResponseAmino): _124.GaugeByIDResponse;
             toAmino(message: _124.GaugeByIDResponse): _124.GaugeByIDResponseAmino;
@@ -2265,8 +2423,8 @@ export declare namespace osmosis {
         };
         GaugesRequest: {
             typeUrl: string;
-            encode(message: _124.GaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.GaugesRequest;
+            encode(message: _124.GaugesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.GaugesRequest;
             fromPartial(object: Partial<_124.GaugesRequest>): _124.GaugesRequest;
             fromAmino(object: _124.GaugesRequestAmino): _124.GaugesRequest;
             toAmino(message: _124.GaugesRequest): _124.GaugesRequestAmino;
@@ -2278,8 +2436,8 @@ export declare namespace osmosis {
         };
         GaugesResponse: {
             typeUrl: string;
-            encode(message: _124.GaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.GaugesResponse;
+            encode(message: _124.GaugesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.GaugesResponse;
             fromPartial(object: Partial<_124.GaugesResponse>): _124.GaugesResponse;
             fromAmino(object: _124.GaugesResponseAmino): _124.GaugesResponse;
             toAmino(message: _124.GaugesResponse): _124.GaugesResponseAmino;
@@ -2291,8 +2449,8 @@ export declare namespace osmosis {
         };
         ActiveGaugesRequest: {
             typeUrl: string;
-            encode(message: _124.ActiveGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ActiveGaugesRequest;
+            encode(message: _124.ActiveGaugesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.ActiveGaugesRequest;
             fromPartial(object: Partial<_124.ActiveGaugesRequest>): _124.ActiveGaugesRequest;
             fromAmino(object: _124.ActiveGaugesRequestAmino): _124.ActiveGaugesRequest;
             toAmino(message: _124.ActiveGaugesRequest): _124.ActiveGaugesRequestAmino;
@@ -2304,8 +2462,8 @@ export declare namespace osmosis {
         };
         ActiveGaugesResponse: {
             typeUrl: string;
-            encode(message: _124.ActiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ActiveGaugesResponse;
+            encode(message: _124.ActiveGaugesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.ActiveGaugesResponse;
             fromPartial(object: Partial<_124.ActiveGaugesResponse>): _124.ActiveGaugesResponse;
             fromAmino(object: _124.ActiveGaugesResponseAmino): _124.ActiveGaugesResponse;
             toAmino(message: _124.ActiveGaugesResponse): _124.ActiveGaugesResponseAmino;
@@ -2317,8 +2475,8 @@ export declare namespace osmosis {
         };
         ActiveGaugesPerDenomRequest: {
             typeUrl: string;
-            encode(message: _124.ActiveGaugesPerDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ActiveGaugesPerDenomRequest;
+            encode(message: _124.ActiveGaugesPerDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.ActiveGaugesPerDenomRequest;
             fromPartial(object: Partial<_124.ActiveGaugesPerDenomRequest>): _124.ActiveGaugesPerDenomRequest;
             fromAmino(object: _124.ActiveGaugesPerDenomRequestAmino): _124.ActiveGaugesPerDenomRequest;
             toAmino(message: _124.ActiveGaugesPerDenomRequest): _124.ActiveGaugesPerDenomRequestAmino;
@@ -2330,8 +2488,8 @@ export declare namespace osmosis {
         };
         ActiveGaugesPerDenomResponse: {
             typeUrl: string;
-            encode(message: _124.ActiveGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ActiveGaugesPerDenomResponse;
+            encode(message: _124.ActiveGaugesPerDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.ActiveGaugesPerDenomResponse;
             fromPartial(object: Partial<_124.ActiveGaugesPerDenomResponse>): _124.ActiveGaugesPerDenomResponse;
             fromAmino(object: _124.ActiveGaugesPerDenomResponseAmino): _124.ActiveGaugesPerDenomResponse;
             toAmino(message: _124.ActiveGaugesPerDenomResponse): _124.ActiveGaugesPerDenomResponseAmino;
@@ -2343,8 +2501,8 @@ export declare namespace osmosis {
         };
         UpcomingGaugesRequest: {
             typeUrl: string;
-            encode(message: _124.UpcomingGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.UpcomingGaugesRequest;
+            encode(message: _124.UpcomingGaugesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.UpcomingGaugesRequest;
             fromPartial(object: Partial<_124.UpcomingGaugesRequest>): _124.UpcomingGaugesRequest;
             fromAmino(object: _124.UpcomingGaugesRequestAmino): _124.UpcomingGaugesRequest;
             toAmino(message: _124.UpcomingGaugesRequest): _124.UpcomingGaugesRequestAmino;
@@ -2356,8 +2514,8 @@ export declare namespace osmosis {
         };
         UpcomingGaugesResponse: {
             typeUrl: string;
-            encode(message: _124.UpcomingGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.UpcomingGaugesResponse;
+            encode(message: _124.UpcomingGaugesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.UpcomingGaugesResponse;
             fromPartial(object: Partial<_124.UpcomingGaugesResponse>): _124.UpcomingGaugesResponse;
             fromAmino(object: _124.UpcomingGaugesResponseAmino): _124.UpcomingGaugesResponse;
             toAmino(message: _124.UpcomingGaugesResponse): _124.UpcomingGaugesResponseAmino;
@@ -2369,8 +2527,8 @@ export declare namespace osmosis {
         };
         UpcomingGaugesPerDenomRequest: {
             typeUrl: string;
-            encode(message: _124.UpcomingGaugesPerDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.UpcomingGaugesPerDenomRequest;
+            encode(message: _124.UpcomingGaugesPerDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.UpcomingGaugesPerDenomRequest;
             fromPartial(object: Partial<_124.UpcomingGaugesPerDenomRequest>): _124.UpcomingGaugesPerDenomRequest;
             fromAmino(object: _124.UpcomingGaugesPerDenomRequestAmino): _124.UpcomingGaugesPerDenomRequest;
             toAmino(message: _124.UpcomingGaugesPerDenomRequest): _124.UpcomingGaugesPerDenomRequestAmino;
@@ -2382,8 +2540,8 @@ export declare namespace osmosis {
         };
         UpcomingGaugesPerDenomResponse: {
             typeUrl: string;
-            encode(message: _124.UpcomingGaugesPerDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.UpcomingGaugesPerDenomResponse;
+            encode(message: _124.UpcomingGaugesPerDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.UpcomingGaugesPerDenomResponse;
             fromPartial(object: Partial<_124.UpcomingGaugesPerDenomResponse>): _124.UpcomingGaugesPerDenomResponse;
             fromAmino(object: _124.UpcomingGaugesPerDenomResponseAmino): _124.UpcomingGaugesPerDenomResponse;
             toAmino(message: _124.UpcomingGaugesPerDenomResponse): _124.UpcomingGaugesPerDenomResponseAmino;
@@ -2395,8 +2553,8 @@ export declare namespace osmosis {
         };
         RewardsEstRequest: {
             typeUrl: string;
-            encode(message: _124.RewardsEstRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.RewardsEstRequest;
+            encode(message: _124.RewardsEstRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.RewardsEstRequest;
             fromPartial(object: Partial<_124.RewardsEstRequest>): _124.RewardsEstRequest;
             fromAmino(object: _124.RewardsEstRequestAmino): _124.RewardsEstRequest;
             toAmino(message: _124.RewardsEstRequest): _124.RewardsEstRequestAmino;
@@ -2408,8 +2566,8 @@ export declare namespace osmosis {
         };
         RewardsEstResponse: {
             typeUrl: string;
-            encode(message: _124.RewardsEstResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.RewardsEstResponse;
+            encode(message: _124.RewardsEstResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.RewardsEstResponse;
             fromPartial(object: Partial<_124.RewardsEstResponse>): _124.RewardsEstResponse;
             fromAmino(object: _124.RewardsEstResponseAmino): _124.RewardsEstResponse;
             toAmino(message: _124.RewardsEstResponse): _124.RewardsEstResponseAmino;
@@ -2421,8 +2579,8 @@ export declare namespace osmosis {
         };
         QueryLockableDurationsRequest: {
             typeUrl: string;
-            encode(_: _124.QueryLockableDurationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.QueryLockableDurationsRequest;
+            encode(_: _124.QueryLockableDurationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.QueryLockableDurationsRequest;
             fromPartial(_: Partial<_124.QueryLockableDurationsRequest>): _124.QueryLockableDurationsRequest;
             fromAmino(_: _124.QueryLockableDurationsRequestAmino): _124.QueryLockableDurationsRequest;
             toAmino(_: _124.QueryLockableDurationsRequest): _124.QueryLockableDurationsRequestAmino;
@@ -2434,8 +2592,8 @@ export declare namespace osmosis {
         };
         QueryLockableDurationsResponse: {
             typeUrl: string;
-            encode(message: _124.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.QueryLockableDurationsResponse;
+            encode(message: _124.QueryLockableDurationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _124.QueryLockableDurationsResponse;
             fromPartial(object: Partial<_124.QueryLockableDurationsResponse>): _124.QueryLockableDurationsResponse;
             fromAmino(object: _124.QueryLockableDurationsResponseAmino): _124.QueryLockableDurationsResponse;
             toAmino(message: _124.QueryLockableDurationsResponse): _124.QueryLockableDurationsResponseAmino;
@@ -2447,8 +2605,8 @@ export declare namespace osmosis {
         };
         Params: {
             typeUrl: string;
-            encode(message: _123.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.Params;
+            encode(message: _123.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _123.Params;
             fromPartial(object: Partial<_123.Params>): _123.Params;
             fromAmino(object: _123.ParamsAmino): _123.Params;
             toAmino(message: _123.Params): _123.ParamsAmino;
@@ -2460,8 +2618,8 @@ export declare namespace osmosis {
         };
         GenesisState: {
             typeUrl: string;
-            encode(message: _122.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.GenesisState;
+            encode(message: _122.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _122.GenesisState;
             fromPartial(object: Partial<_122.GenesisState>): _122.GenesisState;
             fromAmino(object: _122.GenesisStateAmino): _122.GenesisState;
             toAmino(message: _122.GenesisState): _122.GenesisStateAmino;
@@ -2473,8 +2631,8 @@ export declare namespace osmosis {
         };
         Gauge: {
             typeUrl: string;
-            encode(message: _121.Gauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _121.Gauge;
+            encode(message: _121.Gauge, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _121.Gauge;
             fromPartial(object: Partial<_121.Gauge>): _121.Gauge;
             fromAmino(object: _121.GaugeAmino): _121.Gauge;
             toAmino(message: _121.Gauge): _121.GaugeAmino;
@@ -2486,8 +2644,8 @@ export declare namespace osmosis {
         };
         LockableDurationsInfo: {
             typeUrl: string;
-            encode(message: _121.LockableDurationsInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _121.LockableDurationsInfo;
+            encode(message: _121.LockableDurationsInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _121.LockableDurationsInfo;
             fromPartial(object: Partial<_121.LockableDurationsInfo>): _121.LockableDurationsInfo;
             fromAmino(object: _121.LockableDurationsInfoAmino): _121.LockableDurationsInfo;
             toAmino(message: _121.LockableDurationsInfo): _121.LockableDurationsInfoAmino;
@@ -2640,8 +2798,8 @@ export declare namespace osmosis {
         };
         MsgLockTokens: {
             typeUrl: string;
-            encode(message: _130.MsgLockTokens, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgLockTokens;
+            encode(message: _130.MsgLockTokens, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgLockTokens;
             fromPartial(object: Partial<_130.MsgLockTokens>): _130.MsgLockTokens;
             fromAmino(object: _130.MsgLockTokensAmino): _130.MsgLockTokens;
             toAmino(message: _130.MsgLockTokens): _130.MsgLockTokensAmino;
@@ -2653,8 +2811,8 @@ export declare namespace osmosis {
         };
         MsgLockTokensResponse: {
             typeUrl: string;
-            encode(message: _130.MsgLockTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgLockTokensResponse;
+            encode(message: _130.MsgLockTokensResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgLockTokensResponse;
             fromPartial(object: Partial<_130.MsgLockTokensResponse>): _130.MsgLockTokensResponse;
             fromAmino(object: _130.MsgLockTokensResponseAmino): _130.MsgLockTokensResponse;
             toAmino(message: _130.MsgLockTokensResponse): _130.MsgLockTokensResponseAmino;
@@ -2666,8 +2824,8 @@ export declare namespace osmosis {
         };
         MsgBeginUnlockingAll: {
             typeUrl: string;
-            encode(message: _130.MsgBeginUnlockingAll, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgBeginUnlockingAll;
+            encode(message: _130.MsgBeginUnlockingAll, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgBeginUnlockingAll;
             fromPartial(object: Partial<_130.MsgBeginUnlockingAll>): _130.MsgBeginUnlockingAll;
             fromAmino(object: _130.MsgBeginUnlockingAllAmino): _130.MsgBeginUnlockingAll;
             toAmino(message: _130.MsgBeginUnlockingAll): _130.MsgBeginUnlockingAllAmino;
@@ -2679,8 +2837,8 @@ export declare namespace osmosis {
         };
         MsgBeginUnlockingAllResponse: {
             typeUrl: string;
-            encode(message: _130.MsgBeginUnlockingAllResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgBeginUnlockingAllResponse;
+            encode(message: _130.MsgBeginUnlockingAllResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgBeginUnlockingAllResponse;
             fromPartial(object: Partial<_130.MsgBeginUnlockingAllResponse>): _130.MsgBeginUnlockingAllResponse;
             fromAmino(object: _130.MsgBeginUnlockingAllResponseAmino): _130.MsgBeginUnlockingAllResponse;
             toAmino(message: _130.MsgBeginUnlockingAllResponse): _130.MsgBeginUnlockingAllResponseAmino;
@@ -2692,8 +2850,8 @@ export declare namespace osmosis {
         };
         MsgBeginUnlocking: {
             typeUrl: string;
-            encode(message: _130.MsgBeginUnlocking, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgBeginUnlocking;
+            encode(message: _130.MsgBeginUnlocking, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgBeginUnlocking;
             fromPartial(object: Partial<_130.MsgBeginUnlocking>): _130.MsgBeginUnlocking;
             fromAmino(object: _130.MsgBeginUnlockingAmino): _130.MsgBeginUnlocking;
             toAmino(message: _130.MsgBeginUnlocking): _130.MsgBeginUnlockingAmino;
@@ -2705,8 +2863,8 @@ export declare namespace osmosis {
         };
         MsgBeginUnlockingResponse: {
             typeUrl: string;
-            encode(message: _130.MsgBeginUnlockingResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgBeginUnlockingResponse;
+            encode(message: _130.MsgBeginUnlockingResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgBeginUnlockingResponse;
             fromPartial(object: Partial<_130.MsgBeginUnlockingResponse>): _130.MsgBeginUnlockingResponse;
             fromAmino(object: _130.MsgBeginUnlockingResponseAmino): _130.MsgBeginUnlockingResponse;
             toAmino(message: _130.MsgBeginUnlockingResponse): _130.MsgBeginUnlockingResponseAmino;
@@ -2718,8 +2876,8 @@ export declare namespace osmosis {
         };
         MsgExtendLockup: {
             typeUrl: string;
-            encode(message: _130.MsgExtendLockup, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgExtendLockup;
+            encode(message: _130.MsgExtendLockup, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgExtendLockup;
             fromPartial(object: Partial<_130.MsgExtendLockup>): _130.MsgExtendLockup;
             fromAmino(object: _130.MsgExtendLockupAmino): _130.MsgExtendLockup;
             toAmino(message: _130.MsgExtendLockup): _130.MsgExtendLockupAmino;
@@ -2731,8 +2889,8 @@ export declare namespace osmosis {
         };
         MsgExtendLockupResponse: {
             typeUrl: string;
-            encode(message: _130.MsgExtendLockupResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgExtendLockupResponse;
+            encode(message: _130.MsgExtendLockupResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgExtendLockupResponse;
             fromPartial(object: Partial<_130.MsgExtendLockupResponse>): _130.MsgExtendLockupResponse;
             fromAmino(object: _130.MsgExtendLockupResponseAmino): _130.MsgExtendLockupResponse;
             toAmino(message: _130.MsgExtendLockupResponse): _130.MsgExtendLockupResponseAmino;
@@ -2744,8 +2902,8 @@ export declare namespace osmosis {
         };
         MsgForceUnlock: {
             typeUrl: string;
-            encode(message: _130.MsgForceUnlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgForceUnlock;
+            encode(message: _130.MsgForceUnlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgForceUnlock;
             fromPartial(object: Partial<_130.MsgForceUnlock>): _130.MsgForceUnlock;
             fromAmino(object: _130.MsgForceUnlockAmino): _130.MsgForceUnlock;
             toAmino(message: _130.MsgForceUnlock): _130.MsgForceUnlockAmino;
@@ -2757,8 +2915,8 @@ export declare namespace osmosis {
         };
         MsgForceUnlockResponse: {
             typeUrl: string;
-            encode(message: _130.MsgForceUnlockResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgForceUnlockResponse;
+            encode(message: _130.MsgForceUnlockResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgForceUnlockResponse;
             fromPartial(object: Partial<_130.MsgForceUnlockResponse>): _130.MsgForceUnlockResponse;
             fromAmino(object: _130.MsgForceUnlockResponseAmino): _130.MsgForceUnlockResponse;
             toAmino(message: _130.MsgForceUnlockResponse): _130.MsgForceUnlockResponseAmino;
@@ -2770,8 +2928,8 @@ export declare namespace osmosis {
         };
         MsgSetRewardReceiverAddress: {
             typeUrl: string;
-            encode(message: _130.MsgSetRewardReceiverAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgSetRewardReceiverAddress;
+            encode(message: _130.MsgSetRewardReceiverAddress, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgSetRewardReceiverAddress;
             fromPartial(object: Partial<_130.MsgSetRewardReceiverAddress>): _130.MsgSetRewardReceiverAddress;
             fromAmino(object: _130.MsgSetRewardReceiverAddressAmino): _130.MsgSetRewardReceiverAddress;
             toAmino(message: _130.MsgSetRewardReceiverAddress): _130.MsgSetRewardReceiverAddressAmino;
@@ -2783,8 +2941,8 @@ export declare namespace osmosis {
         };
         MsgSetRewardReceiverAddressResponse: {
             typeUrl: string;
-            encode(message: _130.MsgSetRewardReceiverAddressResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.MsgSetRewardReceiverAddressResponse;
+            encode(message: _130.MsgSetRewardReceiverAddressResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _130.MsgSetRewardReceiverAddressResponse;
             fromPartial(object: Partial<_130.MsgSetRewardReceiverAddressResponse>): _130.MsgSetRewardReceiverAddressResponse;
             fromAmino(object: _130.MsgSetRewardReceiverAddressResponseAmino): _130.MsgSetRewardReceiverAddressResponse;
             toAmino(message: _130.MsgSetRewardReceiverAddressResponse): _130.MsgSetRewardReceiverAddressResponseAmino;
@@ -2796,8 +2954,8 @@ export declare namespace osmosis {
         };
         ModuleBalanceRequest: {
             typeUrl: string;
-            encode(_: _129.ModuleBalanceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.ModuleBalanceRequest;
+            encode(_: _129.ModuleBalanceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.ModuleBalanceRequest;
             fromPartial(_: Partial<_129.ModuleBalanceRequest>): _129.ModuleBalanceRequest;
             fromAmino(_: _129.ModuleBalanceRequestAmino): _129.ModuleBalanceRequest;
             toAmino(_: _129.ModuleBalanceRequest): _129.ModuleBalanceRequestAmino;
@@ -2809,8 +2967,8 @@ export declare namespace osmosis {
         };
         ModuleBalanceResponse: {
             typeUrl: string;
-            encode(message: _129.ModuleBalanceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.ModuleBalanceResponse;
+            encode(message: _129.ModuleBalanceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.ModuleBalanceResponse;
             fromPartial(object: Partial<_129.ModuleBalanceResponse>): _129.ModuleBalanceResponse;
             fromAmino(object: _129.ModuleBalanceResponseAmino): _129.ModuleBalanceResponse;
             toAmino(message: _129.ModuleBalanceResponse): _129.ModuleBalanceResponseAmino;
@@ -2822,8 +2980,8 @@ export declare namespace osmosis {
         };
         ModuleLockedAmountRequest: {
             typeUrl: string;
-            encode(_: _129.ModuleLockedAmountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.ModuleLockedAmountRequest;
+            encode(_: _129.ModuleLockedAmountRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.ModuleLockedAmountRequest;
             fromPartial(_: Partial<_129.ModuleLockedAmountRequest>): _129.ModuleLockedAmountRequest;
             fromAmino(_: _129.ModuleLockedAmountRequestAmino): _129.ModuleLockedAmountRequest;
             toAmino(_: _129.ModuleLockedAmountRequest): _129.ModuleLockedAmountRequestAmino;
@@ -2835,8 +2993,8 @@ export declare namespace osmosis {
         };
         ModuleLockedAmountResponse: {
             typeUrl: string;
-            encode(message: _129.ModuleLockedAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.ModuleLockedAmountResponse;
+            encode(message: _129.ModuleLockedAmountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.ModuleLockedAmountResponse;
             fromPartial(object: Partial<_129.ModuleLockedAmountResponse>): _129.ModuleLockedAmountResponse;
             fromAmino(object: _129.ModuleLockedAmountResponseAmino): _129.ModuleLockedAmountResponse;
             toAmino(message: _129.ModuleLockedAmountResponse): _129.ModuleLockedAmountResponseAmino;
@@ -2848,8 +3006,8 @@ export declare namespace osmosis {
         };
         AccountUnlockableCoinsRequest: {
             typeUrl: string;
-            encode(message: _129.AccountUnlockableCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountUnlockableCoinsRequest;
+            encode(message: _129.AccountUnlockableCoinsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountUnlockableCoinsRequest;
             fromPartial(object: Partial<_129.AccountUnlockableCoinsRequest>): _129.AccountUnlockableCoinsRequest;
             fromAmino(object: _129.AccountUnlockableCoinsRequestAmino): _129.AccountUnlockableCoinsRequest;
             toAmino(message: _129.AccountUnlockableCoinsRequest): _129.AccountUnlockableCoinsRequestAmino;
@@ -2861,8 +3019,8 @@ export declare namespace osmosis {
         };
         AccountUnlockableCoinsResponse: {
             typeUrl: string;
-            encode(message: _129.AccountUnlockableCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountUnlockableCoinsResponse;
+            encode(message: _129.AccountUnlockableCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountUnlockableCoinsResponse;
             fromPartial(object: Partial<_129.AccountUnlockableCoinsResponse>): _129.AccountUnlockableCoinsResponse;
             fromAmino(object: _129.AccountUnlockableCoinsResponseAmino): _129.AccountUnlockableCoinsResponse;
             toAmino(message: _129.AccountUnlockableCoinsResponse): _129.AccountUnlockableCoinsResponseAmino;
@@ -2874,8 +3032,8 @@ export declare namespace osmosis {
         };
         AccountUnlockingCoinsRequest: {
             typeUrl: string;
-            encode(message: _129.AccountUnlockingCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountUnlockingCoinsRequest;
+            encode(message: _129.AccountUnlockingCoinsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountUnlockingCoinsRequest;
             fromPartial(object: Partial<_129.AccountUnlockingCoinsRequest>): _129.AccountUnlockingCoinsRequest;
             fromAmino(object: _129.AccountUnlockingCoinsRequestAmino): _129.AccountUnlockingCoinsRequest;
             toAmino(message: _129.AccountUnlockingCoinsRequest): _129.AccountUnlockingCoinsRequestAmino;
@@ -2887,8 +3045,8 @@ export declare namespace osmosis {
         };
         AccountUnlockingCoinsResponse: {
             typeUrl: string;
-            encode(message: _129.AccountUnlockingCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountUnlockingCoinsResponse;
+            encode(message: _129.AccountUnlockingCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountUnlockingCoinsResponse;
             fromPartial(object: Partial<_129.AccountUnlockingCoinsResponse>): _129.AccountUnlockingCoinsResponse;
             fromAmino(object: _129.AccountUnlockingCoinsResponseAmino): _129.AccountUnlockingCoinsResponse;
             toAmino(message: _129.AccountUnlockingCoinsResponse): _129.AccountUnlockingCoinsResponseAmino;
@@ -2900,8 +3058,8 @@ export declare namespace osmosis {
         };
         AccountLockedCoinsRequest: {
             typeUrl: string;
-            encode(message: _129.AccountLockedCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedCoinsRequest;
+            encode(message: _129.AccountLockedCoinsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedCoinsRequest;
             fromPartial(object: Partial<_129.AccountLockedCoinsRequest>): _129.AccountLockedCoinsRequest;
             fromAmino(object: _129.AccountLockedCoinsRequestAmino): _129.AccountLockedCoinsRequest;
             toAmino(message: _129.AccountLockedCoinsRequest): _129.AccountLockedCoinsRequestAmino;
@@ -2913,8 +3071,8 @@ export declare namespace osmosis {
         };
         AccountLockedCoinsResponse: {
             typeUrl: string;
-            encode(message: _129.AccountLockedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedCoinsResponse;
+            encode(message: _129.AccountLockedCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedCoinsResponse;
             fromPartial(object: Partial<_129.AccountLockedCoinsResponse>): _129.AccountLockedCoinsResponse;
             fromAmino(object: _129.AccountLockedCoinsResponseAmino): _129.AccountLockedCoinsResponse;
             toAmino(message: _129.AccountLockedCoinsResponse): _129.AccountLockedCoinsResponseAmino;
@@ -2926,8 +3084,8 @@ export declare namespace osmosis {
         };
         AccountLockedPastTimeRequest: {
             typeUrl: string;
-            encode(message: _129.AccountLockedPastTimeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedPastTimeRequest;
+            encode(message: _129.AccountLockedPastTimeRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedPastTimeRequest;
             fromPartial(object: Partial<_129.AccountLockedPastTimeRequest>): _129.AccountLockedPastTimeRequest;
             fromAmino(object: _129.AccountLockedPastTimeRequestAmino): _129.AccountLockedPastTimeRequest;
             toAmino(message: _129.AccountLockedPastTimeRequest): _129.AccountLockedPastTimeRequestAmino;
@@ -2939,8 +3097,8 @@ export declare namespace osmosis {
         };
         AccountLockedPastTimeResponse: {
             typeUrl: string;
-            encode(message: _129.AccountLockedPastTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedPastTimeResponse;
+            encode(message: _129.AccountLockedPastTimeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedPastTimeResponse;
             fromPartial(object: Partial<_129.AccountLockedPastTimeResponse>): _129.AccountLockedPastTimeResponse;
             fromAmino(object: _129.AccountLockedPastTimeResponseAmino): _129.AccountLockedPastTimeResponse;
             toAmino(message: _129.AccountLockedPastTimeResponse): _129.AccountLockedPastTimeResponseAmino;
@@ -2952,8 +3110,8 @@ export declare namespace osmosis {
         };
         AccountLockedPastTimeNotUnlockingOnlyRequest: {
             typeUrl: string;
-            encode(message: _129.AccountLockedPastTimeNotUnlockingOnlyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedPastTimeNotUnlockingOnlyRequest;
+            encode(message: _129.AccountLockedPastTimeNotUnlockingOnlyRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedPastTimeNotUnlockingOnlyRequest;
             fromPartial(object: Partial<_129.AccountLockedPastTimeNotUnlockingOnlyRequest>): _129.AccountLockedPastTimeNotUnlockingOnlyRequest;
             fromAmino(object: _129.AccountLockedPastTimeNotUnlockingOnlyRequestAmino): _129.AccountLockedPastTimeNotUnlockingOnlyRequest;
             toAmino(message: _129.AccountLockedPastTimeNotUnlockingOnlyRequest): _129.AccountLockedPastTimeNotUnlockingOnlyRequestAmino;
@@ -2965,8 +3123,8 @@ export declare namespace osmosis {
         };
         AccountLockedPastTimeNotUnlockingOnlyResponse: {
             typeUrl: string;
-            encode(message: _129.AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedPastTimeNotUnlockingOnlyResponse;
+            encode(message: _129.AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedPastTimeNotUnlockingOnlyResponse;
             fromPartial(object: Partial<_129.AccountLockedPastTimeNotUnlockingOnlyResponse>): _129.AccountLockedPastTimeNotUnlockingOnlyResponse;
             fromAmino(object: _129.AccountLockedPastTimeNotUnlockingOnlyResponseAmino): _129.AccountLockedPastTimeNotUnlockingOnlyResponse;
             toAmino(message: _129.AccountLockedPastTimeNotUnlockingOnlyResponse): _129.AccountLockedPastTimeNotUnlockingOnlyResponseAmino;
@@ -2978,8 +3136,8 @@ export declare namespace osmosis {
         };
         AccountUnlockedBeforeTimeRequest: {
             typeUrl: string;
-            encode(message: _129.AccountUnlockedBeforeTimeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountUnlockedBeforeTimeRequest;
+            encode(message: _129.AccountUnlockedBeforeTimeRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountUnlockedBeforeTimeRequest;
             fromPartial(object: Partial<_129.AccountUnlockedBeforeTimeRequest>): _129.AccountUnlockedBeforeTimeRequest;
             fromAmino(object: _129.AccountUnlockedBeforeTimeRequestAmino): _129.AccountUnlockedBeforeTimeRequest;
             toAmino(message: _129.AccountUnlockedBeforeTimeRequest): _129.AccountUnlockedBeforeTimeRequestAmino;
@@ -2991,8 +3149,8 @@ export declare namespace osmosis {
         };
         AccountUnlockedBeforeTimeResponse: {
             typeUrl: string;
-            encode(message: _129.AccountUnlockedBeforeTimeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountUnlockedBeforeTimeResponse;
+            encode(message: _129.AccountUnlockedBeforeTimeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountUnlockedBeforeTimeResponse;
             fromPartial(object: Partial<_129.AccountUnlockedBeforeTimeResponse>): _129.AccountUnlockedBeforeTimeResponse;
             fromAmino(object: _129.AccountUnlockedBeforeTimeResponseAmino): _129.AccountUnlockedBeforeTimeResponse;
             toAmino(message: _129.AccountUnlockedBeforeTimeResponse): _129.AccountUnlockedBeforeTimeResponseAmino;
@@ -3004,8 +3162,8 @@ export declare namespace osmosis {
         };
         AccountLockedPastTimeDenomRequest: {
             typeUrl: string;
-            encode(message: _129.AccountLockedPastTimeDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedPastTimeDenomRequest;
+            encode(message: _129.AccountLockedPastTimeDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedPastTimeDenomRequest;
             fromPartial(object: Partial<_129.AccountLockedPastTimeDenomRequest>): _129.AccountLockedPastTimeDenomRequest;
             fromAmino(object: _129.AccountLockedPastTimeDenomRequestAmino): _129.AccountLockedPastTimeDenomRequest;
             toAmino(message: _129.AccountLockedPastTimeDenomRequest): _129.AccountLockedPastTimeDenomRequestAmino;
@@ -3017,8 +3175,8 @@ export declare namespace osmosis {
         };
         AccountLockedPastTimeDenomResponse: {
             typeUrl: string;
-            encode(message: _129.AccountLockedPastTimeDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedPastTimeDenomResponse;
+            encode(message: _129.AccountLockedPastTimeDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedPastTimeDenomResponse;
             fromPartial(object: Partial<_129.AccountLockedPastTimeDenomResponse>): _129.AccountLockedPastTimeDenomResponse;
             fromAmino(object: _129.AccountLockedPastTimeDenomResponseAmino): _129.AccountLockedPastTimeDenomResponse;
             toAmino(message: _129.AccountLockedPastTimeDenomResponse): _129.AccountLockedPastTimeDenomResponseAmino;
@@ -3030,8 +3188,8 @@ export declare namespace osmosis {
         };
         LockedDenomRequest: {
             typeUrl: string;
-            encode(message: _129.LockedDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.LockedDenomRequest;
+            encode(message: _129.LockedDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.LockedDenomRequest;
             fromPartial(object: Partial<_129.LockedDenomRequest>): _129.LockedDenomRequest;
             fromAmino(object: _129.LockedDenomRequestAmino): _129.LockedDenomRequest;
             toAmino(message: _129.LockedDenomRequest): _129.LockedDenomRequestAmino;
@@ -3043,8 +3201,8 @@ export declare namespace osmosis {
         };
         LockedDenomResponse: {
             typeUrl: string;
-            encode(message: _129.LockedDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.LockedDenomResponse;
+            encode(message: _129.LockedDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.LockedDenomResponse;
             fromPartial(object: Partial<_129.LockedDenomResponse>): _129.LockedDenomResponse;
             fromAmino(object: _129.LockedDenomResponseAmino): _129.LockedDenomResponse;
             toAmino(message: _129.LockedDenomResponse): _129.LockedDenomResponseAmino;
@@ -3056,8 +3214,8 @@ export declare namespace osmosis {
         };
         LockedRequest: {
             typeUrl: string;
-            encode(message: _129.LockedRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.LockedRequest;
+            encode(message: _129.LockedRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.LockedRequest;
             fromPartial(object: Partial<_129.LockedRequest>): _129.LockedRequest;
             fromAmino(object: _129.LockedRequestAmino): _129.LockedRequest;
             toAmino(message: _129.LockedRequest): _129.LockedRequestAmino;
@@ -3069,8 +3227,8 @@ export declare namespace osmosis {
         };
         LockedResponse: {
             typeUrl: string;
-            encode(message: _129.LockedResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.LockedResponse;
+            encode(message: _129.LockedResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.LockedResponse;
             fromPartial(object: Partial<_129.LockedResponse>): _129.LockedResponse;
             fromAmino(object: _129.LockedResponseAmino): _129.LockedResponse;
             toAmino(message: _129.LockedResponse): _129.LockedResponseAmino;
@@ -3082,8 +3240,8 @@ export declare namespace osmosis {
         };
         LockRewardReceiverRequest: {
             typeUrl: string;
-            encode(message: _129.LockRewardReceiverRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.LockRewardReceiverRequest;
+            encode(message: _129.LockRewardReceiverRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.LockRewardReceiverRequest;
             fromPartial(object: Partial<_129.LockRewardReceiverRequest>): _129.LockRewardReceiverRequest;
             fromAmino(object: _129.LockRewardReceiverRequestAmino): _129.LockRewardReceiverRequest;
             toAmino(message: _129.LockRewardReceiverRequest): _129.LockRewardReceiverRequestAmino;
@@ -3095,8 +3253,8 @@ export declare namespace osmosis {
         };
         LockRewardReceiverResponse: {
             typeUrl: string;
-            encode(message: _129.LockRewardReceiverResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.LockRewardReceiverResponse;
+            encode(message: _129.LockRewardReceiverResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.LockRewardReceiverResponse;
             fromPartial(object: Partial<_129.LockRewardReceiverResponse>): _129.LockRewardReceiverResponse;
             fromAmino(object: _129.LockRewardReceiverResponseAmino): _129.LockRewardReceiverResponse;
             toAmino(message: _129.LockRewardReceiverResponse): _129.LockRewardReceiverResponseAmino;
@@ -3108,8 +3266,8 @@ export declare namespace osmosis {
         };
         NextLockIDRequest: {
             typeUrl: string;
-            encode(_: _129.NextLockIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.NextLockIDRequest;
+            encode(_: _129.NextLockIDRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.NextLockIDRequest;
             fromPartial(_: Partial<_129.NextLockIDRequest>): _129.NextLockIDRequest;
             fromAmino(_: _129.NextLockIDRequestAmino): _129.NextLockIDRequest;
             toAmino(_: _129.NextLockIDRequest): _129.NextLockIDRequestAmino;
@@ -3121,8 +3279,8 @@ export declare namespace osmosis {
         };
         NextLockIDResponse: {
             typeUrl: string;
-            encode(message: _129.NextLockIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.NextLockIDResponse;
+            encode(message: _129.NextLockIDResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.NextLockIDResponse;
             fromPartial(object: Partial<_129.NextLockIDResponse>): _129.NextLockIDResponse;
             fromAmino(object: _129.NextLockIDResponseAmino): _129.NextLockIDResponse;
             toAmino(message: _129.NextLockIDResponse): _129.NextLockIDResponseAmino;
@@ -3134,8 +3292,8 @@ export declare namespace osmosis {
         };
         SyntheticLockupsByLockupIDRequest: {
             typeUrl: string;
-            encode(message: _129.SyntheticLockupsByLockupIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.SyntheticLockupsByLockupIDRequest;
+            encode(message: _129.SyntheticLockupsByLockupIDRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.SyntheticLockupsByLockupIDRequest;
             fromPartial(object: Partial<_129.SyntheticLockupsByLockupIDRequest>): _129.SyntheticLockupsByLockupIDRequest;
             fromAmino(object: _129.SyntheticLockupsByLockupIDRequestAmino): _129.SyntheticLockupsByLockupIDRequest;
             toAmino(message: _129.SyntheticLockupsByLockupIDRequest): _129.SyntheticLockupsByLockupIDRequestAmino;
@@ -3147,8 +3305,8 @@ export declare namespace osmosis {
         };
         SyntheticLockupsByLockupIDResponse: {
             typeUrl: string;
-            encode(message: _129.SyntheticLockupsByLockupIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.SyntheticLockupsByLockupIDResponse;
+            encode(message: _129.SyntheticLockupsByLockupIDResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.SyntheticLockupsByLockupIDResponse;
             fromPartial(object: Partial<_129.SyntheticLockupsByLockupIDResponse>): _129.SyntheticLockupsByLockupIDResponse;
             fromAmino(object: _129.SyntheticLockupsByLockupIDResponseAmino): _129.SyntheticLockupsByLockupIDResponse;
             toAmino(message: _129.SyntheticLockupsByLockupIDResponse): _129.SyntheticLockupsByLockupIDResponseAmino;
@@ -3160,8 +3318,8 @@ export declare namespace osmosis {
         };
         SyntheticLockupByLockupIDRequest: {
             typeUrl: string;
-            encode(message: _129.SyntheticLockupByLockupIDRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.SyntheticLockupByLockupIDRequest;
+            encode(message: _129.SyntheticLockupByLockupIDRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.SyntheticLockupByLockupIDRequest;
             fromPartial(object: Partial<_129.SyntheticLockupByLockupIDRequest>): _129.SyntheticLockupByLockupIDRequest;
             fromAmino(object: _129.SyntheticLockupByLockupIDRequestAmino): _129.SyntheticLockupByLockupIDRequest;
             toAmino(message: _129.SyntheticLockupByLockupIDRequest): _129.SyntheticLockupByLockupIDRequestAmino;
@@ -3173,8 +3331,8 @@ export declare namespace osmosis {
         };
         SyntheticLockupByLockupIDResponse: {
             typeUrl: string;
-            encode(message: _129.SyntheticLockupByLockupIDResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.SyntheticLockupByLockupIDResponse;
+            encode(message: _129.SyntheticLockupByLockupIDResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.SyntheticLockupByLockupIDResponse;
             fromPartial(object: Partial<_129.SyntheticLockupByLockupIDResponse>): _129.SyntheticLockupByLockupIDResponse;
             fromAmino(object: _129.SyntheticLockupByLockupIDResponseAmino): _129.SyntheticLockupByLockupIDResponse;
             toAmino(message: _129.SyntheticLockupByLockupIDResponse): _129.SyntheticLockupByLockupIDResponseAmino;
@@ -3186,8 +3344,8 @@ export declare namespace osmosis {
         };
         AccountLockedLongerDurationRequest: {
             typeUrl: string;
-            encode(message: _129.AccountLockedLongerDurationRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedLongerDurationRequest;
+            encode(message: _129.AccountLockedLongerDurationRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedLongerDurationRequest;
             fromPartial(object: Partial<_129.AccountLockedLongerDurationRequest>): _129.AccountLockedLongerDurationRequest;
             fromAmino(object: _129.AccountLockedLongerDurationRequestAmino): _129.AccountLockedLongerDurationRequest;
             toAmino(message: _129.AccountLockedLongerDurationRequest): _129.AccountLockedLongerDurationRequestAmino;
@@ -3199,8 +3357,8 @@ export declare namespace osmosis {
         };
         AccountLockedLongerDurationResponse: {
             typeUrl: string;
-            encode(message: _129.AccountLockedLongerDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedLongerDurationResponse;
+            encode(message: _129.AccountLockedLongerDurationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedLongerDurationResponse;
             fromPartial(object: Partial<_129.AccountLockedLongerDurationResponse>): _129.AccountLockedLongerDurationResponse;
             fromAmino(object: _129.AccountLockedLongerDurationResponseAmino): _129.AccountLockedLongerDurationResponse;
             toAmino(message: _129.AccountLockedLongerDurationResponse): _129.AccountLockedLongerDurationResponseAmino;
@@ -3212,8 +3370,8 @@ export declare namespace osmosis {
         };
         AccountLockedDurationRequest: {
             typeUrl: string;
-            encode(message: _129.AccountLockedDurationRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedDurationRequest;
+            encode(message: _129.AccountLockedDurationRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedDurationRequest;
             fromPartial(object: Partial<_129.AccountLockedDurationRequest>): _129.AccountLockedDurationRequest;
             fromAmino(object: _129.AccountLockedDurationRequestAmino): _129.AccountLockedDurationRequest;
             toAmino(message: _129.AccountLockedDurationRequest): _129.AccountLockedDurationRequestAmino;
@@ -3225,8 +3383,8 @@ export declare namespace osmosis {
         };
         AccountLockedDurationResponse: {
             typeUrl: string;
-            encode(message: _129.AccountLockedDurationResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedDurationResponse;
+            encode(message: _129.AccountLockedDurationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedDurationResponse;
             fromPartial(object: Partial<_129.AccountLockedDurationResponse>): _129.AccountLockedDurationResponse;
             fromAmino(object: _129.AccountLockedDurationResponseAmino): _129.AccountLockedDurationResponse;
             toAmino(message: _129.AccountLockedDurationResponse): _129.AccountLockedDurationResponseAmino;
@@ -3238,8 +3396,8 @@ export declare namespace osmosis {
         };
         AccountLockedLongerDurationNotUnlockingOnlyRequest: {
             typeUrl: string;
-            encode(message: _129.AccountLockedLongerDurationNotUnlockingOnlyRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedLongerDurationNotUnlockingOnlyRequest;
+            encode(message: _129.AccountLockedLongerDurationNotUnlockingOnlyRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedLongerDurationNotUnlockingOnlyRequest;
             fromPartial(object: Partial<_129.AccountLockedLongerDurationNotUnlockingOnlyRequest>): _129.AccountLockedLongerDurationNotUnlockingOnlyRequest;
             fromAmino(object: _129.AccountLockedLongerDurationNotUnlockingOnlyRequestAmino): _129.AccountLockedLongerDurationNotUnlockingOnlyRequest;
             toAmino(message: _129.AccountLockedLongerDurationNotUnlockingOnlyRequest): _129.AccountLockedLongerDurationNotUnlockingOnlyRequestAmino;
@@ -3251,8 +3409,8 @@ export declare namespace osmosis {
         };
         AccountLockedLongerDurationNotUnlockingOnlyResponse: {
             typeUrl: string;
-            encode(message: _129.AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedLongerDurationNotUnlockingOnlyResponse;
+            encode(message: _129.AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedLongerDurationNotUnlockingOnlyResponse;
             fromPartial(object: Partial<_129.AccountLockedLongerDurationNotUnlockingOnlyResponse>): _129.AccountLockedLongerDurationNotUnlockingOnlyResponse;
             fromAmino(object: _129.AccountLockedLongerDurationNotUnlockingOnlyResponseAmino): _129.AccountLockedLongerDurationNotUnlockingOnlyResponse;
             toAmino(message: _129.AccountLockedLongerDurationNotUnlockingOnlyResponse): _129.AccountLockedLongerDurationNotUnlockingOnlyResponseAmino;
@@ -3264,8 +3422,8 @@ export declare namespace osmosis {
         };
         AccountLockedLongerDurationDenomRequest: {
             typeUrl: string;
-            encode(message: _129.AccountLockedLongerDurationDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedLongerDurationDenomRequest;
+            encode(message: _129.AccountLockedLongerDurationDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedLongerDurationDenomRequest;
             fromPartial(object: Partial<_129.AccountLockedLongerDurationDenomRequest>): _129.AccountLockedLongerDurationDenomRequest;
             fromAmino(object: _129.AccountLockedLongerDurationDenomRequestAmino): _129.AccountLockedLongerDurationDenomRequest;
             toAmino(message: _129.AccountLockedLongerDurationDenomRequest): _129.AccountLockedLongerDurationDenomRequestAmino;
@@ -3277,8 +3435,8 @@ export declare namespace osmosis {
         };
         AccountLockedLongerDurationDenomResponse: {
             typeUrl: string;
-            encode(message: _129.AccountLockedLongerDurationDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.AccountLockedLongerDurationDenomResponse;
+            encode(message: _129.AccountLockedLongerDurationDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.AccountLockedLongerDurationDenomResponse;
             fromPartial(object: Partial<_129.AccountLockedLongerDurationDenomResponse>): _129.AccountLockedLongerDurationDenomResponse;
             fromAmino(object: _129.AccountLockedLongerDurationDenomResponseAmino): _129.AccountLockedLongerDurationDenomResponse;
             toAmino(message: _129.AccountLockedLongerDurationDenomResponse): _129.AccountLockedLongerDurationDenomResponseAmino;
@@ -3290,8 +3448,8 @@ export declare namespace osmosis {
         };
         QueryParamsRequest: {
             typeUrl: string;
-            encode(_: _129.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.QueryParamsRequest;
+            encode(_: _129.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.QueryParamsRequest;
             fromPartial(_: Partial<_129.QueryParamsRequest>): _129.QueryParamsRequest;
             fromAmino(_: _129.QueryParamsRequestAmino): _129.QueryParamsRequest;
             toAmino(_: _129.QueryParamsRequest): _129.QueryParamsRequestAmino;
@@ -3303,8 +3461,8 @@ export declare namespace osmosis {
         };
         QueryParamsResponse: {
             typeUrl: string;
-            encode(message: _129.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.QueryParamsResponse;
+            encode(message: _129.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _129.QueryParamsResponse;
             fromPartial(object: Partial<_129.QueryParamsResponse>): _129.QueryParamsResponse;
             fromAmino(object: _129.QueryParamsResponseAmino): _129.QueryParamsResponse;
             toAmino(message: _129.QueryParamsResponse): _129.QueryParamsResponseAmino;
@@ -3316,8 +3474,8 @@ export declare namespace osmosis {
         };
         Params: {
             typeUrl: string;
-            encode(message: _128.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.Params;
+            encode(message: _128.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _128.Params;
             fromPartial(object: Partial<_128.Params>): _128.Params;
             fromAmino(object: _128.ParamsAmino): _128.Params;
             toAmino(message: _128.Params): _128.ParamsAmino;
@@ -3334,8 +3492,8 @@ export declare namespace osmosis {
         LockQueryTypeAmino: typeof _127.LockQueryType;
         PeriodLock: {
             typeUrl: string;
-            encode(message: _127.PeriodLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.PeriodLock;
+            encode(message: _127.PeriodLock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _127.PeriodLock;
             fromPartial(object: Partial<_127.PeriodLock>): _127.PeriodLock;
             fromAmino(object: _127.PeriodLockAmino): _127.PeriodLock;
             toAmino(message: _127.PeriodLock): _127.PeriodLockAmino;
@@ -3347,8 +3505,8 @@ export declare namespace osmosis {
         };
         QueryCondition: {
             typeUrl: string;
-            encode(message: _127.QueryCondition, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.QueryCondition;
+            encode(message: _127.QueryCondition, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _127.QueryCondition;
             fromPartial(object: Partial<_127.QueryCondition>): _127.QueryCondition;
             fromAmino(object: _127.QueryConditionAmino): _127.QueryCondition;
             toAmino(message: _127.QueryCondition): _127.QueryConditionAmino;
@@ -3360,8 +3518,8 @@ export declare namespace osmosis {
         };
         SyntheticLock: {
             typeUrl: string;
-            encode(message: _127.SyntheticLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.SyntheticLock;
+            encode(message: _127.SyntheticLock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _127.SyntheticLock;
             fromPartial(object: Partial<_127.SyntheticLock>): _127.SyntheticLock;
             fromAmino(object: _127.SyntheticLockAmino): _127.SyntheticLock;
             toAmino(message: _127.SyntheticLock): _127.SyntheticLockAmino;
@@ -3373,8 +3531,8 @@ export declare namespace osmosis {
         };
         GenesisState: {
             typeUrl: string;
-            encode(message: _126.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.GenesisState;
+            encode(message: _126.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _126.GenesisState;
             fromPartial(object: Partial<_126.GenesisState>): _126.GenesisState;
             fromAmino(object: _126.GenesisStateAmino): _126.GenesisState;
             toAmino(message: _126.GenesisState): _126.GenesisStateAmino;
@@ -3395,8 +3553,8 @@ export declare namespace osmosis {
             LCDQueryClient: typeof _293.LCDQueryClient;
             QueryParamsRequest: {
                 typeUrl: string;
-                encode(_: _133.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.QueryParamsRequest;
+                encode(_: _133.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _133.QueryParamsRequest;
                 fromPartial(_: Partial<_133.QueryParamsRequest>): _133.QueryParamsRequest;
                 fromAmino(_: _133.QueryParamsRequestAmino): _133.QueryParamsRequest;
                 toAmino(_: _133.QueryParamsRequest): _133.QueryParamsRequestAmino;
@@ -3408,8 +3566,8 @@ export declare namespace osmosis {
             };
             QueryParamsResponse: {
                 typeUrl: string;
-                encode(message: _133.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.QueryParamsResponse;
+                encode(message: _133.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _133.QueryParamsResponse;
                 fromPartial(object: Partial<_133.QueryParamsResponse>): _133.QueryParamsResponse;
                 fromAmino(object: _133.QueryParamsResponseAmino): _133.QueryParamsResponse;
                 toAmino(message: _133.QueryParamsResponse): _133.QueryParamsResponseAmino;
@@ -3421,8 +3579,8 @@ export declare namespace osmosis {
             };
             QueryEpochProvisionsRequest: {
                 typeUrl: string;
-                encode(_: _133.QueryEpochProvisionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.QueryEpochProvisionsRequest;
+                encode(_: _133.QueryEpochProvisionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _133.QueryEpochProvisionsRequest;
                 fromPartial(_: Partial<_133.QueryEpochProvisionsRequest>): _133.QueryEpochProvisionsRequest;
                 fromAmino(_: _133.QueryEpochProvisionsRequestAmino): _133.QueryEpochProvisionsRequest;
                 toAmino(_: _133.QueryEpochProvisionsRequest): _133.QueryEpochProvisionsRequestAmino;
@@ -3434,8 +3592,8 @@ export declare namespace osmosis {
             };
             QueryEpochProvisionsResponse: {
                 typeUrl: string;
-                encode(message: _133.QueryEpochProvisionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.QueryEpochProvisionsResponse;
+                encode(message: _133.QueryEpochProvisionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _133.QueryEpochProvisionsResponse;
                 fromPartial(object: Partial<_133.QueryEpochProvisionsResponse>): _133.QueryEpochProvisionsResponse;
                 fromAmino(object: _133.QueryEpochProvisionsResponseAmino): _133.QueryEpochProvisionsResponse;
                 toAmino(message: _133.QueryEpochProvisionsResponse): _133.QueryEpochProvisionsResponseAmino;
@@ -3447,8 +3605,8 @@ export declare namespace osmosis {
             };
             Minter: {
                 typeUrl: string;
-                encode(message: _132.Minter, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.Minter;
+                encode(message: _132.Minter, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _132.Minter;
                 fromPartial(object: Partial<_132.Minter>): _132.Minter;
                 fromAmino(object: _132.MinterAmino): _132.Minter;
                 toAmino(message: _132.Minter): _132.MinterAmino;
@@ -3460,8 +3618,8 @@ export declare namespace osmosis {
             };
             WeightedAddress: {
                 typeUrl: string;
-                encode(message: _132.WeightedAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.WeightedAddress;
+                encode(message: _132.WeightedAddress, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _132.WeightedAddress;
                 fromPartial(object: Partial<_132.WeightedAddress>): _132.WeightedAddress;
                 fromAmino(object: _132.WeightedAddressAmino): _132.WeightedAddress;
                 toAmino(message: _132.WeightedAddress): _132.WeightedAddressAmino;
@@ -3473,8 +3631,8 @@ export declare namespace osmosis {
             };
             DistributionProportions: {
                 typeUrl: string;
-                encode(message: _132.DistributionProportions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.DistributionProportions;
+                encode(message: _132.DistributionProportions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _132.DistributionProportions;
                 fromPartial(object: Partial<_132.DistributionProportions>): _132.DistributionProportions;
                 fromAmino(object: _132.DistributionProportionsAmino): _132.DistributionProportions;
                 toAmino(message: _132.DistributionProportions): _132.DistributionProportionsAmino;
@@ -3486,8 +3644,8 @@ export declare namespace osmosis {
             };
             Params: {
                 typeUrl: string;
-                encode(message: _132.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.Params;
+                encode(message: _132.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _132.Params;
                 fromPartial(object: Partial<_132.Params>): _132.Params;
                 fromAmino(object: _132.ParamsAmino): _132.Params;
                 toAmino(message: _132.Params): _132.ParamsAmino;
@@ -3499,8 +3657,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _131.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.GenesisState;
+                encode(message: _131.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _131.GenesisState;
                 fromPartial(object: Partial<_131.GenesisState>): _131.GenesisState;
                 fromAmino(object: _131.GenesisStateAmino): _131.GenesisState;
                 toAmino(message: _131.GenesisState): _131.GenesisStateAmino;
@@ -3526,8 +3684,8 @@ export declare namespace osmosis {
             LCDQueryClient: typeof _294.LCDQueryClient;
             MigrationRecords: {
                 typeUrl: string;
-                encode(message: _138.MigrationRecords, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.MigrationRecords;
+                encode(message: _138.MigrationRecords, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _138.MigrationRecords;
                 fromPartial(object: Partial<_138.MigrationRecords>): _138.MigrationRecords;
                 fromAmino(object: _138.MigrationRecordsAmino): _138.MigrationRecords;
                 toAmino(message: _138.MigrationRecords): _138.MigrationRecordsAmino;
@@ -3539,8 +3697,8 @@ export declare namespace osmosis {
             };
             BalancerToConcentratedPoolLink: {
                 typeUrl: string;
-                encode(message: _138.BalancerToConcentratedPoolLink, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.BalancerToConcentratedPoolLink;
+                encode(message: _138.BalancerToConcentratedPoolLink, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _138.BalancerToConcentratedPoolLink;
                 fromPartial(object: Partial<_138.BalancerToConcentratedPoolLink>): _138.BalancerToConcentratedPoolLink;
                 fromAmino(object: _138.BalancerToConcentratedPoolLinkAmino): _138.BalancerToConcentratedPoolLink;
                 toAmino(message: _138.BalancerToConcentratedPoolLink): _138.BalancerToConcentratedPoolLinkAmino;
@@ -3552,8 +3710,8 @@ export declare namespace osmosis {
             };
             QueryGaugeIdsRequest: {
                 typeUrl: string;
-                encode(message: _137.QueryGaugeIdsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryGaugeIdsRequest;
+                encode(message: _137.QueryGaugeIdsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryGaugeIdsRequest;
                 fromPartial(object: Partial<_137.QueryGaugeIdsRequest>): _137.QueryGaugeIdsRequest;
                 fromAmino(object: _137.QueryGaugeIdsRequestAmino): _137.QueryGaugeIdsRequest;
                 toAmino(message: _137.QueryGaugeIdsRequest): _137.QueryGaugeIdsRequestAmino;
@@ -3565,8 +3723,8 @@ export declare namespace osmosis {
             };
             QueryGaugeIdsResponse: {
                 typeUrl: string;
-                encode(message: _137.QueryGaugeIdsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryGaugeIdsResponse;
+                encode(message: _137.QueryGaugeIdsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryGaugeIdsResponse;
                 fromPartial(object: Partial<_137.QueryGaugeIdsResponse>): _137.QueryGaugeIdsResponse;
                 fromAmino(object: _137.QueryGaugeIdsResponseAmino): _137.QueryGaugeIdsResponse;
                 toAmino(message: _137.QueryGaugeIdsResponse): _137.QueryGaugeIdsResponseAmino;
@@ -3578,8 +3736,8 @@ export declare namespace osmosis {
             };
             QueryGaugeIdsResponse_GaugeIdWithDuration: {
                 typeUrl: string;
-                encode(message: _137.QueryGaugeIdsResponse_GaugeIdWithDuration, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryGaugeIdsResponse_GaugeIdWithDuration;
+                encode(message: _137.QueryGaugeIdsResponse_GaugeIdWithDuration, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryGaugeIdsResponse_GaugeIdWithDuration;
                 fromPartial(object: Partial<_137.QueryGaugeIdsResponse_GaugeIdWithDuration>): _137.QueryGaugeIdsResponse_GaugeIdWithDuration;
                 fromAmino(object: _137.QueryGaugeIdsResponse_GaugeIdWithDurationAmino): _137.QueryGaugeIdsResponse_GaugeIdWithDuration;
                 toAmino(message: _137.QueryGaugeIdsResponse_GaugeIdWithDuration): _137.QueryGaugeIdsResponse_GaugeIdWithDurationAmino;
@@ -3591,8 +3749,8 @@ export declare namespace osmosis {
             };
             QueryDistrInfoRequest: {
                 typeUrl: string;
-                encode(_: _137.QueryDistrInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryDistrInfoRequest;
+                encode(_: _137.QueryDistrInfoRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryDistrInfoRequest;
                 fromPartial(_: Partial<_137.QueryDistrInfoRequest>): _137.QueryDistrInfoRequest;
                 fromAmino(_: _137.QueryDistrInfoRequestAmino): _137.QueryDistrInfoRequest;
                 toAmino(_: _137.QueryDistrInfoRequest): _137.QueryDistrInfoRequestAmino;
@@ -3604,8 +3762,8 @@ export declare namespace osmosis {
             };
             QueryDistrInfoResponse: {
                 typeUrl: string;
-                encode(message: _137.QueryDistrInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryDistrInfoResponse;
+                encode(message: _137.QueryDistrInfoResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryDistrInfoResponse;
                 fromPartial(object: Partial<_137.QueryDistrInfoResponse>): _137.QueryDistrInfoResponse;
                 fromAmino(object: _137.QueryDistrInfoResponseAmino): _137.QueryDistrInfoResponse;
                 toAmino(message: _137.QueryDistrInfoResponse): _137.QueryDistrInfoResponseAmino;
@@ -3617,8 +3775,8 @@ export declare namespace osmosis {
             };
             QueryParamsRequest: {
                 typeUrl: string;
-                encode(_: _137.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryParamsRequest;
+                encode(_: _137.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryParamsRequest;
                 fromPartial(_: Partial<_137.QueryParamsRequest>): _137.QueryParamsRequest;
                 fromAmino(_: _137.QueryParamsRequestAmino): _137.QueryParamsRequest;
                 toAmino(_: _137.QueryParamsRequest): _137.QueryParamsRequestAmino;
@@ -3630,8 +3788,8 @@ export declare namespace osmosis {
             };
             QueryParamsResponse: {
                 typeUrl: string;
-                encode(message: _137.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryParamsResponse;
+                encode(message: _137.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryParamsResponse;
                 fromPartial(object: Partial<_137.QueryParamsResponse>): _137.QueryParamsResponse;
                 fromAmino(object: _137.QueryParamsResponseAmino): _137.QueryParamsResponse;
                 toAmino(message: _137.QueryParamsResponse): _137.QueryParamsResponseAmino;
@@ -3643,8 +3801,8 @@ export declare namespace osmosis {
             };
             QueryLockableDurationsRequest: {
                 typeUrl: string;
-                encode(_: _137.QueryLockableDurationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryLockableDurationsRequest;
+                encode(_: _137.QueryLockableDurationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryLockableDurationsRequest;
                 fromPartial(_: Partial<_137.QueryLockableDurationsRequest>): _137.QueryLockableDurationsRequest;
                 fromAmino(_: _137.QueryLockableDurationsRequestAmino): _137.QueryLockableDurationsRequest;
                 toAmino(_: _137.QueryLockableDurationsRequest): _137.QueryLockableDurationsRequestAmino;
@@ -3656,8 +3814,8 @@ export declare namespace osmosis {
             };
             QueryLockableDurationsResponse: {
                 typeUrl: string;
-                encode(message: _137.QueryLockableDurationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryLockableDurationsResponse;
+                encode(message: _137.QueryLockableDurationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryLockableDurationsResponse;
                 fromPartial(object: Partial<_137.QueryLockableDurationsResponse>): _137.QueryLockableDurationsResponse;
                 fromAmino(object: _137.QueryLockableDurationsResponseAmino): _137.QueryLockableDurationsResponse;
                 toAmino(message: _137.QueryLockableDurationsResponse): _137.QueryLockableDurationsResponseAmino;
@@ -3669,8 +3827,8 @@ export declare namespace osmosis {
             };
             QueryIncentivizedPoolsRequest: {
                 typeUrl: string;
-                encode(_: _137.QueryIncentivizedPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryIncentivizedPoolsRequest;
+                encode(_: _137.QueryIncentivizedPoolsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryIncentivizedPoolsRequest;
                 fromPartial(_: Partial<_137.QueryIncentivizedPoolsRequest>): _137.QueryIncentivizedPoolsRequest;
                 fromAmino(_: _137.QueryIncentivizedPoolsRequestAmino): _137.QueryIncentivizedPoolsRequest;
                 toAmino(_: _137.QueryIncentivizedPoolsRequest): _137.QueryIncentivizedPoolsRequestAmino;
@@ -3682,8 +3840,8 @@ export declare namespace osmosis {
             };
             IncentivizedPool: {
                 typeUrl: string;
-                encode(message: _137.IncentivizedPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.IncentivizedPool;
+                encode(message: _137.IncentivizedPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.IncentivizedPool;
                 fromPartial(object: Partial<_137.IncentivizedPool>): _137.IncentivizedPool;
                 fromAmino(object: _137.IncentivizedPoolAmino): _137.IncentivizedPool;
                 toAmino(message: _137.IncentivizedPool): _137.IncentivizedPoolAmino;
@@ -3695,8 +3853,8 @@ export declare namespace osmosis {
             };
             QueryIncentivizedPoolsResponse: {
                 typeUrl: string;
-                encode(message: _137.QueryIncentivizedPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryIncentivizedPoolsResponse;
+                encode(message: _137.QueryIncentivizedPoolsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryIncentivizedPoolsResponse;
                 fromPartial(object: Partial<_137.QueryIncentivizedPoolsResponse>): _137.QueryIncentivizedPoolsResponse;
                 fromAmino(object: _137.QueryIncentivizedPoolsResponseAmino): _137.QueryIncentivizedPoolsResponse;
                 toAmino(message: _137.QueryIncentivizedPoolsResponse): _137.QueryIncentivizedPoolsResponseAmino;
@@ -3708,8 +3866,8 @@ export declare namespace osmosis {
             };
             QueryExternalIncentiveGaugesRequest: {
                 typeUrl: string;
-                encode(_: _137.QueryExternalIncentiveGaugesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryExternalIncentiveGaugesRequest;
+                encode(_: _137.QueryExternalIncentiveGaugesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryExternalIncentiveGaugesRequest;
                 fromPartial(_: Partial<_137.QueryExternalIncentiveGaugesRequest>): _137.QueryExternalIncentiveGaugesRequest;
                 fromAmino(_: _137.QueryExternalIncentiveGaugesRequestAmino): _137.QueryExternalIncentiveGaugesRequest;
                 toAmino(_: _137.QueryExternalIncentiveGaugesRequest): _137.QueryExternalIncentiveGaugesRequestAmino;
@@ -3721,8 +3879,8 @@ export declare namespace osmosis {
             };
             QueryExternalIncentiveGaugesResponse: {
                 typeUrl: string;
-                encode(message: _137.QueryExternalIncentiveGaugesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.QueryExternalIncentiveGaugesResponse;
+                encode(message: _137.QueryExternalIncentiveGaugesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.QueryExternalIncentiveGaugesResponse;
                 fromPartial(object: Partial<_137.QueryExternalIncentiveGaugesResponse>): _137.QueryExternalIncentiveGaugesResponse;
                 fromAmino(object: _137.QueryExternalIncentiveGaugesResponseAmino): _137.QueryExternalIncentiveGaugesResponse;
                 toAmino(message: _137.QueryExternalIncentiveGaugesResponse): _137.QueryExternalIncentiveGaugesResponseAmino;
@@ -3734,8 +3892,8 @@ export declare namespace osmosis {
             };
             Params: {
                 typeUrl: string;
-                encode(message: _136.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.Params;
+                encode(message: _136.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.Params;
                 fromPartial(object: Partial<_136.Params>): _136.Params;
                 fromAmino(object: _136.ParamsAmino): _136.Params;
                 toAmino(message: _136.Params): _136.ParamsAmino;
@@ -3747,8 +3905,8 @@ export declare namespace osmosis {
             };
             LockableDurationsInfo: {
                 typeUrl: string;
-                encode(message: _136.LockableDurationsInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.LockableDurationsInfo;
+                encode(message: _136.LockableDurationsInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.LockableDurationsInfo;
                 fromPartial(object: Partial<_136.LockableDurationsInfo>): _136.LockableDurationsInfo;
                 fromAmino(object: _136.LockableDurationsInfoAmino): _136.LockableDurationsInfo;
                 toAmino(message: _136.LockableDurationsInfo): _136.LockableDurationsInfoAmino;
@@ -3760,8 +3918,8 @@ export declare namespace osmosis {
             };
             DistrInfo: {
                 typeUrl: string;
-                encode(message: _136.DistrInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.DistrInfo;
+                encode(message: _136.DistrInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.DistrInfo;
                 fromPartial(object: Partial<_136.DistrInfo>): _136.DistrInfo;
                 fromAmino(object: _136.DistrInfoAmino): _136.DistrInfo;
                 toAmino(message: _136.DistrInfo): _136.DistrInfoAmino;
@@ -3773,8 +3931,8 @@ export declare namespace osmosis {
             };
             DistrRecord: {
                 typeUrl: string;
-                encode(message: _136.DistrRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.DistrRecord;
+                encode(message: _136.DistrRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.DistrRecord;
                 fromPartial(object: Partial<_136.DistrRecord>): _136.DistrRecord;
                 fromAmino(object: _136.DistrRecordAmino): _136.DistrRecord;
                 toAmino(message: _136.DistrRecord): _136.DistrRecordAmino;
@@ -3786,8 +3944,8 @@ export declare namespace osmosis {
             };
             PoolToGauge: {
                 typeUrl: string;
-                encode(message: _136.PoolToGauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.PoolToGauge;
+                encode(message: _136.PoolToGauge, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.PoolToGauge;
                 fromPartial(object: Partial<_136.PoolToGauge>): _136.PoolToGauge;
                 fromAmino(object: _136.PoolToGaugeAmino): _136.PoolToGauge;
                 toAmino(message: _136.PoolToGauge): _136.PoolToGaugeAmino;
@@ -3799,8 +3957,8 @@ export declare namespace osmosis {
             };
             PoolToGauges: {
                 typeUrl: string;
-                encode(message: _136.PoolToGauges, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.PoolToGauges;
+                encode(message: _136.PoolToGauges, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.PoolToGauges;
                 fromPartial(object: Partial<_136.PoolToGauges>): _136.PoolToGauges;
                 fromAmino(object: _136.PoolToGaugesAmino): _136.PoolToGauges;
                 toAmino(message: _136.PoolToGauges): _136.PoolToGaugesAmino;
@@ -3812,8 +3970,8 @@ export declare namespace osmosis {
             };
             ReplacePoolIncentivesProposal: {
                 typeUrl: string;
-                encode(message: _135.ReplacePoolIncentivesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ReplacePoolIncentivesProposal;
+                encode(message: _135.ReplacePoolIncentivesProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _135.ReplacePoolIncentivesProposal;
                 fromPartial(object: Partial<_135.ReplacePoolIncentivesProposal>): _135.ReplacePoolIncentivesProposal;
                 fromAmino(object: _135.ReplacePoolIncentivesProposalAmino): _135.ReplacePoolIncentivesProposal;
                 toAmino(message: _135.ReplacePoolIncentivesProposal): _135.ReplacePoolIncentivesProposalAmino;
@@ -3825,8 +3983,8 @@ export declare namespace osmosis {
             };
             UpdatePoolIncentivesProposal: {
                 typeUrl: string;
-                encode(message: _135.UpdatePoolIncentivesProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.UpdatePoolIncentivesProposal;
+                encode(message: _135.UpdatePoolIncentivesProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _135.UpdatePoolIncentivesProposal;
                 fromPartial(object: Partial<_135.UpdatePoolIncentivesProposal>): _135.UpdatePoolIncentivesProposal;
                 fromAmino(object: _135.UpdatePoolIncentivesProposalAmino): _135.UpdatePoolIncentivesProposal;
                 toAmino(message: _135.UpdatePoolIncentivesProposal): _135.UpdatePoolIncentivesProposalAmino;
@@ -3838,8 +3996,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _134.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.GenesisState;
+                encode(message: _134.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _134.GenesisState;
                 fromPartial(object: Partial<_134.GenesisState>): _134.GenesisState;
                 fromAmino(object: _134.GenesisStateAmino): _134.GenesisState;
                 toAmino(message: _134.GenesisState): _134.GenesisStateAmino;
@@ -3951,8 +4109,8 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountIn: {
                 typeUrl: string;
-                encode(message: _143.MsgSwapExactAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgSwapExactAmountIn;
+                encode(message: _143.MsgSwapExactAmountIn, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _143.MsgSwapExactAmountIn;
                 fromPartial(object: Partial<_143.MsgSwapExactAmountIn>): _143.MsgSwapExactAmountIn;
                 fromAmino(object: _143.MsgSwapExactAmountInAmino): _143.MsgSwapExactAmountIn;
                 toAmino(message: _143.MsgSwapExactAmountIn): _143.MsgSwapExactAmountInAmino;
@@ -3964,8 +4122,8 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountInResponse: {
                 typeUrl: string;
-                encode(message: _143.MsgSwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgSwapExactAmountInResponse;
+                encode(message: _143.MsgSwapExactAmountInResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _143.MsgSwapExactAmountInResponse;
                 fromPartial(object: Partial<_143.MsgSwapExactAmountInResponse>): _143.MsgSwapExactAmountInResponse;
                 fromAmino(object: _143.MsgSwapExactAmountInResponseAmino): _143.MsgSwapExactAmountInResponse;
                 toAmino(message: _143.MsgSwapExactAmountInResponse): _143.MsgSwapExactAmountInResponseAmino;
@@ -3977,8 +4135,8 @@ export declare namespace osmosis {
             };
             MsgSplitRouteSwapExactAmountIn: {
                 typeUrl: string;
-                encode(message: _143.MsgSplitRouteSwapExactAmountIn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgSplitRouteSwapExactAmountIn;
+                encode(message: _143.MsgSplitRouteSwapExactAmountIn, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _143.MsgSplitRouteSwapExactAmountIn;
                 fromPartial(object: Partial<_143.MsgSplitRouteSwapExactAmountIn>): _143.MsgSplitRouteSwapExactAmountIn;
                 fromAmino(object: _143.MsgSplitRouteSwapExactAmountInAmino): _143.MsgSplitRouteSwapExactAmountIn;
                 toAmino(message: _143.MsgSplitRouteSwapExactAmountIn): _143.MsgSplitRouteSwapExactAmountInAmino;
@@ -3990,8 +4148,8 @@ export declare namespace osmosis {
             };
             MsgSplitRouteSwapExactAmountInResponse: {
                 typeUrl: string;
-                encode(message: _143.MsgSplitRouteSwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgSplitRouteSwapExactAmountInResponse;
+                encode(message: _143.MsgSplitRouteSwapExactAmountInResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _143.MsgSplitRouteSwapExactAmountInResponse;
                 fromPartial(object: Partial<_143.MsgSplitRouteSwapExactAmountInResponse>): _143.MsgSplitRouteSwapExactAmountInResponse;
                 fromAmino(object: _143.MsgSplitRouteSwapExactAmountInResponseAmino): _143.MsgSplitRouteSwapExactAmountInResponse;
                 toAmino(message: _143.MsgSplitRouteSwapExactAmountInResponse): _143.MsgSplitRouteSwapExactAmountInResponseAmino;
@@ -4003,8 +4161,8 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountOut: {
                 typeUrl: string;
-                encode(message: _143.MsgSwapExactAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgSwapExactAmountOut;
+                encode(message: _143.MsgSwapExactAmountOut, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _143.MsgSwapExactAmountOut;
                 fromPartial(object: Partial<_143.MsgSwapExactAmountOut>): _143.MsgSwapExactAmountOut;
                 fromAmino(object: _143.MsgSwapExactAmountOutAmino): _143.MsgSwapExactAmountOut;
                 toAmino(message: _143.MsgSwapExactAmountOut): _143.MsgSwapExactAmountOutAmino;
@@ -4016,8 +4174,8 @@ export declare namespace osmosis {
             };
             MsgSwapExactAmountOutResponse: {
                 typeUrl: string;
-                encode(message: _143.MsgSwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgSwapExactAmountOutResponse;
+                encode(message: _143.MsgSwapExactAmountOutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _143.MsgSwapExactAmountOutResponse;
                 fromPartial(object: Partial<_143.MsgSwapExactAmountOutResponse>): _143.MsgSwapExactAmountOutResponse;
                 fromAmino(object: _143.MsgSwapExactAmountOutResponseAmino): _143.MsgSwapExactAmountOutResponse;
                 toAmino(message: _143.MsgSwapExactAmountOutResponse): _143.MsgSwapExactAmountOutResponseAmino;
@@ -4029,8 +4187,8 @@ export declare namespace osmosis {
             };
             MsgSplitRouteSwapExactAmountOut: {
                 typeUrl: string;
-                encode(message: _143.MsgSplitRouteSwapExactAmountOut, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgSplitRouteSwapExactAmountOut;
+                encode(message: _143.MsgSplitRouteSwapExactAmountOut, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _143.MsgSplitRouteSwapExactAmountOut;
                 fromPartial(object: Partial<_143.MsgSplitRouteSwapExactAmountOut>): _143.MsgSplitRouteSwapExactAmountOut;
                 fromAmino(object: _143.MsgSplitRouteSwapExactAmountOutAmino): _143.MsgSplitRouteSwapExactAmountOut;
                 toAmino(message: _143.MsgSplitRouteSwapExactAmountOut): _143.MsgSplitRouteSwapExactAmountOutAmino;
@@ -4042,8 +4200,8 @@ export declare namespace osmosis {
             };
             MsgSplitRouteSwapExactAmountOutResponse: {
                 typeUrl: string;
-                encode(message: _143.MsgSplitRouteSwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.MsgSplitRouteSwapExactAmountOutResponse;
+                encode(message: _143.MsgSplitRouteSwapExactAmountOutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _143.MsgSplitRouteSwapExactAmountOutResponse;
                 fromPartial(object: Partial<_143.MsgSplitRouteSwapExactAmountOutResponse>): _143.MsgSplitRouteSwapExactAmountOutResponse;
                 fromAmino(object: _143.MsgSplitRouteSwapExactAmountOutResponseAmino): _143.MsgSplitRouteSwapExactAmountOutResponse;
                 toAmino(message: _143.MsgSplitRouteSwapExactAmountOutResponse): _143.MsgSplitRouteSwapExactAmountOutResponseAmino;
@@ -4055,8 +4213,8 @@ export declare namespace osmosis {
             };
             SwapAmountInRoute: {
                 typeUrl: string;
-                encode(message: _142.SwapAmountInRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.SwapAmountInRoute;
+                encode(message: _142.SwapAmountInRoute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _142.SwapAmountInRoute;
                 fromPartial(object: Partial<_142.SwapAmountInRoute>): _142.SwapAmountInRoute;
                 fromAmino(object: _142.SwapAmountInRouteAmino): _142.SwapAmountInRoute;
                 toAmino(message: _142.SwapAmountInRoute): _142.SwapAmountInRouteAmino;
@@ -4068,8 +4226,8 @@ export declare namespace osmosis {
             };
             SwapAmountOutRoute: {
                 typeUrl: string;
-                encode(message: _142.SwapAmountOutRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.SwapAmountOutRoute;
+                encode(message: _142.SwapAmountOutRoute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _142.SwapAmountOutRoute;
                 fromPartial(object: Partial<_142.SwapAmountOutRoute>): _142.SwapAmountOutRoute;
                 fromAmino(object: _142.SwapAmountOutRouteAmino): _142.SwapAmountOutRoute;
                 toAmino(message: _142.SwapAmountOutRoute): _142.SwapAmountOutRouteAmino;
@@ -4081,8 +4239,8 @@ export declare namespace osmosis {
             };
             SwapAmountInSplitRoute: {
                 typeUrl: string;
-                encode(message: _142.SwapAmountInSplitRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.SwapAmountInSplitRoute;
+                encode(message: _142.SwapAmountInSplitRoute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _142.SwapAmountInSplitRoute;
                 fromPartial(object: Partial<_142.SwapAmountInSplitRoute>): _142.SwapAmountInSplitRoute;
                 fromAmino(object: _142.SwapAmountInSplitRouteAmino): _142.SwapAmountInSplitRoute;
                 toAmino(message: _142.SwapAmountInSplitRoute): _142.SwapAmountInSplitRouteAmino;
@@ -4094,8 +4252,8 @@ export declare namespace osmosis {
             };
             SwapAmountOutSplitRoute: {
                 typeUrl: string;
-                encode(message: _142.SwapAmountOutSplitRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.SwapAmountOutSplitRoute;
+                encode(message: _142.SwapAmountOutSplitRoute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _142.SwapAmountOutSplitRoute;
                 fromPartial(object: Partial<_142.SwapAmountOutSplitRoute>): _142.SwapAmountOutSplitRoute;
                 fromAmino(object: _142.SwapAmountOutSplitRouteAmino): _142.SwapAmountOutSplitRoute;
                 toAmino(message: _142.SwapAmountOutSplitRoute): _142.SwapAmountOutSplitRouteAmino;
@@ -4107,8 +4265,8 @@ export declare namespace osmosis {
             };
             ParamsRequest: {
                 typeUrl: string;
-                encode(_: _141.ParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.ParamsRequest;
+                encode(_: _141.ParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.ParamsRequest;
                 fromPartial(_: Partial<_141.ParamsRequest>): _141.ParamsRequest;
                 fromAmino(_: _141.ParamsRequestAmino): _141.ParamsRequest;
                 toAmino(_: _141.ParamsRequest): _141.ParamsRequestAmino;
@@ -4120,8 +4278,8 @@ export declare namespace osmosis {
             };
             ParamsResponse: {
                 typeUrl: string;
-                encode(message: _141.ParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.ParamsResponse;
+                encode(message: _141.ParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.ParamsResponse;
                 fromPartial(object: Partial<_141.ParamsResponse>): _141.ParamsResponse;
                 fromAmino(object: _141.ParamsResponseAmino): _141.ParamsResponse;
                 toAmino(message: _141.ParamsResponse): _141.ParamsResponseAmino;
@@ -4133,8 +4291,8 @@ export declare namespace osmosis {
             };
             EstimateSwapExactAmountInRequest: {
                 typeUrl: string;
-                encode(message: _141.EstimateSwapExactAmountInRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.EstimateSwapExactAmountInRequest;
+                encode(message: _141.EstimateSwapExactAmountInRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.EstimateSwapExactAmountInRequest;
                 fromPartial(object: Partial<_141.EstimateSwapExactAmountInRequest>): _141.EstimateSwapExactAmountInRequest;
                 fromAmino(object: _141.EstimateSwapExactAmountInRequestAmino): _141.EstimateSwapExactAmountInRequest;
                 toAmino(message: _141.EstimateSwapExactAmountInRequest): _141.EstimateSwapExactAmountInRequestAmino;
@@ -4146,8 +4304,8 @@ export declare namespace osmosis {
             };
             EstimateSinglePoolSwapExactAmountInRequest: {
                 typeUrl: string;
-                encode(message: _141.EstimateSinglePoolSwapExactAmountInRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.EstimateSinglePoolSwapExactAmountInRequest;
+                encode(message: _141.EstimateSinglePoolSwapExactAmountInRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.EstimateSinglePoolSwapExactAmountInRequest;
                 fromPartial(object: Partial<_141.EstimateSinglePoolSwapExactAmountInRequest>): _141.EstimateSinglePoolSwapExactAmountInRequest;
                 fromAmino(object: _141.EstimateSinglePoolSwapExactAmountInRequestAmino): _141.EstimateSinglePoolSwapExactAmountInRequest;
                 toAmino(message: _141.EstimateSinglePoolSwapExactAmountInRequest): _141.EstimateSinglePoolSwapExactAmountInRequestAmino;
@@ -4159,8 +4317,8 @@ export declare namespace osmosis {
             };
             EstimateSwapExactAmountInResponse: {
                 typeUrl: string;
-                encode(message: _141.EstimateSwapExactAmountInResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.EstimateSwapExactAmountInResponse;
+                encode(message: _141.EstimateSwapExactAmountInResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.EstimateSwapExactAmountInResponse;
                 fromPartial(object: Partial<_141.EstimateSwapExactAmountInResponse>): _141.EstimateSwapExactAmountInResponse;
                 fromAmino(object: _141.EstimateSwapExactAmountInResponseAmino): _141.EstimateSwapExactAmountInResponse;
                 toAmino(message: _141.EstimateSwapExactAmountInResponse): _141.EstimateSwapExactAmountInResponseAmino;
@@ -4172,8 +4330,8 @@ export declare namespace osmosis {
             };
             EstimateSwapExactAmountOutRequest: {
                 typeUrl: string;
-                encode(message: _141.EstimateSwapExactAmountOutRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.EstimateSwapExactAmountOutRequest;
+                encode(message: _141.EstimateSwapExactAmountOutRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.EstimateSwapExactAmountOutRequest;
                 fromPartial(object: Partial<_141.EstimateSwapExactAmountOutRequest>): _141.EstimateSwapExactAmountOutRequest;
                 fromAmino(object: _141.EstimateSwapExactAmountOutRequestAmino): _141.EstimateSwapExactAmountOutRequest;
                 toAmino(message: _141.EstimateSwapExactAmountOutRequest): _141.EstimateSwapExactAmountOutRequestAmino;
@@ -4185,8 +4343,8 @@ export declare namespace osmosis {
             };
             EstimateSinglePoolSwapExactAmountOutRequest: {
                 typeUrl: string;
-                encode(message: _141.EstimateSinglePoolSwapExactAmountOutRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.EstimateSinglePoolSwapExactAmountOutRequest;
+                encode(message: _141.EstimateSinglePoolSwapExactAmountOutRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.EstimateSinglePoolSwapExactAmountOutRequest;
                 fromPartial(object: Partial<_141.EstimateSinglePoolSwapExactAmountOutRequest>): _141.EstimateSinglePoolSwapExactAmountOutRequest;
                 fromAmino(object: _141.EstimateSinglePoolSwapExactAmountOutRequestAmino): _141.EstimateSinglePoolSwapExactAmountOutRequest;
                 toAmino(message: _141.EstimateSinglePoolSwapExactAmountOutRequest): _141.EstimateSinglePoolSwapExactAmountOutRequestAmino;
@@ -4198,8 +4356,8 @@ export declare namespace osmosis {
             };
             EstimateSwapExactAmountOutResponse: {
                 typeUrl: string;
-                encode(message: _141.EstimateSwapExactAmountOutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.EstimateSwapExactAmountOutResponse;
+                encode(message: _141.EstimateSwapExactAmountOutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.EstimateSwapExactAmountOutResponse;
                 fromPartial(object: Partial<_141.EstimateSwapExactAmountOutResponse>): _141.EstimateSwapExactAmountOutResponse;
                 fromAmino(object: _141.EstimateSwapExactAmountOutResponseAmino): _141.EstimateSwapExactAmountOutResponse;
                 toAmino(message: _141.EstimateSwapExactAmountOutResponse): _141.EstimateSwapExactAmountOutResponseAmino;
@@ -4211,8 +4369,8 @@ export declare namespace osmosis {
             };
             NumPoolsRequest: {
                 typeUrl: string;
-                encode(_: _141.NumPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.NumPoolsRequest;
+                encode(_: _141.NumPoolsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.NumPoolsRequest;
                 fromPartial(_: Partial<_141.NumPoolsRequest>): _141.NumPoolsRequest;
                 fromAmino(_: _141.NumPoolsRequestAmino): _141.NumPoolsRequest;
                 toAmino(_: _141.NumPoolsRequest): _141.NumPoolsRequestAmino;
@@ -4224,8 +4382,8 @@ export declare namespace osmosis {
             };
             NumPoolsResponse: {
                 typeUrl: string;
-                encode(message: _141.NumPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.NumPoolsResponse;
+                encode(message: _141.NumPoolsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.NumPoolsResponse;
                 fromPartial(object: Partial<_141.NumPoolsResponse>): _141.NumPoolsResponse;
                 fromAmino(object: _141.NumPoolsResponseAmino): _141.NumPoolsResponse;
                 toAmino(message: _141.NumPoolsResponse): _141.NumPoolsResponseAmino;
@@ -4237,8 +4395,8 @@ export declare namespace osmosis {
             };
             PoolRequest: {
                 typeUrl: string;
-                encode(message: _141.PoolRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.PoolRequest;
+                encode(message: _141.PoolRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.PoolRequest;
                 fromPartial(object: Partial<_141.PoolRequest>): _141.PoolRequest;
                 fromAmino(object: _141.PoolRequestAmino): _141.PoolRequest;
                 toAmino(message: _141.PoolRequest): _141.PoolRequestAmino;
@@ -4250,8 +4408,8 @@ export declare namespace osmosis {
             };
             PoolResponse: {
                 typeUrl: string;
-                encode(message: _141.PoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.PoolResponse;
+                encode(message: _141.PoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.PoolResponse;
                 fromPartial(object: Partial<_141.PoolResponse>): _141.PoolResponse;
                 fromAmino(object: _141.PoolResponseAmino): _141.PoolResponse;
                 toAmino(message: _141.PoolResponse): _141.PoolResponseAmino;
@@ -4263,8 +4421,8 @@ export declare namespace osmosis {
             };
             AllPoolsRequest: {
                 typeUrl: string;
-                encode(_: _141.AllPoolsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.AllPoolsRequest;
+                encode(_: _141.AllPoolsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.AllPoolsRequest;
                 fromPartial(_: Partial<_141.AllPoolsRequest>): _141.AllPoolsRequest;
                 fromAmino(_: _141.AllPoolsRequestAmino): _141.AllPoolsRequest;
                 toAmino(_: _141.AllPoolsRequest): _141.AllPoolsRequestAmino;
@@ -4276,8 +4434,8 @@ export declare namespace osmosis {
             };
             AllPoolsResponse: {
                 typeUrl: string;
-                encode(message: _141.AllPoolsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.AllPoolsResponse;
+                encode(message: _141.AllPoolsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.AllPoolsResponse;
                 fromPartial(object: Partial<_141.AllPoolsResponse>): _141.AllPoolsResponse;
                 fromAmino(object: _141.AllPoolsResponseAmino): _141.AllPoolsResponse;
                 toAmino(message: _141.AllPoolsResponse): _141.AllPoolsResponseAmino;
@@ -4289,8 +4447,8 @@ export declare namespace osmosis {
             };
             SpotPriceRequest: {
                 typeUrl: string;
-                encode(message: _141.SpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.SpotPriceRequest;
+                encode(message: _141.SpotPriceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.SpotPriceRequest;
                 fromPartial(object: Partial<_141.SpotPriceRequest>): _141.SpotPriceRequest;
                 fromAmino(object: _141.SpotPriceRequestAmino): _141.SpotPriceRequest;
                 toAmino(message: _141.SpotPriceRequest): _141.SpotPriceRequestAmino;
@@ -4302,8 +4460,8 @@ export declare namespace osmosis {
             };
             SpotPriceResponse: {
                 typeUrl: string;
-                encode(message: _141.SpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.SpotPriceResponse;
+                encode(message: _141.SpotPriceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.SpotPriceResponse;
                 fromPartial(object: Partial<_141.SpotPriceResponse>): _141.SpotPriceResponse;
                 fromAmino(object: _141.SpotPriceResponseAmino): _141.SpotPriceResponse;
                 toAmino(message: _141.SpotPriceResponse): _141.SpotPriceResponseAmino;
@@ -4315,8 +4473,8 @@ export declare namespace osmosis {
             };
             TotalPoolLiquidityRequest: {
                 typeUrl: string;
-                encode(message: _141.TotalPoolLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.TotalPoolLiquidityRequest;
+                encode(message: _141.TotalPoolLiquidityRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.TotalPoolLiquidityRequest;
                 fromPartial(object: Partial<_141.TotalPoolLiquidityRequest>): _141.TotalPoolLiquidityRequest;
                 fromAmino(object: _141.TotalPoolLiquidityRequestAmino): _141.TotalPoolLiquidityRequest;
                 toAmino(message: _141.TotalPoolLiquidityRequest): _141.TotalPoolLiquidityRequestAmino;
@@ -4328,8 +4486,8 @@ export declare namespace osmosis {
             };
             TotalPoolLiquidityResponse: {
                 typeUrl: string;
-                encode(message: _141.TotalPoolLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.TotalPoolLiquidityResponse;
+                encode(message: _141.TotalPoolLiquidityResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.TotalPoolLiquidityResponse;
                 fromPartial(object: Partial<_141.TotalPoolLiquidityResponse>): _141.TotalPoolLiquidityResponse;
                 fromAmino(object: _141.TotalPoolLiquidityResponseAmino): _141.TotalPoolLiquidityResponse;
                 toAmino(message: _141.TotalPoolLiquidityResponse): _141.TotalPoolLiquidityResponseAmino;
@@ -4341,8 +4499,8 @@ export declare namespace osmosis {
             };
             TotalLiquidityRequest: {
                 typeUrl: string;
-                encode(_: _141.TotalLiquidityRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.TotalLiquidityRequest;
+                encode(_: _141.TotalLiquidityRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.TotalLiquidityRequest;
                 fromPartial(_: Partial<_141.TotalLiquidityRequest>): _141.TotalLiquidityRequest;
                 fromAmino(_: _141.TotalLiquidityRequestAmino): _141.TotalLiquidityRequest;
                 toAmino(_: _141.TotalLiquidityRequest): _141.TotalLiquidityRequestAmino;
@@ -4354,8 +4512,8 @@ export declare namespace osmosis {
             };
             TotalLiquidityResponse: {
                 typeUrl: string;
-                encode(message: _141.TotalLiquidityResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.TotalLiquidityResponse;
+                encode(message: _141.TotalLiquidityResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.TotalLiquidityResponse;
                 fromPartial(object: Partial<_141.TotalLiquidityResponse>): _141.TotalLiquidityResponse;
                 fromAmino(object: _141.TotalLiquidityResponseAmino): _141.TotalLiquidityResponse;
                 toAmino(message: _141.TotalLiquidityResponse): _141.TotalLiquidityResponseAmino;
@@ -4365,7 +4523,7 @@ export declare namespace osmosis {
                 toProto(message: _141.TotalLiquidityResponse): Uint8Array;
                 toProtoMsg(message: _141.TotalLiquidityResponse): _141.TotalLiquidityResponseProtoMsg;
             };
-            PoolI_InterfaceDecoder: (input: Uint8Array | import("protobufjs").Reader) => import("../google/protobuf/any").Any | import("./concentrated-liquidity/pool").Pool | _97.CosmWasmPool | _108.Pool | _115.Pool;
+            PoolI_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | import("./concentrated-liquidity/pool").Pool | _97.CosmWasmPool | _108.Pool | _115.Pool;
             PoolI_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             PoolI_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
             poolTypeFromJSON(object: any): _140.PoolType;
@@ -4375,8 +4533,8 @@ export declare namespace osmosis {
             PoolTypeAmino: typeof _140.PoolType;
             ModuleRoute: {
                 typeUrl: string;
-                encode(message: _140.ModuleRoute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _140.ModuleRoute;
+                encode(message: _140.ModuleRoute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _140.ModuleRoute;
                 fromPartial(object: Partial<_140.ModuleRoute>): _140.ModuleRoute;
                 fromAmino(object: _140.ModuleRouteAmino): _140.ModuleRoute;
                 toAmino(message: _140.ModuleRoute): _140.ModuleRouteAmino;
@@ -4388,8 +4546,8 @@ export declare namespace osmosis {
             };
             Params: {
                 typeUrl: string;
-                encode(message: _139.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.Params;
+                encode(message: _139.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _139.Params;
                 fromPartial(object: Partial<_139.Params>): _139.Params;
                 fromAmino(object: _139.ParamsAmino): _139.Params;
                 toAmino(message: _139.Params): _139.ParamsAmino;
@@ -4401,8 +4559,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _139.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.GenesisState;
+                encode(message: _139.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _139.GenesisState;
                 fromPartial(object: Partial<_139.GenesisState>): _139.GenesisState;
                 fromAmino(object: _139.GenesisStateAmino): _139.GenesisState;
                 toAmino(message: _139.GenesisState): _139.GenesisStateAmino;
@@ -4552,8 +4710,8 @@ export declare namespace osmosis {
             };
             MsgSetHotRoutes: {
                 typeUrl: string;
-                encode(message: _149.MsgSetHotRoutes, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetHotRoutes;
+                encode(message: _149.MsgSetHotRoutes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetHotRoutes;
                 fromPartial(object: Partial<_149.MsgSetHotRoutes>): _149.MsgSetHotRoutes;
                 fromAmino(object: _149.MsgSetHotRoutesAmino): _149.MsgSetHotRoutes;
                 toAmino(message: _149.MsgSetHotRoutes): _149.MsgSetHotRoutesAmino;
@@ -4565,8 +4723,8 @@ export declare namespace osmosis {
             };
             MsgSetHotRoutesResponse: {
                 typeUrl: string;
-                encode(_: _149.MsgSetHotRoutesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetHotRoutesResponse;
+                encode(_: _149.MsgSetHotRoutesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetHotRoutesResponse;
                 fromPartial(_: Partial<_149.MsgSetHotRoutesResponse>): _149.MsgSetHotRoutesResponse;
                 fromAmino(_: _149.MsgSetHotRoutesResponseAmino): _149.MsgSetHotRoutesResponse;
                 toAmino(_: _149.MsgSetHotRoutesResponse): _149.MsgSetHotRoutesResponseAmino;
@@ -4578,8 +4736,8 @@ export declare namespace osmosis {
             };
             MsgSetDeveloperAccount: {
                 typeUrl: string;
-                encode(message: _149.MsgSetDeveloperAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetDeveloperAccount;
+                encode(message: _149.MsgSetDeveloperAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetDeveloperAccount;
                 fromPartial(object: Partial<_149.MsgSetDeveloperAccount>): _149.MsgSetDeveloperAccount;
                 fromAmino(object: _149.MsgSetDeveloperAccountAmino): _149.MsgSetDeveloperAccount;
                 toAmino(message: _149.MsgSetDeveloperAccount): _149.MsgSetDeveloperAccountAmino;
@@ -4591,8 +4749,8 @@ export declare namespace osmosis {
             };
             MsgSetDeveloperAccountResponse: {
                 typeUrl: string;
-                encode(_: _149.MsgSetDeveloperAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetDeveloperAccountResponse;
+                encode(_: _149.MsgSetDeveloperAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetDeveloperAccountResponse;
                 fromPartial(_: Partial<_149.MsgSetDeveloperAccountResponse>): _149.MsgSetDeveloperAccountResponse;
                 fromAmino(_: _149.MsgSetDeveloperAccountResponseAmino): _149.MsgSetDeveloperAccountResponse;
                 toAmino(_: _149.MsgSetDeveloperAccountResponse): _149.MsgSetDeveloperAccountResponseAmino;
@@ -4604,8 +4762,8 @@ export declare namespace osmosis {
             };
             MsgSetPoolWeights: {
                 typeUrl: string;
-                encode(message: _149.MsgSetPoolWeights, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetPoolWeights;
+                encode(message: _149.MsgSetPoolWeights, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetPoolWeights;
                 fromPartial(object: Partial<_149.MsgSetPoolWeights>): _149.MsgSetPoolWeights;
                 fromAmino(object: _149.MsgSetPoolWeightsAmino): _149.MsgSetPoolWeights;
                 toAmino(message: _149.MsgSetPoolWeights): _149.MsgSetPoolWeightsAmino;
@@ -4617,8 +4775,8 @@ export declare namespace osmosis {
             };
             MsgSetPoolWeightsResponse: {
                 typeUrl: string;
-                encode(_: _149.MsgSetPoolWeightsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetPoolWeightsResponse;
+                encode(_: _149.MsgSetPoolWeightsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetPoolWeightsResponse;
                 fromPartial(_: Partial<_149.MsgSetPoolWeightsResponse>): _149.MsgSetPoolWeightsResponse;
                 fromAmino(_: _149.MsgSetPoolWeightsResponseAmino): _149.MsgSetPoolWeightsResponse;
                 toAmino(_: _149.MsgSetPoolWeightsResponse): _149.MsgSetPoolWeightsResponseAmino;
@@ -4630,8 +4788,8 @@ export declare namespace osmosis {
             };
             MsgSetMaxPoolPointsPerTx: {
                 typeUrl: string;
-                encode(message: _149.MsgSetMaxPoolPointsPerTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetMaxPoolPointsPerTx;
+                encode(message: _149.MsgSetMaxPoolPointsPerTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetMaxPoolPointsPerTx;
                 fromPartial(object: Partial<_149.MsgSetMaxPoolPointsPerTx>): _149.MsgSetMaxPoolPointsPerTx;
                 fromAmino(object: _149.MsgSetMaxPoolPointsPerTxAmino): _149.MsgSetMaxPoolPointsPerTx;
                 toAmino(message: _149.MsgSetMaxPoolPointsPerTx): _149.MsgSetMaxPoolPointsPerTxAmino;
@@ -4643,8 +4801,8 @@ export declare namespace osmosis {
             };
             MsgSetMaxPoolPointsPerTxResponse: {
                 typeUrl: string;
-                encode(_: _149.MsgSetMaxPoolPointsPerTxResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetMaxPoolPointsPerTxResponse;
+                encode(_: _149.MsgSetMaxPoolPointsPerTxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetMaxPoolPointsPerTxResponse;
                 fromPartial(_: Partial<_149.MsgSetMaxPoolPointsPerTxResponse>): _149.MsgSetMaxPoolPointsPerTxResponse;
                 fromAmino(_: _149.MsgSetMaxPoolPointsPerTxResponseAmino): _149.MsgSetMaxPoolPointsPerTxResponse;
                 toAmino(_: _149.MsgSetMaxPoolPointsPerTxResponse): _149.MsgSetMaxPoolPointsPerTxResponseAmino;
@@ -4656,8 +4814,8 @@ export declare namespace osmosis {
             };
             MsgSetMaxPoolPointsPerBlock: {
                 typeUrl: string;
-                encode(message: _149.MsgSetMaxPoolPointsPerBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetMaxPoolPointsPerBlock;
+                encode(message: _149.MsgSetMaxPoolPointsPerBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetMaxPoolPointsPerBlock;
                 fromPartial(object: Partial<_149.MsgSetMaxPoolPointsPerBlock>): _149.MsgSetMaxPoolPointsPerBlock;
                 fromAmino(object: _149.MsgSetMaxPoolPointsPerBlockAmino): _149.MsgSetMaxPoolPointsPerBlock;
                 toAmino(message: _149.MsgSetMaxPoolPointsPerBlock): _149.MsgSetMaxPoolPointsPerBlockAmino;
@@ -4669,8 +4827,8 @@ export declare namespace osmosis {
             };
             MsgSetMaxPoolPointsPerBlockResponse: {
                 typeUrl: string;
-                encode(_: _149.MsgSetMaxPoolPointsPerBlockResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetMaxPoolPointsPerBlockResponse;
+                encode(_: _149.MsgSetMaxPoolPointsPerBlockResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetMaxPoolPointsPerBlockResponse;
                 fromPartial(_: Partial<_149.MsgSetMaxPoolPointsPerBlockResponse>): _149.MsgSetMaxPoolPointsPerBlockResponse;
                 fromAmino(_: _149.MsgSetMaxPoolPointsPerBlockResponseAmino): _149.MsgSetMaxPoolPointsPerBlockResponse;
                 toAmino(_: _149.MsgSetMaxPoolPointsPerBlockResponse): _149.MsgSetMaxPoolPointsPerBlockResponseAmino;
@@ -4682,8 +4840,8 @@ export declare namespace osmosis {
             };
             MsgSetBaseDenoms: {
                 typeUrl: string;
-                encode(message: _149.MsgSetBaseDenoms, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetBaseDenoms;
+                encode(message: _149.MsgSetBaseDenoms, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetBaseDenoms;
                 fromPartial(object: Partial<_149.MsgSetBaseDenoms>): _149.MsgSetBaseDenoms;
                 fromAmino(object: _149.MsgSetBaseDenomsAmino): _149.MsgSetBaseDenoms;
                 toAmino(message: _149.MsgSetBaseDenoms): _149.MsgSetBaseDenomsAmino;
@@ -4695,8 +4853,8 @@ export declare namespace osmosis {
             };
             MsgSetBaseDenomsResponse: {
                 typeUrl: string;
-                encode(_: _149.MsgSetBaseDenomsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgSetBaseDenomsResponse;
+                encode(_: _149.MsgSetBaseDenomsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgSetBaseDenomsResponse;
                 fromPartial(_: Partial<_149.MsgSetBaseDenomsResponse>): _149.MsgSetBaseDenomsResponse;
                 fromAmino(_: _149.MsgSetBaseDenomsResponseAmino): _149.MsgSetBaseDenomsResponse;
                 toAmino(_: _149.MsgSetBaseDenomsResponse): _149.MsgSetBaseDenomsResponseAmino;
@@ -4708,8 +4866,8 @@ export declare namespace osmosis {
             };
             QueryParamsRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryParamsRequest;
+                encode(_: _148.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryParamsRequest;
                 fromPartial(_: Partial<_148.QueryParamsRequest>): _148.QueryParamsRequest;
                 fromAmino(_: _148.QueryParamsRequestAmino): _148.QueryParamsRequest;
                 toAmino(_: _148.QueryParamsRequest): _148.QueryParamsRequestAmino;
@@ -4721,8 +4879,8 @@ export declare namespace osmosis {
             };
             QueryParamsResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryParamsResponse;
+                encode(message: _148.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryParamsResponse;
                 fromPartial(object: Partial<_148.QueryParamsResponse>): _148.QueryParamsResponse;
                 fromAmino(object: _148.QueryParamsResponseAmino): _148.QueryParamsResponse;
                 toAmino(message: _148.QueryParamsResponse): _148.QueryParamsResponseAmino;
@@ -4734,8 +4892,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevNumberOfTradesRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevNumberOfTradesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevNumberOfTradesRequest;
+                encode(_: _148.QueryGetProtoRevNumberOfTradesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevNumberOfTradesRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevNumberOfTradesRequest>): _148.QueryGetProtoRevNumberOfTradesRequest;
                 fromAmino(_: _148.QueryGetProtoRevNumberOfTradesRequestAmino): _148.QueryGetProtoRevNumberOfTradesRequest;
                 toAmino(_: _148.QueryGetProtoRevNumberOfTradesRequest): _148.QueryGetProtoRevNumberOfTradesRequestAmino;
@@ -4747,8 +4905,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevNumberOfTradesResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevNumberOfTradesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevNumberOfTradesResponse;
+                encode(message: _148.QueryGetProtoRevNumberOfTradesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevNumberOfTradesResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevNumberOfTradesResponse>): _148.QueryGetProtoRevNumberOfTradesResponse;
                 fromAmino(object: _148.QueryGetProtoRevNumberOfTradesResponseAmino): _148.QueryGetProtoRevNumberOfTradesResponse;
                 toAmino(message: _148.QueryGetProtoRevNumberOfTradesResponse): _148.QueryGetProtoRevNumberOfTradesResponseAmino;
@@ -4760,8 +4918,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevProfitsByDenomRequest: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevProfitsByDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevProfitsByDenomRequest;
+                encode(message: _148.QueryGetProtoRevProfitsByDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevProfitsByDenomRequest;
                 fromPartial(object: Partial<_148.QueryGetProtoRevProfitsByDenomRequest>): _148.QueryGetProtoRevProfitsByDenomRequest;
                 fromAmino(object: _148.QueryGetProtoRevProfitsByDenomRequestAmino): _148.QueryGetProtoRevProfitsByDenomRequest;
                 toAmino(message: _148.QueryGetProtoRevProfitsByDenomRequest): _148.QueryGetProtoRevProfitsByDenomRequestAmino;
@@ -4773,8 +4931,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevProfitsByDenomResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevProfitsByDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevProfitsByDenomResponse;
+                encode(message: _148.QueryGetProtoRevProfitsByDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevProfitsByDenomResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevProfitsByDenomResponse>): _148.QueryGetProtoRevProfitsByDenomResponse;
                 fromAmino(object: _148.QueryGetProtoRevProfitsByDenomResponseAmino): _148.QueryGetProtoRevProfitsByDenomResponse;
                 toAmino(message: _148.QueryGetProtoRevProfitsByDenomResponse): _148.QueryGetProtoRevProfitsByDenomResponseAmino;
@@ -4786,8 +4944,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevAllProfitsRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevAllProfitsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevAllProfitsRequest;
+                encode(_: _148.QueryGetProtoRevAllProfitsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevAllProfitsRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevAllProfitsRequest>): _148.QueryGetProtoRevAllProfitsRequest;
                 fromAmino(_: _148.QueryGetProtoRevAllProfitsRequestAmino): _148.QueryGetProtoRevAllProfitsRequest;
                 toAmino(_: _148.QueryGetProtoRevAllProfitsRequest): _148.QueryGetProtoRevAllProfitsRequestAmino;
@@ -4799,8 +4957,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevAllProfitsResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevAllProfitsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevAllProfitsResponse;
+                encode(message: _148.QueryGetProtoRevAllProfitsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevAllProfitsResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevAllProfitsResponse>): _148.QueryGetProtoRevAllProfitsResponse;
                 fromAmino(object: _148.QueryGetProtoRevAllProfitsResponseAmino): _148.QueryGetProtoRevAllProfitsResponse;
                 toAmino(message: _148.QueryGetProtoRevAllProfitsResponse): _148.QueryGetProtoRevAllProfitsResponseAmino;
@@ -4812,8 +4970,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevStatisticsByRouteRequest: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevStatisticsByRouteRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevStatisticsByRouteRequest;
+                encode(message: _148.QueryGetProtoRevStatisticsByRouteRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevStatisticsByRouteRequest;
                 fromPartial(object: Partial<_148.QueryGetProtoRevStatisticsByRouteRequest>): _148.QueryGetProtoRevStatisticsByRouteRequest;
                 fromAmino(object: _148.QueryGetProtoRevStatisticsByRouteRequestAmino): _148.QueryGetProtoRevStatisticsByRouteRequest;
                 toAmino(message: _148.QueryGetProtoRevStatisticsByRouteRequest): _148.QueryGetProtoRevStatisticsByRouteRequestAmino;
@@ -4825,8 +4983,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevStatisticsByRouteResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevStatisticsByRouteResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevStatisticsByRouteResponse;
+                encode(message: _148.QueryGetProtoRevStatisticsByRouteResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevStatisticsByRouteResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevStatisticsByRouteResponse>): _148.QueryGetProtoRevStatisticsByRouteResponse;
                 fromAmino(object: _148.QueryGetProtoRevStatisticsByRouteResponseAmino): _148.QueryGetProtoRevStatisticsByRouteResponse;
                 toAmino(message: _148.QueryGetProtoRevStatisticsByRouteResponse): _148.QueryGetProtoRevStatisticsByRouteResponseAmino;
@@ -4838,8 +4996,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevAllRouteStatisticsRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevAllRouteStatisticsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevAllRouteStatisticsRequest;
+                encode(_: _148.QueryGetProtoRevAllRouteStatisticsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevAllRouteStatisticsRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevAllRouteStatisticsRequest>): _148.QueryGetProtoRevAllRouteStatisticsRequest;
                 fromAmino(_: _148.QueryGetProtoRevAllRouteStatisticsRequestAmino): _148.QueryGetProtoRevAllRouteStatisticsRequest;
                 toAmino(_: _148.QueryGetProtoRevAllRouteStatisticsRequest): _148.QueryGetProtoRevAllRouteStatisticsRequestAmino;
@@ -4851,8 +5009,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevAllRouteStatisticsResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevAllRouteStatisticsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevAllRouteStatisticsResponse;
+                encode(message: _148.QueryGetProtoRevAllRouteStatisticsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevAllRouteStatisticsResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevAllRouteStatisticsResponse>): _148.QueryGetProtoRevAllRouteStatisticsResponse;
                 fromAmino(object: _148.QueryGetProtoRevAllRouteStatisticsResponseAmino): _148.QueryGetProtoRevAllRouteStatisticsResponse;
                 toAmino(message: _148.QueryGetProtoRevAllRouteStatisticsResponse): _148.QueryGetProtoRevAllRouteStatisticsResponseAmino;
@@ -4864,8 +5022,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevTokenPairArbRoutesRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevTokenPairArbRoutesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevTokenPairArbRoutesRequest;
+                encode(_: _148.QueryGetProtoRevTokenPairArbRoutesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevTokenPairArbRoutesRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevTokenPairArbRoutesRequest>): _148.QueryGetProtoRevTokenPairArbRoutesRequest;
                 fromAmino(_: _148.QueryGetProtoRevTokenPairArbRoutesRequestAmino): _148.QueryGetProtoRevTokenPairArbRoutesRequest;
                 toAmino(_: _148.QueryGetProtoRevTokenPairArbRoutesRequest): _148.QueryGetProtoRevTokenPairArbRoutesRequestAmino;
@@ -4877,8 +5035,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevTokenPairArbRoutesResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevTokenPairArbRoutesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevTokenPairArbRoutesResponse;
+                encode(message: _148.QueryGetProtoRevTokenPairArbRoutesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevTokenPairArbRoutesResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevTokenPairArbRoutesResponse>): _148.QueryGetProtoRevTokenPairArbRoutesResponse;
                 fromAmino(object: _148.QueryGetProtoRevTokenPairArbRoutesResponseAmino): _148.QueryGetProtoRevTokenPairArbRoutesResponse;
                 toAmino(message: _148.QueryGetProtoRevTokenPairArbRoutesResponse): _148.QueryGetProtoRevTokenPairArbRoutesResponseAmino;
@@ -4890,8 +5048,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevAdminAccountRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevAdminAccountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevAdminAccountRequest;
+                encode(_: _148.QueryGetProtoRevAdminAccountRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevAdminAccountRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevAdminAccountRequest>): _148.QueryGetProtoRevAdminAccountRequest;
                 fromAmino(_: _148.QueryGetProtoRevAdminAccountRequestAmino): _148.QueryGetProtoRevAdminAccountRequest;
                 toAmino(_: _148.QueryGetProtoRevAdminAccountRequest): _148.QueryGetProtoRevAdminAccountRequestAmino;
@@ -4903,8 +5061,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevAdminAccountResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevAdminAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevAdminAccountResponse;
+                encode(message: _148.QueryGetProtoRevAdminAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevAdminAccountResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevAdminAccountResponse>): _148.QueryGetProtoRevAdminAccountResponse;
                 fromAmino(object: _148.QueryGetProtoRevAdminAccountResponseAmino): _148.QueryGetProtoRevAdminAccountResponse;
                 toAmino(message: _148.QueryGetProtoRevAdminAccountResponse): _148.QueryGetProtoRevAdminAccountResponseAmino;
@@ -4916,8 +5074,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevDeveloperAccountRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevDeveloperAccountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevDeveloperAccountRequest;
+                encode(_: _148.QueryGetProtoRevDeveloperAccountRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevDeveloperAccountRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevDeveloperAccountRequest>): _148.QueryGetProtoRevDeveloperAccountRequest;
                 fromAmino(_: _148.QueryGetProtoRevDeveloperAccountRequestAmino): _148.QueryGetProtoRevDeveloperAccountRequest;
                 toAmino(_: _148.QueryGetProtoRevDeveloperAccountRequest): _148.QueryGetProtoRevDeveloperAccountRequestAmino;
@@ -4929,8 +5087,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevDeveloperAccountResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevDeveloperAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevDeveloperAccountResponse;
+                encode(message: _148.QueryGetProtoRevDeveloperAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevDeveloperAccountResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevDeveloperAccountResponse>): _148.QueryGetProtoRevDeveloperAccountResponse;
                 fromAmino(object: _148.QueryGetProtoRevDeveloperAccountResponseAmino): _148.QueryGetProtoRevDeveloperAccountResponse;
                 toAmino(message: _148.QueryGetProtoRevDeveloperAccountResponse): _148.QueryGetProtoRevDeveloperAccountResponseAmino;
@@ -4942,8 +5100,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevPoolWeightsRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevPoolWeightsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevPoolWeightsRequest;
+                encode(_: _148.QueryGetProtoRevPoolWeightsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevPoolWeightsRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevPoolWeightsRequest>): _148.QueryGetProtoRevPoolWeightsRequest;
                 fromAmino(_: _148.QueryGetProtoRevPoolWeightsRequestAmino): _148.QueryGetProtoRevPoolWeightsRequest;
                 toAmino(_: _148.QueryGetProtoRevPoolWeightsRequest): _148.QueryGetProtoRevPoolWeightsRequestAmino;
@@ -4955,8 +5113,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevPoolWeightsResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevPoolWeightsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevPoolWeightsResponse;
+                encode(message: _148.QueryGetProtoRevPoolWeightsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevPoolWeightsResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevPoolWeightsResponse>): _148.QueryGetProtoRevPoolWeightsResponse;
                 fromAmino(object: _148.QueryGetProtoRevPoolWeightsResponseAmino): _148.QueryGetProtoRevPoolWeightsResponse;
                 toAmino(message: _148.QueryGetProtoRevPoolWeightsResponse): _148.QueryGetProtoRevPoolWeightsResponseAmino;
@@ -4968,8 +5126,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevMaxPoolPointsPerBlockRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevMaxPoolPointsPerBlockRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevMaxPoolPointsPerBlockRequest;
+                encode(_: _148.QueryGetProtoRevMaxPoolPointsPerBlockRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevMaxPoolPointsPerBlockRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevMaxPoolPointsPerBlockRequest>): _148.QueryGetProtoRevMaxPoolPointsPerBlockRequest;
                 fromAmino(_: _148.QueryGetProtoRevMaxPoolPointsPerBlockRequestAmino): _148.QueryGetProtoRevMaxPoolPointsPerBlockRequest;
                 toAmino(_: _148.QueryGetProtoRevMaxPoolPointsPerBlockRequest): _148.QueryGetProtoRevMaxPoolPointsPerBlockRequestAmino;
@@ -4981,8 +5139,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevMaxPoolPointsPerBlockResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevMaxPoolPointsPerBlockResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevMaxPoolPointsPerBlockResponse;
+                encode(message: _148.QueryGetProtoRevMaxPoolPointsPerBlockResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevMaxPoolPointsPerBlockResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevMaxPoolPointsPerBlockResponse>): _148.QueryGetProtoRevMaxPoolPointsPerBlockResponse;
                 fromAmino(object: _148.QueryGetProtoRevMaxPoolPointsPerBlockResponseAmino): _148.QueryGetProtoRevMaxPoolPointsPerBlockResponse;
                 toAmino(message: _148.QueryGetProtoRevMaxPoolPointsPerBlockResponse): _148.QueryGetProtoRevMaxPoolPointsPerBlockResponseAmino;
@@ -4994,8 +5152,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevMaxPoolPointsPerTxRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevMaxPoolPointsPerTxRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevMaxPoolPointsPerTxRequest;
+                encode(_: _148.QueryGetProtoRevMaxPoolPointsPerTxRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevMaxPoolPointsPerTxRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevMaxPoolPointsPerTxRequest>): _148.QueryGetProtoRevMaxPoolPointsPerTxRequest;
                 fromAmino(_: _148.QueryGetProtoRevMaxPoolPointsPerTxRequestAmino): _148.QueryGetProtoRevMaxPoolPointsPerTxRequest;
                 toAmino(_: _148.QueryGetProtoRevMaxPoolPointsPerTxRequest): _148.QueryGetProtoRevMaxPoolPointsPerTxRequestAmino;
@@ -5007,8 +5165,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevMaxPoolPointsPerTxResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevMaxPoolPointsPerTxResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevMaxPoolPointsPerTxResponse;
+                encode(message: _148.QueryGetProtoRevMaxPoolPointsPerTxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevMaxPoolPointsPerTxResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevMaxPoolPointsPerTxResponse>): _148.QueryGetProtoRevMaxPoolPointsPerTxResponse;
                 fromAmino(object: _148.QueryGetProtoRevMaxPoolPointsPerTxResponseAmino): _148.QueryGetProtoRevMaxPoolPointsPerTxResponse;
                 toAmino(message: _148.QueryGetProtoRevMaxPoolPointsPerTxResponse): _148.QueryGetProtoRevMaxPoolPointsPerTxResponseAmino;
@@ -5020,8 +5178,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevBaseDenomsRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevBaseDenomsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevBaseDenomsRequest;
+                encode(_: _148.QueryGetProtoRevBaseDenomsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevBaseDenomsRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevBaseDenomsRequest>): _148.QueryGetProtoRevBaseDenomsRequest;
                 fromAmino(_: _148.QueryGetProtoRevBaseDenomsRequestAmino): _148.QueryGetProtoRevBaseDenomsRequest;
                 toAmino(_: _148.QueryGetProtoRevBaseDenomsRequest): _148.QueryGetProtoRevBaseDenomsRequestAmino;
@@ -5033,8 +5191,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevBaseDenomsResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevBaseDenomsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevBaseDenomsResponse;
+                encode(message: _148.QueryGetProtoRevBaseDenomsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevBaseDenomsResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevBaseDenomsResponse>): _148.QueryGetProtoRevBaseDenomsResponse;
                 fromAmino(object: _148.QueryGetProtoRevBaseDenomsResponseAmino): _148.QueryGetProtoRevBaseDenomsResponse;
                 toAmino(message: _148.QueryGetProtoRevBaseDenomsResponse): _148.QueryGetProtoRevBaseDenomsResponseAmino;
@@ -5046,8 +5204,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevEnabledRequest: {
                 typeUrl: string;
-                encode(_: _148.QueryGetProtoRevEnabledRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevEnabledRequest;
+                encode(_: _148.QueryGetProtoRevEnabledRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevEnabledRequest;
                 fromPartial(_: Partial<_148.QueryGetProtoRevEnabledRequest>): _148.QueryGetProtoRevEnabledRequest;
                 fromAmino(_: _148.QueryGetProtoRevEnabledRequestAmino): _148.QueryGetProtoRevEnabledRequest;
                 toAmino(_: _148.QueryGetProtoRevEnabledRequest): _148.QueryGetProtoRevEnabledRequestAmino;
@@ -5059,8 +5217,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevEnabledResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevEnabledResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevEnabledResponse;
+                encode(message: _148.QueryGetProtoRevEnabledResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevEnabledResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevEnabledResponse>): _148.QueryGetProtoRevEnabledResponse;
                 fromAmino(object: _148.QueryGetProtoRevEnabledResponseAmino): _148.QueryGetProtoRevEnabledResponse;
                 toAmino(message: _148.QueryGetProtoRevEnabledResponse): _148.QueryGetProtoRevEnabledResponseAmino;
@@ -5072,8 +5230,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevPoolRequest: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevPoolRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevPoolRequest;
+                encode(message: _148.QueryGetProtoRevPoolRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevPoolRequest;
                 fromPartial(object: Partial<_148.QueryGetProtoRevPoolRequest>): _148.QueryGetProtoRevPoolRequest;
                 fromAmino(object: _148.QueryGetProtoRevPoolRequestAmino): _148.QueryGetProtoRevPoolRequest;
                 toAmino(message: _148.QueryGetProtoRevPoolRequest): _148.QueryGetProtoRevPoolRequestAmino;
@@ -5085,8 +5243,8 @@ export declare namespace osmosis {
             };
             QueryGetProtoRevPoolResponse: {
                 typeUrl: string;
-                encode(message: _148.QueryGetProtoRevPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryGetProtoRevPoolResponse;
+                encode(message: _148.QueryGetProtoRevPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.QueryGetProtoRevPoolResponse;
                 fromPartial(object: Partial<_148.QueryGetProtoRevPoolResponse>): _148.QueryGetProtoRevPoolResponse;
                 fromAmino(object: _148.QueryGetProtoRevPoolResponseAmino): _148.QueryGetProtoRevPoolResponse;
                 toAmino(message: _148.QueryGetProtoRevPoolResponse): _148.QueryGetProtoRevPoolResponseAmino;
@@ -5098,8 +5256,8 @@ export declare namespace osmosis {
             };
             TokenPairArbRoutes: {
                 typeUrl: string;
-                encode(message: _147.TokenPairArbRoutes, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.TokenPairArbRoutes;
+                encode(message: _147.TokenPairArbRoutes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.TokenPairArbRoutes;
                 fromPartial(object: Partial<_147.TokenPairArbRoutes>): _147.TokenPairArbRoutes;
                 fromAmino(object: _147.TokenPairArbRoutesAmino): _147.TokenPairArbRoutes;
                 toAmino(message: _147.TokenPairArbRoutes): _147.TokenPairArbRoutesAmino;
@@ -5111,8 +5269,8 @@ export declare namespace osmosis {
             };
             Route: {
                 typeUrl: string;
-                encode(message: _147.Route, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.Route;
+                encode(message: _147.Route, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.Route;
                 fromPartial(object: Partial<_147.Route>): _147.Route;
                 fromAmino(object: _147.RouteAmino): _147.Route;
                 toAmino(message: _147.Route): _147.RouteAmino;
@@ -5124,8 +5282,8 @@ export declare namespace osmosis {
             };
             Trade: {
                 typeUrl: string;
-                encode(message: _147.Trade, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.Trade;
+                encode(message: _147.Trade, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.Trade;
                 fromPartial(object: Partial<_147.Trade>): _147.Trade;
                 fromAmino(object: _147.TradeAmino): _147.Trade;
                 toAmino(message: _147.Trade): _147.TradeAmino;
@@ -5137,8 +5295,8 @@ export declare namespace osmosis {
             };
             RouteStatistics: {
                 typeUrl: string;
-                encode(message: _147.RouteStatistics, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.RouteStatistics;
+                encode(message: _147.RouteStatistics, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.RouteStatistics;
                 fromPartial(object: Partial<_147.RouteStatistics>): _147.RouteStatistics;
                 fromAmino(object: _147.RouteStatisticsAmino): _147.RouteStatistics;
                 toAmino(message: _147.RouteStatistics): _147.RouteStatisticsAmino;
@@ -5150,8 +5308,8 @@ export declare namespace osmosis {
             };
             PoolWeights: {
                 typeUrl: string;
-                encode(message: _147.PoolWeights, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.PoolWeights;
+                encode(message: _147.PoolWeights, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.PoolWeights;
                 fromPartial(object: Partial<_147.PoolWeights>): _147.PoolWeights;
                 fromAmino(object: _147.PoolWeightsAmino): _147.PoolWeights;
                 toAmino(message: _147.PoolWeights): _147.PoolWeightsAmino;
@@ -5163,8 +5321,8 @@ export declare namespace osmosis {
             };
             BaseDenom: {
                 typeUrl: string;
-                encode(message: _147.BaseDenom, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.BaseDenom;
+                encode(message: _147.BaseDenom, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.BaseDenom;
                 fromPartial(object: Partial<_147.BaseDenom>): _147.BaseDenom;
                 fromAmino(object: _147.BaseDenomAmino): _147.BaseDenom;
                 toAmino(message: _147.BaseDenom): _147.BaseDenomAmino;
@@ -5176,8 +5334,8 @@ export declare namespace osmosis {
             };
             Params: {
                 typeUrl: string;
-                encode(message: _146.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.Params;
+                encode(message: _146.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _146.Params;
                 fromPartial(object: Partial<_146.Params>): _146.Params;
                 fromAmino(object: _146.ParamsAmino): _146.Params;
                 toAmino(message: _146.Params): _146.ParamsAmino;
@@ -5189,8 +5347,8 @@ export declare namespace osmosis {
             };
             SetProtoRevEnabledProposal: {
                 typeUrl: string;
-                encode(message: _145.SetProtoRevEnabledProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.SetProtoRevEnabledProposal;
+                encode(message: _145.SetProtoRevEnabledProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _145.SetProtoRevEnabledProposal;
                 fromPartial(object: Partial<_145.SetProtoRevEnabledProposal>): _145.SetProtoRevEnabledProposal;
                 fromAmino(object: _145.SetProtoRevEnabledProposalAmino): _145.SetProtoRevEnabledProposal;
                 toAmino(message: _145.SetProtoRevEnabledProposal): _145.SetProtoRevEnabledProposalAmino;
@@ -5202,8 +5360,8 @@ export declare namespace osmosis {
             };
             SetProtoRevAdminAccountProposal: {
                 typeUrl: string;
-                encode(message: _145.SetProtoRevAdminAccountProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.SetProtoRevAdminAccountProposal;
+                encode(message: _145.SetProtoRevAdminAccountProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _145.SetProtoRevAdminAccountProposal;
                 fromPartial(object: Partial<_145.SetProtoRevAdminAccountProposal>): _145.SetProtoRevAdminAccountProposal;
                 fromAmino(object: _145.SetProtoRevAdminAccountProposalAmino): _145.SetProtoRevAdminAccountProposal;
                 toAmino(message: _145.SetProtoRevAdminAccountProposal): _145.SetProtoRevAdminAccountProposalAmino;
@@ -5215,8 +5373,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _144.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _144.GenesisState;
+                encode(message: _144.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _144.GenesisState;
                 fromPartial(object: Partial<_144.GenesisState>): _144.GenesisState;
                 fromAmino(object: _144.GenesisStateAmino): _144.GenesisState;
                 toAmino(message: _144.GenesisState): _144.GenesisStateAmino;
@@ -5232,8 +5390,8 @@ export declare namespace osmosis {
         const v1beta1: {
             Node: {
                 typeUrl: string;
-                encode(message: _150.Node, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.Node;
+                encode(message: _150.Node, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _150.Node;
                 fromPartial(object: Partial<_150.Node>): _150.Node;
                 fromAmino(object: _150.NodeAmino): _150.Node;
                 toAmino(message: _150.Node): _150.NodeAmino;
@@ -5245,8 +5403,8 @@ export declare namespace osmosis {
             };
             Child: {
                 typeUrl: string;
-                encode(message: _150.Child, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.Child;
+                encode(message: _150.Child, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _150.Child;
                 fromPartial(object: Partial<_150.Child>): _150.Child;
                 fromAmino(object: _150.ChildAmino): _150.Child;
                 toAmino(message: _150.Child): _150.ChildAmino;
@@ -5258,8 +5416,8 @@ export declare namespace osmosis {
             };
             Leaf: {
                 typeUrl: string;
-                encode(message: _150.Leaf, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.Leaf;
+                encode(message: _150.Leaf, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _150.Leaf;
                 fromPartial(object: Partial<_150.Leaf>): _150.Leaf;
                 fromAmino(object: _150.LeafAmino): _150.Leaf;
                 toAmino(message: _150.Leaf): _150.LeafAmino;
@@ -5461,8 +5619,8 @@ export declare namespace osmosis {
         };
         MsgSuperfluidDelegate: {
             typeUrl: string;
-            encode(message: _155.MsgSuperfluidDelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgSuperfluidDelegate;
+            encode(message: _155.MsgSuperfluidDelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgSuperfluidDelegate;
             fromPartial(object: Partial<_155.MsgSuperfluidDelegate>): _155.MsgSuperfluidDelegate;
             fromAmino(object: _155.MsgSuperfluidDelegateAmino): _155.MsgSuperfluidDelegate;
             toAmino(message: _155.MsgSuperfluidDelegate): _155.MsgSuperfluidDelegateAmino;
@@ -5474,8 +5632,8 @@ export declare namespace osmosis {
         };
         MsgSuperfluidDelegateResponse: {
             typeUrl: string;
-            encode(_: _155.MsgSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgSuperfluidDelegateResponse;
+            encode(_: _155.MsgSuperfluidDelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgSuperfluidDelegateResponse;
             fromPartial(_: Partial<_155.MsgSuperfluidDelegateResponse>): _155.MsgSuperfluidDelegateResponse;
             fromAmino(_: _155.MsgSuperfluidDelegateResponseAmino): _155.MsgSuperfluidDelegateResponse;
             toAmino(_: _155.MsgSuperfluidDelegateResponse): _155.MsgSuperfluidDelegateResponseAmino;
@@ -5487,8 +5645,8 @@ export declare namespace osmosis {
         };
         MsgSuperfluidUndelegate: {
             typeUrl: string;
-            encode(message: _155.MsgSuperfluidUndelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgSuperfluidUndelegate;
+            encode(message: _155.MsgSuperfluidUndelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgSuperfluidUndelegate;
             fromPartial(object: Partial<_155.MsgSuperfluidUndelegate>): _155.MsgSuperfluidUndelegate;
             fromAmino(object: _155.MsgSuperfluidUndelegateAmino): _155.MsgSuperfluidUndelegate;
             toAmino(message: _155.MsgSuperfluidUndelegate): _155.MsgSuperfluidUndelegateAmino;
@@ -5500,8 +5658,8 @@ export declare namespace osmosis {
         };
         MsgSuperfluidUndelegateResponse: {
             typeUrl: string;
-            encode(_: _155.MsgSuperfluidUndelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgSuperfluidUndelegateResponse;
+            encode(_: _155.MsgSuperfluidUndelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgSuperfluidUndelegateResponse;
             fromPartial(_: Partial<_155.MsgSuperfluidUndelegateResponse>): _155.MsgSuperfluidUndelegateResponse;
             fromAmino(_: _155.MsgSuperfluidUndelegateResponseAmino): _155.MsgSuperfluidUndelegateResponse;
             toAmino(_: _155.MsgSuperfluidUndelegateResponse): _155.MsgSuperfluidUndelegateResponseAmino;
@@ -5513,8 +5671,8 @@ export declare namespace osmosis {
         };
         MsgSuperfluidUnbondLock: {
             typeUrl: string;
-            encode(message: _155.MsgSuperfluidUnbondLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgSuperfluidUnbondLock;
+            encode(message: _155.MsgSuperfluidUnbondLock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgSuperfluidUnbondLock;
             fromPartial(object: Partial<_155.MsgSuperfluidUnbondLock>): _155.MsgSuperfluidUnbondLock;
             fromAmino(object: _155.MsgSuperfluidUnbondLockAmino): _155.MsgSuperfluidUnbondLock;
             toAmino(message: _155.MsgSuperfluidUnbondLock): _155.MsgSuperfluidUnbondLockAmino;
@@ -5526,8 +5684,8 @@ export declare namespace osmosis {
         };
         MsgSuperfluidUnbondLockResponse: {
             typeUrl: string;
-            encode(_: _155.MsgSuperfluidUnbondLockResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgSuperfluidUnbondLockResponse;
+            encode(_: _155.MsgSuperfluidUnbondLockResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgSuperfluidUnbondLockResponse;
             fromPartial(_: Partial<_155.MsgSuperfluidUnbondLockResponse>): _155.MsgSuperfluidUnbondLockResponse;
             fromAmino(_: _155.MsgSuperfluidUnbondLockResponseAmino): _155.MsgSuperfluidUnbondLockResponse;
             toAmino(_: _155.MsgSuperfluidUnbondLockResponse): _155.MsgSuperfluidUnbondLockResponseAmino;
@@ -5539,8 +5697,8 @@ export declare namespace osmosis {
         };
         MsgSuperfluidUndelegateAndUnbondLock: {
             typeUrl: string;
-            encode(message: _155.MsgSuperfluidUndelegateAndUnbondLock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgSuperfluidUndelegateAndUnbondLock;
+            encode(message: _155.MsgSuperfluidUndelegateAndUnbondLock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgSuperfluidUndelegateAndUnbondLock;
             fromPartial(object: Partial<_155.MsgSuperfluidUndelegateAndUnbondLock>): _155.MsgSuperfluidUndelegateAndUnbondLock;
             fromAmino(object: _155.MsgSuperfluidUndelegateAndUnbondLockAmino): _155.MsgSuperfluidUndelegateAndUnbondLock;
             toAmino(message: _155.MsgSuperfluidUndelegateAndUnbondLock): _155.MsgSuperfluidUndelegateAndUnbondLockAmino;
@@ -5552,8 +5710,8 @@ export declare namespace osmosis {
         };
         MsgSuperfluidUndelegateAndUnbondLockResponse: {
             typeUrl: string;
-            encode(message: _155.MsgSuperfluidUndelegateAndUnbondLockResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgSuperfluidUndelegateAndUnbondLockResponse;
+            encode(message: _155.MsgSuperfluidUndelegateAndUnbondLockResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgSuperfluidUndelegateAndUnbondLockResponse;
             fromPartial(object: Partial<_155.MsgSuperfluidUndelegateAndUnbondLockResponse>): _155.MsgSuperfluidUndelegateAndUnbondLockResponse;
             fromAmino(object: _155.MsgSuperfluidUndelegateAndUnbondLockResponseAmino): _155.MsgSuperfluidUndelegateAndUnbondLockResponse;
             toAmino(message: _155.MsgSuperfluidUndelegateAndUnbondLockResponse): _155.MsgSuperfluidUndelegateAndUnbondLockResponseAmino;
@@ -5565,8 +5723,8 @@ export declare namespace osmosis {
         };
         MsgLockAndSuperfluidDelegate: {
             typeUrl: string;
-            encode(message: _155.MsgLockAndSuperfluidDelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgLockAndSuperfluidDelegate;
+            encode(message: _155.MsgLockAndSuperfluidDelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgLockAndSuperfluidDelegate;
             fromPartial(object: Partial<_155.MsgLockAndSuperfluidDelegate>): _155.MsgLockAndSuperfluidDelegate;
             fromAmino(object: _155.MsgLockAndSuperfluidDelegateAmino): _155.MsgLockAndSuperfluidDelegate;
             toAmino(message: _155.MsgLockAndSuperfluidDelegate): _155.MsgLockAndSuperfluidDelegateAmino;
@@ -5578,8 +5736,8 @@ export declare namespace osmosis {
         };
         MsgLockAndSuperfluidDelegateResponse: {
             typeUrl: string;
-            encode(message: _155.MsgLockAndSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgLockAndSuperfluidDelegateResponse;
+            encode(message: _155.MsgLockAndSuperfluidDelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgLockAndSuperfluidDelegateResponse;
             fromPartial(object: Partial<_155.MsgLockAndSuperfluidDelegateResponse>): _155.MsgLockAndSuperfluidDelegateResponse;
             fromAmino(object: _155.MsgLockAndSuperfluidDelegateResponseAmino): _155.MsgLockAndSuperfluidDelegateResponse;
             toAmino(message: _155.MsgLockAndSuperfluidDelegateResponse): _155.MsgLockAndSuperfluidDelegateResponseAmino;
@@ -5591,8 +5749,8 @@ export declare namespace osmosis {
         };
         MsgCreateFullRangePositionAndSuperfluidDelegate: {
             typeUrl: string;
-            encode(message: _155.MsgCreateFullRangePositionAndSuperfluidDelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgCreateFullRangePositionAndSuperfluidDelegate;
+            encode(message: _155.MsgCreateFullRangePositionAndSuperfluidDelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgCreateFullRangePositionAndSuperfluidDelegate;
             fromPartial(object: Partial<_155.MsgCreateFullRangePositionAndSuperfluidDelegate>): _155.MsgCreateFullRangePositionAndSuperfluidDelegate;
             fromAmino(object: _155.MsgCreateFullRangePositionAndSuperfluidDelegateAmino): _155.MsgCreateFullRangePositionAndSuperfluidDelegate;
             toAmino(message: _155.MsgCreateFullRangePositionAndSuperfluidDelegate): _155.MsgCreateFullRangePositionAndSuperfluidDelegateAmino;
@@ -5604,8 +5762,8 @@ export declare namespace osmosis {
         };
         MsgCreateFullRangePositionAndSuperfluidDelegateResponse: {
             typeUrl: string;
-            encode(message: _155.MsgCreateFullRangePositionAndSuperfluidDelegateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgCreateFullRangePositionAndSuperfluidDelegateResponse;
+            encode(message: _155.MsgCreateFullRangePositionAndSuperfluidDelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgCreateFullRangePositionAndSuperfluidDelegateResponse;
             fromPartial(object: Partial<_155.MsgCreateFullRangePositionAndSuperfluidDelegateResponse>): _155.MsgCreateFullRangePositionAndSuperfluidDelegateResponse;
             fromAmino(object: _155.MsgCreateFullRangePositionAndSuperfluidDelegateResponseAmino): _155.MsgCreateFullRangePositionAndSuperfluidDelegateResponse;
             toAmino(message: _155.MsgCreateFullRangePositionAndSuperfluidDelegateResponse): _155.MsgCreateFullRangePositionAndSuperfluidDelegateResponseAmino;
@@ -5617,8 +5775,8 @@ export declare namespace osmosis {
         };
         MsgUnPoolWhitelistedPool: {
             typeUrl: string;
-            encode(message: _155.MsgUnPoolWhitelistedPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgUnPoolWhitelistedPool;
+            encode(message: _155.MsgUnPoolWhitelistedPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgUnPoolWhitelistedPool;
             fromPartial(object: Partial<_155.MsgUnPoolWhitelistedPool>): _155.MsgUnPoolWhitelistedPool;
             fromAmino(object: _155.MsgUnPoolWhitelistedPoolAmino): _155.MsgUnPoolWhitelistedPool;
             toAmino(message: _155.MsgUnPoolWhitelistedPool): _155.MsgUnPoolWhitelistedPoolAmino;
@@ -5630,8 +5788,8 @@ export declare namespace osmosis {
         };
         MsgUnPoolWhitelistedPoolResponse: {
             typeUrl: string;
-            encode(message: _155.MsgUnPoolWhitelistedPoolResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgUnPoolWhitelistedPoolResponse;
+            encode(message: _155.MsgUnPoolWhitelistedPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgUnPoolWhitelistedPoolResponse;
             fromPartial(object: Partial<_155.MsgUnPoolWhitelistedPoolResponse>): _155.MsgUnPoolWhitelistedPoolResponse;
             fromAmino(object: _155.MsgUnPoolWhitelistedPoolResponseAmino): _155.MsgUnPoolWhitelistedPoolResponse;
             toAmino(message: _155.MsgUnPoolWhitelistedPoolResponse): _155.MsgUnPoolWhitelistedPoolResponseAmino;
@@ -5643,8 +5801,8 @@ export declare namespace osmosis {
         };
         MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition: {
             typeUrl: string;
-            encode(message: _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
+            encode(message: _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
             fromPartial(object: Partial<_155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition>): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
             fromAmino(object: _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
             toAmino(message: _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino;
@@ -5656,8 +5814,8 @@ export declare namespace osmosis {
         };
         MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse: {
             typeUrl: string;
-            encode(message: _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
+            encode(message: _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
             fromPartial(object: Partial<_155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse>): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
             fromAmino(object: _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponseAmino): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse;
             toAmino(message: _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse): _155.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponseAmino;
@@ -5669,8 +5827,8 @@ export declare namespace osmosis {
         };
         MsgAddToConcentratedLiquiditySuperfluidPosition: {
             typeUrl: string;
-            encode(message: _155.MsgAddToConcentratedLiquiditySuperfluidPosition, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgAddToConcentratedLiquiditySuperfluidPosition;
+            encode(message: _155.MsgAddToConcentratedLiquiditySuperfluidPosition, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgAddToConcentratedLiquiditySuperfluidPosition;
             fromPartial(object: Partial<_155.MsgAddToConcentratedLiquiditySuperfluidPosition>): _155.MsgAddToConcentratedLiquiditySuperfluidPosition;
             fromAmino(object: _155.MsgAddToConcentratedLiquiditySuperfluidPositionAmino): _155.MsgAddToConcentratedLiquiditySuperfluidPosition;
             toAmino(message: _155.MsgAddToConcentratedLiquiditySuperfluidPosition): _155.MsgAddToConcentratedLiquiditySuperfluidPositionAmino;
@@ -5682,8 +5840,8 @@ export declare namespace osmosis {
         };
         MsgAddToConcentratedLiquiditySuperfluidPositionResponse: {
             typeUrl: string;
-            encode(message: _155.MsgAddToConcentratedLiquiditySuperfluidPositionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgAddToConcentratedLiquiditySuperfluidPositionResponse;
+            encode(message: _155.MsgAddToConcentratedLiquiditySuperfluidPositionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.MsgAddToConcentratedLiquiditySuperfluidPositionResponse;
             fromPartial(object: Partial<_155.MsgAddToConcentratedLiquiditySuperfluidPositionResponse>): _155.MsgAddToConcentratedLiquiditySuperfluidPositionResponse;
             fromAmino(object: _155.MsgAddToConcentratedLiquiditySuperfluidPositionResponseAmino): _155.MsgAddToConcentratedLiquiditySuperfluidPositionResponse;
             toAmino(message: _155.MsgAddToConcentratedLiquiditySuperfluidPositionResponse): _155.MsgAddToConcentratedLiquiditySuperfluidPositionResponseAmino;
@@ -5700,8 +5858,8 @@ export declare namespace osmosis {
         SuperfluidAssetTypeAmino: typeof _154.SuperfluidAssetType;
         SuperfluidAsset: {
             typeUrl: string;
-            encode(message: _154.SuperfluidAsset, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidAsset;
+            encode(message: _154.SuperfluidAsset, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.SuperfluidAsset;
             fromPartial(object: Partial<_154.SuperfluidAsset>): _154.SuperfluidAsset;
             fromAmino(object: _154.SuperfluidAssetAmino): _154.SuperfluidAsset;
             toAmino(message: _154.SuperfluidAsset): _154.SuperfluidAssetAmino;
@@ -5713,8 +5871,8 @@ export declare namespace osmosis {
         };
         SuperfluidIntermediaryAccount: {
             typeUrl: string;
-            encode(message: _154.SuperfluidIntermediaryAccount, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidIntermediaryAccount;
+            encode(message: _154.SuperfluidIntermediaryAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.SuperfluidIntermediaryAccount;
             fromPartial(object: Partial<_154.SuperfluidIntermediaryAccount>): _154.SuperfluidIntermediaryAccount;
             fromAmino(object: _154.SuperfluidIntermediaryAccountAmino): _154.SuperfluidIntermediaryAccount;
             toAmino(message: _154.SuperfluidIntermediaryAccount): _154.SuperfluidIntermediaryAccountAmino;
@@ -5726,8 +5884,8 @@ export declare namespace osmosis {
         };
         OsmoEquivalentMultiplierRecord: {
             typeUrl: string;
-            encode(message: _154.OsmoEquivalentMultiplierRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.OsmoEquivalentMultiplierRecord;
+            encode(message: _154.OsmoEquivalentMultiplierRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.OsmoEquivalentMultiplierRecord;
             fromPartial(object: Partial<_154.OsmoEquivalentMultiplierRecord>): _154.OsmoEquivalentMultiplierRecord;
             fromAmino(object: _154.OsmoEquivalentMultiplierRecordAmino): _154.OsmoEquivalentMultiplierRecord;
             toAmino(message: _154.OsmoEquivalentMultiplierRecord): _154.OsmoEquivalentMultiplierRecordAmino;
@@ -5739,8 +5897,8 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationRecord: {
             typeUrl: string;
-            encode(message: _154.SuperfluidDelegationRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.SuperfluidDelegationRecord;
+            encode(message: _154.SuperfluidDelegationRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.SuperfluidDelegationRecord;
             fromPartial(object: Partial<_154.SuperfluidDelegationRecord>): _154.SuperfluidDelegationRecord;
             fromAmino(object: _154.SuperfluidDelegationRecordAmino): _154.SuperfluidDelegationRecord;
             toAmino(message: _154.SuperfluidDelegationRecord): _154.SuperfluidDelegationRecordAmino;
@@ -5752,8 +5910,8 @@ export declare namespace osmosis {
         };
         LockIdIntermediaryAccountConnection: {
             typeUrl: string;
-            encode(message: _154.LockIdIntermediaryAccountConnection, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.LockIdIntermediaryAccountConnection;
+            encode(message: _154.LockIdIntermediaryAccountConnection, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.LockIdIntermediaryAccountConnection;
             fromPartial(object: Partial<_154.LockIdIntermediaryAccountConnection>): _154.LockIdIntermediaryAccountConnection;
             fromAmino(object: _154.LockIdIntermediaryAccountConnectionAmino): _154.LockIdIntermediaryAccountConnection;
             toAmino(message: _154.LockIdIntermediaryAccountConnection): _154.LockIdIntermediaryAccountConnectionAmino;
@@ -5765,8 +5923,8 @@ export declare namespace osmosis {
         };
         UnpoolWhitelistedPools: {
             typeUrl: string;
-            encode(message: _154.UnpoolWhitelistedPools, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.UnpoolWhitelistedPools;
+            encode(message: _154.UnpoolWhitelistedPools, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.UnpoolWhitelistedPools;
             fromPartial(object: Partial<_154.UnpoolWhitelistedPools>): _154.UnpoolWhitelistedPools;
             fromAmino(object: _154.UnpoolWhitelistedPoolsAmino): _154.UnpoolWhitelistedPools;
             toAmino(message: _154.UnpoolWhitelistedPools): _154.UnpoolWhitelistedPoolsAmino;
@@ -5778,8 +5936,8 @@ export declare namespace osmosis {
         };
         ConcentratedPoolUserPositionRecord: {
             typeUrl: string;
-            encode(message: _154.ConcentratedPoolUserPositionRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.ConcentratedPoolUserPositionRecord;
+            encode(message: _154.ConcentratedPoolUserPositionRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.ConcentratedPoolUserPositionRecord;
             fromPartial(object: Partial<_154.ConcentratedPoolUserPositionRecord>): _154.ConcentratedPoolUserPositionRecord;
             fromAmino(object: _154.ConcentratedPoolUserPositionRecordAmino): _154.ConcentratedPoolUserPositionRecord;
             toAmino(message: _154.ConcentratedPoolUserPositionRecord): _154.ConcentratedPoolUserPositionRecordAmino;
@@ -5791,8 +5949,8 @@ export declare namespace osmosis {
         };
         QueryParamsRequest: {
             typeUrl: string;
-            encode(_: _153.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryParamsRequest;
+            encode(_: _153.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryParamsRequest;
             fromPartial(_: Partial<_153.QueryParamsRequest>): _153.QueryParamsRequest;
             fromAmino(_: _153.QueryParamsRequestAmino): _153.QueryParamsRequest;
             toAmino(_: _153.QueryParamsRequest): _153.QueryParamsRequestAmino;
@@ -5804,8 +5962,8 @@ export declare namespace osmosis {
         };
         QueryParamsResponse: {
             typeUrl: string;
-            encode(message: _153.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryParamsResponse;
+            encode(message: _153.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryParamsResponse;
             fromPartial(object: Partial<_153.QueryParamsResponse>): _153.QueryParamsResponse;
             fromAmino(object: _153.QueryParamsResponseAmino): _153.QueryParamsResponse;
             toAmino(message: _153.QueryParamsResponse): _153.QueryParamsResponseAmino;
@@ -5817,8 +5975,8 @@ export declare namespace osmosis {
         };
         AssetTypeRequest: {
             typeUrl: string;
-            encode(message: _153.AssetTypeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.AssetTypeRequest;
+            encode(message: _153.AssetTypeRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.AssetTypeRequest;
             fromPartial(object: Partial<_153.AssetTypeRequest>): _153.AssetTypeRequest;
             fromAmino(object: _153.AssetTypeRequestAmino): _153.AssetTypeRequest;
             toAmino(message: _153.AssetTypeRequest): _153.AssetTypeRequestAmino;
@@ -5830,8 +5988,8 @@ export declare namespace osmosis {
         };
         AssetTypeResponse: {
             typeUrl: string;
-            encode(message: _153.AssetTypeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.AssetTypeResponse;
+            encode(message: _153.AssetTypeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.AssetTypeResponse;
             fromPartial(object: Partial<_153.AssetTypeResponse>): _153.AssetTypeResponse;
             fromAmino(object: _153.AssetTypeResponseAmino): _153.AssetTypeResponse;
             toAmino(message: _153.AssetTypeResponse): _153.AssetTypeResponseAmino;
@@ -5843,8 +6001,8 @@ export declare namespace osmosis {
         };
         AllAssetsRequest: {
             typeUrl: string;
-            encode(_: _153.AllAssetsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.AllAssetsRequest;
+            encode(_: _153.AllAssetsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.AllAssetsRequest;
             fromPartial(_: Partial<_153.AllAssetsRequest>): _153.AllAssetsRequest;
             fromAmino(_: _153.AllAssetsRequestAmino): _153.AllAssetsRequest;
             toAmino(_: _153.AllAssetsRequest): _153.AllAssetsRequestAmino;
@@ -5856,8 +6014,8 @@ export declare namespace osmosis {
         };
         AllAssetsResponse: {
             typeUrl: string;
-            encode(message: _153.AllAssetsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.AllAssetsResponse;
+            encode(message: _153.AllAssetsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.AllAssetsResponse;
             fromPartial(object: Partial<_153.AllAssetsResponse>): _153.AllAssetsResponse;
             fromAmino(object: _153.AllAssetsResponseAmino): _153.AllAssetsResponse;
             toAmino(message: _153.AllAssetsResponse): _153.AllAssetsResponseAmino;
@@ -5869,8 +6027,8 @@ export declare namespace osmosis {
         };
         AssetMultiplierRequest: {
             typeUrl: string;
-            encode(message: _153.AssetMultiplierRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.AssetMultiplierRequest;
+            encode(message: _153.AssetMultiplierRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.AssetMultiplierRequest;
             fromPartial(object: Partial<_153.AssetMultiplierRequest>): _153.AssetMultiplierRequest;
             fromAmino(object: _153.AssetMultiplierRequestAmino): _153.AssetMultiplierRequest;
             toAmino(message: _153.AssetMultiplierRequest): _153.AssetMultiplierRequestAmino;
@@ -5882,8 +6040,8 @@ export declare namespace osmosis {
         };
         AssetMultiplierResponse: {
             typeUrl: string;
-            encode(message: _153.AssetMultiplierResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.AssetMultiplierResponse;
+            encode(message: _153.AssetMultiplierResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.AssetMultiplierResponse;
             fromPartial(object: Partial<_153.AssetMultiplierResponse>): _153.AssetMultiplierResponse;
             fromAmino(object: _153.AssetMultiplierResponseAmino): _153.AssetMultiplierResponse;
             toAmino(message: _153.AssetMultiplierResponse): _153.AssetMultiplierResponseAmino;
@@ -5895,8 +6053,8 @@ export declare namespace osmosis {
         };
         SuperfluidIntermediaryAccountInfo: {
             typeUrl: string;
-            encode(message: _153.SuperfluidIntermediaryAccountInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.SuperfluidIntermediaryAccountInfo;
+            encode(message: _153.SuperfluidIntermediaryAccountInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.SuperfluidIntermediaryAccountInfo;
             fromPartial(object: Partial<_153.SuperfluidIntermediaryAccountInfo>): _153.SuperfluidIntermediaryAccountInfo;
             fromAmino(object: _153.SuperfluidIntermediaryAccountInfoAmino): _153.SuperfluidIntermediaryAccountInfo;
             toAmino(message: _153.SuperfluidIntermediaryAccountInfo): _153.SuperfluidIntermediaryAccountInfoAmino;
@@ -5908,8 +6066,8 @@ export declare namespace osmosis {
         };
         AllIntermediaryAccountsRequest: {
             typeUrl: string;
-            encode(message: _153.AllIntermediaryAccountsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.AllIntermediaryAccountsRequest;
+            encode(message: _153.AllIntermediaryAccountsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.AllIntermediaryAccountsRequest;
             fromPartial(object: Partial<_153.AllIntermediaryAccountsRequest>): _153.AllIntermediaryAccountsRequest;
             fromAmino(object: _153.AllIntermediaryAccountsRequestAmino): _153.AllIntermediaryAccountsRequest;
             toAmino(message: _153.AllIntermediaryAccountsRequest): _153.AllIntermediaryAccountsRequestAmino;
@@ -5921,8 +6079,8 @@ export declare namespace osmosis {
         };
         AllIntermediaryAccountsResponse: {
             typeUrl: string;
-            encode(message: _153.AllIntermediaryAccountsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.AllIntermediaryAccountsResponse;
+            encode(message: _153.AllIntermediaryAccountsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.AllIntermediaryAccountsResponse;
             fromPartial(object: Partial<_153.AllIntermediaryAccountsResponse>): _153.AllIntermediaryAccountsResponse;
             fromAmino(object: _153.AllIntermediaryAccountsResponseAmino): _153.AllIntermediaryAccountsResponse;
             toAmino(message: _153.AllIntermediaryAccountsResponse): _153.AllIntermediaryAccountsResponseAmino;
@@ -5934,8 +6092,8 @@ export declare namespace osmosis {
         };
         ConnectedIntermediaryAccountRequest: {
             typeUrl: string;
-            encode(message: _153.ConnectedIntermediaryAccountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.ConnectedIntermediaryAccountRequest;
+            encode(message: _153.ConnectedIntermediaryAccountRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.ConnectedIntermediaryAccountRequest;
             fromPartial(object: Partial<_153.ConnectedIntermediaryAccountRequest>): _153.ConnectedIntermediaryAccountRequest;
             fromAmino(object: _153.ConnectedIntermediaryAccountRequestAmino): _153.ConnectedIntermediaryAccountRequest;
             toAmino(message: _153.ConnectedIntermediaryAccountRequest): _153.ConnectedIntermediaryAccountRequestAmino;
@@ -5947,8 +6105,8 @@ export declare namespace osmosis {
         };
         ConnectedIntermediaryAccountResponse: {
             typeUrl: string;
-            encode(message: _153.ConnectedIntermediaryAccountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.ConnectedIntermediaryAccountResponse;
+            encode(message: _153.ConnectedIntermediaryAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.ConnectedIntermediaryAccountResponse;
             fromPartial(object: Partial<_153.ConnectedIntermediaryAccountResponse>): _153.ConnectedIntermediaryAccountResponse;
             fromAmino(object: _153.ConnectedIntermediaryAccountResponseAmino): _153.ConnectedIntermediaryAccountResponse;
             toAmino(message: _153.ConnectedIntermediaryAccountResponse): _153.ConnectedIntermediaryAccountResponseAmino;
@@ -5960,8 +6118,8 @@ export declare namespace osmosis {
         };
         QueryTotalDelegationByValidatorForDenomRequest: {
             typeUrl: string;
-            encode(message: _153.QueryTotalDelegationByValidatorForDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryTotalDelegationByValidatorForDenomRequest;
+            encode(message: _153.QueryTotalDelegationByValidatorForDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryTotalDelegationByValidatorForDenomRequest;
             fromPartial(object: Partial<_153.QueryTotalDelegationByValidatorForDenomRequest>): _153.QueryTotalDelegationByValidatorForDenomRequest;
             fromAmino(object: _153.QueryTotalDelegationByValidatorForDenomRequestAmino): _153.QueryTotalDelegationByValidatorForDenomRequest;
             toAmino(message: _153.QueryTotalDelegationByValidatorForDenomRequest): _153.QueryTotalDelegationByValidatorForDenomRequestAmino;
@@ -5973,8 +6131,8 @@ export declare namespace osmosis {
         };
         QueryTotalDelegationByValidatorForDenomResponse: {
             typeUrl: string;
-            encode(message: _153.QueryTotalDelegationByValidatorForDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryTotalDelegationByValidatorForDenomResponse;
+            encode(message: _153.QueryTotalDelegationByValidatorForDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryTotalDelegationByValidatorForDenomResponse;
             fromPartial(object: Partial<_153.QueryTotalDelegationByValidatorForDenomResponse>): _153.QueryTotalDelegationByValidatorForDenomResponse;
             fromAmino(object: _153.QueryTotalDelegationByValidatorForDenomResponseAmino): _153.QueryTotalDelegationByValidatorForDenomResponse;
             toAmino(message: _153.QueryTotalDelegationByValidatorForDenomResponse): _153.QueryTotalDelegationByValidatorForDenomResponseAmino;
@@ -5986,8 +6144,8 @@ export declare namespace osmosis {
         };
         Delegations: {
             typeUrl: string;
-            encode(message: _153.Delegations, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.Delegations;
+            encode(message: _153.Delegations, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.Delegations;
             fromPartial(object: Partial<_153.Delegations>): _153.Delegations;
             fromAmino(object: _153.DelegationsAmino): _153.Delegations;
             toAmino(message: _153.Delegations): _153.DelegationsAmino;
@@ -5999,8 +6157,8 @@ export declare namespace osmosis {
         };
         TotalSuperfluidDelegationsRequest: {
             typeUrl: string;
-            encode(_: _153.TotalSuperfluidDelegationsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.TotalSuperfluidDelegationsRequest;
+            encode(_: _153.TotalSuperfluidDelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.TotalSuperfluidDelegationsRequest;
             fromPartial(_: Partial<_153.TotalSuperfluidDelegationsRequest>): _153.TotalSuperfluidDelegationsRequest;
             fromAmino(_: _153.TotalSuperfluidDelegationsRequestAmino): _153.TotalSuperfluidDelegationsRequest;
             toAmino(_: _153.TotalSuperfluidDelegationsRequest): _153.TotalSuperfluidDelegationsRequestAmino;
@@ -6012,8 +6170,8 @@ export declare namespace osmosis {
         };
         TotalSuperfluidDelegationsResponse: {
             typeUrl: string;
-            encode(message: _153.TotalSuperfluidDelegationsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.TotalSuperfluidDelegationsResponse;
+            encode(message: _153.TotalSuperfluidDelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.TotalSuperfluidDelegationsResponse;
             fromPartial(object: Partial<_153.TotalSuperfluidDelegationsResponse>): _153.TotalSuperfluidDelegationsResponse;
             fromAmino(object: _153.TotalSuperfluidDelegationsResponseAmino): _153.TotalSuperfluidDelegationsResponse;
             toAmino(message: _153.TotalSuperfluidDelegationsResponse): _153.TotalSuperfluidDelegationsResponseAmino;
@@ -6025,8 +6183,8 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationAmountRequest: {
             typeUrl: string;
-            encode(message: _153.SuperfluidDelegationAmountRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.SuperfluidDelegationAmountRequest;
+            encode(message: _153.SuperfluidDelegationAmountRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.SuperfluidDelegationAmountRequest;
             fromPartial(object: Partial<_153.SuperfluidDelegationAmountRequest>): _153.SuperfluidDelegationAmountRequest;
             fromAmino(object: _153.SuperfluidDelegationAmountRequestAmino): _153.SuperfluidDelegationAmountRequest;
             toAmino(message: _153.SuperfluidDelegationAmountRequest): _153.SuperfluidDelegationAmountRequestAmino;
@@ -6038,8 +6196,8 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationAmountResponse: {
             typeUrl: string;
-            encode(message: _153.SuperfluidDelegationAmountResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.SuperfluidDelegationAmountResponse;
+            encode(message: _153.SuperfluidDelegationAmountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.SuperfluidDelegationAmountResponse;
             fromPartial(object: Partial<_153.SuperfluidDelegationAmountResponse>): _153.SuperfluidDelegationAmountResponse;
             fromAmino(object: _153.SuperfluidDelegationAmountResponseAmino): _153.SuperfluidDelegationAmountResponse;
             toAmino(message: _153.SuperfluidDelegationAmountResponse): _153.SuperfluidDelegationAmountResponseAmino;
@@ -6051,8 +6209,8 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationsByDelegatorRequest: {
             typeUrl: string;
-            encode(message: _153.SuperfluidDelegationsByDelegatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.SuperfluidDelegationsByDelegatorRequest;
+            encode(message: _153.SuperfluidDelegationsByDelegatorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.SuperfluidDelegationsByDelegatorRequest;
             fromPartial(object: Partial<_153.SuperfluidDelegationsByDelegatorRequest>): _153.SuperfluidDelegationsByDelegatorRequest;
             fromAmino(object: _153.SuperfluidDelegationsByDelegatorRequestAmino): _153.SuperfluidDelegationsByDelegatorRequest;
             toAmino(message: _153.SuperfluidDelegationsByDelegatorRequest): _153.SuperfluidDelegationsByDelegatorRequestAmino;
@@ -6064,8 +6222,8 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationsByDelegatorResponse: {
             typeUrl: string;
-            encode(message: _153.SuperfluidDelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.SuperfluidDelegationsByDelegatorResponse;
+            encode(message: _153.SuperfluidDelegationsByDelegatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.SuperfluidDelegationsByDelegatorResponse;
             fromPartial(object: Partial<_153.SuperfluidDelegationsByDelegatorResponse>): _153.SuperfluidDelegationsByDelegatorResponse;
             fromAmino(object: _153.SuperfluidDelegationsByDelegatorResponseAmino): _153.SuperfluidDelegationsByDelegatorResponse;
             toAmino(message: _153.SuperfluidDelegationsByDelegatorResponse): _153.SuperfluidDelegationsByDelegatorResponseAmino;
@@ -6077,8 +6235,8 @@ export declare namespace osmosis {
         };
         SuperfluidUndelegationsByDelegatorRequest: {
             typeUrl: string;
-            encode(message: _153.SuperfluidUndelegationsByDelegatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.SuperfluidUndelegationsByDelegatorRequest;
+            encode(message: _153.SuperfluidUndelegationsByDelegatorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.SuperfluidUndelegationsByDelegatorRequest;
             fromPartial(object: Partial<_153.SuperfluidUndelegationsByDelegatorRequest>): _153.SuperfluidUndelegationsByDelegatorRequest;
             fromAmino(object: _153.SuperfluidUndelegationsByDelegatorRequestAmino): _153.SuperfluidUndelegationsByDelegatorRequest;
             toAmino(message: _153.SuperfluidUndelegationsByDelegatorRequest): _153.SuperfluidUndelegationsByDelegatorRequestAmino;
@@ -6090,8 +6248,8 @@ export declare namespace osmosis {
         };
         SuperfluidUndelegationsByDelegatorResponse: {
             typeUrl: string;
-            encode(message: _153.SuperfluidUndelegationsByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.SuperfluidUndelegationsByDelegatorResponse;
+            encode(message: _153.SuperfluidUndelegationsByDelegatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.SuperfluidUndelegationsByDelegatorResponse;
             fromPartial(object: Partial<_153.SuperfluidUndelegationsByDelegatorResponse>): _153.SuperfluidUndelegationsByDelegatorResponse;
             fromAmino(object: _153.SuperfluidUndelegationsByDelegatorResponseAmino): _153.SuperfluidUndelegationsByDelegatorResponse;
             toAmino(message: _153.SuperfluidUndelegationsByDelegatorResponse): _153.SuperfluidUndelegationsByDelegatorResponseAmino;
@@ -6103,8 +6261,8 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationsByValidatorDenomRequest: {
             typeUrl: string;
-            encode(message: _153.SuperfluidDelegationsByValidatorDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.SuperfluidDelegationsByValidatorDenomRequest;
+            encode(message: _153.SuperfluidDelegationsByValidatorDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.SuperfluidDelegationsByValidatorDenomRequest;
             fromPartial(object: Partial<_153.SuperfluidDelegationsByValidatorDenomRequest>): _153.SuperfluidDelegationsByValidatorDenomRequest;
             fromAmino(object: _153.SuperfluidDelegationsByValidatorDenomRequestAmino): _153.SuperfluidDelegationsByValidatorDenomRequest;
             toAmino(message: _153.SuperfluidDelegationsByValidatorDenomRequest): _153.SuperfluidDelegationsByValidatorDenomRequestAmino;
@@ -6116,8 +6274,8 @@ export declare namespace osmosis {
         };
         SuperfluidDelegationsByValidatorDenomResponse: {
             typeUrl: string;
-            encode(message: _153.SuperfluidDelegationsByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.SuperfluidDelegationsByValidatorDenomResponse;
+            encode(message: _153.SuperfluidDelegationsByValidatorDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.SuperfluidDelegationsByValidatorDenomResponse;
             fromPartial(object: Partial<_153.SuperfluidDelegationsByValidatorDenomResponse>): _153.SuperfluidDelegationsByValidatorDenomResponse;
             fromAmino(object: _153.SuperfluidDelegationsByValidatorDenomResponseAmino): _153.SuperfluidDelegationsByValidatorDenomResponse;
             toAmino(message: _153.SuperfluidDelegationsByValidatorDenomResponse): _153.SuperfluidDelegationsByValidatorDenomResponseAmino;
@@ -6129,8 +6287,8 @@ export declare namespace osmosis {
         };
         EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
             typeUrl: string;
-            encode(message: _153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
+            encode(message: _153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
             fromPartial(object: Partial<_153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest>): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
             fromAmino(object: _153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequestAmino): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
             toAmino(message: _153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomRequestAmino;
@@ -6142,8 +6300,8 @@ export declare namespace osmosis {
         };
         EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: {
             typeUrl: string;
-            encode(message: _153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
+            encode(message: _153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
             fromPartial(object: Partial<_153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
             fromAmino(object: _153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseAmino): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
             toAmino(message: _153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): _153.EstimateSuperfluidDelegatedAmountByValidatorDenomResponseAmino;
@@ -6155,8 +6313,8 @@ export declare namespace osmosis {
         };
         QueryTotalDelegationByDelegatorRequest: {
             typeUrl: string;
-            encode(message: _153.QueryTotalDelegationByDelegatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryTotalDelegationByDelegatorRequest;
+            encode(message: _153.QueryTotalDelegationByDelegatorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryTotalDelegationByDelegatorRequest;
             fromPartial(object: Partial<_153.QueryTotalDelegationByDelegatorRequest>): _153.QueryTotalDelegationByDelegatorRequest;
             fromAmino(object: _153.QueryTotalDelegationByDelegatorRequestAmino): _153.QueryTotalDelegationByDelegatorRequest;
             toAmino(message: _153.QueryTotalDelegationByDelegatorRequest): _153.QueryTotalDelegationByDelegatorRequestAmino;
@@ -6168,8 +6326,8 @@ export declare namespace osmosis {
         };
         QueryTotalDelegationByDelegatorResponse: {
             typeUrl: string;
-            encode(message: _153.QueryTotalDelegationByDelegatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryTotalDelegationByDelegatorResponse;
+            encode(message: _153.QueryTotalDelegationByDelegatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryTotalDelegationByDelegatorResponse;
             fromPartial(object: Partial<_153.QueryTotalDelegationByDelegatorResponse>): _153.QueryTotalDelegationByDelegatorResponse;
             fromAmino(object: _153.QueryTotalDelegationByDelegatorResponseAmino): _153.QueryTotalDelegationByDelegatorResponse;
             toAmino(message: _153.QueryTotalDelegationByDelegatorResponse): _153.QueryTotalDelegationByDelegatorResponseAmino;
@@ -6181,8 +6339,8 @@ export declare namespace osmosis {
         };
         QueryUnpoolWhitelistRequest: {
             typeUrl: string;
-            encode(_: _153.QueryUnpoolWhitelistRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryUnpoolWhitelistRequest;
+            encode(_: _153.QueryUnpoolWhitelistRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryUnpoolWhitelistRequest;
             fromPartial(_: Partial<_153.QueryUnpoolWhitelistRequest>): _153.QueryUnpoolWhitelistRequest;
             fromAmino(_: _153.QueryUnpoolWhitelistRequestAmino): _153.QueryUnpoolWhitelistRequest;
             toAmino(_: _153.QueryUnpoolWhitelistRequest): _153.QueryUnpoolWhitelistRequestAmino;
@@ -6194,8 +6352,8 @@ export declare namespace osmosis {
         };
         QueryUnpoolWhitelistResponse: {
             typeUrl: string;
-            encode(message: _153.QueryUnpoolWhitelistResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryUnpoolWhitelistResponse;
+            encode(message: _153.QueryUnpoolWhitelistResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryUnpoolWhitelistResponse;
             fromPartial(object: Partial<_153.QueryUnpoolWhitelistResponse>): _153.QueryUnpoolWhitelistResponse;
             fromAmino(object: _153.QueryUnpoolWhitelistResponseAmino): _153.QueryUnpoolWhitelistResponse;
             toAmino(message: _153.QueryUnpoolWhitelistResponse): _153.QueryUnpoolWhitelistResponseAmino;
@@ -6207,8 +6365,8 @@ export declare namespace osmosis {
         };
         UserConcentratedSuperfluidPositionsDelegatedRequest: {
             typeUrl: string;
-            encode(message: _153.UserConcentratedSuperfluidPositionsDelegatedRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.UserConcentratedSuperfluidPositionsDelegatedRequest;
+            encode(message: _153.UserConcentratedSuperfluidPositionsDelegatedRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.UserConcentratedSuperfluidPositionsDelegatedRequest;
             fromPartial(object: Partial<_153.UserConcentratedSuperfluidPositionsDelegatedRequest>): _153.UserConcentratedSuperfluidPositionsDelegatedRequest;
             fromAmino(object: _153.UserConcentratedSuperfluidPositionsDelegatedRequestAmino): _153.UserConcentratedSuperfluidPositionsDelegatedRequest;
             toAmino(message: _153.UserConcentratedSuperfluidPositionsDelegatedRequest): _153.UserConcentratedSuperfluidPositionsDelegatedRequestAmino;
@@ -6220,8 +6378,8 @@ export declare namespace osmosis {
         };
         UserConcentratedSuperfluidPositionsDelegatedResponse: {
             typeUrl: string;
-            encode(message: _153.UserConcentratedSuperfluidPositionsDelegatedResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.UserConcentratedSuperfluidPositionsDelegatedResponse;
+            encode(message: _153.UserConcentratedSuperfluidPositionsDelegatedResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.UserConcentratedSuperfluidPositionsDelegatedResponse;
             fromPartial(object: Partial<_153.UserConcentratedSuperfluidPositionsDelegatedResponse>): _153.UserConcentratedSuperfluidPositionsDelegatedResponse;
             fromAmino(object: _153.UserConcentratedSuperfluidPositionsDelegatedResponseAmino): _153.UserConcentratedSuperfluidPositionsDelegatedResponse;
             toAmino(message: _153.UserConcentratedSuperfluidPositionsDelegatedResponse): _153.UserConcentratedSuperfluidPositionsDelegatedResponseAmino;
@@ -6233,8 +6391,8 @@ export declare namespace osmosis {
         };
         UserConcentratedSuperfluidPositionsUndelegatingRequest: {
             typeUrl: string;
-            encode(message: _153.UserConcentratedSuperfluidPositionsUndelegatingRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.UserConcentratedSuperfluidPositionsUndelegatingRequest;
+            encode(message: _153.UserConcentratedSuperfluidPositionsUndelegatingRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.UserConcentratedSuperfluidPositionsUndelegatingRequest;
             fromPartial(object: Partial<_153.UserConcentratedSuperfluidPositionsUndelegatingRequest>): _153.UserConcentratedSuperfluidPositionsUndelegatingRequest;
             fromAmino(object: _153.UserConcentratedSuperfluidPositionsUndelegatingRequestAmino): _153.UserConcentratedSuperfluidPositionsUndelegatingRequest;
             toAmino(message: _153.UserConcentratedSuperfluidPositionsUndelegatingRequest): _153.UserConcentratedSuperfluidPositionsUndelegatingRequestAmino;
@@ -6246,8 +6404,8 @@ export declare namespace osmosis {
         };
         UserConcentratedSuperfluidPositionsUndelegatingResponse: {
             typeUrl: string;
-            encode(message: _153.UserConcentratedSuperfluidPositionsUndelegatingResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.UserConcentratedSuperfluidPositionsUndelegatingResponse;
+            encode(message: _153.UserConcentratedSuperfluidPositionsUndelegatingResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.UserConcentratedSuperfluidPositionsUndelegatingResponse;
             fromPartial(object: Partial<_153.UserConcentratedSuperfluidPositionsUndelegatingResponse>): _153.UserConcentratedSuperfluidPositionsUndelegatingResponse;
             fromAmino(object: _153.UserConcentratedSuperfluidPositionsUndelegatingResponseAmino): _153.UserConcentratedSuperfluidPositionsUndelegatingResponse;
             toAmino(message: _153.UserConcentratedSuperfluidPositionsUndelegatingResponse): _153.UserConcentratedSuperfluidPositionsUndelegatingResponseAmino;
@@ -6259,8 +6417,8 @@ export declare namespace osmosis {
         };
         Params: {
             typeUrl: string;
-            encode(message: _152.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.Params;
+            encode(message: _152.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _152.Params;
             fromPartial(object: Partial<_152.Params>): _152.Params;
             fromAmino(object: _152.ParamsAmino): _152.Params;
             toAmino(message: _152.Params): _152.ParamsAmino;
@@ -6272,8 +6430,8 @@ export declare namespace osmosis {
         };
         GenesisState: {
             typeUrl: string;
-            encode(message: _151.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.GenesisState;
+            encode(message: _151.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _151.GenesisState;
             fromPartial(object: Partial<_151.GenesisState>): _151.GenesisState;
             fromAmino(object: _151.GenesisStateAmino): _151.GenesisState;
             toAmino(message: _151.GenesisState): _151.GenesisStateAmino;
@@ -6410,8 +6568,8 @@ export declare namespace osmosis {
             };
             MsgCreateDenom: {
                 typeUrl: string;
-                encode(message: _160.MsgCreateDenom, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgCreateDenom;
+                encode(message: _160.MsgCreateDenom, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgCreateDenom;
                 fromPartial(object: Partial<_160.MsgCreateDenom>): _160.MsgCreateDenom;
                 fromAmino(object: _160.MsgCreateDenomAmino): _160.MsgCreateDenom;
                 toAmino(message: _160.MsgCreateDenom): _160.MsgCreateDenomAmino;
@@ -6423,8 +6581,8 @@ export declare namespace osmosis {
             };
             MsgCreateDenomResponse: {
                 typeUrl: string;
-                encode(message: _160.MsgCreateDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgCreateDenomResponse;
+                encode(message: _160.MsgCreateDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgCreateDenomResponse;
                 fromPartial(object: Partial<_160.MsgCreateDenomResponse>): _160.MsgCreateDenomResponse;
                 fromAmino(object: _160.MsgCreateDenomResponseAmino): _160.MsgCreateDenomResponse;
                 toAmino(message: _160.MsgCreateDenomResponse): _160.MsgCreateDenomResponseAmino;
@@ -6436,8 +6594,8 @@ export declare namespace osmosis {
             };
             MsgMint: {
                 typeUrl: string;
-                encode(message: _160.MsgMint, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgMint;
+                encode(message: _160.MsgMint, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgMint;
                 fromPartial(object: Partial<_160.MsgMint>): _160.MsgMint;
                 fromAmino(object: _160.MsgMintAmino): _160.MsgMint;
                 toAmino(message: _160.MsgMint): _160.MsgMintAmino;
@@ -6449,8 +6607,8 @@ export declare namespace osmosis {
             };
             MsgMintResponse: {
                 typeUrl: string;
-                encode(_: _160.MsgMintResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgMintResponse;
+                encode(_: _160.MsgMintResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgMintResponse;
                 fromPartial(_: Partial<_160.MsgMintResponse>): _160.MsgMintResponse;
                 fromAmino(_: _160.MsgMintResponseAmino): _160.MsgMintResponse;
                 toAmino(_: _160.MsgMintResponse): _160.MsgMintResponseAmino;
@@ -6462,8 +6620,8 @@ export declare namespace osmosis {
             };
             MsgBurn: {
                 typeUrl: string;
-                encode(message: _160.MsgBurn, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgBurn;
+                encode(message: _160.MsgBurn, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgBurn;
                 fromPartial(object: Partial<_160.MsgBurn>): _160.MsgBurn;
                 fromAmino(object: _160.MsgBurnAmino): _160.MsgBurn;
                 toAmino(message: _160.MsgBurn): _160.MsgBurnAmino;
@@ -6475,8 +6633,8 @@ export declare namespace osmosis {
             };
             MsgBurnResponse: {
                 typeUrl: string;
-                encode(_: _160.MsgBurnResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgBurnResponse;
+                encode(_: _160.MsgBurnResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgBurnResponse;
                 fromPartial(_: Partial<_160.MsgBurnResponse>): _160.MsgBurnResponse;
                 fromAmino(_: _160.MsgBurnResponseAmino): _160.MsgBurnResponse;
                 toAmino(_: _160.MsgBurnResponse): _160.MsgBurnResponseAmino;
@@ -6488,8 +6646,8 @@ export declare namespace osmosis {
             };
             MsgChangeAdmin: {
                 typeUrl: string;
-                encode(message: _160.MsgChangeAdmin, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgChangeAdmin;
+                encode(message: _160.MsgChangeAdmin, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgChangeAdmin;
                 fromPartial(object: Partial<_160.MsgChangeAdmin>): _160.MsgChangeAdmin;
                 fromAmino(object: _160.MsgChangeAdminAmino): _160.MsgChangeAdmin;
                 toAmino(message: _160.MsgChangeAdmin): _160.MsgChangeAdminAmino;
@@ -6501,8 +6659,8 @@ export declare namespace osmosis {
             };
             MsgChangeAdminResponse: {
                 typeUrl: string;
-                encode(_: _160.MsgChangeAdminResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgChangeAdminResponse;
+                encode(_: _160.MsgChangeAdminResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgChangeAdminResponse;
                 fromPartial(_: Partial<_160.MsgChangeAdminResponse>): _160.MsgChangeAdminResponse;
                 fromAmino(_: _160.MsgChangeAdminResponseAmino): _160.MsgChangeAdminResponse;
                 toAmino(_: _160.MsgChangeAdminResponse): _160.MsgChangeAdminResponseAmino;
@@ -6514,8 +6672,8 @@ export declare namespace osmosis {
             };
             MsgSetDenomMetadata: {
                 typeUrl: string;
-                encode(message: _160.MsgSetDenomMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSetDenomMetadata;
+                encode(message: _160.MsgSetDenomMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgSetDenomMetadata;
                 fromPartial(object: Partial<_160.MsgSetDenomMetadata>): _160.MsgSetDenomMetadata;
                 fromAmino(object: _160.MsgSetDenomMetadataAmino): _160.MsgSetDenomMetadata;
                 toAmino(message: _160.MsgSetDenomMetadata): _160.MsgSetDenomMetadataAmino;
@@ -6527,8 +6685,8 @@ export declare namespace osmosis {
             };
             MsgSetDenomMetadataResponse: {
                 typeUrl: string;
-                encode(_: _160.MsgSetDenomMetadataResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgSetDenomMetadataResponse;
+                encode(_: _160.MsgSetDenomMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgSetDenomMetadataResponse;
                 fromPartial(_: Partial<_160.MsgSetDenomMetadataResponse>): _160.MsgSetDenomMetadataResponse;
                 fromAmino(_: _160.MsgSetDenomMetadataResponseAmino): _160.MsgSetDenomMetadataResponse;
                 toAmino(_: _160.MsgSetDenomMetadataResponse): _160.MsgSetDenomMetadataResponseAmino;
@@ -6540,8 +6698,8 @@ export declare namespace osmosis {
             };
             MsgForceTransfer: {
                 typeUrl: string;
-                encode(message: _160.MsgForceTransfer, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgForceTransfer;
+                encode(message: _160.MsgForceTransfer, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgForceTransfer;
                 fromPartial(object: Partial<_160.MsgForceTransfer>): _160.MsgForceTransfer;
                 fromAmino(object: _160.MsgForceTransferAmino): _160.MsgForceTransfer;
                 toAmino(message: _160.MsgForceTransfer): _160.MsgForceTransferAmino;
@@ -6553,8 +6711,8 @@ export declare namespace osmosis {
             };
             MsgForceTransferResponse: {
                 typeUrl: string;
-                encode(_: _160.MsgForceTransferResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MsgForceTransferResponse;
+                encode(_: _160.MsgForceTransferResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.MsgForceTransferResponse;
                 fromPartial(_: Partial<_160.MsgForceTransferResponse>): _160.MsgForceTransferResponse;
                 fromAmino(_: _160.MsgForceTransferResponseAmino): _160.MsgForceTransferResponse;
                 toAmino(_: _160.MsgForceTransferResponse): _160.MsgForceTransferResponseAmino;
@@ -6566,8 +6724,8 @@ export declare namespace osmosis {
             };
             QueryParamsRequest: {
                 typeUrl: string;
-                encode(_: _159.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.QueryParamsRequest;
+                encode(_: _159.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.QueryParamsRequest;
                 fromPartial(_: Partial<_159.QueryParamsRequest>): _159.QueryParamsRequest;
                 fromAmino(_: _159.QueryParamsRequestAmino): _159.QueryParamsRequest;
                 toAmino(_: _159.QueryParamsRequest): _159.QueryParamsRequestAmino;
@@ -6579,8 +6737,8 @@ export declare namespace osmosis {
             };
             QueryParamsResponse: {
                 typeUrl: string;
-                encode(message: _159.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.QueryParamsResponse;
+                encode(message: _159.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.QueryParamsResponse;
                 fromPartial(object: Partial<_159.QueryParamsResponse>): _159.QueryParamsResponse;
                 fromAmino(object: _159.QueryParamsResponseAmino): _159.QueryParamsResponse;
                 toAmino(message: _159.QueryParamsResponse): _159.QueryParamsResponseAmino;
@@ -6592,8 +6750,8 @@ export declare namespace osmosis {
             };
             QueryDenomAuthorityMetadataRequest: {
                 typeUrl: string;
-                encode(message: _159.QueryDenomAuthorityMetadataRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.QueryDenomAuthorityMetadataRequest;
+                encode(message: _159.QueryDenomAuthorityMetadataRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.QueryDenomAuthorityMetadataRequest;
                 fromPartial(object: Partial<_159.QueryDenomAuthorityMetadataRequest>): _159.QueryDenomAuthorityMetadataRequest;
                 fromAmino(object: _159.QueryDenomAuthorityMetadataRequestAmino): _159.QueryDenomAuthorityMetadataRequest;
                 toAmino(message: _159.QueryDenomAuthorityMetadataRequest): _159.QueryDenomAuthorityMetadataRequestAmino;
@@ -6605,8 +6763,8 @@ export declare namespace osmosis {
             };
             QueryDenomAuthorityMetadataResponse: {
                 typeUrl: string;
-                encode(message: _159.QueryDenomAuthorityMetadataResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.QueryDenomAuthorityMetadataResponse;
+                encode(message: _159.QueryDenomAuthorityMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.QueryDenomAuthorityMetadataResponse;
                 fromPartial(object: Partial<_159.QueryDenomAuthorityMetadataResponse>): _159.QueryDenomAuthorityMetadataResponse;
                 fromAmino(object: _159.QueryDenomAuthorityMetadataResponseAmino): _159.QueryDenomAuthorityMetadataResponse;
                 toAmino(message: _159.QueryDenomAuthorityMetadataResponse): _159.QueryDenomAuthorityMetadataResponseAmino;
@@ -6618,8 +6776,8 @@ export declare namespace osmosis {
             };
             QueryDenomsFromCreatorRequest: {
                 typeUrl: string;
-                encode(message: _159.QueryDenomsFromCreatorRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.QueryDenomsFromCreatorRequest;
+                encode(message: _159.QueryDenomsFromCreatorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.QueryDenomsFromCreatorRequest;
                 fromPartial(object: Partial<_159.QueryDenomsFromCreatorRequest>): _159.QueryDenomsFromCreatorRequest;
                 fromAmino(object: _159.QueryDenomsFromCreatorRequestAmino): _159.QueryDenomsFromCreatorRequest;
                 toAmino(message: _159.QueryDenomsFromCreatorRequest): _159.QueryDenomsFromCreatorRequestAmino;
@@ -6631,8 +6789,8 @@ export declare namespace osmosis {
             };
             QueryDenomsFromCreatorResponse: {
                 typeUrl: string;
-                encode(message: _159.QueryDenomsFromCreatorResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.QueryDenomsFromCreatorResponse;
+                encode(message: _159.QueryDenomsFromCreatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.QueryDenomsFromCreatorResponse;
                 fromPartial(object: Partial<_159.QueryDenomsFromCreatorResponse>): _159.QueryDenomsFromCreatorResponse;
                 fromAmino(object: _159.QueryDenomsFromCreatorResponseAmino): _159.QueryDenomsFromCreatorResponse;
                 toAmino(message: _159.QueryDenomsFromCreatorResponse): _159.QueryDenomsFromCreatorResponseAmino;
@@ -6644,8 +6802,8 @@ export declare namespace osmosis {
             };
             Params: {
                 typeUrl: string;
-                encode(message: _158.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.Params;
+                encode(message: _158.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.Params;
                 fromPartial(object: Partial<_158.Params>): _158.Params;
                 fromAmino(object: _158.ParamsAmino): _158.Params;
                 toAmino(message: _158.Params): _158.ParamsAmino;
@@ -6657,8 +6815,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _157.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.GenesisState;
+                encode(message: _157.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.GenesisState;
                 fromPartial(object: Partial<_157.GenesisState>): _157.GenesisState;
                 fromAmino(object: _157.GenesisStateAmino): _157.GenesisState;
                 toAmino(message: _157.GenesisState): _157.GenesisStateAmino;
@@ -6670,8 +6828,8 @@ export declare namespace osmosis {
             };
             GenesisDenom: {
                 typeUrl: string;
-                encode(message: _157.GenesisDenom, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.GenesisDenom;
+                encode(message: _157.GenesisDenom, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.GenesisDenom;
                 fromPartial(object: Partial<_157.GenesisDenom>): _157.GenesisDenom;
                 fromAmino(object: _157.GenesisDenomAmino): _157.GenesisDenom;
                 toAmino(message: _157.GenesisDenom): _157.GenesisDenomAmino;
@@ -6683,8 +6841,8 @@ export declare namespace osmosis {
             };
             DenomAuthorityMetadata: {
                 typeUrl: string;
-                encode(message: _156.DenomAuthorityMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.DenomAuthorityMetadata;
+                encode(message: _156.DenomAuthorityMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _156.DenomAuthorityMetadata;
                 fromPartial(object: Partial<_156.DenomAuthorityMetadata>): _156.DenomAuthorityMetadata;
                 fromAmino(object: _156.DenomAuthorityMetadataAmino): _156.DenomAuthorityMetadata;
                 toAmino(message: _156.DenomAuthorityMetadata): _156.DenomAuthorityMetadataAmino;
@@ -6709,8 +6867,8 @@ export declare namespace osmosis {
             LCDQueryClient: typeof _299.LCDQueryClient;
             TwapRecord: {
                 typeUrl: string;
-                encode(message: _163.TwapRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.TwapRecord;
+                encode(message: _163.TwapRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.TwapRecord;
                 fromPartial(object: Partial<_163.TwapRecord>): _163.TwapRecord;
                 fromAmino(object: _163.TwapRecordAmino): _163.TwapRecord;
                 toAmino(message: _163.TwapRecord): _163.TwapRecordAmino;
@@ -6722,8 +6880,8 @@ export declare namespace osmosis {
             };
             ArithmeticTwapRequest: {
                 typeUrl: string;
-                encode(message: _162.ArithmeticTwapRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.ArithmeticTwapRequest;
+                encode(message: _162.ArithmeticTwapRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.ArithmeticTwapRequest;
                 fromPartial(object: Partial<_162.ArithmeticTwapRequest>): _162.ArithmeticTwapRequest;
                 fromAmino(object: _162.ArithmeticTwapRequestAmino): _162.ArithmeticTwapRequest;
                 toAmino(message: _162.ArithmeticTwapRequest): _162.ArithmeticTwapRequestAmino;
@@ -6735,8 +6893,8 @@ export declare namespace osmosis {
             };
             ArithmeticTwapResponse: {
                 typeUrl: string;
-                encode(message: _162.ArithmeticTwapResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.ArithmeticTwapResponse;
+                encode(message: _162.ArithmeticTwapResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.ArithmeticTwapResponse;
                 fromPartial(object: Partial<_162.ArithmeticTwapResponse>): _162.ArithmeticTwapResponse;
                 fromAmino(object: _162.ArithmeticTwapResponseAmino): _162.ArithmeticTwapResponse;
                 toAmino(message: _162.ArithmeticTwapResponse): _162.ArithmeticTwapResponseAmino;
@@ -6748,8 +6906,8 @@ export declare namespace osmosis {
             };
             ArithmeticTwapToNowRequest: {
                 typeUrl: string;
-                encode(message: _162.ArithmeticTwapToNowRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.ArithmeticTwapToNowRequest;
+                encode(message: _162.ArithmeticTwapToNowRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.ArithmeticTwapToNowRequest;
                 fromPartial(object: Partial<_162.ArithmeticTwapToNowRequest>): _162.ArithmeticTwapToNowRequest;
                 fromAmino(object: _162.ArithmeticTwapToNowRequestAmino): _162.ArithmeticTwapToNowRequest;
                 toAmino(message: _162.ArithmeticTwapToNowRequest): _162.ArithmeticTwapToNowRequestAmino;
@@ -6761,8 +6919,8 @@ export declare namespace osmosis {
             };
             ArithmeticTwapToNowResponse: {
                 typeUrl: string;
-                encode(message: _162.ArithmeticTwapToNowResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.ArithmeticTwapToNowResponse;
+                encode(message: _162.ArithmeticTwapToNowResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.ArithmeticTwapToNowResponse;
                 fromPartial(object: Partial<_162.ArithmeticTwapToNowResponse>): _162.ArithmeticTwapToNowResponse;
                 fromAmino(object: _162.ArithmeticTwapToNowResponseAmino): _162.ArithmeticTwapToNowResponse;
                 toAmino(message: _162.ArithmeticTwapToNowResponse): _162.ArithmeticTwapToNowResponseAmino;
@@ -6774,8 +6932,8 @@ export declare namespace osmosis {
             };
             GeometricTwapRequest: {
                 typeUrl: string;
-                encode(message: _162.GeometricTwapRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.GeometricTwapRequest;
+                encode(message: _162.GeometricTwapRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.GeometricTwapRequest;
                 fromPartial(object: Partial<_162.GeometricTwapRequest>): _162.GeometricTwapRequest;
                 fromAmino(object: _162.GeometricTwapRequestAmino): _162.GeometricTwapRequest;
                 toAmino(message: _162.GeometricTwapRequest): _162.GeometricTwapRequestAmino;
@@ -6787,8 +6945,8 @@ export declare namespace osmosis {
             };
             GeometricTwapResponse: {
                 typeUrl: string;
-                encode(message: _162.GeometricTwapResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.GeometricTwapResponse;
+                encode(message: _162.GeometricTwapResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.GeometricTwapResponse;
                 fromPartial(object: Partial<_162.GeometricTwapResponse>): _162.GeometricTwapResponse;
                 fromAmino(object: _162.GeometricTwapResponseAmino): _162.GeometricTwapResponse;
                 toAmino(message: _162.GeometricTwapResponse): _162.GeometricTwapResponseAmino;
@@ -6800,8 +6958,8 @@ export declare namespace osmosis {
             };
             GeometricTwapToNowRequest: {
                 typeUrl: string;
-                encode(message: _162.GeometricTwapToNowRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.GeometricTwapToNowRequest;
+                encode(message: _162.GeometricTwapToNowRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.GeometricTwapToNowRequest;
                 fromPartial(object: Partial<_162.GeometricTwapToNowRequest>): _162.GeometricTwapToNowRequest;
                 fromAmino(object: _162.GeometricTwapToNowRequestAmino): _162.GeometricTwapToNowRequest;
                 toAmino(message: _162.GeometricTwapToNowRequest): _162.GeometricTwapToNowRequestAmino;
@@ -6813,8 +6971,8 @@ export declare namespace osmosis {
             };
             GeometricTwapToNowResponse: {
                 typeUrl: string;
-                encode(message: _162.GeometricTwapToNowResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.GeometricTwapToNowResponse;
+                encode(message: _162.GeometricTwapToNowResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.GeometricTwapToNowResponse;
                 fromPartial(object: Partial<_162.GeometricTwapToNowResponse>): _162.GeometricTwapToNowResponse;
                 fromAmino(object: _162.GeometricTwapToNowResponseAmino): _162.GeometricTwapToNowResponse;
                 toAmino(message: _162.GeometricTwapToNowResponse): _162.GeometricTwapToNowResponseAmino;
@@ -6826,8 +6984,8 @@ export declare namespace osmosis {
             };
             ParamsRequest: {
                 typeUrl: string;
-                encode(_: _162.ParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.ParamsRequest;
+                encode(_: _162.ParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.ParamsRequest;
                 fromPartial(_: Partial<_162.ParamsRequest>): _162.ParamsRequest;
                 fromAmino(_: _162.ParamsRequestAmino): _162.ParamsRequest;
                 toAmino(_: _162.ParamsRequest): _162.ParamsRequestAmino;
@@ -6839,8 +6997,8 @@ export declare namespace osmosis {
             };
             ParamsResponse: {
                 typeUrl: string;
-                encode(message: _162.ParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.ParamsResponse;
+                encode(message: _162.ParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.ParamsResponse;
                 fromPartial(object: Partial<_162.ParamsResponse>): _162.ParamsResponse;
                 fromAmino(object: _162.ParamsResponseAmino): _162.ParamsResponse;
                 toAmino(message: _162.ParamsResponse): _162.ParamsResponseAmino;
@@ -6852,8 +7010,8 @@ export declare namespace osmosis {
             };
             Params: {
                 typeUrl: string;
-                encode(message: _161.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.Params;
+                encode(message: _161.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _161.Params;
                 fromPartial(object: Partial<_161.Params>): _161.Params;
                 fromAmino(object: _161.ParamsAmino): _161.Params;
                 toAmino(message: _161.Params): _161.ParamsAmino;
@@ -6865,8 +7023,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _161.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.GenesisState;
+                encode(message: _161.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _161.GenesisState;
                 fromPartial(object: Partial<_161.GenesisState>): _161.GenesisState;
                 fromAmino(object: _161.GenesisStateAmino): _161.GenesisState;
                 toAmino(message: _161.GenesisState): _161.GenesisStateAmino;
@@ -6890,8 +7048,8 @@ export declare namespace osmosis {
             LCDQueryClient: typeof _300.LCDQueryClient;
             QueryFeeTokensRequest: {
                 typeUrl: string;
-                encode(_: _167.QueryFeeTokensRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.QueryFeeTokensRequest;
+                encode(_: _167.QueryFeeTokensRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.QueryFeeTokensRequest;
                 fromPartial(_: Partial<_167.QueryFeeTokensRequest>): _167.QueryFeeTokensRequest;
                 fromAmino(_: _167.QueryFeeTokensRequestAmino): _167.QueryFeeTokensRequest;
                 toAmino(_: _167.QueryFeeTokensRequest): _167.QueryFeeTokensRequestAmino;
@@ -6903,8 +7061,8 @@ export declare namespace osmosis {
             };
             QueryFeeTokensResponse: {
                 typeUrl: string;
-                encode(message: _167.QueryFeeTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.QueryFeeTokensResponse;
+                encode(message: _167.QueryFeeTokensResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.QueryFeeTokensResponse;
                 fromPartial(object: Partial<_167.QueryFeeTokensResponse>): _167.QueryFeeTokensResponse;
                 fromAmino(object: _167.QueryFeeTokensResponseAmino): _167.QueryFeeTokensResponse;
                 toAmino(message: _167.QueryFeeTokensResponse): _167.QueryFeeTokensResponseAmino;
@@ -6916,8 +7074,8 @@ export declare namespace osmosis {
             };
             QueryDenomSpotPriceRequest: {
                 typeUrl: string;
-                encode(message: _167.QueryDenomSpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.QueryDenomSpotPriceRequest;
+                encode(message: _167.QueryDenomSpotPriceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.QueryDenomSpotPriceRequest;
                 fromPartial(object: Partial<_167.QueryDenomSpotPriceRequest>): _167.QueryDenomSpotPriceRequest;
                 fromAmino(object: _167.QueryDenomSpotPriceRequestAmino): _167.QueryDenomSpotPriceRequest;
                 toAmino(message: _167.QueryDenomSpotPriceRequest): _167.QueryDenomSpotPriceRequestAmino;
@@ -6929,8 +7087,8 @@ export declare namespace osmosis {
             };
             QueryDenomSpotPriceResponse: {
                 typeUrl: string;
-                encode(message: _167.QueryDenomSpotPriceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.QueryDenomSpotPriceResponse;
+                encode(message: _167.QueryDenomSpotPriceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.QueryDenomSpotPriceResponse;
                 fromPartial(object: Partial<_167.QueryDenomSpotPriceResponse>): _167.QueryDenomSpotPriceResponse;
                 fromAmino(object: _167.QueryDenomSpotPriceResponseAmino): _167.QueryDenomSpotPriceResponse;
                 toAmino(message: _167.QueryDenomSpotPriceResponse): _167.QueryDenomSpotPriceResponseAmino;
@@ -6942,8 +7100,8 @@ export declare namespace osmosis {
             };
             QueryDenomPoolIdRequest: {
                 typeUrl: string;
-                encode(message: _167.QueryDenomPoolIdRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.QueryDenomPoolIdRequest;
+                encode(message: _167.QueryDenomPoolIdRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.QueryDenomPoolIdRequest;
                 fromPartial(object: Partial<_167.QueryDenomPoolIdRequest>): _167.QueryDenomPoolIdRequest;
                 fromAmino(object: _167.QueryDenomPoolIdRequestAmino): _167.QueryDenomPoolIdRequest;
                 toAmino(message: _167.QueryDenomPoolIdRequest): _167.QueryDenomPoolIdRequestAmino;
@@ -6955,8 +7113,8 @@ export declare namespace osmosis {
             };
             QueryDenomPoolIdResponse: {
                 typeUrl: string;
-                encode(message: _167.QueryDenomPoolIdResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.QueryDenomPoolIdResponse;
+                encode(message: _167.QueryDenomPoolIdResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.QueryDenomPoolIdResponse;
                 fromPartial(object: Partial<_167.QueryDenomPoolIdResponse>): _167.QueryDenomPoolIdResponse;
                 fromAmino(object: _167.QueryDenomPoolIdResponseAmino): _167.QueryDenomPoolIdResponse;
                 toAmino(message: _167.QueryDenomPoolIdResponse): _167.QueryDenomPoolIdResponseAmino;
@@ -6968,8 +7126,8 @@ export declare namespace osmosis {
             };
             QueryBaseDenomRequest: {
                 typeUrl: string;
-                encode(_: _167.QueryBaseDenomRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.QueryBaseDenomRequest;
+                encode(_: _167.QueryBaseDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.QueryBaseDenomRequest;
                 fromPartial(_: Partial<_167.QueryBaseDenomRequest>): _167.QueryBaseDenomRequest;
                 fromAmino(_: _167.QueryBaseDenomRequestAmino): _167.QueryBaseDenomRequest;
                 toAmino(_: _167.QueryBaseDenomRequest): _167.QueryBaseDenomRequestAmino;
@@ -6981,8 +7139,8 @@ export declare namespace osmosis {
             };
             QueryBaseDenomResponse: {
                 typeUrl: string;
-                encode(message: _167.QueryBaseDenomResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.QueryBaseDenomResponse;
+                encode(message: _167.QueryBaseDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.QueryBaseDenomResponse;
                 fromPartial(object: Partial<_167.QueryBaseDenomResponse>): _167.QueryBaseDenomResponse;
                 fromAmino(object: _167.QueryBaseDenomResponseAmino): _167.QueryBaseDenomResponse;
                 toAmino(message: _167.QueryBaseDenomResponse): _167.QueryBaseDenomResponseAmino;
@@ -6994,8 +7152,8 @@ export declare namespace osmosis {
             };
             UpdateFeeTokenProposal: {
                 typeUrl: string;
-                encode(message: _166.UpdateFeeTokenProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _166.UpdateFeeTokenProposal;
+                encode(message: _166.UpdateFeeTokenProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _166.UpdateFeeTokenProposal;
                 fromPartial(object: Partial<_166.UpdateFeeTokenProposal>): _166.UpdateFeeTokenProposal;
                 fromAmino(object: _166.UpdateFeeTokenProposalAmino): _166.UpdateFeeTokenProposal;
                 toAmino(message: _166.UpdateFeeTokenProposal): _166.UpdateFeeTokenProposalAmino;
@@ -7007,8 +7165,8 @@ export declare namespace osmosis {
             };
             GenesisState: {
                 typeUrl: string;
-                encode(message: _165.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.GenesisState;
+                encode(message: _165.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.GenesisState;
                 fromPartial(object: Partial<_165.GenesisState>): _165.GenesisState;
                 fromAmino(object: _165.GenesisStateAmino): _165.GenesisState;
                 toAmino(message: _165.GenesisState): _165.GenesisStateAmino;
@@ -7020,8 +7178,8 @@ export declare namespace osmosis {
             };
             FeeToken: {
                 typeUrl: string;
-                encode(message: _164.FeeToken, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.FeeToken;
+                encode(message: _164.FeeToken, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _164.FeeToken;
                 fromPartial(object: Partial<_164.FeeToken>): _164.FeeToken;
                 fromAmino(object: _164.FeeTokenAmino): _164.FeeToken;
                 toAmino(message: _164.FeeToken): _164.FeeTokenAmino;
@@ -7157,8 +7315,8 @@ export declare namespace osmosis {
             };
             MsgSetValidatorSetPreference: {
                 typeUrl: string;
-                encode(message: _170.MsgSetValidatorSetPreference, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgSetValidatorSetPreference;
+                encode(message: _170.MsgSetValidatorSetPreference, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgSetValidatorSetPreference;
                 fromPartial(object: Partial<_170.MsgSetValidatorSetPreference>): _170.MsgSetValidatorSetPreference;
                 fromAmino(object: _170.MsgSetValidatorSetPreferenceAmino): _170.MsgSetValidatorSetPreference;
                 toAmino(message: _170.MsgSetValidatorSetPreference): _170.MsgSetValidatorSetPreferenceAmino;
@@ -7170,8 +7328,8 @@ export declare namespace osmosis {
             };
             MsgSetValidatorSetPreferenceResponse: {
                 typeUrl: string;
-                encode(_: _170.MsgSetValidatorSetPreferenceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgSetValidatorSetPreferenceResponse;
+                encode(_: _170.MsgSetValidatorSetPreferenceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgSetValidatorSetPreferenceResponse;
                 fromPartial(_: Partial<_170.MsgSetValidatorSetPreferenceResponse>): _170.MsgSetValidatorSetPreferenceResponse;
                 fromAmino(_: _170.MsgSetValidatorSetPreferenceResponseAmino): _170.MsgSetValidatorSetPreferenceResponse;
                 toAmino(_: _170.MsgSetValidatorSetPreferenceResponse): _170.MsgSetValidatorSetPreferenceResponseAmino;
@@ -7183,8 +7341,8 @@ export declare namespace osmosis {
             };
             MsgDelegateToValidatorSet: {
                 typeUrl: string;
-                encode(message: _170.MsgDelegateToValidatorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgDelegateToValidatorSet;
+                encode(message: _170.MsgDelegateToValidatorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgDelegateToValidatorSet;
                 fromPartial(object: Partial<_170.MsgDelegateToValidatorSet>): _170.MsgDelegateToValidatorSet;
                 fromAmino(object: _170.MsgDelegateToValidatorSetAmino): _170.MsgDelegateToValidatorSet;
                 toAmino(message: _170.MsgDelegateToValidatorSet): _170.MsgDelegateToValidatorSetAmino;
@@ -7196,8 +7354,8 @@ export declare namespace osmosis {
             };
             MsgDelegateToValidatorSetResponse: {
                 typeUrl: string;
-                encode(_: _170.MsgDelegateToValidatorSetResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgDelegateToValidatorSetResponse;
+                encode(_: _170.MsgDelegateToValidatorSetResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgDelegateToValidatorSetResponse;
                 fromPartial(_: Partial<_170.MsgDelegateToValidatorSetResponse>): _170.MsgDelegateToValidatorSetResponse;
                 fromAmino(_: _170.MsgDelegateToValidatorSetResponseAmino): _170.MsgDelegateToValidatorSetResponse;
                 toAmino(_: _170.MsgDelegateToValidatorSetResponse): _170.MsgDelegateToValidatorSetResponseAmino;
@@ -7209,8 +7367,8 @@ export declare namespace osmosis {
             };
             MsgUndelegateFromValidatorSet: {
                 typeUrl: string;
-                encode(message: _170.MsgUndelegateFromValidatorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgUndelegateFromValidatorSet;
+                encode(message: _170.MsgUndelegateFromValidatorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgUndelegateFromValidatorSet;
                 fromPartial(object: Partial<_170.MsgUndelegateFromValidatorSet>): _170.MsgUndelegateFromValidatorSet;
                 fromAmino(object: _170.MsgUndelegateFromValidatorSetAmino): _170.MsgUndelegateFromValidatorSet;
                 toAmino(message: _170.MsgUndelegateFromValidatorSet): _170.MsgUndelegateFromValidatorSetAmino;
@@ -7222,8 +7380,8 @@ export declare namespace osmosis {
             };
             MsgUndelegateFromValidatorSetResponse: {
                 typeUrl: string;
-                encode(_: _170.MsgUndelegateFromValidatorSetResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgUndelegateFromValidatorSetResponse;
+                encode(_: _170.MsgUndelegateFromValidatorSetResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgUndelegateFromValidatorSetResponse;
                 fromPartial(_: Partial<_170.MsgUndelegateFromValidatorSetResponse>): _170.MsgUndelegateFromValidatorSetResponse;
                 fromAmino(_: _170.MsgUndelegateFromValidatorSetResponseAmino): _170.MsgUndelegateFromValidatorSetResponse;
                 toAmino(_: _170.MsgUndelegateFromValidatorSetResponse): _170.MsgUndelegateFromValidatorSetResponseAmino;
@@ -7235,8 +7393,8 @@ export declare namespace osmosis {
             };
             MsgRedelegateValidatorSet: {
                 typeUrl: string;
-                encode(message: _170.MsgRedelegateValidatorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgRedelegateValidatorSet;
+                encode(message: _170.MsgRedelegateValidatorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgRedelegateValidatorSet;
                 fromPartial(object: Partial<_170.MsgRedelegateValidatorSet>): _170.MsgRedelegateValidatorSet;
                 fromAmino(object: _170.MsgRedelegateValidatorSetAmino): _170.MsgRedelegateValidatorSet;
                 toAmino(message: _170.MsgRedelegateValidatorSet): _170.MsgRedelegateValidatorSetAmino;
@@ -7248,8 +7406,8 @@ export declare namespace osmosis {
             };
             MsgRedelegateValidatorSetResponse: {
                 typeUrl: string;
-                encode(_: _170.MsgRedelegateValidatorSetResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgRedelegateValidatorSetResponse;
+                encode(_: _170.MsgRedelegateValidatorSetResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgRedelegateValidatorSetResponse;
                 fromPartial(_: Partial<_170.MsgRedelegateValidatorSetResponse>): _170.MsgRedelegateValidatorSetResponse;
                 fromAmino(_: _170.MsgRedelegateValidatorSetResponseAmino): _170.MsgRedelegateValidatorSetResponse;
                 toAmino(_: _170.MsgRedelegateValidatorSetResponse): _170.MsgRedelegateValidatorSetResponseAmino;
@@ -7261,8 +7419,8 @@ export declare namespace osmosis {
             };
             MsgWithdrawDelegationRewards: {
                 typeUrl: string;
-                encode(message: _170.MsgWithdrawDelegationRewards, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgWithdrawDelegationRewards;
+                encode(message: _170.MsgWithdrawDelegationRewards, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgWithdrawDelegationRewards;
                 fromPartial(object: Partial<_170.MsgWithdrawDelegationRewards>): _170.MsgWithdrawDelegationRewards;
                 fromAmino(object: _170.MsgWithdrawDelegationRewardsAmino): _170.MsgWithdrawDelegationRewards;
                 toAmino(message: _170.MsgWithdrawDelegationRewards): _170.MsgWithdrawDelegationRewardsAmino;
@@ -7274,8 +7432,8 @@ export declare namespace osmosis {
             };
             MsgWithdrawDelegationRewardsResponse: {
                 typeUrl: string;
-                encode(_: _170.MsgWithdrawDelegationRewardsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgWithdrawDelegationRewardsResponse;
+                encode(_: _170.MsgWithdrawDelegationRewardsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgWithdrawDelegationRewardsResponse;
                 fromPartial(_: Partial<_170.MsgWithdrawDelegationRewardsResponse>): _170.MsgWithdrawDelegationRewardsResponse;
                 fromAmino(_: _170.MsgWithdrawDelegationRewardsResponseAmino): _170.MsgWithdrawDelegationRewardsResponse;
                 toAmino(_: _170.MsgWithdrawDelegationRewardsResponse): _170.MsgWithdrawDelegationRewardsResponseAmino;
@@ -7287,8 +7445,8 @@ export declare namespace osmosis {
             };
             MsgDelegateBondedTokens: {
                 typeUrl: string;
-                encode(message: _170.MsgDelegateBondedTokens, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgDelegateBondedTokens;
+                encode(message: _170.MsgDelegateBondedTokens, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgDelegateBondedTokens;
                 fromPartial(object: Partial<_170.MsgDelegateBondedTokens>): _170.MsgDelegateBondedTokens;
                 fromAmino(object: _170.MsgDelegateBondedTokensAmino): _170.MsgDelegateBondedTokens;
                 toAmino(message: _170.MsgDelegateBondedTokens): _170.MsgDelegateBondedTokensAmino;
@@ -7300,8 +7458,8 @@ export declare namespace osmosis {
             };
             MsgDelegateBondedTokensResponse: {
                 typeUrl: string;
-                encode(_: _170.MsgDelegateBondedTokensResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.MsgDelegateBondedTokensResponse;
+                encode(_: _170.MsgDelegateBondedTokensResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _170.MsgDelegateBondedTokensResponse;
                 fromPartial(_: Partial<_170.MsgDelegateBondedTokensResponse>): _170.MsgDelegateBondedTokensResponse;
                 fromAmino(_: _170.MsgDelegateBondedTokensResponseAmino): _170.MsgDelegateBondedTokensResponse;
                 toAmino(_: _170.MsgDelegateBondedTokensResponse): _170.MsgDelegateBondedTokensResponseAmino;
@@ -7313,8 +7471,8 @@ export declare namespace osmosis {
             };
             ValidatorPreference: {
                 typeUrl: string;
-                encode(message: _169.ValidatorPreference, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ValidatorPreference;
+                encode(message: _169.ValidatorPreference, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _169.ValidatorPreference;
                 fromPartial(object: Partial<_169.ValidatorPreference>): _169.ValidatorPreference;
                 fromAmino(object: _169.ValidatorPreferenceAmino): _169.ValidatorPreference;
                 toAmino(message: _169.ValidatorPreference): _169.ValidatorPreferenceAmino;
@@ -7326,8 +7484,8 @@ export declare namespace osmosis {
             };
             ValidatorSetPreferences: {
                 typeUrl: string;
-                encode(message: _169.ValidatorSetPreferences, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ValidatorSetPreferences;
+                encode(message: _169.ValidatorSetPreferences, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _169.ValidatorSetPreferences;
                 fromPartial(object: Partial<_169.ValidatorSetPreferences>): _169.ValidatorSetPreferences;
                 fromAmino(object: _169.ValidatorSetPreferencesAmino): _169.ValidatorSetPreferences;
                 toAmino(message: _169.ValidatorSetPreferences): _169.ValidatorSetPreferencesAmino;
@@ -7339,8 +7497,8 @@ export declare namespace osmosis {
             };
             UserValidatorPreferencesRequest: {
                 typeUrl: string;
-                encode(message: _168.UserValidatorPreferencesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _168.UserValidatorPreferencesRequest;
+                encode(message: _168.UserValidatorPreferencesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _168.UserValidatorPreferencesRequest;
                 fromPartial(object: Partial<_168.UserValidatorPreferencesRequest>): _168.UserValidatorPreferencesRequest;
                 fromAmino(object: _168.UserValidatorPreferencesRequestAmino): _168.UserValidatorPreferencesRequest;
                 toAmino(message: _168.UserValidatorPreferencesRequest): _168.UserValidatorPreferencesRequestAmino;
@@ -7352,8 +7510,8 @@ export declare namespace osmosis {
             };
             UserValidatorPreferencesResponse: {
                 typeUrl: string;
-                encode(message: _168.UserValidatorPreferencesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _168.UserValidatorPreferencesResponse;
+                encode(message: _168.UserValidatorPreferencesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _168.UserValidatorPreferencesResponse;
                 fromPartial(object: Partial<_168.UserValidatorPreferencesResponse>): _168.UserValidatorPreferencesResponse;
                 fromAmino(object: _168.UserValidatorPreferencesResponseAmino): _168.UserValidatorPreferencesResponse;
                 toAmino(message: _168.UserValidatorPreferencesResponse): _168.UserValidatorPreferencesResponseAmino;
@@ -7390,10 +7548,10 @@ export declare namespace osmosis {
                 concentratedliquidity: {
                     poolmodel: {
                         concentrated: {
-                            v1beta1: import("./concentrated-liquidity/pool-model/concentrated/tx.rpc.msg").MsgClientImpl;
+                            v1beta1: _320.MsgClientImpl;
                         };
                     };
-                    v1beta1: import("./concentrated-liquidity/tx.rpc.msg").MsgClientImpl;
+                    v1beta1: _321.MsgClientImpl;
                 };
                 gamm: {
                     poolmodels: {
@@ -7757,7 +7915,7 @@ export declare namespace osmosis {
             };
             osmosis: {
                 concentratedliquidity: {
-                    v1beta1: import("./concentrated-liquidity/query.lcd").LCDQueryClient;
+                    v1beta1: _284.LCDQueryClient;
                 };
                 cosmwasmpool: {
                     v1beta1: _285.LCDQueryClient;

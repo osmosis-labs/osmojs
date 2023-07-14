@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * MultiSignature wraps the signatures from a multisig.LegacyAminoPubKey.
  * See cosmos.tx.v1betata1.ModeInfo.Multi for how to specify which signers
@@ -71,8 +71,8 @@ export interface CompactBitArraySDKType {
 }
 export declare const MultiSignature: {
     typeUrl: string;
-    encode(message: MultiSignature, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MultiSignature;
+    encode(message: MultiSignature, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MultiSignature;
     fromPartial(object: Partial<MultiSignature>): MultiSignature;
     fromAmino(object: MultiSignatureAmino): MultiSignature;
     toAmino(message: MultiSignature): MultiSignatureAmino;
@@ -84,8 +84,8 @@ export declare const MultiSignature: {
 };
 export declare const CompactBitArray: {
     typeUrl: string;
-    encode(message: CompactBitArray, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CompactBitArray;
+    encode(message: CompactBitArray, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CompactBitArray;
     fromPartial(object: Partial<CompactBitArray>): CompactBitArray;
     fromAmino(object: CompactBitArrayAmino): CompactBitArray;
     toAmino(message: CompactBitArray): CompactBitArrayAmino;

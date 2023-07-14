@@ -12,15 +12,14 @@ import { PoolSDKType as Pool2SDKType } from "../pool-models/balancer/balancerPoo
 import { Pool as Pool3 } from "../pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../pool-models/stableswap/stableswap_pool";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * =============================== Pool
  * Deprecated: please use the alternative in x/poolmanager
  */
 /** @deprecated */
 export interface QueryPoolRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface QueryPoolRequestProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolRequest";
@@ -44,18 +43,18 @@ export interface QueryPoolRequestAminoMsg {
  */
 /** @deprecated */
 export interface QueryPoolRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 /** Deprecated: please use the alternative in x/poolmanager */
 /** @deprecated */
 export interface QueryPoolResponse {
-    pool?: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
+    pool: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
 }
 export interface QueryPoolResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolResponse";
     value: Uint8Array;
 }
-export type QueryPoolResponseEncoded = Omit<QueryPoolResponse, "pool"> & {
+export declare type QueryPoolResponseEncoded = Omit<QueryPoolResponse, "pool"> & {
     pool?: Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg | undefined;
 };
 /** Deprecated: please use the alternative in x/poolmanager */
@@ -70,12 +69,12 @@ export interface QueryPoolResponseAminoMsg {
 /** Deprecated: please use the alternative in x/poolmanager */
 /** @deprecated */
 export interface QueryPoolResponseSDKType {
-    pool?: Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType | undefined;
+    pool: Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType | undefined;
 }
 /** =============================== Pools */
 export interface QueryPoolsRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryPoolsRequestProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolsRequest";
@@ -92,18 +91,18 @@ export interface QueryPoolsRequestAminoMsg {
 }
 /** =============================== Pools */
 export interface QueryPoolsRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface QueryPoolsResponse {
     pools: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any)[] | Any[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryPoolsResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolsResponse";
     value: Uint8Array;
 }
-export type QueryPoolsResponseEncoded = Omit<QueryPoolsResponse, "pools"> & {
+export declare type QueryPoolsResponseEncoded = Omit<QueryPoolsResponse, "pools"> & {
     pools: (Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg)[];
 };
 export interface QueryPoolsResponseAmino {
@@ -117,7 +116,7 @@ export interface QueryPoolsResponseAminoMsg {
 }
 export interface QueryPoolsResponseSDKType {
     pools: (Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType)[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** =============================== NumPools */
 /** @deprecated */
@@ -141,7 +140,7 @@ export interface QueryNumPoolsRequestSDKType {
 }
 /** @deprecated */
 export interface QueryNumPoolsResponse {
-    numPools: Long;
+    numPools: bigint;
 }
 export interface QueryNumPoolsResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryNumPoolsResponse";
@@ -157,11 +156,11 @@ export interface QueryNumPoolsResponseAminoMsg {
 }
 /** @deprecated */
 export interface QueryNumPoolsResponseSDKType {
-    num_pools: Long;
+    num_pools: bigint;
 }
 /** =============================== PoolType */
 export interface QueryPoolTypeRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface QueryPoolTypeRequestProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolTypeRequest";
@@ -177,7 +176,7 @@ export interface QueryPoolTypeRequestAminoMsg {
 }
 /** =============================== PoolType */
 export interface QueryPoolTypeRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface QueryPoolTypeResponse {
     poolType: string;
@@ -198,7 +197,7 @@ export interface QueryPoolTypeResponseSDKType {
 }
 /** =============================== CalcJoinPoolShares */
 export interface QueryCalcJoinPoolSharesRequest {
-    poolId: Long;
+    poolId: bigint;
     tokensIn: Coin[];
 }
 export interface QueryCalcJoinPoolSharesRequestProtoMsg {
@@ -216,7 +215,7 @@ export interface QueryCalcJoinPoolSharesRequestAminoMsg {
 }
 /** =============================== CalcJoinPoolShares */
 export interface QueryCalcJoinPoolSharesRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     tokens_in: CoinSDKType[];
 }
 export interface QueryCalcJoinPoolSharesResponse {
@@ -241,7 +240,7 @@ export interface QueryCalcJoinPoolSharesResponseSDKType {
 }
 /** =============================== CalcExitPoolCoinsFromShares */
 export interface QueryCalcExitPoolCoinsFromSharesRequest {
-    poolId: Long;
+    poolId: bigint;
     shareInAmount: string;
 }
 export interface QueryCalcExitPoolCoinsFromSharesRequestProtoMsg {
@@ -259,7 +258,7 @@ export interface QueryCalcExitPoolCoinsFromSharesRequestAminoMsg {
 }
 /** =============================== CalcExitPoolCoinsFromShares */
 export interface QueryCalcExitPoolCoinsFromSharesRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     share_in_amount: string;
 }
 export interface QueryCalcExitPoolCoinsFromSharesResponse {
@@ -281,7 +280,7 @@ export interface QueryCalcExitPoolCoinsFromSharesResponseSDKType {
 }
 /** =============================== PoolParams */
 export interface QueryPoolParamsRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface QueryPoolParamsRequestProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolParamsRequest";
@@ -297,10 +296,10 @@ export interface QueryPoolParamsRequestAminoMsg {
 }
 /** =============================== PoolParams */
 export interface QueryPoolParamsRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface QueryPoolParamsResponse {
-    params?: Any;
+    params: Any;
 }
 export interface QueryPoolParamsResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolParamsResponse";
@@ -314,7 +313,7 @@ export interface QueryPoolParamsResponseAminoMsg {
     value: QueryPoolParamsResponseAmino;
 }
 export interface QueryPoolParamsResponseSDKType {
-    params?: AnySDKType;
+    params: AnySDKType;
 }
 /**
  * =============================== PoolLiquidity
@@ -322,7 +321,7 @@ export interface QueryPoolParamsResponseSDKType {
  */
 /** @deprecated */
 export interface QueryTotalPoolLiquidityRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface QueryTotalPoolLiquidityRequestProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryTotalPoolLiquidityRequest";
@@ -346,7 +345,7 @@ export interface QueryTotalPoolLiquidityRequestAminoMsg {
  */
 /** @deprecated */
 export interface QueryTotalPoolLiquidityRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 /** Deprecated: please use the alternative in x/poolmanager */
 /** @deprecated */
@@ -373,7 +372,7 @@ export interface QueryTotalPoolLiquidityResponseSDKType {
 }
 /** =============================== TotalShares */
 export interface QueryTotalSharesRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface QueryTotalSharesRequestProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryTotalSharesRequest";
@@ -389,10 +388,10 @@ export interface QueryTotalSharesRequestAminoMsg {
 }
 /** =============================== TotalShares */
 export interface QueryTotalSharesRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface QueryTotalSharesResponse {
-    totalShares?: Coin;
+    totalShares: Coin;
 }
 export interface QueryTotalSharesResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryTotalSharesResponse";
@@ -406,11 +405,11 @@ export interface QueryTotalSharesResponseAminoMsg {
     value: QueryTotalSharesResponseAmino;
 }
 export interface QueryTotalSharesResponseSDKType {
-    total_shares?: CoinSDKType;
+    total_shares: CoinSDKType;
 }
 /** =============================== CalcJoinPoolNoSwapShares */
 export interface QueryCalcJoinPoolNoSwapSharesRequest {
-    poolId: Long;
+    poolId: bigint;
     tokensIn: Coin[];
 }
 export interface QueryCalcJoinPoolNoSwapSharesRequestProtoMsg {
@@ -428,7 +427,7 @@ export interface QueryCalcJoinPoolNoSwapSharesRequestAminoMsg {
 }
 /** =============================== CalcJoinPoolNoSwapShares */
 export interface QueryCalcJoinPoolNoSwapSharesRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     tokens_in: CoinSDKType[];
 }
 export interface QueryCalcJoinPoolNoSwapSharesResponse {
@@ -457,7 +456,7 @@ export interface QueryCalcJoinPoolNoSwapSharesResponseSDKType {
  */
 /** @deprecated */
 export interface QuerySpotPriceRequest {
-    poolId: Long;
+    poolId: bigint;
     baseAssetDenom: string;
     quoteAssetDenom: string;
 }
@@ -485,7 +484,7 @@ export interface QuerySpotPriceRequestAminoMsg {
  */
 /** @deprecated */
 export interface QuerySpotPriceRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     base_asset_denom: string;
     quote_asset_denom: string;
 }
@@ -496,7 +495,7 @@ export interface QueryPoolsWithFilterRequest {
      */
     minLiquidity: string;
     poolType: string;
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryPoolsWithFilterRequestProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolsWithFilterRequest";
@@ -518,18 +517,18 @@ export interface QueryPoolsWithFilterRequestAminoMsg {
 export interface QueryPoolsWithFilterRequestSDKType {
     min_liquidity: string;
     pool_type: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface QueryPoolsWithFilterResponse {
     pools: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any)[] | Any[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryPoolsWithFilterResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolsWithFilterResponse";
     value: Uint8Array;
 }
-export type QueryPoolsWithFilterResponseEncoded = Omit<QueryPoolsWithFilterResponse, "pools"> & {
+export declare type QueryPoolsWithFilterResponseEncoded = Omit<QueryPoolsWithFilterResponse, "pools"> & {
     pools: (Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg)[];
 };
 export interface QueryPoolsWithFilterResponseAmino {
@@ -543,7 +542,7 @@ export interface QueryPoolsWithFilterResponseAminoMsg {
 }
 export interface QueryPoolsWithFilterResponseSDKType {
     pools: (Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType)[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
@@ -583,7 +582,7 @@ export interface QuerySpotPriceResponseSDKType {
 /** @deprecated */
 export interface QuerySwapExactAmountInRequest {
     sender: string;
-    poolId: Long;
+    poolId: bigint;
     tokenIn: string;
     routes: SwapAmountInRoute[];
 }
@@ -607,7 +606,7 @@ export interface QuerySwapExactAmountInRequestAminoMsg {
 /** @deprecated */
 export interface QuerySwapExactAmountInRequestSDKType {
     sender: string;
-    pool_id: Long;
+    pool_id: bigint;
     token_in: string;
     routes: SwapAmountInRouteSDKType[];
 }
@@ -635,7 +634,7 @@ export interface QuerySwapExactAmountInResponseSDKType {
 /** @deprecated */
 export interface QuerySwapExactAmountOutRequest {
     sender: string;
-    poolId: Long;
+    poolId: bigint;
     routes: SwapAmountOutRoute[];
     tokenOut: string;
 }
@@ -659,7 +658,7 @@ export interface QuerySwapExactAmountOutRequestAminoMsg {
 /** @deprecated */
 export interface QuerySwapExactAmountOutRequestSDKType {
     sender: string;
-    pool_id: Long;
+    pool_id: bigint;
     routes: SwapAmountOutRouteSDKType[];
     token_out: string;
 }
@@ -716,7 +715,7 @@ export interface QueryTotalLiquidityResponseSDKType {
 }
 /** =============================== QueryConcentratedPoolIdLinkFromCFMM */
 export interface QueryConcentratedPoolIdLinkFromCFMMRequest {
-    cfmmPoolId: Long;
+    cfmmPoolId: bigint;
 }
 export interface QueryConcentratedPoolIdLinkFromCFMMRequestProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryConcentratedPoolIdLinkFromCFMMRequest";
@@ -732,10 +731,10 @@ export interface QueryConcentratedPoolIdLinkFromCFMMRequestAminoMsg {
 }
 /** =============================== QueryConcentratedPoolIdLinkFromCFMM */
 export interface QueryConcentratedPoolIdLinkFromCFMMRequestSDKType {
-    cfmm_pool_id: Long;
+    cfmm_pool_id: bigint;
 }
 export interface QueryConcentratedPoolIdLinkFromCFMMResponse {
-    concentratedPoolId: Long;
+    concentratedPoolId: bigint;
 }
 export interface QueryConcentratedPoolIdLinkFromCFMMResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryConcentratedPoolIdLinkFromCFMMResponse";
@@ -749,12 +748,12 @@ export interface QueryConcentratedPoolIdLinkFromCFMMResponseAminoMsg {
     value: QueryConcentratedPoolIdLinkFromCFMMResponseAmino;
 }
 export interface QueryConcentratedPoolIdLinkFromCFMMResponseSDKType {
-    concentrated_pool_id: Long;
+    concentrated_pool_id: bigint;
 }
 export declare const QueryPoolRequest: {
     typeUrl: string;
-    encode(message: QueryPoolRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolRequest;
+    encode(message: QueryPoolRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolRequest;
     fromPartial(object: Partial<QueryPoolRequest>): QueryPoolRequest;
     fromAmino(object: QueryPoolRequestAmino): QueryPoolRequest;
     toAmino(message: QueryPoolRequest): QueryPoolRequestAmino;
@@ -766,8 +765,8 @@ export declare const QueryPoolRequest: {
 };
 export declare const QueryPoolResponse: {
     typeUrl: string;
-    encode(message: QueryPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse;
+    encode(message: QueryPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolResponse;
     fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse;
     fromAmino(object: QueryPoolResponseAmino): QueryPoolResponse;
     toAmino(message: QueryPoolResponse): QueryPoolResponseAmino;
@@ -779,8 +778,8 @@ export declare const QueryPoolResponse: {
 };
 export declare const QueryPoolsRequest: {
     typeUrl: string;
-    encode(message: QueryPoolsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsRequest;
+    encode(message: QueryPoolsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolsRequest;
     fromPartial(object: Partial<QueryPoolsRequest>): QueryPoolsRequest;
     fromAmino(object: QueryPoolsRequestAmino): QueryPoolsRequest;
     toAmino(message: QueryPoolsRequest): QueryPoolsRequestAmino;
@@ -792,8 +791,8 @@ export declare const QueryPoolsRequest: {
 };
 export declare const QueryPoolsResponse: {
     typeUrl: string;
-    encode(message: QueryPoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponse;
+    encode(message: QueryPoolsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolsResponse;
     fromPartial(object: Partial<QueryPoolsResponse>): QueryPoolsResponse;
     fromAmino(object: QueryPoolsResponseAmino): QueryPoolsResponse;
     toAmino(message: QueryPoolsResponse): QueryPoolsResponseAmino;
@@ -805,8 +804,8 @@ export declare const QueryPoolsResponse: {
 };
 export declare const QueryNumPoolsRequest: {
     typeUrl: string;
-    encode(_: QueryNumPoolsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsRequest;
+    encode(_: QueryNumPoolsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryNumPoolsRequest;
     fromPartial(_: Partial<QueryNumPoolsRequest>): QueryNumPoolsRequest;
     fromAmino(_: QueryNumPoolsRequestAmino): QueryNumPoolsRequest;
     toAmino(_: QueryNumPoolsRequest): QueryNumPoolsRequestAmino;
@@ -818,8 +817,8 @@ export declare const QueryNumPoolsRequest: {
 };
 export declare const QueryNumPoolsResponse: {
     typeUrl: string;
-    encode(message: QueryNumPoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponse;
+    encode(message: QueryNumPoolsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryNumPoolsResponse;
     fromPartial(object: Partial<QueryNumPoolsResponse>): QueryNumPoolsResponse;
     fromAmino(object: QueryNumPoolsResponseAmino): QueryNumPoolsResponse;
     toAmino(message: QueryNumPoolsResponse): QueryNumPoolsResponseAmino;
@@ -831,8 +830,8 @@ export declare const QueryNumPoolsResponse: {
 };
 export declare const QueryPoolTypeRequest: {
     typeUrl: string;
-    encode(message: QueryPoolTypeRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeRequest;
+    encode(message: QueryPoolTypeRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolTypeRequest;
     fromPartial(object: Partial<QueryPoolTypeRequest>): QueryPoolTypeRequest;
     fromAmino(object: QueryPoolTypeRequestAmino): QueryPoolTypeRequest;
     toAmino(message: QueryPoolTypeRequest): QueryPoolTypeRequestAmino;
@@ -844,8 +843,8 @@ export declare const QueryPoolTypeRequest: {
 };
 export declare const QueryPoolTypeResponse: {
     typeUrl: string;
-    encode(message: QueryPoolTypeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponse;
+    encode(message: QueryPoolTypeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolTypeResponse;
     fromPartial(object: Partial<QueryPoolTypeResponse>): QueryPoolTypeResponse;
     fromAmino(object: QueryPoolTypeResponseAmino): QueryPoolTypeResponse;
     toAmino(message: QueryPoolTypeResponse): QueryPoolTypeResponseAmino;
@@ -857,8 +856,8 @@ export declare const QueryPoolTypeResponse: {
 };
 export declare const QueryCalcJoinPoolSharesRequest: {
     typeUrl: string;
-    encode(message: QueryCalcJoinPoolSharesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesRequest;
+    encode(message: QueryCalcJoinPoolSharesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCalcJoinPoolSharesRequest;
     fromPartial(object: Partial<QueryCalcJoinPoolSharesRequest>): QueryCalcJoinPoolSharesRequest;
     fromAmino(object: QueryCalcJoinPoolSharesRequestAmino): QueryCalcJoinPoolSharesRequest;
     toAmino(message: QueryCalcJoinPoolSharesRequest): QueryCalcJoinPoolSharesRequestAmino;
@@ -870,8 +869,8 @@ export declare const QueryCalcJoinPoolSharesRequest: {
 };
 export declare const QueryCalcJoinPoolSharesResponse: {
     typeUrl: string;
-    encode(message: QueryCalcJoinPoolSharesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesResponse;
+    encode(message: QueryCalcJoinPoolSharesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCalcJoinPoolSharesResponse;
     fromPartial(object: Partial<QueryCalcJoinPoolSharesResponse>): QueryCalcJoinPoolSharesResponse;
     fromAmino(object: QueryCalcJoinPoolSharesResponseAmino): QueryCalcJoinPoolSharesResponse;
     toAmino(message: QueryCalcJoinPoolSharesResponse): QueryCalcJoinPoolSharesResponseAmino;
@@ -883,8 +882,8 @@ export declare const QueryCalcJoinPoolSharesResponse: {
 };
 export declare const QueryCalcExitPoolCoinsFromSharesRequest: {
     typeUrl: string;
-    encode(message: QueryCalcExitPoolCoinsFromSharesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesRequest;
+    encode(message: QueryCalcExitPoolCoinsFromSharesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesRequest;
     fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesRequest>): QueryCalcExitPoolCoinsFromSharesRequest;
     fromAmino(object: QueryCalcExitPoolCoinsFromSharesRequestAmino): QueryCalcExitPoolCoinsFromSharesRequest;
     toAmino(message: QueryCalcExitPoolCoinsFromSharesRequest): QueryCalcExitPoolCoinsFromSharesRequestAmino;
@@ -896,8 +895,8 @@ export declare const QueryCalcExitPoolCoinsFromSharesRequest: {
 };
 export declare const QueryCalcExitPoolCoinsFromSharesResponse: {
     typeUrl: string;
-    encode(message: QueryCalcExitPoolCoinsFromSharesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesResponse;
+    encode(message: QueryCalcExitPoolCoinsFromSharesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesResponse;
     fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesResponse>): QueryCalcExitPoolCoinsFromSharesResponse;
     fromAmino(object: QueryCalcExitPoolCoinsFromSharesResponseAmino): QueryCalcExitPoolCoinsFromSharesResponse;
     toAmino(message: QueryCalcExitPoolCoinsFromSharesResponse): QueryCalcExitPoolCoinsFromSharesResponseAmino;
@@ -909,8 +908,8 @@ export declare const QueryCalcExitPoolCoinsFromSharesResponse: {
 };
 export declare const QueryPoolParamsRequest: {
     typeUrl: string;
-    encode(message: QueryPoolParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsRequest;
+    encode(message: QueryPoolParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolParamsRequest;
     fromPartial(object: Partial<QueryPoolParamsRequest>): QueryPoolParamsRequest;
     fromAmino(object: QueryPoolParamsRequestAmino): QueryPoolParamsRequest;
     toAmino(message: QueryPoolParamsRequest): QueryPoolParamsRequestAmino;
@@ -922,8 +921,8 @@ export declare const QueryPoolParamsRequest: {
 };
 export declare const QueryPoolParamsResponse: {
     typeUrl: string;
-    encode(message: QueryPoolParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsResponse;
+    encode(message: QueryPoolParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolParamsResponse;
     fromPartial(object: Partial<QueryPoolParamsResponse>): QueryPoolParamsResponse;
     fromAmino(object: QueryPoolParamsResponseAmino): QueryPoolParamsResponse;
     toAmino(message: QueryPoolParamsResponse): QueryPoolParamsResponseAmino;
@@ -935,8 +934,8 @@ export declare const QueryPoolParamsResponse: {
 };
 export declare const QueryTotalPoolLiquidityRequest: {
     typeUrl: string;
-    encode(message: QueryTotalPoolLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityRequest;
+    encode(message: QueryTotalPoolLiquidityRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalPoolLiquidityRequest;
     fromPartial(object: Partial<QueryTotalPoolLiquidityRequest>): QueryTotalPoolLiquidityRequest;
     fromAmino(object: QueryTotalPoolLiquidityRequestAmino): QueryTotalPoolLiquidityRequest;
     toAmino(message: QueryTotalPoolLiquidityRequest): QueryTotalPoolLiquidityRequestAmino;
@@ -948,8 +947,8 @@ export declare const QueryTotalPoolLiquidityRequest: {
 };
 export declare const QueryTotalPoolLiquidityResponse: {
     typeUrl: string;
-    encode(message: QueryTotalPoolLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponse;
+    encode(message: QueryTotalPoolLiquidityResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponse;
     fromPartial(object: Partial<QueryTotalPoolLiquidityResponse>): QueryTotalPoolLiquidityResponse;
     fromAmino(object: QueryTotalPoolLiquidityResponseAmino): QueryTotalPoolLiquidityResponse;
     toAmino(message: QueryTotalPoolLiquidityResponse): QueryTotalPoolLiquidityResponseAmino;
@@ -961,8 +960,8 @@ export declare const QueryTotalPoolLiquidityResponse: {
 };
 export declare const QueryTotalSharesRequest: {
     typeUrl: string;
-    encode(message: QueryTotalSharesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesRequest;
+    encode(message: QueryTotalSharesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalSharesRequest;
     fromPartial(object: Partial<QueryTotalSharesRequest>): QueryTotalSharesRequest;
     fromAmino(object: QueryTotalSharesRequestAmino): QueryTotalSharesRequest;
     toAmino(message: QueryTotalSharesRequest): QueryTotalSharesRequestAmino;
@@ -974,8 +973,8 @@ export declare const QueryTotalSharesRequest: {
 };
 export declare const QueryTotalSharesResponse: {
     typeUrl: string;
-    encode(message: QueryTotalSharesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponse;
+    encode(message: QueryTotalSharesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalSharesResponse;
     fromPartial(object: Partial<QueryTotalSharesResponse>): QueryTotalSharesResponse;
     fromAmino(object: QueryTotalSharesResponseAmino): QueryTotalSharesResponse;
     toAmino(message: QueryTotalSharesResponse): QueryTotalSharesResponseAmino;
@@ -987,8 +986,8 @@ export declare const QueryTotalSharesResponse: {
 };
 export declare const QueryCalcJoinPoolNoSwapSharesRequest: {
     typeUrl: string;
-    encode(message: QueryCalcJoinPoolNoSwapSharesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesRequest;
+    encode(message: QueryCalcJoinPoolNoSwapSharesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesRequest;
     fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesRequest>): QueryCalcJoinPoolNoSwapSharesRequest;
     fromAmino(object: QueryCalcJoinPoolNoSwapSharesRequestAmino): QueryCalcJoinPoolNoSwapSharesRequest;
     toAmino(message: QueryCalcJoinPoolNoSwapSharesRequest): QueryCalcJoinPoolNoSwapSharesRequestAmino;
@@ -1000,8 +999,8 @@ export declare const QueryCalcJoinPoolNoSwapSharesRequest: {
 };
 export declare const QueryCalcJoinPoolNoSwapSharesResponse: {
     typeUrl: string;
-    encode(message: QueryCalcJoinPoolNoSwapSharesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesResponse;
+    encode(message: QueryCalcJoinPoolNoSwapSharesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesResponse;
     fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesResponse>): QueryCalcJoinPoolNoSwapSharesResponse;
     fromAmino(object: QueryCalcJoinPoolNoSwapSharesResponseAmino): QueryCalcJoinPoolNoSwapSharesResponse;
     toAmino(message: QueryCalcJoinPoolNoSwapSharesResponse): QueryCalcJoinPoolNoSwapSharesResponseAmino;
@@ -1013,8 +1012,8 @@ export declare const QueryCalcJoinPoolNoSwapSharesResponse: {
 };
 export declare const QuerySpotPriceRequest: {
     typeUrl: string;
-    encode(message: QuerySpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceRequest;
+    encode(message: QuerySpotPriceRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySpotPriceRequest;
     fromPartial(object: Partial<QuerySpotPriceRequest>): QuerySpotPriceRequest;
     fromAmino(object: QuerySpotPriceRequestAmino): QuerySpotPriceRequest;
     toAmino(message: QuerySpotPriceRequest): QuerySpotPriceRequestAmino;
@@ -1026,8 +1025,8 @@ export declare const QuerySpotPriceRequest: {
 };
 export declare const QueryPoolsWithFilterRequest: {
     typeUrl: string;
-    encode(message: QueryPoolsWithFilterRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterRequest;
+    encode(message: QueryPoolsWithFilterRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolsWithFilterRequest;
     fromPartial(object: Partial<QueryPoolsWithFilterRequest>): QueryPoolsWithFilterRequest;
     fromAmino(object: QueryPoolsWithFilterRequestAmino): QueryPoolsWithFilterRequest;
     toAmino(message: QueryPoolsWithFilterRequest): QueryPoolsWithFilterRequestAmino;
@@ -1039,8 +1038,8 @@ export declare const QueryPoolsWithFilterRequest: {
 };
 export declare const QueryPoolsWithFilterResponse: {
     typeUrl: string;
-    encode(message: QueryPoolsWithFilterResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterResponse;
+    encode(message: QueryPoolsWithFilterResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolsWithFilterResponse;
     fromPartial(object: Partial<QueryPoolsWithFilterResponse>): QueryPoolsWithFilterResponse;
     fromAmino(object: QueryPoolsWithFilterResponseAmino): QueryPoolsWithFilterResponse;
     toAmino(message: QueryPoolsWithFilterResponse): QueryPoolsWithFilterResponseAmino;
@@ -1052,8 +1051,8 @@ export declare const QueryPoolsWithFilterResponse: {
 };
 export declare const QuerySpotPriceResponse: {
     typeUrl: string;
-    encode(message: QuerySpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponse;
+    encode(message: QuerySpotPriceResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySpotPriceResponse;
     fromPartial(object: Partial<QuerySpotPriceResponse>): QuerySpotPriceResponse;
     fromAmino(object: QuerySpotPriceResponseAmino): QuerySpotPriceResponse;
     toAmino(message: QuerySpotPriceResponse): QuerySpotPriceResponseAmino;
@@ -1065,8 +1064,8 @@ export declare const QuerySpotPriceResponse: {
 };
 export declare const QuerySwapExactAmountInRequest: {
     typeUrl: string;
-    encode(message: QuerySwapExactAmountInRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInRequest;
+    encode(message: QuerySwapExactAmountInRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySwapExactAmountInRequest;
     fromPartial(object: Partial<QuerySwapExactAmountInRequest>): QuerySwapExactAmountInRequest;
     fromAmino(object: QuerySwapExactAmountInRequestAmino): QuerySwapExactAmountInRequest;
     toAmino(message: QuerySwapExactAmountInRequest): QuerySwapExactAmountInRequestAmino;
@@ -1078,8 +1077,8 @@ export declare const QuerySwapExactAmountInRequest: {
 };
 export declare const QuerySwapExactAmountInResponse: {
     typeUrl: string;
-    encode(message: QuerySwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInResponse;
+    encode(message: QuerySwapExactAmountInResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySwapExactAmountInResponse;
     fromPartial(object: Partial<QuerySwapExactAmountInResponse>): QuerySwapExactAmountInResponse;
     fromAmino(object: QuerySwapExactAmountInResponseAmino): QuerySwapExactAmountInResponse;
     toAmino(message: QuerySwapExactAmountInResponse): QuerySwapExactAmountInResponseAmino;
@@ -1091,8 +1090,8 @@ export declare const QuerySwapExactAmountInResponse: {
 };
 export declare const QuerySwapExactAmountOutRequest: {
     typeUrl: string;
-    encode(message: QuerySwapExactAmountOutRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutRequest;
+    encode(message: QuerySwapExactAmountOutRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySwapExactAmountOutRequest;
     fromPartial(object: Partial<QuerySwapExactAmountOutRequest>): QuerySwapExactAmountOutRequest;
     fromAmino(object: QuerySwapExactAmountOutRequestAmino): QuerySwapExactAmountOutRequest;
     toAmino(message: QuerySwapExactAmountOutRequest): QuerySwapExactAmountOutRequestAmino;
@@ -1104,8 +1103,8 @@ export declare const QuerySwapExactAmountOutRequest: {
 };
 export declare const QuerySwapExactAmountOutResponse: {
     typeUrl: string;
-    encode(message: QuerySwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutResponse;
+    encode(message: QuerySwapExactAmountOutResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySwapExactAmountOutResponse;
     fromPartial(object: Partial<QuerySwapExactAmountOutResponse>): QuerySwapExactAmountOutResponse;
     fromAmino(object: QuerySwapExactAmountOutResponseAmino): QuerySwapExactAmountOutResponse;
     toAmino(message: QuerySwapExactAmountOutResponse): QuerySwapExactAmountOutResponseAmino;
@@ -1117,8 +1116,8 @@ export declare const QuerySwapExactAmountOutResponse: {
 };
 export declare const QueryTotalLiquidityRequest: {
     typeUrl: string;
-    encode(_: QueryTotalLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityRequest;
+    encode(_: QueryTotalLiquidityRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalLiquidityRequest;
     fromPartial(_: Partial<QueryTotalLiquidityRequest>): QueryTotalLiquidityRequest;
     fromAmino(_: QueryTotalLiquidityRequestAmino): QueryTotalLiquidityRequest;
     toAmino(_: QueryTotalLiquidityRequest): QueryTotalLiquidityRequestAmino;
@@ -1130,8 +1129,8 @@ export declare const QueryTotalLiquidityRequest: {
 };
 export declare const QueryTotalLiquidityResponse: {
     typeUrl: string;
-    encode(message: QueryTotalLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityResponse;
+    encode(message: QueryTotalLiquidityResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalLiquidityResponse;
     fromPartial(object: Partial<QueryTotalLiquidityResponse>): QueryTotalLiquidityResponse;
     fromAmino(object: QueryTotalLiquidityResponseAmino): QueryTotalLiquidityResponse;
     toAmino(message: QueryTotalLiquidityResponse): QueryTotalLiquidityResponseAmino;
@@ -1143,8 +1142,8 @@ export declare const QueryTotalLiquidityResponse: {
 };
 export declare const QueryConcentratedPoolIdLinkFromCFMMRequest: {
     typeUrl: string;
-    encode(message: QueryConcentratedPoolIdLinkFromCFMMRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConcentratedPoolIdLinkFromCFMMRequest;
+    encode(message: QueryConcentratedPoolIdLinkFromCFMMRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConcentratedPoolIdLinkFromCFMMRequest;
     fromPartial(object: Partial<QueryConcentratedPoolIdLinkFromCFMMRequest>): QueryConcentratedPoolIdLinkFromCFMMRequest;
     fromAmino(object: QueryConcentratedPoolIdLinkFromCFMMRequestAmino): QueryConcentratedPoolIdLinkFromCFMMRequest;
     toAmino(message: QueryConcentratedPoolIdLinkFromCFMMRequest): QueryConcentratedPoolIdLinkFromCFMMRequestAmino;
@@ -1156,8 +1155,8 @@ export declare const QueryConcentratedPoolIdLinkFromCFMMRequest: {
 };
 export declare const QueryConcentratedPoolIdLinkFromCFMMResponse: {
     typeUrl: string;
-    encode(message: QueryConcentratedPoolIdLinkFromCFMMResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConcentratedPoolIdLinkFromCFMMResponse;
+    encode(message: QueryConcentratedPoolIdLinkFromCFMMResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConcentratedPoolIdLinkFromCFMMResponse;
     fromPartial(object: Partial<QueryConcentratedPoolIdLinkFromCFMMResponse>): QueryConcentratedPoolIdLinkFromCFMMResponse;
     fromAmino(object: QueryConcentratedPoolIdLinkFromCFMMResponseAmino): QueryConcentratedPoolIdLinkFromCFMMResponse;
     toAmino(message: QueryConcentratedPoolIdLinkFromCFMMResponse): QueryConcentratedPoolIdLinkFromCFMMResponseAmino;
@@ -1167,6 +1166,6 @@ export declare const QueryConcentratedPoolIdLinkFromCFMMResponse: {
     toProto(message: QueryConcentratedPoolIdLinkFromCFMMResponse): Uint8Array;
     toProtoMsg(message: QueryConcentratedPoolIdLinkFromCFMMResponse): QueryConcentratedPoolIdLinkFromCFMMResponseProtoMsg;
 };
-export declare const PoolI_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
+export declare const PoolI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
 export declare const PoolI_FromAmino: (content: AnyAmino) => Any;
 export declare const PoolI_ToAmino: (content: Any) => AnyAmino;

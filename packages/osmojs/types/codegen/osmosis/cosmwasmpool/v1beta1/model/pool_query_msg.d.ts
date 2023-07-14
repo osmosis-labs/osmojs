@@ -1,9 +1,9 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** ===================== GetSwapFeeQueryMsg */
 export interface GetSwapFeeQueryMsg {
     /** get_swap_fee is the query strcuture to get swap fee. */
-    getSwapFee?: EmptyStruct;
+    getSwapFee: EmptyStruct;
 }
 export interface GetSwapFeeQueryMsgProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.GetSwapFeeQueryMsg";
@@ -20,7 +20,7 @@ export interface GetSwapFeeQueryMsgAminoMsg {
 }
 /** ===================== GetSwapFeeQueryMsg */
 export interface GetSwapFeeQueryMsgSDKType {
-    get_swap_fee?: EmptyStructSDKType;
+    get_swap_fee: EmptyStructSDKType;
 }
 export interface GetSwapFeeQueryMsgResponse {
     /** swap_fee is the swap fee for this swap estimate. */
@@ -73,7 +73,7 @@ export interface SpotPriceQueryMsg {
      * spot_price is the structure containing request field of the spot price
      * query message.
      */
-    spotPrice?: SpotPrice;
+    spotPrice: SpotPrice;
 }
 export interface SpotPriceQueryMsgProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.SpotPriceQueryMsg";
@@ -91,7 +91,7 @@ export interface SpotPriceQueryMsgAminoMsg {
     value: SpotPriceQueryMsgAmino;
 }
 export interface SpotPriceQueryMsgSDKType {
-    spot_price?: SpotPriceSDKType;
+    spot_price: SpotPriceSDKType;
 }
 export interface SpotPriceQueryMsgResponse {
     /** spot_price is the spot price returned. */
@@ -134,7 +134,7 @@ export interface GetTotalPoolLiquidityQueryMsg {
      * get_total_pool_liquidity is the structure containing request field of the
      * total pool liquidity query message.
      */
-    getTotalPoolLiquidity?: EmptyStruct;
+    getTotalPoolLiquidity: EmptyStruct;
 }
 export interface GetTotalPoolLiquidityQueryMsgProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.GetTotalPoolLiquidityQueryMsg";
@@ -152,7 +152,7 @@ export interface GetTotalPoolLiquidityQueryMsgAminoMsg {
     value: GetTotalPoolLiquidityQueryMsgAmino;
 }
 export interface GetTotalPoolLiquidityQueryMsgSDKType {
-    get_total_pool_liquidity?: EmptyStructSDKType;
+    get_total_pool_liquidity: EmptyStructSDKType;
 }
 export interface GetTotalPoolLiquidityQueryMsgResponse {
     /**
@@ -185,7 +185,7 @@ export interface GetTotalSharesQueryMsg {
      * get_total_shares is the structure containing request field of the
      * total shares query message.
      */
-    getTotalShares?: EmptyStruct;
+    getTotalShares: EmptyStruct;
 }
 export interface GetTotalSharesQueryMsgProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.GetTotalSharesQueryMsg";
@@ -205,7 +205,7 @@ export interface GetTotalSharesQueryMsgAminoMsg {
 }
 /** ===================== GetTotalSharesQueryMsg */
 export interface GetTotalSharesQueryMsgSDKType {
-    get_total_shares?: EmptyStructSDKType;
+    get_total_shares: EmptyStructSDKType;
 }
 export interface GetTotalSharesQueryMsgResponse {
     /** total_shares is the amount of shares returned. */
@@ -228,8 +228,8 @@ export interface GetTotalSharesQueryMsgResponseSDKType {
 }
 export declare const GetSwapFeeQueryMsg: {
     typeUrl: string;
-    encode(message: GetSwapFeeQueryMsg, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetSwapFeeQueryMsg;
+    encode(message: GetSwapFeeQueryMsg, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetSwapFeeQueryMsg;
     fromPartial(object: Partial<GetSwapFeeQueryMsg>): GetSwapFeeQueryMsg;
     fromAmino(object: GetSwapFeeQueryMsgAmino): GetSwapFeeQueryMsg;
     toAmino(message: GetSwapFeeQueryMsg): GetSwapFeeQueryMsgAmino;
@@ -241,8 +241,8 @@ export declare const GetSwapFeeQueryMsg: {
 };
 export declare const GetSwapFeeQueryMsgResponse: {
     typeUrl: string;
-    encode(message: GetSwapFeeQueryMsgResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetSwapFeeQueryMsgResponse;
+    encode(message: GetSwapFeeQueryMsgResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetSwapFeeQueryMsgResponse;
     fromPartial(object: Partial<GetSwapFeeQueryMsgResponse>): GetSwapFeeQueryMsgResponse;
     fromAmino(object: GetSwapFeeQueryMsgResponseAmino): GetSwapFeeQueryMsgResponse;
     toAmino(message: GetSwapFeeQueryMsgResponse): GetSwapFeeQueryMsgResponseAmino;
@@ -254,8 +254,8 @@ export declare const GetSwapFeeQueryMsgResponse: {
 };
 export declare const SpotPrice: {
     typeUrl: string;
-    encode(message: SpotPrice, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SpotPrice;
+    encode(message: SpotPrice, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SpotPrice;
     fromPartial(object: Partial<SpotPrice>): SpotPrice;
     fromAmino(object: SpotPriceAmino): SpotPrice;
     toAmino(message: SpotPrice): SpotPriceAmino;
@@ -267,8 +267,8 @@ export declare const SpotPrice: {
 };
 export declare const SpotPriceQueryMsg: {
     typeUrl: string;
-    encode(message: SpotPriceQueryMsg, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SpotPriceQueryMsg;
+    encode(message: SpotPriceQueryMsg, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SpotPriceQueryMsg;
     fromPartial(object: Partial<SpotPriceQueryMsg>): SpotPriceQueryMsg;
     fromAmino(object: SpotPriceQueryMsgAmino): SpotPriceQueryMsg;
     toAmino(message: SpotPriceQueryMsg): SpotPriceQueryMsgAmino;
@@ -280,8 +280,8 @@ export declare const SpotPriceQueryMsg: {
 };
 export declare const SpotPriceQueryMsgResponse: {
     typeUrl: string;
-    encode(message: SpotPriceQueryMsgResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SpotPriceQueryMsgResponse;
+    encode(message: SpotPriceQueryMsgResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SpotPriceQueryMsgResponse;
     fromPartial(object: Partial<SpotPriceQueryMsgResponse>): SpotPriceQueryMsgResponse;
     fromAmino(object: SpotPriceQueryMsgResponseAmino): SpotPriceQueryMsgResponse;
     toAmino(message: SpotPriceQueryMsgResponse): SpotPriceQueryMsgResponseAmino;
@@ -293,8 +293,8 @@ export declare const SpotPriceQueryMsgResponse: {
 };
 export declare const EmptyStruct: {
     typeUrl: string;
-    encode(_: EmptyStruct, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EmptyStruct;
+    encode(_: EmptyStruct, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EmptyStruct;
     fromPartial(_: Partial<EmptyStruct>): EmptyStruct;
     fromAmino(_: EmptyStructAmino): EmptyStruct;
     toAmino(_: EmptyStruct): EmptyStructAmino;
@@ -306,8 +306,8 @@ export declare const EmptyStruct: {
 };
 export declare const GetTotalPoolLiquidityQueryMsg: {
     typeUrl: string;
-    encode(message: GetTotalPoolLiquidityQueryMsg, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTotalPoolLiquidityQueryMsg;
+    encode(message: GetTotalPoolLiquidityQueryMsg, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTotalPoolLiquidityQueryMsg;
     fromPartial(object: Partial<GetTotalPoolLiquidityQueryMsg>): GetTotalPoolLiquidityQueryMsg;
     fromAmino(object: GetTotalPoolLiquidityQueryMsgAmino): GetTotalPoolLiquidityQueryMsg;
     toAmino(message: GetTotalPoolLiquidityQueryMsg): GetTotalPoolLiquidityQueryMsgAmino;
@@ -319,8 +319,8 @@ export declare const GetTotalPoolLiquidityQueryMsg: {
 };
 export declare const GetTotalPoolLiquidityQueryMsgResponse: {
     typeUrl: string;
-    encode(message: GetTotalPoolLiquidityQueryMsgResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTotalPoolLiquidityQueryMsgResponse;
+    encode(message: GetTotalPoolLiquidityQueryMsgResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTotalPoolLiquidityQueryMsgResponse;
     fromPartial(object: Partial<GetTotalPoolLiquidityQueryMsgResponse>): GetTotalPoolLiquidityQueryMsgResponse;
     fromAmino(object: GetTotalPoolLiquidityQueryMsgResponseAmino): GetTotalPoolLiquidityQueryMsgResponse;
     toAmino(message: GetTotalPoolLiquidityQueryMsgResponse): GetTotalPoolLiquidityQueryMsgResponseAmino;
@@ -332,8 +332,8 @@ export declare const GetTotalPoolLiquidityQueryMsgResponse: {
 };
 export declare const GetTotalSharesQueryMsg: {
     typeUrl: string;
-    encode(message: GetTotalSharesQueryMsg, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTotalSharesQueryMsg;
+    encode(message: GetTotalSharesQueryMsg, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTotalSharesQueryMsg;
     fromPartial(object: Partial<GetTotalSharesQueryMsg>): GetTotalSharesQueryMsg;
     fromAmino(object: GetTotalSharesQueryMsgAmino): GetTotalSharesQueryMsg;
     toAmino(message: GetTotalSharesQueryMsg): GetTotalSharesQueryMsgAmino;
@@ -345,8 +345,8 @@ export declare const GetTotalSharesQueryMsg: {
 };
 export declare const GetTotalSharesQueryMsgResponse: {
     typeUrl: string;
-    encode(message: GetTotalSharesQueryMsgResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTotalSharesQueryMsgResponse;
+    encode(message: GetTotalSharesQueryMsgResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTotalSharesQueryMsgResponse;
     fromPartial(object: Partial<GetTotalSharesQueryMsgResponse>): GetTotalSharesQueryMsgResponse;
     fromAmino(object: GetTotalSharesQueryMsgResponseAmino): GetTotalSharesQueryMsgResponse;
     toAmino(message: GetTotalSharesQueryMsgResponse): GetTotalSharesQueryMsgResponseAmino;

@@ -1,7 +1,6 @@
 import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** SignMode represents a signing mode with its own security guarantees. */
 export declare enum SignMode {
     /**
@@ -74,14 +73,14 @@ export interface SignatureDescriptorsSDKType {
  */
 export interface SignatureDescriptor {
     /** public_key is the public key of the signer */
-    publicKey?: Any;
-    data?: SignatureDescriptor_Data;
+    publicKey: Any;
+    data: SignatureDescriptor_Data;
     /**
      * sequence is the sequence of the account, which describes the
      * number of committed transactions signed by a given address. It is used to prevent
      * replay attacks.
      */
-    sequence: Long;
+    sequence: bigint;
 }
 export interface SignatureDescriptorProtoMsg {
     typeUrl: "/cosmos.tx.signing.v1beta1.SignatureDescriptor";
@@ -115,9 +114,9 @@ export interface SignatureDescriptorAminoMsg {
  * clients.
  */
 export interface SignatureDescriptorSDKType {
-    public_key?: AnySDKType;
-    data?: SignatureDescriptor_DataSDKType;
-    sequence: Long;
+    public_key: AnySDKType;
+    data: SignatureDescriptor_DataSDKType;
+    sequence: bigint;
 }
 /** Data represents signature data */
 export interface SignatureDescriptor_Data {
@@ -176,7 +175,7 @@ export interface SignatureDescriptor_Data_SingleSDKType {
 /** Multi is the signature data for a multisig public key */
 export interface SignatureDescriptor_Data_Multi {
     /** bitarray specifies which keys within the multisig are signing */
-    bitarray?: CompactBitArray;
+    bitarray: CompactBitArray;
     /** signatures is the signatures of the multi-signature */
     signatures: SignatureDescriptor_Data[];
 }
@@ -197,13 +196,13 @@ export interface SignatureDescriptor_Data_MultiAminoMsg {
 }
 /** Multi is the signature data for a multisig public key */
 export interface SignatureDescriptor_Data_MultiSDKType {
-    bitarray?: CompactBitArraySDKType;
+    bitarray: CompactBitArraySDKType;
     signatures: SignatureDescriptor_DataSDKType[];
 }
 export declare const SignatureDescriptors: {
     typeUrl: string;
-    encode(message: SignatureDescriptors, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptors;
+    encode(message: SignatureDescriptors, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptors;
     fromPartial(object: Partial<SignatureDescriptors>): SignatureDescriptors;
     fromAmino(object: SignatureDescriptorsAmino): SignatureDescriptors;
     toAmino(message: SignatureDescriptors): SignatureDescriptorsAmino;
@@ -215,8 +214,8 @@ export declare const SignatureDescriptors: {
 };
 export declare const SignatureDescriptor: {
     typeUrl: string;
-    encode(message: SignatureDescriptor, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor;
+    encode(message: SignatureDescriptor, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor;
     fromPartial(object: Partial<SignatureDescriptor>): SignatureDescriptor;
     fromAmino(object: SignatureDescriptorAmino): SignatureDescriptor;
     toAmino(message: SignatureDescriptor): SignatureDescriptorAmino;
@@ -228,8 +227,8 @@ export declare const SignatureDescriptor: {
 };
 export declare const SignatureDescriptor_Data: {
     typeUrl: string;
-    encode(message: SignatureDescriptor_Data, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data;
+    encode(message: SignatureDescriptor_Data, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor_Data;
     fromPartial(object: Partial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
     fromAmino(object: SignatureDescriptor_DataAmino): SignatureDescriptor_Data;
     toAmino(message: SignatureDescriptor_Data): SignatureDescriptor_DataAmino;
@@ -241,8 +240,8 @@ export declare const SignatureDescriptor_Data: {
 };
 export declare const SignatureDescriptor_Data_Single: {
     typeUrl: string;
-    encode(message: SignatureDescriptor_Data_Single, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Single;
+    encode(message: SignatureDescriptor_Data_Single, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor_Data_Single;
     fromPartial(object: Partial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
     fromAmino(object: SignatureDescriptor_Data_SingleAmino): SignatureDescriptor_Data_Single;
     toAmino(message: SignatureDescriptor_Data_Single): SignatureDescriptor_Data_SingleAmino;
@@ -254,8 +253,8 @@ export declare const SignatureDescriptor_Data_Single: {
 };
 export declare const SignatureDescriptor_Data_Multi: {
     typeUrl: string;
-    encode(message: SignatureDescriptor_Data_Multi, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi;
+    encode(message: SignatureDescriptor_Data_Multi, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi;
     fromPartial(object: Partial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;
     fromAmino(object: SignatureDescriptor_Data_MultiAmino): SignatureDescriptor_Data_Multi;
     toAmino(message: SignatureDescriptor_Data_Multi): SignatureDescriptor_Data_MultiAmino;

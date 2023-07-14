@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** ===================== InstantiateMsg */
 export interface InstantiateMsg {
     /**
@@ -29,8 +29,8 @@ export interface InstantiateMsgSDKType {
 }
 export declare const InstantiateMsg: {
     typeUrl: string;
-    encode(message: InstantiateMsg, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateMsg;
+    encode(message: InstantiateMsg, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): InstantiateMsg;
     fromPartial(object: Partial<InstantiateMsg>): InstantiateMsg;
     fromAmino(object: InstantiateMsgAmino): InstantiateMsg;
     toAmino(message: InstantiateMsg): InstantiateMsgAmino;

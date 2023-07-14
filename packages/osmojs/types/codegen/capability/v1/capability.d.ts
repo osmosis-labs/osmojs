@@ -1,11 +1,10 @@
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * Capability defines an implementation of an object capability. The index
  * provided to a Capability must be globally unique.
  */
 export interface Capability {
-    index: Long;
+    index: bigint;
 }
 export interface CapabilityProtoMsg {
     typeUrl: "/capability.v1.Capability";
@@ -27,7 +26,7 @@ export interface CapabilityAminoMsg {
  * provided to a Capability must be globally unique.
  */
 export interface CapabilitySDKType {
-    index: Long;
+    index: bigint;
 }
 /**
  * Owner defines a single capability owner. An owner is defined by the name of
@@ -92,8 +91,8 @@ export interface CapabilityOwnersSDKType {
 }
 export declare const Capability: {
     typeUrl: string;
-    encode(message: Capability, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Capability;
+    encode(message: Capability, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Capability;
     fromPartial(object: Partial<Capability>): Capability;
     fromAmino(object: CapabilityAmino): Capability;
     toAmino(message: Capability): CapabilityAmino;
@@ -104,8 +103,8 @@ export declare const Capability: {
 };
 export declare const Owner: {
     typeUrl: string;
-    encode(message: Owner, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Owner;
+    encode(message: Owner, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Owner;
     fromPartial(object: Partial<Owner>): Owner;
     fromAmino(object: OwnerAmino): Owner;
     toAmino(message: Owner): OwnerAmino;
@@ -116,8 +115,8 @@ export declare const Owner: {
 };
 export declare const CapabilityOwners: {
     typeUrl: string;
-    encode(message: CapabilityOwners, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CapabilityOwners;
+    encode(message: CapabilityOwners, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CapabilityOwners;
     fromPartial(object: Partial<CapabilityOwners>): CapabilityOwners;
     fromAmino(object: CapabilityOwnersAmino): CapabilityOwners;
     toAmino(message: CapabilityOwners): CapabilityOwnersAmino;

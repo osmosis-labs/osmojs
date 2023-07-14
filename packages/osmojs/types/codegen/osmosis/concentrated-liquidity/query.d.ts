@@ -15,13 +15,12 @@ import { PoolSDKType as Pool2SDKType } from "../gamm/pool-models/balancer/balanc
 import { Pool as Pool3 } from "../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../gamm/pool-models/stableswap/stableswap_pool";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /** =============================== UserPositions */
 export interface UserPositionsRequest {
     address: string;
-    poolId: Long;
-    pagination?: PageRequest;
+    poolId: bigint;
+    pagination: PageRequest;
 }
 export interface UserPositionsRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.UserPositionsRequest";
@@ -40,12 +39,12 @@ export interface UserPositionsRequestAminoMsg {
 /** =============================== UserPositions */
 export interface UserPositionsRequestSDKType {
     address: string;
-    pool_id: Long;
-    pagination?: PageRequestSDKType;
+    pool_id: bigint;
+    pagination: PageRequestSDKType;
 }
 export interface UserPositionsResponse {
     positions: FullPositionBreakdown[];
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface UserPositionsResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.UserPositionsResponse";
@@ -61,11 +60,11 @@ export interface UserPositionsResponseAminoMsg {
 }
 export interface UserPositionsResponseSDKType {
     positions: FullPositionBreakdownSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** =============================== PositionById */
 export interface PositionByIdRequest {
-    positionId: Long;
+    positionId: bigint;
 }
 export interface PositionByIdRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionByIdRequest";
@@ -81,10 +80,10 @@ export interface PositionByIdRequestAminoMsg {
 }
 /** =============================== PositionById */
 export interface PositionByIdRequestSDKType {
-    position_id: Long;
+    position_id: bigint;
 }
 export interface PositionByIdResponse {
-    position?: FullPositionBreakdown;
+    position: FullPositionBreakdown;
 }
 export interface PositionByIdResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionByIdResponse";
@@ -98,12 +97,12 @@ export interface PositionByIdResponseAminoMsg {
     value: PositionByIdResponseAmino;
 }
 export interface PositionByIdResponseSDKType {
-    position?: FullPositionBreakdownSDKType;
+    position: FullPositionBreakdownSDKType;
 }
 /** =============================== Pools */
 export interface PoolsRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface PoolsRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolsRequest";
@@ -120,18 +119,18 @@ export interface PoolsRequestAminoMsg {
 }
 /** =============================== Pools */
 export interface PoolsRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface PoolsResponse {
     pools: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any)[] | Any[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface PoolsResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolsResponse";
     value: Uint8Array;
 }
-export type PoolsResponseEncoded = Omit<PoolsResponse, "pools"> & {
+export declare type PoolsResponseEncoded = Omit<PoolsResponse, "pools"> & {
     pools: (Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg)[];
 };
 export interface PoolsResponseAmino {
@@ -145,7 +144,7 @@ export interface PoolsResponseAminoMsg {
 }
 export interface PoolsResponseSDKType {
     pools: (Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType)[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** =============================== ModuleParams */
 export interface ParamsRequest {
@@ -165,7 +164,7 @@ export interface ParamsRequestAminoMsg {
 export interface ParamsRequestSDKType {
 }
 export interface ParamsResponse {
-    params?: Params;
+    params: Params;
 }
 export interface ParamsResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.ParamsResponse";
@@ -179,11 +178,11 @@ export interface ParamsResponseAminoMsg {
     value: ParamsResponseAmino;
 }
 export interface ParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 export interface TickLiquidityNet {
     liquidityNet: string;
-    tickIndex: Long;
+    tickIndex: bigint;
 }
 export interface TickLiquidityNetProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.TickLiquidityNet";
@@ -199,12 +198,12 @@ export interface TickLiquidityNetAminoMsg {
 }
 export interface TickLiquidityNetSDKType {
     liquidity_net: string;
-    tick_index: Long;
+    tick_index: bigint;
 }
 export interface LiquidityDepthWithRange {
     liquidityAmount: string;
-    lowerTick: Long;
-    upperTick: Long;
+    lowerTick: bigint;
+    upperTick: bigint;
 }
 export interface LiquidityDepthWithRangeProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.LiquidityDepthWithRange";
@@ -221,16 +220,16 @@ export interface LiquidityDepthWithRangeAminoMsg {
 }
 export interface LiquidityDepthWithRangeSDKType {
     liquidity_amount: string;
-    lower_tick: Long;
-    upper_tick: Long;
+    lower_tick: bigint;
+    upper_tick: bigint;
 }
 /** =============================== LiquidityNetInDirection */
 export interface LiquidityNetInDirectionRequest {
-    poolId: Long;
+    poolId: bigint;
     tokenIn: string;
-    startTick: Long;
+    startTick: bigint;
     useCurTick: boolean;
-    boundTick: Long;
+    boundTick: bigint;
     useNoBound: boolean;
 }
 export interface LiquidityNetInDirectionRequestProtoMsg {
@@ -252,16 +251,16 @@ export interface LiquidityNetInDirectionRequestAminoMsg {
 }
 /** =============================== LiquidityNetInDirection */
 export interface LiquidityNetInDirectionRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     token_in: string;
-    start_tick: Long;
+    start_tick: bigint;
     use_cur_tick: boolean;
-    bound_tick: Long;
+    bound_tick: bigint;
     use_no_bound: boolean;
 }
 export interface LiquidityNetInDirectionResponse {
     liquidityDepths: TickLiquidityNet[];
-    currentTick: Long;
+    currentTick: bigint;
     currentLiquidity: string;
 }
 export interface LiquidityNetInDirectionResponseProtoMsg {
@@ -279,12 +278,12 @@ export interface LiquidityNetInDirectionResponseAminoMsg {
 }
 export interface LiquidityNetInDirectionResponseSDKType {
     liquidity_depths: TickLiquidityNetSDKType[];
-    current_tick: Long;
+    current_tick: bigint;
     current_liquidity: string;
 }
 /** =============================== LiquidityPerTickRange */
 export interface LiquidityPerTickRangeRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface LiquidityPerTickRangeRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.LiquidityPerTickRangeRequest";
@@ -300,7 +299,7 @@ export interface LiquidityPerTickRangeRequestAminoMsg {
 }
 /** =============================== LiquidityPerTickRange */
 export interface LiquidityPerTickRangeRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface LiquidityPerTickRangeResponse {
     liquidity: LiquidityDepthWithRange[];
@@ -321,7 +320,7 @@ export interface LiquidityPerTickRangeResponseSDKType {
 }
 /** ===================== QueryClaimableSpreadRewards */
 export interface ClaimableSpreadRewardsRequest {
-    positionId: Long;
+    positionId: bigint;
 }
 export interface ClaimableSpreadRewardsRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.ClaimableSpreadRewardsRequest";
@@ -337,7 +336,7 @@ export interface ClaimableSpreadRewardsRequestAminoMsg {
 }
 /** ===================== QueryClaimableSpreadRewards */
 export interface ClaimableSpreadRewardsRequestSDKType {
-    position_id: Long;
+    position_id: bigint;
 }
 export interface ClaimableSpreadRewardsResponse {
     claimableSpreadRewards: Coin[];
@@ -358,7 +357,7 @@ export interface ClaimableSpreadRewardsResponseSDKType {
 }
 /** ===================== QueryClaimableIncentives */
 export interface ClaimableIncentivesRequest {
-    positionId: Long;
+    positionId: bigint;
 }
 export interface ClaimableIncentivesRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.ClaimableIncentivesRequest";
@@ -374,7 +373,7 @@ export interface ClaimableIncentivesRequestAminoMsg {
 }
 /** ===================== QueryClaimableIncentives */
 export interface ClaimableIncentivesRequestSDKType {
-    position_id: Long;
+    position_id: bigint;
 }
 export interface ClaimableIncentivesResponse {
     claimableIncentives: Coin[];
@@ -398,7 +397,7 @@ export interface ClaimableIncentivesResponseSDKType {
 }
 /** ===================== QueryPoolAccumulatorRewards */
 export interface PoolAccumulatorRewardsRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface PoolAccumulatorRewardsRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolAccumulatorRewardsRequest";
@@ -414,7 +413,7 @@ export interface PoolAccumulatorRewardsRequestAminoMsg {
 }
 /** ===================== QueryPoolAccumulatorRewards */
 export interface PoolAccumulatorRewardsRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface PoolAccumulatorRewardsResponse {
     spreadRewardGrowthGlobal: DecCoin[];
@@ -438,8 +437,8 @@ export interface PoolAccumulatorRewardsResponseSDKType {
 }
 /** ===================== QueryTickAccumulatorTrackers */
 export interface TickAccumulatorTrackersRequest {
-    poolId: Long;
-    tickIndex: Long;
+    poolId: bigint;
+    tickIndex: bigint;
 }
 export interface TickAccumulatorTrackersRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.TickAccumulatorTrackersRequest";
@@ -456,8 +455,8 @@ export interface TickAccumulatorTrackersRequestAminoMsg {
 }
 /** ===================== QueryTickAccumulatorTrackers */
 export interface TickAccumulatorTrackersRequestSDKType {
-    pool_id: Long;
-    tick_index: Long;
+    pool_id: bigint;
+    tick_index: bigint;
 }
 export interface TickAccumulatorTrackersResponse {
     spreadRewardGrowthOppositeDirectionOfLastTraversal: DecCoin[];
@@ -481,8 +480,8 @@ export interface TickAccumulatorTrackersResponseSDKType {
 }
 /** ===================== QueryIncentiveRecords */
 export interface IncentiveRecordsRequest {
-    poolId: Long;
-    pagination?: PageRequest;
+    poolId: bigint;
+    pagination: PageRequest;
 }
 export interface IncentiveRecordsRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecordsRequest";
@@ -499,13 +498,13 @@ export interface IncentiveRecordsRequestAminoMsg {
 }
 /** ===================== QueryIncentiveRecords */
 export interface IncentiveRecordsRequestSDKType {
-    pool_id: Long;
-    pagination?: PageRequestSDKType;
+    pool_id: bigint;
+    pagination: PageRequestSDKType;
 }
 export interface IncentiveRecordsResponse {
     incentiveRecords: IncentiveRecord[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface IncentiveRecordsResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecordsResponse";
@@ -522,11 +521,11 @@ export interface IncentiveRecordsResponseAminoMsg {
 }
 export interface IncentiveRecordsResponseSDKType {
     incentive_records: IncentiveRecordSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** =============================== CFMMPoolIdLinkFromConcentratedPoolId */
 export interface CFMMPoolIdLinkFromConcentratedPoolIdRequest {
-    concentratedPoolId: Long;
+    concentratedPoolId: bigint;
 }
 export interface CFMMPoolIdLinkFromConcentratedPoolIdRequestProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.CFMMPoolIdLinkFromConcentratedPoolIdRequest";
@@ -542,10 +541,10 @@ export interface CFMMPoolIdLinkFromConcentratedPoolIdRequestAminoMsg {
 }
 /** =============================== CFMMPoolIdLinkFromConcentratedPoolId */
 export interface CFMMPoolIdLinkFromConcentratedPoolIdRequestSDKType {
-    concentrated_pool_id: Long;
+    concentrated_pool_id: bigint;
 }
 export interface CFMMPoolIdLinkFromConcentratedPoolIdResponse {
-    cfmmPoolId: Long;
+    cfmmPoolId: bigint;
 }
 export interface CFMMPoolIdLinkFromConcentratedPoolIdResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.CFMMPoolIdLinkFromConcentratedPoolIdResponse";
@@ -559,7 +558,7 @@ export interface CFMMPoolIdLinkFromConcentratedPoolIdResponseAminoMsg {
     value: CFMMPoolIdLinkFromConcentratedPoolIdResponseAmino;
 }
 export interface CFMMPoolIdLinkFromConcentratedPoolIdResponseSDKType {
-    cfmm_pool_id: Long;
+    cfmm_pool_id: bigint;
 }
 /** =============================== UserUnbondingPositions */
 export interface UserUnbondingPositionsRequest {
@@ -634,8 +633,8 @@ export interface GetTotalLiquidityResponseSDKType {
 }
 export declare const UserPositionsRequest: {
     typeUrl: string;
-    encode(message: UserPositionsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserPositionsRequest;
+    encode(message: UserPositionsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserPositionsRequest;
     fromPartial(object: Partial<UserPositionsRequest>): UserPositionsRequest;
     fromAmino(object: UserPositionsRequestAmino): UserPositionsRequest;
     toAmino(message: UserPositionsRequest): UserPositionsRequestAmino;
@@ -647,8 +646,8 @@ export declare const UserPositionsRequest: {
 };
 export declare const UserPositionsResponse: {
     typeUrl: string;
-    encode(message: UserPositionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserPositionsResponse;
+    encode(message: UserPositionsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserPositionsResponse;
     fromPartial(object: Partial<UserPositionsResponse>): UserPositionsResponse;
     fromAmino(object: UserPositionsResponseAmino): UserPositionsResponse;
     toAmino(message: UserPositionsResponse): UserPositionsResponseAmino;
@@ -660,8 +659,8 @@ export declare const UserPositionsResponse: {
 };
 export declare const PositionByIdRequest: {
     typeUrl: string;
-    encode(message: PositionByIdRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PositionByIdRequest;
+    encode(message: PositionByIdRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PositionByIdRequest;
     fromPartial(object: Partial<PositionByIdRequest>): PositionByIdRequest;
     fromAmino(object: PositionByIdRequestAmino): PositionByIdRequest;
     toAmino(message: PositionByIdRequest): PositionByIdRequestAmino;
@@ -673,8 +672,8 @@ export declare const PositionByIdRequest: {
 };
 export declare const PositionByIdResponse: {
     typeUrl: string;
-    encode(message: PositionByIdResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PositionByIdResponse;
+    encode(message: PositionByIdResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PositionByIdResponse;
     fromPartial(object: Partial<PositionByIdResponse>): PositionByIdResponse;
     fromAmino(object: PositionByIdResponseAmino): PositionByIdResponse;
     toAmino(message: PositionByIdResponse): PositionByIdResponseAmino;
@@ -686,8 +685,8 @@ export declare const PositionByIdResponse: {
 };
 export declare const PoolsRequest: {
     typeUrl: string;
-    encode(message: PoolsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolsRequest;
+    encode(message: PoolsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolsRequest;
     fromPartial(object: Partial<PoolsRequest>): PoolsRequest;
     fromAmino(object: PoolsRequestAmino): PoolsRequest;
     toAmino(message: PoolsRequest): PoolsRequestAmino;
@@ -699,8 +698,8 @@ export declare const PoolsRequest: {
 };
 export declare const PoolsResponse: {
     typeUrl: string;
-    encode(message: PoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolsResponse;
+    encode(message: PoolsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolsResponse;
     fromPartial(object: Partial<PoolsResponse>): PoolsResponse;
     fromAmino(object: PoolsResponseAmino): PoolsResponse;
     toAmino(message: PoolsResponse): PoolsResponseAmino;
@@ -712,8 +711,8 @@ export declare const PoolsResponse: {
 };
 export declare const ParamsRequest: {
     typeUrl: string;
-    encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
+    encode(_: ParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
     fromAmino(_: ParamsRequestAmino): ParamsRequest;
     toAmino(_: ParamsRequest): ParamsRequestAmino;
@@ -725,8 +724,8 @@ export declare const ParamsRequest: {
 };
 export declare const ParamsResponse: {
     typeUrl: string;
-    encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
+    encode(message: ParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;
     fromAmino(object: ParamsResponseAmino): ParamsResponse;
     toAmino(message: ParamsResponse): ParamsResponseAmino;
@@ -738,8 +737,8 @@ export declare const ParamsResponse: {
 };
 export declare const TickLiquidityNet: {
     typeUrl: string;
-    encode(message: TickLiquidityNet, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TickLiquidityNet;
+    encode(message: TickLiquidityNet, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TickLiquidityNet;
     fromPartial(object: Partial<TickLiquidityNet>): TickLiquidityNet;
     fromAmino(object: TickLiquidityNetAmino): TickLiquidityNet;
     toAmino(message: TickLiquidityNet): TickLiquidityNetAmino;
@@ -751,8 +750,8 @@ export declare const TickLiquidityNet: {
 };
 export declare const LiquidityDepthWithRange: {
     typeUrl: string;
-    encode(message: LiquidityDepthWithRange, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityDepthWithRange;
+    encode(message: LiquidityDepthWithRange, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LiquidityDepthWithRange;
     fromPartial(object: Partial<LiquidityDepthWithRange>): LiquidityDepthWithRange;
     fromAmino(object: LiquidityDepthWithRangeAmino): LiquidityDepthWithRange;
     toAmino(message: LiquidityDepthWithRange): LiquidityDepthWithRangeAmino;
@@ -764,8 +763,8 @@ export declare const LiquidityDepthWithRange: {
 };
 export declare const LiquidityNetInDirectionRequest: {
     typeUrl: string;
-    encode(message: LiquidityNetInDirectionRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityNetInDirectionRequest;
+    encode(message: LiquidityNetInDirectionRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LiquidityNetInDirectionRequest;
     fromPartial(object: Partial<LiquidityNetInDirectionRequest>): LiquidityNetInDirectionRequest;
     fromAmino(object: LiquidityNetInDirectionRequestAmino): LiquidityNetInDirectionRequest;
     toAmino(message: LiquidityNetInDirectionRequest): LiquidityNetInDirectionRequestAmino;
@@ -777,8 +776,8 @@ export declare const LiquidityNetInDirectionRequest: {
 };
 export declare const LiquidityNetInDirectionResponse: {
     typeUrl: string;
-    encode(message: LiquidityNetInDirectionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityNetInDirectionResponse;
+    encode(message: LiquidityNetInDirectionResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LiquidityNetInDirectionResponse;
     fromPartial(object: Partial<LiquidityNetInDirectionResponse>): LiquidityNetInDirectionResponse;
     fromAmino(object: LiquidityNetInDirectionResponseAmino): LiquidityNetInDirectionResponse;
     toAmino(message: LiquidityNetInDirectionResponse): LiquidityNetInDirectionResponseAmino;
@@ -790,8 +789,8 @@ export declare const LiquidityNetInDirectionResponse: {
 };
 export declare const LiquidityPerTickRangeRequest: {
     typeUrl: string;
-    encode(message: LiquidityPerTickRangeRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityPerTickRangeRequest;
+    encode(message: LiquidityPerTickRangeRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LiquidityPerTickRangeRequest;
     fromPartial(object: Partial<LiquidityPerTickRangeRequest>): LiquidityPerTickRangeRequest;
     fromAmino(object: LiquidityPerTickRangeRequestAmino): LiquidityPerTickRangeRequest;
     toAmino(message: LiquidityPerTickRangeRequest): LiquidityPerTickRangeRequestAmino;
@@ -803,8 +802,8 @@ export declare const LiquidityPerTickRangeRequest: {
 };
 export declare const LiquidityPerTickRangeResponse: {
     typeUrl: string;
-    encode(message: LiquidityPerTickRangeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LiquidityPerTickRangeResponse;
+    encode(message: LiquidityPerTickRangeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LiquidityPerTickRangeResponse;
     fromPartial(object: Partial<LiquidityPerTickRangeResponse>): LiquidityPerTickRangeResponse;
     fromAmino(object: LiquidityPerTickRangeResponseAmino): LiquidityPerTickRangeResponse;
     toAmino(message: LiquidityPerTickRangeResponse): LiquidityPerTickRangeResponseAmino;
@@ -816,8 +815,8 @@ export declare const LiquidityPerTickRangeResponse: {
 };
 export declare const ClaimableSpreadRewardsRequest: {
     typeUrl: string;
-    encode(message: ClaimableSpreadRewardsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ClaimableSpreadRewardsRequest;
+    encode(message: ClaimableSpreadRewardsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ClaimableSpreadRewardsRequest;
     fromPartial(object: Partial<ClaimableSpreadRewardsRequest>): ClaimableSpreadRewardsRequest;
     fromAmino(object: ClaimableSpreadRewardsRequestAmino): ClaimableSpreadRewardsRequest;
     toAmino(message: ClaimableSpreadRewardsRequest): ClaimableSpreadRewardsRequestAmino;
@@ -829,8 +828,8 @@ export declare const ClaimableSpreadRewardsRequest: {
 };
 export declare const ClaimableSpreadRewardsResponse: {
     typeUrl: string;
-    encode(message: ClaimableSpreadRewardsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ClaimableSpreadRewardsResponse;
+    encode(message: ClaimableSpreadRewardsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ClaimableSpreadRewardsResponse;
     fromPartial(object: Partial<ClaimableSpreadRewardsResponse>): ClaimableSpreadRewardsResponse;
     fromAmino(object: ClaimableSpreadRewardsResponseAmino): ClaimableSpreadRewardsResponse;
     toAmino(message: ClaimableSpreadRewardsResponse): ClaimableSpreadRewardsResponseAmino;
@@ -842,8 +841,8 @@ export declare const ClaimableSpreadRewardsResponse: {
 };
 export declare const ClaimableIncentivesRequest: {
     typeUrl: string;
-    encode(message: ClaimableIncentivesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ClaimableIncentivesRequest;
+    encode(message: ClaimableIncentivesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ClaimableIncentivesRequest;
     fromPartial(object: Partial<ClaimableIncentivesRequest>): ClaimableIncentivesRequest;
     fromAmino(object: ClaimableIncentivesRequestAmino): ClaimableIncentivesRequest;
     toAmino(message: ClaimableIncentivesRequest): ClaimableIncentivesRequestAmino;
@@ -855,8 +854,8 @@ export declare const ClaimableIncentivesRequest: {
 };
 export declare const ClaimableIncentivesResponse: {
     typeUrl: string;
-    encode(message: ClaimableIncentivesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ClaimableIncentivesResponse;
+    encode(message: ClaimableIncentivesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ClaimableIncentivesResponse;
     fromPartial(object: Partial<ClaimableIncentivesResponse>): ClaimableIncentivesResponse;
     fromAmino(object: ClaimableIncentivesResponseAmino): ClaimableIncentivesResponse;
     toAmino(message: ClaimableIncentivesResponse): ClaimableIncentivesResponseAmino;
@@ -868,8 +867,8 @@ export declare const ClaimableIncentivesResponse: {
 };
 export declare const PoolAccumulatorRewardsRequest: {
     typeUrl: string;
-    encode(message: PoolAccumulatorRewardsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolAccumulatorRewardsRequest;
+    encode(message: PoolAccumulatorRewardsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolAccumulatorRewardsRequest;
     fromPartial(object: Partial<PoolAccumulatorRewardsRequest>): PoolAccumulatorRewardsRequest;
     fromAmino(object: PoolAccumulatorRewardsRequestAmino): PoolAccumulatorRewardsRequest;
     toAmino(message: PoolAccumulatorRewardsRequest): PoolAccumulatorRewardsRequestAmino;
@@ -881,8 +880,8 @@ export declare const PoolAccumulatorRewardsRequest: {
 };
 export declare const PoolAccumulatorRewardsResponse: {
     typeUrl: string;
-    encode(message: PoolAccumulatorRewardsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolAccumulatorRewardsResponse;
+    encode(message: PoolAccumulatorRewardsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolAccumulatorRewardsResponse;
     fromPartial(object: Partial<PoolAccumulatorRewardsResponse>): PoolAccumulatorRewardsResponse;
     fromAmino(object: PoolAccumulatorRewardsResponseAmino): PoolAccumulatorRewardsResponse;
     toAmino(message: PoolAccumulatorRewardsResponse): PoolAccumulatorRewardsResponseAmino;
@@ -894,8 +893,8 @@ export declare const PoolAccumulatorRewardsResponse: {
 };
 export declare const TickAccumulatorTrackersRequest: {
     typeUrl: string;
-    encode(message: TickAccumulatorTrackersRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TickAccumulatorTrackersRequest;
+    encode(message: TickAccumulatorTrackersRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TickAccumulatorTrackersRequest;
     fromPartial(object: Partial<TickAccumulatorTrackersRequest>): TickAccumulatorTrackersRequest;
     fromAmino(object: TickAccumulatorTrackersRequestAmino): TickAccumulatorTrackersRequest;
     toAmino(message: TickAccumulatorTrackersRequest): TickAccumulatorTrackersRequestAmino;
@@ -907,8 +906,8 @@ export declare const TickAccumulatorTrackersRequest: {
 };
 export declare const TickAccumulatorTrackersResponse: {
     typeUrl: string;
-    encode(message: TickAccumulatorTrackersResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TickAccumulatorTrackersResponse;
+    encode(message: TickAccumulatorTrackersResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TickAccumulatorTrackersResponse;
     fromPartial(object: Partial<TickAccumulatorTrackersResponse>): TickAccumulatorTrackersResponse;
     fromAmino(object: TickAccumulatorTrackersResponseAmino): TickAccumulatorTrackersResponse;
     toAmino(message: TickAccumulatorTrackersResponse): TickAccumulatorTrackersResponseAmino;
@@ -920,8 +919,8 @@ export declare const TickAccumulatorTrackersResponse: {
 };
 export declare const IncentiveRecordsRequest: {
     typeUrl: string;
-    encode(message: IncentiveRecordsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): IncentiveRecordsRequest;
+    encode(message: IncentiveRecordsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): IncentiveRecordsRequest;
     fromPartial(object: Partial<IncentiveRecordsRequest>): IncentiveRecordsRequest;
     fromAmino(object: IncentiveRecordsRequestAmino): IncentiveRecordsRequest;
     toAmino(message: IncentiveRecordsRequest): IncentiveRecordsRequestAmino;
@@ -933,8 +932,8 @@ export declare const IncentiveRecordsRequest: {
 };
 export declare const IncentiveRecordsResponse: {
     typeUrl: string;
-    encode(message: IncentiveRecordsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): IncentiveRecordsResponse;
+    encode(message: IncentiveRecordsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): IncentiveRecordsResponse;
     fromPartial(object: Partial<IncentiveRecordsResponse>): IncentiveRecordsResponse;
     fromAmino(object: IncentiveRecordsResponseAmino): IncentiveRecordsResponse;
     toAmino(message: IncentiveRecordsResponse): IncentiveRecordsResponseAmino;
@@ -946,8 +945,8 @@ export declare const IncentiveRecordsResponse: {
 };
 export declare const CFMMPoolIdLinkFromConcentratedPoolIdRequest: {
     typeUrl: string;
-    encode(message: CFMMPoolIdLinkFromConcentratedPoolIdRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CFMMPoolIdLinkFromConcentratedPoolIdRequest;
+    encode(message: CFMMPoolIdLinkFromConcentratedPoolIdRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CFMMPoolIdLinkFromConcentratedPoolIdRequest;
     fromPartial(object: Partial<CFMMPoolIdLinkFromConcentratedPoolIdRequest>): CFMMPoolIdLinkFromConcentratedPoolIdRequest;
     fromAmino(object: CFMMPoolIdLinkFromConcentratedPoolIdRequestAmino): CFMMPoolIdLinkFromConcentratedPoolIdRequest;
     toAmino(message: CFMMPoolIdLinkFromConcentratedPoolIdRequest): CFMMPoolIdLinkFromConcentratedPoolIdRequestAmino;
@@ -959,8 +958,8 @@ export declare const CFMMPoolIdLinkFromConcentratedPoolIdRequest: {
 };
 export declare const CFMMPoolIdLinkFromConcentratedPoolIdResponse: {
     typeUrl: string;
-    encode(message: CFMMPoolIdLinkFromConcentratedPoolIdResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CFMMPoolIdLinkFromConcentratedPoolIdResponse;
+    encode(message: CFMMPoolIdLinkFromConcentratedPoolIdResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CFMMPoolIdLinkFromConcentratedPoolIdResponse;
     fromPartial(object: Partial<CFMMPoolIdLinkFromConcentratedPoolIdResponse>): CFMMPoolIdLinkFromConcentratedPoolIdResponse;
     fromAmino(object: CFMMPoolIdLinkFromConcentratedPoolIdResponseAmino): CFMMPoolIdLinkFromConcentratedPoolIdResponse;
     toAmino(message: CFMMPoolIdLinkFromConcentratedPoolIdResponse): CFMMPoolIdLinkFromConcentratedPoolIdResponseAmino;
@@ -972,8 +971,8 @@ export declare const CFMMPoolIdLinkFromConcentratedPoolIdResponse: {
 };
 export declare const UserUnbondingPositionsRequest: {
     typeUrl: string;
-    encode(message: UserUnbondingPositionsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserUnbondingPositionsRequest;
+    encode(message: UserUnbondingPositionsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserUnbondingPositionsRequest;
     fromPartial(object: Partial<UserUnbondingPositionsRequest>): UserUnbondingPositionsRequest;
     fromAmino(object: UserUnbondingPositionsRequestAmino): UserUnbondingPositionsRequest;
     toAmino(message: UserUnbondingPositionsRequest): UserUnbondingPositionsRequestAmino;
@@ -985,8 +984,8 @@ export declare const UserUnbondingPositionsRequest: {
 };
 export declare const UserUnbondingPositionsResponse: {
     typeUrl: string;
-    encode(message: UserUnbondingPositionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserUnbondingPositionsResponse;
+    encode(message: UserUnbondingPositionsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserUnbondingPositionsResponse;
     fromPartial(object: Partial<UserUnbondingPositionsResponse>): UserUnbondingPositionsResponse;
     fromAmino(object: UserUnbondingPositionsResponseAmino): UserUnbondingPositionsResponse;
     toAmino(message: UserUnbondingPositionsResponse): UserUnbondingPositionsResponseAmino;
@@ -998,8 +997,8 @@ export declare const UserUnbondingPositionsResponse: {
 };
 export declare const GetTotalLiquidityRequest: {
     typeUrl: string;
-    encode(_: GetTotalLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTotalLiquidityRequest;
+    encode(_: GetTotalLiquidityRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTotalLiquidityRequest;
     fromPartial(_: Partial<GetTotalLiquidityRequest>): GetTotalLiquidityRequest;
     fromAmino(_: GetTotalLiquidityRequestAmino): GetTotalLiquidityRequest;
     toAmino(_: GetTotalLiquidityRequest): GetTotalLiquidityRequestAmino;
@@ -1011,8 +1010,8 @@ export declare const GetTotalLiquidityRequest: {
 };
 export declare const GetTotalLiquidityResponse: {
     typeUrl: string;
-    encode(message: GetTotalLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTotalLiquidityResponse;
+    encode(message: GetTotalLiquidityResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTotalLiquidityResponse;
     fromPartial(object: Partial<GetTotalLiquidityResponse>): GetTotalLiquidityResponse;
     fromAmino(object: GetTotalLiquidityResponseAmino): GetTotalLiquidityResponse;
     toAmino(message: GetTotalLiquidityResponse): GetTotalLiquidityResponseAmino;
@@ -1022,6 +1021,6 @@ export declare const GetTotalLiquidityResponse: {
     toProto(message: GetTotalLiquidityResponse): Uint8Array;
     toProtoMsg(message: GetTotalLiquidityResponse): GetTotalLiquidityResponseProtoMsg;
 };
-export declare const PoolI_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
+export declare const PoolI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
 export declare const PoolI_FromAmino: (content: AnyAmino) => Any;
 export declare const PoolI_ToAmino: (content: Any) => AnyAmino;

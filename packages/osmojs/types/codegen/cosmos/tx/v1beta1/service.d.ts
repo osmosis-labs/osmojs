@@ -1,7 +1,7 @@
 import { Tx, TxAmino, TxSDKType } from "./tx";
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { TxResponse, TxResponseAmino, TxResponseSDKType, GasInfo, GasInfoAmino, GasInfoSDKType, Result, ResultAmino, ResultSDKType } from "../../base/abci/v1beta1/abci";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** OrderBy defines the sorting order */
 export declare enum OrderBy {
     /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */
@@ -49,7 +49,7 @@ export interface GetTxsEventRequest {
     /** events is the list of transaction event type. */
     events: string[];
     /** pagination defines an pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
     orderBy: OrderBy;
 }
 export interface GetTxsEventRequestProtoMsg {
@@ -77,7 +77,7 @@ export interface GetTxsEventRequestAminoMsg {
  */
 export interface GetTxsEventRequestSDKType {
     events: string[];
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
     order_by: OrderBy;
 }
 /**
@@ -90,7 +90,7 @@ export interface GetTxsEventResponse {
     /** tx_responses is the list of queried TxResponses. */
     txResponses: TxResponse[];
     /** pagination defines an pagination for the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface GetTxsEventResponseProtoMsg {
     typeUrl: "/cosmos.tx.v1beta1.GetTxsEventResponse";
@@ -119,7 +119,7 @@ export interface GetTxsEventResponseAminoMsg {
 export interface GetTxsEventResponseSDKType {
     txs: TxSDKType[];
     tx_responses: TxResponseSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * BroadcastTxRequest is the request type for the Service.BroadcastTxRequest
@@ -161,7 +161,7 @@ export interface BroadcastTxRequestSDKType {
  */
 export interface BroadcastTxResponse {
     /** tx_response is the queried TxResponses. */
-    txResponse?: TxResponse;
+    txResponse: TxResponse;
 }
 export interface BroadcastTxResponseProtoMsg {
     typeUrl: "/cosmos.tx.v1beta1.BroadcastTxResponse";
@@ -184,7 +184,7 @@ export interface BroadcastTxResponseAminoMsg {
  * Service.BroadcastTx method.
  */
 export interface BroadcastTxResponseSDKType {
-    tx_response?: TxResponseSDKType;
+    tx_response: TxResponseSDKType;
 }
 /**
  * SimulateRequest is the request type for the Service.Simulate
@@ -196,7 +196,7 @@ export interface SimulateRequest {
      * Deprecated. Send raw tx bytes instead.
      */
     /** @deprecated */
-    tx?: Tx;
+    tx: Tx;
     /**
      * tx_bytes is the raw transaction.
      *
@@ -236,7 +236,7 @@ export interface SimulateRequestAminoMsg {
  */
 export interface SimulateRequestSDKType {
     /** @deprecated */
-    tx?: TxSDKType;
+    tx: TxSDKType;
     tx_bytes: Uint8Array;
 }
 /**
@@ -245,9 +245,9 @@ export interface SimulateRequestSDKType {
  */
 export interface SimulateResponse {
     /** gas_info is the information about gas used in the simulation. */
-    gasInfo?: GasInfo;
+    gasInfo: GasInfo;
     /** result is the result of the simulation. */
-    result?: Result;
+    result: Result;
 }
 export interface SimulateResponseProtoMsg {
     typeUrl: "/cosmos.tx.v1beta1.SimulateResponse";
@@ -272,8 +272,8 @@ export interface SimulateResponseAminoMsg {
  * Service.SimulateRPC method.
  */
 export interface SimulateResponseSDKType {
-    gas_info?: GasInfoSDKType;
-    result?: ResultSDKType;
+    gas_info: GasInfoSDKType;
+    result: ResultSDKType;
 }
 /**
  * GetTxRequest is the request type for the Service.GetTx
@@ -309,9 +309,9 @@ export interface GetTxRequestSDKType {
 /** GetTxResponse is the response type for the Service.GetTx method. */
 export interface GetTxResponse {
     /** tx is the queried transaction. */
-    tx?: Tx;
+    tx: Tx;
     /** tx_response is the queried TxResponses. */
-    txResponse?: TxResponse;
+    txResponse: TxResponse;
 }
 export interface GetTxResponseProtoMsg {
     typeUrl: "/cosmos.tx.v1beta1.GetTxResponse";
@@ -330,13 +330,13 @@ export interface GetTxResponseAminoMsg {
 }
 /** GetTxResponse is the response type for the Service.GetTx method. */
 export interface GetTxResponseSDKType {
-    tx?: TxSDKType;
-    tx_response?: TxResponseSDKType;
+    tx: TxSDKType;
+    tx_response: TxResponseSDKType;
 }
 export declare const GetTxsEventRequest: {
     typeUrl: string;
-    encode(message: GetTxsEventRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventRequest;
+    encode(message: GetTxsEventRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTxsEventRequest;
     fromPartial(object: Partial<GetTxsEventRequest>): GetTxsEventRequest;
     fromAmino(object: GetTxsEventRequestAmino): GetTxsEventRequest;
     toAmino(message: GetTxsEventRequest): GetTxsEventRequestAmino;
@@ -348,8 +348,8 @@ export declare const GetTxsEventRequest: {
 };
 export declare const GetTxsEventResponse: {
     typeUrl: string;
-    encode(message: GetTxsEventResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponse;
+    encode(message: GetTxsEventResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTxsEventResponse;
     fromPartial(object: Partial<GetTxsEventResponse>): GetTxsEventResponse;
     fromAmino(object: GetTxsEventResponseAmino): GetTxsEventResponse;
     toAmino(message: GetTxsEventResponse): GetTxsEventResponseAmino;
@@ -361,8 +361,8 @@ export declare const GetTxsEventResponse: {
 };
 export declare const BroadcastTxRequest: {
     typeUrl: string;
-    encode(message: BroadcastTxRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxRequest;
+    encode(message: BroadcastTxRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BroadcastTxRequest;
     fromPartial(object: Partial<BroadcastTxRequest>): BroadcastTxRequest;
     fromAmino(object: BroadcastTxRequestAmino): BroadcastTxRequest;
     toAmino(message: BroadcastTxRequest): BroadcastTxRequestAmino;
@@ -374,8 +374,8 @@ export declare const BroadcastTxRequest: {
 };
 export declare const BroadcastTxResponse: {
     typeUrl: string;
-    encode(message: BroadcastTxResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponse;
+    encode(message: BroadcastTxResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BroadcastTxResponse;
     fromPartial(object: Partial<BroadcastTxResponse>): BroadcastTxResponse;
     fromAmino(object: BroadcastTxResponseAmino): BroadcastTxResponse;
     toAmino(message: BroadcastTxResponse): BroadcastTxResponseAmino;
@@ -387,8 +387,8 @@ export declare const BroadcastTxResponse: {
 };
 export declare const SimulateRequest: {
     typeUrl: string;
-    encode(message: SimulateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SimulateRequest;
+    encode(message: SimulateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SimulateRequest;
     fromPartial(object: Partial<SimulateRequest>): SimulateRequest;
     fromAmino(object: SimulateRequestAmino): SimulateRequest;
     toAmino(message: SimulateRequest): SimulateRequestAmino;
@@ -400,8 +400,8 @@ export declare const SimulateRequest: {
 };
 export declare const SimulateResponse: {
     typeUrl: string;
-    encode(message: SimulateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponse;
+    encode(message: SimulateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SimulateResponse;
     fromPartial(object: Partial<SimulateResponse>): SimulateResponse;
     fromAmino(object: SimulateResponseAmino): SimulateResponse;
     toAmino(message: SimulateResponse): SimulateResponseAmino;
@@ -413,8 +413,8 @@ export declare const SimulateResponse: {
 };
 export declare const GetTxRequest: {
     typeUrl: string;
-    encode(message: GetTxRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxRequest;
+    encode(message: GetTxRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTxRequest;
     fromPartial(object: Partial<GetTxRequest>): GetTxRequest;
     fromAmino(object: GetTxRequestAmino): GetTxRequest;
     toAmino(message: GetTxRequest): GetTxRequestAmino;
@@ -426,8 +426,8 @@ export declare const GetTxRequest: {
 };
 export declare const GetTxResponse: {
     typeUrl: string;
-    encode(message: GetTxResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponse;
+    encode(message: GetTxResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GetTxResponse;
     fromPartial(object: Partial<GetTxResponse>): GetTxResponse;
     fromAmino(object: GetTxResponseAmino): GetTxResponse;
     toAmino(message: GetTxResponse): GetTxResponseAmino;

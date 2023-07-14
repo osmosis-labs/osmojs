@@ -1,5 +1,4 @@
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export declare enum FieldDescriptorProto_Type {
     /**
      * TYPE_DOUBLE - 0 is reserved for errors.
@@ -163,14 +162,14 @@ export interface FileDescriptorProto {
     enumType: EnumDescriptorProto[];
     service: ServiceDescriptorProto[];
     extension: FieldDescriptorProto[];
-    options?: FileOptions;
+    options: FileOptions;
     /**
      * This field contains optional information about the original source code.
      * You may safely remove this entire field without harming runtime
      * functionality of the descriptors -- the information is needed only by
      * development tools.
      */
-    sourceCodeInfo?: SourceCodeInfo;
+    sourceCodeInfo: SourceCodeInfo;
     /**
      * The syntax of the proto file.
      * The supported values are "proto2" and "proto3".
@@ -229,8 +228,8 @@ export interface FileDescriptorProtoSDKType {
     enum_type: EnumDescriptorProtoSDKType[];
     service: ServiceDescriptorProtoSDKType[];
     extension: FieldDescriptorProtoSDKType[];
-    options?: FileOptionsSDKType;
-    source_code_info?: SourceCodeInfoSDKType;
+    options: FileOptionsSDKType;
+    source_code_info: SourceCodeInfoSDKType;
     syntax: string;
 }
 /** Describes a message type. */
@@ -242,7 +241,7 @@ export interface DescriptorProto {
     enumType: EnumDescriptorProto[];
     extensionRange: DescriptorProto_ExtensionRange[];
     oneofDecl: OneofDescriptorProto[];
-    options?: MessageOptions;
+    options: MessageOptions;
     reservedRange: DescriptorProto_ReservedRange[];
     /**
      * Reserved field names, which may not be used by fields in the same message.
@@ -284,7 +283,7 @@ export interface DescriptorProtoSDKType {
     enum_type: EnumDescriptorProtoSDKType[];
     extension_range: DescriptorProto_ExtensionRangeSDKType[];
     oneof_decl: OneofDescriptorProtoSDKType[];
-    options?: MessageOptionsSDKType;
+    options: MessageOptionsSDKType;
     reserved_range: DescriptorProto_ReservedRangeSDKType[];
     reserved_name: string[];
 }
@@ -293,7 +292,7 @@ export interface DescriptorProto_ExtensionRange {
     start: number;
     /** Exclusive. */
     end: number;
-    options?: ExtensionRangeOptions;
+    options: ExtensionRangeOptions;
 }
 export interface DescriptorProto_ExtensionRangeProtoMsg {
     typeUrl: "/google.protobuf.ExtensionRange";
@@ -313,7 +312,7 @@ export interface DescriptorProto_ExtensionRangeAminoMsg {
 export interface DescriptorProto_ExtensionRangeSDKType {
     start: number;
     end: number;
-    options?: ExtensionRangeOptionsSDKType;
+    options: ExtensionRangeOptionsSDKType;
 }
 /**
  * Range of reserved tag numbers. Reserved tag numbers may not be used by
@@ -416,7 +415,7 @@ export interface FieldDescriptorProto {
      * it to camelCase.
      */
     jsonName: string;
-    options?: FieldOptions;
+    options: FieldOptions;
 }
 export interface FieldDescriptorProtoProtoMsg {
     typeUrl: "/google.protobuf.FieldDescriptorProto";
@@ -482,12 +481,12 @@ export interface FieldDescriptorProtoSDKType {
     default_value: string;
     oneof_index: number;
     json_name: string;
-    options?: FieldOptionsSDKType;
+    options: FieldOptionsSDKType;
 }
 /** Describes a oneof. */
 export interface OneofDescriptorProto {
     name: string;
-    options?: OneofOptions;
+    options: OneofOptions;
 }
 export interface OneofDescriptorProtoProtoMsg {
     typeUrl: "/google.protobuf.OneofDescriptorProto";
@@ -505,13 +504,13 @@ export interface OneofDescriptorProtoAminoMsg {
 /** Describes a oneof. */
 export interface OneofDescriptorProtoSDKType {
     name: string;
-    options?: OneofOptionsSDKType;
+    options: OneofOptionsSDKType;
 }
 /** Describes an enum type. */
 export interface EnumDescriptorProto {
     name: string;
     value: EnumValueDescriptorProto[];
-    options?: EnumOptions;
+    options: EnumOptions;
     /**
      * Range of reserved numeric values. Reserved numeric values may not be used
      * by enum values in the same enum declaration. Reserved ranges may not
@@ -553,7 +552,7 @@ export interface EnumDescriptorProtoAminoMsg {
 export interface EnumDescriptorProtoSDKType {
     name: string;
     value: EnumValueDescriptorProtoSDKType[];
-    options?: EnumOptionsSDKType;
+    options: EnumOptionsSDKType;
     reserved_range: EnumDescriptorProto_EnumReservedRangeSDKType[];
     reserved_name: string[];
 }
@@ -609,7 +608,7 @@ export interface EnumDescriptorProto_EnumReservedRangeSDKType {
 export interface EnumValueDescriptorProto {
     name: string;
     number: number;
-    options?: EnumValueOptions;
+    options: EnumValueOptions;
 }
 export interface EnumValueDescriptorProtoProtoMsg {
     typeUrl: "/google.protobuf.EnumValueDescriptorProto";
@@ -629,13 +628,13 @@ export interface EnumValueDescriptorProtoAminoMsg {
 export interface EnumValueDescriptorProtoSDKType {
     name: string;
     number: number;
-    options?: EnumValueOptionsSDKType;
+    options: EnumValueOptionsSDKType;
 }
 /** Describes a service. */
 export interface ServiceDescriptorProto {
     name: string;
     method: MethodDescriptorProto[];
-    options?: ServiceOptions;
+    options: ServiceOptions;
 }
 export interface ServiceDescriptorProtoProtoMsg {
     typeUrl: "/google.protobuf.ServiceDescriptorProto";
@@ -655,7 +654,7 @@ export interface ServiceDescriptorProtoAminoMsg {
 export interface ServiceDescriptorProtoSDKType {
     name: string;
     method: MethodDescriptorProtoSDKType[];
-    options?: ServiceOptionsSDKType;
+    options: ServiceOptionsSDKType;
 }
 /** Describes a method of a service. */
 export interface MethodDescriptorProto {
@@ -666,7 +665,7 @@ export interface MethodDescriptorProto {
      */
     inputType: string;
     outputType: string;
-    options?: MethodOptions;
+    options: MethodOptions;
     /** Identifies if client streams multiple client messages */
     clientStreaming: boolean;
     /** Identifies if server streams multiple server messages */
@@ -700,7 +699,7 @@ export interface MethodDescriptorProtoSDKType {
     name: string;
     input_type: string;
     output_type: string;
-    options?: MethodOptionsSDKType;
+    options: MethodOptionsSDKType;
     client_streaming: boolean;
     server_streaming: boolean;
 }
@@ -1456,8 +1455,8 @@ export interface UninterpretedOption {
      * identified it as during parsing. Exactly one of these should be set.
      */
     identifierValue: string;
-    positiveIntValue: Long;
-    negativeIntValue: Long;
+    positiveIntValue: bigint;
+    negativeIntValue: bigint;
     doubleValue: number;
     stringValue: Uint8Array;
     aggregateValue: string;
@@ -1502,8 +1501,8 @@ export interface UninterpretedOptionAminoMsg {
 export interface UninterpretedOptionSDKType {
     name: UninterpretedOption_NamePartSDKType[];
     identifier_value: string;
-    positive_int_value: Long;
-    negative_int_value: Long;
+    positive_int_value: bigint;
+    negative_int_value: bigint;
     double_value: number;
     string_value: Uint8Array;
     aggregate_value: string;
@@ -1955,8 +1954,8 @@ export interface GeneratedCodeInfo_AnnotationSDKType {
 }
 export declare const FileDescriptorSet: {
     typeUrl: string;
-    encode(message: FileDescriptorSet, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FileDescriptorSet;
+    encode(message: FileDescriptorSet, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FileDescriptorSet;
     fromPartial(object: Partial<FileDescriptorSet>): FileDescriptorSet;
     fromAmino(object: FileDescriptorSetAmino): FileDescriptorSet;
     toAmino(message: FileDescriptorSet): FileDescriptorSetAmino;
@@ -1967,8 +1966,8 @@ export declare const FileDescriptorSet: {
 };
 export declare const FileDescriptorProto: {
     typeUrl: string;
-    encode(message: FileDescriptorProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FileDescriptorProto;
+    encode(message: FileDescriptorProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FileDescriptorProto;
     fromPartial(object: Partial<FileDescriptorProto>): FileDescriptorProto;
     fromAmino(object: FileDescriptorProtoAmino): FileDescriptorProto;
     toAmino(message: FileDescriptorProto): FileDescriptorProtoAmino;
@@ -1979,8 +1978,8 @@ export declare const FileDescriptorProto: {
 };
 export declare const DescriptorProto: {
     typeUrl: string;
-    encode(message: DescriptorProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto;
+    encode(message: DescriptorProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DescriptorProto;
     fromPartial(object: Partial<DescriptorProto>): DescriptorProto;
     fromAmino(object: DescriptorProtoAmino): DescriptorProto;
     toAmino(message: DescriptorProto): DescriptorProtoAmino;
@@ -1991,8 +1990,8 @@ export declare const DescriptorProto: {
 };
 export declare const DescriptorProto_ExtensionRange: {
     typeUrl: string;
-    encode(message: DescriptorProto_ExtensionRange, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto_ExtensionRange;
+    encode(message: DescriptorProto_ExtensionRange, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DescriptorProto_ExtensionRange;
     fromPartial(object: Partial<DescriptorProto_ExtensionRange>): DescriptorProto_ExtensionRange;
     fromAmino(object: DescriptorProto_ExtensionRangeAmino): DescriptorProto_ExtensionRange;
     toAmino(message: DescriptorProto_ExtensionRange): DescriptorProto_ExtensionRangeAmino;
@@ -2003,8 +2002,8 @@ export declare const DescriptorProto_ExtensionRange: {
 };
 export declare const DescriptorProto_ReservedRange: {
     typeUrl: string;
-    encode(message: DescriptorProto_ReservedRange, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto_ReservedRange;
+    encode(message: DescriptorProto_ReservedRange, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DescriptorProto_ReservedRange;
     fromPartial(object: Partial<DescriptorProto_ReservedRange>): DescriptorProto_ReservedRange;
     fromAmino(object: DescriptorProto_ReservedRangeAmino): DescriptorProto_ReservedRange;
     toAmino(message: DescriptorProto_ReservedRange): DescriptorProto_ReservedRangeAmino;
@@ -2015,8 +2014,8 @@ export declare const DescriptorProto_ReservedRange: {
 };
 export declare const ExtensionRangeOptions: {
     typeUrl: string;
-    encode(message: ExtensionRangeOptions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ExtensionRangeOptions;
+    encode(message: ExtensionRangeOptions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ExtensionRangeOptions;
     fromPartial(object: Partial<ExtensionRangeOptions>): ExtensionRangeOptions;
     fromAmino(object: ExtensionRangeOptionsAmino): ExtensionRangeOptions;
     toAmino(message: ExtensionRangeOptions): ExtensionRangeOptionsAmino;
@@ -2027,8 +2026,8 @@ export declare const ExtensionRangeOptions: {
 };
 export declare const FieldDescriptorProto: {
     typeUrl: string;
-    encode(message: FieldDescriptorProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FieldDescriptorProto;
+    encode(message: FieldDescriptorProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FieldDescriptorProto;
     fromPartial(object: Partial<FieldDescriptorProto>): FieldDescriptorProto;
     fromAmino(object: FieldDescriptorProtoAmino): FieldDescriptorProto;
     toAmino(message: FieldDescriptorProto): FieldDescriptorProtoAmino;
@@ -2039,8 +2038,8 @@ export declare const FieldDescriptorProto: {
 };
 export declare const OneofDescriptorProto: {
     typeUrl: string;
-    encode(message: OneofDescriptorProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): OneofDescriptorProto;
+    encode(message: OneofDescriptorProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): OneofDescriptorProto;
     fromPartial(object: Partial<OneofDescriptorProto>): OneofDescriptorProto;
     fromAmino(object: OneofDescriptorProtoAmino): OneofDescriptorProto;
     toAmino(message: OneofDescriptorProto): OneofDescriptorProtoAmino;
@@ -2051,8 +2050,8 @@ export declare const OneofDescriptorProto: {
 };
 export declare const EnumDescriptorProto: {
     typeUrl: string;
-    encode(message: EnumDescriptorProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EnumDescriptorProto;
+    encode(message: EnumDescriptorProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EnumDescriptorProto;
     fromPartial(object: Partial<EnumDescriptorProto>): EnumDescriptorProto;
     fromAmino(object: EnumDescriptorProtoAmino): EnumDescriptorProto;
     toAmino(message: EnumDescriptorProto): EnumDescriptorProtoAmino;
@@ -2063,8 +2062,8 @@ export declare const EnumDescriptorProto: {
 };
 export declare const EnumDescriptorProto_EnumReservedRange: {
     typeUrl: string;
-    encode(message: EnumDescriptorProto_EnumReservedRange, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EnumDescriptorProto_EnumReservedRange;
+    encode(message: EnumDescriptorProto_EnumReservedRange, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EnumDescriptorProto_EnumReservedRange;
     fromPartial(object: Partial<EnumDescriptorProto_EnumReservedRange>): EnumDescriptorProto_EnumReservedRange;
     fromAmino(object: EnumDescriptorProto_EnumReservedRangeAmino): EnumDescriptorProto_EnumReservedRange;
     toAmino(message: EnumDescriptorProto_EnumReservedRange): EnumDescriptorProto_EnumReservedRangeAmino;
@@ -2075,8 +2074,8 @@ export declare const EnumDescriptorProto_EnumReservedRange: {
 };
 export declare const EnumValueDescriptorProto: {
     typeUrl: string;
-    encode(message: EnumValueDescriptorProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EnumValueDescriptorProto;
+    encode(message: EnumValueDescriptorProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EnumValueDescriptorProto;
     fromPartial(object: Partial<EnumValueDescriptorProto>): EnumValueDescriptorProto;
     fromAmino(object: EnumValueDescriptorProtoAmino): EnumValueDescriptorProto;
     toAmino(message: EnumValueDescriptorProto): EnumValueDescriptorProtoAmino;
@@ -2087,8 +2086,8 @@ export declare const EnumValueDescriptorProto: {
 };
 export declare const ServiceDescriptorProto: {
     typeUrl: string;
-    encode(message: ServiceDescriptorProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ServiceDescriptorProto;
+    encode(message: ServiceDescriptorProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ServiceDescriptorProto;
     fromPartial(object: Partial<ServiceDescriptorProto>): ServiceDescriptorProto;
     fromAmino(object: ServiceDescriptorProtoAmino): ServiceDescriptorProto;
     toAmino(message: ServiceDescriptorProto): ServiceDescriptorProtoAmino;
@@ -2099,8 +2098,8 @@ export declare const ServiceDescriptorProto: {
 };
 export declare const MethodDescriptorProto: {
     typeUrl: string;
-    encode(message: MethodDescriptorProto, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MethodDescriptorProto;
+    encode(message: MethodDescriptorProto, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MethodDescriptorProto;
     fromPartial(object: Partial<MethodDescriptorProto>): MethodDescriptorProto;
     fromAmino(object: MethodDescriptorProtoAmino): MethodDescriptorProto;
     toAmino(message: MethodDescriptorProto): MethodDescriptorProtoAmino;
@@ -2111,8 +2110,8 @@ export declare const MethodDescriptorProto: {
 };
 export declare const FileOptions: {
     typeUrl: string;
-    encode(message: FileOptions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FileOptions;
+    encode(message: FileOptions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FileOptions;
     fromPartial(object: Partial<FileOptions>): FileOptions;
     fromAmino(object: FileOptionsAmino): FileOptions;
     toAmino(message: FileOptions): FileOptionsAmino;
@@ -2123,8 +2122,8 @@ export declare const FileOptions: {
 };
 export declare const MessageOptions: {
     typeUrl: string;
-    encode(message: MessageOptions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MessageOptions;
+    encode(message: MessageOptions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MessageOptions;
     fromPartial(object: Partial<MessageOptions>): MessageOptions;
     fromAmino(object: MessageOptionsAmino): MessageOptions;
     toAmino(message: MessageOptions): MessageOptionsAmino;
@@ -2135,8 +2134,8 @@ export declare const MessageOptions: {
 };
 export declare const FieldOptions: {
     typeUrl: string;
-    encode(message: FieldOptions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FieldOptions;
+    encode(message: FieldOptions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FieldOptions;
     fromPartial(object: Partial<FieldOptions>): FieldOptions;
     fromAmino(object: FieldOptionsAmino): FieldOptions;
     toAmino(message: FieldOptions): FieldOptionsAmino;
@@ -2147,8 +2146,8 @@ export declare const FieldOptions: {
 };
 export declare const OneofOptions: {
     typeUrl: string;
-    encode(message: OneofOptions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): OneofOptions;
+    encode(message: OneofOptions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): OneofOptions;
     fromPartial(object: Partial<OneofOptions>): OneofOptions;
     fromAmino(object: OneofOptionsAmino): OneofOptions;
     toAmino(message: OneofOptions): OneofOptionsAmino;
@@ -2159,8 +2158,8 @@ export declare const OneofOptions: {
 };
 export declare const EnumOptions: {
     typeUrl: string;
-    encode(message: EnumOptions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EnumOptions;
+    encode(message: EnumOptions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EnumOptions;
     fromPartial(object: Partial<EnumOptions>): EnumOptions;
     fromAmino(object: EnumOptionsAmino): EnumOptions;
     toAmino(message: EnumOptions): EnumOptionsAmino;
@@ -2171,8 +2170,8 @@ export declare const EnumOptions: {
 };
 export declare const EnumValueOptions: {
     typeUrl: string;
-    encode(message: EnumValueOptions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EnumValueOptions;
+    encode(message: EnumValueOptions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EnumValueOptions;
     fromPartial(object: Partial<EnumValueOptions>): EnumValueOptions;
     fromAmino(object: EnumValueOptionsAmino): EnumValueOptions;
     toAmino(message: EnumValueOptions): EnumValueOptionsAmino;
@@ -2183,8 +2182,8 @@ export declare const EnumValueOptions: {
 };
 export declare const ServiceOptions: {
     typeUrl: string;
-    encode(message: ServiceOptions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ServiceOptions;
+    encode(message: ServiceOptions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ServiceOptions;
     fromPartial(object: Partial<ServiceOptions>): ServiceOptions;
     fromAmino(object: ServiceOptionsAmino): ServiceOptions;
     toAmino(message: ServiceOptions): ServiceOptionsAmino;
@@ -2195,8 +2194,8 @@ export declare const ServiceOptions: {
 };
 export declare const MethodOptions: {
     typeUrl: string;
-    encode(message: MethodOptions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MethodOptions;
+    encode(message: MethodOptions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MethodOptions;
     fromPartial(object: Partial<MethodOptions>): MethodOptions;
     fromAmino(object: MethodOptionsAmino): MethodOptions;
     toAmino(message: MethodOptions): MethodOptionsAmino;
@@ -2207,8 +2206,8 @@ export declare const MethodOptions: {
 };
 export declare const UninterpretedOption: {
     typeUrl: string;
-    encode(message: UninterpretedOption, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UninterpretedOption;
+    encode(message: UninterpretedOption, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UninterpretedOption;
     fromPartial(object: Partial<UninterpretedOption>): UninterpretedOption;
     fromAmino(object: UninterpretedOptionAmino): UninterpretedOption;
     toAmino(message: UninterpretedOption): UninterpretedOptionAmino;
@@ -2219,8 +2218,8 @@ export declare const UninterpretedOption: {
 };
 export declare const UninterpretedOption_NamePart: {
     typeUrl: string;
-    encode(message: UninterpretedOption_NamePart, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UninterpretedOption_NamePart;
+    encode(message: UninterpretedOption_NamePart, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UninterpretedOption_NamePart;
     fromPartial(object: Partial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart;
     fromAmino(object: UninterpretedOption_NamePartAmino): UninterpretedOption_NamePart;
     toAmino(message: UninterpretedOption_NamePart): UninterpretedOption_NamePartAmino;
@@ -2231,8 +2230,8 @@ export declare const UninterpretedOption_NamePart: {
 };
 export declare const SourceCodeInfo: {
     typeUrl: string;
-    encode(message: SourceCodeInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SourceCodeInfo;
+    encode(message: SourceCodeInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SourceCodeInfo;
     fromPartial(object: Partial<SourceCodeInfo>): SourceCodeInfo;
     fromAmino(object: SourceCodeInfoAmino): SourceCodeInfo;
     toAmino(message: SourceCodeInfo): SourceCodeInfoAmino;
@@ -2243,8 +2242,8 @@ export declare const SourceCodeInfo: {
 };
 export declare const SourceCodeInfo_Location: {
     typeUrl: string;
-    encode(message: SourceCodeInfo_Location, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SourceCodeInfo_Location;
+    encode(message: SourceCodeInfo_Location, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SourceCodeInfo_Location;
     fromPartial(object: Partial<SourceCodeInfo_Location>): SourceCodeInfo_Location;
     fromAmino(object: SourceCodeInfo_LocationAmino): SourceCodeInfo_Location;
     toAmino(message: SourceCodeInfo_Location): SourceCodeInfo_LocationAmino;
@@ -2255,8 +2254,8 @@ export declare const SourceCodeInfo_Location: {
 };
 export declare const GeneratedCodeInfo: {
     typeUrl: string;
-    encode(message: GeneratedCodeInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GeneratedCodeInfo;
+    encode(message: GeneratedCodeInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GeneratedCodeInfo;
     fromPartial(object: Partial<GeneratedCodeInfo>): GeneratedCodeInfo;
     fromAmino(object: GeneratedCodeInfoAmino): GeneratedCodeInfo;
     toAmino(message: GeneratedCodeInfo): GeneratedCodeInfoAmino;
@@ -2267,8 +2266,8 @@ export declare const GeneratedCodeInfo: {
 };
 export declare const GeneratedCodeInfo_Annotation: {
     typeUrl: string;
-    encode(message: GeneratedCodeInfo_Annotation, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GeneratedCodeInfo_Annotation;
+    encode(message: GeneratedCodeInfo_Annotation, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GeneratedCodeInfo_Annotation;
     fromPartial(object: Partial<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation;
     fromAmino(object: GeneratedCodeInfo_AnnotationAmino): GeneratedCodeInfo_Annotation;
     toAmino(message: GeneratedCodeInfo_Annotation): GeneratedCodeInfo_AnnotationAmino;

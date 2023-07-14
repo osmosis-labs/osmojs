@@ -1,13 +1,12 @@
 import { PoolParams, PoolParamsAmino, PoolParamsSDKType } from "./stableswap_pool";
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** ===================== MsgCreatePool */
 export interface MsgCreateStableswapPool {
     sender: string;
-    poolParams?: PoolParams;
+    poolParams: PoolParams;
     initialPoolLiquidity: Coin[];
-    scalingFactors: Long[];
+    scalingFactors: bigint[];
     futurePoolGovernor: string;
     scalingFactorController: string;
 }
@@ -31,15 +30,15 @@ export interface MsgCreateStableswapPoolAminoMsg {
 /** ===================== MsgCreatePool */
 export interface MsgCreateStableswapPoolSDKType {
     sender: string;
-    pool_params?: PoolParamsSDKType;
+    pool_params: PoolParamsSDKType;
     initial_pool_liquidity: CoinSDKType[];
-    scaling_factors: Long[];
+    scaling_factors: bigint[];
     future_pool_governor: string;
     scaling_factor_controller: string;
 }
 /** Returns a poolID with custom poolName. */
 export interface MsgCreateStableswapPoolResponse {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface MsgCreateStableswapPoolResponseProtoMsg {
     typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgCreateStableswapPoolResponse";
@@ -55,7 +54,7 @@ export interface MsgCreateStableswapPoolResponseAminoMsg {
 }
 /** Returns a poolID with custom poolName. */
 export interface MsgCreateStableswapPoolResponseSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 /**
  * Sender must be the pool's scaling_factor_governor in order for the tx to
@@ -63,8 +62,8 @@ export interface MsgCreateStableswapPoolResponseSDKType {
  */
 export interface MsgStableSwapAdjustScalingFactors {
     sender: string;
-    poolId: Long;
-    scalingFactors: Long[];
+    poolId: bigint;
+    scalingFactors: bigint[];
 }
 export interface MsgStableSwapAdjustScalingFactorsProtoMsg {
     typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgStableSwapAdjustScalingFactors";
@@ -89,8 +88,8 @@ export interface MsgStableSwapAdjustScalingFactorsAminoMsg {
  */
 export interface MsgStableSwapAdjustScalingFactorsSDKType {
     sender: string;
-    pool_id: Long;
-    scaling_factors: Long[];
+    pool_id: bigint;
+    scaling_factors: bigint[];
 }
 export interface MsgStableSwapAdjustScalingFactorsResponse {
 }
@@ -108,8 +107,8 @@ export interface MsgStableSwapAdjustScalingFactorsResponseSDKType {
 }
 export declare const MsgCreateStableswapPool: {
     typeUrl: string;
-    encode(message: MsgCreateStableswapPool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPool;
+    encode(message: MsgCreateStableswapPool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateStableswapPool;
     fromPartial(object: Partial<MsgCreateStableswapPool>): MsgCreateStableswapPool;
     fromAmino(object: MsgCreateStableswapPoolAmino): MsgCreateStableswapPool;
     toAmino(message: MsgCreateStableswapPool): MsgCreateStableswapPoolAmino;
@@ -121,8 +120,8 @@ export declare const MsgCreateStableswapPool: {
 };
 export declare const MsgCreateStableswapPoolResponse: {
     typeUrl: string;
-    encode(message: MsgCreateStableswapPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPoolResponse;
+    encode(message: MsgCreateStableswapPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateStableswapPoolResponse;
     fromPartial(object: Partial<MsgCreateStableswapPoolResponse>): MsgCreateStableswapPoolResponse;
     fromAmino(object: MsgCreateStableswapPoolResponseAmino): MsgCreateStableswapPoolResponse;
     toAmino(message: MsgCreateStableswapPoolResponse): MsgCreateStableswapPoolResponseAmino;
@@ -134,8 +133,8 @@ export declare const MsgCreateStableswapPoolResponse: {
 };
 export declare const MsgStableSwapAdjustScalingFactors: {
     typeUrl: string;
-    encode(message: MsgStableSwapAdjustScalingFactors, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactors;
+    encode(message: MsgStableSwapAdjustScalingFactors, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactors;
     fromPartial(object: Partial<MsgStableSwapAdjustScalingFactors>): MsgStableSwapAdjustScalingFactors;
     fromAmino(object: MsgStableSwapAdjustScalingFactorsAmino): MsgStableSwapAdjustScalingFactors;
     toAmino(message: MsgStableSwapAdjustScalingFactors): MsgStableSwapAdjustScalingFactorsAmino;
@@ -147,8 +146,8 @@ export declare const MsgStableSwapAdjustScalingFactors: {
 };
 export declare const MsgStableSwapAdjustScalingFactorsResponse: {
     typeUrl: string;
-    encode(_: MsgStableSwapAdjustScalingFactorsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactorsResponse;
+    encode(_: MsgStableSwapAdjustScalingFactorsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactorsResponse;
     fromPartial(_: Partial<MsgStableSwapAdjustScalingFactorsResponse>): MsgStableSwapAdjustScalingFactorsResponse;
     fromAmino(_: MsgStableSwapAdjustScalingFactorsResponseAmino): MsgStableSwapAdjustScalingFactorsResponse;
     toAmino(_: MsgStableSwapAdjustScalingFactorsResponse): MsgStableSwapAdjustScalingFactorsResponseAmino;

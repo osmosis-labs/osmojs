@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSDKType } from "./bank";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** QueryBalanceRequest is the request type for the Query/Balance RPC method. */
 export interface QueryBalanceRequest {
     /** address is the address to query balances for. */
@@ -32,7 +32,7 @@ export interface QueryBalanceRequestSDKType {
 /** QueryBalanceResponse is the response type for the Query/Balance RPC method. */
 export interface QueryBalanceResponse {
     /** balance is the balance of the coin. */
-    balance?: Coin;
+    balance: Coin;
 }
 export interface QueryBalanceResponseProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryBalanceResponse";
@@ -49,14 +49,14 @@ export interface QueryBalanceResponseAminoMsg {
 }
 /** QueryBalanceResponse is the response type for the Query/Balance RPC method. */
 export interface QueryBalanceResponseSDKType {
-    balance?: CoinSDKType;
+    balance: CoinSDKType;
 }
 /** QueryBalanceRequest is the request type for the Query/AllBalances RPC method. */
 export interface QueryAllBalancesRequest {
     /** address is the address to query balances for. */
     address: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryAllBalancesRequestProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryAllBalancesRequest";
@@ -76,7 +76,7 @@ export interface QueryAllBalancesRequestAminoMsg {
 /** QueryBalanceRequest is the request type for the Query/AllBalances RPC method. */
 export interface QueryAllBalancesRequestSDKType {
     address: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryAllBalancesResponse is the response type for the Query/AllBalances RPC
@@ -86,7 +86,7 @@ export interface QueryAllBalancesResponse {
     /** balances is the balances of all the coins. */
     balances: Coin[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryAllBalancesResponseProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryAllBalancesResponse";
@@ -112,7 +112,7 @@ export interface QueryAllBalancesResponseAminoMsg {
  */
 export interface QueryAllBalancesResponseSDKType {
     balances: CoinSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryTotalSupplyRequest is the request type for the Query/TotalSupply RPC
@@ -124,7 +124,7 @@ export interface QueryTotalSupplyRequest {
      *
      * Since: cosmos-sdk 0.43
      */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryTotalSupplyRequestProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryTotalSupplyRequest";
@@ -151,7 +151,7 @@ export interface QueryTotalSupplyRequestAminoMsg {
  * method.
  */
 export interface QueryTotalSupplyRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryTotalSupplyResponse is the response type for the Query/TotalSupply RPC
@@ -165,7 +165,7 @@ export interface QueryTotalSupplyResponse {
      *
      * Since: cosmos-sdk 0.43
      */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryTotalSupplyResponseProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryTotalSupplyResponse";
@@ -195,7 +195,7 @@ export interface QueryTotalSupplyResponseAminoMsg {
  */
 export interface QueryTotalSupplyResponseSDKType {
     supply: CoinSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** QuerySupplyOfRequest is the request type for the Query/SupplyOf RPC method. */
 export interface QuerySupplyOfRequest {
@@ -222,7 +222,7 @@ export interface QuerySupplyOfRequestSDKType {
 /** QuerySupplyOfResponse is the response type for the Query/SupplyOf RPC method. */
 export interface QuerySupplyOfResponse {
     /** amount is the supply of the coin. */
-    amount?: Coin;
+    amount: Coin;
 }
 export interface QuerySupplyOfResponseProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QuerySupplyOfResponse";
@@ -239,7 +239,7 @@ export interface QuerySupplyOfResponseAminoMsg {
 }
 /** QuerySupplyOfResponse is the response type for the Query/SupplyOf RPC method. */
 export interface QuerySupplyOfResponseSDKType {
-    amount?: CoinSDKType;
+    amount: CoinSDKType;
 }
 /**
  * QueryTotalSupplyWithoutOffsetRequest is the request type for the Query/TotalSupplyWithoutOffset RPC
@@ -251,7 +251,7 @@ export interface QueryTotalSupplyWithoutOffsetRequest {
      *
      * Since: cosmos-sdk 0.43
      */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryTotalSupplyWithoutOffsetRequestProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryTotalSupplyWithoutOffsetRequest";
@@ -278,7 +278,7 @@ export interface QueryTotalSupplyWithoutOffsetRequestAminoMsg {
  * method.
  */
 export interface QueryTotalSupplyWithoutOffsetRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryTotalSupplyWithoutOffsetResponse is the response type for the Query/TotalSupplyWithoutOffset RPC
@@ -292,7 +292,7 @@ export interface QueryTotalSupplyWithoutOffsetResponse {
      *
      * Since: cosmos-sdk 0.43
      */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryTotalSupplyWithoutOffsetResponseProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryTotalSupplyWithoutOffsetResponse";
@@ -322,7 +322,7 @@ export interface QueryTotalSupplyWithoutOffsetResponseAminoMsg {
  */
 export interface QueryTotalSupplyWithoutOffsetResponseSDKType {
     supply: CoinSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** QuerySupplyOfWithoutOffsetRequest is the request type for the Query/SupplyOfWithoutOffset RPC method. */
 export interface QuerySupplyOfWithoutOffsetRequest {
@@ -349,7 +349,7 @@ export interface QuerySupplyOfWithoutOffsetRequestSDKType {
 /** QuerySupplyOfWithoutOffsetResponse is the response type for the Query/SupplyOfWithoutOffset RPC method. */
 export interface QuerySupplyOfWithoutOffsetResponse {
     /** amount is the supply of the coin. */
-    amount?: Coin;
+    amount: Coin;
 }
 export interface QuerySupplyOfWithoutOffsetResponseProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QuerySupplyOfWithoutOffsetResponse";
@@ -366,7 +366,7 @@ export interface QuerySupplyOfWithoutOffsetResponseAminoMsg {
 }
 /** QuerySupplyOfWithoutOffsetResponse is the response type for the Query/SupplyOfWithoutOffset RPC method. */
 export interface QuerySupplyOfWithoutOffsetResponseSDKType {
-    amount?: CoinSDKType;
+    amount: CoinSDKType;
 }
 /** QueryParamsRequest defines the request type for querying x/bank parameters. */
 export interface QueryParamsRequest {
@@ -387,7 +387,7 @@ export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse defines the response type for querying x/bank parameters. */
 export interface QueryParamsResponse {
-    params?: Params;
+    params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryParamsResponse";
@@ -403,12 +403,12 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse defines the response type for querying x/bank parameters. */
 export interface QueryParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 /** QueryDenomsMetadataRequest is the request type for the Query/DenomsMetadata RPC method. */
 export interface QueryDenomsMetadataRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryDenomsMetadataRequestProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryDenomsMetadataRequest";
@@ -425,7 +425,7 @@ export interface QueryDenomsMetadataRequestAminoMsg {
 }
 /** QueryDenomsMetadataRequest is the request type for the Query/DenomsMetadata RPC method. */
 export interface QueryDenomsMetadataRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryDenomsMetadataResponse is the response type for the Query/DenomsMetadata RPC
@@ -435,7 +435,7 @@ export interface QueryDenomsMetadataResponse {
     /** metadata provides the client information for all the registered tokens. */
     metadatas: Metadata[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryDenomsMetadataResponseProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryDenomsMetadataResponse";
@@ -461,7 +461,7 @@ export interface QueryDenomsMetadataResponseAminoMsg {
  */
 export interface QueryDenomsMetadataResponseSDKType {
     metadatas: MetadataSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** QueryDenomMetadataRequest is the request type for the Query/DenomMetadata RPC method. */
 export interface QueryDenomMetadataRequest {
@@ -491,7 +491,7 @@ export interface QueryDenomMetadataRequestSDKType {
  */
 export interface QueryDenomMetadataResponse {
     /** metadata describes and provides all the client information for the requested token. */
-    metadata?: Metadata;
+    metadata: Metadata;
 }
 export interface QueryDenomMetadataResponseProtoMsg {
     typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataResponse";
@@ -514,7 +514,7 @@ export interface QueryDenomMetadataResponseAminoMsg {
  * method.
  */
 export interface QueryDenomMetadataResponseSDKType {
-    metadata?: MetadataSDKType;
+    metadata: MetadataSDKType;
 }
 /** QueryBaseDenomRequest defines the request type for the BaseDenom gRPC method. */
 export interface QueryBaseDenomRequest {
@@ -558,8 +558,8 @@ export interface QueryBaseDenomResponseSDKType {
 }
 export declare const QueryBalanceRequest: {
     typeUrl: string;
-    encode(message: QueryBalanceRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceRequest;
+    encode(message: QueryBalanceRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryBalanceRequest;
     fromPartial(object: Partial<QueryBalanceRequest>): QueryBalanceRequest;
     fromAmino(object: QueryBalanceRequestAmino): QueryBalanceRequest;
     toAmino(message: QueryBalanceRequest): QueryBalanceRequestAmino;
@@ -571,8 +571,8 @@ export declare const QueryBalanceRequest: {
 };
 export declare const QueryBalanceResponse: {
     typeUrl: string;
-    encode(message: QueryBalanceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceResponse;
+    encode(message: QueryBalanceResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryBalanceResponse;
     fromPartial(object: Partial<QueryBalanceResponse>): QueryBalanceResponse;
     fromAmino(object: QueryBalanceResponseAmino): QueryBalanceResponse;
     toAmino(message: QueryBalanceResponse): QueryBalanceResponseAmino;
@@ -584,8 +584,8 @@ export declare const QueryBalanceResponse: {
 };
 export declare const QueryAllBalancesRequest: {
     typeUrl: string;
-    encode(message: QueryAllBalancesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBalancesRequest;
+    encode(message: QueryAllBalancesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryAllBalancesRequest;
     fromPartial(object: Partial<QueryAllBalancesRequest>): QueryAllBalancesRequest;
     fromAmino(object: QueryAllBalancesRequestAmino): QueryAllBalancesRequest;
     toAmino(message: QueryAllBalancesRequest): QueryAllBalancesRequestAmino;
@@ -597,8 +597,8 @@ export declare const QueryAllBalancesRequest: {
 };
 export declare const QueryAllBalancesResponse: {
     typeUrl: string;
-    encode(message: QueryAllBalancesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBalancesResponse;
+    encode(message: QueryAllBalancesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryAllBalancesResponse;
     fromPartial(object: Partial<QueryAllBalancesResponse>): QueryAllBalancesResponse;
     fromAmino(object: QueryAllBalancesResponseAmino): QueryAllBalancesResponse;
     toAmino(message: QueryAllBalancesResponse): QueryAllBalancesResponseAmino;
@@ -610,8 +610,8 @@ export declare const QueryAllBalancesResponse: {
 };
 export declare const QueryTotalSupplyRequest: {
     typeUrl: string;
-    encode(message: QueryTotalSupplyRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyRequest;
+    encode(message: QueryTotalSupplyRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalSupplyRequest;
     fromPartial(object: Partial<QueryTotalSupplyRequest>): QueryTotalSupplyRequest;
     fromAmino(object: QueryTotalSupplyRequestAmino): QueryTotalSupplyRequest;
     toAmino(message: QueryTotalSupplyRequest): QueryTotalSupplyRequestAmino;
@@ -623,8 +623,8 @@ export declare const QueryTotalSupplyRequest: {
 };
 export declare const QueryTotalSupplyResponse: {
     typeUrl: string;
-    encode(message: QueryTotalSupplyResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyResponse;
+    encode(message: QueryTotalSupplyResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalSupplyResponse;
     fromPartial(object: Partial<QueryTotalSupplyResponse>): QueryTotalSupplyResponse;
     fromAmino(object: QueryTotalSupplyResponseAmino): QueryTotalSupplyResponse;
     toAmino(message: QueryTotalSupplyResponse): QueryTotalSupplyResponseAmino;
@@ -636,8 +636,8 @@ export declare const QueryTotalSupplyResponse: {
 };
 export declare const QuerySupplyOfRequest: {
     typeUrl: string;
-    encode(message: QuerySupplyOfRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfRequest;
+    encode(message: QuerySupplyOfRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySupplyOfRequest;
     fromPartial(object: Partial<QuerySupplyOfRequest>): QuerySupplyOfRequest;
     fromAmino(object: QuerySupplyOfRequestAmino): QuerySupplyOfRequest;
     toAmino(message: QuerySupplyOfRequest): QuerySupplyOfRequestAmino;
@@ -649,8 +649,8 @@ export declare const QuerySupplyOfRequest: {
 };
 export declare const QuerySupplyOfResponse: {
     typeUrl: string;
-    encode(message: QuerySupplyOfResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfResponse;
+    encode(message: QuerySupplyOfResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySupplyOfResponse;
     fromPartial(object: Partial<QuerySupplyOfResponse>): QuerySupplyOfResponse;
     fromAmino(object: QuerySupplyOfResponseAmino): QuerySupplyOfResponse;
     toAmino(message: QuerySupplyOfResponse): QuerySupplyOfResponseAmino;
@@ -662,8 +662,8 @@ export declare const QuerySupplyOfResponse: {
 };
 export declare const QueryTotalSupplyWithoutOffsetRequest: {
     typeUrl: string;
-    encode(message: QueryTotalSupplyWithoutOffsetRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyWithoutOffsetRequest;
+    encode(message: QueryTotalSupplyWithoutOffsetRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalSupplyWithoutOffsetRequest;
     fromPartial(object: Partial<QueryTotalSupplyWithoutOffsetRequest>): QueryTotalSupplyWithoutOffsetRequest;
     fromAmino(object: QueryTotalSupplyWithoutOffsetRequestAmino): QueryTotalSupplyWithoutOffsetRequest;
     toAmino(message: QueryTotalSupplyWithoutOffsetRequest): QueryTotalSupplyWithoutOffsetRequestAmino;
@@ -675,8 +675,8 @@ export declare const QueryTotalSupplyWithoutOffsetRequest: {
 };
 export declare const QueryTotalSupplyWithoutOffsetResponse: {
     typeUrl: string;
-    encode(message: QueryTotalSupplyWithoutOffsetResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSupplyWithoutOffsetResponse;
+    encode(message: QueryTotalSupplyWithoutOffsetResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalSupplyWithoutOffsetResponse;
     fromPartial(object: Partial<QueryTotalSupplyWithoutOffsetResponse>): QueryTotalSupplyWithoutOffsetResponse;
     fromAmino(object: QueryTotalSupplyWithoutOffsetResponseAmino): QueryTotalSupplyWithoutOffsetResponse;
     toAmino(message: QueryTotalSupplyWithoutOffsetResponse): QueryTotalSupplyWithoutOffsetResponseAmino;
@@ -688,8 +688,8 @@ export declare const QueryTotalSupplyWithoutOffsetResponse: {
 };
 export declare const QuerySupplyOfWithoutOffsetRequest: {
     typeUrl: string;
-    encode(message: QuerySupplyOfWithoutOffsetRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfWithoutOffsetRequest;
+    encode(message: QuerySupplyOfWithoutOffsetRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySupplyOfWithoutOffsetRequest;
     fromPartial(object: Partial<QuerySupplyOfWithoutOffsetRequest>): QuerySupplyOfWithoutOffsetRequest;
     fromAmino(object: QuerySupplyOfWithoutOffsetRequestAmino): QuerySupplyOfWithoutOffsetRequest;
     toAmino(message: QuerySupplyOfWithoutOffsetRequest): QuerySupplyOfWithoutOffsetRequestAmino;
@@ -701,8 +701,8 @@ export declare const QuerySupplyOfWithoutOffsetRequest: {
 };
 export declare const QuerySupplyOfWithoutOffsetResponse: {
     typeUrl: string;
-    encode(message: QuerySupplyOfWithoutOffsetResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyOfWithoutOffsetResponse;
+    encode(message: QuerySupplyOfWithoutOffsetResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySupplyOfWithoutOffsetResponse;
     fromPartial(object: Partial<QuerySupplyOfWithoutOffsetResponse>): QuerySupplyOfWithoutOffsetResponse;
     fromAmino(object: QuerySupplyOfWithoutOffsetResponseAmino): QuerySupplyOfWithoutOffsetResponse;
     toAmino(message: QuerySupplyOfWithoutOffsetResponse): QuerySupplyOfWithoutOffsetResponseAmino;
@@ -714,8 +714,8 @@ export declare const QuerySupplyOfWithoutOffsetResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
-    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -727,8 +727,8 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
@@ -740,8 +740,8 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryDenomsMetadataRequest: {
     typeUrl: string;
-    encode(message: QueryDenomsMetadataRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsMetadataRequest;
+    encode(message: QueryDenomsMetadataRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomsMetadataRequest;
     fromPartial(object: Partial<QueryDenomsMetadataRequest>): QueryDenomsMetadataRequest;
     fromAmino(object: QueryDenomsMetadataRequestAmino): QueryDenomsMetadataRequest;
     toAmino(message: QueryDenomsMetadataRequest): QueryDenomsMetadataRequestAmino;
@@ -753,8 +753,8 @@ export declare const QueryDenomsMetadataRequest: {
 };
 export declare const QueryDenomsMetadataResponse: {
     typeUrl: string;
-    encode(message: QueryDenomsMetadataResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsMetadataResponse;
+    encode(message: QueryDenomsMetadataResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomsMetadataResponse;
     fromPartial(object: Partial<QueryDenomsMetadataResponse>): QueryDenomsMetadataResponse;
     fromAmino(object: QueryDenomsMetadataResponseAmino): QueryDenomsMetadataResponse;
     toAmino(message: QueryDenomsMetadataResponse): QueryDenomsMetadataResponseAmino;
@@ -766,8 +766,8 @@ export declare const QueryDenomsMetadataResponse: {
 };
 export declare const QueryDenomMetadataRequest: {
     typeUrl: string;
-    encode(message: QueryDenomMetadataRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomMetadataRequest;
+    encode(message: QueryDenomMetadataRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomMetadataRequest;
     fromPartial(object: Partial<QueryDenomMetadataRequest>): QueryDenomMetadataRequest;
     fromAmino(object: QueryDenomMetadataRequestAmino): QueryDenomMetadataRequest;
     toAmino(message: QueryDenomMetadataRequest): QueryDenomMetadataRequestAmino;
@@ -779,8 +779,8 @@ export declare const QueryDenomMetadataRequest: {
 };
 export declare const QueryDenomMetadataResponse: {
     typeUrl: string;
-    encode(message: QueryDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomMetadataResponse;
+    encode(message: QueryDenomMetadataResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomMetadataResponse;
     fromPartial(object: Partial<QueryDenomMetadataResponse>): QueryDenomMetadataResponse;
     fromAmino(object: QueryDenomMetadataResponseAmino): QueryDenomMetadataResponse;
     toAmino(message: QueryDenomMetadataResponse): QueryDenomMetadataResponseAmino;
@@ -792,8 +792,8 @@ export declare const QueryDenomMetadataResponse: {
 };
 export declare const QueryBaseDenomRequest: {
     typeUrl: string;
-    encode(message: QueryBaseDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomRequest;
+    encode(message: QueryBaseDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryBaseDenomRequest;
     fromPartial(object: Partial<QueryBaseDenomRequest>): QueryBaseDenomRequest;
     fromAmino(object: QueryBaseDenomRequestAmino): QueryBaseDenomRequest;
     toAmino(message: QueryBaseDenomRequest): QueryBaseDenomRequestAmino;
@@ -805,8 +805,8 @@ export declare const QueryBaseDenomRequest: {
 };
 export declare const QueryBaseDenomResponse: {
     typeUrl: string;
-    encode(message: QueryBaseDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomResponse;
+    encode(message: QueryBaseDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryBaseDenomResponse;
     fromPartial(object: Partial<QueryBaseDenomResponse>): QueryBaseDenomResponse;
     fromAmino(object: QueryBaseDenomResponseAmino): QueryBaseDenomResponse;
     toAmino(message: QueryBaseDenomResponse): QueryBaseDenomResponseAmino;

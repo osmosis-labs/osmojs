@@ -1,6 +1,5 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** AccessType permission types */
 export declare enum AccessType {
     /** ACCESS_TYPE_UNSPECIFIED - AccessTypeUnspecified placeholder for empty value */
@@ -94,7 +93,7 @@ export interface AccessConfigSDKType {
 }
 /** Params defines the set of wasm parameters. */
 export interface Params {
-    codeUploadAccess?: AccessConfig;
+    codeUploadAccess: AccessConfig;
     instantiateDefaultPermission: AccessType;
 }
 export interface ParamsProtoMsg {
@@ -112,7 +111,7 @@ export interface ParamsAminoMsg {
 }
 /** Params defines the set of wasm parameters. */
 export interface ParamsSDKType {
-    code_upload_access?: AccessConfigSDKType;
+    code_upload_access: AccessConfigSDKType;
     instantiate_default_permission: AccessType;
 }
 /** CodeInfo is data for the uploaded contract WASM code */
@@ -122,7 +121,7 @@ export interface CodeInfo {
     /** Creator address who initially stored the code */
     creator: string;
     /** InstantiateConfig access control to apply on contract creation, optional */
-    instantiateConfig?: AccessConfig;
+    instantiateConfig: AccessConfig;
 }
 export interface CodeInfoProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.CodeInfo";
@@ -145,12 +144,12 @@ export interface CodeInfoAminoMsg {
 export interface CodeInfoSDKType {
     code_hash: Uint8Array;
     creator: string;
-    instantiate_config?: AccessConfigSDKType;
+    instantiate_config: AccessConfigSDKType;
 }
 /** ContractInfo stores a WASM contract instance */
 export interface ContractInfo {
     /** CodeID is the reference to the stored Wasm code */
-    codeId: Long;
+    codeId: bigint;
     /** Creator address who initially instantiated the contract */
     creator: string;
     /** Admin is an optional address that can execute migrations */
@@ -158,19 +157,19 @@ export interface ContractInfo {
     /** Label is optional metadata to be stored with a contract instance. */
     label: string;
     /** Created Tx position when the contract was instantiated. */
-    created?: AbsoluteTxPosition;
+    created: AbsoluteTxPosition;
     ibcPortId: string;
     /**
      * Extension is an extension point to store custom metadata within the
      * persistence model.
      */
-    extension?: (Any) | undefined;
+    extension: (Any) | undefined;
 }
 export interface ContractInfoProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.ContractInfo";
     value: Uint8Array;
 }
-export type ContractInfoEncoded = Omit<ContractInfo, "extension"> & {
+export declare type ContractInfoEncoded = Omit<ContractInfo, "extension"> & {
     /**
      * Extension is an extension point to store custom metadata within the
      * persistence model.
@@ -202,21 +201,21 @@ export interface ContractInfoAminoMsg {
 }
 /** ContractInfo stores a WASM contract instance */
 export interface ContractInfoSDKType {
-    code_id: Long;
+    code_id: bigint;
     creator: string;
     admin: string;
     label: string;
-    created?: AbsoluteTxPositionSDKType;
+    created: AbsoluteTxPositionSDKType;
     ibc_port_id: string;
-    extension?: AnySDKType | undefined;
+    extension: AnySDKType | undefined;
 }
 /** ContractCodeHistoryEntry metadata to a contract. */
 export interface ContractCodeHistoryEntry {
     operation: ContractCodeHistoryOperationType;
     /** CodeID is the reference to the stored WASM code */
-    codeId: Long;
+    codeId: bigint;
     /** Updated Tx position when the operation was executed. */
-    updated?: AbsoluteTxPosition;
+    updated: AbsoluteTxPosition;
     msg: Uint8Array;
 }
 export interface ContractCodeHistoryEntryProtoMsg {
@@ -239,8 +238,8 @@ export interface ContractCodeHistoryEntryAminoMsg {
 /** ContractCodeHistoryEntry metadata to a contract. */
 export interface ContractCodeHistoryEntrySDKType {
     operation: ContractCodeHistoryOperationType;
-    code_id: Long;
-    updated?: AbsoluteTxPositionSDKType;
+    code_id: bigint;
+    updated: AbsoluteTxPositionSDKType;
     msg: Uint8Array;
 }
 /**
@@ -249,12 +248,12 @@ export interface ContractCodeHistoryEntrySDKType {
  */
 export interface AbsoluteTxPosition {
     /** BlockHeight is the block the contract was created at */
-    blockHeight: Long;
+    blockHeight: bigint;
     /**
      * TxIndex is a monotonic counter within the block (actual transaction index,
      * or gas consumed)
      */
-    txIndex: Long;
+    txIndex: bigint;
 }
 export interface AbsoluteTxPositionProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.AbsoluteTxPosition";
@@ -282,8 +281,8 @@ export interface AbsoluteTxPositionAminoMsg {
  * ordering of transactions.
  */
 export interface AbsoluteTxPositionSDKType {
-    block_height: Long;
-    tx_index: Long;
+    block_height: bigint;
+    tx_index: bigint;
 }
 /** Model is a struct that holds a KV pair */
 export interface Model {
@@ -314,8 +313,8 @@ export interface ModelSDKType {
 }
 export declare const AccessTypeParam: {
     typeUrl: string;
-    encode(message: AccessTypeParam, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccessTypeParam;
+    encode(message: AccessTypeParam, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccessTypeParam;
     fromPartial(object: Partial<AccessTypeParam>): AccessTypeParam;
     fromAmino(object: AccessTypeParamAmino): AccessTypeParam;
     toAmino(message: AccessTypeParam): AccessTypeParamAmino;
@@ -327,8 +326,8 @@ export declare const AccessTypeParam: {
 };
 export declare const AccessConfig: {
     typeUrl: string;
-    encode(message: AccessConfig, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccessConfig;
+    encode(message: AccessConfig, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccessConfig;
     fromPartial(object: Partial<AccessConfig>): AccessConfig;
     fromAmino(object: AccessConfigAmino): AccessConfig;
     toAmino(message: AccessConfig): AccessConfigAmino;
@@ -340,8 +339,8 @@ export declare const AccessConfig: {
 };
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -353,8 +352,8 @@ export declare const Params: {
 };
 export declare const CodeInfo: {
     typeUrl: string;
-    encode(message: CodeInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CodeInfo;
+    encode(message: CodeInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CodeInfo;
     fromPartial(object: Partial<CodeInfo>): CodeInfo;
     fromAmino(object: CodeInfoAmino): CodeInfo;
     toAmino(message: CodeInfo): CodeInfoAmino;
@@ -366,8 +365,8 @@ export declare const CodeInfo: {
 };
 export declare const ContractInfo: {
     typeUrl: string;
-    encode(message: ContractInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ContractInfo;
+    encode(message: ContractInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ContractInfo;
     fromPartial(object: Partial<ContractInfo>): ContractInfo;
     fromAmino(object: ContractInfoAmino): ContractInfo;
     toAmino(message: ContractInfo): ContractInfoAmino;
@@ -379,8 +378,8 @@ export declare const ContractInfo: {
 };
 export declare const ContractCodeHistoryEntry: {
     typeUrl: string;
-    encode(message: ContractCodeHistoryEntry, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ContractCodeHistoryEntry;
+    encode(message: ContractCodeHistoryEntry, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ContractCodeHistoryEntry;
     fromPartial(object: Partial<ContractCodeHistoryEntry>): ContractCodeHistoryEntry;
     fromAmino(object: ContractCodeHistoryEntryAmino): ContractCodeHistoryEntry;
     toAmino(message: ContractCodeHistoryEntry): ContractCodeHistoryEntryAmino;
@@ -392,8 +391,8 @@ export declare const ContractCodeHistoryEntry: {
 };
 export declare const AbsoluteTxPosition: {
     typeUrl: string;
-    encode(message: AbsoluteTxPosition, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AbsoluteTxPosition;
+    encode(message: AbsoluteTxPosition, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AbsoluteTxPosition;
     fromPartial(object: Partial<AbsoluteTxPosition>): AbsoluteTxPosition;
     fromAmino(object: AbsoluteTxPositionAmino): AbsoluteTxPosition;
     toAmino(message: AbsoluteTxPosition): AbsoluteTxPositionAmino;
@@ -405,8 +404,8 @@ export declare const AbsoluteTxPosition: {
 };
 export declare const Model: {
     typeUrl: string;
-    encode(message: Model, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Model;
+    encode(message: Model, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Model;
     fromPartial(object: Partial<Model>): Model;
     fromAmino(object: ModelAmino): Model;
     toAmino(message: Model): ModelAmino;
@@ -416,6 +415,6 @@ export declare const Model: {
     toProto(message: Model): Uint8Array;
     toProtoMsg(message: Model): ModelProtoMsg;
 };
-export declare const Cosmwasm_wasmv1ContractInfoExtension_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Any;
+export declare const Cosmwasm_wasmv1ContractInfoExtension_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
 export declare const Cosmwasm_wasmv1ContractInfoExtension_FromAmino: (content: AnyAmino) => Any;
 export declare const Cosmwasm_wasmv1ContractInfoExtension_ToAmino: (content: Any) => AnyAmino;

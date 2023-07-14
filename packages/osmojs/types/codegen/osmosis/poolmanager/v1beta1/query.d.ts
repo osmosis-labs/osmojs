@@ -12,8 +12,7 @@ import { PoolSDKType as Pool2SDKType } from "../../gamm/pool-models/balancer/bal
 import { Pool as Pool3 } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../../gamm/pool-models/stableswap/stableswap_pool";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** =============================== Params */
 export interface ParamsRequest {
 }
@@ -32,7 +31,7 @@ export interface ParamsRequestAminoMsg {
 export interface ParamsRequestSDKType {
 }
 export interface ParamsResponse {
-    params?: Params;
+    params: Params;
 }
 export interface ParamsResponseProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.ParamsResponse";
@@ -46,11 +45,11 @@ export interface ParamsResponseAminoMsg {
     value: ParamsResponseAmino;
 }
 export interface ParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 /** =============================== EstimateSwapExactAmountIn */
 export interface EstimateSwapExactAmountInRequest {
-    poolId: Long;
+    poolId: bigint;
     tokenIn: string;
     routes: SwapAmountInRoute[];
 }
@@ -70,12 +69,12 @@ export interface EstimateSwapExactAmountInRequestAminoMsg {
 }
 /** =============================== EstimateSwapExactAmountIn */
 export interface EstimateSwapExactAmountInRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     token_in: string;
     routes: SwapAmountInRouteSDKType[];
 }
 export interface EstimateSinglePoolSwapExactAmountInRequest {
-    poolId: Long;
+    poolId: bigint;
     tokenIn: string;
     tokenOutDenom: string;
 }
@@ -93,7 +92,7 @@ export interface EstimateSinglePoolSwapExactAmountInRequestAminoMsg {
     value: EstimateSinglePoolSwapExactAmountInRequestAmino;
 }
 export interface EstimateSinglePoolSwapExactAmountInRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     token_in: string;
     token_out_denom: string;
 }
@@ -116,7 +115,7 @@ export interface EstimateSwapExactAmountInResponseSDKType {
 }
 /** =============================== EstimateSwapExactAmountOut */
 export interface EstimateSwapExactAmountOutRequest {
-    poolId: Long;
+    poolId: bigint;
     routes: SwapAmountOutRoute[];
     tokenOut: string;
 }
@@ -136,12 +135,12 @@ export interface EstimateSwapExactAmountOutRequestAminoMsg {
 }
 /** =============================== EstimateSwapExactAmountOut */
 export interface EstimateSwapExactAmountOutRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     routes: SwapAmountOutRouteSDKType[];
     token_out: string;
 }
 export interface EstimateSinglePoolSwapExactAmountOutRequest {
-    poolId: Long;
+    poolId: bigint;
     tokenInDenom: string;
     tokenOut: string;
 }
@@ -159,7 +158,7 @@ export interface EstimateSinglePoolSwapExactAmountOutRequestAminoMsg {
     value: EstimateSinglePoolSwapExactAmountOutRequestAmino;
 }
 export interface EstimateSinglePoolSwapExactAmountOutRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     token_in_denom: string;
     token_out: string;
 }
@@ -198,7 +197,7 @@ export interface NumPoolsRequestAminoMsg {
 export interface NumPoolsRequestSDKType {
 }
 export interface NumPoolsResponse {
-    numPools: Long;
+    numPools: bigint;
 }
 export interface NumPoolsResponseProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.NumPoolsResponse";
@@ -212,11 +211,11 @@ export interface NumPoolsResponseAminoMsg {
     value: NumPoolsResponseAmino;
 }
 export interface NumPoolsResponseSDKType {
-    num_pools: Long;
+    num_pools: bigint;
 }
 /** =============================== Pool */
 export interface PoolRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface PoolRequestProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.PoolRequest";
@@ -232,16 +231,16 @@ export interface PoolRequestAminoMsg {
 }
 /** =============================== Pool */
 export interface PoolRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface PoolResponse {
-    pool?: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
+    pool: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
 }
 export interface PoolResponseProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.PoolResponse";
     value: Uint8Array;
 }
-export type PoolResponseEncoded = Omit<PoolResponse, "pool"> & {
+export declare type PoolResponseEncoded = Omit<PoolResponse, "pool"> & {
     pool?: Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg | undefined;
 };
 export interface PoolResponseAmino {
@@ -252,7 +251,7 @@ export interface PoolResponseAminoMsg {
     value: PoolResponseAmino;
 }
 export interface PoolResponseSDKType {
-    pool?: Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType | undefined;
+    pool: Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType | undefined;
 }
 /** =============================== AllPools */
 export interface AllPoolsRequest {
@@ -278,7 +277,7 @@ export interface AllPoolsResponseProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.AllPoolsResponse";
     value: Uint8Array;
 }
-export type AllPoolsResponseEncoded = Omit<AllPoolsResponse, "pools"> & {
+export declare type AllPoolsResponseEncoded = Omit<AllPoolsResponse, "pools"> & {
     pools: (Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg)[];
 };
 export interface AllPoolsResponseAmino {
@@ -296,7 +295,7 @@ export interface AllPoolsResponseSDKType {
  * query.
  */
 export interface SpotPriceRequest {
-    poolId: Long;
+    poolId: bigint;
     baseAssetDenom: string;
     quoteAssetDenom: string;
 }
@@ -322,7 +321,7 @@ export interface SpotPriceRequestAminoMsg {
  * query.
  */
 export interface SpotPriceRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     base_asset_denom: string;
     quote_asset_denom: string;
 }
@@ -359,7 +358,7 @@ export interface SpotPriceResponseSDKType {
 }
 /** =============================== TotalPoolLiquidity */
 export interface TotalPoolLiquidityRequest {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface TotalPoolLiquidityRequestProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.TotalPoolLiquidityRequest";
@@ -375,7 +374,7 @@ export interface TotalPoolLiquidityRequestAminoMsg {
 }
 /** =============================== TotalPoolLiquidity */
 export interface TotalPoolLiquidityRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export interface TotalPoolLiquidityResponse {
     liquidity: Coin[];
@@ -430,8 +429,8 @@ export interface TotalLiquidityResponseSDKType {
 }
 export declare const ParamsRequest: {
     typeUrl: string;
-    encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
+    encode(_: ParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
     fromAmino(_: ParamsRequestAmino): ParamsRequest;
     toAmino(_: ParamsRequest): ParamsRequestAmino;
@@ -443,8 +442,8 @@ export declare const ParamsRequest: {
 };
 export declare const ParamsResponse: {
     typeUrl: string;
-    encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
+    encode(message: ParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;
     fromAmino(object: ParamsResponseAmino): ParamsResponse;
     toAmino(message: ParamsResponse): ParamsResponseAmino;
@@ -456,8 +455,8 @@ export declare const ParamsResponse: {
 };
 export declare const EstimateSwapExactAmountInRequest: {
     typeUrl: string;
-    encode(message: EstimateSwapExactAmountInRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountInRequest;
+    encode(message: EstimateSwapExactAmountInRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EstimateSwapExactAmountInRequest;
     fromPartial(object: Partial<EstimateSwapExactAmountInRequest>): EstimateSwapExactAmountInRequest;
     fromAmino(object: EstimateSwapExactAmountInRequestAmino): EstimateSwapExactAmountInRequest;
     toAmino(message: EstimateSwapExactAmountInRequest): EstimateSwapExactAmountInRequestAmino;
@@ -469,8 +468,8 @@ export declare const EstimateSwapExactAmountInRequest: {
 };
 export declare const EstimateSinglePoolSwapExactAmountInRequest: {
     typeUrl: string;
-    encode(message: EstimateSinglePoolSwapExactAmountInRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSinglePoolSwapExactAmountInRequest;
+    encode(message: EstimateSinglePoolSwapExactAmountInRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EstimateSinglePoolSwapExactAmountInRequest;
     fromPartial(object: Partial<EstimateSinglePoolSwapExactAmountInRequest>): EstimateSinglePoolSwapExactAmountInRequest;
     fromAmino(object: EstimateSinglePoolSwapExactAmountInRequestAmino): EstimateSinglePoolSwapExactAmountInRequest;
     toAmino(message: EstimateSinglePoolSwapExactAmountInRequest): EstimateSinglePoolSwapExactAmountInRequestAmino;
@@ -482,8 +481,8 @@ export declare const EstimateSinglePoolSwapExactAmountInRequest: {
 };
 export declare const EstimateSwapExactAmountInResponse: {
     typeUrl: string;
-    encode(message: EstimateSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountInResponse;
+    encode(message: EstimateSwapExactAmountInResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EstimateSwapExactAmountInResponse;
     fromPartial(object: Partial<EstimateSwapExactAmountInResponse>): EstimateSwapExactAmountInResponse;
     fromAmino(object: EstimateSwapExactAmountInResponseAmino): EstimateSwapExactAmountInResponse;
     toAmino(message: EstimateSwapExactAmountInResponse): EstimateSwapExactAmountInResponseAmino;
@@ -495,8 +494,8 @@ export declare const EstimateSwapExactAmountInResponse: {
 };
 export declare const EstimateSwapExactAmountOutRequest: {
     typeUrl: string;
-    encode(message: EstimateSwapExactAmountOutRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountOutRequest;
+    encode(message: EstimateSwapExactAmountOutRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EstimateSwapExactAmountOutRequest;
     fromPartial(object: Partial<EstimateSwapExactAmountOutRequest>): EstimateSwapExactAmountOutRequest;
     fromAmino(object: EstimateSwapExactAmountOutRequestAmino): EstimateSwapExactAmountOutRequest;
     toAmino(message: EstimateSwapExactAmountOutRequest): EstimateSwapExactAmountOutRequestAmino;
@@ -508,8 +507,8 @@ export declare const EstimateSwapExactAmountOutRequest: {
 };
 export declare const EstimateSinglePoolSwapExactAmountOutRequest: {
     typeUrl: string;
-    encode(message: EstimateSinglePoolSwapExactAmountOutRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSinglePoolSwapExactAmountOutRequest;
+    encode(message: EstimateSinglePoolSwapExactAmountOutRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EstimateSinglePoolSwapExactAmountOutRequest;
     fromPartial(object: Partial<EstimateSinglePoolSwapExactAmountOutRequest>): EstimateSinglePoolSwapExactAmountOutRequest;
     fromAmino(object: EstimateSinglePoolSwapExactAmountOutRequestAmino): EstimateSinglePoolSwapExactAmountOutRequest;
     toAmino(message: EstimateSinglePoolSwapExactAmountOutRequest): EstimateSinglePoolSwapExactAmountOutRequestAmino;
@@ -521,8 +520,8 @@ export declare const EstimateSinglePoolSwapExactAmountOutRequest: {
 };
 export declare const EstimateSwapExactAmountOutResponse: {
     typeUrl: string;
-    encode(message: EstimateSwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountOutResponse;
+    encode(message: EstimateSwapExactAmountOutResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EstimateSwapExactAmountOutResponse;
     fromPartial(object: Partial<EstimateSwapExactAmountOutResponse>): EstimateSwapExactAmountOutResponse;
     fromAmino(object: EstimateSwapExactAmountOutResponseAmino): EstimateSwapExactAmountOutResponse;
     toAmino(message: EstimateSwapExactAmountOutResponse): EstimateSwapExactAmountOutResponseAmino;
@@ -534,8 +533,8 @@ export declare const EstimateSwapExactAmountOutResponse: {
 };
 export declare const NumPoolsRequest: {
     typeUrl: string;
-    encode(_: NumPoolsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): NumPoolsRequest;
+    encode(_: NumPoolsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): NumPoolsRequest;
     fromPartial(_: Partial<NumPoolsRequest>): NumPoolsRequest;
     fromAmino(_: NumPoolsRequestAmino): NumPoolsRequest;
     toAmino(_: NumPoolsRequest): NumPoolsRequestAmino;
@@ -547,8 +546,8 @@ export declare const NumPoolsRequest: {
 };
 export declare const NumPoolsResponse: {
     typeUrl: string;
-    encode(message: NumPoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): NumPoolsResponse;
+    encode(message: NumPoolsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): NumPoolsResponse;
     fromPartial(object: Partial<NumPoolsResponse>): NumPoolsResponse;
     fromAmino(object: NumPoolsResponseAmino): NumPoolsResponse;
     toAmino(message: NumPoolsResponse): NumPoolsResponseAmino;
@@ -560,8 +559,8 @@ export declare const NumPoolsResponse: {
 };
 export declare const PoolRequest: {
     typeUrl: string;
-    encode(message: PoolRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolRequest;
+    encode(message: PoolRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolRequest;
     fromPartial(object: Partial<PoolRequest>): PoolRequest;
     fromAmino(object: PoolRequestAmino): PoolRequest;
     toAmino(message: PoolRequest): PoolRequestAmino;
@@ -573,8 +572,8 @@ export declare const PoolRequest: {
 };
 export declare const PoolResponse: {
     typeUrl: string;
-    encode(message: PoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolResponse;
+    encode(message: PoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolResponse;
     fromPartial(object: Partial<PoolResponse>): PoolResponse;
     fromAmino(object: PoolResponseAmino): PoolResponse;
     toAmino(message: PoolResponse): PoolResponseAmino;
@@ -586,8 +585,8 @@ export declare const PoolResponse: {
 };
 export declare const AllPoolsRequest: {
     typeUrl: string;
-    encode(_: AllPoolsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AllPoolsRequest;
+    encode(_: AllPoolsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AllPoolsRequest;
     fromPartial(_: Partial<AllPoolsRequest>): AllPoolsRequest;
     fromAmino(_: AllPoolsRequestAmino): AllPoolsRequest;
     toAmino(_: AllPoolsRequest): AllPoolsRequestAmino;
@@ -599,8 +598,8 @@ export declare const AllPoolsRequest: {
 };
 export declare const AllPoolsResponse: {
     typeUrl: string;
-    encode(message: AllPoolsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AllPoolsResponse;
+    encode(message: AllPoolsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AllPoolsResponse;
     fromPartial(object: Partial<AllPoolsResponse>): AllPoolsResponse;
     fromAmino(object: AllPoolsResponseAmino): AllPoolsResponse;
     toAmino(message: AllPoolsResponse): AllPoolsResponseAmino;
@@ -612,8 +611,8 @@ export declare const AllPoolsResponse: {
 };
 export declare const SpotPriceRequest: {
     typeUrl: string;
-    encode(message: SpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SpotPriceRequest;
+    encode(message: SpotPriceRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SpotPriceRequest;
     fromPartial(object: Partial<SpotPriceRequest>): SpotPriceRequest;
     fromAmino(object: SpotPriceRequestAmino): SpotPriceRequest;
     toAmino(message: SpotPriceRequest): SpotPriceRequestAmino;
@@ -625,8 +624,8 @@ export declare const SpotPriceRequest: {
 };
 export declare const SpotPriceResponse: {
     typeUrl: string;
-    encode(message: SpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SpotPriceResponse;
+    encode(message: SpotPriceResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SpotPriceResponse;
     fromPartial(object: Partial<SpotPriceResponse>): SpotPriceResponse;
     fromAmino(object: SpotPriceResponseAmino): SpotPriceResponse;
     toAmino(message: SpotPriceResponse): SpotPriceResponseAmino;
@@ -638,8 +637,8 @@ export declare const SpotPriceResponse: {
 };
 export declare const TotalPoolLiquidityRequest: {
     typeUrl: string;
-    encode(message: TotalPoolLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TotalPoolLiquidityRequest;
+    encode(message: TotalPoolLiquidityRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TotalPoolLiquidityRequest;
     fromPartial(object: Partial<TotalPoolLiquidityRequest>): TotalPoolLiquidityRequest;
     fromAmino(object: TotalPoolLiquidityRequestAmino): TotalPoolLiquidityRequest;
     toAmino(message: TotalPoolLiquidityRequest): TotalPoolLiquidityRequestAmino;
@@ -651,8 +650,8 @@ export declare const TotalPoolLiquidityRequest: {
 };
 export declare const TotalPoolLiquidityResponse: {
     typeUrl: string;
-    encode(message: TotalPoolLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TotalPoolLiquidityResponse;
+    encode(message: TotalPoolLiquidityResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TotalPoolLiquidityResponse;
     fromPartial(object: Partial<TotalPoolLiquidityResponse>): TotalPoolLiquidityResponse;
     fromAmino(object: TotalPoolLiquidityResponseAmino): TotalPoolLiquidityResponse;
     toAmino(message: TotalPoolLiquidityResponse): TotalPoolLiquidityResponseAmino;
@@ -664,8 +663,8 @@ export declare const TotalPoolLiquidityResponse: {
 };
 export declare const TotalLiquidityRequest: {
     typeUrl: string;
-    encode(_: TotalLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TotalLiquidityRequest;
+    encode(_: TotalLiquidityRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TotalLiquidityRequest;
     fromPartial(_: Partial<TotalLiquidityRequest>): TotalLiquidityRequest;
     fromAmino(_: TotalLiquidityRequestAmino): TotalLiquidityRequest;
     toAmino(_: TotalLiquidityRequest): TotalLiquidityRequestAmino;
@@ -677,8 +676,8 @@ export declare const TotalLiquidityRequest: {
 };
 export declare const TotalLiquidityResponse: {
     typeUrl: string;
-    encode(message: TotalLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TotalLiquidityResponse;
+    encode(message: TotalLiquidityResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TotalLiquidityResponse;
     fromPartial(object: Partial<TotalLiquidityResponse>): TotalLiquidityResponse;
     fromAmino(object: TotalLiquidityResponseAmino): TotalLiquidityResponse;
     toAmino(message: TotalLiquidityResponse): TotalLiquidityResponseAmino;
@@ -688,6 +687,6 @@ export declare const TotalLiquidityResponse: {
     toProto(message: TotalLiquidityResponse): Uint8Array;
     toProtoMsg(message: TotalLiquidityResponse): TotalLiquidityResponseProtoMsg;
 };
-export declare const PoolI_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
+export declare const PoolI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
 export declare const PoolI_FromAmino: (content: AnyAmino) => Any;
 export declare const PoolI_ToAmino: (content: Any) => AnyAmino;

@@ -1,15 +1,14 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Gauge, GaugeAmino, GaugeSDKType } from "./gauge";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * GenesisState defines the incentives module's various parameters when first
  * initialized
  */
 export interface GenesisState {
     /** params are all the parameters of the module */
-    params?: Params;
+    params: Params;
     /** gauges are all gauges that should exist at genesis */
     gauges: Gauge[];
     /**
@@ -21,7 +20,7 @@ export interface GenesisState {
      * last_gauge_id is what the gauge number will increment from when creating
      * the next gauge after genesis
      */
-    lastGaugeId: Long;
+    lastGaugeId: bigint;
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/osmosis.incentives.GenesisState";
@@ -56,15 +55,15 @@ export interface GenesisStateAminoMsg {
  * initialized
  */
 export interface GenesisStateSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
     gauges: GaugeSDKType[];
     lockable_durations: DurationSDKType[];
-    last_gauge_id: Long;
+    last_gauge_id: bigint;
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

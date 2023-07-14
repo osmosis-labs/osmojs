@@ -1,18 +1,17 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType } from "../lockup/lock";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * Position contains position's id, address, pool id, lower tick, upper tick
  * join time, and liquidity.
  */
 export interface Position {
-    positionId: Long;
+    positionId: bigint;
     address: string;
-    poolId: Long;
-    lowerTick: Long;
-    upperTick: Long;
-    joinTime?: Date;
+    poolId: bigint;
+    lowerTick: bigint;
+    upperTick: bigint;
+    joinTime: Date;
     liquidity: string;
 }
 export interface PositionProtoMsg {
@@ -41,12 +40,12 @@ export interface PositionAminoMsg {
  * join time, and liquidity.
  */
 export interface PositionSDKType {
-    position_id: Long;
+    position_id: bigint;
     address: string;
-    pool_id: Long;
-    lower_tick: Long;
-    upper_tick: Long;
-    join_time?: Date;
+    pool_id: bigint;
+    lower_tick: bigint;
+    upper_tick: bigint;
+    join_time: Date;
     liquidity: string;
 }
 /**
@@ -59,9 +58,9 @@ export interface PositionSDKType {
  * now
  */
 export interface FullPositionBreakdown {
-    position?: Position;
-    asset0?: Coin;
-    asset1?: Coin;
+    position: Position;
+    asset0: Coin;
+    asset1: Coin;
     claimableSpreadRewards: Coin[];
     claimableIncentives: Coin[];
     forfeitedIncentives: Coin[];
@@ -101,16 +100,16 @@ export interface FullPositionBreakdownAminoMsg {
  * now
  */
 export interface FullPositionBreakdownSDKType {
-    position?: PositionSDKType;
-    asset0?: CoinSDKType;
-    asset1?: CoinSDKType;
+    position: PositionSDKType;
+    asset0: CoinSDKType;
+    asset1: CoinSDKType;
     claimable_spread_rewards: CoinSDKType[];
     claimable_incentives: CoinSDKType[];
     forfeited_incentives: CoinSDKType[];
 }
 export interface PositionWithPeriodLock {
-    position?: Position;
-    locks?: PeriodLock;
+    position: Position;
+    locks: PeriodLock;
 }
 export interface PositionWithPeriodLockProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithPeriodLock";
@@ -125,13 +124,13 @@ export interface PositionWithPeriodLockAminoMsg {
     value: PositionWithPeriodLockAmino;
 }
 export interface PositionWithPeriodLockSDKType {
-    position?: PositionSDKType;
-    locks?: PeriodLockSDKType;
+    position: PositionSDKType;
+    locks: PeriodLockSDKType;
 }
 export declare const Position: {
     typeUrl: string;
-    encode(message: Position, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Position;
+    encode(message: Position, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Position;
     fromPartial(object: Partial<Position>): Position;
     fromAmino(object: PositionAmino): Position;
     toAmino(message: Position): PositionAmino;
@@ -143,8 +142,8 @@ export declare const Position: {
 };
 export declare const FullPositionBreakdown: {
     typeUrl: string;
-    encode(message: FullPositionBreakdown, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FullPositionBreakdown;
+    encode(message: FullPositionBreakdown, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FullPositionBreakdown;
     fromPartial(object: Partial<FullPositionBreakdown>): FullPositionBreakdown;
     fromAmino(object: FullPositionBreakdownAmino): FullPositionBreakdown;
     toAmino(message: FullPositionBreakdown): FullPositionBreakdownAmino;
@@ -156,8 +155,8 @@ export declare const FullPositionBreakdown: {
 };
 export declare const PositionWithPeriodLock: {
     typeUrl: string;
-    encode(message: PositionWithPeriodLock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PositionWithPeriodLock;
+    encode(message: PositionWithPeriodLock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PositionWithPeriodLock;
     fromPartial(object: Partial<PositionWithPeriodLock>): PositionWithPeriodLock;
     fromAmino(object: PositionWithPeriodLockAmino): PositionWithPeriodLock;
     toAmino(message: PositionWithPeriodLock): PositionWithPeriodLockAmino;

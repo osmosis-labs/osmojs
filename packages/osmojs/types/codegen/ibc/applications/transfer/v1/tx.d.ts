@@ -1,7 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
  * ICS20 enabled chains. See ICS Spec here:
@@ -13,7 +12,7 @@ export interface MsgTransfer {
     /** the channel by which the packet will be sent */
     sourceChannel: string;
     /** the tokens to be transferred */
-    token?: Coin;
+    token: Coin;
     /** the sender address */
     sender: string;
     /** the recipient address on the destination chain */
@@ -22,12 +21,12 @@ export interface MsgTransfer {
      * Timeout height relative to the current block height.
      * The timeout is disabled when set to 0.
      */
-    timeoutHeight?: Height;
+    timeoutHeight: Height;
     /**
      * Timeout timestamp in absolute nanoseconds since unix epoch.
      * The timeout is disabled when set to 0.
      */
-    timeoutTimestamp: Long;
+    timeoutTimestamp: bigint;
     /** optional memo */
     memo: string;
 }
@@ -76,17 +75,17 @@ export interface MsgTransferAminoMsg {
 export interface MsgTransferSDKType {
     source_port: string;
     source_channel: string;
-    token?: CoinSDKType;
+    token: CoinSDKType;
     sender: string;
     receiver: string;
-    timeout_height?: HeightSDKType;
-    timeout_timestamp: Long;
+    timeout_height: HeightSDKType;
+    timeout_timestamp: bigint;
     memo: string;
 }
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 export interface MsgTransferResponse {
     /** sequence number of the transfer packet sent */
-    sequence: Long;
+    sequence: bigint;
 }
 export interface MsgTransferResponseProtoMsg {
     typeUrl: "/ibc.applications.transfer.v1.MsgTransferResponse";
@@ -103,12 +102,12 @@ export interface MsgTransferResponseAminoMsg {
 }
 /** MsgTransferResponse defines the Msg/Transfer response type. */
 export interface MsgTransferResponseSDKType {
-    sequence: Long;
+    sequence: bigint;
 }
 export declare const MsgTransfer: {
     typeUrl: string;
-    encode(message: MsgTransfer, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransfer;
+    encode(message: MsgTransfer, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgTransfer;
     fromPartial(object: Partial<MsgTransfer>): MsgTransfer;
     fromAmino(object: MsgTransferAmino): MsgTransfer;
     toAmino(message: MsgTransfer): MsgTransferAmino;
@@ -120,8 +119,8 @@ export declare const MsgTransfer: {
 };
 export declare const MsgTransferResponse: {
     typeUrl: string;
-    encode(message: MsgTransferResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponse;
+    encode(message: MsgTransferResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgTransferResponse;
     fromPartial(object: Partial<MsgTransferResponse>): MsgTransferResponse;
     fromAmino(object: MsgTransferResponseAmino): MsgTransferResponse;
     toAmino(message: MsgTransferResponse): MsgTransferResponseAmino;

@@ -2,8 +2,7 @@ import { Header, HeaderAmino, HeaderSDKType } from "../types/types";
 import { ProofOps, ProofOpsAmino, ProofOpsSDKType } from "../crypto/proof";
 import { EvidenceParams, EvidenceParamsAmino, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsAmino, ValidatorParamsSDKType, VersionParams, VersionParamsAmino, VersionParamsSDKType } from "../types/params";
 import { PublicKey, PublicKeyAmino, PublicKeySDKType } from "../crypto/keys";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export declare enum CheckTxType {
     NEW = 0,
     RECHECK = 1,
@@ -153,8 +152,8 @@ export interface RequestFlushSDKType {
 }
 export interface RequestInfo {
     version: string;
-    blockVersion: Long;
-    p2pVersion: Long;
+    blockVersion: bigint;
+    p2pVersion: bigint;
 }
 export interface RequestInfoProtoMsg {
     typeUrl: "/tendermint.abci.RequestInfo";
@@ -171,8 +170,8 @@ export interface RequestInfoAminoMsg {
 }
 export interface RequestInfoSDKType {
     version: string;
-    block_version: Long;
-    p2p_version: Long;
+    block_version: bigint;
+    p2p_version: bigint;
 }
 /** nondeterministic */
 export interface RequestSetOption {
@@ -198,12 +197,12 @@ export interface RequestSetOptionSDKType {
     value: string;
 }
 export interface RequestInitChain {
-    time?: Date;
+    time: Date;
     chainId: string;
-    consensusParams?: ConsensusParams;
+    consensusParams: ConsensusParams;
     validators: ValidatorUpdate[];
     appStateBytes: Uint8Array;
-    initialHeight: Long;
+    initialHeight: bigint;
 }
 export interface RequestInitChainProtoMsg {
     typeUrl: "/tendermint.abci.RequestInitChain";
@@ -222,17 +221,17 @@ export interface RequestInitChainAminoMsg {
     value: RequestInitChainAmino;
 }
 export interface RequestInitChainSDKType {
-    time?: Date;
+    time: Date;
     chain_id: string;
-    consensus_params?: ConsensusParamsSDKType;
+    consensus_params: ConsensusParamsSDKType;
     validators: ValidatorUpdateSDKType[];
     app_state_bytes: Uint8Array;
-    initial_height: Long;
+    initial_height: bigint;
 }
 export interface RequestQuery {
     data: Uint8Array;
     path: string;
-    height: Long;
+    height: bigint;
     prove: boolean;
 }
 export interface RequestQueryProtoMsg {
@@ -252,13 +251,13 @@ export interface RequestQueryAminoMsg {
 export interface RequestQuerySDKType {
     data: Uint8Array;
     path: string;
-    height: Long;
+    height: bigint;
     prove: boolean;
 }
 export interface RequestBeginBlock {
     hash: Uint8Array;
-    header?: Header;
-    lastCommitInfo?: LastCommitInfo;
+    header: Header;
+    lastCommitInfo: LastCommitInfo;
     byzantineValidators: Evidence[];
 }
 export interface RequestBeginBlockProtoMsg {
@@ -277,8 +276,8 @@ export interface RequestBeginBlockAminoMsg {
 }
 export interface RequestBeginBlockSDKType {
     hash: Uint8Array;
-    header?: HeaderSDKType;
-    last_commit_info?: LastCommitInfoSDKType;
+    header: HeaderSDKType;
+    last_commit_info: LastCommitInfoSDKType;
     byzantine_validators: EvidenceSDKType[];
 }
 export interface RequestCheckTx {
@@ -319,7 +318,7 @@ export interface RequestDeliverTxSDKType {
     tx: Uint8Array;
 }
 export interface RequestEndBlock {
-    height: Long;
+    height: bigint;
 }
 export interface RequestEndBlockProtoMsg {
     typeUrl: "/tendermint.abci.RequestEndBlock";
@@ -333,7 +332,7 @@ export interface RequestEndBlockAminoMsg {
     value: RequestEndBlockAmino;
 }
 export interface RequestEndBlockSDKType {
-    height: Long;
+    height: bigint;
 }
 export interface RequestCommit {
 }
@@ -369,7 +368,7 @@ export interface RequestListSnapshotsSDKType {
 /** offers a snapshot to the application */
 export interface RequestOfferSnapshot {
     /** snapshot offered by peers */
-    snapshot?: Snapshot;
+    snapshot: Snapshot;
     /** light client-verified app hash for snapshot height */
     appHash: Uint8Array;
 }
@@ -390,12 +389,12 @@ export interface RequestOfferSnapshotAminoMsg {
 }
 /** offers a snapshot to the application */
 export interface RequestOfferSnapshotSDKType {
-    snapshot?: SnapshotSDKType;
+    snapshot: SnapshotSDKType;
     app_hash: Uint8Array;
 }
 /** loads a snapshot chunk */
 export interface RequestLoadSnapshotChunk {
-    height: Long;
+    height: bigint;
     format: number;
     chunk: number;
 }
@@ -415,7 +414,7 @@ export interface RequestLoadSnapshotChunkAminoMsg {
 }
 /** loads a snapshot chunk */
 export interface RequestLoadSnapshotChunkSDKType {
-    height: Long;
+    height: bigint;
     format: number;
     chunk: number;
 }
@@ -561,8 +560,8 @@ export interface ResponseFlushSDKType {
 export interface ResponseInfo {
     data: string;
     version: string;
-    appVersion: Long;
-    lastBlockHeight: Long;
+    appVersion: bigint;
+    lastBlockHeight: bigint;
     lastBlockAppHash: Uint8Array;
 }
 export interface ResponseInfoProtoMsg {
@@ -583,8 +582,8 @@ export interface ResponseInfoAminoMsg {
 export interface ResponseInfoSDKType {
     data: string;
     version: string;
-    app_version: Long;
-    last_block_height: Long;
+    app_version: bigint;
+    last_block_height: bigint;
     last_block_app_hash: Uint8Array;
 }
 /** nondeterministic */
@@ -616,7 +615,7 @@ export interface ResponseSetOptionSDKType {
     info: string;
 }
 export interface ResponseInitChain {
-    consensusParams?: ConsensusParams;
+    consensusParams: ConsensusParams;
     validators: ValidatorUpdate[];
     appHash: Uint8Array;
 }
@@ -634,7 +633,7 @@ export interface ResponseInitChainAminoMsg {
     value: ResponseInitChainAmino;
 }
 export interface ResponseInitChainSDKType {
-    consensus_params?: ConsensusParamsSDKType;
+    consensus_params: ConsensusParamsSDKType;
     validators: ValidatorUpdateSDKType[];
     app_hash: Uint8Array;
 }
@@ -644,11 +643,11 @@ export interface ResponseQuery {
     log: string;
     /** nondeterministic */
     info: string;
-    index: Long;
+    index: bigint;
     key: Uint8Array;
     value: Uint8Array;
-    proofOps?: ProofOps;
-    height: Long;
+    proofOps: ProofOps;
+    height: bigint;
     codespace: string;
 }
 export interface ResponseQueryProtoMsg {
@@ -676,11 +675,11 @@ export interface ResponseQuerySDKType {
     code: number;
     log: string;
     info: string;
-    index: Long;
+    index: bigint;
     key: Uint8Array;
     value: Uint8Array;
-    proof_ops?: ProofOpsSDKType;
-    height: Long;
+    proof_ops: ProofOpsSDKType;
+    height: bigint;
     codespace: string;
 }
 export interface ResponseBeginBlock {
@@ -707,8 +706,8 @@ export interface ResponseCheckTx {
     log: string;
     /** nondeterministic */
     info: string;
-    gasWanted: Long;
-    gasUsed: Long;
+    gasWanted: bigint;
+    gasUsed: bigint;
     events: Event[];
     codespace: string;
 }
@@ -737,8 +736,8 @@ export interface ResponseCheckTxSDKType {
     data: Uint8Array;
     log: string;
     info: string;
-    gas_wanted: Long;
-    gas_used: Long;
+    gas_wanted: bigint;
+    gas_used: bigint;
     events: EventSDKType[];
     codespace: string;
 }
@@ -749,8 +748,8 @@ export interface ResponseDeliverTx {
     log: string;
     /** nondeterministic */
     info: string;
-    gasWanted: Long;
-    gasUsed: Long;
+    gasWanted: bigint;
+    gasUsed: bigint;
     events: Event[];
     codespace: string;
 }
@@ -779,14 +778,14 @@ export interface ResponseDeliverTxSDKType {
     data: Uint8Array;
     log: string;
     info: string;
-    gas_wanted: Long;
-    gas_used: Long;
+    gas_wanted: bigint;
+    gas_used: bigint;
     events: EventSDKType[];
     codespace: string;
 }
 export interface ResponseEndBlock {
     validatorUpdates: ValidatorUpdate[];
-    consensusParamUpdates?: ConsensusParams;
+    consensusParamUpdates: ConsensusParams;
     events: Event[];
 }
 export interface ResponseEndBlockProtoMsg {
@@ -804,13 +803,13 @@ export interface ResponseEndBlockAminoMsg {
 }
 export interface ResponseEndBlockSDKType {
     validator_updates: ValidatorUpdateSDKType[];
-    consensus_param_updates?: ConsensusParamsSDKType;
+    consensus_param_updates: ConsensusParamsSDKType;
     events: EventSDKType[];
 }
 export interface ResponseCommit {
     /** reserve 1 */
     data: Uint8Array;
-    retainHeight: Long;
+    retainHeight: bigint;
 }
 export interface ResponseCommitProtoMsg {
     typeUrl: "/tendermint.abci.ResponseCommit";
@@ -827,7 +826,7 @@ export interface ResponseCommitAminoMsg {
 }
 export interface ResponseCommitSDKType {
     data: Uint8Array;
-    retain_height: Long;
+    retain_height: bigint;
 }
 export interface ResponseListSnapshots {
     snapshots: Snapshot[];
@@ -912,10 +911,10 @@ export interface ResponseApplySnapshotChunkSDKType {
  * that can be adjusted by the abci app
  */
 export interface ConsensusParams {
-    block?: BlockParams;
-    evidence?: EvidenceParams;
-    validator?: ValidatorParams;
-    version?: VersionParams;
+    block: BlockParams;
+    evidence: EvidenceParams;
+    validator: ValidatorParams;
+    version: VersionParams;
 }
 export interface ConsensusParamsProtoMsg {
     typeUrl: "/tendermint.abci.ConsensusParams";
@@ -940,17 +939,17 @@ export interface ConsensusParamsAminoMsg {
  * that can be adjusted by the abci app
  */
 export interface ConsensusParamsSDKType {
-    block?: BlockParamsSDKType;
-    evidence?: EvidenceParamsSDKType;
-    validator?: ValidatorParamsSDKType;
-    version?: VersionParamsSDKType;
+    block: BlockParamsSDKType;
+    evidence: EvidenceParamsSDKType;
+    validator: ValidatorParamsSDKType;
+    version: VersionParamsSDKType;
 }
 /** BlockParams contains limits on the block size. */
 export interface BlockParams {
     /** Note: must be greater than 0 */
-    maxBytes: Long;
+    maxBytes: bigint;
     /** Note: must be greater or equal to -1 */
-    maxGas: Long;
+    maxGas: bigint;
 }
 export interface BlockParamsProtoMsg {
     typeUrl: "/tendermint.abci.BlockParams";
@@ -969,8 +968,8 @@ export interface BlockParamsAminoMsg {
 }
 /** BlockParams contains limits on the block size. */
 export interface BlockParamsSDKType {
-    max_bytes: Long;
-    max_gas: Long;
+    max_bytes: bigint;
+    max_gas: bigint;
 }
 export interface LastCommitInfo {
     round: number;
@@ -1061,10 +1060,10 @@ export interface EventAttributeSDKType {
  * One usage is indexing transaction results.
  */
 export interface TxResult {
-    height: Long;
+    height: bigint;
     index: number;
     tx: Uint8Array;
-    result?: ResponseDeliverTx;
+    result: ResponseDeliverTx;
 }
 export interface TxResultProtoMsg {
     typeUrl: "/tendermint.abci.TxResult";
@@ -1091,10 +1090,10 @@ export interface TxResultAminoMsg {
  * One usage is indexing transaction results.
  */
 export interface TxResultSDKType {
-    height: Long;
+    height: bigint;
     index: number;
     tx: Uint8Array;
-    result?: ResponseDeliverTxSDKType;
+    result: ResponseDeliverTxSDKType;
 }
 /** Validator */
 export interface Validator {
@@ -1104,7 +1103,7 @@ export interface Validator {
      */
     address: Uint8Array;
     /** The voting power */
-    power: Long;
+    power: bigint;
 }
 export interface ValidatorProtoMsg {
     typeUrl: "/tendermint.abci.Validator";
@@ -1127,12 +1126,12 @@ export interface ValidatorAminoMsg {
 /** Validator */
 export interface ValidatorSDKType {
     address: Uint8Array;
-    power: Long;
+    power: bigint;
 }
 /** ValidatorUpdate */
 export interface ValidatorUpdate {
-    pubKey?: PublicKey;
-    power: Long;
+    pubKey: PublicKey;
+    power: bigint;
 }
 export interface ValidatorUpdateProtoMsg {
     typeUrl: "/tendermint.abci.ValidatorUpdate";
@@ -1149,12 +1148,12 @@ export interface ValidatorUpdateAminoMsg {
 }
 /** ValidatorUpdate */
 export interface ValidatorUpdateSDKType {
-    pub_key?: PublicKeySDKType;
-    power: Long;
+    pub_key: PublicKeySDKType;
+    power: bigint;
 }
 /** VoteInfo */
 export interface VoteInfo {
-    validator?: Validator;
+    validator: Validator;
     signedLastBlock: boolean;
 }
 export interface VoteInfoProtoMsg {
@@ -1172,23 +1171,23 @@ export interface VoteInfoAminoMsg {
 }
 /** VoteInfo */
 export interface VoteInfoSDKType {
-    validator?: ValidatorSDKType;
+    validator: ValidatorSDKType;
     signed_last_block: boolean;
 }
 export interface Evidence {
     type: EvidenceType;
     /** The offending validator */
-    validator?: Validator;
+    validator: Validator;
     /** The height when the offense occurred */
-    height: Long;
+    height: bigint;
     /** The corresponding time where the offense occurred */
-    time?: Date;
+    time: Date;
     /**
      * Total voting power of the validator set in case the ABCI application does
      * not store historical validators.
      * https://github.com/tendermint/tendermint/issues/4581
      */
-    totalVotingPower: Long;
+    totalVotingPower: bigint;
 }
 export interface EvidenceProtoMsg {
     typeUrl: "/tendermint.abci.Evidence";
@@ -1215,14 +1214,14 @@ export interface EvidenceAminoMsg {
 }
 export interface EvidenceSDKType {
     type: EvidenceType;
-    validator?: ValidatorSDKType;
-    height: Long;
-    time?: Date;
-    total_voting_power: Long;
+    validator: ValidatorSDKType;
+    height: bigint;
+    time: Date;
+    total_voting_power: bigint;
 }
 export interface Snapshot {
     /** The height at which the snapshot was taken */
-    height: Long;
+    height: bigint;
     /** The application-specific snapshot format */
     format: number;
     /** Number of chunks in the snapshot */
@@ -1253,7 +1252,7 @@ export interface SnapshotAminoMsg {
     value: SnapshotAmino;
 }
 export interface SnapshotSDKType {
-    height: Long;
+    height: bigint;
     format: number;
     chunks: number;
     hash: Uint8Array;
@@ -1261,8 +1260,8 @@ export interface SnapshotSDKType {
 }
 export declare const Request: {
     typeUrl: string;
-    encode(message: Request, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Request;
+    encode(message: Request, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Request;
     fromPartial(object: Partial<Request>): Request;
     fromAmino(object: RequestAmino): Request;
     toAmino(message: Request): RequestAmino;
@@ -1273,8 +1272,8 @@ export declare const Request: {
 };
 export declare const RequestEcho: {
     typeUrl: string;
-    encode(message: RequestEcho, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestEcho;
+    encode(message: RequestEcho, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestEcho;
     fromPartial(object: Partial<RequestEcho>): RequestEcho;
     fromAmino(object: RequestEchoAmino): RequestEcho;
     toAmino(message: RequestEcho): RequestEchoAmino;
@@ -1285,8 +1284,8 @@ export declare const RequestEcho: {
 };
 export declare const RequestFlush: {
     typeUrl: string;
-    encode(_: RequestFlush, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestFlush;
+    encode(_: RequestFlush, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestFlush;
     fromPartial(_: Partial<RequestFlush>): RequestFlush;
     fromAmino(_: RequestFlushAmino): RequestFlush;
     toAmino(_: RequestFlush): RequestFlushAmino;
@@ -1297,8 +1296,8 @@ export declare const RequestFlush: {
 };
 export declare const RequestInfo: {
     typeUrl: string;
-    encode(message: RequestInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestInfo;
+    encode(message: RequestInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestInfo;
     fromPartial(object: Partial<RequestInfo>): RequestInfo;
     fromAmino(object: RequestInfoAmino): RequestInfo;
     toAmino(message: RequestInfo): RequestInfoAmino;
@@ -1309,8 +1308,8 @@ export declare const RequestInfo: {
 };
 export declare const RequestSetOption: {
     typeUrl: string;
-    encode(message: RequestSetOption, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestSetOption;
+    encode(message: RequestSetOption, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestSetOption;
     fromPartial(object: Partial<RequestSetOption>): RequestSetOption;
     fromAmino(object: RequestSetOptionAmino): RequestSetOption;
     toAmino(message: RequestSetOption): RequestSetOptionAmino;
@@ -1321,8 +1320,8 @@ export declare const RequestSetOption: {
 };
 export declare const RequestInitChain: {
     typeUrl: string;
-    encode(message: RequestInitChain, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestInitChain;
+    encode(message: RequestInitChain, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestInitChain;
     fromPartial(object: Partial<RequestInitChain>): RequestInitChain;
     fromAmino(object: RequestInitChainAmino): RequestInitChain;
     toAmino(message: RequestInitChain): RequestInitChainAmino;
@@ -1333,8 +1332,8 @@ export declare const RequestInitChain: {
 };
 export declare const RequestQuery: {
     typeUrl: string;
-    encode(message: RequestQuery, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestQuery;
+    encode(message: RequestQuery, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestQuery;
     fromPartial(object: Partial<RequestQuery>): RequestQuery;
     fromAmino(object: RequestQueryAmino): RequestQuery;
     toAmino(message: RequestQuery): RequestQueryAmino;
@@ -1345,8 +1344,8 @@ export declare const RequestQuery: {
 };
 export declare const RequestBeginBlock: {
     typeUrl: string;
-    encode(message: RequestBeginBlock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestBeginBlock;
+    encode(message: RequestBeginBlock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestBeginBlock;
     fromPartial(object: Partial<RequestBeginBlock>): RequestBeginBlock;
     fromAmino(object: RequestBeginBlockAmino): RequestBeginBlock;
     toAmino(message: RequestBeginBlock): RequestBeginBlockAmino;
@@ -1357,8 +1356,8 @@ export declare const RequestBeginBlock: {
 };
 export declare const RequestCheckTx: {
     typeUrl: string;
-    encode(message: RequestCheckTx, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestCheckTx;
+    encode(message: RequestCheckTx, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestCheckTx;
     fromPartial(object: Partial<RequestCheckTx>): RequestCheckTx;
     fromAmino(object: RequestCheckTxAmino): RequestCheckTx;
     toAmino(message: RequestCheckTx): RequestCheckTxAmino;
@@ -1369,8 +1368,8 @@ export declare const RequestCheckTx: {
 };
 export declare const RequestDeliverTx: {
     typeUrl: string;
-    encode(message: RequestDeliverTx, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestDeliverTx;
+    encode(message: RequestDeliverTx, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestDeliverTx;
     fromPartial(object: Partial<RequestDeliverTx>): RequestDeliverTx;
     fromAmino(object: RequestDeliverTxAmino): RequestDeliverTx;
     toAmino(message: RequestDeliverTx): RequestDeliverTxAmino;
@@ -1381,8 +1380,8 @@ export declare const RequestDeliverTx: {
 };
 export declare const RequestEndBlock: {
     typeUrl: string;
-    encode(message: RequestEndBlock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestEndBlock;
+    encode(message: RequestEndBlock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestEndBlock;
     fromPartial(object: Partial<RequestEndBlock>): RequestEndBlock;
     fromAmino(object: RequestEndBlockAmino): RequestEndBlock;
     toAmino(message: RequestEndBlock): RequestEndBlockAmino;
@@ -1393,8 +1392,8 @@ export declare const RequestEndBlock: {
 };
 export declare const RequestCommit: {
     typeUrl: string;
-    encode(_: RequestCommit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestCommit;
+    encode(_: RequestCommit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestCommit;
     fromPartial(_: Partial<RequestCommit>): RequestCommit;
     fromAmino(_: RequestCommitAmino): RequestCommit;
     toAmino(_: RequestCommit): RequestCommitAmino;
@@ -1405,8 +1404,8 @@ export declare const RequestCommit: {
 };
 export declare const RequestListSnapshots: {
     typeUrl: string;
-    encode(_: RequestListSnapshots, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestListSnapshots;
+    encode(_: RequestListSnapshots, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestListSnapshots;
     fromPartial(_: Partial<RequestListSnapshots>): RequestListSnapshots;
     fromAmino(_: RequestListSnapshotsAmino): RequestListSnapshots;
     toAmino(_: RequestListSnapshots): RequestListSnapshotsAmino;
@@ -1417,8 +1416,8 @@ export declare const RequestListSnapshots: {
 };
 export declare const RequestOfferSnapshot: {
     typeUrl: string;
-    encode(message: RequestOfferSnapshot, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestOfferSnapshot;
+    encode(message: RequestOfferSnapshot, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestOfferSnapshot;
     fromPartial(object: Partial<RequestOfferSnapshot>): RequestOfferSnapshot;
     fromAmino(object: RequestOfferSnapshotAmino): RequestOfferSnapshot;
     toAmino(message: RequestOfferSnapshot): RequestOfferSnapshotAmino;
@@ -1429,8 +1428,8 @@ export declare const RequestOfferSnapshot: {
 };
 export declare const RequestLoadSnapshotChunk: {
     typeUrl: string;
-    encode(message: RequestLoadSnapshotChunk, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestLoadSnapshotChunk;
+    encode(message: RequestLoadSnapshotChunk, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestLoadSnapshotChunk;
     fromPartial(object: Partial<RequestLoadSnapshotChunk>): RequestLoadSnapshotChunk;
     fromAmino(object: RequestLoadSnapshotChunkAmino): RequestLoadSnapshotChunk;
     toAmino(message: RequestLoadSnapshotChunk): RequestLoadSnapshotChunkAmino;
@@ -1441,8 +1440,8 @@ export declare const RequestLoadSnapshotChunk: {
 };
 export declare const RequestApplySnapshotChunk: {
     typeUrl: string;
-    encode(message: RequestApplySnapshotChunk, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestApplySnapshotChunk;
+    encode(message: RequestApplySnapshotChunk, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RequestApplySnapshotChunk;
     fromPartial(object: Partial<RequestApplySnapshotChunk>): RequestApplySnapshotChunk;
     fromAmino(object: RequestApplySnapshotChunkAmino): RequestApplySnapshotChunk;
     toAmino(message: RequestApplySnapshotChunk): RequestApplySnapshotChunkAmino;
@@ -1453,8 +1452,8 @@ export declare const RequestApplySnapshotChunk: {
 };
 export declare const Response: {
     typeUrl: string;
-    encode(message: Response, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Response;
+    encode(message: Response, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Response;
     fromPartial(object: Partial<Response>): Response;
     fromAmino(object: ResponseAmino): Response;
     toAmino(message: Response): ResponseAmino;
@@ -1465,8 +1464,8 @@ export declare const Response: {
 };
 export declare const ResponseException: {
     typeUrl: string;
-    encode(message: ResponseException, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseException;
+    encode(message: ResponseException, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseException;
     fromPartial(object: Partial<ResponseException>): ResponseException;
     fromAmino(object: ResponseExceptionAmino): ResponseException;
     toAmino(message: ResponseException): ResponseExceptionAmino;
@@ -1477,8 +1476,8 @@ export declare const ResponseException: {
 };
 export declare const ResponseEcho: {
     typeUrl: string;
-    encode(message: ResponseEcho, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseEcho;
+    encode(message: ResponseEcho, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseEcho;
     fromPartial(object: Partial<ResponseEcho>): ResponseEcho;
     fromAmino(object: ResponseEchoAmino): ResponseEcho;
     toAmino(message: ResponseEcho): ResponseEchoAmino;
@@ -1489,8 +1488,8 @@ export declare const ResponseEcho: {
 };
 export declare const ResponseFlush: {
     typeUrl: string;
-    encode(_: ResponseFlush, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseFlush;
+    encode(_: ResponseFlush, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseFlush;
     fromPartial(_: Partial<ResponseFlush>): ResponseFlush;
     fromAmino(_: ResponseFlushAmino): ResponseFlush;
     toAmino(_: ResponseFlush): ResponseFlushAmino;
@@ -1501,8 +1500,8 @@ export declare const ResponseFlush: {
 };
 export declare const ResponseInfo: {
     typeUrl: string;
-    encode(message: ResponseInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseInfo;
+    encode(message: ResponseInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseInfo;
     fromPartial(object: Partial<ResponseInfo>): ResponseInfo;
     fromAmino(object: ResponseInfoAmino): ResponseInfo;
     toAmino(message: ResponseInfo): ResponseInfoAmino;
@@ -1513,8 +1512,8 @@ export declare const ResponseInfo: {
 };
 export declare const ResponseSetOption: {
     typeUrl: string;
-    encode(message: ResponseSetOption, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseSetOption;
+    encode(message: ResponseSetOption, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseSetOption;
     fromPartial(object: Partial<ResponseSetOption>): ResponseSetOption;
     fromAmino(object: ResponseSetOptionAmino): ResponseSetOption;
     toAmino(message: ResponseSetOption): ResponseSetOptionAmino;
@@ -1525,8 +1524,8 @@ export declare const ResponseSetOption: {
 };
 export declare const ResponseInitChain: {
     typeUrl: string;
-    encode(message: ResponseInitChain, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseInitChain;
+    encode(message: ResponseInitChain, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseInitChain;
     fromPartial(object: Partial<ResponseInitChain>): ResponseInitChain;
     fromAmino(object: ResponseInitChainAmino): ResponseInitChain;
     toAmino(message: ResponseInitChain): ResponseInitChainAmino;
@@ -1537,8 +1536,8 @@ export declare const ResponseInitChain: {
 };
 export declare const ResponseQuery: {
     typeUrl: string;
-    encode(message: ResponseQuery, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseQuery;
+    encode(message: ResponseQuery, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseQuery;
     fromPartial(object: Partial<ResponseQuery>): ResponseQuery;
     fromAmino(object: ResponseQueryAmino): ResponseQuery;
     toAmino(message: ResponseQuery): ResponseQueryAmino;
@@ -1549,8 +1548,8 @@ export declare const ResponseQuery: {
 };
 export declare const ResponseBeginBlock: {
     typeUrl: string;
-    encode(message: ResponseBeginBlock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseBeginBlock;
+    encode(message: ResponseBeginBlock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseBeginBlock;
     fromPartial(object: Partial<ResponseBeginBlock>): ResponseBeginBlock;
     fromAmino(object: ResponseBeginBlockAmino): ResponseBeginBlock;
     toAmino(message: ResponseBeginBlock): ResponseBeginBlockAmino;
@@ -1561,8 +1560,8 @@ export declare const ResponseBeginBlock: {
 };
 export declare const ResponseCheckTx: {
     typeUrl: string;
-    encode(message: ResponseCheckTx, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseCheckTx;
+    encode(message: ResponseCheckTx, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseCheckTx;
     fromPartial(object: Partial<ResponseCheckTx>): ResponseCheckTx;
     fromAmino(object: ResponseCheckTxAmino): ResponseCheckTx;
     toAmino(message: ResponseCheckTx): ResponseCheckTxAmino;
@@ -1573,8 +1572,8 @@ export declare const ResponseCheckTx: {
 };
 export declare const ResponseDeliverTx: {
     typeUrl: string;
-    encode(message: ResponseDeliverTx, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseDeliverTx;
+    encode(message: ResponseDeliverTx, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseDeliverTx;
     fromPartial(object: Partial<ResponseDeliverTx>): ResponseDeliverTx;
     fromAmino(object: ResponseDeliverTxAmino): ResponseDeliverTx;
     toAmino(message: ResponseDeliverTx): ResponseDeliverTxAmino;
@@ -1585,8 +1584,8 @@ export declare const ResponseDeliverTx: {
 };
 export declare const ResponseEndBlock: {
     typeUrl: string;
-    encode(message: ResponseEndBlock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseEndBlock;
+    encode(message: ResponseEndBlock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseEndBlock;
     fromPartial(object: Partial<ResponseEndBlock>): ResponseEndBlock;
     fromAmino(object: ResponseEndBlockAmino): ResponseEndBlock;
     toAmino(message: ResponseEndBlock): ResponseEndBlockAmino;
@@ -1597,8 +1596,8 @@ export declare const ResponseEndBlock: {
 };
 export declare const ResponseCommit: {
     typeUrl: string;
-    encode(message: ResponseCommit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseCommit;
+    encode(message: ResponseCommit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseCommit;
     fromPartial(object: Partial<ResponseCommit>): ResponseCommit;
     fromAmino(object: ResponseCommitAmino): ResponseCommit;
     toAmino(message: ResponseCommit): ResponseCommitAmino;
@@ -1609,8 +1608,8 @@ export declare const ResponseCommit: {
 };
 export declare const ResponseListSnapshots: {
     typeUrl: string;
-    encode(message: ResponseListSnapshots, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseListSnapshots;
+    encode(message: ResponseListSnapshots, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseListSnapshots;
     fromPartial(object: Partial<ResponseListSnapshots>): ResponseListSnapshots;
     fromAmino(object: ResponseListSnapshotsAmino): ResponseListSnapshots;
     toAmino(message: ResponseListSnapshots): ResponseListSnapshotsAmino;
@@ -1621,8 +1620,8 @@ export declare const ResponseListSnapshots: {
 };
 export declare const ResponseOfferSnapshot: {
     typeUrl: string;
-    encode(message: ResponseOfferSnapshot, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseOfferSnapshot;
+    encode(message: ResponseOfferSnapshot, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseOfferSnapshot;
     fromPartial(object: Partial<ResponseOfferSnapshot>): ResponseOfferSnapshot;
     fromAmino(object: ResponseOfferSnapshotAmino): ResponseOfferSnapshot;
     toAmino(message: ResponseOfferSnapshot): ResponseOfferSnapshotAmino;
@@ -1633,8 +1632,8 @@ export declare const ResponseOfferSnapshot: {
 };
 export declare const ResponseLoadSnapshotChunk: {
     typeUrl: string;
-    encode(message: ResponseLoadSnapshotChunk, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseLoadSnapshotChunk;
+    encode(message: ResponseLoadSnapshotChunk, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseLoadSnapshotChunk;
     fromPartial(object: Partial<ResponseLoadSnapshotChunk>): ResponseLoadSnapshotChunk;
     fromAmino(object: ResponseLoadSnapshotChunkAmino): ResponseLoadSnapshotChunk;
     toAmino(message: ResponseLoadSnapshotChunk): ResponseLoadSnapshotChunkAmino;
@@ -1645,8 +1644,8 @@ export declare const ResponseLoadSnapshotChunk: {
 };
 export declare const ResponseApplySnapshotChunk: {
     typeUrl: string;
-    encode(message: ResponseApplySnapshotChunk, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseApplySnapshotChunk;
+    encode(message: ResponseApplySnapshotChunk, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ResponseApplySnapshotChunk;
     fromPartial(object: Partial<ResponseApplySnapshotChunk>): ResponseApplySnapshotChunk;
     fromAmino(object: ResponseApplySnapshotChunkAmino): ResponseApplySnapshotChunk;
     toAmino(message: ResponseApplySnapshotChunk): ResponseApplySnapshotChunkAmino;
@@ -1657,8 +1656,8 @@ export declare const ResponseApplySnapshotChunk: {
 };
 export declare const ConsensusParams: {
     typeUrl: string;
-    encode(message: ConsensusParams, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusParams;
+    encode(message: ConsensusParams, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ConsensusParams;
     fromPartial(object: Partial<ConsensusParams>): ConsensusParams;
     fromAmino(object: ConsensusParamsAmino): ConsensusParams;
     toAmino(message: ConsensusParams): ConsensusParamsAmino;
@@ -1669,8 +1668,8 @@ export declare const ConsensusParams: {
 };
 export declare const BlockParams: {
     typeUrl: string;
-    encode(message: BlockParams, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BlockParams;
+    encode(message: BlockParams, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BlockParams;
     fromPartial(object: Partial<BlockParams>): BlockParams;
     fromAmino(object: BlockParamsAmino): BlockParams;
     toAmino(message: BlockParams): BlockParamsAmino;
@@ -1681,8 +1680,8 @@ export declare const BlockParams: {
 };
 export declare const LastCommitInfo: {
     typeUrl: string;
-    encode(message: LastCommitInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LastCommitInfo;
+    encode(message: LastCommitInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LastCommitInfo;
     fromPartial(object: Partial<LastCommitInfo>): LastCommitInfo;
     fromAmino(object: LastCommitInfoAmino): LastCommitInfo;
     toAmino(message: LastCommitInfo): LastCommitInfoAmino;
@@ -1693,8 +1692,8 @@ export declare const LastCommitInfo: {
 };
 export declare const Event: {
     typeUrl: string;
-    encode(message: Event, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Event;
+    encode(message: Event, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Event;
     fromPartial(object: Partial<Event>): Event;
     fromAmino(object: EventAmino): Event;
     toAmino(message: Event): EventAmino;
@@ -1705,8 +1704,8 @@ export declare const Event: {
 };
 export declare const EventAttribute: {
     typeUrl: string;
-    encode(message: EventAttribute, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EventAttribute;
+    encode(message: EventAttribute, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EventAttribute;
     fromPartial(object: Partial<EventAttribute>): EventAttribute;
     fromAmino(object: EventAttributeAmino): EventAttribute;
     toAmino(message: EventAttribute): EventAttributeAmino;
@@ -1717,8 +1716,8 @@ export declare const EventAttribute: {
 };
 export declare const TxResult: {
     typeUrl: string;
-    encode(message: TxResult, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TxResult;
+    encode(message: TxResult, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TxResult;
     fromPartial(object: Partial<TxResult>): TxResult;
     fromAmino(object: TxResultAmino): TxResult;
     toAmino(message: TxResult): TxResultAmino;
@@ -1729,8 +1728,8 @@ export declare const TxResult: {
 };
 export declare const Validator: {
     typeUrl: string;
-    encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
+    encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Validator;
     fromPartial(object: Partial<Validator>): Validator;
     fromAmino(object: ValidatorAmino): Validator;
     toAmino(message: Validator): ValidatorAmino;
@@ -1741,8 +1740,8 @@ export declare const Validator: {
 };
 export declare const ValidatorUpdate: {
     typeUrl: string;
-    encode(message: ValidatorUpdate, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorUpdate;
+    encode(message: ValidatorUpdate, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorUpdate;
     fromPartial(object: Partial<ValidatorUpdate>): ValidatorUpdate;
     fromAmino(object: ValidatorUpdateAmino): ValidatorUpdate;
     toAmino(message: ValidatorUpdate): ValidatorUpdateAmino;
@@ -1753,8 +1752,8 @@ export declare const ValidatorUpdate: {
 };
 export declare const VoteInfo: {
     typeUrl: string;
-    encode(message: VoteInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): VoteInfo;
+    encode(message: VoteInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): VoteInfo;
     fromPartial(object: Partial<VoteInfo>): VoteInfo;
     fromAmino(object: VoteInfoAmino): VoteInfo;
     toAmino(message: VoteInfo): VoteInfoAmino;
@@ -1765,8 +1764,8 @@ export declare const VoteInfo: {
 };
 export declare const Evidence: {
     typeUrl: string;
-    encode(message: Evidence, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Evidence;
+    encode(message: Evidence, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Evidence;
     fromPartial(object: Partial<Evidence>): Evidence;
     fromAmino(object: EvidenceAmino): Evidence;
     toAmino(message: Evidence): EvidenceAmino;
@@ -1777,8 +1776,8 @@ export declare const Evidence: {
 };
 export declare const Snapshot: {
     typeUrl: string;
-    encode(message: Snapshot, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Snapshot;
+    encode(message: Snapshot, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Snapshot;
     fromPartial(object: Partial<Snapshot>): Snapshot;
     fromAmino(object: SnapshotAmino): Snapshot;
     toAmino(message: Snapshot): SnapshotAmino;

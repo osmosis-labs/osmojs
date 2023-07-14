@@ -1,5 +1,4 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgIBCSend */
 export interface MsgIBCSend {
     /** the channel by which the packet will be sent */
@@ -8,12 +7,12 @@ export interface MsgIBCSend {
      * Timeout height relative to the current block height.
      * The timeout is disabled when set to 0.
      */
-    timeoutHeight: Long;
+    timeoutHeight: bigint;
     /**
      * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
      * The timeout is disabled when set to 0.
      */
-    timeoutTimestamp: Long;
+    timeoutTimestamp: bigint;
     /**
      * Data is the payload to transfer. We must not make assumption what format or
      * content is in here.
@@ -51,14 +50,14 @@ export interface MsgIBCSendAminoMsg {
 /** MsgIBCSend */
 export interface MsgIBCSendSDKType {
     channel: string;
-    timeout_height: Long;
-    timeout_timestamp: Long;
+    timeout_height: bigint;
+    timeout_timestamp: bigint;
     data: Uint8Array;
 }
 /** MsgIBCSendResponse */
 export interface MsgIBCSendResponse {
     /** Sequence number of the IBC packet sent */
-    sequence: Long;
+    sequence: bigint;
 }
 export interface MsgIBCSendResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.MsgIBCSendResponse";
@@ -75,7 +74,7 @@ export interface MsgIBCSendResponseAminoMsg {
 }
 /** MsgIBCSendResponse */
 export interface MsgIBCSendResponseSDKType {
-    sequence: Long;
+    sequence: bigint;
 }
 /** MsgIBCCloseChannel port and channel need to be owned by the contract */
 export interface MsgIBCCloseChannel {
@@ -99,8 +98,8 @@ export interface MsgIBCCloseChannelSDKType {
 }
 export declare const MsgIBCSend: {
     typeUrl: string;
-    encode(message: MsgIBCSend, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgIBCSend;
+    encode(message: MsgIBCSend, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgIBCSend;
     fromPartial(object: Partial<MsgIBCSend>): MsgIBCSend;
     fromAmino(object: MsgIBCSendAmino): MsgIBCSend;
     toAmino(message: MsgIBCSend): MsgIBCSendAmino;
@@ -112,8 +111,8 @@ export declare const MsgIBCSend: {
 };
 export declare const MsgIBCSendResponse: {
     typeUrl: string;
-    encode(message: MsgIBCSendResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgIBCSendResponse;
+    encode(message: MsgIBCSendResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgIBCSendResponse;
     fromPartial(object: Partial<MsgIBCSendResponse>): MsgIBCSendResponse;
     fromAmino(object: MsgIBCSendResponseAmino): MsgIBCSendResponse;
     toAmino(message: MsgIBCSendResponse): MsgIBCSendResponseAmino;
@@ -125,8 +124,8 @@ export declare const MsgIBCSendResponse: {
 };
 export declare const MsgIBCCloseChannel: {
     typeUrl: string;
-    encode(message: MsgIBCCloseChannel, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgIBCCloseChannel;
+    encode(message: MsgIBCCloseChannel, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgIBCCloseChannel;
     fromPartial(object: Partial<MsgIBCCloseChannel>): MsgIBCCloseChannel;
     fromAmino(object: MsgIBCCloseChannelAmino): MsgIBCCloseChannel;
     toAmino(message: MsgIBCCloseChannel): MsgIBCCloseChannelAmino;

@@ -4,11 +4,11 @@ import { ParamsSDKType as Params1SDKType } from "../../controller/v1/controller"
 import { Params as Params2 } from "../../host/v1/host";
 import { ParamsAmino as Params2Amino } from "../../host/v1/host";
 import { ParamsSDKType as Params2SDKType } from "../../host/v1/host";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../../binary";
 /** GenesisState defines the interchain accounts genesis state */
 export interface GenesisState {
-    controllerGenesisState?: ControllerGenesisState;
-    hostGenesisState?: HostGenesisState;
+    controllerGenesisState: ControllerGenesisState;
+    hostGenesisState: HostGenesisState;
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.GenesisState";
@@ -25,15 +25,15 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the interchain accounts genesis state */
 export interface GenesisStateSDKType {
-    controller_genesis_state?: ControllerGenesisStateSDKType;
-    host_genesis_state?: HostGenesisStateSDKType;
+    controller_genesis_state: ControllerGenesisStateSDKType;
+    host_genesis_state: HostGenesisStateSDKType;
 }
 /** ControllerGenesisState defines the interchain accounts controller genesis state */
 export interface ControllerGenesisState {
     activeChannels: ActiveChannel[];
     interchainAccounts: RegisteredInterchainAccount[];
     ports: string[];
-    params?: Params1;
+    params: Params1;
 }
 export interface ControllerGenesisStateProtoMsg {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.ControllerGenesisState";
@@ -55,14 +55,14 @@ export interface ControllerGenesisStateSDKType {
     active_channels: ActiveChannelSDKType[];
     interchain_accounts: RegisteredInterchainAccountSDKType[];
     ports: string[];
-    params?: Params1SDKType;
+    params: Params1SDKType;
 }
 /** HostGenesisState defines the interchain accounts host genesis state */
 export interface HostGenesisState {
     activeChannels: ActiveChannel[];
     interchainAccounts: RegisteredInterchainAccount[];
     port: string;
-    params?: Params2;
+    params: Params2;
 }
 export interface HostGenesisStateProtoMsg {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.HostGenesisState";
@@ -84,7 +84,7 @@ export interface HostGenesisStateSDKType {
     active_channels: ActiveChannelSDKType[];
     interchain_accounts: RegisteredInterchainAccountSDKType[];
     port: string;
-    params?: Params2SDKType;
+    params: Params2SDKType;
 }
 /**
  * ActiveChannel contains a connection ID, port ID and associated active channel ID, as well as a boolean flag to
@@ -152,8 +152,8 @@ export interface RegisteredInterchainAccountSDKType {
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -165,8 +165,8 @@ export declare const GenesisState: {
 };
 export declare const ControllerGenesisState: {
     typeUrl: string;
-    encode(message: ControllerGenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ControllerGenesisState;
+    encode(message: ControllerGenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ControllerGenesisState;
     fromPartial(object: Partial<ControllerGenesisState>): ControllerGenesisState;
     fromAmino(object: ControllerGenesisStateAmino): ControllerGenesisState;
     toAmino(message: ControllerGenesisState): ControllerGenesisStateAmino;
@@ -178,8 +178,8 @@ export declare const ControllerGenesisState: {
 };
 export declare const HostGenesisState: {
     typeUrl: string;
-    encode(message: HostGenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): HostGenesisState;
+    encode(message: HostGenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): HostGenesisState;
     fromPartial(object: Partial<HostGenesisState>): HostGenesisState;
     fromAmino(object: HostGenesisStateAmino): HostGenesisState;
     toAmino(message: HostGenesisState): HostGenesisStateAmino;
@@ -191,8 +191,8 @@ export declare const HostGenesisState: {
 };
 export declare const ActiveChannel: {
     typeUrl: string;
-    encode(message: ActiveChannel, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ActiveChannel;
+    encode(message: ActiveChannel, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ActiveChannel;
     fromPartial(object: Partial<ActiveChannel>): ActiveChannel;
     fromAmino(object: ActiveChannelAmino): ActiveChannel;
     toAmino(message: ActiveChannel): ActiveChannelAmino;
@@ -204,8 +204,8 @@ export declare const ActiveChannel: {
 };
 export declare const RegisteredInterchainAccount: {
     typeUrl: string;
-    encode(message: RegisteredInterchainAccount, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RegisteredInterchainAccount;
+    encode(message: RegisteredInterchainAccount, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RegisteredInterchainAccount;
     fromPartial(object: Partial<RegisteredInterchainAccount>): RegisteredInterchainAccount;
     fromAmino(object: RegisteredInterchainAccountAmino): RegisteredInterchainAccount;
     toAmino(message: RegisteredInterchainAccount): RegisteredInterchainAccountAmino;

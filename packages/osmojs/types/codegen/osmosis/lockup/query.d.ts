@@ -2,8 +2,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType, SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "./lock";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface ModuleBalanceRequest {
 }
 export interface ModuleBalanceRequestProtoMsg {
@@ -170,7 +169,7 @@ export interface AccountLockedCoinsResponseSDKType {
 }
 export interface AccountLockedPastTimeRequest {
     owner: string;
-    timestamp?: Date;
+    timestamp: Date;
 }
 export interface AccountLockedPastTimeRequestProtoMsg {
     typeUrl: "/osmosis.lockup.AccountLockedPastTimeRequest";
@@ -186,7 +185,7 @@ export interface AccountLockedPastTimeRequestAminoMsg {
 }
 export interface AccountLockedPastTimeRequestSDKType {
     owner: string;
-    timestamp?: Date;
+    timestamp: Date;
 }
 export interface AccountLockedPastTimeResponse {
     locks: PeriodLock[];
@@ -207,7 +206,7 @@ export interface AccountLockedPastTimeResponseSDKType {
 }
 export interface AccountLockedPastTimeNotUnlockingOnlyRequest {
     owner: string;
-    timestamp?: Date;
+    timestamp: Date;
 }
 export interface AccountLockedPastTimeNotUnlockingOnlyRequestProtoMsg {
     typeUrl: "/osmosis.lockup.AccountLockedPastTimeNotUnlockingOnlyRequest";
@@ -223,7 +222,7 @@ export interface AccountLockedPastTimeNotUnlockingOnlyRequestAminoMsg {
 }
 export interface AccountLockedPastTimeNotUnlockingOnlyRequestSDKType {
     owner: string;
-    timestamp?: Date;
+    timestamp: Date;
 }
 export interface AccountLockedPastTimeNotUnlockingOnlyResponse {
     locks: PeriodLock[];
@@ -244,7 +243,7 @@ export interface AccountLockedPastTimeNotUnlockingOnlyResponseSDKType {
 }
 export interface AccountUnlockedBeforeTimeRequest {
     owner: string;
-    timestamp?: Date;
+    timestamp: Date;
 }
 export interface AccountUnlockedBeforeTimeRequestProtoMsg {
     typeUrl: "/osmosis.lockup.AccountUnlockedBeforeTimeRequest";
@@ -260,7 +259,7 @@ export interface AccountUnlockedBeforeTimeRequestAminoMsg {
 }
 export interface AccountUnlockedBeforeTimeRequestSDKType {
     owner: string;
-    timestamp?: Date;
+    timestamp: Date;
 }
 export interface AccountUnlockedBeforeTimeResponse {
     locks: PeriodLock[];
@@ -281,7 +280,7 @@ export interface AccountUnlockedBeforeTimeResponseSDKType {
 }
 export interface AccountLockedPastTimeDenomRequest {
     owner: string;
-    timestamp?: Date;
+    timestamp: Date;
     denom: string;
 }
 export interface AccountLockedPastTimeDenomRequestProtoMsg {
@@ -299,7 +298,7 @@ export interface AccountLockedPastTimeDenomRequestAminoMsg {
 }
 export interface AccountLockedPastTimeDenomRequestSDKType {
     owner: string;
-    timestamp?: Date;
+    timestamp: Date;
     denom: string;
 }
 export interface AccountLockedPastTimeDenomResponse {
@@ -321,7 +320,7 @@ export interface AccountLockedPastTimeDenomResponseSDKType {
 }
 export interface LockedDenomRequest {
     denom: string;
-    duration?: Duration;
+    duration: Duration;
 }
 export interface LockedDenomRequestProtoMsg {
     typeUrl: "/osmosis.lockup.LockedDenomRequest";
@@ -337,7 +336,7 @@ export interface LockedDenomRequestAminoMsg {
 }
 export interface LockedDenomRequestSDKType {
     denom: string;
-    duration?: DurationSDKType;
+    duration: DurationSDKType;
 }
 export interface LockedDenomResponse {
     amount: string;
@@ -357,7 +356,7 @@ export interface LockedDenomResponseSDKType {
     amount: string;
 }
 export interface LockedRequest {
-    lockId: Long;
+    lockId: bigint;
 }
 export interface LockedRequestProtoMsg {
     typeUrl: "/osmosis.lockup.LockedRequest";
@@ -371,10 +370,10 @@ export interface LockedRequestAminoMsg {
     value: LockedRequestAmino;
 }
 export interface LockedRequestSDKType {
-    lock_id: Long;
+    lock_id: bigint;
 }
 export interface LockedResponse {
-    lock?: PeriodLock;
+    lock: PeriodLock;
 }
 export interface LockedResponseProtoMsg {
     typeUrl: "/osmosis.lockup.LockedResponse";
@@ -388,10 +387,10 @@ export interface LockedResponseAminoMsg {
     value: LockedResponseAmino;
 }
 export interface LockedResponseSDKType {
-    lock?: PeriodLockSDKType;
+    lock: PeriodLockSDKType;
 }
 export interface LockRewardReceiverRequest {
-    lockId: Long;
+    lockId: bigint;
 }
 export interface LockRewardReceiverRequestProtoMsg {
     typeUrl: "/osmosis.lockup.LockRewardReceiverRequest";
@@ -405,7 +404,7 @@ export interface LockRewardReceiverRequestAminoMsg {
     value: LockRewardReceiverRequestAmino;
 }
 export interface LockRewardReceiverRequestSDKType {
-    lock_id: Long;
+    lock_id: bigint;
 }
 export interface LockRewardReceiverResponse {
     rewardReceiver: string;
@@ -439,7 +438,7 @@ export interface NextLockIDRequestAminoMsg {
 export interface NextLockIDRequestSDKType {
 }
 export interface NextLockIDResponse {
-    lockId: Long;
+    lockId: bigint;
 }
 export interface NextLockIDResponseProtoMsg {
     typeUrl: "/osmosis.lockup.NextLockIDResponse";
@@ -453,11 +452,11 @@ export interface NextLockIDResponseAminoMsg {
     value: NextLockIDResponseAmino;
 }
 export interface NextLockIDResponseSDKType {
-    lock_id: Long;
+    lock_id: bigint;
 }
 /** @deprecated */
 export interface SyntheticLockupsByLockupIDRequest {
-    lockId: Long;
+    lockId: bigint;
 }
 export interface SyntheticLockupsByLockupIDRequestProtoMsg {
     typeUrl: "/osmosis.lockup.SyntheticLockupsByLockupIDRequest";
@@ -473,7 +472,7 @@ export interface SyntheticLockupsByLockupIDRequestAminoMsg {
 }
 /** @deprecated */
 export interface SyntheticLockupsByLockupIDRequestSDKType {
-    lock_id: Long;
+    lock_id: bigint;
 }
 /** @deprecated */
 export interface SyntheticLockupsByLockupIDResponse {
@@ -496,7 +495,7 @@ export interface SyntheticLockupsByLockupIDResponseSDKType {
     synthetic_locks: SyntheticLockSDKType[];
 }
 export interface SyntheticLockupByLockupIDRequest {
-    lockId: Long;
+    lockId: bigint;
 }
 export interface SyntheticLockupByLockupIDRequestProtoMsg {
     typeUrl: "/osmosis.lockup.SyntheticLockupByLockupIDRequest";
@@ -510,10 +509,10 @@ export interface SyntheticLockupByLockupIDRequestAminoMsg {
     value: SyntheticLockupByLockupIDRequestAmino;
 }
 export interface SyntheticLockupByLockupIDRequestSDKType {
-    lock_id: Long;
+    lock_id: bigint;
 }
 export interface SyntheticLockupByLockupIDResponse {
-    syntheticLock?: SyntheticLock;
+    syntheticLock: SyntheticLock;
 }
 export interface SyntheticLockupByLockupIDResponseProtoMsg {
     typeUrl: "/osmosis.lockup.SyntheticLockupByLockupIDResponse";
@@ -527,11 +526,11 @@ export interface SyntheticLockupByLockupIDResponseAminoMsg {
     value: SyntheticLockupByLockupIDResponseAmino;
 }
 export interface SyntheticLockupByLockupIDResponseSDKType {
-    synthetic_lock?: SyntheticLockSDKType;
+    synthetic_lock: SyntheticLockSDKType;
 }
 export interface AccountLockedLongerDurationRequest {
     owner: string;
-    duration?: Duration;
+    duration: Duration;
 }
 export interface AccountLockedLongerDurationRequestProtoMsg {
     typeUrl: "/osmosis.lockup.AccountLockedLongerDurationRequest";
@@ -547,7 +546,7 @@ export interface AccountLockedLongerDurationRequestAminoMsg {
 }
 export interface AccountLockedLongerDurationRequestSDKType {
     owner: string;
-    duration?: DurationSDKType;
+    duration: DurationSDKType;
 }
 export interface AccountLockedLongerDurationResponse {
     locks: PeriodLock[];
@@ -568,7 +567,7 @@ export interface AccountLockedLongerDurationResponseSDKType {
 }
 export interface AccountLockedDurationRequest {
     owner: string;
-    duration?: Duration;
+    duration: Duration;
 }
 export interface AccountLockedDurationRequestProtoMsg {
     typeUrl: "/osmosis.lockup.AccountLockedDurationRequest";
@@ -584,7 +583,7 @@ export interface AccountLockedDurationRequestAminoMsg {
 }
 export interface AccountLockedDurationRequestSDKType {
     owner: string;
-    duration?: DurationSDKType;
+    duration: DurationSDKType;
 }
 export interface AccountLockedDurationResponse {
     locks: PeriodLock[];
@@ -605,7 +604,7 @@ export interface AccountLockedDurationResponseSDKType {
 }
 export interface AccountLockedLongerDurationNotUnlockingOnlyRequest {
     owner: string;
-    duration?: Duration;
+    duration: Duration;
 }
 export interface AccountLockedLongerDurationNotUnlockingOnlyRequestProtoMsg {
     typeUrl: "/osmosis.lockup.AccountLockedLongerDurationNotUnlockingOnlyRequest";
@@ -621,7 +620,7 @@ export interface AccountLockedLongerDurationNotUnlockingOnlyRequestAminoMsg {
 }
 export interface AccountLockedLongerDurationNotUnlockingOnlyRequestSDKType {
     owner: string;
-    duration?: DurationSDKType;
+    duration: DurationSDKType;
 }
 export interface AccountLockedLongerDurationNotUnlockingOnlyResponse {
     locks: PeriodLock[];
@@ -642,7 +641,7 @@ export interface AccountLockedLongerDurationNotUnlockingOnlyResponseSDKType {
 }
 export interface AccountLockedLongerDurationDenomRequest {
     owner: string;
-    duration?: Duration;
+    duration: Duration;
     denom: string;
 }
 export interface AccountLockedLongerDurationDenomRequestProtoMsg {
@@ -660,7 +659,7 @@ export interface AccountLockedLongerDurationDenomRequestAminoMsg {
 }
 export interface AccountLockedLongerDurationDenomRequestSDKType {
     owner: string;
-    duration?: DurationSDKType;
+    duration: DurationSDKType;
     denom: string;
 }
 export interface AccountLockedLongerDurationDenomResponse {
@@ -695,7 +694,7 @@ export interface QueryParamsRequestAminoMsg {
 export interface QueryParamsRequestSDKType {
 }
 export interface QueryParamsResponse {
-    params?: Params;
+    params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     typeUrl: "/osmosis.lockup.QueryParamsResponse";
@@ -709,12 +708,12 @@ export interface QueryParamsResponseAminoMsg {
     value: QueryParamsResponseAmino;
 }
 export interface QueryParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 export declare const ModuleBalanceRequest: {
     typeUrl: string;
-    encode(_: ModuleBalanceRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleBalanceRequest;
+    encode(_: ModuleBalanceRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModuleBalanceRequest;
     fromPartial(_: Partial<ModuleBalanceRequest>): ModuleBalanceRequest;
     fromAmino(_: ModuleBalanceRequestAmino): ModuleBalanceRequest;
     toAmino(_: ModuleBalanceRequest): ModuleBalanceRequestAmino;
@@ -726,8 +725,8 @@ export declare const ModuleBalanceRequest: {
 };
 export declare const ModuleBalanceResponse: {
     typeUrl: string;
-    encode(message: ModuleBalanceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleBalanceResponse;
+    encode(message: ModuleBalanceResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModuleBalanceResponse;
     fromPartial(object: Partial<ModuleBalanceResponse>): ModuleBalanceResponse;
     fromAmino(object: ModuleBalanceResponseAmino): ModuleBalanceResponse;
     toAmino(message: ModuleBalanceResponse): ModuleBalanceResponseAmino;
@@ -739,8 +738,8 @@ export declare const ModuleBalanceResponse: {
 };
 export declare const ModuleLockedAmountRequest: {
     typeUrl: string;
-    encode(_: ModuleLockedAmountRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleLockedAmountRequest;
+    encode(_: ModuleLockedAmountRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModuleLockedAmountRequest;
     fromPartial(_: Partial<ModuleLockedAmountRequest>): ModuleLockedAmountRequest;
     fromAmino(_: ModuleLockedAmountRequestAmino): ModuleLockedAmountRequest;
     toAmino(_: ModuleLockedAmountRequest): ModuleLockedAmountRequestAmino;
@@ -752,8 +751,8 @@ export declare const ModuleLockedAmountRequest: {
 };
 export declare const ModuleLockedAmountResponse: {
     typeUrl: string;
-    encode(message: ModuleLockedAmountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleLockedAmountResponse;
+    encode(message: ModuleLockedAmountResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModuleLockedAmountResponse;
     fromPartial(object: Partial<ModuleLockedAmountResponse>): ModuleLockedAmountResponse;
     fromAmino(object: ModuleLockedAmountResponseAmino): ModuleLockedAmountResponse;
     toAmino(message: ModuleLockedAmountResponse): ModuleLockedAmountResponseAmino;
@@ -765,8 +764,8 @@ export declare const ModuleLockedAmountResponse: {
 };
 export declare const AccountUnlockableCoinsRequest: {
     typeUrl: string;
-    encode(message: AccountUnlockableCoinsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockableCoinsRequest;
+    encode(message: AccountUnlockableCoinsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountUnlockableCoinsRequest;
     fromPartial(object: Partial<AccountUnlockableCoinsRequest>): AccountUnlockableCoinsRequest;
     fromAmino(object: AccountUnlockableCoinsRequestAmino): AccountUnlockableCoinsRequest;
     toAmino(message: AccountUnlockableCoinsRequest): AccountUnlockableCoinsRequestAmino;
@@ -778,8 +777,8 @@ export declare const AccountUnlockableCoinsRequest: {
 };
 export declare const AccountUnlockableCoinsResponse: {
     typeUrl: string;
-    encode(message: AccountUnlockableCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockableCoinsResponse;
+    encode(message: AccountUnlockableCoinsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountUnlockableCoinsResponse;
     fromPartial(object: Partial<AccountUnlockableCoinsResponse>): AccountUnlockableCoinsResponse;
     fromAmino(object: AccountUnlockableCoinsResponseAmino): AccountUnlockableCoinsResponse;
     toAmino(message: AccountUnlockableCoinsResponse): AccountUnlockableCoinsResponseAmino;
@@ -791,8 +790,8 @@ export declare const AccountUnlockableCoinsResponse: {
 };
 export declare const AccountUnlockingCoinsRequest: {
     typeUrl: string;
-    encode(message: AccountUnlockingCoinsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockingCoinsRequest;
+    encode(message: AccountUnlockingCoinsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountUnlockingCoinsRequest;
     fromPartial(object: Partial<AccountUnlockingCoinsRequest>): AccountUnlockingCoinsRequest;
     fromAmino(object: AccountUnlockingCoinsRequestAmino): AccountUnlockingCoinsRequest;
     toAmino(message: AccountUnlockingCoinsRequest): AccountUnlockingCoinsRequestAmino;
@@ -804,8 +803,8 @@ export declare const AccountUnlockingCoinsRequest: {
 };
 export declare const AccountUnlockingCoinsResponse: {
     typeUrl: string;
-    encode(message: AccountUnlockingCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockingCoinsResponse;
+    encode(message: AccountUnlockingCoinsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountUnlockingCoinsResponse;
     fromPartial(object: Partial<AccountUnlockingCoinsResponse>): AccountUnlockingCoinsResponse;
     fromAmino(object: AccountUnlockingCoinsResponseAmino): AccountUnlockingCoinsResponse;
     toAmino(message: AccountUnlockingCoinsResponse): AccountUnlockingCoinsResponseAmino;
@@ -817,8 +816,8 @@ export declare const AccountUnlockingCoinsResponse: {
 };
 export declare const AccountLockedCoinsRequest: {
     typeUrl: string;
-    encode(message: AccountLockedCoinsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedCoinsRequest;
+    encode(message: AccountLockedCoinsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedCoinsRequest;
     fromPartial(object: Partial<AccountLockedCoinsRequest>): AccountLockedCoinsRequest;
     fromAmino(object: AccountLockedCoinsRequestAmino): AccountLockedCoinsRequest;
     toAmino(message: AccountLockedCoinsRequest): AccountLockedCoinsRequestAmino;
@@ -830,8 +829,8 @@ export declare const AccountLockedCoinsRequest: {
 };
 export declare const AccountLockedCoinsResponse: {
     typeUrl: string;
-    encode(message: AccountLockedCoinsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedCoinsResponse;
+    encode(message: AccountLockedCoinsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedCoinsResponse;
     fromPartial(object: Partial<AccountLockedCoinsResponse>): AccountLockedCoinsResponse;
     fromAmino(object: AccountLockedCoinsResponseAmino): AccountLockedCoinsResponse;
     toAmino(message: AccountLockedCoinsResponse): AccountLockedCoinsResponseAmino;
@@ -843,8 +842,8 @@ export declare const AccountLockedCoinsResponse: {
 };
 export declare const AccountLockedPastTimeRequest: {
     typeUrl: string;
-    encode(message: AccountLockedPastTimeRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeRequest;
+    encode(message: AccountLockedPastTimeRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedPastTimeRequest;
     fromPartial(object: Partial<AccountLockedPastTimeRequest>): AccountLockedPastTimeRequest;
     fromAmino(object: AccountLockedPastTimeRequestAmino): AccountLockedPastTimeRequest;
     toAmino(message: AccountLockedPastTimeRequest): AccountLockedPastTimeRequestAmino;
@@ -856,8 +855,8 @@ export declare const AccountLockedPastTimeRequest: {
 };
 export declare const AccountLockedPastTimeResponse: {
     typeUrl: string;
-    encode(message: AccountLockedPastTimeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeResponse;
+    encode(message: AccountLockedPastTimeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedPastTimeResponse;
     fromPartial(object: Partial<AccountLockedPastTimeResponse>): AccountLockedPastTimeResponse;
     fromAmino(object: AccountLockedPastTimeResponseAmino): AccountLockedPastTimeResponse;
     toAmino(message: AccountLockedPastTimeResponse): AccountLockedPastTimeResponseAmino;
@@ -869,8 +868,8 @@ export declare const AccountLockedPastTimeResponse: {
 };
 export declare const AccountLockedPastTimeNotUnlockingOnlyRequest: {
     typeUrl: string;
-    encode(message: AccountLockedPastTimeNotUnlockingOnlyRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeNotUnlockingOnlyRequest;
+    encode(message: AccountLockedPastTimeNotUnlockingOnlyRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedPastTimeNotUnlockingOnlyRequest;
     fromPartial(object: Partial<AccountLockedPastTimeNotUnlockingOnlyRequest>): AccountLockedPastTimeNotUnlockingOnlyRequest;
     fromAmino(object: AccountLockedPastTimeNotUnlockingOnlyRequestAmino): AccountLockedPastTimeNotUnlockingOnlyRequest;
     toAmino(message: AccountLockedPastTimeNotUnlockingOnlyRequest): AccountLockedPastTimeNotUnlockingOnlyRequestAmino;
@@ -882,8 +881,8 @@ export declare const AccountLockedPastTimeNotUnlockingOnlyRequest: {
 };
 export declare const AccountLockedPastTimeNotUnlockingOnlyResponse: {
     typeUrl: string;
-    encode(message: AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeNotUnlockingOnlyResponse;
+    encode(message: AccountLockedPastTimeNotUnlockingOnlyResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedPastTimeNotUnlockingOnlyResponse;
     fromPartial(object: Partial<AccountLockedPastTimeNotUnlockingOnlyResponse>): AccountLockedPastTimeNotUnlockingOnlyResponse;
     fromAmino(object: AccountLockedPastTimeNotUnlockingOnlyResponseAmino): AccountLockedPastTimeNotUnlockingOnlyResponse;
     toAmino(message: AccountLockedPastTimeNotUnlockingOnlyResponse): AccountLockedPastTimeNotUnlockingOnlyResponseAmino;
@@ -895,8 +894,8 @@ export declare const AccountLockedPastTimeNotUnlockingOnlyResponse: {
 };
 export declare const AccountUnlockedBeforeTimeRequest: {
     typeUrl: string;
-    encode(message: AccountUnlockedBeforeTimeRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockedBeforeTimeRequest;
+    encode(message: AccountUnlockedBeforeTimeRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountUnlockedBeforeTimeRequest;
     fromPartial(object: Partial<AccountUnlockedBeforeTimeRequest>): AccountUnlockedBeforeTimeRequest;
     fromAmino(object: AccountUnlockedBeforeTimeRequestAmino): AccountUnlockedBeforeTimeRequest;
     toAmino(message: AccountUnlockedBeforeTimeRequest): AccountUnlockedBeforeTimeRequestAmino;
@@ -908,8 +907,8 @@ export declare const AccountUnlockedBeforeTimeRequest: {
 };
 export declare const AccountUnlockedBeforeTimeResponse: {
     typeUrl: string;
-    encode(message: AccountUnlockedBeforeTimeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountUnlockedBeforeTimeResponse;
+    encode(message: AccountUnlockedBeforeTimeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountUnlockedBeforeTimeResponse;
     fromPartial(object: Partial<AccountUnlockedBeforeTimeResponse>): AccountUnlockedBeforeTimeResponse;
     fromAmino(object: AccountUnlockedBeforeTimeResponseAmino): AccountUnlockedBeforeTimeResponse;
     toAmino(message: AccountUnlockedBeforeTimeResponse): AccountUnlockedBeforeTimeResponseAmino;
@@ -921,8 +920,8 @@ export declare const AccountUnlockedBeforeTimeResponse: {
 };
 export declare const AccountLockedPastTimeDenomRequest: {
     typeUrl: string;
-    encode(message: AccountLockedPastTimeDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeDenomRequest;
+    encode(message: AccountLockedPastTimeDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedPastTimeDenomRequest;
     fromPartial(object: Partial<AccountLockedPastTimeDenomRequest>): AccountLockedPastTimeDenomRequest;
     fromAmino(object: AccountLockedPastTimeDenomRequestAmino): AccountLockedPastTimeDenomRequest;
     toAmino(message: AccountLockedPastTimeDenomRequest): AccountLockedPastTimeDenomRequestAmino;
@@ -934,8 +933,8 @@ export declare const AccountLockedPastTimeDenomRequest: {
 };
 export declare const AccountLockedPastTimeDenomResponse: {
     typeUrl: string;
-    encode(message: AccountLockedPastTimeDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedPastTimeDenomResponse;
+    encode(message: AccountLockedPastTimeDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedPastTimeDenomResponse;
     fromPartial(object: Partial<AccountLockedPastTimeDenomResponse>): AccountLockedPastTimeDenomResponse;
     fromAmino(object: AccountLockedPastTimeDenomResponseAmino): AccountLockedPastTimeDenomResponse;
     toAmino(message: AccountLockedPastTimeDenomResponse): AccountLockedPastTimeDenomResponseAmino;
@@ -947,8 +946,8 @@ export declare const AccountLockedPastTimeDenomResponse: {
 };
 export declare const LockedDenomRequest: {
     typeUrl: string;
-    encode(message: LockedDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockedDenomRequest;
+    encode(message: LockedDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LockedDenomRequest;
     fromPartial(object: Partial<LockedDenomRequest>): LockedDenomRequest;
     fromAmino(object: LockedDenomRequestAmino): LockedDenomRequest;
     toAmino(message: LockedDenomRequest): LockedDenomRequestAmino;
@@ -960,8 +959,8 @@ export declare const LockedDenomRequest: {
 };
 export declare const LockedDenomResponse: {
     typeUrl: string;
-    encode(message: LockedDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockedDenomResponse;
+    encode(message: LockedDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LockedDenomResponse;
     fromPartial(object: Partial<LockedDenomResponse>): LockedDenomResponse;
     fromAmino(object: LockedDenomResponseAmino): LockedDenomResponse;
     toAmino(message: LockedDenomResponse): LockedDenomResponseAmino;
@@ -973,8 +972,8 @@ export declare const LockedDenomResponse: {
 };
 export declare const LockedRequest: {
     typeUrl: string;
-    encode(message: LockedRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockedRequest;
+    encode(message: LockedRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LockedRequest;
     fromPartial(object: Partial<LockedRequest>): LockedRequest;
     fromAmino(object: LockedRequestAmino): LockedRequest;
     toAmino(message: LockedRequest): LockedRequestAmino;
@@ -986,8 +985,8 @@ export declare const LockedRequest: {
 };
 export declare const LockedResponse: {
     typeUrl: string;
-    encode(message: LockedResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockedResponse;
+    encode(message: LockedResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LockedResponse;
     fromPartial(object: Partial<LockedResponse>): LockedResponse;
     fromAmino(object: LockedResponseAmino): LockedResponse;
     toAmino(message: LockedResponse): LockedResponseAmino;
@@ -999,8 +998,8 @@ export declare const LockedResponse: {
 };
 export declare const LockRewardReceiverRequest: {
     typeUrl: string;
-    encode(message: LockRewardReceiverRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockRewardReceiverRequest;
+    encode(message: LockRewardReceiverRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LockRewardReceiverRequest;
     fromPartial(object: Partial<LockRewardReceiverRequest>): LockRewardReceiverRequest;
     fromAmino(object: LockRewardReceiverRequestAmino): LockRewardReceiverRequest;
     toAmino(message: LockRewardReceiverRequest): LockRewardReceiverRequestAmino;
@@ -1012,8 +1011,8 @@ export declare const LockRewardReceiverRequest: {
 };
 export declare const LockRewardReceiverResponse: {
     typeUrl: string;
-    encode(message: LockRewardReceiverResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockRewardReceiverResponse;
+    encode(message: LockRewardReceiverResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LockRewardReceiverResponse;
     fromPartial(object: Partial<LockRewardReceiverResponse>): LockRewardReceiverResponse;
     fromAmino(object: LockRewardReceiverResponseAmino): LockRewardReceiverResponse;
     toAmino(message: LockRewardReceiverResponse): LockRewardReceiverResponseAmino;
@@ -1025,8 +1024,8 @@ export declare const LockRewardReceiverResponse: {
 };
 export declare const NextLockIDRequest: {
     typeUrl: string;
-    encode(_: NextLockIDRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): NextLockIDRequest;
+    encode(_: NextLockIDRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): NextLockIDRequest;
     fromPartial(_: Partial<NextLockIDRequest>): NextLockIDRequest;
     fromAmino(_: NextLockIDRequestAmino): NextLockIDRequest;
     toAmino(_: NextLockIDRequest): NextLockIDRequestAmino;
@@ -1038,8 +1037,8 @@ export declare const NextLockIDRequest: {
 };
 export declare const NextLockIDResponse: {
     typeUrl: string;
-    encode(message: NextLockIDResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): NextLockIDResponse;
+    encode(message: NextLockIDResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): NextLockIDResponse;
     fromPartial(object: Partial<NextLockIDResponse>): NextLockIDResponse;
     fromAmino(object: NextLockIDResponseAmino): NextLockIDResponse;
     toAmino(message: NextLockIDResponse): NextLockIDResponseAmino;
@@ -1051,8 +1050,8 @@ export declare const NextLockIDResponse: {
 };
 export declare const SyntheticLockupsByLockupIDRequest: {
     typeUrl: string;
-    encode(message: SyntheticLockupsByLockupIDRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupsByLockupIDRequest;
+    encode(message: SyntheticLockupsByLockupIDRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SyntheticLockupsByLockupIDRequest;
     fromPartial(object: Partial<SyntheticLockupsByLockupIDRequest>): SyntheticLockupsByLockupIDRequest;
     fromAmino(object: SyntheticLockupsByLockupIDRequestAmino): SyntheticLockupsByLockupIDRequest;
     toAmino(message: SyntheticLockupsByLockupIDRequest): SyntheticLockupsByLockupIDRequestAmino;
@@ -1064,8 +1063,8 @@ export declare const SyntheticLockupsByLockupIDRequest: {
 };
 export declare const SyntheticLockupsByLockupIDResponse: {
     typeUrl: string;
-    encode(message: SyntheticLockupsByLockupIDResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupsByLockupIDResponse;
+    encode(message: SyntheticLockupsByLockupIDResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SyntheticLockupsByLockupIDResponse;
     fromPartial(object: Partial<SyntheticLockupsByLockupIDResponse>): SyntheticLockupsByLockupIDResponse;
     fromAmino(object: SyntheticLockupsByLockupIDResponseAmino): SyntheticLockupsByLockupIDResponse;
     toAmino(message: SyntheticLockupsByLockupIDResponse): SyntheticLockupsByLockupIDResponseAmino;
@@ -1077,8 +1076,8 @@ export declare const SyntheticLockupsByLockupIDResponse: {
 };
 export declare const SyntheticLockupByLockupIDRequest: {
     typeUrl: string;
-    encode(message: SyntheticLockupByLockupIDRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupByLockupIDRequest;
+    encode(message: SyntheticLockupByLockupIDRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SyntheticLockupByLockupIDRequest;
     fromPartial(object: Partial<SyntheticLockupByLockupIDRequest>): SyntheticLockupByLockupIDRequest;
     fromAmino(object: SyntheticLockupByLockupIDRequestAmino): SyntheticLockupByLockupIDRequest;
     toAmino(message: SyntheticLockupByLockupIDRequest): SyntheticLockupByLockupIDRequestAmino;
@@ -1090,8 +1089,8 @@ export declare const SyntheticLockupByLockupIDRequest: {
 };
 export declare const SyntheticLockupByLockupIDResponse: {
     typeUrl: string;
-    encode(message: SyntheticLockupByLockupIDResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupByLockupIDResponse;
+    encode(message: SyntheticLockupByLockupIDResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SyntheticLockupByLockupIDResponse;
     fromPartial(object: Partial<SyntheticLockupByLockupIDResponse>): SyntheticLockupByLockupIDResponse;
     fromAmino(object: SyntheticLockupByLockupIDResponseAmino): SyntheticLockupByLockupIDResponse;
     toAmino(message: SyntheticLockupByLockupIDResponse): SyntheticLockupByLockupIDResponseAmino;
@@ -1103,8 +1102,8 @@ export declare const SyntheticLockupByLockupIDResponse: {
 };
 export declare const AccountLockedLongerDurationRequest: {
     typeUrl: string;
-    encode(message: AccountLockedLongerDurationRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationRequest;
+    encode(message: AccountLockedLongerDurationRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedLongerDurationRequest;
     fromPartial(object: Partial<AccountLockedLongerDurationRequest>): AccountLockedLongerDurationRequest;
     fromAmino(object: AccountLockedLongerDurationRequestAmino): AccountLockedLongerDurationRequest;
     toAmino(message: AccountLockedLongerDurationRequest): AccountLockedLongerDurationRequestAmino;
@@ -1116,8 +1115,8 @@ export declare const AccountLockedLongerDurationRequest: {
 };
 export declare const AccountLockedLongerDurationResponse: {
     typeUrl: string;
-    encode(message: AccountLockedLongerDurationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationResponse;
+    encode(message: AccountLockedLongerDurationResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedLongerDurationResponse;
     fromPartial(object: Partial<AccountLockedLongerDurationResponse>): AccountLockedLongerDurationResponse;
     fromAmino(object: AccountLockedLongerDurationResponseAmino): AccountLockedLongerDurationResponse;
     toAmino(message: AccountLockedLongerDurationResponse): AccountLockedLongerDurationResponseAmino;
@@ -1129,8 +1128,8 @@ export declare const AccountLockedLongerDurationResponse: {
 };
 export declare const AccountLockedDurationRequest: {
     typeUrl: string;
-    encode(message: AccountLockedDurationRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedDurationRequest;
+    encode(message: AccountLockedDurationRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedDurationRequest;
     fromPartial(object: Partial<AccountLockedDurationRequest>): AccountLockedDurationRequest;
     fromAmino(object: AccountLockedDurationRequestAmino): AccountLockedDurationRequest;
     toAmino(message: AccountLockedDurationRequest): AccountLockedDurationRequestAmino;
@@ -1142,8 +1141,8 @@ export declare const AccountLockedDurationRequest: {
 };
 export declare const AccountLockedDurationResponse: {
     typeUrl: string;
-    encode(message: AccountLockedDurationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedDurationResponse;
+    encode(message: AccountLockedDurationResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedDurationResponse;
     fromPartial(object: Partial<AccountLockedDurationResponse>): AccountLockedDurationResponse;
     fromAmino(object: AccountLockedDurationResponseAmino): AccountLockedDurationResponse;
     toAmino(message: AccountLockedDurationResponse): AccountLockedDurationResponseAmino;
@@ -1155,8 +1154,8 @@ export declare const AccountLockedDurationResponse: {
 };
 export declare const AccountLockedLongerDurationNotUnlockingOnlyRequest: {
     typeUrl: string;
-    encode(message: AccountLockedLongerDurationNotUnlockingOnlyRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationNotUnlockingOnlyRequest;
+    encode(message: AccountLockedLongerDurationNotUnlockingOnlyRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedLongerDurationNotUnlockingOnlyRequest;
     fromPartial(object: Partial<AccountLockedLongerDurationNotUnlockingOnlyRequest>): AccountLockedLongerDurationNotUnlockingOnlyRequest;
     fromAmino(object: AccountLockedLongerDurationNotUnlockingOnlyRequestAmino): AccountLockedLongerDurationNotUnlockingOnlyRequest;
     toAmino(message: AccountLockedLongerDurationNotUnlockingOnlyRequest): AccountLockedLongerDurationNotUnlockingOnlyRequestAmino;
@@ -1168,8 +1167,8 @@ export declare const AccountLockedLongerDurationNotUnlockingOnlyRequest: {
 };
 export declare const AccountLockedLongerDurationNotUnlockingOnlyResponse: {
     typeUrl: string;
-    encode(message: AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationNotUnlockingOnlyResponse;
+    encode(message: AccountLockedLongerDurationNotUnlockingOnlyResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedLongerDurationNotUnlockingOnlyResponse;
     fromPartial(object: Partial<AccountLockedLongerDurationNotUnlockingOnlyResponse>): AccountLockedLongerDurationNotUnlockingOnlyResponse;
     fromAmino(object: AccountLockedLongerDurationNotUnlockingOnlyResponseAmino): AccountLockedLongerDurationNotUnlockingOnlyResponse;
     toAmino(message: AccountLockedLongerDurationNotUnlockingOnlyResponse): AccountLockedLongerDurationNotUnlockingOnlyResponseAmino;
@@ -1181,8 +1180,8 @@ export declare const AccountLockedLongerDurationNotUnlockingOnlyResponse: {
 };
 export declare const AccountLockedLongerDurationDenomRequest: {
     typeUrl: string;
-    encode(message: AccountLockedLongerDurationDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationDenomRequest;
+    encode(message: AccountLockedLongerDurationDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedLongerDurationDenomRequest;
     fromPartial(object: Partial<AccountLockedLongerDurationDenomRequest>): AccountLockedLongerDurationDenomRequest;
     fromAmino(object: AccountLockedLongerDurationDenomRequestAmino): AccountLockedLongerDurationDenomRequest;
     toAmino(message: AccountLockedLongerDurationDenomRequest): AccountLockedLongerDurationDenomRequestAmino;
@@ -1194,8 +1193,8 @@ export declare const AccountLockedLongerDurationDenomRequest: {
 };
 export declare const AccountLockedLongerDurationDenomResponse: {
     typeUrl: string;
-    encode(message: AccountLockedLongerDurationDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccountLockedLongerDurationDenomResponse;
+    encode(message: AccountLockedLongerDurationDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccountLockedLongerDurationDenomResponse;
     fromPartial(object: Partial<AccountLockedLongerDurationDenomResponse>): AccountLockedLongerDurationDenomResponse;
     fromAmino(object: AccountLockedLongerDurationDenomResponseAmino): AccountLockedLongerDurationDenomResponse;
     toAmino(message: AccountLockedLongerDurationDenomResponse): AccountLockedLongerDurationDenomResponseAmino;
@@ -1207,8 +1206,8 @@ export declare const AccountLockedLongerDurationDenomResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
-    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -1220,8 +1219,8 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;

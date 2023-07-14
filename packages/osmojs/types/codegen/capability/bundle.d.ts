@@ -4,8 +4,8 @@ export declare namespace capability {
     const v1: {
         GenesisOwners: {
             typeUrl: string;
-            encode(message: _43.GenesisOwners, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _43.GenesisOwners;
+            encode(message: _43.GenesisOwners, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.GenesisOwners;
             fromPartial(object: Partial<_43.GenesisOwners>): _43.GenesisOwners;
             fromAmino(object: _43.GenesisOwnersAmino): _43.GenesisOwners;
             toAmino(message: _43.GenesisOwners): _43.GenesisOwnersAmino;
@@ -16,8 +16,8 @@ export declare namespace capability {
         };
         GenesisState: {
             typeUrl: string;
-            encode(message: _43.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _43.GenesisState;
+            encode(message: _43.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.GenesisState;
             fromPartial(object: Partial<_43.GenesisState>): _43.GenesisState;
             fromAmino(object: _43.GenesisStateAmino): _43.GenesisState;
             toAmino(message: _43.GenesisState): _43.GenesisStateAmino;
@@ -28,8 +28,8 @@ export declare namespace capability {
         };
         Capability: {
             typeUrl: string;
-            encode(message: _42.Capability, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _42.Capability;
+            encode(message: _42.Capability, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.Capability;
             fromPartial(object: Partial<_42.Capability>): _42.Capability;
             fromAmino(object: _42.CapabilityAmino): _42.Capability;
             toAmino(message: _42.Capability): _42.CapabilityAmino;
@@ -40,8 +40,8 @@ export declare namespace capability {
         };
         Owner: {
             typeUrl: string;
-            encode(message: _42.Owner, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _42.Owner;
+            encode(message: _42.Owner, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.Owner;
             fromPartial(object: Partial<_42.Owner>): _42.Owner;
             fromAmino(object: _42.OwnerAmino): _42.Owner;
             toAmino(message: _42.Owner): _42.OwnerAmino;
@@ -52,8 +52,8 @@ export declare namespace capability {
         };
         CapabilityOwners: {
             typeUrl: string;
-            encode(message: _42.CapabilityOwners, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _42.CapabilityOwners;
+            encode(message: _42.CapabilityOwners, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.CapabilityOwners;
             fromPartial(object: Partial<_42.CapabilityOwners>): _42.CapabilityOwners;
             fromAmino(object: _42.CapabilityOwnersAmino): _42.CapabilityOwners;
             toAmino(message: _42.CapabilityOwners): _42.CapabilityOwnersAmino;

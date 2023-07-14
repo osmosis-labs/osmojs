@@ -1,8 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export declare enum VoteOption {
     /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
@@ -130,7 +129,7 @@ export interface TextProposalSDKType {
  * proposal.
  */
 export interface Deposit {
-    proposalId: Long;
+    proposalId: bigint;
     depositor: string;
     amount: Coin[];
 }
@@ -156,28 +155,28 @@ export interface DepositAminoMsg {
  * proposal.
  */
 export interface DepositSDKType {
-    proposal_id: Long;
+    proposal_id: bigint;
     depositor: string;
     amount: CoinSDKType[];
 }
 /** Proposal defines the core field members of a governance proposal. */
 export interface Proposal {
-    proposalId: Long;
-    content?: (TextProposal & Any) | undefined;
+    proposalId: bigint;
+    content: (TextProposal & Any) | undefined;
     status: ProposalStatus;
-    finalTallyResult?: TallyResult;
-    submitTime?: Date;
-    depositEndTime?: Date;
+    finalTallyResult: TallyResult;
+    submitTime: Date;
+    depositEndTime: Date;
     totalDeposit: Coin[];
-    votingStartTime?: Date;
-    votingEndTime?: Date;
+    votingStartTime: Date;
+    votingEndTime: Date;
     isExpedited: boolean;
 }
 export interface ProposalProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.Proposal";
     value: Uint8Array;
 }
-export type ProposalEncoded = Omit<Proposal, "content"> & {
+export declare type ProposalEncoded = Omit<Proposal, "content"> & {
     content?: TextProposalProtoMsg | AnyProtoMsg | undefined;
 };
 /** Proposal defines the core field members of a governance proposal. */
@@ -199,15 +198,15 @@ export interface ProposalAminoMsg {
 }
 /** Proposal defines the core field members of a governance proposal. */
 export interface ProposalSDKType {
-    proposal_id: Long;
-    content?: TextProposalSDKType | AnySDKType | undefined;
+    proposal_id: bigint;
+    content: TextProposalSDKType | AnySDKType | undefined;
     status: ProposalStatus;
-    final_tally_result?: TallyResultSDKType;
-    submit_time?: Date;
-    deposit_end_time?: Date;
+    final_tally_result: TallyResultSDKType;
+    submit_time: Date;
+    deposit_end_time: Date;
     total_deposit: CoinSDKType[];
-    voting_start_time?: Date;
-    voting_end_time?: Date;
+    voting_start_time: Date;
+    voting_end_time: Date;
     is_expedited: boolean;
 }
 /** TallyResult defines a standard tally for a governance proposal. */
@@ -244,7 +243,7 @@ export interface TallyResultSDKType {
  * A Vote consists of a proposal ID, the voter, and the vote option.
  */
 export interface Vote {
-    proposalId: Long;
+    proposalId: bigint;
     voter: string;
     /**
      * Deprecated: Prefer to use `options` instead. This field is set in queries
@@ -286,7 +285,7 @@ export interface VoteAminoMsg {
  * A Vote consists of a proposal ID, the voter, and the vote option.
  */
 export interface VoteSDKType {
-    proposal_id: Long;
+    proposal_id: bigint;
     voter: string;
     /** @deprecated */
     option: VoteOption;
@@ -300,7 +299,7 @@ export interface DepositParams {
      * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
      *  months.
      */
-    maxDepositPeriod?: Duration;
+    maxDepositPeriod: Duration;
     /** Minimum expedited deposit for a proposal to enter voting period. */
     minExpeditedDeposit: Coin[];
     /** The ratio representing the proportion of the deposit value that must be paid at proposal submission. */
@@ -331,18 +330,18 @@ export interface DepositParamsAminoMsg {
 /** DepositParams defines the params for deposits on governance proposals. */
 export interface DepositParamsSDKType {
     min_deposit: CoinSDKType[];
-    max_deposit_period?: DurationSDKType;
+    max_deposit_period: DurationSDKType;
     min_expedited_deposit: CoinSDKType[];
     min_initial_deposit_ratio: string;
 }
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParams {
     /** voting_period defines the length of the voting period. */
-    votingPeriod?: Duration;
+    votingPeriod: Duration;
     /** proposal_voting_periods defines custom voting periods for proposal types. */
     proposalVotingPeriods: ProposalVotingPeriod[];
     /** Length of the expedited voting period. */
-    expeditedVotingPeriod?: Duration;
+    expeditedVotingPeriod: Duration;
 }
 export interface VotingParamsProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.VotingParams";
@@ -363,9 +362,9 @@ export interface VotingParamsAminoMsg {
 }
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParamsSDKType {
-    voting_period?: DurationSDKType;
+    voting_period: DurationSDKType;
     proposal_voting_periods: ProposalVotingPeriodSDKType[];
-    expedited_voting_period?: DurationSDKType;
+    expedited_voting_period: DurationSDKType;
 }
 /** TallyParams defines the params for tallying votes on governance proposals. */
 export interface TallyParams {
@@ -428,7 +427,7 @@ export interface TallyParamsSDKType {
 export interface ProposalVotingPeriod {
     /** e.g. "cosmos.params.v1beta1.ParameterChangeProposal" */
     proposalType: string;
-    votingPeriod?: Duration;
+    votingPeriod: Duration;
 }
 export interface ProposalVotingPeriodProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.ProposalVotingPeriod";
@@ -453,12 +452,12 @@ export interface ProposalVotingPeriodAminoMsg {
  */
 export interface ProposalVotingPeriodSDKType {
     proposal_type: string;
-    voting_period?: DurationSDKType;
+    voting_period: DurationSDKType;
 }
 export declare const WeightedVoteOption: {
     typeUrl: string;
-    encode(message: WeightedVoteOption, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): WeightedVoteOption;
+    encode(message: WeightedVoteOption, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): WeightedVoteOption;
     fromPartial(object: Partial<WeightedVoteOption>): WeightedVoteOption;
     fromAmino(object: WeightedVoteOptionAmino): WeightedVoteOption;
     toAmino(message: WeightedVoteOption): WeightedVoteOptionAmino;
@@ -470,8 +469,8 @@ export declare const WeightedVoteOption: {
 };
 export declare const TextProposal: {
     typeUrl: string;
-    encode(message: TextProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TextProposal;
+    encode(message: TextProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TextProposal;
     fromPartial(object: Partial<TextProposal>): TextProposal;
     fromAmino(object: TextProposalAmino): TextProposal;
     toAmino(message: TextProposal): TextProposalAmino;
@@ -483,8 +482,8 @@ export declare const TextProposal: {
 };
 export declare const Deposit: {
     typeUrl: string;
-    encode(message: Deposit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Deposit;
+    encode(message: Deposit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Deposit;
     fromPartial(object: Partial<Deposit>): Deposit;
     fromAmino(object: DepositAmino): Deposit;
     toAmino(message: Deposit): DepositAmino;
@@ -496,8 +495,8 @@ export declare const Deposit: {
 };
 export declare const Proposal: {
     typeUrl: string;
-    encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
+    encode(message: Proposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Proposal;
     fromPartial(object: Partial<Proposal>): Proposal;
     fromAmino(object: ProposalAmino): Proposal;
     toAmino(message: Proposal): ProposalAmino;
@@ -509,8 +508,8 @@ export declare const Proposal: {
 };
 export declare const TallyResult: {
     typeUrl: string;
-    encode(message: TallyResult, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TallyResult;
+    encode(message: TallyResult, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TallyResult;
     fromPartial(object: Partial<TallyResult>): TallyResult;
     fromAmino(object: TallyResultAmino): TallyResult;
     toAmino(message: TallyResult): TallyResultAmino;
@@ -522,8 +521,8 @@ export declare const TallyResult: {
 };
 export declare const Vote: {
     typeUrl: string;
-    encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
+    encode(message: Vote, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Vote;
     fromPartial(object: Partial<Vote>): Vote;
     fromAmino(object: VoteAmino): Vote;
     toAmino(message: Vote): VoteAmino;
@@ -535,8 +534,8 @@ export declare const Vote: {
 };
 export declare const DepositParams: {
     typeUrl: string;
-    encode(message: DepositParams, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DepositParams;
+    encode(message: DepositParams, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DepositParams;
     fromPartial(object: Partial<DepositParams>): DepositParams;
     fromAmino(object: DepositParamsAmino): DepositParams;
     toAmino(message: DepositParams): DepositParamsAmino;
@@ -548,8 +547,8 @@ export declare const DepositParams: {
 };
 export declare const VotingParams: {
     typeUrl: string;
-    encode(message: VotingParams, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): VotingParams;
+    encode(message: VotingParams, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): VotingParams;
     fromPartial(object: Partial<VotingParams>): VotingParams;
     fromAmino(object: VotingParamsAmino): VotingParams;
     toAmino(message: VotingParams): VotingParamsAmino;
@@ -561,8 +560,8 @@ export declare const VotingParams: {
 };
 export declare const TallyParams: {
     typeUrl: string;
-    encode(message: TallyParams, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TallyParams;
+    encode(message: TallyParams, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TallyParams;
     fromPartial(object: Partial<TallyParams>): TallyParams;
     fromAmino(object: TallyParamsAmino): TallyParams;
     toAmino(message: TallyParams): TallyParamsAmino;
@@ -574,8 +573,8 @@ export declare const TallyParams: {
 };
 export declare const ProposalVotingPeriod: {
     typeUrl: string;
-    encode(message: ProposalVotingPeriod, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ProposalVotingPeriod;
+    encode(message: ProposalVotingPeriod, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ProposalVotingPeriod;
     fromPartial(object: Partial<ProposalVotingPeriod>): ProposalVotingPeriod;
     fromAmino(object: ProposalVotingPeriodAmino): ProposalVotingPeriod;
     toAmino(message: ProposalVotingPeriod): ProposalVotingPeriodAmino;
@@ -585,6 +584,6 @@ export declare const ProposalVotingPeriod: {
     toProto(message: ProposalVotingPeriod): Uint8Array;
     toProtoMsg(message: ProposalVotingPeriod): ProposalVotingPeriodProtoMsg;
 };
-export declare const Content_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => TextProposal | Any;
+export declare const Content_InterfaceDecoder: (input: BinaryReader | Uint8Array) => TextProposal | Any;
 export declare const Content_FromAmino: (content: AnyAmino) => Any;
 export declare const Content_ToAmino: (content: Any) => AnyAmino;

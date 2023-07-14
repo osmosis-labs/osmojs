@@ -11,8 +11,7 @@ import { PoolSDKType as Pool2SDKType } from "../pool-models/balancer/balancerPoo
 import { Pool as Pool3 } from "../pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../pool-models/stableswap/stableswap_pool";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params holds parameters for the incentives module */
 export interface Params {
     poolCreationFee: Coin[];
@@ -37,15 +36,15 @@ export interface ParamsSDKType {
 export interface GenesisState {
     pools: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any)[] | Any[];
     /** will be renamed to next_pool_id in an upcoming version */
-    nextPoolNumber: Long;
-    params?: Params;
-    migrationRecords?: MigrationRecords;
+    nextPoolNumber: bigint;
+    params: Params;
+    migrationRecords: MigrationRecords;
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.GenesisState";
     value: Uint8Array;
 }
-export type GenesisStateEncoded = Omit<GenesisState, "pools"> & {
+export declare type GenesisStateEncoded = Omit<GenesisState, "pools"> & {
     pools: (Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg)[];
 };
 /** GenesisState defines the gamm module's genesis state. */
@@ -63,14 +62,14 @@ export interface GenesisStateAminoMsg {
 /** GenesisState defines the gamm module's genesis state. */
 export interface GenesisStateSDKType {
     pools: (Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType)[];
-    next_pool_number: Long;
-    params?: ParamsSDKType;
-    migration_records?: MigrationRecordsSDKType;
+    next_pool_number: bigint;
+    params: ParamsSDKType;
+    migration_records: MigrationRecordsSDKType;
 }
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -82,8 +81,8 @@ export declare const Params: {
 };
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -93,6 +92,6 @@ export declare const GenesisState: {
     toProto(message: GenesisState): Uint8Array;
     toProtoMsg(message: GenesisState): GenesisStateProtoMsg;
 };
-export declare const PoolI_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
+export declare const PoolI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
 export declare const PoolI_FromAmino: (content: AnyAmino) => Any;
 export declare const PoolI_ToAmino: (content: Any) => AnyAmino;

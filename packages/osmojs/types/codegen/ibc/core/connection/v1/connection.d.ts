@@ -1,6 +1,5 @@
 import { MerklePrefix, MerklePrefixAmino, MerklePrefixSDKType } from "../../commitment/v1/commitment";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * State defines if a connection is in one of the following states:
  * INIT, TRYOPEN, OPEN or UNINITIALIZED.
@@ -40,13 +39,13 @@ export interface ConnectionEnd {
     /** current state of the connection end. */
     state: State;
     /** counterparty chain associated with this connection. */
-    counterparty?: Counterparty;
+    counterparty: Counterparty;
     /**
      * delay period that must pass before a consensus state can be used for
      * packet-verification NOTE: delay period logic is only implemented by some
      * clients.
      */
-    delayPeriod: Long;
+    delayPeriod: bigint;
 }
 export interface ConnectionEndProtoMsg {
     typeUrl: "/ibc.core.connection.v1.ConnectionEnd";
@@ -91,8 +90,8 @@ export interface ConnectionEndSDKType {
     client_id: string;
     versions: VersionSDKType[];
     state: State;
-    counterparty?: CounterpartySDKType;
-    delay_period: Long;
+    counterparty: CounterpartySDKType;
+    delay_period: bigint;
 }
 /**
  * IdentifiedConnection defines a connection with additional connection
@@ -111,9 +110,9 @@ export interface IdentifiedConnection {
     /** current state of the connection end. */
     state: State;
     /** counterparty chain associated with this connection. */
-    counterparty?: Counterparty;
+    counterparty: Counterparty;
     /** delay period associated with this connection. */
-    delayPeriod: Long;
+    delayPeriod: bigint;
 }
 export interface IdentifiedConnectionProtoMsg {
     typeUrl: "/ibc.core.connection.v1.IdentifiedConnection";
@@ -153,8 +152,8 @@ export interface IdentifiedConnectionSDKType {
     client_id: string;
     versions: VersionSDKType[];
     state: State;
-    counterparty?: CounterpartySDKType;
-    delay_period: Long;
+    counterparty: CounterpartySDKType;
+    delay_period: bigint;
 }
 /** Counterparty defines the counterparty chain associated with a connection end. */
 export interface Counterparty {
@@ -169,7 +168,7 @@ export interface Counterparty {
      */
     connectionId: string;
     /** commitment merkle prefix of the counterparty chain. */
-    prefix?: MerklePrefix;
+    prefix: MerklePrefix;
 }
 export interface CounterpartyProtoMsg {
     typeUrl: "/ibc.core.connection.v1.Counterparty";
@@ -198,7 +197,7 @@ export interface CounterpartyAminoMsg {
 export interface CounterpartySDKType {
     client_id: string;
     connection_id: string;
-    prefix?: MerklePrefixSDKType;
+    prefix: MerklePrefixSDKType;
 }
 /** ClientPaths define all the connection paths for a client state. */
 export interface ClientPaths {
@@ -292,7 +291,7 @@ export interface Params {
      * largest amount of time that the chain might reasonably take to produce the next block under normal operating
      * conditions. A safe choice is 3-5x the expected time per block.
      */
-    maxExpectedTimePerBlock: Long;
+    maxExpectedTimePerBlock: bigint;
 }
 export interface ParamsProtoMsg {
     typeUrl: "/ibc.core.connection.v1.Params";
@@ -313,12 +312,12 @@ export interface ParamsAminoMsg {
 }
 /** Params defines the set of Connection parameters. */
 export interface ParamsSDKType {
-    max_expected_time_per_block: Long;
+    max_expected_time_per_block: bigint;
 }
 export declare const ConnectionEnd: {
     typeUrl: string;
-    encode(message: ConnectionEnd, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionEnd;
+    encode(message: ConnectionEnd, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ConnectionEnd;
     fromPartial(object: Partial<ConnectionEnd>): ConnectionEnd;
     fromAmino(object: ConnectionEndAmino): ConnectionEnd;
     toAmino(message: ConnectionEnd): ConnectionEndAmino;
@@ -330,8 +329,8 @@ export declare const ConnectionEnd: {
 };
 export declare const IdentifiedConnection: {
     typeUrl: string;
-    encode(message: IdentifiedConnection, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedConnection;
+    encode(message: IdentifiedConnection, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedConnection;
     fromPartial(object: Partial<IdentifiedConnection>): IdentifiedConnection;
     fromAmino(object: IdentifiedConnectionAmino): IdentifiedConnection;
     toAmino(message: IdentifiedConnection): IdentifiedConnectionAmino;
@@ -343,8 +342,8 @@ export declare const IdentifiedConnection: {
 };
 export declare const Counterparty: {
     typeUrl: string;
-    encode(message: Counterparty, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Counterparty;
+    encode(message: Counterparty, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Counterparty;
     fromPartial(object: Partial<Counterparty>): Counterparty;
     fromAmino(object: CounterpartyAmino): Counterparty;
     toAmino(message: Counterparty): CounterpartyAmino;
@@ -356,8 +355,8 @@ export declare const Counterparty: {
 };
 export declare const ClientPaths: {
     typeUrl: string;
-    encode(message: ClientPaths, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ClientPaths;
+    encode(message: ClientPaths, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ClientPaths;
     fromPartial(object: Partial<ClientPaths>): ClientPaths;
     fromAmino(object: ClientPathsAmino): ClientPaths;
     toAmino(message: ClientPaths): ClientPathsAmino;
@@ -369,8 +368,8 @@ export declare const ClientPaths: {
 };
 export declare const ConnectionPaths: {
     typeUrl: string;
-    encode(message: ConnectionPaths, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ConnectionPaths;
+    encode(message: ConnectionPaths, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ConnectionPaths;
     fromPartial(object: Partial<ConnectionPaths>): ConnectionPaths;
     fromAmino(object: ConnectionPathsAmino): ConnectionPaths;
     toAmino(message: ConnectionPaths): ConnectionPathsAmino;
@@ -382,8 +381,8 @@ export declare const ConnectionPaths: {
 };
 export declare const Version: {
     typeUrl: string;
-    encode(message: Version, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Version;
+    encode(message: Version, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Version;
     fromPartial(object: Partial<Version>): Version;
     fromAmino(object: VersionAmino): Version;
     toAmino(message: Version): VersionAmino;
@@ -395,8 +394,8 @@ export declare const Version: {
 };
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

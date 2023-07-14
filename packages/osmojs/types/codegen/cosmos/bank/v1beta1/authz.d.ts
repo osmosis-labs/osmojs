@@ -1,5 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * SendAuthorization allows the grantee to spend up to spend_limit coins from
  * the granter's account.
@@ -39,8 +39,8 @@ export interface SendAuthorizationSDKType {
 }
 export declare const SendAuthorization: {
     typeUrl: string;
-    encode(message: SendAuthorization, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SendAuthorization;
+    encode(message: SendAuthorization, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SendAuthorization;
     fromPartial(object: Partial<SendAuthorization>): SendAuthorization;
     fromAmino(object: SendAuthorizationAmino): SendAuthorization;
     toAmino(message: SendAuthorization): SendAuthorizationAmino;

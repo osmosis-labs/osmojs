@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare enum HashOp {
     /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
     NO_HASH = 0,
@@ -70,7 +70,7 @@ export declare function lengthOpToJSON(object: LengthOp): string;
 export interface ExistenceProof {
     key: Uint8Array;
     value: Uint8Array;
-    leaf?: LeafOp;
+    leaf: LeafOp;
     path: InnerOp[];
 }
 export interface ExistenceProofProtoMsg {
@@ -132,7 +132,7 @@ export interface ExistenceProofAminoMsg {
 export interface ExistenceProofSDKType {
     key: Uint8Array;
     value: Uint8Array;
-    leaf?: LeafOpSDKType;
+    leaf: LeafOpSDKType;
     path: InnerOpSDKType[];
 }
 /**
@@ -143,8 +143,8 @@ export interface ExistenceProofSDKType {
 export interface NonExistenceProof {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left?: ExistenceProof;
-    right?: ExistenceProof;
+    left: ExistenceProof;
+    right: ExistenceProof;
 }
 export interface NonExistenceProofProtoMsg {
     typeUrl: "/cosmos.ics23.v1.NonExistenceProof";
@@ -172,8 +172,8 @@ export interface NonExistenceProofAminoMsg {
  */
 export interface NonExistenceProofSDKType {
     key: Uint8Array;
-    left?: ExistenceProofSDKType;
-    right?: ExistenceProofSDKType;
+    left: ExistenceProofSDKType;
+    right: ExistenceProofSDKType;
 }
 /** CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages */
 export interface CommitmentProof {
@@ -380,8 +380,8 @@ export interface ProofSpec {
      * any field in the ExistenceProof must be the same as in this spec.
      * except Prefix, which is just the first bytes of prefix (spec can be longer)
      */
-    leafSpec?: LeafOp;
-    innerSpec?: InnerSpec;
+    leafSpec: LeafOp;
+    innerSpec: InnerSpec;
     /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
     maxDepth: number;
     /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
@@ -432,8 +432,8 @@ export interface ProofSpecAminoMsg {
  * tree format server uses. But not in code, rather a configuration object.
  */
 export interface ProofSpecSDKType {
-    leaf_spec?: LeafOpSDKType;
-    inner_spec?: InnerSpecSDKType;
+    leaf_spec: LeafOpSDKType;
+    inner_spec: InnerSpecSDKType;
     max_depth: number;
     min_depth: number;
 }
@@ -602,7 +602,7 @@ export interface CompressedBatchEntrySDKType {
 export interface CompressedExistenceProof {
     key: Uint8Array;
     value: Uint8Array;
-    leaf?: LeafOp;
+    leaf: LeafOp;
     /** these are indexes into the lookup_inners table in CompressedBatchProof */
     path: number[];
 }
@@ -624,14 +624,14 @@ export interface CompressedExistenceProofAminoMsg {
 export interface CompressedExistenceProofSDKType {
     key: Uint8Array;
     value: Uint8Array;
-    leaf?: LeafOpSDKType;
+    leaf: LeafOpSDKType;
     path: number[];
 }
 export interface CompressedNonExistenceProof {
     /** TODO: remove this as unnecessary??? we prove a range */
     key: Uint8Array;
-    left?: CompressedExistenceProof;
-    right?: CompressedExistenceProof;
+    left: CompressedExistenceProof;
+    right: CompressedExistenceProof;
 }
 export interface CompressedNonExistenceProofProtoMsg {
     typeUrl: "/cosmos.ics23.v1.CompressedNonExistenceProof";
@@ -649,13 +649,13 @@ export interface CompressedNonExistenceProofAminoMsg {
 }
 export interface CompressedNonExistenceProofSDKType {
     key: Uint8Array;
-    left?: CompressedExistenceProofSDKType;
-    right?: CompressedExistenceProofSDKType;
+    left: CompressedExistenceProofSDKType;
+    right: CompressedExistenceProofSDKType;
 }
 export declare const ExistenceProof: {
     typeUrl: string;
-    encode(message: ExistenceProof, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ExistenceProof;
+    encode(message: ExistenceProof, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ExistenceProof;
     fromPartial(object: Partial<ExistenceProof>): ExistenceProof;
     fromAmino(object: ExistenceProofAmino): ExistenceProof;
     toAmino(message: ExistenceProof): ExistenceProofAmino;
@@ -667,8 +667,8 @@ export declare const ExistenceProof: {
 };
 export declare const NonExistenceProof: {
     typeUrl: string;
-    encode(message: NonExistenceProof, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): NonExistenceProof;
+    encode(message: NonExistenceProof, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): NonExistenceProof;
     fromPartial(object: Partial<NonExistenceProof>): NonExistenceProof;
     fromAmino(object: NonExistenceProofAmino): NonExistenceProof;
     toAmino(message: NonExistenceProof): NonExistenceProofAmino;
@@ -680,8 +680,8 @@ export declare const NonExistenceProof: {
 };
 export declare const CommitmentProof: {
     typeUrl: string;
-    encode(message: CommitmentProof, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CommitmentProof;
+    encode(message: CommitmentProof, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CommitmentProof;
     fromPartial(object: Partial<CommitmentProof>): CommitmentProof;
     fromAmino(object: CommitmentProofAmino): CommitmentProof;
     toAmino(message: CommitmentProof): CommitmentProofAmino;
@@ -693,8 +693,8 @@ export declare const CommitmentProof: {
 };
 export declare const LeafOp: {
     typeUrl: string;
-    encode(message: LeafOp, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LeafOp;
+    encode(message: LeafOp, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LeafOp;
     fromPartial(object: Partial<LeafOp>): LeafOp;
     fromAmino(object: LeafOpAmino): LeafOp;
     toAmino(message: LeafOp): LeafOpAmino;
@@ -706,8 +706,8 @@ export declare const LeafOp: {
 };
 export declare const InnerOp: {
     typeUrl: string;
-    encode(message: InnerOp, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): InnerOp;
+    encode(message: InnerOp, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): InnerOp;
     fromPartial(object: Partial<InnerOp>): InnerOp;
     fromAmino(object: InnerOpAmino): InnerOp;
     toAmino(message: InnerOp): InnerOpAmino;
@@ -719,8 +719,8 @@ export declare const InnerOp: {
 };
 export declare const ProofSpec: {
     typeUrl: string;
-    encode(message: ProofSpec, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ProofSpec;
+    encode(message: ProofSpec, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ProofSpec;
     fromPartial(object: Partial<ProofSpec>): ProofSpec;
     fromAmino(object: ProofSpecAmino): ProofSpec;
     toAmino(message: ProofSpec): ProofSpecAmino;
@@ -732,8 +732,8 @@ export declare const ProofSpec: {
 };
 export declare const InnerSpec: {
     typeUrl: string;
-    encode(message: InnerSpec, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): InnerSpec;
+    encode(message: InnerSpec, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): InnerSpec;
     fromPartial(object: Partial<InnerSpec>): InnerSpec;
     fromAmino(object: InnerSpecAmino): InnerSpec;
     toAmino(message: InnerSpec): InnerSpecAmino;
@@ -745,8 +745,8 @@ export declare const InnerSpec: {
 };
 export declare const BatchProof: {
     typeUrl: string;
-    encode(message: BatchProof, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BatchProof;
+    encode(message: BatchProof, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BatchProof;
     fromPartial(object: Partial<BatchProof>): BatchProof;
     fromAmino(object: BatchProofAmino): BatchProof;
     toAmino(message: BatchProof): BatchProofAmino;
@@ -758,8 +758,8 @@ export declare const BatchProof: {
 };
 export declare const BatchEntry: {
     typeUrl: string;
-    encode(message: BatchEntry, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BatchEntry;
+    encode(message: BatchEntry, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BatchEntry;
     fromPartial(object: Partial<BatchEntry>): BatchEntry;
     fromAmino(object: BatchEntryAmino): BatchEntry;
     toAmino(message: BatchEntry): BatchEntryAmino;
@@ -771,8 +771,8 @@ export declare const BatchEntry: {
 };
 export declare const CompressedBatchProof: {
     typeUrl: string;
-    encode(message: CompressedBatchProof, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CompressedBatchProof;
+    encode(message: CompressedBatchProof, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CompressedBatchProof;
     fromPartial(object: Partial<CompressedBatchProof>): CompressedBatchProof;
     fromAmino(object: CompressedBatchProofAmino): CompressedBatchProof;
     toAmino(message: CompressedBatchProof): CompressedBatchProofAmino;
@@ -784,8 +784,8 @@ export declare const CompressedBatchProof: {
 };
 export declare const CompressedBatchEntry: {
     typeUrl: string;
-    encode(message: CompressedBatchEntry, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CompressedBatchEntry;
+    encode(message: CompressedBatchEntry, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CompressedBatchEntry;
     fromPartial(object: Partial<CompressedBatchEntry>): CompressedBatchEntry;
     fromAmino(object: CompressedBatchEntryAmino): CompressedBatchEntry;
     toAmino(message: CompressedBatchEntry): CompressedBatchEntryAmino;
@@ -797,8 +797,8 @@ export declare const CompressedBatchEntry: {
 };
 export declare const CompressedExistenceProof: {
     typeUrl: string;
-    encode(message: CompressedExistenceProof, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CompressedExistenceProof;
+    encode(message: CompressedExistenceProof, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CompressedExistenceProof;
     fromPartial(object: Partial<CompressedExistenceProof>): CompressedExistenceProof;
     fromAmino(object: CompressedExistenceProofAmino): CompressedExistenceProof;
     toAmino(message: CompressedExistenceProof): CompressedExistenceProofAmino;
@@ -810,8 +810,8 @@ export declare const CompressedExistenceProof: {
 };
 export declare const CompressedNonExistenceProof: {
     typeUrl: string;
-    encode(message: CompressedNonExistenceProof, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CompressedNonExistenceProof;
+    encode(message: CompressedNonExistenceProof, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CompressedNonExistenceProof;
     fromPartial(object: Partial<CompressedNonExistenceProof>): CompressedNonExistenceProof;
     fromAmino(object: CompressedNonExistenceProofAmino): CompressedNonExistenceProof;
     toAmino(message: CompressedNonExistenceProof): CompressedNonExistenceProofAmino;

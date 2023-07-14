@@ -1,6 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params defines the parameters for the tokenfactory module. */
 export interface Params {
     /**
@@ -15,7 +14,7 @@ export interface Params {
      *
      * See: https://github.com/CosmWasm/token-factory/issues/11
      */
-    denomCreationGasConsume: Long;
+    denomCreationGasConsume?: bigint;
 }
 export interface ParamsProtoMsg {
     typeUrl: "/osmosis.tokenfactory.v1beta1.Params";
@@ -44,12 +43,12 @@ export interface ParamsAminoMsg {
 /** Params defines the parameters for the tokenfactory module. */
 export interface ParamsSDKType {
     denom_creation_fee: CoinSDKType[];
-    denom_creation_gas_consume: Long;
+    denom_creation_gas_consume?: bigint;
 }
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

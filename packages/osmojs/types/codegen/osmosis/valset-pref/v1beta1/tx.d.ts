@@ -1,7 +1,6 @@
 import { ValidatorPreference, ValidatorPreferenceAmino, ValidatorPreferenceSDKType } from "./state";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgCreateValidatorSetPreference is a list that holds validator-set. */
 export interface MsgSetValidatorSetPreference {
     /** delegator is the user who is trying to create a validator-set. */
@@ -56,7 +55,7 @@ export interface MsgDelegateToValidatorSet {
      * -> 0.2} our staking logic would attempt to delegate 5osmo to A , 3osmo to
      * B, 2osmo to C.
      */
-    coin?: Coin;
+    coin: Coin;
 }
 export interface MsgDelegateToValidatorSetProtoMsg {
     typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSet";
@@ -87,7 +86,7 @@ export interface MsgDelegateToValidatorSetAminoMsg {
  */
 export interface MsgDelegateToValidatorSetSDKType {
     delegator: string;
-    coin?: CoinSDKType;
+    coin: CoinSDKType;
 }
 export interface MsgDelegateToValidatorSetResponse {
 }
@@ -113,7 +112,7 @@ export interface MsgUndelegateFromValidatorSet {
      * -> 0.2} our undelegate logic would attempt to undelegate 5osmo from A ,
      * 3osmo from B, 2osmo from C
      */
-    coin?: Coin;
+    coin: Coin;
 }
 export interface MsgUndelegateFromValidatorSetProtoMsg {
     typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSet";
@@ -137,7 +136,7 @@ export interface MsgUndelegateFromValidatorSetAminoMsg {
 }
 export interface MsgUndelegateFromValidatorSetSDKType {
     delegator: string;
-    coin?: CoinSDKType;
+    coin: CoinSDKType;
 }
 export interface MsgUndelegateFromValidatorSetResponse {
 }
@@ -245,7 +244,7 @@ export interface MsgDelegateBondedTokens {
     /** delegator is the user who is trying to force unbond osmo and delegate. */
     delegator: string;
     /** lockup id of osmo in the pool */
-    lockID: Long;
+    lockID: bigint;
 }
 export interface MsgDelegateBondedTokensProtoMsg {
     typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens";
@@ -273,7 +272,7 @@ export interface MsgDelegateBondedTokensAminoMsg {
  */
 export interface MsgDelegateBondedTokensSDKType {
     delegator: string;
-    lockID: Long;
+    lockID: bigint;
 }
 export interface MsgDelegateBondedTokensResponse {
 }
@@ -291,8 +290,8 @@ export interface MsgDelegateBondedTokensResponseSDKType {
 }
 export declare const MsgSetValidatorSetPreference: {
     typeUrl: string;
-    encode(message: MsgSetValidatorSetPreference, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetValidatorSetPreference;
+    encode(message: MsgSetValidatorSetPreference, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetValidatorSetPreference;
     fromPartial(object: Partial<MsgSetValidatorSetPreference>): MsgSetValidatorSetPreference;
     fromAmino(object: MsgSetValidatorSetPreferenceAmino): MsgSetValidatorSetPreference;
     toAmino(message: MsgSetValidatorSetPreference): MsgSetValidatorSetPreferenceAmino;
@@ -304,8 +303,8 @@ export declare const MsgSetValidatorSetPreference: {
 };
 export declare const MsgSetValidatorSetPreferenceResponse: {
     typeUrl: string;
-    encode(_: MsgSetValidatorSetPreferenceResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetValidatorSetPreferenceResponse;
+    encode(_: MsgSetValidatorSetPreferenceResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetValidatorSetPreferenceResponse;
     fromPartial(_: Partial<MsgSetValidatorSetPreferenceResponse>): MsgSetValidatorSetPreferenceResponse;
     fromAmino(_: MsgSetValidatorSetPreferenceResponseAmino): MsgSetValidatorSetPreferenceResponse;
     toAmino(_: MsgSetValidatorSetPreferenceResponse): MsgSetValidatorSetPreferenceResponseAmino;
@@ -317,8 +316,8 @@ export declare const MsgSetValidatorSetPreferenceResponse: {
 };
 export declare const MsgDelegateToValidatorSet: {
     typeUrl: string;
-    encode(message: MsgDelegateToValidatorSet, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateToValidatorSet;
+    encode(message: MsgDelegateToValidatorSet, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateToValidatorSet;
     fromPartial(object: Partial<MsgDelegateToValidatorSet>): MsgDelegateToValidatorSet;
     fromAmino(object: MsgDelegateToValidatorSetAmino): MsgDelegateToValidatorSet;
     toAmino(message: MsgDelegateToValidatorSet): MsgDelegateToValidatorSetAmino;
@@ -330,8 +329,8 @@ export declare const MsgDelegateToValidatorSet: {
 };
 export declare const MsgDelegateToValidatorSetResponse: {
     typeUrl: string;
-    encode(_: MsgDelegateToValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateToValidatorSetResponse;
+    encode(_: MsgDelegateToValidatorSetResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateToValidatorSetResponse;
     fromPartial(_: Partial<MsgDelegateToValidatorSetResponse>): MsgDelegateToValidatorSetResponse;
     fromAmino(_: MsgDelegateToValidatorSetResponseAmino): MsgDelegateToValidatorSetResponse;
     toAmino(_: MsgDelegateToValidatorSetResponse): MsgDelegateToValidatorSetResponseAmino;
@@ -343,8 +342,8 @@ export declare const MsgDelegateToValidatorSetResponse: {
 };
 export declare const MsgUndelegateFromValidatorSet: {
     typeUrl: string;
-    encode(message: MsgUndelegateFromValidatorSet, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateFromValidatorSet;
+    encode(message: MsgUndelegateFromValidatorSet, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegateFromValidatorSet;
     fromPartial(object: Partial<MsgUndelegateFromValidatorSet>): MsgUndelegateFromValidatorSet;
     fromAmino(object: MsgUndelegateFromValidatorSetAmino): MsgUndelegateFromValidatorSet;
     toAmino(message: MsgUndelegateFromValidatorSet): MsgUndelegateFromValidatorSetAmino;
@@ -356,8 +355,8 @@ export declare const MsgUndelegateFromValidatorSet: {
 };
 export declare const MsgUndelegateFromValidatorSetResponse: {
     typeUrl: string;
-    encode(_: MsgUndelegateFromValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateFromValidatorSetResponse;
+    encode(_: MsgUndelegateFromValidatorSetResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegateFromValidatorSetResponse;
     fromPartial(_: Partial<MsgUndelegateFromValidatorSetResponse>): MsgUndelegateFromValidatorSetResponse;
     fromAmino(_: MsgUndelegateFromValidatorSetResponseAmino): MsgUndelegateFromValidatorSetResponse;
     toAmino(_: MsgUndelegateFromValidatorSetResponse): MsgUndelegateFromValidatorSetResponseAmino;
@@ -369,8 +368,8 @@ export declare const MsgUndelegateFromValidatorSetResponse: {
 };
 export declare const MsgRedelegateValidatorSet: {
     typeUrl: string;
-    encode(message: MsgRedelegateValidatorSet, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRedelegateValidatorSet;
+    encode(message: MsgRedelegateValidatorSet, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRedelegateValidatorSet;
     fromPartial(object: Partial<MsgRedelegateValidatorSet>): MsgRedelegateValidatorSet;
     fromAmino(object: MsgRedelegateValidatorSetAmino): MsgRedelegateValidatorSet;
     toAmino(message: MsgRedelegateValidatorSet): MsgRedelegateValidatorSetAmino;
@@ -382,8 +381,8 @@ export declare const MsgRedelegateValidatorSet: {
 };
 export declare const MsgRedelegateValidatorSetResponse: {
     typeUrl: string;
-    encode(_: MsgRedelegateValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRedelegateValidatorSetResponse;
+    encode(_: MsgRedelegateValidatorSetResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRedelegateValidatorSetResponse;
     fromPartial(_: Partial<MsgRedelegateValidatorSetResponse>): MsgRedelegateValidatorSetResponse;
     fromAmino(_: MsgRedelegateValidatorSetResponseAmino): MsgRedelegateValidatorSetResponse;
     toAmino(_: MsgRedelegateValidatorSetResponse): MsgRedelegateValidatorSetResponseAmino;
@@ -395,8 +394,8 @@ export declare const MsgRedelegateValidatorSetResponse: {
 };
 export declare const MsgWithdrawDelegationRewards: {
     typeUrl: string;
-    encode(message: MsgWithdrawDelegationRewards, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegationRewards;
+    encode(message: MsgWithdrawDelegationRewards, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegationRewards;
     fromPartial(object: Partial<MsgWithdrawDelegationRewards>): MsgWithdrawDelegationRewards;
     fromAmino(object: MsgWithdrawDelegationRewardsAmino): MsgWithdrawDelegationRewards;
     toAmino(message: MsgWithdrawDelegationRewards): MsgWithdrawDelegationRewardsAmino;
@@ -408,8 +407,8 @@ export declare const MsgWithdrawDelegationRewards: {
 };
 export declare const MsgWithdrawDelegationRewardsResponse: {
     typeUrl: string;
-    encode(_: MsgWithdrawDelegationRewardsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegationRewardsResponse;
+    encode(_: MsgWithdrawDelegationRewardsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegationRewardsResponse;
     fromPartial(_: Partial<MsgWithdrawDelegationRewardsResponse>): MsgWithdrawDelegationRewardsResponse;
     fromAmino(_: MsgWithdrawDelegationRewardsResponseAmino): MsgWithdrawDelegationRewardsResponse;
     toAmino(_: MsgWithdrawDelegationRewardsResponse): MsgWithdrawDelegationRewardsResponseAmino;
@@ -421,8 +420,8 @@ export declare const MsgWithdrawDelegationRewardsResponse: {
 };
 export declare const MsgDelegateBondedTokens: {
     typeUrl: string;
-    encode(message: MsgDelegateBondedTokens, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateBondedTokens;
+    encode(message: MsgDelegateBondedTokens, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateBondedTokens;
     fromPartial(object: Partial<MsgDelegateBondedTokens>): MsgDelegateBondedTokens;
     fromAmino(object: MsgDelegateBondedTokensAmino): MsgDelegateBondedTokens;
     toAmino(message: MsgDelegateBondedTokens): MsgDelegateBondedTokensAmino;
@@ -434,8 +433,8 @@ export declare const MsgDelegateBondedTokens: {
 };
 export declare const MsgDelegateBondedTokensResponse: {
     typeUrl: string;
-    encode(_: MsgDelegateBondedTokensResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateBondedTokensResponse;
+    encode(_: MsgDelegateBondedTokensResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateBondedTokensResponse;
     fromPartial(_: Partial<MsgDelegateBondedTokensResponse>): MsgDelegateBondedTokensResponse;
     fromAmino(_: MsgDelegateBondedTokensResponseAmino): MsgDelegateBondedTokensResponse;
     toAmino(_: MsgDelegateBondedTokensResponse): MsgDelegateBondedTokensResponseAmino;

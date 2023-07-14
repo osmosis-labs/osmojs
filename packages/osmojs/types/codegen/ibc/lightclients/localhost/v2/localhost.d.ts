@@ -1,9 +1,9 @@
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** ClientState defines the 09-localhost client state */
 export interface ClientState {
     /** the latest block height */
-    latestHeight?: Height;
+    latestHeight: Height;
 }
 export interface ClientStateProtoMsg {
     typeUrl: "/ibc.lightclients.localhost.v2.ClientState";
@@ -20,12 +20,12 @@ export interface ClientStateAminoMsg {
 }
 /** ClientState defines the 09-localhost client state */
 export interface ClientStateSDKType {
-    latest_height?: HeightSDKType;
+    latest_height: HeightSDKType;
 }
 export declare const ClientState: {
     typeUrl: string;
-    encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ClientState;
+    encode(message: ClientState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ClientState;
     fromPartial(object: Partial<ClientState>): ClientState;
     fromAmino(object: ClientStateAmino): ClientState;
     toAmino(message: ClientState): ClientStateAmino;

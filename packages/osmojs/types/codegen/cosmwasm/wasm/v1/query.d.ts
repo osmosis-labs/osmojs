@@ -1,7 +1,6 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
 import { ContractInfo, ContractInfoAmino, ContractInfoSDKType, ContractCodeHistoryEntry, ContractCodeHistoryEntryAmino, ContractCodeHistoryEntrySDKType, Model, ModelAmino, ModelSDKType, AccessConfig, AccessConfigAmino, AccessConfigSDKType, Params, ParamsAmino, ParamsSDKType } from "./types";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * QueryContractInfoRequest is the request type for the Query/ContractInfo RPC
  * method
@@ -40,7 +39,7 @@ export interface QueryContractInfoRequestSDKType {
 export interface QueryContractInfoResponse {
     /** address is the address of the contract */
     address: string;
-    contractInfo?: ContractInfo;
+    contractInfo: ContractInfo;
 }
 export interface QueryContractInfoResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryContractInfoResponse";
@@ -65,7 +64,7 @@ export interface QueryContractInfoResponseAminoMsg {
  */
 export interface QueryContractInfoResponseSDKType {
     address: string;
-    contract_info?: ContractInfoSDKType;
+    contract_info: ContractInfoSDKType;
 }
 /**
  * QueryContractHistoryRequest is the request type for the Query/ContractHistory
@@ -75,7 +74,7 @@ export interface QueryContractHistoryRequest {
     /** address is the address of the contract to query */
     address: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryContractHistoryRequestProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryRequest";
@@ -101,7 +100,7 @@ export interface QueryContractHistoryRequestAminoMsg {
  */
 export interface QueryContractHistoryRequestSDKType {
     address: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryContractHistoryResponse is the response type for the
@@ -110,7 +109,7 @@ export interface QueryContractHistoryRequestSDKType {
 export interface QueryContractHistoryResponse {
     entries: ContractCodeHistoryEntry[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryContractHistoryResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryResponse";
@@ -135,7 +134,7 @@ export interface QueryContractHistoryResponseAminoMsg {
  */
 export interface QueryContractHistoryResponseSDKType {
     entries: ContractCodeHistoryEntrySDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryContractsByCodeRequest is the request type for the Query/ContractsByCode
@@ -146,8 +145,8 @@ export interface QueryContractsByCodeRequest {
      * grpc-gateway_out does not support Go style CodID
      * pagination defines an optional pagination for the request.
      */
-    codeId: Long;
-    pagination?: PageRequest;
+    codeId: bigint;
+    pagination: PageRequest;
 }
 export interface QueryContractsByCodeRequestProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeRequest";
@@ -174,8 +173,8 @@ export interface QueryContractsByCodeRequestAminoMsg {
  * RPC method
  */
 export interface QueryContractsByCodeRequestSDKType {
-    code_id: Long;
-    pagination?: PageRequestSDKType;
+    code_id: bigint;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryContractsByCodeResponse is the response type for the
@@ -185,7 +184,7 @@ export interface QueryContractsByCodeResponse {
     /** contracts are a set of contract addresses */
     contracts: string[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryContractsByCodeResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeResponse";
@@ -211,7 +210,7 @@ export interface QueryContractsByCodeResponseAminoMsg {
  */
 export interface QueryContractsByCodeResponseSDKType {
     contracts: string[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryAllContractStateRequest is the request type for the
@@ -221,7 +220,7 @@ export interface QueryAllContractStateRequest {
     /** address is the address of the contract */
     address: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryAllContractStateRequestProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateRequest";
@@ -247,7 +246,7 @@ export interface QueryAllContractStateRequestAminoMsg {
  */
 export interface QueryAllContractStateRequestSDKType {
     address: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryAllContractStateResponse is the response type for the
@@ -256,7 +255,7 @@ export interface QueryAllContractStateRequestSDKType {
 export interface QueryAllContractStateResponse {
     models: Model[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryAllContractStateResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateResponse";
@@ -281,7 +280,7 @@ export interface QueryAllContractStateResponseAminoMsg {
  */
 export interface QueryAllContractStateResponseSDKType {
     models: ModelSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryRawContractStateRequest is the request type for the
@@ -418,7 +417,7 @@ export interface QuerySmartContractStateResponseSDKType {
 /** QueryCodeRequest is the request type for the Query/Code RPC method */
 export interface QueryCodeRequest {
     /** grpc-gateway_out does not support Go style CodID */
-    codeId: Long;
+    codeId: bigint;
 }
 export interface QueryCodeRequestProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryCodeRequest";
@@ -435,14 +434,14 @@ export interface QueryCodeRequestAminoMsg {
 }
 /** QueryCodeRequest is the request type for the Query/Code RPC method */
 export interface QueryCodeRequestSDKType {
-    code_id: Long;
+    code_id: bigint;
 }
 /** CodeInfoResponse contains code meta data from CodeInfo */
 export interface CodeInfoResponse {
-    codeId: Long;
+    codeId: bigint;
     creator: string;
     dataHash: Uint8Array;
-    instantiatePermission?: AccessConfig;
+    instantiatePermission: AccessConfig;
 }
 export interface CodeInfoResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.CodeInfoResponse";
@@ -461,14 +460,14 @@ export interface CodeInfoResponseAminoMsg {
 }
 /** CodeInfoResponse contains code meta data from CodeInfo */
 export interface CodeInfoResponseSDKType {
-    code_id: Long;
+    code_id: bigint;
     creator: string;
     data_hash: Uint8Array;
-    instantiate_permission?: AccessConfigSDKType;
+    instantiate_permission: AccessConfigSDKType;
 }
 /** QueryCodeResponse is the response type for the Query/Code RPC method */
 export interface QueryCodeResponse {
-    codeInfo?: CodeInfoResponse;
+    codeInfo: CodeInfoResponse;
     data: Uint8Array;
 }
 export interface QueryCodeResponseProtoMsg {
@@ -486,13 +485,13 @@ export interface QueryCodeResponseAminoMsg {
 }
 /** QueryCodeResponse is the response type for the Query/Code RPC method */
 export interface QueryCodeResponseSDKType {
-    code_info?: CodeInfoResponseSDKType;
+    code_info: CodeInfoResponseSDKType;
     data: Uint8Array;
 }
 /** QueryCodesRequest is the request type for the Query/Codes RPC method */
 export interface QueryCodesRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryCodesRequestProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryCodesRequest";
@@ -509,13 +508,13 @@ export interface QueryCodesRequestAminoMsg {
 }
 /** QueryCodesRequest is the request type for the Query/Codes RPC method */
 export interface QueryCodesRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /** QueryCodesResponse is the response type for the Query/Codes RPC method */
 export interface QueryCodesResponse {
     codeInfos: CodeInfoResponse[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryCodesResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryCodesResponse";
@@ -534,7 +533,7 @@ export interface QueryCodesResponseAminoMsg {
 /** QueryCodesResponse is the response type for the Query/Codes RPC method */
 export interface QueryCodesResponseSDKType {
     code_infos: CodeInfoResponseSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryPinnedCodesRequest is the request type for the Query/PinnedCodes
@@ -542,7 +541,7 @@ export interface QueryCodesResponseSDKType {
  */
 export interface QueryPinnedCodesRequest {
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryPinnedCodesRequestProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesRequest";
@@ -565,16 +564,16 @@ export interface QueryPinnedCodesRequestAminoMsg {
  * RPC method
  */
 export interface QueryPinnedCodesRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryPinnedCodesResponse is the response type for the
  * Query/PinnedCodes RPC method
  */
 export interface QueryPinnedCodesResponse {
-    codeIds: Long[];
+    codeIds: bigint[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryPinnedCodesResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesResponse";
@@ -598,8 +597,8 @@ export interface QueryPinnedCodesResponseAminoMsg {
  * Query/PinnedCodes RPC method
  */
 export interface QueryPinnedCodesResponseSDKType {
-    code_ids: Long[];
-    pagination?: PageResponseSDKType;
+    code_ids: bigint[];
+    pagination: PageResponseSDKType;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
@@ -621,7 +620,7 @@ export interface QueryParamsRequestSDKType {
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
-    params?: Params;
+    params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryParamsResponse";
@@ -638,7 +637,7 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 /**
  * QueryContractsByCreatorRequest is the request type for the
@@ -648,7 +647,7 @@ export interface QueryContractsByCreatorRequest {
     /** CreatorAddress is the address of contract creator */
     creatorAddress: string;
     /** Pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryContractsByCreatorRequestProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorRequest";
@@ -674,7 +673,7 @@ export interface QueryContractsByCreatorRequestAminoMsg {
  */
 export interface QueryContractsByCreatorRequestSDKType {
     creator_address: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryContractsByCreatorResponse is the response type for the
@@ -684,7 +683,7 @@ export interface QueryContractsByCreatorResponse {
     /** ContractAddresses result set */
     contractAddresses: string[];
     /** Pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryContractsByCreatorResponseProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorResponse";
@@ -710,12 +709,12 @@ export interface QueryContractsByCreatorResponseAminoMsg {
  */
 export interface QueryContractsByCreatorResponseSDKType {
     contract_addresses: string[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 export declare const QueryContractInfoRequest: {
     typeUrl: string;
-    encode(message: QueryContractInfoRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractInfoRequest;
+    encode(message: QueryContractInfoRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryContractInfoRequest;
     fromPartial(object: Partial<QueryContractInfoRequest>): QueryContractInfoRequest;
     fromAmino(object: QueryContractInfoRequestAmino): QueryContractInfoRequest;
     toAmino(message: QueryContractInfoRequest): QueryContractInfoRequestAmino;
@@ -727,8 +726,8 @@ export declare const QueryContractInfoRequest: {
 };
 export declare const QueryContractInfoResponse: {
     typeUrl: string;
-    encode(message: QueryContractInfoResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractInfoResponse;
+    encode(message: QueryContractInfoResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryContractInfoResponse;
     fromPartial(object: Partial<QueryContractInfoResponse>): QueryContractInfoResponse;
     fromAmino(object: QueryContractInfoResponseAmino): QueryContractInfoResponse;
     toAmino(message: QueryContractInfoResponse): QueryContractInfoResponseAmino;
@@ -740,8 +739,8 @@ export declare const QueryContractInfoResponse: {
 };
 export declare const QueryContractHistoryRequest: {
     typeUrl: string;
-    encode(message: QueryContractHistoryRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractHistoryRequest;
+    encode(message: QueryContractHistoryRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryContractHistoryRequest;
     fromPartial(object: Partial<QueryContractHistoryRequest>): QueryContractHistoryRequest;
     fromAmino(object: QueryContractHistoryRequestAmino): QueryContractHistoryRequest;
     toAmino(message: QueryContractHistoryRequest): QueryContractHistoryRequestAmino;
@@ -753,8 +752,8 @@ export declare const QueryContractHistoryRequest: {
 };
 export declare const QueryContractHistoryResponse: {
     typeUrl: string;
-    encode(message: QueryContractHistoryResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractHistoryResponse;
+    encode(message: QueryContractHistoryResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryContractHistoryResponse;
     fromPartial(object: Partial<QueryContractHistoryResponse>): QueryContractHistoryResponse;
     fromAmino(object: QueryContractHistoryResponseAmino): QueryContractHistoryResponse;
     toAmino(message: QueryContractHistoryResponse): QueryContractHistoryResponseAmino;
@@ -766,8 +765,8 @@ export declare const QueryContractHistoryResponse: {
 };
 export declare const QueryContractsByCodeRequest: {
     typeUrl: string;
-    encode(message: QueryContractsByCodeRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractsByCodeRequest;
+    encode(message: QueryContractsByCodeRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryContractsByCodeRequest;
     fromPartial(object: Partial<QueryContractsByCodeRequest>): QueryContractsByCodeRequest;
     fromAmino(object: QueryContractsByCodeRequestAmino): QueryContractsByCodeRequest;
     toAmino(message: QueryContractsByCodeRequest): QueryContractsByCodeRequestAmino;
@@ -779,8 +778,8 @@ export declare const QueryContractsByCodeRequest: {
 };
 export declare const QueryContractsByCodeResponse: {
     typeUrl: string;
-    encode(message: QueryContractsByCodeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractsByCodeResponse;
+    encode(message: QueryContractsByCodeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryContractsByCodeResponse;
     fromPartial(object: Partial<QueryContractsByCodeResponse>): QueryContractsByCodeResponse;
     fromAmino(object: QueryContractsByCodeResponseAmino): QueryContractsByCodeResponse;
     toAmino(message: QueryContractsByCodeResponse): QueryContractsByCodeResponseAmino;
@@ -792,8 +791,8 @@ export declare const QueryContractsByCodeResponse: {
 };
 export declare const QueryAllContractStateRequest: {
     typeUrl: string;
-    encode(message: QueryAllContractStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllContractStateRequest;
+    encode(message: QueryAllContractStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryAllContractStateRequest;
     fromPartial(object: Partial<QueryAllContractStateRequest>): QueryAllContractStateRequest;
     fromAmino(object: QueryAllContractStateRequestAmino): QueryAllContractStateRequest;
     toAmino(message: QueryAllContractStateRequest): QueryAllContractStateRequestAmino;
@@ -805,8 +804,8 @@ export declare const QueryAllContractStateRequest: {
 };
 export declare const QueryAllContractStateResponse: {
     typeUrl: string;
-    encode(message: QueryAllContractStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllContractStateResponse;
+    encode(message: QueryAllContractStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryAllContractStateResponse;
     fromPartial(object: Partial<QueryAllContractStateResponse>): QueryAllContractStateResponse;
     fromAmino(object: QueryAllContractStateResponseAmino): QueryAllContractStateResponse;
     toAmino(message: QueryAllContractStateResponse): QueryAllContractStateResponseAmino;
@@ -818,8 +817,8 @@ export declare const QueryAllContractStateResponse: {
 };
 export declare const QueryRawContractStateRequest: {
     typeUrl: string;
-    encode(message: QueryRawContractStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryRawContractStateRequest;
+    encode(message: QueryRawContractStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryRawContractStateRequest;
     fromPartial(object: Partial<QueryRawContractStateRequest>): QueryRawContractStateRequest;
     fromAmino(object: QueryRawContractStateRequestAmino): QueryRawContractStateRequest;
     toAmino(message: QueryRawContractStateRequest): QueryRawContractStateRequestAmino;
@@ -831,8 +830,8 @@ export declare const QueryRawContractStateRequest: {
 };
 export declare const QueryRawContractStateResponse: {
     typeUrl: string;
-    encode(message: QueryRawContractStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryRawContractStateResponse;
+    encode(message: QueryRawContractStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryRawContractStateResponse;
     fromPartial(object: Partial<QueryRawContractStateResponse>): QueryRawContractStateResponse;
     fromAmino(object: QueryRawContractStateResponseAmino): QueryRawContractStateResponse;
     toAmino(message: QueryRawContractStateResponse): QueryRawContractStateResponseAmino;
@@ -844,8 +843,8 @@ export declare const QueryRawContractStateResponse: {
 };
 export declare const QuerySmartContractStateRequest: {
     typeUrl: string;
-    encode(message: QuerySmartContractStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySmartContractStateRequest;
+    encode(message: QuerySmartContractStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySmartContractStateRequest;
     fromPartial(object: Partial<QuerySmartContractStateRequest>): QuerySmartContractStateRequest;
     fromAmino(object: QuerySmartContractStateRequestAmino): QuerySmartContractStateRequest;
     toAmino(message: QuerySmartContractStateRequest): QuerySmartContractStateRequestAmino;
@@ -857,8 +856,8 @@ export declare const QuerySmartContractStateRequest: {
 };
 export declare const QuerySmartContractStateResponse: {
     typeUrl: string;
-    encode(message: QuerySmartContractStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySmartContractStateResponse;
+    encode(message: QuerySmartContractStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QuerySmartContractStateResponse;
     fromPartial(object: Partial<QuerySmartContractStateResponse>): QuerySmartContractStateResponse;
     fromAmino(object: QuerySmartContractStateResponseAmino): QuerySmartContractStateResponse;
     toAmino(message: QuerySmartContractStateResponse): QuerySmartContractStateResponseAmino;
@@ -870,8 +869,8 @@ export declare const QuerySmartContractStateResponse: {
 };
 export declare const QueryCodeRequest: {
     typeUrl: string;
-    encode(message: QueryCodeRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCodeRequest;
+    encode(message: QueryCodeRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCodeRequest;
     fromPartial(object: Partial<QueryCodeRequest>): QueryCodeRequest;
     fromAmino(object: QueryCodeRequestAmino): QueryCodeRequest;
     toAmino(message: QueryCodeRequest): QueryCodeRequestAmino;
@@ -883,8 +882,8 @@ export declare const QueryCodeRequest: {
 };
 export declare const CodeInfoResponse: {
     typeUrl: string;
-    encode(message: CodeInfoResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CodeInfoResponse;
+    encode(message: CodeInfoResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CodeInfoResponse;
     fromPartial(object: Partial<CodeInfoResponse>): CodeInfoResponse;
     fromAmino(object: CodeInfoResponseAmino): CodeInfoResponse;
     toAmino(message: CodeInfoResponse): CodeInfoResponseAmino;
@@ -896,8 +895,8 @@ export declare const CodeInfoResponse: {
 };
 export declare const QueryCodeResponse: {
     typeUrl: string;
-    encode(message: QueryCodeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCodeResponse;
+    encode(message: QueryCodeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCodeResponse;
     fromPartial(object: Partial<QueryCodeResponse>): QueryCodeResponse;
     fromAmino(object: QueryCodeResponseAmino): QueryCodeResponse;
     toAmino(message: QueryCodeResponse): QueryCodeResponseAmino;
@@ -909,8 +908,8 @@ export declare const QueryCodeResponse: {
 };
 export declare const QueryCodesRequest: {
     typeUrl: string;
-    encode(message: QueryCodesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCodesRequest;
+    encode(message: QueryCodesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCodesRequest;
     fromPartial(object: Partial<QueryCodesRequest>): QueryCodesRequest;
     fromAmino(object: QueryCodesRequestAmino): QueryCodesRequest;
     toAmino(message: QueryCodesRequest): QueryCodesRequestAmino;
@@ -922,8 +921,8 @@ export declare const QueryCodesRequest: {
 };
 export declare const QueryCodesResponse: {
     typeUrl: string;
-    encode(message: QueryCodesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCodesResponse;
+    encode(message: QueryCodesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCodesResponse;
     fromPartial(object: Partial<QueryCodesResponse>): QueryCodesResponse;
     fromAmino(object: QueryCodesResponseAmino): QueryCodesResponse;
     toAmino(message: QueryCodesResponse): QueryCodesResponseAmino;
@@ -935,8 +934,8 @@ export declare const QueryCodesResponse: {
 };
 export declare const QueryPinnedCodesRequest: {
     typeUrl: string;
-    encode(message: QueryPinnedCodesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPinnedCodesRequest;
+    encode(message: QueryPinnedCodesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPinnedCodesRequest;
     fromPartial(object: Partial<QueryPinnedCodesRequest>): QueryPinnedCodesRequest;
     fromAmino(object: QueryPinnedCodesRequestAmino): QueryPinnedCodesRequest;
     toAmino(message: QueryPinnedCodesRequest): QueryPinnedCodesRequestAmino;
@@ -948,8 +947,8 @@ export declare const QueryPinnedCodesRequest: {
 };
 export declare const QueryPinnedCodesResponse: {
     typeUrl: string;
-    encode(message: QueryPinnedCodesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPinnedCodesResponse;
+    encode(message: QueryPinnedCodesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPinnedCodesResponse;
     fromPartial(object: Partial<QueryPinnedCodesResponse>): QueryPinnedCodesResponse;
     fromAmino(object: QueryPinnedCodesResponseAmino): QueryPinnedCodesResponse;
     toAmino(message: QueryPinnedCodesResponse): QueryPinnedCodesResponseAmino;
@@ -961,8 +960,8 @@ export declare const QueryPinnedCodesResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
-    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -974,8 +973,8 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
@@ -987,8 +986,8 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryContractsByCreatorRequest: {
     typeUrl: string;
-    encode(message: QueryContractsByCreatorRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractsByCreatorRequest;
+    encode(message: QueryContractsByCreatorRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryContractsByCreatorRequest;
     fromPartial(object: Partial<QueryContractsByCreatorRequest>): QueryContractsByCreatorRequest;
     fromAmino(object: QueryContractsByCreatorRequestAmino): QueryContractsByCreatorRequest;
     toAmino(message: QueryContractsByCreatorRequest): QueryContractsByCreatorRequestAmino;
@@ -1000,8 +999,8 @@ export declare const QueryContractsByCreatorRequest: {
 };
 export declare const QueryContractsByCreatorResponse: {
     typeUrl: string;
-    encode(message: QueryContractsByCreatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryContractsByCreatorResponse;
+    encode(message: QueryContractsByCreatorResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryContractsByCreatorResponse;
     fromPartial(object: Partial<QueryContractsByCreatorResponse>): QueryContractsByCreatorResponse;
     fromAmino(object: QueryContractsByCreatorResponseAmino): QueryContractsByCreatorResponse;
     toAmino(message: QueryContractsByCreatorResponse): QueryContractsByCreatorResponseAmino;

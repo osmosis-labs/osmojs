@@ -1,10 +1,10 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** ===================== SwapExactAmountIn */
 export interface SwapExactAmountIn {
     sender: string;
     /** token_in is the token to be sent to the pool. */
-    tokenIn?: Coin;
+    tokenIn: Coin;
     /** token_out_denom is the token denom to be received from the pool. */
     tokenOutDenom: string;
     /**
@@ -41,7 +41,7 @@ export interface SwapExactAmountInAminoMsg {
 /** ===================== SwapExactAmountIn */
 export interface SwapExactAmountInSDKType {
     sender: string;
-    token_in?: CoinSDKType;
+    token_in: CoinSDKType;
     token_out_denom: string;
     token_out_min_amount: string;
     swap_fee: string;
@@ -51,7 +51,7 @@ export interface SwapExactAmountInSudoMsg {
      * swap_exact_amount_in is the structure containing all the request
      * information for this message.
      */
-    swapExactAmountIn?: SwapExactAmountIn;
+    swapExactAmountIn: SwapExactAmountIn;
 }
 export interface SwapExactAmountInSudoMsgProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountInSudoMsg";
@@ -69,7 +69,7 @@ export interface SwapExactAmountInSudoMsgAminoMsg {
     value: SwapExactAmountInSudoMsgAmino;
 }
 export interface SwapExactAmountInSudoMsgSDKType {
-    swap_exact_amount_in?: SwapExactAmountInSDKType;
+    swap_exact_amount_in: SwapExactAmountInSDKType;
 }
 export interface SwapExactAmountInSudoMsgResponse {
     /** token_out_amount is the token out computed from this swap estimate call. */
@@ -94,7 +94,7 @@ export interface SwapExactAmountInSudoMsgResponseSDKType {
 export interface SwapExactAmountOut {
     sender: string;
     /** token_out is the token to be sent out of the pool. */
-    tokenOut?: Coin;
+    tokenOut: Coin;
     /** token_in_denom is the token denom to be sent too the pool. */
     tokenInDenom: string;
     /**
@@ -131,7 +131,7 @@ export interface SwapExactAmountOutAminoMsg {
 /** ===================== SwapExactAmountOut */
 export interface SwapExactAmountOutSDKType {
     sender: string;
-    token_out?: CoinSDKType;
+    token_out: CoinSDKType;
     token_in_denom: string;
     token_in_max_amount: string;
     swap_fee: string;
@@ -141,7 +141,7 @@ export interface SwapExactAmountOutSudoMsg {
      * swap_exact_amount_out is the structure containing all the request
      * information for this message.
      */
-    swapExactAmountOut?: SwapExactAmountOut;
+    swapExactAmountOut: SwapExactAmountOut;
 }
 export interface SwapExactAmountOutSudoMsgProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountOutSudoMsg";
@@ -159,7 +159,7 @@ export interface SwapExactAmountOutSudoMsgAminoMsg {
     value: SwapExactAmountOutSudoMsgAmino;
 }
 export interface SwapExactAmountOutSudoMsgSDKType {
-    swap_exact_amount_out?: SwapExactAmountOutSDKType;
+    swap_exact_amount_out: SwapExactAmountOutSDKType;
 }
 export interface SwapExactAmountOutSudoMsgResponse {
     /** token_in_amount is the token in computed from this swap estimate call. */
@@ -182,8 +182,8 @@ export interface SwapExactAmountOutSudoMsgResponseSDKType {
 }
 export declare const SwapExactAmountIn: {
     typeUrl: string;
-    encode(message: SwapExactAmountIn, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountIn;
+    encode(message: SwapExactAmountIn, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountIn;
     fromPartial(object: Partial<SwapExactAmountIn>): SwapExactAmountIn;
     fromAmino(object: SwapExactAmountInAmino): SwapExactAmountIn;
     toAmino(message: SwapExactAmountIn): SwapExactAmountInAmino;
@@ -195,8 +195,8 @@ export declare const SwapExactAmountIn: {
 };
 export declare const SwapExactAmountInSudoMsg: {
     typeUrl: string;
-    encode(message: SwapExactAmountInSudoMsg, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountInSudoMsg;
+    encode(message: SwapExactAmountInSudoMsg, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountInSudoMsg;
     fromPartial(object: Partial<SwapExactAmountInSudoMsg>): SwapExactAmountInSudoMsg;
     fromAmino(object: SwapExactAmountInSudoMsgAmino): SwapExactAmountInSudoMsg;
     toAmino(message: SwapExactAmountInSudoMsg): SwapExactAmountInSudoMsgAmino;
@@ -208,8 +208,8 @@ export declare const SwapExactAmountInSudoMsg: {
 };
 export declare const SwapExactAmountInSudoMsgResponse: {
     typeUrl: string;
-    encode(message: SwapExactAmountInSudoMsgResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountInSudoMsgResponse;
+    encode(message: SwapExactAmountInSudoMsgResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountInSudoMsgResponse;
     fromPartial(object: Partial<SwapExactAmountInSudoMsgResponse>): SwapExactAmountInSudoMsgResponse;
     fromAmino(object: SwapExactAmountInSudoMsgResponseAmino): SwapExactAmountInSudoMsgResponse;
     toAmino(message: SwapExactAmountInSudoMsgResponse): SwapExactAmountInSudoMsgResponseAmino;
@@ -221,8 +221,8 @@ export declare const SwapExactAmountInSudoMsgResponse: {
 };
 export declare const SwapExactAmountOut: {
     typeUrl: string;
-    encode(message: SwapExactAmountOut, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountOut;
+    encode(message: SwapExactAmountOut, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountOut;
     fromPartial(object: Partial<SwapExactAmountOut>): SwapExactAmountOut;
     fromAmino(object: SwapExactAmountOutAmino): SwapExactAmountOut;
     toAmino(message: SwapExactAmountOut): SwapExactAmountOutAmino;
@@ -234,8 +234,8 @@ export declare const SwapExactAmountOut: {
 };
 export declare const SwapExactAmountOutSudoMsg: {
     typeUrl: string;
-    encode(message: SwapExactAmountOutSudoMsg, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountOutSudoMsg;
+    encode(message: SwapExactAmountOutSudoMsg, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountOutSudoMsg;
     fromPartial(object: Partial<SwapExactAmountOutSudoMsg>): SwapExactAmountOutSudoMsg;
     fromAmino(object: SwapExactAmountOutSudoMsgAmino): SwapExactAmountOutSudoMsg;
     toAmino(message: SwapExactAmountOutSudoMsg): SwapExactAmountOutSudoMsgAmino;
@@ -247,8 +247,8 @@ export declare const SwapExactAmountOutSudoMsg: {
 };
 export declare const SwapExactAmountOutSudoMsgResponse: {
     typeUrl: string;
-    encode(message: SwapExactAmountOutSudoMsgResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountOutSudoMsgResponse;
+    encode(message: SwapExactAmountOutSudoMsgResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountOutSudoMsgResponse;
     fromPartial(object: Partial<SwapExactAmountOutSudoMsgResponse>): SwapExactAmountOutSudoMsgResponse;
     fromAmino(object: SwapExactAmountOutSudoMsgResponseAmino): SwapExactAmountOutSudoMsgResponse;
     toAmino(message: SwapExactAmountOutSudoMsgResponse): SwapExactAmountOutSudoMsgResponseAmino;

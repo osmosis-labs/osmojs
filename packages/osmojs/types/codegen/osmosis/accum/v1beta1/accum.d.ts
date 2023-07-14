@@ -1,5 +1,5 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * AccumulatorContent is the state-entry for the global accumulator.
  * It contains the name of the global accumulator and the total value of
@@ -87,7 +87,7 @@ export interface Record {
      * into a single one.
      */
     unclaimedRewardsTotal: DecCoin[];
-    options?: Options;
+    options: Options;
 }
 export interface RecordProtoMsg {
     typeUrl: "/osmosis.accum.v1beta1.Record";
@@ -145,12 +145,12 @@ export interface RecordSDKType {
     num_shares: string;
     accum_value_per_share: DecCoinSDKType[];
     unclaimed_rewards_total: DecCoinSDKType[];
-    options?: OptionsSDKType;
+    options: OptionsSDKType;
 }
 export declare const AccumulatorContent: {
     typeUrl: string;
-    encode(message: AccumulatorContent, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccumulatorContent;
+    encode(message: AccumulatorContent, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccumulatorContent;
     fromPartial(object: Partial<AccumulatorContent>): AccumulatorContent;
     fromAmino(object: AccumulatorContentAmino): AccumulatorContent;
     toAmino(message: AccumulatorContent): AccumulatorContentAmino;
@@ -162,8 +162,8 @@ export declare const AccumulatorContent: {
 };
 export declare const Options: {
     typeUrl: string;
-    encode(_: Options, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Options;
+    encode(_: Options, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Options;
     fromPartial(_: Partial<Options>): Options;
     fromAmino(_: OptionsAmino): Options;
     toAmino(_: Options): OptionsAmino;
@@ -175,8 +175,8 @@ export declare const Options: {
 };
 export declare const Record: {
     typeUrl: string;
-    encode(message: Record, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Record;
+    encode(message: Record, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Record;
     fromPartial(object: Partial<Record>): Record;
     fromAmino(object: RecordAmino): Record;
     toAmino(message: Record): RecordAmino;

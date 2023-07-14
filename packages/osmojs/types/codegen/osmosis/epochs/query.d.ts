@@ -1,6 +1,5 @@
 import { EpochInfo, EpochInfoAmino, EpochInfoSDKType } from "./genesis";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface QueryEpochsInfoRequest {
 }
 export interface QueryEpochsInfoRequestProtoMsg {
@@ -50,7 +49,7 @@ export interface QueryCurrentEpochRequestSDKType {
     identifier: string;
 }
 export interface QueryCurrentEpochResponse {
-    currentEpoch: Long;
+    currentEpoch: bigint;
 }
 export interface QueryCurrentEpochResponseProtoMsg {
     typeUrl: "/osmosis.epochs.v1beta1.QueryCurrentEpochResponse";
@@ -64,12 +63,12 @@ export interface QueryCurrentEpochResponseAminoMsg {
     value: QueryCurrentEpochResponseAmino;
 }
 export interface QueryCurrentEpochResponseSDKType {
-    current_epoch: Long;
+    current_epoch: bigint;
 }
 export declare const QueryEpochsInfoRequest: {
     typeUrl: string;
-    encode(_: QueryEpochsInfoRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoRequest;
+    encode(_: QueryEpochsInfoRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryEpochsInfoRequest;
     fromPartial(_: Partial<QueryEpochsInfoRequest>): QueryEpochsInfoRequest;
     fromAmino(_: QueryEpochsInfoRequestAmino): QueryEpochsInfoRequest;
     toAmino(_: QueryEpochsInfoRequest): QueryEpochsInfoRequestAmino;
@@ -81,8 +80,8 @@ export declare const QueryEpochsInfoRequest: {
 };
 export declare const QueryEpochsInfoResponse: {
     typeUrl: string;
-    encode(message: QueryEpochsInfoResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoResponse;
+    encode(message: QueryEpochsInfoResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryEpochsInfoResponse;
     fromPartial(object: Partial<QueryEpochsInfoResponse>): QueryEpochsInfoResponse;
     fromAmino(object: QueryEpochsInfoResponseAmino): QueryEpochsInfoResponse;
     toAmino(message: QueryEpochsInfoResponse): QueryEpochsInfoResponseAmino;
@@ -94,8 +93,8 @@ export declare const QueryEpochsInfoResponse: {
 };
 export declare const QueryCurrentEpochRequest: {
     typeUrl: string;
-    encode(message: QueryCurrentEpochRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochRequest;
+    encode(message: QueryCurrentEpochRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCurrentEpochRequest;
     fromPartial(object: Partial<QueryCurrentEpochRequest>): QueryCurrentEpochRequest;
     fromAmino(object: QueryCurrentEpochRequestAmino): QueryCurrentEpochRequest;
     toAmino(message: QueryCurrentEpochRequest): QueryCurrentEpochRequestAmino;
@@ -107,8 +106,8 @@ export declare const QueryCurrentEpochRequest: {
 };
 export declare const QueryCurrentEpochResponse: {
     typeUrl: string;
-    encode(message: QueryCurrentEpochResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochResponse;
+    encode(message: QueryCurrentEpochResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryCurrentEpochResponse;
     fromPartial(object: Partial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse;
     fromAmino(object: QueryCurrentEpochResponseAmino): QueryCurrentEpochResponse;
     toAmino(message: QueryCurrentEpochResponse): QueryCurrentEpochResponseAmino;

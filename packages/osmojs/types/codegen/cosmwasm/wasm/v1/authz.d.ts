@@ -1,7 +1,6 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * ContractExecutionAuthorization defines authorization for wasm execute.
  * Since: wasmd 0.30
@@ -79,19 +78,19 @@ export interface ContractGrant {
      * Limit defines execution limits that are enforced and updated when the grant
      * is applied. When the limit lapsed the grant is removed.
      */
-    limit?: (MaxCallsLimit & MaxFundsLimit & CombinedLimit & Any) | undefined;
+    limit: (MaxCallsLimit & MaxFundsLimit & CombinedLimit & Any) | undefined;
     /**
      * Filter define more fine-grained control on the message payload passed
      * to the contract in the operation. When no filter applies on execution, the
      * operation is prohibited.
      */
-    filter?: (AllowAllMessagesFilter & AcceptedMessageKeysFilter & AcceptedMessagesFilter & Any) | undefined;
+    filter: (AllowAllMessagesFilter & AcceptedMessageKeysFilter & AcceptedMessagesFilter & Any) | undefined;
 }
 export interface ContractGrantProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.ContractGrant";
     value: Uint8Array;
 }
-export type ContractGrantEncoded = Omit<ContractGrant, "limit" | "filter"> & {
+export declare type ContractGrantEncoded = Omit<ContractGrant, "limit" | "filter"> & {
     /**
      * Limit defines execution limits that are enforced and updated when the grant
      * is applied. When the limit lapsed the grant is removed.
@@ -133,8 +132,8 @@ export interface ContractGrantAminoMsg {
  */
 export interface ContractGrantSDKType {
     contract: string;
-    limit?: MaxCallsLimitSDKType | MaxFundsLimitSDKType | CombinedLimitSDKType | AnySDKType | undefined;
-    filter?: AllowAllMessagesFilterSDKType | AcceptedMessageKeysFilterSDKType | AcceptedMessagesFilterSDKType | AnySDKType | undefined;
+    limit: MaxCallsLimitSDKType | MaxFundsLimitSDKType | CombinedLimitSDKType | AnySDKType | undefined;
+    filter: AllowAllMessagesFilterSDKType | AcceptedMessageKeysFilterSDKType | AcceptedMessagesFilterSDKType | AnySDKType | undefined;
 }
 /**
  * MaxCallsLimit limited number of calls to the contract. No funds transferable.
@@ -143,7 +142,7 @@ export interface ContractGrantSDKType {
 export interface MaxCallsLimit {
     $typeUrl?: string;
     /** Remaining number that is decremented on each execution */
-    remaining: Long;
+    remaining: bigint;
 }
 export interface MaxCallsLimitProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.MaxCallsLimit";
@@ -167,7 +166,7 @@ export interface MaxCallsLimitAminoMsg {
  */
 export interface MaxCallsLimitSDKType {
     $typeUrl?: string;
-    remaining: Long;
+    remaining: bigint;
 }
 /**
  * MaxFundsLimit defines the maximal amounts that can be sent to the contract.
@@ -210,7 +209,7 @@ export interface MaxFundsLimitSDKType {
 export interface CombinedLimit {
     $typeUrl?: string;
     /** Remaining number that is decremented on each execution */
-    callsRemaining: Long;
+    callsRemaining: bigint;
     /** Amounts is the maximal amount of tokens transferable to the contract. */
     amounts: Coin[];
 }
@@ -240,7 +239,7 @@ export interface CombinedLimitAminoMsg {
  */
 export interface CombinedLimitSDKType {
     $typeUrl?: string;
-    calls_remaining: Long;
+    calls_remaining: bigint;
     amounts: CoinSDKType[];
 }
 /**
@@ -348,8 +347,8 @@ export interface AcceptedMessagesFilterSDKType {
 }
 export declare const ContractExecutionAuthorization: {
     typeUrl: string;
-    encode(message: ContractExecutionAuthorization, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ContractExecutionAuthorization;
+    encode(message: ContractExecutionAuthorization, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ContractExecutionAuthorization;
     fromPartial(object: Partial<ContractExecutionAuthorization>): ContractExecutionAuthorization;
     fromAmino(object: ContractExecutionAuthorizationAmino): ContractExecutionAuthorization;
     toAmino(message: ContractExecutionAuthorization): ContractExecutionAuthorizationAmino;
@@ -361,8 +360,8 @@ export declare const ContractExecutionAuthorization: {
 };
 export declare const ContractMigrationAuthorization: {
     typeUrl: string;
-    encode(message: ContractMigrationAuthorization, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ContractMigrationAuthorization;
+    encode(message: ContractMigrationAuthorization, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ContractMigrationAuthorization;
     fromPartial(object: Partial<ContractMigrationAuthorization>): ContractMigrationAuthorization;
     fromAmino(object: ContractMigrationAuthorizationAmino): ContractMigrationAuthorization;
     toAmino(message: ContractMigrationAuthorization): ContractMigrationAuthorizationAmino;
@@ -374,8 +373,8 @@ export declare const ContractMigrationAuthorization: {
 };
 export declare const ContractGrant: {
     typeUrl: string;
-    encode(message: ContractGrant, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ContractGrant;
+    encode(message: ContractGrant, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ContractGrant;
     fromPartial(object: Partial<ContractGrant>): ContractGrant;
     fromAmino(object: ContractGrantAmino): ContractGrant;
     toAmino(message: ContractGrant): ContractGrantAmino;
@@ -387,8 +386,8 @@ export declare const ContractGrant: {
 };
 export declare const MaxCallsLimit: {
     typeUrl: string;
-    encode(message: MaxCallsLimit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MaxCallsLimit;
+    encode(message: MaxCallsLimit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MaxCallsLimit;
     fromPartial(object: Partial<MaxCallsLimit>): MaxCallsLimit;
     fromAmino(object: MaxCallsLimitAmino): MaxCallsLimit;
     toAmino(message: MaxCallsLimit): MaxCallsLimitAmino;
@@ -400,8 +399,8 @@ export declare const MaxCallsLimit: {
 };
 export declare const MaxFundsLimit: {
     typeUrl: string;
-    encode(message: MaxFundsLimit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MaxFundsLimit;
+    encode(message: MaxFundsLimit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MaxFundsLimit;
     fromPartial(object: Partial<MaxFundsLimit>): MaxFundsLimit;
     fromAmino(object: MaxFundsLimitAmino): MaxFundsLimit;
     toAmino(message: MaxFundsLimit): MaxFundsLimitAmino;
@@ -413,8 +412,8 @@ export declare const MaxFundsLimit: {
 };
 export declare const CombinedLimit: {
     typeUrl: string;
-    encode(message: CombinedLimit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CombinedLimit;
+    encode(message: CombinedLimit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CombinedLimit;
     fromPartial(object: Partial<CombinedLimit>): CombinedLimit;
     fromAmino(object: CombinedLimitAmino): CombinedLimit;
     toAmino(message: CombinedLimit): CombinedLimitAmino;
@@ -426,8 +425,8 @@ export declare const CombinedLimit: {
 };
 export declare const AllowAllMessagesFilter: {
     typeUrl: string;
-    encode(_: AllowAllMessagesFilter, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AllowAllMessagesFilter;
+    encode(_: AllowAllMessagesFilter, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AllowAllMessagesFilter;
     fromPartial(_: Partial<AllowAllMessagesFilter>): AllowAllMessagesFilter;
     fromAmino(_: AllowAllMessagesFilterAmino): AllowAllMessagesFilter;
     toAmino(_: AllowAllMessagesFilter): AllowAllMessagesFilterAmino;
@@ -439,8 +438,8 @@ export declare const AllowAllMessagesFilter: {
 };
 export declare const AcceptedMessageKeysFilter: {
     typeUrl: string;
-    encode(message: AcceptedMessageKeysFilter, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AcceptedMessageKeysFilter;
+    encode(message: AcceptedMessageKeysFilter, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AcceptedMessageKeysFilter;
     fromPartial(object: Partial<AcceptedMessageKeysFilter>): AcceptedMessageKeysFilter;
     fromAmino(object: AcceptedMessageKeysFilterAmino): AcceptedMessageKeysFilter;
     toAmino(message: AcceptedMessageKeysFilter): AcceptedMessageKeysFilterAmino;
@@ -452,8 +451,8 @@ export declare const AcceptedMessageKeysFilter: {
 };
 export declare const AcceptedMessagesFilter: {
     typeUrl: string;
-    encode(message: AcceptedMessagesFilter, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AcceptedMessagesFilter;
+    encode(message: AcceptedMessagesFilter, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AcceptedMessagesFilter;
     fromPartial(object: Partial<AcceptedMessagesFilter>): AcceptedMessagesFilter;
     fromAmino(object: AcceptedMessagesFilterAmino): AcceptedMessagesFilter;
     toAmino(message: AcceptedMessagesFilter): AcceptedMessagesFilterAmino;
@@ -463,9 +462,9 @@ export declare const AcceptedMessagesFilter: {
     toProto(message: AcceptedMessagesFilter): Uint8Array;
     toProtoMsg(message: AcceptedMessagesFilter): AcceptedMessagesFilterProtoMsg;
 };
-export declare const Cosmwasm_wasmv1ContractAuthzLimitX_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => MaxCallsLimit | MaxFundsLimit | CombinedLimit | Any;
+export declare const Cosmwasm_wasmv1ContractAuthzLimitX_InterfaceDecoder: (input: BinaryReader | Uint8Array) => MaxCallsLimit | MaxFundsLimit | CombinedLimit | Any;
 export declare const Cosmwasm_wasmv1ContractAuthzLimitX_FromAmino: (content: AnyAmino) => Any;
 export declare const Cosmwasm_wasmv1ContractAuthzLimitX_ToAmino: (content: Any) => AnyAmino;
-export declare const Cosmwasm_wasmv1ContractAuthzFilterX_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => AllowAllMessagesFilter | AcceptedMessageKeysFilter | AcceptedMessagesFilter | Any;
+export declare const Cosmwasm_wasmv1ContractAuthzFilterX_InterfaceDecoder: (input: BinaryReader | Uint8Array) => AllowAllMessagesFilter | AcceptedMessageKeysFilter | AcceptedMessagesFilter | Any;
 export declare const Cosmwasm_wasmv1ContractAuthzFilterX_FromAmino: (content: AnyAmino) => Any;
 export declare const Cosmwasm_wasmv1ContractAuthzFilterX_ToAmino: (content: Any) => AnyAmino;

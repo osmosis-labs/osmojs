@@ -1,7 +1,6 @@
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgStoreCode submit Wasm code to the system */
 export interface MsgStoreCode {
     /** Sender is the actor that signed the messages */
@@ -12,7 +11,7 @@ export interface MsgStoreCode {
      * InstantiatePermission access control to apply on contract creation,
      * optional
      */
-    instantiatePermission?: AccessConfig;
+    instantiatePermission: AccessConfig;
 }
 export interface MsgStoreCodeProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.MsgStoreCode";
@@ -38,12 +37,12 @@ export interface MsgStoreCodeAminoMsg {
 export interface MsgStoreCodeSDKType {
     sender: string;
     wasm_byte_code: Uint8Array;
-    instantiate_permission?: AccessConfigSDKType;
+    instantiate_permission: AccessConfigSDKType;
 }
 /** MsgStoreCodeResponse returns store result data. */
 export interface MsgStoreCodeResponse {
     /** CodeID is the reference to the stored WASM code */
-    codeId: Long;
+    codeId: bigint;
     /** Checksum is the sha256 hash of the stored code */
     checksum: Uint8Array;
 }
@@ -64,7 +63,7 @@ export interface MsgStoreCodeResponseAminoMsg {
 }
 /** MsgStoreCodeResponse returns store result data. */
 export interface MsgStoreCodeResponseSDKType {
-    code_id: Long;
+    code_id: bigint;
     checksum: Uint8Array;
 }
 /**
@@ -77,7 +76,7 @@ export interface MsgInstantiateContract {
     /** Admin is an optional address that can execute migrations */
     admin: string;
     /** CodeID is the reference to the stored WASM code */
-    codeId: Long;
+    codeId: bigint;
     /** Label is optional metadata to be stored with a contract instance. */
     label: string;
     /** Msg json encoded message to be passed to the contract on instantiation */
@@ -118,7 +117,7 @@ export interface MsgInstantiateContractAminoMsg {
 export interface MsgInstantiateContractSDKType {
     sender: string;
     admin: string;
-    code_id: Long;
+    code_id: bigint;
     label: string;
     msg: Uint8Array;
     funds: CoinSDKType[];
@@ -133,7 +132,7 @@ export interface MsgInstantiateContract2 {
     /** Admin is an optional address that can execute migrations */
     admin: string;
     /** CodeID is the reference to the stored WASM code */
-    codeId: Long;
+    codeId: bigint;
     /** Label is optional metadata to be stored with a contract instance. */
     label: string;
     /** Msg json encoded message to be passed to the contract on instantiation */
@@ -188,7 +187,7 @@ export interface MsgInstantiateContract2AminoMsg {
 export interface MsgInstantiateContract2SDKType {
     sender: string;
     admin: string;
-    code_id: Long;
+    code_id: bigint;
     label: string;
     msg: Uint8Array;
     funds: CoinSDKType[];
@@ -315,7 +314,7 @@ export interface MsgMigrateContract {
     /** Contract is the address of the smart contract */
     contract: string;
     /** CodeID references the new WASM code */
-    codeId: Long;
+    codeId: bigint;
     /** Msg json encoded message to be passed to the contract on migration */
     msg: Uint8Array;
 }
@@ -342,7 +341,7 @@ export interface MsgMigrateContractAminoMsg {
 export interface MsgMigrateContractSDKType {
     sender: string;
     contract: string;
-    code_id: Long;
+    code_id: bigint;
     msg: Uint8Array;
 }
 /** MsgMigrateContractResponse returns contract migration result data. */
@@ -471,9 +470,9 @@ export interface MsgUpdateInstantiateConfig {
     /** Sender is the that actor that signed the messages */
     sender: string;
     /** CodeID references the stored WASM code */
-    codeId: Long;
+    codeId: bigint;
     /** NewInstantiatePermission is the new access control */
-    newInstantiatePermission?: AccessConfig;
+    newInstantiatePermission: AccessConfig;
 }
 export interface MsgUpdateInstantiateConfigProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.MsgUpdateInstantiateConfig";
@@ -495,8 +494,8 @@ export interface MsgUpdateInstantiateConfigAminoMsg {
 /** MsgUpdateInstantiateConfig updates instantiate config for a smart contract */
 export interface MsgUpdateInstantiateConfigSDKType {
     sender: string;
-    code_id: Long;
-    new_instantiate_permission?: AccessConfigSDKType;
+    code_id: bigint;
+    new_instantiate_permission: AccessConfigSDKType;
 }
 /** MsgUpdateInstantiateConfigResponse returns empty data */
 export interface MsgUpdateInstantiateConfigResponse {
@@ -517,8 +516,8 @@ export interface MsgUpdateInstantiateConfigResponseSDKType {
 }
 export declare const MsgStoreCode: {
     typeUrl: string;
-    encode(message: MsgStoreCode, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCode;
+    encode(message: MsgStoreCode, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgStoreCode;
     fromPartial(object: Partial<MsgStoreCode>): MsgStoreCode;
     fromAmino(object: MsgStoreCodeAmino): MsgStoreCode;
     toAmino(message: MsgStoreCode): MsgStoreCodeAmino;
@@ -530,8 +529,8 @@ export declare const MsgStoreCode: {
 };
 export declare const MsgStoreCodeResponse: {
     typeUrl: string;
-    encode(message: MsgStoreCodeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCodeResponse;
+    encode(message: MsgStoreCodeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgStoreCodeResponse;
     fromPartial(object: Partial<MsgStoreCodeResponse>): MsgStoreCodeResponse;
     fromAmino(object: MsgStoreCodeResponseAmino): MsgStoreCodeResponse;
     toAmino(message: MsgStoreCodeResponse): MsgStoreCodeResponseAmino;
@@ -543,8 +542,8 @@ export declare const MsgStoreCodeResponse: {
 };
 export declare const MsgInstantiateContract: {
     typeUrl: string;
-    encode(message: MsgInstantiateContract, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContract;
+    encode(message: MsgInstantiateContract, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgInstantiateContract;
     fromPartial(object: Partial<MsgInstantiateContract>): MsgInstantiateContract;
     fromAmino(object: MsgInstantiateContractAmino): MsgInstantiateContract;
     toAmino(message: MsgInstantiateContract): MsgInstantiateContractAmino;
@@ -556,8 +555,8 @@ export declare const MsgInstantiateContract: {
 };
 export declare const MsgInstantiateContract2: {
     typeUrl: string;
-    encode(message: MsgInstantiateContract2, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContract2;
+    encode(message: MsgInstantiateContract2, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgInstantiateContract2;
     fromPartial(object: Partial<MsgInstantiateContract2>): MsgInstantiateContract2;
     fromAmino(object: MsgInstantiateContract2Amino): MsgInstantiateContract2;
     toAmino(message: MsgInstantiateContract2): MsgInstantiateContract2Amino;
@@ -569,8 +568,8 @@ export declare const MsgInstantiateContract2: {
 };
 export declare const MsgInstantiateContractResponse: {
     typeUrl: string;
-    encode(message: MsgInstantiateContractResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContractResponse;
+    encode(message: MsgInstantiateContractResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgInstantiateContractResponse;
     fromPartial(object: Partial<MsgInstantiateContractResponse>): MsgInstantiateContractResponse;
     fromAmino(object: MsgInstantiateContractResponseAmino): MsgInstantiateContractResponse;
     toAmino(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseAmino;
@@ -582,8 +581,8 @@ export declare const MsgInstantiateContractResponse: {
 };
 export declare const MsgInstantiateContract2Response: {
     typeUrl: string;
-    encode(message: MsgInstantiateContract2Response, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContract2Response;
+    encode(message: MsgInstantiateContract2Response, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgInstantiateContract2Response;
     fromPartial(object: Partial<MsgInstantiateContract2Response>): MsgInstantiateContract2Response;
     fromAmino(object: MsgInstantiateContract2ResponseAmino): MsgInstantiateContract2Response;
     toAmino(message: MsgInstantiateContract2Response): MsgInstantiateContract2ResponseAmino;
@@ -595,8 +594,8 @@ export declare const MsgInstantiateContract2Response: {
 };
 export declare const MsgExecuteContract: {
     typeUrl: string;
-    encode(message: MsgExecuteContract, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContract;
+    encode(message: MsgExecuteContract, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExecuteContract;
     fromPartial(object: Partial<MsgExecuteContract>): MsgExecuteContract;
     fromAmino(object: MsgExecuteContractAmino): MsgExecuteContract;
     toAmino(message: MsgExecuteContract): MsgExecuteContractAmino;
@@ -608,8 +607,8 @@ export declare const MsgExecuteContract: {
 };
 export declare const MsgExecuteContractResponse: {
     typeUrl: string;
-    encode(message: MsgExecuteContractResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecuteContractResponse;
+    encode(message: MsgExecuteContractResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExecuteContractResponse;
     fromPartial(object: Partial<MsgExecuteContractResponse>): MsgExecuteContractResponse;
     fromAmino(object: MsgExecuteContractResponseAmino): MsgExecuteContractResponse;
     toAmino(message: MsgExecuteContractResponse): MsgExecuteContractResponseAmino;
@@ -621,8 +620,8 @@ export declare const MsgExecuteContractResponse: {
 };
 export declare const MsgMigrateContract: {
     typeUrl: string;
-    encode(message: MsgMigrateContract, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContract;
+    encode(message: MsgMigrateContract, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgMigrateContract;
     fromPartial(object: Partial<MsgMigrateContract>): MsgMigrateContract;
     fromAmino(object: MsgMigrateContractAmino): MsgMigrateContract;
     toAmino(message: MsgMigrateContract): MsgMigrateContractAmino;
@@ -634,8 +633,8 @@ export declare const MsgMigrateContract: {
 };
 export declare const MsgMigrateContractResponse: {
     typeUrl: string;
-    encode(message: MsgMigrateContractResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContractResponse;
+    encode(message: MsgMigrateContractResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgMigrateContractResponse;
     fromPartial(object: Partial<MsgMigrateContractResponse>): MsgMigrateContractResponse;
     fromAmino(object: MsgMigrateContractResponseAmino): MsgMigrateContractResponse;
     toAmino(message: MsgMigrateContractResponse): MsgMigrateContractResponseAmino;
@@ -647,8 +646,8 @@ export declare const MsgMigrateContractResponse: {
 };
 export declare const MsgUpdateAdmin: {
     typeUrl: string;
-    encode(message: MsgUpdateAdmin, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdmin;
+    encode(message: MsgUpdateAdmin, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAdmin;
     fromPartial(object: Partial<MsgUpdateAdmin>): MsgUpdateAdmin;
     fromAmino(object: MsgUpdateAdminAmino): MsgUpdateAdmin;
     toAmino(message: MsgUpdateAdmin): MsgUpdateAdminAmino;
@@ -660,8 +659,8 @@ export declare const MsgUpdateAdmin: {
 };
 export declare const MsgUpdateAdminResponse: {
     typeUrl: string;
-    encode(_: MsgUpdateAdminResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateAdminResponse;
+    encode(_: MsgUpdateAdminResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAdminResponse;
     fromPartial(_: Partial<MsgUpdateAdminResponse>): MsgUpdateAdminResponse;
     fromAmino(_: MsgUpdateAdminResponseAmino): MsgUpdateAdminResponse;
     toAmino(_: MsgUpdateAdminResponse): MsgUpdateAdminResponseAmino;
@@ -673,8 +672,8 @@ export declare const MsgUpdateAdminResponse: {
 };
 export declare const MsgClearAdmin: {
     typeUrl: string;
-    encode(message: MsgClearAdmin, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdmin;
+    encode(message: MsgClearAdmin, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgClearAdmin;
     fromPartial(object: Partial<MsgClearAdmin>): MsgClearAdmin;
     fromAmino(object: MsgClearAdminAmino): MsgClearAdmin;
     toAmino(message: MsgClearAdmin): MsgClearAdminAmino;
@@ -686,8 +685,8 @@ export declare const MsgClearAdmin: {
 };
 export declare const MsgClearAdminResponse: {
     typeUrl: string;
-    encode(_: MsgClearAdminResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgClearAdminResponse;
+    encode(_: MsgClearAdminResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgClearAdminResponse;
     fromPartial(_: Partial<MsgClearAdminResponse>): MsgClearAdminResponse;
     fromAmino(_: MsgClearAdminResponseAmino): MsgClearAdminResponse;
     toAmino(_: MsgClearAdminResponse): MsgClearAdminResponseAmino;
@@ -699,8 +698,8 @@ export declare const MsgClearAdminResponse: {
 };
 export declare const MsgUpdateInstantiateConfig: {
     typeUrl: string;
-    encode(message: MsgUpdateInstantiateConfig, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateInstantiateConfig;
+    encode(message: MsgUpdateInstantiateConfig, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateInstantiateConfig;
     fromPartial(object: Partial<MsgUpdateInstantiateConfig>): MsgUpdateInstantiateConfig;
     fromAmino(object: MsgUpdateInstantiateConfigAmino): MsgUpdateInstantiateConfig;
     toAmino(message: MsgUpdateInstantiateConfig): MsgUpdateInstantiateConfigAmino;
@@ -712,8 +711,8 @@ export declare const MsgUpdateInstantiateConfig: {
 };
 export declare const MsgUpdateInstantiateConfigResponse: {
     typeUrl: string;
-    encode(_: MsgUpdateInstantiateConfigResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateInstantiateConfigResponse;
+    encode(_: MsgUpdateInstantiateConfigResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateInstantiateConfigResponse;
     fromPartial(_: Partial<MsgUpdateInstantiateConfigResponse>): MsgUpdateInstantiateConfigResponse;
     fromAmino(_: MsgUpdateInstantiateConfigResponseAmino): MsgUpdateInstantiateConfigResponse;
     toAmino(_: MsgUpdateInstantiateConfigResponse): MsgUpdateInstantiateConfigResponseAmino;

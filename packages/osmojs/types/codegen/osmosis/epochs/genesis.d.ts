@@ -1,6 +1,5 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * EpochInfo is a struct that describes the data going into
  * a timer defined by the x/epochs module.
@@ -13,21 +12,21 @@ export interface EpochInfo {
      * If start_time is in the future, the epoch will not begin until the start
      * time.
      */
-    startTime?: Date;
+    startTime: Date;
     /**
      * duration is the time in between epoch ticks.
      * In order for intended behavior to be met, duration should
      * be greater than the chains expected block time.
      * Duration must be non-zero.
      */
-    duration?: Duration;
+    duration: Duration;
     /**
      * current_epoch is the current epoch number, or in other words,
      * how many times has the timer 'ticked'.
      * The first tick (current_epoch=1) is defined as
      * the first block whose blocktime is greater than the EpochInfo start_time.
      */
-    currentEpoch: Long;
+    currentEpoch: bigint;
     /**
      * current_epoch_start_time describes the start time of the current timer
      * interval. The interval is (current_epoch_start_time,
@@ -47,7 +46,7 @@ export interface EpochInfo {
      * * The t=34 block will start the epoch for (30, 35]
      * * The **t=36** block will start the epoch for (35, 40]
      */
-    currentEpochStartTime?: Date;
+    currentEpochStartTime: Date;
     /**
      * epoch_counting_started is a boolean, that indicates whether this
      * epoch timer has began yet.
@@ -57,7 +56,7 @@ export interface EpochInfo {
      * current_epoch_start_height is the block height at which the current epoch
      * started. (The block height at which the timer last ticked)
      */
-    currentEpochStartHeight: Long;
+    currentEpochStartHeight: bigint;
 }
 export interface EpochInfoProtoMsg {
     typeUrl: "/osmosis.epochs.v1beta1.EpochInfo";
@@ -131,12 +130,12 @@ export interface EpochInfoAminoMsg {
  */
 export interface EpochInfoSDKType {
     identifier: string;
-    start_time?: Date;
-    duration?: DurationSDKType;
-    current_epoch: Long;
-    current_epoch_start_time?: Date;
+    start_time: Date;
+    duration: DurationSDKType;
+    current_epoch: bigint;
+    current_epoch_start_time: Date;
     epoch_counting_started: boolean;
-    current_epoch_start_height: Long;
+    current_epoch_start_height: bigint;
 }
 /** GenesisState defines the epochs module's genesis state. */
 export interface GenesisState {
@@ -160,8 +159,8 @@ export interface GenesisStateSDKType {
 }
 export declare const EpochInfo: {
     typeUrl: string;
-    encode(message: EpochInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EpochInfo;
+    encode(message: EpochInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EpochInfo;
     fromPartial(object: Partial<EpochInfo>): EpochInfo;
     fromAmino(object: EpochInfoAmino): EpochInfo;
     toAmino(message: EpochInfo): EpochInfoAmino;
@@ -173,8 +172,8 @@ export declare const EpochInfo: {
 };
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

@@ -1,12 +1,11 @@
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be
  * updated in ResponseEndBlock.
  */
 export interface App {
-    protocol: Long;
+    protocol: bigint;
     software: string;
 }
 export interface AppProtoMsg {
@@ -32,7 +31,7 @@ export interface AppAminoMsg {
  * updated in ResponseEndBlock.
  */
 export interface AppSDKType {
-    protocol: Long;
+    protocol: bigint;
     software: string;
 }
 /**
@@ -41,8 +40,8 @@ export interface AppSDKType {
  * state transition machine.
  */
 export interface Consensus {
-    block: Long;
-    app: Long;
+    block: bigint;
+    app: bigint;
 }
 export interface ConsensusProtoMsg {
     typeUrl: "/tendermint.version.Consensus";
@@ -67,13 +66,13 @@ export interface ConsensusAminoMsg {
  * state transition machine.
  */
 export interface ConsensusSDKType {
-    block: Long;
-    app: Long;
+    block: bigint;
+    app: bigint;
 }
 export declare const App: {
     typeUrl: string;
-    encode(message: App, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): App;
+    encode(message: App, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): App;
     fromPartial(object: Partial<App>): App;
     fromAmino(object: AppAmino): App;
     toAmino(message: App): AppAmino;
@@ -84,8 +83,8 @@ export declare const App: {
 };
 export declare const Consensus: {
     typeUrl: string;
-    encode(message: Consensus, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Consensus;
+    encode(message: Consensus, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Consensus;
     fromPartial(object: Partial<Consensus>): Consensus;
     fromAmino(object: ConsensusAmino): Consensus;
     toAmino(message: Consensus): ConsensusAmino;

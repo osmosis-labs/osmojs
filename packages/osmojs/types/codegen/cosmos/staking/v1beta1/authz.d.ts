@@ -1,5 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * AuthorizationType defines the type of staking module authorization type
  *
@@ -31,7 +31,7 @@ export interface StakeAuthorization {
      * max_tokens specifies the maximum amount of tokens can be delegate to a validator. If it is
      * empty, there is no spend limit and any amount of coins can be delegated.
      */
-    maxTokens?: Coin;
+    maxTokens: Coin;
     /**
      * allow_list specifies list of validator addresses to whom grantee can delegate tokens on behalf of granter's
      * account.
@@ -78,7 +78,7 @@ export interface StakeAuthorizationAminoMsg {
  */
 export interface StakeAuthorizationSDKType {
     $typeUrl?: string;
-    max_tokens?: CoinSDKType;
+    max_tokens: CoinSDKType;
     allow_list?: StakeAuthorization_ValidatorsSDKType;
     deny_list?: StakeAuthorization_ValidatorsSDKType;
     authorization_type: AuthorizationType;
@@ -105,8 +105,8 @@ export interface StakeAuthorization_ValidatorsSDKType {
 }
 export declare const StakeAuthorization: {
     typeUrl: string;
-    encode(message: StakeAuthorization, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): StakeAuthorization;
+    encode(message: StakeAuthorization, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): StakeAuthorization;
     fromPartial(object: Partial<StakeAuthorization>): StakeAuthorization;
     fromAmino(object: StakeAuthorizationAmino): StakeAuthorization;
     toAmino(message: StakeAuthorization): StakeAuthorizationAmino;
@@ -118,8 +118,8 @@ export declare const StakeAuthorization: {
 };
 export declare const StakeAuthorization_Validators: {
     typeUrl: string;
-    encode(message: StakeAuthorization_Validators, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): StakeAuthorization_Validators;
+    encode(message: StakeAuthorization_Validators, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): StakeAuthorization_Validators;
     fromPartial(object: Partial<StakeAuthorization_Validators>): StakeAuthorization_Validators;
     fromAmino(object: StakeAuthorization_ValidatorsAmino): StakeAuthorization_Validators;
     toAmino(message: StakeAuthorization_Validators): StakeAuthorization_ValidatorsAmino;

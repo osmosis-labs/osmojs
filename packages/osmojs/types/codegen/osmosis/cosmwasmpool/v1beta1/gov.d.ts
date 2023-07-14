@@ -1,5 +1,4 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * UploadCosmWasmPoolCodeAndWhiteListProposal is a gov Content type for
  * uploading coswasm pool code and adding it to internal whitelist. Only the
@@ -76,13 +75,13 @@ export interface MigratePoolContractsProposal {
      * either to the new_code_id that is already uploaded to chain or to
      * the given wasm_byte_code.
      */
-    poolIds: Long[];
+    poolIds: bigint[];
     /**
      * new_code_id is the code id of the contract code to migrate to.
      * Assumes that the code is already uploaded to chain. Only one of
      * new_code_id and wasm_byte_code should be set.
      */
-    newCodeId: Long;
+    newCodeId: bigint;
     /**
      * WASMByteCode can be raw or gzip compressed. Assumes that the code id
      * has not been uploaded yet so uploads the given code and migrates to it.
@@ -183,15 +182,15 @@ export interface MigratePoolContractsProposalAminoMsg {
 export interface MigratePoolContractsProposalSDKType {
     title: string;
     description: string;
-    pool_ids: Long[];
-    new_code_id: Long;
+    pool_ids: bigint[];
+    new_code_id: bigint;
     wasm_byte_code: Uint8Array;
     migrate_msg: Uint8Array;
 }
 export declare const UploadCosmWasmPoolCodeAndWhiteListProposal: {
     typeUrl: string;
-    encode(message: UploadCosmWasmPoolCodeAndWhiteListProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UploadCosmWasmPoolCodeAndWhiteListProposal;
+    encode(message: UploadCosmWasmPoolCodeAndWhiteListProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UploadCosmWasmPoolCodeAndWhiteListProposal;
     fromPartial(object: Partial<UploadCosmWasmPoolCodeAndWhiteListProposal>): UploadCosmWasmPoolCodeAndWhiteListProposal;
     fromAmino(object: UploadCosmWasmPoolCodeAndWhiteListProposalAmino): UploadCosmWasmPoolCodeAndWhiteListProposal;
     toAmino(message: UploadCosmWasmPoolCodeAndWhiteListProposal): UploadCosmWasmPoolCodeAndWhiteListProposalAmino;
@@ -203,8 +202,8 @@ export declare const UploadCosmWasmPoolCodeAndWhiteListProposal: {
 };
 export declare const MigratePoolContractsProposal: {
     typeUrl: string;
-    encode(message: MigratePoolContractsProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MigratePoolContractsProposal;
+    encode(message: MigratePoolContractsProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MigratePoolContractsProposal;
     fromPartial(object: Partial<MigratePoolContractsProposal>): MigratePoolContractsProposal;
     fromAmino(object: MigratePoolContractsProposalAmino): MigratePoolContractsProposal;
     toAmino(message: MigratePoolContractsProposal): MigratePoolContractsProposalAmino;

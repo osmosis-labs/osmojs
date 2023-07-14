@@ -1,8 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { RouteStatistics, RouteStatisticsAmino, RouteStatisticsSDKType, TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
 }
@@ -23,7 +22,7 @@ export interface QueryParamsRequestSDKType {
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** params holds all the parameters of this module. */
-    params?: Params;
+    params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.QueryParamsResponse";
@@ -40,7 +39,7 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 /**
  * QueryGetProtoRevNumberOfTradesRequest is request type for the
@@ -136,7 +135,7 @@ export interface QueryGetProtoRevProfitsByDenomRequestSDKType {
  */
 export interface QueryGetProtoRevProfitsByDenomResponse {
     /** profit is the profits of the module by the selected denom */
-    profit?: Coin;
+    profit: Coin;
 }
 export interface QueryGetProtoRevProfitsByDenomResponseProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevProfitsByDenomResponse";
@@ -159,7 +158,7 @@ export interface QueryGetProtoRevProfitsByDenomResponseAminoMsg {
  * Query/GetProtoRevProfitsByDenom RPC method.
  */
 export interface QueryGetProtoRevProfitsByDenomResponseSDKType {
-    profit?: CoinSDKType;
+    profit: CoinSDKType;
 }
 /**
  * QueryGetProtoRevAllProfitsRequest is request type for the
@@ -224,7 +223,7 @@ export interface QueryGetProtoRevAllProfitsResponseSDKType {
  */
 export interface QueryGetProtoRevStatisticsByRouteRequest {
     /** route is the set of pool ids to query statistics by i.e. 1,2,3 */
-    route: Long[];
+    route: bigint[];
 }
 export interface QueryGetProtoRevStatisticsByRouteRequestProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevStatisticsByRouteRequest";
@@ -247,7 +246,7 @@ export interface QueryGetProtoRevStatisticsByRouteRequestAminoMsg {
  * Query/GetProtoRevStatisticsByRoute RPC method.
  */
 export interface QueryGetProtoRevStatisticsByRouteRequestSDKType {
-    route: Long[];
+    route: bigint[];
 }
 /**
  * QueryGetProtoRevStatisticsByRouteResponse is response type for the
@@ -258,7 +257,7 @@ export interface QueryGetProtoRevStatisticsByRouteResponse {
      * statistics contains the number of trades the module has executed after a
      * swap on a given pool and the profits from the trades
      */
-    statistics?: RouteStatistics;
+    statistics: RouteStatistics;
 }
 export interface QueryGetProtoRevStatisticsByRouteResponseProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevStatisticsByRouteResponse";
@@ -284,7 +283,7 @@ export interface QueryGetProtoRevStatisticsByRouteResponseAminoMsg {
  * Query/GetProtoRevStatisticsByRoute RPC method.
  */
 export interface QueryGetProtoRevStatisticsByRouteResponseSDKType {
-    statistics?: RouteStatisticsSDKType;
+    statistics: RouteStatisticsSDKType;
 }
 /**
  * QueryGetProtoRevAllRouteStatisticsRequest is request type for the
@@ -558,7 +557,7 @@ export interface QueryGetProtoRevPoolWeightsRequestSDKType {
  */
 export interface QueryGetProtoRevPoolWeightsResponse {
     /** pool_weights is a list of all of the pool weights */
-    poolWeights?: PoolWeights;
+    poolWeights: PoolWeights;
 }
 export interface QueryGetProtoRevPoolWeightsResponseProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsResponse";
@@ -581,7 +580,7 @@ export interface QueryGetProtoRevPoolWeightsResponseAminoMsg {
  * Query/GetProtoRevPoolWeights RPC method.
  */
 export interface QueryGetProtoRevPoolWeightsResponseSDKType {
-    pool_weights?: PoolWeightsSDKType;
+    pool_weights: PoolWeightsSDKType;
 }
 /**
  * QueryGetProtoRevMaxPoolPointsPerBlockRequest is request type for the
@@ -618,7 +617,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerBlockResponse {
      * max_pool_points_per_block is the maximum number of pool points that can be
      * consumed per block
      */
-    maxPoolPointsPerBlock: Long;
+    maxPoolPointsPerBlock: bigint;
 }
 export interface QueryGetProtoRevMaxPoolPointsPerBlockResponseProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerBlockResponse";
@@ -644,7 +643,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerBlockResponseAminoMsg {
  * Query/GetProtoRevMaxPoolPointsPerBlock RPC method.
  */
 export interface QueryGetProtoRevMaxPoolPointsPerBlockResponseSDKType {
-    max_pool_points_per_block: Long;
+    max_pool_points_per_block: bigint;
 }
 /**
  * QueryGetProtoRevMaxPoolPointsPerTxRequest is request type for the
@@ -681,7 +680,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerTxResponse {
      * max_pool_points_per_tx is the maximum number of pool points that can be
      * consumed per transaction
      */
-    maxPoolPointsPerTx: Long;
+    maxPoolPointsPerTx: bigint;
 }
 export interface QueryGetProtoRevMaxPoolPointsPerTxResponseProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerTxResponse";
@@ -707,7 +706,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerTxResponseAminoMsg {
  * Query/GetProtoRevMaxPoolPointsPerTx RPC method.
  */
 export interface QueryGetProtoRevMaxPoolPointsPerTxResponseSDKType {
-    max_pool_points_per_tx: Long;
+    max_pool_points_per_tx: bigint;
 }
 /**
  * QueryGetProtoRevBaseDenomsRequest is request type for the
@@ -871,7 +870,7 @@ export interface QueryGetProtoRevPoolRequestSDKType {
  */
 export interface QueryGetProtoRevPoolResponse {
     /** pool_id is the pool_id stored for the denom pair */
-    poolId: Long;
+    poolId: bigint;
 }
 export interface QueryGetProtoRevPoolResponseProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolResponse";
@@ -894,12 +893,12 @@ export interface QueryGetProtoRevPoolResponseAminoMsg {
  * Query/GetProtoRevPool RPC method.
  */
 export interface QueryGetProtoRevPoolResponseSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export declare const QueryParamsRequest: {
     typeUrl: string;
-    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -911,8 +910,8 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
@@ -924,8 +923,8 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryGetProtoRevNumberOfTradesRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevNumberOfTradesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesRequest;
+    encode(_: QueryGetProtoRevNumberOfTradesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesRequest;
     fromPartial(_: Partial<QueryGetProtoRevNumberOfTradesRequest>): QueryGetProtoRevNumberOfTradesRequest;
     fromAmino(_: QueryGetProtoRevNumberOfTradesRequestAmino): QueryGetProtoRevNumberOfTradesRequest;
     toAmino(_: QueryGetProtoRevNumberOfTradesRequest): QueryGetProtoRevNumberOfTradesRequestAmino;
@@ -937,8 +936,8 @@ export declare const QueryGetProtoRevNumberOfTradesRequest: {
 };
 export declare const QueryGetProtoRevNumberOfTradesResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevNumberOfTradesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesResponse;
+    encode(message: QueryGetProtoRevNumberOfTradesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesResponse;
     fromPartial(object: Partial<QueryGetProtoRevNumberOfTradesResponse>): QueryGetProtoRevNumberOfTradesResponse;
     fromAmino(object: QueryGetProtoRevNumberOfTradesResponseAmino): QueryGetProtoRevNumberOfTradesResponse;
     toAmino(message: QueryGetProtoRevNumberOfTradesResponse): QueryGetProtoRevNumberOfTradesResponseAmino;
@@ -950,8 +949,8 @@ export declare const QueryGetProtoRevNumberOfTradesResponse: {
 };
 export declare const QueryGetProtoRevProfitsByDenomRequest: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevProfitsByDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomRequest;
+    encode(message: QueryGetProtoRevProfitsByDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomRequest;
     fromPartial(object: Partial<QueryGetProtoRevProfitsByDenomRequest>): QueryGetProtoRevProfitsByDenomRequest;
     fromAmino(object: QueryGetProtoRevProfitsByDenomRequestAmino): QueryGetProtoRevProfitsByDenomRequest;
     toAmino(message: QueryGetProtoRevProfitsByDenomRequest): QueryGetProtoRevProfitsByDenomRequestAmino;
@@ -963,8 +962,8 @@ export declare const QueryGetProtoRevProfitsByDenomRequest: {
 };
 export declare const QueryGetProtoRevProfitsByDenomResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevProfitsByDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomResponse;
+    encode(message: QueryGetProtoRevProfitsByDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomResponse;
     fromPartial(object: Partial<QueryGetProtoRevProfitsByDenomResponse>): QueryGetProtoRevProfitsByDenomResponse;
     fromAmino(object: QueryGetProtoRevProfitsByDenomResponseAmino): QueryGetProtoRevProfitsByDenomResponse;
     toAmino(message: QueryGetProtoRevProfitsByDenomResponse): QueryGetProtoRevProfitsByDenomResponseAmino;
@@ -976,8 +975,8 @@ export declare const QueryGetProtoRevProfitsByDenomResponse: {
 };
 export declare const QueryGetProtoRevAllProfitsRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevAllProfitsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsRequest;
+    encode(_: QueryGetProtoRevAllProfitsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsRequest;
     fromPartial(_: Partial<QueryGetProtoRevAllProfitsRequest>): QueryGetProtoRevAllProfitsRequest;
     fromAmino(_: QueryGetProtoRevAllProfitsRequestAmino): QueryGetProtoRevAllProfitsRequest;
     toAmino(_: QueryGetProtoRevAllProfitsRequest): QueryGetProtoRevAllProfitsRequestAmino;
@@ -989,8 +988,8 @@ export declare const QueryGetProtoRevAllProfitsRequest: {
 };
 export declare const QueryGetProtoRevAllProfitsResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevAllProfitsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsResponse;
+    encode(message: QueryGetProtoRevAllProfitsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsResponse;
     fromPartial(object: Partial<QueryGetProtoRevAllProfitsResponse>): QueryGetProtoRevAllProfitsResponse;
     fromAmino(object: QueryGetProtoRevAllProfitsResponseAmino): QueryGetProtoRevAllProfitsResponse;
     toAmino(message: QueryGetProtoRevAllProfitsResponse): QueryGetProtoRevAllProfitsResponseAmino;
@@ -1002,8 +1001,8 @@ export declare const QueryGetProtoRevAllProfitsResponse: {
 };
 export declare const QueryGetProtoRevStatisticsByRouteRequest: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevStatisticsByRouteRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteRequest;
+    encode(message: QueryGetProtoRevStatisticsByRouteRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteRequest;
     fromPartial(object: Partial<QueryGetProtoRevStatisticsByRouteRequest>): QueryGetProtoRevStatisticsByRouteRequest;
     fromAmino(object: QueryGetProtoRevStatisticsByRouteRequestAmino): QueryGetProtoRevStatisticsByRouteRequest;
     toAmino(message: QueryGetProtoRevStatisticsByRouteRequest): QueryGetProtoRevStatisticsByRouteRequestAmino;
@@ -1015,8 +1014,8 @@ export declare const QueryGetProtoRevStatisticsByRouteRequest: {
 };
 export declare const QueryGetProtoRevStatisticsByRouteResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevStatisticsByRouteResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteResponse;
+    encode(message: QueryGetProtoRevStatisticsByRouteResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteResponse;
     fromPartial(object: Partial<QueryGetProtoRevStatisticsByRouteResponse>): QueryGetProtoRevStatisticsByRouteResponse;
     fromAmino(object: QueryGetProtoRevStatisticsByRouteResponseAmino): QueryGetProtoRevStatisticsByRouteResponse;
     toAmino(message: QueryGetProtoRevStatisticsByRouteResponse): QueryGetProtoRevStatisticsByRouteResponseAmino;
@@ -1028,8 +1027,8 @@ export declare const QueryGetProtoRevStatisticsByRouteResponse: {
 };
 export declare const QueryGetProtoRevAllRouteStatisticsRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevAllRouteStatisticsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsRequest;
+    encode(_: QueryGetProtoRevAllRouteStatisticsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsRequest;
     fromPartial(_: Partial<QueryGetProtoRevAllRouteStatisticsRequest>): QueryGetProtoRevAllRouteStatisticsRequest;
     fromAmino(_: QueryGetProtoRevAllRouteStatisticsRequestAmino): QueryGetProtoRevAllRouteStatisticsRequest;
     toAmino(_: QueryGetProtoRevAllRouteStatisticsRequest): QueryGetProtoRevAllRouteStatisticsRequestAmino;
@@ -1041,8 +1040,8 @@ export declare const QueryGetProtoRevAllRouteStatisticsRequest: {
 };
 export declare const QueryGetProtoRevAllRouteStatisticsResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevAllRouteStatisticsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsResponse;
+    encode(message: QueryGetProtoRevAllRouteStatisticsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsResponse;
     fromPartial(object: Partial<QueryGetProtoRevAllRouteStatisticsResponse>): QueryGetProtoRevAllRouteStatisticsResponse;
     fromAmino(object: QueryGetProtoRevAllRouteStatisticsResponseAmino): QueryGetProtoRevAllRouteStatisticsResponse;
     toAmino(message: QueryGetProtoRevAllRouteStatisticsResponse): QueryGetProtoRevAllRouteStatisticsResponseAmino;
@@ -1054,8 +1053,8 @@ export declare const QueryGetProtoRevAllRouteStatisticsResponse: {
 };
 export declare const QueryGetProtoRevTokenPairArbRoutesRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevTokenPairArbRoutesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesRequest;
+    encode(_: QueryGetProtoRevTokenPairArbRoutesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesRequest;
     fromPartial(_: Partial<QueryGetProtoRevTokenPairArbRoutesRequest>): QueryGetProtoRevTokenPairArbRoutesRequest;
     fromAmino(_: QueryGetProtoRevTokenPairArbRoutesRequestAmino): QueryGetProtoRevTokenPairArbRoutesRequest;
     toAmino(_: QueryGetProtoRevTokenPairArbRoutesRequest): QueryGetProtoRevTokenPairArbRoutesRequestAmino;
@@ -1067,8 +1066,8 @@ export declare const QueryGetProtoRevTokenPairArbRoutesRequest: {
 };
 export declare const QueryGetProtoRevTokenPairArbRoutesResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevTokenPairArbRoutesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesResponse;
+    encode(message: QueryGetProtoRevTokenPairArbRoutesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesResponse;
     fromPartial(object: Partial<QueryGetProtoRevTokenPairArbRoutesResponse>): QueryGetProtoRevTokenPairArbRoutesResponse;
     fromAmino(object: QueryGetProtoRevTokenPairArbRoutesResponseAmino): QueryGetProtoRevTokenPairArbRoutesResponse;
     toAmino(message: QueryGetProtoRevTokenPairArbRoutesResponse): QueryGetProtoRevTokenPairArbRoutesResponseAmino;
@@ -1080,8 +1079,8 @@ export declare const QueryGetProtoRevTokenPairArbRoutesResponse: {
 };
 export declare const QueryGetProtoRevAdminAccountRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevAdminAccountRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountRequest;
+    encode(_: QueryGetProtoRevAdminAccountRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountRequest;
     fromPartial(_: Partial<QueryGetProtoRevAdminAccountRequest>): QueryGetProtoRevAdminAccountRequest;
     fromAmino(_: QueryGetProtoRevAdminAccountRequestAmino): QueryGetProtoRevAdminAccountRequest;
     toAmino(_: QueryGetProtoRevAdminAccountRequest): QueryGetProtoRevAdminAccountRequestAmino;
@@ -1093,8 +1092,8 @@ export declare const QueryGetProtoRevAdminAccountRequest: {
 };
 export declare const QueryGetProtoRevAdminAccountResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevAdminAccountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountResponse;
+    encode(message: QueryGetProtoRevAdminAccountResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountResponse;
     fromPartial(object: Partial<QueryGetProtoRevAdminAccountResponse>): QueryGetProtoRevAdminAccountResponse;
     fromAmino(object: QueryGetProtoRevAdminAccountResponseAmino): QueryGetProtoRevAdminAccountResponse;
     toAmino(message: QueryGetProtoRevAdminAccountResponse): QueryGetProtoRevAdminAccountResponseAmino;
@@ -1106,8 +1105,8 @@ export declare const QueryGetProtoRevAdminAccountResponse: {
 };
 export declare const QueryGetProtoRevDeveloperAccountRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevDeveloperAccountRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountRequest;
+    encode(_: QueryGetProtoRevDeveloperAccountRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountRequest;
     fromPartial(_: Partial<QueryGetProtoRevDeveloperAccountRequest>): QueryGetProtoRevDeveloperAccountRequest;
     fromAmino(_: QueryGetProtoRevDeveloperAccountRequestAmino): QueryGetProtoRevDeveloperAccountRequest;
     toAmino(_: QueryGetProtoRevDeveloperAccountRequest): QueryGetProtoRevDeveloperAccountRequestAmino;
@@ -1119,8 +1118,8 @@ export declare const QueryGetProtoRevDeveloperAccountRequest: {
 };
 export declare const QueryGetProtoRevDeveloperAccountResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevDeveloperAccountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountResponse;
+    encode(message: QueryGetProtoRevDeveloperAccountResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountResponse;
     fromPartial(object: Partial<QueryGetProtoRevDeveloperAccountResponse>): QueryGetProtoRevDeveloperAccountResponse;
     fromAmino(object: QueryGetProtoRevDeveloperAccountResponseAmino): QueryGetProtoRevDeveloperAccountResponse;
     toAmino(message: QueryGetProtoRevDeveloperAccountResponse): QueryGetProtoRevDeveloperAccountResponseAmino;
@@ -1132,8 +1131,8 @@ export declare const QueryGetProtoRevDeveloperAccountResponse: {
 };
 export declare const QueryGetProtoRevPoolWeightsRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevPoolWeightsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsRequest;
+    encode(_: QueryGetProtoRevPoolWeightsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsRequest;
     fromPartial(_: Partial<QueryGetProtoRevPoolWeightsRequest>): QueryGetProtoRevPoolWeightsRequest;
     fromAmino(_: QueryGetProtoRevPoolWeightsRequestAmino): QueryGetProtoRevPoolWeightsRequest;
     toAmino(_: QueryGetProtoRevPoolWeightsRequest): QueryGetProtoRevPoolWeightsRequestAmino;
@@ -1145,8 +1144,8 @@ export declare const QueryGetProtoRevPoolWeightsRequest: {
 };
 export declare const QueryGetProtoRevPoolWeightsResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevPoolWeightsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsResponse;
+    encode(message: QueryGetProtoRevPoolWeightsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsResponse;
     fromPartial(object: Partial<QueryGetProtoRevPoolWeightsResponse>): QueryGetProtoRevPoolWeightsResponse;
     fromAmino(object: QueryGetProtoRevPoolWeightsResponseAmino): QueryGetProtoRevPoolWeightsResponse;
     toAmino(message: QueryGetProtoRevPoolWeightsResponse): QueryGetProtoRevPoolWeightsResponseAmino;
@@ -1158,8 +1157,8 @@ export declare const QueryGetProtoRevPoolWeightsResponse: {
 };
 export declare const QueryGetProtoRevMaxPoolPointsPerBlockRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevMaxPoolPointsPerBlockRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockRequest;
+    encode(_: QueryGetProtoRevMaxPoolPointsPerBlockRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockRequest;
     fromPartial(_: Partial<QueryGetProtoRevMaxPoolPointsPerBlockRequest>): QueryGetProtoRevMaxPoolPointsPerBlockRequest;
     fromAmino(_: QueryGetProtoRevMaxPoolPointsPerBlockRequestAmino): QueryGetProtoRevMaxPoolPointsPerBlockRequest;
     toAmino(_: QueryGetProtoRevMaxPoolPointsPerBlockRequest): QueryGetProtoRevMaxPoolPointsPerBlockRequestAmino;
@@ -1171,8 +1170,8 @@ export declare const QueryGetProtoRevMaxPoolPointsPerBlockRequest: {
 };
 export declare const QueryGetProtoRevMaxPoolPointsPerBlockResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockResponse;
+    encode(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockResponse;
     fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerBlockResponse>): QueryGetProtoRevMaxPoolPointsPerBlockResponse;
     fromAmino(object: QueryGetProtoRevMaxPoolPointsPerBlockResponseAmino): QueryGetProtoRevMaxPoolPointsPerBlockResponse;
     toAmino(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse): QueryGetProtoRevMaxPoolPointsPerBlockResponseAmino;
@@ -1184,8 +1183,8 @@ export declare const QueryGetProtoRevMaxPoolPointsPerBlockResponse: {
 };
 export declare const QueryGetProtoRevMaxPoolPointsPerTxRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevMaxPoolPointsPerTxRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxRequest;
+    encode(_: QueryGetProtoRevMaxPoolPointsPerTxRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxRequest;
     fromPartial(_: Partial<QueryGetProtoRevMaxPoolPointsPerTxRequest>): QueryGetProtoRevMaxPoolPointsPerTxRequest;
     fromAmino(_: QueryGetProtoRevMaxPoolPointsPerTxRequestAmino): QueryGetProtoRevMaxPoolPointsPerTxRequest;
     toAmino(_: QueryGetProtoRevMaxPoolPointsPerTxRequest): QueryGetProtoRevMaxPoolPointsPerTxRequestAmino;
@@ -1197,8 +1196,8 @@ export declare const QueryGetProtoRevMaxPoolPointsPerTxRequest: {
 };
 export declare const QueryGetProtoRevMaxPoolPointsPerTxResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevMaxPoolPointsPerTxResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxResponse;
+    encode(message: QueryGetProtoRevMaxPoolPointsPerTxResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxResponse;
     fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerTxResponse>): QueryGetProtoRevMaxPoolPointsPerTxResponse;
     fromAmino(object: QueryGetProtoRevMaxPoolPointsPerTxResponseAmino): QueryGetProtoRevMaxPoolPointsPerTxResponse;
     toAmino(message: QueryGetProtoRevMaxPoolPointsPerTxResponse): QueryGetProtoRevMaxPoolPointsPerTxResponseAmino;
@@ -1210,8 +1209,8 @@ export declare const QueryGetProtoRevMaxPoolPointsPerTxResponse: {
 };
 export declare const QueryGetProtoRevBaseDenomsRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevBaseDenomsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsRequest;
+    encode(_: QueryGetProtoRevBaseDenomsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsRequest;
     fromPartial(_: Partial<QueryGetProtoRevBaseDenomsRequest>): QueryGetProtoRevBaseDenomsRequest;
     fromAmino(_: QueryGetProtoRevBaseDenomsRequestAmino): QueryGetProtoRevBaseDenomsRequest;
     toAmino(_: QueryGetProtoRevBaseDenomsRequest): QueryGetProtoRevBaseDenomsRequestAmino;
@@ -1223,8 +1222,8 @@ export declare const QueryGetProtoRevBaseDenomsRequest: {
 };
 export declare const QueryGetProtoRevBaseDenomsResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevBaseDenomsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsResponse;
+    encode(message: QueryGetProtoRevBaseDenomsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsResponse;
     fromPartial(object: Partial<QueryGetProtoRevBaseDenomsResponse>): QueryGetProtoRevBaseDenomsResponse;
     fromAmino(object: QueryGetProtoRevBaseDenomsResponseAmino): QueryGetProtoRevBaseDenomsResponse;
     toAmino(message: QueryGetProtoRevBaseDenomsResponse): QueryGetProtoRevBaseDenomsResponseAmino;
@@ -1236,8 +1235,8 @@ export declare const QueryGetProtoRevBaseDenomsResponse: {
 };
 export declare const QueryGetProtoRevEnabledRequest: {
     typeUrl: string;
-    encode(_: QueryGetProtoRevEnabledRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevEnabledRequest;
+    encode(_: QueryGetProtoRevEnabledRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevEnabledRequest;
     fromPartial(_: Partial<QueryGetProtoRevEnabledRequest>): QueryGetProtoRevEnabledRequest;
     fromAmino(_: QueryGetProtoRevEnabledRequestAmino): QueryGetProtoRevEnabledRequest;
     toAmino(_: QueryGetProtoRevEnabledRequest): QueryGetProtoRevEnabledRequestAmino;
@@ -1249,8 +1248,8 @@ export declare const QueryGetProtoRevEnabledRequest: {
 };
 export declare const QueryGetProtoRevEnabledResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevEnabledResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevEnabledResponse;
+    encode(message: QueryGetProtoRevEnabledResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevEnabledResponse;
     fromPartial(object: Partial<QueryGetProtoRevEnabledResponse>): QueryGetProtoRevEnabledResponse;
     fromAmino(object: QueryGetProtoRevEnabledResponseAmino): QueryGetProtoRevEnabledResponse;
     toAmino(message: QueryGetProtoRevEnabledResponse): QueryGetProtoRevEnabledResponseAmino;
@@ -1262,8 +1261,8 @@ export declare const QueryGetProtoRevEnabledResponse: {
 };
 export declare const QueryGetProtoRevPoolRequest: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevPoolRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolRequest;
+    encode(message: QueryGetProtoRevPoolRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolRequest;
     fromPartial(object: Partial<QueryGetProtoRevPoolRequest>): QueryGetProtoRevPoolRequest;
     fromAmino(object: QueryGetProtoRevPoolRequestAmino): QueryGetProtoRevPoolRequest;
     toAmino(message: QueryGetProtoRevPoolRequest): QueryGetProtoRevPoolRequestAmino;
@@ -1275,8 +1274,8 @@ export declare const QueryGetProtoRevPoolRequest: {
 };
 export declare const QueryGetProtoRevPoolResponse: {
     typeUrl: string;
-    encode(message: QueryGetProtoRevPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolResponse;
+    encode(message: QueryGetProtoRevPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolResponse;
     fromPartial(object: Partial<QueryGetProtoRevPoolResponse>): QueryGetProtoRevPoolResponse;
     fromAmino(object: QueryGetProtoRevPoolResponseAmino): QueryGetProtoRevPoolResponse;
     toAmino(message: QueryGetProtoRevPoolResponse): QueryGetProtoRevPoolResponseAmino;

@@ -1,5 +1,4 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * MigrationRecords contains all the links between balancer and concentrated
  * pools.
@@ -50,8 +49,8 @@ export interface MigrationRecordsSDKType {
  * the circular dependency between the two modules.
  */
 export interface BalancerToConcentratedPoolLink {
-    balancerPoolId: Long;
-    clPoolId: Long;
+    balancerPoolId: bigint;
+    clPoolId: bigint;
 }
 export interface BalancerToConcentratedPoolLinkProtoMsg {
     typeUrl: "/osmosis.poolincentives.v1beta1.BalancerToConcentratedPoolLink";
@@ -88,13 +87,13 @@ export interface BalancerToConcentratedPoolLinkAminoMsg {
  * the circular dependency between the two modules.
  */
 export interface BalancerToConcentratedPoolLinkSDKType {
-    balancer_pool_id: Long;
-    cl_pool_id: Long;
+    balancer_pool_id: bigint;
+    cl_pool_id: bigint;
 }
 export declare const MigrationRecords: {
     typeUrl: string;
-    encode(message: MigrationRecords, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MigrationRecords;
+    encode(message: MigrationRecords, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MigrationRecords;
     fromPartial(object: Partial<MigrationRecords>): MigrationRecords;
     fromAmino(object: MigrationRecordsAmino): MigrationRecords;
     toAmino(message: MigrationRecords): MigrationRecordsAmino;
@@ -106,8 +105,8 @@ export declare const MigrationRecords: {
 };
 export declare const BalancerToConcentratedPoolLink: {
     typeUrl: string;
-    encode(message: BalancerToConcentratedPoolLink, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BalancerToConcentratedPoolLink;
+    encode(message: BalancerToConcentratedPoolLink, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BalancerToConcentratedPoolLink;
     fromPartial(object: Partial<BalancerToConcentratedPoolLink>): BalancerToConcentratedPoolLink;
     fromAmino(object: BalancerToConcentratedPoolLinkAmino): BalancerToConcentratedPoolLink;
     toAmino(message: BalancerToConcentratedPoolLink): BalancerToConcentratedPoolLinkAmino;

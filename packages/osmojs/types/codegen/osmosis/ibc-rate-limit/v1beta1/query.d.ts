@@ -1,5 +1,5 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** ParamsRequest is the request type for the Query/Params RPC method. */
 export interface ParamsRequest {
 }
@@ -20,7 +20,7 @@ export interface ParamsRequestSDKType {
 /** aramsResponse is the response type for the Query/Params RPC method. */
 export interface ParamsResponse {
     /** params defines the parameters of the module. */
-    params?: Params;
+    params: Params;
 }
 export interface ParamsResponseProtoMsg {
     typeUrl: "/osmosis.ibcratelimit.v1beta1.ParamsResponse";
@@ -37,12 +37,12 @@ export interface ParamsResponseAminoMsg {
 }
 /** aramsResponse is the response type for the Query/Params RPC method. */
 export interface ParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 export declare const ParamsRequest: {
     typeUrl: string;
-    encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
+    encode(_: ParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
     fromAmino(_: ParamsRequestAmino): ParamsRequest;
     toAmino(_: ParamsRequest): ParamsRequestAmino;
@@ -54,8 +54,8 @@ export declare const ParamsRequest: {
 };
 export declare const ParamsResponse: {
     typeUrl: string;
-    encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
+    encode(message: ParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;
     fromAmino(object: ParamsResponseAmino): ParamsResponse;
     toAmino(message: ParamsResponse): ParamsResponseAmino;

@@ -1,7 +1,6 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface SwapAmountInRoute {
-    poolId: Long;
+    poolId: bigint;
     tokenOutDenom: string;
 }
 export interface SwapAmountInRouteProtoMsg {
@@ -17,11 +16,11 @@ export interface SwapAmountInRouteAminoMsg {
     value: SwapAmountInRouteAmino;
 }
 export interface SwapAmountInRouteSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     token_out_denom: string;
 }
 export interface SwapAmountOutRoute {
-    poolId: Long;
+    poolId: bigint;
     tokenInDenom: string;
 }
 export interface SwapAmountOutRouteProtoMsg {
@@ -37,7 +36,7 @@ export interface SwapAmountOutRouteAminoMsg {
     value: SwapAmountOutRouteAmino;
 }
 export interface SwapAmountOutRouteSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     token_in_denom: string;
 }
 export interface SwapAmountInSplitRoute {
@@ -82,8 +81,8 @@ export interface SwapAmountOutSplitRouteSDKType {
 }
 export declare const SwapAmountInRoute: {
     typeUrl: string;
-    encode(message: SwapAmountInRoute, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountInRoute;
+    encode(message: SwapAmountInRoute, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapAmountInRoute;
     fromPartial(object: Partial<SwapAmountInRoute>): SwapAmountInRoute;
     fromAmino(object: SwapAmountInRouteAmino): SwapAmountInRoute;
     toAmino(message: SwapAmountInRoute): SwapAmountInRouteAmino;
@@ -95,8 +94,8 @@ export declare const SwapAmountInRoute: {
 };
 export declare const SwapAmountOutRoute: {
     typeUrl: string;
-    encode(message: SwapAmountOutRoute, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountOutRoute;
+    encode(message: SwapAmountOutRoute, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapAmountOutRoute;
     fromPartial(object: Partial<SwapAmountOutRoute>): SwapAmountOutRoute;
     fromAmino(object: SwapAmountOutRouteAmino): SwapAmountOutRoute;
     toAmino(message: SwapAmountOutRoute): SwapAmountOutRouteAmino;
@@ -108,8 +107,8 @@ export declare const SwapAmountOutRoute: {
 };
 export declare const SwapAmountInSplitRoute: {
     typeUrl: string;
-    encode(message: SwapAmountInSplitRoute, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountInSplitRoute;
+    encode(message: SwapAmountInSplitRoute, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapAmountInSplitRoute;
     fromPartial(object: Partial<SwapAmountInSplitRoute>): SwapAmountInSplitRoute;
     fromAmino(object: SwapAmountInSplitRouteAmino): SwapAmountInSplitRoute;
     toAmino(message: SwapAmountInSplitRoute): SwapAmountInSplitRouteAmino;
@@ -121,8 +120,8 @@ export declare const SwapAmountInSplitRoute: {
 };
 export declare const SwapAmountOutSplitRoute: {
     typeUrl: string;
-    encode(message: SwapAmountOutSplitRoute, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountOutSplitRoute;
+    encode(message: SwapAmountOutSplitRoute, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SwapAmountOutSplitRoute;
     fromPartial(object: Partial<SwapAmountOutSplitRoute>): SwapAmountOutSplitRoute;
     fromAmino(object: SwapAmountOutSplitRouteAmino): SwapAmountOutSplitRoute;
     toAmino(message: SwapAmountOutSplitRoute): SwapAmountOutSplitRouteAmino;

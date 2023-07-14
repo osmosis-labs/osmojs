@@ -1,7 +1,6 @@
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 export interface StoreCodeProposal {
     $typeUrl?: string;
@@ -14,7 +13,7 @@ export interface StoreCodeProposal {
     /** WASMByteCode can be raw or gzip compressed */
     wasmByteCode: Uint8Array;
     /** InstantiatePermission to apply on contract creation, optional */
-    instantiatePermission?: AccessConfig;
+    instantiatePermission: AccessConfig;
     /** UnpinCode code on upload, optional */
     unpinCode: boolean;
     /** Source is the URL where the code is hosted */
@@ -72,7 +71,7 @@ export interface StoreCodeProposalSDKType {
     description: string;
     run_as: string;
     wasm_byte_code: Uint8Array;
-    instantiate_permission?: AccessConfigSDKType;
+    instantiate_permission: AccessConfigSDKType;
     unpin_code: boolean;
     source: string;
     builder: string;
@@ -93,7 +92,7 @@ export interface InstantiateContractProposal {
     /** Admin is an optional address that can execute migrations */
     admin: string;
     /** CodeID is the reference to the stored WASM code */
-    codeId: Long;
+    codeId: bigint;
     /** Label is optional metadata to be stored with a constract instance. */
     label: string;
     /** Msg json encoded message to be passed to the contract on instantiation */
@@ -141,7 +140,7 @@ export interface InstantiateContractProposalSDKType {
     description: string;
     run_as: string;
     admin: string;
-    code_id: Long;
+    code_id: bigint;
     label: string;
     msg: Uint8Array;
     funds: CoinSDKType[];
@@ -161,7 +160,7 @@ export interface InstantiateContract2Proposal {
     /** Admin is an optional address that can execute migrations */
     admin: string;
     /** CodeID is the reference to the stored WASM code */
-    codeId: Long;
+    codeId: bigint;
     /** Label is optional metadata to be stored with a constract instance. */
     label: string;
     /** Msg json encode message to be passed to the contract on instantiation */
@@ -223,7 +222,7 @@ export interface InstantiateContract2ProposalSDKType {
     description: string;
     run_as: string;
     admin: string;
-    code_id: Long;
+    code_id: bigint;
     label: string;
     msg: Uint8Array;
     funds: CoinSDKType[];
@@ -240,7 +239,7 @@ export interface MigrateContractProposal {
     /** Contract is the address of the smart contract */
     contract: string;
     /** CodeID references the new WASM code */
-    codeId: Long;
+    codeId: bigint;
     /** Msg json encoded message to be passed to the contract on migration */
     msg: Uint8Array;
 }
@@ -271,7 +270,7 @@ export interface MigrateContractProposalSDKType {
     title: string;
     description: string;
     contract: string;
-    code_id: Long;
+    code_id: bigint;
     msg: Uint8Array;
 }
 /** SudoContractProposal gov proposal content type to call sudo on a contract. */
@@ -464,7 +463,7 @@ export interface PinCodesProposal {
     /** Description is a human readable text */
     description: string;
     /** CodeIDs references the new WASM codes */
-    codeIds: Long[];
+    codeIds: bigint[];
 }
 export interface PinCodesProposalProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.PinCodesProposal";
@@ -494,7 +493,7 @@ export interface PinCodesProposalSDKType {
     $typeUrl?: string;
     title: string;
     description: string;
-    code_ids: Long[];
+    code_ids: bigint[];
 }
 /**
  * UnpinCodesProposal gov proposal content type to unpin a set of code ids in
@@ -507,7 +506,7 @@ export interface UnpinCodesProposal {
     /** Description is a human readable text */
     description: string;
     /** CodeIDs references the WASM codes */
-    codeIds: Long[];
+    codeIds: bigint[];
 }
 export interface UnpinCodesProposalProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.UnpinCodesProposal";
@@ -537,7 +536,7 @@ export interface UnpinCodesProposalSDKType {
     $typeUrl?: string;
     title: string;
     description: string;
-    code_ids: Long[];
+    code_ids: bigint[];
 }
 /**
  * AccessConfigUpdate contains the code id and the access config to be
@@ -545,9 +544,9 @@ export interface UnpinCodesProposalSDKType {
  */
 export interface AccessConfigUpdate {
     /** CodeID is the reference to the stored WASM code to be updated */
-    codeId: Long;
+    codeId: bigint;
     /** InstantiatePermission to apply to the set of code ids */
-    instantiatePermission?: AccessConfig;
+    instantiatePermission: AccessConfig;
 }
 export interface AccessConfigUpdateProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.AccessConfigUpdate";
@@ -572,8 +571,8 @@ export interface AccessConfigUpdateAminoMsg {
  * applied.
  */
 export interface AccessConfigUpdateSDKType {
-    code_id: Long;
-    instantiate_permission?: AccessConfigSDKType;
+    code_id: bigint;
+    instantiate_permission: AccessConfigSDKType;
 }
 /**
  * UpdateInstantiateConfigProposal gov proposal content type to update
@@ -639,7 +638,7 @@ export interface StoreAndInstantiateContractProposal {
     /** WASMByteCode can be raw or gzip compressed */
     wasmByteCode: Uint8Array;
     /** InstantiatePermission to apply on contract creation, optional */
-    instantiatePermission?: AccessConfig;
+    instantiatePermission: AccessConfig;
     /** UnpinCode code on upload, optional */
     unpinCode: boolean;
     /** Admin is an optional address that can execute migrations */
@@ -719,7 +718,7 @@ export interface StoreAndInstantiateContractProposalSDKType {
     description: string;
     run_as: string;
     wasm_byte_code: Uint8Array;
-    instantiate_permission?: AccessConfigSDKType;
+    instantiate_permission: AccessConfigSDKType;
     unpin_code: boolean;
     admin: string;
     label: string;
@@ -731,8 +730,8 @@ export interface StoreAndInstantiateContractProposalSDKType {
 }
 export declare const StoreCodeProposal: {
     typeUrl: string;
-    encode(message: StoreCodeProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): StoreCodeProposal;
+    encode(message: StoreCodeProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): StoreCodeProposal;
     fromPartial(object: Partial<StoreCodeProposal>): StoreCodeProposal;
     fromAmino(object: StoreCodeProposalAmino): StoreCodeProposal;
     toAmino(message: StoreCodeProposal): StoreCodeProposalAmino;
@@ -744,8 +743,8 @@ export declare const StoreCodeProposal: {
 };
 export declare const InstantiateContractProposal: {
     typeUrl: string;
-    encode(message: InstantiateContractProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateContractProposal;
+    encode(message: InstantiateContractProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): InstantiateContractProposal;
     fromPartial(object: Partial<InstantiateContractProposal>): InstantiateContractProposal;
     fromAmino(object: InstantiateContractProposalAmino): InstantiateContractProposal;
     toAmino(message: InstantiateContractProposal): InstantiateContractProposalAmino;
@@ -757,8 +756,8 @@ export declare const InstantiateContractProposal: {
 };
 export declare const InstantiateContract2Proposal: {
     typeUrl: string;
-    encode(message: InstantiateContract2Proposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateContract2Proposal;
+    encode(message: InstantiateContract2Proposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): InstantiateContract2Proposal;
     fromPartial(object: Partial<InstantiateContract2Proposal>): InstantiateContract2Proposal;
     fromAmino(object: InstantiateContract2ProposalAmino): InstantiateContract2Proposal;
     toAmino(message: InstantiateContract2Proposal): InstantiateContract2ProposalAmino;
@@ -770,8 +769,8 @@ export declare const InstantiateContract2Proposal: {
 };
 export declare const MigrateContractProposal: {
     typeUrl: string;
-    encode(message: MigrateContractProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MigrateContractProposal;
+    encode(message: MigrateContractProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MigrateContractProposal;
     fromPartial(object: Partial<MigrateContractProposal>): MigrateContractProposal;
     fromAmino(object: MigrateContractProposalAmino): MigrateContractProposal;
     toAmino(message: MigrateContractProposal): MigrateContractProposalAmino;
@@ -783,8 +782,8 @@ export declare const MigrateContractProposal: {
 };
 export declare const SudoContractProposal: {
     typeUrl: string;
-    encode(message: SudoContractProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SudoContractProposal;
+    encode(message: SudoContractProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SudoContractProposal;
     fromPartial(object: Partial<SudoContractProposal>): SudoContractProposal;
     fromAmino(object: SudoContractProposalAmino): SudoContractProposal;
     toAmino(message: SudoContractProposal): SudoContractProposalAmino;
@@ -796,8 +795,8 @@ export declare const SudoContractProposal: {
 };
 export declare const ExecuteContractProposal: {
     typeUrl: string;
-    encode(message: ExecuteContractProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ExecuteContractProposal;
+    encode(message: ExecuteContractProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ExecuteContractProposal;
     fromPartial(object: Partial<ExecuteContractProposal>): ExecuteContractProposal;
     fromAmino(object: ExecuteContractProposalAmino): ExecuteContractProposal;
     toAmino(message: ExecuteContractProposal): ExecuteContractProposalAmino;
@@ -809,8 +808,8 @@ export declare const ExecuteContractProposal: {
 };
 export declare const UpdateAdminProposal: {
     typeUrl: string;
-    encode(message: UpdateAdminProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpdateAdminProposal;
+    encode(message: UpdateAdminProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpdateAdminProposal;
     fromPartial(object: Partial<UpdateAdminProposal>): UpdateAdminProposal;
     fromAmino(object: UpdateAdminProposalAmino): UpdateAdminProposal;
     toAmino(message: UpdateAdminProposal): UpdateAdminProposalAmino;
@@ -822,8 +821,8 @@ export declare const UpdateAdminProposal: {
 };
 export declare const ClearAdminProposal: {
     typeUrl: string;
-    encode(message: ClearAdminProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ClearAdminProposal;
+    encode(message: ClearAdminProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ClearAdminProposal;
     fromPartial(object: Partial<ClearAdminProposal>): ClearAdminProposal;
     fromAmino(object: ClearAdminProposalAmino): ClearAdminProposal;
     toAmino(message: ClearAdminProposal): ClearAdminProposalAmino;
@@ -835,8 +834,8 @@ export declare const ClearAdminProposal: {
 };
 export declare const PinCodesProposal: {
     typeUrl: string;
-    encode(message: PinCodesProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PinCodesProposal;
+    encode(message: PinCodesProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PinCodesProposal;
     fromPartial(object: Partial<PinCodesProposal>): PinCodesProposal;
     fromAmino(object: PinCodesProposalAmino): PinCodesProposal;
     toAmino(message: PinCodesProposal): PinCodesProposalAmino;
@@ -848,8 +847,8 @@ export declare const PinCodesProposal: {
 };
 export declare const UnpinCodesProposal: {
     typeUrl: string;
-    encode(message: UnpinCodesProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UnpinCodesProposal;
+    encode(message: UnpinCodesProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UnpinCodesProposal;
     fromPartial(object: Partial<UnpinCodesProposal>): UnpinCodesProposal;
     fromAmino(object: UnpinCodesProposalAmino): UnpinCodesProposal;
     toAmino(message: UnpinCodesProposal): UnpinCodesProposalAmino;
@@ -861,8 +860,8 @@ export declare const UnpinCodesProposal: {
 };
 export declare const AccessConfigUpdate: {
     typeUrl: string;
-    encode(message: AccessConfigUpdate, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AccessConfigUpdate;
+    encode(message: AccessConfigUpdate, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AccessConfigUpdate;
     fromPartial(object: Partial<AccessConfigUpdate>): AccessConfigUpdate;
     fromAmino(object: AccessConfigUpdateAmino): AccessConfigUpdate;
     toAmino(message: AccessConfigUpdate): AccessConfigUpdateAmino;
@@ -874,8 +873,8 @@ export declare const AccessConfigUpdate: {
 };
 export declare const UpdateInstantiateConfigProposal: {
     typeUrl: string;
-    encode(message: UpdateInstantiateConfigProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpdateInstantiateConfigProposal;
+    encode(message: UpdateInstantiateConfigProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpdateInstantiateConfigProposal;
     fromPartial(object: Partial<UpdateInstantiateConfigProposal>): UpdateInstantiateConfigProposal;
     fromAmino(object: UpdateInstantiateConfigProposalAmino): UpdateInstantiateConfigProposal;
     toAmino(message: UpdateInstantiateConfigProposal): UpdateInstantiateConfigProposalAmino;
@@ -887,8 +886,8 @@ export declare const UpdateInstantiateConfigProposal: {
 };
 export declare const StoreAndInstantiateContractProposal: {
     typeUrl: string;
-    encode(message: StoreAndInstantiateContractProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): StoreAndInstantiateContractProposal;
+    encode(message: StoreAndInstantiateContractProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): StoreAndInstantiateContractProposal;
     fromPartial(object: Partial<StoreAndInstantiateContractProposal>): StoreAndInstantiateContractProposal;
     fromAmino(object: StoreAndInstantiateContractProposalAmino): StoreAndInstantiateContractProposal;
     toAmino(message: StoreAndInstantiateContractProposal): StoreAndInstantiateContractProposalAmino;

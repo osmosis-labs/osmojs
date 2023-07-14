@@ -2,8 +2,7 @@ import { Header, HeaderAmino, HeaderSDKType } from "../../../tendermint/types/ty
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** BondStatus is the status of a validator. */
 export declare enum BondStatus {
     /** BOND_STATUS_UNSPECIFIED - UNSPECIFIED defines an invalid validator status. */
@@ -27,7 +26,7 @@ export declare function bondStatusToJSON(object: BondStatus): string;
  * (`n` is set by the staking module's `historical_entries` parameter).
  */
 export interface HistoricalInfo {
-    header?: Header;
+    header: Header;
     valset: Validator[];
 }
 export interface HistoricalInfoProtoMsg {
@@ -55,7 +54,7 @@ export interface HistoricalInfoAminoMsg {
  * (`n` is set by the staking module's `historical_entries` parameter).
  */
 export interface HistoricalInfoSDKType {
-    header?: HeaderSDKType;
+    header: HeaderSDKType;
     valset: ValidatorSDKType[];
 }
 /**
@@ -102,9 +101,9 @@ export interface CommissionRatesSDKType {
 /** Commission defines commission parameters for a given validator. */
 export interface Commission {
     /** commission_rates defines the initial commission rates to be used for creating a validator. */
-    commissionRates?: CommissionRates;
+    commissionRates: CommissionRates;
     /** update_time is the last time the commission rate was changed. */
-    updateTime?: Date;
+    updateTime: Date;
 }
 export interface CommissionProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.Commission";
@@ -123,8 +122,8 @@ export interface CommissionAminoMsg {
 }
 /** Commission defines commission parameters for a given validator. */
 export interface CommissionSDKType {
-    commission_rates?: CommissionRatesSDKType;
-    update_time?: Date;
+    commission_rates: CommissionRatesSDKType;
+    update_time: Date;
 }
 /** Description defines a validator description. */
 export interface Description {
@@ -182,7 +181,7 @@ export interface Validator {
     /** operator_address defines the address of the validator's operator; bech encoded in JSON. */
     operatorAddress: string;
     /** consensus_pubkey is the consensus public key of the validator, as a Protobuf Any. */
-    consensusPubkey?: (Any) | undefined;
+    consensusPubkey: (Any) | undefined;
     /** jailed defined whether the validator has been jailed from bonded status or not. */
     jailed: boolean;
     /** status is the validator status (bonded/unbonding/unbonded). */
@@ -192,13 +191,13 @@ export interface Validator {
     /** delegator_shares defines total shares issued to a validator's delegators. */
     delegatorShares: string;
     /** description defines the description terms for the validator. */
-    description?: Description;
+    description: Description;
     /** unbonding_height defines, if unbonding, the height at which this validator has begun unbonding. */
-    unbondingHeight: Long;
+    unbondingHeight: bigint;
     /** unbonding_time defines, if unbonding, the min time for the validator to complete unbonding. */
-    unbondingTime?: Date;
+    unbondingTime: Date;
     /** commission defines the commission parameters. */
-    commission?: Commission;
+    commission: Commission;
     /** min_self_delegation is the validator's self declared minimum self delegation. */
     minSelfDelegation: string;
 }
@@ -206,9 +205,8 @@ export interface ValidatorProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.Validator";
     value: Uint8Array;
 }
-export type ValidatorEncoded = Omit<Validator, "consensusPubkey"> & {
-    /** consensus_pubkey is the consensus public key of the validator, as a Protobuf Any. */
-    consensusPubkey?: AnyProtoMsg | undefined;
+export declare type ValidatorEncoded = Omit<Validator, "consensusPubkey"> & {
+    /** consensus_pubkey is the consensus public key of the validator, as a Protobuf Any. */ consensusPubkey?: AnyProtoMsg | undefined;
 };
 /**
  * Validator defines a validator, together with the total amount of the
@@ -260,15 +258,15 @@ export interface ValidatorAminoMsg {
  */
 export interface ValidatorSDKType {
     operator_address: string;
-    consensus_pubkey?: AnySDKType | undefined;
+    consensus_pubkey: AnySDKType | undefined;
     jailed: boolean;
     status: BondStatus;
     tokens: string;
     delegator_shares: string;
-    description?: DescriptionSDKType;
-    unbonding_height: Long;
-    unbonding_time?: Date;
-    commission?: CommissionSDKType;
+    description: DescriptionSDKType;
+    unbonding_height: bigint;
+    unbonding_time: Date;
+    commission: CommissionSDKType;
     min_self_delegation: string;
 }
 /** ValAddresses defines a repeated set of validator addresses. */
@@ -495,9 +493,9 @@ export interface UnbondingDelegationSDKType {
 /** UnbondingDelegationEntry defines an unbonding object with relevant metadata. */
 export interface UnbondingDelegationEntry {
     /** creation_height is the height which the unbonding took place. */
-    creationHeight: Long;
+    creationHeight: bigint;
     /** completion_time is the unix time for unbonding completion. */
-    completionTime?: Date;
+    completionTime: Date;
     /** initial_balance defines the tokens initially scheduled to receive at completion. */
     initialBalance: string;
     /** balance defines the tokens to receive at completion. */
@@ -524,17 +522,17 @@ export interface UnbondingDelegationEntryAminoMsg {
 }
 /** UnbondingDelegationEntry defines an unbonding object with relevant metadata. */
 export interface UnbondingDelegationEntrySDKType {
-    creation_height: Long;
-    completion_time?: Date;
+    creation_height: bigint;
+    completion_time: Date;
     initial_balance: string;
     balance: string;
 }
 /** RedelegationEntry defines a redelegation object with relevant metadata. */
 export interface RedelegationEntry {
     /** creation_height  defines the height which the redelegation took place. */
-    creationHeight: Long;
+    creationHeight: bigint;
     /** completion_time defines the unix time for redelegation completion. */
-    completionTime?: Date;
+    completionTime: Date;
     /** initial_balance defines the initial balance when redelegation started. */
     initialBalance: string;
     /** shares_dst is the amount of destination-validator shares created by redelegation. */
@@ -561,8 +559,8 @@ export interface RedelegationEntryAminoMsg {
 }
 /** RedelegationEntry defines a redelegation object with relevant metadata. */
 export interface RedelegationEntrySDKType {
-    creation_height: Long;
-    completion_time?: Date;
+    creation_height: bigint;
+    completion_time: Date;
     initial_balance: string;
     shares_dst: string;
 }
@@ -615,7 +613,7 @@ export interface RedelegationSDKType {
 /** Params defines the parameters for the staking module. */
 export interface Params {
     /** unbonding_time is the time duration of unbonding. */
-    unbondingTime?: Duration;
+    unbondingTime: Duration;
     /** max_validators is the maximum number of validators. */
     maxValidators: number;
     /** max_entries is the max entries for either unbonding delegation or redelegation (per pair/trio). */
@@ -656,7 +654,7 @@ export interface ParamsAminoMsg {
 }
 /** Params defines the parameters for the staking module. */
 export interface ParamsSDKType {
-    unbonding_time?: DurationSDKType;
+    unbonding_time: DurationSDKType;
     max_validators: number;
     max_entries: number;
     historical_entries: number;
@@ -669,8 +667,8 @@ export interface ParamsSDKType {
  * balance in addition to shares which is more suitable for client responses.
  */
 export interface DelegationResponse {
-    delegation?: Delegation;
-    balance?: Coin;
+    delegation: Delegation;
+    balance: Coin;
 }
 export interface DelegationResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.DelegationResponse";
@@ -693,8 +691,8 @@ export interface DelegationResponseAminoMsg {
  * balance in addition to shares which is more suitable for client responses.
  */
 export interface DelegationResponseSDKType {
-    delegation?: DelegationSDKType;
-    balance?: CoinSDKType;
+    delegation: DelegationSDKType;
+    balance: CoinSDKType;
 }
 /**
  * RedelegationEntryResponse is equivalent to a RedelegationEntry except that it
@@ -702,7 +700,7 @@ export interface DelegationResponseSDKType {
  * responses.
  */
 export interface RedelegationEntryResponse {
-    redelegationEntry?: RedelegationEntry;
+    redelegationEntry: RedelegationEntry;
     balance: string;
 }
 export interface RedelegationEntryResponseProtoMsg {
@@ -728,7 +726,7 @@ export interface RedelegationEntryResponseAminoMsg {
  * responses.
  */
 export interface RedelegationEntryResponseSDKType {
-    redelegation_entry?: RedelegationEntrySDKType;
+    redelegation_entry: RedelegationEntrySDKType;
     balance: string;
 }
 /**
@@ -737,7 +735,7 @@ export interface RedelegationEntryResponseSDKType {
  * responses.
  */
 export interface RedelegationResponse {
-    redelegation?: Redelegation;
+    redelegation: Redelegation;
     entries: RedelegationEntryResponse[];
 }
 export interface RedelegationResponseProtoMsg {
@@ -763,7 +761,7 @@ export interface RedelegationResponseAminoMsg {
  * responses.
  */
 export interface RedelegationResponseSDKType {
-    redelegation?: RedelegationSDKType;
+    redelegation: RedelegationSDKType;
     entries: RedelegationEntryResponseSDKType[];
 }
 /**
@@ -800,8 +798,8 @@ export interface PoolSDKType {
 }
 export declare const HistoricalInfo: {
     typeUrl: string;
-    encode(message: HistoricalInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): HistoricalInfo;
+    encode(message: HistoricalInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): HistoricalInfo;
     fromPartial(object: Partial<HistoricalInfo>): HistoricalInfo;
     fromAmino(object: HistoricalInfoAmino): HistoricalInfo;
     toAmino(message: HistoricalInfo): HistoricalInfoAmino;
@@ -813,8 +811,8 @@ export declare const HistoricalInfo: {
 };
 export declare const CommissionRates: {
     typeUrl: string;
-    encode(message: CommissionRates, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CommissionRates;
+    encode(message: CommissionRates, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CommissionRates;
     fromPartial(object: Partial<CommissionRates>): CommissionRates;
     fromAmino(object: CommissionRatesAmino): CommissionRates;
     toAmino(message: CommissionRates): CommissionRatesAmino;
@@ -826,8 +824,8 @@ export declare const CommissionRates: {
 };
 export declare const Commission: {
     typeUrl: string;
-    encode(message: Commission, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Commission;
+    encode(message: Commission, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Commission;
     fromPartial(object: Partial<Commission>): Commission;
     fromAmino(object: CommissionAmino): Commission;
     toAmino(message: Commission): CommissionAmino;
@@ -839,8 +837,8 @@ export declare const Commission: {
 };
 export declare const Description: {
     typeUrl: string;
-    encode(message: Description, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Description;
+    encode(message: Description, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Description;
     fromPartial(object: Partial<Description>): Description;
     fromAmino(object: DescriptionAmino): Description;
     toAmino(message: Description): DescriptionAmino;
@@ -852,8 +850,8 @@ export declare const Description: {
 };
 export declare const Validator: {
     typeUrl: string;
-    encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
+    encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Validator;
     fromPartial(object: Partial<Validator>): Validator;
     fromAmino(object: ValidatorAmino): Validator;
     toAmino(message: Validator): ValidatorAmino;
@@ -865,8 +863,8 @@ export declare const Validator: {
 };
 export declare const ValAddresses: {
     typeUrl: string;
-    encode(message: ValAddresses, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValAddresses;
+    encode(message: ValAddresses, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValAddresses;
     fromPartial(object: Partial<ValAddresses>): ValAddresses;
     fromAmino(object: ValAddressesAmino): ValAddresses;
     toAmino(message: ValAddresses): ValAddressesAmino;
@@ -878,8 +876,8 @@ export declare const ValAddresses: {
 };
 export declare const DVPair: {
     typeUrl: string;
-    encode(message: DVPair, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DVPair;
+    encode(message: DVPair, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DVPair;
     fromPartial(object: Partial<DVPair>): DVPair;
     fromAmino(object: DVPairAmino): DVPair;
     toAmino(message: DVPair): DVPairAmino;
@@ -891,8 +889,8 @@ export declare const DVPair: {
 };
 export declare const DVPairs: {
     typeUrl: string;
-    encode(message: DVPairs, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DVPairs;
+    encode(message: DVPairs, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DVPairs;
     fromPartial(object: Partial<DVPairs>): DVPairs;
     fromAmino(object: DVPairsAmino): DVPairs;
     toAmino(message: DVPairs): DVPairsAmino;
@@ -904,8 +902,8 @@ export declare const DVPairs: {
 };
 export declare const DVVTriplet: {
     typeUrl: string;
-    encode(message: DVVTriplet, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplet;
+    encode(message: DVVTriplet, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DVVTriplet;
     fromPartial(object: Partial<DVVTriplet>): DVVTriplet;
     fromAmino(object: DVVTripletAmino): DVVTriplet;
     toAmino(message: DVVTriplet): DVVTripletAmino;
@@ -917,8 +915,8 @@ export declare const DVVTriplet: {
 };
 export declare const DVVTriplets: {
     typeUrl: string;
-    encode(message: DVVTriplets, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplets;
+    encode(message: DVVTriplets, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DVVTriplets;
     fromPartial(object: Partial<DVVTriplets>): DVVTriplets;
     fromAmino(object: DVVTripletsAmino): DVVTriplets;
     toAmino(message: DVVTriplets): DVVTripletsAmino;
@@ -930,8 +928,8 @@ export declare const DVVTriplets: {
 };
 export declare const Delegation: {
     typeUrl: string;
-    encode(message: Delegation, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Delegation;
+    encode(message: Delegation, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Delegation;
     fromPartial(object: Partial<Delegation>): Delegation;
     fromAmino(object: DelegationAmino): Delegation;
     toAmino(message: Delegation): DelegationAmino;
@@ -943,8 +941,8 @@ export declare const Delegation: {
 };
 export declare const UnbondingDelegation: {
     typeUrl: string;
-    encode(message: UnbondingDelegation, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegation;
+    encode(message: UnbondingDelegation, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UnbondingDelegation;
     fromPartial(object: Partial<UnbondingDelegation>): UnbondingDelegation;
     fromAmino(object: UnbondingDelegationAmino): UnbondingDelegation;
     toAmino(message: UnbondingDelegation): UnbondingDelegationAmino;
@@ -956,8 +954,8 @@ export declare const UnbondingDelegation: {
 };
 export declare const UnbondingDelegationEntry: {
     typeUrl: string;
-    encode(message: UnbondingDelegationEntry, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegationEntry;
+    encode(message: UnbondingDelegationEntry, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UnbondingDelegationEntry;
     fromPartial(object: Partial<UnbondingDelegationEntry>): UnbondingDelegationEntry;
     fromAmino(object: UnbondingDelegationEntryAmino): UnbondingDelegationEntry;
     toAmino(message: UnbondingDelegationEntry): UnbondingDelegationEntryAmino;
@@ -969,8 +967,8 @@ export declare const UnbondingDelegationEntry: {
 };
 export declare const RedelegationEntry: {
     typeUrl: string;
-    encode(message: RedelegationEntry, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntry;
+    encode(message: RedelegationEntry, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RedelegationEntry;
     fromPartial(object: Partial<RedelegationEntry>): RedelegationEntry;
     fromAmino(object: RedelegationEntryAmino): RedelegationEntry;
     toAmino(message: RedelegationEntry): RedelegationEntryAmino;
@@ -982,8 +980,8 @@ export declare const RedelegationEntry: {
 };
 export declare const Redelegation: {
     typeUrl: string;
-    encode(message: Redelegation, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Redelegation;
+    encode(message: Redelegation, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Redelegation;
     fromPartial(object: Partial<Redelegation>): Redelegation;
     fromAmino(object: RedelegationAmino): Redelegation;
     toAmino(message: Redelegation): RedelegationAmino;
@@ -995,8 +993,8 @@ export declare const Redelegation: {
 };
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -1008,8 +1006,8 @@ export declare const Params: {
 };
 export declare const DelegationResponse: {
     typeUrl: string;
-    encode(message: DelegationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DelegationResponse;
+    encode(message: DelegationResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DelegationResponse;
     fromPartial(object: Partial<DelegationResponse>): DelegationResponse;
     fromAmino(object: DelegationResponseAmino): DelegationResponse;
     toAmino(message: DelegationResponse): DelegationResponseAmino;
@@ -1021,8 +1019,8 @@ export declare const DelegationResponse: {
 };
 export declare const RedelegationEntryResponse: {
     typeUrl: string;
-    encode(message: RedelegationEntryResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntryResponse;
+    encode(message: RedelegationEntryResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RedelegationEntryResponse;
     fromPartial(object: Partial<RedelegationEntryResponse>): RedelegationEntryResponse;
     fromAmino(object: RedelegationEntryResponseAmino): RedelegationEntryResponse;
     toAmino(message: RedelegationEntryResponse): RedelegationEntryResponseAmino;
@@ -1034,8 +1032,8 @@ export declare const RedelegationEntryResponse: {
 };
 export declare const RedelegationResponse: {
     typeUrl: string;
-    encode(message: RedelegationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationResponse;
+    encode(message: RedelegationResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RedelegationResponse;
     fromPartial(object: Partial<RedelegationResponse>): RedelegationResponse;
     fromAmino(object: RedelegationResponseAmino): RedelegationResponse;
     toAmino(message: RedelegationResponse): RedelegationResponseAmino;
@@ -1047,8 +1045,8 @@ export declare const RedelegationResponse: {
 };
 export declare const Pool: {
     typeUrl: string;
-    encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
+    encode(message: Pool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Pool;
     fromPartial(object: Partial<Pool>): Pool;
     fromAmino(object: PoolAmino): Pool;
     toAmino(message: Pool): PoolAmino;
@@ -1058,7 +1056,7 @@ export declare const Pool: {
     toProto(message: Pool): Uint8Array;
     toProtoMsg(message: Pool): PoolProtoMsg;
 };
-export declare const Cosmos_cryptoPubKey_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Any;
+export declare const Cosmos_cryptoPubKey_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
 export declare const Cosmos_cryptoPubKey_FromAmino: (content: AnyAmino) => string;
 export declare const Cosmos_cryptoPubKey_ToAmino: (content: Any) => {
     typeUrl: string;

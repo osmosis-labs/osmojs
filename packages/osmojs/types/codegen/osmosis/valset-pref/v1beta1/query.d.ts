@@ -1,5 +1,5 @@
 import { ValidatorPreference, ValidatorPreferenceAmino, ValidatorPreferenceSDKType } from "./state";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Request type for UserValidatorPreferences. */
 export interface UserValidatorPreferencesRequest {
     /** user account address */
@@ -44,8 +44,8 @@ export interface UserValidatorPreferencesResponseSDKType {
 }
 export declare const UserValidatorPreferencesRequest: {
     typeUrl: string;
-    encode(message: UserValidatorPreferencesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserValidatorPreferencesRequest;
+    encode(message: UserValidatorPreferencesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserValidatorPreferencesRequest;
     fromPartial(object: Partial<UserValidatorPreferencesRequest>): UserValidatorPreferencesRequest;
     fromAmino(object: UserValidatorPreferencesRequestAmino): UserValidatorPreferencesRequest;
     toAmino(message: UserValidatorPreferencesRequest): UserValidatorPreferencesRequestAmino;
@@ -57,8 +57,8 @@ export declare const UserValidatorPreferencesRequest: {
 };
 export declare const UserValidatorPreferencesResponse: {
     typeUrl: string;
-    encode(message: UserValidatorPreferencesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserValidatorPreferencesResponse;
+    encode(message: UserValidatorPreferencesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserValidatorPreferencesResponse;
     fromPartial(object: Partial<UserValidatorPreferencesResponse>): UserValidatorPreferencesResponse;
     fromAmino(object: UserValidatorPreferencesResponseAmino): UserValidatorPreferencesResponse;
     toAmino(message: UserValidatorPreferencesResponse): UserValidatorPreferencesResponseAmino;

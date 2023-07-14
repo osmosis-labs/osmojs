@@ -1,6 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Metadata, MetadataAmino, MetadataSDKType } from "../../../cosmos/bank/v1beta1/bank";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
  * method. It allows an account to create a new denom. It requires a sender
@@ -91,7 +91,7 @@ export interface MsgCreateDenomResponseSDKType {
  */
 export interface MsgMint {
     sender: string;
-    amount?: Coin;
+    amount: Coin;
     mintToAddress: string;
 }
 export interface MsgMintProtoMsg {
@@ -117,7 +117,7 @@ export interface MsgMintAminoMsg {
  */
 export interface MsgMintSDKType {
     sender: string;
-    amount?: CoinSDKType;
+    amount: CoinSDKType;
     mintToAddress: string;
 }
 export interface MsgMintResponse {
@@ -140,7 +140,7 @@ export interface MsgMintResponseSDKType {
  */
 export interface MsgBurn {
     sender: string;
-    amount?: Coin;
+    amount: Coin;
     burnFromAddress: string;
 }
 export interface MsgBurnProtoMsg {
@@ -166,7 +166,7 @@ export interface MsgBurnAminoMsg {
  */
 export interface MsgBurnSDKType {
     sender: string;
-    amount?: CoinSDKType;
+    amount: CoinSDKType;
     burnFromAddress: string;
 }
 export interface MsgBurnResponse {
@@ -250,7 +250,7 @@ export interface MsgChangeAdminResponseSDKType {
  */
 export interface MsgSetDenomMetadata {
     sender: string;
-    metadata?: Metadata;
+    metadata: Metadata;
 }
 export interface MsgSetDenomMetadataProtoMsg {
     typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata";
@@ -274,7 +274,7 @@ export interface MsgSetDenomMetadataAminoMsg {
  */
 export interface MsgSetDenomMetadataSDKType {
     sender: string;
-    metadata?: MetadataSDKType;
+    metadata: MetadataSDKType;
 }
 /**
  * MsgSetDenomMetadataResponse defines the response structure for an executed
@@ -304,7 +304,7 @@ export interface MsgSetDenomMetadataResponseSDKType {
 }
 export interface MsgForceTransfer {
     sender: string;
-    amount?: Coin;
+    amount: Coin;
     transferFromAddress: string;
     transferToAddress: string;
 }
@@ -324,7 +324,7 @@ export interface MsgForceTransferAminoMsg {
 }
 export interface MsgForceTransferSDKType {
     sender: string;
-    amount?: CoinSDKType;
+    amount: CoinSDKType;
     transferFromAddress: string;
     transferToAddress: string;
 }
@@ -344,8 +344,8 @@ export interface MsgForceTransferResponseSDKType {
 }
 export declare const MsgCreateDenom: {
     typeUrl: string;
-    encode(message: MsgCreateDenom, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenom;
+    encode(message: MsgCreateDenom, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateDenom;
     fromPartial(object: Partial<MsgCreateDenom>): MsgCreateDenom;
     fromAmino(object: MsgCreateDenomAmino): MsgCreateDenom;
     toAmino(message: MsgCreateDenom): MsgCreateDenomAmino;
@@ -357,8 +357,8 @@ export declare const MsgCreateDenom: {
 };
 export declare const MsgCreateDenomResponse: {
     typeUrl: string;
-    encode(message: MsgCreateDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponse;
+    encode(message: MsgCreateDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateDenomResponse;
     fromPartial(object: Partial<MsgCreateDenomResponse>): MsgCreateDenomResponse;
     fromAmino(object: MsgCreateDenomResponseAmino): MsgCreateDenomResponse;
     toAmino(message: MsgCreateDenomResponse): MsgCreateDenomResponseAmino;
@@ -370,8 +370,8 @@ export declare const MsgCreateDenomResponse: {
 };
 export declare const MsgMint: {
     typeUrl: string;
-    encode(message: MsgMint, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMint;
+    encode(message: MsgMint, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgMint;
     fromPartial(object: Partial<MsgMint>): MsgMint;
     fromAmino(object: MsgMintAmino): MsgMint;
     toAmino(message: MsgMint): MsgMintAmino;
@@ -383,8 +383,8 @@ export declare const MsgMint: {
 };
 export declare const MsgMintResponse: {
     typeUrl: string;
-    encode(_: MsgMintResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponse;
+    encode(_: MsgMintResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgMintResponse;
     fromPartial(_: Partial<MsgMintResponse>): MsgMintResponse;
     fromAmino(_: MsgMintResponseAmino): MsgMintResponse;
     toAmino(_: MsgMintResponse): MsgMintResponseAmino;
@@ -396,8 +396,8 @@ export declare const MsgMintResponse: {
 };
 export declare const MsgBurn: {
     typeUrl: string;
-    encode(message: MsgBurn, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurn;
+    encode(message: MsgBurn, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgBurn;
     fromPartial(object: Partial<MsgBurn>): MsgBurn;
     fromAmino(object: MsgBurnAmino): MsgBurn;
     toAmino(message: MsgBurn): MsgBurnAmino;
@@ -409,8 +409,8 @@ export declare const MsgBurn: {
 };
 export declare const MsgBurnResponse: {
     typeUrl: string;
-    encode(_: MsgBurnResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse;
+    encode(_: MsgBurnResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgBurnResponse;
     fromPartial(_: Partial<MsgBurnResponse>): MsgBurnResponse;
     fromAmino(_: MsgBurnResponseAmino): MsgBurnResponse;
     toAmino(_: MsgBurnResponse): MsgBurnResponseAmino;
@@ -422,8 +422,8 @@ export declare const MsgBurnResponse: {
 };
 export declare const MsgChangeAdmin: {
     typeUrl: string;
-    encode(message: MsgChangeAdmin, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdmin;
+    encode(message: MsgChangeAdmin, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgChangeAdmin;
     fromPartial(object: Partial<MsgChangeAdmin>): MsgChangeAdmin;
     fromAmino(object: MsgChangeAdminAmino): MsgChangeAdmin;
     toAmino(message: MsgChangeAdmin): MsgChangeAdminAmino;
@@ -435,8 +435,8 @@ export declare const MsgChangeAdmin: {
 };
 export declare const MsgChangeAdminResponse: {
     typeUrl: string;
-    encode(_: MsgChangeAdminResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponse;
+    encode(_: MsgChangeAdminResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgChangeAdminResponse;
     fromPartial(_: Partial<MsgChangeAdminResponse>): MsgChangeAdminResponse;
     fromAmino(_: MsgChangeAdminResponseAmino): MsgChangeAdminResponse;
     toAmino(_: MsgChangeAdminResponse): MsgChangeAdminResponseAmino;
@@ -448,8 +448,8 @@ export declare const MsgChangeAdminResponse: {
 };
 export declare const MsgSetDenomMetadata: {
     typeUrl: string;
-    encode(message: MsgSetDenomMetadata, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata;
+    encode(message: MsgSetDenomMetadata, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomMetadata;
     fromPartial(object: Partial<MsgSetDenomMetadata>): MsgSetDenomMetadata;
     fromAmino(object: MsgSetDenomMetadataAmino): MsgSetDenomMetadata;
     toAmino(message: MsgSetDenomMetadata): MsgSetDenomMetadataAmino;
@@ -461,8 +461,8 @@ export declare const MsgSetDenomMetadata: {
 };
 export declare const MsgSetDenomMetadataResponse: {
     typeUrl: string;
-    encode(_: MsgSetDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponse;
+    encode(_: MsgSetDenomMetadataResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomMetadataResponse;
     fromPartial(_: Partial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse;
     fromAmino(_: MsgSetDenomMetadataResponseAmino): MsgSetDenomMetadataResponse;
     toAmino(_: MsgSetDenomMetadataResponse): MsgSetDenomMetadataResponseAmino;
@@ -474,8 +474,8 @@ export declare const MsgSetDenomMetadataResponse: {
 };
 export declare const MsgForceTransfer: {
     typeUrl: string;
-    encode(message: MsgForceTransfer, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransfer;
+    encode(message: MsgForceTransfer, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgForceTransfer;
     fromPartial(object: Partial<MsgForceTransfer>): MsgForceTransfer;
     fromAmino(object: MsgForceTransferAmino): MsgForceTransfer;
     toAmino(message: MsgForceTransfer): MsgForceTransferAmino;
@@ -487,8 +487,8 @@ export declare const MsgForceTransfer: {
 };
 export declare const MsgForceTransferResponse: {
     typeUrl: string;
-    encode(_: MsgForceTransferResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceTransferResponse;
+    encode(_: MsgForceTransferResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgForceTransferResponse;
     fromPartial(_: Partial<MsgForceTransferResponse>): MsgForceTransferResponse;
     fromAmino(_: MsgForceTransferResponseAmino): MsgForceTransferResponse;
     toAmino(_: MsgForceTransferResponse): MsgForceTransferResponseAmino;

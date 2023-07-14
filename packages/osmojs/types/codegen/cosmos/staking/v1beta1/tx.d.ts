@@ -1,22 +1,22 @@
 import { Description, DescriptionAmino, DescriptionSDKType, CommissionRates, CommissionRatesAmino, CommissionRatesSDKType } from "./staking";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 export interface MsgCreateValidator {
-    description?: Description;
-    commission?: CommissionRates;
+    description: Description;
+    commission: CommissionRates;
     minSelfDelegation: string;
     delegatorAddress: string;
     validatorAddress: string;
-    pubkey?: (Any) | undefined;
-    value?: Coin;
+    pubkey: (Any) | undefined;
+    value: Coin;
 }
 export interface MsgCreateValidatorProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.MsgCreateValidator";
     value: Uint8Array;
 }
-export type MsgCreateValidatorEncoded = Omit<MsgCreateValidator, "pubkey"> & {
+export declare type MsgCreateValidatorEncoded = Omit<MsgCreateValidator, "pubkey"> & {
     pubkey?: AnyProtoMsg | undefined;
 };
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
@@ -35,13 +35,13 @@ export interface MsgCreateValidatorAminoMsg {
 }
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 export interface MsgCreateValidatorSDKType {
-    description?: DescriptionSDKType;
-    commission?: CommissionRatesSDKType;
+    description: DescriptionSDKType;
+    commission: CommissionRatesSDKType;
     min_self_delegation: string;
     delegator_address: string;
     validator_address: string;
-    pubkey?: AnySDKType | undefined;
-    value?: CoinSDKType;
+    pubkey: AnySDKType | undefined;
+    value: CoinSDKType;
 }
 /** MsgCreateValidatorResponse defines the Msg/CreateValidator response type. */
 export interface MsgCreateValidatorResponse {
@@ -62,7 +62,7 @@ export interface MsgCreateValidatorResponseSDKType {
 }
 /** MsgEditValidator defines a SDK message for editing an existing validator. */
 export interface MsgEditValidator {
-    description?: Description;
+    description: Description;
     validatorAddress: string;
     /**
      * We pass a reference to the new commission rate and min self delegation as
@@ -96,7 +96,7 @@ export interface MsgEditValidatorAminoMsg {
 }
 /** MsgEditValidator defines a SDK message for editing an existing validator. */
 export interface MsgEditValidatorSDKType {
-    description?: DescriptionSDKType;
+    description: DescriptionSDKType;
     validator_address: string;
     commission_rate: string;
     min_self_delegation: string;
@@ -125,7 +125,7 @@ export interface MsgEditValidatorResponseSDKType {
 export interface MsgDelegate {
     delegatorAddress: string;
     validatorAddress: string;
-    amount?: Coin;
+    amount: Coin;
 }
 export interface MsgDelegateProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.MsgDelegate";
@@ -151,7 +151,7 @@ export interface MsgDelegateAminoMsg {
 export interface MsgDelegateSDKType {
     delegator_address: string;
     validator_address: string;
-    amount?: CoinSDKType;
+    amount: CoinSDKType;
 }
 /** MsgDelegateResponse defines the Msg/Delegate response type. */
 export interface MsgDelegateResponse {
@@ -178,7 +178,7 @@ export interface MsgBeginRedelegate {
     delegatorAddress: string;
     validatorSrcAddress: string;
     validatorDstAddress: string;
-    amount?: Coin;
+    amount: Coin;
 }
 export interface MsgBeginRedelegateProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.MsgBeginRedelegate";
@@ -206,11 +206,11 @@ export interface MsgBeginRedelegateSDKType {
     delegator_address: string;
     validator_src_address: string;
     validator_dst_address: string;
-    amount?: CoinSDKType;
+    amount: CoinSDKType;
 }
 /** MsgBeginRedelegateResponse defines the Msg/BeginRedelegate response type. */
 export interface MsgBeginRedelegateResponse {
-    completionTime?: Date;
+    completionTime: Date;
 }
 export interface MsgBeginRedelegateResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.MsgBeginRedelegateResponse";
@@ -226,7 +226,7 @@ export interface MsgBeginRedelegateResponseAminoMsg {
 }
 /** MsgBeginRedelegateResponse defines the Msg/BeginRedelegate response type. */
 export interface MsgBeginRedelegateResponseSDKType {
-    completion_time?: Date;
+    completion_time: Date;
 }
 /**
  * MsgUndelegate defines a SDK message for performing an undelegation from a
@@ -235,7 +235,7 @@ export interface MsgBeginRedelegateResponseSDKType {
 export interface MsgUndelegate {
     delegatorAddress: string;
     validatorAddress: string;
-    amount?: Coin;
+    amount: Coin;
 }
 export interface MsgUndelegateProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.MsgUndelegate";
@@ -261,11 +261,11 @@ export interface MsgUndelegateAminoMsg {
 export interface MsgUndelegateSDKType {
     delegator_address: string;
     validator_address: string;
-    amount?: CoinSDKType;
+    amount: CoinSDKType;
 }
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponse {
-    completionTime?: Date;
+    completionTime: Date;
 }
 export interface MsgUndelegateResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.MsgUndelegateResponse";
@@ -281,12 +281,12 @@ export interface MsgUndelegateResponseAminoMsg {
 }
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponseSDKType {
-    completion_time?: Date;
+    completion_time: Date;
 }
 export declare const MsgCreateValidator: {
     typeUrl: string;
-    encode(message: MsgCreateValidator, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidator;
+    encode(message: MsgCreateValidator, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateValidator;
     fromPartial(object: Partial<MsgCreateValidator>): MsgCreateValidator;
     fromAmino(object: MsgCreateValidatorAmino): MsgCreateValidator;
     toAmino(message: MsgCreateValidator): MsgCreateValidatorAmino;
@@ -298,8 +298,8 @@ export declare const MsgCreateValidator: {
 };
 export declare const MsgCreateValidatorResponse: {
     typeUrl: string;
-    encode(_: MsgCreateValidatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidatorResponse;
+    encode(_: MsgCreateValidatorResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateValidatorResponse;
     fromPartial(_: Partial<MsgCreateValidatorResponse>): MsgCreateValidatorResponse;
     fromAmino(_: MsgCreateValidatorResponseAmino): MsgCreateValidatorResponse;
     toAmino(_: MsgCreateValidatorResponse): MsgCreateValidatorResponseAmino;
@@ -311,8 +311,8 @@ export declare const MsgCreateValidatorResponse: {
 };
 export declare const MsgEditValidator: {
     typeUrl: string;
-    encode(message: MsgEditValidator, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidator;
+    encode(message: MsgEditValidator, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgEditValidator;
     fromPartial(object: Partial<MsgEditValidator>): MsgEditValidator;
     fromAmino(object: MsgEditValidatorAmino): MsgEditValidator;
     toAmino(message: MsgEditValidator): MsgEditValidatorAmino;
@@ -324,8 +324,8 @@ export declare const MsgEditValidator: {
 };
 export declare const MsgEditValidatorResponse: {
     typeUrl: string;
-    encode(_: MsgEditValidatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidatorResponse;
+    encode(_: MsgEditValidatorResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgEditValidatorResponse;
     fromPartial(_: Partial<MsgEditValidatorResponse>): MsgEditValidatorResponse;
     fromAmino(_: MsgEditValidatorResponseAmino): MsgEditValidatorResponse;
     toAmino(_: MsgEditValidatorResponse): MsgEditValidatorResponseAmino;
@@ -337,8 +337,8 @@ export declare const MsgEditValidatorResponse: {
 };
 export declare const MsgDelegate: {
     typeUrl: string;
-    encode(message: MsgDelegate, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegate;
+    encode(message: MsgDelegate, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegate;
     fromPartial(object: Partial<MsgDelegate>): MsgDelegate;
     fromAmino(object: MsgDelegateAmino): MsgDelegate;
     toAmino(message: MsgDelegate): MsgDelegateAmino;
@@ -350,8 +350,8 @@ export declare const MsgDelegate: {
 };
 export declare const MsgDelegateResponse: {
     typeUrl: string;
-    encode(_: MsgDelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateResponse;
+    encode(_: MsgDelegateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateResponse;
     fromPartial(_: Partial<MsgDelegateResponse>): MsgDelegateResponse;
     fromAmino(_: MsgDelegateResponseAmino): MsgDelegateResponse;
     toAmino(_: MsgDelegateResponse): MsgDelegateResponseAmino;
@@ -363,8 +363,8 @@ export declare const MsgDelegateResponse: {
 };
 export declare const MsgBeginRedelegate: {
     typeUrl: string;
-    encode(message: MsgBeginRedelegate, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegate;
+    encode(message: MsgBeginRedelegate, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginRedelegate;
     fromPartial(object: Partial<MsgBeginRedelegate>): MsgBeginRedelegate;
     fromAmino(object: MsgBeginRedelegateAmino): MsgBeginRedelegate;
     toAmino(message: MsgBeginRedelegate): MsgBeginRedelegateAmino;
@@ -376,8 +376,8 @@ export declare const MsgBeginRedelegate: {
 };
 export declare const MsgBeginRedelegateResponse: {
     typeUrl: string;
-    encode(message: MsgBeginRedelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegateResponse;
+    encode(message: MsgBeginRedelegateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginRedelegateResponse;
     fromPartial(object: Partial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse;
     fromAmino(object: MsgBeginRedelegateResponseAmino): MsgBeginRedelegateResponse;
     toAmino(message: MsgBeginRedelegateResponse): MsgBeginRedelegateResponseAmino;
@@ -389,8 +389,8 @@ export declare const MsgBeginRedelegateResponse: {
 };
 export declare const MsgUndelegate: {
     typeUrl: string;
-    encode(message: MsgUndelegate, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegate;
+    encode(message: MsgUndelegate, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegate;
     fromPartial(object: Partial<MsgUndelegate>): MsgUndelegate;
     fromAmino(object: MsgUndelegateAmino): MsgUndelegate;
     toAmino(message: MsgUndelegate): MsgUndelegateAmino;
@@ -402,8 +402,8 @@ export declare const MsgUndelegate: {
 };
 export declare const MsgUndelegateResponse: {
     typeUrl: string;
-    encode(message: MsgUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateResponse;
+    encode(message: MsgUndelegateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegateResponse;
     fromPartial(object: Partial<MsgUndelegateResponse>): MsgUndelegateResponse;
     fromAmino(object: MsgUndelegateResponseAmino): MsgUndelegateResponse;
     toAmino(message: MsgUndelegateResponse): MsgUndelegateResponseAmino;
@@ -413,7 +413,7 @@ export declare const MsgUndelegateResponse: {
     toProto(message: MsgUndelegateResponse): Uint8Array;
     toProtoMsg(message: MsgUndelegateResponse): MsgUndelegateResponseProtoMsg;
 };
-export declare const Cosmos_cryptoPubKey_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Any;
+export declare const Cosmos_cryptoPubKey_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
 export declare const Cosmos_cryptoPubKey_FromAmino: (content: AnyAmino) => string;
 export declare const Cosmos_cryptoPubKey_ToAmino: (content: Any) => {
     typeUrl: string;

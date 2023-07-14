@@ -1,17 +1,16 @@
 import { Counterparty, CounterpartyAmino, CounterpartySDKType, Version, VersionAmino, VersionSDKType } from "./connection";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * MsgConnectionOpenInit defines the msg sent by an account on Chain A to
  * initialize a connection with Chain B.
  */
 export interface MsgConnectionOpenInit {
     clientId: string;
-    counterparty?: Counterparty;
-    version?: Version;
-    delayPeriod: Long;
+    counterparty: Counterparty;
+    version: Version;
+    delayPeriod: bigint;
     signer: string;
 }
 export interface MsgConnectionOpenInitProtoMsg {
@@ -39,9 +38,9 @@ export interface MsgConnectionOpenInitAminoMsg {
  */
 export interface MsgConnectionOpenInitSDKType {
     client_id: string;
-    counterparty?: CounterpartySDKType;
-    version?: VersionSDKType;
-    delay_period: Long;
+    counterparty: CounterpartySDKType;
+    version: VersionSDKType;
+    delay_period: bigint;
     signer: string;
 }
 /**
@@ -79,11 +78,11 @@ export interface MsgConnectionOpenTry {
     /** Deprecated: this field is unused. Crossing hellos are no longer supported in core IBC. */
     /** @deprecated */
     previousConnectionId: string;
-    clientState?: Any;
-    counterparty?: Counterparty;
-    delayPeriod: Long;
+    clientState: Any;
+    counterparty: Counterparty;
+    delayPeriod: bigint;
     counterpartyVersions: Version[];
-    proofHeight?: Height;
+    proofHeight: Height;
     /**
      * proof of the initialization the connection on Chain A: `UNITIALIZED ->
      * INIT`
@@ -93,7 +92,7 @@ export interface MsgConnectionOpenTry {
     proofClient: Uint8Array;
     /** proof of client consensus state */
     proofConsensus: Uint8Array;
-    consensusHeight?: Height;
+    consensusHeight: Height;
     signer: string;
     /** optional proof data for host state machines that are unable to introspect their own consensus state */
     hostConsensusStateProof: Uint8Array;
@@ -142,15 +141,15 @@ export interface MsgConnectionOpenTrySDKType {
     client_id: string;
     /** @deprecated */
     previous_connection_id: string;
-    client_state?: AnySDKType;
-    counterparty?: CounterpartySDKType;
-    delay_period: Long;
+    client_state: AnySDKType;
+    counterparty: CounterpartySDKType;
+    delay_period: bigint;
     counterparty_versions: VersionSDKType[];
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
     proof_init: Uint8Array;
     proof_client: Uint8Array;
     proof_consensus: Uint8Array;
-    consensus_height?: HeightSDKType;
+    consensus_height: HeightSDKType;
     signer: string;
     host_consensus_state_proof: Uint8Array;
 }
@@ -178,9 +177,9 @@ export interface MsgConnectionOpenTryResponseSDKType {
 export interface MsgConnectionOpenAck {
     connectionId: string;
     counterpartyConnectionId: string;
-    version?: Version;
-    clientState?: Any;
-    proofHeight?: Height;
+    version: Version;
+    clientState: Any;
+    proofHeight: Height;
     /**
      * proof of the initialization the connection on Chain B: `UNITIALIZED ->
      * TRYOPEN`
@@ -190,7 +189,7 @@ export interface MsgConnectionOpenAck {
     proofClient: Uint8Array;
     /** proof of client consensus state */
     proofConsensus: Uint8Array;
-    consensusHeight?: Height;
+    consensusHeight: Height;
     signer: string;
     /** optional proof data for host state machines that are unable to introspect their own consensus state */
     hostConsensusStateProof: Uint8Array;
@@ -234,13 +233,13 @@ export interface MsgConnectionOpenAckAminoMsg {
 export interface MsgConnectionOpenAckSDKType {
     connection_id: string;
     counterparty_connection_id: string;
-    version?: VersionSDKType;
-    client_state?: AnySDKType;
-    proof_height?: HeightSDKType;
+    version: VersionSDKType;
+    client_state: AnySDKType;
+    proof_height: HeightSDKType;
     proof_try: Uint8Array;
     proof_client: Uint8Array;
     proof_consensus: Uint8Array;
-    consensus_height?: HeightSDKType;
+    consensus_height: HeightSDKType;
     signer: string;
     host_consensus_state_proof: Uint8Array;
 }
@@ -269,7 +268,7 @@ export interface MsgConnectionOpenConfirm {
     connectionId: string;
     /** proof for the change of the connection state on Chain A: `INIT -> OPEN` */
     proofAck: Uint8Array;
-    proofHeight?: Height;
+    proofHeight: Height;
     signer: string;
 }
 export interface MsgConnectionOpenConfirmProtoMsg {
@@ -298,7 +297,7 @@ export interface MsgConnectionOpenConfirmAminoMsg {
 export interface MsgConnectionOpenConfirmSDKType {
     connection_id: string;
     proof_ack: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
     signer: string;
 }
 /**
@@ -329,8 +328,8 @@ export interface MsgConnectionOpenConfirmResponseSDKType {
 }
 export declare const MsgConnectionOpenInit: {
     typeUrl: string;
-    encode(message: MsgConnectionOpenInit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInit;
+    encode(message: MsgConnectionOpenInit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenInit;
     fromPartial(object: Partial<MsgConnectionOpenInit>): MsgConnectionOpenInit;
     fromAmino(object: MsgConnectionOpenInitAmino): MsgConnectionOpenInit;
     toAmino(message: MsgConnectionOpenInit): MsgConnectionOpenInitAmino;
@@ -342,8 +341,8 @@ export declare const MsgConnectionOpenInit: {
 };
 export declare const MsgConnectionOpenInitResponse: {
     typeUrl: string;
-    encode(_: MsgConnectionOpenInitResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenInitResponse;
+    encode(_: MsgConnectionOpenInitResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenInitResponse;
     fromPartial(_: Partial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse;
     fromAmino(_: MsgConnectionOpenInitResponseAmino): MsgConnectionOpenInitResponse;
     toAmino(_: MsgConnectionOpenInitResponse): MsgConnectionOpenInitResponseAmino;
@@ -355,8 +354,8 @@ export declare const MsgConnectionOpenInitResponse: {
 };
 export declare const MsgConnectionOpenTry: {
     typeUrl: string;
-    encode(message: MsgConnectionOpenTry, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTry;
+    encode(message: MsgConnectionOpenTry, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenTry;
     fromPartial(object: Partial<MsgConnectionOpenTry>): MsgConnectionOpenTry;
     fromAmino(object: MsgConnectionOpenTryAmino): MsgConnectionOpenTry;
     toAmino(message: MsgConnectionOpenTry): MsgConnectionOpenTryAmino;
@@ -368,8 +367,8 @@ export declare const MsgConnectionOpenTry: {
 };
 export declare const MsgConnectionOpenTryResponse: {
     typeUrl: string;
-    encode(_: MsgConnectionOpenTryResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenTryResponse;
+    encode(_: MsgConnectionOpenTryResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenTryResponse;
     fromPartial(_: Partial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse;
     fromAmino(_: MsgConnectionOpenTryResponseAmino): MsgConnectionOpenTryResponse;
     toAmino(_: MsgConnectionOpenTryResponse): MsgConnectionOpenTryResponseAmino;
@@ -381,8 +380,8 @@ export declare const MsgConnectionOpenTryResponse: {
 };
 export declare const MsgConnectionOpenAck: {
     typeUrl: string;
-    encode(message: MsgConnectionOpenAck, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAck;
+    encode(message: MsgConnectionOpenAck, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenAck;
     fromPartial(object: Partial<MsgConnectionOpenAck>): MsgConnectionOpenAck;
     fromAmino(object: MsgConnectionOpenAckAmino): MsgConnectionOpenAck;
     toAmino(message: MsgConnectionOpenAck): MsgConnectionOpenAckAmino;
@@ -394,8 +393,8 @@ export declare const MsgConnectionOpenAck: {
 };
 export declare const MsgConnectionOpenAckResponse: {
     typeUrl: string;
-    encode(_: MsgConnectionOpenAckResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenAckResponse;
+    encode(_: MsgConnectionOpenAckResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenAckResponse;
     fromPartial(_: Partial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse;
     fromAmino(_: MsgConnectionOpenAckResponseAmino): MsgConnectionOpenAckResponse;
     toAmino(_: MsgConnectionOpenAckResponse): MsgConnectionOpenAckResponseAmino;
@@ -407,8 +406,8 @@ export declare const MsgConnectionOpenAckResponse: {
 };
 export declare const MsgConnectionOpenConfirm: {
     typeUrl: string;
-    encode(message: MsgConnectionOpenConfirm, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirm;
+    encode(message: MsgConnectionOpenConfirm, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenConfirm;
     fromPartial(object: Partial<MsgConnectionOpenConfirm>): MsgConnectionOpenConfirm;
     fromAmino(object: MsgConnectionOpenConfirmAmino): MsgConnectionOpenConfirm;
     toAmino(message: MsgConnectionOpenConfirm): MsgConnectionOpenConfirmAmino;
@@ -420,8 +419,8 @@ export declare const MsgConnectionOpenConfirm: {
 };
 export declare const MsgConnectionOpenConfirmResponse: {
     typeUrl: string;
-    encode(_: MsgConnectionOpenConfirmResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponse;
+    encode(_: MsgConnectionOpenConfirmResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponse;
     fromPartial(_: Partial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse;
     fromAmino(_: MsgConnectionOpenConfirmResponseAmino): MsgConnectionOpenConfirmResponse;
     toAmino(_: MsgConnectionOpenConfirmResponse): MsgConnectionOpenConfirmResponseAmino;

@@ -1,6 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { PacketId, PacketIdAmino, PacketIdSDKType } from "../../../core/channel/v1/channel";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** Fee defines the ICS29 receive, acknowledgement and timeout fees */
 export interface Fee {
     /** the packet receive fee */
@@ -36,7 +36,7 @@ export interface FeeSDKType {
 /** PacketFee contains ICS29 relayer fees, refund address and optional list of permitted relayers */
 export interface PacketFee {
     /** fee encapsulates the recv, ack and timeout fees associated with an IBC packet */
-    fee?: Fee;
+    fee: Fee;
     /** the refund address for unspent fees */
     refundAddress: string;
     /** optional list of relayers permitted to receive fees */
@@ -61,7 +61,7 @@ export interface PacketFeeAminoMsg {
 }
 /** PacketFee contains ICS29 relayer fees, refund address and optional list of permitted relayers */
 export interface PacketFeeSDKType {
-    fee?: FeeSDKType;
+    fee: FeeSDKType;
     refund_address: string;
     relayers: string[];
 }
@@ -90,7 +90,7 @@ export interface PacketFeesSDKType {
 /** IdentifiedPacketFees contains a list of type PacketFee and associated PacketId */
 export interface IdentifiedPacketFees {
     /** unique packet identifier comprised of the channel ID, port ID and sequence */
-    packetId?: PacketId;
+    packetId: PacketId;
     /** list of packet fees */
     packetFees: PacketFee[];
 }
@@ -111,13 +111,13 @@ export interface IdentifiedPacketFeesAminoMsg {
 }
 /** IdentifiedPacketFees contains a list of type PacketFee and associated PacketId */
 export interface IdentifiedPacketFeesSDKType {
-    packet_id?: PacketIdSDKType;
+    packet_id: PacketIdSDKType;
     packet_fees: PacketFeeSDKType[];
 }
 export declare const Fee: {
     typeUrl: string;
-    encode(message: Fee, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Fee;
+    encode(message: Fee, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Fee;
     fromPartial(object: Partial<Fee>): Fee;
     fromAmino(object: FeeAmino): Fee;
     toAmino(message: Fee): FeeAmino;
@@ -129,8 +129,8 @@ export declare const Fee: {
 };
 export declare const PacketFee: {
     typeUrl: string;
-    encode(message: PacketFee, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PacketFee;
+    encode(message: PacketFee, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PacketFee;
     fromPartial(object: Partial<PacketFee>): PacketFee;
     fromAmino(object: PacketFeeAmino): PacketFee;
     toAmino(message: PacketFee): PacketFeeAmino;
@@ -142,8 +142,8 @@ export declare const PacketFee: {
 };
 export declare const PacketFees: {
     typeUrl: string;
-    encode(message: PacketFees, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PacketFees;
+    encode(message: PacketFees, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PacketFees;
     fromPartial(object: Partial<PacketFees>): PacketFees;
     fromAmino(object: PacketFeesAmino): PacketFees;
     toAmino(message: PacketFees): PacketFeesAmino;
@@ -155,8 +155,8 @@ export declare const PacketFees: {
 };
 export declare const IdentifiedPacketFees: {
     typeUrl: string;
-    encode(message: IdentifiedPacketFees, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): IdentifiedPacketFees;
+    encode(message: IdentifiedPacketFees, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedPacketFees;
     fromPartial(object: Partial<IdentifiedPacketFees>): IdentifiedPacketFees;
     fromAmino(object: IdentifiedPacketFeesAmino): IdentifiedPacketFees;
     toAmino(message: IdentifiedPacketFees): IdentifiedPacketFeesAmino;

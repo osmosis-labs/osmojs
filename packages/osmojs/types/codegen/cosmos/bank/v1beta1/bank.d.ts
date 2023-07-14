@@ -1,5 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params defines the parameters for the bank module. */
 export interface Params {
     sendEnabled: SendEnabled[];
@@ -271,8 +271,8 @@ export interface MetadataSDKType {
 }
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
@@ -284,8 +284,8 @@ export declare const Params: {
 };
 export declare const SendEnabled: {
     typeUrl: string;
-    encode(message: SendEnabled, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SendEnabled;
+    encode(message: SendEnabled, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SendEnabled;
     fromPartial(object: Partial<SendEnabled>): SendEnabled;
     fromAmino(object: SendEnabledAmino): SendEnabled;
     toAmino(message: SendEnabled): SendEnabledAmino;
@@ -297,8 +297,8 @@ export declare const SendEnabled: {
 };
 export declare const Input: {
     typeUrl: string;
-    encode(message: Input, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Input;
+    encode(message: Input, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Input;
     fromPartial(object: Partial<Input>): Input;
     fromAmino(object: InputAmino): Input;
     toAmino(message: Input): InputAmino;
@@ -310,8 +310,8 @@ export declare const Input: {
 };
 export declare const Output: {
     typeUrl: string;
-    encode(message: Output, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Output;
+    encode(message: Output, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Output;
     fromPartial(object: Partial<Output>): Output;
     fromAmino(object: OutputAmino): Output;
     toAmino(message: Output): OutputAmino;
@@ -323,8 +323,8 @@ export declare const Output: {
 };
 export declare const Supply: {
     typeUrl: string;
-    encode(message: Supply, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Supply;
+    encode(message: Supply, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Supply;
     fromPartial(object: Partial<Supply>): Supply;
     fromAmino(object: SupplyAmino): Supply;
     toAmino(message: Supply): SupplyAmino;
@@ -336,8 +336,8 @@ export declare const Supply: {
 };
 export declare const DenomUnit: {
     typeUrl: string;
-    encode(message: DenomUnit, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DenomUnit;
+    encode(message: DenomUnit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DenomUnit;
     fromPartial(object: Partial<DenomUnit>): DenomUnit;
     fromAmino(object: DenomUnitAmino): DenomUnit;
     toAmino(message: DenomUnit): DenomUnitAmino;
@@ -349,8 +349,8 @@ export declare const DenomUnit: {
 };
 export declare const Metadata: {
     typeUrl: string;
-    encode(message: Metadata, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Metadata;
+    encode(message: Metadata, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Metadata;
     fromPartial(object: Partial<Metadata>): Metadata;
     fromAmino(object: MetadataAmino): Metadata;
     toAmino(message: Metadata): MetadataAmino;

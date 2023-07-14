@@ -7,8 +7,8 @@ export declare namespace google {
     const protobuf: {
         Timestamp: {
             typeUrl: string;
-            encode(message: _178.Timestamp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _178.Timestamp;
+            encode(message: _178.Timestamp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _178.Timestamp;
             fromPartial(object: Partial<_178.Timestamp>): _178.Timestamp;
             fromAmino(object: string): _178.Timestamp;
             toAmino(message: _178.Timestamp): string;
@@ -19,8 +19,8 @@ export declare namespace google {
         };
         Empty: {
             typeUrl: string;
-            encode(_: _177.Empty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _177.Empty;
+            encode(_: _177.Empty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _177.Empty;
             fromPartial(_: Partial<_177.Empty>): _177.Empty;
             fromAmino(_: _177.EmptyAmino): _177.Empty;
             toAmino(_: _177.Empty): _177.EmptyAmino;
@@ -31,8 +31,8 @@ export declare namespace google {
         };
         Duration: {
             typeUrl: string;
-            encode(message: _176.Duration, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _176.Duration;
+            encode(message: _176.Duration, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _176.Duration;
             fromPartial(object: Partial<_176.Duration>): _176.Duration;
             fromAmino(object: string): _176.Duration;
             toAmino(message: _176.Duration): string;
@@ -73,8 +73,8 @@ export declare namespace google {
         MethodOptions_IdempotencyLevelAmino: typeof _175.MethodOptions_IdempotencyLevel;
         FileDescriptorSet: {
             typeUrl: string;
-            encode(message: _175.FileDescriptorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.FileDescriptorSet;
+            encode(message: _175.FileDescriptorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.FileDescriptorSet;
             fromPartial(object: Partial<_175.FileDescriptorSet>): _175.FileDescriptorSet;
             fromAmino(object: _175.FileDescriptorSetAmino): _175.FileDescriptorSet;
             toAmino(message: _175.FileDescriptorSet): _175.FileDescriptorSetAmino;
@@ -85,8 +85,8 @@ export declare namespace google {
         };
         FileDescriptorProto: {
             typeUrl: string;
-            encode(message: _175.FileDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.FileDescriptorProto;
+            encode(message: _175.FileDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.FileDescriptorProto;
             fromPartial(object: Partial<_175.FileDescriptorProto>): _175.FileDescriptorProto;
             fromAmino(object: _175.FileDescriptorProtoAmino): _175.FileDescriptorProto;
             toAmino(message: _175.FileDescriptorProto): _175.FileDescriptorProtoAmino;
@@ -97,8 +97,8 @@ export declare namespace google {
         };
         DescriptorProto: {
             typeUrl: string;
-            encode(message: _175.DescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.DescriptorProto;
+            encode(message: _175.DescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.DescriptorProto;
             fromPartial(object: Partial<_175.DescriptorProto>): _175.DescriptorProto;
             fromAmino(object: _175.DescriptorProtoAmino): _175.DescriptorProto;
             toAmino(message: _175.DescriptorProto): _175.DescriptorProtoAmino;
@@ -109,8 +109,8 @@ export declare namespace google {
         };
         DescriptorProto_ExtensionRange: {
             typeUrl: string;
-            encode(message: _175.DescriptorProto_ExtensionRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.DescriptorProto_ExtensionRange;
+            encode(message: _175.DescriptorProto_ExtensionRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.DescriptorProto_ExtensionRange;
             fromPartial(object: Partial<_175.DescriptorProto_ExtensionRange>): _175.DescriptorProto_ExtensionRange;
             fromAmino(object: _175.DescriptorProto_ExtensionRangeAmino): _175.DescriptorProto_ExtensionRange;
             toAmino(message: _175.DescriptorProto_ExtensionRange): _175.DescriptorProto_ExtensionRangeAmino;
@@ -121,8 +121,8 @@ export declare namespace google {
         };
         DescriptorProto_ReservedRange: {
             typeUrl: string;
-            encode(message: _175.DescriptorProto_ReservedRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.DescriptorProto_ReservedRange;
+            encode(message: _175.DescriptorProto_ReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.DescriptorProto_ReservedRange;
             fromPartial(object: Partial<_175.DescriptorProto_ReservedRange>): _175.DescriptorProto_ReservedRange;
             fromAmino(object: _175.DescriptorProto_ReservedRangeAmino): _175.DescriptorProto_ReservedRange;
             toAmino(message: _175.DescriptorProto_ReservedRange): _175.DescriptorProto_ReservedRangeAmino;
@@ -133,8 +133,8 @@ export declare namespace google {
         };
         ExtensionRangeOptions: {
             typeUrl: string;
-            encode(message: _175.ExtensionRangeOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.ExtensionRangeOptions;
+            encode(message: _175.ExtensionRangeOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.ExtensionRangeOptions;
             fromPartial(object: Partial<_175.ExtensionRangeOptions>): _175.ExtensionRangeOptions;
             fromAmino(object: _175.ExtensionRangeOptionsAmino): _175.ExtensionRangeOptions;
             toAmino(message: _175.ExtensionRangeOptions): _175.ExtensionRangeOptionsAmino;
@@ -145,8 +145,8 @@ export declare namespace google {
         };
         FieldDescriptorProto: {
             typeUrl: string;
-            encode(message: _175.FieldDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.FieldDescriptorProto;
+            encode(message: _175.FieldDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.FieldDescriptorProto;
             fromPartial(object: Partial<_175.FieldDescriptorProto>): _175.FieldDescriptorProto;
             fromAmino(object: _175.FieldDescriptorProtoAmino): _175.FieldDescriptorProto;
             toAmino(message: _175.FieldDescriptorProto): _175.FieldDescriptorProtoAmino;
@@ -157,8 +157,8 @@ export declare namespace google {
         };
         OneofDescriptorProto: {
             typeUrl: string;
-            encode(message: _175.OneofDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.OneofDescriptorProto;
+            encode(message: _175.OneofDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.OneofDescriptorProto;
             fromPartial(object: Partial<_175.OneofDescriptorProto>): _175.OneofDescriptorProto;
             fromAmino(object: _175.OneofDescriptorProtoAmino): _175.OneofDescriptorProto;
             toAmino(message: _175.OneofDescriptorProto): _175.OneofDescriptorProtoAmino;
@@ -169,8 +169,8 @@ export declare namespace google {
         };
         EnumDescriptorProto: {
             typeUrl: string;
-            encode(message: _175.EnumDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.EnumDescriptorProto;
+            encode(message: _175.EnumDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.EnumDescriptorProto;
             fromPartial(object: Partial<_175.EnumDescriptorProto>): _175.EnumDescriptorProto;
             fromAmino(object: _175.EnumDescriptorProtoAmino): _175.EnumDescriptorProto;
             toAmino(message: _175.EnumDescriptorProto): _175.EnumDescriptorProtoAmino;
@@ -181,8 +181,8 @@ export declare namespace google {
         };
         EnumDescriptorProto_EnumReservedRange: {
             typeUrl: string;
-            encode(message: _175.EnumDescriptorProto_EnumReservedRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.EnumDescriptorProto_EnumReservedRange;
+            encode(message: _175.EnumDescriptorProto_EnumReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.EnumDescriptorProto_EnumReservedRange;
             fromPartial(object: Partial<_175.EnumDescriptorProto_EnumReservedRange>): _175.EnumDescriptorProto_EnumReservedRange;
             fromAmino(object: _175.EnumDescriptorProto_EnumReservedRangeAmino): _175.EnumDescriptorProto_EnumReservedRange;
             toAmino(message: _175.EnumDescriptorProto_EnumReservedRange): _175.EnumDescriptorProto_EnumReservedRangeAmino;
@@ -193,8 +193,8 @@ export declare namespace google {
         };
         EnumValueDescriptorProto: {
             typeUrl: string;
-            encode(message: _175.EnumValueDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.EnumValueDescriptorProto;
+            encode(message: _175.EnumValueDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.EnumValueDescriptorProto;
             fromPartial(object: Partial<_175.EnumValueDescriptorProto>): _175.EnumValueDescriptorProto;
             fromAmino(object: _175.EnumValueDescriptorProtoAmino): _175.EnumValueDescriptorProto;
             toAmino(message: _175.EnumValueDescriptorProto): _175.EnumValueDescriptorProtoAmino;
@@ -205,8 +205,8 @@ export declare namespace google {
         };
         ServiceDescriptorProto: {
             typeUrl: string;
-            encode(message: _175.ServiceDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.ServiceDescriptorProto;
+            encode(message: _175.ServiceDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.ServiceDescriptorProto;
             fromPartial(object: Partial<_175.ServiceDescriptorProto>): _175.ServiceDescriptorProto;
             fromAmino(object: _175.ServiceDescriptorProtoAmino): _175.ServiceDescriptorProto;
             toAmino(message: _175.ServiceDescriptorProto): _175.ServiceDescriptorProtoAmino;
@@ -217,8 +217,8 @@ export declare namespace google {
         };
         MethodDescriptorProto: {
             typeUrl: string;
-            encode(message: _175.MethodDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.MethodDescriptorProto;
+            encode(message: _175.MethodDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.MethodDescriptorProto;
             fromPartial(object: Partial<_175.MethodDescriptorProto>): _175.MethodDescriptorProto;
             fromAmino(object: _175.MethodDescriptorProtoAmino): _175.MethodDescriptorProto;
             toAmino(message: _175.MethodDescriptorProto): _175.MethodDescriptorProtoAmino;
@@ -229,8 +229,8 @@ export declare namespace google {
         };
         FileOptions: {
             typeUrl: string;
-            encode(message: _175.FileOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.FileOptions;
+            encode(message: _175.FileOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.FileOptions;
             fromPartial(object: Partial<_175.FileOptions>): _175.FileOptions;
             fromAmino(object: _175.FileOptionsAmino): _175.FileOptions;
             toAmino(message: _175.FileOptions): _175.FileOptionsAmino;
@@ -241,8 +241,8 @@ export declare namespace google {
         };
         MessageOptions: {
             typeUrl: string;
-            encode(message: _175.MessageOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.MessageOptions;
+            encode(message: _175.MessageOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.MessageOptions;
             fromPartial(object: Partial<_175.MessageOptions>): _175.MessageOptions;
             fromAmino(object: _175.MessageOptionsAmino): _175.MessageOptions;
             toAmino(message: _175.MessageOptions): _175.MessageOptionsAmino;
@@ -253,8 +253,8 @@ export declare namespace google {
         };
         FieldOptions: {
             typeUrl: string;
-            encode(message: _175.FieldOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.FieldOptions;
+            encode(message: _175.FieldOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.FieldOptions;
             fromPartial(object: Partial<_175.FieldOptions>): _175.FieldOptions;
             fromAmino(object: _175.FieldOptionsAmino): _175.FieldOptions;
             toAmino(message: _175.FieldOptions): _175.FieldOptionsAmino;
@@ -265,8 +265,8 @@ export declare namespace google {
         };
         OneofOptions: {
             typeUrl: string;
-            encode(message: _175.OneofOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.OneofOptions;
+            encode(message: _175.OneofOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.OneofOptions;
             fromPartial(object: Partial<_175.OneofOptions>): _175.OneofOptions;
             fromAmino(object: _175.OneofOptionsAmino): _175.OneofOptions;
             toAmino(message: _175.OneofOptions): _175.OneofOptionsAmino;
@@ -277,8 +277,8 @@ export declare namespace google {
         };
         EnumOptions: {
             typeUrl: string;
-            encode(message: _175.EnumOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.EnumOptions;
+            encode(message: _175.EnumOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.EnumOptions;
             fromPartial(object: Partial<_175.EnumOptions>): _175.EnumOptions;
             fromAmino(object: _175.EnumOptionsAmino): _175.EnumOptions;
             toAmino(message: _175.EnumOptions): _175.EnumOptionsAmino;
@@ -289,8 +289,8 @@ export declare namespace google {
         };
         EnumValueOptions: {
             typeUrl: string;
-            encode(message: _175.EnumValueOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.EnumValueOptions;
+            encode(message: _175.EnumValueOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.EnumValueOptions;
             fromPartial(object: Partial<_175.EnumValueOptions>): _175.EnumValueOptions;
             fromAmino(object: _175.EnumValueOptionsAmino): _175.EnumValueOptions;
             toAmino(message: _175.EnumValueOptions): _175.EnumValueOptionsAmino;
@@ -301,8 +301,8 @@ export declare namespace google {
         };
         ServiceOptions: {
             typeUrl: string;
-            encode(message: _175.ServiceOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.ServiceOptions;
+            encode(message: _175.ServiceOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.ServiceOptions;
             fromPartial(object: Partial<_175.ServiceOptions>): _175.ServiceOptions;
             fromAmino(object: _175.ServiceOptionsAmino): _175.ServiceOptions;
             toAmino(message: _175.ServiceOptions): _175.ServiceOptionsAmino;
@@ -313,8 +313,8 @@ export declare namespace google {
         };
         MethodOptions: {
             typeUrl: string;
-            encode(message: _175.MethodOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.MethodOptions;
+            encode(message: _175.MethodOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.MethodOptions;
             fromPartial(object: Partial<_175.MethodOptions>): _175.MethodOptions;
             fromAmino(object: _175.MethodOptionsAmino): _175.MethodOptions;
             toAmino(message: _175.MethodOptions): _175.MethodOptionsAmino;
@@ -325,8 +325,8 @@ export declare namespace google {
         };
         UninterpretedOption: {
             typeUrl: string;
-            encode(message: _175.UninterpretedOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.UninterpretedOption;
+            encode(message: _175.UninterpretedOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.UninterpretedOption;
             fromPartial(object: Partial<_175.UninterpretedOption>): _175.UninterpretedOption;
             fromAmino(object: _175.UninterpretedOptionAmino): _175.UninterpretedOption;
             toAmino(message: _175.UninterpretedOption): _175.UninterpretedOptionAmino;
@@ -337,8 +337,8 @@ export declare namespace google {
         };
         UninterpretedOption_NamePart: {
             typeUrl: string;
-            encode(message: _175.UninterpretedOption_NamePart, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.UninterpretedOption_NamePart;
+            encode(message: _175.UninterpretedOption_NamePart, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.UninterpretedOption_NamePart;
             fromPartial(object: Partial<_175.UninterpretedOption_NamePart>): _175.UninterpretedOption_NamePart;
             fromAmino(object: _175.UninterpretedOption_NamePartAmino): _175.UninterpretedOption_NamePart;
             toAmino(message: _175.UninterpretedOption_NamePart): _175.UninterpretedOption_NamePartAmino;
@@ -349,8 +349,8 @@ export declare namespace google {
         };
         SourceCodeInfo: {
             typeUrl: string;
-            encode(message: _175.SourceCodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.SourceCodeInfo;
+            encode(message: _175.SourceCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.SourceCodeInfo;
             fromPartial(object: Partial<_175.SourceCodeInfo>): _175.SourceCodeInfo;
             fromAmino(object: _175.SourceCodeInfoAmino): _175.SourceCodeInfo;
             toAmino(message: _175.SourceCodeInfo): _175.SourceCodeInfoAmino;
@@ -361,8 +361,8 @@ export declare namespace google {
         };
         SourceCodeInfo_Location: {
             typeUrl: string;
-            encode(message: _175.SourceCodeInfo_Location, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.SourceCodeInfo_Location;
+            encode(message: _175.SourceCodeInfo_Location, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.SourceCodeInfo_Location;
             fromPartial(object: Partial<_175.SourceCodeInfo_Location>): _175.SourceCodeInfo_Location;
             fromAmino(object: _175.SourceCodeInfo_LocationAmino): _175.SourceCodeInfo_Location;
             toAmino(message: _175.SourceCodeInfo_Location): _175.SourceCodeInfo_LocationAmino;
@@ -373,8 +373,8 @@ export declare namespace google {
         };
         GeneratedCodeInfo: {
             typeUrl: string;
-            encode(message: _175.GeneratedCodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.GeneratedCodeInfo;
+            encode(message: _175.GeneratedCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.GeneratedCodeInfo;
             fromPartial(object: Partial<_175.GeneratedCodeInfo>): _175.GeneratedCodeInfo;
             fromAmino(object: _175.GeneratedCodeInfoAmino): _175.GeneratedCodeInfo;
             toAmino(message: _175.GeneratedCodeInfo): _175.GeneratedCodeInfoAmino;
@@ -385,8 +385,8 @@ export declare namespace google {
         };
         GeneratedCodeInfo_Annotation: {
             typeUrl: string;
-            encode(message: _175.GeneratedCodeInfo_Annotation, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _175.GeneratedCodeInfo_Annotation;
+            encode(message: _175.GeneratedCodeInfo_Annotation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _175.GeneratedCodeInfo_Annotation;
             fromPartial(object: Partial<_175.GeneratedCodeInfo_Annotation>): _175.GeneratedCodeInfo_Annotation;
             fromAmino(object: _175.GeneratedCodeInfo_AnnotationAmino): _175.GeneratedCodeInfo_Annotation;
             toAmino(message: _175.GeneratedCodeInfo_Annotation): _175.GeneratedCodeInfo_AnnotationAmino;
@@ -397,8 +397,8 @@ export declare namespace google {
         };
         Any: {
             typeUrl: string;
-            encode(message: _174.Any, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _174.Any;
+            encode(message: _174.Any, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _174.Any;
             fromPartial(object: Partial<_174.Any>): _174.Any;
             fromAmino(object: _174.AnyAmino): _174.Any;
             toAmino(message: _174.Any): _174.AnyAmino;

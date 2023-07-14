@@ -1,6 +1,5 @@
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * BaseAccount defines a base account type. It contains all the necessary fields
  * for basic account functionality. Any custom account type should extend this
@@ -9,9 +8,9 @@ import * as _m0 from "protobufjs/minimal";
 export interface BaseAccount {
     $typeUrl?: string;
     address: string;
-    pubKey?: Any;
-    accountNumber: Long;
-    sequence: Long;
+    pubKey: Any;
+    accountNumber: bigint;
+    sequence: bigint;
 }
 export interface BaseAccountProtoMsg {
     typeUrl: "/cosmos.auth.v1beta1.BaseAccount";
@@ -40,14 +39,14 @@ export interface BaseAccountAminoMsg {
 export interface BaseAccountSDKType {
     $typeUrl?: string;
     address: string;
-    pub_key?: AnySDKType;
-    account_number: Long;
-    sequence: Long;
+    pub_key: AnySDKType;
+    account_number: bigint;
+    sequence: bigint;
 }
 /** ModuleAccount defines an account for modules that holds coins on a pool. */
 export interface ModuleAccount {
     $typeUrl?: string;
-    baseAccount?: BaseAccount;
+    baseAccount: BaseAccount;
     name: string;
     permissions: string[];
 }
@@ -68,17 +67,17 @@ export interface ModuleAccountAminoMsg {
 /** ModuleAccount defines an account for modules that holds coins on a pool. */
 export interface ModuleAccountSDKType {
     $typeUrl?: string;
-    base_account?: BaseAccountSDKType;
+    base_account: BaseAccountSDKType;
     name: string;
     permissions: string[];
 }
 /** Params defines the parameters for the auth module. */
 export interface Params {
-    maxMemoCharacters: Long;
-    txSigLimit: Long;
-    txSizeCostPerByte: Long;
-    sigVerifyCostEd25519: Long;
-    sigVerifyCostSecp256k1: Long;
+    maxMemoCharacters: bigint;
+    txSigLimit: bigint;
+    txSizeCostPerByte: bigint;
+    sigVerifyCostEd25519: bigint;
+    sigVerifyCostSecp256k1: bigint;
 }
 export interface ParamsProtoMsg {
     typeUrl: "/cosmos.auth.v1beta1.Params";
@@ -98,16 +97,16 @@ export interface ParamsAminoMsg {
 }
 /** Params defines the parameters for the auth module. */
 export interface ParamsSDKType {
-    max_memo_characters: Long;
-    tx_sig_limit: Long;
-    tx_size_cost_per_byte: Long;
-    sig_verify_cost_ed25519: Long;
-    sig_verify_cost_secp256k1: Long;
+    max_memo_characters: bigint;
+    tx_sig_limit: bigint;
+    tx_size_cost_per_byte: bigint;
+    sig_verify_cost_ed25519: bigint;
+    sig_verify_cost_secp256k1: bigint;
 }
 export declare const BaseAccount: {
     typeUrl: string;
-    encode(message: BaseAccount, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BaseAccount;
+    encode(message: BaseAccount, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BaseAccount;
     fromPartial(object: Partial<BaseAccount>): BaseAccount;
     fromAmino(object: BaseAccountAmino): BaseAccount;
     toAmino(message: BaseAccount): BaseAccountAmino;
@@ -119,8 +118,8 @@ export declare const BaseAccount: {
 };
 export declare const ModuleAccount: {
     typeUrl: string;
-    encode(message: ModuleAccount, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleAccount;
+    encode(message: ModuleAccount, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModuleAccount;
     fromPartial(object: Partial<ModuleAccount>): ModuleAccount;
     fromAmino(object: ModuleAccountAmino): ModuleAccount;
     toAmino(message: ModuleAccount): ModuleAccountAmino;
@@ -132,8 +131,8 @@ export declare const ModuleAccount: {
 };
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

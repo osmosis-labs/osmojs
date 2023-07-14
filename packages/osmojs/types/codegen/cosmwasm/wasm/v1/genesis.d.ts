@@ -1,9 +1,8 @@
 import { Params, ParamsAmino, ParamsSDKType, CodeInfo, CodeInfoAmino, CodeInfoSDKType, ContractInfo, ContractInfoAmino, ContractInfoSDKType, Model, ModelAmino, ModelSDKType, ContractCodeHistoryEntry, ContractCodeHistoryEntryAmino, ContractCodeHistoryEntrySDKType } from "./types";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState - genesis state of x/wasm */
 export interface GenesisState {
-    params?: Params;
+    params: Params;
     codes: Code[];
     contracts: Contract[];
     sequences: Sequence[];
@@ -25,15 +24,15 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState - genesis state of x/wasm */
 export interface GenesisStateSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
     codes: CodeSDKType[];
     contracts: ContractSDKType[];
     sequences: SequenceSDKType[];
 }
 /** Code struct encompasses CodeInfo and CodeBytes */
 export interface Code {
-    codeId: Long;
-    codeInfo?: CodeInfo;
+    codeId: bigint;
+    codeInfo: CodeInfo;
     codeBytes: Uint8Array;
     /** Pinned to wasmvm cache */
     pinned: boolean;
@@ -56,15 +55,15 @@ export interface CodeAminoMsg {
 }
 /** Code struct encompasses CodeInfo and CodeBytes */
 export interface CodeSDKType {
-    code_id: Long;
-    code_info?: CodeInfoSDKType;
+    code_id: bigint;
+    code_info: CodeInfoSDKType;
     code_bytes: Uint8Array;
     pinned: boolean;
 }
 /** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
 export interface Contract {
     contractAddress: string;
-    contractInfo?: ContractInfo;
+    contractInfo: ContractInfo;
     contractState: Model[];
     contractCodeHistory: ContractCodeHistoryEntry[];
 }
@@ -86,14 +85,14 @@ export interface ContractAminoMsg {
 /** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
 export interface ContractSDKType {
     contract_address: string;
-    contract_info?: ContractInfoSDKType;
+    contract_info: ContractInfoSDKType;
     contract_state: ModelSDKType[];
     contract_code_history: ContractCodeHistoryEntrySDKType[];
 }
 /** Sequence key and value of an id generation counter */
 export interface Sequence {
     idKey: Uint8Array;
-    value: Long;
+    value: bigint;
 }
 export interface SequenceProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.Sequence";
@@ -111,12 +110,12 @@ export interface SequenceAminoMsg {
 /** Sequence key and value of an id generation counter */
 export interface SequenceSDKType {
     id_key: Uint8Array;
-    value: Long;
+    value: bigint;
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -128,8 +127,8 @@ export declare const GenesisState: {
 };
 export declare const Code: {
     typeUrl: string;
-    encode(message: Code, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Code;
+    encode(message: Code, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Code;
     fromPartial(object: Partial<Code>): Code;
     fromAmino(object: CodeAmino): Code;
     toAmino(message: Code): CodeAmino;
@@ -141,8 +140,8 @@ export declare const Code: {
 };
 export declare const Contract: {
     typeUrl: string;
-    encode(message: Contract, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Contract;
+    encode(message: Contract, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Contract;
     fromPartial(object: Partial<Contract>): Contract;
     fromAmino(object: ContractAmino): Contract;
     toAmino(message: Contract): ContractAmino;
@@ -154,8 +153,8 @@ export declare const Contract: {
 };
 export declare const Sequence: {
     typeUrl: string;
-    encode(message: Sequence, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Sequence;
+    encode(message: Sequence, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Sequence;
     fromPartial(object: Partial<Sequence>): Sequence;
     fromAmino(object: SequenceAmino): Sequence;
     toAmino(message: Sequence): SequenceAmino;

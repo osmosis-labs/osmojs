@@ -1,6 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** TokenPairArbRoutes tracks all of the hot routes for a given pair of tokens */
 export interface TokenPairArbRoutes {
     /** Stores all of the possible hot paths for a given pair of tokens */
@@ -75,7 +74,7 @@ export interface RouteSDKType {
 /** Trade is a single trade in a route */
 export interface Trade {
     /** The pool id of the pool that is traded on */
-    pool: Long;
+    pool: bigint;
     /** The denom of the token that is traded */
     tokenIn: string;
     /** The denom of the token that is received */
@@ -100,7 +99,7 @@ export interface TradeAminoMsg {
 }
 /** Trade is a single trade in a route */
 export interface TradeSDKType {
-    pool: Long;
+    pool: bigint;
     token_in: string;
     token_out: string;
 }
@@ -117,7 +116,7 @@ export interface RouteStatistics {
      */
     numberOfTrades: string;
     /** route is the route that was used (pool ids along the arbitrage route) */
-    route: Long[];
+    route: bigint[];
 }
 export interface RouteStatisticsProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.RouteStatistics";
@@ -149,7 +148,7 @@ export interface RouteStatisticsAminoMsg {
 export interface RouteStatisticsSDKType {
     profits: CoinSDKType[];
     number_of_trades: string;
-    route: Long[];
+    route: bigint[];
 }
 /**
  * PoolWeights contains the weights of all of the different pool types. This
@@ -160,11 +159,11 @@ export interface RouteStatisticsSDKType {
  */
 export interface PoolWeights {
     /** The weight of a stableswap pool */
-    stableWeight: Long;
+    stableWeight: bigint;
     /** The weight of a balancer pool */
-    balancerWeight: Long;
+    balancerWeight: bigint;
     /** The weight of a concentrated pool */
-    concentratedWeight: Long;
+    concentratedWeight: bigint;
 }
 export interface PoolWeightsProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.PoolWeights";
@@ -197,9 +196,9 @@ export interface PoolWeightsAminoMsg {
  * pool type.
  */
 export interface PoolWeightsSDKType {
-    stable_weight: Long;
-    balancer_weight: Long;
-    concentrated_weight: Long;
+    stable_weight: bigint;
+    balancer_weight: bigint;
+    concentrated_weight: bigint;
 }
 /**
  * BaseDenom represents a single base denom that the module uses for its
@@ -248,8 +247,8 @@ export interface BaseDenomSDKType {
 }
 export declare const TokenPairArbRoutes: {
     typeUrl: string;
-    encode(message: TokenPairArbRoutes, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TokenPairArbRoutes;
+    encode(message: TokenPairArbRoutes, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TokenPairArbRoutes;
     fromPartial(object: Partial<TokenPairArbRoutes>): TokenPairArbRoutes;
     fromAmino(object: TokenPairArbRoutesAmino): TokenPairArbRoutes;
     toAmino(message: TokenPairArbRoutes): TokenPairArbRoutesAmino;
@@ -261,8 +260,8 @@ export declare const TokenPairArbRoutes: {
 };
 export declare const Route: {
     typeUrl: string;
-    encode(message: Route, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Route;
+    encode(message: Route, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Route;
     fromPartial(object: Partial<Route>): Route;
     fromAmino(object: RouteAmino): Route;
     toAmino(message: Route): RouteAmino;
@@ -274,8 +273,8 @@ export declare const Route: {
 };
 export declare const Trade: {
     typeUrl: string;
-    encode(message: Trade, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Trade;
+    encode(message: Trade, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Trade;
     fromPartial(object: Partial<Trade>): Trade;
     fromAmino(object: TradeAmino): Trade;
     toAmino(message: Trade): TradeAmino;
@@ -287,8 +286,8 @@ export declare const Trade: {
 };
 export declare const RouteStatistics: {
     typeUrl: string;
-    encode(message: RouteStatistics, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RouteStatistics;
+    encode(message: RouteStatistics, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RouteStatistics;
     fromPartial(object: Partial<RouteStatistics>): RouteStatistics;
     fromAmino(object: RouteStatisticsAmino): RouteStatistics;
     toAmino(message: RouteStatistics): RouteStatisticsAmino;
@@ -300,8 +299,8 @@ export declare const RouteStatistics: {
 };
 export declare const PoolWeights: {
     typeUrl: string;
-    encode(message: PoolWeights, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PoolWeights;
+    encode(message: PoolWeights, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PoolWeights;
     fromPartial(object: Partial<PoolWeights>): PoolWeights;
     fromAmino(object: PoolWeightsAmino): PoolWeights;
     toAmino(message: PoolWeights): PoolWeightsAmino;
@@ -313,8 +312,8 @@ export declare const PoolWeights: {
 };
 export declare const BaseDenom: {
     typeUrl: string;
-    encode(message: BaseDenom, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): BaseDenom;
+    encode(message: BaseDenom, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): BaseDenom;
     fromPartial(object: Partial<BaseDenom>): BaseDenom;
     fromAmino(object: BaseDenomAmino): BaseDenom;
     toAmino(message: BaseDenom): BaseDenomAmino;

@@ -1,5 +1,4 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** PoolType is an enumeration of all supported pool types. */
 export declare enum PoolType {
     /** Balancer - Balancer is the standard xy=k curve. Its pool model is defined in x/gamm. */
@@ -34,7 +33,7 @@ export declare function poolTypeToJSON(object: PoolType): string;
 export interface ModuleRoute {
     /** pool_type specifies the type of the pool */
     poolType: PoolType;
-    poolId: Long;
+    poolId?: bigint;
 }
 export interface ModuleRouteProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.ModuleRoute";
@@ -63,12 +62,12 @@ export interface ModuleRouteAminoMsg {
  */
 export interface ModuleRouteSDKType {
     pool_type: PoolType;
-    pool_id: Long;
+    pool_id?: bigint;
 }
 export declare const ModuleRoute: {
     typeUrl: string;
-    encode(message: ModuleRoute, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ModuleRoute;
+    encode(message: ModuleRoute, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModuleRoute;
     fromPartial(object: Partial<ModuleRoute>): ModuleRoute;
     fromAmino(object: ModuleRouteAmino): ModuleRoute;
     toAmino(message: ModuleRoute): ModuleRouteAmino;

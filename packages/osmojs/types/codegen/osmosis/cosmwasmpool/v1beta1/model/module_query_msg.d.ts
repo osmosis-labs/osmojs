@@ -1,9 +1,9 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** ===================== CalcOutAmtGivenIn */
 export interface CalcOutAmtGivenIn {
     /** token_in is the token to be sent to the pool. */
-    tokenIn?: Coin;
+    tokenIn: Coin;
     /** token_out_denom is the token denom to be received from the pool. */
     tokenOutDenom: string;
     /** swap_fee is the swap fee for this swap estimate. */
@@ -28,7 +28,7 @@ export interface CalcOutAmtGivenInAminoMsg {
 }
 /** ===================== CalcOutAmtGivenIn */
 export interface CalcOutAmtGivenInSDKType {
-    token_in?: CoinSDKType;
+    token_in: CoinSDKType;
     token_out_denom: string;
     swap_fee: string;
 }
@@ -37,7 +37,7 @@ export interface CalcOutAmtGivenInRequest {
      * calc_out_amt_given_in is the structure containing all the request
      * information for this query.
      */
-    calcOutAmtGivenIn?: CalcOutAmtGivenIn;
+    calcOutAmtGivenIn: CalcOutAmtGivenIn;
 }
 export interface CalcOutAmtGivenInRequestProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcOutAmtGivenInRequest";
@@ -55,11 +55,11 @@ export interface CalcOutAmtGivenInRequestAminoMsg {
     value: CalcOutAmtGivenInRequestAmino;
 }
 export interface CalcOutAmtGivenInRequestSDKType {
-    calc_out_amt_given_in?: CalcOutAmtGivenInSDKType;
+    calc_out_amt_given_in: CalcOutAmtGivenInSDKType;
 }
 export interface CalcOutAmtGivenInResponse {
     /** token_out is the token out computed from this swap estimate call. */
-    tokenOut?: Coin;
+    tokenOut: Coin;
 }
 export interface CalcOutAmtGivenInResponseProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcOutAmtGivenInResponse";
@@ -74,12 +74,12 @@ export interface CalcOutAmtGivenInResponseAminoMsg {
     value: CalcOutAmtGivenInResponseAmino;
 }
 export interface CalcOutAmtGivenInResponseSDKType {
-    token_out?: CoinSDKType;
+    token_out: CoinSDKType;
 }
 /** ===================== CalcInAmtGivenOut */
 export interface CalcInAmtGivenOut {
     /** token_out is the token out to be receoved from the pool. */
-    tokenOut?: Coin;
+    tokenOut: Coin;
     /** token_in_denom is the token denom to be sentt to the pool. */
     tokenInDenom: string;
     /** swap_fee is the swap fee for this swap estimate. */
@@ -104,7 +104,7 @@ export interface CalcInAmtGivenOutAminoMsg {
 }
 /** ===================== CalcInAmtGivenOut */
 export interface CalcInAmtGivenOutSDKType {
-    token_out?: CoinSDKType;
+    token_out: CoinSDKType;
     token_in_denom: string;
     swap_fee: string;
 }
@@ -113,7 +113,7 @@ export interface CalcInAmtGivenOutRequest {
      * calc_in_amt_given_out is the structure containing all the request
      * information for this query.
      */
-    calcInAmtGivenOut?: CalcInAmtGivenOut;
+    calcInAmtGivenOut: CalcInAmtGivenOut;
 }
 export interface CalcInAmtGivenOutRequestProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcInAmtGivenOutRequest";
@@ -131,11 +131,11 @@ export interface CalcInAmtGivenOutRequestAminoMsg {
     value: CalcInAmtGivenOutRequestAmino;
 }
 export interface CalcInAmtGivenOutRequestSDKType {
-    calc_in_amt_given_out?: CalcInAmtGivenOutSDKType;
+    calc_in_amt_given_out: CalcInAmtGivenOutSDKType;
 }
 export interface CalcInAmtGivenOutResponse {
     /** token_in is the token in computed from this swap estimate call. */
-    tokenIn?: Coin;
+    tokenIn: Coin;
 }
 export interface CalcInAmtGivenOutResponseProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcInAmtGivenOutResponse";
@@ -150,12 +150,12 @@ export interface CalcInAmtGivenOutResponseAminoMsg {
     value: CalcInAmtGivenOutResponseAmino;
 }
 export interface CalcInAmtGivenOutResponseSDKType {
-    token_in?: CoinSDKType;
+    token_in: CoinSDKType;
 }
 export declare const CalcOutAmtGivenIn: {
     typeUrl: string;
-    encode(message: CalcOutAmtGivenIn, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CalcOutAmtGivenIn;
+    encode(message: CalcOutAmtGivenIn, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CalcOutAmtGivenIn;
     fromPartial(object: Partial<CalcOutAmtGivenIn>): CalcOutAmtGivenIn;
     fromAmino(object: CalcOutAmtGivenInAmino): CalcOutAmtGivenIn;
     toAmino(message: CalcOutAmtGivenIn): CalcOutAmtGivenInAmino;
@@ -167,8 +167,8 @@ export declare const CalcOutAmtGivenIn: {
 };
 export declare const CalcOutAmtGivenInRequest: {
     typeUrl: string;
-    encode(message: CalcOutAmtGivenInRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CalcOutAmtGivenInRequest;
+    encode(message: CalcOutAmtGivenInRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CalcOutAmtGivenInRequest;
     fromPartial(object: Partial<CalcOutAmtGivenInRequest>): CalcOutAmtGivenInRequest;
     fromAmino(object: CalcOutAmtGivenInRequestAmino): CalcOutAmtGivenInRequest;
     toAmino(message: CalcOutAmtGivenInRequest): CalcOutAmtGivenInRequestAmino;
@@ -180,8 +180,8 @@ export declare const CalcOutAmtGivenInRequest: {
 };
 export declare const CalcOutAmtGivenInResponse: {
     typeUrl: string;
-    encode(message: CalcOutAmtGivenInResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CalcOutAmtGivenInResponse;
+    encode(message: CalcOutAmtGivenInResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CalcOutAmtGivenInResponse;
     fromPartial(object: Partial<CalcOutAmtGivenInResponse>): CalcOutAmtGivenInResponse;
     fromAmino(object: CalcOutAmtGivenInResponseAmino): CalcOutAmtGivenInResponse;
     toAmino(message: CalcOutAmtGivenInResponse): CalcOutAmtGivenInResponseAmino;
@@ -193,8 +193,8 @@ export declare const CalcOutAmtGivenInResponse: {
 };
 export declare const CalcInAmtGivenOut: {
     typeUrl: string;
-    encode(message: CalcInAmtGivenOut, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CalcInAmtGivenOut;
+    encode(message: CalcInAmtGivenOut, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CalcInAmtGivenOut;
     fromPartial(object: Partial<CalcInAmtGivenOut>): CalcInAmtGivenOut;
     fromAmino(object: CalcInAmtGivenOutAmino): CalcInAmtGivenOut;
     toAmino(message: CalcInAmtGivenOut): CalcInAmtGivenOutAmino;
@@ -206,8 +206,8 @@ export declare const CalcInAmtGivenOut: {
 };
 export declare const CalcInAmtGivenOutRequest: {
     typeUrl: string;
-    encode(message: CalcInAmtGivenOutRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CalcInAmtGivenOutRequest;
+    encode(message: CalcInAmtGivenOutRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CalcInAmtGivenOutRequest;
     fromPartial(object: Partial<CalcInAmtGivenOutRequest>): CalcInAmtGivenOutRequest;
     fromAmino(object: CalcInAmtGivenOutRequestAmino): CalcInAmtGivenOutRequest;
     toAmino(message: CalcInAmtGivenOutRequest): CalcInAmtGivenOutRequestAmino;
@@ -219,8 +219,8 @@ export declare const CalcInAmtGivenOutRequest: {
 };
 export declare const CalcInAmtGivenOutResponse: {
     typeUrl: string;
-    encode(message: CalcInAmtGivenOutResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CalcInAmtGivenOutResponse;
+    encode(message: CalcInAmtGivenOutResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): CalcInAmtGivenOutResponse;
     fromPartial(object: Partial<CalcInAmtGivenOutResponse>): CalcInAmtGivenOutResponse;
     fromAmino(object: CalcInAmtGivenOutResponseAmino): CalcInAmtGivenOutResponse;
     toAmino(message: CalcInAmtGivenOutResponse): CalcInAmtGivenOutResponseAmino;

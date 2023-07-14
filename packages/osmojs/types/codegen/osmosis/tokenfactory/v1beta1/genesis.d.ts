@@ -1,10 +1,10 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { DenomAuthorityMetadata, DenomAuthorityMetadataAmino, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the tokenfactory module's genesis state. */
 export interface GenesisState {
     /** params defines the paramaters of the module. */
-    params?: Params;
+    params: Params;
     factoryDenoms: GenesisDenom[];
 }
 export interface GenesisStateProtoMsg {
@@ -23,7 +23,7 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the tokenfactory module's genesis state. */
 export interface GenesisStateSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
     factory_denoms: GenesisDenomSDKType[];
 }
 /**
@@ -33,7 +33,7 @@ export interface GenesisStateSDKType {
  */
 export interface GenesisDenom {
     denom: string;
-    authorityMetadata?: DenomAuthorityMetadata;
+    authorityMetadata: DenomAuthorityMetadata;
 }
 export interface GenesisDenomProtoMsg {
     typeUrl: "/osmosis.tokenfactory.v1beta1.GenesisDenom";
@@ -59,12 +59,12 @@ export interface GenesisDenomAminoMsg {
  */
 export interface GenesisDenomSDKType {
     denom: string;
-    authority_metadata?: DenomAuthorityMetadataSDKType;
+    authority_metadata: DenomAuthorityMetadataSDKType;
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -76,8 +76,8 @@ export declare const GenesisState: {
 };
 export declare const GenesisDenom: {
     typeUrl: string;
-    encode(message: GenesisDenom, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisDenom;
+    encode(message: GenesisDenom, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisDenom;
     fromPartial(object: Partial<GenesisDenom>): GenesisDenom;
     fromAmino(object: GenesisDenomAmino): GenesisDenom;
     toAmino(message: GenesisDenom): GenesisDenomAmino;

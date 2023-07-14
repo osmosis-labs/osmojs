@@ -4,8 +4,7 @@ import { SuperfluidAssetType, SuperfluidAsset, SuperfluidAssetAmino, SuperfluidA
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "../lockup/lock";
 import { DelegationResponse, DelegationResponseAmino, DelegationResponseSDKType } from "../../cosmos/staking/v1beta1/staking";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface QueryParamsRequest {
 }
 export interface QueryParamsRequestProtoMsg {
@@ -22,7 +21,7 @@ export interface QueryParamsRequestSDKType {
 }
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
-    params?: Params;
+    params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.QueryParamsResponse";
@@ -37,7 +36,7 @@ export interface QueryParamsResponseAminoMsg {
     value: QueryParamsResponseAmino;
 }
 export interface QueryParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 export interface AssetTypeRequest {
     denom: string;
@@ -122,7 +121,7 @@ export interface AssetMultiplierRequestSDKType {
     denom: string;
 }
 export interface AssetMultiplierResponse {
-    osmoEquivalentMultiplier?: OsmoEquivalentMultiplierRecord;
+    osmoEquivalentMultiplier: OsmoEquivalentMultiplierRecord;
 }
 export interface AssetMultiplierResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.AssetMultiplierResponse";
@@ -136,12 +135,12 @@ export interface AssetMultiplierResponseAminoMsg {
     value: AssetMultiplierResponseAmino;
 }
 export interface AssetMultiplierResponseSDKType {
-    osmo_equivalent_multiplier?: OsmoEquivalentMultiplierRecordSDKType;
+    osmo_equivalent_multiplier: OsmoEquivalentMultiplierRecordSDKType;
 }
 export interface SuperfluidIntermediaryAccountInfo {
     denom: string;
     valAddr: string;
-    gaugeId: Long;
+    gaugeId: bigint;
     address: string;
 }
 export interface SuperfluidIntermediaryAccountInfoProtoMsg {
@@ -161,11 +160,11 @@ export interface SuperfluidIntermediaryAccountInfoAminoMsg {
 export interface SuperfluidIntermediaryAccountInfoSDKType {
     denom: string;
     val_addr: string;
-    gauge_id: Long;
+    gauge_id: bigint;
     address: string;
 }
 export interface AllIntermediaryAccountsRequest {
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface AllIntermediaryAccountsRequestProtoMsg {
     typeUrl: "/osmosis.superfluid.AllIntermediaryAccountsRequest";
@@ -179,11 +178,11 @@ export interface AllIntermediaryAccountsRequestAminoMsg {
     value: AllIntermediaryAccountsRequestAmino;
 }
 export interface AllIntermediaryAccountsRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 export interface AllIntermediaryAccountsResponse {
     accounts: SuperfluidIntermediaryAccountInfo[];
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface AllIntermediaryAccountsResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.AllIntermediaryAccountsResponse";
@@ -199,10 +198,10 @@ export interface AllIntermediaryAccountsResponseAminoMsg {
 }
 export interface AllIntermediaryAccountsResponseSDKType {
     accounts: SuperfluidIntermediaryAccountInfoSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 export interface ConnectedIntermediaryAccountRequest {
-    lockId: Long;
+    lockId: bigint;
 }
 export interface ConnectedIntermediaryAccountRequestProtoMsg {
     typeUrl: "/osmosis.superfluid.ConnectedIntermediaryAccountRequest";
@@ -216,10 +215,10 @@ export interface ConnectedIntermediaryAccountRequestAminoMsg {
     value: ConnectedIntermediaryAccountRequestAmino;
 }
 export interface ConnectedIntermediaryAccountRequestSDKType {
-    lock_id: Long;
+    lock_id: bigint;
 }
 export interface ConnectedIntermediaryAccountResponse {
-    account?: SuperfluidIntermediaryAccountInfo;
+    account: SuperfluidIntermediaryAccountInfo;
 }
 export interface ConnectedIntermediaryAccountResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.ConnectedIntermediaryAccountResponse";
@@ -233,7 +232,7 @@ export interface ConnectedIntermediaryAccountResponseAminoMsg {
     value: ConnectedIntermediaryAccountResponseAmino;
 }
 export interface ConnectedIntermediaryAccountResponseSDKType {
-    account?: SuperfluidIntermediaryAccountInfoSDKType;
+    account: SuperfluidIntermediaryAccountInfoSDKType;
 }
 export interface QueryTotalDelegationByValidatorForDenomRequest {
     denom: string;
@@ -383,7 +382,7 @@ export interface SuperfluidDelegationsByDelegatorRequestSDKType {
 export interface SuperfluidDelegationsByDelegatorResponse {
     superfluidDelegationRecords: SuperfluidDelegationRecord[];
     totalDelegatedCoins: Coin[];
-    totalEquivalentStakedAmount?: Coin;
+    totalEquivalentStakedAmount: Coin;
 }
 export interface SuperfluidDelegationsByDelegatorResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.SuperfluidDelegationsByDelegatorResponse";
@@ -401,7 +400,7 @@ export interface SuperfluidDelegationsByDelegatorResponseAminoMsg {
 export interface SuperfluidDelegationsByDelegatorResponseSDKType {
     superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
     total_delegated_coins: CoinSDKType[];
-    total_equivalent_staked_amount?: CoinSDKType;
+    total_equivalent_staked_amount: CoinSDKType;
 }
 export interface SuperfluidUndelegationsByDelegatorRequest {
     delegatorAddress: string;
@@ -541,7 +540,7 @@ export interface QueryTotalDelegationByDelegatorResponse {
     superfluidDelegationRecords: SuperfluidDelegationRecord[];
     delegationResponse: DelegationResponse[];
     totalDelegatedCoins: Coin[];
-    totalEquivalentStakedAmount?: Coin;
+    totalEquivalentStakedAmount: Coin;
 }
 export interface QueryTotalDelegationByDelegatorResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.QueryTotalDelegationByDelegatorResponse";
@@ -561,7 +560,7 @@ export interface QueryTotalDelegationByDelegatorResponseSDKType {
     superfluid_delegation_records: SuperfluidDelegationRecordSDKType[];
     delegation_response: DelegationResponseSDKType[];
     total_delegated_coins: CoinSDKType[];
-    total_equivalent_staked_amount?: CoinSDKType;
+    total_equivalent_staked_amount: CoinSDKType;
 }
 export interface QueryUnpoolWhitelistRequest {
 }
@@ -578,7 +577,7 @@ export interface QueryUnpoolWhitelistRequestAminoMsg {
 export interface QueryUnpoolWhitelistRequestSDKType {
 }
 export interface QueryUnpoolWhitelistResponse {
-    poolIds: Long[];
+    poolIds: bigint[];
 }
 export interface QueryUnpoolWhitelistResponseProtoMsg {
     typeUrl: "/osmosis.superfluid.QueryUnpoolWhitelistResponse";
@@ -592,7 +591,7 @@ export interface QueryUnpoolWhitelistResponseAminoMsg {
     value: QueryUnpoolWhitelistResponseAmino;
 }
 export interface QueryUnpoolWhitelistResponseSDKType {
-    pool_ids: Long[];
+    pool_ids: bigint[];
 }
 export interface UserConcentratedSuperfluidPositionsDelegatedRequest {
     delegatorAddress: string;
@@ -664,8 +663,8 @@ export interface UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType 
 }
 export declare const QueryParamsRequest: {
     typeUrl: string;
-    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -677,8 +676,8 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
@@ -690,8 +689,8 @@ export declare const QueryParamsResponse: {
 };
 export declare const AssetTypeRequest: {
     typeUrl: string;
-    encode(message: AssetTypeRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeRequest;
+    encode(message: AssetTypeRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AssetTypeRequest;
     fromPartial(object: Partial<AssetTypeRequest>): AssetTypeRequest;
     fromAmino(object: AssetTypeRequestAmino): AssetTypeRequest;
     toAmino(message: AssetTypeRequest): AssetTypeRequestAmino;
@@ -703,8 +702,8 @@ export declare const AssetTypeRequest: {
 };
 export declare const AssetTypeResponse: {
     typeUrl: string;
-    encode(message: AssetTypeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeResponse;
+    encode(message: AssetTypeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AssetTypeResponse;
     fromPartial(object: Partial<AssetTypeResponse>): AssetTypeResponse;
     fromAmino(object: AssetTypeResponseAmino): AssetTypeResponse;
     toAmino(message: AssetTypeResponse): AssetTypeResponseAmino;
@@ -716,8 +715,8 @@ export declare const AssetTypeResponse: {
 };
 export declare const AllAssetsRequest: {
     typeUrl: string;
-    encode(_: AllAssetsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsRequest;
+    encode(_: AllAssetsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AllAssetsRequest;
     fromPartial(_: Partial<AllAssetsRequest>): AllAssetsRequest;
     fromAmino(_: AllAssetsRequestAmino): AllAssetsRequest;
     toAmino(_: AllAssetsRequest): AllAssetsRequestAmino;
@@ -729,8 +728,8 @@ export declare const AllAssetsRequest: {
 };
 export declare const AllAssetsResponse: {
     typeUrl: string;
-    encode(message: AllAssetsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsResponse;
+    encode(message: AllAssetsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AllAssetsResponse;
     fromPartial(object: Partial<AllAssetsResponse>): AllAssetsResponse;
     fromAmino(object: AllAssetsResponseAmino): AllAssetsResponse;
     toAmino(message: AllAssetsResponse): AllAssetsResponseAmino;
@@ -742,8 +741,8 @@ export declare const AllAssetsResponse: {
 };
 export declare const AssetMultiplierRequest: {
     typeUrl: string;
-    encode(message: AssetMultiplierRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierRequest;
+    encode(message: AssetMultiplierRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AssetMultiplierRequest;
     fromPartial(object: Partial<AssetMultiplierRequest>): AssetMultiplierRequest;
     fromAmino(object: AssetMultiplierRequestAmino): AssetMultiplierRequest;
     toAmino(message: AssetMultiplierRequest): AssetMultiplierRequestAmino;
@@ -755,8 +754,8 @@ export declare const AssetMultiplierRequest: {
 };
 export declare const AssetMultiplierResponse: {
     typeUrl: string;
-    encode(message: AssetMultiplierResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierResponse;
+    encode(message: AssetMultiplierResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AssetMultiplierResponse;
     fromPartial(object: Partial<AssetMultiplierResponse>): AssetMultiplierResponse;
     fromAmino(object: AssetMultiplierResponseAmino): AssetMultiplierResponse;
     toAmino(message: AssetMultiplierResponse): AssetMultiplierResponseAmino;
@@ -768,8 +767,8 @@ export declare const AssetMultiplierResponse: {
 };
 export declare const SuperfluidIntermediaryAccountInfo: {
     typeUrl: string;
-    encode(message: SuperfluidIntermediaryAccountInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidIntermediaryAccountInfo;
+    encode(message: SuperfluidIntermediaryAccountInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SuperfluidIntermediaryAccountInfo;
     fromPartial(object: Partial<SuperfluidIntermediaryAccountInfo>): SuperfluidIntermediaryAccountInfo;
     fromAmino(object: SuperfluidIntermediaryAccountInfoAmino): SuperfluidIntermediaryAccountInfo;
     toAmino(message: SuperfluidIntermediaryAccountInfo): SuperfluidIntermediaryAccountInfoAmino;
@@ -781,8 +780,8 @@ export declare const SuperfluidIntermediaryAccountInfo: {
 };
 export declare const AllIntermediaryAccountsRequest: {
     typeUrl: string;
-    encode(message: AllIntermediaryAccountsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsRequest;
+    encode(message: AllIntermediaryAccountsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AllIntermediaryAccountsRequest;
     fromPartial(object: Partial<AllIntermediaryAccountsRequest>): AllIntermediaryAccountsRequest;
     fromAmino(object: AllIntermediaryAccountsRequestAmino): AllIntermediaryAccountsRequest;
     toAmino(message: AllIntermediaryAccountsRequest): AllIntermediaryAccountsRequestAmino;
@@ -794,8 +793,8 @@ export declare const AllIntermediaryAccountsRequest: {
 };
 export declare const AllIntermediaryAccountsResponse: {
     typeUrl: string;
-    encode(message: AllIntermediaryAccountsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsResponse;
+    encode(message: AllIntermediaryAccountsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): AllIntermediaryAccountsResponse;
     fromPartial(object: Partial<AllIntermediaryAccountsResponse>): AllIntermediaryAccountsResponse;
     fromAmino(object: AllIntermediaryAccountsResponseAmino): AllIntermediaryAccountsResponse;
     toAmino(message: AllIntermediaryAccountsResponse): AllIntermediaryAccountsResponseAmino;
@@ -807,8 +806,8 @@ export declare const AllIntermediaryAccountsResponse: {
 };
 export declare const ConnectedIntermediaryAccountRequest: {
     typeUrl: string;
-    encode(message: ConnectedIntermediaryAccountRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountRequest;
+    encode(message: ConnectedIntermediaryAccountRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ConnectedIntermediaryAccountRequest;
     fromPartial(object: Partial<ConnectedIntermediaryAccountRequest>): ConnectedIntermediaryAccountRequest;
     fromAmino(object: ConnectedIntermediaryAccountRequestAmino): ConnectedIntermediaryAccountRequest;
     toAmino(message: ConnectedIntermediaryAccountRequest): ConnectedIntermediaryAccountRequestAmino;
@@ -820,8 +819,8 @@ export declare const ConnectedIntermediaryAccountRequest: {
 };
 export declare const ConnectedIntermediaryAccountResponse: {
     typeUrl: string;
-    encode(message: ConnectedIntermediaryAccountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountResponse;
+    encode(message: ConnectedIntermediaryAccountResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ConnectedIntermediaryAccountResponse;
     fromPartial(object: Partial<ConnectedIntermediaryAccountResponse>): ConnectedIntermediaryAccountResponse;
     fromAmino(object: ConnectedIntermediaryAccountResponseAmino): ConnectedIntermediaryAccountResponse;
     toAmino(message: ConnectedIntermediaryAccountResponse): ConnectedIntermediaryAccountResponseAmino;
@@ -833,8 +832,8 @@ export declare const ConnectedIntermediaryAccountResponse: {
 };
 export declare const QueryTotalDelegationByValidatorForDenomRequest: {
     typeUrl: string;
-    encode(message: QueryTotalDelegationByValidatorForDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomRequest;
+    encode(message: QueryTotalDelegationByValidatorForDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomRequest;
     fromPartial(object: Partial<QueryTotalDelegationByValidatorForDenomRequest>): QueryTotalDelegationByValidatorForDenomRequest;
     fromAmino(object: QueryTotalDelegationByValidatorForDenomRequestAmino): QueryTotalDelegationByValidatorForDenomRequest;
     toAmino(message: QueryTotalDelegationByValidatorForDenomRequest): QueryTotalDelegationByValidatorForDenomRequestAmino;
@@ -846,8 +845,8 @@ export declare const QueryTotalDelegationByValidatorForDenomRequest: {
 };
 export declare const QueryTotalDelegationByValidatorForDenomResponse: {
     typeUrl: string;
-    encode(message: QueryTotalDelegationByValidatorForDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomResponse;
+    encode(message: QueryTotalDelegationByValidatorForDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomResponse;
     fromPartial(object: Partial<QueryTotalDelegationByValidatorForDenomResponse>): QueryTotalDelegationByValidatorForDenomResponse;
     fromAmino(object: QueryTotalDelegationByValidatorForDenomResponseAmino): QueryTotalDelegationByValidatorForDenomResponse;
     toAmino(message: QueryTotalDelegationByValidatorForDenomResponse): QueryTotalDelegationByValidatorForDenomResponseAmino;
@@ -859,8 +858,8 @@ export declare const QueryTotalDelegationByValidatorForDenomResponse: {
 };
 export declare const Delegations: {
     typeUrl: string;
-    encode(message: Delegations, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Delegations;
+    encode(message: Delegations, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Delegations;
     fromPartial(object: Partial<Delegations>): Delegations;
     fromAmino(object: DelegationsAmino): Delegations;
     toAmino(message: Delegations): DelegationsAmino;
@@ -872,8 +871,8 @@ export declare const Delegations: {
 };
 export declare const TotalSuperfluidDelegationsRequest: {
     typeUrl: string;
-    encode(_: TotalSuperfluidDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsRequest;
+    encode(_: TotalSuperfluidDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TotalSuperfluidDelegationsRequest;
     fromPartial(_: Partial<TotalSuperfluidDelegationsRequest>): TotalSuperfluidDelegationsRequest;
     fromAmino(_: TotalSuperfluidDelegationsRequestAmino): TotalSuperfluidDelegationsRequest;
     toAmino(_: TotalSuperfluidDelegationsRequest): TotalSuperfluidDelegationsRequestAmino;
@@ -885,8 +884,8 @@ export declare const TotalSuperfluidDelegationsRequest: {
 };
 export declare const TotalSuperfluidDelegationsResponse: {
     typeUrl: string;
-    encode(message: TotalSuperfluidDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsResponse;
+    encode(message: TotalSuperfluidDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TotalSuperfluidDelegationsResponse;
     fromPartial(object: Partial<TotalSuperfluidDelegationsResponse>): TotalSuperfluidDelegationsResponse;
     fromAmino(object: TotalSuperfluidDelegationsResponseAmino): TotalSuperfluidDelegationsResponse;
     toAmino(message: TotalSuperfluidDelegationsResponse): TotalSuperfluidDelegationsResponseAmino;
@@ -898,8 +897,8 @@ export declare const TotalSuperfluidDelegationsResponse: {
 };
 export declare const SuperfluidDelegationAmountRequest: {
     typeUrl: string;
-    encode(message: SuperfluidDelegationAmountRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountRequest;
+    encode(message: SuperfluidDelegationAmountRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SuperfluidDelegationAmountRequest;
     fromPartial(object: Partial<SuperfluidDelegationAmountRequest>): SuperfluidDelegationAmountRequest;
     fromAmino(object: SuperfluidDelegationAmountRequestAmino): SuperfluidDelegationAmountRequest;
     toAmino(message: SuperfluidDelegationAmountRequest): SuperfluidDelegationAmountRequestAmino;
@@ -911,8 +910,8 @@ export declare const SuperfluidDelegationAmountRequest: {
 };
 export declare const SuperfluidDelegationAmountResponse: {
     typeUrl: string;
-    encode(message: SuperfluidDelegationAmountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountResponse;
+    encode(message: SuperfluidDelegationAmountResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SuperfluidDelegationAmountResponse;
     fromPartial(object: Partial<SuperfluidDelegationAmountResponse>): SuperfluidDelegationAmountResponse;
     fromAmino(object: SuperfluidDelegationAmountResponseAmino): SuperfluidDelegationAmountResponse;
     toAmino(message: SuperfluidDelegationAmountResponse): SuperfluidDelegationAmountResponseAmino;
@@ -924,8 +923,8 @@ export declare const SuperfluidDelegationAmountResponse: {
 };
 export declare const SuperfluidDelegationsByDelegatorRequest: {
     typeUrl: string;
-    encode(message: SuperfluidDelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorRequest;
+    encode(message: SuperfluidDelegationsByDelegatorRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorRequest;
     fromPartial(object: Partial<SuperfluidDelegationsByDelegatorRequest>): SuperfluidDelegationsByDelegatorRequest;
     fromAmino(object: SuperfluidDelegationsByDelegatorRequestAmino): SuperfluidDelegationsByDelegatorRequest;
     toAmino(message: SuperfluidDelegationsByDelegatorRequest): SuperfluidDelegationsByDelegatorRequestAmino;
@@ -937,8 +936,8 @@ export declare const SuperfluidDelegationsByDelegatorRequest: {
 };
 export declare const SuperfluidDelegationsByDelegatorResponse: {
     typeUrl: string;
-    encode(message: SuperfluidDelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorResponse;
+    encode(message: SuperfluidDelegationsByDelegatorResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorResponse;
     fromPartial(object: Partial<SuperfluidDelegationsByDelegatorResponse>): SuperfluidDelegationsByDelegatorResponse;
     fromAmino(object: SuperfluidDelegationsByDelegatorResponseAmino): SuperfluidDelegationsByDelegatorResponse;
     toAmino(message: SuperfluidDelegationsByDelegatorResponse): SuperfluidDelegationsByDelegatorResponseAmino;
@@ -950,8 +949,8 @@ export declare const SuperfluidDelegationsByDelegatorResponse: {
 };
 export declare const SuperfluidUndelegationsByDelegatorRequest: {
     typeUrl: string;
-    encode(message: SuperfluidUndelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorRequest;
+    encode(message: SuperfluidUndelegationsByDelegatorRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorRequest;
     fromPartial(object: Partial<SuperfluidUndelegationsByDelegatorRequest>): SuperfluidUndelegationsByDelegatorRequest;
     fromAmino(object: SuperfluidUndelegationsByDelegatorRequestAmino): SuperfluidUndelegationsByDelegatorRequest;
     toAmino(message: SuperfluidUndelegationsByDelegatorRequest): SuperfluidUndelegationsByDelegatorRequestAmino;
@@ -963,8 +962,8 @@ export declare const SuperfluidUndelegationsByDelegatorRequest: {
 };
 export declare const SuperfluidUndelegationsByDelegatorResponse: {
     typeUrl: string;
-    encode(message: SuperfluidUndelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorResponse;
+    encode(message: SuperfluidUndelegationsByDelegatorResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorResponse;
     fromPartial(object: Partial<SuperfluidUndelegationsByDelegatorResponse>): SuperfluidUndelegationsByDelegatorResponse;
     fromAmino(object: SuperfluidUndelegationsByDelegatorResponseAmino): SuperfluidUndelegationsByDelegatorResponse;
     toAmino(message: SuperfluidUndelegationsByDelegatorResponse): SuperfluidUndelegationsByDelegatorResponseAmino;
@@ -976,8 +975,8 @@ export declare const SuperfluidUndelegationsByDelegatorResponse: {
 };
 export declare const SuperfluidDelegationsByValidatorDenomRequest: {
     typeUrl: string;
-    encode(message: SuperfluidDelegationsByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomRequest;
+    encode(message: SuperfluidDelegationsByValidatorDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomRequest;
     fromPartial(object: Partial<SuperfluidDelegationsByValidatorDenomRequest>): SuperfluidDelegationsByValidatorDenomRequest;
     fromAmino(object: SuperfluidDelegationsByValidatorDenomRequestAmino): SuperfluidDelegationsByValidatorDenomRequest;
     toAmino(message: SuperfluidDelegationsByValidatorDenomRequest): SuperfluidDelegationsByValidatorDenomRequestAmino;
@@ -989,8 +988,8 @@ export declare const SuperfluidDelegationsByValidatorDenomRequest: {
 };
 export declare const SuperfluidDelegationsByValidatorDenomResponse: {
     typeUrl: string;
-    encode(message: SuperfluidDelegationsByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomResponse;
+    encode(message: SuperfluidDelegationsByValidatorDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomResponse;
     fromPartial(object: Partial<SuperfluidDelegationsByValidatorDenomResponse>): SuperfluidDelegationsByValidatorDenomResponse;
     fromAmino(object: SuperfluidDelegationsByValidatorDenomResponseAmino): SuperfluidDelegationsByValidatorDenomResponse;
     toAmino(message: SuperfluidDelegationsByValidatorDenomResponse): SuperfluidDelegationsByValidatorDenomResponseAmino;
@@ -1002,8 +1001,8 @@ export declare const SuperfluidDelegationsByValidatorDenomResponse: {
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
     typeUrl: string;
-    encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
+    encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
     fromPartial(object: Partial<EstimateSuperfluidDelegatedAmountByValidatorDenomRequest>): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
     fromAmino(object: EstimateSuperfluidDelegatedAmountByValidatorDenomRequestAmino): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
     toAmino(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): EstimateSuperfluidDelegatedAmountByValidatorDenomRequestAmino;
@@ -1015,8 +1014,8 @@ export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: {
     typeUrl: string;
-    encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
+    encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
     fromPartial(object: Partial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
     fromAmino(object: EstimateSuperfluidDelegatedAmountByValidatorDenomResponseAmino): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
     toAmino(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse): EstimateSuperfluidDelegatedAmountByValidatorDenomResponseAmino;
@@ -1028,8 +1027,8 @@ export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: 
 };
 export declare const QueryTotalDelegationByDelegatorRequest: {
     typeUrl: string;
-    encode(message: QueryTotalDelegationByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorRequest;
+    encode(message: QueryTotalDelegationByDelegatorRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorRequest;
     fromPartial(object: Partial<QueryTotalDelegationByDelegatorRequest>): QueryTotalDelegationByDelegatorRequest;
     fromAmino(object: QueryTotalDelegationByDelegatorRequestAmino): QueryTotalDelegationByDelegatorRequest;
     toAmino(message: QueryTotalDelegationByDelegatorRequest): QueryTotalDelegationByDelegatorRequestAmino;
@@ -1041,8 +1040,8 @@ export declare const QueryTotalDelegationByDelegatorRequest: {
 };
 export declare const QueryTotalDelegationByDelegatorResponse: {
     typeUrl: string;
-    encode(message: QueryTotalDelegationByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorResponse;
+    encode(message: QueryTotalDelegationByDelegatorResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorResponse;
     fromPartial(object: Partial<QueryTotalDelegationByDelegatorResponse>): QueryTotalDelegationByDelegatorResponse;
     fromAmino(object: QueryTotalDelegationByDelegatorResponseAmino): QueryTotalDelegationByDelegatorResponse;
     toAmino(message: QueryTotalDelegationByDelegatorResponse): QueryTotalDelegationByDelegatorResponseAmino;
@@ -1054,8 +1053,8 @@ export declare const QueryTotalDelegationByDelegatorResponse: {
 };
 export declare const QueryUnpoolWhitelistRequest: {
     typeUrl: string;
-    encode(_: QueryUnpoolWhitelistRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnpoolWhitelistRequest;
+    encode(_: QueryUnpoolWhitelistRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUnpoolWhitelistRequest;
     fromPartial(_: Partial<QueryUnpoolWhitelistRequest>): QueryUnpoolWhitelistRequest;
     fromAmino(_: QueryUnpoolWhitelistRequestAmino): QueryUnpoolWhitelistRequest;
     toAmino(_: QueryUnpoolWhitelistRequest): QueryUnpoolWhitelistRequestAmino;
@@ -1067,8 +1066,8 @@ export declare const QueryUnpoolWhitelistRequest: {
 };
 export declare const QueryUnpoolWhitelistResponse: {
     typeUrl: string;
-    encode(message: QueryUnpoolWhitelistResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnpoolWhitelistResponse;
+    encode(message: QueryUnpoolWhitelistResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUnpoolWhitelistResponse;
     fromPartial(object: Partial<QueryUnpoolWhitelistResponse>): QueryUnpoolWhitelistResponse;
     fromAmino(object: QueryUnpoolWhitelistResponseAmino): QueryUnpoolWhitelistResponse;
     toAmino(message: QueryUnpoolWhitelistResponse): QueryUnpoolWhitelistResponseAmino;
@@ -1080,8 +1079,8 @@ export declare const QueryUnpoolWhitelistResponse: {
 };
 export declare const UserConcentratedSuperfluidPositionsDelegatedRequest: {
     typeUrl: string;
-    encode(message: UserConcentratedSuperfluidPositionsDelegatedRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsDelegatedRequest;
+    encode(message: UserConcentratedSuperfluidPositionsDelegatedRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsDelegatedRequest;
     fromPartial(object: Partial<UserConcentratedSuperfluidPositionsDelegatedRequest>): UserConcentratedSuperfluidPositionsDelegatedRequest;
     fromAmino(object: UserConcentratedSuperfluidPositionsDelegatedRequestAmino): UserConcentratedSuperfluidPositionsDelegatedRequest;
     toAmino(message: UserConcentratedSuperfluidPositionsDelegatedRequest): UserConcentratedSuperfluidPositionsDelegatedRequestAmino;
@@ -1093,8 +1092,8 @@ export declare const UserConcentratedSuperfluidPositionsDelegatedRequest: {
 };
 export declare const UserConcentratedSuperfluidPositionsDelegatedResponse: {
     typeUrl: string;
-    encode(message: UserConcentratedSuperfluidPositionsDelegatedResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsDelegatedResponse;
+    encode(message: UserConcentratedSuperfluidPositionsDelegatedResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsDelegatedResponse;
     fromPartial(object: Partial<UserConcentratedSuperfluidPositionsDelegatedResponse>): UserConcentratedSuperfluidPositionsDelegatedResponse;
     fromAmino(object: UserConcentratedSuperfluidPositionsDelegatedResponseAmino): UserConcentratedSuperfluidPositionsDelegatedResponse;
     toAmino(message: UserConcentratedSuperfluidPositionsDelegatedResponse): UserConcentratedSuperfluidPositionsDelegatedResponseAmino;
@@ -1106,8 +1105,8 @@ export declare const UserConcentratedSuperfluidPositionsDelegatedResponse: {
 };
 export declare const UserConcentratedSuperfluidPositionsUndelegatingRequest: {
     typeUrl: string;
-    encode(message: UserConcentratedSuperfluidPositionsUndelegatingRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsUndelegatingRequest;
+    encode(message: UserConcentratedSuperfluidPositionsUndelegatingRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsUndelegatingRequest;
     fromPartial(object: Partial<UserConcentratedSuperfluidPositionsUndelegatingRequest>): UserConcentratedSuperfluidPositionsUndelegatingRequest;
     fromAmino(object: UserConcentratedSuperfluidPositionsUndelegatingRequestAmino): UserConcentratedSuperfluidPositionsUndelegatingRequest;
     toAmino(message: UserConcentratedSuperfluidPositionsUndelegatingRequest): UserConcentratedSuperfluidPositionsUndelegatingRequestAmino;
@@ -1119,8 +1118,8 @@ export declare const UserConcentratedSuperfluidPositionsUndelegatingRequest: {
 };
 export declare const UserConcentratedSuperfluidPositionsUndelegatingResponse: {
     typeUrl: string;
-    encode(message: UserConcentratedSuperfluidPositionsUndelegatingResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsUndelegatingResponse;
+    encode(message: UserConcentratedSuperfluidPositionsUndelegatingResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsUndelegatingResponse;
     fromPartial(object: Partial<UserConcentratedSuperfluidPositionsUndelegatingResponse>): UserConcentratedSuperfluidPositionsUndelegatingResponse;
     fromAmino(object: UserConcentratedSuperfluidPositionsUndelegatingResponseAmino): UserConcentratedSuperfluidPositionsUndelegatingResponse;
     toAmino(message: UserConcentratedSuperfluidPositionsUndelegatingResponse): UserConcentratedSuperfluidPositionsUndelegatingResponseAmino;

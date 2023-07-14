@@ -1,6 +1,6 @@
 import { IdentifiedPacketFees, IdentifiedPacketFeesAmino, IdentifiedPacketFeesSDKType } from "./fee";
 import { PacketId, PacketIdAmino, PacketIdSDKType } from "../../../core/channel/v1/channel";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** GenesisState defines the ICS29 fee middleware genesis state */
 export interface GenesisState {
     /** list of identified packet fees */
@@ -148,7 +148,7 @@ export interface ForwardRelayerAddress {
     /** the forward relayer address */
     address: string;
     /** unique packet identifer comprised of the channel ID, port ID and sequence */
-    packetId?: PacketId;
+    packetId: PacketId;
 }
 export interface ForwardRelayerAddressProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.ForwardRelayerAddress";
@@ -168,12 +168,12 @@ export interface ForwardRelayerAddressAminoMsg {
 /** ForwardRelayerAddress contains the forward relayer address and PacketId used for async acknowledgements */
 export interface ForwardRelayerAddressSDKType {
     address: string;
-    packet_id?: PacketIdSDKType;
+    packet_id: PacketIdSDKType;
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
@@ -185,8 +185,8 @@ export declare const GenesisState: {
 };
 export declare const FeeEnabledChannel: {
     typeUrl: string;
-    encode(message: FeeEnabledChannel, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FeeEnabledChannel;
+    encode(message: FeeEnabledChannel, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FeeEnabledChannel;
     fromPartial(object: Partial<FeeEnabledChannel>): FeeEnabledChannel;
     fromAmino(object: FeeEnabledChannelAmino): FeeEnabledChannel;
     toAmino(message: FeeEnabledChannel): FeeEnabledChannelAmino;
@@ -198,8 +198,8 @@ export declare const FeeEnabledChannel: {
 };
 export declare const RegisteredPayee: {
     typeUrl: string;
-    encode(message: RegisteredPayee, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RegisteredPayee;
+    encode(message: RegisteredPayee, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RegisteredPayee;
     fromPartial(object: Partial<RegisteredPayee>): RegisteredPayee;
     fromAmino(object: RegisteredPayeeAmino): RegisteredPayee;
     toAmino(message: RegisteredPayee): RegisteredPayeeAmino;
@@ -211,8 +211,8 @@ export declare const RegisteredPayee: {
 };
 export declare const RegisteredCounterpartyPayee: {
     typeUrl: string;
-    encode(message: RegisteredCounterpartyPayee, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RegisteredCounterpartyPayee;
+    encode(message: RegisteredCounterpartyPayee, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): RegisteredCounterpartyPayee;
     fromPartial(object: Partial<RegisteredCounterpartyPayee>): RegisteredCounterpartyPayee;
     fromAmino(object: RegisteredCounterpartyPayeeAmino): RegisteredCounterpartyPayee;
     toAmino(message: RegisteredCounterpartyPayee): RegisteredCounterpartyPayeeAmino;
@@ -224,8 +224,8 @@ export declare const RegisteredCounterpartyPayee: {
 };
 export declare const ForwardRelayerAddress: {
     typeUrl: string;
-    encode(message: ForwardRelayerAddress, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ForwardRelayerAddress;
+    encode(message: ForwardRelayerAddress, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ForwardRelayerAddress;
     fromPartial(object: Partial<ForwardRelayerAddress>): ForwardRelayerAddress;
     fromAmino(object: ForwardRelayerAddressAmino): ForwardRelayerAddress;
     toAmino(message: ForwardRelayerAddress): ForwardRelayerAddressAmino;

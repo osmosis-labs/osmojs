@@ -1,6 +1,6 @@
 import { Fee, FeeAmino, FeeSDKType, PacketFee, PacketFeeAmino, PacketFeeSDKType } from "./fee";
 import { PacketId, PacketIdAmino, PacketIdSDKType } from "../../../core/channel/v1/channel";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** MsgRegisterPayee defines the request type for the RegisterPayee rpc */
 export interface MsgRegisterPayee {
     /** unique port identifier */
@@ -116,7 +116,7 @@ export interface MsgRegisterCounterpartyPayeeResponseSDKType {
  */
 export interface MsgPayPacketFee {
     /** fee encapsulates the recv, ack and timeout fees associated with an IBC packet */
-    fee?: Fee;
+    fee: Fee;
     /** the source port unique identifier */
     sourcePortId: string;
     /** the source channel unique identifer */
@@ -157,7 +157,7 @@ export interface MsgPayPacketFeeAminoMsg {
  * paid for
  */
 export interface MsgPayPacketFeeSDKType {
-    fee?: FeeSDKType;
+    fee: FeeSDKType;
     source_port_id: string;
     source_channel_id: string;
     signer: string;
@@ -186,9 +186,9 @@ export interface MsgPayPacketFeeResponseSDKType {
  */
 export interface MsgPayPacketFeeAsync {
     /** unique packet identifier comprised of the channel ID, port ID and sequence */
-    packetId?: PacketId;
+    packetId: PacketId;
     /** the packet fee associated with a particular IBC packet */
-    packetFee?: PacketFee;
+    packetFee: PacketFee;
 }
 export interface MsgPayPacketFeeAsyncProtoMsg {
     typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFeeAsync";
@@ -213,8 +213,8 @@ export interface MsgPayPacketFeeAsyncAminoMsg {
  * This Msg can be used to pay for a packet at a specified sequence (instead of the next sequence send)
  */
 export interface MsgPayPacketFeeAsyncSDKType {
-    packet_id?: PacketIdSDKType;
-    packet_fee?: PacketFeeSDKType;
+    packet_id: PacketIdSDKType;
+    packet_fee: PacketFeeSDKType;
 }
 /** MsgPayPacketFeeAsyncResponse defines the response type for the PayPacketFeeAsync rpc */
 export interface MsgPayPacketFeeAsyncResponse {
@@ -235,8 +235,8 @@ export interface MsgPayPacketFeeAsyncResponseSDKType {
 }
 export declare const MsgRegisterPayee: {
     typeUrl: string;
-    encode(message: MsgRegisterPayee, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterPayee;
+    encode(message: MsgRegisterPayee, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterPayee;
     fromPartial(object: Partial<MsgRegisterPayee>): MsgRegisterPayee;
     fromAmino(object: MsgRegisterPayeeAmino): MsgRegisterPayee;
     toAmino(message: MsgRegisterPayee): MsgRegisterPayeeAmino;
@@ -248,8 +248,8 @@ export declare const MsgRegisterPayee: {
 };
 export declare const MsgRegisterPayeeResponse: {
     typeUrl: string;
-    encode(_: MsgRegisterPayeeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterPayeeResponse;
+    encode(_: MsgRegisterPayeeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterPayeeResponse;
     fromPartial(_: Partial<MsgRegisterPayeeResponse>): MsgRegisterPayeeResponse;
     fromAmino(_: MsgRegisterPayeeResponseAmino): MsgRegisterPayeeResponse;
     toAmino(_: MsgRegisterPayeeResponse): MsgRegisterPayeeResponseAmino;
@@ -261,8 +261,8 @@ export declare const MsgRegisterPayeeResponse: {
 };
 export declare const MsgRegisterCounterpartyPayee: {
     typeUrl: string;
-    encode(message: MsgRegisterCounterpartyPayee, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterCounterpartyPayee;
+    encode(message: MsgRegisterCounterpartyPayee, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterCounterpartyPayee;
     fromPartial(object: Partial<MsgRegisterCounterpartyPayee>): MsgRegisterCounterpartyPayee;
     fromAmino(object: MsgRegisterCounterpartyPayeeAmino): MsgRegisterCounterpartyPayee;
     toAmino(message: MsgRegisterCounterpartyPayee): MsgRegisterCounterpartyPayeeAmino;
@@ -274,8 +274,8 @@ export declare const MsgRegisterCounterpartyPayee: {
 };
 export declare const MsgRegisterCounterpartyPayeeResponse: {
     typeUrl: string;
-    encode(_: MsgRegisterCounterpartyPayeeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRegisterCounterpartyPayeeResponse;
+    encode(_: MsgRegisterCounterpartyPayeeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterCounterpartyPayeeResponse;
     fromPartial(_: Partial<MsgRegisterCounterpartyPayeeResponse>): MsgRegisterCounterpartyPayeeResponse;
     fromAmino(_: MsgRegisterCounterpartyPayeeResponseAmino): MsgRegisterCounterpartyPayeeResponse;
     toAmino(_: MsgRegisterCounterpartyPayeeResponse): MsgRegisterCounterpartyPayeeResponseAmino;
@@ -287,8 +287,8 @@ export declare const MsgRegisterCounterpartyPayeeResponse: {
 };
 export declare const MsgPayPacketFee: {
     typeUrl: string;
-    encode(message: MsgPayPacketFee, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgPayPacketFee;
+    encode(message: MsgPayPacketFee, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgPayPacketFee;
     fromPartial(object: Partial<MsgPayPacketFee>): MsgPayPacketFee;
     fromAmino(object: MsgPayPacketFeeAmino): MsgPayPacketFee;
     toAmino(message: MsgPayPacketFee): MsgPayPacketFeeAmino;
@@ -300,8 +300,8 @@ export declare const MsgPayPacketFee: {
 };
 export declare const MsgPayPacketFeeResponse: {
     typeUrl: string;
-    encode(_: MsgPayPacketFeeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgPayPacketFeeResponse;
+    encode(_: MsgPayPacketFeeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgPayPacketFeeResponse;
     fromPartial(_: Partial<MsgPayPacketFeeResponse>): MsgPayPacketFeeResponse;
     fromAmino(_: MsgPayPacketFeeResponseAmino): MsgPayPacketFeeResponse;
     toAmino(_: MsgPayPacketFeeResponse): MsgPayPacketFeeResponseAmino;
@@ -313,8 +313,8 @@ export declare const MsgPayPacketFeeResponse: {
 };
 export declare const MsgPayPacketFeeAsync: {
     typeUrl: string;
-    encode(message: MsgPayPacketFeeAsync, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgPayPacketFeeAsync;
+    encode(message: MsgPayPacketFeeAsync, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgPayPacketFeeAsync;
     fromPartial(object: Partial<MsgPayPacketFeeAsync>): MsgPayPacketFeeAsync;
     fromAmino(object: MsgPayPacketFeeAsyncAmino): MsgPayPacketFeeAsync;
     toAmino(message: MsgPayPacketFeeAsync): MsgPayPacketFeeAsyncAmino;
@@ -326,8 +326,8 @@ export declare const MsgPayPacketFeeAsync: {
 };
 export declare const MsgPayPacketFeeAsyncResponse: {
     typeUrl: string;
-    encode(_: MsgPayPacketFeeAsyncResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgPayPacketFeeAsyncResponse;
+    encode(_: MsgPayPacketFeeAsyncResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgPayPacketFeeAsyncResponse;
     fromPartial(_: Partial<MsgPayPacketFeeAsyncResponse>): MsgPayPacketFeeAsyncResponse;
     fromAmino(_: MsgPayPacketFeeAsyncResponseAmino): MsgPayPacketFeeAsyncResponse;
     toAmino(_: MsgPayPacketFeeAsyncResponse): MsgPayPacketFeeAsyncResponseAmino;

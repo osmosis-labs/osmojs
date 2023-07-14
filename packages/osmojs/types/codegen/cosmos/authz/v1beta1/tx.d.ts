@@ -1,6 +1,6 @@
 import { Grant, GrantAmino, GrantSDKType } from "./authz";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * MsgGrant is a request type for Grant method. It declares authorization to the grantee
  * on behalf of the granter with the provided expiration time.
@@ -8,7 +8,7 @@ import * as _m0 from "protobufjs/minimal";
 export interface MsgGrant {
     granter: string;
     grantee: string;
-    grant?: Grant;
+    grant: Grant;
 }
 export interface MsgGrantProtoMsg {
     typeUrl: "/cosmos.authz.v1beta1.MsgGrant";
@@ -34,7 +34,7 @@ export interface MsgGrantAminoMsg {
 export interface MsgGrantSDKType {
     granter: string;
     grantee: string;
-    grant?: GrantSDKType;
+    grant: GrantSDKType;
 }
 /** MsgExecResponse defines the Msg/MsgExecResponse response type. */
 export interface MsgExecResponse {
@@ -74,7 +74,7 @@ export interface MsgExecProtoMsg {
     typeUrl: "/cosmos.authz.v1beta1.MsgExec";
     value: Uint8Array;
 }
-export type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
+export declare type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
     /**
      * Authorization Msg requests to execute. Each msg must implement Authorization interface
      * The x/authz will try to find a grant matching (msg.signers[0], grantee, MsgTypeURL(msg))
@@ -180,8 +180,8 @@ export interface MsgRevokeResponseSDKType {
 }
 export declare const MsgGrant: {
     typeUrl: string;
-    encode(message: MsgGrant, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrant;
+    encode(message: MsgGrant, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgGrant;
     fromPartial(object: Partial<MsgGrant>): MsgGrant;
     fromAmino(object: MsgGrantAmino): MsgGrant;
     toAmino(message: MsgGrant): MsgGrantAmino;
@@ -193,8 +193,8 @@ export declare const MsgGrant: {
 };
 export declare const MsgExecResponse: {
     typeUrl: string;
-    encode(message: MsgExecResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecResponse;
+    encode(message: MsgExecResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExecResponse;
     fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse;
     fromAmino(object: MsgExecResponseAmino): MsgExecResponse;
     toAmino(message: MsgExecResponse): MsgExecResponseAmino;
@@ -206,8 +206,8 @@ export declare const MsgExecResponse: {
 };
 export declare const MsgExec: {
     typeUrl: string;
-    encode(message: MsgExec, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExec;
+    encode(message: MsgExec, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExec;
     fromPartial(object: Partial<MsgExec>): MsgExec;
     fromAmino(object: MsgExecAmino): MsgExec;
     toAmino(message: MsgExec): MsgExecAmino;
@@ -219,8 +219,8 @@ export declare const MsgExec: {
 };
 export declare const MsgGrantResponse: {
     typeUrl: string;
-    encode(_: MsgGrantResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantResponse;
+    encode(_: MsgGrantResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgGrantResponse;
     fromPartial(_: Partial<MsgGrantResponse>): MsgGrantResponse;
     fromAmino(_: MsgGrantResponseAmino): MsgGrantResponse;
     toAmino(_: MsgGrantResponse): MsgGrantResponseAmino;
@@ -232,8 +232,8 @@ export declare const MsgGrantResponse: {
 };
 export declare const MsgRevoke: {
     typeUrl: string;
-    encode(message: MsgRevoke, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevoke;
+    encode(message: MsgRevoke, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRevoke;
     fromPartial(object: Partial<MsgRevoke>): MsgRevoke;
     fromAmino(object: MsgRevokeAmino): MsgRevoke;
     toAmino(message: MsgRevoke): MsgRevokeAmino;
@@ -245,8 +245,8 @@ export declare const MsgRevoke: {
 };
 export declare const MsgRevokeResponse: {
     typeUrl: string;
-    encode(_: MsgRevokeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeResponse;
+    encode(_: MsgRevokeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRevokeResponse;
     fromPartial(_: Partial<MsgRevokeResponse>): MsgRevokeResponse;
     fromAmino(_: MsgRevokeResponseAmino): MsgRevokeResponse;
     toAmino(_: MsgRevokeResponse): MsgRevokeResponseAmino;
@@ -256,9 +256,9 @@ export declare const MsgRevokeResponse: {
     toProto(message: MsgRevokeResponse): Uint8Array;
     toProtoMsg(message: MsgRevokeResponse): MsgRevokeResponseProtoMsg;
 };
-export declare const Sdk_Msg_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Any;
+export declare const Sdk_Msg_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
 export declare const Sdk_Msg_FromAmino: (content: AnyAmino) => Any;
 export declare const Sdk_Msg_ToAmino: (content: Any) => AnyAmino;
-export declare const Authz_Authorization_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Any;
+export declare const Authz_Authorization_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
 export declare const Authz_Authorization_FromAmino: (content: AnyAmino) => Any;
 export declare const Authz_Authorization_ToAmino: (content: Any) => AnyAmino;

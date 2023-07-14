@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * PubKey defines a secp256k1 public key
  * Key is the compressed form of the pubkey. The first byte depends is a 0x02 byte
@@ -59,8 +59,8 @@ export interface PrivKeySDKType {
 }
 export declare const PubKey: {
     typeUrl: string;
-    encode(message: PubKey, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PubKey;
+    encode(message: PubKey, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PubKey;
     fromPartial(object: Partial<PubKey>): PubKey;
     fromAmino(object: PubKeyAmino): PubKey;
     toAmino(message: PubKey): PubKeyAmino;
@@ -72,8 +72,8 @@ export declare const PubKey: {
 };
 export declare const PrivKey: {
     typeUrl: string;
-    encode(message: PrivKey, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): PrivKey;
+    encode(message: PrivKey, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): PrivKey;
     fromPartial(object: Partial<PrivKey>): PrivKey;
     fromAmino(object: PrivKeyAmino): PrivKey;
     toAmino(message: PrivKey): PrivKeyAmino;

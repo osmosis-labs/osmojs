@@ -1,5 +1,5 @@
 import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./shared";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * ReplaceMigrationRecordsProposal is a gov Content type for updating the
  * migration records. If a ReplaceMigrationRecordsProposal passes, the
@@ -103,8 +103,8 @@ export interface UpdateMigrationRecordsProposalSDKType {
 }
 export declare const ReplaceMigrationRecordsProposal: {
     typeUrl: string;
-    encode(message: ReplaceMigrationRecordsProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ReplaceMigrationRecordsProposal;
+    encode(message: ReplaceMigrationRecordsProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ReplaceMigrationRecordsProposal;
     fromPartial(object: Partial<ReplaceMigrationRecordsProposal>): ReplaceMigrationRecordsProposal;
     fromAmino(object: ReplaceMigrationRecordsProposalAmino): ReplaceMigrationRecordsProposal;
     toAmino(message: ReplaceMigrationRecordsProposal): ReplaceMigrationRecordsProposalAmino;
@@ -116,8 +116,8 @@ export declare const ReplaceMigrationRecordsProposal: {
 };
 export declare const UpdateMigrationRecordsProposal: {
     typeUrl: string;
-    encode(message: UpdateMigrationRecordsProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpdateMigrationRecordsProposal;
+    encode(message: UpdateMigrationRecordsProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpdateMigrationRecordsProposal;
     fromPartial(object: Partial<UpdateMigrationRecordsProposal>): UpdateMigrationRecordsProposal;
     fromAmino(object: UpdateMigrationRecordsProposalAmino): UpdateMigrationRecordsProposal;
     toAmino(message: UpdateMigrationRecordsProposal): UpdateMigrationRecordsProposalAmino;

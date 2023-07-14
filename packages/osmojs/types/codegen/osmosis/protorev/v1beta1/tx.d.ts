@@ -1,6 +1,5 @@
 import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgSetHotRoutes defines the Msg/SetHotRoutes request type. */
 export interface MsgSetHotRoutes {
     /** admin is the account that is authorized to set the hot routes. */
@@ -109,7 +108,7 @@ export interface MsgSetPoolWeights {
     /** admin is the account that is authorized to set the pool weights. */
     admin: string;
     /** pool_weights is the list of pool weights to set. */
-    poolWeights?: PoolWeights;
+    poolWeights: PoolWeights;
 }
 export interface MsgSetPoolWeightsProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights";
@@ -129,7 +128,7 @@ export interface MsgSetPoolWeightsAminoMsg {
 /** MsgSetPoolWeights defines the Msg/SetPoolWeights request type. */
 export interface MsgSetPoolWeightsSDKType {
     admin: string;
-    pool_weights?: PoolWeightsSDKType;
+    pool_weights: PoolWeightsSDKType;
 }
 /** MsgSetPoolWeightsResponse defines the Msg/SetPoolWeights response type. */
 export interface MsgSetPoolWeightsResponse {
@@ -156,7 +155,7 @@ export interface MsgSetMaxPoolPointsPerTx {
      * max_pool_points_per_tx is the maximum number of pool points that can be
      * consumed per transaction.
      */
-    maxPoolPointsPerTx: Long;
+    maxPoolPointsPerTx: bigint;
 }
 export interface MsgSetMaxPoolPointsPerTxProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx";
@@ -179,7 +178,7 @@ export interface MsgSetMaxPoolPointsPerTxAminoMsg {
 /** MsgSetMaxPoolPointsPerTx defines the Msg/SetMaxPoolPointsPerTx request type. */
 export interface MsgSetMaxPoolPointsPerTxSDKType {
     admin: string;
-    max_pool_points_per_tx: Long;
+    max_pool_points_per_tx: bigint;
 }
 /**
  * MsgSetMaxPoolPointsPerTxResponse defines the Msg/SetMaxPoolPointsPerTx
@@ -221,7 +220,7 @@ export interface MsgSetMaxPoolPointsPerBlock {
      * max_pool_points_per_block is the maximum number of pool points that can be
      * consumed per block.
      */
-    maxPoolPointsPerBlock: Long;
+    maxPoolPointsPerBlock: bigint;
 }
 export interface MsgSetMaxPoolPointsPerBlockProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock";
@@ -253,7 +252,7 @@ export interface MsgSetMaxPoolPointsPerBlockAminoMsg {
  */
 export interface MsgSetMaxPoolPointsPerBlockSDKType {
     admin: string;
-    max_pool_points_per_block: Long;
+    max_pool_points_per_block: bigint;
 }
 /**
  * MsgSetMaxPoolPointsPerBlockResponse defines the
@@ -327,8 +326,8 @@ export interface MsgSetBaseDenomsResponseSDKType {
 }
 export declare const MsgSetHotRoutes: {
     typeUrl: string;
-    encode(message: MsgSetHotRoutes, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetHotRoutes;
+    encode(message: MsgSetHotRoutes, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetHotRoutes;
     fromPartial(object: Partial<MsgSetHotRoutes>): MsgSetHotRoutes;
     fromAmino(object: MsgSetHotRoutesAmino): MsgSetHotRoutes;
     toAmino(message: MsgSetHotRoutes): MsgSetHotRoutesAmino;
@@ -340,8 +339,8 @@ export declare const MsgSetHotRoutes: {
 };
 export declare const MsgSetHotRoutesResponse: {
     typeUrl: string;
-    encode(_: MsgSetHotRoutesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetHotRoutesResponse;
+    encode(_: MsgSetHotRoutesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetHotRoutesResponse;
     fromPartial(_: Partial<MsgSetHotRoutesResponse>): MsgSetHotRoutesResponse;
     fromAmino(_: MsgSetHotRoutesResponseAmino): MsgSetHotRoutesResponse;
     toAmino(_: MsgSetHotRoutesResponse): MsgSetHotRoutesResponseAmino;
@@ -353,8 +352,8 @@ export declare const MsgSetHotRoutesResponse: {
 };
 export declare const MsgSetDeveloperAccount: {
     typeUrl: string;
-    encode(message: MsgSetDeveloperAccount, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDeveloperAccount;
+    encode(message: MsgSetDeveloperAccount, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDeveloperAccount;
     fromPartial(object: Partial<MsgSetDeveloperAccount>): MsgSetDeveloperAccount;
     fromAmino(object: MsgSetDeveloperAccountAmino): MsgSetDeveloperAccount;
     toAmino(message: MsgSetDeveloperAccount): MsgSetDeveloperAccountAmino;
@@ -366,8 +365,8 @@ export declare const MsgSetDeveloperAccount: {
 };
 export declare const MsgSetDeveloperAccountResponse: {
     typeUrl: string;
-    encode(_: MsgSetDeveloperAccountResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDeveloperAccountResponse;
+    encode(_: MsgSetDeveloperAccountResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDeveloperAccountResponse;
     fromPartial(_: Partial<MsgSetDeveloperAccountResponse>): MsgSetDeveloperAccountResponse;
     fromAmino(_: MsgSetDeveloperAccountResponseAmino): MsgSetDeveloperAccountResponse;
     toAmino(_: MsgSetDeveloperAccountResponse): MsgSetDeveloperAccountResponseAmino;
@@ -379,8 +378,8 @@ export declare const MsgSetDeveloperAccountResponse: {
 };
 export declare const MsgSetPoolWeights: {
     typeUrl: string;
-    encode(message: MsgSetPoolWeights, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetPoolWeights;
+    encode(message: MsgSetPoolWeights, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetPoolWeights;
     fromPartial(object: Partial<MsgSetPoolWeights>): MsgSetPoolWeights;
     fromAmino(object: MsgSetPoolWeightsAmino): MsgSetPoolWeights;
     toAmino(message: MsgSetPoolWeights): MsgSetPoolWeightsAmino;
@@ -392,8 +391,8 @@ export declare const MsgSetPoolWeights: {
 };
 export declare const MsgSetPoolWeightsResponse: {
     typeUrl: string;
-    encode(_: MsgSetPoolWeightsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetPoolWeightsResponse;
+    encode(_: MsgSetPoolWeightsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetPoolWeightsResponse;
     fromPartial(_: Partial<MsgSetPoolWeightsResponse>): MsgSetPoolWeightsResponse;
     fromAmino(_: MsgSetPoolWeightsResponseAmino): MsgSetPoolWeightsResponse;
     toAmino(_: MsgSetPoolWeightsResponse): MsgSetPoolWeightsResponseAmino;
@@ -405,8 +404,8 @@ export declare const MsgSetPoolWeightsResponse: {
 };
 export declare const MsgSetMaxPoolPointsPerTx: {
     typeUrl: string;
-    encode(message: MsgSetMaxPoolPointsPerTx, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTx;
+    encode(message: MsgSetMaxPoolPointsPerTx, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTx;
     fromPartial(object: Partial<MsgSetMaxPoolPointsPerTx>): MsgSetMaxPoolPointsPerTx;
     fromAmino(object: MsgSetMaxPoolPointsPerTxAmino): MsgSetMaxPoolPointsPerTx;
     toAmino(message: MsgSetMaxPoolPointsPerTx): MsgSetMaxPoolPointsPerTxAmino;
@@ -418,8 +417,8 @@ export declare const MsgSetMaxPoolPointsPerTx: {
 };
 export declare const MsgSetMaxPoolPointsPerTxResponse: {
     typeUrl: string;
-    encode(_: MsgSetMaxPoolPointsPerTxResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTxResponse;
+    encode(_: MsgSetMaxPoolPointsPerTxResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTxResponse;
     fromPartial(_: Partial<MsgSetMaxPoolPointsPerTxResponse>): MsgSetMaxPoolPointsPerTxResponse;
     fromAmino(_: MsgSetMaxPoolPointsPerTxResponseAmino): MsgSetMaxPoolPointsPerTxResponse;
     toAmino(_: MsgSetMaxPoolPointsPerTxResponse): MsgSetMaxPoolPointsPerTxResponseAmino;
@@ -431,8 +430,8 @@ export declare const MsgSetMaxPoolPointsPerTxResponse: {
 };
 export declare const MsgSetMaxPoolPointsPerBlock: {
     typeUrl: string;
-    encode(message: MsgSetMaxPoolPointsPerBlock, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlock;
+    encode(message: MsgSetMaxPoolPointsPerBlock, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlock;
     fromPartial(object: Partial<MsgSetMaxPoolPointsPerBlock>): MsgSetMaxPoolPointsPerBlock;
     fromAmino(object: MsgSetMaxPoolPointsPerBlockAmino): MsgSetMaxPoolPointsPerBlock;
     toAmino(message: MsgSetMaxPoolPointsPerBlock): MsgSetMaxPoolPointsPerBlockAmino;
@@ -444,8 +443,8 @@ export declare const MsgSetMaxPoolPointsPerBlock: {
 };
 export declare const MsgSetMaxPoolPointsPerBlockResponse: {
     typeUrl: string;
-    encode(_: MsgSetMaxPoolPointsPerBlockResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlockResponse;
+    encode(_: MsgSetMaxPoolPointsPerBlockResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlockResponse;
     fromPartial(_: Partial<MsgSetMaxPoolPointsPerBlockResponse>): MsgSetMaxPoolPointsPerBlockResponse;
     fromAmino(_: MsgSetMaxPoolPointsPerBlockResponseAmino): MsgSetMaxPoolPointsPerBlockResponse;
     toAmino(_: MsgSetMaxPoolPointsPerBlockResponse): MsgSetMaxPoolPointsPerBlockResponseAmino;
@@ -457,8 +456,8 @@ export declare const MsgSetMaxPoolPointsPerBlockResponse: {
 };
 export declare const MsgSetBaseDenoms: {
     typeUrl: string;
-    encode(message: MsgSetBaseDenoms, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBaseDenoms;
+    encode(message: MsgSetBaseDenoms, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBaseDenoms;
     fromPartial(object: Partial<MsgSetBaseDenoms>): MsgSetBaseDenoms;
     fromAmino(object: MsgSetBaseDenomsAmino): MsgSetBaseDenoms;
     toAmino(message: MsgSetBaseDenoms): MsgSetBaseDenomsAmino;
@@ -470,8 +469,8 @@ export declare const MsgSetBaseDenoms: {
 };
 export declare const MsgSetBaseDenomsResponse: {
     typeUrl: string;
-    encode(_: MsgSetBaseDenomsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBaseDenomsResponse;
+    encode(_: MsgSetBaseDenomsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBaseDenomsResponse;
     fromPartial(_: Partial<MsgSetBaseDenomsResponse>): MsgSetBaseDenomsResponse;
     fromAmino(_: MsgSetBaseDenomsResponseAmino): MsgSetBaseDenomsResponse;
     toAmino(_: MsgSetBaseDenomsResponse): MsgSetBaseDenomsResponseAmino;

@@ -1,14 +1,13 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { SwapAmountInRoute, SwapAmountInRouteAmino, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteAmino, SwapAmountOutRouteSDKType } from "../../poolmanager/v1beta1/swap_route";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * ===================== MsgJoinPool
  * This is really MsgJoinPoolNoSwap
  */
 export interface MsgJoinPool {
     sender: string;
-    poolId: Long;
+    poolId: bigint;
     shareOutAmount: string;
     tokenInMaxs: Coin[];
 }
@@ -36,7 +35,7 @@ export interface MsgJoinPoolAminoMsg {
  */
 export interface MsgJoinPoolSDKType {
     sender: string;
-    pool_id: Long;
+    pool_id: bigint;
     share_out_amount: string;
     token_in_maxs: CoinSDKType[];
 }
@@ -63,7 +62,7 @@ export interface MsgJoinPoolResponseSDKType {
 /** ===================== MsgExitPool */
 export interface MsgExitPool {
     sender: string;
-    poolId: Long;
+    poolId: bigint;
     shareInAmount: string;
     tokenOutMins: Coin[];
 }
@@ -85,7 +84,7 @@ export interface MsgExitPoolAminoMsg {
 /** ===================== MsgExitPool */
 export interface MsgExitPoolSDKType {
     sender: string;
-    pool_id: Long;
+    pool_id: bigint;
     share_in_amount: string;
     token_out_mins: CoinSDKType[];
 }
@@ -110,7 +109,7 @@ export interface MsgExitPoolResponseSDKType {
 export interface MsgSwapExactAmountIn {
     sender: string;
     routes: SwapAmountInRoute[];
-    tokenIn?: Coin;
+    tokenIn: Coin;
     tokenOutMinAmount: string;
 }
 export interface MsgSwapExactAmountInProtoMsg {
@@ -132,7 +131,7 @@ export interface MsgSwapExactAmountInAminoMsg {
 export interface MsgSwapExactAmountInSDKType {
     sender: string;
     routes: SwapAmountInRouteSDKType[];
-    token_in?: CoinSDKType;
+    token_in: CoinSDKType;
     token_out_min_amount: string;
 }
 export interface MsgSwapExactAmountInResponse {
@@ -156,7 +155,7 @@ export interface MsgSwapExactAmountOut {
     sender: string;
     routes: SwapAmountOutRoute[];
     tokenInMaxAmount: string;
-    tokenOut?: Coin;
+    tokenOut: Coin;
 }
 export interface MsgSwapExactAmountOutProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountOut";
@@ -176,7 +175,7 @@ export interface MsgSwapExactAmountOutSDKType {
     sender: string;
     routes: SwapAmountOutRouteSDKType[];
     token_in_max_amount: string;
-    token_out?: CoinSDKType;
+    token_out: CoinSDKType;
 }
 export interface MsgSwapExactAmountOutResponse {
     tokenInAmount: string;
@@ -201,8 +200,8 @@ export interface MsgSwapExactAmountOutResponseSDKType {
  */
 export interface MsgJoinSwapExternAmountIn {
     sender: string;
-    poolId: Long;
-    tokenIn?: Coin;
+    poolId: bigint;
+    tokenIn: Coin;
     shareOutMinAmount: string;
 }
 export interface MsgJoinSwapExternAmountInProtoMsg {
@@ -229,8 +228,8 @@ export interface MsgJoinSwapExternAmountInAminoMsg {
  */
 export interface MsgJoinSwapExternAmountInSDKType {
     sender: string;
-    pool_id: Long;
-    token_in?: CoinSDKType;
+    pool_id: bigint;
+    token_in: CoinSDKType;
     share_out_min_amount: string;
 }
 export interface MsgJoinSwapExternAmountInResponse {
@@ -253,7 +252,7 @@ export interface MsgJoinSwapExternAmountInResponseSDKType {
 /** ===================== MsgJoinSwapShareAmountOut */
 export interface MsgJoinSwapShareAmountOut {
     sender: string;
-    poolId: Long;
+    poolId: bigint;
     tokenInDenom: string;
     shareOutAmount: string;
     tokenInMaxAmount: string;
@@ -277,7 +276,7 @@ export interface MsgJoinSwapShareAmountOutAminoMsg {
 /** ===================== MsgJoinSwapShareAmountOut */
 export interface MsgJoinSwapShareAmountOutSDKType {
     sender: string;
-    pool_id: Long;
+    pool_id: bigint;
     token_in_denom: string;
     share_out_amount: string;
     token_in_max_amount: string;
@@ -302,7 +301,7 @@ export interface MsgJoinSwapShareAmountOutResponseSDKType {
 /** ===================== MsgExitSwapShareAmountIn */
 export interface MsgExitSwapShareAmountIn {
     sender: string;
-    poolId: Long;
+    poolId: bigint;
     tokenOutDenom: string;
     shareInAmount: string;
     tokenOutMinAmount: string;
@@ -326,7 +325,7 @@ export interface MsgExitSwapShareAmountInAminoMsg {
 /** ===================== MsgExitSwapShareAmountIn */
 export interface MsgExitSwapShareAmountInSDKType {
     sender: string;
-    pool_id: Long;
+    pool_id: bigint;
     token_out_denom: string;
     share_in_amount: string;
     token_out_min_amount: string;
@@ -351,8 +350,8 @@ export interface MsgExitSwapShareAmountInResponseSDKType {
 /** ===================== MsgExitSwapExternAmountOut */
 export interface MsgExitSwapExternAmountOut {
     sender: string;
-    poolId: Long;
-    tokenOut?: Coin;
+    poolId: bigint;
+    tokenOut: Coin;
     shareInMaxAmount: string;
 }
 export interface MsgExitSwapExternAmountOutProtoMsg {
@@ -373,8 +372,8 @@ export interface MsgExitSwapExternAmountOutAminoMsg {
 /** ===================== MsgExitSwapExternAmountOut */
 export interface MsgExitSwapExternAmountOutSDKType {
     sender: string;
-    pool_id: Long;
-    token_out?: CoinSDKType;
+    pool_id: bigint;
+    token_out: CoinSDKType;
     share_in_max_amount: string;
 }
 export interface MsgExitSwapExternAmountOutResponse {
@@ -396,8 +395,8 @@ export interface MsgExitSwapExternAmountOutResponseSDKType {
 }
 export declare const MsgJoinPool: {
     typeUrl: string;
-    encode(message: MsgJoinPool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPool;
+    encode(message: MsgJoinPool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinPool;
     fromPartial(object: Partial<MsgJoinPool>): MsgJoinPool;
     fromAmino(object: MsgJoinPoolAmino): MsgJoinPool;
     toAmino(message: MsgJoinPool): MsgJoinPoolAmino;
@@ -409,8 +408,8 @@ export declare const MsgJoinPool: {
 };
 export declare const MsgJoinPoolResponse: {
     typeUrl: string;
-    encode(message: MsgJoinPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinPoolResponse;
+    encode(message: MsgJoinPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinPoolResponse;
     fromPartial(object: Partial<MsgJoinPoolResponse>): MsgJoinPoolResponse;
     fromAmino(object: MsgJoinPoolResponseAmino): MsgJoinPoolResponse;
     toAmino(message: MsgJoinPoolResponse): MsgJoinPoolResponseAmino;
@@ -422,8 +421,8 @@ export declare const MsgJoinPoolResponse: {
 };
 export declare const MsgExitPool: {
     typeUrl: string;
-    encode(message: MsgExitPool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPool;
+    encode(message: MsgExitPool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExitPool;
     fromPartial(object: Partial<MsgExitPool>): MsgExitPool;
     fromAmino(object: MsgExitPoolAmino): MsgExitPool;
     toAmino(message: MsgExitPool): MsgExitPoolAmino;
@@ -435,8 +434,8 @@ export declare const MsgExitPool: {
 };
 export declare const MsgExitPoolResponse: {
     typeUrl: string;
-    encode(message: MsgExitPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitPoolResponse;
+    encode(message: MsgExitPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExitPoolResponse;
     fromPartial(object: Partial<MsgExitPoolResponse>): MsgExitPoolResponse;
     fromAmino(object: MsgExitPoolResponseAmino): MsgExitPoolResponse;
     toAmino(message: MsgExitPoolResponse): MsgExitPoolResponseAmino;
@@ -448,8 +447,8 @@ export declare const MsgExitPoolResponse: {
 };
 export declare const MsgSwapExactAmountIn: {
     typeUrl: string;
-    encode(message: MsgSwapExactAmountIn, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountIn;
+    encode(message: MsgSwapExactAmountIn, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSwapExactAmountIn;
     fromPartial(object: Partial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn;
     fromAmino(object: MsgSwapExactAmountInAmino): MsgSwapExactAmountIn;
     toAmino(message: MsgSwapExactAmountIn): MsgSwapExactAmountInAmino;
@@ -461,8 +460,8 @@ export declare const MsgSwapExactAmountIn: {
 };
 export declare const MsgSwapExactAmountInResponse: {
     typeUrl: string;
-    encode(message: MsgSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponse;
+    encode(message: MsgSwapExactAmountInResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSwapExactAmountInResponse;
     fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse;
     fromAmino(object: MsgSwapExactAmountInResponseAmino): MsgSwapExactAmountInResponse;
     toAmino(message: MsgSwapExactAmountInResponse): MsgSwapExactAmountInResponseAmino;
@@ -474,8 +473,8 @@ export declare const MsgSwapExactAmountInResponse: {
 };
 export declare const MsgSwapExactAmountOut: {
     typeUrl: string;
-    encode(message: MsgSwapExactAmountOut, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOut;
+    encode(message: MsgSwapExactAmountOut, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSwapExactAmountOut;
     fromPartial(object: Partial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut;
     fromAmino(object: MsgSwapExactAmountOutAmino): MsgSwapExactAmountOut;
     toAmino(message: MsgSwapExactAmountOut): MsgSwapExactAmountOutAmino;
@@ -487,8 +486,8 @@ export declare const MsgSwapExactAmountOut: {
 };
 export declare const MsgSwapExactAmountOutResponse: {
     typeUrl: string;
-    encode(message: MsgSwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOutResponse;
+    encode(message: MsgSwapExactAmountOutResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSwapExactAmountOutResponse;
     fromPartial(object: Partial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse;
     fromAmino(object: MsgSwapExactAmountOutResponseAmino): MsgSwapExactAmountOutResponse;
     toAmino(message: MsgSwapExactAmountOutResponse): MsgSwapExactAmountOutResponseAmino;
@@ -500,8 +499,8 @@ export declare const MsgSwapExactAmountOutResponse: {
 };
 export declare const MsgJoinSwapExternAmountIn: {
     typeUrl: string;
-    encode(message: MsgJoinSwapExternAmountIn, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountIn;
+    encode(message: MsgJoinSwapExternAmountIn, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinSwapExternAmountIn;
     fromPartial(object: Partial<MsgJoinSwapExternAmountIn>): MsgJoinSwapExternAmountIn;
     fromAmino(object: MsgJoinSwapExternAmountInAmino): MsgJoinSwapExternAmountIn;
     toAmino(message: MsgJoinSwapExternAmountIn): MsgJoinSwapExternAmountInAmino;
@@ -513,8 +512,8 @@ export declare const MsgJoinSwapExternAmountIn: {
 };
 export declare const MsgJoinSwapExternAmountInResponse: {
     typeUrl: string;
-    encode(message: MsgJoinSwapExternAmountInResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapExternAmountInResponse;
+    encode(message: MsgJoinSwapExternAmountInResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinSwapExternAmountInResponse;
     fromPartial(object: Partial<MsgJoinSwapExternAmountInResponse>): MsgJoinSwapExternAmountInResponse;
     fromAmino(object: MsgJoinSwapExternAmountInResponseAmino): MsgJoinSwapExternAmountInResponse;
     toAmino(message: MsgJoinSwapExternAmountInResponse): MsgJoinSwapExternAmountInResponseAmino;
@@ -526,8 +525,8 @@ export declare const MsgJoinSwapExternAmountInResponse: {
 };
 export declare const MsgJoinSwapShareAmountOut: {
     typeUrl: string;
-    encode(message: MsgJoinSwapShareAmountOut, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOut;
+    encode(message: MsgJoinSwapShareAmountOut, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinSwapShareAmountOut;
     fromPartial(object: Partial<MsgJoinSwapShareAmountOut>): MsgJoinSwapShareAmountOut;
     fromAmino(object: MsgJoinSwapShareAmountOutAmino): MsgJoinSwapShareAmountOut;
     toAmino(message: MsgJoinSwapShareAmountOut): MsgJoinSwapShareAmountOutAmino;
@@ -539,8 +538,8 @@ export declare const MsgJoinSwapShareAmountOut: {
 };
 export declare const MsgJoinSwapShareAmountOutResponse: {
     typeUrl: string;
-    encode(message: MsgJoinSwapShareAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgJoinSwapShareAmountOutResponse;
+    encode(message: MsgJoinSwapShareAmountOutResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinSwapShareAmountOutResponse;
     fromPartial(object: Partial<MsgJoinSwapShareAmountOutResponse>): MsgJoinSwapShareAmountOutResponse;
     fromAmino(object: MsgJoinSwapShareAmountOutResponseAmino): MsgJoinSwapShareAmountOutResponse;
     toAmino(message: MsgJoinSwapShareAmountOutResponse): MsgJoinSwapShareAmountOutResponseAmino;
@@ -552,8 +551,8 @@ export declare const MsgJoinSwapShareAmountOutResponse: {
 };
 export declare const MsgExitSwapShareAmountIn: {
     typeUrl: string;
-    encode(message: MsgExitSwapShareAmountIn, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountIn;
+    encode(message: MsgExitSwapShareAmountIn, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExitSwapShareAmountIn;
     fromPartial(object: Partial<MsgExitSwapShareAmountIn>): MsgExitSwapShareAmountIn;
     fromAmino(object: MsgExitSwapShareAmountInAmino): MsgExitSwapShareAmountIn;
     toAmino(message: MsgExitSwapShareAmountIn): MsgExitSwapShareAmountInAmino;
@@ -565,8 +564,8 @@ export declare const MsgExitSwapShareAmountIn: {
 };
 export declare const MsgExitSwapShareAmountInResponse: {
     typeUrl: string;
-    encode(message: MsgExitSwapShareAmountInResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapShareAmountInResponse;
+    encode(message: MsgExitSwapShareAmountInResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExitSwapShareAmountInResponse;
     fromPartial(object: Partial<MsgExitSwapShareAmountInResponse>): MsgExitSwapShareAmountInResponse;
     fromAmino(object: MsgExitSwapShareAmountInResponseAmino): MsgExitSwapShareAmountInResponse;
     toAmino(message: MsgExitSwapShareAmountInResponse): MsgExitSwapShareAmountInResponseAmino;
@@ -578,8 +577,8 @@ export declare const MsgExitSwapShareAmountInResponse: {
 };
 export declare const MsgExitSwapExternAmountOut: {
     typeUrl: string;
-    encode(message: MsgExitSwapExternAmountOut, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOut;
+    encode(message: MsgExitSwapExternAmountOut, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExitSwapExternAmountOut;
     fromPartial(object: Partial<MsgExitSwapExternAmountOut>): MsgExitSwapExternAmountOut;
     fromAmino(object: MsgExitSwapExternAmountOutAmino): MsgExitSwapExternAmountOut;
     toAmino(message: MsgExitSwapExternAmountOut): MsgExitSwapExternAmountOutAmino;
@@ -591,8 +590,8 @@ export declare const MsgExitSwapExternAmountOut: {
 };
 export declare const MsgExitSwapExternAmountOutResponse: {
     typeUrl: string;
-    encode(message: MsgExitSwapExternAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgExitSwapExternAmountOutResponse;
+    encode(message: MsgExitSwapExternAmountOutResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExitSwapExternAmountOutResponse;
     fromPartial(object: Partial<MsgExitSwapExternAmountOutResponse>): MsgExitSwapExternAmountOutResponse;
     fromAmino(object: MsgExitSwapExternAmountOutResponseAmino): MsgExitSwapExternAmountOutResponse;
     toAmino(message: MsgExitSwapExternAmountOutResponse): MsgExitSwapExternAmountOutResponseAmino;

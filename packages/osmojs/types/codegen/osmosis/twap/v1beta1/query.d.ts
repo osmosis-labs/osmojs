@@ -1,11 +1,10 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./genesis";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface ArithmeticTwapRequest {
-    poolId: Long;
+    poolId: bigint;
     baseAsset: string;
     quoteAsset: string;
-    startTime?: Date;
+    startTime: Date;
     endTime?: Date;
 }
 export interface ArithmeticTwapRequestProtoMsg {
@@ -24,10 +23,10 @@ export interface ArithmeticTwapRequestAminoMsg {
     value: ArithmeticTwapRequestAmino;
 }
 export interface ArithmeticTwapRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     base_asset: string;
     quote_asset: string;
-    start_time?: Date;
+    start_time: Date;
     end_time?: Date;
 }
 export interface ArithmeticTwapResponse {
@@ -48,10 +47,10 @@ export interface ArithmeticTwapResponseSDKType {
     arithmetic_twap: string;
 }
 export interface ArithmeticTwapToNowRequest {
-    poolId: Long;
+    poolId: bigint;
     baseAsset: string;
     quoteAsset: string;
-    startTime?: Date;
+    startTime: Date;
 }
 export interface ArithmeticTwapToNowRequestProtoMsg {
     typeUrl: "/osmosis.twap.v1beta1.ArithmeticTwapToNowRequest";
@@ -68,10 +67,10 @@ export interface ArithmeticTwapToNowRequestAminoMsg {
     value: ArithmeticTwapToNowRequestAmino;
 }
 export interface ArithmeticTwapToNowRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     base_asset: string;
     quote_asset: string;
-    start_time?: Date;
+    start_time: Date;
 }
 export interface ArithmeticTwapToNowResponse {
     arithmeticTwap: string;
@@ -91,10 +90,10 @@ export interface ArithmeticTwapToNowResponseSDKType {
     arithmetic_twap: string;
 }
 export interface GeometricTwapRequest {
-    poolId: Long;
+    poolId: bigint;
     baseAsset: string;
     quoteAsset: string;
-    startTime?: Date;
+    startTime: Date;
     endTime?: Date;
 }
 export interface GeometricTwapRequestProtoMsg {
@@ -113,10 +112,10 @@ export interface GeometricTwapRequestAminoMsg {
     value: GeometricTwapRequestAmino;
 }
 export interface GeometricTwapRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     base_asset: string;
     quote_asset: string;
-    start_time?: Date;
+    start_time: Date;
     end_time?: Date;
 }
 export interface GeometricTwapResponse {
@@ -137,10 +136,10 @@ export interface GeometricTwapResponseSDKType {
     geometric_twap: string;
 }
 export interface GeometricTwapToNowRequest {
-    poolId: Long;
+    poolId: bigint;
     baseAsset: string;
     quoteAsset: string;
-    startTime?: Date;
+    startTime: Date;
 }
 export interface GeometricTwapToNowRequestProtoMsg {
     typeUrl: "/osmosis.twap.v1beta1.GeometricTwapToNowRequest";
@@ -157,10 +156,10 @@ export interface GeometricTwapToNowRequestAminoMsg {
     value: GeometricTwapToNowRequestAmino;
 }
 export interface GeometricTwapToNowRequestSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     base_asset: string;
     quote_asset: string;
-    start_time?: Date;
+    start_time: Date;
 }
 export interface GeometricTwapToNowResponse {
     geometricTwap: string;
@@ -194,7 +193,7 @@ export interface ParamsRequestAminoMsg {
 export interface ParamsRequestSDKType {
 }
 export interface ParamsResponse {
-    params?: Params;
+    params: Params;
 }
 export interface ParamsResponseProtoMsg {
     typeUrl: "/osmosis.twap.v1beta1.ParamsResponse";
@@ -208,12 +207,12 @@ export interface ParamsResponseAminoMsg {
     value: ParamsResponseAmino;
 }
 export interface ParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 export declare const ArithmeticTwapRequest: {
     typeUrl: string;
-    encode(message: ArithmeticTwapRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapRequest;
+    encode(message: ArithmeticTwapRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ArithmeticTwapRequest;
     fromPartial(object: Partial<ArithmeticTwapRequest>): ArithmeticTwapRequest;
     fromAmino(object: ArithmeticTwapRequestAmino): ArithmeticTwapRequest;
     toAmino(message: ArithmeticTwapRequest): ArithmeticTwapRequestAmino;
@@ -225,8 +224,8 @@ export declare const ArithmeticTwapRequest: {
 };
 export declare const ArithmeticTwapResponse: {
     typeUrl: string;
-    encode(message: ArithmeticTwapResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapResponse;
+    encode(message: ArithmeticTwapResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ArithmeticTwapResponse;
     fromPartial(object: Partial<ArithmeticTwapResponse>): ArithmeticTwapResponse;
     fromAmino(object: ArithmeticTwapResponseAmino): ArithmeticTwapResponse;
     toAmino(message: ArithmeticTwapResponse): ArithmeticTwapResponseAmino;
@@ -238,8 +237,8 @@ export declare const ArithmeticTwapResponse: {
 };
 export declare const ArithmeticTwapToNowRequest: {
     typeUrl: string;
-    encode(message: ArithmeticTwapToNowRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowRequest;
+    encode(message: ArithmeticTwapToNowRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ArithmeticTwapToNowRequest;
     fromPartial(object: Partial<ArithmeticTwapToNowRequest>): ArithmeticTwapToNowRequest;
     fromAmino(object: ArithmeticTwapToNowRequestAmino): ArithmeticTwapToNowRequest;
     toAmino(message: ArithmeticTwapToNowRequest): ArithmeticTwapToNowRequestAmino;
@@ -251,8 +250,8 @@ export declare const ArithmeticTwapToNowRequest: {
 };
 export declare const ArithmeticTwapToNowResponse: {
     typeUrl: string;
-    encode(message: ArithmeticTwapToNowResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowResponse;
+    encode(message: ArithmeticTwapToNowResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ArithmeticTwapToNowResponse;
     fromPartial(object: Partial<ArithmeticTwapToNowResponse>): ArithmeticTwapToNowResponse;
     fromAmino(object: ArithmeticTwapToNowResponseAmino): ArithmeticTwapToNowResponse;
     toAmino(message: ArithmeticTwapToNowResponse): ArithmeticTwapToNowResponseAmino;
@@ -264,8 +263,8 @@ export declare const ArithmeticTwapToNowResponse: {
 };
 export declare const GeometricTwapRequest: {
     typeUrl: string;
-    encode(message: GeometricTwapRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapRequest;
+    encode(message: GeometricTwapRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GeometricTwapRequest;
     fromPartial(object: Partial<GeometricTwapRequest>): GeometricTwapRequest;
     fromAmino(object: GeometricTwapRequestAmino): GeometricTwapRequest;
     toAmino(message: GeometricTwapRequest): GeometricTwapRequestAmino;
@@ -277,8 +276,8 @@ export declare const GeometricTwapRequest: {
 };
 export declare const GeometricTwapResponse: {
     typeUrl: string;
-    encode(message: GeometricTwapResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapResponse;
+    encode(message: GeometricTwapResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GeometricTwapResponse;
     fromPartial(object: Partial<GeometricTwapResponse>): GeometricTwapResponse;
     fromAmino(object: GeometricTwapResponseAmino): GeometricTwapResponse;
     toAmino(message: GeometricTwapResponse): GeometricTwapResponseAmino;
@@ -290,8 +289,8 @@ export declare const GeometricTwapResponse: {
 };
 export declare const GeometricTwapToNowRequest: {
     typeUrl: string;
-    encode(message: GeometricTwapToNowRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapToNowRequest;
+    encode(message: GeometricTwapToNowRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GeometricTwapToNowRequest;
     fromPartial(object: Partial<GeometricTwapToNowRequest>): GeometricTwapToNowRequest;
     fromAmino(object: GeometricTwapToNowRequestAmino): GeometricTwapToNowRequest;
     toAmino(message: GeometricTwapToNowRequest): GeometricTwapToNowRequestAmino;
@@ -303,8 +302,8 @@ export declare const GeometricTwapToNowRequest: {
 };
 export declare const GeometricTwapToNowResponse: {
     typeUrl: string;
-    encode(message: GeometricTwapToNowResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapToNowResponse;
+    encode(message: GeometricTwapToNowResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GeometricTwapToNowResponse;
     fromPartial(object: Partial<GeometricTwapToNowResponse>): GeometricTwapToNowResponse;
     fromAmino(object: GeometricTwapToNowResponseAmino): GeometricTwapToNowResponse;
     toAmino(message: GeometricTwapToNowResponse): GeometricTwapToNowResponseAmino;
@@ -316,8 +315,8 @@ export declare const GeometricTwapToNowResponse: {
 };
 export declare const ParamsRequest: {
     typeUrl: string;
-    encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
+    encode(_: ParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
     fromAmino(_: ParamsRequestAmino): ParamsRequest;
     toAmino(_: ParamsRequest): ParamsRequestAmino;
@@ -329,8 +328,8 @@ export declare const ParamsRequest: {
 };
 export declare const ParamsResponse: {
     typeUrl: string;
-    encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
+    encode(message: ParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;
     fromAmino(object: ParamsResponseAmino): ParamsResponse;
     toAmino(message: ParamsResponse): ParamsResponseAmino;

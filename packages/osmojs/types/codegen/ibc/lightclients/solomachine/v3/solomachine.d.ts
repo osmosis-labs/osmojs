@@ -1,16 +1,15 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * ClientState defines a solo machine client that tracks the current consensus
  * state and if the client is frozen.
  */
 export interface ClientState {
     /** latest sequence of the client state */
-    sequence: Long;
+    sequence: bigint;
     /** frozen sequence of the solo machine */
     isFrozen: boolean;
-    consensusState?: ConsensusState;
+    consensusState: ConsensusState;
 }
 export interface ClientStateProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v3.ClientState";
@@ -36,9 +35,9 @@ export interface ClientStateAminoMsg {
  * state and if the client is frozen.
  */
 export interface ClientStateSDKType {
-    sequence: Long;
+    sequence: bigint;
     is_frozen: boolean;
-    consensus_state?: ConsensusStateSDKType;
+    consensus_state: ConsensusStateSDKType;
 }
 /**
  * ConsensusState defines a solo machine consensus state. The sequence of a
@@ -47,14 +46,14 @@ export interface ClientStateSDKType {
  */
 export interface ConsensusState {
     /** public key of the solo machine */
-    publicKey?: Any;
+    publicKey: Any;
     /**
      * diversifier allows the same public key to be re-used across different solo
      * machine clients (potentially on different chains) without being considered
      * misbehaviour.
      */
     diversifier: string;
-    timestamp: Long;
+    timestamp: bigint;
 }
 export interface ConsensusStateProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v3.ConsensusState";
@@ -86,15 +85,15 @@ export interface ConsensusStateAminoMsg {
  * consensus state.
  */
 export interface ConsensusStateSDKType {
-    public_key?: AnySDKType;
+    public_key: AnySDKType;
     diversifier: string;
-    timestamp: Long;
+    timestamp: bigint;
 }
 /** Header defines a solo machine consensus header */
 export interface Header {
-    timestamp: Long;
+    timestamp: bigint;
     signature: Uint8Array;
-    newPublicKey?: Any;
+    newPublicKey: Any;
     newDiversifier: string;
 }
 export interface HeaderProtoMsg {
@@ -114,9 +113,9 @@ export interface HeaderAminoMsg {
 }
 /** Header defines a solo machine consensus header */
 export interface HeaderSDKType {
-    timestamp: Long;
+    timestamp: bigint;
     signature: Uint8Array;
-    new_public_key?: AnySDKType;
+    new_public_key: AnySDKType;
     new_diversifier: string;
 }
 /**
@@ -124,9 +123,9 @@ export interface HeaderSDKType {
  * of a sequence and two signatures over different messages at that sequence.
  */
 export interface Misbehaviour {
-    sequence: Long;
-    signatureOne?: SignatureAndData;
-    signatureTwo?: SignatureAndData;
+    sequence: bigint;
+    signatureOne: SignatureAndData;
+    signatureTwo: SignatureAndData;
 }
 export interface MisbehaviourProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v3.Misbehaviour";
@@ -150,9 +149,9 @@ export interface MisbehaviourAminoMsg {
  * of a sequence and two signatures over different messages at that sequence.
  */
 export interface MisbehaviourSDKType {
-    sequence: Long;
-    signature_one?: SignatureAndDataSDKType;
-    signature_two?: SignatureAndDataSDKType;
+    sequence: bigint;
+    signature_one: SignatureAndDataSDKType;
+    signature_two: SignatureAndDataSDKType;
 }
 /**
  * SignatureAndData contains a signature and the data signed over to create that
@@ -162,7 +161,7 @@ export interface SignatureAndData {
     signature: Uint8Array;
     path: Uint8Array;
     data: Uint8Array;
-    timestamp: Long;
+    timestamp: bigint;
 }
 export interface SignatureAndDataProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v3.SignatureAndData";
@@ -190,7 +189,7 @@ export interface SignatureAndDataSDKType {
     signature: Uint8Array;
     path: Uint8Array;
     data: Uint8Array;
-    timestamp: Long;
+    timestamp: bigint;
 }
 /**
  * TimestampedSignatureData contains the signature data and the timestamp of the
@@ -198,7 +197,7 @@ export interface SignatureAndDataSDKType {
  */
 export interface TimestampedSignatureData {
     signatureData: Uint8Array;
-    timestamp: Long;
+    timestamp: bigint;
 }
 export interface TimestampedSignatureDataProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v3.TimestampedSignatureData";
@@ -222,14 +221,14 @@ export interface TimestampedSignatureDataAminoMsg {
  */
 export interface TimestampedSignatureDataSDKType {
     signature_data: Uint8Array;
-    timestamp: Long;
+    timestamp: bigint;
 }
 /** SignBytes defines the signed bytes used for signature verification. */
 export interface SignBytes {
     /** the sequence number */
-    sequence: Long;
+    sequence: bigint;
     /** the proof timestamp */
-    timestamp: Long;
+    timestamp: bigint;
     /** the public key diversifier */
     diversifier: string;
     /** the standardised path bytes */
@@ -260,8 +259,8 @@ export interface SignBytesAminoMsg {
 }
 /** SignBytes defines the signed bytes used for signature verification. */
 export interface SignBytesSDKType {
-    sequence: Long;
-    timestamp: Long;
+    sequence: bigint;
+    timestamp: bigint;
     diversifier: string;
     path: Uint8Array;
     data: Uint8Array;
@@ -269,7 +268,7 @@ export interface SignBytesSDKType {
 /** HeaderData returns the SignBytes data for update verification. */
 export interface HeaderData {
     /** header public key */
-    newPubKey?: Any;
+    newPubKey: Any;
     /** header diversifier */
     newDiversifier: string;
 }
@@ -290,13 +289,13 @@ export interface HeaderDataAminoMsg {
 }
 /** HeaderData returns the SignBytes data for update verification. */
 export interface HeaderDataSDKType {
-    new_pub_key?: AnySDKType;
+    new_pub_key: AnySDKType;
     new_diversifier: string;
 }
 export declare const ClientState: {
     typeUrl: string;
-    encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ClientState;
+    encode(message: ClientState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ClientState;
     fromPartial(object: Partial<ClientState>): ClientState;
     fromAmino(object: ClientStateAmino): ClientState;
     toAmino(message: ClientState): ClientStateAmino;
@@ -308,8 +307,8 @@ export declare const ClientState: {
 };
 export declare const ConsensusState: {
     typeUrl: string;
-    encode(message: ConsensusState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusState;
+    encode(message: ConsensusState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ConsensusState;
     fromPartial(object: Partial<ConsensusState>): ConsensusState;
     fromAmino(object: ConsensusStateAmino): ConsensusState;
     toAmino(message: ConsensusState): ConsensusStateAmino;
@@ -321,8 +320,8 @@ export declare const ConsensusState: {
 };
 export declare const Header: {
     typeUrl: string;
-    encode(message: Header, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Header;
+    encode(message: Header, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Header;
     fromPartial(object: Partial<Header>): Header;
     fromAmino(object: HeaderAmino): Header;
     toAmino(message: Header): HeaderAmino;
@@ -334,8 +333,8 @@ export declare const Header: {
 };
 export declare const Misbehaviour: {
     typeUrl: string;
-    encode(message: Misbehaviour, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Misbehaviour;
+    encode(message: Misbehaviour, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Misbehaviour;
     fromPartial(object: Partial<Misbehaviour>): Misbehaviour;
     fromAmino(object: MisbehaviourAmino): Misbehaviour;
     toAmino(message: Misbehaviour): MisbehaviourAmino;
@@ -347,8 +346,8 @@ export declare const Misbehaviour: {
 };
 export declare const SignatureAndData: {
     typeUrl: string;
-    encode(message: SignatureAndData, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignatureAndData;
+    encode(message: SignatureAndData, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignatureAndData;
     fromPartial(object: Partial<SignatureAndData>): SignatureAndData;
     fromAmino(object: SignatureAndDataAmino): SignatureAndData;
     toAmino(message: SignatureAndData): SignatureAndDataAmino;
@@ -360,8 +359,8 @@ export declare const SignatureAndData: {
 };
 export declare const TimestampedSignatureData: {
     typeUrl: string;
-    encode(message: TimestampedSignatureData, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TimestampedSignatureData;
+    encode(message: TimestampedSignatureData, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TimestampedSignatureData;
     fromPartial(object: Partial<TimestampedSignatureData>): TimestampedSignatureData;
     fromAmino(object: TimestampedSignatureDataAmino): TimestampedSignatureData;
     toAmino(message: TimestampedSignatureData): TimestampedSignatureDataAmino;
@@ -373,8 +372,8 @@ export declare const TimestampedSignatureData: {
 };
 export declare const SignBytes: {
     typeUrl: string;
-    encode(message: SignBytes, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SignBytes;
+    encode(message: SignBytes, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SignBytes;
     fromPartial(object: Partial<SignBytes>): SignBytes;
     fromAmino(object: SignBytesAmino): SignBytes;
     toAmino(message: SignBytes): SignBytesAmino;
@@ -386,8 +385,8 @@ export declare const SignBytes: {
 };
 export declare const HeaderData: {
     typeUrl: string;
-    encode(message: HeaderData, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): HeaderData;
+    encode(message: HeaderData, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): HeaderData;
     fromPartial(object: Partial<HeaderData>): HeaderData;
     fromAmino(object: HeaderDataAmino): HeaderData;
     toAmino(message: HeaderData): HeaderDataAmino;

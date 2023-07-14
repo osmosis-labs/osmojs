@@ -1,14 +1,13 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventAmino, EventSDKType } from "../../../../tendermint/abci/types";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
  * tags are stringified and the log is JSON decoded.
  */
 export interface TxResponse {
     /** The block height */
-    height: Long;
+    height: bigint;
     /** The transaction hash. */
     txhash: string;
     /** Namespace for the Code */
@@ -27,11 +26,11 @@ export interface TxResponse {
     /** Additional information. May be non-deterministic. */
     info: string;
     /** Amount of gas requested for transaction. */
-    gasWanted: Long;
+    gasWanted: bigint;
     /** Amount of gas consumed by transaction. */
-    gasUsed: Long;
+    gasUsed: bigint;
     /** The request transaction bytes. */
-    tx?: Any;
+    tx: Any;
     /**
      * Time of the previous block. For heights > 1, it's the weighted median of
      * the timestamps of the valid votes in the block.LastCommit. For height == 1,
@@ -107,7 +106,7 @@ export interface TxResponseAminoMsg {
  * tags are stringified and the log is JSON decoded.
  */
 export interface TxResponseSDKType {
-    height: Long;
+    height: bigint;
     txhash: string;
     codespace: string;
     code: number;
@@ -115,9 +114,9 @@ export interface TxResponseSDKType {
     raw_log: string;
     logs: ABCIMessageLogSDKType[];
     info: string;
-    gas_wanted: Long;
-    gas_used: Long;
-    tx?: AnySDKType;
+    gas_wanted: bigint;
+    gas_used: bigint;
+    tx: AnySDKType;
     timestamp: string;
     events: EventSDKType[];
 }
@@ -222,9 +221,9 @@ export interface AttributeSDKType {
 /** GasInfo defines tx execution gas context. */
 export interface GasInfo {
     /** GasWanted is the maximum units of work we allow this tx to perform. */
-    gasWanted: Long;
+    gasWanted: bigint;
     /** GasUsed is the amount of gas actually consumed. */
-    gasUsed: Long;
+    gasUsed: bigint;
 }
 export interface GasInfoProtoMsg {
     typeUrl: "/cosmos.base.abci.v1beta1.GasInfo";
@@ -243,8 +242,8 @@ export interface GasInfoAminoMsg {
 }
 /** GasInfo defines tx execution gas context. */
 export interface GasInfoSDKType {
-    gas_wanted: Long;
-    gas_used: Long;
+    gas_wanted: bigint;
+    gas_used: bigint;
 }
 /** Result is the union of ResponseFormat and ResponseCheckTx. */
 export interface Result {
@@ -295,8 +294,8 @@ export interface ResultSDKType {
  * successfully simulated.
  */
 export interface SimulationResponse {
-    gasInfo?: GasInfo;
-    result?: Result;
+    gasInfo: GasInfo;
+    result: Result;
 }
 export interface SimulationResponseProtoMsg {
     typeUrl: "/cosmos.base.abci.v1beta1.SimulationResponse";
@@ -319,8 +318,8 @@ export interface SimulationResponseAminoMsg {
  * successfully simulated.
  */
 export interface SimulationResponseSDKType {
-    gas_info?: GasInfoSDKType;
-    result?: ResultSDKType;
+    gas_info: GasInfoSDKType;
+    result: ResultSDKType;
 }
 /**
  * MsgData defines the data returned in a Result object during message
@@ -386,15 +385,15 @@ export interface TxMsgDataSDKType {
 /** SearchTxsResult defines a structure for querying txs pageable */
 export interface SearchTxsResult {
     /** Count of all txs */
-    totalCount: Long;
+    totalCount: bigint;
     /** Count of txs in current page */
-    count: Long;
+    count: bigint;
     /** Index of current page, start from 1 */
-    pageNumber: Long;
+    pageNumber: bigint;
     /** Count of total pages */
-    pageTotal: Long;
+    pageTotal: bigint;
     /** Max count txs per page */
-    limit: Long;
+    limit: bigint;
     /** List of txs in current page */
     txs: TxResponse[];
 }
@@ -423,17 +422,17 @@ export interface SearchTxsResultAminoMsg {
 }
 /** SearchTxsResult defines a structure for querying txs pageable */
 export interface SearchTxsResultSDKType {
-    total_count: Long;
-    count: Long;
-    page_number: Long;
-    page_total: Long;
-    limit: Long;
+    total_count: bigint;
+    count: bigint;
+    page_number: bigint;
+    page_total: bigint;
+    limit: bigint;
     txs: TxResponseSDKType[];
 }
 export declare const TxResponse: {
     typeUrl: string;
-    encode(message: TxResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TxResponse;
+    encode(message: TxResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TxResponse;
     fromPartial(object: Partial<TxResponse>): TxResponse;
     fromAmino(object: TxResponseAmino): TxResponse;
     toAmino(message: TxResponse): TxResponseAmino;
@@ -445,8 +444,8 @@ export declare const TxResponse: {
 };
 export declare const ABCIMessageLog: {
     typeUrl: string;
-    encode(message: ABCIMessageLog, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ABCIMessageLog;
+    encode(message: ABCIMessageLog, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ABCIMessageLog;
     fromPartial(object: Partial<ABCIMessageLog>): ABCIMessageLog;
     fromAmino(object: ABCIMessageLogAmino): ABCIMessageLog;
     toAmino(message: ABCIMessageLog): ABCIMessageLogAmino;
@@ -458,8 +457,8 @@ export declare const ABCIMessageLog: {
 };
 export declare const StringEvent: {
     typeUrl: string;
-    encode(message: StringEvent, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): StringEvent;
+    encode(message: StringEvent, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): StringEvent;
     fromPartial(object: Partial<StringEvent>): StringEvent;
     fromAmino(object: StringEventAmino): StringEvent;
     toAmino(message: StringEvent): StringEventAmino;
@@ -471,8 +470,8 @@ export declare const StringEvent: {
 };
 export declare const Attribute: {
     typeUrl: string;
-    encode(message: Attribute, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Attribute;
+    encode(message: Attribute, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Attribute;
     fromPartial(object: Partial<Attribute>): Attribute;
     fromAmino(object: AttributeAmino): Attribute;
     toAmino(message: Attribute): AttributeAmino;
@@ -484,8 +483,8 @@ export declare const Attribute: {
 };
 export declare const GasInfo: {
     typeUrl: string;
-    encode(message: GasInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GasInfo;
+    encode(message: GasInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GasInfo;
     fromPartial(object: Partial<GasInfo>): GasInfo;
     fromAmino(object: GasInfoAmino): GasInfo;
     toAmino(message: GasInfo): GasInfoAmino;
@@ -497,8 +496,8 @@ export declare const GasInfo: {
 };
 export declare const Result: {
     typeUrl: string;
-    encode(message: Result, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Result;
+    encode(message: Result, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Result;
     fromPartial(object: Partial<Result>): Result;
     fromAmino(object: ResultAmino): Result;
     toAmino(message: Result): ResultAmino;
@@ -510,8 +509,8 @@ export declare const Result: {
 };
 export declare const SimulationResponse: {
     typeUrl: string;
-    encode(message: SimulationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SimulationResponse;
+    encode(message: SimulationResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SimulationResponse;
     fromPartial(object: Partial<SimulationResponse>): SimulationResponse;
     fromAmino(object: SimulationResponseAmino): SimulationResponse;
     toAmino(message: SimulationResponse): SimulationResponseAmino;
@@ -523,8 +522,8 @@ export declare const SimulationResponse: {
 };
 export declare const MsgData: {
     typeUrl: string;
-    encode(message: MsgData, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgData;
+    encode(message: MsgData, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgData;
     fromPartial(object: Partial<MsgData>): MsgData;
     fromAmino(object: MsgDataAmino): MsgData;
     toAmino(message: MsgData): MsgDataAmino;
@@ -536,8 +535,8 @@ export declare const MsgData: {
 };
 export declare const TxMsgData: {
     typeUrl: string;
-    encode(message: TxMsgData, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TxMsgData;
+    encode(message: TxMsgData, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TxMsgData;
     fromPartial(object: Partial<TxMsgData>): TxMsgData;
     fromAmino(object: TxMsgDataAmino): TxMsgData;
     toAmino(message: TxMsgData): TxMsgDataAmino;
@@ -549,8 +548,8 @@ export declare const TxMsgData: {
 };
 export declare const SearchTxsResult: {
     typeUrl: string;
-    encode(message: SearchTxsResult, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SearchTxsResult;
+    encode(message: SearchTxsResult, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SearchTxsResult;
     fromPartial(object: Partial<SearchTxsResult>): SearchTxsResult;
     fromAmino(object: SearchTxsResultAmino): SearchTxsResult;
     toAmino(message: SearchTxsResult): SearchTxsResultAmino;

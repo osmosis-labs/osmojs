@@ -1,6 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Input, InputAmino, InputSDKType, Output, OutputAmino, OutputSDKType } from "./bank";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgSend represents a message to send coins from one account to another. */
 export interface MsgSend {
     fromAddress: string;
@@ -86,8 +86,8 @@ export interface MsgMultiSendResponseSDKType {
 }
 export declare const MsgSend: {
     typeUrl: string;
-    encode(message: MsgSend, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSend;
+    encode(message: MsgSend, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSend;
     fromPartial(object: Partial<MsgSend>): MsgSend;
     fromAmino(object: MsgSendAmino): MsgSend;
     toAmino(message: MsgSend): MsgSendAmino;
@@ -99,8 +99,8 @@ export declare const MsgSend: {
 };
 export declare const MsgSendResponse: {
     typeUrl: string;
-    encode(_: MsgSendResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponse;
+    encode(_: MsgSendResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgSendResponse;
     fromPartial(_: Partial<MsgSendResponse>): MsgSendResponse;
     fromAmino(_: MsgSendResponseAmino): MsgSendResponse;
     toAmino(_: MsgSendResponse): MsgSendResponseAmino;
@@ -112,8 +112,8 @@ export declare const MsgSendResponse: {
 };
 export declare const MsgMultiSend: {
     typeUrl: string;
-    encode(message: MsgMultiSend, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSend;
+    encode(message: MsgMultiSend, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgMultiSend;
     fromPartial(object: Partial<MsgMultiSend>): MsgMultiSend;
     fromAmino(object: MsgMultiSendAmino): MsgMultiSend;
     toAmino(message: MsgMultiSend): MsgMultiSendAmino;
@@ -125,8 +125,8 @@ export declare const MsgMultiSend: {
 };
 export declare const MsgMultiSendResponse: {
     typeUrl: string;
-    encode(_: MsgMultiSendResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSendResponse;
+    encode(_: MsgMultiSendResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgMultiSendResponse;
     fromPartial(_: Partial<MsgMultiSendResponse>): MsgMultiSendResponse;
     fromAmino(_: MsgMultiSendResponseAmino): MsgMultiSendResponse;
     toAmino(_: MsgMultiSendResponse): MsgMultiSendResponseAmino;

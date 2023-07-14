@@ -1,13 +1,12 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Validator, ValidatorAmino, ValidatorSDKType, DelegationResponse, DelegationResponseAmino, DelegationResponseSDKType, UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, RedelegationResponse, RedelegationResponseAmino, RedelegationResponseSDKType, HistoricalInfo, HistoricalInfoAmino, HistoricalInfoSDKType, Pool, PoolAmino, PoolSDKType, Params, ParamsAmino, ParamsSDKType } from "./staking";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** QueryValidatorsRequest is request type for Query/Validators RPC method. */
 export interface QueryValidatorsRequest {
     /** status enables to query for validators matching a given status. */
     status: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryValidatorsRequestProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorsRequest";
@@ -27,14 +26,14 @@ export interface QueryValidatorsRequestAminoMsg {
 /** QueryValidatorsRequest is request type for Query/Validators RPC method. */
 export interface QueryValidatorsRequestSDKType {
     status: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /** QueryValidatorsResponse is response type for the Query/Validators RPC method */
 export interface QueryValidatorsResponse {
     /** validators contains all the queried validators. */
     validators: Validator[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryValidatorsResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorsResponse";
@@ -54,7 +53,7 @@ export interface QueryValidatorsResponseAminoMsg {
 /** QueryValidatorsResponse is response type for the Query/Validators RPC method */
 export interface QueryValidatorsResponseSDKType {
     validators: ValidatorSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** QueryValidatorRequest is response type for the Query/Validator RPC method */
 export interface QueryValidatorRequest {
@@ -81,7 +80,7 @@ export interface QueryValidatorRequestSDKType {
 /** QueryValidatorResponse is response type for the Query/Validator RPC method */
 export interface QueryValidatorResponse {
     /** validator defines the the validator info. */
-    validator?: Validator;
+    validator: Validator;
 }
 export interface QueryValidatorResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorResponse";
@@ -98,7 +97,7 @@ export interface QueryValidatorResponseAminoMsg {
 }
 /** QueryValidatorResponse is response type for the Query/Validator RPC method */
 export interface QueryValidatorResponseSDKType {
-    validator?: ValidatorSDKType;
+    validator: ValidatorSDKType;
 }
 /**
  * QueryValidatorDelegationsRequest is request type for the
@@ -108,7 +107,7 @@ export interface QueryValidatorDelegationsRequest {
     /** validator_addr defines the validator address to query for. */
     validatorAddr: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryValidatorDelegationsRequestProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorDelegationsRequest";
@@ -134,7 +133,7 @@ export interface QueryValidatorDelegationsRequestAminoMsg {
  */
 export interface QueryValidatorDelegationsRequestSDKType {
     validator_addr: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryValidatorDelegationsResponse is response type for the
@@ -143,7 +142,7 @@ export interface QueryValidatorDelegationsRequestSDKType {
 export interface QueryValidatorDelegationsResponse {
     delegationResponses: DelegationResponse[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryValidatorDelegationsResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorDelegationsResponse";
@@ -168,7 +167,7 @@ export interface QueryValidatorDelegationsResponseAminoMsg {
  */
 export interface QueryValidatorDelegationsResponseSDKType {
     delegation_responses: DelegationResponseSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryValidatorUnbondingDelegationsRequest is required type for the
@@ -178,7 +177,7 @@ export interface QueryValidatorUnbondingDelegationsRequest {
     /** validator_addr defines the validator address to query for. */
     validatorAddr: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryValidatorUnbondingDelegationsRequestProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsRequest";
@@ -204,7 +203,7 @@ export interface QueryValidatorUnbondingDelegationsRequestAminoMsg {
  */
 export interface QueryValidatorUnbondingDelegationsRequestSDKType {
     validator_addr: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryValidatorUnbondingDelegationsResponse is response type for the
@@ -213,7 +212,7 @@ export interface QueryValidatorUnbondingDelegationsRequestSDKType {
 export interface QueryValidatorUnbondingDelegationsResponse {
     unbondingResponses: UnbondingDelegation[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryValidatorUnbondingDelegationsResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsResponse";
@@ -238,7 +237,7 @@ export interface QueryValidatorUnbondingDelegationsResponseAminoMsg {
  */
 export interface QueryValidatorUnbondingDelegationsResponseSDKType {
     unbonding_responses: UnbondingDelegationSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /** QueryDelegationRequest is request type for the Query/Delegation RPC method. */
 export interface QueryDelegationRequest {
@@ -270,7 +269,7 @@ export interface QueryDelegationRequestSDKType {
 /** QueryDelegationResponse is response type for the Query/Delegation RPC method. */
 export interface QueryDelegationResponse {
     /** delegation_responses defines the delegation info of a delegation. */
-    delegationResponse?: DelegationResponse;
+    delegationResponse: DelegationResponse;
 }
 export interface QueryDelegationResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegationResponse";
@@ -287,7 +286,7 @@ export interface QueryDelegationResponseAminoMsg {
 }
 /** QueryDelegationResponse is response type for the Query/Delegation RPC method. */
 export interface QueryDelegationResponseSDKType {
-    delegation_response?: DelegationResponseSDKType;
+    delegation_response: DelegationResponseSDKType;
 }
 /**
  * QueryUnbondingDelegationRequest is request type for the
@@ -331,7 +330,7 @@ export interface QueryUnbondingDelegationRequestSDKType {
  */
 export interface QueryUnbondingDelegationResponse {
     /** unbond defines the unbonding information of a delegation. */
-    unbond?: UnbondingDelegation;
+    unbond: UnbondingDelegation;
 }
 export interface QueryUnbondingDelegationResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryUnbondingDelegationResponse";
@@ -354,7 +353,7 @@ export interface QueryUnbondingDelegationResponseAminoMsg {
  * RPC method.
  */
 export interface QueryUnbondingDelegationResponseSDKType {
-    unbond?: UnbondingDelegationSDKType;
+    unbond: UnbondingDelegationSDKType;
 }
 /**
  * QueryDelegatorDelegationsRequest is request type for the
@@ -364,7 +363,7 @@ export interface QueryDelegatorDelegationsRequest {
     /** delegator_addr defines the delegator address to query for. */
     delegatorAddr: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryDelegatorDelegationsRequestProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorDelegationsRequest";
@@ -390,7 +389,7 @@ export interface QueryDelegatorDelegationsRequestAminoMsg {
  */
 export interface QueryDelegatorDelegationsRequestSDKType {
     delegator_addr: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryDelegatorDelegationsResponse is response type for the
@@ -400,7 +399,7 @@ export interface QueryDelegatorDelegationsResponse {
     /** delegation_responses defines all the delegations' info of a delegator. */
     delegationResponses: DelegationResponse[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryDelegatorDelegationsResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorDelegationsResponse";
@@ -426,7 +425,7 @@ export interface QueryDelegatorDelegationsResponseAminoMsg {
  */
 export interface QueryDelegatorDelegationsResponseSDKType {
     delegation_responses: DelegationResponseSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryDelegatorUnbondingDelegationsRequest is request type for the
@@ -436,7 +435,7 @@ export interface QueryDelegatorUnbondingDelegationsRequest {
     /** delegator_addr defines the delegator address to query for. */
     delegatorAddr: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryDelegatorUnbondingDelegationsRequestProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsRequest";
@@ -462,7 +461,7 @@ export interface QueryDelegatorUnbondingDelegationsRequestAminoMsg {
  */
 export interface QueryDelegatorUnbondingDelegationsRequestSDKType {
     delegator_addr: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryUnbondingDelegatorDelegationsResponse is response type for the
@@ -471,7 +470,7 @@ export interface QueryDelegatorUnbondingDelegationsRequestSDKType {
 export interface QueryDelegatorUnbondingDelegationsResponse {
     unbondingResponses: UnbondingDelegation[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryDelegatorUnbondingDelegationsResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsResponse";
@@ -496,7 +495,7 @@ export interface QueryDelegatorUnbondingDelegationsResponseAminoMsg {
  */
 export interface QueryDelegatorUnbondingDelegationsResponseSDKType {
     unbonding_responses: UnbondingDelegationSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryRedelegationsRequest is request type for the Query/Redelegations RPC
@@ -510,7 +509,7 @@ export interface QueryRedelegationsRequest {
     /** dst_validator_addr defines the validator address to redelegate to. */
     dstValidatorAddr: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryRedelegationsRequestProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryRedelegationsRequest";
@@ -542,7 +541,7 @@ export interface QueryRedelegationsRequestSDKType {
     delegator_addr: string;
     src_validator_addr: string;
     dst_validator_addr: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryRedelegationsResponse is response type for the Query/Redelegations RPC
@@ -551,7 +550,7 @@ export interface QueryRedelegationsRequestSDKType {
 export interface QueryRedelegationsResponse {
     redelegationResponses: RedelegationResponse[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryRedelegationsResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryRedelegationsResponse";
@@ -576,7 +575,7 @@ export interface QueryRedelegationsResponseAminoMsg {
  */
 export interface QueryRedelegationsResponseSDKType {
     redelegation_responses: RedelegationResponseSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryDelegatorValidatorsRequest is request type for the
@@ -586,7 +585,7 @@ export interface QueryDelegatorValidatorsRequest {
     /** delegator_addr defines the delegator address to query for. */
     delegatorAddr: string;
     /** pagination defines an optional pagination for the request. */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryDelegatorValidatorsRequestProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorsRequest";
@@ -612,7 +611,7 @@ export interface QueryDelegatorValidatorsRequestAminoMsg {
  */
 export interface QueryDelegatorValidatorsRequestSDKType {
     delegator_addr: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryDelegatorValidatorsResponse is response type for the
@@ -622,7 +621,7 @@ export interface QueryDelegatorValidatorsResponse {
     /** validators defines the the validators' info of a delegator. */
     validators: Validator[];
     /** pagination defines the pagination in the response. */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryDelegatorValidatorsResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorsResponse";
@@ -648,7 +647,7 @@ export interface QueryDelegatorValidatorsResponseAminoMsg {
  */
 export interface QueryDelegatorValidatorsResponseSDKType {
     validators: ValidatorSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryDelegatorValidatorRequest is request type for the
@@ -692,7 +691,7 @@ export interface QueryDelegatorValidatorRequestSDKType {
  */
 export interface QueryDelegatorValidatorResponse {
     /** validator defines the the validator info. */
-    validator?: Validator;
+    validator: Validator;
 }
 export interface QueryDelegatorValidatorResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorResponse";
@@ -715,7 +714,7 @@ export interface QueryDelegatorValidatorResponseAminoMsg {
  * Query/DelegatorValidator RPC method.
  */
 export interface QueryDelegatorValidatorResponseSDKType {
-    validator?: ValidatorSDKType;
+    validator: ValidatorSDKType;
 }
 /**
  * QueryHistoricalInfoRequest is request type for the Query/HistoricalInfo RPC
@@ -723,7 +722,7 @@ export interface QueryDelegatorValidatorResponseSDKType {
  */
 export interface QueryHistoricalInfoRequest {
     /** height defines at which height to query the historical info. */
-    height: Long;
+    height: bigint;
 }
 export interface QueryHistoricalInfoRequestProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryHistoricalInfoRequest";
@@ -746,7 +745,7 @@ export interface QueryHistoricalInfoRequestAminoMsg {
  * method.
  */
 export interface QueryHistoricalInfoRequestSDKType {
-    height: Long;
+    height: bigint;
 }
 /**
  * QueryHistoricalInfoResponse is response type for the Query/HistoricalInfo RPC
@@ -754,7 +753,7 @@ export interface QueryHistoricalInfoRequestSDKType {
  */
 export interface QueryHistoricalInfoResponse {
     /** hist defines the historical info at the given height. */
-    hist?: HistoricalInfo;
+    hist: HistoricalInfo;
 }
 export interface QueryHistoricalInfoResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryHistoricalInfoResponse";
@@ -777,7 +776,7 @@ export interface QueryHistoricalInfoResponseAminoMsg {
  * method.
  */
 export interface QueryHistoricalInfoResponseSDKType {
-    hist?: HistoricalInfoSDKType;
+    hist: HistoricalInfoSDKType;
 }
 /** QueryPoolRequest is request type for the Query/Pool RPC method. */
 export interface QueryPoolRequest {
@@ -799,7 +798,7 @@ export interface QueryPoolRequestSDKType {
 /** QueryPoolResponse is response type for the Query/Pool RPC method. */
 export interface QueryPoolResponse {
     /** pool defines the pool info. */
-    pool?: Pool;
+    pool: Pool;
 }
 export interface QueryPoolResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryPoolResponse";
@@ -816,7 +815,7 @@ export interface QueryPoolResponseAminoMsg {
 }
 /** QueryPoolResponse is response type for the Query/Pool RPC method. */
 export interface QueryPoolResponseSDKType {
-    pool?: PoolSDKType;
+    pool: PoolSDKType;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
@@ -838,7 +837,7 @@ export interface QueryParamsRequestSDKType {
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** params holds all the parameters of this module. */
-    params?: Params;
+    params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.QueryParamsResponse";
@@ -855,12 +854,12 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 export declare const QueryValidatorsRequest: {
     typeUrl: string;
-    encode(message: QueryValidatorsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorsRequest;
+    encode(message: QueryValidatorsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorsRequest;
     fromPartial(object: Partial<QueryValidatorsRequest>): QueryValidatorsRequest;
     fromAmino(object: QueryValidatorsRequestAmino): QueryValidatorsRequest;
     toAmino(message: QueryValidatorsRequest): QueryValidatorsRequestAmino;
@@ -872,8 +871,8 @@ export declare const QueryValidatorsRequest: {
 };
 export declare const QueryValidatorsResponse: {
     typeUrl: string;
-    encode(message: QueryValidatorsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorsResponse;
+    encode(message: QueryValidatorsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorsResponse;
     fromPartial(object: Partial<QueryValidatorsResponse>): QueryValidatorsResponse;
     fromAmino(object: QueryValidatorsResponseAmino): QueryValidatorsResponse;
     toAmino(message: QueryValidatorsResponse): QueryValidatorsResponseAmino;
@@ -885,8 +884,8 @@ export declare const QueryValidatorsResponse: {
 };
 export declare const QueryValidatorRequest: {
     typeUrl: string;
-    encode(message: QueryValidatorRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorRequest;
+    encode(message: QueryValidatorRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorRequest;
     fromPartial(object: Partial<QueryValidatorRequest>): QueryValidatorRequest;
     fromAmino(object: QueryValidatorRequestAmino): QueryValidatorRequest;
     toAmino(message: QueryValidatorRequest): QueryValidatorRequestAmino;
@@ -898,8 +897,8 @@ export declare const QueryValidatorRequest: {
 };
 export declare const QueryValidatorResponse: {
     typeUrl: string;
-    encode(message: QueryValidatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorResponse;
+    encode(message: QueryValidatorResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorResponse;
     fromPartial(object: Partial<QueryValidatorResponse>): QueryValidatorResponse;
     fromAmino(object: QueryValidatorResponseAmino): QueryValidatorResponse;
     toAmino(message: QueryValidatorResponse): QueryValidatorResponseAmino;
@@ -911,8 +910,8 @@ export declare const QueryValidatorResponse: {
 };
 export declare const QueryValidatorDelegationsRequest: {
     typeUrl: string;
-    encode(message: QueryValidatorDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorDelegationsRequest;
+    encode(message: QueryValidatorDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDelegationsRequest;
     fromPartial(object: Partial<QueryValidatorDelegationsRequest>): QueryValidatorDelegationsRequest;
     fromAmino(object: QueryValidatorDelegationsRequestAmino): QueryValidatorDelegationsRequest;
     toAmino(message: QueryValidatorDelegationsRequest): QueryValidatorDelegationsRequestAmino;
@@ -924,8 +923,8 @@ export declare const QueryValidatorDelegationsRequest: {
 };
 export declare const QueryValidatorDelegationsResponse: {
     typeUrl: string;
-    encode(message: QueryValidatorDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorDelegationsResponse;
+    encode(message: QueryValidatorDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDelegationsResponse;
     fromPartial(object: Partial<QueryValidatorDelegationsResponse>): QueryValidatorDelegationsResponse;
     fromAmino(object: QueryValidatorDelegationsResponseAmino): QueryValidatorDelegationsResponse;
     toAmino(message: QueryValidatorDelegationsResponse): QueryValidatorDelegationsResponseAmino;
@@ -937,8 +936,8 @@ export declare const QueryValidatorDelegationsResponse: {
 };
 export declare const QueryValidatorUnbondingDelegationsRequest: {
     typeUrl: string;
-    encode(message: QueryValidatorUnbondingDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsRequest;
+    encode(message: QueryValidatorUnbondingDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsRequest;
     fromPartial(object: Partial<QueryValidatorUnbondingDelegationsRequest>): QueryValidatorUnbondingDelegationsRequest;
     fromAmino(object: QueryValidatorUnbondingDelegationsRequestAmino): QueryValidatorUnbondingDelegationsRequest;
     toAmino(message: QueryValidatorUnbondingDelegationsRequest): QueryValidatorUnbondingDelegationsRequestAmino;
@@ -950,8 +949,8 @@ export declare const QueryValidatorUnbondingDelegationsRequest: {
 };
 export declare const QueryValidatorUnbondingDelegationsResponse: {
     typeUrl: string;
-    encode(message: QueryValidatorUnbondingDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsResponse;
+    encode(message: QueryValidatorUnbondingDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsResponse;
     fromPartial(object: Partial<QueryValidatorUnbondingDelegationsResponse>): QueryValidatorUnbondingDelegationsResponse;
     fromAmino(object: QueryValidatorUnbondingDelegationsResponseAmino): QueryValidatorUnbondingDelegationsResponse;
     toAmino(message: QueryValidatorUnbondingDelegationsResponse): QueryValidatorUnbondingDelegationsResponseAmino;
@@ -963,8 +962,8 @@ export declare const QueryValidatorUnbondingDelegationsResponse: {
 };
 export declare const QueryDelegationRequest: {
     typeUrl: string;
-    encode(message: QueryDelegationRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationRequest;
+    encode(message: QueryDelegationRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegationRequest;
     fromPartial(object: Partial<QueryDelegationRequest>): QueryDelegationRequest;
     fromAmino(object: QueryDelegationRequestAmino): QueryDelegationRequest;
     toAmino(message: QueryDelegationRequest): QueryDelegationRequestAmino;
@@ -976,8 +975,8 @@ export declare const QueryDelegationRequest: {
 };
 export declare const QueryDelegationResponse: {
     typeUrl: string;
-    encode(message: QueryDelegationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegationResponse;
+    encode(message: QueryDelegationResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegationResponse;
     fromPartial(object: Partial<QueryDelegationResponse>): QueryDelegationResponse;
     fromAmino(object: QueryDelegationResponseAmino): QueryDelegationResponse;
     toAmino(message: QueryDelegationResponse): QueryDelegationResponseAmino;
@@ -989,8 +988,8 @@ export declare const QueryDelegationResponse: {
 };
 export declare const QueryUnbondingDelegationRequest: {
     typeUrl: string;
-    encode(message: QueryUnbondingDelegationRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnbondingDelegationRequest;
+    encode(message: QueryUnbondingDelegationRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUnbondingDelegationRequest;
     fromPartial(object: Partial<QueryUnbondingDelegationRequest>): QueryUnbondingDelegationRequest;
     fromAmino(object: QueryUnbondingDelegationRequestAmino): QueryUnbondingDelegationRequest;
     toAmino(message: QueryUnbondingDelegationRequest): QueryUnbondingDelegationRequestAmino;
@@ -1002,8 +1001,8 @@ export declare const QueryUnbondingDelegationRequest: {
 };
 export declare const QueryUnbondingDelegationResponse: {
     typeUrl: string;
-    encode(message: QueryUnbondingDelegationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnbondingDelegationResponse;
+    encode(message: QueryUnbondingDelegationResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUnbondingDelegationResponse;
     fromPartial(object: Partial<QueryUnbondingDelegationResponse>): QueryUnbondingDelegationResponse;
     fromAmino(object: QueryUnbondingDelegationResponseAmino): QueryUnbondingDelegationResponse;
     toAmino(message: QueryUnbondingDelegationResponse): QueryUnbondingDelegationResponseAmino;
@@ -1015,8 +1014,8 @@ export declare const QueryUnbondingDelegationResponse: {
 };
 export declare const QueryDelegatorDelegationsRequest: {
     typeUrl: string;
-    encode(message: QueryDelegatorDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorDelegationsRequest;
+    encode(message: QueryDelegatorDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorDelegationsRequest;
     fromPartial(object: Partial<QueryDelegatorDelegationsRequest>): QueryDelegatorDelegationsRequest;
     fromAmino(object: QueryDelegatorDelegationsRequestAmino): QueryDelegatorDelegationsRequest;
     toAmino(message: QueryDelegatorDelegationsRequest): QueryDelegatorDelegationsRequestAmino;
@@ -1028,8 +1027,8 @@ export declare const QueryDelegatorDelegationsRequest: {
 };
 export declare const QueryDelegatorDelegationsResponse: {
     typeUrl: string;
-    encode(message: QueryDelegatorDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorDelegationsResponse;
+    encode(message: QueryDelegatorDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorDelegationsResponse;
     fromPartial(object: Partial<QueryDelegatorDelegationsResponse>): QueryDelegatorDelegationsResponse;
     fromAmino(object: QueryDelegatorDelegationsResponseAmino): QueryDelegatorDelegationsResponse;
     toAmino(message: QueryDelegatorDelegationsResponse): QueryDelegatorDelegationsResponseAmino;
@@ -1041,8 +1040,8 @@ export declare const QueryDelegatorDelegationsResponse: {
 };
 export declare const QueryDelegatorUnbondingDelegationsRequest: {
     typeUrl: string;
-    encode(message: QueryDelegatorUnbondingDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsRequest;
+    encode(message: QueryDelegatorUnbondingDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsRequest;
     fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsRequest>): QueryDelegatorUnbondingDelegationsRequest;
     fromAmino(object: QueryDelegatorUnbondingDelegationsRequestAmino): QueryDelegatorUnbondingDelegationsRequest;
     toAmino(message: QueryDelegatorUnbondingDelegationsRequest): QueryDelegatorUnbondingDelegationsRequestAmino;
@@ -1054,8 +1053,8 @@ export declare const QueryDelegatorUnbondingDelegationsRequest: {
 };
 export declare const QueryDelegatorUnbondingDelegationsResponse: {
     typeUrl: string;
-    encode(message: QueryDelegatorUnbondingDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsResponse;
+    encode(message: QueryDelegatorUnbondingDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsResponse;
     fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsResponse>): QueryDelegatorUnbondingDelegationsResponse;
     fromAmino(object: QueryDelegatorUnbondingDelegationsResponseAmino): QueryDelegatorUnbondingDelegationsResponse;
     toAmino(message: QueryDelegatorUnbondingDelegationsResponse): QueryDelegatorUnbondingDelegationsResponseAmino;
@@ -1067,8 +1066,8 @@ export declare const QueryDelegatorUnbondingDelegationsResponse: {
 };
 export declare const QueryRedelegationsRequest: {
     typeUrl: string;
-    encode(message: QueryRedelegationsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryRedelegationsRequest;
+    encode(message: QueryRedelegationsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryRedelegationsRequest;
     fromPartial(object: Partial<QueryRedelegationsRequest>): QueryRedelegationsRequest;
     fromAmino(object: QueryRedelegationsRequestAmino): QueryRedelegationsRequest;
     toAmino(message: QueryRedelegationsRequest): QueryRedelegationsRequestAmino;
@@ -1080,8 +1079,8 @@ export declare const QueryRedelegationsRequest: {
 };
 export declare const QueryRedelegationsResponse: {
     typeUrl: string;
-    encode(message: QueryRedelegationsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryRedelegationsResponse;
+    encode(message: QueryRedelegationsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryRedelegationsResponse;
     fromPartial(object: Partial<QueryRedelegationsResponse>): QueryRedelegationsResponse;
     fromAmino(object: QueryRedelegationsResponseAmino): QueryRedelegationsResponse;
     toAmino(message: QueryRedelegationsResponse): QueryRedelegationsResponseAmino;
@@ -1093,8 +1092,8 @@ export declare const QueryRedelegationsResponse: {
 };
 export declare const QueryDelegatorValidatorsRequest: {
     typeUrl: string;
-    encode(message: QueryDelegatorValidatorsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsRequest;
+    encode(message: QueryDelegatorValidatorsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorsRequest;
     fromPartial(object: Partial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest;
     fromAmino(object: QueryDelegatorValidatorsRequestAmino): QueryDelegatorValidatorsRequest;
     toAmino(message: QueryDelegatorValidatorsRequest): QueryDelegatorValidatorsRequestAmino;
@@ -1106,8 +1105,8 @@ export declare const QueryDelegatorValidatorsRequest: {
 };
 export declare const QueryDelegatorValidatorsResponse: {
     typeUrl: string;
-    encode(message: QueryDelegatorValidatorsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorsResponse;
+    encode(message: QueryDelegatorValidatorsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorsResponse;
     fromPartial(object: Partial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse;
     fromAmino(object: QueryDelegatorValidatorsResponseAmino): QueryDelegatorValidatorsResponse;
     toAmino(message: QueryDelegatorValidatorsResponse): QueryDelegatorValidatorsResponseAmino;
@@ -1119,8 +1118,8 @@ export declare const QueryDelegatorValidatorsResponse: {
 };
 export declare const QueryDelegatorValidatorRequest: {
     typeUrl: string;
-    encode(message: QueryDelegatorValidatorRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorRequest;
+    encode(message: QueryDelegatorValidatorRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorRequest;
     fromPartial(object: Partial<QueryDelegatorValidatorRequest>): QueryDelegatorValidatorRequest;
     fromAmino(object: QueryDelegatorValidatorRequestAmino): QueryDelegatorValidatorRequest;
     toAmino(message: QueryDelegatorValidatorRequest): QueryDelegatorValidatorRequestAmino;
@@ -1132,8 +1131,8 @@ export declare const QueryDelegatorValidatorRequest: {
 };
 export declare const QueryDelegatorValidatorResponse: {
     typeUrl: string;
-    encode(message: QueryDelegatorValidatorResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryDelegatorValidatorResponse;
+    encode(message: QueryDelegatorValidatorResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorResponse;
     fromPartial(object: Partial<QueryDelegatorValidatorResponse>): QueryDelegatorValidatorResponse;
     fromAmino(object: QueryDelegatorValidatorResponseAmino): QueryDelegatorValidatorResponse;
     toAmino(message: QueryDelegatorValidatorResponse): QueryDelegatorValidatorResponseAmino;
@@ -1145,8 +1144,8 @@ export declare const QueryDelegatorValidatorResponse: {
 };
 export declare const QueryHistoricalInfoRequest: {
     typeUrl: string;
-    encode(message: QueryHistoricalInfoRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryHistoricalInfoRequest;
+    encode(message: QueryHistoricalInfoRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryHistoricalInfoRequest;
     fromPartial(object: Partial<QueryHistoricalInfoRequest>): QueryHistoricalInfoRequest;
     fromAmino(object: QueryHistoricalInfoRequestAmino): QueryHistoricalInfoRequest;
     toAmino(message: QueryHistoricalInfoRequest): QueryHistoricalInfoRequestAmino;
@@ -1158,8 +1157,8 @@ export declare const QueryHistoricalInfoRequest: {
 };
 export declare const QueryHistoricalInfoResponse: {
     typeUrl: string;
-    encode(message: QueryHistoricalInfoResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryHistoricalInfoResponse;
+    encode(message: QueryHistoricalInfoResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryHistoricalInfoResponse;
     fromPartial(object: Partial<QueryHistoricalInfoResponse>): QueryHistoricalInfoResponse;
     fromAmino(object: QueryHistoricalInfoResponseAmino): QueryHistoricalInfoResponse;
     toAmino(message: QueryHistoricalInfoResponse): QueryHistoricalInfoResponseAmino;
@@ -1171,8 +1170,8 @@ export declare const QueryHistoricalInfoResponse: {
 };
 export declare const QueryPoolRequest: {
     typeUrl: string;
-    encode(_: QueryPoolRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolRequest;
+    encode(_: QueryPoolRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolRequest;
     fromPartial(_: Partial<QueryPoolRequest>): QueryPoolRequest;
     fromAmino(_: QueryPoolRequestAmino): QueryPoolRequest;
     toAmino(_: QueryPoolRequest): QueryPoolRequestAmino;
@@ -1184,8 +1183,8 @@ export declare const QueryPoolRequest: {
 };
 export declare const QueryPoolResponse: {
     typeUrl: string;
-    encode(message: QueryPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse;
+    encode(message: QueryPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolResponse;
     fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse;
     fromAmino(object: QueryPoolResponseAmino): QueryPoolResponse;
     toAmino(message: QueryPoolResponse): QueryPoolResponseAmino;
@@ -1197,8 +1196,8 @@ export declare const QueryPoolResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
-    encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
@@ -1210,8 +1209,8 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;

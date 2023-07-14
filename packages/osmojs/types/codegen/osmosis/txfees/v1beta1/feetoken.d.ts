@@ -1,5 +1,4 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * FeeToken is a struct that specifies a coin denom, and pool ID pair.
  * This marks the token as eligible for use as a tx fee asset in Osmosis.
@@ -8,7 +7,7 @@ import * as _m0 from "protobufjs/minimal";
  */
 export interface FeeToken {
     denom: string;
-    poolID: Long;
+    poolID: bigint;
 }
 export interface FeeTokenProtoMsg {
     typeUrl: "/osmosis.txfees.v1beta1.FeeToken";
@@ -36,12 +35,12 @@ export interface FeeTokenAminoMsg {
  */
 export interface FeeTokenSDKType {
     denom: string;
-    poolID: Long;
+    poolID: bigint;
 }
 export declare const FeeToken: {
     typeUrl: string;
-    encode(message: FeeToken, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): FeeToken;
+    encode(message: FeeToken, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): FeeToken;
     fromPartial(object: Partial<FeeToken>): FeeToken;
     fromAmino(object: FeeTokenAmino): FeeToken;
     toAmino(message: FeeToken): FeeTokenAmino;

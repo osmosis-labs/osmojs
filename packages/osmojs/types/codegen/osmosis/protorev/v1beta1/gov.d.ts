@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * SetProtoRevEnabledProposal is a gov Content type to update whether the
  * protorev module is enabled
@@ -78,8 +78,8 @@ export interface SetProtoRevAdminAccountProposalSDKType {
 }
 export declare const SetProtoRevEnabledProposal: {
     typeUrl: string;
-    encode(message: SetProtoRevEnabledProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SetProtoRevEnabledProposal;
+    encode(message: SetProtoRevEnabledProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SetProtoRevEnabledProposal;
     fromPartial(object: Partial<SetProtoRevEnabledProposal>): SetProtoRevEnabledProposal;
     fromAmino(object: SetProtoRevEnabledProposalAmino): SetProtoRevEnabledProposal;
     toAmino(message: SetProtoRevEnabledProposal): SetProtoRevEnabledProposalAmino;
@@ -91,8 +91,8 @@ export declare const SetProtoRevEnabledProposal: {
 };
 export declare const SetProtoRevAdminAccountProposal: {
     typeUrl: string;
-    encode(message: SetProtoRevAdminAccountProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SetProtoRevAdminAccountProposal;
+    encode(message: SetProtoRevAdminAccountProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SetProtoRevAdminAccountProposal;
     fromPartial(object: Partial<SetProtoRevAdminAccountProposal>): SetProtoRevAdminAccountProposal;
     fromAmino(object: SetProtoRevAdminAccountProposalAmino): SetProtoRevAdminAccountProposal;
     toAmino(message: SetProtoRevAdminAccountProposal): SetProtoRevAdminAccountProposalAmino;

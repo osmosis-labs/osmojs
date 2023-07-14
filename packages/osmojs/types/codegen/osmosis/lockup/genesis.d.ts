@@ -1,9 +1,8 @@
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType, SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "./lock";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /** GenesisState defines the lockup module's genesis state. */
 export interface GenesisState {
-    lastLockId: Long;
+    lastLockId: bigint;
     locks: PeriodLock[];
     syntheticLocks: SyntheticLock[];
 }
@@ -23,14 +22,14 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the lockup module's genesis state. */
 export interface GenesisStateSDKType {
-    last_lock_id: Long;
+    last_lock_id: bigint;
     locks: PeriodLockSDKType[];
     synthetic_locks: SyntheticLockSDKType[];
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

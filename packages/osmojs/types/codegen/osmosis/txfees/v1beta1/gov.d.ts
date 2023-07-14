@@ -1,5 +1,5 @@
 import { FeeToken, FeeTokenAmino, FeeTokenSDKType } from "./feetoken";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * UpdateFeeTokenProposal is a gov Content type for adding new whitelisted fee
  * token(s). It must specify a denom along with gamm pool ID to use as a spot
@@ -48,8 +48,8 @@ export interface UpdateFeeTokenProposalSDKType {
 }
 export declare const UpdateFeeTokenProposal: {
     typeUrl: string;
-    encode(message: UpdateFeeTokenProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UpdateFeeTokenProposal;
+    encode(message: UpdateFeeTokenProposal, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UpdateFeeTokenProposal;
     fromPartial(object: Partial<UpdateFeeTokenProposal>): UpdateFeeTokenProposal;
     fromAmino(object: UpdateFeeTokenProposalAmino): UpdateFeeTokenProposal;
     toAmino(message: UpdateFeeTokenProposal): UpdateFeeTokenProposalAmino;

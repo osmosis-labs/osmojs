@@ -1,9 +1,9 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { SuperfluidAsset, SuperfluidAssetAmino, SuperfluidAssetSDKType, OsmoEquivalentMultiplierRecord, OsmoEquivalentMultiplierRecordAmino, OsmoEquivalentMultiplierRecordSDKType, SuperfluidIntermediaryAccount, SuperfluidIntermediaryAccountAmino, SuperfluidIntermediaryAccountSDKType, LockIdIntermediaryAccountConnection, LockIdIntermediaryAccountConnectionAmino, LockIdIntermediaryAccountConnectionSDKType } from "./superfluid";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /** GenesisState defines the module's genesis state. */
 export interface GenesisState {
-    params?: Params;
+    params: Params;
     /**
      * superfluid_assets defines the registered superfluid assets that have been
      * registered via governance.
@@ -51,7 +51,7 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the module's genesis state. */
 export interface GenesisStateSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
     superfluid_assets: SuperfluidAssetSDKType[];
     osmo_equivalent_multipliers: OsmoEquivalentMultiplierRecordSDKType[];
     intermediary_accounts: SuperfluidIntermediaryAccountSDKType[];
@@ -59,8 +59,8 @@ export interface GenesisStateSDKType {
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

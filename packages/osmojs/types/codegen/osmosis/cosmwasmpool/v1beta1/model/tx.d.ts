@@ -1,8 +1,7 @@
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** ===================== MsgCreateCosmwasmPool */
 export interface MsgCreateCosmWasmPool {
-    codeId: Long;
+    codeId: bigint;
     instantiateMsg: Uint8Array;
     sender: string;
 }
@@ -22,13 +21,13 @@ export interface MsgCreateCosmWasmPoolAminoMsg {
 }
 /** ===================== MsgCreateCosmwasmPool */
 export interface MsgCreateCosmWasmPoolSDKType {
-    code_id: Long;
+    code_id: bigint;
     instantiate_msg: Uint8Array;
     sender: string;
 }
 /** Returns a unique poolID to identify the pool with. */
 export interface MsgCreateCosmWasmPoolResponse {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface MsgCreateCosmWasmPoolResponseProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.MsgCreateCosmWasmPoolResponse";
@@ -44,12 +43,12 @@ export interface MsgCreateCosmWasmPoolResponseAminoMsg {
 }
 /** Returns a unique poolID to identify the pool with. */
 export interface MsgCreateCosmWasmPoolResponseSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export declare const MsgCreateCosmWasmPool: {
     typeUrl: string;
-    encode(message: MsgCreateCosmWasmPool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateCosmWasmPool;
+    encode(message: MsgCreateCosmWasmPool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateCosmWasmPool;
     fromPartial(object: Partial<MsgCreateCosmWasmPool>): MsgCreateCosmWasmPool;
     fromAmino(object: MsgCreateCosmWasmPoolAmino): MsgCreateCosmWasmPool;
     toAmino(message: MsgCreateCosmWasmPool): MsgCreateCosmWasmPoolAmino;
@@ -61,8 +60,8 @@ export declare const MsgCreateCosmWasmPool: {
 };
 export declare const MsgCreateCosmWasmPoolResponse: {
     typeUrl: string;
-    encode(message: MsgCreateCosmWasmPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateCosmWasmPoolResponse;
+    encode(message: MsgCreateCosmWasmPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateCosmWasmPoolResponse;
     fromPartial(object: Partial<MsgCreateCosmWasmPoolResponse>): MsgCreateCosmWasmPoolResponse;
     fromAmino(object: MsgCreateCosmWasmPoolResponseAmino): MsgCreateCosmWasmPoolResponse;
     toAmino(message: MsgCreateCosmWasmPoolResponse): MsgCreateCosmWasmPoolResponseAmino;

@@ -1,8 +1,7 @@
 import { QueryCondition, QueryConditionAmino, QueryConditionSDKType } from "../lockup/lock";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * Gauge is an object that stores and distributes yields to recipients who
  * satisfy certain conditions. Currently gauges support conditions around the
@@ -10,7 +9,7 @@ import * as _m0 from "protobufjs/minimal";
  */
 export interface Gauge {
     /** id is the unique ID of a Gauge */
-    id: Long;
+    id: bigint;
     /**
      * is_perpetual is a flag to show if it's a perpetual or non-perpetual gauge
      * Non-perpetual gauges distribute their tokens equally per epoch while the
@@ -23,24 +22,24 @@ export interface Gauge {
      * distribute_to is where the gauge rewards are distributed to.
      * This is queried via lock duration or by timestamp
      */
-    distributeTo?: QueryCondition;
+    distributeTo: QueryCondition;
     /**
      * coins is the total amount of coins that have been in the gauge
      * Can distribute multiple coin denoms
      */
     coins: Coin[];
     /** start_time is the distribution start time */
-    startTime?: Date;
+    startTime: Date;
     /**
      * num_epochs_paid_over is the number of total epochs distribution will be
      * completed over
      */
-    numEpochsPaidOver: Long;
+    numEpochsPaidOver: bigint;
     /**
      * filled_epochs is the number of epochs distribution has been completed on
      * already
      */
-    filledEpochs: Long;
+    filledEpochs: bigint;
     /** distributed_coins are coins that have been distributed already */
     distributedCoins: Coin[];
 }
@@ -99,13 +98,13 @@ export interface GaugeAminoMsg {
  * duration for which a given denom is locked.
  */
 export interface GaugeSDKType {
-    id: Long;
+    id: bigint;
     is_perpetual: boolean;
-    distribute_to?: QueryConditionSDKType;
+    distribute_to: QueryConditionSDKType;
     coins: CoinSDKType[];
-    start_time?: Date;
-    num_epochs_paid_over: Long;
-    filled_epochs: Long;
+    start_time: Date;
+    num_epochs_paid_over: bigint;
+    filled_epochs: bigint;
     distributed_coins: CoinSDKType[];
 }
 export interface LockableDurationsInfo {
@@ -129,8 +128,8 @@ export interface LockableDurationsInfoSDKType {
 }
 export declare const Gauge: {
     typeUrl: string;
-    encode(message: Gauge, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Gauge;
+    encode(message: Gauge, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Gauge;
     fromPartial(object: Partial<Gauge>): Gauge;
     fromAmino(object: GaugeAmino): Gauge;
     toAmino(message: Gauge): GaugeAmino;
@@ -142,8 +141,8 @@ export declare const Gauge: {
 };
 export declare const LockableDurationsInfo: {
     typeUrl: string;
-    encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
+    encode(message: LockableDurationsInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): LockableDurationsInfo;
     fromPartial(object: Partial<LockableDurationsInfo>): LockableDurationsInfo;
     fromAmino(object: LockableDurationsInfoAmino): LockableDurationsInfo;
     toAmino(message: LockableDurationsInfo): LockableDurationsInfoAmino;

@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * ValidatorPreference defines the message structure for
  * CreateValidatorSetPreference. It allows a user to set {val_addr, weight} in
@@ -89,8 +89,8 @@ export interface ValidatorSetPreferencesSDKType {
 }
 export declare const ValidatorPreference: {
     typeUrl: string;
-    encode(message: ValidatorPreference, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorPreference;
+    encode(message: ValidatorPreference, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorPreference;
     fromPartial(object: Partial<ValidatorPreference>): ValidatorPreference;
     fromAmino(object: ValidatorPreferenceAmino): ValidatorPreference;
     toAmino(message: ValidatorPreference): ValidatorPreferenceAmino;
@@ -102,8 +102,8 @@ export declare const ValidatorPreference: {
 };
 export declare const ValidatorSetPreferences: {
     typeUrl: string;
-    encode(message: ValidatorSetPreferences, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSetPreferences;
+    encode(message: ValidatorSetPreferences, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSetPreferences;
     fromPartial(object: Partial<ValidatorSetPreferences>): ValidatorSetPreferences;
     fromAmino(object: ValidatorSetPreferencesAmino): ValidatorSetPreferences;
     toAmino(message: ValidatorSetPreferences): ValidatorSetPreferencesAmino;

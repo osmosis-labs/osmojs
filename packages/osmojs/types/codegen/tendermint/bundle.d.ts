@@ -33,8 +33,8 @@ export declare namespace tendermint {
         EvidenceTypeAmino: typeof _179.EvidenceType;
         Request: {
             typeUrl: string;
-            encode(message: _179.Request, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.Request;
+            encode(message: _179.Request, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.Request;
             fromPartial(object: Partial<_179.Request>): _179.Request;
             fromAmino(object: _179.RequestAmino): _179.Request;
             toAmino(message: _179.Request): _179.RequestAmino;
@@ -45,8 +45,8 @@ export declare namespace tendermint {
         };
         RequestEcho: {
             typeUrl: string;
-            encode(message: _179.RequestEcho, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestEcho;
+            encode(message: _179.RequestEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestEcho;
             fromPartial(object: Partial<_179.RequestEcho>): _179.RequestEcho;
             fromAmino(object: _179.RequestEchoAmino): _179.RequestEcho;
             toAmino(message: _179.RequestEcho): _179.RequestEchoAmino;
@@ -57,8 +57,8 @@ export declare namespace tendermint {
         };
         RequestFlush: {
             typeUrl: string;
-            encode(_: _179.RequestFlush, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestFlush;
+            encode(_: _179.RequestFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestFlush;
             fromPartial(_: Partial<_179.RequestFlush>): _179.RequestFlush;
             fromAmino(_: _179.RequestFlushAmino): _179.RequestFlush;
             toAmino(_: _179.RequestFlush): _179.RequestFlushAmino;
@@ -69,8 +69,8 @@ export declare namespace tendermint {
         };
         RequestInfo: {
             typeUrl: string;
-            encode(message: _179.RequestInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestInfo;
+            encode(message: _179.RequestInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestInfo;
             fromPartial(object: Partial<_179.RequestInfo>): _179.RequestInfo;
             fromAmino(object: _179.RequestInfoAmino): _179.RequestInfo;
             toAmino(message: _179.RequestInfo): _179.RequestInfoAmino;
@@ -81,8 +81,8 @@ export declare namespace tendermint {
         };
         RequestSetOption: {
             typeUrl: string;
-            encode(message: _179.RequestSetOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestSetOption;
+            encode(message: _179.RequestSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestSetOption;
             fromPartial(object: Partial<_179.RequestSetOption>): _179.RequestSetOption;
             fromAmino(object: _179.RequestSetOptionAmino): _179.RequestSetOption;
             toAmino(message: _179.RequestSetOption): _179.RequestSetOptionAmino;
@@ -93,8 +93,8 @@ export declare namespace tendermint {
         };
         RequestInitChain: {
             typeUrl: string;
-            encode(message: _179.RequestInitChain, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestInitChain;
+            encode(message: _179.RequestInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestInitChain;
             fromPartial(object: Partial<_179.RequestInitChain>): _179.RequestInitChain;
             fromAmino(object: _179.RequestInitChainAmino): _179.RequestInitChain;
             toAmino(message: _179.RequestInitChain): _179.RequestInitChainAmino;
@@ -105,8 +105,8 @@ export declare namespace tendermint {
         };
         RequestQuery: {
             typeUrl: string;
-            encode(message: _179.RequestQuery, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestQuery;
+            encode(message: _179.RequestQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestQuery;
             fromPartial(object: Partial<_179.RequestQuery>): _179.RequestQuery;
             fromAmino(object: _179.RequestQueryAmino): _179.RequestQuery;
             toAmino(message: _179.RequestQuery): _179.RequestQueryAmino;
@@ -117,8 +117,8 @@ export declare namespace tendermint {
         };
         RequestBeginBlock: {
             typeUrl: string;
-            encode(message: _179.RequestBeginBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestBeginBlock;
+            encode(message: _179.RequestBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestBeginBlock;
             fromPartial(object: Partial<_179.RequestBeginBlock>): _179.RequestBeginBlock;
             fromAmino(object: _179.RequestBeginBlockAmino): _179.RequestBeginBlock;
             toAmino(message: _179.RequestBeginBlock): _179.RequestBeginBlockAmino;
@@ -129,8 +129,8 @@ export declare namespace tendermint {
         };
         RequestCheckTx: {
             typeUrl: string;
-            encode(message: _179.RequestCheckTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestCheckTx;
+            encode(message: _179.RequestCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestCheckTx;
             fromPartial(object: Partial<_179.RequestCheckTx>): _179.RequestCheckTx;
             fromAmino(object: _179.RequestCheckTxAmino): _179.RequestCheckTx;
             toAmino(message: _179.RequestCheckTx): _179.RequestCheckTxAmino;
@@ -141,8 +141,8 @@ export declare namespace tendermint {
         };
         RequestDeliverTx: {
             typeUrl: string;
-            encode(message: _179.RequestDeliverTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestDeliverTx;
+            encode(message: _179.RequestDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestDeliverTx;
             fromPartial(object: Partial<_179.RequestDeliverTx>): _179.RequestDeliverTx;
             fromAmino(object: _179.RequestDeliverTxAmino): _179.RequestDeliverTx;
             toAmino(message: _179.RequestDeliverTx): _179.RequestDeliverTxAmino;
@@ -153,8 +153,8 @@ export declare namespace tendermint {
         };
         RequestEndBlock: {
             typeUrl: string;
-            encode(message: _179.RequestEndBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestEndBlock;
+            encode(message: _179.RequestEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestEndBlock;
             fromPartial(object: Partial<_179.RequestEndBlock>): _179.RequestEndBlock;
             fromAmino(object: _179.RequestEndBlockAmino): _179.RequestEndBlock;
             toAmino(message: _179.RequestEndBlock): _179.RequestEndBlockAmino;
@@ -165,8 +165,8 @@ export declare namespace tendermint {
         };
         RequestCommit: {
             typeUrl: string;
-            encode(_: _179.RequestCommit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestCommit;
+            encode(_: _179.RequestCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestCommit;
             fromPartial(_: Partial<_179.RequestCommit>): _179.RequestCommit;
             fromAmino(_: _179.RequestCommitAmino): _179.RequestCommit;
             toAmino(_: _179.RequestCommit): _179.RequestCommitAmino;
@@ -177,8 +177,8 @@ export declare namespace tendermint {
         };
         RequestListSnapshots: {
             typeUrl: string;
-            encode(_: _179.RequestListSnapshots, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestListSnapshots;
+            encode(_: _179.RequestListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestListSnapshots;
             fromPartial(_: Partial<_179.RequestListSnapshots>): _179.RequestListSnapshots;
             fromAmino(_: _179.RequestListSnapshotsAmino): _179.RequestListSnapshots;
             toAmino(_: _179.RequestListSnapshots): _179.RequestListSnapshotsAmino;
@@ -189,8 +189,8 @@ export declare namespace tendermint {
         };
         RequestOfferSnapshot: {
             typeUrl: string;
-            encode(message: _179.RequestOfferSnapshot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestOfferSnapshot;
+            encode(message: _179.RequestOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestOfferSnapshot;
             fromPartial(object: Partial<_179.RequestOfferSnapshot>): _179.RequestOfferSnapshot;
             fromAmino(object: _179.RequestOfferSnapshotAmino): _179.RequestOfferSnapshot;
             toAmino(message: _179.RequestOfferSnapshot): _179.RequestOfferSnapshotAmino;
@@ -201,8 +201,8 @@ export declare namespace tendermint {
         };
         RequestLoadSnapshotChunk: {
             typeUrl: string;
-            encode(message: _179.RequestLoadSnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestLoadSnapshotChunk;
+            encode(message: _179.RequestLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestLoadSnapshotChunk;
             fromPartial(object: Partial<_179.RequestLoadSnapshotChunk>): _179.RequestLoadSnapshotChunk;
             fromAmino(object: _179.RequestLoadSnapshotChunkAmino): _179.RequestLoadSnapshotChunk;
             toAmino(message: _179.RequestLoadSnapshotChunk): _179.RequestLoadSnapshotChunkAmino;
@@ -213,8 +213,8 @@ export declare namespace tendermint {
         };
         RequestApplySnapshotChunk: {
             typeUrl: string;
-            encode(message: _179.RequestApplySnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.RequestApplySnapshotChunk;
+            encode(message: _179.RequestApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.RequestApplySnapshotChunk;
             fromPartial(object: Partial<_179.RequestApplySnapshotChunk>): _179.RequestApplySnapshotChunk;
             fromAmino(object: _179.RequestApplySnapshotChunkAmino): _179.RequestApplySnapshotChunk;
             toAmino(message: _179.RequestApplySnapshotChunk): _179.RequestApplySnapshotChunkAmino;
@@ -225,8 +225,8 @@ export declare namespace tendermint {
         };
         Response: {
             typeUrl: string;
-            encode(message: _179.Response, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.Response;
+            encode(message: _179.Response, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.Response;
             fromPartial(object: Partial<_179.Response>): _179.Response;
             fromAmino(object: _179.ResponseAmino): _179.Response;
             toAmino(message: _179.Response): _179.ResponseAmino;
@@ -237,8 +237,8 @@ export declare namespace tendermint {
         };
         ResponseException: {
             typeUrl: string;
-            encode(message: _179.ResponseException, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseException;
+            encode(message: _179.ResponseException, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseException;
             fromPartial(object: Partial<_179.ResponseException>): _179.ResponseException;
             fromAmino(object: _179.ResponseExceptionAmino): _179.ResponseException;
             toAmino(message: _179.ResponseException): _179.ResponseExceptionAmino;
@@ -249,8 +249,8 @@ export declare namespace tendermint {
         };
         ResponseEcho: {
             typeUrl: string;
-            encode(message: _179.ResponseEcho, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseEcho;
+            encode(message: _179.ResponseEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseEcho;
             fromPartial(object: Partial<_179.ResponseEcho>): _179.ResponseEcho;
             fromAmino(object: _179.ResponseEchoAmino): _179.ResponseEcho;
             toAmino(message: _179.ResponseEcho): _179.ResponseEchoAmino;
@@ -261,8 +261,8 @@ export declare namespace tendermint {
         };
         ResponseFlush: {
             typeUrl: string;
-            encode(_: _179.ResponseFlush, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseFlush;
+            encode(_: _179.ResponseFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseFlush;
             fromPartial(_: Partial<_179.ResponseFlush>): _179.ResponseFlush;
             fromAmino(_: _179.ResponseFlushAmino): _179.ResponseFlush;
             toAmino(_: _179.ResponseFlush): _179.ResponseFlushAmino;
@@ -273,8 +273,8 @@ export declare namespace tendermint {
         };
         ResponseInfo: {
             typeUrl: string;
-            encode(message: _179.ResponseInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseInfo;
+            encode(message: _179.ResponseInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseInfo;
             fromPartial(object: Partial<_179.ResponseInfo>): _179.ResponseInfo;
             fromAmino(object: _179.ResponseInfoAmino): _179.ResponseInfo;
             toAmino(message: _179.ResponseInfo): _179.ResponseInfoAmino;
@@ -285,8 +285,8 @@ export declare namespace tendermint {
         };
         ResponseSetOption: {
             typeUrl: string;
-            encode(message: _179.ResponseSetOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseSetOption;
+            encode(message: _179.ResponseSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseSetOption;
             fromPartial(object: Partial<_179.ResponseSetOption>): _179.ResponseSetOption;
             fromAmino(object: _179.ResponseSetOptionAmino): _179.ResponseSetOption;
             toAmino(message: _179.ResponseSetOption): _179.ResponseSetOptionAmino;
@@ -297,8 +297,8 @@ export declare namespace tendermint {
         };
         ResponseInitChain: {
             typeUrl: string;
-            encode(message: _179.ResponseInitChain, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseInitChain;
+            encode(message: _179.ResponseInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseInitChain;
             fromPartial(object: Partial<_179.ResponseInitChain>): _179.ResponseInitChain;
             fromAmino(object: _179.ResponseInitChainAmino): _179.ResponseInitChain;
             toAmino(message: _179.ResponseInitChain): _179.ResponseInitChainAmino;
@@ -309,8 +309,8 @@ export declare namespace tendermint {
         };
         ResponseQuery: {
             typeUrl: string;
-            encode(message: _179.ResponseQuery, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseQuery;
+            encode(message: _179.ResponseQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseQuery;
             fromPartial(object: Partial<_179.ResponseQuery>): _179.ResponseQuery;
             fromAmino(object: _179.ResponseQueryAmino): _179.ResponseQuery;
             toAmino(message: _179.ResponseQuery): _179.ResponseQueryAmino;
@@ -321,8 +321,8 @@ export declare namespace tendermint {
         };
         ResponseBeginBlock: {
             typeUrl: string;
-            encode(message: _179.ResponseBeginBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseBeginBlock;
+            encode(message: _179.ResponseBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseBeginBlock;
             fromPartial(object: Partial<_179.ResponseBeginBlock>): _179.ResponseBeginBlock;
             fromAmino(object: _179.ResponseBeginBlockAmino): _179.ResponseBeginBlock;
             toAmino(message: _179.ResponseBeginBlock): _179.ResponseBeginBlockAmino;
@@ -333,8 +333,8 @@ export declare namespace tendermint {
         };
         ResponseCheckTx: {
             typeUrl: string;
-            encode(message: _179.ResponseCheckTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseCheckTx;
+            encode(message: _179.ResponseCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseCheckTx;
             fromPartial(object: Partial<_179.ResponseCheckTx>): _179.ResponseCheckTx;
             fromAmino(object: _179.ResponseCheckTxAmino): _179.ResponseCheckTx;
             toAmino(message: _179.ResponseCheckTx): _179.ResponseCheckTxAmino;
@@ -345,8 +345,8 @@ export declare namespace tendermint {
         };
         ResponseDeliverTx: {
             typeUrl: string;
-            encode(message: _179.ResponseDeliverTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseDeliverTx;
+            encode(message: _179.ResponseDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseDeliverTx;
             fromPartial(object: Partial<_179.ResponseDeliverTx>): _179.ResponseDeliverTx;
             fromAmino(object: _179.ResponseDeliverTxAmino): _179.ResponseDeliverTx;
             toAmino(message: _179.ResponseDeliverTx): _179.ResponseDeliverTxAmino;
@@ -357,8 +357,8 @@ export declare namespace tendermint {
         };
         ResponseEndBlock: {
             typeUrl: string;
-            encode(message: _179.ResponseEndBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseEndBlock;
+            encode(message: _179.ResponseEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseEndBlock;
             fromPartial(object: Partial<_179.ResponseEndBlock>): _179.ResponseEndBlock;
             fromAmino(object: _179.ResponseEndBlockAmino): _179.ResponseEndBlock;
             toAmino(message: _179.ResponseEndBlock): _179.ResponseEndBlockAmino;
@@ -369,8 +369,8 @@ export declare namespace tendermint {
         };
         ResponseCommit: {
             typeUrl: string;
-            encode(message: _179.ResponseCommit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseCommit;
+            encode(message: _179.ResponseCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseCommit;
             fromPartial(object: Partial<_179.ResponseCommit>): _179.ResponseCommit;
             fromAmino(object: _179.ResponseCommitAmino): _179.ResponseCommit;
             toAmino(message: _179.ResponseCommit): _179.ResponseCommitAmino;
@@ -381,8 +381,8 @@ export declare namespace tendermint {
         };
         ResponseListSnapshots: {
             typeUrl: string;
-            encode(message: _179.ResponseListSnapshots, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseListSnapshots;
+            encode(message: _179.ResponseListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseListSnapshots;
             fromPartial(object: Partial<_179.ResponseListSnapshots>): _179.ResponseListSnapshots;
             fromAmino(object: _179.ResponseListSnapshotsAmino): _179.ResponseListSnapshots;
             toAmino(message: _179.ResponseListSnapshots): _179.ResponseListSnapshotsAmino;
@@ -393,8 +393,8 @@ export declare namespace tendermint {
         };
         ResponseOfferSnapshot: {
             typeUrl: string;
-            encode(message: _179.ResponseOfferSnapshot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseOfferSnapshot;
+            encode(message: _179.ResponseOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseOfferSnapshot;
             fromPartial(object: Partial<_179.ResponseOfferSnapshot>): _179.ResponseOfferSnapshot;
             fromAmino(object: _179.ResponseOfferSnapshotAmino): _179.ResponseOfferSnapshot;
             toAmino(message: _179.ResponseOfferSnapshot): _179.ResponseOfferSnapshotAmino;
@@ -405,8 +405,8 @@ export declare namespace tendermint {
         };
         ResponseLoadSnapshotChunk: {
             typeUrl: string;
-            encode(message: _179.ResponseLoadSnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseLoadSnapshotChunk;
+            encode(message: _179.ResponseLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseLoadSnapshotChunk;
             fromPartial(object: Partial<_179.ResponseLoadSnapshotChunk>): _179.ResponseLoadSnapshotChunk;
             fromAmino(object: _179.ResponseLoadSnapshotChunkAmino): _179.ResponseLoadSnapshotChunk;
             toAmino(message: _179.ResponseLoadSnapshotChunk): _179.ResponseLoadSnapshotChunkAmino;
@@ -417,8 +417,8 @@ export declare namespace tendermint {
         };
         ResponseApplySnapshotChunk: {
             typeUrl: string;
-            encode(message: _179.ResponseApplySnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ResponseApplySnapshotChunk;
+            encode(message: _179.ResponseApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ResponseApplySnapshotChunk;
             fromPartial(object: Partial<_179.ResponseApplySnapshotChunk>): _179.ResponseApplySnapshotChunk;
             fromAmino(object: _179.ResponseApplySnapshotChunkAmino): _179.ResponseApplySnapshotChunk;
             toAmino(message: _179.ResponseApplySnapshotChunk): _179.ResponseApplySnapshotChunkAmino;
@@ -429,8 +429,8 @@ export declare namespace tendermint {
         };
         ConsensusParams: {
             typeUrl: string;
-            encode(message: _179.ConsensusParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ConsensusParams;
+            encode(message: _179.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ConsensusParams;
             fromPartial(object: Partial<_179.ConsensusParams>): _179.ConsensusParams;
             fromAmino(object: _179.ConsensusParamsAmino): _179.ConsensusParams;
             toAmino(message: _179.ConsensusParams): _179.ConsensusParamsAmino;
@@ -441,8 +441,8 @@ export declare namespace tendermint {
         };
         BlockParams: {
             typeUrl: string;
-            encode(message: _179.BlockParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.BlockParams;
+            encode(message: _179.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.BlockParams;
             fromPartial(object: Partial<_179.BlockParams>): _179.BlockParams;
             fromAmino(object: _179.BlockParamsAmino): _179.BlockParams;
             toAmino(message: _179.BlockParams): _179.BlockParamsAmino;
@@ -453,8 +453,8 @@ export declare namespace tendermint {
         };
         LastCommitInfo: {
             typeUrl: string;
-            encode(message: _179.LastCommitInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.LastCommitInfo;
+            encode(message: _179.LastCommitInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.LastCommitInfo;
             fromPartial(object: Partial<_179.LastCommitInfo>): _179.LastCommitInfo;
             fromAmino(object: _179.LastCommitInfoAmino): _179.LastCommitInfo;
             toAmino(message: _179.LastCommitInfo): _179.LastCommitInfoAmino;
@@ -465,8 +465,8 @@ export declare namespace tendermint {
         };
         Event: {
             typeUrl: string;
-            encode(message: _179.Event, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.Event;
+            encode(message: _179.Event, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.Event;
             fromPartial(object: Partial<_179.Event>): _179.Event;
             fromAmino(object: _179.EventAmino): _179.Event;
             toAmino(message: _179.Event): _179.EventAmino;
@@ -477,8 +477,8 @@ export declare namespace tendermint {
         };
         EventAttribute: {
             typeUrl: string;
-            encode(message: _179.EventAttribute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.EventAttribute;
+            encode(message: _179.EventAttribute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.EventAttribute;
             fromPartial(object: Partial<_179.EventAttribute>): _179.EventAttribute;
             fromAmino(object: _179.EventAttributeAmino): _179.EventAttribute;
             toAmino(message: _179.EventAttribute): _179.EventAttributeAmino;
@@ -489,8 +489,8 @@ export declare namespace tendermint {
         };
         TxResult: {
             typeUrl: string;
-            encode(message: _179.TxResult, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.TxResult;
+            encode(message: _179.TxResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.TxResult;
             fromPartial(object: Partial<_179.TxResult>): _179.TxResult;
             fromAmino(object: _179.TxResultAmino): _179.TxResult;
             toAmino(message: _179.TxResult): _179.TxResultAmino;
@@ -501,8 +501,8 @@ export declare namespace tendermint {
         };
         Validator: {
             typeUrl: string;
-            encode(message: _179.Validator, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.Validator;
+            encode(message: _179.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.Validator;
             fromPartial(object: Partial<_179.Validator>): _179.Validator;
             fromAmino(object: _179.ValidatorAmino): _179.Validator;
             toAmino(message: _179.Validator): _179.ValidatorAmino;
@@ -513,8 +513,8 @@ export declare namespace tendermint {
         };
         ValidatorUpdate: {
             typeUrl: string;
-            encode(message: _179.ValidatorUpdate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.ValidatorUpdate;
+            encode(message: _179.ValidatorUpdate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.ValidatorUpdate;
             fromPartial(object: Partial<_179.ValidatorUpdate>): _179.ValidatorUpdate;
             fromAmino(object: _179.ValidatorUpdateAmino): _179.ValidatorUpdate;
             toAmino(message: _179.ValidatorUpdate): _179.ValidatorUpdateAmino;
@@ -525,8 +525,8 @@ export declare namespace tendermint {
         };
         VoteInfo: {
             typeUrl: string;
-            encode(message: _179.VoteInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.VoteInfo;
+            encode(message: _179.VoteInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.VoteInfo;
             fromPartial(object: Partial<_179.VoteInfo>): _179.VoteInfo;
             fromAmino(object: _179.VoteInfoAmino): _179.VoteInfo;
             toAmino(message: _179.VoteInfo): _179.VoteInfoAmino;
@@ -537,8 +537,8 @@ export declare namespace tendermint {
         };
         Evidence: {
             typeUrl: string;
-            encode(message: _179.Evidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.Evidence;
+            encode(message: _179.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.Evidence;
             fromPartial(object: Partial<_179.Evidence>): _179.Evidence;
             fromAmino(object: _179.EvidenceAmino): _179.Evidence;
             toAmino(message: _179.Evidence): _179.EvidenceAmino;
@@ -549,8 +549,8 @@ export declare namespace tendermint {
         };
         Snapshot: {
             typeUrl: string;
-            encode(message: _179.Snapshot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _179.Snapshot;
+            encode(message: _179.Snapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _179.Snapshot;
             fromPartial(object: Partial<_179.Snapshot>): _179.Snapshot;
             fromAmino(object: _179.SnapshotAmino): _179.Snapshot;
             toAmino(message: _179.Snapshot): _179.SnapshotAmino;
@@ -563,8 +563,8 @@ export declare namespace tendermint {
     const crypto: {
         Proof: {
             typeUrl: string;
-            encode(message: _181.Proof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _181.Proof;
+            encode(message: _181.Proof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _181.Proof;
             fromPartial(object: Partial<_181.Proof>): _181.Proof;
             fromAmino(object: _181.ProofAmino): _181.Proof;
             toAmino(message: _181.Proof): _181.ProofAmino;
@@ -575,8 +575,8 @@ export declare namespace tendermint {
         };
         ValueOp: {
             typeUrl: string;
-            encode(message: _181.ValueOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _181.ValueOp;
+            encode(message: _181.ValueOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _181.ValueOp;
             fromPartial(object: Partial<_181.ValueOp>): _181.ValueOp;
             fromAmino(object: _181.ValueOpAmino): _181.ValueOp;
             toAmino(message: _181.ValueOp): _181.ValueOpAmino;
@@ -587,8 +587,8 @@ export declare namespace tendermint {
         };
         DominoOp: {
             typeUrl: string;
-            encode(message: _181.DominoOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _181.DominoOp;
+            encode(message: _181.DominoOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _181.DominoOp;
             fromPartial(object: Partial<_181.DominoOp>): _181.DominoOp;
             fromAmino(object: _181.DominoOpAmino): _181.DominoOp;
             toAmino(message: _181.DominoOp): _181.DominoOpAmino;
@@ -599,8 +599,8 @@ export declare namespace tendermint {
         };
         ProofOp: {
             typeUrl: string;
-            encode(message: _181.ProofOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _181.ProofOp;
+            encode(message: _181.ProofOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _181.ProofOp;
             fromPartial(object: Partial<_181.ProofOp>): _181.ProofOp;
             fromAmino(object: _181.ProofOpAmino): _181.ProofOp;
             toAmino(message: _181.ProofOp): _181.ProofOpAmino;
@@ -611,8 +611,8 @@ export declare namespace tendermint {
         };
         ProofOps: {
             typeUrl: string;
-            encode(message: _181.ProofOps, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _181.ProofOps;
+            encode(message: _181.ProofOps, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _181.ProofOps;
             fromPartial(object: Partial<_181.ProofOps>): _181.ProofOps;
             fromAmino(object: _181.ProofOpsAmino): _181.ProofOps;
             toAmino(message: _181.ProofOps): _181.ProofOpsAmino;
@@ -623,8 +623,8 @@ export declare namespace tendermint {
         };
         PublicKey: {
             typeUrl: string;
-            encode(message: _180.PublicKey, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _180.PublicKey;
+            encode(message: _180.PublicKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _180.PublicKey;
             fromPartial(object: Partial<_180.PublicKey>): _180.PublicKey;
             fromAmino(object: _180.PublicKeyAmino): _180.PublicKey;
             toAmino(message: _180.PublicKey): _180.PublicKeyAmino;
@@ -638,8 +638,8 @@ export declare namespace tendermint {
         const bits: {
             BitArray: {
                 typeUrl: string;
-                encode(message: _182.BitArray, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _182.BitArray;
+                encode(message: _182.BitArray, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _182.BitArray;
                 fromPartial(object: Partial<_182.BitArray>): _182.BitArray;
                 fromAmino(object: _182.BitArrayAmino): _182.BitArray;
                 toAmino(message: _182.BitArray): _182.BitArrayAmino;
@@ -653,8 +653,8 @@ export declare namespace tendermint {
     const p2p: {
         ProtocolVersion: {
             typeUrl: string;
-            encode(message: _183.ProtocolVersion, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _183.ProtocolVersion;
+            encode(message: _183.ProtocolVersion, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _183.ProtocolVersion;
             fromPartial(object: Partial<_183.ProtocolVersion>): _183.ProtocolVersion;
             fromAmino(object: _183.ProtocolVersionAmino): _183.ProtocolVersion;
             toAmino(message: _183.ProtocolVersion): _183.ProtocolVersionAmino;
@@ -665,8 +665,8 @@ export declare namespace tendermint {
         };
         NodeInfo: {
             typeUrl: string;
-            encode(message: _183.NodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _183.NodeInfo;
+            encode(message: _183.NodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _183.NodeInfo;
             fromPartial(object: Partial<_183.NodeInfo>): _183.NodeInfo;
             fromAmino(object: _183.NodeInfoAmino): _183.NodeInfo;
             toAmino(message: _183.NodeInfo): _183.NodeInfoAmino;
@@ -677,8 +677,8 @@ export declare namespace tendermint {
         };
         NodeInfoOther: {
             typeUrl: string;
-            encode(message: _183.NodeInfoOther, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _183.NodeInfoOther;
+            encode(message: _183.NodeInfoOther, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _183.NodeInfoOther;
             fromPartial(object: Partial<_183.NodeInfoOther>): _183.NodeInfoOther;
             fromAmino(object: _183.NodeInfoOtherAmino): _183.NodeInfoOther;
             toAmino(message: _183.NodeInfoOther): _183.NodeInfoOtherAmino;
@@ -689,8 +689,8 @@ export declare namespace tendermint {
         };
         PeerInfo: {
             typeUrl: string;
-            encode(message: _183.PeerInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _183.PeerInfo;
+            encode(message: _183.PeerInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _183.PeerInfo;
             fromPartial(object: Partial<_183.PeerInfo>): _183.PeerInfo;
             fromAmino(object: _183.PeerInfoAmino): _183.PeerInfo;
             toAmino(message: _183.PeerInfo): _183.PeerInfoAmino;
@@ -701,8 +701,8 @@ export declare namespace tendermint {
         };
         PeerAddressInfo: {
             typeUrl: string;
-            encode(message: _183.PeerAddressInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _183.PeerAddressInfo;
+            encode(message: _183.PeerAddressInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _183.PeerAddressInfo;
             fromPartial(object: Partial<_183.PeerAddressInfo>): _183.PeerAddressInfo;
             fromAmino(object: _183.PeerAddressInfoAmino): _183.PeerAddressInfo;
             toAmino(message: _183.PeerAddressInfo): _183.PeerAddressInfoAmino;
@@ -715,8 +715,8 @@ export declare namespace tendermint {
     const types: {
         ValidatorSet: {
             typeUrl: string;
-            encode(message: _188.ValidatorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _188.ValidatorSet;
+            encode(message: _188.ValidatorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _188.ValidatorSet;
             fromPartial(object: Partial<_188.ValidatorSet>): _188.ValidatorSet;
             fromAmino(object: _188.ValidatorSetAmino): _188.ValidatorSet;
             toAmino(message: _188.ValidatorSet): _188.ValidatorSetAmino;
@@ -727,8 +727,8 @@ export declare namespace tendermint {
         };
         Validator: {
             typeUrl: string;
-            encode(message: _188.Validator, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _188.Validator;
+            encode(message: _188.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _188.Validator;
             fromPartial(object: Partial<_188.Validator>): _188.Validator;
             fromAmino(object: _188.ValidatorAmino): _188.Validator;
             toAmino(message: _188.Validator): _188.ValidatorAmino;
@@ -739,8 +739,8 @@ export declare namespace tendermint {
         };
         SimpleValidator: {
             typeUrl: string;
-            encode(message: _188.SimpleValidator, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _188.SimpleValidator;
+            encode(message: _188.SimpleValidator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _188.SimpleValidator;
             fromPartial(object: Partial<_188.SimpleValidator>): _188.SimpleValidator;
             fromAmino(object: _188.SimpleValidatorAmino): _188.SimpleValidator;
             toAmino(message: _188.SimpleValidator): _188.SimpleValidatorAmino;
@@ -761,8 +761,8 @@ export declare namespace tendermint {
         SignedMsgTypeAmino: typeof _187.SignedMsgType;
         PartSetHeader: {
             typeUrl: string;
-            encode(message: _187.PartSetHeader, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.PartSetHeader;
+            encode(message: _187.PartSetHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.PartSetHeader;
             fromPartial(object: Partial<_187.PartSetHeader>): _187.PartSetHeader;
             fromAmino(object: _187.PartSetHeaderAmino): _187.PartSetHeader;
             toAmino(message: _187.PartSetHeader): _187.PartSetHeaderAmino;
@@ -773,8 +773,8 @@ export declare namespace tendermint {
         };
         Part: {
             typeUrl: string;
-            encode(message: _187.Part, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.Part;
+            encode(message: _187.Part, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.Part;
             fromPartial(object: Partial<_187.Part>): _187.Part;
             fromAmino(object: _187.PartAmino): _187.Part;
             toAmino(message: _187.Part): _187.PartAmino;
@@ -785,8 +785,8 @@ export declare namespace tendermint {
         };
         BlockID: {
             typeUrl: string;
-            encode(message: _187.BlockID, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.BlockID;
+            encode(message: _187.BlockID, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.BlockID;
             fromPartial(object: Partial<_187.BlockID>): _187.BlockID;
             fromAmino(object: _187.BlockIDAmino): _187.BlockID;
             toAmino(message: _187.BlockID): _187.BlockIDAmino;
@@ -797,8 +797,8 @@ export declare namespace tendermint {
         };
         Header: {
             typeUrl: string;
-            encode(message: _187.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.Header;
+            encode(message: _187.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.Header;
             fromPartial(object: Partial<_187.Header>): _187.Header;
             fromAmino(object: _187.HeaderAmino): _187.Header;
             toAmino(message: _187.Header): _187.HeaderAmino;
@@ -809,8 +809,8 @@ export declare namespace tendermint {
         };
         Data: {
             typeUrl: string;
-            encode(message: _187.Data, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.Data;
+            encode(message: _187.Data, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.Data;
             fromPartial(object: Partial<_187.Data>): _187.Data;
             fromAmino(object: _187.DataAmino): _187.Data;
             toAmino(message: _187.Data): _187.DataAmino;
@@ -821,8 +821,8 @@ export declare namespace tendermint {
         };
         Vote: {
             typeUrl: string;
-            encode(message: _187.Vote, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.Vote;
+            encode(message: _187.Vote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.Vote;
             fromPartial(object: Partial<_187.Vote>): _187.Vote;
             fromAmino(object: _187.VoteAmino): _187.Vote;
             toAmino(message: _187.Vote): _187.VoteAmino;
@@ -833,8 +833,8 @@ export declare namespace tendermint {
         };
         Commit: {
             typeUrl: string;
-            encode(message: _187.Commit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.Commit;
+            encode(message: _187.Commit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.Commit;
             fromPartial(object: Partial<_187.Commit>): _187.Commit;
             fromAmino(object: _187.CommitAmino): _187.Commit;
             toAmino(message: _187.Commit): _187.CommitAmino;
@@ -845,8 +845,8 @@ export declare namespace tendermint {
         };
         CommitSig: {
             typeUrl: string;
-            encode(message: _187.CommitSig, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.CommitSig;
+            encode(message: _187.CommitSig, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.CommitSig;
             fromPartial(object: Partial<_187.CommitSig>): _187.CommitSig;
             fromAmino(object: _187.CommitSigAmino): _187.CommitSig;
             toAmino(message: _187.CommitSig): _187.CommitSigAmino;
@@ -857,8 +857,8 @@ export declare namespace tendermint {
         };
         Proposal: {
             typeUrl: string;
-            encode(message: _187.Proposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.Proposal;
+            encode(message: _187.Proposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.Proposal;
             fromPartial(object: Partial<_187.Proposal>): _187.Proposal;
             fromAmino(object: _187.ProposalAmino): _187.Proposal;
             toAmino(message: _187.Proposal): _187.ProposalAmino;
@@ -869,8 +869,8 @@ export declare namespace tendermint {
         };
         SignedHeader: {
             typeUrl: string;
-            encode(message: _187.SignedHeader, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.SignedHeader;
+            encode(message: _187.SignedHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.SignedHeader;
             fromPartial(object: Partial<_187.SignedHeader>): _187.SignedHeader;
             fromAmino(object: _187.SignedHeaderAmino): _187.SignedHeader;
             toAmino(message: _187.SignedHeader): _187.SignedHeaderAmino;
@@ -881,8 +881,8 @@ export declare namespace tendermint {
         };
         LightBlock: {
             typeUrl: string;
-            encode(message: _187.LightBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.LightBlock;
+            encode(message: _187.LightBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.LightBlock;
             fromPartial(object: Partial<_187.LightBlock>): _187.LightBlock;
             fromAmino(object: _187.LightBlockAmino): _187.LightBlock;
             toAmino(message: _187.LightBlock): _187.LightBlockAmino;
@@ -893,8 +893,8 @@ export declare namespace tendermint {
         };
         BlockMeta: {
             typeUrl: string;
-            encode(message: _187.BlockMeta, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.BlockMeta;
+            encode(message: _187.BlockMeta, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.BlockMeta;
             fromPartial(object: Partial<_187.BlockMeta>): _187.BlockMeta;
             fromAmino(object: _187.BlockMetaAmino): _187.BlockMeta;
             toAmino(message: _187.BlockMeta): _187.BlockMetaAmino;
@@ -905,8 +905,8 @@ export declare namespace tendermint {
         };
         TxProof: {
             typeUrl: string;
-            encode(message: _187.TxProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _187.TxProof;
+            encode(message: _187.TxProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _187.TxProof;
             fromPartial(object: Partial<_187.TxProof>): _187.TxProof;
             fromAmino(object: _187.TxProofAmino): _187.TxProof;
             toAmino(message: _187.TxProof): _187.TxProofAmino;
@@ -917,8 +917,8 @@ export declare namespace tendermint {
         };
         ConsensusParams: {
             typeUrl: string;
-            encode(message: _186.ConsensusParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _186.ConsensusParams;
+            encode(message: _186.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _186.ConsensusParams;
             fromPartial(object: Partial<_186.ConsensusParams>): _186.ConsensusParams;
             fromAmino(object: _186.ConsensusParamsAmino): _186.ConsensusParams;
             toAmino(message: _186.ConsensusParams): _186.ConsensusParamsAmino;
@@ -929,8 +929,8 @@ export declare namespace tendermint {
         };
         BlockParams: {
             typeUrl: string;
-            encode(message: _186.BlockParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _186.BlockParams;
+            encode(message: _186.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _186.BlockParams;
             fromPartial(object: Partial<_186.BlockParams>): _186.BlockParams;
             fromAmino(object: _186.BlockParamsAmino): _186.BlockParams;
             toAmino(message: _186.BlockParams): _186.BlockParamsAmino;
@@ -941,8 +941,8 @@ export declare namespace tendermint {
         };
         EvidenceParams: {
             typeUrl: string;
-            encode(message: _186.EvidenceParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _186.EvidenceParams;
+            encode(message: _186.EvidenceParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _186.EvidenceParams;
             fromPartial(object: Partial<_186.EvidenceParams>): _186.EvidenceParams;
             fromAmino(object: _186.EvidenceParamsAmino): _186.EvidenceParams;
             toAmino(message: _186.EvidenceParams): _186.EvidenceParamsAmino;
@@ -953,8 +953,8 @@ export declare namespace tendermint {
         };
         ValidatorParams: {
             typeUrl: string;
-            encode(message: _186.ValidatorParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _186.ValidatorParams;
+            encode(message: _186.ValidatorParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _186.ValidatorParams;
             fromPartial(object: Partial<_186.ValidatorParams>): _186.ValidatorParams;
             fromAmino(object: _186.ValidatorParamsAmino): _186.ValidatorParams;
             toAmino(message: _186.ValidatorParams): _186.ValidatorParamsAmino;
@@ -965,8 +965,8 @@ export declare namespace tendermint {
         };
         VersionParams: {
             typeUrl: string;
-            encode(message: _186.VersionParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _186.VersionParams;
+            encode(message: _186.VersionParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _186.VersionParams;
             fromPartial(object: Partial<_186.VersionParams>): _186.VersionParams;
             fromAmino(object: _186.VersionParamsAmino): _186.VersionParams;
             toAmino(message: _186.VersionParams): _186.VersionParamsAmino;
@@ -977,8 +977,8 @@ export declare namespace tendermint {
         };
         HashedParams: {
             typeUrl: string;
-            encode(message: _186.HashedParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _186.HashedParams;
+            encode(message: _186.HashedParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _186.HashedParams;
             fromPartial(object: Partial<_186.HashedParams>): _186.HashedParams;
             fromAmino(object: _186.HashedParamsAmino): _186.HashedParams;
             toAmino(message: _186.HashedParams): _186.HashedParamsAmino;
@@ -989,8 +989,8 @@ export declare namespace tendermint {
         };
         Evidence: {
             typeUrl: string;
-            encode(message: _185.Evidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _185.Evidence;
+            encode(message: _185.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _185.Evidence;
             fromPartial(object: Partial<_185.Evidence>): _185.Evidence;
             fromAmino(object: _185.EvidenceAmino): _185.Evidence;
             toAmino(message: _185.Evidence): _185.EvidenceAmino;
@@ -1001,8 +1001,8 @@ export declare namespace tendermint {
         };
         DuplicateVoteEvidence: {
             typeUrl: string;
-            encode(message: _185.DuplicateVoteEvidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _185.DuplicateVoteEvidence;
+            encode(message: _185.DuplicateVoteEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _185.DuplicateVoteEvidence;
             fromPartial(object: Partial<_185.DuplicateVoteEvidence>): _185.DuplicateVoteEvidence;
             fromAmino(object: _185.DuplicateVoteEvidenceAmino): _185.DuplicateVoteEvidence;
             toAmino(message: _185.DuplicateVoteEvidence): _185.DuplicateVoteEvidenceAmino;
@@ -1013,8 +1013,8 @@ export declare namespace tendermint {
         };
         LightClientAttackEvidence: {
             typeUrl: string;
-            encode(message: _185.LightClientAttackEvidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _185.LightClientAttackEvidence;
+            encode(message: _185.LightClientAttackEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _185.LightClientAttackEvidence;
             fromPartial(object: Partial<_185.LightClientAttackEvidence>): _185.LightClientAttackEvidence;
             fromAmino(object: _185.LightClientAttackEvidenceAmino): _185.LightClientAttackEvidence;
             toAmino(message: _185.LightClientAttackEvidence): _185.LightClientAttackEvidenceAmino;
@@ -1025,8 +1025,8 @@ export declare namespace tendermint {
         };
         EvidenceList: {
             typeUrl: string;
-            encode(message: _185.EvidenceList, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _185.EvidenceList;
+            encode(message: _185.EvidenceList, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _185.EvidenceList;
             fromPartial(object: Partial<_185.EvidenceList>): _185.EvidenceList;
             fromAmino(object: _185.EvidenceListAmino): _185.EvidenceList;
             toAmino(message: _185.EvidenceList): _185.EvidenceListAmino;
@@ -1037,8 +1037,8 @@ export declare namespace tendermint {
         };
         Block: {
             typeUrl: string;
-            encode(message: _184.Block, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _184.Block;
+            encode(message: _184.Block, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _184.Block;
             fromPartial(object: Partial<_184.Block>): _184.Block;
             fromAmino(object: _184.BlockAmino): _184.Block;
             toAmino(message: _184.Block): _184.BlockAmino;
@@ -1051,8 +1051,8 @@ export declare namespace tendermint {
     const version: {
         App: {
             typeUrl: string;
-            encode(message: _189.App, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _189.App;
+            encode(message: _189.App, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _189.App;
             fromPartial(object: Partial<_189.App>): _189.App;
             fromAmino(object: _189.AppAmino): _189.App;
             toAmino(message: _189.App): _189.AppAmino;
@@ -1063,8 +1063,8 @@ export declare namespace tendermint {
         };
         Consensus: {
             typeUrl: string;
-            encode(message: _189.Consensus, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _189.Consensus;
+            encode(message: _189.Consensus, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _189.Consensus;
             fromPartial(object: Partial<_189.Consensus>): _189.Consensus;
             fromAmino(object: _189.ConsensusAmino): _189.Consensus;
             toAmino(message: _189.Consensus): _189.ConsensusAmino;

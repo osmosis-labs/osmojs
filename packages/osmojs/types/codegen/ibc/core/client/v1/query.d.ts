@@ -1,8 +1,7 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType, ConsensusStateWithHeight, ConsensusStateWithHeightAmino, ConsensusStateWithHeightSDKType, Params, ParamsAmino, ParamsSDKType } from "./client";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * QueryClientStateRequest is the request type for the Query/ClientState RPC
  * method
@@ -41,11 +40,11 @@ export interface QueryClientStateRequestSDKType {
  */
 export interface QueryClientStateResponse {
     /** client state associated with the request identifier */
-    clientState?: Any;
+    clientState: Any;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight?: Height;
+    proofHeight: Height;
 }
 export interface QueryClientStateResponseProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryClientStateResponse";
@@ -74,9 +73,9 @@ export interface QueryClientStateResponseAminoMsg {
  * which the proof was retrieved.
  */
 export interface QueryClientStateResponseSDKType {
-    client_state?: AnySDKType;
+    client_state: AnySDKType;
     proof: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
 }
 /**
  * QueryClientStatesRequest is the request type for the Query/ClientStates RPC
@@ -84,7 +83,7 @@ export interface QueryClientStateResponseSDKType {
  */
 export interface QueryClientStatesRequest {
     /** pagination request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryClientStatesRequestProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryClientStatesRequest";
@@ -107,7 +106,7 @@ export interface QueryClientStatesRequestAminoMsg {
  * method
  */
 export interface QueryClientStatesRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryClientStatesResponse is the response type for the Query/ClientStates RPC
@@ -117,7 +116,7 @@ export interface QueryClientStatesResponse {
     /** list of stored ClientStates of the chain. */
     clientStates: IdentifiedClientState[];
     /** pagination response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryClientStatesResponseProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryClientStatesResponse";
@@ -143,7 +142,7 @@ export interface QueryClientStatesResponseAminoMsg {
  */
 export interface QueryClientStatesResponseSDKType {
     client_states: IdentifiedClientStateSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryConsensusStateRequest is the request type for the Query/ConsensusState
@@ -154,9 +153,9 @@ export interface QueryConsensusStateRequest {
     /** client identifier */
     clientId: string;
     /** consensus state revision number */
-    revisionNumber: Long;
+    revisionNumber: bigint;
     /** consensus state revision height */
-    revisionHeight: Long;
+    revisionHeight: bigint;
     /**
      * latest_height overrrides the height field and queries the latest stored
      * ConsensusState
@@ -196,8 +195,8 @@ export interface QueryConsensusStateRequestAminoMsg {
  */
 export interface QueryConsensusStateRequestSDKType {
     client_id: string;
-    revision_number: Long;
-    revision_height: Long;
+    revision_number: bigint;
+    revision_height: bigint;
     latest_height: boolean;
 }
 /**
@@ -206,11 +205,11 @@ export interface QueryConsensusStateRequestSDKType {
  */
 export interface QueryConsensusStateResponse {
     /** consensus state associated with the client identifier at the given height */
-    consensusState?: Any;
+    consensusState: Any;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight?: Height;
+    proofHeight: Height;
 }
 export interface QueryConsensusStateResponseProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryConsensusStateResponse";
@@ -237,9 +236,9 @@ export interface QueryConsensusStateResponseAminoMsg {
  * RPC method
  */
 export interface QueryConsensusStateResponseSDKType {
-    consensus_state?: AnySDKType;
+    consensus_state: AnySDKType;
     proof: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
 }
 /**
  * QueryConsensusStatesRequest is the request type for the Query/ConsensusStates
@@ -249,7 +248,7 @@ export interface QueryConsensusStatesRequest {
     /** client identifier */
     clientId: string;
     /** pagination request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryConsensusStatesRequestProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryConsensusStatesRequest";
@@ -275,7 +274,7 @@ export interface QueryConsensusStatesRequestAminoMsg {
  */
 export interface QueryConsensusStatesRequestSDKType {
     client_id: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryConsensusStatesResponse is the response type for the
@@ -285,7 +284,7 @@ export interface QueryConsensusStatesResponse {
     /** consensus states associated with the identifier */
     consensusStates: ConsensusStateWithHeight[];
     /** pagination response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryConsensusStatesResponseProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryConsensusStatesResponse";
@@ -311,7 +310,7 @@ export interface QueryConsensusStatesResponseAminoMsg {
  */
 export interface QueryConsensusStatesResponseSDKType {
     consensus_states: ConsensusStateWithHeightSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryConsensusStateHeightsRequest is the request type for Query/ConsensusStateHeights
@@ -321,7 +320,7 @@ export interface QueryConsensusStateHeightsRequest {
     /** client identifier */
     clientId: string;
     /** pagination request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryConsensusStateHeightsRequestProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryConsensusStateHeightsRequest";
@@ -347,7 +346,7 @@ export interface QueryConsensusStateHeightsRequestAminoMsg {
  */
 export interface QueryConsensusStateHeightsRequestSDKType {
     client_id: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryConsensusStateHeightsResponse is the response type for the
@@ -357,7 +356,7 @@ export interface QueryConsensusStateHeightsResponse {
     /** consensus state heights */
     consensusStateHeights: Height[];
     /** pagination response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
 }
 export interface QueryConsensusStateHeightsResponseProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryConsensusStateHeightsResponse";
@@ -383,7 +382,7 @@ export interface QueryConsensusStateHeightsResponseAminoMsg {
  */
 export interface QueryConsensusStateHeightsResponseSDKType {
     consensus_state_heights: HeightSDKType[];
-    pagination?: PageResponseSDKType;
+    pagination: PageResponseSDKType;
 }
 /**
  * QueryClientStatusRequest is the request type for the Query/ClientStatus RPC
@@ -477,7 +476,7 @@ export interface QueryClientParamsRequestSDKType {
  */
 export interface QueryClientParamsResponse {
     /** params defines the parameters of the module. */
-    params?: Params;
+    params: Params;
 }
 export interface QueryClientParamsResponseProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryClientParamsResponse";
@@ -500,7 +499,7 @@ export interface QueryClientParamsResponseAminoMsg {
  * method.
  */
 export interface QueryClientParamsResponseSDKType {
-    params?: ParamsSDKType;
+    params: ParamsSDKType;
 }
 /**
  * QueryUpgradedClientStateRequest is the request type for the
@@ -534,7 +533,7 @@ export interface QueryUpgradedClientStateRequestSDKType {
  */
 export interface QueryUpgradedClientStateResponse {
     /** client state associated with the request identifier */
-    upgradedClientState?: Any;
+    upgradedClientState: Any;
 }
 export interface QueryUpgradedClientStateResponseProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryUpgradedClientStateResponse";
@@ -557,7 +556,7 @@ export interface QueryUpgradedClientStateResponseAminoMsg {
  * Query/UpgradedClientState RPC method.
  */
 export interface QueryUpgradedClientStateResponseSDKType {
-    upgraded_client_state?: AnySDKType;
+    upgraded_client_state: AnySDKType;
 }
 /**
  * QueryUpgradedConsensusStateRequest is the request type for the
@@ -591,7 +590,7 @@ export interface QueryUpgradedConsensusStateRequestSDKType {
  */
 export interface QueryUpgradedConsensusStateResponse {
     /** Consensus state associated with the request identifier */
-    upgradedConsensusState?: Any;
+    upgradedConsensusState: Any;
 }
 export interface QueryUpgradedConsensusStateResponseProtoMsg {
     typeUrl: "/ibc.core.client.v1.QueryUpgradedConsensusStateResponse";
@@ -614,12 +613,12 @@ export interface QueryUpgradedConsensusStateResponseAminoMsg {
  * Query/UpgradedConsensusState RPC method.
  */
 export interface QueryUpgradedConsensusStateResponseSDKType {
-    upgraded_consensus_state?: AnySDKType;
+    upgraded_consensus_state: AnySDKType;
 }
 export declare const QueryClientStateRequest: {
     typeUrl: string;
-    encode(message: QueryClientStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStateRequest;
+    encode(message: QueryClientStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStateRequest;
     fromPartial(object: Partial<QueryClientStateRequest>): QueryClientStateRequest;
     fromAmino(object: QueryClientStateRequestAmino): QueryClientStateRequest;
     toAmino(message: QueryClientStateRequest): QueryClientStateRequestAmino;
@@ -631,8 +630,8 @@ export declare const QueryClientStateRequest: {
 };
 export declare const QueryClientStateResponse: {
     typeUrl: string;
-    encode(message: QueryClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStateResponse;
+    encode(message: QueryClientStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStateResponse;
     fromPartial(object: Partial<QueryClientStateResponse>): QueryClientStateResponse;
     fromAmino(object: QueryClientStateResponseAmino): QueryClientStateResponse;
     toAmino(message: QueryClientStateResponse): QueryClientStateResponseAmino;
@@ -644,8 +643,8 @@ export declare const QueryClientStateResponse: {
 };
 export declare const QueryClientStatesRequest: {
     typeUrl: string;
-    encode(message: QueryClientStatesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatesRequest;
+    encode(message: QueryClientStatesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatesRequest;
     fromPartial(object: Partial<QueryClientStatesRequest>): QueryClientStatesRequest;
     fromAmino(object: QueryClientStatesRequestAmino): QueryClientStatesRequest;
     toAmino(message: QueryClientStatesRequest): QueryClientStatesRequestAmino;
@@ -657,8 +656,8 @@ export declare const QueryClientStatesRequest: {
 };
 export declare const QueryClientStatesResponse: {
     typeUrl: string;
-    encode(message: QueryClientStatesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatesResponse;
+    encode(message: QueryClientStatesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatesResponse;
     fromPartial(object: Partial<QueryClientStatesResponse>): QueryClientStatesResponse;
     fromAmino(object: QueryClientStatesResponseAmino): QueryClientStatesResponse;
     toAmino(message: QueryClientStatesResponse): QueryClientStatesResponseAmino;
@@ -670,8 +669,8 @@ export declare const QueryClientStatesResponse: {
 };
 export declare const QueryConsensusStateRequest: {
     typeUrl: string;
-    encode(message: QueryConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateRequest;
+    encode(message: QueryConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateRequest;
     fromPartial(object: Partial<QueryConsensusStateRequest>): QueryConsensusStateRequest;
     fromAmino(object: QueryConsensusStateRequestAmino): QueryConsensusStateRequest;
     toAmino(message: QueryConsensusStateRequest): QueryConsensusStateRequestAmino;
@@ -683,8 +682,8 @@ export declare const QueryConsensusStateRequest: {
 };
 export declare const QueryConsensusStateResponse: {
     typeUrl: string;
-    encode(message: QueryConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateResponse;
+    encode(message: QueryConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateResponse;
     fromPartial(object: Partial<QueryConsensusStateResponse>): QueryConsensusStateResponse;
     fromAmino(object: QueryConsensusStateResponseAmino): QueryConsensusStateResponse;
     toAmino(message: QueryConsensusStateResponse): QueryConsensusStateResponseAmino;
@@ -696,8 +695,8 @@ export declare const QueryConsensusStateResponse: {
 };
 export declare const QueryConsensusStatesRequest: {
     typeUrl: string;
-    encode(message: QueryConsensusStatesRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStatesRequest;
+    encode(message: QueryConsensusStatesRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStatesRequest;
     fromPartial(object: Partial<QueryConsensusStatesRequest>): QueryConsensusStatesRequest;
     fromAmino(object: QueryConsensusStatesRequestAmino): QueryConsensusStatesRequest;
     toAmino(message: QueryConsensusStatesRequest): QueryConsensusStatesRequestAmino;
@@ -709,8 +708,8 @@ export declare const QueryConsensusStatesRequest: {
 };
 export declare const QueryConsensusStatesResponse: {
     typeUrl: string;
-    encode(message: QueryConsensusStatesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStatesResponse;
+    encode(message: QueryConsensusStatesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStatesResponse;
     fromPartial(object: Partial<QueryConsensusStatesResponse>): QueryConsensusStatesResponse;
     fromAmino(object: QueryConsensusStatesResponseAmino): QueryConsensusStatesResponse;
     toAmino(message: QueryConsensusStatesResponse): QueryConsensusStatesResponseAmino;
@@ -722,8 +721,8 @@ export declare const QueryConsensusStatesResponse: {
 };
 export declare const QueryConsensusStateHeightsRequest: {
     typeUrl: string;
-    encode(message: QueryConsensusStateHeightsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateHeightsRequest;
+    encode(message: QueryConsensusStateHeightsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateHeightsRequest;
     fromPartial(object: Partial<QueryConsensusStateHeightsRequest>): QueryConsensusStateHeightsRequest;
     fromAmino(object: QueryConsensusStateHeightsRequestAmino): QueryConsensusStateHeightsRequest;
     toAmino(message: QueryConsensusStateHeightsRequest): QueryConsensusStateHeightsRequestAmino;
@@ -735,8 +734,8 @@ export declare const QueryConsensusStateHeightsRequest: {
 };
 export declare const QueryConsensusStateHeightsResponse: {
     typeUrl: string;
-    encode(message: QueryConsensusStateHeightsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateHeightsResponse;
+    encode(message: QueryConsensusStateHeightsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateHeightsResponse;
     fromPartial(object: Partial<QueryConsensusStateHeightsResponse>): QueryConsensusStateHeightsResponse;
     fromAmino(object: QueryConsensusStateHeightsResponseAmino): QueryConsensusStateHeightsResponse;
     toAmino(message: QueryConsensusStateHeightsResponse): QueryConsensusStateHeightsResponseAmino;
@@ -748,8 +747,8 @@ export declare const QueryConsensusStateHeightsResponse: {
 };
 export declare const QueryClientStatusRequest: {
     typeUrl: string;
-    encode(message: QueryClientStatusRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatusRequest;
+    encode(message: QueryClientStatusRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatusRequest;
     fromPartial(object: Partial<QueryClientStatusRequest>): QueryClientStatusRequest;
     fromAmino(object: QueryClientStatusRequestAmino): QueryClientStatusRequest;
     toAmino(message: QueryClientStatusRequest): QueryClientStatusRequestAmino;
@@ -761,8 +760,8 @@ export declare const QueryClientStatusRequest: {
 };
 export declare const QueryClientStatusResponse: {
     typeUrl: string;
-    encode(message: QueryClientStatusResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatusResponse;
+    encode(message: QueryClientStatusResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatusResponse;
     fromPartial(object: Partial<QueryClientStatusResponse>): QueryClientStatusResponse;
     fromAmino(object: QueryClientStatusResponseAmino): QueryClientStatusResponse;
     toAmino(message: QueryClientStatusResponse): QueryClientStatusResponseAmino;
@@ -774,8 +773,8 @@ export declare const QueryClientStatusResponse: {
 };
 export declare const QueryClientParamsRequest: {
     typeUrl: string;
-    encode(_: QueryClientParamsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientParamsRequest;
+    encode(_: QueryClientParamsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryClientParamsRequest;
     fromPartial(_: Partial<QueryClientParamsRequest>): QueryClientParamsRequest;
     fromAmino(_: QueryClientParamsRequestAmino): QueryClientParamsRequest;
     toAmino(_: QueryClientParamsRequest): QueryClientParamsRequestAmino;
@@ -787,8 +786,8 @@ export declare const QueryClientParamsRequest: {
 };
 export declare const QueryClientParamsResponse: {
     typeUrl: string;
-    encode(message: QueryClientParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientParamsResponse;
+    encode(message: QueryClientParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryClientParamsResponse;
     fromPartial(object: Partial<QueryClientParamsResponse>): QueryClientParamsResponse;
     fromAmino(object: QueryClientParamsResponseAmino): QueryClientParamsResponse;
     toAmino(message: QueryClientParamsResponse): QueryClientParamsResponseAmino;
@@ -800,8 +799,8 @@ export declare const QueryClientParamsResponse: {
 };
 export declare const QueryUpgradedClientStateRequest: {
     typeUrl: string;
-    encode(_: QueryUpgradedClientStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedClientStateRequest;
+    encode(_: QueryUpgradedClientStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedClientStateRequest;
     fromPartial(_: Partial<QueryUpgradedClientStateRequest>): QueryUpgradedClientStateRequest;
     fromAmino(_: QueryUpgradedClientStateRequestAmino): QueryUpgradedClientStateRequest;
     toAmino(_: QueryUpgradedClientStateRequest): QueryUpgradedClientStateRequestAmino;
@@ -813,8 +812,8 @@ export declare const QueryUpgradedClientStateRequest: {
 };
 export declare const QueryUpgradedClientStateResponse: {
     typeUrl: string;
-    encode(message: QueryUpgradedClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedClientStateResponse;
+    encode(message: QueryUpgradedClientStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedClientStateResponse;
     fromPartial(object: Partial<QueryUpgradedClientStateResponse>): QueryUpgradedClientStateResponse;
     fromAmino(object: QueryUpgradedClientStateResponseAmino): QueryUpgradedClientStateResponse;
     toAmino(message: QueryUpgradedClientStateResponse): QueryUpgradedClientStateResponseAmino;
@@ -826,8 +825,8 @@ export declare const QueryUpgradedClientStateResponse: {
 };
 export declare const QueryUpgradedConsensusStateRequest: {
     typeUrl: string;
-    encode(_: QueryUpgradedConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
+    encode(_: QueryUpgradedConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
     fromPartial(_: Partial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest;
     fromAmino(_: QueryUpgradedConsensusStateRequestAmino): QueryUpgradedConsensusStateRequest;
     toAmino(_: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestAmino;
@@ -839,8 +838,8 @@ export declare const QueryUpgradedConsensusStateRequest: {
 };
 export declare const QueryUpgradedConsensusStateResponse: {
     typeUrl: string;
-    encode(message: QueryUpgradedConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
+    encode(message: QueryUpgradedConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
     fromPartial(object: Partial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
     fromAmino(object: QueryUpgradedConsensusStateResponseAmino): QueryUpgradedConsensusStateResponse;
     toAmino(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseAmino;

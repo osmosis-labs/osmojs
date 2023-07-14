@@ -1,5 +1,5 @@
 import { CommitmentProof, CommitmentProofAmino, CommitmentProofSDKType } from "../../../../cosmos/ics23/v1/proofs";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * MerkleRoot defines a merkle root hash.
  * In the Cosmos SDK, the AppHash of a block header becomes the root.
@@ -133,8 +133,8 @@ export interface MerkleProofSDKType {
 }
 export declare const MerkleRoot: {
     typeUrl: string;
-    encode(message: MerkleRoot, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MerkleRoot;
+    encode(message: MerkleRoot, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MerkleRoot;
     fromPartial(object: Partial<MerkleRoot>): MerkleRoot;
     fromAmino(object: MerkleRootAmino): MerkleRoot;
     toAmino(message: MerkleRoot): MerkleRootAmino;
@@ -146,8 +146,8 @@ export declare const MerkleRoot: {
 };
 export declare const MerklePrefix: {
     typeUrl: string;
-    encode(message: MerklePrefix, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MerklePrefix;
+    encode(message: MerklePrefix, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MerklePrefix;
     fromPartial(object: Partial<MerklePrefix>): MerklePrefix;
     fromAmino(object: MerklePrefixAmino): MerklePrefix;
     toAmino(message: MerklePrefix): MerklePrefixAmino;
@@ -159,8 +159,8 @@ export declare const MerklePrefix: {
 };
 export declare const MerklePath: {
     typeUrl: string;
-    encode(message: MerklePath, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MerklePath;
+    encode(message: MerklePath, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MerklePath;
     fromPartial(object: Partial<MerklePath>): MerklePath;
     fromAmino(object: MerklePathAmino): MerklePath;
     toAmino(message: MerklePath): MerklePathAmino;
@@ -172,8 +172,8 @@ export declare const MerklePath: {
 };
 export declare const MerkleProof: {
     typeUrl: string;
-    encode(message: MerkleProof, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MerkleProof;
+    encode(message: MerkleProof, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MerkleProof;
     fromPartial(object: Partial<MerkleProof>): MerkleProof;
     fromAmino(object: MerkleProofAmino): MerkleProof;
     toAmino(message: MerkleProof): MerkleProofAmino;

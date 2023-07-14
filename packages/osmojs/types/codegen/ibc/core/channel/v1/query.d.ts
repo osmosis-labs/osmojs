@@ -2,8 +2,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Channel, ChannelAmino, ChannelSDKType, IdentifiedChannel, IdentifiedChannelAmino, IdentifiedChannelSDKType, PacketState, PacketStateAmino, PacketStateSDKType } from "./channel";
 import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType } from "../../client/v1/client";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** QueryChannelRequest is the request type for the Query/Channel RPC method */
 export interface QueryChannelRequest {
     /** port unique identifier */
@@ -38,11 +37,11 @@ export interface QueryChannelRequestSDKType {
  */
 export interface QueryChannelResponse {
     /** channel associated with the request identifiers */
-    channel?: Channel;
+    channel: Channel;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight?: Height;
+    proofHeight: Height;
 }
 export interface QueryChannelResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryChannelResponse";
@@ -71,14 +70,14 @@ export interface QueryChannelResponseAminoMsg {
  * proof was retrieved.
  */
 export interface QueryChannelResponseSDKType {
-    channel?: ChannelSDKType;
+    channel: ChannelSDKType;
     proof: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
 }
 /** QueryChannelsRequest is the request type for the Query/Channels RPC method */
 export interface QueryChannelsRequest {
     /** pagination request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryChannelsRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryChannelsRequest";
@@ -95,16 +94,16 @@ export interface QueryChannelsRequestAminoMsg {
 }
 /** QueryChannelsRequest is the request type for the Query/Channels RPC method */
 export interface QueryChannelsRequestSDKType {
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /** QueryChannelsResponse is the response type for the Query/Channels RPC method. */
 export interface QueryChannelsResponse {
     /** list of stored channels of the chain. */
     channels: IdentifiedChannel[];
     /** pagination response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
     /** query block height */
-    height?: Height;
+    height: Height;
 }
 export interface QueryChannelsResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryChannelsResponse";
@@ -126,8 +125,8 @@ export interface QueryChannelsResponseAminoMsg {
 /** QueryChannelsResponse is the response type for the Query/Channels RPC method. */
 export interface QueryChannelsResponseSDKType {
     channels: IdentifiedChannelSDKType[];
-    pagination?: PageResponseSDKType;
-    height?: HeightSDKType;
+    pagination: PageResponseSDKType;
+    height: HeightSDKType;
 }
 /**
  * QueryConnectionChannelsRequest is the request type for the
@@ -137,7 +136,7 @@ export interface QueryConnectionChannelsRequest {
     /** connection unique identifier */
     connection: string;
     /** pagination request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryConnectionChannelsRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryConnectionChannelsRequest";
@@ -163,7 +162,7 @@ export interface QueryConnectionChannelsRequestAminoMsg {
  */
 export interface QueryConnectionChannelsRequestSDKType {
     connection: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryConnectionChannelsResponse is the Response type for the
@@ -173,9 +172,9 @@ export interface QueryConnectionChannelsResponse {
     /** list of channels associated with a connection. */
     channels: IdentifiedChannel[];
     /** pagination response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
     /** query block height */
-    height?: Height;
+    height: Height;
 }
 export interface QueryConnectionChannelsResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryConnectionChannelsResponse";
@@ -203,8 +202,8 @@ export interface QueryConnectionChannelsResponseAminoMsg {
  */
 export interface QueryConnectionChannelsResponseSDKType {
     channels: IdentifiedChannelSDKType[];
-    pagination?: PageResponseSDKType;
-    height?: HeightSDKType;
+    pagination: PageResponseSDKType;
+    height: HeightSDKType;
 }
 /**
  * QueryChannelClientStateRequest is the request type for the Query/ClientState
@@ -248,11 +247,11 @@ export interface QueryChannelClientStateRequestSDKType {
  */
 export interface QueryChannelClientStateResponse {
     /** client state associated with the channel */
-    identifiedClientState?: IdentifiedClientState;
+    identifiedClientState: IdentifiedClientState;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight?: Height;
+    proofHeight: Height;
 }
 export interface QueryChannelClientStateResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryChannelClientStateResponse";
@@ -279,9 +278,9 @@ export interface QueryChannelClientStateResponseAminoMsg {
  * Query/QueryChannelClientState RPC method
  */
 export interface QueryChannelClientStateResponseSDKType {
-    identified_client_state?: IdentifiedClientStateSDKType;
+    identified_client_state: IdentifiedClientStateSDKType;
     proof: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
 }
 /**
  * QueryChannelConsensusStateRequest is the request type for the
@@ -293,9 +292,9 @@ export interface QueryChannelConsensusStateRequest {
     /** channel unique identifier */
     channelId: string;
     /** revision number of the consensus state */
-    revisionNumber: Long;
+    revisionNumber: bigint;
     /** revision height of the consensus state */
-    revisionHeight: Long;
+    revisionHeight: bigint;
 }
 export interface QueryChannelConsensusStateRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryChannelConsensusStateRequest";
@@ -326,8 +325,8 @@ export interface QueryChannelConsensusStateRequestAminoMsg {
 export interface QueryChannelConsensusStateRequestSDKType {
     port_id: string;
     channel_id: string;
-    revision_number: Long;
-    revision_height: Long;
+    revision_number: bigint;
+    revision_height: bigint;
 }
 /**
  * QueryChannelClientStateResponse is the Response type for the
@@ -335,13 +334,13 @@ export interface QueryChannelConsensusStateRequestSDKType {
  */
 export interface QueryChannelConsensusStateResponse {
     /** consensus state associated with the channel */
-    consensusState?: Any;
+    consensusState: Any;
     /** client ID associated with the consensus state */
     clientId: string;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight?: Height;
+    proofHeight: Height;
 }
 export interface QueryChannelConsensusStateResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryChannelConsensusStateResponse";
@@ -370,10 +369,10 @@ export interface QueryChannelConsensusStateResponseAminoMsg {
  * Query/QueryChannelClientState RPC method
  */
 export interface QueryChannelConsensusStateResponseSDKType {
-    consensus_state?: AnySDKType;
+    consensus_state: AnySDKType;
     client_id: string;
     proof: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
 }
 /**
  * QueryPacketCommitmentRequest is the request type for the
@@ -385,7 +384,7 @@ export interface QueryPacketCommitmentRequest {
     /** channel unique identifier */
     channelId: string;
     /** packet sequence */
-    sequence: Long;
+    sequence: bigint;
 }
 export interface QueryPacketCommitmentRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketCommitmentRequest";
@@ -414,7 +413,7 @@ export interface QueryPacketCommitmentRequestAminoMsg {
 export interface QueryPacketCommitmentRequestSDKType {
     port_id: string;
     channel_id: string;
-    sequence: Long;
+    sequence: bigint;
 }
 /**
  * QueryPacketCommitmentResponse defines the client query response for a packet
@@ -427,7 +426,7 @@ export interface QueryPacketCommitmentResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight?: Height;
+    proofHeight: Height;
 }
 export interface QueryPacketCommitmentResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketCommitmentResponse";
@@ -458,7 +457,7 @@ export interface QueryPacketCommitmentResponseAminoMsg {
 export interface QueryPacketCommitmentResponseSDKType {
     commitment: Uint8Array;
     proof: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
 }
 /**
  * QueryPacketCommitmentsRequest is the request type for the
@@ -470,7 +469,7 @@ export interface QueryPacketCommitmentsRequest {
     /** channel unique identifier */
     channelId: string;
     /** pagination request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
 }
 export interface QueryPacketCommitmentsRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketCommitmentsRequest";
@@ -499,7 +498,7 @@ export interface QueryPacketCommitmentsRequestAminoMsg {
 export interface QueryPacketCommitmentsRequestSDKType {
     port_id: string;
     channel_id: string;
-    pagination?: PageRequestSDKType;
+    pagination: PageRequestSDKType;
 }
 /**
  * QueryPacketCommitmentsResponse is the request type for the
@@ -508,9 +507,9 @@ export interface QueryPacketCommitmentsRequestSDKType {
 export interface QueryPacketCommitmentsResponse {
     commitments: PacketState[];
     /** pagination response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
     /** query block height */
-    height?: Height;
+    height: Height;
 }
 export interface QueryPacketCommitmentsResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketCommitmentsResponse";
@@ -537,8 +536,8 @@ export interface QueryPacketCommitmentsResponseAminoMsg {
  */
 export interface QueryPacketCommitmentsResponseSDKType {
     commitments: PacketStateSDKType[];
-    pagination?: PageResponseSDKType;
-    height?: HeightSDKType;
+    pagination: PageResponseSDKType;
+    height: HeightSDKType;
 }
 /**
  * QueryPacketReceiptRequest is the request type for the
@@ -550,7 +549,7 @@ export interface QueryPacketReceiptRequest {
     /** channel unique identifier */
     channelId: string;
     /** packet sequence */
-    sequence: Long;
+    sequence: bigint;
 }
 export interface QueryPacketReceiptRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketReceiptRequest";
@@ -579,7 +578,7 @@ export interface QueryPacketReceiptRequestAminoMsg {
 export interface QueryPacketReceiptRequestSDKType {
     port_id: string;
     channel_id: string;
-    sequence: Long;
+    sequence: bigint;
 }
 /**
  * QueryPacketReceiptResponse defines the client query response for a packet
@@ -592,7 +591,7 @@ export interface QueryPacketReceiptResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight?: Height;
+    proofHeight: Height;
 }
 export interface QueryPacketReceiptResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketReceiptResponse";
@@ -623,7 +622,7 @@ export interface QueryPacketReceiptResponseAminoMsg {
 export interface QueryPacketReceiptResponseSDKType {
     received: boolean;
     proof: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
 }
 /**
  * QueryPacketAcknowledgementRequest is the request type for the
@@ -635,7 +634,7 @@ export interface QueryPacketAcknowledgementRequest {
     /** channel unique identifier */
     channelId: string;
     /** packet sequence */
-    sequence: Long;
+    sequence: bigint;
 }
 export interface QueryPacketAcknowledgementRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketAcknowledgementRequest";
@@ -664,7 +663,7 @@ export interface QueryPacketAcknowledgementRequestAminoMsg {
 export interface QueryPacketAcknowledgementRequestSDKType {
     port_id: string;
     channel_id: string;
-    sequence: Long;
+    sequence: bigint;
 }
 /**
  * QueryPacketAcknowledgementResponse defines the client query response for a
@@ -677,7 +676,7 @@ export interface QueryPacketAcknowledgementResponse {
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight?: Height;
+    proofHeight: Height;
 }
 export interface QueryPacketAcknowledgementResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketAcknowledgementResponse";
@@ -708,7 +707,7 @@ export interface QueryPacketAcknowledgementResponseAminoMsg {
 export interface QueryPacketAcknowledgementResponseSDKType {
     acknowledgement: Uint8Array;
     proof: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
 }
 /**
  * QueryPacketAcknowledgementsRequest is the request type for the
@@ -720,9 +719,9 @@ export interface QueryPacketAcknowledgementsRequest {
     /** channel unique identifier */
     channelId: string;
     /** pagination request */
-    pagination?: PageRequest;
+    pagination: PageRequest;
     /** list of packet sequences */
-    packetCommitmentSequences: Long[];
+    packetCommitmentSequences: bigint[];
 }
 export interface QueryPacketAcknowledgementsRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketAcknowledgementsRequest";
@@ -753,8 +752,8 @@ export interface QueryPacketAcknowledgementsRequestAminoMsg {
 export interface QueryPacketAcknowledgementsRequestSDKType {
     port_id: string;
     channel_id: string;
-    pagination?: PageRequestSDKType;
-    packet_commitment_sequences: Long[];
+    pagination: PageRequestSDKType;
+    packet_commitment_sequences: bigint[];
 }
 /**
  * QueryPacketAcknowledgemetsResponse is the request type for the
@@ -763,9 +762,9 @@ export interface QueryPacketAcknowledgementsRequestSDKType {
 export interface QueryPacketAcknowledgementsResponse {
     acknowledgements: PacketState[];
     /** pagination response */
-    pagination?: PageResponse;
+    pagination: PageResponse;
     /** query block height */
-    height?: Height;
+    height: Height;
 }
 export interface QueryPacketAcknowledgementsResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryPacketAcknowledgementsResponse";
@@ -792,8 +791,8 @@ export interface QueryPacketAcknowledgementsResponseAminoMsg {
  */
 export interface QueryPacketAcknowledgementsResponseSDKType {
     acknowledgements: PacketStateSDKType[];
-    pagination?: PageResponseSDKType;
-    height?: HeightSDKType;
+    pagination: PageResponseSDKType;
+    height: HeightSDKType;
 }
 /**
  * QueryUnreceivedPacketsRequest is the request type for the
@@ -805,7 +804,7 @@ export interface QueryUnreceivedPacketsRequest {
     /** channel unique identifier */
     channelId: string;
     /** list of packet sequences */
-    packetCommitmentSequences: Long[];
+    packetCommitmentSequences: bigint[];
 }
 export interface QueryUnreceivedPacketsRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryUnreceivedPacketsRequest";
@@ -834,7 +833,7 @@ export interface QueryUnreceivedPacketsRequestAminoMsg {
 export interface QueryUnreceivedPacketsRequestSDKType {
     port_id: string;
     channel_id: string;
-    packet_commitment_sequences: Long[];
+    packet_commitment_sequences: bigint[];
 }
 /**
  * QueryUnreceivedPacketsResponse is the response type for the
@@ -842,9 +841,9 @@ export interface QueryUnreceivedPacketsRequestSDKType {
  */
 export interface QueryUnreceivedPacketsResponse {
     /** list of unreceived packet sequences */
-    sequences: Long[];
+    sequences: bigint[];
     /** query block height */
-    height?: Height;
+    height: Height;
 }
 export interface QueryUnreceivedPacketsResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryUnreceivedPacketsResponse";
@@ -869,8 +868,8 @@ export interface QueryUnreceivedPacketsResponseAminoMsg {
  * Query/UnreceivedPacketCommitments RPC method
  */
 export interface QueryUnreceivedPacketsResponseSDKType {
-    sequences: Long[];
-    height?: HeightSDKType;
+    sequences: bigint[];
+    height: HeightSDKType;
 }
 /**
  * QueryUnreceivedAcks is the request type for the
@@ -882,7 +881,7 @@ export interface QueryUnreceivedAcksRequest {
     /** channel unique identifier */
     channelId: string;
     /** list of acknowledgement sequences */
-    packetAckSequences: Long[];
+    packetAckSequences: bigint[];
 }
 export interface QueryUnreceivedAcksRequestProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryUnreceivedAcksRequest";
@@ -911,7 +910,7 @@ export interface QueryUnreceivedAcksRequestAminoMsg {
 export interface QueryUnreceivedAcksRequestSDKType {
     port_id: string;
     channel_id: string;
-    packet_ack_sequences: Long[];
+    packet_ack_sequences: bigint[];
 }
 /**
  * QueryUnreceivedAcksResponse is the response type for the
@@ -919,9 +918,9 @@ export interface QueryUnreceivedAcksRequestSDKType {
  */
 export interface QueryUnreceivedAcksResponse {
     /** list of unreceived acknowledgement sequences */
-    sequences: Long[];
+    sequences: bigint[];
     /** query block height */
-    height?: Height;
+    height: Height;
 }
 export interface QueryUnreceivedAcksResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryUnreceivedAcksResponse";
@@ -946,8 +945,8 @@ export interface QueryUnreceivedAcksResponseAminoMsg {
  * Query/UnreceivedAcks RPC method
  */
 export interface QueryUnreceivedAcksResponseSDKType {
-    sequences: Long[];
-    height?: HeightSDKType;
+    sequences: bigint[];
+    height: HeightSDKType;
 }
 /**
  * QueryNextSequenceReceiveRequest is the request type for the
@@ -991,11 +990,11 @@ export interface QueryNextSequenceReceiveRequestSDKType {
  */
 export interface QueryNextSequenceReceiveResponse {
     /** next sequence receive number */
-    nextSequenceReceive: Long;
+    nextSequenceReceive: bigint;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight?: Height;
+    proofHeight: Height;
 }
 export interface QueryNextSequenceReceiveResponseProtoMsg {
     typeUrl: "/ibc.core.channel.v1.QueryNextSequenceReceiveResponse";
@@ -1022,14 +1021,14 @@ export interface QueryNextSequenceReceiveResponseAminoMsg {
  * Query/QueryNextSequenceReceiveResponse RPC method
  */
 export interface QueryNextSequenceReceiveResponseSDKType {
-    next_sequence_receive: Long;
+    next_sequence_receive: bigint;
     proof: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
 }
 export declare const QueryChannelRequest: {
     typeUrl: string;
-    encode(message: QueryChannelRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelRequest;
+    encode(message: QueryChannelRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelRequest;
     fromPartial(object: Partial<QueryChannelRequest>): QueryChannelRequest;
     fromAmino(object: QueryChannelRequestAmino): QueryChannelRequest;
     toAmino(message: QueryChannelRequest): QueryChannelRequestAmino;
@@ -1041,8 +1040,8 @@ export declare const QueryChannelRequest: {
 };
 export declare const QueryChannelResponse: {
     typeUrl: string;
-    encode(message: QueryChannelResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelResponse;
+    encode(message: QueryChannelResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelResponse;
     fromPartial(object: Partial<QueryChannelResponse>): QueryChannelResponse;
     fromAmino(object: QueryChannelResponseAmino): QueryChannelResponse;
     toAmino(message: QueryChannelResponse): QueryChannelResponseAmino;
@@ -1054,8 +1053,8 @@ export declare const QueryChannelResponse: {
 };
 export declare const QueryChannelsRequest: {
     typeUrl: string;
-    encode(message: QueryChannelsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsRequest;
+    encode(message: QueryChannelsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelsRequest;
     fromPartial(object: Partial<QueryChannelsRequest>): QueryChannelsRequest;
     fromAmino(object: QueryChannelsRequestAmino): QueryChannelsRequest;
     toAmino(message: QueryChannelsRequest): QueryChannelsRequestAmino;
@@ -1067,8 +1066,8 @@ export declare const QueryChannelsRequest: {
 };
 export declare const QueryChannelsResponse: {
     typeUrl: string;
-    encode(message: QueryChannelsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelsResponse;
+    encode(message: QueryChannelsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelsResponse;
     fromPartial(object: Partial<QueryChannelsResponse>): QueryChannelsResponse;
     fromAmino(object: QueryChannelsResponseAmino): QueryChannelsResponse;
     toAmino(message: QueryChannelsResponse): QueryChannelsResponseAmino;
@@ -1080,8 +1079,8 @@ export declare const QueryChannelsResponse: {
 };
 export declare const QueryConnectionChannelsRequest: {
     typeUrl: string;
-    encode(message: QueryConnectionChannelsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsRequest;
+    encode(message: QueryConnectionChannelsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionChannelsRequest;
     fromPartial(object: Partial<QueryConnectionChannelsRequest>): QueryConnectionChannelsRequest;
     fromAmino(object: QueryConnectionChannelsRequestAmino): QueryConnectionChannelsRequest;
     toAmino(message: QueryConnectionChannelsRequest): QueryConnectionChannelsRequestAmino;
@@ -1093,8 +1092,8 @@ export declare const QueryConnectionChannelsRequest: {
 };
 export declare const QueryConnectionChannelsResponse: {
     typeUrl: string;
-    encode(message: QueryConnectionChannelsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionChannelsResponse;
+    encode(message: QueryConnectionChannelsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionChannelsResponse;
     fromPartial(object: Partial<QueryConnectionChannelsResponse>): QueryConnectionChannelsResponse;
     fromAmino(object: QueryConnectionChannelsResponseAmino): QueryConnectionChannelsResponse;
     toAmino(message: QueryConnectionChannelsResponse): QueryConnectionChannelsResponseAmino;
@@ -1106,8 +1105,8 @@ export declare const QueryConnectionChannelsResponse: {
 };
 export declare const QueryChannelClientStateRequest: {
     typeUrl: string;
-    encode(message: QueryChannelClientStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateRequest;
+    encode(message: QueryChannelClientStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelClientStateRequest;
     fromPartial(object: Partial<QueryChannelClientStateRequest>): QueryChannelClientStateRequest;
     fromAmino(object: QueryChannelClientStateRequestAmino): QueryChannelClientStateRequest;
     toAmino(message: QueryChannelClientStateRequest): QueryChannelClientStateRequestAmino;
@@ -1119,8 +1118,8 @@ export declare const QueryChannelClientStateRequest: {
 };
 export declare const QueryChannelClientStateResponse: {
     typeUrl: string;
-    encode(message: QueryChannelClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelClientStateResponse;
+    encode(message: QueryChannelClientStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelClientStateResponse;
     fromPartial(object: Partial<QueryChannelClientStateResponse>): QueryChannelClientStateResponse;
     fromAmino(object: QueryChannelClientStateResponseAmino): QueryChannelClientStateResponse;
     toAmino(message: QueryChannelClientStateResponse): QueryChannelClientStateResponseAmino;
@@ -1132,8 +1131,8 @@ export declare const QueryChannelClientStateResponse: {
 };
 export declare const QueryChannelConsensusStateRequest: {
     typeUrl: string;
-    encode(message: QueryChannelConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateRequest;
+    encode(message: QueryChannelConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelConsensusStateRequest;
     fromPartial(object: Partial<QueryChannelConsensusStateRequest>): QueryChannelConsensusStateRequest;
     fromAmino(object: QueryChannelConsensusStateRequestAmino): QueryChannelConsensusStateRequest;
     toAmino(message: QueryChannelConsensusStateRequest): QueryChannelConsensusStateRequestAmino;
@@ -1145,8 +1144,8 @@ export declare const QueryChannelConsensusStateRequest: {
 };
 export declare const QueryChannelConsensusStateResponse: {
     typeUrl: string;
-    encode(message: QueryChannelConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryChannelConsensusStateResponse;
+    encode(message: QueryChannelConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelConsensusStateResponse;
     fromPartial(object: Partial<QueryChannelConsensusStateResponse>): QueryChannelConsensusStateResponse;
     fromAmino(object: QueryChannelConsensusStateResponseAmino): QueryChannelConsensusStateResponse;
     toAmino(message: QueryChannelConsensusStateResponse): QueryChannelConsensusStateResponseAmino;
@@ -1158,8 +1157,8 @@ export declare const QueryChannelConsensusStateResponse: {
 };
 export declare const QueryPacketCommitmentRequest: {
     typeUrl: string;
-    encode(message: QueryPacketCommitmentRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentRequest;
+    encode(message: QueryPacketCommitmentRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentRequest;
     fromPartial(object: Partial<QueryPacketCommitmentRequest>): QueryPacketCommitmentRequest;
     fromAmino(object: QueryPacketCommitmentRequestAmino): QueryPacketCommitmentRequest;
     toAmino(message: QueryPacketCommitmentRequest): QueryPacketCommitmentRequestAmino;
@@ -1171,8 +1170,8 @@ export declare const QueryPacketCommitmentRequest: {
 };
 export declare const QueryPacketCommitmentResponse: {
     typeUrl: string;
-    encode(message: QueryPacketCommitmentResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentResponse;
+    encode(message: QueryPacketCommitmentResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentResponse;
     fromPartial(object: Partial<QueryPacketCommitmentResponse>): QueryPacketCommitmentResponse;
     fromAmino(object: QueryPacketCommitmentResponseAmino): QueryPacketCommitmentResponse;
     toAmino(message: QueryPacketCommitmentResponse): QueryPacketCommitmentResponseAmino;
@@ -1184,8 +1183,8 @@ export declare const QueryPacketCommitmentResponse: {
 };
 export declare const QueryPacketCommitmentsRequest: {
     typeUrl: string;
-    encode(message: QueryPacketCommitmentsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsRequest;
+    encode(message: QueryPacketCommitmentsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentsRequest;
     fromPartial(object: Partial<QueryPacketCommitmentsRequest>): QueryPacketCommitmentsRequest;
     fromAmino(object: QueryPacketCommitmentsRequestAmino): QueryPacketCommitmentsRequest;
     toAmino(message: QueryPacketCommitmentsRequest): QueryPacketCommitmentsRequestAmino;
@@ -1197,8 +1196,8 @@ export declare const QueryPacketCommitmentsRequest: {
 };
 export declare const QueryPacketCommitmentsResponse: {
     typeUrl: string;
-    encode(message: QueryPacketCommitmentsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketCommitmentsResponse;
+    encode(message: QueryPacketCommitmentsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentsResponse;
     fromPartial(object: Partial<QueryPacketCommitmentsResponse>): QueryPacketCommitmentsResponse;
     fromAmino(object: QueryPacketCommitmentsResponseAmino): QueryPacketCommitmentsResponse;
     toAmino(message: QueryPacketCommitmentsResponse): QueryPacketCommitmentsResponseAmino;
@@ -1210,8 +1209,8 @@ export declare const QueryPacketCommitmentsResponse: {
 };
 export declare const QueryPacketReceiptRequest: {
     typeUrl: string;
-    encode(message: QueryPacketReceiptRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptRequest;
+    encode(message: QueryPacketReceiptRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketReceiptRequest;
     fromPartial(object: Partial<QueryPacketReceiptRequest>): QueryPacketReceiptRequest;
     fromAmino(object: QueryPacketReceiptRequestAmino): QueryPacketReceiptRequest;
     toAmino(message: QueryPacketReceiptRequest): QueryPacketReceiptRequestAmino;
@@ -1223,8 +1222,8 @@ export declare const QueryPacketReceiptRequest: {
 };
 export declare const QueryPacketReceiptResponse: {
     typeUrl: string;
-    encode(message: QueryPacketReceiptResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketReceiptResponse;
+    encode(message: QueryPacketReceiptResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketReceiptResponse;
     fromPartial(object: Partial<QueryPacketReceiptResponse>): QueryPacketReceiptResponse;
     fromAmino(object: QueryPacketReceiptResponseAmino): QueryPacketReceiptResponse;
     toAmino(message: QueryPacketReceiptResponse): QueryPacketReceiptResponseAmino;
@@ -1236,8 +1235,8 @@ export declare const QueryPacketReceiptResponse: {
 };
 export declare const QueryPacketAcknowledgementRequest: {
     typeUrl: string;
-    encode(message: QueryPacketAcknowledgementRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementRequest;
+    encode(message: QueryPacketAcknowledgementRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementRequest;
     fromPartial(object: Partial<QueryPacketAcknowledgementRequest>): QueryPacketAcknowledgementRequest;
     fromAmino(object: QueryPacketAcknowledgementRequestAmino): QueryPacketAcknowledgementRequest;
     toAmino(message: QueryPacketAcknowledgementRequest): QueryPacketAcknowledgementRequestAmino;
@@ -1249,8 +1248,8 @@ export declare const QueryPacketAcknowledgementRequest: {
 };
 export declare const QueryPacketAcknowledgementResponse: {
     typeUrl: string;
-    encode(message: QueryPacketAcknowledgementResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementResponse;
+    encode(message: QueryPacketAcknowledgementResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementResponse;
     fromPartial(object: Partial<QueryPacketAcknowledgementResponse>): QueryPacketAcknowledgementResponse;
     fromAmino(object: QueryPacketAcknowledgementResponseAmino): QueryPacketAcknowledgementResponse;
     toAmino(message: QueryPacketAcknowledgementResponse): QueryPacketAcknowledgementResponseAmino;
@@ -1262,8 +1261,8 @@ export declare const QueryPacketAcknowledgementResponse: {
 };
 export declare const QueryPacketAcknowledgementsRequest: {
     typeUrl: string;
-    encode(message: QueryPacketAcknowledgementsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsRequest;
+    encode(message: QueryPacketAcknowledgementsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementsRequest;
     fromPartial(object: Partial<QueryPacketAcknowledgementsRequest>): QueryPacketAcknowledgementsRequest;
     fromAmino(object: QueryPacketAcknowledgementsRequestAmino): QueryPacketAcknowledgementsRequest;
     toAmino(message: QueryPacketAcknowledgementsRequest): QueryPacketAcknowledgementsRequestAmino;
@@ -1275,8 +1274,8 @@ export declare const QueryPacketAcknowledgementsRequest: {
 };
 export declare const QueryPacketAcknowledgementsResponse: {
     typeUrl: string;
-    encode(message: QueryPacketAcknowledgementsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponse;
+    encode(message: QueryPacketAcknowledgementsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponse;
     fromPartial(object: Partial<QueryPacketAcknowledgementsResponse>): QueryPacketAcknowledgementsResponse;
     fromAmino(object: QueryPacketAcknowledgementsResponseAmino): QueryPacketAcknowledgementsResponse;
     toAmino(message: QueryPacketAcknowledgementsResponse): QueryPacketAcknowledgementsResponseAmino;
@@ -1288,8 +1287,8 @@ export declare const QueryPacketAcknowledgementsResponse: {
 };
 export declare const QueryUnreceivedPacketsRequest: {
     typeUrl: string;
-    encode(message: QueryUnreceivedPacketsRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsRequest;
+    encode(message: QueryUnreceivedPacketsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedPacketsRequest;
     fromPartial(object: Partial<QueryUnreceivedPacketsRequest>): QueryUnreceivedPacketsRequest;
     fromAmino(object: QueryUnreceivedPacketsRequestAmino): QueryUnreceivedPacketsRequest;
     toAmino(message: QueryUnreceivedPacketsRequest): QueryUnreceivedPacketsRequestAmino;
@@ -1301,8 +1300,8 @@ export declare const QueryUnreceivedPacketsRequest: {
 };
 export declare const QueryUnreceivedPacketsResponse: {
     typeUrl: string;
-    encode(message: QueryUnreceivedPacketsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedPacketsResponse;
+    encode(message: QueryUnreceivedPacketsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedPacketsResponse;
     fromPartial(object: Partial<QueryUnreceivedPacketsResponse>): QueryUnreceivedPacketsResponse;
     fromAmino(object: QueryUnreceivedPacketsResponseAmino): QueryUnreceivedPacketsResponse;
     toAmino(message: QueryUnreceivedPacketsResponse): QueryUnreceivedPacketsResponseAmino;
@@ -1314,8 +1313,8 @@ export declare const QueryUnreceivedPacketsResponse: {
 };
 export declare const QueryUnreceivedAcksRequest: {
     typeUrl: string;
-    encode(message: QueryUnreceivedAcksRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksRequest;
+    encode(message: QueryUnreceivedAcksRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedAcksRequest;
     fromPartial(object: Partial<QueryUnreceivedAcksRequest>): QueryUnreceivedAcksRequest;
     fromAmino(object: QueryUnreceivedAcksRequestAmino): QueryUnreceivedAcksRequest;
     toAmino(message: QueryUnreceivedAcksRequest): QueryUnreceivedAcksRequestAmino;
@@ -1327,8 +1326,8 @@ export declare const QueryUnreceivedAcksRequest: {
 };
 export declare const QueryUnreceivedAcksResponse: {
     typeUrl: string;
-    encode(message: QueryUnreceivedAcksResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnreceivedAcksResponse;
+    encode(message: QueryUnreceivedAcksResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedAcksResponse;
     fromPartial(object: Partial<QueryUnreceivedAcksResponse>): QueryUnreceivedAcksResponse;
     fromAmino(object: QueryUnreceivedAcksResponseAmino): QueryUnreceivedAcksResponse;
     toAmino(message: QueryUnreceivedAcksResponse): QueryUnreceivedAcksResponseAmino;
@@ -1340,8 +1339,8 @@ export declare const QueryUnreceivedAcksResponse: {
 };
 export declare const QueryNextSequenceReceiveRequest: {
     typeUrl: string;
-    encode(message: QueryNextSequenceReceiveRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveRequest;
+    encode(message: QueryNextSequenceReceiveRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryNextSequenceReceiveRequest;
     fromPartial(object: Partial<QueryNextSequenceReceiveRequest>): QueryNextSequenceReceiveRequest;
     fromAmino(object: QueryNextSequenceReceiveRequestAmino): QueryNextSequenceReceiveRequest;
     toAmino(message: QueryNextSequenceReceiveRequest): QueryNextSequenceReceiveRequestAmino;
@@ -1353,8 +1352,8 @@ export declare const QueryNextSequenceReceiveRequest: {
 };
 export declare const QueryNextSequenceReceiveResponse: {
     typeUrl: string;
-    encode(message: QueryNextSequenceReceiveResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryNextSequenceReceiveResponse;
+    encode(message: QueryNextSequenceReceiveResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryNextSequenceReceiveResponse;
     fromPartial(object: Partial<QueryNextSequenceReceiveResponse>): QueryNextSequenceReceiveResponse;
     fromAmino(object: QueryNextSequenceReceiveResponseAmino): QueryNextSequenceReceiveResponse;
     toAmino(message: QueryNextSequenceReceiveResponse): QueryNextSequenceReceiveResponseAmino;

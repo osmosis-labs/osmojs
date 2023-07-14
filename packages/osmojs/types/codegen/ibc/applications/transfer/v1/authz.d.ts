@@ -1,5 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** Allocation defines the spend limit for a particular port and channel */
 export interface Allocation {
     /** the port on which the packet will be sent */
@@ -72,8 +72,8 @@ export interface TransferAuthorizationSDKType {
 }
 export declare const Allocation: {
     typeUrl: string;
-    encode(message: Allocation, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Allocation;
+    encode(message: Allocation, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Allocation;
     fromPartial(object: Partial<Allocation>): Allocation;
     fromAmino(object: AllocationAmino): Allocation;
     toAmino(message: Allocation): AllocationAmino;
@@ -85,8 +85,8 @@ export declare const Allocation: {
 };
 export declare const TransferAuthorization: {
     typeUrl: string;
-    encode(message: TransferAuthorization, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TransferAuthorization;
+    encode(message: TransferAuthorization, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TransferAuthorization;
     fromPartial(object: Partial<TransferAuthorization>): TransferAuthorization;
     fromAmino(object: TransferAuthorizationAmino): TransferAuthorization;
     toAmino(message: TransferAuthorization): TransferAuthorizationAmino;

@@ -1,7 +1,6 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../base/v1beta1/coin";
 import { ValidatorAccumulatedCommission, ValidatorAccumulatedCommissionAmino, ValidatorAccumulatedCommissionSDKType, ValidatorHistoricalRewards, ValidatorHistoricalRewardsAmino, ValidatorHistoricalRewardsSDKType, ValidatorCurrentRewards, ValidatorCurrentRewardsAmino, ValidatorCurrentRewardsSDKType, DelegatorStartingInfo, DelegatorStartingInfoAmino, DelegatorStartingInfoSDKType, ValidatorSlashEvent, ValidatorSlashEventAmino, ValidatorSlashEventSDKType, Params, ParamsAmino, ParamsSDKType, FeePool, FeePoolAmino, FeePoolSDKType } from "./distribution";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * DelegatorWithdrawInfo is the address for where distributions rewards are
  * withdrawn to by default this struct is only used at genesis to feed in
@@ -76,7 +75,7 @@ export interface ValidatorAccumulatedCommissionRecord {
     /** validator_address is the address of the validator. */
     validatorAddress: string;
     /** accumulated is the accumulated commission of a validator. */
-    accumulated?: ValidatorAccumulatedCommission;
+    accumulated: ValidatorAccumulatedCommission;
 }
 export interface ValidatorAccumulatedCommissionRecordProtoMsg {
     typeUrl: "/cosmos.distribution.v1beta1.ValidatorAccumulatedCommissionRecord";
@@ -102,7 +101,7 @@ export interface ValidatorAccumulatedCommissionRecordAminoMsg {
  */
 export interface ValidatorAccumulatedCommissionRecordSDKType {
     validator_address: string;
-    accumulated?: ValidatorAccumulatedCommissionSDKType;
+    accumulated: ValidatorAccumulatedCommissionSDKType;
 }
 /**
  * ValidatorHistoricalRewardsRecord is used for import / export via genesis
@@ -112,9 +111,9 @@ export interface ValidatorHistoricalRewardsRecord {
     /** validator_address is the address of the validator. */
     validatorAddress: string;
     /** period defines the period the historical rewards apply to. */
-    period: Long;
+    period: bigint;
     /** rewards defines the historical rewards of a validator. */
-    rewards?: ValidatorHistoricalRewards;
+    rewards: ValidatorHistoricalRewards;
 }
 export interface ValidatorHistoricalRewardsRecordProtoMsg {
     typeUrl: "/cosmos.distribution.v1beta1.ValidatorHistoricalRewardsRecord";
@@ -142,15 +141,15 @@ export interface ValidatorHistoricalRewardsRecordAminoMsg {
  */
 export interface ValidatorHistoricalRewardsRecordSDKType {
     validator_address: string;
-    period: Long;
-    rewards?: ValidatorHistoricalRewardsSDKType;
+    period: bigint;
+    rewards: ValidatorHistoricalRewardsSDKType;
 }
 /** ValidatorCurrentRewardsRecord is used for import / export via genesis json. */
 export interface ValidatorCurrentRewardsRecord {
     /** validator_address is the address of the validator. */
     validatorAddress: string;
     /** rewards defines the current rewards of a validator. */
-    rewards?: ValidatorCurrentRewards;
+    rewards: ValidatorCurrentRewards;
 }
 export interface ValidatorCurrentRewardsRecordProtoMsg {
     typeUrl: "/cosmos.distribution.v1beta1.ValidatorCurrentRewardsRecord";
@@ -170,7 +169,7 @@ export interface ValidatorCurrentRewardsRecordAminoMsg {
 /** ValidatorCurrentRewardsRecord is used for import / export via genesis json. */
 export interface ValidatorCurrentRewardsRecordSDKType {
     validator_address: string;
-    rewards?: ValidatorCurrentRewardsSDKType;
+    rewards: ValidatorCurrentRewardsSDKType;
 }
 /** DelegatorStartingInfoRecord used for import / export via genesis json. */
 export interface DelegatorStartingInfoRecord {
@@ -179,7 +178,7 @@ export interface DelegatorStartingInfoRecord {
     /** validator_address is the address of the validator. */
     validatorAddress: string;
     /** starting_info defines the starting info of a delegator. */
-    startingInfo?: DelegatorStartingInfo;
+    startingInfo: DelegatorStartingInfo;
 }
 export interface DelegatorStartingInfoRecordProtoMsg {
     typeUrl: "/cosmos.distribution.v1beta1.DelegatorStartingInfoRecord";
@@ -202,18 +201,18 @@ export interface DelegatorStartingInfoRecordAminoMsg {
 export interface DelegatorStartingInfoRecordSDKType {
     delegator_address: string;
     validator_address: string;
-    starting_info?: DelegatorStartingInfoSDKType;
+    starting_info: DelegatorStartingInfoSDKType;
 }
 /** ValidatorSlashEventRecord is used for import / export via genesis json. */
 export interface ValidatorSlashEventRecord {
     /** validator_address is the address of the validator. */
     validatorAddress: string;
     /** height defines the block height at which the slash event occured. */
-    height: Long;
+    height: bigint;
     /** period is the period of the slash event. */
-    period: Long;
+    period: bigint;
     /** validator_slash_event describes the slash event. */
-    validatorSlashEvent?: ValidatorSlashEvent;
+    validatorSlashEvent: ValidatorSlashEvent;
 }
 export interface ValidatorSlashEventRecordProtoMsg {
     typeUrl: "/cosmos.distribution.v1beta1.ValidatorSlashEventRecord";
@@ -237,16 +236,16 @@ export interface ValidatorSlashEventRecordAminoMsg {
 /** ValidatorSlashEventRecord is used for import / export via genesis json. */
 export interface ValidatorSlashEventRecordSDKType {
     validator_address: string;
-    height: Long;
-    period: Long;
-    validator_slash_event?: ValidatorSlashEventSDKType;
+    height: bigint;
+    period: bigint;
+    validator_slash_event: ValidatorSlashEventSDKType;
 }
 /** GenesisState defines the distribution module's genesis state. */
 export interface GenesisState {
     /** params defines all the paramaters of the module. */
-    params?: Params;
+    params: Params;
     /** fee_pool defines the fee pool at genesis. */
-    feePool?: FeePool;
+    feePool: FeePool;
     /** fee_pool defines the delegator withdraw infos at genesis. */
     delegatorWithdrawInfos: DelegatorWithdrawInfo[];
     /** fee_pool defines the previous proposer at genesis. */
@@ -297,8 +296,8 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the distribution module's genesis state. */
 export interface GenesisStateSDKType {
-    params?: ParamsSDKType;
-    fee_pool?: FeePoolSDKType;
+    params: ParamsSDKType;
+    fee_pool: FeePoolSDKType;
     delegator_withdraw_infos: DelegatorWithdrawInfoSDKType[];
     previous_proposer: string;
     outstanding_rewards: ValidatorOutstandingRewardsRecordSDKType[];
@@ -310,8 +309,8 @@ export interface GenesisStateSDKType {
 }
 export declare const DelegatorWithdrawInfo: {
     typeUrl: string;
-    encode(message: DelegatorWithdrawInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DelegatorWithdrawInfo;
+    encode(message: DelegatorWithdrawInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DelegatorWithdrawInfo;
     fromPartial(object: Partial<DelegatorWithdrawInfo>): DelegatorWithdrawInfo;
     fromAmino(object: DelegatorWithdrawInfoAmino): DelegatorWithdrawInfo;
     toAmino(message: DelegatorWithdrawInfo): DelegatorWithdrawInfoAmino;
@@ -323,8 +322,8 @@ export declare const DelegatorWithdrawInfo: {
 };
 export declare const ValidatorOutstandingRewardsRecord: {
     typeUrl: string;
-    encode(message: ValidatorOutstandingRewardsRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorOutstandingRewardsRecord;
+    encode(message: ValidatorOutstandingRewardsRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorOutstandingRewardsRecord;
     fromPartial(object: Partial<ValidatorOutstandingRewardsRecord>): ValidatorOutstandingRewardsRecord;
     fromAmino(object: ValidatorOutstandingRewardsRecordAmino): ValidatorOutstandingRewardsRecord;
     toAmino(message: ValidatorOutstandingRewardsRecord): ValidatorOutstandingRewardsRecordAmino;
@@ -336,8 +335,8 @@ export declare const ValidatorOutstandingRewardsRecord: {
 };
 export declare const ValidatorAccumulatedCommissionRecord: {
     typeUrl: string;
-    encode(message: ValidatorAccumulatedCommissionRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorAccumulatedCommissionRecord;
+    encode(message: ValidatorAccumulatedCommissionRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorAccumulatedCommissionRecord;
     fromPartial(object: Partial<ValidatorAccumulatedCommissionRecord>): ValidatorAccumulatedCommissionRecord;
     fromAmino(object: ValidatorAccumulatedCommissionRecordAmino): ValidatorAccumulatedCommissionRecord;
     toAmino(message: ValidatorAccumulatedCommissionRecord): ValidatorAccumulatedCommissionRecordAmino;
@@ -349,8 +348,8 @@ export declare const ValidatorAccumulatedCommissionRecord: {
 };
 export declare const ValidatorHistoricalRewardsRecord: {
     typeUrl: string;
-    encode(message: ValidatorHistoricalRewardsRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorHistoricalRewardsRecord;
+    encode(message: ValidatorHistoricalRewardsRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorHistoricalRewardsRecord;
     fromPartial(object: Partial<ValidatorHistoricalRewardsRecord>): ValidatorHistoricalRewardsRecord;
     fromAmino(object: ValidatorHistoricalRewardsRecordAmino): ValidatorHistoricalRewardsRecord;
     toAmino(message: ValidatorHistoricalRewardsRecord): ValidatorHistoricalRewardsRecordAmino;
@@ -362,8 +361,8 @@ export declare const ValidatorHistoricalRewardsRecord: {
 };
 export declare const ValidatorCurrentRewardsRecord: {
     typeUrl: string;
-    encode(message: ValidatorCurrentRewardsRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorCurrentRewardsRecord;
+    encode(message: ValidatorCurrentRewardsRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorCurrentRewardsRecord;
     fromPartial(object: Partial<ValidatorCurrentRewardsRecord>): ValidatorCurrentRewardsRecord;
     fromAmino(object: ValidatorCurrentRewardsRecordAmino): ValidatorCurrentRewardsRecord;
     toAmino(message: ValidatorCurrentRewardsRecord): ValidatorCurrentRewardsRecordAmino;
@@ -375,8 +374,8 @@ export declare const ValidatorCurrentRewardsRecord: {
 };
 export declare const DelegatorStartingInfoRecord: {
     typeUrl: string;
-    encode(message: DelegatorStartingInfoRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DelegatorStartingInfoRecord;
+    encode(message: DelegatorStartingInfoRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DelegatorStartingInfoRecord;
     fromPartial(object: Partial<DelegatorStartingInfoRecord>): DelegatorStartingInfoRecord;
     fromAmino(object: DelegatorStartingInfoRecordAmino): DelegatorStartingInfoRecord;
     toAmino(message: DelegatorStartingInfoRecord): DelegatorStartingInfoRecordAmino;
@@ -388,8 +387,8 @@ export declare const DelegatorStartingInfoRecord: {
 };
 export declare const ValidatorSlashEventRecord: {
     typeUrl: string;
-    encode(message: ValidatorSlashEventRecord, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEventRecord;
+    encode(message: ValidatorSlashEventRecord, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEventRecord;
     fromPartial(object: Partial<ValidatorSlashEventRecord>): ValidatorSlashEventRecord;
     fromAmino(object: ValidatorSlashEventRecordAmino): ValidatorSlashEventRecord;
     toAmino(message: ValidatorSlashEventRecord): ValidatorSlashEventRecordAmino;
@@ -401,8 +400,8 @@ export declare const ValidatorSlashEventRecord: {
 };
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

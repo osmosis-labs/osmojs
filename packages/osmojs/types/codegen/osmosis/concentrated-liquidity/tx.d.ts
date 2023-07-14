@@ -1,12 +1,11 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /** ===================== MsgCreatePosition */
 export interface MsgCreatePosition {
-    poolId: Long;
+    poolId: bigint;
     sender: string;
-    lowerTick: Long;
-    upperTick: Long;
+    lowerTick: bigint;
+    upperTick: bigint;
     /**
      * tokens_provided is the amount of tokens provided for the position.
      * It must at a minimum be of length 1 (for a single sided position)
@@ -43,16 +42,16 @@ export interface MsgCreatePositionAminoMsg {
 }
 /** ===================== MsgCreatePosition */
 export interface MsgCreatePositionSDKType {
-    pool_id: Long;
+    pool_id: bigint;
     sender: string;
-    lower_tick: Long;
-    upper_tick: Long;
+    lower_tick: bigint;
+    upper_tick: bigint;
     tokens_provided: CoinSDKType[];
     token_min_amount0: string;
     token_min_amount1: string;
 }
 export interface MsgCreatePositionResponse {
-    positionId: Long;
+    positionId: bigint;
     amount0: string;
     amount1: string;
     liquidityCreated: string;
@@ -62,8 +61,8 @@ export interface MsgCreatePositionResponse {
      * we may move their provided tick to the canonical tick that represents
      * the same price.
      */
-    lowerTick: Long;
-    upperTick: Long;
+    lowerTick: bigint;
+    upperTick: bigint;
 }
 export interface MsgCreatePositionResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreatePositionResponse";
@@ -88,16 +87,16 @@ export interface MsgCreatePositionResponseAminoMsg {
     value: MsgCreatePositionResponseAmino;
 }
 export interface MsgCreatePositionResponseSDKType {
-    position_id: Long;
+    position_id: bigint;
     amount0: string;
     amount1: string;
     liquidity_created: string;
-    lower_tick: Long;
-    upper_tick: Long;
+    lower_tick: bigint;
+    upper_tick: bigint;
 }
 /** ===================== MsgAddToPosition */
 export interface MsgAddToPosition {
-    positionId: Long;
+    positionId: bigint;
     sender: string;
     /** amount0 represents the amount of token0 willing to put in. */
     amount0: string;
@@ -151,7 +150,7 @@ export interface MsgAddToPositionAminoMsg {
 }
 /** ===================== MsgAddToPosition */
 export interface MsgAddToPositionSDKType {
-    position_id: Long;
+    position_id: bigint;
     sender: string;
     amount0: string;
     amount1: string;
@@ -159,7 +158,7 @@ export interface MsgAddToPositionSDKType {
     token_min_amount1: string;
 }
 export interface MsgAddToPositionResponse {
-    positionId: Long;
+    positionId: bigint;
     amount0: string;
     amount1: string;
 }
@@ -177,13 +176,13 @@ export interface MsgAddToPositionResponseAminoMsg {
     value: MsgAddToPositionResponseAmino;
 }
 export interface MsgAddToPositionResponseSDKType {
-    position_id: Long;
+    position_id: bigint;
     amount0: string;
     amount1: string;
 }
 /** ===================== MsgWithdrawPosition */
 export interface MsgWithdrawPosition {
-    positionId: Long;
+    positionId: bigint;
     sender: string;
     liquidityAmount: string;
 }
@@ -203,7 +202,7 @@ export interface MsgWithdrawPositionAminoMsg {
 }
 /** ===================== MsgWithdrawPosition */
 export interface MsgWithdrawPositionSDKType {
-    position_id: Long;
+    position_id: bigint;
     sender: string;
     liquidity_amount: string;
 }
@@ -229,7 +228,7 @@ export interface MsgWithdrawPositionResponseSDKType {
 }
 /** ===================== MsgCollectSpreadRewards */
 export interface MsgCollectSpreadRewards {
-    positionIds: Long[];
+    positionIds: bigint[];
     sender: string;
 }
 export interface MsgCollectSpreadRewardsProtoMsg {
@@ -247,7 +246,7 @@ export interface MsgCollectSpreadRewardsAminoMsg {
 }
 /** ===================== MsgCollectSpreadRewards */
 export interface MsgCollectSpreadRewardsSDKType {
-    position_ids: Long[];
+    position_ids: bigint[];
     sender: string;
 }
 export interface MsgCollectSpreadRewardsResponse {
@@ -269,7 +268,7 @@ export interface MsgCollectSpreadRewardsResponseSDKType {
 }
 /** ===================== MsgCollectIncentives */
 export interface MsgCollectIncentives {
-    positionIds: Long[];
+    positionIds: bigint[];
     sender: string;
 }
 export interface MsgCollectIncentivesProtoMsg {
@@ -287,7 +286,7 @@ export interface MsgCollectIncentivesAminoMsg {
 }
 /** ===================== MsgCollectIncentives */
 export interface MsgCollectIncentivesSDKType {
-    position_ids: Long[];
+    position_ids: bigint[];
     sender: string;
 }
 export interface MsgCollectIncentivesResponse {
@@ -312,7 +311,7 @@ export interface MsgCollectIncentivesResponseSDKType {
 }
 /** ===================== MsgFungifyChargedPositions */
 export interface MsgFungifyChargedPositions {
-    positionIds: Long[];
+    positionIds: bigint[];
     sender: string;
 }
 export interface MsgFungifyChargedPositionsProtoMsg {
@@ -330,11 +329,11 @@ export interface MsgFungifyChargedPositionsAminoMsg {
 }
 /** ===================== MsgFungifyChargedPositions */
 export interface MsgFungifyChargedPositionsSDKType {
-    position_ids: Long[];
+    position_ids: bigint[];
     sender: string;
 }
 export interface MsgFungifyChargedPositionsResponse {
-    newPositionId: Long;
+    newPositionId: bigint;
 }
 export interface MsgFungifyChargedPositionsResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositionsResponse";
@@ -348,12 +347,12 @@ export interface MsgFungifyChargedPositionsResponseAminoMsg {
     value: MsgFungifyChargedPositionsResponseAmino;
 }
 export interface MsgFungifyChargedPositionsResponseSDKType {
-    new_position_id: Long;
+    new_position_id: bigint;
 }
 export declare const MsgCreatePosition: {
     typeUrl: string;
-    encode(message: MsgCreatePosition, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePosition;
+    encode(message: MsgCreatePosition, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreatePosition;
     fromPartial(object: Partial<MsgCreatePosition>): MsgCreatePosition;
     fromAmino(object: MsgCreatePositionAmino): MsgCreatePosition;
     toAmino(message: MsgCreatePosition): MsgCreatePositionAmino;
@@ -365,8 +364,8 @@ export declare const MsgCreatePosition: {
 };
 export declare const MsgCreatePositionResponse: {
     typeUrl: string;
-    encode(message: MsgCreatePositionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePositionResponse;
+    encode(message: MsgCreatePositionResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreatePositionResponse;
     fromPartial(object: Partial<MsgCreatePositionResponse>): MsgCreatePositionResponse;
     fromAmino(object: MsgCreatePositionResponseAmino): MsgCreatePositionResponse;
     toAmino(message: MsgCreatePositionResponse): MsgCreatePositionResponseAmino;
@@ -378,8 +377,8 @@ export declare const MsgCreatePositionResponse: {
 };
 export declare const MsgAddToPosition: {
     typeUrl: string;
-    encode(message: MsgAddToPosition, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToPosition;
+    encode(message: MsgAddToPosition, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgAddToPosition;
     fromPartial(object: Partial<MsgAddToPosition>): MsgAddToPosition;
     fromAmino(object: MsgAddToPositionAmino): MsgAddToPosition;
     toAmino(message: MsgAddToPosition): MsgAddToPositionAmino;
@@ -391,8 +390,8 @@ export declare const MsgAddToPosition: {
 };
 export declare const MsgAddToPositionResponse: {
     typeUrl: string;
-    encode(message: MsgAddToPositionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToPositionResponse;
+    encode(message: MsgAddToPositionResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgAddToPositionResponse;
     fromPartial(object: Partial<MsgAddToPositionResponse>): MsgAddToPositionResponse;
     fromAmino(object: MsgAddToPositionResponseAmino): MsgAddToPositionResponse;
     toAmino(message: MsgAddToPositionResponse): MsgAddToPositionResponseAmino;
@@ -404,8 +403,8 @@ export declare const MsgAddToPositionResponse: {
 };
 export declare const MsgWithdrawPosition: {
     typeUrl: string;
-    encode(message: MsgWithdrawPosition, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawPosition;
+    encode(message: MsgWithdrawPosition, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawPosition;
     fromPartial(object: Partial<MsgWithdrawPosition>): MsgWithdrawPosition;
     fromAmino(object: MsgWithdrawPositionAmino): MsgWithdrawPosition;
     toAmino(message: MsgWithdrawPosition): MsgWithdrawPositionAmino;
@@ -417,8 +416,8 @@ export declare const MsgWithdrawPosition: {
 };
 export declare const MsgWithdrawPositionResponse: {
     typeUrl: string;
-    encode(message: MsgWithdrawPositionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawPositionResponse;
+    encode(message: MsgWithdrawPositionResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawPositionResponse;
     fromPartial(object: Partial<MsgWithdrawPositionResponse>): MsgWithdrawPositionResponse;
     fromAmino(object: MsgWithdrawPositionResponseAmino): MsgWithdrawPositionResponse;
     toAmino(message: MsgWithdrawPositionResponse): MsgWithdrawPositionResponseAmino;
@@ -430,8 +429,8 @@ export declare const MsgWithdrawPositionResponse: {
 };
 export declare const MsgCollectSpreadRewards: {
     typeUrl: string;
-    encode(message: MsgCollectSpreadRewards, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectSpreadRewards;
+    encode(message: MsgCollectSpreadRewards, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCollectSpreadRewards;
     fromPartial(object: Partial<MsgCollectSpreadRewards>): MsgCollectSpreadRewards;
     fromAmino(object: MsgCollectSpreadRewardsAmino): MsgCollectSpreadRewards;
     toAmino(message: MsgCollectSpreadRewards): MsgCollectSpreadRewardsAmino;
@@ -443,8 +442,8 @@ export declare const MsgCollectSpreadRewards: {
 };
 export declare const MsgCollectSpreadRewardsResponse: {
     typeUrl: string;
-    encode(message: MsgCollectSpreadRewardsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectSpreadRewardsResponse;
+    encode(message: MsgCollectSpreadRewardsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCollectSpreadRewardsResponse;
     fromPartial(object: Partial<MsgCollectSpreadRewardsResponse>): MsgCollectSpreadRewardsResponse;
     fromAmino(object: MsgCollectSpreadRewardsResponseAmino): MsgCollectSpreadRewardsResponse;
     toAmino(message: MsgCollectSpreadRewardsResponse): MsgCollectSpreadRewardsResponseAmino;
@@ -456,8 +455,8 @@ export declare const MsgCollectSpreadRewardsResponse: {
 };
 export declare const MsgCollectIncentives: {
     typeUrl: string;
-    encode(message: MsgCollectIncentives, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectIncentives;
+    encode(message: MsgCollectIncentives, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCollectIncentives;
     fromPartial(object: Partial<MsgCollectIncentives>): MsgCollectIncentives;
     fromAmino(object: MsgCollectIncentivesAmino): MsgCollectIncentives;
     toAmino(message: MsgCollectIncentives): MsgCollectIncentivesAmino;
@@ -469,8 +468,8 @@ export declare const MsgCollectIncentives: {
 };
 export declare const MsgCollectIncentivesResponse: {
     typeUrl: string;
-    encode(message: MsgCollectIncentivesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectIncentivesResponse;
+    encode(message: MsgCollectIncentivesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCollectIncentivesResponse;
     fromPartial(object: Partial<MsgCollectIncentivesResponse>): MsgCollectIncentivesResponse;
     fromAmino(object: MsgCollectIncentivesResponseAmino): MsgCollectIncentivesResponse;
     toAmino(message: MsgCollectIncentivesResponse): MsgCollectIncentivesResponseAmino;
@@ -482,8 +481,8 @@ export declare const MsgCollectIncentivesResponse: {
 };
 export declare const MsgFungifyChargedPositions: {
     typeUrl: string;
-    encode(message: MsgFungifyChargedPositions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFungifyChargedPositions;
+    encode(message: MsgFungifyChargedPositions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgFungifyChargedPositions;
     fromPartial(object: Partial<MsgFungifyChargedPositions>): MsgFungifyChargedPositions;
     fromAmino(object: MsgFungifyChargedPositionsAmino): MsgFungifyChargedPositions;
     toAmino(message: MsgFungifyChargedPositions): MsgFungifyChargedPositionsAmino;
@@ -495,8 +494,8 @@ export declare const MsgFungifyChargedPositions: {
 };
 export declare const MsgFungifyChargedPositionsResponse: {
     typeUrl: string;
-    encode(message: MsgFungifyChargedPositionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFungifyChargedPositionsResponse;
+    encode(message: MsgFungifyChargedPositionsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgFungifyChargedPositionsResponse;
     fromPartial(object: Partial<MsgFungifyChargedPositionsResponse>): MsgFungifyChargedPositionsResponse;
     fromAmino(object: MsgFungifyChargedPositionsResponseAmino): MsgFungifyChargedPositionsResponse;
     toAmino(message: MsgFungifyChargedPositionsResponse): MsgFungifyChargedPositionsResponseAmino;

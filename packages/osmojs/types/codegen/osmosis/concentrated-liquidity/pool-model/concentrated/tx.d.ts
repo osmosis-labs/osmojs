@@ -1,11 +1,10 @@
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** ===================== MsgCreateConcentratedPool */
 export interface MsgCreateConcentratedPool {
     sender: string;
     denom0: string;
     denom1: string;
-    tickSpacing: Long;
+    tickSpacing: bigint;
     spreadFactor: string;
 }
 export interface MsgCreateConcentratedPoolProtoMsg {
@@ -29,12 +28,12 @@ export interface MsgCreateConcentratedPoolSDKType {
     sender: string;
     denom0: string;
     denom1: string;
-    tick_spacing: Long;
+    tick_spacing: bigint;
     spread_factor: string;
 }
 /** Returns a unique poolID to identify the pool with. */
 export interface MsgCreateConcentratedPoolResponse {
-    poolId: Long;
+    poolId: bigint;
 }
 export interface MsgCreateConcentratedPoolResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPoolResponse";
@@ -50,12 +49,12 @@ export interface MsgCreateConcentratedPoolResponseAminoMsg {
 }
 /** Returns a unique poolID to identify the pool with. */
 export interface MsgCreateConcentratedPoolResponseSDKType {
-    pool_id: Long;
+    pool_id: bigint;
 }
 export declare const MsgCreateConcentratedPool: {
     typeUrl: string;
-    encode(message: MsgCreateConcentratedPool, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateConcentratedPool;
+    encode(message: MsgCreateConcentratedPool, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateConcentratedPool;
     fromPartial(object: Partial<MsgCreateConcentratedPool>): MsgCreateConcentratedPool;
     fromAmino(object: MsgCreateConcentratedPoolAmino): MsgCreateConcentratedPool;
     toAmino(message: MsgCreateConcentratedPool): MsgCreateConcentratedPoolAmino;
@@ -67,8 +66,8 @@ export declare const MsgCreateConcentratedPool: {
 };
 export declare const MsgCreateConcentratedPoolResponse: {
     typeUrl: string;
-    encode(message: MsgCreateConcentratedPoolResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateConcentratedPoolResponse;
+    encode(message: MsgCreateConcentratedPoolResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateConcentratedPoolResponse;
     fromPartial(object: Partial<MsgCreateConcentratedPoolResponse>): MsgCreateConcentratedPoolResponse;
     fromAmino(object: MsgCreateConcentratedPoolResponseAmino): MsgCreateConcentratedPoolResponse;
     toAmino(message: MsgCreateConcentratedPoolResponse): MsgCreateConcentratedPoolResponseAmino;

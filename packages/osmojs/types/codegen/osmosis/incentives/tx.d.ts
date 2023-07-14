@@ -1,7 +1,6 @@
 import { QueryCondition, QueryConditionAmino, QueryConditionSDKType } from "../lockup/lock";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /** MsgCreateGauge creates a gague to distribute rewards to users */
 export interface MsgCreateGauge {
     /**
@@ -18,16 +17,16 @@ export interface MsgCreateGauge {
      * distribute_to show which lock the gauge should distribute to by time
      * duration or by timestamp
      */
-    distributeTo?: QueryCondition;
+    distributeTo: QueryCondition;
     /** coins are coin(s) to be distributed by the gauge */
     coins: Coin[];
     /** start_time is the distribution start time */
-    startTime?: Date;
+    startTime: Date;
     /**
      * num_epochs_paid_over is the number of epochs distribution will be completed
      * over
      */
-    numEpochsPaidOver: Long;
+    numEpochsPaidOver: bigint;
     /**
      * pool_id is the ID of the pool that the gauge is meant to be associated
      * with. if pool_id is set, then the "QueryCondition.LockQueryType" must be
@@ -37,7 +36,7 @@ export interface MsgCreateGauge {
      * incentivestypes.NoLockExternalGaugeDenom(<pool-id>) so that the gauges
      * associated with a pool can be queried by this prefix if needed.
      */
-    poolId: Long;
+    poolId: bigint;
 }
 export interface MsgCreateGaugeProtoMsg {
     typeUrl: "/osmosis.incentives.MsgCreateGauge";
@@ -88,11 +87,11 @@ export interface MsgCreateGaugeAminoMsg {
 export interface MsgCreateGaugeSDKType {
     is_perpetual: boolean;
     owner: string;
-    distribute_to?: QueryConditionSDKType;
+    distribute_to: QueryConditionSDKType;
     coins: CoinSDKType[];
-    start_time?: Date;
-    num_epochs_paid_over: Long;
-    pool_id: Long;
+    start_time: Date;
+    num_epochs_paid_over: bigint;
+    pool_id: bigint;
 }
 export interface MsgCreateGaugeResponse {
 }
@@ -113,7 +112,7 @@ export interface MsgAddToGauge {
     /** owner is the gauge owner's address */
     owner: string;
     /** gauge_id is the ID of gauge that rewards are getting added to */
-    gaugeId: Long;
+    gaugeId: bigint;
     /** rewards are the coin(s) to add to gauge */
     rewards: Coin[];
 }
@@ -137,7 +136,7 @@ export interface MsgAddToGaugeAminoMsg {
 /** MsgAddToGauge adds coins to a previously created gauge */
 export interface MsgAddToGaugeSDKType {
     owner: string;
-    gauge_id: Long;
+    gauge_id: bigint;
     rewards: CoinSDKType[];
 }
 export interface MsgAddToGaugeResponse {
@@ -156,8 +155,8 @@ export interface MsgAddToGaugeResponseSDKType {
 }
 export declare const MsgCreateGauge: {
     typeUrl: string;
-    encode(message: MsgCreateGauge, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGauge;
+    encode(message: MsgCreateGauge, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGauge;
     fromPartial(object: Partial<MsgCreateGauge>): MsgCreateGauge;
     fromAmino(object: MsgCreateGaugeAmino): MsgCreateGauge;
     toAmino(message: MsgCreateGauge): MsgCreateGaugeAmino;
@@ -169,8 +168,8 @@ export declare const MsgCreateGauge: {
 };
 export declare const MsgCreateGaugeResponse: {
     typeUrl: string;
-    encode(_: MsgCreateGaugeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGaugeResponse;
+    encode(_: MsgCreateGaugeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGaugeResponse;
     fromPartial(_: Partial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse;
     fromAmino(_: MsgCreateGaugeResponseAmino): MsgCreateGaugeResponse;
     toAmino(_: MsgCreateGaugeResponse): MsgCreateGaugeResponseAmino;
@@ -182,8 +181,8 @@ export declare const MsgCreateGaugeResponse: {
 };
 export declare const MsgAddToGauge: {
     typeUrl: string;
-    encode(message: MsgAddToGauge, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGauge;
+    encode(message: MsgAddToGauge, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgAddToGauge;
     fromPartial(object: Partial<MsgAddToGauge>): MsgAddToGauge;
     fromAmino(object: MsgAddToGaugeAmino): MsgAddToGauge;
     toAmino(message: MsgAddToGauge): MsgAddToGaugeAmino;
@@ -195,8 +194,8 @@ export declare const MsgAddToGauge: {
 };
 export declare const MsgAddToGaugeResponse: {
     typeUrl: string;
-    encode(_: MsgAddToGaugeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGaugeResponse;
+    encode(_: MsgAddToGaugeResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgAddToGaugeResponse;
     fromPartial(_: Partial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse;
     fromAmino(_: MsgAddToGaugeResponseAmino): MsgAddToGaugeResponse;
     toAmino(_: MsgAddToGaugeResponse): MsgAddToGaugeResponseAmino;

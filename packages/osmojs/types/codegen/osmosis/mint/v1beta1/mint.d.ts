@@ -1,5 +1,4 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Minter represents the minting state. */
 export interface Minter {
     /** epoch_provisions represent rewards for the current epoch. */
@@ -142,7 +141,7 @@ export interface Params {
      * reduction_period_in_epochs the number of epochs it takes
      * to reduce the rewards.
      */
-    reductionPeriodInEpochs: Long;
+    reductionPeriodInEpochs: bigint;
     /**
      * reduction_factor is the reduction multiplier to execute
      * at the end of each period set by reduction_period_in_epochs.
@@ -153,7 +152,7 @@ export interface Params {
      * denom. In other words, defines which stakeholders will receive the minted
      * denoms and how much.
      */
-    distributionProportions?: DistributionProportions;
+    distributionProportions: DistributionProportions;
     /**
      * weighted_developer_rewards_receivers is the address to receive developer
      * rewards with weights assignedt to each address. The final amount that each
@@ -165,7 +164,7 @@ export interface Params {
      * minting_rewards_distribution_start_epoch start epoch to distribute minting
      * rewards
      */
-    mintingRewardsDistributionStartEpoch: Long;
+    mintingRewardsDistributionStartEpoch: bigint;
 }
 export interface ParamsProtoMsg {
     typeUrl: "/osmosis.mint.v1beta1.Params";
@@ -217,16 +216,16 @@ export interface ParamsSDKType {
     mint_denom: string;
     genesis_epoch_provisions: string;
     epoch_identifier: string;
-    reduction_period_in_epochs: Long;
+    reduction_period_in_epochs: bigint;
     reduction_factor: string;
-    distribution_proportions?: DistributionProportionsSDKType;
+    distribution_proportions: DistributionProportionsSDKType;
     weighted_developer_rewards_receivers: WeightedAddressSDKType[];
-    minting_rewards_distribution_start_epoch: Long;
+    minting_rewards_distribution_start_epoch: bigint;
 }
 export declare const Minter: {
     typeUrl: string;
-    encode(message: Minter, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Minter;
+    encode(message: Minter, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Minter;
     fromPartial(object: Partial<Minter>): Minter;
     fromAmino(object: MinterAmino): Minter;
     toAmino(message: Minter): MinterAmino;
@@ -238,8 +237,8 @@ export declare const Minter: {
 };
 export declare const WeightedAddress: {
     typeUrl: string;
-    encode(message: WeightedAddress, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): WeightedAddress;
+    encode(message: WeightedAddress, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): WeightedAddress;
     fromPartial(object: Partial<WeightedAddress>): WeightedAddress;
     fromAmino(object: WeightedAddressAmino): WeightedAddress;
     toAmino(message: WeightedAddress): WeightedAddressAmino;
@@ -251,8 +250,8 @@ export declare const WeightedAddress: {
 };
 export declare const DistributionProportions: {
     typeUrl: string;
-    encode(message: DistributionProportions, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DistributionProportions;
+    encode(message: DistributionProportions, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): DistributionProportions;
     fromPartial(object: Partial<DistributionProportions>): DistributionProportions;
     fromAmino(object: DistributionProportionsAmino): DistributionProportions;
     toAmino(message: DistributionProportions): DistributionProportionsAmino;
@@ -264,8 +263,8 @@ export declare const DistributionProportions: {
 };
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromPartial(object: Partial<Params>): Params;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;

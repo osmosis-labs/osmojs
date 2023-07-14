@@ -1,13 +1,12 @@
 import { IdentifiedConnection, IdentifiedConnectionAmino, IdentifiedConnectionSDKType, ConnectionPaths, ConnectionPathsAmino, ConnectionPathsSDKType, Params, ParamsAmino, ParamsSDKType } from "./connection";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** GenesisState defines the ibc connection submodule's genesis state. */
 export interface GenesisState {
     connections: IdentifiedConnection[];
     clientConnectionPaths: ConnectionPaths[];
     /** the sequence for the next generated connection identifier */
-    nextConnectionSequence: Long;
-    params?: Params;
+    nextConnectionSequence: bigint;
+    params: Params;
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/ibc.core.connection.v1.GenesisState";
@@ -29,13 +28,13 @@ export interface GenesisStateAminoMsg {
 export interface GenesisStateSDKType {
     connections: IdentifiedConnectionSDKType[];
     client_connection_paths: ConnectionPathsSDKType[];
-    next_connection_sequence: Long;
-    params?: ParamsSDKType;
+    next_connection_sequence: bigint;
+    params: ParamsSDKType;
 }
 export declare const GenesisState: {
     typeUrl: string;
-    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;

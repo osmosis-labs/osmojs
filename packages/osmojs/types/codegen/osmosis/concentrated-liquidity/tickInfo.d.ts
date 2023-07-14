@@ -1,5 +1,5 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface TickInfo {
     liquidityGross: string;
     liquidityNet: string;
@@ -10,7 +10,7 @@ export interface TickInfo {
      * because we need the ability to serialize and deserialize the
      * container easily for events when crossing a tick.
      */
-    uptimeTrackers?: UptimeTrackers;
+    uptimeTrackers: UptimeTrackers;
 }
 export interface TickInfoProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.TickInfo";
@@ -36,7 +36,7 @@ export interface TickInfoSDKType {
     liquidity_gross: string;
     liquidity_net: string;
     spread_reward_growth_opposite_direction_of_last_traversal: DecCoinSDKType[];
-    uptime_trackers?: UptimeTrackersSDKType;
+    uptime_trackers: UptimeTrackersSDKType;
 }
 export interface UptimeTrackers {
     list: UptimeTracker[];
@@ -74,8 +74,8 @@ export interface UptimeTrackerSDKType {
 }
 export declare const TickInfo: {
     typeUrl: string;
-    encode(message: TickInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): TickInfo;
+    encode(message: TickInfo, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): TickInfo;
     fromPartial(object: Partial<TickInfo>): TickInfo;
     fromAmino(object: TickInfoAmino): TickInfo;
     toAmino(message: TickInfo): TickInfoAmino;
@@ -87,8 +87,8 @@ export declare const TickInfo: {
 };
 export declare const UptimeTrackers: {
     typeUrl: string;
-    encode(message: UptimeTrackers, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UptimeTrackers;
+    encode(message: UptimeTrackers, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UptimeTrackers;
     fromPartial(object: Partial<UptimeTrackers>): UptimeTrackers;
     fromAmino(object: UptimeTrackersAmino): UptimeTrackers;
     toAmino(message: UptimeTrackers): UptimeTrackersAmino;
@@ -100,8 +100,8 @@ export declare const UptimeTrackers: {
 };
 export declare const UptimeTracker: {
     typeUrl: string;
-    encode(message: UptimeTracker, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): UptimeTracker;
+    encode(message: UptimeTracker, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): UptimeTracker;
     fromPartial(object: Partial<UptimeTracker>): UptimeTracker;
     fromAmino(object: UptimeTrackerAmino): UptimeTracker;
     toAmino(message: UptimeTracker): UptimeTrackerAmino;
