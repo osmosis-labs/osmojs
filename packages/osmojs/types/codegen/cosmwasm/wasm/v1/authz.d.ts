@@ -91,7 +91,7 @@ export interface ContractGrantProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.ContractGrant";
     value: Uint8Array;
 }
-export declare type ContractGrantEncoded = Omit<ContractGrant, "limit" | "filter"> & {
+export type ContractGrantEncoded = Omit<ContractGrant, "limit" | "filter"> & {
     /**
      * Limit defines execution limits that are enforced and updated when the grant
      * is applied. When the limit lapsed the grant is removed.

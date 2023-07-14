@@ -1,7 +1,7 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, AssetTypeRequest, AssetTypeResponse, AllAssetsRequest, AllAssetsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, QueryTotalDelegationByValidatorForDenomRequest, QueryTotalDelegationByValidatorForDenomResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, AssetTypeRequest, AssetTypeResponse, AllAssetsRequest, AllAssetsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, QueryTotalDelegationByValidatorForDenomRequest, QueryTotalDelegationByValidatorForDenomResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponse, UserConcentratedSuperfluidPositionsDelegatedRequest, UserConcentratedSuperfluidPositionsDelegatedResponse, UserConcentratedSuperfluidPositionsUndelegatingRequest, UserConcentratedSuperfluidPositionsUndelegatingResponse } from "./query";
 /** Query defines the gRPC querier service. */
 
 export interface Query {
@@ -65,6 +65,8 @@ export interface Query {
   /** Returns a list of whitelisted pool ids to unpool. */
 
   unpoolWhitelist(request?: QueryUnpoolWhitelistRequest): Promise<QueryUnpoolWhitelistResponse>;
+  userConcentratedSuperfluidPositionsDelegated(request: UserConcentratedSuperfluidPositionsDelegatedRequest): Promise<UserConcentratedSuperfluidPositionsDelegatedResponse>;
+  userConcentratedSuperfluidPositionsUndelegating(request: UserConcentratedSuperfluidPositionsUndelegatingRequest): Promise<UserConcentratedSuperfluidPositionsUndelegatingResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -86,6 +88,8 @@ export class QueryClientImpl implements Query {
     this.estimateSuperfluidDelegatedAmountByValidatorDenom = this.estimateSuperfluidDelegatedAmountByValidatorDenom.bind(this);
     this.totalDelegationByDelegator = this.totalDelegationByDelegator.bind(this);
     this.unpoolWhitelist = this.unpoolWhitelist.bind(this);
+    this.userConcentratedSuperfluidPositionsDelegated = this.userConcentratedSuperfluidPositionsDelegated.bind(this);
+    this.userConcentratedSuperfluidPositionsUndelegating = this.userConcentratedSuperfluidPositionsUndelegating.bind(this);
   }
 
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
@@ -180,6 +184,18 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryUnpoolWhitelistResponse.decode(new _m0.Reader(data)));
   }
 
+  userConcentratedSuperfluidPositionsDelegated(request: UserConcentratedSuperfluidPositionsDelegatedRequest): Promise<UserConcentratedSuperfluidPositionsDelegatedResponse> {
+    const data = UserConcentratedSuperfluidPositionsDelegatedRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.superfluid.Query", "UserConcentratedSuperfluidPositionsDelegated", data);
+    return promise.then(data => UserConcentratedSuperfluidPositionsDelegatedResponse.decode(new _m0.Reader(data)));
+  }
+
+  userConcentratedSuperfluidPositionsUndelegating(request: UserConcentratedSuperfluidPositionsUndelegatingRequest): Promise<UserConcentratedSuperfluidPositionsUndelegatingResponse> {
+    const data = UserConcentratedSuperfluidPositionsUndelegatingRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.superfluid.Query", "UserConcentratedSuperfluidPositionsUndelegating", data);
+    return promise.then(data => UserConcentratedSuperfluidPositionsUndelegatingResponse.decode(new _m0.Reader(data)));
+  }
+
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -243,6 +259,14 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     unpoolWhitelist(request?: QueryUnpoolWhitelistRequest): Promise<QueryUnpoolWhitelistResponse> {
       return queryService.unpoolWhitelist(request);
+    },
+
+    userConcentratedSuperfluidPositionsDelegated(request: UserConcentratedSuperfluidPositionsDelegatedRequest): Promise<UserConcentratedSuperfluidPositionsDelegatedResponse> {
+      return queryService.userConcentratedSuperfluidPositionsDelegated(request);
+    },
+
+    userConcentratedSuperfluidPositionsUndelegating(request: UserConcentratedSuperfluidPositionsUndelegatingRequest): Promise<UserConcentratedSuperfluidPositionsUndelegatingResponse> {
+      return queryService.userConcentratedSuperfluidPositionsUndelegating(request);
     }
 
   };

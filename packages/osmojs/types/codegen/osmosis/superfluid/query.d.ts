@@ -1,6 +1,6 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../cosmos/base/query/v1beta1/pagination";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { SuperfluidAssetType, SuperfluidAsset, SuperfluidAssetAmino, SuperfluidAssetSDKType, OsmoEquivalentMultiplierRecord, OsmoEquivalentMultiplierRecordAmino, OsmoEquivalentMultiplierRecordSDKType, SuperfluidDelegationRecord, SuperfluidDelegationRecordAmino, SuperfluidDelegationRecordSDKType } from "./superfluid";
+import { SuperfluidAssetType, SuperfluidAsset, SuperfluidAssetAmino, SuperfluidAssetSDKType, OsmoEquivalentMultiplierRecord, OsmoEquivalentMultiplierRecordAmino, OsmoEquivalentMultiplierRecordSDKType, SuperfluidDelegationRecord, SuperfluidDelegationRecordAmino, SuperfluidDelegationRecordSDKType, ConcentratedPoolUserPositionRecord, ConcentratedPoolUserPositionRecordAmino, ConcentratedPoolUserPositionRecordSDKType } from "./superfluid";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "../lockup/lock";
 import { DelegationResponse, DelegationResponseAmino, DelegationResponseSDKType } from "../../cosmos/staking/v1beta1/staking";
@@ -594,6 +594,74 @@ export interface QueryUnpoolWhitelistResponseAminoMsg {
 export interface QueryUnpoolWhitelistResponseSDKType {
     pool_ids: Long[];
 }
+export interface UserConcentratedSuperfluidPositionsDelegatedRequest {
+    delegatorAddress: string;
+}
+export interface UserConcentratedSuperfluidPositionsDelegatedRequestProtoMsg {
+    typeUrl: "/osmosis.superfluid.UserConcentratedSuperfluidPositionsDelegatedRequest";
+    value: Uint8Array;
+}
+export interface UserConcentratedSuperfluidPositionsDelegatedRequestAmino {
+    delegator_address: string;
+}
+export interface UserConcentratedSuperfluidPositionsDelegatedRequestAminoMsg {
+    type: "osmosis/user-concentrated-superfluid-positions-delegated-request";
+    value: UserConcentratedSuperfluidPositionsDelegatedRequestAmino;
+}
+export interface UserConcentratedSuperfluidPositionsDelegatedRequestSDKType {
+    delegator_address: string;
+}
+export interface UserConcentratedSuperfluidPositionsDelegatedResponse {
+    clPoolUserPositionRecords: ConcentratedPoolUserPositionRecord[];
+}
+export interface UserConcentratedSuperfluidPositionsDelegatedResponseProtoMsg {
+    typeUrl: "/osmosis.superfluid.UserConcentratedSuperfluidPositionsDelegatedResponse";
+    value: Uint8Array;
+}
+export interface UserConcentratedSuperfluidPositionsDelegatedResponseAmino {
+    cl_pool_user_position_records: ConcentratedPoolUserPositionRecordAmino[];
+}
+export interface UserConcentratedSuperfluidPositionsDelegatedResponseAminoMsg {
+    type: "osmosis/user-concentrated-superfluid-positions-delegated-response";
+    value: UserConcentratedSuperfluidPositionsDelegatedResponseAmino;
+}
+export interface UserConcentratedSuperfluidPositionsDelegatedResponseSDKType {
+    cl_pool_user_position_records: ConcentratedPoolUserPositionRecordSDKType[];
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingRequest {
+    delegatorAddress: string;
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingRequestProtoMsg {
+    typeUrl: "/osmosis.superfluid.UserConcentratedSuperfluidPositionsUndelegatingRequest";
+    value: Uint8Array;
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingRequestAmino {
+    delegator_address: string;
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingRequestAminoMsg {
+    type: "osmosis/user-concentrated-superfluid-positions-undelegating-request";
+    value: UserConcentratedSuperfluidPositionsUndelegatingRequestAmino;
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingRequestSDKType {
+    delegator_address: string;
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingResponse {
+    clPoolUserPositionRecords: ConcentratedPoolUserPositionRecord[];
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingResponseProtoMsg {
+    typeUrl: "/osmosis.superfluid.UserConcentratedSuperfluidPositionsUndelegatingResponse";
+    value: Uint8Array;
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingResponseAmino {
+    cl_pool_user_position_records: ConcentratedPoolUserPositionRecordAmino[];
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingResponseAminoMsg {
+    type: "osmosis/user-concentrated-superfluid-positions-undelegating-response";
+    value: UserConcentratedSuperfluidPositionsUndelegatingResponseAmino;
+}
+export interface UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType {
+    cl_pool_user_position_records: ConcentratedPoolUserPositionRecordSDKType[];
+}
 export declare const QueryParamsRequest: {
     typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
@@ -1009,4 +1077,56 @@ export declare const QueryUnpoolWhitelistResponse: {
     fromProtoMsg(message: QueryUnpoolWhitelistResponseProtoMsg): QueryUnpoolWhitelistResponse;
     toProto(message: QueryUnpoolWhitelistResponse): Uint8Array;
     toProtoMsg(message: QueryUnpoolWhitelistResponse): QueryUnpoolWhitelistResponseProtoMsg;
+};
+export declare const UserConcentratedSuperfluidPositionsDelegatedRequest: {
+    typeUrl: string;
+    encode(message: UserConcentratedSuperfluidPositionsDelegatedRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsDelegatedRequest;
+    fromPartial(object: Partial<UserConcentratedSuperfluidPositionsDelegatedRequest>): UserConcentratedSuperfluidPositionsDelegatedRequest;
+    fromAmino(object: UserConcentratedSuperfluidPositionsDelegatedRequestAmino): UserConcentratedSuperfluidPositionsDelegatedRequest;
+    toAmino(message: UserConcentratedSuperfluidPositionsDelegatedRequest): UserConcentratedSuperfluidPositionsDelegatedRequestAmino;
+    fromAminoMsg(object: UserConcentratedSuperfluidPositionsDelegatedRequestAminoMsg): UserConcentratedSuperfluidPositionsDelegatedRequest;
+    toAminoMsg(message: UserConcentratedSuperfluidPositionsDelegatedRequest): UserConcentratedSuperfluidPositionsDelegatedRequestAminoMsg;
+    fromProtoMsg(message: UserConcentratedSuperfluidPositionsDelegatedRequestProtoMsg): UserConcentratedSuperfluidPositionsDelegatedRequest;
+    toProto(message: UserConcentratedSuperfluidPositionsDelegatedRequest): Uint8Array;
+    toProtoMsg(message: UserConcentratedSuperfluidPositionsDelegatedRequest): UserConcentratedSuperfluidPositionsDelegatedRequestProtoMsg;
+};
+export declare const UserConcentratedSuperfluidPositionsDelegatedResponse: {
+    typeUrl: string;
+    encode(message: UserConcentratedSuperfluidPositionsDelegatedResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsDelegatedResponse;
+    fromPartial(object: Partial<UserConcentratedSuperfluidPositionsDelegatedResponse>): UserConcentratedSuperfluidPositionsDelegatedResponse;
+    fromAmino(object: UserConcentratedSuperfluidPositionsDelegatedResponseAmino): UserConcentratedSuperfluidPositionsDelegatedResponse;
+    toAmino(message: UserConcentratedSuperfluidPositionsDelegatedResponse): UserConcentratedSuperfluidPositionsDelegatedResponseAmino;
+    fromAminoMsg(object: UserConcentratedSuperfluidPositionsDelegatedResponseAminoMsg): UserConcentratedSuperfluidPositionsDelegatedResponse;
+    toAminoMsg(message: UserConcentratedSuperfluidPositionsDelegatedResponse): UserConcentratedSuperfluidPositionsDelegatedResponseAminoMsg;
+    fromProtoMsg(message: UserConcentratedSuperfluidPositionsDelegatedResponseProtoMsg): UserConcentratedSuperfluidPositionsDelegatedResponse;
+    toProto(message: UserConcentratedSuperfluidPositionsDelegatedResponse): Uint8Array;
+    toProtoMsg(message: UserConcentratedSuperfluidPositionsDelegatedResponse): UserConcentratedSuperfluidPositionsDelegatedResponseProtoMsg;
+};
+export declare const UserConcentratedSuperfluidPositionsUndelegatingRequest: {
+    typeUrl: string;
+    encode(message: UserConcentratedSuperfluidPositionsUndelegatingRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsUndelegatingRequest;
+    fromPartial(object: Partial<UserConcentratedSuperfluidPositionsUndelegatingRequest>): UserConcentratedSuperfluidPositionsUndelegatingRequest;
+    fromAmino(object: UserConcentratedSuperfluidPositionsUndelegatingRequestAmino): UserConcentratedSuperfluidPositionsUndelegatingRequest;
+    toAmino(message: UserConcentratedSuperfluidPositionsUndelegatingRequest): UserConcentratedSuperfluidPositionsUndelegatingRequestAmino;
+    fromAminoMsg(object: UserConcentratedSuperfluidPositionsUndelegatingRequestAminoMsg): UserConcentratedSuperfluidPositionsUndelegatingRequest;
+    toAminoMsg(message: UserConcentratedSuperfluidPositionsUndelegatingRequest): UserConcentratedSuperfluidPositionsUndelegatingRequestAminoMsg;
+    fromProtoMsg(message: UserConcentratedSuperfluidPositionsUndelegatingRequestProtoMsg): UserConcentratedSuperfluidPositionsUndelegatingRequest;
+    toProto(message: UserConcentratedSuperfluidPositionsUndelegatingRequest): Uint8Array;
+    toProtoMsg(message: UserConcentratedSuperfluidPositionsUndelegatingRequest): UserConcentratedSuperfluidPositionsUndelegatingRequestProtoMsg;
+};
+export declare const UserConcentratedSuperfluidPositionsUndelegatingResponse: {
+    typeUrl: string;
+    encode(message: UserConcentratedSuperfluidPositionsUndelegatingResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UserConcentratedSuperfluidPositionsUndelegatingResponse;
+    fromPartial(object: Partial<UserConcentratedSuperfluidPositionsUndelegatingResponse>): UserConcentratedSuperfluidPositionsUndelegatingResponse;
+    fromAmino(object: UserConcentratedSuperfluidPositionsUndelegatingResponseAmino): UserConcentratedSuperfluidPositionsUndelegatingResponse;
+    toAmino(message: UserConcentratedSuperfluidPositionsUndelegatingResponse): UserConcentratedSuperfluidPositionsUndelegatingResponseAmino;
+    fromAminoMsg(object: UserConcentratedSuperfluidPositionsUndelegatingResponseAminoMsg): UserConcentratedSuperfluidPositionsUndelegatingResponse;
+    toAminoMsg(message: UserConcentratedSuperfluidPositionsUndelegatingResponse): UserConcentratedSuperfluidPositionsUndelegatingResponseAminoMsg;
+    fromProtoMsg(message: UserConcentratedSuperfluidPositionsUndelegatingResponseProtoMsg): UserConcentratedSuperfluidPositionsUndelegatingResponse;
+    toProto(message: UserConcentratedSuperfluidPositionsUndelegatingResponse): Uint8Array;
+    toProtoMsg(message: UserConcentratedSuperfluidPositionsUndelegatingResponse): UserConcentratedSuperfluidPositionsUndelegatingResponseProtoMsg;
 };

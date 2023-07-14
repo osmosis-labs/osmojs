@@ -1,5 +1,6 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /**
  * AccumulatorContent is the state-entry for the global accumulator.
  * It contains the name of the global accumulator and the total value of
@@ -171,7 +172,7 @@ export const AccumulatorContent = {
     }
 
     if (message.totalShares !== "") {
-      writer.uint32(18).string(message.totalShares);
+      writer.uint32(18).string(Decimal.fromUserInput(message.totalShares, 18).atomics);
     }
 
     return writer;
@@ -191,7 +192,7 @@ export const AccumulatorContent = {
           break;
 
         case 2:
-          message.totalShares = reader.string();
+          message.totalShares = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -343,7 +344,7 @@ export const Record = {
 
   encode(message: Record, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.numShares !== "") {
-      writer.uint32(10).string(message.numShares);
+      writer.uint32(10).string(Decimal.fromUserInput(message.numShares, 18).atomics);
     }
 
     for (const v of message.accumValuePerShare) {
@@ -371,7 +372,7 @@ export const Record = {
 
       switch (tag >>> 3) {
         case 1:
-          message.numShares = reader.string();
+          message.numShares = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 2:

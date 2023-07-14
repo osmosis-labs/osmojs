@@ -1,5 +1,5 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponseSDKType, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponseSDKType, QueryBeforeSendHookAddressRequest, QueryBeforeSendHookAddressResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponseSDKType, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -12,7 +12,6 @@ export class LCDQueryClient {
     this.params = this.params.bind(this);
     this.denomAuthorityMetadata = this.denomAuthorityMetadata.bind(this);
     this.denomsFromCreator = this.denomsFromCreator.bind(this);
-    this.beforeSendHookAddress = this.beforeSendHookAddress.bind(this);
   }
   /* Params defines a gRPC query method that returns the tokenfactory module's
    parameters. */
@@ -37,14 +36,6 @@ export class LCDQueryClient {
   async denomsFromCreator(params: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponseSDKType> {
     const endpoint = `osmosis/tokenfactory/v1beta1/denoms_from_creator/${params.creator}`;
     return await this.req.get<QueryDenomsFromCreatorResponseSDKType>(endpoint);
-  }
-  /* BeforeSendHookAddress defines a gRPC query method for
-   getting the address registered for the before send hook. */
-
-
-  async beforeSendHookAddress(params: QueryBeforeSendHookAddressRequest): Promise<QueryBeforeSendHookAddressResponseSDKType> {
-    const endpoint = `osmosis/tokenfactory/v1beta1/denoms/${params.denom}/before_send_hook`;
-    return await this.req.get<QueryBeforeSendHookAddressResponseSDKType>(endpoint);
   }
 
 }

@@ -1,6 +1,7 @@
 import { SwapAmountInRoute, SwapAmountInRouteAmino, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteAmino, SwapAmountOutRouteSDKType } from "./swap_route";
 import { Params, ParamsAmino, ParamsSDKType } from "./genesis";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
+import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Pool as Pool1 } from "../../concentrated-liquidity/pool";
 import { PoolProtoMsg as Pool1ProtoMsg } from "../../concentrated-liquidity/pool";
 import { PoolSDKType as Pool1SDKType } from "../../concentrated-liquidity/pool";
@@ -240,7 +241,7 @@ export interface PoolResponseProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.PoolResponse";
     value: Uint8Array;
 }
-export declare type PoolResponseEncoded = Omit<PoolResponse, "pool"> & {
+export type PoolResponseEncoded = Omit<PoolResponse, "pool"> & {
     pool?: Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg | undefined;
 };
 export interface PoolResponseAmino {
@@ -255,7 +256,6 @@ export interface PoolResponseSDKType {
 }
 /** =============================== AllPools */
 export interface AllPoolsRequest {
-    poolId: Long;
 }
 export interface AllPoolsRequestProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.AllPoolsRequest";
@@ -263,7 +263,6 @@ export interface AllPoolsRequestProtoMsg {
 }
 /** =============================== AllPools */
 export interface AllPoolsRequestAmino {
-    pool_id: string;
 }
 export interface AllPoolsRequestAminoMsg {
     type: "osmosis/poolmanager/all-pools-request";
@@ -271,7 +270,6 @@ export interface AllPoolsRequestAminoMsg {
 }
 /** =============================== AllPools */
 export interface AllPoolsRequestSDKType {
-    pool_id: Long;
 }
 export interface AllPoolsResponse {
     pools: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any)[] | Any[];
@@ -280,7 +278,7 @@ export interface AllPoolsResponseProtoMsg {
     typeUrl: "/osmosis.poolmanager.v1beta1.AllPoolsResponse";
     value: Uint8Array;
 }
-export declare type AllPoolsResponseEncoded = Omit<AllPoolsResponse, "pools"> & {
+export type AllPoolsResponseEncoded = Omit<AllPoolsResponse, "pools"> & {
     pools: (Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg)[];
 };
 export interface AllPoolsResponseAmino {
@@ -358,6 +356,77 @@ export interface SpotPriceResponseAminoMsg {
  */
 export interface SpotPriceResponseSDKType {
     spot_price: string;
+}
+/** =============================== TotalPoolLiquidity */
+export interface TotalPoolLiquidityRequest {
+    poolId: Long;
+}
+export interface TotalPoolLiquidityRequestProtoMsg {
+    typeUrl: "/osmosis.poolmanager.v1beta1.TotalPoolLiquidityRequest";
+    value: Uint8Array;
+}
+/** =============================== TotalPoolLiquidity */
+export interface TotalPoolLiquidityRequestAmino {
+    pool_id: string;
+}
+export interface TotalPoolLiquidityRequestAminoMsg {
+    type: "osmosis/poolmanager/total-pool-liquidity-request";
+    value: TotalPoolLiquidityRequestAmino;
+}
+/** =============================== TotalPoolLiquidity */
+export interface TotalPoolLiquidityRequestSDKType {
+    pool_id: Long;
+}
+export interface TotalPoolLiquidityResponse {
+    liquidity: Coin[];
+}
+export interface TotalPoolLiquidityResponseProtoMsg {
+    typeUrl: "/osmosis.poolmanager.v1beta1.TotalPoolLiquidityResponse";
+    value: Uint8Array;
+}
+export interface TotalPoolLiquidityResponseAmino {
+    liquidity: CoinAmino[];
+}
+export interface TotalPoolLiquidityResponseAminoMsg {
+    type: "osmosis/poolmanager/total-pool-liquidity-response";
+    value: TotalPoolLiquidityResponseAmino;
+}
+export interface TotalPoolLiquidityResponseSDKType {
+    liquidity: CoinSDKType[];
+}
+/** =============================== TotalLiquidity */
+export interface TotalLiquidityRequest {
+}
+export interface TotalLiquidityRequestProtoMsg {
+    typeUrl: "/osmosis.poolmanager.v1beta1.TotalLiquidityRequest";
+    value: Uint8Array;
+}
+/** =============================== TotalLiquidity */
+export interface TotalLiquidityRequestAmino {
+}
+export interface TotalLiquidityRequestAminoMsg {
+    type: "osmosis/poolmanager/total-liquidity-request";
+    value: TotalLiquidityRequestAmino;
+}
+/** =============================== TotalLiquidity */
+export interface TotalLiquidityRequestSDKType {
+}
+export interface TotalLiquidityResponse {
+    liquidity: Coin[];
+}
+export interface TotalLiquidityResponseProtoMsg {
+    typeUrl: "/osmosis.poolmanager.v1beta1.TotalLiquidityResponse";
+    value: Uint8Array;
+}
+export interface TotalLiquidityResponseAmino {
+    liquidity: CoinAmino[];
+}
+export interface TotalLiquidityResponseAminoMsg {
+    type: "osmosis/poolmanager/total-liquidity-response";
+    value: TotalLiquidityResponseAmino;
+}
+export interface TotalLiquidityResponseSDKType {
+    liquidity: CoinSDKType[];
 }
 export declare const ParamsRequest: {
     typeUrl: string;
@@ -517,11 +586,11 @@ export declare const PoolResponse: {
 };
 export declare const AllPoolsRequest: {
     typeUrl: string;
-    encode(message: AllPoolsRequest, writer?: _m0.Writer): _m0.Writer;
+    encode(_: AllPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllPoolsRequest;
-    fromPartial(object: Partial<AllPoolsRequest>): AllPoolsRequest;
-    fromAmino(object: AllPoolsRequestAmino): AllPoolsRequest;
-    toAmino(message: AllPoolsRequest): AllPoolsRequestAmino;
+    fromPartial(_: Partial<AllPoolsRequest>): AllPoolsRequest;
+    fromAmino(_: AllPoolsRequestAmino): AllPoolsRequest;
+    toAmino(_: AllPoolsRequest): AllPoolsRequestAmino;
     fromAminoMsg(object: AllPoolsRequestAminoMsg): AllPoolsRequest;
     toAminoMsg(message: AllPoolsRequest): AllPoolsRequestAminoMsg;
     fromProtoMsg(message: AllPoolsRequestProtoMsg): AllPoolsRequest;
@@ -566,6 +635,58 @@ export declare const SpotPriceResponse: {
     fromProtoMsg(message: SpotPriceResponseProtoMsg): SpotPriceResponse;
     toProto(message: SpotPriceResponse): Uint8Array;
     toProtoMsg(message: SpotPriceResponse): SpotPriceResponseProtoMsg;
+};
+export declare const TotalPoolLiquidityRequest: {
+    typeUrl: string;
+    encode(message: TotalPoolLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TotalPoolLiquidityRequest;
+    fromPartial(object: Partial<TotalPoolLiquidityRequest>): TotalPoolLiquidityRequest;
+    fromAmino(object: TotalPoolLiquidityRequestAmino): TotalPoolLiquidityRequest;
+    toAmino(message: TotalPoolLiquidityRequest): TotalPoolLiquidityRequestAmino;
+    fromAminoMsg(object: TotalPoolLiquidityRequestAminoMsg): TotalPoolLiquidityRequest;
+    toAminoMsg(message: TotalPoolLiquidityRequest): TotalPoolLiquidityRequestAminoMsg;
+    fromProtoMsg(message: TotalPoolLiquidityRequestProtoMsg): TotalPoolLiquidityRequest;
+    toProto(message: TotalPoolLiquidityRequest): Uint8Array;
+    toProtoMsg(message: TotalPoolLiquidityRequest): TotalPoolLiquidityRequestProtoMsg;
+};
+export declare const TotalPoolLiquidityResponse: {
+    typeUrl: string;
+    encode(message: TotalPoolLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TotalPoolLiquidityResponse;
+    fromPartial(object: Partial<TotalPoolLiquidityResponse>): TotalPoolLiquidityResponse;
+    fromAmino(object: TotalPoolLiquidityResponseAmino): TotalPoolLiquidityResponse;
+    toAmino(message: TotalPoolLiquidityResponse): TotalPoolLiquidityResponseAmino;
+    fromAminoMsg(object: TotalPoolLiquidityResponseAminoMsg): TotalPoolLiquidityResponse;
+    toAminoMsg(message: TotalPoolLiquidityResponse): TotalPoolLiquidityResponseAminoMsg;
+    fromProtoMsg(message: TotalPoolLiquidityResponseProtoMsg): TotalPoolLiquidityResponse;
+    toProto(message: TotalPoolLiquidityResponse): Uint8Array;
+    toProtoMsg(message: TotalPoolLiquidityResponse): TotalPoolLiquidityResponseProtoMsg;
+};
+export declare const TotalLiquidityRequest: {
+    typeUrl: string;
+    encode(_: TotalLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TotalLiquidityRequest;
+    fromPartial(_: Partial<TotalLiquidityRequest>): TotalLiquidityRequest;
+    fromAmino(_: TotalLiquidityRequestAmino): TotalLiquidityRequest;
+    toAmino(_: TotalLiquidityRequest): TotalLiquidityRequestAmino;
+    fromAminoMsg(object: TotalLiquidityRequestAminoMsg): TotalLiquidityRequest;
+    toAminoMsg(message: TotalLiquidityRequest): TotalLiquidityRequestAminoMsg;
+    fromProtoMsg(message: TotalLiquidityRequestProtoMsg): TotalLiquidityRequest;
+    toProto(message: TotalLiquidityRequest): Uint8Array;
+    toProtoMsg(message: TotalLiquidityRequest): TotalLiquidityRequestProtoMsg;
+};
+export declare const TotalLiquidityResponse: {
+    typeUrl: string;
+    encode(message: TotalLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TotalLiquidityResponse;
+    fromPartial(object: Partial<TotalLiquidityResponse>): TotalLiquidityResponse;
+    fromAmino(object: TotalLiquidityResponseAmino): TotalLiquidityResponse;
+    toAmino(message: TotalLiquidityResponse): TotalLiquidityResponseAmino;
+    fromAminoMsg(object: TotalLiquidityResponseAminoMsg): TotalLiquidityResponse;
+    toAminoMsg(message: TotalLiquidityResponse): TotalLiquidityResponseAminoMsg;
+    fromProtoMsg(message: TotalLiquidityResponseProtoMsg): TotalLiquidityResponse;
+    toProto(message: TotalLiquidityResponse): Uint8Array;
+    toProtoMsg(message: TotalLiquidityResponse): TotalLiquidityResponseProtoMsg;
 };
 export declare const PoolI_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
 export declare const PoolI_FromAmino: (content: AnyAmino) => Any;

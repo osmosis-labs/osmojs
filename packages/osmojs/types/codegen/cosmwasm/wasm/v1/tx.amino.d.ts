@@ -1,4 +1,4 @@
-import { MsgStoreCode, MsgInstantiateContract, MsgInstantiateContract2, MsgExecuteContract, MsgMigrateContract, MsgUpdateAdmin, MsgClearAdmin, MsgUpdateInstantiateConfig, MsgUpdateParams, MsgSudoContract, MsgPinCodes, MsgUnpinCodes, MsgStoreAndInstantiateContract } from "./tx";
+import { MsgStoreCode, MsgInstantiateContract, MsgInstantiateContract2, MsgExecuteContract, MsgMigrateContract, MsgUpdateAdmin, MsgClearAdmin, MsgUpdateInstantiateConfig } from "./tx";
 export declare const AminoConverter: {
     "/cosmwasm.wasm.v1.MsgStoreCode": {
         aminoType: string;
@@ -39,30 +39,5 @@ export declare const AminoConverter: {
         aminoType: string;
         toAmino: (message: MsgUpdateInstantiateConfig) => import("./tx").MsgUpdateInstantiateConfigAmino;
         fromAmino: (object: import("./tx").MsgUpdateInstantiateConfigAmino) => MsgUpdateInstantiateConfig;
-    };
-    "/cosmwasm.wasm.v1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: MsgUpdateParams) => import("./tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./tx").MsgUpdateParamsAmino) => MsgUpdateParams;
-    };
-    "/cosmwasm.wasm.v1.MsgSudoContract": {
-        aminoType: string;
-        toAmino: (message: MsgSudoContract) => import("./tx").MsgSudoContractAmino;
-        fromAmino: (object: import("./tx").MsgSudoContractAmino) => MsgSudoContract;
-    };
-    "/cosmwasm.wasm.v1.MsgPinCodes": {
-        aminoType: string;
-        toAmino: (message: MsgPinCodes) => import("./tx").MsgPinCodesAmino;
-        fromAmino: (object: import("./tx").MsgPinCodesAmino) => MsgPinCodes;
-    };
-    "/cosmwasm.wasm.v1.MsgUnpinCodes": {
-        aminoType: string;
-        toAmino: (message: MsgUnpinCodes) => import("./tx").MsgUnpinCodesAmino;
-        fromAmino: (object: import("./tx").MsgUnpinCodesAmino) => MsgUnpinCodes;
-    };
-    "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract": {
-        aminoType: string;
-        toAmino: (message: MsgStoreAndInstantiateContract) => import("./tx").MsgStoreAndInstantiateContractAmino;
-        fromAmino: (object: import("./tx").MsgStoreAndInstantiateContractAmino) => MsgStoreAndInstantiateContract;
     };
 };

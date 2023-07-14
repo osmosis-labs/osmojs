@@ -74,7 +74,7 @@ export interface MsgExecProtoMsg {
     typeUrl: "/cosmos.authz.v1beta1.MsgExec";
     value: Uint8Array;
 }
-export declare type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
+export type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
     /**
      * Authorization Msg requests to execute. Each msg must implement Authorization interface
      * The x/authz will try to find a grant matching (msg.signers[0], grantee, MsgTypeURL(msg))

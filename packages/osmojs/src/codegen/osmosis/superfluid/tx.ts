@@ -2,6 +2,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 export interface MsgSuperfluidDelegate {
   sender: string;
   lockId: Long;
@@ -1823,7 +1824,7 @@ export const MsgUnPoolWhitelistedPoolResponse = {
 function createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition(): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
   return {
     sender: "",
-    lockId: Long.UZERO,
+    lockId: Long.ZERO,
     sharesToMigrate: undefined,
     tokenOutMins: []
   };
@@ -1838,7 +1839,7 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
     }
 
     if (!message.lockId.isZero()) {
-      writer.uint32(16).uint64(message.lockId);
+      writer.uint32(16).int64(message.lockId);
     }
 
     if (message.sharesToMigrate !== undefined) {
@@ -1866,7 +1867,7 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
           break;
 
         case 2:
-          message.lockId = (reader.uint64() as Long);
+          message.lockId = (reader.int64() as Long);
           break;
 
         case 3:
@@ -1889,7 +1890,7 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
   fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
     const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition();
     message.sender = object.sender ?? "";
-    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.ZERO;
     message.sharesToMigrate = object.sharesToMigrate !== undefined && object.sharesToMigrate !== null ? Coin.fromPartial(object.sharesToMigrate) : undefined;
     message.tokenOutMins = object.tokenOutMins?.map(e => Coin.fromPartial(e)) || [];
     return message;
@@ -1969,7 +1970,7 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse = 
     }
 
     if (message.liquidityCreated !== "") {
-      writer.uint32(26).string(message.liquidityCreated);
+      writer.uint32(26).string(Decimal.fromUserInput(message.liquidityCreated, 18).atomics);
     }
 
     if (message.joinTime !== undefined) {
@@ -1997,7 +1998,7 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse = 
           break;
 
         case 3:
-          message.liquidityCreated = reader.string();
+          message.liquidityCreated = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 4:
@@ -2216,7 +2217,7 @@ export const MsgAddToConcentratedLiquiditySuperfluidPositionResponse = {
     }
 
     if (message.newLiquidity !== "") {
-      writer.uint32(42).string(message.newLiquidity);
+      writer.uint32(42).string(Decimal.fromUserInput(message.newLiquidity, 18).atomics);
     }
 
     if (!message.lockId.isZero()) {
@@ -2248,7 +2249,7 @@ export const MsgAddToConcentratedLiquiditySuperfluidPositionResponse = {
           break;
 
         case 5:
-          message.newLiquidity = reader.string();
+          message.newLiquidity = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 4:

@@ -9,6 +9,7 @@ import * as _m0 from "protobufjs/minimal";
 export declare enum LockQueryType {
     ByDuration = 0,
     ByTime = 1,
+    NoLock = 2,
     UNRECOGNIZED = -1
 }
 export declare const LockQueryTypeSDKType: typeof LockQueryType;
@@ -47,6 +48,12 @@ export interface PeriodLock {
     endTime?: Date;
     /** Coins are the tokens locked within the lock, kept in the module account. */
     coins: Coin[];
+    /**
+     * Reward Receiver Address is the address that would be receiving rewards for
+     * the incentives for the lock. This is set to owner by default and can be
+     * changed via separate msg.
+     */
+    rewardReceiverAddress: string;
 }
 export interface PeriodLockProtoMsg {
     typeUrl: "/osmosis.lockup.PeriodLock";
@@ -84,6 +91,12 @@ export interface PeriodLockAmino {
     end_time?: Date;
     /** Coins are the tokens locked within the lock, kept in the module account. */
     coins: CoinAmino[];
+    /**
+     * Reward Receiver Address is the address that would be receiving rewards for
+     * the incentives for the lock. This is set to owner by default and can be
+     * changed via separate msg.
+     */
+    reward_receiver_address: string;
 }
 export interface PeriodLockAminoMsg {
     type: "osmosis/lockup/period-lock";
@@ -102,6 +115,7 @@ export interface PeriodLockSDKType {
     duration?: DurationSDKType;
     end_time?: Date;
     coins: CoinSDKType[];
+    reward_receiver_address: string;
 }
 /**
  * QueryCondition is a struct used for querying locks upon different conditions.

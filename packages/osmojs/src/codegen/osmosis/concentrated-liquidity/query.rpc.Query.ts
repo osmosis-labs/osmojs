@@ -1,7 +1,7 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { PoolsRequest, PoolsResponse, ParamsRequest, ParamsResponse, UserPositionsRequest, UserPositionsResponse, LiquidityPerTickRangeRequest, LiquidityPerTickRangeResponse, LiquidityNetInDirectionRequest, LiquidityNetInDirectionResponse, ClaimableSpreadRewardsRequest, ClaimableSpreadRewardsResponse, ClaimableIncentivesRequest, ClaimableIncentivesResponse, PositionByIdRequest, PositionByIdResponse, PoolAccumulatorRewardsRequest, PoolAccumulatorRewardsResponse, IncentiveRecordsRequest, IncentiveRecordsResponse, TickAccumulatorTrackersRequest, TickAccumulatorTrackersResponse, CFMMPoolIdLinkFromConcentratedPoolIdRequest, CFMMPoolIdLinkFromConcentratedPoolIdResponse } from "./query";
+import { PoolsRequest, PoolsResponse, ParamsRequest, ParamsResponse, UserPositionsRequest, UserPositionsResponse, LiquidityPerTickRangeRequest, LiquidityPerTickRangeResponse, LiquidityNetInDirectionRequest, LiquidityNetInDirectionResponse, ClaimableSpreadRewardsRequest, ClaimableSpreadRewardsResponse, ClaimableIncentivesRequest, ClaimableIncentivesResponse, PositionByIdRequest, PositionByIdResponse, PoolAccumulatorRewardsRequest, PoolAccumulatorRewardsResponse, IncentiveRecordsRequest, IncentiveRecordsResponse, TickAccumulatorTrackersRequest, TickAccumulatorTrackersResponse, CFMMPoolIdLinkFromConcentratedPoolIdRequest, CFMMPoolIdLinkFromConcentratedPoolIdResponse, UserUnbondingPositionsRequest, UserUnbondingPositionsResponse, GetTotalLiquidityRequest, GetTotalLiquidityResponse } from "./query";
 export interface Query {
   /** Pools returns all concentrated liquidity pools */
   pools(request?: PoolsRequest): Promise<PoolsResponse>;
@@ -60,6 +60,15 @@ export interface Query {
    */
 
   cFMMPoolIdLinkFromConcentratedPoolId(request: CFMMPoolIdLinkFromConcentratedPoolIdRequest): Promise<CFMMPoolIdLinkFromConcentratedPoolIdResponse>;
+  /**
+   * UserUnbondingPositions returns the position and lock info of unbonding
+   * positions of the given address.
+   */
+
+  userUnbondingPositions(request: UserUnbondingPositionsRequest): Promise<UserUnbondingPositionsResponse>;
+  /** GetTotalLiquidity returns total liquidity across all cl pools. */
+
+  getTotalLiquidity(request?: GetTotalLiquidityRequest): Promise<GetTotalLiquidityResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -78,6 +87,8 @@ export class QueryClientImpl implements Query {
     this.incentiveRecords = this.incentiveRecords.bind(this);
     this.tickAccumulatorTrackers = this.tickAccumulatorTrackers.bind(this);
     this.cFMMPoolIdLinkFromConcentratedPoolId = this.cFMMPoolIdLinkFromConcentratedPoolId.bind(this);
+    this.userUnbondingPositions = this.userUnbondingPositions.bind(this);
+    this.getTotalLiquidity = this.getTotalLiquidity.bind(this);
   }
 
   pools(request: PoolsRequest = {
@@ -154,6 +165,18 @@ export class QueryClientImpl implements Query {
     return promise.then(data => CFMMPoolIdLinkFromConcentratedPoolIdResponse.decode(new _m0.Reader(data)));
   }
 
+  userUnbondingPositions(request: UserUnbondingPositionsRequest): Promise<UserUnbondingPositionsResponse> {
+    const data = UserUnbondingPositionsRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "UserUnbondingPositions", data);
+    return promise.then(data => UserUnbondingPositionsResponse.decode(new _m0.Reader(data)));
+  }
+
+  getTotalLiquidity(request: GetTotalLiquidityRequest = {}): Promise<GetTotalLiquidityResponse> {
+    const data = GetTotalLiquidityRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "GetTotalLiquidity", data);
+    return promise.then(data => GetTotalLiquidityResponse.decode(new _m0.Reader(data)));
+  }
+
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -205,6 +228,14 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     cFMMPoolIdLinkFromConcentratedPoolId(request: CFMMPoolIdLinkFromConcentratedPoolIdRequest): Promise<CFMMPoolIdLinkFromConcentratedPoolIdResponse> {
       return queryService.cFMMPoolIdLinkFromConcentratedPoolId(request);
+    },
+
+    userUnbondingPositions(request: UserUnbondingPositionsRequest): Promise<UserUnbondingPositionsResponse> {
+      return queryService.userUnbondingPositions(request);
+    },
+
+    getTotalLiquidity(request?: GetTotalLiquidityRequest): Promise<GetTotalLiquidityResponse> {
+      return queryService.getTotalLiquidity(request);
     }
 
   };

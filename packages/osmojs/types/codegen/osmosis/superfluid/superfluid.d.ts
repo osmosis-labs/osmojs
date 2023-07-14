@@ -1,13 +1,15 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "../lockup/lock";
 import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * SuperfluidAssetType indicates whether the superfluid asset is
- * a native token itself or the lp share of a pool.
+ * a native token, lp share of a pool, or concentrated share of a pool
  */
 export declare enum SuperfluidAssetType {
     SuperfluidAssetTypeNative = 0,
     SuperfluidAssetTypeLPShare = 1,
+    SuperfluidAssetTypeConcentratedShare = 2,
     UNRECOGNIZED = -1
 }
 export declare const SuperfluidAssetTypeSDKType: typeof SuperfluidAssetType;
@@ -229,6 +231,38 @@ export interface UnpoolWhitelistedPoolsAminoMsg {
 export interface UnpoolWhitelistedPoolsSDKType {
     ids: Long[];
 }
+export interface ConcentratedPoolUserPositionRecord {
+    validatorAddress: string;
+    positionId: Long;
+    lockId: Long;
+    syntheticLock?: SyntheticLock;
+    delegationAmount?: Coin;
+    equivalentStakedAmount?: Coin;
+}
+export interface ConcentratedPoolUserPositionRecordProtoMsg {
+    typeUrl: "/osmosis.superfluid.ConcentratedPoolUserPositionRecord";
+    value: Uint8Array;
+}
+export interface ConcentratedPoolUserPositionRecordAmino {
+    validator_address: string;
+    position_id: string;
+    lock_id: string;
+    synthetic_lock?: SyntheticLockAmino;
+    delegation_amount?: CoinAmino;
+    equivalent_staked_amount?: CoinAmino;
+}
+export interface ConcentratedPoolUserPositionRecordAminoMsg {
+    type: "osmosis/concentrated-pool-user-position-record";
+    value: ConcentratedPoolUserPositionRecordAmino;
+}
+export interface ConcentratedPoolUserPositionRecordSDKType {
+    validator_address: string;
+    position_id: Long;
+    lock_id: Long;
+    synthetic_lock?: SyntheticLockSDKType;
+    delegation_amount?: CoinSDKType;
+    equivalent_staked_amount?: CoinSDKType;
+}
 export declare const SuperfluidAsset: {
     typeUrl: string;
     encode(message: SuperfluidAsset, writer?: _m0.Writer): _m0.Writer;
@@ -306,4 +340,17 @@ export declare const UnpoolWhitelistedPools: {
     fromProtoMsg(message: UnpoolWhitelistedPoolsProtoMsg): UnpoolWhitelistedPools;
     toProto(message: UnpoolWhitelistedPools): Uint8Array;
     toProtoMsg(message: UnpoolWhitelistedPools): UnpoolWhitelistedPoolsProtoMsg;
+};
+export declare const ConcentratedPoolUserPositionRecord: {
+    typeUrl: string;
+    encode(message: ConcentratedPoolUserPositionRecord, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ConcentratedPoolUserPositionRecord;
+    fromPartial(object: Partial<ConcentratedPoolUserPositionRecord>): ConcentratedPoolUserPositionRecord;
+    fromAmino(object: ConcentratedPoolUserPositionRecordAmino): ConcentratedPoolUserPositionRecord;
+    toAmino(message: ConcentratedPoolUserPositionRecord): ConcentratedPoolUserPositionRecordAmino;
+    fromAminoMsg(object: ConcentratedPoolUserPositionRecordAminoMsg): ConcentratedPoolUserPositionRecord;
+    toAminoMsg(message: ConcentratedPoolUserPositionRecord): ConcentratedPoolUserPositionRecordAminoMsg;
+    fromProtoMsg(message: ConcentratedPoolUserPositionRecordProtoMsg): ConcentratedPoolUserPositionRecord;
+    toProto(message: ConcentratedPoolUserPositionRecord): Uint8Array;
+    toProtoMsg(message: ConcentratedPoolUserPositionRecord): ConcentratedPoolUserPositionRecordProtoMsg;
 };

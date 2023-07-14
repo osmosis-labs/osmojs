@@ -40,6 +40,46 @@ export interface SwapAmountOutRouteSDKType {
     pool_id: Long;
     token_in_denom: string;
 }
+export interface SwapAmountInSplitRoute {
+    pools: SwapAmountInRoute[];
+    tokenInAmount: string;
+}
+export interface SwapAmountInSplitRouteProtoMsg {
+    typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountInSplitRoute";
+    value: Uint8Array;
+}
+export interface SwapAmountInSplitRouteAmino {
+    pools: SwapAmountInRouteAmino[];
+    token_in_amount: string;
+}
+export interface SwapAmountInSplitRouteAminoMsg {
+    type: "osmosis/poolmanager/swap-amount-in-split-route";
+    value: SwapAmountInSplitRouteAmino;
+}
+export interface SwapAmountInSplitRouteSDKType {
+    pools: SwapAmountInRouteSDKType[];
+    token_in_amount: string;
+}
+export interface SwapAmountOutSplitRoute {
+    pools: SwapAmountOutRoute[];
+    tokenOutAmount: string;
+}
+export interface SwapAmountOutSplitRouteProtoMsg {
+    typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountOutSplitRoute";
+    value: Uint8Array;
+}
+export interface SwapAmountOutSplitRouteAmino {
+    pools: SwapAmountOutRouteAmino[];
+    token_out_amount: string;
+}
+export interface SwapAmountOutSplitRouteAminoMsg {
+    type: "osmosis/poolmanager/swap-amount-out-split-route";
+    value: SwapAmountOutSplitRouteAmino;
+}
+export interface SwapAmountOutSplitRouteSDKType {
+    pools: SwapAmountOutRouteSDKType[];
+    token_out_amount: string;
+}
 export declare const SwapAmountInRoute: {
     typeUrl: string;
     encode(message: SwapAmountInRoute, writer?: _m0.Writer): _m0.Writer;
@@ -65,4 +105,30 @@ export declare const SwapAmountOutRoute: {
     fromProtoMsg(message: SwapAmountOutRouteProtoMsg): SwapAmountOutRoute;
     toProto(message: SwapAmountOutRoute): Uint8Array;
     toProtoMsg(message: SwapAmountOutRoute): SwapAmountOutRouteProtoMsg;
+};
+export declare const SwapAmountInSplitRoute: {
+    typeUrl: string;
+    encode(message: SwapAmountInSplitRoute, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountInSplitRoute;
+    fromPartial(object: Partial<SwapAmountInSplitRoute>): SwapAmountInSplitRoute;
+    fromAmino(object: SwapAmountInSplitRouteAmino): SwapAmountInSplitRoute;
+    toAmino(message: SwapAmountInSplitRoute): SwapAmountInSplitRouteAmino;
+    fromAminoMsg(object: SwapAmountInSplitRouteAminoMsg): SwapAmountInSplitRoute;
+    toAminoMsg(message: SwapAmountInSplitRoute): SwapAmountInSplitRouteAminoMsg;
+    fromProtoMsg(message: SwapAmountInSplitRouteProtoMsg): SwapAmountInSplitRoute;
+    toProto(message: SwapAmountInSplitRoute): Uint8Array;
+    toProtoMsg(message: SwapAmountInSplitRoute): SwapAmountInSplitRouteProtoMsg;
+};
+export declare const SwapAmountOutSplitRoute: {
+    typeUrl: string;
+    encode(message: SwapAmountOutSplitRoute, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountOutSplitRoute;
+    fromPartial(object: Partial<SwapAmountOutSplitRoute>): SwapAmountOutSplitRoute;
+    fromAmino(object: SwapAmountOutSplitRouteAmino): SwapAmountOutSplitRoute;
+    toAmino(message: SwapAmountOutSplitRoute): SwapAmountOutSplitRouteAmino;
+    fromAminoMsg(object: SwapAmountOutSplitRouteAminoMsg): SwapAmountOutSplitRoute;
+    toAminoMsg(message: SwapAmountOutSplitRoute): SwapAmountOutSplitRouteAminoMsg;
+    fromProtoMsg(message: SwapAmountOutSplitRouteProtoMsg): SwapAmountOutSplitRoute;
+    toProto(message: SwapAmountOutSplitRoute): Uint8Array;
+    toProtoMsg(message: SwapAmountOutSplitRoute): SwapAmountOutSplitRouteProtoMsg;
 };

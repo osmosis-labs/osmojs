@@ -63,16 +63,6 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 deposits(request: import("../cosmos/gov/v1beta1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositsResponse>;
                 tallyResult(request: import("../cosmos/gov/v1beta1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryTallyResultResponse>;
             };
-            v1: {
-                proposal(request: import("../cosmos/gov/v1/query").QueryProposalRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalResponse>;
-                proposals(request: import("../cosmos/gov/v1/query").QueryProposalsRequest): Promise<import("../cosmos/gov/v1/query").QueryProposalsResponse>;
-                vote(request: import("../cosmos/gov/v1/query").QueryVoteRequest): Promise<import("../cosmos/gov/v1/query").QueryVoteResponse>;
-                votes(request: import("../cosmos/gov/v1/query").QueryVotesRequest): Promise<import("../cosmos/gov/v1/query").QueryVotesResponse>;
-                params(request: import("../cosmos/gov/v1/query").QueryParamsRequest): Promise<import("../cosmos/gov/v1/query").QueryParamsResponse>;
-                deposit(request: import("../cosmos/gov/v1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositResponse>;
-                deposits(request: import("../cosmos/gov/v1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1/query").QueryDepositsResponse>;
-                tallyResult(request: import("../cosmos/gov/v1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1/query").QueryTallyResultResponse>;
-            };
         };
         staking: {
             v1beta1: {
@@ -112,18 +102,27 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
     osmosis: {
         concentratedliquidity: {
             v1beta1: {
-                pools(request?: import("./concentrated-liquidity/pool-model/query").QueryPoolsRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryPoolsResponse>;
-                params(request?: import("./concentrated-liquidity/pool-model/query").QueryParamsRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryParamsResponse>;
-                userPositions(request: import("./concentrated-liquidity/pool-model/query").QueryUserPositionsRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryUserPositionsResponse>;
-                totalLiquidityForRange(request: import("./concentrated-liquidity/pool-model/query").QueryTotalLiquidityForRangeRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryTotalLiquidityForRangeResponse>;
-                liquidityNetInDirection(request: import("./concentrated-liquidity/pool-model/query").QueryLiquidityNetInDirectionRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryLiquidityNetInDirectionResponse>;
-                claimableFees(request: import("./concentrated-liquidity/pool-model/query").QueryClaimableFeesRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryClaimableFeesResponse>;
-                positionById(request: import("./concentrated-liquidity/pool-model/query").QueryPositionByIdRequest): Promise<import("./concentrated-liquidity/pool-model/query").QueryPositionByIdResponse>;
+                pools(request?: import("./concentrated-liquidity/query").PoolsRequest): Promise<import("./concentrated-liquidity/query").PoolsResponse>;
+                params(request?: import("./concentrated-liquidity/query").ParamsRequest): Promise<import("./concentrated-liquidity/query").ParamsResponse>;
+                userPositions(request: import("./concentrated-liquidity/query").UserPositionsRequest): Promise<import("./concentrated-liquidity/query").UserPositionsResponse>;
+                liquidityPerTickRange(request: import("./concentrated-liquidity/query").LiquidityPerTickRangeRequest): Promise<import("./concentrated-liquidity/query").LiquidityPerTickRangeResponse>;
+                liquidityNetInDirection(request: import("./concentrated-liquidity/query").LiquidityNetInDirectionRequest): Promise<import("./concentrated-liquidity/query").LiquidityNetInDirectionResponse>;
+                claimableSpreadRewards(request: import("./concentrated-liquidity/query").ClaimableSpreadRewardsRequest): Promise<import("./concentrated-liquidity/query").ClaimableSpreadRewardsResponse>;
+                claimableIncentives(request: import("./concentrated-liquidity/query").ClaimableIncentivesRequest): Promise<import("./concentrated-liquidity/query").ClaimableIncentivesResponse>;
+                positionById(request: import("./concentrated-liquidity/query").PositionByIdRequest): Promise<import("./concentrated-liquidity/query").PositionByIdResponse>;
+                poolAccumulatorRewards(request: import("./concentrated-liquidity/query").PoolAccumulatorRewardsRequest): Promise<import("./concentrated-liquidity/query").PoolAccumulatorRewardsResponse>;
+                incentiveRecords(request: import("./concentrated-liquidity/query").IncentiveRecordsRequest): Promise<import("./concentrated-liquidity/query").IncentiveRecordsResponse>;
+                tickAccumulatorTrackers(request: import("./concentrated-liquidity/query").TickAccumulatorTrackersRequest): Promise<import("./concentrated-liquidity/query").TickAccumulatorTrackersResponse>;
+                cFMMPoolIdLinkFromConcentratedPoolId(request: import("./concentrated-liquidity/query").CFMMPoolIdLinkFromConcentratedPoolIdRequest): Promise<import("./concentrated-liquidity/query").CFMMPoolIdLinkFromConcentratedPoolIdResponse>;
+                userUnbondingPositions(request: import("./concentrated-liquidity/query").UserUnbondingPositionsRequest): Promise<import("./concentrated-liquidity/query").UserUnbondingPositionsResponse>;
+                getTotalLiquidity(request?: import("./concentrated-liquidity/query").GetTotalLiquidityRequest): Promise<import("./concentrated-liquidity/query").GetTotalLiquidityResponse>;
             };
         };
         cosmwasmpool: {
             v1beta1: {
+                pools(request?: import("./cosmwasmpool/v1beta1/query").PoolsRequest): Promise<import("./cosmwasmpool/v1beta1/query").PoolsResponse>;
                 params(request?: import("./cosmwasmpool/v1beta1/query").ParamsRequest): Promise<import("./cosmwasmpool/v1beta1/query").ParamsResponse>;
+                contractInfoByPoolId(request: import("./cosmwasmpool/v1beta1/query").ContractInfoByPoolIdRequest): Promise<import("./cosmwasmpool/v1beta1/query").ContractInfoByPoolIdResponse>;
             };
         };
         downtimedetector: {
@@ -154,6 +153,7 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 spotPrice(request: import("./gamm/v1beta1/query").QuerySpotPriceRequest): Promise<import("./gamm/v1beta1/query").QuerySpotPriceResponse>;
                 estimateSwapExactAmountIn(request: import("./gamm/v1beta1/query").QuerySwapExactAmountInRequest): Promise<import("./gamm/v1beta1/query").QuerySwapExactAmountInResponse>;
                 estimateSwapExactAmountOut(request: import("./gamm/v1beta1/query").QuerySwapExactAmountOutRequest): Promise<import("./gamm/v1beta1/query").QuerySwapExactAmountOutResponse>;
+                concentratedPoolIdLinkFromCFMM(request: import("./gamm/v1beta1/query").QueryConcentratedPoolIdLinkFromCFMMRequest): Promise<import("./gamm/v1beta1/query").QueryConcentratedPoolIdLinkFromCFMMResponse>;
             };
             v2: {
                 spotPrice(request: import("./gamm/v2/query").QuerySpotPriceRequest): Promise<import("./gamm/v2/query").QuerySpotPriceResponse>;
@@ -187,8 +187,10 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
             accountLockedPastTimeDenom(request: import("./lockup/query").AccountLockedPastTimeDenomRequest): Promise<import("./lockup/query").AccountLockedPastTimeDenomResponse>;
             lockedDenom(request: import("./lockup/query").LockedDenomRequest): Promise<import("./lockup/query").LockedDenomResponse>;
             lockedByID(request: import("./lockup/query").LockedRequest): Promise<import("./lockup/query").LockedResponse>;
+            lockRewardReceiver(request: import("./lockup/query").LockRewardReceiverRequest): Promise<import("./lockup/query").LockRewardReceiverResponse>;
             nextLockID(request?: import("./lockup/query").NextLockIDRequest): Promise<import("./lockup/query").NextLockIDResponse>;
             syntheticLockupsByLockupID(request: import("./lockup/query").SyntheticLockupsByLockupIDRequest): Promise<import("./lockup/query").SyntheticLockupsByLockupIDResponse>;
+            syntheticLockupByLockupID(request: import("./lockup/query").SyntheticLockupByLockupIDRequest): Promise<import("./lockup/query").SyntheticLockupByLockupIDResponse>;
             accountLockedLongerDuration(request: import("./lockup/query").AccountLockedLongerDurationRequest): Promise<import("./lockup/query").AccountLockedLongerDurationResponse>;
             accountLockedDuration(request: import("./lockup/query").AccountLockedDurationRequest): Promise<import("./lockup/query").AccountLockedDurationResponse>;
             accountLockedLongerDurationNotUnlockingOnly(request: import("./lockup/query").AccountLockedLongerDurationNotUnlockingOnlyRequest): Promise<import("./lockup/query").AccountLockedLongerDurationNotUnlockingOnlyResponse>;
@@ -220,8 +222,10 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 estimateSinglePoolSwapExactAmountOut(request: import("./poolmanager/v1beta1/query").EstimateSinglePoolSwapExactAmountOutRequest): Promise<import("./poolmanager/v1beta1/query").EstimateSwapExactAmountOutResponse>;
                 numPools(request?: import("./poolmanager/v1beta1/query").NumPoolsRequest): Promise<import("./poolmanager/v1beta1/query").NumPoolsResponse>;
                 pool(request: import("./poolmanager/v1beta1/query").PoolRequest): Promise<import("./poolmanager/v1beta1/query").PoolResponse>;
-                allPools(request: import("./poolmanager/v1beta1/query").AllPoolsRequest): Promise<import("./poolmanager/v1beta1/query").AllPoolsResponse>;
+                allPools(request?: import("./poolmanager/v1beta1/query").AllPoolsRequest): Promise<import("./poolmanager/v1beta1/query").AllPoolsResponse>;
                 spotPrice(request: import("./poolmanager/v1beta1/query").SpotPriceRequest): Promise<import("./poolmanager/v1beta1/query").SpotPriceResponse>;
+                totalPoolLiquidity(request: import("./poolmanager/v1beta1/query").TotalPoolLiquidityRequest): Promise<import("./poolmanager/v1beta1/query").TotalPoolLiquidityResponse>;
+                totalLiquidity(request?: import("./poolmanager/v1beta1/query").TotalLiquidityRequest): Promise<import("./poolmanager/v1beta1/query").TotalLiquidityResponse>;
             };
         };
         protorev: {
@@ -240,6 +244,7 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 getProtoRevMaxPoolPointsPerBlock(request?: import("./protorev/v1beta1/query").QueryGetProtoRevMaxPoolPointsPerBlockRequest): Promise<import("./protorev/v1beta1/query").QueryGetProtoRevMaxPoolPointsPerBlockResponse>;
                 getProtoRevBaseDenoms(request?: import("./protorev/v1beta1/query").QueryGetProtoRevBaseDenomsRequest): Promise<import("./protorev/v1beta1/query").QueryGetProtoRevBaseDenomsResponse>;
                 getProtoRevEnabled(request?: import("./protorev/v1beta1/query").QueryGetProtoRevEnabledRequest): Promise<import("./protorev/v1beta1/query").QueryGetProtoRevEnabledResponse>;
+                getProtoRevPool(request: import("./protorev/v1beta1/query").QueryGetProtoRevPoolRequest): Promise<import("./protorev/v1beta1/query").QueryGetProtoRevPoolResponse>;
             };
         };
         superfluid: {
@@ -258,13 +263,14 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
             estimateSuperfluidDelegatedAmountByValidatorDenom(request: import("./superfluid/query").EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<import("./superfluid/query").EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>;
             totalDelegationByDelegator(request: import("./superfluid/query").QueryTotalDelegationByDelegatorRequest): Promise<import("./superfluid/query").QueryTotalDelegationByDelegatorResponse>;
             unpoolWhitelist(request?: import("./superfluid/query").QueryUnpoolWhitelistRequest): Promise<import("./superfluid/query").QueryUnpoolWhitelistResponse>;
+            userConcentratedSuperfluidPositionsDelegated(request: import("./superfluid/query").UserConcentratedSuperfluidPositionsDelegatedRequest): Promise<import("./superfluid/query").UserConcentratedSuperfluidPositionsDelegatedResponse>;
+            userConcentratedSuperfluidPositionsUndelegating(request: import("./superfluid/query").UserConcentratedSuperfluidPositionsUndelegatingRequest): Promise<import("./superfluid/query").UserConcentratedSuperfluidPositionsUndelegatingResponse>;
         };
         tokenfactory: {
             v1beta1: {
                 params(request?: import("./tokenfactory/v1beta1/query").QueryParamsRequest): Promise<import("./tokenfactory/v1beta1/query").QueryParamsResponse>;
                 denomAuthorityMetadata(request: import("./tokenfactory/v1beta1/query").QueryDenomAuthorityMetadataRequest): Promise<import("./tokenfactory/v1beta1/query").QueryDenomAuthorityMetadataResponse>;
                 denomsFromCreator(request: import("./tokenfactory/v1beta1/query").QueryDenomsFromCreatorRequest): Promise<import("./tokenfactory/v1beta1/query").QueryDenomsFromCreatorResponse>;
-                beforeSendHookAddress(request: import("./tokenfactory/v1beta1/query").QueryBeforeSendHookAddressRequest): Promise<import("./tokenfactory/v1beta1/query").QueryBeforeSendHookAddressResponse>;
             };
         };
         twap: {

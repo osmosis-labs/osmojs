@@ -1,9 +1,9 @@
 import { TickInfo, TickInfoAmino, TickInfoSDKType } from "./tickInfo";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { IncentiveRecord, IncentiveRecordAmino, IncentiveRecordSDKType } from "./incentive_record";
-import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Position, PositionAmino, PositionSDKType } from "./position";
-import { AccumulatorContent, AccumulatorContentAmino, AccumulatorContentSDKType } from "../accum/v1beta1/accum";
+import { Record, RecordAmino, RecordSDKType, AccumulatorContent, AccumulatorContentAmino, AccumulatorContentSDKType } from "../accum/v1beta1/accum";
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Pool as Pool1 } from "./pool";
 import { PoolProtoMsg as Pool1ProtoMsg } from "./pool";
 import { PoolSDKType as Pool1SDKType } from "./pool";
@@ -66,7 +66,7 @@ export interface PoolData {
     pool?: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
     /** pool's ticks */
     ticks: FullTick[];
-    feeAccumulator?: AccumObject;
+    spreadRewardAccumulator?: AccumObject;
     incentivesAccumulators: AccumObject[];
     /** incentive records to be set */
     incentiveRecords: IncentiveRecord[];
@@ -75,7 +75,7 @@ export interface PoolDataProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolData";
     value: Uint8Array;
 }
-export declare type PoolDataEncoded = Omit<PoolData, "pool"> & {
+export type PoolDataEncoded = Omit<PoolData, "pool"> & {
     /** pool struct */
     pool?: Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg | undefined;
 };
@@ -88,7 +88,7 @@ export interface PoolDataAmino {
     pool?: AnyAmino;
     /** pool's ticks */
     ticks: FullTickAmino[];
-    fee_accumulator?: AccumObjectAmino;
+    spread_reward_accumulator?: AccumObjectAmino;
     incentives_accumulators: AccumObjectAmino[];
     /** incentive records to be set */
     incentive_records: IncentiveRecordAmino[];
@@ -104,9 +104,35 @@ export interface PoolDataAminoMsg {
 export interface PoolDataSDKType {
     pool?: Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType | undefined;
     ticks: FullTickSDKType[];
-    fee_accumulator?: AccumObjectSDKType;
+    spread_reward_accumulator?: AccumObjectSDKType;
     incentives_accumulators: AccumObjectSDKType[];
     incentive_records: IncentiveRecordSDKType[];
+}
+export interface PositionData {
+    position?: Position;
+    lockId: Long;
+    spreadRewardAccumRecord?: Record;
+    uptimeAccumRecords: Record[];
+}
+export interface PositionDataProtoMsg {
+    typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionData";
+    value: Uint8Array;
+}
+export interface PositionDataAmino {
+    position?: PositionAmino;
+    lock_id: string;
+    spread_reward_accum_record?: RecordAmino;
+    uptime_accum_records: RecordAmino[];
+}
+export interface PositionDataAminoMsg {
+    type: "osmosis/concentratedliquidity/position-data";
+    value: PositionDataAmino;
+}
+export interface PositionDataSDKType {
+    position?: PositionSDKType;
+    lock_id: Long;
+    spread_reward_accum_record?: RecordSDKType;
+    uptime_accum_records: RecordSDKType[];
 }
 /** GenesisState defines the concentrated liquidity module's genesis state. */
 export interface GenesisState {
@@ -114,8 +140,9 @@ export interface GenesisState {
     params?: Params;
     /** pool data containining serialized pool struct and ticks. */
     poolData: PoolData[];
-    positions: Position[];
+    positionData: PositionData[];
     nextPositionId: Long;
+    nextIncentiveRecordId: Long;
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisState";
@@ -127,8 +154,9 @@ export interface GenesisStateAmino {
     params?: ParamsAmino;
     /** pool data containining serialized pool struct and ticks. */
     pool_data: PoolDataAmino[];
-    positions: PositionAmino[];
+    position_data: PositionDataAmino[];
     next_position_id: string;
+    next_incentive_record_id: string;
 }
 export interface GenesisStateAminoMsg {
     type: "osmosis/concentratedliquidity/genesis-state";
@@ -138,8 +166,9 @@ export interface GenesisStateAminoMsg {
 export interface GenesisStateSDKType {
     params?: ParamsSDKType;
     pool_data: PoolDataSDKType[];
-    positions: PositionSDKType[];
+    position_data: PositionDataSDKType[];
     next_position_id: Long;
+    next_incentive_record_id: Long;
 }
 export interface AccumObject {
     /** Accumulator's name (pulled from AccumulatorContent) */
@@ -188,6 +217,19 @@ export declare const PoolData: {
     fromProtoMsg(message: PoolDataProtoMsg): PoolData;
     toProto(message: PoolData): Uint8Array;
     toProtoMsg(message: PoolData): PoolDataProtoMsg;
+};
+export declare const PositionData: {
+    typeUrl: string;
+    encode(message: PositionData, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PositionData;
+    fromPartial(object: Partial<PositionData>): PositionData;
+    fromAmino(object: PositionDataAmino): PositionData;
+    toAmino(message: PositionData): PositionDataAmino;
+    fromAminoMsg(object: PositionDataAminoMsg): PositionData;
+    toAminoMsg(message: PositionData): PositionDataAminoMsg;
+    fromProtoMsg(message: PositionDataProtoMsg): PositionData;
+    toProto(message: PositionData): Uint8Array;
+    toProtoMsg(message: PositionData): PositionDataProtoMsg;
 };
 export declare const GenesisState: {
     typeUrl: string;

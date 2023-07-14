@@ -28,6 +28,16 @@ export interface MsgCreateGauge {
      * over
      */
     numEpochsPaidOver: Long;
+    /**
+     * pool_id is the ID of the pool that the gauge is meant to be associated
+     * with. if pool_id is set, then the "QueryCondition.LockQueryType" must be
+     * "NoLock" with all other fields of the "QueryCondition.LockQueryType" struct
+     * unset, including "QueryCondition.Denom". However, note that, internally,
+     * the empty string in "QueryCondition.Denom" ends up being overwritten with
+     * incentivestypes.NoLockExternalGaugeDenom(<pool-id>) so that the gauges
+     * associated with a pool can be queried by this prefix if needed.
+     */
+    poolId: Long;
 }
 export interface MsgCreateGaugeProtoMsg {
     typeUrl: "/osmosis.incentives.MsgCreateGauge";
@@ -59,6 +69,16 @@ export interface MsgCreateGaugeAmino {
      * over
      */
     num_epochs_paid_over: string;
+    /**
+     * pool_id is the ID of the pool that the gauge is meant to be associated
+     * with. if pool_id is set, then the "QueryCondition.LockQueryType" must be
+     * "NoLock" with all other fields of the "QueryCondition.LockQueryType" struct
+     * unset, including "QueryCondition.Denom". However, note that, internally,
+     * the empty string in "QueryCondition.Denom" ends up being overwritten with
+     * incentivestypes.NoLockExternalGaugeDenom(<pool-id>) so that the gauges
+     * associated with a pool can be queried by this prefix if needed.
+     */
+    pool_id: string;
 }
 export interface MsgCreateGaugeAminoMsg {
     type: "osmosis/incentives/create-gauge";
@@ -72,6 +92,7 @@ export interface MsgCreateGaugeSDKType {
     coins: CoinSDKType[];
     start_time?: Date;
     num_epochs_paid_over: Long;
+    pool_id: Long;
 }
 export interface MsgCreateGaugeResponse {
 }

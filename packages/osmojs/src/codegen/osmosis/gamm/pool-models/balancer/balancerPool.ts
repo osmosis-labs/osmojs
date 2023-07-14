@@ -3,6 +3,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../../../google/pro
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { Long, toTimestamp, fromTimestamp } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /**
  * Parameters for changing the weights in a balancer pool smoothly from
  * a start weight and end weight over a period of time.
@@ -449,11 +450,11 @@ export const PoolParams = {
 
   encode(message: PoolParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.swapFee !== "") {
-      writer.uint32(10).string(message.swapFee);
+      writer.uint32(10).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
     }
 
     if (message.exitFee !== "") {
-      writer.uint32(18).string(message.exitFee);
+      writer.uint32(18).string(Decimal.fromUserInput(message.exitFee, 18).atomics);
     }
 
     if (message.smoothWeightChangeParams !== undefined) {
@@ -473,11 +474,11 @@ export const PoolParams = {
 
       switch (tag >>> 3) {
         case 1:
-          message.swapFee = reader.string();
+          message.swapFee = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 2:
-          message.exitFee = reader.string();
+          message.exitFee = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 3:

@@ -51,6 +51,13 @@ export interface BlockParams {
      * Note: must be greater or equal to -1
      */
     maxGas: Long;
+    /**
+     * Minimum time increment between consecutive blocks (in milliseconds) If the
+     * block header timestamp is ahead of the system clock, decrease this value.
+     *
+     * Not exposed to the application.
+     */
+    timeIotaMs: Long;
 }
 export interface BlockParamsProtoMsg {
     typeUrl: "/tendermint.types.BlockParams";
@@ -68,6 +75,13 @@ export interface BlockParamsAmino {
      * Note: must be greater or equal to -1
      */
     max_gas: string;
+    /**
+     * Minimum time increment between consecutive blocks (in milliseconds) If the
+     * block header timestamp is ahead of the system clock, decrease this value.
+     *
+     * Not exposed to the application.
+     */
+    time_iota_ms: string;
 }
 export interface BlockParamsAminoMsg {
     type: "/tendermint.types.BlockParams";
@@ -77,6 +91,7 @@ export interface BlockParamsAminoMsg {
 export interface BlockParamsSDKType {
     max_bytes: Long;
     max_gas: Long;
+    time_iota_ms: Long;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
 export interface EvidenceParams {
@@ -171,7 +186,7 @@ export interface ValidatorParamsSDKType {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParams {
-    app: Long;
+    appVersion: Long;
 }
 export interface VersionParamsProtoMsg {
     typeUrl: "/tendermint.types.VersionParams";
@@ -179,7 +194,7 @@ export interface VersionParamsProtoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsAmino {
-    app: string;
+    app_version: string;
 }
 export interface VersionParamsAminoMsg {
     type: "/tendermint.types.VersionParams";
@@ -187,7 +202,7 @@ export interface VersionParamsAminoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsSDKType {
-    app: Long;
+    app_version: Long;
 }
 /**
  * HashedParams is a subset of ConsensusParams.

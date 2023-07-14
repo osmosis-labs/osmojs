@@ -2,41 +2,6 @@ import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const cosmosAminoConverters: {
-    "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade": {
-        aminoType: string;
-        toAmino: (message: import("./upgrade/v1beta1/tx").MsgSoftwareUpgrade) => import("./upgrade/v1beta1/tx").MsgSoftwareUpgradeAmino;
-        fromAmino: (object: import("./upgrade/v1beta1/tx").MsgSoftwareUpgradeAmino) => import("./upgrade/v1beta1/tx").MsgSoftwareUpgrade;
-    };
-    "/cosmos.upgrade.v1beta1.MsgCancelUpgrade": {
-        aminoType: string;
-        toAmino: (message: import("./upgrade/v1beta1/tx").MsgCancelUpgrade) => import("./upgrade/v1beta1/tx").MsgCancelUpgradeAmino;
-        fromAmino: (object: import("./upgrade/v1beta1/tx").MsgCancelUpgradeAmino) => import("./upgrade/v1beta1/tx").MsgCancelUpgrade;
-    };
-    "/cosmos.gov.v1.MsgSubmitProposal": {
-        aminoType: string;
-        toAmino: (message: import("./gov/v1/tx").MsgSubmitProposal) => import("./gov/v1/tx").MsgSubmitProposalAmino;
-        fromAmino: (object: import("./gov/v1/tx").MsgSubmitProposalAmino) => import("./gov/v1/tx").MsgSubmitProposal;
-    };
-    "/cosmos.gov.v1.MsgExecLegacyContent": {
-        aminoType: string;
-        toAmino: (message: import("./gov/v1/tx").MsgExecLegacyContent) => import("./gov/v1/tx").MsgExecLegacyContentAmino;
-        fromAmino: (object: import("./gov/v1/tx").MsgExecLegacyContentAmino) => import("./gov/v1/tx").MsgExecLegacyContent;
-    };
-    "/cosmos.gov.v1.MsgVote": {
-        aminoType: string;
-        toAmino: (message: import("./gov/v1/tx").MsgVote) => import("./gov/v1/tx").MsgVoteAmino;
-        fromAmino: (object: import("./gov/v1/tx").MsgVoteAmino) => import("./gov/v1/tx").MsgVote;
-    };
-    "/cosmos.gov.v1.MsgVoteWeighted": {
-        aminoType: string;
-        toAmino: (message: import("./gov/v1/tx").MsgVoteWeighted) => import("./gov/v1/tx").MsgVoteWeightedAmino;
-        fromAmino: (object: import("./gov/v1/tx").MsgVoteWeightedAmino) => import("./gov/v1/tx").MsgVoteWeighted;
-    };
-    "/cosmos.gov.v1.MsgDeposit": {
-        aminoType: string;
-        toAmino: (message: import("./gov/v1/tx").MsgDeposit) => import("./gov/v1/tx").MsgDepositAmino;
-        fromAmino: (object: import("./gov/v1/tx").MsgDepositAmino) => import("./gov/v1/tx").MsgDeposit;
-    };
     "/cosmos.staking.v1beta1.MsgCreateValidator": {
         aminoType: string;
         toAmino: (message: import("./staking/v1beta1/tx").MsgCreateValidator) => import("./staking/v1beta1/tx").MsgCreateValidatorAmino;

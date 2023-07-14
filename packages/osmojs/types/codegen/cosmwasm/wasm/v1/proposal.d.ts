@@ -2,13 +2,7 @@ import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit StoreCodeProposal. To submit WASM code to the system,
- * a simple MsgStoreCode can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 export interface StoreCodeProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -40,13 +34,7 @@ export interface StoreCodeProposalProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal";
     value: Uint8Array;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit StoreCodeProposal. To submit WASM code to the system,
- * a simple MsgStoreCode can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 export interface StoreCodeProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -77,13 +65,7 @@ export interface StoreCodeProposalAminoMsg {
     type: "wasm/StoreCodeProposal";
     value: StoreCodeProposalAmino;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit StoreCodeProposal. To submit WASM code to the system,
- * a simple MsgStoreCode can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 export interface StoreCodeProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -97,12 +79,9 @@ export interface StoreCodeProposalSDKType {
     code_hash: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit InstantiateContractProposal. To instantiate a contract,
- * a simple MsgInstantiateContract can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * InstantiateContractProposal gov proposal content type to instantiate a
+ * contract.
  */
-/** @deprecated */
 export interface InstantiateContractProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -127,12 +106,9 @@ export interface InstantiateContractProposalProtoMsg {
     value: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit InstantiateContractProposal. To instantiate a contract,
- * a simple MsgInstantiateContract can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * InstantiateContractProposal gov proposal content type to instantiate a
+ * contract.
  */
-/** @deprecated */
 export interface InstantiateContractProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -156,12 +132,9 @@ export interface InstantiateContractProposalAminoMsg {
     value: InstantiateContractProposalAmino;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit InstantiateContractProposal. To instantiate a contract,
- * a simple MsgInstantiateContract can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * InstantiateContractProposal gov proposal content type to instantiate a
+ * contract.
  */
-/** @deprecated */
 export interface InstantiateContractProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -174,12 +147,9 @@ export interface InstantiateContractProposalSDKType {
     funds: CoinSDKType[];
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit InstantiateContract2Proposal. To instantiate contract 2,
- * a simple MsgInstantiateContract2 can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * InstantiateContract2Proposal gov proposal content type to instantiate
+ * contract 2
  */
-/** @deprecated */
 export interface InstantiateContract2Proposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -211,12 +181,9 @@ export interface InstantiateContract2ProposalProtoMsg {
     value: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit InstantiateContract2Proposal. To instantiate contract 2,
- * a simple MsgInstantiateContract2 can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * InstantiateContract2Proposal gov proposal content type to instantiate
+ * contract 2
  */
-/** @deprecated */
 export interface InstantiateContract2ProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -247,12 +214,9 @@ export interface InstantiateContract2ProposalAminoMsg {
     value: InstantiateContract2ProposalAmino;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit InstantiateContract2Proposal. To instantiate contract 2,
- * a simple MsgInstantiateContract2 can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * InstantiateContract2Proposal gov proposal content type to instantiate
+ * contract 2
  */
-/** @deprecated */
 export interface InstantiateContract2ProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -266,13 +230,7 @@ export interface InstantiateContract2ProposalSDKType {
     salt: Uint8Array;
     fix_msg: boolean;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit MigrateContractProposal. To migrate a contract,
- * a simple MsgMigrateContract can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** MigrateContractProposal gov proposal content type to migrate a contract. */
 export interface MigrateContractProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -290,13 +248,7 @@ export interface MigrateContractProposalProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.MigrateContractProposal";
     value: Uint8Array;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit MigrateContractProposal. To migrate a contract,
- * a simple MsgMigrateContract can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** MigrateContractProposal gov proposal content type to migrate a contract. */
 export interface MigrateContractProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -313,13 +265,7 @@ export interface MigrateContractProposalAminoMsg {
     type: "wasm/MigrateContractProposal";
     value: MigrateContractProposalAmino;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit MigrateContractProposal. To migrate a contract,
- * a simple MsgMigrateContract can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** MigrateContractProposal gov proposal content type to migrate a contract. */
 export interface MigrateContractProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -328,13 +274,7 @@ export interface MigrateContractProposalSDKType {
     code_id: Long;
     msg: Uint8Array;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit SudoContractProposal. To call sudo on a contract,
- * a simple MsgSudoContract can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** SudoContractProposal gov proposal content type to call sudo on a contract. */
 export interface SudoContractProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -350,13 +290,7 @@ export interface SudoContractProposalProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.SudoContractProposal";
     value: Uint8Array;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit SudoContractProposal. To call sudo on a contract,
- * a simple MsgSudoContract can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** SudoContractProposal gov proposal content type to call sudo on a contract. */
 export interface SudoContractProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -371,13 +305,7 @@ export interface SudoContractProposalAminoMsg {
     type: "wasm/SudoContractProposal";
     value: SudoContractProposalAmino;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit SudoContractProposal. To call sudo on a contract,
- * a simple MsgSudoContract can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** SudoContractProposal gov proposal content type to call sudo on a contract. */
 export interface SudoContractProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -386,12 +314,9 @@ export interface SudoContractProposalSDKType {
     msg: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit ExecuteContractProposal. To call execute on a contract,
- * a simple MsgExecuteContract can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * ExecuteContractProposal gov proposal content type to call execute on a
+ * contract.
  */
-/** @deprecated */
 export interface ExecuteContractProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -412,12 +337,9 @@ export interface ExecuteContractProposalProtoMsg {
     value: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit ExecuteContractProposal. To call execute on a contract,
- * a simple MsgExecuteContract can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * ExecuteContractProposal gov proposal content type to call execute on a
+ * contract.
  */
-/** @deprecated */
 export interface ExecuteContractProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -437,12 +359,9 @@ export interface ExecuteContractProposalAminoMsg {
     value: ExecuteContractProposalAmino;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit ExecuteContractProposal. To call execute on a contract,
- * a simple MsgExecuteContract can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * ExecuteContractProposal gov proposal content type to call execute on a
+ * contract.
  */
-/** @deprecated */
 export interface ExecuteContractProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -452,13 +371,7 @@ export interface ExecuteContractProposalSDKType {
     msg: Uint8Array;
     funds: CoinSDKType[];
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit UpdateAdminProposal. To set an admin for a contract,
- * a simple MsgUpdateAdmin can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** UpdateAdminProposal gov proposal content type to set an admin for a contract. */
 export interface UpdateAdminProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -474,13 +387,7 @@ export interface UpdateAdminProposalProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.UpdateAdminProposal";
     value: Uint8Array;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit UpdateAdminProposal. To set an admin for a contract,
- * a simple MsgUpdateAdmin can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** UpdateAdminProposal gov proposal content type to set an admin for a contract. */
 export interface UpdateAdminProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -495,13 +402,7 @@ export interface UpdateAdminProposalAminoMsg {
     type: "wasm/UpdateAdminProposal";
     value: UpdateAdminProposalAmino;
 }
-/**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit UpdateAdminProposal. To set an admin for a contract,
- * a simple MsgUpdateAdmin can be invoked from the x/gov module via
- * a v1 governance proposal.
- */
-/** @deprecated */
+/** UpdateAdminProposal gov proposal content type to set an admin for a contract. */
 export interface UpdateAdminProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -510,12 +411,9 @@ export interface UpdateAdminProposalSDKType {
     contract: string;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit ClearAdminProposal. To clear the admin of a contract,
- * a simple MsgClearAdmin can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * ClearAdminProposal gov proposal content type to clear the admin of a
+ * contract.
  */
-/** @deprecated */
 export interface ClearAdminProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -530,12 +428,9 @@ export interface ClearAdminProposalProtoMsg {
     value: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit ClearAdminProposal. To clear the admin of a contract,
- * a simple MsgClearAdmin can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * ClearAdminProposal gov proposal content type to clear the admin of a
+ * contract.
  */
-/** @deprecated */
 export interface ClearAdminProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -549,12 +444,9 @@ export interface ClearAdminProposalAminoMsg {
     value: ClearAdminProposalAmino;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit ClearAdminProposal. To clear the admin of a contract,
- * a simple MsgClearAdmin can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * ClearAdminProposal gov proposal content type to clear the admin of a
+ * contract.
  */
-/** @deprecated */
 export interface ClearAdminProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -562,12 +454,9 @@ export interface ClearAdminProposalSDKType {
     contract: string;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit PinCodesProposal. To pin a set of code ids in the wasmvm
- * cache, a simple MsgPinCodes can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * PinCodesProposal gov proposal content type to pin a set of code ids in the
+ * wasmvm cache.
  */
-/** @deprecated */
 export interface PinCodesProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -582,12 +471,9 @@ export interface PinCodesProposalProtoMsg {
     value: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit PinCodesProposal. To pin a set of code ids in the wasmvm
- * cache, a simple MsgPinCodes can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * PinCodesProposal gov proposal content type to pin a set of code ids in the
+ * wasmvm cache.
  */
-/** @deprecated */
 export interface PinCodesProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -601,12 +487,9 @@ export interface PinCodesProposalAminoMsg {
     value: PinCodesProposalAmino;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit PinCodesProposal. To pin a set of code ids in the wasmvm
- * cache, a simple MsgPinCodes can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * PinCodesProposal gov proposal content type to pin a set of code ids in the
+ * wasmvm cache.
  */
-/** @deprecated */
 export interface PinCodesProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -614,12 +497,9 @@ export interface PinCodesProposalSDKType {
     code_ids: Long[];
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit UnpinCodesProposal. To unpin a set of code ids in the wasmvm
- * cache, a simple MsgUnpinCodes can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * UnpinCodesProposal gov proposal content type to unpin a set of code ids in
+ * the wasmvm cache.
  */
-/** @deprecated */
 export interface UnpinCodesProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -634,12 +514,9 @@ export interface UnpinCodesProposalProtoMsg {
     value: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit UnpinCodesProposal. To unpin a set of code ids in the wasmvm
- * cache, a simple MsgUnpinCodes can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * UnpinCodesProposal gov proposal content type to unpin a set of code ids in
+ * the wasmvm cache.
  */
-/** @deprecated */
 export interface UnpinCodesProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -653,12 +530,9 @@ export interface UnpinCodesProposalAminoMsg {
     value: UnpinCodesProposalAmino;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit UnpinCodesProposal. To unpin a set of code ids in the wasmvm
- * cache, a simple MsgUnpinCodes can be invoked from the x/gov module via
- * a v1 governance proposal.
+ * UnpinCodesProposal gov proposal content type to unpin a set of code ids in
+ * the wasmvm cache.
  */
-/** @deprecated */
 export interface UnpinCodesProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -702,12 +576,9 @@ export interface AccessConfigUpdateSDKType {
     instantiate_permission?: AccessConfigSDKType;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit UpdateInstantiateConfigProposal. To update instantiate config
- * to a set of code ids, a simple MsgUpdateInstantiateConfig can be invoked from
- * the x/gov module via a v1 governance proposal.
+ * UpdateInstantiateConfigProposal gov proposal content type to update
+ * instantiate config to a  set of code ids.
  */
-/** @deprecated */
 export interface UpdateInstantiateConfigProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -725,12 +596,9 @@ export interface UpdateInstantiateConfigProposalProtoMsg {
     value: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit UpdateInstantiateConfigProposal. To update instantiate config
- * to a set of code ids, a simple MsgUpdateInstantiateConfig can be invoked from
- * the x/gov module via a v1 governance proposal.
+ * UpdateInstantiateConfigProposal gov proposal content type to update
+ * instantiate config to a  set of code ids.
  */
-/** @deprecated */
 export interface UpdateInstantiateConfigProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -747,12 +615,9 @@ export interface UpdateInstantiateConfigProposalAminoMsg {
     value: UpdateInstantiateConfigProposalAmino;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit UpdateInstantiateConfigProposal. To update instantiate config
- * to a set of code ids, a simple MsgUpdateInstantiateConfig can be invoked from
- * the x/gov module via a v1 governance proposal.
+ * UpdateInstantiateConfigProposal gov proposal content type to update
+ * instantiate config to a  set of code ids.
  */
-/** @deprecated */
 export interface UpdateInstantiateConfigProposalSDKType {
     $typeUrl?: string;
     title: string;
@@ -760,12 +625,9 @@ export interface UpdateInstantiateConfigProposalSDKType {
     access_config_updates: AccessConfigUpdateSDKType[];
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit StoreAndInstantiateContractProposal. To store and instantiate
- * the contract, a simple MsgStoreAndInstantiateContract can be invoked from
- * the x/gov module via a v1 governance proposal.
+ * StoreAndInstantiateContractProposal gov proposal content type to store
+ * and instantiate the contract.
  */
-/** @deprecated */
 export interface StoreAndInstantiateContractProposal {
     $typeUrl?: string;
     /** Title is a short summary */
@@ -806,12 +668,9 @@ export interface StoreAndInstantiateContractProposalProtoMsg {
     value: Uint8Array;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit StoreAndInstantiateContractProposal. To store and instantiate
- * the contract, a simple MsgStoreAndInstantiateContract can be invoked from
- * the x/gov module via a v1 governance proposal.
+ * StoreAndInstantiateContractProposal gov proposal content type to store
+ * and instantiate the contract.
  */
-/** @deprecated */
 export interface StoreAndInstantiateContractProposalAmino {
     /** Title is a short summary */
     title: string;
@@ -851,12 +710,9 @@ export interface StoreAndInstantiateContractProposalAminoMsg {
     value: StoreAndInstantiateContractProposalAmino;
 }
 /**
- * Deprecated: Do not use. Since wasmd v0.40, there is no longer a need for
- * an explicit StoreAndInstantiateContractProposal. To store and instantiate
- * the contract, a simple MsgStoreAndInstantiateContract can be invoked from
- * the x/gov module via a v1 governance proposal.
+ * StoreAndInstantiateContractProposal gov proposal content type to store
+ * and instantiate the contract.
  */
-/** @deprecated */
 export interface StoreAndInstantiateContractProposalSDKType {
     $typeUrl?: string;
     title: string;

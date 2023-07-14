@@ -1,6 +1,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /**
  * A TWAP record should be indexed in state by pool_id, (asset pair), timestamp
  * The asset pair assets should be lexicographically sorted.
@@ -164,23 +165,23 @@ export const TwapRecord = {
     }
 
     if (message.p0LastSpotPrice !== "") {
-      writer.uint32(50).string(message.p0LastSpotPrice);
+      writer.uint32(50).string(Decimal.fromUserInput(message.p0LastSpotPrice, 18).atomics);
     }
 
     if (message.p1LastSpotPrice !== "") {
-      writer.uint32(58).string(message.p1LastSpotPrice);
+      writer.uint32(58).string(Decimal.fromUserInput(message.p1LastSpotPrice, 18).atomics);
     }
 
     if (message.p0ArithmeticTwapAccumulator !== "") {
-      writer.uint32(66).string(message.p0ArithmeticTwapAccumulator);
+      writer.uint32(66).string(Decimal.fromUserInput(message.p0ArithmeticTwapAccumulator, 18).atomics);
     }
 
     if (message.p1ArithmeticTwapAccumulator !== "") {
-      writer.uint32(74).string(message.p1ArithmeticTwapAccumulator);
+      writer.uint32(74).string(Decimal.fromUserInput(message.p1ArithmeticTwapAccumulator, 18).atomics);
     }
 
     if (message.geometricTwapAccumulator !== "") {
-      writer.uint32(82).string(message.geometricTwapAccumulator);
+      writer.uint32(82).string(Decimal.fromUserInput(message.geometricTwapAccumulator, 18).atomics);
     }
 
     if (message.lastErrorTime !== undefined) {
@@ -220,23 +221,23 @@ export const TwapRecord = {
           break;
 
         case 6:
-          message.p0LastSpotPrice = reader.string();
+          message.p0LastSpotPrice = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 7:
-          message.p1LastSpotPrice = reader.string();
+          message.p1LastSpotPrice = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 8:
-          message.p0ArithmeticTwapAccumulator = reader.string();
+          message.p0ArithmeticTwapAccumulator = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 9:
-          message.p1ArithmeticTwapAccumulator = reader.string();
+          message.p1ArithmeticTwapAccumulator = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 10:
-          message.geometricTwapAccumulator = reader.string();
+          message.geometricTwapAccumulator = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 11:
