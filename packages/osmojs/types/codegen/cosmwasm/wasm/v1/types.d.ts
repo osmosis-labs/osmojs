@@ -170,7 +170,7 @@ export interface ContractInfoProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.ContractInfo";
     value: Uint8Array;
 }
-export declare type ContractInfoEncoded = Omit<ContractInfo, "extension"> & {
+export type ContractInfoEncoded = Omit<ContractInfo, "extension"> & {
     /**
      * Extension is an extension point to store custom metadata within the
      * persistence model.

@@ -23,7 +23,7 @@ export interface SetProtoRevEnabledProposalAmino {
     enabled: boolean;
 }
 export interface SetProtoRevEnabledProposalAminoMsg {
-    type: "osmosis/protorev/set-proto-rev-enabled-proposal";
+    type: "osmosis/SetProtoRevEnabledProposal";
     value: SetProtoRevEnabledProposalAmino;
 }
 /**
@@ -62,7 +62,7 @@ export interface SetProtoRevAdminAccountProposalAmino {
     account: string;
 }
 export interface SetProtoRevAdminAccountProposalAminoMsg {
-    type: "osmosis/protorev/set-proto-rev-admin-account-proposal";
+    type: "osmosis/SetProtoRevAdminAccountProposal";
     value: SetProtoRevAdminAccountProposalAmino;
 }
 /**

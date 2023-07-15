@@ -236,6 +236,46 @@ export interface MsgForceUnlockResponseAminoMsg {
 export interface MsgForceUnlockResponseSDKType {
     success: boolean;
 }
+export interface MsgSetRewardReceiverAddress {
+    owner: string;
+    lockID: Long;
+    rewardReceiver: string;
+}
+export interface MsgSetRewardReceiverAddressProtoMsg {
+    typeUrl: "/osmosis.lockup.MsgSetRewardReceiverAddress";
+    value: Uint8Array;
+}
+export interface MsgSetRewardReceiverAddressAmino {
+    owner: string;
+    lockID: string;
+    reward_receiver: string;
+}
+export interface MsgSetRewardReceiverAddressAminoMsg {
+    type: "osmosis/lockup/set-reward-receiver-address";
+    value: MsgSetRewardReceiverAddressAmino;
+}
+export interface MsgSetRewardReceiverAddressSDKType {
+    owner: string;
+    lockID: Long;
+    reward_receiver: string;
+}
+export interface MsgSetRewardReceiverAddressResponse {
+    success: boolean;
+}
+export interface MsgSetRewardReceiverAddressResponseProtoMsg {
+    typeUrl: "/osmosis.lockup.MsgSetRewardReceiverAddressResponse";
+    value: Uint8Array;
+}
+export interface MsgSetRewardReceiverAddressResponseAmino {
+    success: boolean;
+}
+export interface MsgSetRewardReceiverAddressResponseAminoMsg {
+    type: "osmosis/lockup/set-reward-receiver-address-response";
+    value: MsgSetRewardReceiverAddressResponseAmino;
+}
+export interface MsgSetRewardReceiverAddressResponseSDKType {
+    success: boolean;
+}
 export declare const MsgLockTokens: {
     typeUrl: string;
     encode(message: MsgLockTokens, writer?: _m0.Writer): _m0.Writer;
@@ -365,4 +405,30 @@ export declare const MsgForceUnlockResponse: {
     fromProtoMsg(message: MsgForceUnlockResponseProtoMsg): MsgForceUnlockResponse;
     toProto(message: MsgForceUnlockResponse): Uint8Array;
     toProtoMsg(message: MsgForceUnlockResponse): MsgForceUnlockResponseProtoMsg;
+};
+export declare const MsgSetRewardReceiverAddress: {
+    typeUrl: string;
+    encode(message: MsgSetRewardReceiverAddress, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetRewardReceiverAddress;
+    fromPartial(object: Partial<MsgSetRewardReceiverAddress>): MsgSetRewardReceiverAddress;
+    fromAmino(object: MsgSetRewardReceiverAddressAmino): MsgSetRewardReceiverAddress;
+    toAmino(message: MsgSetRewardReceiverAddress): MsgSetRewardReceiverAddressAmino;
+    fromAminoMsg(object: MsgSetRewardReceiverAddressAminoMsg): MsgSetRewardReceiverAddress;
+    toAminoMsg(message: MsgSetRewardReceiverAddress): MsgSetRewardReceiverAddressAminoMsg;
+    fromProtoMsg(message: MsgSetRewardReceiverAddressProtoMsg): MsgSetRewardReceiverAddress;
+    toProto(message: MsgSetRewardReceiverAddress): Uint8Array;
+    toProtoMsg(message: MsgSetRewardReceiverAddress): MsgSetRewardReceiverAddressProtoMsg;
+};
+export declare const MsgSetRewardReceiverAddressResponse: {
+    typeUrl: string;
+    encode(message: MsgSetRewardReceiverAddressResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetRewardReceiverAddressResponse;
+    fromPartial(object: Partial<MsgSetRewardReceiverAddressResponse>): MsgSetRewardReceiverAddressResponse;
+    fromAmino(object: MsgSetRewardReceiverAddressResponseAmino): MsgSetRewardReceiverAddressResponse;
+    toAmino(message: MsgSetRewardReceiverAddressResponse): MsgSetRewardReceiverAddressResponseAmino;
+    fromAminoMsg(object: MsgSetRewardReceiverAddressResponseAminoMsg): MsgSetRewardReceiverAddressResponse;
+    toAminoMsg(message: MsgSetRewardReceiverAddressResponse): MsgSetRewardReceiverAddressResponseAminoMsg;
+    fromProtoMsg(message: MsgSetRewardReceiverAddressResponseProtoMsg): MsgSetRewardReceiverAddressResponse;
+    toProto(message: MsgSetRewardReceiverAddressResponse): Uint8Array;
+    toProtoMsg(message: MsgSetRewardReceiverAddressResponse): MsgSetRewardReceiverAddressResponseProtoMsg;
 };

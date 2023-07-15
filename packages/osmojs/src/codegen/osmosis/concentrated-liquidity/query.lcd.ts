@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
-import { PoolsRequest, PoolsResponseSDKType, ParamsRequest, ParamsResponseSDKType, UserPositionsRequest, UserPositionsResponseSDKType, LiquidityPerTickRangeRequest, LiquidityPerTickRangeResponseSDKType, LiquidityNetInDirectionRequest, LiquidityNetInDirectionResponseSDKType, ClaimableSpreadRewardsRequest, ClaimableSpreadRewardsResponseSDKType, ClaimableIncentivesRequest, ClaimableIncentivesResponseSDKType, PositionByIdRequest, PositionByIdResponseSDKType, PoolAccumulatorRewardsRequest, PoolAccumulatorRewardsResponseSDKType, IncentiveRecordsRequest, IncentiveRecordsResponseSDKType, TickAccumulatorTrackersRequest, TickAccumulatorTrackersResponseSDKType, CFMMPoolIdLinkFromConcentratedPoolIdRequest, CFMMPoolIdLinkFromConcentratedPoolIdResponseSDKType } from "./query";
+import { PoolsRequest, PoolsResponseSDKType, ParamsRequest, ParamsResponseSDKType, UserPositionsRequest, UserPositionsResponseSDKType, LiquidityPerTickRangeRequest, LiquidityPerTickRangeResponseSDKType, LiquidityNetInDirectionRequest, LiquidityNetInDirectionResponseSDKType, ClaimableSpreadRewardsRequest, ClaimableSpreadRewardsResponseSDKType, ClaimableIncentivesRequest, ClaimableIncentivesResponseSDKType, PositionByIdRequest, PositionByIdResponseSDKType, PoolAccumulatorRewardsRequest, PoolAccumulatorRewardsResponseSDKType, IncentiveRecordsRequest, IncentiveRecordsResponseSDKType, TickAccumulatorTrackersRequest, TickAccumulatorTrackersResponseSDKType, CFMMPoolIdLinkFromConcentratedPoolIdRequest, CFMMPoolIdLinkFromConcentratedPoolIdResponseSDKType, UserUnbondingPositionsRequest, UserUnbondingPositionsResponseSDKType, GetTotalLiquidityRequest, GetTotalLiquidityResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -22,6 +22,8 @@ export class LCDQueryClient {
     this.incentiveRecords = this.incentiveRecords.bind(this);
     this.tickAccumulatorTrackers = this.tickAccumulatorTrackers.bind(this);
     this.cFMMPoolIdLinkFromConcentratedPoolId = this.cFMMPoolIdLinkFromConcentratedPoolId.bind(this);
+    this.userUnbondingPositions = this.userUnbondingPositions.bind(this);
+    this.getTotalLiquidity = this.getTotalLiquidity.bind(this);
   }
   /* Pools returns all concentrated liquidity pools */
 
@@ -228,6 +230,21 @@ export class LCDQueryClient {
   async cFMMPoolIdLinkFromConcentratedPoolId(params: CFMMPoolIdLinkFromConcentratedPoolIdRequest): Promise<CFMMPoolIdLinkFromConcentratedPoolIdResponseSDKType> {
     const endpoint = `osmosis/concentratedliquidity/v1beta1/cfmm_pool_id_link_from_concentrated/${params.concentratedPoolId}`;
     return await this.req.get<CFMMPoolIdLinkFromConcentratedPoolIdResponseSDKType>(endpoint);
+  }
+  /* UserUnbondingPositions returns the position and lock info of unbonding
+   positions of the given address. */
+
+
+  async userUnbondingPositions(params: UserUnbondingPositionsRequest): Promise<UserUnbondingPositionsResponseSDKType> {
+    const endpoint = `osmosis/concentratedliquidity/v1beta1/user_unbonding_positions/${params.address}`;
+    return await this.req.get<UserUnbondingPositionsResponseSDKType>(endpoint);
+  }
+  /* GetTotalLiquidity returns total liquidity across all cl pools. */
+
+
+  async getTotalLiquidity(_params: GetTotalLiquidityRequest = {}): Promise<GetTotalLiquidityResponseSDKType> {
+    const endpoint = `osmosis/concentratedliquidity/v1beta1/get_total_liquidity`;
+    return await this.req.get<GetTotalLiquidityResponseSDKType>(endpoint);
   }
 
 }

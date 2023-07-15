@@ -1,5 +1,6 @@
 import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /** Minter represents the minting state. */
 
 export interface Minter {
@@ -267,7 +268,7 @@ export const Minter = {
 
   encode(message: Minter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.epochProvisions !== "") {
-      writer.uint32(10).string(message.epochProvisions);
+      writer.uint32(10).string(Decimal.fromUserInput(message.epochProvisions, 18).atomics);
     }
 
     return writer;
@@ -283,7 +284,7 @@ export const Minter = {
 
       switch (tag >>> 3) {
         case 1:
-          message.epochProvisions = reader.string();
+          message.epochProvisions = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -357,7 +358,7 @@ export const WeightedAddress = {
     }
 
     if (message.weight !== "") {
-      writer.uint32(18).string(message.weight);
+      writer.uint32(18).string(Decimal.fromUserInput(message.weight, 18).atomics);
     }
 
     return writer;
@@ -377,7 +378,7 @@ export const WeightedAddress = {
           break;
 
         case 2:
-          message.weight = reader.string();
+          message.weight = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -452,19 +453,19 @@ export const DistributionProportions = {
 
   encode(message: DistributionProportions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.staking !== "") {
-      writer.uint32(10).string(message.staking);
+      writer.uint32(10).string(Decimal.fromUserInput(message.staking, 18).atomics);
     }
 
     if (message.poolIncentives !== "") {
-      writer.uint32(18).string(message.poolIncentives);
+      writer.uint32(18).string(Decimal.fromUserInput(message.poolIncentives, 18).atomics);
     }
 
     if (message.developerRewards !== "") {
-      writer.uint32(26).string(message.developerRewards);
+      writer.uint32(26).string(Decimal.fromUserInput(message.developerRewards, 18).atomics);
     }
 
     if (message.communityPool !== "") {
-      writer.uint32(34).string(message.communityPool);
+      writer.uint32(34).string(Decimal.fromUserInput(message.communityPool, 18).atomics);
     }
 
     return writer;
@@ -480,19 +481,19 @@ export const DistributionProportions = {
 
       switch (tag >>> 3) {
         case 1:
-          message.staking = reader.string();
+          message.staking = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 2:
-          message.poolIncentives = reader.string();
+          message.poolIncentives = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 3:
-          message.developerRewards = reader.string();
+          message.developerRewards = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 4:
-          message.communityPool = reader.string();
+          message.communityPool = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -581,7 +582,7 @@ export const Params = {
     }
 
     if (message.genesisEpochProvisions !== "") {
-      writer.uint32(18).string(message.genesisEpochProvisions);
+      writer.uint32(18).string(Decimal.fromUserInput(message.genesisEpochProvisions, 18).atomics);
     }
 
     if (message.epochIdentifier !== "") {
@@ -593,7 +594,7 @@ export const Params = {
     }
 
     if (message.reductionFactor !== "") {
-      writer.uint32(42).string(message.reductionFactor);
+      writer.uint32(42).string(Decimal.fromUserInput(message.reductionFactor, 18).atomics);
     }
 
     if (message.distributionProportions !== undefined) {
@@ -625,7 +626,7 @@ export const Params = {
           break;
 
         case 2:
-          message.genesisEpochProvisions = reader.string();
+          message.genesisEpochProvisions = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 3:
@@ -637,7 +638,7 @@ export const Params = {
           break;
 
         case 5:
-          message.reductionFactor = reader.string();
+          message.reductionFactor = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 6:

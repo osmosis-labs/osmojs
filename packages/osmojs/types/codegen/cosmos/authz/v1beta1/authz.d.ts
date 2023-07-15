@@ -47,7 +47,7 @@ export interface GrantProtoMsg {
     typeUrl: "/cosmos.authz.v1beta1.Grant";
     value: Uint8Array;
 }
-export declare type GrantEncoded = Omit<Grant, "authorization"> & {
+export type GrantEncoded = Omit<Grant, "authorization"> & {
     authorization?: GenericAuthorizationProtoMsg | SendAuthorizationProtoMsg | StakeAuthorizationProtoMsg | AnyProtoMsg | undefined;
 };
 /**
@@ -84,7 +84,7 @@ export interface GrantAuthorizationProtoMsg {
     typeUrl: "/cosmos.authz.v1beta1.GrantAuthorization";
     value: Uint8Array;
 }
-export declare type GrantAuthorizationEncoded = Omit<GrantAuthorization, "authorization"> & {
+export type GrantAuthorizationEncoded = Omit<GrantAuthorization, "authorization"> & {
     authorization?: GenericAuthorizationProtoMsg | SendAuthorizationProtoMsg | StakeAuthorizationProtoMsg | AnyProtoMsg | undefined;
 };
 /**

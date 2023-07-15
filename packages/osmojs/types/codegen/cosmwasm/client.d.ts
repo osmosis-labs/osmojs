@@ -42,31 +42,6 @@ export declare const cosmwasmAminoConverters: {
         toAmino: (message: import("./wasm/v1/tx").MsgUpdateInstantiateConfig) => import("./wasm/v1/tx").MsgUpdateInstantiateConfigAmino;
         fromAmino: (object: import("./wasm/v1/tx").MsgUpdateInstantiateConfigAmino) => import("./wasm/v1/tx").MsgUpdateInstantiateConfig;
     };
-    "/cosmwasm.wasm.v1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: import("./wasm/v1/tx").MsgUpdateParams) => import("./wasm/v1/tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./wasm/v1/tx").MsgUpdateParamsAmino) => import("./wasm/v1/tx").MsgUpdateParams;
-    };
-    "/cosmwasm.wasm.v1.MsgSudoContract": {
-        aminoType: string;
-        toAmino: (message: import("./wasm/v1/tx").MsgSudoContract) => import("./wasm/v1/tx").MsgSudoContractAmino;
-        fromAmino: (object: import("./wasm/v1/tx").MsgSudoContractAmino) => import("./wasm/v1/tx").MsgSudoContract;
-    };
-    "/cosmwasm.wasm.v1.MsgPinCodes": {
-        aminoType: string;
-        toAmino: (message: import("./wasm/v1/tx").MsgPinCodes) => import("./wasm/v1/tx").MsgPinCodesAmino;
-        fromAmino: (object: import("./wasm/v1/tx").MsgPinCodesAmino) => import("./wasm/v1/tx").MsgPinCodes;
-    };
-    "/cosmwasm.wasm.v1.MsgUnpinCodes": {
-        aminoType: string;
-        toAmino: (message: import("./wasm/v1/tx").MsgUnpinCodes) => import("./wasm/v1/tx").MsgUnpinCodesAmino;
-        fromAmino: (object: import("./wasm/v1/tx").MsgUnpinCodesAmino) => import("./wasm/v1/tx").MsgUnpinCodes;
-    };
-    "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract": {
-        aminoType: string;
-        toAmino: (message: import("./wasm/v1/tx").MsgStoreAndInstantiateContract) => import("./wasm/v1/tx").MsgStoreAndInstantiateContractAmino;
-        fromAmino: (object: import("./wasm/v1/tx").MsgStoreAndInstantiateContractAmino) => import("./wasm/v1/tx").MsgStoreAndInstantiateContract;
-    };
 };
 export declare const cosmwasmProtoRegistry: ReadonlyArray<[string, GeneratedType]>;
 export declare const getSigningCosmwasmClientOptions: ({ defaultTypes }?: {

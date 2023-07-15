@@ -206,7 +206,7 @@ export interface ValidatorProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.Validator";
     value: Uint8Array;
 }
-export declare type ValidatorEncoded = Omit<Validator, "consensusPubkey"> & {
+export type ValidatorEncoded = Omit<Validator, "consensusPubkey"> & {
     /** consensus_pubkey is the consensus public key of the validator, as a Protobuf Any. */
     consensusPubkey?: AnyProtoMsg | undefined;
 };

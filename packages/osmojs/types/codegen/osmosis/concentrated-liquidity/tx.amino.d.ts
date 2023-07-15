@@ -1,4 +1,4 @@
-import { MsgCreatePosition, MsgWithdrawPosition, MsgCollectFees, MsgCollectIncentives, MsgFungifyChargedPositions } from "./tx";
+import { MsgCreatePosition, MsgWithdrawPosition, MsgAddToPosition, MsgCollectSpreadRewards, MsgCollectIncentives } from "./tx";
 export declare const AminoConverter: {
     "/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition": {
         aminoType: string;
@@ -10,19 +10,19 @@ export declare const AminoConverter: {
         toAmino: (message: MsgWithdrawPosition) => import("./tx").MsgWithdrawPositionAmino;
         fromAmino: (object: import("./tx").MsgWithdrawPositionAmino) => MsgWithdrawPosition;
     };
-    "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees": {
+    "/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition": {
         aminoType: string;
-        toAmino: (message: MsgCollectFees) => import("./tx").MsgCollectFeesAmino;
-        fromAmino: (object: import("./tx").MsgCollectFeesAmino) => MsgCollectFees;
+        toAmino: (message: MsgAddToPosition) => import("./tx").MsgAddToPositionAmino;
+        fromAmino: (object: import("./tx").MsgAddToPositionAmino) => MsgAddToPosition;
+    };
+    "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards": {
+        aminoType: string;
+        toAmino: (message: MsgCollectSpreadRewards) => import("./tx").MsgCollectSpreadRewardsAmino;
+        fromAmino: (object: import("./tx").MsgCollectSpreadRewardsAmino) => MsgCollectSpreadRewards;
     };
     "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives": {
         aminoType: string;
         toAmino: (message: MsgCollectIncentives) => import("./tx").MsgCollectIncentivesAmino;
         fromAmino: (object: import("./tx").MsgCollectIncentivesAmino) => MsgCollectIncentives;
-    };
-    "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions": {
-        aminoType: string;
-        toAmino: (message: MsgFungifyChargedPositions) => import("./tx").MsgFungifyChargedPositionsAmino;
-        fromAmino: (object: import("./tx").MsgFungifyChargedPositionsAmino) => MsgFungifyChargedPositions;
     };
 };

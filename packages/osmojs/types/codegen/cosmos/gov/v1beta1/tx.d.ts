@@ -17,7 +17,7 @@ export interface MsgSubmitProposalProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal";
     value: Uint8Array;
 }
-export declare type MsgSubmitProposalEncoded = Omit<MsgSubmitProposal, "content"> & {
+export type MsgSubmitProposalEncoded = Omit<MsgSubmitProposal, "content"> & {
     content?: TextProposalProtoMsg | AnyProtoMsg | undefined;
 };
 /**

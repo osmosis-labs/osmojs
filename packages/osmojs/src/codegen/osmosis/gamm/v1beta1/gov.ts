@@ -1,4 +1,4 @@
-import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./genesis";
+import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./shared";
 import * as _m0 from "protobufjs/minimal";
 /**
  * ReplaceMigrationRecordsProposal is a gov Content type for updating the

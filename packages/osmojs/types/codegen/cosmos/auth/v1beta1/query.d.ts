@@ -51,7 +51,7 @@ export interface QueryAccountsResponseProtoMsg {
     typeUrl: "/cosmos.auth.v1beta1.QueryAccountsResponse";
     value: Uint8Array;
 }
-export declare type QueryAccountsResponseEncoded = Omit<QueryAccountsResponse, "accounts"> & {
+export type QueryAccountsResponseEncoded = Omit<QueryAccountsResponse, "accounts"> & {
     /** accounts are the existing accounts */
     accounts: (BaseAccountProtoMsg | AnyProtoMsg)[];
 };
@@ -110,7 +110,7 @@ export interface QueryAccountResponseProtoMsg {
     typeUrl: "/cosmos.auth.v1beta1.QueryAccountResponse";
     value: Uint8Array;
 }
-export declare type QueryAccountResponseEncoded = Omit<QueryAccountResponse, "account"> & {
+export type QueryAccountResponseEncoded = Omit<QueryAccountResponse, "account"> & {
     /** account defines the account of the corresponding address. */
     account?: BaseAccountProtoMsg | AnyProtoMsg | undefined;
 };
@@ -191,7 +191,7 @@ export interface QueryModuleAccountsResponseProtoMsg {
     typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountsResponse";
     value: Uint8Array;
 }
-export declare type QueryModuleAccountsResponseEncoded = Omit<QueryModuleAccountsResponse, "accounts"> & {
+export type QueryModuleAccountsResponseEncoded = Omit<QueryModuleAccountsResponse, "accounts"> & {
     accounts: (ModuleAccountProtoMsg | AnyProtoMsg)[];
 };
 /** QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method. */

@@ -156,52 +156,6 @@ export interface QueryDenomsFromCreatorResponseAminoMsg {
 export interface QueryDenomsFromCreatorResponseSDKType {
     denoms: string[];
 }
-export interface QueryBeforeSendHookAddressRequest {
-    denom: string;
-}
-export interface QueryBeforeSendHookAddressRequestProtoMsg {
-    typeUrl: "/osmosis.tokenfactory.v1beta1.QueryBeforeSendHookAddressRequest";
-    value: Uint8Array;
-}
-export interface QueryBeforeSendHookAddressRequestAmino {
-    denom: string;
-}
-export interface QueryBeforeSendHookAddressRequestAminoMsg {
-    type: "osmosis/tokenfactory/query-before-send-hook-address-request";
-    value: QueryBeforeSendHookAddressRequestAmino;
-}
-export interface QueryBeforeSendHookAddressRequestSDKType {
-    denom: string;
-}
-/**
- * QueryBeforeSendHookAddressResponse defines the response structure for the
- * DenomBeforeSendHook gRPC query.
- */
-export interface QueryBeforeSendHookAddressResponse {
-    cosmwasmAddress: string;
-}
-export interface QueryBeforeSendHookAddressResponseProtoMsg {
-    typeUrl: "/osmosis.tokenfactory.v1beta1.QueryBeforeSendHookAddressResponse";
-    value: Uint8Array;
-}
-/**
- * QueryBeforeSendHookAddressResponse defines the response structure for the
- * DenomBeforeSendHook gRPC query.
- */
-export interface QueryBeforeSendHookAddressResponseAmino {
-    cosmwasm_address: string;
-}
-export interface QueryBeforeSendHookAddressResponseAminoMsg {
-    type: "osmosis/tokenfactory/query-before-send-hook-address-response";
-    value: QueryBeforeSendHookAddressResponseAmino;
-}
-/**
- * QueryBeforeSendHookAddressResponse defines the response structure for the
- * DenomBeforeSendHook gRPC query.
- */
-export interface QueryBeforeSendHookAddressResponseSDKType {
-    cosmwasm_address: string;
-}
 export declare const QueryParamsRequest: {
     typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
@@ -279,30 +233,4 @@ export declare const QueryDenomsFromCreatorResponse: {
     fromProtoMsg(message: QueryDenomsFromCreatorResponseProtoMsg): QueryDenomsFromCreatorResponse;
     toProto(message: QueryDenomsFromCreatorResponse): Uint8Array;
     toProtoMsg(message: QueryDenomsFromCreatorResponse): QueryDenomsFromCreatorResponseProtoMsg;
-};
-export declare const QueryBeforeSendHookAddressRequest: {
-    typeUrl: string;
-    encode(message: QueryBeforeSendHookAddressRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBeforeSendHookAddressRequest;
-    fromPartial(object: Partial<QueryBeforeSendHookAddressRequest>): QueryBeforeSendHookAddressRequest;
-    fromAmino(object: QueryBeforeSendHookAddressRequestAmino): QueryBeforeSendHookAddressRequest;
-    toAmino(message: QueryBeforeSendHookAddressRequest): QueryBeforeSendHookAddressRequestAmino;
-    fromAminoMsg(object: QueryBeforeSendHookAddressRequestAminoMsg): QueryBeforeSendHookAddressRequest;
-    toAminoMsg(message: QueryBeforeSendHookAddressRequest): QueryBeforeSendHookAddressRequestAminoMsg;
-    fromProtoMsg(message: QueryBeforeSendHookAddressRequestProtoMsg): QueryBeforeSendHookAddressRequest;
-    toProto(message: QueryBeforeSendHookAddressRequest): Uint8Array;
-    toProtoMsg(message: QueryBeforeSendHookAddressRequest): QueryBeforeSendHookAddressRequestProtoMsg;
-};
-export declare const QueryBeforeSendHookAddressResponse: {
-    typeUrl: string;
-    encode(message: QueryBeforeSendHookAddressResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryBeforeSendHookAddressResponse;
-    fromPartial(object: Partial<QueryBeforeSendHookAddressResponse>): QueryBeforeSendHookAddressResponse;
-    fromAmino(object: QueryBeforeSendHookAddressResponseAmino): QueryBeforeSendHookAddressResponse;
-    toAmino(message: QueryBeforeSendHookAddressResponse): QueryBeforeSendHookAddressResponseAmino;
-    fromAminoMsg(object: QueryBeforeSendHookAddressResponseAminoMsg): QueryBeforeSendHookAddressResponse;
-    toAminoMsg(message: QueryBeforeSendHookAddressResponse): QueryBeforeSendHookAddressResponseAminoMsg;
-    fromProtoMsg(message: QueryBeforeSendHookAddressResponseProtoMsg): QueryBeforeSendHookAddressResponse;
-    toProto(message: QueryBeforeSendHookAddressResponse): Uint8Array;
-    toProtoMsg(message: QueryBeforeSendHookAddressResponse): QueryBeforeSendHookAddressResponseProtoMsg;
 };

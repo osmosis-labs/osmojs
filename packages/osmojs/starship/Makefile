@@ -2,7 +2,7 @@ HELM_NAME = osmojs
 HELM_FILE = configs/config.yaml
 HELM_REPO = starship
 HELM_CHART = devnet
-HELM_VERSION = v0.1.32
+HELM_VERSION = v0.1.38
 
 ###############################################################################
 ###                              All commands                               ###
@@ -10,9 +10,6 @@ HELM_VERSION = v0.1.32
 
 .PHONY: setup
 setup: check setup-helm
-
-.PHONY: start
-start: install port-forward
 
 .PHONY: test
 test:
@@ -38,7 +35,7 @@ setup-helm:
 install:
 	@echo "Installing the helm chart. This is going to take a while....."
 	@echo "You can check the status with \"kubectl get pods\", run in another terminal please"
-	helm install -f $(HELM_FILE) $(HELM_NAME) $(HELM_REPO)/$(HELM_CHART) --version $(HELM_VERSION) --wait --timeout 20m
+	helm install -f $(HELM_FILE) $(HELM_NAME) $(HELM_REPO)/$(HELM_CHART) --version $(HELM_VERSION)
 
 .PHONY: upgrade
 upgrade:

@@ -3,6 +3,7 @@ import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../cosmos/base/v1beta1
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /**
  * IncentiveRecord is the high-level struct we use to deal with an independent
  * incentive being distributed on a pool. Note that PoolId, Denom, and MinUptime
@@ -255,7 +256,7 @@ export const IncentiveRecordBody = {
     }
 
     if (message.emissionRate !== "") {
-      writer.uint32(18).string(message.emissionRate);
+      writer.uint32(18).string(Decimal.fromUserInput(message.emissionRate, 18).atomics);
     }
 
     if (message.startTime !== undefined) {
@@ -279,7 +280,7 @@ export const IncentiveRecordBody = {
           break;
 
         case 2:
-          message.emissionRate = reader.string();
+          message.emissionRate = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 3:

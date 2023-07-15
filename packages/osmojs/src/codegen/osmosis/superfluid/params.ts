@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /** Params holds parameters for the superfluid module */
 
 export interface Params {
@@ -46,7 +47,7 @@ export const Params = {
 
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.minimumRiskFactor !== "") {
-      writer.uint32(10).string(message.minimumRiskFactor);
+      writer.uint32(10).string(Decimal.fromUserInput(message.minimumRiskFactor, 18).atomics);
     }
 
     return writer;
@@ -62,7 +63,7 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.minimumRiskFactor = reader.string();
+          message.minimumRiskFactor = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:

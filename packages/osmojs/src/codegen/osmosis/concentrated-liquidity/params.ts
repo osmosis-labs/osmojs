@@ -1,6 +1,7 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 export interface Params {
   /**
    * authorized_tick_spacing is an array of uint64s that represents the tick
@@ -124,11 +125,11 @@ export const Params = {
     writer.ldelim();
 
     for (const v of message.authorizedSpreadFactors) {
-      writer.uint32(18).string(v!);
+      writer.uint32(18).string(Decimal.fromUserInput(v!, 18).atomics);
     }
 
     if (message.balancerSharesRewardDiscount !== "") {
-      writer.uint32(26).string(message.balancerSharesRewardDiscount);
+      writer.uint32(26).string(Decimal.fromUserInput(message.balancerSharesRewardDiscount, 18).atomics);
     }
 
     for (const v of message.authorizedQuoteDenoms) {
@@ -169,11 +170,11 @@ export const Params = {
           break;
 
         case 2:
-          message.authorizedSpreadFactors.push(reader.string());
+          message.authorizedSpreadFactors.push(Decimal.fromAtomics(reader.string(), 18).toString());
           break;
 
         case 3:
-          message.balancerSharesRewardDiscount = reader.string();
+          message.balancerSharesRewardDiscount = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 4:

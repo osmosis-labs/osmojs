@@ -245,67 +245,6 @@ export interface MsgChangeAdminResponseAminoMsg {
 export interface MsgChangeAdminResponseSDKType {
 }
 /**
- * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
- * assign a CosmWasm contract to call with a BeforeSend hook
- */
-export interface MsgSetBeforeSendHook {
-    sender: string;
-    denom: string;
-    cosmwasmAddress: string;
-}
-export interface MsgSetBeforeSendHookProtoMsg {
-    typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook";
-    value: Uint8Array;
-}
-/**
- * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
- * assign a CosmWasm contract to call with a BeforeSend hook
- */
-export interface MsgSetBeforeSendHookAmino {
-    sender: string;
-    denom: string;
-    cosmwasm_address: string;
-}
-export interface MsgSetBeforeSendHookAminoMsg {
-    type: "osmosis/tokenfactory/set-before-send-hook";
-    value: MsgSetBeforeSendHookAmino;
-}
-/**
- * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
- * assign a CosmWasm contract to call with a BeforeSend hook
- */
-export interface MsgSetBeforeSendHookSDKType {
-    sender: string;
-    denom: string;
-    cosmwasm_address: string;
-}
-/**
- * MsgSetBeforeSendHookResponse defines the response structure for an executed
- * MsgSetBeforeSendHook message.
- */
-export interface MsgSetBeforeSendHookResponse {
-}
-export interface MsgSetBeforeSendHookResponseProtoMsg {
-    typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHookResponse";
-    value: Uint8Array;
-}
-/**
- * MsgSetBeforeSendHookResponse defines the response structure for an executed
- * MsgSetBeforeSendHook message.
- */
-export interface MsgSetBeforeSendHookResponseAmino {
-}
-export interface MsgSetBeforeSendHookResponseAminoMsg {
-    type: "osmosis/tokenfactory/set-before-send-hook-response";
-    value: MsgSetBeforeSendHookResponseAmino;
-}
-/**
- * MsgSetBeforeSendHookResponse defines the response structure for an executed
- * MsgSetBeforeSendHook message.
- */
-export interface MsgSetBeforeSendHookResponseSDKType {
-}
-/**
  * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
  * the denom's bank metadata
  */
@@ -506,32 +445,6 @@ export declare const MsgChangeAdminResponse: {
     fromProtoMsg(message: MsgChangeAdminResponseProtoMsg): MsgChangeAdminResponse;
     toProto(message: MsgChangeAdminResponse): Uint8Array;
     toProtoMsg(message: MsgChangeAdminResponse): MsgChangeAdminResponseProtoMsg;
-};
-export declare const MsgSetBeforeSendHook: {
-    typeUrl: string;
-    encode(message: MsgSetBeforeSendHook, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHook;
-    fromPartial(object: Partial<MsgSetBeforeSendHook>): MsgSetBeforeSendHook;
-    fromAmino(object: MsgSetBeforeSendHookAmino): MsgSetBeforeSendHook;
-    toAmino(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookAmino;
-    fromAminoMsg(object: MsgSetBeforeSendHookAminoMsg): MsgSetBeforeSendHook;
-    toAminoMsg(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookAminoMsg;
-    fromProtoMsg(message: MsgSetBeforeSendHookProtoMsg): MsgSetBeforeSendHook;
-    toProto(message: MsgSetBeforeSendHook): Uint8Array;
-    toProtoMsg(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookProtoMsg;
-};
-export declare const MsgSetBeforeSendHookResponse: {
-    typeUrl: string;
-    encode(_: MsgSetBeforeSendHookResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBeforeSendHookResponse;
-    fromPartial(_: Partial<MsgSetBeforeSendHookResponse>): MsgSetBeforeSendHookResponse;
-    fromAmino(_: MsgSetBeforeSendHookResponseAmino): MsgSetBeforeSendHookResponse;
-    toAmino(_: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseAmino;
-    fromAminoMsg(object: MsgSetBeforeSendHookResponseAminoMsg): MsgSetBeforeSendHookResponse;
-    toAminoMsg(message: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseAminoMsg;
-    fromProtoMsg(message: MsgSetBeforeSendHookResponseProtoMsg): MsgSetBeforeSendHookResponse;
-    toProto(message: MsgSetBeforeSendHookResponse): Uint8Array;
-    toProtoMsg(message: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseProtoMsg;
 };
 export declare const MsgSetDenomMetadata: {
     typeUrl: string;

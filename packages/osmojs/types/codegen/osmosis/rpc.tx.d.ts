@@ -14,17 +14,18 @@ export declare const createRPCMsgClient: ({ rpc }: {
         };
         gov: {
             v1beta1: import("../cosmos/gov/v1beta1/tx.rpc.msg").MsgClientImpl;
-            v1: import("../cosmos/gov/v1/tx.rpc.msg").MsgClientImpl;
         };
         staking: {
             v1beta1: import("../cosmos/staking/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
-        upgrade: {
-            v1beta1: import("../cosmos/upgrade/v1beta1/tx.rpc.msg").MsgClientImpl;
-        };
     };
     osmosis: {
         concentratedliquidity: {
+            poolmodel: {
+                concentrated: {
+                    v1beta1: import("./concentrated-liquidity/pool-model/concentrated/tx.rpc.msg").MsgClientImpl;
+                };
+            };
             v1beta1: import("./concentrated-liquidity/tx.rpc.msg").MsgClientImpl;
         };
         gamm: {

@@ -3,8 +3,14 @@ import * as _m0 from "protobufjs/minimal";
 export interface TickInfo {
     liquidityGross: string;
     liquidityNet: string;
-    feeGrowthOutside: DecCoin[];
-    uptimeTrackers: UptimeTracker[];
+    spreadRewardGrowthOppositeDirectionOfLastTraversal: DecCoin[];
+    /**
+     * uptime_trackers is a container encapsulating the uptime trackers.
+     * We use a container instead of a "repeated UptimeTracker" directly
+     * because we need the ability to serialize and deserialize the
+     * container easily for events when crossing a tick.
+     */
+    uptimeTrackers?: UptimeTrackers;
 }
 export interface TickInfoProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.TickInfo";
@@ -13,8 +19,14 @@ export interface TickInfoProtoMsg {
 export interface TickInfoAmino {
     liquidity_gross: string;
     liquidity_net: string;
-    fee_growth_outside: DecCoinAmino[];
-    uptime_trackers: UptimeTrackerAmino[];
+    spread_reward_growth_opposite_direction_of_last_traversal: DecCoinAmino[];
+    /**
+     * uptime_trackers is a container encapsulating the uptime trackers.
+     * We use a container instead of a "repeated UptimeTracker" directly
+     * because we need the ability to serialize and deserialize the
+     * container easily for events when crossing a tick.
+     */
+    uptime_trackers?: UptimeTrackersAmino;
 }
 export interface TickInfoAminoMsg {
     type: "osmosis/concentratedliquidity/tick-info";
@@ -23,8 +35,25 @@ export interface TickInfoAminoMsg {
 export interface TickInfoSDKType {
     liquidity_gross: string;
     liquidity_net: string;
-    fee_growth_outside: DecCoinSDKType[];
-    uptime_trackers: UptimeTrackerSDKType[];
+    spread_reward_growth_opposite_direction_of_last_traversal: DecCoinSDKType[];
+    uptime_trackers?: UptimeTrackersSDKType;
+}
+export interface UptimeTrackers {
+    list: UptimeTracker[];
+}
+export interface UptimeTrackersProtoMsg {
+    typeUrl: "/osmosis.concentratedliquidity.v1beta1.UptimeTrackers";
+    value: Uint8Array;
+}
+export interface UptimeTrackersAmino {
+    list: UptimeTrackerAmino[];
+}
+export interface UptimeTrackersAminoMsg {
+    type: "osmosis/concentratedliquidity/uptime-trackers";
+    value: UptimeTrackersAmino;
+}
+export interface UptimeTrackersSDKType {
+    list: UptimeTrackerSDKType[];
 }
 export interface UptimeTracker {
     uptimeGrowthOutside: DecCoin[];
@@ -55,6 +84,19 @@ export declare const TickInfo: {
     fromProtoMsg(message: TickInfoProtoMsg): TickInfo;
     toProto(message: TickInfo): Uint8Array;
     toProtoMsg(message: TickInfo): TickInfoProtoMsg;
+};
+export declare const UptimeTrackers: {
+    typeUrl: string;
+    encode(message: UptimeTrackers, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UptimeTrackers;
+    fromPartial(object: Partial<UptimeTrackers>): UptimeTrackers;
+    fromAmino(object: UptimeTrackersAmino): UptimeTrackers;
+    toAmino(message: UptimeTrackers): UptimeTrackersAmino;
+    fromAminoMsg(object: UptimeTrackersAminoMsg): UptimeTrackers;
+    toAminoMsg(message: UptimeTrackers): UptimeTrackersAminoMsg;
+    fromProtoMsg(message: UptimeTrackersProtoMsg): UptimeTrackers;
+    toProto(message: UptimeTrackers): Uint8Array;
+    toProtoMsg(message: UptimeTrackers): UptimeTrackersProtoMsg;
 };
 export declare const UptimeTracker: {
     typeUrl: string;

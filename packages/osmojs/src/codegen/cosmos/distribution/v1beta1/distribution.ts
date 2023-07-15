@@ -1,6 +1,7 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType, Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /** Params defines the set of params for the distribution module. */
 
 export interface Params {
@@ -475,15 +476,15 @@ export const Params = {
 
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.communityTax !== "") {
-      writer.uint32(10).string(message.communityTax);
+      writer.uint32(10).string(Decimal.fromUserInput(message.communityTax, 18).atomics);
     }
 
     if (message.baseProposerReward !== "") {
-      writer.uint32(18).string(message.baseProposerReward);
+      writer.uint32(18).string(Decimal.fromUserInput(message.baseProposerReward, 18).atomics);
     }
 
     if (message.bonusProposerReward !== "") {
-      writer.uint32(26).string(message.bonusProposerReward);
+      writer.uint32(26).string(Decimal.fromUserInput(message.bonusProposerReward, 18).atomics);
     }
 
     if (message.withdrawAddrEnabled === true) {
@@ -503,15 +504,15 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.communityTax = reader.string();
+          message.communityTax = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 2:
-          message.baseProposerReward = reader.string();
+          message.baseProposerReward = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 3:
-          message.bonusProposerReward = reader.string();
+          message.bonusProposerReward = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 4:
@@ -986,7 +987,7 @@ export const ValidatorSlashEvent = {
     }
 
     if (message.fraction !== "") {
-      writer.uint32(18).string(message.fraction);
+      writer.uint32(18).string(Decimal.fromUserInput(message.fraction, 18).atomics);
     }
 
     return writer;
@@ -1006,7 +1007,7 @@ export const ValidatorSlashEvent = {
           break;
 
         case 2:
-          message.fraction = reader.string();
+          message.fraction = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -1393,7 +1394,7 @@ export const DelegatorStartingInfo = {
     }
 
     if (message.stake !== "") {
-      writer.uint32(18).string(message.stake);
+      writer.uint32(18).string(Decimal.fromUserInput(message.stake, 18).atomics);
     }
 
     if (!message.height.isZero()) {
@@ -1417,7 +1418,7 @@ export const DelegatorStartingInfo = {
           break;
 
         case 2:
-          message.stake = reader.string();
+          message.stake = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 3:

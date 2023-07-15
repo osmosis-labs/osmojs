@@ -4,6 +4,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { Long, isSet, toTimestamp, fromTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 
 export enum VoteOption {
@@ -543,6 +544,9 @@ export interface TallyParams {
   /** Minimum proportion of Yes votes for an expedited proposal to pass. Default value: 0.67. */
 
   expeditedThreshold: Uint8Array;
+  /** Minimum proportion of Yes votes for an expedited proposal to reach quorum. Default value: 0.67. */
+
+  expeditedQuorum: Uint8Array;
 }
 export interface TallyParamsProtoMsg {
   typeUrl: "/cosmos.gov.v1beta1.TallyParams";
@@ -568,6 +572,9 @@ export interface TallyParamsAmino {
   /** Minimum proportion of Yes votes for an expedited proposal to pass. Default value: 0.67. */
 
   expedited_threshold: Uint8Array;
+  /** Minimum proportion of Yes votes for an expedited proposal to reach quorum. Default value: 0.67. */
+
+  expedited_quorum: Uint8Array;
 }
 export interface TallyParamsAminoMsg {
   type: "cosmos-sdk/TallyParams";
@@ -580,6 +587,7 @@ export interface TallyParamsSDKType {
   threshold: Uint8Array;
   veto_threshold: Uint8Array;
   expedited_threshold: Uint8Array;
+  expedited_quorum: Uint8Array;
 }
 /**
  * ProposalVotingPeriod defines custom voting periods for a unique governance
@@ -635,7 +643,7 @@ export const WeightedVoteOption = {
     }
 
     if (message.weight !== "") {
-      writer.uint32(18).string(message.weight);
+      writer.uint32(18).string(Decimal.fromUserInput(message.weight, 18).atomics);
     }
 
     return writer;
@@ -655,7 +663,7 @@ export const WeightedVoteOption = {
           break;
 
         case 2:
-          message.weight = reader.string();
+          message.weight = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -1402,7 +1410,7 @@ export const DepositParams = {
     }
 
     if (message.minInitialDepositRatio !== "") {
-      writer.uint32(34).string(message.minInitialDepositRatio);
+      writer.uint32(34).string(Decimal.fromUserInput(message.minInitialDepositRatio, 18).atomics);
     }
 
     return writer;
@@ -1430,7 +1438,7 @@ export const DepositParams = {
           break;
 
         case 4:
-          message.minInitialDepositRatio = reader.string();
+          message.minInitialDepositRatio = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -1629,7 +1637,8 @@ function createBaseTallyParams(): TallyParams {
     quorum: new Uint8Array(),
     threshold: new Uint8Array(),
     vetoThreshold: new Uint8Array(),
-    expeditedThreshold: new Uint8Array()
+    expeditedThreshold: new Uint8Array(),
+    expeditedQuorum: new Uint8Array()
   };
 }
 
@@ -1651,6 +1660,10 @@ export const TallyParams = {
 
     if (message.expeditedThreshold.length !== 0) {
       writer.uint32(34).bytes(message.expeditedThreshold);
+    }
+
+    if (message.expeditedQuorum.length !== 0) {
+      writer.uint32(42).bytes(message.expeditedQuorum);
     }
 
     return writer;
@@ -1681,6 +1694,10 @@ export const TallyParams = {
           message.expeditedThreshold = reader.bytes();
           break;
 
+        case 5:
+          message.expeditedQuorum = reader.bytes();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -1696,6 +1713,7 @@ export const TallyParams = {
     message.threshold = object.threshold ?? new Uint8Array();
     message.vetoThreshold = object.vetoThreshold ?? new Uint8Array();
     message.expeditedThreshold = object.expeditedThreshold ?? new Uint8Array();
+    message.expeditedQuorum = object.expeditedQuorum ?? new Uint8Array();
     return message;
   },
 
@@ -1704,7 +1722,8 @@ export const TallyParams = {
       quorum: object.quorum,
       threshold: object.threshold,
       vetoThreshold: object.veto_threshold,
-      expeditedThreshold: object.expedited_threshold
+      expeditedThreshold: object.expedited_threshold,
+      expeditedQuorum: object.expedited_quorum
     };
   },
 
@@ -1714,6 +1733,7 @@ export const TallyParams = {
     obj.threshold = message.threshold;
     obj.veto_threshold = message.vetoThreshold;
     obj.expedited_threshold = message.expeditedThreshold;
+    obj.expedited_quorum = message.expeditedQuorum;
     return obj;
   },
 

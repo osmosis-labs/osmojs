@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /** ===================== MsgCreatePosition */
 
 export interface MsgCreatePosition {
@@ -572,7 +573,7 @@ export const MsgCreatePositionResponse = {
     }
 
     if (message.liquidityCreated !== "") {
-      writer.uint32(42).string(message.liquidityCreated);
+      writer.uint32(42).string(Decimal.fromUserInput(message.liquidityCreated, 18).atomics);
     }
 
     if (!message.lowerTick.isZero()) {
@@ -608,7 +609,7 @@ export const MsgCreatePositionResponse = {
           break;
 
         case 5:
-          message.liquidityCreated = reader.string();
+          message.liquidityCreated = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 6:
@@ -964,7 +965,7 @@ export const MsgWithdrawPosition = {
     }
 
     if (message.liquidityAmount !== "") {
-      writer.uint32(26).string(message.liquidityAmount);
+      writer.uint32(26).string(Decimal.fromUserInput(message.liquidityAmount, 18).atomics);
     }
 
     return writer;
@@ -988,7 +989,7 @@ export const MsgWithdrawPosition = {
           break;
 
         case 3:
-          message.liquidityAmount = reader.string();
+          message.liquidityAmount = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:

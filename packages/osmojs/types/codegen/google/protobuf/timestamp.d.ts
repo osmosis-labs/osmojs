@@ -187,7 +187,7 @@ export interface TimestampProtoMsg {
  * http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D
  * ) to obtain a formatter capable of generating timestamps in this format.
  */
-export declare type TimestampAmino = string;
+export type TimestampAmino = string;
 export interface TimestampAminoMsg {
     type: "/google.protobuf.Timestamp";
     value: TimestampAmino;

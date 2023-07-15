@@ -21,7 +21,6 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
         gov: {
             v1beta1: import("./gov/v1beta1/query.lcd").LCDQueryClient;
-            v1: import("./gov/v1/query.lcd").LCDQueryClient;
         };
         staking: {
             v1beta1: import("./staking/v1beta1/query.lcd").LCDQueryClient;

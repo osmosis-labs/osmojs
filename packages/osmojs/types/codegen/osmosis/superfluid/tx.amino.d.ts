@@ -1,4 +1,4 @@
-import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgSuperfluidUndelegateAndUnbondLock, MsgLockAndSuperfluidDelegate, MsgUnPoolWhitelistedPool, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition } from "./tx";
+import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgSuperfluidUndelegateAndUnbondLock, MsgLockAndSuperfluidDelegate, MsgCreateFullRangePositionAndSuperfluidDelegate, MsgUnPoolWhitelistedPool, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, MsgAddToConcentratedLiquiditySuperfluidPosition } from "./tx";
 export declare const AminoConverter: {
     "/osmosis.superfluid.MsgSuperfluidDelegate": {
         aminoType: string;
@@ -25,6 +25,11 @@ export declare const AminoConverter: {
         toAmino: (message: MsgLockAndSuperfluidDelegate) => import("./tx").MsgLockAndSuperfluidDelegateAmino;
         fromAmino: (object: import("./tx").MsgLockAndSuperfluidDelegateAmino) => MsgLockAndSuperfluidDelegate;
     };
+    "/osmosis.superfluid.MsgCreateFullRangePositionAndSuperfluidDelegate": {
+        aminoType: string;
+        toAmino: (message: MsgCreateFullRangePositionAndSuperfluidDelegate) => import("./tx").MsgCreateFullRangePositionAndSuperfluidDelegateAmino;
+        fromAmino: (object: import("./tx").MsgCreateFullRangePositionAndSuperfluidDelegateAmino) => MsgCreateFullRangePositionAndSuperfluidDelegate;
+    };
     "/osmosis.superfluid.MsgUnPoolWhitelistedPool": {
         aminoType: string;
         toAmino: (message: MsgUnPoolWhitelistedPool) => import("./tx").MsgUnPoolWhitelistedPoolAmino;
@@ -34,5 +39,10 @@ export declare const AminoConverter: {
         aminoType: string;
         toAmino: (message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition) => import("./tx").MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino;
         fromAmino: (object: import("./tx").MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino) => MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition;
+    };
+    "/osmosis.superfluid.MsgAddToConcentratedLiquiditySuperfluidPosition": {
+        aminoType: string;
+        toAmino: (message: MsgAddToConcentratedLiquiditySuperfluidPosition) => import("./tx").MsgAddToConcentratedLiquiditySuperfluidPositionAmino;
+        fromAmino: (object: import("./tx").MsgAddToConcentratedLiquiditySuperfluidPositionAmino) => MsgAddToConcentratedLiquiditySuperfluidPosition;
     };
 };

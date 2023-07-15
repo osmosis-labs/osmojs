@@ -1,5 +1,4 @@
 import { PoolParams, PoolParamsAmino, PoolParamsSDKType, PoolAsset, PoolAssetAmino, PoolAssetSDKType } from "../balancerPool";
-import { Coin, CoinAmino, CoinSDKType } from "../../../../../cosmos/base/v1beta1/coin";
 import { Long } from "../../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** ===================== MsgCreatePool */
@@ -51,55 +50,6 @@ export interface MsgCreateBalancerPoolResponseAminoMsg {
 export interface MsgCreateBalancerPoolResponseSDKType {
     pool_id: Long;
 }
-/** ===================== MsgMigrateSharesToFullRangeConcentratedPosition */
-export interface MsgMigrateSharesToFullRangeConcentratedPosition {
-    sender: string;
-    sharesToMigrate?: Coin;
-}
-export interface MsgMigrateSharesToFullRangeConcentratedPositionProtoMsg {
-    typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPosition";
-    value: Uint8Array;
-}
-/** ===================== MsgMigrateSharesToFullRangeConcentratedPosition */
-export interface MsgMigrateSharesToFullRangeConcentratedPositionAmino {
-    sender: string;
-    shares_to_migrate?: CoinAmino;
-}
-export interface MsgMigrateSharesToFullRangeConcentratedPositionAminoMsg {
-    type: "osmosis/gamm/poolmodels/balancer/migrate-shares-to-full-range-concentrated-position";
-    value: MsgMigrateSharesToFullRangeConcentratedPositionAmino;
-}
-/** ===================== MsgMigrateSharesToFullRangeConcentratedPosition */
-export interface MsgMigrateSharesToFullRangeConcentratedPositionSDKType {
-    sender: string;
-    shares_to_migrate?: CoinSDKType;
-}
-export interface MsgMigrateSharesToFullRangeConcentratedPositionResponse {
-    amount0: string;
-    amount1: string;
-    liquidityCreated: string;
-    joinTime?: Date;
-}
-export interface MsgMigrateSharesToFullRangeConcentratedPositionResponseProtoMsg {
-    typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgMigrateSharesToFullRangeConcentratedPositionResponse";
-    value: Uint8Array;
-}
-export interface MsgMigrateSharesToFullRangeConcentratedPositionResponseAmino {
-    amount0: string;
-    amount1: string;
-    liquidity_created: string;
-    join_time?: Date;
-}
-export interface MsgMigrateSharesToFullRangeConcentratedPositionResponseAminoMsg {
-    type: "osmosis/gamm/poolmodels/balancer/migrate-shares-to-full-range-concentrated-position-response";
-    value: MsgMigrateSharesToFullRangeConcentratedPositionResponseAmino;
-}
-export interface MsgMigrateSharesToFullRangeConcentratedPositionResponseSDKType {
-    amount0: string;
-    amount1: string;
-    liquidity_created: string;
-    join_time?: Date;
-}
 export declare const MsgCreateBalancerPool: {
     typeUrl: string;
     encode(message: MsgCreateBalancerPool, writer?: _m0.Writer): _m0.Writer;
@@ -125,30 +75,4 @@ export declare const MsgCreateBalancerPoolResponse: {
     fromProtoMsg(message: MsgCreateBalancerPoolResponseProtoMsg): MsgCreateBalancerPoolResponse;
     toProto(message: MsgCreateBalancerPoolResponse): Uint8Array;
     toProtoMsg(message: MsgCreateBalancerPoolResponse): MsgCreateBalancerPoolResponseProtoMsg;
-};
-export declare const MsgMigrateSharesToFullRangeConcentratedPosition: {
-    typeUrl: string;
-    encode(message: MsgMigrateSharesToFullRangeConcentratedPosition, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateSharesToFullRangeConcentratedPosition;
-    fromPartial(object: Partial<MsgMigrateSharesToFullRangeConcentratedPosition>): MsgMigrateSharesToFullRangeConcentratedPosition;
-    fromAmino(object: MsgMigrateSharesToFullRangeConcentratedPositionAmino): MsgMigrateSharesToFullRangeConcentratedPosition;
-    toAmino(message: MsgMigrateSharesToFullRangeConcentratedPosition): MsgMigrateSharesToFullRangeConcentratedPositionAmino;
-    fromAminoMsg(object: MsgMigrateSharesToFullRangeConcentratedPositionAminoMsg): MsgMigrateSharesToFullRangeConcentratedPosition;
-    toAminoMsg(message: MsgMigrateSharesToFullRangeConcentratedPosition): MsgMigrateSharesToFullRangeConcentratedPositionAminoMsg;
-    fromProtoMsg(message: MsgMigrateSharesToFullRangeConcentratedPositionProtoMsg): MsgMigrateSharesToFullRangeConcentratedPosition;
-    toProto(message: MsgMigrateSharesToFullRangeConcentratedPosition): Uint8Array;
-    toProtoMsg(message: MsgMigrateSharesToFullRangeConcentratedPosition): MsgMigrateSharesToFullRangeConcentratedPositionProtoMsg;
-};
-export declare const MsgMigrateSharesToFullRangeConcentratedPositionResponse: {
-    typeUrl: string;
-    encode(message: MsgMigrateSharesToFullRangeConcentratedPositionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateSharesToFullRangeConcentratedPositionResponse;
-    fromPartial(object: Partial<MsgMigrateSharesToFullRangeConcentratedPositionResponse>): MsgMigrateSharesToFullRangeConcentratedPositionResponse;
-    fromAmino(object: MsgMigrateSharesToFullRangeConcentratedPositionResponseAmino): MsgMigrateSharesToFullRangeConcentratedPositionResponse;
-    toAmino(message: MsgMigrateSharesToFullRangeConcentratedPositionResponse): MsgMigrateSharesToFullRangeConcentratedPositionResponseAmino;
-    fromAminoMsg(object: MsgMigrateSharesToFullRangeConcentratedPositionResponseAminoMsg): MsgMigrateSharesToFullRangeConcentratedPositionResponse;
-    toAminoMsg(message: MsgMigrateSharesToFullRangeConcentratedPositionResponse): MsgMigrateSharesToFullRangeConcentratedPositionResponseAminoMsg;
-    fromProtoMsg(message: MsgMigrateSharesToFullRangeConcentratedPositionResponseProtoMsg): MsgMigrateSharesToFullRangeConcentratedPositionResponse;
-    toProto(message: MsgMigrateSharesToFullRangeConcentratedPositionResponse): Uint8Array;
-    toProtoMsg(message: MsgMigrateSharesToFullRangeConcentratedPositionResponse): MsgMigrateSharesToFullRangeConcentratedPositionResponseProtoMsg;
 };

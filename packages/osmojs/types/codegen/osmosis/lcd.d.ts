@@ -21,7 +21,6 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
         gov: {
             v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
-            v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
         };
         staking: {
             v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
@@ -35,7 +34,7 @@ export declare const createLCDClient: ({ restEndpoint }: {
     };
     osmosis: {
         concentratedliquidity: {
-            v1beta1: import("./concentrated-liquidity/pool-model/query.lcd").LCDQueryClient;
+            v1beta1: import("./concentrated-liquidity/query.lcd").LCDQueryClient;
         };
         cosmwasmpool: {
             v1beta1: import("./cosmwasmpool/v1beta1/query.lcd").LCDQueryClient;

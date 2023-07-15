@@ -1,6 +1,7 @@
 chains:
   - name: osmosis-1
     type: osmosis
+    image: pyramation/osmosis:v16.1.0
     numValidators: 1
     ports:
       rest: 1317
@@ -46,10 +47,10 @@ relayers:
       - osmosis-1
       - cosmos-2
 
-explorer:
-  enabled: true
-  ports:
-    rest: 8080
+# explorer:
+#   enabled: true
+#   ports:
+#     rest: 8080
 
 registry:
   enabled: true

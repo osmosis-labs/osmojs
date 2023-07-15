@@ -34,7 +34,7 @@ export interface ReplacePoolIncentivesProposalAmino {
     records: DistrRecordAmino[];
 }
 export interface ReplacePoolIncentivesProposalAminoMsg {
-    type: "osmosis/poolincentives/replace-pool-incentives-proposal";
+    type: "osmosis/ReplacePoolIncentivesProposal";
     value: ReplacePoolIncentivesProposalAmino;
 }
 /**

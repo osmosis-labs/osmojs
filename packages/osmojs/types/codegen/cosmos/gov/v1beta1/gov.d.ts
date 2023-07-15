@@ -177,7 +177,7 @@ export interface ProposalProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.Proposal";
     value: Uint8Array;
 }
-export declare type ProposalEncoded = Omit<Proposal, "content"> & {
+export type ProposalEncoded = Omit<Proposal, "content"> & {
     content?: TextProposalProtoMsg | AnyProtoMsg | undefined;
 };
 /** Proposal defines the core field members of a governance proposal. */
@@ -383,6 +383,8 @@ export interface TallyParams {
     vetoThreshold: Uint8Array;
     /** Minimum proportion of Yes votes for an expedited proposal to pass. Default value: 0.67. */
     expeditedThreshold: Uint8Array;
+    /** Minimum proportion of Yes votes for an expedited proposal to reach quorum. Default value: 0.67. */
+    expeditedQuorum: Uint8Array;
 }
 export interface TallyParamsProtoMsg {
     typeUrl: "/cosmos.gov.v1beta1.TallyParams";
@@ -404,6 +406,8 @@ export interface TallyParamsAmino {
     veto_threshold: Uint8Array;
     /** Minimum proportion of Yes votes for an expedited proposal to pass. Default value: 0.67. */
     expedited_threshold: Uint8Array;
+    /** Minimum proportion of Yes votes for an expedited proposal to reach quorum. Default value: 0.67. */
+    expedited_quorum: Uint8Array;
 }
 export interface TallyParamsAminoMsg {
     type: "cosmos-sdk/TallyParams";
@@ -415,6 +419,7 @@ export interface TallyParamsSDKType {
     threshold: Uint8Array;
     veto_threshold: Uint8Array;
     expedited_threshold: Uint8Array;
+    expedited_quorum: Uint8Array;
 }
 /**
  * ProposalVotingPeriod defines custom voting periods for a unique governance

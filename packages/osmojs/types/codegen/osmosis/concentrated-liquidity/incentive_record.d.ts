@@ -1,4 +1,5 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
+import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
@@ -8,18 +9,9 @@ import * as _m0 from "protobufjs/minimal";
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 export interface IncentiveRecord {
+    /** incentive_id is the id uniquely identifying this incentive record. */
+    incentiveId: Long;
     poolId: Long;
-    /**
-     * incentive_denom is the denom of the token being distributed as part of this
-     * incentive record
-     */
-    incentiveDenom: string;
-    /**
-     * incentiveCreator is the address that created the incentive record. This
-     * address does not have any special privileges – it is only kept to keep
-     * incentive records created by different addresses separate.
-     */
-    incentiveCreatorAddr: string;
     /** incentive record body holds necessary */
     incentiveRecordBody?: IncentiveRecordBody;
     /**
@@ -40,18 +32,9 @@ export interface IncentiveRecordProtoMsg {
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 export interface IncentiveRecordAmino {
+    /** incentive_id is the id uniquely identifying this incentive record. */
+    incentive_id: string;
     pool_id: string;
-    /**
-     * incentive_denom is the denom of the token being distributed as part of this
-     * incentive record
-     */
-    incentive_denom: string;
-    /**
-     * incentiveCreator is the address that created the incentive record. This
-     * address does not have any special privileges – it is only kept to keep
-     * incentive records created by different addresses separate.
-     */
-    incentive_creator_addr: string;
     /** incentive record body holds necessary */
     incentive_record_body?: IncentiveRecordBodyAmino;
     /**
@@ -72,9 +55,8 @@ export interface IncentiveRecordAminoMsg {
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 export interface IncentiveRecordSDKType {
+    incentive_id: Long;
     pool_id: Long;
-    incentive_denom: string;
-    incentive_creator_addr: string;
     incentive_record_body?: IncentiveRecordBodySDKType;
     min_uptime?: DurationSDKType;
 }
@@ -83,8 +65,8 @@ export interface IncentiveRecordSDKType {
  * record.
  */
 export interface IncentiveRecordBody {
-    /** remaining_amount is the total amount of incentives to be distributed */
-    remainingAmount: string;
+    /** remaining_coin is the total amount of incentives to be distributed */
+    remainingCoin?: DecCoin;
     /** emission_rate is the incentive emission rate per second */
     emissionRate: string;
     /** start_time is the time when the incentive starts distributing */
@@ -99,8 +81,8 @@ export interface IncentiveRecordBodyProtoMsg {
  * record.
  */
 export interface IncentiveRecordBodyAmino {
-    /** remaining_amount is the total amount of incentives to be distributed */
-    remaining_amount: string;
+    /** remaining_coin is the total amount of incentives to be distributed */
+    remaining_coin?: DecCoinAmino;
     /** emission_rate is the incentive emission rate per second */
     emission_rate: string;
     /** start_time is the time when the incentive starts distributing */
@@ -115,7 +97,7 @@ export interface IncentiveRecordBodyAminoMsg {
  * record.
  */
 export interface IncentiveRecordBodySDKType {
-    remaining_amount: string;
+    remaining_coin?: DecCoinSDKType;
     emission_rate: string;
     start_time?: Date;
 }

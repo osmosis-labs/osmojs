@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /** ===================== GetSwapFeeQueryMsg */
 
 export interface GetSwapFeeQueryMsg {
@@ -334,7 +335,7 @@ export const GetSwapFeeQueryMsgResponse = {
 
   encode(message: GetSwapFeeQueryMsgResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.swapFee !== "") {
-      writer.uint32(26).string(message.swapFee);
+      writer.uint32(26).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
     }
 
     return writer;
@@ -350,7 +351,7 @@ export const GetSwapFeeQueryMsgResponse = {
 
       switch (tag >>> 3) {
         case 3:
-          message.swapFee = reader.string();
+          message.swapFee = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
