@@ -15,28 +15,24 @@ export const MessageComposer = {
         value: MsgRegisterPayee.encode(value).finish()
       };
     },
-
     registerCounterpartyPayee(value: MsgRegisterCounterpartyPayee) {
       return {
         typeUrl: "/ibc.applications.fee.v1.MsgRegisterCounterpartyPayee",
         value: MsgRegisterCounterpartyPayee.encode(value).finish()
       };
     },
-
     payPacketFee(value: MsgPayPacketFee) {
       return {
         typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFee",
         value: MsgPayPacketFee.encode(value).finish()
       };
     },
-
     payPacketFeeAsync(value: MsgPayPacketFeeAsync) {
       return {
         typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFeeAsync",
         value: MsgPayPacketFeeAsync.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     registerPayee(value: MsgRegisterPayee) {
@@ -45,28 +41,24 @@ export const MessageComposer = {
         value
       };
     },
-
     registerCounterpartyPayee(value: MsgRegisterCounterpartyPayee) {
       return {
         typeUrl: "/ibc.applications.fee.v1.MsgRegisterCounterpartyPayee",
         value
       };
     },
-
     payPacketFee(value: MsgPayPacketFee) {
       return {
         typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFee",
         value
       };
     },
-
     payPacketFeeAsync(value: MsgPayPacketFeeAsync) {
       return {
         typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFeeAsync",
         value
       };
     }
-
   },
   fromPartial: {
     registerPayee(value: MsgRegisterPayee) {
@@ -75,27 +67,23 @@ export const MessageComposer = {
         value: MsgRegisterPayee.fromPartial(value)
       };
     },
-
     registerCounterpartyPayee(value: MsgRegisterCounterpartyPayee) {
       return {
         typeUrl: "/ibc.applications.fee.v1.MsgRegisterCounterpartyPayee",
         value: MsgRegisterCounterpartyPayee.fromPartial(value)
       };
     },
-
     payPacketFee(value: MsgPayPacketFee) {
       return {
         typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFee",
         value: MsgPayPacketFee.fromPartial(value)
       };
     },
-
     payPacketFeeAsync(value: MsgPayPacketFeeAsync) {
       return {
         typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFeeAsync",
         value: MsgPayPacketFeeAsync.fromPartial(value)
       };
     }
-
   }
 };

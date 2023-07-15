@@ -22,8 +22,6 @@ jobs:
           node-version: 18.4.0
       - name: deps
         run: yarn
-      - name: bootstrap
-        run: yarn bootstrap
       - name: build
         run: yarn build
       # Starship Infra setup

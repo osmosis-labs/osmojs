@@ -420,7 +420,6 @@ When first cloning the repo:
 
 ```
 yarn
-yarn bootstrap
 yarn build
 ```
 

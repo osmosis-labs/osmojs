@@ -1,5 +1,5 @@
 import { Rpc } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../binary";
 import { MsgCreatePosition, MsgCreatePositionResponse, MsgWithdrawPosition, MsgWithdrawPositionResponse, MsgAddToPosition, MsgAddToPositionResponse, MsgCollectSpreadRewards, MsgCollectSpreadRewardsResponse, MsgCollectIncentives, MsgCollectIncentivesResponse } from "./tx";
 export interface Msg {
   createPosition(request: MsgCreatePosition): Promise<MsgCreatePositionResponse>;
@@ -11,14 +11,12 @@ export interface Msg {
    * charging, this function deletes the old position and creates a new one with
    * the resulting amount after addition.
    */
-
   addToPosition(request: MsgAddToPosition): Promise<MsgAddToPositionResponse>;
   collectSpreadRewards(request: MsgCollectSpreadRewards): Promise<MsgCollectSpreadRewardsResponse>;
   collectIncentives(request: MsgCollectIncentives): Promise<MsgCollectIncentivesResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.createPosition = this.createPosition.bind(this);
@@ -27,35 +25,29 @@ export class MsgClientImpl implements Msg {
     this.collectSpreadRewards = this.collectSpreadRewards.bind(this);
     this.collectIncentives = this.collectIncentives.bind(this);
   }
-
   createPosition(request: MsgCreatePosition): Promise<MsgCreatePositionResponse> {
     const data = MsgCreatePosition.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "CreatePosition", data);
-    return promise.then(data => MsgCreatePositionResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgCreatePositionResponse.decode(new BinaryReader(data)));
   }
-
   withdrawPosition(request: MsgWithdrawPosition): Promise<MsgWithdrawPositionResponse> {
     const data = MsgWithdrawPosition.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "WithdrawPosition", data);
-    return promise.then(data => MsgWithdrawPositionResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgWithdrawPositionResponse.decode(new BinaryReader(data)));
   }
-
   addToPosition(request: MsgAddToPosition): Promise<MsgAddToPositionResponse> {
     const data = MsgAddToPosition.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "AddToPosition", data);
-    return promise.then(data => MsgAddToPositionResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgAddToPositionResponse.decode(new BinaryReader(data)));
   }
-
   collectSpreadRewards(request: MsgCollectSpreadRewards): Promise<MsgCollectSpreadRewardsResponse> {
     const data = MsgCollectSpreadRewards.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "CollectSpreadRewards", data);
-    return promise.then(data => MsgCollectSpreadRewardsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgCollectSpreadRewardsResponse.decode(new BinaryReader(data)));
   }
-
   collectIncentives(request: MsgCollectIncentives): Promise<MsgCollectIncentivesResponse> {
     const data = MsgCollectIncentives.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "CollectIncentives", data);
-    return promise.then(data => MsgCollectIncentivesResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgCollectIncentivesResponse.decode(new BinaryReader(data)));
   }
-
 }

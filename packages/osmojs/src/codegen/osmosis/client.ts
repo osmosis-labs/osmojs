@@ -25,7 +25,8 @@ import * as osmosisProtorevV1beta1TxAmino from "./protorev/v1beta1/tx.amino";
 import * as osmosisSuperfluidTxAmino from "./superfluid/tx.amino";
 import * as osmosisTokenfactoryV1beta1TxAmino from "./tokenfactory/v1beta1/tx.amino";
 import * as osmosisValsetprefV1beta1TxAmino from "./valset-pref/v1beta1/tx.amino";
-export const osmosisAminoConverters = { ...osmosisConcentratedliquidityPoolmodelConcentratedTxAmino.AminoConverter,
+export const osmosisAminoConverters = {
+  ...osmosisConcentratedliquidityPoolmodelConcentratedTxAmino.AminoConverter,
   ...osmosisConcentratedliquidityTxAmino.AminoConverter,
   ...osmosisGammPoolmodelsBalancerTxTxAmino.AminoConverter,
   ...osmosisGammPoolmodelsStableswapTxAmino.AminoConverter,
@@ -48,7 +49,8 @@ export const getSigningOsmosisClientOptions = ({
   aminoTypes: AminoTypes;
 } => {
   const registry = new Registry([...defaultTypes, ...osmosisProtoRegistry]);
-  const aminoTypes = new AminoTypes({ ...osmosisAminoConverters
+  const aminoTypes = new AminoTypes({
+    ...osmosisAminoConverters
   });
   return {
     registry,
@@ -71,7 +73,7 @@ export const getSigningOsmosisClient = async ({
     defaultTypes
   });
   const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
-    registry,
+    registry: (registry as any),
     aminoTypes
   });
   return client;

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { TextProposal, VoteOption } from "../../../../src/codegen/cosmos/gov/v1beta1/gov";
 import { MsgDeposit, MsgSubmitProposal, MsgVote } from "../../../../src/codegen/cosmos/gov/v1beta1/tx";
-import Long from "long";
 
 import {
   AminoTypes,
@@ -20,7 +19,7 @@ describe("AminoTypes", () => {
       const msg: MsgDeposit = {
         amount: [{ amount: "12300000", denom: "ustake" }],
         depositor: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
-        proposalId: Long.fromNumber(5),
+        proposalId: BigInt(5),
       };
       const aminoTypes = new AminoTypes({ ...AminoConverter })
       const aminoMsg = aminoTypes.toAmino({
@@ -76,7 +75,7 @@ describe("AminoTypes", () => {
     it("works for MsgVote", () => {
       const msg: MsgVote = {
         option: VoteOption.VOTE_OPTION_NO_WITH_VETO,
-        proposalId: Long.fromNumber(5),
+        proposalId: BigInt(5),
         voter: "cosmos1xy4yqngt0nlkdcenxymg8tenrghmek4nmqm28k",
       };
       const aminoTypes = new AminoTypes({ ...AminoConverter })
@@ -112,7 +111,7 @@ describe("AminoTypes", () => {
       const expectedValue: MsgDeposit = {
         amount: [{ amount: "12300000", denom: "ustake" }],
         depositor: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
-        proposalId: Long.fromNumber(5),
+        proposalId: BigInt(5),
       };
       expect(msg).toEqual({
         typeUrl: "/cosmos.gov.v1beta1.MsgDeposit",
@@ -166,7 +165,7 @@ describe("AminoTypes", () => {
       const msg = new AminoTypes({ ...AminoConverter }).fromAmino(aminoMsg);
       const expectedValue: MsgVote = {
         option: VoteOption.VOTE_OPTION_NO_WITH_VETO,
-        proposalId: Long.fromNumber(5),
+        proposalId: BigInt(5),
         voter: "cosmos1xy4yqngt0nlkdcenxymg8tenrghmek4nmqm28k",
       };
       expect(msg).toEqual({

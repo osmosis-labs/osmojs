@@ -1,6 +1,5 @@
 import { coin } from "@cosmjs/proto-signing";
 import { MsgJoinPool, MsgSwapExactAmountIn } from "../../../../src/codegen/osmosis/gamm/v1beta1/tx";
-import Long from 'long';
 import {
   AminoTypes,
 } from '@cosmjs/stargate';
@@ -12,7 +11,7 @@ describe("AminoTypes", () => {
     it("works for MsgJoinPool", () => {
       const msg: MsgJoinPool = {
         sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
-        poolId: Long.fromNumber(3),
+        poolId: BigInt(3),
         shareOutAmount: "1000",
         tokenInMaxs: [
           coin(1234, "uosmo")
@@ -42,7 +41,7 @@ describe("AminoTypes", () => {
         sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
         routes: [
           {
-            poolId: Long.fromNumber(1),
+            poolId: BigInt(1),
             tokenOutDenom: "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
           }
         ],
@@ -94,7 +93,7 @@ describe("AminoTypes", () => {
       const msg = new AminoTypes({ ...AminoConverter }).fromAmino(aminoMsg);
       const expectedValue: MsgJoinPool = {
         sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
-        poolId: Long.fromNumber(3),
+        poolId: BigInt(3),
         shareOutAmount: "1000",
         tokenInMaxs: [
           coin(1234, "uosmo")
@@ -128,7 +127,7 @@ describe("AminoTypes", () => {
         sender: "osmo1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
         routes: [
           {
-            poolId: Long.fromNumber(1),
+            poolId: BigInt(1),
             tokenOutDenom: "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
           }
         ],

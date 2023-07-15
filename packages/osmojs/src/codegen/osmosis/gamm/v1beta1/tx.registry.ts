@@ -15,56 +15,48 @@ export const MessageComposer = {
         value: MsgJoinPool.encode(value).finish()
       };
     },
-
     exitPool(value: MsgExitPool) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgExitPool",
         value: MsgExitPool.encode(value).finish()
       };
     },
-
     swapExactAmountIn(value: MsgSwapExactAmountIn) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountIn",
         value: MsgSwapExactAmountIn.encode(value).finish()
       };
     },
-
     swapExactAmountOut(value: MsgSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountOut",
         value: MsgSwapExactAmountOut.encode(value).finish()
       };
     },
-
     joinSwapExternAmountIn(value: MsgJoinSwapExternAmountIn) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgJoinSwapExternAmountIn",
         value: MsgJoinSwapExternAmountIn.encode(value).finish()
       };
     },
-
     joinSwapShareAmountOut(value: MsgJoinSwapShareAmountOut) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgJoinSwapShareAmountOut",
         value: MsgJoinSwapShareAmountOut.encode(value).finish()
       };
     },
-
     exitSwapExternAmountOut(value: MsgExitSwapExternAmountOut) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgExitSwapExternAmountOut",
         value: MsgExitSwapExternAmountOut.encode(value).finish()
       };
     },
-
     exitSwapShareAmountIn(value: MsgExitSwapShareAmountIn) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgExitSwapShareAmountIn",
         value: MsgExitSwapShareAmountIn.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     joinPool(value: MsgJoinPool) {
@@ -73,56 +65,48 @@ export const MessageComposer = {
         value
       };
     },
-
     exitPool(value: MsgExitPool) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgExitPool",
         value
       };
     },
-
     swapExactAmountIn(value: MsgSwapExactAmountIn) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountIn",
         value
       };
     },
-
     swapExactAmountOut(value: MsgSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountOut",
         value
       };
     },
-
     joinSwapExternAmountIn(value: MsgJoinSwapExternAmountIn) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgJoinSwapExternAmountIn",
         value
       };
     },
-
     joinSwapShareAmountOut(value: MsgJoinSwapShareAmountOut) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgJoinSwapShareAmountOut",
         value
       };
     },
-
     exitSwapExternAmountOut(value: MsgExitSwapExternAmountOut) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgExitSwapExternAmountOut",
         value
       };
     },
-
     exitSwapShareAmountIn(value: MsgExitSwapShareAmountIn) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgExitSwapShareAmountIn",
         value
       };
     }
-
   },
   fromPartial: {
     joinPool(value: MsgJoinPool) {
@@ -131,55 +115,47 @@ export const MessageComposer = {
         value: MsgJoinPool.fromPartial(value)
       };
     },
-
     exitPool(value: MsgExitPool) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgExitPool",
         value: MsgExitPool.fromPartial(value)
       };
     },
-
     swapExactAmountIn(value: MsgSwapExactAmountIn) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountIn",
         value: MsgSwapExactAmountIn.fromPartial(value)
       };
     },
-
     swapExactAmountOut(value: MsgSwapExactAmountOut) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountOut",
         value: MsgSwapExactAmountOut.fromPartial(value)
       };
     },
-
     joinSwapExternAmountIn(value: MsgJoinSwapExternAmountIn) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgJoinSwapExternAmountIn",
         value: MsgJoinSwapExternAmountIn.fromPartial(value)
       };
     },
-
     joinSwapShareAmountOut(value: MsgJoinSwapShareAmountOut) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgJoinSwapShareAmountOut",
         value: MsgJoinSwapShareAmountOut.fromPartial(value)
       };
     },
-
     exitSwapExternAmountOut(value: MsgExitSwapExternAmountOut) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgExitSwapExternAmountOut",
         value: MsgExitSwapExternAmountOut.fromPartial(value)
       };
     },
-
     exitSwapShareAmountIn(value: MsgExitSwapShareAmountIn) {
       return {
         typeUrl: "/osmosis.gamm.v1beta1.MsgExitSwapShareAmountIn",
         value: MsgExitSwapShareAmountIn.fromPartial(value)
       };
     }
-
   }
 };

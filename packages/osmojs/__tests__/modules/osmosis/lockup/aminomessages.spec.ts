@@ -1,6 +1,5 @@
 import { coin } from "@cosmjs/proto-signing";
 import { MsgLockTokens } from "../../../../src/codegen/osmosis/lockup/tx";
-import Long from 'long';
 import {
   AminoTypes,
 } from '@cosmjs/stargate';

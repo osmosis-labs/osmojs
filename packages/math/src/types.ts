@@ -1,9 +1,9 @@
 import { AssetDenomUnit } from "@chain-registry/types";
-import { Pool } from "osmojs/types/codegen/osmosis/gamm/pool-models/balancer/balancerPool";
-import { Coin } from "osmojs/types/codegen/cosmos/base/v1beta1/coin";
-import { SuperfluidAsset } from "osmojs/types/codegen/osmosis/superfluid/superfluid";
-import { Gauge } from "osmojs/types/codegen/osmosis/incentives/gauge";
-import { Duration } from "osmojs/types/codegen/google/protobuf/duration";
+import { Pool } from "osmojs/dist/codegen/osmosis/gamm/pool-models/balancer/balancerPool";
+import { Coin } from "osmojs/dist/codegen/cosmos/base/v1beta1/coin";
+import { SuperfluidAsset } from "osmojs/dist/codegen/osmosis/superfluid/superfluid";
+import { Gauge } from "osmojs/dist/codegen/osmosis/incentives/gauge";
+import { Duration } from "osmojs/dist/codegen/google/protobuf/duration";
 
 export type CoinDenom = AssetDenomUnit["denom"];
 

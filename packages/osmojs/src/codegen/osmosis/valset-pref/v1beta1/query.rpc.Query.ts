@@ -1,27 +1,23 @@
 import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { UserValidatorPreferencesRequest, UserValidatorPreferencesResponse } from "./query";
 /** Query defines the gRPC querier service. */
-
 export interface Query {
   /** Returns the list of ValidatorPreferences for the user. */
   userValidatorPreferences(request: UserValidatorPreferencesRequest): Promise<UserValidatorPreferencesResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.userValidatorPreferences = this.userValidatorPreferences.bind(this);
   }
-
   userValidatorPreferences(request: UserValidatorPreferencesRequest): Promise<UserValidatorPreferencesResponse> {
     const data = UserValidatorPreferencesRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.valsetpref.v1beta1.Query", "UserValidatorPreferences", data);
-    return promise.then(data => UserValidatorPreferencesResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => UserValidatorPreferencesResponse.decode(new BinaryReader(data)));
   }
-
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -30,6 +26,5 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     userValidatorPreferences(request: UserValidatorPreferencesRequest): Promise<UserValidatorPreferencesResponse> {
       return queryService.userValidatorPreferences(request);
     }
-
   };
 };

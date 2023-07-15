@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
  * empty messages in your APIs. A typical example is to use it as the request
@@ -10,7 +10,6 @@ import * as _m0 from "protobufjs/minimal";
  * 
  * The JSON representation for `Empty` is empty JSON object `{}`.
  */
-
 export interface Empty {}
 export interface EmptyProtoMsg {
   typeUrl: "/google.protobuf.Empty";
@@ -27,7 +26,6 @@ export interface EmptyProtoMsg {
  * 
  * The JSON representation for `Empty` is empty JSON object `{}`.
  */
-
 export interface EmptyAmino {}
 export interface EmptyAminoMsg {
   type: "/google.protobuf.Empty";
@@ -44,69 +42,53 @@ export interface EmptyAminoMsg {
  * 
  * The JSON representation for `Empty` is empty JSON object `{}`.
  */
-
 export interface EmptySDKType {}
-
 function createBaseEmpty(): Empty {
   return {};
 }
-
 export const Empty = {
   typeUrl: "/google.protobuf.Empty",
-
-  encode(_: Empty, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: Empty, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): Empty {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Empty {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEmpty();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(_: Partial<Empty>): Empty {
     const message = createBaseEmpty();
     return message;
   },
-
   fromAmino(_: EmptyAmino): Empty {
     return {};
   },
-
   toAmino(_: Empty): EmptyAmino {
     const obj: any = {};
     return obj;
   },
-
   fromAminoMsg(object: EmptyAminoMsg): Empty {
     return Empty.fromAmino(object.value);
   },
-
   fromProtoMsg(message: EmptyProtoMsg): Empty {
     return Empty.decode(message.value);
   },
-
   toProto(message: Empty): Uint8Array {
     return Empty.encode(message).finish();
   },
-
   toProtoMsg(message: Empty): EmptyProtoMsg {
     return {
       typeUrl: "/google.protobuf.Empty",
       value: Empty.encode(message).finish()
     };
   }
-
 };

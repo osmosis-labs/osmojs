@@ -74,7 +74,8 @@ import * as _337 from "./rpc.tx";
 export namespace ibc {
   export namespace applications {
     export namespace fee {
-      export const v1 = { ..._44,
+      export const v1 = {
+        ..._44,
         ..._45,
         ..._46,
         ..._47,
@@ -89,7 +90,8 @@ export namespace ibc {
     }
     export namespace interchain_accounts {
       export namespace controller {
-        export const v1 = { ..._50,
+        export const v1 = {
+          ..._50,
           ..._51,
           ..._52,
           ..._224,
@@ -100,23 +102,27 @@ export namespace ibc {
         };
       }
       export namespace genesis {
-        export const v1 = { ..._53
+        export const v1 = {
+          ..._53
         };
       }
       export namespace host {
-        export const v1 = { ..._54,
+        export const v1 = {
+          ..._54,
           ..._55,
           ..._237,
           ..._244
         };
       }
-      export const v1 = { ..._56,
+      export const v1 = {
+        ..._56,
         ..._57,
         ..._58
       };
     }
     export namespace transfer {
-      export const v1 = { ..._59,
+      export const v1 = {
+        ..._59,
         ..._60,
         ..._61,
         ..._62,
@@ -127,13 +133,15 @@ export namespace ibc {
         ..._245,
         ..._251
       };
-      export const v2 = { ..._64
+      export const v2 = {
+        ..._64
       };
     }
   }
   export namespace core {
     export namespace channel {
-      export const v1 = { ..._65,
+      export const v1 = {
+        ..._65,
         ..._66,
         ..._67,
         ..._68,
@@ -145,7 +153,8 @@ export namespace ibc {
       };
     }
     export namespace client {
-      export const v1 = { ..._69,
+      export const v1 = {
+        ..._69,
         ..._70,
         ..._71,
         ..._72,
@@ -157,11 +166,13 @@ export namespace ibc {
       };
     }
     export namespace commitment {
-      export const v1 = { ..._73
+      export const v1 = {
+        ..._73
       };
     }
     export namespace connection {
-      export const v1 = { ..._74,
+      export const v1 = {
+        ..._74,
         ..._75,
         ..._76,
         ..._77,
@@ -175,21 +186,26 @@ export namespace ibc {
   }
   export namespace lightclients {
     export namespace localhost {
-      export const v2 = { ..._78
+      export const v2 = {
+        ..._78
       };
     }
     export namespace solomachine {
-      export const v2 = { ..._79
+      export const v2 = {
+        ..._79
       };
-      export const v3 = { ..._80
+      export const v3 = {
+        ..._80
       };
     }
     export namespace tendermint {
-      export const v1 = { ..._81
+      export const v1 = {
+        ..._81
       };
     }
   }
-  export const ClientFactory = { ..._335,
+  export const ClientFactory = {
+    ..._335,
     ..._336,
     ..._337
   };
