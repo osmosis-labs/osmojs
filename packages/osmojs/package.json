@@ -5,9 +5,9 @@
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
   "license": "SEE LICENSE IN LICENSE",
-  "main": "main/index.js",
-  "module": "module/index.js",
-  "typings": "types/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
   "jest": {
     "testTimeout": 15000
   },
@@ -18,12 +18,9 @@
     "types"
   ],
   "scripts": {
-    "build:main": "cross-env BABEL_ENV=production babel src --out-dir main --delete-dir-on-start --extensions \".tsx,.ts,.js\"",
-    "build:module": "cross-env MODULE=true babel src --out-dir module --delete-dir-on-start  --extensions \".tsx,.ts,.js\"",
-    "build:ts": "tsc --project ./tsconfig.json",
-    "build": "npm run build:module && npm run build:main",
-    "buidl": "npm run build && npm run build:ts",
-    "build:proto": "npm run clean && npm run proto",
+    "build:cjs": "yarn tsc -p tsconfig.json --outDir dist --module commonjs",
+    "build:mjs": "yarn tsc -p tsconfig.json --outDir mjs --module es2022 --declaration false",
+    "build": "rm -rf dist && yarn build:cjs && yarn build:mjs && find mjs -type f -name *.js -exec rename -S '.js' '.mjs' {} +  && find mjs -type f -name *.mjs -exec rename -S 'mjs/' 'dist/' {} + && rm -rf mjs",
     "codegen": "cross-env NODE_ENV=development babel-node scripts/codegen.js",
     "prepare": "npm run build",
     "lint": "eslint .",
