@@ -1,6 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { Decimal } from "@cosmjs/math";
 /**
  * PoolParams defined the parameters that will be managed by the pool
@@ -54,7 +53,7 @@ export interface PoolParamsSDKType {
 export interface Pool {
   $typeUrl?: string;
   address: string;
-  id: Long;
+  id: bigint;
   poolParams: PoolParams;
   /**
    * This string specifies who will govern the pool in the future.
@@ -72,7 +71,7 @@ export interface Pool {
   /** assets in the pool */
   poolLiquidity: Coin[];
   /** for calculation amognst assets with different precisions */
-  scalingFactors: Long[];
+  scalingFactors: bigint[];
   /** scaling_factor_controller is the address can adjust pool scaling factors */
   scalingFactorController: string;
 }
@@ -113,12 +112,12 @@ export interface PoolAminoMsg {
 export interface PoolSDKType {
   $typeUrl?: string;
   address: string;
-  id: Long;
+  id: bigint;
   pool_params: PoolParamsSDKType;
   future_pool_governor: string;
   total_shares: CoinSDKType;
   pool_liquidity: CoinSDKType[];
-  scaling_factors: Long[];
+  scaling_factors: bigint[];
   scaling_factor_controller: string;
 }
 function createBasePoolParams(): PoolParams {
@@ -129,7 +128,7 @@ function createBasePoolParams(): PoolParams {
 }
 export const PoolParams = {
   typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.PoolParams",
-  encode(message: PoolParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: PoolParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapFee !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
     }
@@ -138,8 +137,8 @@ export const PoolParams = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): PoolParams {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): PoolParams {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePoolParams();
     while (reader.pos < end) {
@@ -202,7 +201,7 @@ function createBasePool(): Pool {
   return {
     $typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool",
     address: "",
-    id: Long.UZERO,
+    id: BigInt(0),
     poolParams: PoolParams.fromPartial({}),
     futurePoolGovernor: "",
     totalShares: undefined,
@@ -213,11 +212,11 @@ function createBasePool(): Pool {
 }
 export const Pool = {
   typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool",
-  encode(message: Pool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Pool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
-    if (!message.id.isZero()) {
+    if (message.id !== BigInt(0)) {
       writer.uint32(16).uint64(message.id);
     }
     if (message.poolParams !== undefined) {
@@ -242,8 +241,8 @@ export const Pool = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Pool {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Pool {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePool();
     while (reader.pos < end) {
@@ -253,7 +252,7 @@ export const Pool = {
           message.address = reader.string();
           break;
         case 2:
-          message.id = (reader.uint64() as Long);
+          message.id = reader.uint64();
           break;
         case 3:
           message.poolParams = PoolParams.decode(reader, reader.uint32());
@@ -271,10 +270,10 @@ export const Pool = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.scalingFactors.push((reader.uint64() as Long));
+              message.scalingFactors.push(reader.uint64());
             }
           } else {
-            message.scalingFactors.push((reader.uint64() as Long));
+            message.scalingFactors.push(reader.uint64());
           }
           break;
         case 8:
@@ -290,24 +289,24 @@ export const Pool = {
   fromPartial(object: Partial<Pool>): Pool {
     const message = createBasePool();
     message.address = object.address ?? "";
-    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+    message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
     message.poolParams = object.poolParams !== undefined && object.poolParams !== null ? PoolParams.fromPartial(object.poolParams) : undefined;
     message.futurePoolGovernor = object.futurePoolGovernor ?? "";
     message.totalShares = object.totalShares !== undefined && object.totalShares !== null ? Coin.fromPartial(object.totalShares) : undefined;
     message.poolLiquidity = object.poolLiquidity?.map(e => Coin.fromPartial(e)) || [];
-    message.scalingFactors = object.scalingFactors?.map(e => Long.fromValue(e)) || [];
+    message.scalingFactors = object.scalingFactors?.map(e => BigInt(e.toString())) || [];
     message.scalingFactorController = object.scalingFactorController ?? "";
     return message;
   },
   fromAmino(object: PoolAmino): Pool {
     return {
       address: object.address,
-      id: Long.fromString(object.id),
+      id: BigInt(object.id),
       poolParams: object?.pool_params ? PoolParams.fromAmino(object.pool_params) : undefined,
       futurePoolGovernor: object.future_pool_governor,
       totalShares: object?.total_shares ? Coin.fromAmino(object.total_shares) : undefined,
       poolLiquidity: Array.isArray(object?.pool_liquidity) ? object.pool_liquidity.map((e: any) => Coin.fromAmino(e)) : [],
-      scalingFactors: Array.isArray(object?.scaling_factors) ? object.scaling_factors.map((e: any) => e) : [],
+      scalingFactors: Array.isArray(object?.scaling_factors) ? object.scaling_factors.map((e: any) => BigInt(e)) : [],
       scalingFactorController: object.scaling_factor_controller
     };
   },
@@ -324,7 +323,7 @@ export const Pool = {
       obj.pool_liquidity = [];
     }
     if (message.scalingFactors) {
-      obj.scaling_factors = message.scalingFactors.map(e => e);
+      obj.scaling_factors = message.scalingFactors.map(e => e.toString());
     } else {
       obj.scaling_factors = [];
     }

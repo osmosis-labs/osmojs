@@ -2,8 +2,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Gauge, GaugeAmino, GaugeSDKType } from "./gauge";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 export interface ModuleToDistributeCoinsRequest {}
 export interface ModuleToDistributeCoinsRequestProtoMsg {
   typeUrl: "/osmosis.incentives.ModuleToDistributeCoinsRequest";
@@ -36,7 +35,7 @@ export interface ModuleToDistributeCoinsResponseSDKType {
 }
 export interface GaugeByIDRequest {
   /** Gague ID being queried */
-  id: Long;
+  id: bigint;
 }
 export interface GaugeByIDRequestProtoMsg {
   typeUrl: "/osmosis.incentives.GaugeByIDRequest";
@@ -51,7 +50,7 @@ export interface GaugeByIDRequestAminoMsg {
   value: GaugeByIDRequestAmino;
 }
 export interface GaugeByIDRequestSDKType {
-  id: Long;
+  id: bigint;
 }
 export interface GaugeByIDResponse {
   /** Gauge that corresponds to provided gague ID */
@@ -301,12 +300,12 @@ export interface RewardsEstRequest {
   /** Address that is being queried for future estimated rewards */
   owner: string;
   /** Lock IDs included in future reward estimation */
-  lockIds: Long[];
+  lockIds: bigint[];
   /**
    * Upper time limit of reward estimation
    * Lower limit is current epoch
    */
-  endEpoch: Long;
+  endEpoch: bigint;
 }
 export interface RewardsEstRequestProtoMsg {
   typeUrl: "/osmosis.incentives.RewardsEstRequest";
@@ -329,8 +328,8 @@ export interface RewardsEstRequestAminoMsg {
 }
 export interface RewardsEstRequestSDKType {
   owner: string;
-  lock_ids: Long[];
-  end_epoch: Long;
+  lock_ids: bigint[];
+  end_epoch: bigint;
 }
 export interface RewardsEstResponse {
   /**
@@ -392,11 +391,11 @@ function createBaseModuleToDistributeCoinsRequest(): ModuleToDistributeCoinsRequ
 }
 export const ModuleToDistributeCoinsRequest = {
   typeUrl: "/osmosis.incentives.ModuleToDistributeCoinsRequest",
-  encode(_: ModuleToDistributeCoinsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: ModuleToDistributeCoinsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ModuleToDistributeCoinsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseModuleToDistributeCoinsRequest();
     while (reader.pos < end) {
@@ -449,14 +448,14 @@ function createBaseModuleToDistributeCoinsResponse(): ModuleToDistributeCoinsRes
 }
 export const ModuleToDistributeCoinsResponse = {
   typeUrl: "/osmosis.incentives.ModuleToDistributeCoinsResponse",
-  encode(message: ModuleToDistributeCoinsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ModuleToDistributeCoinsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseModuleToDistributeCoinsResponse();
     while (reader.pos < end) {
@@ -515,26 +514,26 @@ export const ModuleToDistributeCoinsResponse = {
 };
 function createBaseGaugeByIDRequest(): GaugeByIDRequest {
   return {
-    id: Long.UZERO
+    id: BigInt(0)
   };
 }
 export const GaugeByIDRequest = {
   typeUrl: "/osmosis.incentives.GaugeByIDRequest",
-  encode(message: GaugeByIDRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.isZero()) {
+  encode(message: GaugeByIDRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.id !== BigInt(0)) {
       writer.uint32(8).uint64(message.id);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GaugeByIDRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGaugeByIDRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.id = (reader.uint64() as Long);
+          message.id = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -545,12 +544,12 @@ export const GaugeByIDRequest = {
   },
   fromPartial(object: Partial<GaugeByIDRequest>): GaugeByIDRequest {
     const message = createBaseGaugeByIDRequest();
-    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+    message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: GaugeByIDRequestAmino): GaugeByIDRequest {
     return {
-      id: Long.fromString(object.id)
+      id: BigInt(object.id)
     };
   },
   toAmino(message: GaugeByIDRequest): GaugeByIDRequestAmino {
@@ -587,14 +586,14 @@ function createBaseGaugeByIDResponse(): GaugeByIDResponse {
 }
 export const GaugeByIDResponse = {
   typeUrl: "/osmosis.incentives.GaugeByIDResponse",
-  encode(message: GaugeByIDResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GaugeByIDResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.gauge !== undefined) {
       Gauge.encode(message.gauge, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GaugeByIDResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGaugeByIDResponse();
     while (reader.pos < end) {
@@ -654,14 +653,14 @@ function createBaseGaugesRequest(): GaugesRequest {
 }
 export const GaugesRequest = {
   typeUrl: "/osmosis.incentives.GaugesRequest",
-  encode(message: GaugesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GaugesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GaugesRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GaugesRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGaugesRequest();
     while (reader.pos < end) {
@@ -722,7 +721,7 @@ function createBaseGaugesResponse(): GaugesResponse {
 }
 export const GaugesResponse = {
   typeUrl: "/osmosis.incentives.GaugesResponse",
-  encode(message: GaugesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GaugesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.data) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -731,8 +730,8 @@ export const GaugesResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GaugesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGaugesResponse();
     while (reader.pos < end) {
@@ -802,14 +801,14 @@ function createBaseActiveGaugesRequest(): ActiveGaugesRequest {
 }
 export const ActiveGaugesRequest = {
   typeUrl: "/osmosis.incentives.ActiveGaugesRequest",
-  encode(message: ActiveGaugesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ActiveGaugesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ActiveGaugesRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseActiveGaugesRequest();
     while (reader.pos < end) {
@@ -870,7 +869,7 @@ function createBaseActiveGaugesResponse(): ActiveGaugesResponse {
 }
 export const ActiveGaugesResponse = {
   typeUrl: "/osmosis.incentives.ActiveGaugesResponse",
-  encode(message: ActiveGaugesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ActiveGaugesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.data) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -879,8 +878,8 @@ export const ActiveGaugesResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ActiveGaugesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseActiveGaugesResponse();
     while (reader.pos < end) {
@@ -951,7 +950,7 @@ function createBaseActiveGaugesPerDenomRequest(): ActiveGaugesPerDenomRequest {
 }
 export const ActiveGaugesPerDenomRequest = {
   typeUrl: "/osmosis.incentives.ActiveGaugesPerDenomRequest",
-  encode(message: ActiveGaugesPerDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ActiveGaugesPerDenomRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
     }
@@ -960,8 +959,8 @@ export const ActiveGaugesPerDenomRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ActiveGaugesPerDenomRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseActiveGaugesPerDenomRequest();
     while (reader.pos < end) {
@@ -1028,7 +1027,7 @@ function createBaseActiveGaugesPerDenomResponse(): ActiveGaugesPerDenomResponse 
 }
 export const ActiveGaugesPerDenomResponse = {
   typeUrl: "/osmosis.incentives.ActiveGaugesPerDenomResponse",
-  encode(message: ActiveGaugesPerDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ActiveGaugesPerDenomResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.data) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -1037,8 +1036,8 @@ export const ActiveGaugesPerDenomResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ActiveGaugesPerDenomResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseActiveGaugesPerDenomResponse();
     while (reader.pos < end) {
@@ -1108,14 +1107,14 @@ function createBaseUpcomingGaugesRequest(): UpcomingGaugesRequest {
 }
 export const UpcomingGaugesRequest = {
   typeUrl: "/osmosis.incentives.UpcomingGaugesRequest",
-  encode(message: UpcomingGaugesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: UpcomingGaugesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): UpcomingGaugesRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpcomingGaugesRequest();
     while (reader.pos < end) {
@@ -1176,7 +1175,7 @@ function createBaseUpcomingGaugesResponse(): UpcomingGaugesResponse {
 }
 export const UpcomingGaugesResponse = {
   typeUrl: "/osmosis.incentives.UpcomingGaugesResponse",
-  encode(message: UpcomingGaugesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: UpcomingGaugesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.data) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -1185,8 +1184,8 @@ export const UpcomingGaugesResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): UpcomingGaugesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpcomingGaugesResponse();
     while (reader.pos < end) {
@@ -1257,7 +1256,7 @@ function createBaseUpcomingGaugesPerDenomRequest(): UpcomingGaugesPerDenomReques
 }
 export const UpcomingGaugesPerDenomRequest = {
   typeUrl: "/osmosis.incentives.UpcomingGaugesPerDenomRequest",
-  encode(message: UpcomingGaugesPerDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: UpcomingGaugesPerDenomRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
     }
@@ -1266,8 +1265,8 @@ export const UpcomingGaugesPerDenomRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): UpcomingGaugesPerDenomRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpcomingGaugesPerDenomRequest();
     while (reader.pos < end) {
@@ -1334,7 +1333,7 @@ function createBaseUpcomingGaugesPerDenomResponse(): UpcomingGaugesPerDenomRespo
 }
 export const UpcomingGaugesPerDenomResponse = {
   typeUrl: "/osmosis.incentives.UpcomingGaugesPerDenomResponse",
-  encode(message: UpcomingGaugesPerDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: UpcomingGaugesPerDenomResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.upcomingGauges) {
       Gauge.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -1343,8 +1342,8 @@ export const UpcomingGaugesPerDenomResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpcomingGaugesPerDenomResponse();
     while (reader.pos < end) {
@@ -1411,12 +1410,12 @@ function createBaseRewardsEstRequest(): RewardsEstRequest {
   return {
     owner: "",
     lockIds: [],
-    endEpoch: Long.ZERO
+    endEpoch: BigInt(0)
   };
 }
 export const RewardsEstRequest = {
   typeUrl: "/osmosis.incentives.RewardsEstRequest",
-  encode(message: RewardsEstRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: RewardsEstRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -1425,13 +1424,13 @@ export const RewardsEstRequest = {
       writer.uint64(v);
     }
     writer.ldelim();
-    if (!message.endEpoch.isZero()) {
+    if (message.endEpoch !== BigInt(0)) {
       writer.uint32(24).int64(message.endEpoch);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): RewardsEstRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRewardsEstRequest();
     while (reader.pos < end) {
@@ -1444,14 +1443,14 @@ export const RewardsEstRequest = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.lockIds.push((reader.uint64() as Long));
+              message.lockIds.push(reader.uint64());
             }
           } else {
-            message.lockIds.push((reader.uint64() as Long));
+            message.lockIds.push(reader.uint64());
           }
           break;
         case 3:
-          message.endEpoch = (reader.int64() as Long);
+          message.endEpoch = reader.int64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1463,22 +1462,22 @@ export const RewardsEstRequest = {
   fromPartial(object: Partial<RewardsEstRequest>): RewardsEstRequest {
     const message = createBaseRewardsEstRequest();
     message.owner = object.owner ?? "";
-    message.lockIds = object.lockIds?.map(e => Long.fromValue(e)) || [];
-    message.endEpoch = object.endEpoch !== undefined && object.endEpoch !== null ? Long.fromValue(object.endEpoch) : Long.ZERO;
+    message.lockIds = object.lockIds?.map(e => BigInt(e.toString())) || [];
+    message.endEpoch = object.endEpoch !== undefined && object.endEpoch !== null ? BigInt(object.endEpoch.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: RewardsEstRequestAmino): RewardsEstRequest {
     return {
       owner: object.owner,
-      lockIds: Array.isArray(object?.lock_ids) ? object.lock_ids.map((e: any) => e) : [],
-      endEpoch: Long.fromString(object.end_epoch)
+      lockIds: Array.isArray(object?.lock_ids) ? object.lock_ids.map((e: any) => BigInt(e)) : [],
+      endEpoch: BigInt(object.end_epoch)
     };
   },
   toAmino(message: RewardsEstRequest): RewardsEstRequestAmino {
     const obj: any = {};
     obj.owner = message.owner;
     if (message.lockIds) {
-      obj.lock_ids = message.lockIds.map(e => e);
+      obj.lock_ids = message.lockIds.map(e => e.toString());
     } else {
       obj.lock_ids = [];
     }
@@ -1514,14 +1513,14 @@ function createBaseRewardsEstResponse(): RewardsEstResponse {
 }
 export const RewardsEstResponse = {
   typeUrl: "/osmosis.incentives.RewardsEstResponse",
-  encode(message: RewardsEstResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: RewardsEstResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): RewardsEstResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRewardsEstResponse();
     while (reader.pos < end) {
@@ -1583,11 +1582,11 @@ function createBaseQueryLockableDurationsRequest(): QueryLockableDurationsReques
 }
 export const QueryLockableDurationsRequest = {
   typeUrl: "/osmosis.incentives.QueryLockableDurationsRequest",
-  encode(_: QueryLockableDurationsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryLockableDurationsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryLockableDurationsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryLockableDurationsRequest();
     while (reader.pos < end) {
@@ -1640,14 +1639,14 @@ function createBaseQueryLockableDurationsResponse(): QueryLockableDurationsRespo
 }
 export const QueryLockableDurationsResponse = {
   typeUrl: "/osmosis.incentives.QueryLockableDurationsResponse",
-  encode(message: QueryLockableDurationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryLockableDurationsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.lockableDurations) {
       Duration.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryLockableDurationsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryLockableDurationsResponse();
     while (reader.pos < end) {

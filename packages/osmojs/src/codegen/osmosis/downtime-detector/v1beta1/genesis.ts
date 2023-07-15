@@ -1,6 +1,6 @@
 import { Downtime, downtimeFromJSON } from "./downtime_duration";
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet } from "../../../helpers";
 export interface GenesisDowntimeEntry {
   duration: Downtime;
@@ -53,7 +53,7 @@ function createBaseGenesisDowntimeEntry(): GenesisDowntimeEntry {
 }
 export const GenesisDowntimeEntry = {
   typeUrl: "/osmosis.downtimedetector.v1beta1.GenesisDowntimeEntry",
-  encode(message: GenesisDowntimeEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GenesisDowntimeEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.duration !== 0) {
       writer.uint32(8).int32(message.duration);
     }
@@ -62,8 +62,8 @@ export const GenesisDowntimeEntry = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisDowntimeEntry {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GenesisDowntimeEntry {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisDowntimeEntry();
     while (reader.pos < end) {
@@ -130,7 +130,7 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/osmosis.downtimedetector.v1beta1.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.downtimes) {
       GenesisDowntimeEntry.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -139,8 +139,8 @@ export const GenesisState = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {

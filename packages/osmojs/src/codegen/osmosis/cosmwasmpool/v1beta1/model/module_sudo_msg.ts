@@ -1,5 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { Decimal } from "@cosmjs/math";
 /** ===================== SwapExactAmountIn */
 export interface SwapExactAmountIn {
@@ -192,7 +192,7 @@ function createBaseSwapExactAmountIn(): SwapExactAmountIn {
 }
 export const SwapExactAmountIn = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountIn",
-  encode(message: SwapExactAmountIn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SwapExactAmountIn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -210,8 +210,8 @@ export const SwapExactAmountIn = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountIn {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountIn {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSwapExactAmountIn();
     while (reader.pos < end) {
@@ -295,14 +295,14 @@ function createBaseSwapExactAmountInSudoMsg(): SwapExactAmountInSudoMsg {
 }
 export const SwapExactAmountInSudoMsg = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountInSudoMsg",
-  encode(message: SwapExactAmountInSudoMsg, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SwapExactAmountInSudoMsg, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapExactAmountIn !== undefined) {
       SwapExactAmountIn.encode(message.swapExactAmountIn, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountInSudoMsg {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountInSudoMsg {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSwapExactAmountInSudoMsg();
     while (reader.pos < end) {
@@ -362,14 +362,14 @@ function createBaseSwapExactAmountInSudoMsgResponse(): SwapExactAmountInSudoMsgR
 }
 export const SwapExactAmountInSudoMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountInSudoMsgResponse",
-  encode(message: SwapExactAmountInSudoMsgResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SwapExactAmountInSudoMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOutAmount !== "") {
       writer.uint32(10).string(message.tokenOutAmount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountInSudoMsgResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountInSudoMsgResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSwapExactAmountInSudoMsgResponse();
     while (reader.pos < end) {
@@ -433,7 +433,7 @@ function createBaseSwapExactAmountOut(): SwapExactAmountOut {
 }
 export const SwapExactAmountOut = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountOut",
-  encode(message: SwapExactAmountOut, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SwapExactAmountOut, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
     }
@@ -451,8 +451,8 @@ export const SwapExactAmountOut = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountOut {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountOut {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSwapExactAmountOut();
     while (reader.pos < end) {
@@ -536,14 +536,14 @@ function createBaseSwapExactAmountOutSudoMsg(): SwapExactAmountOutSudoMsg {
 }
 export const SwapExactAmountOutSudoMsg = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountOutSudoMsg",
-  encode(message: SwapExactAmountOutSudoMsg, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SwapExactAmountOutSudoMsg, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapExactAmountOut !== undefined) {
       SwapExactAmountOut.encode(message.swapExactAmountOut, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountOutSudoMsg {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountOutSudoMsg {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSwapExactAmountOutSudoMsg();
     while (reader.pos < end) {
@@ -603,14 +603,14 @@ function createBaseSwapExactAmountOutSudoMsgResponse(): SwapExactAmountOutSudoMs
 }
 export const SwapExactAmountOutSudoMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountOutSudoMsgResponse",
-  encode(message: SwapExactAmountOutSudoMsgResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SwapExactAmountOutSudoMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenInAmount !== "") {
       writer.uint32(10).string(message.tokenInAmount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SwapExactAmountOutSudoMsgResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SwapExactAmountOutSudoMsgResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSwapExactAmountOutSudoMsgResponse();
     while (reader.pos < end) {

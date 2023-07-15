@@ -1,8 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Gauge, GaugeAmino, GaugeSDKType } from "./gauge";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /**
  * GenesisState defines the incentives module's various parameters when first
  * initialized
@@ -21,7 +20,7 @@ export interface GenesisState {
    * last_gauge_id is what the gauge number will increment from when creating
    * the next gauge after genesis
    */
-  lastGaugeId: Long;
+  lastGaugeId: bigint;
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/osmosis.incentives.GenesisState";
@@ -59,19 +58,19 @@ export interface GenesisStateSDKType {
   params: ParamsSDKType;
   gauges: GaugeSDKType[];
   lockable_durations: DurationSDKType[];
-  last_gauge_id: Long;
+  last_gauge_id: bigint;
 }
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
     gauges: [],
     lockableDurations: [],
-    lastGaugeId: Long.UZERO
+    lastGaugeId: BigInt(0)
   };
 }
 export const GenesisState = {
   typeUrl: "/osmosis.incentives.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -81,13 +80,13 @@ export const GenesisState = {
     for (const v of message.lockableDurations) {
       Duration.encode(v!, writer.uint32(26).fork()).ldelim();
     }
-    if (!message.lastGaugeId.isZero()) {
+    if (message.lastGaugeId !== BigInt(0)) {
       writer.uint32(32).uint64(message.lastGaugeId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
@@ -103,7 +102,7 @@ export const GenesisState = {
           message.lockableDurations.push(Duration.decode(reader, reader.uint32()));
           break;
         case 4:
-          message.lastGaugeId = (reader.uint64() as Long);
+          message.lastGaugeId = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -117,7 +116,7 @@ export const GenesisState = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.gauges = object.gauges?.map(e => Gauge.fromPartial(e)) || [];
     message.lockableDurations = object.lockableDurations?.map(e => Duration.fromPartial(e)) || [];
-    message.lastGaugeId = object.lastGaugeId !== undefined && object.lastGaugeId !== null ? Long.fromValue(object.lastGaugeId) : Long.UZERO;
+    message.lastGaugeId = object.lastGaugeId !== undefined && object.lastGaugeId !== null ? BigInt(object.lastGaugeId.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -125,7 +124,7 @@ export const GenesisState = {
       params: object?.params ? Params.fromAmino(object.params) : undefined,
       gauges: Array.isArray(object?.gauges) ? object.gauges.map((e: any) => Gauge.fromAmino(e)) : [],
       lockableDurations: Array.isArray(object?.lockable_durations) ? object.lockable_durations.map((e: any) => Duration.fromAmino(e)) : [],
-      lastGaugeId: Long.fromString(object.last_gauge_id)
+      lastGaugeId: BigInt(object.last_gauge_id)
     };
   },
   toAmino(message: GenesisState): GenesisStateAmino {

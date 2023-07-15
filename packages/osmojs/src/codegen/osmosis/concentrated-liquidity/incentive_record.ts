@@ -1,9 +1,9 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 import { Decimal } from "@cosmjs/math";
+import { toTimestamp, fromTimestamp } from "../../helpers";
 /**
  * IncentiveRecord is the high-level struct we use to deal with an independent
  * incentive being distributed on a pool. Note that PoolId, Denom, and MinUptime
@@ -12,8 +12,8 @@ import { Decimal } from "@cosmjs/math";
  */
 export interface IncentiveRecord {
   /** incentive_id is the id uniquely identifying this incentive record. */
-  incentiveId: Long;
-  poolId: Long;
+  incentiveId: bigint;
+  poolId: bigint;
   /** incentive record body holds necessary */
   incentiveRecordBody: IncentiveRecordBody;
   /**
@@ -57,8 +57,8 @@ export interface IncentiveRecordAminoMsg {
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 export interface IncentiveRecordSDKType {
-  incentive_id: Long;
-  pool_id: Long;
+  incentive_id: bigint;
+  pool_id: bigint;
   incentive_record_body: IncentiveRecordBodySDKType;
   min_uptime: DurationSDKType;
 }
@@ -105,19 +105,19 @@ export interface IncentiveRecordBodySDKType {
 }
 function createBaseIncentiveRecord(): IncentiveRecord {
   return {
-    incentiveId: Long.UZERO,
-    poolId: Long.UZERO,
+    incentiveId: BigInt(0),
+    poolId: BigInt(0),
     incentiveRecordBody: IncentiveRecordBody.fromPartial({}),
     minUptime: undefined
   };
 }
 export const IncentiveRecord = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecord",
-  encode(message: IncentiveRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.incentiveId.isZero()) {
+  encode(message: IncentiveRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.incentiveId !== BigInt(0)) {
       writer.uint32(8).uint64(message.incentiveId);
     }
-    if (!message.poolId.isZero()) {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
     }
     if (message.incentiveRecordBody !== undefined) {
@@ -128,18 +128,18 @@ export const IncentiveRecord = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): IncentiveRecord {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): IncentiveRecord {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseIncentiveRecord();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.incentiveId = (reader.uint64() as Long);
+          message.incentiveId = reader.uint64();
           break;
         case 2:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 4:
           message.incentiveRecordBody = IncentiveRecordBody.decode(reader, reader.uint32());
@@ -156,16 +156,16 @@ export const IncentiveRecord = {
   },
   fromPartial(object: Partial<IncentiveRecord>): IncentiveRecord {
     const message = createBaseIncentiveRecord();
-    message.incentiveId = object.incentiveId !== undefined && object.incentiveId !== null ? Long.fromValue(object.incentiveId) : Long.UZERO;
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.incentiveId = object.incentiveId !== undefined && object.incentiveId !== null ? BigInt(object.incentiveId.toString()) : BigInt(0);
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.incentiveRecordBody = object.incentiveRecordBody !== undefined && object.incentiveRecordBody !== null ? IncentiveRecordBody.fromPartial(object.incentiveRecordBody) : undefined;
     message.minUptime = object.minUptime !== undefined && object.minUptime !== null ? Duration.fromPartial(object.minUptime) : undefined;
     return message;
   },
   fromAmino(object: IncentiveRecordAmino): IncentiveRecord {
     return {
-      incentiveId: Long.fromString(object.incentive_id),
-      poolId: Long.fromString(object.pool_id),
+      incentiveId: BigInt(object.incentive_id),
+      poolId: BigInt(object.pool_id),
       incentiveRecordBody: object?.incentive_record_body ? IncentiveRecordBody.fromAmino(object.incentive_record_body) : undefined,
       minUptime: object?.min_uptime ? Duration.fromAmino(object.min_uptime) : undefined
     };
@@ -209,7 +209,7 @@ function createBaseIncentiveRecordBody(): IncentiveRecordBody {
 }
 export const IncentiveRecordBody = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecordBody",
-  encode(message: IncentiveRecordBody, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: IncentiveRecordBody, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.remainingCoin !== undefined) {
       DecCoin.encode(message.remainingCoin, writer.uint32(10).fork()).ldelim();
     }
@@ -221,8 +221,8 @@ export const IncentiveRecordBody = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): IncentiveRecordBody {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): IncentiveRecordBody {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseIncentiveRecordBody();
     while (reader.pos < end) {

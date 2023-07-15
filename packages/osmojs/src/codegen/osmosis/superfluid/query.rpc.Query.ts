@@ -1,5 +1,5 @@
 import { Rpc } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryParamsRequest, QueryParamsResponse, AssetTypeRequest, AssetTypeResponse, AllAssetsRequest, AllAssetsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, QueryTotalDelegationByValidatorForDenomRequest, QueryTotalDelegationByValidatorForDenomResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponse, UserConcentratedSuperfluidPositionsDelegatedRequest, UserConcentratedSuperfluidPositionsDelegatedResponse, UserConcentratedSuperfluidPositionsUndelegatingRequest, UserConcentratedSuperfluidPositionsUndelegatingResponse } from "./query";
 /** Query defines the gRPC querier service. */
@@ -78,89 +78,89 @@ export class QueryClientImpl implements Query {
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "Params", data);
-    return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryParamsResponse.decode(new BinaryReader(data)));
   }
   assetType(request: AssetTypeRequest): Promise<AssetTypeResponse> {
     const data = AssetTypeRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "AssetType", data);
-    return promise.then(data => AssetTypeResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => AssetTypeResponse.decode(new BinaryReader(data)));
   }
   allAssets(request: AllAssetsRequest = {}): Promise<AllAssetsResponse> {
     const data = AllAssetsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "AllAssets", data);
-    return promise.then(data => AllAssetsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => AllAssetsResponse.decode(new BinaryReader(data)));
   }
   assetMultiplier(request: AssetMultiplierRequest): Promise<AssetMultiplierResponse> {
     const data = AssetMultiplierRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "AssetMultiplier", data);
-    return promise.then(data => AssetMultiplierResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => AssetMultiplierResponse.decode(new BinaryReader(data)));
   }
   allIntermediaryAccounts(request: AllIntermediaryAccountsRequest = {
     pagination: undefined
   }): Promise<AllIntermediaryAccountsResponse> {
     const data = AllIntermediaryAccountsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "AllIntermediaryAccounts", data);
-    return promise.then(data => AllIntermediaryAccountsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => AllIntermediaryAccountsResponse.decode(new BinaryReader(data)));
   }
   connectedIntermediaryAccount(request: ConnectedIntermediaryAccountRequest): Promise<ConnectedIntermediaryAccountResponse> {
     const data = ConnectedIntermediaryAccountRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "ConnectedIntermediaryAccount", data);
-    return promise.then(data => ConnectedIntermediaryAccountResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => ConnectedIntermediaryAccountResponse.decode(new BinaryReader(data)));
   }
   totalDelegationByValidatorForDenom(request: QueryTotalDelegationByValidatorForDenomRequest): Promise<QueryTotalDelegationByValidatorForDenomResponse> {
     const data = QueryTotalDelegationByValidatorForDenomRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "TotalDelegationByValidatorForDenom", data);
-    return promise.then(data => QueryTotalDelegationByValidatorForDenomResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryTotalDelegationByValidatorForDenomResponse.decode(new BinaryReader(data)));
   }
   totalSuperfluidDelegations(request: TotalSuperfluidDelegationsRequest = {}): Promise<TotalSuperfluidDelegationsResponse> {
     const data = TotalSuperfluidDelegationsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "TotalSuperfluidDelegations", data);
-    return promise.then(data => TotalSuperfluidDelegationsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => TotalSuperfluidDelegationsResponse.decode(new BinaryReader(data)));
   }
   superfluidDelegationAmount(request: SuperfluidDelegationAmountRequest): Promise<SuperfluidDelegationAmountResponse> {
     const data = SuperfluidDelegationAmountRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "SuperfluidDelegationAmount", data);
-    return promise.then(data => SuperfluidDelegationAmountResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => SuperfluidDelegationAmountResponse.decode(new BinaryReader(data)));
   }
   superfluidDelegationsByDelegator(request: SuperfluidDelegationsByDelegatorRequest): Promise<SuperfluidDelegationsByDelegatorResponse> {
     const data = SuperfluidDelegationsByDelegatorRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "SuperfluidDelegationsByDelegator", data);
-    return promise.then(data => SuperfluidDelegationsByDelegatorResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => SuperfluidDelegationsByDelegatorResponse.decode(new BinaryReader(data)));
   }
   superfluidUndelegationsByDelegator(request: SuperfluidUndelegationsByDelegatorRequest): Promise<SuperfluidUndelegationsByDelegatorResponse> {
     const data = SuperfluidUndelegationsByDelegatorRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "SuperfluidUndelegationsByDelegator", data);
-    return promise.then(data => SuperfluidUndelegationsByDelegatorResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => SuperfluidUndelegationsByDelegatorResponse.decode(new BinaryReader(data)));
   }
   superfluidDelegationsByValidatorDenom(request: SuperfluidDelegationsByValidatorDenomRequest): Promise<SuperfluidDelegationsByValidatorDenomResponse> {
     const data = SuperfluidDelegationsByValidatorDenomRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "SuperfluidDelegationsByValidatorDenom", data);
-    return promise.then(data => SuperfluidDelegationsByValidatorDenomResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => SuperfluidDelegationsByValidatorDenomResponse.decode(new BinaryReader(data)));
   }
   estimateSuperfluidDelegatedAmountByValidatorDenom(request: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest): Promise<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse> {
     const data = EstimateSuperfluidDelegatedAmountByValidatorDenomRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "EstimateSuperfluidDelegatedAmountByValidatorDenom", data);
-    return promise.then(data => EstimateSuperfluidDelegatedAmountByValidatorDenomResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => EstimateSuperfluidDelegatedAmountByValidatorDenomResponse.decode(new BinaryReader(data)));
   }
   totalDelegationByDelegator(request: QueryTotalDelegationByDelegatorRequest): Promise<QueryTotalDelegationByDelegatorResponse> {
     const data = QueryTotalDelegationByDelegatorRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "TotalDelegationByDelegator", data);
-    return promise.then(data => QueryTotalDelegationByDelegatorResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryTotalDelegationByDelegatorResponse.decode(new BinaryReader(data)));
   }
   unpoolWhitelist(request: QueryUnpoolWhitelistRequest = {}): Promise<QueryUnpoolWhitelistResponse> {
     const data = QueryUnpoolWhitelistRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "UnpoolWhitelist", data);
-    return promise.then(data => QueryUnpoolWhitelistResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryUnpoolWhitelistResponse.decode(new BinaryReader(data)));
   }
   userConcentratedSuperfluidPositionsDelegated(request: UserConcentratedSuperfluidPositionsDelegatedRequest): Promise<UserConcentratedSuperfluidPositionsDelegatedResponse> {
     const data = UserConcentratedSuperfluidPositionsDelegatedRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "UserConcentratedSuperfluidPositionsDelegated", data);
-    return promise.then(data => UserConcentratedSuperfluidPositionsDelegatedResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => UserConcentratedSuperfluidPositionsDelegatedResponse.decode(new BinaryReader(data)));
   }
   userConcentratedSuperfluidPositionsUndelegating(request: UserConcentratedSuperfluidPositionsUndelegatingRequest): Promise<UserConcentratedSuperfluidPositionsUndelegatingResponse> {
     const data = UserConcentratedSuperfluidPositionsUndelegatingRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.superfluid.Query", "UserConcentratedSuperfluidPositionsUndelegating", data);
-    return promise.then(data => UserConcentratedSuperfluidPositionsUndelegatingResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => UserConcentratedSuperfluidPositionsUndelegatingResponse.decode(new BinaryReader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {

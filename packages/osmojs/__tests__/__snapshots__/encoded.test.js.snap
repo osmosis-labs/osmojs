@@ -2,11 +2,7 @@
 
 exports[`encoded 1`] = `
 {
-  "poolId": Long {
-    "high": 0,
-    "low": 606,
-    "unsigned": true,
-  },
+  "poolId": 606n,
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
   "tokenInMaxs": [
@@ -24,11 +20,7 @@ exports[`encoded 1`] = `
 
 exports[`encoded.scoped 1`] = `
 {
-  "poolId": Long {
-    "high": 0,
-    "low": 606,
-    "unsigned": true,
-  },
+  "poolId": 606n,
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
   "tokenInMaxs": [

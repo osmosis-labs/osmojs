@@ -1,5 +1,5 @@
 import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { ParamsRequest, ParamsResponse } from "./query";
 /** Query defines the gRPC querier service. */
@@ -19,7 +19,7 @@ export class QueryClientImpl implements Query {
   params(request: ParamsRequest = {}): Promise<ParamsResponse> {
     const data = ParamsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.ibcratelimit.v1beta1.Query", "Params", data);
-    return promise.then(data => ParamsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => ParamsResponse.decode(new BinaryReader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {

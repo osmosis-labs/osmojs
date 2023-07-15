@@ -1,5 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { Decimal } from "@cosmjs/math";
 /** ===================== CalcOutAmtGivenIn */
 export interface CalcOutAmtGivenIn {
@@ -162,7 +162,7 @@ function createBaseCalcOutAmtGivenIn(): CalcOutAmtGivenIn {
 }
 export const CalcOutAmtGivenIn = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcOutAmtGivenIn",
-  encode(message: CalcOutAmtGivenIn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: CalcOutAmtGivenIn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenIn !== undefined) {
       Coin.encode(message.tokenIn, writer.uint32(10).fork()).ldelim();
     }
@@ -174,8 +174,8 @@ export const CalcOutAmtGivenIn = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CalcOutAmtGivenIn {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): CalcOutAmtGivenIn {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCalcOutAmtGivenIn();
     while (reader.pos < end) {
@@ -247,14 +247,14 @@ function createBaseCalcOutAmtGivenInRequest(): CalcOutAmtGivenInRequest {
 }
 export const CalcOutAmtGivenInRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcOutAmtGivenInRequest",
-  encode(message: CalcOutAmtGivenInRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: CalcOutAmtGivenInRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.calcOutAmtGivenIn !== undefined) {
       CalcOutAmtGivenIn.encode(message.calcOutAmtGivenIn, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CalcOutAmtGivenInRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): CalcOutAmtGivenInRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCalcOutAmtGivenInRequest();
     while (reader.pos < end) {
@@ -314,14 +314,14 @@ function createBaseCalcOutAmtGivenInResponse(): CalcOutAmtGivenInResponse {
 }
 export const CalcOutAmtGivenInResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcOutAmtGivenInResponse",
-  encode(message: CalcOutAmtGivenInResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: CalcOutAmtGivenInResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOut !== undefined) {
       Coin.encode(message.tokenOut, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CalcOutAmtGivenInResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): CalcOutAmtGivenInResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCalcOutAmtGivenInResponse();
     while (reader.pos < end) {
@@ -383,7 +383,7 @@ function createBaseCalcInAmtGivenOut(): CalcInAmtGivenOut {
 }
 export const CalcInAmtGivenOut = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcInAmtGivenOut",
-  encode(message: CalcInAmtGivenOut, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: CalcInAmtGivenOut, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOut !== undefined) {
       Coin.encode(message.tokenOut, writer.uint32(10).fork()).ldelim();
     }
@@ -395,8 +395,8 @@ export const CalcInAmtGivenOut = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CalcInAmtGivenOut {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): CalcInAmtGivenOut {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCalcInAmtGivenOut();
     while (reader.pos < end) {
@@ -468,14 +468,14 @@ function createBaseCalcInAmtGivenOutRequest(): CalcInAmtGivenOutRequest {
 }
 export const CalcInAmtGivenOutRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcInAmtGivenOutRequest",
-  encode(message: CalcInAmtGivenOutRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: CalcInAmtGivenOutRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.calcInAmtGivenOut !== undefined) {
       CalcInAmtGivenOut.encode(message.calcInAmtGivenOut, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CalcInAmtGivenOutRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): CalcInAmtGivenOutRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCalcInAmtGivenOutRequest();
     while (reader.pos < end) {
@@ -535,14 +535,14 @@ function createBaseCalcInAmtGivenOutResponse(): CalcInAmtGivenOutResponse {
 }
 export const CalcInAmtGivenOutResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcInAmtGivenOutResponse",
-  encode(message: CalcInAmtGivenOutResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: CalcInAmtGivenOutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenIn !== undefined) {
       Coin.encode(message.tokenIn, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CalcInAmtGivenOutResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): CalcInAmtGivenOutResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCalcInAmtGivenOutResponse();
     while (reader.pos < end) {

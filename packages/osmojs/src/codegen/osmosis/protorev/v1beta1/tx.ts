@@ -1,6 +1,5 @@
 import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgSetHotRoutes defines the Msg/SetHotRoutes request type. */
 export interface MsgSetHotRoutes {
   /** admin is the account that is authorized to set the hot routes. */
@@ -147,7 +146,7 @@ export interface MsgSetMaxPoolPointsPerTx {
    * max_pool_points_per_tx is the maximum number of pool points that can be
    * consumed per transaction.
    */
-  maxPoolPointsPerTx: Long;
+  maxPoolPointsPerTx: bigint;
 }
 export interface MsgSetMaxPoolPointsPerTxProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx";
@@ -170,7 +169,7 @@ export interface MsgSetMaxPoolPointsPerTxAminoMsg {
 /** MsgSetMaxPoolPointsPerTx defines the Msg/SetMaxPoolPointsPerTx request type. */
 export interface MsgSetMaxPoolPointsPerTxSDKType {
   admin: string;
-  max_pool_points_per_tx: Long;
+  max_pool_points_per_tx: bigint;
 }
 /**
  * MsgSetMaxPoolPointsPerTxResponse defines the Msg/SetMaxPoolPointsPerTx
@@ -209,7 +208,7 @@ export interface MsgSetMaxPoolPointsPerBlock {
    * max_pool_points_per_block is the maximum number of pool points that can be
    * consumed per block.
    */
-  maxPoolPointsPerBlock: Long;
+  maxPoolPointsPerBlock: bigint;
 }
 export interface MsgSetMaxPoolPointsPerBlockProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock";
@@ -241,7 +240,7 @@ export interface MsgSetMaxPoolPointsPerBlockAminoMsg {
  */
 export interface MsgSetMaxPoolPointsPerBlockSDKType {
   admin: string;
-  max_pool_points_per_block: Long;
+  max_pool_points_per_block: bigint;
 }
 /**
  * MsgSetMaxPoolPointsPerBlockResponse defines the
@@ -315,7 +314,7 @@ function createBaseMsgSetHotRoutes(): MsgSetHotRoutes {
 }
 export const MsgSetHotRoutes = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutes",
-  encode(message: MsgSetHotRoutes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSetHotRoutes, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
@@ -324,8 +323,8 @@ export const MsgSetHotRoutes = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetHotRoutes {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetHotRoutes {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetHotRoutes();
     while (reader.pos < end) {
@@ -393,11 +392,11 @@ function createBaseMsgSetHotRoutesResponse(): MsgSetHotRoutesResponse {
 }
 export const MsgSetHotRoutesResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutesResponse",
-  encode(_: MsgSetHotRoutesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSetHotRoutesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetHotRoutesResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetHotRoutesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetHotRoutesResponse();
     while (reader.pos < end) {
@@ -451,7 +450,7 @@ function createBaseMsgSetDeveloperAccount(): MsgSetDeveloperAccount {
 }
 export const MsgSetDeveloperAccount = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
-  encode(message: MsgSetDeveloperAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSetDeveloperAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
@@ -460,8 +459,8 @@ export const MsgSetDeveloperAccount = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDeveloperAccount {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDeveloperAccount {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetDeveloperAccount();
     while (reader.pos < end) {
@@ -525,11 +524,11 @@ function createBaseMsgSetDeveloperAccountResponse(): MsgSetDeveloperAccountRespo
 }
 export const MsgSetDeveloperAccountResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccountResponse",
-  encode(_: MsgSetDeveloperAccountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSetDeveloperAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDeveloperAccountResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDeveloperAccountResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetDeveloperAccountResponse();
     while (reader.pos < end) {
@@ -583,7 +582,7 @@ function createBaseMsgSetPoolWeights(): MsgSetPoolWeights {
 }
 export const MsgSetPoolWeights = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
-  encode(message: MsgSetPoolWeights, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSetPoolWeights, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
@@ -592,8 +591,8 @@ export const MsgSetPoolWeights = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetPoolWeights {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetPoolWeights {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetPoolWeights();
     while (reader.pos < end) {
@@ -657,11 +656,11 @@ function createBaseMsgSetPoolWeightsResponse(): MsgSetPoolWeightsResponse {
 }
 export const MsgSetPoolWeightsResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeightsResponse",
-  encode(_: MsgSetPoolWeightsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSetPoolWeightsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetPoolWeightsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetPoolWeightsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetPoolWeightsResponse();
     while (reader.pos < end) {
@@ -710,22 +709,22 @@ export const MsgSetPoolWeightsResponse = {
 function createBaseMsgSetMaxPoolPointsPerTx(): MsgSetMaxPoolPointsPerTx {
   return {
     admin: "",
-    maxPoolPointsPerTx: Long.UZERO
+    maxPoolPointsPerTx: BigInt(0)
   };
 }
 export const MsgSetMaxPoolPointsPerTx = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
-  encode(message: MsgSetMaxPoolPointsPerTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSetMaxPoolPointsPerTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
-    if (!message.maxPoolPointsPerTx.isZero()) {
+    if (message.maxPoolPointsPerTx !== BigInt(0)) {
       writer.uint32(16).uint64(message.maxPoolPointsPerTx);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTx {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTx {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetMaxPoolPointsPerTx();
     while (reader.pos < end) {
@@ -735,7 +734,7 @@ export const MsgSetMaxPoolPointsPerTx = {
           message.admin = reader.string();
           break;
         case 2:
-          message.maxPoolPointsPerTx = (reader.uint64() as Long);
+          message.maxPoolPointsPerTx = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -747,13 +746,13 @@ export const MsgSetMaxPoolPointsPerTx = {
   fromPartial(object: Partial<MsgSetMaxPoolPointsPerTx>): MsgSetMaxPoolPointsPerTx {
     const message = createBaseMsgSetMaxPoolPointsPerTx();
     message.admin = object.admin ?? "";
-    message.maxPoolPointsPerTx = object.maxPoolPointsPerTx !== undefined && object.maxPoolPointsPerTx !== null ? Long.fromValue(object.maxPoolPointsPerTx) : Long.UZERO;
+    message.maxPoolPointsPerTx = object.maxPoolPointsPerTx !== undefined && object.maxPoolPointsPerTx !== null ? BigInt(object.maxPoolPointsPerTx.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: MsgSetMaxPoolPointsPerTxAmino): MsgSetMaxPoolPointsPerTx {
     return {
       admin: object.admin,
-      maxPoolPointsPerTx: Long.fromString(object.max_pool_points_per_tx)
+      maxPoolPointsPerTx: BigInt(object.max_pool_points_per_tx)
     };
   },
   toAmino(message: MsgSetMaxPoolPointsPerTx): MsgSetMaxPoolPointsPerTxAmino {
@@ -789,11 +788,11 @@ function createBaseMsgSetMaxPoolPointsPerTxResponse(): MsgSetMaxPoolPointsPerTxR
 }
 export const MsgSetMaxPoolPointsPerTxResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTxResponse",
-  encode(_: MsgSetMaxPoolPointsPerTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSetMaxPoolPointsPerTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTxResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTxResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetMaxPoolPointsPerTxResponse();
     while (reader.pos < end) {
@@ -842,22 +841,22 @@ export const MsgSetMaxPoolPointsPerTxResponse = {
 function createBaseMsgSetMaxPoolPointsPerBlock(): MsgSetMaxPoolPointsPerBlock {
   return {
     admin: "",
-    maxPoolPointsPerBlock: Long.UZERO
+    maxPoolPointsPerBlock: BigInt(0)
   };
 }
 export const MsgSetMaxPoolPointsPerBlock = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
-  encode(message: MsgSetMaxPoolPointsPerBlock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSetMaxPoolPointsPerBlock, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
-    if (!message.maxPoolPointsPerBlock.isZero()) {
+    if (message.maxPoolPointsPerBlock !== BigInt(0)) {
       writer.uint32(16).uint64(message.maxPoolPointsPerBlock);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlock {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlock {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetMaxPoolPointsPerBlock();
     while (reader.pos < end) {
@@ -867,7 +866,7 @@ export const MsgSetMaxPoolPointsPerBlock = {
           message.admin = reader.string();
           break;
         case 2:
-          message.maxPoolPointsPerBlock = (reader.uint64() as Long);
+          message.maxPoolPointsPerBlock = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -879,13 +878,13 @@ export const MsgSetMaxPoolPointsPerBlock = {
   fromPartial(object: Partial<MsgSetMaxPoolPointsPerBlock>): MsgSetMaxPoolPointsPerBlock {
     const message = createBaseMsgSetMaxPoolPointsPerBlock();
     message.admin = object.admin ?? "";
-    message.maxPoolPointsPerBlock = object.maxPoolPointsPerBlock !== undefined && object.maxPoolPointsPerBlock !== null ? Long.fromValue(object.maxPoolPointsPerBlock) : Long.UZERO;
+    message.maxPoolPointsPerBlock = object.maxPoolPointsPerBlock !== undefined && object.maxPoolPointsPerBlock !== null ? BigInt(object.maxPoolPointsPerBlock.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: MsgSetMaxPoolPointsPerBlockAmino): MsgSetMaxPoolPointsPerBlock {
     return {
       admin: object.admin,
-      maxPoolPointsPerBlock: Long.fromString(object.max_pool_points_per_block)
+      maxPoolPointsPerBlock: BigInt(object.max_pool_points_per_block)
     };
   },
   toAmino(message: MsgSetMaxPoolPointsPerBlock): MsgSetMaxPoolPointsPerBlockAmino {
@@ -921,11 +920,11 @@ function createBaseMsgSetMaxPoolPointsPerBlockResponse(): MsgSetMaxPoolPointsPer
 }
 export const MsgSetMaxPoolPointsPerBlockResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlockResponse",
-  encode(_: MsgSetMaxPoolPointsPerBlockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSetMaxPoolPointsPerBlockResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlockResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlockResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetMaxPoolPointsPerBlockResponse();
     while (reader.pos < end) {
@@ -979,7 +978,7 @@ function createBaseMsgSetBaseDenoms(): MsgSetBaseDenoms {
 }
 export const MsgSetBaseDenoms = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
-  encode(message: MsgSetBaseDenoms, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSetBaseDenoms, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
@@ -988,8 +987,8 @@ export const MsgSetBaseDenoms = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBaseDenoms {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBaseDenoms {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetBaseDenoms();
     while (reader.pos < end) {
@@ -1057,11 +1056,11 @@ function createBaseMsgSetBaseDenomsResponse(): MsgSetBaseDenomsResponse {
 }
 export const MsgSetBaseDenomsResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenomsResponse",
-  encode(_: MsgSetBaseDenomsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSetBaseDenomsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBaseDenomsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBaseDenomsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetBaseDenomsResponse();
     while (reader.pos < end) {

@@ -1,7 +1,7 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
+import { toTimestamp, fromTimestamp } from "../../helpers";
 /**
  * EpochInfo is a struct that describes the data going into
  * a timer defined by the x/epochs module.
@@ -28,7 +28,7 @@ export interface EpochInfo {
    * The first tick (current_epoch=1) is defined as
    * the first block whose blocktime is greater than the EpochInfo start_time.
    */
-  currentEpoch: Long;
+  currentEpoch: bigint;
   /**
    * current_epoch_start_time describes the start time of the current timer
    * interval. The interval is (current_epoch_start_time,
@@ -58,7 +58,7 @@ export interface EpochInfo {
    * current_epoch_start_height is the block height at which the current epoch
    * started. (The block height at which the timer last ticked)
    */
-  currentEpochStartHeight: Long;
+  currentEpochStartHeight: bigint;
 }
 export interface EpochInfoProtoMsg {
   typeUrl: "/osmosis.epochs.v1beta1.EpochInfo";
@@ -134,10 +134,10 @@ export interface EpochInfoSDKType {
   identifier: string;
   start_time: Date;
   duration: DurationSDKType;
-  current_epoch: Long;
+  current_epoch: bigint;
   current_epoch_start_time: Date;
   epoch_counting_started: boolean;
-  current_epoch_start_height: Long;
+  current_epoch_start_height: bigint;
 }
 /** GenesisState defines the epochs module's genesis state. */
 export interface GenesisState {
@@ -164,15 +164,15 @@ function createBaseEpochInfo(): EpochInfo {
     identifier: "",
     startTime: undefined,
     duration: undefined,
-    currentEpoch: Long.ZERO,
+    currentEpoch: BigInt(0),
     currentEpochStartTime: undefined,
     epochCountingStarted: false,
-    currentEpochStartHeight: Long.ZERO
+    currentEpochStartHeight: BigInt(0)
   };
 }
 export const EpochInfo = {
   typeUrl: "/osmosis.epochs.v1beta1.EpochInfo",
-  encode(message: EpochInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: EpochInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.identifier !== "") {
       writer.uint32(10).string(message.identifier);
     }
@@ -182,7 +182,7 @@ export const EpochInfo = {
     if (message.duration !== undefined) {
       Duration.encode(message.duration, writer.uint32(26).fork()).ldelim();
     }
-    if (!message.currentEpoch.isZero()) {
+    if (message.currentEpoch !== BigInt(0)) {
       writer.uint32(32).int64(message.currentEpoch);
     }
     if (message.currentEpochStartTime !== undefined) {
@@ -191,13 +191,13 @@ export const EpochInfo = {
     if (message.epochCountingStarted === true) {
       writer.uint32(48).bool(message.epochCountingStarted);
     }
-    if (!message.currentEpochStartHeight.isZero()) {
+    if (message.currentEpochStartHeight !== BigInt(0)) {
       writer.uint32(64).int64(message.currentEpochStartHeight);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): EpochInfo {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): EpochInfo {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEpochInfo();
     while (reader.pos < end) {
@@ -213,7 +213,7 @@ export const EpochInfo = {
           message.duration = Duration.decode(reader, reader.uint32());
           break;
         case 4:
-          message.currentEpoch = (reader.int64() as Long);
+          message.currentEpoch = reader.int64();
           break;
         case 5:
           message.currentEpochStartTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
@@ -222,7 +222,7 @@ export const EpochInfo = {
           message.epochCountingStarted = reader.bool();
           break;
         case 8:
-          message.currentEpochStartHeight = (reader.int64() as Long);
+          message.currentEpochStartHeight = reader.int64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -236,10 +236,10 @@ export const EpochInfo = {
     message.identifier = object.identifier ?? "";
     message.startTime = object.startTime ?? undefined;
     message.duration = object.duration !== undefined && object.duration !== null ? Duration.fromPartial(object.duration) : undefined;
-    message.currentEpoch = object.currentEpoch !== undefined && object.currentEpoch !== null ? Long.fromValue(object.currentEpoch) : Long.ZERO;
+    message.currentEpoch = object.currentEpoch !== undefined && object.currentEpoch !== null ? BigInt(object.currentEpoch.toString()) : BigInt(0);
     message.currentEpochStartTime = object.currentEpochStartTime ?? undefined;
     message.epochCountingStarted = object.epochCountingStarted ?? false;
-    message.currentEpochStartHeight = object.currentEpochStartHeight !== undefined && object.currentEpochStartHeight !== null ? Long.fromValue(object.currentEpochStartHeight) : Long.ZERO;
+    message.currentEpochStartHeight = object.currentEpochStartHeight !== undefined && object.currentEpochStartHeight !== null ? BigInt(object.currentEpochStartHeight.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: EpochInfoAmino): EpochInfo {
@@ -247,10 +247,10 @@ export const EpochInfo = {
       identifier: object.identifier,
       startTime: object.start_time,
       duration: object?.duration ? Duration.fromAmino(object.duration) : undefined,
-      currentEpoch: Long.fromString(object.current_epoch),
+      currentEpoch: BigInt(object.current_epoch),
       currentEpochStartTime: object.current_epoch_start_time,
       epochCountingStarted: object.epoch_counting_started,
-      currentEpochStartHeight: Long.fromString(object.current_epoch_start_height)
+      currentEpochStartHeight: BigInt(object.current_epoch_start_height)
     };
   },
   toAmino(message: EpochInfo): EpochInfoAmino {
@@ -293,14 +293,14 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/osmosis.epochs.v1beta1.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.epochs) {
       EpochInfo.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {

@@ -1,6 +1,5 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 import { Decimal } from "@cosmjs/math";
 export interface Params {
   /**
@@ -9,7 +8,7 @@ export interface Params {
    * example, an authorized_tick_spacing of [1, 10, 30] allows for pools
    * to be created with tick spacing of 1, 10, or 30.
    */
-  authorizedTickSpacing: Long[];
+  authorizedTickSpacing: bigint[];
   authorizedSpreadFactors: string[];
   /**
    * balancer_shares_reward_discount is the rate by which incentives flowing
@@ -87,7 +86,7 @@ export interface ParamsAminoMsg {
   value: ParamsAmino;
 }
 export interface ParamsSDKType {
-  authorized_tick_spacing: Long[];
+  authorized_tick_spacing: bigint[];
   authorized_spread_factors: string[];
   balancer_shares_reward_discount: string;
   authorized_quote_denoms: string[];
@@ -106,7 +105,7 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.concentratedliquidity.Params",
-  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.authorizedTickSpacing) {
       writer.uint64(v);
@@ -129,8 +128,8 @@ export const Params = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Params {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Params {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
@@ -140,10 +139,10 @@ export const Params = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.authorizedTickSpacing.push((reader.uint64() as Long));
+              message.authorizedTickSpacing.push(reader.uint64());
             }
           } else {
-            message.authorizedTickSpacing.push((reader.uint64() as Long));
+            message.authorizedTickSpacing.push(reader.uint64());
           }
           break;
         case 2:
@@ -170,7 +169,7 @@ export const Params = {
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
-    message.authorizedTickSpacing = object.authorizedTickSpacing?.map(e => Long.fromValue(e)) || [];
+    message.authorizedTickSpacing = object.authorizedTickSpacing?.map(e => BigInt(e.toString())) || [];
     message.authorizedSpreadFactors = object.authorizedSpreadFactors?.map(e => e) || [];
     message.balancerSharesRewardDiscount = object.balancerSharesRewardDiscount ?? "";
     message.authorizedQuoteDenoms = object.authorizedQuoteDenoms?.map(e => e) || [];
@@ -180,7 +179,7 @@ export const Params = {
   },
   fromAmino(object: ParamsAmino): Params {
     return {
-      authorizedTickSpacing: Array.isArray(object?.authorized_tick_spacing) ? object.authorized_tick_spacing.map((e: any) => e) : [],
+      authorizedTickSpacing: Array.isArray(object?.authorized_tick_spacing) ? object.authorized_tick_spacing.map((e: any) => BigInt(e)) : [],
       authorizedSpreadFactors: Array.isArray(object?.authorized_spread_factors) ? object.authorized_spread_factors.map((e: any) => e) : [],
       balancerSharesRewardDiscount: object.balancer_shares_reward_discount,
       authorizedQuoteDenoms: Array.isArray(object?.authorized_quote_denoms) ? object.authorized_quote_denoms.map((e: any) => e) : [],
@@ -191,7 +190,7 @@ export const Params = {
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
     if (message.authorizedTickSpacing) {
-      obj.authorized_tick_spacing = message.authorizedTickSpacing.map(e => e);
+      obj.authorized_tick_spacing = message.authorizedTickSpacing.map(e => e.toString());
     } else {
       obj.authorized_tick_spacing = [];
     }

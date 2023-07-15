@@ -1,10 +1,10 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Params, ParamsAmino, ParamsSDKType } from "./genesis";
-import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
+import { toTimestamp, fromTimestamp } from "../../../helpers";
 import { Decimal } from "@cosmjs/math";
 export interface ArithmeticTwapRequest {
-  poolId: Long;
+  poolId: bigint;
   baseAsset: string;
   quoteAsset: string;
   startTime: Date;
@@ -26,7 +26,7 @@ export interface ArithmeticTwapRequestAminoMsg {
   value: ArithmeticTwapRequestAmino;
 }
 export interface ArithmeticTwapRequestSDKType {
-  pool_id: Long;
+  pool_id: bigint;
   base_asset: string;
   quote_asset: string;
   start_time: Date;
@@ -50,7 +50,7 @@ export interface ArithmeticTwapResponseSDKType {
   arithmetic_twap: string;
 }
 export interface ArithmeticTwapToNowRequest {
-  poolId: Long;
+  poolId: bigint;
   baseAsset: string;
   quoteAsset: string;
   startTime: Date;
@@ -70,7 +70,7 @@ export interface ArithmeticTwapToNowRequestAminoMsg {
   value: ArithmeticTwapToNowRequestAmino;
 }
 export interface ArithmeticTwapToNowRequestSDKType {
-  pool_id: Long;
+  pool_id: bigint;
   base_asset: string;
   quote_asset: string;
   start_time: Date;
@@ -93,7 +93,7 @@ export interface ArithmeticTwapToNowResponseSDKType {
   arithmetic_twap: string;
 }
 export interface GeometricTwapRequest {
-  poolId: Long;
+  poolId: bigint;
   baseAsset: string;
   quoteAsset: string;
   startTime: Date;
@@ -115,7 +115,7 @@ export interface GeometricTwapRequestAminoMsg {
   value: GeometricTwapRequestAmino;
 }
 export interface GeometricTwapRequestSDKType {
-  pool_id: Long;
+  pool_id: bigint;
   base_asset: string;
   quote_asset: string;
   start_time: Date;
@@ -139,7 +139,7 @@ export interface GeometricTwapResponseSDKType {
   geometric_twap: string;
 }
 export interface GeometricTwapToNowRequest {
-  poolId: Long;
+  poolId: bigint;
   baseAsset: string;
   quoteAsset: string;
   startTime: Date;
@@ -159,7 +159,7 @@ export interface GeometricTwapToNowRequestAminoMsg {
   value: GeometricTwapToNowRequestAmino;
 }
 export interface GeometricTwapToNowRequestSDKType {
-  pool_id: Long;
+  pool_id: bigint;
   base_asset: string;
   quote_asset: string;
   start_time: Date;
@@ -211,7 +211,7 @@ export interface ParamsResponseSDKType {
 }
 function createBaseArithmeticTwapRequest(): ArithmeticTwapRequest {
   return {
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     baseAsset: "",
     quoteAsset: "",
     startTime: undefined,
@@ -220,8 +220,8 @@ function createBaseArithmeticTwapRequest(): ArithmeticTwapRequest {
 }
 export const ArithmeticTwapRequest = {
   typeUrl: "/osmosis.twap.v1beta1.ArithmeticTwapRequest",
-  encode(message: ArithmeticTwapRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: ArithmeticTwapRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
     if (message.baseAsset !== "") {
@@ -238,15 +238,15 @@ export const ArithmeticTwapRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ArithmeticTwapRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseArithmeticTwapRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 2:
           message.baseAsset = reader.string();
@@ -269,7 +269,7 @@ export const ArithmeticTwapRequest = {
   },
   fromPartial(object: Partial<ArithmeticTwapRequest>): ArithmeticTwapRequest {
     const message = createBaseArithmeticTwapRequest();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.baseAsset = object.baseAsset ?? "";
     message.quoteAsset = object.quoteAsset ?? "";
     message.startTime = object.startTime ?? undefined;
@@ -278,7 +278,7 @@ export const ArithmeticTwapRequest = {
   },
   fromAmino(object: ArithmeticTwapRequestAmino): ArithmeticTwapRequest {
     return {
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       baseAsset: object.base_asset,
       quoteAsset: object.quote_asset,
       startTime: object.start_time,
@@ -323,14 +323,14 @@ function createBaseArithmeticTwapResponse(): ArithmeticTwapResponse {
 }
 export const ArithmeticTwapResponse = {
   typeUrl: "/osmosis.twap.v1beta1.ArithmeticTwapResponse",
-  encode(message: ArithmeticTwapResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ArithmeticTwapResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.arithmeticTwap !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.arithmeticTwap, 18).atomics);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ArithmeticTwapResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseArithmeticTwapResponse();
     while (reader.pos < end) {
@@ -385,7 +385,7 @@ export const ArithmeticTwapResponse = {
 };
 function createBaseArithmeticTwapToNowRequest(): ArithmeticTwapToNowRequest {
   return {
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     baseAsset: "",
     quoteAsset: "",
     startTime: undefined
@@ -393,8 +393,8 @@ function createBaseArithmeticTwapToNowRequest(): ArithmeticTwapToNowRequest {
 }
 export const ArithmeticTwapToNowRequest = {
   typeUrl: "/osmosis.twap.v1beta1.ArithmeticTwapToNowRequest",
-  encode(message: ArithmeticTwapToNowRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: ArithmeticTwapToNowRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
     if (message.baseAsset !== "") {
@@ -408,15 +408,15 @@ export const ArithmeticTwapToNowRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ArithmeticTwapToNowRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseArithmeticTwapToNowRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 2:
           message.baseAsset = reader.string();
@@ -436,7 +436,7 @@ export const ArithmeticTwapToNowRequest = {
   },
   fromPartial(object: Partial<ArithmeticTwapToNowRequest>): ArithmeticTwapToNowRequest {
     const message = createBaseArithmeticTwapToNowRequest();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.baseAsset = object.baseAsset ?? "";
     message.quoteAsset = object.quoteAsset ?? "";
     message.startTime = object.startTime ?? undefined;
@@ -444,7 +444,7 @@ export const ArithmeticTwapToNowRequest = {
   },
   fromAmino(object: ArithmeticTwapToNowRequestAmino): ArithmeticTwapToNowRequest {
     return {
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       baseAsset: object.base_asset,
       quoteAsset: object.quote_asset,
       startTime: object.start_time
@@ -487,14 +487,14 @@ function createBaseArithmeticTwapToNowResponse(): ArithmeticTwapToNowResponse {
 }
 export const ArithmeticTwapToNowResponse = {
   typeUrl: "/osmosis.twap.v1beta1.ArithmeticTwapToNowResponse",
-  encode(message: ArithmeticTwapToNowResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ArithmeticTwapToNowResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.arithmeticTwap !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.arithmeticTwap, 18).atomics);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ArithmeticTwapToNowResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseArithmeticTwapToNowResponse();
     while (reader.pos < end) {
@@ -549,7 +549,7 @@ export const ArithmeticTwapToNowResponse = {
 };
 function createBaseGeometricTwapRequest(): GeometricTwapRequest {
   return {
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     baseAsset: "",
     quoteAsset: "",
     startTime: undefined,
@@ -558,8 +558,8 @@ function createBaseGeometricTwapRequest(): GeometricTwapRequest {
 }
 export const GeometricTwapRequest = {
   typeUrl: "/osmosis.twap.v1beta1.GeometricTwapRequest",
-  encode(message: GeometricTwapRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: GeometricTwapRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
     if (message.baseAsset !== "") {
@@ -576,15 +576,15 @@ export const GeometricTwapRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GeometricTwapRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGeometricTwapRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 2:
           message.baseAsset = reader.string();
@@ -607,7 +607,7 @@ export const GeometricTwapRequest = {
   },
   fromPartial(object: Partial<GeometricTwapRequest>): GeometricTwapRequest {
     const message = createBaseGeometricTwapRequest();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.baseAsset = object.baseAsset ?? "";
     message.quoteAsset = object.quoteAsset ?? "";
     message.startTime = object.startTime ?? undefined;
@@ -616,7 +616,7 @@ export const GeometricTwapRequest = {
   },
   fromAmino(object: GeometricTwapRequestAmino): GeometricTwapRequest {
     return {
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       baseAsset: object.base_asset,
       quoteAsset: object.quote_asset,
       startTime: object.start_time,
@@ -661,14 +661,14 @@ function createBaseGeometricTwapResponse(): GeometricTwapResponse {
 }
 export const GeometricTwapResponse = {
   typeUrl: "/osmosis.twap.v1beta1.GeometricTwapResponse",
-  encode(message: GeometricTwapResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GeometricTwapResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.geometricTwap !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.geometricTwap, 18).atomics);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GeometricTwapResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGeometricTwapResponse();
     while (reader.pos < end) {
@@ -723,7 +723,7 @@ export const GeometricTwapResponse = {
 };
 function createBaseGeometricTwapToNowRequest(): GeometricTwapToNowRequest {
   return {
-    poolId: Long.UZERO,
+    poolId: BigInt(0),
     baseAsset: "",
     quoteAsset: "",
     startTime: undefined
@@ -731,8 +731,8 @@ function createBaseGeometricTwapToNowRequest(): GeometricTwapToNowRequest {
 }
 export const GeometricTwapToNowRequest = {
   typeUrl: "/osmosis.twap.v1beta1.GeometricTwapToNowRequest",
-  encode(message: GeometricTwapToNowRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: GeometricTwapToNowRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
     if (message.baseAsset !== "") {
@@ -746,15 +746,15 @@ export const GeometricTwapToNowRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapToNowRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GeometricTwapToNowRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGeometricTwapToNowRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         case 2:
           message.baseAsset = reader.string();
@@ -774,7 +774,7 @@ export const GeometricTwapToNowRequest = {
   },
   fromPartial(object: Partial<GeometricTwapToNowRequest>): GeometricTwapToNowRequest {
     const message = createBaseGeometricTwapToNowRequest();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.baseAsset = object.baseAsset ?? "";
     message.quoteAsset = object.quoteAsset ?? "";
     message.startTime = object.startTime ?? undefined;
@@ -782,7 +782,7 @@ export const GeometricTwapToNowRequest = {
   },
   fromAmino(object: GeometricTwapToNowRequestAmino): GeometricTwapToNowRequest {
     return {
-      poolId: Long.fromString(object.pool_id),
+      poolId: BigInt(object.pool_id),
       baseAsset: object.base_asset,
       quoteAsset: object.quote_asset,
       startTime: object.start_time
@@ -825,14 +825,14 @@ function createBaseGeometricTwapToNowResponse(): GeometricTwapToNowResponse {
 }
 export const GeometricTwapToNowResponse = {
   typeUrl: "/osmosis.twap.v1beta1.GeometricTwapToNowResponse",
-  encode(message: GeometricTwapToNowResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: GeometricTwapToNowResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.geometricTwap !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.geometricTwap, 18).atomics);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapToNowResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GeometricTwapToNowResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGeometricTwapToNowResponse();
     while (reader.pos < end) {
@@ -890,11 +890,11 @@ function createBaseParamsRequest(): ParamsRequest {
 }
 export const ParamsRequest = {
   typeUrl: "/osmosis.twap.v1beta1.ParamsRequest",
-  encode(_: ParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: ParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ParamsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParamsRequest();
     while (reader.pos < end) {
@@ -947,14 +947,14 @@ function createBaseParamsResponse(): ParamsResponse {
 }
 export const ParamsResponse = {
   typeUrl: "/osmosis.twap.v1beta1.ParamsResponse",
-  encode(message: ParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ParamsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParamsResponse();
     while (reader.pos < end) {

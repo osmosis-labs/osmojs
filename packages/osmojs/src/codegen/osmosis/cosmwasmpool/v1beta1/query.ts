@@ -11,8 +11,7 @@ import { PoolSDKType as Pool2SDKType } from "../../gamm/pool-models/balancer/bal
 import { Pool as Pool3 } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../../gamm/pool-models/stableswap/stableswap_pool";
 import { PoolSDKType as Pool3SDKType } from "../../gamm/pool-models/stableswap/stableswap_pool";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** =============================== ContractInfoByPoolId */
 export interface ParamsRequest {}
 export interface ParamsRequestProtoMsg {
@@ -94,7 +93,7 @@ export interface PoolsResponseSDKType {
 /** =============================== ContractInfoByPoolId */
 export interface ContractInfoByPoolIdRequest {
   /** pool_id is the pool id of the requested pool. */
-  poolId: Long;
+  poolId: bigint;
 }
 export interface ContractInfoByPoolIdRequestProtoMsg {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ContractInfoByPoolIdRequest";
@@ -111,7 +110,7 @@ export interface ContractInfoByPoolIdRequestAminoMsg {
 }
 /** =============================== ContractInfoByPoolId */
 export interface ContractInfoByPoolIdRequestSDKType {
-  pool_id: Long;
+  pool_id: bigint;
 }
 export interface ContractInfoByPoolIdResponse {
   /**
@@ -120,7 +119,7 @@ export interface ContractInfoByPoolIdResponse {
    */
   contractAddress: string;
   /** code_id is the code id of the requested pool id. */
-  codeId: Long;
+  codeId: bigint;
 }
 export interface ContractInfoByPoolIdResponseProtoMsg {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ContractInfoByPoolIdResponse";
@@ -141,18 +140,18 @@ export interface ContractInfoByPoolIdResponseAminoMsg {
 }
 export interface ContractInfoByPoolIdResponseSDKType {
   contract_address: string;
-  code_id: Long;
+  code_id: bigint;
 }
 function createBaseParamsRequest(): ParamsRequest {
   return {};
 }
 export const ParamsRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ParamsRequest",
-  encode(_: ParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: ParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ParamsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParamsRequest();
     while (reader.pos < end) {
@@ -205,14 +204,14 @@ function createBaseParamsResponse(): ParamsResponse {
 }
 export const ParamsResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ParamsResponse",
-  encode(message: ParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ParamsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParamsResponse();
     while (reader.pos < end) {
@@ -272,14 +271,14 @@ function createBasePoolsRequest(): PoolsRequest {
 }
 export const PoolsRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.PoolsRequest",
-  encode(message: PoolsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: PoolsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): PoolsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): PoolsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePoolsRequest();
     while (reader.pos < end) {
@@ -340,7 +339,7 @@ function createBasePoolsResponse(): PoolsResponse {
 }
 export const PoolsResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.PoolsResponse",
-  encode(message: PoolsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: PoolsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.pools) {
       Any.encode((v! as Any), writer.uint32(10).fork()).ldelim();
     }
@@ -349,8 +348,8 @@ export const PoolsResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): PoolsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): PoolsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePoolsResponse();
     while (reader.pos < end) {
@@ -415,26 +414,26 @@ export const PoolsResponse = {
 };
 function createBaseContractInfoByPoolIdRequest(): ContractInfoByPoolIdRequest {
   return {
-    poolId: Long.UZERO
+    poolId: BigInt(0)
   };
 }
 export const ContractInfoByPoolIdRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ContractInfoByPoolIdRequest",
-  encode(message: ContractInfoByPoolIdRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: ContractInfoByPoolIdRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ContractInfoByPoolIdRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ContractInfoByPoolIdRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseContractInfoByPoolIdRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -445,12 +444,12 @@ export const ContractInfoByPoolIdRequest = {
   },
   fromPartial(object: Partial<ContractInfoByPoolIdRequest>): ContractInfoByPoolIdRequest {
     const message = createBaseContractInfoByPoolIdRequest();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: ContractInfoByPoolIdRequestAmino): ContractInfoByPoolIdRequest {
     return {
-      poolId: Long.fromString(object.pool_id)
+      poolId: BigInt(object.pool_id)
     };
   },
   toAmino(message: ContractInfoByPoolIdRequest): ContractInfoByPoolIdRequestAmino {
@@ -483,22 +482,22 @@ export const ContractInfoByPoolIdRequest = {
 function createBaseContractInfoByPoolIdResponse(): ContractInfoByPoolIdResponse {
   return {
     contractAddress: "",
-    codeId: Long.UZERO
+    codeId: BigInt(0)
   };
 }
 export const ContractInfoByPoolIdResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ContractInfoByPoolIdResponse",
-  encode(message: ContractInfoByPoolIdResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ContractInfoByPoolIdResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractAddress !== "") {
       writer.uint32(10).string(message.contractAddress);
     }
-    if (!message.codeId.isZero()) {
+    if (message.codeId !== BigInt(0)) {
       writer.uint32(16).uint64(message.codeId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ContractInfoByPoolIdResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ContractInfoByPoolIdResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseContractInfoByPoolIdResponse();
     while (reader.pos < end) {
@@ -508,7 +507,7 @@ export const ContractInfoByPoolIdResponse = {
           message.contractAddress = reader.string();
           break;
         case 2:
-          message.codeId = (reader.uint64() as Long);
+          message.codeId = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -520,13 +519,13 @@ export const ContractInfoByPoolIdResponse = {
   fromPartial(object: Partial<ContractInfoByPoolIdResponse>): ContractInfoByPoolIdResponse {
     const message = createBaseContractInfoByPoolIdResponse();
     message.contractAddress = object.contractAddress ?? "";
-    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: ContractInfoByPoolIdResponseAmino): ContractInfoByPoolIdResponse {
     return {
       contractAddress: object.contract_address,
-      codeId: Long.fromString(object.code_id)
+      codeId: BigInt(object.code_id)
     };
   },
   toAmino(message: ContractInfoByPoolIdResponse): ContractInfoByPoolIdResponseAmino {
@@ -557,8 +556,8 @@ export const ContractInfoByPoolIdResponse = {
     };
   }
 };
-export const PoolI_InterfaceDecoder = (input: _m0.Reader | Uint8Array): Pool1 | CosmWasmPool | Pool2 | Pool3 | Any => {
-  const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+export const PoolI_InterfaceDecoder = (input: BinaryReader | Uint8Array): Pool1 | CosmWasmPool | Pool2 | Pool3 | Any => {
+  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/osmosis.concentratedliquidity.v1beta1.Pool":

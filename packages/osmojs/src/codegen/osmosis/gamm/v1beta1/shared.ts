@@ -1,5 +1,4 @@
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * MigrationRecords contains all the links between balancer and concentrated
  * pools
@@ -38,8 +37,8 @@ export interface MigrationRecordsSDKType {
  * be linked to a maximum of one balancer pool.
  */
 export interface BalancerToConcentratedPoolLink {
-  balancerPoolId: Long;
-  clPoolId: Long;
+  balancerPoolId: bigint;
+  clPoolId: bigint;
 }
 export interface BalancerToConcentratedPoolLinkProtoMsg {
   typeUrl: "/osmosis.gamm.v1beta1.BalancerToConcentratedPoolLink";
@@ -70,8 +69,8 @@ export interface BalancerToConcentratedPoolLinkAminoMsg {
  * be linked to a maximum of one balancer pool.
  */
 export interface BalancerToConcentratedPoolLinkSDKType {
-  balancer_pool_id: Long;
-  cl_pool_id: Long;
+  balancer_pool_id: bigint;
+  cl_pool_id: bigint;
 }
 function createBaseMigrationRecords(): MigrationRecords {
   return {
@@ -80,14 +79,14 @@ function createBaseMigrationRecords(): MigrationRecords {
 }
 export const MigrationRecords = {
   typeUrl: "/osmosis.gamm.v1beta1.MigrationRecords",
-  encode(message: MigrationRecords, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MigrationRecords, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.balancerToConcentratedPoolLinks) {
       BalancerToConcentratedPoolLink.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MigrationRecords {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MigrationRecords {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMigrationRecords();
     while (reader.pos < end) {
@@ -146,33 +145,33 @@ export const MigrationRecords = {
 };
 function createBaseBalancerToConcentratedPoolLink(): BalancerToConcentratedPoolLink {
   return {
-    balancerPoolId: Long.UZERO,
-    clPoolId: Long.UZERO
+    balancerPoolId: BigInt(0),
+    clPoolId: BigInt(0)
   };
 }
 export const BalancerToConcentratedPoolLink = {
   typeUrl: "/osmosis.gamm.v1beta1.BalancerToConcentratedPoolLink",
-  encode(message: BalancerToConcentratedPoolLink, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.balancerPoolId.isZero()) {
+  encode(message: BalancerToConcentratedPoolLink, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.balancerPoolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.balancerPoolId);
     }
-    if (!message.clPoolId.isZero()) {
+    if (message.clPoolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.clPoolId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): BalancerToConcentratedPoolLink {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): BalancerToConcentratedPoolLink {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBalancerToConcentratedPoolLink();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.balancerPoolId = (reader.uint64() as Long);
+          message.balancerPoolId = reader.uint64();
           break;
         case 2:
-          message.clPoolId = (reader.uint64() as Long);
+          message.clPoolId = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -183,14 +182,14 @@ export const BalancerToConcentratedPoolLink = {
   },
   fromPartial(object: Partial<BalancerToConcentratedPoolLink>): BalancerToConcentratedPoolLink {
     const message = createBaseBalancerToConcentratedPoolLink();
-    message.balancerPoolId = object.balancerPoolId !== undefined && object.balancerPoolId !== null ? Long.fromValue(object.balancerPoolId) : Long.UZERO;
-    message.clPoolId = object.clPoolId !== undefined && object.clPoolId !== null ? Long.fromValue(object.clPoolId) : Long.UZERO;
+    message.balancerPoolId = object.balancerPoolId !== undefined && object.balancerPoolId !== null ? BigInt(object.balancerPoolId.toString()) : BigInt(0);
+    message.clPoolId = object.clPoolId !== undefined && object.clPoolId !== null ? BigInt(object.clPoolId.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: BalancerToConcentratedPoolLinkAmino): BalancerToConcentratedPoolLink {
     return {
-      balancerPoolId: Long.fromString(object.balancer_pool_id),
-      clPoolId: Long.fromString(object.cl_pool_id)
+      balancerPoolId: BigInt(object.balancer_pool_id),
+      clPoolId: BigInt(object.cl_pool_id)
     };
   },
   toAmino(message: BalancerToConcentratedPoolLink): BalancerToConcentratedPoolLinkAmino {

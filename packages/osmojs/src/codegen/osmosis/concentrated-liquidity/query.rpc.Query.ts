@@ -1,5 +1,5 @@
 import { Rpc } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { PoolsRequest, PoolsResponse, ParamsRequest, ParamsResponse, UserPositionsRequest, UserPositionsResponse, LiquidityPerTickRangeRequest, LiquidityPerTickRangeResponse, LiquidityNetInDirectionRequest, LiquidityNetInDirectionResponse, ClaimableSpreadRewardsRequest, ClaimableSpreadRewardsResponse, ClaimableIncentivesRequest, ClaimableIncentivesResponse, PositionByIdRequest, PositionByIdResponse, PoolAccumulatorRewardsRequest, PoolAccumulatorRewardsResponse, IncentiveRecordsRequest, IncentiveRecordsResponse, TickAccumulatorTrackersRequest, TickAccumulatorTrackersResponse, CFMMPoolIdLinkFromConcentratedPoolIdRequest, CFMMPoolIdLinkFromConcentratedPoolIdResponse, UserUnbondingPositionsRequest, UserUnbondingPositionsResponse, GetTotalLiquidityRequest, GetTotalLiquidityResponse } from "./query";
 export interface Query {
@@ -81,72 +81,72 @@ export class QueryClientImpl implements Query {
   }): Promise<PoolsResponse> {
     const data = PoolsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "Pools", data);
-    return promise.then(data => PoolsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => PoolsResponse.decode(new BinaryReader(data)));
   }
   params(request: ParamsRequest = {}): Promise<ParamsResponse> {
     const data = ParamsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "Params", data);
-    return promise.then(data => ParamsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => ParamsResponse.decode(new BinaryReader(data)));
   }
   userPositions(request: UserPositionsRequest): Promise<UserPositionsResponse> {
     const data = UserPositionsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "UserPositions", data);
-    return promise.then(data => UserPositionsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => UserPositionsResponse.decode(new BinaryReader(data)));
   }
   liquidityPerTickRange(request: LiquidityPerTickRangeRequest): Promise<LiquidityPerTickRangeResponse> {
     const data = LiquidityPerTickRangeRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "LiquidityPerTickRange", data);
-    return promise.then(data => LiquidityPerTickRangeResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => LiquidityPerTickRangeResponse.decode(new BinaryReader(data)));
   }
   liquidityNetInDirection(request: LiquidityNetInDirectionRequest): Promise<LiquidityNetInDirectionResponse> {
     const data = LiquidityNetInDirectionRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "LiquidityNetInDirection", data);
-    return promise.then(data => LiquidityNetInDirectionResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => LiquidityNetInDirectionResponse.decode(new BinaryReader(data)));
   }
   claimableSpreadRewards(request: ClaimableSpreadRewardsRequest): Promise<ClaimableSpreadRewardsResponse> {
     const data = ClaimableSpreadRewardsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "ClaimableSpreadRewards", data);
-    return promise.then(data => ClaimableSpreadRewardsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => ClaimableSpreadRewardsResponse.decode(new BinaryReader(data)));
   }
   claimableIncentives(request: ClaimableIncentivesRequest): Promise<ClaimableIncentivesResponse> {
     const data = ClaimableIncentivesRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "ClaimableIncentives", data);
-    return promise.then(data => ClaimableIncentivesResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => ClaimableIncentivesResponse.decode(new BinaryReader(data)));
   }
   positionById(request: PositionByIdRequest): Promise<PositionByIdResponse> {
     const data = PositionByIdRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "PositionById", data);
-    return promise.then(data => PositionByIdResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => PositionByIdResponse.decode(new BinaryReader(data)));
   }
   poolAccumulatorRewards(request: PoolAccumulatorRewardsRequest): Promise<PoolAccumulatorRewardsResponse> {
     const data = PoolAccumulatorRewardsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "PoolAccumulatorRewards", data);
-    return promise.then(data => PoolAccumulatorRewardsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => PoolAccumulatorRewardsResponse.decode(new BinaryReader(data)));
   }
   incentiveRecords(request: IncentiveRecordsRequest): Promise<IncentiveRecordsResponse> {
     const data = IncentiveRecordsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "IncentiveRecords", data);
-    return promise.then(data => IncentiveRecordsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => IncentiveRecordsResponse.decode(new BinaryReader(data)));
   }
   tickAccumulatorTrackers(request: TickAccumulatorTrackersRequest): Promise<TickAccumulatorTrackersResponse> {
     const data = TickAccumulatorTrackersRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "TickAccumulatorTrackers", data);
-    return promise.then(data => TickAccumulatorTrackersResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => TickAccumulatorTrackersResponse.decode(new BinaryReader(data)));
   }
   cFMMPoolIdLinkFromConcentratedPoolId(request: CFMMPoolIdLinkFromConcentratedPoolIdRequest): Promise<CFMMPoolIdLinkFromConcentratedPoolIdResponse> {
     const data = CFMMPoolIdLinkFromConcentratedPoolIdRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "CFMMPoolIdLinkFromConcentratedPoolId", data);
-    return promise.then(data => CFMMPoolIdLinkFromConcentratedPoolIdResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => CFMMPoolIdLinkFromConcentratedPoolIdResponse.decode(new BinaryReader(data)));
   }
   userUnbondingPositions(request: UserUnbondingPositionsRequest): Promise<UserUnbondingPositionsResponse> {
     const data = UserUnbondingPositionsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "UserUnbondingPositions", data);
-    return promise.then(data => UserUnbondingPositionsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => UserUnbondingPositionsResponse.decode(new BinaryReader(data)));
   }
   getTotalLiquidity(request: GetTotalLiquidityRequest = {}): Promise<GetTotalLiquidityResponse> {
     const data = GetTotalLiquidityRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Query", "GetTotalLiquidity", data);
-    return promise.then(data => GetTotalLiquidityResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => GetTotalLiquidityResponse.decode(new BinaryReader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {

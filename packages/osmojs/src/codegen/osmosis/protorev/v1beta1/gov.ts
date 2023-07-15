@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * SetProtoRevEnabledProposal is a gov Content type to update whether the
  * protorev module is enabled
@@ -86,7 +86,7 @@ function createBaseSetProtoRevEnabledProposal(): SetProtoRevEnabledProposal {
 }
 export const SetProtoRevEnabledProposal = {
   typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal",
-  encode(message: SetProtoRevEnabledProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SetProtoRevEnabledProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -98,8 +98,8 @@ export const SetProtoRevEnabledProposal = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SetProtoRevEnabledProposal {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SetProtoRevEnabledProposal {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSetProtoRevEnabledProposal();
     while (reader.pos < end) {
@@ -174,7 +174,7 @@ function createBaseSetProtoRevAdminAccountProposal(): SetProtoRevAdminAccountPro
 }
 export const SetProtoRevAdminAccountProposal = {
   typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal",
-  encode(message: SetProtoRevAdminAccountProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: SetProtoRevAdminAccountProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -186,8 +186,8 @@ export const SetProtoRevAdminAccountProposal = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): SetProtoRevAdminAccountProposal {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): SetProtoRevAdminAccountProposal {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSetProtoRevAdminAccountProposal();
     while (reader.pos < end) {

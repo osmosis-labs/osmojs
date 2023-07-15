@@ -1,5 +1,5 @@
 import { Rpc } from "../../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../../binary";
 import { MsgRegisterPayee, MsgRegisterPayeeResponse, MsgRegisterCounterpartyPayee, MsgRegisterCounterpartyPayeeResponse, MsgPayPacketFee, MsgPayPacketFeeResponse, MsgPayPacketFeeAsync, MsgPayPacketFeeAsyncResponse } from "./tx";
 /** Msg defines the ICS29 Msg service. */
 export interface Msg {
@@ -46,21 +46,21 @@ export class MsgClientImpl implements Msg {
   registerPayee(request: MsgRegisterPayee): Promise<MsgRegisterPayeeResponse> {
     const data = MsgRegisterPayee.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.fee.v1.Msg", "RegisterPayee", data);
-    return promise.then(data => MsgRegisterPayeeResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgRegisterPayeeResponse.decode(new BinaryReader(data)));
   }
   registerCounterpartyPayee(request: MsgRegisterCounterpartyPayee): Promise<MsgRegisterCounterpartyPayeeResponse> {
     const data = MsgRegisterCounterpartyPayee.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.fee.v1.Msg", "RegisterCounterpartyPayee", data);
-    return promise.then(data => MsgRegisterCounterpartyPayeeResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgRegisterCounterpartyPayeeResponse.decode(new BinaryReader(data)));
   }
   payPacketFee(request: MsgPayPacketFee): Promise<MsgPayPacketFeeResponse> {
     const data = MsgPayPacketFee.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.fee.v1.Msg", "PayPacketFee", data);
-    return promise.then(data => MsgPayPacketFeeResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgPayPacketFeeResponse.decode(new BinaryReader(data)));
   }
   payPacketFeeAsync(request: MsgPayPacketFeeAsync): Promise<MsgPayPacketFeeAsyncResponse> {
     const data = MsgPayPacketFeeAsync.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.fee.v1.Msg", "PayPacketFeeAsync", data);
-    return promise.then(data => MsgPayPacketFeeAsyncResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => MsgPayPacketFeeAsyncResponse.decode(new BinaryReader(data)));
   }
 }

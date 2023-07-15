@@ -1,7 +1,6 @@
 import { ValidatorPreference, ValidatorPreferenceAmino, ValidatorPreferenceSDKType } from "./state";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgCreateValidatorSetPreference is a list that holds validator-set. */
 export interface MsgSetValidatorSetPreference {
   /** delegator is the user who is trying to create a validator-set. */
@@ -230,7 +229,7 @@ export interface MsgDelegateBondedTokens {
   /** delegator is the user who is trying to force unbond osmo and delegate. */
   delegator: string;
   /** lockup id of osmo in the pool */
-  lockID: Long;
+  lockID: bigint;
 }
 export interface MsgDelegateBondedTokensProtoMsg {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens";
@@ -258,7 +257,7 @@ export interface MsgDelegateBondedTokensAminoMsg {
  */
 export interface MsgDelegateBondedTokensSDKType {
   delegator: string;
-  lockID: Long;
+  lockID: bigint;
 }
 export interface MsgDelegateBondedTokensResponse {}
 export interface MsgDelegateBondedTokensResponseProtoMsg {
@@ -279,7 +278,7 @@ function createBaseMsgSetValidatorSetPreference(): MsgSetValidatorSetPreference 
 }
 export const MsgSetValidatorSetPreference = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreference",
-  encode(message: MsgSetValidatorSetPreference, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgSetValidatorSetPreference, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
     }
@@ -288,8 +287,8 @@ export const MsgSetValidatorSetPreference = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetValidatorSetPreference {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetValidatorSetPreference {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetValidatorSetPreference();
     while (reader.pos < end) {
@@ -357,11 +356,11 @@ function createBaseMsgSetValidatorSetPreferenceResponse(): MsgSetValidatorSetPre
 }
 export const MsgSetValidatorSetPreferenceResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreferenceResponse",
-  encode(_: MsgSetValidatorSetPreferenceResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgSetValidatorSetPreferenceResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetValidatorSetPreferenceResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetValidatorSetPreferenceResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetValidatorSetPreferenceResponse();
     while (reader.pos < end) {
@@ -415,7 +414,7 @@ function createBaseMsgDelegateToValidatorSet(): MsgDelegateToValidatorSet {
 }
 export const MsgDelegateToValidatorSet = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSet",
-  encode(message: MsgDelegateToValidatorSet, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgDelegateToValidatorSet, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
     }
@@ -424,8 +423,8 @@ export const MsgDelegateToValidatorSet = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateToValidatorSet {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateToValidatorSet {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDelegateToValidatorSet();
     while (reader.pos < end) {
@@ -489,11 +488,11 @@ function createBaseMsgDelegateToValidatorSetResponse(): MsgDelegateToValidatorSe
 }
 export const MsgDelegateToValidatorSetResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSetResponse",
-  encode(_: MsgDelegateToValidatorSetResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgDelegateToValidatorSetResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateToValidatorSetResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateToValidatorSetResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDelegateToValidatorSetResponse();
     while (reader.pos < end) {
@@ -547,7 +546,7 @@ function createBaseMsgUndelegateFromValidatorSet(): MsgUndelegateFromValidatorSe
 }
 export const MsgUndelegateFromValidatorSet = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSet",
-  encode(message: MsgUndelegateFromValidatorSet, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgUndelegateFromValidatorSet, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
     }
@@ -556,8 +555,8 @@ export const MsgUndelegateFromValidatorSet = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateFromValidatorSet {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegateFromValidatorSet {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUndelegateFromValidatorSet();
     while (reader.pos < end) {
@@ -621,11 +620,11 @@ function createBaseMsgUndelegateFromValidatorSetResponse(): MsgUndelegateFromVal
 }
 export const MsgUndelegateFromValidatorSetResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSetResponse",
-  encode(_: MsgUndelegateFromValidatorSetResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgUndelegateFromValidatorSetResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateFromValidatorSetResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegateFromValidatorSetResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUndelegateFromValidatorSetResponse();
     while (reader.pos < end) {
@@ -679,7 +678,7 @@ function createBaseMsgRedelegateValidatorSet(): MsgRedelegateValidatorSet {
 }
 export const MsgRedelegateValidatorSet = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSet",
-  encode(message: MsgRedelegateValidatorSet, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgRedelegateValidatorSet, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
     }
@@ -688,8 +687,8 @@ export const MsgRedelegateValidatorSet = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgRedelegateValidatorSet {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRedelegateValidatorSet {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRedelegateValidatorSet();
     while (reader.pos < end) {
@@ -757,11 +756,11 @@ function createBaseMsgRedelegateValidatorSetResponse(): MsgRedelegateValidatorSe
 }
 export const MsgRedelegateValidatorSetResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSetResponse",
-  encode(_: MsgRedelegateValidatorSetResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgRedelegateValidatorSetResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgRedelegateValidatorSetResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRedelegateValidatorSetResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRedelegateValidatorSetResponse();
     while (reader.pos < end) {
@@ -814,14 +813,14 @@ function createBaseMsgWithdrawDelegationRewards(): MsgWithdrawDelegationRewards 
 }
 export const MsgWithdrawDelegationRewards = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards",
-  encode(message: MsgWithdrawDelegationRewards, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgWithdrawDelegationRewards, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegationRewards {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegationRewards {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawDelegationRewards();
     while (reader.pos < end) {
@@ -879,11 +878,11 @@ function createBaseMsgWithdrawDelegationRewardsResponse(): MsgWithdrawDelegation
 }
 export const MsgWithdrawDelegationRewardsResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewardsResponse",
-  encode(_: MsgWithdrawDelegationRewardsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgWithdrawDelegationRewardsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegationRewardsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegationRewardsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawDelegationRewardsResponse();
     while (reader.pos < end) {
@@ -932,22 +931,22 @@ export const MsgWithdrawDelegationRewardsResponse = {
 function createBaseMsgDelegateBondedTokens(): MsgDelegateBondedTokens {
   return {
     delegator: "",
-    lockID: Long.UZERO
+    lockID: BigInt(0)
   };
 }
 export const MsgDelegateBondedTokens = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens",
-  encode(message: MsgDelegateBondedTokens, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: MsgDelegateBondedTokens, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
     }
-    if (!message.lockID.isZero()) {
+    if (message.lockID !== BigInt(0)) {
       writer.uint32(16).uint64(message.lockID);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateBondedTokens {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateBondedTokens {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDelegateBondedTokens();
     while (reader.pos < end) {
@@ -957,7 +956,7 @@ export const MsgDelegateBondedTokens = {
           message.delegator = reader.string();
           break;
         case 2:
-          message.lockID = (reader.uint64() as Long);
+          message.lockID = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -969,13 +968,13 @@ export const MsgDelegateBondedTokens = {
   fromPartial(object: Partial<MsgDelegateBondedTokens>): MsgDelegateBondedTokens {
     const message = createBaseMsgDelegateBondedTokens();
     message.delegator = object.delegator ?? "";
-    message.lockID = object.lockID !== undefined && object.lockID !== null ? Long.fromValue(object.lockID) : Long.UZERO;
+    message.lockID = object.lockID !== undefined && object.lockID !== null ? BigInt(object.lockID.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: MsgDelegateBondedTokensAmino): MsgDelegateBondedTokens {
     return {
       delegator: object.delegator,
-      lockID: Long.fromString(object.lockID)
+      lockID: BigInt(object.lockID)
     };
   },
   toAmino(message: MsgDelegateBondedTokens): MsgDelegateBondedTokensAmino {
@@ -1011,11 +1010,11 @@ function createBaseMsgDelegateBondedTokensResponse(): MsgDelegateBondedTokensRes
 }
 export const MsgDelegateBondedTokensResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokensResponse",
-  encode(_: MsgDelegateBondedTokensResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: MsgDelegateBondedTokensResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateBondedTokensResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateBondedTokensResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDelegateBondedTokensResponse();
     while (reader.pos < end) {

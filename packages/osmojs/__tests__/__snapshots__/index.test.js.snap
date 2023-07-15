@@ -2,11 +2,7 @@
 
 exports[`encode 1`] = `
 {
-  "poolId": Long {
-    "high": 0,
-    "low": 606,
-    "unsigned": true,
-  },
+  "poolId": 606n,
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
   "tokenInMaxs": [
@@ -24,11 +20,7 @@ exports[`encode 1`] = `
 
 exports[`fromPartial 1`] = `
 {
-  "poolId": Long {
-    "high": 0,
-    "low": 606,
-    "unsigned": false,
-  },
+  "poolId": 606n,
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
   "tokenInMaxs": [
@@ -46,11 +38,7 @@ exports[`fromPartial 1`] = `
 
 exports[`fromPartial.scoped 1`] = `
 {
-  "poolId": Long {
-    "high": 0,
-    "low": 606,
-    "unsigned": false,
-  },
+  "poolId": 606n,
   "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
   "shareOutAmount": "101010101",
   "tokenInMaxs": [

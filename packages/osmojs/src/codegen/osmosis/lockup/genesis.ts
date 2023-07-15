@@ -1,9 +1,8 @@
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType, SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "./lock";
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../binary";
 /** GenesisState defines the lockup module's genesis state. */
 export interface GenesisState {
-  lastLockId: Long;
+  lastLockId: bigint;
   locks: PeriodLock[];
   syntheticLocks: SyntheticLock[];
 }
@@ -23,21 +22,21 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the lockup module's genesis state. */
 export interface GenesisStateSDKType {
-  last_lock_id: Long;
+  last_lock_id: bigint;
   locks: PeriodLockSDKType[];
   synthetic_locks: SyntheticLockSDKType[];
 }
 function createBaseGenesisState(): GenesisState {
   return {
-    lastLockId: Long.UZERO,
+    lastLockId: BigInt(0),
     locks: [],
     syntheticLocks: []
   };
 }
 export const GenesisState = {
   typeUrl: "/osmosis.lockup.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.lastLockId.isZero()) {
+  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.lastLockId !== BigInt(0)) {
       writer.uint32(8).uint64(message.lastLockId);
     }
     for (const v of message.locks) {
@@ -48,15 +47,15 @@ export const GenesisState = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.lastLockId = (reader.uint64() as Long);
+          message.lastLockId = reader.uint64();
           break;
         case 2:
           message.locks.push(PeriodLock.decode(reader, reader.uint32()));
@@ -73,14 +72,14 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.lastLockId = object.lastLockId !== undefined && object.lastLockId !== null ? Long.fromValue(object.lastLockId) : Long.UZERO;
+    message.lastLockId = object.lastLockId !== undefined && object.lastLockId !== null ? BigInt(object.lastLockId.toString()) : BigInt(0);
     message.locks = object.locks?.map(e => PeriodLock.fromPartial(e)) || [];
     message.syntheticLocks = object.syntheticLocks?.map(e => SyntheticLock.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
-      lastLockId: Long.fromString(object.last_lock_id),
+      lastLockId: BigInt(object.last_lock_id),
       locks: Array.isArray(object?.locks) ? object.locks.map((e: any) => PeriodLock.fromAmino(e)) : [],
       syntheticLocks: Array.isArray(object?.synthetic_locks) ? object.synthetic_locks.map((e: any) => SyntheticLock.fromAmino(e)) : []
     };

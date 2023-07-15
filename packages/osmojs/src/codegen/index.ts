@@ -19,3 +19,6 @@ export * from "./cosmos_proto/bundle";
 export * from "./gogoproto/bundle";
 export * from "./google/bundle";
 export * from "./tendermint/bundle";
+export * from "./varint";
+export * from "./utf8";
+export * from "./binary";

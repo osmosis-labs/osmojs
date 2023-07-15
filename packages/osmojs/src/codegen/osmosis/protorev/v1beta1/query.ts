@@ -1,8 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { RouteStatistics, RouteStatisticsAmino, RouteStatisticsSDKType, TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
@@ -215,7 +214,7 @@ export interface QueryGetProtoRevAllProfitsResponseSDKType {
  */
 export interface QueryGetProtoRevStatisticsByRouteRequest {
   /** route is the set of pool ids to query statistics by i.e. 1,2,3 */
-  route: Long[];
+  route: bigint[];
 }
 export interface QueryGetProtoRevStatisticsByRouteRequestProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevStatisticsByRouteRequest";
@@ -238,7 +237,7 @@ export interface QueryGetProtoRevStatisticsByRouteRequestAminoMsg {
  * Query/GetProtoRevStatisticsByRoute RPC method.
  */
 export interface QueryGetProtoRevStatisticsByRouteRequestSDKType {
-  route: Long[];
+  route: bigint[];
 }
 /**
  * QueryGetProtoRevStatisticsByRouteResponse is response type for the
@@ -591,7 +590,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerBlockResponse {
    * max_pool_points_per_block is the maximum number of pool points that can be
    * consumed per block
    */
-  maxPoolPointsPerBlock: Long;
+  maxPoolPointsPerBlock: bigint;
 }
 export interface QueryGetProtoRevMaxPoolPointsPerBlockResponseProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerBlockResponse";
@@ -617,7 +616,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerBlockResponseAminoMsg {
  * Query/GetProtoRevMaxPoolPointsPerBlock RPC method.
  */
 export interface QueryGetProtoRevMaxPoolPointsPerBlockResponseSDKType {
-  max_pool_points_per_block: Long;
+  max_pool_points_per_block: bigint;
 }
 /**
  * QueryGetProtoRevMaxPoolPointsPerTxRequest is request type for the
@@ -651,7 +650,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerTxResponse {
    * max_pool_points_per_tx is the maximum number of pool points that can be
    * consumed per transaction
    */
-  maxPoolPointsPerTx: Long;
+  maxPoolPointsPerTx: bigint;
 }
 export interface QueryGetProtoRevMaxPoolPointsPerTxResponseProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerTxResponse";
@@ -677,7 +676,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerTxResponseAminoMsg {
  * Query/GetProtoRevMaxPoolPointsPerTx RPC method.
  */
 export interface QueryGetProtoRevMaxPoolPointsPerTxResponseSDKType {
-  max_pool_points_per_tx: Long;
+  max_pool_points_per_tx: bigint;
 }
 /**
  * QueryGetProtoRevBaseDenomsRequest is request type for the
@@ -835,7 +834,7 @@ export interface QueryGetProtoRevPoolRequestSDKType {
  */
 export interface QueryGetProtoRevPoolResponse {
   /** pool_id is the pool_id stored for the denom pair */
-  poolId: Long;
+  poolId: bigint;
 }
 export interface QueryGetProtoRevPoolResponseProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolResponse";
@@ -858,18 +857,18 @@ export interface QueryGetProtoRevPoolResponseAminoMsg {
  * Query/GetProtoRevPool RPC method.
  */
 export interface QueryGetProtoRevPoolResponseSDKType {
-  pool_id: Long;
+  pool_id: bigint;
 }
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryParamsRequest",
-  encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsRequest();
     while (reader.pos < end) {
@@ -922,14 +921,14 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryParamsResponse",
-  encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
     while (reader.pos < end) {
@@ -987,11 +986,11 @@ function createBaseQueryGetProtoRevNumberOfTradesRequest(): QueryGetProtoRevNumb
 }
 export const QueryGetProtoRevNumberOfTradesRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevNumberOfTradesRequest",
-  encode(_: QueryGetProtoRevNumberOfTradesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevNumberOfTradesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevNumberOfTradesRequest();
     while (reader.pos < end) {
@@ -1044,14 +1043,14 @@ function createBaseQueryGetProtoRevNumberOfTradesResponse(): QueryGetProtoRevNum
 }
 export const QueryGetProtoRevNumberOfTradesResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevNumberOfTradesResponse",
-  encode(message: QueryGetProtoRevNumberOfTradesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevNumberOfTradesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.numberOfTrades !== "") {
       writer.uint32(10).string(message.numberOfTrades);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevNumberOfTradesResponse();
     while (reader.pos < end) {
@@ -1111,14 +1110,14 @@ function createBaseQueryGetProtoRevProfitsByDenomRequest(): QueryGetProtoRevProf
 }
 export const QueryGetProtoRevProfitsByDenomRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevProfitsByDenomRequest",
-  encode(message: QueryGetProtoRevProfitsByDenomRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevProfitsByDenomRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevProfitsByDenomRequest();
     while (reader.pos < end) {
@@ -1178,14 +1177,14 @@ function createBaseQueryGetProtoRevProfitsByDenomResponse(): QueryGetProtoRevPro
 }
 export const QueryGetProtoRevProfitsByDenomResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevProfitsByDenomResponse",
-  encode(message: QueryGetProtoRevProfitsByDenomResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevProfitsByDenomResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.profit !== undefined) {
       Coin.encode(message.profit, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevProfitsByDenomResponse();
     while (reader.pos < end) {
@@ -1243,11 +1242,11 @@ function createBaseQueryGetProtoRevAllProfitsRequest(): QueryGetProtoRevAllProfi
 }
 export const QueryGetProtoRevAllProfitsRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAllProfitsRequest",
-  encode(_: QueryGetProtoRevAllProfitsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevAllProfitsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevAllProfitsRequest();
     while (reader.pos < end) {
@@ -1300,14 +1299,14 @@ function createBaseQueryGetProtoRevAllProfitsResponse(): QueryGetProtoRevAllProf
 }
 export const QueryGetProtoRevAllProfitsResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAllProfitsResponse",
-  encode(message: QueryGetProtoRevAllProfitsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevAllProfitsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.profits) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevAllProfitsResponse();
     while (reader.pos < end) {
@@ -1371,7 +1370,7 @@ function createBaseQueryGetProtoRevStatisticsByRouteRequest(): QueryGetProtoRevS
 }
 export const QueryGetProtoRevStatisticsByRouteRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevStatisticsByRouteRequest",
-  encode(message: QueryGetProtoRevStatisticsByRouteRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevStatisticsByRouteRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.route) {
       writer.uint64(v);
@@ -1379,8 +1378,8 @@ export const QueryGetProtoRevStatisticsByRouteRequest = {
     writer.ldelim();
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevStatisticsByRouteRequest();
     while (reader.pos < end) {
@@ -1390,10 +1389,10 @@ export const QueryGetProtoRevStatisticsByRouteRequest = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.route.push((reader.uint64() as Long));
+              message.route.push(reader.uint64());
             }
           } else {
-            message.route.push((reader.uint64() as Long));
+            message.route.push(reader.uint64());
           }
           break;
         default:
@@ -1405,18 +1404,18 @@ export const QueryGetProtoRevStatisticsByRouteRequest = {
   },
   fromPartial(object: Partial<QueryGetProtoRevStatisticsByRouteRequest>): QueryGetProtoRevStatisticsByRouteRequest {
     const message = createBaseQueryGetProtoRevStatisticsByRouteRequest();
-    message.route = object.route?.map(e => Long.fromValue(e)) || [];
+    message.route = object.route?.map(e => BigInt(e.toString())) || [];
     return message;
   },
   fromAmino(object: QueryGetProtoRevStatisticsByRouteRequestAmino): QueryGetProtoRevStatisticsByRouteRequest {
     return {
-      route: Array.isArray(object?.route) ? object.route.map((e: any) => e) : []
+      route: Array.isArray(object?.route) ? object.route.map((e: any) => BigInt(e)) : []
     };
   },
   toAmino(message: QueryGetProtoRevStatisticsByRouteRequest): QueryGetProtoRevStatisticsByRouteRequestAmino {
     const obj: any = {};
     if (message.route) {
-      obj.route = message.route.map(e => e);
+      obj.route = message.route.map(e => e.toString());
     } else {
       obj.route = [];
     }
@@ -1451,14 +1450,14 @@ function createBaseQueryGetProtoRevStatisticsByRouteResponse(): QueryGetProtoRev
 }
 export const QueryGetProtoRevStatisticsByRouteResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevStatisticsByRouteResponse",
-  encode(message: QueryGetProtoRevStatisticsByRouteResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevStatisticsByRouteResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.statistics !== undefined) {
       RouteStatistics.encode(message.statistics, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevStatisticsByRouteResponse();
     while (reader.pos < end) {
@@ -1516,11 +1515,11 @@ function createBaseQueryGetProtoRevAllRouteStatisticsRequest(): QueryGetProtoRev
 }
 export const QueryGetProtoRevAllRouteStatisticsRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAllRouteStatisticsRequest",
-  encode(_: QueryGetProtoRevAllRouteStatisticsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevAllRouteStatisticsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevAllRouteStatisticsRequest();
     while (reader.pos < end) {
@@ -1573,14 +1572,14 @@ function createBaseQueryGetProtoRevAllRouteStatisticsResponse(): QueryGetProtoRe
 }
 export const QueryGetProtoRevAllRouteStatisticsResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAllRouteStatisticsResponse",
-  encode(message: QueryGetProtoRevAllRouteStatisticsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevAllRouteStatisticsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.statistics) {
       RouteStatistics.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevAllRouteStatisticsResponse();
     while (reader.pos < end) {
@@ -1642,11 +1641,11 @@ function createBaseQueryGetProtoRevTokenPairArbRoutesRequest(): QueryGetProtoRev
 }
 export const QueryGetProtoRevTokenPairArbRoutesRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevTokenPairArbRoutesRequest",
-  encode(_: QueryGetProtoRevTokenPairArbRoutesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevTokenPairArbRoutesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevTokenPairArbRoutesRequest();
     while (reader.pos < end) {
@@ -1699,14 +1698,14 @@ function createBaseQueryGetProtoRevTokenPairArbRoutesResponse(): QueryGetProtoRe
 }
 export const QueryGetProtoRevTokenPairArbRoutesResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevTokenPairArbRoutesResponse",
-  encode(message: QueryGetProtoRevTokenPairArbRoutesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevTokenPairArbRoutesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.routes) {
       TokenPairArbRoutes.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevTokenPairArbRoutesResponse();
     while (reader.pos < end) {
@@ -1768,11 +1767,11 @@ function createBaseQueryGetProtoRevAdminAccountRequest(): QueryGetProtoRevAdminA
 }
 export const QueryGetProtoRevAdminAccountRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAdminAccountRequest",
-  encode(_: QueryGetProtoRevAdminAccountRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevAdminAccountRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevAdminAccountRequest();
     while (reader.pos < end) {
@@ -1825,14 +1824,14 @@ function createBaseQueryGetProtoRevAdminAccountResponse(): QueryGetProtoRevAdmin
 }
 export const QueryGetProtoRevAdminAccountResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevAdminAccountResponse",
-  encode(message: QueryGetProtoRevAdminAccountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevAdminAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.adminAccount !== "") {
       writer.uint32(10).string(message.adminAccount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevAdminAccountResponse();
     while (reader.pos < end) {
@@ -1890,11 +1889,11 @@ function createBaseQueryGetProtoRevDeveloperAccountRequest(): QueryGetProtoRevDe
 }
 export const QueryGetProtoRevDeveloperAccountRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevDeveloperAccountRequest",
-  encode(_: QueryGetProtoRevDeveloperAccountRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevDeveloperAccountRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevDeveloperAccountRequest();
     while (reader.pos < end) {
@@ -1947,14 +1946,14 @@ function createBaseQueryGetProtoRevDeveloperAccountResponse(): QueryGetProtoRevD
 }
 export const QueryGetProtoRevDeveloperAccountResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevDeveloperAccountResponse",
-  encode(message: QueryGetProtoRevDeveloperAccountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevDeveloperAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.developerAccount !== "") {
       writer.uint32(10).string(message.developerAccount);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevDeveloperAccountResponse();
     while (reader.pos < end) {
@@ -2012,11 +2011,11 @@ function createBaseQueryGetProtoRevPoolWeightsRequest(): QueryGetProtoRevPoolWei
 }
 export const QueryGetProtoRevPoolWeightsRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsRequest",
-  encode(_: QueryGetProtoRevPoolWeightsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevPoolWeightsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevPoolWeightsRequest();
     while (reader.pos < end) {
@@ -2069,14 +2068,14 @@ function createBaseQueryGetProtoRevPoolWeightsResponse(): QueryGetProtoRevPoolWe
 }
 export const QueryGetProtoRevPoolWeightsResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsResponse",
-  encode(message: QueryGetProtoRevPoolWeightsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevPoolWeightsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolWeights !== undefined) {
       PoolWeights.encode(message.poolWeights, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevPoolWeightsResponse();
     while (reader.pos < end) {
@@ -2134,11 +2133,11 @@ function createBaseQueryGetProtoRevMaxPoolPointsPerBlockRequest(): QueryGetProto
 }
 export const QueryGetProtoRevMaxPoolPointsPerBlockRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerBlockRequest",
-  encode(_: QueryGetProtoRevMaxPoolPointsPerBlockRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevMaxPoolPointsPerBlockRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerBlockRequest();
     while (reader.pos < end) {
@@ -2186,26 +2185,26 @@ export const QueryGetProtoRevMaxPoolPointsPerBlockRequest = {
 };
 function createBaseQueryGetProtoRevMaxPoolPointsPerBlockResponse(): QueryGetProtoRevMaxPoolPointsPerBlockResponse {
   return {
-    maxPoolPointsPerBlock: Long.UZERO
+    maxPoolPointsPerBlock: BigInt(0)
   };
 }
 export const QueryGetProtoRevMaxPoolPointsPerBlockResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerBlockResponse",
-  encode(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.maxPoolPointsPerBlock.isZero()) {
+  encode(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.maxPoolPointsPerBlock !== BigInt(0)) {
       writer.uint32(8).uint64(message.maxPoolPointsPerBlock);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerBlockResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.maxPoolPointsPerBlock = (reader.uint64() as Long);
+          message.maxPoolPointsPerBlock = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -2216,12 +2215,12 @@ export const QueryGetProtoRevMaxPoolPointsPerBlockResponse = {
   },
   fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerBlockResponse>): QueryGetProtoRevMaxPoolPointsPerBlockResponse {
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerBlockResponse();
-    message.maxPoolPointsPerBlock = object.maxPoolPointsPerBlock !== undefined && object.maxPoolPointsPerBlock !== null ? Long.fromValue(object.maxPoolPointsPerBlock) : Long.UZERO;
+    message.maxPoolPointsPerBlock = object.maxPoolPointsPerBlock !== undefined && object.maxPoolPointsPerBlock !== null ? BigInt(object.maxPoolPointsPerBlock.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: QueryGetProtoRevMaxPoolPointsPerBlockResponseAmino): QueryGetProtoRevMaxPoolPointsPerBlockResponse {
     return {
-      maxPoolPointsPerBlock: Long.fromString(object.max_pool_points_per_block)
+      maxPoolPointsPerBlock: BigInt(object.max_pool_points_per_block)
     };
   },
   toAmino(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse): QueryGetProtoRevMaxPoolPointsPerBlockResponseAmino {
@@ -2256,11 +2255,11 @@ function createBaseQueryGetProtoRevMaxPoolPointsPerTxRequest(): QueryGetProtoRev
 }
 export const QueryGetProtoRevMaxPoolPointsPerTxRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerTxRequest",
-  encode(_: QueryGetProtoRevMaxPoolPointsPerTxRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevMaxPoolPointsPerTxRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerTxRequest();
     while (reader.pos < end) {
@@ -2308,26 +2307,26 @@ export const QueryGetProtoRevMaxPoolPointsPerTxRequest = {
 };
 function createBaseQueryGetProtoRevMaxPoolPointsPerTxResponse(): QueryGetProtoRevMaxPoolPointsPerTxResponse {
   return {
-    maxPoolPointsPerTx: Long.UZERO
+    maxPoolPointsPerTx: BigInt(0)
   };
 }
 export const QueryGetProtoRevMaxPoolPointsPerTxResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevMaxPoolPointsPerTxResponse",
-  encode(message: QueryGetProtoRevMaxPoolPointsPerTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.maxPoolPointsPerTx.isZero()) {
+  encode(message: QueryGetProtoRevMaxPoolPointsPerTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.maxPoolPointsPerTx !== BigInt(0)) {
       writer.uint32(8).uint64(message.maxPoolPointsPerTx);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerTxResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.maxPoolPointsPerTx = (reader.uint64() as Long);
+          message.maxPoolPointsPerTx = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -2338,12 +2337,12 @@ export const QueryGetProtoRevMaxPoolPointsPerTxResponse = {
   },
   fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerTxResponse>): QueryGetProtoRevMaxPoolPointsPerTxResponse {
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerTxResponse();
-    message.maxPoolPointsPerTx = object.maxPoolPointsPerTx !== undefined && object.maxPoolPointsPerTx !== null ? Long.fromValue(object.maxPoolPointsPerTx) : Long.UZERO;
+    message.maxPoolPointsPerTx = object.maxPoolPointsPerTx !== undefined && object.maxPoolPointsPerTx !== null ? BigInt(object.maxPoolPointsPerTx.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: QueryGetProtoRevMaxPoolPointsPerTxResponseAmino): QueryGetProtoRevMaxPoolPointsPerTxResponse {
     return {
-      maxPoolPointsPerTx: Long.fromString(object.max_pool_points_per_tx)
+      maxPoolPointsPerTx: BigInt(object.max_pool_points_per_tx)
     };
   },
   toAmino(message: QueryGetProtoRevMaxPoolPointsPerTxResponse): QueryGetProtoRevMaxPoolPointsPerTxResponseAmino {
@@ -2378,11 +2377,11 @@ function createBaseQueryGetProtoRevBaseDenomsRequest(): QueryGetProtoRevBaseDeno
 }
 export const QueryGetProtoRevBaseDenomsRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevBaseDenomsRequest",
-  encode(_: QueryGetProtoRevBaseDenomsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevBaseDenomsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevBaseDenomsRequest();
     while (reader.pos < end) {
@@ -2435,14 +2434,14 @@ function createBaseQueryGetProtoRevBaseDenomsResponse(): QueryGetProtoRevBaseDen
 }
 export const QueryGetProtoRevBaseDenomsResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevBaseDenomsResponse",
-  encode(message: QueryGetProtoRevBaseDenomsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevBaseDenomsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.baseDenoms) {
       BaseDenom.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevBaseDenomsResponse();
     while (reader.pos < end) {
@@ -2504,11 +2503,11 @@ function createBaseQueryGetProtoRevEnabledRequest(): QueryGetProtoRevEnabledRequ
 }
 export const QueryGetProtoRevEnabledRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevEnabledRequest",
-  encode(_: QueryGetProtoRevEnabledRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: QueryGetProtoRevEnabledRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevEnabledRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevEnabledRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevEnabledRequest();
     while (reader.pos < end) {
@@ -2561,14 +2560,14 @@ function createBaseQueryGetProtoRevEnabledResponse(): QueryGetProtoRevEnabledRes
 }
 export const QueryGetProtoRevEnabledResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevEnabledResponse",
-  encode(message: QueryGetProtoRevEnabledResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevEnabledResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.enabled === true) {
       writer.uint32(8).bool(message.enabled);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevEnabledResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevEnabledResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevEnabledResponse();
     while (reader.pos < end) {
@@ -2629,7 +2628,7 @@ function createBaseQueryGetProtoRevPoolRequest(): QueryGetProtoRevPoolRequest {
 }
 export const QueryGetProtoRevPoolRequest = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolRequest",
-  encode(message: QueryGetProtoRevPoolRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: QueryGetProtoRevPoolRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.baseDenom !== "") {
       writer.uint32(10).string(message.baseDenom);
     }
@@ -2638,8 +2637,8 @@ export const QueryGetProtoRevPoolRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevPoolRequest();
     while (reader.pos < end) {
@@ -2700,26 +2699,26 @@ export const QueryGetProtoRevPoolRequest = {
 };
 function createBaseQueryGetProtoRevPoolResponse(): QueryGetProtoRevPoolResponse {
   return {
-    poolId: Long.UZERO
+    poolId: BigInt(0)
   };
 }
 export const QueryGetProtoRevPoolResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolResponse",
-  encode(message: QueryGetProtoRevPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.poolId.isZero()) {
+  encode(message: QueryGetProtoRevPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetProtoRevPoolResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolId = (reader.uint64() as Long);
+          message.poolId = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -2730,12 +2729,12 @@ export const QueryGetProtoRevPoolResponse = {
   },
   fromPartial(object: Partial<QueryGetProtoRevPoolResponse>): QueryGetProtoRevPoolResponse {
     const message = createBaseQueryGetProtoRevPoolResponse();
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: QueryGetProtoRevPoolResponseAmino): QueryGetProtoRevPoolResponse {
     return {
-      poolId: Long.fromString(object.pool_id)
+      poolId: BigInt(object.pool_id)
     };
   },
   toAmino(message: QueryGetProtoRevPoolResponse): QueryGetProtoRevPoolResponseAmino {

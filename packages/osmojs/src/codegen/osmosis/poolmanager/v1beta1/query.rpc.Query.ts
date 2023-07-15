@@ -1,5 +1,5 @@
 import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { ParamsRequest, ParamsResponse, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, EstimateSinglePoolSwapExactAmountOutRequest, NumPoolsRequest, NumPoolsResponse, PoolRequest, PoolResponse, AllPoolsRequest, AllPoolsResponse, SpotPriceRequest, SpotPriceResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse, TotalLiquidityRequest, TotalLiquidityResponse } from "./query";
 export interface Query {
@@ -45,57 +45,57 @@ export class QueryClientImpl implements Query {
   params(request: ParamsRequest = {}): Promise<ParamsResponse> {
     const data = ParamsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "Params", data);
-    return promise.then(data => ParamsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => ParamsResponse.decode(new BinaryReader(data)));
   }
   estimateSwapExactAmountIn(request: EstimateSwapExactAmountInRequest): Promise<EstimateSwapExactAmountInResponse> {
     const data = EstimateSwapExactAmountInRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "EstimateSwapExactAmountIn", data);
-    return promise.then(data => EstimateSwapExactAmountInResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => EstimateSwapExactAmountInResponse.decode(new BinaryReader(data)));
   }
   estimateSinglePoolSwapExactAmountIn(request: EstimateSinglePoolSwapExactAmountInRequest): Promise<EstimateSwapExactAmountInResponse> {
     const data = EstimateSinglePoolSwapExactAmountInRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "EstimateSinglePoolSwapExactAmountIn", data);
-    return promise.then(data => EstimateSwapExactAmountInResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => EstimateSwapExactAmountInResponse.decode(new BinaryReader(data)));
   }
   estimateSwapExactAmountOut(request: EstimateSwapExactAmountOutRequest): Promise<EstimateSwapExactAmountOutResponse> {
     const data = EstimateSwapExactAmountOutRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "EstimateSwapExactAmountOut", data);
-    return promise.then(data => EstimateSwapExactAmountOutResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => EstimateSwapExactAmountOutResponse.decode(new BinaryReader(data)));
   }
   estimateSinglePoolSwapExactAmountOut(request: EstimateSinglePoolSwapExactAmountOutRequest): Promise<EstimateSwapExactAmountOutResponse> {
     const data = EstimateSinglePoolSwapExactAmountOutRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "EstimateSinglePoolSwapExactAmountOut", data);
-    return promise.then(data => EstimateSwapExactAmountOutResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => EstimateSwapExactAmountOutResponse.decode(new BinaryReader(data)));
   }
   numPools(request: NumPoolsRequest = {}): Promise<NumPoolsResponse> {
     const data = NumPoolsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "NumPools", data);
-    return promise.then(data => NumPoolsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => NumPoolsResponse.decode(new BinaryReader(data)));
   }
   pool(request: PoolRequest): Promise<PoolResponse> {
     const data = PoolRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "Pool", data);
-    return promise.then(data => PoolResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => PoolResponse.decode(new BinaryReader(data)));
   }
   allPools(request: AllPoolsRequest = {}): Promise<AllPoolsResponse> {
     const data = AllPoolsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "AllPools", data);
-    return promise.then(data => AllPoolsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => AllPoolsResponse.decode(new BinaryReader(data)));
   }
   spotPrice(request: SpotPriceRequest): Promise<SpotPriceResponse> {
     const data = SpotPriceRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "SpotPrice", data);
-    return promise.then(data => SpotPriceResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => SpotPriceResponse.decode(new BinaryReader(data)));
   }
   totalPoolLiquidity(request: TotalPoolLiquidityRequest): Promise<TotalPoolLiquidityResponse> {
     const data = TotalPoolLiquidityRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "TotalPoolLiquidity", data);
-    return promise.then(data => TotalPoolLiquidityResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => TotalPoolLiquidityResponse.decode(new BinaryReader(data)));
   }
   totalLiquidity(request: TotalLiquidityRequest = {}): Promise<TotalLiquidityResponse> {
     const data = TotalLiquidityRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.poolmanager.v1beta1.Query", "TotalLiquidity", data);
-    return promise.then(data => TotalLiquidityResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => TotalLiquidityResponse.decode(new BinaryReader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {

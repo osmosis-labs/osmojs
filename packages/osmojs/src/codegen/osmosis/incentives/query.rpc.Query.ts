@@ -1,5 +1,5 @@
 import { Rpc } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader } from "../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
 /** Query defines the gRPC querier service */
@@ -50,53 +50,53 @@ export class QueryClientImpl implements Query {
   moduleToDistributeCoins(request: ModuleToDistributeCoinsRequest = {}): Promise<ModuleToDistributeCoinsResponse> {
     const data = ModuleToDistributeCoinsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "ModuleToDistributeCoins", data);
-    return promise.then(data => ModuleToDistributeCoinsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => ModuleToDistributeCoinsResponse.decode(new BinaryReader(data)));
   }
   gaugeByID(request: GaugeByIDRequest): Promise<GaugeByIDResponse> {
     const data = GaugeByIDRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "GaugeByID", data);
-    return promise.then(data => GaugeByIDResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => GaugeByIDResponse.decode(new BinaryReader(data)));
   }
   gauges(request: GaugesRequest = {
     pagination: undefined
   }): Promise<GaugesResponse> {
     const data = GaugesRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "Gauges", data);
-    return promise.then(data => GaugesResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => GaugesResponse.decode(new BinaryReader(data)));
   }
   activeGauges(request: ActiveGaugesRequest = {
     pagination: undefined
   }): Promise<ActiveGaugesResponse> {
     const data = ActiveGaugesRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "ActiveGauges", data);
-    return promise.then(data => ActiveGaugesResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => ActiveGaugesResponse.decode(new BinaryReader(data)));
   }
   activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponse> {
     const data = ActiveGaugesPerDenomRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "ActiveGaugesPerDenom", data);
-    return promise.then(data => ActiveGaugesPerDenomResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => ActiveGaugesPerDenomResponse.decode(new BinaryReader(data)));
   }
   upcomingGauges(request: UpcomingGaugesRequest = {
     pagination: undefined
   }): Promise<UpcomingGaugesResponse> {
     const data = UpcomingGaugesRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "UpcomingGauges", data);
-    return promise.then(data => UpcomingGaugesResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => UpcomingGaugesResponse.decode(new BinaryReader(data)));
   }
   upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse> {
     const data = UpcomingGaugesPerDenomRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "UpcomingGaugesPerDenom", data);
-    return promise.then(data => UpcomingGaugesPerDenomResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => UpcomingGaugesPerDenomResponse.decode(new BinaryReader(data)));
   }
   rewardsEst(request: RewardsEstRequest): Promise<RewardsEstResponse> {
     const data = RewardsEstRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "RewardsEst", data);
-    return promise.then(data => RewardsEstResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => RewardsEstResponse.decode(new BinaryReader(data)));
   }
   lockableDurations(request: QueryLockableDurationsRequest = {}): Promise<QueryLockableDurationsResponse> {
     const data = QueryLockableDurationsRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.incentives.Query", "LockableDurations", data);
-    return promise.then(data => QueryLockableDurationsResponse.decode(new _m0.Reader(data)));
+    return promise.then(data => QueryLockableDurationsResponse.decode(new BinaryReader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {

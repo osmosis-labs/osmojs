@@ -1,6 +1,5 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 /** TokenPairArbRoutes tracks all of the hot routes for a given pair of tokens */
 export interface TokenPairArbRoutes {
   /** Stores all of the possible hot paths for a given pair of tokens */
@@ -75,7 +74,7 @@ export interface RouteSDKType {
 /** Trade is a single trade in a route */
 export interface Trade {
   /** The pool id of the pool that is traded on */
-  pool: Long;
+  pool: bigint;
   /** The denom of the token that is traded */
   tokenIn: string;
   /** The denom of the token that is received */
@@ -100,7 +99,7 @@ export interface TradeAminoMsg {
 }
 /** Trade is a single trade in a route */
 export interface TradeSDKType {
-  pool: Long;
+  pool: bigint;
   token_in: string;
   token_out: string;
 }
@@ -117,7 +116,7 @@ export interface RouteStatistics {
    */
   numberOfTrades: string;
   /** route is the route that was used (pool ids along the arbitrage route) */
-  route: Long[];
+  route: bigint[];
 }
 export interface RouteStatisticsProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.RouteStatistics";
@@ -149,7 +148,7 @@ export interface RouteStatisticsAminoMsg {
 export interface RouteStatisticsSDKType {
   profits: CoinSDKType[];
   number_of_trades: string;
-  route: Long[];
+  route: bigint[];
 }
 /**
  * PoolWeights contains the weights of all of the different pool types. This
@@ -160,11 +159,11 @@ export interface RouteStatisticsSDKType {
  */
 export interface PoolWeights {
   /** The weight of a stableswap pool */
-  stableWeight: Long;
+  stableWeight: bigint;
   /** The weight of a balancer pool */
-  balancerWeight: Long;
+  balancerWeight: bigint;
   /** The weight of a concentrated pool */
-  concentratedWeight: Long;
+  concentratedWeight: bigint;
 }
 export interface PoolWeightsProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.PoolWeights";
@@ -197,9 +196,9 @@ export interface PoolWeightsAminoMsg {
  * pool type.
  */
 export interface PoolWeightsSDKType {
-  stable_weight: Long;
-  balancer_weight: Long;
-  concentrated_weight: Long;
+  stable_weight: bigint;
+  balancer_weight: bigint;
+  concentrated_weight: bigint;
 }
 /**
  * BaseDenom represents a single base denom that the module uses for its
@@ -255,7 +254,7 @@ function createBaseTokenPairArbRoutes(): TokenPairArbRoutes {
 }
 export const TokenPairArbRoutes = {
   typeUrl: "/osmosis.protorev.v1beta1.TokenPairArbRoutes",
-  encode(message: TokenPairArbRoutes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: TokenPairArbRoutes, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.arbRoutes) {
       Route.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -267,8 +266,8 @@ export const TokenPairArbRoutes = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): TokenPairArbRoutes {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): TokenPairArbRoutes {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTokenPairArbRoutes();
     while (reader.pos < end) {
@@ -345,7 +344,7 @@ function createBaseRoute(): Route {
 }
 export const Route = {
   typeUrl: "/osmosis.protorev.v1beta1.Route",
-  encode(message: Route, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: Route, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.trades) {
       Trade.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -354,8 +353,8 @@ export const Route = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Route {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Route {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRoute();
     while (reader.pos < end) {
@@ -420,15 +419,15 @@ export const Route = {
 };
 function createBaseTrade(): Trade {
   return {
-    pool: Long.UZERO,
+    pool: BigInt(0),
     tokenIn: "",
     tokenOut: ""
   };
 }
 export const Trade = {
   typeUrl: "/osmosis.protorev.v1beta1.Trade",
-  encode(message: Trade, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.pool.isZero()) {
+  encode(message: Trade, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.pool !== BigInt(0)) {
       writer.uint32(8).uint64(message.pool);
     }
     if (message.tokenIn !== "") {
@@ -439,15 +438,15 @@ export const Trade = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Trade {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Trade {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTrade();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.pool = (reader.uint64() as Long);
+          message.pool = reader.uint64();
           break;
         case 2:
           message.tokenIn = reader.string();
@@ -464,14 +463,14 @@ export const Trade = {
   },
   fromPartial(object: Partial<Trade>): Trade {
     const message = createBaseTrade();
-    message.pool = object.pool !== undefined && object.pool !== null ? Long.fromValue(object.pool) : Long.UZERO;
+    message.pool = object.pool !== undefined && object.pool !== null ? BigInt(object.pool.toString()) : BigInt(0);
     message.tokenIn = object.tokenIn ?? "";
     message.tokenOut = object.tokenOut ?? "";
     return message;
   },
   fromAmino(object: TradeAmino): Trade {
     return {
-      pool: Long.fromString(object.pool),
+      pool: BigInt(object.pool),
       tokenIn: object.token_in,
       tokenOut: object.token_out
     };
@@ -514,7 +513,7 @@ function createBaseRouteStatistics(): RouteStatistics {
 }
 export const RouteStatistics = {
   typeUrl: "/osmosis.protorev.v1beta1.RouteStatistics",
-  encode(message: RouteStatistics, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: RouteStatistics, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.profits) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -528,8 +527,8 @@ export const RouteStatistics = {
     writer.ldelim();
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): RouteStatistics {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): RouteStatistics {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRouteStatistics();
     while (reader.pos < end) {
@@ -545,10 +544,10 @@ export const RouteStatistics = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.route.push((reader.uint64() as Long));
+              message.route.push(reader.uint64());
             }
           } else {
-            message.route.push((reader.uint64() as Long));
+            message.route.push(reader.uint64());
           }
           break;
         default:
@@ -562,14 +561,14 @@ export const RouteStatistics = {
     const message = createBaseRouteStatistics();
     message.profits = object.profits?.map(e => Coin.fromPartial(e)) || [];
     message.numberOfTrades = object.numberOfTrades ?? "";
-    message.route = object.route?.map(e => Long.fromValue(e)) || [];
+    message.route = object.route?.map(e => BigInt(e.toString())) || [];
     return message;
   },
   fromAmino(object: RouteStatisticsAmino): RouteStatistics {
     return {
       profits: Array.isArray(object?.profits) ? object.profits.map((e: any) => Coin.fromAmino(e)) : [],
       numberOfTrades: object.number_of_trades,
-      route: Array.isArray(object?.route) ? object.route.map((e: any) => e) : []
+      route: Array.isArray(object?.route) ? object.route.map((e: any) => BigInt(e)) : []
     };
   },
   toAmino(message: RouteStatistics): RouteStatisticsAmino {
@@ -581,7 +580,7 @@ export const RouteStatistics = {
     }
     obj.number_of_trades = message.numberOfTrades;
     if (message.route) {
-      obj.route = message.route.map(e => e);
+      obj.route = message.route.map(e => e.toString());
     } else {
       obj.route = [];
     }
@@ -611,40 +610,40 @@ export const RouteStatistics = {
 };
 function createBasePoolWeights(): PoolWeights {
   return {
-    stableWeight: Long.UZERO,
-    balancerWeight: Long.UZERO,
-    concentratedWeight: Long.UZERO
+    stableWeight: BigInt(0),
+    balancerWeight: BigInt(0),
+    concentratedWeight: BigInt(0)
   };
 }
 export const PoolWeights = {
   typeUrl: "/osmosis.protorev.v1beta1.PoolWeights",
-  encode(message: PoolWeights, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.stableWeight.isZero()) {
+  encode(message: PoolWeights, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.stableWeight !== BigInt(0)) {
       writer.uint32(8).uint64(message.stableWeight);
     }
-    if (!message.balancerWeight.isZero()) {
+    if (message.balancerWeight !== BigInt(0)) {
       writer.uint32(16).uint64(message.balancerWeight);
     }
-    if (!message.concentratedWeight.isZero()) {
+    if (message.concentratedWeight !== BigInt(0)) {
       writer.uint32(24).uint64(message.concentratedWeight);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): PoolWeights {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): PoolWeights {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePoolWeights();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.stableWeight = (reader.uint64() as Long);
+          message.stableWeight = reader.uint64();
           break;
         case 2:
-          message.balancerWeight = (reader.uint64() as Long);
+          message.balancerWeight = reader.uint64();
           break;
         case 3:
-          message.concentratedWeight = (reader.uint64() as Long);
+          message.concentratedWeight = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -655,16 +654,16 @@ export const PoolWeights = {
   },
   fromPartial(object: Partial<PoolWeights>): PoolWeights {
     const message = createBasePoolWeights();
-    message.stableWeight = object.stableWeight !== undefined && object.stableWeight !== null ? Long.fromValue(object.stableWeight) : Long.UZERO;
-    message.balancerWeight = object.balancerWeight !== undefined && object.balancerWeight !== null ? Long.fromValue(object.balancerWeight) : Long.UZERO;
-    message.concentratedWeight = object.concentratedWeight !== undefined && object.concentratedWeight !== null ? Long.fromValue(object.concentratedWeight) : Long.UZERO;
+    message.stableWeight = object.stableWeight !== undefined && object.stableWeight !== null ? BigInt(object.stableWeight.toString()) : BigInt(0);
+    message.balancerWeight = object.balancerWeight !== undefined && object.balancerWeight !== null ? BigInt(object.balancerWeight.toString()) : BigInt(0);
+    message.concentratedWeight = object.concentratedWeight !== undefined && object.concentratedWeight !== null ? BigInt(object.concentratedWeight.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: PoolWeightsAmino): PoolWeights {
     return {
-      stableWeight: Long.fromString(object.stable_weight),
-      balancerWeight: Long.fromString(object.balancer_weight),
-      concentratedWeight: Long.fromString(object.concentrated_weight)
+      stableWeight: BigInt(object.stable_weight),
+      balancerWeight: BigInt(object.balancer_weight),
+      concentratedWeight: BigInt(object.concentrated_weight)
     };
   },
   toAmino(message: PoolWeights): PoolWeightsAmino {
@@ -704,7 +703,7 @@ function createBaseBaseDenom(): BaseDenom {
 }
 export const BaseDenom = {
   typeUrl: "/osmosis.protorev.v1beta1.BaseDenom",
-  encode(message: BaseDenom, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: BaseDenom, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
     }
@@ -713,8 +712,8 @@ export const BaseDenom = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): BaseDenom {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): BaseDenom {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBaseDenom();
     while (reader.pos < end) {

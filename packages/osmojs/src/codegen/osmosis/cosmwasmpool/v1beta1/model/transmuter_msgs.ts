@@ -1,4 +1,4 @@
-import * as _m0 from "protobufjs/minimal";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** ===================== JoinPoolExecuteMsg */
 export interface EmptyRequest {}
 export interface EmptyRequestProtoMsg {
@@ -93,11 +93,11 @@ function createBaseEmptyRequest(): EmptyRequest {
 }
 export const EmptyRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.EmptyRequest",
-  encode(_: EmptyRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: EmptyRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): EmptyRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): EmptyRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEmptyRequest();
     while (reader.pos < end) {
@@ -150,14 +150,14 @@ function createBaseJoinPoolExecuteMsgRequest(): JoinPoolExecuteMsgRequest {
 }
 export const JoinPoolExecuteMsgRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.JoinPoolExecuteMsgRequest",
-  encode(message: JoinPoolExecuteMsgRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: JoinPoolExecuteMsgRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.joinPool !== undefined) {
       EmptyRequest.encode(message.joinPool, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): JoinPoolExecuteMsgRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): JoinPoolExecuteMsgRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseJoinPoolExecuteMsgRequest();
     while (reader.pos < end) {
@@ -215,11 +215,11 @@ function createBaseJoinPoolExecuteMsgResponse(): JoinPoolExecuteMsgResponse {
 }
 export const JoinPoolExecuteMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.JoinPoolExecuteMsgResponse",
-  encode(_: JoinPoolExecuteMsgResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: JoinPoolExecuteMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): JoinPoolExecuteMsgResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): JoinPoolExecuteMsgResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseJoinPoolExecuteMsgResponse();
     while (reader.pos < end) {
@@ -272,14 +272,14 @@ function createBaseExitPoolExecuteMsgRequest(): ExitPoolExecuteMsgRequest {
 }
 export const ExitPoolExecuteMsgRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ExitPoolExecuteMsgRequest",
-  encode(message: ExitPoolExecuteMsgRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(message: ExitPoolExecuteMsgRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.exitPool !== undefined) {
       EmptyRequest.encode(message.exitPool, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ExitPoolExecuteMsgRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ExitPoolExecuteMsgRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseExitPoolExecuteMsgRequest();
     while (reader.pos < end) {
@@ -337,11 +337,11 @@ function createBaseExitPoolExecuteMsgResponse(): ExitPoolExecuteMsgResponse {
 }
 export const ExitPoolExecuteMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ExitPoolExecuteMsgResponse",
-  encode(_: ExitPoolExecuteMsgResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(_: ExitPoolExecuteMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ExitPoolExecuteMsgResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ExitPoolExecuteMsgResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseExitPoolExecuteMsgResponse();
     while (reader.pos < end) {
