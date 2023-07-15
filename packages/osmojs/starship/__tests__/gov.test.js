@@ -6,6 +6,7 @@ import { useChain, waitUntil } from '../src';
 import './setup.test';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
+import BigNumber from "bignumber.js";
 
 describe('Governance tests for osmosis', () => {
   let protoSigner, aminoSigner, denom, address;
@@ -19,6 +20,7 @@ describe('Governance tests for osmosis', () => {
   let queryClient;
   let proposalId;
   let genesisAddress;
+  let validatorAddress;
 
   beforeAll(async () => {
     ({
@@ -57,6 +59,62 @@ describe('Governance tests for osmosis', () => {
     });
 
     expect(balance.amount).toEqual('10000000000');
+  }, 10000);
+
+  it('query validator address', async () => {
+    const { validators } = await queryClient.cosmos.staking.v1beta1.validators({
+      status: cosmos.staking.v1beta1.bondStatusToJSON(
+          cosmos.staking.v1beta1.BondStatus.BOND_STATUS_BONDED
+      )
+    });
+    let allValidators = validators;
+    if (validators.length > 1) {
+      allValidators = validators.sort((a, b) =>
+          new BigNumber(b.tokens).minus(new BigNumber(a.tokens)).toNumber()
+      );
+    }
+
+    expect(allValidators.length).toBeGreaterThan(0);
+
+    // set validator address to the first one
+    validatorAddress = allValidators[0].operatorAddress;
+  });
+
+  it('stake tokens to genesis validator', async () => {
+    const signingClient = await getSigningOsmosisClient({
+      rpcEndpoint: getRpcEndpoint(),
+      signer: protoSigner
+    });
+
+    const { balance } = await queryClient.cosmos.bank.v1beta1.balance({
+      address,
+      denom
+    });
+
+    // Stake half of the tokens
+    // eslint-disable-next-line no-undef
+    const delegationAmount = (BigInt(balance.amount) / BigInt(2)).toString();
+    const msg = cosmos.staking.v1beta1.MessageComposer.fromPartial.delegate({
+      delegatorAddress: address,
+      validatorAddress: validatorAddress,
+      amount: {
+        amount: delegationAmount,
+        denom: balance.denom
+      }
+    });
+
+    const fee = {
+      amount: [
+        {
+          denom,
+          amount: '100000'
+        }
+      ],
+      gas: '550000'
+    };
+
+    const result = await signingClient.signAndBroadcast(address, [msg], fee);
+    assertIsDeliverTxSuccess(result);
   }, 10000);
 
   it('submit a txt proposal', async () => {
