@@ -26,3 +26,5 @@ jobs:
         run: yarn build
       - name: osmojs
         run: cd ./packages/osmojs && yarn test
+      - name: math
+        run: cd ./packages/math && yarn test
