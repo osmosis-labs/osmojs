@@ -7,18 +7,15 @@ export interface Query {
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.recoveredSinceDowntimeOfLength = this.recoveredSinceDowntimeOfLength.bind(this);
   }
-
   recoveredSinceDowntimeOfLength(request: RecoveredSinceDowntimeOfLengthRequest): Promise<RecoveredSinceDowntimeOfLengthResponse> {
     const data = RecoveredSinceDowntimeOfLengthRequest.encode(request).finish();
     const promise = this.rpc.request("osmosis.downtimedetector.v1beta1.Query", "RecoveredSinceDowntimeOfLength", data);
     return promise.then(data => RecoveredSinceDowntimeOfLengthResponse.decode(new _m0.Reader(data)));
   }
-
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -27,6 +24,5 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     recoveredSinceDowntimeOfLength(request: RecoveredSinceDowntimeOfLengthRequest): Promise<RecoveredSinceDowntimeOfLengthResponse> {
       return queryService.recoveredSinceDowntimeOfLength(request);
     }
-
   };
 };

@@ -83,8 +83,8 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@chain-registry/osmosis": "1.11.0",
-    "@chain-registry/types": "0.14.0",
+    "@chain-registry/osmosis": "1.18.1",
+    "@chain-registry/types": "0.16.0",
     "bignumber.js": "9.1.1",
     "long": "5.2.1",
     "osmojs": "^16.1.0"

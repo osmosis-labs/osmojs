@@ -2,7 +2,6 @@ import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgRegisterPayee, MsgRegisterPayeeResponse, MsgRegisterCounterpartyPayee, MsgRegisterCounterpartyPayeeResponse, MsgPayPacketFee, MsgPayPacketFeeResponse, MsgPayPacketFeeAsync, MsgPayPacketFeeAsyncResponse } from "./tx";
 /** Msg defines the ICS29 Msg service. */
-
 export interface Msg {
   /**
    * RegisterPayee defines a rpc handler method for MsgRegisterPayee
@@ -19,7 +18,6 @@ export interface Msg {
    * the destination chain must include the registered counterparty payee address in the acknowledgement. This function
    * may be called more than once by a relayer, in which case, the latest counterparty payee address is always used.
    */
-
   registerCounterpartyPayee(request: MsgRegisterCounterpartyPayee): Promise<MsgRegisterCounterpartyPayeeResponse>;
   /**
    * PayPacketFee defines a rpc handler method for MsgPayPacketFee
@@ -28,19 +26,16 @@ export interface Msg {
    * NOTE: This method is intended to be used within a multi msg transaction, where the subsequent msg that follows
    * initiates the lifecycle of the incentivized packet
    */
-
   payPacketFee(request: MsgPayPacketFee): Promise<MsgPayPacketFeeResponse>;
   /**
    * PayPacketFeeAsync defines a rpc handler method for MsgPayPacketFeeAsync
    * PayPacketFeeAsync is an open callback that may be called by any module/user that wishes to escrow funds in order to
    * incentivize the relaying of a known packet (i.e. at a particular sequence)
    */
-
   payPacketFeeAsync(request: MsgPayPacketFeeAsync): Promise<MsgPayPacketFeeAsyncResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.registerPayee = this.registerPayee.bind(this);
@@ -48,29 +43,24 @@ export class MsgClientImpl implements Msg {
     this.payPacketFee = this.payPacketFee.bind(this);
     this.payPacketFeeAsync = this.payPacketFeeAsync.bind(this);
   }
-
   registerPayee(request: MsgRegisterPayee): Promise<MsgRegisterPayeeResponse> {
     const data = MsgRegisterPayee.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.fee.v1.Msg", "RegisterPayee", data);
     return promise.then(data => MsgRegisterPayeeResponse.decode(new _m0.Reader(data)));
   }
-
   registerCounterpartyPayee(request: MsgRegisterCounterpartyPayee): Promise<MsgRegisterCounterpartyPayeeResponse> {
     const data = MsgRegisterCounterpartyPayee.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.fee.v1.Msg", "RegisterCounterpartyPayee", data);
     return promise.then(data => MsgRegisterCounterpartyPayeeResponse.decode(new _m0.Reader(data)));
   }
-
   payPacketFee(request: MsgPayPacketFee): Promise<MsgPayPacketFeeResponse> {
     const data = MsgPayPacketFee.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.fee.v1.Msg", "PayPacketFee", data);
     return promise.then(data => MsgPayPacketFeeResponse.decode(new _m0.Reader(data)));
   }
-
   payPacketFeeAsync(request: MsgPayPacketFeeAsync): Promise<MsgPayPacketFeeAsyncResponse> {
     const data = MsgPayPacketFeeAsync.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.fee.v1.Msg", "PayPacketFeeAsync", data);
     return promise.then(data => MsgPayPacketFeeAsyncResponse.decode(new _m0.Reader(data)));
   }
-
 }

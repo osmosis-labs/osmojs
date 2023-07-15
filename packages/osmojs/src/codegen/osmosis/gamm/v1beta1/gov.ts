@@ -7,7 +7,6 @@ import * as _m0 from "protobufjs/minimal";
  * Each record specifies a single connection between a single balancer pool and
  * a single concentrated pool.
  */
-
 export interface ReplaceMigrationRecordsProposal {
   $typeUrl?: string;
   title: string;
@@ -25,7 +24,6 @@ export interface ReplaceMigrationRecordsProposalProtoMsg {
  * Each record specifies a single connection between a single balancer pool and
  * a single concentrated pool.
  */
-
 export interface ReplaceMigrationRecordsProposalAmino {
   title: string;
   description: string;
@@ -42,7 +40,6 @@ export interface ReplaceMigrationRecordsProposalAminoMsg {
  * Each record specifies a single connection between a single balancer pool and
  * a single concentrated pool.
  */
-
 export interface ReplaceMigrationRecordsProposalSDKType {
   $typeUrl?: string;
   title: string;
@@ -59,7 +56,6 @@ export interface ReplaceMigrationRecordsProposalSDKType {
  * The result MigrationRecords in state would be:
  * [(Balancer 1, CL 5), (Balancer 3, CL 4), (Balancer 4, CL 10)]
  */
-
 export interface UpdateMigrationRecordsProposal {
   $typeUrl?: string;
   title: string;
@@ -80,7 +76,6 @@ export interface UpdateMigrationRecordsProposalProtoMsg {
  * The result MigrationRecords in state would be:
  * [(Balancer 1, CL 5), (Balancer 3, CL 4), (Balancer 4, CL 10)]
  */
-
 export interface UpdateMigrationRecordsProposalAmino {
   title: string;
   description: string;
@@ -100,14 +95,12 @@ export interface UpdateMigrationRecordsProposalAminoMsg {
  * The result MigrationRecords in state would be:
  * [(Balancer 1, CL 5), (Balancer 3, CL 4), (Balancer 4, CL 10)]
  */
-
 export interface UpdateMigrationRecordsProposalSDKType {
   $typeUrl?: string;
   title: string;
   description: string;
   records: BalancerToConcentratedPoolLinkSDKType[];
 }
-
 function createBaseReplaceMigrationRecordsProposal(): ReplaceMigrationRecordsProposal {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal",
@@ -116,56 +109,43 @@ function createBaseReplaceMigrationRecordsProposal(): ReplaceMigrationRecordsPro
     records: []
   };
 }
-
 export const ReplaceMigrationRecordsProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal",
-
   encode(message: ReplaceMigrationRecordsProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     for (const v of message.records) {
       BalancerToConcentratedPoolLink.encode(v!, writer.uint32(26).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): ReplaceMigrationRecordsProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseReplaceMigrationRecordsProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.records.push(BalancerToConcentratedPoolLink.decode(reader, reader.uint32()));
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<ReplaceMigrationRecordsProposal>): ReplaceMigrationRecordsProposal {
     const message = createBaseReplaceMigrationRecordsProposal();
     message.title = object.title ?? "";
@@ -173,7 +153,6 @@ export const ReplaceMigrationRecordsProposal = {
     message.records = object.records?.map(e => BalancerToConcentratedPoolLink.fromPartial(e)) || [];
     return message;
   },
-
   fromAmino(object: ReplaceMigrationRecordsProposalAmino): ReplaceMigrationRecordsProposal {
     return {
       title: object.title,
@@ -181,49 +160,39 @@ export const ReplaceMigrationRecordsProposal = {
       records: Array.isArray(object?.records) ? object.records.map((e: any) => BalancerToConcentratedPoolLink.fromAmino(e)) : []
     };
   },
-
   toAmino(message: ReplaceMigrationRecordsProposal): ReplaceMigrationRecordsProposalAmino {
     const obj: any = {};
     obj.title = message.title;
     obj.description = message.description;
-
     if (message.records) {
       obj.records = message.records.map(e => e ? BalancerToConcentratedPoolLink.toAmino(e) : undefined);
     } else {
       obj.records = [];
     }
-
     return obj;
   },
-
   fromAminoMsg(object: ReplaceMigrationRecordsProposalAminoMsg): ReplaceMigrationRecordsProposal {
     return ReplaceMigrationRecordsProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: ReplaceMigrationRecordsProposal): ReplaceMigrationRecordsProposalAminoMsg {
     return {
       type: "osmosis/ReplaceMigrationRecordsProposal",
       value: ReplaceMigrationRecordsProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: ReplaceMigrationRecordsProposalProtoMsg): ReplaceMigrationRecordsProposal {
     return ReplaceMigrationRecordsProposal.decode(message.value);
   },
-
   toProto(message: ReplaceMigrationRecordsProposal): Uint8Array {
     return ReplaceMigrationRecordsProposal.encode(message).finish();
   },
-
   toProtoMsg(message: ReplaceMigrationRecordsProposal): ReplaceMigrationRecordsProposalProtoMsg {
     return {
       typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal",
       value: ReplaceMigrationRecordsProposal.encode(message).finish()
     };
   }
-
 };
-
 function createBaseUpdateMigrationRecordsProposal(): UpdateMigrationRecordsProposal {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
@@ -232,56 +201,43 @@ function createBaseUpdateMigrationRecordsProposal(): UpdateMigrationRecordsPropo
     records: []
   };
 }
-
 export const UpdateMigrationRecordsProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
-
   encode(message: UpdateMigrationRecordsProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
-
     if (message.description !== "") {
       writer.uint32(18).string(message.description);
     }
-
     for (const v of message.records) {
       BalancerToConcentratedPoolLink.encode(v!, writer.uint32(26).fork()).ldelim();
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): UpdateMigrationRecordsProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpdateMigrationRecordsProposal();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.title = reader.string();
           break;
-
         case 2:
           message.description = reader.string();
           break;
-
         case 3:
           message.records.push(BalancerToConcentratedPoolLink.decode(reader, reader.uint32()));
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: Partial<UpdateMigrationRecordsProposal>): UpdateMigrationRecordsProposal {
     const message = createBaseUpdateMigrationRecordsProposal();
     message.title = object.title ?? "";
@@ -289,7 +245,6 @@ export const UpdateMigrationRecordsProposal = {
     message.records = object.records?.map(e => BalancerToConcentratedPoolLink.fromPartial(e)) || [];
     return message;
   },
-
   fromAmino(object: UpdateMigrationRecordsProposalAmino): UpdateMigrationRecordsProposal {
     return {
       title: object.title,
@@ -297,45 +252,36 @@ export const UpdateMigrationRecordsProposal = {
       records: Array.isArray(object?.records) ? object.records.map((e: any) => BalancerToConcentratedPoolLink.fromAmino(e)) : []
     };
   },
-
   toAmino(message: UpdateMigrationRecordsProposal): UpdateMigrationRecordsProposalAmino {
     const obj: any = {};
     obj.title = message.title;
     obj.description = message.description;
-
     if (message.records) {
       obj.records = message.records.map(e => e ? BalancerToConcentratedPoolLink.toAmino(e) : undefined);
     } else {
       obj.records = [];
     }
-
     return obj;
   },
-
   fromAminoMsg(object: UpdateMigrationRecordsProposalAminoMsg): UpdateMigrationRecordsProposal {
     return UpdateMigrationRecordsProposal.fromAmino(object.value);
   },
-
   toAminoMsg(message: UpdateMigrationRecordsProposal): UpdateMigrationRecordsProposalAminoMsg {
     return {
       type: "osmosis/UpdateMigrationRecordsProposal",
       value: UpdateMigrationRecordsProposal.toAmino(message)
     };
   },
-
   fromProtoMsg(message: UpdateMigrationRecordsProposalProtoMsg): UpdateMigrationRecordsProposal {
     return UpdateMigrationRecordsProposal.decode(message.value);
   },
-
   toProto(message: UpdateMigrationRecordsProposal): Uint8Array {
     return UpdateMigrationRecordsProposal.encode(message).finish();
   },
-
   toProtoMsg(message: UpdateMigrationRecordsProposal): UpdateMigrationRecordsProposalProtoMsg {
     return {
       typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
       value: UpdateMigrationRecordsProposal.encode(message).finish()
     };
   }
-
 };

@@ -77,7 +77,7 @@
     "@confio/relayer": "0.7.0",
     "@cosmjs/cosmwasm-stargate": "0.29.4",
     "@cosmjs/crypto": "0.29.4",
-    "@osmonauts/telescope": "0.90.0",
+    "@osmonauts/telescope": "0.99.12",
     "@protobufs/confio": "^0.0.6",
     "@protobufs/cosmos": "^0.1.0",
     "@protobufs/cosmos_proto": "^0.0.10",
