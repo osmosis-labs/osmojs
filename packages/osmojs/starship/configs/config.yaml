@@ -6,13 +6,6 @@ chains:
       rest: 1317
       rpc: 26657
       faucet: 8007
-    resources:
-      limits:
-        cpu: 1
-        memory: 1Gi 
-      requests:
-        cpu: 1
-        memory: 1Gi 
 
   - name: cosmos-2
     type: cosmos
@@ -21,22 +14,6 @@ chains:
       rest: 1313
       rpc: 26653
       faucet: 8003
-    resources:
-      limits:
-        cpu: 1
-        memory: 1Gi 
-      requests:
-        cpu: 1
-        memory: 1Gi 
-
-faucet:
-  resources:
-    limits:
-      cpu: "0.5"
-      memory: "500M"
-    requests:
-      cpu: "0.5"
-      memory: "500M"
 
 relayers:
   - name: osmos-cosmos
