@@ -1,6 +1,6 @@
-import { join } from 'path';
-import telescope from '@osmonauts/telescope';
-import { sync as rimraf } from 'rimraf';
+const { join } = require('path');
+const telescope = require('@osmonauts/telescope');
+const rimraf = require('rimraf').sync;
 
 const protoDirs = [
   join(__dirname, '/../ics23/proto'),
