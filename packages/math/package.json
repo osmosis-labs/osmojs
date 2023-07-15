@@ -5,27 +5,29 @@
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
   "license": "SEE LICENSE IN LICENSE",
-  "main": "main/index.js",
-  "module": "module/index.js",
-  "typings": "types/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
   "files": [
-    "main",
-    "module",
-    "src",
-    "types"
+    "dist",
+    "!CHANGELOG.md"
   ],
   "scripts": {
-    "build:main": "cross-env BABEL_ENV=production babel src --out-dir main --delete-dir-on-start --extensions \".tsx,.ts,.js\"",
-    "build:module": "cross-env MODULE=true babel src --out-dir module --delete-dir-on-start  --extensions \".tsx,.ts,.js\"",
-    "build:ts": "tsc --project ./tsconfig.json",
-    "build": "npm run build:module && npm run build:main",
-    "buidl": "npm run build && npm run build:ts",
-    "build:proto": "npm run clean && npm run proto",
+    "build:cjs": "yarn tsc -p tsconfig.json --outDir dist --module commonjs || true",
+    "build:mjs": "yarn tsc -p tsconfig.json --outDir mjs --module es2022 --declaration false || true",
+    "clean:mjs": "rimraf mjs",
+    "clean:dist": "rimraf dist",
+    "clean": "npm run clean:mjs && npm run clean:dist",
+    "build:rename": "publish-scripts --cmd rename --srcDir mjs --outDir dist --findExt js --replaceExt mjs --no-rmDir",
+    "build": "npm run clean && npm run build:cjs && npm run build:mjs && npm run build:rename",
     "codegen": "cross-env NODE_ENV=development babel-node scripts/codegen.js",
     "prepare": "npm run build",
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "clean": "rimraf ./types && rimraf ./src/codegen",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
@@ -75,13 +77,12 @@
     "jest-in-case": "^1.0.2",
     "mkdirp": "1.0.4",
     "prettier": "^2.7.0",
-    "regenerator-runtime": "^0.13.7",
+    "publish-scripts": "0.1.0",
     "rimraf": "3.0.2",
     "ts-jest": "^29.0.1",
-    "typescript": "^4.8.3"
+    "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
     "@chain-registry/osmosis": "1.11.0",
     "@chain-registry/types": "0.14.0",
     "bignumber.js": "9.1.1",
