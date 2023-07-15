@@ -1,4 +1,4 @@
-import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./genesis";
+import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./shared";
 import * as _m0 from "protobufjs/minimal";
 /**
  * ReplaceMigrationRecordsProposal is a gov Content type for updating the
@@ -8,6 +8,7 @@ import * as _m0 from "protobufjs/minimal";
  * a single concentrated pool.
  */
 export interface ReplaceMigrationRecordsProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     records: BalancerToConcentratedPoolLink[];
@@ -29,7 +30,7 @@ export interface ReplaceMigrationRecordsProposalAmino {
     records: BalancerToConcentratedPoolLinkAmino[];
 }
 export interface ReplaceMigrationRecordsProposalAminoMsg {
-    type: "osmosis/gamm/replace-migration-records-proposal";
+    type: "osmosis/ReplaceMigrationRecordsProposal";
     value: ReplaceMigrationRecordsProposalAmino;
 }
 /**
@@ -40,6 +41,7 @@ export interface ReplaceMigrationRecordsProposalAminoMsg {
  * a single concentrated pool.
  */
 export interface ReplaceMigrationRecordsProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     records: BalancerToConcentratedPoolLinkSDKType[];
@@ -55,6 +57,7 @@ export interface ReplaceMigrationRecordsProposalSDKType {
  * [(Balancer 1, CL 5), (Balancer 3, CL 4), (Balancer 4, CL 10)]
  */
 export interface UpdateMigrationRecordsProposal {
+    $typeUrl?: string;
     title: string;
     description: string;
     records: BalancerToConcentratedPoolLink[];
@@ -79,7 +82,7 @@ export interface UpdateMigrationRecordsProposalAmino {
     records: BalancerToConcentratedPoolLinkAmino[];
 }
 export interface UpdateMigrationRecordsProposalAminoMsg {
-    type: "osmosis/gamm/update-migration-records-proposal";
+    type: "osmosis/UpdateMigrationRecordsProposal";
     value: UpdateMigrationRecordsProposalAmino;
 }
 /**
@@ -93,6 +96,7 @@ export interface UpdateMigrationRecordsProposalAminoMsg {
  * [(Balancer 1, CL 5), (Balancer 3, CL 4), (Balancer 4, CL 10)]
  */
 export interface UpdateMigrationRecordsProposalSDKType {
+    $typeUrl?: string;
     title: string;
     description: string;
     records: BalancerToConcentratedPoolLinkSDKType[];

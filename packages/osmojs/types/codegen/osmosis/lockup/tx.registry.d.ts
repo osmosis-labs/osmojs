@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup, MsgForceUnlock } from "./tx";
+import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup, MsgForceUnlock, MsgSetRewardReceiverAddress } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -21,6 +21,10 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         forceUnlock(value: MsgForceUnlock): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        setRewardReceiverAddress(value: MsgSetRewardReceiverAddress): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -46,6 +50,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgForceUnlock;
         };
+        setRewardReceiverAddress(value: MsgSetRewardReceiverAddress): {
+            typeUrl: string;
+            value: MsgSetRewardReceiverAddress;
+        };
     };
     fromPartial: {
         lockTokens(value: MsgLockTokens): {
@@ -67,6 +75,10 @@ export declare const MessageComposer: {
         forceUnlock(value: MsgForceUnlock): {
             typeUrl: string;
             value: MsgForceUnlock;
+        };
+        setRewardReceiverAddress(value: MsgSetRewardReceiverAddress): {
+            typeUrl: string;
+            value: MsgSetRewardReceiverAddress;
         };
     };
 };

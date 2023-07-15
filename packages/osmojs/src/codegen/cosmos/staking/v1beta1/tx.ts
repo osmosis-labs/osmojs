@@ -5,6 +5,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
 import { toBase64, fromBase64 } from "@cosmjs/encoding";
 import { encodeBech32Pubkey, decodeBech32Pubkey } from "@cosmjs/amino";
+import { Decimal } from "@cosmjs/math";
 import { toTimestamp, fromTimestamp } from "../../../helpers";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 
@@ -567,7 +568,7 @@ export const MsgEditValidator = {
     }
 
     if (message.commissionRate !== "") {
-      writer.uint32(26).string(message.commissionRate);
+      writer.uint32(26).string(Decimal.fromUserInput(message.commissionRate, 18).atomics);
     }
 
     if (message.minSelfDelegation !== "") {
@@ -595,7 +596,7 @@ export const MsgEditValidator = {
           break;
 
         case 3:
-          message.commissionRate = reader.string();
+          message.commissionRate = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 4:

@@ -1,4 +1,4 @@
-import { AccessConfig, AccessConfigAmino, AccessConfigSDKType, Params, ParamsAmino, ParamsSDKType } from "./types";
+import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
@@ -123,33 +123,6 @@ export interface MsgInstantiateContractSDKType {
     msg: Uint8Array;
     funds: CoinSDKType[];
 }
-/** MsgInstantiateContractResponse return instantiation result data */
-export interface MsgInstantiateContractResponse {
-    /** Address is the bech32 address of the new contract instance. */
-    address: string;
-    /** Data contains bytes to returned from the contract */
-    data: Uint8Array;
-}
-export interface MsgInstantiateContractResponseProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContractResponse";
-    value: Uint8Array;
-}
-/** MsgInstantiateContractResponse return instantiation result data */
-export interface MsgInstantiateContractResponseAmino {
-    /** Address is the bech32 address of the new contract instance. */
-    address: string;
-    /** Data contains bytes to returned from the contract */
-    data: Uint8Array;
-}
-export interface MsgInstantiateContractResponseAminoMsg {
-    type: "wasm/MsgInstantiateContractResponse";
-    value: MsgInstantiateContractResponseAmino;
-}
-/** MsgInstantiateContractResponse return instantiation result data */
-export interface MsgInstantiateContractResponseSDKType {
-    address: string;
-    data: Uint8Array;
-}
 /**
  * MsgInstantiateContract2 create a new smart contract instance for the given
  * code id with a predicable address.
@@ -221,6 +194,33 @@ export interface MsgInstantiateContract2SDKType {
     funds: CoinSDKType[];
     salt: Uint8Array;
     fix_msg: boolean;
+}
+/** MsgInstantiateContractResponse return instantiation result data */
+export interface MsgInstantiateContractResponse {
+    /** Address is the bech32 address of the new contract instance. */
+    address: string;
+    /** Data contains bytes to returned from the contract */
+    data: Uint8Array;
+}
+export interface MsgInstantiateContractResponseProtoMsg {
+    typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContractResponse";
+    value: Uint8Array;
+}
+/** MsgInstantiateContractResponse return instantiation result data */
+export interface MsgInstantiateContractResponseAmino {
+    /** Address is the bech32 address of the new contract instance. */
+    address: string;
+    /** Data contains bytes to returned from the contract */
+    data: Uint8Array;
+}
+export interface MsgInstantiateContractResponseAminoMsg {
+    type: "wasm/MsgInstantiateContractResponse";
+    value: MsgInstantiateContractResponseAmino;
+}
+/** MsgInstantiateContractResponse return instantiation result data */
+export interface MsgInstantiateContractResponseSDKType {
+    address: string;
+    data: Uint8Array;
 }
 /** MsgInstantiateContract2Response return instantiation result data */
 export interface MsgInstantiateContract2Response {
@@ -515,461 +515,6 @@ export interface MsgUpdateInstantiateConfigResponseAminoMsg {
 /** MsgUpdateInstantiateConfigResponse returns empty data */
 export interface MsgUpdateInstantiateConfigResponseSDKType {
 }
-/**
- * MsgUpdateParams is the MsgUpdateParams request type.
- *
- * Since: 0.40
- */
-export interface MsgUpdateParams {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /**
-     * params defines the x/wasm parameters to update.
-     *
-     * NOTE: All parameters must be supplied.
-     */
-    params?: Params;
-}
-export interface MsgUpdateParamsProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgUpdateParams";
-    value: Uint8Array;
-}
-/**
- * MsgUpdateParams is the MsgUpdateParams request type.
- *
- * Since: 0.40
- */
-export interface MsgUpdateParamsAmino {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /**
-     * params defines the x/wasm parameters to update.
-     *
-     * NOTE: All parameters must be supplied.
-     */
-    params?: ParamsAmino;
-}
-export interface MsgUpdateParamsAminoMsg {
-    type: "wasm/MsgUpdateParams";
-    value: MsgUpdateParamsAmino;
-}
-/**
- * MsgUpdateParams is the MsgUpdateParams request type.
- *
- * Since: 0.40
- */
-export interface MsgUpdateParamsSDKType {
-    authority: string;
-    params?: ParamsSDKType;
-}
-/**
- * MsgUpdateParamsResponse defines the response structure for executing a
- * MsgUpdateParams message.
- *
- * Since: 0.40
- */
-export interface MsgUpdateParamsResponse {
-}
-export interface MsgUpdateParamsResponseProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgUpdateParamsResponse";
-    value: Uint8Array;
-}
-/**
- * MsgUpdateParamsResponse defines the response structure for executing a
- * MsgUpdateParams message.
- *
- * Since: 0.40
- */
-export interface MsgUpdateParamsResponseAmino {
-}
-export interface MsgUpdateParamsResponseAminoMsg {
-    type: "wasm/MsgUpdateParamsResponse";
-    value: MsgUpdateParamsResponseAmino;
-}
-/**
- * MsgUpdateParamsResponse defines the response structure for executing a
- * MsgUpdateParams message.
- *
- * Since: 0.40
- */
-export interface MsgUpdateParamsResponseSDKType {
-}
-/**
- * MsgSudoContract is the MsgSudoContract request type.
- *
- * Since: 0.40
- */
-export interface MsgSudoContract {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /** Contract is the address of the smart contract */
-    contract: string;
-    /** Msg json encoded message to be passed to the contract as sudo */
-    msg: Uint8Array;
-}
-export interface MsgSudoContractProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgSudoContract";
-    value: Uint8Array;
-}
-/**
- * MsgSudoContract is the MsgSudoContract request type.
- *
- * Since: 0.40
- */
-export interface MsgSudoContractAmino {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /** Contract is the address of the smart contract */
-    contract: string;
-    /** Msg json encoded message to be passed to the contract as sudo */
-    msg: Uint8Array;
-}
-export interface MsgSudoContractAminoMsg {
-    type: "wasm/MsgSudoContract";
-    value: MsgSudoContractAmino;
-}
-/**
- * MsgSudoContract is the MsgSudoContract request type.
- *
- * Since: 0.40
- */
-export interface MsgSudoContractSDKType {
-    authority: string;
-    contract: string;
-    msg: Uint8Array;
-}
-/**
- * MsgSudoContractResponse defines the response structure for executing a
- * MsgSudoContract message.
- *
- * Since: 0.40
- */
-export interface MsgSudoContractResponse {
-    /** Data contains bytes to returned from the contract */
-    data: Uint8Array;
-}
-export interface MsgSudoContractResponseProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgSudoContractResponse";
-    value: Uint8Array;
-}
-/**
- * MsgSudoContractResponse defines the response structure for executing a
- * MsgSudoContract message.
- *
- * Since: 0.40
- */
-export interface MsgSudoContractResponseAmino {
-    /** Data contains bytes to returned from the contract */
-    data: Uint8Array;
-}
-export interface MsgSudoContractResponseAminoMsg {
-    type: "wasm/MsgSudoContractResponse";
-    value: MsgSudoContractResponseAmino;
-}
-/**
- * MsgSudoContractResponse defines the response structure for executing a
- * MsgSudoContract message.
- *
- * Since: 0.40
- */
-export interface MsgSudoContractResponseSDKType {
-    data: Uint8Array;
-}
-/**
- * MsgPinCodes is the MsgPinCodes request type.
- *
- * Since: 0.40
- */
-export interface MsgPinCodes {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /** CodeIDs references the new WASM codes */
-    codeIds: Long[];
-}
-export interface MsgPinCodesProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgPinCodes";
-    value: Uint8Array;
-}
-/**
- * MsgPinCodes is the MsgPinCodes request type.
- *
- * Since: 0.40
- */
-export interface MsgPinCodesAmino {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /** CodeIDs references the new WASM codes */
-    code_ids: string[];
-}
-export interface MsgPinCodesAminoMsg {
-    type: "wasm/MsgPinCodes";
-    value: MsgPinCodesAmino;
-}
-/**
- * MsgPinCodes is the MsgPinCodes request type.
- *
- * Since: 0.40
- */
-export interface MsgPinCodesSDKType {
-    authority: string;
-    code_ids: Long[];
-}
-/**
- * MsgPinCodesResponse defines the response structure for executing a
- * MsgPinCodes message.
- *
- * Since: 0.40
- */
-export interface MsgPinCodesResponse {
-}
-export interface MsgPinCodesResponseProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgPinCodesResponse";
-    value: Uint8Array;
-}
-/**
- * MsgPinCodesResponse defines the response structure for executing a
- * MsgPinCodes message.
- *
- * Since: 0.40
- */
-export interface MsgPinCodesResponseAmino {
-}
-export interface MsgPinCodesResponseAminoMsg {
-    type: "wasm/MsgPinCodesResponse";
-    value: MsgPinCodesResponseAmino;
-}
-/**
- * MsgPinCodesResponse defines the response structure for executing a
- * MsgPinCodes message.
- *
- * Since: 0.40
- */
-export interface MsgPinCodesResponseSDKType {
-}
-/**
- * MsgUnpinCodes is the MsgUnpinCodes request type.
- *
- * Since: 0.40
- */
-export interface MsgUnpinCodes {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /** CodeIDs references the WASM codes */
-    codeIds: Long[];
-}
-export interface MsgUnpinCodesProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgUnpinCodes";
-    value: Uint8Array;
-}
-/**
- * MsgUnpinCodes is the MsgUnpinCodes request type.
- *
- * Since: 0.40
- */
-export interface MsgUnpinCodesAmino {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /** CodeIDs references the WASM codes */
-    code_ids: string[];
-}
-export interface MsgUnpinCodesAminoMsg {
-    type: "wasm/MsgUnpinCodes";
-    value: MsgUnpinCodesAmino;
-}
-/**
- * MsgUnpinCodes is the MsgUnpinCodes request type.
- *
- * Since: 0.40
- */
-export interface MsgUnpinCodesSDKType {
-    authority: string;
-    code_ids: Long[];
-}
-/**
- * MsgUnpinCodesResponse defines the response structure for executing a
- * MsgUnpinCodes message.
- *
- * Since: 0.40
- */
-export interface MsgUnpinCodesResponse {
-}
-export interface MsgUnpinCodesResponseProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgUnpinCodesResponse";
-    value: Uint8Array;
-}
-/**
- * MsgUnpinCodesResponse defines the response structure for executing a
- * MsgUnpinCodes message.
- *
- * Since: 0.40
- */
-export interface MsgUnpinCodesResponseAmino {
-}
-export interface MsgUnpinCodesResponseAminoMsg {
-    type: "wasm/MsgUnpinCodesResponse";
-    value: MsgUnpinCodesResponseAmino;
-}
-/**
- * MsgUnpinCodesResponse defines the response structure for executing a
- * MsgUnpinCodes message.
- *
- * Since: 0.40
- */
-export interface MsgUnpinCodesResponseSDKType {
-}
-/**
- * MsgStoreAndInstantiateContract is the MsgStoreAndInstantiateContract
- * request type.
- *
- * Since: 0.40
- */
-export interface MsgStoreAndInstantiateContract {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /** WASMByteCode can be raw or gzip compressed */
-    wasmByteCode: Uint8Array;
-    /** InstantiatePermission to apply on contract creation, optional */
-    instantiatePermission?: AccessConfig;
-    /**
-     * UnpinCode code on upload, optional. As default the uploaded contract is
-     * pinned to cache.
-     */
-    unpinCode: boolean;
-    /** Admin is an optional address that can execute migrations */
-    admin: string;
-    /** Label is optional metadata to be stored with a constract instance. */
-    label: string;
-    /** Msg json encoded message to be passed to the contract on instantiation */
-    msg: Uint8Array;
-    /**
-     * Funds coins that are transferred from the authority account to the contract
-     * on instantiation
-     */
-    funds: Coin[];
-    /** Source is the URL where the code is hosted */
-    source: string;
-    /**
-     * Builder is the docker image used to build the code deterministically, used
-     * for smart contract verification
-     */
-    builder: string;
-    /**
-     * CodeHash is the SHA256 sum of the code outputted by builder, used for smart
-     * contract verification
-     */
-    codeHash: Uint8Array;
-}
-export interface MsgStoreAndInstantiateContractProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract";
-    value: Uint8Array;
-}
-/**
- * MsgStoreAndInstantiateContract is the MsgStoreAndInstantiateContract
- * request type.
- *
- * Since: 0.40
- */
-export interface MsgStoreAndInstantiateContractAmino {
-    /** Authority is the address of the governance account. */
-    authority: string;
-    /** WASMByteCode can be raw or gzip compressed */
-    wasm_byte_code: string;
-    /** InstantiatePermission to apply on contract creation, optional */
-    instantiate_permission?: AccessConfigAmino;
-    /**
-     * UnpinCode code on upload, optional. As default the uploaded contract is
-     * pinned to cache.
-     */
-    unpin_code: boolean;
-    /** Admin is an optional address that can execute migrations */
-    admin: string;
-    /** Label is optional metadata to be stored with a constract instance. */
-    label: string;
-    /** Msg json encoded message to be passed to the contract on instantiation */
-    msg: Uint8Array;
-    /**
-     * Funds coins that are transferred from the authority account to the contract
-     * on instantiation
-     */
-    funds: CoinAmino[];
-    /** Source is the URL where the code is hosted */
-    source: string;
-    /**
-     * Builder is the docker image used to build the code deterministically, used
-     * for smart contract verification
-     */
-    builder: string;
-    /**
-     * CodeHash is the SHA256 sum of the code outputted by builder, used for smart
-     * contract verification
-     */
-    code_hash: Uint8Array;
-}
-export interface MsgStoreAndInstantiateContractAminoMsg {
-    type: "wasm/MsgStoreAndInstantiateContract";
-    value: MsgStoreAndInstantiateContractAmino;
-}
-/**
- * MsgStoreAndInstantiateContract is the MsgStoreAndInstantiateContract
- * request type.
- *
- * Since: 0.40
- */
-export interface MsgStoreAndInstantiateContractSDKType {
-    authority: string;
-    wasm_byte_code: Uint8Array;
-    instantiate_permission?: AccessConfigSDKType;
-    unpin_code: boolean;
-    admin: string;
-    label: string;
-    msg: Uint8Array;
-    funds: CoinSDKType[];
-    source: string;
-    builder: string;
-    code_hash: Uint8Array;
-}
-/**
- * MsgStoreAndInstantiateContractResponse defines the response structure
- * for executing a MsgStoreAndInstantiateContract message.
- *
- * Since: 0.40
- */
-export interface MsgStoreAndInstantiateContractResponse {
-    /** Address is the bech32 address of the new contract instance. */
-    address: string;
-    /** Data contains bytes to returned from the contract */
-    data: Uint8Array;
-}
-export interface MsgStoreAndInstantiateContractResponseProtoMsg {
-    typeUrl: "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContractResponse";
-    value: Uint8Array;
-}
-/**
- * MsgStoreAndInstantiateContractResponse defines the response structure
- * for executing a MsgStoreAndInstantiateContract message.
- *
- * Since: 0.40
- */
-export interface MsgStoreAndInstantiateContractResponseAmino {
-    /** Address is the bech32 address of the new contract instance. */
-    address: string;
-    /** Data contains bytes to returned from the contract */
-    data: Uint8Array;
-}
-export interface MsgStoreAndInstantiateContractResponseAminoMsg {
-    type: "wasm/MsgStoreAndInstantiateContractResponse";
-    value: MsgStoreAndInstantiateContractResponseAmino;
-}
-/**
- * MsgStoreAndInstantiateContractResponse defines the response structure
- * for executing a MsgStoreAndInstantiateContract message.
- *
- * Since: 0.40
- */
-export interface MsgStoreAndInstantiateContractResponseSDKType {
-    address: string;
-    data: Uint8Array;
-}
 export declare const MsgStoreCode: {
     typeUrl: string;
     encode(message: MsgStoreCode, writer?: _m0.Writer): _m0.Writer;
@@ -1009,19 +554,6 @@ export declare const MsgInstantiateContract: {
     toProto(message: MsgInstantiateContract): Uint8Array;
     toProtoMsg(message: MsgInstantiateContract): MsgInstantiateContractProtoMsg;
 };
-export declare const MsgInstantiateContractResponse: {
-    typeUrl: string;
-    encode(message: MsgInstantiateContractResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContractResponse;
-    fromPartial(object: Partial<MsgInstantiateContractResponse>): MsgInstantiateContractResponse;
-    fromAmino(object: MsgInstantiateContractResponseAmino): MsgInstantiateContractResponse;
-    toAmino(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseAmino;
-    fromAminoMsg(object: MsgInstantiateContractResponseAminoMsg): MsgInstantiateContractResponse;
-    toAminoMsg(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseAminoMsg;
-    fromProtoMsg(message: MsgInstantiateContractResponseProtoMsg): MsgInstantiateContractResponse;
-    toProto(message: MsgInstantiateContractResponse): Uint8Array;
-    toProtoMsg(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseProtoMsg;
-};
 export declare const MsgInstantiateContract2: {
     typeUrl: string;
     encode(message: MsgInstantiateContract2, writer?: _m0.Writer): _m0.Writer;
@@ -1034,6 +566,19 @@ export declare const MsgInstantiateContract2: {
     fromProtoMsg(message: MsgInstantiateContract2ProtoMsg): MsgInstantiateContract2;
     toProto(message: MsgInstantiateContract2): Uint8Array;
     toProtoMsg(message: MsgInstantiateContract2): MsgInstantiateContract2ProtoMsg;
+};
+export declare const MsgInstantiateContractResponse: {
+    typeUrl: string;
+    encode(message: MsgInstantiateContractResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgInstantiateContractResponse;
+    fromPartial(object: Partial<MsgInstantiateContractResponse>): MsgInstantiateContractResponse;
+    fromAmino(object: MsgInstantiateContractResponseAmino): MsgInstantiateContractResponse;
+    toAmino(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseAmino;
+    fromAminoMsg(object: MsgInstantiateContractResponseAminoMsg): MsgInstantiateContractResponse;
+    toAminoMsg(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseAminoMsg;
+    fromProtoMsg(message: MsgInstantiateContractResponseProtoMsg): MsgInstantiateContractResponse;
+    toProto(message: MsgInstantiateContractResponse): Uint8Array;
+    toProtoMsg(message: MsgInstantiateContractResponse): MsgInstantiateContractResponseProtoMsg;
 };
 export declare const MsgInstantiateContract2Response: {
     typeUrl: string;
@@ -1177,134 +722,4 @@ export declare const MsgUpdateInstantiateConfigResponse: {
     fromProtoMsg(message: MsgUpdateInstantiateConfigResponseProtoMsg): MsgUpdateInstantiateConfigResponse;
     toProto(message: MsgUpdateInstantiateConfigResponse): Uint8Array;
     toProtoMsg(message: MsgUpdateInstantiateConfigResponse): MsgUpdateInstantiateConfigResponseProtoMsg;
-};
-export declare const MsgUpdateParams: {
-    typeUrl: string;
-    encode(message: MsgUpdateParams, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParams;
-    fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-    fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams;
-    toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino;
-    fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams;
-    toAminoMsg(message: MsgUpdateParams): MsgUpdateParamsAminoMsg;
-    fromProtoMsg(message: MsgUpdateParamsProtoMsg): MsgUpdateParams;
-    toProto(message: MsgUpdateParams): Uint8Array;
-    toProtoMsg(message: MsgUpdateParams): MsgUpdateParamsProtoMsg;
-};
-export declare const MsgUpdateParamsResponse: {
-    typeUrl: string;
-    encode(_: MsgUpdateParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParamsResponse;
-    fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
-    fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse;
-    toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino;
-    fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse;
-    toAminoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseAminoMsg;
-    fromProtoMsg(message: MsgUpdateParamsResponseProtoMsg): MsgUpdateParamsResponse;
-    toProto(message: MsgUpdateParamsResponse): Uint8Array;
-    toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg;
-};
-export declare const MsgSudoContract: {
-    typeUrl: string;
-    encode(message: MsgSudoContract, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSudoContract;
-    fromPartial(object: Partial<MsgSudoContract>): MsgSudoContract;
-    fromAmino(object: MsgSudoContractAmino): MsgSudoContract;
-    toAmino(message: MsgSudoContract): MsgSudoContractAmino;
-    fromAminoMsg(object: MsgSudoContractAminoMsg): MsgSudoContract;
-    toAminoMsg(message: MsgSudoContract): MsgSudoContractAminoMsg;
-    fromProtoMsg(message: MsgSudoContractProtoMsg): MsgSudoContract;
-    toProto(message: MsgSudoContract): Uint8Array;
-    toProtoMsg(message: MsgSudoContract): MsgSudoContractProtoMsg;
-};
-export declare const MsgSudoContractResponse: {
-    typeUrl: string;
-    encode(message: MsgSudoContractResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSudoContractResponse;
-    fromPartial(object: Partial<MsgSudoContractResponse>): MsgSudoContractResponse;
-    fromAmino(object: MsgSudoContractResponseAmino): MsgSudoContractResponse;
-    toAmino(message: MsgSudoContractResponse): MsgSudoContractResponseAmino;
-    fromAminoMsg(object: MsgSudoContractResponseAminoMsg): MsgSudoContractResponse;
-    toAminoMsg(message: MsgSudoContractResponse): MsgSudoContractResponseAminoMsg;
-    fromProtoMsg(message: MsgSudoContractResponseProtoMsg): MsgSudoContractResponse;
-    toProto(message: MsgSudoContractResponse): Uint8Array;
-    toProtoMsg(message: MsgSudoContractResponse): MsgSudoContractResponseProtoMsg;
-};
-export declare const MsgPinCodes: {
-    typeUrl: string;
-    encode(message: MsgPinCodes, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgPinCodes;
-    fromPartial(object: Partial<MsgPinCodes>): MsgPinCodes;
-    fromAmino(object: MsgPinCodesAmino): MsgPinCodes;
-    toAmino(message: MsgPinCodes): MsgPinCodesAmino;
-    fromAminoMsg(object: MsgPinCodesAminoMsg): MsgPinCodes;
-    toAminoMsg(message: MsgPinCodes): MsgPinCodesAminoMsg;
-    fromProtoMsg(message: MsgPinCodesProtoMsg): MsgPinCodes;
-    toProto(message: MsgPinCodes): Uint8Array;
-    toProtoMsg(message: MsgPinCodes): MsgPinCodesProtoMsg;
-};
-export declare const MsgPinCodesResponse: {
-    typeUrl: string;
-    encode(_: MsgPinCodesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgPinCodesResponse;
-    fromPartial(_: Partial<MsgPinCodesResponse>): MsgPinCodesResponse;
-    fromAmino(_: MsgPinCodesResponseAmino): MsgPinCodesResponse;
-    toAmino(_: MsgPinCodesResponse): MsgPinCodesResponseAmino;
-    fromAminoMsg(object: MsgPinCodesResponseAminoMsg): MsgPinCodesResponse;
-    toAminoMsg(message: MsgPinCodesResponse): MsgPinCodesResponseAminoMsg;
-    fromProtoMsg(message: MsgPinCodesResponseProtoMsg): MsgPinCodesResponse;
-    toProto(message: MsgPinCodesResponse): Uint8Array;
-    toProtoMsg(message: MsgPinCodesResponse): MsgPinCodesResponseProtoMsg;
-};
-export declare const MsgUnpinCodes: {
-    typeUrl: string;
-    encode(message: MsgUnpinCodes, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnpinCodes;
-    fromPartial(object: Partial<MsgUnpinCodes>): MsgUnpinCodes;
-    fromAmino(object: MsgUnpinCodesAmino): MsgUnpinCodes;
-    toAmino(message: MsgUnpinCodes): MsgUnpinCodesAmino;
-    fromAminoMsg(object: MsgUnpinCodesAminoMsg): MsgUnpinCodes;
-    toAminoMsg(message: MsgUnpinCodes): MsgUnpinCodesAminoMsg;
-    fromProtoMsg(message: MsgUnpinCodesProtoMsg): MsgUnpinCodes;
-    toProto(message: MsgUnpinCodes): Uint8Array;
-    toProtoMsg(message: MsgUnpinCodes): MsgUnpinCodesProtoMsg;
-};
-export declare const MsgUnpinCodesResponse: {
-    typeUrl: string;
-    encode(_: MsgUnpinCodesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnpinCodesResponse;
-    fromPartial(_: Partial<MsgUnpinCodesResponse>): MsgUnpinCodesResponse;
-    fromAmino(_: MsgUnpinCodesResponseAmino): MsgUnpinCodesResponse;
-    toAmino(_: MsgUnpinCodesResponse): MsgUnpinCodesResponseAmino;
-    fromAminoMsg(object: MsgUnpinCodesResponseAminoMsg): MsgUnpinCodesResponse;
-    toAminoMsg(message: MsgUnpinCodesResponse): MsgUnpinCodesResponseAminoMsg;
-    fromProtoMsg(message: MsgUnpinCodesResponseProtoMsg): MsgUnpinCodesResponse;
-    toProto(message: MsgUnpinCodesResponse): Uint8Array;
-    toProtoMsg(message: MsgUnpinCodesResponse): MsgUnpinCodesResponseProtoMsg;
-};
-export declare const MsgStoreAndInstantiateContract: {
-    typeUrl: string;
-    encode(message: MsgStoreAndInstantiateContract, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreAndInstantiateContract;
-    fromPartial(object: Partial<MsgStoreAndInstantiateContract>): MsgStoreAndInstantiateContract;
-    fromAmino(object: MsgStoreAndInstantiateContractAmino): MsgStoreAndInstantiateContract;
-    toAmino(message: MsgStoreAndInstantiateContract): MsgStoreAndInstantiateContractAmino;
-    fromAminoMsg(object: MsgStoreAndInstantiateContractAminoMsg): MsgStoreAndInstantiateContract;
-    toAminoMsg(message: MsgStoreAndInstantiateContract): MsgStoreAndInstantiateContractAminoMsg;
-    fromProtoMsg(message: MsgStoreAndInstantiateContractProtoMsg): MsgStoreAndInstantiateContract;
-    toProto(message: MsgStoreAndInstantiateContract): Uint8Array;
-    toProtoMsg(message: MsgStoreAndInstantiateContract): MsgStoreAndInstantiateContractProtoMsg;
-};
-export declare const MsgStoreAndInstantiateContractResponse: {
-    typeUrl: string;
-    encode(message: MsgStoreAndInstantiateContractResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreAndInstantiateContractResponse;
-    fromPartial(object: Partial<MsgStoreAndInstantiateContractResponse>): MsgStoreAndInstantiateContractResponse;
-    fromAmino(object: MsgStoreAndInstantiateContractResponseAmino): MsgStoreAndInstantiateContractResponse;
-    toAmino(message: MsgStoreAndInstantiateContractResponse): MsgStoreAndInstantiateContractResponseAmino;
-    fromAminoMsg(object: MsgStoreAndInstantiateContractResponseAminoMsg): MsgStoreAndInstantiateContractResponse;
-    toAminoMsg(message: MsgStoreAndInstantiateContractResponse): MsgStoreAndInstantiateContractResponseAminoMsg;
-    fromProtoMsg(message: MsgStoreAndInstantiateContractResponseProtoMsg): MsgStoreAndInstantiateContractResponse;
-    toProto(message: MsgStoreAndInstantiateContractResponse): Uint8Array;
-    toProtoMsg(message: MsgStoreAndInstantiateContractResponse): MsgStoreAndInstantiateContractResponseProtoMsg;
 };

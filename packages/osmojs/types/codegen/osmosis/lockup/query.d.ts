@@ -390,6 +390,40 @@ export interface LockedResponseAminoMsg {
 export interface LockedResponseSDKType {
     lock?: PeriodLockSDKType;
 }
+export interface LockRewardReceiverRequest {
+    lockId: Long;
+}
+export interface LockRewardReceiverRequestProtoMsg {
+    typeUrl: "/osmosis.lockup.LockRewardReceiverRequest";
+    value: Uint8Array;
+}
+export interface LockRewardReceiverRequestAmino {
+    lock_id: string;
+}
+export interface LockRewardReceiverRequestAminoMsg {
+    type: "osmosis/lockup/lock-reward-receiver-request";
+    value: LockRewardReceiverRequestAmino;
+}
+export interface LockRewardReceiverRequestSDKType {
+    lock_id: Long;
+}
+export interface LockRewardReceiverResponse {
+    rewardReceiver: string;
+}
+export interface LockRewardReceiverResponseProtoMsg {
+    typeUrl: "/osmosis.lockup.LockRewardReceiverResponse";
+    value: Uint8Array;
+}
+export interface LockRewardReceiverResponseAmino {
+    reward_receiver: string;
+}
+export interface LockRewardReceiverResponseAminoMsg {
+    type: "osmosis/lockup/lock-reward-receiver-response";
+    value: LockRewardReceiverResponseAmino;
+}
+export interface LockRewardReceiverResponseSDKType {
+    reward_receiver: string;
+}
 export interface NextLockIDRequest {
 }
 export interface NextLockIDRequestProtoMsg {
@@ -421,6 +455,7 @@ export interface NextLockIDResponseAminoMsg {
 export interface NextLockIDResponseSDKType {
     lock_id: Long;
 }
+/** @deprecated */
 export interface SyntheticLockupsByLockupIDRequest {
     lockId: Long;
 }
@@ -428,6 +463,7 @@ export interface SyntheticLockupsByLockupIDRequestProtoMsg {
     typeUrl: "/osmosis.lockup.SyntheticLockupsByLockupIDRequest";
     value: Uint8Array;
 }
+/** @deprecated */
 export interface SyntheticLockupsByLockupIDRequestAmino {
     lock_id: string;
 }
@@ -435,9 +471,11 @@ export interface SyntheticLockupsByLockupIDRequestAminoMsg {
     type: "osmosis/lockup/synthetic-lockups-by-lockup-id-request";
     value: SyntheticLockupsByLockupIDRequestAmino;
 }
+/** @deprecated */
 export interface SyntheticLockupsByLockupIDRequestSDKType {
     lock_id: Long;
 }
+/** @deprecated */
 export interface SyntheticLockupsByLockupIDResponse {
     syntheticLocks: SyntheticLock[];
 }
@@ -445,6 +483,7 @@ export interface SyntheticLockupsByLockupIDResponseProtoMsg {
     typeUrl: "/osmosis.lockup.SyntheticLockupsByLockupIDResponse";
     value: Uint8Array;
 }
+/** @deprecated */
 export interface SyntheticLockupsByLockupIDResponseAmino {
     synthetic_locks: SyntheticLockAmino[];
 }
@@ -452,8 +491,43 @@ export interface SyntheticLockupsByLockupIDResponseAminoMsg {
     type: "osmosis/lockup/synthetic-lockups-by-lockup-id-response";
     value: SyntheticLockupsByLockupIDResponseAmino;
 }
+/** @deprecated */
 export interface SyntheticLockupsByLockupIDResponseSDKType {
     synthetic_locks: SyntheticLockSDKType[];
+}
+export interface SyntheticLockupByLockupIDRequest {
+    lockId: Long;
+}
+export interface SyntheticLockupByLockupIDRequestProtoMsg {
+    typeUrl: "/osmosis.lockup.SyntheticLockupByLockupIDRequest";
+    value: Uint8Array;
+}
+export interface SyntheticLockupByLockupIDRequestAmino {
+    lock_id: string;
+}
+export interface SyntheticLockupByLockupIDRequestAminoMsg {
+    type: "osmosis/lockup/synthetic-lockup-by-lockup-id-request";
+    value: SyntheticLockupByLockupIDRequestAmino;
+}
+export interface SyntheticLockupByLockupIDRequestSDKType {
+    lock_id: Long;
+}
+export interface SyntheticLockupByLockupIDResponse {
+    syntheticLock?: SyntheticLock;
+}
+export interface SyntheticLockupByLockupIDResponseProtoMsg {
+    typeUrl: "/osmosis.lockup.SyntheticLockupByLockupIDResponse";
+    value: Uint8Array;
+}
+export interface SyntheticLockupByLockupIDResponseAmino {
+    synthetic_lock?: SyntheticLockAmino;
+}
+export interface SyntheticLockupByLockupIDResponseAminoMsg {
+    type: "osmosis/lockup/synthetic-lockup-by-lockup-id-response";
+    value: SyntheticLockupByLockupIDResponseAmino;
+}
+export interface SyntheticLockupByLockupIDResponseSDKType {
+    synthetic_lock?: SyntheticLockSDKType;
 }
 export interface AccountLockedLongerDurationRequest {
     owner: string;
@@ -923,6 +997,32 @@ export declare const LockedResponse: {
     toProto(message: LockedResponse): Uint8Array;
     toProtoMsg(message: LockedResponse): LockedResponseProtoMsg;
 };
+export declare const LockRewardReceiverRequest: {
+    typeUrl: string;
+    encode(message: LockRewardReceiverRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LockRewardReceiverRequest;
+    fromPartial(object: Partial<LockRewardReceiverRequest>): LockRewardReceiverRequest;
+    fromAmino(object: LockRewardReceiverRequestAmino): LockRewardReceiverRequest;
+    toAmino(message: LockRewardReceiverRequest): LockRewardReceiverRequestAmino;
+    fromAminoMsg(object: LockRewardReceiverRequestAminoMsg): LockRewardReceiverRequest;
+    toAminoMsg(message: LockRewardReceiverRequest): LockRewardReceiverRequestAminoMsg;
+    fromProtoMsg(message: LockRewardReceiverRequestProtoMsg): LockRewardReceiverRequest;
+    toProto(message: LockRewardReceiverRequest): Uint8Array;
+    toProtoMsg(message: LockRewardReceiverRequest): LockRewardReceiverRequestProtoMsg;
+};
+export declare const LockRewardReceiverResponse: {
+    typeUrl: string;
+    encode(message: LockRewardReceiverResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LockRewardReceiverResponse;
+    fromPartial(object: Partial<LockRewardReceiverResponse>): LockRewardReceiverResponse;
+    fromAmino(object: LockRewardReceiverResponseAmino): LockRewardReceiverResponse;
+    toAmino(message: LockRewardReceiverResponse): LockRewardReceiverResponseAmino;
+    fromAminoMsg(object: LockRewardReceiverResponseAminoMsg): LockRewardReceiverResponse;
+    toAminoMsg(message: LockRewardReceiverResponse): LockRewardReceiverResponseAminoMsg;
+    fromProtoMsg(message: LockRewardReceiverResponseProtoMsg): LockRewardReceiverResponse;
+    toProto(message: LockRewardReceiverResponse): Uint8Array;
+    toProtoMsg(message: LockRewardReceiverResponse): LockRewardReceiverResponseProtoMsg;
+};
 export declare const NextLockIDRequest: {
     typeUrl: string;
     encode(_: NextLockIDRequest, writer?: _m0.Writer): _m0.Writer;
@@ -974,6 +1074,32 @@ export declare const SyntheticLockupsByLockupIDResponse: {
     fromProtoMsg(message: SyntheticLockupsByLockupIDResponseProtoMsg): SyntheticLockupsByLockupIDResponse;
     toProto(message: SyntheticLockupsByLockupIDResponse): Uint8Array;
     toProtoMsg(message: SyntheticLockupsByLockupIDResponse): SyntheticLockupsByLockupIDResponseProtoMsg;
+};
+export declare const SyntheticLockupByLockupIDRequest: {
+    typeUrl: string;
+    encode(message: SyntheticLockupByLockupIDRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupByLockupIDRequest;
+    fromPartial(object: Partial<SyntheticLockupByLockupIDRequest>): SyntheticLockupByLockupIDRequest;
+    fromAmino(object: SyntheticLockupByLockupIDRequestAmino): SyntheticLockupByLockupIDRequest;
+    toAmino(message: SyntheticLockupByLockupIDRequest): SyntheticLockupByLockupIDRequestAmino;
+    fromAminoMsg(object: SyntheticLockupByLockupIDRequestAminoMsg): SyntheticLockupByLockupIDRequest;
+    toAminoMsg(message: SyntheticLockupByLockupIDRequest): SyntheticLockupByLockupIDRequestAminoMsg;
+    fromProtoMsg(message: SyntheticLockupByLockupIDRequestProtoMsg): SyntheticLockupByLockupIDRequest;
+    toProto(message: SyntheticLockupByLockupIDRequest): Uint8Array;
+    toProtoMsg(message: SyntheticLockupByLockupIDRequest): SyntheticLockupByLockupIDRequestProtoMsg;
+};
+export declare const SyntheticLockupByLockupIDResponse: {
+    typeUrl: string;
+    encode(message: SyntheticLockupByLockupIDResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLockupByLockupIDResponse;
+    fromPartial(object: Partial<SyntheticLockupByLockupIDResponse>): SyntheticLockupByLockupIDResponse;
+    fromAmino(object: SyntheticLockupByLockupIDResponseAmino): SyntheticLockupByLockupIDResponse;
+    toAmino(message: SyntheticLockupByLockupIDResponse): SyntheticLockupByLockupIDResponseAmino;
+    fromAminoMsg(object: SyntheticLockupByLockupIDResponseAminoMsg): SyntheticLockupByLockupIDResponse;
+    toAminoMsg(message: SyntheticLockupByLockupIDResponse): SyntheticLockupByLockupIDResponseAminoMsg;
+    fromProtoMsg(message: SyntheticLockupByLockupIDResponseProtoMsg): SyntheticLockupByLockupIDResponse;
+    toProto(message: SyntheticLockupByLockupIDResponse): Uint8Array;
+    toProtoMsg(message: SyntheticLockupByLockupIDResponse): SyntheticLockupByLockupIDResponseProtoMsg;
 };
 export declare const AccountLockedLongerDurationRequest: {
     typeUrl: string;

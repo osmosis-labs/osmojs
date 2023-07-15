@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /** ===================== SwapExactAmountIn */
 
 export interface SwapExactAmountIn {
@@ -234,7 +235,7 @@ export const SwapExactAmountIn = {
     }
 
     if (message.swapFee !== "") {
-      writer.uint32(42).string(message.swapFee);
+      writer.uint32(42).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
     }
 
     return writer;
@@ -266,7 +267,7 @@ export const SwapExactAmountIn = {
           break;
 
         case 5:
-          message.swapFee = reader.string();
+          message.swapFee = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -537,7 +538,7 @@ export const SwapExactAmountOut = {
     }
 
     if (message.swapFee !== "") {
-      writer.uint32(42).string(message.swapFee);
+      writer.uint32(42).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
     }
 
     return writer;
@@ -569,7 +570,7 @@ export const SwapExactAmountOut = {
           break;
 
         case 5:
-          message.swapFee = reader.string();
+          message.swapFee = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:

@@ -1,28 +1,5 @@
 import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-export interface NetAddress {
-    id: string;
-    ip: string;
-    port: number;
-}
-export interface NetAddressProtoMsg {
-    typeUrl: "/tendermint.p2p.NetAddress";
-    value: Uint8Array;
-}
-export interface NetAddressAmino {
-    id: string;
-    ip: string;
-    port: number;
-}
-export interface NetAddressAminoMsg {
-    type: "/tendermint.p2p.NetAddress";
-    value: NetAddressAmino;
-}
-export interface NetAddressSDKType {
-    id: string;
-    ip: string;
-    port: number;
-}
 export interface ProtocolVersion {
     p2p: Long;
     block: Long;
@@ -46,76 +23,113 @@ export interface ProtocolVersionSDKType {
     block: Long;
     app: Long;
 }
-export interface DefaultNodeInfo {
+export interface NodeInfo {
     protocolVersion?: ProtocolVersion;
-    defaultNodeId: string;
+    nodeId: string;
     listenAddr: string;
     network: string;
     version: string;
     channels: Uint8Array;
     moniker: string;
-    other?: DefaultNodeInfoOther;
+    other?: NodeInfoOther;
 }
-export interface DefaultNodeInfoProtoMsg {
-    typeUrl: "/tendermint.p2p.DefaultNodeInfo";
+export interface NodeInfoProtoMsg {
+    typeUrl: "/tendermint.p2p.NodeInfo";
     value: Uint8Array;
 }
-export interface DefaultNodeInfoAmino {
+export interface NodeInfoAmino {
     protocol_version?: ProtocolVersionAmino;
-    default_node_id: string;
+    node_id: string;
     listen_addr: string;
     network: string;
     version: string;
     channels: Uint8Array;
     moniker: string;
-    other?: DefaultNodeInfoOtherAmino;
+    other?: NodeInfoOtherAmino;
 }
-export interface DefaultNodeInfoAminoMsg {
-    type: "/tendermint.p2p.DefaultNodeInfo";
-    value: DefaultNodeInfoAmino;
+export interface NodeInfoAminoMsg {
+    type: "/tendermint.p2p.NodeInfo";
+    value: NodeInfoAmino;
 }
-export interface DefaultNodeInfoSDKType {
+export interface NodeInfoSDKType {
     protocol_version?: ProtocolVersionSDKType;
-    default_node_id: string;
+    node_id: string;
     listen_addr: string;
     network: string;
     version: string;
     channels: Uint8Array;
     moniker: string;
-    other?: DefaultNodeInfoOtherSDKType;
+    other?: NodeInfoOtherSDKType;
 }
-export interface DefaultNodeInfoOther {
+export interface NodeInfoOther {
     txIndex: string;
     rpcAddress: string;
 }
-export interface DefaultNodeInfoOtherProtoMsg {
-    typeUrl: "/tendermint.p2p.DefaultNodeInfoOther";
+export interface NodeInfoOtherProtoMsg {
+    typeUrl: "/tendermint.p2p.NodeInfoOther";
     value: Uint8Array;
 }
-export interface DefaultNodeInfoOtherAmino {
+export interface NodeInfoOtherAmino {
     tx_index: string;
     rpc_address: string;
 }
-export interface DefaultNodeInfoOtherAminoMsg {
-    type: "/tendermint.p2p.DefaultNodeInfoOther";
-    value: DefaultNodeInfoOtherAmino;
+export interface NodeInfoOtherAminoMsg {
+    type: "/tendermint.p2p.NodeInfoOther";
+    value: NodeInfoOtherAmino;
 }
-export interface DefaultNodeInfoOtherSDKType {
+export interface NodeInfoOtherSDKType {
     tx_index: string;
     rpc_address: string;
 }
-export declare const NetAddress: {
-    typeUrl: string;
-    encode(message: NetAddress, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): NetAddress;
-    fromPartial(object: Partial<NetAddress>): NetAddress;
-    fromAmino(object: NetAddressAmino): NetAddress;
-    toAmino(message: NetAddress): NetAddressAmino;
-    fromAminoMsg(object: NetAddressAminoMsg): NetAddress;
-    fromProtoMsg(message: NetAddressProtoMsg): NetAddress;
-    toProto(message: NetAddress): Uint8Array;
-    toProtoMsg(message: NetAddress): NetAddressProtoMsg;
-};
+export interface PeerInfo {
+    id: string;
+    addressInfo: PeerAddressInfo[];
+    lastConnected?: Date;
+}
+export interface PeerInfoProtoMsg {
+    typeUrl: "/tendermint.p2p.PeerInfo";
+    value: Uint8Array;
+}
+export interface PeerInfoAmino {
+    id: string;
+    address_info: PeerAddressInfoAmino[];
+    last_connected?: Date;
+}
+export interface PeerInfoAminoMsg {
+    type: "/tendermint.p2p.PeerInfo";
+    value: PeerInfoAmino;
+}
+export interface PeerInfoSDKType {
+    id: string;
+    address_info: PeerAddressInfoSDKType[];
+    last_connected?: Date;
+}
+export interface PeerAddressInfo {
+    address: string;
+    lastDialSuccess?: Date;
+    lastDialFailure?: Date;
+    dialFailures: number;
+}
+export interface PeerAddressInfoProtoMsg {
+    typeUrl: "/tendermint.p2p.PeerAddressInfo";
+    value: Uint8Array;
+}
+export interface PeerAddressInfoAmino {
+    address: string;
+    last_dial_success?: Date;
+    last_dial_failure?: Date;
+    dial_failures: number;
+}
+export interface PeerAddressInfoAminoMsg {
+    type: "/tendermint.p2p.PeerAddressInfo";
+    value: PeerAddressInfoAmino;
+}
+export interface PeerAddressInfoSDKType {
+    address: string;
+    last_dial_success?: Date;
+    last_dial_failure?: Date;
+    dial_failures: number;
+}
 export declare const ProtocolVersion: {
     typeUrl: string;
     encode(message: ProtocolVersion, writer?: _m0.Writer): _m0.Writer;
@@ -128,27 +142,51 @@ export declare const ProtocolVersion: {
     toProto(message: ProtocolVersion): Uint8Array;
     toProtoMsg(message: ProtocolVersion): ProtocolVersionProtoMsg;
 };
-export declare const DefaultNodeInfo: {
+export declare const NodeInfo: {
     typeUrl: string;
-    encode(message: DefaultNodeInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DefaultNodeInfo;
-    fromPartial(object: Partial<DefaultNodeInfo>): DefaultNodeInfo;
-    fromAmino(object: DefaultNodeInfoAmino): DefaultNodeInfo;
-    toAmino(message: DefaultNodeInfo): DefaultNodeInfoAmino;
-    fromAminoMsg(object: DefaultNodeInfoAminoMsg): DefaultNodeInfo;
-    fromProtoMsg(message: DefaultNodeInfoProtoMsg): DefaultNodeInfo;
-    toProto(message: DefaultNodeInfo): Uint8Array;
-    toProtoMsg(message: DefaultNodeInfo): DefaultNodeInfoProtoMsg;
+    encode(message: NodeInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): NodeInfo;
+    fromPartial(object: Partial<NodeInfo>): NodeInfo;
+    fromAmino(object: NodeInfoAmino): NodeInfo;
+    toAmino(message: NodeInfo): NodeInfoAmino;
+    fromAminoMsg(object: NodeInfoAminoMsg): NodeInfo;
+    fromProtoMsg(message: NodeInfoProtoMsg): NodeInfo;
+    toProto(message: NodeInfo): Uint8Array;
+    toProtoMsg(message: NodeInfo): NodeInfoProtoMsg;
 };
-export declare const DefaultNodeInfoOther: {
+export declare const NodeInfoOther: {
     typeUrl: string;
-    encode(message: DefaultNodeInfoOther, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): DefaultNodeInfoOther;
-    fromPartial(object: Partial<DefaultNodeInfoOther>): DefaultNodeInfoOther;
-    fromAmino(object: DefaultNodeInfoOtherAmino): DefaultNodeInfoOther;
-    toAmino(message: DefaultNodeInfoOther): DefaultNodeInfoOtherAmino;
-    fromAminoMsg(object: DefaultNodeInfoOtherAminoMsg): DefaultNodeInfoOther;
-    fromProtoMsg(message: DefaultNodeInfoOtherProtoMsg): DefaultNodeInfoOther;
-    toProto(message: DefaultNodeInfoOther): Uint8Array;
-    toProtoMsg(message: DefaultNodeInfoOther): DefaultNodeInfoOtherProtoMsg;
+    encode(message: NodeInfoOther, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): NodeInfoOther;
+    fromPartial(object: Partial<NodeInfoOther>): NodeInfoOther;
+    fromAmino(object: NodeInfoOtherAmino): NodeInfoOther;
+    toAmino(message: NodeInfoOther): NodeInfoOtherAmino;
+    fromAminoMsg(object: NodeInfoOtherAminoMsg): NodeInfoOther;
+    fromProtoMsg(message: NodeInfoOtherProtoMsg): NodeInfoOther;
+    toProto(message: NodeInfoOther): Uint8Array;
+    toProtoMsg(message: NodeInfoOther): NodeInfoOtherProtoMsg;
+};
+export declare const PeerInfo: {
+    typeUrl: string;
+    encode(message: PeerInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PeerInfo;
+    fromPartial(object: Partial<PeerInfo>): PeerInfo;
+    fromAmino(object: PeerInfoAmino): PeerInfo;
+    toAmino(message: PeerInfo): PeerInfoAmino;
+    fromAminoMsg(object: PeerInfoAminoMsg): PeerInfo;
+    fromProtoMsg(message: PeerInfoProtoMsg): PeerInfo;
+    toProto(message: PeerInfo): Uint8Array;
+    toProtoMsg(message: PeerInfo): PeerInfoProtoMsg;
+};
+export declare const PeerAddressInfo: {
+    typeUrl: string;
+    encode(message: PeerAddressInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PeerAddressInfo;
+    fromPartial(object: Partial<PeerAddressInfo>): PeerAddressInfo;
+    fromAmino(object: PeerAddressInfoAmino): PeerAddressInfo;
+    toAmino(message: PeerAddressInfo): PeerAddressInfoAmino;
+    fromAminoMsg(object: PeerAddressInfoAminoMsg): PeerAddressInfo;
+    fromProtoMsg(message: PeerAddressInfoProtoMsg): PeerAddressInfo;
+    toProto(message: PeerAddressInfo): Uint8Array;
+    toProtoMsg(message: PeerAddressInfo): PeerAddressInfoProtoMsg;
 };

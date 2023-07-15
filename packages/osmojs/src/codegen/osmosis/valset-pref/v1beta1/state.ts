@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /**
  * ValidatorPreference defines the message structure for
  * CreateValidatorSetPreference. It allows a user to set {val_addr, weight} in
@@ -112,7 +113,7 @@ export const ValidatorPreference = {
     }
 
     if (message.weight !== "") {
-      writer.uint32(18).string(message.weight);
+      writer.uint32(18).string(Decimal.fromUserInput(message.weight, 18).atomics);
     }
 
     return writer;
@@ -132,7 +133,7 @@ export const ValidatorPreference = {
           break;
 
         case 2:
-          message.weight = reader.string();
+          message.weight = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:

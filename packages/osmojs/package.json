@@ -1,6 +1,6 @@
 {
   "name": "osmojs",
-  "version": "15.5.0",
+  "version": "16.0.0",
   "description": "Typescript Protobuf Messages for Osmosis",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
@@ -38,6 +38,7 @@
     "e2e:start": "cd tests && make start",
     "e2e:test": "jest --testPathPattern=starship/ --verbose --bail",
     "e2e:debug": "jest --testPathPattern=starship/ --runInBand --verbose --bail",
+    "e2e:watch": "jest --watch --testPathPattern=starship/",
     "e2e:stop": "cd tests && make stop",
     "e2e:clean": "cd tests && make stop clean"
   },

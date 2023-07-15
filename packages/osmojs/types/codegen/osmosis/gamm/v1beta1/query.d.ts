@@ -55,7 +55,7 @@ export interface QueryPoolResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolResponse";
     value: Uint8Array;
 }
-export declare type QueryPoolResponseEncoded = Omit<QueryPoolResponse, "pool"> & {
+export type QueryPoolResponseEncoded = Omit<QueryPoolResponse, "pool"> & {
     pool?: Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg | undefined;
 };
 /** Deprecated: please use the alternative in x/poolmanager */
@@ -103,7 +103,7 @@ export interface QueryPoolsResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolsResponse";
     value: Uint8Array;
 }
-export declare type QueryPoolsResponseEncoded = Omit<QueryPoolsResponse, "pools"> & {
+export type QueryPoolsResponseEncoded = Omit<QueryPoolsResponse, "pools"> & {
     pools: (Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg)[];
 };
 export interface QueryPoolsResponseAmino {
@@ -316,7 +316,11 @@ export interface QueryPoolParamsResponseAminoMsg {
 export interface QueryPoolParamsResponseSDKType {
     params?: AnySDKType;
 }
-/** =============================== PoolLiquidity */
+/**
+ * =============================== PoolLiquidity
+ * Deprecated: please use the alternative in x/poolmanager
+ */
+/** @deprecated */
 export interface QueryTotalPoolLiquidityRequest {
     poolId: Long;
 }
@@ -324,7 +328,11 @@ export interface QueryTotalPoolLiquidityRequestProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryTotalPoolLiquidityRequest";
     value: Uint8Array;
 }
-/** =============================== PoolLiquidity */
+/**
+ * =============================== PoolLiquidity
+ * Deprecated: please use the alternative in x/poolmanager
+ */
+/** @deprecated */
 export interface QueryTotalPoolLiquidityRequestAmino {
     pool_id: string;
 }
@@ -332,10 +340,16 @@ export interface QueryTotalPoolLiquidityRequestAminoMsg {
     type: "osmosis/gamm/query-total-pool-liquidity-request";
     value: QueryTotalPoolLiquidityRequestAmino;
 }
-/** =============================== PoolLiquidity */
+/**
+ * =============================== PoolLiquidity
+ * Deprecated: please use the alternative in x/poolmanager
+ */
+/** @deprecated */
 export interface QueryTotalPoolLiquidityRequestSDKType {
     pool_id: Long;
 }
+/** Deprecated: please use the alternative in x/poolmanager */
+/** @deprecated */
 export interface QueryTotalPoolLiquidityResponse {
     liquidity: Coin[];
 }
@@ -343,6 +357,8 @@ export interface QueryTotalPoolLiquidityResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryTotalPoolLiquidityResponse";
     value: Uint8Array;
 }
+/** Deprecated: please use the alternative in x/poolmanager */
+/** @deprecated */
 export interface QueryTotalPoolLiquidityResponseAmino {
     liquidity: CoinAmino[];
 }
@@ -350,6 +366,8 @@ export interface QueryTotalPoolLiquidityResponseAminoMsg {
     type: "osmosis/gamm/query-total-pool-liquidity-response";
     value: QueryTotalPoolLiquidityResponseAmino;
 }
+/** Deprecated: please use the alternative in x/poolmanager */
+/** @deprecated */
 export interface QueryTotalPoolLiquidityResponseSDKType {
     liquidity: CoinSDKType[];
 }
@@ -511,7 +529,7 @@ export interface QueryPoolsWithFilterResponseProtoMsg {
     typeUrl: "/osmosis.gamm.v1beta1.QueryPoolsWithFilterResponse";
     value: Uint8Array;
 }
-export declare type QueryPoolsWithFilterResponseEncoded = Omit<QueryPoolsWithFilterResponse, "pools"> & {
+export type QueryPoolsWithFilterResponseEncoded = Omit<QueryPoolsWithFilterResponse, "pools"> & {
     pools: (Pool1ProtoMsg | CosmWasmPoolProtoMsg | Pool2ProtoMsg | Pool3ProtoMsg | AnyProtoMsg)[];
 };
 export interface QueryPoolsWithFilterResponseAmino {
@@ -695,6 +713,43 @@ export interface QueryTotalLiquidityResponseAminoMsg {
 }
 export interface QueryTotalLiquidityResponseSDKType {
     liquidity: CoinSDKType[];
+}
+/** =============================== QueryConcentratedPoolIdLinkFromCFMM */
+export interface QueryConcentratedPoolIdLinkFromCFMMRequest {
+    cfmmPoolId: Long;
+}
+export interface QueryConcentratedPoolIdLinkFromCFMMRequestProtoMsg {
+    typeUrl: "/osmosis.gamm.v1beta1.QueryConcentratedPoolIdLinkFromCFMMRequest";
+    value: Uint8Array;
+}
+/** =============================== QueryConcentratedPoolIdLinkFromCFMM */
+export interface QueryConcentratedPoolIdLinkFromCFMMRequestAmino {
+    cfmm_pool_id: string;
+}
+export interface QueryConcentratedPoolIdLinkFromCFMMRequestAminoMsg {
+    type: "osmosis/gamm/query-concentrated-pool-id-link-from-cfmm-request";
+    value: QueryConcentratedPoolIdLinkFromCFMMRequestAmino;
+}
+/** =============================== QueryConcentratedPoolIdLinkFromCFMM */
+export interface QueryConcentratedPoolIdLinkFromCFMMRequestSDKType {
+    cfmm_pool_id: Long;
+}
+export interface QueryConcentratedPoolIdLinkFromCFMMResponse {
+    concentratedPoolId: Long;
+}
+export interface QueryConcentratedPoolIdLinkFromCFMMResponseProtoMsg {
+    typeUrl: "/osmosis.gamm.v1beta1.QueryConcentratedPoolIdLinkFromCFMMResponse";
+    value: Uint8Array;
+}
+export interface QueryConcentratedPoolIdLinkFromCFMMResponseAmino {
+    concentrated_pool_id: string;
+}
+export interface QueryConcentratedPoolIdLinkFromCFMMResponseAminoMsg {
+    type: "osmosis/gamm/query-concentrated-pool-id-link-from-cfmm-response";
+    value: QueryConcentratedPoolIdLinkFromCFMMResponseAmino;
+}
+export interface QueryConcentratedPoolIdLinkFromCFMMResponseSDKType {
+    concentrated_pool_id: Long;
 }
 export declare const QueryPoolRequest: {
     typeUrl: string;
@@ -1085,6 +1140,32 @@ export declare const QueryTotalLiquidityResponse: {
     fromProtoMsg(message: QueryTotalLiquidityResponseProtoMsg): QueryTotalLiquidityResponse;
     toProto(message: QueryTotalLiquidityResponse): Uint8Array;
     toProtoMsg(message: QueryTotalLiquidityResponse): QueryTotalLiquidityResponseProtoMsg;
+};
+export declare const QueryConcentratedPoolIdLinkFromCFMMRequest: {
+    typeUrl: string;
+    encode(message: QueryConcentratedPoolIdLinkFromCFMMRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConcentratedPoolIdLinkFromCFMMRequest;
+    fromPartial(object: Partial<QueryConcentratedPoolIdLinkFromCFMMRequest>): QueryConcentratedPoolIdLinkFromCFMMRequest;
+    fromAmino(object: QueryConcentratedPoolIdLinkFromCFMMRequestAmino): QueryConcentratedPoolIdLinkFromCFMMRequest;
+    toAmino(message: QueryConcentratedPoolIdLinkFromCFMMRequest): QueryConcentratedPoolIdLinkFromCFMMRequestAmino;
+    fromAminoMsg(object: QueryConcentratedPoolIdLinkFromCFMMRequestAminoMsg): QueryConcentratedPoolIdLinkFromCFMMRequest;
+    toAminoMsg(message: QueryConcentratedPoolIdLinkFromCFMMRequest): QueryConcentratedPoolIdLinkFromCFMMRequestAminoMsg;
+    fromProtoMsg(message: QueryConcentratedPoolIdLinkFromCFMMRequestProtoMsg): QueryConcentratedPoolIdLinkFromCFMMRequest;
+    toProto(message: QueryConcentratedPoolIdLinkFromCFMMRequest): Uint8Array;
+    toProtoMsg(message: QueryConcentratedPoolIdLinkFromCFMMRequest): QueryConcentratedPoolIdLinkFromCFMMRequestProtoMsg;
+};
+export declare const QueryConcentratedPoolIdLinkFromCFMMResponse: {
+    typeUrl: string;
+    encode(message: QueryConcentratedPoolIdLinkFromCFMMResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConcentratedPoolIdLinkFromCFMMResponse;
+    fromPartial(object: Partial<QueryConcentratedPoolIdLinkFromCFMMResponse>): QueryConcentratedPoolIdLinkFromCFMMResponse;
+    fromAmino(object: QueryConcentratedPoolIdLinkFromCFMMResponseAmino): QueryConcentratedPoolIdLinkFromCFMMResponse;
+    toAmino(message: QueryConcentratedPoolIdLinkFromCFMMResponse): QueryConcentratedPoolIdLinkFromCFMMResponseAmino;
+    fromAminoMsg(object: QueryConcentratedPoolIdLinkFromCFMMResponseAminoMsg): QueryConcentratedPoolIdLinkFromCFMMResponse;
+    toAminoMsg(message: QueryConcentratedPoolIdLinkFromCFMMResponse): QueryConcentratedPoolIdLinkFromCFMMResponseAminoMsg;
+    fromProtoMsg(message: QueryConcentratedPoolIdLinkFromCFMMResponseProtoMsg): QueryConcentratedPoolIdLinkFromCFMMResponse;
+    toProto(message: QueryConcentratedPoolIdLinkFromCFMMResponse): Uint8Array;
+    toProtoMsg(message: QueryConcentratedPoolIdLinkFromCFMMResponse): QueryConcentratedPoolIdLinkFromCFMMResponseProtoMsg;
 };
 export declare const PoolI_InterfaceDecoder: (input: _m0.Reader | Uint8Array) => Pool1 | CosmWasmPool | Pool2 | Pool3 | Any;
 export declare const PoolI_FromAmino: (content: AnyAmino) => Any;

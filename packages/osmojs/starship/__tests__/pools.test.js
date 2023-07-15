@@ -65,7 +65,7 @@ describe('Pool testing over IBC tokens', () => {
         {
           sender: address,
           poolParams: {
-            swapFee: '1',
+            swapFee: '0.1',
             exitFee: '0'
           },
           poolAssets: [

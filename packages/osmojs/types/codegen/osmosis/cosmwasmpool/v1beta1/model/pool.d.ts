@@ -2,20 +2,20 @@ import { Long } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface CosmWasmPool {
     $typeUrl?: string;
-    poolAddress: string;
     contractAddress: string;
     poolId: Long;
     codeId: Long;
+    instantiateMsg: Uint8Array;
 }
 export interface CosmWasmPoolProtoMsg {
     typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool";
     value: Uint8Array;
 }
 export interface CosmWasmPoolAmino {
-    pool_address: string;
     contract_address: string;
     pool_id: string;
     code_id: string;
+    instantiate_msg: Uint8Array;
 }
 export interface CosmWasmPoolAminoMsg {
     type: "osmosis/cosmwasmpool/cosm-wasm-pool";
@@ -23,10 +23,10 @@ export interface CosmWasmPoolAminoMsg {
 }
 export interface CosmWasmPoolSDKType {
     $typeUrl?: string;
-    pool_address: string;
     contract_address: string;
     pool_id: Long;
     code_id: Long;
+    instantiate_msg: Uint8Array;
 }
 export declare const CosmWasmPool: {
     typeUrl: string;

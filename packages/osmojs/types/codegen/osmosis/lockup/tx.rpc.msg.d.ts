@@ -1,5 +1,5 @@
 import { Rpc } from "../../helpers";
-import { MsgLockTokens, MsgLockTokensResponse, MsgBeginUnlockingAll, MsgBeginUnlockingAllResponse, MsgBeginUnlocking, MsgBeginUnlockingResponse, MsgExtendLockup, MsgExtendLockupResponse, MsgForceUnlock, MsgForceUnlockResponse } from "./tx";
+import { MsgLockTokens, MsgLockTokensResponse, MsgBeginUnlockingAll, MsgBeginUnlockingAllResponse, MsgBeginUnlocking, MsgBeginUnlockingResponse, MsgExtendLockup, MsgExtendLockupResponse, MsgForceUnlock, MsgForceUnlockResponse, MsgSetRewardReceiverAddress, MsgSetRewardReceiverAddressResponse } from "./tx";
 /** Msg defines the Msg service. */
 export interface Msg {
     /** LockTokens lock tokens */
@@ -11,6 +11,8 @@ export interface Msg {
     /** MsgEditLockup edits the existing lockups by lock ID */
     extendLockup(request: MsgExtendLockup): Promise<MsgExtendLockupResponse>;
     forceUnlock(request: MsgForceUnlock): Promise<MsgForceUnlockResponse>;
+    /** SetRewardReceiverAddress edits the reward receiver for the given lock ID */
+    setRewardReceiverAddress(request: MsgSetRewardReceiverAddress): Promise<MsgSetRewardReceiverAddressResponse>;
 }
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
@@ -20,4 +22,5 @@ export declare class MsgClientImpl implements Msg {
     beginUnlocking(request: MsgBeginUnlocking): Promise<MsgBeginUnlockingResponse>;
     extendLockup(request: MsgExtendLockup): Promise<MsgExtendLockupResponse>;
     forceUnlock(request: MsgForceUnlock): Promise<MsgForceUnlockResponse>;
+    setRewardReceiverAddress(request: MsgSetRewardReceiverAddress): Promise<MsgSetRewardReceiverAddressResponse>;
 }

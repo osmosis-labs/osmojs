@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgStoreCode, MsgInstantiateContract, MsgInstantiateContract2, MsgExecuteContract, MsgMigrateContract, MsgUpdateAdmin, MsgClearAdmin, MsgUpdateInstantiateConfig, MsgUpdateParams, MsgSudoContract, MsgPinCodes, MsgUnpinCodes, MsgStoreAndInstantiateContract } from "./tx";
+import { MsgStoreCode, MsgInstantiateContract, MsgInstantiateContract2, MsgExecuteContract, MsgMigrateContract, MsgUpdateAdmin, MsgClearAdmin, MsgUpdateInstantiateConfig } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -33,26 +33,6 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         updateInstantiateConfig(value: MsgUpdateInstantiateConfig): {
-            typeUrl: string;
-            value: Uint8Array;
-        };
-        updateParams(value: MsgUpdateParams): {
-            typeUrl: string;
-            value: Uint8Array;
-        };
-        sudoContract(value: MsgSudoContract): {
-            typeUrl: string;
-            value: Uint8Array;
-        };
-        pinCodes(value: MsgPinCodes): {
-            typeUrl: string;
-            value: Uint8Array;
-        };
-        unpinCodes(value: MsgUnpinCodes): {
-            typeUrl: string;
-            value: Uint8Array;
-        };
-        storeAndInstantiateContract(value: MsgStoreAndInstantiateContract): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -90,26 +70,6 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgUpdateInstantiateConfig;
         };
-        updateParams(value: MsgUpdateParams): {
-            typeUrl: string;
-            value: MsgUpdateParams;
-        };
-        sudoContract(value: MsgSudoContract): {
-            typeUrl: string;
-            value: MsgSudoContract;
-        };
-        pinCodes(value: MsgPinCodes): {
-            typeUrl: string;
-            value: MsgPinCodes;
-        };
-        unpinCodes(value: MsgUnpinCodes): {
-            typeUrl: string;
-            value: MsgUnpinCodes;
-        };
-        storeAndInstantiateContract(value: MsgStoreAndInstantiateContract): {
-            typeUrl: string;
-            value: MsgStoreAndInstantiateContract;
-        };
     };
     fromPartial: {
         storeCode(value: MsgStoreCode): {
@@ -143,26 +103,6 @@ export declare const MessageComposer: {
         updateInstantiateConfig(value: MsgUpdateInstantiateConfig): {
             typeUrl: string;
             value: MsgUpdateInstantiateConfig;
-        };
-        updateParams(value: MsgUpdateParams): {
-            typeUrl: string;
-            value: MsgUpdateParams;
-        };
-        sudoContract(value: MsgSudoContract): {
-            typeUrl: string;
-            value: MsgSudoContract;
-        };
-        pinCodes(value: MsgPinCodes): {
-            typeUrl: string;
-            value: MsgPinCodes;
-        };
-        unpinCodes(value: MsgUnpinCodes): {
-            typeUrl: string;
-            value: MsgUnpinCodes;
-        };
-        storeAndInstantiateContract(value: MsgStoreAndInstantiateContract): {
-            typeUrl: string;
-            value: MsgStoreAndInstantiateContract;
         };
     };
 };

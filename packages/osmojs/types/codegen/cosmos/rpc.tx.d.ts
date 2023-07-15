@@ -14,13 +14,9 @@ export declare const createRPCMsgClient: ({ rpc }: {
         };
         gov: {
             v1beta1: import("./gov/v1beta1/tx.rpc.msg").MsgClientImpl;
-            v1: import("./gov/v1/tx.rpc.msg").MsgClientImpl;
         };
         staking: {
             v1beta1: import("./staking/v1beta1/tx.rpc.msg").MsgClientImpl;
-        };
-        upgrade: {
-            v1beta1: import("./upgrade/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
     };
 }>;

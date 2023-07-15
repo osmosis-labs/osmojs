@@ -1,6 +1,7 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 export interface Pool {
   $typeUrl?: string;
   /** pool's address holding all liquidity tokens. */
@@ -136,7 +137,7 @@ export const Pool = {
     }
 
     if (message.currentTickLiquidity !== "") {
-      writer.uint32(42).string(message.currentTickLiquidity);
+      writer.uint32(42).string(Decimal.fromUserInput(message.currentTickLiquidity, 18).atomics);
     }
 
     if (message.token0 !== "") {
@@ -164,7 +165,7 @@ export const Pool = {
     }
 
     if (message.spreadFactor !== "") {
-      writer.uint32(98).string(message.spreadFactor);
+      writer.uint32(98).string(Decimal.fromUserInput(message.spreadFactor, 18).atomics);
     }
 
     if (message.lastLiquidityUpdate !== undefined) {
@@ -200,7 +201,7 @@ export const Pool = {
           break;
 
         case 5:
-          message.currentTickLiquidity = reader.string();
+          message.currentTickLiquidity = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 6:
@@ -228,7 +229,7 @@ export const Pool = {
           break;
 
         case 12:
-          message.spreadFactor = reader.string();
+          message.spreadFactor = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         case 13:

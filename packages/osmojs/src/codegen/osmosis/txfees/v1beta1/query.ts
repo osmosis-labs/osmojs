@@ -1,6 +1,7 @@
 import { FeeToken, FeeTokenAmino, FeeTokenSDKType } from "./feetoken";
 import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 export interface QueryFeeTokensRequest {}
 export interface QueryFeeTokensRequestProtoMsg {
   typeUrl: "/osmosis.txfees.v1beta1.QueryFeeTokensRequest";
@@ -422,7 +423,7 @@ export const QueryDenomSpotPriceResponse = {
     }
 
     if (message.spotPrice !== "") {
-      writer.uint32(18).string(message.spotPrice);
+      writer.uint32(18).string(Decimal.fromUserInput(message.spotPrice, 18).atomics);
     }
 
     return writer;
@@ -442,7 +443,7 @@ export const QueryDenomSpotPriceResponse = {
           break;
 
         case 2:
-          message.spotPrice = reader.string();
+          message.spotPrice = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:

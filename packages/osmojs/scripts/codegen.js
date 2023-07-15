@@ -86,7 +86,10 @@ telescope({
         duration: 'duration',
         timestamp: 'date',
         useExact: false,
-        useDeepPartial: false
+        useDeepPartial: false,
+        customTypes: {
+          useCosmosSDKDec: true
+        }
       }
     },
     aminoEncoding: {

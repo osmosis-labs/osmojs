@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /** ===================== CalcOutAmtGivenIn */
 
 export interface CalcOutAmtGivenIn {
@@ -188,7 +189,7 @@ export const CalcOutAmtGivenIn = {
     }
 
     if (message.swapFee !== "") {
-      writer.uint32(26).string(message.swapFee);
+      writer.uint32(26).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
     }
 
     return writer;
@@ -212,7 +213,7 @@ export const CalcOutAmtGivenIn = {
           break;
 
         case 3:
-          message.swapFee = reader.string();
+          message.swapFee = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -467,7 +468,7 @@ export const CalcInAmtGivenOut = {
     }
 
     if (message.swapFee !== "") {
-      writer.uint32(26).string(message.swapFee);
+      writer.uint32(26).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
     }
 
     return writer;
@@ -491,7 +492,7 @@ export const CalcInAmtGivenOut = {
           break;
 
         case 3:
-          message.swapFee = reader.string();
+          message.swapFee = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:

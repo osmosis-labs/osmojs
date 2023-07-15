@@ -1,5 +1,4 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
-import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** ===================== MsgCreatePosition */
@@ -8,8 +7,13 @@ export interface MsgCreatePosition {
     sender: string;
     lowerTick: Long;
     upperTick: Long;
-    tokenDesired0?: Coin;
-    tokenDesired1?: Coin;
+    /**
+     * tokens_provided is the amount of tokens provided for the position.
+     * It must at a minimum be of length 1 (for a single sided position)
+     * and at a maximum be of length 2 (for a position that straddles the current
+     * tick).
+     */
+    tokensProvided: Coin[];
     tokenMinAmount0: string;
     tokenMinAmount1: string;
 }
@@ -23,8 +27,13 @@ export interface MsgCreatePositionAmino {
     sender: string;
     lower_tick: string;
     upper_tick: string;
-    token_desired0?: CoinAmino;
-    token_desired1?: CoinAmino;
+    /**
+     * tokens_provided is the amount of tokens provided for the position.
+     * It must at a minimum be of length 1 (for a single sided position)
+     * and at a maximum be of length 2 (for a position that straddles the current
+     * tick).
+     */
+    tokens_provided: CoinAmino[];
     token_min_amount0: string;
     token_min_amount1: string;
 }
@@ -38,8 +47,7 @@ export interface MsgCreatePositionSDKType {
     sender: string;
     lower_tick: Long;
     upper_tick: Long;
-    token_desired0?: CoinSDKType;
-    token_desired1?: CoinSDKType;
+    tokens_provided: CoinSDKType[];
     token_min_amount0: string;
     token_min_amount1: string;
 }
@@ -47,8 +55,15 @@ export interface MsgCreatePositionResponse {
     positionId: Long;
     amount0: string;
     amount1: string;
-    joinTime?: Date;
     liquidityCreated: string;
+    /**
+     * the lower and upper tick are in the response because there are
+     * instances in which multiple ticks represent the same price, so
+     * we may move their provided tick to the canonical tick that represents
+     * the same price.
+     */
+    lowerTick: Long;
+    upperTick: Long;
 }
 export interface MsgCreatePositionResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreatePositionResponse";
@@ -58,8 +73,15 @@ export interface MsgCreatePositionResponseAmino {
     position_id: string;
     amount0: string;
     amount1: string;
-    join_time?: Date;
     liquidity_created: string;
+    /**
+     * the lower and upper tick are in the response because there are
+     * instances in which multiple ticks represent the same price, so
+     * we may move their provided tick to the canonical tick that represents
+     * the same price.
+     */
+    lower_tick: string;
+    upper_tick: string;
 }
 export interface MsgCreatePositionResponseAminoMsg {
     type: "osmosis/concentratedliquidity/create-position-response";
@@ -69,8 +91,95 @@ export interface MsgCreatePositionResponseSDKType {
     position_id: Long;
     amount0: string;
     amount1: string;
-    join_time?: Date;
     liquidity_created: string;
+    lower_tick: Long;
+    upper_tick: Long;
+}
+/** ===================== MsgAddToPosition */
+export interface MsgAddToPosition {
+    positionId: Long;
+    sender: string;
+    /** amount0 represents the amount of token0 willing to put in. */
+    amount0: string;
+    /** amount1 represents the amount of token1 willing to put in. */
+    amount1: string;
+    /**
+     * token_min_amount0 represents the minimum amount of token0 desired from the
+     * new position being created. Note that this field indicates the min amount0
+     * corresponding to the liquidity that is being added, not the total
+     * liquidity of the position.
+     */
+    tokenMinAmount0: string;
+    /**
+     * token_min_amount1 represents the minimum amount of token1 desired from the
+     * new position being created. Note that this field indicates the min amount1
+     * corresponding to the liquidity that is being added, not the total
+     * liquidity of the position.
+     */
+    tokenMinAmount1: string;
+}
+export interface MsgAddToPositionProtoMsg {
+    typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition";
+    value: Uint8Array;
+}
+/** ===================== MsgAddToPosition */
+export interface MsgAddToPositionAmino {
+    position_id: string;
+    sender: string;
+    /** amount0 represents the amount of token0 willing to put in. */
+    amount0: string;
+    /** amount1 represents the amount of token1 willing to put in. */
+    amount1: string;
+    /**
+     * token_min_amount0 represents the minimum amount of token0 desired from the
+     * new position being created. Note that this field indicates the min amount0
+     * corresponding to the liquidity that is being added, not the total
+     * liquidity of the position.
+     */
+    token_min_amount0: string;
+    /**
+     * token_min_amount1 represents the minimum amount of token1 desired from the
+     * new position being created. Note that this field indicates the min amount1
+     * corresponding to the liquidity that is being added, not the total
+     * liquidity of the position.
+     */
+    token_min_amount1: string;
+}
+export interface MsgAddToPositionAminoMsg {
+    type: "osmosis/concentratedliquidity/add-to-position";
+    value: MsgAddToPositionAmino;
+}
+/** ===================== MsgAddToPosition */
+export interface MsgAddToPositionSDKType {
+    position_id: Long;
+    sender: string;
+    amount0: string;
+    amount1: string;
+    token_min_amount0: string;
+    token_min_amount1: string;
+}
+export interface MsgAddToPositionResponse {
+    positionId: Long;
+    amount0: string;
+    amount1: string;
+}
+export interface MsgAddToPositionResponseProtoMsg {
+    typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgAddToPositionResponse";
+    value: Uint8Array;
+}
+export interface MsgAddToPositionResponseAmino {
+    position_id: string;
+    amount0: string;
+    amount1: string;
+}
+export interface MsgAddToPositionResponseAminoMsg {
+    type: "osmosis/concentratedliquidity/add-to-position-response";
+    value: MsgAddToPositionResponseAmino;
+}
+export interface MsgAddToPositionResponseSDKType {
+    position_id: Long;
+    amount0: string;
+    amount1: string;
 }
 /** ===================== MsgWithdrawPosition */
 export interface MsgWithdrawPosition {
@@ -118,45 +227,45 @@ export interface MsgWithdrawPositionResponseSDKType {
     amount0: string;
     amount1: string;
 }
-/** ===================== MsgCollectFees */
-export interface MsgCollectFees {
+/** ===================== MsgCollectSpreadRewards */
+export interface MsgCollectSpreadRewards {
     positionIds: Long[];
     sender: string;
 }
-export interface MsgCollectFeesProtoMsg {
-    typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees";
+export interface MsgCollectSpreadRewardsProtoMsg {
+    typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards";
     value: Uint8Array;
 }
-/** ===================== MsgCollectFees */
-export interface MsgCollectFeesAmino {
+/** ===================== MsgCollectSpreadRewards */
+export interface MsgCollectSpreadRewardsAmino {
     position_ids: string[];
     sender: string;
 }
-export interface MsgCollectFeesAminoMsg {
-    type: "osmosis/concentratedliquidity/collect-fees";
-    value: MsgCollectFeesAmino;
+export interface MsgCollectSpreadRewardsAminoMsg {
+    type: "osmosis/concentratedliquidity/collect-spread-rewards";
+    value: MsgCollectSpreadRewardsAmino;
 }
-/** ===================== MsgCollectFees */
-export interface MsgCollectFeesSDKType {
+/** ===================== MsgCollectSpreadRewards */
+export interface MsgCollectSpreadRewardsSDKType {
     position_ids: Long[];
     sender: string;
 }
-export interface MsgCollectFeesResponse {
-    collectedFees: Coin[];
+export interface MsgCollectSpreadRewardsResponse {
+    collectedSpreadRewards: Coin[];
 }
-export interface MsgCollectFeesResponseProtoMsg {
-    typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFeesResponse";
+export interface MsgCollectSpreadRewardsResponseProtoMsg {
+    typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewardsResponse";
     value: Uint8Array;
 }
-export interface MsgCollectFeesResponseAmino {
-    collected_fees: CoinAmino[];
+export interface MsgCollectSpreadRewardsResponseAmino {
+    collected_spread_rewards: CoinAmino[];
 }
-export interface MsgCollectFeesResponseAminoMsg {
-    type: "osmosis/concentratedliquidity/collect-fees-response";
-    value: MsgCollectFeesResponseAmino;
+export interface MsgCollectSpreadRewardsResponseAminoMsg {
+    type: "osmosis/concentratedliquidity/collect-spread-rewards-response";
+    value: MsgCollectSpreadRewardsResponseAmino;
 }
-export interface MsgCollectFeesResponseSDKType {
-    collected_fees: CoinSDKType[];
+export interface MsgCollectSpreadRewardsResponseSDKType {
+    collected_spread_rewards: CoinSDKType[];
 }
 /** ===================== MsgCollectIncentives */
 export interface MsgCollectIncentives {
@@ -183,6 +292,7 @@ export interface MsgCollectIncentivesSDKType {
 }
 export interface MsgCollectIncentivesResponse {
     collectedIncentives: Coin[];
+    forfeitedIncentives: Coin[];
 }
 export interface MsgCollectIncentivesResponseProtoMsg {
     typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentivesResponse";
@@ -190,6 +300,7 @@ export interface MsgCollectIncentivesResponseProtoMsg {
 }
 export interface MsgCollectIncentivesResponseAmino {
     collected_incentives: CoinAmino[];
+    forfeited_incentives: CoinAmino[];
 }
 export interface MsgCollectIncentivesResponseAminoMsg {
     type: "osmosis/concentratedliquidity/collect-incentives-response";
@@ -197,73 +308,7 @@ export interface MsgCollectIncentivesResponseAminoMsg {
 }
 export interface MsgCollectIncentivesResponseSDKType {
     collected_incentives: CoinSDKType[];
-}
-/** ===================== MsgCreateIncentive */
-export interface MsgCreateIncentive {
-    poolId: Long;
-    sender: string;
-    incentiveDenom: string;
-    incentiveAmount: string;
-    emissionRate: string;
-    startTime?: Date;
-    minUptime?: Duration;
-}
-export interface MsgCreateIncentiveProtoMsg {
-    typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateIncentive";
-    value: Uint8Array;
-}
-/** ===================== MsgCreateIncentive */
-export interface MsgCreateIncentiveAmino {
-    pool_id: string;
-    sender: string;
-    incentive_denom: string;
-    incentive_amount: string;
-    emission_rate: string;
-    start_time?: Date;
-    min_uptime?: DurationAmino;
-}
-export interface MsgCreateIncentiveAminoMsg {
-    type: "osmosis/concentratedliquidity/create-incentive";
-    value: MsgCreateIncentiveAmino;
-}
-/** ===================== MsgCreateIncentive */
-export interface MsgCreateIncentiveSDKType {
-    pool_id: Long;
-    sender: string;
-    incentive_denom: string;
-    incentive_amount: string;
-    emission_rate: string;
-    start_time?: Date;
-    min_uptime?: DurationSDKType;
-}
-export interface MsgCreateIncentiveResponse {
-    incentiveDenom: string;
-    incentiveAmount: string;
-    emissionRate: string;
-    startTime?: Date;
-    minUptime?: Duration;
-}
-export interface MsgCreateIncentiveResponseProtoMsg {
-    typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateIncentiveResponse";
-    value: Uint8Array;
-}
-export interface MsgCreateIncentiveResponseAmino {
-    incentive_denom: string;
-    incentive_amount: string;
-    emission_rate: string;
-    start_time?: Date;
-    min_uptime?: DurationAmino;
-}
-export interface MsgCreateIncentiveResponseAminoMsg {
-    type: "osmosis/concentratedliquidity/create-incentive-response";
-    value: MsgCreateIncentiveResponseAmino;
-}
-export interface MsgCreateIncentiveResponseSDKType {
-    incentive_denom: string;
-    incentive_amount: string;
-    emission_rate: string;
-    start_time?: Date;
-    min_uptime?: DurationSDKType;
+    forfeited_incentives: CoinSDKType[];
 }
 /** ===================== MsgFungifyChargedPositions */
 export interface MsgFungifyChargedPositions {
@@ -331,6 +376,32 @@ export declare const MsgCreatePositionResponse: {
     toProto(message: MsgCreatePositionResponse): Uint8Array;
     toProtoMsg(message: MsgCreatePositionResponse): MsgCreatePositionResponseProtoMsg;
 };
+export declare const MsgAddToPosition: {
+    typeUrl: string;
+    encode(message: MsgAddToPosition, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToPosition;
+    fromPartial(object: Partial<MsgAddToPosition>): MsgAddToPosition;
+    fromAmino(object: MsgAddToPositionAmino): MsgAddToPosition;
+    toAmino(message: MsgAddToPosition): MsgAddToPositionAmino;
+    fromAminoMsg(object: MsgAddToPositionAminoMsg): MsgAddToPosition;
+    toAminoMsg(message: MsgAddToPosition): MsgAddToPositionAminoMsg;
+    fromProtoMsg(message: MsgAddToPositionProtoMsg): MsgAddToPosition;
+    toProto(message: MsgAddToPosition): Uint8Array;
+    toProtoMsg(message: MsgAddToPosition): MsgAddToPositionProtoMsg;
+};
+export declare const MsgAddToPositionResponse: {
+    typeUrl: string;
+    encode(message: MsgAddToPositionResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToPositionResponse;
+    fromPartial(object: Partial<MsgAddToPositionResponse>): MsgAddToPositionResponse;
+    fromAmino(object: MsgAddToPositionResponseAmino): MsgAddToPositionResponse;
+    toAmino(message: MsgAddToPositionResponse): MsgAddToPositionResponseAmino;
+    fromAminoMsg(object: MsgAddToPositionResponseAminoMsg): MsgAddToPositionResponse;
+    toAminoMsg(message: MsgAddToPositionResponse): MsgAddToPositionResponseAminoMsg;
+    fromProtoMsg(message: MsgAddToPositionResponseProtoMsg): MsgAddToPositionResponse;
+    toProto(message: MsgAddToPositionResponse): Uint8Array;
+    toProtoMsg(message: MsgAddToPositionResponse): MsgAddToPositionResponseProtoMsg;
+};
 export declare const MsgWithdrawPosition: {
     typeUrl: string;
     encode(message: MsgWithdrawPosition, writer?: _m0.Writer): _m0.Writer;
@@ -357,31 +428,31 @@ export declare const MsgWithdrawPositionResponse: {
     toProto(message: MsgWithdrawPositionResponse): Uint8Array;
     toProtoMsg(message: MsgWithdrawPositionResponse): MsgWithdrawPositionResponseProtoMsg;
 };
-export declare const MsgCollectFees: {
+export declare const MsgCollectSpreadRewards: {
     typeUrl: string;
-    encode(message: MsgCollectFees, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectFees;
-    fromPartial(object: Partial<MsgCollectFees>): MsgCollectFees;
-    fromAmino(object: MsgCollectFeesAmino): MsgCollectFees;
-    toAmino(message: MsgCollectFees): MsgCollectFeesAmino;
-    fromAminoMsg(object: MsgCollectFeesAminoMsg): MsgCollectFees;
-    toAminoMsg(message: MsgCollectFees): MsgCollectFeesAminoMsg;
-    fromProtoMsg(message: MsgCollectFeesProtoMsg): MsgCollectFees;
-    toProto(message: MsgCollectFees): Uint8Array;
-    toProtoMsg(message: MsgCollectFees): MsgCollectFeesProtoMsg;
+    encode(message: MsgCollectSpreadRewards, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectSpreadRewards;
+    fromPartial(object: Partial<MsgCollectSpreadRewards>): MsgCollectSpreadRewards;
+    fromAmino(object: MsgCollectSpreadRewardsAmino): MsgCollectSpreadRewards;
+    toAmino(message: MsgCollectSpreadRewards): MsgCollectSpreadRewardsAmino;
+    fromAminoMsg(object: MsgCollectSpreadRewardsAminoMsg): MsgCollectSpreadRewards;
+    toAminoMsg(message: MsgCollectSpreadRewards): MsgCollectSpreadRewardsAminoMsg;
+    fromProtoMsg(message: MsgCollectSpreadRewardsProtoMsg): MsgCollectSpreadRewards;
+    toProto(message: MsgCollectSpreadRewards): Uint8Array;
+    toProtoMsg(message: MsgCollectSpreadRewards): MsgCollectSpreadRewardsProtoMsg;
 };
-export declare const MsgCollectFeesResponse: {
+export declare const MsgCollectSpreadRewardsResponse: {
     typeUrl: string;
-    encode(message: MsgCollectFeesResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectFeesResponse;
-    fromPartial(object: Partial<MsgCollectFeesResponse>): MsgCollectFeesResponse;
-    fromAmino(object: MsgCollectFeesResponseAmino): MsgCollectFeesResponse;
-    toAmino(message: MsgCollectFeesResponse): MsgCollectFeesResponseAmino;
-    fromAminoMsg(object: MsgCollectFeesResponseAminoMsg): MsgCollectFeesResponse;
-    toAminoMsg(message: MsgCollectFeesResponse): MsgCollectFeesResponseAminoMsg;
-    fromProtoMsg(message: MsgCollectFeesResponseProtoMsg): MsgCollectFeesResponse;
-    toProto(message: MsgCollectFeesResponse): Uint8Array;
-    toProtoMsg(message: MsgCollectFeesResponse): MsgCollectFeesResponseProtoMsg;
+    encode(message: MsgCollectSpreadRewardsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCollectSpreadRewardsResponse;
+    fromPartial(object: Partial<MsgCollectSpreadRewardsResponse>): MsgCollectSpreadRewardsResponse;
+    fromAmino(object: MsgCollectSpreadRewardsResponseAmino): MsgCollectSpreadRewardsResponse;
+    toAmino(message: MsgCollectSpreadRewardsResponse): MsgCollectSpreadRewardsResponseAmino;
+    fromAminoMsg(object: MsgCollectSpreadRewardsResponseAminoMsg): MsgCollectSpreadRewardsResponse;
+    toAminoMsg(message: MsgCollectSpreadRewardsResponse): MsgCollectSpreadRewardsResponseAminoMsg;
+    fromProtoMsg(message: MsgCollectSpreadRewardsResponseProtoMsg): MsgCollectSpreadRewardsResponse;
+    toProto(message: MsgCollectSpreadRewardsResponse): Uint8Array;
+    toProtoMsg(message: MsgCollectSpreadRewardsResponse): MsgCollectSpreadRewardsResponseProtoMsg;
 };
 export declare const MsgCollectIncentives: {
     typeUrl: string;
@@ -408,32 +479,6 @@ export declare const MsgCollectIncentivesResponse: {
     fromProtoMsg(message: MsgCollectIncentivesResponseProtoMsg): MsgCollectIncentivesResponse;
     toProto(message: MsgCollectIncentivesResponse): Uint8Array;
     toProtoMsg(message: MsgCollectIncentivesResponse): MsgCollectIncentivesResponseProtoMsg;
-};
-export declare const MsgCreateIncentive: {
-    typeUrl: string;
-    encode(message: MsgCreateIncentive, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateIncentive;
-    fromPartial(object: Partial<MsgCreateIncentive>): MsgCreateIncentive;
-    fromAmino(object: MsgCreateIncentiveAmino): MsgCreateIncentive;
-    toAmino(message: MsgCreateIncentive): MsgCreateIncentiveAmino;
-    fromAminoMsg(object: MsgCreateIncentiveAminoMsg): MsgCreateIncentive;
-    toAminoMsg(message: MsgCreateIncentive): MsgCreateIncentiveAminoMsg;
-    fromProtoMsg(message: MsgCreateIncentiveProtoMsg): MsgCreateIncentive;
-    toProto(message: MsgCreateIncentive): Uint8Array;
-    toProtoMsg(message: MsgCreateIncentive): MsgCreateIncentiveProtoMsg;
-};
-export declare const MsgCreateIncentiveResponse: {
-    typeUrl: string;
-    encode(message: MsgCreateIncentiveResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateIncentiveResponse;
-    fromPartial(object: Partial<MsgCreateIncentiveResponse>): MsgCreateIncentiveResponse;
-    fromAmino(object: MsgCreateIncentiveResponseAmino): MsgCreateIncentiveResponse;
-    toAmino(message: MsgCreateIncentiveResponse): MsgCreateIncentiveResponseAmino;
-    fromAminoMsg(object: MsgCreateIncentiveResponseAminoMsg): MsgCreateIncentiveResponse;
-    toAminoMsg(message: MsgCreateIncentiveResponse): MsgCreateIncentiveResponseAminoMsg;
-    fromProtoMsg(message: MsgCreateIncentiveResponseProtoMsg): MsgCreateIncentiveResponse;
-    toProto(message: MsgCreateIncentiveResponse): Uint8Array;
-    toProtoMsg(message: MsgCreateIncentiveResponse): MsgCreateIncentiveResponseProtoMsg;
 };
 export declare const MsgFungifyChargedPositions: {
     typeUrl: string;

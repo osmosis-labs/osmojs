@@ -6,21 +6,23 @@ export interface Pool {
     address: string;
     /** address holding the incentives liquidity. */
     incentivesAddress: string;
+    /** address holding spread rewards from swaps. */
+    spreadRewardsAddress: string;
     id: Long;
     /** Amount of total liquidity */
     currentTickLiquidity: string;
     token0: string;
     token1: string;
     currentSqrtPrice: string;
-    currentTick: string;
+    currentTick: Long;
     /**
      * tick_spacing must be one of the authorized_tick_spacing values set in the
      * concentrated-liquidity parameters
      */
     tickSpacing: Long;
-    exponentAtPriceOne: string;
-    /** swap_fee is the ratio that is charged on the amount of token in. */
-    swapFee: string;
+    exponentAtPriceOne: Long;
+    /** spread_factor is the ratio that is charged on the amount of token in. */
+    spreadFactor: string;
     /**
      * last_liquidity_update is the last time either the pool liquidity or the
      * active tick changed
@@ -36,6 +38,8 @@ export interface PoolAmino {
     address: string;
     /** address holding the incentives liquidity. */
     incentives_address: string;
+    /** address holding spread rewards from swaps. */
+    spread_rewards_address: string;
     id: string;
     /** Amount of total liquidity */
     current_tick_liquidity: string;
@@ -49,8 +53,8 @@ export interface PoolAmino {
      */
     tick_spacing: string;
     exponent_at_price_one: string;
-    /** swap_fee is the ratio that is charged on the amount of token in. */
-    swap_fee: string;
+    /** spread_factor is the ratio that is charged on the amount of token in. */
+    spread_factor: string;
     /**
      * last_liquidity_update is the last time either the pool liquidity or the
      * active tick changed
@@ -65,15 +69,16 @@ export interface PoolSDKType {
     $typeUrl?: string;
     address: string;
     incentives_address: string;
+    spread_rewards_address: string;
     id: Long;
     current_tick_liquidity: string;
     token0: string;
     token1: string;
     current_sqrt_price: string;
-    current_tick: string;
+    current_tick: Long;
     tick_spacing: Long;
-    exponent_at_price_one: string;
-    swap_fee: string;
+    exponent_at_price_one: Long;
+    spread_factor: string;
     last_liquidity_update?: Date;
 }
 export declare const Pool: {

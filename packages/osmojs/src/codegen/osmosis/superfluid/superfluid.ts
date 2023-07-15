@@ -1,6 +1,8 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "../lockup/lock";
 import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /**
  * SuperfluidAssetType indicates whether the superfluid asset is
  * a native token, lp share of a pool, or concentrated share of a pool
@@ -286,6 +288,38 @@ export interface UnpoolWhitelistedPoolsAminoMsg {
 export interface UnpoolWhitelistedPoolsSDKType {
   ids: Long[];
 }
+export interface ConcentratedPoolUserPositionRecord {
+  validatorAddress: string;
+  positionId: Long;
+  lockId: Long;
+  syntheticLock?: SyntheticLock;
+  delegationAmount?: Coin;
+  equivalentStakedAmount?: Coin;
+}
+export interface ConcentratedPoolUserPositionRecordProtoMsg {
+  typeUrl: "/osmosis.superfluid.ConcentratedPoolUserPositionRecord";
+  value: Uint8Array;
+}
+export interface ConcentratedPoolUserPositionRecordAmino {
+  validator_address: string;
+  position_id: string;
+  lock_id: string;
+  synthetic_lock?: SyntheticLockAmino;
+  delegation_amount?: CoinAmino;
+  equivalent_staked_amount?: CoinAmino;
+}
+export interface ConcentratedPoolUserPositionRecordAminoMsg {
+  type: "osmosis/concentrated-pool-user-position-record";
+  value: ConcentratedPoolUserPositionRecordAmino;
+}
+export interface ConcentratedPoolUserPositionRecordSDKType {
+  validator_address: string;
+  position_id: Long;
+  lock_id: Long;
+  synthetic_lock?: SyntheticLockSDKType;
+  delegation_amount?: CoinSDKType;
+  equivalent_staked_amount?: CoinSDKType;
+}
 
 function createBaseSuperfluidAsset(): SuperfluidAsset {
   return {
@@ -514,7 +548,7 @@ export const OsmoEquivalentMultiplierRecord = {
     }
 
     if (message.multiplier !== "") {
-      writer.uint32(26).string(message.multiplier);
+      writer.uint32(26).string(Decimal.fromUserInput(message.multiplier, 18).atomics);
     }
 
     return writer;
@@ -538,7 +572,7 @@ export const OsmoEquivalentMultiplierRecord = {
           break;
 
         case 3:
-          message.multiplier = reader.string();
+          message.multiplier = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -918,6 +952,151 @@ export const UnpoolWhitelistedPools = {
     return {
       typeUrl: "/osmosis.superfluid.UnpoolWhitelistedPools",
       value: UnpoolWhitelistedPools.encode(message).finish()
+    };
+  }
+
+};
+
+function createBaseConcentratedPoolUserPositionRecord(): ConcentratedPoolUserPositionRecord {
+  return {
+    validatorAddress: "",
+    positionId: Long.UZERO,
+    lockId: Long.UZERO,
+    syntheticLock: undefined,
+    delegationAmount: undefined,
+    equivalentStakedAmount: undefined
+  };
+}
+
+export const ConcentratedPoolUserPositionRecord = {
+  typeUrl: "/osmosis.superfluid.ConcentratedPoolUserPositionRecord",
+
+  encode(message: ConcentratedPoolUserPositionRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
+    }
+
+    if (!message.positionId.isZero()) {
+      writer.uint32(16).uint64(message.positionId);
+    }
+
+    if (!message.lockId.isZero()) {
+      writer.uint32(24).uint64(message.lockId);
+    }
+
+    if (message.syntheticLock !== undefined) {
+      SyntheticLock.encode(message.syntheticLock, writer.uint32(34).fork()).ldelim();
+    }
+
+    if (message.delegationAmount !== undefined) {
+      Coin.encode(message.delegationAmount, writer.uint32(42).fork()).ldelim();
+    }
+
+    if (message.equivalentStakedAmount !== undefined) {
+      Coin.encode(message.equivalentStakedAmount, writer.uint32(50).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ConcentratedPoolUserPositionRecord {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseConcentratedPoolUserPositionRecord();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.validatorAddress = reader.string();
+          break;
+
+        case 2:
+          message.positionId = (reader.uint64() as Long);
+          break;
+
+        case 3:
+          message.lockId = (reader.uint64() as Long);
+          break;
+
+        case 4:
+          message.syntheticLock = SyntheticLock.decode(reader, reader.uint32());
+          break;
+
+        case 5:
+          message.delegationAmount = Coin.decode(reader, reader.uint32());
+          break;
+
+        case 6:
+          message.equivalentStakedAmount = Coin.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: Partial<ConcentratedPoolUserPositionRecord>): ConcentratedPoolUserPositionRecord {
+    const message = createBaseConcentratedPoolUserPositionRecord();
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.positionId = object.positionId !== undefined && object.positionId !== null ? Long.fromValue(object.positionId) : Long.UZERO;
+    message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
+    message.syntheticLock = object.syntheticLock !== undefined && object.syntheticLock !== null ? SyntheticLock.fromPartial(object.syntheticLock) : undefined;
+    message.delegationAmount = object.delegationAmount !== undefined && object.delegationAmount !== null ? Coin.fromPartial(object.delegationAmount) : undefined;
+    message.equivalentStakedAmount = object.equivalentStakedAmount !== undefined && object.equivalentStakedAmount !== null ? Coin.fromPartial(object.equivalentStakedAmount) : undefined;
+    return message;
+  },
+
+  fromAmino(object: ConcentratedPoolUserPositionRecordAmino): ConcentratedPoolUserPositionRecord {
+    return {
+      validatorAddress: object.validator_address,
+      positionId: Long.fromString(object.position_id),
+      lockId: Long.fromString(object.lock_id),
+      syntheticLock: object?.synthetic_lock ? SyntheticLock.fromAmino(object.synthetic_lock) : undefined,
+      delegationAmount: object?.delegation_amount ? Coin.fromAmino(object.delegation_amount) : undefined,
+      equivalentStakedAmount: object?.equivalent_staked_amount ? Coin.fromAmino(object.equivalent_staked_amount) : undefined
+    };
+  },
+
+  toAmino(message: ConcentratedPoolUserPositionRecord): ConcentratedPoolUserPositionRecordAmino {
+    const obj: any = {};
+    obj.validator_address = message.validatorAddress;
+    obj.position_id = message.positionId ? message.positionId.toString() : undefined;
+    obj.lock_id = message.lockId ? message.lockId.toString() : undefined;
+    obj.synthetic_lock = message.syntheticLock ? SyntheticLock.toAmino(message.syntheticLock) : undefined;
+    obj.delegation_amount = message.delegationAmount ? Coin.toAmino(message.delegationAmount) : undefined;
+    obj.equivalent_staked_amount = message.equivalentStakedAmount ? Coin.toAmino(message.equivalentStakedAmount) : undefined;
+    return obj;
+  },
+
+  fromAminoMsg(object: ConcentratedPoolUserPositionRecordAminoMsg): ConcentratedPoolUserPositionRecord {
+    return ConcentratedPoolUserPositionRecord.fromAmino(object.value);
+  },
+
+  toAminoMsg(message: ConcentratedPoolUserPositionRecord): ConcentratedPoolUserPositionRecordAminoMsg {
+    return {
+      type: "osmosis/concentrated-pool-user-position-record",
+      value: ConcentratedPoolUserPositionRecord.toAmino(message)
+    };
+  },
+
+  fromProtoMsg(message: ConcentratedPoolUserPositionRecordProtoMsg): ConcentratedPoolUserPositionRecord {
+    return ConcentratedPoolUserPositionRecord.decode(message.value);
+  },
+
+  toProto(message: ConcentratedPoolUserPositionRecord): Uint8Array {
+    return ConcentratedPoolUserPositionRecord.encode(message).finish();
+  },
+
+  toProtoMsg(message: ConcentratedPoolUserPositionRecord): ConcentratedPoolUserPositionRecordProtoMsg {
+    return {
+      typeUrl: "/osmosis.superfluid.ConcentratedPoolUserPositionRecord",
+      value: ConcentratedPoolUserPositionRecord.encode(message).finish()
     };
   }
 

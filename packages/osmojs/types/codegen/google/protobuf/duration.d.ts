@@ -141,7 +141,7 @@ export interface DurationProtoMsg {
  * be expressed in JSON format as "3.000000001s", and 3 seconds and 1
  * microsecond should be expressed in JSON format as "3.000001s".
  */
-export declare type DurationAmino = string;
+export type DurationAmino = string;
 export interface DurationAminoMsg {
     type: "/google.protobuf.Duration";
     value: DurationAmino;

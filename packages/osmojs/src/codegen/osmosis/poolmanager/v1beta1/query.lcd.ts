@@ -1,5 +1,5 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { ParamsRequest, ParamsResponseSDKType, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponseSDKType, EstimateSinglePoolSwapExactAmountInRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponseSDKType, EstimateSinglePoolSwapExactAmountOutRequest, NumPoolsRequest, NumPoolsResponseSDKType, PoolRequest, PoolResponseSDKType, AllPoolsRequest, AllPoolsResponseSDKType, SpotPriceRequest, SpotPriceResponseSDKType, TotalPoolLiquidityRequest, TotalPoolLiquidityResponseSDKType } from "./query";
+import { ParamsRequest, ParamsResponseSDKType, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponseSDKType, EstimateSinglePoolSwapExactAmountInRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponseSDKType, EstimateSinglePoolSwapExactAmountOutRequest, NumPoolsRequest, NumPoolsResponseSDKType, PoolRequest, PoolResponseSDKType, AllPoolsRequest, AllPoolsResponseSDKType, SpotPriceRequest, SpotPriceResponseSDKType, TotalPoolLiquidityRequest, TotalPoolLiquidityResponseSDKType, TotalLiquidityRequest, TotalLiquidityResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -19,6 +19,7 @@ export class LCDQueryClient {
     this.allPools = this.allPools.bind(this);
     this.spotPrice = this.spotPrice.bind(this);
     this.totalPoolLiquidity = this.totalPoolLiquidity.bind(this);
+    this.totalLiquidity = this.totalLiquidity.bind(this);
   }
   /* Params */
 
@@ -144,12 +145,19 @@ export class LCDQueryClient {
     const endpoint = `osmosis/poolmanager/pools/${params.poolId}/prices`;
     return await this.req.get<SpotPriceResponseSDKType>(endpoint, options);
   }
-  /* TotalPoolLiquidity */
+  /* TotalPoolLiquidity returns the total liquidity of the specified pool. */
 
 
   async totalPoolLiquidity(params: TotalPoolLiquidityRequest): Promise<TotalPoolLiquidityResponseSDKType> {
     const endpoint = `osmosis/poolmanager/v1beta1/pools/${params.poolId}/total_pool_liquidity`;
     return await this.req.get<TotalPoolLiquidityResponseSDKType>(endpoint);
+  }
+  /* TotalLiquidity returns the total liquidity across all pools. */
+
+
+  async totalLiquidity(_params: TotalLiquidityRequest = {}): Promise<TotalLiquidityResponseSDKType> {
+    const endpoint = `osmosis/poolmanager/v1beta1/pools/total_liquidity`;
+    return await this.req.get<TotalLiquidityResponseSDKType>(endpoint);
   }
 
 }

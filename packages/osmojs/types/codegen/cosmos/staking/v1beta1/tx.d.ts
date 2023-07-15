@@ -16,7 +16,7 @@ export interface MsgCreateValidatorProtoMsg {
     typeUrl: "/cosmos.staking.v1beta1.MsgCreateValidator";
     value: Uint8Array;
 }
-export declare type MsgCreateValidatorEncoded = Omit<MsgCreateValidator, "pubkey"> & {
+export type MsgCreateValidatorEncoded = Omit<MsgCreateValidator, "pubkey"> & {
     pubkey?: AnyProtoMsg | undefined;
 };
 /** MsgCreateValidator defines a SDK message for creating a new validator. */

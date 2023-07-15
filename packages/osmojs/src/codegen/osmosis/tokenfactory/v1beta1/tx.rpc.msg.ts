@@ -1,6 +1,6 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgCreateDenom, MsgCreateDenomResponse, MsgMint, MsgMintResponse, MsgBurn, MsgBurnResponse, MsgChangeAdmin, MsgChangeAdminResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse, MsgSetBeforeSendHook, MsgSetBeforeSendHookResponse, MsgForceTransfer, MsgForceTransferResponse } from "./tx";
+import { MsgCreateDenom, MsgCreateDenomResponse, MsgMint, MsgMintResponse, MsgBurn, MsgBurnResponse, MsgChangeAdmin, MsgChangeAdminResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse, MsgForceTransfer, MsgForceTransferResponse } from "./tx";
 /** Msg defines the tokefactory module's gRPC message service. */
 
 export interface Msg {
@@ -9,7 +9,6 @@ export interface Msg {
   burn(request: MsgBurn): Promise<MsgBurnResponse>;
   changeAdmin(request: MsgChangeAdmin): Promise<MsgChangeAdminResponse>;
   setDenomMetadata(request: MsgSetDenomMetadata): Promise<MsgSetDenomMetadataResponse>;
-  setBeforeSendHook(request: MsgSetBeforeSendHook): Promise<MsgSetBeforeSendHookResponse>;
   forceTransfer(request: MsgForceTransfer): Promise<MsgForceTransferResponse>;
 }
 export class MsgClientImpl implements Msg {
@@ -22,7 +21,6 @@ export class MsgClientImpl implements Msg {
     this.burn = this.burn.bind(this);
     this.changeAdmin = this.changeAdmin.bind(this);
     this.setDenomMetadata = this.setDenomMetadata.bind(this);
-    this.setBeforeSendHook = this.setBeforeSendHook.bind(this);
     this.forceTransfer = this.forceTransfer.bind(this);
   }
 
@@ -54,12 +52,6 @@ export class MsgClientImpl implements Msg {
     const data = MsgSetDenomMetadata.encode(request).finish();
     const promise = this.rpc.request("osmosis.tokenfactory.v1beta1.Msg", "SetDenomMetadata", data);
     return promise.then(data => MsgSetDenomMetadataResponse.decode(new _m0.Reader(data)));
-  }
-
-  setBeforeSendHook(request: MsgSetBeforeSendHook): Promise<MsgSetBeforeSendHookResponse> {
-    const data = MsgSetBeforeSendHook.encode(request).finish();
-    const promise = this.rpc.request("osmosis.tokenfactory.v1beta1.Msg", "SetBeforeSendHook", data);
-    return promise.then(data => MsgSetBeforeSendHookResponse.decode(new _m0.Reader(data)));
   }
 
   forceTransfer(request: MsgForceTransfer): Promise<MsgForceTransferResponse> {

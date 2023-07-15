@@ -823,6 +823,79 @@ export interface QueryGetProtoRevEnabledResponseAminoMsg {
 export interface QueryGetProtoRevEnabledResponseSDKType {
     enabled: boolean;
 }
+/**
+ * QueryGetProtoRevPoolRequest is request type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+export interface QueryGetProtoRevPoolRequest {
+    /**
+     * base_denom is the base denom set in protorev for the denom pair to pool
+     * mapping
+     */
+    baseDenom: string;
+    /** other_denom is the other denom for the denom pair to pool mapping */
+    otherDenom: string;
+}
+export interface QueryGetProtoRevPoolRequestProtoMsg {
+    typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolRequest";
+    value: Uint8Array;
+}
+/**
+ * QueryGetProtoRevPoolRequest is request type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+export interface QueryGetProtoRevPoolRequestAmino {
+    /**
+     * base_denom is the base denom set in protorev for the denom pair to pool
+     * mapping
+     */
+    base_denom: string;
+    /** other_denom is the other denom for the denom pair to pool mapping */
+    other_denom: string;
+}
+export interface QueryGetProtoRevPoolRequestAminoMsg {
+    type: "osmosis/protorev/query-get-proto-rev-pool-request";
+    value: QueryGetProtoRevPoolRequestAmino;
+}
+/**
+ * QueryGetProtoRevPoolRequest is request type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+export interface QueryGetProtoRevPoolRequestSDKType {
+    base_denom: string;
+    other_denom: string;
+}
+/**
+ * QueryGetProtoRevPoolResponse is response type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+export interface QueryGetProtoRevPoolResponse {
+    /** pool_id is the pool_id stored for the denom pair */
+    poolId: Long;
+}
+export interface QueryGetProtoRevPoolResponseProtoMsg {
+    typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolResponse";
+    value: Uint8Array;
+}
+/**
+ * QueryGetProtoRevPoolResponse is response type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+export interface QueryGetProtoRevPoolResponseAmino {
+    /** pool_id is the pool_id stored for the denom pair */
+    pool_id: string;
+}
+export interface QueryGetProtoRevPoolResponseAminoMsg {
+    type: "osmosis/protorev/query-get-proto-rev-pool-response";
+    value: QueryGetProtoRevPoolResponseAmino;
+}
+/**
+ * QueryGetProtoRevPoolResponse is response type for the
+ * Query/GetProtoRevPool RPC method.
+ */
+export interface QueryGetProtoRevPoolResponseSDKType {
+    pool_id: Long;
+}
 export declare const QueryParamsRequest: {
     typeUrl: string;
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
@@ -1186,4 +1259,30 @@ export declare const QueryGetProtoRevEnabledResponse: {
     fromProtoMsg(message: QueryGetProtoRevEnabledResponseProtoMsg): QueryGetProtoRevEnabledResponse;
     toProto(message: QueryGetProtoRevEnabledResponse): Uint8Array;
     toProtoMsg(message: QueryGetProtoRevEnabledResponse): QueryGetProtoRevEnabledResponseProtoMsg;
+};
+export declare const QueryGetProtoRevPoolRequest: {
+    typeUrl: string;
+    encode(message: QueryGetProtoRevPoolRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolRequest;
+    fromPartial(object: Partial<QueryGetProtoRevPoolRequest>): QueryGetProtoRevPoolRequest;
+    fromAmino(object: QueryGetProtoRevPoolRequestAmino): QueryGetProtoRevPoolRequest;
+    toAmino(message: QueryGetProtoRevPoolRequest): QueryGetProtoRevPoolRequestAmino;
+    fromAminoMsg(object: QueryGetProtoRevPoolRequestAminoMsg): QueryGetProtoRevPoolRequest;
+    toAminoMsg(message: QueryGetProtoRevPoolRequest): QueryGetProtoRevPoolRequestAminoMsg;
+    fromProtoMsg(message: QueryGetProtoRevPoolRequestProtoMsg): QueryGetProtoRevPoolRequest;
+    toProto(message: QueryGetProtoRevPoolRequest): Uint8Array;
+    toProtoMsg(message: QueryGetProtoRevPoolRequest): QueryGetProtoRevPoolRequestProtoMsg;
+};
+export declare const QueryGetProtoRevPoolResponse: {
+    typeUrl: string;
+    encode(message: QueryGetProtoRevPoolResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolResponse;
+    fromPartial(object: Partial<QueryGetProtoRevPoolResponse>): QueryGetProtoRevPoolResponse;
+    fromAmino(object: QueryGetProtoRevPoolResponseAmino): QueryGetProtoRevPoolResponse;
+    toAmino(message: QueryGetProtoRevPoolResponse): QueryGetProtoRevPoolResponseAmino;
+    fromAminoMsg(object: QueryGetProtoRevPoolResponseAminoMsg): QueryGetProtoRevPoolResponse;
+    toAminoMsg(message: QueryGetProtoRevPoolResponse): QueryGetProtoRevPoolResponseAminoMsg;
+    fromProtoMsg(message: QueryGetProtoRevPoolResponseProtoMsg): QueryGetProtoRevPoolResponse;
+    toProto(message: QueryGetProtoRevPoolResponse): Uint8Array;
+    toProtoMsg(message: QueryGetProtoRevPoolResponse): QueryGetProtoRevPoolResponseProtoMsg;
 };

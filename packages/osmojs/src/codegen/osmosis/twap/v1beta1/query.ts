@@ -2,6 +2,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Params, ParamsAmino, ParamsSDKType } from "./genesis";
 import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 export interface ArithmeticTwapRequest {
   poolId: Long;
   baseAsset: string;
@@ -353,7 +354,7 @@ export const ArithmeticTwapResponse = {
 
   encode(message: ArithmeticTwapResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.arithmeticTwap !== "") {
-      writer.uint32(10).string(message.arithmeticTwap);
+      writer.uint32(10).string(Decimal.fromUserInput(message.arithmeticTwap, 18).atomics);
     }
 
     return writer;
@@ -369,7 +370,7 @@ export const ArithmeticTwapResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.arithmeticTwap = reader.string();
+          message.arithmeticTwap = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -559,7 +560,7 @@ export const ArithmeticTwapToNowResponse = {
 
   encode(message: ArithmeticTwapToNowResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.arithmeticTwap !== "") {
-      writer.uint32(10).string(message.arithmeticTwap);
+      writer.uint32(10).string(Decimal.fromUserInput(message.arithmeticTwap, 18).atomics);
     }
 
     return writer;
@@ -575,7 +576,7 @@ export const ArithmeticTwapToNowResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.arithmeticTwap = reader.string();
+          message.arithmeticTwap = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -777,7 +778,7 @@ export const GeometricTwapResponse = {
 
   encode(message: GeometricTwapResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.geometricTwap !== "") {
-      writer.uint32(10).string(message.geometricTwap);
+      writer.uint32(10).string(Decimal.fromUserInput(message.geometricTwap, 18).atomics);
     }
 
     return writer;
@@ -793,7 +794,7 @@ export const GeometricTwapResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.geometricTwap = reader.string();
+          message.geometricTwap = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:
@@ -983,7 +984,7 @@ export const GeometricTwapToNowResponse = {
 
   encode(message: GeometricTwapToNowResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.geometricTwap !== "") {
-      writer.uint32(10).string(message.geometricTwap);
+      writer.uint32(10).string(Decimal.fromUserInput(message.geometricTwap, 18).atomics);
     }
 
     return writer;
@@ -999,7 +1000,7 @@ export const GeometricTwapToNowResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.geometricTwap = reader.string();
+          message.geometricTwap = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
 
         default:

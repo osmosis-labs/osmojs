@@ -39,6 +39,8 @@ export interface GenesisState {
     maxPoolPointsPerTx: Long;
     /** The number of pool points that have been consumed in the current block. */
     pointCountForBlock: Long;
+    /** All of the profits that have been accumulated by the module. */
+    profits: Coin[];
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/osmosis.protorev.v1beta1.GenesisState";
@@ -80,6 +82,8 @@ export interface GenesisStateAmino {
     max_pool_points_per_tx: string;
     /** The number of pool points that have been consumed in the current block. */
     point_count_for_block: string;
+    /** All of the profits that have been accumulated by the module. */
+    profits: CoinAmino[];
 }
 export interface GenesisStateAminoMsg {
     type: "osmosis/protorev/genesis-state";
@@ -98,6 +102,7 @@ export interface GenesisStateSDKType {
     max_pool_points_per_block: Long;
     max_pool_points_per_tx: Long;
     point_count_for_block: Long;
+    profits: CoinSDKType[];
 }
 export declare const GenesisState: {
     typeUrl: string;
