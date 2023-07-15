@@ -83,7 +83,7 @@ describe('Governance tests for osmosis', () => {
   it('stake tokens to genesis validator', async () => {
     const signingClient = await getSigningOsmosisClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: wallet
+      signer: protoSigner
     });
 
     const { balance } = await queryClient.cosmos.bank.v1beta1.balance({
