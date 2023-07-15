@@ -9,6 +9,7 @@ module.exports = (api) => {
       '@babel/proposal-class-properties',
       '@babel/plugin-proposal-numeric-separator',
       '@babel/plugin-proposal-nullish-coalescing-operator',
+      '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-proposal-optional-chaining',
       '@babel/proposal-export-default-from'
     ],
