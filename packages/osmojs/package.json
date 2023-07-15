@@ -5,30 +5,45 @@
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
   "license": "SEE LICENSE IN LICENSE",
-  "main": "main/index.js",
-  "module": "module/index.js",
-  "typings": "types/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    "./*": {
+      "types": "./dist/codegen/*.d.ts",
+      "import": "./dist/codegen/*.mjs",
+      "require": "./dist/codegen/*.js",
+      "default": "./dist/codegen/*.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "jest": {
     "testTimeout": 15000
   },
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
   "files": [
-    "main",
-    "module",
-    "src",
-    "types"
+    "dist"
   ],
   "scripts": {
-    "build:main": "cross-env BABEL_ENV=production babel src --out-dir main --delete-dir-on-start --extensions \".tsx,.ts,.js\"",
-    "build:module": "cross-env MODULE=true babel src --out-dir module --delete-dir-on-start  --extensions \".tsx,.ts,.js\"",
-    "build:ts": "tsc --project ./tsconfig.json",
-    "build": "npm run build:module && npm run build:main",
-    "buidl": "npm run build && npm run build:ts",
-    "build:proto": "npm run clean && npm run proto",
+    "build:cjs": "yarn tsc -p tsconfig.json --outDir dist --module commonjs || true",
+    "build:mjs": "yarn tsc -p tsconfig.json --outDir mjs --module es2022 --declaration false || true",
+    "clean:mjs": "rimraf mjs",
+    "clean:dist": "rimraf dist",
+    "clean": "npm run clean:mjs && npm run clean:dist",
+    "build:rename": "publish-scripts --cmd rename --srcDir mjs --outDir dist --findExt js --replaceExt mjs --no-rmDir",
+    "build": "npm run clean && npm run build:cjs && npm run build:mjs && npm run build:rename",
     "codegen": "cross-env NODE_ENV=development babel-node scripts/codegen.js",
     "prepare": "npm run build",
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "clean": "rimraf ./types && rimraf ./src/codegen",
     "test": "jest --testPathIgnorePatterns=starship/",
     "test:watch": "jest --watch --testPathIgnorePatterns=starship/",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --testPathIgnorePatterns=starship/",
@@ -106,14 +121,14 @@
     "node-fetch": "^2.6.9",
     "path": "^0.12.7",
     "prettier": "^2.7.0",
+    "publish-scripts": "0.1.0",
     "regenerator-runtime": "^0.13.7",
     "rimraf": "3.0.2",
     "sinon": "14.0.2",
     "ts-jest": "^29.0.1",
-    "typescript": "^4.8.3"
+    "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
     "@cosmjs/amino": "0.29.3",
     "@cosmjs/proto-signing": "0.29.3",
     "@cosmjs/stargate": "0.29.3",

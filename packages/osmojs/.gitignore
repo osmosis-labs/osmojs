@@ -9,7 +9,8 @@ pids
 *.seed
 
 # dist
-out
+dist 
+mjs
 main
 module
 
