@@ -122,7 +122,6 @@
     "path": "^0.12.7",
     "prettier": "^2.7.0",
     "publish-scripts": "0.1.0",
-    "regenerator-runtime": "^0.13.7",
     "rimraf": "3.0.2",
     "sinon": "14.0.2",
     "ts-jest": "^29.0.1",
