@@ -5,19 +5,15 @@ import {
     MsgSetWithdrawAddress,
     MsgWithdrawDelegatorReward,
     MsgWithdrawValidatorCommission,
-} from '../../../../src/codegen/cosmos/distribution/v1beta1/tx';
+} from '../../../../../src/codegen/cosmos/distribution/v1beta1/tx';
 
 import {
     AminoTypes,
 } from '@cosmjs/stargate';
 
 import {
-    AminoMsgFundCommunityPool,
-    AminoMsgSetWithdrawAddress,
-    AminoMsgWithdrawDelegatorReward,
-    AminoMsgWithdrawValidatorCommission,
     AminoConverter,
-} from '../../../../src/codegen/cosmos/distribution/v1beta1/tx.amino';
+} from '../../../../../src/codegen/cosmos/distribution/v1beta1/tx.amino';
 
 describe("AminoTypes", () => {
     describe("toAmino", () => {

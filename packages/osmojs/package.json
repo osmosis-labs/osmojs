@@ -8,9 +8,6 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "jest": {
-    "testTimeout": 15000
-  },
   "directories": {
     "lib": "src",
     "test": "__tests__"
@@ -31,16 +28,16 @@
     "prepare": "npm run build",
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "test": "jest --testPathIgnorePatterns=starship/",
-    "test:watch": "jest --watch --testPathIgnorePatterns=starship/",
-    "test:debug": "node --inspect node_modules/.bin/jest --runInBand --testPathIgnorePatterns=starship/",
+    "test": "jest --config ./jest.osmojs.config.json",
+    "test:watch": "jest --watch --config ./jest.osmojs.config.json",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand --config ./jest.osmojs.config.json",
     "e2e": "npm run e2e:test",
     "e2e:deps": "cd tests && make setup",
     "e2e:kind": "cd tests && make setup-kind",
     "e2e:start": "cd tests && make start",
-    "e2e:test": "jest --testPathPattern=starship/ --verbose --bail",
-    "e2e:debug": "jest --testPathPattern=starship/ --runInBand --verbose --bail",
-    "e2e:watch": "jest --watch --testPathPattern=starship/",
+    "e2e:test": "jest --config ./jest.starship.config.json --verbose --bail",
+    "e2e:debug": "jest --config ./jest.starship.config.json --runInBand --verbose --bail",
+    "e2e:watch": "jest --watch --config ./jest.starship.config.json",
     "e2e:stop": "cd tests && make stop",
     "e2e:clean": "cd tests && make stop clean"
   },

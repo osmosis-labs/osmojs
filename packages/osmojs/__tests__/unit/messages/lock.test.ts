@@ -1,6 +1,6 @@
 import { coin } from '@cosmjs/amino';
-import { AminoConverter } from '../../src/codegen/osmosis/lockup/tx.amino';
-import { osmosis } from '../../src/codegen';
+import { AminoConverter } from '../../../src/codegen/osmosis/lockup/tx.amino';
+import { osmosis } from '../../../src/codegen';
 
 xit('toJSON', () => {
   const msg = osmosis.lockup.MsgLockTokens.toJSON({

@@ -1,10 +1,10 @@
 import { coin } from "@cosmjs/proto-signing";
-import { MsgLockTokens } from "../../../../src/codegen/osmosis/lockup/tx";
+import { MsgLockTokens } from "../../../../../src/codegen/osmosis/lockup/tx";
 import {
   AminoTypes,
 } from '@cosmjs/stargate';
 
-import { AminoMsgLockTokens, AminoConverter } from "../../../../src/codegen/osmosis/lockup/tx.amino";
+import { AminoMsgLockTokens, AminoConverter } from "../../../../../src/codegen/osmosis/lockup/tx.amino";
 
 describe("AminoTypes", () => {
   describe("toAmino", () => {

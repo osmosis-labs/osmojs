@@ -1,6 +1,6 @@
 import { coin } from '@cosmjs/amino';
-import { MessageComposer } from '../src/codegen/osmosis/gamm/v1beta1/tx.registry';
-import { osmosis } from '../src/codegen';
+import { MessageComposer } from '../../src/codegen/osmosis/gamm/v1beta1/tx.registry';
+import { osmosis } from '../../src/codegen';
 
 it('messages', async () => {
   expect(

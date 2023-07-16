@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { TextProposal, VoteOption } from "../../../../src/codegen/cosmos/gov/v1beta1/gov";
-import { MsgDeposit, MsgSubmitProposal, MsgVote } from "../../../../src/codegen/cosmos/gov/v1beta1/tx";
+import { TextProposal, VoteOption } from "../../../../../src/codegen/cosmos/gov/v1beta1/gov";
+import { MsgDeposit, MsgSubmitProposal, MsgVote } from "../../../../../src/codegen/cosmos/gov/v1beta1/tx";
 
 import {
   AminoTypes,
@@ -11,7 +11,7 @@ import {
   AminoMsgSubmitProposal,
   AminoMsgVote,
   AminoConverter,
-} from '../../../../src/codegen/cosmos/gov/v1beta1/tx.amino';
+} from '../../../../../src/codegen/cosmos/gov/v1beta1/tx.amino';
 
 describe("AminoTypes", () => {
   describe("toAmino", () => {
