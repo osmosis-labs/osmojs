@@ -1,10 +1,10 @@
 import { coin } from "@cosmjs/proto-signing";
-import { MsgJoinPool, MsgSwapExactAmountIn } from "../../../../src/codegen/osmosis/gamm/v1beta1/tx";
+import { MsgJoinPool, MsgSwapExactAmountIn } from "../../../../../src/codegen/osmosis/gamm/v1beta1/tx";
 import {
   AminoTypes,
 } from '@cosmjs/stargate';
 
-import { AminoMsgJoinPool, AminoMsgSwapExactAmountIn, AminoConverter } from "../../../../src/codegen/osmosis/gamm/v1beta1/tx.amino";
+import { AminoMsgJoinPool, AminoMsgSwapExactAmountIn, AminoConverter } from "../../../../../src/codegen/osmosis/gamm/v1beta1/tx.amino";
 
 describe("AminoTypes", () => {
   describe("toAmino", () => {

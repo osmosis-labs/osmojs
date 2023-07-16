@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { coins } from "@cosmjs/proto-signing";
-import { MsgMultiSend, MsgSend } from "../../../../src/codegen/cosmos/bank/v1beta1/tx";
+import { MsgMultiSend, MsgSend } from "../../../../../src/codegen/cosmos/bank/v1beta1/tx";
 
 import {
   AminoTypes,
 } from '@cosmjs/stargate';
 
-import { AminoMsgMultiSend, AminoMsgSend, AminoConverter } from "../../../../src/codegen/cosmos/bank/v1beta1/tx.amino";
+import { AminoMsgMultiSend, AminoMsgSend, AminoConverter } from "../../../../../src/codegen/cosmos/bank/v1beta1/tx.amino";
 
 describe("AminoTypes", () => {
   describe("toAmino", () => {
