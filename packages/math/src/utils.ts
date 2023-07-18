@@ -1,4 +1,3 @@
-import { osmosisAssets } from "./assets";
 import {
   CoinGeckoToken,
   CoinDenom,
@@ -8,89 +7,75 @@ import {
   CoinGeckoUSDResponse,
 } from "./types";
 import { Asset as OsmosisAsset } from "@chain-registry/types";
-import BigNumber from "bignumber.js";
+import {
+  getAssetByDenom,
+  getDenomByCoinGeckoId,
+  getSymbolByChainDenom,
+  getChainDenomBySymbol,
+  getExponentByDenom as _getExponentByDenom,
+  convertCoinGeckoPricesToDenomPriceMap,
+  noDecimals as _noDecimals,
+  convertBaseUnitsToDollarValue,
+  convertDollarValueToDenomUnits,
+  convertBaseUnitsToDisplayUnits
+} from "@chain-registry/utils";
 
-export const getOsmoAssetByDenom = (denom: CoinDenom): OsmosisAsset => {
-  const asset = osmosisAssets.find((asset) => asset.base === denom);
-  if (!asset) {
-    throw new Error(`Asset not found: ${denom}`);
-  }
-  return asset;
+export const getOsmoAssetByDenom = (osmosisAssets: OsmosisAsset[], denom: CoinDenom): OsmosisAsset => {
+  return getAssetByDenom(osmosisAssets, denom);
 };
 
 export const getDenomForCoinGeckoId = (
+  osmosisAssets: OsmosisAsset[],
   coinGeckoId: CoinGeckoToken
 ): CoinDenom => {
-  return osmosisAssets.find((asset) => asset.coingecko_id === coinGeckoId).base;
+  return getDenomByCoinGeckoId(osmosisAssets, coinGeckoId);
 };
 
-export const osmoDenomToSymbol = (denom: CoinDenom): CoinSymbol => {
-  const asset = getOsmoAssetByDenom(denom);
-  const symbol = asset.symbol;
-  if (!symbol) {
-    return denom;
-  }
-  return symbol;
+export const osmoDenomToSymbol = (osmosisAssets: OsmosisAsset[], denom: CoinDenom): CoinSymbol => {
+  return getSymbolByChainDenom(osmosisAssets, denom);
 };
 
-export const symbolToOsmoDenom = (token: CoinSymbol): CoinDenom => {
-  const asset = osmosisAssets.find(({ symbol }) => symbol === token);
-  const base = asset?.base;
-  if (!base) {
-    console.log(`cannot find base for token ${token}`);
-    return null;
-  }
-  return base;
+export const symbolToOsmoDenom = (osmosisAssets: OsmosisAsset[], token: CoinSymbol): CoinDenom => {
+  return getChainDenomBySymbol(osmosisAssets, token);
 };
 
-export const getExponentByDenom = (denom: CoinDenom): Exponent => {
-  const asset = getOsmoAssetByDenom(denom);
-  const unit = asset.denom_units.find(({ denom }) => denom === asset.display);
-  return unit?.exponent || 0;
+export const getExponentByDenom = (osmosisAssets: OsmosisAsset[], denom: CoinDenom): Exponent => {
+  return _getExponentByDenom(osmosisAssets, denom);
 };
 
 export const convertGeckoPricesToDenomPriceHash = (
+  osmosisAssets: OsmosisAsset[],
   prices: CoinGeckoUSDResponse
 ): PriceHash => {
-  return Object.keys(prices).reduce((res, geckoId) => {
-    const denom = getDenomForCoinGeckoId(geckoId);
-    res[denom] = prices[geckoId].usd;
-    return res;
-  }, {});
+  return convertCoinGeckoPricesToDenomPriceMap(osmosisAssets, prices);
 };
 
 export const noDecimals = (num: number | string) => {
-  return new BigNumber(num).decimalPlaces(0, BigNumber.ROUND_DOWN).toString();
+  return _noDecimals(num);
 };
 
 export const baseUnitsToDollarValue = (
+  osmosisAssets: OsmosisAsset[],
   prices: PriceHash,
   symbol: string,
   amount: string | number
 ) => {
-  const denom = symbolToOsmoDenom(symbol);
-  return new BigNumber(amount)
-    .shiftedBy(-getExponentByDenom(denom))
-    .multipliedBy(prices[denom])
-    .toString();
+  return convertBaseUnitsToDollarValue(osmosisAssets, prices, symbol, amount);
 };
 
 export const dollarValueToDenomUnits = (
+  osmosisAssets: OsmosisAsset[],
   prices: PriceHash,
   symbol: string,
   value: string | number
 ) => {
-  const denom = symbolToOsmoDenom(symbol);
-  return new BigNumber(value)
-    .dividedBy(prices[denom])
-    .shiftedBy(getExponentByDenom(denom))
-    .toString();
+  return convertDollarValueToDenomUnits(osmosisAssets, prices, symbol, value);
 };
 
 export const baseUnitsToDisplayUnits = (
+  osmosisAssets: OsmosisAsset[],
   symbol: string,
   amount: string | number
 ) => {
-  const denom = symbolToOsmoDenom(symbol);
-  return new BigNumber(amount).shiftedBy(-getExponentByDenom(denom)).toString();
+  return convertBaseUnitsToDisplayUnits(osmosisAssets, symbol, amount);
 };

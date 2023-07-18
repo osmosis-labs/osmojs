@@ -1,3 +1,5 @@
+import { assets } from 'chain-registry';
+import { asset_lists } from '@chain-registry/assets';
 import { getOsmoAssetByDenom } from "../src/utils";
 import priceResponse from "../../../__fixtures__/coingecko/api/v3/simple/price/data.json";
 import poolResponse from "../../../__fixtures__/rpc/osmosis/gamm/v1beta1/pools/data.json";
@@ -66,15 +68,21 @@ export const omit = (obj, ...props) => {
   return result;
 };
 
-const pools = poolResponse.pools.map((p) => omit(p, "@type"));
-const prices = convertGeckoPricesToDenomPriceHash(priceResponse);
-
 describe("Test pool calculations", () => {
+  let osmosisAssets, pools, prices;
+  beforeAll(() => {
+    osmosisAssets = assets.find(({ chain_name }) => chain_name === 'osmosis');
+    const osmosisAssetList = asset_lists.find(({ chain_name }) => chain_name === 'osmosis');
+    osmosisAssets = [...(osmosisAssets?.assets || []), ...(osmosisAssetList?.assets || [])];
+    pools = poolResponse.pools.map((p) => omit(p, "@type"));
+    prices = convertGeckoPricesToDenomPriceHash(osmosisAssets, priceResponse);
+  });
+
   cases(
     "calcPoolLiquidity",
     (opts) => {
       const pool = pools.find((pool) => pool.id === opts.poolId);
-      const liquidity = calcPoolLiquidity(pool, prices);
+      const liquidity = calcPoolLiquidity(osmosisAssets, pool, prices);
       expect(noDecimals(liquidity)).toEqual(opts.liquidity);
     },
     [
@@ -100,7 +108,7 @@ describe("Test pool calculations", () => {
     "convertGammTokenToDollarValue",
     (opts) => {
       const pool = pools.find((pool) => pool.id === opts.poolId);
-      const value = convertGammTokenToDollarValue(opts.coin, pool, prices);
+      const value = convertGammTokenToDollarValue(osmosisAssets, opts.coin, pool, prices);
       expect(noDecimals(value)).toEqual(opts.value);
     },
     [
@@ -116,7 +124,7 @@ describe("Test pool calculations", () => {
       const pool = pools.find(
         (pool) => pool.poolAssets.length === opts.poolLength
       );
-      const coins = convertDollarValueToCoins(opts.value, pool, prices);
+      const coins = convertDollarValueToCoins(osmosisAssets, opts.value, pool, prices);
       expect(coins).toMatchSnapshot();
     },
     [
@@ -147,7 +155,7 @@ describe("Test pool calculations", () => {
     "convertDollarValueToShares",
     (opts) => {
       const pool = pools.find((pool) => pool.id === opts.poolId);
-      const shares = convertDollarValueToShares(opts.value, pool, prices);
+      const shares = convertDollarValueToShares(osmosisAssets, opts.value, pool, prices);
       expect(noDecimals(shares)).toEqual(opts.shares);
     },
     [
@@ -161,8 +169,9 @@ describe("Test pool calculations", () => {
     "calcCoinsNeededForValue",
     (opts) => {
       const pool = pools.find((pool) => pool.id === opts.poolId);
-      const prettiedPool = prettyPool(pool);
+      const prettiedPool = prettyPool(osmosisAssets, pool);
       const coinsNeeded = calcCoinsNeededForValue(
+        osmosisAssets,
         prices,
         prettiedPool,
         opts.value
@@ -181,8 +190,9 @@ describe("Test pool calculations", () => {
     "calcMaxCoinsForPool",
     (opts) => {
       const pool = pools.find((pool) => pool.id === opts.poolId);
-      const prettiedPool = prettyPool(pool);
+      const prettiedPool = prettyPool(osmosisAssets, pool);
       const coinsNeeded = calcMaxCoinsForPool(
+        osmosisAssets,
         prices,
         prettiedPool,
         fakeBalances
@@ -200,10 +210,10 @@ describe("Test pool calculations", () => {
     "calcShareOutAmount",
     (opts) => {
       const pool = pools.find((pool) => pool.id === opts.poolId);
-      const prettiedPool = prettyPool(pool);
+      const prettiedPool = prettyPool(osmosisAssets, pool);
       const coinsNeeded = opts.useMaxCoins
-        ? calcMaxCoinsForPool(prices, prettiedPool, fakeBalances)
-        : calcCoinsNeededForValue(prices, prettiedPool, opts.value as number);
+        ? calcMaxCoinsForPool(osmosisAssets, prices, prettiedPool, fakeBalances)
+        : calcCoinsNeededForValue(osmosisAssets, prices, prettiedPool, opts.value as number);
       const shareOutAmount = calcShareOutAmount(pool, coinsNeeded);
       expect(shareOutAmount).toEqual(opts.amount);
     },
@@ -234,14 +244,14 @@ describe("Test pool calculations", () => {
     const poolsFiltered = pools.filter((pool) =>
       pool.poolAssets.every(({ token }) => {
         try {
-          return !!getOsmoAssetByDenom(token.denom);
+          return !!getOsmoAssetByDenom(osmosisAssets, token.denom);
         } catch (error) {
           return false;
         }
       })
     );
     const LIQUIDITY_LIMIT = 50000000;
-    const poolPairs = makePoolPairs(poolsFiltered, prices, LIQUIDITY_LIMIT);
+    const poolPairs = makePoolPairs(osmosisAssets, poolsFiltered, prices, LIQUIDITY_LIMIT);
     expect(poolPairs).toMatchSnapshot();
   });
 });

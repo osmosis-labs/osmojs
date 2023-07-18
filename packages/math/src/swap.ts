@@ -1,3 +1,4 @@
+import { Asset as OsmosisAsset } from "@chain-registry/types";
 import { BigNumber } from "bignumber.js";
 import { CoinDenom, Trade, PrettyPair } from "./types";
 import { symbolToOsmoDenom } from "./utils";
@@ -45,13 +46,16 @@ export const routesThroughPools = ({
   return [];
 };
 
-export const getRoutesForTrade = ({
-  trade,
-  pairs,
-}: {
-  trade: Trade;
-  pairs: PrettyPair[];
-}): SwapAmountInRoute[] => {
+export const getRoutesForTrade = (
+  osmosisAssets: OsmosisAsset[],
+  {
+    trade,
+    pairs,
+  }: {
+    trade: Trade;
+    pairs: PrettyPair[];
+  }
+): SwapAmountInRoute[] => {
   const directPool = pairs.find(
     (pair) =>
       (pair.baseAddress == trade.sell.denom &&
@@ -78,7 +82,7 @@ export const getRoutesForTrade = ({
   if (osmoRoutes.length === 2) return osmoRoutes;
 
   const atomRoutes = routesThroughPools({
-    denom: symbolToOsmoDenom("ATOM"),
+    denom: symbolToOsmoDenom(osmosisAssets, "ATOM"),
     trade,
     pairs,
   });

@@ -1,3 +1,5 @@
+import { assets } from 'chain-registry';
+import { asset_lists } from '@chain-registry/assets';
 import priceResponse from "../../../__fixtures__/coingecko/api/v3/simple/price/data.json";
 import poolResponse from "../../../__fixtures__/rpc/osmosis/gamm/v1beta1/pools/data.json";
 import activeGaugesResponse from "../../../__fixtures__/rpc/osmosis/incentives/v1beta1/active_gauges/data.json";
@@ -53,10 +55,16 @@ const keysToCamel = (obj) => {
   return obj;
 };
 
-const pools = poolResponse.pools;
-const prices = convertGeckoPricesToDenomPriceHash(priceResponse);
-
 describe("Test APR calculations", () => {
+  let osmosisAssets, pools, prices;
+  beforeAll(() => {
+    osmosisAssets = assets.find(({ chain_name }) => chain_name === 'osmosis');
+    const osmosisAssetList = asset_lists.find(({ chain_name }) => chain_name === 'osmosis');
+    osmosisAssets = [...(osmosisAssets?.assets || []), ...(osmosisAssetList?.assets || [])];
+    pools = poolResponse.pools;
+    prices = convertGeckoPricesToDenomPriceHash(osmosisAssets, priceResponse);
+  });
+
   cases(
     "calcPoolAprs",
     (opts) => {
@@ -78,18 +86,21 @@ describe("Test APR calculations", () => {
         (item) => item.pool_id === pool.id
       )!.volume_7d;
 
-      const aprs = calcPoolAprs({
-        activeGauges,
-        lockupDurations,
-        pool,
-        prices,
-        superfluidPools,
-        swapFee: pool.poolParams!.swapFee,
-        volume7d,
-        aprSuperfluid: 5.28,
-        includeNonPerpetual: opts.includeNonPerpetual,
-        lockup: opts.lockup,
-      });
+      const aprs = calcPoolAprs(
+        osmosisAssets,
+        {
+          activeGauges,
+          lockupDurations,
+          pool,
+          prices,
+          superfluidPools,
+          swapFee: pool.poolParams!.swapFee,
+          volume7d,
+          aprSuperfluid: 5.28,
+          includeNonPerpetual: opts.includeNonPerpetual,
+          lockup: opts.lockup,
+        }
+      );
 
       expect(aprs).toMatchSnapshot();
     },

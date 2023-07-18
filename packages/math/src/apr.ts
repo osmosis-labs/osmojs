@@ -1,3 +1,4 @@
+import { Asset as OsmosisAsset } from "@chain-registry/types";
 import { CalcPoolAprsParams } from "./types";
 import { Duration } from "osmojs/dist/codegen/google/protobuf/duration";
 import { calcPoolLiquidity } from "./pool";
@@ -24,18 +25,21 @@ const convertLockup = (lockup: string, durations: Duration[]) => {
   }
 };
 
-export const calcPoolAprs = ({
-  activeGauges,
-  pool,
-  prices,
-  superfluidPools,
-  aprSuperfluid,
-  lockupDurations,
-  volume7d,
-  swapFee,
-  lockup = "14",
-  includeNonPerpetual = true,
-}: CalcPoolAprsParams) => {
+export const calcPoolAprs = (
+  osmosisAssets: OsmosisAsset[],
+  {
+    activeGauges,
+    pool,
+    prices,
+    superfluidPools,
+    aprSuperfluid,
+    lockupDurations,
+    volume7d,
+    swapFee,
+    lockup = "14",
+    includeNonPerpetual = true,
+  }: CalcPoolAprsParams
+) => {
   const hasAssetsPrices = pool.poolAssets.every((asset) =>
     Boolean(prices[asset.token!.denom])
   );
@@ -55,7 +59,7 @@ export const calcPoolAprs = ({
   const superfluidApr =
     isSuperfluidPool && lockup === "14" ? aprSuperfluid : null;
 
-  const liquidity = calcPoolLiquidity(pool, prices);
+  const liquidity = calcPoolLiquidity(osmosisAssets, pool, prices);
 
   // gauge aprs
   const lockupDuration = convertLockup(lockup, lockupDurations);
@@ -75,13 +79,13 @@ export const calcPoolAprs = ({
     const tokensRemaining = new BigNumber(gauge.coins[0].amount).minus(
       gauge.distributedCoins[0].amount
     );
-    const symbol = osmoDenomToSymbol(gauge.coins[0].denom);
+    const symbol = osmoDenomToSymbol(osmosisAssets, gauge.coins[0].denom);
     const daysRemaining = gauge.isPerpetual
       ? null
       : gauge.numEpochsPaidOver.low - gauge.filledEpochs.low;
 
     const totalValue = tokensRemaining
-      .shiftedBy(-getExponentByDenom(gauge.coins[0].denom))
+      .shiftedBy(-getExponentByDenom(osmosisAssets, gauge.coins[0].denom))
       .multipliedBy(prices[gauge.coins[0].denom]);
 
     const distributedValuePerDay = totalValue
@@ -89,7 +93,7 @@ export const calcPoolAprs = ({
       .toString();
 
     const distributedCoinPerDay = {
-      amount: dollarValueToDenomUnits(prices, symbol, distributedValuePerDay),
+      amount: dollarValueToDenomUnits(osmosisAssets, prices, symbol, distributedValuePerDay),
       denom: gauge.coins[0].denom,
     };
 
