@@ -8,7 +8,7 @@ import superfluid from "../../../__fixtures__/rpc/osmosis/superfluid/v1beta1/all
 import summary from "../../../__fixtures__/validator/pairs/v1/summary/data.json";
 import cases from "jest-in-case";
 import Long from "long";
-import { omit } from "./pools.test";
+import { omit } from "./pool-utils.test";
 import { calcPoolAprs } from "../src/apr";
 import { convertGeckoPricesToDenomPriceHash } from "../src/utils";
 
@@ -87,11 +87,11 @@ describe("Test APR calculations", () => {
       )!.volume_7d;
 
       const aprs = calcPoolAprs(
-        osmosisAssets,
         {
           activeGauges,
           lockupDurations,
           pool,
+          assets: osmosisAssets,
           prices,
           superfluidPools,
           swapFee: pool.poolParams!.swapFee,

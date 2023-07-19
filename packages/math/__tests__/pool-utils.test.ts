@@ -13,7 +13,7 @@ import {
   calcShareOutAmount,
   prettyPool,
   makePoolPairs,
-} from "../src/pool";
+} from "../src/pool-utils";
 import cases from "jest-in-case";
 import { noDecimals, convertGeckoPricesToDenomPriceHash } from "../src/utils";
 

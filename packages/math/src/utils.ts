@@ -6,7 +6,7 @@ import {
   PriceHash,
   CoinGeckoUSDResponse,
 } from "./types";
-import { Asset as OsmosisAsset } from "@chain-registry/types";
+import { Asset } from "@chain-registry/types";
 import {
   getAssetByDenom,
   getDenomByCoinGeckoId,
@@ -20,34 +20,31 @@ import {
   convertBaseUnitsToDisplayUnits
 } from "@chain-registry/utils";
 
-export const getOsmoAssetByDenom = (osmosisAssets: OsmosisAsset[], denom: CoinDenom): OsmosisAsset => {
-  return getAssetByDenom(osmosisAssets, denom);
+export const getOsmoAssetByDenom = (assets: Asset[], denom: CoinDenom): Asset => {
+  return getAssetByDenom(assets, denom);
 };
 
-export const getDenomForCoinGeckoId = (
-  osmosisAssets: OsmosisAsset[],
-  coinGeckoId: CoinGeckoToken
-): CoinDenom => {
-  return getDenomByCoinGeckoId(osmosisAssets, coinGeckoId);
+export const getDenomForCoinGeckoId = (assets: Asset[], coinGeckoId: CoinGeckoToken): CoinDenom => {
+  return getDenomByCoinGeckoId(assets, coinGeckoId);
 };
 
-export const osmoDenomToSymbol = (osmosisAssets: OsmosisAsset[], denom: CoinDenom): CoinSymbol => {
-  return getSymbolByChainDenom(osmosisAssets, denom);
+export const osmoDenomToSymbol = (assets: Asset[], denom: CoinDenom): CoinSymbol => {
+  return getSymbolByChainDenom(assets, denom);
 };
 
-export const symbolToOsmoDenom = (osmosisAssets: OsmosisAsset[], token: CoinSymbol): CoinDenom => {
-  return getChainDenomBySymbol(osmosisAssets, token);
+export const symbolToOsmoDenom = (assets: Asset[], token: CoinSymbol): CoinDenom => {
+  return getChainDenomBySymbol(assets, token);
 };
 
-export const getExponentByDenom = (osmosisAssets: OsmosisAsset[], denom: CoinDenom): Exponent => {
-  return _getExponentByDenom(osmosisAssets, denom);
+export const getExponentByDenom = (assets: Asset[], denom: CoinDenom): Exponent => {
+  return _getExponentByDenom(assets, denom);
 };
 
 export const convertGeckoPricesToDenomPriceHash = (
-  osmosisAssets: OsmosisAsset[],
+  assets: Asset[],
   prices: CoinGeckoUSDResponse
 ): PriceHash => {
-  return convertCoinGeckoPricesToDenomPriceMap(osmosisAssets, prices);
+  return convertCoinGeckoPricesToDenomPriceMap(assets, prices);
 };
 
 export const noDecimals = (num: number | string) => {
@@ -55,27 +52,27 @@ export const noDecimals = (num: number | string) => {
 };
 
 export const baseUnitsToDollarValue = (
-  osmosisAssets: OsmosisAsset[],
+  assets: Asset[],
   prices: PriceHash,
   symbol: string,
   amount: string | number
 ) => {
-  return convertBaseUnitsToDollarValue(osmosisAssets, prices, symbol, amount);
+  return convertBaseUnitsToDollarValue(assets, prices, symbol, amount);
 };
 
 export const dollarValueToDenomUnits = (
-  osmosisAssets: OsmosisAsset[],
+  assets: Asset[],
   prices: PriceHash,
   symbol: string,
   value: string | number
 ) => {
-  return convertDollarValueToDenomUnits(osmosisAssets, prices, symbol, value);
+  return convertDollarValueToDenomUnits(assets, prices, symbol, value);
 };
 
 export const baseUnitsToDisplayUnits = (
-  osmosisAssets: OsmosisAsset[],
+  assets: Asset[],
   symbol: string,
   amount: string | number
 ) => {
-  return convertBaseUnitsToDisplayUnits(osmosisAssets, symbol, amount);
+  return convertBaseUnitsToDisplayUnits(assets, symbol, amount);
 };

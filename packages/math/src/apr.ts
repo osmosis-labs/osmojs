@@ -1,7 +1,6 @@
-import { Asset as OsmosisAsset } from "@chain-registry/types";
 import { CalcPoolAprsParams } from "./types";
 import { Duration } from "osmojs/dist/codegen/google/protobuf/duration";
-import { calcPoolLiquidity } from "./pool";
+import { calcPoolLiquidity } from "./pool-utils";
 import BigNumber from "bignumber.js";
 import {
   dollarValueToDenomUnits,
@@ -26,10 +25,10 @@ const convertLockup = (lockup: string, durations: Duration[]) => {
 };
 
 export const calcPoolAprs = (
-  osmosisAssets: OsmosisAsset[],
   {
     activeGauges,
     pool,
+    assets,
     prices,
     superfluidPools,
     aprSuperfluid,
@@ -59,7 +58,7 @@ export const calcPoolAprs = (
   const superfluidApr =
     isSuperfluidPool && lockup === "14" ? aprSuperfluid : null;
 
-  const liquidity = calcPoolLiquidity(osmosisAssets, pool, prices);
+  const liquidity = calcPoolLiquidity(assets, pool, prices);
 
   // gauge aprs
   const lockupDuration = convertLockup(lockup, lockupDurations);
@@ -79,13 +78,13 @@ export const calcPoolAprs = (
     const tokensRemaining = new BigNumber(gauge.coins[0].amount).minus(
       gauge.distributedCoins[0].amount
     );
-    const symbol = osmoDenomToSymbol(osmosisAssets, gauge.coins[0].denom);
+    const symbol = osmoDenomToSymbol(assets, gauge.coins[0].denom);
     const daysRemaining = gauge.isPerpetual
       ? null
       : gauge.numEpochsPaidOver.low - gauge.filledEpochs.low;
 
     const totalValue = tokensRemaining
-      .shiftedBy(-getExponentByDenom(osmosisAssets, gauge.coins[0].denom))
+      .shiftedBy(-getExponentByDenom(assets, gauge.coins[0].denom))
       .multipliedBy(prices[gauge.coins[0].denom]);
 
     const distributedValuePerDay = totalValue
@@ -93,7 +92,7 @@ export const calcPoolAprs = (
       .toString();
 
     const distributedCoinPerDay = {
-      amount: dollarValueToDenomUnits(osmosisAssets, prices, symbol, distributedValuePerDay),
+      amount: dollarValueToDenomUnits(assets, prices, symbol, distributedValuePerDay),
       denom: gauge.coins[0].denom,
     };
 

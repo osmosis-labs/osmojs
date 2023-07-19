@@ -1,4 +1,4 @@
-import { Asset as OsmosisAsset } from "@chain-registry/types";
+import { Asset } from "@chain-registry/types";
 import { BigNumber } from "bignumber.js";
 import { CoinDenom, Trade, PrettyPair } from "./types";
 import { symbolToOsmoDenom } from "./utils";
@@ -47,7 +47,7 @@ export const routesThroughPools = ({
 };
 
 export const getRoutesForTrade = (
-  osmosisAssets: OsmosisAsset[],
+  assets: Asset[],
   {
     trade,
     pairs,
@@ -82,7 +82,7 @@ export const getRoutesForTrade = (
   if (osmoRoutes.length === 2) return osmoRoutes;
 
   const atomRoutes = routesThroughPools({
-    denom: symbolToOsmoDenom(osmosisAssets, "ATOM"),
+    denom: symbolToOsmoDenom(assets, "ATOM"),
     trade,
     pairs,
   });
