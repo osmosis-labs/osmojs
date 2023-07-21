@@ -1,4 +1,3 @@
-import { osmosisAssets } from "./assets";
 import {
   CoinGeckoToken,
   CoinDenom,
@@ -7,90 +6,73 @@ import {
   PriceHash,
   CoinGeckoUSDResponse,
 } from "./types";
-import { Asset as OsmosisAsset } from "@chain-registry/types";
-import BigNumber from "bignumber.js";
+import { Asset } from "@chain-registry/types";
+import {
+  getAssetByDenom,
+  getDenomByCoinGeckoId,
+  getSymbolByChainDenom,
+  getChainDenomBySymbol,
+  getExponentByDenom as _getExponentByDenom,
+  convertCoinGeckoPricesToDenomPriceMap,
+  noDecimals as _noDecimals,
+  convertBaseUnitsToDollarValue,
+  convertDollarValueToDenomUnits,
+  convertBaseUnitsToDisplayUnits
+} from "@chain-registry/utils";
 
-export const getOsmoAssetByDenom = (denom: CoinDenom): OsmosisAsset => {
-  const asset = osmosisAssets.find((asset) => asset.base === denom);
-  if (!asset) {
-    throw new Error(`Asset not found: ${denom}`);
-  }
-  return asset;
+export const getOsmoAssetByDenom = (assets: Asset[], denom: CoinDenom): Asset => {
+  return getAssetByDenom(assets, denom);
 };
 
-export const getDenomForCoinGeckoId = (
-  coinGeckoId: CoinGeckoToken
-): CoinDenom => {
-  return osmosisAssets.find((asset) => asset.coingecko_id === coinGeckoId).base;
+export const getDenomForCoinGeckoId = (assets: Asset[], coinGeckoId: CoinGeckoToken): CoinDenom => {
+  return getDenomByCoinGeckoId(assets, coinGeckoId);
 };
 
-export const osmoDenomToSymbol = (denom: CoinDenom): CoinSymbol => {
-  const asset = getOsmoAssetByDenom(denom);
-  const symbol = asset.symbol;
-  if (!symbol) {
-    return denom;
-  }
-  return symbol;
+export const osmoDenomToSymbol = (assets: Asset[], denom: CoinDenom): CoinSymbol => {
+  return getSymbolByChainDenom(assets, denom);
 };
 
-export const symbolToOsmoDenom = (token: CoinSymbol): CoinDenom => {
-  const asset = osmosisAssets.find(({ symbol }) => symbol === token);
-  const base = asset?.base;
-  if (!base) {
-    console.log(`cannot find base for token ${token}`);
-    return null;
-  }
-  return base;
+export const symbolToOsmoDenom = (assets: Asset[], token: CoinSymbol): CoinDenom => {
+  return getChainDenomBySymbol(assets, token);
 };
 
-export const getExponentByDenom = (denom: CoinDenom): Exponent => {
-  const asset = getOsmoAssetByDenom(denom);
-  const unit = asset.denom_units.find(({ denom }) => denom === asset.display);
-  return unit?.exponent || 0;
+export const getExponentByDenom = (assets: Asset[], denom: CoinDenom): Exponent => {
+  return _getExponentByDenom(assets, denom);
 };
 
 export const convertGeckoPricesToDenomPriceHash = (
+  assets: Asset[],
   prices: CoinGeckoUSDResponse
 ): PriceHash => {
-  return Object.keys(prices).reduce((res, geckoId) => {
-    const denom = getDenomForCoinGeckoId(geckoId);
-    res[denom] = prices[geckoId].usd;
-    return res;
-  }, {});
+  return convertCoinGeckoPricesToDenomPriceMap(assets, prices);
 };
 
 export const noDecimals = (num: number | string) => {
-  return new BigNumber(num).decimalPlaces(0, BigNumber.ROUND_DOWN).toString();
+  return _noDecimals(num);
 };
 
 export const baseUnitsToDollarValue = (
+  assets: Asset[],
   prices: PriceHash,
   symbol: string,
   amount: string | number
 ) => {
-  const denom = symbolToOsmoDenom(symbol);
-  return new BigNumber(amount)
-    .shiftedBy(-getExponentByDenom(denom))
-    .multipliedBy(prices[denom])
-    .toString();
+  return convertBaseUnitsToDollarValue(assets, prices, symbol, amount);
 };
 
 export const dollarValueToDenomUnits = (
+  assets: Asset[],
   prices: PriceHash,
   symbol: string,
   value: string | number
 ) => {
-  const denom = symbolToOsmoDenom(symbol);
-  return new BigNumber(value)
-    .dividedBy(prices[denom])
-    .shiftedBy(getExponentByDenom(denom))
-    .toString();
+  return convertDollarValueToDenomUnits(assets, prices, symbol, value);
 };
 
 export const baseUnitsToDisplayUnits = (
+  assets: Asset[],
   symbol: string,
   amount: string | number
 ) => {
-  const denom = symbolToOsmoDenom(symbol);
-  return new BigNumber(amount).shiftedBy(-getExponentByDenom(denom)).toString();
+  return convertBaseUnitsToDisplayUnits(assets, symbol, amount);
 };

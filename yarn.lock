@@ -2317,6 +2317,14 @@
   resolved "https://registry.npmmirror.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@chain-registry/assets@1.19.0":
+  version "1.19.0"
+  resolved "https://registry.npmmirror.com/@chain-registry/assets/-/assets-1.19.0.tgz#26135ee669df28e54dcd250b5ae116b74ede40c8"
+  integrity sha512-g4dSKLmE3OBjLsSeE1XKEHu+tFH3P1lPrx+P7+0dJoExYkhMYXMMGodxYBhuho2SfuA6bYwTPGsETIO1AkaMHQ==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
+    "@chain-registry/types" "^0.16.0"
+
 "@chain-registry/client@1.14.1":
   version "1.14.1"
   resolved "https://registry.npmjs.org/@chain-registry/client/-/client-1.14.1.tgz#953bf3383e7df57626f842ee73fee8922ba15b10"
@@ -2328,14 +2336,6 @@
     bfs-path "^1.0.2"
     cross-fetch "^3.1.5"
 
-"@chain-registry/osmosis@1.19.0":
-  version "1.19.0"
-  resolved "https://registry.npmjs.org/@chain-registry/osmosis/-/osmosis-1.19.0.tgz#4910aafd1f4f4a71f2a22299e5b2e9606b5e950c"
-  integrity sha512-EEHKAzOKfnrY3UaNIG9To6FTrrJaqCR6ERKbliIz5gbPKYF8j89pV58vN58TrDuPBmHCWiAXPn8cZhaXazb2QQ==
-  dependencies:
-    "@babel/runtime" "^7.21.0"
-    "@chain-registry/types" "^0.16.0"
-
 "@chain-registry/types@0.16.0", "@chain-registry/types@^0.16.0":
   version "0.16.0"
   resolved "https://registry.npmjs.org/@chain-registry/types/-/types-0.16.0.tgz#f76409186899a976d33693d7f458c33d71a66730"
@@ -2343,9 +2343,9 @@
   dependencies:
     "@babel/runtime" "^7.21.0"
 
-"@chain-registry/utils@^1.13.1":
+"@chain-registry/utils@1.13.1", "@chain-registry/utils@^1.13.1":
   version "1.13.1"
-  resolved "https://registry.npmjs.org/@chain-registry/utils/-/utils-1.13.1.tgz#bee23868e0bdee0533e26fb99276c190916332fd"
+  resolved "https://registry.npmmirror.com/@chain-registry/utils/-/utils-1.13.1.tgz#bee23868e0bdee0533e26fb99276c190916332fd"
   integrity sha512-BV8XoZGGlfeF3d5p06y4w2uDggAxtWa5g5zEDRgcyi6V+iJUSlPwu5PL7IKB5qJvAq7J1Vgw8x+Jqj1TVxjpvA==
   dependencies:
     "@babel/runtime" "^7.21.0"
@@ -4773,6 +4773,14 @@ case@1.6.3:
   version "1.6.3"
   resolved "https://registry.npmjs.org/case/-/case-1.6.3.tgz"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
+
+chain-registry@1.18.0:
+  version "1.18.0"
+  resolved "https://registry.npmmirror.com/chain-registry/-/chain-registry-1.18.0.tgz#adf1df2171eb7a59ff2f0f84d8f8654b0fc36cdb"
+  integrity sha512-m80cUS7DM235FVxw82Vxf/9/j3qp8GXCQa7wtC55AaHdyajX/C0hWw513FVBKnMyCLPwLfMzC58eiFudBk888w==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
+    "@chain-registry/types" "^0.16.0"
 
 chalk@4.1.0:
   version "4.1.0"
