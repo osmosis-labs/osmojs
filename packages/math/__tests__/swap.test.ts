@@ -1,5 +1,7 @@
 import cases from "jest-in-case";
-import { makePoolPairs } from "../src/pool";
+import { assets } from 'chain-registry';
+import { asset_lists } from '@chain-registry/assets';
+import { makePoolPairs } from "../src/pool-utils";
 import {
   convertGeckoPricesToDenomPriceHash,
   getOsmoAssetByDenom,
@@ -14,27 +16,35 @@ import {
 } from "./../src/swap";
 import priceResponse from "../../../__fixtures__/coingecko/api/v3/simple/price/data.json";
 import poolResponse from "../../../__fixtures__/rpc/osmosis/gamm/v1beta1/pools/data.json";
-import { omit } from "./pools.test";
+import { omit } from "./pool-utils.test";
 import BigNumber from "bignumber.js";
 
-const pools = poolResponse.pools.map((p) => omit(p, "@type"));
-const prices = convertGeckoPricesToDenomPriceHash(priceResponse);
+const osmosisAssets = [
+  ...(assets.find(({ chain_name }) => chain_name === 'osmosis')?.assets || []),
+  ...(asset_lists.find(({ chain_name }) => chain_name === 'osmosis')?.assets || [])
+];
 
 describe("Test swap calculations", () => {
+  let pools, prices;
+  beforeAll(() => {
+    pools = poolResponse.pools.map((p) => omit(p, "@type"));
+    prices = convertGeckoPricesToDenomPriceHash(osmosisAssets, priceResponse);
+  });
+
   cases(
     "getRoutesForTrade",
     (opts) => {
       const poolsFiltered = pools.filter((pool) =>
         pool.poolAssets.every(({ token }) => {
           try {
-            return !!getOsmoAssetByDenom(token.denom);
+            return !!getOsmoAssetByDenom(osmosisAssets, token.denom);
           } catch (error) {
             return false;
           }
         })
       );
-      const pairs = makePoolPairs(poolsFiltered, prices);
-      const routes = getRoutesForTrade({ trade: opts.trade, pairs });
+      const pairs = makePoolPairs(osmosisAssets, poolsFiltered, prices);
+      const routes = getRoutesForTrade(osmosisAssets, { trade: opts.trade, pairs });
       expect(routes).toMatchSnapshot();
     },
     [
@@ -42,11 +52,11 @@ describe("Test swap calculations", () => {
         name: "OSMO to ATOM",
         trade: {
           sell: {
-            denom: symbolToOsmoDenom("OSMO"),
+            denom: symbolToOsmoDenom(osmosisAssets, "OSMO"),
             amount: "10000",
           },
           buy: {
-            denom: symbolToOsmoDenom("ATOM"),
+            denom: symbolToOsmoDenom(osmosisAssets, "ATOM"),
             amount: "10000",
           },
         },
@@ -55,11 +65,11 @@ describe("Test swap calculations", () => {
         name: "STARS to JUNO",
         trade: {
           sell: {
-            denom: symbolToOsmoDenom("STARS"),
+            denom: symbolToOsmoDenom(osmosisAssets, "STARS"),
             amount: "10000",
           },
           buy: {
-            denom: symbolToOsmoDenom("JUNO"),
+            denom: symbolToOsmoDenom(osmosisAssets, "JUNO"),
             amount: "10000",
           },
         },
@@ -68,11 +78,11 @@ describe("Test swap calculations", () => {
         name: "LUNC to STARS",
         trade: {
           sell: {
-            denom: symbolToOsmoDenom("LUNC"),
+            denom: symbolToOsmoDenom(osmosisAssets, "LUNC"),
             amount: "10000",
           },
           buy: {
-            denom: symbolToOsmoDenom("STARS"),
+            denom: symbolToOsmoDenom(osmosisAssets, "STARS"),
             amount: "10000",
           },
         },
@@ -81,11 +91,11 @@ describe("Test swap calculations", () => {
         name: "AKT to JUNO",
         trade: {
           sell: {
-            denom: symbolToOsmoDenom("AKT"),
+            denom: symbolToOsmoDenom(osmosisAssets, "AKT"),
             amount: "10000",
           },
           buy: {
-            denom: symbolToOsmoDenom("JUNO"),
+            denom: symbolToOsmoDenom(osmosisAssets, "JUNO"),
             amount: "10000",
           },
         },
@@ -94,11 +104,11 @@ describe("Test swap calculations", () => {
         name: "CNTO to SOMM",
         trade: {
           sell: {
-            denom: symbolToOsmoDenom("CNTO"),
+            denom: symbolToOsmoDenom(osmosisAssets, "CNTO"),
             amount: "10000",
           },
           buy: {
-            denom: symbolToOsmoDenom("SOMM"),
+            denom: symbolToOsmoDenom(osmosisAssets, "SOMM"),
             amount: "10000",
           },
         },
@@ -154,9 +164,9 @@ describe("Test swap calculations", () => {
         name: "case 1",
         tokenIn: {
           amount: "100000000",
-          denom: symbolToOsmoDenom("ATOM"),
+          denom: symbolToOsmoDenom(osmosisAssets, "ATOM"),
         },
-        tokenOutDenom: symbolToOsmoDenom("OSMO"),
+        tokenOutDenom: symbolToOsmoDenom(osmosisAssets, "OSMO"),
         poolId: "1",
         result: "0.000016",
       },
@@ -164,9 +174,9 @@ describe("Test swap calculations", () => {
         name: "case 2",
         tokenIn: {
           amount: "100000000",
-          denom: symbolToOsmoDenom("JUNO"),
+          denom: symbolToOsmoDenom(osmosisAssets, "JUNO"),
         },
-        tokenOutDenom: symbolToOsmoDenom("OSMO"),
+        tokenOutDenom: symbolToOsmoDenom(osmosisAssets, "OSMO"),
         poolId: "497",
         result: "0.000054",
       },
@@ -174,9 +184,9 @@ describe("Test swap calculations", () => {
         name: "case 3",
         tokenIn: {
           amount: "100000000",
-          denom: symbolToOsmoDenom("DVPN"),
+          denom: symbolToOsmoDenom(osmosisAssets, "DVPN"),
         },
-        tokenOutDenom: symbolToOsmoDenom("OSMO"),
+        tokenOutDenom: symbolToOsmoDenom(osmosisAssets, "OSMO"),
         poolId: "5",
         result: "0.000003",
       },
@@ -213,9 +223,9 @@ describe("Test swap calculations", () => {
         name: "case 1",
         tokenOut: {
           amount: "100000000",
-          denom: symbolToOsmoDenom("ATOM"),
+          denom: symbolToOsmoDenom(osmosisAssets, "ATOM"),
         },
-        tokenInDenom: symbolToOsmoDenom("OSMO"),
+        tokenInDenom: symbolToOsmoDenom(osmosisAssets, "OSMO"),
         poolId: "1",
         result: "0.000016",
       },
@@ -223,9 +233,9 @@ describe("Test swap calculations", () => {
         name: "case 2",
         tokenOut: {
           amount: "100000000",
-          denom: symbolToOsmoDenom("JUNO"),
+          denom: symbolToOsmoDenom(osmosisAssets, "JUNO"),
         },
-        tokenInDenom: symbolToOsmoDenom("OSMO"),
+        tokenInDenom: symbolToOsmoDenom(osmosisAssets, "OSMO"),
         poolId: "497",
         result: "0.000054",
       },
@@ -233,9 +243,9 @@ describe("Test swap calculations", () => {
         name: "case 3",
         tokenOut: {
           amount: "1000000000000",
-          denom: symbolToOsmoDenom("DVPN"),
+          denom: symbolToOsmoDenom(osmosisAssets, "DVPN"),
         },
-        tokenInDenom: symbolToOsmoDenom("OSMO"),
+        tokenInDenom: symbolToOsmoDenom(osmosisAssets, "OSMO"),
         poolId: "5",
         result: "0.001686",
       },
