@@ -11,16 +11,16 @@ import {
 const DAYS_PER_YEAR = 365;
 const YEARLY_PERCENT = DAYS_PER_YEAR * 100;
 
-const convertLockup = (lockup: string, durations: Duration[]) => {
+const convertLockup = (lockup: string, durations: Duration[]): bigint => {
   switch (lockup) {
     case "1":
-      return durations[0].seconds.low;
+      return durations[0].seconds;
     case "7":
-      return durations[1].seconds.low;
+      return durations[1].seconds;
     case "14":
-      return durations[2].seconds.low;
+      return durations[2].seconds;
     default:
-      return durations[2].seconds.low;
+      return durations[2].seconds;
   }
 };
 
@@ -69,7 +69,7 @@ export const calcPoolAprs = (
         .minus(gauge.distributedCoins[0].amount)
         .isLessThan(100);
     return (
-      gauge.distributeTo.duration.seconds.low === lockupDuration &&
+      gauge.distributeTo.duration.seconds === lockupDuration &&
       (includeNonPerpetual || gauge.isPerpetual) &&
       isGaugeActive
     );
@@ -81,14 +81,14 @@ export const calcPoolAprs = (
     const symbol = osmoDenomToSymbol(assets, gauge.coins[0].denom);
     const daysRemaining = gauge.isPerpetual
       ? null
-      : gauge.numEpochsPaidOver.low - gauge.filledEpochs.low;
+      : gauge.numEpochsPaidOver - gauge.filledEpochs;
 
     const totalValue = tokensRemaining
       .shiftedBy(-getExponentByDenom(assets, gauge.coins[0].denom))
       .multipliedBy(prices[gauge.coins[0].denom]);
 
     const distributedValuePerDay = totalValue
-      .dividedBy(gauge.isPerpetual ? 1 : daysRemaining)
+      .dividedBy(gauge.isPerpetual ? 1 : daysRemaining.toString())
       .toString();
 
     const distributedCoinPerDay = {
@@ -97,7 +97,7 @@ export const calcPoolAprs = (
     };
 
     const apr = totalValue
-      .dividedBy(gauge.isPerpetual ? 1 : daysRemaining)
+      .dividedBy(gauge.isPerpetual ? 1 : daysRemaining.toString())
       .dividedBy(liquidity)
       .multipliedBy(YEARLY_PERCENT)
       .toString();
