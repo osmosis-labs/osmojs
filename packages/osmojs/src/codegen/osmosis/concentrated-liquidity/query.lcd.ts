@@ -1,5 +1,5 @@
 import { setPaginationParams } from "../../helpers";
-import { LCDClient } from "@osmonauts/lcd";
+import { LCDClient } from "@cosmology/lcd";
 import { PoolsRequest, PoolsResponseSDKType, ParamsRequest, ParamsResponseSDKType, UserPositionsRequest, UserPositionsResponseSDKType, LiquidityPerTickRangeRequest, LiquidityPerTickRangeResponseSDKType, LiquidityNetInDirectionRequest, LiquidityNetInDirectionResponseSDKType, ClaimableSpreadRewardsRequest, ClaimableSpreadRewardsResponseSDKType, ClaimableIncentivesRequest, ClaimableIncentivesResponseSDKType, PositionByIdRequest, PositionByIdResponseSDKType, PoolAccumulatorRewardsRequest, PoolAccumulatorRewardsResponseSDKType, IncentiveRecordsRequest, IncentiveRecordsResponseSDKType, TickAccumulatorTrackersRequest, TickAccumulatorTrackersResponseSDKType, CFMMPoolIdLinkFromConcentratedPoolIdRequest, CFMMPoolIdLinkFromConcentratedPoolIdResponseSDKType, UserUnbondingPositionsRequest, UserUnbondingPositionsResponseSDKType, GetTotalLiquidityRequest, GetTotalLiquidityResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;

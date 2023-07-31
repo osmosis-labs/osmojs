@@ -2664,6 +2664,14 @@
     case "1.6.3"
     dotty "0.1.2"
 
+"@cosmology/lcd@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.npmjs.org/@cosmology/lcd/-/lcd-0.12.0.tgz#a6594fc00a8c84c7341e90840627e62a7e63fd1b"
+  integrity sha512-f2mcySYO1xdislAhuWtNFmg4q/bzY3Aem2UkDzYzI0ZELVev5i2Pi0bQrYUNTeNg1isAo0Kyrdqj/4YPqEwjGA==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
+    axios "0.27.2"
+
 "@cosmology/proto-parser@^0.46.0":
   version "0.46.0"
   resolved "https://registry.npmjs.org/@cosmology/proto-parser/-/proto-parser-0.46.0.tgz#4b7e9d9dd71cf28bdae71671e15f0148c1be087b"
@@ -2696,7 +2704,7 @@
     "@types/node" ">=13.7.0"
     long "^4.0.0"
 
-"@cosmology/telescope@0.99.12":
+"@cosmology/telescope@0.102.0":
   version "0.102.0"
   resolved "https://registry.npmjs.org/@cosmology/telescope/-/telescope-0.102.0.tgz#df85956a7405b4bcf568c07e2e6d99b69f979baa"
   integrity sha512-V7gKbH0TK6/tom4hl+gR2I12WHafmGqUh7nKNSNDS9GoNNsp4jeoF1LjnQaj3LW6Wjs18kJxKnhrlzfwZMzAuQ==
@@ -3499,21 +3507,13 @@
   integrity sha512-Vm8IddVmhCgU1fxC1eyinpwqzXPEYu0NrYzD3YZjlGjyftdLBTeqNblRC0jmJmgxbJIsQlyogVeGnrNaaMVzIg==
   dependencies:
     "@octokit/openapi-types" "^18.0.0"
-
+@cosmology/lcd
 "@octokit/types@^9.0.0", "@octokit/types@^9.2.3":
-  version "9.3.2"
+  version "9.3.2"@cosmology/lcd
   resolved "https://registry.npmjs.org/@octokit/types/-/types-9.3.2.tgz#3f5f89903b69f6a2d196d78ec35f888c0013cac5"
   integrity sha512-D4iHGTdAnEEVsB8fl95m1hiz7D5YiRdQ9b/OEb3BYRVwbLsGHcRVPz+u+BgRLNk0Q0/4iZCBqDN96j2XNxfXrA==
   dependencies:
     "@octokit/openapi-types" "^18.0.0"
-
-"@osmonauts/lcd@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.npmjs.org/@osmonauts/lcd/-/lcd-0.11.1.tgz#30e0d23960ec4a1d4513ecf881e3705de3306d54"
-  integrity sha512-mri4GnyLfLnT7VLXk6Z53IOd3a7VCQTuMSYGAK042IRgEZXLzjUYDOOTbCTsuJgncAAf51yDBNPOLqw/26jjsg==
-  dependencies:
-    "@babel/runtime" "^7.21.0"
-    axios "0.27.2"
 
 "@parcel/watcher@2.0.4":
   version "2.0.4"
