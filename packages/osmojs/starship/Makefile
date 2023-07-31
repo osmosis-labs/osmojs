@@ -13,7 +13,7 @@ setup: check setup-helm
 
 .PHONY: test
 test:
-	yarn run jest --testPathPattern=../starship --runInBand --verbose --bail
+	yarn run jest --testPathPattern=../starship --verbose --bail
 
 .PHONY: stop
 stop: stop-forward delete
