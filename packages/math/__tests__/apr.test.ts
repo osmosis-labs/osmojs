@@ -78,7 +78,7 @@ describe("Test APR calculations", () => {
         )
         .map(keysToCamel);
       const lockupDurations = lockup.lockable_durations.map((lockup) => ({
-        seconds: Long.fromString(lockup.slice(0, lockup.length - 1)),
+        seconds: BigInt(lockup.slice(0, lockup.length - 1)),
         nanos: 0,
       }));
       const superfluidPools = keysToCamel(superfluid.assets);
