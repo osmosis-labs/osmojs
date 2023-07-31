@@ -1,32 +1,32 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
-import { cosmos, getSigningCosmosClient, getSigningOsmosisClient } from '../../src/codegen';
+import {
+  cosmos,
+  getSigningCosmosClient,
+  getSigningOsmosisClient
+} from '../../src/codegen';
 import { useChain, waitUntil } from '../src';
 import './setup.test';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-import BigNumber from "bignumber.js";
+import { BigNumber } from 'bignumber.js';
 
 describe('Governance tests for osmosis', () => {
   let protoSigner, aminoSigner, denom, address;
   let chainInfo,
     getCoin,
-    getGenesisMnemonic,
     getRpcEndpoint,
     creditFromFaucet;
 
   // Variables used accross testcases
   let queryClient;
   let proposalId;
-  let genesisAddress;
   let validatorAddress;
 
   beforeAll(async () => {
     ({
       chainInfo,
       getCoin,
-      getStargateClient,
-      getGenesisMnemonic,
       getRpcEndpoint,
       creditFromFaucet
     } = useChain('osmosis'));
@@ -63,13 +63,13 @@ describe('Governance tests for osmosis', () => {
   it('query validator address', async () => {
     const { validators } = await queryClient.cosmos.staking.v1beta1.validators({
       status: cosmos.staking.v1beta1.bondStatusToJSON(
-          cosmos.staking.v1beta1.BondStatus.BOND_STATUS_BONDED
+        cosmos.staking.v1beta1.BondStatus.BOND_STATUS_BONDED
       )
     });
     let allValidators = validators;
     if (validators.length > 1) {
       allValidators = validators.sort((a, b) =>
-          new BigNumber(b.tokens).minus(new BigNumber(a.tokens)).toNumber()
+        new BigNumber(b.tokens).minus(new BigNumber(a.tokens)).toNumber()
       );
     }
 
@@ -177,24 +177,17 @@ describe('Governance tests for osmosis', () => {
 
   it.todo('vote on proposal using amino');
 
-  it('vote on proposal from genesis address', async () => {
+  it('vote on proposal from address', async () => {
     // create genesis address signing client
-    const mnemonic = await getGenesisMnemonic();
-    // TODO: this is PROTO NOT AMINO!!!
-    const genesisWallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
-      prefix: chainInfo.chain.bech32_prefix
-    });
-    genesisAddress = (await genesisWallet.getAccounts())[0].address;
-
-    const genesisSigningClient = await getSigningCosmosClient({
+    const signingClient = await getSigningCosmosClient({
       rpcEndpoint: getRpcEndpoint(),
-      signer: genesisWallet
+      signer: protoSigner
     });
 
     // Vote on proposal from genesis mnemonic address
     const msg = cosmos.gov.v1beta1.MessageComposer.withTypeUrl.vote({
       proposalId: BigInt(proposalId),
-      voter: genesisAddress,
+      voter: address,
       option: cosmos.gov.v1beta1.VoteOption.VOTE_OPTION_YES
     });
 
@@ -208,8 +201,8 @@ describe('Governance tests for osmosis', () => {
       gas: '550000'
     };
 
-    const result = await genesisSigningClient.signAndBroadcast(
-      genesisAddress,
+    const result = await signingClient.signAndBroadcast(
+      address,
       [msg],
       fee
     );
@@ -219,11 +212,11 @@ describe('Governance tests for osmosis', () => {
   it('verify vote', async () => {
     const { vote } = await queryClient.cosmos.gov.v1beta1.vote({
       proposalId: BigInt(proposalId),
-      voter: genesisAddress
+      voter: address
     });
 
     expect(vote.proposalId.toString()).toEqual(proposalId);
-    expect(vote.voter).toEqual(genesisAddress);
+    expect(vote.voter).toEqual(address);
     expect(vote.option).toEqual(cosmos.gov.v1beta1.VoteOption.VOTE_OPTION_YES);
   }, 10000);
 
