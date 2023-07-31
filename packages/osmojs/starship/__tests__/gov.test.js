@@ -21,7 +21,6 @@ describe('Governance tests for osmosis', () => {
   // Variables used accross testcases
   let queryClient;
   let proposalId;
-  let genesisAddress;
   let validatorAddress;
 
   beforeAll(async () => {
