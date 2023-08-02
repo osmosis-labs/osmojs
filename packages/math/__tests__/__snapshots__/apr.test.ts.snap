@@ -2,73 +2,189 @@
 
 exports[`Test APR calculations calcPoolAprs pool#497 1`] = `
 {
-  "gaugeAprs": [],
+  "gaugeAprs": [
+    {
+      "apr": "12.943190055320448935",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "2560573858",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "13.99503455691078221",
+      "daysRemaining": 69n,
+      "distributedCoinPerDay": {
+        "amount": "1388909868.68115942028986",
+        "denom": "ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED",
+      },
+      "isPerpetual": false,
+      "symbol": "JUNO",
+    },
+  ],
   "superfluidApr": 5.28,
   "swapFeeApr": {
     "apr": "5.608470878012372265",
     "swapFeeValuePerDay": "10096.75551816339857142857142",
   },
-  "totalApr": "10.888470878012372265",
+  "totalApr": "37.82669549024360341",
 }
 `;
 
 exports[`Test APR calculations calcPoolAprs pool#604 lockup-1 1`] = `
 {
-  "gaugeAprs": [],
+  "gaugeAprs": [
+    {
+      "apr": "160.64843197194232367",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "12045632211",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "57.730126991022910385",
+      "daysRemaining": 70n,
+      "distributedCoinPerDay": {
+        "amount": "55555556424.42857142857143",
+        "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
+      },
+      "isPerpetual": false,
+      "symbol": "STARS",
+    },
+  ],
   "superfluidApr": null,
   "swapFeeApr": {
     "apr": "9.153771984981903825",
     "swapFeeValuePerDay": "6245.893724706363",
   },
-  "totalApr": "9.153771984981903825",
+  "totalApr": "227.53233094794713788",
 }
 `;
 
 exports[`Test APR calculations calcPoolAprs pool#604 lockup-7 1`] = `
 {
-  "gaugeAprs": [],
+  "gaugeAprs": [
+    {
+      "apr": "96.38910481319423105",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "7227382748",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "115.46025302490672154",
+      "daysRemaining": 70n,
+      "distributedCoinPerDay": {
+        "amount": "111111111927.77142857142857",
+        "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
+      },
+      "isPerpetual": false,
+      "symbol": "STARS",
+    },
+  ],
   "superfluidApr": null,
   "swapFeeApr": {
     "apr": "9.153771984981903825",
     "swapFeeValuePerDay": "6245.893724706363",
   },
-  "totalApr": "9.153771984981903825",
+  "totalApr": "221.003129823082856415",
 }
 `;
 
 exports[`Test APR calculations calcPoolAprs pool#604 lockup-14 has-perpetual 1`] = `
 {
-  "gaugeAprs": [],
+  "gaugeAprs": [
+    {
+      "apr": "64.259389214200298735",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "4818254116",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "173.19037905211033226",
+      "daysRemaining": 70n,
+      "distributedCoinPerDay": {
+        "amount": "166666667424.68571428571429",
+        "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
+      },
+      "isPerpetual": false,
+      "symbol": "STARS",
+    },
+  ],
   "superfluidApr": 5.28,
   "swapFeeApr": {
     "apr": "9.153771984981903825",
     "swapFeeValuePerDay": "6245.893724706363",
   },
-  "totalApr": "14.433771984981903825",
+  "totalApr": "251.88354025129253482",
 }
 `;
 
 exports[`Test APR calculations calcPoolAprs pool#604 lockup-14 no-perpetual 1`] = `
 {
-  "gaugeAprs": [],
+  "gaugeAprs": [
+    {
+      "apr": "64.259389214200298735",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "4818254116",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+  ],
   "superfluidApr": 5.28,
   "swapFeeApr": {
     "apr": "9.153771984981903825",
     "swapFeeValuePerDay": "6245.893724706363",
   },
-  "totalApr": "14.433771984981903825",
+  "totalApr": "78.69316119918220256",
 }
 `;
 
 exports[`Test APR calculations calcPoolAprs pool#605 1`] = `
 {
-  "gaugeAprs": [],
+  "gaugeAprs": [
+    {
+      "apr": "46.472872894663064345",
+      "daysRemaining": null,
+      "distributedCoinPerDay": {
+        "amount": "1341688865",
+        "denom": "uosmo",
+      },
+      "isPerpetual": true,
+      "symbol": "OSMO",
+    },
+    {
+      "apr": "158.644204932075392035",
+      "daysRemaining": 161n,
+      "distributedCoinPerDay": {
+        "amount": "9802777778561.24844720496924",
+        "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
+      },
+      "isPerpetual": false,
+      "symbol": "HUAHUA",
+    },
+  ],
   "superfluidApr": 5.28,
   "swapFeeApr": {
     "apr": "7.81809531777339549",
     "swapFeeValuePerDay": "2053.97261021461942857142858",
   },
-  "totalApr": "13.09809531777339549",
+  "totalApr": "218.21517314451185187",
 }
 `;
 
