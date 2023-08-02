@@ -32,10 +32,10 @@ const hasLongValue = (key: string) => {
 const toLongValue = (val: string) => {
   if (val.endsWith("s"))
     return {
-      seconds: Long.fromString(val.slice(0, val.length - 1)),
+      seconds: BigInt(val.slice(0, val.length - 1)),
       nanos: 0,
     };
-  return Long.fromString(val);
+  return BigInt(val);
 };
 
 const keysToCamel = (obj) => {
@@ -78,7 +78,7 @@ describe("Test APR calculations", () => {
         )
         .map(keysToCamel);
       const lockupDurations = lockup.lockable_durations.map((lockup) => ({
-        seconds: Long.fromString(lockup.slice(0, lockup.length - 1)),
+        seconds: BigInt(lockup.slice(0, lockup.length - 1)),
         nanos: 0,
       }));
       const superfluidPools = keysToCamel(superfluid.assets);

@@ -31,11 +31,11 @@ export const routesThroughPools = ({
   if (sellPool && buyPool) {
     const routes = [
       {
-        poolId: Long.fromString(sellPool.poolId),
+        poolId: BigInt(sellPool.poolId),
         tokenOutDenom: denom,
       },
       {
-        poolId: Long.fromString(buyPool.poolId),
+        poolId: BigInt(buyPool.poolId),
         tokenOutDenom: trade.buy.denom,
       },
     ];
@@ -67,7 +67,7 @@ export const getRoutesForTrade = (
   if (directPool) {
     return [
       {
-        poolId: Long.fromString(directPool.poolId),
+        poolId: BigInt(directPool.poolId),
         tokenOutDenom: trade.buy.denom,
       },
     ];
@@ -108,7 +108,7 @@ const getPoolAsset = (pool: Pool, denom: string) => {
   );
   if (!poolAsset) {
     throw new Error(
-      `Pool ${pool.id.low} doesn't have the pool asset for ${denom}`
+      `Pool ${pool.id} doesn't have the pool asset for ${denom}`
     );
   }
   return { denom, weight: poolAsset.weight, amount: poolAsset.token!.amount };
