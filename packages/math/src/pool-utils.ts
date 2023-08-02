@@ -271,7 +271,7 @@ export const makePoolPairs = (
       if (!assetAinfo || !assetBinfo) return;
 
       return {
-        poolId: typeof pool.id === "string" ? pool.id : pool.id.low.toString(),
+        poolId: typeof pool.id === "string" ? pool.id : pool.id.toString(),
         poolAddress: pool.address,
         baseName: assetAinfo.display,
         baseSymbol: assetAinfo.symbol,

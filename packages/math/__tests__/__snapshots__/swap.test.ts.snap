@@ -290,19 +290,11 @@ exports[`Test pool calculations makePoolPairs 1`] = `
 exports[`Test swap calculations getRoutesForTrade AKT to JUNO 1`] = `
 [
   {
-    "poolId": Long {
-      "high": 0,
-      "low": 3,
-      "unsigned": false,
-    },
+    "poolId": 3n,
     "tokenOutDenom": "uosmo",
   },
   {
-    "poolId": Long {
-      "high": 0,
-      "low": 497,
-      "unsigned": false,
-    },
+    "poolId": 497n,
     "tokenOutDenom": "ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED",
   },
 ]
@@ -313,19 +305,11 @@ exports[`Test swap calculations getRoutesForTrade CNTO to SOMM 1`] = `[]`;
 exports[`Test swap calculations getRoutesForTrade LUNC to STARS 1`] = `
 [
   {
-    "poolId": Long {
-      "high": 0,
-      "low": 561,
-      "unsigned": false,
-    },
+    "poolId": 561n,
     "tokenOutDenom": "uosmo",
   },
   {
-    "poolId": Long {
-      "high": 0,
-      "low": 604,
-      "unsigned": false,
-    },
+    "poolId": 604n,
     "tokenOutDenom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
   },
 ]
@@ -334,11 +318,7 @@ exports[`Test swap calculations getRoutesForTrade LUNC to STARS 1`] = `
 exports[`Test swap calculations getRoutesForTrade OSMO to ATOM 1`] = `
 [
   {
-    "poolId": Long {
-      "high": 0,
-      "low": 1,
-      "unsigned": false,
-    },
+    "poolId": 1n,
     "tokenOutDenom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
   },
 ]
@@ -347,19 +327,11 @@ exports[`Test swap calculations getRoutesForTrade OSMO to ATOM 1`] = `
 exports[`Test swap calculations getRoutesForTrade STARS to JUNO 1`] = `
 [
   {
-    "poolId": Long {
-      "high": 0,
-      "low": 604,
-      "unsigned": false,
-    },
+    "poolId": 604n,
     "tokenOutDenom": "uosmo",
   },
   {
-    "poolId": Long {
-      "high": 0,
-      "low": 497,
-      "unsigned": false,
-    },
+    "poolId": 497n,
     "tokenOutDenom": "ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED",
   },
 ]

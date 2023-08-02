@@ -15,7 +15,7 @@ exports[`Test APR calculations calcPoolAprs pool#497 1`] = `
     },
     {
       "apr": "13.99503455691078221",
-      "daysRemaining": 69,
+      "daysRemaining": 69n,
       "distributedCoinPerDay": {
         "amount": "1388909868.68115942028986",
         "denom": "ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED",
@@ -48,7 +48,7 @@ exports[`Test APR calculations calcPoolAprs pool#604 lockup-1 1`] = `
     },
     {
       "apr": "57.730126991022910385",
-      "daysRemaining": 70,
+      "daysRemaining": 70n,
       "distributedCoinPerDay": {
         "amount": "55555556424.42857142857143",
         "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
@@ -81,7 +81,7 @@ exports[`Test APR calculations calcPoolAprs pool#604 lockup-7 1`] = `
     },
     {
       "apr": "115.46025302490672154",
-      "daysRemaining": 70,
+      "daysRemaining": 70n,
       "distributedCoinPerDay": {
         "amount": "111111111927.77142857142857",
         "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
@@ -114,7 +114,7 @@ exports[`Test APR calculations calcPoolAprs pool#604 lockup-14 has-perpetual 1`]
     },
     {
       "apr": "173.19037905211033226",
-      "daysRemaining": 70,
+      "daysRemaining": 70n,
       "distributedCoinPerDay": {
         "amount": "166666667424.68571428571429",
         "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
@@ -170,7 +170,7 @@ exports[`Test APR calculations calcPoolAprs pool#605 1`] = `
     },
     {
       "apr": "158.644204932075392035",
-      "daysRemaining": 161,
+      "daysRemaining": 161n,
       "distributedCoinPerDay": {
         "amount": "9802777778561.24844720496924",
         "denom": "ibc/B9E0A1A524E98BB407D3CED8720EFEFD186002F90C1B1B7964811DD0CCC12228",
