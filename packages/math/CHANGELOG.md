@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/osmosis-labs/osmojs/compare/@osmonauts/math@1.6.1...@osmonauts/math@1.7.0) (2023-08-02)
+
+**Note:** Version bump only for package @osmonauts/math
+
+
+
+
+
 ## [1.6.1](https://github.com/osmosis-labs/osmojs/compare/@osmonauts/math@1.6.0...@osmonauts/math@1.6.1) (2023-08-01)
 
 **Note:** Version bump only for package @osmonauts/math
