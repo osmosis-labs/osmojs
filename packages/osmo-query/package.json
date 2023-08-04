@@ -1,5 +1,5 @@
 {
-  "name": "osmo-query",
+  "name": "osmojs-react-query",
   "version": "16.5.1",
   "description": "Typescript Protobuf Messages for Osmosis with react-query",
   "author": "Dan Lynch <pyramation@gmail.com>",

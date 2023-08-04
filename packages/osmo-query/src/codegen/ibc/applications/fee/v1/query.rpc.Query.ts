@@ -1,6 +1,8 @@
 import { Rpc } from "../../../../helpers";
 import { BinaryReader } from "../../../../binary";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
+import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
+import { ReactQueryParams } from "../../../../react-query";
+import { useQuery } from "@tanstack/react-query";
 import { QueryIncentivizedPacketsRequest, QueryIncentivizedPacketsResponse, QueryIncentivizedPacketRequest, QueryIncentivizedPacketResponse, QueryIncentivizedPacketsForChannelRequest, QueryIncentivizedPacketsForChannelResponse, QueryTotalRecvFeesRequest, QueryTotalRecvFeesResponse, QueryTotalAckFeesRequest, QueryTotalAckFeesResponse, QueryTotalTimeoutFeesRequest, QueryTotalTimeoutFeesResponse, QueryPayeeRequest, QueryPayeeResponse, QueryCounterpartyPayeeRequest, QueryCounterpartyPayeeResponse, QueryFeeEnabledChannelsRequest, QueryFeeEnabledChannelsResponse, QueryFeeEnabledChannelRequest, QueryFeeEnabledChannelResponse } from "./query";
 /** Query defines the ICS29 gRPC querier service. */
 export interface Query {
@@ -125,5 +127,150 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     feeEnabledChannel(request: QueryFeeEnabledChannelRequest): Promise<QueryFeeEnabledChannelResponse> {
       return queryService.feeEnabledChannel(request);
     }
+  };
+};
+export interface UseIncentivizedPacketsQuery<TData> extends ReactQueryParams<QueryIncentivizedPacketsResponse, TData> {
+  request: QueryIncentivizedPacketsRequest;
+}
+export interface UseIncentivizedPacketQuery<TData> extends ReactQueryParams<QueryIncentivizedPacketResponse, TData> {
+  request: QueryIncentivizedPacketRequest;
+}
+export interface UseIncentivizedPacketsForChannelQuery<TData> extends ReactQueryParams<QueryIncentivizedPacketsForChannelResponse, TData> {
+  request: QueryIncentivizedPacketsForChannelRequest;
+}
+export interface UseTotalRecvFeesQuery<TData> extends ReactQueryParams<QueryTotalRecvFeesResponse, TData> {
+  request: QueryTotalRecvFeesRequest;
+}
+export interface UseTotalAckFeesQuery<TData> extends ReactQueryParams<QueryTotalAckFeesResponse, TData> {
+  request: QueryTotalAckFeesRequest;
+}
+export interface UseTotalTimeoutFeesQuery<TData> extends ReactQueryParams<QueryTotalTimeoutFeesResponse, TData> {
+  request: QueryTotalTimeoutFeesRequest;
+}
+export interface UsePayeeQuery<TData> extends ReactQueryParams<QueryPayeeResponse, TData> {
+  request: QueryPayeeRequest;
+}
+export interface UseCounterpartyPayeeQuery<TData> extends ReactQueryParams<QueryCounterpartyPayeeResponse, TData> {
+  request: QueryCounterpartyPayeeRequest;
+}
+export interface UseFeeEnabledChannelsQuery<TData> extends ReactQueryParams<QueryFeeEnabledChannelsResponse, TData> {
+  request: QueryFeeEnabledChannelsRequest;
+}
+export interface UseFeeEnabledChannelQuery<TData> extends ReactQueryParams<QueryFeeEnabledChannelResponse, TData> {
+  request: QueryFeeEnabledChannelRequest;
+}
+const _queryClients: WeakMap<ProtobufRpcClient, QueryClientImpl> = new WeakMap();
+const getQueryService = (rpc: ProtobufRpcClient | undefined): QueryClientImpl | undefined => {
+  if (!rpc) return;
+  if (_queryClients.has(rpc)) {
+    return _queryClients.get(rpc);
+  }
+  const queryService = new QueryClientImpl(rpc);
+  _queryClients.set(rpc, queryService);
+  return queryService;
+};
+export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
+  const queryService = getQueryService(rpc);
+  const useIncentivizedPackets = <TData = QueryIncentivizedPacketsResponse,>({
+    request,
+    options
+  }: UseIncentivizedPacketsQuery<TData>) => {
+    return useQuery<QueryIncentivizedPacketsResponse, Error, TData>(["incentivizedPacketsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.incentivizedPackets(request);
+    }, options);
+  };
+  const useIncentivizedPacket = <TData = QueryIncentivizedPacketResponse,>({
+    request,
+    options
+  }: UseIncentivizedPacketQuery<TData>) => {
+    return useQuery<QueryIncentivizedPacketResponse, Error, TData>(["incentivizedPacketQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.incentivizedPacket(request);
+    }, options);
+  };
+  const useIncentivizedPacketsForChannel = <TData = QueryIncentivizedPacketsForChannelResponse,>({
+    request,
+    options
+  }: UseIncentivizedPacketsForChannelQuery<TData>) => {
+    return useQuery<QueryIncentivizedPacketsForChannelResponse, Error, TData>(["incentivizedPacketsForChannelQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.incentivizedPacketsForChannel(request);
+    }, options);
+  };
+  const useTotalRecvFees = <TData = QueryTotalRecvFeesResponse,>({
+    request,
+    options
+  }: UseTotalRecvFeesQuery<TData>) => {
+    return useQuery<QueryTotalRecvFeesResponse, Error, TData>(["totalRecvFeesQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.totalRecvFees(request);
+    }, options);
+  };
+  const useTotalAckFees = <TData = QueryTotalAckFeesResponse,>({
+    request,
+    options
+  }: UseTotalAckFeesQuery<TData>) => {
+    return useQuery<QueryTotalAckFeesResponse, Error, TData>(["totalAckFeesQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.totalAckFees(request);
+    }, options);
+  };
+  const useTotalTimeoutFees = <TData = QueryTotalTimeoutFeesResponse,>({
+    request,
+    options
+  }: UseTotalTimeoutFeesQuery<TData>) => {
+    return useQuery<QueryTotalTimeoutFeesResponse, Error, TData>(["totalTimeoutFeesQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.totalTimeoutFees(request);
+    }, options);
+  };
+  const usePayee = <TData = QueryPayeeResponse,>({
+    request,
+    options
+  }: UsePayeeQuery<TData>) => {
+    return useQuery<QueryPayeeResponse, Error, TData>(["payeeQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.payee(request);
+    }, options);
+  };
+  const useCounterpartyPayee = <TData = QueryCounterpartyPayeeResponse,>({
+    request,
+    options
+  }: UseCounterpartyPayeeQuery<TData>) => {
+    return useQuery<QueryCounterpartyPayeeResponse, Error, TData>(["counterpartyPayeeQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.counterpartyPayee(request);
+    }, options);
+  };
+  const useFeeEnabledChannels = <TData = QueryFeeEnabledChannelsResponse,>({
+    request,
+    options
+  }: UseFeeEnabledChannelsQuery<TData>) => {
+    return useQuery<QueryFeeEnabledChannelsResponse, Error, TData>(["feeEnabledChannelsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.feeEnabledChannels(request);
+    }, options);
+  };
+  const useFeeEnabledChannel = <TData = QueryFeeEnabledChannelResponse,>({
+    request,
+    options
+  }: UseFeeEnabledChannelQuery<TData>) => {
+    return useQuery<QueryFeeEnabledChannelResponse, Error, TData>(["feeEnabledChannelQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.feeEnabledChannel(request);
+    }, options);
+  };
+  return {
+    /** IncentivizedPackets returns all incentivized packets and their associated fees */useIncentivizedPackets,
+    /** IncentivizedPacket returns all packet fees for a packet given its identifier */useIncentivizedPacket,
+    /** Gets all incentivized packets for a specific channel */useIncentivizedPacketsForChannel,
+    /** TotalRecvFees returns the total receive fees for a packet given its identifier */useTotalRecvFees,
+    /** TotalAckFees returns the total acknowledgement fees for a packet given its identifier */useTotalAckFees,
+    /** TotalTimeoutFees returns the total timeout fees for a packet given its identifier */useTotalTimeoutFees,
+    /** Payee returns the registered payee address for a specific channel given the relayer address */usePayee,
+    /** CounterpartyPayee returns the registered counterparty payee for forward relaying */useCounterpartyPayee,
+    /** FeeEnabledChannels returns a list of all fee enabled channels */useFeeEnabledChannels,
+    /** FeeEnabledChannel returns true if the provided port and channel identifiers belong to a fee enabled channel */useFeeEnabledChannel
   };
 };

@@ -1,6 +1,8 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
+import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
+import { ReactQueryParams } from "../../../react-query";
+import { useQuery } from "@tanstack/react-query";
 import { QueryParamsRequest, QueryParamsResponse, QueryGetProtoRevNumberOfTradesRequest, QueryGetProtoRevNumberOfTradesResponse, QueryGetProtoRevProfitsByDenomRequest, QueryGetProtoRevProfitsByDenomResponse, QueryGetProtoRevAllProfitsRequest, QueryGetProtoRevAllProfitsResponse, QueryGetProtoRevStatisticsByRouteRequest, QueryGetProtoRevStatisticsByRouteResponse, QueryGetProtoRevAllRouteStatisticsRequest, QueryGetProtoRevAllRouteStatisticsResponse, QueryGetProtoRevTokenPairArbRoutesRequest, QueryGetProtoRevTokenPairArbRoutesResponse, QueryGetProtoRevAdminAccountRequest, QueryGetProtoRevAdminAccountResponse, QueryGetProtoRevDeveloperAccountRequest, QueryGetProtoRevDeveloperAccountResponse, QueryGetProtoRevPoolWeightsRequest, QueryGetProtoRevPoolWeightsResponse, QueryGetProtoRevMaxPoolPointsPerTxRequest, QueryGetProtoRevMaxPoolPointsPerTxResponse, QueryGetProtoRevMaxPoolPointsPerBlockRequest, QueryGetProtoRevMaxPoolPointsPerBlockResponse, QueryGetProtoRevBaseDenomsRequest, QueryGetProtoRevBaseDenomsResponse, QueryGetProtoRevEnabledRequest, QueryGetProtoRevEnabledResponse, QueryGetProtoRevPoolRequest, QueryGetProtoRevPoolResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
@@ -208,5 +210,252 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     getProtoRevPool(request: QueryGetProtoRevPoolRequest): Promise<QueryGetProtoRevPoolResponse> {
       return queryService.getProtoRevPool(request);
     }
+  };
+};
+export interface UseParamsQuery<TData> extends ReactQueryParams<QueryParamsResponse, TData> {
+  request?: QueryParamsRequest;
+}
+export interface UseGetProtoRevNumberOfTradesQuery<TData> extends ReactQueryParams<QueryGetProtoRevNumberOfTradesResponse, TData> {
+  request?: QueryGetProtoRevNumberOfTradesRequest;
+}
+export interface UseGetProtoRevProfitsByDenomQuery<TData> extends ReactQueryParams<QueryGetProtoRevProfitsByDenomResponse, TData> {
+  request: QueryGetProtoRevProfitsByDenomRequest;
+}
+export interface UseGetProtoRevAllProfitsQuery<TData> extends ReactQueryParams<QueryGetProtoRevAllProfitsResponse, TData> {
+  request?: QueryGetProtoRevAllProfitsRequest;
+}
+export interface UseGetProtoRevStatisticsByRouteQuery<TData> extends ReactQueryParams<QueryGetProtoRevStatisticsByRouteResponse, TData> {
+  request: QueryGetProtoRevStatisticsByRouteRequest;
+}
+export interface UseGetProtoRevAllRouteStatisticsQuery<TData> extends ReactQueryParams<QueryGetProtoRevAllRouteStatisticsResponse, TData> {
+  request?: QueryGetProtoRevAllRouteStatisticsRequest;
+}
+export interface UseGetProtoRevTokenPairArbRoutesQuery<TData> extends ReactQueryParams<QueryGetProtoRevTokenPairArbRoutesResponse, TData> {
+  request?: QueryGetProtoRevTokenPairArbRoutesRequest;
+}
+export interface UseGetProtoRevAdminAccountQuery<TData> extends ReactQueryParams<QueryGetProtoRevAdminAccountResponse, TData> {
+  request?: QueryGetProtoRevAdminAccountRequest;
+}
+export interface UseGetProtoRevDeveloperAccountQuery<TData> extends ReactQueryParams<QueryGetProtoRevDeveloperAccountResponse, TData> {
+  request?: QueryGetProtoRevDeveloperAccountRequest;
+}
+export interface UseGetProtoRevPoolWeightsQuery<TData> extends ReactQueryParams<QueryGetProtoRevPoolWeightsResponse, TData> {
+  request?: QueryGetProtoRevPoolWeightsRequest;
+}
+export interface UseGetProtoRevMaxPoolPointsPerTxQuery<TData> extends ReactQueryParams<QueryGetProtoRevMaxPoolPointsPerTxResponse, TData> {
+  request?: QueryGetProtoRevMaxPoolPointsPerTxRequest;
+}
+export interface UseGetProtoRevMaxPoolPointsPerBlockQuery<TData> extends ReactQueryParams<QueryGetProtoRevMaxPoolPointsPerBlockResponse, TData> {
+  request?: QueryGetProtoRevMaxPoolPointsPerBlockRequest;
+}
+export interface UseGetProtoRevBaseDenomsQuery<TData> extends ReactQueryParams<QueryGetProtoRevBaseDenomsResponse, TData> {
+  request?: QueryGetProtoRevBaseDenomsRequest;
+}
+export interface UseGetProtoRevEnabledQuery<TData> extends ReactQueryParams<QueryGetProtoRevEnabledResponse, TData> {
+  request?: QueryGetProtoRevEnabledRequest;
+}
+export interface UseGetProtoRevPoolQuery<TData> extends ReactQueryParams<QueryGetProtoRevPoolResponse, TData> {
+  request: QueryGetProtoRevPoolRequest;
+}
+const _queryClients: WeakMap<ProtobufRpcClient, QueryClientImpl> = new WeakMap();
+const getQueryService = (rpc: ProtobufRpcClient | undefined): QueryClientImpl | undefined => {
+  if (!rpc) return;
+  if (_queryClients.has(rpc)) {
+    return _queryClients.get(rpc);
+  }
+  const queryService = new QueryClientImpl(rpc);
+  _queryClients.set(rpc, queryService);
+  return queryService;
+};
+export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
+  const queryService = getQueryService(rpc);
+  const useParams = <TData = QueryParamsResponse,>({
+    request,
+    options
+  }: UseParamsQuery<TData>) => {
+    return useQuery<QueryParamsResponse, Error, TData>(["paramsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.params(request);
+    }, options);
+  };
+  const useGetProtoRevNumberOfTrades = <TData = QueryGetProtoRevNumberOfTradesResponse,>({
+    request,
+    options
+  }: UseGetProtoRevNumberOfTradesQuery<TData>) => {
+    return useQuery<QueryGetProtoRevNumberOfTradesResponse, Error, TData>(["getProtoRevNumberOfTradesQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevNumberOfTrades(request);
+    }, options);
+  };
+  const useGetProtoRevProfitsByDenom = <TData = QueryGetProtoRevProfitsByDenomResponse,>({
+    request,
+    options
+  }: UseGetProtoRevProfitsByDenomQuery<TData>) => {
+    return useQuery<QueryGetProtoRevProfitsByDenomResponse, Error, TData>(["getProtoRevProfitsByDenomQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevProfitsByDenom(request);
+    }, options);
+  };
+  const useGetProtoRevAllProfits = <TData = QueryGetProtoRevAllProfitsResponse,>({
+    request,
+    options
+  }: UseGetProtoRevAllProfitsQuery<TData>) => {
+    return useQuery<QueryGetProtoRevAllProfitsResponse, Error, TData>(["getProtoRevAllProfitsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevAllProfits(request);
+    }, options);
+  };
+  const useGetProtoRevStatisticsByRoute = <TData = QueryGetProtoRevStatisticsByRouteResponse,>({
+    request,
+    options
+  }: UseGetProtoRevStatisticsByRouteQuery<TData>) => {
+    return useQuery<QueryGetProtoRevStatisticsByRouteResponse, Error, TData>(["getProtoRevStatisticsByRouteQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevStatisticsByRoute(request);
+    }, options);
+  };
+  const useGetProtoRevAllRouteStatistics = <TData = QueryGetProtoRevAllRouteStatisticsResponse,>({
+    request,
+    options
+  }: UseGetProtoRevAllRouteStatisticsQuery<TData>) => {
+    return useQuery<QueryGetProtoRevAllRouteStatisticsResponse, Error, TData>(["getProtoRevAllRouteStatisticsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevAllRouteStatistics(request);
+    }, options);
+  };
+  const useGetProtoRevTokenPairArbRoutes = <TData = QueryGetProtoRevTokenPairArbRoutesResponse,>({
+    request,
+    options
+  }: UseGetProtoRevTokenPairArbRoutesQuery<TData>) => {
+    return useQuery<QueryGetProtoRevTokenPairArbRoutesResponse, Error, TData>(["getProtoRevTokenPairArbRoutesQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevTokenPairArbRoutes(request);
+    }, options);
+  };
+  const useGetProtoRevAdminAccount = <TData = QueryGetProtoRevAdminAccountResponse,>({
+    request,
+    options
+  }: UseGetProtoRevAdminAccountQuery<TData>) => {
+    return useQuery<QueryGetProtoRevAdminAccountResponse, Error, TData>(["getProtoRevAdminAccountQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevAdminAccount(request);
+    }, options);
+  };
+  const useGetProtoRevDeveloperAccount = <TData = QueryGetProtoRevDeveloperAccountResponse,>({
+    request,
+    options
+  }: UseGetProtoRevDeveloperAccountQuery<TData>) => {
+    return useQuery<QueryGetProtoRevDeveloperAccountResponse, Error, TData>(["getProtoRevDeveloperAccountQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevDeveloperAccount(request);
+    }, options);
+  };
+  const useGetProtoRevPoolWeights = <TData = QueryGetProtoRevPoolWeightsResponse,>({
+    request,
+    options
+  }: UseGetProtoRevPoolWeightsQuery<TData>) => {
+    return useQuery<QueryGetProtoRevPoolWeightsResponse, Error, TData>(["getProtoRevPoolWeightsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevPoolWeights(request);
+    }, options);
+  };
+  const useGetProtoRevMaxPoolPointsPerTx = <TData = QueryGetProtoRevMaxPoolPointsPerTxResponse,>({
+    request,
+    options
+  }: UseGetProtoRevMaxPoolPointsPerTxQuery<TData>) => {
+    return useQuery<QueryGetProtoRevMaxPoolPointsPerTxResponse, Error, TData>(["getProtoRevMaxPoolPointsPerTxQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevMaxPoolPointsPerTx(request);
+    }, options);
+  };
+  const useGetProtoRevMaxPoolPointsPerBlock = <TData = QueryGetProtoRevMaxPoolPointsPerBlockResponse,>({
+    request,
+    options
+  }: UseGetProtoRevMaxPoolPointsPerBlockQuery<TData>) => {
+    return useQuery<QueryGetProtoRevMaxPoolPointsPerBlockResponse, Error, TData>(["getProtoRevMaxPoolPointsPerBlockQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevMaxPoolPointsPerBlock(request);
+    }, options);
+  };
+  const useGetProtoRevBaseDenoms = <TData = QueryGetProtoRevBaseDenomsResponse,>({
+    request,
+    options
+  }: UseGetProtoRevBaseDenomsQuery<TData>) => {
+    return useQuery<QueryGetProtoRevBaseDenomsResponse, Error, TData>(["getProtoRevBaseDenomsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevBaseDenoms(request);
+    }, options);
+  };
+  const useGetProtoRevEnabled = <TData = QueryGetProtoRevEnabledResponse,>({
+    request,
+    options
+  }: UseGetProtoRevEnabledQuery<TData>) => {
+    return useQuery<QueryGetProtoRevEnabledResponse, Error, TData>(["getProtoRevEnabledQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevEnabled(request);
+    }, options);
+  };
+  const useGetProtoRevPool = <TData = QueryGetProtoRevPoolResponse,>({
+    request,
+    options
+  }: UseGetProtoRevPoolQuery<TData>) => {
+    return useQuery<QueryGetProtoRevPoolResponse, Error, TData>(["getProtoRevPoolQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getProtoRevPool(request);
+    }, options);
+  };
+  return {
+    /** Params queries the parameters of the module. */useParams,
+    /**
+     * GetProtoRevNumberOfTrades queries the number of arbitrage trades the module
+     * has executed
+     */
+    useGetProtoRevNumberOfTrades,
+    /** GetProtoRevProfitsByDenom queries the profits of the module by denom */useGetProtoRevProfitsByDenom,
+    /** GetProtoRevAllProfits queries all of the profits from the module */useGetProtoRevAllProfits,
+    /**
+     * GetProtoRevStatisticsByRoute queries the number of arbitrages and profits
+     * that have been executed for a given route
+     */
+    useGetProtoRevStatisticsByRoute,
+    /**
+     * GetProtoRevAllRouteStatistics queries all of routes that the module has
+     * arbitraged against and the number of trades and profits that have been
+     * accumulated for each route
+     */
+    useGetProtoRevAllRouteStatistics,
+    /**
+     * GetProtoRevTokenPairArbRoutes queries all of the hot routes that the module
+     * is currently arbitraging
+     */
+    useGetProtoRevTokenPairArbRoutes,
+    /** GetProtoRevAdminAccount queries the admin account of the module */useGetProtoRevAdminAccount,
+    /** GetProtoRevDeveloperAccount queries the developer account of the module */useGetProtoRevDeveloperAccount,
+    /**
+     * GetProtoRevPoolWeights queries the weights of each pool type currently
+     * being used by the module
+     */
+    useGetProtoRevPoolWeights,
+    /**
+     * GetProtoRevMaxPoolPointsPerTx queries the maximum number of pool points
+     * that can be consumed per transaction
+     */
+    useGetProtoRevMaxPoolPointsPerTx,
+    /**
+     * GetProtoRevMaxPoolPointsPerBlock queries the maximum number of pool points
+     * that can consumed per block
+     */
+    useGetProtoRevMaxPoolPointsPerBlock,
+    /**
+     * GetProtoRevBaseDenoms queries the base denoms that the module is currently
+     * utilizing for arbitrage
+     */
+    useGetProtoRevBaseDenoms,
+    /** GetProtoRevEnabled queries whether the module is enabled or not */useGetProtoRevEnabled,
+    /**
+     * GetProtoRevPool queries the pool id used via the highest liquidity method
+     * for arbitrage route building given a pair of denominations
+     */
+    useGetProtoRevPool
   };
 };

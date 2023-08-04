@@ -1,6 +1,8 @@
 import { Rpc } from "../../helpers";
 import { BinaryReader } from "../../binary";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
+import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
+import { ReactQueryParams } from "../../react-query";
+import { useQuery } from "@tanstack/react-query";
 import { PoolsRequest, PoolsResponse, ParamsRequest, ParamsResponse, UserPositionsRequest, UserPositionsResponse, LiquidityPerTickRangeRequest, LiquidityPerTickRangeResponse, LiquidityNetInDirectionRequest, LiquidityNetInDirectionResponse, ClaimableSpreadRewardsRequest, ClaimableSpreadRewardsResponse, ClaimableIncentivesRequest, ClaimableIncentivesResponse, PositionByIdRequest, PositionByIdResponse, PoolAccumulatorRewardsRequest, PoolAccumulatorRewardsResponse, IncentiveRecordsRequest, IncentiveRecordsResponse, TickAccumulatorTrackersRequest, TickAccumulatorTrackersResponse, CFMMPoolIdLinkFromConcentratedPoolIdRequest, CFMMPoolIdLinkFromConcentratedPoolIdResponse, UserUnbondingPositionsRequest, UserUnbondingPositionsResponse, GetTotalLiquidityRequest, GetTotalLiquidityResponse } from "./query";
 export interface Query {
   /** Pools returns all concentrated liquidity pools */
@@ -195,5 +197,235 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     getTotalLiquidity(request?: GetTotalLiquidityRequest): Promise<GetTotalLiquidityResponse> {
       return queryService.getTotalLiquidity(request);
     }
+  };
+};
+export interface UsePoolsQuery<TData> extends ReactQueryParams<PoolsResponse, TData> {
+  request?: PoolsRequest;
+}
+export interface UseParamsQuery<TData> extends ReactQueryParams<ParamsResponse, TData> {
+  request?: ParamsRequest;
+}
+export interface UseUserPositionsQuery<TData> extends ReactQueryParams<UserPositionsResponse, TData> {
+  request: UserPositionsRequest;
+}
+export interface UseLiquidityPerTickRangeQuery<TData> extends ReactQueryParams<LiquidityPerTickRangeResponse, TData> {
+  request: LiquidityPerTickRangeRequest;
+}
+export interface UseLiquidityNetInDirectionQuery<TData> extends ReactQueryParams<LiquidityNetInDirectionResponse, TData> {
+  request: LiquidityNetInDirectionRequest;
+}
+export interface UseClaimableSpreadRewardsQuery<TData> extends ReactQueryParams<ClaimableSpreadRewardsResponse, TData> {
+  request: ClaimableSpreadRewardsRequest;
+}
+export interface UseClaimableIncentivesQuery<TData> extends ReactQueryParams<ClaimableIncentivesResponse, TData> {
+  request: ClaimableIncentivesRequest;
+}
+export interface UsePositionByIdQuery<TData> extends ReactQueryParams<PositionByIdResponse, TData> {
+  request: PositionByIdRequest;
+}
+export interface UsePoolAccumulatorRewardsQuery<TData> extends ReactQueryParams<PoolAccumulatorRewardsResponse, TData> {
+  request: PoolAccumulatorRewardsRequest;
+}
+export interface UseIncentiveRecordsQuery<TData> extends ReactQueryParams<IncentiveRecordsResponse, TData> {
+  request: IncentiveRecordsRequest;
+}
+export interface UseTickAccumulatorTrackersQuery<TData> extends ReactQueryParams<TickAccumulatorTrackersResponse, TData> {
+  request: TickAccumulatorTrackersRequest;
+}
+export interface UseCFMMPoolIdLinkFromConcentratedPoolIdQuery<TData> extends ReactQueryParams<CFMMPoolIdLinkFromConcentratedPoolIdResponse, TData> {
+  request: CFMMPoolIdLinkFromConcentratedPoolIdRequest;
+}
+export interface UseUserUnbondingPositionsQuery<TData> extends ReactQueryParams<UserUnbondingPositionsResponse, TData> {
+  request: UserUnbondingPositionsRequest;
+}
+export interface UseGetTotalLiquidityQuery<TData> extends ReactQueryParams<GetTotalLiquidityResponse, TData> {
+  request?: GetTotalLiquidityRequest;
+}
+const _queryClients: WeakMap<ProtobufRpcClient, QueryClientImpl> = new WeakMap();
+const getQueryService = (rpc: ProtobufRpcClient | undefined): QueryClientImpl | undefined => {
+  if (!rpc) return;
+  if (_queryClients.has(rpc)) {
+    return _queryClients.get(rpc);
+  }
+  const queryService = new QueryClientImpl(rpc);
+  _queryClients.set(rpc, queryService);
+  return queryService;
+};
+export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
+  const queryService = getQueryService(rpc);
+  const usePools = <TData = PoolsResponse,>({
+    request,
+    options
+  }: UsePoolsQuery<TData>) => {
+    return useQuery<PoolsResponse, Error, TData>(["poolsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.pools(request);
+    }, options);
+  };
+  const useParams = <TData = ParamsResponse,>({
+    request,
+    options
+  }: UseParamsQuery<TData>) => {
+    return useQuery<ParamsResponse, Error, TData>(["paramsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.params(request);
+    }, options);
+  };
+  const useUserPositions = <TData = UserPositionsResponse,>({
+    request,
+    options
+  }: UseUserPositionsQuery<TData>) => {
+    return useQuery<UserPositionsResponse, Error, TData>(["userPositionsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.userPositions(request);
+    }, options);
+  };
+  const useLiquidityPerTickRange = <TData = LiquidityPerTickRangeResponse,>({
+    request,
+    options
+  }: UseLiquidityPerTickRangeQuery<TData>) => {
+    return useQuery<LiquidityPerTickRangeResponse, Error, TData>(["liquidityPerTickRangeQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.liquidityPerTickRange(request);
+    }, options);
+  };
+  const useLiquidityNetInDirection = <TData = LiquidityNetInDirectionResponse,>({
+    request,
+    options
+  }: UseLiquidityNetInDirectionQuery<TData>) => {
+    return useQuery<LiquidityNetInDirectionResponse, Error, TData>(["liquidityNetInDirectionQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.liquidityNetInDirection(request);
+    }, options);
+  };
+  const useClaimableSpreadRewards = <TData = ClaimableSpreadRewardsResponse,>({
+    request,
+    options
+  }: UseClaimableSpreadRewardsQuery<TData>) => {
+    return useQuery<ClaimableSpreadRewardsResponse, Error, TData>(["claimableSpreadRewardsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.claimableSpreadRewards(request);
+    }, options);
+  };
+  const useClaimableIncentives = <TData = ClaimableIncentivesResponse,>({
+    request,
+    options
+  }: UseClaimableIncentivesQuery<TData>) => {
+    return useQuery<ClaimableIncentivesResponse, Error, TData>(["claimableIncentivesQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.claimableIncentives(request);
+    }, options);
+  };
+  const usePositionById = <TData = PositionByIdResponse,>({
+    request,
+    options
+  }: UsePositionByIdQuery<TData>) => {
+    return useQuery<PositionByIdResponse, Error, TData>(["positionByIdQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.positionById(request);
+    }, options);
+  };
+  const usePoolAccumulatorRewards = <TData = PoolAccumulatorRewardsResponse,>({
+    request,
+    options
+  }: UsePoolAccumulatorRewardsQuery<TData>) => {
+    return useQuery<PoolAccumulatorRewardsResponse, Error, TData>(["poolAccumulatorRewardsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.poolAccumulatorRewards(request);
+    }, options);
+  };
+  const useIncentiveRecords = <TData = IncentiveRecordsResponse,>({
+    request,
+    options
+  }: UseIncentiveRecordsQuery<TData>) => {
+    return useQuery<IncentiveRecordsResponse, Error, TData>(["incentiveRecordsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.incentiveRecords(request);
+    }, options);
+  };
+  const useTickAccumulatorTrackers = <TData = TickAccumulatorTrackersResponse,>({
+    request,
+    options
+  }: UseTickAccumulatorTrackersQuery<TData>) => {
+    return useQuery<TickAccumulatorTrackersResponse, Error, TData>(["tickAccumulatorTrackersQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.tickAccumulatorTrackers(request);
+    }, options);
+  };
+  const useCFMMPoolIdLinkFromConcentratedPoolId = <TData = CFMMPoolIdLinkFromConcentratedPoolIdResponse,>({
+    request,
+    options
+  }: UseCFMMPoolIdLinkFromConcentratedPoolIdQuery<TData>) => {
+    return useQuery<CFMMPoolIdLinkFromConcentratedPoolIdResponse, Error, TData>(["cFMMPoolIdLinkFromConcentratedPoolIdQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.cFMMPoolIdLinkFromConcentratedPoolId(request);
+    }, options);
+  };
+  const useUserUnbondingPositions = <TData = UserUnbondingPositionsResponse,>({
+    request,
+    options
+  }: UseUserUnbondingPositionsQuery<TData>) => {
+    return useQuery<UserUnbondingPositionsResponse, Error, TData>(["userUnbondingPositionsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.userUnbondingPositions(request);
+    }, options);
+  };
+  const useGetTotalLiquidity = <TData = GetTotalLiquidityResponse,>({
+    request,
+    options
+  }: UseGetTotalLiquidityQuery<TData>) => {
+    return useQuery<GetTotalLiquidityResponse, Error, TData>(["getTotalLiquidityQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getTotalLiquidity(request);
+    }, options);
+  };
+  return {
+    /** Pools returns all concentrated liquidity pools */usePools,
+    /** Params returns concentrated liquidity module params. */useParams,
+    /** UserPositions returns all concentrated postitions of some address. */useUserPositions,
+    /**
+     * LiquidityPerTickRange returns the amount of liquidity per every tick range
+     * existing within the given pool
+     */
+    useLiquidityPerTickRange,
+    /**
+     * LiquidityNetInDirection returns liquidity net in the direction given.
+     * Uses the bound if specified, if not uses either min tick / max tick
+     * depending on the direction.
+     */
+    useLiquidityNetInDirection,
+    /**
+     * ClaimableSpreadRewards returns the amount of spread rewards that can be
+     * claimed by a position with the given id.
+     */
+    useClaimableSpreadRewards,
+    /**
+     * ClaimableIncentives returns the amount of incentives that can be claimed
+     * and how many would be forfeited by a position with the given id.
+     */
+    useClaimableIncentives,
+    /** PositionById returns a position with the given id. */usePositionById,
+    /**
+     * PoolAccumulatorRewards returns the pool-global accumulator rewards.
+     * Contains spread factor rewards and uptime rewards.
+     */
+    usePoolAccumulatorRewards,
+    /** IncentiveRecords returns the incentive records for a given poolId */useIncentiveRecords,
+    /**
+     * TickAccumulatorTrackers returns the tick accumulator trackers.
+     * Contains spread factor and uptime accumulator trackers.
+     */
+    useTickAccumulatorTrackers,
+    /**
+     * CFMMPoolIdLinkFromConcentratedPoolId returns the pool id of the CFMM
+     * pool that is linked with the given concentrated pool.
+     */
+    useCFMMPoolIdLinkFromConcentratedPoolId,
+    /**
+     * UserUnbondingPositions returns the position and lock info of unbonding
+     * positions of the given address.
+     */
+    useUserUnbondingPositions,
+    /** GetTotalLiquidity returns total liquidity across all cl pools. */useGetTotalLiquidity
   };
 };

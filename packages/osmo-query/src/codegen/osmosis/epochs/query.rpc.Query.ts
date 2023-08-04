@@ -1,6 +1,8 @@
 import { Rpc } from "../../helpers";
 import { BinaryReader } from "../../binary";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
+import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
+import { ReactQueryParams } from "../../react-query";
+import { useQuery } from "@tanstack/react-query";
 import { QueryEpochsInfoRequest, QueryEpochsInfoResponse, QueryCurrentEpochRequest, QueryCurrentEpochResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
@@ -37,5 +39,46 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     currentEpoch(request: QueryCurrentEpochRequest): Promise<QueryCurrentEpochResponse> {
       return queryService.currentEpoch(request);
     }
+  };
+};
+export interface UseEpochInfosQuery<TData> extends ReactQueryParams<QueryEpochsInfoResponse, TData> {
+  request?: QueryEpochsInfoRequest;
+}
+export interface UseCurrentEpochQuery<TData> extends ReactQueryParams<QueryCurrentEpochResponse, TData> {
+  request: QueryCurrentEpochRequest;
+}
+const _queryClients: WeakMap<ProtobufRpcClient, QueryClientImpl> = new WeakMap();
+const getQueryService = (rpc: ProtobufRpcClient | undefined): QueryClientImpl | undefined => {
+  if (!rpc) return;
+  if (_queryClients.has(rpc)) {
+    return _queryClients.get(rpc);
+  }
+  const queryService = new QueryClientImpl(rpc);
+  _queryClients.set(rpc, queryService);
+  return queryService;
+};
+export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
+  const queryService = getQueryService(rpc);
+  const useEpochInfos = <TData = QueryEpochsInfoResponse,>({
+    request,
+    options
+  }: UseEpochInfosQuery<TData>) => {
+    return useQuery<QueryEpochsInfoResponse, Error, TData>(["epochInfosQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.epochInfos(request);
+    }, options);
+  };
+  const useCurrentEpoch = <TData = QueryCurrentEpochResponse,>({
+    request,
+    options
+  }: UseCurrentEpochQuery<TData>) => {
+    return useQuery<QueryCurrentEpochResponse, Error, TData>(["currentEpochQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.currentEpoch(request);
+    }, options);
+  };
+  return {
+    /** EpochInfos provide running epochInfos */useEpochInfos,
+    /** CurrentEpoch provide current epoch of specified identifier */useCurrentEpoch
   };
 };

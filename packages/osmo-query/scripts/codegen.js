@@ -110,6 +110,9 @@ telescope({
     rpcClients: {
       enabled: true,
       camelCase: true
+    },
+    reactQuery: {
+      enabled: true
     }
   }
 })

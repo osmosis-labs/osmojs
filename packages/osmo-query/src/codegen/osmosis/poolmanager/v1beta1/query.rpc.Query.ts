@@ -1,6 +1,8 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
+import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
+import { ReactQueryParams } from "../../../react-query";
+import { useQuery } from "@tanstack/react-query";
 import { ParamsRequest, ParamsResponse, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, EstimateSinglePoolSwapExactAmountOutRequest, NumPoolsRequest, NumPoolsResponse, PoolRequest, PoolResponse, AllPoolsRequest, AllPoolsResponse, SpotPriceRequest, SpotPriceResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse, TotalLiquidityRequest, TotalLiquidityResponse } from "./query";
 export interface Query {
   params(request?: ParamsRequest): Promise<ParamsResponse>;
@@ -135,5 +137,167 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     totalLiquidity(request?: TotalLiquidityRequest): Promise<TotalLiquidityResponse> {
       return queryService.totalLiquidity(request);
     }
+  };
+};
+export interface UseParamsQuery<TData> extends ReactQueryParams<ParamsResponse, TData> {
+  request?: ParamsRequest;
+}
+export interface UseEstimateSwapExactAmountInQuery<TData> extends ReactQueryParams<EstimateSwapExactAmountInResponse, TData> {
+  request: EstimateSwapExactAmountInRequest;
+}
+export interface UseEstimateSinglePoolSwapExactAmountInQuery<TData> extends ReactQueryParams<EstimateSwapExactAmountInResponse, TData> {
+  request: EstimateSinglePoolSwapExactAmountInRequest;
+}
+export interface UseEstimateSwapExactAmountOutQuery<TData> extends ReactQueryParams<EstimateSwapExactAmountOutResponse, TData> {
+  request: EstimateSwapExactAmountOutRequest;
+}
+export interface UseEstimateSinglePoolSwapExactAmountOutQuery<TData> extends ReactQueryParams<EstimateSwapExactAmountOutResponse, TData> {
+  request: EstimateSinglePoolSwapExactAmountOutRequest;
+}
+export interface UseNumPoolsQuery<TData> extends ReactQueryParams<NumPoolsResponse, TData> {
+  request?: NumPoolsRequest;
+}
+export interface UsePoolQuery<TData> extends ReactQueryParams<PoolResponse, TData> {
+  request: PoolRequest;
+}
+export interface UseAllPoolsQuery<TData> extends ReactQueryParams<AllPoolsResponse, TData> {
+  request?: AllPoolsRequest;
+}
+export interface UseSpotPriceQuery<TData> extends ReactQueryParams<SpotPriceResponse, TData> {
+  request: SpotPriceRequest;
+}
+export interface UseTotalPoolLiquidityQuery<TData> extends ReactQueryParams<TotalPoolLiquidityResponse, TData> {
+  request: TotalPoolLiquidityRequest;
+}
+export interface UseTotalLiquidityQuery<TData> extends ReactQueryParams<TotalLiquidityResponse, TData> {
+  request?: TotalLiquidityRequest;
+}
+const _queryClients: WeakMap<ProtobufRpcClient, QueryClientImpl> = new WeakMap();
+const getQueryService = (rpc: ProtobufRpcClient | undefined): QueryClientImpl | undefined => {
+  if (!rpc) return;
+  if (_queryClients.has(rpc)) {
+    return _queryClients.get(rpc);
+  }
+  const queryService = new QueryClientImpl(rpc);
+  _queryClients.set(rpc, queryService);
+  return queryService;
+};
+export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
+  const queryService = getQueryService(rpc);
+  const useParams = <TData = ParamsResponse,>({
+    request,
+    options
+  }: UseParamsQuery<TData>) => {
+    return useQuery<ParamsResponse, Error, TData>(["paramsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.params(request);
+    }, options);
+  };
+  const useEstimateSwapExactAmountIn = <TData = EstimateSwapExactAmountInResponse,>({
+    request,
+    options
+  }: UseEstimateSwapExactAmountInQuery<TData>) => {
+    return useQuery<EstimateSwapExactAmountInResponse, Error, TData>(["estimateSwapExactAmountInQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.estimateSwapExactAmountIn(request);
+    }, options);
+  };
+  const useEstimateSinglePoolSwapExactAmountIn = <TData = EstimateSwapExactAmountInResponse,>({
+    request,
+    options
+  }: UseEstimateSinglePoolSwapExactAmountInQuery<TData>) => {
+    return useQuery<EstimateSwapExactAmountInResponse, Error, TData>(["estimateSinglePoolSwapExactAmountInQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.estimateSinglePoolSwapExactAmountIn(request);
+    }, options);
+  };
+  const useEstimateSwapExactAmountOut = <TData = EstimateSwapExactAmountOutResponse,>({
+    request,
+    options
+  }: UseEstimateSwapExactAmountOutQuery<TData>) => {
+    return useQuery<EstimateSwapExactAmountOutResponse, Error, TData>(["estimateSwapExactAmountOutQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.estimateSwapExactAmountOut(request);
+    }, options);
+  };
+  const useEstimateSinglePoolSwapExactAmountOut = <TData = EstimateSwapExactAmountOutResponse,>({
+    request,
+    options
+  }: UseEstimateSinglePoolSwapExactAmountOutQuery<TData>) => {
+    return useQuery<EstimateSwapExactAmountOutResponse, Error, TData>(["estimateSinglePoolSwapExactAmountOutQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.estimateSinglePoolSwapExactAmountOut(request);
+    }, options);
+  };
+  const useNumPools = <TData = NumPoolsResponse,>({
+    request,
+    options
+  }: UseNumPoolsQuery<TData>) => {
+    return useQuery<NumPoolsResponse, Error, TData>(["numPoolsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.numPools(request);
+    }, options);
+  };
+  const usePool = <TData = PoolResponse,>({
+    request,
+    options
+  }: UsePoolQuery<TData>) => {
+    return useQuery<PoolResponse, Error, TData>(["poolQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.pool(request);
+    }, options);
+  };
+  const useAllPools = <TData = AllPoolsResponse,>({
+    request,
+    options
+  }: UseAllPoolsQuery<TData>) => {
+    return useQuery<AllPoolsResponse, Error, TData>(["allPoolsQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.allPools(request);
+    }, options);
+  };
+  const useSpotPrice = <TData = SpotPriceResponse,>({
+    request,
+    options
+  }: UseSpotPriceQuery<TData>) => {
+    return useQuery<SpotPriceResponse, Error, TData>(["spotPriceQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.spotPrice(request);
+    }, options);
+  };
+  const useTotalPoolLiquidity = <TData = TotalPoolLiquidityResponse,>({
+    request,
+    options
+  }: UseTotalPoolLiquidityQuery<TData>) => {
+    return useQuery<TotalPoolLiquidityResponse, Error, TData>(["totalPoolLiquidityQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.totalPoolLiquidity(request);
+    }, options);
+  };
+  const useTotalLiquidity = <TData = TotalLiquidityResponse,>({
+    request,
+    options
+  }: UseTotalLiquidityQuery<TData>) => {
+    return useQuery<TotalLiquidityResponse, Error, TData>(["totalLiquidityQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.totalLiquidity(request);
+    }, options);
+  };
+  return {
+    useParams,
+    /** Estimates swap amount out given in. */useEstimateSwapExactAmountIn,
+    useEstimateSinglePoolSwapExactAmountIn,
+    /** Estimates swap amount in given out. */useEstimateSwapExactAmountOut,
+    useEstimateSinglePoolSwapExactAmountOut,
+    /** Returns the total number of pools existing in Osmosis. */useNumPools,
+    /** Pool returns the Pool specified by the pool id */usePool,
+    /** AllPools returns all pools on the Osmosis chain sorted by IDs. */useAllPools,
+    /**
+     * SpotPrice defines a gRPC query handler that returns the spot price given
+     * a base denomination and a quote denomination.
+     */
+    useSpotPrice,
+    /** TotalPoolLiquidity returns the total liquidity of the specified pool. */useTotalPoolLiquidity,
+    /** TotalLiquidity returns the total liquidity across all pools. */useTotalLiquidity
   };
 };
