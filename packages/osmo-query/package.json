@@ -1,6 +1,6 @@
 {
   "name": "osmo-query",
-  "version": "16.5.1",
+  "version": "16.5.2",
   "description": "Typescript Protobuf Messages for Osmosis with react-query",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
@@ -77,8 +77,8 @@
     "@cosmjs/crypto": "0.29.4",
     "@cosmology/telescope": "0.102.0",
     "@protobufs/confio": "^0.0.6",
-    "@protobufs/cosmos_proto": "^0.0.10",
     "@protobufs/cosmos": "^0.1.0",
+    "@protobufs/cosmos_proto": "^0.0.10",
     "@protobufs/cosmwasm": "^0.0.11",
     "@protobufs/gogoproto": "^0.0.10",
     "@protobufs/google": "^0.0.10",
@@ -96,20 +96,20 @@
     "case": "1.6.3",
     "cosmjs-types": "0.5.2",
     "cross-env": "^7.0.2",
+    "eslint": "8.45.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "eslint": "8.45.0",
     "glob": "8.0.3",
-    "jest-in-case": "^1.0.2",
     "jest": "^29.6.1",
+    "jest-in-case": "^1.0.2",
     "js-yaml": "4.1.0",
     "mkdirp": "1.0.4",
     "node-fetch": "^2.6.9",
     "path": "^0.12.7",
     "prettier": "^2.7.0",
     "publish-scripts": "0.1.0",
-    "react-dom": "18.2.0",
     "react": "18.2.0",
+    "react-dom": "18.2.0",
     "rimraf": "3.0.2",
     "sinon": "14.0.2",
     "ts-jest": "^29.1.1",
@@ -123,8 +123,8 @@
     "@cosmology/lcd": "^0.12.0"
   },
   "peerDependencies": {
-    "react-dom": ">= 18",
+    "@tanstack/react-query": ">= 4",
     "react": ">= 18",
-    "@tanstack/react-query": ">= 4"
+    "react-dom": ">= 18"
   }
 }
