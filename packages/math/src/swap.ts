@@ -2,7 +2,7 @@ import { Asset } from "@chain-registry/types";
 import { BigNumber } from "bignumber.js";
 import { CoinDenom, Trade, PrettyPair } from "./types";
 import { symbolToOsmoDenom } from "./utils";
-import Long from "long";
+import { Decimal } from "decimal.js-light";
 import { SwapAmountInRoute } from "osmojs/dist/codegen/osmosis/poolmanager/v1beta1/swap_route";
 import { Pool } from "osmojs/dist/codegen/osmosis/gamm/pool-models/balancer/balancerPool";
 import { Coin } from "osmojs/dist/codegen/cosmos/base/v1beta1/coin";
@@ -107,9 +107,7 @@ const getPoolAsset = (pool: Pool, denom: string) => {
     (asset) => asset?.token && asset.token.denom === denom
   );
   if (!poolAsset) {
-    throw new Error(
-      `Pool ${pool.id} doesn't have the pool asset for ${denom}`
-    );
+    throw new Error(`Pool ${pool.id} doesn't have the pool asset for ${denom}`);
   }
   return { denom, weight: poolAsset.weight, amount: poolAsset.token!.amount };
 };
@@ -140,7 +138,7 @@ export const calcOutGivenIn = (
   let adjustedIn = one.minus(swapFee);
   adjustedIn = tokenAmountIn.multipliedBy(adjustedIn);
   const y = tokenBalanceIn.div(tokenBalanceIn.plus(adjustedIn));
-  const foo = y.pow(weightRatio);
+  const foo = pow(y, weightRatio);
   const bar = one.minus(foo);
   return tokenBalanceOut.multipliedBy(bar);
 };
@@ -156,7 +154,7 @@ export const calcInGivenOut = (
   const weightRatio = tokenWeightOut.div(tokenWeightIn);
   const diff = tokenBalanceOut.minus(tokenAmountOut);
   const y = tokenBalanceOut.div(diff);
-  let foo = y.pow(weightRatio);
+  let foo = pow(y, weightRatio);
   foo = foo.minus(one);
   const tokenAmountIn = one.minus(swapFee);
   return tokenBalanceIn.multipliedBy(foo).div(tokenAmountIn);
@@ -226,4 +224,8 @@ export const calcPriceImpactGivenOut = (
   const priceImpact = effectivePrice.div(beforeSpotPriceInOverOut).minus(one);
 
   return priceImpact.toString();
+};
+
+export const pow = (x: BigNumber, y: BigNumber): BigNumber => {
+  return new BigNumber(new Decimal(x.toString()).pow(new Decimal(y.toString())).toString())
 };
