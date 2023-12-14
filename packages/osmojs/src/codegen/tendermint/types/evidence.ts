@@ -181,7 +181,7 @@ function createBaseDuplicateVoteEvidence(): DuplicateVoteEvidence {
     voteB: Vote.fromPartial({}),
     totalVotingPower: BigInt(0),
     validatorPower: BigInt(0),
-    timestamp: undefined
+    timestamp: new Date()
   };
 }
 export const DuplicateVoteEvidence = {
@@ -282,7 +282,7 @@ function createBaseLightClientAttackEvidence(): LightClientAttackEvidence {
     commonHeight: BigInt(0),
     byzantineValidators: [],
     totalVotingPower: BigInt(0),
-    timestamp: undefined
+    timestamp: new Date()
   };
 }
 export const LightClientAttackEvidence = {

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgSwapExactAmountIn, MsgSwapExactAmountOut, MsgSplitRouteSwapExactAmountIn, MsgSplitRouteSwapExactAmountOut } from "./tx";
+import { MsgSwapExactAmountIn, MsgSwapExactAmountOut } from "./tx";
 export const AminoConverter = {
   "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn": {
     aminoType: "osmosis/poolmanager/swap-exact-amount-in",
@@ -10,15 +10,5 @@ export const AminoConverter = {
     aminoType: "osmosis/poolmanager/swap-exact-amount-out",
     toAmino: MsgSwapExactAmountOut.toAmino,
     fromAmino: MsgSwapExactAmountOut.fromAmino
-  },
-  "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountIn": {
-    aminoType: "osmosis/poolmanager/split-route-swap-exact-amount-in",
-    toAmino: MsgSplitRouteSwapExactAmountIn.toAmino,
-    fromAmino: MsgSplitRouteSwapExactAmountIn.fromAmino
-  },
-  "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountOut": {
-    aminoType: "osmosis/poolmanager/split-route-swap-exact-amount-out",
-    toAmino: MsgSplitRouteSwapExactAmountOut.toAmino,
-    fromAmino: MsgSplitRouteSwapExactAmountOut.fromAmino
   }
 };

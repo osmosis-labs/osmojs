@@ -1030,7 +1030,7 @@ export const AuthInfo = {
 };
 function createBaseSignerInfo(): SignerInfo {
   return {
-    publicKey: undefined,
+    publicKey: Any.fromPartial({}),
     modeInfo: ModeInfo.fromPartial({}),
     sequence: BigInt(0)
   };

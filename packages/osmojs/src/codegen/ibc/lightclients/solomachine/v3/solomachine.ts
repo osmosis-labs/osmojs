@@ -381,7 +381,7 @@ export const ClientState = {
 };
 function createBaseConsensusState(): ConsensusState {
   return {
-    publicKey: undefined,
+    publicKey: Any.fromPartial({}),
     diversifier: "",
     timestamp: BigInt(0)
   };
@@ -470,7 +470,7 @@ function createBaseHeader(): Header {
   return {
     timestamp: BigInt(0),
     signature: new Uint8Array(),
-    newPublicKey: undefined,
+    newPublicKey: Any.fromPartial({}),
     newDiversifier: ""
   };
 }
@@ -933,7 +933,7 @@ export const SignBytes = {
 };
 function createBaseHeaderData(): HeaderData {
   return {
-    newPubKey: undefined,
+    newPubKey: Any.fromPartial({}),
     newDiversifier: ""
   };
 }

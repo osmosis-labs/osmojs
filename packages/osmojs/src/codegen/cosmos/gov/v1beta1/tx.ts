@@ -81,7 +81,7 @@ export interface MsgVoteAmino {
   option: VoteOption;
 }
 export interface MsgVoteAminoMsg {
-  type: "cosmos-sdk/v1/MsgVote";
+  type: "cosmos-sdk/MsgVote";
   value: MsgVoteAmino;
 }
 /** MsgVote defines a message to cast a vote. */
@@ -210,7 +210,7 @@ export interface MsgDepositResponseAminoMsg {
 export interface MsgDepositResponseSDKType {}
 function createBaseMsgSubmitProposal(): MsgSubmitProposal {
   return {
-    content: undefined,
+    content: Any.fromPartial({}),
     initialDeposit: [],
     proposer: "",
     isExpedited: false
@@ -446,7 +446,7 @@ export const MsgVote = {
   },
   toAminoMsg(message: MsgVote): MsgVoteAminoMsg {
     return {
-      type: "cosmos-sdk/v1/MsgVote",
+      type: "cosmos-sdk/MsgVote",
       value: MsgVote.toAmino(message)
     };
   },

@@ -107,7 +107,7 @@ function createBaseBaseAccount(): BaseAccount {
   return {
     $typeUrl: "/cosmos.auth.v1beta1.BaseAccount",
     address: "",
-    pubKey: undefined,
+    pubKey: Any.fromPartial({}),
     accountNumber: BigInt(0),
     sequence: BigInt(0)
   };

@@ -1,6 +1,5 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
-import { PeriodLock, PeriodLockAmino, PeriodLockSDKType } from "../lockup/lock";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { toTimestamp, fromTimestamp } from "../../helpers";
 import { Decimal } from "@cosmjs/math";
@@ -51,84 +50,28 @@ export interface PositionSDKType {
   join_time: Date;
   liquidity: string;
 }
-/**
- * FullPositionBreakdown returns:
- * - the position itself
- * - the amount the position translates in terms of asset0 and asset1
- * - the amount of claimable fees
- * - the amount of claimable incentives
- * - the amount of incentives that would be forfeited if the position was closed
- * now
- */
-export interface FullPositionBreakdown {
+export interface PositionWithUnderlyingAssetBreakdown {
   position: Position;
   asset0: Coin;
   asset1: Coin;
-  claimableSpreadRewards: Coin[];
-  claimableIncentives: Coin[];
-  forfeitedIncentives: Coin[];
 }
-export interface FullPositionBreakdownProtoMsg {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullPositionBreakdown";
+export interface PositionWithUnderlyingAssetBreakdownProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithUnderlyingAssetBreakdown";
   value: Uint8Array;
 }
-/**
- * FullPositionBreakdown returns:
- * - the position itself
- * - the amount the position translates in terms of asset0 and asset1
- * - the amount of claimable fees
- * - the amount of claimable incentives
- * - the amount of incentives that would be forfeited if the position was closed
- * now
- */
-export interface FullPositionBreakdownAmino {
+export interface PositionWithUnderlyingAssetBreakdownAmino {
   position?: PositionAmino;
   asset0?: CoinAmino;
   asset1?: CoinAmino;
-  claimable_spread_rewards: CoinAmino[];
-  claimable_incentives: CoinAmino[];
-  forfeited_incentives: CoinAmino[];
 }
-export interface FullPositionBreakdownAminoMsg {
-  type: "osmosis/concentratedliquidity/full-position-breakdown";
-  value: FullPositionBreakdownAmino;
+export interface PositionWithUnderlyingAssetBreakdownAminoMsg {
+  type: "osmosis/concentratedliquidity/position-with-underlying-asset-breakdown";
+  value: PositionWithUnderlyingAssetBreakdownAmino;
 }
-/**
- * FullPositionBreakdown returns:
- * - the position itself
- * - the amount the position translates in terms of asset0 and asset1
- * - the amount of claimable fees
- * - the amount of claimable incentives
- * - the amount of incentives that would be forfeited if the position was closed
- * now
- */
-export interface FullPositionBreakdownSDKType {
+export interface PositionWithUnderlyingAssetBreakdownSDKType {
   position: PositionSDKType;
   asset0: CoinSDKType;
   asset1: CoinSDKType;
-  claimable_spread_rewards: CoinSDKType[];
-  claimable_incentives: CoinSDKType[];
-  forfeited_incentives: CoinSDKType[];
-}
-export interface PositionWithPeriodLock {
-  position: Position;
-  locks: PeriodLock;
-}
-export interface PositionWithPeriodLockProtoMsg {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithPeriodLock";
-  value: Uint8Array;
-}
-export interface PositionWithPeriodLockAmino {
-  position?: PositionAmino;
-  locks?: PeriodLockAmino;
-}
-export interface PositionWithPeriodLockAminoMsg {
-  type: "osmosis/concentratedliquidity/position-with-period-lock";
-  value: PositionWithPeriodLockAmino;
-}
-export interface PositionWithPeriodLockSDKType {
-  position: PositionSDKType;
-  locks: PeriodLockSDKType;
 }
 function createBasePosition(): Position {
   return {
@@ -137,7 +80,7 @@ function createBasePosition(): Position {
     poolId: BigInt(0),
     lowerTick: BigInt(0),
     upperTick: BigInt(0),
-    joinTime: undefined,
+    joinTime: new Date(),
     liquidity: ""
   };
 }
@@ -257,19 +200,16 @@ export const Position = {
     };
   }
 };
-function createBaseFullPositionBreakdown(): FullPositionBreakdown {
+function createBasePositionWithUnderlyingAssetBreakdown(): PositionWithUnderlyingAssetBreakdown {
   return {
     position: Position.fromPartial({}),
-    asset0: undefined,
-    asset1: undefined,
-    claimableSpreadRewards: [],
-    claimableIncentives: [],
-    forfeitedIncentives: []
+    asset0: Coin.fromPartial({}),
+    asset1: Coin.fromPartial({})
   };
 }
-export const FullPositionBreakdown = {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullPositionBreakdown",
-  encode(message: FullPositionBreakdown, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const PositionWithUnderlyingAssetBreakdown = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithUnderlyingAssetBreakdown",
+  encode(message: PositionWithUnderlyingAssetBreakdown, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.position !== undefined) {
       Position.encode(message.position, writer.uint32(10).fork()).ldelim();
     }
@@ -279,21 +219,12 @@ export const FullPositionBreakdown = {
     if (message.asset1 !== undefined) {
       Coin.encode(message.asset1, writer.uint32(26).fork()).ldelim();
     }
-    for (const v of message.claimableSpreadRewards) {
-      Coin.encode(v!, writer.uint32(34).fork()).ldelim();
-    }
-    for (const v of message.claimableIncentives) {
-      Coin.encode(v!, writer.uint32(42).fork()).ldelim();
-    }
-    for (const v of message.forfeitedIncentives) {
-      Coin.encode(v!, writer.uint32(50).fork()).ldelim();
-    }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): FullPositionBreakdown {
+  decode(input: BinaryReader | Uint8Array, length?: number): PositionWithUnderlyingAssetBreakdown {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseFullPositionBreakdown();
+    const message = createBasePositionWithUnderlyingAssetBreakdown();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -306,15 +237,6 @@ export const FullPositionBreakdown = {
         case 3:
           message.asset1 = Coin.decode(reader, reader.uint32());
           break;
-        case 4:
-          message.claimableSpreadRewards.push(Coin.decode(reader, reader.uint32()));
-          break;
-        case 5:
-          message.claimableIncentives.push(Coin.decode(reader, reader.uint32()));
-          break;
-        case 6:
-          message.forfeitedIncentives.push(Coin.decode(reader, reader.uint32()));
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -322,144 +244,46 @@ export const FullPositionBreakdown = {
     }
     return message;
   },
-  fromPartial(object: Partial<FullPositionBreakdown>): FullPositionBreakdown {
-    const message = createBaseFullPositionBreakdown();
+  fromPartial(object: Partial<PositionWithUnderlyingAssetBreakdown>): PositionWithUnderlyingAssetBreakdown {
+    const message = createBasePositionWithUnderlyingAssetBreakdown();
     message.position = object.position !== undefined && object.position !== null ? Position.fromPartial(object.position) : undefined;
     message.asset0 = object.asset0 !== undefined && object.asset0 !== null ? Coin.fromPartial(object.asset0) : undefined;
     message.asset1 = object.asset1 !== undefined && object.asset1 !== null ? Coin.fromPartial(object.asset1) : undefined;
-    message.claimableSpreadRewards = object.claimableSpreadRewards?.map(e => Coin.fromPartial(e)) || [];
-    message.claimableIncentives = object.claimableIncentives?.map(e => Coin.fromPartial(e)) || [];
-    message.forfeitedIncentives = object.forfeitedIncentives?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(object: FullPositionBreakdownAmino): FullPositionBreakdown {
+  fromAmino(object: PositionWithUnderlyingAssetBreakdownAmino): PositionWithUnderlyingAssetBreakdown {
     return {
       position: object?.position ? Position.fromAmino(object.position) : undefined,
       asset0: object?.asset0 ? Coin.fromAmino(object.asset0) : undefined,
-      asset1: object?.asset1 ? Coin.fromAmino(object.asset1) : undefined,
-      claimableSpreadRewards: Array.isArray(object?.claimable_spread_rewards) ? object.claimable_spread_rewards.map((e: any) => Coin.fromAmino(e)) : [],
-      claimableIncentives: Array.isArray(object?.claimable_incentives) ? object.claimable_incentives.map((e: any) => Coin.fromAmino(e)) : [],
-      forfeitedIncentives: Array.isArray(object?.forfeited_incentives) ? object.forfeited_incentives.map((e: any) => Coin.fromAmino(e)) : []
+      asset1: object?.asset1 ? Coin.fromAmino(object.asset1) : undefined
     };
   },
-  toAmino(message: FullPositionBreakdown): FullPositionBreakdownAmino {
+  toAmino(message: PositionWithUnderlyingAssetBreakdown): PositionWithUnderlyingAssetBreakdownAmino {
     const obj: any = {};
     obj.position = message.position ? Position.toAmino(message.position) : undefined;
     obj.asset0 = message.asset0 ? Coin.toAmino(message.asset0) : undefined;
     obj.asset1 = message.asset1 ? Coin.toAmino(message.asset1) : undefined;
-    if (message.claimableSpreadRewards) {
-      obj.claimable_spread_rewards = message.claimableSpreadRewards.map(e => e ? Coin.toAmino(e) : undefined);
-    } else {
-      obj.claimable_spread_rewards = [];
-    }
-    if (message.claimableIncentives) {
-      obj.claimable_incentives = message.claimableIncentives.map(e => e ? Coin.toAmino(e) : undefined);
-    } else {
-      obj.claimable_incentives = [];
-    }
-    if (message.forfeitedIncentives) {
-      obj.forfeited_incentives = message.forfeitedIncentives.map(e => e ? Coin.toAmino(e) : undefined);
-    } else {
-      obj.forfeited_incentives = [];
-    }
     return obj;
   },
-  fromAminoMsg(object: FullPositionBreakdownAminoMsg): FullPositionBreakdown {
-    return FullPositionBreakdown.fromAmino(object.value);
+  fromAminoMsg(object: PositionWithUnderlyingAssetBreakdownAminoMsg): PositionWithUnderlyingAssetBreakdown {
+    return PositionWithUnderlyingAssetBreakdown.fromAmino(object.value);
   },
-  toAminoMsg(message: FullPositionBreakdown): FullPositionBreakdownAminoMsg {
+  toAminoMsg(message: PositionWithUnderlyingAssetBreakdown): PositionWithUnderlyingAssetBreakdownAminoMsg {
     return {
-      type: "osmosis/concentratedliquidity/full-position-breakdown",
-      value: FullPositionBreakdown.toAmino(message)
+      type: "osmosis/concentratedliquidity/position-with-underlying-asset-breakdown",
+      value: PositionWithUnderlyingAssetBreakdown.toAmino(message)
     };
   },
-  fromProtoMsg(message: FullPositionBreakdownProtoMsg): FullPositionBreakdown {
-    return FullPositionBreakdown.decode(message.value);
+  fromProtoMsg(message: PositionWithUnderlyingAssetBreakdownProtoMsg): PositionWithUnderlyingAssetBreakdown {
+    return PositionWithUnderlyingAssetBreakdown.decode(message.value);
   },
-  toProto(message: FullPositionBreakdown): Uint8Array {
-    return FullPositionBreakdown.encode(message).finish();
+  toProto(message: PositionWithUnderlyingAssetBreakdown): Uint8Array {
+    return PositionWithUnderlyingAssetBreakdown.encode(message).finish();
   },
-  toProtoMsg(message: FullPositionBreakdown): FullPositionBreakdownProtoMsg {
+  toProtoMsg(message: PositionWithUnderlyingAssetBreakdown): PositionWithUnderlyingAssetBreakdownProtoMsg {
     return {
-      typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullPositionBreakdown",
-      value: FullPositionBreakdown.encode(message).finish()
-    };
-  }
-};
-function createBasePositionWithPeriodLock(): PositionWithPeriodLock {
-  return {
-    position: Position.fromPartial({}),
-    locks: PeriodLock.fromPartial({})
-  };
-}
-export const PositionWithPeriodLock = {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithPeriodLock",
-  encode(message: PositionWithPeriodLock, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.position !== undefined) {
-      Position.encode(message.position, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.locks !== undefined) {
-      PeriodLock.encode(message.locks, writer.uint32(18).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): PositionWithPeriodLock {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePositionWithPeriodLock();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.position = Position.decode(reader, reader.uint32());
-          break;
-        case 2:
-          message.locks = PeriodLock.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<PositionWithPeriodLock>): PositionWithPeriodLock {
-    const message = createBasePositionWithPeriodLock();
-    message.position = object.position !== undefined && object.position !== null ? Position.fromPartial(object.position) : undefined;
-    message.locks = object.locks !== undefined && object.locks !== null ? PeriodLock.fromPartial(object.locks) : undefined;
-    return message;
-  },
-  fromAmino(object: PositionWithPeriodLockAmino): PositionWithPeriodLock {
-    return {
-      position: object?.position ? Position.fromAmino(object.position) : undefined,
-      locks: object?.locks ? PeriodLock.fromAmino(object.locks) : undefined
-    };
-  },
-  toAmino(message: PositionWithPeriodLock): PositionWithPeriodLockAmino {
-    const obj: any = {};
-    obj.position = message.position ? Position.toAmino(message.position) : undefined;
-    obj.locks = message.locks ? PeriodLock.toAmino(message.locks) : undefined;
-    return obj;
-  },
-  fromAminoMsg(object: PositionWithPeriodLockAminoMsg): PositionWithPeriodLock {
-    return PositionWithPeriodLock.fromAmino(object.value);
-  },
-  toAminoMsg(message: PositionWithPeriodLock): PositionWithPeriodLockAminoMsg {
-    return {
-      type: "osmosis/concentratedliquidity/position-with-period-lock",
-      value: PositionWithPeriodLock.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: PositionWithPeriodLockProtoMsg): PositionWithPeriodLock {
-    return PositionWithPeriodLock.decode(message.value);
-  },
-  toProto(message: PositionWithPeriodLock): Uint8Array {
-    return PositionWithPeriodLock.encode(message).finish();
-  },
-  toProtoMsg(message: PositionWithPeriodLock): PositionWithPeriodLockProtoMsg {
-    return {
-      typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithPeriodLock",
-      value: PositionWithPeriodLock.encode(message).finish()
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionWithUnderlyingAssetBreakdown",
+      value: PositionWithUnderlyingAssetBreakdown.encode(message).finish()
     };
   }
 };

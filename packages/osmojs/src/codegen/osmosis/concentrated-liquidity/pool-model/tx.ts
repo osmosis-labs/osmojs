@@ -1,4 +1,4 @@
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 /** ===================== MsgCreateConcentratedPool */
 export interface MsgCreateConcentratedPool {
@@ -6,10 +6,11 @@ export interface MsgCreateConcentratedPool {
   denom0: string;
   denom1: string;
   tickSpacing: bigint;
-  spreadFactor: string;
+  exponentAtPriceOne: string;
+  swapFee: string;
 }
 export interface MsgCreateConcentratedPoolProtoMsg {
-  typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPool";
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateConcentratedPool";
   value: Uint8Array;
 }
 /** ===================== MsgCreateConcentratedPool */
@@ -18,10 +19,11 @@ export interface MsgCreateConcentratedPoolAmino {
   denom0: string;
   denom1: string;
   tick_spacing: string;
-  spread_factor: string;
+  exponent_at_price_one: string;
+  swap_fee: string;
 }
 export interface MsgCreateConcentratedPoolAminoMsg {
-  type: "osmosis/concentratedliquidity/poolmodel/concentrated/create-concentrated-pool";
+  type: "osmosis/concentratedliquidity/create-concentrated-pool";
   value: MsgCreateConcentratedPoolAmino;
 }
 /** ===================== MsgCreateConcentratedPool */
@@ -30,14 +32,15 @@ export interface MsgCreateConcentratedPoolSDKType {
   denom0: string;
   denom1: string;
   tick_spacing: bigint;
-  spread_factor: string;
+  exponent_at_price_one: string;
+  swap_fee: string;
 }
 /** Returns a unique poolID to identify the pool with. */
 export interface MsgCreateConcentratedPoolResponse {
   poolId: bigint;
 }
 export interface MsgCreateConcentratedPoolResponseProtoMsg {
-  typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPoolResponse";
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateConcentratedPoolResponse";
   value: Uint8Array;
 }
 /** Returns a unique poolID to identify the pool with. */
@@ -45,7 +48,7 @@ export interface MsgCreateConcentratedPoolResponseAmino {
   pool_id: string;
 }
 export interface MsgCreateConcentratedPoolResponseAminoMsg {
-  type: "osmosis/concentratedliquidity/poolmodel/concentrated/create-concentrated-pool-response";
+  type: "osmosis/concentratedliquidity/create-concentrated-pool-response";
   value: MsgCreateConcentratedPoolResponseAmino;
 }
 /** Returns a unique poolID to identify the pool with. */
@@ -58,11 +61,12 @@ function createBaseMsgCreateConcentratedPool(): MsgCreateConcentratedPool {
     denom0: "",
     denom1: "",
     tickSpacing: BigInt(0),
-    spreadFactor: ""
+    exponentAtPriceOne: "",
+    swapFee: ""
   };
 }
 export const MsgCreateConcentratedPool = {
-  typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPool",
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateConcentratedPool",
   encode(message: MsgCreateConcentratedPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -76,8 +80,11 @@ export const MsgCreateConcentratedPool = {
     if (message.tickSpacing !== BigInt(0)) {
       writer.uint32(32).uint64(message.tickSpacing);
     }
-    if (message.spreadFactor !== "") {
-      writer.uint32(42).string(Decimal.fromUserInput(message.spreadFactor, 18).atomics);
+    if (message.exponentAtPriceOne !== "") {
+      writer.uint32(42).string(message.exponentAtPriceOne);
+    }
+    if (message.swapFee !== "") {
+      writer.uint32(74).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
     }
     return writer;
   },
@@ -101,7 +108,10 @@ export const MsgCreateConcentratedPool = {
           message.tickSpacing = reader.uint64();
           break;
         case 5:
-          message.spreadFactor = Decimal.fromAtomics(reader.string(), 18).toString();
+          message.exponentAtPriceOne = reader.string();
+          break;
+        case 9:
+          message.swapFee = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         default:
           reader.skipType(tag & 7);
@@ -116,7 +126,8 @@ export const MsgCreateConcentratedPool = {
     message.denom0 = object.denom0 ?? "";
     message.denom1 = object.denom1 ?? "";
     message.tickSpacing = object.tickSpacing !== undefined && object.tickSpacing !== null ? BigInt(object.tickSpacing.toString()) : BigInt(0);
-    message.spreadFactor = object.spreadFactor ?? "";
+    message.exponentAtPriceOne = object.exponentAtPriceOne ?? "";
+    message.swapFee = object.swapFee ?? "";
     return message;
   },
   fromAmino(object: MsgCreateConcentratedPoolAmino): MsgCreateConcentratedPool {
@@ -125,7 +136,8 @@ export const MsgCreateConcentratedPool = {
       denom0: object.denom0,
       denom1: object.denom1,
       tickSpacing: BigInt(object.tick_spacing),
-      spreadFactor: object.spread_factor
+      exponentAtPriceOne: object.exponent_at_price_one,
+      swapFee: object.swap_fee
     };
   },
   toAmino(message: MsgCreateConcentratedPool): MsgCreateConcentratedPoolAmino {
@@ -134,7 +146,8 @@ export const MsgCreateConcentratedPool = {
     obj.denom0 = message.denom0;
     obj.denom1 = message.denom1;
     obj.tick_spacing = message.tickSpacing ? message.tickSpacing.toString() : undefined;
-    obj.spread_factor = message.spreadFactor;
+    obj.exponent_at_price_one = message.exponentAtPriceOne;
+    obj.swap_fee = message.swapFee;
     return obj;
   },
   fromAminoMsg(object: MsgCreateConcentratedPoolAminoMsg): MsgCreateConcentratedPool {
@@ -142,7 +155,7 @@ export const MsgCreateConcentratedPool = {
   },
   toAminoMsg(message: MsgCreateConcentratedPool): MsgCreateConcentratedPoolAminoMsg {
     return {
-      type: "osmosis/concentratedliquidity/poolmodel/concentrated/create-concentrated-pool",
+      type: "osmosis/concentratedliquidity/create-concentrated-pool",
       value: MsgCreateConcentratedPool.toAmino(message)
     };
   },
@@ -154,7 +167,7 @@ export const MsgCreateConcentratedPool = {
   },
   toProtoMsg(message: MsgCreateConcentratedPool): MsgCreateConcentratedPoolProtoMsg {
     return {
-      typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPool",
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateConcentratedPool",
       value: MsgCreateConcentratedPool.encode(message).finish()
     };
   }
@@ -165,7 +178,7 @@ function createBaseMsgCreateConcentratedPoolResponse(): MsgCreateConcentratedPoo
   };
 }
 export const MsgCreateConcentratedPoolResponse = {
-  typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPoolResponse",
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateConcentratedPoolResponse",
   encode(message: MsgCreateConcentratedPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -209,7 +222,7 @@ export const MsgCreateConcentratedPoolResponse = {
   },
   toAminoMsg(message: MsgCreateConcentratedPoolResponse): MsgCreateConcentratedPoolResponseAminoMsg {
     return {
-      type: "osmosis/concentratedliquidity/poolmodel/concentrated/create-concentrated-pool-response",
+      type: "osmosis/concentratedliquidity/create-concentrated-pool-response",
       value: MsgCreateConcentratedPoolResponse.toAmino(message)
     };
   },
@@ -221,7 +234,7 @@ export const MsgCreateConcentratedPoolResponse = {
   },
   toProtoMsg(message: MsgCreateConcentratedPoolResponse): MsgCreateConcentratedPoolResponseProtoMsg {
     return {
-      typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPoolResponse",
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreateConcentratedPoolResponse",
       value: MsgCreateConcentratedPoolResponse.encode(message).finish()
     };
   }

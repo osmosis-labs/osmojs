@@ -214,7 +214,7 @@ function createBaseArithmeticTwapRequest(): ArithmeticTwapRequest {
     poolId: BigInt(0),
     baseAsset: "",
     quoteAsset: "",
-    startTime: undefined,
+    startTime: new Date(),
     endTime: undefined
   };
 }
@@ -388,7 +388,7 @@ function createBaseArithmeticTwapToNowRequest(): ArithmeticTwapToNowRequest {
     poolId: BigInt(0),
     baseAsset: "",
     quoteAsset: "",
-    startTime: undefined
+    startTime: new Date()
   };
 }
 export const ArithmeticTwapToNowRequest = {
@@ -552,7 +552,7 @@ function createBaseGeometricTwapRequest(): GeometricTwapRequest {
     poolId: BigInt(0),
     baseAsset: "",
     quoteAsset: "",
-    startTime: undefined,
+    startTime: new Date(),
     endTime: undefined
   };
 }
@@ -726,7 +726,7 @@ function createBaseGeometricTwapToNowRequest(): GeometricTwapToNowRequest {
     poolId: BigInt(0),
     baseAsset: "",
     quoteAsset: "",
-    startTime: undefined
+    startTime: new Date()
   };
 }
 export const GeometricTwapToNowRequest = {

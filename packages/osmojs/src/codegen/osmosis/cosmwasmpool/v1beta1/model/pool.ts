@@ -1,20 +1,20 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 export interface CosmWasmPool {
   $typeUrl?: string;
+  poolAddress: string;
   contractAddress: string;
   poolId: bigint;
   codeId: bigint;
-  instantiateMsg: Uint8Array;
 }
 export interface CosmWasmPoolProtoMsg {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool";
   value: Uint8Array;
 }
 export interface CosmWasmPoolAmino {
+  pool_address: string;
   contract_address: string;
   pool_id: string;
   code_id: string;
-  instantiate_msg: Uint8Array;
 }
 export interface CosmWasmPoolAminoMsg {
   type: "osmosis/cosmwasmpool/cosm-wasm-pool";
@@ -22,34 +22,34 @@ export interface CosmWasmPoolAminoMsg {
 }
 export interface CosmWasmPoolSDKType {
   $typeUrl?: string;
+  pool_address: string;
   contract_address: string;
   pool_id: bigint;
   code_id: bigint;
-  instantiate_msg: Uint8Array;
 }
 function createBaseCosmWasmPool(): CosmWasmPool {
   return {
     $typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
+    poolAddress: "",
     contractAddress: "",
     poolId: BigInt(0),
-    codeId: BigInt(0),
-    instantiateMsg: new Uint8Array()
+    codeId: BigInt(0)
   };
 }
 export const CosmWasmPool = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
   encode(message: CosmWasmPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolAddress !== "") {
+      writer.uint32(10).string(message.poolAddress);
+    }
     if (message.contractAddress !== "") {
-      writer.uint32(10).string(message.contractAddress);
+      writer.uint32(18).string(message.contractAddress);
     }
     if (message.poolId !== BigInt(0)) {
-      writer.uint32(16).uint64(message.poolId);
+      writer.uint32(24).uint64(message.poolId);
     }
     if (message.codeId !== BigInt(0)) {
-      writer.uint32(24).uint64(message.codeId);
-    }
-    if (message.instantiateMsg.length !== 0) {
-      writer.uint32(34).bytes(message.instantiateMsg);
+      writer.uint32(32).uint64(message.codeId);
     }
     return writer;
   },
@@ -61,16 +61,16 @@ export const CosmWasmPool = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.contractAddress = reader.string();
+          message.poolAddress = reader.string();
           break;
         case 2:
-          message.poolId = reader.uint64();
+          message.contractAddress = reader.string();
           break;
         case 3:
-          message.codeId = reader.uint64();
+          message.poolId = reader.uint64();
           break;
         case 4:
-          message.instantiateMsg = reader.bytes();
+          message.codeId = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -81,26 +81,26 @@ export const CosmWasmPool = {
   },
   fromPartial(object: Partial<CosmWasmPool>): CosmWasmPool {
     const message = createBaseCosmWasmPool();
+    message.poolAddress = object.poolAddress ?? "";
     message.contractAddress = object.contractAddress ?? "";
     message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
-    message.instantiateMsg = object.instantiateMsg ?? new Uint8Array();
     return message;
   },
   fromAmino(object: CosmWasmPoolAmino): CosmWasmPool {
     return {
+      poolAddress: object.pool_address,
       contractAddress: object.contract_address,
       poolId: BigInt(object.pool_id),
-      codeId: BigInt(object.code_id),
-      instantiateMsg: object.instantiate_msg
+      codeId: BigInt(object.code_id)
     };
   },
   toAmino(message: CosmWasmPool): CosmWasmPoolAmino {
     const obj: any = {};
+    obj.pool_address = message.poolAddress;
     obj.contract_address = message.contractAddress;
     obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
     obj.code_id = message.codeId ? message.codeId.toString() : undefined;
-    obj.instantiate_msg = message.instantiateMsg;
     return obj;
   },
   fromAminoMsg(object: CosmWasmPoolAminoMsg): CosmWasmPool {

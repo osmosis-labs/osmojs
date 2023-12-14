@@ -23,7 +23,7 @@ export interface SetProtoRevEnabledProposalAmino {
   enabled: boolean;
 }
 export interface SetProtoRevEnabledProposalAminoMsg {
-  type: "osmosis/SetProtoRevEnabledProposal";
+  type: "osmosis/protorev/set-proto-rev-enabled-proposal";
   value: SetProtoRevEnabledProposalAmino;
 }
 /**
@@ -62,7 +62,7 @@ export interface SetProtoRevAdminAccountProposalAmino {
   account: string;
 }
 export interface SetProtoRevAdminAccountProposalAminoMsg {
-  type: "osmosis/SetProtoRevAdminAccountProposal";
+  type: "osmosis/protorev/set-proto-rev-admin-account-proposal";
   value: SetProtoRevAdminAccountProposalAmino;
 }
 /**
@@ -147,7 +147,7 @@ export const SetProtoRevEnabledProposal = {
   },
   toAminoMsg(message: SetProtoRevEnabledProposal): SetProtoRevEnabledProposalAminoMsg {
     return {
-      type: "osmosis/SetProtoRevEnabledProposal",
+      type: "osmosis/protorev/set-proto-rev-enabled-proposal",
       value: SetProtoRevEnabledProposal.toAmino(message)
     };
   },
@@ -235,7 +235,7 @@ export const SetProtoRevAdminAccountProposal = {
   },
   toAminoMsg(message: SetProtoRevAdminAccountProposal): SetProtoRevAdminAccountProposalAminoMsg {
     return {
-      type: "osmosis/SetProtoRevAdminAccountProposal",
+      type: "osmosis/protorev/set-proto-rev-admin-account-proposal",
       value: SetProtoRevAdminAccountProposal.toAmino(message)
     };
   },

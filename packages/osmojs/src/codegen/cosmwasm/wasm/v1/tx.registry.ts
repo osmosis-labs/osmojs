@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgStoreCode, MsgInstantiateContract, MsgInstantiateContract2, MsgExecuteContract, MsgMigrateContract, MsgUpdateAdmin, MsgClearAdmin, MsgUpdateInstantiateConfig } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmwasm.wasm.v1.MsgStoreCode", MsgStoreCode], ["/cosmwasm.wasm.v1.MsgInstantiateContract", MsgInstantiateContract], ["/cosmwasm.wasm.v1.MsgInstantiateContract2", MsgInstantiateContract2], ["/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract], ["/cosmwasm.wasm.v1.MsgMigrateContract", MsgMigrateContract], ["/cosmwasm.wasm.v1.MsgUpdateAdmin", MsgUpdateAdmin], ["/cosmwasm.wasm.v1.MsgClearAdmin", MsgClearAdmin], ["/cosmwasm.wasm.v1.MsgUpdateInstantiateConfig", MsgUpdateInstantiateConfig]];
+import { MsgStoreCode, MsgInstantiateContract, MsgInstantiateContract2, MsgExecuteContract, MsgMigrateContract, MsgUpdateAdmin, MsgClearAdmin, MsgUpdateInstantiateConfig, MsgUpdateParams, MsgSudoContract, MsgPinCodes, MsgUnpinCodes, MsgStoreAndInstantiateContract } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmwasm.wasm.v1.MsgStoreCode", MsgStoreCode], ["/cosmwasm.wasm.v1.MsgInstantiateContract", MsgInstantiateContract], ["/cosmwasm.wasm.v1.MsgInstantiateContract2", MsgInstantiateContract2], ["/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract], ["/cosmwasm.wasm.v1.MsgMigrateContract", MsgMigrateContract], ["/cosmwasm.wasm.v1.MsgUpdateAdmin", MsgUpdateAdmin], ["/cosmwasm.wasm.v1.MsgClearAdmin", MsgClearAdmin], ["/cosmwasm.wasm.v1.MsgUpdateInstantiateConfig", MsgUpdateInstantiateConfig], ["/cosmwasm.wasm.v1.MsgUpdateParams", MsgUpdateParams], ["/cosmwasm.wasm.v1.MsgSudoContract", MsgSudoContract], ["/cosmwasm.wasm.v1.MsgPinCodes", MsgPinCodes], ["/cosmwasm.wasm.v1.MsgUnpinCodes", MsgUnpinCodes], ["/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract", MsgStoreAndInstantiateContract]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -56,6 +56,36 @@ export const MessageComposer = {
         typeUrl: "/cosmwasm.wasm.v1.MsgUpdateInstantiateConfig",
         value: MsgUpdateInstantiateConfig.encode(value).finish()
       };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgUpdateParams",
+        value: MsgUpdateParams.encode(value).finish()
+      };
+    },
+    sudoContract(value: MsgSudoContract) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgSudoContract",
+        value: MsgSudoContract.encode(value).finish()
+      };
+    },
+    pinCodes(value: MsgPinCodes) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgPinCodes",
+        value: MsgPinCodes.encode(value).finish()
+      };
+    },
+    unpinCodes(value: MsgUnpinCodes) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgUnpinCodes",
+        value: MsgUnpinCodes.encode(value).finish()
+      };
+    },
+    storeAndInstantiateContract(value: MsgStoreAndInstantiateContract) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract",
+        value: MsgStoreAndInstantiateContract.encode(value).finish()
+      };
     }
   },
   withTypeUrl: {
@@ -104,6 +134,36 @@ export const MessageComposer = {
     updateInstantiateConfig(value: MsgUpdateInstantiateConfig) {
       return {
         typeUrl: "/cosmwasm.wasm.v1.MsgUpdateInstantiateConfig",
+        value
+      };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgUpdateParams",
+        value
+      };
+    },
+    sudoContract(value: MsgSudoContract) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgSudoContract",
+        value
+      };
+    },
+    pinCodes(value: MsgPinCodes) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgPinCodes",
+        value
+      };
+    },
+    unpinCodes(value: MsgUnpinCodes) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgUnpinCodes",
+        value
+      };
+    },
+    storeAndInstantiateContract(value: MsgStoreAndInstantiateContract) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract",
         value
       };
     }
@@ -155,6 +215,36 @@ export const MessageComposer = {
       return {
         typeUrl: "/cosmwasm.wasm.v1.MsgUpdateInstantiateConfig",
         value: MsgUpdateInstantiateConfig.fromPartial(value)
+      };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgUpdateParams",
+        value: MsgUpdateParams.fromPartial(value)
+      };
+    },
+    sudoContract(value: MsgSudoContract) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgSudoContract",
+        value: MsgSudoContract.fromPartial(value)
+      };
+    },
+    pinCodes(value: MsgPinCodes) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgPinCodes",
+        value: MsgPinCodes.fromPartial(value)
+      };
+    },
+    unpinCodes(value: MsgUnpinCodes) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgUnpinCodes",
+        value: MsgUnpinCodes.fromPartial(value)
+      };
+    },
+    storeAndInstantiateContract(value: MsgStoreAndInstantiateContract) {
+      return {
+        typeUrl: "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract",
+        value: MsgStoreAndInstantiateContract.fromPartial(value)
       };
     }
   }

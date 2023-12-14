@@ -1,9 +1,9 @@
 import { TickInfo, TickInfoAmino, TickInfoSDKType } from "./tickInfo";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { IncentiveRecord, IncentiveRecordAmino, IncentiveRecordSDKType } from "./incentive_record";
-import { Position, PositionAmino, PositionSDKType } from "./position";
-import { Record, RecordAmino, RecordSDKType, AccumulatorContent, AccumulatorContentAmino, AccumulatorContentSDKType } from "../accum/v1beta1/accum";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Position, PositionAmino, PositionSDKType } from "./position";
+import { AccumulatorContent, AccumulatorContentAmino, AccumulatorContentSDKType } from "../accum/v1beta1/accum";
 import { Pool as Pool1 } from "./pool";
 import { PoolProtoMsg as Pool1ProtoMsg } from "./pool";
 import { PoolSDKType as Pool1SDKType } from "./pool";
@@ -65,7 +65,7 @@ export interface PoolData {
   pool: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
   /** pool's ticks */
   ticks: FullTick[];
-  spreadRewardAccumulator: AccumObject;
+  feeAccumulator: AccumObject;
   incentivesAccumulators: AccumObject[];
   /** incentive records to be set */
   incentiveRecords: IncentiveRecord[];
@@ -86,7 +86,7 @@ export interface PoolDataAmino {
   pool?: AnyAmino;
   /** pool's ticks */
   ticks: FullTickAmino[];
-  spread_reward_accumulator?: AccumObjectAmino;
+  fee_accumulator?: AccumObjectAmino;
   incentives_accumulators: AccumObjectAmino[];
   /** incentive records to be set */
   incentive_records: IncentiveRecordAmino[];
@@ -102,35 +102,9 @@ export interface PoolDataAminoMsg {
 export interface PoolDataSDKType {
   pool: Pool1SDKType | CosmWasmPoolSDKType | Pool2SDKType | Pool3SDKType | AnySDKType | undefined;
   ticks: FullTickSDKType[];
-  spread_reward_accumulator: AccumObjectSDKType;
+  fee_accumulator: AccumObjectSDKType;
   incentives_accumulators: AccumObjectSDKType[];
   incentive_records: IncentiveRecordSDKType[];
-}
-export interface PositionData {
-  position: Position;
-  lockId: bigint;
-  spreadRewardAccumRecord: Record;
-  uptimeAccumRecords: Record[];
-}
-export interface PositionDataProtoMsg {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionData";
-  value: Uint8Array;
-}
-export interface PositionDataAmino {
-  position?: PositionAmino;
-  lock_id: string;
-  spread_reward_accum_record?: RecordAmino;
-  uptime_accum_records: RecordAmino[];
-}
-export interface PositionDataAminoMsg {
-  type: "osmosis/concentratedliquidity/position-data";
-  value: PositionDataAmino;
-}
-export interface PositionDataSDKType {
-  position: PositionSDKType;
-  lock_id: bigint;
-  spread_reward_accum_record: RecordSDKType;
-  uptime_accum_records: RecordSDKType[];
 }
 /** GenesisState defines the concentrated liquidity module's genesis state. */
 export interface GenesisState {
@@ -138,9 +112,8 @@ export interface GenesisState {
   params: Params;
   /** pool data containining serialized pool struct and ticks. */
   poolData: PoolData[];
-  positionData: PositionData[];
+  positions: Position[];
   nextPositionId: bigint;
-  nextIncentiveRecordId: bigint;
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisState";
@@ -152,9 +125,8 @@ export interface GenesisStateAmino {
   params?: ParamsAmino;
   /** pool data containining serialized pool struct and ticks. */
   pool_data: PoolDataAmino[];
-  position_data: PositionDataAmino[];
+  positions: PositionAmino[];
   next_position_id: string;
-  next_incentive_record_id: string;
 }
 export interface GenesisStateAminoMsg {
   type: "osmosis/concentratedliquidity/genesis-state";
@@ -164,9 +136,8 @@ export interface GenesisStateAminoMsg {
 export interface GenesisStateSDKType {
   params: ParamsSDKType;
   pool_data: PoolDataSDKType[];
-  position_data: PositionDataSDKType[];
+  positions: PositionSDKType[];
   next_position_id: bigint;
-  next_incentive_record_id: bigint;
 }
 export interface AccumObject {
   /** Accumulator's name (pulled from AccumulatorContent) */
@@ -279,9 +250,9 @@ export const FullTick = {
 };
 function createBasePoolData(): PoolData {
   return {
-    pool: undefined,
+    pool: Any.fromPartial({}),
     ticks: [],
-    spreadRewardAccumulator: AccumObject.fromPartial({}),
+    feeAccumulator: AccumObject.fromPartial({}),
     incentivesAccumulators: [],
     incentiveRecords: []
   };
@@ -295,8 +266,8 @@ export const PoolData = {
     for (const v of message.ticks) {
       FullTick.encode(v!, writer.uint32(18).fork()).ldelim();
     }
-    if (message.spreadRewardAccumulator !== undefined) {
-      AccumObject.encode(message.spreadRewardAccumulator, writer.uint32(26).fork()).ldelim();
+    if (message.feeAccumulator !== undefined) {
+      AccumObject.encode(message.feeAccumulator, writer.uint32(26).fork()).ldelim();
     }
     for (const v of message.incentivesAccumulators) {
       AccumObject.encode(v!, writer.uint32(34).fork()).ldelim();
@@ -320,7 +291,7 @@ export const PoolData = {
           message.ticks.push(FullTick.decode(reader, reader.uint32()));
           break;
         case 3:
-          message.spreadRewardAccumulator = AccumObject.decode(reader, reader.uint32());
+          message.feeAccumulator = AccumObject.decode(reader, reader.uint32());
           break;
         case 4:
           message.incentivesAccumulators.push(AccumObject.decode(reader, reader.uint32()));
@@ -339,7 +310,7 @@ export const PoolData = {
     const message = createBasePoolData();
     message.pool = object.pool !== undefined && object.pool !== null ? Any.fromPartial(object.pool) : undefined;
     message.ticks = object.ticks?.map(e => FullTick.fromPartial(e)) || [];
-    message.spreadRewardAccumulator = object.spreadRewardAccumulator !== undefined && object.spreadRewardAccumulator !== null ? AccumObject.fromPartial(object.spreadRewardAccumulator) : undefined;
+    message.feeAccumulator = object.feeAccumulator !== undefined && object.feeAccumulator !== null ? AccumObject.fromPartial(object.feeAccumulator) : undefined;
     message.incentivesAccumulators = object.incentivesAccumulators?.map(e => AccumObject.fromPartial(e)) || [];
     message.incentiveRecords = object.incentiveRecords?.map(e => IncentiveRecord.fromPartial(e)) || [];
     return message;
@@ -348,7 +319,7 @@ export const PoolData = {
     return {
       pool: object?.pool ? PoolI_FromAmino(object.pool) : undefined,
       ticks: Array.isArray(object?.ticks) ? object.ticks.map((e: any) => FullTick.fromAmino(e)) : [],
-      spreadRewardAccumulator: object?.spread_reward_accumulator ? AccumObject.fromAmino(object.spread_reward_accumulator) : undefined,
+      feeAccumulator: object?.fee_accumulator ? AccumObject.fromAmino(object.fee_accumulator) : undefined,
       incentivesAccumulators: Array.isArray(object?.incentives_accumulators) ? object.incentives_accumulators.map((e: any) => AccumObject.fromAmino(e)) : [],
       incentiveRecords: Array.isArray(object?.incentive_records) ? object.incentive_records.map((e: any) => IncentiveRecord.fromAmino(e)) : []
     };
@@ -361,7 +332,7 @@ export const PoolData = {
     } else {
       obj.ticks = [];
     }
-    obj.spread_reward_accumulator = message.spreadRewardAccumulator ? AccumObject.toAmino(message.spreadRewardAccumulator) : undefined;
+    obj.fee_accumulator = message.feeAccumulator ? AccumObject.toAmino(message.feeAccumulator) : undefined;
     if (message.incentivesAccumulators) {
       obj.incentives_accumulators = message.incentivesAccumulators.map(e => e ? AccumObject.toAmino(e) : undefined);
     } else {
@@ -396,114 +367,12 @@ export const PoolData = {
     };
   }
 };
-function createBasePositionData(): PositionData {
-  return {
-    position: Position.fromPartial({}),
-    lockId: BigInt(0),
-    spreadRewardAccumRecord: Record.fromPartial({}),
-    uptimeAccumRecords: []
-  };
-}
-export const PositionData = {
-  typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionData",
-  encode(message: PositionData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.position !== undefined) {
-      Position.encode(message.position, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.lockId !== BigInt(0)) {
-      writer.uint32(16).uint64(message.lockId);
-    }
-    if (message.spreadRewardAccumRecord !== undefined) {
-      Record.encode(message.spreadRewardAccumRecord, writer.uint32(26).fork()).ldelim();
-    }
-    for (const v of message.uptimeAccumRecords) {
-      Record.encode(v!, writer.uint32(34).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): PositionData {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePositionData();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.position = Position.decode(reader, reader.uint32());
-          break;
-        case 2:
-          message.lockId = reader.uint64();
-          break;
-        case 3:
-          message.spreadRewardAccumRecord = Record.decode(reader, reader.uint32());
-          break;
-        case 4:
-          message.uptimeAccumRecords.push(Record.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<PositionData>): PositionData {
-    const message = createBasePositionData();
-    message.position = object.position !== undefined && object.position !== null ? Position.fromPartial(object.position) : undefined;
-    message.lockId = object.lockId !== undefined && object.lockId !== null ? BigInt(object.lockId.toString()) : BigInt(0);
-    message.spreadRewardAccumRecord = object.spreadRewardAccumRecord !== undefined && object.spreadRewardAccumRecord !== null ? Record.fromPartial(object.spreadRewardAccumRecord) : undefined;
-    message.uptimeAccumRecords = object.uptimeAccumRecords?.map(e => Record.fromPartial(e)) || [];
-    return message;
-  },
-  fromAmino(object: PositionDataAmino): PositionData {
-    return {
-      position: object?.position ? Position.fromAmino(object.position) : undefined,
-      lockId: BigInt(object.lock_id),
-      spreadRewardAccumRecord: object?.spread_reward_accum_record ? Record.fromAmino(object.spread_reward_accum_record) : undefined,
-      uptimeAccumRecords: Array.isArray(object?.uptime_accum_records) ? object.uptime_accum_records.map((e: any) => Record.fromAmino(e)) : []
-    };
-  },
-  toAmino(message: PositionData): PositionDataAmino {
-    const obj: any = {};
-    obj.position = message.position ? Position.toAmino(message.position) : undefined;
-    obj.lock_id = message.lockId ? message.lockId.toString() : undefined;
-    obj.spread_reward_accum_record = message.spreadRewardAccumRecord ? Record.toAmino(message.spreadRewardAccumRecord) : undefined;
-    if (message.uptimeAccumRecords) {
-      obj.uptime_accum_records = message.uptimeAccumRecords.map(e => e ? Record.toAmino(e) : undefined);
-    } else {
-      obj.uptime_accum_records = [];
-    }
-    return obj;
-  },
-  fromAminoMsg(object: PositionDataAminoMsg): PositionData {
-    return PositionData.fromAmino(object.value);
-  },
-  toAminoMsg(message: PositionData): PositionDataAminoMsg {
-    return {
-      type: "osmosis/concentratedliquidity/position-data",
-      value: PositionData.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: PositionDataProtoMsg): PositionData {
-    return PositionData.decode(message.value);
-  },
-  toProto(message: PositionData): Uint8Array {
-    return PositionData.encode(message).finish();
-  },
-  toProtoMsg(message: PositionData): PositionDataProtoMsg {
-    return {
-      typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionData",
-      value: PositionData.encode(message).finish()
-    };
-  }
-};
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
     poolData: [],
-    positionData: [],
-    nextPositionId: BigInt(0),
-    nextIncentiveRecordId: BigInt(0)
+    positions: [],
+    nextPositionId: BigInt(0)
   };
 }
 export const GenesisState = {
@@ -515,14 +384,11 @@ export const GenesisState = {
     for (const v of message.poolData) {
       PoolData.encode(v!, writer.uint32(18).fork()).ldelim();
     }
-    for (const v of message.positionData) {
-      PositionData.encode(v!, writer.uint32(26).fork()).ldelim();
+    for (const v of message.positions) {
+      Position.encode(v!, writer.uint32(26).fork()).ldelim();
     }
     if (message.nextPositionId !== BigInt(0)) {
       writer.uint32(32).uint64(message.nextPositionId);
-    }
-    if (message.nextIncentiveRecordId !== BigInt(0)) {
-      writer.uint32(40).uint64(message.nextIncentiveRecordId);
     }
     return writer;
   },
@@ -540,13 +406,10 @@ export const GenesisState = {
           message.poolData.push(PoolData.decode(reader, reader.uint32()));
           break;
         case 3:
-          message.positionData.push(PositionData.decode(reader, reader.uint32()));
+          message.positions.push(Position.decode(reader, reader.uint32()));
           break;
         case 4:
           message.nextPositionId = reader.uint64();
-          break;
-        case 5:
-          message.nextIncentiveRecordId = reader.uint64();
           break;
         default:
           reader.skipType(tag & 7);
@@ -559,18 +422,16 @@ export const GenesisState = {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.poolData = object.poolData?.map(e => PoolData.fromPartial(e)) || [];
-    message.positionData = object.positionData?.map(e => PositionData.fromPartial(e)) || [];
+    message.positions = object.positions?.map(e => Position.fromPartial(e)) || [];
     message.nextPositionId = object.nextPositionId !== undefined && object.nextPositionId !== null ? BigInt(object.nextPositionId.toString()) : BigInt(0);
-    message.nextIncentiveRecordId = object.nextIncentiveRecordId !== undefined && object.nextIncentiveRecordId !== null ? BigInt(object.nextIncentiveRecordId.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
       params: object?.params ? Params.fromAmino(object.params) : undefined,
       poolData: Array.isArray(object?.pool_data) ? object.pool_data.map((e: any) => PoolData.fromAmino(e)) : [],
-      positionData: Array.isArray(object?.position_data) ? object.position_data.map((e: any) => PositionData.fromAmino(e)) : [],
-      nextPositionId: BigInt(object.next_position_id),
-      nextIncentiveRecordId: BigInt(object.next_incentive_record_id)
+      positions: Array.isArray(object?.positions) ? object.positions.map((e: any) => Position.fromAmino(e)) : [],
+      nextPositionId: BigInt(object.next_position_id)
     };
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -581,13 +442,12 @@ export const GenesisState = {
     } else {
       obj.pool_data = [];
     }
-    if (message.positionData) {
-      obj.position_data = message.positionData.map(e => e ? PositionData.toAmino(e) : undefined);
+    if (message.positions) {
+      obj.positions = message.positions.map(e => e ? Position.toAmino(e) : undefined);
     } else {
-      obj.position_data = [];
+      obj.positions = [];
     }
     obj.next_position_id = message.nextPositionId ? message.nextPositionId.toString() : undefined;
-    obj.next_incentive_record_id = message.nextIncentiveRecordId ? message.nextIncentiveRecordId.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {

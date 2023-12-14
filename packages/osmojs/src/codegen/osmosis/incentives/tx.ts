@@ -29,16 +29,6 @@ export interface MsgCreateGauge {
    * over
    */
   numEpochsPaidOver: bigint;
-  /**
-   * pool_id is the ID of the pool that the gauge is meant to be associated
-   * with. if pool_id is set, then the "QueryCondition.LockQueryType" must be
-   * "NoLock" with all other fields of the "QueryCondition.LockQueryType" struct
-   * unset, including "QueryCondition.Denom". However, note that, internally,
-   * the empty string in "QueryCondition.Denom" ends up being overwritten with
-   * incentivestypes.NoLockExternalGaugeDenom(<pool-id>) so that the gauges
-   * associated with a pool can be queried by this prefix if needed.
-   */
-  poolId: bigint;
 }
 export interface MsgCreateGaugeProtoMsg {
   typeUrl: "/osmosis.incentives.MsgCreateGauge";
@@ -70,16 +60,6 @@ export interface MsgCreateGaugeAmino {
    * over
    */
   num_epochs_paid_over: string;
-  /**
-   * pool_id is the ID of the pool that the gauge is meant to be associated
-   * with. if pool_id is set, then the "QueryCondition.LockQueryType" must be
-   * "NoLock" with all other fields of the "QueryCondition.LockQueryType" struct
-   * unset, including "QueryCondition.Denom". However, note that, internally,
-   * the empty string in "QueryCondition.Denom" ends up being overwritten with
-   * incentivestypes.NoLockExternalGaugeDenom(<pool-id>) so that the gauges
-   * associated with a pool can be queried by this prefix if needed.
-   */
-  pool_id: string;
 }
 export interface MsgCreateGaugeAminoMsg {
   type: "osmosis/incentives/create-gauge";
@@ -93,7 +73,6 @@ export interface MsgCreateGaugeSDKType {
   coins: CoinSDKType[];
   start_time: Date;
   num_epochs_paid_over: bigint;
-  pool_id: bigint;
 }
 export interface MsgCreateGaugeResponse {}
 export interface MsgCreateGaugeResponseProtoMsg {
@@ -155,9 +134,8 @@ function createBaseMsgCreateGauge(): MsgCreateGauge {
     owner: "",
     distributeTo: QueryCondition.fromPartial({}),
     coins: [],
-    startTime: undefined,
-    numEpochsPaidOver: BigInt(0),
-    poolId: BigInt(0)
+    startTime: new Date(),
+    numEpochsPaidOver: BigInt(0)
   };
 }
 export const MsgCreateGauge = {
@@ -180,9 +158,6 @@ export const MsgCreateGauge = {
     }
     if (message.numEpochsPaidOver !== BigInt(0)) {
       writer.uint32(48).uint64(message.numEpochsPaidOver);
-    }
-    if (message.poolId !== BigInt(0)) {
-      writer.uint32(56).uint64(message.poolId);
     }
     return writer;
   },
@@ -211,9 +186,6 @@ export const MsgCreateGauge = {
         case 6:
           message.numEpochsPaidOver = reader.uint64();
           break;
-        case 7:
-          message.poolId = reader.uint64();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -229,7 +201,6 @@ export const MsgCreateGauge = {
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     message.startTime = object.startTime ?? undefined;
     message.numEpochsPaidOver = object.numEpochsPaidOver !== undefined && object.numEpochsPaidOver !== null ? BigInt(object.numEpochsPaidOver.toString()) : BigInt(0);
-    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: MsgCreateGaugeAmino): MsgCreateGauge {
@@ -239,8 +210,7 @@ export const MsgCreateGauge = {
       distributeTo: object?.distribute_to ? QueryCondition.fromAmino(object.distribute_to) : undefined,
       coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : [],
       startTime: object.start_time,
-      numEpochsPaidOver: BigInt(object.num_epochs_paid_over),
-      poolId: BigInt(object.pool_id)
+      numEpochsPaidOver: BigInt(object.num_epochs_paid_over)
     };
   },
   toAmino(message: MsgCreateGauge): MsgCreateGaugeAmino {
@@ -255,7 +225,6 @@ export const MsgCreateGauge = {
     }
     obj.start_time = message.startTime;
     obj.num_epochs_paid_over = message.numEpochsPaidOver ? message.numEpochsPaidOver.toString() : undefined;
-    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgCreateGaugeAminoMsg): MsgCreateGauge {

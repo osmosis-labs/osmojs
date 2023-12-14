@@ -466,8 +466,6 @@ export interface TallyParams {
   vetoThreshold: Uint8Array;
   /** Minimum proportion of Yes votes for an expedited proposal to pass. Default value: 0.67. */
   expeditedThreshold: Uint8Array;
-  /** Minimum proportion of Yes votes for an expedited proposal to reach quorum. Default value: 0.67. */
-  expeditedQuorum: Uint8Array;
 }
 export interface TallyParamsProtoMsg {
   typeUrl: "/cosmos.gov.v1beta1.TallyParams";
@@ -489,8 +487,6 @@ export interface TallyParamsAmino {
   veto_threshold: Uint8Array;
   /** Minimum proportion of Yes votes for an expedited proposal to pass. Default value: 0.67. */
   expedited_threshold: Uint8Array;
-  /** Minimum proportion of Yes votes for an expedited proposal to reach quorum. Default value: 0.67. */
-  expedited_quorum: Uint8Array;
 }
 export interface TallyParamsAminoMsg {
   type: "cosmos-sdk/TallyParams";
@@ -502,7 +498,6 @@ export interface TallyParamsSDKType {
   threshold: Uint8Array;
   veto_threshold: Uint8Array;
   expedited_threshold: Uint8Array;
-  expedited_quorum: Uint8Array;
 }
 /**
  * ProposalVotingPeriod defines custom voting periods for a unique governance
@@ -787,14 +782,14 @@ export const Deposit = {
 function createBaseProposal(): Proposal {
   return {
     proposalId: BigInt(0),
-    content: undefined,
+    content: Any.fromPartial({}),
     status: 0,
     finalTallyResult: TallyResult.fromPartial({}),
-    submitTime: undefined,
-    depositEndTime: undefined,
+    submitTime: new Date(),
+    depositEndTime: new Date(),
     totalDeposit: [],
-    votingStartTime: undefined,
-    votingEndTime: undefined,
+    votingStartTime: new Date(),
+    votingEndTime: new Date(),
     isExpedited: false
   };
 }
@@ -1146,7 +1141,7 @@ export const Vote = {
 function createBaseDepositParams(): DepositParams {
   return {
     minDeposit: [],
-    maxDepositPeriod: undefined,
+    maxDepositPeriod: Duration.fromPartial({}),
     minExpeditedDeposit: [],
     minInitialDepositRatio: ""
   };
@@ -1250,9 +1245,9 @@ export const DepositParams = {
 };
 function createBaseVotingParams(): VotingParams {
   return {
-    votingPeriod: undefined,
+    votingPeriod: Duration.fromPartial({}),
     proposalVotingPeriods: [],
-    expeditedVotingPeriod: undefined
+    expeditedVotingPeriod: Duration.fromPartial({})
   };
 }
 export const VotingParams = {
@@ -1344,8 +1339,7 @@ function createBaseTallyParams(): TallyParams {
     quorum: new Uint8Array(),
     threshold: new Uint8Array(),
     vetoThreshold: new Uint8Array(),
-    expeditedThreshold: new Uint8Array(),
-    expeditedQuorum: new Uint8Array()
+    expeditedThreshold: new Uint8Array()
   };
 }
 export const TallyParams = {
@@ -1362,9 +1356,6 @@ export const TallyParams = {
     }
     if (message.expeditedThreshold.length !== 0) {
       writer.uint32(34).bytes(message.expeditedThreshold);
-    }
-    if (message.expeditedQuorum.length !== 0) {
-      writer.uint32(42).bytes(message.expeditedQuorum);
     }
     return writer;
   },
@@ -1387,9 +1378,6 @@ export const TallyParams = {
         case 4:
           message.expeditedThreshold = reader.bytes();
           break;
-        case 5:
-          message.expeditedQuorum = reader.bytes();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1403,7 +1391,6 @@ export const TallyParams = {
     message.threshold = object.threshold ?? new Uint8Array();
     message.vetoThreshold = object.vetoThreshold ?? new Uint8Array();
     message.expeditedThreshold = object.expeditedThreshold ?? new Uint8Array();
-    message.expeditedQuorum = object.expeditedQuorum ?? new Uint8Array();
     return message;
   },
   fromAmino(object: TallyParamsAmino): TallyParams {
@@ -1411,8 +1398,7 @@ export const TallyParams = {
       quorum: object.quorum,
       threshold: object.threshold,
       vetoThreshold: object.veto_threshold,
-      expeditedThreshold: object.expedited_threshold,
-      expeditedQuorum: object.expedited_quorum
+      expeditedThreshold: object.expedited_threshold
     };
   },
   toAmino(message: TallyParams): TallyParamsAmino {
@@ -1421,7 +1407,6 @@ export const TallyParams = {
     obj.threshold = message.threshold;
     obj.veto_threshold = message.vetoThreshold;
     obj.expedited_threshold = message.expeditedThreshold;
-    obj.expedited_quorum = message.expeditedQuorum;
     return obj;
   },
   fromAminoMsg(object: TallyParamsAminoMsg): TallyParams {
@@ -1449,7 +1434,7 @@ export const TallyParams = {
 function createBaseProposalVotingPeriod(): ProposalVotingPeriod {
   return {
     proposalType: "",
-    votingPeriod: undefined
+    votingPeriod: Duration.fromPartial({})
   };
 }
 export const ProposalVotingPeriod = {

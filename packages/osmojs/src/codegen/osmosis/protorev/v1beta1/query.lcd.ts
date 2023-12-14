@@ -1,5 +1,5 @@
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetProtoRevNumberOfTradesRequest, QueryGetProtoRevNumberOfTradesResponseSDKType, QueryGetProtoRevProfitsByDenomRequest, QueryGetProtoRevProfitsByDenomResponseSDKType, QueryGetProtoRevAllProfitsRequest, QueryGetProtoRevAllProfitsResponseSDKType, QueryGetProtoRevStatisticsByRouteRequest, QueryGetProtoRevStatisticsByRouteResponseSDKType, QueryGetProtoRevAllRouteStatisticsRequest, QueryGetProtoRevAllRouteStatisticsResponseSDKType, QueryGetProtoRevTokenPairArbRoutesRequest, QueryGetProtoRevTokenPairArbRoutesResponseSDKType, QueryGetProtoRevAdminAccountRequest, QueryGetProtoRevAdminAccountResponseSDKType, QueryGetProtoRevDeveloperAccountRequest, QueryGetProtoRevDeveloperAccountResponseSDKType, QueryGetProtoRevPoolWeightsRequest, QueryGetProtoRevPoolWeightsResponseSDKType, QueryGetProtoRevMaxPoolPointsPerTxRequest, QueryGetProtoRevMaxPoolPointsPerTxResponseSDKType, QueryGetProtoRevMaxPoolPointsPerBlockRequest, QueryGetProtoRevMaxPoolPointsPerBlockResponseSDKType, QueryGetProtoRevBaseDenomsRequest, QueryGetProtoRevBaseDenomsResponseSDKType, QueryGetProtoRevEnabledRequest, QueryGetProtoRevEnabledResponseSDKType, QueryGetProtoRevPoolRequest, QueryGetProtoRevPoolResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetProtoRevNumberOfTradesRequest, QueryGetProtoRevNumberOfTradesResponseSDKType, QueryGetProtoRevProfitsByDenomRequest, QueryGetProtoRevProfitsByDenomResponseSDKType, QueryGetProtoRevAllProfitsRequest, QueryGetProtoRevAllProfitsResponseSDKType, QueryGetProtoRevStatisticsByRouteRequest, QueryGetProtoRevStatisticsByRouteResponseSDKType, QueryGetProtoRevAllRouteStatisticsRequest, QueryGetProtoRevAllRouteStatisticsResponseSDKType, QueryGetProtoRevTokenPairArbRoutesRequest, QueryGetProtoRevTokenPairArbRoutesResponseSDKType, QueryGetProtoRevAdminAccountRequest, QueryGetProtoRevAdminAccountResponseSDKType, QueryGetProtoRevDeveloperAccountRequest, QueryGetProtoRevDeveloperAccountResponseSDKType, QueryGetProtoRevPoolWeightsRequest, QueryGetProtoRevPoolWeightsResponseSDKType, QueryGetProtoRevMaxPoolPointsPerTxRequest, QueryGetProtoRevMaxPoolPointsPerTxResponseSDKType, QueryGetProtoRevMaxPoolPointsPerBlockRequest, QueryGetProtoRevMaxPoolPointsPerBlockResponseSDKType, QueryGetProtoRevBaseDenomsRequest, QueryGetProtoRevBaseDenomsResponseSDKType, QueryGetProtoRevEnabledRequest, QueryGetProtoRevEnabledResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -22,7 +22,6 @@ export class LCDQueryClient {
     this.getProtoRevMaxPoolPointsPerBlock = this.getProtoRevMaxPoolPointsPerBlock.bind(this);
     this.getProtoRevBaseDenoms = this.getProtoRevBaseDenoms.bind(this);
     this.getProtoRevEnabled = this.getProtoRevEnabled.bind(this);
-    this.getProtoRevPool = this.getProtoRevPool.bind(this);
   }
   /* Params queries the parameters of the module. */
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
@@ -114,20 +113,5 @@ export class LCDQueryClient {
   async getProtoRevEnabled(_params: QueryGetProtoRevEnabledRequest = {}): Promise<QueryGetProtoRevEnabledResponseSDKType> {
     const endpoint = `osmosis/v14/protorev/enabled`;
     return await this.req.get<QueryGetProtoRevEnabledResponseSDKType>(endpoint);
-  }
-  /* GetProtoRevPool queries the pool id used via the highest liquidity method
-   for arbitrage route building given a pair of denominations */
-  async getProtoRevPool(params: QueryGetProtoRevPoolRequest): Promise<QueryGetProtoRevPoolResponseSDKType> {
-    const options: any = {
-      params: {}
-    };
-    if (typeof params?.baseDenom !== "undefined") {
-      options.params.base_denom = params.baseDenom;
-    }
-    if (typeof params?.otherDenom !== "undefined") {
-      options.params.other_denom = params.otherDenom;
-    }
-    const endpoint = `osmosis/v14/protorev/pool`;
-    return await this.req.get<QueryGetProtoRevPoolResponseSDKType>(endpoint, options);
   }
 }

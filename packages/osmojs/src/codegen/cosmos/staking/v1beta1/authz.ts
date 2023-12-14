@@ -140,7 +140,7 @@ export interface StakeAuthorization_ValidatorsSDKType {
 function createBaseStakeAuthorization(): StakeAuthorization {
   return {
     $typeUrl: "/cosmos.staking.v1beta1.StakeAuthorization",
-    maxTokens: undefined,
+    maxTokens: Coin.fromPartial({}),
     allowList: undefined,
     denyList: undefined,
     authorizationType: 0

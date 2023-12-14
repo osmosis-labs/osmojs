@@ -34,7 +34,7 @@ export interface ReplacePoolIncentivesProposalAmino {
   records: DistrRecordAmino[];
 }
 export interface ReplacePoolIncentivesProposalAminoMsg {
-  type: "osmosis/ReplacePoolIncentivesProposal";
+  type: "osmosis/poolincentives/replace-pool-incentives-proposal";
   value: ReplacePoolIncentivesProposalAmino;
 }
 /**
@@ -179,7 +179,7 @@ export const ReplacePoolIncentivesProposal = {
   },
   toAminoMsg(message: ReplacePoolIncentivesProposal): ReplacePoolIncentivesProposalAminoMsg {
     return {
-      type: "osmosis/ReplacePoolIncentivesProposal",
+      type: "osmosis/poolincentives/replace-pool-incentives-proposal",
       value: ReplacePoolIncentivesProposal.toAmino(message)
     };
   },

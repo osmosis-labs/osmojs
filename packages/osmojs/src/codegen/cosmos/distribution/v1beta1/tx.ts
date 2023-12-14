@@ -111,7 +111,7 @@ export interface MsgWithdrawValidatorCommissionAmino {
   validator_address: string;
 }
 export interface MsgWithdrawValidatorCommissionAminoMsg {
-  type: "cosmos-sdk/MsgWithdrawValCommission";
+  type: "cosmos-sdk/MsgWithdrawValidatorCommission";
   value: MsgWithdrawValidatorCommissionAmino;
 }
 /**
@@ -495,7 +495,7 @@ export const MsgWithdrawValidatorCommission = {
   },
   toAminoMsg(message: MsgWithdrawValidatorCommission): MsgWithdrawValidatorCommissionAminoMsg {
     return {
-      type: "cosmos-sdk/MsgWithdrawValCommission",
+      type: "cosmos-sdk/MsgWithdrawValidatorCommission",
       value: MsgWithdrawValidatorCommission.toAmino(message)
     };
   },

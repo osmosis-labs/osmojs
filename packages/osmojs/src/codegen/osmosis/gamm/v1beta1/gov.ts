@@ -1,4 +1,4 @@
-import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./shared";
+import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./genesis";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * ReplaceMigrationRecordsProposal is a gov Content type for updating the
@@ -8,7 +8,6 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
  * a single concentrated pool.
  */
 export interface ReplaceMigrationRecordsProposal {
-  $typeUrl?: string;
   title: string;
   description: string;
   records: BalancerToConcentratedPoolLink[];
@@ -30,7 +29,7 @@ export interface ReplaceMigrationRecordsProposalAmino {
   records: BalancerToConcentratedPoolLinkAmino[];
 }
 export interface ReplaceMigrationRecordsProposalAminoMsg {
-  type: "osmosis/ReplaceMigrationRecordsProposal";
+  type: "osmosis/gamm/replace-migration-records-proposal";
   value: ReplaceMigrationRecordsProposalAmino;
 }
 /**
@@ -41,7 +40,6 @@ export interface ReplaceMigrationRecordsProposalAminoMsg {
  * a single concentrated pool.
  */
 export interface ReplaceMigrationRecordsProposalSDKType {
-  $typeUrl?: string;
   title: string;
   description: string;
   records: BalancerToConcentratedPoolLinkSDKType[];
@@ -57,7 +55,6 @@ export interface ReplaceMigrationRecordsProposalSDKType {
  * [(Balancer 1, CL 5), (Balancer 3, CL 4), (Balancer 4, CL 10)]
  */
 export interface UpdateMigrationRecordsProposal {
-  $typeUrl?: string;
   title: string;
   description: string;
   records: BalancerToConcentratedPoolLink[];
@@ -82,7 +79,7 @@ export interface UpdateMigrationRecordsProposalAmino {
   records: BalancerToConcentratedPoolLinkAmino[];
 }
 export interface UpdateMigrationRecordsProposalAminoMsg {
-  type: "osmosis/UpdateMigrationRecordsProposal";
+  type: "osmosis/gamm/update-migration-records-proposal";
   value: UpdateMigrationRecordsProposalAmino;
 }
 /**
@@ -96,14 +93,12 @@ export interface UpdateMigrationRecordsProposalAminoMsg {
  * [(Balancer 1, CL 5), (Balancer 3, CL 4), (Balancer 4, CL 10)]
  */
 export interface UpdateMigrationRecordsProposalSDKType {
-  $typeUrl?: string;
   title: string;
   description: string;
   records: BalancerToConcentratedPoolLinkSDKType[];
 }
 function createBaseReplaceMigrationRecordsProposal(): ReplaceMigrationRecordsProposal {
   return {
-    $typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal",
     title: "",
     description: "",
     records: []
@@ -176,7 +171,7 @@ export const ReplaceMigrationRecordsProposal = {
   },
   toAminoMsg(message: ReplaceMigrationRecordsProposal): ReplaceMigrationRecordsProposalAminoMsg {
     return {
-      type: "osmosis/ReplaceMigrationRecordsProposal",
+      type: "osmosis/gamm/replace-migration-records-proposal",
       value: ReplaceMigrationRecordsProposal.toAmino(message)
     };
   },
@@ -195,7 +190,6 @@ export const ReplaceMigrationRecordsProposal = {
 };
 function createBaseUpdateMigrationRecordsProposal(): UpdateMigrationRecordsProposal {
   return {
-    $typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
     title: "",
     description: "",
     records: []
@@ -268,7 +262,7 @@ export const UpdateMigrationRecordsProposal = {
   },
   toAminoMsg(message: UpdateMigrationRecordsProposal): UpdateMigrationRecordsProposalAminoMsg {
     return {
-      type: "osmosis/UpdateMigrationRecordsProposal",
+      type: "osmosis/gamm/update-migration-records-proposal",
       value: UpdateMigrationRecordsProposal.toAmino(message)
     };
   },

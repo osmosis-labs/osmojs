@@ -87,6 +87,7 @@
   "dependencies": {
     "@chain-registry/types": "0.16.0",
     "@chain-registry/utils": "1.13.1",
+    "decimal.js-light": "^2.5.1",
     "bignumber.js": "9.1.1",
     "long": "5.2.3",
     "osmojs": "^16.5.1"

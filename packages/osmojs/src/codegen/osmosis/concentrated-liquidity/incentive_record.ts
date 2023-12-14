@@ -1,5 +1,4 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { Decimal } from "@cosmjs/math";
@@ -11,9 +10,18 @@ import { toTimestamp, fromTimestamp } from "../../helpers";
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 export interface IncentiveRecord {
-  /** incentive_id is the id uniquely identifying this incentive record. */
-  incentiveId: bigint;
   poolId: bigint;
+  /**
+   * incentive_denom is the denom of the token being distributed as part of this
+   * incentive record
+   */
+  incentiveDenom: string;
+  /**
+   * incentiveCreator is the address that created the incentive record. This
+   * address does not have any special privileges – it is only kept to keep
+   * incentive records created by different addresses separate.
+   */
+  incentiveCreatorAddr: string;
   /** incentive record body holds necessary */
   incentiveRecordBody: IncentiveRecordBody;
   /**
@@ -34,9 +42,18 @@ export interface IncentiveRecordProtoMsg {
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 export interface IncentiveRecordAmino {
-  /** incentive_id is the id uniquely identifying this incentive record. */
-  incentive_id: string;
   pool_id: string;
+  /**
+   * incentive_denom is the denom of the token being distributed as part of this
+   * incentive record
+   */
+  incentive_denom: string;
+  /**
+   * incentiveCreator is the address that created the incentive record. This
+   * address does not have any special privileges – it is only kept to keep
+   * incentive records created by different addresses separate.
+   */
+  incentive_creator_addr: string;
   /** incentive record body holds necessary */
   incentive_record_body?: IncentiveRecordBodyAmino;
   /**
@@ -57,8 +74,9 @@ export interface IncentiveRecordAminoMsg {
  * distinction between IncentiveRecord and IncentiveRecordBody.
  */
 export interface IncentiveRecordSDKType {
-  incentive_id: bigint;
   pool_id: bigint;
+  incentive_denom: string;
+  incentive_creator_addr: string;
   incentive_record_body: IncentiveRecordBodySDKType;
   min_uptime: DurationSDKType;
 }
@@ -67,8 +85,8 @@ export interface IncentiveRecordSDKType {
  * record.
  */
 export interface IncentiveRecordBody {
-  /** remaining_coin is the total amount of incentives to be distributed */
-  remainingCoin: DecCoin;
+  /** remaining_amount is the total amount of incentives to be distributed */
+  remainingAmount: string;
   /** emission_rate is the incentive emission rate per second */
   emissionRate: string;
   /** start_time is the time when the incentive starts distributing */
@@ -83,8 +101,8 @@ export interface IncentiveRecordBodyProtoMsg {
  * record.
  */
 export interface IncentiveRecordBodyAmino {
-  /** remaining_coin is the total amount of incentives to be distributed */
-  remaining_coin?: DecCoinAmino;
+  /** remaining_amount is the total amount of incentives to be distributed */
+  remaining_amount: string;
   /** emission_rate is the incentive emission rate per second */
   emission_rate: string;
   /** start_time is the time when the incentive starts distributing */
@@ -99,26 +117,30 @@ export interface IncentiveRecordBodyAminoMsg {
  * record.
  */
 export interface IncentiveRecordBodySDKType {
-  remaining_coin: DecCoinSDKType;
+  remaining_amount: string;
   emission_rate: string;
   start_time: Date;
 }
 function createBaseIncentiveRecord(): IncentiveRecord {
   return {
-    incentiveId: BigInt(0),
     poolId: BigInt(0),
+    incentiveDenom: "",
+    incentiveCreatorAddr: "",
     incentiveRecordBody: IncentiveRecordBody.fromPartial({}),
-    minUptime: undefined
+    minUptime: Duration.fromPartial({})
   };
 }
 export const IncentiveRecord = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecord",
   encode(message: IncentiveRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.incentiveId !== BigInt(0)) {
-      writer.uint32(8).uint64(message.incentiveId);
-    }
     if (message.poolId !== BigInt(0)) {
-      writer.uint32(16).uint64(message.poolId);
+      writer.uint32(8).uint64(message.poolId);
+    }
+    if (message.incentiveDenom !== "") {
+      writer.uint32(18).string(message.incentiveDenom);
+    }
+    if (message.incentiveCreatorAddr !== "") {
+      writer.uint32(26).string(message.incentiveCreatorAddr);
     }
     if (message.incentiveRecordBody !== undefined) {
       IncentiveRecordBody.encode(message.incentiveRecordBody, writer.uint32(34).fork()).ldelim();
@@ -136,10 +158,13 @@ export const IncentiveRecord = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.incentiveId = reader.uint64();
+          message.poolId = reader.uint64();
           break;
         case 2:
-          message.poolId = reader.uint64();
+          message.incentiveDenom = reader.string();
+          break;
+        case 3:
+          message.incentiveCreatorAddr = reader.string();
           break;
         case 4:
           message.incentiveRecordBody = IncentiveRecordBody.decode(reader, reader.uint32());
@@ -156,24 +181,27 @@ export const IncentiveRecord = {
   },
   fromPartial(object: Partial<IncentiveRecord>): IncentiveRecord {
     const message = createBaseIncentiveRecord();
-    message.incentiveId = object.incentiveId !== undefined && object.incentiveId !== null ? BigInt(object.incentiveId.toString()) : BigInt(0);
     message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
+    message.incentiveDenom = object.incentiveDenom ?? "";
+    message.incentiveCreatorAddr = object.incentiveCreatorAddr ?? "";
     message.incentiveRecordBody = object.incentiveRecordBody !== undefined && object.incentiveRecordBody !== null ? IncentiveRecordBody.fromPartial(object.incentiveRecordBody) : undefined;
     message.minUptime = object.minUptime !== undefined && object.minUptime !== null ? Duration.fromPartial(object.minUptime) : undefined;
     return message;
   },
   fromAmino(object: IncentiveRecordAmino): IncentiveRecord {
     return {
-      incentiveId: BigInt(object.incentive_id),
       poolId: BigInt(object.pool_id),
+      incentiveDenom: object.incentive_denom,
+      incentiveCreatorAddr: object.incentive_creator_addr,
       incentiveRecordBody: object?.incentive_record_body ? IncentiveRecordBody.fromAmino(object.incentive_record_body) : undefined,
       minUptime: object?.min_uptime ? Duration.fromAmino(object.min_uptime) : undefined
     };
   },
   toAmino(message: IncentiveRecord): IncentiveRecordAmino {
     const obj: any = {};
-    obj.incentive_id = message.incentiveId ? message.incentiveId.toString() : undefined;
     obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
+    obj.incentive_denom = message.incentiveDenom;
+    obj.incentive_creator_addr = message.incentiveCreatorAddr;
     obj.incentive_record_body = message.incentiveRecordBody ? IncentiveRecordBody.toAmino(message.incentiveRecordBody) : undefined;
     obj.min_uptime = message.minUptime ? Duration.toAmino(message.minUptime) : undefined;
     return obj;
@@ -202,16 +230,16 @@ export const IncentiveRecord = {
 };
 function createBaseIncentiveRecordBody(): IncentiveRecordBody {
   return {
-    remainingCoin: DecCoin.fromPartial({}),
+    remainingAmount: "",
     emissionRate: "",
-    startTime: undefined
+    startTime: new Date()
   };
 }
 export const IncentiveRecordBody = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecordBody",
   encode(message: IncentiveRecordBody, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.remainingCoin !== undefined) {
-      DecCoin.encode(message.remainingCoin, writer.uint32(10).fork()).ldelim();
+    if (message.remainingAmount !== "") {
+      writer.uint32(10).string(Decimal.fromUserInput(message.remainingAmount, 18).atomics);
     }
     if (message.emissionRate !== "") {
       writer.uint32(18).string(Decimal.fromUserInput(message.emissionRate, 18).atomics);
@@ -229,7 +257,7 @@ export const IncentiveRecordBody = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.remainingCoin = DecCoin.decode(reader, reader.uint32());
+          message.remainingAmount = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         case 2:
           message.emissionRate = Decimal.fromAtomics(reader.string(), 18).toString();
@@ -246,21 +274,21 @@ export const IncentiveRecordBody = {
   },
   fromPartial(object: Partial<IncentiveRecordBody>): IncentiveRecordBody {
     const message = createBaseIncentiveRecordBody();
-    message.remainingCoin = object.remainingCoin !== undefined && object.remainingCoin !== null ? DecCoin.fromPartial(object.remainingCoin) : undefined;
+    message.remainingAmount = object.remainingAmount ?? "";
     message.emissionRate = object.emissionRate ?? "";
     message.startTime = object.startTime ?? undefined;
     return message;
   },
   fromAmino(object: IncentiveRecordBodyAmino): IncentiveRecordBody {
     return {
-      remainingCoin: object?.remaining_coin ? DecCoin.fromAmino(object.remaining_coin) : undefined,
+      remainingAmount: object.remaining_amount,
       emissionRate: object.emission_rate,
       startTime: object.start_time
     };
   },
   toAmino(message: IncentiveRecordBody): IncentiveRecordBodyAmino {
     const obj: any = {};
-    obj.remaining_coin = message.remainingCoin ? DecCoin.toAmino(message.remainingCoin) : undefined;
+    obj.remaining_amount = message.remainingAmount;
     obj.emission_rate = message.emissionRate;
     obj.start_time = message.startTime;
     return obj;

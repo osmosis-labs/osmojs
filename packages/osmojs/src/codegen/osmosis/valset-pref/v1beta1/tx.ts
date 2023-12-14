@@ -409,7 +409,7 @@ export const MsgSetValidatorSetPreferenceResponse = {
 function createBaseMsgDelegateToValidatorSet(): MsgDelegateToValidatorSet {
   return {
     delegator: "",
-    coin: undefined
+    coin: Coin.fromPartial({})
   };
 }
 export const MsgDelegateToValidatorSet = {
@@ -541,7 +541,7 @@ export const MsgDelegateToValidatorSetResponse = {
 function createBaseMsgUndelegateFromValidatorSet(): MsgUndelegateFromValidatorSet {
   return {
     delegator: "",
-    coin: undefined
+    coin: Coin.fromPartial({})
   };
 }
 export const MsgUndelegateFromValidatorSet = {

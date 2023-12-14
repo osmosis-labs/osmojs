@@ -236,6 +236,64 @@ export interface MsgChangeAdminResponseAminoMsg {
  */
 export interface MsgChangeAdminResponseSDKType {}
 /**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+export interface MsgSetBeforeSendHook {
+  sender: string;
+  denom: string;
+  cosmwasmAddress: string;
+}
+export interface MsgSetBeforeSendHookProtoMsg {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook";
+  value: Uint8Array;
+}
+/**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+export interface MsgSetBeforeSendHookAmino {
+  sender: string;
+  denom: string;
+  cosmwasm_address: string;
+}
+export interface MsgSetBeforeSendHookAminoMsg {
+  type: "osmosis/tokenfactory/set-before-send-hook";
+  value: MsgSetBeforeSendHookAmino;
+}
+/**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+export interface MsgSetBeforeSendHookSDKType {
+  sender: string;
+  denom: string;
+  cosmwasm_address: string;
+}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+export interface MsgSetBeforeSendHookResponse {}
+export interface MsgSetBeforeSendHookResponseProtoMsg {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHookResponse";
+  value: Uint8Array;
+}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+export interface MsgSetBeforeSendHookResponseAmino {}
+export interface MsgSetBeforeSendHookResponseAminoMsg {
+  type: "osmosis/tokenfactory/set-before-send-hook-response";
+  value: MsgSetBeforeSendHookResponseAmino;
+}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+export interface MsgSetBeforeSendHookResponseSDKType {}
+/**
  * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
  * the denom's bank metadata
  */
@@ -474,7 +532,7 @@ export const MsgCreateDenomResponse = {
 function createBaseMsgMint(): MsgMint {
   return {
     sender: "",
-    amount: undefined,
+    amount: Coin.fromPartial({}),
     mintToAddress: ""
   };
 }
@@ -616,7 +674,7 @@ export const MsgMintResponse = {
 function createBaseMsgBurn(): MsgBurn {
   return {
     sender: "",
-    amount: undefined,
+    amount: Coin.fromPartial({}),
     burnFromAddress: ""
   };
 }
@@ -897,6 +955,148 @@ export const MsgChangeAdminResponse = {
     };
   }
 };
+function createBaseMsgSetBeforeSendHook(): MsgSetBeforeSendHook {
+  return {
+    sender: "",
+    denom: "",
+    cosmwasmAddress: ""
+  };
+}
+export const MsgSetBeforeSendHook = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook",
+  encode(message: MsgSetBeforeSendHook, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    if (message.cosmwasmAddress !== "") {
+      writer.uint32(26).string(message.cosmwasmAddress);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBeforeSendHook {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetBeforeSendHook();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.sender = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        case 3:
+          message.cosmwasmAddress = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetBeforeSendHook>): MsgSetBeforeSendHook {
+    const message = createBaseMsgSetBeforeSendHook();
+    message.sender = object.sender ?? "";
+    message.denom = object.denom ?? "";
+    message.cosmwasmAddress = object.cosmwasmAddress ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetBeforeSendHookAmino): MsgSetBeforeSendHook {
+    return {
+      sender: object.sender,
+      denom: object.denom,
+      cosmwasmAddress: object.cosmwasm_address
+    };
+  },
+  toAmino(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookAmino {
+    const obj: any = {};
+    obj.sender = message.sender;
+    obj.denom = message.denom;
+    obj.cosmwasm_address = message.cosmwasmAddress;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetBeforeSendHookAminoMsg): MsgSetBeforeSendHook {
+    return MsgSetBeforeSendHook.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookAminoMsg {
+    return {
+      type: "osmosis/tokenfactory/set-before-send-hook",
+      value: MsgSetBeforeSendHook.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgSetBeforeSendHookProtoMsg): MsgSetBeforeSendHook {
+    return MsgSetBeforeSendHook.decode(message.value);
+  },
+  toProto(message: MsgSetBeforeSendHook): Uint8Array {
+    return MsgSetBeforeSendHook.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookProtoMsg {
+    return {
+      typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook",
+      value: MsgSetBeforeSendHook.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetBeforeSendHookResponse(): MsgSetBeforeSendHookResponse {
+  return {};
+}
+export const MsgSetBeforeSendHookResponse = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHookResponse",
+  encode(_: MsgSetBeforeSendHookResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBeforeSendHookResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetBeforeSendHookResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgSetBeforeSendHookResponse>): MsgSetBeforeSendHookResponse {
+    const message = createBaseMsgSetBeforeSendHookResponse();
+    return message;
+  },
+  fromAmino(_: MsgSetBeforeSendHookResponseAmino): MsgSetBeforeSendHookResponse {
+    return {};
+  },
+  toAmino(_: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetBeforeSendHookResponseAminoMsg): MsgSetBeforeSendHookResponse {
+    return MsgSetBeforeSendHookResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseAminoMsg {
+    return {
+      type: "osmosis/tokenfactory/set-before-send-hook-response",
+      value: MsgSetBeforeSendHookResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgSetBeforeSendHookResponseProtoMsg): MsgSetBeforeSendHookResponse {
+    return MsgSetBeforeSendHookResponse.decode(message.value);
+  },
+  toProto(message: MsgSetBeforeSendHookResponse): Uint8Array {
+    return MsgSetBeforeSendHookResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseProtoMsg {
+    return {
+      typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHookResponse",
+      value: MsgSetBeforeSendHookResponse.encode(message).finish()
+    };
+  }
+};
 function createBaseMsgSetDenomMetadata(): MsgSetDenomMetadata {
   return {
     sender: "",
@@ -1032,7 +1232,7 @@ export const MsgSetDenomMetadataResponse = {
 function createBaseMsgForceTransfer(): MsgForceTransfer {
   return {
     sender: "",
-    amount: undefined,
+    amount: Coin.fromPartial({}),
     transferFromAddress: "",
     transferToAddress: ""
   };

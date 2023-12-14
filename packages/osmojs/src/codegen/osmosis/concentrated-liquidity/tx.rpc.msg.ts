@@ -1,19 +1,12 @@
 import { Rpc } from "../../helpers";
 import { BinaryReader } from "../../binary";
-import { MsgCreatePosition, MsgCreatePositionResponse, MsgWithdrawPosition, MsgWithdrawPositionResponse, MsgAddToPosition, MsgAddToPositionResponse, MsgCollectSpreadRewards, MsgCollectSpreadRewardsResponse, MsgCollectIncentives, MsgCollectIncentivesResponse } from "./tx";
+import { MsgCreatePosition, MsgCreatePositionResponse, MsgWithdrawPosition, MsgWithdrawPositionResponse, MsgCollectFees, MsgCollectFeesResponse, MsgCollectIncentives, MsgCollectIncentivesResponse, MsgFungifyChargedPositions, MsgFungifyChargedPositionsResponse } from "./tx";
 export interface Msg {
   createPosition(request: MsgCreatePosition): Promise<MsgCreatePositionResponse>;
   withdrawPosition(request: MsgWithdrawPosition): Promise<MsgWithdrawPositionResponse>;
-  /**
-   * AddToPosition attempts to add amount0 and amount1 to a position
-   * with the given position id.
-   * To maintain backwards-compatibility with future implementations of
-   * charging, this function deletes the old position and creates a new one with
-   * the resulting amount after addition.
-   */
-  addToPosition(request: MsgAddToPosition): Promise<MsgAddToPositionResponse>;
-  collectSpreadRewards(request: MsgCollectSpreadRewards): Promise<MsgCollectSpreadRewardsResponse>;
+  collectFees(request: MsgCollectFees): Promise<MsgCollectFeesResponse>;
   collectIncentives(request: MsgCollectIncentives): Promise<MsgCollectIncentivesResponse>;
+  fungifyChargedPositions(request: MsgFungifyChargedPositions): Promise<MsgFungifyChargedPositionsResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -21,9 +14,9 @@ export class MsgClientImpl implements Msg {
     this.rpc = rpc;
     this.createPosition = this.createPosition.bind(this);
     this.withdrawPosition = this.withdrawPosition.bind(this);
-    this.addToPosition = this.addToPosition.bind(this);
-    this.collectSpreadRewards = this.collectSpreadRewards.bind(this);
+    this.collectFees = this.collectFees.bind(this);
     this.collectIncentives = this.collectIncentives.bind(this);
+    this.fungifyChargedPositions = this.fungifyChargedPositions.bind(this);
   }
   createPosition(request: MsgCreatePosition): Promise<MsgCreatePositionResponse> {
     const data = MsgCreatePosition.encode(request).finish();
@@ -35,19 +28,19 @@ export class MsgClientImpl implements Msg {
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "WithdrawPosition", data);
     return promise.then(data => MsgWithdrawPositionResponse.decode(new BinaryReader(data)));
   }
-  addToPosition(request: MsgAddToPosition): Promise<MsgAddToPositionResponse> {
-    const data = MsgAddToPosition.encode(request).finish();
-    const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "AddToPosition", data);
-    return promise.then(data => MsgAddToPositionResponse.decode(new BinaryReader(data)));
-  }
-  collectSpreadRewards(request: MsgCollectSpreadRewards): Promise<MsgCollectSpreadRewardsResponse> {
-    const data = MsgCollectSpreadRewards.encode(request).finish();
-    const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "CollectSpreadRewards", data);
-    return promise.then(data => MsgCollectSpreadRewardsResponse.decode(new BinaryReader(data)));
+  collectFees(request: MsgCollectFees): Promise<MsgCollectFeesResponse> {
+    const data = MsgCollectFees.encode(request).finish();
+    const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "CollectFees", data);
+    return promise.then(data => MsgCollectFeesResponse.decode(new BinaryReader(data)));
   }
   collectIncentives(request: MsgCollectIncentives): Promise<MsgCollectIncentivesResponse> {
     const data = MsgCollectIncentives.encode(request).finish();
     const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "CollectIncentives", data);
     return promise.then(data => MsgCollectIncentivesResponse.decode(new BinaryReader(data)));
+  }
+  fungifyChargedPositions(request: MsgFungifyChargedPositions): Promise<MsgFungifyChargedPositionsResponse> {
+    const data = MsgFungifyChargedPositions.encode(request).finish();
+    const promise = this.rpc.request("osmosis.concentratedliquidity.v1beta1.Msg", "FungifyChargedPositions", data);
+    return promise.then(data => MsgFungifyChargedPositionsResponse.decode(new BinaryReader(data)));
   }
 }

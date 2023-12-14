@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup, MsgForceUnlock, MsgSetRewardReceiverAddress } from "./tx";
+import { MsgLockTokens, MsgBeginUnlockingAll, MsgBeginUnlocking, MsgExtendLockup, MsgForceUnlock } from "./tx";
 export const AminoConverter = {
   "/osmosis.lockup.MsgLockTokens": {
     aminoType: "osmosis/lockup/lock-tokens",
@@ -25,10 +25,5 @@ export const AminoConverter = {
     aminoType: "osmosis/lockup/force-unlock",
     toAmino: MsgForceUnlock.toAmino,
     fromAmino: MsgForceUnlock.fromAmino
-  },
-  "/osmosis.lockup.MsgSetRewardReceiverAddress": {
-    aminoType: "osmosis/lockup/set-reward-receiver-address",
-    toAmino: MsgSetRewardReceiverAddress.toAmino,
-    fromAmino: MsgSetRewardReceiverAddress.fromAmino
   }
 };

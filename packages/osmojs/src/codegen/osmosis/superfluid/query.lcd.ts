@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, AssetTypeRequest, AssetTypeResponseSDKType, AllAssetsRequest, AllAssetsResponseSDKType, AssetMultiplierRequest, AssetMultiplierResponseSDKType, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponseSDKType, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponseSDKType, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponseSDKType, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponseSDKType, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponseSDKType, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponseSDKType, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponseSDKType, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponseSDKType, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponseSDKType, UserConcentratedSuperfluidPositionsDelegatedRequest, UserConcentratedSuperfluidPositionsDelegatedResponseSDKType, UserConcentratedSuperfluidPositionsUndelegatingRequest, UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, AssetTypeRequest, AssetTypeResponseSDKType, AllAssetsRequest, AllAssetsResponseSDKType, AssetMultiplierRequest, AssetMultiplierResponseSDKType, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponseSDKType, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponseSDKType, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponseSDKType, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponseSDKType, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponseSDKType, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponseSDKType, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponseSDKType, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponseSDKType, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -23,8 +23,6 @@ export class LCDQueryClient {
     this.estimateSuperfluidDelegatedAmountByValidatorDenom = this.estimateSuperfluidDelegatedAmountByValidatorDenom.bind(this);
     this.totalDelegationByDelegator = this.totalDelegationByDelegator.bind(this);
     this.unpoolWhitelist = this.unpoolWhitelist.bind(this);
-    this.userConcentratedSuperfluidPositionsDelegated = this.userConcentratedSuperfluidPositionsDelegated.bind(this);
-    this.userConcentratedSuperfluidPositionsUndelegating = this.userConcentratedSuperfluidPositionsUndelegating.bind(this);
   }
   /* Params returns the total set of superfluid parameters. */
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
@@ -157,15 +155,5 @@ export class LCDQueryClient {
   async unpoolWhitelist(_params: QueryUnpoolWhitelistRequest = {}): Promise<QueryUnpoolWhitelistResponseSDKType> {
     const endpoint = `osmosis/superfluid/v1beta1/unpool_whitelist`;
     return await this.req.get<QueryUnpoolWhitelistResponseSDKType>(endpoint);
-  }
-  /* UserConcentratedSuperfluidPositionsDelegated */
-  async userConcentratedSuperfluidPositionsDelegated(params: UserConcentratedSuperfluidPositionsDelegatedRequest): Promise<UserConcentratedSuperfluidPositionsDelegatedResponseSDKType> {
-    const endpoint = `osmosis/superfluid/v1beta1/account_delegated_cl_positions/${params.delegatorAddress}`;
-    return await this.req.get<UserConcentratedSuperfluidPositionsDelegatedResponseSDKType>(endpoint);
-  }
-  /* UserConcentratedSuperfluidPositionsUndelegating */
-  async userConcentratedSuperfluidPositionsUndelegating(params: UserConcentratedSuperfluidPositionsUndelegatingRequest): Promise<UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType> {
-    const endpoint = `osmosis/superfluid/v1beta1/account_undelegating_cl_positions/${params.delegatorAddress}`;
-    return await this.req.get<UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType>(endpoint);
   }
 }

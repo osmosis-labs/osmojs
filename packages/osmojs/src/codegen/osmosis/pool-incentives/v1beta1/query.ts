@@ -363,7 +363,7 @@ export const QueryGaugeIdsResponse = {
 function createBaseQueryGaugeIdsResponse_GaugeIdWithDuration(): QueryGaugeIdsResponse_GaugeIdWithDuration {
   return {
     gaugeId: BigInt(0),
-    duration: undefined,
+    duration: Duration.fromPartial({}),
     gaugeIncentivePercentage: ""
   };
 }
@@ -875,7 +875,7 @@ export const QueryIncentivizedPoolsRequest = {
 function createBaseIncentivizedPool(): IncentivizedPool {
   return {
     poolId: BigInt(0),
-    lockableDuration: undefined,
+    lockableDuration: Duration.fromPartial({}),
     gaugeId: BigInt(0)
   };
 }

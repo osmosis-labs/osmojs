@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreatePosition, MsgWithdrawPosition, MsgAddToPosition, MsgCollectSpreadRewards, MsgCollectIncentives } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition", MsgCreatePosition], ["/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition", MsgWithdrawPosition], ["/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition", MsgAddToPosition], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards", MsgCollectSpreadRewards], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives", MsgCollectIncentives]];
+import { MsgCreatePosition, MsgWithdrawPosition, MsgCollectFees, MsgCollectIncentives, MsgFungifyChargedPositions } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition", MsgCreatePosition], ["/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition", MsgWithdrawPosition], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectFees", MsgCollectFees], ["/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives", MsgCollectIncentives], ["/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions", MsgFungifyChargedPositions]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -21,22 +21,22 @@ export const MessageComposer = {
         value: MsgWithdrawPosition.encode(value).finish()
       };
     },
-    addToPosition(value: MsgAddToPosition) {
+    collectFees(value: MsgCollectFees) {
       return {
-        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition",
-        value: MsgAddToPosition.encode(value).finish()
-      };
-    },
-    collectSpreadRewards(value: MsgCollectSpreadRewards) {
-      return {
-        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards",
-        value: MsgCollectSpreadRewards.encode(value).finish()
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees",
+        value: MsgCollectFees.encode(value).finish()
       };
     },
     collectIncentives(value: MsgCollectIncentives) {
       return {
         typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
         value: MsgCollectIncentives.encode(value).finish()
+      };
+    },
+    fungifyChargedPositions(value: MsgFungifyChargedPositions) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions",
+        value: MsgFungifyChargedPositions.encode(value).finish()
       };
     }
   },
@@ -53,21 +53,21 @@ export const MessageComposer = {
         value
       };
     },
-    addToPosition(value: MsgAddToPosition) {
+    collectFees(value: MsgCollectFees) {
       return {
-        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition",
-        value
-      };
-    },
-    collectSpreadRewards(value: MsgCollectSpreadRewards) {
-      return {
-        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards",
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees",
         value
       };
     },
     collectIncentives(value: MsgCollectIncentives) {
       return {
         typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
+        value
+      };
+    },
+    fungifyChargedPositions(value: MsgFungifyChargedPositions) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions",
         value
       };
     }
@@ -85,22 +85,22 @@ export const MessageComposer = {
         value: MsgWithdrawPosition.fromPartial(value)
       };
     },
-    addToPosition(value: MsgAddToPosition) {
+    collectFees(value: MsgCollectFees) {
       return {
-        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition",
-        value: MsgAddToPosition.fromPartial(value)
-      };
-    },
-    collectSpreadRewards(value: MsgCollectSpreadRewards) {
-      return {
-        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards",
-        value: MsgCollectSpreadRewards.fromPartial(value)
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectFees",
+        value: MsgCollectFees.fromPartial(value)
       };
     },
     collectIncentives(value: MsgCollectIncentives) {
       return {
         typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
         value: MsgCollectIncentives.fromPartial(value)
+      };
+    },
+    fungifyChargedPositions(value: MsgFungifyChargedPositions) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions",
+        value: MsgFungifyChargedPositions.fromPartial(value)
       };
     }
   }

@@ -7,7 +7,7 @@ export const AminoConverter = {
     fromAmino: MsgSubmitProposal.fromAmino
   },
   "/cosmos.gov.v1beta1.MsgVote": {
-    aminoType: "cosmos-sdk/v1/MsgVote",
+    aminoType: "cosmos-sdk/MsgVote",
     toAmino: MsgVote.toAmino,
     fromAmino: MsgVote.fromAmino
   },

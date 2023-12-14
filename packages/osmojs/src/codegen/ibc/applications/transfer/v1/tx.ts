@@ -108,7 +108,7 @@ function createBaseMsgTransfer(): MsgTransfer {
   return {
     sourcePort: "",
     sourceChannel: "",
-    token: undefined,
+    token: Coin.fromPartial({}),
     sender: "",
     receiver: "",
     timeoutHeight: Height.fromPartial({}),
