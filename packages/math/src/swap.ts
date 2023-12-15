@@ -227,5 +227,9 @@ export const calcPriceImpactGivenOut = (
 };
 
 export const pow = (x: BigNumber, y: BigNumber): BigNumber => {
-  return new BigNumber(new Decimal(x.toString()).pow(new Decimal(y.toString())).toString())
+  if(y.isInteger()){
+    return x.pow(y);
+  } else {
+    return new BigNumber(new Decimal(x.toString()).pow(new Decimal(y.toString())).toString())
+  }
 };
