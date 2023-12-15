@@ -10,6 +10,8 @@ import {
 } from "../src/utils";
 import {
   calcAmountWithSlippage,
+  calcInGivenOut,
+  calcOutGivenIn,
   calcPriceImpactGivenIn,
   calcPriceImpactGivenOut,
   getRoutesForTrade,
@@ -251,4 +253,84 @@ describe("Test swap calculations", () => {
       },
     ]
   );
+
+  cases('calcOutGivenIn', opts => {
+    const result = calcOutGivenIn(
+      new BigNumber(opts.tokenBalanceIn),
+      new BigNumber(opts.tokenWeightIn),
+      new BigNumber(opts.tokenBalanceOut),
+      new BigNumber(opts.tokenWeightOut),
+      new BigNumber(opts.tokenAmountIn),
+      new BigNumber(opts.swapFee)
+    );
+    expect(result.toNumber()).toBeCloseTo(new BigNumber(opts.expected).toNumber(), 5);
+  }, {
+    "Exponent not an integer(0.5)": {
+      tokenBalanceIn: '1000',
+      tokenWeightIn: '10',
+      tokenBalanceOut: '500',
+      tokenWeightOut: '20',
+      tokenAmountIn: '100',
+      swapFee: '0.01',
+      expected: '23.051861474872545'
+    },
+    "Exponent not an integer(1.5)": {
+      tokenBalanceIn: '1500',
+      tokenWeightIn: '30',
+      tokenBalanceOut: '700',
+      tokenWeightOut: '20',
+      tokenAmountIn: '200',
+      swapFee: '0',
+      expected: '119.8216126711115'
+    },
+    "regular": {
+      tokenBalanceIn: '2000',
+      tokenWeightIn: '40',
+      tokenBalanceOut: '1000',
+      tokenWeightOut: '10',
+      tokenAmountIn: '300',
+      swapFee: '0.05',
+      expected: '413.0850595232377'
+    }
+  });
+
+  cases('calcInGivenOut', opts => {
+    const result = calcInGivenOut(
+      new BigNumber(opts.tokenBalanceIn),
+      new BigNumber(opts.tokenWeightIn),
+      new BigNumber(opts.tokenBalanceOut),
+      new BigNumber(opts.tokenWeightOut),
+      new BigNumber(opts.tokenAmountOut),
+      new BigNumber(opts.swapFee)
+    );
+    expect(result.toNumber()).toBeCloseTo(new BigNumber(opts.expected).toNumber(), 5);
+  }, {
+    "Exponent not an integer(0.5)": {
+      tokenBalanceIn: '1000',
+      tokenWeightIn: '20',
+      tokenBalanceOut: '500',
+      tokenWeightOut: '10',
+      tokenAmountOut: '100',
+      swapFee: '0.01',
+      expected: '119.22625126252005'
+    },
+    "Exponent not an integer(1.5)": {
+      tokenBalanceIn: '1500',
+      tokenWeightIn: '20',
+      tokenBalanceOut: '700',
+      tokenWeightOut: '30',
+      tokenAmountOut: '200',
+      swapFee: '0',
+      expected: '984.7535089018387'
+    },
+    "regular": {
+      tokenBalanceIn: '2000',
+      tokenWeightIn: '10',
+      tokenBalanceOut: '1000',
+      tokenWeightOut: '40',
+      tokenAmountOut: '300',
+      swapFee: '0.05',
+      expected: '6663.013218176637'
+    }
+  });
 });
