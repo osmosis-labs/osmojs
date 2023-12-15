@@ -7,7 +7,6 @@ import lockup from "../../../__fixtures__/rpc/osmosis/pool-incentives/v1beta1/lo
 import superfluid from "../../../__fixtures__/rpc/osmosis/superfluid/v1beta1/all_assets/data.json";
 import summary from "../../../__fixtures__/validator/pairs/v1/summary/data.json";
 import cases from "jest-in-case";
-import Long from "long";
 import { omit } from "./pool-utils.test";
 import { calcPoolAprs } from "../src/apr";
 import { convertGeckoPricesToDenomPriceHash } from "../src/utils";
