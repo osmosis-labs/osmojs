@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponseSDKType, GaugeByIDRequest, GaugeByIDResponseSDKType, GaugesRequest, GaugesResponseSDKType, ActiveGaugesRequest, ActiveGaugesResponseSDKType, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponseSDKType, UpcomingGaugesRequest, UpcomingGaugesResponseSDKType, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponseSDKType, RewardsEstRequest, RewardsEstResponseSDKType, QueryLockableDurationsRequest, QueryLockableDurationsResponseSDKType } from "./query";
+import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponseSDKType, GaugeByIDRequest, GaugeByIDResponseSDKType, GaugesRequest, GaugesResponseSDKType, ActiveGaugesRequest, ActiveGaugesResponseSDKType, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponseSDKType, UpcomingGaugesRequest, UpcomingGaugesResponseSDKType, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponseSDKType, RewardsEstRequest, RewardsEstResponseSDKType, QueryLockableDurationsRequest, QueryLockableDurationsResponseSDKType, QueryAllGroupsRequest, QueryAllGroupsResponseSDKType, QueryAllGroupsGaugesRequest, QueryAllGroupsGaugesResponseSDKType, QueryAllGroupsWithGaugeRequest, QueryAllGroupsWithGaugeResponseSDKType, QueryGroupByGroupGaugeIDRequest, QueryGroupByGroupGaugeIDResponseSDKType, QueryCurrentWeightByGroupGaugeIDRequest, QueryCurrentWeightByGroupGaugeIDResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -18,6 +18,11 @@ export class LCDQueryClient {
     this.upcomingGaugesPerDenom = this.upcomingGaugesPerDenom.bind(this);
     this.rewardsEst = this.rewardsEst.bind(this);
     this.lockableDurations = this.lockableDurations.bind(this);
+    this.allGroups = this.allGroups.bind(this);
+    this.allGroupsGauges = this.allGroupsGauges.bind(this);
+    this.allGroupsWithGauge = this.allGroupsWithGauge.bind(this);
+    this.groupByGroupGaugeID = this.groupByGroupGaugeID.bind(this);
+    this.currentWeightByGroupGaugeID = this.currentWeightByGroupGaugeID.bind(this);
   }
   /* ModuleToDistributeCoins returns coins that are going to be distributed */
   async moduleToDistributeCoins(_params: ModuleToDistributeCoinsRequest = {}): Promise<ModuleToDistributeCoinsResponseSDKType> {
@@ -69,7 +74,7 @@ export class LCDQueryClient {
     const endpoint = `osmosis/incentives/v1beta1/active_gauges_per_denom`;
     return await this.req.get<ActiveGaugesPerDenomResponseSDKType>(endpoint, options);
   }
-  /* Returns scheduled gauges that have not yet occured */
+  /* Returns scheduled gauges that have not yet occurred */
   async upcomingGauges(params: UpcomingGaugesRequest = {
     pagination: undefined
   }): Promise<UpcomingGaugesResponseSDKType> {
@@ -82,7 +87,7 @@ export class LCDQueryClient {
     const endpoint = `osmosis/incentives/v1beta1/upcoming_gauges`;
     return await this.req.get<UpcomingGaugesResponseSDKType>(endpoint, options);
   }
-  /* UpcomingGaugesPerDenom returns scheduled gauges that have not yet occured
+  /* UpcomingGaugesPerDenom returns scheduled gauges that have not yet occurred
    by denom */
   async upcomingGaugesPerDenom(params: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponseSDKType> {
     const options: any = {
@@ -118,5 +123,31 @@ export class LCDQueryClient {
   async lockableDurations(_params: QueryLockableDurationsRequest = {}): Promise<QueryLockableDurationsResponseSDKType> {
     const endpoint = `osmosis/incentives/v1beta1/lockable_durations`;
     return await this.req.get<QueryLockableDurationsResponseSDKType>(endpoint);
+  }
+  /* AllGroups returns all groups */
+  async allGroups(_params: QueryAllGroupsRequest = {}): Promise<QueryAllGroupsResponseSDKType> {
+    const endpoint = `osmosis/incentives/v1beta1/all_groups`;
+    return await this.req.get<QueryAllGroupsResponseSDKType>(endpoint);
+  }
+  /* AllGroupsGauges returns all group gauges */
+  async allGroupsGauges(_params: QueryAllGroupsGaugesRequest = {}): Promise<QueryAllGroupsGaugesResponseSDKType> {
+    const endpoint = `osmosis/incentives/v1beta1/all_groups_gauges`;
+    return await this.req.get<QueryAllGroupsGaugesResponseSDKType>(endpoint);
+  }
+  /* AllGroupsWithGauge returns all groups with their group gauge */
+  async allGroupsWithGauge(_params: QueryAllGroupsWithGaugeRequest = {}): Promise<QueryAllGroupsWithGaugeResponseSDKType> {
+    const endpoint = `osmosis/incentives/v1beta1/all_groups_with_gauge`;
+    return await this.req.get<QueryAllGroupsWithGaugeResponseSDKType>(endpoint);
+  }
+  /* GroupByGroupGaugeID returns a group given its group gauge ID */
+  async groupByGroupGaugeID(params: QueryGroupByGroupGaugeIDRequest): Promise<QueryGroupByGroupGaugeIDResponseSDKType> {
+    const endpoint = `osmosis/incentives/v1beta1/group_by_group_gauge_id/${params.id}`;
+    return await this.req.get<QueryGroupByGroupGaugeIDResponseSDKType>(endpoint);
+  }
+  /* CurrentWeightByGroupGaugeID returns the current weight since the
+   the last epoch given a group gauge ID */
+  async currentWeightByGroupGaugeID(params: QueryCurrentWeightByGroupGaugeIDRequest): Promise<QueryCurrentWeightByGroupGaugeIDResponseSDKType> {
+    const endpoint = `osmosis/incentives/v1beta1/current_weight_by_group_gauge_id/${params.groupGaugeId}`;
+    return await this.req.get<QueryCurrentWeightByGroupGaugeIDResponseSDKType>(endpoint);
   }
 }

@@ -12,7 +12,7 @@ export interface ParamsProtoMsg {
 }
 /** Params holds parameters for the twap module */
 export interface ParamsAmino {
-  prune_epoch_identifier: string;
+  prune_epoch_identifier?: string;
   record_history_keep_period?: DurationAmino;
 }
 export interface ParamsAminoMsg {
@@ -38,7 +38,7 @@ export interface GenesisStateProtoMsg {
 /** GenesisState defines the twap module's genesis state. */
 export interface GenesisStateAmino {
   /** twaps is the collection of all twap records. */
-  twaps: TwapRecordAmino[];
+  twaps?: TwapRecordAmino[];
   /** params is the container of twap parameters. */
   params?: ParamsAmino;
 }
@@ -54,7 +54,7 @@ export interface GenesisStateSDKType {
 function createBaseParams(): Params {
   return {
     pruneEpochIdentifier: "",
-    recordHistoryKeepPeriod: undefined
+    recordHistoryKeepPeriod: Duration.fromPartial({})
   };
 }
 export const Params = {
@@ -95,10 +95,14 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      pruneEpochIdentifier: object.prune_epoch_identifier,
-      recordHistoryKeepPeriod: object?.record_history_keep_period ? Duration.fromAmino(object.record_history_keep_period) : undefined
-    };
+    const message = createBaseParams();
+    if (object.prune_epoch_identifier !== undefined && object.prune_epoch_identifier !== null) {
+      message.pruneEpochIdentifier = object.prune_epoch_identifier;
+    }
+    if (object.record_history_keep_period !== undefined && object.record_history_keep_period !== null) {
+      message.recordHistoryKeepPeriod = Duration.fromAmino(object.record_history_keep_period);
+    }
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
@@ -172,10 +176,12 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      twaps: Array.isArray(object?.twaps) ? object.twaps.map((e: any) => TwapRecord.fromAmino(e)) : [],
-      params: object?.params ? Params.fromAmino(object.params) : undefined
-    };
+    const message = createBaseGenesisState();
+    message.twaps = object.twaps?.map(e => TwapRecord.fromAmino(e)) || [];
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};

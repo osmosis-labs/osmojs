@@ -4,7 +4,7 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 export interface GenesisState {
   /** minter is an abstraction for holding current rewards information. */
   minter: Minter;
-  /** params defines all the paramaters of the mint module. */
+  /** params defines all the parameters of the mint module. */
   params: Params;
   /**
    * reduction_started_epoch is the first epoch in which the reduction of mint
@@ -20,13 +20,13 @@ export interface GenesisStateProtoMsg {
 export interface GenesisStateAmino {
   /** minter is an abstraction for holding current rewards information. */
   minter?: MinterAmino;
-  /** params defines all the paramaters of the mint module. */
+  /** params defines all the parameters of the mint module. */
   params?: ParamsAmino;
   /**
    * reduction_started_epoch is the first epoch in which the reduction of mint
    * begins.
    */
-  reduction_started_epoch: string;
+  reduction_started_epoch?: string;
 }
 export interface GenesisStateAminoMsg {
   type: "osmosis/mint/genesis-state";
@@ -90,11 +90,17 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      minter: object?.minter ? Minter.fromAmino(object.minter) : undefined,
-      params: object?.params ? Params.fromAmino(object.params) : undefined,
-      reductionStartedEpoch: BigInt(object.reduction_started_epoch)
-    };
+    const message = createBaseGenesisState();
+    if (object.minter !== undefined && object.minter !== null) {
+      message.minter = Minter.fromAmino(object.minter);
+    }
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    if (object.reduction_started_epoch !== undefined && object.reduction_started_epoch !== null) {
+      message.reductionStartedEpoch = BigInt(object.reduction_started_epoch);
+    }
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};

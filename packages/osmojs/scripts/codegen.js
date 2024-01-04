@@ -17,7 +17,7 @@ telescope({
   protoDirs,
   outPath,
   options: {
-
+    env: "v-next",
     removeUnusedImports: true,
     tsDisable: {
       patterns: ['**/*amino.ts', '**/*registry.ts']
@@ -109,7 +109,8 @@ telescope({
     },
     rpcClients: {
       enabled: true,
-      camelCase: true
+      camelCase: true,
+      useConnectComet: true
     }
   }
 })

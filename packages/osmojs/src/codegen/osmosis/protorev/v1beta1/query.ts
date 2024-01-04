@@ -1,6 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { RouteStatistics, RouteStatisticsAmino, RouteStatisticsSDKType, TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
+import { RouteStatistics, RouteStatisticsAmino, RouteStatisticsSDKType, TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, InfoByPoolType, InfoByPoolTypeAmino, InfoByPoolTypeSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType, AllProtocolRevenue, AllProtocolRevenueAmino, AllProtocolRevenueSDKType } from "./protorev";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
@@ -79,7 +79,7 @@ export interface QueryGetProtoRevNumberOfTradesResponseProtoMsg {
  */
 export interface QueryGetProtoRevNumberOfTradesResponseAmino {
   /** number_of_trades is the number of trades the module has executed */
-  number_of_trades: string;
+  number_of_trades?: string;
 }
 export interface QueryGetProtoRevNumberOfTradesResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-number-of-trades-response";
@@ -110,7 +110,7 @@ export interface QueryGetProtoRevProfitsByDenomRequestProtoMsg {
  */
 export interface QueryGetProtoRevProfitsByDenomRequestAmino {
   /** denom is the denom to query profits by */
-  denom: string;
+  denom?: string;
 }
 export interface QueryGetProtoRevProfitsByDenomRequestAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-profits-by-denom-request";
@@ -129,7 +129,7 @@ export interface QueryGetProtoRevProfitsByDenomRequestSDKType {
  */
 export interface QueryGetProtoRevProfitsByDenomResponse {
   /** profit is the profits of the module by the selected denom */
-  profit: Coin;
+  profit?: Coin;
 }
 export interface QueryGetProtoRevProfitsByDenomResponseProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevProfitsByDenomResponse";
@@ -152,7 +152,7 @@ export interface QueryGetProtoRevProfitsByDenomResponseAminoMsg {
  * Query/GetProtoRevProfitsByDenom RPC method.
  */
 export interface QueryGetProtoRevProfitsByDenomResponseSDKType {
-  profit: CoinSDKType;
+  profit?: CoinSDKType;
 }
 /**
  * QueryGetProtoRevAllProfitsRequest is request type for the
@@ -195,7 +195,7 @@ export interface QueryGetProtoRevAllProfitsResponseProtoMsg {
  */
 export interface QueryGetProtoRevAllProfitsResponseAmino {
   /** profits is a list of all of the profits from the module */
-  profits: CoinAmino[];
+  profits?: CoinAmino[];
 }
 export interface QueryGetProtoRevAllProfitsResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-all-profits-response";
@@ -226,7 +226,7 @@ export interface QueryGetProtoRevStatisticsByRouteRequestProtoMsg {
  */
 export interface QueryGetProtoRevStatisticsByRouteRequestAmino {
   /** route is the set of pool ids to query statistics by i.e. 1,2,3 */
-  route: string[];
+  route?: string[];
 }
 export interface QueryGetProtoRevStatisticsByRouteRequestAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-statistics-by-route-request";
@@ -323,7 +323,7 @@ export interface QueryGetProtoRevAllRouteStatisticsResponseAmino {
    * statistics contains the number of trades/profits the module has executed on
    * all routes it has successfully executed a trade on
    */
-  statistics: RouteStatisticsAmino[];
+  statistics?: RouteStatisticsAmino[];
 }
 export interface QueryGetProtoRevAllRouteStatisticsResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-all-route-statistics-response";
@@ -383,7 +383,7 @@ export interface QueryGetProtoRevTokenPairArbRoutesResponseAmino {
    * routes is a list of all of the hot routes that the module is currently
    * arbitraging
    */
-  routes: TokenPairArbRoutesAmino[];
+  routes?: TokenPairArbRoutesAmino[];
 }
 export interface QueryGetProtoRevTokenPairArbRoutesResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-token-pair-arb-routes-response";
@@ -437,7 +437,7 @@ export interface QueryGetProtoRevAdminAccountResponseProtoMsg {
  */
 export interface QueryGetProtoRevAdminAccountResponseAmino {
   /** admin_account is the admin account of the module */
-  admin_account: string;
+  admin_account?: string;
 }
 export interface QueryGetProtoRevAdminAccountResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-admin-account-response";
@@ -491,7 +491,7 @@ export interface QueryGetProtoRevDeveloperAccountResponseProtoMsg {
  */
 export interface QueryGetProtoRevDeveloperAccountResponseAmino {
   /** developer_account is the developer account of the module */
-  developer_account: string;
+  developer_account?: string;
 }
 export interface QueryGetProtoRevDeveloperAccountResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-developer-account-response";
@@ -505,58 +505,64 @@ export interface QueryGetProtoRevDeveloperAccountResponseSDKType {
   developer_account: string;
 }
 /**
- * QueryGetProtoRevPoolWeightsRequest is request type for the
- * Query/GetProtoRevPoolWeights RPC method.
+ * QueryGetProtoRevInfoByPoolTypeRequest is request type for the
+ * Query/GetProtoRevInfoByPoolType RPC method.
  */
-export interface QueryGetProtoRevPoolWeightsRequest {}
-export interface QueryGetProtoRevPoolWeightsRequestProtoMsg {
-  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsRequest";
+export interface QueryGetProtoRevInfoByPoolTypeRequest {}
+export interface QueryGetProtoRevInfoByPoolTypeRequestProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeRequest";
   value: Uint8Array;
 }
 /**
- * QueryGetProtoRevPoolWeightsRequest is request type for the
- * Query/GetProtoRevPoolWeights RPC method.
+ * QueryGetProtoRevInfoByPoolTypeRequest is request type for the
+ * Query/GetProtoRevInfoByPoolType RPC method.
  */
-export interface QueryGetProtoRevPoolWeightsRequestAmino {}
-export interface QueryGetProtoRevPoolWeightsRequestAminoMsg {
-  type: "osmosis/protorev/query-get-proto-rev-pool-weights-request";
-  value: QueryGetProtoRevPoolWeightsRequestAmino;
+export interface QueryGetProtoRevInfoByPoolTypeRequestAmino {}
+export interface QueryGetProtoRevInfoByPoolTypeRequestAminoMsg {
+  type: "osmosis/protorev/query-get-proto-rev-info-by-pool-type-request";
+  value: QueryGetProtoRevInfoByPoolTypeRequestAmino;
 }
 /**
- * QueryGetProtoRevPoolWeightsRequest is request type for the
- * Query/GetProtoRevPoolWeights RPC method.
+ * QueryGetProtoRevInfoByPoolTypeRequest is request type for the
+ * Query/GetProtoRevInfoByPoolType RPC method.
  */
-export interface QueryGetProtoRevPoolWeightsRequestSDKType {}
+export interface QueryGetProtoRevInfoByPoolTypeRequestSDKType {}
 /**
- * QueryGetProtoRevPoolWeightsResponse is response type for the
- * Query/GetProtoRevPoolWeights RPC method.
+ * QueryGetProtoRevInfoByPoolTypeResponse is response type for the
+ * Query/GetProtoRevInfoByPoolType RPC method.
  */
-export interface QueryGetProtoRevPoolWeightsResponse {
-  /** pool_weights is a list of all of the pool weights */
-  poolWeights: PoolWeights;
+export interface QueryGetProtoRevInfoByPoolTypeResponse {
+  /**
+   * InfoByPoolType contains all information pertaining to how different
+   * pool types are handled by the module.
+   */
+  infoByPoolType: InfoByPoolType;
 }
-export interface QueryGetProtoRevPoolWeightsResponseProtoMsg {
-  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsResponse";
+export interface QueryGetProtoRevInfoByPoolTypeResponseProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeResponse";
   value: Uint8Array;
 }
 /**
- * QueryGetProtoRevPoolWeightsResponse is response type for the
- * Query/GetProtoRevPoolWeights RPC method.
+ * QueryGetProtoRevInfoByPoolTypeResponse is response type for the
+ * Query/GetProtoRevInfoByPoolType RPC method.
  */
-export interface QueryGetProtoRevPoolWeightsResponseAmino {
-  /** pool_weights is a list of all of the pool weights */
-  pool_weights?: PoolWeightsAmino;
+export interface QueryGetProtoRevInfoByPoolTypeResponseAmino {
+  /**
+   * InfoByPoolType contains all information pertaining to how different
+   * pool types are handled by the module.
+   */
+  info_by_pool_type?: InfoByPoolTypeAmino;
 }
-export interface QueryGetProtoRevPoolWeightsResponseAminoMsg {
-  type: "osmosis/protorev/query-get-proto-rev-pool-weights-response";
-  value: QueryGetProtoRevPoolWeightsResponseAmino;
+export interface QueryGetProtoRevInfoByPoolTypeResponseAminoMsg {
+  type: "osmosis/protorev/query-get-proto-rev-info-by-pool-type-response";
+  value: QueryGetProtoRevInfoByPoolTypeResponseAmino;
 }
 /**
- * QueryGetProtoRevPoolWeightsResponse is response type for the
- * Query/GetProtoRevPoolWeights RPC method.
+ * QueryGetProtoRevInfoByPoolTypeResponse is response type for the
+ * Query/GetProtoRevInfoByPoolType RPC method.
  */
-export interface QueryGetProtoRevPoolWeightsResponseSDKType {
-  pool_weights: PoolWeightsSDKType;
+export interface QueryGetProtoRevInfoByPoolTypeResponseSDKType {
+  info_by_pool_type: InfoByPoolTypeSDKType;
 }
 /**
  * QueryGetProtoRevMaxPoolPointsPerBlockRequest is request type for the
@@ -605,7 +611,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerBlockResponseAmino {
    * max_pool_points_per_block is the maximum number of pool points that can be
    * consumed per block
    */
-  max_pool_points_per_block: string;
+  max_pool_points_per_block?: string;
 }
 export interface QueryGetProtoRevMaxPoolPointsPerBlockResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-max-pool-points-per-block-response";
@@ -665,7 +671,7 @@ export interface QueryGetProtoRevMaxPoolPointsPerTxResponseAmino {
    * max_pool_points_per_tx is the maximum number of pool points that can be
    * consumed per transaction
    */
-  max_pool_points_per_tx: string;
+  max_pool_points_per_tx?: string;
 }
 export interface QueryGetProtoRevMaxPoolPointsPerTxResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-max-pool-points-per-tx-response";
@@ -719,7 +725,7 @@ export interface QueryGetProtoRevBaseDenomsResponseProtoMsg {
  */
 export interface QueryGetProtoRevBaseDenomsResponseAmino {
   /** base_denoms is a list of all of the base denoms and step sizes */
-  base_denoms: BaseDenomAmino[];
+  base_denoms?: BaseDenomAmino[];
 }
 export interface QueryGetProtoRevBaseDenomsResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-base-denoms-response";
@@ -773,7 +779,7 @@ export interface QueryGetProtoRevEnabledResponseProtoMsg {
  */
 export interface QueryGetProtoRevEnabledResponseAmino {
   /** enabled is whether the module is enabled */
-  enabled: boolean;
+  enabled?: boolean;
 }
 export interface QueryGetProtoRevEnabledResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-enabled-response";
@@ -812,9 +818,9 @@ export interface QueryGetProtoRevPoolRequestAmino {
    * base_denom is the base denom set in protorev for the denom pair to pool
    * mapping
    */
-  base_denom: string;
+  base_denom?: string;
   /** other_denom is the other denom for the denom pair to pool mapping */
-  other_denom: string;
+  other_denom?: string;
 }
 export interface QueryGetProtoRevPoolRequestAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-pool-request";
@@ -846,7 +852,7 @@ export interface QueryGetProtoRevPoolResponseProtoMsg {
  */
 export interface QueryGetProtoRevPoolResponseAmino {
   /** pool_id is the pool_id stored for the denom pair */
-  pool_id: string;
+  pool_id?: string;
 }
 export interface QueryGetProtoRevPoolResponseAminoMsg {
   type: "osmosis/protorev/query-get-proto-rev-pool-response";
@@ -858,6 +864,34 @@ export interface QueryGetProtoRevPoolResponseAminoMsg {
  */
 export interface QueryGetProtoRevPoolResponseSDKType {
   pool_id: bigint;
+}
+export interface QueryGetAllProtocolRevenueRequest {}
+export interface QueryGetAllProtocolRevenueRequestProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueRequest";
+  value: Uint8Array;
+}
+export interface QueryGetAllProtocolRevenueRequestAmino {}
+export interface QueryGetAllProtocolRevenueRequestAminoMsg {
+  type: "osmosis/protorev/query-get-all-protocol-revenue-request";
+  value: QueryGetAllProtocolRevenueRequestAmino;
+}
+export interface QueryGetAllProtocolRevenueRequestSDKType {}
+export interface QueryGetAllProtocolRevenueResponse {
+  allProtocolRevenue: AllProtocolRevenue;
+}
+export interface QueryGetAllProtocolRevenueResponseProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueResponse";
+  value: Uint8Array;
+}
+export interface QueryGetAllProtocolRevenueResponseAmino {
+  all_protocol_revenue?: AllProtocolRevenueAmino;
+}
+export interface QueryGetAllProtocolRevenueResponseAminoMsg {
+  type: "osmosis/protorev/query-get-all-protocol-revenue-response";
+  value: QueryGetAllProtocolRevenueResponseAmino;
+}
+export interface QueryGetAllProtocolRevenueResponseSDKType {
+  all_protocol_revenue: AllProtocolRevenueSDKType;
 }
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
@@ -886,7 +920,8 @@ export const QueryParamsRequest = {
     return message;
   },
   fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest {
-    return {};
+    const message = createBaseQueryParamsRequest();
+    return message;
   },
   toAmino(_: QueryParamsRequest): QueryParamsRequestAmino {
     const obj: any = {};
@@ -950,9 +985,11 @@ export const QueryParamsResponse = {
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined
-    };
+    const message = createBaseQueryParamsResponse();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
     const obj: any = {};
@@ -1008,7 +1045,8 @@ export const QueryGetProtoRevNumberOfTradesRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevNumberOfTradesRequestAmino): QueryGetProtoRevNumberOfTradesRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevNumberOfTradesRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevNumberOfTradesRequest): QueryGetProtoRevNumberOfTradesRequestAmino {
     const obj: any = {};
@@ -1072,9 +1110,11 @@ export const QueryGetProtoRevNumberOfTradesResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevNumberOfTradesResponseAmino): QueryGetProtoRevNumberOfTradesResponse {
-    return {
-      numberOfTrades: object.number_of_trades
-    };
+    const message = createBaseQueryGetProtoRevNumberOfTradesResponse();
+    if (object.number_of_trades !== undefined && object.number_of_trades !== null) {
+      message.numberOfTrades = object.number_of_trades;
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevNumberOfTradesResponse): QueryGetProtoRevNumberOfTradesResponseAmino {
     const obj: any = {};
@@ -1139,9 +1179,11 @@ export const QueryGetProtoRevProfitsByDenomRequest = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevProfitsByDenomRequestAmino): QueryGetProtoRevProfitsByDenomRequest {
-    return {
-      denom: object.denom
-    };
+    const message = createBaseQueryGetProtoRevProfitsByDenomRequest();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevProfitsByDenomRequest): QueryGetProtoRevProfitsByDenomRequestAmino {
     const obj: any = {};
@@ -1206,9 +1248,11 @@ export const QueryGetProtoRevProfitsByDenomResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevProfitsByDenomResponseAmino): QueryGetProtoRevProfitsByDenomResponse {
-    return {
-      profit: object?.profit ? Coin.fromAmino(object.profit) : undefined
-    };
+    const message = createBaseQueryGetProtoRevProfitsByDenomResponse();
+    if (object.profit !== undefined && object.profit !== null) {
+      message.profit = Coin.fromAmino(object.profit);
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevProfitsByDenomResponse): QueryGetProtoRevProfitsByDenomResponseAmino {
     const obj: any = {};
@@ -1264,7 +1308,8 @@ export const QueryGetProtoRevAllProfitsRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevAllProfitsRequestAmino): QueryGetProtoRevAllProfitsRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevAllProfitsRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevAllProfitsRequest): QueryGetProtoRevAllProfitsRequestAmino {
     const obj: any = {};
@@ -1328,9 +1373,9 @@ export const QueryGetProtoRevAllProfitsResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevAllProfitsResponseAmino): QueryGetProtoRevAllProfitsResponse {
-    return {
-      profits: Array.isArray(object?.profits) ? object.profits.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseQueryGetProtoRevAllProfitsResponse();
+    message.profits = object.profits?.map(e => Coin.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: QueryGetProtoRevAllProfitsResponse): QueryGetProtoRevAllProfitsResponseAmino {
     const obj: any = {};
@@ -1408,9 +1453,9 @@ export const QueryGetProtoRevStatisticsByRouteRequest = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevStatisticsByRouteRequestAmino): QueryGetProtoRevStatisticsByRouteRequest {
-    return {
-      route: Array.isArray(object?.route) ? object.route.map((e: any) => BigInt(e)) : []
-    };
+    const message = createBaseQueryGetProtoRevStatisticsByRouteRequest();
+    message.route = object.route?.map(e => BigInt(e)) || [];
+    return message;
   },
   toAmino(message: QueryGetProtoRevStatisticsByRouteRequest): QueryGetProtoRevStatisticsByRouteRequestAmino {
     const obj: any = {};
@@ -1479,9 +1524,11 @@ export const QueryGetProtoRevStatisticsByRouteResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevStatisticsByRouteResponseAmino): QueryGetProtoRevStatisticsByRouteResponse {
-    return {
-      statistics: object?.statistics ? RouteStatistics.fromAmino(object.statistics) : undefined
-    };
+    const message = createBaseQueryGetProtoRevStatisticsByRouteResponse();
+    if (object.statistics !== undefined && object.statistics !== null) {
+      message.statistics = RouteStatistics.fromAmino(object.statistics);
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevStatisticsByRouteResponse): QueryGetProtoRevStatisticsByRouteResponseAmino {
     const obj: any = {};
@@ -1537,7 +1584,8 @@ export const QueryGetProtoRevAllRouteStatisticsRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevAllRouteStatisticsRequestAmino): QueryGetProtoRevAllRouteStatisticsRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevAllRouteStatisticsRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevAllRouteStatisticsRequest): QueryGetProtoRevAllRouteStatisticsRequestAmino {
     const obj: any = {};
@@ -1601,9 +1649,9 @@ export const QueryGetProtoRevAllRouteStatisticsResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevAllRouteStatisticsResponseAmino): QueryGetProtoRevAllRouteStatisticsResponse {
-    return {
-      statistics: Array.isArray(object?.statistics) ? object.statistics.map((e: any) => RouteStatistics.fromAmino(e)) : []
-    };
+    const message = createBaseQueryGetProtoRevAllRouteStatisticsResponse();
+    message.statistics = object.statistics?.map(e => RouteStatistics.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: QueryGetProtoRevAllRouteStatisticsResponse): QueryGetProtoRevAllRouteStatisticsResponseAmino {
     const obj: any = {};
@@ -1663,7 +1711,8 @@ export const QueryGetProtoRevTokenPairArbRoutesRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevTokenPairArbRoutesRequestAmino): QueryGetProtoRevTokenPairArbRoutesRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevTokenPairArbRoutesRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevTokenPairArbRoutesRequest): QueryGetProtoRevTokenPairArbRoutesRequestAmino {
     const obj: any = {};
@@ -1727,9 +1776,9 @@ export const QueryGetProtoRevTokenPairArbRoutesResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevTokenPairArbRoutesResponseAmino): QueryGetProtoRevTokenPairArbRoutesResponse {
-    return {
-      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => TokenPairArbRoutes.fromAmino(e)) : []
-    };
+    const message = createBaseQueryGetProtoRevTokenPairArbRoutesResponse();
+    message.routes = object.routes?.map(e => TokenPairArbRoutes.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: QueryGetProtoRevTokenPairArbRoutesResponse): QueryGetProtoRevTokenPairArbRoutesResponseAmino {
     const obj: any = {};
@@ -1789,7 +1838,8 @@ export const QueryGetProtoRevAdminAccountRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevAdminAccountRequestAmino): QueryGetProtoRevAdminAccountRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevAdminAccountRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevAdminAccountRequest): QueryGetProtoRevAdminAccountRequestAmino {
     const obj: any = {};
@@ -1853,9 +1903,11 @@ export const QueryGetProtoRevAdminAccountResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevAdminAccountResponseAmino): QueryGetProtoRevAdminAccountResponse {
-    return {
-      adminAccount: object.admin_account
-    };
+    const message = createBaseQueryGetProtoRevAdminAccountResponse();
+    if (object.admin_account !== undefined && object.admin_account !== null) {
+      message.adminAccount = object.admin_account;
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevAdminAccountResponse): QueryGetProtoRevAdminAccountResponseAmino {
     const obj: any = {};
@@ -1911,7 +1963,8 @@ export const QueryGetProtoRevDeveloperAccountRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevDeveloperAccountRequestAmino): QueryGetProtoRevDeveloperAccountRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevDeveloperAccountRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevDeveloperAccountRequest): QueryGetProtoRevDeveloperAccountRequestAmino {
     const obj: any = {};
@@ -1975,9 +2028,11 @@ export const QueryGetProtoRevDeveloperAccountResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevDeveloperAccountResponseAmino): QueryGetProtoRevDeveloperAccountResponse {
-    return {
-      developerAccount: object.developer_account
-    };
+    const message = createBaseQueryGetProtoRevDeveloperAccountResponse();
+    if (object.developer_account !== undefined && object.developer_account !== null) {
+      message.developerAccount = object.developer_account;
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevDeveloperAccountResponse): QueryGetProtoRevDeveloperAccountResponseAmino {
     const obj: any = {};
@@ -2006,18 +2061,18 @@ export const QueryGetProtoRevDeveloperAccountResponse = {
     };
   }
 };
-function createBaseQueryGetProtoRevPoolWeightsRequest(): QueryGetProtoRevPoolWeightsRequest {
+function createBaseQueryGetProtoRevInfoByPoolTypeRequest(): QueryGetProtoRevInfoByPoolTypeRequest {
   return {};
 }
-export const QueryGetProtoRevPoolWeightsRequest = {
-  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsRequest",
-  encode(_: QueryGetProtoRevPoolWeightsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryGetProtoRevInfoByPoolTypeRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeRequest",
+  encode(_: QueryGetProtoRevInfoByPoolTypeRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevInfoByPoolTypeRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryGetProtoRevPoolWeightsRequest();
+    const message = createBaseQueryGetProtoRevInfoByPoolTypeRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2028,61 +2083,62 @@ export const QueryGetProtoRevPoolWeightsRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryGetProtoRevPoolWeightsRequest>): QueryGetProtoRevPoolWeightsRequest {
-    const message = createBaseQueryGetProtoRevPoolWeightsRequest();
+  fromPartial(_: Partial<QueryGetProtoRevInfoByPoolTypeRequest>): QueryGetProtoRevInfoByPoolTypeRequest {
+    const message = createBaseQueryGetProtoRevInfoByPoolTypeRequest();
     return message;
   },
-  fromAmino(_: QueryGetProtoRevPoolWeightsRequestAmino): QueryGetProtoRevPoolWeightsRequest {
-    return {};
+  fromAmino(_: QueryGetProtoRevInfoByPoolTypeRequestAmino): QueryGetProtoRevInfoByPoolTypeRequest {
+    const message = createBaseQueryGetProtoRevInfoByPoolTypeRequest();
+    return message;
   },
-  toAmino(_: QueryGetProtoRevPoolWeightsRequest): QueryGetProtoRevPoolWeightsRequestAmino {
+  toAmino(_: QueryGetProtoRevInfoByPoolTypeRequest): QueryGetProtoRevInfoByPoolTypeRequestAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: QueryGetProtoRevPoolWeightsRequestAminoMsg): QueryGetProtoRevPoolWeightsRequest {
-    return QueryGetProtoRevPoolWeightsRequest.fromAmino(object.value);
+  fromAminoMsg(object: QueryGetProtoRevInfoByPoolTypeRequestAminoMsg): QueryGetProtoRevInfoByPoolTypeRequest {
+    return QueryGetProtoRevInfoByPoolTypeRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryGetProtoRevPoolWeightsRequest): QueryGetProtoRevPoolWeightsRequestAminoMsg {
+  toAminoMsg(message: QueryGetProtoRevInfoByPoolTypeRequest): QueryGetProtoRevInfoByPoolTypeRequestAminoMsg {
     return {
-      type: "osmosis/protorev/query-get-proto-rev-pool-weights-request",
-      value: QueryGetProtoRevPoolWeightsRequest.toAmino(message)
+      type: "osmosis/protorev/query-get-proto-rev-info-by-pool-type-request",
+      value: QueryGetProtoRevInfoByPoolTypeRequest.toAmino(message)
     };
   },
-  fromProtoMsg(message: QueryGetProtoRevPoolWeightsRequestProtoMsg): QueryGetProtoRevPoolWeightsRequest {
-    return QueryGetProtoRevPoolWeightsRequest.decode(message.value);
+  fromProtoMsg(message: QueryGetProtoRevInfoByPoolTypeRequestProtoMsg): QueryGetProtoRevInfoByPoolTypeRequest {
+    return QueryGetProtoRevInfoByPoolTypeRequest.decode(message.value);
   },
-  toProto(message: QueryGetProtoRevPoolWeightsRequest): Uint8Array {
-    return QueryGetProtoRevPoolWeightsRequest.encode(message).finish();
+  toProto(message: QueryGetProtoRevInfoByPoolTypeRequest): Uint8Array {
+    return QueryGetProtoRevInfoByPoolTypeRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetProtoRevPoolWeightsRequest): QueryGetProtoRevPoolWeightsRequestProtoMsg {
+  toProtoMsg(message: QueryGetProtoRevInfoByPoolTypeRequest): QueryGetProtoRevInfoByPoolTypeRequestProtoMsg {
     return {
-      typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsRequest",
-      value: QueryGetProtoRevPoolWeightsRequest.encode(message).finish()
+      typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeRequest",
+      value: QueryGetProtoRevInfoByPoolTypeRequest.encode(message).finish()
     };
   }
 };
-function createBaseQueryGetProtoRevPoolWeightsResponse(): QueryGetProtoRevPoolWeightsResponse {
+function createBaseQueryGetProtoRevInfoByPoolTypeResponse(): QueryGetProtoRevInfoByPoolTypeResponse {
   return {
-    poolWeights: PoolWeights.fromPartial({})
+    infoByPoolType: InfoByPoolType.fromPartial({})
   };
 }
-export const QueryGetProtoRevPoolWeightsResponse = {
-  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsResponse",
-  encode(message: QueryGetProtoRevPoolWeightsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.poolWeights !== undefined) {
-      PoolWeights.encode(message.poolWeights, writer.uint32(10).fork()).ldelim();
+export const QueryGetProtoRevInfoByPoolTypeResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeResponse",
+  encode(message: QueryGetProtoRevInfoByPoolTypeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.infoByPoolType !== undefined) {
+      InfoByPoolType.encode(message.infoByPoolType, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetProtoRevInfoByPoolTypeResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryGetProtoRevPoolWeightsResponse();
+    const message = createBaseQueryGetProtoRevInfoByPoolTypeResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.poolWeights = PoolWeights.decode(reader, reader.uint32());
+          message.infoByPoolType = InfoByPoolType.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -2091,40 +2147,42 @@ export const QueryGetProtoRevPoolWeightsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryGetProtoRevPoolWeightsResponse>): QueryGetProtoRevPoolWeightsResponse {
-    const message = createBaseQueryGetProtoRevPoolWeightsResponse();
-    message.poolWeights = object.poolWeights !== undefined && object.poolWeights !== null ? PoolWeights.fromPartial(object.poolWeights) : undefined;
+  fromPartial(object: Partial<QueryGetProtoRevInfoByPoolTypeResponse>): QueryGetProtoRevInfoByPoolTypeResponse {
+    const message = createBaseQueryGetProtoRevInfoByPoolTypeResponse();
+    message.infoByPoolType = object.infoByPoolType !== undefined && object.infoByPoolType !== null ? InfoByPoolType.fromPartial(object.infoByPoolType) : undefined;
     return message;
   },
-  fromAmino(object: QueryGetProtoRevPoolWeightsResponseAmino): QueryGetProtoRevPoolWeightsResponse {
-    return {
-      poolWeights: object?.pool_weights ? PoolWeights.fromAmino(object.pool_weights) : undefined
-    };
+  fromAmino(object: QueryGetProtoRevInfoByPoolTypeResponseAmino): QueryGetProtoRevInfoByPoolTypeResponse {
+    const message = createBaseQueryGetProtoRevInfoByPoolTypeResponse();
+    if (object.info_by_pool_type !== undefined && object.info_by_pool_type !== null) {
+      message.infoByPoolType = InfoByPoolType.fromAmino(object.info_by_pool_type);
+    }
+    return message;
   },
-  toAmino(message: QueryGetProtoRevPoolWeightsResponse): QueryGetProtoRevPoolWeightsResponseAmino {
+  toAmino(message: QueryGetProtoRevInfoByPoolTypeResponse): QueryGetProtoRevInfoByPoolTypeResponseAmino {
     const obj: any = {};
-    obj.pool_weights = message.poolWeights ? PoolWeights.toAmino(message.poolWeights) : undefined;
+    obj.info_by_pool_type = message.infoByPoolType ? InfoByPoolType.toAmino(message.infoByPoolType) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryGetProtoRevPoolWeightsResponseAminoMsg): QueryGetProtoRevPoolWeightsResponse {
-    return QueryGetProtoRevPoolWeightsResponse.fromAmino(object.value);
+  fromAminoMsg(object: QueryGetProtoRevInfoByPoolTypeResponseAminoMsg): QueryGetProtoRevInfoByPoolTypeResponse {
+    return QueryGetProtoRevInfoByPoolTypeResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryGetProtoRevPoolWeightsResponse): QueryGetProtoRevPoolWeightsResponseAminoMsg {
+  toAminoMsg(message: QueryGetProtoRevInfoByPoolTypeResponse): QueryGetProtoRevInfoByPoolTypeResponseAminoMsg {
     return {
-      type: "osmosis/protorev/query-get-proto-rev-pool-weights-response",
-      value: QueryGetProtoRevPoolWeightsResponse.toAmino(message)
+      type: "osmosis/protorev/query-get-proto-rev-info-by-pool-type-response",
+      value: QueryGetProtoRevInfoByPoolTypeResponse.toAmino(message)
     };
   },
-  fromProtoMsg(message: QueryGetProtoRevPoolWeightsResponseProtoMsg): QueryGetProtoRevPoolWeightsResponse {
-    return QueryGetProtoRevPoolWeightsResponse.decode(message.value);
+  fromProtoMsg(message: QueryGetProtoRevInfoByPoolTypeResponseProtoMsg): QueryGetProtoRevInfoByPoolTypeResponse {
+    return QueryGetProtoRevInfoByPoolTypeResponse.decode(message.value);
   },
-  toProto(message: QueryGetProtoRevPoolWeightsResponse): Uint8Array {
-    return QueryGetProtoRevPoolWeightsResponse.encode(message).finish();
+  toProto(message: QueryGetProtoRevInfoByPoolTypeResponse): Uint8Array {
+    return QueryGetProtoRevInfoByPoolTypeResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetProtoRevPoolWeightsResponse): QueryGetProtoRevPoolWeightsResponseProtoMsg {
+  toProtoMsg(message: QueryGetProtoRevInfoByPoolTypeResponse): QueryGetProtoRevInfoByPoolTypeResponseProtoMsg {
     return {
-      typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsResponse",
-      value: QueryGetProtoRevPoolWeightsResponse.encode(message).finish()
+      typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeResponse",
+      value: QueryGetProtoRevInfoByPoolTypeResponse.encode(message).finish()
     };
   }
 };
@@ -2155,7 +2213,8 @@ export const QueryGetProtoRevMaxPoolPointsPerBlockRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevMaxPoolPointsPerBlockRequestAmino): QueryGetProtoRevMaxPoolPointsPerBlockRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevMaxPoolPointsPerBlockRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevMaxPoolPointsPerBlockRequest): QueryGetProtoRevMaxPoolPointsPerBlockRequestAmino {
     const obj: any = {};
@@ -2219,9 +2278,11 @@ export const QueryGetProtoRevMaxPoolPointsPerBlockResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevMaxPoolPointsPerBlockResponseAmino): QueryGetProtoRevMaxPoolPointsPerBlockResponse {
-    return {
-      maxPoolPointsPerBlock: BigInt(object.max_pool_points_per_block)
-    };
+    const message = createBaseQueryGetProtoRevMaxPoolPointsPerBlockResponse();
+    if (object.max_pool_points_per_block !== undefined && object.max_pool_points_per_block !== null) {
+      message.maxPoolPointsPerBlock = BigInt(object.max_pool_points_per_block);
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse): QueryGetProtoRevMaxPoolPointsPerBlockResponseAmino {
     const obj: any = {};
@@ -2277,7 +2338,8 @@ export const QueryGetProtoRevMaxPoolPointsPerTxRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevMaxPoolPointsPerTxRequestAmino): QueryGetProtoRevMaxPoolPointsPerTxRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevMaxPoolPointsPerTxRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevMaxPoolPointsPerTxRequest): QueryGetProtoRevMaxPoolPointsPerTxRequestAmino {
     const obj: any = {};
@@ -2341,9 +2403,11 @@ export const QueryGetProtoRevMaxPoolPointsPerTxResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevMaxPoolPointsPerTxResponseAmino): QueryGetProtoRevMaxPoolPointsPerTxResponse {
-    return {
-      maxPoolPointsPerTx: BigInt(object.max_pool_points_per_tx)
-    };
+    const message = createBaseQueryGetProtoRevMaxPoolPointsPerTxResponse();
+    if (object.max_pool_points_per_tx !== undefined && object.max_pool_points_per_tx !== null) {
+      message.maxPoolPointsPerTx = BigInt(object.max_pool_points_per_tx);
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevMaxPoolPointsPerTxResponse): QueryGetProtoRevMaxPoolPointsPerTxResponseAmino {
     const obj: any = {};
@@ -2399,7 +2463,8 @@ export const QueryGetProtoRevBaseDenomsRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevBaseDenomsRequestAmino): QueryGetProtoRevBaseDenomsRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevBaseDenomsRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevBaseDenomsRequest): QueryGetProtoRevBaseDenomsRequestAmino {
     const obj: any = {};
@@ -2463,9 +2528,9 @@ export const QueryGetProtoRevBaseDenomsResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevBaseDenomsResponseAmino): QueryGetProtoRevBaseDenomsResponse {
-    return {
-      baseDenoms: Array.isArray(object?.base_denoms) ? object.base_denoms.map((e: any) => BaseDenom.fromAmino(e)) : []
-    };
+    const message = createBaseQueryGetProtoRevBaseDenomsResponse();
+    message.baseDenoms = object.base_denoms?.map(e => BaseDenom.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: QueryGetProtoRevBaseDenomsResponse): QueryGetProtoRevBaseDenomsResponseAmino {
     const obj: any = {};
@@ -2525,7 +2590,8 @@ export const QueryGetProtoRevEnabledRequest = {
     return message;
   },
   fromAmino(_: QueryGetProtoRevEnabledRequestAmino): QueryGetProtoRevEnabledRequest {
-    return {};
+    const message = createBaseQueryGetProtoRevEnabledRequest();
+    return message;
   },
   toAmino(_: QueryGetProtoRevEnabledRequest): QueryGetProtoRevEnabledRequestAmino {
     const obj: any = {};
@@ -2589,9 +2655,11 @@ export const QueryGetProtoRevEnabledResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevEnabledResponseAmino): QueryGetProtoRevEnabledResponse {
-    return {
-      enabled: object.enabled
-    };
+    const message = createBaseQueryGetProtoRevEnabledResponse();
+    if (object.enabled !== undefined && object.enabled !== null) {
+      message.enabled = object.enabled;
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevEnabledResponse): QueryGetProtoRevEnabledResponseAmino {
     const obj: any = {};
@@ -2664,10 +2732,14 @@ export const QueryGetProtoRevPoolRequest = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevPoolRequestAmino): QueryGetProtoRevPoolRequest {
-    return {
-      baseDenom: object.base_denom,
-      otherDenom: object.other_denom
-    };
+    const message = createBaseQueryGetProtoRevPoolRequest();
+    if (object.base_denom !== undefined && object.base_denom !== null) {
+      message.baseDenom = object.base_denom;
+    }
+    if (object.other_denom !== undefined && object.other_denom !== null) {
+      message.otherDenom = object.other_denom;
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevPoolRequest): QueryGetProtoRevPoolRequestAmino {
     const obj: any = {};
@@ -2733,9 +2805,11 @@ export const QueryGetProtoRevPoolResponse = {
     return message;
   },
   fromAmino(object: QueryGetProtoRevPoolResponseAmino): QueryGetProtoRevPoolResponse {
-    return {
-      poolId: BigInt(object.pool_id)
-    };
+    const message = createBaseQueryGetProtoRevPoolResponse();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    return message;
   },
   toAmino(message: QueryGetProtoRevPoolResponse): QueryGetProtoRevPoolResponseAmino {
     const obj: any = {};
@@ -2761,6 +2835,131 @@ export const QueryGetProtoRevPoolResponse = {
     return {
       typeUrl: "/osmosis.protorev.v1beta1.QueryGetProtoRevPoolResponse",
       value: QueryGetProtoRevPoolResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryGetAllProtocolRevenueRequest(): QueryGetAllProtocolRevenueRequest {
+  return {};
+}
+export const QueryGetAllProtocolRevenueRequest = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueRequest",
+  encode(_: QueryGetAllProtocolRevenueRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetAllProtocolRevenueRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryGetAllProtocolRevenueRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<QueryGetAllProtocolRevenueRequest>): QueryGetAllProtocolRevenueRequest {
+    const message = createBaseQueryGetAllProtocolRevenueRequest();
+    return message;
+  },
+  fromAmino(_: QueryGetAllProtocolRevenueRequestAmino): QueryGetAllProtocolRevenueRequest {
+    const message = createBaseQueryGetAllProtocolRevenueRequest();
+    return message;
+  },
+  toAmino(_: QueryGetAllProtocolRevenueRequest): QueryGetAllProtocolRevenueRequestAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: QueryGetAllProtocolRevenueRequestAminoMsg): QueryGetAllProtocolRevenueRequest {
+    return QueryGetAllProtocolRevenueRequest.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryGetAllProtocolRevenueRequest): QueryGetAllProtocolRevenueRequestAminoMsg {
+    return {
+      type: "osmosis/protorev/query-get-all-protocol-revenue-request",
+      value: QueryGetAllProtocolRevenueRequest.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryGetAllProtocolRevenueRequestProtoMsg): QueryGetAllProtocolRevenueRequest {
+    return QueryGetAllProtocolRevenueRequest.decode(message.value);
+  },
+  toProto(message: QueryGetAllProtocolRevenueRequest): Uint8Array {
+    return QueryGetAllProtocolRevenueRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryGetAllProtocolRevenueRequest): QueryGetAllProtocolRevenueRequestProtoMsg {
+    return {
+      typeUrl: "/osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueRequest",
+      value: QueryGetAllProtocolRevenueRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryGetAllProtocolRevenueResponse(): QueryGetAllProtocolRevenueResponse {
+  return {
+    allProtocolRevenue: AllProtocolRevenue.fromPartial({})
+  };
+}
+export const QueryGetAllProtocolRevenueResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueResponse",
+  encode(message: QueryGetAllProtocolRevenueResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.allProtocolRevenue !== undefined) {
+      AllProtocolRevenue.encode(message.allProtocolRevenue, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetAllProtocolRevenueResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryGetAllProtocolRevenueResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.allProtocolRevenue = AllProtocolRevenue.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryGetAllProtocolRevenueResponse>): QueryGetAllProtocolRevenueResponse {
+    const message = createBaseQueryGetAllProtocolRevenueResponse();
+    message.allProtocolRevenue = object.allProtocolRevenue !== undefined && object.allProtocolRevenue !== null ? AllProtocolRevenue.fromPartial(object.allProtocolRevenue) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryGetAllProtocolRevenueResponseAmino): QueryGetAllProtocolRevenueResponse {
+    const message = createBaseQueryGetAllProtocolRevenueResponse();
+    if (object.all_protocol_revenue !== undefined && object.all_protocol_revenue !== null) {
+      message.allProtocolRevenue = AllProtocolRevenue.fromAmino(object.all_protocol_revenue);
+    }
+    return message;
+  },
+  toAmino(message: QueryGetAllProtocolRevenueResponse): QueryGetAllProtocolRevenueResponseAmino {
+    const obj: any = {};
+    obj.all_protocol_revenue = message.allProtocolRevenue ? AllProtocolRevenue.toAmino(message.allProtocolRevenue) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryGetAllProtocolRevenueResponseAminoMsg): QueryGetAllProtocolRevenueResponse {
+    return QueryGetAllProtocolRevenueResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryGetAllProtocolRevenueResponse): QueryGetAllProtocolRevenueResponseAminoMsg {
+    return {
+      type: "osmosis/protorev/query-get-all-protocol-revenue-response",
+      value: QueryGetAllProtocolRevenueResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryGetAllProtocolRevenueResponseProtoMsg): QueryGetAllProtocolRevenueResponse {
+    return QueryGetAllProtocolRevenueResponse.decode(message.value);
+  },
+  toProto(message: QueryGetAllProtocolRevenueResponse): Uint8Array {
+    return QueryGetAllProtocolRevenueResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryGetAllProtocolRevenueResponse): QueryGetAllProtocolRevenueResponseProtoMsg {
+    return {
+      typeUrl: "/osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueResponse",
+      value: QueryGetAllProtocolRevenueResponse.encode(message).finish()
     };
   }
 };

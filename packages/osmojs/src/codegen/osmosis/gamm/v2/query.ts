@@ -13,9 +13,9 @@ export interface QuerySpotPriceRequestProtoMsg {
 /** Deprecated: please use alternate in x/poolmanager */
 /** @deprecated */
 export interface QuerySpotPriceRequestAmino {
-  pool_id: string;
-  base_asset_denom: string;
-  quote_asset_denom: string;
+  pool_id?: string;
+  base_asset_denom?: string;
+  quote_asset_denom?: string;
 }
 export interface QuerySpotPriceRequestAminoMsg {
   type: "osmosis/gamm/v2/query-spot-price-request";
@@ -28,7 +28,7 @@ export interface QuerySpotPriceRequestSDKType {
   base_asset_denom: string;
   quote_asset_denom: string;
 }
-/** Depreacted: please use alternate in x/poolmanager */
+/** Deprecated: please use alternate in x/poolmanager */
 /** @deprecated */
 export interface QuerySpotPriceResponse {
   /** String of the Dec. Ex) 10.203uatom */
@@ -38,17 +38,17 @@ export interface QuerySpotPriceResponseProtoMsg {
   typeUrl: "/osmosis.gamm.v2.QuerySpotPriceResponse";
   value: Uint8Array;
 }
-/** Depreacted: please use alternate in x/poolmanager */
+/** Deprecated: please use alternate in x/poolmanager */
 /** @deprecated */
 export interface QuerySpotPriceResponseAmino {
   /** String of the Dec. Ex) 10.203uatom */
-  spot_price: string;
+  spot_price?: string;
 }
 export interface QuerySpotPriceResponseAminoMsg {
   type: "osmosis/gamm/v2/query-spot-price-response";
   value: QuerySpotPriceResponseAmino;
 }
-/** Depreacted: please use alternate in x/poolmanager */
+/** Deprecated: please use alternate in x/poolmanager */
 /** @deprecated */
 export interface QuerySpotPriceResponseSDKType {
   spot_price: string;
@@ -105,11 +105,17 @@ export const QuerySpotPriceRequest = {
     return message;
   },
   fromAmino(object: QuerySpotPriceRequestAmino): QuerySpotPriceRequest {
-    return {
-      poolId: BigInt(object.pool_id),
-      baseAssetDenom: object.base_asset_denom,
-      quoteAssetDenom: object.quote_asset_denom
-    };
+    const message = createBaseQuerySpotPriceRequest();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    if (object.base_asset_denom !== undefined && object.base_asset_denom !== null) {
+      message.baseAssetDenom = object.base_asset_denom;
+    }
+    if (object.quote_asset_denom !== undefined && object.quote_asset_denom !== null) {
+      message.quoteAssetDenom = object.quote_asset_denom;
+    }
+    return message;
   },
   toAmino(message: QuerySpotPriceRequest): QuerySpotPriceRequestAmino {
     const obj: any = {};
@@ -176,9 +182,11 @@ export const QuerySpotPriceResponse = {
     return message;
   },
   fromAmino(object: QuerySpotPriceResponseAmino): QuerySpotPriceResponse {
-    return {
-      spotPrice: object.spot_price
-    };
+    const message = createBaseQuerySpotPriceResponse();
+    if (object.spot_price !== undefined && object.spot_price !== null) {
+      message.spotPrice = object.spot_price;
+    }
+    return message;
   },
   toAmino(message: QuerySpotPriceResponse): QuerySpotPriceResponseAmino {
     const obj: any = {};

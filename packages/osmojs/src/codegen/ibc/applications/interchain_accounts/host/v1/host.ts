@@ -19,9 +19,9 @@ export interface ParamsProtoMsg {
  */
 export interface ParamsAmino {
   /** host_enabled enables or disables the host submodule. */
-  host_enabled: boolean;
+  host_enabled?: boolean;
   /** allow_messages defines a list of sdk message typeURLs allowed to be executed on a host chain. */
-  allow_messages: string[];
+  allow_messages?: string[];
 }
 export interface ParamsAminoMsg {
   type: "cosmos-sdk/Params";
@@ -79,10 +79,12 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      hostEnabled: object.host_enabled,
-      allowMessages: Array.isArray(object?.allow_messages) ? object.allow_messages.map((e: any) => e) : []
-    };
+    const message = createBaseParams();
+    if (object.host_enabled !== undefined && object.host_enabled !== null) {
+      message.hostEnabled = object.host_enabled;
+    }
+    message.allowMessages = object.allow_messages?.map(e => e) || [];
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};

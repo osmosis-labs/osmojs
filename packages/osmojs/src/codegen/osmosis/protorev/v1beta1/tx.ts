@@ -1,4 +1,4 @@
-import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
+import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, InfoByPoolType, InfoByPoolTypeAmino, InfoByPoolTypeSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgSetHotRoutes defines the Msg/SetHotRoutes request type. */
 export interface MsgSetHotRoutes {
@@ -14,9 +14,9 @@ export interface MsgSetHotRoutesProtoMsg {
 /** MsgSetHotRoutes defines the Msg/SetHotRoutes request type. */
 export interface MsgSetHotRoutesAmino {
   /** admin is the account that is authorized to set the hot routes. */
-  admin: string;
+  admin?: string;
   /** hot_routes is the list of hot routes to set. */
-  hot_routes: TokenPairArbRoutesAmino[];
+  hot_routes?: TokenPairArbRoutesAmino[];
 }
 export interface MsgSetHotRoutesAminoMsg {
   type: "osmosis/MsgSetHotRoutes";
@@ -58,12 +58,12 @@ export interface MsgSetDeveloperAccountProtoMsg {
 /** MsgSetDeveloperAccount defines the Msg/SetDeveloperAccount request type. */
 export interface MsgSetDeveloperAccountAmino {
   /** admin is the account that is authorized to set the developer account. */
-  admin: string;
+  admin?: string;
   /**
    * developer_account is the account that will receive a portion of the profits
    * from the protorev module.
    */
-  developer_account: string;
+  developer_account?: string;
 }
 export interface MsgSetDeveloperAccountAminoMsg {
   type: "osmosis/MsgSetDeveloperAccount";
@@ -97,47 +97,47 @@ export interface MsgSetDeveloperAccountResponseAminoMsg {
  * type.
  */
 export interface MsgSetDeveloperAccountResponseSDKType {}
-/** MsgSetPoolWeights defines the Msg/SetPoolWeights request type. */
-export interface MsgSetPoolWeights {
+/** MsgSetInfoByPoolType defines the Msg/SetInfoByPoolType request type. */
+export interface MsgSetInfoByPoolType {
   /** admin is the account that is authorized to set the pool weights. */
   admin: string;
-  /** pool_weights is the list of pool weights to set. */
-  poolWeights: PoolWeights;
+  /** info_by_pool_type contains information about the pool types. */
+  infoByPoolType: InfoByPoolType;
 }
-export interface MsgSetPoolWeightsProtoMsg {
-  typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights";
+export interface MsgSetInfoByPoolTypeProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolType";
   value: Uint8Array;
 }
-/** MsgSetPoolWeights defines the Msg/SetPoolWeights request type. */
-export interface MsgSetPoolWeightsAmino {
+/** MsgSetInfoByPoolType defines the Msg/SetInfoByPoolType request type. */
+export interface MsgSetInfoByPoolTypeAmino {
   /** admin is the account that is authorized to set the pool weights. */
+  admin?: string;
+  /** info_by_pool_type contains information about the pool types. */
+  info_by_pool_type?: InfoByPoolTypeAmino;
+}
+export interface MsgSetInfoByPoolTypeAminoMsg {
+  type: "osmosis/MsgSetInfoByPoolType";
+  value: MsgSetInfoByPoolTypeAmino;
+}
+/** MsgSetInfoByPoolType defines the Msg/SetInfoByPoolType request type. */
+export interface MsgSetInfoByPoolTypeSDKType {
   admin: string;
-  /** pool_weights is the list of pool weights to set. */
-  pool_weights?: PoolWeightsAmino;
+  info_by_pool_type: InfoByPoolTypeSDKType;
 }
-export interface MsgSetPoolWeightsAminoMsg {
-  type: "osmosis/protorev/set-pool-weights";
-  value: MsgSetPoolWeightsAmino;
-}
-/** MsgSetPoolWeights defines the Msg/SetPoolWeights request type. */
-export interface MsgSetPoolWeightsSDKType {
-  admin: string;
-  pool_weights: PoolWeightsSDKType;
-}
-/** MsgSetPoolWeightsResponse defines the Msg/SetPoolWeights response type. */
-export interface MsgSetPoolWeightsResponse {}
-export interface MsgSetPoolWeightsResponseProtoMsg {
-  typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeightsResponse";
+/** MsgSetInfoByPoolTypeResponse defines the Msg/SetInfoByPoolType response type. */
+export interface MsgSetInfoByPoolTypeResponse {}
+export interface MsgSetInfoByPoolTypeResponseProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolTypeResponse";
   value: Uint8Array;
 }
-/** MsgSetPoolWeightsResponse defines the Msg/SetPoolWeights response type. */
-export interface MsgSetPoolWeightsResponseAmino {}
-export interface MsgSetPoolWeightsResponseAminoMsg {
-  type: "osmosis/protorev/set-pool-weights-response";
-  value: MsgSetPoolWeightsResponseAmino;
+/** MsgSetInfoByPoolTypeResponse defines the Msg/SetInfoByPoolType response type. */
+export interface MsgSetInfoByPoolTypeResponseAmino {}
+export interface MsgSetInfoByPoolTypeResponseAminoMsg {
+  type: "osmosis/protorev/set-info-by-pool-type-response";
+  value: MsgSetInfoByPoolTypeResponseAmino;
 }
-/** MsgSetPoolWeightsResponse defines the Msg/SetPoolWeights response type. */
-export interface MsgSetPoolWeightsResponseSDKType {}
+/** MsgSetInfoByPoolTypeResponse defines the Msg/SetInfoByPoolType response type. */
+export interface MsgSetInfoByPoolTypeResponseSDKType {}
 /** MsgSetMaxPoolPointsPerTx defines the Msg/SetMaxPoolPointsPerTx request type. */
 export interface MsgSetMaxPoolPointsPerTx {
   /** admin is the account that is authorized to set the max pool points per tx. */
@@ -155,15 +155,15 @@ export interface MsgSetMaxPoolPointsPerTxProtoMsg {
 /** MsgSetMaxPoolPointsPerTx defines the Msg/SetMaxPoolPointsPerTx request type. */
 export interface MsgSetMaxPoolPointsPerTxAmino {
   /** admin is the account that is authorized to set the max pool points per tx. */
-  admin: string;
+  admin?: string;
   /**
    * max_pool_points_per_tx is the maximum number of pool points that can be
    * consumed per transaction.
    */
-  max_pool_points_per_tx: string;
+  max_pool_points_per_tx?: string;
 }
 export interface MsgSetMaxPoolPointsPerTxAminoMsg {
-  type: "osmosis/protorev/set-max-pool-points-per-tx";
+  type: "osmosis/MsgSetMaxPoolPointsPerTx";
   value: MsgSetMaxPoolPointsPerTxAmino;
 }
 /** MsgSetMaxPoolPointsPerTx defines the Msg/SetMaxPoolPointsPerTx request type. */
@@ -223,15 +223,15 @@ export interface MsgSetMaxPoolPointsPerBlockAmino {
    * admin is the account that is authorized to set the max pool points per
    * block.
    */
-  admin: string;
+  admin?: string;
   /**
    * max_pool_points_per_block is the maximum number of pool points that can be
    * consumed per block.
    */
-  max_pool_points_per_block: string;
+  max_pool_points_per_block?: string;
 }
 export interface MsgSetMaxPoolPointsPerBlockAminoMsg {
-  type: "osmosis/protorev/set-max-pool-points-per-block";
+  type: "osmosis/MsgSetPoolWeights";
   value: MsgSetMaxPoolPointsPerBlockAmino;
 }
 /**
@@ -279,12 +279,12 @@ export interface MsgSetBaseDenomsProtoMsg {
 /** MsgSetBaseDenoms defines the Msg/SetBaseDenoms request type. */
 export interface MsgSetBaseDenomsAmino {
   /** admin is the account that is authorized to set the base denoms. */
-  admin: string;
+  admin?: string;
   /** base_denoms is the list of base denoms to set. */
-  base_denoms: BaseDenomAmino[];
+  base_denoms?: BaseDenomAmino[];
 }
 export interface MsgSetBaseDenomsAminoMsg {
-  type: "osmosis/protorev/set-base-denoms";
+  type: "osmosis/MsgSetBaseDenoms";
   value: MsgSetBaseDenomsAmino;
 }
 /** MsgSetBaseDenoms defines the Msg/SetBaseDenoms request type. */
@@ -350,10 +350,12 @@ export const MsgSetHotRoutes = {
     return message;
   },
   fromAmino(object: MsgSetHotRoutesAmino): MsgSetHotRoutes {
-    return {
-      admin: object.admin,
-      hotRoutes: Array.isArray(object?.hot_routes) ? object.hot_routes.map((e: any) => TokenPairArbRoutes.fromAmino(e)) : []
-    };
+    const message = createBaseMsgSetHotRoutes();
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    message.hotRoutes = object.hot_routes?.map(e => TokenPairArbRoutes.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: MsgSetHotRoutes): MsgSetHotRoutesAmino {
     const obj: any = {};
@@ -414,7 +416,8 @@ export const MsgSetHotRoutesResponse = {
     return message;
   },
   fromAmino(_: MsgSetHotRoutesResponseAmino): MsgSetHotRoutesResponse {
-    return {};
+    const message = createBaseMsgSetHotRoutesResponse();
+    return message;
   },
   toAmino(_: MsgSetHotRoutesResponse): MsgSetHotRoutesResponseAmino {
     const obj: any = {};
@@ -486,10 +489,14 @@ export const MsgSetDeveloperAccount = {
     return message;
   },
   fromAmino(object: MsgSetDeveloperAccountAmino): MsgSetDeveloperAccount {
-    return {
-      admin: object.admin,
-      developerAccount: object.developer_account
-    };
+    const message = createBaseMsgSetDeveloperAccount();
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    if (object.developer_account !== undefined && object.developer_account !== null) {
+      message.developerAccount = object.developer_account;
+    }
+    return message;
   },
   toAmino(message: MsgSetDeveloperAccount): MsgSetDeveloperAccountAmino {
     const obj: any = {};
@@ -546,7 +553,8 @@ export const MsgSetDeveloperAccountResponse = {
     return message;
   },
   fromAmino(_: MsgSetDeveloperAccountResponseAmino): MsgSetDeveloperAccountResponse {
-    return {};
+    const message = createBaseMsgSetDeveloperAccountResponse();
+    return message;
   },
   toAmino(_: MsgSetDeveloperAccountResponse): MsgSetDeveloperAccountResponseAmino {
     const obj: any = {};
@@ -574,27 +582,27 @@ export const MsgSetDeveloperAccountResponse = {
     };
   }
 };
-function createBaseMsgSetPoolWeights(): MsgSetPoolWeights {
+function createBaseMsgSetInfoByPoolType(): MsgSetInfoByPoolType {
   return {
     admin: "",
-    poolWeights: PoolWeights.fromPartial({})
+    infoByPoolType: InfoByPoolType.fromPartial({})
   };
 }
-export const MsgSetPoolWeights = {
-  typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
-  encode(message: MsgSetPoolWeights, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const MsgSetInfoByPoolType = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolType",
+  encode(message: MsgSetInfoByPoolType, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
-    if (message.poolWeights !== undefined) {
-      PoolWeights.encode(message.poolWeights, writer.uint32(18).fork()).ldelim();
+    if (message.infoByPoolType !== undefined) {
+      InfoByPoolType.encode(message.infoByPoolType, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetPoolWeights {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetInfoByPoolType {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgSetPoolWeights();
+    const message = createBaseMsgSetInfoByPoolType();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -602,7 +610,7 @@ export const MsgSetPoolWeights = {
           message.admin = reader.string();
           break;
         case 2:
-          message.poolWeights = PoolWeights.decode(reader, reader.uint32());
+          message.infoByPoolType = InfoByPoolType.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -611,58 +619,62 @@ export const MsgSetPoolWeights = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgSetPoolWeights>): MsgSetPoolWeights {
-    const message = createBaseMsgSetPoolWeights();
+  fromPartial(object: Partial<MsgSetInfoByPoolType>): MsgSetInfoByPoolType {
+    const message = createBaseMsgSetInfoByPoolType();
     message.admin = object.admin ?? "";
-    message.poolWeights = object.poolWeights !== undefined && object.poolWeights !== null ? PoolWeights.fromPartial(object.poolWeights) : undefined;
+    message.infoByPoolType = object.infoByPoolType !== undefined && object.infoByPoolType !== null ? InfoByPoolType.fromPartial(object.infoByPoolType) : undefined;
     return message;
   },
-  fromAmino(object: MsgSetPoolWeightsAmino): MsgSetPoolWeights {
-    return {
-      admin: object.admin,
-      poolWeights: object?.pool_weights ? PoolWeights.fromAmino(object.pool_weights) : undefined
-    };
+  fromAmino(object: MsgSetInfoByPoolTypeAmino): MsgSetInfoByPoolType {
+    const message = createBaseMsgSetInfoByPoolType();
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    if (object.info_by_pool_type !== undefined && object.info_by_pool_type !== null) {
+      message.infoByPoolType = InfoByPoolType.fromAmino(object.info_by_pool_type);
+    }
+    return message;
   },
-  toAmino(message: MsgSetPoolWeights): MsgSetPoolWeightsAmino {
+  toAmino(message: MsgSetInfoByPoolType): MsgSetInfoByPoolTypeAmino {
     const obj: any = {};
     obj.admin = message.admin;
-    obj.pool_weights = message.poolWeights ? PoolWeights.toAmino(message.poolWeights) : undefined;
+    obj.info_by_pool_type = message.infoByPoolType ? InfoByPoolType.toAmino(message.infoByPoolType) : undefined;
     return obj;
   },
-  fromAminoMsg(object: MsgSetPoolWeightsAminoMsg): MsgSetPoolWeights {
-    return MsgSetPoolWeights.fromAmino(object.value);
+  fromAminoMsg(object: MsgSetInfoByPoolTypeAminoMsg): MsgSetInfoByPoolType {
+    return MsgSetInfoByPoolType.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgSetPoolWeights): MsgSetPoolWeightsAminoMsg {
+  toAminoMsg(message: MsgSetInfoByPoolType): MsgSetInfoByPoolTypeAminoMsg {
     return {
-      type: "osmosis/protorev/set-pool-weights",
-      value: MsgSetPoolWeights.toAmino(message)
+      type: "osmosis/MsgSetInfoByPoolType",
+      value: MsgSetInfoByPoolType.toAmino(message)
     };
   },
-  fromProtoMsg(message: MsgSetPoolWeightsProtoMsg): MsgSetPoolWeights {
-    return MsgSetPoolWeights.decode(message.value);
+  fromProtoMsg(message: MsgSetInfoByPoolTypeProtoMsg): MsgSetInfoByPoolType {
+    return MsgSetInfoByPoolType.decode(message.value);
   },
-  toProto(message: MsgSetPoolWeights): Uint8Array {
-    return MsgSetPoolWeights.encode(message).finish();
+  toProto(message: MsgSetInfoByPoolType): Uint8Array {
+    return MsgSetInfoByPoolType.encode(message).finish();
   },
-  toProtoMsg(message: MsgSetPoolWeights): MsgSetPoolWeightsProtoMsg {
+  toProtoMsg(message: MsgSetInfoByPoolType): MsgSetInfoByPoolTypeProtoMsg {
     return {
-      typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
-      value: MsgSetPoolWeights.encode(message).finish()
+      typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolType",
+      value: MsgSetInfoByPoolType.encode(message).finish()
     };
   }
 };
-function createBaseMsgSetPoolWeightsResponse(): MsgSetPoolWeightsResponse {
+function createBaseMsgSetInfoByPoolTypeResponse(): MsgSetInfoByPoolTypeResponse {
   return {};
 }
-export const MsgSetPoolWeightsResponse = {
-  typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeightsResponse",
-  encode(_: MsgSetPoolWeightsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const MsgSetInfoByPoolTypeResponse = {
+  typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolTypeResponse",
+  encode(_: MsgSetInfoByPoolTypeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetPoolWeightsResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetInfoByPoolTypeResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgSetPoolWeightsResponse();
+    const message = createBaseMsgSetInfoByPoolTypeResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -673,36 +685,37 @@ export const MsgSetPoolWeightsResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgSetPoolWeightsResponse>): MsgSetPoolWeightsResponse {
-    const message = createBaseMsgSetPoolWeightsResponse();
+  fromPartial(_: Partial<MsgSetInfoByPoolTypeResponse>): MsgSetInfoByPoolTypeResponse {
+    const message = createBaseMsgSetInfoByPoolTypeResponse();
     return message;
   },
-  fromAmino(_: MsgSetPoolWeightsResponseAmino): MsgSetPoolWeightsResponse {
-    return {};
+  fromAmino(_: MsgSetInfoByPoolTypeResponseAmino): MsgSetInfoByPoolTypeResponse {
+    const message = createBaseMsgSetInfoByPoolTypeResponse();
+    return message;
   },
-  toAmino(_: MsgSetPoolWeightsResponse): MsgSetPoolWeightsResponseAmino {
+  toAmino(_: MsgSetInfoByPoolTypeResponse): MsgSetInfoByPoolTypeResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgSetPoolWeightsResponseAminoMsg): MsgSetPoolWeightsResponse {
-    return MsgSetPoolWeightsResponse.fromAmino(object.value);
+  fromAminoMsg(object: MsgSetInfoByPoolTypeResponseAminoMsg): MsgSetInfoByPoolTypeResponse {
+    return MsgSetInfoByPoolTypeResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgSetPoolWeightsResponse): MsgSetPoolWeightsResponseAminoMsg {
+  toAminoMsg(message: MsgSetInfoByPoolTypeResponse): MsgSetInfoByPoolTypeResponseAminoMsg {
     return {
-      type: "osmosis/protorev/set-pool-weights-response",
-      value: MsgSetPoolWeightsResponse.toAmino(message)
+      type: "osmosis/protorev/set-info-by-pool-type-response",
+      value: MsgSetInfoByPoolTypeResponse.toAmino(message)
     };
   },
-  fromProtoMsg(message: MsgSetPoolWeightsResponseProtoMsg): MsgSetPoolWeightsResponse {
-    return MsgSetPoolWeightsResponse.decode(message.value);
+  fromProtoMsg(message: MsgSetInfoByPoolTypeResponseProtoMsg): MsgSetInfoByPoolTypeResponse {
+    return MsgSetInfoByPoolTypeResponse.decode(message.value);
   },
-  toProto(message: MsgSetPoolWeightsResponse): Uint8Array {
-    return MsgSetPoolWeightsResponse.encode(message).finish();
+  toProto(message: MsgSetInfoByPoolTypeResponse): Uint8Array {
+    return MsgSetInfoByPoolTypeResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgSetPoolWeightsResponse): MsgSetPoolWeightsResponseProtoMsg {
+  toProtoMsg(message: MsgSetInfoByPoolTypeResponse): MsgSetInfoByPoolTypeResponseProtoMsg {
     return {
-      typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeightsResponse",
-      value: MsgSetPoolWeightsResponse.encode(message).finish()
+      typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolTypeResponse",
+      value: MsgSetInfoByPoolTypeResponse.encode(message).finish()
     };
   }
 };
@@ -750,10 +763,14 @@ export const MsgSetMaxPoolPointsPerTx = {
     return message;
   },
   fromAmino(object: MsgSetMaxPoolPointsPerTxAmino): MsgSetMaxPoolPointsPerTx {
-    return {
-      admin: object.admin,
-      maxPoolPointsPerTx: BigInt(object.max_pool_points_per_tx)
-    };
+    const message = createBaseMsgSetMaxPoolPointsPerTx();
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    if (object.max_pool_points_per_tx !== undefined && object.max_pool_points_per_tx !== null) {
+      message.maxPoolPointsPerTx = BigInt(object.max_pool_points_per_tx);
+    }
+    return message;
   },
   toAmino(message: MsgSetMaxPoolPointsPerTx): MsgSetMaxPoolPointsPerTxAmino {
     const obj: any = {};
@@ -766,7 +783,7 @@ export const MsgSetMaxPoolPointsPerTx = {
   },
   toAminoMsg(message: MsgSetMaxPoolPointsPerTx): MsgSetMaxPoolPointsPerTxAminoMsg {
     return {
-      type: "osmosis/protorev/set-max-pool-points-per-tx",
+      type: "osmosis/MsgSetMaxPoolPointsPerTx",
       value: MsgSetMaxPoolPointsPerTx.toAmino(message)
     };
   },
@@ -810,7 +827,8 @@ export const MsgSetMaxPoolPointsPerTxResponse = {
     return message;
   },
   fromAmino(_: MsgSetMaxPoolPointsPerTxResponseAmino): MsgSetMaxPoolPointsPerTxResponse {
-    return {};
+    const message = createBaseMsgSetMaxPoolPointsPerTxResponse();
+    return message;
   },
   toAmino(_: MsgSetMaxPoolPointsPerTxResponse): MsgSetMaxPoolPointsPerTxResponseAmino {
     const obj: any = {};
@@ -882,10 +900,14 @@ export const MsgSetMaxPoolPointsPerBlock = {
     return message;
   },
   fromAmino(object: MsgSetMaxPoolPointsPerBlockAmino): MsgSetMaxPoolPointsPerBlock {
-    return {
-      admin: object.admin,
-      maxPoolPointsPerBlock: BigInt(object.max_pool_points_per_block)
-    };
+    const message = createBaseMsgSetMaxPoolPointsPerBlock();
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    if (object.max_pool_points_per_block !== undefined && object.max_pool_points_per_block !== null) {
+      message.maxPoolPointsPerBlock = BigInt(object.max_pool_points_per_block);
+    }
+    return message;
   },
   toAmino(message: MsgSetMaxPoolPointsPerBlock): MsgSetMaxPoolPointsPerBlockAmino {
     const obj: any = {};
@@ -898,7 +920,7 @@ export const MsgSetMaxPoolPointsPerBlock = {
   },
   toAminoMsg(message: MsgSetMaxPoolPointsPerBlock): MsgSetMaxPoolPointsPerBlockAminoMsg {
     return {
-      type: "osmosis/protorev/set-max-pool-points-per-block",
+      type: "osmosis/MsgSetPoolWeights",
       value: MsgSetMaxPoolPointsPerBlock.toAmino(message)
     };
   },
@@ -942,7 +964,8 @@ export const MsgSetMaxPoolPointsPerBlockResponse = {
     return message;
   },
   fromAmino(_: MsgSetMaxPoolPointsPerBlockResponseAmino): MsgSetMaxPoolPointsPerBlockResponse {
-    return {};
+    const message = createBaseMsgSetMaxPoolPointsPerBlockResponse();
+    return message;
   },
   toAmino(_: MsgSetMaxPoolPointsPerBlockResponse): MsgSetMaxPoolPointsPerBlockResponseAmino {
     const obj: any = {};
@@ -1014,10 +1037,12 @@ export const MsgSetBaseDenoms = {
     return message;
   },
   fromAmino(object: MsgSetBaseDenomsAmino): MsgSetBaseDenoms {
-    return {
-      admin: object.admin,
-      baseDenoms: Array.isArray(object?.base_denoms) ? object.base_denoms.map((e: any) => BaseDenom.fromAmino(e)) : []
-    };
+    const message = createBaseMsgSetBaseDenoms();
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    message.baseDenoms = object.base_denoms?.map(e => BaseDenom.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: MsgSetBaseDenoms): MsgSetBaseDenomsAmino {
     const obj: any = {};
@@ -1034,7 +1059,7 @@ export const MsgSetBaseDenoms = {
   },
   toAminoMsg(message: MsgSetBaseDenoms): MsgSetBaseDenomsAminoMsg {
     return {
-      type: "osmosis/protorev/set-base-denoms",
+      type: "osmosis/MsgSetBaseDenoms",
       value: MsgSetBaseDenoms.toAmino(message)
     };
   },
@@ -1078,7 +1103,8 @@ export const MsgSetBaseDenomsResponse = {
     return message;
   },
   fromAmino(_: MsgSetBaseDenomsResponseAmino): MsgSetBaseDenomsResponse {
-    return {};
+    const message = createBaseMsgSetBaseDenomsResponse();
+    return message;
   },
   toAmino(_: MsgSetBaseDenomsResponse): MsgSetBaseDenomsResponseAmino {
     const obj: any = {};

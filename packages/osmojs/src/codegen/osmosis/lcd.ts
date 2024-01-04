@@ -31,6 +31,11 @@ export const createLCDClient = async ({
           })
         }
       },
+      consensus: {
+        v1: new (await import("../cosmos/consensus/v1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       distribution: {
         v1beta1: new (await import("../cosmos/distribution/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
@@ -59,7 +64,7 @@ export const createLCDClient = async ({
     },
     osmosis: {
       concentratedliquidity: {
-        v1beta1: new (await import("./concentrated-liquidity/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./concentratedliquidity/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
@@ -69,12 +74,12 @@ export const createLCDClient = async ({
         })
       },
       downtimedetector: {
-        v1beta1: new (await import("./downtime-detector/v1beta1/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./downtimedetector/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
       epochs: {
-        v1beta1: new (await import("./epochs/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./epochs/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
@@ -87,7 +92,7 @@ export const createLCDClient = async ({
         })
       },
       ibcratelimit: {
-        v1beta1: new (await import("./ibc-rate-limit/v1beta1/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./ibcratelimit/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
@@ -103,12 +108,15 @@ export const createLCDClient = async ({
         })
       },
       poolincentives: {
-        v1beta1: new (await import("./pool-incentives/v1beta1/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./poolincentives/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
       poolmanager: {
         v1beta1: new (await import("./poolmanager/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        }),
+        v2: new (await import("./poolmanager/v2/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
@@ -136,7 +144,7 @@ export const createLCDClient = async ({
         })
       },
       valsetpref: {
-        v1beta1: new (await import("./valset-pref/v1beta1/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./valsetpref/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       }

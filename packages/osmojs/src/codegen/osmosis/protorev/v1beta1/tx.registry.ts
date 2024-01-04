@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgSetHotRoutes, MsgSetDeveloperAccount, MsgSetMaxPoolPointsPerTx, MsgSetMaxPoolPointsPerBlock, MsgSetPoolWeights, MsgSetBaseDenoms } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.protorev.v1beta1.MsgSetHotRoutes", MsgSetHotRoutes], ["/osmosis.protorev.v1beta1.MsgSetDeveloperAccount", MsgSetDeveloperAccount], ["/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx", MsgSetMaxPoolPointsPerTx], ["/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock", MsgSetMaxPoolPointsPerBlock], ["/osmosis.protorev.v1beta1.MsgSetPoolWeights", MsgSetPoolWeights], ["/osmosis.protorev.v1beta1.MsgSetBaseDenoms", MsgSetBaseDenoms]];
+import { MsgSetHotRoutes, MsgSetDeveloperAccount, MsgSetMaxPoolPointsPerTx, MsgSetMaxPoolPointsPerBlock, MsgSetInfoByPoolType, MsgSetBaseDenoms } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.protorev.v1beta1.MsgSetHotRoutes", MsgSetHotRoutes], ["/osmosis.protorev.v1beta1.MsgSetDeveloperAccount", MsgSetDeveloperAccount], ["/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx", MsgSetMaxPoolPointsPerTx], ["/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock", MsgSetMaxPoolPointsPerBlock], ["/osmosis.protorev.v1beta1.MsgSetInfoByPoolType", MsgSetInfoByPoolType], ["/osmosis.protorev.v1beta1.MsgSetBaseDenoms", MsgSetBaseDenoms]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -33,10 +33,10 @@ export const MessageComposer = {
         value: MsgSetMaxPoolPointsPerBlock.encode(value).finish()
       };
     },
-    setPoolWeights(value: MsgSetPoolWeights) {
+    setInfoByPoolType(value: MsgSetInfoByPoolType) {
       return {
-        typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
-        value: MsgSetPoolWeights.encode(value).finish()
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolType",
+        value: MsgSetInfoByPoolType.encode(value).finish()
       };
     },
     setBaseDenoms(value: MsgSetBaseDenoms) {
@@ -71,9 +71,9 @@ export const MessageComposer = {
         value
       };
     },
-    setPoolWeights(value: MsgSetPoolWeights) {
+    setInfoByPoolType(value: MsgSetInfoByPoolType) {
       return {
-        typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolType",
         value
       };
     },
@@ -109,10 +109,10 @@ export const MessageComposer = {
         value: MsgSetMaxPoolPointsPerBlock.fromPartial(value)
       };
     },
-    setPoolWeights(value: MsgSetPoolWeights) {
+    setInfoByPoolType(value: MsgSetInfoByPoolType) {
       return {
-        typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
-        value: MsgSetPoolWeights.fromPartial(value)
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolType",
+        value: MsgSetInfoByPoolType.fromPartial(value)
       };
     },
     setBaseDenoms(value: MsgSetBaseDenoms) {

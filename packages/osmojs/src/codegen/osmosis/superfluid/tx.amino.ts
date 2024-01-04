@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgSuperfluidUndelegateAndUnbondLock, MsgLockAndSuperfluidDelegate, MsgCreateFullRangePositionAndSuperfluidDelegate, MsgUnPoolWhitelistedPool, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, MsgAddToConcentratedLiquiditySuperfluidPosition } from "./tx";
+import { MsgSuperfluidDelegate, MsgSuperfluidUndelegate, MsgSuperfluidUnbondLock, MsgSuperfluidUndelegateAndUnbondLock, MsgLockAndSuperfluidDelegate, MsgCreateFullRangePositionAndSuperfluidDelegate, MsgUnPoolWhitelistedPool, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, MsgAddToConcentratedLiquiditySuperfluidPosition, MsgUnbondConvertAndStake } from "./tx";
 export const AminoConverter = {
   "/osmosis.superfluid.MsgSuperfluidDelegate": {
     aminoType: "osmosis/superfluid-delegate",
@@ -27,7 +27,7 @@ export const AminoConverter = {
     fromAmino: MsgLockAndSuperfluidDelegate.fromAmino
   },
   "/osmosis.superfluid.MsgCreateFullRangePositionAndSuperfluidDelegate": {
-    aminoType: "osmosis/create-full-range-position-and-superfluid-delegate",
+    aminoType: "osmosis/full-range-and-sf-delegate",
     toAmino: MsgCreateFullRangePositionAndSuperfluidDelegate.toAmino,
     fromAmino: MsgCreateFullRangePositionAndSuperfluidDelegate.fromAmino
   },
@@ -37,13 +37,18 @@ export const AminoConverter = {
     fromAmino: MsgUnPoolWhitelistedPool.fromAmino
   },
   "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition": {
-    aminoType: "osmosis/unlock-and-migrate-shares-to-full-range-concentrated-position",
+    aminoType: "osmosis/unlock-and-migrate",
     toAmino: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.toAmino,
     fromAmino: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.fromAmino
   },
   "/osmosis.superfluid.MsgAddToConcentratedLiquiditySuperfluidPosition": {
-    aminoType: "osmosis/add-to-concentrated-liquidity-superfluid-position",
+    aminoType: "osmosis/add-to-cl-superfluid-position",
     toAmino: MsgAddToConcentratedLiquiditySuperfluidPosition.toAmino,
     fromAmino: MsgAddToConcentratedLiquiditySuperfluidPosition.fromAmino
+  },
+  "/osmosis.superfluid.MsgUnbondConvertAndStake": {
+    aminoType: "osmosis/unbond-convert-and-stake",
+    toAmino: MsgUnbondConvertAndStake.toAmino,
+    fromAmino: MsgUnbondConvertAndStake.fromAmino
   }
 };

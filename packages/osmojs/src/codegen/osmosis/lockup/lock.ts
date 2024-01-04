@@ -2,7 +2,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { toTimestamp, fromTimestamp, isSet } from "../../helpers";
+import { toTimestamp, fromTimestamp } from "../../helpers";
 /**
  * LockQueryType defines the type of the lock query that can
  * either be by duration or start time of the lock.
@@ -11,6 +11,7 @@ export enum LockQueryType {
   ByDuration = 0,
   ByTime = 1,
   NoLock = 2,
+  ByGroup = 3,
   UNRECOGNIZED = -1,
 }
 export const LockQueryTypeSDKType = LockQueryType;
@@ -26,6 +27,9 @@ export function lockQueryTypeFromJSON(object: any): LockQueryType {
     case 2:
     case "NoLock":
       return LockQueryType.NoLock;
+    case 3:
+    case "ByGroup":
+      return LockQueryType.ByGroup;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -40,6 +44,8 @@ export function lockQueryTypeToJSON(object: LockQueryType): string {
       return "ByTime";
     case LockQueryType.NoLock:
       return "NoLock";
+    case LockQueryType.ByGroup:
+      return "ByGroup";
     case LockQueryType.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
@@ -101,12 +107,12 @@ export interface PeriodLockAmino {
    * The ID of the lock is decided upon lock creation, incrementing by 1 for
    * every lock.
    */
-  ID: string;
+  ID?: string;
   /**
    * Owner is the account address of the lock owner.
    * Only the owner can modify the state of the lock.
    */
-  owner: string;
+  owner?: string;
   /**
    * Duration is the time needed for a lock to mature after unlocking has
    * started.
@@ -117,15 +123,15 @@ export interface PeriodLockAmino {
    * This value is first initialized when an unlock has started for the lock,
    * end time being block time + duration.
    */
-  end_time?: Date;
+  end_time?: string;
   /** Coins are the tokens locked within the lock, kept in the module account. */
-  coins: CoinAmino[];
+  coins?: CoinAmino[];
   /**
    * Reward Receiver Address is the address that would be receiving rewards for
    * the incentives for the lock. This is set to owner by default and can be
    * changed via separate msg.
    */
-  reward_receiver_address: string;
+  reward_receiver_address?: string;
 }
 export interface PeriodLockAminoMsg {
   type: "osmosis/lockup/period-lock";
@@ -180,9 +186,9 @@ export interface QueryConditionProtoMsg {
  */
 export interface QueryConditionAmino {
   /** LockQueryType is a type of lock query, ByLockDuration | ByLockTime */
-  lock_query_type: LockQueryType;
+  lock_query_type?: LockQueryType;
   /** Denom represents the token denomination we are looking to lock up */
-  denom: string;
+  denom?: string;
   /**
    * Duration is used to query locks with longer duration than the specified
    * duration. Duration field must not be nil when the lock query type is
@@ -194,7 +200,7 @@ export interface QueryConditionAmino {
    * Timestamp field must not be nil when the lock query type is `ByLockTime`.
    * Querying locks with timestamp is currently not implemented.
    */
-  timestamp?: Date;
+  timestamp?: string;
 }
 export interface QueryConditionAminoMsg {
   type: "osmosis/lockup/query-condition";
@@ -254,17 +260,17 @@ export interface SyntheticLockAmino {
    * Underlying Lock ID is the underlying native lock's id for this synthetic
    * lockup. A synthetic lock MUST have an underlying lock.
    */
-  underlying_lock_id: string;
+  underlying_lock_id?: string;
   /**
    * SynthDenom is the synthetic denom that is a combination of
    * gamm share + bonding status + validator address.
    */
-  synth_denom: string;
+  synth_denom?: string;
   /**
    * used for unbonding synthetic lockups, for active synthetic lockups, this
    * value is set to uninitialized value
    */
-  end_time?: Date;
+  end_time?: string;
   /**
    * Duration is the duration for a synthetic lock to mature
    * at the point of unbonding has started.
@@ -291,8 +297,8 @@ function createBasePeriodLock(): PeriodLock {
   return {
     ID: BigInt(0),
     owner: "",
-    duration: undefined,
-    endTime: undefined,
+    duration: Duration.fromPartial({}),
+    endTime: new Date(),
     coins: [],
     rewardReceiverAddress: ""
   };
@@ -363,21 +369,31 @@ export const PeriodLock = {
     return message;
   },
   fromAmino(object: PeriodLockAmino): PeriodLock {
-    return {
-      ID: BigInt(object.ID),
-      owner: object.owner,
-      duration: object?.duration ? Duration.fromAmino(object.duration) : undefined,
-      endTime: object.end_time,
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : [],
-      rewardReceiverAddress: object.reward_receiver_address
-    };
+    const message = createBasePeriodLock();
+    if (object.ID !== undefined && object.ID !== null) {
+      message.ID = BigInt(object.ID);
+    }
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.duration !== undefined && object.duration !== null) {
+      message.duration = Duration.fromAmino(object.duration);
+    }
+    if (object.end_time !== undefined && object.end_time !== null) {
+      message.endTime = fromTimestamp(Timestamp.fromAmino(object.end_time));
+    }
+    message.coins = object.coins?.map(e => Coin.fromAmino(e)) || [];
+    if (object.reward_receiver_address !== undefined && object.reward_receiver_address !== null) {
+      message.rewardReceiverAddress = object.reward_receiver_address;
+    }
+    return message;
   },
   toAmino(message: PeriodLock): PeriodLockAmino {
     const obj: any = {};
     obj.ID = message.ID ? message.ID.toString() : undefined;
     obj.owner = message.owner;
     obj.duration = message.duration ? Duration.toAmino(message.duration) : undefined;
-    obj.end_time = message.endTime;
+    obj.end_time = message.endTime ? Timestamp.toAmino(toTimestamp(message.endTime)) : undefined;
     if (message.coins) {
       obj.coins = message.coins.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
@@ -412,8 +428,8 @@ function createBaseQueryCondition(): QueryCondition {
   return {
     lockQueryType: 0,
     denom: "",
-    duration: undefined,
-    timestamp: undefined
+    duration: Duration.fromPartial({}),
+    timestamp: new Date()
   };
 }
 export const QueryCondition = {
@@ -468,19 +484,27 @@ export const QueryCondition = {
     return message;
   },
   fromAmino(object: QueryConditionAmino): QueryCondition {
-    return {
-      lockQueryType: isSet(object.lock_query_type) ? lockQueryTypeFromJSON(object.lock_query_type) : -1,
-      denom: object.denom,
-      duration: object?.duration ? Duration.fromAmino(object.duration) : undefined,
-      timestamp: object.timestamp
-    };
+    const message = createBaseQueryCondition();
+    if (object.lock_query_type !== undefined && object.lock_query_type !== null) {
+      message.lockQueryType = lockQueryTypeFromJSON(object.lock_query_type);
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.duration !== undefined && object.duration !== null) {
+      message.duration = Duration.fromAmino(object.duration);
+    }
+    if (object.timestamp !== undefined && object.timestamp !== null) {
+      message.timestamp = fromTimestamp(Timestamp.fromAmino(object.timestamp));
+    }
+    return message;
   },
   toAmino(message: QueryCondition): QueryConditionAmino {
     const obj: any = {};
-    obj.lock_query_type = message.lockQueryType;
+    obj.lock_query_type = lockQueryTypeToJSON(message.lockQueryType);
     obj.denom = message.denom;
     obj.duration = message.duration ? Duration.toAmino(message.duration) : undefined;
-    obj.timestamp = message.timestamp;
+    obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryConditionAminoMsg): QueryCondition {
@@ -509,8 +533,8 @@ function createBaseSyntheticLock(): SyntheticLock {
   return {
     underlyingLockId: BigInt(0),
     synthDenom: "",
-    endTime: undefined,
-    duration: undefined
+    endTime: new Date(),
+    duration: Duration.fromPartial({})
   };
 }
 export const SyntheticLock = {
@@ -565,18 +589,26 @@ export const SyntheticLock = {
     return message;
   },
   fromAmino(object: SyntheticLockAmino): SyntheticLock {
-    return {
-      underlyingLockId: BigInt(object.underlying_lock_id),
-      synthDenom: object.synth_denom,
-      endTime: object.end_time,
-      duration: object?.duration ? Duration.fromAmino(object.duration) : undefined
-    };
+    const message = createBaseSyntheticLock();
+    if (object.underlying_lock_id !== undefined && object.underlying_lock_id !== null) {
+      message.underlyingLockId = BigInt(object.underlying_lock_id);
+    }
+    if (object.synth_denom !== undefined && object.synth_denom !== null) {
+      message.synthDenom = object.synth_denom;
+    }
+    if (object.end_time !== undefined && object.end_time !== null) {
+      message.endTime = fromTimestamp(Timestamp.fromAmino(object.end_time));
+    }
+    if (object.duration !== undefined && object.duration !== null) {
+      message.duration = Duration.fromAmino(object.duration);
+    }
+    return message;
   },
   toAmino(message: SyntheticLock): SyntheticLockAmino {
     const obj: any = {};
     obj.underlying_lock_id = message.underlyingLockId ? message.underlyingLockId.toString() : undefined;
     obj.synth_denom = message.synthDenom;
-    obj.end_time = message.endTime;
+    obj.end_time = message.endTime ? Timestamp.toAmino(toTimestamp(message.endTime)) : undefined;
     obj.duration = message.duration ? Duration.toAmino(message.duration) : undefined;
     return obj;
   },
